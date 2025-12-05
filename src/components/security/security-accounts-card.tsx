@@ -6,10 +6,10 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, StyledCardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Key, Trash2 } from "lucide-react";
+import { Link2, Trash2 } from "lucide-react";
 
 import { mode } from "@/lib/design-system/visual-mode";
 import { cn } from "@/lib/utils";
@@ -31,22 +31,16 @@ export function SecurityAccountsCard({
 }: SecurityAccountsCardProps) {
   return (
     <Card>
-      <CardHeader>
-        <div className="flex items-center gap-4">
-          <div className={cn("bg-primary/10 border-border border p-4", mode.radius)}>
-            <Key className="text-primary h-6 w-6" />
-          </div>
-          <div>
-            <CardTitle>Connected Accounts</CardTitle>
-            <CardDescription>
-              Manage third-party accounts linked to your Fabrk account
-            </CardDescription>
-          </div>
-        </div>
-      </CardHeader>
+      <StyledCardHeader
+        title="CONNECTED_ACCOUNTS"
+        icon={<Link2 className="text-muted-foreground h-4 w-4" />}
+      />
       <CardContent className="space-y-4">
+        <p className="text-muted-foreground mb-4 font-mono text-xs">
+          Manage third-party accounts linked to your Fabrk account
+        </p>
         {connectedAccounts.length === 0 ? (
-          <p className="text-muted-foreground text-sm">
+          <p className="text-muted-foreground font-mono text-xs">
             No connected accounts. You can link Google or GitHub for faster sign-in.
           </p>
         ) : (
@@ -60,10 +54,10 @@ export function SecurityAccountsCard({
                 )}
               >
                 <div className="flex items-center gap-4">
-                  <Badge variant="outline" className="capitalize">
+                  <Badge variant="outline" className="font-mono capitalize">
                     {account.provider}
                   </Badge>
-                  <span className="text-muted-foreground text-sm">Connected</span>
+                  <span className="text-muted-foreground font-mono text-xs">Connected</span>
                 </div>
                 <Button
                   variant="ghost"
@@ -72,7 +66,7 @@ export function SecurityAccountsCard({
                   disabled={disconnectingProvider === account.provider}
                 >
                   <Trash2 className="mr-2 h-4 w-4" />
-                  {disconnectingProvider === account.provider ? "Disconnecting..." : "Disconnect"}
+                  {disconnectingProvider === account.provider ? "DISCONNECTING..." : "> DISCONNECT"}
                 </Button>
               </div>
             ))}
@@ -83,10 +77,10 @@ export function SecurityAccountsCard({
 
         <div className="flex gap-4">
           <Button variant="outline" size="sm">
-            Connect Google
+            &gt; CONNECT_GOOGLE
           </Button>
           <Button variant="outline" size="sm">
-            Connect GitHub
+            &gt; CONNECT_GITHUB
           </Button>
         </div>
       </CardContent>

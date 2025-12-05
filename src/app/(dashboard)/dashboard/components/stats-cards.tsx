@@ -5,7 +5,7 @@
 
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, StyledCardHeader } from "@/components/ui/card";
 import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 import { DollarSign, Users, Upload, TrendingUp, ArrowUpRight, ArrowDownRight } from "lucide-react";
@@ -36,16 +36,17 @@ interface StatCardProps {
 }
 
 function StatCard({ title, icon: Icon, value, change, loading, customContent }: StatCardProps) {
+  const terminalTitle = title.toUpperCase().replace(/ /g, "_");
   return (
     <Card>
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-sm font-medium">{title}</CardTitle>
-        <Icon className="text-muted-foreground h-4 w-4" />
-      </CardHeader>
+      <StyledCardHeader
+        title={terminalTitle}
+        icon={<Icon className="text-muted-foreground h-4 w-4" />}
+      />
       <CardContent>
-        <div className="text-2xl font-bold">{loading ? "..." : value}</div>
+        <div className="font-mono text-2xl font-bold">{loading ? "..." : value}</div>
         {!loading && change !== undefined && (
-          <p className="text-muted-foreground flex items-center gap-1 text-xs">
+          <p className="text-muted-foreground flex items-center gap-1 font-mono text-xs">
             {change >= 0 ? (
               <>
                 <ArrowUpRight className="text-success h-3 w-3" />

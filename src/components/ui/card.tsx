@@ -167,17 +167,20 @@ export type StyledCardHeaderProps = {
   code?: string;
   /** Title displayed after the hex code in UPPERCASE_SNAKE_CASE */
   title: string;
+  /** Optional icon displayed before the title */
+  icon?: React.ReactNode;
   /** Optional className for additional styling */
   className?: string;
 };
 
 const StyledCardHeader = React.forwardRef<HTMLDivElement, StyledCardHeaderProps>(
-  ({ code = "0x00", title, className }, ref) => (
+  ({ code = "0x00", title, icon, className }, ref) => (
     <div
       ref={ref}
       data-slot="styled-card-header"
-      className={cn("border-border border-b px-4 py-2", className)}
+      className={cn("border-border flex items-center gap-2 border-b px-4 py-2", className)}
     >
+      {icon}
       <span className={cn("text-muted-foreground text-xs", mode.font)}>
         [ [{code}] {title} ]
       </span>

@@ -13,20 +13,16 @@ interface DashboardHeaderProps {
   userInitials: string;
 }
 
-export function DashboardHeader({
-  userName,
-  userImage,
-  userInitials,
-}: DashboardHeaderProps) {
+export function DashboardHeader({ userName, userImage, userInitials }: DashboardHeaderProps) {
   const firstName = userName?.split(" ")[0] || "User";
 
   return (
     <div className="flex items-center justify-between">
       <div>
-        <h1 className="text-4xl font-semibold tracking-tight">
+        <h1 className="font-mono text-4xl font-semibold tracking-tight">
           Welcome back, {firstName}!
         </h1>
-        <p className="text-muted-foreground">
+        <p className="text-muted-foreground font-mono text-sm">
           Here's what's happening with your account today.
         </p>
       </div>

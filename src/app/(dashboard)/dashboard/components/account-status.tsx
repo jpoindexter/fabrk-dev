@@ -5,7 +5,7 @@
 
 "use client";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, StyledCardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Shield, Users, Activity } from "lucide-react";
 import { mode } from "@/lib/design-system";
@@ -19,16 +19,16 @@ interface AccountStatusProps {
 export function AccountStatus({ mfaEnabled, userTier }: AccountStatusProps) {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle as="h2">Account Status</CardTitle>
-        <CardDescription>Current account information and status</CardDescription>
-      </CardHeader>
+      <StyledCardHeader title="ACCOUNT_STATUS" />
       <CardContent>
+        <p className="text-muted-foreground mb-4 font-mono text-xs">
+          Current account information and status
+        </p>
         <div className="grid gap-6 md:grid-cols-3">
           <div className={cn("flex items-center gap-4 border p-4", mode.radius)}>
             <Shield className="text-muted-foreground h-5 w-5" />
             <div>
-              <p className="text-sm font-medium">Security</p>
+              <p className="font-mono text-sm font-medium">Security</p>
               <div className="mt-1 flex items-center gap-2">
                 <Badge variant={mfaEnabled ? "default" : "secondary"}>
                   2FA {mfaEnabled ? "Enabled" : "Disabled"}
@@ -40,7 +40,7 @@ export function AccountStatus({ mfaEnabled, userTier }: AccountStatusProps) {
           <div className={cn("flex items-center gap-4 border p-4", mode.radius)}>
             <Users className="text-muted-foreground h-5 w-5" />
             <div>
-              <p className="text-sm font-medium">Account Type</p>
+              <p className="font-mono text-sm font-medium">Account Type</p>
               <Badge variant="outline" className="mt-1">
                 {userTier || "FREE"}
               </Badge>
@@ -50,7 +50,7 @@ export function AccountStatus({ mfaEnabled, userTier }: AccountStatusProps) {
           <div className={cn("flex items-center gap-4 border p-4", mode.radius)}>
             <Activity className="text-muted-foreground h-5 w-5" />
             <div>
-              <p className="text-sm font-medium">Status</p>
+              <p className="font-mono text-sm font-medium">Status</p>
               <Badge className="bg-success text-success-foreground mt-1">Active</Badge>
             </div>
           </div>

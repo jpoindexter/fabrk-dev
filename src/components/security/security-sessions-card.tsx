@@ -6,7 +6,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, StyledCardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Clock, LogOut } from "lucide-react";
@@ -26,19 +26,15 @@ export function SecuritySessionsCard({
 }: SecuritySessionsCardProps) {
   return (
     <Card>
-      <CardHeader>
-        <div className="flex items-center gap-4">
-          <div className={cn("bg-primary/10 border-border border p-4", mode.radius)}>
-            <Clock className="text-primary h-6 w-6" />
-          </div>
-          <div>
-            <CardTitle>Active Sessions</CardTitle>
-            <CardDescription>Manage devices and locations where you're signed in</CardDescription>
-          </div>
-        </div>
-      </CardHeader>
+      <StyledCardHeader
+        title="ACTIVE_SESSIONS"
+        icon={<Clock className="text-muted-foreground h-4 w-4" />}
+      />
       <CardContent className="space-y-4">
-        <p className="text-muted-foreground text-sm">Session version: {sessionVersion}</p>
+        <p className="text-muted-foreground mb-4 font-mono text-xs">
+          Manage devices and locations where you&apos;re signed in
+        </p>
+        <p className="text-muted-foreground font-mono text-xs">Session version: {sessionVersion}</p>
 
         {/* Placeholder for active sessions - would require Session model */}
         <div className="space-y-4">
@@ -49,8 +45,10 @@ export function SecuritySessionsCard({
             )}
           >
             <div>
-              <p className="text-sm font-medium">Current Session</p>
-              <p className="text-muted-foreground text-xs">Your current browser session</p>
+              <p className="font-mono text-sm font-medium">Current Session</p>
+              <p className="text-muted-foreground font-mono text-xs">
+                Your current browser session
+              </p>
             </div>
             <Badge>Active</Badge>
           </div>
@@ -66,11 +64,11 @@ export function SecuritySessionsCard({
             className="w-full"
           >
             <LogOut className="mr-2 h-4 w-4" />
-            {isInvalidatingSessions ? "Invalidating sessions..." : "Sign Out All Other Sessions"}
+            {isInvalidatingSessions ? "INVALIDATING..." : "> SIGN_OUT_ALL_SESSIONS"}
           </Button>
-          <p className="text-muted-foreground text-center text-xs">
-            This will log you out from all devices except this one. You'll need to sign in again on
-            those devices.
+          <p className="text-muted-foreground text-center font-mono text-xs">
+            This will log you out from all devices except this one. You&apos;ll need to sign in
+            again on those devices.
           </p>
         </div>
       </CardContent>

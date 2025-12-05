@@ -6,7 +6,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, StyledCardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Shield, Smartphone, CheckCircle2, XCircle } from "lucide-react";
 import { mode } from "@/lib/design-system/visual-mode";
@@ -31,17 +31,15 @@ export function Security2FACard({
 }: Security2FACardProps) {
   return (
     <Card>
-      <CardHeader>
+      <StyledCardHeader
+        title="TWO_FACTOR_AUTH"
+        icon={<Smartphone className="text-muted-foreground h-4 w-4" />}
+      />
+      <CardContent className="space-y-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className={cn("bg-primary/10 border-border border p-4", mode.radius)}>
-              <Smartphone className="text-primary h-6 w-6" />
-            </div>
-            <div>
-              <CardTitle>Two-Factor Authentication</CardTitle>
-              <CardDescription>Add an extra layer of security to your account</CardDescription>
-            </div>
-          </div>
+          <p className="text-muted-foreground font-mono text-xs">
+            Add an extra layer of security to your account
+          </p>
           {twoFactorEnabled ? (
             <Badge variant="default" className="gap-1">
               <CheckCircle2 className="h-3 w-3" />
@@ -54,32 +52,30 @@ export function Security2FACard({
             </Badge>
           )}
         </div>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <p className="text-muted-foreground text-sm">
+        <p className="text-muted-foreground font-mono text-xs">
           Two-factor authentication (2FA) adds an additional layer of security by requiring a second
           form of verification when you sign in.
         </p>
 
         {twoFactorEnabled ? (
           <div className="space-y-4">
-            <div className="flex items-center gap-2 text-sm">
+            <div className="flex items-center gap-2">
               <CheckCircle2 className="text-success h-4 w-4" />
-              <span>2FA is currently protecting your account</span>
+              <span className="font-mono text-xs">2FA is currently protecting your account</span>
             </div>
             <div className="flex gap-4">
               <Button variant="outline" onClick={onViewBackupCodes}>
-                View Backup Codes
+                &gt; VIEW_BACKUP_CODES
               </Button>
               <Button variant="destructive" onClick={onDisable2FA} disabled={isDisabling2FA}>
-                {isDisabling2FA ? "Disabling..." : "Disable 2FA"}
+                {isDisabling2FA ? "DISABLING..." : "> DISABLE_2FA"}
               </Button>
             </div>
           </div>
         ) : (
           <Button onClick={onEnable2FA} disabled={isEnabling2FA}>
             <Shield className="mr-2 h-4 w-4" />
-            {isEnabling2FA ? "Setting up..." : "Enable Two-Factor Authentication"}
+            {isEnabling2FA ? "SETTING_UP..." : "> ENABLE_2FA"}
           </Button>
         )}
       </CardContent>
