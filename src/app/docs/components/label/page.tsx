@@ -150,9 +150,9 @@ tracking-normal      // Letter spacing`,
                 <span className="text-muted-foreground text-xs">ux-heuristic-5.md</span>
               </div>
               <div className="space-y-2 text-xs">
-                <div className="text-primary font-bold">[HEURISTIC #5]:</div>
+                <div className="text-primary font-semibold">[HEURISTIC #5]:</div>
                 <div className="text-muted-foreground pl-4">Error Prevention</div>
-                <div className="text-success mt-2 font-bold">[IMPLEMENTATION]:</div>
+                <div className="text-success mt-2 font-semibold">[IMPLEMENTATION]:</div>
                 <div className="text-muted-foreground pl-4">
                   Show required indicator (*) to prevent submission errors
                 </div>

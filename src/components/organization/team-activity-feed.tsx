@@ -163,7 +163,7 @@ export function TeamActivityFeed({
                       {/* Avatar with icon badge */}
                       <div className="relative flex-shrink-0">
                         <Avatar className="border-border h-10 w-10 border">
-                          <AvatarFallback className="bg-primary text-primary-foreground text-xs font-bold">
+                          <AvatarFallback className="bg-primary text-primary-foreground text-xs font-semibold">
                             {getInitials(activity.user.name)}
                           </AvatarFallback>
                         </Avatar>
@@ -183,7 +183,7 @@ export function TeamActivityFeed({
                         <div className="flex items-start justify-between gap-2">
                           <div className="min-w-0 flex-1">
                             <p className="text-foreground text-sm">
-                              <span className="font-bold">{activity.user.name}</span>{" "}
+                              <span className="font-semibold">{activity.user.name}</span>{" "}
                               <span className="text-muted-foreground">{activity.action}</span>
                               {activity.target && (
                                 <span className="text-foreground font-medium">

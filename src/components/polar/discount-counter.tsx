@@ -51,7 +51,7 @@ export function DiscountCounter() {
         <span className="font-mono text-sm font-medium text-foreground">
           {isAlmostGone ? '🔥' : '🎉'} Early Access Discount:
         </span>
-        <span className={`font-mono text-sm font-bold ${isAlmostGone ? 'text-destructive' : 'text-primary'}`}>
+        <span className={`font-mono text-sm font-semibold ${isAlmostGone ? 'text-destructive' : 'text-primary'}`}>
           {usage.remaining} / {usage.total} left
         </span>
       </div>

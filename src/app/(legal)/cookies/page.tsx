@@ -29,7 +29,7 @@ export default function CookiesPage() {
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           <h1 className="mb-2 text-sm text-muted-foreground">FABRK_LEGAL:</h1>
-          <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
+          <h2 className="mb-4 text-4xl font-semibold tracking-tight">
             COOKIE_POLICY
           </h2>
         </motion.div>
@@ -62,7 +62,7 @@ export default function CookiesPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x10]</span>
-            <h2 className="text-lg font-bold">WHAT_ARE_COOKIES</h2>
+            <h2 className="text-lg font-semibold">WHAT_ARE_COOKIES</h2>
           </div>
           <p className="text-sm text-muted-foreground mb-4">
             Cookies are small text files placed on your device when you visit a website. They are widely used to make websites work efficiently and provide information to website owners.
@@ -81,7 +81,7 @@ export default function CookiesPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x20]</span>
-            <h2 className="text-lg font-bold">COOKIES_WE_USE</h2>
+            <h2 className="text-lg font-semibold">COOKIES_WE_USE</h2>
           </div>
 
           <div className="space-y-6">
@@ -233,7 +233,7 @@ export default function CookiesPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x30]</span>
-            <h2 className="text-lg font-bold">MANAGE_COOKIES</h2>
+            <h2 className="text-lg font-semibold">MANAGE_COOKIES</h2>
           </div>
 
           <div className="space-y-4">
@@ -276,7 +276,7 @@ export default function CookiesPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x40]</span>
-            <h2 className="text-lg font-bold">OTHER_TRACKING</h2>
+            <h2 className="text-lg font-semibold">OTHER_TRACKING</h2>
           </div>
           <p className="text-sm text-muted-foreground mb-2">In addition to cookies, we may use:</p>
           <ul className="space-y-1 text-sm text-muted-foreground pl-4">
@@ -290,7 +290,7 @@ export default function CookiesPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x50]</span>
-            <h2 className="text-lg font-bold">POLICY_UPDATES</h2>
+            <h2 className="text-lg font-semibold">POLICY_UPDATES</h2>
           </div>
           <p className="text-sm text-muted-foreground">
             We may update this Cookie Policy. Changes will be posted with an updated "Last Updated" date.
@@ -300,7 +300,7 @@ export default function CookiesPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x60]</span>
-            <h2 className="text-lg font-bold">QUESTIONS</h2>
+            <h2 className="text-lg font-semibold">QUESTIONS</h2>
           </div>
           <p className="text-sm text-muted-foreground mb-4">Questions about cookies?</p>
           <ul className="space-y-1 text-sm text-muted-foreground pl-4">

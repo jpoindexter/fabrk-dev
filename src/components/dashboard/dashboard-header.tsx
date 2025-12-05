@@ -110,7 +110,7 @@ export function DashboardHeader() {
               >
                 <Avatar className="border-border h-10 w-10 border">
                   <AvatarImage src={mockUser.image || ""} alt={mockUser.name} />
-                  <AvatarFallback className="bg-primary text-primary-foreground font-bold">
+                  <AvatarFallback className="bg-primary text-primary-foreground font-semibold">
                     {userInitials}
                   </AvatarFallback>
                 </Avatar>

@@ -125,19 +125,19 @@ export default function FormErrorPage() {
               </div>
               <div className="space-y-4 text-xs">
                 <div>
-                  <div className="font-bold text-primary">[WHAT]:</div>
+                  <div className="font-semibold text-primary">[WHAT]:</div>
                   <div className="pl-4 text-muted-foreground">
                     What went wrong? (Clear, specific)
                   </div>
                 </div>
                 <div>
-                  <div className="font-bold text-warning">[WHY]:</div>
+                  <div className="font-semibold text-warning">[WHY]:</div>
                   <div className="pl-4 text-muted-foreground">
                     Why did it happen? (Root cause)
                   </div>
                 </div>
                 <div>
-                  <div className="font-bold text-success">[HOW]:</div>
+                  <div className="font-semibold text-success">[HOW]:</div>
                   <div className="pl-4 text-muted-foreground">
                     How to fix it? (Actionable steps)
                   </div>

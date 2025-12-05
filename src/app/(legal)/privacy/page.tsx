@@ -29,7 +29,7 @@ export default function PrivacyPage() {
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           <h1 className="mb-2 text-sm text-muted-foreground">FABRK_LEGAL:</h1>
-          <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
+          <h2 className="mb-4 text-4xl font-semibold tracking-tight">
             PRIVACY_POLICY
           </h2>
         </motion.div>
@@ -62,7 +62,7 @@ export default function PrivacyPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x10]</span>
-            <h2 className="text-lg font-bold">INFORMATION_WE_COLLECT</h2>
+            <h2 className="text-lg font-semibold">INFORMATION_WE_COLLECT</h2>
           </div>
 
           <div className="space-y-6">
@@ -111,7 +111,7 @@ export default function PrivacyPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x20]</span>
-            <h2 className="text-lg font-bold">HOW_WE_USE_YOUR_INFO</h2>
+            <h2 className="text-lg font-semibold">HOW_WE_USE_YOUR_INFO</h2>
           </div>
           <p className="text-sm text-muted-foreground mb-4">We use collected information for:</p>
           <ul className="space-y-1 text-sm text-muted-foreground pl-4">
@@ -128,7 +128,7 @@ export default function PrivacyPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x30]</span>
-            <h2 className="text-lg font-bold">LEGAL_BASIS_GDPR</h2>
+            <h2 className="text-lg font-semibold">LEGAL_BASIS_GDPR</h2>
           </div>
           <p className="text-sm text-muted-foreground mb-4">Under GDPR, we process your data based on:</p>
           <ul className="space-y-1 text-sm text-muted-foreground pl-4">
@@ -143,7 +143,7 @@ export default function PrivacyPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x40]</span>
-            <h2 className="text-lg font-bold">DATA_SHARING_DISCLOSURE</h2>
+            <h2 className="text-lg font-semibold">DATA_SHARING_DISCLOSURE</h2>
           </div>
 
           <div className="space-y-6">
@@ -182,7 +182,7 @@ export default function PrivacyPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x50]</span>
-            <h2 className="text-lg font-bold">DATA_SECURITY</h2>
+            <h2 className="text-lg font-semibold">DATA_SECURITY</h2>
           </div>
           <p className="text-sm text-muted-foreground mb-4">We implement industry-standard security measures:</p>
           <ul className="space-y-1 text-sm text-muted-foreground pl-4">
@@ -199,7 +199,7 @@ export default function PrivacyPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x60]</span>
-            <h2 className="text-lg font-bold">DATA_RETENTION</h2>
+            <h2 className="text-lg font-semibold">DATA_RETENTION</h2>
           </div>
           <p className="text-sm text-muted-foreground mb-4">We retain your data for:</p>
           <ul className="space-y-1 text-sm text-muted-foreground pl-4">
@@ -214,7 +214,7 @@ export default function PrivacyPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x70]</span>
-            <h2 className="text-lg font-bold">YOUR_PRIVACY_RIGHTS</h2>
+            <h2 className="text-lg font-semibold">YOUR_PRIVACY_RIGHTS</h2>
           </div>
 
           <div className="space-y-6">
@@ -265,7 +265,7 @@ export default function PrivacyPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x80]</span>
-            <h2 className="text-lg font-bold">COOKIES_AND_TRACKING</h2>
+            <h2 className="text-lg font-semibold">COOKIES_AND_TRACKING</h2>
           </div>
           <p className="text-sm text-muted-foreground mb-4">We use cookies for:</p>
           <ul className="space-y-1 text-sm text-muted-foreground pl-4">
@@ -282,7 +282,7 @@ export default function PrivacyPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x90]</span>
-            <h2 className="text-lg font-bold">CHILDRENS_PRIVACY</h2>
+            <h2 className="text-lg font-semibold">CHILDRENS_PRIVACY</h2>
           </div>
           <p className="text-sm text-muted-foreground">
             Fabrk is not intended for users under 18. We do not knowingly collect data from children. If you believe we've collected data from a child, contact us immediately.
@@ -293,7 +293,7 @@ export default function PrivacyPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0xA0]</span>
-            <h2 className="text-lg font-bold">INTERNATIONAL_DATA_TRANSFERS</h2>
+            <h2 className="text-lg font-semibold">INTERNATIONAL_DATA_TRANSFERS</h2>
           </div>
           <p className="text-sm text-muted-foreground mb-4">
             Your data may be processed in countries outside your own. We ensure adequate protection through:
@@ -309,7 +309,7 @@ export default function PrivacyPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0xB0]</span>
-            <h2 className="text-lg font-bold">POLICY_CHANGES</h2>
+            <h2 className="text-lg font-semibold">POLICY_CHANGES</h2>
           </div>
           <p className="text-sm text-muted-foreground">
             We may update this policy periodically. We'll notify you of significant changes via email or prominent notice. Continued use after changes constitutes acceptance.
@@ -320,7 +320,7 @@ export default function PrivacyPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0xC0]</span>
-            <h2 className="text-lg font-bold">CONTACT_US</h2>
+            <h2 className="text-lg font-semibold">CONTACT_US</h2>
           </div>
           <p className="text-sm text-muted-foreground mb-4">Privacy questions or concerns?</p>
           <ul className="space-y-1 text-sm text-muted-foreground pl-4">

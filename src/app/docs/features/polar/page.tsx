@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsCallout } from "@/components/docs";
-import { docsTypography, docsSpacing } from "@/components/docs";
 import Link from "next/link";
 import { CircleDollarSign, CreditCard, Zap, Shield, Tag, Users } from "lucide-react";
 
@@ -253,8 +252,8 @@ export async function getProduct() {
         <DocsCard title="COMPARISON">
           <div className="grid gap-6 sm:grid-cols-3">
             <div className="space-y-2">
-              <h3 className={`uppercase ${docsTypography.h4}`}>Polar.sh</h3>
-              <ul className={`${docsTypography.body} space-y-1`}>
+              Polar.sh
+              <ul className="space-y-1">
                 <li>• Built for digital products</li>
                 <li>• Simple SDK, quick setup</li>
                 <li>• Built-in discount codes</li>
@@ -263,8 +262,8 @@ export async function getProduct() {
               </ul>
             </div>
             <div className="space-y-2">
-              <h3 className={`uppercase ${docsTypography.h4}`}>Stripe</h3>
-              <ul className={`${docsTypography.body} space-y-1`}>
+              Stripe
+              <ul className="space-y-1">
                 <li>• Industry standard</li>
                 <li>• Most payment methods</li>
                 <li>• Complex subscriptions</li>
@@ -273,8 +272,8 @@ export async function getProduct() {
               </ul>
             </div>
             <div className="space-y-2">
-              <h3 className={`uppercase ${docsTypography.h4}`}>Lemon Squeezy</h3>
-              <ul className={`${docsTypography.body} space-y-1`}>
+              Lemon Squeezy
+              <ul className="space-y-1">
                 <li>• Merchant of record</li>
                 <li>• Handles ALL taxes</li>
                 <li>• Zero tax compliance</li>
@@ -294,8 +293,8 @@ export async function getProduct() {
       {/* Dev Mode */}
       <DocsSection title="Development Mode">
         <DocsCard title="MOCK_CHECKOUT">
-          <p className={docsTypography.body}>
-            When <code className={docsTypography.code}>POLAR_ACCESS_TOKEN</code> is not set, the
+          <p className="">
+            When <code className="bg-muted px-1">POLAR_ACCESS_TOKEN</code> is not set, the
             checkout API returns a mock response that redirects to your success page. This lets you
             test the full purchase flow without real payments.
           </p>
@@ -312,25 +311,25 @@ export async function getProduct() {
       {/* Discount Strategies */}
       <DocsSection title="Discount Strategies">
         <DocsCard title="LAUNCH_DISCOUNTS">
-          <div className={docsSpacing.sectionItems}>
+          <div className="space-y-4">
             <div className="border-border border-b pb-4">
-              <h4 className={`uppercase ${docsTypography.h4}`}>Usage-Limited Discounts</h4>
-              <p className={docsTypography.body}>
+              Usage-Limited Discounts
+              <p className="">
                 Create discounts that auto-expire after N uses. Perfect for &quot;First 100
                 customers get 25% off&quot; promotions.
               </p>
             </div>
             <div className="border-border border-b pb-4">
-              <h4 className={`uppercase ${docsTypography.h4}`}>Time-Limited Discounts</h4>
-              <p className={docsTypography.body}>
+              Time-Limited Discounts
+              <p className="">
                 Set expiration dates for launch week or holiday promotions.
               </p>
             </div>
             <div className="pb-4">
-              <h4 className={`uppercase ${docsTypography.h4}`}>Exit Intent Discounts</h4>
-              <p className={docsTypography.body}>
+              Exit Intent Discounts
+              <p className="">
                 Pass a special discount ID when user tries to leave. See{" "}
-                <code className={docsTypography.code}>exit-intent-popup.tsx</code>.
+                <code className="bg-muted px-1">exit-intent-popup.tsx</code>.
               </p>
             </div>
           </div>
@@ -342,19 +341,19 @@ export async function getProduct() {
         <DocsCard title="PROJECT_FILES">
           <div className="space-y-2 text-sm">
             <div className="border-border flex justify-between border-b pb-2">
-              <code className={docsTypography.code}>src/lib/polar.ts</code>
+              <code className="bg-muted px-1">src/lib/polar.ts</code>
               <span className="text-muted-foreground">SDK client and helpers</span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
-              <code className={docsTypography.code}>src/app/api/polar/checkout/route.ts</code>
+              <code className="bg-muted px-1">src/app/api/polar/checkout/route.ts</code>
               <span className="text-muted-foreground">Checkout API endpoint</span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
-              <code className={docsTypography.code}>src/components/polar/checkout-button.tsx</code>
+              <code className="bg-muted px-1">src/components/polar/checkout-button.tsx</code>
               <span className="text-muted-foreground">Checkout button component</span>
             </div>
             <div className="flex justify-between">
-              <code className={docsTypography.code}>src/components/polar/discount-counter.tsx</code>
+              <code className="bg-muted px-1">src/components/polar/discount-counter.tsx</code>
               <span className="text-muted-foreground">Usage counter display</span>
             </div>
           </div>
@@ -369,8 +368,8 @@ export async function getProduct() {
               title="LEMON_SQUEEZY"
               className="hover:border-primary/50 h-full transition-all"
             >
-              <h3 className={`uppercase ${docsTypography.h4}`}>Lemon Squeezy</h3>
-              <p className={docsTypography.body}>
+              Lemon Squeezy
+              <p className="">
                 Alternative with merchant of record for global tax handling.
               </p>
             </DocsCard>
@@ -380,8 +379,8 @@ export async function getProduct() {
               title="STRIPE_PAYMENTS"
               className="hover:border-primary/50 h-full transition-all"
             >
-              <h3 className={`uppercase ${docsTypography.h4}`}>Stripe Setup</h3>
-              <p className={docsTypography.body}>
+              Stripe Setup
+              <p className="">
                 Industry-standard payment processing with subscriptions.
               </p>
             </DocsCard>

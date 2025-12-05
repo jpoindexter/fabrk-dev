@@ -46,14 +46,14 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
             </div>
             <div className="mb-2 flex items-center gap-4">
               <Star className="text-primary h-5 w-5" />
-              <span className="text-2xl font-bold">{subscription.plan}</span>
+              <span className="text-2xl font-semibold">{subscription.plan}</span>
             </div>
             <div className={cn(mode.font, "text-muted-foreground text-xs")}>
               STARTED: {formatDate(subscription.startDate)}
             </div>
           </div>
           <div className="text-right">
-            <div className="text-3xl font-bold">
+            <div className="text-4xl font-semibold">
               ${subscription.price}
               <span className="text-muted-foreground text-lg font-normal">/mo</span>
             </div>

@@ -18,7 +18,7 @@ export default function ScrollAreaPage() {
               {Array.from({ length: 20 }).map((_, i) => (
                 <div
                   key={i}
-                  className="border-b border-border py-2 font-mono text-sm text-muted-foreground last:border-0"
+                  className="border-b border-border py-2 last:border-0"
                 >
                   <span className="text-primary">&gt;</span> Item {i + 1}
                 </div>
@@ -44,7 +44,7 @@ export default function ScrollAreaPage() {
                 {Array.from({ length: 15 }).map((_, i) => (
                   <div
                     key={i}
-                    className="bg-background p-2 font-mono text-xs text-muted-foreground"
+                    className="bg-background p-2"
                   >
                     Scrollable item {i + 1}
                   </div>
@@ -65,7 +65,7 @@ export default function ScrollAreaPage() {
                 {Array.from({ length: 20 }).map((_, i) => (
                   <div
                     key={i}
-                    className="flex h-24 w-32 shrink-0 items-center justify-center bg-background font-mono text-sm text-muted-foreground"
+                    className="flex h-24 w-32 shrink-0 items-center justify-center bg-background"
                   >
                     {i + 1}
                   </div>
@@ -92,7 +92,7 @@ export default function ScrollAreaPage() {
                 {Array.from({ length: 15 }).map((_, i) => (
                   <div
                     key={i}
-                    className="border-b border-border py-2 font-mono text-sm text-muted-foreground last:border-0"
+                    className="border-b border-border py-2 last:border-0"
                   >
                     <span className="text-primary">&gt;</span> Wide content that scrolls horizontally - Item {i + 1}
                   </div>
@@ -111,8 +111,8 @@ export default function ScrollAreaPage() {
           description: "Perfect for scrollable code snippets.",
           preview: (
             <ScrollArea className="h-48 w-full">
-              <pre className="p-4 font-mono text-xs">
-                <code className="text-muted-foreground">
+              <pre className="p-4">
+                <code>
                   {`function example() {
   const items = [1, 2, 3, 4, 5];
 
@@ -148,8 +148,8 @@ export default function ScrollAreaPage() {
               <div className="space-y-4 p-4">
                 {Array.from({ length: 10 }).map((_, i) => (
                   <div key={i} className="space-y-1">
-                    <div className="font-mono text-xs font-bold text-primary">User {i + 1}</div>
-                    <div className="bg-background p-2 font-mono text-xs text-muted-foreground">
+                    <div className="font-semibold text-primary">User {i + 1}</div>
+                    <div className="bg-background p-2">
                       This is a message in the chat
                     </div>
                   </div>

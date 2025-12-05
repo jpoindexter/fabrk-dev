@@ -29,7 +29,7 @@ export default function TermsPage() {
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           <h1 className="text-muted-foreground mb-2 text-sm">FABRK_LEGAL:</h1>
-          <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">TERMS_OF_SERVICE</h2>
+          <h2 className="mb-4 text-4xl font-semibold tracking-tight">TERMS_OF_SERVICE</h2>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -62,7 +62,7 @@ export default function TermsPage() {
         <section className="border-border bg-card border p-6">
           <div className="mb-4 flex items-center gap-2">
             <span className="text-muted-foreground text-xs">[0x10]</span>
-            <h2 className="text-lg font-bold">AGREEMENT_TO_TERMS</h2>
+            <h2 className="text-lg font-semibold">AGREEMENT_TO_TERMS</h2>
           </div>
           <p className="text-muted-foreground mb-4 text-sm">
             By accessing, purchasing, or using Fabrk ("Service", "Product", "we", "us", or "our"),
@@ -79,7 +79,7 @@ export default function TermsPage() {
         <section className="border-border bg-card border p-6">
           <div className="mb-4 flex items-center gap-2">
             <span className="text-muted-foreground text-xs">[0x20]</span>
-            <h2 className="text-lg font-bold">DESCRIPTION_OF_SERVICE</h2>
+            <h2 className="text-lg font-semibold">DESCRIPTION_OF_SERVICE</h2>
           </div>
           <p className="text-muted-foreground mb-4 text-sm">
             Fabrk is an enterprise-grade Next.js 15 SaaS boilerplate providing 100 production-ready
@@ -159,7 +159,7 @@ export default function TermsPage() {
         <section className="border-border bg-card border p-6">
           <div className="mb-4 flex items-center gap-2">
             <span className="text-muted-foreground text-xs">[0x30]</span>
-            <h2 className="text-lg font-bold">USER_ACCOUNTS</h2>
+            <h2 className="text-lg font-semibold">USER_ACCOUNTS</h2>
           </div>
 
           <div className="space-y-4">
@@ -197,7 +197,7 @@ export default function TermsPage() {
         <section className="border-border bg-card border p-6">
           <div className="mb-4 flex items-center gap-2">
             <span className="text-muted-foreground text-xs">[0x40]</span>
-            <h2 className="text-lg font-bold">PAYMENT_TERMS</h2>
+            <h2 className="text-lg font-semibold">PAYMENT_TERMS</h2>
           </div>
 
           <div className="space-y-4">
@@ -236,7 +236,7 @@ export default function TermsPage() {
         <section className="border-border bg-card border p-6">
           <div className="mb-4 flex items-center gap-2">
             <span className="text-muted-foreground text-xs">[0x50]</span>
-            <h2 className="text-lg font-bold">INTELLECTUAL_PROPERTY</h2>
+            <h2 className="text-lg font-semibold">INTELLECTUAL_PROPERTY</h2>
           </div>
 
           <div className="space-y-4">
@@ -270,7 +270,7 @@ export default function TermsPage() {
         <section className="border-border bg-card border p-6">
           <div className="mb-4 flex items-center gap-2">
             <span className="text-muted-foreground text-xs">[0x60]</span>
-            <h2 className="text-lg font-bold">PROHIBITED_USES</h2>
+            <h2 className="text-lg font-semibold">PROHIBITED_USES</h2>
           </div>
           <p className="text-muted-foreground mb-2 text-sm">You agree NOT to use Fabrk to:</p>
           <ul className="text-muted-foreground space-y-1 pl-4 text-sm">
@@ -305,7 +305,7 @@ export default function TermsPage() {
         <section className="border-border bg-card border p-6">
           <div className="mb-4 flex items-center gap-2">
             <span className="text-muted-foreground text-xs">[0x70]</span>
-            <h2 className="text-lg font-bold">DISCLAIMERS_LIABILITY</h2>
+            <h2 className="text-lg font-semibold">DISCLAIMERS_LIABILITY</h2>
           </div>
 
           <div className="space-y-4">
@@ -341,7 +341,7 @@ export default function TermsPage() {
         <section className="border-border bg-card border p-6">
           <div className="mb-4 flex items-center gap-2">
             <span className="text-muted-foreground text-xs">[0x80]</span>
-            <h2 className="text-lg font-bold">UPDATES_VERSIONING</h2>
+            <h2 className="text-lg font-semibold">UPDATES_VERSIONING</h2>
           </div>
           <p className="text-muted-foreground mb-4 text-sm">
             Your perpetual license includes lifetime access to all v1.x updates (bug fixes, security
@@ -358,7 +358,7 @@ export default function TermsPage() {
         <section className="border-border bg-card border p-6">
           <div className="mb-4 flex items-center gap-2">
             <span className="text-muted-foreground text-xs">[0x90]</span>
-            <h2 className="text-lg font-bold">INDEMNIFICATION</h2>
+            <h2 className="text-lg font-semibold">INDEMNIFICATION</h2>
           </div>
           <p className="text-muted-foreground text-sm">
             You agree to indemnify and hold harmless Fabrk from claims arising from your use,
@@ -369,7 +369,7 @@ export default function TermsPage() {
         <section className="border-border bg-card border p-6">
           <div className="mb-4 flex items-center gap-2">
             <span className="text-muted-foreground text-xs">[0xA0]</span>
-            <h2 className="text-lg font-bold">GOVERNING_LAW</h2>
+            <h2 className="text-lg font-semibold">GOVERNING_LAW</h2>
           </div>
           <p className="text-muted-foreground mb-2 text-sm">
             These Terms are governed by the laws of the Netherlands. Disputes shall be resolved in
@@ -384,7 +384,7 @@ export default function TermsPage() {
         <section className="border-border bg-card border p-6">
           <div className="mb-4 flex items-center gap-2">
             <span className="text-muted-foreground text-xs">[0xB0]</span>
-            <h2 className="text-lg font-bold">TERMS_CHANGES</h2>
+            <h2 className="text-lg font-semibold">TERMS_CHANGES</h2>
           </div>
           <p className="text-muted-foreground text-sm">
             We may modify these Terms at any time. Material changes will be communicated with 30
@@ -395,7 +395,7 @@ export default function TermsPage() {
         <section className="border-border bg-card border p-6">
           <div className="mb-4 flex items-center gap-2">
             <span className="text-muted-foreground text-xs">[0xC0]</span>
-            <h2 className="text-lg font-bold">CONTACT_INFO</h2>
+            <h2 className="text-lg font-semibold">CONTACT_INFO</h2>
           </div>
           <p className="text-muted-foreground mb-4 text-sm">Questions about these Terms?</p>
           <ul className="text-muted-foreground space-y-1 pl-4 text-sm">

@@ -52,7 +52,7 @@ export function ShowcaseNav() {
     <Card className="from-primary/5 to-secondary/5 bg-gradient-to-r">
       <CardContent className="pt-6 pb-6">
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-lg font-bold">Showcase Pages</h3>
+          <h3 className="text-lg font-semibold">Showcase Pages</h3>
           <Link href="/">
             <Button variant="outline" size="sm">
               <Home className="mr-2 h-4 w-4" />

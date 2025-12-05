@@ -30,7 +30,7 @@ function TestimonialsDemo() {
     <section className="w-full font-mono">
       <div className="mb-6 text-center">
         <span className="text-xs text-muted-foreground">[0x40]</span>
-        <h2 className="mt-2 text-xl font-bold">LOVED_BY_DEVELOPERS</h2>
+        <h2 className="mt-2 text-xl font-semibold">LOVED_BY_DEVELOPERS</h2>
         <p className="mt-1 text-xs text-muted-foreground">&gt; Early access customer feedback</p>
       </div>
       <div className="grid gap-4 md:grid-cols-3">

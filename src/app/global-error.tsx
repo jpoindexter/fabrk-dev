@@ -44,7 +44,7 @@ export default function GlobalError({
             </div>
 
             {/* Error Message */}
-            <h1 className="mb-4 text-4xl font-bold text-foreground">
+            <h1 className="mb-4 text-4xl font-semibold text-foreground">
               Critical Application Error
             </h1>
             <p className="mb-8 text-lg text-muted-foreground">

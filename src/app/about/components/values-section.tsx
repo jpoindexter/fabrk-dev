@@ -82,7 +82,7 @@ export function ValuesSection() {
             <span className="inline-block border border-border bg-card px-4 py-1 text-xs text-muted-foreground mb-4">
               [ [0x03] CORE_VALUES ]
             </span>
-            <h2 className="text-2xl font-bold lg:text-3xl mb-4">CORE_VALUES</h2>
+            <h2 className="text-2xl font-semibold lg:text-4xl mb-4">CORE_VALUES</h2>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}

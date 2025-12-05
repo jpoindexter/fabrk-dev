@@ -45,7 +45,7 @@ export default function TwoFactorTemplate() {
                 <div className="border-border bg-card mx-auto mb-2 flex h-10 w-10 items-center justify-center border">
                   <ShieldCheck className="text-primary h-5 w-5" />
                 </div>
-                <h1 className={cn(mode.font, "text-2xl font-bold tracking-tight")}>
+                <h1 className={cn(mode.font, "text-2xl font-semibold tracking-tight")}>
                   Two-factor authentication
                 </h1>
                 <p className="text-muted-foreground text-sm">

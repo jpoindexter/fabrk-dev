@@ -89,7 +89,7 @@ async function AnalyticsDashboard() {
             <Users className="text-muted-foreground h-4 w-4" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{analytics.totalUsers}</div>
+            <div className="text-2xl font-semibold">{analytics.totalUsers}</div>
             <p className="text-muted-foreground text-xs">+{analytics.usersLast7Days} this week</p>
           </CardContent>
         </Card>
@@ -100,7 +100,7 @@ async function AnalyticsDashboard() {
             <DollarSign className="text-muted-foreground h-4 w-4" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">${(analytics.totalRevenue / 100).toFixed(2)}</div>
+            <div className="text-2xl font-semibold">${(analytics.totalRevenue / 100).toFixed(2)}</div>
             <p className="text-muted-foreground text-xs">
               ${(analytics.revenueLast7Days / 100).toFixed(2)} this week
             </p>
@@ -113,7 +113,7 @@ async function AnalyticsDashboard() {
             <TrendingUp className="text-muted-foreground h-4 w-4" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">${avgRevenuePerUser.toFixed(2)}</div>
+            <div className="text-2xl font-semibold">${avgRevenuePerUser.toFixed(2)}</div>
             <p className="text-muted-foreground text-xs">Lifetime value per user</p>
           </CardContent>
         </Card>
@@ -124,7 +124,7 @@ async function AnalyticsDashboard() {
             <Activity className="text-muted-foreground h-4 w-4" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{analytics.totalPayments}</div>
+            <div className="text-2xl font-semibold">{analytics.totalPayments}</div>
             <p className="text-muted-foreground text-xs">
               {analytics.paymentsLast30Days} in last 30 days
             </p>
@@ -170,11 +170,11 @@ async function AnalyticsDashboard() {
           <CardContent className="space-y-4">
             <div className="flex items-center justify-between">
               <span className="text-sm">New Users</span>
-              <span className="text-2xl font-bold">{analytics.usersLast7Days}</span>
+              <span className="text-2xl font-semibold">{analytics.usersLast7Days}</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-sm">Revenue</span>
-              <span className="text-2xl font-bold">
+              <span className="text-2xl font-semibold">
                 ${(analytics.revenueLast7Days / 100).toFixed(2)}
               </span>
             </div>
@@ -189,17 +189,17 @@ async function AnalyticsDashboard() {
           <CardContent className="space-y-4">
             <div className="flex items-center justify-between">
               <span className="text-sm">New Users</span>
-              <span className="text-2xl font-bold">{analytics.usersLast30Days}</span>
+              <span className="text-2xl font-semibold">{analytics.usersLast30Days}</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-sm">Revenue</span>
-              <span className="text-2xl font-bold">
+              <span className="text-2xl font-semibold">
                 ${(analytics.revenueLast30Days / 100).toFixed(2)}
               </span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-sm">Payments</span>
-              <span className="text-2xl font-bold">{analytics.paymentsLast30Days}</span>
+              <span className="text-2xl font-semibold">{analytics.paymentsLast30Days}</span>
             </div>
           </CardContent>
         </Card>

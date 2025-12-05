@@ -24,7 +24,7 @@ export function PlanCards({ plans }: PlanCardsProps) {
     <>
       {/* Alert */}
       <div className={cn(mode.font, "border-warning bg-warning/10 border p-4 text-xs")}>
-        <span className="text-warning-foreground font-bold">[WARNING]:</span>{" "}
+        <span className="text-warning-foreground font-semibold">[WARNING]:</span>{" "}
         <span className="text-foreground">
           Changing your plan will take effect at the next billing cycle
         </span>
@@ -53,7 +53,7 @@ export function PlanCards({ plans }: PlanCardsProps) {
                 )}
               </div>
 
-              <div className="mb-4 text-3xl font-bold">
+              <div className="mb-4 text-4xl font-semibold">
                 ${plan.price}
                 <span className="text-muted-foreground text-lg font-normal">/mo</span>
               </div>

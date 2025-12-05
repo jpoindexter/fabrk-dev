@@ -52,7 +52,7 @@ export function CurrentPlanCard({
           <div className="space-y-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-2xl font-bold">{subscription.plan.name}</p>
+                <p className="text-2xl font-semibold">{subscription.plan.name}</p>
                 <p className="text-muted-foreground">
                   ${(subscription.plan.amount / 100).toFixed(2)} / {subscription.plan.interval}
                 </p>
@@ -112,7 +112,7 @@ export function CurrentPlanCard({
                 <div className="flex items-start gap-4">
                   <AlertTriangle className="text-destructive h-5 w-5" />
                   <div>
-                    <h4 className="text-destructive font-medium">Subscription Ending</h4>
+                    <h4 className="text-destructive font-semibold">Subscription Ending</h4>
                     <p className="text-muted-foreground mt-1 text-sm">
                       Your subscription will end on{" "}
                       {new Date(subscription.currentPeriodEnd).toLocaleDateString()}. You can
@@ -126,7 +126,7 @@ export function CurrentPlanCard({
         ) : (
           <div className="py-12 text-center">
             <DollarSign className="text-muted-foreground mx-auto h-12 w-12" />
-            <h3 className="mt-4 text-lg font-medium">No Active Subscription</h3>
+            <h3 className="mt-4 text-lg font-semibold">No Active Subscription</h3>
             <p className="text-muted-foreground mt-2 text-sm">
               Upgrade to a paid plan to unlock premium features
             </p>

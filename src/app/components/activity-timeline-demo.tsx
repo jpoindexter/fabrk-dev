@@ -335,43 +335,43 @@ export default function ActivityTimelineDemo() {
         <CardContent>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">✓</span>
+              <span className="text-primary font-semibold">✓</span>
               <span><strong>6 Event Types:</strong> Created, Updated, Commented, Status Changed, Assigned, Deleted</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">✓</span>
+              <span className="text-primary font-semibold">✓</span>
               <span><strong>Smart Timestamps:</strong> Relative time (e.g., "2h ago") with absolute time on hover</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">✓</span>
+              <span className="text-primary font-semibold">✓</span>
               <span><strong>User Attribution:</strong> Shows who performed each action with avatar</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">✓</span>
+              <span className="text-primary font-semibold">✓</span>
               <span><strong>Expandable Details:</strong> Click to reveal full description and metadata</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">✓</span>
+              <span className="text-primary font-semibold">✓</span>
               <span><strong>Date Grouping:</strong> Organize events by "Today", "Yesterday", etc.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">✓</span>
+              <span className="text-primary font-semibold">✓</span>
               <span><strong>Type Filters:</strong> Filter by event type with counters</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">✓</span>
+              <span className="text-primary font-semibold">✓</span>
               <span><strong>Color-Coded:</strong> Each event type has unique color and icon</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">✓</span>
+              <span className="text-primary font-semibold">✓</span>
               <span><strong>Modern Design:</strong> Clean borders, subtle shadows, polished aesthetic</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">✓</span>
+              <span className="text-primary font-semibold">✓</span>
               <span><strong>Compact Mode:</strong> Condensed view for space-constrained layouts</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">✓</span>
+              <span className="text-primary font-semibold">✓</span>
               <span><strong>Metadata Support:</strong> Attach arbitrary data to events (key-value pairs)</span>
             </li>
           </ul>

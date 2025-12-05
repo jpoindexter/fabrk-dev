@@ -21,7 +21,7 @@ export function SuccessStep({ onComplete }: SuccessStepProps) {
         <div className={cn("border-border bg-success border p-4 shadow", mode.radius)}>
           <Check className="text-success-foreground h-8 w-8" />
         </div>
-        <h3 className="mt-4 text-2xl font-bold">All Set!</h3>
+        <h3 className="mt-4 text-2xl font-semibold">All Set!</h3>
         <p className="text-muted-foreground mt-2 text-center">
           Your organization has been created and invitations sent.
         </p>

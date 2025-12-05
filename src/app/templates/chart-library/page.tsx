@@ -97,10 +97,10 @@ const CustomTooltip = ({
   if (active && payload && payload.length) {
     return (
       <div className={cn(mode.font, "border-border bg-card border p-4 text-xs")}>
-        <p className="mb-1 font-bold">{label}</p>
+        <p className="mb-1 font-semibold">{label}</p>
         {payload.map((entry: TooltipPayload, index: number) => (
           <p key={index} style={{ color: entry.color }}>
-            <span className="font-bold">{entry.name}:</span> ${entry.value.toLocaleString()}
+            <span className="font-semibold">{entry.name}:</span> ${entry.value.toLocaleString()}
           </p>
         ))}
       </div>
@@ -142,7 +142,7 @@ export default function ChartLibraryTemplate() {
             <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>
               [TOTAL_REVENUE]:
             </div>
-            <div className="text-3xl font-bold">$91.9K</div>
+            <div className="text-4xl font-semibold">$91.9K</div>
             <div className={cn(mode.font, "text-success mt-1 flex items-center gap-1 text-xs")}>
               <TrendingUp className="h-3 w-3" />
               +23.5%
@@ -152,7 +152,7 @@ export default function ChartLibraryTemplate() {
             <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>
               [ACTIVE_USERS]:
             </div>
-            <div className="text-3xl font-bold">12.5K</div>
+            <div className="text-4xl font-semibold">12.5K</div>
             <div className={cn(mode.font, "text-success mt-1 flex items-center gap-1 text-xs")}>
               <TrendingUp className="h-3 w-3" />
               +941%
@@ -162,7 +162,7 @@ export default function ChartLibraryTemplate() {
             <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>
               [CONVERSION_RATE]:
             </div>
-            <div className="text-3xl font-bold">4.5%</div>
+            <div className="text-4xl font-semibold">4.5%</div>
             <div className={cn(mode.font, "text-success mt-1 flex items-center gap-1 text-xs")}>
               <TrendingUp className="h-3 w-3" />
               +0.8%
@@ -172,7 +172,7 @@ export default function ChartLibraryTemplate() {
             <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>
               [AVG_ORDER_VALUE]:
             </div>
-            <div className="text-3xl font-bold">$89</div>
+            <div className="text-4xl font-semibold">$89</div>
             <div className={cn(mode.font, "text-destructive mt-1 flex items-center gap-1 text-xs")}>
               <TrendingUp className="h-3 w-3 rotate-180" />
               -2.3%
@@ -389,7 +389,7 @@ export default function ChartLibraryTemplate() {
                       />
                       <span className="w-32">{source.name}</span>
                       <div className="text-right">
-                        <div className="font-bold">{source.value.toLocaleString()}</div>
+                        <div className="font-semibold">{source.value.toLocaleString()}</div>
                         <div className="text-muted-foreground">
                           {(
                             (source.value / trafficSourceData.reduce((a, b) => a + b.value, 0)) *

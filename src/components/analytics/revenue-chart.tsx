@@ -107,16 +107,16 @@ export function RevenueChart({
         if (active && payload && payload.length) {
           return (
             <div className={cn("border-border bg-card border p-4", mode.radius)}>
-              <p className="text-foreground mb-2 text-sm font-bold">{payload[0].payload.period}</p>
+              <p className="text-foreground mb-2 text-sm font-semibold">{payload[0].payload.period}</p>
               <div className="space-y-1">
                 <p className="text-muted-foreground text-xs">
                   MRR:{" "}
-                  <span className="text-primary font-bold">{formatCurrency(payload[0].value)}</span>
+                  <span className="text-primary font-semibold">{formatCurrency(payload[0].value)}</span>
                 </p>
                 {showArr && payload[1] && (
                   <p className="text-muted-foreground text-xs">
                     ARR:{" "}
-                    <span className="text-accent font-bold">
+                    <span className="text-accent font-semibold">
                       {formatCurrency(payload[1].value)}
                     </span>
                   </p>

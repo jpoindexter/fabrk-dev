@@ -208,7 +208,7 @@ export function FeaturesShowcase() {
               [ [0x10] STACK_CONFIG ] FIB[89,144,233] MODULES
             </span>
           </div>
-          <h2 className="mb-4 font-mono text-2xl font-bold tracking-tight">SOLID_FOUNDATION</h2>
+          <h2 className="mb-4 font-mono text-2xl font-semibold tracking-tight">SOLID_FOUNDATION</h2>
           <p className="text-muted-foreground max-w-2xl font-mono text-sm">
             Everything you need to build a production-ready SaaS. Authentication, payments,
             multi-tenancy, and more—all pre-configured and ready to customize.

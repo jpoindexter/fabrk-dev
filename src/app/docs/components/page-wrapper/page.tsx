@@ -22,7 +22,7 @@ export default function PageWrapperPage() {
                     <span className="text-primary">&gt;</span> Centered Content
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="font-mono text-sm text-muted-foreground">
+                <CardContent>
                   This card is vertically and horizontally centered
                 </CardContent>
               </Card>
@@ -51,7 +51,7 @@ export default function PageWrapperPage() {
                   <CardHeader>
                     <CardTitle className="font-mono text-sm">Login</CardTitle>
                   </CardHeader>
-                  <CardContent className="font-mono text-sm text-muted-foreground">
+                  <CardContent>
                     Email and password form would go here
                   </CardContent>
                 </Card>
@@ -76,15 +76,15 @@ export default function PageWrapperPage() {
             <div className="h-64 w-full">
               <PageWrapper>
                 <div className="space-y-4 text-center">
-                  <div className="font-mono text-4xl font-bold text-destructive">404</div>
-                  <p className="font-mono text-sm text-muted-foreground">Page not found</p>
+                  <div className="text-4xl font-semibold text-destructive">404</div>
+                  <p>Page not found</p>
                 </div>
               </PageWrapper>
             </div>
           ),
           code: `<PageWrapper>
   <div className="space-y-4 text-center">
-    <h1 className="text-4xl font-bold">404</h1>
+    <h1 className="text-4xl font-semibold">404</h1>
     <p>Page not found</p>
   </div>
 </PageWrapper>`,
@@ -99,7 +99,7 @@ export default function PageWrapperPage() {
                   <CardHeader>
                     <CardTitle className="font-mono text-sm">Custom Background</CardTitle>
                   </CardHeader>
-                  <CardContent className="font-mono text-sm text-muted-foreground">
+                  <CardContent>
                     Background customized via className
                   </CardContent>
                 </Card>
@@ -120,7 +120,7 @@ export default function PageWrapperPage() {
           preview: (
             <div className="h-64 w-full">
               <PageWrapper>
-                <div className="font-mono text-sm text-muted-foreground">
+                <div>
                   <span className="text-primary">&gt;</span> Simple content block
                 </div>
               </PageWrapper>

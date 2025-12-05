@@ -13,7 +13,7 @@ export function ButtonsSection() {
     <section id="buttons" className="space-y-6">
       <div>
         <span className="text-xs text-muted-foreground">[0x10]</span>
-        <h2 className="text-2xl font-bold tracking-tight">BUTTONS</h2>
+        <h2 className="text-2xl font-semibold tracking-tight">BUTTONS</h2>
         <p className="text-xs text-muted-foreground">&gt; Interactive elements with smooth press effects</p>
       </div>
 

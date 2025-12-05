@@ -29,7 +29,7 @@ export default function RefundPage() {
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           <h1 className="mb-2 text-sm text-muted-foreground">FABRK_LEGAL:</h1>
-          <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
+          <h2 className="mb-4 text-4xl font-semibold tracking-tight">
             REFUND_POLICY
           </h2>
         </motion.div>
@@ -62,7 +62,7 @@ export default function RefundPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x10]</span>
-            <h2 className="text-lg font-bold">NO_REFUNDS_POLICY</h2>
+            <h2 className="text-lg font-semibold">NO_REFUNDS_POLICY</h2>
           </div>
           <p className="text-sm text-muted-foreground mb-4">
             Once you gain access to the Fabrk source code and download the files, no refunds are available under any circumstances.
@@ -76,7 +76,7 @@ export default function RefundPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x20]</span>
-            <h2 className="text-lg font-bold">WHY_NO_REFUNDS</h2>
+            <h2 className="text-lg font-semibold">WHY_NO_REFUNDS</h2>
           </div>
           <p className="text-sm text-muted-foreground mb-4">
             Unlike physical products, digital products provide immediate value upon download:
@@ -96,7 +96,7 @@ export default function RefundPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x30]</span>
-            <h2 className="text-lg font-bold">BEFORE_YOU_PURCHASE</h2>
+            <h2 className="text-lg font-semibold">BEFORE_YOU_PURCHASE</h2>
           </div>
           <p className="text-sm text-muted-foreground mb-4">
             We encourage you to thoroughly review Fabrk before purchasing:
@@ -116,7 +116,7 @@ export default function RefundPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x40]</span>
-            <h2 className="text-lg font-bold">WHAT_YOU_GET</h2>
+            <h2 className="text-lg font-semibold">WHAT_YOU_GET</h2>
           </div>
 
           <div className="space-y-4">
@@ -145,7 +145,7 @@ export default function RefundPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x50]</span>
-            <h2 className="text-lg font-bold">TECHNICAL_SUPPORT</h2>
+            <h2 className="text-lg font-semibold">TECHNICAL_SUPPORT</h2>
           </div>
           <p className="text-sm text-muted-foreground mb-4">
             While we don't offer refunds, we provide comprehensive support:
@@ -165,7 +165,7 @@ export default function RefundPage() {
         <section className="border border-destructive/30 bg-destructive/5 p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x60]</span>
-            <h2 className="text-lg font-bold text-destructive">CHARGEBACKS</h2>
+            <h2 className="text-lg font-semibold text-destructive">CHARGEBACKS</h2>
           </div>
           <p className="text-xs text-foreground mb-4">
             <span className="text-destructive font-semibold">WARNING:</span> Initiating a chargeback for a valid purchase is considered fraudulent activity.
@@ -188,7 +188,7 @@ export default function RefundPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x70]</span>
-            <h2 className="text-lg font-bold">EU_CONSUMER_RIGHTS</h2>
+            <h2 className="text-lg font-semibold">EU_CONSUMER_RIGHTS</h2>
           </div>
           <p className="text-sm text-muted-foreground mb-4">
             EU consumers have a 14-day withdrawal right under the Consumer Rights Directive (2011/83/EU).
@@ -205,7 +205,7 @@ export default function RefundPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x80]</span>
-            <h2 className="text-lg font-bold">EXCEPTIONS</h2>
+            <h2 className="text-lg font-semibold">EXCEPTIONS</h2>
           </div>
           <p className="text-sm text-muted-foreground mb-4">
             We may issue refunds at our sole discretion in rare cases:
@@ -224,7 +224,7 @@ export default function RefundPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0x90]</span>
-            <h2 className="text-lg font-bold">POLICY_UPDATES</h2>
+            <h2 className="text-lg font-semibold">POLICY_UPDATES</h2>
           </div>
           <p className="text-sm text-muted-foreground">
             We may modify this policy at any time. Your purchase is governed by the policy in effect at time of purchase.
@@ -234,7 +234,7 @@ export default function RefundPage() {
         <section className="border border-border bg-card p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xs text-muted-foreground">[0xA0]</span>
-            <h2 className="text-lg font-bold">QUESTIONS</h2>
+            <h2 className="text-lg font-semibold">QUESTIONS</h2>
           </div>
           <p className="text-sm text-muted-foreground mb-4">Have questions about this policy or Fabrk?</p>
           <ul className="space-y-1 text-sm text-muted-foreground pl-4">

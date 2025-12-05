@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
 import { Webhook, Shield, RefreshCw, FileText } from "lucide-react";
 
 export const metadata = {
@@ -218,13 +217,13 @@ async function queueWebhookRetry(
       {/* Event Types Section */}
       <DocsSection title="Event Types">
         <DocsCard title="EVENT_TYPES">
-          <p className={`${docsTypography.body} mb-4`}>
+          <p className="mb-4">
             Available webhook event types organized by category:
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <h3 className={`uppercase ${docsTypography.h4}`}>User Events</h3>
-              <ul className={`${docsTypography.body} space-y-1 mt-2`}>
+              User Events
+              <ul className="space-y-1 mt-2">
                 <li>• user.created</li>
                 <li>• user.updated</li>
                 <li>• user.deleted</li>
@@ -232,8 +231,8 @@ async function queueWebhookRetry(
               </ul>
             </div>
             <div>
-              <h3 className={`uppercase ${docsTypography.h4}`}>Payment Events</h3>
-              <ul className={`${docsTypography.body} space-y-1 mt-2`}>
+              Payment Events
+              <ul className="space-y-1 mt-2">
                 <li>• payment.completed</li>
                 <li>• payment.failed</li>
                 <li>• subscription.created</li>
@@ -241,8 +240,8 @@ async function queueWebhookRetry(
               </ul>
             </div>
             <div>
-              <h3 className={`uppercase ${docsTypography.h4}`}>Organization Events</h3>
-              <ul className={`${docsTypography.body} space-y-1 mt-2`}>
+              Organization Events
+              <ul className="space-y-1 mt-2">
                 <li>• organization.created</li>
                 <li>• organization.updated</li>
                 <li>• member.invited</li>
@@ -251,8 +250,8 @@ async function queueWebhookRetry(
               </ul>
             </div>
             <div>
-              <h3 className={`uppercase ${docsTypography.h4}`}>System Events</h3>
-              <ul className={`${docsTypography.body} space-y-1 mt-2`}>
+              System Events
+              <ul className="space-y-1 mt-2">
                 <li>• webhook.test</li>
                 <li>• api_key.created</li>
                 <li>• api_key.revoked</li>
@@ -265,7 +264,7 @@ async function queueWebhookRetry(
       {/* Security Best Practices Section */}
       <DocsSection title="Security Best Practices">
         <DocsCard title="SECURITY_BEST_PRACTICES">
-          <ul className="font-mono text-sm text-muted-foreground space-y-1">
+          <ul className="space-y-1">
             <li>├─ <strong>Always verify signatures:</strong> Use HMAC-SHA256 with timing-safe comparison</li>
             <li>├─ <strong>Use HTTPS only:</strong> Never send webhooks to HTTP endpoints</li>
             <li>├─ <strong>Rotate secrets:</strong> Allow users to regenerate webhook secrets</li>

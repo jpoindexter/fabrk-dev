@@ -23,7 +23,7 @@ export function FeaturesCTA() {
           className="text-center"
         >
           <span className="text-xs text-muted-foreground">[0x30]</span>
-          <h2 className="text-3xl font-bold tracking-tight mb-4">
+          <h2 className="text-4xl font-semibold tracking-tight mb-4">
             READY_TO_SHIP?
           </h2>
           <p className="mx-auto mb-8 max-w-xl text-sm text-muted-foreground">

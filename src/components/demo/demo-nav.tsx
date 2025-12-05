@@ -34,7 +34,7 @@ export function DemoNav({
           className={cn("flex items-center gap-2 transition-opacity hover:opacity-80", mode.font)}
         >
           <span className="text-primary text-xs">&gt;</span>
-          <span className="text-sm font-bold tracking-tight">FABRK</span>
+          <span className="text-sm font-semibold tracking-tight">FABRK</span>
           <span className="text-muted-foreground hidden text-xs sm:inline">_{suffix}</span>
         </Link>
 

@@ -88,7 +88,7 @@ async function AdminStats() {
           <Users className="text-muted-foreground h-4 w-4" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{stats.totalUsers}</div>
+          <div className="text-2xl font-semibold">{stats.totalUsers}</div>
           <p className="text-muted-foreground text-xs">+{stats.recentUsers} in last 7 days</p>
         </CardContent>
       </Card>
@@ -99,7 +99,7 @@ async function AdminStats() {
           <Building className="text-muted-foreground h-4 w-4" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{stats.totalOrganizations}</div>
+          <div className="text-2xl font-semibold">{stats.totalOrganizations}</div>
           <p className="text-muted-foreground text-xs">Total workspaces</p>
         </CardContent>
       </Card>
@@ -110,7 +110,7 @@ async function AdminStats() {
           <Activity className="text-muted-foreground h-4 w-4" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{stats.activeUsers}</div>
+          <div className="text-2xl font-semibold">{stats.activeUsers}</div>
           <p className="text-muted-foreground text-xs">With active sessions</p>
         </CardContent>
       </Card>
@@ -121,7 +121,7 @@ async function AdminStats() {
           <CreditCard className="text-muted-foreground h-4 w-4" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">${(stats.monthlyRevenue / 100).toFixed(2)}</div>
+          <div className="text-2xl font-semibold">${(stats.monthlyRevenue / 100).toFixed(2)}</div>
           <p className="text-muted-foreground text-xs">Last 30 days revenue</p>
         </CardContent>
       </Card>
@@ -132,7 +132,7 @@ async function AdminStats() {
           <CreditCard className="text-muted-foreground h-4 w-4" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">${(stats.totalRevenue / 100).toFixed(2)}</div>
+          <div className="text-2xl font-semibold">${(stats.totalRevenue / 100).toFixed(2)}</div>
           <p className="text-muted-foreground text-xs">{stats.totalPayments} payments</p>
         </CardContent>
       </Card>

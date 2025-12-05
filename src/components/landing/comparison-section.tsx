@@ -95,7 +95,7 @@ export function ComparisonSection() {
               [ [0x50] BUILD_VS_FABRK ] TIME_TO_MARKET │ FIB[21,34,55,89]
             </span>
           </div>
-          <h2 className={cn(mode.font, "mb-4 text-3xl font-bold tracking-tight lg:text-4xl")}>
+          <h2 className={cn(mode.font, "mb-4 text-4xl font-semibold tracking-tight")}>
             WHY_BUILD_FROM_SCRATCH?
           </h2>
           <p className={cn(mode.font, "text-muted-foreground max-w-2xl text-sm")}>
@@ -178,11 +178,11 @@ export function ComparisonSection() {
               viewport={{ once: true }}
               className={cn(mode.font, "border-border mt-4 grid grid-cols-3 gap-4 border-t-2 pt-4")}
             >
-              <div className="text-sm font-bold">TOTAL</div>
-              <div className="text-destructive text-center text-sm font-bold">
+              <div className="text-sm font-semibold">TOTAL</div>
+              <div className="text-destructive text-center text-sm font-semibold">
                 <AnimatedCounter value={140} suffix="+ hours" duration={2.5} />
               </div>
-              <div className="text-success text-center text-sm font-bold">Ready to Ship</div>
+              <div className="text-success text-center text-sm font-semibold">Ready to Ship</div>
             </motion.div>
           </div>
         </motion.div>

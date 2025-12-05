@@ -101,7 +101,7 @@ export function StatsSection() {
                 [ [0x30] METRICS ]
               </span>
             </div>
-            <h2 className={cn("mb-4 text-2xl font-bold", mode.font)}>
+            <h2 className={cn("mb-4 text-2xl font-semibold", mode.font)}>
               TRUSTED_BY_DEVELOPERS_WORLDWIDE
             </h2>
           </motion.div>

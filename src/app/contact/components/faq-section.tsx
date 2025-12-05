@@ -25,7 +25,7 @@ export function FaqSection() {
         <span className="border-border bg-card text-muted-foreground mb-4 inline-block border px-4 py-1 text-xs">
           [ [0x04] FAQ ]
         </span>
-        <h2 className="mb-2 text-xl font-bold">FREQUENTLY_ASKED_QUESTIONS</h2>
+        <h2 className="mb-2 text-xl font-semibold">FREQUENTLY_ASKED_QUESTIONS</h2>
         <p className="text-muted-foreground text-sm">Everything you need to know</p>
       </motion.div>
 

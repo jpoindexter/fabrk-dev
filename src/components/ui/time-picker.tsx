@@ -127,7 +127,7 @@ export function TimePicker({
               <Label className="text-muted-foreground text-xs">{formatLabel("Hours")}</Label>
             </div>
 
-            <span className="text-2xl font-bold">:</span>
+            <span className="text-2xl font-semibold">:</span>
 
             {/* Minutes */}
             <div className="flex flex-col items-center space-y-2">
@@ -170,7 +170,7 @@ export function TimePicker({
                   variant="outline"
                   size="sm"
                   onClick={() => setPeriod(period === "AM" ? "PM" : "AM")}
-                  className="h-16 w-16 text-lg font-bold"
+                  className="h-16 w-16 text-lg font-semibold"
                 >
                   {period}
                 </Button>

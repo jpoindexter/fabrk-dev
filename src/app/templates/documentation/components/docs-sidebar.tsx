@@ -24,7 +24,7 @@ export function DocsSidebar({ activeDoc, onDocChange }: DocsSidebarProps) {
             <div key={idx}>
               <div className="mb-4 flex items-center gap-2">
                 <Icon className="text-primary h-4 w-4" />
-                <h3 className={cn(mode.font, "text-xs font-bold")}>
+                <h3 className={cn(mode.font, "text-xs font-semibold")}>
                   [{section.section.toUpperCase().replace(/ /g, "_")}]:
                 </h3>
               </div>

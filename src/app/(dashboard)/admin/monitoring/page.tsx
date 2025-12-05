@@ -95,7 +95,7 @@ export default function AdminMonitoringPage() {
               <AlertTriangle className="text-muted-foreground h-4 w-4" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{errorStats.total}</div>
+              <div className="text-2xl font-semibold">{errorStats.total}</div>
             </CardContent>
           </Card>
 
@@ -105,7 +105,7 @@ export default function AdminMonitoringPage() {
               <AlertTriangle className="text-destructive h-4 w-4" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{errorStats.byType.error || 0}</div>
+              <div className="text-2xl font-semibold">{errorStats.byType.error || 0}</div>
             </CardContent>
           </Card>
 
@@ -115,7 +115,7 @@ export default function AdminMonitoringPage() {
               <AlertTriangle className="text-warning h-4 w-4" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{errorStats.byType.warning || 0}</div>
+              <div className="text-2xl font-semibold">{errorStats.byType.warning || 0}</div>
             </CardContent>
           </Card>
 
@@ -125,7 +125,7 @@ export default function AdminMonitoringPage() {
               <Activity className="text-info h-4 w-4" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{errorStats.byType.info || 0}</div>
+              <div className="text-2xl font-semibold">{errorStats.byType.info || 0}</div>
             </CardContent>
           </Card>
         </div>
@@ -147,7 +147,7 @@ export default function AdminMonitoringPage() {
                 >
                   <div>
                     <div className="text-sm font-medium capitalize">{name.replace(/_/g, " ")}</div>
-                    <div className="text-2xl font-bold">{value}ms</div>
+                    <div className="text-2xl font-semibold">{value}ms</div>
                   </div>
                   <Activity className="text-muted-foreground h-8 w-8" />
                 </div>

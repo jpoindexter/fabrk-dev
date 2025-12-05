@@ -14,7 +14,7 @@ export default function AspectRatioPage() {
       mainPreview={{
         preview: (
           <AspectRatio ratio={16 / 9} className="bg-muted">
-            <div className="flex h-full items-center justify-center rounded-none border border-border font-mono text-sm text-muted-foreground">
+            <div className="flex h-full items-center justify-center rounded-none border border-border">
               16:9 Aspect Ratio
             </div>
           </AspectRatio>
@@ -31,7 +31,7 @@ export default function AspectRatioPage() {
           description: "Standard video aspect ratio for YouTube, Vimeo, etc.",
           preview: (
             <AspectRatio ratio={16 / 9} className="bg-muted">
-              <div className="flex h-full items-center justify-center rounded-none border border-border font-mono text-sm text-muted-foreground">
+              <div className="flex h-full items-center justify-center rounded-none border border-border">
                 16:9
               </div>
             </AspectRatio>
@@ -45,7 +45,7 @@ export default function AspectRatioPage() {
           description: "Classic aspect ratio for older displays.",
           preview: (
             <AspectRatio ratio={4 / 3} className="bg-muted">
-              <div className="flex h-full items-center justify-center rounded-none border border-border font-mono text-sm text-muted-foreground">
+              <div className="flex h-full items-center justify-center rounded-none border border-border">
                 4:3
               </div>
             </AspectRatio>
@@ -60,7 +60,7 @@ export default function AspectRatioPage() {
           preview: (
             <div className="w-48">
               <AspectRatio ratio={1} className="bg-muted">
-                <div className="flex h-full items-center justify-center rounded-none border border-border font-mono text-sm text-muted-foreground">
+                <div className="flex h-full items-center justify-center rounded-none border border-border">
                   1:1
                 </div>
               </AspectRatio>
@@ -75,7 +75,7 @@ export default function AspectRatioPage() {
           description: "Ultrawide aspect ratio for cinematic content.",
           preview: (
             <AspectRatio ratio={21 / 9} className="bg-muted">
-              <div className="flex h-full items-center justify-center rounded-none border border-border font-mono text-sm text-muted-foreground">
+              <div className="flex h-full items-center justify-center rounded-none border border-border">
                 21:9
               </div>
             </AspectRatio>
@@ -90,7 +90,7 @@ export default function AspectRatioPage() {
           preview: (
             <div className="w-64">
               <AspectRatio ratio={16 / 9}>
-                <div className="flex h-full items-center justify-center rounded-none border border-border bg-gradient-to-br from-primary/20 to-primary/5 font-mono text-sm text-muted-foreground">
+                <div className="flex h-full items-center justify-center rounded-none border border-border bg-gradient-to-br from-primary/20 to-primary/5">
                   Image Placeholder
                 </div>
               </AspectRatio>
@@ -109,7 +109,7 @@ export default function AspectRatioPage() {
           description: "Responsive video embeds with maintained aspect ratio.",
           preview: (
             <AspectRatio ratio={16 / 9}>
-              <div className="flex h-full items-center justify-center rounded-none border border-border bg-background font-mono text-sm text-muted-foreground">
+              <div className="flex h-full items-center justify-center rounded-none border border-border bg-background">
                 <span className="text-primary">&gt;</span> Video Player
               </div>
             </AspectRatio>

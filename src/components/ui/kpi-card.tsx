@@ -59,7 +59,7 @@ const KpiCard = React.forwardRef<HTMLDivElement, KpiCardProps>(
           {icon && <div className="text-muted-foreground">{icon}</div>}
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{value}</div>
+          <div className="text-2xl font-semibold">{value}</div>
           {(change !== undefined || subtitle) && (
             <div className="flex items-center gap-2 text-xs">
               {change !== undefined && (

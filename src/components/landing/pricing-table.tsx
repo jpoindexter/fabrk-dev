@@ -142,7 +142,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
         {/* Section Header */}
         <div className="mb-16 text-center">
           <span className="text-muted-foreground text-xs">[0x00]</span>
-          <h2 className="text-foreground mb-4 text-3xl font-bold tracking-tight">
+          <h2 className="text-foreground mb-4 text-4xl font-semibold tracking-tight">
             COMPARE_AND_CHOOSE
           </h2>
           <p className="text-muted-foreground mx-auto max-w-2xl text-sm">
@@ -175,7 +175,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                       <div className="flex flex-col items-start gap-2">
                         <div>
                           <h3
-                            className={`text-xl font-bold ${
+                            className={`text-xl font-semibold ${
                               plan.highlighted ? "text-primary-foreground" : "text-foreground"
                             }`}
                           >
@@ -192,7 +192,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                           </p>
                         </div>
                         <div
-                          className={`text-3xl font-bold ${
+                          className={`text-4xl font-semibold ${
                             plan.highlighted ? "text-primary-foreground" : "text-foreground"
                           }`}
                         >

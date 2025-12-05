@@ -27,7 +27,7 @@ export default function MaintenancePage() {
         </div>
 
         {/* Message */}
-        <h1 className="mb-4 text-4xl font-bold text-foreground">
+        <h1 className="mb-4 text-4xl font-semibold text-foreground">
           Scheduled Maintenance
         </h1>
         <p className="mb-6 text-lg text-muted-foreground">

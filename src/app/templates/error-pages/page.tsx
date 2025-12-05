@@ -171,7 +171,7 @@ export default function ErrorPagesTemplate() {
                       {/* Error Code */}
                       <div className={cn(mode.font)}>
                         <span
-                          className={`text-6xl font-bold ${
+                          className={`text-6xl font-semibold ${
                             error.id === "503" ? "text-warning" : "text-destructive"
                           }`}
                         >

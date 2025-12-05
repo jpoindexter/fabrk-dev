@@ -227,7 +227,7 @@ NEXT_PUBLIC_POSTHOG_HOST="https://app.posthog.com"`,
       {/* Key Points */}
       <DocsSection title="Key Points">
         <DocsCard title="KEY_POINTS">
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+          <div className="space-y-1">
             <div>├─ All variables are validated at startup with Zod</div>
             <div>├─ Client-side variables must start with NEXT_PUBLIC_</div>
             <div>├─ Never commit .env.local to version control</div>
@@ -239,7 +239,7 @@ NEXT_PUBLIC_POSTHOG_HOST="https://app.posthog.com"`,
       {/* Security Best Practices */}
       <DocsSection title="Security Best Practices">
         <DocsCard title="SECURITY">
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+          <div className="space-y-1">
             <div>├─ Never commit secrets - Add .env.local to .gitignore</div>
             <div>├─ Rotate secrets regularly - Especially after team changes</div>
             <div>├─ Use separate keys - Different keys for dev/staging/prod</div>

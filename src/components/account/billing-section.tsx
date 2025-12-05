@@ -83,7 +83,7 @@ export function BillingSection() {
           <div className="flex items-center justify-between">
             <div>
               <p className={cn("text-sm font-medium", mode.font)}>{formatLabel("CURRENT_PLAN")}</p>
-              <p className={cn("text-2xl font-bold", mode.font)}>{billingInfo.plan}</p>
+              <p className={cn("text-2xl font-semibold", mode.font)}>{billingInfo.plan}</p>
             </div>
             <Badge variant={getStatusBadgeVariant(billingInfo.status)}>
               {billingInfo.status.charAt(0).toUpperCase() + billingInfo.status.slice(1)}

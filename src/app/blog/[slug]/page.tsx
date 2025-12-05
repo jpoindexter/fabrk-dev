@@ -80,7 +80,7 @@ export default async function BlogPostPage({ params }: Props) {
             )}
 
             {/* Title */}
-            <h1 className="text-foreground mb-4 font-mono text-2xl font-bold md:text-3xl">
+            <h1 className="text-foreground mb-4 font-mono text-2xl font-semibold md:text-4xl">
               {post.title}
             </h1>
 

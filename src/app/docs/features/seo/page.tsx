@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
 import { Search, Share2, FileText, Globe } from "lucide-react";
 
 export const metadata = {
@@ -174,29 +173,29 @@ export default async function sitemap() {
       <DocsSection title="Common Use Cases">
         <div className="grid gap-4">
           <DocsCard title="LANDING_PAGE_SEO">
-            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Landing Page SEO</h3>
-            <p className={docsTypography.body}>
+            Landing Page SEO
+            <p className="">
               Configure meta tags for your homepage with compelling title and description that matches your value proposition. Include OpenGraph image (1200x630px recommended).
             </p>
           </DocsCard>
 
           <DocsCard title="BLOG_POST_SEO">
-            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Blog Post Optimization</h3>
-            <p className={docsTypography.body}>
+            Blog Post Optimization
+            <p className="">
               Use dynamic metadata generation to automatically pull title, description, and featured image from your CMS or database for each blog post.
             </p>
           </DocsCard>
 
           <DocsCard title="PRODUCT_PAGES">
-            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Product Pages</h3>
-            <p className={docsTypography.body}>
+            Product Pages
+            <p className="">
               Add Product schema structured data for e-commerce features, including price, availability, and reviews for rich snippets in search results.
             </p>
           </DocsCard>
 
           <DocsCard title="LOCALIZED_CONTENT">
-            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Localized Content</h3>
-            <p className={docsTypography.body}>
+            Localized Content
+            <p className="">
               Use hreflang tags and locale-specific metadata for international SEO. Fabrk's i18n system automatically handles alternate language links.
             </p>
           </DocsCard>
@@ -206,7 +205,7 @@ export default async function sitemap() {
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
         <DocsCard title="SEO_BEST_PRACTICES">
-          <ul className="font-mono text-sm text-muted-foreground space-y-1">
+          <ul className="space-y-1">
             <li>├─ Keep titles under 60 characters for full display in search results</li>
             <li>├─ Write descriptions between 120-160 characters</li>
             <li>├─ Use unique titles and descriptions for every page</li>

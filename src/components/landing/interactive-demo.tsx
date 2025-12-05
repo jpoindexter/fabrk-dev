@@ -32,7 +32,7 @@ export function InteractiveDemo() {
           {/* Header */}
           <div className={cn("text-center", mode.font)}>
             <span className="text-muted-foreground text-xs">[0x00]</span>
-            <h2 className="mb-4 text-2xl font-bold tracking-tight">LIVE_DEMO_EXPLORE_TEMPLATES</h2>
+            <h2 className="mb-4 text-2xl font-semibold tracking-tight">LIVE_DEMO_EXPLORE_TEMPLATES</h2>
             <p className="text-muted-foreground mx-auto max-w-2xl text-sm">
               &gt; See production-ready dashboards, data tables, and settings pages. Click tabs to
               explore.

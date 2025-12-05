@@ -48,7 +48,7 @@ export function HeroSplit({
             <h1
               className={cn(
                 mode.font,
-                "text-foreground mb-6 text-3xl leading-[1.1] font-bold tracking-tight sm:text-4xl md:text-5xl"
+                "text-foreground mb-6 text-3xl leading-[1.1] font-semibold tracking-tight sm:text-4xl md:text-5xl"
               )}
             >
               {headline}
@@ -174,7 +174,7 @@ export function HeroSplit({
                   "border-foreground bg-primary absolute -right-4 -bottom-4 border-2 px-6 py-4"
                 )}
               >
-                <p className="text-primary-foreground text-xs font-bold">[161_FILES]</p>
+                <p className="text-primary-foreground text-xs font-semibold">[161_FILES]</p>
               </div>
             </div>
 

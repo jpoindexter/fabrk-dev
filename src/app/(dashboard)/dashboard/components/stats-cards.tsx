@@ -44,7 +44,7 @@ function StatCard({ title, icon: Icon, value, change, loading, customContent }: 
         icon={<Icon className="text-muted-foreground h-4 w-4" />}
       />
       <CardContent>
-        <div className="font-mono text-2xl font-bold">{loading ? "..." : value}</div>
+        <div className="font-mono text-2xl font-semibold">{loading ? "..." : value}</div>
         {!loading && change !== undefined && (
           <p className="text-muted-foreground flex items-center gap-1 font-mono text-xs">
             {change >= 0 ? (

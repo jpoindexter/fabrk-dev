@@ -61,7 +61,7 @@ export function PricingCards({ plans, isYearly }: PricingCardsProps) {
               </div>
 
               {/* Price */}
-              <div className="mb-4 text-3xl font-bold">
+              <div className="mb-4 text-4xl font-semibold">
                 ${price}
                 <span className="text-muted-foreground text-lg font-normal">{period}</span>
               </div>

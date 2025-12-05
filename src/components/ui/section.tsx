@@ -151,7 +151,7 @@ const SectionHeader = React.forwardRef<HTMLDivElement, SectionHeaderProps>(
           </p>
         )}
         {title && (
-          <h2 className={`text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl`}>{title}</h2>
+          <h2 className={`text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl`}>{title}</h2>
         )}
         {description && (
           <p className={`"text-lg" text-muted-foreground mx-auto max-w-3xl`}>{description}</p>

@@ -74,7 +74,7 @@ export function DeveloperExperienceSection() {
 
         <div className="text-center">
           <span className="text-muted-foreground text-xs">[0x00]</span>
-          <h2 className="mb-2 text-2xl font-bold tracking-tight">DEVELOPER_EXPERIENCE_MATTERS</h2>
+          <h2 className="mb-2 text-2xl font-semibold tracking-tight">DEVELOPER_EXPERIENCE_MATTERS</h2>
         </div>
         <p className="text-muted-foreground mb-16 text-center text-sm">
           &gt; Fast builds, clean code, zero friction. Ship features, not fight tooling.
@@ -113,7 +113,7 @@ export function DeveloperExperienceSection() {
                     <IconComponent className="text-primary h-6 w-6" />
                   ) : null}
                 </div>
-                <h3 className="mb-4 text-sm font-bold">
+                <h3 className="mb-4 text-sm font-semibold">
                   {feature.title.toUpperCase().replace(/ /g, "_")}
                 </h3>
                 <p className="text-muted-foreground text-xs leading-relaxed">

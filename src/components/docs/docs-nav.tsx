@@ -193,7 +193,7 @@ export function DocsNav() {
           className="flex items-center gap-2 font-mono transition-opacity hover:opacity-80"
         >
           <span className="text-primary text-xs">&gt;</span>
-          <span className="text-sm font-bold tracking-tight">FABRK</span>
+          <span className="text-sm font-semibold tracking-tight">FABRK</span>
           <span className="text-muted-foreground hidden text-xs sm:inline">_DOCS</span>
         </Link>
 

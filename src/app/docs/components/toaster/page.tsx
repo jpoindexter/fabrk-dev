@@ -97,35 +97,35 @@ function App() {
           description: "Building blocks for creating toast notifications",
           preview: (
             <div className="space-y-4">
-              <div className="mb-4 font-mono text-xs text-muted-foreground">[COMPONENTS]</div>
-              <div className="space-y-2 font-mono text-sm">
+              <div className="mb-4">[COMPONENTS]</div>
+              <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <span className="text-primary">&gt;</span>
-                  <span className="text-muted-foreground">ToastProvider</span>
+                  <span>ToastProvider</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-primary">&gt;</span>
-                  <span className="text-muted-foreground">Toast</span>
+                  <span>Toast</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-primary">&gt;</span>
-                  <span className="text-muted-foreground">ToastTitle</span>
+                  <span>ToastTitle</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-primary">&gt;</span>
-                  <span className="text-muted-foreground">ToastDescription</span>
+                  <span>ToastDescription</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-primary">&gt;</span>
-                  <span className="text-muted-foreground">ToastAction</span>
+                  <span>ToastAction</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-primary">&gt;</span>
-                  <span className="text-muted-foreground">ToastClose</span>
+                  <span>ToastClose</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-primary">&gt;</span>
-                  <span className="text-muted-foreground">ToastViewport</span>
+                  <span>ToastViewport</span>
                 </div>
               </div>
             </div>
@@ -169,8 +169,8 @@ function App() {
           preview: (
             <div className="w-full max-w-md rounded-none border border-border bg-background p-6">
               <div className="grid gap-1">
-                <div className="font-medium text-sm">Changes saved</div>
-                <div className="text-sm opacity-90 text-muted-foreground">
+                <div className="font-medium">Changes saved</div>
+                <div className="opacity-90">
                   Your profile has been updated successfully.
                 </div>
               </div>
@@ -192,8 +192,8 @@ function App() {
           preview: (
             <div className="w-full max-w-md flex items-center justify-between gap-6 rounded-none border border-border bg-background p-6">
               <div className="grid gap-1">
-                <div className="font-medium text-sm">File deleted</div>
-                <div className="text-sm opacity-90 text-muted-foreground">
+                <div className="font-medium">File deleted</div>
+                <div className="opacity-90">
                   Your file has been moved to trash.
                 </div>
               </div>
@@ -221,8 +221,8 @@ function App() {
           preview: (
             <div className="w-full max-w-md rounded-none border border-destructive bg-destructive p-6 text-destructive-foreground">
               <div className="grid gap-1">
-                <div className="font-medium text-sm">Error</div>
-                <div className="text-sm opacity-90">
+                <div className="font-medium">Error</div>
+                <div className="opacity-90">
                   Failed to save changes. Please try again.
                 </div>
               </div>
@@ -243,12 +243,12 @@ function App() {
           description: "Provider wraps your app to manage toasts",
           preview: (
             <div className="space-y-4">
-              <div className="mb-4 font-mono text-xs text-muted-foreground">[SETUP]</div>
-              <div className="space-y-2 font-mono text-sm">
-                <div className="text-muted-foreground">1. Wrap app in ToastProvider</div>
-                <div className="text-muted-foreground">2. Add ToastViewport component</div>
-                <div className="text-muted-foreground">3. Render Toast components</div>
-                <div className="text-muted-foreground">4. Manage state externally</div>
+              <div className="mb-4">[SETUP]</div>
+              <div className="space-y-2">
+                <div>1. Wrap app in ToastProvider</div>
+                <div>2. Add ToastViewport component</div>
+                <div>3. Render Toast components</div>
+                <div>4. Manage state externally</div>
               </div>
             </div>
           ),
@@ -273,8 +273,8 @@ export default function RootLayout({ children }) {
           description: "ToastViewport controls where toasts appear",
           preview: (
             <div className="space-y-4">
-              <div className="mb-4 font-mono text-xs text-muted-foreground">[POSITION]</div>
-              <div className="space-y-2 font-mono text-sm text-muted-foreground">
+              <div className="mb-4">[POSITION]</div>
+              <div className="space-y-2">
                 <div>&gt; Top-right on mobile</div>
                 <div>&gt; Bottom-right on desktop</div>
                 <div>&gt; Stacks vertically</div>

@@ -24,7 +24,7 @@ export function AboutCTA() {
           <span className="inline-block border border-border bg-card px-4 py-1 text-xs text-muted-foreground mb-4">
             [ [0xFF] EXECUTE ]
           </span>
-          <h2 className="text-2xl font-bold lg:text-3xl">READY_TO_BUILD_YOUR_SAAS</h2>
+          <h2 className="text-2xl font-semibold lg:text-4xl">READY_TO_BUILD_YOUR_SAAS</h2>
         </motion.div>
 
         <motion.div

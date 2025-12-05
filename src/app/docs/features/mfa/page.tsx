@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
 import { Shield, Key, Smartphone, Lock } from "lucide-react";
 
 export const metadata = {
@@ -118,8 +117,8 @@ export async function deleteAccount(userId: string, mfaCode: string) {
         <DocsCard title="WHY_2FA">
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="space-y-2">
-              <h3 className={`uppercase ${docsTypography.h4}`}>Security Benefits</h3>
-              <ul className={`${docsTypography.body} space-y-1`}>
+              Security Benefits
+              <ul className="space-y-1">
                 <li>• Protects against password theft</li>
                 <li>• Stops credential stuffing attacks</li>
                 <li>• Required for many compliance standards</li>
@@ -127,8 +126,8 @@ export async function deleteAccount(userId: string, mfaCode: string) {
               </ul>
             </div>
             <div className="space-y-2">
-              <h3 className={`uppercase ${docsTypography.h4}`}>Business Benefits</h3>
-              <ul className={`${docsTypography.body} space-y-1`}>
+              Business Benefits
+              <ul className="space-y-1">
                 <li>• Enterprise customers often require it</li>
                 <li>• Reduces account takeover support tickets</li>
                 <li>• Differentiates you from competitors</li>
@@ -143,8 +142,8 @@ export async function deleteAccount(userId: string, mfaCode: string) {
       <DocsSection title="How 2FA Works">
         <div className="space-y-4">
           <DocsCard title="SETUP_2FA">
-            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Setting Up 2FA</h3>
-            <ol className={`list-inside list-decimal ${docsTypography.body} space-y-1`}>
+            Setting Up 2FA
+            <ol className="list-inside list-decimal space-y-1">
               <li>User goes to Settings → Security</li>
               <li>Clicks &quot;Enable Two-Factor Authentication&quot;</li>
               <li>Scans QR code with authenticator app (or enters secret manually)</li>
@@ -155,8 +154,8 @@ export async function deleteAccount(userId: string, mfaCode: string) {
           </DocsCard>
 
           <DocsCard title="LOGIN_WITH_2FA">
-            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Logging In With 2FA</h3>
-            <ol className={`list-inside list-decimal ${docsTypography.body} space-y-1`}>
+            Logging In With 2FA
+            <ol className="list-inside list-decimal space-y-1">
               <li>User enters email and password as normal</li>
               <li>If 2FA is enabled, they&apos;re asked for a verification code</li>
               <li>User opens authenticator app and enters the current code</li>
@@ -165,8 +164,8 @@ export async function deleteAccount(userId: string, mfaCode: string) {
           </DocsCard>
 
           <DocsCard title="BACKUP_CODES">
-            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Lost Phone? Use Backup Code</h3>
-            <ol className={`list-inside list-decimal ${docsTypography.body} space-y-1`}>
+            Lost Phone? Use Backup Code
+            <ol className="list-inside list-decimal space-y-1">
               <li>On the verification screen, click &quot;Use backup code&quot;</li>
               <li>Enter one of the 10 backup codes (format: XXXX-XXXX)</li>
               <li>That code is now used up and won&apos;t work again</li>
@@ -179,14 +178,14 @@ export async function deleteAccount(userId: string, mfaCode: string) {
       {/* About Backup Codes Section */}
       <DocsSection title="About Backup Codes">
         <DocsCard title="BACKUP_INFO" className="bg-muted/50">
-          <p className={`${docsTypography.body} mb-4`}>
+          <p className="mb-4">
             Backup codes are essential for account recovery. They let users log in even if they
             lose access to their authenticator app (lost phone, new device, etc.).
           </p>
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="space-y-2">
-              <h3 className={`uppercase ${docsTypography.h4}`}>Format</h3>
-              <ul className={`${docsTypography.body} space-y-1`}>
+              Format
+              <ul className="space-y-1">
                 <li>• 10 codes per user</li>
                 <li>• Format: XXXX-XXXX (8 characters)</li>
                 <li>• Each code works once only</li>
@@ -194,8 +193,8 @@ export async function deleteAccount(userId: string, mfaCode: string) {
               </ul>
             </div>
             <div className="space-y-2">
-              <h3 className={`uppercase ${docsTypography.h4}`}>Security</h3>
-              <ul className={`${docsTypography.body} space-y-1`}>
+              Security
+              <ul className="space-y-1">
                 <li>• Codes are hashed before storage</li>
                 <li>• Timing-safe comparison</li>
                 <li>• Used codes are removed</li>
@@ -215,7 +214,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
             </summary>
             <div className="border-t p-4 text-sm text-muted-foreground">
               <p>Any app that supports TOTP (RFC 6238) works. Popular options include:</p>
-              <ul className="font-mono text-sm text-muted-foreground space-y-1 mt-2">
+              <ul className="space-y-1 mt-2">
                 <li>• Google Authenticator</li>
                 <li>• Authy</li>
                 <li>• 1Password</li>
@@ -245,7 +244,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
             </summary>
             <div className="border-t p-4 text-sm text-muted-foreground">
               <p>This is a worst-case scenario. You have a few options:</p>
-              <ul className="font-mono text-sm text-muted-foreground space-y-1 mt-2">
+              <ul className="space-y-1 mt-2">
                 <li>• Require identity verification (ID upload, video call)</li>
                 <li>• Disable 2FA from admin panel after verification</li>
                 <li>• Implement an account recovery flow with security questions</li>
@@ -286,19 +285,19 @@ export async function deleteAccount(userId: string, mfaCode: string) {
 
       {/* Future Enhancements Section */}
       <DocsSection title="Future Enhancements">
-        <p className={`${docsTypography.body} mb-4`}>
+        <p className="mb-4">
           The current implementation covers TOTP (authenticator apps). Future versions may include:
         </p>
         <div className="grid gap-4 sm:grid-cols-2">
           <DocsCard title="SMS_VERIFICATION">
-            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>SMS Verification</h3>
-            <p className={docsTypography.body}>
+            SMS Verification
+            <p className="">
               Text message codes as an alternative (requires Twilio integration).
             </p>
           </DocsCard>
           <DocsCard title="WEBAUTHN_PASSKEYS">
-            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>WebAuthn/Passkeys</h3>
-            <p className={docsTypography.body}>
+            WebAuthn/Passkeys
+            <p className="">
               Hardware security keys and biometric authentication (Touch ID, Face ID).
             </p>
           </DocsCard>

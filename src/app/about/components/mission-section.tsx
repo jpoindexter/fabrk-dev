@@ -32,7 +32,7 @@ export function MissionSection() {
             <span className="inline-block border border-border bg-card px-4 py-1 text-xs text-muted-foreground mb-4">
               [ [0x02] OUR_MISSION ]
             </span>
-            <h2 className="text-2xl font-bold lg:text-3xl">OUR_MISSION</h2>
+            <h2 className="text-2xl font-semibold lg:text-4xl">OUR_MISSION</h2>
           </motion.div>
 
           <motion.div

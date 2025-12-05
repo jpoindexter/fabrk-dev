@@ -27,7 +27,7 @@ export default function DashboardsPage() {
           </div>
           <div className="flex items-center gap-4">
             {categoryInfo && <categoryInfo.icon className="text-primary h-6 w-6" />}
-            <h1 className={cn(mode.font, "text-3xl font-bold")}>Dashboards</h1>
+            <h1 className={cn(mode.font, "text-4xl font-semibold")}>Dashboards</h1>
             <span className={cn(mode.font, "border-border border px-2 py-0.5 text-xs")}>
               COUNT: {categoryTemplates.length}
             </span>

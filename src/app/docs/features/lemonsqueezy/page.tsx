@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsCallout } from "@/components/docs";
-import { docsTypography, docsSpacing } from "@/components/docs";
 import Link from "next/link";
 import { CircleDollarSign, CreditCard, Globe, Shield, Bell, Users } from "lucide-react";
 
@@ -221,8 +220,8 @@ export async function POST(req: Request) {
         <DocsCard title="COMPARISON">
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="space-y-2">
-              <h3 className={`uppercase ${docsTypography.h4}`}>Stripe</h3>
-              <ul className={`${docsTypography.body} space-y-1`}>
+              Stripe
+              <ul className="space-y-1">
                 <li>• You are the merchant (handle taxes yourself)</li>
                 <li>• Lower fees: 2.9% + $0.30</li>
                 <li>• Full control over customer relationship</li>
@@ -231,8 +230,8 @@ export async function POST(req: Request) {
               </ul>
             </div>
             <div className="space-y-2">
-              <h3 className={`uppercase ${docsTypography.h4}`}>Lemon Squeezy</h3>
-              <ul className={`${docsTypography.body} space-y-1`}>
+              Lemon Squeezy
+              <ul className="space-y-1">
                 <li>• They are the merchant (handle ALL taxes)</li>
                 <li>• Higher fees: 5% + $0.50</li>
                 <li>• Zero tax compliance burden</li>
@@ -254,23 +253,23 @@ export async function POST(req: Request) {
         <DocsCard title="WEBHOOK_EVENTS">
           <div className="space-y-2 text-sm">
             <div className="border-border flex justify-between border-b pb-2">
-              <code className={docsTypography.code}>order_created</code>
+              <code className="bg-muted px-1">order_created</code>
               <span className="text-muted-foreground">New purchase completed</span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
-              <code className={docsTypography.code}>subscription_created</code>
+              <code className="bg-muted px-1">subscription_created</code>
               <span className="text-muted-foreground">New subscription started</span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
-              <code className={docsTypography.code}>subscription_updated</code>
+              <code className="bg-muted px-1">subscription_updated</code>
               <span className="text-muted-foreground">Plan changed or modified</span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
-              <code className={docsTypography.code}>subscription_cancelled</code>
+              <code className="bg-muted px-1">subscription_cancelled</code>
               <span className="text-muted-foreground">Subscription ended</span>
             </div>
             <div className="flex justify-between">
-              <code className={docsTypography.code}>subscription_payment_failed</code>
+              <code className="bg-muted px-1">subscription_payment_failed</code>
               <span className="text-muted-foreground">Payment attempt failed</span>
             </div>
           </div>
@@ -279,7 +278,7 @@ export async function POST(req: Request) {
 
       {/* Common Questions */}
       <DocsSection title="Common Questions">
-        <div className={docsSpacing.sectionItems}>
+        <div className="space-y-4">
           <details className="border-border bg-card border">
             <summary className="cursor-pointer p-4 font-mono text-sm font-medium">
               What fees does Lemon Squeezy charge?
@@ -317,8 +316,8 @@ export async function POST(req: Request) {
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/trial">
             <DocsCard title="FREE_TRIALS" className="hover:border-primary/50 h-full transition-all">
-              <h3 className={`uppercase ${docsTypography.h4}`}>Free Trials</h3>
-              <p className={docsTypography.body}>
+              Free Trials
+              <p className="">
                 Let users try your product before paying with trial periods.
               </p>
             </DocsCard>
@@ -328,8 +327,8 @@ export async function POST(req: Request) {
               title="STRIPE_PAYMENTS"
               className="hover:border-primary/50 h-full transition-all"
             >
-              <h3 className={`uppercase ${docsTypography.h4}`}>Stripe Setup</h3>
-              <p className={docsTypography.body}>
+              Stripe Setup
+              <p className="">
                 Set up Stripe for direct payment processing with lower fees.
               </p>
             </DocsCard>

@@ -88,7 +88,7 @@ export function DataTable<TData, TValue>({
                 {headerGroup.headers.map((header) => {
                   if (!header || !header.column) return null;
                   return (
-                    <TableHead key={header.id} className="text-foreground font-bold">
+                    <TableHead key={header.id} className="text-foreground font-semibold">
                       {header.isPlaceholder
                         ? null
                         : flexRender(header.column.columnDef.header, header.getContext())}

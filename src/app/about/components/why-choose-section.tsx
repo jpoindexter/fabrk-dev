@@ -55,7 +55,7 @@ export function WhyChooseSection() {
               <span className="inline-block border border-border bg-card px-4 py-1 text-xs text-muted-foreground mb-4">
                 [ [0x05] WHY_FABRK ]
               </span>
-              <h2 className="text-2xl font-bold lg:text-3xl mb-4">WHY_CHOOSE_FABRK</h2>
+              <h2 className="text-2xl font-semibold lg:text-4xl mb-4">WHY_CHOOSE_FABRK</h2>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 12 }}

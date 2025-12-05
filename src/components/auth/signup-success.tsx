@@ -26,7 +26,7 @@ export function SignupSuccessMessage({ email }: { email: string }) {
   return (
     <div className="p-6 text-center">
       <CheckCircle className="mx-auto h-16 w-16 text-primary dark:text-primary" />
-      <h2 className="m-4 text-base font-medium">Check your email</h2>
+      <h2 className="m-4 text-base font-semibold">Check your email</h2>
       <p className="m-4">We&apos;ve sent a verification email to {email}</p>
       <p className="m-4 text-base">
         Please click the link in the email to verify your account.

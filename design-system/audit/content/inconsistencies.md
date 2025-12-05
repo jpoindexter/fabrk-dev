@@ -1,679 +1,311 @@
-# Content Inconsistencies Audit
+# Content & Copy Inconsistencies Audit
 
-**Date**: 2025-12-05
-**Scope**: Entire codebase (src/, components/, app/)
-**Purpose**: Document all content formatting inconsistencies for terminal aesthetic compliance
+> Phase 1 Inventory - Observation Only (No Changes)
 
----
+## Overview
 
-## Executive Summary
-
-This audit reveals **significant inconsistencies** in content formatting across the codebase. While there is a well-defined terminal aesthetic specification in `design-system/themes/terminal.ts`, actual implementation varies wildly across components.
-
-### Key Findings
-- **Button text**: 6 distinct formats found
-- **Auth terminology**: "Sign in" vs "Sign In" vs "Login" (15+ variations)
-- **Label formats**: 3 different bracket styles
-- **Case conventions**: Mixed UPPERCASE, Title Case, lowercase, camelCase in UI
-- **Action verbs**: Inconsistent between "> VERB" and "Verb" formats
+This audit documents all content/copy inconsistencies found across the Fabrk_plate codebase, including button text, labels, card headers, error messages, navigation labels, placeholders, and system labels.
 
 ---
 
 ## 1. Button Text Formats
 
-### Variants Found
+### Severity: CRITICAL
 
-| Format | Example | Occurrences | Files |
-|--------|---------|-------------|-------|
-| **Terminal Format** (Canonical) | `> SAVE_CHANGES` | ~80 | Most template files |
-| **Title Case** | `Save Changes` | ~15 | `/components/account/profile-form.tsx` |
-| **No Prefix Uppercase** | `SAVE_CHANGES` | ~5 | Theme definitions |
-| **Lowercase with states** | `save changes` | ~3 | Error messages |
-| **Mixed Case** | `Save changes` | ~2 | Scattered |
-| **Variable content** | `{isSaving ? "SAVING..." : "SAVE_CHANGES"}` | ~10 | Dynamic states |
+**Expected Terminal Format:** `> TEXT_IN_UPPERCASE_WITH_UNDERSCORES`
 
-### Specific Examples
+### Correct Examples Found
+| Location | Code |
+|----------|------|
+| `src/app/docs/components/button/page.tsx:16-120` | `> CLICK_ME`, `> SUBMIT`, `> CANCEL` |
+| `src/app/docs/components/card/page.tsx:25,70,81` | `> ACTION`, `> CANCEL`, `> CONFIRM` |
+| `src/app/contact/components/contact-form.tsx:225-229` | `> SENDING...`, `> EXECUTE: SEND_MESSAGE` |
+| `src/components/landing/navigation.tsx:83,87,152,157,168` | `> VIEW_DEMO`, `> GET_STARTED`, `> START` |
 
-#### ✅ CORRECT (Terminal Format)
-```tsx
-// src/app/docs/components/dialog/page.tsx:95
-<Button type="submit">&gt; SAVE_CHANGES</Button>
+### Inconsistencies Found
 
-// src/app/docs/components/dialog/page.tsx:149
-<Button variant="destructive">&gt; DELETE_ACCOUNT</Button>
+#### Pattern 1: Colon Separator Usage
+| File | Uses Colon | No Colon |
+|------|------------|----------|
+| contact-form.tsx | `> EXECUTE: SEND_MESSAGE` | - |
+| hero-section.tsx | `> EXECUTE: GET_FABRK` | - |
+| hero-section.tsx | `> VIEW: LIVE_DEMO` | - |
+| templates/user-management | - | `> ADD_USER` |
+| docs/button/page.tsx | - | `> SUBMIT` |
 
-// src/app/docs/components/alert-dialog/page.tsx:50
-<AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
-```
+**Issue:** No standardization on when to use `> VERB: OBJECT` vs `> VERB_OBJECT`
 
-#### ❌ INCONSISTENT
-```tsx
-// src/components/account/profile-form.tsx:141
-{isLoading ? "Saving..." : "Save Changes"}
+#### Pattern 2: Action Verb Standardization
+- Simple verbs: `SUBMIT`, `DELETE`, `CANCEL`, `CONTINUE`
+- Compound with EXECUTE: `EXECUTE: SEND_MESSAGE`, `EXECUTE: GET_FABRK`
+- Compound without EXECUTE: `VIEW_DEMO`, `GET_STARTED`, `ADD_USER`
 
-// src/app/docs/components/loading/page.tsx:115
-Save Changes
-
-// src/app/docs/components/toaster/page.tsx:226
-Failed to save changes. Please try again.
-```
-
-### Recommendations
-1. **Use terminal format everywhere**: `> VERB` or `> VERB_PHRASE`
-2. **Loading states**: `> SAVING...` (not "Saving...")
-3. **All verbs**: UPPERCASE_SNAKE_CASE
+**Issue:** Some destructive/submission actions use `EXECUTE:` prefix, others don't
 
 ---
 
-## 2. Authentication Terminology
+## 2. Label Formats
 
-### Sign In / Login Variations
+### Severity: MEDIUM
 
-| Variant | Count | Files | Context |
-|---------|-------|-------|---------|
-| `> SIGN_IN` | 8 | Templates, theme config | ✅ Canonical |
-| `Sign In` | 12 | Page titles, links | Title Case (inconsistent) |
-| `Sign in` | 15 | Descriptions, body text | Sentence case |
-| `sign in` | 8 | Code comments, lowercase text | |
-| `> LOGIN` | 3 | Theme config (alternate) | |
-| `Login` | 25 | URLs, redirects, function names | |
-| `login` | 50+ | Variable names, routes, db fields | |
-| `Log in` | 5 | Help text | |
+**Expected Terminal Format:** `[LABEL_IN_UPPERCASE]:`
 
-#### Example Files
+### Correct Examples Found
+| Location | Example |
+|----------|---------|
+| `src/app/docs/components/input/page.tsx:37` | `[EMAIL]:` |
+| `src/app/docs/components/checkbox/page.tsx:25` | `[ACCEPT_TERMS_AND_CONDITIONS]:` |
+| `src/app/docs/components/checkbox/page.tsx:52` | `[SUBSCRIBE_TO_NEWSLETTER]:` |
+| `src/app/docs/components/checkbox/page.tsx:89-95` | `[OPTION_1]:`, `[OPTION_2]:`, `[OPTION_3]:` |
 
-**✅ Consistent (Terminal Format)**
-```tsx
-// design-system/themes/terminal.ts:272
-signIn: "> SIGN_IN",
+### Inconsistencies Found
 
-// src/app/templates/authentication/sign-in/page.tsx:105
-&gt; SIGN_IN
-```
+#### Pattern 1: Rendered vs Code Example Mismatch
+| Location | Code Example Shows | Rendered Output |
+|----------|-------------------|-----------------|
+| input/page.tsx:32 | `formatLabel("Email")` → `[EMAIL]:` | Plain text "Email Address" in preview |
+| checkbox/page.tsx:20,47 | Uses `formatLabel()` function | Preview shows different format |
 
-**❌ Inconsistent**
-```tsx
-// src/app/templates/authentication/sign-in/page.tsx:52
-Enter your email to sign in to your account
+**Issue:** Documentation code examples show bracket format, but actual rendered previews show plain text
 
-// src/app/templates/authentication/sign-in/page.tsx:24
-description: "Production-ready sign in page template..."
-
-// src/app/docs/tutorials/protected-pages/page.tsx:137
-<Link href="/auth/signin">Sign In</Link>
-
-// src/components/pricing/checkout-button.tsx:30
-router.push(`/login?callbackUrl=...`);
-
-// src/app/docs/components/alert/page.tsx:62
-Your session has expired. Please log in again.
-
-// src/components/cookie-consent-tabs.tsx:228
-title: "Login required",
-description: "Please log in to download your data.",
-```
-
-### Sign Up / Register Variations
-
-| Variant | Count | Context |
-|---------|-------|---------|
-| `> SIGN_UP` | 6 | ✅ Terminal format |
-| `Sign Up` | 15 | Title Case |
-| `Sign up` | 10 | Sentence case |
-| `sign up` | 8 | Lowercase |
-| `Register` | 5 | Alternative terminology |
-| `register` | 30+ | Code/routes |
-| `> CREATE_ACCOUNT` | 1 | Button text |
-
-#### Examples
-```tsx
-// ✅ CORRECT
-// design-system/themes/terminal.ts:271
-signUp: "> SIGN_UP",
-
-// ❌ INCONSISTENT
-// src/app/templates/authentication/sign-up/page.tsx:140
-&gt; CREATE_ACCOUNT  // Should be > SIGN_UP
-
-// src/app/templates/authentication/sign-up/page.tsx:150
-Or sign up with  // Should be OR_SIGN_UP_WITH:
-
-// src/app/docs/getting-started/page.tsx:20
-Sign up, login, password reset.  // Mixed case
-```
-
-### Sign Out / Logout Variations
-
-| Variant | Count | Context |
-|---------|-------|---------|
-| `> SIGN_OUT` | 3 | ✅ Terminal format |
-| `> LOGOUT` | 2 | Alternative |
-| `Sign Out` | 8 | Title Case |
-| `Sign out` | 4 | Sentence case |
-| `Log out` | 5 | Alternative |
-| `logout` | 20+ | Code/routes |
-
-#### Examples
-```tsx
-// ✅ CORRECT
-// design-system/themes/terminal.ts:273
-signOut: "> SIGN_OUT",
-
-// src/components/security/security-sessions-card.tsx:67
-{isInvalidatingSessions ? "INVALIDATING..." : "> SIGN_OUT_ALL_SESSIONS"}
-
-// ❌ INCONSISTENT
-// src/app/docs/components/dropdown-menu/page.tsx:62
-Log out  // Should be > SIGN_OUT
-
-// src/components/security/security-dialogs.tsx:101
-Sign Out All Other Sessions?  // Title should be SIGN_OUT_ALL_SESSIONS?
-```
+#### Pattern 2: Casing Variations
+- In brackets: `[ACCEPT_TERMS_AND_CONDITIONS]:` (uppercase with underscores)
+- Without brackets: "Email Address", "Accept terms and conditions" (sentence case)
 
 ---
 
-## 3. Common Action Verbs
+## 3. Card Header/Title Formats
 
-### Delete / Remove
+### Severity: HIGH
 
-| Format | Count | Context |
-|--------|-------|---------|
-| `> DELETE` | 40 | ✅ Buttons |
-| `Delete` | 30 | Menu items, links |
-| `delete` | 50+ | Code |
-| `> REMOVE` | 5 | Some buttons |
-| `Remove` | 15 | Alternative terminology |
-| `> DELETE_ITEM` | 10 | Specific actions |
-| `> DELETE_ACCOUNT` | 8 | Danger zone |
+**Expected Terminal Format:** `[ [0xHEX_CODE] TITLE_IN_UPPERCASE ]`
 
-**Inconsistency**: Mix of DELETE vs REMOVE for same actions
+### Correct Examples Found
+| Location | Example |
+|----------|---------|
+| `src/components/landing/hero-section.tsx:231` | `[ [0x00] SYSTEM_INIT ] SAAS_BOILERPLATE_v2.0` |
+| `src/components/landing/hero-section.tsx:257` | `[ [0x01] STATUS ]────────────────────────` |
+| `src/components/landing/hero-section.tsx:297` | `[ [0x02] POWERED_BY ] FIB[1,1,2,3,5,8,13]` |
+| `src/app/contact/components/contact-form.tsx:96` | `[0x01] message_composer.exe │ PID:4096` |
 
-```tsx
-// src/app/docs/components/alert-dialog/page.tsx:81
-<Button variant="destructive">&gt; DELETE_ITEM</Button>
+### Inconsistencies Found
 
-// src/app/templates/user-management/components/user-table-columns.tsx:181
-&gt; DELETE  // Generic
+#### Pattern 1: Hex vs UI Dot Notation
+| Location | Format Used |
+|----------|-------------|
+| hero-section.tsx | `[0x00]`, `[0x01]`, `[0x02]` (hex format) |
+| docs/components/button/page.tsx:10 | `[UI.01]` (bracket + dot notation) |
+| docs/components/input/page.tsx:11 | `[UI.02]` (bracket + dot notation) |
+| docs/components/card/page.tsx:10 | `[UI.10]` (bracket + dot notation) |
+| docs/components/alert-dialog/page.tsx:20 | `[UI.21]` (bracket + dot notation) |
 
-// src/components/account/api-keys-section.tsx:200
-&gt; DELETE  // Same context, different specificity
-```
+**Issue:** Two competing code systems - hex (`0xXX`) vs UI designation (`UI.XX`)
 
-### Create / Add / New
+#### Pattern 2: Bracket Wrapping Styles
+| Style | Example | Location |
+|-------|---------|----------|
+| Double nested | `[ [0x00] TITLE ]` | hero-section.tsx |
+| Single with code | `[0x01] title` | contact-form.tsx |
+| Component prop | `code="[UI.01]"` | docs pages |
 
-| Format | Count | Usage |
-|--------|-------|-------|
-| `> CREATE` | 15 | Primary action |
-| `> ADD` | 20 | Adding to list |
-| `> NEW` | 5 | Rare |
-| `Create` | 25 | Menu items |
-| `Add` | 30 | Body text |
-| `> CREATE_ACCOUNT` | 3 | Specific |
-| `> ADD_USER` | 8 | Specific |
-| `> NEW_FILE` | 4 | Context menu |
+**Issue:** Three different structural patterns for the same visual concept
 
-**Problem**: No clear rule when to use CREATE vs ADD vs NEW
-
-```tsx
-// src/app/(dashboard)/admin/feature-flags-db/page.tsx:156
-&gt; NEW_FLAG
-
-// src/app/(dashboard)/admin/feature-flags-db/page.tsx:190
-<Button onClick={handleCreate}>&gt; CREATE</Button>  // Same flow, different verb
-
-// src/app/templates/user-management/page.tsx:95
-&gt; ADD_USER
-```
-
-### Edit / Update
-
-| Format | Count | Context |
-|--------|-------|---------|
-| `> EDIT` | 15 | Primary |
-| `> UPDATE` | 10 | Alternative |
-| `Edit` | 20 | Menu items |
-| `Update` | 15 | Status changes |
-| `> EDIT_PROFILE` | 8 | Specific |
-| `> SAVE_CHANGES` | 40 | After editing |
-
-**Problem**: EDIT vs UPDATE have semantic overlap
-
-```tsx
-// src/app/(dashboard)/profile/page.tsx:192
-<Button onClick={() => setIsEditing(true)}>&gt; EDIT_PROFILE</Button>
-
-// Then saves with:
-{isSaving ? "&gt; SAVING..." : "&gt; SAVE_CHANGES"}  // Should be consistent
-
-// src/components/admin/user-data-table/user-table-columns.tsx:190
-<DropdownMenuItem onClick={() => onEdit(user)}>
-  Edit user  // Should be > EDIT or > EDIT_USER
-</DropdownMenuItem>
-```
+#### Pattern 3: Title Positioning
+- Landing: `[ [0xXX] TITLE ] EXTRA_TEXT` (inline suffix)
+- Contact form: `[0xXX] description │ extra` (pipe separator)
+- Docs: Separate `code` and `title` props
 
 ---
 
-## 4. Label Formats
+## 4. Error/Success/Warning Message Formats
 
-### Variants Found
+### Severity: MEDIUM
 
-| Format | Count | Files | Example |
-|--------|-------|-------|---------|
-| `[LABEL]:` | 50+ | ✅ Most components | `[EMAIL]:` |
-| `LABEL:` | 20 | Missing brackets | `EMAIL:` |
-| `Label:` | 15 | Title Case | `Email:` |
-| `label:` | 10 | Lowercase | `email:` |
-| `[label]:` | 5 | Lowercase with brackets | `[email]:` |
+### Correct Examples Found
+| Location | Type | Format |
+|----------|------|--------|
+| `contact-form.tsx:201` | Success | `[OK] MESSAGE_SENT - We've received your message...` |
+| `contact-form.tsx:213` | Error | `[ERROR] {errorMessage}` |
 
-### Status/Message Labels
+### Inconsistencies Found
 
-```tsx
-// ✅ CORRECT
-[ERROR]: Message
-[SUCCESS]: Message
-[WARNING]: Message
-[INFO]: Message
-[STATUS]: ONLINE
+#### Missing Patterns
+- `[WARNING]` format not found in codebase despite being documented in design system
+- No standardized info message format `[INFO]`
 
-// ❌ FOUND IN CODE
-// src/components/admin/impersonate-button.tsx:111
-[ERROR]: {error}  // ✅ Correct
-
-// src/app/templates/modals/components/popover-example.tsx:35
-[INFO]:  // ✅ Correct
-
-// src/app/templates/billing-dashboard/components/plan-cards.tsx:27
-[WARNING]: Deleting your account...  // ✅ Correct
-
-// BUT ALSO:
-// src/components/ui/form-error.tsx:118
-how: "Please log in again to continue.",  // No label format!
-
-// src/app/docs/components/toaster/page.tsx:226
-Failed to save changes. Please try again.  // Should be [ERROR]: FAILED_TO_SAVE_CHANGES
-```
+#### Prefix Variations
+- Success: `[OK]`
+- Error: `[ERROR]`
+- Warning: Not implemented
+- Info: Not implemented
 
 ---
 
-## 5. Terminal Header Formats
+## 5. Navigation Labels
 
-### Hex Code Section Headers
+### Severity: MEDIUM
 
-#### ✅ CORRECT Format: `[ [0xNN] SECTION_NAME ]`
+### Examples Found
 
-```tsx
-// design-system/themes/terminal.ts:298-307
-settings: "[ [0x00] SETTINGS ]",
-account: "[ [0x01] ACCOUNT ]",
-profile: "[ [0x02] PROFILE ]",
-security: "[ [0x03] SECURITY ]",
-```
+#### Landing Navigation (UPPERCASE)
+| Location | Labels |
+|----------|--------|
+| `navigation.tsx:21-24` | `FEATURES`, `PRICING`, `DOCS`, `FAQ` |
 
-#### Found Variations
+#### Dashboard Navigation (Title Case)
+| Location | Labels |
+|----------|--------|
+| `navigation.tsx:41-44` | `Dashboard`, `Settings`, `Billing`, `API Keys` |
+| `dashboard-header.tsx:41-44` | `Dashboard`, `Settings`, `Billing`, `API Keys` |
 
-| Pattern | Count | Example |
-|---------|-------|---------|
-| `[ [0xNN] TEXT ]` | 80+ | ✅ Standard |
-| `[0xNN] TEXT` | 5 | Missing outer brackets |
-| `[ 0xNN TEXT ]` | 3 | Missing inner brackets |
-| `[TEXT]` | 20 | No hex code |
+### Inconsistency
+| Context | Casing Used |
+|---------|-------------|
+| Landing page nav | UPPERCASE |
+| Dashboard nav | Title Case |
 
-**Issue**: Inconsistent hex code usage - some sections use them, others don't
-
-```tsx
-// ✅ CONSISTENT
-src/app/(legal)/cookies/page.tsx:23
-[ [0x00] LEGAL ] COOKIE_POLICY
-
-src/app/(legal)/cookies/page.tsx:53
-[ [0x01] OVERVIEW ]────────────────────────
-
-// ❌ INCONSISTENT
-src/app/templates/notifications/page.tsx:61
-[ [0x00] NOTIFICATIONS ]  // Uses hex
-
-// But many other headers don't:
-src/components/landing/footer.tsx:64
-[ [0x71] SYSTEM_INFO ]  // Uses hex
-
-src/components/landing/footer.tsx:84
-[ [0x72] nav_links.exe │ PID:1024 ]  // Uses hex + terminal metaphor
-
-// While others are just:
-Title with no formatting
-```
+**Issue:** Same navigation pattern uses different casing based on context, but no documented rule
 
 ---
 
-## 6. Case Conventions in UI Text
+## 6. Placeholder Text
 
-### Found in UI (not code)
+### Severity: MEDIUM
 
-| Case Type | Count | Should Be |
-|-----------|-------|-----------|
-| `UPPERCASE_SNAKE_CASE` | 200+ | ✅ Canonical |
-| `Title Case` | 100+ | ❌ Should be UPPERCASE |
-| `Sentence case` | 80+ | ❌ Should be UPPERCASE |
-| `lowercase` | 40+ | ❌ Should be UPPERCASE |
-| `camelCase` | 5 | ❌ Never in UI |
+### Examples Found
 
-### Examples
+#### With `>` Prefix (Contact Form)
+| Location | Placeholder |
+|----------|-------------|
+| `contact-form.tsx:122` | `> Enter your name...` |
+| `contact-form.tsx:140` | `> Enter your email...` |
+| `contact-form.tsx:158` | `> Select a subject...` |
+| `contact-form.tsx:184` | `> Tell us more about your inquiry...` |
 
-```tsx
-// ✅ CORRECT
-SAVE_CHANGES
-DELETE_ACCOUNT
-SIGN_IN
-USER_PROFILE
+#### Without `>` Prefix (Docs)
+| Location | Placeholder |
+|----------|-------------|
+| `input/page.tsx:17` | `Enter your email...` |
+| `input/page.tsx:24` | `Type here...` |
+| `input/page.tsx:33` | `m@example.com` |
 
-// ❌ INCONSISTENT
-Save Changes
-Delete Account
-Sign In
-User Profile
+### Inconsistency
+| Context | Uses `>` Prefix |
+|---------|-----------------|
+| Contact form inputs | Yes |
+| Documentation examples | No |
 
-save changes
-delete account
-user profile
-```
+**Issue:** Terminal-style prompt prefix (`>`) inconsistently applied to placeholders
 
 ---
 
-## 7. Common Phrases Inconsistencies
+## 7. System Labels/Prefixes
 
-### "Dashboard" vs "Home" vs "Overview"
+### Severity: HIGH
 
-| Variant | Count | Context |
-|---------|-------|---------|
-| `Dashboard` | 50+ | Routes, titles |
-| `DASHBOARD` | 30 | Terminal headers |
-| `[ [0xD0] DASHBOARD ]` | 10 | Formatted headers |
-| `Home` | 20 | Nav links |
-| `HOME` | 5 | Terminal format |
-| `Overview` | 15 | Section titles |
-| `OVERVIEW` | 10 | Terminal format |
+### Examples Found
+| Location | Label | Format |
+|----------|-------|--------|
+| `navigation.tsx:59` | `[NAVIGATE]:` | Single bracket + colon |
+| `navigation.tsx:115` | `[SYSTEM_MENU]` | Single bracket, no colon |
+| `navigation.tsx:136` | `[THEME]:` | Single bracket + colon |
+| `navigation.tsx:144` | `[ACTIONS]:` | Single bracket + colon |
+| `hero-section.tsx:231` | `[ [0x00] SYSTEM_INIT ]` | Nested brackets |
+| `contact-form.tsx:103` | `[MESSAGE_FORM]` | Single bracket, no colon |
 
-**Problem**: No clear distinction when to use Dashboard vs Home vs Overview
+### Inconsistencies Found
 
-### "Settings" vs "Preferences" vs "Configuration"
+#### Pattern 1: Colon Usage
+| With Colon | Without Colon |
+|------------|---------------|
+| `[NAVIGATE]:` | `[SYSTEM_MENU]` |
+| `[THEME]:` | `[MESSAGE_FORM]` |
+| `[ACTIONS]:` | `[ [0x00] SYSTEM_INIT ]` |
 
-| Variant | Count | Usage |
-|---------|-------|-------|
-| `Settings` | 100+ | Primary term |
-| `SETTINGS` | 50 | Terminal format |
-| `[ [0x00] SETTINGS ]` | 20 | Headers |
-| `Preferences` | 15 | Alternative term |
-| `PREFERENCES` | 8 | Terminal format |
-| `Configuration` | 10 | Technical docs |
-| `CONFIG` | 5 | Abbreviated |
+**Issue:** No rule for when labels should include trailing colon
 
-**Problem**: Settings vs Preferences used interchangeably
+#### Pattern 2: Bracket Nesting
+| Single Brackets | Nested Brackets |
+|-----------------|-----------------|
+| `[NAVIGATE]:` | `[ [0x00] TEXT ]` |
+| `[THEME]:` | - |
 
----
+**Issue:** Hex codes use nested brackets, other labels use single
 
-## 8. Error Message Formatting
-
-### Current State (Inconsistent)
-
-```tsx
-// Format 1: Bracketed uppercase
-[ERROR]: MESSAGE_TEXT
-
-// Format 2: Title case sentences
-Failed to save changes. Please try again.
-
-// Format 3: Sentence case
-Your session has expired. Please log in again.
-
-// Format 4: Technical errors
-Schema validation failed
-
-// Format 5: User-friendly
-Unable to save changes
-```
-
-### Examples in Code
-
-```tsx
-// src/components/ui/form-error.tsx:118
-what: "Session expired",
-how: "Please log in again to continue.",  // No terminal format
-
-// src/app/docs/components/toaster/page.tsx:226
-Failed to save changes. Please try again.  // Should be [ERROR]: FAILED_TO_SAVE_CHANGES
-
-// src/components/admin/impersonate-button.tsx:111
-[ERROR]: {error}  // ✅ Correct format
-```
-
-**Recommendation**: All error messages should follow:
-```tsx
-[ERROR]: ERROR_DESCRIPTION
-[WARNING]: WARNING_DESCRIPTION
-```
+#### Pattern 3: Separator Characters
+| Separator | Example | Location |
+|-----------|---------|----------|
+| Pipe `│` | `│ PID:4096` | contact-form.tsx |
+| Dashes `────` | `────────────────────────` | hero-section.tsx |
+| None | `[ [0x00] TITLE ] TEXT` | hero-section.tsx |
 
 ---
 
-## 9. Description Text Inconsistencies
+## 8. Form Submission Patterns
 
-### Length Variations
+### Severity: MEDIUM
 
-Descriptions range from **2 words to 100+ words** with no clear pattern:
+### Examples Found
+| Location | Button Text | Pattern |
+|----------|-------------|---------|
+| `contact-form.tsx:229` | `> EXECUTE: SEND_MESSAGE` | EXECUTE prefix |
+| `hero-section.tsx:282-283` | `> EXECUTE: GET_FABRK` | EXECUTE prefix |
+| `form/page.tsx:68` | `> SUBMIT` | Simple verb |
+| `card/page.tsx:25` | `> ACTION` | Simple verb |
 
-```tsx
-// Short (2-5 words)
-description: "User Accounts"
-description: "Manage settings"
+### Inconsistency
+| Pattern | Example | When Used |
+|---------|---------|-----------|
+| `> VERB` | `> SUBMIT`, `> DELETE` | Generic actions |
+| `> EXECUTE: ACTION` | `> EXECUTE: SEND_MESSAGE` | Complex actions |
 
-// Medium (5-15 words)
-description: "Production-ready Next.js SaaS boilerplate with authentication, payments, and more"
-
-// Long (20+ words)
-description: "Let users sign in with their Google account. This is convenient for users and often increases signup rates."
-
-// Very long (50+ words)
-description: "Fabrk includes NextAuth v5 with email/password, Google OAuth, Microsoft OAuth, magic link passwordless login, and 2FA/MFA support. All authentication flows are production-ready."
-```
-
-**Problem**: No style guide for description length or detail level
-
-### Tone Variations
-
-```tsx
-// Technical tone
-"Schema validation with automatic repair logic"
-
-// User-friendly tone
-"Easy navigation back to login"
-
-// Marketing tone
-"World-class customer satisfaction"
-
-// Mixed tone
-"Sign up, login, password reset." // List format
-```
+**Issue:** No documented rule for when to use `EXECUTE:` prefix
 
 ---
 
-## 10. Specific Component Analysis
+## Summary Table
 
-### Button Component Issues
-
-Files with non-terminal button text:
-1. `/components/account/profile-form.tsx` - Uses "Save Changes" (Title Case)
-2. `/components/settings/*.tsx` - Mix of "> SAVE_CHANGES" and "Save Changes"
-3. `/app/docs/components/loading/page.tsx` - Plain "Save Changes"
-4. `/app/(dashboard)/organizations/[slug]/settings/page.tsx` - "Save Changes"
-
-### Dialog/Modal Issues
-
-Most dialogs use correct format:
-```tsx
-<DialogTitle>[ [0x00] DIALOG_NAME ]</DialogTitle>
-```
-
-But some don't:
-```tsx
-<DialogTitle>Confirm Action</DialogTitle>  // Should be [ [0x00] CONFIRM_ACTION ]
-```
-
-### Menu Items
-
-Context menus and dropdown menus frequently break format:
-```tsx
-// ❌ WRONG
-<DropdownMenuItem>Edit User</DropdownMenuItem>
-<DropdownMenuItem>Delete</DropdownMenuItem>
-
-// ✅ SHOULD BE
-<DropdownMenuItem>&gt; EDIT_USER</DropdownMenuItem>
-<DropdownMenuItem>&gt; DELETE</DropdownMenuItem>
-```
+| Category | Severity | Primary Issue | Files Affected |
+|----------|----------|---------------|----------------|
+| Button Text | CRITICAL | Colon usage inconsistent | contact-form, hero-section, navigation |
+| Button Text | MEDIUM | EXECUTE prefix rules unclear | form, contact-form, hero-section |
+| Labels | MEDIUM | formatLabel output mismatch | input/page, checkbox/page |
+| Card Headers | HIGH | Hex vs UI.XX code systems | All docs pages vs landing |
+| Card Headers | MEDIUM | Bracket nesting patterns | hero-section vs contact-form |
+| Messages | MEDIUM | Missing [WARNING] pattern | N/A |
+| Navigation | MEDIUM | UPPERCASE vs Title Case | navigation.tsx, dashboard-header.tsx |
+| Placeholders | MEDIUM | Inconsistent `>` prefix | contact-form vs docs pages |
+| System Labels | HIGH | Colon/bracket inconsistent | navigation.tsx, hero-section.tsx |
+| Form Actions | MEDIUM | VERB vs EXECUTE:ACTION | Multiple components |
 
 ---
 
-## Canonical Reference (From Theme Config)
+## Key Findings
 
-Based on `design-system/themes/terminal.ts`, the **CORRECT** formats are:
-
-### Actions
-```tsx
-submit: "> SUBMIT"
-save: "> SAVE_CHANGES"
-cancel: "> CANCEL"
-delete: "> DELETE"
-create: "> CREATE"
-edit: "> EDIT"
-add: "> ADD"
-remove: "> REMOVE"
-update: "> UPDATE"
-login: "> LOGIN"
-logout: "> LOGOUT"
-signIn: "> SIGN_IN"
-signOut: "> SIGN_OUT"
-signUp: "> SIGN_UP"
-```
-
-### Status Labels
-```tsx
-loading: "[STATUS]: LOADING..."
-success: "[STATUS]: SUCCESS"
-error: "[STATUS]: ERROR"
-warning: "[STATUS]: WARNING"
-info: "[STATUS]: INFO"
-```
-
-### Section Headers
-```tsx
-settings: "[ [0x00] SETTINGS ]"
-account: "[ [0x01] ACCOUNT ]"
-profile: "[ [0x02] PROFILE ]"
-security: "[ [0x03] SECURITY ]"
-billing: "[ [0x04] BILLING ]"
-```
+1. **Two Code Systems:** Hex codes (`0xXX`) used in marketing, UI notation (`UI.XX`) used in docs
+2. **Button Compound Actions:** No standard for `> VERB_OBJECT` vs `> EXECUTE: VERB_OBJECT`
+3. **Label Rendering Gap:** Code examples show `[LABEL]:` but previews show plain text
+4. **Context-Based Casing:** Landing uses UPPERCASE, dashboard uses Title Case
+5. **Placeholder Prefix:** Terminal `>` prompt used in some inputs, not others
+6. **Missing Message Types:** `[WARNING]` and `[INFO]` not implemented
+7. **Colon Rules Undefined:** System labels inconsistently use trailing colons
 
 ---
 
-## Recommendations
+## Issue Count by Category
 
-### Immediate Actions
-
-1. **Establish Primary Terminology**
-   - `SIGN_IN` (not Login, Log in, or sign in)
-   - `SIGN_UP` (not Register, Sign up)
-   - `SIGN_OUT` (not Logout, Log out)
-
-2. **Standardize Button Format**
-   - ALL buttons: `> VERB` or `> VERB_PHRASE`
-   - Loading states: `> VERB...` (e.g., `> SAVING...`)
-   - No Title Case, no plain text
-
-3. **Enforce Label Format**
-   - ALL labels: `[LABEL]:`
-   - Status messages: `[STATUS]: MESSAGE`
-   - Error messages: `[ERROR]: MESSAGE`
-
-4. **Consistent Action Verbs**
-   - Delete (not Remove) for destructive actions
-   - Create (not Add, New) for new entities
-   - Edit (not Update) for modifications
-   - Save (not Update) for persisting changes
-
-5. **Terminal Headers Everywhere**
-   - All section headers: `[ [0xNN] SECTION ]`
-   - Maintain hex code sequence
-   - Document hex code assignments
-
-### Long-Term
-
-1. Create linting rules to detect:
-   - Title Case in button text
-   - Plain text buttons (missing `>`)
-   - Unbracketed labels
-   - lowercase in UI text
-
-2. Create content style guide with:
-   - Approved terminology glossary
-   - Description length guidelines
-   - Tone of voice standards
-   - Example templates
-
-3. Build validation in pre-commit:
-   - Check button text format
-   - Validate label brackets
-   - Enforce UPPERCASE_SNAKE_CASE in UI
+| Category | Issues Found |
+|----------|--------------|
+| Button Text | 4 |
+| Labels | 2 |
+| Card Headers | 3 |
+| Messages | 2 |
+| Navigation | 1 |
+| Placeholders | 1 |
+| System Labels | 3 |
+| Form Actions | 1 |
+| **Total** | **17** |
 
 ---
 
-## Statistics Summary
-
-| Category | Canonical Format | Violations | Compliance |
-|----------|-----------------|------------|------------|
-| Button Text | `> VERB` | ~50 files | 60% |
-| Labels | `[LABEL]:` | ~30 files | 70% |
-| Auth Terms | `SIGN_IN/UP/OUT` | ~80 files | 40% |
-| Section Headers | `[ [0xNN] TEXT ]` | ~20 files | 80% |
-| Case Convention | `UPPERCASE_SNAKE` | ~60 files | 50% |
-
-**Overall Content Consistency**: **~55%** (needs improvement)
-
----
-
-## Files Requiring Attention (High Priority)
-
-### Critical (10+ violations)
-1. `/components/account/profile-form.tsx` - Button text, labels
-2. `/components/settings/*.tsx` - All forms (5 files)
-3. `/app/docs/components/dropdown-menu/page.tsx` - Menu items
-4. `/app/templates/authentication/*.tsx` - Auth terminology (3 files)
-5. `/components/admin/user-data-table/user-table-columns.tsx` - Menu items, headers
-
-### Medium (5-10 violations)
-1. `/app/(dashboard)/profile/page.tsx` - Button states
-2. `/app/docs/components/dialog/page.tsx` - Dialog titles
-3. `/app/docs/components/form/page.tsx` - Form labels
-4. `/components/cookie-consent*.tsx` - UI text
-5. `/app/templates/modals/components/*.tsx` - Modal text
-
-### Low (1-5 violations)
-- Various scattered button text issues across 30+ files
-
----
-
-## Conclusion
-
-While the design system defines a clear terminal aesthetic with specific content patterns, **implementation compliance is only ~55%**. The codebase contains:
-
-- **6 distinct button text formats** (should be 1)
-- **15+ variations** of authentication terminology
-- **3 different label bracket styles**
-- **Mixed case conventions** in UI text
-
-**Next Steps**:
-1. Run automated fix script for button text
-2. Create linting rules for content format
-3. Add pre-commit validation
-4. Document canonical terminology in style guide
-5. Migrate auth terms to single standard (SIGN_IN/UP/OUT)
-
-**Priority**: HIGH - Content inconsistencies undermine the terminal aesthetic and brand identity.
+*Generated: Phase 1 Audit - Observation Only*

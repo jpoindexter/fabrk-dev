@@ -170,7 +170,7 @@ export function MarketingPageHeader({
         </div>
 
         {/* Title */}
-        <h1 className={cn("mb-4 text-3xl font-bold tracking-tight lg:text-4xl", mode.font)}>
+        <h1 className={cn("mb-4 text-4xl font-semibold tracking-tight", mode.font)}>
           {title.toUpperCase().replace(/ /g, "_")}
         </h1>
 

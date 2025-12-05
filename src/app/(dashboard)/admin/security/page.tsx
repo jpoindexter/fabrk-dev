@@ -107,7 +107,7 @@ export default function AdminSecurityPage() {
               <Info className="text-muted-foreground h-4 w-4" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{summary.totalEvents}</div>
+              <div className="text-2xl font-semibold">{summary.totalEvents}</div>
             </CardContent>
           </Card>
 
@@ -117,7 +117,7 @@ export default function AdminSecurityPage() {
               <AlertTriangle className="text-destructive h-4 w-4" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{summary.bySeverity.critical || 0}</div>
+              <div className="text-2xl font-semibold">{summary.bySeverity.critical || 0}</div>
             </CardContent>
           </Card>
 
@@ -127,7 +127,7 @@ export default function AdminSecurityPage() {
               <AlertTriangle className="text-warning h-4 w-4" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{summary.bySeverity.high || 0}</div>
+              <div className="text-2xl font-semibold">{summary.bySeverity.high || 0}</div>
             </CardContent>
           </Card>
 
@@ -137,7 +137,7 @@ export default function AdminSecurityPage() {
               <Info className="text-info h-4 w-4" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{summary.bySeverity.medium || 0}</div>
+              <div className="text-2xl font-semibold">{summary.bySeverity.medium || 0}</div>
             </CardContent>
           </Card>
         </div>

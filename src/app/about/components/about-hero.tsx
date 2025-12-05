@@ -30,7 +30,7 @@ export function AboutHero() {
           <h1 className="mb-2 text-sm text-muted-foreground">
             FABRK_ABOUT:
           </h1>
-          <h2 className="mb-6 text-3xl font-bold tracking-tight lg:text-4xl">
+          <h2 className="mb-6 text-4xl font-semibold tracking-tight">
             BUILT_BY_DEVELOPERS
             <br />
             <span className="text-primary">FOR_DEVELOPERS</span>

@@ -59,7 +59,7 @@ export function QualitySection() {
             viewport={{ once: true }}
           >
             <span className="text-muted-foreground text-xs">[0x00]</span>
-            <h2 className="mb-4 text-2xl font-bold tracking-tight">BUILT_TO_LAST_TESTED_TO_SHIP</h2>
+            <h2 className="mb-4 text-2xl font-semibold tracking-tight">BUILT_TO_LAST_TESTED_TO_SHIP</h2>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -93,8 +93,8 @@ export function QualitySection() {
                   )}
                 </div>
                 <div className="mb-4">
-                  <div className="text-foreground text-3xl font-bold">{item.metric}</div>
-                  <h3 className="mt-1 text-lg font-bold">
+                  <div className="text-foreground text-4xl font-semibold">{item.metric}</div>
+                  <h3 className="mt-1 text-lg font-semibold">
                     {item.label.toUpperCase().replace(/ /g, "_")}
                   </h3>
                 </div>
@@ -117,7 +117,7 @@ export function QualitySection() {
               <CheckCircle2 className="text-primary h-8 w-8" />
             </div>
             <div>
-              <h3 className="mb-2 text-lg font-bold">QUALITY_GUARANTEE</h3>
+              <h3 className="mb-2 text-lg font-semibold">QUALITY_GUARANTEE</h3>
               <p className="text-muted-foreground text-sm">
                 Unlike other boilerplates that ship untested code, every Fabrk component is
                 rigorously tested, documented in Storybook, and validated by CI/CD pipelines. You're

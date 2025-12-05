@@ -89,7 +89,7 @@ export function AdminMetricsCard({
                   <div className="flex items-center gap-2">
                     <div
                       className={cn(
-                        "border-border flex items-center gap-1 px-2 py-0.5 text-xs font-bold",
+                        "border-border flex items-center gap-1 px-2 py-0.5 text-xs font-semibold",
                         mode.radius,
                         isPositive && "border-primary bg-primary/10 text-primary",
                         isNegative && "border-destructive bg-destructive/10 text-destructive",

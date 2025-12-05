@@ -239,7 +239,7 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <h1 className={cn("text-muted-foreground mb-2 text-sm", mode.font)}>FABRK_INIT:</h1>
-              <h2 className={cn("mb-6 text-3xl font-bold tracking-tight lg:text-4xl", mode.font)}>
+              <h2 className={cn("mb-6 text-4xl font-semibold tracking-tight", mode.font)}>
                 BUILDING_YOUR_SAAS
                 <br />
                 <span className="text-primary">JUST_GOT_UNFAIRLY_EASY.</span>

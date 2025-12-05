@@ -196,7 +196,7 @@ export default function AdminPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-foreground text-3xl font-bold">User Management</h1>
+          <h1 className="text-foreground text-4xl font-semibold">User Management</h1>
           <p className="text-muted-foreground">Manage users, roles, and permissions</p>
         </div>
         <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
@@ -208,17 +208,17 @@ export default function AdminPage() {
       <div className="grid gap-4 md:grid-cols-3">
         <div className={cn("border-border bg-card border p-6", mode.radius)}>
           <p className="text-muted-foreground text-sm font-medium">Total Users</p>
-          <p className="text-foreground text-3xl font-bold">{users.length}</p>
+          <p className="text-foreground text-4xl font-semibold">{users.length}</p>
         </div>
         <div className={cn("border-border bg-card border p-6", mode.radius)}>
           <p className="text-muted-foreground text-sm font-medium">Active Users</p>
-          <p className="text-success text-3xl font-bold">
+          <p className="text-success text-4xl font-semibold">
             {users.filter((u) => u.status === "active").length}
           </p>
         </div>
         <div className={cn("border-border bg-card border p-6", mode.radius)}>
           <p className="text-muted-foreground text-sm font-medium">Admins</p>
-          <p className="text-primary text-3xl font-bold">
+          <p className="text-primary text-4xl font-semibold">
             {users.filter((u) => u.role === "ADMIN").length}
           </p>
         </div>

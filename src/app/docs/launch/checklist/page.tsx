@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
 import { Code, CreditCard, Megaphone, Rocket } from "lucide-react";
 
 export const metadata = {
@@ -79,8 +78,7 @@ npm run type-check`,
       <DocsSection title="Phase 1: Pre-Launch Verification">
         <div className="grid gap-4 sm:grid-cols-2">
           <DocsCard title="CODE_QUALITY">
-            <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Code Quality & Security</h4>
-            <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+            <div className="space-y-1">
               <div>├─ Resolve all TODO/FIXME comments</div>
               <div>├─ Replace placeholders in src/config.js</div>
               <div>├─ Run npm run type-check</div>
@@ -90,8 +88,7 @@ npm run type-check`,
             </div>
           </DocsCard>
           <DocsCard title="LEGAL_BUSINESS">
-            <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Legal & Business</h4>
-            <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+            <div className="space-y-1">
               <div>├─ Prices match Stripe dashboard</div>
               <div>├─ Support email is active</div>
               <div>└─ Terms of Service & Privacy Policy accessible</div>
@@ -104,16 +101,14 @@ npm run type-check`,
       <DocsSection title="Phase 2: Stripe & Payments Setup">
         <div className="grid gap-4 sm:grid-cols-2">
           <DocsCard title="PRODUCT_CONFIG">
-            <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Product Configuration</h4>
-            <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+            <div className="space-y-1">
               <div>├─ Create products in Stripe (Test & Prod)</div>
               <div>├─ Copy Price IDs to .env</div>
               <div>└─ Create coupons if needed (e.g., EARLYBIRD)</div>
             </div>
           </DocsCard>
           <DocsCard title="WEBHOOK_CONFIG">
-            <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Webhook Configuration</h4>
-            <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+            <div className="space-y-1">
               <div>├─ Add endpoint: /api/stripe/webhook</div>
               <div>├─ Select events: checkout.session.completed, etc.</div>
               <div>└─ Copy Signing Secret to STRIPE_WEBHOOK_SECRET</div>
@@ -125,7 +120,7 @@ npm run type-check`,
       {/* Phase 3: Marketing */}
       <DocsSection title="Phase 3: Marketing Assets">
         <DocsCard title="MARKETING">
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+          <div className="space-y-1">
             <div>├─ <strong>The Pitch:</strong> 30-60s video for social media</div>
             <div>├─ <strong>The Walkthrough:</strong> 3-5 min demo for docs/landing page</div>
             <div>└─ <strong>Social Proof:</strong> Initial testimonials or beta feedback</div>
@@ -136,7 +131,7 @@ npm run type-check`,
       {/* Phase 4: Launch Day */}
       <DocsSection title="Phase 4: Launch Day Execution">
         <DocsCard title="LAUNCH_DAY">
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+          <div className="space-y-1">
             <div>├─ <strong>Distribution:</strong> Verify GitHub invite system or app deployment</div>
             <div>├─ <strong>Announcement:</strong> Schedule Product Hunt, Twitter/X, LinkedIn</div>
             <div>└─ <strong>Community:</strong> Post in Discord servers and subreddits</div>
@@ -147,7 +142,7 @@ npm run type-check`,
       {/* Phase 5: Post-Launch */}
       <DocsSection title="Phase 5: Post-Launch Monitoring">
         <DocsCard title="POST_LAUNCH">
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+          <div className="space-y-1">
             <div>├─ <strong>Support:</strong> Monitor support email for 48 hours</div>
             <div>├─ <strong>Stripe:</strong> Watch for failed payments or disputes</div>
             <div>└─ <strong>Errors:</strong> Check Vercel logs or Sentry for exceptions</div>

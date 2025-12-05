@@ -135,7 +135,7 @@ export function ExitIntentPopup({
           <div className={cn(mode.radius, "border-border bg-card my-4 border p-4")}>
             <div className="text-center">
               <div className="mb-2 flex items-center justify-center gap-4">
-                <span className={cn(mode.font, "text-foreground text-3xl font-bold")}>$175</span>
+                <span className={cn(mode.font, "text-foreground text-4xl font-semibold")}>$175</span>
                 <span className={cn(mode.font, "text-muted-foreground text-lg line-through")}>
                   $299
                 </span>

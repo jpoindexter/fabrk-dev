@@ -18,7 +18,7 @@ export default function SectionPage() {
               title="Section Title"
               description="This is a section with default spacing and container."
             />
-            <div className="font-mono text-sm text-muted-foreground">
+            <div>
               <span className="text-primary">&gt;</span> Section content goes here
             </div>
           </Section>
@@ -37,7 +37,7 @@ export default function SectionPage() {
           description: "Compact section with minimal padding.",
           preview: (
             <Section spacing="sm" className="border border-border bg-card">
-              <div className="font-mono text-sm text-muted-foreground">
+              <div>
                 Small spacing (py-8 md:py-12)
               </div>
             </Section>
@@ -51,7 +51,7 @@ export default function SectionPage() {
           description: "Generous spacing for landing pages.",
           preview: (
             <Section spacing="lg" className="border border-border bg-card">
-              <div className="font-mono text-sm text-muted-foreground">
+              <div>
                 Large spacing (py-16 md:py-24)
               </div>
             </Section>
@@ -106,7 +106,7 @@ export default function SectionPage() {
           description: "Section with alternate background color.",
           preview: (
             <Section background="muted" className="border border-border">
-              <div className="font-mono text-sm text-muted-foreground">
+              <div>
                 <span className="text-primary">&gt;</span> Muted background section
               </div>
             </Section>
@@ -120,7 +120,7 @@ export default function SectionPage() {
           description: "Section with primary brand color background.",
           preview: (
             <Section background="primary" className="border border-border">
-              <div className="font-mono text-sm text-primary-foreground">
+              <div className="text-primary-foreground">
                 <span className="text-primary-foreground/70">&gt;</span> Primary background section
               </div>
             </Section>
@@ -134,7 +134,7 @@ export default function SectionPage() {
           description: "Section without automatic container wrapper.",
           preview: (
             <Section container={false} className="border border-border bg-card px-4">
-              <div className="font-mono text-sm text-muted-foreground">
+              <div>
                 No container wrapper applied
               </div>
             </Section>
@@ -148,7 +148,7 @@ export default function SectionPage() {
           description: "Section with specific container max-width.",
           preview: (
             <Section containerSize="md" className="border border-border bg-card">
-              <div className="font-mono text-sm text-muted-foreground">
+              <div>
                 Container max-width: md (768px)
               </div>
             </Section>

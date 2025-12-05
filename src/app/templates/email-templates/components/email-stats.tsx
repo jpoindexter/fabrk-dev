@@ -12,19 +12,19 @@ export function EmailStats() {
         <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>
           [TOTAL_TEMPLATES]:
         </div>
-        <div className="text-3xl font-bold">5</div>
+        <div className="text-4xl font-semibold">5</div>
       </div>
       <div className="border-border bg-card border p-4">
         <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>[CATEGORIES]:</div>
-        <div className="text-3xl font-bold">3</div>
+        <div className="text-4xl font-semibold">3</div>
       </div>
       <div className="border-border bg-card border p-4">
         <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>[EMAIL_PROVIDER]:</div>
-        <div className="text-3xl font-bold">Resend</div>
+        <div className="text-4xl font-semibold">Resend</div>
       </div>
       <div className="border-border bg-card border p-4">
         <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>[COMPATIBILITY]:</div>
-        <div className="text-3xl font-bold">100%</div>
+        <div className="text-4xl font-semibold">100%</div>
       </div>
     </div>
   );

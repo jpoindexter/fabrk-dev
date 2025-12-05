@@ -14,7 +14,7 @@ export default function ContainerPage() {
       mainPreview={{
         preview: (
           <Container className="border border-border bg-card">
-            <div className="rounded-none border border-dashed border-muted-foreground/30 p-4 font-mono text-sm text-muted-foreground">
+            <div className="rounded-none border border-dashed border-muted-foreground/30 p-4">
               <span className="text-primary">&gt;</span> Container with default size (2xl)
             </div>
           </Container>
@@ -29,7 +29,7 @@ export default function ContainerPage() {
           description: "Compact container for focused content (640px max).",
           preview: (
             <Container size="sm" className="border border-border bg-card">
-              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4 font-mono text-sm text-muted-foreground">
+              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4">
                 max-w-screen-sm
               </div>
             </Container>
@@ -43,7 +43,7 @@ export default function ContainerPage() {
           description: "Medium width for articles and forms (768px max).",
           preview: (
             <Container size="md" className="border border-border bg-card">
-              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4 font-mono text-sm text-muted-foreground">
+              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4">
                 max-w-screen-md
               </div>
             </Container>
@@ -57,7 +57,7 @@ export default function ContainerPage() {
           description: "Large container for dashboards (1024px max).",
           preview: (
             <Container size="lg" className="border border-border bg-card">
-              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4 font-mono text-sm text-muted-foreground">
+              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4">
                 max-w-screen-lg
               </div>
             </Container>
@@ -71,7 +71,7 @@ export default function ContainerPage() {
           description: "Wide container for data tables (1280px max).",
           preview: (
             <Container size="xl" className="border border-border bg-card">
-              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4 font-mono text-sm text-muted-foreground">
+              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4">
                 max-w-screen-xl
               </div>
             </Container>
@@ -85,7 +85,7 @@ export default function ContainerPage() {
           description: "Maximum width for full layouts (1536px max).",
           preview: (
             <Container size="2xl" className="border border-border bg-card">
-              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4 font-mono text-sm text-muted-foreground">
+              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4">
                 max-w-screen-2xl
               </div>
             </Container>
@@ -99,7 +99,7 @@ export default function ContainerPage() {
           description: "Optimized for long-form reading (65ch max).",
           preview: (
             <Container size="prose" className="border border-border bg-card">
-              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4 font-mono text-sm text-muted-foreground">
+              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4">
                 max-w-prose
               </div>
             </Container>
@@ -113,7 +113,7 @@ export default function ContainerPage() {
           description: "Remove horizontal padding for custom spacing.",
           preview: (
             <Container padding="none" className="border border-border bg-card">
-              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4 font-mono text-sm text-muted-foreground">
+              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4">
                 No padding applied
               </div>
             </Container>
@@ -127,7 +127,7 @@ export default function ContainerPage() {
           description: "Render as semantic <main> element.",
           preview: (
             <Container as="main" className="border border-border bg-card">
-              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4 font-mono text-sm text-muted-foreground">
+              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4">
                 &lt;main&gt; element
               </div>
             </Container>

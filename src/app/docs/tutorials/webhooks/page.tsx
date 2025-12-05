@@ -89,7 +89,7 @@ curl -X POST http://localhost:3000/api/test-webhook \\
     >
       <DocsSection title="Webhook Headers">
         <DocsCard title="HEADERS">
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+          <div className="space-y-1">
             <div>├─ <code className="bg-muted px-1 font-mono text-xs">X-Webhook-Signature</code> - HMAC-SHA256 signature</div>
             <div>├─ <code className="bg-muted px-1 font-mono text-xs">X-Webhook-Event</code> - Event type</div>
             <div>├─ <code className="bg-muted px-1 font-mono text-xs">X-Webhook-Delivery-ID</code> - Unique delivery ID</div>
@@ -101,7 +101,7 @@ curl -X POST http://localhost:3000/api/test-webhook \\
 
       <DocsSection title="Retry Schedule">
         <DocsCard title="RETRY_SCHEDULE">
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+          <div className="space-y-1">
             <div>├─ <strong>Attempt 1:</strong> Immediate</div>
             <div>├─ <strong>Retry 1:</strong> After 1 minute</div>
             <div>├─ <strong>Retry 2:</strong> After 5 minutes</div>

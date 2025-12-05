@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
 import { Layers, Shield, Database, Workflow } from "lucide-react";
 
 export const metadata = {
@@ -151,12 +150,11 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
       <DocsSection title="Core Components">
         <div className="grid gap-4 sm:grid-cols-2">
           <DocsCard title="AUTH_SECURITY">
-            <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Authentication & Security</h4>
-            <p className={`${docsTypography.body} mb-4`}>
+            <p className="mb-4">
               Built on NextAuth.js v5. Sessions are stateless (JWT) by default for edge
               compatibility, but can be database-persisted for strict session management.
             </p>
-            <div className="text-muted-foreground space-y-1 font-mono text-xs leading-relaxed">
+            <div className="space-y-1">
               <div>├─ Role-Based Access Control (RBAC)</div>
               <div>├─ Middleware protection for routes</div>
               <div>└─ CSRF & Rate Limiting pre-configured</div>
@@ -164,12 +162,11 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
           </DocsCard>
 
           <DocsCard title="DATABASE_LAYER">
-            <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Database Layer</h4>
-            <p className={`${docsTypography.body} mb-4`}>
+            <p className="mb-4">
               Prisma ORM provides a type-safe interface to PostgreSQL. We use a &quot;Service
               Layer&quot; pattern to abstract database logic from UI components.
             </p>
-            <div className="text-muted-foreground space-y-1 font-mono text-xs leading-relaxed">
+            <div className="space-y-1">
               <div>├─ Automated migrations</div>
               <div>├─ Connection pooling (serverless ready)</div>
               <div>└─ Zod schema validation</div>
@@ -181,11 +178,11 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
       {/* Data Flow */}
       <DocsSection title="Data Flow & Patterns">
         <DocsCard title="DATA_FLOW">
-          <p className={`${docsTypography.body} mb-4`}>
+          <p className="mb-4">
             We strictly follow unidirectional data flow. Server Actions are used for mutations,
             while React Server Components (RSC) handle data fetching.
           </p>
-          <div className="text-muted-foreground space-y-1 font-mono text-xs leading-relaxed">
+          <div className="space-y-1">
             <div>├─ RSC for data fetching (no useEffect)</div>
             <div>├─ Server Actions for mutations</div>
             <div>├─ revalidatePath for cache invalidation</div>
@@ -197,22 +194,13 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
       {/* Scalability */}
       <DocsSection title="Scalability Considerations">
         <DocsCard title="SCALABILITY">
-          <p className={`${docsTypography.body} mb-4`}>
+          <p className="mb-4">
             Fabrk is designed to scale from 0 to 1M+ users without major refactoring.
           </p>
-          <div className="text-muted-foreground space-y-1 font-mono text-xs leading-relaxed">
-            <div>
-              ├─ <span className="text-foreground">Edge Caching:</span> Static assets and ISR pages
-              cached at the edge
-            </div>
-            <div>
-              ├─ <span className="text-foreground">Serverless Database:</span> Compatible with
-              Neon/Supabase for auto-scaling
-            </div>
-            <div>
-              └─ <span className="text-foreground">Job Queues:</span> Background jobs decoupled
-              using Inngest (optional)
-            </div>
+          <div className="space-y-1">
+            <div>├─ Edge Caching: Static assets and ISR pages cached at the edge</div>
+            <div>├─ Serverless Database: Compatible with Neon/Supabase for auto-scaling</div>
+            <div>└─ Job Queues: Background jobs decoupled using Inngest (optional)</div>
           </div>
         </DocsCard>
       </DocsSection>

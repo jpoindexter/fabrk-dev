@@ -127,12 +127,12 @@ export const headingHierarchy = {
   // -------------------------------------------------------------------------
   app: {
     h1: {
-      tailwind: "text-4xl font-bold tracking-tight",
+      tailwind: "text-4xl font-semibold tracking-tight",
       description: "Page title - largest heading in the app",
       example: "Dashboard, Settings, Profile",
     },
     h2: {
-      tailwind: "text-3xl font-bold",
+      tailwind: "text-2xl font-semibold",
       description: "Section title - major sections on a page",
       example: "Recent Activity, Account Settings",
     },
@@ -163,7 +163,7 @@ export const headingHierarchy = {
   // -------------------------------------------------------------------------
   docs: {
     h1: {
-      tailwind: "text-3xl font-bold tracking-tight",
+      tailwind: "text-4xl font-semibold tracking-tight",
       description: "Doc page title",
       example: "Getting Started, Button Component",
     },

@@ -39,7 +39,7 @@ function PricingDemo() {
         <span className="inline-block border border-border bg-card px-4 py-1 font-mono text-xs text-muted-foreground">
           [ [0x30] PRICING ] SELECT_PLAN
         </span>
-        <h2 className="mt-4 font-mono text-xl font-bold">CHOOSE_YOUR_PLAN</h2>
+        <h2 className="mt-4 font-mono text-xl font-semibold">CHOOSE_YOUR_PLAN</h2>
       </div>
       <div className="grid gap-4 md:grid-cols-3">
         {plans.map((plan) => (
@@ -52,7 +52,7 @@ function PricingDemo() {
             )}
             <div className="mb-4">
               <span className="font-mono text-xs text-muted-foreground">{plan.name}</span>
-              <div className="mt-1 font-mono text-2xl font-bold">
+              <div className="mt-1 font-mono text-2xl font-semibold">
                 {plan.price}<span className="text-sm text-muted-foreground">{plan.period}</span>
               </div>
             </div>
@@ -84,7 +84,7 @@ function PricingCardDemo() {
       <span className="mb-2 inline-block font-mono text-xs text-primary">[RECOMMENDED]</span>
       <div className="mb-4">
         <span className="font-mono text-xs text-muted-foreground">LIFETIME</span>
-        <div className="mt-1 font-mono text-3xl font-bold">
+        <div className="mt-1 font-mono text-4xl font-semibold">
           $299<span className="text-sm text-muted-foreground"> one-time</span>
         </div>
       </div>
@@ -129,7 +129,7 @@ export default function LandingPage() {
   <CardHeader>
     <Badge>RECOMMENDED</Badge>
     <CardTitle>LIFETIME</CardTitle>
-    <div className="text-3xl font-bold">$299</div>
+    <div className="text-4xl font-semibold">$299</div>
   </CardHeader>
   <CardContent>
     <ul className="space-y-2">

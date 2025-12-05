@@ -14,7 +14,7 @@ export function FeedbackSection() {
     <section id="feedback" className="space-y-6">
       <div>
         <span className="text-xs text-muted-foreground">[0x50]</span>
-        <h2 className="text-2xl font-bold tracking-tight">FEEDBACK</h2>
+        <h2 className="text-2xl font-semibold tracking-tight">FEEDBACK</h2>
         <p className="text-xs text-muted-foreground">&gt; Alerts, badges, and status indicators</p>
       </div>
 

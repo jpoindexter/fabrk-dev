@@ -968,7 +968,7 @@ return greeting;`}
                   </PopoverTrigger>
                   <PopoverContent>
                     <div className="space-y-2">
-                      <h4 className={cn("text-sm font-medium", mode.font)}>Popover Title</h4>
+                      <h4 className={cn("text-sm font-semibold", mode.font)}>Popover Title</h4>
                       <p className="text-muted-foreground text-sm">Popover content goes here.</p>
                     </div>
                   </PopoverContent>
@@ -984,7 +984,7 @@ return greeting;`}
                   </HoverCardTrigger>
                   <HoverCardContent>
                     <div className="space-y-2">
-                      <h4 className={cn("text-sm font-medium", mode.font)}>HoverCard Title</h4>
+                      <h4 className={cn("text-sm font-semibold", mode.font)}>HoverCard Title</h4>
                       <p className="text-muted-foreground text-sm">HoverCard content on hover.</p>
                     </div>
                   </HoverCardContent>

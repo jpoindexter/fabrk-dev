@@ -84,7 +84,7 @@ export function EnterpriseFeaturesSection() {
             viewport={{ once: true }}
           >
             <span className="text-muted-foreground text-xs">[0x00]</span>
-            <h2 className="mb-4 text-2xl font-bold tracking-tight">
+            <h2 className="mb-4 text-2xl font-semibold tracking-tight">
               BUILT_FOR_SCALE_SECURITY_AND_TEAMS
             </h2>
           </motion.div>
@@ -139,7 +139,7 @@ export function EnterpriseFeaturesSection() {
                     <BarChart className="text-primary h-6 w-6" />
                   ) : null}
                 </div>
-                <h3 className="mb-4 text-sm font-bold">
+                <h3 className="mb-4 text-sm font-semibold">
                   {feature.title.toUpperCase().replace(/ /g, "_").replace(/\+/g, "_AND_")}
                 </h3>
                 <span className="text-muted-foreground block text-xs">{feature.description}</span>

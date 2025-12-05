@@ -169,7 +169,7 @@ export function ApiKeyGenerator({
               <div className="flex gap-2">
                 <AlertTriangle className="text-warning mt-0.5 h-4 w-4 flex-shrink-0" />
                 <div className="flex-1 space-y-1">
-                  <p className="text-foreground text-xs font-bold">Keep this secret!</p>
+                  <p className="text-foreground text-xs font-semibold">Keep this secret!</p>
                   <p className="text-muted-foreground text-xs">
                     Never share your API key or commit it to version control. Anyone with this key
                     can access your account.
@@ -234,7 +234,7 @@ export function ApiKeyGenerator({
                 </div>
               </div>
               <div className="space-y-1">
-                <p className="text-foreground font-bold">No API key generated</p>
+                <p className="text-foreground font-semibold">No API key generated</p>
                 <p className="text-muted-foreground text-sm">
                   Generate an API key to start using the API
                 </p>
@@ -252,7 +252,7 @@ export function ApiKeyGenerator({
         {/* Usage Example */}
         {apiKey && (
           <div className="space-y-2">
-            <p className="text-foreground text-xs font-bold">Usage Example:</p>
+            <p className="text-foreground text-xs font-semibold">Usage Example:</p>
             <div
               className={cn("border-border bg-muted/50 border p-4 text-xs", mode.radius, mode.font)}
             >

@@ -21,7 +21,7 @@ export function QualitySection() {
           className="text-center mb-12"
         >
           <span className="text-xs text-muted-foreground">[0x20]</span>
-          <h2 className="text-2xl font-bold tracking-tight mb-4">PRODUCTION_QUALITY</h2>
+          <h2 className="text-2xl font-semibold tracking-tight mb-4">PRODUCTION_QUALITY</h2>
           <p className="text-sm text-muted-foreground">
             Not just boilerplate. Enterprise-grade code with comprehensive testing.
           </p>
@@ -36,7 +36,7 @@ export function QualitySection() {
             className="border border-border bg-card p-6"
           >
             <TestTube className="size-8 text-primary mb-4" />
-            <h3 className="text-lg font-bold mb-2">130+_TESTS</h3>
+            <h3 className="text-lg font-semibold mb-2">130+_TESTS</h3>
             <span className="block text-xs text-muted-foreground">
               Vitest unit tests and Playwright E2E tests. Every critical flow tested.
             </span>
@@ -50,7 +50,7 @@ export function QualitySection() {
             className="border border-border bg-card p-6"
           >
             <Terminal className="size-8 text-primary mb-4" />
-            <h3 className="text-lg font-bold mb-2">TYPESCRIPT_STRICT</h3>
+            <h3 className="text-lg font-semibold mb-2">TYPESCRIPT_STRICT</h3>
             <span className="block text-xs text-muted-foreground">
               100% TypeScript with strict mode. No any types. Full type safety.
             </span>
@@ -64,7 +64,7 @@ export function QualitySection() {
             className="border border-border bg-card p-6"
           >
             <BookOpen className="size-8 text-primary mb-4" />
-            <h3 className="text-lg font-bold mb-2">400KB_DOCS</h3>
+            <h3 className="text-lg font-semibold mb-2">400KB_DOCS</h3>
             <span className="block text-xs text-muted-foreground">
               24 comprehensive guides covering every feature. No guesswork.
             </span>

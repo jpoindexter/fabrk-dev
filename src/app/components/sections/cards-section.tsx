@@ -12,7 +12,7 @@ export function CardsSection() {
     <section id="cards" className="space-y-6">
       <div>
         <span className="text-xs text-muted-foreground">[0x30]</span>
-        <h2 className="text-2xl font-bold tracking-tight">CARDS</h2>
+        <h2 className="text-2xl font-semibold tracking-tight">CARDS</h2>
         <p className="text-xs text-muted-foreground">&gt; Content containers with subtle shadows</p>
       </div>
 

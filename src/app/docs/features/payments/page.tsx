@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsCallout } from "@/components/docs";
-import { docsTypography, docsSpacing } from "@/components/docs";
 import Link from "next/link";
 import { CreditCard, RefreshCw, Clock, Users, Bell, Shield } from "lucide-react";
 
@@ -146,8 +145,8 @@ export function ManageBillingButton() {
         <DocsCard title="WHY_STRIPE">
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="space-y-2">
-              <h3 className={`uppercase ${docsTypography.h4}`}>For You</h3>
-              <ul className={`${docsTypography.body} space-y-1`}>
+              For You
+              <ul className="space-y-1">
                 <li>• No need to handle credit card security</li>
                 <li>• Instant access to payment data/analytics</li>
                 <li>• Automatic invoices and receipts</li>
@@ -155,8 +154,8 @@ export function ManageBillingButton() {
               </ul>
             </div>
             <div className="space-y-2">
-              <h3 className={`uppercase ${docsTypography.h4}`}>For Your Customers</h3>
-              <ul className={`${docsTypography.body} space-y-1`}>
+              For Your Customers
+              <ul className="space-y-1">
                 <li>• Trusted, familiar checkout experience</li>
                 <li>• Apple Pay, Google Pay support</li>
                 <li>• Self-serve subscription management</li>
@@ -173,10 +172,10 @@ export function ManageBillingButton() {
           When Stripe processes a payment, it &quot;rings your doorbell&quot; (sends a webhook) to let you know something happened. Your app answers the door and takes appropriate action. Without webhooks, you&apos;d have to constantly ask Stripe &quot;did anyone pay yet?&quot; - which is inefficient and slow. With webhooks, Stripe tells you instantly.
         </DocsCallout>
         <DocsCard title="WEBHOOK_EVENTS">
-          <p className={docsTypography.body}>
-            Common webhook events: <code className={docsTypography.code}>checkout.session.completed</code> (someone paid),
-            <code className={`${docsTypography.code} ml-1`}>customer.subscription.deleted</code> (someone cancelled),
-            <code className={`${docsTypography.code} ml-1`}>invoice.payment_failed</code> (payment didn&apos;t go through).
+          <p className="">
+            Common webhook events: <code className="bg-muted px-1">checkout.session.completed</code> (someone paid),
+            <code className="bg-muted px-1 ml-1">customer.subscription.deleted</code> (someone cancelled),
+            <code className="bg-muted px-1 ml-1">invoice.payment_failed</code> (payment didn&apos;t go through).
           </p>
         </DocsCard>
       </DocsSection>
@@ -184,29 +183,29 @@ export function ManageBillingButton() {
       {/* Testing Payments */}
       <DocsSection title="Testing Payments">
         <DocsCard title="TEST_CARDS">
-          <p className={docsTypography.body}>
+          <p className="">
             Always test payments before going live. Stripe provides test card numbers that simulate different scenarios without charging real money.
           </p>
-          <h3 className={`uppercase ${docsTypography.h4} mt-4`}>Test Card Numbers</h3>
+          Test Card Numbers
           <div className="space-y-2 text-sm mt-2">
             <div className="flex justify-between border-b border-border pb-2">
               <span className="text-muted-foreground">Successful payment</span>
-              <code className={docsTypography.code}>4242 4242 4242 4242</code>
+              <code className="bg-muted px-1">4242 4242 4242 4242</code>
             </div>
             <div className="flex justify-between border-b border-border pb-2">
               <span className="text-muted-foreground">Card declined</span>
-              <code className={docsTypography.code}>4000 0000 0000 0002</code>
+              <code className="bg-muted px-1">4000 0000 0000 0002</code>
             </div>
             <div className="flex justify-between border-b border-border pb-2">
               <span className="text-muted-foreground">Requires authentication</span>
-              <code className={docsTypography.code}>4000 0025 0000 3155</code>
+              <code className="bg-muted px-1">4000 0025 0000 3155</code>
             </div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">Insufficient funds</span>
-              <code className={docsTypography.code}>4000 0000 0000 9995</code>
+              <code className="bg-muted px-1">4000 0000 0000 9995</code>
             </div>
           </div>
-          <p className={`${docsTypography.caption} mt-4`}>
+          <p className="text-sm mt-4">
             Use any future expiration date, any 3-digit CVC, and any billing ZIP code.
           </p>
         </DocsCard>
@@ -214,7 +213,7 @@ export function ManageBillingButton() {
 
       {/* Common Questions */}
       <DocsSection title="Common Questions">
-        <div className={docsSpacing.sectionItems}>
+        <div className="space-y-4">
           <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-mono text-sm font-medium">
               How much does Stripe charge?
@@ -265,7 +264,7 @@ export function ManageBillingButton() {
       {/* Going Live Checklist */}
       <DocsSection title="Going Live Checklist">
         <DocsCard title="GOING_LIVE">
-          <p className={`${docsTypography.body} mb-4`}>Before accepting real payments:</p>
+          <p className="mb-4">Before accepting real payments:</p>
           <ul className="space-y-2 text-sm">
             <li className="flex items-center gap-2">
               <input type="checkbox" className="rounded" readOnly />
@@ -300,15 +299,15 @@ export function ManageBillingButton() {
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/trial">
             <DocsCard title="FREE_TRIALS" className="h-full transition-all hover:border-primary/50">
-              <h3 className={`uppercase ${docsTypography.h4}`}>Free Trials</h3>
-              <p className={docsTypography.body}>
+              Free Trials
+              <p className="">
                 Let users try your product before paying with trial periods.
               </p>
             </DocsCard>
           </Link>
           <Link href="/docs/features/emails">
             <DocsCard title="TRANSACTIONAL_EMAILS" className="h-full transition-all hover:border-primary/50">
-              <p className={docsTypography.body}>
+              <p className="">
                 Send purchase confirmations and invoices to customers.
               </p>
             </DocsCard>

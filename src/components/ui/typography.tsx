@@ -25,7 +25,7 @@ import { cn } from "@/lib/utils";
  *
  * Used for: Page titles, hero headings, main section headings
  * Scale: text-5xl (responsive: sm:text-4xl md:text-5xl lg:text-6xl)
- * Weight: font-bold
+ * Weight: font-semibold
  * Line Height: leading-tight
  * Color: text-foreground
  *
@@ -40,7 +40,7 @@ export const H1 = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTML
     <h1
       ref={ref}
       className={cn(
-        "text-foreground text-4xl leading-tight font-bold sm:text-5xl md:text-5xl lg:text-6xl",
+        "text-foreground text-4xl leading-tight font-semibold sm:text-5xl md:text-5xl lg:text-6xl",
         className
       )}
       {...props}
@@ -56,7 +56,7 @@ H1.displayName = "H1";
  *
  * Used for: Major section headings, content area titles
  * Scale: text-3xl (responsive: sm:text-3xl md:text-4xl)
- * Weight: font-bold
+ * Weight: font-semibold
  * Line Height: leading-tight
  * Color: text-foreground
  *
@@ -71,7 +71,7 @@ export const H2 = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTML
     <h2
       ref={ref}
       className={cn(
-        "text-foreground text-3xl leading-tight font-bold sm:text-3xl md:text-4xl",
+        "text-foreground text-3xl leading-tight font-semibold sm:text-3xl md:text-4xl",
         className
       )}
       {...props}

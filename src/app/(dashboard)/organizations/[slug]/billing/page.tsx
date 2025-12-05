@@ -113,7 +113,7 @@ export default function OrganizationBillingPage() {
       <Card className={cn("border-border border", mode.radius)}>
         <CardContent className="py-12">
           <div className="text-center">
-            <h3 className="text-lg font-medium">Organization not found</h3>
+            <h3 className="text-lg font-semibold">Organization not found</h3>
             <Button onClick={() => router.push("/dashboard")} className="mt-4">
               Back to Dashboard
             </Button>

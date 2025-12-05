@@ -50,7 +50,7 @@ export function DocsStep({
       {/* Tip */}
       {tip && (
         <p className={`border-l-2 border-primary/50 pl-4 ${docsTypography.caption}`}>
-          <span className="font-bold uppercase text-primary">Tip:</span> {tip}
+          <span className="font-semibold uppercase text-primary">Tip:</span> {tip}
         </p>
       )}
 

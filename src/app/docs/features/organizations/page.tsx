@@ -1,7 +1,6 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard } from "@/components/docs";
 import { CodeBlock } from "@/components/ui/code-block";
-import { docsTypography } from "@/components/docs";
 import { Users, CreditCard, LayoutDashboard, Shield } from "lucide-react";
 
 export const metadata = {
@@ -185,8 +184,8 @@ export async function checkPermission(
       {/* Database Schema Section */}
       <DocsSection title="Database Schema">
         <DocsCard title="DATABASE_SCHEMA">
-          <p className={docsTypography.body}>
-            Core models in <code className={docsTypography.code}>prisma/schema.prisma</code>:
+          <p className="">
+            Core models in <code className="bg-muted px-1">prisma/schema.prisma</code>:
           </p>
           <CodeBlock
             language="prisma"
@@ -316,10 +315,10 @@ model OrganizationInvite {
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
         <DocsCard title="BEST_PRACTICES">
-          <ul className="font-mono text-sm text-muted-foreground space-y-1">
+          <ul className="space-y-1">
             <li>├─ Always check permissions before any organization action</li>
             <li>├─ Use database transactions for multi-step operations</li>
-            <li>├─ Scope all queries by <code className={docsTypography.code}>organizationId</code></li>
+            <li>├─ Scope all queries by <code className="bg-muted px-1">organizationId</code></li>
             <li>├─ Send email notifications for important events (invite, role change)</li>
             <li>├─ Allow users to belong to multiple organizations</li>
             <li>├─ Implement organization switching in the UI</li>

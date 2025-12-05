@@ -1063,7 +1063,7 @@
 
 /* Typography utility classes */
 .heading-section {
-  @apply text-primary font-mono text-lg font-bold;
+  @apply text-primary font-mono text-lg font-semibold;
 }
 
 .heading-subsection {
@@ -1076,7 +1076,7 @@
 
 /* Docs-specific heading styles with proper spacing */
 .docs-h2 {
-  @apply text-primary mt-8 mb-4 font-mono text-lg font-bold;
+  @apply text-primary mt-8 mb-4 font-mono text-lg font-semibold;
 }
 
 .docs-h3 {

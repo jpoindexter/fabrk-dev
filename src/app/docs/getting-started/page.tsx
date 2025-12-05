@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
 import { Rocket, User, CreditCard, Mail, Database, Shield } from "lucide-react";
 
 export const metadata = {
@@ -112,12 +111,12 @@ npm run db:push && npm run dev`,
       {/* What is Fabrk */}
       <DocsSection title="What Is Fabrk?">
         <DocsCard title="OVERVIEW">
-          <p className={`${docsTypography.body} mb-4`}>
+          <p className="mb-4">
             Fabrk is a ready-to-use foundation for building software businesses. Think of it like
             buying a house that already has the plumbing, electrical, and HVAC installed - you just
             need to decorate and move in.
           </p>
-          <p className={docsTypography.body}>
+          <p>
             Instead of spending months building user accounts, payment processing, and email systems
             from scratch, Fabrk gives you all of that working on day one. You can focus on what makes
             your product unique.
@@ -129,8 +128,7 @@ npm run db:push && npm run dev`,
       <DocsSection title="Who Is This For?">
         <div className="grid gap-4 sm:grid-cols-2">
           <DocsCard title="GREAT_FIT">
-            <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Great Fit</h4>
-            <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+            <div className="space-y-1">
               <div>├─ Developers building their first SaaS</div>
               <div>├─ Founders who can code</div>
               <div>├─ Agencies building client projects</div>
@@ -138,8 +136,7 @@ npm run db:push && npm run dev`,
             </div>
           </DocsCard>
           <DocsCard title="REQUIREMENTS">
-            <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Requirements</h4>
-            <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+            <div className="space-y-1">
               <div>├─ Basic JavaScript/TypeScript</div>
               <div>├─ Familiarity with React</div>
               <div>├─ Node.js installed</div>
@@ -154,16 +151,16 @@ npm run db:push && npm run dev`,
         <DocsCard title="TROUBLESHOOTING">
           <div className="space-y-4">
             <div>
-              <h4 className={`uppercase ${docsTypography.h4} mb-1`}>Port 3000 In Use</h4>
-              <p className={docsTypography.body}>Run on different port: <code className="bg-muted px-1 font-mono text-xs">npm run dev -- -p 3001</code></p>
+              <p className="font-semibold mb-1">PORT_3000_IN_USE</p>
+              <p>Run on different port: <code className="bg-muted px-1">npm run dev -- -p 3001</code></p>
             </div>
             <div>
-              <h4 className={`uppercase ${docsTypography.h4} mb-1`}>Cannot Connect Database</h4>
-              <p className={docsTypography.body}>Check DATABASE_URL in .env.local, ensure no extra spaces, database is running, IP allowed</p>
+              <p className="font-semibold mb-1">CANNOT_CONNECT_DATABASE</p>
+              <p>Check DATABASE_URL in .env.local, ensure no extra spaces, database is running, IP allowed</p>
             </div>
             <div>
-              <h4 className={`uppercase ${docsTypography.h4} mb-1`}>NextAuth Secret Missing</h4>
-              <p className={docsTypography.body}>Generate with: <code className="bg-muted px-1 font-mono text-xs">openssl rand -base64 32</code></p>
+              <p className="font-semibold mb-1">NEXTAUTH_SECRET_MISSING</p>
+              <p>Generate with: <code className="bg-muted px-1">openssl rand -base64 32</code></p>
             </div>
           </div>
         </DocsCard>

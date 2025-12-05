@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
 import { ToggleLeft, Percent, Users, Settings } from "lucide-react";
 
 export const metadata = {
@@ -336,8 +335,8 @@ export async function POST(
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
         <DocsCard title="BEST_PRACTICES">
-          <ul className="font-mono text-sm text-muted-foreground space-y-1">
-            <li>├─ <strong>Use descriptive keys:</strong> <code className={docsTypography.code}>new-checkout-flow</code> not <code className={docsTypography.code}>flag1</code></li>
+          <ul className="space-y-1">
+            <li>├─ <strong>Use descriptive keys:</strong> <code className="bg-muted px-1">new-checkout-flow</code> not <code className="bg-muted px-1">flag1</code></li>
             <li>├─ <strong>Start at 0%:</strong> Begin rollouts at 0% and gradually increase</li>
             <li>├─ <strong>Add kill switches:</strong> Every major feature should have a flag</li>
             <li>├─ <strong>Clean up old flags:</strong> Remove flags once features are fully rolled out</li>

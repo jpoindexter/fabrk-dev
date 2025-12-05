@@ -51,7 +51,7 @@ export function FAQSection({ faqs, title, description, className }: FAQSectionPr
       <ClientSchemaScript schema={schema} />
 
       <section className={cn("mx-auto max-w-3xl", className)}>
-        {title && <h2 className="text-foreground mb-2 text-3xl font-bold">{title}</h2>}
+        {title && <h2 className="text-foreground mb-2 text-4xl font-semibold">{title}</h2>}
         {description && <p className="text-muted-foreground mb-8 text-lg">{description}</p>}
 
         <div className="space-y-4">

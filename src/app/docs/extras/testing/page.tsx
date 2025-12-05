@@ -218,7 +218,7 @@ jobs:
       {/* Test Coverage */}
       <DocsSection title="Test Coverage">
         <DocsCard title="COVERAGE">
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+          <div className="space-y-1">
             <div>├─ 130+ total tests</div>
             <div>├─ Unit tests with Vitest</div>
             <div>├─ E2E tests with Playwright</div>
@@ -231,7 +231,7 @@ jobs:
       {/* Best Practices */}
       <DocsSection title="Testing Best Practices">
         <DocsCard title="BEST_PRACTICES">
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+          <div className="space-y-1">
             <div>├─ <strong>Test behavior, not implementation</strong> - Focus on user experience</div>
             <div>├─ <strong>Use data-testid sparingly</strong> - Prefer semantic queries</div>
             <div>├─ <strong>Mock external services</strong> - Don't hit real APIs in unit tests</div>

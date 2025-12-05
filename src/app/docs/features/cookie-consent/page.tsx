@@ -2,7 +2,6 @@
 
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsLinkCard, DocsPreview } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
 import { StyledCardHeader } from "@/components/ui/card";
 import { Cookie, Shield, Settings, Download } from "lucide-react";
 import { useState } from "react";
@@ -207,48 +206,48 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
         <div className="space-y-4">
           <DocsCard title="STEP_01">
             <div className="mb-2 flex items-center gap-4">
-              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono text-sm font-bold">
+              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono text-sm font-semibold">
                 1
               </span>
-              <h3 className={`uppercase ${docsTypography.h4}`}>First Visit</h3>
+              First Visit
             </div>
-            <p className={docsTypography.body}>
+            <p className="">
               New visitors see a &quot;Cookie Settings&quot; button in the bottom-right corner. All
               non-essential cookies are blocked until they make a choice.
             </p>
           </DocsCard>
           <DocsCard title="STEP_02">
             <div className="mb-2 flex items-center gap-4">
-              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono text-sm font-bold">
+              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono text-sm font-semibold">
                 2
               </span>
-              <h3 className={`uppercase ${docsTypography.h4}`}>User Makes Choice</h3>
+              User Makes Choice
             </div>
-            <p className={docsTypography.body}>
+            <p className="">
               Clicking the button opens a modal with three tabs: Consent (quick toggles), Details
               (see exactly which cookies), and About (their privacy rights).
             </p>
           </DocsCard>
           <DocsCard title="STEP_03">
             <div className="mb-2 flex items-center gap-4">
-              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono text-sm font-bold">
+              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono text-sm font-semibold">
                 3
               </span>
-              <h3 className={`uppercase ${docsTypography.h4}`}>Choice Saved</h3>
+              Choice Saved
             </div>
-            <p className={docsTypography.body}>
+            <p className="">
               Their preference is stored in localStorage for 1 year. Google Consent Mode is updated
               automatically, enabling/disabling analytics and ads accordingly.
             </p>
           </DocsCard>
           <DocsCard title="STEP_04">
             <div className="mb-2 flex items-center gap-4">
-              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono text-sm font-bold">
+              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono text-sm font-semibold">
                 4
               </span>
-              <h3 className={`uppercase ${docsTypography.h4}`}>Return Visits</h3>
+              Return Visits
             </div>
-            <p className={docsTypography.body}>
+            <p className="">
               The banner doesn&apos;t show again (unless they clear storage). Their saved
               preferences are applied immediately on page load.
             </p>
@@ -264,7 +263,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               <div className="bg-success mt-1 h-3 w-3 rounded-none"></div>
               <div>
                 <p className="font-medium">Necessary (Always On)</p>
-                <p className={docsTypography.body}>
+                <p className="">
                   Essential for the site to work. Includes session cookies and consent storage.
                   Cannot be disabled.
                 </p>
@@ -274,7 +273,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               <div className="bg-info mt-1 h-3 w-3 rounded-none"></div>
               <div>
                 <p className="font-medium">Preferences</p>
-                <p className={docsTypography.body}>
+                <p className="">
                   Remember settings like theme (dark/light) and language. Off by default.
                 </p>
               </div>
@@ -283,7 +282,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               <div className="bg-warning mt-1 h-3 w-3 rounded-none"></div>
               <div>
                 <p className="font-medium">Statistics</p>
-                <p className={docsTypography.body}>
+                <p className="">
                   Google Analytics and similar tools. Helps you understand how people use your app.
                   Off by default.
                 </p>
@@ -293,7 +292,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               <div className="bg-destructive mt-1 h-3 w-3 rounded-none"></div>
               <div>
                 <p className="font-medium">Marketing</p>
-                <p className={docsTypography.body}>
+                <p className="">
                   Facebook Pixel, Google Ads conversion tracking. Used for targeted advertising. Off
                   by default.
                 </p>
@@ -364,8 +363,8 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
       {/* Testing Section */}
       <DocsSection title="Testing">
         <DocsCard title="TESTING_GUIDE">
-          <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Manual Testing</h3>
-          <ol className={`list-inside list-decimal ${docsTypography.body} space-y-2`}>
+          Manual Testing
+          <ol className="list-inside list-decimal space-y-2">
             <li>Open your app in a private/incognito window</li>
             <li>You should see the &quot;Cookie Settings&quot; button (bottom-right)</li>
             <li>Click it and test each action: Accept All, Reject All, Accept Selected</li>
@@ -376,8 +375,8 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
             </li>
           </ol>
 
-          <h3 className={`uppercase ${docsTypography.h4} mt-6 mb-2`}>Verify GTM Integration</h3>
-          <ol className={`list-inside list-decimal ${docsTypography.body} space-y-2`}>
+          Verify GTM Integration
+          <ol className="list-inside list-decimal space-y-2">
             <li>Open DevTools → Console</li>
             <li>
               Type <code className="bg-muted px-1 font-mono">dataLayer</code> and press Enter

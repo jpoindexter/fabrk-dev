@@ -154,7 +154,7 @@ export default function BlogPostTemplate() {
           </Badge>
 
           {/* Title */}
-          <h1 className={cn(mode.font, "mb-6 text-3xl leading-tight font-bold md:text-4xl")}>
+          <h1 className={cn(mode.font, "mb-6 text-3xl leading-tight font-semibold md:text-4xl")}>
             {mockArticle.title}
           </h1>
 
@@ -205,7 +205,7 @@ export default function BlogPostTemplate() {
               return (
                 <h2
                   key={index}
-                  className={cn(mode.font, "border-border mt-10 border-b pb-2 text-xl font-bold")}
+                  className={cn(mode.font, "border-border mt-10 border-b pb-2 text-xl font-semibold")}
                 >
                   {block.content}
                 </h2>

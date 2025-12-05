@@ -12,7 +12,7 @@ export function PageHeader() {
       </div>
       <div>
         <span className="text-sm text-muted-foreground">FABRK_COMPONENTS:</span>
-        <h1 className="text-3xl font-bold tracking-tight">UI_COMPONENTS</h1>
+        <h1 className="text-4xl font-semibold tracking-tight">UI_COMPONENTS</h1>
       </div>
       <div className="border border-border bg-card p-4 max-w-2xl">
         <div className="mb-2 text-xs text-muted-foreground">

@@ -49,7 +49,7 @@ export function FeatureSectionLayout({
         </div>
 
         {/* Title */}
-        <h3 className={cn(mode.font, "mb-4 text-2xl font-bold")}>{title}</h3>
+        <h3 className={cn(mode.font, "mb-4 text-2xl font-semibold")}>{title}</h3>
 
         {/* Description */}
         <div className="border-border mb-6 border-l-2 pl-4">

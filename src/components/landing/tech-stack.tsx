@@ -25,7 +25,7 @@ export function TechStack() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 text-center">
           <span className="text-muted-foreground text-xs">[0x00]</span>
-          <h2 className="text-2xl font-bold tracking-tight">A_MODERN_STACK_YOU_CAN_TRUST</h2>
+          <h2 className="text-2xl font-semibold tracking-tight">A_MODERN_STACK_YOU_CAN_TRUST</h2>
         </div>
 
         <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-7">

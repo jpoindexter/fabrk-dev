@@ -178,7 +178,7 @@ export default function OrganizationSettingsPage() {
         <CardContent className="py-12">
           <div className="text-center">
             <AlertTriangle className="text-destructive mx-auto h-12 w-12" />
-            <h3 className="mt-4 text-lg font-medium">Organization not found</h3>
+            <h3 className="mt-4 text-lg font-semibold">Organization not found</h3>
             <Button onClick={() => router.push("/dashboard")} className="mt-4">
               Back to Dashboard
             </Button>
@@ -198,7 +198,7 @@ export default function OrganizationSettingsPage() {
           <SettingsIcon className="text-primary-foreground h-6 w-6" />
         </div>
         <div>
-          <h1 className="text-3xl font-bold">Organization Settings</h1>
+          <h1 className="text-4xl font-semibold">Organization Settings</h1>
           <p className="text-muted-foreground">
             Manage your organization's information and preferences
           </p>
@@ -328,7 +328,7 @@ export default function OrganizationSettingsPage() {
               )}
             >
               <div className="flex-1">
-                <h4 className="font-medium">Delete Organization</h4>
+                <h4 className="font-semibold">Delete Organization</h4>
                 <p className="text-muted-foreground mt-1 text-sm">
                   Permanently delete this organization and all associated data. This action cannot
                   be undone.

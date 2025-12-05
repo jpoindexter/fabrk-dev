@@ -30,7 +30,7 @@ function FAQDemo() {
         <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 font-mono text-xs">
           [ [0x50] KNOWLEDGE_BASE ] FAQ
         </span>
-        <h2 className="mt-4 font-mono text-xl font-bold">FREQUENTLY_ASKED_QUESTIONS</h2>
+        <h2 className="mt-4 font-mono text-xl font-semibold">FREQUENTLY_ASKED_QUESTIONS</h2>
       </div>
       <div className="space-y-2">
         {faqs.map((faq, i) => (

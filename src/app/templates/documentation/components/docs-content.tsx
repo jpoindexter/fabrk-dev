@@ -88,7 +88,7 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
                   key={idx}
                   className={cn(
                     mode.font,
-                    "text-foreground mt-8 mb-4 scroll-mt-20 text-sm font-bold"
+                    "text-foreground mt-8 mb-4 scroll-mt-20 text-sm font-semibold"
                   )}
                   id={section.content.toLowerCase().replace(/\s+/g, "-")}
                 >

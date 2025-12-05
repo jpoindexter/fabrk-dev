@@ -95,7 +95,7 @@ export function FunnelVisualizer({
                       className={cn("border-border h-3 w-3 border", mode.radius)}
                       style={{ backgroundColor: color }}
                     />
-                    <span className="text-foreground text-sm font-bold">{stage.name}</span>
+                    <span className="text-foreground text-sm font-semibold">{stage.name}</span>
                   </div>
                   {index > 0 && (
                     <Badge variant="secondary" className="text-xs font-medium">

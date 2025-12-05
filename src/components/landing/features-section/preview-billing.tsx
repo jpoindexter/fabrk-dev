@@ -92,7 +92,7 @@ export function BillingPreview() {
             </motion.span>
           </div>
           <div className="text-right">
-            <span className={cn(mode.font, "block text-lg font-bold")}>
+            <span className={cn(mode.font, "block text-lg font-semibold")}>
               <BillingCounter value={29} prefix="$" delay={0.5} />
             </span>
             <span className={cn(mode.font, "text-muted-foreground text-xs")}>/month</span>
@@ -129,7 +129,7 @@ export function BillingPreview() {
               transition={{ delay: 0.8 }}
               className={cn(
                 mode.font,
-                "border-border mt-2 flex justify-between border-t pt-2 text-xs font-bold"
+                "border-border mt-2 flex justify-between border-t pt-2 text-xs font-semibold"
               )}
             >
               <span>TOTAL</span>

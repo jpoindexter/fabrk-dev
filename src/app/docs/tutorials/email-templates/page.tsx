@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
 import { Mail, Send, Clock, Users } from "lucide-react";
 
 export const metadata = {
@@ -177,13 +176,13 @@ await sendOrganizationInvite("newmember@example.com", {
       {/* Email Types */}
       <DocsSection title="Email Types">
         <DocsCard title="EMAIL_TYPES">
-          <p className={docsTypography.body}>The queue system supports these email types for categorization:</p>
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed mt-2">
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">WELCOME</code> - Post-purchase welcome emails</div>
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">VERIFICATION</code> - Email verification</div>
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">RESET</code> - Password reset</div>
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">INVOICE</code> - Payment receipts</div>
-            <div>└─ <code className="bg-muted px-1 font-mono text-xs">NOTIFICATION</code> - General notifications</div>
+          <p className="mb-4">The queue system supports these email types for categorization:</p>
+          <div className="space-y-1">
+            <div>├─ <code className="bg-muted px-1">WELCOME</code> - Post-purchase welcome emails</div>
+            <div>├─ <code className="bg-muted px-1">VERIFICATION</code> - Email verification</div>
+            <div>├─ <code className="bg-muted px-1">RESET</code> - Password reset</div>
+            <div>├─ <code className="bg-muted px-1">INVOICE</code> - Payment receipts</div>
+            <div>└─ <code className="bg-muted px-1">NOTIFICATION</code> - General notifications</div>
           </div>
         </DocsCard>
       </DocsSection>
@@ -191,7 +190,7 @@ await sendOrganizationInvite("newmember@example.com", {
       {/* Best Practices */}
       <DocsSection title="Best Practices">
         <DocsCard title="BEST_PRACTICES">
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+          <div className="space-y-1">
             <div>├─ <strong>Use direct sending</strong> for time-sensitive emails (auth, password reset)</div>
             <div>├─ <strong>Use queuing</strong> for bulk emails, notifications, and post-purchase emails</div>
             <div>├─ <strong>Track user/purchase IDs</strong> for email analytics and debugging</div>

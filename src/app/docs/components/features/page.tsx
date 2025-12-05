@@ -20,7 +20,7 @@ function FeaturesDemo() {
         <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 font-mono text-xs">
           [ [0x20] FEATURES ] CORE_MODULES
         </span>
-        <h2 className="mt-4 font-mono text-xl font-bold">WHAT&apos;S_INCLUDED</h2>
+        <h2 className="mt-4 font-mono text-xl font-semibold">WHAT&apos;S_INCLUDED</h2>
       </div>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {features.map((feature) => (
@@ -30,7 +30,7 @@ function FeaturesDemo() {
           >
             <div className="mb-4 flex items-center gap-2">
               <feature.icon className="text-primary h-4 w-4" />
-              <span className="font-mono text-xs font-bold">{feature.title}</span>
+              <span className="font-mono text-xs font-semibold">{feature.title}</span>
             </div>
             <p className="text-muted-foreground font-mono text-xs">{feature.desc}</p>
           </div>
@@ -108,7 +108,7 @@ export default function LandingPage() {
             <div className="border-border bg-card hover:border-primary/50 max-w-sm border p-4 transition-colors">
               <div className="mb-4 flex items-center gap-2">
                 <Shield className="text-primary h-4 w-4" />
-                <span className="font-mono text-xs font-bold">AUTHENTICATION</span>
+                <span className="font-mono text-xs font-semibold">AUTHENTICATION</span>
               </div>
               <p className="text-muted-foreground font-mono text-xs">
                 NextAuth v5 with Google OAuth, credentials, and magic link support.
@@ -118,7 +118,7 @@ export default function LandingPage() {
           code: `<div className="border border-border bg-card p-4 hover:border-primary/50">
   <div className="flex items-center gap-2 mb-4">
     <Shield className="h-4 w-4 text-primary" />
-    <span className="font-mono text-xs font-bold">AUTHENTICATION</span>
+    <span className="font-mono text-xs font-semibold">AUTHENTICATION</span>
   </div>
   <p className="font-mono text-xs text-muted-foreground">
     NextAuth v5 with multiple providers

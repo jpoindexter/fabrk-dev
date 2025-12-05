@@ -31,7 +31,7 @@ export function StatsSection() {
                 <div className="inline-flex items-center justify-center bg-primary/10 p-2 mb-4">
                   <Icon className="size-5 text-primary" />
                 </div>
-                <div className="text-2xl font-bold text-foreground">{stat.value}</div>
+                <div className="text-2xl font-semibold text-foreground">{stat.value}</div>
                 <span className="text-xs text-muted-foreground">{stat.label.toUpperCase().replace(/ /g, '_')}</span>
               </motion.div>
             );

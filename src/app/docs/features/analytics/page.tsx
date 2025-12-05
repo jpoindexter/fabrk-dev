@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
 import { BarChart3, User, Video, ToggleLeft } from "lucide-react";
 
 export const metadata = {
@@ -242,8 +241,8 @@ export async function POST(req: Request) {
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
         <DocsCard title="BEST_PRACTICES">
-          <ul className="font-mono text-sm text-muted-foreground space-y-1">
-            <li>├─ <strong>Use consistent naming:</strong> Follow a convention like <code className={docsTypography.code}>object_action</code></li>
+          <ul className="space-y-1">
+            <li>├─ <strong>Use consistent naming:</strong> Follow a convention like <code className="bg-muted px-1">object_action</code></li>
             <li>├─ <strong>Don&apos;t over-track:</strong> Focus on meaningful events that inform decisions</li>
             <li>├─ <strong>Include context:</strong> Add properties that help segment and analyze</li>
             <li>├─ <strong>Respect privacy:</strong> Don&apos;t track PII unless necessary</li>

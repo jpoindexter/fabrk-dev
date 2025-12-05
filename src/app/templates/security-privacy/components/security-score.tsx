@@ -35,7 +35,7 @@ export function SecurityScore({ user }: SecurityScoreProps) {
             <div
               className={cn(
                 mode.font,
-                "border-border bg-primary/10 text-primary flex h-16 w-16 items-center justify-center border text-xl font-bold"
+                "border-border bg-primary/10 text-primary flex h-16 w-16 items-center justify-center border text-xl font-semibold"
               )}
             >
               75%

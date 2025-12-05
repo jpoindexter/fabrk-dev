@@ -26,7 +26,7 @@ export function FormsSection() {
     <section id="forms" className="space-y-6">
       <div>
         <span className="text-muted-foreground text-xs">[0x20]</span>
-        <h2 className="text-2xl font-bold tracking-tight">FORM_COMPONENTS</h2>
+        <h2 className="text-2xl font-semibold tracking-tight">FORM_COMPONENTS</h2>
         <p className="text-muted-foreground text-xs">
           &gt; Input elements with clean borders and focus states
         </p>

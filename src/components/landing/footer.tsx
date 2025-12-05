@@ -69,7 +69,7 @@ export function Footer() {
                 className="mb-4 flex items-center gap-2 font-mono transition-opacity hover:opacity-80"
               >
                 <span className="text-primary text-sm">&gt;</span>
-                <span className="text-xl font-bold tracking-tight">FABRK</span>
+                <span className="text-xl font-semibold tracking-tight">FABRK</span>
               </Link>
               <div className="mt-4 flex items-center gap-2">
                 <span className="text-muted-foreground font-mono text-xs">└─ [STATUS]:</span>

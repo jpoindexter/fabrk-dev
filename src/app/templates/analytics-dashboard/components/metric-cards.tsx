@@ -30,7 +30,7 @@ export function MetricCards({ metrics }: MetricCardsProps) {
             <div className={cn(mode.font, "text-muted-foreground text-xs")}>[{metric.title}]:</div>
             <metric.icon className="text-muted-foreground h-4 w-4" />
           </div>
-          <div className="text-3xl font-bold">{metric.value}</div>
+          <div className="text-4xl font-semibold">{metric.value}</div>
           <div className={cn(mode.font, "mt-2 flex items-center gap-2 text-xs")}>
             <span className={metric.trend === "up" ? "text-success" : "text-destructive"}>
               {metric.trend === "up" ? (

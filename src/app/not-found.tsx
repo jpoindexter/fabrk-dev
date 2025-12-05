@@ -21,14 +21,14 @@ export default function NotFound() {
 
         {/* 404 Display */}
         <div className="mb-8">
-          <h1 className="text-8xl font-bold tracking-tighter text-foreground md:text-9xl">
+          <h1 className="text-8xl font-semibold tracking-tighter text-foreground md:text-9xl">
             404
           </h1>
           <div className="mx-auto mt-4 h-0.5 w-24 bg-foreground/20"></div>
         </div>
 
         {/* Error Message */}
-        <h2 className="mb-4 text-xl font-bold uppercase tracking-wider text-foreground">
+        <h2 className="mb-4 text-xl font-semibold uppercase tracking-wider text-foreground">
           PAGE_NOT_FOUND
         </h2>
         <p className="mb-2 text-sm text-foreground/60">

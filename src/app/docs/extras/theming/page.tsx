@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
 import { Card, CardContent } from "@/components/ui/card";
 import { Palette, Sun, Moon, Sparkles } from "lucide-react";
 
@@ -128,12 +127,12 @@ const themes = [
       {/* Theme System */}
       <DocsSection title="Theme System">
         <DocsCard title="THEME_SYSTEM">
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-            <div>├─ <strong>20 Color Themes:</strong> Inspired by DaisyUI's theme system</div>
-            <div>├─ <strong>Light/Dark Mode:</strong> Automatic dark mode with next-themes</div>
-            <div>├─ <strong>Persistent:</strong> Theme choice saved to localStorage</div>
-            <div>├─ <strong>No Flash:</strong> Pre-hydration loading prevents theme flash</div>
-            <div>└─ <strong>Tailwind v4 Native:</strong> Works seamlessly with Tailwind CSS v4</div>
+          <div className="space-y-1">
+            <div>├─ 20 Color Themes: Inspired by DaisyUI&apos;s theme system</div>
+            <div>├─ Light/Dark Mode: Automatic dark mode with next-themes</div>
+            <div>├─ Persistent: Theme choice saved to localStorage</div>
+            <div>├─ No Flash: Pre-hydration loading prevents theme flash</div>
+            <div>└─ Tailwind v4 Native: Works seamlessly with Tailwind CSS v4</div>
           </div>
         </DocsCard>
       </DocsSection>
@@ -163,8 +162,8 @@ const themes = [
                     style={{ backgroundColor: theme.color }}
                   />
                   <div>
-                    <div className={docsTypography.label}>{theme.name}</div>
-                    <div className={docsTypography.caption}>{theme.desc}</div>
+                    <div className="font-mono text-xs">{theme.name}</div>
+                    <div className="font-mono text-xs text-muted-foreground">{theme.desc}</div>
                   </div>
                 </div>
               </CardContent>
@@ -176,11 +175,11 @@ const themes = [
       {/* Best Practices */}
       <DocsSection title="Best Practices">
         <DocsCard title="BEST_PRACTICES">
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-            <div>├─ <strong>Use semantic colors:</strong> bg-primary instead of bg-purple-500</div>
-            <div>├─ <strong>Test across themes:</strong> Verify UI works in light and dark variants</div>
-            <div>├─ <strong>Default to Light:</strong> Clean, neutral starting point</div>
-            <div>└─ <strong>Customize themes:</strong> Modify colors in globals.css [data-theme] selectors</div>
+          <div className="space-y-1">
+            <div>├─ Use semantic colors: bg-primary instead of bg-purple-500</div>
+            <div>├─ Test across themes: Verify UI works in light and dark variants</div>
+            <div>├─ Default to Light: Clean, neutral starting point</div>
+            <div>└─ Customize themes: Modify colors in globals.css [data-theme] selectors</div>
           </div>
         </DocsCard>
       </DocsSection>
@@ -188,12 +187,12 @@ const themes = [
       {/* Architecture */}
       <DocsSection title="Architecture">
         <DocsCard title="ARCHITECTURE">
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-            <div>├─ <strong>ThemeDropdown</strong> - Navbar component for theme selection</div>
-            <div>├─ <strong>ColorThemeSwitcher</strong> - Full-page grid for settings</div>
-            <div>├─ <strong>globals.css</strong> - All 20 theme CSS variable definitions</div>
-            <div>├─ <strong>layout.tsx</strong> - Pre-hydration script prevents flash</div>
-            <div>└─ <strong>localStorage</strong> - Persists user preference (key: 'theme')</div>
+          <div className="space-y-1">
+            <div>├─ ThemeDropdown - Navbar component for theme selection</div>
+            <div>├─ ColorThemeSwitcher - Full-page grid for settings</div>
+            <div>├─ globals.css - All 20 theme CSS variable definitions</div>
+            <div>├─ layout.tsx - Pre-hydration script prevents flash</div>
+            <div>└─ localStorage - Persists user preference (key: theme)</div>
           </div>
         </DocsCard>
       </DocsSection>

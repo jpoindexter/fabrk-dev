@@ -48,7 +48,7 @@ export function PricingSection() {
             </div>
 
             <h2 className={cn("text-primary mb-2 text-sm", mode.font)}>FABRK_STARTER</h2>
-            <h3 className={cn("mb-6 text-3xl font-bold tracking-tight lg:text-4xl", mode.font)}>
+            <h3 className={cn("mb-6 text-4xl font-semibold tracking-tight", mode.font)}>
               ONE_TIME_PURCHASE.
               <br />
               <span className="text-muted-foreground">UNLIMITED_PROJECTS.</span>
@@ -108,7 +108,7 @@ export function PricingSection() {
                       {config.pricing.fabrk.display.original}
                     </span>
                     <span className={cn("text-muted-foreground text-xs", mode.font)}>→</span>
-                    <span className={cn("text-foreground text-4xl font-bold", mode.font)}>
+                    <span className={cn("text-foreground text-4xl font-semibold", mode.font)}>
                       {config.pricing.fabrk.display.current}
                     </span>
                   </div>

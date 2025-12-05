@@ -72,7 +72,7 @@ export function TestimonialsSection() {
             viewport={{ once: true }}
           >
             <span className="text-muted-foreground text-xs">[0x00]</span>
-            <h2 className="mb-4 text-2xl font-bold tracking-tight">LOVED_BY_DEVELOPERS</h2>
+            <h2 className="mb-4 text-2xl font-semibold tracking-tight">LOVED_BY_DEVELOPERS</h2>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}

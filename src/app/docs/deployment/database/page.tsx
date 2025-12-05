@@ -207,12 +207,12 @@ psql $DATABASE_URL < backup.sql`,
       {/* Database Providers */}
       <DocsSection title="Database Providers">
         <DocsCard title="PROVIDERS">
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+          <div className="space-y-1">
             <div>├─ <code className="bg-muted px-1 font-mono text-xs">Supabase</code> - Free tier, great DX (recommended)</div>
             <div>├─ <code className="bg-muted px-1 font-mono text-xs">Neon</code> - Serverless PostgreSQL with branching</div>
             <div>├─ <code className="bg-muted px-1 font-mono text-xs">Railway</code> - Simple and affordable</div>
             <div>├─ <code className="bg-muted px-1 font-mono text-xs">PlanetScale</code> - MySQL alternative</div>
-            <div>└─ <code className="bg-muted px-1 font-mono text-xs">AWS RDS</code> - Enterprise-grade</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">AWS RDS</code> - Enterprise-grade</div>
           </div>
         </DocsCard>
       </DocsSection>
@@ -220,7 +220,7 @@ psql $DATABASE_URL < backup.sql`,
       {/* Performance Tips */}
       <DocsSection title="Performance Tips">
         <DocsCard title="PERFORMANCE">
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+          <div className="space-y-1">
             <div>├─ Add indexes - Index frequently queried columns: <code className="bg-muted px-1 font-mono text-xs">@@index([userId, createdAt])</code></div>
             <div>├─ Use select - Only fetch needed fields</div>
             <div>├─ Batch operations - Use createMany/updateMany for multiple records</div>

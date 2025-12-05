@@ -127,7 +127,7 @@ export function InviteMembersStep({
             />
 
             <div className={cn("border-border bg-muted border p-4", mode.radius)}>
-              <h4 className="mb-2 font-medium">Role Permissions:</h4>
+              <h4 className="mb-2 font-semibold">Role Permissions:</h4>
               <ul className="text-muted-foreground space-y-1 text-sm">
                 <li>
                   • <strong>OWNER</strong>: Full control (assigned to creator)

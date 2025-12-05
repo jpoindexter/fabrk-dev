@@ -62,7 +62,7 @@ export default async function SecurityPage() {
             Back to Settings
           </Button>
         </Link>
-        <h1 className="text-4xl font-bold mb-2">Security Settings</h1>
+        <h1 className="text-4xl font-semibold mb-2">Security Settings</h1>
         <p className="text-muted-foreground text-lg">
           Manage your account security and authentication methods
         </p>

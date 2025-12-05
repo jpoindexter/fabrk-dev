@@ -82,7 +82,7 @@ export function PricingComparison({
             )}
           >
             {plan.popular && (
-              <div className="bg-primary text-primary-foreground absolute top-6 -right-12 rotate-45 px-12 py-1 text-xs font-bold">
+              <div className="bg-primary text-primary-foreground absolute top-6 -right-12 rotate-45 px-12 py-1 text-xs font-semibold">
                 Popular
               </div>
             )}

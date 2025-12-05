@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
 import { Clock, CreditCard, Bell, TrendingUp } from "lucide-react";
 
 export const metadata = {
@@ -144,41 +143,25 @@ const subscription = await stripe.subscriptions.create({
       <DocsSection title="How Fabrk Trials Work">
         <div className="space-y-4">
           <DocsCard title="STEP_01">
-            <div className="flex items-center gap-4 mb-2">
-              <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">1</span>
-              <h3 className={`uppercase ${docsTypography.h4}`}>User Starts Trial</h3>
-            </div>
-            <p className={docsTypography.body}>
+            <p className="mb-4">
               User clicks &quot;Start Free Trial&quot; on your pricing page. They create an account
               (no credit card required by default) and immediately get access to premium features.
             </p>
           </DocsCard>
           <DocsCard title="STEP_02">
-            <div className="flex items-center gap-4 mb-2">
-              <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">2</span>
-              <h3 className={`uppercase ${docsTypography.h4}`}>Trial Banner Shows</h3>
-            </div>
-            <p className={docsTypography.body}>
+            <p className="mb-4">
               While on trial, users see a banner showing how many days are left. This creates
               gentle urgency without being annoying.
             </p>
           </DocsCard>
           <DocsCard title="STEP_03">
-            <div className="flex items-center gap-4 mb-2">
-              <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">3</span>
-              <h3 className={`uppercase ${docsTypography.h4}`}>Urgency Near End</h3>
-            </div>
-            <p className={docsTypography.body}>
+            <p className="mb-4">
               When trial is almost over (last 3 days), the banner becomes more prominent.
               Users are prompted to subscribe before losing access.
             </p>
           </DocsCard>
           <DocsCard title="STEP_04">
-            <div className="flex items-center gap-4 mb-2">
-              <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">4</span>
-              <h3 className={`uppercase ${docsTypography.h4}`}>Trial Expires</h3>
-            </div>
-            <p className={docsTypography.body}>
+            <p className="mb-4">
               When trial ends, users can no longer access premium features. They see a message
               encouraging them to subscribe. If you require credit card upfront, Stripe automatically
               starts charging.
@@ -195,28 +178,28 @@ const subscription = await stripe.subscriptions.create({
               <div className="h-3 w-3 rounded-none bg-success"></div>
               <div>
                 <p className="text-sm font-medium">Plenty of time (8+ days)</p>
-                <p className={docsTypography.body}>&quot;You have 12 days left in your trial&quot;</p>
+                <p>&quot;You have 12 days left in your trial&quot;</p>
               </div>
             </div>
             <div className="flex items-center gap-4 p-4 border border-border bg-card">
               <div className="h-3 w-3 rounded-none bg-warning"></div>
               <div>
                 <p className="text-sm font-medium">Running low (4-7 days)</p>
-                <p className={docsTypography.body}>&quot;5 days left - Subscribe to keep access&quot;</p>
+                <p>&quot;5 days left - Subscribe to keep access&quot;</p>
               </div>
             </div>
             <div className="flex items-center gap-4 p-4 border border-border bg-card">
               <div className="h-3 w-3 rounded-none bg-destructive"></div>
               <div>
                 <p className="text-sm font-medium">Urgent (1-3 days)</p>
-                <p className={docsTypography.body}>&quot;Trial ends tomorrow! Subscribe now&quot;</p>
+                <p>&quot;Trial ends tomorrow! Subscribe now&quot;</p>
               </div>
             </div>
             <div className="flex items-center gap-4 p-4 border border-border bg-card">
               <div className="h-3 w-3 rounded-none bg-muted-foreground"></div>
               <div>
                 <p className="text-sm font-medium">Expired</p>
-                <p className={docsTypography.body}>&quot;Your trial has ended. Subscribe to continue&quot;</p>
+                <p>&quot;Your trial has ended. Subscribe to continue&quot;</p>
               </div>
             </div>
           </div>
@@ -226,25 +209,25 @@ const subscription = await stripe.subscriptions.create({
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
         <DocsCard title="BEST_PRACTICES">
-          <ul className={`${docsTypography.body} space-y-4`}>
+          <ul className="space-y-4">
             <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">1.</span>
+              <span className="text-primary font-semibold">1.</span>
               <span><strong>Email reminders:</strong> Send emails at trial midpoint, 3 days before, and 1 day before expiration.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">2.</span>
+              <span className="text-primary font-semibold">2.</span>
               <span><strong>Show value early:</strong> Get users to their &quot;aha moment&quot; in the first 2 days, not day 14.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">3.</span>
+              <span className="text-primary font-semibold">3.</span>
               <span><strong>Don&apos;t restrict too much:</strong> Let trial users see the full product. Restricted trials feel frustrating.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">4.</span>
+              <span className="text-primary font-semibold">4.</span>
               <span><strong>Track engagement:</strong> Users who don&apos;t engage by day 3 rarely convert. Reach out proactively.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">5.</span>
+              <span className="text-primary font-semibold">5.</span>
               <span><strong>Prevent abuse:</strong> Fabrk tracks who has used a trial before, preventing multiple free trials per user.</span>
             </li>
           </ul>

@@ -122,7 +122,7 @@ export default async function UserProfilePage() {
               </div>
 
               {/* Name & Role */}
-              <h2 className="text-foreground mt-4 text-2xl font-bold">{mockUserProfile.name}</h2>
+              <h2 className="text-foreground mt-4 text-2xl font-semibold">{mockUserProfile.name}</h2>
               <span
                 className={cn(
                   "border-border bg-primary text-primary-foreground mt-1 inline-block border px-4 py-1 text-xs font-semibold",
@@ -140,19 +140,19 @@ export default async function UserProfilePage() {
               {/* Stats */}
               <div className="border-border mt-6 grid w-full grid-cols-3 gap-4 border-t pt-6">
                 <div>
-                  <p className="text-foreground text-2xl font-bold">
+                  <p className="text-foreground text-2xl font-semibold">
                     {mockUserProfile.stats.projects}
                   </p>
                   <p className="text-muted-foreground text-xs">Projects</p>
                 </div>
                 <div className="border-border border-x">
-                  <p className="text-foreground text-2xl font-bold">
+                  <p className="text-foreground text-2xl font-semibold">
                     {mockUserProfile.stats.followers}
                   </p>
                   <p className="text-muted-foreground text-xs">Followers</p>
                 </div>
                 <div>
-                  <p className="text-foreground text-2xl font-bold">
+                  <p className="text-foreground text-2xl font-semibold">
                     {mockUserProfile.stats.following}
                   </p>
                   <p className="text-muted-foreground text-xs">Following</p>
@@ -163,7 +163,7 @@ export default async function UserProfilePage() {
 
           {/* Contact Info */}
           <Card className="border-border border p-6">
-            <h3 className="text-foreground mb-4 text-lg font-bold">Contact Info</h3>
+            <h3 className="text-foreground mb-4 text-lg font-semibold">Contact Info</h3>
             <div className="space-y-4">
               <div className="flex items-center gap-4">
                 <Mail className="text-muted-foreground h-4 w-4" />
@@ -195,7 +195,7 @@ export default async function UserProfilePage() {
 
           {/* Social Links */}
           <Card className="border-border border p-6">
-            <h3 className="text-foreground mb-4 text-lg font-bold">Social Links</h3>
+            <h3 className="text-foreground mb-4 text-lg font-semibold">Social Links</h3>
             <div className="space-y-4">
               <a
                 href={`https://twitter.com/${mockUserProfile.social.twitter.slice(1)}`}
@@ -239,7 +239,7 @@ export default async function UserProfilePage() {
           {/* Recent Projects */}
           <Card className="border-border border p-6">
             <div className="border-border mb-4 flex items-center justify-between border-b pb-4">
-              <h3 className="text-foreground text-xl font-bold">Recent Projects</h3>
+              <h3 className="text-foreground text-xl font-semibold">Recent Projects</h3>
               <Button size="sm" variant="outline">
                 View All
               </Button>
@@ -253,7 +253,7 @@ export default async function UserProfilePage() {
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-2">
-                        <h4 className="text-foreground text-lg font-bold">{project.name}</h4>
+                        <h4 className="text-foreground text-lg font-semibold">{project.name}</h4>
                         <span
                           className={cn(
                             `inline-block`,
@@ -294,7 +294,7 @@ export default async function UserProfilePage() {
           {/* Recent Activity */}
           <Card className="border-border border p-6">
             <div className="border-border mb-4 border-b pb-4">
-              <h3 className="text-foreground text-xl font-bold">Recent Activity</h3>
+              <h3 className="text-foreground text-xl font-semibold">Recent Activity</h3>
             </div>
             <div className="space-y-4">
               {mockUserProfile.activity.map((activity, index) => (

@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection } from "@/components/docs";
-import { docsTypography } from "@/components/docs/typography";
 import { Component, Layers, Code, Palette } from "lucide-react";
 import Link from "next/link";
 
@@ -233,8 +232,8 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";`,
                 href={`/docs/components/${component.name}`}
                 className="border-border bg-card hover:border-primary/50 hover:bg-primary/5 block border p-4 transition-colors"
               >
-                <div className={docsTypography.h4}>{component.name}</div>
-                <div className={`mt-1 ${docsTypography.caption}`}>{component.description}</div>
+                <div className="font-mono text-sm font-medium uppercase">{component.name}</div>
+                <div className="mt-1 font-mono text-xs text-muted-foreground">{component.description}</div>
               </Link>
             ))}
           </div>

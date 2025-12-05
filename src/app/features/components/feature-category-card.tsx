@@ -42,7 +42,7 @@ export function FeatureCategoryCard({ category, index }: FeatureCategoryCardProp
 
           <div>
             <span className="text-xs text-muted-foreground">[0x{hexIndex}]</span>
-            <h2 className="text-2xl font-bold tracking-tight">{category.title.toUpperCase().replace(/ /g, '_').replace(/&/g, 'AND')}</h2>
+            <h2 className="text-2xl font-semibold tracking-tight">{category.title.toUpperCase().replace(/ /g, '_').replace(/&/g, 'AND')}</h2>
             <span className="text-sm text-primary font-medium">&gt; {category.tagline}</span>
           </div>
 

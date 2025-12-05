@@ -142,7 +142,7 @@ export default async function AnalyticsPage() {
               </div>
               <div className="mt-4">
                 <p className="text-muted-foreground text-sm">{stat.label}</p>
-                <p className="text-foreground mt-1 text-3xl font-bold">{stat.value}</p>
+                <p className="text-foreground mt-1 text-4xl font-semibold">{stat.value}</p>
               </div>
             </Card>
           );
@@ -153,7 +153,7 @@ export default async function AnalyticsPage() {
         {/* Recent Activity */}
         <Card className="border-border border p-6">
           <div className="border-border mb-4 flex items-center justify-between border-b pb-4">
-            <h3 className="text-foreground text-xl font-bold">Recent Activity</h3>
+            <h3 className="text-foreground text-xl font-semibold">Recent Activity</h3>
             <button className="text-primary text-sm font-semibold hover:underline">View All</button>
           </div>
           <div className="space-y-4">
@@ -178,7 +178,7 @@ export default async function AnalyticsPage() {
         {/* Top Pages */}
         <Card className="border-border border p-6">
           <div className="border-border mb-4 flex items-center justify-between border-b pb-4">
-            <h3 className="text-foreground text-xl font-bold">Top Pages</h3>
+            <h3 className="text-foreground text-xl font-semibold">Top Pages</h3>
             <button className="text-primary text-sm font-semibold hover:underline">View All</button>
           </div>
           <div className="space-y-4">
@@ -210,7 +210,7 @@ export default async function AnalyticsPage() {
       {/* Chart Placeholder */}
       <Card className="border-border border p-6">
         <div className="border-border mb-4 border-b pb-4">
-          <h3 className="text-foreground text-xl font-bold">Revenue Over Time</h3>
+          <h3 className="text-foreground text-xl font-semibold">Revenue Over Time</h3>
           <p className="text-muted-foreground text-sm">Monthly recurring revenue trend</p>
         </div>
         <div

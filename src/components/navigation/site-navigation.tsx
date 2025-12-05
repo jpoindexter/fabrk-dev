@@ -60,7 +60,7 @@ export function SiteNavigation() {
             className={cn(mode.font, "flex items-center gap-2 transition-opacity hover:opacity-80")}
           >
             <span className="text-primary text-xs">&gt;</span>
-            <span className="text-sm font-bold tracking-tight">FABRK</span>
+            <span className="text-sm font-semibold tracking-tight">FABRK</span>
             <span className="text-muted-foreground hidden text-xs sm:inline">{suffix}</span>
           </Link>
         </motion.div>

@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
 import { Cloud, HardDrive, Shield, Zap } from "lucide-react";
 
 export const metadata = {
@@ -210,31 +209,31 @@ export function FileUploader() {
       {/* Provider Priority Section */}
       <DocsSection title="Provider Priority">
         <DocsCard title="PROVIDER_PRIORITY">
-          <p className={`${docsTypography.body} mb-4`}>
+          <p className="mb-4">
             Fabrk automatically detects which storage provider you have configured and uses it.
             This means you can start with local storage during development and switch to cloud
             in production without changing your code.
           </p>
           <div className="space-y-2">
             <div className="flex items-center gap-4 p-4 border border-border">
-              <span className="flex h-6 w-6 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">1</span>
+              <span className="flex h-6 w-6 items-center justify-center font-mono bg-primary text-xs font-semibold text-primary-foreground">1</span>
               <div>
                 <p className="font-medium">Cloudflare R2</p>
-                <p className={docsTypography.body}>Used if R2 environment variables are set</p>
+                <p>Used if R2 environment variables are set</p>
               </div>
             </div>
             <div className="flex items-center gap-4 p-4 border border-border">
-              <span className="flex h-6 w-6 items-center justify-center font-mono bg-primary/70 text-xs font-bold text-primary-foreground">2</span>
+              <span className="flex h-6 w-6 items-center justify-center font-mono bg-primary/70 text-xs font-semibold text-primary-foreground">2</span>
               <div>
                 <p className="font-medium">AWS S3</p>
-                <p className={docsTypography.body}>Used if only S3 environment variables are set</p>
+                <p>Used if only S3 environment variables are set</p>
               </div>
             </div>
             <div className="flex items-center gap-4 p-4 border border-border">
-              <span className="flex h-6 w-6 items-center justify-center font-mono bg-muted text-xs font-bold">3</span>
+              <span className="flex h-6 w-6 items-center justify-center font-mono bg-muted text-xs font-semibold">3</span>
               <div>
                 <p className="font-medium">Local Storage</p>
-                <p className={docsTypography.body}>Fallback when no cloud provider is configured</p>
+                <p>Fallback when no cloud provider is configured</p>
               </div>
             </div>
           </div>
@@ -245,9 +244,8 @@ export function FileUploader() {
       <DocsSection title="Choosing a Provider">
         <div className="grid gap-4 sm:grid-cols-3">
           <DocsCard title="CLOUDFLARE_R2">
-            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Cloudflare R2</h3>
-            <p className={`${docsTypography.body} mb-2`}>Recommended</p>
-            <ul className={`${docsTypography.body} space-y-1`}>
+            <p className="mb-2">Recommended</p>
+            <ul className="space-y-1">
               <li>• No egress fees (huge savings)</li>
               <li>• S3-compatible API</li>
               <li>• Global edge network</li>
@@ -255,9 +253,8 @@ export function FileUploader() {
             </ul>
           </DocsCard>
           <DocsCard title="AWS_S3">
-            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>AWS S3</h3>
-            <p className={`${docsTypography.body} mb-2`}>Industry Standard</p>
-            <ul className={`${docsTypography.body} space-y-1`}>
+            <p className="mb-2">Industry Standard</p>
+            <ul className="space-y-1">
               <li>• Most mature platform</li>
               <li>• Extensive documentation</li>
               <li>• Pay-per-use pricing</li>
@@ -265,9 +262,8 @@ export function FileUploader() {
             </ul>
           </DocsCard>
           <DocsCard title="LOCAL_STORAGE">
-            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Local Storage</h3>
-            <p className={`${docsTypography.body} mb-2`}>Development Only</p>
-            <ul className={`${docsTypography.body} space-y-1`}>
+            <p className="mb-2">Development Only</p>
+            <ul className="space-y-1">
               <li>• No setup required</li>
               <li>• Good for testing</li>
               <li>• Files in /uploads folder</li>
@@ -282,23 +278,23 @@ export function FileUploader() {
         <DocsCard title="SECURITY" className="bg-muted/50">
           <ul className="space-y-4 text-sm">
             <li className="flex items-start gap-2">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">1</span>
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center font-mono bg-primary text-xs font-semibold text-primary-foreground">1</span>
               <span><strong>Validate file types:</strong> Never trust the file extension. Check MIME type server-side to prevent malicious uploads.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">2</span>
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center font-mono bg-primary text-xs font-semibold text-primary-foreground">2</span>
               <span><strong>Limit file sizes:</strong> Set reasonable limits to prevent storage abuse and server crashes.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">3</span>
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center font-mono bg-primary text-xs font-semibold text-primary-foreground">3</span>
               <span><strong>Use signed URLs:</strong> For private files, generate time-limited signed URLs instead of public links.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">4</span>
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center font-mono bg-primary text-xs font-semibold text-primary-foreground">4</span>
               <span><strong>Organize by user/org:</strong> Store files in user or organization folders to enable access control.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">5</span>
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center font-mono bg-primary text-xs font-semibold text-primary-foreground">5</span>
               <span><strong>Scan for malware:</strong> Consider adding virus scanning for user-uploaded files in production.</span>
             </li>
           </ul>
@@ -356,7 +352,7 @@ export function FileUploader() {
             </summary>
             <div className="border-t border-border p-4 text-sm text-muted-foreground">
               <p>
-                Use the <code className={docsTypography.code}>deleteFile(key)</code> function
+                Use the <code className="bg-muted px-1">deleteFile(key)</code> function
                 from the storage module. The key is returned when you upload a file. Make sure
                 to also remove the file reference from your database.
               </p>

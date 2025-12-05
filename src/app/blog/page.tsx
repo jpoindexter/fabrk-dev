@@ -38,7 +38,7 @@ export default async function BlogPage({
             <span className="text-muted-foreground font-mono text-xs">[ BLOG ]</span>
           </div>
           <div className="p-6">
-            <h1 className="text-foreground mb-2 font-mono text-3xl font-bold">&gt; LATEST_POSTS</h1>
+            <h1 className="text-foreground mb-2 font-mono text-4xl font-semibold">&gt; LATEST_POSTS</h1>
             <p className="text-muted-foreground font-mono text-sm">
               Articles, tutorials, and updates
             </p>
@@ -106,7 +106,7 @@ export default async function BlogPage({
                       <span>•</span>
                       <span>{formatReadTime(post.readTime || 1)}</span>
                     </div>
-                    <h3 className="text-foreground group-hover:text-primary mb-2 font-mono text-lg font-bold">
+                    <h3 className="text-foreground group-hover:text-primary mb-2 font-mono text-lg font-semibold">
                       {post.title}
                     </h3>
                     {post.excerpt && (
@@ -136,7 +136,7 @@ export default async function BlogPage({
                     )}
                     <span>{formatDate(post.publishedAt || post.createdAt)}</span>
                   </div>
-                  <h3 className="text-foreground group-hover:text-primary mb-2 font-mono text-sm font-bold">
+                  <h3 className="text-foreground group-hover:text-primary mb-2 font-mono text-sm font-semibold">
                     {post.title}
                   </h3>
                   <div className="text-muted-foreground font-mono text-xs">

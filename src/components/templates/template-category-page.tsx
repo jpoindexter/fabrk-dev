@@ -56,7 +56,7 @@ export function TemplateCategoryPage({
           </div>
           <div className="flex items-center gap-4">
             {CategoryIcon && <CategoryIcon className="text-primary h-6 w-6" />}
-            <h1 className={cn("text-3xl font-bold", mode.font)}>{title}</h1>
+            <h1 className={cn("text-4xl font-semibold", mode.font)}>{title}</h1>
             <span className={cn("border-border border px-2 py-0.5 text-xs", mode.font)}>
               COUNT: {templates.length}
             </span>

@@ -1,7 +1,6 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard } from "@/components/docs";
 import { CodeBlock } from "@/components/ui/code-block";
-import { docsTypography, docsSpacing } from "@/components/docs";
 
 export const metadata = {
   title: "Prisma Database - Fabrk Docs",
@@ -168,8 +167,8 @@ return { data, nextCursor, hasNextPage };`,
       {/* Core Models Section */}
       <DocsSection title="Core Models">
         <DocsCard title="CORE_MODELS">
-          <p className={docsTypography.body}>
-            Fabrk includes these pre-built models in <code className={docsTypography.code}>prisma/schema.prisma</code>:
+          <p className="">
+            Fabrk includes these pre-built models in <code className="bg-muted px-1">prisma/schema.prisma</code>:
           </p>
           <CodeBlock
             language="prisma"
@@ -237,8 +236,8 @@ model OrganizationMember {
       {/* Migrations Section */}
       <DocsSection title="Migrations">
         <DocsCard title="MIGRATIONS">
-          <p className={docsTypography.body}>
-            For production, use migrations instead of <code className={docsTypography.code}>db:push</code>:
+          <p className="">
+            For production, use migrations instead of <code className="bg-muted px-1">db:push</code>:
           </p>
           <CodeBlock
             language="bash"
@@ -256,32 +255,32 @@ npx prisma migrate status`}
 
       {/* Common Use Cases Section */}
       <DocsSection title="Common Use Cases">
-        <div className={docsSpacing.sectionItems}>
+        <div className="space-y-4">
           <DocsCard title="USER_UPDATES">
-            <h3 className={`uppercase ${docsTypography.h4}`}>User Profile Updates</h3>
-            <p className={docsTypography.body}>
-              Update user data with validation. Use <code className={docsTypography.code}>select</code> to return only needed fields and avoid exposing sensitive data like passwords.
+            User Profile Updates
+            <p className="">
+              Update user data with validation. Use <code className="bg-muted px-1">select</code> to return only needed fields and avoid exposing sensitive data like passwords.
             </p>
           </DocsCard>
 
           <DocsCard title="SOFT_DELETES">
-            <h3 className={`uppercase ${docsTypography.h4}`}>Soft Deletes</h3>
-            <p className={docsTypography.body}>
-              Add <code className={docsTypography.code}>deletedAt DateTime?</code> field to models and filter with <code className={docsTypography.code}>where: {"{"} deletedAt: null {"}"}</code> for recoverable deletes.
+            Soft Deletes
+            <p className="">
+              Add <code className="bg-muted px-1">deletedAt DateTime?</code> field to models and filter with <code className="bg-muted px-1">where: {"{"} deletedAt: null {"}"}</code> for recoverable deletes.
             </p>
           </DocsCard>
 
           <DocsCard title="FULL_TEXT_SEARCH">
-            <h3 className={`uppercase ${docsTypography.h4}`}>Full Text Search</h3>
-            <p className={docsTypography.body}>
-              Use Prisma&apos;s full-text search with PostgreSQL: <code className={docsTypography.code}>where: {"{"} name: {"{"} search: &quot;query&quot; {"}"} {"}"}</code> for searching user names or content.
+            Full Text Search
+            <p className="">
+              Use Prisma&apos;s full-text search with PostgreSQL: <code className="bg-muted px-1">where: {"{"} name: {"{"} search: &quot;query&quot; {"}"} {"}"}</code> for searching user names or content.
             </p>
           </DocsCard>
 
           <DocsCard title="AGGREGATIONS">
-            <h3 className={`uppercase ${docsTypography.h4}`}>Aggregations</h3>
-            <p className={docsTypography.body}>
-              Calculate totals with <code className={docsTypography.code}>prisma.payment.aggregate({"{"} _sum: {"{"} amount: true {"}"} {"}"})</code> for dashboards and reports.
+            Aggregations
+            <p className="">
+              Calculate totals with <code className="bg-muted px-1">prisma.payment.aggregate({"{"} _sum: {"{"} amount: true {"}"} {"}"})</code> for dashboards and reports.
             </p>
           </DocsCard>
         </div>
@@ -290,13 +289,13 @@ npx prisma migrate status`}
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
         <DocsCard title="BEST_PRACTICES">
-          <ul className="font-mono text-sm text-muted-foreground space-y-1">
-            <li>├─ Always use the singleton client from <code className={docsTypography.code}>@/lib/db</code></li>
-            <li>├─ Use <code className={docsTypography.code}>select</code> to fetch only needed fields</li>
+          <ul className="space-y-1">
+            <li>├─ Always use the singleton client from <code className="bg-muted px-1">@/lib/db</code></li>
+            <li>├─ Use <code className="bg-muted px-1">select</code> to fetch only needed fields</li>
             <li>├─ Add indexes for frequently queried fields</li>
             <li>├─ Use transactions for multi-step operations</li>
-            <li>├─ Never expose sensitive fields like <code className={docsTypography.code}>password</code> in API responses</li>
-            <li>├─ Use migrations in production, <code className={docsTypography.code}>db:push</code> only in development</li>
+            <li>├─ Never expose sensitive fields like <code className="bg-muted px-1">password</code> in API responses</li>
+            <li>├─ Use migrations in production, <code className="bg-muted px-1">db:push</code> only in development</li>
             <li>└─ Set up connection pooling for production (PgBouncer)</li>
           </ul>
         </DocsCard>

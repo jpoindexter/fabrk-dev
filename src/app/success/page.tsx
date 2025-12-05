@@ -62,7 +62,7 @@ function SuccessContent() {
             <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-none bg-primary">
               <CheckCircle className="h-12 w-12 text-primary-foreground" />
             </div>
-            <h1 className="text-4xl font-bold">Purchase Successful!</h1>
+            <h1 className="text-4xl font-semibold">Purchase Successful!</h1>
             <p className="text-lg text-muted-foreground">
               Thank you for your purchase. Your payment has been processed successfully.
             </p>

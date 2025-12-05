@@ -21,7 +21,7 @@ export function DropdownSection() {
     <section id="dropdown-menus" className="space-y-6">
       <div>
         <span className="text-xs text-muted-foreground">[0x70]</span>
-        <h2 className="text-2xl font-bold tracking-tight">DROPDOWN_MENUS</h2>
+        <h2 className="text-2xl font-semibold tracking-tight">DROPDOWN_MENUS</h2>
         <p className="text-xs text-muted-foreground">&gt; Action menus with proper alignment</p>
       </div>
 

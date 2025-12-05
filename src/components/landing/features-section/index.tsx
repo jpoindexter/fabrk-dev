@@ -57,7 +57,7 @@ export function FeaturesSection() {
               [ [0x30] DEEP_DIVE ] FEATURE_ANALYSIS │ FIB[377,610]
             </span>
           </div>
-          <h2 className={cn(mode.font, "mb-4 text-3xl font-bold tracking-tight lg:text-4xl")}>
+          <h2 className={cn(mode.font, "mb-4 text-4xl font-semibold tracking-tight")}>
             BUILT_FOR_SERIOUS_SAAS_PRODUCTS
           </h2>
           <p className={cn(mode.font, "text-muted-foreground max-w-2xl text-sm")}>

@@ -4,7 +4,7 @@ export function BestPracticesSection() {
   return (
     <DocsSection title="Best Practices">
       <DocsCard title="BEST_PRACTICES">
-        <ul className="font-mono text-sm text-muted-foreground space-y-1">
+        <ul className="space-y-1">
           <li>├─ <strong>Keep payloads small:</strong> Store IDs and fetch data in the worker</li>
           <li>├─ <strong>Make jobs idempotent:</strong> Safe to retry without side effects</li>
           <li>├─ <strong>Set appropriate retries:</strong> More for transient errors, fewer for permanent</li>

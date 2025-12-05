@@ -96,7 +96,7 @@ export default function LandingVariationsTemplate() {
                     NEW: VERSION 2.0 RELEASED
                   </Badge>
 
-                  <h2 className={cn(mode.font, "text-4xl font-bold tracking-tight md:text-5xl")}>
+                  <h2 className={cn(mode.font, "text-4xl font-semibold tracking-tight md:text-5xl")}>
                     Build faster with
                     <span className="text-primary"> production-ready </span>
                     components
@@ -154,7 +154,7 @@ export default function LandingVariationsTemplate() {
                       TRUSTED BY 10,000+ DEVELOPERS
                     </Badge>
 
-                    <h2 className={cn(mode.font, "text-4xl font-bold tracking-tight")}>
+                    <h2 className={cn(mode.font, "text-4xl font-semibold tracking-tight")}>
                       The fastest way to build your
                       <span className="text-primary"> next SaaS</span>
                     </h2>
@@ -205,7 +205,7 @@ export default function LandingVariationsTemplate() {
               <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
                 <div className="mx-auto max-w-2xl space-y-8">
                   <div className="space-y-4 text-center">
-                    <h2 className={cn(mode.font, "text-4xl font-bold tracking-tight md:text-5xl")}>
+                    <h2 className={cn(mode.font, "text-4xl font-semibold tracking-tight md:text-5xl")}>
                       Ship your startup
                       <span className="text-primary"> this weekend</span>
                     </h2>

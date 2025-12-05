@@ -21,7 +21,7 @@ export function TechStackSection() {
           className="text-center mb-12"
         >
           <span className="text-xs text-muted-foreground">[0x10]</span>
-          <h2 className="text-2xl font-bold tracking-tight mb-4">TECH_STACK</h2>
+          <h2 className="text-2xl font-semibold tracking-tight mb-4">TECH_STACK</h2>
           <p className="text-sm text-muted-foreground">
             Built with the latest technologies. No legacy code, no outdated dependencies.
           </p>
@@ -39,7 +39,7 @@ export function TechStackSection() {
               key={tech.name}
               className="border border-border bg-card p-4 text-center"
             >
-              <span className="block text-sm font-bold">{tech.name}</span>
+              <span className="block text-sm font-semibold">{tech.name}</span>
               <span className="text-xs text-muted-foreground">{tech.description}</span>
             </div>
           ))}
