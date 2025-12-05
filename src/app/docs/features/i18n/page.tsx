@@ -409,9 +409,7 @@ export const localeFlags: Record<Locale, string> = {
               className="hover:border-primary/50 h-full transition-all"
             >
               SEO for Multiple Languages
-              <p className="text-muted-foreground font-mono text-sm">
-                Learn how to optimize SEO metadata for each locale.
-              </p>
+              <p className="mb-6">Learn how to optimize SEO metadata for each locale.</p>
             </DocsCard>
           </Link>
           <Link href="/docs/features/lemonsqueezy">
@@ -420,9 +418,7 @@ export const localeFlags: Record<Locale, string> = {
               className="hover:border-primary/50 h-full transition-all"
             >
               Global Payments
-              <p className="text-muted-foreground font-mono text-sm">
-                Accept payments from users worldwide with Lemon Squeezy.
-              </p>
+              <p className="mb-6">Accept payments from users worldwide with Lemon Squeezy.</p>
             </DocsCard>
           </Link>
         </div>

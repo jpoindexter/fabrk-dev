@@ -427,7 +427,7 @@ export default function DashboardLayout({ children }) {
               className="hover:border-primary/50 h-full transition-all"
             >
               Audit Logging
-              <p className="text-muted-foreground font-mono text-sm">
+              <p className="mb-6">
                 Learn how to review impersonation logs and track admin activity.
               </p>
             </DocsCard>
@@ -438,9 +438,7 @@ export default function DashboardLayout({ children }) {
               className="hover:border-primary/50 h-full transition-all"
             >
               Organizations
-              <p className="text-muted-foreground font-mono text-sm">
-                Manage teams and organization-level permissions.
-              </p>
+              <p className="mb-6">Manage teams and organization-level permissions.</p>
             </DocsCard>
           </Link>
         </div>

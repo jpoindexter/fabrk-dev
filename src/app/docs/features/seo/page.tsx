@@ -193,7 +193,7 @@ export default async function sitemap() {
         <div className="grid gap-4">
           <DocsCard title="LANDING_PAGE_SEO">
             Landing Page SEO
-            <p className="text-muted-foreground font-mono text-sm">
+            <p className="mb-6">
               Configure meta tags for your homepage with compelling title and description that
               matches your value proposition. Include OpenGraph image (1200x630px recommended).
             </p>
@@ -201,7 +201,7 @@ export default async function sitemap() {
 
           <DocsCard title="BLOG_POST_SEO">
             Blog Post Optimization
-            <p className="text-muted-foreground font-mono text-sm">
+            <p className="mb-6">
               Use dynamic metadata generation to automatically pull title, description, and featured
               image from your CMS or database for each blog post.
             </p>
@@ -209,7 +209,7 @@ export default async function sitemap() {
 
           <DocsCard title="PRODUCT_PAGES">
             Product Pages
-            <p className="text-muted-foreground font-mono text-sm">
+            <p className="mb-6">
               Add Product schema structured data for e-commerce features, including price,
               availability, and reviews for rich snippets in search results.
             </p>
@@ -217,7 +217,7 @@ export default async function sitemap() {
 
           <DocsCard title="LOCALIZED_CONTENT">
             Localized Content
-            <p className="text-muted-foreground font-mono text-sm">
+            <p className="mb-6">
               Use hreflang tags and locale-specific metadata for international SEO. Fabrk's i18n
               system automatically handles alternate language links.
             </p>

@@ -211,7 +211,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               </span>
               First Visit
             </div>
-            <p className="text-muted-foreground font-mono text-sm">
+            <p className="mb-6">
               New visitors see a &quot;Cookie Settings&quot; button in the bottom-right corner. All
               non-essential cookies are blocked until they make a choice.
             </p>
@@ -223,7 +223,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               </span>
               User Makes Choice
             </div>
-            <p className="text-muted-foreground font-mono text-sm">
+            <p className="mb-6">
               Clicking the button opens a modal with three tabs: Consent (quick toggles), Details
               (see exactly which cookies), and About (their privacy rights).
             </p>
@@ -235,7 +235,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               </span>
               Choice Saved
             </div>
-            <p className="text-muted-foreground font-mono text-sm">
+            <p className="mb-6">
               Their preference is stored in localStorage for 1 year. Google Consent Mode is updated
               automatically, enabling/disabling analytics and ads accordingly.
             </p>
@@ -247,7 +247,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               </span>
               Return Visits
             </div>
-            <p className="text-muted-foreground font-mono text-sm">
+            <p className="mb-6">
               The banner doesn&apos;t show again (unless they clear storage). Their saved
               preferences are applied immediately on page load.
             </p>
@@ -263,7 +263,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               <div className="bg-success mt-1 h-3 w-3 rounded-none"></div>
               <div>
                 <p className="font-medium">Necessary (Always On)</p>
-                <p className="text-muted-foreground font-mono text-sm">
+                <p className="mb-6">
                   Essential for the site to work. Includes session cookies and consent storage.
                   Cannot be disabled.
                 </p>
@@ -273,7 +273,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               <div className="bg-info mt-1 h-3 w-3 rounded-none"></div>
               <div>
                 <p className="font-medium">Preferences</p>
-                <p className="text-muted-foreground font-mono text-sm">
+                <p className="mb-6">
                   Remember settings like theme (dark/light) and language. Off by default.
                 </p>
               </div>
@@ -282,7 +282,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               <div className="bg-warning mt-1 h-3 w-3 rounded-none"></div>
               <div>
                 <p className="font-medium">Statistics</p>
-                <p className="text-muted-foreground font-mono text-sm">
+                <p className="mb-6">
                   Google Analytics and similar tools. Helps you understand how people use your app.
                   Off by default.
                 </p>
@@ -292,7 +292,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               <div className="bg-destructive mt-1 h-3 w-3 rounded-none"></div>
               <div>
                 <p className="font-medium">Marketing</p>
-                <p className="text-muted-foreground font-mono text-sm">
+                <p className="mb-6">
                   Facebook Pixel, Google Ads conversion tracking. Used for targeted advertising. Off
                   by default.
                 </p>
@@ -310,7 +310,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               Do I need this if I don&apos;t have EU users?
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
-              <p>
+              <p className="mb-6">
                 Technically no, but it&apos;s good practice. California (CCPA), Brazil (LGPD), and
                 other regions have similar requirements. Plus, Google requires Consent Mode v2 for
                 personalized ads even in the US.
@@ -323,7 +323,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               Why do I need Consent Mode v2 for Google?
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
-              <p>
+              <p className="mb-6">
                 As of March 2024, Google requires Consent Mode v2 for any site that uses Google Ads
                 remarketing or audience features. Without it, your ads may not work properly and you
                 could lose audience data.
@@ -336,7 +336,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               Can I change the button position?
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
-              <p>
+              <p className="mb-6">
                 Yes! In <code className="bg-muted px-1 font-mono">cookie-consent.tsx</code>, find
                 the button element and change the Tailwind classes. It&apos;s currently{" "}
                 <code className="bg-muted px-1 font-mono">bottom-6 right-6</code>. Change to{" "}
@@ -351,7 +351,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               What if the user never makes a choice?
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
-              <p>
+              <p className="mb-6">
                 All non-essential cookies remain blocked. The button stays visible on every page
                 until they interact with it. This is the GDPR-compliant default.
               </p>

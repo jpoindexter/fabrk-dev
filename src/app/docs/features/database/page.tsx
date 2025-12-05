@@ -168,7 +168,7 @@ return { data, nextCursor, hasNextPage };`,
       {/* Core Models Section */}
       <DocsSection title="Core Models">
         <DocsCard title="CORE_MODELS">
-          <p className="text-muted-foreground font-mono text-sm">
+          <p className="mb-6">
             Fabrk includes these pre-built models in{" "}
             <code className="bg-muted px-1">prisma/schema.prisma</code>:
           </p>
@@ -238,7 +238,7 @@ model OrganizationMember {
       {/* Migrations Section */}
       <DocsSection title="Migrations">
         <DocsCard title="MIGRATIONS">
-          <p className="text-muted-foreground font-mono text-sm">
+          <p className="mb-6">
             For production, use migrations instead of <code className="bg-muted px-1">db:push</code>
             :
           </p>
@@ -260,14 +260,14 @@ npx prisma migrate status`}
       <DocsSection title="Common Use Cases">
         <div className="space-y-4">
           <DocsCard title="USER_UPDATES">
-            <p className="text-muted-foreground font-mono text-sm">
+            <p className="mb-6">
               Update user data with validation. Use <code className="bg-muted px-1">select</code> to
               return only needed fields and avoid exposing sensitive data like passwords.
             </p>
           </DocsCard>
 
           <DocsCard title="SOFT_DELETES">
-            <p className="text-muted-foreground font-mono text-sm">
+            <p className="mb-6">
               Add <code className="bg-muted px-1">deletedAt DateTime?</code> field to models and
               filter with{" "}
               <code className="bg-muted px-1">
@@ -278,7 +278,7 @@ npx prisma migrate status`}
           </DocsCard>
 
           <DocsCard title="FULL_TEXT_SEARCH">
-            <p className="text-muted-foreground font-mono text-sm">
+            <p className="mb-6">
               Use Prisma&apos;s full-text search with PostgreSQL:{" "}
               <code className="bg-muted px-1">
                 where: {"{"} name: {"{"} search: &quot;query&quot; {"}"} {"}"}
@@ -288,7 +288,7 @@ npx prisma migrate status`}
           </DocsCard>
 
           <DocsCard title="AGGREGATIONS">
-            <p className="text-muted-foreground font-mono text-sm">
+            <p className="mb-6">
               Calculate totals with{" "}
               <code className="bg-muted px-1">
                 prisma.payment.aggregate({"{"} _sum: {"{"} amount: true {"}"} {"}"})

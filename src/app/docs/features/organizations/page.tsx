@@ -205,7 +205,7 @@ export async function checkPermission(
       {/* Database Schema Section */}
       <DocsSection title="Database Schema">
         <DocsCard title="DATABASE_SCHEMA">
-          <p className="text-muted-foreground font-mono text-sm">
+          <p className="mb-6">
             Core models in <code className="bg-muted px-1">prisma/schema.prisma</code>:
           </p>
           <CodeBlock

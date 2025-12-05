@@ -436,9 +436,7 @@ export function formatDate(date: Date | string): string {
           <Link href="/docs/features/seo">
             <DocsCard title="SEO_SETUP" className="hover:border-primary/50 h-full transition-all">
               SEO Configuration
-              <p className="text-muted-foreground font-mono text-sm">
-                Learn how to optimize your blog posts for search engines.
-              </p>
+              <p className="mb-6">Learn how to optimize your blog posts for search engines.</p>
             </DocsCard>
           </Link>
           <Link href="/docs/tutorials/file-uploads">
@@ -447,9 +445,7 @@ export function formatDate(date: Date | string): string {
               className="hover:border-primary/50 h-full transition-all"
             >
               File Uploads
-              <p className="text-muted-foreground font-mono text-sm">
-                Upload featured images and media for your blog posts.
-              </p>
+              <p className="mb-6">Upload featured images and media for your blog posts.</p>
             </DocsCard>
           </Link>
         </div>

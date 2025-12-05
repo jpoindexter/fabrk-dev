@@ -233,7 +233,9 @@ export async function deleteAccount(userId: string, mfaCode: string) {
               Which authenticator apps work?
             </summary>
             <div className="text-muted-foreground border-t p-4 text-sm">
-              <p>Any app that supports TOTP (RFC 6238) works. Popular options include:</p>
+              <p className="mb-6">
+                Any app that supports TOTP (RFC 6238) works. Popular options include:
+              </p>
               <ul className="mt-2 space-y-1">
                 <li>• Google Authenticator</li>
                 <li>• Authy</li>
@@ -249,7 +251,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
               What if user loses phone?
             </summary>
             <div className="text-muted-foreground border-t p-4 text-sm">
-              <p>
+              <p className="mb-6">
                 They can use one of their 10 backup codes to log in. After logging in, they should:
               </p>
               <ol className="mt-2 list-inside list-decimal">
@@ -265,7 +267,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
               What if user loses phone AND backup codes?
             </summary>
             <div className="text-muted-foreground border-t p-4 text-sm">
-              <p>This is a worst-case scenario. You have a few options:</p>
+              <p className="mb-6">This is a worst-case scenario. You have a few options:</p>
               <ul className="mt-2 space-y-1">
                 <li>• Require identity verification (ID upload, video call)</li>
                 <li>• Disable 2FA from admin panel after verification</li>
@@ -282,7 +284,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
               Can I require 2FA for all users?
             </summary>
             <div className="text-muted-foreground border-t p-4 text-sm">
-              <p>
+              <p className="mb-6">
                 2FA is opt-in by default. To require it, you&apos;d add middleware that checks if{" "}
                 <code className="bg-muted px-1 font-mono">user.mfaEnabled</code> is true and
                 redirects users to set it up if not. This is common for enterprise/admin users.
@@ -295,7 +297,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
               How are secrets stored?
             </summary>
             <div className="text-muted-foreground border-t p-4 text-sm">
-              <p>
+              <p className="mb-6">
                 TOTP secrets are encrypted before storage using your{" "}
                 <code className="bg-muted px-1 font-mono">NEXTAUTH_SECRET</code>. Backup codes are
                 hashed with SHA-256. Even if your database is compromised, attackers can&apos;t use
@@ -314,13 +316,13 @@ export async function deleteAccount(userId: string, mfaCode: string) {
         <div className="grid gap-4 sm:grid-cols-2">
           <DocsCard title="SMS_VERIFICATION">
             SMS Verification
-            <p className="text-muted-foreground font-mono text-sm">
+            <p className="mb-6">
               Text message codes as an alternative (requires Twilio integration).
             </p>
           </DocsCard>
           <DocsCard title="WEBAUTHN_PASSKEYS">
             WebAuthn/Passkeys
-            <p className="text-muted-foreground font-mono text-sm">
+            <p className="mb-6">
               Hardware security keys and biometric authentication (Touch ID, Face ID).
             </p>
           </DocsCard>

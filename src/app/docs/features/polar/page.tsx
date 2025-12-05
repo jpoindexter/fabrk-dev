@@ -293,7 +293,7 @@ export async function getProduct() {
       {/* Dev Mode */}
       <DocsSection title="Development Mode">
         <DocsCard title="MOCK_CHECKOUT">
-          <p className="text-muted-foreground font-mono text-sm">
+          <p className="mb-6">
             When <code className="bg-muted px-1">POLAR_ACCESS_TOKEN</code> is not set, the checkout
             API returns a mock response that redirects to your success page. This lets you test the
             full purchase flow without real payments.
@@ -314,20 +314,18 @@ export async function getProduct() {
           <div className="space-y-4">
             <div className="border-border border-b pb-4">
               Usage-Limited Discounts
-              <p className="text-muted-foreground font-mono text-sm">
+              <p className="mb-6">
                 Create discounts that auto-expire after N uses. Perfect for &quot;First 100
                 customers get 25% off&quot; promotions.
               </p>
             </div>
             <div className="border-border border-b pb-4">
               Time-Limited Discounts
-              <p className="text-muted-foreground font-mono text-sm">
-                Set expiration dates for launch week or holiday promotions.
-              </p>
+              <p className="mb-6">Set expiration dates for launch week or holiday promotions.</p>
             </div>
             <div className="pb-4">
               Exit Intent Discounts
-              <p className="text-muted-foreground font-mono text-sm">
+              <p className="mb-6">
                 Pass a special discount ID when user tries to leave. See{" "}
                 <code className="bg-muted px-1">exit-intent-popup.tsx</code>.
               </p>
@@ -369,9 +367,7 @@ export async function getProduct() {
               className="hover:border-primary/50 h-full transition-all"
             >
               Lemon Squeezy
-              <p className="text-muted-foreground font-mono text-sm">
-                Alternative with merchant of record for global tax handling.
-              </p>
+              <p className="mb-6">Alternative with merchant of record for global tax handling.</p>
             </DocsCard>
           </Link>
           <Link href="/docs/features/payments">
@@ -380,9 +376,7 @@ export async function getProduct() {
               className="hover:border-primary/50 h-full transition-all"
             >
               Stripe Setup
-              <p className="text-muted-foreground font-mono text-sm">
-                Industry-standard payment processing with subscriptions.
-              </p>
+              <p className="mb-6">Industry-standard payment processing with subscriptions.</p>
             </DocsCard>
           </Link>
         </div>

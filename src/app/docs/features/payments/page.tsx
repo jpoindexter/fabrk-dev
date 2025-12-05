@@ -205,7 +205,7 @@ export function ManageBillingButton() {
           - which is inefficient and slow. With webhooks, Stripe tells you instantly.
         </DocsCallout>
         <DocsCard title="WEBHOOK_EVENTS">
-          <p className="text-muted-foreground font-mono text-sm">
+          <p className="mb-6">
             Common webhook events: <code className="bg-muted px-1">checkout.session.completed</code>{" "}
             (someone paid),
             <code className="bg-muted ml-1 px-1">customer.subscription.deleted</code> (someone
@@ -219,7 +219,7 @@ export function ManageBillingButton() {
       {/* Testing Payments */}
       <DocsSection title="Testing Payments">
         <DocsCard title="TEST_CARDS">
-          <p className="text-muted-foreground font-mono text-sm">
+          <p className="mb-6">
             Always test payments before going live. Stripe provides test card numbers that simulate
             different scenarios without charging real money.
           </p>
@@ -343,9 +343,7 @@ export function ManageBillingButton() {
           <Link href="/docs/features/trial">
             <DocsCard title="FREE_TRIALS" className="hover:border-primary/50 h-full transition-all">
               Free Trials
-              <p className="text-muted-foreground font-mono text-sm">
-                Let users try your product before paying with trial periods.
-              </p>
+              <p className="mb-6">Let users try your product before paying with trial periods.</p>
             </DocsCard>
           </Link>
           <Link href="/docs/features/emails">
@@ -353,9 +351,7 @@ export function ManageBillingButton() {
               title="TRANSACTIONAL_EMAILS"
               className="hover:border-primary/50 h-full transition-all"
             >
-              <p className="text-muted-foreground font-mono text-sm">
-                Send purchase confirmations and invoices to customers.
-              </p>
+              <p className="mb-6">Send purchase confirmations and invoices to customers.</p>
             </DocsCard>
           </Link>
         </div>
