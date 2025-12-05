@@ -1,0 +1,137 @@
+{
+  "metadata": {
+    "generated": "2025-12-05",
+    "lastUpdated": "2025-12-05",
+    "totalViolations": 41,
+    "categories": ["font-weight", "font-size", "line-height", "arbitrary-values"]
+  },
+  "violations": [
+    {
+      "id": "TYPO-001",
+      "type": "font-weight",
+      "value": "font-black",
+      "expectedToken": "font-bold (700)",
+      "severity": "medium",
+      "isViolation": true,
+      "status": "partially-fixed",
+      "reason": "font-black (900) not in design system primitives. System defines: normal (400), medium (500), semibold (600), bold (700)",
+      "occurrences": 23,
+      "originalCount": 29,
+      "fixedCount": 6,
+      "fixedLocations": [
+        "src/components/analytics/funnel-visualizer.tsx:71 (CardTitle)",
+        "src/components/analytics/revenue-chart.tsx:138 (CardTitle)",
+        "src/components/analytics/analytics-chart.tsx:236 (CardTitle)",
+        "src/components/admin/system-health-widget.tsx:89 (CardTitle)",
+        "src/components/developer/api-key-generator.tsx:100 (CardTitle)",
+        "src/components/organization/team-activity-feed.tsx:134 (CardTitle)"
+      ],
+      "remainingLocations": [
+        "src/components/analytics/funnel-visualizer.tsx:106",
+        "src/components/analytics/funnel-visualizer.tsx:143",
+        "src/components/analytics/revenue-chart.tsx:158",
+        "src/components/analytics/revenue-chart.tsx:165",
+        "src/app/components/activity-timeline-demo.tsx:230",
+        "src/components/admin/system-health-widget.tsx:115",
+        "src/components/admin/system-health-widget.tsx:138",
+        "src/components/admin/system-health-widget.tsx:170",
+        "src/components/admin/system-health-widget.tsx:189",
+        "src/components/admin/admin-metrics-card.tsx:84",
+        "src/components/admin/user-data-table/index.tsx:104",
+        "src/components/marketing/pricing-comparison.tsx:93",
+        "src/components/marketing/pricing-comparison.tsx:102",
+        "src/components/marketing/pricing-comparison.tsx:106",
+        "src/components/marketing/pricing-comparison.tsx:134",
+        "src/components/marketing/pricing-comparison.tsx:138",
+        "src/components/marketing/pricing-comparison.tsx:151",
+        "src/components/marketing/pricing-comparison.tsx:201",
+        "src/components/home/logo.tsx:47",
+        "src/components/organization/org-card.tsx:105",
+        "src/components/organization/org-card.tsx:113"
+      ],
+      "note": "CardTitle font-black usages fixed. Remaining are non-CardTitle elements (stats, prices, etc.)"
+    },
+    {
+      "id": "TYPO-002",
+      "type": "arbitrary-font-size",
+      "value": "text-[10px]",
+      "expectedToken": "text-2xs (0.625rem / 10px)",
+      "severity": "low",
+      "isViolation": true,
+      "status": "open",
+      "reason": "Arbitrary pixel value used instead of design token. Use text-2xs for 10px",
+      "occurrences": 1,
+      "locations": [
+        "src/app/visual-test/page.tsx:758"
+      ]
+    },
+    {
+      "id": "TYPO-003",
+      "type": "arbitrary-font-size",
+      "value": "text-[14px]",
+      "expectedToken": "text-sm (0.875rem / 14px)",
+      "severity": "low",
+      "isViolation": false,
+      "status": "accepted",
+      "reason": "In documentation example - acceptable for docs",
+      "occurrences": 1,
+      "locations": [
+        "src/app/docs/components/label/page.tsx:138"
+      ]
+    },
+    {
+      "id": "TYPO-004",
+      "type": "arbitrary-line-height",
+      "value": "leading-[1.1]",
+      "expectedToken": "leading-none (1) or leading-tight (1.25)",
+      "severity": "medium",
+      "isViolation": true,
+      "status": "open",
+      "reason": "Arbitrary line-height value. Design system defines: none (1), tight (1.25), snug (1.375), normal (1.5), relaxed (1.625), loose (2)",
+      "occurrences": 3,
+      "locations": [
+        "src/components/landing/hero-split.tsx:51",
+        "src/components/landing/hero-video.tsx:83",
+        "src/app/docs/components/label/page.tsx:140"
+      ]
+    },
+    {
+      "id": "TYPO-005",
+      "type": "font-size-scale",
+      "value": "text-9xl",
+      "expectedToken": "text-8xl (max in primitives)",
+      "severity": "low",
+      "isViolation": true,
+      "status": "open",
+      "reason": "Font size exceeds design system maximum. Primitives define up to text-8xl (6rem/96px)",
+      "occurrences": 1,
+      "locations": [
+        "src/app/not-found.tsx:24"
+      ]
+    },
+    {
+      "id": "TYPO-006",
+      "type": "font-weight-inconsistency",
+      "value": "mixed font-semibold/font-bold usage",
+      "expectedToken": "consistent weight per element type",
+      "severity": "low",
+      "isViolation": false,
+      "status": "info",
+      "maybe": true,
+      "reason": "305 uses of font-semibold, 217 uses of font-medium across codebase. May indicate inconsistent heading/label weights",
+      "occurrences": 522,
+      "locations": [
+        "Multiple files - run grep for full list"
+      ]
+    }
+  ],
+  "summary": {
+    "criticalCount": 0,
+    "mediumCount": 26,
+    "lowCount": 3,
+    "maybeCount": 1,
+    "fixedInThisRun": 6,
+    "topIssue": "font-black still used in 23 locations (non-CardTitle elements)",
+    "recentFix": "CardTitle font-black → font-semibold (6 files)"
+  }
+}

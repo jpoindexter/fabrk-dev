@@ -1,0 +1,75 @@
+{
+  "metadata": {
+    "generated": "2025-12-05",
+    "totalViolations": 3,
+    "terminalThemeSpec": {
+      "button": "rounded-none",
+      "input": "rounded-none",
+      "card": "rounded-none",
+      "modal": "rounded-none",
+      "badge": "rounded-sm",
+      "avatar": "rounded-none"
+    }
+  },
+  "violations": [
+    {
+      "id": "RADIUS-001",
+      "type": "rounded-full-usage",
+      "value": "rounded-full",
+      "context": "loading-spinner",
+      "severity": "info",
+      "isViolation": false,
+      "reason": "Functionally required for circular loading animation - not a true violation",
+      "occurrences": 1,
+      "locations": [
+        "src/components/templates/list-page-template.tsx:151"
+      ]
+    },
+    {
+      "id": "RADIUS-002",
+      "type": "rounded-full-usage",
+      "value": "rounded-full",
+      "context": "avatar-image",
+      "severity": "low",
+      "isViolation": true,
+      "maybe": true,
+      "reason": "Design system specifies radius.avatar = 'none' for terminal theme, but circular avatars may be intentional UX choice",
+      "occurrences": 1,
+      "locations": [
+        "src/app/blog/[slug]/page.tsx:96"
+      ]
+    },
+    {
+      "id": "RADIUS-003",
+      "type": "documentation-only",
+      "value": "rounded-md",
+      "context": "markdown-documentation",
+      "severity": "info",
+      "isViolation": false,
+      "reason": "Found in .md documentation files only - not in production components",
+      "occurrences": 12,
+      "locations": [
+        "src/components/ui/role-selector.md",
+        "src/components/ui/CHAT-INPUT-ARCHITECTURE.md",
+        "src/components/ui/CHAT-INPUT-PREVIEW.md",
+        "src/components/ui/CHAT-MESSAGE-CHEATSHEET.md",
+        "src/components/ui/markdown-editor.md",
+        "src/components/ui/image-uploader.md",
+        "src/components/ui/COMMENT-THREAD-README.md",
+        "src/components/ui/CHAT-INPUT-QUICKSTART.md"
+      ]
+    }
+  ],
+  "compliant": {
+    "status": "MOSTLY PASS",
+    "note": "No rounded-md/lg/xl in production .tsx component files",
+    "note2": "rounded-full usage is limited to loading spinners and avatars (functionally required or UX choice)"
+  },
+  "summary": {
+    "criticalCount": 0,
+    "mediumCount": 0,
+    "lowCount": 1,
+    "infoCount": 2,
+    "topIssue": "Avatar image uses rounded-full - confirm if intentional exception"
+  }
+}

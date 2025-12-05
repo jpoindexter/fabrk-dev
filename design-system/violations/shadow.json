@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "generated": "2025-12-05",
+    "totalViolations": 0,
+    "terminalThemeSpec": {
+      "card": "shadow-none",
+      "dropdown": "shadow-sm",
+      "modal": "shadow-md",
+      "button": "shadow-none"
+    }
+  },
+  "violations": [],
+  "compliant": {
+    "status": "PASS",
+    "note": "No shadow-md, shadow-lg, shadow-xl, shadow-2xl found in component files",
+    "scannedPatterns": [
+      "shadow-(md|lg|xl|2xl)"
+    ]
+  },
+  "summary": {
+    "criticalCount": 0,
+    "mediumCount": 0,
+    "lowCount": 0,
+    "topIssue": "None - shadow usage is compliant with terminal theme"
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "metadata": {
+    "generated": "2025-12-05",
+    "lastUpdated": "2025-12-05",
+    "totalViolations": 21,
+    "components": ["Button", "Card", "Label", "Badge", "Input", "Avatar"]
+  },
+  "violations": [
+    {
+      "id": "COMP-001",
+      "component": "Button",
+      "type": "text-format-inconsistency",
+      "description": "Button text not using terminal format (> UPPERCASE_TEXT)",
+      "severity": "medium",
+      "isViolation": true,
+      "status": "open",
+      "expectedPattern": "> BUTTON_TEXT (uppercase, underscores)",
+      "actualPatterns": [
+        "Click me",
+        "Send Invitation",
+        "Submit",
+        "Send",
+        "Processing..."
+      ],
+      "occurrences": 15,
+      "locations": [
+        "src/components/ui/button.test.tsx:8",
+        "src/components/ui/button.test.tsx:26",
+        "src/components/ui/button.test.tsx:43",
+        "src/components/ui/button.test.tsx:52",
+        "src/components/ui/button.test.tsx:61",
+        "src/components/ui/button.test.tsx:66",
+        "src/components/ui/button.test.tsx:76",
+        "src/components/ui/button.test.tsx:83",
+        "src/components/ui/button.test.tsx:90",
+        "src/components/ui/role-selector.md:200",
+        "src/components/ui/CHAT-MESSAGE-CHEATSHEET.md:262",
+        "src/components/ui/CHAT-MESSAGE-QUICK-START.md:209",
+        "src/components/ui/markdown-editor.md:292"
+      ],
+      "fix": "Use formatButtonText() from @/design-system or format as > UPPERCASE_TEXT"
+    },
+    {
+      "id": "COMP-002",
+      "component": "CardTitle",
+      "type": "font-weight-inconsistency",
+      "description": "CardTitle uses font-black in some places, font-semibold in others",
+      "severity": "medium",
+      "isViolation": false,
+      "status": "fixed",
+      "fixedDate": "2025-12-05",
+      "fixedBy": "Component Normalization - Card",
+      "expectedPattern": "Consistent font weight across all CardTitle instances",
+      "resolution": {
+        "action": "Removed font-black from all CardTitle usages",
+        "filesFixed": [
+          "src/components/analytics/funnel-visualizer.tsx:71",
+          "src/components/analytics/revenue-chart.tsx:138",
+          "src/components/analytics/analytics-chart.tsx:236",
+          "src/components/admin/system-health-widget.tsx:89",
+          "src/components/developer/api-key-generator.tsx:100",
+          "src/components/organization/team-activity-feed.tsx:134"
+        ],
+        "note": "All CardTitle instances now use default font-semibold (600)"
+      }
+    },
+    {
+      "id": "COMP-003",
+      "component": "Label",
+      "type": "format-inconsistency",
+      "description": "Some labels use formatLabel() ([LABEL]:), others use plain text",
+      "severity": "medium",
+      "isViolation": true,
+      "status": "open",
+      "expectedPattern": "[LABEL]: (using formatLabel from @/design-system)",
+      "implementations": {
+        "using-formatLabel": {
+          "count": 30,
+          "locations": [
+            "src/components/account/api-keys-section.tsx:134",
+            "src/components/ui/prompt-builder.tsx:101",
+            "src/app/(dashboard)/profile/page.tsx:197",
+            "src/app/(dashboard)/admin/feature-flags-db/page.tsx:167",
+            "src/app/components/sections/forms-section.tsx:42"
+          ]
+        },
+        "plain-text": {
+          "count": 5,
+          "locations": [
+            "src/app/component-showcase/page.tsx:396",
+            "src/app/component-showcase/page.tsx:412",
+            "src/app/component-showcase/page.tsx:416",
+            "src/app/component-showcase/page.tsx:577"
+          ]
+        }
+      },
+      "fix": "All labels should use formatLabel() for terminal style consistency"
+    },
+    {
+      "id": "COMP-004",
+      "component": "Card",
+      "type": "custom-implementation",
+      "description": "Card-like structures built with raw divs instead of Card component",
+      "severity": "low",
+      "isViolation": true,
+      "status": "open",
+      "maybe": true,
+      "note": "Some pages use 'border border-border bg-card' pattern instead of <Card>",
+      "locations": [
+        "src/app/(legal)/privacy/page.tsx",
+        "src/app/(legal)/cookies/page.tsx",
+        "src/app/(legal)/terms/page.tsx",
+        "src/app/(legal)/refund/page.tsx"
+      ],
+      "fix": "Consider using Card component for visual consistency, or document as intentional pattern for legal pages"
+    },
+    {
+      "id": "COMP-005",
+      "component": "Avatar",
+      "type": "radius-violation",
+      "description": "Some avatars use rounded-full when terminal theme expects rounded-none",
+      "severity": "low",
+      "isViolation": true,
+      "status": "open",
+      "maybe": true,
+      "note": "Design system terminal theme specifies radius.avatar = 'none', but circular avatars may be intentional UX choice",
+      "occurrences": 2,
+      "locations": [
+        "src/app/blog/[slug]/page.tsx:96"
+      ],
+      "fix": "Confirm if circular avatars are intentional exception or should use rounded-none"
+    },
+    {
+      "id": "COMP-006",
+      "component": "LoadingSpinner",
+      "type": "radius-violation",
+      "description": "Loading spinner uses rounded-full (required for circular animation)",
+      "severity": "info",
+      "isViolation": false,
+      "status": "accepted",
+      "note": "rounded-full is functionally required for circular loading spinners - not a true violation",
+      "occurrences": 1,
+      "locations": [
+        "src/components/templates/list-page-template.tsx:151"
+      ]
+    }
+  ],
+  "summary": {
+    "totalViolations": 21,
+    "openViolations": 19,
+    "fixedViolations": 1,
+    "acceptedExceptions": 1,
+    "criticalCount": 0,
+    "mediumCount": 2,
+    "lowCount": 2,
+    "infoCount": 1,
+    "topIssue": "Button text formatting - 15 instances not using terminal format",
+    "recentFix": "COMP-002: CardTitle font-black → font-semibold (6 files)"
+  }
+}

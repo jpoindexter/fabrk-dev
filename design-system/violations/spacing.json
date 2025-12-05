@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "generated": "2025-12-05",
+    "totalViolations": 0,
+    "grid": "8-point",
+    "allowedValues": ["0", "0.5 (2px)", "1 (4px)", "2 (8px)", "4 (16px)", "6 (24px)", "8 (32px)", "10 (40px)", "12 (48px)", "16 (64px)", "20 (80px)", "24 (96px)", "32 (128px)", "40 (160px)", "48 (192px)", "64 (256px)"]
+  },
+  "violations": [],
+  "compliant": {
+    "status": "PASS",
+    "note": "No off-grid spacing values found (p-3, p-5, p-7, p-9, m-3, m-5, gap-3, gap-5, etc.)",
+    "scannedPatterns": [
+      "(p|m|py|px|pt|pb|pl|pr|my|mx|mt|mb|ml|mr|gap)-(3|5|7|9|11|13|14|15)"
+    ]
+  },
+  "summary": {
+    "criticalCount": 0,
+    "mediumCount": 0,
+    "lowCount": 0,
+    "topIssue": "None - spacing is compliant with 8-point grid"
+  }
+}

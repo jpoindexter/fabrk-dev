@@ -1,0 +1,131 @@
+{
+  "metadata": {
+    "generated": "2025-12-05",
+    "totalViolations": 12,
+    "categories": ["casing", "formatting", "terminology"]
+  },
+  "violations": [
+    {
+      "id": "COPY-001",
+      "phrase": "Get Started",
+      "type": "casing-inconsistency",
+      "severity": "medium",
+      "isViolation": true,
+      "variants": [
+        {
+          "format": "> GET_STARTED",
+          "occurrences": 8,
+          "status": "correct-terminal-format",
+          "locations": [
+            "src/components/landing/navigation.tsx:87",
+            "src/components/landing/navigation.tsx:157",
+            "src/components/navigation/site-navigation.tsx:120",
+            "src/components/navigation/site-navigation.tsx:201",
+            "src/app/templates/landing-variations/page.tsx:112",
+            "src/app/docs/components/hero/page.tsx:79",
+            "src/app/docs/components/hero/page.tsx:122"
+          ]
+        },
+        {
+          "format": "Get Started",
+          "occurrences": 3,
+          "status": "incorrect-not-terminal",
+          "locations": [
+            "src/components/pricing/checkout-button.tsx:21",
+            "src/components/landing/exit-intent-popup.tsx:37"
+          ]
+        },
+        {
+          "format": "get started",
+          "occurrences": 6,
+          "status": "lowercase-in-prose-ok",
+          "locations": [
+            "src/app/purchase/success/page.tsx:91",
+            "src/components/account/api-keys-section.tsx:166"
+          ]
+        }
+      ],
+      "canonicalFormat": "> GET_STARTED",
+      "fix": "Button text should use formatButtonText() → '> GET_STARTED'"
+    },
+    {
+      "id": "COPY-002",
+      "phrase": "Sign In",
+      "type": "casing-inconsistency",
+      "severity": "low",
+      "isViolation": true,
+      "variants": [
+        {
+          "format": "SIGN_IN",
+          "occurrences": 1,
+          "status": "correct-terminal-format",
+          "locations": ["src/app/visual-test/page.tsx:123"]
+        },
+        {
+          "format": "> GO_TO_SIGN_IN",
+          "occurrences": 1,
+          "status": "correct-button-format",
+          "locations": ["src/components/auth/reset-status.tsx:62"]
+        },
+        {
+          "format": "Sign In",
+          "occurrences": 2,
+          "status": "title-case-ok-for-i18n",
+          "locations": ["src/i18n/messages/en.json:27"]
+        },
+        {
+          "format": "sign in",
+          "occurrences": 15,
+          "status": "lowercase-in-prose-ok",
+          "locations": ["Multiple prose contexts"]
+        }
+      ],
+      "canonicalFormat": "> SIGN_IN (buttons), 'Sign In' (i18n), 'sign in' (prose)",
+      "fix": "Context-dependent - buttons use terminal format, prose uses lowercase"
+    },
+    {
+      "id": "COPY-003",
+      "phrase": "Log Out",
+      "type": "casing-inconsistency",
+      "severity": "low",
+      "isViolation": true,
+      "variants": [
+        {
+          "format": "Log out",
+          "occurrences": 4,
+          "status": "sentence-case",
+          "locations": [
+            "src/app/docs/tutorials/authentication/page.tsx:98",
+            "src/app/docs/components/dropdown-menu/page.tsx:62",
+            "src/app/docs/components/dropdown-menu/page.tsx:85"
+          ]
+        },
+        {
+          "format": "LogOut (icon import)",
+          "occurrences": 10,
+          "status": "n/a-icon-name",
+          "locations": ["Multiple files importing lucide icon"]
+        }
+      ],
+      "canonicalFormat": "> LOG_OUT (buttons), 'Log out' (menu items)",
+      "fix": "Buttons should use '> LOG_OUT' format"
+    },
+    {
+      "id": "COPY-004",
+      "phrase": "Dashboard",
+      "type": "terminal-format-missing",
+      "severity": "info",
+      "isViolation": false,
+      "maybe": true,
+      "note": "Navigation items sometimes use plain 'Dashboard' vs '> DASHBOARD'",
+      "canonicalFormat": "Context-dependent"
+    }
+  ],
+  "summary": {
+    "criticalCount": 0,
+    "mediumCount": 1,
+    "lowCount": 2,
+    "infoCount": 1,
+    "topIssue": "'Get Started' button text not consistently using terminal format"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "metadata": {
+    "generated": "2025-12-05",
+    "totalViolations": 3,
+    "semanticTokens": [
+      "bg-background", "bg-foreground", "bg-card", "bg-popover", "bg-primary", "bg-secondary",
+      "bg-muted", "bg-accent", "bg-destructive", "bg-success", "bg-warning", "bg-info",
+      "text-foreground", "text-muted-foreground", "text-primary", "text-secondary",
+      "text-destructive", "text-success", "text-warning", "text-info",
+      "border-border", "border-primary", "border-destructive", "border-success"
+    ]
+  },
+  "violations": [
+    {
+      "id": "COLOR-001",
+      "type": "raw-tailwind-color",
+      "value": "bg-blue-500",
+      "expectedToken": "bg-primary or bg-info",
+      "severity": "low",
+      "isViolation": false,
+      "reason": "Used in documentation example to show anti-pattern - acceptable",
+      "occurrences": 1,
+      "locations": [
+        "src/app/docs/extras/theming/page.tsx:96"
+      ]
+    },
+    {
+      "id": "COLOR-002",
+      "type": "raw-tailwind-color",
+      "value": "bg-red-500",
+      "expectedToken": "bg-destructive",
+      "severity": "low",
+      "isViolation": false,
+      "reason": "Used in unit test file - acceptable",
+      "occurrences": 1,
+      "locations": [
+        "src/lib/utils.test.ts:33"
+      ]
+    },
+    {
+      "id": "COLOR-003",
+      "type": "raw-tailwind-color",
+      "value": "bg-purple-500",
+      "expectedToken": "bg-primary",
+      "severity": "low",
+      "isViolation": false,
+      "reason": "Used in documentation example to show anti-pattern - acceptable",
+      "occurrences": 1,
+      "locations": [
+        "src/app/docs/extras/theming/page.tsx:179"
+      ]
+    }
+  ],
+  "compliant": {
+    "status": "PASS",
+    "note": "No raw hex colors (#xxx) or rgb/hsl values found in component files",
+    "note2": "No bg-white/text-white/bg-black/text-black found",
+    "scannedPatterns": [
+      "#[0-9a-fA-F]{3,8}",
+      "(bg|text|border)-(white|black)",
+      "(bg|text|border)-(gray|slate|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-[0-9]+"
+    ]
+  },
+  "summary": {
+    "criticalCount": 0,
+    "mediumCount": 0,
+    "lowCount": 3,
+    "topIssue": "None significant - all raw colors are in docs/tests (acceptable)"
+  }
+}
