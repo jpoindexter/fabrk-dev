@@ -8,6 +8,7 @@
  * - `formatLabel()` - Format labels according to mode
  * - `formatButtonText()` - Format button text according to mode
  * - `formatCardTitle()` - Format card titles according to mode
+ * - `modeClasses` - Tailwind classes for each visual mode
  * - `TYPOGRAPHY` - Typography constants
  * - `SPACING` - Spacing constants
  *
@@ -20,6 +21,10 @@
  * // Format text according to mode
  * <label>{formatLabel("Email")}</label>
  * <Button>{formatButtonText("Submit")}</Button>
+ *
+ * // For dynamic mode switching (client components)
+ * import { useThemeContext } from "@/design-system/providers";
+ * const { visualMode, setVisualMode } = useThemeContext();
  */
 
 // Visual Mode System - THE KEY EXPORT
@@ -36,6 +41,15 @@ export {
   isSharpMode,
   hasRoundedCorners,
 } from "./visual-mode";
+
+// Bridge for backwards compatibility + new features
+export {
+  modeClasses,
+  getModeClasses,
+  getVisualMode,
+  getCurrentModeName,
+  currentModeClasses,
+} from "./bridge";
 
 // Design System Constants
 export {

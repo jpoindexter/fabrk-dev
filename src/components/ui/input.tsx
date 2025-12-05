@@ -1,14 +1,17 @@
 /**
  * ✅ FABRK COMPONENT
- * - Component under 150 lines ✓
- * - No hardcoded styles ✓
- * - Design tokens only ✓
- * - UX heuristics applied ✓
- * - Uses Visual Mode System for aesthetic switching
+ * Input component with validation states and loading indicator.
+ * Uses Visual Mode System for aesthetic switching.
+ *
+ * Design System Integration:
+ * - Imports from @/lib/design-system for static mode (server components)
+ * - Radius and font from visual mode config
+ * - Focus ring using design tokens (focus-visible:ring-primary)
+ * - Height follows 8-point grid: h-8 (32px)
  *
  * @example
  * ```tsx
- * <input />
+ * <Input placeholder="Enter email" error={hasError} />
  * ```
  */
 

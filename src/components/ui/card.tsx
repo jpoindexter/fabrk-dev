@@ -3,9 +3,29 @@
  * Card component for grouping related content with consistent styling.
  * Uses Visual Mode System for aesthetic switching.
  *
+ * Design System Integration:
+ * - Imports from @/lib/design-system for static mode (server components)
+ * - Radius from visual mode config (mode.radius applies the correct value)
+ * - Focus ring using design tokens (focus-within:ring-primary)
+ * - Spacing follows 8-point grid: p-6 (24px), space-y-2 (8px)
+ *
+ * Component Hierarchy:
+ * - Card → Container with border and background
+ * - CardHeader → Title area with vertical spacing
+ * - CardTitle → Semantic heading (h1-h6)
+ * - CardDescription → Muted description text
+ * - CardContent → Main content area
+ * - CardFooter → Action area
+ *
  * @example
  * ```tsx
- * <card />
+ * <Card>
+ *   <CardHeader>
+ *     <CardTitle>Settings</CardTitle>
+ *     <CardDescription>Manage your preferences</CardDescription>
+ *   </CardHeader>
+ *   <CardContent>...</CardContent>
+ * </Card>
  * ```
  */
 
