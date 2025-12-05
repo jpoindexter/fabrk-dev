@@ -222,6 +222,62 @@ export type {
 } from "./utils/validate-tokens";
 
 // ============================================================================
+// HOOK EXPORTS
+// ============================================================================
+
+export {
+  useTheme,
+  default as useThemeDefault,
+} from "./hooks/use-theme";
+
+export type {
+  UseThemeOptions,
+  UseThemeReturn,
+} from "./hooks/use-theme";
+
+export {
+  useVisualMode,
+  getVisualModeClasses,
+  getVisualModeConfig,
+  getCurrentVisualMode,
+  default as useVisualModeDefault,
+} from "./hooks/use-visual-mode";
+
+export type {
+  UseVisualModeOptions,
+  UseVisualModeReturn,
+  VisualModeClasses,
+} from "./hooks/use-visual-mode";
+
+export {
+  useTokens,
+  cn,
+  buildClass,
+  createVariantClass,
+  default as useTokensDefault,
+} from "./hooks/use-tokens";
+
+export type {
+  UseTokensReturn,
+} from "./hooks/use-tokens";
+
+// ============================================================================
+// PROVIDER EXPORTS
+// ============================================================================
+
+export {
+  ThemeProvider,
+  useThemeContext,
+  useOptionalThemeContext,
+  ThemeScript,
+} from "./providers";
+
+export type {
+  ThemeProviderProps,
+  ThemeContextValue,
+} from "./providers";
+
+// ============================================================================
 // CONVENIENCE BUNDLES
 // ============================================================================
 
