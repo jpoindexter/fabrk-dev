@@ -15,6 +15,8 @@ import {
   formatReadTime,
   mdxComponents,
 } from "@/lib/blog";
+import { cn } from "@/lib/utils";
+import { mode } from "@/design-system";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -93,7 +95,7 @@ export default async function BlogPostPage({ params }: Props) {
                     alt={`${post.author.name || "Author"} avatar`}
                     width={24}
                     height={24}
-                    className="h-6 w-6 rounded-full"
+                    className={cn("h-6 w-6", mode.radius)}
                   />
                 )}
                 <span>{post.author.name || "Anonymous"}</span>

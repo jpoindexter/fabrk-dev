@@ -148,6 +148,7 @@ function LoadingState() {
         mode.radius
       )}
     >
+      {/* rounded-full is required here for the spinning animation to render correctly */}
       <div className="border-primary mb-4 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
       <p className={cn("text-muted-foreground text-sm", mode.font)}>[LOADING]...</p>
     </div>

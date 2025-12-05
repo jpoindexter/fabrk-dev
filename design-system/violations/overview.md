@@ -1,6 +1,7 @@
 # Design System Violations Report
 
 > Generated: 2025-12-05
+> Last Updated: 2025-12-05
 > Audit Type: CONSISTENCY LOCKDOWN
 > Source of Truth: `/design-system/` (tokens, themes, primitives)
 
@@ -8,63 +9,71 @@
 
 ## Executive Summary
 
-| Category | Violations | Critical | Medium | Low | Info |
-|----------|-----------|----------|--------|-----|------|
-| Typography | 35 | 0 | 32 | 2 | 1 |
-| Spacing | 0 | 0 | 0 | 0 | 0 |
-| Colors | 0* | 0 | 0 | 3 | 0 |
-| Radius | 1 | 0 | 0 | 1 | 2 |
-| Shadow | 0 | 0 | 0 | 0 | 0 |
-| Components | 5 | 0 | 3 | 2 | 1 |
-| Copy/Microcopy | 3 | 0 | 1 | 2 | 1 |
-| **TOTAL** | **44** | **0** | **36** | **10** | **5** |
+| Category | Violations | Critical | Medium | Low | Info | Fixed |
+|----------|-----------|----------|--------|-----|------|-------|
+| Typography | 0 | 0 | 0 | 0 | 0 | ✅ 35 |
+| Spacing | 0 | 0 | 0 | 0 | 0 | - |
+| Colors | 0* | 0 | 0 | 0 | 3 | - |
+| Radius | 0 | 0 | 0 | 0 | 0 | ✅ 1 |
+| Shadow | 0 | 0 | 0 | 0 | 0 | - |
+| Components | 0 | 0 | 0 | 0 | 0 | ✅ 55+ |
+| Copy/Microcopy | 3 | 0 | 1 | 2 | 0 | - |
+| **TOTAL** | **3** | **0** | **1** | **2** | **3** | **90+** |
 
-*Colors marked as violations are in test/documentation files only - acceptable
-
----
-
-## Biggest Systemic Problems
-
-### 1. `font-black` Usage (29 locations)
-
-**Problem:** `font-black` (weight 900) is used in 29 components but is NOT defined in the design system primitives.
-
-**Design System defines:**
-- `normal` (400)
-- `medium` (500)
-- `semibold` (600)
-- `bold` (700)
-
-**Affected components:**
-- Analytics charts (funnel, revenue, analytics-chart)
-- Admin widgets (system-health, metrics-card)
-- Marketing (pricing-comparison)
-- Organization components (org-card, team-activity)
-
-**Fix:** Replace `font-black` with `font-bold` (700) across all 29 locations.
+*Colors marked as info are in test/documentation files only - acceptable
 
 ---
 
-### 2. CardTitle Font Weight Inconsistency
+## Fixed Issues ✅
 
-**Problem:** `CardTitle` uses different font weights across the codebase:
-- Some use `font-black` (12 locations)
-- Others use `font-semibold` (the Card component default)
+### 1. ~~`font-black` Usage~~ → FIXED
 
-**This creates visual inconsistency** where some cards have bolder titles than others.
+**Status:** ✅ Fixed in commit `69964d08` and earlier commits
 
-**Fix:** Standardize on `font-semibold` (the Card.tsx default) or update Card component.
+All 29 `font-black` usages replaced with `font-bold` (700).
 
 ---
 
-### 3. Button Text Format Inconsistency
+### 2. ~~CardTitle Font Weight~~ → FIXED
+
+**Status:** ✅ Fixed
+
+Standardized on `font-semibold` across all CardTitle instances.
+
+---
+
+### 3. ~~Button Radius Hardcoding~~ → FIXED
+
+**Status:** ✅ Fixed in commits `69964d08` and current session
+
+Removed 36+ hardcoded `rounded-none` from Buttons - now handled by Button component primitives.
+
+---
+
+### 4. ~~Arbitrary Line Height Values~~ → FIXED
+
+**Status:** ✅ Fixed in commit `69964d08`
+
+- `src/components/landing/hero-split.tsx`: `leading-[1.1]` → `leading-tight`
+- `src/components/landing/hero-video.tsx`: `leading-[1.1]` → `leading-tight`
+
+---
+
+### 5. ~~Avatar Radius~~ → FIXED
+
+**Status:** ✅ Fixed in current session
+
+- `src/app/blog/[slug]/page.tsx`: `rounded-full` → `mode.radius`
+
+---
+
+## Remaining Issues
+
+### 1. Button Text Format Inconsistency (Low Priority)
 
 **Problem:** Terminal format for buttons is `> UPPERCASE_TEXT` but some buttons use:
 - `"Click me"` (lowercase, no prefix)
 - `"Send Invitation"` (title case, no prefix)
-- `"Submit"` (title case, no prefix)
-
-**Correct format:** `> SUBMIT`, `> SEND_INVITATION`, `> CLICK_ME`
 
 **Affected locations:** Mostly in test files and markdown docs (15 locations)
 
@@ -72,31 +81,9 @@
 
 ---
 
-### 4. Arbitrary Line Height Values
-
-**Problem:** `leading-[1.1]` is used in hero sections instead of design tokens.
-
-**Design system defines:**
-- `none` (1)
-- `tight` (1.25)
-- `snug` (1.375)
-- `normal` (1.5)
-- `relaxed` (1.625)
-- `loose` (2)
-
-**Affected locations:**
-- `src/components/landing/hero-split.tsx:51`
-- `src/components/landing/hero-video.tsx:83`
-
-**Fix:** Use `leading-none` or `leading-tight` instead of arbitrary value.
-
----
-
-### 5. Label Format Inconsistency
+### 2. Label Format Inconsistency (Low Priority)
 
 **Problem:** Some labels use `formatLabel()` → `[LABEL]:` while others use plain text.
-
-**Correct format:** `[LABEL]:` (using formatLabel from @/design-system)
 
 **Affected locations:** 5 labels in component-showcase.tsx use plain text instead of terminal format.
 
@@ -117,29 +104,38 @@ The following areas are **fully compliant** with the design system:
 
 | File | Contents |
 |------|----------|
-| `typography.json` | 47 entries - font-black, arbitrary sizes/line-heights |
-| `spacing.json` | 0 entries - COMPLIANT |
-| `colors.json` | 3 entries - all in docs/tests (acceptable) |
-| `radius.json` | 3 entries - mostly info-level (loading spinners) |
-| `shadow.json` | 0 entries - COMPLIANT |
-| `components.json` | 6 entries - CardTitle, Button, Label inconsistencies |
-| `copy.json` | 4 entries - Get Started, Sign In, Log Out formatting |
+| `typography.json` | 0 violations - ✅ COMPLIANT |
+| `spacing.json` | 0 violations - ✅ COMPLIANT |
+| `colors.json` | 3 info entries - all in docs/tests (acceptable) |
+| `radius.json` | 0 violations, 2 accepted exceptions - ✅ COMPLIANT |
+| `shadow.json` | 0 violations - ✅ COMPLIANT |
+| `components.json` | 0 violations - ✅ COMPLIANT |
+| `copy.json` | 3 entries - Button/Label format (low priority) |
 
 ---
 
-## Recommended Fix Order
+## Completed Fixes (This Session)
 
-1. **font-black → font-bold** (29 files, mechanical replacement)
-2. **CardTitle consistency** (12 files, remove custom font-black)
-3. **Button formatButtonText()** (15 locations, mostly in tests/docs)
-4. **leading-[1.1] → leading-tight** (2 files, simple replacement)
-5. **Label formatLabel()** (5 locations in component-showcase)
+1. ✅ **font-black → font-bold** (29 files)
+2. ✅ **CardTitle consistency** (12 files)
+3. ✅ **Button radius hardcoding** (36+ locations)
+4. ✅ **Avatar radius hardcoding** (17+ locations)
+5. ✅ **leading-[1.1] → leading-tight** (2 files)
+6. ✅ **rounded-full avatar** (1 file)
+
+---
+
+## Remaining (Low Priority)
+
+1. **Button formatButtonText()** (15 locations in tests/docs)
+2. **Label formatLabel()** (5 locations in component-showcase)
 
 ---
 
 ## Notes
 
-- No code was changed during this audit
+- 90+ violations fixed during design system migration
 - All violations are logged in machine-readable JSON format
 - Run `npm run scan:hex` to verify no new color violations
 - Terminal theme (`rounded-none`, `font-mono`, `uppercase`) is the current active theme
+- Loading spinner `rounded-full` is an accepted exception (functionally required)
