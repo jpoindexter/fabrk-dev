@@ -423,9 +423,14 @@ export function hasRoundedCorners(): boolean {
 }
 
 // ============================================================================
-// DESIGN SYSTEM CONSTANTS (from old src/lib/design-system/constants.ts)
+// DESIGN SYSTEM CONSTANTS (LEGACY - prefer typography scale exports above)
+// These are kept for backwards compatibility with existing components.
+// For new code, use: import { headingHierarchy, bodyText, uiText } from '@/design-system'
 // ============================================================================
 
+/**
+ * @deprecated Use `headingHierarchy` from typography scale instead
+ */
 export const TYPOGRAPHY = {
   pageTitle: {
     className: "text-4xl font-semibold tracking-tight",
@@ -453,6 +458,12 @@ export const TYPOGRAPHY = {
   },
 } as const;
 
+/**
+ * @deprecated Use terminal mode formatting functions instead:
+ * - formatTerminalCardHeader() for card headers
+ * - formatTerminalButtonText() for buttons
+ * - formatTerminalLabelText() for labels
+ */
 export const TERMINAL_TYPOGRAPHY = {
   pageTitle: {
     className: "font-mono text-4xl font-semibold tracking-tight",
@@ -496,6 +507,9 @@ export const TERMINAL_TYPOGRAPHY = {
   },
 } as const;
 
+/**
+ * @deprecated Use `headingHierarchy.docs` from typography scale instead
+ */
 export const DOCS_TYPOGRAPHY = {
   h1: {
     className: "font-mono text-3xl font-bold tracking-tight",
@@ -527,6 +541,9 @@ export const DOCS_TYPOGRAPHY = {
   },
 } as const;
 
+/**
+ * @deprecated Use `spacingBundle` or import from spacing/scale directly
+ */
 export const SPACING = {
   containerMaxWidth: "max-w-6xl",
   containerDescription: "Standard maximum container width for dashboard pages",
