@@ -286,63 +286,65 @@ npm run type-check  # ✅ Passed
 
 **Goal:** Separator uses semantic tokens
 
-- [ ] Read `src/components/ui/separator.tsx`
-- [ ] Use border-default token
-- [ ] Verify horizontal and vertical variants
-- [ ] Commit: "Migrate Separator to design system"
+**Status:** ✅ ALREADY COMPLIANT (2025-12-05)
+
+- [x] Read `src/components/ui/separator.tsx`
+- [x] **Finding:** Already uses `bg-border` (semantic token)
+- [x] Horizontal and vertical variants work correctly
+- [x] No radius/font needed (simple line element)
+- [x] No changes needed ✅
 
 ### B.6: Migrate Input Family
 
 **Goal:** All input variants use semantic tokens
 
-- [ ] Migrate InputPassword
-  - [ ] Use mode.radius, mode.font
-  - [ ] Verify eye icon toggles
-  - [ ] Commit: "Migrate InputPassword to design system"
+**Status:** ✅ ALREADY COMPLIANT / FIXED IN B.0 (2025-12-05)
 
-- [ ] Migrate InputSearch
-  - [ ] Use mode.radius, mode.font
-  - [ ] Verify search icon
-  - [ ] Commit: "Migrate InputSearch to design system"
+- [x] InputPassword
+  - [x] **Fixed in B.0:** Uses Input component which has mode.radius, mode.font
+  - [x] Eye icon toggles correctly ✅
 
-- [ ] Migrate InputNumber
-  - [ ] Use mode.radius, mode.font
-  - [ ] Verify +/- buttons
-  - [ ] Commit: "Migrate InputNumber to design system"
+- [x] InputSearch
+  - [x] **Finding:** Already uses `mode.radius` (line 58), `mode.font` (line 59)
+  - [x] Search icon and clear button work correctly ✅
 
-- [ ] Migrate InputOTP
-  - [ ] Use mode.radius, mode.font
-  - [ ] Verify all slots render
-  - [ ] Commit: "Migrate InputOTP to design system"
+- [x] InputNumber
+  - [x] **Fixed in B.0:** Changed `mode.radius === "rounded-none"` to `isSharpMode()`
+  - [x] +/- buttons work correctly ✅
 
-- [ ] Migrate InputGroup
-  - [ ] Use mode.radius, mode.font
-  - [ ] Verify addons render correctly
-  - [ ] Commit: "Migrate InputGroup to design system"
+- [x] InputOTP
+  - [x] **Fixed in B.0:** Uses mode.font, normalized classes
+  - [x] All slots render correctly ✅
 
-- [ ] Migrate Textarea
-  - [ ] Use mode.radius, mode.font
-  - [ ] Verify resize behavior
-  - [ ] Commit: "Migrate Textarea to design system"
+- [x] InputGroup
+  - [x] **Finding:** Already uses mode.radius, mode.font throughout all subcomponents
+  - [x] Addons render correctly ✅
+
+- [x] Textarea
+  - [x] **Finding:** Already uses `mode.radius` (line 40), `mode.font` (line 41)
+  - [x] Resize behavior works ✅
+
+- [x] No additional changes needed ✅
 
 ### B.7: Migrate Form Controls
 
 **Goal:** Checkbox, Radio, Switch use semantic tokens
 
-- [ ] Migrate Checkbox
-  - [ ] Use semantic colors
-  - [ ] Verify checked/unchecked states
-  - [ ] Commit: "Migrate Checkbox to design system"
+**Status:** ✅ ALREADY COMPLIANT (2025-12-05)
 
-- [ ] Migrate RadioGroup
-  - [ ] Use semantic colors
-  - [ ] Verify selected state
-  - [ ] Commit: "Migrate RadioGroup to design system"
+- [x] Checkbox
+  - [x] **Finding:** Uses `mode.radius`, semantic colors (`bg-primary`, `text-primary-foreground`, `hover:border-primary`)
+  - [x] Checked/unchecked states work ✅
 
-- [ ] Migrate Switch
-  - [ ] Use semantic colors
-  - [ ] Verify on/off states
-  - [ ] Commit: "Migrate Switch to design system"
+- [x] RadioGroup
+  - [x] **Finding:** Uses `mode.radius`, semantic colors (`text-primary`, `focus-visible:ring-primary`)
+  - [x] Selected state works ✅
+
+- [x] Switch
+  - [x] **Finding:** Uses `mode.radius` on both root and thumb, semantic colors (`bg-muted`, `bg-primary`, `bg-background`)
+  - [x] On/off states work ✅
+
+- [x] No changes needed ✅
 
 ### B.8: Migrate Card Components
 
@@ -799,12 +801,12 @@ npm run type-check  # ✅ Passed
 | Phase | Total Tasks | Completed | Status |
 |-------|-------------|-----------|--------|
 | A: Foundation | 6 | 0 | Not Started |
-| B: Components | 12 | 5 | **B.0-B.4 Complete** |
+| B: Components | 12 | 8 | **B.0-B.7 Complete** |
 | C: Templates | 8 | 0 | Not Started |
 | D: Pages | 9 | 0 | Not Started |
 | E: Cleanup | 5 | 0 | Not Started |
 
-**Overall: 5 / 40 major tasks**
+**Overall: 8 / 40 major tasks**
 
 ### Execution Log
 
@@ -815,6 +817,9 @@ npm run type-check  # ✅ Passed
 | 2025-12-05 | B.2 | Button Component | 0 files | Already compliant - uses mode.radius, mode.font, mode.textTransform |
 | 2025-12-05 | B.3 | Input Component | 0 files | Already compliant - uses mode.radius, mode.font |
 | 2025-12-05 | B.4 | Badge Component | 1 file | Fixed: replaced hardcoded uppercase with mode.textTransform |
+| 2025-12-05 | B.5 | Separator Component | 0 files | Already compliant - uses bg-border |
+| 2025-12-05 | B.6 | Input Family | 0 files | All compliant or already fixed in B.0 |
+| 2025-12-05 | B.7 | Form Controls | 0 files | Checkbox, RadioGroup, Switch all compliant |
 
 ---
 
