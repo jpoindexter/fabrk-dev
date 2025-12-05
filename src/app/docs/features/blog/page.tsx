@@ -406,9 +406,7 @@ export function formatDate(date: Date | string): string {
       {/* SEO Configuration */}
       <DocsSection title="SEO Configuration">
         <DocsCard title="SEO_METADATA">
-          <p className="mb-4">
-            Each blog post can have custom SEO metadata:
-          </p>
+          <p className="mb-4">Each blog post can have custom SEO metadata:</p>
           <div className="space-y-2 text-sm">
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">seoTitle</code>
@@ -438,7 +436,7 @@ export function formatDate(date: Date | string): string {
           <Link href="/docs/features/seo">
             <DocsCard title="SEO_SETUP" className="hover:border-primary/50 h-full transition-all">
               SEO Configuration
-              <p className="">
+              <p className="text-muted-foreground font-mono text-sm">
                 Learn how to optimize your blog posts for search engines.
               </p>
             </DocsCard>
@@ -449,7 +447,7 @@ export function formatDate(date: Date | string): string {
               className="hover:border-primary/50 h-full transition-all"
             >
               File Uploads
-              <p className="">
+              <p className="text-muted-foreground font-mono text-sm">
                 Upload featured images and media for your blog posts.
               </p>
             </DocsCard>

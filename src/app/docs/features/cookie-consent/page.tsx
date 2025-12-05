@@ -211,7 +211,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               </span>
               First Visit
             </div>
-            <p className="">
+            <p className="text-muted-foreground font-mono text-sm">
               New visitors see a &quot;Cookie Settings&quot; button in the bottom-right corner. All
               non-essential cookies are blocked until they make a choice.
             </p>
@@ -223,7 +223,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               </span>
               User Makes Choice
             </div>
-            <p className="">
+            <p className="text-muted-foreground font-mono text-sm">
               Clicking the button opens a modal with three tabs: Consent (quick toggles), Details
               (see exactly which cookies), and About (their privacy rights).
             </p>
@@ -235,7 +235,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               </span>
               Choice Saved
             </div>
-            <p className="">
+            <p className="text-muted-foreground font-mono text-sm">
               Their preference is stored in localStorage for 1 year. Google Consent Mode is updated
               automatically, enabling/disabling analytics and ads accordingly.
             </p>
@@ -247,7 +247,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               </span>
               Return Visits
             </div>
-            <p className="">
+            <p className="text-muted-foreground font-mono text-sm">
               The banner doesn&apos;t show again (unless they clear storage). Their saved
               preferences are applied immediately on page load.
             </p>
@@ -263,7 +263,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               <div className="bg-success mt-1 h-3 w-3 rounded-none"></div>
               <div>
                 <p className="font-medium">Necessary (Always On)</p>
-                <p className="">
+                <p className="text-muted-foreground font-mono text-sm">
                   Essential for the site to work. Includes session cookies and consent storage.
                   Cannot be disabled.
                 </p>
@@ -273,7 +273,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               <div className="bg-info mt-1 h-3 w-3 rounded-none"></div>
               <div>
                 <p className="font-medium">Preferences</p>
-                <p className="">
+                <p className="text-muted-foreground font-mono text-sm">
                   Remember settings like theme (dark/light) and language. Off by default.
                 </p>
               </div>
@@ -282,7 +282,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               <div className="bg-warning mt-1 h-3 w-3 rounded-none"></div>
               <div>
                 <p className="font-medium">Statistics</p>
-                <p className="">
+                <p className="text-muted-foreground font-mono text-sm">
                   Google Analytics and similar tools. Helps you understand how people use your app.
                   Off by default.
                 </p>
@@ -292,7 +292,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               <div className="bg-destructive mt-1 h-3 w-3 rounded-none"></div>
               <div>
                 <p className="font-medium">Marketing</p>
-                <p className="">
+                <p className="text-muted-foreground font-mono text-sm">
                   Facebook Pixel, Google Ads conversion tracking. Used for targeted advertising. Off
                   by default.
                 </p>
@@ -374,7 +374,6 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               <code className="bg-muted px-1 font-mono">cookie-consent</code>
             </li>
           </ol>
-
           Verify GTM Integration
           <ol className="list-inside list-decimal space-y-2">
             <li>Open DevTools → Console</li>

@@ -5,7 +5,8 @@ import { Users, CreditCard, LayoutDashboard, Shield } from "lucide-react";
 
 export const metadata = {
   title: "Organizations & Teams - Fabrk Docs",
-  description: "Multi-tenant SaaS with organizations, team members, roles, and invitations. Full RBAC system included.",
+  description:
+    "Multi-tenant SaaS with organizations, team members, roles, and invitations. Full RBAC system included.",
 };
 
 export default function OrganizationsPage() {
@@ -17,10 +18,30 @@ export default function OrganizationsPage() {
       description="Multi-tenancy support with role-based access control (RBAC), team invitations, and organization management."
       overview="Fabrk includes a complete multi-tenancy system for B2B SaaS applications with organization creation and management, role-based access control (Owner, Admin, Member, Guest), email-based team invitations, organization-scoped data isolation, member management and role changes, and organization settings and branding."
       features={[
-        { icon: Users, title: "Team Workspaces", description: "Each organization has its own workspace with projects, files, or data. Members see only their organization's content." },
-        { icon: CreditCard, title: "Per-Seat Billing", description: "Charge based on organization member count. Track seats in Stripe metadata and update on member changes." },
-        { icon: LayoutDashboard, title: "Admin Dashboard", description: "Give admins a dashboard to manage members, view activity, and configure organization settings." },
-        { icon: Shield, title: "SSO/SAML Integration", description: "Enterprise organizations can configure their own identity provider. Members auto-join on first SSO login." },
+        {
+          icon: Users,
+          title: "Team Workspaces",
+          description:
+            "Each organization has its own workspace with projects, files, or data. Members see only their organization's content.",
+        },
+        {
+          icon: CreditCard,
+          title: "Per-Seat Billing",
+          description:
+            "Charge based on organization member count. Track seats in Stripe metadata and update on member changes.",
+        },
+        {
+          icon: LayoutDashboard,
+          title: "Admin Dashboard",
+          description:
+            "Give admins a dashboard to manage members, view activity, and configure organization settings.",
+        },
+        {
+          icon: Shield,
+          title: "SSO/SAML Integration",
+          description:
+            "Enterprise organizations can configure their own identity provider. Members auto-join on first SSO login.",
+        },
       ]}
       usage={[
         {
@@ -184,7 +205,7 @@ export async function checkPermission(
       {/* Database Schema Section */}
       <DocsSection title="Database Schema">
         <DocsCard title="DATABASE_SCHEMA">
-          <p className="">
+          <p className="text-muted-foreground font-mono text-sm">
             Core models in <code className="bg-muted px-1">prisma/schema.prisma</code>:
           </p>
           <CodeBlock
@@ -248,51 +269,51 @@ model OrganizationInvite {
           <div className="overflow-x-auto">
             <table className="w-full font-mono text-xs">
               <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-2 uppercase">Permission</th>
-                  <th className="text-center py-2 uppercase">Owner</th>
-                  <th className="text-center py-2 uppercase">Admin</th>
-                  <th className="text-center py-2 uppercase">Member</th>
-                  <th className="text-center py-2 uppercase">Guest</th>
+                <tr className="border-border border-b">
+                  <th className="py-2 text-left uppercase">Permission</th>
+                  <th className="py-2 text-center uppercase">Owner</th>
+                  <th className="py-2 text-center uppercase">Admin</th>
+                  <th className="py-2 text-center uppercase">Member</th>
+                  <th className="py-2 text-center uppercase">Guest</th>
                 </tr>
               </thead>
               <tbody className="text-muted-foreground">
-                <tr className="border-b border-border">
+                <tr className="border-border border-b">
                   <td className="py-2">View organization</td>
                   <td className="text-center">Yes</td>
                   <td className="text-center">Yes</td>
                   <td className="text-center">Yes</td>
                   <td className="text-center">Yes</td>
                 </tr>
-                <tr className="border-b border-border">
+                <tr className="border-border border-b">
                   <td className="py-2">Create/edit content</td>
                   <td className="text-center">Yes</td>
                   <td className="text-center">Yes</td>
                   <td className="text-center">Yes</td>
                   <td className="text-center">No</td>
                 </tr>
-                <tr className="border-b border-border">
+                <tr className="border-border border-b">
                   <td className="py-2">Invite members</td>
                   <td className="text-center">Yes</td>
                   <td className="text-center">Yes</td>
                   <td className="text-center">No</td>
                   <td className="text-center">No</td>
                 </tr>
-                <tr className="border-b border-border">
+                <tr className="border-border border-b">
                   <td className="py-2">Remove members</td>
                   <td className="text-center">Yes</td>
                   <td className="text-center">Yes</td>
                   <td className="text-center">No</td>
                   <td className="text-center">No</td>
                 </tr>
-                <tr className="border-b border-border">
+                <tr className="border-border border-b">
                   <td className="py-2">Edit org settings</td>
                   <td className="text-center">Yes</td>
                   <td className="text-center">Yes</td>
                   <td className="text-center">No</td>
                   <td className="text-center">No</td>
                 </tr>
-                <tr className="border-b border-border">
+                <tr className="border-border border-b">
                   <td className="py-2">Manage billing</td>
                   <td className="text-center">Yes</td>
                   <td className="text-center">Yes</td>
@@ -318,7 +339,9 @@ model OrganizationInvite {
           <ul className="space-y-1">
             <li>├─ Always check permissions before any organization action</li>
             <li>├─ Use database transactions for multi-step operations</li>
-            <li>├─ Scope all queries by <code className="bg-muted px-1">organizationId</code></li>
+            <li>
+              ├─ Scope all queries by <code className="bg-muted px-1">organizationId</code>
+            </li>
             <li>├─ Send email notifications for important events (invite, role change)</li>
             <li>├─ Allow users to belong to multiple organizations</li>
             <li>├─ Implement organization switching in the UI</li>

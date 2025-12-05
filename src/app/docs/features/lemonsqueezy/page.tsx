@@ -317,7 +317,7 @@ export async function POST(req: Request) {
           <Link href="/docs/features/trial">
             <DocsCard title="FREE_TRIALS" className="hover:border-primary/50 h-full transition-all">
               Free Trials
-              <p className="">
+              <p className="text-muted-foreground font-mono text-sm">
                 Let users try your product before paying with trial periods.
               </p>
             </DocsCard>
@@ -328,7 +328,7 @@ export async function POST(req: Request) {
               className="hover:border-primary/50 h-full transition-all"
             >
               Stripe Setup
-              <p className="">
+              <p className="text-muted-foreground font-mono text-sm">
                 Set up Stripe for direct payment processing with lower fees.
               </p>
             </DocsCard>

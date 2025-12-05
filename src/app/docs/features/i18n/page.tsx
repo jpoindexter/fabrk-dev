@@ -289,9 +289,7 @@ export const localeFlags: Record<Locale, string> = {
       {/* Message Namespaces */}
       <DocsSection title="Message Namespaces">
         <DocsCard title="NAMESPACES">
-          <p className="mb-4">
-            Messages are organized into logical namespaces:
-          </p>
+          <p className="mb-4">Messages are organized into logical namespaces:</p>
           <div className="space-y-2 text-sm">
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">common</code>
@@ -411,7 +409,7 @@ export const localeFlags: Record<Locale, string> = {
               className="hover:border-primary/50 h-full transition-all"
             >
               SEO for Multiple Languages
-              <p className="">
+              <p className="text-muted-foreground font-mono text-sm">
                 Learn how to optimize SEO metadata for each locale.
               </p>
             </DocsCard>
@@ -422,7 +420,7 @@ export const localeFlags: Record<Locale, string> = {
               className="hover:border-primary/50 h-full transition-all"
             >
               Global Payments
-              <p className="">
+              <p className="text-muted-foreground font-mono text-sm">
                 Accept payments from users worldwide with Lemon Squeezy.
               </p>
             </DocsCard>

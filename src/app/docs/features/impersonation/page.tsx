@@ -380,9 +380,7 @@ export function ImpersonateButton({ userId, userName }: ImpersonateButtonProps) 
       {/* Audit Trail */}
       <DocsSection title="Audit Trail">
         <DocsCard title="LOGGED_EVENTS">
-          <p className="mb-4">
-            All impersonation activity is logged to the audit trail:
-          </p>
+          <p className="mb-4">All impersonation activity is logged to the audit trail:</p>
           <div className="space-y-2 text-sm">
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">admin.user_impersonated</code>
@@ -403,9 +401,7 @@ export function ImpersonateButton({ userId, userName }: ImpersonateButtonProps) 
       {/* Integration */}
       <DocsSection title="Integration">
         <DocsCard title="ADD_TO_DASHBOARD">
-          <p className="mb-4">
-            Add the impersonation banner to your dashboard layout:
-          </p>
+          <p className="mb-4">Add the impersonation banner to your dashboard layout:</p>
           <pre className="bg-muted overflow-x-auto p-4 text-sm">
             <code>{`// src/app/(dashboard)/layout.tsx
 import { ImpersonationBanner } from "@/components/admin/impersonation-banner";
@@ -431,7 +427,7 @@ export default function DashboardLayout({ children }) {
               className="hover:border-primary/50 h-full transition-all"
             >
               Audit Logging
-              <p className="">
+              <p className="text-muted-foreground font-mono text-sm">
                 Learn how to review impersonation logs and track admin activity.
               </p>
             </DocsCard>
@@ -442,7 +438,7 @@ export default function DashboardLayout({ children }) {
               className="hover:border-primary/50 h-full transition-all"
             >
               Organizations
-              <p className="">
+              <p className="text-muted-foreground font-mono text-sm">
                 Manage teams and organization-level permissions.
               </p>
             </DocsCard>
