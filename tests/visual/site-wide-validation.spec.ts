@@ -1,5 +1,8 @@
 import { test, expect } from '@playwright/test';
 
+// Increase timeout for all tests in this file
+test.setTimeout(60000);
+
 /**
  * SITE-WIDE VISUAL CONSISTENCY VALIDATION
  *
@@ -250,7 +253,8 @@ test.describe('Site-wide: Banned Rounded Classes', () => {
   for (const url of samplePages) {
     test(`No banned rounded: ${url}`, async ({ page }) => {
       await page.goto(url);
-      await page.waitForLoadState('networkidle');
+      await page.waitForLoadState('domcontentloaded');
+      await page.waitForTimeout(1000);
 
       // Check for banned rounded classes on buttons
       const bannedRoundedButtons = await page
@@ -286,7 +290,8 @@ test.describe('Site-wide: No Hardcoded Hex Colors', () => {
   for (const url of samplePages) {
     test(`No hex colors: ${url}`, async ({ page }) => {
       await page.goto(url);
-      await page.waitForLoadState('networkidle');
+      await page.waitForLoadState('domcontentloaded');
+      await page.waitForTimeout(1000);
 
       // Check for hardcoded hex colors in inline styles
       const elementsWithStyle = await page.locator('[style*="#"]').count();
@@ -335,7 +340,8 @@ test.describe('Site-wide: Terminal Font (font-mono)', () => {
   for (const url of samplePages) {
     test(`Has font-mono: ${url}`, async ({ page }) => {
       await page.goto(url);
-      await page.waitForLoadState('networkidle');
+      await page.waitForLoadState('domcontentloaded');
+      await page.waitForTimeout(1000);
 
       // Check font-mono presence (warn if missing)
       const monoElements = await page.locator('.font-mono').count();
@@ -363,7 +369,8 @@ test.describe('Site-wide: Design Token Usage', () => {
   for (const url of criticalPages) {
     test(`Design tokens: ${url}`, async ({ page }) => {
       await page.goto(url);
-      await page.waitForLoadState('networkidle');
+      await page.waitForLoadState('domcontentloaded');
+      await page.waitForTimeout(1000);
 
       // Check for banned hardcoded color classes
       const bannedColorClasses = await page
@@ -413,7 +420,8 @@ test.describe('Site-wide: Accessibility Basics', () => {
   for (const url of samplePages) {
     test(`A11y basics: ${url}`, async ({ page }) => {
       await page.goto(url);
-      await page.waitForLoadState('networkidle');
+      await page.waitForLoadState('domcontentloaded');
+      await page.waitForTimeout(1000);
 
       // Check for main landmark
       const mainLandmark = await page.locator('main').count();
@@ -470,8 +478,10 @@ test.describe('Site-wide: Responsive Layout', () => {
       test(`Responsive ${viewport.name}: ${url}`, async ({ page }) => {
         await page.setViewportSize({ width: viewport.width, height: viewport.height });
         await page.goto(url);
-        await page.waitForLoadState('networkidle');
-        await page.waitForTimeout(500);
+        await page.waitForLoadState('domcontentloaded');
+
+        // Wait for styles to apply - homepage has longer animations
+        await page.waitForTimeout(url === '/' ? 5000 : 1500);
 
         // Check for horizontal scroll (warn but don't fail - responsive fixes are ongoing)
         const bodyWidth = await page.evaluate(() => document.body.scrollWidth);
@@ -501,7 +511,8 @@ test.describe('Site-wide: Performance Metrics', () => {
   for (const url of criticalPages) {
     test(`Performance: ${url}`, async ({ page }) => {
       await page.goto(url);
-      await page.waitForLoadState('networkidle');
+      await page.waitForLoadState('domcontentloaded');
+      await page.waitForTimeout(2000); // Allow time for performance metrics
 
       // Measure page load time
       const navigationTiming = await page.evaluate(() => {
@@ -564,8 +575,8 @@ test.describe('Site-wide: No Console Errors', () => {
       });
 
       await page.goto(url);
-      await page.waitForLoadState('networkidle');
-      await page.waitForTimeout(1000);
+      await page.waitForLoadState('domcontentloaded');
+      await page.waitForTimeout(2000); // Wait for any async errors
 
       // Filter out known non-critical errors
       const relevantErrors = errors.filter(

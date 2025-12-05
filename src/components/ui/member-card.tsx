@@ -81,7 +81,7 @@ const getStatusColor = (status?: "online" | "away" | "offline") => {
     case "online":
       return "bg-accent";
     case "away":
-      return "bg-[oklch(var(--status-away))]";
+      return "bg-warning";
     case "offline":
       return "bg-muted";
     default:

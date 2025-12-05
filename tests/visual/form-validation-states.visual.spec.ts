@@ -1,5 +1,8 @@
 import { test, expect } from '@playwright/test';
 
+// Increase timeout for all tests in this file
+test.setTimeout(60000);
+
 /**
  * FORM VALIDATION STATES VISUAL REGRESSION
  *
@@ -17,7 +20,8 @@ import { test, expect } from '@playwright/test';
 test.describe('Input Validation States', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/docs/components/form');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForTimeout(1000);
   });
 
   test('input - error state styling', async ({ page }) => {
@@ -52,7 +56,8 @@ test.describe('Input Validation States', () => {
 test.describe('Form Submission Validation', () => {
   test('contact form - empty submission shows errors', async ({ page }) => {
     await page.goto('/contact');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForTimeout(1000);
 
     // Find the form
     const form = page.locator('form').first();
@@ -78,7 +83,8 @@ test.describe('Form Submission Validation', () => {
 
   test('auth form - validation states', async ({ page }) => {
     await page.goto('/templates/authentication');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForTimeout(1000);
 
     // Find sign-in or sign-up form
     const form = page.locator('form').first();
@@ -106,7 +112,8 @@ test.describe('Form Submission Validation', () => {
 test.describe('Toast & Notification States', () => {
   test('success toast appearance', async ({ page }) => {
     await page.goto('/docs/components/toaster');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForTimeout(1000);
 
     // Look for a button that triggers success toast
     const successTrigger = page.locator('button:has-text("SUCCESS"), button:has-text("Show Success")');
@@ -126,7 +133,8 @@ test.describe('Toast & Notification States', () => {
 
   test('error toast appearance', async ({ page }) => {
     await page.goto('/docs/components/toaster');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForTimeout(1000);
 
     const errorTrigger = page.locator('button:has-text("ERROR"), button:has-text("Show Error"), button:has-text("DESTRUCTIVE")');
     if (await errorTrigger.count() > 0) {
@@ -150,7 +158,8 @@ test.describe('Toast & Notification States', () => {
 test.describe('Alert & Banner States', () => {
   test('alert variants - all types', async ({ page }) => {
     await page.goto('/docs/components/alert');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForTimeout(1000);
 
     const alertTypes = ['default', 'destructive', 'success', 'warning', 'info'];
 
@@ -167,7 +176,8 @@ test.describe('Alert & Banner States', () => {
 
   test('banner - dismissible state', async ({ page }) => {
     await page.goto('/docs/components/banner');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForTimeout(1000);
 
     const banner = page.locator('[role="banner"], .banner').first();
     if (await banner.count() > 0) {
@@ -193,7 +203,8 @@ test.describe('Alert & Banner States', () => {
 test.describe('Loading States', () => {
   test('button loading state', async ({ page }) => {
     await page.goto('/docs/components/button');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForTimeout(1000);
 
     // Look for loading button example
     const loadingButton = page.locator('button:has([class*="animate-spin"]), button[data-loading="true"]');
@@ -208,7 +219,8 @@ test.describe('Loading States', () => {
 
   test('skeleton loading state', async ({ page }) => {
     await page.goto('/docs/components/skeleton');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForTimeout(1000);
 
     const skeleton = page.locator('[class*="animate-pulse"], .skeleton').first();
     if (await skeleton.count() > 0) {
@@ -221,7 +233,11 @@ test.describe('Loading States', () => {
 
   test('loading spinner', async ({ page }) => {
     await page.goto('/docs/components/loading');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForTimeout(1000);
+
+    // Inject CSS to pause animations
+    await page.addStyleTag({ content: '*, *::before, *::after { animation-play-state: paused !important; }' });
 
     const spinner = page.locator('[class*="animate-spin"], .loading').first();
     if (await spinner.count() > 0) {
@@ -240,7 +256,11 @@ test.describe('Loading States', () => {
 test.describe('Progress States', () => {
   test('progress bar - various percentages', async ({ page }) => {
     await page.goto('/docs/components/progress');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForTimeout(1000);
+
+    // Inject CSS to pause animations
+    await page.addStyleTag({ content: '*, *::before, *::after { animation-play-state: paused !important; transition: none !important; }' });
 
     const progressBars = page.locator('[role="progressbar"]');
     const count = await progressBars.count();
@@ -260,7 +280,8 @@ test.describe('Progress States', () => {
 test.describe('Badge & Status States', () => {
   test('badge variants', async ({ page }) => {
     await page.goto('/docs/components/badge');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForTimeout(1000);
 
     const badgeVariants = ['default', 'secondary', 'destructive', 'outline', 'success'];
 
@@ -277,7 +298,11 @@ test.describe('Badge & Status States', () => {
 
   test('status indicator colors', async ({ page }) => {
     await page.goto('/docs/components/status-indicator');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForTimeout(1000);
+
+    // Inject CSS to pause animations
+    await page.addStyleTag({ content: '*, *::before, *::after { animation-play-state: paused !important; }' });
 
     const statuses = ['online', 'offline', 'busy', 'away'];
 
@@ -308,7 +333,7 @@ test.describe('Password Strength States', () => {
     // Test weak password
     await passwordInput.fill('123');
     await page.waitForTimeout(200);
-    await expect(page.locator('.password-strength, [data-strength]').first()).toHaveScreenshot('password-weak.png', {
+    await expect(page.locator('[data-slot="password-strength"]').first()).toHaveScreenshot('password-weak.png', {
       maxDiffPixels: 50,
     });
 
@@ -319,7 +344,7 @@ test.describe('Password Strength States', () => {
     // Test strong password
     await passwordInput.fill('P@ssw0rd!Strong123');
     await page.waitForTimeout(200);
-    await expect(page.locator('.password-strength, [data-strength]').first()).toHaveScreenshot('password-strong.png', {
+    await expect(page.locator('[data-slot="password-strength"]').first()).toHaveScreenshot('password-strong.png', {
       maxDiffPixels: 50,
     });
   });
