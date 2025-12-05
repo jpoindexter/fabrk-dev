@@ -220,7 +220,7 @@ const StyledCard = React.forwardRef<HTMLDivElement, StyledCardProps>(
     <div
       ref={ref}
       data-slot="styled-card"
-      className={cn("border-border bg-card border", className)}
+      className={cn("border-border bg-card border", mode.radius, className)}
       {...props}
     >
       {children}

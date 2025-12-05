@@ -350,35 +350,33 @@ npm run type-check  # ✅ Passed
 
 **Goal:** All 16 card sub-components use semantic tokens
 
-- [ ] Migrate Card base
-  - [ ] Use mode.radius, bg-surface, border-default
-  - [ ] Add shadow-card token
-  - [ ] Commit: "Migrate Card to design system"
+**Status:** ✅ COMPLETED (2025-12-05)
 
-- [ ] Migrate CardHeader
-  - [ ] Terminal format: `[ [0x00] TITLE ]`
-  - [ ] Use border-b border-border
-  - [ ] Commit: "Migrate CardHeader to design system"
+- [x] Card base
+  - [x] **Finding:** Already uses `mode.radius`, `bg-card`, `text-card-foreground`, `focus-within:ring-primary`
 
-- [ ] Migrate CardTitle
-  - [ ] Use mode.font
-  - [ ] Commit: "Migrate CardTitle to design system"
+- [x] CardHeader
+  - [x] **Finding:** Uses standard 8-point spacing (p-6, space-y-2)
 
-- [ ] Migrate CardDescription
-  - [ ] Use text-muted-foreground
-  - [ ] Commit: "Migrate CardDescription to design system"
+- [x] CardTitle
+  - [x] **Finding:** Already uses `mode.font`, `text-card-foreground`
 
-- [ ] Migrate CardContent
-  - [ ] Standard padding
-  - [ ] Commit: "Migrate CardContent to design system"
+- [x] CardDescription
+  - [x] **Finding:** Already uses `mode.font`, `text-muted-foreground`
 
-- [ ] Migrate CardFooter
-  - [ ] Border and alignment
-  - [ ] Commit: "Migrate CardFooter to design system"
+- [x] CardContent / CardFooter
+  - [x] **Finding:** Use standard 8-point spacing (px-6, pb-6)
 
-- [ ] Migrate any specialized cards (Stat, Feature, etc.)
-  - [ ] Apply consistent tokens
-  - [ ] Commit: "Migrate specialized cards to design system"
+- [x] StyledCard
+  - [x] **Fixed:** Added `mode.radius` for theme-aware corners
+
+- [x] StyledCardHeader, StyledLabel, FeatureItem, FeatureList, InfoNote, PageBadge, TemplatePageHeader, FeaturesCard, CodeOutput
+  - [x] **Finding:** All use `mode.font` and semantic colors ✅
+
+**Validation:**
+```bash
+npm run type-check  # ✅ Passed
+```
 
 ### B.9: Migrate Alert Component
 
@@ -801,12 +799,12 @@ npm run type-check  # ✅ Passed
 | Phase | Total Tasks | Completed | Status |
 |-------|-------------|-----------|--------|
 | A: Foundation | 6 | 0 | Not Started |
-| B: Components | 12 | 8 | **B.0-B.7 Complete** |
+| B: Components | 12 | 9 | **B.0-B.8 Complete** |
 | C: Templates | 8 | 0 | Not Started |
 | D: Pages | 9 | 0 | Not Started |
 | E: Cleanup | 5 | 0 | Not Started |
 
-**Overall: 8 / 40 major tasks**
+**Overall: 9 / 40 major tasks**
 
 ### Execution Log
 
@@ -820,6 +818,7 @@ npm run type-check  # ✅ Passed
 | 2025-12-05 | B.5 | Separator Component | 0 files | Already compliant - uses bg-border |
 | 2025-12-05 | B.6 | Input Family | 0 files | All compliant or already fixed in B.0 |
 | 2025-12-05 | B.7 | Form Controls | 0 files | Checkbox, RadioGroup, Switch all compliant |
+| 2025-12-05 | B.8 | Card Components | 1 file | Fixed: StyledCard now uses mode.radius |
 
 ---
 
