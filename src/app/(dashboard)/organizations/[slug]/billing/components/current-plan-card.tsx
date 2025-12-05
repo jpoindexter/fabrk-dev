@@ -61,12 +61,12 @@ export function CurrentPlanCard({
                 <div className="flex gap-2">
                   <Button variant="outline" onClick={onUpgrade}>
                     <TrendingUp className="mr-2 h-4 w-4" />
-                    Upgrade Plan
+                    &gt; UPGRADE_PLAN
                   </Button>
                   <Button onClick={onManageBilling} disabled={loadingPortal}>
                     {loadingPortal && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                     <ExternalLink className="mr-2 h-4 w-4" />
-                    Manage Billing
+                    &gt; MANAGE_BILLING
                   </Button>
                 </div>
               )}
@@ -133,7 +133,7 @@ export function CurrentPlanCard({
             {isOwnerOrAdmin && (
               <Button onClick={onUpgrade} className="mt-4">
                 <TrendingUp className="mr-2 h-4 w-4" />
-                View Plans
+                &gt; VIEW_PLANS
               </Button>
             )}
           </div>

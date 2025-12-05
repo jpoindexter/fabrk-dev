@@ -140,7 +140,7 @@ export default function PaymentMethodsPage() {
         <Link href="/billing">
           <Button variant="ghost" size="sm" className="mb-4">
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Billing
+            &gt; BACK_TO_BILLING
           </Button>
         </Link>
         <div className="flex items-center justify-between">
@@ -152,7 +152,7 @@ export default function PaymentMethodsPage() {
           </div>
           <Button onClick={handleAddPaymentMethod} disabled={isLoading}>
             <Plus className="mr-2 h-4 w-4" />
-            Add Payment Method
+            &gt; ADD_PAYMENT_METHOD
           </Button>
         </div>
       </div>
@@ -179,7 +179,7 @@ export default function PaymentMethodsPage() {
                 </p>
                 <Button onClick={handleAddPaymentMethod}>
                   <Plus className="mr-2 h-4 w-4" />
-                  Add Your First Payment Method
+                  &gt; ADD_PAYMENT_METHOD
                 </Button>
               </div>
             </CardContent>
@@ -218,7 +218,7 @@ export default function PaymentMethodsPage() {
                         size="sm"
                         onClick={() => handleSetDefault(method.id)}
                       >
-                        Set as Default
+                        &gt; SET_AS_DEFAULT
                       </Button>
                     )}
                     <Button
@@ -279,7 +279,7 @@ export default function PaymentMethodsPage() {
               onClick={confirmDelete}
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
             >
-              Remove Payment Method
+              &gt; REMOVE_PAYMENT_METHOD
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

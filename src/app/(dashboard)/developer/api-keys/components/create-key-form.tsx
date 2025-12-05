@@ -79,10 +79,10 @@ export function CreateKeyForm({
         {isCreating ? (
           <>
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            Creating...
+            &gt; CREATING...
           </>
         ) : (
-          "Create API Key"
+          "&gt; CREATE_API_KEY"
         )}
       </Button>
     </div>
