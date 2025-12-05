@@ -1,5 +1,6 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/design-system";
 
 /**
  * Typography Component Library
@@ -41,6 +42,7 @@ export const H1 = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTML
       ref={ref}
       className={cn(
         "text-foreground text-4xl leading-tight font-semibold sm:text-5xl md:text-5xl lg:text-6xl",
+        mode.font,
         className
       )}
       {...props}
@@ -72,6 +74,7 @@ export const H2 = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTML
       ref={ref}
       className={cn(
         "text-foreground text-3xl leading-tight font-semibold sm:text-3xl md:text-4xl",
+        mode.font,
         className
       )}
       {...props}
@@ -101,7 +104,7 @@ export const H3 = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTML
   ({ className, children, ...props }, ref) => (
     <h3
       ref={ref}
-      className={cn("text-foreground text-xl leading-tight font-semibold", className)}
+      className={cn("text-foreground text-xl leading-tight font-semibold", mode.font, className)}
       {...props}
     >
       {children}
@@ -129,7 +132,7 @@ export const H4 = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTML
   ({ className, children, ...props }, ref) => (
     <h4
       ref={ref}
-      className={cn("text-foreground text-lg leading-tight font-semibold", className)}
+      className={cn("text-foreground text-lg leading-tight font-semibold", mode.font, className)}
       {...props}
     >
       {children}
@@ -359,7 +362,7 @@ export const Code = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLEleme
   ({ className, ...props }, ref) => (
     <code
       ref={ref}
-      className={cn("bg-muted rounded px-1.5 py-0.5 font-mono text-sm", className)}
+      className={cn("bg-muted px-1.5 py-0.5 font-mono text-sm", mode.radius, className)}
       {...props}
     />
   )

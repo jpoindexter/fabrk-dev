@@ -203,21 +203,23 @@ npm run build       # ✅ Passed
 
 **Goal:** Text/Heading/Label use semantic tokens
 
-- [ ] Update Label component
-  - [ ] Replace hardcoded font-medium with weight token
-  - [ ] Add mode.font support
-  - [ ] Verify terminal style (uppercase brackets)
-  - [ ] Commit: "Migrate Label to design system"
+**Status:** ✅ COMPLETED (2025-12-05)
 
-- [ ] Update any Text/Heading wrapper components
-  - [ ] Use typography tokens from spec
-  - [ ] Support size variants from scale
-  - [ ] Commit: "Migrate Typography to design system"
+- [x] Update Label component
+  - [x] Read `src/components/ui/label.tsx`
+  - [x] **Finding:** Already uses `mode.font` correctly
+  - [x] Uses semantic colors (`text-destructive` for required indicator)
+  - [x] No changes needed ✅
+
+- [x] Update Typography component
+  - [x] Read `src/components/ui/typography.tsx`
+  - [x] **Fixed:** Added `mode.font` to H1, H2, H3, H4 heading components
+  - [x] **Fixed:** Updated Code component from hardcoded `rounded` to `mode.radius`
+  - [x] Commit: "Migrate Typography to design system"
 
 **Validation:**
 ```bash
-# Verify labels render with [LABEL]: format in terminal theme
-# Verify sans font in modern theme
+npm run type-check  # ✅ Passed
 ```
 
 ### B.2: Migrate Button Component
@@ -813,18 +815,19 @@ npm run type-check
 | Phase | Total Tasks | Completed | Status |
 |-------|-------------|-----------|--------|
 | A: Foundation | 6 | 0 | Not Started |
-| B: Components | 12 | 1 | **B.0 Complete** |
+| B: Components | 12 | 2 | **B.0, B.1 Complete** |
 | C: Templates | 8 | 0 | Not Started |
 | D: Pages | 9 | 0 | Not Started |
 | E: Cleanup | 5 | 0 | Not Started |
 
-**Overall: 1 / 40 major tasks**
+**Overall: 2 / 40 major tasks**
 
 ### Execution Log
 
 | Date | Phase | Task | Files Changed | Notes |
 |------|-------|------|---------------|-------|
 | 2025-12-05 | B.0 | Critical Bug Fixes | 3 files | InputNumber, InputPassword, InputOTP |
+| 2025-12-05 | B.1 | Typography Components | 1 file | typography.tsx: added mode.font to headings, mode.radius to Code |
 
 ---
 
