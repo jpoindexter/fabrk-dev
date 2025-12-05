@@ -39,7 +39,7 @@ export function Disable2FADialog({ open, onOpenChange, onConfirm }: Disable2FADi
             onClick={onConfirm}
             className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
           >
-            Disable 2FA
+            &gt; DISABLE_2FA
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
@@ -72,7 +72,7 @@ export function DisconnectAccountDialog({
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
-          <AlertDialogAction onClick={onConfirm}>Disconnect</AlertDialogAction>
+          <AlertDialogAction onClick={onConfirm}>&gt; DISCONNECT</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
@@ -102,7 +102,7 @@ export function InvalidateSessionsDialog({
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
-          <AlertDialogAction onClick={onConfirm}>Sign Out All Other Sessions</AlertDialogAction>
+          <AlertDialogAction onClick={onConfirm}>&gt; SIGN_OUT_ALL_SESSIONS</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

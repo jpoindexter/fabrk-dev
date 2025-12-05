@@ -21,13 +21,11 @@ export function TokenExpired() {
   return (
     <div className="p-6 text-center">
       <X className="m-4 size-full" />
-      <h2 className="m-4 text-base font-medium dark:text-muted-foreground">
-        Link Expired
-      </h2>
+      <h2 className="dark:text-muted-foreground m-4 text-base font-medium">Link Expired</h2>
       <p className="m-4">This password reset link has expired or is invalid.</p>
       <Link href="/forgot-password">
-        <Button className="m-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-          Request New Link
+        <Button className="focus-visible:ring-ring m-4 focus-visible:ring-2 focus-visible:outline-none">
+          &gt; REQUEST_NEW_LINK
         </Button>
       </Link>
     </div>
@@ -43,7 +41,7 @@ export function ResetSuccess() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.push("/login");
+      router.push("/sign-in");
     }, 3000);
     return () => clearTimeout(timer);
   }, [router]);
@@ -52,16 +50,16 @@ export function ResetSuccess() {
   return (
     <div className="p-6 text-center">
       <ShieldCheck className="m-4 size-full" />
-      <h2 className="m-4 text-base font-medium dark:text-muted-foreground">
+      <h2 className="dark:text-muted-foreground m-4 text-base font-medium">
         Password Reset Successfully
       </h2>
-      <p className="m-4">Your password has been reset. You can now login with your new password.</p>
-      <p className="m-4 text-base dark:text-muted-foreground">
-        Redirecting to login...
+      <p className="m-4">
+        Your password has been reset. You can now sign in with your new password.
       </p>
-      <Link href="/login">
-        <Button className="m-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-          Go to Login
+      <p className="dark:text-muted-foreground m-4 text-base">Redirecting to sign in...</p>
+      <Link href="/sign-in">
+        <Button className="focus-visible:ring-ring m-4 focus-visible:ring-2 focus-visible:outline-none">
+          &gt; GO_TO_SIGN_IN
         </Button>
       </Link>
     </div>

@@ -225,16 +225,16 @@ export function AboutTabContent({}: AboutTabContentProps) {
       const contentType = response.headers.get("content-type") || "";
       if (!contentType.includes("application/json")) {
         toast({
-          title: "Login required",
-          description: "Please log in to download your data.",
+          title: "Sign in required",
+          description: "Please sign in to download your data.",
         });
         return;
       }
 
       if (response.status === 401) {
         toast({
-          title: "Login required",
-          description: "Please log in to download your data.",
+          title: "Sign in required",
+          description: "Please sign in to download your data.",
         });
         return;
       }
