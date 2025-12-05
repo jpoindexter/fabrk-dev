@@ -233,7 +233,7 @@ export function AnalyticsChart({
     <Card className={cn("overflow-hidden", className)}>
       {(title || description) && (
         <CardHeader className="pb-4">
-          {title && <CardTitle className="text-base font-black">{title}</CardTitle>}
+          {title && <CardTitle className="text-base">{title}</CardTitle>}
           {description && <p className="text-muted-foreground text-sm">{description}</p>}
         </CardHeader>
       )}

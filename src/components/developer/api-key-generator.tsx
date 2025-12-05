@@ -97,7 +97,7 @@ export function ApiKeyGenerator({
     <Card className={cn("overflow-hidden", className)}>
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
-          <CardTitle className="flex items-center gap-2 text-base font-black">
+          <CardTitle className="flex items-center gap-2 text-base">
             <Key className="text-primary h-4 w-4" />
             API Key
           </CardTitle>

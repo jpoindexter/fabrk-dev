@@ -86,7 +86,7 @@ export function SystemHealthWidget({
     <Card className={cn("relative overflow-hidden", className)}>
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
-          <CardTitle className="flex items-center gap-2 text-base font-black">
+          <CardTitle className="flex items-center gap-2 text-base">
             <Activity className="text-primary h-4 w-4" />
             System Health
           </CardTitle>

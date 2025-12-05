@@ -68,7 +68,7 @@ export function FunnelVisualizer({
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
           <div>
-            <CardTitle className="text-base font-black">{title}</CardTitle>
+            <CardTitle className="text-base">{title}</CardTitle>
             {description && <p className="text-muted-foreground mt-1 text-sm">{description}</p>}
           </div>
           <Badge variant="outline" className="font-medium">
