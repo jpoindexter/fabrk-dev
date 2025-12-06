@@ -1,221 +1,231 @@
 # Design System Foundations
 
-> Complete token definitions for colors, typography, spacing, radii, shadows, breakpoints, and layout.
+> Complete token definitions for colors, typography, spacing, radii, shadows, and motion.
+
+**Version:** 2.0.0  
+**Status:** FROZEN
 
 ---
 
-## Table of Contents
+## Token Categories
 
-1. [Color System](#color-system)
-2. [Typography Scale](#typography-scale)
-3. [Spacing Scale](#spacing-scale)
-4. [Border Radius](#border-radius)
-5. [Shadows & Elevation](#shadows--elevation)
-6. [Breakpoints](#breakpoints)
-7. [Layout & Grid](#layout--grid)
-8. [Motion & Transitions](#motion--transitions)
+| Category | Prefix | Example |
+|----------|--------|---------|
+| Colors | `color-` | `color-bg-surface`, `color-text-primary` |
+| Spacing | `space-` | `space-xs`, `space-md`, `space-xl` |
+| Typography | `text-` | `text-size-sm`, `text-weight-bold` |
+| Radius | `radius-` | `radius-none`, `radius-md`, `radius-full` |
+| Shadow | `shadow-` | `shadow-none`, `shadow-md`, `shadow-xl` |
+| Motion | `motion-` | `motion-duration-fast`, `motion-ease-out` |
+| Layout | `layout-` | `layout-container-xl`, `layout-z-modal` |
 
 ---
 
-## Color System
+## 1. Color System
 
-### Architecture
+### 1.1 Semantic Color Tokens
 
-Colors are organized in three layers:
-
-```
-┌─────────────────────────────────────────────────────────┐
-│  SEMANTIC COLORS (what components use)                  │
-│  color-bg-surface, color-text-primary, color-accent     │
-├─────────────────────────────────────────────────────────┤
-│  PALETTE COLORS (theme-specific)                        │
-│  gray-50...gray-950, primary-50...primary-950           │
-├─────────────────────────────────────────────────────────┤
-│  PRIMITIVE VALUES (raw colors)                          │
-│  oklch(98% 0.01 240), hsl(0, 0%, 100%)                  │
-└─────────────────────────────────────────────────────────┘
-```
-
-### Semantic Color Tokens
+Components use these semantic tokens. Themes resolve them to primitives.
 
 #### Background Colors
 
-| Token | Role | Light Default | Dark Default |
-|-------|------|---------------|--------------|
-| `color-bg-base` | Page background | gray-50 | gray-950 |
-| `color-bg-surface` | Card/panel background | white | gray-900 |
-| `color-bg-surface-raised` | Elevated surface (modals) | white | gray-850 |
-| `color-bg-surface-sunken` | Inset areas | gray-100 | gray-950 |
-| `color-bg-surface-overlay` | Overlays, backdrops | black/50% | black/80% |
-| `color-bg-muted` | Subtle backgrounds | gray-100 | gray-800 |
-| `color-bg-accent` | Primary action backgrounds | primary-600 | primary-500 |
-| `color-bg-accent-muted` | Subtle accent backgrounds | primary-50 | primary-950 |
-| `color-bg-accent-hover` | Accent hover state | primary-700 | primary-400 |
-| `color-bg-danger` | Destructive backgrounds | red-600 | red-500 |
-| `color-bg-danger-muted` | Subtle danger backgrounds | red-50 | red-950 |
-| `color-bg-success` | Success backgrounds | green-600 | green-500 |
-| `color-bg-success-muted` | Subtle success backgrounds | green-50 | green-950 |
-| `color-bg-warning` | Warning backgrounds | amber-500 | amber-400 |
-| `color-bg-warning-muted` | Subtle warning backgrounds | amber-50 | amber-950 |
-| `color-bg-info` | Informational backgrounds | blue-600 | blue-500 |
-| `color-bg-info-muted` | Subtle info backgrounds | blue-50 | blue-950 |
+| Token | Role | CSS Variable |
+|-------|------|--------------|
+| `color-bg-base` | Page background | `--background` |
+| `color-bg-surface` | Card/panel background | `--card` |
+| `color-bg-surface-raised` | Elevated surface (modals) | `--popover` |
+| `color-bg-surface-sunken` | Inset areas | `--muted` |
+| `color-bg-muted` | Subtle backgrounds | `--muted` |
+| `color-bg-accent` | Primary action background | `--primary` |
+| `color-bg-accent-muted` | Subtle accent | `--accent` |
+| `color-bg-danger` | Destructive background | `--destructive` |
+| `color-bg-danger-muted` | Subtle danger | — |
+| `color-bg-success` | Success background | `--success` |
+| `color-bg-success-muted` | Subtle success | — |
+| `color-bg-warning` | Warning background | `--warning` |
+| `color-bg-warning-muted` | Subtle warning | — |
+| `color-bg-info` | Info background | `--info` |
+| `color-bg-info-muted` | Subtle info | — |
 
 #### Text Colors
 
-| Token | Role | Light Default | Dark Default |
-|-------|------|---------------|--------------|
-| `color-text-primary` | Primary content | gray-900 | gray-50 |
-| `color-text-secondary` | Secondary content | gray-700 | gray-300 |
-| `color-text-muted` | Tertiary, placeholder | gray-500 | gray-500 |
-| `color-text-disabled` | Disabled state | gray-400 | gray-600 |
-| `color-text-inverse` | Text on accent bg | white | gray-950 |
-| `color-text-accent` | Links, emphasis | primary-600 | primary-400 |
-| `color-text-accent-hover` | Link hover | primary-700 | primary-300 |
-| `color-text-danger` | Error text | red-600 | red-400 |
-| `color-text-success` | Success text | green-600 | green-400 |
-| `color-text-warning` | Warning text | amber-600 | amber-400 |
-| `color-text-info` | Info text | blue-600 | blue-400 |
+| Token | Role | CSS Variable |
+|-------|------|--------------|
+| `color-text-primary` | Primary content | `--foreground` |
+| `color-text-secondary` | Supporting content | `--muted-foreground` |
+| `color-text-muted` | Tertiary, placeholder | `--muted-foreground` |
+| `color-text-disabled` | Disabled state | — |
+| `color-text-inverse` | On accent backgrounds | `--primary-foreground` |
+| `color-text-accent` | Links, emphasis | `--primary` |
+| `color-text-danger` | Error text | `--destructive` |
+| `color-text-success` | Success text | `--success` |
+| `color-text-warning` | Warning text | `--warning` |
+| `color-text-info` | Info text | `--info` |
 
 #### Border Colors
 
-| Token | Role | Light Default | Dark Default |
-|-------|------|---------------|--------------|
-| `color-border-default` | Standard borders | gray-200 | gray-800 |
-| `color-border-muted` | Subtle borders | gray-100 | gray-850 |
-| `color-border-strong` | Emphasized borders | gray-300 | gray-700 |
-| `color-border-accent` | Accent borders | primary-600 | primary-500 |
-| `color-border-danger` | Error borders | red-500 | red-500 |
-| `color-border-success` | Success borders | green-500 | green-500 |
-| `color-border-focus` | Focus rings | primary-500 | primary-400 |
+| Token | Role | CSS Variable |
+|-------|------|--------------|
+| `color-border-default` | Standard borders | `--border` |
+| `color-border-muted` | Subtle borders | — |
+| `color-border-strong` | Emphasized borders | — |
+| `color-border-accent` | Accent borders | `--primary` |
+| `color-border-danger` | Error borders | `--destructive` |
+| `color-border-success` | Success borders | `--success` |
+| `color-border-focus` | Focus rings | `--ring` |
 
-#### Interactive Colors
+### 1.2 Primitive Color Palettes
 
-| Token | Role | Usage |
-|-------|------|-------|
-| `color-interactive-hover` | Hover overlay | bg + 5% darken |
-| `color-interactive-active` | Active/pressed | bg + 10% darken |
-| `color-interactive-focus` | Focus ring | 2px ring, color-border-focus |
+Raw values that themes select from. **Never use directly in components.**
 
-### Palette Scale
+#### Gray (Neutral)
 
-Each palette has 11 stops (50-950):
+| Stop | OKLCH Value | Usage |
+|------|-------------|-------|
+| 50 | `oklch(98% 0.005 240)` | Lightest backgrounds |
+| 100 | `oklch(96% 0.005 240)` | Hover on light |
+| 200 | `oklch(92% 0.005 240)` | Borders on light |
+| 300 | `oklch(87% 0.005 240)` | Light-mid |
+| 400 | `oklch(70% 0.005 240)` | Mid-light |
+| 500 | `oklch(55% 0.005 240)` | Icons, mid-range |
+| 600 | `oklch(45% 0.005 240)` | Secondary text |
+| 700 | `oklch(37% 0.01 240)` | Primary text dark |
+| 800 | `oklch(27% 0.01 240)` | Very dark |
+| 900 | `oklch(21% 0.01 240)` | Near black |
+| 950 | `oklch(14% 0.01 240)` | Darkest backgrounds |
 
-```
-50   - Lightest (backgrounds, subtle tints)
-100  - Very light (hover states on light)
-200  - Light (borders on light)
-300  - Light-mid
-400  - Mid-light
-500  - Base (icons, mid-range)
-600  - Mid-dark (primary buttons light mode)
-700  - Dark (hover states)
-800  - Very dark (text on light)
-900  - Darkest (primary text on light)
-950  - Ultra dark (backgrounds on dark)
-```
+#### Primary (Accent)
 
-#### Gray Palette (Neutral)
+| Stop | OKLCH Value | Usage |
+|------|-------------|-------|
+| 50 | `oklch(97% 0.02 290)` | Subtle tint |
+| 100 | `oklch(94% 0.04 290)` | Light accent |
+| 200 | `oklch(88% 0.08 290)` | Hover backgrounds |
+| 300 | `oklch(79% 0.14 290)` | Light buttons |
+| 400 | `oklch(70% 0.18 290)` | Icons |
+| 500 | `oklch(60% 0.20 290)` | Base accent |
+| 600 | `oklch(52% 0.22 290)` | Primary buttons |
+| 700 | `oklch(45% 0.22 290)` | Hover state |
+| 800 | `oklch(38% 0.20 290)` | Active state |
+| 900 | `oklch(32% 0.18 290)` | Text on light |
+| 950 | `oklch(22% 0.15 290)` | Darkest accent |
 
-| Stop | OKLCH Value | Hex Approx |
-|------|-------------|------------|
-| 50 | `oklch(98% 0.005 240)` | #fafafa |
-| 100 | `oklch(96% 0.005 240)` | #f4f4f5 |
-| 200 | `oklch(92% 0.005 240)` | #e4e4e7 |
-| 300 | `oklch(87% 0.005 240)` | #d4d4d8 |
-| 400 | `oklch(70% 0.005 240)` | #a1a1aa |
-| 500 | `oklch(55% 0.005 240)` | #71717a |
-| 600 | `oklch(45% 0.005 240)` | #52525b |
-| 700 | `oklch(37% 0.01 240)` | #3f3f46 |
-| 800 | `oklch(27% 0.01 240)` | #27272a |
-| 900 | `oklch(21% 0.01 240)` | #18181b |
-| 950 | `oklch(14% 0.01 240)` | #09090b |
-
-#### Primary Palette (Accent)
-
-Default: Purple (can be overridden per brand)
-
-| Stop | OKLCH Value | Hex Approx |
-|------|-------------|------------|
-| 50 | `oklch(97% 0.02 290)` | #faf5ff |
-| 100 | `oklch(94% 0.04 290)` | #f3e8ff |
-| 200 | `oklch(88% 0.08 290)` | #e9d5ff |
-| 300 | `oklch(79% 0.14 290)` | #d8b4fe |
-| 400 | `oklch(70% 0.18 290)` | #c084fc |
-| 500 | `oklch(60% 0.20 290)` | #a855f7 |
-| 600 | `oklch(52% 0.22 290)` | #9333ea |
-| 700 | `oklch(45% 0.22 290)` | #7e22ce |
-| 800 | `oklch(38% 0.20 290)` | #6b21a8 |
-| 900 | `oklch(32% 0.18 290)` | #581c87 |
-| 950 | `oklch(22% 0.15 290)` | #3b0764 |
-
-#### Status Palettes
+#### Status Colors
 
 **Red (Danger)**
-| Stop | OKLCH Value |
-|------|-------------|
-| 500 | `oklch(60% 0.22 25)` |
-| 600 | `oklch(52% 0.24 25)` |
+| Stop | Value | Usage |
+|------|-------|-------|
+| 500 | `oklch(60% 0.22 25)` | Icons |
+| 600 | `oklch(52% 0.24 25)` | Backgrounds |
 
 **Green (Success)**
-| Stop | OKLCH Value |
-|------|-------------|
-| 500 | `oklch(65% 0.18 145)` |
-| 600 | `oklch(55% 0.18 145)` |
+| Stop | Value | Usage |
+|------|-------|-------|
+| 500 | `oklch(65% 0.18 145)` | Icons |
+| 600 | `oklch(55% 0.18 145)` | Backgrounds |
 
 **Amber (Warning)**
-| Stop | OKLCH Value |
-|------|-------------|
-| 500 | `oklch(80% 0.16 85)` |
-| 600 | `oklch(70% 0.18 75)` |
+| Stop | Value | Usage |
+|------|-------|-------|
+| 500 | `oklch(80% 0.16 85)` | Icons |
+| 600 | `oklch(70% 0.18 75)` | Backgrounds |
 
 **Blue (Info)**
-| Stop | OKLCH Value |
-|------|-------------|
-| 500 | `oklch(60% 0.18 250)` |
-| 600 | `oklch(52% 0.20 250)` |
+| Stop | Value | Usage |
+|------|-------|-------|
+| 500 | `oklch(60% 0.18 250)` | Icons |
+| 600 | `oklch(52% 0.20 250)` | Backgrounds |
 
 ---
 
-## Typography Scale
+## 2. Spacing Scale
 
-### Font Families
+### 2.1 Base Unit: 4px
 
-| Token | Stack | Usage |
+All spacing derives from a **4px base unit**, creating an 8-point grid with half-step support.
+
+### 2.2 Spacing Tokens
+
+| Token | Value | Pixels | Usage |
+|-------|-------|--------|-------|
+| `space-0` | `0` | 0 | Reset |
+| `space-px` | `1px` | 1 | Hairline |
+| `space-0.5` | `0.125rem` | 2 | Micro |
+| `space-1` | `0.25rem` | 4 | Tight |
+| `space-2` | `0.5rem` | 8 | Compact |
+| `space-3` | `0.75rem` | 12 | Small |
+| `space-4` | `1rem` | 16 | Default |
+| `space-5` | `1.25rem` | 20 | Medium |
+| `space-6` | `1.5rem` | 24 | Comfortable |
+| `space-8` | `2rem` | 32 | Large |
+| `space-10` | `2.5rem` | 40 | Extra large |
+| `space-12` | `3rem` | 48 | Section small |
+| `space-16` | `4rem` | 64 | Section medium |
+| `space-20` | `5rem` | 80 | Section large |
+| `space-24` | `6rem` | 96 | Section XL |
+| `space-32` | `8rem` | 128 | Hero |
+
+### 2.3 Semantic Spacing
+
+| Token | Maps To | Usage |
+|-------|---------|-------|
+| `space-component-xs` | `space-1` (4px) | Tight padding |
+| `space-component-sm` | `space-2` (8px) | Small padding |
+| `space-component-md` | `space-4` (16px) | Default padding |
+| `space-component-lg` | `space-6` (24px) | Large padding |
+| `space-component-xl` | `space-8` (32px) | Extra large |
+| `space-gap-xs` | `space-1` (4px) | Tight gaps |
+| `space-gap-sm` | `space-2` (8px) | Small gaps |
+| `space-gap-md` | `space-4` (16px) | Default gaps |
+| `space-gap-lg` | `space-6` (24px) | Large gaps |
+| `space-section-sm` | `space-8` (32px) | Small sections |
+| `space-section-md` | `space-12` (48px) | Default sections |
+| `space-section-lg` | `space-16` (64px) | Large sections |
+| `space-section-xl` | `space-24` (96px) | Hero sections |
+| `space-page` | `space-6` (24px) | Page gutters |
+
+---
+
+## 3. Typography Scale
+
+### 3.1 Font Families
+
+| Token | Value | Usage |
 |-------|-------|-------|
-| `font-family-sans` | `"Inter", system-ui, sans-serif` | Body text, UI |
-| `font-family-mono` | `"JetBrains Mono", "Fira Code", monospace` | Code, terminal |
-| `font-family-display` | `"Inter", system-ui, sans-serif` | Headlines (optional) |
+| `font-sans` | `"Inter", system-ui, sans-serif` | Body, UI |
+| `font-mono` | `"JetBrains Mono", monospace` | Code, terminal |
+| `font-display` | `"Inter", system-ui, sans-serif` | Headlines |
 
-### Type Scale
+### 3.2 Font Sizes
 
 Based on **Major Third** ratio (1.25) with 16px base.
 
-| Token | Size (px) | Size (rem) | Line Height | Usage |
-|-------|-----------|------------|-------------|-------|
-| `text-size-2xs` | 10 | 0.625 | 1.4 | Micro labels |
-| `text-size-xs` | 12 | 0.75 | 1.33 | Captions, badges |
-| `text-size-sm` | 14 | 0.875 | 1.43 | Body small, UI |
-| `text-size-base` | 16 | 1 | 1.5 | Body default |
-| `text-size-lg` | 18 | 1.125 | 1.56 | Lead text |
-| `text-size-xl` | 20 | 1.25 | 1.4 | H5, section titles |
-| `text-size-2xl` | 24 | 1.5 | 1.33 | H4 |
-| `text-size-3xl` | 30 | 1.875 | 1.27 | H3 |
-| `text-size-4xl` | 36 | 2.25 | 1.22 | H2 |
-| `text-size-5xl` | 48 | 3 | 1.17 | H1 |
-| `text-size-6xl` | 60 | 3.75 | 1.1 | Display |
-| `text-size-7xl` | 72 | 4.5 | 1.05 | Hero |
-| `text-size-8xl` | 96 | 6 | 1 | Giant |
+| Token | Size | Pixels | Usage |
+|-------|------|--------|-------|
+| `text-size-2xs` | `0.625rem` | 10 | Micro labels |
+| `text-size-xs` | `0.75rem` | 12 | Captions, badges |
+| `text-size-sm` | `0.875rem` | 14 | Body small, UI |
+| `text-size-base` | `1rem` | 16 | Body default |
+| `text-size-lg` | `1.125rem` | 18 | Lead text |
+| `text-size-xl` | `1.25rem` | 20 | H5 |
+| `text-size-2xl` | `1.5rem` | 24 | H4 |
+| `text-size-3xl` | `1.875rem` | 30 | H3 |
+| `text-size-4xl` | `2.25rem` | 36 | H2 |
+| `text-size-5xl` | `3rem` | 48 | H1 |
+| `text-size-6xl` | `3.75rem` | 60 | Display |
+| `text-size-7xl` | `4.5rem` | 72 | Hero |
+| `text-size-8xl` | `6rem` | 96 | Giant |
 
-### Font Weights
+### 3.3 Font Weights
 
 | Token | Value | Usage |
 |-------|-------|-------|
 | `text-weight-normal` | 400 | Body text |
-| `text-weight-medium` | 500 | Emphasized body, labels |
+| `text-weight-medium` | 500 | Emphasized body |
 | `text-weight-semibold` | 600 | Headings, buttons |
 | `text-weight-bold` | 700 | Strong emphasis |
 
-### Line Heights
+### 3.4 Line Heights
 
 | Token | Value | Usage |
 |-------|-------|-------|
@@ -226,7 +236,7 @@ Based on **Major Third** ratio (1.25) with 16px base.
 | `text-leading-relaxed` | 1.625 | Readable prose |
 | `text-leading-loose` | 2 | Spacious text |
 
-### Letter Spacing
+### 3.5 Letter Spacing
 
 | Token | Value | Usage |
 |-------|-------|-------|
@@ -237,16 +247,15 @@ Based on **Major Third** ratio (1.25) with 16px base.
 | `text-tracking-wider` | 0.05em | All-caps labels |
 | `text-tracking-widest` | 0.1em | Sparse caps |
 
-### Composite Typography Tokens
+### 3.6 Composite Typography (Presets)
 
 | Token | Composition | Usage |
 |-------|-------------|-------|
-| `text-heading-1` | 5xl / bold / tight | Page titles |
-| `text-heading-2` | 4xl / semibold / tight | Section titles |
-| `text-heading-3` | 3xl / semibold / tight | Subsection titles |
-| `text-heading-4` | 2xl / semibold / snug | Card titles |
-| `text-heading-5` | xl / semibold / snug | Group titles |
-| `text-heading-6` | lg / semibold / snug | Label titles |
+| `text-heading-xl` | 5xl / bold / tight | Page titles |
+| `text-heading-lg` | 4xl / semibold / tight | Section titles |
+| `text-heading-md` | 3xl / semibold / tight | Subsection titles |
+| `text-heading-sm` | 2xl / semibold / snug | Card titles |
+| `text-heading-xs` | xl / semibold / snug | Group titles |
 | `text-body-lg` | lg / normal / relaxed | Lead paragraphs |
 | `text-body` | base / normal / normal | Default body |
 | `text-body-sm` | sm / normal / normal | Compact body |
@@ -254,208 +263,66 @@ Based on **Major Third** ratio (1.25) with 16px base.
 | `text-label` | sm / medium / normal | Form labels |
 | `text-button` | sm / semibold / normal | Button text |
 | `text-code` | sm / normal / mono | Inline code |
-| `text-code-block` | xs / normal / mono | Code blocks |
 
 ---
 
-## Spacing Scale
+## 4. Border Radius
 
-### Base Unit: 4px
+### 4.1 Radius Scale
 
-All spacing derives from a 4px base unit, creating an **8-point grid** with half-step support.
+| Token | Value | Pixels | Usage |
+|-------|-------|--------|-------|
+| `radius-none` | `0` | 0 | Sharp/terminal |
+| `radius-sm` | `0.125rem` | 2 | Subtle |
+| `radius-md` | `0.375rem` | 6 | Default |
+| `radius-lg` | `0.5rem` | 8 | Prominent |
+| `radius-xl` | `0.75rem` | 12 | Large |
+| `radius-2xl` | `1rem` | 16 | Extra large |
+| `radius-3xl` | `1.5rem` | 24 | Statement |
+| `radius-full` | `9999px` | — | Circular/pill |
 
-### Spacing Tokens
+### 4.2 Semantic Radius (Theme-Resolved)
 
-| Token | Value (px) | Value (rem) | Usage |
-|-------|------------|-------------|-------|
-| `space-0` | 0 | 0 | Reset |
-| `space-px` | 1 | 0.0625 | Hairline |
-| `space-0.5` | 2 | 0.125 | Micro |
-| `space-1` | 4 | 0.25 | Tight |
-| `space-2` | 8 | 0.5 | Compact |
-| `space-3` | 12 | 0.75 | Small |
-| `space-4` | 16 | 1 | Default |
-| `space-5` | 20 | 1.25 | Medium |
-| `space-6` | 24 | 1.5 | Comfortable |
-| `space-8` | 32 | 2 | Large |
-| `space-10` | 40 | 2.5 | Extra large |
-| `space-12` | 48 | 3 | Section small |
-| `space-16` | 64 | 4 | Section medium |
-| `space-20` | 80 | 5 | Section large |
-| `space-24` | 96 | 6 | Section XL |
-| `space-32` | 128 | 8 | Hero |
-| `space-40` | 160 | 10 | Giant |
-| `space-48` | 192 | 12 | Massive |
-| `space-64` | 256 | 16 | Maximum |
+| Token | Terminal | Modern | Soft |
+|-------|----------|--------|------|
+| `radius-button` | none | md | lg |
+| `radius-input` | none | md | lg |
+| `radius-card` | none | lg | xl |
+| `radius-modal` | none | xl | 2xl |
+| `radius-badge` | sm | full | full |
+| `radius-avatar` | none | full | full |
 
-### Semantic Spacing
+---
+
+## 5. Shadows & Elevation
+
+### 5.1 Shadow Scale
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `space-component-padding-xs` | space-1 (4px) | Tight padding (badges) |
-| `space-component-padding-sm` | space-2 (8px) | Small padding (chips) |
-| `space-component-padding-md` | space-4 (16px) | Default padding (cards) |
-| `space-component-padding-lg` | space-6 (24px) | Large padding (modals) |
-| `space-component-padding-xl` | space-8 (32px) | Extra large |
-| `space-component-gap-xs` | space-1 (4px) | Tight gaps |
-| `space-component-gap-sm` | space-2 (8px) | Small gaps (icon+text) |
-| `space-component-gap-md` | space-4 (16px) | Default gaps |
-| `space-component-gap-lg` | space-6 (24px) | Large gaps (cards) |
-| `space-section-sm` | space-8 (32px) | Small section padding |
-| `space-section-md` | space-12 (48px) | Default section |
-| `space-section-lg` | space-16 (64px) | Large section |
-| `space-section-xl` | space-24 (96px) | Hero section |
-| `space-page-padding` | space-6 (24px) | Page gutter |
-| `space-stack-sm` | space-2 (8px) | Tight vertical rhythm |
-| `space-stack-md` | space-4 (16px) | Default vertical rhythm |
-| `space-stack-lg` | space-6 (24px) | Loose vertical rhythm |
-
-### Grid Alignment Note
-
-**Preferred values** (8-point grid):
-- `0, 2, 4, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 64`
-
-**Acceptable values** (4-point steps):
-- `1, 3, 5` (for fine adjustments)
-
-**Avoid:**
-- Arbitrary values like `7, 9, 11, 13, 14, 15, 18`
-
----
-
-## Border Radius
-
-### Radius Scale
-
-| Token | Value (px) | Usage |
-|-------|------------|-------|
-| `radius-none` | 0 | Terminal/sharp theme |
-| `radius-sm` | 2 | Subtle rounding |
-| `radius-md` | 6 | Default rounding |
-| `radius-lg` | 8 | Prominent rounding |
-| `radius-xl` | 12 | Large rounding |
-| `radius-2xl` | 16 | Extra large |
-| `radius-3xl` | 24 | Statement rounding |
-| `radius-full` | 9999 | Circular/pill |
-
-### Semantic Radius Tokens
-
-| Token | Default | Terminal | Modern | Soft |
-|-------|---------|----------|--------|------|
-| `radius-button` | md | none | md | lg |
-| `radius-input` | md | none | md | lg |
-| `radius-card` | lg | none | lg | xl |
-| `radius-modal` | xl | none | xl | 2xl |
-| `radius-badge` | full | sm | full | full |
-| `radius-avatar` | full | sm | full | full |
-| `radius-chip` | full | sm | full | full |
-
----
-
-## Shadows & Elevation
-
-### Shadow Scale
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| `shadow-none` | none | Flat elements |
+| `shadow-none` | `none` | Flat |
 | `shadow-xs` | `0 1px 2px 0 rgb(0 0 0 / 0.05)` | Subtle lift |
 | `shadow-sm` | `0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)` | Cards |
 | `shadow-md` | `0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)` | Dropdowns |
 | `shadow-lg` | `0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)` | Modals |
 | `shadow-xl` | `0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)` | Popovers |
 | `shadow-2xl` | `0 25px 50px -12px rgb(0 0 0 / 0.25)` | High elevation |
-| `shadow-inner` | `inset 0 2px 4px 0 rgb(0 0 0 / 0.05)` | Inset elements |
+| `shadow-inner` | `inset 0 2px 4px 0 rgb(0 0 0 / 0.05)` | Inset |
 
-### Elevation Levels
+### 5.2 Semantic Shadows (Theme-Resolved)
 
-| Token | Shadow | Z-Index | Usage |
-|-------|--------|---------|-------|
-| `elevation-0` | none | auto | Base level |
-| `elevation-1` | xs | 10 | Subtle cards |
-| `elevation-2` | sm | 20 | Cards, buttons |
-| `elevation-3` | md | 30 | Dropdowns |
-| `elevation-4` | lg | 40 | Modals, sheets |
-| `elevation-5` | xl | 50 | Popovers, toasts |
-
-### Theme-Specific Shadows
-
-| Theme | Card Shadow | Dropdown Shadow |
-|-------|-------------|-----------------|
-| Terminal | none | sm |
-| Modern | sm | md |
-| Soft | md | lg |
+| Token | Terminal | Modern | Soft |
+|-------|----------|--------|------|
+| `shadow-card` | none | sm | md |
+| `shadow-dropdown` | sm | md | lg |
+| `shadow-modal` | sm | lg | xl |
+| `shadow-button` | none | xs | sm |
 
 ---
 
-## Breakpoints
+## 6. Motion & Transitions
 
-### Breakpoint Values
-
-| Token | Min Width | Max Width | Target |
-|-------|-----------|-----------|--------|
-| `breakpoint-xs` | 0 | 479px | Mobile portrait |
-| `breakpoint-sm` | 480px | 639px | Mobile landscape |
-| `breakpoint-md` | 640px | 767px | Tablet portrait |
-| `breakpoint-lg` | 768px | 1023px | Tablet landscape |
-| `breakpoint-xl` | 1024px | 1279px | Desktop |
-| `breakpoint-2xl` | 1280px | 1535px | Large desktop |
-| `breakpoint-3xl` | 1536px | ∞ | Ultra-wide |
-
-### Media Query Tokens
-
-```css
-/* Mobile-first approach */
---mq-sm: (min-width: 480px);
---mq-md: (min-width: 640px);
---mq-lg: (min-width: 768px);
---mq-xl: (min-width: 1024px);
---mq-2xl: (min-width: 1280px);
---mq-3xl: (min-width: 1536px);
-```
-
----
-
-## Layout & Grid
-
-### Container Widths
-
-| Token | Max Width | Usage |
-|-------|-----------|-------|
-| `container-xs` | 320px | Narrow forms |
-| `container-sm` | 480px | Dialogs, auth pages |
-| `container-md` | 640px | Prose, articles |
-| `container-lg` | 768px | Settings pages |
-| `container-xl` | 1024px | Dashboard content |
-| `container-2xl` | 1280px | Wide layouts |
-| `container-3xl` | 1536px | Full-width tables |
-| `container-full` | 100% | Edge-to-edge |
-| `container-prose` | 65ch | Readable text width |
-
-### Grid System
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| `grid-columns` | 12 | Standard grid |
-| `grid-gutter-sm` | space-4 (16px) | Mobile gutter |
-| `grid-gutter-md` | space-6 (24px) | Tablet gutter |
-| `grid-gutter-lg` | space-8 (32px) | Desktop gutter |
-
-### Page Layout Tokens
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| `layout-sidebar-width` | 240px | Default sidebar |
-| `layout-sidebar-collapsed` | 64px | Collapsed sidebar |
-| `layout-header-height` | 64px | Top nav height |
-| `layout-footer-height` | auto | Footer |
-| `layout-content-max-width` | container-xl | Main content area |
-
----
-
-## Motion & Transitions
-
-### Duration Scale
+### 6.1 Duration Scale
 
 | Token | Value | Usage |
 |-------|-------|-------|
@@ -466,18 +333,18 @@ All spacing derives from a 4px base unit, creating an **8-point grid** with half
 | `motion-duration-slower` | 500ms | Page transitions |
 | `motion-duration-slowest` | 1000ms | Loading states |
 
-### Easing Functions
+### 6.2 Easing Functions
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `motion-ease-linear` | linear | Constant speed |
-| `motion-ease-in` | cubic-bezier(0.4, 0, 1, 1) | Accelerate |
-| `motion-ease-out` | cubic-bezier(0, 0, 0.2, 1) | Decelerate |
-| `motion-ease-in-out` | cubic-bezier(0.4, 0, 0.2, 1) | Smooth both |
-| `motion-ease-bounce` | cubic-bezier(0.68, -0.55, 0.265, 1.55) | Playful |
-| `motion-ease-spring` | cubic-bezier(0.175, 0.885, 0.32, 1.275) | Natural |
+| `motion-ease-linear` | `linear` | Constant speed |
+| `motion-ease-in` | `cubic-bezier(0.4, 0, 1, 1)` | Accelerate |
+| `motion-ease-out` | `cubic-bezier(0, 0, 0.2, 1)` | Decelerate |
+| `motion-ease-in-out` | `cubic-bezier(0.4, 0, 0.2, 1)` | Smooth both |
+| `motion-ease-bounce` | `cubic-bezier(0.68, -0.55, 0.265, 1.55)` | Playful |
+| `motion-ease-spring` | `cubic-bezier(0.175, 0.885, 0.32, 1.275)` | Natural |
 
-### Composite Motion Tokens
+### 6.3 Composite Motion
 
 | Token | Duration + Easing | Usage |
 |-------|-------------------|-------|
@@ -488,45 +355,75 @@ All spacing derives from a 4px base unit, creating an **8-point grid** with half
 | `motion-expand` | slow + ease-in-out | Accordion, drawer |
 | `motion-page` | slower + ease-in-out | Route transitions |
 
-### Reduced Motion
+---
 
-All motion respects `prefers-reduced-motion`:
+## 7. Layout
 
-```css
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-```
+### 7.1 Breakpoints
+
+| Token | Min Width | Target |
+|-------|-----------|--------|
+| `breakpoint-xs` | 0 | Mobile portrait |
+| `breakpoint-sm` | 480px | Mobile landscape |
+| `breakpoint-md` | 640px | Tablet portrait |
+| `breakpoint-lg` | 768px | Tablet landscape |
+| `breakpoint-xl` | 1024px | Desktop |
+| `breakpoint-2xl` | 1280px | Large desktop |
+| `breakpoint-3xl` | 1536px | Ultra-wide |
+
+### 7.2 Container Widths
+
+| Token | Max Width | Usage |
+|-------|-----------|-------|
+| `container-xs` | 320px | Narrow forms |
+| `container-sm` | 480px | Dialogs, auth |
+| `container-md` | 640px | Prose, articles |
+| `container-lg` | 768px | Settings pages |
+| `container-xl` | 1024px | Dashboard content |
+| `container-2xl` | 1280px | Wide layouts |
+| `container-3xl` | 1536px | Full-width tables |
+| `container-full` | 100% | Edge-to-edge |
+| `container-prose` | 65ch | Readable text |
+
+### 7.3 Z-Index Scale
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `z-behind` | -1 | Behind content |
+| `z-base` | 0 | Default |
+| `z-raised` | 10 | Subtle lift |
+| `z-dropdown` | 20 | Dropdowns |
+| `z-sticky` | 30 | Sticky headers |
+| `z-overlay` | 40 | Backdrops |
+| `z-modal` | 50 | Modals, dialogs |
+| `z-popover` | 60 | Popovers |
+| `z-toast` | 70 | Toasts |
+| `z-tooltip` | 80 | Tooltips |
+| `z-max` | 9999 | Always on top |
 
 ---
 
-## Accessibility Tokens
+## 8. Accessibility
 
-### Focus Ring
+### 8.1 Focus Ring
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `focus-ring-width` | 2px | Ring thickness |
-| `focus-ring-offset` | 2px | Gap from element |
-| `focus-ring-color` | color-border-focus | Ring color |
+| Token | Value |
+|-------|-------|
+| `focus-ring-width` | 2px |
+| `focus-ring-offset` | 2px |
+| `focus-ring-color` | `--ring` |
 
-### Touch Targets
+### 8.2 Touch Targets
 
-| Token | Value | Usage |
-|-------|-------|-------|
+| Token | Value | Standard |
+|-------|-------|----------|
 | `touch-target-min` | 44px | WCAG minimum |
 | `touch-target-comfortable` | 48px | Recommended |
 
-### Contrast Requirements
+### 8.3 Contrast Requirements
 
-| Context | Minimum Ratio | Standard |
-|---------|---------------|----------|
+| Context | Min Ratio | Standard |
+|---------|-----------|----------|
 | Normal text | 4.5:1 | WCAG AA |
 | Large text (18px+) | 3:1 | WCAG AA |
 | UI components | 3:1 | WCAG AA |
@@ -534,28 +431,4 @@ All motion respects `prefers-reduced-motion`:
 
 ---
 
-## Token Relationships
-
-### How Tokens Connect
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                      COMPONENT LEVEL                         │
-│  button-bg → color-bg-accent                                │
-│  button-text → color-text-inverse                           │
-│  button-padding → space-component-padding-md                │
-│  button-radius → radius-button                              │
-├─────────────────────────────────────────────────────────────┤
-│                      SEMANTIC LEVEL                          │
-│  color-bg-accent → primary-600 (light) / primary-500 (dark) │
-│  radius-button → radius-md (modern) / radius-none (terminal)│
-├─────────────────────────────────────────────────────────────┤
-│                      PRIMITIVE LEVEL                         │
-│  primary-600 → oklch(52% 0.22 290)                          │
-│  radius-md → 6px                                             │
-└─────────────────────────────────────────────────────────────┘
-```
-
----
-
-*Foundations Version 1.0.0 — Complete Token Definitions*
+*Foundations Version 2.0.0 - FROZEN*

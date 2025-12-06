@@ -2,43 +2,35 @@
 
 > How themes plug into the design system to enable visual variety without code changes.
 
----
-
-## Table of Contents
-
-1. [Theme Philosophy](#theme-philosophy)
-2. [Token Layers](#token-layers)
-3. [Base Semantic Tokens](#base-semantic-tokens)
-4. [Theme Definitions](#theme-definitions)
-5. [Implementation](#implementation)
-6. [Theme Switching](#theme-switching)
-7. [Creating New Themes](#creating-new-themes)
-8. [Dark Mode](#dark-mode)
+**Version:** 2.0.0  
+**Status:** FROZEN
 
 ---
 
-## Theme Philosophy
+## Philosophy
 
 ### Separation of Concerns
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  COMPONENTS                                                 │
-│  Reference semantic tokens only                             │
-│  Never reference raw values or theme-specific tokens        │
-├─────────────────────────────────────────────────────────────┤
-│  SEMANTIC TOKENS                                            │
-│  Role-based naming (bg-surface, text-primary)               │
-│  Resolved by active theme                                   │
-├─────────────────────────────────────────────────────────────┤
-│  THEMES                                                     │
-│  Map semantic tokens to primitive values                    │
-│  Terminal, Modern, Soft, Custom                             │
-├─────────────────────────────────────────────────────────────┤
-│  PRIMITIVES                                                 │
-│  Raw values (colors, sizes)                                 │
-│  Shared across all themes                                   │
-└─────────────────────────────────────────────────────────────┘
+COMPONENTS
+├─ Reference semantic tokens only
+├─ Never reference raw values
+└─ Never reference theme-specific tokens
+
+SEMANTIC TOKENS
+├─ Role-based naming (bg-surface, text-primary)
+├─ Resolved by active theme
+└─ What components import
+
+THEMES
+├─ Map semantic tokens to primitive values
+├─ Terminal, Modern, Soft
+└─ Swappable at runtime
+
+PRIMITIVES
+├─ Raw values (colors, sizes)
+├─ Shared across all themes
+└─ Foundation layer
 ```
 
 ### Design Goals
@@ -47,666 +39,299 @@
 2. **Consistent behavior** with different aesthetics
 3. **Type-safe** theme definitions
 4. **Runtime switchable** without page reload
-5. **CSS-first** with JS fallback
+5. **CSS-first** with JS enhancement
 
 ---
 
-## Token Layers
+## Available Themes
 
-### Layer 1: Primitives
-
-Raw, immutable values that themes select from.
-
-```typescript
-// primitives.ts
-export const primitives = {
-  color: {
-    white: "#ffffff",
-    black: "#000000",
-    gray: {
-      50: "oklch(98% 0.005 240)",
-      100: "oklch(96% 0.005 240)",
-      200: "oklch(92% 0.005 240)",
-      300: "oklch(87% 0.005 240)",
-      400: "oklch(70% 0.005 240)",
-      500: "oklch(55% 0.005 240)",
-      600: "oklch(45% 0.005 240)",
-      700: "oklch(37% 0.01 240)",
-      800: "oklch(27% 0.01 240)",
-      900: "oklch(21% 0.01 240)",
-      950: "oklch(14% 0.01 240)",
-    },
-    primary: {
-      50: "oklch(97% 0.02 290)",
-      100: "oklch(94% 0.04 290)",
-      200: "oklch(88% 0.08 290)",
-      300: "oklch(79% 0.14 290)",
-      400: "oklch(70% 0.18 290)",
-      500: "oklch(60% 0.20 290)",
-      600: "oklch(52% 0.22 290)",
-      700: "oklch(45% 0.22 290)",
-      800: "oklch(38% 0.20 290)",
-      900: "oklch(32% 0.18 290)",
-      950: "oklch(22% 0.15 290)",
-    },
-  },
-  
-  space: {
-    0: "0",
-    1: "0.25rem",
-    2: "0.5rem",
-    3: "0.75rem",
-    4: "1rem",
-    5: "1.25rem",
-    6: "1.5rem",
-    8: "2rem",
-    10: "2.5rem",
-    12: "3rem",
-    16: "4rem",
-    20: "5rem",
-    24: "6rem",
-  },
-  
-  radius: {
-    none: "0",
-    sm: "0.125rem",
-    md: "0.375rem",
-    lg: "0.5rem",
-    xl: "0.75rem",
-    full: "9999px",
-  },
-  
-  shadow: {
-    none: "none",
-    sm: "0 1px 3px 0 rgb(0 0 0 / 0.1)",
-    md: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
-    lg: "0 10px 15px -3px rgb(0 0 0 / 0.1)",
-  },
-  
-  font: {
-    sans: '"Inter", system-ui, sans-serif',
-    mono: '"JetBrains Mono", monospace',
-  },
-};
-```
-
-### Layer 2: Semantic Tokens
-
-Role-based tokens that components reference.
-
-```typescript
-// semantic.ts
-export interface SemanticTokens {
-  color: {
-    bg: {
-      base: string;
-      surface: string;
-      surfaceRaised: string;
-      surfaceSunken: string;
-      muted: string;
-      accent: string;
-      accentMuted: string;
-      danger: string;
-      dangerMuted: string;
-      success: string;
-      successMuted: string;
-      warning: string;
-      warningMuted: string;
-    };
-    text: {
-      primary: string;
-      secondary: string;
-      muted: string;
-      disabled: string;
-      inverse: string;
-      accent: string;
-      danger: string;
-      success: string;
-      warning: string;
-    };
-    border: {
-      default: string;
-      muted: string;
-      strong: string;
-      accent: string;
-      focus: string;
-    };
-  };
-  radius: {
-    button: string;
-    input: string;
-    card: string;
-    modal: string;
-    badge: string;
-  };
-  shadow: {
-    card: string;
-    dropdown: string;
-    modal: string;
-  };
-  font: {
-    body: string;
-    heading: string;
-    code: string;
-  };
-  textTransform: {
-    button: string;
-    label: string;
-    heading: string;
-  };
-}
-```
-
-### Layer 3: Theme Mappings
-
-How each theme resolves semantic tokens.
-
-```typescript
-// themes/terminal.ts
-export const terminalTheme: SemanticTokens = {
-  color: {
-    bg: {
-      base: primitives.color.gray[950],
-      surface: primitives.color.gray[900],
-      surfaceRaised: primitives.color.gray[850],
-      surfaceSunken: primitives.color.gray[950],
-      muted: primitives.color.gray[800],
-      accent: primitives.color.primary[600],
-      accentMuted: primitives.color.primary[950],
-      danger: primitives.color.red[600],
-      dangerMuted: primitives.color.red[950],
-      success: primitives.color.green[600],
-      successMuted: primitives.color.green[950],
-      warning: primitives.color.amber[500],
-      warningMuted: primitives.color.amber[950],
-    },
-    text: {
-      primary: primitives.color.gray[50],
-      secondary: primitives.color.gray[300],
-      muted: primitives.color.gray[500],
-      disabled: primitives.color.gray[600],
-      inverse: primitives.color.gray[950],
-      accent: primitives.color.primary[400],
-      danger: primitives.color.red[400],
-      success: primitives.color.green[400],
-      warning: primitives.color.amber[400],
-    },
-    border: {
-      default: primitives.color.gray[800],
-      muted: primitives.color.gray[850],
-      strong: primitives.color.gray[700],
-      accent: primitives.color.primary[500],
-      focus: primitives.color.primary[400],
-    },
-  },
-  radius: {
-    button: primitives.radius.none,
-    input: primitives.radius.none,
-    card: primitives.radius.none,
-    modal: primitives.radius.none,
-    badge: primitives.radius.sm,
-  },
-  shadow: {
-    card: primitives.shadow.none,
-    dropdown: primitives.shadow.sm,
-    modal: primitives.shadow.sm,
-  },
-  font: {
-    body: primitives.font.mono,
-    heading: primitives.font.mono,
-    code: primitives.font.mono,
-  },
-  textTransform: {
-    button: "uppercase",
-    label: "uppercase",
-    heading: "uppercase",
-  },
-};
-```
-
----
-
-## Base Semantic Tokens
-
-### Color Tokens
-
-| Token | Description | Usage |
-|-------|-------------|-------|
-| `color-bg-base` | Page background | `<body>`, main areas |
-| `color-bg-surface` | Content containers | Cards, panels |
-| `color-bg-surface-raised` | Elevated content | Modals, popovers |
-| `color-bg-surface-sunken` | Recessed content | Inputs, code blocks |
-| `color-bg-muted` | Subtle backgrounds | Badges, highlights |
-| `color-bg-accent` | Primary actions | Buttons, active states |
-| `color-bg-accent-muted` | Subtle accent | Tags, soft highlights |
-| `color-bg-danger` | Destructive actions | Delete buttons |
-| `color-bg-danger-muted` | Subtle danger | Error backgrounds |
-| `color-bg-success` | Success actions | Confirm buttons |
-| `color-bg-success-muted` | Subtle success | Success messages |
-| `color-bg-warning` | Warning state | Warning buttons |
-| `color-bg-warning-muted` | Subtle warning | Warning messages |
-| `color-text-primary` | Primary content | Headings, body |
-| `color-text-secondary` | Supporting content | Descriptions |
-| `color-text-muted` | Tertiary content | Placeholders, meta |
-| `color-text-disabled` | Disabled content | Inactive elements |
-| `color-text-inverse` | On accent backgrounds | Button text |
-| `color-text-accent` | Links, emphasis | CTAs, links |
-| `color-text-danger` | Error text | Validation errors |
-| `color-text-success` | Success text | Success messages |
-| `color-text-warning` | Warning text | Warning messages |
-| `color-border-default` | Standard borders | Cards, inputs |
-| `color-border-muted` | Subtle borders | Dividers |
-| `color-border-strong` | Emphasized borders | Active states |
-| `color-border-accent` | Accent borders | Focus, selection |
-| `color-border-focus` | Focus rings | Accessibility |
-
-### Radius Tokens
-
-| Token | Description | Terminal | Modern | Soft |
-|-------|-------------|----------|--------|------|
-| `radius-button` | Buttons | 0 | 6px | 8px |
-| `radius-input` | Form inputs | 0 | 6px | 8px |
-| `radius-card` | Cards, panels | 0 | 8px | 12px |
-| `radius-modal` | Modals, dialogs | 0 | 12px | 16px |
-| `radius-badge` | Badges, chips | 2px | 9999px | 9999px |
-| `radius-avatar` | Avatars | 2px | 9999px | 9999px |
-
-### Shadow Tokens
-
-| Token | Description | Terminal | Modern | Soft |
-|-------|-------------|----------|--------|------|
-| `shadow-card` | Cards | none | sm | md |
-| `shadow-dropdown` | Dropdowns | sm | md | lg |
-| `shadow-modal` | Modals | sm | lg | xl |
-| `shadow-button` | Elevated buttons | none | xs | sm |
-
-### Font Tokens
-
-| Token | Description | Terminal | Modern | Soft |
-|-------|-------------|----------|--------|------|
-| `font-body` | Body text | mono | sans | sans |
-| `font-heading` | Headings | mono | sans | sans |
-| `font-code` | Code blocks | mono | mono | mono |
-
-### Text Transform Tokens
-
-| Token | Description | Terminal | Modern | Soft |
-|-------|-------------|----------|--------|------|
-| `text-transform-button` | Button text | uppercase | none | none |
-| `text-transform-label` | Labels | uppercase | none | none |
-| `text-transform-heading` | Headings | uppercase | none | none |
-
----
-
-## Theme Definitions
-
-### Terminal Theme
+### Terminal
 
 Sharp, developer-focused aesthetic inspired by CLI tools.
 
-```css
-:root[data-theme="terminal"] {
-  /* Colors - Light */
-  --color-bg-base: var(--gray-50);
-  --color-bg-surface: var(--white);
-  --color-bg-surface-raised: var(--white);
-  --color-bg-muted: var(--gray-100);
-  --color-text-primary: var(--gray-900);
-  --color-text-secondary: var(--gray-700);
-  --color-text-muted: var(--gray-500);
-  --color-border-default: var(--gray-200);
-  
-  /* Radius - All sharp */
-  --radius-button: 0;
-  --radius-input: 0;
-  --radius-card: 0;
-  --radius-modal: 0;
-  --radius-badge: 2px;
-  
-  /* Shadows - Minimal */
-  --shadow-card: none;
-  --shadow-dropdown: var(--shadow-sm);
-  --shadow-modal: var(--shadow-sm);
-  
-  /* Typography */
-  --font-body: var(--font-mono);
-  --font-heading: var(--font-mono);
-  --text-transform-button: uppercase;
-  --text-transform-label: uppercase;
-}
-```
+| Property | Value | Notes |
+|----------|-------|-------|
+| Radius | `none` | All sharp corners |
+| Font | `mono` | JetBrains Mono everywhere |
+| Text Transform | `UPPERCASE` | Labels, buttons, headings |
+| Shadows | minimal | Border-focused elevation |
+| Decorators | `[ ]`, `> `, `├─` | Terminal syntax |
 
-**Characteristics:**
-- `rounded-none` on all elements
-- `font-mono` everywhere
-- `UPPERCASE` labels and buttons
-- Minimal shadows (border-focused)
-- Bracket syntax: `[ SECTION ]`, `[LABEL]:`
-- Status prefixes: `[OK]`, `[ERROR]`, `[WARNING]`
+**Use Cases:**
+- Developer tools
+- CLI documentation
+- Technical dashboards
+- Admin panels
 
----
-
-### Modern Theme
+### Modern
 
 Clean, Linear/Vercel-inspired aesthetic.
 
-```css
-:root[data-theme="modern"] {
-  /* Colors - Light */
-  --color-bg-base: var(--white);
-  --color-bg-surface: var(--white);
-  --color-bg-surface-raised: var(--white);
-  --color-bg-muted: var(--gray-50);
-  --color-text-primary: var(--gray-900);
-  --color-text-secondary: var(--gray-600);
-  --color-text-muted: var(--gray-500);
-  --color-border-default: var(--gray-200);
-  
-  /* Radius - Subtle */
-  --radius-button: 6px;
-  --radius-input: 6px;
-  --radius-card: 8px;
-  --radius-modal: 12px;
-  --radius-badge: 9999px;
-  
-  /* Shadows - Subtle depth */
-  --shadow-card: var(--shadow-sm);
-  --shadow-dropdown: var(--shadow-md);
-  --shadow-modal: var(--shadow-lg);
-  
-  /* Typography */
-  --font-body: var(--font-sans);
-  --font-heading: var(--font-sans);
-  --text-transform-button: none;
-  --text-transform-label: none;
-}
-```
+| Property | Value | Notes |
+|----------|-------|-------|
+| Radius | `md` (6px) | Subtle rounding |
+| Font | `sans` | Inter, system fonts |
+| Text Transform | `none` | Natural casing |
+| Shadows | subtle | Soft depth cues |
+| Decorators | none | Minimal chrome |
 
-**Characteristics:**
-- Subtle rounded corners
-- System sans-serif fonts
-- Sentence case text
-- Soft shadows for depth
-- Clean, minimal UI chrome
-- No decorative elements
+**Use Cases:**
+- SaaS products
+- Marketing sites
+- Enterprise apps
+- Professional tools
 
----
-
-### Soft Theme
+### Soft
 
 Friendly, approachable aesthetic for consumer apps.
 
-```css
-:root[data-theme="soft"] {
-  /* Colors - Light */
-  --color-bg-base: var(--gray-50);
-  --color-bg-surface: var(--white);
-  --color-bg-surface-raised: var(--white);
-  --color-bg-muted: var(--gray-100);
-  --color-text-primary: var(--gray-800);
-  --color-text-secondary: var(--gray-600);
-  --color-text-muted: var(--gray-500);
-  --color-border-default: var(--gray-200);
-  
-  /* Radius - Rounded */
-  --radius-button: 8px;
-  --radius-input: 8px;
-  --radius-card: 12px;
-  --radius-modal: 16px;
-  --radius-badge: 9999px;
-  
-  /* Shadows - Prominent */
-  --shadow-card: var(--shadow-md);
-  --shadow-dropdown: var(--shadow-lg);
-  --shadow-modal: var(--shadow-xl);
-  
-  /* Typography */
-  --font-body: var(--font-sans);
-  --font-heading: var(--font-sans);
-  --text-transform-button: none;
-  --text-transform-label: none;
-}
-```
+| Property | Value | Notes |
+|----------|-------|-------|
+| Radius | `lg` (8-12px) | Rounded corners |
+| Font | `sans` | Friendly typography |
+| Text Transform | `none` | Natural casing |
+| Shadows | prominent | Floating elements |
+| Decorators | none | Approachable feel |
 
-**Characteristics:**
-- More rounded corners
-- Warmer color tones
-- More prominent shadows
-- Friendly, approachable feel
-- Larger touch targets
-- More whitespace
+**Use Cases:**
+- Consumer apps
+- Social platforms
+- Wellness/lifestyle
+- Creative tools
 
 ---
 
-## Implementation
+## Token Resolution Table
 
-### CSS Custom Properties
+### Radius Tokens
+
+| Token | Terminal | Modern | Soft |
+|-------|----------|--------|------|
+| `radius-button` | `none` | `md` | `lg` |
+| `radius-input` | `none` | `md` | `lg` |
+| `radius-card` | `none` | `lg` | `xl` |
+| `radius-modal` | `none` | `xl` | `2xl` |
+| `radius-badge` | `sm` | `full` | `full` |
+| `radius-avatar` | `none` | `full` | `full` |
+
+### Shadow Tokens
+
+| Token | Terminal | Modern | Soft |
+|-------|----------|--------|------|
+| `shadow-card` | `none` | `sm` | `md` |
+| `shadow-dropdown` | `sm` | `md` | `lg` |
+| `shadow-modal` | `sm` | `lg` | `xl` |
+| `shadow-button` | `none` | `xs` | `sm` |
+
+### Font Tokens
+
+| Token | Terminal | Modern | Soft |
+|-------|----------|--------|------|
+| `font-body` | `mono` | `sans` | `sans` |
+| `font-heading` | `mono` | `sans` | `sans` |
+| `font-code` | `mono` | `mono` | `mono` |
+| `font-ui` | `mono` | `sans` | `sans` |
+
+### Text Transform Tokens
+
+| Token | Terminal | Modern | Soft |
+|-------|----------|--------|------|
+| `transform-button` | `uppercase` | `none` | `none` |
+| `transform-label` | `uppercase` | `none` | `capitalize` |
+| `transform-heading` | `uppercase` | `none` | `none` |
+
+---
+
+## Theme Structure
+
+Each theme defines:
+
+```typescript
+interface Theme {
+  // Identification
+  name: string;
+  description: string;
+  
+  // Semantic Mappings
+  color: ColorTokens;      // Color resolutions
+  radius: RadiusTokens;    // Corner treatments
+  shadow: ShadowTokens;    // Elevation levels
+  font: FontTokens;        // Typography choices
+  textTransform: TransformTokens;
+  
+  // Utility Classes
+  classes: ThemeClasses;   // Tailwind class strings
+  
+  // Formatting Functions
+  utils: ThemeUtils;       // Text formatters
+}
+
+interface ThemeClasses {
+  radius: string;      // e.g., "rounded-none"
+  font: string;        // e.g., "font-mono"
+  text: string;        // e.g., "uppercase"
+  card: string;        // Full card class string
+  button: string;      // Full button class string
+  input: string;       // Full input class string
+  badge: string;       // Full badge class string
+}
+
+interface ThemeUtils {
+  formatButtonText: (text: string) => string;
+  formatLabelText: (label: string) => string;
+  formatCardHeader: (title: string, code?: string) => string;
+  formatStatusText: (status: string) => string;
+}
+```
+
+---
+
+## Theme Application
+
+### Method 1: Data Attribute (Runtime)
+
+```html
+<html data-theme="terminal">
+```
+
+Themes are applied via CSS custom properties:
 
 ```css
-/* primitives.css */
-:root {
-  /* Gray palette */
-  --gray-50: oklch(98% 0.005 240);
-  --gray-100: oklch(96% 0.005 240);
-  --gray-200: oklch(92% 0.005 240);
-  --gray-300: oklch(87% 0.005 240);
-  --gray-400: oklch(70% 0.005 240);
-  --gray-500: oklch(55% 0.005 240);
-  --gray-600: oklch(45% 0.005 240);
-  --gray-700: oklch(37% 0.01 240);
-  --gray-800: oklch(27% 0.01 240);
-  --gray-900: oklch(21% 0.01 240);
-  --gray-950: oklch(14% 0.01 240);
-  
-  /* Primary palette */
-  --primary-50: oklch(97% 0.02 290);
-  --primary-100: oklch(94% 0.04 290);
-  --primary-200: oklch(88% 0.08 290);
-  --primary-300: oklch(79% 0.14 290);
-  --primary-400: oklch(70% 0.18 290);
-  --primary-500: oklch(60% 0.20 290);
-  --primary-600: oklch(52% 0.22 290);
-  --primary-700: oklch(45% 0.22 290);
-  --primary-800: oklch(38% 0.20 290);
-  --primary-900: oklch(32% 0.18 290);
-  --primary-950: oklch(22% 0.15 290);
-  
-  /* Fixed primitives */
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
-  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
-}
-
-/* semantic.css - Default theme (terminal) */
-:root {
-  --color-bg-base: var(--gray-50);
-  --color-bg-surface: var(--white);
-  --color-text-primary: var(--gray-900);
+:root[data-theme="terminal"] {
   --radius-button: 0;
-  --shadow-card: none;
   --font-body: var(--font-mono);
-  --text-transform-button: uppercase;
+  --shadow-card: none;
 }
 
-/* themes/modern.css */
 :root[data-theme="modern"] {
-  --radius-button: 6px;
-  --radius-input: 6px;
-  --radius-card: 8px;
+  --radius-button: 0.375rem;
+  --font-body: var(--font-sans);
   --shadow-card: var(--shadow-sm);
-  --font-body: var(--font-sans);
-  --text-transform-button: none;
-}
-
-/* themes/soft.css */
-:root[data-theme="soft"] {
-  --radius-button: 8px;
-  --radius-card: 12px;
-  --shadow-card: var(--shadow-md);
-  --font-body: var(--font-sans);
-  --text-transform-button: none;
 }
 ```
 
-### TypeScript Types
+### Method 2: Mode Object (Build-time)
+
+Components import the `mode` object:
 
 ```typescript
-// types.ts
-export type ThemeMode = "terminal" | "modern" | "soft";
-export type ColorScheme = "light" | "dark" | "system";
+import { mode } from "@/design-system";
 
-export interface ThemeConfig {
-  mode: ThemeMode;
-  colorScheme: ColorScheme;
-  accentColor?: string;
-}
+// mode.radius → "rounded-none" (terminal)
+// mode.font → "font-mono" (terminal)
 
-export interface ThemeContext {
-  theme: ThemeConfig;
-  setTheme: (config: Partial<ThemeConfig>) => void;
-}
+<div className={cn("border", mode.radius, mode.font)}>
 ```
 
-### React Context
+### Method 3: Theme Provider (React Context)
 
 ```typescript
-// ThemeProvider.tsx
-import { createContext, useContext, useState, useEffect } from "react";
+import { ThemeProvider, useTheme } from "@/design-system";
 
-const ThemeContext = createContext<ThemeContext | null>(null);
-
-export function ThemeProvider({ 
-  children,
-  defaultTheme = "terminal",
-  defaultColorScheme = "system"
-}) {
-  const [theme, setThemeState] = useState<ThemeConfig>({
-    mode: defaultTheme,
-    colorScheme: defaultColorScheme,
-  });
-  
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme.mode;
-    
-    const isDark = theme.colorScheme === "dark" || 
-      (theme.colorScheme === "system" && 
-       window.matchMedia("(prefers-color-scheme: dark)").matches);
-    
-    document.documentElement.classList.toggle("dark", isDark);
-  }, [theme]);
-  
-  const setTheme = (config: Partial<ThemeConfig>) => {
-    setThemeState(prev => ({ ...prev, ...config }));
-  };
-  
+function App() {
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeProvider defaultTheme="terminal">
+      <YourApp />
+    </ThemeProvider>
   );
 }
 
-export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) throw new Error("useTheme must be used within ThemeProvider");
-  return context;
-};
+function Component() {
+  const { theme, setTheme } = useTheme();
+  // theme.mode → "terminal"
+  // setTheme({ mode: "modern" })
+}
 ```
 
 ---
 
-## Theme Switching
+## Theme Formatting Functions
 
-### HTML Implementation
-
-```html
-<!-- Set theme via data attribute -->
-<html data-theme="terminal" class="dark">
-```
-
-### JavaScript API
+### Terminal Theme
 
 ```typescript
-// Set theme
-document.documentElement.dataset.theme = "modern";
-
-// Toggle dark mode
-document.documentElement.classList.toggle("dark");
-
-// Read current theme
-const currentTheme = document.documentElement.dataset.theme;
+formatButtonText("Save Changes")     → "> SAVE_CHANGES"
+formatLabelText("Email")             → "[EMAIL]:"
+formatCardHeader("Settings", "00")   → "[ [0x00] SETTINGS ]"
+formatStatusText("Active")           → "[ACTIVE]"
 ```
 
-### React Hook
+### Modern Theme
 
 ```typescript
-const { theme, setTheme } = useTheme();
-
-// Switch to terminal mode
-setTheme({ mode: "terminal" });
-
-// Toggle color scheme
-setTheme({ 
-  colorScheme: theme.colorScheme === "dark" ? "light" : "dark" 
-});
+formatButtonText("Save Changes")     → "Save Changes"
+formatLabelText("Email")             → "Email"
+formatCardHeader("Settings")         → "Settings"
+formatStatusText("Active")           → "Active"
 ```
 
-### Persistence
+### Soft Theme
 
 ```typescript
-const saveTheme = (config: ThemeConfig) => {
-  localStorage.setItem("theme", JSON.stringify(config));
-};
-
-const loadTheme = (): ThemeConfig => {
-  const saved = localStorage.getItem("theme");
-  return saved ? JSON.parse(saved) : { mode: "terminal", colorScheme: "system" };
-};
+formatButtonText("Save Changes")     → "Save Changes"
+formatLabelText("email")             → "Email"
+formatCardHeader("Settings")         → "Settings"
+formatStatusText("active")           → "Active"
 ```
 
 ---
 
-## Creating New Themes
+## Implementation Files
 
-### Step 1: Define Theme Values
+### TypeScript Themes
+
+| File | Purpose |
+|------|---------|
+| `/design-system/themes/terminal.ts` | Terminal theme definition |
+| `/design-system/themes/modern.ts` | Modern theme definition |
+| `/design-system/themes/soft.ts` | Soft theme definition |
+| `/design-system/themes/index.ts` | Theme registry and exports |
+
+### JSON Themes (for tooling)
+
+| File | Purpose |
+|------|---------|
+| `/design-system/themes/terminal.json` | Machine-readable terminal tokens |
+| `/design-system/themes/modern.json` | Machine-readable modern tokens |
+
+### Main Entry
+
+| File | Purpose |
+|------|---------|
+| `/design-system/index.ts` | Exports `mode`, utilities, theme API |
+
+---
+
+## Creating Custom Themes
+
+### Step 1: Define Theme Object
 
 ```typescript
 // themes/custom.ts
-import { primitives } from "../primitives";
-import type { SemanticTokens } from "../types";
+import { primitives } from "../tokens/primitives";
+import type { SemanticTokens } from "../tokens/semantic";
 
 export const customTheme: SemanticTokens = {
-  color: {
-    bg: {
-      base: "#your-color",
-      surface: "#your-color",
-    },
-    text: {
-      primary: "#your-color",
-    },
-    border: {
-      default: "#your-color",
-    },
-  },
+  color: { /* color mappings */ },
   radius: {
-    button: "4px",
-    input: "4px",
-    card: "6px",
-    modal: "8px",
-    badge: "9999px",
+    button: primitives.radius.md,
+    input: primitives.radius.md,
+    card: primitives.radius.lg,
+    modal: primitives.radius.xl,
+    badge: primitives.radius.full,
+    avatar: primitives.radius.full,
   },
   shadow: {
-    card: primitives.shadow.md,
-    dropdown: primitives.shadow.lg,
-    modal: primitives.shadow.xl,
+    card: primitives.shadow.sm,
+    dropdown: primitives.shadow.md,
+    modal: primitives.shadow.lg,
+    button: primitives.shadow.xs,
   },
   font: {
-    body: primitives.font.sans,
-    heading: primitives.font.sans,
-    code: primitives.font.mono,
+    body: primitives.fontFamily.sans,
+    heading: primitives.fontFamily.sans,
+    code: primitives.fontFamily.mono,
+    ui: primitives.fontFamily.sans,
   },
   textTransform: {
     button: "capitalize",
@@ -716,73 +341,84 @@ export const customTheme: SemanticTokens = {
 };
 ```
 
-### Step 2: Generate CSS
+### Step 2: Add Utility Classes
 
-```css
-/* themes/custom.css */
-:root[data-theme="custom"] {
-  --color-bg-base: #your-color;
-  --color-bg-surface: #your-color;
-  --radius-button: 4px;
-  --shadow-card: var(--shadow-md);
-  --font-body: var(--font-sans);
-  --text-transform-button: capitalize;
-}
+```typescript
+export const customClasses = {
+  radius: "rounded-md",
+  font: "font-sans",
+  text: "",
+  card: "rounded-lg border border-border shadow-sm",
+  button: "rounded-md font-sans shadow-xs",
+  input: "rounded-md font-sans border-border",
+  badge: "rounded-full font-sans text-xs",
+};
 ```
 
 ### Step 3: Register Theme
 
 ```typescript
 // themes/index.ts
+import { customTheme, customClasses } from "./custom";
+
 export const themes = {
   terminal: terminalTheme,
   modern: modernTheme,
   soft: softTheme,
   custom: customTheme,
-} as const;
+};
 
-export type ThemeMode = keyof typeof themes;
+export const themeClasses = {
+  terminal: terminalClasses,
+  modern: modernClasses,
+  soft: softClasses,
+  custom: customClasses,
+};
 ```
 
 ---
 
 ## Dark Mode
 
-Each theme supports both light and dark color schemes.
-
-### Implementation
-
-```css
-/* Light mode (default) */
-:root[data-theme="terminal"] {
-  --color-bg-base: var(--gray-50);
-  --color-text-primary: var(--gray-900);
-}
-
-/* Dark mode */
-:root[data-theme="terminal"].dark {
-  --color-bg-base: var(--gray-950);
-  --color-text-primary: var(--gray-50);
-}
-
-/* System preference */
-@media (prefers-color-scheme: dark) {
-  :root[data-theme="terminal"]:not(.light) {
-    --color-bg-base: var(--gray-950);
-    --color-text-primary: var(--gray-50);
-  }
-}
-```
+Each theme supports both light and dark color schemes independently.
 
 ### Color Scheme Matrix
 
-| Token | Terminal Light | Terminal Dark | Modern Light | Modern Dark |
-|-------|---------------|---------------|--------------|-------------|
-| `bg-base` | gray-50 | gray-950 | white | gray-950 |
-| `bg-surface` | white | gray-900 | white | gray-900 |
-| `text-primary` | gray-900 | gray-50 | gray-900 | gray-50 |
-| `border-default` | gray-200 | gray-800 | gray-200 | gray-800 |
+| Token | Terminal Light | Terminal Dark |
+|-------|---------------|---------------|
+| `bg-base` | gray-50 | gray-950 |
+| `bg-surface` | white | gray-900 |
+| `text-primary` | gray-900 | gray-50 |
+| `border-default` | gray-200 | gray-800 |
+
+### Application
+
+Dark mode is applied via:
+
+1. CSS class: `<html class="dark">`
+2. Media query: `@media (prefers-color-scheme: dark)`
+3. Data attribute: `<html data-color-scheme="dark">`
+
+Theme (terminal/modern/soft) and color scheme (light/dark) are **independent**.
 
 ---
 
-*Theme System Architecture Version 1.0.0*
+## Best Practices
+
+### DO
+
+- Reference `mode.radius` instead of `rounded-none`
+- Use `mode.font` instead of `font-mono`
+- Import formatters from theme utils
+- Keep theme-specific logic in theme files
+
+### DON'T
+
+- Hardcode `rounded-none` in components
+- Use theme-specific formatting inline
+- Mix theme classes across contexts
+- Create new tokens without proposal
+
+---
+
+*Theme System Architecture Version 2.0.0 - FROZEN*

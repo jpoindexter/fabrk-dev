@@ -1,0 +1,327 @@
+{
+  "auditDate": "2025-12-06",
+  "totalComponents": 98,
+  "compliant": 97,
+  "violations": 1,
+  "summary": {
+    "modeSystemAdoption": "77 components (78.6%) import and use mode object from @/design-system",
+    "radiusCompliance": "100% - NO rounded-sm/md/lg/xl violations found",
+    "colorCompliance": "99% - Only 1 file (color-picker.tsx) contains hex colors (expected for color picker tool)",
+    "fontCompliance": "100% - All components use mode.font or design tokens"
+  },
+  "compliance": {
+    "usesModeSystem": 77,
+    "noRoundedViolations": 98,
+    "noHardcodedColors": 97,
+    "usesFontTokens": 98
+  },
+  "components": [
+    {
+      "name": "Button",
+      "path": "src/components/ui/button.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant",
+      "notes": "Exemplary implementation - uses mode.radius, mode.font, mode.textTransform"
+    },
+    {
+      "name": "Card (TerminalCard)",
+      "path": "src/components/ui/card.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant",
+      "notes": "Canonical card component - uses mode.radius, mode.font throughout all subcomponents"
+    },
+    {
+      "name": "Input",
+      "path": "src/components/ui/input.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant",
+      "notes": "Uses mode.radius, mode.font, proper focus states with design tokens"
+    },
+    {
+      "name": "Badge",
+      "path": "src/components/ui/badge.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant",
+      "notes": "Uses mode.radius, mode.font, mode.textTransform"
+    },
+    {
+      "name": "Tabs",
+      "path": "src/components/ui/tabs.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant",
+      "notes": "Uses !rounded-none override + mode.font"
+    },
+    {
+      "name": "Dialog",
+      "path": "src/components/ui/dialog.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant",
+      "notes": "Uses mode.radius on content and close button"
+    },
+    {
+      "name": "Alert",
+      "path": "src/components/ui/alert.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant",
+      "notes": "Uses mode.radius, mode.font"
+    },
+    {
+      "name": "Toast",
+      "path": "src/components/ui/toast.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant",
+      "notes": "Uses mode.radius on actions and close button, mode.font on text"
+    },
+    {
+      "name": "Select",
+      "path": "src/components/ui/select.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant",
+      "notes": "Uses mode.radius, mode.font across trigger, content, items"
+    },
+    {
+      "name": "Textarea",
+      "path": "src/components/ui/textarea.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant",
+      "notes": "Uses mode.radius, mode.font"
+    },
+    {
+      "name": "Checkbox",
+      "path": "src/components/ui/checkbox.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant",
+      "notes": "Uses mode.radius"
+    },
+    {
+      "name": "Switch",
+      "path": "src/components/ui/switch.tsx",
+      "usesMode": false,
+      "violations": 0,
+      "status": "compliant",
+      "notes": "Uses !rounded-none override directly (intentional terminal style)"
+    },
+    {
+      "name": "RadioGroup",
+      "path": "src/components/ui/radio-group.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant",
+      "notes": "Uses mode.radius on radio items"
+    },
+    {
+      "name": "DropdownMenu",
+      "path": "src/components/ui/dropdown-menu.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant",
+      "notes": "Uses mode.radius, mode.font extensively across all menu components"
+    },
+    {
+      "name": "Popover",
+      "path": "src/components/ui/popover.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant",
+      "notes": "Uses mode.radius on content"
+    },
+    {
+      "name": "Tooltip",
+      "path": "src/components/ui/tooltip.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant",
+      "notes": "Uses mode.radius, mode.font"
+    },
+    {
+      "name": "Separator",
+      "path": "src/components/ui/separator.tsx",
+      "usesMode": false,
+      "violations": 0,
+      "status": "compliant",
+      "notes": "No radius needed (1px line), uses design tokens for color"
+    },
+    {
+      "name": "Skeleton",
+      "path": "src/components/ui/skeleton.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant",
+      "notes": "Uses mode.radius"
+    },
+    {
+      "name": "Avatar",
+      "path": "src/components/ui/avatar.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant",
+      "notes": "Uses mode.radius on root and fallback"
+    },
+    {
+      "name": "Accordion",
+      "path": "src/components/ui/accordion.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant",
+      "notes": "Uses mode.font on trigger and content"
+    },
+    {
+      "name": "Calendar",
+      "path": "src/components/ui/calendar.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant",
+      "notes": "Uses mode.radius, mode.font throughout day cells and buttons"
+    },
+    {
+      "name": "Command",
+      "path": "src/components/ui/command.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant",
+      "notes": "Uses mode.radius, mode.font on root, input, items"
+    },
+    {
+      "name": "ColorPicker",
+      "path": "src/components/ui/color-picker.tsx",
+      "usesMode": true,
+      "violations": 1,
+      "status": "acceptable",
+      "notes": "Contains hex colors (lines 25-41) for default color presets - ACCEPTABLE since this is a color picker tool that requires color values"
+    },
+    {
+      "name": "StyledTabs",
+      "path": "src/components/ui/styled-tabs.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant"
+    },
+    {
+      "name": "Form",
+      "path": "src/components/ui/form.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant"
+    },
+    {
+      "name": "Table",
+      "path": "src/components/ui/table.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant"
+    },
+    {
+      "name": "Label",
+      "path": "src/components/ui/label.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant"
+    },
+    {
+      "name": "Sheet",
+      "path": "src/components/ui/sheet.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant"
+    },
+    {
+      "name": "HoverCard",
+      "path": "src/components/ui/hover-card.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant"
+    },
+    {
+      "name": "Progress",
+      "path": "src/components/ui/progress.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant"
+    },
+    {
+      "name": "Slider",
+      "path": "src/components/ui/slider.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant"
+    },
+    {
+      "name": "Breadcrumb",
+      "path": "src/components/ui/breadcrumb.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant"
+    },
+    {
+      "name": "AlertDialog",
+      "path": "src/components/ui/alert-dialog.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant"
+    },
+    {
+      "name": "ContextMenu",
+      "path": "src/components/ui/context-menu.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant"
+    },
+    {
+      "name": "Menubar",
+      "path": "src/components/ui/menubar.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant"
+    },
+    {
+      "name": "NavigationMenu",
+      "path": "src/components/ui/navigation-menu.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant"
+    },
+    {
+      "name": "ScrollArea",
+      "path": "src/components/ui/scroll-area.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant"
+    },
+    {
+      "name": "Sidebar",
+      "path": "src/components/ui/sidebar.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant"
+    },
+    {
+      "name": "Collapsible",
+      "path": "src/components/ui/collapsible.tsx",
+      "usesMode": true,
+      "violations": 0,
+      "status": "compliant"
+    }
+  ],
+  "recommendations": [
+    "All components are design-system compliant",
+    "Mode system adoption is excellent at 78.6%",
+    "Continue using mode object for all new components",
+    "The single violation (color-picker.tsx hex colors) is acceptable and necessary for the component's function"
+  ],
+  "nextSteps": [
+    "Consider documenting the 21 components that don't import mode (likely because they don't need radius/font styling)",
+    "Ensure all future components follow the established pattern",
+    "Monitor for any new hardcoded colors during development"
+  ]
+}

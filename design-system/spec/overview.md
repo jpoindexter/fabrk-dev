@@ -2,8 +2,20 @@
 
 > A token-driven, themeable design system for modern SaaS applications.
 
-**Version:** 1.0.0  
-**Status:** Specification
+**Version:** 2.0.0  
+**Status:** FROZEN (Phase 1 Complete)  
+**Last Updated:** 2025-12-06
+
+---
+
+## IMPORTANT: Design System Freeze
+
+This specification is **FROZEN** as of Phase 1 completion. Any changes require explicit authorization in a "Design System Edit" phase.
+
+**To propose changes:**
+1. Add suggestions to `/design-system/proposed/` directory
+2. Request a "Design System Edit" phase
+3. Changes must be approved before implementation
 
 ---
 
@@ -13,15 +25,15 @@
 
 Every visual decision flows from design tokens. Tokens are the single source of truth for:
 
-- **Colors** — semantic, role-based naming (not brand-specific)
-- **Typography** — scale, weights, line heights
-- **Spacing** — consistent rhythm based on a base unit
-- **Radii** — corner treatments from sharp to pill
-- **Shadows** — elevation levels for depth
-- **Motion** — durations and easing functions
+- **Colors** - Semantic, role-based naming (not brand-specific)
+- **Typography** - Scale, weights, line heights
+- **Spacing** - Consistent rhythm based on 4px base unit
+- **Radii** - Corner treatments from sharp to pill
+- **Shadows** - Elevation levels for depth
+- **Motion** - Durations and easing functions
 
 **Why tokens?**
-- Consistency at scale (200+ components)
+- Consistency at scale (100+ components)
 - Theme switching without code changes
 - Design-to-code handoff clarity
 - Automated tooling (linting, validation)
@@ -31,14 +43,15 @@ Every visual decision flows from design tokens. Tokens are the single source of 
 Tokens use **semantic names** that describe purpose, not appearance:
 
 ```
-✓ color-bg-surface       (semantic: what it's for)
-✗ color-gray-100         (literal: what it looks like)
+GOOD (semantic - what it's for):
+  color-bg-surface
+  color-text-primary
+  space-component-padding-md
 
-✓ color-text-primary     (semantic: importance level)
-✗ color-black            (literal: actual color)
-
-✓ space-component-padding-md   (semantic: contextual use)
-✗ space-16                     (literal: raw value)
+BAD (literal - what it looks like):
+  color-gray-100
+  color-black
+  space-16
 ```
 
 This allows the same token to resolve to different values per theme.
@@ -59,95 +72,92 @@ Components reference semantic tokens; themes provide the values.
 
 Built for the full SaaS surface area:
 
-- **Landing pages** — Marketing, pricing, testimonials
-- **Authentication** — Sign in, sign up, password reset
-- **Dashboard** — Stats, tables, charts, activity feeds
-- **Settings** — Forms, toggles, danger zones
-- **Documentation** — Guides, API references, code blocks
-- **Admin** — User management, audit logs, feature flags
+- **Landing pages** - Marketing, pricing, testimonials
+- **Authentication** - Sign in, sign up, password reset
+- **Dashboard** - Stats, tables, charts, activity feeds
+- **Settings** - Forms, toggles, danger zones
+- **Documentation** - Guides, API references, code blocks
+- **Admin** - User management, audit logs, feature flags
 
 ---
 
 ## Naming Conventions
 
-### Design Tokens (CSS/JSON)
+### Token Naming (CANONICAL)
 
-**Format:** `{category}-{property}-{variant}-{state}`
+**Format:** `{category}-{property}-{variant}`
 
-| Category | Examples |
-|----------|----------|
-| `color` | `color-bg-surface`, `color-text-muted`, `color-border-default` |
-| `space` | `space-xs`, `space-md`, `space-section-lg` |
-| `radius` | `radius-none`, `radius-md`, `radius-pill` |
-| `shadow` | `shadow-sm`, `shadow-lg`, `shadow-none` |
-| `font` | `font-family-sans`, `font-family-mono` |
-| `text` | `text-size-sm`, `text-weight-semibold`, `text-leading-tight` |
-| `motion` | `motion-duration-fast`, `motion-ease-out` |
-| `breakpoint` | `breakpoint-sm`, `breakpoint-lg` |
+| Category | Format | Examples |
+|----------|--------|----------|
+| **Colors** | `color-{role}-{variant}` | `color-bg-surface`, `color-text-muted`, `color-border-accent` |
+| **Spacing** | `space-{size}` | `space-xs`, `space-md`, `space-xl` |
+| **Typography** | `text-{property}-{variant}` | `text-size-sm`, `text-weight-semibold` |
+| **Radius** | `radius-{size}` | `radius-none`, `radius-md`, `radius-full` |
+| **Shadow** | `shadow-{size}` | `shadow-none`, `shadow-md`, `shadow-xl` |
+| **Motion** | `motion-{property}-{variant}` | `motion-duration-fast`, `motion-ease-out` |
 
-**Casing:**
-- CSS custom properties: `--color-bg-surface`
-- JSON tokens: `color.bg.surface` (nested) or `color-bg-surface` (flat)
-- Tailwind utilities: `bg-surface`, `text-primary`
+### Context-Specific Naming
 
-### JavaScript/TypeScript
+| Context | Format | Example |
+|---------|--------|---------|
+| CSS Variables | `--{token-name}` kebab-case | `--color-bg-surface` |
+| TypeScript | camelCase | `colorBgSurface` |
+| Tailwind | kebab-case | `bg-surface` |
+| Component Props | PascalCase enums | `Variant.Primary` |
 
-**Format:** Standard JS conventions
-
-| Type | Convention | Example |
-|------|------------|---------|
-| Variables | camelCase | `colorBgSurface`, `spaceMd` |
-| Constants | SCREAMING_SNAKE | `DEFAULT_THEME`, `BREAKPOINTS` |
-| Functions | camelCase | `getToken()`, `resolveColor()` |
-| Components | PascalCase | `Button`, `Card`, `InputGroup` |
-| Types/Interfaces | PascalCase | `ThemeConfig`, `SpacingScale` |
-| Enums | PascalCase | `ThemeMode`, `Variant` |
-
-### Component Props
+### File Naming
 
 | Type | Convention | Example |
 |------|------------|---------|
-| Boolean | `is*`, `has*`, `show*` | `isDisabled`, `hasIcon`, `showLabel` |
+| Spec files | kebab-case.md | `components-button.md` |
+| Token files | camelCase.ts | `primitives.ts` |
+| Theme files | camelCase.ts | `terminal.ts` |
+| Component files | kebab-case.tsx | `button.tsx` |
+
+### Component Prop Conventions
+
+| Type | Convention | Example |
+|------|------------|---------|
+| Boolean | `is*`, `has*`, `show*` | `isDisabled`, `hasIcon` |
 | Variant | Literal union | `variant="primary" \| "secondary"` |
 | Size | T-shirt sizing | `size="sm" \| "md" \| "lg"` |
-| Event handlers | `on*` | `onClick`, `onSubmit`, `onChange` |
+| Tone | Semantic meaning | `tone="neutral" \| "danger" \| "success"` |
+| Event handlers | `on*` | `onClick`, `onChange` |
 
 ---
 
-## Token Resolution
+## Token Architecture
 
-### Three-Layer Architecture
-
-```
-┌─────────────────────────────────────────────────────────┐
-│  LAYER 3: COMPONENT TOKENS                              │
-│  Component-specific decisions                           │
-│  e.g., button-bg-primary, card-padding, input-radius    │
-├─────────────────────────────────────────────────────────┤
-│  LAYER 2: SEMANTIC TOKENS                               │
-│  Role-based, theme-resolved                             │
-│  e.g., color-bg-surface, color-text-primary             │
-├─────────────────────────────────────────────────────────┤
-│  LAYER 1: PRIMITIVE TOKENS                              │
-│  Raw values, scale definitions                          │
-│  e.g., gray-900, space-16, radius-4                     │
-└─────────────────────────────────────────────────────────┘
-```
-
-### Resolution Flow
+### Three-Layer System
 
 ```
-Component uses:     → Semantic token resolves to: → Primitive value:
-─────────────────────────────────────────────────────────────────────
-bg-surface          → color-bg-surface            → #ffffff (light)
-                                                  → #0a0a0a (dark)
+LAYER 3: COMPONENT TOKENS (optional)
+├─ Component-specific decisions
+├─ e.g., button-padding, card-radius
+└─ Used when semantic tokens aren't specific enough
 
-text-primary        → color-text-primary          → #171717 (light)
-                                                  → #fafafa (dark)
+LAYER 2: SEMANTIC TOKENS (required)
+├─ Role-based, theme-resolved
+├─ e.g., color-bg-surface, color-text-primary
+└─ What components reference
 
-radius-md           → radius-md                   → 0px (terminal)
-                                                  → 6px (modern)
-                                                  → 12px (soft)
+LAYER 1: PRIMITIVE TOKENS (foundation)
+├─ Raw values, scale definitions
+├─ e.g., gray-900, space-16, radius-4
+└─ Themes select from these
+```
+
+### Token Resolution Flow
+
+```
+Component uses    → Semantic token      → Primitive value
+────────────────────────────────────────────────────────
+bg-surface        → color-bg-surface    → gray-50 (light)
+                                        → gray-950 (dark)
+
+radius-button     → radius-button       → none (terminal)
+                                        → md (modern)
+                                        → lg (soft)
 ```
 
 ---
@@ -156,81 +166,26 @@ radius-md           → radius-md                   → 0px (terminal)
 
 ### How Themes Work
 
-1. **Define primitives** — Raw color palettes, spacing values
-2. **Create semantic mappings** — Assign primitives to semantic roles
-3. **Apply theme** — CSS custom properties or runtime config
+1. **Primitives** define raw values (shared by all themes)
+2. **Semantic tokens** are role-based names
+3. **Themes** map semantic tokens to primitive values
+4. **Components** only reference semantic tokens
 
-```css
-/* Terminal Theme */
-:root[data-theme="terminal"] {
-  --color-bg-surface: var(--gray-950);
-  --color-text-primary: var(--gray-50);
-  --radius-md: 0px;
-  --font-body: var(--font-mono);
-}
-
-/* Modern Theme */
-:root[data-theme="modern"] {
-  --color-bg-surface: var(--white);
-  --color-text-primary: var(--gray-900);
-  --radius-md: 6px;
-  --font-body: var(--font-sans);
-}
-```
-
-### Theme Switching
+### Theme Application
 
 Themes are applied via:
-1. **Data attribute:** `<html data-theme="terminal">`
-2. **CSS class:** `<html class="theme-terminal">`
-3. **Media query:** `@media (prefers-color-scheme: dark)`
 
-Components never need to know which theme is active.
+1. **Data attribute** (runtime): `<html data-theme="terminal">`
+2. **CSS class** (build-time): `.theme-terminal`
+3. **Context** (React): `ThemeProvider`
 
----
+### Available Themes
 
-## File Structure
-
-```
-design-system/
-├── spec/                    # Specification documents
-│   ├── overview.md          # Philosophy & conventions (this file)
-│   ├── foundations.md       # Token definitions
-│   ├── tokens.json          # Machine-readable tokens
-│   ├── components.md        # Component patterns
-│   └── themes.md            # Theme architecture
-│
-├── tokens/                  # Generated token files
-│   ├── css/
-│   │   ├── primitives.css
-│   │   ├── semantic.css
-│   │   └── themes/
-│   │       ├── terminal.css
-│   │       ├── modern.css
-│   │       └── soft.css
-│   ├── js/
-│   │   ├── tokens.ts
-│   │   └── themes.ts
-│   └── json/
-│       └── tokens.json
-│
-├── primitives/              # Base scale definitions
-│   ├── colors.ts
-│   ├── typography.ts
-│   ├── spacing.ts
-│   └── index.ts
-│
-├── themes/                  # Theme configurations
-│   ├── terminal.ts
-│   ├── modern.ts
-│   ├── soft.ts
-│   └── index.ts
-│
-└── utils/                   # Helper functions
-    ├── cn.ts               # Class name utility
-    ├── tokens.ts           # Token access helpers
-    └── theme.ts            # Theme management
-```
+| Theme | Radius | Font | Text Transform | Shadows |
+|-------|--------|------|----------------|---------|
+| Terminal | `none` | mono | UPPERCASE | minimal |
+| Modern | `md` | sans | normal | subtle |
+| Soft | `lg` | sans | normal | prominent |
 
 ---
 
@@ -246,23 +201,67 @@ Limited, intentional scales (spacing, typography) create visual harmony.
 All color combinations meet WCAG 2.1 AA. Touch targets are 44px minimum.
 
 ### 4. Progressive Enhancement
-Core functionality works without JavaScript. Animations are bonus, not required.
+Core functionality works without JavaScript. Animations are bonus.
 
 ### 5. Performance Budget
 Design decisions consider bundle size. Unused tokens are tree-shakeable.
 
 ---
 
-## Specification Documents
+## File Structure
 
-| Document | Purpose |
-|----------|---------|
-| **overview.md** | Philosophy, naming conventions, architecture |
-| **foundations.md** | Complete token definitions (colors, typography, spacing, etc.) |
-| **tokens.json** | Machine-readable token export |
-| **components.md** | Component patterns and token mappings |
-| **themes.md** | Theme system architecture and definitions |
+```
+design-system/
+├── spec/                      # Specification (source of truth)
+│   ├── overview.md            # This file
+│   ├── foundations.md         # Token definitions
+│   ├── tokens.json            # Machine-readable tokens
+│   ├── themes.md              # Theme architecture
+│   ├── components.md          # Component patterns
+│   └── components-*.md        # Individual component specs
+│
+├── tokens/                    # TypeScript token exports
+│   ├── primitives.ts          # Raw values
+│   ├── semantic.ts            # Type definitions
+│   └── index.ts               # Bundle export
+│
+├── themes/                    # Theme configurations
+│   ├── terminal.ts            # Terminal theme
+│   ├── modern.ts              # Modern theme
+│   ├── soft.ts                # Soft theme
+│   └── index.ts               # Theme registry
+│
+├── audit/                     # Audit reports
+│   └── design-system-current.md
+│
+├── proposed/                  # Proposed changes (pending approval)
+│   └── .gitkeep
+│
+└── index.ts                   # Main export (mode API)
+```
 
 ---
 
-*Specification Version 1.0.0*
+## Specification Documents
+
+| Document | Purpose | Status |
+|----------|---------|--------|
+| **overview.md** | Philosophy, naming conventions | FROZEN |
+| **foundations.md** | Complete token definitions | FROZEN |
+| **tokens.json** | Machine-readable token export | FROZEN |
+| **themes.md** | Theme system architecture | FROZEN |
+| **components.md** | Component patterns | FROZEN |
+| **components-*.md** | Individual component specs | FROZEN |
+
+---
+
+## Changelog
+
+| Version | Date | Changes |
+|---------|------|---------|
+| 2.0.0 | 2025-12-06 | Phase 1 freeze, normalized naming, audit complete |
+| 1.0.0 | 2025-12-01 | Initial specification |
+
+---
+
+*Specification Version 2.0.0 - FROZEN*

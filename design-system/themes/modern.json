@@ -1,0 +1,62 @@
+{
+  "$schema": "../spec/tokens.json",
+  "name": "modern",
+  "description": "Clean, Linear/Vercel-inspired aesthetic for SaaS products",
+  "version": "2.0.0",
+  "status": "FROZEN",
+
+  "radius": {
+    "button": "0.375rem",
+    "input": "0.375rem",
+    "card": "0.5rem",
+    "modal": "0.75rem",
+    "badge": "9999px",
+    "avatar": "9999px"
+  },
+
+  "shadow": {
+    "card": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+    "dropdown": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+    "modal": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+    "button": "0 1px 2px 0 rgb(0 0 0 / 0.05)"
+  },
+
+  "font": {
+    "body": "var(--font-sans)",
+    "heading": "var(--font-sans)",
+    "code": "var(--font-mono)",
+    "ui": "var(--font-sans)"
+  },
+
+  "textTransform": {
+    "button": "none",
+    "label": "none",
+    "heading": "none"
+  },
+
+  "classes": {
+    "radius": "rounded-md",
+    "font": "font-sans",
+    "text": "",
+    "cardHeader": "font-sans text-sm font-medium",
+    "label": "font-sans text-sm text-muted-foreground",
+    "button": "rounded-md font-sans shadow-sm",
+    "input": "rounded-md font-sans border-input",
+    "card": "rounded-lg border border-border shadow-sm",
+    "badge": "rounded-full font-sans text-xs"
+  },
+
+  "formatting": {
+    "buttonPrefix": "",
+    "labelFormat": "plain",
+    "cardHeader": "simple",
+    "statusFormat": "plain"
+  },
+
+  "examples": {
+    "button": "Save Changes",
+    "label": "Email",
+    "cardHeader": "Settings",
+    "status": "Active"
+  }
+}
