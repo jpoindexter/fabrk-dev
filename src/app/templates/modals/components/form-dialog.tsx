@@ -6,7 +6,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { StyledCard, StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -30,8 +30,8 @@ interface FormDialogProps {
 
 export function FormDialog({ open, onOpenChange }: FormDialogProps) {
   return (
-    <StyledCard>
-      <StyledCardHeader code="0x00" title="FORM_DIALOG" />
+    <TerminalCard>
+      <TerminalCardHeader code="0x00" title="FORM_DIALOG" />
       <div className="p-6">
         <div className="mb-4">
           <h3 className={cn(mode.font, "mb-1 font-semibold")}>Form Dialog</h3>
@@ -93,6 +93,6 @@ export function FormDialog({ open, onOpenChange }: FormDialogProps) {
           [USE_CASE]: Create, edit, quick forms, settings
         </div>
       </div>
-    </StyledCard>
+    </TerminalCard>
   );
 }

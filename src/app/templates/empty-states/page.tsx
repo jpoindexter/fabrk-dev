@@ -135,8 +135,8 @@ export default function EmptyStatesTemplate() {
           {emptyStates.map((state, index) => {
             const Icon = state.icon;
             return (
-              <StyledCard key={state.id} className="flex flex-col">
-                <StyledCardHeader
+              <TerminalCard key={state.id} className="flex flex-col">
+                <TerminalCardHeader
                   code={`0x0${index}`}
                   title={state.id.toUpperCase().replace(/-/g, "_")}
                 />
@@ -210,7 +210,7 @@ export default function EmptyStatesTemplate() {
                     </div>
                   </div>
                 </div>
-              </StyledCard>
+              </TerminalCard>
             );
           })}
         </div>

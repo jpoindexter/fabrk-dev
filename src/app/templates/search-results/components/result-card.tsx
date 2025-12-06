@@ -53,6 +53,6 @@ export function ResultCard({ result }: ResultCardProps) {
           </div>
         </div>
       </div>
-    </StyledCard>
+    </div>
   );
 }

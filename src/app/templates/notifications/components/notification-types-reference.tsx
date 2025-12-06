@@ -34,7 +34,7 @@ export function NotificationTypesReference() {
                 [{item.type.toUpperCase()}]
               </div>
             </div>
-          </StyledCard>
+          </div>
         );
       })}
     </div>
