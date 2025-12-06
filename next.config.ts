@@ -148,6 +148,48 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+
+  async redirects() {
+    return [
+      // Docs category index redirects
+      {
+        source: "/docs/tutorials",
+        destination: "/docs/tutorials/quick-start",
+        permanent: true,
+      },
+      {
+        source: "/docs/features",
+        destination: "/docs/features/payments",
+        permanent: true,
+      },
+      {
+        source: "/docs/deployment",
+        destination: "/docs/deployment/environment",
+        permanent: true,
+      },
+      {
+        source: "/docs/security",
+        destination: "/docs/security/rate-limiting",
+        permanent: true,
+      },
+      {
+        source: "/docs/extras",
+        destination: "/docs/extras/theming",
+        permanent: true,
+      },
+      {
+        source: "/docs/launch",
+        destination: "/docs/launch/checklist",
+        permanent: true,
+      },
+      // Dashboard redirects
+      {
+        source: "/developer",
+        destination: "/developer/api-keys",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
