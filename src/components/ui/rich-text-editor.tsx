@@ -361,10 +361,10 @@ const RichTextEditor = React.forwardRef<HTMLDivElement, RichTextEditorProps>(
             </div>
             <DialogFooter>
               <Button variant="outline" onClick={() => setIsLinkDialogOpen(false)}>
-                Cancel
+                &gt; CANCEL
               </Button>
               <Button onClick={handleInsertLink} disabled={!linkUrl}>
-                Insert Link
+                &gt; INSERT_LINK
               </Button>
             </DialogFooter>
           </DialogContent>

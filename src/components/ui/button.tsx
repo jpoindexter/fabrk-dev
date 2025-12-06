@@ -96,7 +96,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       size,
       asChild = false,
       loading = false,
-      loadingText = "Loading...",
+      loadingText = "> LOADING...",
       children,
       disabled,
       ...props

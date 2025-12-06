@@ -84,11 +84,11 @@ export function ImpersonationBanner() {
           className="border-warning text-warning hover:bg-warning hover:text-warning-foreground"
         >
           {loading ? (
-            "Exiting..."
+            "> EXITING..."
           ) : (
             <>
               <X className="mr-1 h-4 w-4" />
-              EXIT_IMPERSONATION
+              &gt; EXIT_IMPERSONATION
             </>
           )}
         </Button>

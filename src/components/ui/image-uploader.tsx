@@ -303,11 +303,11 @@ export function ImageUploader({
           onClick={handleUpload}
           disabled={disabled || uploading}
           loading={uploading}
-          loadingText="Uploading..."
+          loadingText="> UPLOADING..."
           className="w-full"
         >
           <Upload className="mr-2 h-4 w-4" />
-          Upload {files.length} {files.length === 1 ? "file" : "files"}
+          &gt; UPLOAD_FILES
         </Button>
       )}
     </div>

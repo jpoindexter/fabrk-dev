@@ -64,7 +64,7 @@ export function SecuritySessionsCard({
             className="w-full"
           >
             <LogOut className="mr-2 h-4 w-4" />
-            {isInvalidatingSessions ? "INVALIDATING..." : "> SIGN_OUT_ALL_SESSIONS"}
+            {isInvalidatingSessions ? "> INVALIDATING..." : "> SIGN_OUT_ALL_SESSIONS"}
           </Button>
           <p className="text-muted-foreground text-center font-mono text-xs">
             This will log you out from all devices except this one. You&apos;ll need to sign in

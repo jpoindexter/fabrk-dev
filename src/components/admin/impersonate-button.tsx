@@ -124,7 +124,7 @@ export function ImpersonateButton({
             disabled={loading}
             className={cn("text-xs", mode.font)}
           >
-            {loading ? "STARTING..." : "> START_IMPERSONATION"}
+            {loading ? "> STARTING..." : "> START_IMPERSONATION"}
           </Button>
         </DialogFooter>
       </DialogContent>

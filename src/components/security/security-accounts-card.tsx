@@ -66,7 +66,9 @@ export function SecurityAccountsCard({
                   disabled={disconnectingProvider === account.provider}
                 >
                   <Trash2 className="mr-2 h-4 w-4" />
-                  {disconnectingProvider === account.provider ? "DISCONNECTING..." : "> DISCONNECT"}
+                  {disconnectingProvider === account.provider
+                    ? "> DISCONNECTING..."
+                    : "> DISCONNECT"}
                 </Button>
               </div>
             ))}

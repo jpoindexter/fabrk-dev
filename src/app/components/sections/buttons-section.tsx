@@ -12,9 +12,11 @@ export function ButtonsSection() {
   return (
     <section id="buttons" className="space-y-6">
       <div>
-        <span className="text-xs text-muted-foreground">[0x10]</span>
+        <span className="text-muted-foreground text-xs">[0x10]</span>
         <h2 className="text-2xl font-semibold tracking-tight">BUTTONS</h2>
-        <p className="text-xs text-muted-foreground">&gt; Interactive elements with smooth press effects</p>
+        <p className="text-muted-foreground text-xs">
+          &gt; Interactive elements with smooth press effects
+        </p>
       </div>
 
       <Card>
@@ -76,9 +78,13 @@ export function ButtonsSection() {
           <CardDescription>Loading and disabled states</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-wrap gap-4">
-          <Button loading loadingText="SAVING...">&gt; LOADING</Button>
+          <Button loading loadingText="> SAVING...">
+            &gt; LOADING
+          </Button>
           <Button disabled>&gt; DISABLED</Button>
-          <Button variant="outline" disabled>&gt; DISABLED_OUTLINE</Button>
+          <Button variant="outline" disabled>
+            &gt; DISABLED_OUTLINE
+          </Button>
         </CardContent>
       </Card>
     </section>

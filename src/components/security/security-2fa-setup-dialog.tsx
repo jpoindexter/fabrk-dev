@@ -131,7 +131,7 @@ export function Security2FASetupDialog({
             </div>
             <DialogFooter>
               <Button onClick={() => setSetupStep("verify")} className="w-full">
-                Continue
+                &gt; CONTINUE
               </Button>
             </DialogFooter>
           </div>
@@ -161,7 +161,7 @@ export function Security2FASetupDialog({
             </div>
             <DialogFooter className="flex-col gap-2 sm:flex-row">
               <Button variant="outline" onClick={() => setSetupStep("qr")} disabled={isVerifying}>
-                Back
+                &gt; BACK
               </Button>
               <Button
                 onClick={handleVerify}
@@ -169,7 +169,7 @@ export function Security2FASetupDialog({
                 className="flex-1"
               >
                 {isVerifying && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                {isVerifying ? "Verifying..." : "Verify & Enable"}
+                {isVerifying ? "> VERIFYING..." : "> VERIFY_AND_ENABLE"}
               </Button>
             </DialogFooter>
           </div>
@@ -193,7 +193,7 @@ export function Security2FASetupDialog({
             <DialogFooter>
               <Button onClick={handleClose} className="w-full">
                 <CheckCircle2 className="mr-2 h-4 w-4" />
-                Done
+                &gt; DONE
               </Button>
             </DialogFooter>
           </div>

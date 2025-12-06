@@ -242,7 +242,7 @@ export function ApiKeyGenerator({
               {onGenerate && (
                 <Button onClick={onGenerate} disabled={isGenerating}>
                   <Key className="mr-2 h-4 w-4" />
-                  {isGenerating ? "Generating..." : "Generate API Key"}
+                  {isGenerating ? "> GENERATING..." : "> GENERATE_API_KEY"}
                 </Button>
               )}
             </div>

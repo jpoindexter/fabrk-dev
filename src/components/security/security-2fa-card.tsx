@@ -68,14 +68,14 @@ export function Security2FACard({
                 &gt; VIEW_BACKUP_CODES
               </Button>
               <Button variant="destructive" onClick={onDisable2FA} disabled={isDisabling2FA}>
-                {isDisabling2FA ? "DISABLING..." : "> DISABLE_2FA"}
+                {isDisabling2FA ? "> DISABLING..." : "> DISABLE_2FA"}
               </Button>
             </div>
           </div>
         ) : (
           <Button onClick={onEnable2FA} disabled={isEnabling2FA}>
             <Shield className="mr-2 h-4 w-4" />
-            {isEnabling2FA ? "SETTING_UP..." : "> ENABLE_2FA"}
+            {isEnabling2FA ? "> SETTING_UP..." : "> ENABLE_2FA"}
           </Button>
         )}
       </CardContent>
