@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 
 // Global navigation links
 const navLinks = [
-  { label: "FEATURES", href: "/#features" },
+  { label: "FEATURES", href: "/features" },
   { label: "PRICING", href: "/#pricing" },
   { label: "DOCS", href: "/docs" },
   { label: "FAQ", href: "/#faq" },
@@ -86,7 +86,9 @@ export function SiteNavigation() {
                   ? false
                   : link.href === "/docs"
                     ? pathname.startsWith("/docs")
-                    : pathname === link.href;
+                    : link.href === "/features"
+                      ? pathname.startsWith("/features")
+                      : pathname === link.href;
 
                 return (
                   <Link
@@ -155,7 +157,9 @@ export function SiteNavigation() {
                     ? false
                     : link.href === "/docs"
                       ? pathname.startsWith("/docs")
-                      : pathname === link.href;
+                      : link.href === "/features"
+                        ? pathname.startsWith("/features")
+                        : pathname === link.href;
 
                   return (
                     <SheetClose key={link.href} asChild>

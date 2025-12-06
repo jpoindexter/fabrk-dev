@@ -14,6 +14,8 @@ import {
   TerminalCardHeader,
   TerminalCardContent,
 } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { mode } from "@/design-system";
 
 export function QualitySection() {
   return (
@@ -29,8 +31,8 @@ export function QualitySection() {
           <div className="mb-4">
             <TerminalBadge code="0x20" label="PRODUCTION_QUALITY" />
           </div>
-          <h2 className="mb-4 text-2xl font-semibold tracking-tight">PRODUCTION_QUALITY</h2>
-          <p className="text-muted-foreground text-sm">
+          <h2 className={cn("mb-4 text-2xl font-semibold tracking-tight", mode.font)}>PRODUCTION_QUALITY</h2>
+          <p className={cn("text-muted-foreground text-xs", mode.font)}>
             Not just boilerplate. Enterprise-grade code with comprehensive testing.
           </p>
         </motion.div>
@@ -40,7 +42,7 @@ export function QualitySection() {
             {
               icon: TestTube,
               id: "0x21",
-              title: "130+_TESTS",
+              title: "40+_TESTS",
               desc: "Vitest unit tests and Playwright E2E tests. Every critical flow tested.",
             },
             {
@@ -75,8 +77,8 @@ export function QualitySection() {
                     }
                   />
                   <TerminalCardContent padding="md" className="flex-1">
-                    <div className="text-foreground mb-3 text-xs font-semibold">{item.title}</div>
-                    <div className="text-xs">
+                    <div className={cn("text-foreground mb-3 text-xs font-semibold", mode.font)}>{item.title}</div>
+                    <div className={cn("text-xs", mode.font)}>
                       <span className="text-muted-foreground">DESC: </span>
                       <span className="text-foreground">{item.desc}</span>
                     </div>

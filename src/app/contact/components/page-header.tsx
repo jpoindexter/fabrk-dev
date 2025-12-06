@@ -14,10 +14,10 @@ export function PageHeader() {
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="mb-12 text-center"
+      className="mb-12 pt-12 text-center"
     >
-      <TerminalBadge code="0x00" label="CONTACT" meta="COMMUNICATION_INTERFACE" className="mb-4" />
-      <h1 className={cn("mb-2 text-4xl font-semibold tracking-tight", mode.font)}>CONTACT_US</h1>
+      <TerminalBadge code="0x00" label="CONTACT" meta="COMMUNICATION_INTERFACE" className="mb-6" />
+      <h1 className={cn("mb-4 text-4xl font-semibold tracking-tight", mode.font)}>CONTACT_US</h1>
       <p className={cn("text-muted-foreground text-xs", mode.font)}>
         Send us a message and we'll respond within 24 hours
       </p>

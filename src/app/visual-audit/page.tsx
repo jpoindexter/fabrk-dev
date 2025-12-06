@@ -15,7 +15,6 @@ const pages = {
     { path: "/contact", label: "Contact" },
     { path: "/demo", label: "Demo" },
     { path: "/blog", label: "Blog" },
-    { path: "/landing-alt", label: "Landing Alt" },
     { path: "/success", label: "Success" },
     { path: "/maintenance", label: "Maintenance" },
   ],

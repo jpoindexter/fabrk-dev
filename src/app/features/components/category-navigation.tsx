@@ -8,6 +8,8 @@
 
 import Link from "next/link";
 import { FEATURE_CATEGORIES } from "./feature-data";
+import { cn } from "@/lib/utils";
+import { mode } from "@/design-system";
 
 export function CategoryNavigation() {
   return (
@@ -20,10 +22,10 @@ export function CategoryNavigation() {
               <Link
                 key={category.id}
                 href={`#${category.id}`}
-                className="flex items-center gap-2 whitespace-nowrap border border-border bg-card px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                className={cn("flex items-center gap-2 whitespace-nowrap border border-border bg-card px-4 py-2 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground", mode.radius, mode.font)}
               >
                 <Icon className="size-4" />
-                {category.title.split(' ')[0]}
+                {category.title.split(' ')[0].toUpperCase()}
               </Link>
             );
           })}

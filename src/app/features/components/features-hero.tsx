@@ -16,6 +16,8 @@ import {
   TerminalCardContent,
 } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { mode } from "@/design-system";
 
 export function FeaturesHero() {
   return (
@@ -36,8 +38,8 @@ export function FeaturesHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h1 className="text-muted-foreground mb-2 text-sm">FABRK_FEATURES:</h1>
-            <h2 className="mb-6 text-4xl font-semibold tracking-tight">
+            <h1 className={cn("text-muted-foreground mb-2 text-sm", mode.font)}>FABRK_FEATURES:</h1>
+            <h2 className={cn("mb-6 text-4xl font-semibold tracking-tight", mode.font)}>
               EVERY_FEATURE_YOU_NEED
               <br className="hidden sm:block" /> <span className="text-primary">ALREADY_BUILT</span>
             </h2>

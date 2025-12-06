@@ -9,6 +9,8 @@
 import { motion } from "framer-motion";
 import { COMPONENT_STATS } from "./feature-data";
 import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { mode } from "@/design-system";
 
 export function StatsSection() {
   return (
@@ -36,8 +38,8 @@ export function StatsSection() {
                     }
                   />
                   <TerminalCardContent padding="md" className="flex-1">
-                    <div className="text-foreground mb-2 text-2xl font-semibold">{stat.value}</div>
-                    <div className="text-xs">
+                    <div className={cn("text-foreground mb-2 text-2xl font-semibold", mode.font)}>{stat.value}</div>
+                    <div className={cn("text-xs", mode.font)}>
                       <span className="text-muted-foreground">DESC: </span>
                       <span className="text-foreground">{stat.description}</span>
                     </div>

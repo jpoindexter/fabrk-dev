@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/select";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
-import { MessageCircle, Send, CheckCircle2 } from "lucide-react";
+import { Send, CheckCircle2 } from "lucide-react";
 
 // Extend Window interface for dataLayer
 declare global {
@@ -92,15 +92,10 @@ export function ContactForm() {
         <TerminalCardHeader
           code="0x01"
           title="MESSAGE_COMPOSER"
-          meta="message_composer.exe │ PID:4096"
         />
         <TerminalCardContent padding="lg">
-          <div className="mb-6 flex items-center gap-2">
-            <MessageCircle className="text-primary h-5 w-5" />
-            <span className="text-sm font-semibold">[MESSAGE_FORM]</span>
-          </div>
           <p className="text-muted-foreground mb-6 text-xs">
-            │ &gt; Fill out the form below and we'll get back to you as soon as possible.
+            &gt; Fill out the form below and we'll get back to you as soon as possible.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -182,7 +177,7 @@ export function ContactForm() {
             {/* Success Message */}
             {status === "success" && (
               <Alert className="bg-success/10 border-success/20 rounded-none" aria-live="polite">
-                <CheckCircle2 className="text-success h-4 w-4" />
+                <CheckCircle2 className="text-success size-4" />
                 <AlertDescription className="text-success text-xs">
                   [OK] MESSAGE_SENT - We've received your message and will respond within 24 hours.
                 </AlertDescription>
@@ -207,7 +202,7 @@ export function ContactForm() {
                 "> SENDING..."
               ) : (
                 <>
-                  <Send className="mr-2 h-4 w-4" />
+                  <Send className="mr-2 size-4" />
                   &gt; SEND_MESSAGE
                 </>
               )}

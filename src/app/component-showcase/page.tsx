@@ -6,6 +6,7 @@
  */
 
 import * as React from "react";
+import Link from "next/link";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
@@ -277,6 +278,9 @@ export default function ComponentShowcasePage() {
   ];
 
   const sections = [
+    { id: "foundations", title: "FOUNDATIONS", href: "/component-showcase/foundations" },
+    { id: "templates", title: "TEMPLATES", href: "/component-showcase/templates" },
+    { id: "cards", title: "CARDS", href: "/component-showcase/cards" },
     { id: "buttons", title: "BUTTONS_&_ACTIONS" },
     { id: "inputs", title: "INPUTS_&_FORMS" },
     { id: "display", title: "DATA_DISPLAY" },
@@ -300,19 +304,33 @@ export default function ComponentShowcasePage() {
           {/* Table of Contents */}
           <ScrollArea className="border-border border-t">
             <div className="flex gap-2 px-6 py-2">
-              {sections.map((section) => (
-                <a
-                  key={section.id}
-                  href={`#${section.id}`}
-                  className={cn(
-                    "border-border bg-card hover:bg-muted border px-4 py-1 text-xs whitespace-nowrap",
-                    mode.font,
-                    mode.radius
-                  )}
-                >
-                  {section.title}
-                </a>
-              ))}
+              {sections.map((section) =>
+                section.href ? (
+                  <Link
+                    key={section.id}
+                    href={section.href}
+                    className={cn(
+                      "border-primary bg-primary/10 text-primary border px-4 py-1 text-xs whitespace-nowrap",
+                      mode.font,
+                      mode.radius
+                    )}
+                  >
+                    {section.title}
+                  </Link>
+                ) : (
+                  <a
+                    key={section.id}
+                    href={`#${section.id}`}
+                    className={cn(
+                      "border-border bg-card hover:bg-muted border px-4 py-1 text-xs whitespace-nowrap",
+                      mode.font,
+                      mode.radius
+                    )}
+                  >
+                    {section.title}
+                  </a>
+                )
+              )}
             </div>
           </ScrollArea>
         </header>

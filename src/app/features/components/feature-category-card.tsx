@@ -14,6 +14,8 @@ import {
   TerminalCardHeader,
   TerminalCardContent,
 } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { mode } from "@/design-system";
 
 interface FeatureCategoryCardProps {
   category: (typeof FEATURE_CATEGORIES)[0];
@@ -48,14 +50,14 @@ export function FeatureCategoryCard({ category, index }: FeatureCategoryCardProp
           </div>
 
           <div>
-            <span className="text-muted-foreground text-xs">[0x{hexIndex}]</span>
-            <h2 className="text-2xl font-semibold tracking-tight">
+            <span className={cn("text-muted-foreground text-xs", mode.font)}>[0x{hexIndex}]</span>
+            <h2 className={cn("text-2xl font-semibold tracking-tight", mode.font)}>
               {category.title.toUpperCase().replace(/ /g, "_").replace(/&/g, "AND")}
             </h2>
-            <span className="text-primary text-sm font-medium">&gt; {category.tagline}</span>
+            <span className={cn("text-primary text-xs font-medium", mode.font)}>&gt; {category.tagline}</span>
           </div>
 
-          <p className="text-muted-foreground text-sm">{category.description}</p>
+          <p className={cn("text-muted-foreground text-xs", mode.font)}>{category.description}</p>
         </div>
 
         {/* Features List Side */}
