@@ -7,9 +7,9 @@
 
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { StyledCard, StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Edit, MapPin } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface UserStats {
@@ -38,10 +38,9 @@ interface ProfileHeaderProps {
 
 export function ProfileHeader({ user }: ProfileHeaderProps) {
   return (
-    <StyledCard>
-      <StyledCardHeader code="0x00" title="USER_PROFILE" />
-
-      <div className="p-6">
+    <TerminalCard tone="neutral">
+      <TerminalCardHeader code="0x02" title="USER_PROFILE" />
+      <TerminalCardContent padding="lg">
         <div className="flex flex-col gap-6 md:flex-row">
           {/* Avatar Section */}
           <div className="flex-shrink-0">
@@ -90,12 +89,12 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
               key={key}
               className={`border-border border px-4 py-2 text-center ${index > 0 ? "border-l-0" : ""}`}
             >
-              <div className={cn(mode.font, "text-xl font-bold")}>{value}</div>
+              <div className="text-xl font-semibold">{value}</div>
               <div className={cn(mode.font, "text-muted-foreground text-xs uppercase")}>{key}</div>
             </div>
           ))}
         </div>
-      </div>
-    </StyledCard>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

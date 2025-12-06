@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Shield, CreditCard, Bell, Download, Palette, Settings } from "lucide-react";
 import { CodeWindow } from "./code-window";
 import { SectionHeader } from "./section-header";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function GeneralTab() {

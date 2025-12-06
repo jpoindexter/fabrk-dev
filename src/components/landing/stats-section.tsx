@@ -3,7 +3,13 @@
 import { useEffect, useRef } from "react";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
+import {
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+  TerminalBadge,
+} from "@/components/ui/card";
 
 // Animated counter component
 function AnimatedCounter({
@@ -91,17 +97,8 @@ export function StatsSection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div
-              className={cn(
-                "border-border bg-card mb-4 inline-block border px-4 py-1",
-                mode.radius
-              )}
-            >
-              <span className={cn("text-muted-foreground text-xs", mode.font)}>
-                [ [0x30] METRICS ]
-              </span>
-            </div>
-            <h2 className={cn("mb-4 text-2xl font-bold", mode.font)}>
+            <TerminalBadge code="0x30" label="METRICS" className="mb-4" />
+            <h2 className={cn("mb-4 text-2xl font-semibold", mode.font)}>
               TRUSTED_BY_DEVELOPERS_WORLDWIDE
             </h2>
           </motion.div>
@@ -131,28 +128,38 @@ export function StatsSection() {
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-              viewport={{ once: true }}
-              className={cn(
-                "group border-border bg-card hover:border-primary/50 border p-8 transition-all",
-                mode.radius
-              )}
+              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.08,
+                ease: [0.21, 0.47, 0.32, 0.98],
+              }}
+              whileHover={{
+                y: -4,
+                transition: { duration: 0.2 },
+              }}
+              className="group hover:border-primary/50 transition-colors"
             >
-              <div className={cn("text-foreground mb-2 text-4xl font-semibold", mode.font)}>
-                <AnimatedCounter
-                  value={stat.value}
-                  suffix={stat.suffix}
-                  decimals={stat.decimals || 0}
+              <TerminalCard>
+                <TerminalCardHeader
+                  title={`[ [0x${(index + 31).toString(16).toUpperCase()}] ${stat.label.toUpperCase().replace(/ /g, "_")} ]`}
                 />
-              </div>
-              <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>
-                {stat.label.toUpperCase().replace(/ /g, "_")}
-              </h3>
-              <span className={cn("text-muted-foreground block text-xs", mode.font)}>
-                {stat.description}
-              </span>
+                <TerminalCardContent>
+                  <div className={cn("text-foreground mb-2 text-3xl font-semibold", mode.font)}>
+                    <AnimatedCounter
+                      value={stat.value}
+                      suffix={stat.suffix}
+                      decimals={stat.decimals || 0}
+                    />
+                  </div>
+                  <div className={cn("text-xs", mode.font)}>
+                    <span className="text-muted-foreground">DESC: </span>
+                    <span className="text-foreground">{stat.description}</span>
+                  </div>
+                </TerminalCardContent>
+              </TerminalCard>
             </motion.div>
           ))}
         </div>

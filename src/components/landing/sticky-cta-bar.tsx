@@ -5,8 +5,9 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import config from "@/config";
+import { TerminalCard } from "@/components/ui/card";
 
 interface StickyCTABarProps {
   /**
@@ -82,13 +83,7 @@ export function StickyCTABar({
         isVisible ? "translate-y-0" : "translate-y-full"
       )}
     >
-      <div
-        className={cn(
-          mode.radius,
-          mode.font,
-          "border-border bg-card/95 border-t-2 backdrop-blur-sm"
-        )}
-      >
+      <TerminalCard className="bg-card/95 border-t-2 backdrop-blur-sm">
         <div className="mx-auto max-w-7xl px-4 py-4">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             {/* Message */}
@@ -131,7 +126,7 @@ export function StickyCTABar({
             </div>
           </div>
         </div>
-      </div>
+      </TerminalCard>
     </div>
   );
 }

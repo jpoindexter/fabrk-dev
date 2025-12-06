@@ -3,9 +3,9 @@
  * Displays invoices table with download links
  */
 
-import { Download } from "lucide-react";
+import { Download, Receipt } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -16,8 +16,6 @@ import {
 } from "@/components/ui/table";
 import type { Invoice } from "./types";
 import { getInvoiceStatusBadge } from "./utils";
-import { mode } from "@/lib/design-system";
-import { cn } from "@/lib/utils";
 
 interface BillingHistoryCardProps {
   invoices: Invoice[];
@@ -29,12 +27,14 @@ export function BillingHistoryCard({ invoices }: BillingHistoryCardProps) {
   }
 
   return (
-    <Card className={cn("border-border border", mode.radius)}>
-      <CardHeader>
-        <CardTitle>Billing History</CardTitle>
-        <CardDescription>View and download past invoices</CardDescription>
-      </CardHeader>
-      <CardContent>
+    <TerminalCard>
+      <TerminalCardHeader
+        code="0x02"
+        title="BILLING_HISTORY"
+        icon={<Receipt className="h-4 w-4" />}
+        meta={`${invoices.length} INVOICES`}
+      />
+      <TerminalCardContent padding="lg">
         <Table>
           <TableHeader>
             <TableRow>
@@ -63,7 +63,7 @@ export function BillingHistoryCard({ invoices }: BillingHistoryCardProps) {
             ))}
           </TableBody>
         </Table>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

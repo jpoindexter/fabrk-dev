@@ -17,27 +17,28 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { formatLabel } from "@/lib/design-system";
+import { formatLabel } from "@/design-system";
 
 export function FormsSection() {
   return (
     <section id="forms" className="space-y-6">
       <div>
         <span className="text-muted-foreground text-xs">[0x20]</span>
-        <h2 className="text-2xl font-bold tracking-tight">FORM_COMPONENTS</h2>
+        <h2 className="text-2xl font-semibold tracking-tight">FORM_COMPONENTS</h2>
         <p className="text-muted-foreground text-xs">
           &gt; Input elements with clean borders and focus states
         </p>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Input Fields</CardTitle>
-          <CardDescription>Text inputs with different types</CardDescription>
-        </CardHeader>
-        <CardContent className="max-w-md space-y-4">
+      <TerminalCard>
+        <TerminalCardHeader
+          code="0x20"
+          title="Input_Fields"
+          meta="Text inputs with different types"
+        />
+        <TerminalCardContent padding="md" className="max-w-md space-y-4">
           <div className="space-y-2">
             <Label htmlFor="text">{formatLabel("Text Input")}</Label>
             <Input id="text" placeholder="Enter text..." />
@@ -54,26 +55,20 @@ export function FormsSection() {
             <Label htmlFor="disabled">{formatLabel("Disabled")}</Label>
             <Input id="disabled" placeholder="Disabled input" disabled />
           </div>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Textarea</CardTitle>
-          <CardDescription>Multi-line text input</CardDescription>
-        </CardHeader>
-        <CardContent className="max-w-md space-y-2">
+      <TerminalCard>
+        <TerminalCardHeader code="0x21" title="Textarea" meta="Multi-line text input" />
+        <TerminalCardContent padding="md" className="max-w-md space-y-2">
           <Label htmlFor="message-textarea">{formatLabel("Message")}</Label>
           <Textarea id="message-textarea" placeholder="Type your message here..." rows={4} />
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Select</CardTitle>
-          <CardDescription>Dropdown selection</CardDescription>
-        </CardHeader>
-        <CardContent className="max-w-md space-y-2">
+      <TerminalCard>
+        <TerminalCardHeader code="0x22" title="Select" meta="Dropdown selection" />
+        <TerminalCardContent padding="md" className="max-w-md space-y-2">
           <Label htmlFor="select-option">{formatLabel("Select Option")}</Label>
           <Select>
             <SelectTrigger id="select-option" aria-label="Select an option">
@@ -85,15 +80,12 @@ export function FormsSection() {
               <SelectItem value="option3">Option 3</SelectItem>
             </SelectContent>
           </Select>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Checkbox & Radio</CardTitle>
-          <CardDescription>Selection controls</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
+      <TerminalCard>
+        <TerminalCardHeader code="0x23" title="Checkbox_And_Radio" meta="Selection controls" />
+        <TerminalCardContent padding="md" className="space-y-4">
           <div className="flex items-center space-x-2">
             <Checkbox id="terms" aria-label="Accept terms and conditions" />
             <Label htmlFor="terms">{formatLabel("Accept terms")}</Label>
@@ -115,15 +107,12 @@ export function FormsSection() {
               <Label htmlFor="option3">{formatLabel("Option 3")}</Label>
             </div>
           </RadioGroup>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Switch</CardTitle>
-          <CardDescription>Toggle control</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
+      <TerminalCard>
+        <TerminalCardHeader code="0x24" title="Switch" meta="Toggle control" />
+        <TerminalCardContent padding="md" className="space-y-4">
           <div className="flex items-center space-x-2">
             <Switch id="switch1" aria-label="Enable notifications" />
             <Label htmlFor="switch1">{formatLabel("Enable notifications")}</Label>
@@ -132,8 +121,8 @@ export function FormsSection() {
             <Switch id="switch2" defaultChecked aria-label="Auto-save enabled" />
             <Label htmlFor="switch2">{formatLabel("Auto-save enabled")}</Label>
           </div>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
     </section>
   );
 }

@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsCallout } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
 import Link from "next/link";
 import { UserCog, Shield, Eye, FileText, AlertTriangle, Lock } from "lucide-react";
 
@@ -322,7 +321,7 @@ export function ImpersonateButton({ userId, userName }: ImpersonateButtonProps) 
           like IP restrictions or approval workflows for sensitive environments.
         </DocsCallout>
         <DocsCard title="SECURITY_BEST_PRACTICES">
-          <ul className="text-muted-foreground space-y-1 font-mono text-sm">
+          <ul className="space-y-1">
             <li>
               ├─ <strong>Admin only:</strong> Restrict to ADMIN role exclusively
             </li>
@@ -357,8 +356,8 @@ export function ImpersonateButton({ userId, userName }: ImpersonateButtonProps) 
         <DocsCard title="WHEN_TO_USE">
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="space-y-2">
-              <h3 className={`uppercase ${docsTypography.h4}`}>Good Use Cases</h3>
-              <ul className={`${docsTypography.body} space-y-1`}>
+              Good Use Cases
+              <ul className="space-y-1">
                 <li>• Debugging user-reported bugs</li>
                 <li>• Verifying permission settings</li>
                 <li>• Customer support troubleshooting</li>
@@ -366,8 +365,8 @@ export function ImpersonateButton({ userId, userName }: ImpersonateButtonProps) 
               </ul>
             </div>
             <div className="space-y-2">
-              <h3 className={`uppercase ${docsTypography.h4}`}>Never Do</h3>
-              <ul className={`${docsTypography.body} space-y-1`}>
+              Never Do
+              <ul className="space-y-1">
                 <li>• Read private messages without consent</li>
                 <li>• Modify user data without permission</li>
                 <li>• Access sensitive financial info</li>
@@ -381,20 +380,18 @@ export function ImpersonateButton({ userId, userName }: ImpersonateButtonProps) 
       {/* Audit Trail */}
       <DocsSection title="Audit Trail">
         <DocsCard title="LOGGED_EVENTS">
-          <p className={`${docsTypography.body} mb-4`}>
-            All impersonation activity is logged to the audit trail:
-          </p>
-          <div className="space-y-2 text-sm">
+          <p className="mb-4">All impersonation activity is logged to the audit trail:</p>
+          <div className="space-y-2">
             <div className="border-border flex justify-between border-b pb-2">
-              <code className={docsTypography.code}>admin.user_impersonated</code>
+              <code className="bg-muted px-1">admin.user_impersonated</code>
               <span className="text-muted-foreground">Impersonation started</span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
-              <code className={docsTypography.code}>admin.impersonation_ended</code>
+              <code className="bg-muted px-1">admin.impersonation_ended</code>
               <span className="text-muted-foreground">Admin returned to their session</span>
             </div>
             <div className="flex justify-between">
-              <code className={docsTypography.code}>user.action_during_impersonation</code>
+              <code className="bg-muted px-1">user.action_during_impersonation</code>
               <span className="text-muted-foreground">Actions taken while impersonating</span>
             </div>
           </div>
@@ -404,10 +401,8 @@ export function ImpersonateButton({ userId, userName }: ImpersonateButtonProps) 
       {/* Integration */}
       <DocsSection title="Integration">
         <DocsCard title="ADD_TO_DASHBOARD">
-          <p className={`${docsTypography.body} mb-4`}>
-            Add the impersonation banner to your dashboard layout:
-          </p>
-          <pre className="bg-muted overflow-x-auto p-4 text-sm">
+          <p className="mb-4">Add the impersonation banner to your dashboard layout:</p>
+          <pre className="bg-muted overflow-x-auto p-4">
             <code>{`// src/app/(dashboard)/layout.tsx
 import { ImpersonationBanner } from "@/components/admin/impersonation-banner";
 
@@ -431,8 +426,8 @@ export default function DashboardLayout({ children }) {
               title="AUDIT_LOGGING"
               className="hover:border-primary/50 h-full transition-all"
             >
-              <h3 className={`uppercase ${docsTypography.h4}`}>Audit Logging</h3>
-              <p className={docsTypography.body}>
+              Audit Logging
+              <p className="mb-6">
                 Learn how to review impersonation logs and track admin activity.
               </p>
             </DocsCard>
@@ -442,10 +437,8 @@ export default function DashboardLayout({ children }) {
               title="ORGANIZATIONS"
               className="hover:border-primary/50 h-full transition-all"
             >
-              <h3 className={`uppercase ${docsTypography.h4}`}>Organizations</h3>
-              <p className={docsTypography.body}>
-                Manage teams and organization-level permissions.
-              </p>
+              Organizations
+              <p className="mb-6">Manage teams and organization-level permissions.</p>
             </DocsCard>
           </Link>
         </div>

@@ -20,7 +20,7 @@ import {
 import { UserPlus, Download } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { StyledCard, StyledCardHeader, TemplatePageHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TemplatePageHeader } from "@/components/ui/card";
 import { columns } from "./components/user-table-columns";
 import { mockUsers } from "./components/types";
 import { StatsCards } from "./components/stats-cards";
@@ -28,7 +28,7 @@ import { TableToolbar } from "./components/table-toolbar";
 import { DataTable } from "./components/data-table";
 import { PaginationControls } from "./components/pagination-controls";
 import { FeaturesNote } from "./components/features-note";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export default function UserManagementTemplate() {
@@ -100,8 +100,8 @@ export default function UserManagementTemplate() {
         <StatsCards users={mockUsers} />
 
         {/* Main Table Card - Terminal Style */}
-        <StyledCard>
-          <StyledCardHeader code="0x00" title="USERS_DATABASE" />
+        <TerminalCard>
+          <TerminalCardHeader code="0x00" title="USERS_DATABASE" />
 
           <div className="p-4">
             <div className="mb-4 flex items-center justify-between">
@@ -129,7 +129,7 @@ export default function UserManagementTemplate() {
             {/* Pagination */}
             <PaginationControls table={table} />
           </div>
-        </StyledCard>
+        </TerminalCard>
 
         {/* Implementation Note */}
         <FeaturesNote />

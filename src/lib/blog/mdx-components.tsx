@@ -33,10 +33,10 @@ function Callout({
 
   return (
     <div className={`my-6 border ${styles[type]} p-4`}>
-      <div className="flex items-start gap-3">
-        <span className="font-mono text-sm font-bold">{icons[type]}</span>
+      <div className="flex items-start gap-4">
+        <span className="font-mono text-sm font-semibold">{icons[type]}</span>
         <div className="flex-1">
-          {title && <p className="mb-2 font-mono text-sm font-bold uppercase">{title}</p>}
+          {title && <p className="mb-2 font-mono text-sm font-semibold uppercase">{title}</p>}
           <div className="text-muted-foreground font-mono text-sm">{children}</div>
         </div>
       </div>
@@ -87,7 +87,7 @@ function Step({
       <div className="border-primary bg-background text-primary absolute -left-8 flex h-6 w-6 items-center justify-center border font-mono text-xs">
         {number}
       </div>
-      <h4 className="mb-2 font-mono text-sm font-bold uppercase">{title}</h4>
+      <h4 className="mb-2 font-mono text-sm font-semibold uppercase">{title}</h4>
       <div className="text-muted-foreground font-mono text-sm">{children}</div>
     </div>
   );
@@ -103,7 +103,7 @@ function ComparisonTable({ headers, rows }: { headers: string[]; rows: string[][
             {headers.map((header, i) => (
               <th
                 key={i}
-                className="text-muted-foreground px-4 py-2 text-left text-xs font-bold uppercase"
+                className="text-muted-foreground px-4 py-2 text-left text-xs font-semibold uppercase"
               >
                 {header}
               </th>
@@ -165,7 +165,7 @@ function CardGrid({ children }: { children: React.ReactNode }) {
 function Card({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="border-border bg-card border p-4">
-      <h4 className="mb-2 font-mono text-sm font-bold uppercase">{title}</h4>
+      <h4 className="mb-2 font-mono text-sm font-semibold uppercase">{title}</h4>
       <div className="text-muted-foreground font-mono text-xs">{children}</div>
     </div>
   );
@@ -202,20 +202,20 @@ function Terminal({ command, output }: { command: string; output?: string }) {
 export const mdxComponents: MDXComponents = {
   // Headings
   h1: ({ children }) => (
-    <h1 className="text-foreground mt-8 mb-6 font-mono text-2xl font-bold uppercase first:mt-0">
+    <h1 className="text-foreground mt-8 mb-6 font-mono text-4xl font-semibold uppercase first:mt-0">
       {children}
     </h1>
   ),
   h2: ({ children }) => (
-    <h2 className="border-border text-foreground mt-8 mb-4 border-b pb-2 font-mono text-xl font-bold uppercase">
+    <h2 className="border-border text-foreground mt-8 mb-4 border-b pb-2 font-mono text-2xl font-semibold uppercase">
       {children}
     </h2>
   ),
   h3: ({ children }) => (
-    <h3 className="text-foreground mt-6 mb-3 font-mono text-lg font-bold uppercase">{children}</h3>
+    <h3 className="text-foreground mt-6 mb-3 font-mono text-xl font-semibold uppercase">{children}</h3>
   ),
   h4: ({ children }) => (
-    <h4 className="text-foreground mt-4 mb-2 font-mono text-base font-bold uppercase">
+    <h4 className="text-foreground mt-4 mb-2 font-mono text-lg font-semibold uppercase">
       {children}
     </h4>
   ),
@@ -224,7 +224,7 @@ export const mdxComponents: MDXComponents = {
   p: ({ children }) => (
     <p className="text-foreground mb-4 font-mono text-sm leading-relaxed">{children}</p>
   ),
-  strong: ({ children }) => <strong className="text-foreground font-bold">{children}</strong>,
+  strong: ({ children }) => <strong className="text-foreground font-semibold">{children}</strong>,
   em: ({ children }) => <em className="italic">{children}</em>,
 
   // Lists
@@ -315,7 +315,7 @@ export const mdxComponents: MDXComponents = {
   tbody: ({ children }) => <tbody>{children}</tbody>,
   tr: ({ children }) => <tr className="border-border border-b last:border-0">{children}</tr>,
   th: ({ children }) => (
-    <th className="text-muted-foreground px-4 py-2 text-left text-xs font-bold uppercase">
+    <th className="text-muted-foreground px-4 py-2 text-left text-xs font-semibold uppercase">
       {children}
     </th>
   ),

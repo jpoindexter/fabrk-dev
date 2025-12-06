@@ -7,7 +7,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { StyledCard, StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -16,7 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Send } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function InviteSection() {
@@ -33,9 +33,9 @@ export function InviteSection() {
   };
 
   return (
-    <StyledCard>
-      <StyledCardHeader code="0x00" title="INVITE_MEMBER" />
-      <div className="p-4">
+    <TerminalCard size="auto">
+      <TerminalCardHeader code="0x00" title="INVITE_MEMBER" />
+      <TerminalCardContent>
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [INVITE_TEAM_MEMBER]:
         </div>
@@ -89,7 +89,7 @@ export function InviteSection() {
             &gt; SEND_INVITE
           </Button>
         </div>
-      </div>
-    </StyledCard>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

@@ -10,11 +10,11 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import {
-  StyledCard,
-  StyledCardHeader,
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
   TemplatePageHeader,
   FeaturesCard,
-  CodeOutput,
 } from "@/components/ui/card";
 import {
   FileQuestion,
@@ -25,7 +25,7 @@ import {
   ArrowLeft,
   AlertTriangle,
 } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 const errorPages = [
@@ -144,8 +144,8 @@ export default function ErrorPagesTemplate() {
             };
             return (
               <StyledTabsContent key={error.id} value={error.id}>
-                <StyledCard>
-                  <StyledCardHeader
+                <TerminalCard>
+                  <TerminalCardHeader
                     code={codeMap[error.id] || "0x00"}
                     title={`ERROR_${error.code}`}
                   />
@@ -171,7 +171,7 @@ export default function ErrorPagesTemplate() {
                       {/* Error Code */}
                       <div className={cn(mode.font)}>
                         <span
-                          className={`text-6xl font-bold ${
+                          className={`text-6xl font-semibold ${
                             error.id === "503" ? "text-warning" : "text-destructive"
                           }`}
                         >
@@ -190,24 +190,32 @@ export default function ErrorPagesTemplate() {
                       </div>
 
                       {/* Terminal Output */}
-                      <CodeOutput>
-                        {error.terminal.map((line, idx) => (
-                          <div
-                            key={idx}
-                            className={
-                              line.startsWith("ERROR")
-                                ? "text-destructive"
-                                : line.startsWith("$")
-                                  ? "text-success"
-                                  : line === ""
-                                    ? "h-2"
-                                    : ""
-                            }
-                          >
-                            {line}
+                      <TerminalCard>
+                        <TerminalCardHeader
+                          code={error.code.replace("ERROR_", "0x")}
+                          title="OUTPUT"
+                        />
+                        <TerminalCardContent>
+                          <div className="space-y-0.5 text-xs">
+                            {error.terminal.map((line, idx) => (
+                              <div
+                                key={idx}
+                                className={
+                                  line.startsWith("ERROR")
+                                    ? "text-destructive"
+                                    : line.startsWith("$")
+                                      ? "text-success"
+                                      : line === ""
+                                        ? "h-2"
+                                        : ""
+                                }
+                              >
+                                {line}
+                              </div>
+                            ))}
                           </div>
-                        ))}
-                      </CodeOutput>
+                        </TerminalCardContent>
+                      </TerminalCard>
 
                       {/* Actions */}
                       <div className="flex items-center justify-center gap-4">
@@ -255,7 +263,7 @@ export default function ErrorPagesTemplate() {
                       </div>
                     </div>
                   </div>
-                </StyledCard>
+                </TerminalCard>
               </StyledTabsContent>
             );
           })}
@@ -272,8 +280,8 @@ export default function ErrorPagesTemplate() {
               "503": "0x07",
             };
             return (
-              <StyledCard key={error.id}>
-                <StyledCardHeader
+              <TerminalCard key={error.id}>
+                <TerminalCardHeader
                   code={exampleCodeMap[error.id] || "0x04"}
                   title={`${error.code}_EXAMPLE`}
                 />
@@ -299,7 +307,7 @@ export default function ErrorPagesTemplate() {
                     {error.id === "503" && "Planned downtime, updates"}
                   </div>
                 </div>
-              </StyledCard>
+              </TerminalCard>
             );
           })}
         </div>

@@ -13,7 +13,7 @@
 
 "use client";
 
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 import * as React from "react";
 import DOMPurify from "isomorphic-dompurify";

@@ -6,7 +6,7 @@ import { CalendarIcon, ChevronLeft, ChevronRight, Clock } from "lucide-react";
 import { DateRange } from "react-day-picker";
 
 import { cn } from "@/lib/utils";
-import { mode as visualMode } from "@/lib/design-system";
+import { mode as visualMode } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Input } from "@/components/ui/input";

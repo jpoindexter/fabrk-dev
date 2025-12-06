@@ -8,12 +8,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Palette, Sparkles, Users, BarChart3, Home, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 const showcasePages = [
   {
     title: "What's Included",
@@ -49,18 +49,20 @@ export function ShowcaseNav() {
   const pathname = usePathname();
 
   return (
-    <Card className="from-primary/5 to-secondary/5 bg-gradient-to-r">
-      <CardContent className="pt-6 pb-6">
-        <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-lg font-bold">Showcase Pages</h3>
+    <TerminalCard tone="neutral">
+      <TerminalCardHeader
+        code="0x00"
+        title="SHOWCASE_PAGES"
+        meta={
           <Link href="/">
             <Button variant="outline" size="sm">
               <Home className="mr-2 h-4 w-4" />
-              Home
+              HOME
             </Button>
           </Link>
-        </div>
-
+        }
+      />
+      <TerminalCardContent padding="md">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
           {showcasePages.map((page) => {
             const Icon = page.icon;
@@ -104,7 +106,7 @@ export function ShowcaseNav() {
             );
           })}
         </div>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

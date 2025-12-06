@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import { Download, BarChart3 } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export interface PageData {

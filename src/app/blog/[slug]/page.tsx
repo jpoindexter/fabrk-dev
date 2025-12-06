@@ -15,6 +15,8 @@ import {
   formatReadTime,
   mdxComponents,
 } from "@/lib/blog";
+import { cn } from "@/lib/utils";
+import { mode } from "@/design-system";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -65,7 +67,7 @@ export default async function BlogPostPage({ params }: Props) {
 
         {/* Header */}
         <header className="border-border bg-card mb-8 border">
-          <div className="border-border border-b px-6 py-3">
+          <div className="border-border border-b px-6 py-2">
             <span className="text-muted-foreground font-mono text-xs">[ ARTICLE ]</span>
           </div>
           <div className="p-6">
@@ -80,7 +82,7 @@ export default async function BlogPostPage({ params }: Props) {
             )}
 
             {/* Title */}
-            <h1 className="text-foreground mb-4 font-mono text-2xl font-bold md:text-3xl">
+            <h1 className="text-foreground mb-4 font-mono text-2xl font-semibold md:text-4xl">
               {post.title}
             </h1>
 
@@ -93,7 +95,7 @@ export default async function BlogPostPage({ params }: Props) {
                     alt={`${post.author.name || "Author"} avatar`}
                     width={24}
                     height={24}
-                    className="h-6 w-6 rounded-full"
+                    className={cn("h-6 w-6", mode.radius)}
                   />
                 )}
                 <span>{post.author.name || "Anonymous"}</span>

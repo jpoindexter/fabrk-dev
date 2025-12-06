@@ -27,7 +27,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
-import { mode, formatLabel } from "@/lib/design-system";
+import { mode, formatLabel } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface InviteMemberDialogProps {

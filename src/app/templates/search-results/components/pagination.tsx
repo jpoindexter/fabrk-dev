@@ -5,8 +5,8 @@
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { StyledCard, StyledCardHeader } from "@/components/ui/card";
-import { mode } from "@/lib/design-system";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface PaginationProps {
@@ -19,9 +19,9 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
-    <StyledCard>
-      <StyledCardHeader code="0x03" title="PAGINATION" />
-      <div className="p-4">
+    <TerminalCard>
+      <TerminalCardHeader code="0x04" title="PAGINATION" />
+      <TerminalCardContent padding="md">
         <div className="flex items-center justify-between">
           <div className={cn(mode.font, "text-muted-foreground text-xs")}>
             [PAGE]: {currentPage} OF {totalPages}
@@ -62,7 +62,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
             </Button>
           </div>
         </div>
-      </div>
-    </StyledCard>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

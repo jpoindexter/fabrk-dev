@@ -4,9 +4,9 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { CheckCircle2, XCircle, Clock, Download } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface Payment {
@@ -33,19 +33,22 @@ export function RecentInvoicesCard({
   onViewAll,
 }: RecentInvoicesCardProps) {
   return (
-    <div className="border-border bg-card border">
-      <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-        <StyledCardHeader code="0x00" title="RECENT_INVOICES" />
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={onViewAll}
-          className={cn(mode.radius, mode.font, "ml-auto h-6 text-xs")}
-        >
-          &gt; VIEW_ALL
-        </Button>
-      </div>
-      <div className="p-4">
+    <TerminalCard tone="neutral">
+      <TerminalCardHeader
+        code="0x00"
+        title="RECENT_INVOICES"
+        meta={
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={onViewAll}
+            className={cn(mode.radius, mode.font, "h-6 text-xs")}
+          >
+            &gt; VIEW_ALL
+          </Button>
+        }
+      />
+      <TerminalCardContent padding="md">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [RECENT_INVOICES]: LIMIT=3
         </div>
@@ -63,11 +66,11 @@ export function RecentInvoicesCard({
               >
                 <div className="flex items-center gap-4">
                   {payment.status === "succeeded" ? (
-                    <CheckCircle2 className="text-success h-4 w-4" />
+                    <CheckCircle2 className="text-success size-4" />
                   ) : payment.status === "failed" ? (
-                    <XCircle className="text-destructive h-4 w-4" />
+                    <XCircle className="text-destructive size-4" />
                   ) : (
-                    <Clock className="text-warning h-4 w-4" />
+                    <Clock className="text-warning size-4" />
                   )}
                   <div>
                     <div>{payment.description}</div>
@@ -88,14 +91,14 @@ export function RecentInvoicesCard({
                     {status.text}
                   </span>
                   <button className="hover:text-foreground text-muted-foreground">
-                    <Download className="h-4 w-4" />
+                    <Download className="size-4" />
                   </button>
                 </div>
               </div>
             );
           })}
         </div>
-      </div>
-    </div>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

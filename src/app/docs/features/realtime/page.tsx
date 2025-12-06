@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
 import { Bell, Activity, Users, Zap } from "lucide-react";
 
 export const metadata = {
@@ -179,9 +178,9 @@ export function OnlineMembers({ orgId }: { orgId: string }) {
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
         <DocsCard title="BEST_PRACTICES">
-          <ul className="font-mono text-sm text-muted-foreground space-y-1">
-            <li>├─ Use private channels (<code className={docsTypography.code}>private-</code>) for user-specific data</li>
-            <li>├─ Use presence channels (<code className={docsTypography.code}>presence-</code>) for tracking online status</li>
+          <ul className="space-y-1">
+            <li>├─ Use private channels (<code className="bg-muted px-1">private-</code>) for user-specific data</li>
+            <li>├─ Use presence channels (<code className="bg-muted px-1">presence-</code>) for tracking online status</li>
             <li>├─ Always unsubscribe from channels when components unmount</li>
             <li>├─ Handle connection errors gracefully with retry logic</li>
             <li>└─ Batch events when possible to reduce message count</li>

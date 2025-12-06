@@ -6,9 +6,7 @@
 import * as React from "react";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { mode } from "@/lib/design-system";
-import { cn } from "@/lib/utils";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 
 interface SuccessStepProps {
   onComplete: () => void;
@@ -16,19 +14,22 @@ interface SuccessStepProps {
 
 export function SuccessStep({ onComplete }: SuccessStepProps) {
   return (
-    <Card className={cn("border-border border shadow", mode.radius)}>
-      <CardContent className="flex flex-col items-center justify-center py-12">
-        <div className={cn("border-border bg-success border p-4 shadow", mode.radius)}>
-          <Check className="text-success-foreground h-8 w-8" />
+    <TerminalCard tone="success">
+      <TerminalCardHeader code="0x00" title="SUCCESS" icon={<Check className="h-4 w-4" />} />
+      <TerminalCardContent padding="lg">
+        <div className="flex flex-col items-center justify-center">
+          <div className="border-border bg-success rounded-none border p-4">
+            <Check className="text-success-foreground h-8 w-8" />
+          </div>
+          <h3 className="mt-4 text-2xl font-semibold">All Set!</h3>
+          <p className="text-muted-foreground mt-2 text-center">
+            Your organization has been created and invitations sent.
+          </p>
+          <Button onClick={onComplete} className="mt-6">
+            &gt; GO_TO_DASHBOARD
+          </Button>
         </div>
-        <h3 className="mt-4 text-2xl font-bold">All Set!</h3>
-        <p className="text-muted-foreground mt-2 text-center">
-          Your organization has been created and invitations sent.
-        </p>
-        <Button onClick={onComplete} className="mt-6">
-          Go to Dashboard
-        </Button>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

@@ -2,7 +2,6 @@
 
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { FormError, commonErrors } from "@/components/ui/form-error";
-import { WindowControls } from "@/components/ui/window-controls";
 import { useState } from "react";
 
 export default function FormErrorPage() {
@@ -119,26 +118,25 @@ export default function FormErrorPage() {
           description: "The What/Why/How formula for clear error messages.",
           preview: (
             <div className="space-y-4 p-4 font-mono text-sm">
-              <div className="flex items-center gap-2 border-b border-border pb-2">
-                <WindowControls size="sm" />
-                <span className="text-xs text-muted-foreground">error-formula.md</span>
+              <div className="border-border flex items-center border-b pb-2">
+                <span className="text-muted-foreground text-xs">
+                  [ ERROR_FORMULA ] error-formula.md
+                </span>
               </div>
               <div className="space-y-4 text-xs">
                 <div>
-                  <div className="font-bold text-primary">[WHAT]:</div>
-                  <div className="pl-4 text-muted-foreground">
+                  <div className="text-primary font-semibold">[WHAT]:</div>
+                  <div className="text-muted-foreground pl-4">
                     What went wrong? (Clear, specific)
                   </div>
                 </div>
                 <div>
-                  <div className="font-bold text-warning">[WHY]:</div>
-                  <div className="pl-4 text-muted-foreground">
-                    Why did it happen? (Root cause)
-                  </div>
+                  <div className="text-warning font-semibold">[WHY]:</div>
+                  <div className="text-muted-foreground pl-4">Why did it happen? (Root cause)</div>
                 </div>
                 <div>
-                  <div className="font-bold text-success">[HOW]:</div>
-                  <div className="pl-4 text-muted-foreground">
+                  <div className="text-success font-semibold">[HOW]:</div>
+                  <div className="text-muted-foreground pl-4">
                     How to fix it? (Actionable steps)
                   </div>
                 </div>

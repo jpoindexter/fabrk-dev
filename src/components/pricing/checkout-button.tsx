@@ -18,7 +18,7 @@ export function CheckoutButton({
   priceId,
   planName: _planName,
   className,
-  children = "Get Started",
+  children = "> GET_STARTED",
 }: CheckoutButtonProps) {
   const [loading, setLoading] = useState(false);
   const { data: session } = useSession();
@@ -63,7 +63,7 @@ export function CheckoutButton({
     <Button
       onClick={handleCheckout}
       loading={loading}
-      loadingText="Loading..."
+      loadingText="> LOADING..."
       className={className}
       disabled={loading}
     >

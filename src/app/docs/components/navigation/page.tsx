@@ -14,7 +14,7 @@ function NavigationDemo() {
         {/* Logo */}
         <Link href="#" className="flex items-center gap-2 font-mono">
           <span className="text-primary text-xs">&gt;</span>
-          <span className="text-sm font-bold">FABRK</span>
+          <span className="text-sm font-semibold">FABRK</span>
           <span className="text-muted-foreground text-xs">_CONSOLE</span>
         </Link>
 
@@ -33,10 +33,10 @@ function NavigationDemo() {
             DOCS
           </Link>
           <div className="bg-border h-4 w-px" />
-          <Button variant="outline" size="sm" className="rounded-none font-mono text-xs">
+          <Button variant="outline" size="sm" className="font-mono text-xs">
             &gt; VIEW_DEMO
           </Button>
-          <Button size="sm" className="rounded-none font-mono text-xs">
+          <Button size="sm" className="font-mono text-xs">
             &gt; GET_STARTED
           </Button>
         </div>
@@ -117,9 +117,7 @@ export default function LandingPage() {
                   &gt; FAQ
                 </Link>
                 <div className="border-border border-t pt-4">
-                  <Button className="w-full rounded-none font-mono text-xs">
-                    &gt; GET_STARTED
-                  </Button>
+                  <Button className="w-full font-mono text-xs">&gt; GET_STARTED</Button>
                 </div>
               </div>
             </div>

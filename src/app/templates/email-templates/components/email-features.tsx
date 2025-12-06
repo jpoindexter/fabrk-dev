@@ -2,16 +2,19 @@
  * Email template features section
  */
 
-import { StyledCard, StyledCardHeader } from "@/components/ui/card";
-import { mode } from "@/lib/design-system";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function EmailFeatures() {
   return (
-    <StyledCard>
-      <StyledCardHeader code="0x01" title="TEMPLATE_FEATURES" />
-      <div className="p-4">
-        <div className={cn(mode.font, "space-y-1.5 text-xs")}>
+    <TerminalCard>
+      <TerminalCardHeader code="0x01" title="FEATURES" />
+      <TerminalCardContent padding="md">
+        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+          [TEMPLATE_FEATURES]:
+        </div>
+        <div className={cn(mode.font, "space-y-2 text-xs")}>
           <div>
             <span className="text-success">&gt;</span> 5 email templates (Welcome, Verification,
             Password Reset, Purchase, Subscription)
@@ -46,7 +49,7 @@ export function EmailFeatures() {
         <div className={cn(mode.font, "text-muted-foreground mt-4 text-xs")}>
           [NOTE]: All templates in src/emails/. Add your Resend API key to start sending emails.
         </div>
-      </div>
-    </StyledCard>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

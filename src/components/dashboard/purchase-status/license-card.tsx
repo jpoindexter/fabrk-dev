@@ -8,25 +8,19 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Copy, Key } from "lucide-react";
 import { LicenseCardProps } from "./purchase-status-types";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 export function LicenseCard({ licenseKey, onCopyLicense, copiedLicense }: LicenseCardProps) {
   if (!licenseKey) return null;
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Key className="h-5 w-5" />
-          License Key
-        </CardTitle>
-        <CardDescription>Your unique license key for Fabrk</CardDescription>
-      </CardHeader>
-      <CardContent>
+    <TerminalCard tone="neutral">
+      <TerminalCardHeader code="0x02" title="LICENSE_KEY" icon={<Key className="h-4 w-4" />} />
+      <TerminalCardContent padding="md">
         <div className="space-y-4">
           <div className={cn("bg-muted dark:bg-muted p-6 text-sm", mode.font, mode.radius)}>
             {licenseKey}
@@ -37,19 +31,19 @@ export function LicenseCard({ licenseKey, onCopyLicense, copiedLicense }: Licens
             className="focus-visible:ring-ring w-full focus-visible:ring-2 focus-visible:outline-none"
           >
             {copiedLicense ? (
-              <>✓ Copied to Clipboard</>
+              <>&gt; COPIED_TO_CLIPBOARD</>
             ) : (
               <>
                 <Copy className="mr-2 h-4 w-4" />
-                Copy License Key
+                &gt; COPY_LICENSE_KEY
               </>
             )}
           </Button>
           <p className="text-muted-foreground dark:text-muted-foreground text-xs">
-            Keep this key safe. You&apos;ll need it for future updates and support.
+            [NOTE]: Keep this key safe. You&apos;ll need it for future updates and support.
           </p>
         </div>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

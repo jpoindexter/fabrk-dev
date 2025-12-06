@@ -3,8 +3,8 @@
  * Revenue Chart - Terminal-style bar chart
  */
 
-import { StyledCardHeader } from "@/components/ui/card";
-import { mode } from "@/lib/design-system";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export interface RevenueDataPoint {
@@ -26,9 +26,9 @@ export function RevenueChart({ data }: RevenueChartProps) {
   ).toFixed(1);
 
   return (
-    <div className="border-border bg-card border lg:col-span-4">
-      <StyledCardHeader code="0x00" title="REVENUE_CHART" />
-      <div className="p-4">
+    <TerminalCard className="lg:col-span-4">
+      <TerminalCardHeader code="0x00" title="REVENUE_CHART" />
+      <TerminalCardContent>
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [REVENUE_OVERVIEW]: PERIOD=6_MONTHS
         </div>
@@ -95,7 +95,7 @@ export function RevenueChart({ data }: RevenueChartProps) {
             <span className="text-success">+{growthRate}%</span>
           </div>
         </div>
-      </div>
-    </div>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

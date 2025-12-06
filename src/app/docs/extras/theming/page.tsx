@@ -1,12 +1,12 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
-import { Card, CardContent } from "@/components/ui/card";
+import { TerminalCard, TerminalCardContent } from "@/components/ui/card";
 import { Palette, Sun, Moon, Sparkles } from "lucide-react";
 
 export const metadata = {
   title: "Theming & Colors - Fabrk Docs",
-  description: "Customize your Fabrk app with 20 built-in color themes. Switch themes instantly or create your own brand colors.",
+  description:
+    "Customize your Fabrk app with 20 built-in color themes. Switch themes instantly or create your own brand colors.",
 };
 
 export default function ThemingPage() {
@@ -93,9 +93,9 @@ export function MyNavbar() {
   Adapts automatically when user switches themes
 </div>
 
-// ❌ BAD - Hardcoded colors
-<button className="bg-blue-500 text-white">
-  Always blue, ignores theme selection
+// ❌ BAD - Hardcoded colors (breaks theming)
+<button className="bg-[hardcoded] text-[hardcoded]">
+  Always same color, ignores theme selection
 </button>`,
           language: "tsx",
         },
@@ -128,12 +128,12 @@ const themes = [
       {/* Theme System */}
       <DocsSection title="Theme System">
         <DocsCard title="THEME_SYSTEM">
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-            <div>├─ <strong>20 Color Themes:</strong> Inspired by DaisyUI's theme system</div>
-            <div>├─ <strong>Light/Dark Mode:</strong> Automatic dark mode with next-themes</div>
-            <div>├─ <strong>Persistent:</strong> Theme choice saved to localStorage</div>
-            <div>├─ <strong>No Flash:</strong> Pre-hydration loading prevents theme flash</div>
-            <div>└─ <strong>Tailwind v4 Native:</strong> Works seamlessly with Tailwind CSS v4</div>
+          <div className="space-y-1">
+            <div>├─ 20 Color Themes: Inspired by DaisyUI&apos;s theme system</div>
+            <div>├─ Light/Dark Mode: Automatic dark mode with next-themes</div>
+            <div>├─ Persistent: Theme choice saved to localStorage</div>
+            <div>├─ No Flash: Pre-hydration loading prevents theme flash</div>
+            <div>└─ Tailwind v4 Native: Works seamlessly with Tailwind CSS v4</div>
           </div>
         </DocsCard>
       </DocsSection>
@@ -143,32 +143,44 @@ const themes = [
         <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
           {[
             { name: "Light", desc: "Default", color: "#ffffff" },
-            { name: "Cupcake", desc: "Soft", color: "#65c3c8" },
-            { name: "Bumblebee", desc: "Yellow", color: "#e0a82e" },
-            { name: "Emerald", desc: "Green", color: "#66cc8a" },
-            { name: "Corporate", desc: "Business", color: "#4b6bfb" },
-            { name: "Retro", desc: "Vintage", color: "#ef9995" },
-            { name: "Pastel", desc: "Soft", color: "#d1c1d7" },
-            { name: "Fantasy", desc: "Purple", color: "#6e0b75" },
             { name: "Dark", desc: "Default dark", color: "#1d232a" },
-            { name: "Synthwave", desc: "Neon", color: "#e779c1" },
+            { name: "Cupcake", desc: "Soft pastel", color: "#65c3c8" },
+            { name: "Bumblebee", desc: "Yellow gold", color: "#e0a82e" },
+            { name: "Emerald", desc: "Green fresh", color: "#66cc8a" },
+            { name: "Corporate", desc: "Business blue", color: "#4b6bfb" },
+            { name: "Synthwave", desc: "Neon retro", color: "#e779c1" },
+            { name: "Retro", desc: "Vintage warm", color: "#ef9995" },
             { name: "Cyberpunk", desc: "Futuristic", color: "#ff7598" },
+            { name: "Valentine", desc: "Romantic pink", color: "#e96d7b" },
+            { name: "Halloween", desc: "Spooky orange", color: "#ff7700" },
+            { name: "Forest", desc: "Nature green", color: "#1eb854" },
+            { name: "Aqua", desc: "Ocean cyan", color: "#09ecf3" },
+            { name: "Lo-Fi", desc: "Minimal dark", color: "#0d0d0d" },
+            { name: "Pastel", desc: "Soft colors", color: "#d1c1d7" },
+            { name: "Fantasy", desc: "Magic purple", color: "#6e0b75" },
+            { name: "Luxury", desc: "Elegant gold", color: "#ffffff" },
             { name: "Dracula", desc: "Dark purple", color: "#ff79c6" },
+            { name: "Autumn", desc: "Fall warmth", color: "#8c0327" },
+            { name: "Business", desc: "Professional", color: "#1c4e80" },
           ].map((theme) => (
-            <Card key={theme.name} className="transition-all hover:border-primary/50">
-              <CardContent className="p-4">
+            <TerminalCard
+              key={theme.name}
+              interactive
+              className="hover:border-primary/50 transition-all"
+            >
+              <TerminalCardContent padding="sm" className="p-4">
                 <div className="flex items-center gap-2">
                   <div
-                    className="h-6 w-6 rounded-none border-2 border-border"
+                    className="border-border h-6 w-6 rounded-none border-2"
                     style={{ backgroundColor: theme.color }}
                   />
                   <div>
-                    <div className={docsTypography.label}>{theme.name}</div>
-                    <div className={docsTypography.caption}>{theme.desc}</div>
+                    <div className="font-mono text-xs">{theme.name}</div>
+                    <div className="text-muted-foreground font-mono text-xs">{theme.desc}</div>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+              </TerminalCardContent>
+            </TerminalCard>
           ))}
         </div>
       </DocsSection>
@@ -176,11 +188,11 @@ const themes = [
       {/* Best Practices */}
       <DocsSection title="Best Practices">
         <DocsCard title="BEST_PRACTICES">
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-            <div>├─ <strong>Use semantic colors:</strong> bg-primary instead of bg-purple-500</div>
-            <div>├─ <strong>Test across themes:</strong> Verify UI works in light and dark variants</div>
-            <div>├─ <strong>Default to Light:</strong> Clean, neutral starting point</div>
-            <div>└─ <strong>Customize themes:</strong> Modify colors in globals.css [data-theme] selectors</div>
+          <div className="space-y-1">
+            <div>├─ Use semantic colors: bg-primary instead of bg-purple-500</div>
+            <div>├─ Test across themes: Verify UI works in light and dark variants</div>
+            <div>├─ Default to Light: Clean, neutral starting point</div>
+            <div>└─ Customize themes: Modify colors in globals.css [data-theme] selectors</div>
           </div>
         </DocsCard>
       </DocsSection>
@@ -188,12 +200,12 @@ const themes = [
       {/* Architecture */}
       <DocsSection title="Architecture">
         <DocsCard title="ARCHITECTURE">
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-            <div>├─ <strong>ThemeDropdown</strong> - Navbar component for theme selection</div>
-            <div>├─ <strong>ColorThemeSwitcher</strong> - Full-page grid for settings</div>
-            <div>├─ <strong>globals.css</strong> - All 20 theme CSS variable definitions</div>
-            <div>├─ <strong>layout.tsx</strong> - Pre-hydration script prevents flash</div>
-            <div>└─ <strong>localStorage</strong> - Persists user preference (key: 'theme')</div>
+          <div className="space-y-1">
+            <div>├─ ThemeDropdown - Navbar component for theme selection</div>
+            <div>├─ ColorThemeSwitcher - Full-page grid for settings</div>
+            <div>├─ globals.css - All 20 theme CSS variable definitions</div>
+            <div>├─ layout.tsx - Pre-hydration script prevents flash</div>
+            <div>└─ localStorage - Persists user preference (key: theme)</div>
           </div>
         </DocsCard>
       </DocsSection>

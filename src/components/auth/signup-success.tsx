@@ -25,14 +25,12 @@ export function SignupSuccessMessage({ email }: { email: string }) {
   // UX Heuristic #1: Visibility of system status
   return (
     <div className="p-6 text-center">
-      <CheckCircle className="mx-auto h-16 w-16 text-primary dark:text-primary" />
-      <h2 className="m-4 text-base font-medium">Check your email</h2>
+      <CheckCircle className="text-primary dark:text-primary mx-auto h-16 w-16" />
+      <h2 className="m-4 text-base font-semibold">Check your email</h2>
       <p className="m-4">We&apos;ve sent a verification email to {email}</p>
-      <p className="m-4 text-base">
-        Please click the link in the email to verify your account.
-      </p>
-      <Button className="m-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-        Resend verification email
+      <p className="m-4 text-base">Please click the link in the email to verify your account.</p>
+      <Button className="focus-visible:ring-ring m-4 focus-visible:ring-2 focus-visible:outline-none">
+        &gt; RESEND_VERIFICATION_EMAIL
       </Button>
     </div>
   );

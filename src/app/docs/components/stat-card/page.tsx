@@ -259,7 +259,7 @@ export default function StatCardPage() {
       accessibility={[
         "Uses Card component with semantic structure",
         "Title uses medium weight (font-medium) for clear hierarchy",
-        "Value uses large bold text (text-2xl font-bold) for prominence",
+        "Value uses large semibold text (text-2xl font-semibold) for prominence",
         "Trend colors follow semantic conventions (green=up, red=down, gray=neutral)",
         "Icons are decorative - meaning is also conveyed through text",
         "Change percentage includes directional arrow icon for visual clarity",

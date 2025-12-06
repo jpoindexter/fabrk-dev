@@ -18,7 +18,7 @@
 import * as React from "react";
 import { Users, Crown, CheckCircle2, MoreVertical, Settings, LogOut } from "lucide-react";
 
-import { Card, CardContent } from "@/components/ui/card";
+import { TerminalCard, TerminalCardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -30,7 +30,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 
 export interface OrgCardProps {
   id?: string;
@@ -74,15 +74,13 @@ export function OrgCard({
     .slice(0, 2);
 
   return (
-    <Card
-      className={cn(
-        "group relative cursor-pointer transition-all duration-200",
-        isActive && "ring-primary shadow ring-2",
-        className
-      )}
+    <TerminalCard
+      interactive
+      tone={isActive ? "primary" : "neutral"}
+      className={cn("group relative cursor-pointer", className)}
       onClick={onSelect}
     >
-      <CardContent className="p-6">
+      <TerminalCardContent padding="lg">
         {/* Active indicator */}
         {isActive && (
           <div
@@ -102,7 +100,7 @@ export function OrgCard({
               {logo ? (
                 <AvatarImage src={logo} alt={name} />
               ) : (
-                <AvatarFallback className="bg-primary text-primary-foreground text-lg font-black">
+                <AvatarFallback className="bg-primary text-primary-foreground text-lg font-bold">
                   {initials}
                 </AvatarFallback>
               )}
@@ -110,7 +108,7 @@ export function OrgCard({
 
             <div className="min-w-0 flex-1 space-y-2">
               <div className="space-y-1">
-                <h3 className="text-foreground truncate text-lg font-black">{name}</h3>
+                <h3 className="text-foreground truncate text-lg font-semibold">{name}</h3>
                 <div className="flex flex-wrap items-center gap-2">
                   <Badge variant="outline" className={cn("text-xs font-medium", planColors[plan])}>
                     {plan}
@@ -167,7 +165,7 @@ export function OrgCard({
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

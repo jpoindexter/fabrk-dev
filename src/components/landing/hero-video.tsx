@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 interface HeroVideoProps {
   headline?: string;
@@ -80,7 +80,7 @@ export function HeroVideo({
           <h1
             className={cn(
               mode.font,
-              "text-foreground mb-8 text-5xl leading-[1.1] font-bold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
+              "text-foreground mb-8 text-5xl leading-tight font-semibold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
             )}
           >
             {headline}
@@ -108,7 +108,7 @@ export function HeroVideo({
               asChild
             >
               <Link href={ctaPrimary.href}>
-                &gt; EXECUTE: {ctaPrimary.text.toUpperCase().replace(/ /g, "_")}
+                &gt; {ctaPrimary.text.toUpperCase().replace(/ /g, "_")}
               </Link>
             </Button>
             <Button
@@ -121,7 +121,7 @@ export function HeroVideo({
               asChild
             >
               <Link href={ctaSecondary.href}>
-                &gt; VIEW: {ctaSecondary.text.toUpperCase().replace(/ /g, "_")}
+                &gt; VIEW_{ctaSecondary.text.toUpperCase().replace(/ /g, "_")}
               </Link>
             </Button>
           </div>
@@ -152,7 +152,7 @@ export function HeroVideo({
       <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce">
         <div className="flex flex-col items-center gap-2">
           <svg
-            className="text-foreground/60 h-6 w-6"
+            className="text-foreground/60 size-6"
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"

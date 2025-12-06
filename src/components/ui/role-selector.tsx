@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Crown, Shield, User, Eye, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { Badge } from "@/components/ui/badge";
 import {
   AlertDialog,
@@ -209,8 +209,8 @@ export function RoleSelector({
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel onClick={handleCancel}>Cancel</AlertDialogCancel>
-                <AlertDialogAction onClick={handleConfirm}>Confirm</AlertDialogAction>
+                <AlertDialogCancel onClick={handleCancel}>&gt; CANCEL</AlertDialogCancel>
+                <AlertDialogAction onClick={handleConfirm}>&gt; CONFIRM</AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
@@ -294,8 +294,8 @@ export function RoleSelector({
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel onClick={handleCancel}>Cancel</AlertDialogCancel>
-              <AlertDialogAction onClick={handleConfirm}>Confirm</AlertDialogAction>
+              <AlertDialogCancel onClick={handleCancel}>&gt; CANCEL</AlertDialogCancel>
+              <AlertDialogAction onClick={handleConfirm}>&gt; CONFIRM</AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>

@@ -6,7 +6,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { StyledCard, StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -25,7 +25,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Users, Crown, Shield, Eye, MoreHorizontal, Trash2, type LucideIcon } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface Member {
@@ -66,145 +66,153 @@ export function MembersTable({ members }: MembersTableProps) {
   };
 
   return (
-    <StyledCard>
-      <StyledCardHeader code="0x00" title="TEAM_MEMBERS" />
-      <div className="p-4">
+    <TerminalCard size="auto">
+      <TerminalCardHeader code="0x05" title="TEAM_MEMBERS" icon={<Users className="h-4 w-4" />} />
+      <TerminalCardContent>
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [TEAM_MEMBERS]: COUNT={members.length}
         </div>
-        <div className="border-border border">
-          {/* Table Header */}
-          <div
-            className={cn(
-              mode.font,
-              "border-border bg-muted/30 grid grid-cols-4 border-b px-4 py-2 text-xs"
-            )}
-          >
-            <span className="text-muted-foreground">[MEMBER]</span>
-            <span className="text-muted-foreground">[ROLE]</span>
-            <span className="text-muted-foreground">[LAST_ACTIVE]</span>
-            <span className="text-muted-foreground">[ACTIONS]</span>
-          </div>
-          {/* Table Body */}
-          <div className="divide-border divide-y">
-            {members.map((member) => {
-              const RoleIcon = roleIcons[member.role];
-              return (
-                <div key={member.id} className="grid grid-cols-4 items-center px-4 py-4">
-                  <div className="flex items-center gap-4">
-                    <div
-                      className={cn(
-                        mode.font,
-                        "border-border bg-muted flex h-8 w-8 items-center justify-center border text-xs"
-                      )}
-                    >
-                      {member.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
-                    </div>
-                    <div>
-                      <p className={cn(mode.font, "text-xs font-semibold")}>{member.name}</p>
-                      <p className={cn(mode.font, "text-muted-foreground text-xs")}>
-                        {member.email}
-                      </p>
-                    </div>
-                  </div>
-                  <div>
-                    <span
-                      className={cn(
-                        mode.font,
-                        "border-border inline-flex items-center gap-1 border px-2 py-0.5 text-xs"
-                      )}
-                    >
-                      <RoleIcon className="h-3 w-3" />
-                      {member.role.toUpperCase()}
-                    </span>
-                  </div>
-                  <div className={cn(mode.font, "text-muted-foreground text-xs")}>
-                    {member.lastActive}
-                  </div>
-                  <div>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className={cn(mode.radius, mode.font, "text-xs")}
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead>
+              <tr className={cn(mode.font, "border-border bg-muted/30 border-b text-xs")}>
+                <th className="text-muted-foreground px-4 py-2 text-left">[MEMBER]</th>
+                <th className="text-muted-foreground px-4 py-2 text-left">[ROLE]</th>
+                <th className="text-muted-foreground px-4 py-2 text-left">[LAST_ACTIVE]</th>
+                <th className="text-muted-foreground px-4 py-2 text-left">[ACTIONS]</th>
+              </tr>
+            </thead>
+            <tbody className="divide-border divide-y">
+              {members.map((member) => {
+                const RoleIcon = roleIcons[member.role];
+                return (
+                  <tr key={member.id}>
+                    <td className="px-4 py-4">
+                      <div className="flex items-center gap-4">
+                        <div
+                          className={cn(
+                            mode.font,
+                            "border-border bg-muted flex h-8 w-8 items-center justify-center border text-xs"
+                          )}
                         >
-                          <MoreHorizontal className="h-4 w-4" />
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent
-                        align="end"
-                        className={cn(mode.radius, mode.font, "border-border border text-xs")}
+                          {member.name
+                            .split(" ")
+                            .map((n) => n[0])
+                            .join("")}
+                        </div>
+                        <div>
+                          <p className={cn(mode.font, "text-xs font-semibold")}>{member.name}</p>
+                          <p className={cn(mode.font, "text-muted-foreground text-xs")}>
+                            {member.email}
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="px-4 py-4">
+                      <span
+                        className={cn(
+                          mode.font,
+                          "border-border inline-flex items-center gap-1 border px-2 py-0.5 text-xs"
+                        )}
                       >
-                        <DropdownMenuLabel>[ACTIONS]:</DropdownMenuLabel>
-                        <DropdownMenuSeparator />
-                        {member.role !== "owner" && (
-                          <>
-                            <DropdownMenuItem onClick={() => handleRoleChange(member.id, "admin")}>
-                              &gt; SET_ROLE: ADMIN
-                            </DropdownMenuItem>
-                            <DropdownMenuItem onClick={() => handleRoleChange(member.id, "member")}>
-                              &gt; SET_ROLE: MEMBER
-                            </DropdownMenuItem>
-                            <DropdownMenuItem onClick={() => handleRoleChange(member.id, "guest")}>
-                              &gt; SET_ROLE: GUEST
-                            </DropdownMenuItem>
-                            <DropdownMenuSeparator />
-                            <AlertDialog open={removeDialogOpen} onOpenChange={setRemoveDialogOpen}>
-                              <AlertDialogTrigger asChild>
-                                <DropdownMenuItem
-                                  onSelect={(e) => {
-                                    e.preventDefault();
-                                    setMemberToRemove(member.id);
-                                    setRemoveDialogOpen(true);
-                                  }}
-                                  className="text-destructive"
-                                >
-                                  <Trash2 className="mr-2 h-4 w-4" />
-                                  &gt; REMOVE_MEMBER
-                                </DropdownMenuItem>
-                              </AlertDialogTrigger>
-                              <AlertDialogContent>
-                                <AlertDialogTitle className={cn(mode.font)}>
-                                  [CONFIRM_REMOVAL]
-                                </AlertDialogTitle>
-                                <AlertDialogDescription className={cn(mode.font, "text-xs")}>
-                                  WARNING: This action will remove the member from the team. They
-                                  will lose all access.
-                                </AlertDialogDescription>
-                                <div className="flex justify-end gap-4">
-                                  <AlertDialogCancel className={cn(mode.font, "text-xs")}>
-                                    &gt; CANCEL
-                                  </AlertDialogCancel>
-                                  <AlertDialogAction
-                                    onClick={handleRemoveMember}
-                                    className={cn(
-                                      mode.font,
-                                      "bg-destructive text-destructive-foreground hover:bg-destructive/90 text-xs"
-                                    )}
+                        <RoleIcon className="h-3 w-3" />
+                        {member.role.toUpperCase()}
+                      </span>
+                    </td>
+                    <td className={cn(mode.font, "text-muted-foreground px-4 py-4 text-xs")}>
+                      {member.lastActive}
+                    </td>
+                    <td className="px-4 py-4">
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className={cn(mode.radius, mode.font, "text-xs")}
+                          >
+                            <MoreHorizontal className="h-4 w-4" />
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent
+                          align="end"
+                          className={cn(mode.radius, mode.font, "border-border border text-xs")}
+                        >
+                          <DropdownMenuLabel>[ACTIONS]:</DropdownMenuLabel>
+                          <DropdownMenuSeparator />
+                          {member.role !== "owner" && (
+                            <>
+                              <DropdownMenuItem
+                                onClick={() => handleRoleChange(member.id, "admin")}
+                              >
+                                &gt; SET_ROLE: ADMIN
+                              </DropdownMenuItem>
+                              <DropdownMenuItem
+                                onClick={() => handleRoleChange(member.id, "member")}
+                              >
+                                &gt; SET_ROLE: MEMBER
+                              </DropdownMenuItem>
+                              <DropdownMenuItem
+                                onClick={() => handleRoleChange(member.id, "guest")}
+                              >
+                                &gt; SET_ROLE: GUEST
+                              </DropdownMenuItem>
+                              <DropdownMenuSeparator />
+                              <AlertDialog
+                                open={removeDialogOpen}
+                                onOpenChange={setRemoveDialogOpen}
+                              >
+                                <AlertDialogTrigger asChild>
+                                  <DropdownMenuItem
+                                    onSelect={(e) => {
+                                      e.preventDefault();
+                                      setMemberToRemove(member.id);
+                                      setRemoveDialogOpen(true);
+                                    }}
+                                    className="text-destructive"
                                   >
-                                    &gt; CONFIRM_REMOVE
-                                  </AlertDialogAction>
-                                </div>
-                              </AlertDialogContent>
-                            </AlertDialog>
-                          </>
-                        )}
-                        {member.role === "owner" && (
-                          <DropdownMenuItem disabled>[LOCKED]: OWNER_ROLE</DropdownMenuItem>
-                        )}
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                                    <Trash2 className="mr-2 h-4 w-4" />
+                                    &gt; REMOVE_MEMBER
+                                  </DropdownMenuItem>
+                                </AlertDialogTrigger>
+                                <AlertDialogContent>
+                                  <AlertDialogTitle className={cn(mode.font)}>
+                                    [CONFIRM_REMOVAL]
+                                  </AlertDialogTitle>
+                                  <AlertDialogDescription className={cn(mode.font, "text-xs")}>
+                                    WARNING: This action will remove the member from the team. They
+                                    will lose all access.
+                                  </AlertDialogDescription>
+                                  <div className="flex justify-end gap-4">
+                                    <AlertDialogCancel className={cn(mode.font, "text-xs")}>
+                                      &gt; CANCEL
+                                    </AlertDialogCancel>
+                                    <AlertDialogAction
+                                      onClick={handleRemoveMember}
+                                      className={cn(
+                                        mode.font,
+                                        "bg-destructive text-destructive-foreground hover:bg-destructive/90 text-xs"
+                                      )}
+                                    >
+                                      &gt; CONFIRM_REMOVE
+                                    </AlertDialogAction>
+                                  </div>
+                                </AlertDialogContent>
+                              </AlertDialog>
+                            </>
+                          )}
+                          {member.role === "owner" && (
+                            <DropdownMenuItem disabled>[LOCKED]: OWNER_ROLE</DropdownMenuItem>
+                          )}
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
-      </div>
-    </StyledCard>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

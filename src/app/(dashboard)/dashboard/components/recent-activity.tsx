@@ -5,9 +5,9 @@
 
 "use client";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Activity, DollarSign, Upload, Settings, Shield, Clock } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export interface ActivityItem {
@@ -51,12 +51,12 @@ function formatTimestamp(date: Date) {
 
 export function RecentActivity({ activities }: RecentActivityProps) {
   return (
-    <Card className="col-span-4">
-      <CardHeader>
-        <CardTitle as="h2">Recent Activity</CardTitle>
-        <CardDescription>Your recent account activity and actions</CardDescription>
-      </CardHeader>
-      <CardContent>
+    <TerminalCard className="col-span-4">
+      <TerminalCardHeader code="0x00" title="RECENT_ACTIVITY" />
+      <TerminalCardContent>
+        <p className="text-muted-foreground mb-4 font-mono text-xs">
+          Your recent account activity and actions
+        </p>
         <div className="space-y-4">
           {activities.map((activity) => {
             const Icon = getActivityIcon(activity.type);
@@ -69,8 +69,8 @@ export function RecentActivity({ activities }: RecentActivityProps) {
                   <Icon className="h-4 w-4" />
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm font-medium">{activity.description}</p>
-                  <p className="text-muted-foreground flex items-center gap-1 text-xs">
+                  <p className="font-mono text-sm font-medium">{activity.description}</p>
+                  <p className="text-muted-foreground flex items-center gap-1 font-mono text-xs">
                     <Clock className="h-3 w-3" />
                     {formatTimestamp(activity.timestamp)}
                   </p>
@@ -79,7 +79,7 @@ export function RecentActivity({ activities }: RecentActivityProps) {
             );
           })}
         </div>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

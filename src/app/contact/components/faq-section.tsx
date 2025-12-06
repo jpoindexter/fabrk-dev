@@ -5,6 +5,8 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { mode } from "@/design-system";
 import {
   Accordion,
   AccordionContent,
@@ -22,11 +24,11 @@ export function FaqSection() {
         viewport={{ once: true }}
         className="mb-8 text-center"
       >
-        <span className="border-border bg-card text-muted-foreground mb-4 inline-block border px-4 py-1 text-xs">
+        <span className={cn("border-border bg-card text-muted-foreground mb-4 inline-block border px-4 py-1 text-xs", mode.font, mode.radius)}>
           [ [0x04] FAQ ]
         </span>
-        <h2 className="mb-2 text-xl font-bold">FREQUENTLY_ASKED_QUESTIONS</h2>
-        <p className="text-muted-foreground text-sm">Everything you need to know</p>
+        <h2 className={cn("mb-2 text-2xl font-semibold", mode.font)}>FREQUENTLY_ASKED_QUESTIONS</h2>
+        <p className={cn("text-muted-foreground text-xs", mode.font)}>Everything you need to know</p>
       </motion.div>
 
       <div className="mx-auto max-w-3xl">
@@ -39,12 +41,12 @@ export function FaqSection() {
           >
             <AccordionItem
               value="refunds"
-              className="border-border bg-card rounded-none border transition-all"
+              className={cn("border-border bg-card border transition-all", mode.radius)}
             >
-              <AccordionTrigger className="text-foreground px-6 text-left text-sm font-semibold hover:no-underline">
+              <AccordionTrigger className={cn("text-foreground px-6 text-left text-sm font-semibold hover:no-underline", mode.font)}>
                 [Q] DO_YOU_OFFER_REFUNDS?
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground px-6 text-xs">
+              <AccordionContent className={cn("text-muted-foreground px-6 text-xs", mode.font)}>
                 [A] No, all sales are final. Due to the nature of digital products, we do not offer
                 refunds once you have access to the code. Please review our{" "}
                 <Link href="/refund" className="text-primary hover:underline">
@@ -63,12 +65,12 @@ export function FaqSection() {
           >
             <AccordionItem
               value="support"
-              className="border-border bg-card rounded-none border transition-all"
+              className={cn("border-border bg-card border transition-all", mode.radius)}
             >
-              <AccordionTrigger className="text-foreground px-6 text-left text-sm font-semibold hover:no-underline">
+              <AccordionTrigger className={cn("text-foreground px-6 text-left text-sm font-semibold hover:no-underline", mode.font)}>
                 [Q] IS_TECHNICAL_SUPPORT_INCLUDED?
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground px-6 text-xs">
+              <AccordionContent className={cn("text-muted-foreground px-6 text-xs", mode.font)}>
                 [A] Yes, we provide email support for all license holders. Response time is
                 typically within 24 hours.
               </AccordionContent>
@@ -83,12 +85,12 @@ export function FaqSection() {
           >
             <AccordionItem
               value="client-projects"
-              className="border-border bg-card rounded-none border transition-all"
+              className={cn("border-border bg-card border transition-all", mode.radius)}
             >
-              <AccordionTrigger className="text-foreground px-6 text-left text-sm font-semibold hover:no-underline">
+              <AccordionTrigger className={cn("text-foreground px-6 text-left text-sm font-semibold hover:no-underline", mode.font)}>
                 [Q] CAN_I_USE_FABRK_FOR_CLIENT_PROJECTS?
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground px-6 text-xs">
+              <AccordionContent className={cn("text-muted-foreground px-6 text-xs", mode.font)}>
                 [A] Absolutely! Your license allows you to create unlimited projects for yourself or
                 clients.
               </AccordionContent>
@@ -103,12 +105,12 @@ export function FaqSection() {
           >
             <AccordionItem
               value="updates"
-              className="border-border bg-card rounded-none border transition-all"
+              className={cn("border-border bg-card border transition-all", mode.radius)}
             >
-              <AccordionTrigger className="text-foreground px-6 text-left text-sm font-semibold hover:no-underline">
+              <AccordionTrigger className={cn("text-foreground px-6 text-left text-sm font-semibold hover:no-underline", mode.font)}>
                 [Q] DO_I_GET_LIFETIME_UPDATES?
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground px-6 text-xs">
+              <AccordionContent className={cn("text-muted-foreground px-6 text-xs", mode.font)}>
                 [A] Yes, all future updates and improvements are included at no additional cost.
               </AccordionContent>
             </AccordionItem>

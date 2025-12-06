@@ -10,8 +10,10 @@ import { CheckCircle, Download, Mail, FileDown, Package } from "lucide-react";
 import Link from "next/link";
 import { Suspense, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { toast } from "sonner";
+import { cn } from "@/lib/utils";
+import { mode } from "@/design-system";
 import { useSearchParams } from "next/navigation";
 
 function SuccessContent() {
@@ -54,135 +56,158 @@ function SuccessContent() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background p-4">
-      <Card className="w-full max-w-2xl">
-        <CardContent className="space-y-6 p-8">
+    <div className="bg-background flex min-h-screen items-center justify-center p-4">
+      <TerminalCard className="w-full max-w-2xl">
+        <TerminalCardContent className="space-y-6 p-8" padding="lg">
           {/* Success Icon & Header */}
           <div className="space-y-4 text-center">
-            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-none bg-primary">
-              <CheckCircle className="h-12 w-12 text-primary-foreground" />
+            <div className={cn("bg-primary mx-auto flex size-20 items-center justify-center", mode.radius)}>
+              <CheckCircle className="text-primary-foreground size-12" />
             </div>
-            <h1 className="text-4xl font-bold">Purchase Successful!</h1>
-            <p className="text-lg text-muted-foreground">
+            <h1 className={cn("text-4xl font-semibold", mode.font)}>PURCHASE_SUCCESSFUL</h1>
+            <p className={cn("text-muted-foreground text-sm", mode.font)}>
               Thank you for your purchase. Your payment has been processed successfully.
             </p>
           </div>
 
           {/* Check your email banner */}
-          <div className="space-y-4 rounded-none border border-border bg-primary/10 p-6">
-            <div className="flex items-center justify-center gap-4">
-              <Mail className="h-6 w-6 text-foreground" />
-              <h3 className="text-lg font-semibold">Check Your Email</h3>
-            </div>
-            <p className="text-center text-muted-foreground">
-              We've sent you a confirmation email with a magic link to instantly access your dashboard - no password needed!
-            </p>
-          </div>
+          <TerminalCard>
+            <TerminalCardHeader
+              code="0x01"
+              title="CHECK_YOUR_EMAIL"
+              icon={<Mail className="size-4" />}
+            />
+            <TerminalCardContent padding="md">
+              <p className={cn("text-muted-foreground text-xs", mode.font)}>
+                We've sent you a confirmation email with a magic link to instantly access your
+                dashboard - no password needed!
+              </p>
+            </TerminalCardContent>
+          </TerminalCard>
 
           {/* What's in the email */}
-          <div className="space-y-4 rounded-none border border-border bg-muted p-6">
-            <h3 className="text-lg font-semibold">What's in Your Email:</h3>
-            <ul className="space-y-4 text-muted-foreground">
-              <li className="flex items-start gap-4">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-none bg-primary text-sm font-medium text-primary-foreground">
-                  1
-                </span>
-                <span>
-                  <strong className="text-foreground">GitHub Repository Access</strong> - You've been invited to the private Fabrk repository
-                </span>
-              </li>
-              <li className="flex items-start gap-4">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-none bg-primary text-sm font-medium text-primary-foreground">
-                  2
-                </span>
-                <span>
-                  <strong className="text-foreground">Magic Link</strong> - Click to instantly access your dashboard (valid for 7 days)
-                </span>
-              </li>
-              <li className="flex items-start gap-4">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-none bg-primary text-sm font-medium text-primary-foreground">
-                  3
-                </span>
-                <span>
-                  <strong className="text-foreground">Getting Started Guide</strong> - Next steps to clone and use your boilerplate
-                </span>
-              </li>
-            </ul>
-          </div>
+          <TerminalCard>
+            <TerminalCardHeader
+              code="0x02"
+              title="EMAIL_CONTENTS"
+              icon={<Package className="size-4" />}
+            />
+            <TerminalCardContent padding="md">
+              <ul className={cn("text-muted-foreground space-y-4 text-xs", mode.font)}>
+                <li className="flex items-start gap-4">
+                  <span className={cn("bg-primary text-primary-foreground flex size-6 shrink-0 items-center justify-center text-sm font-medium", mode.radius)}>
+                    1
+                  </span>
+                  <span>
+                    <strong className="text-foreground">GITHUB_REPOSITORY_ACCESS</strong> - You've
+                    been invited to the private Fabrk repository
+                  </span>
+                </li>
+                <li className="flex items-start gap-4">
+                  <span className={cn("bg-primary text-primary-foreground flex size-6 shrink-0 items-center justify-center text-sm font-medium", mode.radius)}>
+                    2
+                  </span>
+                  <span>
+                    <strong className="text-foreground">MAGIC_LINK</strong> - Click to instantly
+                    access your dashboard (valid for 7 days)
+                  </span>
+                </li>
+                <li className="flex items-start gap-4">
+                  <span className={cn("bg-primary text-primary-foreground flex size-6 shrink-0 items-center justify-center text-sm font-medium", mode.radius)}>
+                    3
+                  </span>
+                  <span>
+                    <strong className="text-foreground">GETTING_STARTED_GUIDE</strong> - Next steps
+                    to clone and use your boilerplate
+                  </span>
+                </li>
+              </ul>
+            </TerminalCardContent>
+          </TerminalCard>
 
           {/* GitHub Access */}
-          <div className="space-y-4 rounded-none border border-border bg-secondary/20 p-6">
-            <div className="flex items-center justify-center gap-2">
-              <Package className="h-5 w-5 text-foreground" />
-              <h3 className="font-semibold">Access Your Repository</h3>
-            </div>
-            <p className="text-center text-sm text-muted-foreground">
-              Check your email for the GitHub invitation. Once accepted, you'll have full access to clone and download the boilerplate.
-            </p>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <Button asChild size="lg" className="w-full">
-                <a href="https://github.com/notifications" target="_blank" rel="noopener noreferrer">
-                  <Download className="mr-2 h-4 w-4" />
-                  Check GitHub Invitations
-                </a>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="w-full">
-                <a href="/docs/getting-started" target="_blank" rel="noopener noreferrer">
-                  <FileDown className="mr-2 h-4 w-4" />
-                  View Documentation
-                </a>
-              </Button>
-            </div>
-          </div>
+          <TerminalCard>
+            <TerminalCardHeader
+              code="0x03"
+              title="ACCESS_YOUR_REPOSITORY"
+              icon={<Download className="size-4" />}
+            />
+            <TerminalCardContent padding="md">
+              <div className="space-y-4">
+                <p className={cn("text-muted-foreground text-xs", mode.font)}>
+                  Check your email for the GitHub invitation. Once accepted, you'll have full access
+                  to clone and download the boilerplate.
+                </p>
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <Button asChild size="lg" className="w-full text-xs">
+                    <a
+                      href="https://github.com/notifications"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Download className="mr-2 size-4" />
+                      &gt; CHECK_GITHUB
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" size="lg" className="w-full text-xs">
+                    <a href="/docs/getting-started" target="_blank" rel="noopener noreferrer">
+                      <FileDown className="mr-2 size-4" />
+                      &gt; VIEW_DOCS
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </TerminalCardContent>
+          </TerminalCard>
 
           {/* Email not received */}
           <div className="py-4 text-center">
-            <p className="mb-4 text-sm text-muted-foreground">
+            <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
               Didn't receive the email? Check your spam folder.
             </p>
             {!isResending ? (
-              <Button
-                onClick={handleResendEmail}
-                variant="link"
-                className="text-primary"
-              >
-                Click to resend
+              <Button onClick={handleResendEmail} variant="link" size="sm" className="text-xs">
+                &gt; CLICK_TO_RESEND
               </Button>
             ) : (
-              <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
-                <div className="h-4 w-4 animate-spin rounded-none border-2 border-primary border-t-transparent" />
-                <span>Sending email...</span>
+              <div className={cn("text-muted-foreground inline-flex items-center gap-2 text-xs", mode.font)}>
+                <div className={cn("border-primary size-4 animate-spin border-2 border-t-transparent", mode.radius)} />
+                <span>SENDING_EMAIL...</span>
               </div>
             )}
           </div>
 
           {/* Alternative action */}
           <div className="flex flex-col gap-4 sm:flex-row">
-            <Button asChild variant="outline" className="flex-1">
-              <Link href="/">
-                Return Home
-              </Link>
+            <Button asChild variant="outline" size="lg" className="flex-1 text-xs">
+              <Link href="/">&gt; RETURN_HOME</Link>
             </Button>
           </div>
 
           {/* Support section */}
-          <div className="border-t border-border pt-4 text-center">
-            <p className="text-sm text-muted-foreground">
-              Need help?{" "}
+          <div className="border-border border-t pt-4 text-center">
+            <p className={cn("text-muted-foreground text-xs", mode.font)}>
+              [HELP]:{" "}
               <Link href="/support" className="text-primary hover:underline">
-                Contact Support
+                CONTACT_SUPPORT
               </Link>
             </p>
           </div>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
     </div>
   );
 }
 
 export default function SuccessPage() {
   return (
-    <Suspense fallback={<div className="flex min-h-screen items-center justify-center">Loading...</div>}>
+    <Suspense
+      fallback={
+        <div className={cn("bg-background flex min-h-screen items-center justify-center text-xs", mode.font)}>
+          LOADING...
+        </div>
+      }
+    >
       <SuccessContent />
     </Suspense>
   );

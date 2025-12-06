@@ -5,7 +5,7 @@
 
 import { Grid, List, SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { StyledCard, StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface ResultsHeaderProps {
@@ -32,44 +32,46 @@ export function ResultsHeader({
   onViewModeChange,
 }: ResultsHeaderProps) {
   return (
-    <StyledCard>
-      <StyledCardHeader code="0x02" title="RESULTS" />
-      <div className="flex items-center justify-between p-4">
-        <div className={cn(mode.font, "text-muted-foreground text-xs")}>
-          [SHOWING]: {resultsCount} results
-        </div>
-        <div className="flex items-center gap-2">
-          <Select value={sortBy} onValueChange={onSortChange}>
-            <SelectTrigger className={cn(mode.font, "h-8 w-[140px] text-xs")}>
-              <SlidersHorizontal className="mr-1 h-3 w-3" />
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent className={cn(mode.font, "text-xs")}>
-              <SelectItem value="relevance">Relevance</SelectItem>
-              <SelectItem value="newest">Newest</SelectItem>
-              <SelectItem value="rating">Top Rated</SelectItem>
-            </SelectContent>
-          </Select>
-          <div className="border-border flex border">
-            <Button
-              variant={viewMode === "grid" ? "default" : "ghost"}
-              size="sm"
-              onClick={() => onViewModeChange("grid")}
-              className="h-8 w-8 p-0"
-            >
-              <Grid className="h-3 w-3" />
-            </Button>
-            <Button
-              variant={viewMode === "list" ? "default" : "ghost"}
-              size="sm"
-              onClick={() => onViewModeChange("list")}
-              className="border-border h-8 w-8 border-l p-0"
-            >
-              <List className="h-3 w-3" />
-            </Button>
+    <TerminalCard>
+      <TerminalCardHeader code="0x03" title="RESULTS" />
+      <TerminalCardContent padding="md">
+        <div className="flex items-center justify-between">
+          <div className={cn(mode.font, "text-muted-foreground text-xs")}>
+            [SHOWING]: {resultsCount} results
+          </div>
+          <div className="flex items-center gap-2">
+            <Select value={sortBy} onValueChange={onSortChange}>
+              <SelectTrigger className={cn(mode.radius, mode.font, "h-8 w-[140px] text-xs")}>
+                <SlidersHorizontal className="mr-1 h-3 w-3" />
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent className={cn(mode.radius, mode.font, "text-xs")}>
+                <SelectItem value="relevance">Relevance</SelectItem>
+                <SelectItem value="newest">Newest</SelectItem>
+                <SelectItem value="rating">Top Rated</SelectItem>
+              </SelectContent>
+            </Select>
+            <div className="border-border flex border">
+              <Button
+                variant={viewMode === "grid" ? "default" : "ghost"}
+                size="sm"
+                onClick={() => onViewModeChange("grid")}
+                className={cn(mode.radius, "h-8 w-8 p-0")}
+              >
+                <Grid className="h-3 w-3" />
+              </Button>
+              <Button
+                variant={viewMode === "list" ? "default" : "ghost"}
+                size="sm"
+                onClick={() => onViewModeChange("list")}
+                className={cn(mode.radius, "border-border h-8 w-8 border-l p-0")}
+              >
+                <List className="h-3 w-3" />
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
-    </StyledCard>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

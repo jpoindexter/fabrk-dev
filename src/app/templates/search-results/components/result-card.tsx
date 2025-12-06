@@ -5,8 +5,7 @@
 
 import { Clock, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { StyledCard, StyledCardHeader } from "@/components/ui/card";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface Result {
@@ -25,8 +24,12 @@ interface ResultCardProps {
 
 export function ResultCard({ result }: ResultCardProps) {
   return (
-    <StyledCard className="hover:bg-muted/30 transition-colors">
-      <StyledCardHeader code="FILE" title={`result_${result.id}.tsx`} />
+    <div className="border-border bg-card hover:bg-muted/30 border transition-colors">
+      <div className="border-border flex items-center border-b px-4 py-2">
+        <span className={cn(mode.font, "text-muted-foreground text-xs")}>
+          [ RESULT ] result_{result.id}.tsx
+        </span>
+      </div>
       <div className="p-4">
         <div className="mb-2 flex items-start justify-between gap-2">
           <h3 className={cn(mode.font, "text-base font-semibold")}>{result.title}</h3>

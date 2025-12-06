@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Check, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 interface PricingPlan {
   name: string;
@@ -102,7 +102,7 @@ const defaultPlans: PricingPlan[] = [
       authLibrary: "NextAuth v5",
     },
     highlighted: true,
-    cta: { text: "Get Fabrk Now", href: "#pricing" },
+    cta: { text: "> GET_FABRK", href: "#pricing" },
   },
 ];
 
@@ -142,7 +142,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
         {/* Section Header */}
         <div className="mb-16 text-center">
           <span className="text-muted-foreground text-xs">[0x00]</span>
-          <h2 className="text-foreground mb-4 text-3xl font-bold tracking-tight">
+          <h2 className="text-foreground mb-4 text-4xl font-semibold tracking-tight">
             COMPARE_AND_CHOOSE
           </h2>
           <p className="text-muted-foreground mx-auto max-w-2xl text-sm">
@@ -158,7 +158,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
           )}
         >
           <div className="inline-block min-w-full align-middle">
-            <table className={cn(mode.radius, "border-foreground min-w-full border-2 shadow")}>
+            <table className={cn(mode.radius, "border-foreground min-w-full border-2")}>
               {/* Header Row */}
               <thead>
                 <tr>
@@ -175,7 +175,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                       <div className="flex flex-col items-start gap-2">
                         <div>
                           <h3
-                            className={`text-xl font-bold ${
+                            className={`text-xl font-semibold ${
                               plan.highlighted ? "text-primary-foreground" : "text-foreground"
                             }`}
                           >
@@ -192,7 +192,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                           </p>
                         </div>
                         <div
-                          className={`text-3xl font-bold ${
+                          className={`text-4xl font-semibold ${
                             plan.highlighted ? "text-primary-foreground" : "text-foreground"
                           }`}
                         >

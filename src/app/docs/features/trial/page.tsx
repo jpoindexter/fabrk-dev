@@ -1,11 +1,11 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
 import { Clock, CreditCard, Bell, TrendingUp } from "lucide-react";
 
 export const metadata = {
   title: "Free Trial System - Fabrk Docs",
-  description: "Offer free trials to convert more users. Configure trial length, show countdown banners, and integrate with Stripe billing.",
+  description:
+    "Offer free trials to convert more users. Configure trial length, show countdown banners, and integrate with Stripe billing.",
 };
 
 export default function TrialPage() {
@@ -17,10 +17,27 @@ export default function TrialPage() {
       description="Let users try your product before they buy with time-limited trials."
       overview="A free trial lets potential customers use your product for a limited time before paying. It's like test-driving a car before buying it. When the trial period ends, users either pay to continue or lose access to premium features. Fabrk's trial system integrates with Stripe so the conversion to paid happens automatically."
       features={[
-        { icon: Clock, title: "Configurable Duration", description: "Set trial length from 7 to 30 days. 14 days recommended for most SaaS products." },
-        { icon: Bell, title: "Countdown Banner", description: "Automatic banner showing days remaining with color-coded urgency levels." },
-        { icon: CreditCard, title: "Stripe Integration", description: "Seamless trial-to-paid conversion with optional credit card upfront." },
-        { icon: TrendingUp, title: "Abuse Prevention", description: "Track users who've already used trials to prevent multiple free trials." },
+        {
+          icon: Clock,
+          title: "Configurable Duration",
+          description:
+            "Set trial length from 7 to 30 days. 14 days recommended for most SaaS products.",
+        },
+        {
+          icon: Bell,
+          title: "Countdown Banner",
+          description: "Automatic banner showing days remaining with color-coded urgency levels.",
+        },
+        {
+          icon: CreditCard,
+          title: "Stripe Integration",
+          description: "Seamless trial-to-paid conversion with optional credit card upfront.",
+        },
+        {
+          icon: TrendingUp,
+          title: "Abuse Prevention",
+          description: "Track users who've already used trials to prevent multiple free trials.",
+        },
       ]}
       setup={[
         {
@@ -144,44 +161,28 @@ const subscription = await stripe.subscriptions.create({
       <DocsSection title="How Fabrk Trials Work">
         <div className="space-y-4">
           <DocsCard title="STEP_01">
-            <div className="flex items-center gap-4 mb-2">
-              <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">1</span>
-              <h3 className={`uppercase ${docsTypography.h4}`}>User Starts Trial</h3>
-            </div>
-            <p className={docsTypography.body}>
+            <p className="mb-4">
               User clicks &quot;Start Free Trial&quot; on your pricing page. They create an account
               (no credit card required by default) and immediately get access to premium features.
             </p>
           </DocsCard>
           <DocsCard title="STEP_02">
-            <div className="flex items-center gap-4 mb-2">
-              <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">2</span>
-              <h3 className={`uppercase ${docsTypography.h4}`}>Trial Banner Shows</h3>
-            </div>
-            <p className={docsTypography.body}>
-              While on trial, users see a banner showing how many days are left. This creates
-              gentle urgency without being annoying.
+            <p className="mb-4">
+              While on trial, users see a banner showing how many days are left. This creates gentle
+              urgency without being annoying.
             </p>
           </DocsCard>
           <DocsCard title="STEP_03">
-            <div className="flex items-center gap-4 mb-2">
-              <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">3</span>
-              <h3 className={`uppercase ${docsTypography.h4}`}>Urgency Near End</h3>
-            </div>
-            <p className={docsTypography.body}>
-              When trial is almost over (last 3 days), the banner becomes more prominent.
-              Users are prompted to subscribe before losing access.
+            <p className="mb-4">
+              When trial is almost over (last 3 days), the banner becomes more prominent. Users are
+              prompted to subscribe before losing access.
             </p>
           </DocsCard>
           <DocsCard title="STEP_04">
-            <div className="flex items-center gap-4 mb-2">
-              <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">4</span>
-              <h3 className={`uppercase ${docsTypography.h4}`}>Trial Expires</h3>
-            </div>
-            <p className={docsTypography.body}>
+            <p className="mb-4">
               When trial ends, users can no longer access premium features. They see a message
-              encouraging them to subscribe. If you require credit card upfront, Stripe automatically
-              starts charging.
+              encouraging them to subscribe. If you require credit card upfront, Stripe
+              automatically starts charging.
             </p>
           </DocsCard>
         </div>
@@ -191,32 +192,32 @@ const subscription = await stripe.subscriptions.create({
       <DocsSection title="Trial Banner States">
         <DocsCard title="BANNER_STATES">
           <div className="space-y-4">
-            <div className="flex items-center gap-4 p-4 border border-border bg-card">
-              <div className="h-3 w-3 rounded-none bg-success"></div>
+            <div className="border-border bg-card flex items-center gap-4 border p-4">
+              <div className="bg-success h-3 w-3 rounded-none"></div>
               <div>
-                <p className="text-sm font-medium">Plenty of time (8+ days)</p>
-                <p className={docsTypography.body}>&quot;You have 12 days left in your trial&quot;</p>
+                <p className="font-medium">Plenty of time (8+ days)</p>
+                <p>&quot;You have 12 days left in your trial&quot;</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 p-4 border border-border bg-card">
-              <div className="h-3 w-3 rounded-none bg-warning"></div>
+            <div className="border-border bg-card flex items-center gap-4 border p-4">
+              <div className="bg-warning h-3 w-3 rounded-none"></div>
               <div>
-                <p className="text-sm font-medium">Running low (4-7 days)</p>
-                <p className={docsTypography.body}>&quot;5 days left - Subscribe to keep access&quot;</p>
+                <p className="font-medium">Running low (4-7 days)</p>
+                <p>&quot;5 days left - Subscribe to keep access&quot;</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 p-4 border border-border bg-card">
-              <div className="h-3 w-3 rounded-none bg-destructive"></div>
+            <div className="border-border bg-card flex items-center gap-4 border p-4">
+              <div className="bg-destructive h-3 w-3 rounded-none"></div>
               <div>
-                <p className="text-sm font-medium">Urgent (1-3 days)</p>
-                <p className={docsTypography.body}>&quot;Trial ends tomorrow! Subscribe now&quot;</p>
+                <p className="font-medium">Urgent (1-3 days)</p>
+                <p>&quot;Trial ends tomorrow! Subscribe now&quot;</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 p-4 border border-border bg-card">
-              <div className="h-3 w-3 rounded-none bg-muted-foreground"></div>
+            <div className="border-border bg-card flex items-center gap-4 border p-4">
+              <div className="bg-muted-foreground h-3 w-3 rounded-none"></div>
               <div>
-                <p className="text-sm font-medium">Expired</p>
-                <p className={docsTypography.body}>&quot;Your trial has ended. Subscribe to continue&quot;</p>
+                <p className="font-medium">Expired</p>
+                <p>&quot;Your trial has ended. Subscribe to continue&quot;</p>
               </div>
             </div>
           </div>
@@ -226,26 +227,41 @@ const subscription = await stripe.subscriptions.create({
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
         <DocsCard title="BEST_PRACTICES">
-          <ul className={`${docsTypography.body} space-y-4`}>
+          <ul className="space-y-4">
             <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">1.</span>
-              <span><strong>Email reminders:</strong> Send emails at trial midpoint, 3 days before, and 1 day before expiration.</span>
+              <span className="text-primary font-semibold">1.</span>
+              <span>
+                <strong>Email reminders:</strong> Send emails at trial midpoint, 3 days before, and
+                1 day before expiration.
+              </span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">2.</span>
-              <span><strong>Show value early:</strong> Get users to their &quot;aha moment&quot; in the first 2 days, not day 14.</span>
+              <span className="text-primary font-semibold">2.</span>
+              <span>
+                <strong>Show value early:</strong> Get users to their &quot;aha moment&quot; in the
+                first 2 days, not day 14.
+              </span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">3.</span>
-              <span><strong>Don&apos;t restrict too much:</strong> Let trial users see the full product. Restricted trials feel frustrating.</span>
+              <span className="text-primary font-semibold">3.</span>
+              <span>
+                <strong>Don&apos;t restrict too much:</strong> Let trial users see the full product.
+                Restricted trials feel frustrating.
+              </span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">4.</span>
-              <span><strong>Track engagement:</strong> Users who don&apos;t engage by day 3 rarely convert. Reach out proactively.</span>
+              <span className="text-primary font-semibold">4.</span>
+              <span>
+                <strong>Track engagement:</strong> Users who don&apos;t engage by day 3 rarely
+                convert. Reach out proactively.
+              </span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">5.</span>
-              <span><strong>Prevent abuse:</strong> Fabrk tracks who has used a trial before, preventing multiple free trials per user.</span>
+              <span className="text-primary font-semibold">5.</span>
+              <span>
+                <strong>Prevent abuse:</strong> Fabrk tracks who has used a trial before, preventing
+                multiple free trials per user.
+              </span>
             </li>
           </ul>
         </DocsCard>
@@ -254,11 +270,11 @@ const subscription = await stripe.subscriptions.create({
       {/* Common Questions Section */}
       <DocsSection title="Common Questions">
         <div className="space-y-4">
-          <details className="border border-border bg-card">
+          <details className="border-border bg-card border">
             <summary className="cursor-pointer p-4 font-medium">
               Can users get multiple free trials?
             </summary>
-            <div className="border-t p-4 text-sm text-muted-foreground">
+            <div className="text-muted-foreground border-t p-4 text-sm">
               <p>
                 No. Fabrk tracks whether a user has already used a trial. Once they&apos;ve had one,
                 they can only subscribe (no second trial). This prevents abuse.
@@ -266,23 +282,23 @@ const subscription = await stripe.subscriptions.create({
             </div>
           </details>
 
-          <details className="border border-border bg-card">
+          <details className="border-border bg-card border">
             <summary className="cursor-pointer p-4 font-medium">
               What happens to user data when trial expires?
             </summary>
-            <div className="border-t p-4 text-sm text-muted-foreground">
+            <div className="text-muted-foreground border-t p-4 text-sm">
               <p>
-                User data is preserved. They just can&apos;t access premium features. If they subscribe
-                later, all their data is still there. This encourages conversion.
+                User data is preserved. They just can&apos;t access premium features. If they
+                subscribe later, all their data is still there. This encourages conversion.
               </p>
             </div>
           </details>
 
-          <details className="border border-border bg-card">
+          <details className="border-border bg-card border">
             <summary className="cursor-pointer p-4 font-medium">
               Should I require a credit card for trials?
             </summary>
-            <div className="border-t p-4 text-sm text-muted-foreground">
+            <div className="text-muted-foreground border-t p-4 text-sm">
               <p>
                 It depends on your business. Card-required trials have fewer signups but higher
                 conversion (40-60%). No-card trials get more signups but lower conversion (10-20%).
@@ -291,15 +307,15 @@ const subscription = await stripe.subscriptions.create({
             </div>
           </details>
 
-          <details className="border border-border bg-card">
+          <details className="border-border bg-card border">
             <summary className="cursor-pointer p-4 font-medium">
               How do I extend someone&apos;s trial?
             </summary>
-            <div className="border-t p-4 text-sm text-muted-foreground">
+            <div className="text-muted-foreground border-t p-4 text-sm">
               <p>
-                Update the user&apos;s <code className="bg-muted px-1 font-mono">trialEndsAt</code> field
-                in the database to a future date. You can also do this via Stripe if using their
-                trial system.
+                Update the user&apos;s <code className="bg-muted px-1 font-mono">trialEndsAt</code>{" "}
+                field in the database to a future date. You can also do this via Stripe if using
+                their trial system.
               </p>
             </div>
           </details>

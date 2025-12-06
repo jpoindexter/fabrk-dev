@@ -18,7 +18,7 @@
 import * as React from "react";
 import dynamic from "next/dynamic";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 /**
  * Lazy-loaded Rich Text Editor

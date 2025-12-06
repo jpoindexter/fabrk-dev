@@ -29,24 +29,27 @@ function TestimonialsDemo() {
   return (
     <section className="w-full font-mono">
       <div className="mb-6 text-center">
-        <span className="text-xs text-muted-foreground">[0x40]</span>
-        <h2 className="mt-2 text-xl font-bold">LOVED_BY_DEVELOPERS</h2>
-        <p className="mt-1 text-xs text-muted-foreground">&gt; Early access customer feedback</p>
+        <span className="text-muted-foreground text-xs">[0x40]</span>
+        <h2 className="mt-2 text-xl font-semibold">LOVED_BY_DEVELOPERS</h2>
+        <p className="text-muted-foreground mt-1 text-xs">&gt; Early access customer feedback</p>
       </div>
       <div className="grid gap-4 md:grid-cols-3">
         {testimonials.map((t, i) => (
-          <div key={i} className="border border-border bg-card p-4 transition-all hover:border-primary/50">
-            <div className="mb-2 text-xs text-muted-foreground">[0x0{i + 1}]</div>
-            <p className="mb-4 text-xs text-muted-foreground">&quot;{t.quote}&quot;</p>
+          <div
+            key={i}
+            className="border-border bg-card hover:border-primary/50 border p-4 transition-all"
+          >
+            <div className="text-muted-foreground mb-2 text-xs">[0x0{i + 1}]</div>
+            <p className="text-muted-foreground mb-4 text-xs">&quot;{t.quote}&quot;</p>
             <div className="flex items-center gap-4">
-              <Avatar className="h-8 w-8 rounded-none">
-                <AvatarFallback className="rounded-none bg-primary/10 text-xs text-primary">
+              <Avatar className="h-8 w-8">
+                <AvatarFallback className="bg-primary/10 text-primary text-xs">
                   {t.initials}
                 </AvatarFallback>
               </Avatar>
               <div>
                 <span className="block text-xs font-semibold">{t.author}</span>
-                <span className="block text-xs text-muted-foreground">{t.role}</span>
+                <span className="text-muted-foreground block text-xs">{t.role}</span>
               </div>
             </div>
           </div>
@@ -60,18 +63,18 @@ function TestimonialsDemo() {
 function TestimonialCardDemo() {
   return (
     <div className="w-full max-w-md font-mono">
-      <div className="mb-2 text-xs text-muted-foreground">[0x01]</div>
-      <p className="mb-6 text-sm text-muted-foreground">
-        &quot;This boilerplate helped me launch my SaaS in just 3 days. The authentication and payment
-        integration worked perfectly from day one.&quot;
+      <div className="text-muted-foreground mb-2 text-xs">[0x01]</div>
+      <p className="text-muted-foreground mb-6 text-sm">
+        &quot;This boilerplate helped me launch my SaaS in just 3 days. The authentication and
+        payment integration worked perfectly from day one.&quot;
       </p>
       <div className="flex items-center gap-4">
-        <Avatar className="h-10 w-10 rounded-none">
-          <AvatarFallback className="rounded-none bg-primary/10 text-primary">JD</AvatarFallback>
+        <Avatar className="h-10 w-10">
+          <AvatarFallback className="bg-primary/10 text-primary">JD</AvatarFallback>
         </Avatar>
         <div>
           <span className="block text-sm font-semibold">JOHN_DOE</span>
-          <span className="block text-xs text-muted-foreground">Founder @ StartupCo</span>
+          <span className="text-muted-foreground block text-xs">Founder @ StartupCo</span>
         </div>
       </div>
     </div>
@@ -127,17 +130,19 @@ export default function LandingPage() {
             <div className="flex items-center gap-4">
               <div className="flex -space-x-2">
                 {["SC", "MJ", "ER", "DK"].map((initials, i) => (
-                  <Avatar key={i} className="h-8 w-8 rounded-none border-2 border-background">
-                    <AvatarFallback className="rounded-none bg-primary/10 text-xs text-primary">
+                  <Avatar key={i} className="border-background h-8 w-8 border-2">
+                    <AvatarFallback className="bg-primary/10 text-primary text-xs">
                       {initials}
                     </AvatarFallback>
                   </Avatar>
                 ))}
-                <div className="flex h-8 w-8 items-center justify-center rounded-none border-2 border-background bg-muted font-mono text-xs">
+                <div className="border-background bg-muted flex h-8 w-8 items-center justify-center border-2 font-mono text-xs">
                   +99
                 </div>
               </div>
-              <span className="font-mono text-xs text-muted-foreground">Trusted by 500+ developers</span>
+              <span className="text-muted-foreground font-mono text-xs">
+                Trusted by 500+ developers
+              </span>
             </div>
           ),
           code: `<div className="flex items-center gap-4">

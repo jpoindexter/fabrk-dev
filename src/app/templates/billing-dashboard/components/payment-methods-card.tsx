@@ -4,9 +4,9 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { StyledCard, StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { CreditCard, Plus } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface PaymentMethod {
@@ -24,9 +24,13 @@ interface PaymentMethodsCardProps {
 
 export function PaymentMethodsCard({ paymentMethods }: PaymentMethodsCardProps) {
   return (
-    <StyledCard>
-      <StyledCardHeader code="0x00" title="PAYMENT_METHODS" />
-      <div className="p-4">
+    <TerminalCard tone="neutral">
+      <TerminalCardHeader
+        code="0x00"
+        title="PAYMENT_METHODS"
+        icon={<CreditCard className="size-4" />}
+      />
+      <TerminalCardContent padding="md">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [PAYMENT_METHODS]:
         </div>
@@ -38,15 +42,15 @@ export function PaymentMethodsCard({ paymentMethods }: PaymentMethodsCardProps) 
               className="border-border flex items-center justify-between border p-4"
             >
               <div className="flex items-center gap-4">
-                <div className="border-border bg-muted flex h-8 w-8 items-center justify-center border">
-                  <CreditCard className="h-4 w-4" />
+                <div className="border-border bg-muted flex size-8 items-center justify-center border">
+                  <CreditCard className="size-4" />
                 </div>
                 <div className={cn(mode.radius, mode.font, "text-xs")}>
                   <div>
                     {method.brand} **** {method.last4}
                   </div>
                   <div className="text-muted-foreground">
-                    EXP: {method.expMonth}/{method.expYear}
+                    [EXP]: {method.expMonth}/{method.expYear}
                   </div>
                 </div>
               </div>
@@ -69,10 +73,10 @@ export function PaymentMethodsCard({ paymentMethods }: PaymentMethodsCardProps) 
           size="sm"
           className={cn(mode.radius, mode.font, "mt-4 w-full text-xs")}
         >
-          <Plus className="mr-2 h-3 w-3" />
+          <Plus className="mr-2 size-3" />
           &gt; ADD_PAYMENT_METHOD
         </Button>
-      </div>
-    </StyledCard>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

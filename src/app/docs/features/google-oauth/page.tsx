@@ -186,7 +186,7 @@ export function LoginForm() {
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
         <DocsCard title="BEST_PRACTICES">
-          <ul className="font-mono text-sm text-muted-foreground space-y-1">
+          <ul className="space-y-1">
             <li>├─ Always offer email/password as an alternative to OAuth</li>
             <li>├─ Handle account linking for users who sign up with email first</li>
             <li>├─ Request minimal scopes (email, profile, openid)</li>

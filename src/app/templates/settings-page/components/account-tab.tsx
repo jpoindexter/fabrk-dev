@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label";
 import { User, Shield } from "lucide-react";
 import { CodeWindow } from "./code-window";
 import { SectionHeader } from "./section-header";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function AccountTab() {

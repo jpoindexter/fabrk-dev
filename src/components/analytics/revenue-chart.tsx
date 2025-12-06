@@ -25,12 +25,12 @@ import {
 } from "recharts";
 import { DollarSign, TrendingUp } from "lucide-react";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 export interface RevenueDataPoint {
   period: string;
   mrr: number;
@@ -107,16 +107,20 @@ export function RevenueChart({
         if (active && payload && payload.length) {
           return (
             <div className={cn("border-border bg-card border p-4", mode.radius)}>
-              <p className="text-foreground mb-2 text-sm font-bold">{payload[0].payload.period}</p>
+              <p className="text-foreground mb-2 text-sm font-semibold">
+                {payload[0].payload.period}
+              </p>
               <div className="space-y-1">
                 <p className="text-muted-foreground text-xs">
                   MRR:{" "}
-                  <span className="text-primary font-bold">{formatCurrency(payload[0].value)}</span>
+                  <span className="text-primary font-semibold">
+                    {formatCurrency(payload[0].value)}
+                  </span>
                 </p>
                 {showArr && payload[1] && (
                   <p className="text-muted-foreground text-xs">
                     ARR:{" "}
-                    <span className="text-accent font-bold">
+                    <span className="text-accent font-semibold">
                       {formatCurrency(payload[1].value)}
                     </span>
                   </p>
@@ -131,38 +135,30 @@ export function RevenueChart({
   );
 
   return (
-    <Card className={cn("overflow-hidden", className)}>
-      <CardHeader className="pb-4">
-        <div className="flex items-start justify-between">
-          <div>
-            <CardTitle className="flex items-center gap-2 text-base font-black">
-              <DollarSign className="text-primary h-4 w-4" />
-              Revenue Analytics
-            </CardTitle>
-            <p className="text-muted-foreground mt-1 text-xs">
-              Monthly Recurring Revenue (MRR) {showArr && "and Annual Recurring Revenue (ARR)"}
-            </p>
-          </div>
+    <TerminalCard className={cn("overflow-hidden", className)}>
+      <TerminalCardHeader
+        code="0x01"
+        title="REVENUE_ANALYTICS"
+        icon={<DollarSign className="h-4 w-4" />}
+        meta={
           <Badge variant="default" className="font-medium">
             <TrendingUp className="mr-1 h-3 w-3" />
             {growthRate}% growth
           </Badge>
-        </div>
-      </CardHeader>
+        }
+      />
 
-      <CardContent className="space-y-6">
+      <TerminalCardContent padding="md" className="space-y-6">
         {/* Key Metrics */}
         <div className="grid grid-cols-2 gap-4">
           <div className={cn("border-border bg-card border p-4", mode.radius)}>
             <p className="text-muted-foreground mb-1 text-xs font-medium">Current MRR</p>
-            <p className="text-foreground text-2xl font-black">
-              {formatCompactCurrency(latestMRR)}
-            </p>
+            <p className="text-foreground text-2xl font-bold">{formatCompactCurrency(latestMRR)}</p>
           </div>
           {showArr && (
             <div className={cn("border-border bg-accent/50 border p-4", mode.radius)}>
               <p className="text-muted-foreground mb-1 text-xs font-medium">Projected ARR</p>
-              <p className="text-foreground text-2xl font-black">
+              <p className="text-foreground text-2xl font-bold">
                 {formatCompactCurrency(latestARR)}
               </p>
             </div>
@@ -291,7 +287,7 @@ export function RevenueChart({
             )}
           </ResponsiveContainer>
         </div>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

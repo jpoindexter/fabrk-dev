@@ -23,7 +23,7 @@
 import * as React from "react";
 import { X, Send, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { mode, formatLabel } from "@/lib/design-system";
+import { mode, formatLabel } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -337,11 +337,11 @@ const InviteForm = React.forwardRef<HTMLFormElement, InviteFormProps>(
             type="submit"
             className="w-full"
             loading={isSubmitting}
-            loadingText="Sending invites..."
+            loadingText="> SENDING..."
             disabled={isSubmitting}
           >
             <Send className="h-4 w-4" />
-            Send Invitation{allowMultiple && emails.length > 1 ? "s" : ""}
+            &gt; SEND_INVITATION
           </Button>
         </div>
       </form>

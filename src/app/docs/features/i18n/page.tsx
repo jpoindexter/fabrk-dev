@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsCallout } from "@/components/docs";
-import { docsTypography, docsSpacing } from "@/components/docs";
 import Link from "next/link";
 import { Globe, Languages, Flag, Folder, FileJson, Settings } from "lucide-react";
 
@@ -259,27 +258,27 @@ export const localeFlags: Record<Locale, string> = {
       <DocsSection title="Included Languages">
         <DocsCard title="SUPPORTED_LOCALES">
           <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-            <div className="flex items-center gap-2 font-mono text-sm">
+            <div className="flex items-center gap-2">
               <span className="text-2xl">🇺🇸</span>
               <span>en - English</span>
             </div>
-            <div className="flex items-center gap-2 font-mono text-sm">
+            <div className="flex items-center gap-2">
               <span className="text-2xl">🇪🇸</span>
               <span>es - Español</span>
             </div>
-            <div className="flex items-center gap-2 font-mono text-sm">
+            <div className="flex items-center gap-2">
               <span className="text-2xl">🇫🇷</span>
               <span>fr - Français</span>
             </div>
-            <div className="flex items-center gap-2 font-mono text-sm">
+            <div className="flex items-center gap-2">
               <span className="text-2xl">🇩🇪</span>
               <span>de - Deutsch</span>
             </div>
-            <div className="flex items-center gap-2 font-mono text-sm">
+            <div className="flex items-center gap-2">
               <span className="text-2xl">🇧🇷</span>
               <span>pt - Português</span>
             </div>
-            <div className="flex items-center gap-2 font-mono text-sm">
+            <div className="flex items-center gap-2">
               <span className="text-2xl">🇯🇵</span>
               <span>ja - 日本語</span>
             </div>
@@ -290,40 +289,38 @@ export const localeFlags: Record<Locale, string> = {
       {/* Message Namespaces */}
       <DocsSection title="Message Namespaces">
         <DocsCard title="NAMESPACES">
-          <p className={`${docsTypography.body} mb-4`}>
-            Messages are organized into logical namespaces:
-          </p>
-          <div className="space-y-2 text-sm">
+          <p className="mb-4">Messages are organized into logical namespaces:</p>
+          <div className="space-y-2">
             <div className="border-border flex justify-between border-b pb-2">
-              <code className={docsTypography.code}>common</code>
+              <code className="bg-muted px-1">common</code>
               <span className="text-muted-foreground">
                 Shared strings (loading, save, cancel, etc.)
               </span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
-              <code className={docsTypography.code}>auth</code>
+              <code className="bg-muted px-1">auth</code>
               <span className="text-muted-foreground">
                 Authentication (sign in, sign up, password)
               </span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
-              <code className={docsTypography.code}>nav</code>
+              <code className="bg-muted px-1">nav</code>
               <span className="text-muted-foreground">Navigation labels (dashboard, settings)</span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
-              <code className={docsTypography.code}>dashboard</code>
+              <code className="bg-muted px-1">dashboard</code>
               <span className="text-muted-foreground">Dashboard-specific strings</span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
-              <code className={docsTypography.code}>settings</code>
+              <code className="bg-muted px-1">settings</code>
               <span className="text-muted-foreground">Settings page strings</span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
-              <code className={docsTypography.code}>billing</code>
+              <code className="bg-muted px-1">billing</code>
               <span className="text-muted-foreground">Billing and subscription strings</span>
             </div>
             <div className="flex justify-between">
-              <code className={docsTypography.code}>errors</code>
+              <code className="bg-muted px-1">errors</code>
               <span className="text-muted-foreground">Error messages</span>
             </div>
           </div>
@@ -338,7 +335,7 @@ export const localeFlags: Record<Locale, string> = {
           customer-facing content - machine translations often miss nuances.
         </DocsCallout>
         <DocsCard title="TIPS">
-          <ul className="text-muted-foreground space-y-1 font-mono text-sm">
+          <ul className="space-y-1">
             <li>
               ├─ <strong>Namespace by feature:</strong> Keep related strings together
             </li>
@@ -364,7 +361,7 @@ export const localeFlags: Record<Locale, string> = {
 
       {/* Common Questions */}
       <DocsSection title="Common Questions">
-        <div className={docsSpacing.sectionItems}>
+        <div className="space-y-4">
           <details className="border-border bg-card border">
             <summary className="cursor-pointer p-4 font-mono text-sm font-medium">
               How do I handle dynamic content?
@@ -411,10 +408,8 @@ export const localeFlags: Record<Locale, string> = {
               title="SEO_LOCALIZATION"
               className="hover:border-primary/50 h-full transition-all"
             >
-              <h3 className={`uppercase ${docsTypography.h4}`}>SEO for Multiple Languages</h3>
-              <p className={docsTypography.body}>
-                Learn how to optimize SEO metadata for each locale.
-              </p>
+              SEO for Multiple Languages
+              <p className="mb-6">Learn how to optimize SEO metadata for each locale.</p>
             </DocsCard>
           </Link>
           <Link href="/docs/features/lemonsqueezy">
@@ -422,10 +417,8 @@ export const localeFlags: Record<Locale, string> = {
               title="GLOBAL_PAYMENTS"
               className="hover:border-primary/50 h-full transition-all"
             >
-              <h3 className={`uppercase ${docsTypography.h4}`}>Global Payments</h3>
-              <p className={docsTypography.body}>
-                Accept payments from users worldwide with Lemon Squeezy.
-              </p>
+              Global Payments
+              <p className="mb-6">Accept payments from users worldwide with Lemon Squeezy.</p>
             </DocsCard>
           </Link>
         </div>

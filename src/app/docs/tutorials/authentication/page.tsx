@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
 import { Mail, Shield, Lock, User } from "lucide-react";
 
 export const metadata = {
@@ -141,12 +140,12 @@ export default async function PrivatePage() {
       {/* What is Authentication */}
       <DocsSection title="What is Authentication?">
         <DocsCard title="AUTHENTICATION">
-          <p className={docsTypography.body}>
+          <p className="mb-4">
             Authentication is how your app knows who someone is. When a user creates an account
             and logs in, your app gives them a &quot;pass&quot; (called a session) that proves their identity.
             This pass gets checked every time they access protected areas of your app.
           </p>
-          <p className={`${docsTypography.body} mt-2`}>
+          <p>
             Think of it like a hotel key card - you check in once (log in), get your key card (session),
             and use it to access your room (protected pages) without re-checking in every time.
           </p>
@@ -156,8 +155,7 @@ export default async function PrivatePage() {
       {/* Auth Flow */}
       <DocsSection title="How It Works">
         <DocsCard title="SIGNUP_FLOW">
-          <p className={`${docsTypography.label} mb-2`}>When User Signs Up</p>
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+          <div className="space-y-1">
             <div>├─ User enters email and password on the signup form</div>
             <div>├─ Password is encrypted (never stored as plain text)</div>
             <div>├─ Account is created in your database</div>
@@ -166,8 +164,7 @@ export default async function PrivatePage() {
           </div>
         </DocsCard>
         <DocsCard title="LOGIN_FLOW">
-          <p className={`${docsTypography.label} mb-2`}>When User Logs In</p>
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+          <div className="space-y-1">
             <div>├─ User enters email and password</div>
             <div>├─ System checks if the password matches</div>
             <div>├─ If correct, a session token is created</div>
@@ -180,19 +177,18 @@ export default async function PrivatePage() {
       {/* Google OAuth Setup */}
       <DocsSection title="Add Google Login">
         <DocsCard title="GOOGLE_OAUTH">
-          <p className={docsTypography.body}>
+          <p className="mb-4">
             Let users sign in with their Google account. This is convenient for users and often increases signup rates.
           </p>
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed mt-4">
+          <div className="space-y-1">
             <div><strong>Step 1:</strong> Go to <a href="https://console.cloud.google.com/" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Google Cloud Console</a> and create a new project</div>
             <div><strong>Step 2:</strong> Go to &quot;APIs &amp; Services&quot; → &quot;OAuth consent screen&quot; and configure</div>
             <div><strong>Step 3:</strong> Go to &quot;Credentials&quot; → &quot;Create Credentials&quot; → &quot;OAuth client ID&quot;</div>
-            <div><strong>Step 4:</strong> Add redirect URI: <code className="bg-muted px-1 font-mono text-xs">http://localhost:3000/api/auth/callback/google</code></div>
+            <div><strong>Step 4:</strong> Add redirect URI: <code className="bg-muted px-1">http://localhost:3000/api/auth/callback/google</code></div>
           </div>
         </DocsCard>
         <DocsCard title="CONFIGURATION">
-          <p className={`${docsTypography.label} mb-2`}>Add to .env.local</p>
-          <div className="font-mono text-sm text-muted-foreground">
+          <div>
             <code>GOOGLE_CLIENT_ID=&quot;your-client-id.apps.googleusercontent.com&quot;</code><br/>
             <code>GOOGLE_CLIENT_SECRET=&quot;your-client-secret&quot;</code>
           </div>
@@ -202,12 +198,12 @@ export default async function PrivatePage() {
       {/* Protected Routes */}
       <DocsSection title="Protected Routes">
         <DocsCard title="PROTECTED_ROUTES">
-          <p className={docsTypography.body}>Fabrk automatically protects these routes:</p>
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed mt-2">
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">/dashboard/*</code> - Main user dashboard</div>
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">/settings/*</code> - User settings pages</div>
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">/billing/*</code> - Payment and subscription pages</div>
-            <div>└─ <code className="bg-muted px-1 font-mono text-xs">/admin/*</code> - Admin-only pages</div>
+          <p className="mb-4">Fabrk automatically protects these routes:</p>
+          <div className="space-y-1">
+            <div>├─ <code className="bg-muted px-1">/dashboard/*</code> - Main user dashboard</div>
+            <div>├─ <code className="bg-muted px-1">/settings/*</code> - User settings pages</div>
+            <div>├─ <code className="bg-muted px-1">/billing/*</code> - Payment and subscription pages</div>
+            <div>└─ <code className="bg-muted px-1">/admin/*</code> - Admin-only pages</div>
           </div>
         </DocsCard>
       </DocsSection>
@@ -215,7 +211,7 @@ export default async function PrivatePage() {
       {/* FAQ */}
       <DocsSection title="Common Questions">
         <DocsCard title="FAQ">
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+          <div className="space-y-1">
             <div>├─ <strong>Session duration?</strong> 30 days by default. Change in src/lib/auth.ts</div>
             <div>├─ <strong>Force logout?</strong> Increment user&apos;s sessionVersion in database</div>
             <div>├─ <strong>Password security?</strong> bcrypt with 12 rounds - industry standard</div>

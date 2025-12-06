@@ -19,7 +19,7 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 export type InputGroupProps = React.ComponentProps<"div"> & {
   size?: "sm" | "md" | "lg";
@@ -42,7 +42,7 @@ function InputGroup({ className, size, ...props }: InputGroupProps) {
       data-size={size}
       role="group"
       className={cn(
-        "group/input-group border-input dark:bg-input/30 relative flex w-full items-center border shadow-xs transition-[color,box-shadow] focus-visible:outline-none",
+        "group/input-group border-input dark:bg-input/30 relative flex w-full items-center border transition-[color,box-shadow] focus-visible:outline-none",
         mode.radius,
         "h-9 has-[>textarea]:h-auto",
 
@@ -68,9 +68,9 @@ InputGroup.displayName = "InputGroup";
 
 const inputGroupAddonVariants = cva(
   cn(
-    "flex h-auto cursor-text select-none items-center justify-center gap-2 py-1.5 text-xs font-medium text-muted-foreground group-data-[disabled=true]/input-group:opacity-50 [&>svg:not([class*='size-'])]:size-4",
+    "flex h-auto cursor-text select-none items-center justify-center gap-2 py-2 text-xs font-medium text-muted-foreground group-data-[disabled=true]/input-group:opacity-50 [&>svg:not([class*='size-'])]:size-4",
     mode.font,
-    `[&>kbd]:${mode.radius}`
+    "[&>kbd]:rounded-none"
   ),
   {
     variants: {

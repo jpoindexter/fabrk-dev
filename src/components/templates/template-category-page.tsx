@@ -9,8 +9,17 @@
 import Link from "next/link";
 import { LucideIcon } from "lucide-react";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
+import {
+  PageBadge,
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+  FeatureList,
+  FeatureItem,
+  StyledLabel,
+} from "@/components/ui/card";
 interface Template {
   id: string;
   name: string;
@@ -49,15 +58,13 @@ export function TemplateCategoryPage({
       <main className="container mx-auto max-w-7xl space-y-12 px-6 py-12">
         {/* Category Header */}
         <section className="space-y-4">
-          <div className="border-border inline-block border px-4 py-1">
-            <span className={cn("text-muted-foreground text-xs", mode.font)}>
-              [CATEGORY]: {categoryCode}
-            </span>
-          </div>
+          <PageBadge prefix="CATEGORY">{categoryCode}</PageBadge>
           <div className="flex items-center gap-4">
             {CategoryIcon && <CategoryIcon className="text-primary h-6 w-6" />}
-            <h1 className={cn("text-3xl font-bold", mode.font)}>{title}</h1>
-            <span className={cn("border-border border px-2 py-0.5 text-xs", mode.font)}>
+            <h1 className={cn("text-4xl font-semibold", mode.font)}>{title}</h1>
+            <span
+              className={cn("border-border border px-2 py-0.5 text-xs", mode.font, mode.radius)}
+            >
               COUNT: {templates.length}
             </span>
           </div>
@@ -67,17 +74,14 @@ export function TemplateCategoryPage({
         <div className="grid gap-4 md:grid-cols-2">
           {templates.map((template) => (
             <Link key={template.id} href={template.href}>
-              <div className="border-border bg-card hover:border-primary/50 group border transition-colors">
-                {/* Card Header */}
-                <div className="border-border flex items-center justify-between border-b px-4 py-2">
-                  <span className={cn("text-muted-foreground text-xs", mode.font)}>
-                    [TEMPLATE]: {template.id.toUpperCase().replace(/-/g, "_")}
-                  </span>
-                  <template.icon className="text-muted-foreground size-4" />
-                </div>
+              <TerminalCard interactive size="full">
+                <TerminalCardHeader
+                  code="0x00"
+                  title={template.id.toUpperCase().replace(/-/g, "_")}
+                  icon={<template.icon className="text-muted-foreground size-4" />}
+                />
 
-                {/* Card Content */}
-                <div className="p-4">
+                <TerminalCardContent>
                   {/* Status & Badge */}
                   <div className={cn("mb-4 flex items-center justify-between text-xs", mode.font)}>
                     <div>
@@ -85,7 +89,12 @@ export function TemplateCategoryPage({
                       <span className="text-success">READY</span>
                     </div>
                     {template.badge && (
-                      <div className="border-primary/50 text-primary border px-2 py-0.5">
+                      <div
+                        className={cn(
+                          "border-primary/50 text-primary border px-2 py-0.5",
+                          mode.radius
+                        )}
+                      >
                         {template.badge.toUpperCase()}
                       </div>
                     )}
@@ -102,14 +111,16 @@ export function TemplateCategoryPage({
 
                   {/* Features */}
                   <div className="mb-4">
-                    <div className={cn("text-muted-foreground mb-2 text-xs", mode.font)}>
-                      [FEATURES]:
-                    </div>
+                    <StyledLabel className="mb-2">FEATURES</StyledLabel>
                     <div className="flex flex-wrap gap-2">
                       {template.features.map((feature) => (
                         <span
                           key={feature}
-                          className={cn("border-border border px-2 py-0.5 text-xs", mode.font)}
+                          className={cn(
+                            "border-border border px-2 py-0.5 text-xs",
+                            mode.font,
+                            mode.radius
+                          )}
                         >
                           {feature}
                         </span>
@@ -136,30 +147,26 @@ export function TemplateCategoryPage({
                       →
                     </span>
                   </div>
-                </div>
-              </div>
+                </TerminalCardContent>
+              </TerminalCard>
             </Link>
           ))}
         </div>
 
         {/* Template Features Card */}
-        <div className="border-border bg-card border">
-          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-            <span className={cn("text-muted-foreground text-xs", mode.font)}>[ features.md ]</span>
-          </div>
-          <div className="p-6">
-            <div className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
-              {featureCardTitle}
-            </div>
-            <div className={cn("space-y-2 text-xs", mode.font)}>
+        <TerminalCard size="auto">
+          <TerminalCardHeader code="0x01" title="features.md" />
+          <TerminalCardContent padding="lg">
+            <StyledLabel className="mb-4">
+              {featureCardTitle.replace(/[\[\]:]/g, "").trim()}
+            </StyledLabel>
+            <FeatureList>
               {features.map((feature, index) => (
-                <div key={index}>
-                  <span className="text-success">&gt;</span> {feature}
-                </div>
+                <FeatureItem key={index}>{feature}</FeatureItem>
               ))}
-            </div>
-          </div>
-        </div>
+            </FeatureList>
+          </TerminalCardContent>
+        </TerminalCard>
       </main>
     </div>
   );

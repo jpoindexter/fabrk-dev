@@ -4,10 +4,10 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Key, Copy, Trash2, Loader2 } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface ApiKey {
@@ -76,8 +76,8 @@ export function ApiKeysList({
 
   if (apiKeys.length === 0) {
     return (
-      <Card>
-        <CardContent className="space-y-4 pt-6 text-center">
+      <TerminalCard>
+        <TerminalCardContent className="space-y-4 pt-6 text-center">
           <Key className="text-muted-foreground mx-auto h-12 w-12" />
           <div>
             <h3 className="mb-1 font-semibold">No API keys yet</h3>
@@ -85,24 +85,25 @@ export function ApiKeysList({
               Create an API key to start making programmatic requests
             </p>
           </div>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
     );
   }
 
   return (
     <div className="space-y-4">
-      {apiKeys.map((apiKey) => (
-        <Card key={apiKey.id}>
-          <CardContent className="pt-6">
+      {apiKeys.map((apiKey, index) => (
+        <TerminalCard key={apiKey.id}>
+          <TerminalCardHeader
+            code={`0x${index.toString(16).padStart(2, "0")}`}
+            title={apiKey.name.toUpperCase().replace(/ /g, "_")}
+            icon={<Key className="h-4 w-4" />}
+          />
+          <TerminalCardContent>
             <div className="mb-4 flex items-start justify-between">
               <div className="flex items-start gap-6">
-                <div className={cn("bg-primary/10 border-border border p-4", mode.radius)}>
-                  <Key className="text-primary h-6 w-6" />
-                </div>
                 <div>
                   <div className="mb-1 flex flex-wrap items-center gap-2">
-                    <h3 className="font-semibold">{apiKey.name}</h3>
                     {apiKey.permissions.map((permission) => (
                       <Badge
                         key={permission}
@@ -160,8 +161,8 @@ export function ApiKeysList({
                 <Copy className="h-4 w-4" />
               </Button>
             </div>
-          </CardContent>
-        </Card>
+          </TerminalCardContent>
+        </TerminalCard>
       ))}
     </div>
   );

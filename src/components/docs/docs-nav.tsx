@@ -16,7 +16,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 // Convert to TERMINAL_CASE
@@ -193,7 +193,7 @@ export function DocsNav() {
           className="flex items-center gap-2 font-mono transition-opacity hover:opacity-80"
         >
           <span className="text-primary text-xs">&gt;</span>
-          <span className="text-sm font-bold tracking-tight">FABRK</span>
+          <span className="text-sm font-semibold tracking-tight">FABRK</span>
           <span className="text-muted-foreground hidden text-xs sm:inline">_DOCS</span>
         </Link>
 

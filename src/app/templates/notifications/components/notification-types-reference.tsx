@@ -4,8 +4,7 @@
  */
 
 import { getTypeIcon } from "./notification-types";
-import { StyledCard, StyledCardHeader } from "@/components/ui/card";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 const notificationTypes = [
@@ -22,11 +21,12 @@ export function NotificationTypesReference() {
       {notificationTypes.map((item) => {
         const Icon = getTypeIcon(item.type);
         return (
-          <StyledCard key={item.type}>
-            <StyledCardHeader
-              code={`0x0${notificationTypes.indexOf(item)}`}
-              title={item.type.toUpperCase()}
-            />
+          <div key={item.type} className="border-border bg-card border">
+            <div className="border-border flex items-center border-b px-4 py-2">
+              <span className={cn(mode.font, "text-muted-foreground text-xs")}>
+                [ {item.type.toUpperCase()} ] {item.type}.tsx
+              </span>
+            </div>
             <div className="p-4 text-center">
               <Icon className={`mx-auto mb-2 h-6 w-6 text-${item.color}`} />
               <div className={cn(mode.font, "text-xs font-medium")}>{item.label}</div>

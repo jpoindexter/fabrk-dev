@@ -4,7 +4,7 @@
 
 import { ArrowUpDown } from "lucide-react";
 import type { Column } from "@tanstack/react-table";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function DataTableColumnHeader<TData>({

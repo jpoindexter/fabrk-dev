@@ -5,7 +5,7 @@
 
 import { Suspense } from "react";
 import { prisma } from "@/lib/prisma";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   Table,
@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/table";
 import { format } from "date-fns";
 import { Shield, User, Building, Key, Flag } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 async function getAuditLogs() {
@@ -136,20 +136,20 @@ export default function AuditLogPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Audit Log</h1>
+        <h1 className="text-4xl font-semibold tracking-tight">Audit Log</h1>
         <p className="text-muted-foreground">
           Immutable audit trail of all sensitive operations (showing last 100 entries)
         </p>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Security Events</CardTitle>
-          <CardDescription>
-            All security-sensitive actions are logged here. Logs cannot be deleted or modified.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
+      <TerminalCard tone="neutral">
+        <TerminalCardHeader
+          code="0x01"
+          title="SECURITY_EVENTS"
+          meta="Immutable logs"
+          icon={<Shield className="h-4 w-4" />}
+        />
+        <TerminalCardContent>
           <Suspense
             fallback={
               <div className="flex h-48 items-center justify-center">
@@ -159,8 +159,8 @@ export default function AuditLogPage() {
           >
             <AuditLogTable />
           </Suspense>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
 
       <div className={cn("border-warning/20 bg-warning/10 border p-4", mode.radius)}>
         <h3 className="text-warning dark:text-warning mb-2 flex items-center gap-2 font-semibold">

@@ -34,11 +34,11 @@ export default async function BlogPage({
       <div className="container mx-auto px-4 py-12">
         {/* Header */}
         <div className="border-border bg-card mb-12 border">
-          <div className="border-border border-b px-6 py-3">
+          <div className="border-border border-b px-6 py-2">
             <span className="text-muted-foreground font-mono text-xs">[ BLOG ]</span>
           </div>
           <div className="p-6">
-            <h1 className="text-foreground mb-2 font-mono text-3xl font-bold">&gt; LATEST_POSTS</h1>
+            <h1 className="text-foreground mb-2 font-mono text-4xl font-semibold">&gt; LATEST_POSTS</h1>
             <p className="text-muted-foreground font-mono text-sm">
               Articles, tutorials, and updates
             </p>
@@ -51,7 +51,7 @@ export default async function BlogPage({
             <div className="flex flex-wrap gap-2">
               <Link
                 href="/blog"
-                className={`border px-3 py-1 font-mono text-xs transition-colors ${
+                className={`border px-4 py-1 font-mono text-xs transition-colors ${
                   !categorySlug
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border bg-card text-muted-foreground hover:border-primary hover:text-foreground"
@@ -63,7 +63,7 @@ export default async function BlogPage({
                 <Link
                   key={cat.id}
                   href={`/blog?category=${cat.slug}`}
-                  className={`border px-3 py-1 font-mono text-xs transition-colors ${
+                  className={`border px-4 py-1 font-mono text-xs transition-colors ${
                     categorySlug === cat.slug
                       ? "border-primary bg-primary text-primary-foreground"
                       : "border-border bg-card text-muted-foreground hover:border-primary hover:text-foreground"
@@ -106,7 +106,7 @@ export default async function BlogPage({
                       <span>•</span>
                       <span>{formatReadTime(post.readTime || 1)}</span>
                     </div>
-                    <h3 className="text-foreground group-hover:text-primary mb-2 font-mono text-lg font-bold">
+                    <h3 className="text-foreground group-hover:text-primary mb-2 font-mono text-lg font-semibold">
                       {post.title}
                     </h3>
                     {post.excerpt && (
@@ -136,7 +136,7 @@ export default async function BlogPage({
                     )}
                     <span>{formatDate(post.publishedAt || post.createdAt)}</span>
                   </div>
-                  <h3 className="text-foreground group-hover:text-primary mb-2 font-mono text-sm font-bold">
+                  <h3 className="text-foreground group-hover:text-primary mb-2 font-mono text-sm font-semibold">
                     {post.title}
                   </h3>
                   <div className="text-muted-foreground font-mono text-xs">

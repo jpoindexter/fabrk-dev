@@ -80,7 +80,7 @@ export function DocsCallout({ variant = "info", title, children, className }: Do
         <div className="flex items-start gap-4">
           <Icon className={cn("mt-0.5 h-5 w-5 shrink-0", config.iconColor)} aria-hidden="true" />
           <div className="space-y-1">
-            {title && <p className={`font-bold uppercase ${docsTypography.h4}`}>{title}</p>}
+            {title && <p className={`font-semibold uppercase ${docsTypography.h4}`}>{title}</p>}
             <div className={docsTypography.body}>{children}</div>
           </div>
         </div>

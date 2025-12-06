@@ -11,14 +11,13 @@ import {
   CheckCircle2,
   AlertTriangle,
   TrendingUp,
+  CreditCard,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import type { Organization, Subscription } from "./types";
 import { getStatusBadge } from "./utils";
-import { mode } from "@/lib/design-system";
-import { cn } from "@/lib/utils";
 
 interface CurrentPlanCardProps {
   organization: Organization;
@@ -37,22 +36,19 @@ export function CurrentPlanCard({
   onUpgrade,
 }: CurrentPlanCardProps) {
   return (
-    <Card className={cn("border-border border", mode.radius)}>
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <div>
-            <CardTitle>Current Plan</CardTitle>
-            <CardDescription>Your organization's subscription and billing details</CardDescription>
-          </div>
-          {subscription && getStatusBadge(subscription.status)}
-        </div>
-      </CardHeader>
-      <CardContent>
+    <TerminalCard>
+      <TerminalCardHeader
+        code="0x00"
+        title="CURRENT_PLAN"
+        icon={<CreditCard className="text-muted-foreground size-4" />}
+        meta={subscription && getStatusBadge(subscription.status)}
+      />
+      <TerminalCardContent padding="lg">
         {subscription ? (
           <div className="space-y-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-2xl font-bold">{subscription.plan.name}</p>
+                <p className="text-2xl font-semibold">{subscription.plan.name}</p>
                 <p className="text-muted-foreground">
                   ${(subscription.plan.amount / 100).toFixed(2)} / {subscription.plan.interval}
                 </p>
@@ -61,12 +57,12 @@ export function CurrentPlanCard({
                 <div className="flex gap-2">
                   <Button variant="outline" onClick={onUpgrade}>
                     <TrendingUp className="mr-2 h-4 w-4" />
-                    Upgrade Plan
+                    &gt; UPGRADE_PLAN
                   </Button>
                   <Button onClick={onManageBilling} disabled={loadingPortal}>
                     {loadingPortal && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                     <ExternalLink className="mr-2 h-4 w-4" />
-                    Manage Billing
+                    &gt; MANAGE_BILLING
                   </Button>
                 </div>
               )}
@@ -75,7 +71,7 @@ export function CurrentPlanCard({
             <Separator />
 
             <div className="grid gap-4 md:grid-cols-3">
-              <div className={cn("border-border bg-card border p-4", mode.radius)}>
+              <div className="border-border bg-card rounded-none border p-4">
                 <div className="text-muted-foreground flex items-center gap-2 text-sm">
                   <Calendar className="h-4 w-4" />
                   Billing Period
@@ -85,7 +81,7 @@ export function CurrentPlanCard({
                 </p>
               </div>
 
-              <div className={cn("border-border bg-card border p-4", mode.radius)}>
+              <div className="border-border bg-card rounded-none border p-4">
                 <div className="text-muted-foreground flex items-center gap-2 text-sm">
                   <DollarSign className="h-4 w-4" />
                   Next Payment
@@ -93,7 +89,7 @@ export function CurrentPlanCard({
                 <p className="mt-2 font-medium">${(subscription.plan.amount / 100).toFixed(2)}</p>
               </div>
 
-              <div className={cn("border-border bg-card border p-4", mode.radius)}>
+              <div className="border-border bg-card rounded-none border p-4">
                 <div className="text-muted-foreground flex items-center gap-2 text-sm">
                   <CheckCircle2 className="h-4 w-4" />
                   Status
@@ -103,16 +99,11 @@ export function CurrentPlanCard({
             </div>
 
             {subscription.cancelAtPeriodEnd && (
-              <div
-                className={cn(
-                  "border-border border-destructive bg-destructive/10 border p-4",
-                  mode.radius
-                )}
-              >
+              <div className="border-border border-destructive bg-destructive/10 rounded-none border p-4">
                 <div className="flex items-start gap-4">
                   <AlertTriangle className="text-destructive h-5 w-5" />
                   <div>
-                    <h4 className="text-destructive font-medium">Subscription Ending</h4>
+                    <h4 className="text-destructive font-semibold">Subscription Ending</h4>
                     <p className="text-muted-foreground mt-1 text-sm">
                       Your subscription will end on{" "}
                       {new Date(subscription.currentPeriodEnd).toLocaleDateString()}. You can
@@ -126,19 +117,19 @@ export function CurrentPlanCard({
         ) : (
           <div className="py-12 text-center">
             <DollarSign className="text-muted-foreground mx-auto h-12 w-12" />
-            <h3 className="mt-4 text-lg font-medium">No Active Subscription</h3>
+            <h3 className="mt-4 text-lg font-semibold">No Active Subscription</h3>
             <p className="text-muted-foreground mt-2 text-sm">
               Upgrade to a paid plan to unlock premium features
             </p>
             {isOwnerOrAdmin && (
               <Button onClick={onUpgrade} className="mt-4">
                 <TrendingUp className="mr-2 h-4 w-4" />
-                View Plans
+                &gt; VIEW_PLANS
               </Button>
             )}
           </div>
         )}
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

@@ -5,7 +5,7 @@
 import { Table } from "@tanstack/react-table";
 import { flexRender } from "@tanstack/react-table";
 import type { User } from "./types";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface DataTableProps {

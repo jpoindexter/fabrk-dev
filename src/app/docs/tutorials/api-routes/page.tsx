@@ -159,7 +159,7 @@ export async function POST(request: Request) {
       {/* HTTP Status Codes */}
       <DocsSection title="HTTP Status Codes">
         <DocsCard title="HTTP_STATUS_CODES">
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+          <div className="space-y-1">
             <div>├─ <code className="bg-muted px-1 font-mono text-xs">200</code> - Success</div>
             <div>├─ <code className="bg-muted px-1 font-mono text-xs">201</code> - Created</div>
             <div>├─ <code className="bg-muted px-1 font-mono text-xs">400</code> - Bad request (invalid input)</div>

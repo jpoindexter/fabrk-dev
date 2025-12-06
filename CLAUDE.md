@@ -205,6 +205,40 @@ bg-white, bg-gray-*, text-gray-*, #hexvalues
 | lg | 24px | `p-6`, `gap-6` |
 | xl | 32px | `p-8`, `gap-8` |
 
+### Docs Page Typography (CRITICAL)
+
+**DocsCard already applies `font-mono text-xs text-muted-foreground` to all children.**
+
+```tsx
+// INSIDE DocsCard - NO typography classes needed (card handles it)
+<DocsCard title="EXAMPLE">
+  <p>This text is already styled by the card.</p>
+  <ul className="space-y-1">  {/* Only spacing, no font classes */}
+    <li>Item 1</li>
+  </ul>
+</DocsCard>
+
+// WRONG - Redundant/conflicting styles inside DocsCard
+<DocsCard title="EXAMPLE">
+  <p className="font-mono text-sm">This conflicts with card styling!</p>
+</DocsCard>
+
+// OUTSIDE DocsCard - Explicit typography required
+<details className="border border-border bg-card">
+  <summary className="cursor-pointer p-4 font-mono text-sm font-medium">
+    Question title (text-sm = 14px industry standard)
+  </summary>
+  <div className="border-t p-4 font-mono text-sm text-muted-foreground">
+    Answer content
+  </div>
+</details>
+```
+
+**Font Size Rules:**
+- `text-xs` (12px): Labels, captions, DocsCard content (via component)
+- `text-sm` (14px): Body text OUTSIDE DocsCard, details/accordion content
+- Never use `text-base` or larger for body text in terminal UI
+
 ---
 
 ## Documentation Templates

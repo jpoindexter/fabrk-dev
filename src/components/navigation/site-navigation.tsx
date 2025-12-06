@@ -12,12 +12,12 @@ import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from "@/components/ui/sheet";
 import { ThemeDropdown } from "@/components/theme/theme-dropdown";
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 // Global navigation links
 const navLinks = [
-  { label: "FEATURES", href: "/#features" },
+  { label: "FEATURES", href: "/features" },
   { label: "PRICING", href: "/#pricing" },
   { label: "DOCS", href: "/docs" },
   { label: "FAQ", href: "/#faq" },
@@ -60,7 +60,7 @@ export function SiteNavigation() {
             className={cn(mode.font, "flex items-center gap-2 transition-opacity hover:opacity-80")}
           >
             <span className="text-primary text-xs">&gt;</span>
-            <span className="text-sm font-bold tracking-tight">FABRK</span>
+            <span className="text-sm font-semibold tracking-tight">FABRK</span>
             <span className="text-muted-foreground hidden text-xs sm:inline">{suffix}</span>
           </Link>
         </motion.div>
@@ -86,7 +86,9 @@ export function SiteNavigation() {
                   ? false
                   : link.href === "/docs"
                     ? pathname.startsWith("/docs")
-                    : pathname === link.href;
+                    : link.href === "/features"
+                      ? pathname.startsWith("/features")
+                      : pathname === link.href;
 
                 return (
                   <Link
@@ -155,7 +157,9 @@ export function SiteNavigation() {
                     ? false
                     : link.href === "/docs"
                       ? pathname.startsWith("/docs")
-                      : pathname === link.href;
+                      : link.href === "/features"
+                        ? pathname.startsWith("/features")
+                        : pathname === link.href;
 
                   return (
                     <SheetClose key={link.href} asChild>

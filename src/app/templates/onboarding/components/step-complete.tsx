@@ -5,7 +5,7 @@
 
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface FormData {
@@ -36,7 +36,7 @@ export function StepComplete({ formData }: StepCompleteProps) {
         <div className={cn(mode.font, "text-muted-foreground mb-2 text-xs")}>
           [ACCOUNT_SUMMARY]:
         </div>
-        <div className={cn(mode.font, "space-y-1.5 text-xs")}>
+        <div className={cn(mode.font, "space-y-2 text-xs")}>
           <div>
             <span className="text-muted-foreground">NAME:</span> {formData.fullName || "Not set"}
           </div>

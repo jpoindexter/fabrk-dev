@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { X } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 interface NPSSurveyProps {
   onSubmit: (score: number, comment?: string) => void;
@@ -77,11 +77,11 @@ export function NPSSurvey({ onSubmit, onDismiss }: NPSSurveyProps) {
         />
 
         <div className="flex gap-4">
-          <Button onClick={handleSubmit} className="flex-1">
-            Submit Feedback
+          <Button onClick={handleSubmit} className={cn("flex-1", mode.font, "text-xs")}>
+            &gt; SUBMIT_FEEDBACK
           </Button>
-          <Button onClick={() => onDismiss?.()} variant="outline">
-            Skip
+          <Button onClick={() => onDismiss?.()} variant="outline" className={cn(mode.font, "text-xs")}>
+            &gt; SKIP
           </Button>
         </div>
       </div>

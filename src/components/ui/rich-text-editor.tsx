@@ -3,7 +3,7 @@
 import * as React from "react";
 import DOMPurify from "isomorphic-dompurify";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -361,10 +361,10 @@ const RichTextEditor = React.forwardRef<HTMLDivElement, RichTextEditorProps>(
             </div>
             <DialogFooter>
               <Button variant="outline" onClick={() => setIsLinkDialogOpen(false)}>
-                Cancel
+                &gt; CANCEL
               </Button>
               <Button onClick={handleInsertLink} disabled={!linkUrl}>
-                Insert Link
+                &gt; INSERT_LINK
               </Button>
             </DialogFooter>
           </DialogContent>

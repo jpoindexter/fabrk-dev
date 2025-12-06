@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -17,7 +17,7 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 const notificationsFormSchema = z.object({
   marketingEmails: z.boolean(),
@@ -77,14 +77,9 @@ export function NotificationsForm() {
   }
 
   return (
-    <Card className={mode.radius}>
-      <CardHeader>
-        <CardTitle className={cn(mode.font, "text-xs")}>[NOTIFICATIONS]:</CardTitle>
-        <CardDescription className={cn(mode.font, "text-xs")}>
-          Manage how and when you receive email notifications.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
+    <TerminalCard tone="neutral">
+      <TerminalCardHeader code="0x01" title="NOTIFICATIONS" />
+      <TerminalCardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
@@ -200,7 +195,7 @@ export function NotificationsForm() {
             </Button>
           </form>
         </Form>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

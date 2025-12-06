@@ -5,7 +5,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { StyledCard, StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -16,7 +16,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Globe, Download, Eye, FileText, UserX, AlertTriangle, Trash2 } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface ComplianceTabProps {
@@ -42,9 +42,9 @@ export function ComplianceTab({
   return (
     <div className="space-y-6">
       {/* GDPR Rights */}
-      <StyledCard>
-        <StyledCardHeader code="0x00" title="GDPR_RIGHTS" />
-        <div className="p-4">
+      <TerminalCard tone="neutral">
+        <TerminalCardHeader code="0x04" title="GDPR_RIGHTS" icon={<Globe className="h-4 w-4" />} />
+        <TerminalCardContent padding="md">
           <div className="mb-4 flex items-center gap-4">
             <div className="border-border bg-primary/10 flex h-10 w-10 items-center justify-center border">
               <Globe className="text-primary h-5 w-5" />
@@ -90,13 +90,13 @@ export function ComplianceTab({
               &gt; VIEW_TERMS_OF_SERVICE
             </Button>
           </div>
-        </div>
-      </StyledCard>
+        </TerminalCardContent>
+      </TerminalCard>
 
       {/* Danger Zone */}
-      <StyledCard className="border-destructive">
-        <StyledCardHeader code="0x00" title="DANGER_ZONE" />
-        <div className="p-4">
+      <TerminalCard tone="danger">
+        <TerminalCardHeader code="0x05" title="DANGER_ZONE" icon={<UserX className="h-4 w-4" />} />
+        <TerminalCardContent padding="md">
           <div className="mb-4 flex items-center gap-4">
             <div className="border-border bg-destructive/10 flex h-10 w-10 items-center justify-center border">
               <UserX className="text-destructive h-5 w-5" />
@@ -153,8 +153,8 @@ export function ComplianceTab({
               </div>
             </AlertDialogContent>
           </AlertDialog>
-        </div>
-      </StyledCard>
+        </TerminalCardContent>
+      </TerminalCard>
     </div>
   );
 }

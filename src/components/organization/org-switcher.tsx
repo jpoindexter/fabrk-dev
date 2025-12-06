@@ -19,7 +19,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 
 interface Organization {
   id: string;
@@ -146,7 +146,7 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className={cn("border-border w-[200px] border shadow", mode.radius)}
+        className={cn("border-border w-[200px] border", mode.radius)}
       >
         <DropdownMenuLabel className="text-muted-foreground text-xs">
           Your Organizations

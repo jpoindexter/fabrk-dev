@@ -5,6 +5,9 @@
 
 import { motion } from "framer-motion";
 import { Mail, MessageCircle } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { mode } from "@/design-system";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 
 export function ContactSidebar() {
   return (
@@ -14,26 +17,29 @@ export function ContactSidebar() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="border border-border bg-card p-6"
       >
-        <div className="flex items-start gap-4">
-          <div className="p-4 bg-primary/10 border border-border">
-            <Mail className="h-5 w-5 text-primary" />
-          </div>
-          <div>
-            <span className="text-xs text-muted-foreground">[0x02]</span>
-            <h3 className="text-sm font-semibold mb-1">EMAIL_US</h3>
-            <p className="text-xs text-muted-foreground mb-2">
-              Prefer email? Send us a message directly:
-            </p>
+        <TerminalCard size="auto">
+          <TerminalCardHeader
+            code="0x02"
+            title="CONTACT"
+            icon={<Mail className="text-muted-foreground size-4" />}
+          />
+          <TerminalCardContent padding="md">
+            <h3 className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
+              EMAIL_US
+            </h3>
+            <div className={cn("text-xs", mode.font)}>
+              <span className="text-muted-foreground">DESC: </span>
+              <span className="text-foreground">Prefer email? Send us a message directly:</span>
+            </div>
             <a
               href="mailto:support@fabrk.dev"
-              className="text-xs text-primary hover:underline"
+              className={cn("text-primary mt-2 block text-xs hover:underline", mode.font)}
             >
               &gt; support@fabrk.dev
             </a>
-          </div>
-        </div>
+          </TerminalCardContent>
+        </TerminalCard>
       </motion.div>
 
       {/* Response Time */}
@@ -41,21 +47,26 @@ export function ContactSidebar() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="border border-border bg-card p-6"
       >
-        <div className="flex items-start gap-4">
-          <div className="p-4 bg-primary/10 border border-border">
-            <MessageCircle className="h-5 w-5 text-primary" />
-          </div>
-          <div>
-            <span className="text-xs text-muted-foreground">[0x03]</span>
-            <h3 className="text-sm font-semibold mb-1">RESPONSE_TIME</h3>
-            <p className="text-xs text-muted-foreground">
-              We typically respond within 24 hours during business days.
-              For urgent issues, please mention "URGENT" in your subject.
-            </p>
-          </div>
-        </div>
+        <TerminalCard size="auto">
+          <TerminalCardHeader
+            code="0x03"
+            title="RESPONSE"
+            icon={<MessageCircle className="text-muted-foreground size-4" />}
+          />
+          <TerminalCardContent padding="md">
+            <h3 className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
+              RESPONSE_TIME
+            </h3>
+            <div className={cn("text-xs", mode.font)}>
+              <span className="text-muted-foreground">DESC: </span>
+              <span className="text-foreground">
+                We typically respond within 24 hours during business days. For urgent issues, please
+                mention "URGENT" in your subject.
+              </span>
+            </div>
+          </TerminalCardContent>
+        </TerminalCard>
       </motion.div>
     </div>
   );

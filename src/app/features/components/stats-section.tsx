@@ -8,17 +8,18 @@
 
 import { motion } from "framer-motion";
 import { COMPONENT_STATS } from "./feature-data";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { mode } from "@/design-system";
 
 export function StatsSection() {
   return (
-    <section className="border-b border-border bg-muted/30 py-12">
+    <section className="border-border bg-background border-b py-12">
       <div className="container mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
-        <div className="mb-6 text-xs text-muted-foreground">
-          [ [0x02] STATS ]────────────────────────
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6">
           {COMPONENT_STATS.map((stat, index) => {
             const Icon = stat.icon;
+            const hexId = (index + 2).toString(16).toUpperCase().padStart(2, "0");
             return (
               <motion.div
                 key={stat.label}
@@ -26,13 +27,24 @@ export function StatsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="text-center border border-border bg-card p-4"
+                className="group"
               >
-                <div className="inline-flex items-center justify-center bg-primary/10 p-2 mb-4">
-                  <Icon className="size-5 text-primary" />
-                </div>
-                <div className="text-2xl font-bold text-foreground">{stat.value}</div>
-                <span className="text-xs text-muted-foreground">{stat.label.toUpperCase().replace(/ /g, '_')}</span>
+                <TerminalCard interactive className="flex h-full flex-col">
+                  <TerminalCardHeader
+                    code={`0x${hexId}`}
+                    title="STAT"
+                    icon={
+                      <Icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
+                    }
+                  />
+                  <TerminalCardContent padding="md" className="flex-1">
+                    <div className={cn("text-foreground mb-2 text-2xl font-semibold", mode.font)}>{stat.value}</div>
+                    <div className={cn("text-xs", mode.font)}>
+                      <span className="text-muted-foreground">DESC: </span>
+                      <span className="text-foreground">{stat.description}</span>
+                    </div>
+                  </TerminalCardContent>
+                </TerminalCard>
               </motion.div>
             );
           })}

@@ -1,21 +1,24 @@
 /**
  * ✅ FABRK COMPONENT
- * - Component under 150 lines ✓
- * - No hardcoded styles ✓
- * - Design tokens only ✓
- * - UX heuristics applied ✓
- * - Uses Visual Mode System for aesthetic switching
+ * Input component with validation states and loading indicator.
+ * Uses Visual Mode System for aesthetic switching.
+ *
+ * Design System Integration:
+ * - Imports from @/design-system for static mode (server components)
+ * - Radius and font from visual mode config
+ * - Focus ring using design tokens (focus-visible:ring-primary)
+ * - Height follows 8-point grid: h-8 (32px)
  *
  * @example
  * ```tsx
- * <input />
+ * <Input placeholder="Enter email" error={hasError} />
  * ```
  */
 
 "use client";
 
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { Loader2 } from "lucide-react";
 import * as React from "react";
 

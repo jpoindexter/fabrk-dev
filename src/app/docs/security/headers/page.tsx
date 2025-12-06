@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
 import { Shield, Lock, Globe, FileCode } from "lucide-react";
 
 export const metadata = {
@@ -272,7 +271,7 @@ curl -I https://yoursite.com
       {/* HSTS Warning */}
       <DocsSection title="Important Notes">
         <DocsCard title="WARNING" className="bg-muted/50">
-          <p className={docsTypography.body}>
+          <p className="mb-4">
             Only use the HSTS preload directive once you&apos;re certain all subdomains support HTTPS.
             It&apos;s difficult to remove from the preload list once submitted.
           </p>

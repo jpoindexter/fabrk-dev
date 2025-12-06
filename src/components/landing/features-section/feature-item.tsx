@@ -4,7 +4,7 @@
  */
 
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 interface FeatureItemProps {
   icon: React.ComponentType<{ className?: string }>;

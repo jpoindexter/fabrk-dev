@@ -4,9 +4,9 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { StyledCard, StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface Subscription {
@@ -26,9 +26,9 @@ interface CurrentPlanCardProps {
 
 export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardProps) {
   return (
-    <StyledCard className="border-primary">
-      <StyledCardHeader code="0x00" title="SUBSCRIPTION" />
-      <div className="p-4">
+    <TerminalCard tone="primary">
+      <TerminalCardHeader code="0x00" title="SUBSCRIPTION" icon={<Star className="size-4" />} />
+      <TerminalCardContent padding="md">
         <div className="flex items-start justify-between">
           <div>
             <div className="mb-2 flex items-center gap-2">
@@ -45,20 +45,19 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
               </span>
             </div>
             <div className="mb-2 flex items-center gap-4">
-              <Star className="text-primary h-5 w-5" />
-              <span className={cn(mode.font, "text-2xl font-bold")}>{subscription.plan}</span>
+              <span className="text-2xl font-semibold">{subscription.plan}</span>
             </div>
             <div className={cn(mode.font, "text-muted-foreground text-xs")}>
-              STARTED: {formatDate(subscription.startDate)}
+              [STARTED]: {formatDate(subscription.startDate)}
             </div>
           </div>
           <div className="text-right">
-            <div className={cn(mode.font, "text-3xl font-bold")}>
+            <div className="text-4xl font-semibold">
               ${subscription.price}
               <span className="text-muted-foreground text-lg font-normal">/mo</span>
             </div>
             <div className={cn(mode.font, "text-muted-foreground mt-1 text-xs")}>
-              NEXT_BILLING: {formatDate(subscription.nextBillingDate)}
+              [NEXT_BILLING]: {formatDate(subscription.nextBillingDate)}
             </div>
           </div>
         </div>
@@ -83,7 +82,7 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
             &gt; UPGRADE_TO_ENTERPRISE
           </Button>
         </div>
-      </div>
-    </StyledCard>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

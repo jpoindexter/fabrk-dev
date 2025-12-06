@@ -19,9 +19,9 @@ export default function CollapsiblePage() {
       mainPreview={{
         preview: (
           <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-full max-w-md">
-            <div className="border border-border bg-card">
+            <div className="border-border bg-card border">
               <CollapsibleTrigger asChild>
-                <Button variant="ghost" className="w-full justify-between rounded-none font-mono">
+                <Button variant="ghost" className="w-full justify-between font-mono">
                   <span className="text-sm">
                     <span className="text-primary">&gt;</span> Click to expand
                   </span>
@@ -30,10 +30,8 @@ export default function CollapsiblePage() {
                   />
                 </Button>
               </CollapsibleTrigger>
-              <CollapsibleContent className="border-t border-border p-4">
-                <p className="font-mono text-sm text-muted-foreground">
-                  This content can be collapsed and expanded.
-                </p>
+              <CollapsibleContent className="border-border border-t p-4">
+                <p>This content can be collapsed and expanded.</p>
               </CollapsibleContent>
             </div>
           </Collapsible>
@@ -57,16 +55,14 @@ export default function CollapsiblePage() {
           title: "Controlled",
           description: "Control the open/closed state with useState.",
           preview: (
-            <Collapsible className="w-full max-w-md border border-border bg-card">
+            <Collapsible className="border-border bg-card w-full max-w-md border">
               <CollapsibleTrigger asChild>
-                <button className="w-full border-b border-border px-4 py-2 text-left font-mono text-sm text-muted-foreground hover:bg-muted">
+                <button className="border-border hover:bg-muted w-full border-b px-4 py-2 text-left">
                   <span className="text-primary">&gt;</span> Controlled Collapsible
                 </button>
               </CollapsibleTrigger>
               <CollapsibleContent className="p-4">
-                <p className="font-mono text-sm text-muted-foreground">
-                  State controlled via props
-                </p>
+                <p>State controlled via props</p>
               </CollapsibleContent>
             </Collapsible>
           ),
@@ -81,16 +77,14 @@ export default function CollapsiblePage() {
           title: "Uncontrolled",
           description: "Let the component manage its own state.",
           preview: (
-            <Collapsible className="w-full max-w-md border border-border bg-card">
+            <Collapsible className="border-border bg-card w-full max-w-md border">
               <CollapsibleTrigger asChild>
-                <button className="w-full border-b border-border px-4 py-2 text-left font-mono text-sm text-muted-foreground hover:bg-muted">
+                <button className="border-border hover:bg-muted w-full border-b px-4 py-2 text-left">
                   <span className="text-primary">&gt;</span> Uncontrolled Collapsible
                 </button>
               </CollapsibleTrigger>
               <CollapsibleContent className="p-4">
-                <p className="font-mono text-sm text-muted-foreground">
-                  State managed internally
-                </p>
+                <p>State managed internally</p>
               </CollapsibleContent>
             </Collapsible>
           ),
@@ -103,16 +97,14 @@ export default function CollapsiblePage() {
           title: "With Default Open",
           description: "Start in the open state.",
           preview: (
-            <Collapsible defaultOpen className="w-full max-w-md border border-border bg-card">
+            <Collapsible defaultOpen className="border-border bg-card w-full max-w-md border">
               <CollapsibleTrigger asChild>
-                <button className="w-full border-b border-border px-4 py-2 text-left font-mono text-sm text-muted-foreground hover:bg-muted">
+                <button className="border-border hover:bg-muted w-full border-b px-4 py-2 text-left">
                   <span className="text-primary">&gt;</span> Initially Open
                 </button>
               </CollapsibleTrigger>
               <CollapsibleContent className="p-4">
-                <p className="font-mono text-sm text-muted-foreground">
-                  This starts open by default
-                </p>
+                <p>This starts open by default</p>
               </CollapsibleContent>
             </Collapsible>
           ),
@@ -125,16 +117,17 @@ export default function CollapsiblePage() {
           title: "Disabled",
           description: "Prevent interaction with the collapsible.",
           preview: (
-            <Collapsible disabled className="w-full max-w-md border border-border bg-card opacity-50">
+            <Collapsible
+              disabled
+              className="border-border bg-card w-full max-w-md border opacity-50"
+            >
               <CollapsibleTrigger asChild>
-                <button className="w-full border-b border-border px-4 py-2 text-left font-mono text-sm text-muted-foreground">
+                <button className="border-border w-full border-b px-4 py-2 text-left">
                   <span className="text-muted-foreground">&gt;</span> Disabled
                 </button>
               </CollapsibleTrigger>
               <CollapsibleContent className="p-4">
-                <p className="font-mono text-sm text-muted-foreground">
-                  Cannot be toggled
-                </p>
+                <p>Cannot be toggled</p>
               </CollapsibleContent>
             </Collapsible>
           ),

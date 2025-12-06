@@ -2,16 +2,19 @@
  * Implementation note card showing template features
  */
 
-import { StyledCard, StyledCardHeader } from "@/components/ui/card";
-import { mode } from "@/lib/design-system";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function FeaturesNote() {
   return (
-    <StyledCard>
-      <StyledCardHeader code="0x01" title="TEMPLATE_FEATURES" />
-      <div className="p-4">
-        <div className={cn(mode.font, "space-y-1.5 text-xs")}>
+    <TerminalCard>
+      <TerminalCardHeader code="0x00" title="FEATURES" />
+      <TerminalCardContent>
+        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+          [TEMPLATE_FEATURES]:
+        </div>
+        <div className={cn(mode.font, "space-y-2 text-xs")}>
           <div>
             <span className="text-success">&gt;</span> TanStack Table v8 with sorting, filtering,
             pagination
@@ -50,7 +53,7 @@ export function FeaturesNote() {
           [NOTE]: Replace mockUsers with your API data. Add API routes for edit/delete/suspend
           actions.
         </div>
-      </div>
-    </StyledCard>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

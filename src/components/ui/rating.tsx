@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 interface RatingProps {
   rating?: number;

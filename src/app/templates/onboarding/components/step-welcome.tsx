@@ -4,7 +4,7 @@
  */
 
 import { Sparkles } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function StepWelcome() {
@@ -23,7 +23,7 @@ export function StepWelcome() {
         <div className={cn(mode.font, "text-muted-foreground mb-2 text-xs")}>
           [WHAT_YOULL_SET_UP]:
         </div>
-        <div className={cn(mode.font, "space-y-1.5 text-xs")}>
+        <div className={cn(mode.font, "space-y-2 text-xs")}>
           <div>
             <span className="text-success">&gt;</span> Your profile information
           </div>

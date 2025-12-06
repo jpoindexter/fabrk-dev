@@ -29,7 +29,7 @@ export function StorySection() {
               <span className="inline-block border border-border bg-card px-4 py-1 text-xs text-muted-foreground mb-4">
                 [ [0x04] ORIGIN_STORY ]
               </span>
-              <h2 className="text-2xl font-bold lg:text-3xl mb-4">THE_STORY_BEHIND_FABRK</h2>
+              <h2 className="text-2xl font-semibold lg:text-4xl mb-4">THE_STORY_BEHIND_FABRK</h2>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 12 }}
@@ -74,7 +74,7 @@ export function StorySection() {
                     viewport={{ once: true }}
                     className="flex items-start gap-4 text-sm"
                   >
-                    <span className="text-destructive font-bold">✗</span>
+                    <span className="text-destructive font-semibold">✗</span>
                     <span className="text-muted-foreground">{problem}</span>
                   </motion.div>
                 ))}

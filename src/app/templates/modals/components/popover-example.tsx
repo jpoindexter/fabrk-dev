@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Info, X } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function PopoverExample() {

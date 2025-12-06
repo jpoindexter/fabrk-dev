@@ -19,7 +19,7 @@ import { Eye, EyeOff, Copy, Check, Key, RefreshCw, Trash2, AlertTriangle } from 
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   AlertDialog,
@@ -34,7 +34,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { cn } from "@/lib/utils";
 import { logger } from "@/lib/logger";
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 
 interface ApiKeyGeneratorProps {
   apiKey?: string;
@@ -94,22 +94,21 @@ export function ApiKeyGenerator({
   };
 
   return (
-    <Card className={cn("overflow-hidden", className)}>
-      <CardHeader className="pb-4">
-        <div className="flex items-center justify-between">
-          <CardTitle className="flex items-center gap-2 text-base font-black">
-            <Key className="text-primary h-4 w-4" />
-            API Key
-          </CardTitle>
-          {apiKey && (
+    <TerminalCard className={cn("overflow-hidden", className)}>
+      <TerminalCardHeader
+        code="0x00"
+        title="API_Key"
+        icon={<Key className="h-4 w-4" />}
+        meta={
+          apiKey ? (
             <Badge variant="outline" className="text-xs font-medium">
               Active
             </Badge>
-          )}
-        </div>
-      </CardHeader>
+          ) : undefined
+        }
+      />
 
-      <CardContent className="space-y-4">
+      <TerminalCardContent padding="md" className="space-y-4">
         {apiKey ? (
           <>
             {/* API Key Display */}
@@ -169,7 +168,7 @@ export function ApiKeyGenerator({
               <div className="flex gap-2">
                 <AlertTriangle className="text-warning mt-0.5 h-4 w-4 flex-shrink-0" />
                 <div className="flex-1 space-y-1">
-                  <p className="text-foreground text-xs font-bold">Keep this secret!</p>
+                  <p className="text-foreground text-xs font-semibold">Keep this secret!</p>
                   <p className="text-muted-foreground text-xs">
                     Never share your API key or commit it to version control. Anyone with this key
                     can access your account.
@@ -209,7 +208,7 @@ export function ApiKeyGenerator({
                       </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                      <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
                       <AlertDialogAction onClick={onRevoke} className="bg-destructive">
                         Revoke Key
                       </AlertDialogAction>
@@ -234,7 +233,7 @@ export function ApiKeyGenerator({
                 </div>
               </div>
               <div className="space-y-1">
-                <p className="text-foreground font-bold">No API key generated</p>
+                <p className="text-foreground font-semibold">No API key generated</p>
                 <p className="text-muted-foreground text-sm">
                   Generate an API key to start using the API
                 </p>
@@ -242,7 +241,7 @@ export function ApiKeyGenerator({
               {onGenerate && (
                 <Button onClick={onGenerate} disabled={isGenerating}>
                   <Key className="mr-2 h-4 w-4" />
-                  {isGenerating ? "Generating..." : "Generate API Key"}
+                  {isGenerating ? "> GENERATING..." : "> GENERATE_API_KEY"}
                 </Button>
               )}
             </div>
@@ -252,7 +251,7 @@ export function ApiKeyGenerator({
         {/* Usage Example */}
         {apiKey && (
           <div className="space-y-2">
-            <p className="text-foreground text-xs font-bold">Usage Example:</p>
+            <p className="text-foreground text-xs font-semibold">Usage Example:</p>
             <div
               className={cn("border-border bg-muted/50 border p-4 text-xs", mode.radius, mode.font)}
             >
@@ -262,7 +261,7 @@ export function ApiKeyGenerator({
             </div>
           </div>
         )}
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

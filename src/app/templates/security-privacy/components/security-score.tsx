@@ -3,9 +3,9 @@
  */
 
 import { useMemo } from "react";
-import { CheckCircle2, XCircle } from "lucide-react";
-import { StyledCard, StyledCardHeader } from "@/components/ui/card";
-import { mode } from "@/lib/design-system";
+import { CheckCircle2, XCircle, Shield } from "lucide-react";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface SecurityScoreProps {
@@ -27,15 +27,19 @@ export function SecurityScore({ user }: SecurityScoreProps) {
   }, [user.lastPasswordChange, nowTime]); // Add nowTime to dependencies
 
   return (
-    <StyledCard className="border-primary">
-      <StyledCardHeader code="0x00" title="SECURITY_SCORE" />
-      <div className="p-4">
+    <TerminalCard tone="primary">
+      <TerminalCardHeader
+        code="0x00"
+        title="SECURITY_SCORE"
+        icon={<Shield className="h-4 w-4" />}
+      />
+      <TerminalCardContent padding="md">
         <div className="mb-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div
               className={cn(
                 mode.font,
-                "border-border bg-primary/10 text-primary flex h-16 w-16 items-center justify-center border text-xl font-bold"
+                "border-border bg-primary/10 text-primary flex h-16 w-16 items-center justify-center border text-xl font-semibold"
               )}
             >
               75%
@@ -79,7 +83,7 @@ export function SecurityScore({ user }: SecurityScoreProps) {
             </span>
           </div>
         </div>
-      </div>
-    </StyledCard>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

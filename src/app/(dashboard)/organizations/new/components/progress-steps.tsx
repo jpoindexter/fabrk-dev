@@ -5,7 +5,7 @@
 
 import * as React from "react";
 import { Check } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface ProgressStepsProps {
@@ -22,7 +22,7 @@ export function ProgressSteps({ currentStep, totalSteps }: ProgressStepsProps) {
             className={cn(
               `border-border flex h-10 w-10 items-center justify-center`,
               mode.radius,
-              `border font-bold transition-all ${
+              `border font-semibold transition-all ${
                 currentStep >= s
                   ? "bg-primary text-primary-foreground"
                   : "bg-card text-muted-foreground"

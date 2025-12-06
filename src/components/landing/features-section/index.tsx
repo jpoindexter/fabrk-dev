@@ -16,7 +16,8 @@
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
+import { TerminalBadge } from "@/components/ui/card";
 import {
   Mail,
   Key,
@@ -40,7 +41,7 @@ import { DesignSystemPreview } from "./preview-design";
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="border-border scroll-mt-16 border-t px-6 py-20 lg:py-28">
+    <section id="features" className="border-border scroll-mt-16 border-t px-6 py-20 lg:py-24">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <motion.div
@@ -50,14 +51,13 @@ export function FeaturesSection() {
           transition={{ duration: 0.6 }}
           className="mb-16 lg:mb-24"
         >
-          <div
-            className={cn(mode.radius, "border-border bg-card mb-4 inline-block border px-4 py-1")}
-          >
-            <span className={cn(mode.font, "text-muted-foreground text-xs")}>
-              [ [0x30] DEEP_DIVE ] FEATURE_ANALYSIS │ FIB[377,610]
-            </span>
-          </div>
-          <h2 className={cn(mode.font, "mb-4 text-3xl font-bold tracking-tight lg:text-4xl")}>
+          <TerminalBadge
+            code="0x30"
+            label="DEEP_DIVE"
+            meta="FEATURE_ANALYSIS │ FIB[377,610]"
+            className="mb-4"
+          />
+          <h2 className={cn(mode.font, "mb-4 text-4xl font-semibold tracking-tight")}>
             BUILT_FOR_SERIOUS_SAAS_PRODUCTS
           </h2>
           <p className={cn(mode.font, "text-muted-foreground max-w-2xl text-sm")}>
@@ -67,7 +67,7 @@ export function FeaturesSection() {
         </motion.div>
 
         {/* Feature Sections */}
-        <div className="space-y-20 lg:space-y-28">
+        <div className="space-y-20 lg:space-y-24">
           {/* Authentication */}
           <FeatureSectionLayout
             spec="AUTHENTICATION"

@@ -26,9 +26,9 @@ export function TierBadge({ tier, showIcon = true, size = "md" }: TierBadgeProps
   const Icon = tierIcons[tierName] || Zap;
 
   const _sizeClasses = {
-    sm: "text-xs px-2 py-0.5",
-    md: "text-sm px-2.5 py-4",
-    lg: "text-base px-4 py-4.5",
+    sm: "text-xs px-2 py-1",
+    md: "text-sm px-2 py-1",
+    lg: "text-base px-4 py-2",
   };
 
   return (
@@ -38,15 +38,7 @@ export function TierBadge({ tier, showIcon = true, size = "md" }: TierBadgeProps
       className="flex items-center gap-2 font-medium"
     >
       {showIcon && (
-        <Icon
-          className={
-            size === "sm"
-              ? "size-3"
-              : size === "lg"
-                ? "h-5 w-5"
-                : "h-4 w-4"
-          }
-        />
+        <Icon className={size === "sm" ? "size-3" : size === "lg" ? "h-5 w-5" : "h-4 w-4"} />
       )}
       {displayName.toUpperCase()}
     </Badge>

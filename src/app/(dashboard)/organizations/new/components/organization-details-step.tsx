@@ -7,7 +7,7 @@ import * as React from "react";
 import { UseFormReturn } from "react-hook-form";
 import { Building2, ChevronRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -19,8 +19,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { mode } from "@/lib/design-system";
-import { cn } from "@/lib/utils";
 
 interface OrganizationFormData {
   name: string;
@@ -42,19 +40,14 @@ export function OrganizationDetailsStep({
   onCancel,
 }: OrganizationDetailsStepProps) {
   return (
-    <Card className={cn("border-border border shadow", mode.radius)}>
-      <CardHeader>
-        <div className="flex items-center gap-4">
-          <div className={cn("border-border bg-primary border p-2", mode.radius)}>
-            <Building2 className="text-primary-foreground h-6 w-6" />
-          </div>
-          <div>
-            <CardTitle>Create Organization</CardTitle>
-            <CardDescription>Set up your organization's basic information</CardDescription>
-          </div>
-        </div>
-      </CardHeader>
-      <CardContent>
+    <TerminalCard>
+      <TerminalCardHeader
+        code="0x00"
+        title="CREATE_ORGANIZATION"
+        icon={<Building2 className="h-4 w-4" />}
+        meta="STEP_1"
+      />
+      <TerminalCardContent padding="lg">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
@@ -66,7 +59,7 @@ export function OrganizationDetailsStep({
                   <FormControl>
                     <Input
                       placeholder="Acme Inc."
-                      className={cn("border-border border", mode.radius)}
+                      className="border-border rounded-none border"
                       {...field}
                     />
                   </FormControl>
@@ -85,7 +78,7 @@ export function OrganizationDetailsStep({
                   <FormControl>
                     <Input
                       placeholder="acme-inc"
-                      className={cn("border-border border", mode.radius)}
+                      className="border-border rounded-none border"
                       {...field}
                     />
                   </FormControl>
@@ -106,7 +99,7 @@ export function OrganizationDetailsStep({
                   <FormControl>
                     <Textarea
                       placeholder="What does your organization do?"
-                      className={cn("border-border border", mode.radius)}
+                      className="border-border rounded-none border"
                       rows={3}
                       {...field}
                     />
@@ -118,17 +111,17 @@ export function OrganizationDetailsStep({
 
             <div className="flex justify-end gap-2 pt-4">
               <Button type="button" variant="outline" onClick={onCancel}>
-                Cancel
+                &gt; CANCEL
               </Button>
               <Button type="submit" disabled={loading}>
                 {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                Continue
+                &gt; CONTINUE
                 <ChevronRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
           </form>
         </Form>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

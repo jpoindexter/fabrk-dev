@@ -46,7 +46,7 @@ import {
 import { MoreHorizontal, Search, UserCog, Ban, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 interface User {
   id: string;
@@ -315,13 +315,13 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
             <AlertDialogAction
               onClick={handleDeleteUser}
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
               disabled={actionLoading}
             >
-              {actionLoading ? "Deleting..." : "Delete User"}
+              {actionLoading ? "> DELETING..." : "> DELETE_USER"}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

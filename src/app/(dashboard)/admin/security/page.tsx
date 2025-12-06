@@ -6,7 +6,7 @@
 "use client";
 
 import React, { useState, useEffect, startTransition } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -24,8 +24,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { queryAuditLogs, getSecuritySummary, type AuditLogEntry } from "@/lib/security/audit-log";
-import { AlertTriangle, CheckCircle, Info, XCircle } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { AlertTriangle, CheckCircle, Info, XCircle, Shield } from "lucide-react";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 function formatDate(date: Date): string {
@@ -94,78 +94,80 @@ export default function AdminSecurityPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Security Logs</h1>
+        <h1 className="text-4xl font-semibold tracking-tight">Security Logs</h1>
         <p className="text-muted-foreground">Monitor security events and audit logs</p>
       </div>
 
       {/* Summary Cards */}
       {summary && (
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Events (7d)</CardTitle>
-              <Info className="text-muted-foreground h-4 w-4" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{summary.totalEvents}</div>
-            </CardContent>
-          </Card>
+          <TerminalCard tone="neutral">
+            <TerminalCardHeader
+              code="0x01"
+              title="TOTAL_EVENTS"
+              meta="7d"
+              icon={<Info className="h-4 w-4" />}
+            />
+            <TerminalCardContent>
+              <div className="text-2xl font-semibold">{summary.totalEvents}</div>
+            </TerminalCardContent>
+          </TerminalCard>
 
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Critical</CardTitle>
-              <AlertTriangle className="text-destructive h-4 w-4" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{summary.bySeverity.critical || 0}</div>
-            </CardContent>
-          </Card>
+          <TerminalCard tone="danger">
+            <TerminalCardHeader
+              code="0x02"
+              title="CRITICAL"
+              icon={<AlertTriangle className="h-4 w-4" />}
+            />
+            <TerminalCardContent>
+              <div className="text-2xl font-semibold">{summary.bySeverity.critical || 0}</div>
+            </TerminalCardContent>
+          </TerminalCard>
 
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">High</CardTitle>
-              <AlertTriangle className="text-warning h-4 w-4" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{summary.bySeverity.high || 0}</div>
-            </CardContent>
-          </Card>
+          <TerminalCard tone="warning">
+            <TerminalCardHeader
+              code="0x03"
+              title="HIGH"
+              icon={<AlertTriangle className="h-4 w-4" />}
+            />
+            <TerminalCardContent>
+              <div className="text-2xl font-semibold">{summary.bySeverity.high || 0}</div>
+            </TerminalCardContent>
+          </TerminalCard>
 
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Medium</CardTitle>
-              <Info className="text-info h-4 w-4" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{summary.bySeverity.medium || 0}</div>
-            </CardContent>
-          </Card>
+          <TerminalCard tone="neutral">
+            <TerminalCardHeader code="0x04" title="MEDIUM" icon={<Info className="h-4 w-4" />} />
+            <TerminalCardContent>
+              <div className="text-2xl font-semibold">{summary.bySeverity.medium || 0}</div>
+            </TerminalCardContent>
+          </TerminalCard>
         </div>
       )}
 
       {/* Logs Table */}
-      <Card>
-        <CardHeader>
-          <div className="flex items-center justify-between">
-            <div>
-              <CardTitle>Recent Security Events</CardTitle>
-              <CardDescription>Last 50 security events</CardDescription>
-            </div>
-            <Select value={severityFilter} onValueChange={setSeverityFilter}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="All Severities" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Severities</SelectItem>
-                <SelectItem value="critical">Critical</SelectItem>
-                <SelectItem value="high">High</SelectItem>
-                <SelectItem value="medium">Medium</SelectItem>
-                <SelectItem value="low">Low</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-        </CardHeader>
-        <CardContent>
+      <TerminalCard tone="neutral">
+        <div className="border-border flex items-center justify-between border-b px-4 py-2">
+          <TerminalCardHeader
+            code="0x05"
+            title="RECENT_SECURITY_EVENTS"
+            meta="Last 50 events"
+            icon={<Shield className="h-4 w-4" />}
+            className="border-0 p-0"
+          />
+          <Select value={severityFilter} onValueChange={setSeverityFilter}>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="All Severities" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Severities</SelectItem>
+              <SelectItem value="critical">Critical</SelectItem>
+              <SelectItem value="high">High</SelectItem>
+              <SelectItem value="medium">Medium</SelectItem>
+              <SelectItem value="low">Low</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+        <TerminalCardContent>
           <div className={cn("border", mode.radius)}>
             <Table>
               <TableHeader>
@@ -216,8 +218,8 @@ export default function AdminSecurityPage() {
               </TableBody>
             </Table>
           </div>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
     </div>
   );
 }

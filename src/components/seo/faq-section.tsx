@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 import { generateFAQSchema } from "@/lib/seo/structured-data";
 import { ClientSchemaScript } from "@/components/security/client-schema-script";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 export interface FAQ {
   question: string;
   answer: string;
@@ -51,7 +51,7 @@ export function FAQSection({ faqs, title, description, className }: FAQSectionPr
       <ClientSchemaScript schema={schema} />
 
       <section className={cn("mx-auto max-w-3xl", className)}>
-        {title && <h2 className="text-foreground mb-2 text-3xl font-bold">{title}</h2>}
+        {title && <h2 className="text-foreground mb-2 text-4xl font-semibold">{title}</h2>}
         {description && <p className="text-muted-foreground mb-8 text-lg">{description}</p>}
 
         <div className="space-y-4">

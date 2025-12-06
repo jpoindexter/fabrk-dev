@@ -4,9 +4,9 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Download } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface Payment {
@@ -32,10 +32,10 @@ export function BillingHistoryTable({
 }: BillingHistoryTableProps) {
   return (
     <>
-      <div className="border-border bg-card border">
-        <StyledCardHeader code="0x00" title="BILLING_HISTORY" />
+      <TerminalCard tone="neutral">
+        <TerminalCardHeader code="0x00" title="BILLING_HISTORY" />
 
-        <div className="p-4">
+        <TerminalCardContent padding="md">
           <div className="mb-4 flex items-center justify-between">
             <div className={cn(mode.font, "text-muted-foreground text-xs")}>
               [BILLING_HISTORY]: COUNT={payments.length}
@@ -45,7 +45,7 @@ export function BillingHistoryTable({
               size="sm"
               className={cn(mode.radius, mode.font, "h-7 text-xs")}
             >
-              <Download className="mr-2 h-3 w-3" />
+              <Download className="mr-2 size-3" />
               &gt; EXPORT_ALL
             </Button>
           </div>
@@ -90,7 +90,7 @@ export function BillingHistoryTable({
                         {status.text}
                       </span>
                       <button className="hover:text-foreground text-muted-foreground">
-                        <Download className="h-3 w-3" />
+                        <Download className="size-3" />
                       </button>
                     </div>
                   </div>
@@ -98,14 +98,18 @@ export function BillingHistoryTable({
               })}
             </div>
           </div>
-        </div>
-      </div>
+        </TerminalCardContent>
+      </TerminalCard>
 
       {/* Info Note */}
-      <div className={cn(mode.font, "border-border bg-card border p-4 text-xs")}>
-        <span className="text-muted-foreground">[INFO]:</span> All invoices are automatically
-        emailed to your registered email address. Contact support if you need assistance.
-      </div>
+      <TerminalCard tone="neutral">
+        <TerminalCardContent padding="md">
+          <div className={cn(mode.font, "text-xs")}>
+            <span className="text-muted-foreground">[INFO]:</span> All invoices are automatically
+            emailed to your registered email address. Contact support if you need assistance.
+          </div>
+        </TerminalCardContent>
+      </TerminalCard>
     </>
   );
 }

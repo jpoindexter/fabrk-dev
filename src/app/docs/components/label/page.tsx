@@ -5,8 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Switch } from "@/components/ui/switch";
-import { WindowControls } from "@/components/ui/window-controls";
-import { formatLabel } from "@/lib/design-system";
+import { formatLabel } from "@/design-system";
 
 export default function LabelPage() {
   return (
@@ -51,15 +50,8 @@ export default function LabelPage() {
               <Label htmlFor="password" required error>
                 {formatLabel("Password")}
               </Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="Enter password"
-                error
-              />
-              <p className="text-xs text-destructive">
-                Password must be at least 12 characters
-              </p>
+              <Input id="password" type="password" placeholder="Enter password" error />
+              <p className="text-destructive text-xs">Password must be at least 12 characters</p>
             </div>
           ),
           code: `<Label htmlFor="password" required error>
@@ -119,9 +111,10 @@ export default function LabelPage() {
           description: "Label following design system typography tokens.",
           preview: (
             <div className="space-y-4 p-4 font-mono text-sm">
-              <div className="flex items-center gap-2 border-b border-border pb-2">
-                <WindowControls size="sm" />
-                <span className="text-xs text-muted-foreground">label-typography.css</span>
+              <div className="border-border flex items-center border-b pb-2">
+                <span className="text-muted-foreground text-xs">
+                  [ TYPOGRAPHY ] label-typography.css
+                </span>
               </div>
               <div className="space-y-1 text-xs">
                 <div className="text-muted-foreground">
@@ -152,15 +145,16 @@ tracking-normal      // Letter spacing`,
           description: "Required indicator prevents user errors.",
           preview: (
             <div className="space-y-4 p-4 font-mono text-sm">
-              <div className="flex items-center gap-2 border-b border-border pb-2">
-                <WindowControls size="sm" />
-                <span className="text-xs text-muted-foreground">ux-heuristic-5.md</span>
+              <div className="border-border flex items-center border-b pb-2">
+                <span className="text-muted-foreground text-xs">
+                  [ UX_HEURISTIC ] ux-heuristic-5.md
+                </span>
               </div>
               <div className="space-y-2 text-xs">
-                <div className="font-bold text-primary">[HEURISTIC #5]:</div>
-                <div className="pl-4 text-muted-foreground">Error Prevention</div>
-                <div className="mt-2 font-bold text-success">[IMPLEMENTATION]:</div>
-                <div className="pl-4 text-muted-foreground">
+                <div className="text-primary font-semibold">[HEURISTIC #5]:</div>
+                <div className="text-muted-foreground pl-4">Error Prevention</div>
+                <div className="text-success mt-2 font-semibold">[IMPLEMENTATION]:</div>
+                <div className="text-muted-foreground pl-4">
                   Show required indicator (*) to prevent submission errors
                 </div>
               </div>

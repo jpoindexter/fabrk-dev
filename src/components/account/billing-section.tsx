@@ -2,13 +2,9 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { mode, formatLabel } from "@/design-system";
+import { cn } from "@/lib/utils";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
@@ -38,19 +34,17 @@ export function BillingSection() {
     try {
       // Implementation: Create Stripe billing portal session
       // 1. Create API route: POST /api/stripe/create-portal-session
-      // 2. Server-side: Call stripe.billingPortal.sessions.create({
-      //      customer: user.stripeCustomerId,
-      //      return_url: `${process.env.NEXT_PUBLIC_APP_URL}/billing`,
-      //    })
+      // 2. Server-side: Call stripe.billingPortal.sessions.create()
+      //    with customer ID and return URL from env config
       // 3. Redirect user to the portal URL
       // Reference: https://stripe.com/docs/api/customer_portal
 
-      const response = await fetch('/api/stripe/create-portal-session', {
-        method: 'POST',
+      const response = await fetch("/api/stripe/create-portal-session", {
+        method: "POST",
       });
 
       if (!response.ok) {
-        throw new Error('Failed to create portal session');
+        throw new Error("Failed to create portal session");
       }
 
       const { url } = await response.json();
@@ -79,23 +73,17 @@ export function BillingSection() {
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Billing & Subscription</CardTitle>
-        <CardDescription>
-          Manage your subscription and billing information.
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4">
+    <TerminalCard tone="neutral">
+      <TerminalCardHeader code="0x05" title="BILLING_AND_SUBSCRIPTION" />
+      <TerminalCardContent className="space-y-4">
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium">Current Plan</p>
-              <p className="text-2xl font-bold">{billingInfo.plan}</p>
+              <p className={cn("text-sm font-medium", mode.font)}>{formatLabel("CURRENT_PLAN")}</p>
+              <p className={cn("text-2xl font-semibold", mode.font)}>{billingInfo.plan}</p>
             </div>
             <Badge variant={getStatusBadgeVariant(billingInfo.status)}>
-              {billingInfo.status.charAt(0).toUpperCase() +
-                billingInfo.status.slice(1)}
+              {billingInfo.status.charAt(0).toUpperCase() + billingInfo.status.slice(1)}
             </Badge>
           </div>
 
@@ -115,20 +103,16 @@ export function BillingSection() {
           <Separator />
 
           <div className="space-y-2">
-            <Button
-              onClick={handleManageBilling}
-              disabled={isLoading}
-              className="w-full"
-            >
-              {isLoading ? "Loading..." : "Manage Billing"}
+            <Button onClick={handleManageBilling} disabled={isLoading} className="w-full">
+              {isLoading ? "> LOADING..." : "> MANAGE_BILLING"}
             </Button>
-            <p className="text-xs text-muted-foreground text-center">
-              You'll be redirected to Stripe's secure portal to manage your
-              subscription, payment methods, and view invoices.
+            <p className="text-muted-foreground text-center text-xs">
+              You'll be redirected to Stripe's secure portal to manage your subscription, payment
+              methods, and view invoices.
             </p>
           </div>
         </div>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

@@ -8,7 +8,7 @@ import { Check } from "lucide-react";
 import { generateHowToSchema } from "@/lib/seo/structured-data";
 import { SchemaScript } from "./schema-script";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 export interface HowToStep {
   name: string;
@@ -62,7 +62,7 @@ export function HowTo({
       <SchemaScript schema={schema} />
 
       <div className={className}>
-        <h2 className="text-foreground mb-2 text-3xl font-bold">{title}</h2>
+        <h2 className="text-foreground mb-2 text-4xl font-semibold">{title}</h2>
         <p className="text-muted-foreground mb-8 text-lg">{description}</p>
 
         {(totalTime || estimatedCost) && (

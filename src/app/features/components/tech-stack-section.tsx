@@ -8,42 +8,70 @@
 
 import { motion } from "framer-motion";
 import { TECH_STACK } from "./feature-data";
+import {
+  TerminalBadge,
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+} from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { mode } from "@/design-system";
 
 export function TechStackSection() {
   return (
-    <section className="border-t border-border bg-muted/30 py-16 lg:py-20">
+    <section className="border-border bg-background border-t py-16 lg:py-20">
       <div className="container mx-auto max-w-5xl px-6 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="mb-12 text-center"
         >
-          <span className="text-xs text-muted-foreground">[0x10]</span>
-          <h2 className="text-2xl font-bold tracking-tight mb-4">TECH_STACK</h2>
-          <p className="text-sm text-muted-foreground">
+          <div className="mb-4">
+            <TerminalBadge code="0x10" label="TECH_STACK" />
+          </div>
+          <h2 className={cn("mb-4 text-2xl font-semibold tracking-tight", mode.font)}>TECH_STACK</h2>
+          <p className={cn("text-muted-foreground text-xs", mode.font)}>
             Built with the latest technologies. No legacy code, no outdated dependencies.
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4"
-        >
-          {TECH_STACK.map((tech) => (
-            <div
-              key={tech.name}
-              className="border border-border bg-card p-4 text-center"
-            >
-              <span className="block text-sm font-bold">{tech.name}</span>
-              <span className="text-xs text-muted-foreground">{tech.description}</span>
-            </div>
-          ))}
-        </motion.div>
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+          {TECH_STACK.map((tech, index) => {
+            const hexId = (index + 10).toString(16).toUpperCase();
+            const Icon = tech.icon;
+            return (
+              <motion.div
+                key={tech.name}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="group"
+              >
+                <TerminalCard interactive className="flex h-full flex-col">
+                  <TerminalCardHeader
+                    code={`0x${hexId}`}
+                    title="STACK"
+                    icon={
+                      <Icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
+                    }
+                  />
+                  <TerminalCardContent padding="md" className="flex-1">
+                    <div className={cn("text-foreground mb-3 text-xs font-semibold", mode.font)}>
+                      {tech.name.toUpperCase().replace(/ /g, "_").replace(/\./g, "")}
+                    </div>
+                    <div className={cn("text-xs", mode.font)}>
+                      <span className="text-muted-foreground">DESC: </span>
+                      <span className="text-foreground">{tech.description}</span>
+                    </div>
+                  </TerminalCardContent>
+                </TerminalCard>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

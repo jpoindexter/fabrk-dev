@@ -4,8 +4,8 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { StyledCard, StyledCardHeader } from "@/components/ui/card";
-import { mode } from "@/lib/design-system";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface Plan {
@@ -24,7 +24,7 @@ export function PlanCards({ plans }: PlanCardsProps) {
     <>
       {/* Alert */}
       <div className={cn(mode.font, "border-warning bg-warning/10 border p-4 text-xs")}>
-        <span className="text-warning-foreground font-bold">[WARNING]:</span>{" "}
+        <span className="text-warning-foreground font-semibold">[WARNING]:</span>{" "}
         <span className="text-foreground">
           Changing your plan will take effect at the next billing cycle
         </span>
@@ -32,10 +32,14 @@ export function PlanCards({ plans }: PlanCardsProps) {
 
       {/* Plan Cards */}
       <div className="grid gap-6 md:grid-cols-3">
-        {plans.map((plan) => (
-          <StyledCard key={plan.name} className={plan.current ? "border-primary" : ""}>
-            <StyledCardHeader code="0x00" title={`${plan.name.toUpperCase()}_PLAN`} />
-            <div className="flex flex-1 flex-col p-4">
+        {plans.map((plan, idx) => (
+          <TerminalCard
+            key={plan.name}
+            tone={plan.current ? "primary" : "neutral"}
+            className="flex flex-col"
+          >
+            <TerminalCardHeader code={`0x0${idx}`} title={`${plan.name.toUpperCase()}_PLAN`} />
+            <TerminalCardContent padding="md" className="flex flex-1 flex-col">
               <div className="mb-4 flex items-center justify-between">
                 <div className={cn(mode.font, "text-muted-foreground text-xs")}>[{plan.name}]:</div>
                 {plan.current && (
@@ -50,7 +54,7 @@ export function PlanCards({ plans }: PlanCardsProps) {
                 )}
               </div>
 
-              <div className={cn(mode.font, "mb-4 text-3xl font-bold")}>
+              <div className="mb-4 text-4xl font-semibold">
                 ${plan.price}
                 <span className="text-muted-foreground text-lg font-normal">/mo</span>
               </div>
@@ -76,26 +80,28 @@ export function PlanCards({ plans }: PlanCardsProps) {
               >
                 {plan.current ? "CURRENT_PLAN" : `> SELECT_${plan.name}`}
               </Button>
-            </div>
-          </StyledCard>
+            </TerminalCardContent>
+          </TerminalCard>
         ))}
       </div>
 
       {/* Custom Plan */}
-      <StyledCard className="p-4">
-        <div className={cn(mode.font, "text-muted-foreground mb-2 text-xs")}>[CUSTOM_PLAN]:</div>
-        <div className="flex items-center justify-between">
-          <div>
-            <div className={cn(mode.font, "text-sm")}>Need a custom plan?</div>
-            <div className={cn(mode.font, "text-muted-foreground text-xs")}>
-              Contact our sales team for custom pricing and features
+      <TerminalCard tone="neutral">
+        <TerminalCardContent padding="md">
+          <div className={cn(mode.font, "text-muted-foreground mb-2 text-xs")}>[CUSTOM_PLAN]:</div>
+          <div className="flex items-center justify-between">
+            <div>
+              <div className={cn(mode.font, "text-sm")}>Need a custom plan?</div>
+              <div className={cn(mode.font, "text-muted-foreground text-xs")}>
+                Contact our sales team for custom pricing and features
+              </div>
             </div>
+            <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, "text-xs")}>
+              &gt; CONTACT_SALES
+            </Button>
           </div>
-          <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, "text-xs")}>
-            &gt; CONTACT_SALES
-          </Button>
-        </div>
-      </StyledCard>
+        </TerminalCardContent>
+      </TerminalCard>
     </>
   );
 }

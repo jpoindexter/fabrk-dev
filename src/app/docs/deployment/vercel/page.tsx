@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
 import { Rocket, Globe, Lock, Layers } from "lucide-react";
 
 export const metadata = {
@@ -175,7 +174,7 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`,
       {/* What You Get */}
       <DocsSection title="What You Get">
         <DocsCard title="FEATURES">
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+          <div className="space-y-1">
             <div>├─ Automatic HTTPS with custom domains</div>
             <div>├─ Global CDN for static assets</div>
             <div>├─ Edge functions for middleware</div>
@@ -191,16 +190,16 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`,
         <DocsCard title="TROUBLESHOOTING">
           <div className="space-y-4">
             <div>
-              <h4 className={`uppercase ${docsTypography.h4} mb-1`}>Build Fails with Prisma Error</h4>
-              <p className={docsTypography.body}>Add <code className="bg-muted px-1 font-mono text-xs">prisma generate</code> to build command in package.json</p>
+              <p className="mb-4"><strong>Build Fails with Prisma Error:</strong></p>
+              <p>Add <code className="bg-muted px-1">prisma generate</code> to build command in package.json</p>
             </div>
             <div>
-              <h4 className={`uppercase ${docsTypography.h4} mb-1`}>Environment Variables Not Working</h4>
-              <p className={docsTypography.body}>1. Check correct environment (Prod/Preview/Dev)<br/>2. Client-side vars need NEXT_PUBLIC_ prefix<br/>3. Redeploy after adding variables</p>
+              <p className="mb-4"><strong>Environment Variables Not Working:</strong></p>
+              <p>1. Check correct environment (Prod/Preview/Dev)<br/>2. Client-side vars need NEXT_PUBLIC_ prefix<br/>3. Redeploy after adding variables</p>
             </div>
             <div>
-              <h4 className={`uppercase ${docsTypography.h4} mb-1`}>Database Connection Timeout</h4>
-              <p className={docsTypography.body}>Use connection pooling (Supabase Pooler or PgBouncer)</p>
+              <p className="mb-4"><strong>Database Connection Timeout:</strong></p>
+              <p>Use connection pooling (Supabase Pooler or PgBouncer)</p>
             </div>
           </div>
         </DocsCard>

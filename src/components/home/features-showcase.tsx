@@ -20,8 +20,14 @@ import {
   Palette,
   Mail,
 } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import {
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+  TerminalStat,
+} from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { mode } from "@/design-system";
 
 const FEATURES = [
   {
@@ -153,42 +159,34 @@ function FeatureCard({
         y: -4,
         transition: { duration: 0.2 },
       }}
-      className="group border-border bg-card hover:border-primary/50 border transition-colors"
+      className="group h-full"
     >
-      {/* Module Header */}
-      <div className="border-border flex items-center justify-between border-b px-4 py-2">
-        <span className={cn(mode.font, "text-muted-foreground text-xs")}>
-          [ [0x{(index + 17).toString(16).toUpperCase().padStart(2, "0")}] {module} ]
-        </span>
-        <motion.div
-          whileHover={{ rotate: 12, scale: 1.1 }}
-          transition={{ type: "spring", stiffness: 400 }}
-        >
-          <Icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
-        </motion.div>
-      </div>
+      <TerminalCard interactive className="h-full">
+        <TerminalCardHeader
+          code={`0x${(index + 17).toString(16).toUpperCase().padStart(2, "0")}`}
+          title={module}
+          icon={
+            <motion.div
+              whileHover={{ rotate: 12, scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 400 }}
+            >
+              <Icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
+            </motion.div>
+          }
+        />
+        <TerminalCardContent>
+          {/* Status */}
+          <div className="mb-4">
+            <TerminalStat label="STATUS" value={status} size="sm" />
+          </div>
 
-      {/* Content */}
-      <div className="p-4">
-        {/* Status */}
-        <div className={cn(mode.font, "mb-4 text-xs")}>
-          <span className="text-muted-foreground">STATUS: </span>
-          <motion.span
-            className="text-success"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: index * 0.08 + 0.3 }}
-          >
-            {status}
-          </motion.span>
-        </div>
-
-        {/* Description */}
-        <div className={cn(mode.font, "text-xs")}>
-          <span className="text-muted-foreground">DESC: </span>
-          <span className="text-foreground">{description}</span>
-        </div>
-      </div>
+          {/* Description */}
+          <div className={cn("text-xs", mode.font)}>
+            <span className="text-muted-foreground">DESC: </span>
+            <span className="text-foreground">{description}</span>
+          </div>
+        </TerminalCardContent>
+      </TerminalCard>
     </motion.div>
   );
 }
@@ -205,17 +203,13 @@ export function FeaturesShowcase() {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <div
-            className={cn(mode.radius, "border-border bg-card mb-4 inline-block border px-4 py-1")}
-          >
-            <span className={cn(mode.font, "text-muted-foreground text-xs")}>
-              [ [0x10] STACK_CONFIG ] FIB[89,144,233] MODULES
-            </span>
-          </div>
-          <h2 className={cn(mode.font, "mb-4 text-2xl font-bold tracking-tight")}>
+          <TerminalCard className="mb-4 inline-block">
+            <TerminalCardHeader code="0x10" title="STACK_CONFIG" meta="FIB[89,144,233] MODULES" />
+          </TerminalCard>
+          <h2 className={cn("mb-4 text-2xl font-semibold tracking-tight", mode.font)}>
             SOLID_FOUNDATION
           </h2>
-          <p className={cn(mode.font, "text-muted-foreground max-w-2xl text-sm")}>
+          <p className={cn("text-muted-foreground max-w-2xl text-sm", mode.font)}>
             Everything you need to build a production-ready SaaS. Authentication, payments,
             multi-tenancy, and more—all pre-configured and ready to customize.
           </p>

@@ -1,5 +1,8 @@
 import { Wrench, Clock } from "lucide-react";
 import type { Metadata } from "next";
+import { cn } from "@/lib/utils";
+import { mode } from "@/design-system";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Maintenance Mode",
@@ -21,82 +24,82 @@ export default function MaintenancePage() {
       <div className="mx-auto max-w-2xl text-center">
         {/* Maintenance Icon */}
         <div className="mb-8 flex justify-center">
-          <div className="rounded-none bg-warning/20 p-6">
-            <Wrench className="h-16 w-16 text-warning" />
+          <div className={cn("bg-warning/20 p-6", mode.radius)}>
+            <Wrench className="size-16 text-warning" />
           </div>
         </div>
 
         {/* Message */}
-        <h1 className="mb-4 text-4xl font-bold text-foreground">
-          Scheduled Maintenance
+        <h1 className={cn("mb-4 text-4xl font-semibold text-foreground", mode.font)}>
+          SCHEDULED_MAINTENANCE
         </h1>
-        <p className="mb-6 text-lg text-muted-foreground">
+        <p className={cn("mb-6 text-sm text-muted-foreground", mode.font)}>
           We're currently performing scheduled maintenance to improve your experience.
           We'll be back shortly!
         </p>
 
         {/* Estimated Time */}
-        <div className="mb-8 inline-flex items-center gap-2 rounded-none bg-warning/10 px-6 py-4">
-          <Clock className="h-5 w-5 text-warning" />
-          <span className="text-sm font-medium text-warning-foreground">
-            Estimated downtime: 30 minutes
+        <div className={cn("mb-8 inline-flex items-center gap-2 bg-warning/10 px-6 py-4", mode.radius)}>
+          <Clock className="size-5 text-warning" />
+          <span className={cn("text-xs font-medium text-warning", mode.font)}>
+            [ESTIMATED_DOWNTIME]: 30 minutes
           </span>
         </div>
 
         {/* Status Updates */}
         <div className="mb-8">
-          <p className="mb-2 text-sm text-muted-foreground">
-            For real-time updates, follow us on:
+          <p className={cn("mb-2 text-xs text-muted-foreground", mode.font)}>
+            [STATUS_UPDATES]: For real-time updates, follow us on:
           </p>
           <div className="flex justify-center gap-4">
             <a
               href="https://twitter.com/yourhandle"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-semibold text-primary hover:underline"
+              className={cn("text-xs font-semibold text-primary hover:underline", mode.font)}
             >
-              Twitter
+              TWITTER
             </a>
             <a
               href="https://status.yourapp.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-semibold text-primary hover:underline"
+              className={cn("text-xs font-semibold text-primary hover:underline", mode.font)}
             >
-              Status Page
+              STATUS_PAGE
             </a>
           </div>
         </div>
 
         {/* What We're Doing */}
-        <div className="rounded-none border border-border/60 bg-card p-6 text-left">
-          <h2 className="mb-4 text-lg font-semibold text-foreground">
-            What we're working on:
-          </h2>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li className="flex items-start gap-2">
-              <span className="text-primary">•</span>
-              Database optimization for faster performance
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-primary">•</span>
-              Security updates and patches
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-primary">•</span>
-              New features deployment
-            </li>
-          </ul>
-        </div>
+        <TerminalCard size="auto" className="text-left">
+          <TerminalCardHeader code="0x00" title="CURRENT_TASKS" icon={<Wrench className="size-4" />} />
+          <TerminalCardContent padding="md">
+            <ul className={cn("space-y-2 text-xs text-muted-foreground", mode.font)}>
+              <li className="flex items-start gap-3">
+                <span className="text-primary flex-shrink-0">├─</span>
+                <span className="text-foreground">Database optimization for faster performance</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-primary flex-shrink-0">├─</span>
+                <span className="text-foreground">Security updates and patches</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-primary flex-shrink-0">└─</span>
+                <span className="text-foreground">New features deployment</span>
+              </li>
+            </ul>
+          </TerminalCardContent>
+        </TerminalCard>
 
         {/* Support */}
         <div className="mt-12 border-t border-border pt-8">
-          <p className="mb-2 text-sm text-muted-foreground">
-            Need urgent assistance?
+          <p className={cn("mb-2 text-xs text-muted-foreground", mode.font)}>
+            [HELP]: Need urgent assistance?
           </p>
           <a
             href="mailto:support@fabrk.dev"
-            className="text-sm font-semibold text-primary hover:underline"
+            className={cn("text-xs font-semibold text-primary hover:underline", mode.font)}
           >
             support@fabrk.dev
           </a>

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import {
   AlertDialog,
@@ -13,7 +13,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface Session {
@@ -76,12 +76,9 @@ export function SessionsSection() {
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Active Sessions</CardTitle>
-        <CardDescription>Manage your active sessions across devices.</CardDescription>
-      </CardHeader>
-      <CardContent>
+    <TerminalCard tone="neutral">
+      <TerminalCardHeader code="0x06" title="ACTIVE_SESSIONS" />
+      <TerminalCardContent>
         <div className="space-y-4">
           {sessions.length === 0 ? (
             <p className="text-muted-foreground text-sm">No active sessions.</p>
@@ -90,11 +87,13 @@ export function SessionsSection() {
               <table className="w-full text-sm">
                 <thead className="border-b">
                   <tr>
-                    <th className="px-2 py-2 text-left font-medium">Device</th>
-                    <th className="px-2 py-2 text-left font-medium">Browser</th>
-                    <th className="px-2 py-2 text-left font-medium">IP Address</th>
-                    <th className="px-2 py-2 text-left font-medium">Last Active</th>
-                    <th className="px-2 py-2 text-left font-medium">Action</th>
+                    <th className={cn("px-2 py-2 text-left font-medium", mode.font)}>Device</th>
+                    <th className={cn("px-2 py-2 text-left font-medium", mode.font)}>Browser</th>
+                    <th className={cn("px-2 py-2 text-left font-medium", mode.font)}>IP Address</th>
+                    <th className={cn("px-2 py-2 text-left font-medium", mode.font)}>
+                      Last Active
+                    </th>
+                    <th className={cn("px-2 py-2 text-left font-medium", mode.font)}>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -119,7 +118,9 @@ export function SessionsSection() {
                           disabled={session.isCurrent || isLoading}
                           className="text-destructive hover:text-destructive"
                         >
-                          Revoke
+                          {isLoading && revokeSessionId === session.id
+                            ? "> REVOKING..."
+                            : "> REVOKE"}
                         </Button>
                       </td>
                     </tr>
@@ -129,7 +130,7 @@ export function SessionsSection() {
             </div>
           )}
         </div>
-      </CardContent>
+      </TerminalCardContent>
 
       <AlertDialog open={!!revokeSessionId} onOpenChange={() => setRevokeSessionId(null)}>
         <AlertDialogContent>
@@ -140,17 +141,17 @@ export function SessionsSection() {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <div className="flex justify-end gap-2">
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
             <AlertDialogAction
               onClick={() => revokeSessionId && handleRevokeSession(revokeSessionId)}
               disabled={isLoading}
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
             >
-              {isLoading ? "Revoking..." : "Revoke"}
+              {isLoading ? "&gt; REVOKING..." : "&gt; REVOKE"}
             </AlertDialogAction>
           </div>
         </AlertDialogContent>
       </AlertDialog>
-    </Card>
+    </TerminalCard>
   );
 }

@@ -9,11 +9,16 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { StyledCard, StyledCardHeader, PageBadge } from "@/components/ui/card";
+import {
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+  PageBadge,
+} from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
 import Link from "next/link";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 // Mock article data
@@ -63,7 +68,7 @@ const mockArticle = {
       language: "typescript",
       content: `// app/api/users/route.ts
 import { NextResponse } from "next/server";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export async function GET() {
@@ -154,13 +159,13 @@ export default function BlogPostTemplate() {
           </Badge>
 
           {/* Title */}
-          <h1 className={cn(mode.font, "mb-6 text-3xl leading-tight font-bold md:text-4xl")}>
+          <h1 className={cn(mode.font, "mb-6 text-3xl leading-tight font-semibold md:text-4xl")}>
             {mockArticle.title}
           </h1>
 
           {/* Meta: Author + Date + Read Time */}
           <div className="flex flex-wrap items-center gap-4">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <Avatar className={cn(mode.radius, "border-border h-10 w-10 border")}>
                 <AvatarImage src={mockArticle.author.avatar || undefined} />
                 <AvatarFallback className={cn(mode.radius, mode.font, "text-xs")}>
@@ -205,7 +210,10 @@ export default function BlogPostTemplate() {
               return (
                 <h2
                   key={index}
-                  className={cn(mode.font, "border-border mt-10 border-b pb-2 text-xl font-bold")}
+                  className={cn(
+                    mode.font,
+                    "border-border mt-10 border-b pb-2 text-xl font-semibold"
+                  )}
                 >
                   {block.content}
                 </h2>
@@ -256,26 +264,28 @@ export default function BlogPostTemplate() {
         </div>
 
         {/* Features Note */}
-        <StyledCard>
-          <StyledCardHeader code="0x00" title="TEMPLATE_FEATURES" />
-          <div className={cn(mode.font, "space-y-1 p-4 text-xs")}>
-            <div>
-              <span className="text-success">✓</span> Clean, centered single-column layout
+        <TerminalCard>
+          <TerminalCardHeader code="0x00" title="TEMPLATE_FEATURES" />
+          <TerminalCardContent padding="md">
+            <div className={cn(mode.font, "space-y-1 text-xs")}>
+              <div>
+                <span className="text-success">✓</span> Clean, centered single-column layout
+              </div>
+              <div>
+                <span className="text-success">✓</span> Author + date + read time header
+              </div>
+              <div>
+                <span className="text-success">✓</span> Code blocks with copy functionality
+              </div>
+              <div>
+                <span className="text-success">✓</span> Tags and share actions
+              </div>
+              <div>
+                <span className="text-success">✓</span> Industry-standard Vercel/Next.js pattern
+              </div>
             </div>
-            <div>
-              <span className="text-success">✓</span> Author + date + read time header
-            </div>
-            <div>
-              <span className="text-success">✓</span> Code blocks with copy functionality
-            </div>
-            <div>
-              <span className="text-success">✓</span> Tags and share actions
-            </div>
-            <div>
-              <span className="text-success">✓</span> Industry-standard Vercel/Next.js pattern
-            </div>
-          </div>
-        </StyledCard>
+          </TerminalCardContent>
+        </TerminalCard>
       </div>
     </div>
   );

@@ -1,11 +1,11 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
 import { Search, Share2, FileText, Globe } from "lucide-react";
 
 export const metadata = {
   title: "SEO Metadata - Fabrk Docs",
-  description: "Comprehensive SEO configuration including meta tags, OpenGraph, Twitter cards, and structured data for optimal search engine visibility.",
+  description:
+    "Comprehensive SEO configuration including meta tags, OpenGraph, Twitter cards, and structured data for optimal search engine visibility.",
 };
 
 export default function SEOPage() {
@@ -17,10 +17,28 @@ export default function SEOPage() {
       description="Comprehensive SEO configuration including meta tags, OpenGraph, Twitter cards, and structured data for optimal search engine visibility."
       overview="Fabrk includes a complete SEO system built on Next.js 15's metadata API. The system provides automatic meta tag generation from centralized configuration, OpenGraph and Twitter card support for social sharing, JSON-LD structured data for rich search results, dynamic sitemap and robots.txt generation, and canonical URL management."
       features={[
-        { icon: Search, title: "Auto Meta Tags", description: "Automatic meta tag generation from centralized configuration in src/config.js." },
-        { icon: Share2, title: "Social Cards", description: "OpenGraph and Twitter card support for beautiful social sharing previews." },
-        { icon: FileText, title: "Structured Data", description: "JSON-LD structured data for rich search results and knowledge panels." },
-        { icon: Globe, title: "Dynamic Sitemap", description: "Automatic sitemap.xml and robots.txt generation for search engine crawling." },
+        {
+          icon: Search,
+          title: "Auto Meta Tags",
+          description:
+            "Automatic meta tag generation from centralized configuration in src/config.js.",
+        },
+        {
+          icon: Share2,
+          title: "Social Cards",
+          description: "OpenGraph and Twitter card support for beautiful social sharing previews.",
+        },
+        {
+          icon: FileText,
+          title: "Structured Data",
+          description: "JSON-LD structured data for rich search results and knowledge panels.",
+        },
+        {
+          icon: Globe,
+          title: "Dynamic Sitemap",
+          description:
+            "Automatic sitemap.xml and robots.txt generation for search engine crawling.",
+        },
       ]}
       setup={[
         {
@@ -174,30 +192,34 @@ export default async function sitemap() {
       <DocsSection title="Common Use Cases">
         <div className="grid gap-4">
           <DocsCard title="LANDING_PAGE_SEO">
-            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Landing Page SEO</h3>
-            <p className={docsTypography.body}>
-              Configure meta tags for your homepage with compelling title and description that matches your value proposition. Include OpenGraph image (1200x630px recommended).
+            Landing Page SEO
+            <p className="mb-6">
+              Configure meta tags for your homepage with compelling title and description that
+              matches your value proposition. Include OpenGraph image (1200x630px recommended).
             </p>
           </DocsCard>
 
           <DocsCard title="BLOG_POST_SEO">
-            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Blog Post Optimization</h3>
-            <p className={docsTypography.body}>
-              Use dynamic metadata generation to automatically pull title, description, and featured image from your CMS or database for each blog post.
+            Blog Post Optimization
+            <p className="mb-6">
+              Use dynamic metadata generation to automatically pull title, description, and featured
+              image from your CMS or database for each blog post.
             </p>
           </DocsCard>
 
           <DocsCard title="PRODUCT_PAGES">
-            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Product Pages</h3>
-            <p className={docsTypography.body}>
-              Add Product schema structured data for e-commerce features, including price, availability, and reviews for rich snippets in search results.
+            Product Pages
+            <p className="mb-6">
+              Add Product schema structured data for e-commerce features, including price,
+              availability, and reviews for rich snippets in search results.
             </p>
           </DocsCard>
 
           <DocsCard title="LOCALIZED_CONTENT">
-            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Localized Content</h3>
-            <p className={docsTypography.body}>
-              Use hreflang tags and locale-specific metadata for international SEO. Fabrk's i18n system automatically handles alternate language links.
+            Localized Content
+            <p className="mb-6">
+              Use hreflang tags and locale-specific metadata for international SEO. Fabrk's i18n
+              system automatically handles alternate language links.
             </p>
           </DocsCard>
         </div>
@@ -206,7 +228,7 @@ export default async function sitemap() {
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
         <DocsCard title="SEO_BEST_PRACTICES">
-          <ul className="font-mono text-sm text-muted-foreground space-y-1">
+          <ul className="space-y-1">
             <li>├─ Keep titles under 60 characters for full display in search results</li>
             <li>├─ Write descriptions between 120-160 characters</li>
             <li>├─ Use unique titles and descriptions for every page</li>

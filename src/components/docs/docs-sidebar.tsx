@@ -226,7 +226,7 @@ export function DocsSidebar({
         <div className="p-2">
           <button
             onClick={() => setSidebarCollapsed(false)}
-            className="text-muted-foreground hover:text-foreground hover:bg-muted flex items-center justify-center p-1.5 transition-colors"
+            className="text-muted-foreground hover:text-foreground hover:bg-muted flex items-center justify-center p-2 transition-colors"
             title="Expand sidebar"
             aria-label="Expand sidebar"
           >
@@ -252,14 +252,14 @@ export function DocsSidebar({
           </div>
 
           {/* Search input */}
-          <div className="relative mb-3">
+          <div className="relative mb-4">
             <Search className="text-muted-foreground absolute top-1/2 left-2 h-3 w-3 -translate-y-1/2" />
             <input
               type="text"
               placeholder="Search docs..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="border-border bg-muted/50 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/20 w-full border py-1.5 pr-7 pl-7 font-mono text-xs focus:ring-1 focus:outline-none"
+              className="border-border bg-muted/50 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/20 w-full border py-2 pr-7 pl-7 font-mono text-xs focus:ring-1 focus:outline-none"
               aria-label="Search documentation"
             />
             {searchQuery && (
@@ -297,7 +297,7 @@ export function DocsSidebar({
                 <button
                   onClick={() => toggleSection(sectionIndex)}
                   className={cn(
-                    "flex w-full items-center gap-2 py-1.5 text-xs font-semibold transition-colors",
+                    "flex w-full items-center gap-2 py-2 text-xs font-semibold transition-colors",
                     hasActiveItem ? "text-primary" : "text-muted-foreground hover:text-foreground"
                   )}
                 >

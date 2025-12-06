@@ -5,7 +5,7 @@
  * Production-ready ✓
  */
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface LogoProps {
@@ -44,7 +44,7 @@ export function Logo({ size = 20, className = "" }: LogoProps = {}) {
         <polygon points="0,30 7,30 7,40 0,40" fill="currentColor" />
         <polygon points="7,33 14,33 14,40 7,40" fill="currentColor" />
       </svg>
-      <span className="text-primary-foreground text-lg leading-none font-black tracking-tight uppercase">
+      <span className="text-primary-foreground text-lg leading-none font-bold tracking-tight uppercase">
         Fabrk
       </span>
     </div>

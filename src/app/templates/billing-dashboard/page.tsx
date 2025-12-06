@@ -20,7 +20,7 @@ import { RecentInvoicesCard } from "./components/recent-invoices-card";
 import { PlanCards } from "./components/plan-cards";
 import { BillingHistoryTable } from "./components/billing-history-table";
 import { TemplateFeaturesCard } from "./components/template-features-card";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 // Mock data
@@ -178,7 +178,7 @@ export default function BillingDashboardTemplate() {
             description="Manage your subscription, payments, and billing information"
           />
           <Button className={cn(mode.radius, mode.font, "text-xs")}>
-            <ArrowUpRight className="mr-2 h-4 w-4" />
+            <ArrowUpRight className="mr-2 size-4" />
             &gt; UPGRADE_PLAN
           </Button>
         </div>
@@ -193,21 +193,23 @@ export default function BillingDashboardTemplate() {
         >
           {/* Overview Tab */}
           <StyledTabsContent value="overview">
-            <CurrentPlanCard subscription={subscription} formatDate={formatDate} />
+            <div className="space-y-6">
+              <CurrentPlanCard subscription={subscription} formatDate={formatDate} />
 
-            {/* Usage Stats and Payment Methods Grid */}
-            <div className="grid gap-6 md:grid-cols-2">
-              <UsageMetricsCard usage={usage} />
-              <PaymentMethodsCard paymentMethods={paymentMethods} />
+              {/* Usage Stats and Payment Methods Grid */}
+              <div className="grid gap-6 md:grid-cols-2">
+                <UsageMetricsCard usage={usage} />
+                <PaymentMethodsCard paymentMethods={paymentMethods} />
+              </div>
+
+              <RecentInvoicesCard
+                payments={payments}
+                formatDate={formatDate}
+                formatCurrency={formatCurrency}
+                getStatusText={getStatusText}
+                onViewAll={() => setActiveTab("history")}
+              />
             </div>
-
-            <RecentInvoicesCard
-              payments={payments}
-              formatDate={formatDate}
-              formatCurrency={formatCurrency}
-              getStatusText={getStatusText}
-              onViewAll={() => setActiveTab("history")}
-            />
           </StyledTabsContent>
 
           {/* Plans Tab */}

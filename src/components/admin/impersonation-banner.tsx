@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { AlertTriangle, X } from "lucide-react";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 interface ImpersonationStatus {
   isImpersonating: boolean;
@@ -69,7 +69,7 @@ export function ImpersonationBanner() {
   return (
     <div className="border-warning bg-warning/10 fixed top-0 right-0 left-0 z-[100] border-b-2 px-4 py-2">
       <div className="container mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <AlertTriangle className="text-warning h-5 w-5" />
           <span className={cn("text-foreground text-sm", mode.font)}>
             <span className="text-warning">[IMPERSONATION_MODE]</span> Viewing as:{" "}
@@ -84,11 +84,11 @@ export function ImpersonationBanner() {
           className="border-warning text-warning hover:bg-warning hover:text-warning-foreground"
         >
           {loading ? (
-            "Exiting..."
+            "> EXITING..."
           ) : (
             <>
               <X className="mr-1 h-4 w-4" />
-              EXIT_IMPERSONATION
+              &gt; EXIT_IMPERSONATION
             </>
           )}
         </Button>

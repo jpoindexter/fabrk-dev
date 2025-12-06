@@ -6,7 +6,8 @@
  */
 
 import * as React from "react";
-import { mode } from "@/lib/design-system";
+import Link from "next/link";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
@@ -47,12 +48,10 @@ import {
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+  TerminalCardFooter,
 } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { CodeBlock } from "@/components/ui/code-block";
@@ -179,7 +178,6 @@ import { TimePicker } from "@/components/ui/time-picker";
 import { Toaster } from "@/components/ui/toaster";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { H1, H2, H3, H4, Body, Small } from "@/components/ui/typography";
-import { WindowControls, WindowHeader } from "@/components/ui/window-controls";
 
 // Icons
 import {
@@ -280,6 +278,9 @@ export default function ComponentShowcasePage() {
   ];
 
   const sections = [
+    { id: "foundations", title: "FOUNDATIONS", href: "/component-showcase/foundations" },
+    { id: "templates", title: "TEMPLATES", href: "/component-showcase/templates" },
+    { id: "cards", title: "CARDS", href: "/component-showcase/cards" },
     { id: "buttons", title: "BUTTONS_&_ACTIONS" },
     { id: "inputs", title: "INPUTS_&_FORMS" },
     { id: "display", title: "DATA_DISPLAY" },
@@ -295,28 +296,41 @@ export default function ComponentShowcasePage() {
       <div className="bg-background min-h-screen">
         {/* Header */}
         <header className="border-border bg-background/95 sticky top-0 z-50 border-b backdrop-blur">
-          <div className="flex items-center gap-4 px-6 py-4">
-            <WindowControls size="sm" />
+          <div className="flex items-center px-6 py-4">
             <span className={cn("text-muted-foreground text-sm", mode.font)}>
-              component-showcase.tsx — 99 COMPONENTS
+              [ [0x00] COMPONENT_SHOWCASE ] component-showcase.tsx — 99 COMPONENTS
             </span>
           </div>
           {/* Table of Contents */}
           <ScrollArea className="border-border border-t">
-            <div className="flex gap-2 px-6 py-3">
-              {sections.map((section) => (
-                <a
-                  key={section.id}
-                  href={`#${section.id}`}
-                  className={cn(
-                    "border-border bg-card hover:bg-muted border px-3 py-1 text-xs whitespace-nowrap",
-                    mode.font,
-                    mode.radius
-                  )}
-                >
-                  {section.title}
-                </a>
-              ))}
+            <div className="flex gap-2 px-6 py-2">
+              {sections.map((section) =>
+                section.href ? (
+                  <Link
+                    key={section.id}
+                    href={section.href}
+                    className={cn(
+                      "border-primary bg-primary/10 text-primary border px-4 py-1 text-xs whitespace-nowrap",
+                      mode.font,
+                      mode.radius
+                    )}
+                  >
+                    {section.title}
+                  </Link>
+                ) : (
+                  <a
+                    key={section.id}
+                    href={`#${section.id}`}
+                    className={cn(
+                      "border-border bg-card hover:bg-muted border px-4 py-1 text-xs whitespace-nowrap",
+                      mode.font,
+                      mode.radius
+                    )}
+                  >
+                    {section.title}
+                  </a>
+                )
+              )}
             </div>
           </ScrollArea>
         </header>
@@ -366,7 +380,7 @@ export default function ComponentShowcasePage() {
                 <div className="flex items-center gap-2">
                   <code
                     className={cn(
-                      "border-border bg-muted border px-3 py-1 text-sm",
+                      "border-border bg-muted border px-4 py-1 text-sm",
                       mode.font,
                       mode.radius
                     )}
@@ -664,20 +678,21 @@ export default function ComponentShowcasePage() {
               {/* Card */}
               <div>
                 <Label className="mb-4 block">[CARD]:</Label>
-                <Card className="max-w-sm">
-                  <CardHeader>
-                    <CardTitle>Card Title</CardTitle>
-                    <CardDescription>Card description goes here</CardDescription>
-                  </CardHeader>
-                  <CardContent>
+                <TerminalCard className="max-w-sm">
+                  <TerminalCardHeader
+                    code="0x00"
+                    title="CARD_TITLE"
+                    meta="Card description goes here"
+                  />
+                  <TerminalCardContent>
                     <p className="text-muted-foreground text-sm">
                       Card content with some example text.
                     </p>
-                  </CardContent>
-                  <CardFooter>
+                  </TerminalCardContent>
+                  <TerminalCardFooter>
                     <Button size="sm">&gt; ACTION</Button>
-                  </CardFooter>
-                </Card>
+                  </TerminalCardFooter>
+                </TerminalCard>
               </div>
 
               {/* StatCard */}
@@ -968,7 +983,7 @@ return greeting;`}
                   </PopoverTrigger>
                   <PopoverContent>
                     <div className="space-y-2">
-                      <h4 className={cn("text-sm font-medium", mode.font)}>Popover Title</h4>
+                      <h4 className={cn("text-sm font-semibold", mode.font)}>Popover Title</h4>
                       <p className="text-muted-foreground text-sm">Popover content goes here.</p>
                     </div>
                   </PopoverContent>
@@ -984,7 +999,7 @@ return greeting;`}
                   </HoverCardTrigger>
                   <HoverCardContent>
                     <div className="space-y-2">
-                      <h4 className={cn("text-sm font-medium", mode.font)}>HoverCard Title</h4>
+                      <h4 className={cn("text-sm font-semibold", mode.font)}>HoverCard Title</h4>
                       <p className="text-muted-foreground text-sm">HoverCard content on hover.</p>
                     </div>
                   </HoverCardContent>
@@ -1235,44 +1250,6 @@ return greeting;`}
           <section id="layout" className={cn("border-border border", mode.radius)}>
             <SectionHeader code="0x08" title="LAYOUT_&_CONTAINERS" />
             <div className="space-y-8 p-6">
-              {/* WindowControls */}
-              <div>
-                <Label className="mb-4 block">[WINDOW_CONTROLS]:</Label>
-                <div className="flex gap-8">
-                  <div className="text-center">
-                    <WindowControls size="xs" />
-                    <p className="text-muted-foreground mt-2 text-xs">xs</p>
-                  </div>
-                  <div className="text-center">
-                    <WindowControls size="sm" />
-                    <p className="text-muted-foreground mt-2 text-xs">sm</p>
-                  </div>
-                  <div className="text-center">
-                    <WindowControls size="md" />
-                    <p className="text-muted-foreground mt-2 text-xs">md</p>
-                  </div>
-                  <div className="text-center">
-                    <WindowControls size="lg" />
-                    <p className="text-muted-foreground mt-2 text-xs">lg</p>
-                  </div>
-                  <div className="text-center">
-                    <WindowControls size="sm" animated />
-                    <p className="text-muted-foreground mt-2 text-xs">animated</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* WindowHeader */}
-              <div>
-                <Label className="mb-4 block">[WINDOW_HEADER]:</Label>
-                <div className={cn("border-border border", mode.radius)}>
-                  <WindowHeader filename="example.tsx" />
-                  <div className="p-4">
-                    <p className="text-muted-foreground text-sm">Window content</p>
-                  </div>
-                </div>
-              </div>
-
               {/* Container */}
               <div>
                 <Label className="mb-4 block">[CONTAINER]:</Label>

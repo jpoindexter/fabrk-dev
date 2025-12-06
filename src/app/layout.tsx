@@ -17,6 +17,7 @@ import { GeistSans } from "geist/font/sans";
 import localFont from "next/font/local";
 import { generateOrganizationSchema, generateProductSchema } from "@/lib/metadata";
 import { AnimatedBackground } from "@/components/landing/animated-background";
+import { ThemeScript } from "@/design-system/providers";
 import "./globals.css";
 
 const jetbrainsMono = localFont({
@@ -139,16 +140,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <head>
         <meta name="theme-color" content="oklch(var(--primary))" />
-        {/* Load DaisyUI theme before hydration to prevent flash */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                const theme = localStorage.getItem('theme') || 'light';
-                document.documentElement.setAttribute('data-theme', theme);
-              } catch (e) {}
-            `,
-          }}
+        {/* Design System: Prevent theme flash during SSR */}
+        <ThemeScript
+          storageKeyPrefix="fabrk"
+          defaultColorTheme="dark"
+          defaultVisualMode="terminal"
         />
         {/* Google Consent Mode v2 - Must load BEFORE GTM */}
         <script

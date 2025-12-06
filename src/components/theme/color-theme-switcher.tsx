@@ -9,7 +9,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 const themes = [
   { id: "light", name: "Light", preview: "#ffffff" },

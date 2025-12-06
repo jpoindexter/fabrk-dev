@@ -3,8 +3,9 @@
  */
 
 import { Switch } from "@/components/ui/switch";
-import { StyledCard, StyledCardHeader } from "@/components/ui/card";
-import { mode } from "@/lib/design-system";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { User, Cookie } from "lucide-react";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface PrivacySettings {
@@ -25,9 +26,13 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
   return (
     <div className="space-y-6">
       {/* Profile Privacy */}
-      <StyledCard>
-        <StyledCardHeader code="0x00" title="PROFILE_PRIVACY" />
-        <div className="p-4">
+      <TerminalCard tone="neutral">
+        <TerminalCardHeader
+          code="0x02"
+          title="PROFILE_PRIVACY"
+          icon={<User className="h-4 w-4" />}
+        />
+        <TerminalCardContent padding="md">
           <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
             [PROFILE_ACTIVITY]:
           </div>
@@ -68,13 +73,13 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
               </div>
             ))}
           </div>
-        </div>
-      </StyledCard>
+        </TerminalCardContent>
+      </TerminalCard>
 
       {/* Cookie Preferences */}
-      <StyledCard>
-        <StyledCardHeader code="0x00" title="COOKIES" />
-        <div className="p-4">
+      <TerminalCard tone="neutral">
+        <TerminalCardHeader code="0x03" title="COOKIES" icon={<Cookie className="h-4 w-4" />} />
+        <TerminalCardContent padding="md">
           <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
             [COOKIE_PREFERENCES]:
           </div>
@@ -119,8 +124,8 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
               </div>
             ))}
           </div>
-        </div>
-      </StyledCard>
+        </TerminalCardContent>
+      </TerminalCard>
     </div>
   );
 }

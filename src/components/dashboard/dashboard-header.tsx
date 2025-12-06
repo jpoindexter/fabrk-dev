@@ -24,7 +24,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { OrgSwitcher } from "@/components/organization/org-switcher";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 export function DashboardHeader() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -110,7 +110,7 @@ export function DashboardHeader() {
               >
                 <Avatar className="border-border h-10 w-10 border">
                   <AvatarImage src={mockUser.image || ""} alt={mockUser.name} />
-                  <AvatarFallback className="bg-primary text-primary-foreground font-bold">
+                  <AvatarFallback className="bg-primary text-primary-foreground font-semibold">
                     {userInitials}
                   </AvatarFallback>
                 </Avatar>
@@ -118,7 +118,7 @@ export function DashboardHeader() {
             </DropdownMenuTrigger>
             <DropdownMenuContent
               align="end"
-              className={cn("border-border w-56 border shadow", mode.radius)}
+              className={cn("border-border w-56 border", mode.radius)}
             >
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
@@ -131,18 +131,6 @@ export function DashboardHeader() {
                 <Link href="/profile" className="cursor-pointer">
                   <User className="mr-2 h-4 w-4" />
                   Profile
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/settings" className="cursor-pointer">
-                  <Settings className="mr-2 h-4 w-4" />
-                  Settings
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/settings/security" className="cursor-pointer">
-                  <Shield className="mr-2 h-4 w-4" />
-                  Security
                 </Link>
               </DropdownMenuItem>
               {isAdmin && (

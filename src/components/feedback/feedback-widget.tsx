@@ -19,8 +19,8 @@ import {
 import { MessageCircle, X, Star } from "lucide-react";
 import type { FeedbackType } from "@/lib/feedback";
 
-import { mode } from "@/lib/design-system/visual-mode";
-import { formatLabel } from "@/lib/design-system";
+import { mode } from "@/design-system";
+import { formatLabel } from "@/design-system";
 import { cn } from "@/lib/utils";
 interface FeedbackWidgetProps {
   onSubmit: (feedback: { type: FeedbackType; message: string; rating?: number }) => void;
@@ -137,8 +137,8 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
             </div>
           </div>
 
-          <Button type="submit" className="w-full">
-            Submit Feedback
+          <Button type="submit" className={cn("w-full", mode.font, "text-xs")}>
+            &gt; SUBMIT_FEEDBACK
           </Button>
         </form>
       )}

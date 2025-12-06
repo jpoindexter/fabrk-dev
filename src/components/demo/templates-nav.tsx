@@ -30,7 +30,7 @@ import {
   findTemplateByHref,
   toDisplayCase,
 } from "@/app/templates/templates-nav-data";
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function TemplatesNav() {
@@ -46,7 +46,7 @@ export function TemplatesNav() {
           className={cn("flex items-center gap-2 transition-opacity hover:opacity-80", mode.font)}
         >
           <span className="text-primary text-xs">&gt;</span>
-          <span className="text-sm font-bold tracking-tight">FABRK</span>
+          <span className="text-sm font-semibold tracking-tight">FABRK</span>
           <span className="text-muted-foreground hidden text-xs sm:inline">_TEMPLATES</span>
         </Link>
 

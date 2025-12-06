@@ -3,7 +3,7 @@
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { formatLabel } from "@/lib/design-system";
+import { formatLabel } from "@/design-system";
 
 export default function InputPage() {
   return (

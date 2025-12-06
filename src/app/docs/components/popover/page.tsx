@@ -6,7 +6,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Settings, Info } from "lucide-react";
-import { formatLabel } from "@/lib/design-system";
+import { formatLabel } from "@/design-system";
 
 export default function PopoverPage() {
   return (
@@ -24,7 +24,7 @@ export default function PopoverPage() {
             </PopoverTrigger>
             <PopoverContent>
               <div className="space-y-2">
-                <h4 className="leading-none font-medium">Dimensions</h4>
+                <h4 className="leading-none font-semibold">Dimensions</h4>
                 <p className="text-muted-foreground text-sm">Set the dimensions for the layer.</p>
               </div>
             </PopoverContent>
@@ -36,7 +36,7 @@ export default function PopoverPage() {
   </PopoverTrigger>
   <PopoverContent>
     <div className="space-y-2">
-      <h4 className="font-medium">Dimensions</h4>
+      <h4 className="font-semibold">Dimensions</h4>
       <p className="text-sm text-muted-foreground">
         Set the dimensions for the layer.
       </p>
@@ -59,7 +59,7 @@ export default function PopoverPage() {
               <PopoverContent>
                 <div className="grid gap-4">
                   <div className="space-y-2">
-                    <h4 className="leading-none font-medium">Settings</h4>
+                    <h4 className="leading-none font-semibold">Settings</h4>
                     <p className="text-muted-foreground text-sm">Configure your preferences.</p>
                   </div>
                   <div className="grid gap-2">
@@ -85,7 +85,7 @@ export default function PopoverPage() {
   </PopoverTrigger>
   <PopoverContent>
     <div className="grid gap-4">
-      <h4 className="font-medium">Settings</h4>
+      <h4 className="font-semibold">Settings</h4>
       <div className="grid gap-2">
         <Label htmlFor="width">{formatLabel("Width")}</Label>
         <Input id="width" defaultValue="100%" />
@@ -106,7 +106,7 @@ export default function PopoverPage() {
               </PopoverTrigger>
               <PopoverContent align="start">
                 <div className="space-y-2">
-                  <h4 className="font-medium">Aligned to Start</h4>
+                  <h4 className="font-semibold">Aligned to Start</h4>
                   <p className="text-muted-foreground text-sm">
                     This popover is aligned to the start of the trigger.
                   </p>
@@ -120,7 +120,7 @@ export default function PopoverPage() {
   </PopoverTrigger>
   <PopoverContent align="start">
     <div className="space-y-2">
-      <h4 className="font-medium">Aligned to Start</h4>
+      <h4 className="font-semibold">Aligned to Start</h4>
       <p className="text-sm">Content here</p>
     </div>
   </PopoverContent>
@@ -136,7 +136,7 @@ export default function PopoverPage() {
               </PopoverTrigger>
               <PopoverContent align="end">
                 <div className="space-y-2">
-                  <h4 className="font-medium">Aligned to End</h4>
+                  <h4 className="font-semibold">Aligned to End</h4>
                   <p className="text-muted-foreground text-sm">
                     This popover is aligned to the end of the trigger.
                   </p>
@@ -150,7 +150,7 @@ export default function PopoverPage() {
   </PopoverTrigger>
   <PopoverContent align="end">
     <div className="space-y-2">
-      <h4 className="font-medium">Aligned to End</h4>
+      <h4 className="font-semibold">Aligned to End</h4>
       <p className="text-sm">Content here</p>
     </div>
   </PopoverContent>
@@ -168,7 +168,7 @@ export default function PopoverPage() {
               </PopoverTrigger>
               <PopoverContent>
                 <div className="space-y-2">
-                  <h4 className="font-medium">Information</h4>
+                  <h4 className="font-semibold">Information</h4>
                   <p className="text-muted-foreground text-sm">
                     This is additional information shown in a popover.
                   </p>
@@ -184,7 +184,7 @@ export default function PopoverPage() {
   </PopoverTrigger>
   <PopoverContent>
     <div className="space-y-2">
-      <h4 className="font-medium">Information</h4>
+      <h4 className="font-semibold">Information</h4>
       <p className="text-sm">Additional info here</p>
     </div>
   </PopoverContent>
@@ -200,7 +200,7 @@ export default function PopoverPage() {
               </PopoverTrigger>
               <PopoverContent className="w-96">
                 <div className="space-y-2">
-                  <h4 className="font-medium">Custom Width</h4>
+                  <h4 className="font-semibold">Custom Width</h4>
                   <p className="text-muted-foreground text-sm">
                     This popover has a custom width of 384px (w-96). You can adjust the width using
                     Tailwind classes.
@@ -215,7 +215,7 @@ export default function PopoverPage() {
   </PopoverTrigger>
   <PopoverContent className="w-96">
     <div className="space-y-2">
-      <h4 className="font-medium">Custom Width</h4>
+      <h4 className="font-semibold">Custom Width</h4>
       <p className="text-sm">Content with custom width</p>
     </div>
   </PopoverContent>

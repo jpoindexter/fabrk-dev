@@ -1,8 +1,17 @@
+"use client";
+
 import { SimpleIcon } from "@/components/ui/simple-icon";
+import {
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+  TerminalBadge,
+} from "@/components/ui/card";
 import { siTypescript, siPrisma, siEslint } from "simple-icons";
 import { Zap, FolderTree, Terminal, Code2 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
+import { motion } from "framer-motion";
 
 export function DeveloperExperienceSection() {
   const features = [
@@ -10,49 +19,47 @@ export function DeveloperExperienceSection() {
       icon: siTypescript.path,
       title: "TypeScript Strict Mode",
       description:
-        "Full type safety with strict mode enabled. Catch errors at compile time, not runtime. IntelliSense autocomplete for every function and component.",
+        "Full type safety with strict mode enabled. Catch errors at compile time, not runtime.",
     },
     {
       iconComponent: "folder",
       title: "Path Aliases",
-      description:
-        "Clean imports with @/components, @/lib, @/utils. No more ../../../ hell. IntelliSense autocomplete works perfectly across the codebase.",
+      description: "Clean imports with @/components, @/lib, @/utils. No more ../../../ hell.",
     },
     {
       iconComponent: "zap",
       title: "Turbopack Hot Reload",
       description:
-        "Lightning-fast refresh during development. See changes instantly without losing state. 10x faster than Webpack with incremental compilation.",
+        "Lightning-fast refresh during development. See changes instantly without losing state.",
     },
     {
       icon: siPrisma.path,
       title: "Prisma Type Generation",
       description:
-        "Auto-generated TypeScript types for your database schema. Type-safe queries with autocomplete. Zero manual type definitions needed.",
+        "Auto-generated TypeScript types for your database schema. Type-safe queries with autocomplete.",
     },
     {
       icon: siEslint.path,
       title: "ESLint + Hex Scanner",
       description:
-        "Enforce code quality with ESLint. Custom hex color scanner prevents hardcoded colors. Maintain design token consistency automatically.",
+        "Enforce code quality with ESLint. Custom hex color scanner prevents hardcoded colors.",
     },
     {
       iconComponent: "code",
       title: "VS Code Configuration",
       description:
-        "Pre-configured settings, extensions, and snippets. Consistent formatting across team. Tailwind IntelliSense, ESLint, and Prettier integrated.",
+        "Pre-configured settings, extensions, and snippets. Tailwind IntelliSense integrated.",
     },
     {
       iconComponent: "terminal",
       title: "Developer Commands",
-      description:
-        "npm run dev:restart kills port conflicts. Prisma Studio for database GUI. Stripe CLI for webhook testing. Storybook for component development.",
+      description: "npm run dev:restart kills port conflicts. Prisma Studio for database GUI.",
     },
     {
       icon: siTypescript.path,
       title: "100% TypeScript Coverage",
       description:
-        "Every file is TypeScript. No .js files, no any types. Strict null checks, strict function types. Production-ready type safety from day one.",
+        "Every file is TypeScript. No .js files, no any types. Production-ready type safety.",
     },
   ];
 
@@ -62,26 +69,39 @@ export function DeveloperExperienceSection() {
     >
       <div className="mx-auto max-w-7xl">
         <div className="mb-4 text-center">
-          <span
-            className={cn(
-              "border-border bg-card text-muted-foreground mb-4 inline-block border px-4 py-1 text-xs",
-              mode.radius
-            )}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
           >
-            [ BUILT_FOR_DEVELOPERS ]
-          </span>
+            <TerminalBadge code="0x50" label="DEV_EXPERIENCE" />
+          </motion.div>
         </div>
 
-        <div className="text-center">
-          <span className="text-muted-foreground text-xs">[0x00]</span>
-          <h2 className="mb-2 text-2xl font-bold tracking-tight">DEVELOPER_EXPERIENCE_MATTERS</h2>
-        </div>
-        <p className="text-muted-foreground mb-16 text-center text-sm">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <h2 className="mb-2 text-2xl font-semibold tracking-tight">
+            DEVELOPER_EXPERIENCE_MATTERS
+          </h2>
+        </motion.div>
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="text-muted-foreground mb-16 text-center text-sm"
+        >
           &gt; Fast builds, clean code, zero friction. Ship features, not fight tooling.
-        </p>
+        </motion.p>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {features.map((feature) => {
+          {features.map((feature, index) => {
             const IconComponent =
               feature.iconComponent === "folder"
                 ? FolderTree
@@ -94,32 +114,48 @@ export function DeveloperExperienceSection() {
                       : null;
 
             return (
-              <div
+              <motion.div
                 key={feature.title}
-                className={cn(
-                  "group border-border bg-card hover:border-primary/50 border p-6 transition-all",
-                  mode.radius
-                )}
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.08,
+                  ease: [0.21, 0.47, 0.32, 0.98],
+                }}
+                whileHover={{
+                  y: -4,
+                  transition: { duration: 0.2 },
+                }}
+                className="group"
               >
-                <div
-                  className={cn(
-                    "bg-primary/10 mb-4 inline-flex items-center justify-center p-4",
-                    mode.radius
-                  )}
-                >
-                  {feature.icon ? (
-                    <SimpleIcon path={feature.icon} className="text-primary h-6 w-6" />
-                  ) : IconComponent ? (
-                    <IconComponent className="text-primary h-6 w-6" />
-                  ) : null}
-                </div>
-                <h3 className="mb-4 text-sm font-bold">
-                  {feature.title.toUpperCase().replace(/ /g, "_")}
-                </h3>
-                <p className="text-muted-foreground text-xs leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
+                <TerminalCard className="hover:border-primary/50 transition-colors">
+                  <TerminalCardHeader
+                    code={`0x${(index + 51).toString(16).toUpperCase()}`}
+                    title=""
+                    icon={
+                      feature.icon ? (
+                        <SimpleIcon
+                          path={feature.icon}
+                          className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors"
+                        />
+                      ) : IconComponent ? (
+                        <IconComponent className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors" />
+                      ) : undefined
+                    }
+                  />
+                  <TerminalCardContent className="p-4">
+                    <div className="text-foreground mb-3 text-xs font-semibold">
+                      {feature.title.toUpperCase().replace(/ /g, "_")}
+                    </div>
+                    <div className="text-xs">
+                      <span className="text-muted-foreground">DESC: </span>
+                      <span className="text-foreground">{feature.description}</span>
+                    </div>
+                  </TerminalCardContent>
+                </TerminalCard>
+              </motion.div>
             );
           })}
         </div>

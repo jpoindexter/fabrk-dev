@@ -2,8 +2,7 @@
 
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsLinkCard, DocsPreview } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
-import { StyledCardHeader } from "@/components/ui/card";
+import { TerminalCardHeader } from "@/components/ui/card";
 import { Cookie, Shield, Settings, Download } from "lucide-react";
 import { useState } from "react";
 
@@ -19,7 +18,7 @@ function CookieConsentDemo() {
   return (
     <div className="border-border bg-card w-full max-w-md border">
       {/* Terminal Header */}
-      <StyledCardHeader code="0x00" title="COMPONENT" />
+      <TerminalCardHeader code="0x00" title="COMPONENT" />
 
       <div className="space-y-4 p-4">
         <div className="flex items-center gap-2">
@@ -62,10 +61,10 @@ function CookieConsentDemo() {
         </div>
 
         <div className="flex gap-2">
-          <button className="border-border bg-background hover:border-primary flex-1 border px-4 py-1.5 font-mono text-xs">
+          <button className="border-border bg-background hover:border-primary flex-1 border px-4 py-2 font-mono text-xs">
             &gt; REJECT_ALL
           </button>
-          <button className="border-primary bg-primary text-primary-foreground flex-1 border px-4 py-1.5 font-mono text-xs">
+          <button className="border-primary bg-primary text-primary-foreground flex-1 border px-4 py-2 font-mono text-xs">
             &gt; ACCEPT_ALL
           </button>
         </div>
@@ -113,7 +112,7 @@ export default function CookieConsentPage() {
           description: "The cookie consent component is already in your layout. No setup required!",
           code: `// Already in src/app/layout.tsx
 import { CookieConsent } from "@/components/cookie-consent";
-import { StyledCardHeader } from "@/components/ui/card";
+import { TerminalCardHeader } from "@/components/ui/card";
 
 export default function RootLayout({ children }) {
   return (
@@ -207,48 +206,48 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
         <div className="space-y-4">
           <DocsCard title="STEP_01">
             <div className="mb-2 flex items-center gap-4">
-              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono text-sm font-bold">
+              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono font-semibold">
                 1
               </span>
-              <h3 className={`uppercase ${docsTypography.h4}`}>First Visit</h3>
+              First Visit
             </div>
-            <p className={docsTypography.body}>
+            <p className="mb-6">
               New visitors see a &quot;Cookie Settings&quot; button in the bottom-right corner. All
               non-essential cookies are blocked until they make a choice.
             </p>
           </DocsCard>
           <DocsCard title="STEP_02">
             <div className="mb-2 flex items-center gap-4">
-              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono text-sm font-bold">
+              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono font-semibold">
                 2
               </span>
-              <h3 className={`uppercase ${docsTypography.h4}`}>User Makes Choice</h3>
+              User Makes Choice
             </div>
-            <p className={docsTypography.body}>
+            <p className="mb-6">
               Clicking the button opens a modal with three tabs: Consent (quick toggles), Details
               (see exactly which cookies), and About (their privacy rights).
             </p>
           </DocsCard>
           <DocsCard title="STEP_03">
             <div className="mb-2 flex items-center gap-4">
-              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono text-sm font-bold">
+              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono font-semibold">
                 3
               </span>
-              <h3 className={`uppercase ${docsTypography.h4}`}>Choice Saved</h3>
+              Choice Saved
             </div>
-            <p className={docsTypography.body}>
+            <p className="mb-6">
               Their preference is stored in localStorage for 1 year. Google Consent Mode is updated
               automatically, enabling/disabling analytics and ads accordingly.
             </p>
           </DocsCard>
           <DocsCard title="STEP_04">
             <div className="mb-2 flex items-center gap-4">
-              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono text-sm font-bold">
+              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono font-semibold">
                 4
               </span>
-              <h3 className={`uppercase ${docsTypography.h4}`}>Return Visits</h3>
+              Return Visits
             </div>
-            <p className={docsTypography.body}>
+            <p className="mb-6">
               The banner doesn&apos;t show again (unless they clear storage). Their saved
               preferences are applied immediately on page load.
             </p>
@@ -264,7 +263,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               <div className="bg-success mt-1 h-3 w-3 rounded-none"></div>
               <div>
                 <p className="font-medium">Necessary (Always On)</p>
-                <p className={docsTypography.body}>
+                <p className="mb-6">
                   Essential for the site to work. Includes session cookies and consent storage.
                   Cannot be disabled.
                 </p>
@@ -274,7 +273,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               <div className="bg-info mt-1 h-3 w-3 rounded-none"></div>
               <div>
                 <p className="font-medium">Preferences</p>
-                <p className={docsTypography.body}>
+                <p className="mb-6">
                   Remember settings like theme (dark/light) and language. Off by default.
                 </p>
               </div>
@@ -283,7 +282,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               <div className="bg-warning mt-1 h-3 w-3 rounded-none"></div>
               <div>
                 <p className="font-medium">Statistics</p>
-                <p className={docsTypography.body}>
+                <p className="mb-6">
                   Google Analytics and similar tools. Helps you understand how people use your app.
                   Off by default.
                 </p>
@@ -293,7 +292,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               <div className="bg-destructive mt-1 h-3 w-3 rounded-none"></div>
               <div>
                 <p className="font-medium">Marketing</p>
-                <p className={docsTypography.body}>
+                <p className="mb-6">
                   Facebook Pixel, Google Ads conversion tracking. Used for targeted advertising. Off
                   by default.
                 </p>
@@ -311,7 +310,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               Do I need this if I don&apos;t have EU users?
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
-              <p>
+              <p className="mb-6">
                 Technically no, but it&apos;s good practice. California (CCPA), Brazil (LGPD), and
                 other regions have similar requirements. Plus, Google requires Consent Mode v2 for
                 personalized ads even in the US.
@@ -324,7 +323,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               Why do I need Consent Mode v2 for Google?
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
-              <p>
+              <p className="mb-6">
                 As of March 2024, Google requires Consent Mode v2 for any site that uses Google Ads
                 remarketing or audience features. Without it, your ads may not work properly and you
                 could lose audience data.
@@ -337,7 +336,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               Can I change the button position?
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
-              <p>
+              <p className="mb-6">
                 Yes! In <code className="bg-muted px-1 font-mono">cookie-consent.tsx</code>, find
                 the button element and change the Tailwind classes. It&apos;s currently{" "}
                 <code className="bg-muted px-1 font-mono">bottom-6 right-6</code>. Change to{" "}
@@ -352,7 +351,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               What if the user never makes a choice?
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
-              <p>
+              <p className="mb-6">
                 All non-essential cookies remain blocked. The button stays visible on every page
                 until they interact with it. This is the GDPR-compliant default.
               </p>
@@ -364,8 +363,8 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
       {/* Testing Section */}
       <DocsSection title="Testing">
         <DocsCard title="TESTING_GUIDE">
-          <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Manual Testing</h3>
-          <ol className={`list-inside list-decimal ${docsTypography.body} space-y-2`}>
+          Manual Testing
+          <ol className="list-inside list-decimal space-y-2">
             <li>Open your app in a private/incognito window</li>
             <li>You should see the &quot;Cookie Settings&quot; button (bottom-right)</li>
             <li>Click it and test each action: Accept All, Reject All, Accept Selected</li>
@@ -375,9 +374,8 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               <code className="bg-muted px-1 font-mono">cookie-consent</code>
             </li>
           </ol>
-
-          <h3 className={`uppercase ${docsTypography.h4} mt-6 mb-2`}>Verify GTM Integration</h3>
-          <ol className={`list-inside list-decimal ${docsTypography.body} space-y-2`}>
+          Verify GTM Integration
+          <ol className="list-inside list-decimal space-y-2">
             <li>Open DevTools → Console</li>
             <li>
               Type <code className="bg-muted px-1 font-mono">dataLayer</code> and press Enter

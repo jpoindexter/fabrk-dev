@@ -10,8 +10,9 @@ import { Cookie, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { AboutTabContent, ConsentTabContent, DetailsTabContent } from "./cookie-consent-tabs";
 import type { CookiePreferences } from "./cookie-consent-types";
+import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 const DEFAULT_PREFERENCES: CookiePreferences = {
   necessary: true,
@@ -102,7 +103,7 @@ export function CookieConsent() {
   });
   const [showModal, setShowModal] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
-  const [activeTab, setActiveTab] = useState<"consent" | "details" | "about">("consent");
+  const [activeTab, setActiveTab] = useState("consent");
 
   // Destructure for convenience
   const { showButton, preferences } = consentState;
@@ -131,6 +132,19 @@ export function CookieConsent() {
     if (!shouldShowButton) {
       updateGoogleConsent(savedPrefs);
     }
+  }, []);
+
+  // Listen for custom event to open cookie settings
+  useEffect(() => {
+    const handleOpenCookieSettings = () => {
+      setShowModal(true);
+      document.body.style.overflow = "hidden";
+    };
+
+    window.addEventListener("open-cookie-settings", handleOpenCookieSettings);
+    return () => {
+      window.removeEventListener("open-cookie-settings", handleOpenCookieSettings);
+    };
   }, []);
 
   const saveConsent = (prefs: CookiePreferences) => {
@@ -201,12 +215,13 @@ export function CookieConsent() {
           onClick={openModal}
           className={cn(
             "bg-background text-foreground animate-in slide-in-from-bottom-5 hover:bg-muted fixed right-6 bottom-6 z-50 flex items-center gap-2 border px-4 py-4 transition-all duration-300",
-            mode.radius
+            mode.radius,
+            mode.font
           )}
           aria-label="Cookie Settings"
         >
           <Cookie className="size-5" />
-          <span className="text-sm font-normal">Cookie Settings</span>
+          <span className="text-xs">&gt; COOKIE_SETTINGS</span>
         </button>
       )}
 
@@ -224,71 +239,63 @@ export function CookieConsent() {
           <div className="flex min-h-full items-center justify-center p-4">
             <div
               className={cn(
-                "bg-background relative w-full max-w-2xl border transition-all duration-300",
-                mode.radius,
+                "bg-background relative w-full max-w-2xl transition-all duration-300",
                 isExiting ? "scale-95 opacity-0" : "scale-100 opacity-100"
               )}
             >
-              {/* Header */}
-              <div className="flex items-center justify-between border-b p-6">
-                <div className="flex items-center gap-4">
-                  <div className={cn("bg-muted border p-2", mode.radius)}>
-                    <Cookie className="size-6" />
-                  </div>
-                  <div>
-                    <h2 className="text-foreground text-xl leading-tight font-semibold">
-                      Cookie Preferences
-                    </h2>
-                    <p className="text-muted-foreground text-sm leading-relaxed font-normal">
-                      Manage your cookie settings
-                    </p>
-                  </div>
-                </div>
-                <button
-                  onClick={closeModal}
-                  className={cn(
-                    "focus:ring-ring p-2 opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:outline-none",
-                    mode.radius
-                  )}
-                  aria-label="Close"
-                >
-                  <X className="size-4" />
-                </button>
-              </div>
+              {/* Close button - positioned in header row */}
+              <button
+                onClick={closeModal}
+                className="focus:ring-ring absolute top-1.5 right-2 z-10 p-1.5 opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:outline-none"
+                aria-label="Close"
+              >
+                <X className="size-4" />
+              </button>
 
               {/* Tabs */}
-              <div className="flex border-b">
-                {(["consent", "details", "about"] as const).map((tab) => (
-                  <button
-                    key={tab}
-                    onClick={() => setActiveTab(tab)}
-                    className={`flex-1 px-6 py-4 text-sm font-medium transition-colors ${
-                      activeTab === tab
-                        ? "border-primary text-primary border-b-2"
-                        : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                    }`}
-                  >
-                    {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                  </button>
-                ))}
-              </div>
-
-              {/* Content */}
-              <div className="max-h-[60vh] overflow-y-auto p-6">
-                {activeTab === "consent" && (
-                  <ConsentTabContent
-                    preferences={preferences}
-                    setPreferences={setPreferences}
-                    acceptAll={acceptAll}
-                    acceptSelected={acceptSelected}
-                    rejectAll={rejectAll}
-                  />
-                )}
-                {activeTab === "details" && (
-                  <DetailsTabContent preferences={preferences} setPreferences={setPreferences} />
-                )}
-                {activeTab === "about" && <AboutTabContent />}
-              </div>
+              <StyledTabs
+                code="00"
+                title="COOKIE_PREFERENCES"
+                tabs={[
+                  { id: "consent", label: "CONSENT" },
+                  { id: "details", label: "DETAILS" },
+                  { id: "about", label: "ABOUT" },
+                ]}
+                value={activeTab}
+                onValueChange={setActiveTab}
+              >
+                {/* Content - border outside scroll container so it's always visible */}
+                <StyledTabsContent value="consent" className="mt-0">
+                  <div className="border-border border border-t-0">
+                    <div className="max-h-[60vh] overflow-y-auto p-6">
+                      <ConsentTabContent
+                        preferences={preferences}
+                        setPreferences={setPreferences}
+                        acceptAll={acceptAll}
+                        acceptSelected={acceptSelected}
+                        rejectAll={rejectAll}
+                      />
+                    </div>
+                  </div>
+                </StyledTabsContent>
+                <StyledTabsContent value="details" className="mt-0">
+                  <div className="border-border border border-t-0">
+                    <div className="max-h-[60vh] overflow-y-auto p-6">
+                      <DetailsTabContent
+                        preferences={preferences}
+                        setPreferences={setPreferences}
+                      />
+                    </div>
+                  </div>
+                </StyledTabsContent>
+                <StyledTabsContent value="about" className="mt-0">
+                  <div className="border-border border border-t-0">
+                    <div className="max-h-[60vh] overflow-y-auto p-6">
+                      <AboutTabContent />
+                    </div>
+                  </div>
+                </StyledTabsContent>
+              </StyledTabs>
             </div>
           </div>
         </div>

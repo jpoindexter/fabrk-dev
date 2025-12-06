@@ -30,7 +30,7 @@ const createNotifications = (): Notification[] => [
     timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000), // 1 day ago
     read: true,
     actionLabel: "Upgrade",
-    onAction: () => console.log("Upgrade clicked"),
+    onAction: () => void 0, // Demo: would trigger upgrade flow
   },
   {
     id: "4",
@@ -55,9 +55,7 @@ function NotificationCenterDemo() {
   const [notifications, setNotifications] = useState<Notification[]>(createNotifications());
 
   const handleMarkAsRead = (id: string) => {
-    setNotifications((prev) =>
-      prev.map((n) => (n.id === id ? { ...n, read: true } : n))
-    );
+    setNotifications((prev) => prev.map((n) => (n.id === id ? { ...n, read: true } : n)));
   };
 
   const handleMarkAllAsRead = () => {
@@ -134,7 +132,7 @@ export default function NotificationCenterPage() {
           description: "Different notification types with appropriate icons",
           preview: (
             <div className="w-full max-w-md space-y-4">
-              <div className="font-mono text-xs text-muted-foreground">[NOTIFICATION_TYPES]</div>
+              <div className="text-muted-foreground font-mono text-xs">[NOTIFICATION_TYPES]</div>
               <div className="space-y-2">
                 {[
                   { type: "info" as const, label: "INFO", color: "text-primary" },
@@ -167,13 +165,13 @@ const notification: Notification = {
           description: "Notifications can include actionable buttons",
           preview: (
             <div className="w-full max-w-md space-y-2">
-              <div className="font-mono text-xs text-muted-foreground">[ACTION_EXAMPLE]</div>
+              <div className="text-muted-foreground font-mono text-xs">[ACTION_EXAMPLE]</div>
               <div className="space-y-2">
-                <div className="font-semibold text-sm">Storage almost full</div>
-                <p className="text-sm text-muted-foreground">
+                <div className="text-sm font-semibold">Storage almost full</div>
+                <p className="text-muted-foreground text-sm">
                   You've used 90% of your storage quota.
                 </p>
-                <button className="mt-2 h-7 rounded-none border border-border bg-background px-4 text-xs font-medium transition-colors hover:bg-secondary">
+                <button className="border-border bg-background hover:bg-secondary mt-2 h-8 rounded-none border px-4 text-xs font-medium transition-colors">
                   &gt; UPGRADE
                 </button>
               </div>
@@ -189,7 +187,7 @@ const notification: Notification = {
   actionLabel: "Upgrade",
   onAction: () => {
     // Handle upgrade click
-    console.log("Upgrade clicked");
+    // Navigate to upgrade page or show modal
   },
 };`,
         },
@@ -198,11 +196,11 @@ const notification: Notification = {
           description: "Automatically groups notifications by Today, Yesterday, This Week, Older",
           preview: (
             <div className="w-full max-w-md space-y-4">
-              <div className="font-mono text-xs text-muted-foreground">[DATE_GROUPS]</div>
+              <div className="text-muted-foreground font-mono text-xs">[DATE_GROUPS]</div>
               {["Today", "Yesterday", "This Week", "Older"].map((group) => (
                 <div key={group} className="space-y-2">
-                  <div className="rounded-none bg-muted px-4 py-1.5">
-                    <span className="font-mono text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  <div className="bg-muted rounded-none px-4 py-2">
+                    <span className="text-muted-foreground font-mono text-xs font-semibold tracking-wide uppercase">
                       {group}
                     </span>
                   </div>
@@ -220,12 +218,12 @@ const notification: Notification = {
           title: "Empty State",
           description: "Friendly empty state when no notifications exist",
           preview: (
-            <div className="flex flex-col items-center justify-center py-12 px-4">
-              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-none bg-muted">
-                <span className="font-mono text-2xl text-muted-foreground">0</span>
+            <div className="flex flex-col items-center justify-center px-4 py-12">
+              <div className="bg-muted mb-4 flex h-16 w-16 items-center justify-center rounded-none">
+                <span className="text-muted-foreground font-mono text-2xl">0</span>
               </div>
-              <p className="mb-1 font-semibold text-foreground">You're all caught up!</p>
-              <p className="text-center text-sm text-muted-foreground">
+              <p className="text-foreground mb-1 font-semibold">You're all caught up!</p>
+              <p className="text-muted-foreground text-center text-sm">
                 No new notifications at the moment
               </p>
             </div>
@@ -240,10 +238,8 @@ const notification: Notification = {
           description: "Automatically mark notifications as read when clicked",
           preview: (
             <div className="w-full max-w-md space-y-2">
-              <div className="font-mono text-xs text-muted-foreground">
-                [AUTO_READ_ENABLED]
-              </div>
-              <p className="text-sm text-muted-foreground">
+              <div className="text-muted-foreground font-mono text-xs">[AUTO_READ_ENABLED]</div>
+              <p className="text-muted-foreground text-sm">
                 Click any notification to automatically mark it as read
               </p>
             </div>
@@ -259,10 +255,8 @@ const notification: Notification = {
           description: "Control the maximum height of the notification list",
           preview: (
             <div className="w-full max-w-md space-y-2">
-              <div className="font-mono text-xs text-muted-foreground">
-                [MAX_HEIGHT]: 400px
-              </div>
-              <p className="text-sm text-muted-foreground">
+              <div className="text-muted-foreground font-mono text-xs">[MAX_HEIGHT]: 400px</div>
+              <p className="text-muted-foreground text-sm">
                 List scrolls when content exceeds max height
               </p>
             </div>

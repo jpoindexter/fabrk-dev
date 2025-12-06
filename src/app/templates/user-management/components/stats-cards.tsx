@@ -3,7 +3,7 @@
  */
 
 import type { User } from "./types";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface StatsCardsProps {
@@ -19,14 +19,14 @@ export function StatsCards({ users }: StatsCardsProps) {
     <div className="grid gap-6 md:grid-cols-4">
       <div className="border-border bg-card border p-4">
         <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>[TOTAL_USERS]:</div>
-        <div className={cn(mode.font, "text-3xl font-bold")}>{users.length}</div>
+        <div className="text-4xl font-semibold">{users.length}</div>
         <div className={cn(mode.font, "text-muted-foreground mt-1 text-xs")}>
           STATUS: <span className="text-success">INDEXED</span>
         </div>
       </div>
       <div className="border-border bg-card border p-4">
         <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>[ACTIVE_USERS]:</div>
-        <div className={cn(mode.font, "text-3xl font-bold")}>{activeCount}</div>
+        <div className="text-4xl font-semibold">{activeCount}</div>
         <div className={cn(mode.font, "text-muted-foreground mt-1 text-xs")}>
           RATE:{" "}
           <span className="text-success">{Math.round((activeCount / users.length) * 100)}%</span>
@@ -34,14 +34,14 @@ export function StatsCards({ users }: StatsCardsProps) {
       </div>
       <div className="border-border bg-card border p-4">
         <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>[ADMINS]:</div>
-        <div className={cn(mode.font, "text-3xl font-bold")}>{adminCount}</div>
+        <div className="text-4xl font-semibold">{adminCount}</div>
         <div className={cn(mode.font, "text-muted-foreground mt-1 text-xs")}>
           ROLE: <span className="text-primary">ELEVATED</span>
         </div>
       </div>
       <div className="border-border bg-card border p-4">
         <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>[ENTERPRISE]:</div>
-        <div className={cn(mode.font, "text-3xl font-bold")}>{enterpriseCount}</div>
+        <div className="text-4xl font-semibold">{enterpriseCount}</div>
         <div className={cn(mode.font, "text-muted-foreground mt-1 text-xs")}>
           PLAN: <span className="text-primary">PREMIUM</span>
         </div>

@@ -6,7 +6,7 @@
 import { Bell } from "lucide-react";
 import { Notification } from "./notification-types";
 import { NotificationItem } from "./notification-item";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface NotificationsListProps {

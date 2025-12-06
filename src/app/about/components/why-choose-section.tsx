@@ -6,35 +6,47 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Clock, Shield, Layers, Gift, type LucideIcon } from "lucide-react";
+import {
+  TerminalBadge,
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+} from "@/components/ui/card";
 
 interface Reason {
   id: string;
   title: string;
   description: string;
+  icon: LucideIcon;
 }
 
 const reasons: Reason[] = [
   {
     id: "0x10",
     title: "SAVE_WEEKS_OF_DEVELOPMENT",
+    icon: Clock,
     description:
       "What normally takes 2-4 weeks to build from scratch is ready in minutes. Focus on your unique features, not boilerplate.",
   },
   {
     id: "0x11",
     title: "PRODUCTION_GRADE_SECURITY",
+    icon: Shield,
     description:
       "Security headers, rate limiting, token hashing, CSRF protection—all the security best practices implemented and tested.",
   },
   {
     id: "0x12",
     title: "MODERN_TECH_STACK",
+    icon: Layers,
     description:
       "Built on Next.js 15, TypeScript, Prisma, NextAuth v5, and Stripe. The tools you're already using or want to learn.",
   },
   {
     id: "0x13",
     title: "LIFETIME_UPDATES",
+    icon: Gift,
     description:
       "One-time payment, lifetime access to all updates. No subscriptions, no hidden fees.",
   },
@@ -42,7 +54,7 @@ const reasons: Reason[] = [
 
 export function WhyChooseSection() {
   return (
-    <section className="border-t border-border bg-background px-6 py-24">
+    <section className="border-border bg-background border-t px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl space-y-8">
           <div className="text-center">
@@ -52,10 +64,8 @@ export function WhyChooseSection() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <span className="inline-block border border-border bg-card px-4 py-1 text-xs text-muted-foreground mb-4">
-                [ [0x05] WHY_FABRK ]
-              </span>
-              <h2 className="text-2xl font-bold lg:text-3xl mb-4">WHY_CHOOSE_FABRK</h2>
+              <TerminalBadge code="0x05" label="WHY_FABRK" className="mb-4" />
+              <h2 className="mb-4 text-2xl font-semibold lg:text-4xl">WHY_CHOOSE_FABRK</h2>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 12 }}
@@ -63,7 +73,7 @@ export function WhyChooseSection() {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <p className="text-sm text-muted-foreground">
+              <p className="text-muted-foreground text-sm">
                 We're not just selling code, we're selling time
               </p>
             </motion.div>
@@ -73,18 +83,35 @@ export function WhyChooseSection() {
             {reasons.map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                initial={{ opacity: 0, y: 20, scale: 0.98 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                whileHover={{ x: 4, backgroundColor: "hsl(var(--muted))" }}
-                className="border border-border bg-card p-4 transition-all hover:border-primary/50"
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.08,
+                  ease: [0.21, 0.47, 0.32, 0.98],
+                }}
+                whileHover={{
+                  y: -2,
+                  transition: { duration: 0.2 },
+                }}
+                className="group"
               >
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-xs text-muted-foreground">[{item.id}]</span>
-                  <h3 className="text-sm font-semibold">{item.title}</h3>
-                </div>
-                <p className="text-xs text-muted-foreground pl-12">{item.description}</p>
+                <TerminalCard interactive size="auto">
+                  <TerminalCardHeader
+                    code={item.id}
+                    title={item.title.slice(0, 12)}
+                    icon={
+                      <item.icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
+                    }
+                  />
+                  <TerminalCardContent padding="md">
+                    <div className="font-mono text-xs">
+                      <span className="text-muted-foreground">DESC: </span>
+                      <span className="text-foreground">{item.description}</span>
+                    </div>
+                  </TerminalCardContent>
+                </TerminalCard>
               </motion.div>
             ))}
           </div>

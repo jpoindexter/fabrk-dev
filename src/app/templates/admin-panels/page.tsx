@@ -6,9 +6,9 @@
 "use client";
 
 import Link from "next/link";
-import { StyledCard, StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { getCategoryInfo, getTemplatesByCategory } from "../template-data";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export default function AdminPanelsPage() {
@@ -27,7 +27,7 @@ export default function AdminPanelsPage() {
           </div>
           <div className="flex items-center gap-4">
             {categoryInfo && <categoryInfo.icon className="text-primary h-6 w-6" />}
-            <h1 className={cn(mode.font, "text-3xl font-bold")}>Admin Panels</h1>
+            <h1 className={cn(mode.font, "text-4xl font-semibold")}>Admin Panels</h1>
             <span className={cn(mode.font, "border-border border px-2 py-0.5 text-xs")}>
               COUNT: {categoryTemplates.length}
             </span>
@@ -114,9 +114,9 @@ export default function AdminPanelsPage() {
         </div>
 
         {/* Template Features Card */}
-        <StyledCard>
-          <StyledCardHeader code="0x00" title="ADMIN_PANEL_FEATURES" />
-          <div className="p-6">
+        <TerminalCard>
+          <TerminalCardHeader code="0x00" title="ADMIN_PANEL_FEATURES" />
+          <TerminalCardContent padding="lg">
             <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
               [ADMIN_PANEL_TEMPLATES]:
             </div>
@@ -143,8 +143,8 @@ export default function AdminPanelsPage() {
                 <span className="text-success">&gt;</span> Webhook management and delivery history
               </div>
             </div>
-          </div>
-        </StyledCard>
+          </TerminalCardContent>
+        </TerminalCard>
       </main>
     </div>
   );

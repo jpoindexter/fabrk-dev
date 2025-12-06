@@ -6,7 +6,7 @@
 
 import Link from "next/link";
 import { LayoutDashboard, Settings, Users, FileText, Palette, Lock } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 const categories = [
@@ -82,7 +82,7 @@ export default function TemplatesPage() {
             [TEMPLATE_GALLERY]: BROWSE_TEMPLATES
           </span>
         </div>
-        <h1 className={cn(mode.font, "text-4xl font-bold")}>Template Gallery</h1>
+        <h1 className={cn(mode.font, "text-4xl font-semibold")}>Template Gallery</h1>
         <p className={cn(mode.font, "text-muted-foreground max-w-2xl text-sm")}>
           Choose a category to explore ready-to-use templates included with Fabrk.
         </p>

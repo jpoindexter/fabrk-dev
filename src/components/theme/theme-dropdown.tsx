@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 const themes = [
   { id: "light", name: "Light", preview: "#ffffff" },
   { id: "dark", name: "Dark", preview: "#1d232a" },

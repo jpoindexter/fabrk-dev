@@ -10,10 +10,15 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { PageBadge, StyledCard, StyledCardHeader } from "@/components/ui/card";
+import {
+  PageBadge,
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+} from "@/components/ui/card";
 import { ChevronRight, Copy, CheckCircle2, ExternalLink } from "lucide-react";
 import { parseContent } from "./content-parser";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface DocsContentProps {
@@ -88,7 +93,7 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
                   key={idx}
                   className={cn(
                     mode.font,
-                    "text-foreground mt-8 mb-4 scroll-mt-20 text-sm font-bold"
+                    "text-foreground mt-8 mb-4 scroll-mt-20 text-sm font-semibold"
                   )}
                   id={section.content.toLowerCase().replace(/\s+/g, "-")}
                 >
@@ -105,39 +110,40 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
                   role="region"
                   aria-label={`Code example in ${section.language || "code"}`}
                 >
-                  <div className="border-border bg-card overflow-hidden border">
-                    <div className="bg-muted border-border flex items-center justify-between border-b px-4 py-2">
-                      <span className={cn(mode.font, "text-muted-foreground text-xs")}>
-                        [ [0x00] {(section.language || "code").toUpperCase()} ]
-                      </span>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => handleCopyCode(section.content, `code-${idx}`)}
-                        className={cn(mode.radius, mode.font, "h-7 text-xs")}
-                        aria-label={
-                          copiedCode === `code-${idx}` ? "Code copied" : "Copy code to clipboard"
-                        }
-                      >
-                        {copiedCode === `code-${idx}` ? (
-                          <>
-                            <CheckCircle2 className="mr-1 h-3 w-3" aria-hidden="true" />
-                            COPIED
-                          </>
-                        ) : (
-                          <>
-                            <Copy className="mr-1 h-3 w-3" aria-hidden="true" />
-                            &gt; COPY
-                          </>
-                        )}
-                      </Button>
-                    </div>
-                    <div className="bg-card">
-                      <pre className="m-0 overflow-auto p-4 text-xs leading-relaxed" tabIndex={0}>
+                  <TerminalCard tone="neutral">
+                    <TerminalCardHeader
+                      code="0x00"
+                      title={(section.language || "code").toUpperCase()}
+                      icon={
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => handleCopyCode(section.content, `code-${idx}`)}
+                          className={cn(mode.radius, mode.font, "h-7 text-xs")}
+                          aria-label={
+                            copiedCode === `code-${idx}` ? "Code copied" : "Copy code to clipboard"
+                          }
+                        >
+                          {copiedCode === `code-${idx}` ? (
+                            <>
+                              <CheckCircle2 className="mr-1 h-3 w-3" aria-hidden="true" />
+                              COPIED
+                            </>
+                          ) : (
+                            <>
+                              <Copy className="mr-1 h-3 w-3" aria-hidden="true" />
+                              &gt; COPY
+                            </>
+                          )}
+                        </Button>
+                      }
+                    />
+                    <TerminalCardContent padding="md">
+                      <pre className="m-0 overflow-auto text-xs leading-relaxed" tabIndex={0}>
                         <code className={cn(mode.font, "text-foreground")}>{section.content}</code>
                       </pre>
-                    </div>
-                  </div>
+                    </TerminalCardContent>
+                  </TerminalCard>
                 </div>
               );
             }
@@ -174,9 +180,10 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
         </nav>
 
         {/* Help Section */}
-        <StyledCard className="mt-12">
-          <StyledCardHeader code="0x00" title="NEED_HELP" />
-          <div className="p-4">
+        <TerminalCard tone="neutral" className="mt-12">
+          <TerminalCardHeader code="0x00" title="NEED_HELP" />
+          <TerminalCardContent padding="md">
+            <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>[NEED_HELP]:</div>
             <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
               Can't find what you're looking for?
             </div>
@@ -206,8 +213,8 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
                 &gt; CONTACT_SUPPORT
               </Button>
             </div>
-          </div>
-        </StyledCard>
+          </TerminalCardContent>
+        </TerminalCard>
       </div>
     </main>
   );

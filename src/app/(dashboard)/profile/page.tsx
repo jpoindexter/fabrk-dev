@@ -11,12 +11,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Camera, Mail, User, Calendar, Shield } from "lucide-react";
 import { toast } from "sonner";
-import { mode, formatLabel } from "@/lib/design-system";
+import { mode, formatLabel } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export default function ProfilePage() {
@@ -96,12 +96,14 @@ export default function ProfilePage() {
       </div>
 
       {/* Avatar & Basic Info */}
-      <Card>
-        <CardHeader>
-          <CardTitle as="h2">Profile Picture</CardTitle>
-          <CardDescription>Update your profile picture and personal details</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
+      <TerminalCard>
+        <TerminalCardHeader
+          code="0x00"
+          title="PROFILE_PICTURE"
+          icon={<Camera className="h-4 w-4" />}
+          meta="Update your profile picture and personal details"
+        />
+        <TerminalCardContent className="space-y-6">
           {/* Avatar Upload */}
           <div className="flex items-center gap-6">
             <div className="relative">
@@ -178,21 +180,23 @@ export default function ProfilePage() {
               </div>
             </div>
           </div>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
 
       {/* Profile Details */}
-      <Card>
-        <CardHeader>
-          <div className="flex items-center justify-between">
-            <div>
-              <CardTitle as="h2">Profile Details</CardTitle>
-              <CardDescription>Update your bio and social links</CardDescription>
+      <TerminalCard>
+        <TerminalCardHeader
+          code="0x01"
+          title="PROFILE_DETAILS"
+          icon={<User className="h-4 w-4" />}
+          meta="Update your bio and social links"
+        />
+        <TerminalCardContent className="space-y-4">
+          {!isEditing && (
+            <div className="flex justify-end">
+              <Button onClick={() => setIsEditing(true)}>&gt; EDIT_PROFILE</Button>
             </div>
-            {!isEditing && <Button onClick={() => setIsEditing(true)}>&gt; EDIT_PROFILE</Button>}
-          </div>
-        </CardHeader>
-        <CardContent className="space-y-4">
+          )}
           <div className="space-y-2">
             <Label htmlFor="name">{formatLabel("Display Name")}</Label>
             <Input
@@ -267,8 +271,8 @@ export default function ProfilePage() {
               </Button>
             </div>
           )}
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
     </div>
   );
 }

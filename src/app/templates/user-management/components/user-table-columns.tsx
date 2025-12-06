@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { DataTableColumnHeader } from "./data-table-column-header";
 import type { User as UserType } from "./types";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export const columns: ColumnDef<UserType>[] = [

@@ -26,7 +26,7 @@ export default function PurchaseSuccessPage() {
 
         {/* Heading */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4">
+          <h1 className="text-4xl font-semibold mb-4">
             Welcome to Fabrk! 🎉
           </h1>
           <p className="text-xl text-muted-foreground">
@@ -36,7 +36,7 @@ export default function PurchaseSuccessPage() {
 
         {/* What's Next */}
         <div className="bg-card border border-border rounded-none p-8 mb-8">
-          <h2 className="text-2xl font-bold mb-6">What's Next?</h2>
+          <h2 className="text-2xl font-semibold mb-6">What's Next?</h2>
 
           <div className="space-y-6">
             {/* Email */}

@@ -5,7 +5,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 interface PreviewHeaderProps {
   title: string;

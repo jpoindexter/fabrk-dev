@@ -24,12 +24,12 @@ import {
 } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 
 export type ActivityType =
   | "created"
@@ -128,20 +128,15 @@ export function TeamActivityFeed({
   };
 
   return (
-    <Card className={cn("overflow-hidden", className)}>
-      <CardHeader className="pb-4">
-        <div className="flex items-center justify-between">
-          <CardTitle className="flex items-center gap-2 text-base font-black">
-            <Activity className="text-primary h-4 w-4" />
-            Team Activity
-          </CardTitle>
-          <Badge variant="outline" className="font-medium">
-            {activities.length} event{activities.length !== 1 ? "s" : ""}
-          </Badge>
-        </div>
-      </CardHeader>
+    <TerminalCard className={cn("overflow-hidden", className)}>
+      <TerminalCardHeader
+        code="0x00"
+        title="TEAM_ACTIVITY"
+        icon={<Activity className="h-4 w-4" />}
+        meta={`${activities.length} event${activities.length !== 1 ? "s" : ""}`}
+      />
 
-      <CardContent className="p-0">
+      <TerminalCardContent padding="md" className="p-0">
         <ScrollArea className="h-full" style={{ maxHeight }}>
           <div className="space-y-0 p-6 pt-0">
             {activities.length === 0 ? (
@@ -163,7 +158,7 @@ export function TeamActivityFeed({
                       {/* Avatar with icon badge */}
                       <div className="relative flex-shrink-0">
                         <Avatar className="border-border h-10 w-10 border">
-                          <AvatarFallback className="bg-primary text-primary-foreground text-xs font-bold">
+                          <AvatarFallback className="bg-primary text-primary-foreground text-xs font-semibold">
                             {getInitials(activity.user.name)}
                           </AvatarFallback>
                         </Avatar>
@@ -183,7 +178,7 @@ export function TeamActivityFeed({
                         <div className="flex items-start justify-between gap-2">
                           <div className="min-w-0 flex-1">
                             <p className="text-foreground text-sm">
-                              <span className="font-bold">{activity.user.name}</span>{" "}
+                              <span className="font-semibold">{activity.user.name}</span>{" "}
                               <span className="text-muted-foreground">{activity.action}</span>
                               {activity.target && (
                                 <span className="text-foreground font-medium">
@@ -218,7 +213,7 @@ export function TeamActivityFeed({
             )}
           </div>
         </ScrollArea>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

@@ -6,9 +6,10 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { TerminalCard, TerminalCardContent } from "@/components/ui/card";
 import { PreviewHeader } from "./preview-header";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 // Animated counter for billing
 function BillingCounter({
@@ -61,10 +62,10 @@ export function BillingPreview() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <div ref={ref} className={cn(mode.radius, "border-border bg-card w-full max-w-md border")}>
+    <TerminalCard ref={ref} className="w-full max-w-md">
       <PreviewHeader title="billing_portal.exe" animated />
 
-      <div className="p-6">
+      <TerminalCardContent padding="lg">
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
@@ -92,7 +93,7 @@ export function BillingPreview() {
             </motion.span>
           </div>
           <div className="text-right">
-            <span className={cn(mode.font, "block text-lg font-bold")}>
+            <span className={cn(mode.font, "block text-lg font-semibold")}>
               <BillingCounter value={29} prefix="$" delay={0.5} />
             </span>
             <span className={cn(mode.font, "text-muted-foreground text-xs")}>/month</span>
@@ -129,7 +130,7 @@ export function BillingPreview() {
               transition={{ delay: 0.8 }}
               className={cn(
                 mode.font,
-                "border-border mt-2 flex justify-between border-t pt-2 text-xs font-bold"
+                "border-border mt-2 flex justify-between border-t pt-2 text-xs font-semibold"
               )}
             >
               <span>TOTAL</span>
@@ -143,7 +144,7 @@ export function BillingPreview() {
             </motion.div>
           </motion.div>
         </motion.div>
-      </div>
-    </div>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

@@ -8,16 +8,16 @@
 import * as React from "react";
 import { useRouter, useParams } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { Loader2 } from "lucide-react";
+import { Loader2, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { toast } from "sonner";
 import type { Organization, Subscription, Invoice, Usage } from "./components/types";
 import { BillingHeader } from "./components/billing-header";
 import { CurrentPlanCard } from "./components/current-plan-card";
 import { UsageStatsCard } from "./components/usage-stats-card";
 import { BillingHistoryCard } from "./components/billing-history-card";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export default function OrganizationBillingPage() {
@@ -110,16 +110,21 @@ export default function OrganizationBillingPage() {
 
   if (!organization) {
     return (
-      <Card className={cn("border-border border", mode.radius)}>
-        <CardContent className="py-12">
+      <TerminalCard tone="danger">
+        <TerminalCardHeader
+          code="0x00"
+          title="ERROR"
+          icon={<AlertTriangle className="h-4 w-4" />}
+        />
+        <TerminalCardContent padding="lg">
           <div className="text-center">
-            <h3 className="text-lg font-medium">Organization not found</h3>
+            <h3 className="text-lg font-semibold">Organization not found</h3>
             <Button onClick={() => router.push("/dashboard")} className="mt-4">
-              Back to Dashboard
+              &gt; BACK_TO_DASHBOARD
             </Button>
           </div>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
     );
   }
 

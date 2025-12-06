@@ -38,7 +38,7 @@ import { createUserColumns, UserData } from "./user-table-columns";
 import { UserTableToolbar } from "./user-table-toolbar";
 import { UserTablePagination } from "./user-table-pagination";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 // Re-export UserData type for external usage
 export type { UserData };
 
@@ -101,7 +101,7 @@ export function UserDataTable({
               <TableRow key={headerGroup.id} className="border-border border-b">
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id} className="text-foreground font-black">
+                    <TableHead key={header.id} className="text-foreground font-semibold">
                       {header.isPlaceholder
                         ? null
                         : flexRender(header.column.columnDef.header, header.getContext())}

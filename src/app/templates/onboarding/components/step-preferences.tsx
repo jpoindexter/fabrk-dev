@@ -4,7 +4,7 @@
  */
 
 import { Checkbox } from "@/components/ui/checkbox";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface StepPreferencesProps {

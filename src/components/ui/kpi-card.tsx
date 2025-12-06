@@ -13,7 +13,7 @@
 import { cn } from "@/lib/utils";
 import { ArrowDown, ArrowUp, Minus } from "lucide-react";
 import * as React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "./card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "./card";
 
 export interface KpiCardProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
@@ -53,13 +53,10 @@ const KpiCard = React.forwardRef<HTMLDivElement, KpiCardProps>(
     };
 
     return (
-      <Card data-slot="kpi-card" ref={ref} className={cn(className)} {...props}>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">{title}</CardTitle>
-          {icon && <div className="text-muted-foreground">{icon}</div>}
-        </CardHeader>
-        <CardContent>
-          <div className="text-2xl font-bold">{value}</div>
+      <TerminalCard data-slot="kpi-card" ref={ref} className={cn(className)} {...props}>
+        <TerminalCardHeader code="0x00" title={title} icon={icon} />
+        <TerminalCardContent padding="md">
+          <div className="text-2xl font-semibold">{value}</div>
           {(change !== undefined || subtitle) && (
             <div className="flex items-center gap-2 text-xs">
               {change !== undefined && (
@@ -71,8 +68,8 @@ const KpiCard = React.forwardRef<HTMLDivElement, KpiCardProps>(
               {subtitle && <span className="text-muted-foreground">{subtitle}</span>}
             </div>
           )}
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
     );
   }
 );

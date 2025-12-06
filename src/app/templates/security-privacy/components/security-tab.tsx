@@ -3,9 +3,9 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { StyledCard, StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Smartphone, Clock, LogOut, Key } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface ActiveSession {
@@ -35,9 +35,13 @@ export function SecurityTab({
   return (
     <div className="space-y-6">
       {/* 2FA Section */}
-      <StyledCard>
-        <StyledCardHeader code="0x00" title="TWO_FACTOR" />
-        <div className="p-4">
+      <TerminalCard tone="neutral">
+        <TerminalCardHeader
+          code="0x06"
+          title="TWO_FACTOR"
+          icon={<Smartphone className="h-4 w-4" />}
+        />
+        <TerminalCardContent padding="md">
           <div className="mb-4 flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div className="border-border bg-primary/10 flex h-10 w-10 items-center justify-center border">
@@ -70,13 +74,13 @@ export function SecurityTab({
             <Smartphone className="mr-2 h-4 w-4" />
             &gt; {twoFactorEnabled ? "MANAGE_2FA" : "ENABLE_2FA"}
           </Button>
-        </div>
-      </StyledCard>
+        </TerminalCardContent>
+      </TerminalCard>
 
       {/* Active Sessions */}
-      <StyledCard>
-        <StyledCardHeader code="0x00" title="SESSIONS" />
-        <div className="p-4">
+      <TerminalCard tone="neutral">
+        <TerminalCardHeader code="0x07" title="SESSIONS" icon={<Clock className="h-4 w-4" />} />
+        <TerminalCardContent padding="md">
           <div className="mb-4 flex items-center gap-4">
             <div className="border-border bg-primary/10 flex h-10 w-10 items-center justify-center border">
               <Clock className="text-primary h-5 w-5" />
@@ -131,13 +135,13 @@ export function SecurityTab({
               &gt; SIGN_OUT_ALL_OTHER_DEVICES
             </Button>
           </div>
-        </div>
-      </StyledCard>
+        </TerminalCardContent>
+      </TerminalCard>
 
       {/* Password */}
-      <StyledCard>
-        <StyledCardHeader code="0x00" title="PASSWORD" />
-        <div className="p-4">
+      <TerminalCard tone="neutral">
+        <TerminalCardHeader code="0x08" title="PASSWORD" icon={<Key className="h-4 w-4" />} />
+        <TerminalCardContent padding="md">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div className="border-border bg-primary/10 flex h-10 w-10 items-center justify-center border">
@@ -154,8 +158,8 @@ export function SecurityTab({
               &gt; CHANGE_PASSWORD
             </Button>
           </div>
-        </div>
-      </StyledCard>
+        </TerminalCardContent>
+      </TerminalCard>
     </div>
   );
 }

@@ -4,9 +4,9 @@
  */
 
 import { Progress } from "@/components/ui/progress";
-import { StyledCard, StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Users, HardDrive, Zap } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface UsageMetric {
@@ -29,9 +29,9 @@ interface UsageMetricsCardProps {
 
 export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
   return (
-    <StyledCard>
-      <StyledCardHeader code="0x00" title="USAGE_METRICS" />
-      <div className="p-4">
+    <TerminalCard tone="neutral">
+      <TerminalCardHeader code="0x00" title="USAGE_METRICS" />
+      <TerminalCardContent padding="md">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [USAGE_THIS_MONTH]:
         </div>
@@ -40,8 +40,8 @@ export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
           <div className="space-y-2">
             <div className={cn(mode.font, "flex items-center justify-between text-xs")}>
               <span className="flex items-center gap-2">
-                <Users className="h-3 w-3" />
-                TEAM_MEMBERS
+                <Users className="size-3" />
+                [TEAM_MEMBERS]:
               </span>
               <span>
                 {usage.users.current} / {usage.users.limit}
@@ -53,8 +53,8 @@ export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
           <div className="space-y-2">
             <div className={cn(mode.font, "flex items-center justify-between text-xs")}>
               <span className="flex items-center gap-2">
-                <HardDrive className="h-3 w-3" />
-                STORAGE
+                <HardDrive className="size-3" />
+                [STORAGE]:
               </span>
               <span>
                 {usage.storage.current}
@@ -68,8 +68,8 @@ export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
           <div className="space-y-2">
             <div className={cn(mode.font, "flex items-center justify-between text-xs")}>
               <span className="flex items-center gap-2">
-                <Zap className="h-3 w-3" />
-                API_CALLS
+                <Zap className="size-3" />
+                [API_CALLS]:
               </span>
               <span>
                 {usage.apiCalls.current.toLocaleString()} / {usage.apiCalls.limit.toLocaleString()}
@@ -78,7 +78,7 @@ export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
             <Progress value={usage.apiCalls.percentage} className="h-2" />
           </div>
         </div>
-      </div>
-    </StyledCard>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

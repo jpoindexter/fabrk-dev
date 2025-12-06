@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { formatLabel } from "@/lib/design-system";
+import { formatLabel } from "@/design-system";
 
 export default function DialogPage() {
   return (
@@ -246,7 +246,7 @@ export default function DialogPage() {
                   <DialogTitle>Simple Title Only</DialogTitle>
                 </DialogHeader>
                 <div className="py-4">
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     Sometimes you don't need a description, just a title and content.
                   </p>
                 </div>

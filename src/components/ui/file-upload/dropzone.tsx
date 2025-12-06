@@ -6,7 +6,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import * as React from "react";
 
 export interface DropzoneProps {

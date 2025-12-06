@@ -8,7 +8,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import {
@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { CreditCard, Plus, Trash2, CheckCircle2, ArrowLeft, Shield } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export default function PaymentMethodsPage() {
@@ -140,7 +140,7 @@ export default function PaymentMethodsPage() {
         <Link href="/billing">
           <Button variant="ghost" size="sm" className="mb-4">
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Billing
+            &gt; BACK_TO_BILLING
           </Button>
         </Link>
         <div className="flex items-center justify-between">
@@ -152,7 +152,7 @@ export default function PaymentMethodsPage() {
           </div>
           <Button onClick={handleAddPaymentMethod} disabled={isLoading}>
             <Plus className="mr-2 h-4 w-4" />
-            Add Payment Method
+            &gt; ADD_PAYMENT_METHOD
           </Button>
         </div>
       </div>
@@ -169,8 +169,8 @@ export default function PaymentMethodsPage() {
       {/* Payment Methods List */}
       <div className="space-y-4">
         {paymentMethods.length === 0 ? (
-          <Card>
-            <CardContent className="space-y-4 pt-6 text-center">
+          <TerminalCard>
+            <TerminalCardContent className="space-y-4 pt-6 text-center">
               <CreditCard className="text-muted-foreground mx-auto h-12 w-12" />
               <div>
                 <h3 className="mb-1 font-semibold">No payment methods</h3>
@@ -179,15 +179,19 @@ export default function PaymentMethodsPage() {
                 </p>
                 <Button onClick={handleAddPaymentMethod}>
                   <Plus className="mr-2 h-4 w-4" />
-                  Add Your First Payment Method
+                  &gt; ADD_PAYMENT_METHOD
                 </Button>
               </div>
-            </CardContent>
-          </Card>
+            </TerminalCardContent>
+          </TerminalCard>
         ) : (
-          paymentMethods.map((method) => (
-            <Card key={method.id}>
-              <CardContent className="pt-6">
+          paymentMethods.map((method, index) => (
+            <TerminalCard key={method.id}>
+              <TerminalCardHeader
+                code={`0x${index.toString(16).padStart(2, "0")}`}
+                title={`${method.brand.toUpperCase()} •••• ${method.last4}`}
+              />
+              <TerminalCardContent>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-6">
                     <div className={cn("bg-primary/10 border-border border p-4", mode.radius)}>
@@ -195,9 +199,6 @@ export default function PaymentMethodsPage() {
                     </div>
                     <div>
                       <div className="mb-1 flex items-center gap-2">
-                        <p className="font-semibold capitalize">
-                          {method.brand} •••• {method.last4}
-                        </p>
                         {method.isDefault && (
                           <Badge variant="default" className="text-xs">
                             <CheckCircle2 className="mr-1 h-3 w-3" />
@@ -218,7 +219,7 @@ export default function PaymentMethodsPage() {
                         size="sm"
                         onClick={() => handleSetDefault(method.id)}
                       >
-                        Set as Default
+                        &gt; SET_AS_DEFAULT
                       </Button>
                     )}
                     <Button
@@ -234,33 +235,37 @@ export default function PaymentMethodsPage() {
                     </Button>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+              </TerminalCardContent>
+            </TerminalCard>
           ))
         )}
       </div>
 
       {/* Information Cards */}
       <div className="mt-8 grid gap-6 md:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg">Secure Processing</CardTitle>
-          </CardHeader>
-          <CardContent className="text-muted-foreground text-sm">
+        <TerminalCard>
+          <TerminalCardHeader
+            code="0xF0"
+            title="SECURE_PROCESSING"
+            icon={<Shield className="h-4 w-4" />}
+          />
+          <TerminalCardContent className="text-muted-foreground text-sm">
             All payments are processed securely through Stripe. Your payment information is
             encrypted and we never have access to your full card details.
-          </CardContent>
-        </Card>
+          </TerminalCardContent>
+        </TerminalCard>
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg">Automatic Billing</CardTitle>
-          </CardHeader>
-          <CardContent className="text-muted-foreground text-sm">
+        <TerminalCard>
+          <TerminalCardHeader
+            code="0xF1"
+            title="AUTOMATIC_BILLING"
+            icon={<CreditCard className="h-4 w-4" />}
+          />
+          <TerminalCardContent className="text-muted-foreground text-sm">
             Your default payment method will be charged automatically for subscriptions and
             recurring payments. You'll receive a receipt after each transaction.
-          </CardContent>
-        </Card>
+          </TerminalCardContent>
+        </TerminalCard>
       </div>
 
       {/* Delete Payment Method Dialog */}
@@ -274,12 +279,12 @@ export default function PaymentMethodsPage() {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
             <AlertDialogAction
               onClick={confirmDelete}
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
             >
-              Remove Payment Method
+              &gt; REMOVE_PAYMENT_METHOD
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

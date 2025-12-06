@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Bell, Check, X, Info, AlertTriangle, CheckCircle, XCircle, AtSign } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -349,9 +349,7 @@ export const NotificationCenter = React.forwardRef<HTMLDivElement, NotificationC
                 {Object.entries(groupedNotifications).map(([group, items]) => (
                   <div key={group}>
                     {groupByDate && (
-                      <div
-                        className={cn("bg-muted sticky top-0 z-10 mb-2 px-4 py-1.5", mode.radius)}
-                      >
+                      <div className={cn("bg-muted sticky top-0 z-10 mb-2 px-4 py-2", mode.radius)}>
                         <span className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
                           {group}
                         </span>

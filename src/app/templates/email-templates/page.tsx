@@ -11,8 +11,8 @@ import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import { emailTemplates } from "./components/email-template-data";
 import { EmailStats } from "./components/email-stats";
 import { EmailFeatures } from "./components/email-features";
-import { TemplatePageHeader } from "@/components/ui/card";
-import { mode } from "@/lib/design-system";
+import { TemplatePageHeader, TerminalCard, TerminalCardContent } from "@/components/ui/card";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 // Inject custom scrollbar styling into email HTML
@@ -106,13 +106,13 @@ export default function EmailTemplatesShowcase() {
           {/* Email Previews */}
           {emailTemplates.map((template) => (
             <StyledTabsContent key={template.id} value={template.id}>
-              <div className="border-border bg-card border">
+              <TerminalCard>
                 {/* Content Area */}
-                <div className="p-6">
+                <TerminalCardContent padding="lg">
                   <div className="mb-6 flex items-center justify-between">
                     <div>
                       <div className="mb-1 flex items-center gap-2">
-                        <h2 className={cn(mode.font, "text-lg font-bold")}>{template.name}</h2>
+                        <h2 className={cn(mode.font, "text-lg font-semibold")}>{template.name}</h2>
                         <span
                           className={cn(
                             mode.font,
@@ -169,8 +169,8 @@ export default function EmailTemplatesShowcase() {
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                </TerminalCardContent>
+              </TerminalCard>
             </StyledTabsContent>
           ))}
         </StyledTabs>

@@ -34,8 +34,9 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { BarChart3 } from "lucide-react";
 
 export type ChartType = "line" | "bar" | "area" | "pie";
 
@@ -230,14 +231,18 @@ export function AnalyticsChart({
   };
 
   return (
-    <Card className={cn("overflow-hidden", className)}>
+    <TerminalCard className={cn("overflow-hidden", className)}>
       {(title || description) && (
-        <CardHeader className="pb-4">
-          {title && <CardTitle className="text-base font-black">{title}</CardTitle>}
-          {description && <p className="text-muted-foreground text-sm">{description}</p>}
-        </CardHeader>
+        <TerminalCardHeader
+          code="0x03"
+          title={title ? title.toUpperCase().replace(/ /g, "_") : "ANALYTICS"}
+          icon={<BarChart3 className="h-4 w-4" />}
+        />
       )}
-      <CardContent className="pb-6">{renderChart()}</CardContent>
-    </Card>
+      <TerminalCardContent padding="md">
+        {description && <p className="text-muted-foreground mb-4 text-sm">{description}</p>}
+        {renderChart()}
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

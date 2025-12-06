@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 export interface HeatmapDataItem {
   x: string | number;
@@ -24,7 +24,7 @@ interface HeatmapProps {
 export function Heatmap({
   data,
   cellSize = 40,
-  gap = 2,
+  gap = 4,
   colorScale = [
     "hsl(var(--muted))",
     "oklch(80% 0.1 240)",

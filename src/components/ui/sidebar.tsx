@@ -3,7 +3,7 @@
 import * as React from "react";
 import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { Button } from "@/components/ui/button";
 
 export interface SidebarItem {
@@ -64,7 +64,7 @@ export function Sidebar({ items, defaultCollapsed = false, className, onItemClic
             "focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none",
             depth > 0 && "ml-4"
           )}
-          style={{ paddingLeft: `${(depth + 1) * 12}px` }}
+          style={{ paddingLeft: `${(depth + 1) * 16}px` }}
         >
           {item.icon && <span className="flex-shrink-0">{item.icon}</span>}
           {!isCollapsed && (

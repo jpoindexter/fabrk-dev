@@ -7,7 +7,7 @@
 
 import { Users } from "lucide-react";
 import { InviteMemberDialog } from "./invite-member-dialog";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface MembersPageHeaderProps {
@@ -28,7 +28,7 @@ export function MembersPageHeader({
           <Users className="text-primary-foreground h-6 w-6" />
         </div>
         <div>
-          <h1 className="text-3xl font-bold">Team Members</h1>
+          <h1 className="text-4xl font-semibold">Team Members</h1>
           <p className="text-muted-foreground">Manage members and roles for {organizationName}</p>
         </div>
       </div>

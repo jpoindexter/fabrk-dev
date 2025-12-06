@@ -3,7 +3,7 @@
 import * as React from "react";
 import { X, AlertCircle, Info, CheckCircle, AlertTriangle } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { Button } from "@/components/ui/button";
 
 export type BannerVariant = "info" | "success" | "warning" | "error";

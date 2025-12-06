@@ -86,7 +86,7 @@ export default function NavigationMenuPage() {
                             className="from-muted/50 to-muted focus-visible:ring-ring flex h-full w-full flex-col justify-end bg-gradient-to-b p-6 no-underline select-none focus-visible:ring-2 focus-visible:outline-none"
                             href="/"
                           >
-                            <div className="mt-4 mb-2 text-lg font-medium">Introduction</div>
+                            <div className="mt-4 mb-2 text-lg font-semibold">Introduction</div>
                             <p className="text-muted-foreground text-sm leading-tight">
                               Get started with our comprehensive documentation.
                             </p>
@@ -139,7 +139,7 @@ export default function NavigationMenuPage() {
           <li className="row-span-3">
             <NavigationMenuLink asChild>
               <a className="flex h-full w-full select-none flex-col justify-end bg-gradient-to-b from-muted/50 to-muted p-6 no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" href="/">
-                <div className="mb-2 mt-4 text-lg font-medium">Introduction</div>
+                <div className="mb-2 mt-4 text-lg font-semibold">Introduction</div>
                 <p className="text-sm leading-tight text-muted-foreground">
                   Get started with our comprehensive documentation.
                 </p>

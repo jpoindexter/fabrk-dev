@@ -5,7 +5,7 @@
  */
 
 import { CodeWindow } from "./code-window";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function ImplementationNote() {
@@ -15,7 +15,7 @@ export function ImplementationNote() {
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [TEMPLATE_FEATURES]:
         </div>
-        <div className={cn(mode.font, "space-y-1.5 text-xs")}>
+        <div className={cn(mode.font, "space-y-2 text-xs")}>
           <div>
             <span className="text-success">&gt;</span> 4-tab navigation (General, Account, Privacy,
             Billing)

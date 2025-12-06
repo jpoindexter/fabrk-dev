@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsCallout } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
 import Link from "next/link";
 import { FileText, Tag, Search, Eye, Calendar, Edit, Code } from "lucide-react";
 
@@ -166,7 +165,7 @@ export default async function BlogPage() {
 
   return (
     <div className="container py-12">
-      <h1 className="font-mono text-2xl font-bold mb-8">
+      <h1 className="font-mono text-2xl font-semibold mb-8">
         [ BLOG ]
       </h1>
 
@@ -179,7 +178,7 @@ export default async function BlogPage() {
                   {post.category.name}
                 </span>
               )}
-              <h2 className="font-mono text-lg font-bold mt-2">
+              <h2 className="font-mono text-lg font-semibold mt-2">
                 {post.title}
               </h2>
               {post.excerpt && (
@@ -281,7 +280,7 @@ export function formatDate(date: Date | string): string {
       {/* Blog Features */}
       <DocsSection title="Built-in Features">
         <DocsCard title="FEATURES">
-          <ul className="text-muted-foreground space-y-1 font-mono text-sm">
+          <ul className="space-y-1">
             <li>
               ├─ <strong>Slug Generation:</strong> Auto-generate URL slugs from titles
             </li>
@@ -320,7 +319,7 @@ export function formatDate(date: Date | string): string {
           <div className="space-y-4">
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
-                <h4 className="font-mono text-sm font-bold">Content</h4>
+                <h4 className="font-mono text-xs font-semibold">Content</h4>
                 <ul className="text-muted-foreground space-y-1 font-mono text-xs">
                   <li>
                     • <code className="bg-muted px-1">Callout</code> - Info, warning, error, success
@@ -337,7 +336,7 @@ export function formatDate(date: Date | string): string {
                 </ul>
               </div>
               <div className="space-y-2">
-                <h4 className="font-mono text-sm font-bold">Layout</h4>
+                <h4 className="font-mono text-xs font-semibold">Layout</h4>
                 <ul className="text-muted-foreground space-y-1 font-mono text-xs">
                   <li>
                     • <code className="bg-muted px-1">CardGrid</code> - Feature grids
@@ -355,8 +354,8 @@ export function formatDate(date: Date | string): string {
               </div>
             </div>
             <div className="border-border border-t pt-4">
-              <h4 className="mb-2 font-mono text-sm font-bold">Example Usage</h4>
-              <pre className="bg-muted overflow-x-auto p-3 text-xs">
+              <h4 className="mb-2 font-mono text-xs font-semibold">Example Usage</h4>
+              <pre className="bg-muted overflow-x-auto p-4 text-xs">
                 {`<Callout type="warning" title="Important">
   This is a warning callout in your blog post.
 </Callout>
@@ -383,8 +382,8 @@ export function formatDate(date: Date | string): string {
         <DocsCard title="COMPARISON">
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="space-y-2">
-              <h3 className={`uppercase ${docsTypography.h4}`}>Headless CMS</h3>
-              <ul className={`${docsTypography.body} space-y-1`}>
+              Headless CMS
+              <ul className="space-y-1">
                 <li>• Monthly fees for advanced features</li>
                 <li>• API rate limits</li>
                 <li>• Vendor lock-in</li>
@@ -392,8 +391,8 @@ export function formatDate(date: Date | string): string {
               </ul>
             </div>
             <div className="space-y-2">
-              <h3 className={`uppercase ${docsTypography.h4}`}>Database Blog</h3>
-              <ul className={`${docsTypography.body} space-y-1`}>
+              Database Blog
+              <ul className="space-y-1">
                 <li>• No additional costs</li>
                 <li>• Unlimited API calls</li>
                 <li>• Full data ownership</li>
@@ -407,26 +406,24 @@ export function formatDate(date: Date | string): string {
       {/* SEO Configuration */}
       <DocsSection title="SEO Configuration">
         <DocsCard title="SEO_METADATA">
-          <p className={`${docsTypography.body} mb-4`}>
-            Each blog post can have custom SEO metadata:
-          </p>
-          <div className="space-y-2 text-sm">
+          <p className="mb-4">Each blog post can have custom SEO metadata:</p>
+          <div className="space-y-2">
             <div className="border-border flex justify-between border-b pb-2">
-              <code className={docsTypography.code}>seoTitle</code>
+              <code className="bg-muted px-1">seoTitle</code>
               <span className="text-muted-foreground">
                 Custom page title (defaults to post title)
               </span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
-              <code className={docsTypography.code}>seoDescription</code>
+              <code className="bg-muted px-1">seoDescription</code>
               <span className="text-muted-foreground">Meta description (defaults to excerpt)</span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
-              <code className={docsTypography.code}>featuredImage</code>
+              <code className="bg-muted px-1">featuredImage</code>
               <span className="text-muted-foreground">OpenGraph image URL</span>
             </div>
             <div className="flex justify-between">
-              <code className={docsTypography.code}>slug</code>
+              <code className="bg-muted px-1">slug</code>
               <span className="text-muted-foreground">URL path (/blog/your-slug)</span>
             </div>
           </div>
@@ -438,10 +435,8 @@ export function formatDate(date: Date | string): string {
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/seo">
             <DocsCard title="SEO_SETUP" className="hover:border-primary/50 h-full transition-all">
-              <h3 className={`uppercase ${docsTypography.h4}`}>SEO Configuration</h3>
-              <p className={docsTypography.body}>
-                Learn how to optimize your blog posts for search engines.
-              </p>
+              SEO Configuration
+              <p className="mb-6">Learn how to optimize your blog posts for search engines.</p>
             </DocsCard>
           </Link>
           <Link href="/docs/tutorials/file-uploads">
@@ -449,10 +444,8 @@ export function formatDate(date: Date | string): string {
               title="FILE_UPLOADS"
               className="hover:border-primary/50 h-full transition-all"
             >
-              <h3 className={`uppercase ${docsTypography.h4}`}>File Uploads</h3>
-              <p className={docsTypography.body}>
-                Upload featured images and media for your blog posts.
-              </p>
+              File Uploads
+              <p className="mb-6">Upload featured images and media for your blog posts.</p>
             </DocsCard>
           </Link>
         </div>

@@ -199,11 +199,11 @@ export function MdxReference() {
 
           {/* Basic Markdown */}
           <div className="border-border border-t pt-4">
-            <h3 className="mb-3 font-mono text-sm font-bold">BASIC_MARKDOWN</h3>
+            <h3 className="mb-3 font-mono text-sm font-semibold">BASIC_MARKDOWN</h3>
             <div className="text-muted-foreground grid gap-2 font-mono text-xs">
               <div className="border-border flex justify-between border-b pb-1">
                 <span>**bold**</span>
-                <span className="font-bold">bold</span>
+                <span className="font-semibold">bold</span>
               </div>
               <div className="border-border flex justify-between border-b pb-1">
                 <span>*italic*</span>

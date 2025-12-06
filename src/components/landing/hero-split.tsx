@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { TerminalCard, TerminalCardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 interface HeroSplitProps {
   headline?: string;
@@ -33,22 +34,21 @@ export function HeroSplit({
           <div className={`${contentOrder} flex flex-col justify-center`}>
             {/* Early Access Badge */}
             <div className="mb-6">
-              <span
-                className={cn(
-                  mode.radius,
-                  mode.font,
-                  "border-border bg-card text-muted-foreground inline-block border px-4 py-1 text-xs"
-                )}
-              >
-                [ EARLY_ACCESS ] JOIN_FIRST_100_LAUNCH_CUSTOMERS
-              </span>
+              <TerminalCard className="inline-block">
+                <TerminalCardContent
+                  padding="sm"
+                  className={cn("text-muted-foreground text-xs", mode.font)}
+                >
+                  [ EARLY_ACCESS ] JOIN_FIRST_100_LAUNCH_CUSTOMERS
+                </TerminalCardContent>
+              </TerminalCard>
             </div>
 
             {/* Headline */}
             <h1
               className={cn(
                 mode.font,
-                "text-foreground mb-6 text-3xl leading-[1.1] font-bold tracking-tight sm:text-4xl md:text-5xl"
+                "text-foreground mb-6 text-3xl leading-tight font-semibold tracking-tight sm:text-4xl md:text-5xl"
               )}
             >
               {headline}
@@ -94,16 +94,14 @@ export function HeroSplit({
             {/* Trust Badges */}
             <div className="flex flex-wrap gap-2">
               {trustBadges.map((badge) => (
-                <span
-                  key={badge}
-                  className={cn(
-                    mode.radius,
-                    mode.font,
-                    "border-border bg-card text-muted-foreground border px-2 py-1 text-xs"
-                  )}
-                >
-                  [{badge}]
-                </span>
+                <TerminalCard key={badge} className="inline-block">
+                  <TerminalCardContent
+                    padding="sm"
+                    className={cn("text-muted-foreground px-2 py-1 text-xs", mode.font)}
+                  >
+                    [{badge}]
+                  </TerminalCardContent>
+                </TerminalCard>
               ))}
             </div>
 
@@ -115,7 +113,7 @@ export function HeroSplit({
 
           {/* Image/Visual Side */}
           <div className={`${imageOrder} relative`}>
-            <div className={cn(mode.radius, "border-foreground bg-muted relative border-2 shadow")}>
+            <div className={cn(mode.radius, "border-foreground bg-muted relative border-2")}>
               {/* Dashboard Mockup */}
               <div className="aspect-4/3 p-6">
                 <div
@@ -174,7 +172,7 @@ export function HeroSplit({
                   "border-foreground bg-primary absolute -right-4 -bottom-4 border-2 px-6 py-4"
                 )}
               >
-                <p className="text-primary-foreground text-xs font-bold">[161_FILES]</p>
+                <p className="text-primary-foreground text-xs font-semibold">[161_FILES]</p>
               </div>
             </div>
 

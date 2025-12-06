@@ -12,7 +12,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { ChevronDown } from "lucide-react";
 import * as React from "react";
 import { useEffect, useRef, useState, startTransition } from "react";

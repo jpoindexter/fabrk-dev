@@ -1,17 +1,14 @@
 "use client";
 
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import { Download, Shield } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 import type {
   AboutTabContentProps,
   ConsentTabContentProps,
   CookieCategory,
   DetailsTabContentProps,
 } from "./cookie-consent-types";
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function ConsentTabContent({
@@ -26,10 +23,10 @@ export function ConsentTabContent({
       <div className="space-y-4">
         <div className={cn("bg-muted flex items-center justify-between border p-4", mode.radius)}>
           <div className="flex-1">
-            <h4 className="text-foreground text-base leading-tight font-semibold">
-              Necessary Cookies
+            <h4 className={cn("text-foreground text-sm leading-tight font-semibold", mode.font)}>
+              NECESSARY_COOKIES
             </h4>
-            <p className="text-muted-foreground mt-1 text-sm leading-relaxed font-normal">
+            <p className={cn("text-muted-foreground mt-1 text-xs leading-relaxed", mode.font)}>
               Essential for website functionality. Cannot be disabled.
             </p>
           </div>
@@ -38,10 +35,10 @@ export function ConsentTabContent({
 
         <div className={cn("flex items-center justify-between border p-4", mode.radius)}>
           <div className="flex-1">
-            <h4 className="text-foreground text-base leading-tight font-semibold">
-              Preference Cookies
+            <h4 className={cn("text-foreground text-sm leading-tight font-semibold", mode.font)}>
+              PREFERENCE_COOKIES
             </h4>
-            <p className="text-muted-foreground mt-1 text-sm leading-relaxed font-normal">
+            <p className={cn("text-muted-foreground mt-1 text-xs leading-relaxed", mode.font)}>
               Remember your settings and preferences.
             </p>
           </div>
@@ -53,10 +50,10 @@ export function ConsentTabContent({
 
         <div className={cn("flex items-center justify-between border p-4", mode.radius)}>
           <div className="flex-1">
-            <h4 className="text-foreground text-base leading-tight font-semibold">
-              Statistics Cookies
+            <h4 className={cn("text-foreground text-sm leading-tight font-semibold", mode.font)}>
+              STATISTICS_COOKIES
             </h4>
-            <p className="text-muted-foreground mt-1 text-sm leading-relaxed font-normal">
+            <p className={cn("text-muted-foreground mt-1 text-xs leading-relaxed", mode.font)}>
               Help us understand how visitors interact with our website.
             </p>
           </div>
@@ -68,10 +65,10 @@ export function ConsentTabContent({
 
         <div className={cn("flex items-center justify-between border p-4", mode.radius)}>
           <div className="flex-1">
-            <h4 className="text-foreground text-base leading-tight font-semibold">
-              Marketing Cookies
+            <h4 className={cn("text-foreground text-sm leading-tight font-semibold", mode.font)}>
+              MARKETING_COOKIES
             </h4>
-            <p className="text-muted-foreground mt-1 text-sm leading-relaxed font-normal">
+            <p className={cn("text-muted-foreground mt-1 text-xs leading-relaxed", mode.font)}>
               Used to track visitors across websites for relevant advertising.
             </p>
           </div>
@@ -83,14 +80,14 @@ export function ConsentTabContent({
       </div>
 
       <div className="flex flex-col gap-4 sm:flex-row">
-        <Button onClick={acceptAll} className="flex-1">
-          Accept All
+        <Button onClick={acceptAll} className={cn("flex-1", mode.font)}>
+          &gt; ACCEPT_ALL
         </Button>
-        <Button onClick={acceptSelected} variant="outline" className="flex-1">
-          Accept Selected
+        <Button onClick={acceptSelected} variant="outline" className={cn("flex-1", mode.font)}>
+          &gt; ACCEPT_SELECTED
         </Button>
-        <Button onClick={rejectAll} variant="outline" className="flex-1">
-          Reject All
+        <Button onClick={rejectAll} variant="outline" className={cn("flex-1", mode.font)}>
+          &gt; REJECT_ALL
         </Button>
       </div>
     </div>
@@ -176,10 +173,10 @@ export function DetailsTabContent({ preferences, setPreferences }: DetailsTabCon
         <div key={category.id} className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h4 className="text-foreground text-base leading-tight font-semibold">
-                {category.name}
+              <h4 className={cn("text-foreground text-sm leading-tight font-semibold", mode.font)}>
+                [{category.name.toUpperCase().replace(/ /g, "_")}]
               </h4>
-              <p className="text-muted-foreground text-sm leading-relaxed font-normal">
+              <p className={cn("text-muted-foreground text-xs leading-relaxed", mode.font)}>
                 {category.description}
               </p>
             </div>
@@ -191,16 +188,21 @@ export function DetailsTabContent({ preferences, setPreferences }: DetailsTabCon
               }
             />
           </div>
-          <div className="ml-6 space-y-2">
+          <div className="space-y-2">
             {category.cookies.map((cookie) => (
-              <div key={cookie.name} className={cn("bg-muted border p-4", mode.radius)}>
+              <div key={cookie.name} className="bg-muted !rounded-none border p-4">
                 <div className="flex items-center justify-between">
                   <span className={cn("text-xs font-semibold", mode.font)}>{cookie.name}</span>
-                  <span className="text-muted-foreground text-xs font-normal">
+                  <span className={cn("text-muted-foreground text-xs font-normal", mode.font)}>
                     {cookie.duration}
                   </span>
                 </div>
-                <p className="text-muted-foreground mt-1 text-xs leading-relaxed font-normal">
+                <p
+                  className={cn(
+                    "text-muted-foreground mt-1 text-xs leading-relaxed font-normal",
+                    mode.font
+                  )}
+                >
                   {cookie.description}
                 </p>
               </div>
@@ -213,67 +215,12 @@ export function DetailsTabContent({ preferences, setPreferences }: DetailsTabCon
 }
 
 export function AboutTabContent({}: AboutTabContentProps) {
-  const [isExporting, setIsExporting] = useState(false);
-  const { toast } = useToast();
-
-  const handleDataExport = async () => {
-    setIsExporting(true);
-    try {
-      const response = await fetch("/api/user/export");
-
-      // Check content type - if HTML, user is not logged in
-      const contentType = response.headers.get("content-type") || "";
-      if (!contentType.includes("application/json")) {
-        toast({
-          title: "Login required",
-          description: "Please log in to download your data.",
-        });
-        return;
-      }
-
-      if (response.status === 401) {
-        toast({
-          title: "Login required",
-          description: "Please log in to download your data.",
-        });
-        return;
-      }
-
-      if (!response.ok) {
-        throw new Error("Failed to export data");
-      }
-
-      const data = await response.json();
-      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `my-data-${new Date().toISOString().split("T")[0]}.json`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(url);
-
-      toast({
-        title: "Data exported",
-        description: "Your data has been downloaded.",
-      });
-    } catch {
-      toast({
-        title: "Export failed",
-        description: "Unable to export your data. Please try again.",
-      });
-    } finally {
-      setIsExporting(false);
-    }
-  };
-
   return (
     <div className="space-y-6">
       <div className="space-y-4">
         <div>
-          <h4 className="mb-2 font-semibold">What are cookies?</h4>
-          <p className="text-muted-foreground text-sm">
+          <h4 className={cn("mb-2 text-sm font-semibold", mode.font)}>WHAT_ARE_COOKIES</h4>
+          <p className={cn("text-muted-foreground text-xs", mode.font)}>
             Cookies are small text files that are placed on your device when you visit a website.
             They help the website remember information about your visit, which can make your next
             visit easier and the site more useful to you.
@@ -281,19 +228,24 @@ export function AboutTabContent({}: AboutTabContentProps) {
         </div>
 
         <div>
-          <h4 className="mb-2 font-semibold">How we use cookies</h4>
-          <p className="text-muted-foreground text-sm">
+          <h4 className={cn("mb-2 text-sm font-semibold", mode.font)}>HOW_WE_USE_COOKIES</h4>
+          <p className={cn("text-muted-foreground text-xs", mode.font)}>
             We use different types of cookies for various purposes, including improving your
             browsing experience, analyzing site traffic, and serving personalized content or ads.
           </p>
         </div>
 
         <div>
-          <h4 className="mb-2 font-semibold">Your rights</h4>
-          <p className="text-muted-foreground text-sm">
+          <h4 className={cn("mb-2 text-sm font-semibold", mode.font)}>YOUR_RIGHTS</h4>
+          <p className={cn("text-muted-foreground text-xs", mode.font)}>
             Under GDPR and other privacy regulations, you have the right to:
           </p>
-          <ul className="text-muted-foreground mt-2 list-inside list-disc space-y-1 text-sm">
+          <ul
+            className={cn(
+              "text-muted-foreground mt-2 list-inside list-disc space-y-1 text-xs",
+              mode.font
+            )}
+          >
             <li>Access the personal data we hold about you</li>
             <li>Correct any inaccurate personal data</li>
             <li>Request deletion of your personal data</li>
@@ -301,33 +253,18 @@ export function AboutTabContent({}: AboutTabContentProps) {
             <li>Data portability</li>
             <li>Withdraw consent at any time</li>
           </ul>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={handleDataExport}
-            disabled={isExporting}
-            className="mt-4"
-          >
-            <Download className="mr-2 size-4" />
-            {isExporting ? "Exporting..." : "Download My Data"}
-          </Button>
         </div>
 
-        <div className={cn("bg-primary/10 border p-4", mode.radius)}>
-          <div className="flex items-start space-x-4">
-            <Shield className="text-primary mt-0.5 size-5" />
-            <div>
-              <h4 className="text-primary font-semibold">GDPR Compliant</h4>
-              <p className="text-primary/80 mt-1 text-sm">
-                Our cookie policy and consent management comply with GDPR requirements.
-              </p>
-            </div>
-          </div>
+        <div className="bg-primary/10 !rounded-none border p-4">
+          <h4 className={cn("text-primary text-sm font-semibold", mode.font)}>GDPR_COMPLIANT</h4>
+          <p className={cn("text-primary/80 mt-1 text-xs", mode.font)}>
+            Our cookie policy and consent management comply with GDPR requirements.
+          </p>
         </div>
 
         <div>
-          <h4 className="mb-2 font-semibold">Contact us</h4>
-          <p className="text-muted-foreground text-sm">
+          <h4 className={cn("mb-2 text-sm font-semibold", mode.font)}>CONTACT_US</h4>
+          <p className={cn("text-muted-foreground text-xs", mode.font)}>
             If you have questions about our use of cookies or your privacy rights, please contact us
             at support@fabrk.dev
           </p>

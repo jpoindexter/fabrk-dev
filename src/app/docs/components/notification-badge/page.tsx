@@ -17,7 +17,7 @@ export default function NotificationBadgePage() {
       mainPreview={{
         preview: (
           <NotificationBadge count={5}>
-            <Button variant="outline" size="icon" className="rounded-none" aria-label="Notifications">
+            <Button variant="outline" size="icon" aria-label="Notifications">
               <Bell className="h-5 w-5" />
             </Button>
           </NotificationBadge>
@@ -35,17 +35,17 @@ export default function NotificationBadgePage() {
           preview: (
             <div className="flex items-center gap-6">
               <NotificationBadge count={3}>
-                <Button variant="outline" size="icon" className="rounded-none" aria-label="Mail">
+                <Button variant="outline" size="icon" aria-label="Mail">
                   <Mail className="h-5 w-5" />
                 </Button>
               </NotificationBadge>
               <NotificationBadge count={25}>
-                <Button variant="outline" size="icon" className="rounded-none" aria-label="Shopping cart">
+                <Button variant="outline" size="icon" aria-label="Shopping cart">
                   <ShoppingCart className="h-5 w-5" />
                 </Button>
               </NotificationBadge>
               <NotificationBadge count={150} max={99}>
-                <Button variant="outline" size="icon" className="rounded-none" aria-label="Messages">
+                <Button variant="outline" size="icon" aria-label="Messages">
                   <MessageSquare className="h-5 w-5" />
                 </Button>
               </NotificationBadge>
@@ -75,22 +75,22 @@ export default function NotificationBadgePage() {
           preview: (
             <div className="flex items-center gap-6">
               <NotificationBadge count={3} variant="primary">
-                <Button variant="outline" size="icon" className="rounded-none" aria-label="Primary notifications">
+                <Button variant="outline" size="icon" aria-label="Primary notifications">
                   <Bell className="h-5 w-5" />
                 </Button>
               </NotificationBadge>
               <NotificationBadge count={5} variant="destructive">
-                <Button variant="outline" size="icon" className="rounded-none" aria-label="Error notifications">
+                <Button variant="outline" size="icon" aria-label="Error notifications">
                   <Bell className="h-5 w-5" />
                 </Button>
               </NotificationBadge>
               <NotificationBadge count={2} variant="success">
-                <Button variant="outline" size="icon" className="rounded-none" aria-label="Success notifications">
+                <Button variant="outline" size="icon" aria-label="Success notifications">
                   <Bell className="h-5 w-5" />
                 </Button>
               </NotificationBadge>
               <NotificationBadge count={7} variant="warning">
-                <Button variant="outline" size="icon" className="rounded-none" aria-label="Warning notifications">
+                <Button variant="outline" size="icon" aria-label="Warning notifications">
                   <Bell className="h-5 w-5" />
                 </Button>
               </NotificationBadge>
@@ -126,16 +126,16 @@ export default function NotificationBadgePage() {
           preview: (
             <div className="flex items-center gap-6">
               <NotificationBadge count={5} position="top-right">
-                <div className="h-12 w-12 rounded-none border border-border bg-card" />
+                <div className="border-border bg-card h-12 w-12 rounded-none border" />
               </NotificationBadge>
               <NotificationBadge count={5} position="top-left">
-                <div className="h-12 w-12 rounded-none border border-border bg-card" />
+                <div className="border-border bg-card h-12 w-12 rounded-none border" />
               </NotificationBadge>
               <NotificationBadge count={5} position="bottom-right">
-                <div className="h-12 w-12 rounded-none border border-border bg-card" />
+                <div className="border-border bg-card h-12 w-12 rounded-none border" />
               </NotificationBadge>
               <NotificationBadge count={5} position="bottom-left">
-                <div className="h-12 w-12 rounded-none border border-border bg-card" />
+                <div className="border-border bg-card h-12 w-12 rounded-none border" />
               </NotificationBadge>
             </div>
           ),
@@ -167,9 +167,7 @@ export default function NotificationBadgePage() {
                 </Avatar>
               </NotificationBadge>
               <NotificationBadge dot variant="success">
-                <Button variant="outline" className="rounded-none">
-                  &gt; STATUS
-                </Button>
+                <Button variant="outline">&gt; STATUS</Button>
               </NotificationBadge>
             </div>
           ),
@@ -190,17 +188,15 @@ export default function NotificationBadgePage() {
           preview: (
             <div className="flex items-center gap-6">
               <NotificationBadge count={5} size="sm">
-                <Button variant="outline" size="sm" className="rounded-none">
+                <Button variant="outline" size="sm">
                   &gt; SMALL
                 </Button>
               </NotificationBadge>
               <NotificationBadge count={5} size="md">
-                <Button variant="outline" className="rounded-none">
-                  &gt; MEDIUM
-                </Button>
+                <Button variant="outline">&gt; MEDIUM</Button>
               </NotificationBadge>
               <NotificationBadge count={5} size="lg">
-                <Button variant="outline" size="lg" className="rounded-none">
+                <Button variant="outline" size="lg">
                   &gt; LARGE
                 </Button>
               </NotificationBadge>
@@ -224,12 +220,12 @@ export default function NotificationBadgePage() {
           preview: (
             <div className="flex items-center gap-6">
               <NotificationBadge count={3} pulse>
-                <Button variant="outline" size="icon" className="rounded-none" aria-label="Notifications with pulse">
+                <Button variant="outline" size="icon" aria-label="Notifications with pulse">
                   <Bell className="h-5 w-5" />
                 </Button>
               </NotificationBadge>
               <NotificationBadge dot variant="destructive" pulse>
-                <Button variant="outline" size="icon" className="rounded-none" aria-label="Mail with pulse">
+                <Button variant="outline" size="icon" aria-label="Mail with pulse">
                   <Mail className="h-5 w-5" />
                 </Button>
               </NotificationBadge>
@@ -253,12 +249,12 @@ export default function NotificationBadgePage() {
           preview: (
             <div className="flex items-center gap-6">
               <NotificationBadge count={0} showZero>
-                <Button variant="outline" size="icon" className="rounded-none" aria-label="Notifications showing zero">
+                <Button variant="outline" size="icon" aria-label="Notifications showing zero">
                   <Bell className="h-5 w-5" />
                 </Button>
               </NotificationBadge>
               <NotificationBadge count={0}>
-                <Button variant="outline" size="icon" className="rounded-none" aria-label="Mail hidden when zero">
+                <Button variant="outline" size="icon" aria-label="Mail hidden when zero">
                   <Mail className="h-5 w-5" />
                 </Button>
               </NotificationBadge>
@@ -283,9 +279,7 @@ export default function NotificationBadgePage() {
           description: "Fine-tune badge position with custom offset",
           preview: (
             <NotificationBadge count={5} offset={{ x: 5, y: -5 }}>
-              <Button variant="outline" className="rounded-none">
-                &gt; CUSTOM_POSITION
-              </Button>
+              <Button variant="outline">&gt; CUSTOM_POSITION</Button>
             </NotificationBadge>
           ),
           code: `<NotificationBadge count={5} offset={{ x: 5, y: -5 }}>

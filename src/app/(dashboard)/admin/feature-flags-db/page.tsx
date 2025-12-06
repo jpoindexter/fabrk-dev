@@ -3,25 +3,19 @@
  * Persistent feature flags with admin controls
  */
 
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { Switch } from '@/components/ui/switch';
-import { Label } from '@/components/ui/label';
-import { Badge } from '@/components/ui/badge';
-import { Slider } from '@/components/ui/slider';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { toast } from 'sonner';
-import { Plus, Trash2 } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
+import { Badge } from "@/components/ui/badge";
+import { Slider } from "@/components/ui/slider";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { toast } from "sonner";
+import { Plus, Trash2, Flag } from "lucide-react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -31,8 +25,8 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from '@/components/ui/alert-dialog';
-import { formatLabel } from '@/lib/design-system';
+} from "@/components/ui/alert-dialog";
+import { formatLabel } from "@/design-system";
 
 interface FeatureFlag {
   id: string;
@@ -49,8 +43,8 @@ export default function FeatureFlagsDbPage() {
   const [loading, setLoading] = useState(true);
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [newFlag, setNewFlag] = useState({
-    name: '',
-    description: '',
+    name: "",
+    description: "",
     enabled: false,
     rolloutPercentage: 0,
   });
@@ -63,11 +57,11 @@ export default function FeatureFlagsDbPage() {
 
   const fetchFlags = async () => {
     try {
-      const res = await fetch('/api/admin/feature-flags');
+      const res = await fetch("/api/admin/feature-flags");
       const data = await res.json();
       setFlags(data.flags || []);
     } catch {
-      toast.error('Failed to fetch feature flags');
+      toast.error("Failed to fetch feature flags");
     } finally {
       setLoading(false);
     }
@@ -75,53 +69,53 @@ export default function FeatureFlagsDbPage() {
 
   const handleToggle = async (id: string, enabled: boolean) => {
     try {
-      const res = await fetch('/api/admin/feature-flags', {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/admin/feature-flags", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id, enabled }),
       });
 
-      if (!res.ok) throw new Error('Failed to update');
+      if (!res.ok) throw new Error("Failed to update");
 
-      toast.success(`Feature flag ${enabled ? 'enabled' : 'disabled'}`);
+      toast.success(`Feature flag ${enabled ? "enabled" : "disabled"}`);
       fetchFlags();
     } catch {
-      toast.error('Failed to update');
+      toast.error("Failed to update");
     }
   };
 
   const handleRolloutChange = async (id: string, rolloutPercentage: number) => {
     try {
-      const res = await fetch('/api/admin/feature-flags', {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/admin/feature-flags", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id, rolloutPercentage }),
       });
 
-      if (!res.ok) throw new Error('Failed to update');
+      if (!res.ok) throw new Error("Failed to update");
 
       fetchFlags();
     } catch {
-      toast.error('Failed to update rollout percentage');
+      toast.error("Failed to update rollout percentage");
     }
   };
 
   const handleCreate = async () => {
     try {
-      const res = await fetch('/api/admin/feature-flags', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/admin/feature-flags", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newFlag),
       });
 
-      if (!res.ok) throw new Error('Failed to create');
+      if (!res.ok) throw new Error("Failed to create");
 
-      toast.success('Feature flag created');
-      setNewFlag({ name: '', description: '', enabled: false, rolloutPercentage: 0 });
+      toast.success("Feature flag created");
+      setNewFlag({ name: "", description: "", enabled: false, rolloutPercentage: 0 });
       setShowCreateForm(false);
       fetchFlags();
     } catch {
-      toast.error('Failed to create feature flag');
+      toast.error("Failed to create feature flag");
     }
   };
 
@@ -132,15 +126,15 @@ export default function FeatureFlagsDbPage() {
 
     try {
       const res = await fetch(`/api/admin/feature-flags?id=${flagToDelete}`, {
-        method: 'DELETE',
+        method: "DELETE",
       });
 
-      if (!res.ok) throw new Error('Failed to delete');
+      if (!res.ok) throw new Error("Failed to delete");
 
-      toast.success('Feature flag deleted');
+      toast.success("Feature flag deleted");
       fetchFlags();
     } catch {
-      toast.error('Failed to delete feature flag');
+      toast.error("Failed to delete feature flag");
     } finally {
       setFlagToDelete(null);
     }
@@ -154,7 +148,7 @@ export default function FeatureFlagsDbPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Feature Flags (Database)</h1>
+          <h1 className="text-4xl font-semibold tracking-tight">Feature Flags (Database)</h1>
           <p className="text-muted-foreground">Persistent feature flags with rollout control</p>
         </div>
         <Button onClick={() => setShowCreateForm(!showCreateForm)}>
@@ -164,13 +158,15 @@ export default function FeatureFlagsDbPage() {
       </div>
 
       {showCreateForm && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Create Feature Flag</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
+        <TerminalCard tone="primary">
+          <TerminalCardHeader
+            code="0x00"
+            title="CREATE_FEATURE_FLAG"
+            icon={<Plus className="h-4 w-4" />}
+          />
+          <TerminalCardContent className="space-y-4">
             <div>
-              <Label>{formatLabel('Flag Name')}</Label>
+              <Label>{formatLabel("Flag Name")}</Label>
               <Input
                 value={newFlag.name}
                 onChange={(e) => setNewFlag({ ...newFlag, name: e.target.value })}
@@ -178,7 +174,7 @@ export default function FeatureFlagsDbPage() {
               />
             </div>
             <div>
-              <Label>{formatLabel('Description')}</Label>
+              <Label>{formatLabel("Description")}</Label>
               <Textarea
                 value={newFlag.description}
                 onChange={(e) => setNewFlag({ ...newFlag, description: e.target.value })}
@@ -190,7 +186,7 @@ export default function FeatureFlagsDbPage() {
                 checked={newFlag.enabled}
                 onCheckedChange={(checked) => setNewFlag({ ...newFlag, enabled: checked })}
               />
-              <Label>{formatLabel('Enable immediately')}</Label>
+              <Label>{formatLabel("Enable immediately")}</Label>
             </div>
             <div className="flex gap-2">
               <Button onClick={handleCreate}>&gt; CREATE</Button>
@@ -198,48 +194,49 @@ export default function FeatureFlagsDbPage() {
                 &gt; CANCEL
               </Button>
             </div>
-          </CardContent>
-        </Card>
+          </TerminalCardContent>
+        </TerminalCard>
       )}
 
       <div className="grid gap-4">
         {flags.map((flag) => (
-          <Card key={flag.id}>
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <div className="space-y-1">
-                  <CardTitle className="text-lg">{flag.name}</CardTitle>
-                  {flag.description && <CardDescription>{flag.description}</CardDescription>}
+          <TerminalCard key={flag.id} tone={flag.enabled ? "success" : "neutral"}>
+            <div className="border-border flex items-center justify-between border-b px-4 py-2">
+              <TerminalCardHeader
+                code={`0x${flags.indexOf(flag) + 1}`}
+                title={flag.name.toUpperCase()}
+                meta={flag.enabled ? "Enabled" : "Disabled"}
+                icon={<Flag className="h-4 w-4" />}
+                className="border-0 p-0"
+              />
+              <div className="flex items-center gap-4">
+                <div className="flex items-center space-x-2">
+                  <Switch
+                    id={`toggle-${flag.id}`}
+                    checked={flag.enabled}
+                    onCheckedChange={(checked) => handleToggle(flag.id, checked)}
+                  />
+                  <Label htmlFor={`toggle-${flag.id}`} className="cursor-pointer">
+                    {formatLabel(flag.enabled ? "Enabled" : "Disabled")}
+                  </Label>
                 </div>
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center space-x-2">
-                    <Switch
-                      id={`toggle-${flag.id}`}
-                      checked={flag.enabled}
-                      onCheckedChange={(checked) => handleToggle(flag.id, checked)}
-                    />
-                    <Label htmlFor={`toggle-${flag.id}`} className="cursor-pointer">
-                      {formatLabel(flag.enabled ? 'Enabled' : 'Disabled')}
-                    </Label>
-                  </div>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => {
-                      setFlagToDelete(flag.id);
-                      setDeleteDialogOpen(true);
-                    }}
-                    aria-label="Delete feature flag"
-                  >
-                    <Trash2 className="h-4 w-4 text-destructive" aria-hidden="true" />
-                  </Button>
-                </div>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => {
+                    setFlagToDelete(flag.id);
+                    setDeleteDialogOpen(true);
+                  }}
+                  aria-label="Delete feature flag"
+                >
+                  <Trash2 className="text-destructive h-4 w-4" aria-hidden="true" />
+                </Button>
               </div>
-            </CardHeader>
-            <CardContent>
+            </div>
+            <TerminalCardContent>
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label>{formatLabel('Rollout Percentage')}</Label>
+                  <Label>{formatLabel("Rollout Percentage")}</Label>
                   <Badge variant="outline">{flag.rolloutPercentage}%</Badge>
                 </div>
                 <Slider
@@ -250,16 +247,16 @@ export default function FeatureFlagsDbPage() {
                   disabled={!flag.enabled}
                 />
               </div>
-            </CardContent>
-          </Card>
+            </TerminalCardContent>
+          </TerminalCard>
         ))}
 
         {flags.length === 0 && (
-          <Card>
-            <CardContent className="flex h-48 items-center justify-center text-muted-foreground">
+          <TerminalCard tone="neutral">
+            <TerminalCardContent className="text-muted-foreground flex h-48 items-center justify-center">
               No feature flags created yet. Click "New Flag" to create one.
-            </CardContent>
-          </Card>
+            </TerminalCardContent>
+          </TerminalCard>
         )}
       </div>
 
@@ -269,7 +266,8 @@ export default function FeatureFlagsDbPage() {
           <AlertDialogHeader>
             <AlertDialogTitle>Delete Feature Flag?</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete the feature flag and remove it from all configurations.
+              This action cannot be undone. This will permanently delete the feature flag and remove
+              it from all configurations.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

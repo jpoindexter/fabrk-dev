@@ -19,7 +19,7 @@
 import * as React from "react";
 import { Upload, X, Image as ImageIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { Button } from "@/components/ui/button";
 
 export interface ImageUploaderProps {
@@ -288,7 +288,7 @@ export function ImageUploader({
               </button>
 
               {/* File Info Overlay */}
-              <div className="bg-overlay absolute right-0 bottom-0 left-0 px-2 py-1.5 opacity-0 transition-opacity group-hover:opacity-100">
+              <div className="bg-overlay absolute right-0 bottom-0 left-0 px-2 py-2 opacity-0 transition-opacity group-hover:opacity-100">
                 <p className="text-foreground truncate text-xs font-medium">{file.name}</p>
                 <p className="text-foreground/80 text-xs">{formatFileSize(file.size)}</p>
               </div>
@@ -303,11 +303,11 @@ export function ImageUploader({
           onClick={handleUpload}
           disabled={disabled || uploading}
           loading={uploading}
-          loadingText="Uploading..."
+          loadingText="> UPLOADING..."
           className="w-full"
         >
           <Upload className="mr-2 h-4 w-4" />
-          Upload {files.length} {files.length === 1 ? "file" : "files"}
+          &gt; UPLOAD_FILES
         </Button>
       )}
     </div>

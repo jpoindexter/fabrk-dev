@@ -3,11 +3,10 @@
  * Displays resource consumption metrics with progress bars
  */
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Activity } from "lucide-react";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import type { Usage } from "./types";
-import { mode } from "@/lib/design-system";
-import { cn } from "@/lib/utils";
 
 interface UsageStatsCardProps {
   usage: Usage;
@@ -15,12 +14,13 @@ interface UsageStatsCardProps {
 
 export function UsageStatsCard({ usage }: UsageStatsCardProps) {
   return (
-    <Card className={cn("border-border border", mode.radius)}>
-      <CardHeader>
-        <CardTitle>Usage This Month</CardTitle>
-        <CardDescription>Track your organization's resource consumption</CardDescription>
-      </CardHeader>
-      <CardContent>
+    <TerminalCard>
+      <TerminalCardHeader
+        code="0x01"
+        title="USAGE_THIS_MONTH"
+        icon={<Activity className="h-4 w-4" />}
+      />
+      <TerminalCardContent padding="lg">
         <div className="space-y-6">
           <div>
             <div className="mb-2 flex items-center justify-between">
@@ -55,7 +55,7 @@ export function UsageStatsCard({ usage }: UsageStatsCardProps) {
             />
           </div>
         </div>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

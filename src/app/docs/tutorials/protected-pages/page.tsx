@@ -1,11 +1,11 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
 import { Shield, Lock, User, Eye } from "lucide-react";
 
 export const metadata = {
   title: "Protected Pages - Fabrk Docs",
-  description: "Secure pages with authentication. Middleware protection, role-based access, and redirect patterns.",
+  description:
+    "Secure pages with authentication. Middleware protection, role-based access, and redirect patterns.",
 };
 
 export default function ProtectedPagesTutorialPage() {
@@ -130,7 +130,7 @@ export function NavBar() {
       {session ? (
         <>
           <Link href="/dashboard">Dashboard</Link>
-          <Link href="/settings">Settings</Link>
+          <Link href="/profile">Profile</Link>
         </>
       ) : (
         <>
@@ -150,14 +150,23 @@ export function NavBar() {
       {/* Protected Routes */}
       <DocsSection title="Auto-Protected Routes">
         <DocsCard title="PROTECTED_ROUTES">
-          <p className={docsTypography.body}>
-            Fabrk protects these routes via middleware. Unauthenticated users are automatically redirected to the home page:
+          <p className="mb-4">
+            Fabrk protects these routes via middleware. Unauthenticated users are automatically
+            redirected to the home page:
           </p>
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed mt-2">
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">/dashboard/*</code></div>
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">/admin/*</code></div>
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">/billing/*</code></div>
-            <div>└─ <code className="bg-muted px-1 font-mono text-xs">/settings/*</code></div>
+          <div className="space-y-1">
+            <div>
+              ├─ <code className="bg-muted px-1">/dashboard/*</code>
+            </div>
+            <div>
+              ├─ <code className="bg-muted px-1">/admin/*</code>
+            </div>
+            <div>
+              ├─ <code className="bg-muted px-1">/billing/*</code>
+            </div>
+            <div>
+              └─ <code className="bg-muted px-1">/settings/*</code>
+            </div>
           </div>
         </DocsCard>
       </DocsSection>
@@ -165,10 +174,16 @@ export function NavBar() {
       {/* User Roles */}
       <DocsSection title="Available Roles">
         <DocsCard title="USER_ROLES">
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">USER</code> - Default role for all users</div>
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">ADMIN</code> - Administrative access</div>
-            <div>└─ <code className="bg-muted px-1 font-mono text-xs">SUPER_ADMIN</code> - Full system access</div>
+          <div className="space-y-1">
+            <div>
+              ├─ <code className="bg-muted px-1">USER</code> - Default role for all users
+            </div>
+            <div>
+              ├─ <code className="bg-muted px-1">ADMIN</code> - Administrative access
+            </div>
+            <div>
+              └─ <code className="bg-muted px-1">SUPER_ADMIN</code> - Full system access
+            </div>
           </div>
         </DocsCard>
       </DocsSection>

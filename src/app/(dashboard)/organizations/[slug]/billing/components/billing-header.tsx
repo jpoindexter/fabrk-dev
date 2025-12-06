@@ -5,7 +5,7 @@
 
 import { CreditCard } from "lucide-react";
 import type { Organization } from "./types";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface BillingHeaderProps {
@@ -20,7 +20,7 @@ export function BillingHeader({ organization }: BillingHeaderProps) {
           <CreditCard className="text-primary-foreground h-6 w-6" />
         </div>
         <div>
-          <h1 className="text-3xl font-bold">Billing & Subscription</h1>
+          <h1 className="text-4xl font-semibold">Billing & Subscription</h1>
           <p className="text-muted-foreground">Manage billing for {organization.name}</p>
         </div>
       </div>

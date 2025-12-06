@@ -1,0 +1,79 @@
+{
+  "metadata": {
+    "generated": "2025-12-05",
+    "lastUpdated": "2025-12-05",
+    "source": "CONSISTENCY LOCKDOWN AUDIT",
+    "totalViolations": 0,
+    "fixedViolations": 8,
+    "gridSystem": "8-point (with 4px allowed)",
+    "allowedValues": ["0", "px", "0.5", "1", "2", "3", "4", "5", "6", "8", "10", "12", "16", "20", "24", "32", "40", "48", "64"]
+  },
+  "violations": [],
+  "fixed": [
+    {
+      "id": "SPACE-001",
+      "file": "src/app/(dashboard)/admin/layout.tsx",
+      "line": 38,
+      "fix": "Changed top-14 (56px) to top-16 (64px)",
+      "fixedDate": "2025-12-05"
+    },
+    {
+      "id": "SPACE-002",
+      "file": "src/app/(dashboard)/admin/layout.tsx",
+      "line": 38,
+      "fix": "Changed calc(100vh-3.5rem) to calc(100vh-4rem)",
+      "fixedDate": "2025-12-05"
+    },
+    {
+      "id": "SPACE-003",
+      "file": "src/components/ui/sidebar.tsx",
+      "line": 67,
+      "fix": "Changed 12px multiplier to 16px multiplier for 8-point grid compliance",
+      "fixedDate": "2025-12-05"
+    },
+    {
+      "id": "SPACE-004",
+      "file": "src/components/ui/heatmap.tsx",
+      "line": 27,
+      "fix": "Changed default gap=2 to gap=4 for 8-point grid compliance",
+      "fixedDate": "2025-12-05"
+    },
+    {
+      "id": "SPACE-005",
+      "file": "src/components/ui/heatmap.tsx",
+      "line": 70,
+      "fix": "Covered by SPACE-004 - gap prop default change",
+      "fixedDate": "2025-12-05"
+    },
+    {
+      "id": "SPACE-006",
+      "file": "src/components/ui/heatmap.tsx",
+      "line": 85,
+      "fix": "Covered by SPACE-004 - gap prop default change",
+      "fixedDate": "2025-12-05"
+    },
+    {
+      "id": "SPACE-007",
+      "file": "src/components/ui/heatmap.tsx",
+      "line": 93,
+      "fix": "Covered by SPACE-004 - gap prop default change",
+      "fixedDate": "2025-12-05"
+    },
+    {
+      "id": "SPACE-008",
+      "file": "src/components/ui/field.tsx",
+      "line": 177,
+      "fix": "Changed -mt-1.5 (6px) to -mt-2 (8px) for 8-point grid compliance",
+      "fixedDate": "2025-12-05"
+    }
+  ],
+  "summary": {
+    "byFile": {
+      "admin/layout.tsx": "0 (2 fixed)",
+      "sidebar.tsx": "0 (1 fixed)",
+      "heatmap.tsx": "0 (4 fixed)",
+      "field.tsx": "0 (1 fixed)"
+    },
+    "status": "ALL COMPLIANT"
+  }
+}

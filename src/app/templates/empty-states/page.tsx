@@ -8,11 +8,11 @@
 
 import { Button } from "@/components/ui/button";
 import {
-  StyledCard,
-  StyledCardHeader,
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
   TemplatePageHeader,
   FeaturesCard,
-  CodeOutput,
 } from "@/components/ui/card";
 import {
   FileQuestion,
@@ -28,7 +28,7 @@ import {
   Bell,
   BarChart,
 } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 const emptyStates = [
@@ -168,24 +168,29 @@ export default function EmptyStatesTemplate() {
                     </div>
 
                     {/* Terminal Output */}
-                    <CodeOutput className="mt-4">
-                      {state.terminal.map((line, idx) => (
-                        <div
-                          key={idx}
-                          className={
-                            line.startsWith("ERROR")
-                              ? "text-destructive"
-                              : line.startsWith("$")
-                                ? "text-success"
-                                : line.startsWith("HINT")
-                                  ? "text-warning"
-                                  : ""
-                          }
-                        >
-                          {line}
+                    <TerminalCard className="mt-4">
+                      <TerminalCardHeader code="0x00" title="OUTPUT" />
+                      <TerminalCardContent>
+                        <div className="space-y-0.5 text-xs">
+                          {state.terminal.map((line, idx) => (
+                            <div
+                              key={idx}
+                              className={
+                                line.startsWith("ERROR")
+                                  ? "text-destructive"
+                                  : line.startsWith("$")
+                                    ? "text-success"
+                                    : line.startsWith("HINT")
+                                      ? "text-warning"
+                                      : ""
+                              }
+                            >
+                              {line}
+                            </div>
+                          ))}
                         </div>
-                      ))}
-                    </CodeOutput>
+                      </TerminalCardContent>
+                    </TerminalCard>
 
                     {/* Actions - pushed to bottom */}
                     <div className="mt-auto flex items-center justify-center gap-2 pt-4">
@@ -211,8 +216,8 @@ export default function EmptyStatesTemplate() {
         </div>
 
         {/* Use Cases Reference */}
-        <StyledCard>
-          <StyledCardHeader code="0x08" title="USE_CASES" />
+        <TerminalCard>
+          <TerminalCardHeader code="0x08" title="USE_CASES" />
           <div className="p-4">
             <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
               [WHEN_TO_USE]:
@@ -242,7 +247,7 @@ export default function EmptyStatesTemplate() {
               </div>
             </div>
           </div>
-        </StyledCard>
+        </TerminalCard>
 
         {/* Features Card */}
         <FeaturesCard

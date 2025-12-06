@@ -3,7 +3,7 @@
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { formatLabel } from "@/lib/design-system";
+import { formatLabel } from "@/design-system";
 
 export default function TextareaPage() {
   return (
@@ -54,9 +54,7 @@ export default function TextareaPage() {
           title: "With Default Value",
           description: "Textarea with pre-filled content.",
           preview: (
-            <Textarea
-              defaultValue="This is some default text that appears in the textarea when it first renders."
-            />
+            <Textarea defaultValue="This is some default text that appears in the textarea when it first renders." />
           ),
           code: `<Textarea
   defaultValue="This is some default text that appears in the textarea when it first renders."

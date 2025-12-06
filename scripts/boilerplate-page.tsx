@@ -7,7 +7,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import Link from "next/link";
 
 export default function HomePage() {
@@ -34,13 +34,9 @@ export default function HomePage() {
       {/* Quick Links */}
       <section className="container mx-auto max-w-4xl px-6 py-12">
         <div className="grid gap-6 md:grid-cols-3">
-          <Card>
-            <CardHeader>
-              <CardTitle className="font-mono text-sm">
-                [01] TEMPLATES
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
+          <TerminalCard>
+            <TerminalCardHeader code="0x01" title="TEMPLATES" />
+            <TerminalCardContent>
               <p className="text-muted-foreground">
                 87 production-ready components and page templates.
               </p>
@@ -50,16 +46,12 @@ export default function HomePage() {
               >
                 Browse templates &rarr;
               </Link>
-            </CardContent>
-          </Card>
+            </TerminalCardContent>
+          </TerminalCard>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="font-mono text-sm">
-                [02] DASHBOARD
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
+          <TerminalCard>
+            <TerminalCardHeader code="0x02" title="DASHBOARD" />
+            <TerminalCardContent>
               <p className="text-muted-foreground">
                 Full dashboard with auth, billing, settings, and more.
               </p>
@@ -69,14 +61,12 @@ export default function HomePage() {
               >
                 View dashboard &rarr;
               </Link>
-            </CardContent>
-          </Card>
+            </TerminalCardContent>
+          </TerminalCard>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="font-mono text-sm">[03] DOCS</CardTitle>
-            </CardHeader>
-            <CardContent>
+          <TerminalCard>
+            <TerminalCardHeader code="0x03" title="DOCS" />
+            <TerminalCardContent>
               <p className="text-muted-foreground">
                 Complete documentation for customization and deployment.
               </p>
@@ -86,8 +76,8 @@ export default function HomePage() {
               >
                 Read docs &rarr;
               </Link>
-            </CardContent>
-          </Card>
+            </TerminalCardContent>
+          </TerminalCard>
         </div>
       </section>
 
