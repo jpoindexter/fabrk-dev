@@ -20,7 +20,11 @@ export function QualitySection() {
           transition={{ duration: 0.6 }}
           className="mb-12 text-center"
         >
-          <span className="text-muted-foreground text-xs">[0x20]</span>
+          <div className="mb-4">
+            <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 text-xs">
+              [ [0x20] PRODUCTION_QUALITY ]
+            </span>
+          </div>
           <h2 className="mb-4 text-2xl font-semibold tracking-tight">PRODUCTION_QUALITY</h2>
           <p className="text-muted-foreground text-sm">
             Not just boilerplate. Enterprise-grade code with comprehensive testing.

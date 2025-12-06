@@ -22,7 +22,11 @@ export function FeaturesCTA() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <span className="text-muted-foreground text-xs">[0x30]</span>
+          <div className="mb-4">
+            <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 text-xs">
+              [ [0x30] READY_TO_SHIP ]
+            </span>
+          </div>
           <h2 className="mb-4 text-4xl font-semibold tracking-tight">READY_TO_SHIP?</h2>
           <p className="text-muted-foreground mx-auto mb-8 max-w-xl text-sm">
             Get Fabrk and launch your SaaS in days, not months. All features included, fully tested,
