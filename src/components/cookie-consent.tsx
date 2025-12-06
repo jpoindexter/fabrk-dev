@@ -264,10 +264,10 @@ export function CookieConsent() {
                 value={activeTab}
                 onValueChange={setActiveTab}
               >
-                {/* Content */}
-                <div className="max-h-[60vh] overflow-y-auto">
-                  <StyledTabsContent value="consent" className="mt-0">
-                    <div className="border-border border border-t-0 p-6">
+                {/* Content - border outside scroll container so it's always visible */}
+                <StyledTabsContent value="consent" className="mt-0">
+                  <div className="border-border border border-t-0">
+                    <div className="max-h-[60vh] overflow-y-auto p-6">
                       <ConsentTabContent
                         preferences={preferences}
                         setPreferences={setPreferences}
@@ -276,21 +276,25 @@ export function CookieConsent() {
                         rejectAll={rejectAll}
                       />
                     </div>
-                  </StyledTabsContent>
-                  <StyledTabsContent value="details" className="mt-0">
-                    <div className="border-border border border-t-0 p-6">
+                  </div>
+                </StyledTabsContent>
+                <StyledTabsContent value="details" className="mt-0">
+                  <div className="border-border border border-t-0">
+                    <div className="max-h-[60vh] overflow-y-auto p-6">
                       <DetailsTabContent
                         preferences={preferences}
                         setPreferences={setPreferences}
                       />
                     </div>
-                  </StyledTabsContent>
-                  <StyledTabsContent value="about" className="mt-0">
-                    <div className="border-border border border-t-0 p-6">
+                  </div>
+                </StyledTabsContent>
+                <StyledTabsContent value="about" className="mt-0">
+                  <div className="border-border border border-t-0">
+                    <div className="max-h-[60vh] overflow-y-auto p-6">
                       <AboutTabContent />
                     </div>
-                  </StyledTabsContent>
-                </div>
+                  </div>
+                </StyledTabsContent>
               </StyledTabs>
             </div>
           </div>
