@@ -10,13 +10,11 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import {
-  StyledCard,
-  StyledCardHeader,
-  TemplatePageHeader,
-  FeaturesCard,
   TerminalCard,
   TerminalCardHeader,
   TerminalCardContent,
+  TemplatePageHeader,
+  FeaturesCard,
 } from "@/components/ui/card";
 import {
   FileQuestion,
@@ -146,8 +144,8 @@ export default function ErrorPagesTemplate() {
             };
             return (
               <StyledTabsContent key={error.id} value={error.id}>
-                <StyledCard>
-                  <StyledCardHeader
+                <TerminalCard>
+                  <TerminalCardHeader
                     code={codeMap[error.id] || "0x00"}
                     title={`ERROR_${error.code}`}
                   />
@@ -265,7 +263,7 @@ export default function ErrorPagesTemplate() {
                       </div>
                     </div>
                   </div>
-                </StyledCard>
+                </TerminalCard>
               </StyledTabsContent>
             );
           })}
@@ -282,8 +280,8 @@ export default function ErrorPagesTemplate() {
               "503": "0x07",
             };
             return (
-              <StyledCard key={error.id}>
-                <StyledCardHeader
+              <TerminalCard key={error.id}>
+                <TerminalCardHeader
                   code={exampleCodeMap[error.id] || "0x04"}
                   title={`${error.code}_EXAMPLE`}
                 />
@@ -309,7 +307,7 @@ export default function ErrorPagesTemplate() {
                     {error.id === "503" && "Planned downtime, updates"}
                   </div>
                 </div>
-              </StyledCard>
+              </TerminalCard>
             );
           })}
         </div>

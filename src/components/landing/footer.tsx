@@ -18,6 +18,12 @@ import {
 } from "simple-icons";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
+import {
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+  TerminalBadge,
+} from "@/components/ui/card";
 
 const techStack = [
   { name: "NEXT.JS", path: siNextdotjs.path },
@@ -59,11 +65,7 @@ export function Footer() {
           <div className="grid gap-8 lg:grid-cols-[1fr_auto]">
             {/* Left: Logo + Tagline */}
             <div>
-              <div className="border-border bg-card mb-4 inline-block border px-4 py-1">
-                <span className="text-muted-foreground font-mono text-xs">
-                  [ [0x71] SYSTEM_INFO ]
-                </span>
-              </div>
+              <TerminalBadge code="0x71" label="SYSTEM_INFO" className="mb-4" />
               <Link
                 href="/"
                 className="mb-4 flex items-center gap-2 font-mono transition-opacity hover:opacity-80"
@@ -78,84 +80,81 @@ export function Footer() {
             </div>
 
             {/* Right: Nav Links in Terminal Box */}
-            <div className="border-border bg-card border">
-              <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-                <span className="text-muted-foreground font-mono text-xs">
-                  [ [0x72] nav_links.exe │ PID:1024 ]
-                </span>
-              </div>
+            <TerminalCard>
+              <TerminalCardHeader title="nav_links.exe │ PID:1024" code="0x72" />
+              <TerminalCardContent>
+                <div className="divide-border grid grid-cols-3 divide-x">
+                  {/* Product */}
+                  <div className="p-4">
+                    <div className="text-muted-foreground mb-4 font-mono text-xs">[ PRODUCT ]</div>
+                    <nav aria-label="Product links" className="flex flex-col gap-2">
+                      <Link
+                        href="#features"
+                        className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
+                      >
+                        &gt; FEATURES
+                      </Link>
+                      <Link
+                        href="#pricing"
+                        className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
+                      >
+                        &gt; PRICING
+                      </Link>
+                      <Link
+                        href="/docs"
+                        className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
+                      >
+                        &gt; DOCS
+                      </Link>
+                    </nav>
+                  </div>
 
-              <div className="divide-border grid grid-cols-3 divide-x">
-                {/* Product */}
-                <div className="p-4">
-                  <div className="text-muted-foreground mb-4 font-mono text-xs">[ PRODUCT ]</div>
-                  <nav aria-label="Product links" className="flex flex-col gap-2">
-                    <Link
-                      href="#features"
-                      className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
-                    >
-                      &gt; FEATURES
-                    </Link>
-                    <Link
-                      href="#pricing"
-                      className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
-                    >
-                      &gt; PRICING
-                    </Link>
-                    <Link
-                      href="/docs"
-                      className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
-                    >
-                      &gt; DOCS
-                    </Link>
-                  </nav>
-                </div>
+                  {/* Company */}
+                  <div className="p-4">
+                    <div className="text-muted-foreground mb-4 font-mono text-xs">[ COMPANY ]</div>
+                    <nav aria-label="Company links" className="flex flex-col gap-2">
+                      <Link
+                        href="/about"
+                        className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
+                      >
+                        &gt; ABOUT
+                      </Link>
+                      <Link
+                        href="/contact"
+                        className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
+                      >
+                        &gt; CONTACT
+                      </Link>
+                    </nav>
+                  </div>
 
-                {/* Company */}
-                <div className="p-4">
-                  <div className="text-muted-foreground mb-4 font-mono text-xs">[ COMPANY ]</div>
-                  <nav aria-label="Company links" className="flex flex-col gap-2">
-                    <Link
-                      href="/about"
-                      className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
-                    >
-                      &gt; ABOUT
-                    </Link>
-                    <Link
-                      href="/contact"
-                      className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
-                    >
-                      &gt; CONTACT
-                    </Link>
-                  </nav>
+                  {/* Legal */}
+                  <div className="p-4">
+                    <div className="text-muted-foreground mb-4 font-mono text-xs">[ LEGAL ]</div>
+                    <nav aria-label="Legal links" className="flex flex-col gap-2">
+                      <Link
+                        href="/terms"
+                        className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
+                      >
+                        &gt; TERMS
+                      </Link>
+                      <Link
+                        href="/privacy"
+                        className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
+                      >
+                        &gt; PRIVACY
+                      </Link>
+                      <Link
+                        href="/cookies"
+                        className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
+                      >
+                        &gt; COOKIES
+                      </Link>
+                    </nav>
+                  </div>
                 </div>
-
-                {/* Legal */}
-                <div className="p-4">
-                  <div className="text-muted-foreground mb-4 font-mono text-xs">[ LEGAL ]</div>
-                  <nav aria-label="Legal links" className="flex flex-col gap-2">
-                    <Link
-                      href="/terms"
-                      className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
-                    >
-                      &gt; TERMS
-                    </Link>
-                    <Link
-                      href="/privacy"
-                      className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
-                    >
-                      &gt; PRIVACY
-                    </Link>
-                    <Link
-                      href="/cookies"
-                      className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
-                    >
-                      &gt; COOKIES
-                    </Link>
-                  </nav>
-                </div>
-              </div>
-            </div>
+              </TerminalCardContent>
+            </TerminalCard>
           </div>
         </div>
       </div>

@@ -213,7 +213,7 @@ export default function ComponentsOverviewPage() {
           description: "Import components from @/components/ui/",
           code: `// Import any component from @/components/ui/
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";`,
           language: "typescript",
@@ -233,7 +233,9 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";`,
                 className="border-border bg-card hover:border-primary/50 hover:bg-primary/5 block border p-4 transition-colors"
               >
                 <div className="font-mono text-sm font-medium uppercase">{component.name}</div>
-                <div className="mt-1 font-mono text-xs text-muted-foreground">{component.description}</div>
+                <div className="text-muted-foreground mt-1 font-mono text-xs">
+                  {component.description}
+                </div>
               </Link>
             ))}
           </div>

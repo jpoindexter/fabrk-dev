@@ -6,21 +6,9 @@
 "use client";
 
 import Link from "next/link";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import {
-  Settings,
-  Shield,
-  CreditCard,
-  FileText,
-  Users,
-} from "lucide-react";
+import { Settings, Shield, CreditCard, FileText, Users } from "lucide-react";
 
 interface QuickActionsProps {
   isAdmin?: boolean;
@@ -28,14 +16,9 @@ interface QuickActionsProps {
 
 export function QuickActions({ isAdmin }: QuickActionsProps) {
   return (
-    <Card className="col-span-3">
-      <CardHeader>
-        <CardTitle as="h2">Quick Actions</CardTitle>
-        <CardDescription>
-          Common tasks and shortcuts
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-2">
+    <TerminalCard className="col-span-3">
+      <TerminalCardHeader code="0x00" title="QUICK_ACTIONS" meta="Common tasks and shortcuts" />
+      <TerminalCardContent className="space-y-2">
         <Link href="/profile">
           <Button variant="outline" className="w-full justify-start">
             <Settings className="mr-2 h-4 w-4" />
@@ -69,7 +52,7 @@ export function QuickActions({ isAdmin }: QuickActionsProps) {
             </Button>
           </Link>
         )}
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

@@ -3,15 +3,15 @@
  * Features Card - Template features documentation
  */
 
-import { StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function FeaturesCard() {
   return (
-    <div className="border-border bg-card border">
-      <StyledCardHeader code="0x00" title="FEATURES" />
-      <div className="p-4">
+    <TerminalCard>
+      <TerminalCardHeader code="0x01" title="FEATURES" />
+      <TerminalCardContent padding="md">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [TEMPLATE_FEATURES]:
         </div>
@@ -41,7 +41,7 @@ export function FeaturesCard() {
         <div className={cn(mode.font, "text-muted-foreground mt-4 text-xs")}>
           [NOTE]: Connect to your search backend (Algolia, Elasticsearch, etc.) for real results.
         </div>
-      </div>
-    </div>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -110,13 +110,11 @@ export function ApiKeysSection() {
   }
 
   return (
-    <Card>
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <div>
-            <CardTitle>API Keys</CardTitle>
-            <CardDescription>Generate and manage API keys for your applications.</CardDescription>
-          </div>
+    <TerminalCard tone="neutral">
+      <TerminalCardHeader
+        code="0x09"
+        title="API_KEYS"
+        meta={
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
               <Button>&gt; GENERATE_NEW_KEY</Button>
@@ -157,9 +155,9 @@ export function ApiKeysSection() {
               </DialogFooter>
             </DialogContent>
           </Dialog>
-        </div>
-      </CardHeader>
-      <CardContent>
+        }
+      />
+      <TerminalCardContent>
         {apiKeys.length === 0 ? (
           <div className={cn("border border-dashed p-8 text-center", mode.radius)}>
             <p className="text-muted-foreground mb-4 text-sm">
@@ -204,7 +202,7 @@ export function ApiKeysSection() {
             ))}
           </div>
         )}
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

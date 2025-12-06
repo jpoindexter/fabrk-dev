@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -68,14 +68,9 @@ export function DataExport() {
   };
 
   return (
-    <Card className={mode.radius}>
-      <CardHeader>
-        <CardTitle className={cn(mode.font, "text-xs")}>[EXPORT_DATA]:</CardTitle>
-        <CardDescription className={cn(mode.font, "text-xs")}>
-          Download a copy of your account data in your preferred format.
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-6">
+    <TerminalCard tone="neutral">
+      <TerminalCardHeader code="0x02" title="EXPORT_DATA" />
+      <TerminalCardContent className="space-y-6">
         <div className="space-y-4">
           <Label htmlFor="format-select" className={cn(mode.font, "text-xs")}>
             [FORMAT]:
@@ -181,8 +176,8 @@ export function DataExport() {
         <p className={cn(mode.font, "text-muted-foreground pt-2 text-xs")}>
           Your data is encrypted and will be deleted from our servers after download.
         </p>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }
 

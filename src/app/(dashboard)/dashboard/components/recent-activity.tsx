@@ -5,7 +5,7 @@
 
 "use client";
 
-import { Card, CardContent, StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Activity, DollarSign, Upload, Settings, Shield, Clock } from "lucide-react";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
@@ -51,9 +51,9 @@ function formatTimestamp(date: Date) {
 
 export function RecentActivity({ activities }: RecentActivityProps) {
   return (
-    <Card className="col-span-4">
-      <StyledCardHeader title="RECENT_ACTIVITY" />
-      <CardContent>
+    <TerminalCard className="col-span-4">
+      <TerminalCardHeader code="0x00" title="RECENT_ACTIVITY" />
+      <TerminalCardContent>
         <p className="text-muted-foreground mb-4 font-mono text-xs">
           Your recent account activity and actions
         </p>
@@ -79,7 +79,7 @@ export function RecentActivity({ activities }: RecentActivityProps) {
             );
           })}
         </div>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

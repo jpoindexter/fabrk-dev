@@ -4,7 +4,7 @@
 
 import { TabsContent } from "@/components/ui/tabs";
 import type { EmailTemplate } from "./email-template-data";
-import { StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
@@ -48,12 +48,12 @@ interface EmailPreviewProps {
 export function EmailPreview({ template, primaryColor }: EmailPreviewProps) {
   return (
     <TabsContent value={template.id} className="mt-6">
-      <div className="border-border bg-card border">
+      <TerminalCard>
         {/* Tab Header */}
-        <StyledCardHeader code="0x00" title="EMAIL_PREVIEW" />
+        <TerminalCardHeader code="0x00" title="EMAIL_PREVIEW" />
 
         {/* Content Area */}
-        <div className="p-6">
+        <TerminalCardContent padding="lg">
           <div className="mb-6 flex items-center justify-between">
             <div>
               <div className="mb-1 flex items-center gap-2">
@@ -114,8 +114,8 @@ export function EmailPreview({ template, primaryColor }: EmailPreviewProps) {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </TerminalCardContent>
+      </TerminalCard>
     </TabsContent>
   );
 }

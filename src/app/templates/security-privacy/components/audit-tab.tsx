@@ -3,8 +3,8 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { StyledCardHeader } from "@/components/ui/card";
-import { Download } from "lucide-react";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Download, Activity } from "lucide-react";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
@@ -22,9 +22,9 @@ interface AuditTabProps {
 
 export function AuditTab({ auditLog }: AuditTabProps) {
   return (
-    <div className="border-border bg-card border">
-      <StyledCardHeader code="0x00" title="AUDIT" />
-      <div className="p-4">
+    <TerminalCard tone="neutral">
+      <TerminalCardHeader code="0x09" title="AUDIT" icon={<Activity className="h-4 w-4" />} />
+      <TerminalCardContent padding="md">
         <div className="mb-4 flex items-center justify-between">
           <div className={cn(mode.font, "text-muted-foreground text-xs")}>
             [SECURITY_AUDIT_LOG]: COUNT={auditLog.length}
@@ -70,7 +70,7 @@ export function AuditTab({ auditLog }: AuditTabProps) {
             ))}
           </div>
         </div>
-      </div>
-    </div>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

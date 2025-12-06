@@ -7,6 +7,12 @@
 
 import { motion } from "framer-motion";
 import { Clock, Shield, Layers, Gift, type LucideIcon } from "lucide-react";
+import {
+  TerminalBadge,
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+} from "@/components/ui/card";
 
 interface Reason {
   id: string;
@@ -58,9 +64,7 @@ export function WhyChooseSection() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <span className="border-border bg-card text-muted-foreground mb-4 inline-block border px-4 py-1 text-xs">
-                [ [0x05] WHY_FABRK ]
-              </span>
+              <TerminalBadge code="0x05" label="WHY_FABRK" className="mb-4" />
               <h2 className="mb-4 text-2xl font-semibold lg:text-4xl">WHY_CHOOSE_FABRK</h2>
             </motion.div>
             <motion.div
@@ -91,23 +95,23 @@ export function WhyChooseSection() {
                   y: -2,
                   transition: { duration: 0.2 },
                 }}
-                className="group border-border bg-card hover:border-primary/50 border transition-colors"
+                className="group"
               >
-                {/* Terminal Header */}
-                <div className="border-border flex items-center justify-between border-b px-4 py-2">
-                  <span className="text-muted-foreground font-mono text-xs">
-                    [ [{item.id}] {item.title.slice(0, 12)} ]
-                  </span>
-                  <item.icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
-                </div>
-
-                {/* Content */}
-                <div className="p-4">
-                  <div className="font-mono text-xs">
-                    <span className="text-muted-foreground">DESC: </span>
-                    <span className="text-foreground">{item.description}</span>
-                  </div>
-                </div>
+                <TerminalCard interactive size="auto">
+                  <TerminalCardHeader
+                    code={item.id}
+                    title={item.title.slice(0, 12)}
+                    icon={
+                      <item.icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
+                    }
+                  />
+                  <TerminalCardContent padding="md">
+                    <div className="font-mono text-xs">
+                      <span className="text-muted-foreground">DESC: </span>
+                      <span className="text-foreground">{item.description}</span>
+                    </div>
+                  </TerminalCardContent>
+                </TerminalCard>
               </motion.div>
             ))}
           </div>

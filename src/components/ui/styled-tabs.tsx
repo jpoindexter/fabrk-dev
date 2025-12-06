@@ -27,7 +27,7 @@
 
 import * as React from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { StyledCard, StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
 import { LucideIcon } from "lucide-react";
@@ -71,8 +71,8 @@ export function StyledTabs({
 
   return (
     <Tabs value={value} onValueChange={onValueChange} className={className}>
-      <StyledCard>
-        <StyledCardHeader code={code} title={title} />
+      <TerminalCard tone="neutral">
+        <TerminalCardHeader code={code} title={title} />
         <TabsList
           className={cn("h-auto w-full justify-start border-0 bg-transparent p-0", mode.radius)}
         >
@@ -101,7 +101,7 @@ export function StyledTabs({
             [SELECTED]: {descriptionText}
           </div>
         )}
-      </StyledCard>
+      </TerminalCard>
       {children}
     </Tabs>
   );

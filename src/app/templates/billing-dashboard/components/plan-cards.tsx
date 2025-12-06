@@ -4,7 +4,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
@@ -32,13 +32,14 @@ export function PlanCards({ plans }: PlanCardsProps) {
 
       {/* Plan Cards */}
       <div className="grid gap-4 md:grid-cols-3">
-        {plans.map((plan) => (
-          <div
+        {plans.map((plan, idx) => (
+          <TerminalCard
             key={plan.name}
-            className={`bg-card flex flex-col border ${plan.current ? "border-primary" : "border-border"}`}
+            tone={plan.current ? "primary" : "neutral"}
+            className="flex flex-col"
           >
-            <StyledCardHeader code="0x00" title={`${plan.name.toUpperCase()}_PLAN`} />
-            <div className="flex flex-1 flex-col p-4">
+            <TerminalCardHeader code={`0x0${idx}`} title={`${plan.name.toUpperCase()}_PLAN`} />
+            <TerminalCardContent padding="md" className="flex flex-1 flex-col">
               <div className="mb-4 flex items-center justify-between">
                 <div className={cn(mode.font, "text-muted-foreground text-xs")}>[{plan.name}]:</div>
                 {plan.current && (
@@ -79,26 +80,28 @@ export function PlanCards({ plans }: PlanCardsProps) {
               >
                 {plan.current ? "CURRENT_PLAN" : `> SELECT_${plan.name}`}
               </Button>
-            </div>
-          </div>
+            </TerminalCardContent>
+          </TerminalCard>
         ))}
       </div>
 
       {/* Custom Plan */}
-      <div className="border-border bg-card border p-4">
-        <div className={cn(mode.font, "text-muted-foreground mb-2 text-xs")}>[CUSTOM_PLAN]:</div>
-        <div className="flex items-center justify-between">
-          <div>
-            <div className={cn(mode.font, "text-sm")}>Need a custom plan?</div>
-            <div className={cn(mode.font, "text-muted-foreground text-xs")}>
-              Contact our sales team for custom pricing and features
+      <TerminalCard tone="neutral">
+        <TerminalCardContent padding="md">
+          <div className={cn(mode.font, "text-muted-foreground mb-2 text-xs")}>[CUSTOM_PLAN]:</div>
+          <div className="flex items-center justify-between">
+            <div>
+              <div className={cn(mode.font, "text-sm")}>Need a custom plan?</div>
+              <div className={cn(mode.font, "text-muted-foreground text-xs")}>
+                Contact our sales team for custom pricing and features
+              </div>
             </div>
+            <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, "text-xs")}>
+              &gt; CONTACT_SALES
+            </Button>
           </div>
-          <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, "text-xs")}>
-            &gt; CONTACT_SALES
-          </Button>
-        </div>
-      </div>
+        </TerminalCardContent>
+      </TerminalCard>
     </>
   );
 }

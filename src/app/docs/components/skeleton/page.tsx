@@ -2,7 +2,7 @@
 
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 
 export default function SkeletonPage() {
   return (
@@ -12,9 +12,7 @@ export default function SkeletonPage() {
       description="A loading placeholder component that displays an animated pulse effect while content is being fetched or processed."
       importCode={`import { Skeleton } from "@/components/ui/skeleton";`}
       mainPreview={{
-        preview: (
-          <Skeleton className="h-12 w-[250px]" />
-        ),
+        preview: <Skeleton className="h-12 w-[250px]" />,
         code: `<Skeleton className="h-12 w-[250px]" />`,
       }}
       variants={[
@@ -38,29 +36,23 @@ export default function SkeletonPage() {
           title: "Card Skeleton",
           description: "Full card loading state with header and content",
           preview: (
-            <Card className="w-[350px]">
-              <CardHeader>
-                <Skeleton className="h-6 w-[200px]" />
-                <Skeleton className="h-4 w-[150px]" />
-              </CardHeader>
-              <CardContent className="space-y-2">
+            <TerminalCard className="w-[350px]">
+              <TerminalCardHeader code="0x00" title="LOADING" />
+              <TerminalCardContent className="space-y-2">
                 <Skeleton className="h-4 w-full" />
                 <Skeleton className="h-4 w-full" />
                 <Skeleton className="h-4 w-3/4" />
-              </CardContent>
-            </Card>
+              </TerminalCardContent>
+            </TerminalCard>
           ),
-          code: `<Card className="w-[350px]">
-  <CardHeader>
-    <Skeleton className="h-6 w-[200px]" />
-    <Skeleton className="h-4 w-[150px]" />
-  </CardHeader>
-  <CardContent className="space-y-2">
+          code: `<TerminalCard className="w-[350px]">
+  <TerminalCardHeader code="0x00" title="LOADING" />
+  <TerminalCardContent className="space-y-2">
     <Skeleton className="h-4 w-full" />
     <Skeleton className="h-4 w-full" />
     <Skeleton className="h-4 w-3/4" />
-  </CardContent>
-</Card>`,
+  </TerminalCardContent>
+</TerminalCard>`,
         },
         {
           title: "Avatar Skeleton",
@@ -90,7 +82,7 @@ export default function SkeletonPage() {
               {[1, 2, 3].map((i) => (
                 <div key={i} className="flex items-center space-x-4">
                   <Skeleton className="h-12 w-12 rounded-none" />
-                  <div className="space-y-2 flex-1">
+                  <div className="flex-1 space-y-2">
                     <Skeleton className="h-4 w-full" />
                     <Skeleton className="h-4 w-3/4" />
                   </div>
@@ -136,45 +128,53 @@ export default function SkeletonPage() {
           preview: (
             <div className="space-y-4">
               <div className="grid grid-cols-3 gap-4">
-                <Card className="p-6 space-y-2">
-                  <Skeleton className="h-4 w-20" />
-                  <Skeleton className="h-8 w-16" />
-                </Card>
-                <Card className="p-6 space-y-2">
-                  <Skeleton className="h-4 w-20" />
-                  <Skeleton className="h-8 w-16" />
-                </Card>
-                <Card className="p-6 space-y-2">
-                  <Skeleton className="h-4 w-20" />
-                  <Skeleton className="h-8 w-16" />
-                </Card>
+                <TerminalCard>
+                  <TerminalCardContent className="space-y-2">
+                    <Skeleton className="h-4 w-20" />
+                    <Skeleton className="h-8 w-16" />
+                  </TerminalCardContent>
+                </TerminalCard>
+                <TerminalCard>
+                  <TerminalCardContent className="space-y-2">
+                    <Skeleton className="h-4 w-20" />
+                    <Skeleton className="h-8 w-16" />
+                  </TerminalCardContent>
+                </TerminalCard>
+                <TerminalCard>
+                  <TerminalCardContent className="space-y-2">
+                    <Skeleton className="h-4 w-20" />
+                    <Skeleton className="h-8 w-16" />
+                  </TerminalCardContent>
+                </TerminalCard>
               </div>
-              <Card className="p-6 space-y-4">
-                <Skeleton className="h-6 w-[200px]" />
-                <div className="space-y-2">
+              <TerminalCard>
+                <TerminalCardHeader code="0x00" title="LOADING" />
+                <TerminalCardContent className="space-y-2">
                   <Skeleton className="h-4 w-full" />
                   <Skeleton className="h-4 w-full" />
                   <Skeleton className="h-4 w-3/4" />
-                </div>
-              </Card>
+                </TerminalCardContent>
+              </TerminalCard>
             </div>
           ),
           code: `<div className="space-y-4">
   <div className="grid grid-cols-3 gap-4">
-    <Card className="p-6 space-y-2">
-      <Skeleton className="h-4 w-20" />
-      <Skeleton className="h-8 w-16" />
-    </Card>
+    <TerminalCard>
+      <TerminalCardContent className="space-y-2">
+        <Skeleton className="h-4 w-20" />
+        <Skeleton className="h-8 w-16" />
+      </TerminalCardContent>
+    </TerminalCard>
     {/* More stat cards... */}
   </div>
-  <Card className="p-6 space-y-4">
-    <Skeleton className="h-6 w-[200px]" />
-    <div className="space-y-2">
+  <TerminalCard>
+    <TerminalCardHeader code="0x00" title="LOADING" />
+    <TerminalCardContent className="space-y-2">
       <Skeleton className="h-4 w-full" />
       <Skeleton className="h-4 w-full" />
       <Skeleton className="h-4 w-3/4" />
-    </div>
-  </Card>
+    </TerminalCardContent>
+  </TerminalCard>
 </div>`,
         },
       ]}
@@ -182,7 +182,8 @@ export default function SkeletonPage() {
         {
           name: "className",
           type: "string",
-          description: "CSS classes for sizing and styling the skeleton. Use Tailwind utilities for width (w-*) and height (h-*)",
+          description:
+            "CSS classes for sizing and styling the skeleton. Use Tailwind utilities for width (w-*) and height (h-*)",
         },
         {
           name: "...props",

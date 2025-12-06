@@ -5,7 +5,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,18 +20,19 @@ export function DropdownSection() {
   return (
     <section id="dropdown-menus" className="space-y-6">
       <div>
-        <span className="text-xs text-muted-foreground">[0x70]</span>
+        <span className="text-muted-foreground text-xs">[0x70]</span>
         <h2 className="text-2xl font-semibold tracking-tight">DROPDOWN_MENUS</h2>
-        <p className="text-xs text-muted-foreground">&gt; Action menus with proper alignment</p>
+        <p className="text-muted-foreground text-xs">&gt; Action menus with proper alignment</p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
-        <Card>
-          <CardHeader>
-            <CardTitle>Right-Aligned Menu (align=&quot;end&quot;)</CardTitle>
-            <CardDescription>For actions in table rows or right-side triggers</CardDescription>
-          </CardHeader>
-          <CardContent className="flex justify-end">
+      <div className="grid gap-6 md:grid-cols-2">
+        <TerminalCard>
+          <TerminalCardHeader
+            code="0x70"
+            title="Right_Aligned_Menu"
+            meta="For actions in table rows or right-side triggers"
+          />
+          <TerminalCardContent padding="md" className="flex justify-end">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm">
@@ -56,15 +57,16 @@ export function DropdownSection() {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-          </CardContent>
-        </Card>
+          </TerminalCardContent>
+        </TerminalCard>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Left-Aligned Menu (align=&quot;start&quot;)</CardTitle>
-            <CardDescription>For sidebar menus or left-positioned actions</CardDescription>
-          </CardHeader>
-          <CardContent className="flex justify-start">
+        <TerminalCard>
+          <TerminalCardHeader
+            code="0x71"
+            title="Left_Aligned_Menu"
+            meta="For sidebar menus or left-positioned actions"
+          />
+          <TerminalCardContent padding="md" className="flex justify-start">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" size="sm">
@@ -84,8 +86,8 @@ export function DropdownSection() {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-          </CardContent>
-        </Card>
+          </TerminalCardContent>
+        </TerminalCard>
       </div>
     </section>
   );

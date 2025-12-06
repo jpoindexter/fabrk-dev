@@ -9,6 +9,12 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import {
+  TerminalBadge,
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+} from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
 
 export function FeaturesHero() {
@@ -22,9 +28,7 @@ export function FeaturesHero() {
             transition={{ duration: 0.5 }}
             className="mb-6"
           >
-            <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 text-xs">
-              [ [0x00] FEATURES ] COMPLETE_SAAS_TOOLKIT
-            </span>
+            <TerminalBadge code="0x00" label="FEATURES" meta="COMPLETE_SAAS_TOOLKIT" />
           </motion.div>
 
           <motion.div
@@ -43,26 +47,28 @@ export function FeaturesHero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="border-border bg-card mx-auto max-w-2xl border p-4 text-left"
+            className="mx-auto max-w-2xl text-left"
           >
-            <div className="text-muted-foreground mb-4 text-xs">
-              [ [0x01] STATUS ]────────────────────────
-            </div>
-            <p className="text-muted-foreground mb-4 text-sm">
-              Stop rebuilding the same features for every project. Fabrk includes authentication,
-              payments, database, real-time, multi-tenancy, admin dashboard, and more - all
-              production-tested and ready to deploy.
-            </p>
-            <div className="flex flex-wrap gap-4 text-sm">
-              <span>
-                <span className="text-muted-foreground">Features:</span>{" "}
-                <span className="text-primary">8_CATEGORIES</span>
-              </span>
-              <span>
-                <span className="text-muted-foreground">Status:</span>{" "}
-                <span className="text-primary">PRODUCTION_READY</span>
-              </span>
-            </div>
+            <TerminalCard size="auto">
+              <TerminalCardHeader code="0x01" title="STATUS" />
+              <TerminalCardContent padding="md">
+                <p className="text-muted-foreground mb-4 text-sm">
+                  Stop rebuilding the same features for every project. Fabrk includes
+                  authentication, payments, database, real-time, multi-tenancy, admin dashboard, and
+                  more - all production-tested and ready to deploy.
+                </p>
+                <div className="flex flex-wrap gap-4 text-sm">
+                  <span>
+                    <span className="text-muted-foreground">Features:</span>{" "}
+                    <span className="text-primary">8_CATEGORIES</span>
+                  </span>
+                  <span>
+                    <span className="text-muted-foreground">Status:</span>{" "}
+                    <span className="text-primary">PRODUCTION_READY</span>
+                  </span>
+                </div>
+              </TerminalCardContent>
+            </TerminalCard>
           </motion.div>
 
           <motion.div

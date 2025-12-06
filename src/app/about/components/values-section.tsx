@@ -7,6 +7,12 @@
 
 import { motion } from "framer-motion";
 import { Rocket, Code, Zap, Users, Heart, CheckCircle2, type LucideIcon } from "lucide-react";
+import {
+  TerminalBadge,
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+} from "@/components/ui/card";
 
 interface Value {
   id: string;
@@ -77,9 +83,7 @@ export function ValuesSection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <span className="border-border bg-card text-muted-foreground mb-4 inline-block border px-4 py-1 text-xs">
-              [ [0x03] CORE_VALUES ]
-            </span>
+            <TerminalBadge code="0x03" label="CORE_VALUES" className="mb-4" />
             <h2 className="mb-4 text-2xl font-semibold lg:text-4xl">CORE_VALUES</h2>
           </motion.div>
           <motion.div
@@ -110,42 +114,42 @@ export function ValuesSection() {
                 y: -4,
                 transition: { duration: 0.2 },
               }}
-              className="group border-border bg-card hover:border-primary/50 flex h-full flex-col border transition-colors"
+              className="group"
             >
-              {/* Module Header */}
-              <div className="border-border flex items-center justify-between border-b px-4 py-2">
-                <span className="text-muted-foreground font-mono text-xs">
-                  [ [{value.id}] {value.module} ]
-                </span>
-                <motion.div
-                  whileHover={{ rotate: 12, scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                >
-                  <value.icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
-                </motion.div>
-              </div>
+              <TerminalCard interactive className="flex h-full flex-col">
+                <TerminalCardHeader
+                  code={value.id}
+                  title={value.module}
+                  icon={
+                    <motion.div
+                      whileHover={{ rotate: 12, scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 400 }}
+                    >
+                      <value.icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
+                    </motion.div>
+                  }
+                />
+                <TerminalCardContent padding="md" className="flex-1">
+                  {/* Status */}
+                  <div className="mb-4 font-mono text-xs">
+                    <span className="text-muted-foreground">STATUS: </span>
+                    <motion.span
+                      className="text-success"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: index * 0.08 + 0.3 }}
+                    >
+                      {value.status}
+                    </motion.span>
+                  </div>
 
-              {/* Content */}
-              <div className="flex-1 p-4">
-                {/* Status */}
-                <div className="mb-4 font-mono text-xs">
-                  <span className="text-muted-foreground">STATUS: </span>
-                  <motion.span
-                    className="text-success"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: index * 0.08 + 0.3 }}
-                  >
-                    {value.status}
-                  </motion.span>
-                </div>
-
-                {/* Description */}
-                <div className="font-mono text-xs">
-                  <span className="text-muted-foreground">DESC: </span>
-                  <span className="text-foreground">{value.description}</span>
-                </div>
-              </div>
+                  {/* Description */}
+                  <div className="font-mono text-xs">
+                    <span className="text-muted-foreground">DESC: </span>
+                    <span className="text-foreground">{value.description}</span>
+                  </div>
+                </TerminalCardContent>
+              </TerminalCard>
             </motion.div>
           ))}
         </div>

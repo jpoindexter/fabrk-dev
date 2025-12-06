@@ -4,6 +4,12 @@ import { useEffect, useRef } from "react";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
+import {
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+  TerminalBadge,
+} from "@/components/ui/card";
 
 // Animated counter component
 function AnimatedCounter({
@@ -91,16 +97,7 @@ export function StatsSection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div
-              className={cn(
-                "border-border bg-card mb-4 inline-block border px-4 py-1",
-                mode.radius
-              )}
-            >
-              <span className={cn("text-muted-foreground text-xs", mode.font)}>
-                [ [0x30] METRICS ]
-              </span>
-            </div>
+            <TerminalBadge code="0x30" label="METRICS" className="mb-4" />
             <h2 className={cn("mb-4 text-2xl font-semibold", mode.font)}>
               TRUSTED_BY_DEVELOPERS_WORLDWIDE
             </h2>
@@ -143,33 +140,26 @@ export function StatsSection() {
                 y: -4,
                 transition: { duration: 0.2 },
               }}
-              className={cn(
-                "group border-border bg-card hover:border-primary/50 flex h-full flex-col border transition-colors",
-                mode.radius
-              )}
+              className="group hover:border-primary/50 transition-colors"
             >
-              {/* Terminal Header */}
-              <div className="border-border border-b px-4 py-2">
-                <span className={cn("text-muted-foreground text-xs", mode.font)}>
-                  [ [0x{(index + 31).toString(16).toUpperCase()}]{" "}
-                  {stat.label.toUpperCase().replace(/ /g, "_")} ]
-                </span>
-              </div>
-
-              {/* Content */}
-              <div className="flex-1 p-4">
-                <div className={cn("text-foreground mb-2 text-3xl font-semibold", mode.font)}>
-                  <AnimatedCounter
-                    value={stat.value}
-                    suffix={stat.suffix}
-                    decimals={stat.decimals || 0}
-                  />
-                </div>
-                <div className={cn("text-xs", mode.font)}>
-                  <span className="text-muted-foreground">DESC: </span>
-                  <span className="text-foreground">{stat.description}</span>
-                </div>
-              </div>
+              <TerminalCard>
+                <TerminalCardHeader
+                  title={`[ [0x${(index + 31).toString(16).toUpperCase()}] ${stat.label.toUpperCase().replace(/ /g, "_")} ]`}
+                />
+                <TerminalCardContent>
+                  <div className={cn("text-foreground mb-2 text-3xl font-semibold", mode.font)}>
+                    <AnimatedCounter
+                      value={stat.value}
+                      suffix={stat.suffix}
+                      decimals={stat.decimals || 0}
+                    />
+                  </div>
+                  <div className={cn("text-xs", mode.font)}>
+                    <span className="text-muted-foreground">DESC: </span>
+                    <span className="text-foreground">{stat.description}</span>
+                  </div>
+                </TerminalCardContent>
+              </TerminalCard>
             </motion.div>
           ))}
         </div>

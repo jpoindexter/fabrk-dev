@@ -2,6 +2,12 @@
 
 import { SimpleIcon } from "@/components/ui/simple-icon";
 import {
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+  TerminalBadge,
+} from "@/components/ui/card";
+import {
   siNextdotjs,
   siReact,
   siTailwindcss,
@@ -33,9 +39,7 @@ export function TechStack() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <span className="border-border bg-card text-muted-foreground mb-4 inline-block border px-4 py-1 text-xs">
-              [ [0x20] TECH_STACK ]
-            </span>
+            <TerminalBadge code="0x20" label="TECH_STACK" className="mb-4" />
             <h2 className="text-2xl font-semibold tracking-tight">A_MODERN_STACK_YOU_CAN_TRUST</h2>
           </motion.div>
         </div>
@@ -56,23 +60,20 @@ export function TechStack() {
                 y: -4,
                 transition: { duration: 0.2 },
               }}
-              className="group border-border bg-card hover:border-primary/50 flex h-full flex-col border transition-colors"
+              className="group"
             >
-              {/* Terminal Header */}
-              <div className="border-border border-b px-4 py-2">
-                <span className="text-muted-foreground text-xs">[ [{tech.id}] STACK ]</span>
-              </div>
-
-              {/* Content */}
-              <div className="flex flex-1 flex-col items-center justify-center gap-3 p-4">
-                <SimpleIcon
-                  path={tech.path}
-                  className="text-foreground group-hover:text-primary size-8 transition-colors"
-                />
-                <span className="text-foreground text-xs font-medium">
-                  {tech.name.toUpperCase().replace(/ /g, "_").replace(/\./g, "")}
-                </span>
-              </div>
+              <TerminalCard className="hover:border-primary/50 transition-colors">
+                <TerminalCardHeader code={tech.id} title="" />
+                <TerminalCardContent className="flex flex-col items-center justify-center gap-3 p-4">
+                  <SimpleIcon
+                    path={tech.path}
+                    className="text-foreground group-hover:text-primary h-8 w-8 transition-colors"
+                  />
+                  <span className="text-foreground text-xs font-medium">
+                    {tech.name.toUpperCase().replace(/ /g, "_").replace(/\./g, "")}
+                  </span>
+                </TerminalCardContent>
+              </TerminalCard>
             </motion.div>
           ))}
         </div>

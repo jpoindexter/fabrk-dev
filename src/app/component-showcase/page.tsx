@@ -47,12 +47,10 @@ import {
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+  TerminalCardFooter,
 } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { CodeBlock } from "@/components/ui/code-block";
@@ -662,20 +660,21 @@ export default function ComponentShowcasePage() {
               {/* Card */}
               <div>
                 <Label className="mb-4 block">[CARD]:</Label>
-                <Card className="max-w-sm">
-                  <CardHeader>
-                    <CardTitle>Card Title</CardTitle>
-                    <CardDescription>Card description goes here</CardDescription>
-                  </CardHeader>
-                  <CardContent>
+                <TerminalCard className="max-w-sm">
+                  <TerminalCardHeader
+                    code="0x00"
+                    title="CARD_TITLE"
+                    meta="Card description goes here"
+                  />
+                  <TerminalCardContent>
                     <p className="text-muted-foreground text-sm">
                       Card content with some example text.
                     </p>
-                  </CardContent>
-                  <CardFooter>
+                  </TerminalCardContent>
+                  <TerminalCardFooter>
                     <Button size="sm">&gt; ACTION</Button>
-                  </CardFooter>
-                </Card>
+                  </TerminalCardFooter>
+                </TerminalCard>
               </div>
 
               {/* StatCard */}

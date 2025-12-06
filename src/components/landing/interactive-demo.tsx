@@ -10,6 +10,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 
 const DEMO_ROUTES = [
   { id: "team", label: "Team Dashboard", path: "/templates/team-dashboard" },
@@ -32,7 +33,9 @@ export function InteractiveDemo() {
           {/* Header */}
           <div className={cn("text-center", mode.font)}>
             <span className="text-muted-foreground text-xs">[0x00]</span>
-            <h2 className="mb-4 text-2xl font-semibold tracking-tight">LIVE_DEMO_EXPLORE_TEMPLATES</h2>
+            <h2 className="mb-4 text-2xl font-semibold tracking-tight">
+              LIVE_DEMO_EXPLORE_TEMPLATES
+            </h2>
             <p className="text-muted-foreground mx-auto max-w-2xl text-sm">
               &gt; See production-ready dashboards, data tables, and settings pages. Click tabs to
               explore.
@@ -54,7 +57,7 @@ export function InteractiveDemo() {
             </TabsList>
 
             {/* Demo Container */}
-            <div className={cn("border-border bg-card overflow-hidden border", mode.radius)}>
+            <TerminalCard className="overflow-hidden">
               {DEMO_ROUTES.map((route) => (
                 <TabsContent key={route.id} value={route.id} className="m-0">
                   <iframe
@@ -64,7 +67,7 @@ export function InteractiveDemo() {
                   />
                 </TabsContent>
               ))}
-            </div>
+            </TerminalCard>
 
             {/* Info Box */}
             <motion.div
@@ -72,14 +75,18 @@ export function InteractiveDemo() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className={cn("border-border bg-card border p-6", mode.radius, mode.font)}
             >
-              <div className="text-muted-foreground mb-2 text-xs">[ INFO ]</div>
-              <p className="text-foreground text-xs">
-                <span className="text-primary font-semibold">[FULLY_INTERACTIVE]</span> All
-                dashboards and tables are fully functional. Sort columns, filter data, toggle
-                settings, and explore the full UX. These are the exact templates included in Fabrk.
-              </p>
+              <TerminalCard>
+                <TerminalCardHeader title="INFO" />
+                <TerminalCardContent>
+                  <p className="text-foreground text-xs">
+                    <span className="text-primary font-semibold">[FULLY_INTERACTIVE]</span> All
+                    dashboards and tables are fully functional. Sort columns, filter data, toggle
+                    settings, and explore the full UX. These are the exact templates included in
+                    Fabrk.
+                  </p>
+                </TerminalCardContent>
+              </TerminalCard>
             </motion.div>
           </Tabs>
         </motion.div>

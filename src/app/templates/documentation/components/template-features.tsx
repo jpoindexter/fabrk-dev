@@ -4,7 +4,7 @@
  * Production-ready ✓
  */
 
-import { StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
@@ -22,9 +22,9 @@ export function TemplateFeatures() {
 
   return (
     <div className="container mx-auto max-w-7xl px-6 py-8">
-      <div className="border-border bg-card border">
-        <StyledCardHeader code="0x00" title="FEATURES" />
-        <div className="p-4">
+      <TerminalCard tone="neutral">
+        <TerminalCardHeader code="0x00" title="FEATURES" />
+        <TerminalCardContent padding="md">
           <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
             [TEMPLATE_FEATURES]:
           </div>
@@ -35,8 +35,8 @@ export function TemplateFeatures() {
               </div>
             ))}
           </div>
-        </div>
-      </div>
+        </TerminalCardContent>
+      </TerminalCard>
     </div>
   );
 }

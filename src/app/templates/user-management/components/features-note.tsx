@@ -2,15 +2,15 @@
  * Implementation note card showing template features
  */
 
-import { StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function FeaturesNote() {
   return (
-    <div className="border-border bg-card border">
-      <StyledCardHeader code="0x00" title="FEATURES" />
-      <div className="p-4">
+    <TerminalCard>
+      <TerminalCardHeader code="0x00" title="FEATURES" />
+      <TerminalCardContent>
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [TEMPLATE_FEATURES]:
         </div>
@@ -53,7 +53,7 @@ export function FeaturesNote() {
           [NOTE]: Replace mockUsers with your API data. Add API routes for edit/delete/suspend
           actions.
         </div>
-      </div>
-    </div>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

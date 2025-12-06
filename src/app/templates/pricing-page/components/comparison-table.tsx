@@ -4,7 +4,7 @@
  */
 
 import { Check, X } from "lucide-react";
-import { StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
@@ -32,10 +32,10 @@ function renderCell(value: string | boolean) {
 
 export function ComparisonTable({ features }: ComparisonTableProps) {
   return (
-    <div className="border-border bg-card border">
-      <StyledCardHeader code="0x00" title="COMPARISON" />
+    <TerminalCard tone="neutral">
+      <TerminalCardHeader code="0x00" title="COMPARISON" />
 
-      <div className="p-4">
+      <TerminalCardContent padding="md">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [FEATURE_COMPARISON]:
         </div>
@@ -62,7 +62,7 @@ export function ComparisonTable({ features }: ComparisonTableProps) {
             </tbody>
           </table>
         </div>
-      </div>
-    </div>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

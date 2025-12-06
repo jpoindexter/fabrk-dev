@@ -5,7 +5,7 @@
  * Part of SecuritySettings split
  */
 
-import { Card, CardContent, StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Shield, AlertTriangle, CheckCircle2 } from "lucide-react";
 
 interface SecurityRecommendationsCardProps {
@@ -19,13 +19,21 @@ export function SecurityRecommendationsCard({
   twoFactorEnabled,
   connectedAccountsCount,
 }: SecurityRecommendationsCardProps) {
+  const warningCount = [!emailVerified, !twoFactorEnabled].filter(Boolean).length;
+
   return (
-    <Card className="bg-accent/30">
-      <StyledCardHeader
+    <TerminalCard tone={warningCount > 0 ? "warning" : "success"}>
+      <TerminalCardHeader
+        code="0x05"
         title="SECURITY_RECOMMENDATIONS"
-        icon={<Shield className="text-muted-foreground h-4 w-4" />}
+        icon={<Shield className="h-4 w-4" />}
+        meta={
+          warningCount > 0
+            ? `${warningCount} ${warningCount === 1 ? "warning" : "warnings"}`
+            : "all clear"
+        }
       />
-      <CardContent>
+      <TerminalCardContent>
         <ul className="space-y-2">
           {!emailVerified && (
             <li className="flex items-start gap-2">
@@ -56,7 +64,7 @@ export function SecurityRecommendationsCard({
             <span className="font-mono text-xs">Review your active sessions regularly</span>
           </li>
         </ul>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

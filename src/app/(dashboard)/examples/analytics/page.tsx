@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import { Card } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 import {
@@ -112,122 +112,132 @@ export default async function AnalyticsPage() {
 
       {/* Stats Grid */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {mockAnalytics.stats.map((stat) => {
+        {mockAnalytics.stats.map((stat, index) => {
           const Icon = stat.icon;
           const isPositive = stat.trend === "up";
 
           return (
-            <Card key={stat.label} className="border-border border p-6">
-              <div className="flex items-center justify-between">
-                <div
-                  className={cn(
-                    "border-border bg-primary/10 flex h-12 w-12 items-center justify-center border",
-                    mode.radius
-                  )}
-                >
-                  <Icon className="text-primary h-6 w-6" />
+            <TerminalCard key={stat.label}>
+              <TerminalCardHeader
+                code={`0x${index.toString(16).padStart(2, "0")}`}
+                title={stat.label.toUpperCase().replace(/ /g, "_")}
+                icon={<Icon className="h-4 w-4" />}
+              />
+              <TerminalCardContent>
+                <div className="flex items-center justify-between">
+                  <p className="text-foreground text-4xl font-semibold">{stat.value}</p>
+                  <div
+                    className={`flex items-center gap-1 text-sm font-semibold ${
+                      isPositive ? "text-success" : "text-destructive"
+                    }`}
+                  >
+                    {isPositive ? (
+                      <ArrowUpRight className="h-4 w-4" />
+                    ) : (
+                      <ArrowDownRight className="h-4 w-4" />
+                    )}
+                    <span>{stat.change}</span>
+                  </div>
                 </div>
-                <div
-                  className={`flex items-center gap-1 text-sm font-semibold ${
-                    isPositive ? "text-success" : "text-destructive"
-                  }`}
-                >
-                  {isPositive ? (
-                    <ArrowUpRight className="h-4 w-4" />
-                  ) : (
-                    <ArrowDownRight className="h-4 w-4" />
-                  )}
-                  <span>{stat.change}</span>
-                </div>
-              </div>
-              <div className="mt-4">
-                <p className="text-muted-foreground text-sm">{stat.label}</p>
-                <p className="text-foreground mt-1 text-4xl font-semibold">{stat.value}</p>
-              </div>
-            </Card>
+              </TerminalCardContent>
+            </TerminalCard>
           );
         })}
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Recent Activity */}
-        <Card className="border-border border p-6">
-          <div className="border-border mb-4 flex items-center justify-between border-b pb-4">
-            <h3 className="text-foreground text-xl font-semibold">Recent Activity</h3>
-            <button className="text-primary text-sm font-semibold hover:underline">View All</button>
-          </div>
-          <div className="space-y-4">
-            {mockAnalytics.recentActivity.map((activity, index) => (
-              <div
-                key={index}
-                className={cn(
-                  "border-border bg-muted flex items-center justify-between border p-4",
-                  mode.radius
-                )}
-              >
-                <div>
-                  <p className="text-foreground text-sm font-semibold">{activity.action}</p>
-                  <p className="text-muted-foreground text-xs">{activity.user}</p>
+        <TerminalCard>
+          <TerminalCardHeader code="0x10" title="RECENT_ACTIVITY" />
+          <TerminalCardContent>
+            <div className="mb-4 flex justify-end">
+              <button className="text-primary text-sm font-semibold hover:underline">
+                View All
+              </button>
+            </div>
+            <div className="space-y-4">
+              {mockAnalytics.recentActivity.map((activity, index) => (
+                <div
+                  key={index}
+                  className={cn(
+                    "border-border bg-muted flex items-center justify-between border p-4",
+                    mode.radius
+                  )}
+                >
+                  <div>
+                    <p className="text-foreground text-sm font-semibold">{activity.action}</p>
+                    <p className="text-muted-foreground text-xs">{activity.user}</p>
+                  </div>
+                  <p className="text-muted-foreground text-xs">{activity.time}</p>
                 </div>
-                <p className="text-muted-foreground text-xs">{activity.time}</p>
-              </div>
-            ))}
-          </div>
-        </Card>
+              ))}
+            </div>
+          </TerminalCardContent>
+        </TerminalCard>
 
         {/* Top Pages */}
-        <Card className="border-border border p-6">
-          <div className="border-border mb-4 flex items-center justify-between border-b pb-4">
-            <h3 className="text-foreground text-xl font-semibold">Top Pages</h3>
-            <button className="text-primary text-sm font-semibold hover:underline">View All</button>
-          </div>
-          <div className="space-y-4">
-            {mockAnalytics.topPages.map((page, index) => (
-              <div
-                key={index}
-                className={cn(
-                  "border-border bg-muted flex items-center justify-between border p-4",
-                  mode.radius
-                )}
-              >
-                <div className="flex-1">
-                  <p className="text-foreground text-sm font-semibold">{page.path}</p>
-                  <p className="text-muted-foreground text-xs">{page.views} views</p>
-                </div>
+        <TerminalCard>
+          <TerminalCardHeader code="0x11" title="TOP_PAGES" />
+          <TerminalCardContent>
+            <div className="mb-4 flex justify-end">
+              <button className="text-primary text-sm font-semibold hover:underline">
+                View All
+              </button>
+            </div>
+            <div className="space-y-4">
+              {mockAnalytics.topPages.map((page, index) => (
                 <div
-                  className={`text-sm font-semibold ${
-                    page.change.startsWith("+") ? "text-success" : "text-destructive"
-                  }`}
+                  key={index}
+                  className={cn(
+                    "border-border bg-muted flex items-center justify-between border p-4",
+                    mode.radius
+                  )}
                 >
-                  {page.change}
+                  <div className="flex-1">
+                    <p className="text-foreground text-sm font-semibold">{page.path}</p>
+                    <p className="text-muted-foreground text-xs">{page.views} views</p>
+                  </div>
+                  <div
+                    className={`text-sm font-semibold ${
+                      page.change.startsWith("+") ? "text-success" : "text-destructive"
+                    }`}
+                  >
+                    {page.change}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </Card>
+              ))}
+            </div>
+          </TerminalCardContent>
+        </TerminalCard>
       </div>
 
       {/* Chart Placeholder */}
-      <Card className="border-border border p-6">
-        <div className="border-border mb-4 border-b pb-4">
-          <h3 className="text-foreground text-xl font-semibold">Revenue Over Time</h3>
-          <p className="text-muted-foreground text-sm">Monthly recurring revenue trend</p>
-        </div>
-        <div
-          className={cn(
-            "border-border bg-muted flex h-64 items-center justify-center border border-dashed",
-            mode.radius
-          )}
-        >
-          <div className="text-center">
-            <TrendingUp className="text-primary/50 mx-auto mb-2 h-12 w-12" />
-            <p className="text-muted-foreground text-sm font-semibold">Chart component goes here</p>
-            <p className="text-muted-foreground/80 text-xs">
-              Integrate Recharts, Chart.js, or your preferred library
-            </p>
+      <TerminalCard>
+        <TerminalCardHeader
+          code="0x20"
+          title="REVENUE_OVER_TIME"
+          icon={<TrendingUp className="h-4 w-4" />}
+          meta="Monthly recurring revenue trend"
+        />
+        <TerminalCardContent>
+          <div
+            className={cn(
+              "border-border bg-muted flex h-64 items-center justify-center border border-dashed",
+              mode.radius
+            )}
+          >
+            <div className="text-center">
+              <TrendingUp className="text-primary/50 mx-auto mb-2 h-12 w-12" />
+              <p className="text-muted-foreground text-sm font-semibold">
+                Chart component goes here
+              </p>
+              <p className="text-muted-foreground/80 text-xs">
+                Integrate Recharts, Chart.js, or your preferred library
+              </p>
+            </div>
           </div>
-        </div>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
 
       {/* Implementation Note */}
       <div className={cn("border-primary bg-primary/5 border-2 p-4", mode.radius)}>

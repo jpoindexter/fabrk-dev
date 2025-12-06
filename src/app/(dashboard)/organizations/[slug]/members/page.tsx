@@ -7,9 +7,9 @@
 
 import * as React from "react";
 import { useRouter, useParams } from "next/navigation";
-import { Loader2 } from "lucide-react";
+import { Loader2, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Table, TableBody, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { toast } from "sonner";
 import { MembersPageHeader } from "./components/members-page-header";
@@ -130,16 +130,17 @@ export default function OrganizationMembersPage() {
 
   if (!organization) {
     return (
-      <Card className={cn("border-border border", mode.radius)}>
-        <CardContent className="py-12">
+      <TerminalCard tone="danger">
+        <TerminalCardHeader code="0x00" title="ERROR" icon={<Loader2 className="h-4 w-4" />} />
+        <TerminalCardContent padding="lg">
           <div className="text-center">
             <h3 className="text-lg font-semibold">Organization not found</h3>
             <Button onClick={() => router.push("/dashboard")} className="mt-4">
-              Back to Dashboard
+              &gt; BACK_TO_DASHBOARD
             </Button>
           </div>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
     );
   }
 
@@ -155,12 +156,14 @@ export default function OrganizationMembersPage() {
       />
 
       {/* Members Table */}
-      <Card className={cn("border-border border", mode.radius)}>
-        <CardHeader>
-          <CardTitle>Members ({members.length})</CardTitle>
-          <CardDescription>View and manage all members of your organization</CardDescription>
-        </CardHeader>
-        <CardContent>
+      <TerminalCard>
+        <TerminalCardHeader
+          code="0x01"
+          title="MEMBERS"
+          icon={<Users className="h-4 w-4" />}
+          meta={`COUNT: ${members.length}`}
+        />
+        <TerminalCardContent padding="lg">
           <Table>
             <TableHeader>
               <TableRow>
@@ -183,8 +186,8 @@ export default function OrganizationMembersPage() {
               ))}
             </TableBody>
           </Table>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
 
       {/* Role Permissions Info */}
       <RolePermissionsCard />

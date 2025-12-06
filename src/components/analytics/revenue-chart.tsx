@@ -25,7 +25,7 @@ import {
 } from "recharts";
 import { DollarSign, TrendingUp } from "lucide-react";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -135,26 +135,20 @@ export function RevenueChart({
   );
 
   return (
-    <Card className={cn("overflow-hidden", className)}>
-      <CardHeader className="pb-4">
-        <div className="flex items-start justify-between">
-          <div>
-            <CardTitle className="flex items-center gap-2 text-base">
-              <DollarSign className="text-primary h-4 w-4" />
-              Revenue Analytics
-            </CardTitle>
-            <p className="text-muted-foreground mt-1 text-xs">
-              Monthly Recurring Revenue (MRR) {showArr && "and Annual Recurring Revenue (ARR)"}
-            </p>
-          </div>
+    <TerminalCard className={cn("overflow-hidden", className)}>
+      <TerminalCardHeader
+        code="0x01"
+        title="REVENUE_ANALYTICS"
+        icon={<DollarSign className="h-4 w-4" />}
+        meta={
           <Badge variant="default" className="font-medium">
             <TrendingUp className="mr-1 h-3 w-3" />
             {growthRate}% growth
           </Badge>
-        </div>
-      </CardHeader>
+        }
+      />
 
-      <CardContent className="space-y-6">
+      <TerminalCardContent padding="md" className="space-y-6">
         {/* Key Metrics */}
         <div className="grid grid-cols-2 gap-4">
           <div className={cn("border-border bg-card border p-4", mode.radius)}>
@@ -293,7 +287,7 @@ export function RevenueChart({
             )}
           </ResponsiveContainer>
         </div>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

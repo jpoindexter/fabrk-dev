@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import { FeatureItem, type FeatureItemProps } from "./feature-item";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
+import { TerminalBadge } from "@/components/ui/card";
 
 interface FeatureSectionLayoutProps {
   spec: string;
@@ -39,14 +40,7 @@ export function FeatureSectionLayout({
         className="flex flex-col justify-center"
       >
         {/* Spec Label */}
-        <div
-          className={cn(
-            mode.radius,
-            "border-border bg-card mb-4 inline-block self-start border px-4 py-1"
-          )}
-        >
-          <span className={cn(mode.font, "text-muted-foreground text-xs")}>[ SPEC ] {spec}</span>
-        </div>
+        <TerminalBadge label="SPEC" meta={spec} className="mb-4 self-start" />
 
         {/* Title */}
         <h3 className={cn(mode.font, "mb-4 text-2xl font-semibold")}>{title}</h3>

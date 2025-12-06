@@ -7,7 +7,7 @@ import * as React from "react";
 import { UseFormReturn } from "react-hook-form";
 import { Mail, ChevronLeft, Check, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -19,7 +19,6 @@ import {
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 import {
   Select,
@@ -50,19 +49,14 @@ export function InviteMembersStep({
   onSkip,
 }: InviteMembersStepProps) {
   return (
-    <Card className={cn("border-border border", mode.radius)}>
-      <CardHeader>
-        <div className="flex items-center gap-4">
-          <div className={cn("border-border bg-primary border p-2", mode.radius)}>
-            <Mail className="text-primary-foreground h-6 w-6" />
-          </div>
-          <div>
-            <CardTitle>Invite Team Members</CardTitle>
-            <CardDescription>Send invitations to your team (optional)</CardDescription>
-          </div>
-        </div>
-      </CardHeader>
-      <CardContent>
+    <TerminalCard>
+      <TerminalCardHeader
+        code="0x01"
+        title="INVITE_TEAM_MEMBERS"
+        icon={<Mail className="h-4 w-4" />}
+        meta="OPTIONAL"
+      />
+      <TerminalCardContent padding="lg">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
@@ -74,7 +68,7 @@ export function InviteMembersStep({
                   <FormControl>
                     <Textarea
                       placeholder="john@example.com&#10;jane@example.com&#10;alex@example.com"
-                      className={cn("border-border border text-sm", mode.font, mode.radius)}
+                      className="border-border rounded-none border text-sm"
                       rows={5}
                       {...field}
                     />
@@ -95,11 +89,11 @@ export function InviteMembersStep({
                   <FormLabel>Default Role</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
-                      <SelectTrigger className={cn("border-border border", mode.radius)}>
+                      <SelectTrigger className="border-border rounded-none border">
                         <SelectValue placeholder="Select a role" />
                       </SelectTrigger>
                     </FormControl>
-                    <SelectContent className={cn("border-border border", mode.radius)}>
+                    <SelectContent className="border-border rounded-none border">
                       <SelectItem value="MEMBER">
                         <div className="flex items-center gap-2">
                           <Badge variant="secondary">MEMBER</Badge>
@@ -126,8 +120,8 @@ export function InviteMembersStep({
               )}
             />
 
-            <div className={cn("border-border bg-muted border p-4", mode.radius)}>
-              <h4 className="mb-2 font-semibold">Role Permissions:</h4>
+            <div className="border-border bg-muted rounded-none border p-4">
+              <h4 className="mb-2 font-mono text-xs font-semibold">[ROLE_PERMISSIONS]:</h4>
               <ul className="text-muted-foreground space-y-1 text-sm">
                 <li>
                   • <strong>OWNER</strong>: Full control (assigned to creator)
@@ -147,22 +141,22 @@ export function InviteMembersStep({
             <div className="flex justify-between gap-2 pt-4">
               <Button type="button" variant="outline" onClick={onBack}>
                 <ChevronLeft className="mr-2 h-4 w-4" />
-                Back
+                &gt; BACK
               </Button>
               <div className="flex gap-2">
                 <Button type="button" variant="ghost" onClick={onSkip}>
-                  Skip for now
+                  &gt; SKIP_FOR_NOW
                 </Button>
                 <Button type="submit" disabled={loading}>
                   {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                  Send Invitations
+                  &gt; SEND_INVITATIONS
                   <Check className="ml-2 h-4 w-4" />
                 </Button>
               </div>
             </div>
           </form>
         </Form>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

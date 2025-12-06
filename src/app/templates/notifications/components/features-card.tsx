@@ -3,15 +3,15 @@
  * Template features card
  */
 
-import { StyledCard, StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function FeaturesCard() {
   return (
-    <StyledCard>
-      <StyledCardHeader code="0x00" title="TEMPLATE_FEATURES" />
-      <div className="p-4">
+    <TerminalCard>
+      <TerminalCardHeader code="0x00" title="TEMPLATE_FEATURES" />
+      <TerminalCardContent>
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [TEMPLATE_FEATURES]:
         </div>
@@ -42,7 +42,7 @@ export function FeaturesCard() {
         <div className={cn(mode.font, "text-muted-foreground mt-4 text-xs")}>
           [NOTE]: Connect to your notification service (WebSockets, SSE) for real-time updates.
         </div>
-      </div>
-    </StyledCard>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

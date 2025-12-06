@@ -5,7 +5,7 @@
 
 "use client";
 
-import { Card, CardContent, StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Shield, Users, Activity } from "lucide-react";
 import { mode } from "@/design-system";
@@ -18,9 +18,9 @@ interface AccountStatusProps {
 
 export function AccountStatus({ mfaEnabled, userTier }: AccountStatusProps) {
   return (
-    <Card>
-      <StyledCardHeader title="ACCOUNT_STATUS" />
-      <CardContent>
+    <TerminalCard>
+      <TerminalCardHeader code="0x00" title="ACCOUNT_STATUS" />
+      <TerminalCardContent>
         <p className="text-muted-foreground mb-4 font-mono text-xs">
           Current account information and status
         </p>
@@ -55,7 +55,7 @@ export function AccountStatus({ mfaEnabled, userTier }: AccountStatusProps) {
             </div>
           </div>
         </div>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

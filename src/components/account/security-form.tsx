@@ -7,7 +7,7 @@ import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -92,12 +92,9 @@ export function SecurityForm() {
   }
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Security Settings</CardTitle>
-        <CardDescription>Change your password to keep your account secure.</CardDescription>
-      </CardHeader>
-      <CardContent>
+    <TerminalCard tone="neutral">
+      <TerminalCardHeader code="0x07" title="SECURITY_SETTINGS" />
+      <TerminalCardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
@@ -145,7 +142,7 @@ export function SecurityForm() {
             </Button>
           </form>
         </Form>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

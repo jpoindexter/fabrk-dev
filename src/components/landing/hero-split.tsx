@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { TerminalCard, TerminalCardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
 
@@ -33,15 +34,14 @@ export function HeroSplit({
           <div className={`${contentOrder} flex flex-col justify-center`}>
             {/* Early Access Badge */}
             <div className="mb-6">
-              <span
-                className={cn(
-                  mode.radius,
-                  mode.font,
-                  "border-border bg-card text-muted-foreground inline-block border px-4 py-1 text-xs"
-                )}
-              >
-                [ EARLY_ACCESS ] JOIN_FIRST_100_LAUNCH_CUSTOMERS
-              </span>
+              <TerminalCard className="inline-block">
+                <TerminalCardContent
+                  padding="sm"
+                  className={cn("text-muted-foreground text-xs", mode.font)}
+                >
+                  [ EARLY_ACCESS ] JOIN_FIRST_100_LAUNCH_CUSTOMERS
+                </TerminalCardContent>
+              </TerminalCard>
             </div>
 
             {/* Headline */}
@@ -94,16 +94,14 @@ export function HeroSplit({
             {/* Trust Badges */}
             <div className="flex flex-wrap gap-2">
               {trustBadges.map((badge) => (
-                <span
-                  key={badge}
-                  className={cn(
-                    mode.radius,
-                    mode.font,
-                    "border-border bg-card text-muted-foreground border px-2 py-1 text-xs"
-                  )}
-                >
-                  [{badge}]
-                </span>
+                <TerminalCard key={badge} className="inline-block">
+                  <TerminalCardContent
+                    padding="sm"
+                    className={cn("text-muted-foreground px-2 py-1 text-xs", mode.font)}
+                  >
+                    [{badge}]
+                  </TerminalCardContent>
+                </TerminalCard>
               ))}
             </div>
 

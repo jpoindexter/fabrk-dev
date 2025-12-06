@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import config from "@/config";
+import { TerminalBadge, TerminalCard, TerminalCardContent } from "@/components/ui/card";
 
 export function AboutCTA() {
   return (
@@ -21,9 +22,7 @@ export function AboutCTA() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <span className="border-border bg-card text-muted-foreground mb-4 inline-block border px-4 py-1 text-xs">
-            [ [0xFF] EXECUTE ]
-          </span>
+          <TerminalBadge code="0xFF" label="EXECUTE" className="mb-4" />
           <h2 className="text-2xl font-semibold lg:text-4xl">READY_TO_BUILD_YOUR_SAAS</h2>
         </motion.div>
 
@@ -32,11 +31,15 @@ export function AboutCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
-          className="border-border bg-card mx-auto max-w-2xl border p-4"
+          className="mx-auto max-w-2xl"
         >
-          <p className="text-muted-foreground text-sm">
-            Join 500+ developers who are shipping faster with Fabrk.
-          </p>
+          <TerminalCard size="auto">
+            <TerminalCardContent padding="md">
+              <p className="text-muted-foreground text-sm">
+                Join 500+ developers who are shipping faster with Fabrk.
+              </p>
+            </TerminalCardContent>
+          </TerminalCard>
         </motion.div>
 
         <motion.div

@@ -4,7 +4,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { CheckCircle2, XCircle, Clock, Download } from "lucide-react";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
@@ -33,19 +33,22 @@ export function RecentInvoicesCard({
   onViewAll,
 }: RecentInvoicesCardProps) {
   return (
-    <div className="border-border bg-card border">
-      <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-        <StyledCardHeader code="0x00" title="RECENT_INVOICES" />
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={onViewAll}
-          className={cn(mode.radius, mode.font, "ml-auto h-6 text-xs")}
-        >
-          &gt; VIEW_ALL
-        </Button>
-      </div>
-      <div className="p-4">
+    <TerminalCard tone="neutral">
+      <TerminalCardHeader
+        code="0x00"
+        title="RECENT_INVOICES"
+        meta={
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={onViewAll}
+            className={cn(mode.radius, mode.font, "h-6 text-xs")}
+          >
+            &gt; VIEW_ALL
+          </Button>
+        }
+      />
+      <TerminalCardContent padding="md">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [RECENT_INVOICES]: LIMIT=3
         </div>
@@ -95,7 +98,7 @@ export function RecentInvoicesCard({
             );
           })}
         </div>
-      </div>
-    </div>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

@@ -14,7 +14,12 @@ import * as React from "react";
 import { Check, X, Crown, Zap } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardHeader } from "@/components/ui/card";
+import {
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+  TerminalCardFooter,
+} from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 import { mode } from "@/design-system";
@@ -73,13 +78,12 @@ export function PricingComparison({
     <div className={cn("space-y-8", className)}>
       {/* Plan Cards */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {plans.map((plan) => (
-          <Card
+        {plans.map((plan, index) => (
+          <TerminalCard
             key={plan.id}
-            className={cn(
-              "relative overflow-hidden transition-all duration-200",
-              plan.popular && "ring-primary ring-2"
-            )}
+            tone={plan.popular ? "primary" : "neutral"}
+            interactive
+            className="relative overflow-hidden"
           >
             {plan.popular && (
               <div className="bg-primary text-primary-foreground absolute top-6 -right-12 rotate-45 px-12 py-1 text-xs font-semibold">
@@ -87,15 +91,19 @@ export function PricingComparison({
               </div>
             )}
 
-            <CardHeader className="space-y-4">
-              <div>
-                <div className="mb-2 flex items-center gap-2">
-                  <h3 className="text-foreground text-xl font-semibold">{plan.name}</h3>
-                  {plan.name === "Enterprise" && <Crown className="text-primary h-5 w-5" />}
-                  {plan.popular && <Zap className="text-primary h-5 w-5" />}
-                </div>
-                <p className="text-muted-foreground text-sm">{plan.description}</p>
-              </div>
+            <TerminalCardHeader
+              code={`0x0${index}`}
+              title={plan.name.toUpperCase()}
+              icon={
+                <>
+                  {plan.name === "Enterprise" && <Crown className="h-4 w-4" />}
+                  {plan.popular && <Zap className="h-4 w-4" />}
+                </>
+              }
+            />
+
+            <TerminalCardContent padding="md" className="space-y-4">
+              <p className="text-muted-foreground text-sm">{plan.description}</p>
 
               <div className="space-y-1">
                 {plan.price === "Custom" ? (
@@ -111,7 +119,9 @@ export function PricingComparison({
                   </>
                 )}
               </div>
+            </TerminalCardContent>
 
+            <TerminalCardFooter>
               <Button
                 variant={plan.popular ? "default" : "outline"}
                 className="w-full"
@@ -119,8 +129,8 @@ export function PricingComparison({
               >
                 {plan.cta}
               </Button>
-            </CardHeader>
-          </Card>
+            </TerminalCardFooter>
+          </TerminalCard>
         ))}
       </div>
 

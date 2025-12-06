@@ -20,7 +20,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
@@ -36,6 +36,7 @@ export interface SystemHealthMetric {
 }
 
 interface SystemHealthWidgetProps {
+  code?: string;
   uptime?: number;
   avgResponseTime?: number;
   errorRate?: number;
@@ -45,6 +46,7 @@ interface SystemHealthWidgetProps {
 }
 
 export function SystemHealthWidget({
+  code = "0x00",
   uptime = 99.9,
   avgResponseTime = 145,
   errorRate = 0.2,
@@ -82,28 +84,26 @@ export function SystemHealthWidget({
 
   const StatusIcon = overallStatus === "healthy" ? CheckCircle2 : AlertTriangle;
 
-  return (
-    <Card className={cn("relative overflow-hidden", className)}>
-      <CardHeader className="pb-4">
-        <div className="flex items-center justify-between">
-          <CardTitle className="flex items-center gap-2 text-base">
-            <Activity className="text-primary h-4 w-4" />
-            System Health
-          </CardTitle>
-          <Badge
-            variant={overallStatus === "healthy" ? "default" : "accent"}
-            className="font-medium"
-          >
-            <StatusIcon className="mr-1 h-3 w-3" />
-            {overallStatus.toUpperCase()}
-          </Badge>
-        </div>
-        <p className="text-muted-foreground text-xs">
-          Last updated: {lastUpdated.toLocaleTimeString()}
-        </p>
-      </CardHeader>
+  const tone =
+    overallStatus === "healthy" ? "success" : overallStatus === "warning" ? "warning" : "danger";
 
-      <CardContent className="space-y-4">
+  return (
+    <TerminalCard tone={tone} className={className}>
+      <div className="border-border flex items-center justify-between border-b px-4 py-2">
+        <TerminalCardHeader
+          code={code}
+          title="SYSTEM_HEALTH"
+          meta={`Updated: ${lastUpdated.toLocaleTimeString()}`}
+          icon={<Activity className="h-4 w-4" />}
+          className="border-0 p-0"
+        />
+        <Badge variant={overallStatus === "healthy" ? "default" : "accent"} className="font-medium">
+          <StatusIcon className="mr-1 h-3 w-3" />
+          {overallStatus.toUpperCase()}
+        </Badge>
+      </div>
+
+      <TerminalCardContent className="space-y-4">
         {/* Uptime */}
         <div className="space-y-2">
           <div className="flex items-center justify-between">
@@ -191,12 +191,7 @@ export function SystemHealthWidget({
             </span>
           </div>
         </div>
-      </CardContent>
-
-      {/* Background decoration */}
-      <div
-        className={cn("bg-primary/5 absolute -top-8 -right-8 h-32 w-32 blur-3xl", mode.radius)}
-      />
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

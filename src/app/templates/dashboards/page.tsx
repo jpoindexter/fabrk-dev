@@ -6,7 +6,7 @@
 "use client";
 
 import Link from "next/link";
-import { StyledCard, StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { getCategoryInfo, getTemplatesByCategory } from "../template-data";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
@@ -114,9 +114,9 @@ export default function DashboardsPage() {
         </div>
 
         {/* Template Features Card */}
-        <StyledCard>
-          <StyledCardHeader code="0x00" title="DASHBOARD_FEATURES" />
-          <div className="p-6">
+        <TerminalCard>
+          <TerminalCardHeader code="0x00" title="DASHBOARD_FEATURES" />
+          <TerminalCardContent padding="lg">
             <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
               [DASHBOARD_TEMPLATES]:
             </div>
@@ -146,8 +146,8 @@ export default function DashboardsPage() {
                 tracking
               </div>
             </div>
-          </div>
-        </StyledCard>
+          </TerminalCardContent>
+        </TerminalCard>
       </main>
     </div>
   );

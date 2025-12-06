@@ -13,6 +13,15 @@ import { Copy, Check, Code, ExternalLink } from "lucide-react";
 
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
+import {
+  PageBadge,
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+  FeatureList,
+  FeatureItem,
+  InfoNote,
+} from "@/components/ui/card";
 interface TemplateShowcaseProps {
   /** Template code identifier (e.g., "BLOG", "ANALYTICS") */
   code: string;
@@ -65,11 +74,7 @@ export function TemplateShowcase({
         {/* Header */}
         <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <div className="border-border inline-block border px-4 py-1">
-              <span className={cn("text-muted-foreground text-xs", mode.font)}>
-                [TEMPLATE]: {code}
-              </span>
-            </div>
+            <PageBadge>{code}</PageBadge>
             {badge && (
               <Badge variant="default" className={cn("text-xs", mode.font, mode.radius)}>
                 {badge.toUpperCase()}
@@ -123,33 +128,22 @@ export function TemplateShowcase({
         {children}
 
         {/* Features Card */}
-        <div className="border-border bg-card border">
-          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-            <span className={cn("text-muted-foreground text-xs", mode.font)}>[ features.md ]</span>
-          </div>
-          <div className="p-4">
+        <TerminalCard size="auto">
+          <TerminalCardHeader code="0x00" title="features.md" />
+          <TerminalCardContent>
             <div className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
               [TEMPLATE_FEATURES]:
             </div>
-            <div
-              className={cn(
-                "grid gap-x-8 gap-y-1.5 text-xs md:grid-cols-2 lg:grid-cols-3",
-                mode.font
-              )}
-            >
-              {features.map((feature, index) => (
-                <div key={index}>
-                  <span className="text-success">&gt;</span> {feature}
-                </div>
-              ))}
+            <div className="grid gap-x-8 gap-y-1.5 md:grid-cols-2 lg:grid-cols-3">
+              <FeatureList>
+                {features.map((feature, index) => (
+                  <FeatureItem key={index}>{feature}</FeatureItem>
+                ))}
+              </FeatureList>
             </div>
-            {note && (
-              <div className={cn("text-muted-foreground mt-4 text-xs", mode.font)}>
-                [NOTE]: {note}
-              </div>
-            )}
-          </div>
-        </div>
+            {note && <InfoNote>{note}</InfoNote>}
+          </TerminalCardContent>
+        </TerminalCard>
       </div>
     </div>
   );

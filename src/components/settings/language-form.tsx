@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -76,14 +76,9 @@ export function LanguageForm() {
   }
 
   return (
-    <Card className={mode.radius}>
-      <CardHeader>
-        <CardTitle className={cn(mode.font, "text-xs")}>[LANGUAGE]:</CardTitle>
-        <CardDescription className={cn(mode.font, "text-xs")}>
-          Select your preferred language for the interface.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
+    <TerminalCard tone="neutral">
+      <TerminalCardHeader code="0x00" title="LANGUAGE" />
+      <TerminalCardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
@@ -190,7 +185,7 @@ export function LanguageForm() {
             </Button>
           </form>
         </Form>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

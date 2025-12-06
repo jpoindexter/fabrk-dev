@@ -6,6 +6,7 @@
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
+import { TerminalBadge } from "@/components/ui/card";
 
 export function PageHeader() {
   return (
@@ -15,15 +16,7 @@ export function PageHeader() {
       transition={{ duration: 0.6 }}
       className="mb-12 text-center"
     >
-      <span
-        className={cn(
-          "border-border bg-card text-muted-foreground mb-4 inline-block border px-4 py-1 text-xs",
-          mode.font,
-          mode.radius
-        )}
-      >
-        [ [0x00] CONTACT ] COMMUNICATION_INTERFACE
-      </span>
+      <TerminalBadge code="0x00" label="CONTACT" meta="COMMUNICATION_INTERFACE" className="mb-4" />
       <h1 className={cn("mb-2 text-4xl font-semibold tracking-tight", mode.font)}>CONTACT_US</h1>
       <p className={cn("text-muted-foreground text-xs", mode.font)}>
         Send us a message and we'll respond within 24 hours

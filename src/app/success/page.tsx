@@ -10,7 +10,7 @@ import { CheckCircle, Download, Mail, FileDown, Package } from "lucide-react";
 import Link from "next/link";
 import { Suspense, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { toast } from "sonner";
 import { useSearchParams } from "next/navigation";
 
@@ -55,8 +55,8 @@ function SuccessContent() {
 
   return (
     <div className="bg-background flex min-h-screen items-center justify-center p-4">
-      <Card className="w-full max-w-2xl">
-        <CardContent className="space-y-6 p-8">
+      <TerminalCard className="w-full max-w-2xl">
+        <TerminalCardContent className="space-y-6 p-8" padding="lg">
           {/* Success Icon & Header */}
           <div className="space-y-4 text-center">
             <div className="bg-primary mx-auto flex h-20 w-20 items-center justify-center rounded-none">
@@ -69,29 +69,28 @@ function SuccessContent() {
           </div>
 
           {/* Check your email banner */}
-          <div className="border-border bg-card border">
-            <div className="border-border flex items-center justify-between border-b px-4 py-2">
-              <span className="text-muted-foreground font-mono text-xs">[ [0x01] EMAIL ]</span>
-              <Mail className="text-muted-foreground size-4" />
-            </div>
-            <div className="space-y-2 p-4">
-              <h3 className="font-mono text-sm font-semibold">CHECK_YOUR_EMAIL</h3>
+          <TerminalCard>
+            <TerminalCardHeader
+              code="0x01"
+              title="CHECK_YOUR_EMAIL"
+              icon={<Mail className="size-4" />}
+            />
+            <TerminalCardContent padding="md">
               <p className="text-muted-foreground font-mono text-xs">
-                <span className="text-muted-foreground">DESC: </span>
                 We've sent you a confirmation email with a magic link to instantly access your
                 dashboard - no password needed!
               </p>
-            </div>
-          </div>
+            </TerminalCardContent>
+          </TerminalCard>
 
           {/* What's in the email */}
-          <div className="border-border bg-card border">
-            <div className="border-border flex items-center justify-between border-b px-4 py-2">
-              <span className="text-muted-foreground font-mono text-xs">[ [0x02] CONTENTS ]</span>
-              <Package className="text-muted-foreground size-4" />
-            </div>
-            <div className="p-4">
-              <h3 className="mb-4 font-mono text-sm font-semibold">EMAIL_CONTENTS:</h3>
+          <TerminalCard>
+            <TerminalCardHeader
+              code="0x02"
+              title="EMAIL_CONTENTS"
+              icon={<Package className="size-4" />}
+            />
+            <TerminalCardContent padding="md">
               <ul className="text-muted-foreground space-y-4 font-mono text-xs">
                 <li className="flex items-start gap-4">
                   <span className="bg-primary text-primary-foreground flex size-6 shrink-0 items-center justify-center text-sm font-medium">
@@ -121,42 +120,43 @@ function SuccessContent() {
                   </span>
                 </li>
               </ul>
-            </div>
-          </div>
+            </TerminalCardContent>
+          </TerminalCard>
 
           {/* GitHub Access */}
-          <div className="border-border bg-card border">
-            <div className="border-border flex items-center justify-between border-b px-4 py-2">
-              <span className="text-muted-foreground font-mono text-xs">[ [0x03] GITHUB ]</span>
-              <Download className="text-muted-foreground size-4" />
-            </div>
-            <div className="space-y-4 p-4">
-              <h3 className="font-mono text-sm font-semibold">ACCESS_YOUR_REPOSITORY</h3>
-              <p className="text-muted-foreground font-mono text-xs">
-                <span className="text-muted-foreground">DESC: </span>
-                Check your email for the GitHub invitation. Once accepted, you'll have full access
-                to clone and download the boilerplate.
-              </p>
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <Button asChild size="lg" className="w-full font-mono text-xs">
-                  <a
-                    href="https://github.com/notifications"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Download className="mr-2 size-4" />
-                    &gt; CHECK_GITHUB
-                  </a>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="w-full font-mono text-xs">
-                  <a href="/docs/getting-started" target="_blank" rel="noopener noreferrer">
-                    <FileDown className="mr-2 size-4" />
-                    &gt; VIEW_DOCS
-                  </a>
-                </Button>
+          <TerminalCard>
+            <TerminalCardHeader
+              code="0x03"
+              title="ACCESS_YOUR_REPOSITORY"
+              icon={<Download className="size-4" />}
+            />
+            <TerminalCardContent padding="md">
+              <div className="space-y-4">
+                <p className="text-muted-foreground font-mono text-xs">
+                  Check your email for the GitHub invitation. Once accepted, you'll have full access
+                  to clone and download the boilerplate.
+                </p>
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <Button asChild size="lg" className="w-full font-mono text-xs">
+                    <a
+                      href="https://github.com/notifications"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Download className="mr-2 size-4" />
+                      &gt; CHECK_GITHUB
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" size="lg" className="w-full font-mono text-xs">
+                    <a href="/docs/getting-started" target="_blank" rel="noopener noreferrer">
+                      <FileDown className="mr-2 size-4" />
+                      &gt; VIEW_DOCS
+                    </a>
+                  </Button>
+                </div>
               </div>
-            </div>
-          </div>
+            </TerminalCardContent>
+          </TerminalCard>
 
           {/* Email not received */}
           <div className="py-4 text-center">
@@ -191,8 +191,8 @@ function SuccessContent() {
               </Link>
             </p>
           </div>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
     </div>
   );
 }

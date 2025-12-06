@@ -1,11 +1,12 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { Card, CardContent } from "@/components/ui/card";
+import { TerminalCard, TerminalCardContent } from "@/components/ui/card";
 import { Palette, Sun, Moon, Sparkles } from "lucide-react";
 
 export const metadata = {
   title: "Theming & Colors - Fabrk Docs",
-  description: "Customize your Fabrk app with 20 built-in color themes. Switch themes instantly or create your own brand colors.",
+  description:
+    "Customize your Fabrk app with 20 built-in color themes. Switch themes instantly or create your own brand colors.",
 };
 
 export default function ThemingPage() {
@@ -92,9 +93,9 @@ export function MyNavbar() {
   Adapts automatically when user switches themes
 </div>
 
-// ❌ BAD - Hardcoded colors
-<button className="bg-blue-500 text-white">
-  Always blue, ignores theme selection
+// ❌ BAD - Hardcoded colors (breaks theming)
+<button className="bg-[hardcoded] text-[hardcoded]">
+  Always same color, ignores theme selection
 </button>`,
           language: "tsx",
         },
@@ -154,20 +155,24 @@ const themes = [
             { name: "Cyberpunk", desc: "Futuristic", color: "#ff7598" },
             { name: "Dracula", desc: "Dark purple", color: "#ff79c6" },
           ].map((theme) => (
-            <Card key={theme.name} className="transition-all hover:border-primary/50">
-              <CardContent className="p-4">
+            <TerminalCard
+              key={theme.name}
+              interactive
+              className="hover:border-primary/50 transition-all"
+            >
+              <TerminalCardContent padding="sm" className="p-4">
                 <div className="flex items-center gap-2">
                   <div
-                    className="h-6 w-6 rounded-none border-2 border-border"
+                    className="border-border h-6 w-6 rounded-none border-2"
                     style={{ backgroundColor: theme.color }}
                   />
                   <div>
                     <div className="font-mono text-xs">{theme.name}</div>
-                    <div className="font-mono text-xs text-muted-foreground">{theme.desc}</div>
+                    <div className="text-muted-foreground font-mono text-xs">{theme.desc}</div>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+              </TerminalCardContent>
+            </TerminalCard>
           ))}
         </div>
       </DocsSection>

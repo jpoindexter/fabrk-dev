@@ -18,7 +18,7 @@
 import * as React from "react";
 import { Users, Crown, CheckCircle2, MoreVertical, Settings, LogOut } from "lucide-react";
 
-import { Card, CardContent } from "@/components/ui/card";
+import { TerminalCard, TerminalCardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -74,15 +74,13 @@ export function OrgCard({
     .slice(0, 2);
 
   return (
-    <Card
-      className={cn(
-        "group relative cursor-pointer transition-all duration-200",
-        isActive && "ring-primary ring-2",
-        className
-      )}
+    <TerminalCard
+      interactive
+      tone={isActive ? "primary" : "neutral"}
+      className={cn("group relative cursor-pointer", className)}
       onClick={onSelect}
     >
-      <CardContent className="p-6">
+      <TerminalCardContent padding="lg">
         {/* Active indicator */}
         {isActive && (
           <div
@@ -167,7 +165,7 @@ export function OrgCard({
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

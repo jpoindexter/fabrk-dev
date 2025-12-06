@@ -6,6 +6,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { TerminalCard, TerminalCardContent } from "@/components/ui/card";
 import { PreviewHeader } from "./preview-header";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
@@ -61,10 +62,10 @@ export function BillingPreview() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <div ref={ref} className={cn(mode.radius, "border-border bg-card w-full max-w-md border")}>
+    <TerminalCard ref={ref} className="w-full max-w-md">
       <PreviewHeader title="billing_portal.exe" animated />
 
-      <div className="p-6">
+      <TerminalCardContent padding="lg">
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
@@ -143,7 +144,7 @@ export function BillingPreview() {
             </motion.div>
           </motion.div>
         </motion.div>
-      </div>
-    </div>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

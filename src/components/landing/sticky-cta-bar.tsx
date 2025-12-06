@@ -7,6 +7,7 @@ import { X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
 import config from "@/config";
+import { TerminalCard } from "@/components/ui/card";
 
 interface StickyCTABarProps {
   /**
@@ -82,13 +83,7 @@ export function StickyCTABar({
         isVisible ? "translate-y-0" : "translate-y-full"
       )}
     >
-      <div
-        className={cn(
-          mode.radius,
-          mode.font,
-          "border-border bg-card/95 border-t-2 backdrop-blur-sm"
-        )}
-      >
+      <TerminalCard className="bg-card/95 border-t-2 backdrop-blur-sm">
         <div className="mx-auto max-w-7xl px-4 py-4">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             {/* Message */}
@@ -116,22 +111,22 @@ export function StickyCTABar({
               <Button asChild size="sm" className={cn(mode.radius, mode.font, "text-xs")}>
                 <Link href={ctaHref}>
                   &gt; {ctaText.toUpperCase().replace(/ /g, "_")}
-                  <ArrowRight className="ml-2 size-3" />
+                  <ArrowRight className="ml-2 h-3 w-3" />
                 </Link>
               </Button>
               <Button
                 variant="ghost"
                 size="icon"
-                className={cn(mode.radius, "size-8")}
+                className={cn(mode.radius, "h-8 w-8")}
                 onClick={handleDismiss}
                 aria-label="Dismiss"
               >
-                <X className="size-4" />
+                <X className="h-4 w-4" />
               </Button>
             </div>
           </div>
         </div>
-      </div>
+      </TerminalCard>
     </div>
   );
 }

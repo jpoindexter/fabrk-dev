@@ -7,6 +7,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Building2 } from "lucide-react";
+import { TerminalCard, TerminalCardContent } from "@/components/ui/card";
 import { PreviewHeader } from "./preview-header";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
@@ -31,10 +32,10 @@ export function OrganizationPreview() {
   }, [isInView]);
 
   return (
-    <div ref={ref} className={cn(mode.radius, "border-border bg-card w-full max-w-md border")}>
+    <TerminalCard ref={ref} className="w-full max-w-md">
       <PreviewHeader title="org_manager.exe" />
 
-      <div className="p-6">
+      <TerminalCardContent padding="lg">
         <div className="mb-4 flex items-center justify-between">
           <span className={cn(mode.font, "text-muted-foreground text-xs")}>[ORGANIZATIONS]:</span>
           <button
@@ -107,7 +108,7 @@ export function OrganizationPreview() {
             ))}
           </div>
         </div>
-      </div>
-    </div>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

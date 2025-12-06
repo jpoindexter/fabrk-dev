@@ -13,7 +13,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Save, Trash2, AlertTriangle, Loader2, Settings as SettingsIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -174,17 +174,22 @@ export default function OrganizationSettingsPage() {
 
   if (!organization) {
     return (
-      <Card className={cn("border-border border", mode.radius)}>
-        <CardContent className="py-12">
+      <TerminalCard tone="danger">
+        <TerminalCardHeader
+          code="0x00"
+          title="ERROR"
+          icon={<AlertTriangle className="h-4 w-4" />}
+        />
+        <TerminalCardContent padding="lg">
           <div className="text-center">
             <AlertTriangle className="text-destructive mx-auto h-12 w-12" />
             <h3 className="mt-4 text-lg font-semibold">Organization not found</h3>
             <Button onClick={() => router.push("/dashboard")} className="mt-4">
-              Back to Dashboard
+              &gt; BACK_TO_DASHBOARD
             </Button>
           </div>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
     );
   }
 
@@ -194,11 +199,11 @@ export default function OrganizationSettingsPage() {
     <div className="mx-auto max-w-4xl space-y-6">
       {/* Header */}
       <div className="flex items-center gap-4">
-        <div className={cn("border-border bg-primary border p-2", mode.radius)}>
+        <div className="border-border bg-primary rounded-none border p-2">
           <SettingsIcon className="text-primary-foreground h-6 w-6" />
         </div>
         <div>
-          <h1 className="text-4xl font-semibold">Organization Settings</h1>
+          <h1 className="font-mono text-4xl font-semibold">ORGANIZATION_SETTINGS</h1>
           <p className="text-muted-foreground">
             Manage your organization's information and preferences
           </p>
@@ -206,12 +211,13 @@ export default function OrganizationSettingsPage() {
       </div>
 
       {/* General Settings */}
-      <Card className={cn("border-border border", mode.radius)}>
-        <CardHeader>
-          <CardTitle>General Information</CardTitle>
-          <CardDescription>Update your organization's public information</CardDescription>
-        </CardHeader>
-        <CardContent>
+      <TerminalCard>
+        <TerminalCardHeader
+          code="0x01"
+          title="GENERAL_INFORMATION"
+          icon={<SettingsIcon className="h-4 w-4" />}
+        />
+        <TerminalCardContent padding="lg">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               <FormField
@@ -223,7 +229,7 @@ export default function OrganizationSettingsPage() {
                     <FormControl>
                       <Input
                         placeholder="Acme Inc."
-                        className={cn("border-border border", mode.radius)}
+                        className="border-border rounded-none border"
                         disabled={!isOwnerOrAdmin}
                         {...field}
                       />
@@ -243,7 +249,7 @@ export default function OrganizationSettingsPage() {
                     <FormControl>
                       <Input
                         placeholder="acme-inc"
-                        className={cn("border-border border", mode.radius)}
+                        className="border-border rounded-none border"
                         disabled={!isOwnerOrAdmin}
                         {...field}
                       />
@@ -265,7 +271,7 @@ export default function OrganizationSettingsPage() {
                     <FormControl>
                       <Textarea
                         placeholder="What does your organization do?"
-                        className={cn("border-border border", mode.radius)}
+                        className="border-border rounded-none border"
                         rows={3}
                         disabled={!isOwnerOrAdmin}
                         {...field}
@@ -285,7 +291,7 @@ export default function OrganizationSettingsPage() {
                     <FormControl>
                       <Input
                         placeholder="https://example.com/logo.png"
-                        className={cn("border-border border", mode.radius)}
+                        className="border-border rounded-none border"
                         disabled={!isOwnerOrAdmin}
                         {...field}
                       />
@@ -299,36 +305,32 @@ export default function OrganizationSettingsPage() {
               {isOwnerOrAdmin && (
                 <div className="flex justify-end gap-2 pt-4">
                   <Button type="button" variant="outline" onClick={() => form.reset()}>
-                    Reset
+                    &gt; RESET
                   </Button>
                   <Button type="submit" disabled={saving}>
                     {saving && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                     <Save className="mr-2 h-4 w-4" />
-                    Save Changes
+                    &gt; SAVE_CHANGES
                   </Button>
                 </div>
               )}
             </form>
           </Form>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
 
       {/* Danger Zone (Owner Only) */}
       {organization.role === "OWNER" && (
-        <Card className={cn("border-destructive border", mode.radius)}>
-          <CardHeader>
-            <CardTitle className="text-destructive">Danger Zone</CardTitle>
-            <CardDescription>Irreversible actions that affect your organization</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div
-              className={cn(
-                "border-destructive bg-destructive/10 flex items-start justify-between border p-4",
-                mode.radius
-              )}
-            >
+        <TerminalCard tone="danger">
+          <TerminalCardHeader
+            code="0x02"
+            title="DANGER_ZONE"
+            icon={<AlertTriangle className="h-4 w-4" />}
+          />
+          <TerminalCardContent padding="lg">
+            <div className="border-destructive bg-destructive/10 flex items-start justify-between rounded-none border p-4">
               <div className="flex-1">
-                <h4 className="font-semibold">Delete Organization</h4>
+                <h4 className="font-mono text-xs font-semibold">[DELETE_ORGANIZATION]:</h4>
                 <p className="text-muted-foreground mt-1 text-sm">
                   Permanently delete this organization and all associated data. This action cannot
                   be undone.
@@ -338,10 +340,10 @@ export default function OrganizationSettingsPage() {
                 <AlertDialogTrigger asChild>
                   <Button variant="destructive" size="sm" className="ml-4">
                     <Trash2 className="mr-2 h-4 w-4" />
-                    Delete
+                    &gt; DELETE
                   </Button>
                 </AlertDialogTrigger>
-                <AlertDialogContent className={cn("border-border border", mode.radius)}>
+                <AlertDialogContent className="border-border rounded-none border">
                   <AlertDialogHeader>
                     <AlertDialogTitle className="flex items-center gap-2">
                       <AlertTriangle className="text-destructive h-5 w-5" />
@@ -361,14 +363,14 @@ export default function OrganizationSettingsPage() {
                       className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
                     >
                       {deleting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                      Delete Organization
+                      &gt; DELETE_ORGANIZATION
                     </AlertDialogAction>
                   </AlertDialogFooter>
                 </AlertDialogContent>
               </AlertDialog>
             </div>
-          </CardContent>
-        </Card>
+          </TerminalCardContent>
+        </TerminalCard>
       )}
     </div>
   );

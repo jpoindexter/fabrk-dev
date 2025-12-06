@@ -8,6 +8,12 @@
 
 import { motion } from "framer-motion";
 import { FEATURE_CATEGORIES } from "./feature-data";
+import {
+  TerminalBadge,
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+} from "@/components/ui/card";
 
 interface FeatureCategoryCardProps {
   category: (typeof FEATURE_CATEGORIES)[0];
@@ -34,10 +40,11 @@ export function FeatureCategoryCard({ category, index }: FeatureCategoryCardProp
         {/* Content Side */}
         <div className="flex-1 space-y-6">
           <div className="inline-flex items-center gap-4">
-            <span className="border-border bg-card text-muted-foreground border px-4 py-1 text-xs">
-              [ [0x{hexIndex}] {category.stats.label.toUpperCase().replace(/ /g, "_")} ]{" "}
-              {category.stats.value}
-            </span>
+            <TerminalBadge
+              code={`0x${hexIndex}`}
+              label={category.stats.label.toUpperCase().replace(/ /g, "_")}
+              meta={category.stats.value}
+            />
           </div>
 
           <div>
@@ -53,18 +60,13 @@ export function FeatureCategoryCard({ category, index }: FeatureCategoryCardProp
 
         {/* Features List Side */}
         <div className="w-full flex-1">
-          <div className="border-border bg-card border">
-            {/* Terminal Header */}
-            <div className="border-border flex items-center justify-between border-b px-4 py-2">
-              <span className="text-muted-foreground text-xs">
-                [ [0x{hexIndex}] INCLUDED_FEATURES ]
-              </span>
-              <span className="text-muted-foreground text-xs">
-                {category.features.length} items
-              </span>
-            </div>
-            {/* Content */}
-            <div className="p-4 lg:p-6">
+          <TerminalCard size="auto">
+            <TerminalCardHeader
+              code={`0x${hexIndex}`}
+              title="INCLUDED_FEATURES"
+              meta={`${category.features.length} items`}
+            />
+            <TerminalCardContent padding="lg">
               <ul className="space-y-2">
                 {category.features.map((feature, i) => (
                   <li key={i} className="flex items-start gap-3 text-xs">
@@ -75,8 +77,8 @@ export function FeatureCategoryCard({ category, index }: FeatureCategoryCardProp
                   </li>
                 ))}
               </ul>
-            </div>
-          </div>
+            </TerminalCardContent>
+          </TerminalCard>
         </div>
       </div>
     </motion.div>

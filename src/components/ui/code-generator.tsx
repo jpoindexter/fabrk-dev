@@ -20,7 +20,7 @@ import { mode } from "@/design-system";
 import { Code2, Copy, Download, Loader2 } from "lucide-react";
 import * as React from "react";
 import { Button } from "./button";
-import { Card } from "./card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "./card";
 import { Textarea } from "./textarea";
 import { toast } from "sonner";
 
@@ -118,24 +118,29 @@ const CodeGenerator = React.forwardRef<HTMLDivElement, CodeGeneratorProps>(
         </div>
 
         {generatedCode && (
-          <Card className={"p-6"}>
-            <div className="mb-2 flex items-center justify-between">
-              <span className={`"text-sm" text-muted-foreground font-medium`}>Generated Code</span>
-              <div className={"flex gap-2"}>
-                <Button variant="ghost" size="icon" onClick={handleCopy} className="size-8">
-                  <Copy className="size-4" />
-                  <span className="sr-only">Copy code</span>
-                </Button>
-                <Button variant="ghost" size="icon" onClick={handleDownload} className="size-8">
-                  <Download className="size-4" />
-                  <span className="sr-only">Download code</span>
-                </Button>
-              </div>
-            </div>
-            <pre className={cn("border-border bg-card overflow-x-auto border", mode.radius)}>
-              <code className={`language-${language}`}>{generatedCode}</code>
-            </pre>
-          </Card>
+          <TerminalCard>
+            <TerminalCardHeader
+              code="0x01"
+              title="GENERATED_CODE"
+              icon={
+                <div className={"flex gap-2"}>
+                  <Button variant="ghost" size="icon" onClick={handleCopy} className="size-8">
+                    <Copy className="size-4" />
+                    <span className="sr-only">Copy code</span>
+                  </Button>
+                  <Button variant="ghost" size="icon" onClick={handleDownload} className="size-8">
+                    <Download className="size-4" />
+                    <span className="sr-only">Download code</span>
+                  </Button>
+                </div>
+              }
+            />
+            <TerminalCardContent padding="md">
+              <pre className={cn("border-border bg-card overflow-x-auto border", mode.radius)}>
+                <code className={`language-${language}`}>{generatedCode}</code>
+              </pre>
+            </TerminalCardContent>
+          </TerminalCard>
         )}
       </div>
     );

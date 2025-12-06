@@ -8,6 +8,12 @@
 
 import { motion } from "framer-motion";
 import { TestTube, Terminal, BookOpen } from "lucide-react";
+import {
+  TerminalBadge,
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+} from "@/components/ui/card";
 
 export function QualitySection() {
   return (
@@ -21,9 +27,7 @@ export function QualitySection() {
           className="mb-12 text-center"
         >
           <div className="mb-4">
-            <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 text-xs">
-              [ [0x20] PRODUCTION_QUALITY ]
-            </span>
+            <TerminalBadge code="0x20" label="PRODUCTION_QUALITY" />
           </div>
           <h2 className="mb-4 text-2xl font-semibold tracking-tight">PRODUCTION_QUALITY</h2>
           <p className="text-muted-foreground text-sm">
@@ -60,21 +64,24 @@ export function QualitySection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group border-border bg-card hover:border-primary/50 flex h-full flex-col border transition-colors"
+                className="group"
               >
-                {/* Terminal Header */}
-                <div className="border-border flex items-center justify-between border-b px-4 py-2">
-                  <span className="text-muted-foreground text-xs">[ [{item.id}] QUALITY ]</span>
-                  <Icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
-                </div>
-                {/* Content */}
-                <div className="flex-1 p-4">
-                  <div className="text-foreground mb-3 text-xs font-semibold">{item.title}</div>
-                  <div className="text-xs">
-                    <span className="text-muted-foreground">DESC: </span>
-                    <span className="text-foreground">{item.desc}</span>
-                  </div>
-                </div>
+                <TerminalCard interactive className="flex h-full flex-col">
+                  <TerminalCardHeader
+                    code={item.id}
+                    title="QUALITY"
+                    icon={
+                      <Icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
+                    }
+                  />
+                  <TerminalCardContent padding="md" className="flex-1">
+                    <div className="text-foreground mb-3 text-xs font-semibold">{item.title}</div>
+                    <div className="text-xs">
+                      <span className="text-muted-foreground">DESC: </span>
+                      <span className="text-foreground">{item.desc}</span>
+                    </div>
+                  </TerminalCardContent>
+                </TerminalCard>
               </motion.div>
             );
           })}

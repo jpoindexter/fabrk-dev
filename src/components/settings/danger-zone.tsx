@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -67,14 +67,9 @@ export function DangerZone() {
   };
 
   return (
-    <Card className={cn(mode.radius, "border-destructive")}>
-      <CardHeader>
-        <CardTitle className={cn(mode.font, "text-destructive text-xs")}>[DANGER_ZONE]:</CardTitle>
-        <CardDescription className={cn(mode.font, "text-xs")}>
-          Irreversible and destructive actions.
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-6">
+    <TerminalCard tone="danger">
+      <TerminalCardHeader code="0xFF" title="DANGER_ZONE" />
+      <TerminalCardContent className="space-y-6">
         <div className="border-t pt-4">
           <h3 className={cn(mode.font, "mb-2 text-xs")}>[EXPORT_YOUR_DATA]:</h3>
           <p className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
@@ -104,7 +99,7 @@ export function DangerZone() {
             &gt; DELETE_ACCOUNT
           </Button>
         </div>
-      </CardContent>
+      </TerminalCardContent>
 
       <AlertDialog open={exportDialogOpen} onOpenChange={setExportDialogOpen}>
         <AlertDialogContent className={cn(mode.radius, "border-border border")}>
@@ -173,6 +168,6 @@ export function DangerZone() {
           </div>
         </AlertDialogContent>
       </AlertDialog>
-    </Card>
+    </TerminalCard>
   );
 }

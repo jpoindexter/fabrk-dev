@@ -4,7 +4,7 @@
  */
 
 import { Progress } from "@/components/ui/progress";
-import { StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Users, HardDrive, Zap } from "lucide-react";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
@@ -29,9 +29,9 @@ interface UsageMetricsCardProps {
 
 export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
   return (
-    <div className="border-border bg-card border">
-      <StyledCardHeader code="0x00" title="USAGE_METRICS" />
-      <div className="p-4">
+    <TerminalCard tone="neutral">
+      <TerminalCardHeader code="0x00" title="USAGE_METRICS" />
+      <TerminalCardContent padding="md">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [USAGE_THIS_MONTH]:
         </div>
@@ -78,7 +78,7 @@ export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
             <Progress value={usage.apiCalls.percentage} className="h-2" />
           </div>
         </div>
-      </div>
-    </div>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

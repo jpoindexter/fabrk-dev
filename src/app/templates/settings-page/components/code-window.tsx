@@ -5,7 +5,7 @@
  */
 
 import { type ReactNode } from "react";
-import { StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader } from "@/components/ui/card";
 
 interface CodeWindowProps {
   filename: string;
@@ -15,9 +15,9 @@ interface CodeWindowProps {
 
 export function CodeWindow({ filename, children, borderColor = "border-border" }: CodeWindowProps) {
   return (
-    <div className={`border ${borderColor} bg-card`}>
-      <StyledCardHeader code="0x00" title={filename.replace(/\.[^/.]+$/, "").toUpperCase()} />
+    <TerminalCard className={borderColor !== "border-border" ? borderColor : ""}>
+      <TerminalCardHeader code="0x00" title={filename.replace(/\.[^/.]+$/, "").toUpperCase()} />
       {children}
-    </div>
+    </TerminalCard>
   );
 }

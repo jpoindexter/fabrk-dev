@@ -1,6 +1,12 @@
 "use client";
 
 import { SimpleIcon } from "@/components/ui/simple-icon";
+import {
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+  TerminalBadge,
+} from "@/components/ui/card";
 import { siTypescript, siPrisma, siEslint } from "simple-icons";
 import { Zap, FolderTree, Terminal, Code2 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -69,14 +75,7 @@ export function DeveloperExperienceSection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <span
-              className={cn(
-                "border-border bg-card text-muted-foreground mb-4 inline-block border px-4 py-1 text-xs",
-                mode.radius
-              )}
-            >
-              [ [0x50] DEV_EXPERIENCE ]
-            </span>
+            <TerminalBadge code="0x50" label="DEV_EXPERIENCE" />
           </motion.div>
         </div>
 
@@ -129,36 +128,33 @@ export function DeveloperExperienceSection() {
                   y: -4,
                   transition: { duration: 0.2 },
                 }}
-                className={cn(
-                  "group border-border bg-card hover:border-primary/50 flex h-full flex-col border transition-colors",
-                  mode.radius
-                )}
+                className="group"
               >
-                {/* Terminal Header */}
-                <div className="border-border flex items-center justify-between border-b px-4 py-2">
-                  <span className="text-muted-foreground text-xs">
-                    [ [0x{(index + 51).toString(16).toUpperCase()}] DEV ]
-                  </span>
-                  {feature.icon ? (
-                    <SimpleIcon
-                      path={feature.icon}
-                      className="text-muted-foreground group-hover:text-primary size-4 transition-colors"
-                    />
-                  ) : IconComponent ? (
-                    <IconComponent className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
-                  ) : null}
-                </div>
-
-                {/* Content */}
-                <div className="flex-1 p-4">
-                  <div className="text-foreground mb-3 text-xs font-semibold">
-                    {feature.title.toUpperCase().replace(/ /g, "_")}
-                  </div>
-                  <div className="text-xs">
-                    <span className="text-muted-foreground">DESC: </span>
-                    <span className="text-foreground">{feature.description}</span>
-                  </div>
-                </div>
+                <TerminalCard className="hover:border-primary/50 transition-colors">
+                  <TerminalCardHeader
+                    code={`0x${(index + 51).toString(16).toUpperCase()}`}
+                    title=""
+                    icon={
+                      feature.icon ? (
+                        <SimpleIcon
+                          path={feature.icon}
+                          className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors"
+                        />
+                      ) : IconComponent ? (
+                        <IconComponent className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors" />
+                      ) : undefined
+                    }
+                  />
+                  <TerminalCardContent className="p-4">
+                    <div className="text-foreground mb-3 text-xs font-semibold">
+                      {feature.title.toUpperCase().replace(/ /g, "_")}
+                    </div>
+                    <div className="text-xs">
+                      <span className="text-muted-foreground">DESC: </span>
+                      <span className="text-foreground">{feature.description}</span>
+                    </div>
+                  </TerminalCardContent>
+                </TerminalCard>
               </motion.div>
             );
           })}

@@ -6,7 +6,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { Plus, Trash2 } from "lucide-react";
+import { Plus, Trash2, Flag } from "lucide-react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -158,11 +158,13 @@ export default function FeatureFlagsDbPage() {
       </div>
 
       {showCreateForm && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Create Feature Flag</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
+        <TerminalCard tone="primary">
+          <TerminalCardHeader
+            code="0x00"
+            title="CREATE_FEATURE_FLAG"
+            icon={<Plus className="h-4 w-4" />}
+          />
+          <TerminalCardContent className="space-y-4">
             <div>
               <Label>{formatLabel("Flag Name")}</Label>
               <Input
@@ -192,45 +194,46 @@ export default function FeatureFlagsDbPage() {
                 &gt; CANCEL
               </Button>
             </div>
-          </CardContent>
-        </Card>
+          </TerminalCardContent>
+        </TerminalCard>
       )}
 
       <div className="grid gap-4">
         {flags.map((flag) => (
-          <Card key={flag.id}>
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <div className="space-y-1">
-                  <CardTitle className="text-lg">{flag.name}</CardTitle>
-                  {flag.description && <CardDescription>{flag.description}</CardDescription>}
+          <TerminalCard key={flag.id} tone={flag.enabled ? "success" : "neutral"}>
+            <div className="border-border flex items-center justify-between border-b px-4 py-2">
+              <TerminalCardHeader
+                code={`0x${flags.indexOf(flag) + 1}`}
+                title={flag.name.toUpperCase()}
+                meta={flag.enabled ? "Enabled" : "Disabled"}
+                icon={<Flag className="h-4 w-4" />}
+                className="border-0 p-0"
+              />
+              <div className="flex items-center gap-4">
+                <div className="flex items-center space-x-2">
+                  <Switch
+                    id={`toggle-${flag.id}`}
+                    checked={flag.enabled}
+                    onCheckedChange={(checked) => handleToggle(flag.id, checked)}
+                  />
+                  <Label htmlFor={`toggle-${flag.id}`} className="cursor-pointer">
+                    {formatLabel(flag.enabled ? "Enabled" : "Disabled")}
+                  </Label>
                 </div>
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center space-x-2">
-                    <Switch
-                      id={`toggle-${flag.id}`}
-                      checked={flag.enabled}
-                      onCheckedChange={(checked) => handleToggle(flag.id, checked)}
-                    />
-                    <Label htmlFor={`toggle-${flag.id}`} className="cursor-pointer">
-                      {formatLabel(flag.enabled ? "Enabled" : "Disabled")}
-                    </Label>
-                  </div>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => {
-                      setFlagToDelete(flag.id);
-                      setDeleteDialogOpen(true);
-                    }}
-                    aria-label="Delete feature flag"
-                  >
-                    <Trash2 className="text-destructive h-4 w-4" aria-hidden="true" />
-                  </Button>
-                </div>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => {
+                    setFlagToDelete(flag.id);
+                    setDeleteDialogOpen(true);
+                  }}
+                  aria-label="Delete feature flag"
+                >
+                  <Trash2 className="text-destructive h-4 w-4" aria-hidden="true" />
+                </Button>
               </div>
-            </CardHeader>
-            <CardContent>
+            </div>
+            <TerminalCardContent>
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <Label>{formatLabel("Rollout Percentage")}</Label>
@@ -244,16 +247,16 @@ export default function FeatureFlagsDbPage() {
                   disabled={!flag.enabled}
                 />
               </div>
-            </CardContent>
-          </Card>
+            </TerminalCardContent>
+          </TerminalCard>
         ))}
 
         {flags.length === 0 && (
-          <Card>
-            <CardContent className="text-muted-foreground flex h-48 items-center justify-center">
+          <TerminalCard tone="neutral">
+            <TerminalCardContent className="text-muted-foreground flex h-48 items-center justify-center">
               No feature flags created yet. Click "New Flag" to create one.
-            </CardContent>
-          </Card>
+            </TerminalCardContent>
+          </TerminalCard>
         )}
       </div>
 

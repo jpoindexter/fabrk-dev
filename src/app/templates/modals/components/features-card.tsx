@@ -3,42 +3,32 @@
  * Features Card - List of template features
  */
 
-import { StyledCard, StyledCardHeader } from "@/components/ui/card";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import {
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+  StyledLabel,
+  FeatureItem,
+  FeatureList,
+  InfoNote,
+} from "@/components/ui/card";
 
 export function FeaturesCard() {
   return (
-    <StyledCard>
-      <StyledCardHeader code="0x00" title="TEMPLATE_FEATURES" />
-      <div className="p-4">
-        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
-          [TEMPLATE_FEATURES]:
-        </div>
-        <div className={cn(mode.font, "space-y-2 text-xs")}>
-          <div>
-            <span className="text-success">&gt;</span> Confirmation dialog for destructive actions
-          </div>
-          <div>
-            <span className="text-success">&gt;</span> Form dialog with inputs and validation
-          </div>
-          <div>
-            <span className="text-success">&gt;</span> Side sheet for settings/navigation
-          </div>
-          <div>
-            <span className="text-success">&gt;</span> Popover for contextual content
-          </div>
-          <div>
-            <span className="text-success">&gt;</span> Accessible with keyboard navigation
-          </div>
-          <div>
-            <span className="text-success">&gt;</span> Terminal-styled headers and labels
-          </div>
-        </div>
-        <div className={cn(mode.font, "text-muted-foreground mt-4 text-xs")}>
-          [NOTE]: All patterns use Radix UI primitives for accessibility.
-        </div>
-      </div>
-    </StyledCard>
+    <TerminalCard>
+      <TerminalCardHeader code="0x00" title="TEMPLATE_FEATURES" />
+      <TerminalCardContent>
+        <StyledLabel className="mb-4">TEMPLATE_FEATURES</StyledLabel>
+        <FeatureList>
+          <FeatureItem>Confirmation dialog for destructive actions</FeatureItem>
+          <FeatureItem>Form dialog with inputs and validation</FeatureItem>
+          <FeatureItem>Side sheet for settings/navigation</FeatureItem>
+          <FeatureItem>Popover for contextual content</FeatureItem>
+          <FeatureItem>Accessible with keyboard navigation</FeatureItem>
+          <FeatureItem>Terminal-styled headers and labels</FeatureItem>
+        </FeatureList>
+        <InfoNote>All patterns use Radix UI primitives for accessibility.</InfoNote>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

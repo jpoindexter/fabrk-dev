@@ -6,7 +6,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Clock, LogOut } from "lucide-react";
@@ -25,12 +25,14 @@ export function SecuritySessionsCard({
   onInvalidateSessions,
 }: SecuritySessionsCardProps) {
   return (
-    <Card>
-      <StyledCardHeader
+    <TerminalCard tone="neutral">
+      <TerminalCardHeader
+        code="0x03"
         title="ACTIVE_SESSIONS"
-        icon={<Clock className="text-muted-foreground h-4 w-4" />}
+        icon={<Clock className="h-4 w-4" />}
+        meta="1 active"
       />
-      <CardContent className="space-y-4">
+      <TerminalCardContent className="space-y-4">
         <p className="text-muted-foreground mb-4 font-mono text-xs">
           Manage devices and locations where you&apos;re signed in
         </p>
@@ -71,7 +73,7 @@ export function SecuritySessionsCard({
             again on those devices.
           </p>
         </div>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

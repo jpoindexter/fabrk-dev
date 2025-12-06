@@ -23,6 +23,14 @@ import {
 } from "simple-icons";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
+import {
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+  TerminalStat,
+  TerminalStatGroup,
+  TerminalBadge,
+} from "@/components/ui/card";
 
 // Typewriter effect component
 function TypeWriter({
@@ -221,15 +229,7 @@ export function HeroSection() {
               transition={{ duration: 0.6 }}
               className="mb-6"
             >
-              <span
-                className={cn(
-                  "border-border bg-card text-muted-foreground inline-block border px-4 py-1 text-xs",
-                  mode.radius,
-                  mode.font
-                )}
-              >
-                [ [0x00] SYSTEM_INIT ] SAAS_BOILERPLATE_v2.0
-              </span>
+              <TerminalBadge code="0x00" label="SYSTEM_INIT" meta="SAAS_BOILERPLATE_v2.0" />
             </motion.div>
 
             {/* Headline */}
@@ -251,25 +251,21 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className={cn("border-border bg-card mb-8 border p-4", mode.radius)}
+              className="mb-8"
             >
-              <div className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
-                [ [0x01] STATUS ]────────────────────────
-              </div>
-              <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
-                Why spend valuable time tackling auth, billing, emails, organizations, invites and
-                onboarding? Focus on your business and skip the noise.
-              </p>
-              <div className={cn("flex flex-wrap gap-4 text-sm", mode.font)}>
-                <span>
-                  <span className="text-muted-foreground">Speed:</span>{" "}
-                  <span className="text-primary">OPTIMIZED</span>
-                </span>
-                <span>
-                  <span className="text-muted-foreground">Integration:</span>{" "}
-                  <span className="text-primary">SEAMLESS</span>
-                </span>
-              </div>
+              <TerminalCard size="auto">
+                <TerminalCardHeader code="0x01" title="STATUS" />
+                <TerminalCardContent>
+                  <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
+                    Why spend valuable time tackling auth, billing, emails, organizations, invites
+                    and onboarding? Focus on your business and skip the noise.
+                  </p>
+                  <TerminalStatGroup>
+                    <TerminalStat label="Speed" value="OPTIMIZED" />
+                    <TerminalStat label="Integration" value="SEAMLESS" />
+                  </TerminalStatGroup>
+                </TerminalCardContent>
+              </TerminalCard>
             </motion.div>
 
             {/* CTAs */}
@@ -293,15 +289,18 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <div className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
-                [ [0x02] POWERED_BY ] FIB[1,1,2,3,5,8,13]
-              </div>
+              <TerminalBadge
+                code="0x02"
+                label="POWERED_BY"
+                meta="FIB[1,1,2,3,5,8,13]"
+                className="mb-4"
+              />
               <div className="flex flex-wrap gap-4">
                 {techStack.map((tech) => (
                   <div
                     key={tech.name}
                     className={cn(
-                      "border-border bg-card flex items-center gap-2 border px-2 py-1",
+                      "border-border bg-card inline-flex items-center gap-2 border px-3 py-1.5",
                       mode.radius
                     )}
                   >
@@ -323,19 +322,14 @@ export function HeroSection() {
           >
             {/* Terminal Window Frame */}
             <motion.div
-              className={cn("border-border bg-card border", mode.radius)}
               whileHover={{ scale: 1.01 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              {/* Window Title Bar */}
-              <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-                <span className={cn("text-muted-foreground text-xs", mode.font)}>
-                  [ terminal — ~/projects ]
-                </span>
-              </div>
-
-              {/* Terminal Content */}
-              <HeroCodeDemo />
+              <TerminalCard size="auto">
+                <TerminalCardHeader code="0x03" title="terminal — ~/projects" />
+                {/* Terminal Content */}
+                <HeroCodeDemo />
+              </TerminalCard>
             </motion.div>
 
             {/* Discount Counter Below */}

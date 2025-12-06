@@ -3,15 +3,15 @@
  * Template Features Card - Documents template capabilities
  */
 
-import { StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function TemplateFeaturesCard() {
   return (
-    <div className="border-border bg-card border">
-      <StyledCardHeader code="0x00" title="FEATURES" />
-      <div className="p-4">
+    <TerminalCard tone="neutral">
+      <TerminalCardHeader code="0x00" title="FEATURES" />
+      <TerminalCardContent padding="md">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [TEMPLATE_FEATURES]:
         </div>
@@ -52,7 +52,7 @@ export function TemplateFeaturesCard() {
         <div className={cn(mode.font, "text-muted-foreground mt-4 text-xs")}>
           [NOTE]: Connect to Stripe API for live data.
         </div>
-      </div>
-    </div>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

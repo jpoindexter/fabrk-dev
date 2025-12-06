@@ -19,7 +19,7 @@ import { Eye, EyeOff, Copy, Check, Key, RefreshCw, Trash2, AlertTriangle } from 
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   AlertDialog,
@@ -94,22 +94,21 @@ export function ApiKeyGenerator({
   };
 
   return (
-    <Card className={cn("overflow-hidden", className)}>
-      <CardHeader className="pb-4">
-        <div className="flex items-center justify-between">
-          <CardTitle className="flex items-center gap-2 text-base">
-            <Key className="text-primary h-4 w-4" />
-            API Key
-          </CardTitle>
-          {apiKey && (
+    <TerminalCard className={cn("overflow-hidden", className)}>
+      <TerminalCardHeader
+        code="0x00"
+        title="API_Key"
+        icon={<Key className="h-4 w-4" />}
+        meta={
+          apiKey ? (
             <Badge variant="outline" className="text-xs font-medium">
               Active
             </Badge>
-          )}
-        </div>
-      </CardHeader>
+          ) : undefined
+        }
+      />
 
-      <CardContent className="space-y-4">
+      <TerminalCardContent padding="md" className="space-y-4">
         {apiKey ? (
           <>
             {/* API Key Display */}
@@ -262,7 +261,7 @@ export function ApiKeyGenerator({
             </div>
           </div>
         )}
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

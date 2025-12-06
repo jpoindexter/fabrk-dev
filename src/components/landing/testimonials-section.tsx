@@ -8,6 +8,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 
 export function TestimonialsSection() {
   const testimonials = [
@@ -100,42 +101,39 @@ export function TestimonialsSection() {
                 y: -4,
                 transition: { duration: 0.2 },
               }}
-              className={cn(
-                mode.radius,
-                "group border-border bg-card hover:border-primary/50 flex h-full flex-col border transition-colors"
-              )}
+              className="group hover:border-primary/50 transition-colors"
             >
-              {/* Terminal Header */}
-              <div className="border-border flex items-center justify-between border-b px-4 py-2">
-                <span className="text-muted-foreground text-xs">
-                  [ [0x{(index + 1).toString(16).toUpperCase().padStart(2, "0")}] TESTIMONIAL ]
-                </span>
-                <Avatar className={cn(mode.radius, "size-6")}>
-                  <AvatarFallback
-                    className={cn(
-                      mode.radius,
-                      "bg-primary/10 text-primary text-[10px] font-medium"
-                    )}
-                  >
-                    {testimonial.initials}
-                  </AvatarFallback>
-                </Avatar>
-              </div>
-
-              {/* Content */}
-              <div className="flex-1 p-4">
-                <div className="mb-4 text-xs">
-                  <span className="text-muted-foreground">QUOTE: </span>
-                  <span className="text-foreground">"{testimonial.quote}"</span>
-                </div>
-                <div className="text-xs">
-                  <span className="text-muted-foreground">AUTHOR: </span>
-                  <span className="text-foreground font-semibold">
-                    {testimonial.author.toUpperCase().replace(/ /g, "_")}
-                  </span>
-                  <span className="text-muted-foreground"> | {testimonial.role}</span>
-                </div>
-              </div>
+              <TerminalCard>
+                <TerminalCardHeader
+                  code={`0x${(index + 1).toString(16).toUpperCase().padStart(2, "0")}`}
+                  title="TESTIMONIAL"
+                  icon={
+                    <Avatar className={cn(mode.radius, "h-6 w-6")}>
+                      <AvatarFallback
+                        className={cn(
+                          mode.radius,
+                          "bg-primary/10 text-primary text-[10px] font-medium"
+                        )}
+                      >
+                        {testimonial.initials}
+                      </AvatarFallback>
+                    </Avatar>
+                  }
+                />
+                <TerminalCardContent>
+                  <div className="mb-4 text-xs">
+                    <span className="text-muted-foreground">QUOTE: </span>
+                    <span className="text-foreground">"{testimonial.quote}"</span>
+                  </div>
+                  <div className="text-xs">
+                    <span className="text-muted-foreground">AUTHOR: </span>
+                    <span className="text-foreground font-semibold">
+                      {testimonial.author.toUpperCase().replace(/ /g, "_")}
+                    </span>
+                    <span className="text-muted-foreground"> | {testimonial.role}</span>
+                  </div>
+                </TerminalCardContent>
+              </TerminalCard>
             </motion.div>
           ))}
         </div>

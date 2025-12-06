@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -78,15 +78,9 @@ export function AppearanceForm() {
   }
 
   return (
-    <Card className={mode.radius}>
-      <CardHeader>
-        <CardTitle className={cn(mode.font, "text-xs")}>[APPEARANCE]:</CardTitle>
-        <CardDescription className={cn(mode.font, "text-xs")}>
-          Customize your language preference. Use the theme dropdown in the navigation bar to change
-          color themes.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
+    <TerminalCard tone="neutral">
+      <TerminalCardHeader code="0x03" title="APPEARANCE" />
+      <TerminalCardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
@@ -166,7 +160,7 @@ export function AppearanceForm() {
             </Button>
           </form>
         </Form>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

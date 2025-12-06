@@ -8,6 +8,7 @@
 
 import { motion } from "framer-motion";
 import { COMPONENT_STATS } from "./feature-data";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 
 export function StatsSection() {
   return (
@@ -24,21 +25,24 @@ export function StatsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="group border-border bg-card hover:border-primary/50 flex h-full flex-col border transition-colors"
+                className="group"
               >
-                {/* Terminal Header */}
-                <div className="border-border flex items-center justify-between border-b px-4 py-2">
-                  <span className="text-muted-foreground text-xs">[ [0x{hexId}] STAT ]</span>
-                  <Icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
-                </div>
-                {/* Content */}
-                <div className="flex-1 p-4">
-                  <div className="text-foreground mb-2 text-2xl font-semibold">{stat.value}</div>
-                  <div className="text-xs">
-                    <span className="text-muted-foreground">DESC: </span>
-                    <span className="text-foreground">{stat.description}</span>
-                  </div>
-                </div>
+                <TerminalCard interactive className="flex h-full flex-col">
+                  <TerminalCardHeader
+                    code={`0x${hexId}`}
+                    title="STAT"
+                    icon={
+                      <Icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
+                    }
+                  />
+                  <TerminalCardContent padding="md" className="flex-1">
+                    <div className="text-foreground mb-2 text-2xl font-semibold">{stat.value}</div>
+                    <div className="text-xs">
+                      <span className="text-muted-foreground">DESC: </span>
+                      <span className="text-foreground">{stat.description}</span>
+                    </div>
+                  </TerminalCardContent>
+                </TerminalCard>
               </motion.div>
             );
           })}

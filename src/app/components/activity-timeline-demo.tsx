@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ActivityTimeline, TimelineEvent } from "@/components/ui/activity-timeline";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useDemoDates } from "@/lib/utils/demo-dates";
 
@@ -240,74 +240,76 @@ export default function ActivityTimelineDemo() {
         </TabsList>
 
         <TabsContent value="project" className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Project Timeline</CardTitle>
-              <CardDescription>
-                Complete project history with grouped dates and filters
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
+          <TerminalCard>
+            <TerminalCardHeader
+              code="0x01"
+              title="Project_Timeline"
+              meta="Complete project history with grouped dates and filters"
+            />
+            <TerminalCardContent padding="md">
               <ActivityTimeline events={projectEvents} groupByDate={true} showFilters={true} />
-            </CardContent>
-          </Card>
+            </TerminalCardContent>
+          </TerminalCard>
         </TabsContent>
 
         <TabsContent value="issue" className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Issue History</CardTitle>
-              <CardDescription>Track bug reports from creation to resolution</CardDescription>
-            </CardHeader>
-            <CardContent>
+          <TerminalCard>
+            <TerminalCardHeader
+              code="0x02"
+              title="Issue_History"
+              meta="Track bug reports from creation to resolution"
+            />
+            <TerminalCardContent padding="md">
               <ActivityTimeline events={issueEvents} showFilters={false} />
-            </CardContent>
-          </Card>
+            </TerminalCardContent>
+          </TerminalCard>
         </TabsContent>
 
         <TabsContent value="user" className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>User Activity</CardTitle>
-              <CardDescription>Monitor user actions and account changes</CardDescription>
-            </CardHeader>
-            <CardContent>
+          <TerminalCard>
+            <TerminalCardHeader
+              code="0x03"
+              title="User_Activity"
+              meta="Monitor user actions and account changes"
+            />
+            <TerminalCardContent padding="md">
               <ActivityTimeline events={userEvents} groupByDate={true} showFilters={true} />
-            </CardContent>
-          </Card>
+            </TerminalCardContent>
+          </TerminalCard>
         </TabsContent>
 
         <TabsContent value="system" className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>System Events</CardTitle>
-              <CardDescription>
-                Server operations, deployments, and maintenance tasks
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
+          <TerminalCard>
+            <TerminalCardHeader
+              code="0x04"
+              title="System_Events"
+              meta="Server operations, deployments, and maintenance tasks"
+            />
+            <TerminalCardContent padding="md">
               <ActivityTimeline events={systemEvents} showFilters={true} />
-            </CardContent>
-          </Card>
+            </TerminalCardContent>
+          </TerminalCard>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Compact View</CardTitle>
-              <CardDescription>Condensed timeline without expandable details</CardDescription>
-            </CardHeader>
-            <CardContent>
+          <TerminalCard>
+            <TerminalCardHeader
+              code="0x05"
+              title="Compact_View"
+              meta="Condensed timeline without expandable details"
+            />
+            <TerminalCardContent padding="md">
               <ActivityTimeline events={systemEvents.slice(0, 3)} compact={true} />
-            </CardContent>
-          </Card>
+            </TerminalCardContent>
+          </TerminalCard>
         </TabsContent>
       </Tabs>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Features</CardTitle>
-          <CardDescription>What makes this component powerful</CardDescription>
-        </CardHeader>
-        <CardContent>
+      <TerminalCard>
+        <TerminalCardHeader
+          code="0x06"
+          title="Features"
+          meta="What makes this component powerful"
+        />
+        <TerminalCardContent padding="md">
           <ul className="text-muted-foreground space-y-2 text-sm">
             <li className="flex items-start gap-2">
               <span className="text-primary font-semibold">✓</span>
@@ -372,8 +374,8 @@ export default function ActivityTimelineDemo() {
               </span>
             </li>
           </ul>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
     </div>
   );
 }

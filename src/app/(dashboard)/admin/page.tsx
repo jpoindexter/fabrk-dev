@@ -5,8 +5,8 @@
 
 import { Suspense } from "react";
 import { prisma } from "@/lib/prisma";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Users, CreditCard, Activity, Building } from "lucide-react";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Users, CreditCard, Activity, Building, Zap } from "lucide-react";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
@@ -82,60 +82,57 @@ async function AdminStats() {
 
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Total Users</CardTitle>
-          <Users className="text-muted-foreground h-4 w-4" />
-        </CardHeader>
-        <CardContent>
+      <TerminalCard tone="primary">
+        <TerminalCardHeader code="0x01" title="TOTAL_USERS" icon={<Users className="h-4 w-4" />} />
+        <TerminalCardContent>
           <div className="text-2xl font-semibold">{stats.totalUsers}</div>
           <p className="text-muted-foreground text-xs">+{stats.recentUsers} in last 7 days</p>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
 
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Organizations</CardTitle>
-          <Building className="text-muted-foreground h-4 w-4" />
-        </CardHeader>
-        <CardContent>
+      <TerminalCard tone="neutral">
+        <TerminalCardHeader
+          code="0x02"
+          title="ORGANIZATIONS"
+          icon={<Building className="h-4 w-4" />}
+        />
+        <TerminalCardContent>
           <div className="text-2xl font-semibold">{stats.totalOrganizations}</div>
           <p className="text-muted-foreground text-xs">Total workspaces</p>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
 
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Active Users</CardTitle>
-          <Activity className="text-muted-foreground h-4 w-4" />
-        </CardHeader>
-        <CardContent>
+      <TerminalCard tone="success">
+        <TerminalCardHeader
+          code="0x03"
+          title="ACTIVE_USERS"
+          icon={<Activity className="h-4 w-4" />}
+        />
+        <TerminalCardContent>
           <div className="text-2xl font-semibold">{stats.activeUsers}</div>
           <p className="text-muted-foreground text-xs">With active sessions</p>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
 
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">MRR</CardTitle>
-          <CreditCard className="text-muted-foreground h-4 w-4" />
-        </CardHeader>
-        <CardContent>
+      <TerminalCard tone="primary">
+        <TerminalCardHeader code="0x04" title="MRR" icon={<CreditCard className="h-4 w-4" />} />
+        <TerminalCardContent>
           <div className="text-2xl font-semibold">${(stats.monthlyRevenue / 100).toFixed(2)}</div>
           <p className="text-muted-foreground text-xs">Last 30 days revenue</p>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
 
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
-          <CreditCard className="text-muted-foreground h-4 w-4" />
-        </CardHeader>
-        <CardContent>
+      <TerminalCard tone="success">
+        <TerminalCardHeader
+          code="0x05"
+          title="TOTAL_REVENUE"
+          icon={<CreditCard className="h-4 w-4" />}
+        />
+        <TerminalCardContent>
           <div className="text-2xl font-semibold">${(stats.totalRevenue / 100).toFixed(2)}</div>
           <p className="text-muted-foreground text-xs">{stats.totalPayments} payments</p>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
     </div>
   );
 }
@@ -152,14 +149,12 @@ export default function AdminPage() {
         fallback={
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
             {[...Array(5)].map((_, i) => (
-              <Card key={i}>
-                <CardHeader>
-                  <div className="bg-muted h-4 w-24 animate-pulse rounded" />
-                </CardHeader>
-                <CardContent>
+              <TerminalCard key={i} tone="neutral">
+                <TerminalCardHeader code={`0x0${i + 1}`} title="LOADING" />
+                <TerminalCardContent>
                   <div className="bg-muted h-8 w-16 animate-pulse rounded" />
-                </CardContent>
-              </Card>
+                </TerminalCardContent>
+              </TerminalCard>
             ))}
           </div>
         }
@@ -168,12 +163,14 @@ export default function AdminPage() {
       </Suspense>
 
       <div className="grid gap-6 md:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardTitle>Quick Actions</CardTitle>
-            <CardDescription>Common administrative tasks</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2">
+        <TerminalCard tone="neutral">
+          <TerminalCardHeader
+            code="0x06"
+            title="QUICK_ACTIONS"
+            meta="Common tasks"
+            icon={<Zap className="h-4 w-4" />}
+          />
+          <TerminalCardContent className="space-y-2">
             <a href="/admin/users" className={cn("hover:bg-muted block border p-4", mode.radius)}>
               <div className="font-semibold">Manage Users</div>
               <div className="text-muted-foreground text-sm">
@@ -198,15 +195,17 @@ export default function AdminPage() {
                 Review security events and audit logs
               </div>
             </a>
-          </CardContent>
-        </Card>
+          </TerminalCardContent>
+        </TerminalCard>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>System Health</CardTitle>
-            <CardDescription>Application status and performance</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
+        <TerminalCard tone="success">
+          <TerminalCardHeader
+            code="0x07"
+            title="SYSTEM_HEALTH"
+            meta="Status & Performance"
+            icon={<Activity className="h-4 w-4" />}
+          />
+          <TerminalCardContent className="space-y-4">
             <div className="flex items-center justify-between">
               <span className="text-sm">Database</span>
               <span
@@ -251,8 +250,8 @@ export default function AdminPage() {
                 Healthy
               </span>
             </div>
-          </CardContent>
-        </Card>
+          </TerminalCardContent>
+        </TerminalCard>
       </div>
     </div>
   );

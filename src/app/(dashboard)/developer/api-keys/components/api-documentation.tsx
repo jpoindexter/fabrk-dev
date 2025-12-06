@@ -3,7 +3,7 @@
  * Displays API usage examples and security best practices
  */
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Code, AlertTriangle } from "lucide-react";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
@@ -15,14 +15,13 @@ interface ApiDocumentationProps {
 export function ApiDocumentation({ organizationId }: ApiDocumentationProps) {
   return (
     <div className="mt-8 grid gap-6 md:grid-cols-2">
-      <Card>
-        <CardHeader>
-          <CardTitle as="h2" className="flex items-center gap-2 text-lg">
-            <Code className="h-5 w-5" />
-            Getting Started
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="text-muted-foreground space-y-2 text-sm">
+      <TerminalCard>
+        <TerminalCardHeader
+          code="0xF0"
+          title="GETTING_STARTED"
+          icon={<Code className="h-4 w-4" />}
+        />
+        <TerminalCardContent className="text-muted-foreground space-y-2 text-sm">
           <p>Include your API key in the Authorization header:</p>
           <code
             className={cn("bg-muted border-border block rounded border p-4 text-xs", mode.font)}
@@ -41,17 +40,16 @@ export function ApiDocumentation({ organizationId }: ApiDocumentationProps) {
   -H "Authorization: Bearer sk_live_..."`}
             </code>
           </div>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
 
-      <Card>
-        <CardHeader>
-          <CardTitle as="h2" className="flex items-center gap-2 text-lg">
-            <AlertTriangle className="h-5 w-5" />
-            Security Best Practices
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="text-muted-foreground text-sm">
+      <TerminalCard>
+        <TerminalCardHeader
+          code="0xF1"
+          title="SECURITY_BEST_PRACTICES"
+          icon={<AlertTriangle className="h-4 w-4" />}
+        />
+        <TerminalCardContent className="text-muted-foreground text-sm">
           <ul className="list-inside list-disc space-y-1">
             <li>Never commit API keys to version control</li>
             <li>Rotate keys regularly</li>
@@ -60,8 +58,8 @@ export function ApiDocumentation({ organizationId }: ApiDocumentationProps) {
             <li>Monitor API usage for anomalies</li>
             <li>Use read-only keys when possible</li>
           </ul>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
     </div>
   );
 }

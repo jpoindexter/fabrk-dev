@@ -1,13 +1,8 @@
 "use client";
 
 import { ComponentShowcaseTemplate } from "@/components/docs";
-import {
-  Tabs,
-  TabsList,
-  TabsTrigger,
-  TabsContent,
-} from "@/components/ui/tabs";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 
 export default function TabsPage() {
   return (
@@ -36,12 +31,8 @@ export default function TabsPage() {
               <TabsTrigger value="account">Account</TabsTrigger>
               <TabsTrigger value="password">Password</TabsTrigger>
             </TabsList>
-            <TabsContent value="account">
-              Make changes to your account here.
-            </TabsContent>
-            <TabsContent value="password">
-              Change your password here.
-            </TabsContent>
+            <TabsContent value="account">Make changes to your account here.</TabsContent>
+            <TabsContent value="password">Change your password here.</TabsContent>
           </Tabs>
         ),
       }}
@@ -56,43 +47,28 @@ export default function TabsPage() {
     <TabsTrigger value="reports">Reports</TabsTrigger>
   </TabsList>
   <TabsContent value="overview">
-    <Card>
-      <CardHeader>
-        <CardTitle>Overview</CardTitle>
-        <CardDescription>
-          View your account overview and recent activity.
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-2">
+    <TerminalCard>
+      <TerminalCardHeader code="0x00" title="OVERVIEW" meta="View your account overview and recent activity." />
+      <TerminalCardContent className="space-y-2">
         <p>Your dashboard content goes here.</p>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   </TabsContent>
   <TabsContent value="analytics">
-    <Card>
-      <CardHeader>
-        <CardTitle>Analytics</CardTitle>
-        <CardDescription>
-          View detailed analytics and insights.
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-2">
+    <TerminalCard>
+      <TerminalCardHeader code="0x01" title="ANALYTICS" meta="View detailed analytics and insights." />
+      <TerminalCardContent className="space-y-2">
         <p>Analytics data will be displayed here.</p>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   </TabsContent>
   <TabsContent value="reports">
-    <Card>
-      <CardHeader>
-        <CardTitle>Reports</CardTitle>
-        <CardDescription>
-          Generate and view reports.
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-2">
+    <TerminalCard>
+      <TerminalCardHeader code="0x02" title="REPORTS" meta="Generate and view reports." />
+      <TerminalCardContent className="space-y-2">
         <p>Reports will be shown here.</p>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   </TabsContent>
 </Tabs>`,
           preview: (
@@ -103,43 +79,40 @@ export default function TabsPage() {
                 <TabsTrigger value="reports">Reports</TabsTrigger>
               </TabsList>
               <TabsContent value="overview">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Overview</CardTitle>
-                    <CardDescription>
-                      View your account overview and recent activity.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-2">
+                <TerminalCard>
+                  <TerminalCardHeader
+                    code="0x00"
+                    title="OVERVIEW"
+                    meta="View your account overview and recent activity."
+                  />
+                  <TerminalCardContent className="space-y-2">
                     <p>Your dashboard content goes here.</p>
-                  </CardContent>
-                </Card>
+                  </TerminalCardContent>
+                </TerminalCard>
               </TabsContent>
               <TabsContent value="analytics">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Analytics</CardTitle>
-                    <CardDescription>
-                      View detailed analytics and insights.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-2">
+                <TerminalCard>
+                  <TerminalCardHeader
+                    code="0x01"
+                    title="ANALYTICS"
+                    meta="View detailed analytics and insights."
+                  />
+                  <TerminalCardContent className="space-y-2">
                     <p>Analytics data will be displayed here.</p>
-                  </CardContent>
-                </Card>
+                  </TerminalCardContent>
+                </TerminalCard>
               </TabsContent>
               <TabsContent value="reports">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Reports</CardTitle>
-                    <CardDescription>
-                      Generate and view reports.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-2">
+                <TerminalCard>
+                  <TerminalCardHeader
+                    code="0x02"
+                    title="REPORTS"
+                    meta="Generate and view reports."
+                  />
+                  <TerminalCardContent className="space-y-2">
                     <p>Reports will be shown here.</p>
-                  </CardContent>
-                </Card>
+                  </TerminalCardContent>
+                </TerminalCard>
               </TabsContent>
             </Tabs>
           ),
@@ -167,18 +140,16 @@ export default function TabsPage() {
             <Tabs defaultValue="enabled" className="w-[400px]">
               <TabsList>
                 <TabsTrigger value="enabled">Enabled</TabsTrigger>
-                <TabsTrigger value="disabled" disabled>Disabled</TabsTrigger>
+                <TabsTrigger value="disabled" disabled>
+                  Disabled
+                </TabsTrigger>
                 <TabsTrigger value="another">Another</TabsTrigger>
               </TabsList>
-              <TabsContent value="enabled">
-                This tab is enabled and active.
-              </TabsContent>
+              <TabsContent value="enabled">This tab is enabled and active.</TabsContent>
               <TabsContent value="disabled">
                 This content won't be shown as the tab is disabled.
               </TabsContent>
-              <TabsContent value="another">
-                Another enabled tab.
-              </TabsContent>
+              <TabsContent value="another">Another enabled tab.</TabsContent>
             </Tabs>
           ),
         },
@@ -198,9 +169,15 @@ export default function TabsPage() {
           preview: (
             <Tabs defaultValue="tab1" className="w-full">
               <TabsList className="w-full">
-                <TabsTrigger value="tab1" className="flex-1">Tab 1</TabsTrigger>
-                <TabsTrigger value="tab2" className="flex-1">Tab 2</TabsTrigger>
-                <TabsTrigger value="tab3" className="flex-1">Tab 3</TabsTrigger>
+                <TabsTrigger value="tab1" className="flex-1">
+                  Tab 1
+                </TabsTrigger>
+                <TabsTrigger value="tab2" className="flex-1">
+                  Tab 2
+                </TabsTrigger>
+                <TabsTrigger value="tab3" className="flex-1">
+                  Tab 3
+                </TabsTrigger>
               </TabsList>
               <TabsContent value="tab1">Content for tab 1</TabsContent>
               <TabsContent value="tab2">Content for tab 2</TabsContent>
@@ -237,7 +214,7 @@ export default function TabsPage() {
 </Tabs>`,
           preview: (
             <Tabs defaultValue="tab1" orientation="vertical" className="flex gap-4">
-              <TabsList className="flex-col h-auto">
+              <TabsList className="h-auto flex-col">
                 <TabsTrigger value="tab1" className="w-full justify-start">
                   Profile
                 </TabsTrigger>
@@ -249,15 +226,9 @@ export default function TabsPage() {
                 </TabsTrigger>
               </TabsList>
               <div className="flex-1">
-                <TabsContent value="tab1">
-                  Profile settings and information
-                </TabsContent>
-                <TabsContent value="tab2">
-                  Application settings
-                </TabsContent>
-                <TabsContent value="tab3">
-                  Notification preferences
-                </TabsContent>
+                <TabsContent value="tab1">Profile settings and information</TabsContent>
+                <TabsContent value="tab2">Application settings</TabsContent>
+                <TabsContent value="tab3">Notification preferences</TabsContent>
               </div>
             </Tabs>
           ),
@@ -272,7 +243,8 @@ export default function TabsPage() {
         {
           name: "value",
           type: "string",
-          description: "The controlled value of the active tab. Use with onValueChange for controlled tabs.",
+          description:
+            "The controlled value of the active tab. Use with onValueChange for controlled tabs.",
         },
         {
           name: "onValueChange",

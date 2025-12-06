@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
+import { TerminalCard, TerminalCardContent, TerminalBadge } from "@/components/ui/card";
 
 type FAQCategory = "general" | "technical" | "payment" | "license";
 
@@ -132,31 +133,32 @@ function FAQItem({ question, answer, index }: FAQItemProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
-      className={cn("border-border bg-card border", mode.radius)}
     >
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        aria-expanded={isOpen}
-        className="hover:bg-muted/50 flex w-full items-center justify-between p-4 text-left transition-colors"
-      >
-        <span className={cn("text-sm", mode.font)}>
-          <span className="text-primary">├─</span>
-          <span className="text-muted-foreground ml-2">[QUERY]:</span>
-          <span className="text-foreground ml-2">{question}</span>
-        </span>
-        <ChevronDown
-          className={cn(
-            "text-muted-foreground size-4 transition-transform",
-            isOpen && "rotate-180"
-          )}
-        />
-      </button>
-      {isOpen && (
-        <div className="border-border bg-muted/30 border-t p-4">
-          <span className={cn("text-muted-foreground text-xs", mode.font)}>└─ [RESPONSE]: </span>
-          <span className={cn("text-foreground text-xs", mode.font)}>{answer}</span>
-        </div>
-      )}
+      <TerminalCard size="auto">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          aria-expanded={isOpen}
+          className="hover:bg-muted/50 flex w-full items-center justify-between p-4 text-left transition-colors"
+        >
+          <span className={cn("text-sm", mode.font)}>
+            <span className="text-primary">├─</span>
+            <span className="text-muted-foreground ml-2">[QUERY]:</span>
+            <span className="text-foreground ml-2">{question}</span>
+          </span>
+          <ChevronDown
+            className={cn(
+              "text-muted-foreground size-4 transition-transform",
+              isOpen && "rotate-180"
+            )}
+          />
+        </button>
+        {isOpen && (
+          <TerminalCardContent className="border-border bg-muted/30 border-t">
+            <span className={cn("text-muted-foreground text-xs", mode.font)}>└─ [RESPONSE]: </span>
+            <span className={cn("text-foreground text-xs", mode.font)}>{answer}</span>
+          </TerminalCardContent>
+        )}
+      </TerminalCard>
     </motion.div>
   );
 }
@@ -177,13 +179,12 @@ export function FAQSection() {
           transition={{ duration: 0.6 }}
           className="mb-10"
         >
-          <div
-            className={cn("border-border bg-card mb-4 inline-block border px-4 py-1", mode.radius)}
-          >
-            <span className={cn("text-muted-foreground text-xs", mode.font)}>
-              [ [0x60] KNOWLEDGE_BASE ] QUERY_SYSTEM │ FIB[13] ENTRIES
-            </span>
-          </div>
+          <TerminalBadge
+            code="0x60"
+            label="KNOWLEDGE_BASE"
+            meta="QUERY_SYSTEM │ FIB[13] ENTRIES"
+            className="mb-4"
+          />
           <h2 className={cn("mb-4 text-4xl font-semibold tracking-tight", mode.font)}>
             FREQUENTLY_ASKED_QUESTIONS
           </h2>

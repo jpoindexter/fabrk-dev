@@ -6,7 +6,7 @@
 "use client";
 
 import { useState, useEffect, startTransition } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -28,7 +28,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { getErrorStats, getPerformanceStats, clearErrorLogs } from "@/lib/monitoring";
-import { AlertTriangle, Activity, Trash2 } from "lucide-react";
+import { AlertTriangle, Activity, Trash2, TrendingUp } from "lucide-react";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
@@ -89,56 +89,59 @@ export default function AdminMonitoringPage() {
       {/* Error Stats */}
       {errorStats && (
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Errors (24h)</CardTitle>
-              <AlertTriangle className="text-muted-foreground h-4 w-4" />
-            </CardHeader>
-            <CardContent>
+          <TerminalCard tone="neutral">
+            <TerminalCardHeader
+              code="0x01"
+              title="TOTAL_ERRORS"
+              meta="24h"
+              icon={<AlertTriangle className="h-4 w-4" />}
+            />
+            <TerminalCardContent>
               <div className="text-2xl font-semibold">{errorStats.total}</div>
-            </CardContent>
-          </Card>
+            </TerminalCardContent>
+          </TerminalCard>
 
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Errors</CardTitle>
-              <AlertTriangle className="text-destructive h-4 w-4" />
-            </CardHeader>
-            <CardContent>
+          <TerminalCard tone="danger">
+            <TerminalCardHeader
+              code="0x02"
+              title="ERRORS"
+              icon={<AlertTriangle className="h-4 w-4" />}
+            />
+            <TerminalCardContent>
               <div className="text-2xl font-semibold">{errorStats.byType.error || 0}</div>
-            </CardContent>
-          </Card>
+            </TerminalCardContent>
+          </TerminalCard>
 
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Warnings</CardTitle>
-              <AlertTriangle className="text-warning h-4 w-4" />
-            </CardHeader>
-            <CardContent>
+          <TerminalCard tone="warning">
+            <TerminalCardHeader
+              code="0x03"
+              title="WARNINGS"
+              icon={<AlertTriangle className="h-4 w-4" />}
+            />
+            <TerminalCardContent>
               <div className="text-2xl font-semibold">{errorStats.byType.warning || 0}</div>
-            </CardContent>
-          </Card>
+            </TerminalCardContent>
+          </TerminalCard>
 
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Info</CardTitle>
-              <Activity className="text-info h-4 w-4" />
-            </CardHeader>
-            <CardContent>
+          <TerminalCard tone="neutral">
+            <TerminalCardHeader code="0x04" title="INFO" icon={<Activity className="h-4 w-4" />} />
+            <TerminalCardContent>
               <div className="text-2xl font-semibold">{errorStats.byType.info || 0}</div>
-            </CardContent>
-          </Card>
+            </TerminalCardContent>
+          </TerminalCard>
         </div>
       )}
 
       {/* Performance Metrics */}
       {perfStats && Object.keys(perfStats.averages).length > 0 && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Performance Metrics (24h averages)</CardTitle>
-            <CardDescription>Average response times and metrics</CardDescription>
-          </CardHeader>
-          <CardContent>
+        <TerminalCard tone="primary">
+          <TerminalCardHeader
+            code="0x05"
+            title="PERFORMANCE_METRICS"
+            meta="24h averages"
+            icon={<TrendingUp className="h-4 w-4" />}
+          />
+          <TerminalCardContent>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {Object.entries(perfStats.averages).map(([name, value]) => (
                 <div
@@ -153,18 +156,20 @@ export default function AdminMonitoringPage() {
                 </div>
               ))}
             </div>
-          </CardContent>
-        </Card>
+          </TerminalCardContent>
+        </TerminalCard>
       )}
 
       {/* Top Errors */}
       {errorStats && errorStats.topErrors.length > 0 && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Most Frequent Errors</CardTitle>
-            <CardDescription>Errors sorted by occurrence count</CardDescription>
-          </CardHeader>
-          <CardContent>
+        <TerminalCard tone="danger">
+          <TerminalCardHeader
+            code="0x06"
+            title="MOST_FREQUENT_ERRORS"
+            meta="By occurrence"
+            icon={<AlertTriangle className="h-4 w-4" />}
+          />
+          <TerminalCardContent>
             <div className={cn("border", mode.radius)}>
               <Table>
                 <TableHeader>
@@ -203,18 +208,20 @@ export default function AdminMonitoringPage() {
                 </TableBody>
               </Table>
             </div>
-          </CardContent>
-        </Card>
+          </TerminalCardContent>
+        </TerminalCard>
       )}
 
       {/* Recent Errors */}
       {errorStats && errorStats.recentErrors.length > 0 && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Recent Errors</CardTitle>
-            <CardDescription>Last 20 error events</CardDescription>
-          </CardHeader>
-          <CardContent>
+        <TerminalCard tone="warning">
+          <TerminalCardHeader
+            code="0x07"
+            title="RECENT_ERRORS"
+            meta="Last 20 events"
+            icon={<Activity className="h-4 w-4" />}
+          />
+          <TerminalCardContent>
             <div className={cn("border", mode.radius)}>
               <Table>
                 <TableHeader>
@@ -253,21 +260,21 @@ export default function AdminMonitoringPage() {
                 </TableBody>
               </Table>
             </div>
-          </CardContent>
-        </Card>
+          </TerminalCardContent>
+        </TerminalCard>
       )}
 
       {/* Empty State */}
       {errorStats && errorStats.total === 0 && (
-        <Card>
-          <CardContent className="flex h-48 items-center justify-center">
+        <TerminalCard tone="success">
+          <TerminalCardContent className="flex h-48 items-center justify-center">
             <div className="text-center">
               <Activity className="text-muted-foreground mx-auto h-12 w-12" />
               <h3 className="mt-4 text-lg font-semibold">No errors recorded</h3>
               <p className="text-muted-foreground text-sm">Your application is running smoothly</p>
             </div>
-          </CardContent>
-        </Card>
+          </TerminalCardContent>
+        </TerminalCard>
       )}
 
       {/* Clear Logs Dialog */}

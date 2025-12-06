@@ -5,8 +5,9 @@
 
 import { Suspense } from "react";
 import { prisma } from "@/lib/prisma";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { UserManagementTable } from "@/components/admin/user-management-table";
+import { Users } from "lucide-react";
 
 async function getUsers() {
   const users = await prisma.user.findMany({
@@ -37,20 +38,18 @@ export default function AdminUsersPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-4xl font-semibold tracking-tight">Users</h1>
-          <p className="text-muted-foreground">
-            Manage and monitor all user accounts
-          </p>
+          <p className="text-muted-foreground">Manage and monitor all user accounts</p>
         </div>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>All Users</CardTitle>
-          <CardDescription>
-            View and manage all registered users with full admin controls (showing last 100)
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
+      <TerminalCard>
+        <TerminalCardHeader
+          code="0x00"
+          title="ALL_USERS"
+          icon={<Users className="h-4 w-4" />}
+          meta="View and manage all registered users with full admin controls (showing last 100)"
+        />
+        <TerminalCardContent>
           <Suspense
             fallback={
               <div className="flex h-48 items-center justify-center">
@@ -60,8 +59,8 @@ export default function AdminUsersPage() {
           >
             <UsersTableWrapper />
           </Suspense>
-        </CardContent>
-      </Card>
+        </TerminalCardContent>
+      </TerminalCard>
     </div>
   );
 }

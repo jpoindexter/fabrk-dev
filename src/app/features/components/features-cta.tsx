@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { TerminalBadge } from "@/components/ui/card";
 
 export function FeaturesCTA() {
   return (
@@ -23,9 +24,7 @@ export function FeaturesCTA() {
           className="text-center"
         >
           <div className="mb-4">
-            <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 text-xs">
-              [ [0x30] READY_TO_SHIP ]
-            </span>
+            <TerminalBadge code="0x30" label="READY_TO_SHIP" />
           </div>
           <h2 className="mb-4 text-4xl font-semibold tracking-tight">READY_TO_SHIP?</h2>
           <p className="text-muted-foreground mx-auto mb-8 max-w-xl text-sm">

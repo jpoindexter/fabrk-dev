@@ -2,7 +2,7 @@
 
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { PageWrapper } from "@/components/ui/page-wrapper";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 
 export default function PageWrapperPage() {
   return (
@@ -16,28 +16,22 @@ export default function PageWrapperPage() {
         preview: (
           <div className="h-64 w-full">
             <PageWrapper>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="font-mono text-sm">
-                    <span className="text-primary">&gt;</span> Centered Content
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
+              <TerminalCard>
+                <TerminalCardHeader code="0x00" title="Centered_Content" />
+                <TerminalCardContent padding="md">
                   This card is vertically and horizontally centered
-                </CardContent>
-              </Card>
+                </TerminalCardContent>
+              </TerminalCard>
             </PageWrapper>
           </div>
         ),
         code: `<PageWrapper>
-  <Card>
-    <CardHeader>
-      <CardTitle>Login</CardTitle>
-    </CardHeader>
-    <CardContent>
+  <TerminalCard>
+    <TerminalCardHeader code="0x00" title="Login" />
+    <TerminalCardContent padding="md">
       <p>Your login form</p>
-    </CardContent>
-  </Card>
+    </TerminalCardContent>
+  </TerminalCard>
 </PageWrapper>`,
       }}
       variants={[
@@ -47,26 +41,22 @@ export default function PageWrapperPage() {
           preview: (
             <div className="h-64 w-full">
               <PageWrapper>
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="font-mono text-sm">Login</CardTitle>
-                  </CardHeader>
-                  <CardContent>
+                <TerminalCard>
+                  <TerminalCardHeader code="0x01" title="Login" />
+                  <TerminalCardContent padding="md">
                     Email and password form would go here
-                  </CardContent>
-                </Card>
+                  </TerminalCardContent>
+                </TerminalCard>
               </PageWrapper>
             </div>
           ),
           code: `<PageWrapper>
-  <Card>
-    <CardHeader>
-      <CardTitle>Login</CardTitle>
-    </CardHeader>
-    <CardContent>
+  <TerminalCard>
+    <TerminalCardHeader code="0x01" title="Login" />
+    <TerminalCardContent padding="md">
       <LoginForm />
-    </CardContent>
-  </Card>
+    </TerminalCardContent>
+  </TerminalCard>
 </PageWrapper>`,
         },
         {
@@ -76,7 +66,7 @@ export default function PageWrapperPage() {
             <div className="h-64 w-full">
               <PageWrapper>
                 <div className="space-y-4 text-center">
-                  <div className="text-4xl font-semibold text-destructive">404</div>
+                  <div className="text-destructive text-4xl font-semibold">404</div>
                   <p>Page not found</p>
                 </div>
               </PageWrapper>
@@ -95,23 +85,22 @@ export default function PageWrapperPage() {
           preview: (
             <div className="h-64 w-full">
               <PageWrapper className="bg-primary/5">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="font-mono text-sm">Custom Background</CardTitle>
-                  </CardHeader>
-                  <CardContent>
+                <TerminalCard>
+                  <TerminalCardHeader code="0x02" title="Custom_Background" />
+                  <TerminalCardContent padding="md">
                     Background customized via className
-                  </CardContent>
-                </Card>
+                  </TerminalCardContent>
+                </TerminalCard>
               </PageWrapper>
             </div>
           ),
           code: `<PageWrapper className="bg-primary/5">
-  <Card>
-    <CardHeader>
-      <CardTitle>Content</CardTitle>
-    </CardHeader>
-  </Card>
+  <TerminalCard>
+    <TerminalCardHeader code="0x02" title="Content" />
+    <TerminalCardContent padding="md">
+      {/* content */}
+    </TerminalCardContent>
+  </TerminalCard>
 </PageWrapper>`,
         },
         {

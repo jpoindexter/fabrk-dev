@@ -4,7 +4,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
@@ -26,9 +26,9 @@ interface CurrentPlanCardProps {
 
 export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardProps) {
   return (
-    <div className="border-primary bg-card border">
-      <StyledCardHeader code="0x00" title="SUBSCRIPTION" />
-      <div className="p-4">
+    <TerminalCard tone="primary">
+      <TerminalCardHeader code="0x00" title="SUBSCRIPTION" icon={<Star className="h-4 w-4" />} />
+      <TerminalCardContent padding="md">
         <div className="flex items-start justify-between">
           <div>
             <div className="mb-2 flex items-center gap-2">
@@ -45,7 +45,6 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
               </span>
             </div>
             <div className="mb-2 flex items-center gap-4">
-              <Star className="text-primary h-5 w-5" />
               <span className="text-2xl font-semibold">{subscription.plan}</span>
             </div>
             <div className={cn(mode.font, "text-muted-foreground text-xs")}>
@@ -83,7 +82,7 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
             &gt; UPGRADE_TO_ENTERPRISE
           </Button>
         </div>
-      </div>
-    </div>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

@@ -5,7 +5,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -42,9 +42,9 @@ export function ComplianceTab({
   return (
     <div className="space-y-6">
       {/* GDPR Rights */}
-      <div className="border-border bg-card border">
-        <StyledCardHeader code="0x00" title="GDPR_RIGHTS" />
-        <div className="p-4">
+      <TerminalCard tone="neutral">
+        <TerminalCardHeader code="0x04" title="GDPR_RIGHTS" icon={<Globe className="h-4 w-4" />} />
+        <TerminalCardContent padding="md">
           <div className="mb-4 flex items-center gap-4">
             <div className="border-border bg-primary/10 flex h-10 w-10 items-center justify-center border">
               <Globe className="text-primary h-5 w-5" />
@@ -90,13 +90,13 @@ export function ComplianceTab({
               &gt; VIEW_TERMS_OF_SERVICE
             </Button>
           </div>
-        </div>
-      </div>
+        </TerminalCardContent>
+      </TerminalCard>
 
       {/* Danger Zone */}
-      <div className="border-destructive bg-card border">
-        <StyledCardHeader code="0x00" title="DANGER_ZONE" />
-        <div className="p-4">
+      <TerminalCard tone="danger">
+        <TerminalCardHeader code="0x05" title="DANGER_ZONE" icon={<UserX className="h-4 w-4" />} />
+        <TerminalCardContent padding="md">
           <div className="mb-4 flex items-center gap-4">
             <div className="border-border bg-destructive/10 flex h-10 w-10 items-center justify-center border">
               <UserX className="text-destructive h-5 w-5" />
@@ -153,8 +153,8 @@ export function ComplianceTab({
               </div>
             </AlertDialogContent>
           </AlertDialog>
-        </div>
-      </div>
+        </TerminalCardContent>
+      </TerminalCard>
     </div>
   );
 }

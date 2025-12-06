@@ -5,7 +5,12 @@
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { StyledCardHeader } from "@/components/ui/card";
+import {
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+  TerminalCardFooter,
+} from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
@@ -29,37 +34,20 @@ interface PricingCardsProps {
 export function PricingCards({ plans, isYearly }: PricingCardsProps) {
   return (
     <div className="grid gap-6 md:grid-cols-3">
-      {plans.map((plan) => {
+      {plans.map((plan, idx) => {
         const price = isYearly ? plan.yearlyPrice : plan.monthlyPrice;
         const period = isYearly ? "/year" : "/month";
 
         return (
-          <div
-            key={plan.id}
-            className={`bg-card flex flex-col border ${
-              plan.badge ? "border-primary" : "border-border"
-            }`}
-          >
+          <TerminalCard key={plan.id} tone={plan.badge ? "primary" : "neutral"}>
             {/* Card Header */}
-            <StyledCardHeader code="0x00" title="PRICING" />
+            <TerminalCardHeader
+              code={`0x0${idx}`}
+              title={plan.name}
+              meta={plan.badge || undefined}
+            />
 
-            <div className="flex flex-1 flex-col p-4">
-              {/* Plan Label */}
-              <div className="mb-4 flex items-center justify-between">
-                <div className={cn(mode.font, "text-muted-foreground text-xs")}>[{plan.name}]:</div>
-                {plan.badge && (
-                  <Badge
-                    className={cn(
-                      mode.radius,
-                      mode.font,
-                      "bg-primary text-primary-foreground text-xs"
-                    )}
-                  >
-                    {plan.badge}
-                  </Badge>
-                )}
-              </div>
-
+            <TerminalCardContent padding="md">
               {/* Price */}
               <div className="mb-4 text-4xl font-semibold">
                 ${price}
@@ -80,16 +68,17 @@ export function PricingCards({ plans, isYearly }: PricingCardsProps) {
                   ))}
                 </div>
               </div>
+            </TerminalCardContent>
 
-              {/* CTA - At bottom */}
+            <TerminalCardFooter>
               <Button
                 variant={plan.ctaVariant}
                 className={cn(mode.radius, mode.font, "w-full text-xs")}
               >
                 &gt; {plan.cta}
               </Button>
-            </div>
-          </div>
+            </TerminalCardFooter>
+          </TerminalCard>
         );
       })}
     </div>

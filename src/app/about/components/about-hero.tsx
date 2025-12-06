@@ -6,6 +6,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import {
+  TerminalBadge,
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+} from "@/components/ui/card";
 
 export function AboutHero() {
   return (
@@ -17,9 +23,7 @@ export function AboutHero() {
           transition={{ duration: 0.5 }}
           className="mb-6"
         >
-          <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 text-xs">
-            [ [0x00] ABOUT ] FABRK_ORIGIN_STORY
-          </span>
+          <TerminalBadge code="0x00" label="ABOUT" meta="FABRK_ORIGIN_STORY" />
         </motion.div>
 
         <motion.div
@@ -39,15 +43,17 @@ export function AboutHero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="border-border bg-card mx-auto max-w-2xl border p-4 text-left"
+          className="mx-auto max-w-2xl text-left"
         >
-          <div className="text-muted-foreground mb-2 text-xs">
-            [ [0x01] MISSION_STATEMENT ]────────────────────
-          </div>
-          <p className="text-muted-foreground text-sm">
-            We're on a mission to eliminate the repetitive work that slows down every SaaS project,
-            so you can focus on building features that matter.
-          </p>
+          <TerminalCard size="auto">
+            <TerminalCardHeader code="0x01" title="MISSION_STATEMENT" />
+            <TerminalCardContent padding="md">
+              <p className="text-muted-foreground text-sm">
+                We're on a mission to eliminate the repetitive work that slows down every SaaS
+                project, so you can focus on building features that matter.
+              </p>
+            </TerminalCardContent>
+          </TerminalCard>
         </motion.div>
       </div>
     </section>

@@ -19,7 +19,7 @@
 import * as React from "react";
 import { TrendingDown } from "lucide-react";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
@@ -64,20 +64,16 @@ export function FunnelVisualizer({
   };
 
   return (
-    <Card className={cn("overflow-hidden", className)}>
-      <CardHeader className="pb-4">
-        <div className="flex items-center justify-between">
-          <div>
-            <CardTitle className="text-base">{title}</CardTitle>
-            {description && <p className="text-muted-foreground mt-1 text-sm">{description}</p>}
-          </div>
-          <Badge variant="outline" className="font-medium">
-            {stages.length} Stages
-          </Badge>
-        </div>
-      </CardHeader>
+    <TerminalCard className={cn("overflow-hidden", className)}>
+      <TerminalCardHeader
+        code="0x02"
+        title={title.toUpperCase().replace(/ /g, "_")}
+        icon={<TrendingDown className="h-4 w-4" />}
+        meta={`${stages.length} Stages`}
+      />
 
-      <CardContent className="space-y-6">
+      <TerminalCardContent padding="md" className="space-y-6">
+        {description && <p className="text-muted-foreground text-sm">{description}</p>}
         {stages.map((stage, index) => {
           const previousValue = index > 0 ? stages[index - 1].value : null;
           const conversionRate = calculateConversionRate(stage.value, previousValue);
@@ -145,7 +141,7 @@ export function FunnelVisualizer({
             </span>
           </div>
         </div>
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

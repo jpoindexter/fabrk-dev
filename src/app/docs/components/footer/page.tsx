@@ -2,7 +2,7 @@
 
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import Link from "next/link";
-import { StyledCardHeader } from "@/components/ui/card";
+import { TerminalCardHeader } from "@/components/ui/card";
 
 // Simplified Footer Demo
 function FooterDemo() {
@@ -39,7 +39,7 @@ function FooterDemo() {
 
         {/* Nav Links */}
         <div className="border-border bg-card border">
-          <StyledCardHeader code="0x00" title="COMPONENT" />
+          <TerminalCardHeader code="0x00" title="COMPONENT" />
           <div className="divide-border grid grid-cols-3 divide-x">
             <div className="p-4">
               <div className="text-muted-foreground mb-2 font-mono text-xs">[ PRODUCT ]</div>

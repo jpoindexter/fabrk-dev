@@ -7,6 +7,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Edit, MapPin } from "lucide-react";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
@@ -37,14 +38,9 @@ interface ProfileHeaderProps {
 
 export function ProfileHeader({ user }: ProfileHeaderProps) {
   return (
-    <div className="border-border bg-card border">
-      <div className="border-border border-b px-4 py-2">
-        <span className={cn(mode.font, "text-muted-foreground text-xs")}>
-          [ [0x00] USER_PROFILE ]
-        </span>
-      </div>
-
-      <div className="p-6">
+    <TerminalCard tone="neutral">
+      <TerminalCardHeader code="0x02" title="USER_PROFILE" />
+      <TerminalCardContent padding="lg">
         <div className="flex flex-col gap-6 md:flex-row">
           {/* Avatar Section */}
           <div className="flex-shrink-0">
@@ -98,7 +94,7 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
             </div>
           ))}
         </div>
-      </div>
-    </div>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

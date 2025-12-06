@@ -6,7 +6,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Shield, Smartphone, CheckCircle2, XCircle } from "lucide-react";
 import { mode } from "@/design-system";
@@ -30,12 +30,13 @@ export function Security2FACard({
   onViewBackupCodes,
 }: Security2FACardProps) {
   return (
-    <Card>
-      <StyledCardHeader
+    <TerminalCard tone={twoFactorEnabled ? "success" : "warning"}>
+      <TerminalCardHeader
+        code="0x02"
         title="TWO_FACTOR_AUTH"
-        icon={<Smartphone className="text-muted-foreground h-4 w-4" />}
+        icon={<Smartphone className="h-4 w-4" />}
       />
-      <CardContent className="space-y-4">
+      <TerminalCardContent className="space-y-4">
         <div className="flex items-center justify-between">
           <p className="text-muted-foreground font-mono text-xs">
             Add an extra layer of security to your account
@@ -78,7 +79,7 @@ export function Security2FACard({
             {isEnabling2FA ? "> SETTING_UP..." : "> ENABLE_2FA"}
           </Button>
         )}
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

@@ -8,70 +8,64 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { ExternalLink, Github, MessageSquare, Package } from "lucide-react";
 import { ResourcesCardProps } from "./purchase-status-types";
 
 export function ResourcesCard({ hasAccess }: ResourcesCardProps) {
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Package className="h-5 w-5" />
-          Resources & Support
-        </CardTitle>
-        <CardDescription>Everything you need to get started</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4">
+    <TerminalCard tone="neutral">
+      <TerminalCardHeader
+        code="0x03"
+        title="RESOURCES_AND_SUPPORT"
+        icon={<Package className="h-4 w-4" />}
+      />
+      <TerminalCardContent padding="md" className="space-y-4">
         <Button
           variant="outline"
-          className="w-full justify-start focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="focus-visible:ring-ring w-full justify-start focus-visible:ring-2 focus-visible:outline-none"
           disabled={!hasAccess}
           asChild
         >
-          <a
-            href="https://github.com/fabrk/boilerplate"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://github.com/fabrk/boilerplate" target="_blank" rel="noopener noreferrer">
             <Github className="mr-2 h-4 w-4" />
-            GitHub Repository
+            &gt; GITHUB_REPOSITORY
             {hasAccess && <ExternalLink className="ml-auto h-4 w-4" />}
           </a>
         </Button>
 
         <Button
           variant="outline"
-          className="w-full justify-start focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="focus-visible:ring-ring w-full justify-start focus-visible:ring-2 focus-visible:outline-none"
           disabled={!hasAccess}
           asChild
         >
           <a href="/docs" target="_blank" rel="noopener noreferrer">
             <Package className="mr-2 h-4 w-4" />
-            Documentation
+            &gt; DOCUMENTATION
             {hasAccess && <ExternalLink className="ml-auto h-4 w-4" />}
           </a>
         </Button>
 
         <Button
           variant="outline"
-          className="w-full justify-start focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="focus-visible:ring-ring w-full justify-start focus-visible:ring-2 focus-visible:outline-none"
           disabled={!hasAccess}
           asChild
         >
           <a href="https://discord.gg/dNhq9kTEnu" target="_blank" rel="noopener noreferrer">
             <MessageSquare className="mr-2 h-4 w-4" />
-            Discord Community
+            &gt; DISCORD_COMMUNITY
             {hasAccess && <ExternalLink className="ml-auto h-4 w-4" />}
           </a>
         </Button>
 
         {!hasAccess && (
-          <p className="text-xs text-muted-foreground dark:text-muted-foreground">
-            Purchase Fabrk to unlock all resources
+          <p className="text-muted-foreground dark:text-muted-foreground text-xs">
+            [NOTE]: Purchase Fabrk to unlock all resources
           </p>
         )}
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

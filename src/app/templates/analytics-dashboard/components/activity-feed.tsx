@@ -3,7 +3,7 @@
  * Activity Feed - Recent user activity log
  */
 
-import { StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
@@ -20,9 +20,9 @@ interface ActivityFeedProps {
 
 export function ActivityFeed({ activities }: ActivityFeedProps) {
   return (
-    <div className="border-border bg-card border lg:col-span-3">
-      <StyledCardHeader code="0x00" title="ACTIVITY_LOG" />
-      <div className="p-4">
+    <TerminalCard className="lg:col-span-3">
+      <TerminalCardHeader code="0x01" title="ACTIVITY_LOG" />
+      <TerminalCardContent>
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [RECENT_ACTIVITY]: COUNT={activities.length}
         </div>
@@ -49,7 +49,7 @@ export function ActivityFeed({ activities }: ActivityFeedProps) {
             </div>
           ))}
         </div>
-      </div>
-    </div>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

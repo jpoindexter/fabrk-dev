@@ -3,15 +3,15 @@
  * Implementation Note - Template features documentation
  */
 
-import { StyledCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function ImplementationNote() {
   return (
-    <div className="border-border bg-card border">
-      <StyledCardHeader code="0x00" title="FEATURES" />
-      <div className="p-6">
+    <TerminalCard>
+      <TerminalCardHeader code="0x01" title="FEATURES" />
+      <TerminalCardContent padding="lg">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [TEMPLATE_FEATURES]:
         </div>
@@ -55,7 +55,7 @@ export function ImplementationNote() {
         <div className={cn(mode.font, "text-muted-foreground mt-4 text-xs")}>
           [NOTE]: Add API routes in src/app/api/teams/. Create Team and TeamMember Prisma models.
         </div>
-      </div>
-    </div>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

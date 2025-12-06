@@ -1,6 +1,6 @@
 # Card Component Specification
 
-Version: 1.0.0
+Version: 1.1.0
 Last Updated: 2025-12-06
 
 ## Overview
@@ -8,6 +8,19 @@ Last Updated: 2025-12-06
 The Card component system provides a unified API for all card-like UI patterns in Fabrk. It supports two visual modes:
 - **Terminal Style** (default): Sharp edges, monospace font, hex code headers
 - **Modern Style**: Rounded corners, system font (via theme tokens)
+
+---
+
+## Component Hierarchy
+
+```
+TerminalCard (container)
+├── TerminalCardHeader (optional)
+├── TerminalCardContent (required for cards with body)
+└── TerminalCardFooter (optional)
+
+TerminalBadge (standalone inline element, NOT a card)
+```
 
 ---
 
@@ -37,10 +50,19 @@ import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/compone
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `variant` | `"default" \| "outline" \| "ghost" \| "accent" \| "featured"` | `"default"` | Visual style variant |
 | `tone` | `"neutral" \| "primary" \| "success" \| "warning" \| "danger"` | `"neutral"` | Color tone for borders/accents |
+| `size` | `"auto" \| "full"` | `"full"` | Height behavior: "auto" = natural, "full" = h-full for grids |
 | `interactive` | `boolean` | `false` | Enable hover/focus states |
 | `as` | `"div" \| "article" \| "section"` | `"div"` | Semantic HTML element |
+
+#### Size Variants
+
+| Size | CSS | Use Case |
+|------|-----|----------|
+| `auto` | Natural height | Standalone cards, notes, non-grid layouts, FAQ items |
+| `full` | `h-full` | Equal-height card grids (default) |
+
+**Important:** Use `size="auto"` when the card is NOT in a grid or when you don't need equal heights.
 
 #### Subcomponents
 
@@ -57,8 +79,43 @@ import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/compone
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `withDesc` | `boolean` | `false` | Prepend "DESC: " prefix to content |
 | `padding` | `"sm" \| "md" \| "lg"` | `"md"` | Content padding size |
+
+---
+
+### TerminalBadge
+
+Inline badge element for section headers and labels. **This is NOT a card.**
+
+```tsx
+import { TerminalBadge } from "@/components/ui/card";
+
+<TerminalBadge code="0x00" label="SYSTEM_INIT" meta="SAAS_BOILERPLATE_v2.0" />
+```
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `code` | `string` | `"0x00"` | Hex code displayed in brackets |
+| `label` | `string` | required | Primary label text |
+| `meta` | `string` | `undefined` | Optional metadata after label |
+
+#### Output Format
+```
+[ [0xXX] LABEL ] META
+```
+
+#### When to Use TerminalBadge vs TerminalCard
+
+| Use Case | Component |
+|----------|-----------|
+| Section header label | `TerminalBadge` |
+| Page section badge | `TerminalBadge` |
+| Trust/status indicator | `TerminalBadge` |
+| Feature card with content | `TerminalCard` |
+| Stat display | `TerminalCard` |
+| Accordion/expandable | `TerminalCard size="auto"` |
 
 ---
 

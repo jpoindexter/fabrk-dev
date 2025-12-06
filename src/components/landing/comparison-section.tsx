@@ -9,6 +9,12 @@ import { useEffect, useRef } from "react";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
+import {
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+  TerminalBadge,
+} from "@/components/ui/card";
 
 // Animated counter component
 function AnimatedCounter({
@@ -88,13 +94,12 @@ export function ComparisonSection() {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <div
-            className={cn(mode.radius, "border-border bg-card mb-4 inline-block border px-4 py-1")}
-          >
-            <span className={cn(mode.font, "text-muted-foreground text-xs")}>
-              [ [0x50] BUILD_VS_FABRK ] TIME_TO_MARKET │ FIB[21,34,55,89]
-            </span>
-          </div>
+          <TerminalBadge
+            code="0x50"
+            label="BUILD_VS_FABRK"
+            meta="TIME_TO_MARKET │ FIB[21,34,55,89]"
+            className="mb-4"
+          />
           <h2 className={cn(mode.font, "mb-4 text-4xl font-semibold tracking-tight")}>
             WHY_BUILD_FROM_SCRATCH?
           </h2>
@@ -109,82 +114,79 @@ export function ComparisonSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className={cn(mode.radius, "border-border bg-card border")}
         >
-          {/* Table Header */}
-          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-            <span className={cn(mode.font, "text-muted-foreground text-xs")}>
-              [ [0x51] comparison_table.exe │ PID:4096 ]
-            </span>
-          </div>
-
-          {/* Table Content */}
-          <div className="p-6">
-            {/* Column Headers */}
-            <div
-              className={cn(
-                mode.font,
-                "border-border mb-4 grid grid-cols-3 gap-4 border-b pb-4 text-xs"
-              )}
-            >
-              <div className="text-muted-foreground">FEATURE</div>
-              <div className="text-destructive text-center">MANUAL_SETUP</div>
-              <div className="text-success text-center">FABRK</div>
-            </div>
-
-            {/* Rows */}
-            <div>
-              {features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -8 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  whileHover={{
-                    backgroundColor: "hsl(var(--muted))",
-                    x: 2,
-                    transition: { duration: 0.2 },
-                  }}
-                  transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
-                  viewport={{ once: true }}
-                  className={cn(
-                    mode.font,
-                    "border-border -mx-4 grid cursor-default grid-cols-3 gap-4 border-b px-4 py-4 text-xs"
-                  )}
-                >
-                  <div className="text-foreground">{feature.name}</div>
-                  <div className="text-center">
-                    <span className="text-destructive">✗</span>
-                    <span className="text-muted-foreground ml-2">
-                      <AnimatedCounter
-                        value={feature.hours}
-                        suffix="+ hours"
-                        duration={1 + index * 0.2}
-                      />
-                    </span>
-                  </div>
-                  <div className="text-center">
-                    <span className="text-success">✓</span>
-                    <span className="text-foreground ml-2">{feature.fabrk}</span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Total Row */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.65 }}
-              viewport={{ once: true }}
-              className={cn(mode.font, "border-border mt-4 grid grid-cols-3 gap-4 border-t-2 pt-4")}
-            >
-              <div className="text-sm font-semibold">TOTAL</div>
-              <div className="text-destructive text-center text-sm font-semibold">
-                <AnimatedCounter value={140} suffix="+ hours" duration={2.5} />
+          <TerminalCard size="auto">
+            <TerminalCardHeader title="[ [0x51] comparison_table.exe │ PID:4096 ]" />
+            <TerminalCardContent>
+              {/* Column Headers */}
+              <div
+                className={cn(
+                  mode.font,
+                  "border-border mb-4 grid grid-cols-3 gap-4 border-b pb-4 text-xs"
+                )}
+              >
+                <div className="text-muted-foreground">FEATURE</div>
+                <div className="text-destructive text-center">MANUAL_SETUP</div>
+                <div className="text-success text-center">FABRK</div>
               </div>
-              <div className="text-success text-center text-sm font-semibold">Ready to Ship</div>
-            </motion.div>
-          </div>
+
+              {/* Rows */}
+              <div>
+                {features.map((feature, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -8 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    whileHover={{
+                      backgroundColor: "hsl(var(--muted))",
+                      x: 2,
+                      transition: { duration: 0.2 },
+                    }}
+                    transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
+                    viewport={{ once: true }}
+                    className={cn(
+                      mode.font,
+                      "border-border -mx-4 grid cursor-default grid-cols-3 gap-4 border-b px-4 py-4 text-xs"
+                    )}
+                  >
+                    <div className="text-foreground">{feature.name}</div>
+                    <div className="text-center">
+                      <span className="text-destructive">✗</span>
+                      <span className="text-muted-foreground ml-2">
+                        <AnimatedCounter
+                          value={feature.hours}
+                          suffix="+ hours"
+                          duration={1 + index * 0.2}
+                        />
+                      </span>
+                    </div>
+                    <div className="text-center">
+                      <span className="text-success">✓</span>
+                      <span className="text-foreground ml-2">{feature.fabrk}</span>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Total Row */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.65 }}
+                viewport={{ once: true }}
+                className={cn(
+                  mode.font,
+                  "border-border mt-4 grid grid-cols-3 gap-4 border-t-2 pt-4"
+                )}
+              >
+                <div className="text-sm font-semibold">TOTAL</div>
+                <div className="text-destructive text-center text-sm font-semibold">
+                  <AnimatedCounter value={140} suffix="+ hours" duration={2.5} />
+                </div>
+                <div className="text-success text-center text-sm font-semibold">Ready to Ship</div>
+              </motion.div>
+            </TerminalCardContent>
+          </TerminalCard>
         </motion.div>
 
         {/* Footer Note */}
@@ -195,17 +197,13 @@ export function ComparisonSection() {
           viewport={{ once: true }}
           className="mt-6"
         >
-          <div className={cn(mode.radius, "border-border bg-card border p-4")}>
-            <span className={cn(mode.font, "text-muted-foreground text-xs")}>
-              [ [0x52] NOTE ]─────────────────────────────────────────────────────
-            </span>
-            <span className={cn(mode.font, "text-muted-foreground mt-1 block text-xs")}>
-              │ Start building your unique features on day one. Skip boilerplate.
-            </span>
-            <span className={cn(mode.font, "text-muted-foreground mt-1 block text-xs")}>
-              └───────────────────────────────────────────────────────────────────┘
-            </span>
-          </div>
+          <TerminalCard size="auto">
+            <TerminalCardContent>
+              <span className={cn(mode.font, "text-muted-foreground text-sm")}>
+                [NOTE]: Start building your unique features on day one. Skip boilerplate.
+              </span>
+            </TerminalCardContent>
+          </TerminalCard>
         </motion.div>
       </div>
     </section>
