@@ -34,11 +34,9 @@ export function FeatureCategoryCard({ category, index }: FeatureCategoryCardProp
         {/* Content Side */}
         <div className="flex-1 space-y-6">
           <div className="inline-flex items-center gap-4">
-            <div className="bg-primary/10 p-4">
-              <Icon className="text-primary size-6" />
-            </div>
             <span className="border-border bg-card text-muted-foreground border px-4 py-1 text-xs">
-              [{category.stats.value}] {category.stats.label.toUpperCase().replace(/ /g, "_")}
+              [ [0x{hexIndex}] {category.stats.label.toUpperCase().replace(/ /g, "_")} ]{" "}
+              {category.stats.value}
             </span>
           </div>
 

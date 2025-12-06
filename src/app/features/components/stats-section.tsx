@@ -11,7 +11,7 @@ import { COMPONENT_STATS } from "./feature-data";
 
 export function StatsSection() {
   return (
-    <section className="border-border bg-muted/30 border-b py-12">
+    <section className="border-border bg-background border-b py-12">
       <div className="container mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6">
           {COMPONENT_STATS.map((stat, index) => {

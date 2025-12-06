@@ -11,7 +11,7 @@ import { TECH_STACK } from "./feature-data";
 
 export function TechStackSection() {
   return (
-    <section className="border-border bg-muted/30 border-t py-16 lg:py-20">
+    <section className="border-border bg-background border-t py-16 lg:py-20">
       <div className="container mx-auto max-w-5xl px-6 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
