@@ -12,7 +12,9 @@ import {
   StyledCardHeader,
   TemplatePageHeader,
   FeaturesCard,
-  CodeOutput,
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
 } from "@/components/ui/card";
 import {
   FileQuestion,
@@ -170,24 +172,29 @@ export default function EmptyStatesTemplate() {
                     </div>
 
                     {/* Terminal Output */}
-                    <CodeOutput className="mt-4">
-                      {state.terminal.map((line, idx) => (
-                        <div
-                          key={idx}
-                          className={
-                            line.startsWith("ERROR")
-                              ? "text-destructive"
-                              : line.startsWith("$")
-                                ? "text-success"
-                                : line.startsWith("HINT")
-                                  ? "text-warning"
-                                  : ""
-                          }
-                        >
-                          {line}
+                    <TerminalCard className="mt-4">
+                      <TerminalCardHeader code="0x00" title="OUTPUT" />
+                      <TerminalCardContent>
+                        <div className="space-y-0.5 text-xs">
+                          {state.terminal.map((line, idx) => (
+                            <div
+                              key={idx}
+                              className={
+                                line.startsWith("ERROR")
+                                  ? "text-destructive"
+                                  : line.startsWith("$")
+                                    ? "text-success"
+                                    : line.startsWith("HINT")
+                                      ? "text-warning"
+                                      : ""
+                              }
+                            >
+                              {line}
+                            </div>
+                          ))}
                         </div>
-                      ))}
-                    </CodeOutput>
+                      </TerminalCardContent>
+                    </TerminalCard>
 
                     {/* Actions - pushed to bottom */}
                     <div className="mt-auto flex items-center justify-center gap-2 pt-4">

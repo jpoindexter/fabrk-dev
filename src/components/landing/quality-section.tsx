@@ -59,7 +59,9 @@ export function QualitySection() {
             viewport={{ once: true }}
           >
             <span className="text-muted-foreground text-xs">[0x00]</span>
-            <h2 className="mb-4 text-2xl font-semibold tracking-tight">BUILT_TO_LAST_TESTED_TO_SHIP</h2>
+            <h2 className="mb-4 text-2xl font-semibold tracking-tight">
+              BUILT_TO_LAST_TESTED_TO_SHIP
+            </h2>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -83,22 +85,33 @@ export function QualitySection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.05 }}
                 viewport={{ once: true }}
-                className="group border-border bg-card hover:border-primary/50 border p-8 transition-all"
+                className="group border-border bg-card hover:border-primary/50 flex h-full flex-col border transition-all"
               >
-                <div className="bg-primary/10 mb-4 inline-flex items-center justify-center p-4">
+                {/* Terminal Header */}
+                <div className="border-border flex items-center justify-between border-b px-4 py-2">
+                  <span className="text-muted-foreground text-xs">
+                    [ [0x{(index + 50).toString(16).toUpperCase()}] QUALITY ]
+                  </span>
                   {item.iconComponent === "testTube" ? (
-                    <TestTube2 className="text-primary h-6 w-6" />
+                    <TestTube2 className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
                   ) : (
-                    <SimpleIcon path={item.icon!} className="text-primary h-6 w-6" />
+                    <SimpleIcon
+                      path={item.icon!}
+                      className="text-muted-foreground group-hover:text-primary size-4 transition-colors"
+                    />
                   )}
                 </div>
-                <div className="mb-4">
-                  <div className="text-foreground text-4xl font-semibold">{item.metric}</div>
-                  <h3 className="mt-1 text-lg font-semibold">
+                {/* Content */}
+                <div className="flex-1 p-4">
+                  <div className="text-foreground mb-2 text-3xl font-semibold">{item.metric}</div>
+                  <div className="text-foreground mb-3 text-xs font-semibold">
                     {item.label.toUpperCase().replace(/ /g, "_")}
-                  </h3>
+                  </div>
+                  <div className="text-xs">
+                    <span className="text-muted-foreground">DESC: </span>
+                    <span className="text-foreground">{item.description}</span>
+                  </div>
                 </div>
-                <span className="text-muted-foreground block text-xs">{item.description}</span>
               </motion.div>
             );
           })}
@@ -110,19 +123,21 @@ export function QualitySection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
-          className="border-border bg-card mt-12 border p-8"
+          className="border-border bg-card mt-12 border"
         >
-          <div className="flex items-start gap-4">
-            <div className="shrink-0">
-              <CheckCircle2 className="text-primary h-8 w-8" />
-            </div>
-            <div>
-              <h3 className="mb-2 text-lg font-semibold">QUALITY_GUARANTEE</h3>
-              <p className="text-muted-foreground text-sm">
+          <div className="border-border flex items-center justify-between border-b px-4 py-2">
+            <span className="text-muted-foreground text-xs">[ [0x54] GUARANTEE ]</span>
+            <CheckCircle2 className="text-muted-foreground size-4" />
+          </div>
+          <div className="p-4">
+            <h3 className="text-foreground mb-2 text-sm font-semibold">QUALITY_GUARANTEE</h3>
+            <div className="text-xs">
+              <span className="text-muted-foreground">DESC: </span>
+              <span className="text-foreground">
                 Unlike other boilerplates that ship untested code, every Fabrk component is
                 rigorously tested, documented in Storybook, and validated by CI/CD pipelines. You're
                 not inheriting technical debt—you're getting production-grade infrastructure.
-              </p>
+              </span>
             </div>
           </div>
         </motion.div>

@@ -151,7 +151,7 @@ function FeatureCard({
         y: -4,
         transition: { duration: 0.2 },
       }}
-      className="group border-border bg-card hover:border-primary/50 border transition-colors"
+      className="group border-border bg-card hover:border-primary/50 flex h-full flex-col border transition-colors"
     >
       {/* Module Header */}
       <div className="border-border flex items-center justify-between border-b px-4 py-2">
@@ -167,7 +167,7 @@ function FeatureCard({
       </div>
 
       {/* Content */}
-      <div className="p-4">
+      <div className="flex-1 p-4">
         {/* Status */}
         <div className="mb-4 font-mono text-xs">
           <span className="text-muted-foreground">STATUS: </span>

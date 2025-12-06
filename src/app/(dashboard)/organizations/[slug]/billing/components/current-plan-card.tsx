@@ -11,9 +11,10 @@ import {
   CheckCircle2,
   AlertTriangle,
   TrendingUp,
+  CreditCard,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import type { Organization, Subscription } from "./types";
 import { getStatusBadge } from "./utils";
@@ -37,17 +38,14 @@ export function CurrentPlanCard({
   onUpgrade,
 }: CurrentPlanCardProps) {
   return (
-    <Card className={cn("border-border border", mode.radius)}>
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <div>
-            <CardTitle>Current Plan</CardTitle>
-            <CardDescription>Your organization's subscription and billing details</CardDescription>
-          </div>
-          {subscription && getStatusBadge(subscription.status)}
-        </div>
-      </CardHeader>
-      <CardContent>
+    <TerminalCard>
+      <TerminalCardHeader
+        code="0x00"
+        title="CURRENT_PLAN"
+        icon={<CreditCard className="text-muted-foreground size-4" />}
+        meta={subscription && getStatusBadge(subscription.status)}
+      />
+      <TerminalCardContent padding="lg">
         {subscription ? (
           <div className="space-y-6">
             <div className="flex items-center justify-between">
@@ -138,7 +136,7 @@ export function CurrentPlanCard({
             )}
           </div>
         )}
-      </CardContent>
-    </Card>
+      </TerminalCardContent>
+    </TerminalCard>
   );
 }

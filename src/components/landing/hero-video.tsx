@@ -152,7 +152,7 @@ export function HeroVideo({
       <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce">
         <div className="flex flex-col items-center gap-2">
           <svg
-            className="text-foreground/60 h-6 w-6"
+            className="text-foreground/60 size-6"
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"

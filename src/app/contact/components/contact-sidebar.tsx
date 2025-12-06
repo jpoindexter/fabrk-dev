@@ -16,25 +16,26 @@ export function ContactSidebar() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className={cn("border-border bg-card border p-6", mode.radius)}
+        className={cn("border-border bg-card border", mode.radius)}
       >
-        <div className="flex items-start gap-4">
-          <div className={cn("bg-primary/10 border-border border p-4", mode.radius)}>
-            <Mail className="text-primary h-5 w-5" />
+        {/* Terminal Header */}
+        <div className="border-border flex items-center justify-between border-b px-4 py-2">
+          <span className={cn("text-muted-foreground text-xs", mode.font)}>[ [0x02] CONTACT ]</span>
+          <Mail className="text-muted-foreground size-4" />
+        </div>
+        {/* Content */}
+        <div className="p-4">
+          <h3 className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>EMAIL_US</h3>
+          <div className={cn("text-xs", mode.font)}>
+            <span className="text-muted-foreground">DESC: </span>
+            <span className="text-foreground">Prefer email? Send us a message directly:</span>
           </div>
-          <div>
-            <span className={cn("text-muted-foreground text-xs", mode.font)}>[0x02]</span>
-            <h3 className={cn("mb-1 text-xs font-semibold", mode.font)}>EMAIL_US</h3>
-            <p className={cn("text-muted-foreground mb-2 text-xs", mode.font)}>
-              Prefer email? Send us a message directly:
-            </p>
-            <a
-              href="mailto:support@fabrk.dev"
-              className={cn("text-primary text-xs hover:underline", mode.font)}
-            >
-              &gt; support@fabrk.dev
-            </a>
-          </div>
+          <a
+            href="mailto:support@fabrk.dev"
+            className={cn("text-primary mt-2 block text-xs hover:underline", mode.font)}
+          >
+            &gt; support@fabrk.dev
+          </a>
         </div>
       </motion.div>
 
@@ -43,19 +44,26 @@ export function ContactSidebar() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className={cn("border-border bg-card border p-6", mode.radius)}
+        className={cn("border-border bg-card border", mode.radius)}
       >
-        <div className="flex items-start gap-4">
-          <div className={cn("bg-primary/10 border-border border p-4", mode.radius)}>
-            <MessageCircle className="text-primary h-5 w-5" />
-          </div>
-          <div>
-            <span className={cn("text-muted-foreground text-xs", mode.font)}>[0x03]</span>
-            <h3 className={cn("mb-1 text-xs font-semibold", mode.font)}>RESPONSE_TIME</h3>
-            <p className={cn("text-muted-foreground text-xs", mode.font)}>
+        {/* Terminal Header */}
+        <div className="border-border flex items-center justify-between border-b px-4 py-2">
+          <span className={cn("text-muted-foreground text-xs", mode.font)}>
+            [ [0x03] RESPONSE ]
+          </span>
+          <MessageCircle className="text-muted-foreground size-4" />
+        </div>
+        {/* Content */}
+        <div className="p-4">
+          <h3 className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
+            RESPONSE_TIME
+          </h3>
+          <div className={cn("text-xs", mode.font)}>
+            <span className="text-muted-foreground">DESC: </span>
+            <span className="text-foreground">
               We typically respond within 24 hours during business days. For urgent issues, please
               mention "URGENT" in your subject.
-            </p>
+            </span>
           </div>
         </div>
       </motion.div>

@@ -138,7 +138,7 @@ export function EnterpriseFeaturesSection() {
                   transition: { duration: 0.2 },
                 }}
                 className={cn(
-                  "group border-border bg-card hover:border-primary/50 border transition-colors",
+                  "group border-border bg-card hover:border-primary/50 flex h-full flex-col border transition-colors",
                   mode.radius
                 )}
               >
@@ -155,12 +155,12 @@ export function EnterpriseFeaturesSection() {
                     ]
                   </span>
                   {IconEl && (
-                    <IconEl className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors" />
+                    <IconEl className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
                   )}
                 </div>
 
                 {/* Content */}
-                <div className="p-4">
+                <div className="flex-1 p-4">
                   <div className="text-foreground mb-3 text-xs font-semibold">
                     {feature.title.toUpperCase().replace(/ /g, "_").replace(/\+/g, "_AND_")}
                   </div>
@@ -180,16 +180,23 @@ export function EnterpriseFeaturesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
           viewport={{ once: true }}
-          className={cn("border-border bg-card mt-12 border p-8 text-center", mode.radius)}
+          className={cn("border-border bg-card mt-12 border", mode.radius)}
         >
-          <p className="text-sm font-semibold">
-            <span className="text-primary">$200,000+</span> worth of enterprise features, included
-            out-of-the-box
-          </p>
-          <span className="text-muted-foreground mt-2 block text-xs">
-            These features would take 6-12 months to build yourself. We've done the hard work so you
-            can focus on your product.
-          </span>
+          <div className="border-border border-b px-4 py-2">
+            <span className="text-muted-foreground text-xs">[ [0x48] VALUE ]</span>
+          </div>
+          <div className="p-4">
+            <p className="text-foreground mb-2 text-sm font-semibold">
+              <span className="text-primary">$200,000+</span> WORTH_OF_ENTERPRISE_FEATURES
+            </p>
+            <div className="text-xs">
+              <span className="text-muted-foreground">DESC: </span>
+              <span className="text-foreground">
+                These features would take 6-12 months to build yourself. We've done the hard work so
+                you can focus on your product.
+              </span>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

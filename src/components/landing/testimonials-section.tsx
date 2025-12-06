@@ -102,7 +102,7 @@ export function TestimonialsSection() {
               }}
               className={cn(
                 mode.radius,
-                "group border-border bg-card hover:border-primary/50 border transition-colors"
+                "group border-border bg-card hover:border-primary/50 flex h-full flex-col border transition-colors"
               )}
             >
               {/* Terminal Header */}
@@ -110,7 +110,7 @@ export function TestimonialsSection() {
                 <span className="text-muted-foreground text-xs">
                   [ [0x{(index + 1).toString(16).toUpperCase().padStart(2, "0")}] TESTIMONIAL ]
                 </span>
-                <Avatar className={cn(mode.radius, "h-6 w-6")}>
+                <Avatar className={cn(mode.radius, "size-6")}>
                   <AvatarFallback
                     className={cn(
                       mode.radius,
@@ -123,7 +123,7 @@ export function TestimonialsSection() {
               </div>
 
               {/* Content */}
-              <div className="p-4">
+              <div className="flex-1 p-4">
                 <div className="mb-4 text-xs">
                   <span className="text-muted-foreground">QUOTE: </span>
                   <span className="text-foreground">"{testimonial.quote}"</span>

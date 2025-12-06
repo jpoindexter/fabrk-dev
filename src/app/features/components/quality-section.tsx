@@ -60,7 +60,7 @@ export function QualitySection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group border-border bg-card hover:border-primary/50 border transition-colors"
+                className="group border-border bg-card hover:border-primary/50 flex h-full flex-col border transition-colors"
               >
                 {/* Terminal Header */}
                 <div className="border-border flex items-center justify-between border-b px-4 py-2">
@@ -68,7 +68,7 @@ export function QualitySection() {
                   <Icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
                 </div>
                 {/* Content */}
-                <div className="p-4">
+                <div className="flex-1 p-4">
                   <div className="text-foreground mb-3 text-xs font-semibold">{item.title}</div>
                   <div className="text-xs">
                     <span className="text-muted-foreground">DESC: </span>

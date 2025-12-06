@@ -49,7 +49,7 @@ export function AboutCTA() {
           <Button size="lg" className="text-xs" asChild>
             <Link href="/#pricing">
               &gt; GET_FABRK - {config.pricing.fabrk.display.current}
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="ml-2 size-4" />
             </Link>
           </Button>
           <Button variant="outline" size="lg" className="text-xs" asChild>

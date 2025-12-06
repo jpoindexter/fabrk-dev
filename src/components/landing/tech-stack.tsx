@@ -56,18 +56,18 @@ export function TechStack() {
                 y: -4,
                 transition: { duration: 0.2 },
               }}
-              className="group border-border bg-card hover:border-primary/50 border transition-colors"
+              className="group border-border bg-card hover:border-primary/50 flex h-full flex-col border transition-colors"
             >
               {/* Terminal Header */}
-              <div className="border-border border-b px-3 py-1.5">
-                <span className="text-muted-foreground text-[10px]">[ [{tech.id}] ]</span>
+              <div className="border-border border-b px-4 py-2">
+                <span className="text-muted-foreground text-xs">[ [{tech.id}] STACK ]</span>
               </div>
 
               {/* Content */}
-              <div className="flex flex-col items-center justify-center gap-3 p-4">
+              <div className="flex flex-1 flex-col items-center justify-center gap-3 p-4">
                 <SimpleIcon
                   path={tech.path}
-                  className="text-foreground group-hover:text-primary h-8 w-8 transition-colors"
+                  className="text-foreground group-hover:text-primary size-8 transition-colors"
                 />
                 <span className="text-foreground text-xs font-medium">
                   {tech.name.toUpperCase().replace(/ /g, "_").replace(/\./g, "")}

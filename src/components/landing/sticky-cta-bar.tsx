@@ -116,17 +116,17 @@ export function StickyCTABar({
               <Button asChild size="sm" className={cn(mode.radius, mode.font, "text-xs")}>
                 <Link href={ctaHref}>
                   &gt; {ctaText.toUpperCase().replace(/ /g, "_")}
-                  <ArrowRight className="ml-2 h-3 w-3" />
+                  <ArrowRight className="ml-2 size-3" />
                 </Link>
               </Button>
               <Button
                 variant="ghost"
                 size="icon"
-                className={cn(mode.radius, "h-8 w-8")}
+                className={cn(mode.radius, "size-8")}
                 onClick={handleDismiss}
                 aria-label="Dismiss"
               >
-                <X className="h-4 w-4" />
+                <X className="size-4" />
               </Button>
             </div>
           </div>

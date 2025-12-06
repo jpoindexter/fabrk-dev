@@ -34,6 +34,7 @@ export function TechStackSection() {
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {TECH_STACK.map((tech, index) => {
             const hexId = (index + 10).toString(16).toUpperCase();
+            const Icon = tech.icon;
             return (
               <motion.div
                 key={tech.name}
@@ -41,18 +42,22 @@ export function TechStackSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="group border-border bg-card hover:border-primary/50 border transition-colors"
+                className="group border-border bg-card hover:border-primary/50 flex h-full flex-col border transition-colors"
               >
                 {/* Terminal Header */}
-                <div className="border-border border-b px-3 py-1.5">
-                  <span className="text-muted-foreground text-[10px]">[ [0x{hexId}] ]</span>
+                <div className="border-border flex items-center justify-between border-b px-4 py-2">
+                  <span className="text-muted-foreground text-xs">[ [0x{hexId}] STACK ]</span>
+                  <Icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
                 </div>
                 {/* Content */}
-                <div className="p-4 text-center">
-                  <span className="text-foreground block text-sm font-semibold">
+                <div className="flex-1 p-4">
+                  <div className="text-foreground mb-3 text-xs font-semibold">
                     {tech.name.toUpperCase().replace(/ /g, "_").replace(/\./g, "")}
-                  </span>
-                  <span className="text-muted-foreground text-xs">{tech.description}</span>
+                  </div>
+                  <div className="text-xs">
+                    <span className="text-muted-foreground">DESC: </span>
+                    <span className="text-foreground">{tech.description}</span>
+                  </div>
                 </div>
               </motion.div>
             );

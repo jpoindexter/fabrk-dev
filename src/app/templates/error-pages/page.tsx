@@ -14,7 +14,9 @@ import {
   StyledCardHeader,
   TemplatePageHeader,
   FeaturesCard,
-  CodeOutput,
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
 } from "@/components/ui/card";
 import {
   FileQuestion,
@@ -190,24 +192,32 @@ export default function ErrorPagesTemplate() {
                       </div>
 
                       {/* Terminal Output */}
-                      <CodeOutput>
-                        {error.terminal.map((line, idx) => (
-                          <div
-                            key={idx}
-                            className={
-                              line.startsWith("ERROR")
-                                ? "text-destructive"
-                                : line.startsWith("$")
-                                  ? "text-success"
-                                  : line === ""
-                                    ? "h-2"
-                                    : ""
-                            }
-                          >
-                            {line}
+                      <TerminalCard>
+                        <TerminalCardHeader
+                          code={error.code.replace("ERROR_", "0x")}
+                          title="OUTPUT"
+                        />
+                        <TerminalCardContent>
+                          <div className="space-y-0.5 text-xs">
+                            {error.terminal.map((line, idx) => (
+                              <div
+                                key={idx}
+                                className={
+                                  line.startsWith("ERROR")
+                                    ? "text-destructive"
+                                    : line.startsWith("$")
+                                      ? "text-success"
+                                      : line === ""
+                                        ? "h-2"
+                                        : ""
+                                }
+                              >
+                                {line}
+                              </div>
+                            ))}
                           </div>
-                        ))}
-                      </CodeOutput>
+                        </TerminalCardContent>
+                      </TerminalCard>
 
                       {/* Actions */}
                       <div className="flex items-center justify-center gap-4">

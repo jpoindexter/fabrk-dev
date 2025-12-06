@@ -43,23 +43,33 @@ export function FeaturesHero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="border-border bg-card mx-auto max-w-2xl border p-4"
+            className="border-border bg-card mx-auto max-w-2xl border p-4 text-left"
           >
-            <div className="text-muted-foreground mb-2 text-xs">
+            <div className="text-muted-foreground mb-4 text-xs">
               [ [0x01] STATUS ]────────────────────────
             </div>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-muted-foreground mb-4 text-sm">
               Stop rebuilding the same features for every project. Fabrk includes authentication,
               payments, database, real-time, multi-tenancy, admin dashboard, and more - all
               production-tested and ready to deploy.
             </p>
+            <div className="flex flex-wrap gap-4 text-sm">
+              <span>
+                <span className="text-muted-foreground">Features:</span>{" "}
+                <span className="text-primary">8_CATEGORIES</span>
+              </span>
+              <span>
+                <span className="text-muted-foreground">Status:</span>{" "}
+                <span className="text-primary">PRODUCTION_READY</span>
+              </span>
+            </div>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col items-center justify-center gap-4 sm:flex-row"
+            className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row"
           >
             <Button asChild size="lg" className="text-xs">
               <Link href="/#pricing">

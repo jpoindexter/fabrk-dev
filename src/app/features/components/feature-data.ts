@@ -28,7 +28,8 @@ export const FEATURE_CATEGORIES = [
     icon: Lock,
     title: "Authentication & Security",
     tagline: "Enterprise-grade auth out of the box",
-    description: "Complete authentication system with NextAuth v5. Email/password, OAuth providers, magic links, 2FA, session management, and password reset - all production-ready.",
+    description:
+      "Complete authentication system with NextAuth v5. Email/password, OAuth providers, magic links, 2FA, session management, and password reset - all production-ready.",
     features: [
       "Email/password with bcrypt hashing",
       "Google OAuth integration",
@@ -46,7 +47,8 @@ export const FEATURE_CATEGORIES = [
     icon: CreditCard,
     title: "Stripe Payments",
     tagline: "Monetize from day one",
-    description: "Full Stripe integration for one-time payments and subscriptions. Customer portal, invoicing, webhook handling, and idempotency built-in.",
+    description:
+      "Full Stripe integration for one-time payments and subscriptions. Customer portal, invoicing, webhook handling, and idempotency built-in.",
     features: [
       "One-time purchases",
       "Recurring subscriptions",
@@ -64,7 +66,8 @@ export const FEATURE_CATEGORIES = [
     icon: Database,
     title: "Database & ORM",
     tagline: "Type-safe data layer",
-    description: "PostgreSQL with Prisma ORM. 13+ pre-built models for users, organizations, payments, webhooks, and more. Type-safe queries with full migration support.",
+    description:
+      "PostgreSQL with Prisma ORM. 13+ pre-built models for users, organizations, payments, webhooks, and more. Type-safe queries with full migration support.",
     features: [
       "PostgreSQL database",
       "Prisma ORM with migrations",
@@ -82,7 +85,8 @@ export const FEATURE_CATEGORIES = [
     icon: Users,
     title: "Multi-Tenancy & RBAC",
     tagline: "Built for teams",
-    description: "Complete organization/workspace system with role-based access control. Owner, Admin, Member, Guest roles with granular permissions and data isolation.",
+    description:
+      "Complete organization/workspace system with role-based access control. Owner, Admin, Member, Guest roles with granular permissions and data isolation.",
     features: [
       "Organization workspaces",
       "4 role levels (Owner/Admin/Member/Guest)",
@@ -100,7 +104,8 @@ export const FEATURE_CATEGORIES = [
     icon: Zap,
     title: "Real-Time Features",
     tagline: "Live updates everywhere",
-    description: "Pusher integration for real-time notifications, activity feeds, and presence tracking. WebSocket connections managed automatically.",
+    description:
+      "Pusher integration for real-time notifications, activity feeds, and presence tracking. WebSocket connections managed automatically.",
     features: [
       "Real-time notifications",
       "Live activity feeds",
@@ -118,7 +123,8 @@ export const FEATURE_CATEGORIES = [
     icon: Code,
     title: "API Keys & Webhooks",
     tagline: "Developer-friendly integrations",
-    description: "Secure API key system with permission levels. Production-grade webhooks with 22+ event types, HMAC signing, automatic retries, and delivery tracking.",
+    description:
+      "Secure API key system with permission levels. Production-grade webhooks with 22+ event types, HMAC signing, automatic retries, and delivery tracking.",
     features: [
       "Cryptographic API keys",
       "3 permission levels (read/write/admin)",
@@ -136,7 +142,8 @@ export const FEATURE_CATEGORIES = [
     icon: Settings,
     title: "Admin Dashboard",
     tagline: "Complete back-office",
-    description: "Full admin interface with user management, analytics, system health, and debugging tools. User impersonation, audit logs, and feature flags included.",
+    description:
+      "Full admin interface with user management, analytics, system health, and debugging tools. User impersonation, audit logs, and feature flags included.",
     features: [
       "User management table",
       "Organization overview",
@@ -154,7 +161,8 @@ export const FEATURE_CATEGORIES = [
     icon: Mail,
     title: "Email System",
     tagline: "Transactional emails that work",
-    description: "Resend integration with React Email templates. Email queue with automatic retries, status tracking, and batch sending for marketing.",
+    description:
+      "Resend integration with React Email templates. Email queue with automatic retries, status tracking, and batch sending for marketing.",
     features: [
       "Resend API integration",
       "React Email templates",
@@ -171,7 +179,12 @@ export const FEATURE_CATEGORIES = [
 
 // Component library stats
 export const COMPONENT_STATS = [
-  { icon: Layers, label: "UI Components", value: "100+", description: "Production-ready components" },
+  {
+    icon: Layers,
+    label: "UI Components",
+    value: "100+",
+    description: "Production-ready components",
+  },
   { icon: Palette, label: "Color Themes", value: "20", description: "DaisyUI themes included" },
   { icon: FileCode, label: "Page Templates", value: "8", description: "Copy-paste ready pages" },
   { icon: TestTube, label: "Tests", value: "130+", description: "Vitest & Playwright" },
@@ -181,12 +194,12 @@ export const COMPONENT_STATS = [
 
 // Tech stack
 export const TECH_STACK = [
-  { name: "Next.js 15", description: "App Router, React 19" },
-  { name: "TypeScript", description: "Strict mode, 100% typed" },
-  { name: "Tailwind CSS 4", description: "Latest with OKLCH" },
-  { name: "Prisma", description: "Type-safe ORM" },
-  { name: "NextAuth v5", description: "Modern auth" },
-  { name: "Stripe", description: "Payments & billing" },
-  { name: "Resend", description: "Email delivery" },
-  { name: "Pusher", description: "Real-time WebSockets" },
+  { name: "Next.js 15", description: "App Router, React 19", icon: Globe },
+  { name: "TypeScript", description: "Strict mode, 100% typed", icon: Code },
+  { name: "Tailwind CSS 4", description: "Latest with OKLCH", icon: Palette },
+  { name: "Prisma", description: "Type-safe ORM", icon: Database },
+  { name: "NextAuth v5", description: "Modern auth", icon: Lock },
+  { name: "Stripe", description: "Payments & billing", icon: CreditCard },
+  { name: "Resend", description: "Email delivery", icon: Mail },
+  { name: "Pusher", description: "Real-time WebSockets", icon: Zap },
 ];

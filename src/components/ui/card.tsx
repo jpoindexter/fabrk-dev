@@ -187,23 +187,33 @@ export type StyledCardHeaderProps = {
   code?: string;
   /** Title displayed after the hex code in UPPERCASE_SNAKE_CASE */
   title: string;
-  /** Optional icon displayed before the title */
+  /** Optional icon displayed on the right side of header */
   icon?: React.ReactNode;
+  /** Optional metadata displayed on right (e.g., "8 items") */
+  meta?: React.ReactNode;
   /** Optional className for additional styling */
   className?: string;
 };
 
 const StyledCardHeader = React.forwardRef<HTMLDivElement, StyledCardHeaderProps>(
-  ({ code = "0x00", title, icon, className }, ref) => (
+  ({ code = "0x00", title, icon, meta, className }, ref) => (
     <div
       ref={ref}
       data-slot="styled-card-header"
-      className={cn("border-border flex items-center gap-2 border-b px-4 py-2", className)}
+      className={cn(
+        "border-border flex items-center justify-between border-b px-4 py-2",
+        className
+      )}
     >
-      {icon}
       <span className={cn("text-muted-foreground text-xs", mode.font)}>
         [ [{code}] {title} ]
       </span>
+      {(icon || meta) && (
+        <span className="flex items-center gap-2">
+          {meta && <span className={cn("text-muted-foreground text-xs", mode.font)}>{meta}</span>}
+          {icon}
+        </span>
+      )}
     </div>
   )
 );
@@ -488,40 +498,188 @@ const FeaturesCard = React.forwardRef<HTMLDivElement, FeaturesCardProps>(
 FeaturesCard.displayName = "FeaturesCard";
 
 /**
- * Code output window
- * Used for displaying code/CLI output with a simple header
- * No macOS-style colored dots - uses sharp aesthetic
+ * TerminalCard - ONE canonical card component
+ * One shell, content is composition. Variants control tone and interactivity.
  *
  * @example
  * ```tsx
- * <CodeOutput title="bracketed">
- *   <div>$ command</div>
- *   <div>output line</div>
- * </CodeOutput>
+ * <TerminalCard tone="primary" interactive>
+ *   <TerminalCardHeader code="0x00" title="TITLE" icon={<Icon />} />
+ *   <TerminalCardContent>Any content here</TerminalCardContent>
+ *   <TerminalCardFooter>Optional actions</TerminalCardFooter>
+ * </TerminalCard>
  * ```
  */
-export type CodeOutputProps = React.HTMLAttributes<HTMLDivElement> & {
-  /** Title shown in header. Defaults to "bracketed" */
-  title?: string;
-  children: React.ReactNode;
+export type TerminalCardTone = "neutral" | "primary" | "success" | "warning" | "danger";
+
+export type TerminalCardProps = React.HTMLAttributes<HTMLDivElement> & {
+  /** Color tone for border */
+  tone?: TerminalCardTone;
+  /** Enable hover/focus states for interactive cards */
+  interactive?: boolean;
+  /** Semantic HTML element */
+  as?: "div" | "article" | "section";
 };
 
-const CodeOutput = React.forwardRef<HTMLDivElement, CodeOutputProps>(
-  ({ title = "bracketed", children, className, ...props }, ref) => (
+const toneStyles: Record<TerminalCardTone, string> = {
+  neutral: "border-border",
+  primary: "border-primary",
+  success: "border-success",
+  warning: "border-warning",
+  danger: "border-destructive",
+};
+
+const TerminalCard = React.forwardRef<HTMLDivElement, TerminalCardProps>(
+  ({ className, tone = "neutral", interactive = false, as: Component = "div", ...props }, ref) => (
+    <Component
+      ref={ref}
+      data-slot="terminal-card"
+      className={cn(
+        // Base styles - ONE card shell
+        "bg-card flex flex-col border",
+        mode.radius,
+
+        // Tone (border color)
+        toneStyles[tone],
+
+        // Interactive states
+        interactive && "group hover:border-primary/50 transition-colors",
+
+        // Equal height support
+        "h-full",
+
+        className
+      )}
+      {...props}
+    />
+  )
+);
+TerminalCard.displayName = "TerminalCard";
+
+/**
+ * TerminalCardHeader - Header with terminal pattern [ [0xXX] TITLE ]
+ */
+export type TerminalCardHeaderProps = StyledCardHeaderProps;
+
+const TerminalCardHeader = React.forwardRef<HTMLDivElement, TerminalCardHeaderProps>(
+  ({ code = "0x00", title, icon, meta, className }, ref) => (
     <div
       ref={ref}
-      data-slot="code-output"
-      className={cn("border-border bg-card border text-left", mode.radius, className)}
-      {...props}
+      data-slot="terminal-card-header"
+      className={cn(
+        "border-border flex items-center justify-between border-b px-4 py-2",
+        className
+      )}
     >
-      <div className="border-border/50 flex items-center gap-2 border-b px-4 py-2">
-        <span className={cn("text-muted-foreground text-xs", mode.font)}>[ {title} ]</span>
-      </div>
-      <div className={cn("text-foreground space-y-0.5 p-4 text-xs", mode.font)}>{children}</div>
+      <span className={cn("text-muted-foreground text-xs", mode.font)}>
+        [ [{code}] {title} ]
+      </span>
+      {(icon || meta) && (
+        <span className="flex items-center gap-2">
+          {meta && <span className={cn("text-muted-foreground text-xs", mode.font)}>{meta}</span>}
+          {icon}
+        </span>
+      )}
     </div>
   )
 );
-CodeOutput.displayName = "CodeOutput";
+TerminalCardHeader.displayName = "TerminalCardHeader";
+
+/**
+ * TerminalCardContent - Content area with optional DESC: prefix
+ */
+export type TerminalCardContentProps = React.HTMLAttributes<HTMLDivElement> & {
+  /** Padding size */
+  padding?: "sm" | "md" | "lg";
+};
+
+const paddingStyles = {
+  sm: "p-2",
+  md: "p-4",
+  lg: "p-6",
+};
+
+const TerminalCardContent = React.forwardRef<HTMLDivElement, TerminalCardContentProps>(
+  ({ className, padding = "md", ...props }, ref) => (
+    <div
+      ref={ref}
+      data-slot="terminal-card-content"
+      className={cn("flex-1", paddingStyles[padding], className)}
+      {...props}
+    />
+  )
+);
+TerminalCardContent.displayName = "TerminalCardContent";
+
+/**
+ * TerminalCardFooter - Footer area for actions
+ */
+export type TerminalCardFooterProps = React.HTMLAttributes<HTMLDivElement>;
+
+const TerminalCardFooter = React.forwardRef<HTMLDivElement, TerminalCardFooterProps>(
+  ({ className, ...props }, ref) => (
+    <div
+      ref={ref}
+      data-slot="terminal-card-footer"
+      className={cn("border-border flex items-center gap-2 border-t px-4 py-2", className)}
+      {...props}
+    />
+  )
+);
+TerminalCardFooter.displayName = "TerminalCardFooter";
+
+/**
+ * TerminalStat - Key-value pair with label and highlighted value
+ * Used in hero cards and stat displays
+ *
+ * @example
+ * ```tsx
+ * <TerminalStatGroup>
+ *   <TerminalStat label="Speed" value="OPTIMIZED" />
+ *   <TerminalStat label="Integration" value="SEAMLESS" />
+ * </TerminalStatGroup>
+ * ```
+ */
+export type TerminalStatProps = React.HTMLAttributes<HTMLSpanElement> & {
+  /** Label text (muted color) */
+  label: string;
+  /** Value text (primary color) */
+  value: string | number;
+  /** Size variant */
+  size?: "sm" | "md";
+};
+
+const TerminalStat = React.forwardRef<HTMLSpanElement, TerminalStatProps>(
+  ({ label, value, size = "md", className, ...props }, ref) => (
+    <span
+      ref={ref}
+      data-slot="terminal-stat"
+      className={cn(size === "sm" ? "text-xs" : "text-sm", className)}
+      {...props}
+    >
+      <span className={cn("text-muted-foreground", mode.font)}>{label}:</span>{" "}
+      <span className={cn("text-primary", mode.font)}>{value}</span>
+    </span>
+  )
+);
+TerminalStat.displayName = "TerminalStat";
+
+/**
+ * TerminalStatGroup - Container for multiple TerminalStat components
+ */
+export type TerminalStatGroupProps = React.HTMLAttributes<HTMLDivElement>;
+
+const TerminalStatGroup = React.forwardRef<HTMLDivElement, TerminalStatGroupProps>(
+  ({ className, ...props }, ref) => (
+    <div
+      ref={ref}
+      data-slot="terminal-stat-group"
+      className={cn("flex flex-wrap gap-4", className)}
+      {...props}
+    />
+  )
+);
+TerminalStatGroup.displayName = "TerminalStatGroup";
 
 export {
   Card,
@@ -539,5 +697,11 @@ export {
   PageBadge,
   TemplatePageHeader,
   FeaturesCard,
-  CodeOutput,
+  // Canonical terminal components
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+  TerminalCardFooter,
+  TerminalStat,
+  TerminalStatGroup,
 };

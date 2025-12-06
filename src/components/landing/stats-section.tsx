@@ -144,7 +144,7 @@ export function StatsSection() {
                 transition: { duration: 0.2 },
               }}
               className={cn(
-                "group border-border bg-card hover:border-primary/50 border transition-colors",
+                "group border-border bg-card hover:border-primary/50 flex h-full flex-col border transition-colors",
                 mode.radius
               )}
             >
@@ -157,7 +157,7 @@ export function StatsSection() {
               </div>
 
               {/* Content */}
-              <div className="p-4">
+              <div className="flex-1 p-4">
                 <div className={cn("text-foreground mb-2 text-3xl font-semibold", mode.font)}>
                   <AnimatedCounter
                     value={stat.value}

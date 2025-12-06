@@ -130,27 +130,27 @@ export function DeveloperExperienceSection() {
                   transition: { duration: 0.2 },
                 }}
                 className={cn(
-                  "group border-border bg-card hover:border-primary/50 border transition-colors",
+                  "group border-border bg-card hover:border-primary/50 flex h-full flex-col border transition-colors",
                   mode.radius
                 )}
               >
                 {/* Terminal Header */}
                 <div className="border-border flex items-center justify-between border-b px-4 py-2">
                   <span className="text-muted-foreground text-xs">
-                    [ [0x{(index + 51).toString(16).toUpperCase()}] ]
+                    [ [0x{(index + 51).toString(16).toUpperCase()}] DEV ]
                   </span>
                   {feature.icon ? (
                     <SimpleIcon
                       path={feature.icon}
-                      className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors"
+                      className="text-muted-foreground group-hover:text-primary size-4 transition-colors"
                     />
                   ) : IconComponent ? (
-                    <IconComponent className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors" />
+                    <IconComponent className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
                   ) : null}
                 </div>
 
                 {/* Content */}
-                <div className="p-4">
+                <div className="flex-1 p-4">
                   <div className="text-foreground mb-3 text-xs font-semibold">
                     {feature.title.toUpperCase().replace(/ /g, "_")}
                   </div>

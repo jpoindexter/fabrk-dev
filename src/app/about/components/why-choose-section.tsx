@@ -6,35 +6,41 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Clock, Shield, Layers, Gift, type LucideIcon } from "lucide-react";
 
 interface Reason {
   id: string;
   title: string;
   description: string;
+  icon: LucideIcon;
 }
 
 const reasons: Reason[] = [
   {
     id: "0x10",
     title: "SAVE_WEEKS_OF_DEVELOPMENT",
+    icon: Clock,
     description:
       "What normally takes 2-4 weeks to build from scratch is ready in minutes. Focus on your unique features, not boilerplate.",
   },
   {
     id: "0x11",
     title: "PRODUCTION_GRADE_SECURITY",
+    icon: Shield,
     description:
       "Security headers, rate limiting, token hashing, CSRF protection—all the security best practices implemented and tested.",
   },
   {
     id: "0x12",
     title: "MODERN_TECH_STACK",
+    icon: Layers,
     description:
       "Built on Next.js 15, TypeScript, Prisma, NextAuth v5, and Stripe. The tools you're already using or want to learn.",
   },
   {
     id: "0x13",
     title: "LIFETIME_UPDATES",
+    icon: Gift,
     description:
       "One-time payment, lifetime access to all updates. No subscriptions, no hidden fees.",
   },
@@ -88,10 +94,11 @@ export function WhyChooseSection() {
                 className="group border-border bg-card hover:border-primary/50 border transition-colors"
               >
                 {/* Terminal Header */}
-                <div className="border-border border-b px-4 py-2">
+                <div className="border-border flex items-center justify-between border-b px-4 py-2">
                   <span className="text-muted-foreground font-mono text-xs">
-                    [ [{item.id}] {item.title} ]
+                    [ [{item.id}] {item.title.slice(0, 12)} ]
                   </span>
+                  <item.icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
                 </div>
 
                 {/* Content */}
