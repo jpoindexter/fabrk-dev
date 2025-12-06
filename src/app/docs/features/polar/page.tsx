@@ -298,7 +298,7 @@ export async function getProduct() {
             API returns a mock response that redirects to your success page. This lets you test the
             full purchase flow without real payments.
           </p>
-          <div className="bg-muted mt-4 p-4 font-mono text-sm">
+          <div className="bg-muted mt-4 p-4">
             <pre>{`// Mock response when Polar isn't configured
 {
   "checkoutUrl": "http://localhost:3000/purchase/success?mock=true",
@@ -337,7 +337,7 @@ export async function getProduct() {
       {/* Files Reference */}
       <DocsSection title="File Reference">
         <DocsCard title="PROJECT_FILES">
-          <div className="space-y-2 text-sm">
+          <div className="space-y-2">
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">src/lib/polar.ts</code>
               <span className="text-muted-foreground">SDK client and helpers</span>

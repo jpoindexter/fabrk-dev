@@ -206,7 +206,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
         <div className="space-y-4">
           <DocsCard title="STEP_01">
             <div className="mb-2 flex items-center gap-4">
-              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono text-sm font-semibold">
+              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono font-semibold">
                 1
               </span>
               First Visit
@@ -218,7 +218,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
           </DocsCard>
           <DocsCard title="STEP_02">
             <div className="mb-2 flex items-center gap-4">
-              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono text-sm font-semibold">
+              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono font-semibold">
                 2
               </span>
               User Makes Choice
@@ -230,7 +230,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
           </DocsCard>
           <DocsCard title="STEP_03">
             <div className="mb-2 flex items-center gap-4">
-              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono text-sm font-semibold">
+              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono font-semibold">
                 3
               </span>
               Choice Saved
@@ -242,7 +242,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
           </DocsCard>
           <DocsCard title="STEP_04">
             <div className="mb-2 flex items-center gap-4">
-              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono text-sm font-semibold">
+              <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono font-semibold">
                 4
               </span>
               Return Visits

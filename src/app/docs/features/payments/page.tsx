@@ -224,7 +224,7 @@ export function ManageBillingButton() {
             different scenarios without charging real money.
           </p>
           Test Card Numbers
-          <div className="mt-2 space-y-2 text-sm">
+          <div className="mt-2 space-y-2">
             <div className="border-border flex justify-between border-b pb-2">
               <span className="text-muted-foreground">Successful payment</span>
               <code className="bg-muted px-1">4242 4242 4242 4242</code>
@@ -242,7 +242,7 @@ export function ManageBillingButton() {
               <code className="bg-muted px-1">4000 0000 0000 9995</code>
             </div>
           </div>
-          <p className="mt-4 text-sm">
+          <p className="mt-4">
             Use any future expiration date, any 3-digit CVC, and any billing ZIP code.
           </p>
         </DocsCard>
@@ -308,7 +308,7 @@ export function ManageBillingButton() {
       <DocsSection title="Going Live Checklist">
         <DocsCard title="GOING_LIVE">
           <p className="mb-4">Before accepting real payments:</p>
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-2">
             <li className="flex items-center gap-2">
               <input type="checkbox" className="rounded" readOnly />
               <span>Switch to live API keys (sk_live_, pk_live_)</span>

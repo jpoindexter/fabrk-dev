@@ -258,27 +258,27 @@ export const localeFlags: Record<Locale, string> = {
       <DocsSection title="Included Languages">
         <DocsCard title="SUPPORTED_LOCALES">
           <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-            <div className="flex items-center gap-2 font-mono text-sm">
+            <div className="flex items-center gap-2">
               <span className="text-2xl">🇺🇸</span>
               <span>en - English</span>
             </div>
-            <div className="flex items-center gap-2 font-mono text-sm">
+            <div className="flex items-center gap-2">
               <span className="text-2xl">🇪🇸</span>
               <span>es - Español</span>
             </div>
-            <div className="flex items-center gap-2 font-mono text-sm">
+            <div className="flex items-center gap-2">
               <span className="text-2xl">🇫🇷</span>
               <span>fr - Français</span>
             </div>
-            <div className="flex items-center gap-2 font-mono text-sm">
+            <div className="flex items-center gap-2">
               <span className="text-2xl">🇩🇪</span>
               <span>de - Deutsch</span>
             </div>
-            <div className="flex items-center gap-2 font-mono text-sm">
+            <div className="flex items-center gap-2">
               <span className="text-2xl">🇧🇷</span>
               <span>pt - Português</span>
             </div>
-            <div className="flex items-center gap-2 font-mono text-sm">
+            <div className="flex items-center gap-2">
               <span className="text-2xl">🇯🇵</span>
               <span>ja - 日本語</span>
             </div>
@@ -290,7 +290,7 @@ export const localeFlags: Record<Locale, string> = {
       <DocsSection title="Message Namespaces">
         <DocsCard title="NAMESPACES">
           <p className="mb-4">Messages are organized into logical namespaces:</p>
-          <div className="space-y-2 text-sm">
+          <div className="space-y-2">
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">common</code>
               <span className="text-muted-foreground">
@@ -335,7 +335,7 @@ export const localeFlags: Record<Locale, string> = {
           customer-facing content - machine translations often miss nuances.
         </DocsCallout>
         <DocsCard title="TIPS">
-          <ul className="text-muted-foreground space-y-1 font-mono text-sm">
+          <ul className="space-y-1">
             <li>
               ├─ <strong>Namespace by feature:</strong> Keep related strings together
             </li>

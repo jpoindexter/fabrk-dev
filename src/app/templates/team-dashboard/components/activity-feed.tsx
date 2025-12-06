@@ -23,7 +23,7 @@ interface ActivityFeedProps {
 
 export function ActivityFeed({ activities }: ActivityFeedProps) {
   return (
-    <TerminalCard>
+    <TerminalCard size="auto">
       <TerminalCardHeader code="0x03" title="ACTIVITY_LOG" icon={<Clock className="h-4 w-4" />} />
       <TerminalCardContent>
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>[ACTIVITY_FEED]:</div>

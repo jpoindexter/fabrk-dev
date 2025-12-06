@@ -321,7 +321,7 @@ export function ImpersonateButton({ userId, userName }: ImpersonateButtonProps) 
           like IP restrictions or approval workflows for sensitive environments.
         </DocsCallout>
         <DocsCard title="SECURITY_BEST_PRACTICES">
-          <ul className="text-muted-foreground space-y-1 font-mono text-sm">
+          <ul className="space-y-1">
             <li>
               ├─ <strong>Admin only:</strong> Restrict to ADMIN role exclusively
             </li>
@@ -381,7 +381,7 @@ export function ImpersonateButton({ userId, userName }: ImpersonateButtonProps) 
       <DocsSection title="Audit Trail">
         <DocsCard title="LOGGED_EVENTS">
           <p className="mb-4">All impersonation activity is logged to the audit trail:</p>
-          <div className="space-y-2 text-sm">
+          <div className="space-y-2">
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">admin.user_impersonated</code>
               <span className="text-muted-foreground">Impersonation started</span>
@@ -402,7 +402,7 @@ export function ImpersonateButton({ userId, userName }: ImpersonateButtonProps) 
       <DocsSection title="Integration">
         <DocsCard title="ADD_TO_DASHBOARD">
           <p className="mb-4">Add the impersonation banner to your dashboard layout:</p>
-          <pre className="bg-muted overflow-x-auto p-4 text-sm">
+          <pre className="bg-muted overflow-x-auto p-4">
             <code>{`// src/app/(dashboard)/layout.tsx
 import { ImpersonationBanner } from "@/components/admin/impersonation-banner";
 

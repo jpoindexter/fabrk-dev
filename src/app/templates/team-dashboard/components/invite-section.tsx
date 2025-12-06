@@ -33,7 +33,7 @@ export function InviteSection() {
   };
 
   return (
-    <TerminalCard>
+    <TerminalCard size="auto">
       <TerminalCardHeader code="0x00" title="INVITE_MEMBER" />
       <TerminalCardContent>
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>

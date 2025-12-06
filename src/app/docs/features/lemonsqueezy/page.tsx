@@ -251,7 +251,7 @@ export async function POST(req: Request) {
       {/* Webhook Events */}
       <DocsSection title="Webhook Events">
         <DocsCard title="WEBHOOK_EVENTS">
-          <div className="space-y-2 text-sm">
+          <div className="space-y-2">
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">order_created</code>
               <span className="text-muted-foreground">New purchase completed</span>

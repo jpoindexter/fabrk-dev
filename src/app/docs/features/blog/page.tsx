@@ -280,7 +280,7 @@ export function formatDate(date: Date | string): string {
       {/* Blog Features */}
       <DocsSection title="Built-in Features">
         <DocsCard title="FEATURES">
-          <ul className="text-muted-foreground space-y-1 font-mono text-sm">
+          <ul className="space-y-1">
             <li>
               ├─ <strong>Slug Generation:</strong> Auto-generate URL slugs from titles
             </li>
@@ -407,7 +407,7 @@ export function formatDate(date: Date | string): string {
       <DocsSection title="SEO Configuration">
         <DocsCard title="SEO_METADATA">
           <p className="mb-4">Each blog post can have custom SEO metadata:</p>
-          <div className="space-y-2 text-sm">
+          <div className="space-y-2">
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">seoTitle</code>
               <span className="text-muted-foreground">

@@ -28,7 +28,7 @@ export function PendingInvitations({ invitations }: PendingInvitationsProps) {
   };
 
   return (
-    <TerminalCard>
+    <TerminalCard size="auto">
       <TerminalCardHeader code="0x02" title="PENDING_INVITES" />
       <TerminalCardContent>
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
