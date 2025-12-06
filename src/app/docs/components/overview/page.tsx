@@ -122,7 +122,6 @@ const componentCategories = [
       { name: "collapsible", description: "Expandable content" },
       { name: "container", description: "Responsive container" },
       { name: "grid", description: "CSS grid layout" },
-      { name: "lazy", description: "Lazy loading wrapper" },
       { name: "page-wrapper", description: "Page layout wrapper" },
       { name: "scroll-area", description: "Custom scrollable area" },
       { name: "section", description: "Page section wrapper" },
@@ -154,11 +153,6 @@ const componentCategories = [
       { name: "image-uploader", description: "Image uploader" },
       { name: "lightbox", description: "Full-screen viewer" },
     ],
-  },
-  {
-    name: "Navigation Extended",
-    hex: "0x6B",
-    components: [{ name: "styled-tabs", description: "Terminal-style tabs" }],
   },
   {
     name: "Specialized",

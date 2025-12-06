@@ -244,22 +244,10 @@ const navigation: NavSection[] = [
           { title: "IMAGE_DROPZONE", href: "/docs/components/image-dropzone", icon: Image },
           { title: "IMAGE_UPLOADER", href: "/docs/components/image-uploader", icon: Image },
           { title: "LIGHTBOX", href: "/docs/components/lightbox", icon: Image },
-          { title: "MERMAID", href: "/docs/components/mermaid", icon: Image },
         ],
       },
       {
-        title: "[07.10] LANDING",
-        items: [
-          { title: "FAQ", href: "/docs/components/faq", icon: Blocks },
-          { title: "FEATURES", href: "/docs/components/features", icon: Blocks },
-          { title: "FOOTER", href: "/docs/components/footer", icon: Blocks },
-          { title: "HERO_SECTIONS", href: "/docs/components/hero", icon: Blocks },
-          { title: "PRICING", href: "/docs/components/pricing", icon: CreditCard },
-          { title: "TESTIMONIALS", href: "/docs/components/testimonials", icon: MessageSquare },
-        ],
-      },
-      {
-        title: "[07.11] SPECIALIZED",
+        title: "[07.10] SPECIALIZED",
         items: [
           { title: "CODE_GENERATOR", href: "/docs/components/code-generator", icon: FileCode },
           { title: "INVITE_FORM", href: "/docs/components/invite-form", icon: Users },

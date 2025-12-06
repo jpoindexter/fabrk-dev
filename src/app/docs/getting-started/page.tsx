@@ -4,7 +4,8 @@ import { Rocket, User, CreditCard, Mail, Database, Shield } from "lucide-react";
 
 export const metadata = {
   title: "Getting Started - Fabrk Docs",
-  description: "Set up your Fabrk SaaS boilerplate in minutes. Install dependencies, configure environment variables, and launch your first app.",
+  description:
+    "Set up your Fabrk SaaS boilerplate in minutes. Install dependencies, configure environment variables, and launch your first app.",
 };
 
 export default function GettingStartedPage() {
@@ -110,7 +111,7 @@ npm run db:push && npm run dev`,
     >
       {/* What is Fabrk */}
       <DocsSection title="What Is Fabrk?">
-        <DocsCard title="OVERVIEW">
+        <DocsCard code="10" title="OVERVIEW">
           <p className="mb-4">
             Fabrk is a ready-to-use foundation for building software businesses. Think of it like
             buying a house that already has the plumbing, electrical, and HVAC installed - you just
@@ -118,16 +119,16 @@ npm run db:push && npm run dev`,
           </p>
           <p>
             Instead of spending months building user accounts, payment processing, and email systems
-            from scratch, Fabrk gives you all of that working on day one. You can focus on what makes
-            your product unique.
+            from scratch, Fabrk gives you all of that working on day one. You can focus on what
+            makes your product unique.
           </p>
         </DocsCard>
       </DocsSection>
 
       {/* Who is this for */}
       <DocsSection title="Who Is This For?">
-        <div className="grid gap-4 sm:grid-cols-2">
-          <DocsCard title="GREAT_FIT">
+        <div className="grid gap-6 sm:grid-cols-2">
+          <DocsCard code="20" title="GREAT_FIT">
             <div className="space-y-1">
               <div>├─ Developers building their first SaaS</div>
               <div>├─ Founders who can code</div>
@@ -135,7 +136,7 @@ npm run db:push && npm run dev`,
               <div>└─ Anyone who values shipping fast</div>
             </div>
           </DocsCard>
-          <DocsCard title="REQUIREMENTS">
+          <DocsCard code="21" title="REQUIREMENTS">
             <div className="space-y-1">
               <div>├─ Basic JavaScript/TypeScript</div>
               <div>├─ Familiarity with React</div>
@@ -148,19 +149,26 @@ npm run db:push && npm run dev`,
 
       {/* Troubleshooting */}
       <DocsSection title="Troubleshooting">
-        <DocsCard title="TROUBLESHOOTING">
+        <DocsCard code="30" title="COMMON_ERRORS">
           <div className="space-y-4">
             <div>
-              <p className="font-semibold mb-1">PORT_3000_IN_USE</p>
-              <p>Run on different port: <code className="bg-muted px-1">npm run dev -- -p 3001</code></p>
+              <p className="text-foreground mb-1 font-semibold">[ERROR]: PORT_3000_IN_USE</p>
+              <p>
+                Run on different port: <code className="bg-muted px-1">npm run dev -- -p 3001</code>
+              </p>
             </div>
             <div>
-              <p className="font-semibold mb-1">CANNOT_CONNECT_DATABASE</p>
-              <p>Check DATABASE_URL in .env.local, ensure no extra spaces, database is running, IP allowed</p>
+              <p className="text-foreground mb-1 font-semibold">[ERROR]: CANNOT_CONNECT_DATABASE</p>
+              <p>
+                Check DATABASE_URL in .env.local, ensure no extra spaces, database is running, IP
+                allowed
+              </p>
             </div>
             <div>
-              <p className="font-semibold mb-1">NEXTAUTH_SECRET_MISSING</p>
-              <p>Generate with: <code className="bg-muted px-1">openssl rand -base64 32</code></p>
+              <p className="text-foreground mb-1 font-semibold">[ERROR]: NEXTAUTH_SECRET_MISSING</p>
+              <p>
+                Generate with: <code className="bg-muted px-1">openssl rand -base64 32</code>
+              </p>
             </div>
           </div>
         </DocsCard>
@@ -168,7 +176,7 @@ npm run db:push && npm run dev`,
 
       {/* Optional Features */}
       <DocsSection title="Optional Features">
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-6 sm:grid-cols-2">
           <DocsLinkCard
             href="/docs/features/payments"
             title="Payments"
@@ -194,7 +202,7 @@ npm run db:push && npm run dev`,
 
       {/* Next Steps */}
       <DocsSection title="Next Steps">
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-6 sm:grid-cols-2">
           <DocsLinkCard
             href="/docs/tutorials/quick-start"
             title="Quick Start Tutorial"
