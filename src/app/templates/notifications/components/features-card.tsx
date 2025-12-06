@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 export function FeaturesCard() {
   return (
     <StyledCard>
-      <StyledCardHeader code="0x00" title="TEMPLATE_FEATURES" />
+      <StyledCardHeader code="0x01" title="TEMPLATE_FEATURES" />
       <div className="p-4">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [TEMPLATE_FEATURES]:

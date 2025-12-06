@@ -4,7 +4,7 @@
  */
 
 import { Progress } from "@/components/ui/progress";
-import { StyledCardHeader } from "@/components/ui/card";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { Users, HardDrive, Zap } from "lucide-react";
 import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
@@ -29,7 +29,7 @@ interface UsageMetricsCardProps {
 
 export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
   return (
-    <div className="border-border bg-card border">
+    <StyledCard>
       <StyledCardHeader code="0x00" title="USAGE_METRICS" />
       <div className="p-4">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
@@ -79,6 +79,6 @@ export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
           </div>
         </div>
       </div>
-    </div>
+    </StyledCard>
   );
 }

@@ -58,7 +58,7 @@ export function PaginationControls({ table }: PaginationControlsProps) {
             size="sm"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
-            className={cn(mode.font, "h-7 text-xs")}
+            className={cn(mode.radius, mode.font, "h-7 text-xs")}
           >
             &lt; PREV
           </Button>
@@ -67,7 +67,7 @@ export function PaginationControls({ table }: PaginationControlsProps) {
             size="sm"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
-            className={cn(mode.font, "h-7 text-xs")}
+            className={cn(mode.radius, mode.font, "h-7 text-xs")}
           >
             NEXT &gt;
           </Button>

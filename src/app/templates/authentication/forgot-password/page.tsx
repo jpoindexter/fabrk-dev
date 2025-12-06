@@ -49,7 +49,7 @@ export default function ForgotPasswordTemplate() {
                 <h1 className={cn(mode.font, "text-2xl font-bold tracking-tight")}>
                   Reset password
                 </h1>
-                <p className="text-muted-foreground text-sm">
+                <p className={cn(mode.font, "text-muted-foreground text-sm")}>
                   Enter your email address and we&apos;ll send you a link to reset your password.
                 </p>
               </div>
@@ -81,7 +81,10 @@ export default function ForgotPasswordTemplate() {
                 <div className="text-center text-sm">
                   <Link
                     href="/templates/authentication/sign-in"
-                    className="text-muted-foreground hover:text-primary inline-flex items-center"
+                    className={cn(
+                      mode.font,
+                      "text-muted-foreground hover:text-primary inline-flex items-center"
+                    )}
                   >
                     <ArrowLeft className="mr-2 h-4 w-4" />
                     Back to sign in
@@ -95,12 +98,14 @@ export default function ForgotPasswordTemplate() {
         {/* Template Features Card */}
         <FeaturesCard
           code="0x01"
+          title="TEMPLATE_FEATURES"
           features={[
             "Clean, focused recovery form",
             "Clear user instructions and feedback",
             "Easy navigation back to login",
             "Email validation pre-configured",
           ]}
+          note="Copy to app/(auth)/forgot-password/page.tsx. Connect to your auth provider's password reset flow."
         />
       </main>
     </div>

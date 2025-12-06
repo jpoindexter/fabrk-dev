@@ -3,18 +3,15 @@
  * Template Features Card - Documents template capabilities
  */
 
-import { StyledCardHeader } from "@/components/ui/card";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 
 export function TemplateFeaturesCard() {
   return (
-    <div className="border-border bg-card border">
-      <StyledCardHeader code="0x00" title="FEATURES" />
+    <StyledCard>
+      <StyledCardHeader code="0x01" title="TEMPLATE_FEATURES" />
       <div className="p-4">
-        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
-          [TEMPLATE_FEATURES]:
-        </div>
         <div className={cn(mode.font, "space-y-1.5 text-xs")}>
           <div>
             <span className="text-success">&gt;</span> 3-tab navigation (Overview, Plans & Pricing,
@@ -53,6 +50,6 @@ export function TemplateFeaturesCard() {
           [NOTE]: Connect to Stripe API for live data.
         </div>
       </div>
-    </div>
+    </StyledCard>
   );
 }

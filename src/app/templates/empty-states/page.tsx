@@ -132,16 +132,14 @@ export default function EmptyStatesTemplate() {
 
         {/* Empty State Grid */}
         <div className="grid gap-6 md:grid-cols-2">
-          {emptyStates.map((state) => {
+          {emptyStates.map((state, index) => {
             const Icon = state.icon;
             return (
-              <div key={state.id} className="border-border bg-card flex flex-col border">
-                <div className="border-border border-b px-4 py-2">
-                  <span className={cn(mode.font, "text-muted-foreground text-xs")}>
-                    [ [0x0{emptyStates.indexOf(state)}] {state.id.toUpperCase().replace(/-/g, "_")}{" "}
-                    ]
-                  </span>
-                </div>
+              <StyledCard key={state.id} className="flex flex-col">
+                <StyledCardHeader
+                  code={`0x0${index}`}
+                  title={state.id.toUpperCase().replace(/-/g, "_")}
+                />
 
                 <div className="flex h-full flex-col p-6">
                   {/* Empty State Content */}
@@ -207,7 +205,7 @@ export default function EmptyStatesTemplate() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </StyledCard>
             );
           })}
         </div>
@@ -248,6 +246,7 @@ export default function EmptyStatesTemplate() {
 
         {/* Features Card */}
         <FeaturesCard
+          title="TEMPLATE_FEATURES"
           code="0x09"
           features={[
             "8 common empty state patterns",

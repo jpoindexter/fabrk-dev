@@ -10,7 +10,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { PageBadge } from "@/components/ui/card";
+import { PageBadge, StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { ChevronRight, Copy, CheckCircle2, ExternalLink } from "lucide-react";
 import { parseContent } from "./content-parser";
 import { mode } from "@/lib/design-system";
@@ -174,14 +174,9 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
         </nav>
 
         {/* Help Section */}
-        <div className="border-border bg-card mt-12 border">
-          <div className="border-border border-b px-4 py-2">
-            <span className={cn(mode.font, "text-muted-foreground text-xs")}>
-              [ [0x00] NEED_HELP ]
-            </span>
-          </div>
+        <StyledCard className="mt-12">
+          <StyledCardHeader code="0x00" title="NEED_HELP" />
           <div className="p-4">
-            <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>[NEED_HELP]:</div>
             <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
               Can't find what you're looking for?
             </div>
@@ -212,7 +207,7 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
               </Button>
             </div>
           </div>
-        </div>
+        </StyledCard>
       </div>
     </main>
   );

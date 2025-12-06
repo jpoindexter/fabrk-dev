@@ -48,7 +48,7 @@ export default function SignInTemplate() {
                   <Lock className="text-primary h-5 w-5" />
                 </div>
                 <h1 className={cn(mode.font, "text-2xl font-bold tracking-tight")}>Welcome back</h1>
-                <p className="text-muted-foreground text-sm">
+                <p className={cn(mode.font, "text-muted-foreground text-sm")}>
                   Enter your email to sign in to your account
                 </p>
               </div>
@@ -77,7 +77,7 @@ export default function SignInTemplate() {
                       </Label>
                       <Link
                         href="/templates/authentication/forgot-password"
-                        className="text-primary text-xs hover:underline"
+                        className={cn(mode.font, "text-primary text-xs hover:underline")}
                       >
                         Forgot password?
                       </Link>
@@ -111,7 +111,7 @@ export default function SignInTemplate() {
                     <span className="border-border w-full border-t" />
                   </div>
                   <div className="relative flex justify-center text-xs uppercase">
-                    <span className="bg-background text-muted-foreground px-2">
+                    <span className={cn(mode.font, "bg-background text-muted-foreground px-2")}>
                       Or continue with
                     </span>
                   </div>
@@ -147,7 +147,7 @@ export default function SignInTemplate() {
                 </div>
               </div>
 
-              <p className="text-muted-foreground px-8 text-center text-sm">
+              <p className={cn(mode.font, "text-muted-foreground px-8 text-center text-sm")}>
                 Don&apos;t have an account?{" "}
                 <Link
                   href="/templates/authentication/sign-up"
@@ -161,34 +161,19 @@ export default function SignInTemplate() {
         </StyledCard>
 
         {/* Template Features Card */}
-        <StyledCard>
-          <StyledCardHeader code="0x01" title="TEMPLATE_FEATURES" />
-          <div className="p-4">
-            <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
-              [TEMPLATE_FEATURES]:
-            </div>
-            <div className={cn(mode.font, "space-y-1.5 text-xs")}>
-              <div>
-                <span className="text-success">&gt;</span> Centered card layout with shadow
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Email/Password and Social Auth providers
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> "Remember me" checkbox functionality
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Forgot password link integration
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Responsive design optimized for mobile
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Terminal-style button variants
-              </div>
-            </div>
-          </div>
-        </StyledCard>
+        <FeaturesCard
+          code="0x01"
+          title="TEMPLATE_FEATURES"
+          features={[
+            "Centered card layout with shadow",
+            "Email/Password and Social Auth providers",
+            '"Remember me" checkbox functionality',
+            "Forgot password link integration",
+            "Responsive design optimized for mobile",
+            "Terminal-style button variants",
+          ]}
+          note="Copy to app/(auth)/sign-in/page.tsx. Connect to NextAuth or your auth provider."
+        />
       </main>
     </div>
   );

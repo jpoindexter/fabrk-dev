@@ -251,7 +251,7 @@ export default function ErrorPagesTemplate() {
 
                       {/* Request ID */}
                       <div className={cn(mode.font, "text-muted-foreground text-xs")}>
-                        REQUEST_ID: req_abc123def456
+                        [REQUEST_ID]: req_abc123def456
                       </div>
                     </div>
                   </div>
@@ -262,7 +262,7 @@ export default function ErrorPagesTemplate() {
         </StyledTabs>
 
         {/* Usage Examples */}
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-3">
           {errorPages.map((error) => {
             const ErrorIcon = error.icon;
             const exampleCodeMap: Record<string, string> = {
@@ -306,6 +306,7 @@ export default function ErrorPagesTemplate() {
 
         {/* Features Card */}
         <FeaturesCard
+          title="TEMPLATE_FEATURES"
           code="0x08"
           features={[
             "Generic error, 404, 500, 503 templates",

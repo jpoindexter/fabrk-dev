@@ -4,6 +4,7 @@
  */
 
 import { Button } from "@/components/ui/button";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Info, X } from "lucide-react";
 import { mode } from "@/lib/design-system";
@@ -11,10 +12,8 @@ import { cn } from "@/lib/utils";
 
 export function PopoverExample() {
   return (
-    <div className="border-border bg-card border">
-      <div className="border-border border-b px-4 py-2">
-        <span className={cn(mode.font, "text-muted-foreground text-xs")}>[ [0x00] POPOVER ]</span>
-      </div>
+    <StyledCard>
+      <StyledCardHeader code="0x00" title="POPOVER" />
       <div className="p-6">
         <div className="mb-4">
           <h3 className={cn(mode.font, "mb-1 font-semibold")}>Popover</h3>
@@ -57,6 +56,6 @@ export function PopoverExample() {
           [USE_CASE]: Tooltips, quick actions, filter dropdowns
         </div>
       </div>
-    </div>
+    </StyledCard>
   );
 }

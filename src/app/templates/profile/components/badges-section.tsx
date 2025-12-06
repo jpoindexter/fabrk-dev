@@ -5,7 +5,7 @@
 
 "use client";
 
-import { StyledCardHeader } from "@/components/ui/card";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { LucideIcon } from "lucide-react";
 import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
@@ -23,7 +23,7 @@ interface BadgesSectionProps {
 
 export function BadgesSection({ badges }: BadgesSectionProps) {
   return (
-    <div className="border-border bg-card border">
+    <StyledCard>
       <StyledCardHeader code="0x00" title="BADGES" />
       <div className="p-4">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
@@ -44,6 +44,6 @@ export function BadgesSection({ badges }: BadgesSectionProps) {
           })}
         </div>
       </div>
-    </div>
+    </StyledCard>
   );
 }

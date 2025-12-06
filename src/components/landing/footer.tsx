@@ -152,6 +152,12 @@ export function Footer() {
                     >
                       &gt; COOKIES
                     </Link>
+                    <Link
+                      href="/refund"
+                      className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
+                    >
+                      &gt; REFUND
+                    </Link>
                   </nav>
                 </div>
               </div>

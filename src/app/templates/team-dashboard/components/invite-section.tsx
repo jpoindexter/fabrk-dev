@@ -7,7 +7,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { StyledCardHeader } from "@/components/ui/card";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -33,7 +33,7 @@ export function InviteSection() {
   };
 
   return (
-    <div className="border-border bg-card border">
+    <StyledCard>
       <StyledCardHeader code="0x00" title="INVITE_MEMBER" />
       <div className="p-4">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
@@ -90,6 +90,6 @@ export function InviteSection() {
           </Button>
         </div>
       </div>
-    </div>
+    </StyledCard>
   );
 }

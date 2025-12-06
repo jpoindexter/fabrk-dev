@@ -3,7 +3,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { StyledCardHeader } from "@/components/ui/card";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { Smartphone, Clock, LogOut, Key } from "lucide-react";
 import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
@@ -35,7 +35,7 @@ export function SecurityTab({
   return (
     <div className="space-y-6">
       {/* 2FA Section */}
-      <div className="border-border bg-card border">
+      <StyledCard>
         <StyledCardHeader code="0x00" title="TWO_FACTOR" />
         <div className="p-4">
           <div className="mb-4 flex items-center justify-between">
@@ -71,10 +71,10 @@ export function SecurityTab({
             &gt; {twoFactorEnabled ? "MANAGE_2FA" : "ENABLE_2FA"}
           </Button>
         </div>
-      </div>
+      </StyledCard>
 
       {/* Active Sessions */}
-      <div className="border-border bg-card border">
+      <StyledCard>
         <StyledCardHeader code="0x00" title="SESSIONS" />
         <div className="p-4">
           <div className="mb-4 flex items-center gap-4">
@@ -132,10 +132,10 @@ export function SecurityTab({
             </Button>
           </div>
         </div>
-      </div>
+      </StyledCard>
 
       {/* Password */}
-      <div className="border-border bg-card border">
+      <StyledCard>
         <StyledCardHeader code="0x00" title="PASSWORD" />
         <div className="p-4">
           <div className="flex items-center justify-between">
@@ -155,7 +155,7 @@ export function SecurityTab({
             </Button>
           </div>
         </div>
-      </div>
+      </StyledCard>
     </div>
   );
 }

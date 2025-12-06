@@ -4,7 +4,7 @@
 
 import { useMemo } from "react";
 import { CheckCircle2, XCircle } from "lucide-react";
-import { StyledCardHeader } from "@/components/ui/card";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 
@@ -27,7 +27,7 @@ export function SecurityScore({ user }: SecurityScoreProps) {
   }, [user.lastPasswordChange, nowTime]); // Add nowTime to dependencies
 
   return (
-    <div className="border-primary bg-card border">
+    <StyledCard className="border-primary">
       <StyledCardHeader code="0x00" title="SECURITY_SCORE" />
       <div className="p-4">
         <div className="mb-4 flex items-center justify-between">
@@ -80,6 +80,6 @@ export function SecurityScore({ user }: SecurityScoreProps) {
           </div>
         </div>
       </div>
-    </div>
+    </StyledCard>
   );
 }

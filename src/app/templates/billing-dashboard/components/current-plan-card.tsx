@@ -4,7 +4,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { StyledCardHeader } from "@/components/ui/card";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { Star } from "lucide-react";
 import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
@@ -26,7 +26,7 @@ interface CurrentPlanCardProps {
 
 export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardProps) {
   return (
-    <div className="border-primary bg-card border">
+    <StyledCard className="border-primary">
       <StyledCardHeader code="0x00" title="SUBSCRIPTION" />
       <div className="p-4">
         <div className="flex items-start justify-between">
@@ -46,14 +46,14 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
             </div>
             <div className="mb-2 flex items-center gap-4">
               <Star className="text-primary h-5 w-5" />
-              <span className="text-2xl font-bold">{subscription.plan}</span>
+              <span className={cn(mode.font, "text-2xl font-bold")}>{subscription.plan}</span>
             </div>
             <div className={cn(mode.font, "text-muted-foreground text-xs")}>
               STARTED: {formatDate(subscription.startDate)}
             </div>
           </div>
           <div className="text-right">
-            <div className="text-3xl font-bold">
+            <div className={cn(mode.font, "text-3xl font-bold")}>
               ${subscription.price}
               <span className="text-muted-foreground text-lg font-normal">/mo</span>
             </div>
@@ -84,6 +84,6 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
           </Button>
         </div>
       </div>
-    </div>
+    </StyledCard>
   );
 }

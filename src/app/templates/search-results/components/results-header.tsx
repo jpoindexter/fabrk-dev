@@ -5,7 +5,7 @@
 
 import { Grid, List, SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { StyledCardHeader } from "@/components/ui/card";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -32,19 +32,19 @@ export function ResultsHeader({
   onViewModeChange,
 }: ResultsHeaderProps) {
   return (
-    <div className="border-border bg-card border">
-      <StyledCardHeader code="0x00" title="RESULTS" />
+    <StyledCard>
+      <StyledCardHeader code="0x02" title="RESULTS" />
       <div className="flex items-center justify-between p-4">
         <div className={cn(mode.font, "text-muted-foreground text-xs")}>
           [SHOWING]: {resultsCount} results
         </div>
         <div className="flex items-center gap-2">
           <Select value={sortBy} onValueChange={onSortChange}>
-            <SelectTrigger className={cn(mode.radius, mode.font, "h-8 w-[140px] text-xs")}>
+            <SelectTrigger className={cn(mode.font, "h-8 w-[140px] text-xs")}>
               <SlidersHorizontal className="mr-1 h-3 w-3" />
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className={cn(mode.radius, mode.font, "text-xs")}>
+            <SelectContent className={cn(mode.font, "text-xs")}>
               <SelectItem value="relevance">Relevance</SelectItem>
               <SelectItem value="newest">Newest</SelectItem>
               <SelectItem value="rating">Top Rated</SelectItem>
@@ -55,7 +55,7 @@ export function ResultsHeader({
               variant={viewMode === "grid" ? "default" : "ghost"}
               size="sm"
               onClick={() => onViewModeChange("grid")}
-              className={cn(mode.radius, "h-8 w-8 p-0")}
+              className="h-8 w-8 p-0"
             >
               <Grid className="h-3 w-3" />
             </Button>
@@ -63,13 +63,13 @@ export function ResultsHeader({
               variant={viewMode === "list" ? "default" : "ghost"}
               size="sm"
               onClick={() => onViewModeChange("list")}
-              className={cn(mode.radius, "border-border h-8 w-8 border-l p-0")}
+              className="border-border h-8 w-8 border-l p-0"
             >
               <List className="h-3 w-3" />
             </Button>
           </div>
         </div>
       </div>
-    </div>
+    </StyledCard>
   );
 }

@@ -3,7 +3,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { StyledCardHeader } from "@/components/ui/card";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { Download } from "lucide-react";
 import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
@@ -22,7 +22,7 @@ interface AuditTabProps {
 
 export function AuditTab({ auditLog }: AuditTabProps) {
   return (
-    <div className="border-border bg-card border">
+    <StyledCard>
       <StyledCardHeader code="0x00" title="AUDIT" />
       <div className="p-4">
         <div className="mb-4 flex items-center justify-between">
@@ -71,6 +71,6 @@ export function AuditTab({ auditLog }: AuditTabProps) {
           </div>
         </div>
       </div>
-    </div>
+    </StyledCard>
   );
 }

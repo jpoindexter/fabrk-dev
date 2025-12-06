@@ -7,6 +7,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { Edit, MapPin } from "lucide-react";
 import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
@@ -37,12 +38,8 @@ interface ProfileHeaderProps {
 
 export function ProfileHeader({ user }: ProfileHeaderProps) {
   return (
-    <div className="border-border bg-card border">
-      <div className="border-border border-b px-4 py-2">
-        <span className={cn(mode.font, "text-muted-foreground text-xs")}>
-          [ [0x00] USER_PROFILE ]
-        </span>
-      </div>
+    <StyledCard>
+      <StyledCardHeader code="0x00" title="USER_PROFILE" />
 
       <div className="p-6">
         <div className="flex flex-col gap-6 md:flex-row">
@@ -93,12 +90,12 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
               key={key}
               className={`border-border border px-4 py-2 text-center ${index > 0 ? "border-l-0" : ""}`}
             >
-              <div className="text-xl font-bold">{value}</div>
+              <div className={cn(mode.font, "text-xl font-bold")}>{value}</div>
               <div className={cn(mode.font, "text-muted-foreground text-xs uppercase")}>{key}</div>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </StyledCard>
   );
 }

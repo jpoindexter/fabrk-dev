@@ -254,7 +254,7 @@ export default function LandingVariationsTemplate() {
         </StyledTabs>
 
         {/* Quick Reference Grid */}
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-3">
           {heroVariations.map((variation, idx) => (
             <StyledCard
               key={variation.id}
@@ -284,6 +284,7 @@ export default function LandingVariationsTemplate() {
 
         {/* Features Card */}
         <FeaturesCard
+          title="TEMPLATE_FEATURES"
           code="0x07"
           features={[
             "3 hero variations (centered, split, minimal)",

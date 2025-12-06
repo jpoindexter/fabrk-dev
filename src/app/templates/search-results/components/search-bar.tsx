@@ -6,7 +6,7 @@
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { StyledCardHeader } from "@/components/ui/card";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 
@@ -18,7 +18,7 @@ interface SearchBarProps {
 
 export function SearchBar({ searchQuery, onSearchChange, resultsCount }: SearchBarProps) {
   return (
-    <div className="border-border bg-card border">
+    <StyledCard>
       <StyledCardHeader code="0x00" title="SEARCH" />
       <div className="p-4">
         <div className="flex gap-2">
@@ -28,15 +28,15 @@ export function SearchBar({ searchQuery, onSearchChange, resultsCount }: SearchB
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
               placeholder="Search components, templates, hooks..."
-              className={cn(mode.radius, mode.font, "pl-8 text-sm")}
+              className={cn(mode.font, "pl-8 text-sm")}
             />
           </div>
-          <Button className={cn(mode.radius, mode.font, "text-xs")}>&gt; SEARCH</Button>
+          <Button className={cn(mode.font, "text-xs")}>&gt; SEARCH</Button>
         </div>
         <div className={cn(mode.font, "text-muted-foreground mt-2 text-xs")}>
           [QUERY]: &quot;{searchQuery}&quot; | RESULTS: {resultsCount} | TIME: 0.042s
         </div>
       </div>
-    </div>
+    </StyledCard>
   );
 }

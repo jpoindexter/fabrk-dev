@@ -4,7 +4,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { StyledCardHeader } from "@/components/ui/card";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 
@@ -31,12 +31,9 @@ export function PlanCards({ plans }: PlanCardsProps) {
       </div>
 
       {/* Plan Cards */}
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-3">
         {plans.map((plan) => (
-          <div
-            key={plan.name}
-            className={`bg-card flex flex-col border ${plan.current ? "border-primary" : "border-border"}`}
-          >
+          <StyledCard key={plan.name} className={plan.current ? "border-primary" : ""}>
             <StyledCardHeader code="0x00" title={`${plan.name.toUpperCase()}_PLAN`} />
             <div className="flex flex-1 flex-col p-4">
               <div className="mb-4 flex items-center justify-between">
@@ -53,7 +50,7 @@ export function PlanCards({ plans }: PlanCardsProps) {
                 )}
               </div>
 
-              <div className="mb-4 text-3xl font-bold">
+              <div className={cn(mode.font, "mb-4 text-3xl font-bold")}>
                 ${plan.price}
                 <span className="text-muted-foreground text-lg font-normal">/mo</span>
               </div>
@@ -80,12 +77,12 @@ export function PlanCards({ plans }: PlanCardsProps) {
                 {plan.current ? "CURRENT_PLAN" : `> SELECT_${plan.name}`}
               </Button>
             </div>
-          </div>
+          </StyledCard>
         ))}
       </div>
 
       {/* Custom Plan */}
-      <div className="border-border bg-card border p-4">
+      <StyledCard className="p-4">
         <div className={cn(mode.font, "text-muted-foreground mb-2 text-xs")}>[CUSTOM_PLAN]:</div>
         <div className="flex items-center justify-between">
           <div>
@@ -98,7 +95,7 @@ export function PlanCards({ plans }: PlanCardsProps) {
             &gt; CONTACT_SALES
           </Button>
         </div>
-      </div>
+      </StyledCard>
     </>
   );
 }

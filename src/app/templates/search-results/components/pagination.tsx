@@ -5,7 +5,7 @@
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { StyledCardHeader } from "@/components/ui/card";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 
@@ -19,8 +19,8 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
-    <div className="border-border bg-card border">
-      <StyledCardHeader code="0x00" title="PAGINATION" />
+    <StyledCard>
+      <StyledCardHeader code="0x03" title="PAGINATION" />
       <div className="p-4">
         <div className="flex items-center justify-between">
           <div className={cn(mode.font, "text-muted-foreground text-xs")}>
@@ -32,7 +32,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
               size="sm"
               onClick={() => onPageChange(Math.max(1, currentPage - 1))}
               disabled={currentPage === 1}
-              className={cn(mode.radius, mode.font, "h-8 text-xs")}
+              className={cn(mode.font, "h-8 text-xs")}
             >
               <ChevronLeft className="mr-1 h-3 w-3" />
               PREV
@@ -44,7 +44,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
                   variant={currentPage === page ? "default" : "outline"}
                   size="sm"
                   onClick={() => onPageChange(page)}
-                  className={cn(mode.radius, mode.font, "h-8 w-8 p-0 text-xs")}
+                  className={cn(mode.font, "h-8 w-8 p-0 text-xs")}
                 >
                   {page}
                 </Button>
@@ -55,7 +55,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
               size="sm"
               onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
               disabled={currentPage === totalPages}
-              className={cn(mode.radius, mode.font, "h-8 text-xs")}
+              className={cn(mode.font, "h-8 text-xs")}
             >
               NEXT
               <ChevronRight className="ml-1 h-3 w-3" />
@@ -63,6 +63,6 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
           </div>
         </div>
       </div>
-    </div>
+    </StyledCard>
   );
 }

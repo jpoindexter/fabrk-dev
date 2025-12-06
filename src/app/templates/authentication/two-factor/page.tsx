@@ -48,7 +48,7 @@ export default function TwoFactorTemplate() {
                 <h1 className={cn(mode.font, "text-2xl font-bold tracking-tight")}>
                   Two-factor authentication
                 </h1>
-                <p className="text-muted-foreground text-sm">
+                <p className={cn(mode.font, "text-muted-foreground text-sm")}>
                   We sent a verification code to your email. Enter the code from the email in the
                   field below.
                 </p>
@@ -76,9 +76,9 @@ export default function TwoFactorTemplate() {
                 </form>
 
                 <div className="text-center text-sm">
-                  <p className="text-muted-foreground">
+                  <p className={cn(mode.font, "text-muted-foreground")}>
                     Didn&apos;t receive the code?{" "}
-                    <Button variant="link" className="text-primary h-auto p-0">
+                    <Button variant="link" className={cn(mode.font, "text-primary h-auto p-0")}>
                       Resend
                     </Button>
                   </p>
@@ -87,7 +87,10 @@ export default function TwoFactorTemplate() {
                 <div className="text-center text-sm">
                   <Link
                     href="/templates/authentication/sign-in"
-                    className="text-muted-foreground hover:text-primary inline-flex items-center"
+                    className={cn(
+                      mode.font,
+                      "text-muted-foreground hover:text-primary inline-flex items-center"
+                    )}
                   >
                     <ArrowLeft className="mr-2 h-4 w-4" />
                     Back to sign in
@@ -101,12 +104,14 @@ export default function TwoFactorTemplate() {
         {/* Template Features Card */}
         <FeaturesCard
           code="0x01"
+          title="TEMPLATE_FEATURES"
           features={[
             "OTP input field with 6-digit slots",
             "Auto-focus and keyboard navigation",
             "Resend code functionality",
             "Fallback option to return to login",
           ]}
+          note="Copy to app/(auth)/two-factor/page.tsx. Integrate with your 2FA provider (TOTP, SMS, or email)."
         />
       </main>
     </div>

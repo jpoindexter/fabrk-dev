@@ -29,13 +29,13 @@ export function BillingTab() {
                 <div className={cn(mode.font, "text-muted-foreground text-xs")}>
                   [CURRENT_PLAN]:
                 </div>
-                <div className="text-2xl font-bold">Pro</div>
+                <div className={cn(mode.font, "text-2xl font-bold")}>Pro</div>
               </div>
               <div className="text-right">
                 <div className={cn(mode.font, "text-muted-foreground text-xs")}>
                   [BILLING_CYCLE]:
                 </div>
-                <div className="text-xl font-bold">$29/month</div>
+                <div className={cn(mode.font, "text-xl font-bold")}>$29/month</div>
               </div>
             </div>
             <div className="flex gap-4">

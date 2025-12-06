@@ -4,6 +4,7 @@
  */
 
 import { Button } from "@/components/ui/button";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -21,12 +22,8 @@ import { cn } from "@/lib/utils";
 
 export function ConfirmationDialog() {
   return (
-    <div className="border-border bg-card border">
-      <div className="border-border border-b px-4 py-2">
-        <span className={cn(mode.font, "text-muted-foreground text-xs")}>
-          [ [0x00] CONFIRMATION_DIALOG ]
-        </span>
-      </div>
+    <StyledCard>
+      <StyledCardHeader code="0x00" title="CONFIRMATION_DIALOG" />
       <div className="p-6">
         <div className="mb-4">
           <h3 className={cn(mode.font, "mb-1 font-semibold")}>Confirmation Dialog</h3>
@@ -76,6 +73,6 @@ export function ConfirmationDialog() {
           [USE_CASE]: Delete, logout, reset, irreversible actions
         </div>
       </div>
-    </div>
+    </StyledCard>
   );
 }

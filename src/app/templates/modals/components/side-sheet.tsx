@@ -6,6 +6,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import {
   Sheet,
   SheetContent,
@@ -26,12 +27,8 @@ interface SideSheetProps {
 
 export function SideSheet({ open, onOpenChange }: SideSheetProps) {
   return (
-    <div className="border-border bg-card border">
-      <div className="border-border border-b px-4 py-2">
-        <span className={cn(mode.font, "text-muted-foreground text-xs")}>
-          [ [0x00] SIDE_SHEET ]
-        </span>
-      </div>
+    <StyledCard>
+      <StyledCardHeader code="0x00" title="SIDE_SHEET" />
       <div className="p-6">
         <div className="mb-4">
           <h3 className={cn(mode.font, "mb-1 font-semibold")}>Side Sheet</h3>
@@ -119,6 +116,6 @@ export function SideSheet({ open, onOpenChange }: SideSheetProps) {
           [USE_CASE]: Settings, detail views, mobile navigation
         </div>
       </div>
-    </div>
+    </StyledCard>
   );
 }

@@ -3,14 +3,14 @@
  * Features Card - Template features and usage notes
  */
 
-import { StyledCardHeader } from "@/components/ui/card";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 
 export function FeaturesCard() {
   return (
-    <div className="border-border bg-card border">
-      <StyledCardHeader code="0x00" title="FEATURES" />
+    <StyledCard>
+      <StyledCardHeader code="0x01" title="TEMPLATE_FEATURES" />
       <div className="p-4">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [TEMPLATE_FEATURES]:
@@ -42,6 +42,6 @@ export function FeaturesCard() {
           [NOTE]: Connect to your payment provider (Stripe/Polar.sh) for live checkout.
         </div>
       </div>
-    </div>
+    </StyledCard>
   );
 }

@@ -6,6 +6,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -29,12 +30,8 @@ interface FormDialogProps {
 
 export function FormDialog({ open, onOpenChange }: FormDialogProps) {
   return (
-    <div className="border-border bg-card border">
-      <div className="border-border border-b px-4 py-2">
-        <span className={cn(mode.font, "text-muted-foreground text-xs")}>
-          [ [0x00] FORM_DIALOG ]
-        </span>
-      </div>
+    <StyledCard>
+      <StyledCardHeader code="0x00" title="FORM_DIALOG" />
       <div className="p-6">
         <div className="mb-4">
           <h3 className={cn(mode.font, "mb-1 font-semibold")}>Form Dialog</h3>
@@ -96,6 +93,6 @@ export function FormDialog({ open, onOpenChange }: FormDialogProps) {
           [USE_CASE]: Create, edit, quick forms, settings
         </div>
       </div>
-    </div>
+    </StyledCard>
   );
 }

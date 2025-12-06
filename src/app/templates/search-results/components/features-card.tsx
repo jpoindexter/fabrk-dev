@@ -3,45 +3,23 @@
  * Features Card - Template features documentation
  */
 
-import { StyledCardHeader } from "@/components/ui/card";
-import { mode } from "@/lib/design-system";
-import { cn } from "@/lib/utils";
+import { FeaturesCard as BaseFeaturesCard } from "@/components/ui/card";
 
 export function FeaturesCard() {
   return (
-    <div className="border-border bg-card border">
-      <StyledCardHeader code="0x00" title="FEATURES" />
-      <div className="p-4">
-        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
-          [TEMPLATE_FEATURES]:
-        </div>
-        <div className={cn(mode.font, "space-y-1.5 text-xs")}>
-          <div>
-            <span className="text-success">&gt;</span> Search bar with query display
-          </div>
-          <div>
-            <span className="text-success">&gt;</span> Category filter sidebar
-          </div>
-          <div>
-            <span className="text-success">&gt;</span> Tag checkboxes with multi-select
-          </div>
-          <div>
-            <span className="text-success">&gt;</span> Sort dropdown (relevance, newest, rating)
-          </div>
-          <div>
-            <span className="text-success">&gt;</span> Grid/list view toggle
-          </div>
-          <div>
-            <span className="text-success">&gt;</span> Result cards with ratings
-          </div>
-          <div>
-            <span className="text-success">&gt;</span> Pagination controls
-          </div>
-        </div>
-        <div className={cn(mode.font, "text-muted-foreground mt-4 text-xs")}>
-          [NOTE]: Connect to your search backend (Algolia, Elasticsearch, etc.) for real results.
-        </div>
-      </div>
-    </div>
+    <BaseFeaturesCard
+      code="0x04"
+      title="FEATURES"
+      features={[
+        "Search bar with query display",
+        "Category filter sidebar",
+        "Tag checkboxes with multi-select",
+        "Sort dropdown (relevance, newest, rating)",
+        "Grid/list view toggle",
+        "Result cards with ratings",
+        "Pagination controls",
+      ]}
+      note="Connect to your search backend (Algolia, Elasticsearch, etc.) for real results."
+    />
   );
 }

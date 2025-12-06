@@ -137,12 +137,12 @@ export default function ChartLibraryTemplate() {
         </div>
 
         {/* Stats - Terminal Style */}
-        <div className="grid gap-4 md:grid-cols-4">
+        <div className="grid gap-6 md:grid-cols-4">
           <div className="border-border bg-card border p-4">
             <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>
               [TOTAL_REVENUE]:
             </div>
-            <div className="text-3xl font-bold">$91.9K</div>
+            <div className={cn(mode.font, "text-3xl font-bold")}>$91.9K</div>
             <div className={cn(mode.font, "text-success mt-1 flex items-center gap-1 text-xs")}>
               <TrendingUp className="h-3 w-3" />
               +23.5%
@@ -152,7 +152,7 @@ export default function ChartLibraryTemplate() {
             <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>
               [ACTIVE_USERS]:
             </div>
-            <div className="text-3xl font-bold">12.5K</div>
+            <div className={cn(mode.font, "text-3xl font-bold")}>12.5K</div>
             <div className={cn(mode.font, "text-success mt-1 flex items-center gap-1 text-xs")}>
               <TrendingUp className="h-3 w-3" />
               +941%
@@ -162,7 +162,7 @@ export default function ChartLibraryTemplate() {
             <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>
               [CONVERSION_RATE]:
             </div>
-            <div className="text-3xl font-bold">4.5%</div>
+            <div className={cn(mode.font, "text-3xl font-bold")}>4.5%</div>
             <div className={cn(mode.font, "text-success mt-1 flex items-center gap-1 text-xs")}>
               <TrendingUp className="h-3 w-3" />
               +0.8%
@@ -172,7 +172,7 @@ export default function ChartLibraryTemplate() {
             <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>
               [AVG_ORDER_VALUE]:
             </div>
-            <div className="text-3xl font-bold">$89</div>
+            <div className={cn(mode.font, "text-3xl font-bold")}>$89</div>
             <div className={cn(mode.font, "text-destructive mt-1 flex items-center gap-1 text-xs")}>
               <TrendingUp className="h-3 w-3 rotate-180" />
               -2.3%

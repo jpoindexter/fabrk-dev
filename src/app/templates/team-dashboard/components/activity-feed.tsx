@@ -4,7 +4,7 @@
  */
 
 import { Clock } from "lucide-react";
-import { StyledCardHeader } from "@/components/ui/card";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 
@@ -23,7 +23,7 @@ interface ActivityFeedProps {
 
 export function ActivityFeed({ activities }: ActivityFeedProps) {
   return (
-    <div className="border-border bg-card border">
+    <StyledCard>
       <StyledCardHeader code="0x00" title="ACTIVITY_LOG" />
       <div className="p-4">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>[ACTIVITY_FEED]:</div>
@@ -49,6 +49,6 @@ export function ActivityFeed({ activities }: ActivityFeedProps) {
           ))}
         </div>
       </div>
-    </div>
+    </StyledCard>
   );
 }

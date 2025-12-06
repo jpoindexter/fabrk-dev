@@ -35,7 +35,7 @@ export function GeneralTab() {
             title="QUICK_ACTIONS"
             description="Frequently used settings and shortcuts"
           />
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2">
             <Button
               variant="outline"
               className={cn(mode.radius, mode.font, "justify-start text-xs")}

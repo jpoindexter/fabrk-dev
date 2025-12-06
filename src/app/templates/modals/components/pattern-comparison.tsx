@@ -3,13 +3,13 @@
  * Pattern Comparison - Table comparing modal patterns
  */
 
-import { StyledCardHeader } from "@/components/ui/card";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 
 export function PatternComparison() {
   return (
-    <div className="border-border bg-card border">
+    <StyledCard>
       <StyledCardHeader code="0x00" title="COMPARISON" />
       <div className="p-4">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>[WHEN_TO_USE]:</div>
@@ -49,6 +49,6 @@ export function PatternComparison() {
           </table>
         </div>
       </div>
-    </div>
+    </StyledCard>
   );
 }

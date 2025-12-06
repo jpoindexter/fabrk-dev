@@ -20,6 +20,8 @@ import {
   Palette,
   Mail,
 } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 const FEATURES = [
   {
@@ -155,7 +157,7 @@ function FeatureCard({
     >
       {/* Module Header */}
       <div className="border-border flex items-center justify-between border-b px-4 py-2">
-        <span className="text-muted-foreground font-mono text-xs">
+        <span className={cn(mode.font, "text-muted-foreground text-xs")}>
           [ [0x{(index + 17).toString(16).toUpperCase().padStart(2, "0")}] {module} ]
         </span>
         <motion.div
@@ -169,7 +171,7 @@ function FeatureCard({
       {/* Content */}
       <div className="p-4">
         {/* Status */}
-        <div className="mb-4 font-mono text-xs">
+        <div className={cn(mode.font, "mb-4 text-xs")}>
           <span className="text-muted-foreground">STATUS: </span>
           <motion.span
             className="text-success"
@@ -182,7 +184,7 @@ function FeatureCard({
         </div>
 
         {/* Description */}
-        <div className="font-mono text-xs">
+        <div className={cn(mode.font, "text-xs")}>
           <span className="text-muted-foreground">DESC: </span>
           <span className="text-foreground">{description}</span>
         </div>
@@ -203,13 +205,17 @@ export function FeaturesShowcase() {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <div className="border-border bg-card mb-4 inline-block border px-4 py-1">
-            <span className="text-muted-foreground font-mono text-xs">
+          <div
+            className={cn(mode.radius, "border-border bg-card mb-4 inline-block border px-4 py-1")}
+          >
+            <span className={cn(mode.font, "text-muted-foreground text-xs")}>
               [ [0x10] STACK_CONFIG ] FIB[89,144,233] MODULES
             </span>
           </div>
-          <h2 className="mb-4 font-mono text-2xl font-bold tracking-tight">SOLID_FOUNDATION</h2>
-          <p className="text-muted-foreground max-w-2xl font-mono text-sm">
+          <h2 className={cn(mode.font, "mb-4 text-2xl font-bold tracking-tight")}>
+            SOLID_FOUNDATION
+          </h2>
+          <p className={cn(mode.font, "text-muted-foreground max-w-2xl text-sm")}>
             Everything you need to build a production-ready SaaS. Authentication, payments,
             multi-tenancy, and more—all pre-configured and ready to customize.
           </p>

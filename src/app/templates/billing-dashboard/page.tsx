@@ -196,7 +196,7 @@ export default function BillingDashboardTemplate() {
             <CurrentPlanCard subscription={subscription} formatDate={formatDate} />
 
             {/* Usage Stats and Payment Methods Grid */}
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-6 md:grid-cols-2">
               <UsageMetricsCard usage={usage} />
               <PaymentMethodsCard paymentMethods={paymentMethods} />
             </div>

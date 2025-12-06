@@ -6,7 +6,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { StyledCardHeader } from "@/components/ui/card";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -66,7 +66,7 @@ export function MembersTable({ members }: MembersTableProps) {
   };
 
   return (
-    <div className="border-border bg-card border">
+    <StyledCard>
       <StyledCardHeader code="0x00" title="TEAM_MEMBERS" />
       <div className="p-4">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
@@ -205,6 +205,6 @@ export function MembersTable({ members }: MembersTableProps) {
           </div>
         </div>
       </div>
-    </div>
+    </StyledCard>
   );
 }

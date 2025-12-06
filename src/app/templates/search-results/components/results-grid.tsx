@@ -22,13 +22,7 @@ interface ResultsGridProps {
 
 export function ResultsGrid({ results, viewMode }: ResultsGridProps) {
   return (
-    <div
-      className={
-        viewMode === "grid"
-          ? "grid md:grid-cols-2 gap-4"
-          : "space-y-4"
-      }
-    >
+    <div className={viewMode === "grid" ? "grid gap-6 md:grid-cols-2" : "space-y-6"}>
       {results.map((result) => (
         <ResultCard key={result.id} result={result} />
       ))}

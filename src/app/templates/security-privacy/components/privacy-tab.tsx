@@ -3,7 +3,7 @@
  */
 
 import { Switch } from "@/components/ui/switch";
-import { StyledCardHeader } from "@/components/ui/card";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 
@@ -25,7 +25,7 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
   return (
     <div className="space-y-6">
       {/* Profile Privacy */}
-      <div className="border-border bg-card border">
+      <StyledCard>
         <StyledCardHeader code="0x00" title="PROFILE_PRIVACY" />
         <div className="p-4">
           <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
@@ -69,10 +69,10 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
             ))}
           </div>
         </div>
-      </div>
+      </StyledCard>
 
       {/* Cookie Preferences */}
-      <div className="border-border bg-card border">
+      <StyledCard>
         <StyledCardHeader code="0x00" title="COOKIES" />
         <div className="p-4">
           <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
@@ -120,7 +120,7 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
             ))}
           </div>
         </div>
-      </div>
+      </StyledCard>
     </div>
   );
 }

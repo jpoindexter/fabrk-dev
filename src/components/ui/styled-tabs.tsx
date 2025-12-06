@@ -73,27 +73,29 @@ export function StyledTabs({
     <Tabs value={value} onValueChange={onValueChange} className={className}>
       <StyledCard>
         <StyledCardHeader code={code} title={title} />
-        <TabsList
-          className={cn("h-auto w-full justify-start border-0 bg-transparent p-0", mode.radius)}
-        >
-          {tabs.map((tab, index) => {
-            const Icon = tab.icon;
-            return (
-              <TabsTrigger
-                key={tab.id}
-                value={tab.id}
-                className={cn(
-                  "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
-                  index === tabs.length - 1 && "border-r-0",
-                  mode.radius,
-                  mode.font
-                )}
-              >
-                {Icon && <Icon className="h-3 w-3" />}[{tab.label}]
-              </TabsTrigger>
-            );
-          })}
-        </TabsList>
+        <div className="flex">
+          <TabsList
+            className={cn("h-auto w-auto justify-start border-0 bg-transparent p-0", mode.radius)}
+          >
+            {tabs.map((tab, index) => {
+              const Icon = tab.icon;
+              return (
+                <TabsTrigger
+                  key={tab.id}
+                  value={tab.id}
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    index === tabs.length - 1 && "border-r",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  {Icon && <Icon className="h-3 w-3" />}[{tab.label}]
+                </TabsTrigger>
+              );
+            })}
+          </TabsList>
+        </div>
         {descriptionText && (
           <div
             className={cn("text-muted-foreground border-border border-t p-4 text-xs", mode.font)}

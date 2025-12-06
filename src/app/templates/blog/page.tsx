@@ -337,6 +337,7 @@ export default function BlogTemplate() {
 
         {/* Features Card */}
         <FeaturesCard
+          title="TEMPLATE_FEATURES"
           code="0x0B"
           features={[
             "Featured post hero section",

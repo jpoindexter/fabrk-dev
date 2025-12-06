@@ -50,7 +50,7 @@ export default function SignUpTemplate() {
                 <h1 className={cn(mode.font, "text-2xl font-bold tracking-tight")}>
                   Create an account
                 </h1>
-                <p className="text-muted-foreground text-sm">
+                <p className={cn(mode.font, "text-muted-foreground text-sm")}>
                   Enter your information to get started with Fabrk
                 </p>
               </div>
@@ -146,7 +146,7 @@ export default function SignUpTemplate() {
                     <span className="border-border w-full border-t" />
                   </div>
                   <div className="relative flex justify-center text-xs uppercase">
-                    <span className="bg-background text-muted-foreground px-2">
+                    <span className={cn(mode.font, "bg-background text-muted-foreground px-2")}>
                       Or sign up with
                     </span>
                   </div>
@@ -182,7 +182,7 @@ export default function SignUpTemplate() {
                 </div>
               </div>
 
-              <p className="text-muted-foreground px-8 text-center text-sm">
+              <p className={cn(mode.font, "text-muted-foreground px-8 text-center text-sm")}>
                 Already have an account?{" "}
                 <Link
                   href="/templates/authentication/sign-in"
@@ -198,6 +198,7 @@ export default function SignUpTemplate() {
         {/* Template Features Card */}
         <FeaturesCard
           code="0x01"
+          title="TEMPLATE_FEATURES"
           features={[
             "Multi-step registration form layout",
             "Terms of Service checkbox validation",
@@ -205,6 +206,7 @@ export default function SignUpTemplate() {
             "Social sign-up integration",
             "Mobile-responsive card design",
           ]}
+          note="Copy to app/(auth)/sign-up/page.tsx. Connect to NextAuth or your auth provider."
         />
       </main>
     </div>

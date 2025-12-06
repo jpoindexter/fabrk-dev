@@ -5,7 +5,7 @@
 
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { StyledCardHeader } from "@/components/ui/card";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 
@@ -28,7 +28,7 @@ export function PendingInvitations({ invitations }: PendingInvitationsProps) {
   };
 
   return (
-    <div className="border-border bg-card border">
+    <StyledCard>
       <StyledCardHeader code="0x00" title="PENDING_INVITES" />
       <div className="p-4">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
@@ -65,6 +65,6 @@ export function PendingInvitations({ invitations }: PendingInvitationsProps) {
           ))}
         </div>
       </div>
-    </div>
+    </StyledCard>
   );
 }
