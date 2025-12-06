@@ -103,46 +103,72 @@ export function EnterpriseFeaturesSection() {
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {enterpriseFeatures.map((feature, index) => {
+            const IconEl =
+              feature.icon === "users"
+                ? Users
+                : feature.icon === "lock"
+                  ? Lock
+                  : feature.icon === "shield"
+                    ? Shield
+                    : feature.icon === "webhook"
+                      ? Webhook
+                      : feature.icon === "key"
+                        ? Key
+                        : feature.icon === "radio"
+                          ? Radio
+                          : feature.icon === "server"
+                            ? Server
+                            : feature.icon === "barchart"
+                              ? BarChart
+                              : null;
+
             return (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 + index * 0.05 }}
-                viewport={{ once: true }}
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.08,
+                  ease: [0.21, 0.47, 0.32, 0.98],
+                }}
+                whileHover={{
+                  y: -4,
+                  transition: { duration: 0.2 },
+                }}
                 className={cn(
-                  "group border-border bg-card hover:border-primary/50 border p-6 transition-all",
+                  "group border-border bg-card hover:border-primary/50 border transition-colors",
                   mode.radius
                 )}
               >
-                <div
-                  className={cn(
-                    "bg-primary/10 mb-4 inline-flex items-center justify-center p-4",
-                    mode.radius
+                {/* Terminal Header */}
+                <div className="border-border flex items-center justify-between border-b px-4 py-2">
+                  <span className="text-muted-foreground text-xs">
+                    [ [0x{(index + 40).toString(16).toUpperCase()}]{" "}
+                    {feature.title
+                      .toUpperCase()
+                      .replace(/ /g, "_")
+                      .replace(/\+/g, "_")
+                      .replace(/\//g, "_")
+                      .slice(0, 12)}{" "}
+                    ]
+                  </span>
+                  {IconEl && (
+                    <IconEl className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors" />
                   )}
-                >
-                  {feature.icon === "users" ? (
-                    <Users className="text-primary h-6 w-6" />
-                  ) : feature.icon === "lock" ? (
-                    <Lock className="text-primary h-6 w-6" />
-                  ) : feature.icon === "shield" ? (
-                    <Shield className="text-primary h-6 w-6" />
-                  ) : feature.icon === "webhook" ? (
-                    <Webhook className="text-primary h-6 w-6" />
-                  ) : feature.icon === "key" ? (
-                    <Key className="text-primary h-6 w-6" />
-                  ) : feature.icon === "radio" ? (
-                    <Radio className="text-primary h-6 w-6" />
-                  ) : feature.icon === "server" ? (
-                    <Server className="text-primary h-6 w-6" />
-                  ) : feature.icon === "barchart" ? (
-                    <BarChart className="text-primary h-6 w-6" />
-                  ) : null}
                 </div>
-                <h3 className="mb-4 text-sm font-semibold">
-                  {feature.title.toUpperCase().replace(/ /g, "_").replace(/\+/g, "_AND_")}
-                </h3>
-                <span className="text-muted-foreground block text-xs">{feature.description}</span>
+
+                {/* Content */}
+                <div className="p-4">
+                  <div className="text-foreground mb-3 text-xs font-semibold">
+                    {feature.title.toUpperCase().replace(/ /g, "_").replace(/\+/g, "_AND_")}
+                  </div>
+                  <div className="text-xs">
+                    <span className="text-muted-foreground">DESC: </span>
+                    <span className="text-foreground">{feature.description}</span>
+                  </div>
+                </div>
               </motion.div>
             );
           })}

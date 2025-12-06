@@ -6,20 +6,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Rocket,
-  Code,
-  Zap,
-  Users,
-  Heart,
-  CheckCircle2,
-  type LucideIcon,
-} from "lucide-react";
+import { Rocket, Code, Zap, Users, Heart, CheckCircle2, type LucideIcon } from "lucide-react";
 
 interface Value {
   id: string;
   icon: LucideIcon;
-  title: string;
+  module: string;
+  status: string;
   description: string;
 }
 
@@ -27,50 +20,55 @@ const values: Value[] = [
   {
     id: "0x01",
     icon: Rocket,
-    title: "SHIP_FAST",
+    module: "SHIP_FAST",
+    status: "RAPID",
     description:
-      "Time is your most valuable resource. Our boilerplate is designed to get you from idea to launch in record time, without compromising quality.",
+      "Time is your most valuable resource. Our boilerplate is designed to get you from idea to launch in record time.",
   },
   {
     id: "0x02",
     icon: Code,
-    title: "CLEAN_CODE",
+    module: "CLEAN_CODE",
+    status: "PRISTINE",
     description:
-      "We write code the way you would write it yourself. No over-engineering, no unnecessary abstractions. Just clean, maintainable TypeScript.",
+      "We write code the way you would write it yourself. No over-engineering, no unnecessary abstractions.",
   },
   {
     id: "0x03",
     icon: Zap,
-    title: "PERFORMANCE_FIRST",
+    module: "PERFORMANCE",
+    status: "OPTIMIZED",
     description:
-      "Every line of code is optimized for speed. We use the latest Next.js features, server components, and best practices to ensure your app is lightning fast.",
+      "Every line of code is optimized for speed. Latest Next.js features, server components, and best practices.",
   },
   {
     id: "0x04",
     icon: Users,
-    title: "DEVELOPER_EXPERIENCE",
+    module: "DEV_EXPERIENCE",
+    status: "REFINED",
     description:
-      "We're developers too. We know what frustrates you, and we've built Fabrk to eliminate those pain points with great docs and thoughtful defaults.",
+      "We're developers too. We've built Fabrk to eliminate pain points with great docs and thoughtful defaults.",
   },
   {
     id: "0x05",
     icon: Heart,
-    title: "NO_LOCK_IN",
-    description:
-      "You own the code. No proprietary frameworks, no vendor lock-in. Build on top of industry-standard tools and deploy anywhere.",
+    module: "NO_LOCK_IN",
+    status: "OPEN",
+    description: "You own the code. No proprietary frameworks, no vendor lock-in. Deploy anywhere.",
   },
   {
     id: "0x06",
     icon: CheckCircle2,
-    title: "PRODUCTION_READY",
+    module: "PRODUCTION",
+    status: "READY",
     description:
-      "From security to error handling to performance optimization, every aspect is built with production deployments in mind.",
+      "From security to error handling to performance optimization, every aspect is built for production.",
   },
 ];
 
 export function ValuesSection() {
   return (
-    <section className="border-t border-border bg-background px-6 py-24">
+    <section className="border-border bg-background border-t px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <motion.div
@@ -79,10 +77,10 @@ export function ValuesSection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <span className="inline-block border border-border bg-card px-4 py-1 text-xs text-muted-foreground mb-4">
+            <span className="border-border bg-card text-muted-foreground mb-4 inline-block border px-4 py-1 text-xs">
               [ [0x03] CORE_VALUES ]
             </span>
-            <h2 className="text-2xl font-semibold lg:text-4xl mb-4">CORE_VALUES</h2>
+            <h2 className="mb-4 text-2xl font-semibold lg:text-4xl">CORE_VALUES</h2>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -90,7 +88,7 @@ export function ValuesSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-sm">
               The principles that guide everything we build
             </p>
           </motion.div>
@@ -100,21 +98,54 @@ export function ValuesSection() {
           {values.map((value, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ x: 4, backgroundColor: "hsl(var(--muted))" }}
-              className="group border border-border bg-card p-6 transition-all hover:border-primary/50"
+              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.08,
+                ease: [0.21, 0.47, 0.32, 0.98],
+              }}
+              whileHover={{
+                y: -4,
+                transition: { duration: 0.2 },
+              }}
+              className="group border-border bg-card hover:border-primary/50 border transition-colors"
             >
-              <div className="flex items-center gap-4 mb-4">
-                <div className="inline-flex items-center justify-center bg-primary/10 border border-border p-2">
-                  <value.icon className="h-5 w-5 text-primary" />
-                </div>
-                <span className="text-xs text-muted-foreground">[{value.id}]</span>
+              {/* Module Header */}
+              <div className="border-border flex items-center justify-between border-b px-4 py-2">
+                <span className="text-muted-foreground font-mono text-xs">
+                  [ [{value.id}] {value.module} ]
+                </span>
+                <motion.div
+                  whileHover={{ rotate: 12, scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  <value.icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
+                </motion.div>
               </div>
-              <h3 className="text-sm font-semibold mb-2">{value.title}</h3>
-              <p className="text-xs text-muted-foreground">{value.description}</p>
+
+              {/* Content */}
+              <div className="p-4">
+                {/* Status */}
+                <div className="mb-4 font-mono text-xs">
+                  <span className="text-muted-foreground">STATUS: </span>
+                  <motion.span
+                    className="text-success"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: index * 0.08 + 0.3 }}
+                  >
+                    {value.status}
+                  </motion.span>
+                </div>
+
+                {/* Description */}
+                <div className="font-mono text-xs">
+                  <span className="text-muted-foreground">DESC: </span>
+                  <span className="text-foreground">{value.description}</span>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>

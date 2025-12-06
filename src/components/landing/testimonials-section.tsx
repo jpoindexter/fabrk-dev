@@ -88,34 +88,52 @@ export function TestimonialsSection() {
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 + index * 0.05 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.08,
+                ease: [0.21, 0.47, 0.32, 0.98],
+              }}
+              whileHover={{
+                y: -4,
+                transition: { duration: 0.2 },
+              }}
               className={cn(
                 mode.radius,
-                "group border-border bg-card hover:border-primary/50 border p-6 transition-all"
+                "group border-border bg-card hover:border-primary/50 border transition-colors"
               )}
             >
-              <div className="text-muted-foreground mb-2 text-xs">
-                [0x{(index + 1).toString(16).toUpperCase().padStart(2, "0")}]
-              </div>
-              <span className="text-muted-foreground mb-6 block text-xs">
-                "{testimonial.quote}"
-              </span>
-              <div className="flex items-center gap-4">
-                <Avatar className={cn(mode.radius, "h-10 w-10")}>
+              {/* Terminal Header */}
+              <div className="border-border flex items-center justify-between border-b px-4 py-2">
+                <span className="text-muted-foreground text-xs">
+                  [ [0x{(index + 1).toString(16).toUpperCase().padStart(2, "0")}] TESTIMONIAL ]
+                </span>
+                <Avatar className={cn(mode.radius, "h-6 w-6")}>
                   <AvatarFallback
-                    className={cn(mode.radius, "bg-primary/10 text-primary text-xs font-medium")}
+                    className={cn(
+                      mode.radius,
+                      "bg-primary/10 text-primary text-[10px] font-medium"
+                    )}
                   >
                     {testimonial.initials}
                   </AvatarFallback>
                 </Avatar>
-                <div>
-                  <span className="block text-xs font-semibold">
+              </div>
+
+              {/* Content */}
+              <div className="p-4">
+                <div className="mb-4 text-xs">
+                  <span className="text-muted-foreground">QUOTE: </span>
+                  <span className="text-foreground">"{testimonial.quote}"</span>
+                </div>
+                <div className="text-xs">
+                  <span className="text-muted-foreground">AUTHOR: </span>
+                  <span className="text-foreground font-semibold">
                     {testimonial.author.toUpperCase().replace(/ /g, "_")}
                   </span>
-                  <span className="text-muted-foreground block text-xs">{testimonial.role}</span>
+                  <span className="text-muted-foreground"> | {testimonial.role}</span>
                 </div>
               </div>
             </motion.div>

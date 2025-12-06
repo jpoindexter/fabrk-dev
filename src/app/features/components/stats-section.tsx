@@ -11,14 +11,12 @@ import { COMPONENT_STATS } from "./feature-data";
 
 export function StatsSection() {
   return (
-    <section className="border-b border-border bg-muted/30 py-12">
+    <section className="border-border bg-muted/30 border-b py-12">
       <div className="container mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
-        <div className="mb-6 text-xs text-muted-foreground">
-          [ [0x02] STATS ]────────────────────────
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6">
           {COMPONENT_STATS.map((stat, index) => {
             const Icon = stat.icon;
+            const hexId = (index + 2).toString(16).toUpperCase().padStart(2, "0");
             return (
               <motion.div
                 key={stat.label}
@@ -26,13 +24,20 @@ export function StatsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="text-center border border-border bg-card p-4"
+                className="group border-border bg-card hover:border-primary/50 border transition-colors"
               >
-                <div className="inline-flex items-center justify-center bg-primary/10 p-2 mb-4">
-                  <Icon className="size-5 text-primary" />
+                {/* Terminal Header */}
+                <div className="border-border flex items-center justify-between border-b px-3 py-1.5">
+                  <span className="text-muted-foreground text-[10px]">[ [0x{hexId}] ]</span>
+                  <Icon className="text-muted-foreground group-hover:text-primary size-3.5 transition-colors" />
                 </div>
-                <div className="text-2xl font-semibold text-foreground">{stat.value}</div>
-                <span className="text-xs text-muted-foreground">{stat.label.toUpperCase().replace(/ /g, '_')}</span>
+                {/* Content */}
+                <div className="p-4 text-center">
+                  <div className="text-foreground text-2xl font-semibold">{stat.value}</div>
+                  <span className="text-muted-foreground text-xs">
+                    {stat.label.toUpperCase().replace(/ /g, "_")}
+                  </span>
+                </div>
               </motion.div>
             );
           })}

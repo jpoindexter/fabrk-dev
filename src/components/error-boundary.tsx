@@ -91,7 +91,7 @@ export class ErrorBoundary extends Component<Props, State> {
               window.location.reload();
             }}
           >
-            Refresh Page
+            &gt; REFRESH_PAGE
           </Button>
         </div>
       );

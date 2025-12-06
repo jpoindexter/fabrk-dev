@@ -25,53 +25,48 @@ export default function GlobalError({
     // To enable Sentry:
     // 1. Install: npm install @sentry/nextjs
     // 2. Configure: npx @sentry/wizard@latest -i nextjs
-    // 3. Uncomment the code below
-    // if (typeof window !== "undefined" && process.env.NEXT_PUBLIC_SENTRY_DSN) {
-    //   Sentry.captureException(error);
-    // }
+    // 3. Add NEXT_PUBLIC_SENTRY_DSN to env and call Sentry.captureException(error)
   }, [error]);
 
   return (
     <html lang="en">
       <body>
-        <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6">
+        <div className="bg-background flex min-h-screen flex-col items-center justify-center px-6">
           <div className="mx-auto max-w-2xl text-center">
             {/* Error Icon */}
             <div className="mb-8 flex justify-center">
-              <div className="rounded-none bg-destructive/10 p-6">
-                <AlertTriangle className="h-16 w-16 text-destructive" />
+              <div className="bg-destructive/10 rounded-none p-6">
+                <AlertTriangle className="text-destructive h-16 w-16" />
               </div>
             </div>
 
             {/* Error Message */}
-            <h1 className="mb-4 text-4xl font-semibold text-foreground">
+            <h1 className="text-foreground mb-4 text-4xl font-semibold">
               Critical Application Error
             </h1>
-            <p className="mb-8 text-lg text-muted-foreground">
-              We apologize, but a critical error has occurred. Our team has been notified
-              and is working to resolve the issue.
+            <p className="text-muted-foreground mb-8 text-lg">
+              We apologize, but a critical error has occurred. Our team has been notified and is
+              working to resolve the issue.
             </p>
 
             {/* Error Details (Development Only) */}
             {process.env.NODE_ENV === "development" && (
-              <div className="mb-8 rounded-none border border-destructive/40 bg-destructive/10 p-4 text-left">
-                <p className="mb-2 text-sm font-semibold text-destructive">
+              <div className="border-destructive/40 bg-destructive/10 mb-8 rounded-none border p-4 text-left">
+                <p className="text-destructive mb-2 text-sm font-semibold">
                   Error Details (Development Only):
                 </p>
-                <p className="font-mono text-xs text-destructive wrap-break-word">
+                <p className="text-destructive font-mono text-xs wrap-break-word">
                   {error.message}
                 </p>
                 {error.digest && (
-                  <p className="mt-2 text-xs text-destructive">
-                    Error ID: {error.digest}
-                  </p>
+                  <p className="text-destructive mt-2 text-xs">Error ID: {error.digest}</p>
                 )}
                 {error.stack && (
                   <details className="mt-4">
-                    <summary className="cursor-pointer text-xs font-semibold text-destructive-foreground">
+                    <summary className="text-destructive-foreground cursor-pointer text-xs font-semibold">
                       Stack Trace
                     </summary>
-                    <pre className="mt-2 overflow-auto text-xs text-destructive-foreground">
+                    <pre className="text-destructive-foreground mt-2 overflow-auto text-xs">
                       {error.stack}
                     </pre>
                   </details>
@@ -82,33 +77,31 @@ export default function GlobalError({
             {/* Action Buttons */}
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Button onClick={reset} className="h-12 px-8">
-                Try Again
+                &gt; TRY_AGAIN
               </Button>
               <Button
-                onClick={() => window.location.href = "/"}
+                onClick={() => (window.location.href = "/")}
                 variant="outline"
                 className="h-12 border px-8"
               >
                 <Home className="mr-2 h-4 w-4" />
-                Back to Home
+                &gt; BACK_TO_HOME
               </Button>
             </div>
 
             {/* Support Info */}
-            <div className="mt-12 border-t border-border/60 pt-8">
-              <p className="mb-2 text-sm text-muted-foreground">
+            <div className="border-border/60 mt-12 border-t pt-8">
+              <p className="text-muted-foreground mb-2 text-sm">
                 If this problem persists, please contact support:
               </p>
               <a
                 href="mailto:support@fabrk.dev"
-                className="text-sm font-semibold text-primary hover:underline"
+                className="text-primary text-sm font-semibold hover:underline"
               >
                 support@fabrk.dev
               </a>
               {error.digest && (
-                <p className="mt-2 text-xs text-muted-foreground">
-                  Error ID: {error.digest}
-                </p>
+                <p className="text-muted-foreground mt-2 text-xs">Error ID: {error.digest}</p>
               )}
             </div>
           </div>

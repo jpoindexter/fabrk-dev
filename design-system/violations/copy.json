@@ -133,6 +133,20 @@
       ],
       "canonicalForm": "> ACTION_NAME",
       "fixedDate": "2025-12-06"
+    },
+    {
+      "id": "COPY-014",
+      "phrase": "Error page button text in Title Case",
+      "fix": "Converted to terminal format (> UPPERCASE_WITH_UNDERSCORES)",
+      "files": [
+        "src/app/error.tsx:61 (Try Again → > TRY_AGAIN)",
+        "src/app/error.tsx:70 (Back to Home → > BACK_TO_HOME)",
+        "src/app/global-error.tsx:85 (Try Again → > TRY_AGAIN)",
+        "src/app/global-error.tsx:93 (Back to Home → > BACK_TO_HOME)",
+        "src/components/error-boundary.tsx:94 (Refresh Page → > REFRESH_PAGE)"
+      ],
+      "canonicalForm": "> ACTION_NAME",
+      "fixedDate": "2025-12-06"
     }
   ],
   "acceptedExceptions": [
@@ -186,7 +200,7 @@
       "medium": 0,
       "low": 0
     },
-    "totalFixed": 31,
+    "totalFixed": 36,
     "acceptedExceptions": 5,
     "decisions": [
       "EXECUTE prefix: REMOVED from all buttons",

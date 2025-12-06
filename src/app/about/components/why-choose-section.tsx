@@ -42,7 +42,7 @@ const reasons: Reason[] = [
 
 export function WhyChooseSection() {
   return (
-    <section className="border-t border-border bg-background px-6 py-24">
+    <section className="border-border bg-background border-t px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl space-y-8">
           <div className="text-center">
@@ -52,10 +52,10 @@ export function WhyChooseSection() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <span className="inline-block border border-border bg-card px-4 py-1 text-xs text-muted-foreground mb-4">
+              <span className="border-border bg-card text-muted-foreground mb-4 inline-block border px-4 py-1 text-xs">
                 [ [0x05] WHY_FABRK ]
               </span>
-              <h2 className="text-2xl font-semibold lg:text-4xl mb-4">WHY_CHOOSE_FABRK</h2>
+              <h2 className="mb-4 text-2xl font-semibold lg:text-4xl">WHY_CHOOSE_FABRK</h2>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 12 }}
@@ -63,7 +63,7 @@ export function WhyChooseSection() {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <p className="text-sm text-muted-foreground">
+              <p className="text-muted-foreground text-sm">
                 We're not just selling code, we're selling time
               </p>
             </motion.div>
@@ -73,18 +73,34 @@ export function WhyChooseSection() {
             {reasons.map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                initial={{ opacity: 0, y: 20, scale: 0.98 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                whileHover={{ x: 4, backgroundColor: "hsl(var(--muted))" }}
-                className="border border-border bg-card p-4 transition-all hover:border-primary/50"
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.08,
+                  ease: [0.21, 0.47, 0.32, 0.98],
+                }}
+                whileHover={{
+                  y: -2,
+                  transition: { duration: 0.2 },
+                }}
+                className="group border-border bg-card hover:border-primary/50 border transition-colors"
               >
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-xs text-muted-foreground">[{item.id}]</span>
-                  <h3 className="text-sm font-semibold">{item.title}</h3>
+                {/* Terminal Header */}
+                <div className="border-border border-b px-4 py-2">
+                  <span className="text-muted-foreground font-mono text-xs">
+                    [ [{item.id}] {item.title} ]
+                  </span>
                 </div>
-                <p className="text-xs text-muted-foreground pl-12">{item.description}</p>
+
+                {/* Content */}
+                <div className="p-4">
+                  <div className="font-mono text-xs">
+                    <span className="text-muted-foreground">DESC: </span>
+                    <span className="text-foreground">{item.description}</span>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>

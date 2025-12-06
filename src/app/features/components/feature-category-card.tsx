@@ -10,14 +10,14 @@ import { motion } from "framer-motion";
 import { FEATURE_CATEGORIES } from "./feature-data";
 
 interface FeatureCategoryCardProps {
-  category: typeof FEATURE_CATEGORIES[0];
+  category: (typeof FEATURE_CATEGORIES)[0];
   index: number;
 }
 
 export function FeatureCategoryCard({ category, index }: FeatureCategoryCardProps) {
   const Icon = category.icon;
   const isEven = index % 2 === 0;
-  const hexIndex = (index + 1).toString(16).toUpperCase().padStart(2, '0');
+  const hexIndex = (index + 1).toString(16).toUpperCase().padStart(2, "0");
 
   return (
     <motion.div
@@ -28,43 +28,56 @@ export function FeatureCategoryCard({ category, index }: FeatureCategoryCardProp
       id={category.id}
       className="scroll-mt-24"
     >
-      <div className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12 items-center`}>
+      <div
+        className={`flex flex-col ${isEven ? "lg:flex-row" : "lg:flex-row-reverse"} items-center gap-8 lg:gap-12`}
+      >
         {/* Content Side */}
         <div className="flex-1 space-y-6">
           <div className="inline-flex items-center gap-4">
             <div className="bg-primary/10 p-4">
-              <Icon className="size-6 text-primary" />
+              <Icon className="text-primary size-6" />
             </div>
-            <span className="border border-border bg-card px-4 py-1 text-xs text-muted-foreground">
-              [{category.stats.value}] {category.stats.label.toUpperCase().replace(/ /g, '_')}
+            <span className="border-border bg-card text-muted-foreground border px-4 py-1 text-xs">
+              [{category.stats.value}] {category.stats.label.toUpperCase().replace(/ /g, "_")}
             </span>
           </div>
 
           <div>
-            <span className="text-xs text-muted-foreground">[0x{hexIndex}]</span>
-            <h2 className="text-2xl font-semibold tracking-tight">{category.title.toUpperCase().replace(/ /g, '_').replace(/&/g, 'AND')}</h2>
-            <span className="text-sm text-primary font-medium">&gt; {category.tagline}</span>
+            <span className="text-muted-foreground text-xs">[0x{hexIndex}]</span>
+            <h2 className="text-2xl font-semibold tracking-tight">
+              {category.title.toUpperCase().replace(/ /g, "_").replace(/&/g, "AND")}
+            </h2>
+            <span className="text-primary text-sm font-medium">&gt; {category.tagline}</span>
           </div>
 
-          <p className="text-sm text-muted-foreground">
-            {category.description}
-          </p>
+          <p className="text-muted-foreground text-sm">{category.description}</p>
         </div>
 
         {/* Features List Side */}
-        <div className="flex-1 w-full">
-          <div className="border border-border bg-card p-6 lg:p-8">
-            <div className="mb-4 text-xs text-muted-foreground">
-              [ INCLUDED ]────────────────────────
+        <div className="w-full flex-1">
+          <div className="border-border bg-card border">
+            {/* Terminal Header */}
+            <div className="border-border flex items-center justify-between border-b px-4 py-2">
+              <span className="text-muted-foreground text-xs">
+                [ [0x{hexIndex}] INCLUDED_FEATURES ]
+              </span>
+              <span className="text-muted-foreground text-xs">
+                {category.features.length} items
+              </span>
             </div>
-            <ul className="space-y-2">
-              {category.features.map((feature, i) => (
-                <li key={i} className="flex items-start gap-4 text-xs text-muted-foreground">
-                  <span className="text-primary flex-shrink-0">{i === category.features.length - 1 ? '└─' : '├─'}</span>
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
+            {/* Content */}
+            <div className="p-4 lg:p-6">
+              <ul className="space-y-2">
+                {category.features.map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3 text-xs">
+                    <span className="text-primary flex-shrink-0">
+                      {i === category.features.length - 1 ? "└─" : "├─"}
+                    </span>
+                    <span className="text-foreground">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>

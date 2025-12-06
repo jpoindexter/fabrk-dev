@@ -19,37 +19,31 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6">
+    <div className="bg-background flex min-h-screen flex-col items-center justify-center px-6">
       <div className="mx-auto max-w-2xl text-center">
         {/* Error Icon */}
         <div className="mb-8 flex justify-center">
-          <div className="rounded-none bg-destructive/10 p-6">
-            <AlertTriangle className="h-16 w-16 text-destructive" />
+          <div className="bg-destructive/10 rounded-none p-6">
+            <AlertTriangle className="text-destructive h-16 w-16" />
           </div>
         </div>
 
         {/* Error Message */}
-        <h1 className="mb-4 text-4xl font-semibold text-foreground">
-          Something Went Wrong
-        </h1>
-        <p className="mb-8 text-lg text-muted-foreground">
+        <h1 className="text-foreground mb-4 text-4xl font-semibold">Something Went Wrong</h1>
+        <p className="text-muted-foreground mb-8 text-lg">
           We're sorry, but something unexpected happened. This error has been logged and we're
           looking into it.
         </p>
 
         {/* Error Details (Development Only) */}
         {process.env.NODE_ENV === "development" && (
-          <div className="mb-8 rounded-none border border-destructive/40 bg-destructive/10 p-4 text-left">
-            <p className="mb-2 text-sm font-semibold text-destructive">
+          <div className="border-destructive/40 bg-destructive/10 mb-8 rounded-none border p-4 text-left">
+            <p className="text-destructive mb-2 text-sm font-semibold">
               Error Details (Development Only):
             </p>
-            <p className="font-mono text-xs text-destructive wrap-break-word">
-              {error.message}
-            </p>
+            <p className="text-destructive font-mono text-xs wrap-break-word">{error.message}</p>
             {error.digest && (
-              <p className="mt-2 text-xs text-destructive">
-                Error ID: {error.digest}
-              </p>
+              <p className="text-destructive mt-2 text-xs">Error ID: {error.digest}</p>
             )}
           </div>
         )}
@@ -58,35 +52,29 @@ export default function Error({
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Button onClick={reset} className="h-12 px-8">
             <RefreshCw className="mr-2 h-4 w-4" />
-            Try Again
+            &gt; TRY_AGAIN
           </Button>
-          <Button
-            asChild
-            variant="outline"
-            className="h-12 border px-8"
-          >
+          <Button asChild variant="outline" className="h-12 border px-8">
             <Link href="/">
               <Home className="mr-2 h-4 w-4" />
-              Back to Home
+              &gt; BACK_TO_HOME
             </Link>
           </Button>
         </div>
 
         {/* Support Info */}
-        <div className="mt-12 border-t border-border/60 pt-8">
-          <p className="mb-2 text-sm text-muted-foreground">
+        <div className="border-border/60 mt-12 border-t pt-8">
+          <p className="text-muted-foreground mb-2 text-sm">
             If this problem persists, please contact support:
           </p>
           <a
             href="mailto:support@fabrk.dev"
-            className="text-sm font-semibold text-primary hover:underline"
+            className="text-primary text-sm font-semibold hover:underline"
           >
             support@fabrk.dev
           </a>
           {error.digest && (
-            <p className="mt-2 text-xs text-muted-foreground">
-              Error ID: {error.digest}
-            </p>
+            <p className="text-muted-foreground mt-2 text-xs">Error ID: {error.digest}</p>
           )}
         </div>
       </div>

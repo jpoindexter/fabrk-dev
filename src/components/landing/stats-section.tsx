@@ -131,28 +131,45 @@ export function StatsSection() {
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.08,
+                ease: [0.21, 0.47, 0.32, 0.98],
+              }}
+              whileHover={{
+                y: -4,
+                transition: { duration: 0.2 },
+              }}
               className={cn(
-                "group border-border bg-card hover:border-primary/50 border p-8 transition-all",
+                "group border-border bg-card hover:border-primary/50 border transition-colors",
                 mode.radius
               )}
             >
-              <div className={cn("text-foreground mb-2 text-4xl font-semibold", mode.font)}>
-                <AnimatedCounter
-                  value={stat.value}
-                  suffix={stat.suffix}
-                  decimals={stat.decimals || 0}
-                />
+              {/* Terminal Header */}
+              <div className="border-border border-b px-4 py-2">
+                <span className={cn("text-muted-foreground text-xs", mode.font)}>
+                  [ [0x{(index + 31).toString(16).toUpperCase()}]{" "}
+                  {stat.label.toUpperCase().replace(/ /g, "_")} ]
+                </span>
               </div>
-              <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>
-                {stat.label.toUpperCase().replace(/ /g, "_")}
-              </h3>
-              <span className={cn("text-muted-foreground block text-xs", mode.font)}>
-                {stat.description}
-              </span>
+
+              {/* Content */}
+              <div className="p-4">
+                <div className={cn("text-foreground mb-2 text-3xl font-semibold", mode.font)}>
+                  <AnimatedCounter
+                    value={stat.value}
+                    suffix={stat.suffix}
+                    decimals={stat.decimals || 0}
+                  />
+                </div>
+                <div className={cn("text-xs", mode.font)}>
+                  <span className="text-muted-foreground">DESC: </span>
+                  <span className="text-foreground">{stat.description}</span>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
