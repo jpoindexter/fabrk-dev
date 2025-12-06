@@ -102,7 +102,7 @@ const defaultPlans: PricingPlan[] = [
       authLibrary: "NextAuth v5",
     },
     highlighted: true,
-    cta: { text: "Get Fabrk Now", href: "#pricing" },
+    cta: { text: "> GET_FABRK", href: "#pricing" },
   },
 ];
 

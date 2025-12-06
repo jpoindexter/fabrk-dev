@@ -2,19 +2,9 @@
 
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { Autocomplete, AutocompleteOption } from "@/components/ui/autocomplete";
-import { WindowControls } from "@/components/ui/window-controls";
 
 export default function AutocompletePage() {
-  const frameworks = [
-    "Next.js",
-    "React",
-    "Vue",
-    "Svelte",
-    "Angular",
-    "Remix",
-    "Astro",
-    "Nuxt",
-  ];
+  const frameworks = ["Next.js", "React", "Vue", "Svelte", "Angular", "Remix", "Astro", "Nuxt"];
 
   const countries: AutocompleteOption[] = [
     { value: "us", label: "United States" },
@@ -110,13 +100,10 @@ export default function AutocompletePage() {
           title: "Controlled",
           description: "Programmatically control the selected value.",
           preview: (
-            <div className="space-y-4 w-full max-w-sm">
-              <Autocomplete
-                options={frameworks}
-                placeholder="Select a framework..."
-              />
-              <div className="rounded-none border border-border bg-card p-4">
-                <span className="font-mono text-xs text-muted-foreground">
+            <div className="w-full max-w-sm space-y-4">
+              <Autocomplete options={frameworks} placeholder="Select a framework..." />
+              <div className="border-border bg-card rounded-none border p-4">
+                <span className="text-muted-foreground font-mono text-xs">
                   [SELECTED]: Use onValueChange callback
                 </span>
               </div>
@@ -194,24 +181,18 @@ export default function AutocompletePage() {
           title: "Keyboard Navigation",
           description: "Full keyboard support with arrow keys and Enter.",
           preview: (
-            <div className="space-y-4 w-full max-w-sm">
-              <Autocomplete
-                options={frameworks}
-                placeholder="Try arrow keys..."
-              />
+            <div className="w-full max-w-sm space-y-4">
+              <Autocomplete options={frameworks} placeholder="Try arrow keys..." />
               <div className="font-mono text-xs">
-                <div className="border-b border-border px-4 py-2 flex items-center gap-2">
-                  <WindowControls size="sm" />
-                  <span className="text-muted-foreground">keyboard.help</span>
+                <div className="border-border flex items-center border-b px-4 py-2">
+                  <span className="text-muted-foreground">[ KEYBOARD_HELP ]</span>
                 </div>
-                <div className="p-4 space-y-1 text-muted-foreground">
+                <div className="text-muted-foreground space-y-1 p-4">
                   <div>
-                    <span className="text-success">&gt;</span> ↓/↑ Navigate
-                    options
+                    <span className="text-success">&gt;</span> ↓/↑ Navigate options
                   </div>
                   <div>
-                    <span className="text-success">&gt;</span> Enter Select
-                    highlighted
+                    <span className="text-success">&gt;</span> Enter Select highlighted
                   </div>
                   <div>
                     <span className="text-success">&gt;</span> Esc Close dropdown
@@ -236,8 +217,7 @@ export default function AutocompletePage() {
           name: "options",
           type: "string[] | AutocompleteOption[]",
           default: "[]",
-          description:
-            "Array of options (strings or {value, label} objects).",
+          description: "Array of options (strings or {value, label} objects).",
         },
         {
           name: "value",

@@ -5,7 +5,6 @@
 
 import { Clock, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { WindowControls } from "@/components/ui/window-controls";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
@@ -26,10 +25,9 @@ interface ResultCardProps {
 export function ResultCard({ result }: ResultCardProps) {
   return (
     <div className="border-border bg-card hover:bg-muted/30 border transition-colors">
-      <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-        <WindowControls size="xs" />
+      <div className="border-border flex items-center border-b px-4 py-2">
         <span className={cn(mode.font, "text-muted-foreground text-xs")}>
-          result_{result.id}.tsx
+          [ RESULT ] result_{result.id}.tsx
         </span>
       </div>
       <div className="p-4">

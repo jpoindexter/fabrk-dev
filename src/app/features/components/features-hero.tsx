@@ -63,12 +63,12 @@ export function FeaturesHero() {
           >
             <Button asChild size="lg" className="text-xs">
               <Link href="/#pricing">
-                &gt; EXECUTE: GET_FABRK
+                &gt; GET_FABRK
                 <ArrowRight className="ml-2 size-4" />
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="text-xs">
-              <Link href="/docs">&gt; VIEW: DOCUMENTATION</Link>
+              <Link href="/docs">&gt; VIEW_DOCUMENTATION</Link>
             </Button>
           </motion.div>
         </div>

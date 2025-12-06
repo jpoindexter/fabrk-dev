@@ -4,7 +4,6 @@
  */
 
 import { getTypeIcon } from "./notification-types";
-import { WindowControls } from "@/components/ui/window-controls";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
@@ -23,10 +22,9 @@ export function NotificationTypesReference() {
         const Icon = getTypeIcon(item.type);
         return (
           <div key={item.type} className="border-border bg-card border">
-            <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-              <WindowControls size="xs" />
+            <div className="border-border flex items-center border-b px-4 py-2">
               <span className={cn(mode.font, "text-muted-foreground text-xs")}>
-                {item.type}.tsx
+                [ {item.type.toUpperCase()} ] {item.type}.tsx
               </span>
             </div>
             <div className="p-4 text-center">

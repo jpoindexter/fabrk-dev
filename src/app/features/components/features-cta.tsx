@@ -31,12 +31,12 @@ export function FeaturesCTA() {
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button asChild size="lg" className="text-xs">
               <Link href="/#pricing">
-                &gt; EXECUTE: GET_STARTED
+                &gt; GET_STARTED
                 <ArrowRight className="ml-2 size-4" />
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="text-xs">
-              <Link href="/templates">&gt; VIEW: TEMPLATES</Link>
+              <Link href="/templates">&gt; VIEW_TEMPLATES</Link>
             </Button>
           </div>
         </motion.div>

@@ -48,12 +48,12 @@ export function AboutCTA() {
         >
           <Button size="lg" className="text-xs" asChild>
             <Link href="/#pricing">
-              &gt; EXECUTE: GET_FABRK - {config.pricing.fabrk.display.current}
+              &gt; GET_FABRK - {config.pricing.fabrk.display.current}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
           <Button variant="outline" size="lg" className="text-xs" asChild>
-            <Link href="/features">&gt; VIEW: ALL_FEATURES</Link>
+            <Link href="/features">&gt; VIEW_ALL_FEATURES</Link>
           </Button>
         </motion.div>
 

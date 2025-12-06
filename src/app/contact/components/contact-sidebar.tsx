@@ -5,6 +5,8 @@
 
 import { motion } from "framer-motion";
 import { Mail, MessageCircle } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { mode } from "@/design-system";
 
 export function ContactSidebar() {
   return (
@@ -14,21 +16,21 @@ export function ContactSidebar() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="border border-border bg-card p-6"
+        className={cn("border-border bg-card border p-6", mode.radius)}
       >
         <div className="flex items-start gap-4">
-          <div className="p-4 bg-primary/10 border border-border">
-            <Mail className="h-5 w-5 text-primary" />
+          <div className={cn("bg-primary/10 border-border border p-4", mode.radius)}>
+            <Mail className="text-primary h-5 w-5" />
           </div>
           <div>
-            <span className="text-xs text-muted-foreground">[0x02]</span>
-            <h3 className="text-sm font-semibold mb-1">EMAIL_US</h3>
-            <p className="text-xs text-muted-foreground mb-2">
+            <span className={cn("text-muted-foreground text-xs", mode.font)}>[0x02]</span>
+            <h3 className={cn("mb-1 text-xs font-semibold", mode.font)}>EMAIL_US</h3>
+            <p className={cn("text-muted-foreground mb-2 text-xs", mode.font)}>
               Prefer email? Send us a message directly:
             </p>
             <a
               href="mailto:support@fabrk.dev"
-              className="text-xs text-primary hover:underline"
+              className={cn("text-primary text-xs hover:underline", mode.font)}
             >
               &gt; support@fabrk.dev
             </a>
@@ -41,18 +43,18 @@ export function ContactSidebar() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="border border-border bg-card p-6"
+        className={cn("border-border bg-card border p-6", mode.radius)}
       >
         <div className="flex items-start gap-4">
-          <div className="p-4 bg-primary/10 border border-border">
-            <MessageCircle className="h-5 w-5 text-primary" />
+          <div className={cn("bg-primary/10 border-border border p-4", mode.radius)}>
+            <MessageCircle className="text-primary h-5 w-5" />
           </div>
           <div>
-            <span className="text-xs text-muted-foreground">[0x03]</span>
-            <h3 className="text-sm font-semibold mb-1">RESPONSE_TIME</h3>
-            <p className="text-xs text-muted-foreground">
-              We typically respond within 24 hours during business days.
-              For urgent issues, please mention "URGENT" in your subject.
+            <span className={cn("text-muted-foreground text-xs", mode.font)}>[0x03]</span>
+            <h3 className={cn("mb-1 text-xs font-semibold", mode.font)}>RESPONSE_TIME</h3>
+            <p className={cn("text-muted-foreground text-xs", mode.font)}>
+              We typically respond within 24 hours during business days. For urgent issues, please
+              mention "URGENT" in your subject.
             </p>
           </div>
         </div>

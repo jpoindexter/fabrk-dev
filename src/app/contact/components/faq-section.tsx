@@ -22,11 +22,11 @@ export function FaqSection() {
         viewport={{ once: true }}
         className="mb-8 text-center"
       >
-        <span className="border-border bg-card text-muted-foreground mb-4 inline-block border px-4 py-1 text-xs">
+        <span className="border-border bg-card text-muted-foreground mb-4 inline-block border px-4 py-1 font-mono text-xs">
           [ [0x04] FAQ ]
         </span>
-        <h2 className="mb-2 text-xl font-semibold">FREQUENTLY_ASKED_QUESTIONS</h2>
-        <p className="text-muted-foreground text-sm">Everything you need to know</p>
+        <h2 className="mb-2 font-mono text-2xl font-semibold">FREQUENTLY_ASKED_QUESTIONS</h2>
+        <p className="text-muted-foreground font-mono text-xs">Everything you need to know</p>
       </motion.div>
 
       <div className="mx-auto max-w-3xl">

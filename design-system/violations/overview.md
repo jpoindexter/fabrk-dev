@@ -17,9 +17,9 @@
 | Colors | 0 | 1 | 16 (email) | ✅ COMPLIANT |
 | Radius | 0 | 2 | 1 (spinner) | ✅ COMPLIANT |
 | Shadow | 0 | 9 | 0 | ✅ COMPLIANT |
-| Components | 1 | 8 | 5 | ⚠️ 1 EXCEPTION |
-| Copy/Microcopy | 9 patterns | 0 | 0 | 📋 NEEDS DECISION |
-| **TOTAL** | **1** | **29** | **24** | **✅ NEAR COMPLIANT** |
+| Components | 0 | 8 | 1 (CSRF docs) | ✅ COMPLIANT |
+| Copy/Microcopy | 0 | 15 | 4 (docs) | ✅ COMPLIANT |
+| **TOTAL** | **0** | **44** | **24** | **✅ FULLY COMPLIANT** |
 
 ---
 
@@ -53,33 +53,43 @@
 - `comparison-section.tsx:143` - Changed `rgba(0, 0, 0, 0.04)` to `hsl(var(--muted))`
 
 ### Components ✅
-- `signup-success.tsx:35` - Changed button text to `> RESEND_VERIFICATION_EMAIL`
-- `security-settings.tsx:251` - Changed button text to `> RESEND_VERIFICATION_EMAIL`
+- `signup-success.tsx:33` - Changed button text to `> RESEND_VERIFICATION_EMAIL`
+- `security-settings.tsx:248` - Changed button text to `> RESEND_VERIFICATION_EMAIL`
 - `contact-form.tsx` - Changed all labels to `[LABEL]:` format
-- `contact-form.tsx:225` - Fixed HTML entity in button text
+- `contact-form.tsx:214` - Fixed HTML entity in button text
+
+### Copy/Microcopy ✅ (New Session Fixes)
+**Decisions Made:**
+- ✅ EXECUTE prefix: **REMOVED** from all buttons (use `> ACTION_NAME`)
+- ✅ VIEW delimiter: **UNDERSCORE** format (`> VIEW_TARGET`)
+- ✅ Doc examples: Allowed to use typical (non-terminal) patterns
+
+**Files Fixed:**
+- `hero-section.tsx:283` - `> EXECUTE: GET_FABRK` → `> GET_FABRK`
+- `hero-section.tsx:286` - `> VIEW: LIVE_DEMO` → `> VIEW_LIVE_DEMO`
+- `hero-video.tsx:111` - Removed EXECUTE prefix (dynamic)
+- `hero-video.tsx:124` - Changed to VIEW_ underscore format (dynamic)
+- `pricing-section.tsx:144` - `> EXECUTE: GET_LIFETIME_ACCESS` → `> GET_LIFETIME_ACCESS`
+- `pricing-table.tsx:105` - `Get Fabrk Now` → `> GET_FABRK`
+- `checkout-button.tsx:26` - `Get Fabrk - $199` → `> GET_FABRK - $199`
+- `features-hero.tsx:66` - `> EXECUTE: GET_FABRK` → `> GET_FABRK`
+- `features-hero.tsx:71` - `> VIEW: DOCUMENTATION` → `> VIEW_DOCUMENTATION`
+- `about-cta.tsx:51` - `> EXECUTE: GET_FABRK` → `> GET_FABRK`
+- `about-cta.tsx:56` - `> VIEW: ALL_FEATURES` → `> VIEW_ALL_FEATURES`
+- `features-cta.tsx:34` - `> EXECUTE: GET_STARTED` → `> GET_STARTED`
+- `features-cta.tsx:39` - `> VIEW: TEMPLATES` → `> VIEW_TEMPLATES`
 
 ---
 
-## Remaining Items
+## Accepted Exceptions
 
 ### 1 Component Exception (Intentional)
 - **CSRF docs page** - Uses raw `<input>` for security demonstration
 
-### Copy/Microcopy Patterns (Needs Team Decision)
-The following patterns were identified but require team input:
-
-| Pattern | Current | Variants Found |
-|---------|---------|----------------|
-| VIEW delimiter | `VIEW_DOCS` | `VIEW_DOCS`, `VIEW_EXAMPLE` |
-| Get Started | `> GET_STARTED` | `Get Started`, `GET_STARTED`, `> GET_STARTED` |
-| EXECUTE prefix | `> EXECUTE: ACTION` | Some use prefix, some don't |
-| Loading state | `SENDING...` | `Sending...`, `SENDING...` |
-
-**Recommendation:** Standardize on `> ACTION_NAME` format for all buttons.
-
----
-
-## Accepted Patterns
+### 4 Copy Exceptions (Documentation Examples)
+- `magic-links/page.tsx:174` - "Sending..." / "Send Magic Link" (code example)
+- `loading/page.tsx:113` - "Saving..." (code example showing typical usage)
+- `polar/page.tsx`, `payments/page.tsx`, `lemonsqueezy/page.tsx` - Third-party integration examples
 
 ### CardContent Padding Variations
 | Pattern | Use Case |
@@ -90,9 +100,6 @@ The following patterns were identified but require team input:
 
 ### Email Inline Styles (16 exceptions)
 Email templates require inline styles for compatibility.
-
-### Documentation Examples (2 exceptions)
-Intentional BAD examples showing incorrect usage.
 
 ---
 
@@ -112,8 +119,9 @@ Intentional BAD examples showing incorrect usage.
 ### Button Text Format
 ```tsx
 <Button>> ACTION_NAME</Button>
-<Button>> SUBMIT_FORM</Button>
-<Button>> RESEND_EMAIL</Button>
+<Button>> GET_STARTED</Button>
+<Button>> VIEW_DOCUMENTATION</Button>
+<Button>> SEND_MESSAGE</Button>
 ```
 
 ### Label Format
@@ -132,13 +140,23 @@ Intentional BAD examples showing incorrect usage.
 | `colors.json` | ✅ 0 violations |
 | `radius.json` | ✅ 0 violations |
 | `shadow.json` | ✅ 0 violations |
-| `components.json` | ⚠️ 1 exception |
-| `copy.json` | 📋 9 patterns (needs decision) |
+| `components.json` | ✅ 0 violations (1 exception) |
+| `copy.json` | ✅ 0 violations (4 exceptions) |
 
 ---
 
-## Next Steps
+## Summary
 
-1. ✅ All production violations FIXED
-2. 📋 Copy/microcopy patterns need team standardization decision
-3. ✅ Violations log updated
+**Status: ✅ FULLY COMPLIANT**
+
+All production violations have been fixed. The design system is now consistent across:
+- 44 total fixes applied
+- 24 accepted exceptions (emails, docs examples)
+- 0 remaining violations
+
+### Key Decisions Made
+1. **Button text format**: `> ACTION_NAME` (no EXECUTE prefix)
+2. **VIEW pattern**: Underscore format `> VIEW_TARGET`
+3. **Loading states**: UPPERCASE in production, Title Case allowed in docs
+4. **Labels**: `[FIELD]:` bracket format
+5. **Card headers**: `[ [0x00] TITLE ]` terminal format

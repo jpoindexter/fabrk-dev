@@ -179,7 +179,6 @@ import { TimePicker } from "@/components/ui/time-picker";
 import { Toaster } from "@/components/ui/toaster";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { H1, H2, H3, H4, Body, Small } from "@/components/ui/typography";
-import { WindowControls, WindowHeader } from "@/components/ui/window-controls";
 
 // Icons
 import {
@@ -295,10 +294,9 @@ export default function ComponentShowcasePage() {
       <div className="bg-background min-h-screen">
         {/* Header */}
         <header className="border-border bg-background/95 sticky top-0 z-50 border-b backdrop-blur">
-          <div className="flex items-center gap-4 px-6 py-4">
-            <WindowControls size="sm" />
+          <div className="flex items-center px-6 py-4">
             <span className={cn("text-muted-foreground text-sm", mode.font)}>
-              component-showcase.tsx — 99 COMPONENTS
+              [ [0x00] COMPONENT_SHOWCASE ] component-showcase.tsx — 99 COMPONENTS
             </span>
           </div>
           {/* Table of Contents */}
@@ -1235,44 +1233,6 @@ return greeting;`}
           <section id="layout" className={cn("border-border border", mode.radius)}>
             <SectionHeader code="0x08" title="LAYOUT_&_CONTAINERS" />
             <div className="space-y-8 p-6">
-              {/* WindowControls */}
-              <div>
-                <Label className="mb-4 block">[WINDOW_CONTROLS]:</Label>
-                <div className="flex gap-8">
-                  <div className="text-center">
-                    <WindowControls size="xs" />
-                    <p className="text-muted-foreground mt-2 text-xs">xs</p>
-                  </div>
-                  <div className="text-center">
-                    <WindowControls size="sm" />
-                    <p className="text-muted-foreground mt-2 text-xs">sm</p>
-                  </div>
-                  <div className="text-center">
-                    <WindowControls size="md" />
-                    <p className="text-muted-foreground mt-2 text-xs">md</p>
-                  </div>
-                  <div className="text-center">
-                    <WindowControls size="lg" />
-                    <p className="text-muted-foreground mt-2 text-xs">lg</p>
-                  </div>
-                  <div className="text-center">
-                    <WindowControls size="sm" animated />
-                    <p className="text-muted-foreground mt-2 text-xs">animated</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* WindowHeader */}
-              <div>
-                <Label className="mb-4 block">[WINDOW_HEADER]:</Label>
-                <div className={cn("border-border border", mode.radius)}>
-                  <WindowHeader filename="example.tsx" />
-                  <div className="p-4">
-                    <p className="text-muted-foreground text-sm">Window content</p>
-                  </div>
-                </div>
-              </div>
-
               {/* Container */}
               <div>
                 <Label className="mb-4 block">[CONTAINER]:</Label>

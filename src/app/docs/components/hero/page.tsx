@@ -2,7 +2,6 @@
 
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { Button } from "@/components/ui/button";
-import { WindowControls } from "@/components/ui/window-controls";
 
 // Simplified Hero Demo for docs
 function HeroDemo() {
@@ -44,9 +43,8 @@ function HeroDemo() {
 
         {/* Right Column - Terminal */}
         <div className="border-border bg-card border">
-          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-            <WindowControls size="sm" />
-            <span>terminal — ~/projects</span>
+          <div className="border-border flex items-center border-b px-4 py-2">
+            <span className="text-muted-foreground font-mono text-xs">[ TERMINAL ] ~/projects</span>
           </div>
           <div className="p-4">
             <div>
@@ -135,9 +133,8 @@ export default function LandingPage() {
           description: "Animated terminal showing installation",
           preview: (
             <div className="border-border bg-card w-full max-w-md border">
-              <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-                <WindowControls size="sm" />
-                <span>terminal</span>
+              <div className="border-border flex items-center border-b px-4 py-2">
+                <span className="text-muted-foreground font-mono text-xs">[ TERMINAL ] bash</span>
               </div>
               <div className="p-4">
                 <div>
@@ -148,13 +145,10 @@ export default function LandingPage() {
               </div>
             </div>
           ),
-          code: `import { WindowControls } from "@/components/ui/window-controls";
-
-// Terminal window with window control dots
+          code: `// Terminal window with bracketed header
 <div className="border border-border bg-card">
-  <div className="flex items-center gap-2 border-b px-4 py-2">
-    <WindowControls size="sm" />
-    <span className="font-mono text-xs">terminal</span>
+  <div className="flex items-center border-b px-4 py-2">
+    <span className="font-mono text-xs text-muted-foreground">[ TERMINAL ] bash</span>
   </div>
   <div className="p-4 font-mono text-xs">
     {/* Terminal content */}

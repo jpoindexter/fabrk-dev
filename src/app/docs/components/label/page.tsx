@@ -5,7 +5,6 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Switch } from "@/components/ui/switch";
-import { WindowControls } from "@/components/ui/window-controls";
 import { formatLabel } from "@/design-system";
 
 export default function LabelPage() {
@@ -112,9 +111,10 @@ export default function LabelPage() {
           description: "Label following design system typography tokens.",
           preview: (
             <div className="space-y-4 p-4 font-mono text-sm">
-              <div className="border-border flex items-center gap-2 border-b pb-2">
-                <WindowControls size="sm" />
-                <span className="text-muted-foreground text-xs">label-typography.css</span>
+              <div className="border-border flex items-center border-b pb-2">
+                <span className="text-muted-foreground text-xs">
+                  [ TYPOGRAPHY ] label-typography.css
+                </span>
               </div>
               <div className="space-y-1 text-xs">
                 <div className="text-muted-foreground">
@@ -145,9 +145,10 @@ tracking-normal      // Letter spacing`,
           description: "Required indicator prevents user errors.",
           preview: (
             <div className="space-y-4 p-4 font-mono text-sm">
-              <div className="border-border flex items-center gap-2 border-b pb-2">
-                <WindowControls size="sm" />
-                <span className="text-muted-foreground text-xs">ux-heuristic-5.md</span>
+              <div className="border-border flex items-center border-b pb-2">
+                <span className="text-muted-foreground text-xs">
+                  [ UX_HEURISTIC ] ux-heuristic-5.md
+                </span>
               </div>
               <div className="space-y-2 text-xs">
                 <div className="text-primary font-semibold">[HEURISTIC #5]:</div>

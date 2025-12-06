@@ -280,10 +280,10 @@ export function HeroSection() {
               className="mb-8 flex flex-col gap-4 sm:flex-row"
             >
               <PolarCheckoutButton className={cn("text-xs", mode.radius, mode.font)}>
-                &gt; EXECUTE: GET_FABRK
+                &gt; GET_FABRK
               </PolarCheckoutButton>
               <Button variant="outline" asChild className={cn("text-xs", mode.radius, mode.font)}>
-                <Link href="/demo">&gt; VIEW: LIVE_DEMO</Link>
+                <Link href="/demo">&gt; VIEW_LIVE_DEMO</Link>
               </Button>
             </motion.div>
 

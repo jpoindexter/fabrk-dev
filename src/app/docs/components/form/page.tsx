@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { WindowControls } from "@/components/ui/window-controls";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -31,8 +30,8 @@ function BasicFormExample() {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+  const onSubmit = (_values: z.infer<typeof formSchema>) => {
+    // Handle form submission
   };
 
   return (
@@ -106,8 +105,8 @@ function Example() {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+  const onSubmit = (_values: z.infer<typeof formSchema>) => {
+    // Handle form submission
   };
 
   return (
@@ -155,7 +154,7 @@ function Example() {
               <div className="text-muted-foreground">
                 <span className="text-primary">&gt;</span> Form Component Structure
               </div>
-              <div className="space-y-2 pl-4 text-muted-foreground">
+              <div className="text-muted-foreground space-y-2 pl-4">
                 <div>
                   <span className="text-success">&gt;</span> Form (Provider)
                 </div>
@@ -204,24 +203,23 @@ function Example() {
           description: "Form with comprehensive validation rules.",
           preview: (
             <div className="space-y-4 p-4 font-mono text-sm">
-              <div className="flex items-center gap-2 border-b border-border pb-2">
-                <WindowControls size="sm" />
-                <span className="text-xs text-muted-foreground">validation.ts</span>
+              <div className="border-border flex items-center border-b pb-2">
+                <span className="text-muted-foreground text-xs">[ VALIDATION ] validation.ts</span>
               </div>
               <div className="space-y-1 text-xs">
                 <div className="text-muted-foreground">
                   <span className="text-primary">const</span> schema{" "}
                   <span className="text-primary">=</span> z.object(&#123;
                 </div>
-                <div className="pl-4 text-muted-foreground">
+                <div className="text-muted-foreground pl-4">
                   username: z.string()
                   <span className="text-warning">.min</span>(3)
                 </div>
-                <div className="pl-4 text-muted-foreground">
+                <div className="text-muted-foreground pl-4">
                   email: z.string()
                   <span className="text-warning">.email</span>()
                 </div>
-                <div className="pl-4 text-muted-foreground">
+                <div className="text-muted-foreground pl-4">
                   password: z.string()
                   <span className="text-warning">.min</span>(12)
                 </div>

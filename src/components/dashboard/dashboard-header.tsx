@@ -133,18 +133,6 @@ export function DashboardHeader() {
                   Profile
                 </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/settings" className="cursor-pointer">
-                  <Settings className="mr-2 h-4 w-4" />
-                  Settings
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/settings/security" className="cursor-pointer">
-                  <Shield className="mr-2 h-4 w-4" />
-                  Security
-                </Link>
-              </DropdownMenuItem>
               {isAdmin && (
                 <>
                   <DropdownMenuSeparator />

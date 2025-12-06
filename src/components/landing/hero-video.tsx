@@ -108,7 +108,7 @@ export function HeroVideo({
               asChild
             >
               <Link href={ctaPrimary.href}>
-                &gt; EXECUTE: {ctaPrimary.text.toUpperCase().replace(/ /g, "_")}
+                &gt; {ctaPrimary.text.toUpperCase().replace(/ /g, "_")}
               </Link>
             </Button>
             <Button
@@ -121,7 +121,7 @@ export function HeroVideo({
               asChild
             >
               <Link href={ctaSecondary.href}>
-                &gt; VIEW: {ctaSecondary.text.toUpperCase().replace(/ /g, "_")}
+                &gt; VIEW_{ctaSecondary.text.toUpperCase().replace(/ /g, "_")}
               </Link>
             </Button>
           </div>

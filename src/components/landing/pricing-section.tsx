@@ -9,7 +9,6 @@ import config from "@/config";
 import { motion } from "framer-motion";
 import { DiscountCounter } from "@/components/polar/discount-counter";
 import { PolarCheckoutButton } from "@/components/polar/checkout-button";
-import { WindowControls } from "@/components/ui/window-controls";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
 
@@ -87,10 +86,9 @@ export function PricingSection() {
             {/* Terminal Card */}
             <div className={cn("border-border bg-card border", mode.radius)}>
               {/* Window Header */}
-              <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-                <WindowControls size="sm" animated />
+              <div className="border-border flex items-center border-b px-4 py-2">
                 <span className={cn("text-muted-foreground text-xs", mode.font)}>
-                  [0x41] pricing_config.exe │ PID:3142
+                  [ [0x41] PRICING_CONFIG ] pricing_config.exe │ PID:3142
                 </span>
               </div>
 
@@ -141,7 +139,7 @@ export function PricingSection() {
 
                 {/* CTA Button */}
                 <PolarCheckoutButton className={cn("w-full text-xs", mode.radius, mode.font)}>
-                  &gt; EXECUTE: GET_LIFETIME_ACCESS
+                  &gt; GET_LIFETIME_ACCESS
                 </PolarCheckoutButton>
               </div>
             </div>
