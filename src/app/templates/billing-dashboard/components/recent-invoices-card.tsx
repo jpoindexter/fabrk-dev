@@ -66,11 +66,11 @@ export function RecentInvoicesCard({
               >
                 <div className="flex items-center gap-4">
                   {payment.status === "succeeded" ? (
-                    <CheckCircle2 className="text-success h-4 w-4" />
+                    <CheckCircle2 className="text-success size-4" />
                   ) : payment.status === "failed" ? (
-                    <XCircle className="text-destructive h-4 w-4" />
+                    <XCircle className="text-destructive size-4" />
                   ) : (
-                    <Clock className="text-warning h-4 w-4" />
+                    <Clock className="text-warning size-4" />
                   )}
                   <div>
                     <div>{payment.description}</div>
@@ -91,7 +91,7 @@ export function RecentInvoicesCard({
                     {status.text}
                   </span>
                   <button className="hover:text-foreground text-muted-foreground">
-                    <Download className="h-4 w-4" />
+                    <Download className="size-4" />
                   </button>
                 </div>
               </div>

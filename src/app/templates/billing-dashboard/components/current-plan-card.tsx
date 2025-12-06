@@ -27,7 +27,7 @@ interface CurrentPlanCardProps {
 export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardProps) {
   return (
     <TerminalCard tone="primary">
-      <TerminalCardHeader code="0x00" title="SUBSCRIPTION" icon={<Star className="h-4 w-4" />} />
+      <TerminalCardHeader code="0x00" title="SUBSCRIPTION" icon={<Star className="size-4" />} />
       <TerminalCardContent padding="md">
         <div className="flex items-start justify-between">
           <div>
@@ -48,7 +48,7 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
               <span className="text-2xl font-semibold">{subscription.plan}</span>
             </div>
             <div className={cn(mode.font, "text-muted-foreground text-xs")}>
-              STARTED: {formatDate(subscription.startDate)}
+              [STARTED]: {formatDate(subscription.startDate)}
             </div>
           </div>
           <div className="text-right">
@@ -57,7 +57,7 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
               <span className="text-muted-foreground text-lg font-normal">/mo</span>
             </div>
             <div className={cn(mode.font, "text-muted-foreground mt-1 text-xs")}>
-              NEXT_BILLING: {formatDate(subscription.nextBillingDate)}
+              [NEXT_BILLING]: {formatDate(subscription.nextBillingDate)}
             </div>
           </div>
         </div>

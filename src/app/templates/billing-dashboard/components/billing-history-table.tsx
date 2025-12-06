@@ -45,7 +45,7 @@ export function BillingHistoryTable({
               size="sm"
               className={cn(mode.radius, mode.font, "h-7 text-xs")}
             >
-              <Download className="mr-2 h-3 w-3" />
+              <Download className="mr-2 size-3" />
               &gt; EXPORT_ALL
             </Button>
           </div>
@@ -90,7 +90,7 @@ export function BillingHistoryTable({
                         {status.text}
                       </span>
                       <button className="hover:text-foreground text-muted-foreground">
-                        <Download className="h-3 w-3" />
+                        <Download className="size-3" />
                       </button>
                     </div>
                   </div>

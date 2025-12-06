@@ -49,14 +49,18 @@ export default function PrivacyPage() {
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           <h1 className={cn("text-muted-foreground mb-2 text-sm", mode.font)}>FABRK_LEGAL:</h1>
-          <h2 className={cn("mb-4 text-4xl font-semibold tracking-tight", mode.font)}>PRIVACY_POLICY</h2>
+          <h2 className={cn("mb-4 text-4xl font-semibold tracking-tight", mode.font)}>
+            PRIVACY_POLICY
+          </h2>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <span className={cn("text-muted-foreground text-xs", mode.font)}>[LAST_UPDATED]: November 26, 2025</span>
+          <span className={cn("text-muted-foreground text-xs", mode.font)}>
+            [LAST_UPDATED]: November 26, 2025
+          </span>
         </motion.div>
       </div>
 
@@ -81,11 +85,17 @@ export default function PrivacyPage() {
       <div className="space-y-8">
         {/* Section 1 */}
         <TerminalCard size="auto">
-          <TerminalCardHeader code="0x10" title="INFORMATION_WE_COLLECT" icon={<Database className="size-4" />} />
+          <TerminalCardHeader
+            code="0x10"
+            title="INFORMATION_WE_COLLECT"
+            icon={<Database className="size-4" />}
+          />
           <TerminalCardContent padding="md">
             <div className="space-y-6">
               <div>
-                <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>[1.1] INFORMATION_YOU_PROVIDE</h3>
+                <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>
+                  [1.1] INFORMATION_YOU_PROVIDE
+                </h3>
                 <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
                   When you use Fabrk, we collect information you provide directly:
                 </p>
@@ -95,8 +105,8 @@ export default function PrivacyPage() {
                     password (hashed)
                   </li>
                   <li>
-                    ├─ <span className="text-foreground">PAYMENT_INFO:</span> Processed by Stripe (we
-                    don't store full card details)
+                    ├─ <span className="text-foreground">PAYMENT_INFO:</span> Processed by Stripe
+                    (we don't store full card details)
                   </li>
                   <li>
                     ├─ <span className="text-foreground">PROFILE_DATA:</span> Optional profile
@@ -107,14 +117,16 @@ export default function PrivacyPage() {
                     feedback, email correspondence
                   </li>
                   <li>
-                    └─ <span className="text-foreground">GITHUB_USERNAME:</span> Required for granting
-                    repository access
+                    └─ <span className="text-foreground">GITHUB_USERNAME:</span> Required for
+                    granting repository access
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>[1.2] AUTO_COLLECTED_INFO</h3>
+                <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>
+                  [1.2] AUTO_COLLECTED_INFO
+                </h3>
                 <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
                   We automatically collect certain information when you use our Service:
                 </p>
@@ -124,8 +136,8 @@ export default function PrivacyPage() {
                     used, time spent
                   </li>
                   <li>
-                    ├─ <span className="text-foreground">DEVICE_INFO:</span> Browser type, OS, device
-                    model
+                    ├─ <span className="text-foreground">DEVICE_INFO:</span> Browser type, OS,
+                    device model
                   </li>
                   <li>
                     ├─ <span className="text-foreground">LOG_DATA:</span> IP address, access times,
@@ -139,7 +151,9 @@ export default function PrivacyPage() {
               </div>
 
               <div>
-                <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>[1.3] THIRD_PARTY_DATA</h3>
+                <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>
+                  [1.3] THIRD_PARTY_DATA
+                </h3>
                 <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
                   If you authenticate via OAuth (Google, GitHub), we receive:
                 </p>
@@ -155,9 +169,15 @@ export default function PrivacyPage() {
 
         {/* Section 2 */}
         <TerminalCard size="auto">
-          <TerminalCardHeader code="0x20" title="HOW_WE_USE_YOUR_INFO" icon={<Scale className="size-4" />} />
+          <TerminalCardHeader
+            code="0x20"
+            title="HOW_WE_USE_YOUR_INFO"
+            icon={<Scale className="size-4" />}
+          />
           <TerminalCardContent padding="md">
-            <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>We use collected information for:</p>
+            <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
+              We use collected information for:
+            </p>
             <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
               <li>
                 ├─ <span className="text-foreground">SERVICE_PROVISION:</span> Account creation,
@@ -189,15 +209,19 @@ export default function PrivacyPage() {
 
         {/* Section 3 */}
         <TerminalCard size="auto">
-          <TerminalCardHeader code="0x30" title="LEGAL_BASIS_GDPR" icon={<Scale className="size-4" />} />
+          <TerminalCardHeader
+            code="0x30"
+            title="LEGAL_BASIS_GDPR"
+            icon={<Scale className="size-4" />}
+          />
           <TerminalCardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               Under GDPR, we process your data based on:
             </p>
             <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
               <li>
-                ├─ <span className="text-foreground">CONTRACT:</span> Processing necessary to provide
-                the Service you purchased
+                ├─ <span className="text-foreground">CONTRACT:</span> Processing necessary to
+                provide the Service you purchased
               </li>
               <li>
                 ├─ <span className="text-foreground">CONSENT:</span> You've given explicit consent
@@ -217,11 +241,17 @@ export default function PrivacyPage() {
 
         {/* Section 4 */}
         <TerminalCard size="auto">
-          <TerminalCardHeader code="0x40" title="DATA_SHARING_DISCLOSURE" icon={<Share2 className="size-4" />} />
+          <TerminalCardHeader
+            code="0x40"
+            title="DATA_SHARING_DISCLOSURE"
+            icon={<Share2 className="size-4" />}
+          />
           <TerminalCardContent padding="md">
             <div className="space-y-6">
               <div>
-                <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>[4.1] SERVICE_PROVIDERS</h3>
+                <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>
+                  [4.1] SERVICE_PROVIDERS
+                </h3>
                 <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
                   We share data with trusted third parties:
                 </p>
@@ -248,7 +278,9 @@ export default function PrivacyPage() {
               </div>
 
               <div>
-                <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>[4.2] LEGAL_REQUIREMENTS</h3>
+                <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>
+                  [4.2] LEGAL_REQUIREMENTS
+                </h3>
                 <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
                   We may disclose data if required by law:
                 </p>
@@ -260,7 +292,9 @@ export default function PrivacyPage() {
               </div>
 
               <div>
-                <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>[4.3] BUSINESS_TRANSFERS</h3>
+                <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>
+                  [4.3] BUSINESS_TRANSFERS
+                </h3>
                 <p className={cn("text-muted-foreground text-sm", mode.font)}>
                   If Fabrk is acquired or merged, your information may be transferred. We'll notify
                   you before any transfer.
@@ -272,34 +306,39 @@ export default function PrivacyPage() {
 
         {/* Section 5 */}
         <TerminalCard size="auto">
-          <TerminalCardHeader code="0x50" title="DATA_SECURITY" icon={<Lock className="size-4" />} />
+          <TerminalCardHeader
+            code="0x50"
+            title="DATA_SECURITY"
+            icon={<Lock className="size-4" />}
+          />
           <TerminalCardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               We implement industry-standard security measures:
             </p>
             <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
               <li>
-                ├─ <span className="text-foreground">ENCRYPTION:</span> TLS 1.3 in transit, AES-256 at
-                rest
+                ├─ <span className="text-foreground">ENCRYPTION:</span> TLS 1.3 in transit, AES-256
+                at rest
               </li>
               <li>
-                ├─ <span className="text-foreground">AUTH:</span> Bcrypt password hashing (12 rounds)
+                ├─ <span className="text-foreground">AUTH:</span> Bcrypt password hashing (12
+                rounds)
               </li>
               <li>
                 ├─ <span className="text-foreground">SESSIONS:</span> JWT tokens with expiration,
                 versioning
               </li>
               <li>
-                ├─ <span className="text-foreground">INFRA:</span> Secure cloud hosting with security
-                patches
+                ├─ <span className="text-foreground">INFRA:</span> Secure cloud hosting with
+                security patches
               </li>
               <li>
-                ├─ <span className="text-foreground">ACCESS_CONTROL:</span> Limited employee access to
-                user data
+                ├─ <span className="text-foreground">ACCESS_CONTROL:</span> Limited employee access
+                to user data
               </li>
               <li>
-                └─ <span className="text-foreground">MONITORING:</span> Automated security monitoring
-                and alerts
+                └─ <span className="text-foreground">MONITORING:</span> Automated security
+                monitoring and alerts
               </li>
             </ul>
           </TerminalCardContent>
@@ -307,17 +346,23 @@ export default function PrivacyPage() {
 
         {/* Section 6 */}
         <TerminalCard size="auto">
-          <TerminalCardHeader code="0x60" title="DATA_RETENTION" icon={<Clock className="size-4" />} />
+          <TerminalCardHeader
+            code="0x60"
+            title="DATA_RETENTION"
+            icon={<Clock className="size-4" />}
+          />
           <TerminalCardContent padding="md">
-            <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>We retain your data for:</p>
+            <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
+              We retain your data for:
+            </p>
             <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
               <li>
-                ├─ <span className="text-foreground">ACTIVE_ACCOUNTS:</span> Duration + 30 days after
-                deletion
+                ├─ <span className="text-foreground">ACTIVE_ACCOUNTS:</span> Duration + 30 days
+                after deletion
               </li>
               <li>
-                ├─ <span className="text-foreground">PAYMENT_RECORDS:</span> 7 years (required by tax
-                law)
+                ├─ <span className="text-foreground">PAYMENT_RECORDS:</span> 7 years (required by
+                tax law)
               </li>
               <li>
                 ├─ <span className="text-foreground">LOGS:</span> 90 days for security and debugging
@@ -331,30 +376,37 @@ export default function PrivacyPage() {
 
         {/* Section 7 */}
         <TerminalCard size="auto">
-          <TerminalCardHeader code="0x70" title="YOUR_PRIVACY_RIGHTS" icon={<UserCheck className="size-4" />} />
+          <TerminalCardHeader
+            code="0x70"
+            title="YOUR_PRIVACY_RIGHTS"
+            icon={<UserCheck className="size-4" />}
+          />
           <TerminalCardContent padding="md">
             <div className="space-y-6">
               <div>
-                <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>[7.1] GDPR_RIGHTS (EU_USERS)</h3>
+                <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>
+                  [7.1] GDPR_RIGHTS (EU_USERS)
+                </h3>
                 <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
                   <li>
                     ├─ <span className="text-foreground">ACCESS:</span> Request a copy of your
                     personal data
                   </li>
                   <li>
-                    ├─ <span className="text-foreground">RECTIFICATION:</span> Correct inaccurate data
+                    ├─ <span className="text-foreground">RECTIFICATION:</span> Correct inaccurate
+                    data
                   </li>
                   <li>
                     ├─ <span className="text-foreground">ERASURE:</span> Request deletion ("right to
                     be forgotten")
                   </li>
                   <li>
-                    ├─ <span className="text-foreground">PORTABILITY:</span> Receive data in portable
-                    format
+                    ├─ <span className="text-foreground">PORTABILITY:</span> Receive data in
+                    portable format
                   </li>
                   <li>
-                    ├─ <span className="text-foreground">RESTRICTION:</span> Limit how we process your
-                    data
+                    ├─ <span className="text-foreground">RESTRICTION:</span> Limit how we process
+                    your data
                   </li>
                   <li>
                     ├─ <span className="text-foreground">OBJECTION:</span> Object to data processing
@@ -367,7 +419,9 @@ export default function PrivacyPage() {
               </div>
 
               <div>
-                <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>[7.2] CCPA_RIGHTS (CA_USERS)</h3>
+                <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>
+                  [7.2] CCPA_RIGHTS (CA_USERS)
+                </h3>
                 <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
                   <li>├─ Know what personal information we collect</li>
                   <li>├─ Know if we sell/disclose info (we don't sell)</li>
@@ -378,10 +432,14 @@ export default function PrivacyPage() {
               </div>
 
               <div>
-                <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>[7.3] EXERCISING_RIGHTS</h3>
-                <p className={cn("text-muted-foreground mb-2 text-sm", mode.font)}>Contact us at:</p>
+                <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>
+                  [7.3] EXERCISING_RIGHTS
+                </h3>
+                <p className={cn("text-muted-foreground mb-2 text-sm", mode.font)}>
+                  Contact us at:
+                </p>
                 <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
-                  <li>├─ EMAIL: privacy@fabrk.dev</li>
+                  <li>├─ EMAIL: support@fabrk.dev</li>
                   <li>
                     └─ PROFILE:{" "}
                     <Link href="/profile" className="text-primary hover:underline">
@@ -389,11 +447,15 @@ export default function PrivacyPage() {
                     </Link>
                   </li>
                 </ul>
-                <p className={cn("text-muted-foreground mt-2 text-sm", mode.font)}>Response time: 30 days</p>
+                <p className={cn("text-muted-foreground mt-2 text-sm", mode.font)}>
+                  Response time: 30 days
+                </p>
               </div>
 
               <div>
-                <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>[7.4] GITHUB_ACCESS_REVOCATION</h3>
+                <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>
+                  [7.4] GITHUB_ACCESS_REVOCATION
+                </h3>
                 <p className={cn("text-muted-foreground text-sm", mode.font)}>
                   If you request data deletion, we will revoke your access to the fabrk-boilerplate
                   repository on GitHub.
@@ -405,17 +467,23 @@ export default function PrivacyPage() {
 
         {/* Section 8 */}
         <TerminalCard size="auto">
-          <TerminalCardHeader code="0x80" title="COOKIES_AND_TRACKING" icon={<Cookie className="size-4" />} />
+          <TerminalCardHeader
+            code="0x80"
+            title="COOKIES_AND_TRACKING"
+            icon={<Cookie className="size-4" />}
+          />
           <TerminalCardContent padding="md">
-            <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>We use cookies for:</p>
+            <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
+              We use cookies for:
+            </p>
             <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
               <li>
                 ├─ <span className="text-foreground">ESSENTIAL:</span> Authentication, session
                 management (required)
               </li>
               <li>
-                ├─ <span className="text-foreground">PREFERENCE:</span> Remember your settings (theme,
-                language)
+                ├─ <span className="text-foreground">PREFERENCE:</span> Remember your settings
+                (theme, language)
               </li>
               <li>
                 └─ <span className="text-foreground">ANALYTICS:</span> Understand usage patterns
@@ -434,7 +502,11 @@ export default function PrivacyPage() {
 
         {/* Section 9 */}
         <TerminalCard size="auto">
-          <TerminalCardHeader code="0x90" title="CHILDRENS_PRIVACY" icon={<Baby className="size-4" />} />
+          <TerminalCardHeader
+            code="0x90"
+            title="CHILDRENS_PRIVACY"
+            icon={<Baby className="size-4" />}
+          />
           <TerminalCardContent padding="md">
             <p className={cn("text-muted-foreground text-sm", mode.font)}>
               Fabrk is not intended for users under 18. We do not knowingly collect data from
@@ -445,11 +517,15 @@ export default function PrivacyPage() {
 
         {/* Section 10 */}
         <TerminalCard size="auto">
-          <TerminalCardHeader code="0xA0" title="INTERNATIONAL_DATA_TRANSFERS" icon={<Globe className="size-4" />} />
+          <TerminalCardHeader
+            code="0xA0"
+            title="INTERNATIONAL_DATA_TRANSFERS"
+            icon={<Globe className="size-4" />}
+          />
           <TerminalCardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
-              Your data may be processed in countries outside your own. We ensure adequate protection
-              through:
+              Your data may be processed in countries outside your own. We ensure adequate
+              protection through:
             </p>
             <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
               <li>├─ Standard Contractual Clauses (EU-approved)</li>
@@ -461,7 +537,11 @@ export default function PrivacyPage() {
 
         {/* Section 11 */}
         <TerminalCard size="auto">
-          <TerminalCardHeader code="0xB0" title="POLICY_CHANGES" icon={<RefreshCw className="size-4" />} />
+          <TerminalCardHeader
+            code="0xB0"
+            title="POLICY_CHANGES"
+            icon={<RefreshCw className="size-4" />}
+          />
           <TerminalCardContent padding="md">
             <p className={cn("text-muted-foreground text-sm", mode.font)}>
               We may update this policy periodically. We'll notify you of significant changes via
@@ -474,13 +554,15 @@ export default function PrivacyPage() {
         <TerminalCard size="auto">
           <TerminalCardHeader code="0xC0" title="CONTACT_US" icon={<Mail className="size-4" />} />
           <TerminalCardContent padding="md">
-            <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>Privacy questions or concerns?</p>
+            <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
+              Privacy questions or concerns?
+            </p>
             <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
               <li>
-                ├─ <span className="text-foreground">EMAIL:</span> privacy@fabrk.dev
+                ├─ <span className="text-foreground">EMAIL:</span> support@fabrk.dev
               </li>
               <li>
-                ├─ <span className="text-foreground">DPO:</span> dpo@fabrk.dev
+                ├─ <span className="text-foreground">DPO:</span> support@fabrk.dev
               </li>
               <li>
                 └─ <span className="text-foreground">FORM:</span>{" "}
@@ -502,7 +584,11 @@ export default function PrivacyPage() {
         className="mt-12"
       >
         <TerminalCard size="auto">
-          <TerminalCardHeader code="0xD0" title="RELATED_DOCUMENTS" icon={<FileText className="size-4" />} />
+          <TerminalCardHeader
+            code="0xD0"
+            title="RELATED_DOCUMENTS"
+            icon={<FileText className="size-4" />}
+          />
           <TerminalCardContent padding="md">
             <div className={cn("flex flex-wrap gap-4 text-xs", mode.font)}>
               <Link href="/terms" className="text-primary hover:underline">

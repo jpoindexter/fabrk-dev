@@ -40,8 +40,8 @@ export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
           <div className="space-y-2">
             <div className={cn(mode.font, "flex items-center justify-between text-xs")}>
               <span className="flex items-center gap-2">
-                <Users className="h-3 w-3" />
-                TEAM_MEMBERS
+                <Users className="size-3" />
+                [TEAM_MEMBERS]:
               </span>
               <span>
                 {usage.users.current} / {usage.users.limit}
@@ -53,8 +53,8 @@ export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
           <div className="space-y-2">
             <div className={cn(mode.font, "flex items-center justify-between text-xs")}>
               <span className="flex items-center gap-2">
-                <HardDrive className="h-3 w-3" />
-                STORAGE
+                <HardDrive className="size-3" />
+                [STORAGE]:
               </span>
               <span>
                 {usage.storage.current}
@@ -68,8 +68,8 @@ export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
           <div className="space-y-2">
             <div className={cn(mode.font, "flex items-center justify-between text-xs")}>
               <span className="flex items-center gap-2">
-                <Zap className="h-3 w-3" />
-                API_CALLS
+                <Zap className="size-3" />
+                [API_CALLS]:
               </span>
               <span>
                 {usage.apiCalls.current.toLocaleString()} / {usage.apiCalls.limit.toLocaleString()}

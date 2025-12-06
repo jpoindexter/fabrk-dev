@@ -7,10 +7,32 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { mode } from "@/design-system";
+import {
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+  TerminalBadge,
+} from "@/components/ui/card";
+import {
+  FileText,
+  Ban,
+  ShoppingBag,
+  Package,
+  HeadphonesIcon,
+  AlertTriangle,
+  Scale,
+  Shield,
+  RefreshCw,
+  HelpCircle,
+  Gavel,
+  CheckCircle,
+} from "lucide-react";
 
 export default function RefundPage() {
   return (
-    <main className="container mx-auto max-w-4xl px-6 py-16 font-mono">
+    <main className={cn("container mx-auto max-w-4xl px-6 py-16", mode.font)}>
       {/* Header */}
       <div className="mb-12 text-center">
         <motion.div
@@ -19,17 +41,15 @@ export default function RefundPage() {
           transition={{ duration: 0.5 }}
           className="mb-6"
         >
-          <span className="inline-block border border-border bg-card px-4 py-1 text-xs text-muted-foreground">
-            [ [0x00] LEGAL ] REFUND_POLICY
-          </span>
+          <TerminalBadge code="0x00" label="LEGAL" meta="REFUND_POLICY" />
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <h1 className="mb-2 text-sm text-muted-foreground">FABRK_LEGAL:</h1>
-          <h2 className="mb-4 text-4xl font-semibold tracking-tight">
+          <h1 className={cn("text-muted-foreground mb-2 text-sm", mode.font)}>FABRK_LEGAL:</h1>
+          <h2 className={cn("mb-4 text-4xl font-semibold tracking-tight", mode.font)}>
             REFUND_POLICY
           </h2>
         </motion.div>
@@ -38,214 +58,413 @@ export default function RefundPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <span className="text-xs text-muted-foreground">LAST_UPDATED: November 26, 2025</span>
+          <span className={cn("text-muted-foreground text-xs", mode.font)}>
+            [LAST_UPDATED]: November 26, 2025
+          </span>
         </motion.div>
       </div>
 
-      {/* Introduction */}
+      {/* Introduction - Danger Card */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="mb-12 border border-destructive/30 bg-destructive/5 p-6"
+        className="mb-12"
       >
-        <div className="mb-2 text-xs text-muted-foreground">
-          [ [0x01] NOTICE ]────────────────────────
-        </div>
-        <p className="text-sm text-foreground">
-          <span className="text-destructive font-semibold">ALL SALES ARE FINAL.</span> Due to the nature of digital products, no refunds, exchanges, or credits are available. Please review this policy carefully before purchasing.
-        </p>
+        <TerminalCard size="auto" tone="danger">
+          <TerminalCardHeader
+            code="0x01"
+            title="NOTICE"
+            icon={<AlertTriangle className="size-4" />}
+          />
+          <TerminalCardContent padding="md">
+            <p className={cn("text-foreground text-sm", mode.font)}>
+              <span className="text-destructive font-semibold">ALL SALES ARE FINAL.</span> Due to
+              the nature of digital products, no refunds, exchanges, or credits are available.
+              Please review this policy carefully before purchasing.
+            </p>
+          </TerminalCardContent>
+        </TerminalCard>
       </motion.div>
 
       <div className="space-y-6">
         {/* Section 1 */}
-        <section className="border border-border bg-card p-6">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-xs text-muted-foreground">[0x10]</span>
-            <h2 className="text-lg font-semibold">NO_REFUNDS_POLICY</h2>
-          </div>
-          <p className="text-sm text-muted-foreground mb-4">
-            Once you gain access to the Fabrk source code and download the files, no refunds are available under any circumstances.
-          </p>
-          <p className="text-sm text-muted-foreground">
-            By completing your purchase, you acknowledge that digital products cannot be "returned" once downloaded. This is standard for digital products and software licenses.
-          </p>
-        </section>
+        <TerminalCard size="auto">
+          <TerminalCardHeader
+            code="0x10"
+            title="NO_REFUNDS_POLICY"
+            icon={<Ban className="size-4" />}
+          />
+          <TerminalCardContent padding="md">
+            <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
+              Once you gain access to the Fabrk source code and download the files, no refunds are
+              available under any circumstances.
+            </p>
+            <p className={cn("text-muted-foreground text-sm", mode.font)}>
+              By completing your purchase, you acknowledge that digital products cannot be
+              &quot;returned&quot; once downloaded. This is standard for digital products and
+              software licenses.
+            </p>
+          </TerminalCardContent>
+        </TerminalCard>
 
         {/* Section 2 */}
-        <section className="border border-border bg-card p-6">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-xs text-muted-foreground">[0x20]</span>
-            <h2 className="text-lg font-semibold">WHY_NO_REFUNDS</h2>
-          </div>
-          <p className="text-sm text-muted-foreground mb-4">
-            Unlike physical products, digital products provide immediate value upon download:
-          </p>
-          <ul className="space-y-1 text-sm text-muted-foreground pl-4">
-            <li>├─ Instant access to complete source code</li>
-            <li>├─ Immediate ability to copy, modify, and use</li>
-            <li>├─ Digital products cannot be "returned"</li>
-            <li>└─ No way to verify code wasn't copied before refund request</li>
-          </ul>
-          <p className="text-sm text-muted-foreground mt-4">
-            This policy protects business integrity and ensures fair pricing for all customers.
-          </p>
-        </section>
+        <TerminalCard size="auto">
+          <TerminalCardHeader
+            code="0x20"
+            title="WHY_NO_REFUNDS"
+            icon={<FileText className="size-4" />}
+          />
+          <TerminalCardContent padding="md">
+            <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
+              Unlike physical products, digital products provide immediate value upon download:
+            </p>
+            <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
+              <li>├─ Instant access to complete source code</li>
+              <li>├─ Immediate ability to copy, modify, and use</li>
+              <li>├─ Digital products cannot be &quot;returned&quot;</li>
+              <li>└─ No way to verify code wasn&apos;t copied before refund request</li>
+            </ul>
+            <p className={cn("text-muted-foreground mt-4 text-sm", mode.font)}>
+              This policy protects business integrity and ensures fair pricing for all customers.
+            </p>
+          </TerminalCardContent>
+        </TerminalCard>
 
         {/* Section 3 */}
-        <section className="border border-border bg-card p-6">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-xs text-muted-foreground">[0x30]</span>
-            <h2 className="text-lg font-semibold">BEFORE_YOU_PURCHASE</h2>
-          </div>
-          <p className="text-sm text-muted-foreground mb-4">
-            We encourage you to thoroughly review Fabrk before purchasing:
-          </p>
-          <ul className="space-y-1 text-sm text-muted-foreground pl-4">
-            <li>├─ Review the <Link href="/features" className="text-primary hover:underline">COMPLETE_FEATURE_LIST</Link></li>
-            <li>├─ Browse the <Link href="/docs" className="text-primary hover:underline">DOCUMENTATION</Link></li>
-            <li>├─ Check tech stack and integrations</li>
-            <li>└─ Contact <Link href="/contact" className="text-primary hover:underline">support@fabrk.dev</Link> with questions</li>
-          </ul>
-          <p className="text-sm text-muted-foreground mt-4">
-            We want you to be fully informed before you buy.
-          </p>
-        </section>
+        <TerminalCard size="auto">
+          <TerminalCardHeader
+            code="0x30"
+            title="BEFORE_YOU_PURCHASE"
+            icon={<ShoppingBag className="size-4" />}
+          />
+          <TerminalCardContent padding="md">
+            <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
+              We encourage you to thoroughly review Fabrk before purchasing:
+            </p>
+            <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
+              <li>
+                ├─ Review the{" "}
+                <Link href="/features" className="text-primary hover:underline">
+                  &gt; VIEW_FEATURES
+                </Link>
+              </li>
+              <li>
+                ├─ Browse the{" "}
+                <Link href="/docs" className="text-primary hover:underline">
+                  &gt; VIEW_DOCS
+                </Link>
+              </li>
+              <li>├─ Check tech stack and integrations</li>
+              <li>
+                └─ Contact{" "}
+                <a href="mailto:support@fabrk.dev" className="text-primary hover:underline">
+                  support@fabrk.dev
+                </a>{" "}
+                with questions
+              </li>
+            </ul>
+            <p className={cn("text-muted-foreground mt-4 text-sm", mode.font)}>
+              We want you to be fully informed before you buy.
+            </p>
+          </TerminalCardContent>
+        </TerminalCard>
 
         {/* Section 4 */}
-        <section className="border border-border bg-card p-6">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-xs text-muted-foreground">[0x40]</span>
-            <h2 className="text-lg font-semibold">WHAT_YOU_GET</h2>
-          </div>
+        <TerminalCard size="auto">
+          <TerminalCardHeader
+            code="0x40"
+            title="WHAT_YOU_GET"
+            icon={<Package className="size-4" />}
+          />
+          <TerminalCardContent padding="md">
+            <div className="space-y-6">
+              <div>
+                <h3 className={cn("text-muted-foreground mb-2 text-xs", mode.font)}>
+                  [ [0x41] IMMEDIATE_ACCESS ]
+                </h3>
+                <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
+                  <li>├─ Instant download of complete source code</li>
+                  <li>├─ Lifetime license (v1.x updates included)</li>
+                  <li>├─ Access to 100+ production-ready components</li>
+                  <li>└─ Complete documentation and setup guides</li>
+                </ul>
+              </div>
 
-          <div className="space-y-4">
-            <div>
-              <h3 className="text-sm font-semibold mb-2">[4.1] IMMEDIATE_ACCESS</h3>
-              <ul className="space-y-1 text-sm text-muted-foreground pl-4">
-                <li>├─ Instant download of complete source code</li>
-                <li>├─ Lifetime license (v1.x updates included)</li>
-                <li>├─ Access to 100+ production-ready components</li>
-                <li>└─ Complete documentation and setup guides</li>
-              </ul>
+              <div>
+                <h3 className={cn("text-muted-foreground mb-2 text-xs", mode.font)}>
+                  [ [0x42] ONGOING_BENEFITS ]
+                </h3>
+                <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
+                  <li>├─ All future v1.x updates at no cost</li>
+                  <li>├─ Email support for technical questions</li>
+                  <li>└─ New components and features as released</li>
+                </ul>
+              </div>
             </div>
-
-            <div>
-              <h3 className="text-sm font-semibold mb-2">[4.2] ONGOING_BENEFITS</h3>
-              <ul className="space-y-1 text-sm text-muted-foreground pl-4">
-                <li>├─ All future v1.x updates at no cost</li>
-                <li>├─ Email support for technical questions</li>
-                <li>└─ New components and features as released</li>
-              </ul>
-            </div>
-          </div>
-        </section>
+          </TerminalCardContent>
+        </TerminalCard>
 
         {/* Section 5 */}
-        <section className="border border-border bg-card p-6">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-xs text-muted-foreground">[0x50]</span>
-            <h2 className="text-lg font-semibold">TECHNICAL_SUPPORT</h2>
-          </div>
-          <p className="text-sm text-muted-foreground mb-4">
-            While we don't offer refunds, we provide comprehensive support:
-          </p>
-          <ul className="space-y-1 text-sm text-muted-foreground pl-4">
-            <li>├─ <span className="text-foreground">EMAIL:</span> support@fabrk.dev for technical questions</li>
-            <li>├─ <span className="text-foreground">DOCS:</span> 400KB+ of guides and examples</li>
-            <li>├─ <span className="text-foreground">MAINTENANCE:</span> Active bug fixes and improvements</li>
-            <li>└─ <span className="text-foreground">COMMUNITY:</span> Connect with other Fabrk users</li>
-          </ul>
-          <p className="text-sm text-muted-foreground mt-4">
-            Our goal is to ensure you can successfully use Fabrk for your projects.
-          </p>
-        </section>
+        <TerminalCard size="auto">
+          <TerminalCardHeader
+            code="0x50"
+            title="TECHNICAL_SUPPORT"
+            icon={<HeadphonesIcon className="size-4" />}
+          />
+          <TerminalCardContent padding="md">
+            <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
+              While we don&apos;t offer refunds, we provide comprehensive support:
+            </p>
+            <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
+              <li>
+                ├─ <span className="text-foreground">[EMAIL]:</span> support@fabrk.dev for technical
+                questions
+              </li>
+              <li>
+                ├─ <span className="text-foreground">[DOCS]:</span> 400KB+ of guides and examples
+              </li>
+              <li>
+                ├─ <span className="text-foreground">[MAINTENANCE]:</span> Active bug fixes and
+                improvements
+              </li>
+              <li>
+                └─ <span className="text-foreground">[COMMUNITY]:</span> Connect with other Fabrk
+                users
+              </li>
+            </ul>
+            <p className={cn("text-muted-foreground mt-4 text-sm", mode.font)}>
+              Our goal is to ensure you can successfully use Fabrk for your projects.
+            </p>
+          </TerminalCardContent>
+        </TerminalCard>
 
-        {/* Section 6 */}
-        <section className="border border-destructive/30 bg-destructive/5 p-6">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-xs text-muted-foreground">[0x60]</span>
-            <h2 className="text-lg font-semibold text-destructive">CHARGEBACKS</h2>
-          </div>
-          <p className="text-xs text-foreground mb-4">
-            <span className="text-destructive font-semibold">WARNING:</span> Initiating a chargeback for a valid purchase is considered fraudulent activity.
-          </p>
-          <p className="text-sm text-muted-foreground mb-2">
-            Filing a chargeback instead of contacting us about legitimate issues:
-          </p>
-          <ul className="space-y-1 text-sm text-muted-foreground pl-4">
-            <li>├─ <span className="text-destructive">✗</span> Costs significant processing fees</li>
-            <li>├─ <span className="text-destructive">✗</span> Immediate license termination</li>
-            <li>├─ <span className="text-destructive">✗</span> Banned from future purchases</li>
-            <li>└─ <span className="text-destructive">✗</span> Dispute will be contested with documentation</li>
-          </ul>
-          <p className="text-sm text-muted-foreground mt-4">
-            Have concerns? Contact support@fabrk.dev first. We're here to help resolve legitimate issues.
-          </p>
-        </section>
+        {/* Section 6 - Danger Card */}
+        <TerminalCard size="auto" tone="danger">
+          <TerminalCardHeader
+            code="0x60"
+            title="CHARGEBACKS"
+            icon={<AlertTriangle className="size-4" />}
+          />
+          <TerminalCardContent padding="md">
+            <p className={cn("text-foreground mb-4 text-xs", mode.font)}>
+              <span className="text-destructive font-semibold">WARNING:</span> Initiating a
+              chargeback for a valid purchase is considered fraudulent activity.
+            </p>
+            <p className={cn("text-muted-foreground mb-2 text-sm", mode.font)}>
+              Filing a chargeback instead of contacting us about legitimate issues:
+            </p>
+            <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
+              <li>
+                ├─ <span className="text-destructive">✗</span> Costs significant processing fees
+              </li>
+              <li>
+                ├─ <span className="text-destructive">✗</span> Immediate license termination
+              </li>
+              <li>
+                ├─ <span className="text-destructive">✗</span> Banned from future purchases
+              </li>
+              <li>
+                └─ <span className="text-destructive">✗</span> Dispute will be contested with
+                documentation
+              </li>
+            </ul>
+            <p className={cn("text-muted-foreground mt-4 text-sm", mode.font)}>
+              Have concerns? Contact support@fabrk.dev first. We&apos;re here to help resolve
+              legitimate issues.
+            </p>
+          </TerminalCardContent>
+        </TerminalCard>
 
         {/* Section 7 */}
-        <section className="border border-border bg-card p-6">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-xs text-muted-foreground">[0x70]</span>
-            <h2 className="text-lg font-semibold">EU_CONSUMER_RIGHTS</h2>
-          </div>
-          <p className="text-sm text-muted-foreground mb-4">
-            EU consumers have a 14-day withdrawal right under the Consumer Rights Directive (2011/83/EU).
-          </p>
-          <p className="text-xs text-foreground mb-4">
-            <span className="text-warning font-semibold">HOWEVER:</span> By downloading immediately after purchase, you expressly waive this right, as you requested immediate delivery of digital content.
-          </p>
-          <p className="text-sm text-muted-foreground">
-            This waiver is required under Article 16(m) of the Consumer Rights Directive.
-          </p>
-        </section>
+        <TerminalCard size="auto">
+          <TerminalCardHeader
+            code="0x70"
+            title="EU_CONSUMER_RIGHTS"
+            icon={<Scale className="size-4" />}
+          />
+          <TerminalCardContent padding="md">
+            <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
+              EU consumers have a 14-day withdrawal right under the Consumer Rights Directive
+              (2011/83/EU).
+            </p>
+            <p className={cn("text-foreground mb-4 text-xs", mode.font)}>
+              <span className="text-warning font-semibold">HOWEVER:</span> By downloading
+              immediately after purchase, you expressly waive this right, as you requested immediate
+              delivery of digital content.
+            </p>
+            <p className={cn("text-muted-foreground text-sm", mode.font)}>
+              This waiver is required under Article 16(m) of the Consumer Rights Directive.
+            </p>
+          </TerminalCardContent>
+        </TerminalCard>
 
         {/* Section 8 */}
-        <section className="border border-border bg-card p-6">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-xs text-muted-foreground">[0x80]</span>
-            <h2 className="text-lg font-semibold">EXCEPTIONS</h2>
-          </div>
-          <p className="text-sm text-muted-foreground mb-4">
-            We may issue refunds at our sole discretion in rare cases:
-          </p>
-          <ul className="space-y-1 text-sm text-muted-foreground pl-4">
-            <li>├─ <span className="text-foreground">TECHNICAL_IMPOSSIBILITY:</span> Product fundamentally cannot work as described (our error)</li>
-            <li>├─ <span className="text-foreground">DUPLICATE_CHARGES:</span> Accidentally charged multiple times</li>
-            <li>└─ <span className="text-foreground">SERVICE_FAILURE:</span> Failed to deliver access within 7 days</li>
-          </ul>
-          <p className="text-sm text-muted-foreground mt-4">
-            Exceptions require documented proof and case-by-case evaluation. Contact support@fabrk.dev with details.
-          </p>
-        </section>
+        <TerminalCard size="auto">
+          <TerminalCardHeader code="0x80" title="EXCEPTIONS" icon={<Shield className="size-4" />} />
+          <TerminalCardContent padding="md">
+            <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
+              We may issue refunds at our sole discretion in rare cases:
+            </p>
+            <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
+              <li>
+                ├─ <span className="text-foreground">[TECHNICAL_IMPOSSIBILITY]:</span> Product
+                fundamentally cannot work as described (our error)
+              </li>
+              <li>
+                ├─ <span className="text-foreground">[DUPLICATE_CHARGES]:</span> Accidentally
+                charged multiple times
+              </li>
+              <li>
+                └─ <span className="text-foreground">[SERVICE_FAILURE]:</span> Failed to deliver
+                access within 7 days
+              </li>
+            </ul>
+            <p className={cn("text-muted-foreground mt-4 text-sm", mode.font)}>
+              Exceptions require documented proof and case-by-case evaluation. Contact
+              support@fabrk.dev with details.
+            </p>
+          </TerminalCardContent>
+        </TerminalCard>
 
-        {/* Section 9-10 */}
-        <section className="border border-border bg-card p-6">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-xs text-muted-foreground">[0x90]</span>
-            <h2 className="text-lg font-semibold">POLICY_UPDATES</h2>
-          </div>
-          <p className="text-sm text-muted-foreground">
-            We may modify this policy at any time. Your purchase is governed by the policy in effect at time of purchase.
-          </p>
-        </section>
+        {/* Section 9 - Governing Law */}
+        <TerminalCard size="auto">
+          <TerminalCardHeader
+            code="0x90"
+            title="GOVERNING_LAW"
+            icon={<Scale className="size-4" />}
+          />
+          <TerminalCardContent padding="md">
+            <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
+              This refund policy is governed by the laws of the Netherlands. Fabrk is operated by a
+              Dutch BV (besloten vennootschap) registered in the Netherlands.
+            </p>
+            <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
+              <li>
+                ├─ <span className="text-foreground">[JURISDICTION]:</span> Amsterdam, Netherlands
+              </li>
+              <li>
+                ├─ <span className="text-foreground">[APPLICABLE_LAW]:</span> Dutch law
+              </li>
+              <li>
+                └─ <span className="text-foreground">[LANGUAGE]:</span> English (binding version)
+              </li>
+            </ul>
+          </TerminalCardContent>
+        </TerminalCard>
 
-        <section className="border border-border bg-card p-6">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-xs text-muted-foreground">[0xA0]</span>
-            <h2 className="text-lg font-semibold">QUESTIONS</h2>
-          </div>
-          <p className="text-sm text-muted-foreground mb-4">Have questions about this policy or Fabrk?</p>
-          <ul className="space-y-1 text-sm text-muted-foreground pl-4">
-            <li>├─ <span className="text-foreground">PRE_PURCHASE:</span> <Link href="/contact" className="text-primary hover:underline">/contact</Link> or support@fabrk.dev</li>
-            <li>├─ <span className="text-foreground">TECHNICAL:</span> support@fabrk.dev</li>
-            <li>└─ <span className="text-foreground">LEGAL:</span> legal@fabrk.dev</li>
-          </ul>
-          <p className="text-sm text-muted-foreground mt-4">
-            Please reach out before buying if you have any concerns.
-          </p>
-        </section>
+        {/* Section 10 - Dispute Resolution */}
+        <TerminalCard size="auto">
+          <TerminalCardHeader
+            code="0xA0"
+            title="DISPUTE_RESOLUTION"
+            icon={<Gavel className="size-4" />}
+          />
+          <TerminalCardContent padding="md">
+            <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
+              We encourage resolving disputes informally first. Contact support@fabrk.dev before
+              initiating formal proceedings.
+            </p>
+            <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
+              <li>
+                ├─ <span className="text-foreground">[STEP_1]:</span> Contact support within 30 days
+                of issue
+              </li>
+              <li>
+                ├─ <span className="text-foreground">[STEP_2]:</span> We respond within 5 business
+                days
+              </li>
+              <li>
+                └─ <span className="text-foreground">[STEP_3]:</span> If unresolved, disputes
+                subject to courts of Amsterdam
+              </li>
+            </ul>
+            <p className={cn("text-muted-foreground mt-4 text-sm", mode.font)}>
+              EU consumers may also use the EU Online Dispute Resolution platform at{" "}
+              <a
+                href="https://ec.europa.eu/consumers/odr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                ec.europa.eu/consumers/odr
+              </a>
+              .
+            </p>
+          </TerminalCardContent>
+        </TerminalCard>
+
+        {/* Section 11 - Acceptance */}
+        <TerminalCard size="auto">
+          <TerminalCardHeader
+            code="0xB0"
+            title="ACCEPTANCE"
+            icon={<CheckCircle className="size-4" />}
+          />
+          <TerminalCardContent padding="md">
+            <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
+              By completing your purchase, you explicitly acknowledge and agree to:
+            </p>
+            <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
+              <li>├─ You have read and understood this refund policy</li>
+              <li>├─ You accept that all sales are final for digital products</li>
+              <li>├─ You waive the 14-day EU withdrawal right upon download</li>
+              <li>├─ You consent to immediate delivery of digital content</li>
+              <li>└─ You agree to the governing law and dispute resolution terms</li>
+            </ul>
+            <p className={cn("text-foreground mt-4 text-xs", mode.font)}>
+              <span className="text-warning font-semibold">NOTE:</span> Checkout includes a
+              mandatory checkbox confirming acceptance of these terms.
+            </p>
+          </TerminalCardContent>
+        </TerminalCard>
+
+        {/* Section 12 - Policy Updates */}
+        <TerminalCard size="auto">
+          <TerminalCardHeader
+            code="0xC0"
+            title="POLICY_UPDATES"
+            icon={<RefreshCw className="size-4" />}
+          />
+          <TerminalCardContent padding="md">
+            <p className={cn("text-muted-foreground text-sm", mode.font)}>
+              We may modify this policy at any time. Your purchase is governed by the policy in
+              effect at time of purchase.
+            </p>
+          </TerminalCardContent>
+        </TerminalCard>
+
+        {/* Section 13 - Questions */}
+        <TerminalCard size="auto">
+          <TerminalCardHeader
+            code="0xD0"
+            title="QUESTIONS"
+            icon={<HelpCircle className="size-4" />}
+          />
+          <TerminalCardContent padding="md">
+            <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
+              Have questions about this policy or Fabrk?
+            </p>
+            <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
+              <li>
+                ├─ <span className="text-foreground">[PRE_PURCHASE]:</span>{" "}
+                <Link href="/contact" className="text-primary hover:underline">
+                  &gt; CONTACT
+                </Link>{" "}
+                or support@fabrk.dev
+              </li>
+              <li>
+                ├─ <span className="text-foreground">[TECHNICAL]:</span> support@fabrk.dev
+              </li>
+              <li>
+                └─ <span className="text-foreground">[LEGAL]:</span> support@fabrk.dev
+              </li>
+            </ul>
+            <p className={cn("text-muted-foreground mt-4 text-sm", mode.font)}>
+              Please reach out before buying if you have any concerns.
+            </p>
+          </TerminalCardContent>
+        </TerminalCard>
       </div>
 
       {/* Related Links */}
@@ -254,22 +473,28 @@ export default function RefundPage() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="mt-12 border border-border bg-card p-6"
+        className="mt-12"
       >
-        <span className="block mb-4 text-xs text-muted-foreground">
-          [ RELATED_DOCUMENTS ]
-        </span>
-        <div className="flex flex-wrap gap-4 text-xs">
-          <Link href="/terms" className="text-primary hover:underline">
-            &gt; TERMS_OF_SERVICE
-          </Link>
-          <Link href="/privacy" className="text-primary hover:underline">
-            &gt; PRIVACY_POLICY
-          </Link>
-          <Link href="/cookies" className="text-primary hover:underline">
-            &gt; COOKIE_POLICY
-          </Link>
-        </div>
+        <TerminalCard size="auto">
+          <TerminalCardHeader
+            code="0xE0"
+            title="RELATED_DOCUMENTS"
+            icon={<FileText className="size-4" />}
+          />
+          <TerminalCardContent padding="md">
+            <div className={cn("flex flex-wrap gap-4 text-xs", mode.font)}>
+              <Link href="/terms" className="text-primary hover:underline">
+                &gt; VIEW_TERMS
+              </Link>
+              <Link href="/privacy" className="text-primary hover:underline">
+                &gt; VIEW_PRIVACY
+              </Link>
+              <Link href="/cookies" className="text-primary hover:underline">
+                &gt; VIEW_COOKIES
+              </Link>
+            </div>
+          </TerminalCardContent>
+        </TerminalCard>
       </motion.div>
     </main>
   );

@@ -31,7 +31,7 @@ export function PlanCards({ plans }: PlanCardsProps) {
       </div>
 
       {/* Plan Cards */}
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-3">
         {plans.map((plan, idx) => (
           <TerminalCard
             key={plan.name}
