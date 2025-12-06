@@ -247,7 +247,7 @@ export const MarkdownEditor = React.forwardRef<HTMLDivElement, MarkdownEditorPro
                 onChange={(e) => onChange(e.target.value)}
                 placeholder={placeholder}
                 disabled={disabled}
-                className={cn("resize-none font-mono text-sm", "focus-visible:ring-2")}
+                className={cn("resize-none text-sm", mode.font, "focus-visible:ring-2")}
                 style={{ minHeight }}
               />
             </div>

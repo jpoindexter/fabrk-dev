@@ -362,7 +362,7 @@ export const Code = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLEleme
   ({ className, ...props }, ref) => (
     <code
       ref={ref}
-      className={cn("bg-muted px-1.5 py-0.5 font-mono text-sm", mode.radius, className)}
+      className={cn("bg-muted px-1.5 py-0.5 text-sm", mode.font, mode.radius, className)}
       {...props}
     />
   )
