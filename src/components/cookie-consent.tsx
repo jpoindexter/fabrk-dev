@@ -243,10 +243,10 @@ export function CookieConsent() {
                 isExiting ? "scale-95 opacity-0" : "scale-100 opacity-100"
               )}
             >
-              {/* Close button */}
+              {/* Close button - positioned in header row */}
               <button
                 onClick={closeModal}
-                className="focus:ring-ring absolute top-3 right-3 z-10 p-2 opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:outline-none"
+                className="focus:ring-ring absolute top-1.5 right-2 z-10 p-1.5 opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:outline-none"
                 aria-label="Close"
               >
                 <X className="size-4" />
