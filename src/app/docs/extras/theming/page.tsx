@@ -143,17 +143,25 @@ const themes = [
         <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
           {[
             { name: "Light", desc: "Default", color: "#ffffff" },
-            { name: "Cupcake", desc: "Soft", color: "#65c3c8" },
-            { name: "Bumblebee", desc: "Yellow", color: "#e0a82e" },
-            { name: "Emerald", desc: "Green", color: "#66cc8a" },
-            { name: "Corporate", desc: "Business", color: "#4b6bfb" },
-            { name: "Retro", desc: "Vintage", color: "#ef9995" },
-            { name: "Pastel", desc: "Soft", color: "#d1c1d7" },
-            { name: "Fantasy", desc: "Purple", color: "#6e0b75" },
             { name: "Dark", desc: "Default dark", color: "#1d232a" },
-            { name: "Synthwave", desc: "Neon", color: "#e779c1" },
+            { name: "Cupcake", desc: "Soft pastel", color: "#65c3c8" },
+            { name: "Bumblebee", desc: "Yellow gold", color: "#e0a82e" },
+            { name: "Emerald", desc: "Green fresh", color: "#66cc8a" },
+            { name: "Corporate", desc: "Business blue", color: "#4b6bfb" },
+            { name: "Synthwave", desc: "Neon retro", color: "#e779c1" },
+            { name: "Retro", desc: "Vintage warm", color: "#ef9995" },
             { name: "Cyberpunk", desc: "Futuristic", color: "#ff7598" },
+            { name: "Valentine", desc: "Romantic pink", color: "#e96d7b" },
+            { name: "Halloween", desc: "Spooky orange", color: "#ff7700" },
+            { name: "Forest", desc: "Nature green", color: "#1eb854" },
+            { name: "Aqua", desc: "Ocean cyan", color: "#09ecf3" },
+            { name: "Lo-Fi", desc: "Minimal dark", color: "#0d0d0d" },
+            { name: "Pastel", desc: "Soft colors", color: "#d1c1d7" },
+            { name: "Fantasy", desc: "Magic purple", color: "#6e0b75" },
+            { name: "Luxury", desc: "Elegant gold", color: "#ffffff" },
             { name: "Dracula", desc: "Dark purple", color: "#ff79c6" },
+            { name: "Autumn", desc: "Fall warmth", color: "#8c0327" },
+            { name: "Business", desc: "Professional", color: "#1c4e80" },
           ].map((theme) => (
             <TerminalCard
               key={theme.name}
