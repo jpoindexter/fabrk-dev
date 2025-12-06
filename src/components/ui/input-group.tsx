@@ -70,7 +70,7 @@ const inputGroupAddonVariants = cva(
   cn(
     "flex h-auto cursor-text select-none items-center justify-center gap-2 py-2 text-xs font-medium text-muted-foreground group-data-[disabled=true]/input-group:opacity-50 [&>svg:not([class*='size-'])]:size-4",
     mode.font,
-    "[&>kbd]:rounded-none"
+    `[&>kbd]:${mode.radius}`
   ),
   {
     variants: {
