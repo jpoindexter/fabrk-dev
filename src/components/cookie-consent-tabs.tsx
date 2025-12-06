@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import { Shield } from "lucide-react";
 import type {
   AboutTabContentProps,
   ConsentTabContentProps,
@@ -257,17 +256,10 @@ export function AboutTabContent({}: AboutTabContentProps) {
         </div>
 
         <div className="bg-primary/10 !rounded-none border p-4">
-          <div className="flex items-start space-x-4">
-            <Shield className="text-primary mt-0.5 size-5" />
-            <div>
-              <h4 className={cn("text-primary text-sm font-semibold", mode.font)}>
-                GDPR_COMPLIANT
-              </h4>
-              <p className={cn("text-primary/80 mt-1 text-xs", mode.font)}>
-                Our cookie policy and consent management comply with GDPR requirements.
-              </p>
-            </div>
-          </div>
+          <h4 className={cn("text-primary text-sm font-semibold", mode.font)}>GDPR_COMPLIANT</h4>
+          <p className={cn("text-primary/80 mt-1 text-xs", mode.font)}>
+            Our cookie policy and consent management comply with GDPR requirements.
+          </p>
         </div>
 
         <div>
