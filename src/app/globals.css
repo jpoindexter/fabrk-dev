@@ -33,6 +33,26 @@
 }
 
 @layer base {
+  /* Visual Mode Overrides */
+  [data-visual-mode="terminal"] {
+    --radius: 0px;
+  }
+
+  [data-visual-mode="modern"] {
+    --radius: 0.75rem;
+    --font-mono: var(--font-sans);
+  }
+
+  [data-visual-mode="minimal"] {
+    --radius: 0.25rem;
+    --font-mono: var(--font-sans);
+  }
+
+  [data-visual-mode="linear"] {
+    --radius: 0.5rem;
+    --font-mono: var(--font-sans);
+  }
+
   html {
     font-size: 16px;
   }
