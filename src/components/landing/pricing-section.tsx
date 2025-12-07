@@ -81,7 +81,7 @@ export function PricingSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex flex-col items-center lg:items-start"
+            className="flex flex-col items-center justify-center"
           >
             {/* Terminal Card */}
             <Card size="auto" className="w-full max-w-sm">
