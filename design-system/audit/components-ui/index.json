@@ -1,7 +1,13 @@
 {
-  "auditVersion": "1.0.0",
+  "auditVersion": "2.0.0",
   "auditDate": "2025-12-07",
+  "lastUpdated": "2025-12-07",
   "totalComponents": 85,
+  "auditedFamilies": {
+    "count": 5,
+    "families": ["Typography", "Pagination", "Overlays", "Form Controls", "Utilities"],
+    "status": "complete"
+  },
   "categories": {
     "atoms": {
       "count": 18,
@@ -147,10 +153,17 @@
     }
   },
   "violations": {
-    "critical": 3,
-    "high": 8,
-    "medium": 15,
-    "low": 12
+    "total": 21,
+    "fixed": 15,
+    "acceptedExceptions": 3,
+    "codeQuality": 3,
+    "remaining": 0,
+    "bySeverity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    }
   },
   "componentDetails": [
     {
@@ -238,16 +251,20 @@
       "file": "popover.tsx",
       "category": "molecules",
       "status": "compliant",
-      "tokens": ["mode.radius"],
-      "violations": ["missing-mode-font"]
+      "tokens": ["mode.radius", "mode.font"],
+      "violations": [],
+      "fixedIn": "331656b7",
+      "notes": "V004 fixed - PopoverContent now uses mode.font"
     },
     {
       "name": "Sheet",
       "file": "sheet.tsx",
       "category": "molecules",
-      "status": "partial",
+      "status": "compliant",
       "tokens": ["mode.radius", "mode.font"],
-      "violations": ["missing-mode-font-in-title"]
+      "violations": [],
+      "fixedIn": "331656b7",
+      "notes": "V005 fixed - SheetTitle now uses mode.font"
     },
     {
       "name": "Toast",
@@ -303,7 +320,9 @@
       "category": "atoms",
       "status": "compliant",
       "tokens": ["mode.radius"],
-      "violations": ["missing-mode-font"]
+      "violations": [],
+      "acceptedException": "V007",
+      "notes": "Icon-only indicator (Check icon) - mode.font not applicable"
     },
     {
       "name": "Switch",
@@ -319,7 +338,9 @@
       "category": "atoms",
       "status": "compliant",
       "tokens": ["mode.radius"],
-      "violations": ["missing-mode-font"]
+      "violations": [],
+      "acceptedException": "V008",
+      "notes": "Icon-only indicator (Square icon) - mode.font not applicable"
     },
     {
       "name": "Slider",
@@ -349,9 +370,11 @@
       "name": "Separator",
       "file": "separator.tsx",
       "category": "atoms",
-      "status": "partial",
+      "status": "compliant",
       "tokens": [],
-      "violations": ["missing-mode-tokens"]
+      "violations": [],
+      "acceptedException": "V002",
+      "notes": "1px line using bg-border - mode.radius not applicable to 1px elements"
     },
     {
       "name": "ScrollArea",
@@ -381,9 +404,11 @@
       "name": "Pagination",
       "file": "pagination.tsx",
       "category": "organisms",
-      "status": "partial",
-      "tokens": [],
-      "violations": ["missing-mode-tokens", "missing-mode-font"]
+      "status": "compliant",
+      "tokens": ["mode.font"],
+      "violations": [],
+      "fixedIn": "331656b7",
+      "notes": "V003 fixed - all text-bearing elements now use mode.font, radius delegated to Button/Select"
     },
     {
       "name": "Table",
@@ -469,17 +494,21 @@
       "name": "Typography",
       "file": "typography.tsx",
       "category": "typography",
-      "status": "partial",
+      "status": "compliant",
       "tokens": ["mode.font", "mode.radius"],
-      "violations": ["inconsistent-mode-font-usage"]
+      "violations": [],
+      "fixedIn": "331656b7",
+      "notes": "V011 fixed - all 13 components now use mode.font consistently (Strong inherits - accepted pattern)"
     },
     {
       "name": "Loading",
       "file": "loading.tsx",
       "category": "atoms",
-      "status": "partial",
-      "tokens": ["mode.radius"],
-      "violations": ["hardcoded-classes"]
+      "status": "compliant",
+      "tokens": ["mode.radius", "mode.font"],
+      "violations": [],
+      "fixedIn": "331656b7",
+      "notes": "V009 fixed - template literals replaced with plain strings, LoadingContainer uses mode.font"
     },
     {
       "name": "FormError",

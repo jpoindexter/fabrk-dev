@@ -9,9 +9,18 @@ import { mode } from "@/design-system";
 interface CodeBlockProps {
   code: string;
   language?: string;
+  /** Max height for scrollable content (e.g., "400px", "600px") */
+  maxHeight?: string;
+  /** Show line numbers (default: true) */
+  showLineNumbers?: boolean;
 }
 
-export function CodeBlock({ code, language = "typescript" }: CodeBlockProps) {
+export function CodeBlock({
+  code,
+  language = "typescript",
+  maxHeight,
+  showLineNumbers = true,
+}: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -25,48 +34,67 @@ export function CodeBlock({ code, language = "typescript" }: CodeBlockProps) {
 
   return (
     <div
-      className="not-prose group relative"
+      className="not-prose group relative w-full min-w-0 overflow-hidden"
       role="region"
       aria-label={`Code example in ${language}`}
     >
-      {/* Copy button - appears on hover */}
+      {/* Copy button - always visible */}
       <button
         onClick={handleCopy}
         className={cn(
-          "text-muted-foreground hover:text-foreground absolute top-2 right-2 z-10 p-2 text-xs opacity-0 transition-opacity group-hover:opacity-100",
+          "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground absolute top-2 right-2 z-10 flex items-center gap-1.5 rounded px-2 py-1 text-xs transition-colors",
           mode.font
         )}
         aria-label={copied ? "Code copied" : "Copy code to clipboard"}
       >
         {copied ? (
-          <Check className="text-success h-4 w-4" aria-hidden="true" />
+          <>
+            <Check className="text-success h-3.5 w-3.5" aria-hidden="true" />
+            <span>COPIED</span>
+          </>
         ) : (
-          <Copy className="h-4 w-4" aria-hidden="true" />
+          <>
+            <Copy className="h-3.5 w-3.5" aria-hidden="true" />
+            <span>COPY</span>
+          </>
         )}
       </button>
-      <div className={cn("bg-card", mode.radius)}>
+      <div className={cn("bg-card w-full min-w-0 overflow-hidden", mode.radius)}>
         <Highlight theme={themes.nightOwl} code={code.trim()} language={language}>
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre
-              className={`${className} m-0 overflow-auto p-4 text-xs leading-relaxed`}
+              className={`${className} m-0 p-4 text-xs leading-relaxed`}
               style={{
                 ...style,
+                overflowY: maxHeight ? "auto" : "visible",
+                maxWidth: "100%",
+                width: "100%",
+                boxSizing: "border-box",
+                ...(maxHeight && { maxHeight }),
               }}
               tabIndex={0}
             >
               {tokens.map((line, i) => (
-                <div key={i} {...getLineProps({ line })}>
-                  {/* Add $ prompt for shell commands */}
-                  {isShell && i === 0 && <span className="text-primary mr-2 select-none">$</span>}
-                  {isShell &&
-                    i > 0 &&
-                    tokens[i].length > 0 &&
-                    tokens[i][0].content.trim() !== "" && (
-                      <span className="text-primary mr-2 select-none">$</span>
-                    )}
-                  {line.map((token, key) => (
-                    <span key={key} {...getTokenProps({ token })} />
-                  ))}
+                <div key={i} {...getLineProps({ line })} className="flex whitespace-pre-wrap">
+                  {/* Line number */}
+                  {showLineNumbers && (
+                    <span className="text-muted-foreground/50 mr-4 inline-block w-8 flex-shrink-0 text-right select-none">
+                      {i + 1}
+                    </span>
+                  )}
+                  <span className="flex-1">
+                    {/* Add $ prompt for shell commands */}
+                    {isShell && i === 0 && <span className="text-primary mr-2 select-none">$</span>}
+                    {isShell &&
+                      i > 0 &&
+                      tokens[i].length > 0 &&
+                      tokens[i][0].content.trim() !== "" && (
+                        <span className="text-primary mr-2 select-none">$</span>
+                      )}
+                    {line.map((token, key) => (
+                      <span key={key} {...getTokenProps({ token })} />
+                    ))}
+                  </span>
                 </div>
               ))}
             </pre>

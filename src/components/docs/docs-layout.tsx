@@ -16,7 +16,7 @@ interface DocsLayoutProps {
   formatSectionTitle?: (title: string, index: number) => string;
   formatItemTitle?: (title: string) => string;
   showToc?: boolean;
-  fullWidth?: boolean;  // templates=true (no max-width), docs=false
+  fullWidth?: boolean; // templates=true (no max-width), docs=false
 }
 
 export function DocsLayout({
@@ -30,7 +30,7 @@ export function DocsLayout({
   const mainRef = useRef<HTMLElement>(null);
 
   return (
-    <div className="min-h-screen font-mono flex flex-col relative">
+    <div className="relative flex min-h-screen flex-col font-mono">
       <SiteNavigation />
 
       <div className="flex flex-1">
@@ -40,13 +40,11 @@ export function DocsLayout({
           formatItemTitle={formatItemTitle}
         />
 
-        <main ref={mainRef} className="flex-1">
+        <main ref={mainRef} className="min-w-0 flex-1">
           {fullWidth ? (
             children
           ) : (
-            <div className="mx-auto max-w-3xl px-6 py-8 lg:px-8">
-              {children}
-            </div>
+            <div className="mx-auto max-w-3xl px-6 py-8 lg:px-8">{children}</div>
           )}
         </main>
 
