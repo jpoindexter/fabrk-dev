@@ -83,7 +83,7 @@ export function PricingSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             {/* Terminal Card */}
-            <Card size="auto">
+            <Card size="auto" className="max-w-md">
               <CardHeader code="0x41" title="PRICING_CONFIG" meta="pricing_config.exe │ PID:3142" />
               <CardContent padding="lg">
                 {/* Discount Badge */}
