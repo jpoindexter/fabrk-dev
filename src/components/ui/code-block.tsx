@@ -69,7 +69,7 @@ export function CodeBlock({
                 <div key={i} {...getLineProps({ line })} className="flex whitespace-pre-wrap">
                   {/* Line number */}
                   {showLineNumbers && (
-                    <span className="mr-4 inline-block w-8 flex-shrink-0 text-right text-white/40 select-none">
+                    <span className="mr-4 inline-block w-8 flex-shrink-0 text-right text-white/60 select-none">
                       {" "}
                       {/* intentional */}
                       {i + 1}
