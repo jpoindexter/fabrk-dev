@@ -42,7 +42,8 @@ export function CodeBlock({
       <button
         onClick={handleCopy}
         className={cn(
-          "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground absolute top-2 right-2 z-10 flex items-center gap-1.5 rounded px-2 py-1 text-xs transition-colors",
+          "bg-muted/80 text-muted-foreground hover:bg-muted hover:text-foreground border-border absolute top-2 right-2 z-10 flex items-center gap-1.5 border px-2 py-1 text-xs transition-colors",
+          mode.radius,
           mode.font
         )}
         aria-label={copied ? "Code copied" : "Copy code to clipboard"}

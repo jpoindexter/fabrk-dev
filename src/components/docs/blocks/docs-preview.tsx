@@ -3,11 +3,6 @@
  * Terminal-style card with single-line header
  */
 
-"use client";
-
-import { useState } from "react";
-import { Copy, Check } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { CodeBlock } from "@/components/ui/code-block";
 import { cn } from "@/lib/utils";
 
@@ -36,46 +31,24 @@ export function DocsPreview({
   hexCode = "00",
   className,
 }: DocsPreviewProps) {
-  const [copied, setCopied] = useState(false);
-  const headerTitle = title.toUpperCase().replace(/\s+/g, '_');
-
-  const copyToClipboard = async () => {
-    await navigator.clipboard.writeText(code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+  const headerTitle = title.toUpperCase().replace(/\s+/g, "_");
 
   return (
-    <div className={cn("border border-border bg-card", className)}>
+    <div className={cn("border-border bg-card border", className)}>
       {/* Header - single line only */}
-      <div className="border-b border-border bg-card px-4 py-2">
-        <span className="font-mono text-xs text-muted-foreground">
+      <div className="border-border bg-card border-b px-4 py-2">
+        <span className="text-muted-foreground font-mono text-xs">
           [ [0x{hexCode}] {headerTitle} ]
         </span>
       </div>
 
       {/* Live Preview */}
-      <div className="terminal-preview bg-card p-6 flex items-center justify-center min-h-[120px]">
-        <div className="w-full flex items-center justify-center">
-          {preview}
-        </div>
+      <div className="terminal-preview bg-card flex min-h-[120px] items-center justify-center p-6">
+        <div className="flex w-full items-center justify-center">{preview}</div>
       </div>
 
-      {/* Code Block */}
-      <div className="border-t border-border bg-card relative p-4">
-        <Button
-          variant="ghost"
-          size="sm"
-          className="absolute right-6 top-6 h-8 px-2 z-10"
-          onClick={copyToClipboard}
-          aria-label={copied ? "Copied" : "Copy code"}
-        >
-          {copied ? (
-            <Check className="h-4 w-4 text-success" aria-hidden="true" />
-          ) : (
-            <Copy className="h-4 w-4" aria-hidden="true" />
-          )}
-        </Button>
+      {/* Code Block - CodeBlock has its own copy button */}
+      <div className="border-border bg-card border-t p-4">
         <CodeBlock code={code} language={language} />
       </div>
     </div>
