@@ -126,6 +126,7 @@ const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
       data-slot="card-header"
       className={cn(
         "border-border flex items-center justify-between border-b px-4 py-2",
+        "last:border-b-0", // Remove bottom border when CardHeader is last child (no CardContent)
         className
       )}
     >
