@@ -106,7 +106,7 @@ const config = {
     apiKey: env?.server?.RESEND_API_KEY || process.env.RESEND_API_KEY,
     from: {
       name: "Fabrk Boilerplate",
-      email: env?.server?.EMAIL_FROM || process.env.EMAIL_FROM || "noreply@fabrk.dev",
+      email: env?.server?.EMAIL_FROM || process.env.EMAIL_FROM || "support@fabrk.dev",
     },
     replyTo: env?.server?.EMAIL_REPLY_TO || process.env.EMAIL_REPLY_TO || "support@fabrk.dev",
   },
