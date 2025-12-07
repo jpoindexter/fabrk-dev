@@ -192,12 +192,8 @@ export function SiteNavigation() {
                     [ACTIONS]:
                   </span>
                   <SheetClose asChild>
-                    <Button
-                      variant="outline"
-                      className={cn(mode.radius, mode.font, "w-full text-xs")}
-                      asChild
-                    >
-                      <Link href="/demo">&gt; VIEW_DEMO</Link>
+                    <Button asChild size="sm" className={cn(mode.radius, mode.font)}>
+                      <Link href="/templates">&gt; VIEW_DEMO</Link>
                     </Button>
                   </SheetClose>
                   <SheetClose asChild>
