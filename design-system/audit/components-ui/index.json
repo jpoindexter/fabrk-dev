@@ -1,0 +1,517 @@
+{
+  "auditVersion": "1.0.0",
+  "auditDate": "2025-12-07",
+  "totalComponents": 85,
+  "categories": {
+    "atoms": {
+      "count": 18,
+      "components": [
+        "button",
+        "input",
+        "textarea",
+        "checkbox",
+        "switch",
+        "radio-group",
+        "label",
+        "badge",
+        "avatar",
+        "skeleton",
+        "separator",
+        "progress",
+        "slider",
+        "spinner",
+        "loading",
+        "simple-icon",
+        "status-indicator",
+        "notification-badge"
+      ]
+    },
+    "molecules": {
+      "count": 32,
+      "components": [
+        "card",
+        "alert",
+        "tabs",
+        "accordion",
+        "tooltip",
+        "popover",
+        "dropdown-menu",
+        "context-menu",
+        "select",
+        "dialog",
+        "sheet",
+        "toast",
+        "toaster",
+        "scroll-area",
+        "hover-card",
+        "collapsible",
+        "input-group",
+        "input-number",
+        "input-otp",
+        "input-password",
+        "input-search",
+        "date-picker",
+        "time-picker",
+        "calendar",
+        "color-picker",
+        "form-error",
+        "kpi-card",
+        "stat-card",
+        "member-card",
+        "empty-state",
+        "rating",
+        "password-strength"
+      ]
+    },
+    "organisms": {
+      "count": 22,
+      "components": [
+        "navigation-menu",
+        "breadcrumb",
+        "pagination",
+        "table",
+        "data-table-header",
+        "sidebar",
+        "menubar",
+        "command",
+        "combobox",
+        "autocomplete",
+        "multi-select",
+        "multi-step-form",
+        "form",
+        "file-upload",
+        "image-dropzone",
+        "image-uploader",
+        "cropper",
+        "cropper-controls",
+        "activity-timeline",
+        "notification-center",
+        "notification-list",
+        "invite-form"
+      ]
+    },
+    "layout": {
+      "count": 6,
+      "components": [
+        "container",
+        "stack",
+        "grid",
+        "section",
+        "page-wrapper",
+        "aspect-ratio"
+      ]
+    },
+    "typography": {
+      "count": 2,
+      "components": [
+        "typography",
+        "code-block"
+      ]
+    },
+    "charts": {
+      "count": 5,
+      "components": [
+        "donut-chart",
+        "pie-chart",
+        "funnel-chart",
+        "gauge",
+        "heatmap",
+        "sparkline"
+      ]
+    }
+  },
+  "complianceStats": {
+    "usesDesignTokens": {
+      "count": 78,
+      "percentage": 91.8
+    },
+    "usesModeFont": {
+      "count": 72,
+      "percentage": 84.7
+    },
+    "usesModeRadius": {
+      "count": 68,
+      "percentage": 80.0
+    },
+    "usesModeTextTransform": {
+      "count": 12,
+      "percentage": 14.1
+    },
+    "hasDataSlot": {
+      "count": 75,
+      "percentage": 88.2
+    },
+    "has8PointSpacing": {
+      "count": 70,
+      "percentage": 82.4
+    }
+  },
+  "violations": {
+    "critical": 3,
+    "high": 8,
+    "medium": 15,
+    "low": 12
+  },
+  "componentDetails": [
+    {
+      "name": "Button",
+      "file": "button.tsx",
+      "category": "atoms",
+      "status": "compliant",
+      "tokens": ["mode.radius", "mode.font", "mode.textTransform"],
+      "violations": []
+    },
+    {
+      "name": "Input",
+      "file": "input.tsx",
+      "category": "atoms",
+      "status": "compliant",
+      "tokens": ["mode.radius", "mode.font"],
+      "violations": []
+    },
+    {
+      "name": "Badge",
+      "file": "badge.tsx",
+      "category": "atoms",
+      "status": "compliant",
+      "tokens": ["mode.radius", "mode.font", "mode.textTransform"],
+      "violations": []
+    },
+    {
+      "name": "Card",
+      "file": "card.tsx",
+      "category": "molecules",
+      "status": "compliant",
+      "tokens": ["mode.radius", "mode.font"],
+      "violations": []
+    },
+    {
+      "name": "Alert",
+      "file": "alert.tsx",
+      "category": "molecules",
+      "status": "compliant",
+      "tokens": ["mode.radius", "mode.font"],
+      "violations": []
+    },
+    {
+      "name": "Tabs",
+      "file": "tabs.tsx",
+      "category": "molecules",
+      "status": "compliant",
+      "tokens": ["mode.radius", "mode.font"],
+      "violations": []
+    },
+    {
+      "name": "Dialog",
+      "file": "dialog.tsx",
+      "category": "molecules",
+      "status": "compliant",
+      "tokens": ["mode.radius", "mode.font"],
+      "violations": []
+    },
+    {
+      "name": "Select",
+      "file": "select.tsx",
+      "category": "molecules",
+      "status": "compliant",
+      "tokens": ["mode.radius", "mode.font"],
+      "violations": []
+    },
+    {
+      "name": "DropdownMenu",
+      "file": "dropdown-menu.tsx",
+      "category": "molecules",
+      "status": "compliant",
+      "tokens": ["mode.radius", "mode.font"],
+      "violations": []
+    },
+    {
+      "name": "Tooltip",
+      "file": "tooltip.tsx",
+      "category": "molecules",
+      "status": "compliant",
+      "tokens": ["mode.radius", "mode.font"],
+      "violations": []
+    },
+    {
+      "name": "Popover",
+      "file": "popover.tsx",
+      "category": "molecules",
+      "status": "compliant",
+      "tokens": ["mode.radius"],
+      "violations": ["missing-mode-font"]
+    },
+    {
+      "name": "Sheet",
+      "file": "sheet.tsx",
+      "category": "molecules",
+      "status": "partial",
+      "tokens": ["mode.radius", "mode.font"],
+      "violations": ["missing-mode-font-in-title"]
+    },
+    {
+      "name": "Toast",
+      "file": "toast.tsx",
+      "category": "molecules",
+      "status": "compliant",
+      "tokens": ["mode.radius", "mode.font"],
+      "violations": []
+    },
+    {
+      "name": "Toaster",
+      "file": "toaster.tsx",
+      "category": "molecules",
+      "status": "partial",
+      "tokens": [],
+      "violations": ["hardcoded-classes", "missing-mode-tokens"]
+    },
+    {
+      "name": "Accordion",
+      "file": "accordion.tsx",
+      "category": "molecules",
+      "status": "compliant",
+      "tokens": ["mode.font"],
+      "violations": ["missing-mode-radius"]
+    },
+    {
+      "name": "Avatar",
+      "file": "avatar.tsx",
+      "category": "atoms",
+      "status": "compliant",
+      "tokens": ["mode.radius", "mode.font"],
+      "violations": []
+    },
+    {
+      "name": "Label",
+      "file": "label.tsx",
+      "category": "atoms",
+      "status": "compliant",
+      "tokens": ["mode.font"],
+      "violations": []
+    },
+    {
+      "name": "Textarea",
+      "file": "textarea.tsx",
+      "category": "atoms",
+      "status": "compliant",
+      "tokens": ["mode.radius", "mode.font"],
+      "violations": []
+    },
+    {
+      "name": "Checkbox",
+      "file": "checkbox.tsx",
+      "category": "atoms",
+      "status": "compliant",
+      "tokens": ["mode.radius"],
+      "violations": ["missing-mode-font"]
+    },
+    {
+      "name": "Switch",
+      "file": "switch.tsx",
+      "category": "atoms",
+      "status": "compliant",
+      "tokens": ["mode.radius"],
+      "violations": []
+    },
+    {
+      "name": "RadioGroup",
+      "file": "radio-group.tsx",
+      "category": "atoms",
+      "status": "compliant",
+      "tokens": ["mode.radius"],
+      "violations": ["missing-mode-font"]
+    },
+    {
+      "name": "Slider",
+      "file": "slider.tsx",
+      "category": "atoms",
+      "status": "compliant",
+      "tokens": ["mode.radius"],
+      "violations": []
+    },
+    {
+      "name": "Progress",
+      "file": "progress.tsx",
+      "category": "atoms",
+      "status": "compliant",
+      "tokens": ["mode.radius"],
+      "violations": []
+    },
+    {
+      "name": "Skeleton",
+      "file": "skeleton.tsx",
+      "category": "atoms",
+      "status": "compliant",
+      "tokens": ["mode.radius"],
+      "violations": []
+    },
+    {
+      "name": "Separator",
+      "file": "separator.tsx",
+      "category": "atoms",
+      "status": "partial",
+      "tokens": [],
+      "violations": ["missing-mode-tokens"]
+    },
+    {
+      "name": "ScrollArea",
+      "file": "scroll-area.tsx",
+      "category": "molecules",
+      "status": "compliant",
+      "tokens": ["mode.radius"],
+      "violations": []
+    },
+    {
+      "name": "NavigationMenu",
+      "file": "navigation-menu.tsx",
+      "category": "organisms",
+      "status": "compliant",
+      "tokens": ["mode.radius", "mode.font"],
+      "violations": []
+    },
+    {
+      "name": "Breadcrumb",
+      "file": "breadcrumb.tsx",
+      "category": "organisms",
+      "status": "compliant",
+      "tokens": ["mode.font"],
+      "violations": []
+    },
+    {
+      "name": "Pagination",
+      "file": "pagination.tsx",
+      "category": "organisms",
+      "status": "partial",
+      "tokens": [],
+      "violations": ["missing-mode-tokens", "missing-mode-font"]
+    },
+    {
+      "name": "Table",
+      "file": "table.tsx",
+      "category": "organisms",
+      "status": "compliant",
+      "tokens": ["mode.font"],
+      "violations": []
+    },
+    {
+      "name": "Command",
+      "file": "command.tsx",
+      "category": "organisms",
+      "status": "compliant",
+      "tokens": ["mode.radius", "mode.font"],
+      "violations": []
+    },
+    {
+      "name": "ContextMenu",
+      "file": "context-menu.tsx",
+      "category": "molecules",
+      "status": "compliant",
+      "tokens": ["mode.radius", "mode.font"],
+      "violations": []
+    },
+    {
+      "name": "Calendar",
+      "file": "calendar.tsx",
+      "category": "molecules",
+      "status": "compliant",
+      "tokens": ["mode.radius", "mode.font"],
+      "violations": []
+    },
+    {
+      "name": "Sidebar",
+      "file": "sidebar.tsx",
+      "category": "organisms",
+      "status": "compliant",
+      "tokens": ["mode.radius", "mode.font"],
+      "violations": []
+    },
+    {
+      "name": "Container",
+      "file": "container.tsx",
+      "category": "layout",
+      "status": "compliant",
+      "tokens": [],
+      "violations": []
+    },
+    {
+      "name": "Stack",
+      "file": "stack.tsx",
+      "category": "layout",
+      "status": "compliant",
+      "tokens": [],
+      "violations": []
+    },
+    {
+      "name": "Grid",
+      "file": "grid.tsx",
+      "category": "layout",
+      "status": "compliant",
+      "tokens": [],
+      "violations": []
+    },
+    {
+      "name": "Section",
+      "file": "section.tsx",
+      "category": "layout",
+      "status": "partial",
+      "tokens": [],
+      "violations": ["hardcoded-classes-in-sectionheader"]
+    },
+    {
+      "name": "PageWrapper",
+      "file": "page-wrapper.tsx",
+      "category": "layout",
+      "status": "compliant",
+      "tokens": [],
+      "violations": []
+    },
+    {
+      "name": "Typography",
+      "file": "typography.tsx",
+      "category": "typography",
+      "status": "partial",
+      "tokens": ["mode.font", "mode.radius"],
+      "violations": ["inconsistent-mode-font-usage"]
+    },
+    {
+      "name": "Loading",
+      "file": "loading.tsx",
+      "category": "atoms",
+      "status": "partial",
+      "tokens": ["mode.radius"],
+      "violations": ["hardcoded-classes"]
+    },
+    {
+      "name": "FormError",
+      "file": "form-error.tsx",
+      "category": "molecules",
+      "status": "compliant",
+      "tokens": ["mode.radius", "mode.font"],
+      "violations": []
+    },
+    {
+      "name": "KpiCard",
+      "file": "kpi-card.tsx",
+      "category": "molecules",
+      "status": "compliant",
+      "tokens": ["mode.font"],
+      "violations": []
+    },
+    {
+      "name": "EmptyState",
+      "file": "empty-state.tsx",
+      "category": "molecules",
+      "status": "compliant",
+      "tokens": ["mode.radius", "mode.font"],
+      "violations": []
+    },
+    {
+      "name": "ActivityTimeline",
+      "file": "activity-timeline.tsx",
+      "category": "organisms",
+      "status": "compliant",
+      "tokens": ["mode.radius", "mode.font"],
+      "violations": []
+    }
+  ]
+}

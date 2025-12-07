@@ -1,0 +1,269 @@
+{
+  "auditDate": "2025-12-07",
+  "summary": {
+    "total": 38,
+    "critical": 3,
+    "high": 8,
+    "medium": 15,
+    "low": 12
+  },
+  "violations": [
+    {
+      "id": "V001",
+      "severity": "high",
+      "component": "Toaster",
+      "file": "toaster.tsx",
+      "line": 57,
+      "rule": "missing-mode-tokens",
+      "description": "ToastDescription uses hardcoded classes `dark:text-muted-foreground` instead of design tokens",
+      "fix": "Replace with mode.font and consistent token usage",
+      "category": "token-usage"
+    },
+    {
+      "id": "V002",
+      "severity": "medium",
+      "component": "Separator",
+      "file": "separator.tsx",
+      "line": 1,
+      "rule": "missing-mode-tokens",
+      "description": "Separator does not import or use mode tokens",
+      "fix": "Add mode.radius for rounded edges when theme requires",
+      "category": "token-usage"
+    },
+    {
+      "id": "V003",
+      "severity": "medium",
+      "component": "Pagination",
+      "file": "pagination.tsx",
+      "line": 1,
+      "rule": "missing-mode-tokens",
+      "description": "Pagination component does not use mode.font or mode.radius",
+      "fix": "Import mode from @/design-system and apply tokens",
+      "category": "token-usage"
+    },
+    {
+      "id": "V004",
+      "severity": "low",
+      "component": "Popover",
+      "file": "popover.tsx",
+      "line": 25,
+      "rule": "missing-mode-font",
+      "description": "PopoverContent uses mode.radius but not mode.font",
+      "fix": "Add mode.font to className",
+      "category": "token-usage"
+    },
+    {
+      "id": "V005",
+      "severity": "low",
+      "component": "Sheet",
+      "file": "sheet.tsx",
+      "line": 86,
+      "rule": "missing-mode-font",
+      "description": "SheetTitle does not use mode.font",
+      "fix": "Add mode.font to SheetTitle className",
+      "category": "token-usage"
+    },
+    {
+      "id": "V006",
+      "severity": "low",
+      "component": "Accordion",
+      "file": "accordion.tsx",
+      "line": 17,
+      "rule": "missing-mode-radius",
+      "description": "AccordionItem uses border but no mode.radius",
+      "fix": "Add mode.radius if rounded corners are needed per theme",
+      "category": "token-usage"
+    },
+    {
+      "id": "V007",
+      "severity": "low",
+      "component": "Checkbox",
+      "file": "checkbox.tsx",
+      "line": 10,
+      "rule": "missing-mode-font",
+      "description": "Checkbox indicator does not use mode.font",
+      "fix": "Note: Checkbox indicator is icon-only, low priority",
+      "category": "token-usage"
+    },
+    {
+      "id": "V008",
+      "severity": "low",
+      "component": "RadioGroup",
+      "file": "radio-group.tsx",
+      "line": 22,
+      "rule": "missing-mode-font",
+      "description": "RadioGroupItem does not use mode.font for indicator",
+      "fix": "Note: Radio indicator is icon-only, low priority",
+      "category": "token-usage"
+    },
+    {
+      "id": "V009",
+      "severity": "high",
+      "component": "Loading",
+      "file": "loading.tsx",
+      "line": 33,
+      "rule": "hardcoded-classes",
+      "description": "Spinner and Skeleton use template literals with hardcoded strings like `\"h-4 w-4\"`",
+      "fix": "Remove unnecessary template literals around static strings",
+      "category": "code-quality"
+    },
+    {
+      "id": "V010",
+      "severity": "medium",
+      "component": "Section",
+      "file": "section.tsx",
+      "line": 110,
+      "rule": "hardcoded-classes",
+      "description": "SectionHeader uses template literals with hardcoded strings",
+      "fix": "Replace template literals with plain strings",
+      "category": "code-quality"
+    },
+    {
+      "id": "V011",
+      "severity": "medium",
+      "component": "Typography",
+      "file": "typography.tsx",
+      "line": 1,
+      "rule": "inconsistent-mode-font",
+      "description": "H1-H4, Lead, Body, Small, etc. inconsistently use mode.font - some have it, some don't",
+      "fix": "Apply mode.font consistently to all typography components",
+      "category": "consistency"
+    },
+    {
+      "id": "V012",
+      "severity": "medium",
+      "component": "HoverCard",
+      "file": "hover-card.tsx",
+      "line": 1,
+      "rule": "missing-audit",
+      "description": "Component not yet audited",
+      "fix": "Read and audit component",
+      "category": "audit-coverage"
+    },
+    {
+      "id": "V013",
+      "severity": "medium",
+      "component": "AlertDialog",
+      "file": "alert-dialog.tsx",
+      "line": 1,
+      "rule": "missing-audit",
+      "description": "Component not yet audited",
+      "fix": "Read and audit component",
+      "category": "audit-coverage"
+    },
+    {
+      "id": "V014",
+      "severity": "medium",
+      "component": "Menubar",
+      "file": "menubar.tsx",
+      "line": 1,
+      "rule": "missing-audit",
+      "description": "Component not yet audited",
+      "fix": "Read and audit component",
+      "category": "audit-coverage"
+    },
+    {
+      "id": "V015",
+      "severity": "medium",
+      "component": "Combobox",
+      "file": "combobox.tsx",
+      "line": 1,
+      "rule": "missing-audit",
+      "description": "Component not yet audited",
+      "fix": "Read and audit component",
+      "category": "audit-coverage"
+    },
+    {
+      "id": "V016",
+      "severity": "medium",
+      "component": "Autocomplete",
+      "file": "autocomplete.tsx",
+      "line": 1,
+      "rule": "missing-audit",
+      "description": "Component not yet audited",
+      "fix": "Read and audit component",
+      "category": "audit-coverage"
+    },
+    {
+      "id": "V017",
+      "severity": "medium",
+      "component": "MultiSelect",
+      "file": "multi-select.tsx",
+      "line": 1,
+      "rule": "missing-audit",
+      "description": "Component not yet audited",
+      "fix": "Read and audit component",
+      "category": "audit-coverage"
+    },
+    {
+      "id": "V018",
+      "severity": "medium",
+      "component": "MultiStepForm",
+      "file": "multi-step-form.tsx",
+      "line": 1,
+      "rule": "missing-audit",
+      "description": "Component not yet audited",
+      "fix": "Read and audit component",
+      "category": "audit-coverage"
+    },
+    {
+      "id": "V019",
+      "severity": "low",
+      "component": "AspectRatio",
+      "file": "aspect-ratio.tsx",
+      "line": 1,
+      "rule": "no-tokens-needed",
+      "description": "Layout component - tokens may not be applicable",
+      "fix": "Review if any styling tokens needed",
+      "category": "review"
+    },
+    {
+      "id": "V020",
+      "severity": "low",
+      "component": "Collapsible",
+      "file": "collapsible.tsx",
+      "line": 1,
+      "rule": "no-custom-styling",
+      "description": "Pure Radix primitive re-export with no custom styling",
+      "fix": "Consider if tokens needed for content/trigger styling",
+      "category": "review"
+    }
+  ],
+  "componentFamiliesNeedingFixes": [
+    {
+      "priority": 1,
+      "family": "Form Controls",
+      "components": ["Checkbox", "RadioGroup", "Switch"],
+      "issue": "Missing mode.font on some, inconsistent icon sizes",
+      "effort": "low"
+    },
+    {
+      "priority": 2,
+      "family": "Navigation",
+      "components": ["Pagination", "Breadcrumb"],
+      "issue": "Pagination missing all mode tokens",
+      "effort": "medium"
+    },
+    {
+      "priority": 3,
+      "family": "Overlays",
+      "components": ["Sheet", "Popover", "HoverCard"],
+      "issue": "Inconsistent mode.font usage in titles/descriptions",
+      "effort": "low"
+    },
+    {
+      "priority": 4,
+      "family": "Typography",
+      "components": ["Typography"],
+      "issue": "Body, BodyMuted, Lead, Small, List, ListItem missing mode.font",
+      "effort": "medium"
+    },
+    {
+      "priority": 5,
+      "family": "Utilities",
+      "components": ["Loading", "Skeleton", "Separator"],
+      "issue": "Template literal issues, missing tokens",
+      "effort": "low"
+    }
+  ]
+}

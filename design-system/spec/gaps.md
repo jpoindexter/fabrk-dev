@@ -1,200 +1,182 @@
 # Design System Gaps
 
-> Generated: 2025-12-06
-> Source: PHASE 2 Full Rescan
-> Status: DOCUMENTED (Not yet addressed)
+**Last Updated:** 2025-12-07
+
+This document tracks gaps, missing features, and areas for improvement in the design system.
 
 ---
 
-## Overview
+## Token Gaps
 
-This document tracks gaps identified in the design system during the Phase 2 audit. These are NOT violations, but rather missing tokens, patterns, or documentation that could improve the system.
+### 1. Missing `mode.textTransform` Usage
+**Status:** Gap  
+**Priority:** Low  
+**Description:** Only 12/85 components (14.1%) use `mode.textTransform`
 
----
+Most components don't apply uppercase text transform even when the Terminal theme expects it. This is partially by design (not everything should be uppercase), but some components that display labels/titles should support it.
 
-## Identified Gaps
+**Components that should consider adding:**
+- CardHeader title
+- Alert title
+- Toast title
+- Tab labels
 
-### 1. Mode Object Theme Switching
+### 2. No Animation Tokens
+**Status:** Gap  
+**Priority:** Medium  
+**Description:** Animation durations and easing are hardcoded
 
-**Gap**: The `mode` object in `/design-system/index.ts` is hardcoded to terminal theme.
+Components use various animation classes (`animate-in`, `duration-200`, `transition-colors`) but there's no centralized animation token system.
 
-**Current State**:
-```typescript
-export const mode = {
-  radius: "rounded-none",
-  font: "font-mono",
-  // ... always terminal
-};
+**Recommendation:**
+```css
+/* Add to globals.css or tokens.json */
+--duration-fast: 150ms;
+--duration-normal: 200ms;
+--duration-slow: 300ms;
+--ease-default: cubic-bezier(0.4, 0, 0.2, 1);
 ```
 
-**Desired State**: Dynamic theme switching based on context/user preference.
+### 3. No Shadow Tokens
+**Status:** Gap  
+**Priority:** Low  
+**Description:** Some components use `shadow-sm` or `shadow-md` directly
 
-**Impact**: Low (single theme works for current product)
-**Priority**: Phase 3 (IMPLEMENTATION)
+The Terminal theme generally avoids shadows, but Modern/Soft themes might want them. No token system for theme-adaptive shadows.
 
----
-
-### 2. Missing CSS Variables for Radius/Shadow
-
-**Gap**: Semantic radius and shadow tokens exist in TS but not as CSS variables.
-
-**Current State**:
-- `primitives.radius.none` exists in TS
-- `--radius-none` CSS variable does not exist
-
-**Desired State**: All tokens available as both TS and CSS variables for full interoperability.
-
-**Impact**: Low (components use Tailwind classes directly)
-**Priority**: Phase 4 (POLISH)
-
----
-
-### 3. Animation Token Standardization
-
-**Gap**: Animation tokens (duration, easing) are defined in primitives but not consistently applied.
-
-**Current State**:
-- `primitives.animation.duration.fast = 150ms`
-- Components use various hardcoded values (`duration-200`, `transition-all`)
-
-**Suggested Standard**:
-```typescript
-animation: {
-  duration: {
-    instant: "0ms",
-    fast: "150ms",
-    normal: "300ms",
-    slow: "500ms"
-  },
-  easing: {
-    default: "[0.21, 0.47, 0.32, 0.98]",
-    spring: "spring(1, 80, 10)"
-  }
-}
+**Recommendation:**
+```css
+--shadow-sm: /* theme dependent */;
+--shadow-md: /* theme dependent */;
 ```
 
-**Impact**: Medium (affects perceived quality)
-**Priority**: Phase 4 (POLISH)
+---
+
+## Component Gaps
+
+### 1. Missing Data Table
+**Status:** Gap  
+**Priority:** High  
+**Description:** No composite DataTable component
+
+While `table.tsx` exists for basic tables, there's no full-featured DataTable with:
+- Sorting
+- Filtering
+- Pagination integration
+- Column visibility
+- Row selection
+
+**Note:** `data-table/` directory exists but may be incomplete.
+
+### 2. Missing Drawer Component
+**Status:** Gap  
+**Priority:** Medium  
+**Description:** Sheet serves as drawer but naming may confuse developers
+
+Consider an alias or clear documentation that Sheet = Drawer for side panels.
+
+### 3. Missing Stepper Component
+**Status:** Gap  
+**Priority:** Low  
+**Description:** No visual step indicator for multi-step forms
+
+`multi-step-form.tsx` exists but may not have a visual stepper UI.
 
 ---
 
-### 4. Z-Index Scale Documentation
+## Documentation Gaps
 
-**Gap**: No formal z-index scale documented.
+### 1. Component Theming Guide
+**Status:** Gap  
+**Priority:** High  
+**Description:** No documentation on how to theme-enable new components
 
-**Current State**: Components use arbitrary z-index values.
+Developers need guidance on:
+- When to use mode.font vs hardcoded font classes
+- When to use mode.radius
+- When to use mode.textTransform
+- How tokens cascade
 
-**Suggested Scale**:
-```typescript
-zIndex: {
-  base: 0,
-  dropdown: 100,
-  sticky: 200,
-  modal: 300,
-  popover: 400,
-  tooltip: 500,
-  toast: 600,
-  overlay: 700,
-  max: 999
-}
-```
+### 2. Token Reference
+**Status:** Gap  
+**Priority:** Medium  
+**Description:** No single-page token reference
 
-**Impact**: Low (no current conflicts)
-**Priority**: Phase 4 (POLISH)
+`tokens.json` exists but no human-readable documentation showing all available tokens with examples.
 
----
+### 3. Migration Guide
+**Status:** Gap  
+**Priority:** Low  
+**Description:** No guide for migrating existing components to design system
 
-### 5. Component API Standardization
-
-**Gap**: Some components accept different prop naming patterns.
-
-**Examples**:
-- Some: `isLoading`, Others: `loading`
-- Some: `isDisabled`, Others: `disabled`
-- Some: `onValueChange`, Others: `onChange`
-
-**Suggested Standard**:
-- Boolean props: no `is` prefix (`loading`, `disabled`, `selected`)
-- Callbacks: match native HTML (`onChange`, `onClick`, `onBlur`)
-- Custom callbacks: `onXChange` pattern
-
-**Impact**: Medium (developer experience)
-**Priority**: Phase 4 (POLISH)
+If someone has hardcoded styles, how do they convert to tokens?
 
 ---
 
-### 6. Icon Size Tokens
+## Specification Gaps
 
-**Gap**: Icon sizes are inconsistent across components.
+### 1. Icon Size Tokens
+**Status:** Gap  
+**Priority:** Low  
+**Description:** Icon sizes are hardcoded (h-4 w-4, h-5 w-5, size-4)
 
-**Current State**:
-- Buttons: `h-4 w-4`
-- Cards: `h-5 w-5` or `h-6 w-6`
-- Headers: `size-4` or `size-5`
+No token system for consistent icon sizing across themes.
 
-**Suggested Scale**:
-```typescript
-icon: {
-  xs: "h-3 w-3",  // 12px
-  sm: "h-4 w-4",  // 16px
-  md: "h-5 w-5",  // 20px
-  lg: "h-6 w-6",  // 24px
-  xl: "h-8 w-8"   // 32px
-}
-```
+### 2. Border Width Tokens
+**Status:** Gap  
+**Priority:** Low  
+**Description:** Border widths are assumed to be 1px
 
-**Impact**: Low (visual consistency)
-**Priority**: Phase 4 (POLISH)
+No token for border width if themes need different border treatments.
 
----
+### 3. Focus Ring Specification
+**Status:** Gap  
+**Priority:** Medium  
+**Description:** Focus ring styling varies slightly across components
 
-## Non-Gaps (Clarifications)
-
-### Components Not Using `mode` Import
-
-21 components don't import `mode` from `@/design-system`. This is **intentional**, not a gap:
-
-- **Primitives**: `separator.tsx`, `skeleton.tsx`, `aspect-ratio.tsx`
-- **Containers**: `container.tsx`, `stack.tsx`, `grid.tsx`
-- **Utilities**: `lazy.tsx`, `scroll-area.tsx`
-- **Third-party wrappers**: Components wrapping external libraries
-
-These components either:
-1. Don't need theming (utilities)
-2. Inherit theming from parent components
-3. Are low-level primitives without visual opinions
+Most use `focus-visible:ring-2 focus-visible:ring-primary` but should be tokenized for consistency.
 
 ---
 
-## Gap Resolution Timeline
+## Tooling Gaps
 
-| Gap | Priority | Target Phase |
-|-----|----------|--------------|
-| Mode theme switching | Phase 3 | IMPLEMENTATION |
-| CSS variable parity | Phase 4 | POLISH |
-| Animation tokens | Phase 4 | POLISH |
-| Z-index scale | Phase 4 | POLISH |
-| Prop standardization | Phase 4 | POLISH |
-| Icon size tokens | Phase 4 | POLISH |
+### 1. Automated Compliance Testing
+**Status:** Gap  
+**Priority:** High  
+**Description:** No automated tests for design system compliance
 
----
+Need ESLint rules or custom scripts to detect:
+- Hardcoded colors (hex, rgb, named colors)
+- Missing mode tokens
+- Non-8-point spacing values
+- Theme-specific naming
 
-## Process for New Gaps
+### 2. Storybook/Component Showcase
+**Status:** Partial  
+**Priority:** Medium  
+**Description:** Component showcase exists but may not show all variants
 
-When identifying new gaps during development:
+Ensure every component is documented with all variants and states.
 
-1. Add to this file with:
-   - Clear description
-   - Current vs desired state
-   - Impact assessment
-   - Priority level
+### 3. Token Sync Tooling
+**Status:** Gap  
+**Priority:** Low  
+**Description:** No tool to sync Figma tokens to code
 
-2. Do NOT fix immediately unless:
-   - It's a blocking issue
-   - It's in the current phase scope
-
-3. Review gaps at start of each phase
+If design uses Figma, need a pipeline to keep tokens in sync.
 
 ---
 
-*Document maintained by design system team. Last updated: 2025-12-06*
+## Resolution Tracking
+
+| Gap | Status | Target Date | Assigned |
+|-----|--------|-------------|----------|
+| mode.textTransform usage | Open | - | - |
+| Animation tokens | Open | - | - |
+| DataTable component | Open | - | - |
+| Theming guide docs | Open | - | - |
+| Automated testing | Open | - | - |
+
+---
+
+*This document should be updated as gaps are discovered or resolved.*
