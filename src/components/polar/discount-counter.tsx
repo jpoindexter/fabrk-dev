@@ -48,7 +48,7 @@ export function DiscountCounter() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       className={cn(
-        "border-border bg-card flex max-w-xs items-center justify-between gap-2 border px-4 py-4",
+        "border-border bg-card flex w-full items-center justify-between gap-2 border px-4 py-4",
         mode.radius
       )}
     >
