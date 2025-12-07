@@ -1,6 +1,3 @@
-"use client";
-
-import { DocsLayout } from "@/components/docs/docs-layout";
 import { NavSection } from "@/components/docs/docs-sidebar";
 import {
   BookOpen,
@@ -44,7 +41,7 @@ import {
   Languages,
 } from "lucide-react";
 
-const navigation: NavSection[] = [
+export const docsNavigation: NavSection[] = [
   {
     title: "[01] START",
     items: [
@@ -328,11 +325,3 @@ const navigation: NavSection[] = [
     ],
   },
 ];
-
-export default function DocsLayoutPage({ children }: { children: React.ReactNode }) {
-  return (
-    <DocsLayout navigation={navigation} showToc={true}>
-      {children}
-    </DocsLayout>
-  );
-}
