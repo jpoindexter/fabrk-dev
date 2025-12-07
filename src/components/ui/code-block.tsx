@@ -38,26 +38,16 @@ export function CodeBlock({
       role="region"
       aria-label={`Code example in ${language}`}
     >
-      {/* Copy button - always visible */}
+      {/* Copy button - icon only */}
       <button
         onClick={handleCopy}
-        className={cn(
-          "bg-muted/80 text-muted-foreground hover:bg-muted hover:text-foreground border-border absolute top-2 right-2 z-10 flex items-center gap-1.5 border px-2 py-1 text-xs transition-colors",
-          mode.radius,
-          mode.font
-        )}
+        className="text-primary hover:text-primary/80 absolute top-3 right-3 z-10 transition-colors"
         aria-label={copied ? "Code copied" : "Copy code to clipboard"}
       >
         {copied ? (
-          <>
-            <Check className="text-success h-3.5 w-3.5" aria-hidden="true" />
-            <span>COPIED</span>
-          </>
+          <Check className="h-4 w-4" aria-hidden="true" />
         ) : (
-          <>
-            <Copy className="h-3.5 w-3.5" aria-hidden="true" />
-            <span>COPY</span>
-          </>
+          <Copy className="h-4 w-4" aria-hidden="true" />
         )}
       </button>
       <div className={cn("bg-card w-full min-w-0 overflow-hidden", mode.radius)}>
