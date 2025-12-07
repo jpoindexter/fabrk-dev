@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useState, useEffect, useMemo } from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { mode } from "@/design-system";
 import {
   ChevronRight,
   PanelLeftClose,
@@ -216,6 +217,7 @@ export function DocsSidebar({
   return (
     <aside
       className={cn(
+        mode.font,
         "border-border scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border hover:scrollbar-thumb-primary/50 bg-background sticky top-16 isolate hidden h-[calc(100vh-4rem)] shrink-0 overflow-y-auto border-r transition-all duration-300 md:block",
         sidebarCollapsed ? "w-12" : "w-72",
         className
@@ -259,7 +261,11 @@ export function DocsSidebar({
               placeholder="Search docs..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="border-border bg-muted/50 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/20 w-full border py-2 pr-7 pl-7 font-mono text-xs focus:ring-1 focus:outline-none"
+              className={cn(
+                "border-border bg-muted/50 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/20 w-full border py-2 pr-7 pl-7 text-xs focus:ring-1 focus:outline-none",
+                mode.font,
+                mode.radius
+              )}
               aria-label="Search documentation"
             />
             {searchQuery && (
@@ -298,7 +304,8 @@ export function DocsSidebar({
                   onClick={() => toggleSection(sectionIndex)}
                   className={cn(
                     "flex w-full items-center gap-2 py-2 text-xs font-semibold transition-colors",
-                    hasActiveItem ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                    hasActiveItem ? "text-primary" : "text-muted-foreground hover:text-foreground",
+                    mode.font
                   )}
                 >
                   <ChevronRight
@@ -328,7 +335,10 @@ export function DocsSidebar({
                             href={item.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-muted-foreground hover:bg-muted hover:text-foreground flex items-center gap-2 px-2 py-1 text-xs transition-colors"
+                            className={cn(
+                              "text-muted-foreground hover:bg-muted hover:text-foreground flex items-center gap-2 px-2 py-1 text-xs transition-colors",
+                              mode.font
+                            )}
                           >
                             <Icon className="h-3 w-3" />
                             {itemDisplayTitle}
@@ -345,7 +355,8 @@ export function DocsSidebar({
                             "flex items-center gap-2 px-2 py-1 text-xs transition-colors",
                             isActive
                               ? "bg-primary text-primary-foreground"
-                              : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                              : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                            mode.font
                           )}
                         >
                           <Icon className="h-3 w-3" />
@@ -371,7 +382,8 @@ export function DocsSidebar({
                               "flex w-full items-center gap-2 py-1 text-xs font-medium transition-colors",
                               hasActiveSubItem
                                 ? "text-primary"
-                                : "text-muted-foreground hover:text-foreground"
+                                : "text-muted-foreground hover:text-foreground",
+                              mode.font
                             )}
                           >
                             <ChevronRight
@@ -401,7 +413,8 @@ export function DocsSidebar({
                                       "flex items-center gap-2 px-2 py-0.5 text-xs transition-colors",
                                       isActive
                                         ? "bg-primary text-primary-foreground"
-                                        : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                                        : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                                      mode.font
                                     )}
                                   >
                                     <Icon className="h-3 w-3 shrink-0" />
