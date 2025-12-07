@@ -92,7 +92,7 @@ export function PricingSection() {
                 </div>
 
                 {/* Price Display */}
-                <Card size="auto" className="mb-6 max-w-sm">
+                <Card size="auto" className="mb-6 max-w-xs">
                   <CardContent padding="sm">
                     <div className={cn("text-muted-foreground mb-2 text-xs", mode.font)}>
                       PRICE:
