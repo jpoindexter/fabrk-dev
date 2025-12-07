@@ -84,11 +84,7 @@ export function PricingSection() {
           >
             {/* Terminal Card */}
             <Card size="auto">
-              <CardHeader
-                code="0x41"
-                title="PRICING_CONFIG"
-                meta="pricing_config.exe │ PID:3142"
-              />
+              <CardHeader code="0x41" title="PRICING_CONFIG" meta="pricing_config.exe │ PID:3142" />
               <CardContent padding="lg">
                 {/* Discount Badge */}
                 <div className="mb-6">
@@ -155,6 +151,7 @@ export function PricingSection() {
                 code="0x42"
                 label="SECURE"
                 meta="Checkout powered by Polar │ All sales final"
+                className="w-full"
               />
             </motion.div>
           </motion.div>
