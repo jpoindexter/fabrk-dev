@@ -17,7 +17,6 @@ import {
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
 import { Card, CardHeader, CardContent, Badge } from "@/components/ui/card";
-import { VisualModeSwitcher } from "@/components/theme/visual-mode-switcher";
 
 const techStack = [
   { name: "NEXT.JS", path: siNextdotjs.path },
@@ -196,13 +195,12 @@ export function Footer() {
       </div>
 
       {/* Bottom: Copyright */}
-      <div className="border-border flex items-center justify-between border-t px-4 py-6 sm:px-6">
+      <div className="border-border border-t px-4 py-6 sm:px-6">
         <div className={cn("text-muted-foreground text-xs", mode.font)}>
           <span>
             [ [0x7F] COPYRIGHT ] © {new Date().getFullYear()} Fabrk │ All rights reserved
           </span>
         </div>
-        <VisualModeSwitcher />
       </div>
     </footer>
   );
