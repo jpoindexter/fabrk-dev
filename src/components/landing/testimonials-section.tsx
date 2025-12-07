@@ -11,53 +11,27 @@ import { mode } from "@/design-system";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
 export function TestimonialsSection() {
+  // EXAMPLE_PLACEHOLDER: Replace with real customer testimonials before launch
   const testimonials = [
     {
-      quote:
-        "Fabrk isn't just a boilerplate; it's a launch accelerator. We cut development time by 60% and achieved a perfect Lighthouse score. The attention to detail is unmatched.",
-      author: "Lena Petrova",
-      role: "CTO, Ascent Systems",
-      initials: "LP",
+      quote: "[EXAMPLE] Your customer quote here. Describe specific results or benefits.",
+      author: "CUSTOMER_NAME",
+      role: "Role, Company",
+      initials: "CN",
       color: "bg-primary text-primary-foreground",
     },
     {
-      quote:
-        "The integrated payment and authentication systems alone saved us months of work. Fabrk allowed our small team to compete with much larger players from day one.",
-      author: "Ben Carter",
-      role: "Founder, InsightFlow",
-      initials: "BC",
+      quote: "[EXAMPLE] Another testimonial highlighting a different feature or benefit.",
+      author: "CUSTOMER_NAME",
+      role: "Role, Company",
+      initials: "CN",
       color: "bg-accent text-accent-foreground",
     },
     {
-      quote:
-        "Accessibility was a huge concern for our project. Fabrk's WCAG-compliant components and robust testing framework ensured we met all our compliance goals effortlessly.",
-      author: "Chloe Davis",
-      role: "Lead UX Designer, EquiApp",
-      initials: "CD",
-      color: "bg-secondary text-secondary-foreground",
-    },
-    {
-      quote:
-        "From unit tests to E2E, the testing infrastructure is comprehensive. This dramatically increased our confidence in deployments and reduced post-launch bugs.",
-      author: "Omar Hassan",
-      role: "Senior Software Engineer, DataPulse",
-      initials: "OH",
-      color: "bg-primary text-primary-foreground",
-    },
-    {
-      quote:
-        "The documentation is a goldmine. Every component, every feature, every setup step is meticulously explained. It made onboarding new developers incredibly smooth.",
-      author: "Mia Rodriguez",
-      role: "Engineering Manager, InnovateX",
-      initials: "MR",
-      color: "bg-accent text-accent-foreground",
-    },
-    {
-      quote:
-        "We needed a platform that scaled with us. Fabrk's clean architecture and performance optimizations mean we haven't hit a bottleneck yet, even with rapid user growth.",
-      author: "Daniel Lee",
-      role: "CEO, GrowthWave Analytics",
-      initials: "DL",
+      quote: "[EXAMPLE] Include specific metrics when possible (e.g., 'saved 40 hours').",
+      author: "CUSTOMER_NAME",
+      role: "Role, Company",
+      initials: "CN",
       color: "bg-secondary text-secondary-foreground",
     },
   ];

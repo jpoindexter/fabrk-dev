@@ -3,26 +3,26 @@
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
-// Simplified Testimonials Demo
+// Simplified Testimonials Demo - EXAMPLE_PLACEHOLDER data
 function TestimonialsDemo() {
   const testimonials = [
     {
-      quote: "Fabrk saved me 2 weeks of setup time. The code quality is excellent.",
-      author: "SARAH_CHEN",
-      role: "Indie Developer",
-      initials: "SC",
+      quote: "[EXAMPLE] Your customer quote here with specific results.",
+      author: "CUSTOMER_NAME",
+      role: "Role, Company",
+      initials: "CN",
     },
     {
-      quote: "Best boilerplate I've used. Clean code, modern stack.",
-      author: "MARCUS_J",
-      role: "Full-Stack Dev",
-      initials: "MJ",
+      quote: "[EXAMPLE] Another testimonial highlighting benefits.",
+      author: "CUSTOMER_NAME",
+      role: "Role, Company",
+      initials: "CN",
     },
     {
-      quote: "Everything is accessible out of the box. Worth every penny.",
-      author: "EMILY_R",
-      role: "Product Designer",
-      initials: "ER",
+      quote: "[EXAMPLE] Include metrics when possible.",
+      author: "CUSTOMER_NAME",
+      role: "Role, Company",
+      initials: "CN",
     },
   ];
 
@@ -59,22 +59,21 @@ function TestimonialsDemo() {
   );
 }
 
-// Single Testimonial Card
+// Single Testimonial Card - EXAMPLE_PLACEHOLDER data
 function TestimonialCardDemo() {
   return (
     <div className="w-full max-w-md font-mono">
       <div className="text-muted-foreground mb-2 text-xs">[0x01]</div>
       <p className="text-muted-foreground mb-6 text-sm">
-        &quot;This boilerplate helped me launch my SaaS in just 3 days. The authentication and
-        payment integration worked perfectly from day one.&quot;
+        &quot;[EXAMPLE] Your customer quote here. Include specific results or metrics.&quot;
       </p>
       <div className="flex items-center gap-4">
         <Avatar className="h-10 w-10">
-          <AvatarFallback className="bg-primary/10 text-primary">JD</AvatarFallback>
+          <AvatarFallback className="bg-primary/10 text-primary">CN</AvatarFallback>
         </Avatar>
         <div>
-          <span className="block text-sm font-semibold">JOHN_DOE</span>
-          <span className="text-muted-foreground block text-xs">Founder @ StartupCo</span>
+          <span className="block text-sm font-semibold">CUSTOMER_NAME</span>
+          <span className="text-muted-foreground block text-xs">Role @ Company</span>
         </div>
       </div>
     </div>
