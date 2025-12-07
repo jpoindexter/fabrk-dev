@@ -166,7 +166,7 @@ export const Body = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn("text-foreground text-base leading-relaxed font-normal", className)}
+    className={cn("text-foreground text-base leading-relaxed font-normal", mode.font, className)}
     {...props}
   />
 ));
@@ -193,7 +193,11 @@ export const BodyMuted = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn("text-muted-foreground text-base leading-relaxed font-normal", className)}
+    className={cn(
+      "text-muted-foreground text-base leading-relaxed font-normal",
+      mode.font,
+      className
+    )}
     {...props}
   />
 ));
@@ -220,7 +224,7 @@ export const Lead = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn("text-foreground text-lg leading-relaxed font-normal", className)}
+    className={cn("text-foreground text-lg leading-relaxed font-normal", mode.font, className)}
     {...props}
   />
 ));
@@ -245,7 +249,11 @@ export const Small = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElem
   ({ className, ...props }, ref) => (
     <small
       ref={ref}
-      className={cn("text-muted-foreground text-sm leading-relaxed font-normal", className)}
+      className={cn(
+        "text-muted-foreground text-sm leading-relaxed font-normal",
+        mode.font,
+        className
+      )}
       {...props}
     />
   )
@@ -290,6 +298,7 @@ export const List = React.forwardRef<HTMLUListElement | HTMLOListElement, ListPr
         ref={ref as any}
         className={cn(
           "text-foreground ml-6 space-y-2 text-base leading-relaxed",
+          mode.font,
           ordered ? "list-decimal" : "list-disc",
           className
         )}
@@ -317,7 +326,7 @@ List.displayName = "List";
  */
 export const ListItem = React.forwardRef<HTMLLIElement, React.HTMLAttributes<HTMLLIElement>>(
   ({ className, ...props }, ref) => (
-    <li ref={ref} className={cn("leading-relaxed", className)} {...props} />
+    <li ref={ref} className={cn("leading-relaxed", mode.font, className)} {...props} />
   )
 );
 ListItem.displayName = "ListItem";
@@ -390,7 +399,7 @@ export const Link = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <a
     ref={ref}
-    className={cn("text-primary underline-offset-4 hover:underline", className)}
+    className={cn("text-primary underline-offset-4 hover:underline", mode.font, className)}
     {...props}
   />
 ));
