@@ -28,7 +28,7 @@ test.describe('Marketing Pages', () => {
     { url: '/maintenance', name: 'maintenance' },
     { url: '/pricing', name: 'pricing' },
     { url: '/success', name: 'success' },
-    { url: '/templates', name: 'templates-overview' },
+    { url: '/library', name: 'templates-overview' },
   ];
 
   for (const { url, name } of marketingPages) {
@@ -251,7 +251,7 @@ test.describe('Terminal Aesthetic Validation', () => {
   const pagesToValidate = [
     '/',
     '/docs',
-    '/templates',
+    '/library',
     '/pricing',
     '/docs/components/overview',
     '/docs/components/button',
@@ -299,7 +299,7 @@ test.describe('Terminal Aesthetic Validation', () => {
 // ============================================================================
 
 test.describe('Accessibility Quick Check', () => {
-  const criticalPages = ['/', '/docs', '/templates', '/pricing'];
+  const criticalPages = ['/', '/docs', '/library', '/pricing'];
 
   for (const url of criticalPages) {
     test(`A11y: ${url} has proper document structure`, async ({ page }) => {

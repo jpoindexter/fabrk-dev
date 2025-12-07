@@ -477,14 +477,14 @@ The following components contain hardcoded strings and should be updated in futu
    - `src/app/(dashboard)/organizations/*/page.tsx` - Organization pages (4 pages)
 
 3. **Template Pages** (28 templates)
-   - `src/app/templates/analytics-dashboard/page.tsx`
-   - `src/app/templates/billing-dashboard/page.tsx`
-   - `src/app/templates/settings-page/page.tsx`
-   - `src/app/templates/team-dashboard/page.tsx`
-   - `src/app/templates/user-management/page.tsx`
-   - `src/app/templates/security-privacy/page.tsx`
-   - `src/app/templates/email-templates/page.tsx`
-   - `src/app/templates/documentation-layout/page.tsx`
+   - `src/app/library/analytics-dashboard/page.tsx`
+   - `src/app/library/billing-dashboard/page.tsx`
+   - `src/app/library/settings-page/page.tsx`
+   - `src/app/library/team-dashboard/page.tsx`
+   - `src/app/library/user-management/page.tsx`
+   - `src/app/library/security-privacy/page.tsx`
+   - `src/app/library/email-templates/page.tsx`
+   - `src/app/library/documentation-layout/page.tsx`
 
 ### Medium Priority (Admin/Developer)
 

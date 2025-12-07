@@ -69,7 +69,7 @@ Using `grep` for `#[0-9a-fA-F]{3,6}` and cross-checking against `allowPatterns`,
 
 - **Inline HTML email previews** embedded as strings in `email-templates` showcase:
 
-  ```tsx path=/Users/jasonpoindexter/Documents/GitHub/Fabrk_plate/src/app/templates/email-templates/page.tsx start=71
+  ```tsx path=/Users/jasonpoindexter/Documents/GitHub/Fabrk_plate/src/app/library/email-templates/page.tsx start=71
   preview: `<!DOCTYPE html>
   <html lang="en">
   ...

@@ -100,7 +100,7 @@ This guide provides a comprehensive script and production checklist for creating
 
 ### Section 3: Templates (2:00 - 2:40)
 
-**Visual**: Navigate to `/templates` page
+**Visual**: Navigate to `/library` page
 
 **Voiceover**:
 > "To help you ship even faster, Fabrk includes eight production-ready page templates. Analytics dashboards with charts and metrics, team management with role-based access control, user management with sortable tables, comprehensive settings pages, billing dashboards, security and privacy pages, email template previews, and full documentation layouts. Each template is copy-paste ready and fully integrated."
@@ -319,7 +319,7 @@ export function MyComponent() {
 - Show component adapting in real-time
 
 ### Shot 9: Template Gallery (24 seconds)
-- Navigate to /templates
+- Navigate to /library
 - Quick preview of each template (3 seconds each)
 - Click into Analytics Dashboard
 - Show interactive elements

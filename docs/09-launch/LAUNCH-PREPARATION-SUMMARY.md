@@ -120,11 +120,11 @@
 #### 1. Add Screenshots (2 hours)
 Take 5 product screenshots:
 ```
-1. Dashboard (dark mode) - /dashboard or /templates/team-dashboard
-2. Analytics (light mode) - /templates/analytics-dashboard
+1. Dashboard (dark mode) - /dashboard or /library/team-dashboard
+2. Analytics (light mode) - /library/analytics-dashboard
 3. Components page - /components with showcase
-4. Billing page - /templates/billing-dashboard
-5. Admin panel - /templates/user-management
+4. Billing page - /library/billing-dashboard
+5. Admin panel - /library/user-management
 ```
 
 **How to add them**:

@@ -31,7 +31,7 @@
 
 - **[/demo](http://localhost:3000/demo)** - Complete feature overview - What's Included
 - **[/components](http://localhost:3000/components)** - All 234 production-ready UI components with variants
-- **[/templates](http://localhost:3000/templates)** - 28 copy-paste ready page templates ⭐ NEW
+- **[/library](http://localhost:3000/library)** - 28 copy-paste ready page templates ⭐ NEW
 - **[/variations](http://localhost:3000/variations)** - 3 hero styles + 2 pricing layouts
 - **[/examples/admin](http://localhost:3000/examples/admin)** - Admin dashboard with data table
 - **[/examples/analytics](http://localhost:3000/examples/analytics)** - Analytics dashboard
@@ -201,7 +201,7 @@ Production-ready page templates for common SaaS use cases. Each template is full
 - **Email Templates** - Interactive showcase of 5 transactional emails
 - **Documentation Layout** - 3-column docs site with markdown parsing
 
-**View all templates:** [/templates](http://localhost:3000/templates) | [Template README](./src/app/templates/README.md)
+**View all templates:** [/library](http://localhost:3000/library) | [Template README](./src/app/library/README.md)
 
 **Email Templates (5):**
 - Welcome email

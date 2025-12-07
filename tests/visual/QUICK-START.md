@@ -35,7 +35,7 @@ npm run test:visual:report
 npx playwright test tests/visual/full-site.visual.spec.ts
 npx playwright test tests/visual/docs-components.visual.spec.ts
 npx playwright test tests/visual/docs-features.visual.spec.ts
-npx playwright test tests/visual/templates-full.visual.spec.ts
+npx playwright test tests/visual/library-full.visual.spec.ts
 npx playwright test tests/visual/site-wide-validation.spec.ts
 ```
 

@@ -193,7 +193,7 @@ export function SiteNavigation() {
                   </span>
                   <SheetClose asChild>
                     <Button asChild size="sm" className={cn(mode.radius, mode.font)}>
-                      <Link href="/templates">&gt; VIEW_DEMO</Link>
+                      <Link href="/library">&gt; VIEW_DEMO</Link>
                     </Button>
                   </SheetClose>
                   <SheetClose asChild>

@@ -13,10 +13,10 @@ import { mode } from "@/design-system";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
 const DEMO_ROUTES = [
-  { id: "team", label: "Team Dashboard", path: "/templates/team-dashboard" },
-  { id: "analytics", label: "Analytics", path: "/templates/analytics-dashboard" },
-  { id: "users", label: "Data Table", path: "/templates/user-management" },
-  { id: "settings", label: "Settings", path: "/templates/settings-page" },
+  { id: "team", label: "Team Dashboard", path: "/library/team-dashboard" },
+  { id: "analytics", label: "Analytics", path: "/library/analytics-dashboard" },
+  { id: "users", label: "Data Table", path: "/library/user-management" },
+  { id: "settings", label: "Settings", path: "/library/settings-page" },
 ];
 
 export function InteractiveDemo() {

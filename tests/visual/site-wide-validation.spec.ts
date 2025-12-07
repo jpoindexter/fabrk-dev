@@ -34,7 +34,7 @@ const ALL_PAGES = {
     '/maintenance',
     '/pricing',
     '/success',
-    '/templates',
+    '/library',
   ],
   legal: ['/cookies', '/privacy', '/refund', '/terms'],
   docs: {
@@ -200,30 +200,30 @@ const ALL_PAGES = {
     ],
   },
   templates: [
-    '/templates/admin-panels',
-    '/templates/documentation',
-    '/templates/security-privacy',
-    '/templates/search-results',
-    '/templates/pricing-page',
-    '/templates/billing-dashboard',
-    '/templates/email-templates',
-    '/templates/chart-library',
-    '/templates/modals',
-    '/templates/account-pages',
-    '/templates/landing-variations',
-    '/templates/blog',
-    '/templates/error-pages',
-    '/templates/profile',
-    '/templates/dashboards',
-    '/templates/marketing',
-    '/templates/settings-page',
-    '/templates/analytics-dashboard',
-    '/templates/user-management',
-    '/templates/team-dashboard',
-    '/templates/empty-states',
-    '/templates/authentication',
-    '/templates/notifications',
-    '/templates/onboarding',
+    '/library/admin-panels',
+    '/library/documentation',
+    '/library/security-privacy',
+    '/library/search-results',
+    '/library/pricing-page',
+    '/library/billing-dashboard',
+    '/library/email-templates',
+    '/library/chart-library',
+    '/library/modals',
+    '/library/account-pages',
+    '/library/landing-variations',
+    '/library/blog',
+    '/library/error-pages',
+    '/library/profile',
+    '/library/dashboards',
+    '/library/marketing',
+    '/library/settings-page',
+    '/library/analytics-dashboard',
+    '/library/user-management',
+    '/library/team-dashboard',
+    '/library/empty-states',
+    '/library/authentication',
+    '/library/notifications',
+    '/library/onboarding',
   ],
 };
 
@@ -360,10 +360,10 @@ test.describe('Site-wide: Design Token Usage', () => {
   const criticalPages = [
     '/',
     '/docs',
-    '/templates',
+    '/library',
     '/pricing',
     '/docs/components/button',
-    '/templates/dashboards',
+    '/library/dashboards',
   ];
 
   for (const url of criticalPages) {
@@ -465,7 +465,7 @@ test.describe('Site-wide: Accessibility Basics', () => {
 // ============================================================================
 
 test.describe('Site-wide: Responsive Layout', () => {
-  const criticalPages = ['/', '/docs', '/templates', '/pricing', '/docs/components/button'];
+  const criticalPages = ['/', '/docs', '/library', '/pricing', '/docs/components/button'];
 
   const viewports = [
     { width: 375, height: 667, name: 'mobile' },
@@ -506,7 +506,7 @@ test.describe('Site-wide: Responsive Layout', () => {
 // ============================================================================
 
 test.describe('Site-wide: Performance Metrics', () => {
-  const criticalPages = ['/', '/docs', '/templates', '/pricing'];
+  const criticalPages = ['/', '/docs', '/library', '/pricing'];
 
   for (const url of criticalPages) {
     test(`Performance: ${url}`, async ({ page }) => {

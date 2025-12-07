@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default function SettingsPage() {
-  redirect("/templates/settings-page");
+  redirect("/library/settings-page");
 }

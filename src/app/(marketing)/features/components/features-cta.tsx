@@ -43,7 +43,7 @@ export function FeaturesCTA() {
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="text-xs">
-              <Link href="/templates">&gt; VIEW_TEMPLATES</Link>
+              <Link href="/library">&gt; VIEW_TEMPLATES</Link>
             </Button>
           </div>
         </motion.div>

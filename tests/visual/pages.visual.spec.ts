@@ -40,7 +40,7 @@ test.describe('Responsive Visual Regression', () => {
     { width: 768, height: 1024, name: 'tablet' },
   ];
 
-  const responsivePages = ['/', '/templates', '/docs'];
+  const responsivePages = ['/', '/library', '/docs'];
 
   for (const viewport of viewports) {
     for (const url of responsivePages) {

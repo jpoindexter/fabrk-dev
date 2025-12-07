@@ -88,7 +88,7 @@ The following pages are audited on every CI run:
 
 1. **Landing Page** - `http://localhost:3000/`
 2. **Component Showcase** - `http://localhost:3000/components`
-3. **Template Gallery** - `http://localhost:3000/templates`
+3. **Template Gallery** - `http://localhost:3000/library`
 4. **Features Page** - `http://localhost:3000/features`
 5. **Modern Variation** - `http://localhost:3000/variations/modern`
 

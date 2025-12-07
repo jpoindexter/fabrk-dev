@@ -37,10 +37,10 @@ Complete per-page breakdown of all typography styles across 81 pages.
 
 #### Pages Missing H1 (4 pages)
 ```
-/templates/dashboards
-/templates/admin-panels
-/templates/account-pages
-/templates/marketing
+/library/dashboards
+/library/admin-panels
+/library/account-pages
+/library/marketing
 ```
 
 #### Multiple H1 Tags (1 page)
@@ -53,7 +53,7 @@ WCAG 1.3.1 requires heading levels to be sequential (h1 -> h2 -> h3, not h1 -> h
 
 | Page | Levels Used |
 |------|-------------|
-| /templates/settings-page | h1, h3 (missing h2) |
+| /library/settings-page | h1, h3 (missing h2) |
 | /settings | h1, h3 (missing h2) |
 | /dashboard | h1, h3 (missing h2) |
 | /developer/api-keys | h1, h3 (missing h2) |
@@ -250,7 +250,7 @@ leading-relaxed Usage:      424 instances (WCAG compliant)
 
 ---
 
-### `/templates`
+### `/library`
 
 | Style | Count |
 |-------|-------|
@@ -630,7 +630,7 @@ All docs pages consistently use:
 
 ## Template Pages
 
-### `/templates/settings-page`
+### `/library/settings-page`
 
 | Style | Count |
 |-------|-------|
@@ -647,7 +647,7 @@ All docs pages consistently use:
 
 ---
 
-### `/templates/security-privacy`
+### `/library/security-privacy`
 
 | Style | Count |
 |-------|-------|
@@ -663,7 +663,7 @@ All docs pages consistently use:
 
 ---
 
-### `/templates/billing-dashboard`
+### `/library/billing-dashboard`
 
 | Style | Count |
 |-------|-------|
@@ -678,7 +678,7 @@ All docs pages consistently use:
 
 ---
 
-### `/templates/team-dashboard`
+### `/library/team-dashboard`
 
 | Style | Count |
 |-------|-------|

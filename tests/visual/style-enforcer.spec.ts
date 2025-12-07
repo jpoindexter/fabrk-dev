@@ -8,10 +8,10 @@ const pagesToAudit = [
   '/',
   '/pricing',
   '/contact',
-  '/templates/billing-dashboard',
-  '/templates/team-dashboard',
-  '/templates/profile',
-  '/templates/settings-page',
+  '/library/billing-dashboard',
+  '/library/team-dashboard',
+  '/library/profile',
+  '/library/settings-page',
 ];
 
 test.describe('Design System Style Enforcement', () => {

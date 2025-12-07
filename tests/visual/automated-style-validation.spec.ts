@@ -48,7 +48,7 @@ const PAGES_TO_VALIDATE = [
   '/docs',
   '/docs/components/button',
   '/docs/components/input',
-  '/templates',
+  '/library',
   '/pricing',
   '/contact',
 ];

@@ -26,7 +26,7 @@ Lighthouse CI runs automatically on:
 
 1. **Landing Page** - `/`
 2. **Component Showcase** - `/components`
-3. **Template Gallery** - `/templates`
+3. **Template Gallery** - `/library`
 4. **Features Page** - `/features`
 5. **Modern Variation** - `/variations/modern`
 
