@@ -13,17 +13,10 @@ import {
   siTypescript,
   siStripe,
   siResend,
-  siX,
-  siGithub,
 } from "simple-icons";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  Badge,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardContent, Badge } from "@/components/ui/card";
 
 const techStack = [
   { name: "NEXT.JS", path: siNextdotjs.path },
@@ -68,7 +61,10 @@ export function Footer() {
               <Badge code="0x71" label="SYSTEM_INFO" className="mb-4" />
               <Link
                 href="/"
-                className={cn("mb-4 flex items-center gap-2 transition-opacity hover:opacity-80", mode.font)}
+                className={cn(
+                  "mb-4 flex items-center gap-2 transition-opacity hover:opacity-80",
+                  mode.font
+                )}
               >
                 <span className="text-primary text-sm">&gt;</span>
                 <span className="text-xl font-semibold tracking-tight">FABRK</span>
@@ -86,23 +82,34 @@ export function Footer() {
                 <div className="divide-border grid grid-cols-3 divide-x">
                   {/* Product */}
                   <div className="p-4">
-                    <div className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>[ PRODUCT ]</div>
+                    <div className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
+                      [ PRODUCT ]
+                    </div>
                     <nav aria-label="Product links" className="flex flex-col gap-2">
                       <Link
                         href="#features"
-                        className={cn("text-muted-foreground hover:text-foreground text-xs transition-colors", mode.font)}
+                        className={cn(
+                          "text-muted-foreground hover:text-foreground text-xs transition-colors",
+                          mode.font
+                        )}
                       >
                         &gt; FEATURES
                       </Link>
                       <Link
                         href="#pricing"
-                        className={cn("text-muted-foreground hover:text-foreground text-xs transition-colors", mode.font)}
+                        className={cn(
+                          "text-muted-foreground hover:text-foreground text-xs transition-colors",
+                          mode.font
+                        )}
                       >
                         &gt; PRICING
                       </Link>
                       <Link
                         href="/docs"
-                        className={cn("text-muted-foreground hover:text-foreground text-xs transition-colors", mode.font)}
+                        className={cn(
+                          "text-muted-foreground hover:text-foreground text-xs transition-colors",
+                          mode.font
+                        )}
                       >
                         &gt; DOCS
                       </Link>
@@ -111,17 +118,25 @@ export function Footer() {
 
                   {/* Company */}
                   <div className="p-4">
-                    <div className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>[ COMPANY ]</div>
+                    <div className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
+                      [ COMPANY ]
+                    </div>
                     <nav aria-label="Company links" className="flex flex-col gap-2">
                       <Link
                         href="/about"
-                        className={cn("text-muted-foreground hover:text-foreground text-xs transition-colors", mode.font)}
+                        className={cn(
+                          "text-muted-foreground hover:text-foreground text-xs transition-colors",
+                          mode.font
+                        )}
                       >
                         &gt; ABOUT
                       </Link>
                       <Link
                         href="/contact"
-                        className={cn("text-muted-foreground hover:text-foreground text-xs transition-colors", mode.font)}
+                        className={cn(
+                          "text-muted-foreground hover:text-foreground text-xs transition-colors",
+                          mode.font
+                        )}
                       >
                         &gt; CONTACT
                       </Link>
@@ -130,29 +145,43 @@ export function Footer() {
 
                   {/* Legal */}
                   <div className="p-4">
-                    <div className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>[ LEGAL ]</div>
+                    <div className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
+                      [ LEGAL ]
+                    </div>
                     <nav aria-label="Legal links" className="flex flex-col gap-2">
                       <Link
                         href="/terms"
-                        className={cn("text-muted-foreground hover:text-foreground text-xs transition-colors", mode.font)}
+                        className={cn(
+                          "text-muted-foreground hover:text-foreground text-xs transition-colors",
+                          mode.font
+                        )}
                       >
                         &gt; TERMS
                       </Link>
                       <Link
                         href="/privacy"
-                        className={cn("text-muted-foreground hover:text-foreground text-xs transition-colors", mode.font)}
+                        className={cn(
+                          "text-muted-foreground hover:text-foreground text-xs transition-colors",
+                          mode.font
+                        )}
                       >
                         &gt; PRIVACY
                       </Link>
                       <Link
                         href="/cookies"
-                        className={cn("text-muted-foreground hover:text-foreground text-xs transition-colors", mode.font)}
+                        className={cn(
+                          "text-muted-foreground hover:text-foreground text-xs transition-colors",
+                          mode.font
+                        )}
                       >
                         &gt; COOKIES
                       </Link>
                       <Link
                         href="/refund"
-                        className={cn("text-muted-foreground hover:text-foreground text-xs transition-colors", mode.font)}
+                        className={cn(
+                          "text-muted-foreground hover:text-foreground text-xs transition-colors",
+                          mode.font
+                        )}
                       >
                         &gt; REFUND
                       </Link>
@@ -165,34 +194,12 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Bottom: Copyright + Social */}
+      {/* Bottom: Copyright */}
       <div className="border-border border-t px-4 py-6 sm:px-6">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className={cn("text-muted-foreground text-xs", mode.font)}>
-            <span>
-              [ [0x7F] COPYRIGHT ] © {new Date().getFullYear()} Fabrk │ All rights reserved
-            </span>
-          </div>
-          <div className="flex items-center gap-4">
-            <a
-              href="https://x.com/fabrk"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn("border-border text-muted-foreground hover:border-primary/50 hover:text-foreground flex items-center gap-2 border px-4 py-2 text-xs transition-colors", mode.font)}
-            >
-              <SimpleIcon path={siX.path} className="size-3.5" />
-              <span>X</span>
-            </a>
-            <a
-              href="https://github.com/fabrk"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn("border-border text-muted-foreground hover:border-primary/50 hover:text-foreground flex items-center gap-2 border px-4 py-2 text-xs transition-colors", mode.font)}
-            >
-              <SimpleIcon path={siGithub.path} className="size-3.5" />
-              <span>GitHub</span>
-            </a>
-          </div>
+        <div className={cn("text-muted-foreground text-xs", mode.font)}>
+          <span>
+            [ [0x7F] COPYRIGHT ] © {new Date().getFullYear()} Fabrk │ All rights reserved
+          </span>
         </div>
       </div>
     </footer>

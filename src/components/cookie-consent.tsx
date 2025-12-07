@@ -211,18 +211,31 @@ export function CookieConsent() {
     <>
       {/* Floating Cookie Button */}
       {showButton && !showModal && (
-        <button
-          onClick={openModal}
+        <div
           className={cn(
-            "bg-background text-foreground animate-in slide-in-from-bottom-5 hover:bg-muted fixed right-6 bottom-6 z-50 flex items-center gap-2 border px-4 py-4 transition-all duration-300",
-            mode.radius,
-            mode.font
+            "bg-background text-foreground animate-in slide-in-from-bottom-5 fixed right-6 bottom-6 z-50 flex items-center border transition-all duration-300",
+            mode.radius
           )}
-          aria-label="Cookie Settings"
         >
-          <Cookie className="size-5" />
-          <span className="text-xs">&gt; COOKIE_SETTINGS</span>
-        </button>
+          <button
+            onClick={openModal}
+            className={cn(
+              "hover:bg-muted flex items-center gap-2 px-4 py-3 transition-colors",
+              mode.font
+            )}
+            aria-label="Cookie Settings"
+          >
+            <Cookie className="size-5" />
+            <span className="text-xs">&gt; COOKIE_SETTINGS</span>
+          </button>
+          <button
+            onClick={() => setShowButton(false)}
+            className="border-border hover:bg-muted border-l px-3 py-3 transition-colors"
+            aria-label="Dismiss cookie notice"
+          >
+            <X className="size-4" />
+          </button>
+        </div>
       )}
 
       {/* Cookie Modal */}
