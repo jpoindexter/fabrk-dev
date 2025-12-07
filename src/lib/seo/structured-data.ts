@@ -103,14 +103,11 @@ export function generateOrganizationSchema(data?: Partial<Organization>) {
       "@type": "Person",
       name,
     })),
-    sameAs: data?.sameAs || [
-      siteConfig.links.twitter,
-      siteConfig.links.github,
-    ],
+    sameAs: data?.sameAs || [siteConfig.links.github],
     contactPoint: data?.contactPoint || {
       "@type": "ContactPoint",
       contactType: "Customer Support",
-      email: "support@fabrk.dev",
+      email: "support@fabrek.dev",
       availableLanguage: ["English"],
     },
   };

@@ -305,7 +305,7 @@ STRIPE_SECRET_KEY=sk_live_...
 STRIPE_WEBHOOK_SECRET=whsec_...
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_...
 RESEND_API_KEY=re_...
-EMAIL_FROM=noreply@fabrk.dev
+EMAIL_FROM=noreply@fabrek.dev
 ```
 
 ### Step 5: Deploy
@@ -932,4 +932,4 @@ Verify all functionality works on new platform.
 
 ---
 
-**Questions? Join the Fabrk Discord or email support@fabrk.dev.**
+**Questions? Join the Fabrk Discord or email support@fabrek.dev.**

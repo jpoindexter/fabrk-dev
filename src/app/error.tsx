@@ -21,7 +21,12 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className={cn("bg-background flex min-h-screen flex-col items-center justify-center px-6", mode.font)}>
+    <div
+      className={cn(
+        "bg-background flex min-h-screen flex-col items-center justify-center px-6",
+        mode.font
+      )}
+    >
       <div className="mx-auto max-w-2xl text-center">
         {/* Error Icon */}
         <div className="mb-8 flex justify-center">
@@ -31,7 +36,9 @@ export default function Error({
         </div>
 
         {/* Error Message */}
-        <h1 className={cn("text-foreground mb-4 text-4xl font-semibold", mode.font)}>SOMETHING_WENT_WRONG</h1>
+        <h1 className={cn("text-foreground mb-4 text-4xl font-semibold", mode.font)}>
+          SOMETHING_WENT_WRONG
+        </h1>
         <p className={cn("text-muted-foreground mb-8 text-sm", mode.font)}>
           We're sorry, but something unexpected happened. This error has been logged and we're
           looking into it.
@@ -39,13 +46,20 @@ export default function Error({
 
         {/* Error Details (Development Only) */}
         {process.env.NODE_ENV === "development" && (
-          <div className={cn("border-destructive/40 bg-destructive/10 mb-8 border p-4 text-left", mode.radius)}>
+          <div
+            className={cn(
+              "border-destructive/40 bg-destructive/10 mb-8 border p-4 text-left",
+              mode.radius
+            )}
+          >
             <p className={cn("text-destructive mb-2 text-xs font-semibold", mode.font)}>
               [ERROR_DETAILS]:
             </p>
             <p className={cn("text-destructive text-xs break-words", mode.font)}>{error.message}</p>
             {error.digest && (
-              <p className={cn("text-destructive mt-2 text-xs", mode.font)}>[ERROR_ID]: {error.digest}</p>
+              <p className={cn("text-destructive mt-2 text-xs", mode.font)}>
+                [ERROR_ID]: {error.digest}
+              </p>
             )}
           </div>
         )}
@@ -70,13 +84,15 @@ export default function Error({
             If this problem persists, please contact support:
           </p>
           <a
-            href="mailto:support@fabrk.dev"
+            href="mailto:support@fabrek.dev"
             className={cn("text-primary text-xs font-semibold hover:underline", mode.font)}
           >
-            support@fabrk.dev
+            support@fabrek.dev
           </a>
           {error.digest && (
-            <p className={cn("text-muted-foreground mt-2 text-xs", mode.font)}>[ERROR_ID]: {error.digest}</p>
+            <p className={cn("text-muted-foreground mt-2 text-xs", mode.font)}>
+              [ERROR_ID]: {error.digest}
+            </p>
           )}
         </div>
       </div>

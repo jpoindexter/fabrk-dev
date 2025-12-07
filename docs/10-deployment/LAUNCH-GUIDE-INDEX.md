@@ -270,8 +270,7 @@ Before reading any document, ensure you have:
 ## 🤝 Support
 
 **Questions about the launch guide?**
-- 📧 Email: support@fabrk.dev
-- 💬 Discord: [Join our community](https://discord.gg/fabrk)
+- 📧 Email: support@fabrek.dev
 - 🐛 GitHub Issues: [Report problems](https://github.com/yourusername/fabrk/issues)
 
 **Need help with your launch?**

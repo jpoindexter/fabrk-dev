@@ -744,4 +744,4 @@ Final conversion: 3%
 
 **Conversion optimization is never done. Always test, measure, and improve. 📈**
 
-**Questions? Join the Fabrk Discord or email support@fabrk.dev.**
+**Questions? Join the Fabrk Discord or email support@fabrek.dev.**

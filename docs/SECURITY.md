@@ -11,7 +11,7 @@
 
 If you discover a security vulnerability in Fabrk, please report it **responsibly and confidentially**:
 
-**Email:** security@fabrk.dev
+**Email:** security@fabrek.dev
 
 **Include in your report:**
 - Detailed description of the vulnerability
@@ -181,7 +181,7 @@ If you discover a security vulnerability in Fabrk, please report it **responsibl
 |-------|----------|--------|-----------|
 | None reported | - | ✅ Clean | - |
 
-**Note:** If you discover issues, report via security@fabrk.dev
+**Note:** If you discover issues, report via security@fabrek.dev
 
 ---
 
@@ -273,7 +273,7 @@ Third-Party Services:
 - ❌ **PCI DSS** - Stripe handles payment security
 - ❌ **FIPS 140-2** - Requires certified encryption modules
 
-**For enterprise compliance:** Contact enterprise@fabrk.dev
+**For enterprise compliance:** Contact enterprise@fabrek.dev
 
 ### 5.3 Your Responsibility
 
@@ -329,7 +329,7 @@ If a security incident is confirmed:
 ### 7.2 Your Incident Response
 
 If you discover a breach using Fabrk:
-- Contact security@fabrk.dev with details
+- Contact security@fabrek.dev with details
 - We'll help assess if issue is in Fabrk or your deployment
 - Coordinate public disclosure timeline
 - Support incident investigation
@@ -376,10 +376,10 @@ STRIPE_SECRET_KEY=sk_live_xxxxx           # Live keys only
 
 | Issue | Contact | Response Time |
 |-------|---------|---|
-| **Security Vulnerability** | security@fabrk.dev | 24-48 hours |
-| **License/Legal Question** | legal@fabrk.dev | 48 hours |
-| **Support Issue** | support@fabrk.dev | 24 hours |
-| **Enterprise Compliance** | enterprise@fabrk.dev | 24 hours |
+| **Security Vulnerability** | security@fabrek.dev | 24-48 hours |
+| **License/Legal Question** | legal@fabrek.dev | 48 hours |
+| **Support Issue** | support@fabrek.dev | 24 hours |
+| **Enterprise Compliance** | enterprise@fabrek.dev | 24 hours |
 
 ---
 
@@ -398,8 +398,7 @@ STRIPE_SECRET_KEY=sk_live_xxxxx           # Live keys only
 
 ### 10.3 Community & Updates
 - **GitHub Security Advisories** - https://github.com/jpoindexter/fabrk_plate/security
-- **Discord Security Channel** - https://discord.gg/fabrk
-- **Email Notifications** - security@fabrk.dev
+- **Email Notifications** - security@fabrek.dev
 
 ---
 
@@ -417,4 +416,4 @@ Security best practices informed by:
 **Last Updated:** November 19, 2025
 **Version:** 1.0
 
-For questions: security@fabrk.dev
+For questions: security@fabrek.dev

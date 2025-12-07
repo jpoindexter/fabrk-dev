@@ -32,14 +32,18 @@ export default function CookiesPage() {
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           <h1 className={cn("text-muted-foreground mb-2 text-sm", mode.font)}>FABRK_LEGAL:</h1>
-          <h2 className={cn("mb-4 text-4xl font-semibold tracking-tight", mode.font)}>COOKIE_POLICY</h2>
+          <h2 className={cn("mb-4 text-4xl font-semibold tracking-tight", mode.font)}>
+            COOKIE_POLICY
+          </h2>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <span className={cn("text-muted-foreground text-xs", mode.font)}>[LAST_UPDATED]: November 26, 2025</span>
+          <span className={cn("text-muted-foreground text-xs", mode.font)}>
+            [LAST_UPDATED]: November 26, 2025
+          </span>
         </motion.div>
       </div>
 
@@ -54,8 +58,8 @@ export default function CookiesPage() {
           <CardHeader code="0x01" title="OVERVIEW" icon={<Cookie className="size-4" />} />
           <CardContent padding="md">
             <p className={cn("text-muted-foreground text-xs", mode.font)}>
-              This Cookie Policy explains how Fabrk uses cookies and similar technologies to recognize
-              you when you visit our website.
+              This Cookie Policy explains how Fabrk uses cookies and similar technologies to
+              recognize you when you visit our website.
             </p>
           </CardContent>
         </Card>
@@ -68,7 +72,8 @@ export default function CookiesPage() {
           <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
               Cookies are small text files placed on your device when you visit a website. They are
-              widely used to make websites work efficiently and provide information to website owners.
+              widely used to make websites work efficiently and provide information to website
+              owners.
             </p>
 
             <h3 className={cn("mb-2 text-xs font-semibold", mode.font)}>[1.1] COOKIE_TYPES</h3>
@@ -98,11 +103,18 @@ export default function CookiesPage() {
             <div className="space-y-6">
               {/* Essential Cookies */}
               <div>
-                <h3 className={cn("mb-4 text-xs font-semibold", mode.font)}>[2.1] ESSENTIAL_COOKIES (REQUIRED)</h3>
+                <h3 className={cn("mb-4 text-xs font-semibold", mode.font)}>
+                  [2.1] ESSENTIAL_COOKIES (REQUIRED)
+                </h3>
                 <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
                   These cookies are necessary for the website to function and cannot be disabled.
                 </p>
-                <div className={cn("border-border bg-background overflow-x-auto border p-4", mode.radius)}>
+                <div
+                  className={cn(
+                    "border-border bg-background overflow-x-auto border p-4",
+                    mode.radius
+                  )}
+                >
                   <table className={cn("w-full text-xs", mode.font)}>
                     <thead>
                       <tr className="border-border border-b">
@@ -123,7 +135,9 @@ export default function CookiesPage() {
                         <td className="py-2">Session</td>
                       </tr>
                       <tr>
-                        <td className="text-foreground py-2 pr-4">__Secure-next-auth.callback-url</td>
+                        <td className="text-foreground py-2 pr-4">
+                          __Secure-next-auth.callback-url
+                        </td>
                         <td className="py-2 pr-4">OAuth callback</td>
                         <td className="py-2">Session</td>
                       </tr>
@@ -134,11 +148,18 @@ export default function CookiesPage() {
 
               {/* Functional Cookies */}
               <div>
-                <h3 className={cn("mb-4 text-xs font-semibold", mode.font)}>[2.2] FUNCTIONAL_COOKIES (OPTIONAL)</h3>
+                <h3 className={cn("mb-4 text-xs font-semibold", mode.font)}>
+                  [2.2] FUNCTIONAL_COOKIES (OPTIONAL)
+                </h3>
                 <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
                   These cookies enable enhanced functionality and personalization.
                 </p>
-                <div className={cn("border-border bg-background overflow-x-auto border p-4", mode.radius)}>
+                <div
+                  className={cn(
+                    "border-border bg-background overflow-x-auto border p-4",
+                    mode.radius
+                  )}
+                >
                   <table className={cn("w-full text-xs", mode.font)}>
                     <thead>
                       <tr className="border-border border-b">
@@ -170,11 +191,18 @@ export default function CookiesPage() {
 
               {/* Analytics Cookies */}
               <div>
-                <h3 className={cn("mb-4 text-xs font-semibold", mode.font)}>[2.3] ANALYTICS_COOKIES (OPTIONAL)</h3>
+                <h3 className={cn("mb-4 text-xs font-semibold", mode.font)}>
+                  [2.3] ANALYTICS_COOKIES (OPTIONAL)
+                </h3>
                 <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
                   These cookies help us understand how visitors use our website.
                 </p>
-                <div className={cn("border-border bg-background overflow-x-auto border p-4", mode.radius)}>
+                <div
+                  className={cn(
+                    "border-border bg-background overflow-x-auto border p-4",
+                    mode.radius
+                  )}
+                >
                   <table className={cn("w-full text-xs", mode.font)}>
                     <thead>
                       <tr className="border-border border-b">
@@ -201,11 +229,18 @@ export default function CookiesPage() {
 
               {/* Third-Party Cookies */}
               <div>
-                <h3 className={cn("mb-4 text-xs font-semibold", mode.font)}>[2.4] THIRD_PARTY_COOKIES</h3>
+                <h3 className={cn("mb-4 text-xs font-semibold", mode.font)}>
+                  [2.4] THIRD_PARTY_COOKIES
+                </h3>
                 <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
                   External services may set their own cookies:
                 </p>
-                <div className={cn("border-border bg-background overflow-x-auto border p-4", mode.radius)}>
+                <div
+                  className={cn(
+                    "border-border bg-background overflow-x-auto border p-4",
+                    mode.radius
+                  )}
+                >
                   <table className={cn("w-full text-xs", mode.font)}>
                     <thead>
                       <tr className="border-border border-b">
@@ -257,7 +292,9 @@ export default function CookiesPage() {
           <CardContent padding="md">
             <div className="space-y-4">
               <div>
-                <h3 className={cn("mb-2 text-xs font-semibold", mode.font)}>[3.1] BROWSER_SETTINGS</h3>
+                <h3 className={cn("mb-2 text-xs font-semibold", mode.font)}>
+                  [3.1] BROWSER_SETTINGS
+                </h3>
                 <p className={cn("text-muted-foreground mb-2 text-xs", mode.font)}>
                   Most browsers allow you to control cookies:
                 </p>
@@ -273,17 +310,20 @@ export default function CookiesPage() {
               </div>
 
               <div>
-                <h3 className={cn("mb-2 text-xs font-semibold", mode.font)}>[3.2] BROWSER_INSTRUCTIONS</h3>
+                <h3 className={cn("mb-2 text-xs font-semibold", mode.font)}>
+                  [3.2] BROWSER_INSTRUCTIONS
+                </h3>
                 <ul className={cn("text-muted-foreground space-y-1 pl-4 text-xs", mode.font)}>
                   <li>
                     ├─ <span className="text-foreground">CHROME:</span> Settings → Privacy → Cookies
                   </li>
                   <li>
-                    ├─ <span className="text-foreground">FIREFOX:</span> Settings → Privacy → Cookies
+                    ├─ <span className="text-foreground">FIREFOX:</span> Settings → Privacy →
+                    Cookies
                   </li>
                   <li>
-                    ├─ <span className="text-foreground">SAFARI:</span> Preferences → Privacy → Manage
-                    Data
+                    ├─ <span className="text-foreground">SAFARI:</span> Preferences → Privacy →
+                    Manage Data
                   </li>
                   <li>
                     └─ <span className="text-foreground">EDGE:</span> Settings → Cookies and
@@ -293,7 +333,9 @@ export default function CookiesPage() {
               </div>
 
               <div>
-                <h3 className={cn("mb-2 text-xs font-semibold", mode.font)}>[3.3] OPT_OUT_ANALYTICS</h3>
+                <h3 className={cn("mb-2 text-xs font-semibold", mode.font)}>
+                  [3.3] OPT_OUT_ANALYTICS
+                </h3>
                 <p className={cn("text-muted-foreground text-xs", mode.font)}>
                   Opt-out via account settings or by enabling "Do Not Track" in your browser.
                 </p>
@@ -306,7 +348,9 @@ export default function CookiesPage() {
         <Card size="auto">
           <CardHeader code="0x40" title="OTHER_TRACKING" icon={<Globe className="size-4" />} />
           <CardContent padding="md">
-            <p className={cn("text-muted-foreground mb-2 text-xs", mode.font)}>In addition to cookies, we may use:</p>
+            <p className={cn("text-muted-foreground mb-2 text-xs", mode.font)}>
+              In addition to cookies, we may use:
+            </p>
             <ul className={cn("text-muted-foreground space-y-1 pl-4 text-xs", mode.font)}>
               <li>
                 ├─ <span className="text-foreground">LOCAL_STORAGE:</span> Store preferences and app
@@ -329,8 +373,8 @@ export default function CookiesPage() {
           <CardHeader code="0x50" title="POLICY_UPDATES" icon={<RefreshCw className="size-4" />} />
           <CardContent padding="md">
             <p className={cn("text-muted-foreground text-xs", mode.font)}>
-              We may update this Cookie Policy. Changes will be posted with an updated "Last Updated"
-              date.
+              We may update this Cookie Policy. Changes will be posted with an updated "Last
+              Updated" date.
             </p>
           </CardContent>
         </Card>
@@ -339,10 +383,12 @@ export default function CookiesPage() {
         <Card size="auto">
           <CardHeader code="0x60" title="QUESTIONS" icon={<HelpCircle className="size-4" />} />
           <CardContent padding="md">
-            <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>Questions about cookies?</p>
+            <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
+              Questions about cookies?
+            </p>
             <ul className={cn("text-muted-foreground space-y-1 pl-4 text-xs", mode.font)}>
               <li>
-                ├─ <span className="text-foreground">EMAIL:</span> support@fabrk.dev
+                ├─ <span className="text-foreground">EMAIL:</span> support@fabrek.dev
               </li>
               <li>
                 └─ <span className="text-foreground">FORM:</span>{" "}
@@ -364,7 +410,11 @@ export default function CookiesPage() {
         className="mt-12"
       >
         <Card size="auto" tone="primary">
-          <CardHeader code="0x70" title="MANAGE_PREFERENCES" icon={<Settings className="size-4" />} />
+          <CardHeader
+            code="0x70"
+            title="MANAGE_PREFERENCES"
+            icon={<Settings className="size-4" />}
+          />
           <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
               You&apos;ll see a cookie consent banner on first visit. Click below to update your

@@ -78,7 +78,7 @@ export function ContactForm() {
     } catch (error: unknown) {
       setStatus("error");
       const message = error instanceof Error ? error.message : "Failed to send message";
-      setErrorMessage(`${message}. Please try again or email us directly at support@fabrk.dev`);
+      setErrorMessage(`${message}. Please try again or email us directly at support@fabrek.dev`);
     }
   };
 
@@ -89,10 +89,7 @@ export function ContactForm() {
       transition={{ duration: 0.6, delay: 0.1 }}
     >
       <Card size="auto">
-        <CardHeader
-          code="0x01"
-          title="MESSAGE_COMPOSER"
-        />
+        <CardHeader code="0x01" title="MESSAGE_COMPOSER" />
         <CardContent padding="lg">
           <p className="text-muted-foreground mb-6 text-xs">
             &gt; Fill out the form below and we'll get back to you as soon as possible.

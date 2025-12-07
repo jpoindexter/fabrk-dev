@@ -82,8 +82,7 @@ Full setup guide: https://fabrk.dev/docs/QUICK-START.md
 🆘 Need Help?
 
 - Documentation: https://fabrk.dev/docs
-- Discord: https://discord.gg/fabrk
-- Email: support@fabrk.dev (I respond within 24 hours)
+- Email: support@fabrek.dev (I respond within 24 hours)
 
 ---
 
@@ -95,7 +94,6 @@ Cheers,
 [Your Name]
 Founder, Fabrk
 
-P.S. Join the Discord to share your progress and get feedback from other builders: https://discord.gg/fabrk
 ```
 
 ---
@@ -448,8 +446,7 @@ Your SaaS is now live. Next steps:
 ## Need Help?
 
 - **Documentation:** All guides in `/docs` folder
-- **Discord:** https://discord.gg/fabrk
-- **Email:** support@fabrk.dev
+- **Email:** support@fabrek.dev
 
 **Happy building! 🚀**
 ```
@@ -818,6 +815,6 @@ The first 24 hours are critical. Make sure customers:
 
 ---
 
-**Questions? Email support@fabrk.dev or join the Discord!**
+**Questions? Email support@fabrek.dev or join the Discord!**
 
 **Happy customers = successful business. 🎉**

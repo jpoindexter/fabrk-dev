@@ -108,7 +108,7 @@ export async function POST(request: NextRequest) {
     `;
 
     // Send email to support
-    const supportEmail = "support@fabrk.dev";
+    const supportEmail = "support@fabrek.dev";
 
     const emailResult = await sendEmail(
       supportEmail,

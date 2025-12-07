@@ -20,51 +20,45 @@ export const metadata: Metadata = {
  */
 export default function MaintenancePage() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6">
+    <div className="bg-background flex min-h-screen flex-col items-center justify-center px-6">
       <div className="mx-auto max-w-2xl text-center">
         {/* Maintenance Icon */}
         <div className="mb-8 flex justify-center">
           <div className={cn("bg-warning/20 p-6", mode.radius)}>
-            <Wrench className="size-16 text-warning" />
+            <Wrench className="text-warning size-16" />
           </div>
         </div>
 
         {/* Message */}
-        <h1 className={cn("mb-4 text-4xl font-semibold text-foreground", mode.font)}>
+        <h1 className={cn("text-foreground mb-4 text-4xl font-semibold", mode.font)}>
           SCHEDULED_MAINTENANCE
         </h1>
-        <p className={cn("mb-6 text-sm text-muted-foreground", mode.font)}>
-          We're currently performing scheduled maintenance to improve your experience.
-          We'll be back shortly!
+        <p className={cn("text-muted-foreground mb-6 text-sm", mode.font)}>
+          We're currently performing scheduled maintenance to improve your experience. We'll be back
+          shortly!
         </p>
 
         {/* Estimated Time */}
-        <div className={cn("mb-8 inline-flex items-center gap-2 bg-warning/10 px-6 py-4", mode.radius)}>
-          <Clock className="size-5 text-warning" />
-          <span className={cn("text-xs font-medium text-warning", mode.font)}>
+        <div
+          className={cn("bg-warning/10 mb-8 inline-flex items-center gap-2 px-6 py-4", mode.radius)}
+        >
+          <Clock className="text-warning size-5" />
+          <span className={cn("text-warning text-xs font-medium", mode.font)}>
             [ESTIMATED_DOWNTIME]: 30 minutes
           </span>
         </div>
 
         {/* Status Updates */}
         <div className="mb-8">
-          <p className={cn("mb-2 text-xs text-muted-foreground", mode.font)}>
-            [STATUS_UPDATES]: For real-time updates, follow us on:
+          <p className={cn("text-muted-foreground mb-2 text-xs", mode.font)}>
+            [STATUS_UPDATES]: For real-time updates, check our status page:
           </p>
           <div className="flex justify-center gap-4">
-            <a
-              href="https://twitter.com/yourhandle"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn("text-xs font-semibold text-primary hover:underline", mode.font)}
-            >
-              TWITTER
-            </a>
             <a
               href="https://status.yourapp.com"
               target="_blank"
               rel="noopener noreferrer"
-              className={cn("text-xs font-semibold text-primary hover:underline", mode.font)}
+              className={cn("text-primary text-xs font-semibold hover:underline", mode.font)}
             >
               STATUS_PAGE
             </a>
@@ -75,10 +69,12 @@ export default function MaintenancePage() {
         <Card size="auto" className="text-left">
           <CardHeader code="0x00" title="CURRENT_TASKS" icon={<Wrench className="size-4" />} />
           <CardContent padding="md">
-            <ul className={cn("space-y-2 text-xs text-muted-foreground", mode.font)}>
+            <ul className={cn("text-muted-foreground space-y-2 text-xs", mode.font)}>
               <li className="flex items-start gap-3">
                 <span className="text-primary flex-shrink-0">├─</span>
-                <span className="text-foreground">Database optimization for faster performance</span>
+                <span className="text-foreground">
+                  Database optimization for faster performance
+                </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary flex-shrink-0">├─</span>
@@ -93,15 +89,15 @@ export default function MaintenancePage() {
         </Card>
 
         {/* Support */}
-        <div className="mt-12 border-t border-border pt-8">
-          <p className={cn("mb-2 text-xs text-muted-foreground", mode.font)}>
+        <div className="border-border mt-12 border-t pt-8">
+          <p className={cn("text-muted-foreground mb-2 text-xs", mode.font)}>
             [HELP]: Need urgent assistance?
           </p>
           <a
-            href="mailto:support@fabrk.dev"
-            className={cn("text-xs font-semibold text-primary hover:underline", mode.font)}
+            href="mailto:support@fabrek.dev"
+            className={cn("text-primary text-xs font-semibold hover:underline", mode.font)}
           >
-            support@fabrk.dev
+            support@fabrek.dev
           </a>
         </div>
       </div>

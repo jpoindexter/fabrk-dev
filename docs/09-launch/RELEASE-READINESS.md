@@ -148,7 +148,7 @@ Fabrk boilerplate is **100% production-ready** with **world-class documentation*
 ### ✅ Final Polish (Completed Nov 22, 2025)
 - ✅ **Resolved TODOs/FIXMEs:** 0 instances remaining in `src/`
 - ✅ **Configuration:** Replaced all placeholders in `src/config.js`
-- ✅ **Email Setup:** Configured `support@fabrk.dev` and `noreply@fabrk.dev`
+- ✅ **Email Setup:** Configured `support@fabrek.dev` and `noreply@fabrek.dev`
 
 ---
 
@@ -250,7 +250,7 @@ npx husky install
 ✅ Private GitHub repository (per customer)
 ✅ GitHub invitations workflow
 ✅ License key generation process
-✅ Support email setup (support@fabrk.dev)
+✅ Support email setup (support@fabrek.dev)
 ✅ Discord community link
 ✅ Email delivery template
 ✅ Refund process documented (30 days)
@@ -405,7 +405,7 @@ npx husky install
 **Fabrk is 100% production-ready.** All critical features, documentation, and legal framework are complete.
 
 **What was completed today (Nov 19, 2025):**
-1. ✅ Replaced placeholder emails (support@example.com → support@fabrk.dev, noreply@example.com → noreply@fabrk.dev)
+1. ✅ Replaced placeholder emails (support@example.com → support@fabrek.dev, noreply@example.com → noreply@fabrek.dev)
 2. ✅ Documented 3 deferred v1.1 features (Invoice PDF, Trial Period, 2FA QR Modal)
 3. ✅ Corrected testing metrics (honest "72 test files" vs misleading "1500+ tests")
 4. ✅ Fixed TypeScript errors - type-check passes
@@ -441,4 +441,4 @@ npx husky install
 
 **Next Phase:** Customer delivery and success metrics tracking.
 
-**Contact:** support@fabrk.dev
+**Contact:** support@fabrek.dev

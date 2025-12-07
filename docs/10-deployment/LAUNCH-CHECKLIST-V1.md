@@ -877,7 +877,7 @@ Questions? Just reply to this email.
 Cheers,
 [Your Name]
 
-P.S. If you build something with Fabrk, I'd love to see it! Share on Twitter/X and tag @fabrk_dev
+P.S. If you build something with Fabrk, I'd love to see it! Share on Twitter/X and tag @fabrek.dev
 ```
 
 ---

@@ -91,7 +91,6 @@ Year 3: 150 blog posts → 50,000 monthly visitors (10x)
 - Interview-style
 - Specific numbers
 - Before/after transformation
-- Publish on blog + Twitter thread
 
 **3. Founder Stories (Engagement)**
 
@@ -846,4 +845,4 @@ For $79 product:
 
 **Growth is a marathon, not a sprint. Focus on sustainable tactics that compound over time. 🚀**
 
-**Questions? Join the Fabrk Discord or email support@fabrk.dev.**
+**Questions? Join the Fabrk Discord or email support@fabrek.dev.**

@@ -66,7 +66,6 @@ This document outlines the marketing strategy, messaging, and launch plan for Fa
 5. **Developer Experience**
    - "Code you can read and modify"
    - "Comprehensive docs, not just API references"
-   - "Active Discord community + email support"
    - "30-day money-back guarantee"
 
 ---
@@ -343,7 +342,6 @@ Same features. Modern stack. 60-77% cheaper.
 **Week 2:**
 - [ ] Get 10 beta testers for testimonials
 - [ ] Write blog post for Dev.to
-- [ ] Prepare Twitter thread (10+ tweets)
 - [ ] Create Reddit posts (3 subreddits)
 - [ ] Set up analytics (Plausible/Fathom)
 - [ ] Test checkout flow 10+ times
@@ -413,7 +411,6 @@ Same features. Modern stack. 60-77% cheaper.
 4. Add to landing page within 1 week
 
 **Showcase Customer Projects:**
-- Twitter thread: "10 SaaS products built with Fabrk"
 - Landing page section: "Built with Fabrk"
 - Ask customers to share (offer free upgrade)
 
@@ -517,7 +514,6 @@ Same features. Modern stack. 60-77% cheaper.
 - Open source (inspect all code)
 - Built with battle-tested tech (Next.js, Prisma, Stripe)
 - Comprehensive documentation
-- Active Discord community
 
 ### "How is this different from free templates?"
 

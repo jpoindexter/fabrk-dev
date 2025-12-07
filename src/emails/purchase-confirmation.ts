@@ -106,13 +106,17 @@ export function generatePurchaseConfirmationHTML({
               </div>
 
               <!-- Invoice Link -->
-              ${invoiceUrl ? `
+              ${
+                invoiceUrl
+                  ? `
               <div style="text-align: center; margin-bottom: 24px;">
                 <a href="${invoiceUrl}" style="color: #007AFF; text-decoration: none; font-size: 14px; font-weight: 500;">
                   Download Invoice →
                 </a>
               </div>
-              ` : ''}
+              `
+                  : ""
+              }
 
               <!-- Support -->
               <div style="border-top: 1px solid #e5e5e5; padding-top: 24px;">
@@ -129,7 +133,7 @@ export function generatePurchaseConfirmationHTML({
                       <a href="https://discord.gg/fabrk" style="color: #007AFF; text-decoration: none; font-size: 14px;">💬 Discord</a>
                     </td>
                     <td>
-                      <a href="mailto:support@fabrk.dev" style="color: #007AFF; text-decoration: none; font-size: 14px;">✉️ Email</a>
+                      <a href="mailto:support@fabrek.dev" style="color: #007AFF; text-decoration: none; font-size: 14px;">✉️ Email</a>
                     </td>
                   </tr>
                 </table>
@@ -144,7 +148,7 @@ export function generatePurchaseConfirmationHTML({
                 Thank you for choosing Fabrk!
               </p>
               <p style="margin: 0; color: #737373; font-size: 12px; line-height: 1.5;">
-                This is an automated confirmation email. For support, please contact us at support@fabrk.dev or join our Discord community.
+                This is an automated confirmation email. For support, please contact us at support@fabrek.dev or join our Discord community.
               </p>
               <p style="margin: 16px 0 0 0; color: #737373; font-size: 12px;">
                 © ${new Date().getFullYear()} Fabrk. All rights reserved.

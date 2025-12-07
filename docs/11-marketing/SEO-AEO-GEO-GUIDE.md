@@ -802,7 +802,7 @@ const localBusinessSchema = {
 
 Need help with SEO/AEO/GEO/AIEO?
 
-- 📧 Email: support@fabrk.dev
+- 📧 Email: support@fabrek.dev
 - 💬 Discord: [Join our community](#)
 - 📚 Docs: [Read full documentation](../README.md)
 - 🐛 Issues: [GitHub Issues](https://github.com/yourusername/fabrk/issues)

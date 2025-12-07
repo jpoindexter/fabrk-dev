@@ -264,17 +264,17 @@ S3_BACKUP_BUCKET            # S3 bucket name
 Add these to your README.md:
 
 ```markdown
-[![CI](https://github.com/jpoindexter/fabrk_plate/actions/workflows/ci.yml/badge.svg)](https://github.com/jpoindexter/fabrk_plate/actions/workflows/ci.yml)
-[![Deploy](https://github.com/jpoindexter/fabrk_plate/actions/workflows/deploy.yml/badge.svg)](https://github.com/jpoindexter/fabrk_plate/actions/workflows/deploy.yml)
-[![E2E Tests](https://github.com/jpoindexter/fabrk_plate/actions/workflows/e2e-tests.yml/badge.svg)](https://github.com/jpoindexter/fabrk_plate/actions/workflows/e2e-tests.yml)
-[![Performance](https://github.com/jpoindexter/fabrk_plate/actions/workflows/performance.yml/badge.svg)](https://github.com/jpoindexter/fabrk_plate/actions/workflows/performance.yml)
+[![CI](https://github.com/your-username/fabrk/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/fabrk/actions/workflows/ci.yml)
+[![Deploy](https://github.com/your-username/fabrk/actions/workflows/deploy.yml/badge.svg)](https://github.com/your-username/fabrk/actions/workflows/deploy.yml)
+[![E2E Tests](https://github.com/your-username/fabrk/actions/workflows/e2e-tests.yml/badge.svg)](https://github.com/your-username/fabrk/actions/workflows/e2e-tests.yml)
+[![Performance](https://github.com/your-username/fabrk/actions/workflows/performance.yml/badge.svg)](https://github.com/your-username/fabrk/actions/workflows/performance.yml)
 ```
 
-Raw URLs (adjust organization/repo):
-- CI: `https://github.com/jpoindexter/fabrk_plate/actions/workflows/ci.yml/badge.svg`
-- Deploy: `https://github.com/jpoindexter/fabrk_plate/actions/workflows/deploy.yml/badge.svg`
-- E2E: `https://github.com/jpoindexter/fabrk_plate/actions/workflows/e2e-tests.yml/badge.svg`
-- Performance: `https://github.com/jpoindexter/fabrk_plate/actions/workflows/performance.yml/badge.svg`
+Raw URLs (replace `your-username/fabrk` with your repo):
+- CI: `https://github.com/your-username/fabrk/actions/workflows/ci.yml/badge.svg`
+- Deploy: `https://github.com/your-username/fabrk/actions/workflows/deploy.yml/badge.svg`
+- E2E: `https://github.com/your-username/fabrk/actions/workflows/e2e-tests.yml/badge.svg`
+- Performance: `https://github.com/your-username/fabrk/actions/workflows/performance.yml/badge.svg`
 
 ## Configuration
 

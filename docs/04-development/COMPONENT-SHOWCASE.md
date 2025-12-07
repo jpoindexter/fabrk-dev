@@ -409,7 +409,7 @@ Before launching, verify:
 - [ ] Stripe checkout completes
 
 ### Infrastructure
-- [ ] Support email set up (support@fabrk.dev)
+- [ ] Support email set up (support@fabrek.dev)
 - [ ] Discord server created
 - [ ] Stripe products configured
 - [ ] Environment variables in production

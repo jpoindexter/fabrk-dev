@@ -47,19 +47,6 @@ export function ResourcesCard({ hasAccess }: ResourcesCardProps) {
           </a>
         </Button>
 
-        <Button
-          variant="outline"
-          className="focus-visible:ring-ring w-full justify-start focus-visible:ring-2 focus-visible:outline-none"
-          disabled={!hasAccess}
-          asChild
-        >
-          <a href="https://discord.gg/dNhq9kTEnu" target="_blank" rel="noopener noreferrer">
-            <MessageSquare className="mr-2 h-4 w-4" />
-            &gt; DISCORD_COMMUNITY
-            {hasAccess && <ExternalLink className="ml-auto h-4 w-4" />}
-          </a>
-        </Button>
-
         {!hasAccess && (
           <p className="text-muted-foreground dark:text-muted-foreground text-xs">
             [NOTE]: Purchase Fabrk to unlock all resources

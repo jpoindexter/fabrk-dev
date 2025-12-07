@@ -27,7 +27,7 @@ async function main() {
   const admin = await prisma.user.create({
     data: {
       name: "Admin User",
-      email: "admin@fabrk.dev",
+      email: "admin@fabrek.dev",
       password: hashedPassword,
       emailVerified: new Date(),
       role: "ADMIN",
@@ -73,7 +73,7 @@ async function main() {
   });
 
   console.log("✅ Created 4 test users:");
-  console.log("   - admin@fabrk.dev (Admin, password: password123)");
+  console.log("   - admin@fabrek.dev (Admin, password: password123)");
   console.log("   - john@example.com (Verified, password: password123)");
   console.log("   - jane@example.com (Unverified, password: password123)");
   console.log("   - bob@example.com (With reset token, password: password123)");
@@ -168,7 +168,7 @@ async function main() {
   console.log(`   - Webhook Events: ${await prisma.webhookEvent.count()}`);
 
   console.log("\n🔐 Test Accounts:");
-  console.log("   Admin:    admin@fabrk.dev / password123");
+  console.log("   Admin:    admin@fabrek.dev / password123");
   console.log("   User:     john@example.com / password123");
   console.log("   Unverified: jane@example.com / password123");
   console.log("   Reset:    bob@example.com / password123");

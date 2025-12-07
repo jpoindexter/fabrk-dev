@@ -25,7 +25,7 @@ import { ProfileTabs } from "./components/profile-tabs";
 const mockUser = {
   name: "Alex Chen",
   username: "alexchen",
-  email: "alex@fabrk.dev",
+  email: "alex@fabrek.dev",
   avatar: null,
   bio: "Full-stack developer passionate about building great user experiences. Open source contributor.",
   location: "San Francisco, CA",
@@ -108,7 +108,7 @@ export default function ProfilePage() {
 const mockUser = {
   name: "Alex Chen",
   username: "alexchen",
-  email: "alex@fabrk.dev",
+  email: "alex@fabrek.dev",
   avatar: null,
   bio: "Full-stack developer passionate about building great user experiences. Open source contributor.",
   location: "San Francisco, CA",

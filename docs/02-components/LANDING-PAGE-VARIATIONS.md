@@ -640,8 +640,7 @@ Before launching:
 ## Need Help?
 
 - Check the component source code for inline comments
-- Join our Discord: https://discord.gg/fabrk
-- Email support: support@fabrk.dev
+- Email support: support@fabrek.dev
 - Example pages: See `src/app/(dashboard)/examples/`
 
 ---

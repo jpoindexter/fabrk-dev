@@ -27,7 +27,7 @@ This checklist covers everything needed to launch Fabrk (the boilerplate product
 
 ### Legal & Business
 - [x] **Pricing:** Confirmed $199 one-time price in `src/config.js`
-- [x] **Support:** Support email `support@fabrk.dev` configured
+- [x] **Support:** Support email `support@fabrek.dev` configured
 - [x] **Terms:** License agreement ready for distribution
 
 ---
@@ -105,7 +105,7 @@ This checklist covers everything needed to launch Fabrk (the boilerplate product
 ## 6. Post-Launch (First 48 Hours)
 
 ### Monitoring
-- [ ] **Support:** Monitor `support@fabrk.dev` continuously
+- [ ] **Support:** Monitor `support@fabrek.dev` continuously
 - [ ] **Stripe:** Watch for failed payments or disputes
 - [ ] **GitHub:** Monitor repo access issues
 - [ ] **Errors:** Check Sentry/Logs for unhandled exceptions.

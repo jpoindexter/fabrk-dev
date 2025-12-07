@@ -9,12 +9,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  Badge,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardContent, Badge } from "@/components/ui/card";
 import {
   Database,
   Scale,
@@ -209,11 +204,7 @@ export default function PrivacyPage() {
 
         {/* Section 3 */}
         <Card size="auto">
-          <CardHeader
-            code="0x30"
-            title="LEGAL_BASIS_GDPR"
-            icon={<Scale className="size-4" />}
-          />
+          <CardHeader code="0x30" title="LEGAL_BASIS_GDPR" icon={<Scale className="size-4" />} />
           <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               Under GDPR, we process your data based on:
@@ -306,11 +297,7 @@ export default function PrivacyPage() {
 
         {/* Section 5 */}
         <Card size="auto">
-          <CardHeader
-            code="0x50"
-            title="DATA_SECURITY"
-            icon={<Lock className="size-4" />}
-          />
+          <CardHeader code="0x50" title="DATA_SECURITY" icon={<Lock className="size-4" />} />
           <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               We implement industry-standard security measures:
@@ -346,11 +333,7 @@ export default function PrivacyPage() {
 
         {/* Section 6 */}
         <Card size="auto">
-          <CardHeader
-            code="0x60"
-            title="DATA_RETENTION"
-            icon={<Clock className="size-4" />}
-          />
+          <CardHeader code="0x60" title="DATA_RETENTION" icon={<Clock className="size-4" />} />
           <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               We retain your data for:
@@ -439,7 +422,7 @@ export default function PrivacyPage() {
                   Contact us at:
                 </p>
                 <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
-                  <li>├─ EMAIL: support@fabrk.dev</li>
+                  <li>├─ EMAIL: support@fabrek.dev</li>
                   <li>
                     └─ PROFILE:{" "}
                     <Link href="/profile" className="text-primary hover:underline">
@@ -502,11 +485,7 @@ export default function PrivacyPage() {
 
         {/* Section 9 */}
         <Card size="auto">
-          <CardHeader
-            code="0x90"
-            title="CHILDRENS_PRIVACY"
-            icon={<Baby className="size-4" />}
-          />
+          <CardHeader code="0x90" title="CHILDRENS_PRIVACY" icon={<Baby className="size-4" />} />
           <CardContent padding="md">
             <p className={cn("text-muted-foreground text-sm", mode.font)}>
               Fabrk is not intended for users under 18. We do not knowingly collect data from
@@ -537,11 +516,7 @@ export default function PrivacyPage() {
 
         {/* Section 11 */}
         <Card size="auto">
-          <CardHeader
-            code="0xB0"
-            title="POLICY_CHANGES"
-            icon={<RefreshCw className="size-4" />}
-          />
+          <CardHeader code="0xB0" title="POLICY_CHANGES" icon={<RefreshCw className="size-4" />} />
           <CardContent padding="md">
             <p className={cn("text-muted-foreground text-sm", mode.font)}>
               We may update this policy periodically. We'll notify you of significant changes via
@@ -559,10 +534,10 @@ export default function PrivacyPage() {
             </p>
             <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
               <li>
-                ├─ <span className="text-foreground">EMAIL:</span> support@fabrk.dev
+                ├─ <span className="text-foreground">EMAIL:</span> support@fabrek.dev
               </li>
               <li>
-                ├─ <span className="text-foreground">DPO:</span> support@fabrk.dev
+                ├─ <span className="text-foreground">DPO:</span> support@fabrek.dev
               </li>
               <li>
                 └─ <span className="text-foreground">FORM:</span>{" "}

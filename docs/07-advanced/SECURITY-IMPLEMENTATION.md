@@ -876,10 +876,10 @@ Monitor for:
 ```typescript
 // src/lib/security/emergency.ts
 export const EMERGENCY_CONTACTS = {
-  security_team: "security@fabrk.dev",
-  cto: "cto@fabrk.dev",
-  legal: "legal@fabrk.dev",
-  dpo: "dpo@fabrk.dev", // Data Protection Officer
+  security_team: "security@fabrek.dev",
+  cto: "cto@fabrek.dev",
+  legal: "legal@fabrek.dev",
+  dpo: "dpo@fabrek.dev", // Data Protection Officer
 };
 ```
 

@@ -819,7 +819,7 @@ npm run email:dev         # Email worker with watch mode
 
 ### Included Support
 - **Discord Community** - Chat with other Fabrk users
-- **Email Support** - support@fabrk.dev (48-hour response)
+- **Email Support** - support@fabrek.dev (48-hour response)
 - **GitHub Issues** - Bug reports and feature requests
 - **Documentation** - 26,813 lines of guides
 - **Video Tutorials** - Coming soon (10+ videos)
@@ -833,7 +833,7 @@ npm run email:dev         # Email worker with watch mode
 
 ### Community
 - **Discord Server** - 500+ developers
-- **Twitter** - @fabrk_dev
+- **Twitter** - @fabrek.dev
 - **Newsletter** - Weekly tips and updates
 - **Blog** - Best practices and tutorials
 
@@ -920,7 +920,7 @@ A: Currently PostgreSQL only (Prisma). Custom database adapters possible ($500 s
 3. Setup in 2 hours (follow docs)
 4. Ship your first project this week
 
-**Questions?** support@fabrk.dev
+**Questions?** support@fabrek.dev
 
 ---
 

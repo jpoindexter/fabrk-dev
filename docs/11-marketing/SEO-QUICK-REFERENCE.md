@@ -315,4 +315,4 @@ Track these metrics weekly:
 
 ---
 
-**Need help?** Email support@fabrk.dev
+**Need help?** Email support@fabrek.dev

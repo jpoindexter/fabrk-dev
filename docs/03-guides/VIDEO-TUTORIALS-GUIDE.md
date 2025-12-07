@@ -366,7 +366,6 @@ Database, auth, payments - all live."
 
 "Thanks for watching! Check out the Fabrk documentation at docs.fabrk.dev for deeper dives.
 Next video: [Link to next video]
-Have questions? Join our Discord community. See you next time!"
 
 ---
 

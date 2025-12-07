@@ -23,7 +23,9 @@ fi
 
 # Files/folders to EXCLUDE (marketing, private, internal)
 EXCLUDE_PATTERNS=(
-    # Marketing site content
+    # ============================================
+    # MARKETING / YOUR SITE (not for customers)
+    # ============================================
     "marketing/"
     "src/app/page.tsx"
     "src/app/about/"
@@ -32,33 +34,81 @@ EXCLUDE_PATTERNS=(
     "src/app/pricing/"
     "src/app/purchase/"
     "src/app/success/"
+    "src/app/blog/"
     "src/components/landing/"
     "src/components/home/"
     "src/components/marketing/"
     "src/app/components/sections/"
 
-    # Internal docs and tools
+    # ============================================
+    # INTERNAL DOCS & TOOLS
+    # ============================================
     ".claude/"
     ".internal/"
     ".agent-workspace/"
     ".archive/"
     ".integrations/"
     ".vscode/"
+    ".lighthouseci/"
+    "design-inconsistency-report/"
+    "design-system/"
+    "assets/"
+    "coverage/"
+    "playwright-report/"
+    "test-results/"
 
-    # Environment and secrets
+    # ============================================
+    # REFERENCE / THIRD-PARTY BOILERPLATES
+    # ============================================
+    "reference/"
+    "boilerplate-reference/"
+    "shipfast/"
+    "**/Boilerplate/"
+    "**/boilerplate-copy/"
+
+    # ============================================
+    # PRIVATE CONFIG & DOCS
+    # ============================================
+    "CLAUDE.md"
+    "GEMINI.md"
+    "DESIGN_SYSTEM.md"
+    "LAUNCH_PLAN.md"
+    "SECRET-ROTATION.md"
+    ".cursorrules"
+    ".lighthouserc.json"
+    "debug-storybook.log"
+    "typedoc.json"
+
+    # ============================================
+    # GITHUB INTERNAL CONFIGS
+    # ============================================
+    ".github/WORKFLOWS-CREATED.txt"
+    ".github/CI-CD-PIPELINE-SUMMARY.md"
+    ".github/CI-CD-SETUP-GUIDE.md"
+
+    # ============================================
+    # MIGRATION/UTILITY SCRIPTS (internal paths)
+    # ============================================
+    "scripts/migrate-to-mode.mjs"
+
+    # ============================================
+    # ENVIRONMENT & SECRETS
+    # ============================================
     ".env"
     ".env.local"
 
-    # Internal documentation
-    "DESIGN_SYSTEM.md"
-    "LAUNCH_PLAN.md"
-
-    # Git and build artifacts
+    # ============================================
+    # GIT & BUILD ARTIFACTS
+    # ============================================
     ".git/"
     ".next/"
     "node_modules/"
+    "tsconfig.tsbuildinfo"
+    ".DS_Store"
 
-    # This sync script itself
+    # ============================================
+    # THIS SYNC SCRIPT
+    # ============================================
     "scripts/sync-to-official.sh"
 )
 
@@ -92,6 +142,51 @@ cat > "$OFFICIAL_REPO/src/components/landing/index.ts" << 'EOF'
 export {};
 EOF
 
+# Process README (Copy and Clean)
+echo -e "${YELLOW}[INFO] Processing README...${NC}"
+cp "$DEV_REPO/README.md" "$OFFICIAL_REPO/README.md"
+
+# Clean README using the utility script
+node "$DEV_REPO/scripts/utilities/clean-readme.mjs" "$OFFICIAL_REPO/README.md"
+
+# Remove any internal files that might have slipped through
+echo -e "${YELLOW}[INFO] Cleaning up internal files...${NC}"
+
+# Internal docs
+rm -f "$OFFICIAL_REPO/CLAUDE.md" 2>/dev/null || true
+rm -f "$OFFICIAL_REPO/GEMINI.md" 2>/dev/null || true
+rm -f "$OFFICIAL_REPO/DESIGN_SYSTEM.md" 2>/dev/null || true
+rm -f "$OFFICIAL_REPO/LAUNCH_PLAN.md" 2>/dev/null || true
+rm -f "$OFFICIAL_REPO/SECRET-ROTATION.md" 2>/dev/null || true
+
+# Internal folders
+rm -rf "$OFFICIAL_REPO/.claude" 2>/dev/null || true
+rm -rf "$OFFICIAL_REPO/marketing" 2>/dev/null || true
+rm -rf "$OFFICIAL_REPO/design-inconsistency-report" 2>/dev/null || true
+rm -rf "$OFFICIAL_REPO/design-system" 2>/dev/null || true
+rm -rf "$OFFICIAL_REPO/assets" 2>/dev/null || true
+rm -rf "$OFFICIAL_REPO/.internal" 2>/dev/null || true
+rm -rf "$OFFICIAL_REPO/.archive" 2>/dev/null || true
+rm -rf "$OFFICIAL_REPO/.agent-workspace" 2>/dev/null || true
+
+# Reference boilerplates (CRITICAL - contains third-party code)
+rm -rf "$OFFICIAL_REPO/reference" 2>/dev/null || true
+rm -rf "$OFFICIAL_REPO/boilerplate-reference" 2>/dev/null || true
+rm -rf "$OFFICIAL_REPO/shipfast" 2>/dev/null || true
+
+# GitHub internal configs
+rm -f "$OFFICIAL_REPO/.github/WORKFLOWS-CREATED.txt" 2>/dev/null || true
+rm -f "$OFFICIAL_REPO/.github/CI-CD-PIPELINE-SUMMARY.md" 2>/dev/null || true
+rm -f "$OFFICIAL_REPO/.github/CI-CD-SETUP-GUIDE.md" 2>/dev/null || true
+
+# Scripts with hardcoded paths
+rm -f "$OFFICIAL_REPO/scripts/migrate-to-mode.mjs" 2>/dev/null || true
+
+# Test artifacts
+rm -rf "$OFFICIAL_REPO/coverage" 2>/dev/null || true
+rm -rf "$OFFICIAL_REPO/playwright-report" 2>/dev/null || true
+rm -rf "$OFFICIAL_REPO/test-results" 2>/dev/null || true
+
 echo -e "${GREEN}[SUCCESS] Sync complete!${NC}"
 echo ""
 echo -e "${YELLOW}[SUMMARY] What was synced:${NC}"
@@ -106,7 +201,7 @@ echo ""
 echo -e "${YELLOW}[EXCLUDED] Private files:${NC}"
 echo "  ✗ Your landing page (src/app/page.tsx)"
 echo "  ✗ Marketing components (src/components/landing/)"
-echo "  ✗ Internal docs (.claude/, .internal/)"
+echo "  ✗ Internal docs (.claude/, CLAUDE.md, GEMINI.md)"
 echo "  ✗ Environment files (.env, .env.local)"
 echo ""
 echo -e "${YELLOW}[NEXT STEPS]:${NC}"

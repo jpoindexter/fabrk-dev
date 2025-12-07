@@ -34,7 +34,7 @@ export default function GettingStartedPage() {
         {
           title: "Download Fabrk",
           description: "Clone the repository",
-          code: `git clone https://github.com/jpoindexter/fabrk-boilerplate.git my-saas
+          code: `git clone https://github.com/your-username/fabrk.git my-saas
 cd my-saas`,
           language: "bash",
         },
@@ -82,7 +82,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`,
           title: "Quick Start (5 min)",
           description: "Already know Next.js? Here's the fastest path",
           code: `# Clone, install, configure
-git clone https://github.com/jpoindexter/fabrk-boilerplate.git my-saas
+git clone https://github.com/your-username/fabrk.git my-saas
 cd my-saas && npm install
 cp .env.example .env.local
 

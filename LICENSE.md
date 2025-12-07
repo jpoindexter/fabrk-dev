@@ -80,7 +80,7 @@ You may distribute the SOFTWARE only under the following conditions:
 
 Due to the nature of the SOFTWARE being non-returnable digital content, **all sales are intended to be final** and refunds will generally not be provided.
 
-If you experience issues with the SOFTWARE, please contact **support@fabrk.dev** for assistance. **THEFT BV** will make reasonable efforts to help resolve technical issues within the scope of this LICENSE.
+If you experience issues with the SOFTWARE, please contact **support@fabrek.dev** for assistance. **THEFT BV** will make reasonable efforts to help resolve technical issues within the scope of this LICENSE.
 
 If you purchase the SOFTWARE as a **consumer in the EU/EEA**, you may have a statutory right of withdrawal for a period (typically 14 days) from the date of purchase for digital content. Where required by law, **THEFT BV** or its payment/checkout providers may:
 
@@ -240,6 +240,6 @@ By installing, copying, or otherwise using the SOFTWARE, you acknowledge that yo
 
 **Effective Date:** November 26, 2025
 **Version:** 1.0
-**Contact:** support@fabrk.dev
+**Contact:** support@fabrek.dev
 
 © 2025 THEFT BV. All rights reserved.

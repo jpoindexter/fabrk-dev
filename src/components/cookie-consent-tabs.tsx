@@ -266,7 +266,7 @@ export function AboutTabContent({}: AboutTabContentProps) {
           <h4 className={cn("mb-2 text-sm font-semibold", mode.font)}>CONTACT_US</h4>
           <p className={cn("text-muted-foreground text-xs", mode.font)}>
             If you have questions about our use of cookies or your privacy rights, please contact us
-            at support@fabrk.dev
+            at support@fabrek.dev
           </p>
         </div>
       </div>

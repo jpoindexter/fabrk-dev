@@ -353,7 +353,7 @@ Fabrk is substantially ready. The 5% missing is **marketing collateral** (demo v
 **Action Items:**
 - Deploy to Vercel at `demo.fabrk.dev`
 - Seed database with realistic demo data
-- Create test accounts (demo@fabrk.dev / Password123!)
+- Create test accounts (demo@fabrek.dev / Password123!)
 - Test all features (login, Stripe test mode, templates)
 - Add "Try Interactive Demo" button on homepage
 - Link from Product Hunt
@@ -601,7 +601,7 @@ This gives you the benefits of both approaches:
   - Resend API key (demo emails)
   - NextAuth secret
 - [ ] Seed database with realistic demo data:
-  - 5 demo users (demo1@fabrk.dev through demo5@fabrk.dev, all password: Demo123!)
+  - 5 demo users (demo1@fabrek.dev through demo5@fabrek.dev, all password: Demo123!)
   - 2 demo organizations (Acme Corp, Startup Inc)
   - Sample payments, invoices, API keys
   - Mock analytics data
@@ -666,8 +666,7 @@ This gives you the benefits of both approaches:
 - [ ] Set up refund process (30-day money back guarantee)
 
 **Support Channels:**
-- [ ] Set up support@fabrk.dev email (Google Workspace or Zoho)
-- [ ] Create Discord server: https://discord.gg/fabrk
+- [ ] Set up support@fabrek.dev email (Google Workspace or Zoho)
   - Channels: #general, #help, #showcase, #feedback, #announcements
   - Add welcome message
   - Add roles (Customer, Team, Admin)
@@ -1042,7 +1041,6 @@ This gives you the benefits of both approaches:
 **Momentum:**
 - Featured in 2+ newsletters (Product Hunt, Indie Hackers)
 - 3+ blog mentions/reviews
-- 5+ Twitter threads from customers
 
 ### First Month Goals (Nov 19 - Dec 19)
 
@@ -1385,7 +1383,7 @@ This gives you the benefits of both approaches:
 - Can't respond fast = bad reviews
 
 **Mitigation:**
-- Set up support@fabrk.dev (Google Workspace)
+- Set up support@fabrek.dev (Google Workspace)
 - Discord for community support (customers help each other)
 - 10 canned responses for common questions
 - Response time SLA: <2 hours (business hours)
@@ -1577,7 +1575,6 @@ This gives you the benefits of both approaches:
 - [ ] Support email + Discord set up
 - [ ] Product Hunt copy finalized
 - [ ] Hunter found (or ready to self-submit)
-- [ ] Twitter thread written
 - [ ] HN/Reddit posts drafted
 - [ ] Analytics configured
 
@@ -1695,8 +1692,7 @@ You've already built the pages (18 months of work). Deploying them to demo.fabrk
 
 ### Contact & Support
 
-**Support Email:** support@fabrk.dev
-**Discord:** https://discord.gg/fabrk
+**Support Email:** support@fabrek.dev
 **GitHub:** /fabrk-boilerplate
 **Twitter:** @fabrk
 

@@ -32,7 +32,7 @@ export function DashboardHeader() {
   // Mock user data for showcase (no authentication required)
   const mockUser = {
     name: "Demo User",
-    email: "demo@fabrk.dev",
+    email: "demo@fabrek.dev",
     image: null,
     role: "USER",
   };

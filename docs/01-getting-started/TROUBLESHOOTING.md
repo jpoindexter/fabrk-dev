@@ -516,7 +516,7 @@ curl -X POST https://api.resend.com/emails \
   -H "Authorization: Bearer $RESEND_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "from": "noreply@fabrk.dev",
+    "from": "noreply@fabrek.dev",
     "to": "test@example.com",
     "subject": "Test Email",
     "html": "<p>Test</p>"
@@ -545,7 +545,7 @@ dig TXT _dmarc.fabrk.dev
 **2. Use verified "From" address:**
 
 ```env
-EMAIL_FROM="noreply@fabrk.dev" # Must be verified domain
+EMAIL_FROM="noreply@fabrek.dev" # Must be verified domain
 ```
 
 **3. Improve email content:**
@@ -987,7 +987,6 @@ If you've tried the solutions above and still have issues:
 
 ### 2. Search Discord
 
-- Discord: https://discord.gg/fabrk
 - Search for your error message
 - Check #help channel
 
@@ -1001,7 +1000,7 @@ If you've tried the solutions above and still have issues:
 - Node version, npm version
 - Relevant code snippets
 
-**Email:** support@fabrk.dev
+**Email:** support@fabrek.dev
 
 **Response time:** Within 24 hours
 

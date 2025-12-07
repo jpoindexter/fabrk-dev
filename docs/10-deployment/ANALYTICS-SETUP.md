@@ -632,6 +632,6 @@ After setting up analytics:
 
 ---
 
-**Need help with analytics? Check the Fabrk Discord or email support@fabrk.dev.**
+**Need help with analytics? Check the Fabrk Discord or email support@fabrek.dev.**
 
 **Analytics = Growth. Track what matters. 📊**

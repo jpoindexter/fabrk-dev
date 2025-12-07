@@ -33,10 +33,10 @@ export function ContactSidebar() {
               <span className="text-foreground">Prefer email? Send us a message directly:</span>
             </div>
             <a
-              href="mailto:support@fabrk.dev"
+              href="mailto:support@fabrek.dev"
               className={cn("text-primary mt-2 block text-xs hover:underline", mode.font)}
             >
-              &gt; support@fabrk.dev
+              &gt; support@fabrek.dev
             </a>
           </CardContent>
         </Card>

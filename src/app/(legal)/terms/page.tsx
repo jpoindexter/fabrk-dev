@@ -9,12 +9,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  Badge,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardContent, Badge } from "@/components/ui/card";
 import {
   FileText,
   Shield,
@@ -86,11 +81,7 @@ export default function TermsPage() {
       <div className="space-y-6">
         {/* Section 1 */}
         <Card size="auto">
-          <CardHeader
-            code="0x10"
-            title="AGREEMENT_TO_TERMS"
-            icon={<Scale className="size-4" />}
-          />
+          <CardHeader code="0x10" title="AGREEMENT_TO_TERMS" icon={<Scale className="size-4" />} />
           <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               By accessing, purchasing, or using Fabrk (&quot;Service&quot;, &quot;Product&quot;,
@@ -197,11 +188,7 @@ export default function TermsPage() {
 
         {/* Section 3 */}
         <Card size="auto">
-          <CardHeader
-            code="0x30"
-            title="USER_ACCOUNTS"
-            icon={<Users className="size-4" />}
-          />
+          <CardHeader code="0x30" title="USER_ACCOUNTS" icon={<Users className="size-4" />} />
           <CardContent padding="md">
             <div className="space-y-6">
               <div>
@@ -241,11 +228,7 @@ export default function TermsPage() {
 
         {/* Section 4 */}
         <Card size="auto">
-          <CardHeader
-            code="0x40"
-            title="PAYMENT_TERMS"
-            icon={<CreditCard className="size-4" />}
-          />
+          <CardHeader code="0x40" title="PAYMENT_TERMS" icon={<CreditCard className="size-4" />} />
           <CardContent padding="md">
             <div className="space-y-6">
               <div>
@@ -329,11 +312,7 @@ export default function TermsPage() {
 
         {/* Section 6 */}
         <Card size="auto">
-          <CardHeader
-            code="0x60"
-            title="PROHIBITED_USES"
-            icon={<Ban className="size-4" />}
-          />
+          <CardHeader code="0x60" title="PROHIBITED_USES" icon={<Ban className="size-4" />} />
           <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-2 text-sm", mode.font)}>
               You agree NOT to use Fabrk to:
@@ -430,11 +409,7 @@ export default function TermsPage() {
 
         {/* Section 9 */}
         <Card size="auto">
-          <CardHeader
-            code="0x90"
-            title="INDEMNIFICATION"
-            icon={<Gavel className="size-4" />}
-          />
+          <CardHeader code="0x90" title="INDEMNIFICATION" icon={<Gavel className="size-4" />} />
           <CardContent padding="md">
             <p className={cn("text-muted-foreground text-sm", mode.font)}>
               You agree to indemnify and hold harmless Fabrk from claims arising from your use,
@@ -445,11 +420,7 @@ export default function TermsPage() {
 
         {/* Section 10 */}
         <Card size="auto">
-          <CardHeader
-            code="0xA0"
-            title="GOVERNING_LAW"
-            icon={<Globe className="size-4" />}
-          />
+          <CardHeader code="0xA0" title="GOVERNING_LAW" icon={<Globe className="size-4" />} />
           <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-2 text-sm", mode.font)}>
               These Terms are governed by the laws of the Netherlands. Disputes shall be resolved in
@@ -463,11 +434,7 @@ export default function TermsPage() {
 
         {/* Section 11 */}
         <Card size="auto">
-          <CardHeader
-            code="0xB0"
-            title="TERMS_CHANGES"
-            icon={<Bell className="size-4" />}
-          />
+          <CardHeader code="0xB0" title="TERMS_CHANGES" icon={<Bell className="size-4" />} />
           <CardContent padding="md">
             <p className={cn("text-muted-foreground text-sm", mode.font)}>
               We may modify these Terms at any time. Material changes will be communicated with 30
@@ -485,7 +452,7 @@ export default function TermsPage() {
             </p>
             <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
               <li>
-                ├─ <span className="text-foreground">EMAIL:</span> support@fabrk.dev
+                ├─ <span className="text-foreground">EMAIL:</span> support@fabrek.dev
               </li>
               <li>
                 └─ <span className="text-foreground">FORM:</span>{" "}

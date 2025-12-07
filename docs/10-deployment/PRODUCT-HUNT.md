@@ -226,7 +226,7 @@ A: Yes! Unlimited projects (personal + commercial), no attribution required. Bui
 A: Yes! Lifetime updates for v1.x (minor versions). Major version upgrades (v2.0) available at 50% discount.
 
 **Q: What if I need help?**
-A: Discord community + email support (support@fabrk.dev) + comprehensive docs. I'm responsive and want you to succeed.
+A: Discord community + email support (support@fabrek.dev) + comprehensive docs. I'm responsive and want you to succeed.
 
 **Q: What if it's not for me?**
 A: 30-day money-back guarantee, no questions asked. Zero risk.
@@ -343,7 +343,7 @@ Have these ready to copy-paste (personalize each one):
 "Thank you so much! 🙏 Really appreciate the support. Let me know if you have any questions about Fabrk - happy to help!"
 
 **For Questions:**
-"Great question! [answer]. Feel free to reach out on Discord or email if you want to dig deeper - support@fabrk.dev"
+"Great question! [answer]. Feel free to reach out on Discord or email if you want to dig deeper - support@fabrek.dev"
 
 **For Feature Requests:**
 "Love this suggestion! I'm keeping track of all feature requests to prioritize the roadmap. Added yours to the list. Thank you!"

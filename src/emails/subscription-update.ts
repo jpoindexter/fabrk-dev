@@ -83,17 +83,23 @@ export function generateSubscriptionUpdateHTML({
                 ${getMessage()}
               </p>
 
-              ${updateType !== "cancelled" && newPlan && newAmount ? `
+              ${
+                updateType !== "cancelled" && newPlan && newAmount
+                  ? `
               <!-- Subscription Details -->
               <div style="background-color: #fafafa; border: 2px solid #e5e5e5; border-radius: 8px; padding: 24px; margin-bottom: 32px;">
                 <p style="margin: 0 0 16px 0; color: #171717; font-size: 18px; font-weight: 600;">Subscription Details</p>
                 <table width="100%" cellpadding="0" cellspacing="0">
-                  ${previousPlan ? `
+                  ${
+                    previousPlan
+                      ? `
                   <tr>
                     <td style="padding: 8px 0; color: #737373; font-size: 14px;">Previous Plan:</td>
                     <td style="padding: 8px 0; color: #525252; font-size: 14px; text-align: right; text-decoration: line-through;">${previousPlan}</td>
                   </tr>
-                  ` : ''}
+                  `
+                      : ""
+                  }
                   <tr>
                     <td style="padding: 8px 0; color: #737373; font-size: 14px;">Current Plan:</td>
                     <td style="padding: 8px 0; color: #171717; font-size: 14px; font-weight: 600; text-align: right;">${newPlan}</td>
@@ -102,17 +108,25 @@ export function generateSubscriptionUpdateHTML({
                     <td style="padding: 8px 0; color: #737373; font-size: 14px;">Billing Amount:</td>
                     <td style="padding: 8px 0; color: #007AFF; font-size: 16px; font-weight: 700; text-align: right;">${newAmount}</td>
                   </tr>
-                  ${nextBillingDate ? `
+                  ${
+                    nextBillingDate
+                      ? `
                   <tr>
                     <td style="padding: 8px 0; color: #737373; font-size: 14px;">Next Billing Date:</td>
                     <td style="padding: 8px 0; color: #171717; font-size: 14px; text-align: right;">${nextBillingDate}</td>
                   </tr>
-                  ` : ''}
+                  `
+                      : ""
+                  }
                 </table>
               </div>
-              ` : ''}
+              `
+                  : ""
+              }
 
-              ${updateType === "cancelled" ? `
+              ${
+                updateType === "cancelled"
+                  ? `
               <!-- Cancellation Notice -->
               <div style="background-color: #FFF3CD; border-left: 4px solid #FFB020; padding: 16px 20px; margin-bottom: 24px; border-radius: 4px;">
                 <p style="margin: 0 0 8px 0; color: #171717; font-size: 14px; font-weight: 600;">What happens next?</p>
@@ -123,9 +137,13 @@ export function generateSubscriptionUpdateHTML({
                   <li>You can reactivate anytime before access ends</li>
                 </ul>
               </div>
-              ` : ''}
+              `
+                  : ""
+              }
 
-              ${updateType === "upgraded" ? `
+              ${
+                updateType === "upgraded"
+                  ? `
               <!-- Upgrade Benefits -->
               <div style="background-color: #D1FAE5; border-left: 4px solid #10B981; padding: 16px 20px; margin-bottom: 24px; border-radius: 4px;">
                 <p style="margin: 0 0 8px 0; color: #171717; font-size: 14px; font-weight: 600;">You now have access to:</p>
@@ -136,7 +154,9 @@ export function generateSubscriptionUpdateHTML({
                   <li>Early access to new features</li>
                 </ul>
               </div>
-              ` : ''}
+              `
+                  : ""
+              }
 
               <!-- Manage Subscription CTA -->
               <div style="text-align: center; margin-bottom: 32px;">
@@ -157,7 +177,7 @@ export function generateSubscriptionUpdateHTML({
                       <a href="https://discord.gg/fabrk" style="color: #007AFF; text-decoration: none; font-size: 14px;">💬 Discord</a>
                     </td>
                     <td>
-                      <a href="mailto:support@fabrk.dev" style="color: #007AFF; text-decoration: none; font-size: 14px;">✉️ Email Support</a>
+                      <a href="mailto:support@fabrek.dev" style="color: #007AFF; text-decoration: none; font-size: 14px;">✉️ Email Support</a>
                     </td>
                   </tr>
                 </table>

@@ -909,7 +909,7 @@ NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE="price_..."
 
 # Email (Resend)
 RESEND_API_KEY="re_..."
-EMAIL_FROM="noreply@fabrk.dev"
+EMAIL_FROM="noreply@fabrek.dev"
 
 # Optional: Rate Limiting (Upstash Redis)
 UPSTASH_REDIS_REST_URL="https://..."
@@ -927,6 +927,6 @@ UPSTASH_REDIS_REST_TOKEN="..."
 
 ---
 
-**Questions? Join the Fabrk Discord or email support@fabrk.dev.**
+**Questions? Join the Fabrk Discord or email support@fabrek.dev.**
 
 **API Reference complete. Happy building! 🚀**

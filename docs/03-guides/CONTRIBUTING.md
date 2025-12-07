@@ -462,7 +462,7 @@ When adding features that need explanation:
 - **GitHub Issues** - Bug reports, feature requests
 - **GitHub Discussions** - General questions, ideas
 - **Discord** - Real-time chat, community support
-- **Email** - support@fabrk.dev for private matters
+- **Email** - support@fabrek.dev for private matters
 
 ### Getting Help
 
@@ -492,8 +492,7 @@ By contributing to Fabrk, you agree that your contributions will be licensed und
 
 If you have questions about contributing:
 
-- Join our [Discord](https://discord.gg/fabrk)
-- Email: support@fabrk.dev
+- Email: support@fabrek.dev
 - Check [GitHub Discussions](https://github.com/yourusername/fabrk/discussions)
 
 ---

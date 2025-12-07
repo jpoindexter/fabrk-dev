@@ -44,7 +44,7 @@ const faqs: FAQ[] = [
     category: "general",
     question: "Do I need to be an expert to use it?",
     answer:
-      "No. The starter kit is designed to be accessible to developers of all skill levels. We include comprehensive documentation, code comments, and a Discord community for support.",
+      "No. The starter kit is designed to be accessible to developers of all skill levels. We include comprehensive documentation, code comments, and email support.",
   },
   // Technical
   {
@@ -76,7 +76,7 @@ const faqs: FAQ[] = [
     category: "payment",
     question: "Is it a one-time payment or subscription?",
     answer:
-      "One-time payment. You pay once and get lifetime access to the starter kit, all updates, and the Discord community. No recurring fees ever.",
+      "One-time payment. You pay once and get lifetime access to the starter kit and all updates. No recurring fees ever.",
   },
   {
     category: "payment",

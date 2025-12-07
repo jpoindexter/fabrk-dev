@@ -346,4 +346,3 @@ A: Edit `src/lib/auth.ts` and add providers from [authjs.dev/getting-started/pro
 
 ---
 
-**Need help?** Email [support@fabrk.dev](mailto:support@fabrk.dev) or join our [Discord](https://discord.gg/fabrk).

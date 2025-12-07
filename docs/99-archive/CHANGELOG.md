@@ -229,7 +229,7 @@ See `/docs/ENV-VALIDATION.md` for complete validation rules.
 If you encounter issues during migration:
 - **Documentation:** Check `/docs/ENV-VALIDATION.md` for environment validation help
 - **Discord:** Join our community for questions
-- **Email:** support@fabrk.dev (<24hr response)
+- **Email:** support@fabrek.dev (<24hr response)
 - **GitHub:** Report bugs via GitHub issues
 
 ---

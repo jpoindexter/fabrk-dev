@@ -345,8 +345,7 @@ These are intentional design decisions to keep the boilerplate minimal and essen
 
 - **Website:** https://fabrk.dev
 - **GitHub:** https://github.com/yourusername/fabrk
-- **Discord:** https://discord.gg/fabrk
-- **Support:** support@fabrk.dev
+- **Support:** support@fabrek.dev
 - **Documentation:** /docs
 
 ---
@@ -387,8 +386,7 @@ Migration guide will be provided when v1.1.0 is released.
 
 ## Support
 
-- **Email:** support@fabrk.dev
-- **Discord:** https://discord.gg/fabrk
+- **Email:** support@fabrek.dev
 - **GitHub Issues:** https://github.com/yourusername/fabrk/issues
 
 ---

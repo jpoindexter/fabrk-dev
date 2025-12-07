@@ -776,4 +776,4 @@ dropdb fabrk-test
 
 **Test your backups. The worst time to discover a backup doesn't work is during a disaster. 💾**
 
-**Questions? Join the Fabrk Discord or email support@fabrk.dev.**
+**Questions? Join the Fabrk Discord or email support@fabrek.dev.**

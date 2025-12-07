@@ -1,3 +1,7 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 ```
 ███████████   █████████   ███████████  ███████████   █████   ████
 ░░███░░░░░░█  ███░░░░░███ ░░███░░░░░███░░███░░░░░███ ░░███   ███░
@@ -8,8 +12,6 @@
  █████       █████   █████ ███████████  █████   █████ █████ ░░████
 ░░░░░       ░░░░░   ░░░░░ ░░░░░░░░░░░  ░░░░░   ░░░░░ ░░░░░   ░░░░
 ```
-
-# CLAUDE.md
 
 > Terminal-first SaaS boilerplate. Ship fast. Look sharp.
 
@@ -146,6 +148,26 @@ src/
 1. **Sharp edges** - `rounded-none` on all elements
 2. **Monospace** - `font-mono` for all UI text
 3. **Command-line feel** - Brackets, prefixes, uppercase
+
+### Design System Tokens (IMPORTANT)
+
+Import `mode` from `@/design-system` for consistent styling:
+
+```tsx
+import { mode } from "@/design-system";
+
+// Use mode tokens in className
+<Button className={cn(mode.radius, mode.font, "w-full text-xs")}>
+  > SUBMIT
+</Button>
+
+<Input className={cn(mode.radius, mode.font, "text-xs")} />
+```
+
+The `mode` object provides:
+- `mode.radius` - Border radius class (`rounded-none` for terminal)
+- `mode.font` - Font family class (`font-mono`)
+- `mode.inputStyle` - Input styling classes
 
 ### Allowed Colors
 
@@ -288,6 +310,93 @@ export default function ButtonPage() {
 // WRONG - missing terminal header
 <DocsCard>Content</DocsCard>
 ```
+
+---
+
+## Template Pages Pattern
+
+All template pages in `src/app/templates/` use a Preview/Code tabbed interface:
+
+```tsx
+"use client";
+
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { CodeBlock } from "@/components/ui/code-block";
+import { Card, CardHeader, CardContent, TemplatePageHeader } from "@/components/ui/card";
+import { mode } from "@/design-system";
+import { cn } from "@/lib/utils";
+
+const templateCode = `// Copyable standalone template code
+export default function Page() {
+  return <div>...</div>;
+}`;
+
+function TemplatePreview() {
+  return (
+    <div className="bg-background/50 flex min-h-[500px] items-center justify-center p-8">
+      {/* Live preview of the template */}
+    </div>
+  );
+}
+
+export default function TemplatePage() {
+  return (
+    <div className="w-full overflow-x-hidden">
+      <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
+        <TemplatePageHeader
+          badge="TEMPLATE_NAME"
+          title="Template Title"
+          description="Brief description"
+        />
+
+        <Tabs defaultValue="preview" className="w-full">
+          <Card>
+            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <TabsList className={cn("h-auto w-auto gap-0 border-0 bg-transparent p-0", mode.radius)}>
+              <TabsTrigger value="preview" className={cn("...", mode.radius, mode.font)}>
+                [PREVIEW]
+              </TabsTrigger>
+              <TabsTrigger value="code" className={cn("...", mode.radius, mode.font)}>
+                [CODE]
+              </TabsTrigger>
+            </TabsList>
+          </Card>
+
+          <TabsContent value="preview" className="mt-6">
+            <Card><CardHeader code="0x01" title="LIVE_PREVIEW" /><TemplatePreview /></Card>
+          </TabsContent>
+
+          <TabsContent value="code" className="mt-6">
+            <Card>
+              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <div className="w-full overflow-x-auto p-4">
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+              </div>
+            </Card>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </div>
+  );
+}
+```
+
+### Brand Icon Colors Exception
+
+Third-party brand icons (Google, GitHub, etc.) require their official colors. Use eslint-disable blocks:
+
+```tsx
+{/* eslint-disable design-system/no-hardcoded-colors -- Google brand colors are intentional */}
+<svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
+  <path d="..." fill="#4285F4" />
+  <path d="..." fill="#34A853" />
+  <path d="..." fill="#FBBC05" />
+  <path d="..." fill="#EA4335" />
+</svg>
+{/* eslint-enable design-system/no-hardcoded-colors */}
+```
+
+**Important:** Always include the reason comment (`-- reason here`) for the disable.
 
 ---
 

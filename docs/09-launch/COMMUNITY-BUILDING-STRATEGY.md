@@ -37,7 +37,6 @@ Focus ONLY on:
 
 **GitHub Discussions (30 minutes)**
 - Enable GitHub Discussions on repo
-- Pin announcement: "Join our Discord community"
 - Create discussion categories:
   - Announcements
   - Q&A
@@ -86,7 +85,6 @@ Create 3-5 case studies:
 
 **Distribution:**
 - Blog post (2,000 words)
-- Twitter thread (15 tweets)
 - Discord announcement
 - GitHub Discussions
 - Email newsletter

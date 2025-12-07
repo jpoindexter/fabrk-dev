@@ -496,8 +496,7 @@ fabrk/
 **Need help?**
 
 - 📖 **Documentation:** [docs/](./docs/)
-- 💬 **Discord:** [Join our community](https://discord.gg/fabrk)
-- 📧 **Email:** support@fabrk.dev (<24hr response)
+- 📧 **Email:** support@fabrek.dev (<24hr response)
 - 🐛 **Bug reports:** [GitHub Issues](https://github.com/yourusername/fabrk/issues)
 
 ---
@@ -508,7 +507,7 @@ fabrk/
 
 We're looking for Fabrk customers who want to share their experience.
 
-Tell us your story: success@fabrk.dev
+Tell us your story: success@fabrek.dev
 
 ---
 

@@ -9,12 +9,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  Badge,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardContent, Badge } from "@/components/ui/card";
 import {
   FileText,
   Ban,
@@ -72,11 +67,7 @@ export default function RefundPage() {
         className="mb-12"
       >
         <Card size="auto" tone="danger">
-          <CardHeader
-            code="0x01"
-            title="NOTICE"
-            icon={<AlertTriangle className="size-4" />}
-          />
+          <CardHeader code="0x01" title="NOTICE" icon={<AlertTriangle className="size-4" />} />
           <CardContent padding="md">
             <p className={cn("text-foreground text-sm", mode.font)}>
               <span className="text-destructive font-semibold">ALL SALES ARE FINAL.</span> Due to
@@ -90,11 +81,7 @@ export default function RefundPage() {
       <div className="space-y-6">
         {/* Section 1 */}
         <Card size="auto">
-          <CardHeader
-            code="0x10"
-            title="NO_REFUNDS_POLICY"
-            icon={<Ban className="size-4" />}
-          />
+          <CardHeader code="0x10" title="NO_REFUNDS_POLICY" icon={<Ban className="size-4" />} />
           <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               Once you gain access to the Fabrk source code and download the files, no refunds are
@@ -110,11 +97,7 @@ export default function RefundPage() {
 
         {/* Section 2 */}
         <Card size="auto">
-          <CardHeader
-            code="0x20"
-            title="WHY_NO_REFUNDS"
-            icon={<FileText className="size-4" />}
-          />
+          <CardHeader code="0x20" title="WHY_NO_REFUNDS" icon={<FileText className="size-4" />} />
           <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               Unlike physical products, digital products provide immediate value upon download:
@@ -158,8 +141,8 @@ export default function RefundPage() {
               <li>├─ Check tech stack and integrations</li>
               <li>
                 └─ Contact{" "}
-                <a href="mailto:support@fabrk.dev" className="text-primary hover:underline">
-                  support@fabrk.dev
+                <a href="mailto:support@fabrek.dev" className="text-primary hover:underline">
+                  support@fabrek.dev
                 </a>{" "}
                 with questions
               </li>
@@ -172,11 +155,7 @@ export default function RefundPage() {
 
         {/* Section 4 */}
         <Card size="auto">
-          <CardHeader
-            code="0x40"
-            title="WHAT_YOU_GET"
-            icon={<Package className="size-4" />}
-          />
+          <CardHeader code="0x40" title="WHAT_YOU_GET" icon={<Package className="size-4" />} />
           <CardContent padding="md">
             <div className="space-y-6">
               <div>
@@ -218,8 +197,8 @@ export default function RefundPage() {
             </p>
             <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
               <li>
-                ├─ <span className="text-foreground">[EMAIL]:</span> support@fabrk.dev for technical
-                questions
+                ├─ <span className="text-foreground">[EMAIL]:</span> support@fabrek.dev for
+                technical questions
               </li>
               <li>
                 ├─ <span className="text-foreground">[DOCS]:</span> 400KB+ of guides and examples
@@ -241,11 +220,7 @@ export default function RefundPage() {
 
         {/* Section 6 - Danger Card */}
         <Card size="auto" tone="danger">
-          <CardHeader
-            code="0x60"
-            title="CHARGEBACKS"
-            icon={<AlertTriangle className="size-4" />}
-          />
+          <CardHeader code="0x60" title="CHARGEBACKS" icon={<AlertTriangle className="size-4" />} />
           <CardContent padding="md">
             <p className={cn("text-foreground mb-4 text-xs", mode.font)}>
               <span className="text-destructive font-semibold">WARNING:</span> Initiating a
@@ -270,7 +245,7 @@ export default function RefundPage() {
               </li>
             </ul>
             <p className={cn("text-muted-foreground mt-4 text-sm", mode.font)}>
-              Have concerns? Contact support@fabrk.dev first. We&apos;re here to help resolve
+              Have concerns? Contact support@fabrek.dev first. We&apos;re here to help resolve
               legitimate issues.
             </p>
           </CardContent>
@@ -278,11 +253,7 @@ export default function RefundPage() {
 
         {/* Section 7 */}
         <Card size="auto">
-          <CardHeader
-            code="0x70"
-            title="EU_CONSUMER_RIGHTS"
-            icon={<Scale className="size-4" />}
-          />
+          <CardHeader code="0x70" title="EU_CONSUMER_RIGHTS" icon={<Scale className="size-4" />} />
           <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               EU consumers have a 14-day withdrawal right under the Consumer Rights Directive
@@ -322,18 +293,14 @@ export default function RefundPage() {
             </ul>
             <p className={cn("text-muted-foreground mt-4 text-sm", mode.font)}>
               Exceptions require documented proof and case-by-case evaluation. Contact
-              support@fabrk.dev with details.
+              support@fabrek.dev with details.
             </p>
           </CardContent>
         </Card>
 
         {/* Section 9 - Governing Law */}
         <Card size="auto">
-          <CardHeader
-            code="0x90"
-            title="GOVERNING_LAW"
-            icon={<Scale className="size-4" />}
-          />
+          <CardHeader code="0x90" title="GOVERNING_LAW" icon={<Scale className="size-4" />} />
           <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               This refund policy is governed by the laws of the Netherlands. Fabrk is operated by a
@@ -355,14 +322,10 @@ export default function RefundPage() {
 
         {/* Section 10 - Dispute Resolution */}
         <Card size="auto">
-          <CardHeader
-            code="0xA0"
-            title="DISPUTE_RESOLUTION"
-            icon={<Gavel className="size-4" />}
-          />
+          <CardHeader code="0xA0" title="DISPUTE_RESOLUTION" icon={<Gavel className="size-4" />} />
           <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
-              We encourage resolving disputes informally first. Contact support@fabrk.dev before
+              We encourage resolving disputes informally first. Contact support@fabrek.dev before
               initiating formal proceedings.
             </p>
             <ul className={cn("text-muted-foreground space-y-1 pl-4 text-sm", mode.font)}>
@@ -396,11 +359,7 @@ export default function RefundPage() {
 
         {/* Section 11 - Acceptance */}
         <Card size="auto">
-          <CardHeader
-            code="0xB0"
-            title="ACCEPTANCE"
-            icon={<CheckCircle className="size-4" />}
-          />
+          <CardHeader code="0xB0" title="ACCEPTANCE" icon={<CheckCircle className="size-4" />} />
           <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               By completing your purchase, you explicitly acknowledge and agree to:
@@ -421,11 +380,7 @@ export default function RefundPage() {
 
         {/* Section 12 - Policy Updates */}
         <Card size="auto">
-          <CardHeader
-            code="0xC0"
-            title="POLICY_UPDATES"
-            icon={<RefreshCw className="size-4" />}
-          />
+          <CardHeader code="0xC0" title="POLICY_UPDATES" icon={<RefreshCw className="size-4" />} />
           <CardContent padding="md">
             <p className={cn("text-muted-foreground text-sm", mode.font)}>
               We may modify this policy at any time. Your purchase is governed by the policy in
@@ -436,11 +391,7 @@ export default function RefundPage() {
 
         {/* Section 13 - Questions */}
         <Card size="auto">
-          <CardHeader
-            code="0xD0"
-            title="QUESTIONS"
-            icon={<HelpCircle className="size-4" />}
-          />
+          <CardHeader code="0xD0" title="QUESTIONS" icon={<HelpCircle className="size-4" />} />
           <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               Have questions about this policy or Fabrk?
@@ -451,13 +402,13 @@ export default function RefundPage() {
                 <Link href="/contact" className="text-primary hover:underline">
                   &gt; CONTACT
                 </Link>{" "}
-                or support@fabrk.dev
+                or support@fabrek.dev
               </li>
               <li>
-                ├─ <span className="text-foreground">[TECHNICAL]:</span> support@fabrk.dev
+                ├─ <span className="text-foreground">[TECHNICAL]:</span> support@fabrek.dev
               </li>
               <li>
-                └─ <span className="text-foreground">[LEGAL]:</span> support@fabrk.dev
+                └─ <span className="text-foreground">[LEGAL]:</span> support@fabrek.dev
               </li>
             </ul>
             <p className={cn("text-muted-foreground mt-4 text-sm", mode.font)}>

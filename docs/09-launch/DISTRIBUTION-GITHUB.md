@@ -373,7 +373,7 @@ if (result.success) {
 
 - ✅ Email with cloning instructions (included in welcome email)
 - ✅ Link to documentation
-- ✅ Provide support contact: `support@fabrk.dev`
+- ✅ Provide support contact: `support@fabrek.dev`
 - ✅ Include troubleshooting guide
 
 ## Migration from Manual GitHub Invitations

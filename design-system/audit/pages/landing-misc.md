@@ -484,10 +484,10 @@ export default function MaintenancePage() {
     Need urgent assistance?
   </p>
   <a
-    href="mailto:support@fabrk.dev"
+    href="mailto:support@fabrek.dev"
     className="text-sm font-semibold text-primary hover:underline"
   >
-    support@fabrk.dev
+    support@fabrek.dev
   </a>
 </div>
 ```
@@ -545,7 +545,7 @@ target="_blank" rel="noopener noreferrer"  // ✓ Security attributes
 
 #### Email Link
 ```tsx
-<a href="mailto:support@fabrk.dev">  // ✓ Semantic mailto
+<a href="mailto:support@fabrek.dev">  // ✓ Semantic mailto
 ```
 
 #### Typography

@@ -62,7 +62,7 @@ Complete timeline and checklist for launching Fabrk on Product Hunt, Hacker News
 - [ ] Email service configured (Resend)
 - [ ] Analytics installed (Plausible or GA4)
 - [ ] Stripe Connect completed
-- [ ] Support email configured (support@fabrk.dev)
+- [ ] Support email configured (support@fabrek.dev)
 
 ---
 
@@ -141,7 +141,6 @@ Complete timeline and checklist for launching Fabrk on Product Hunt, Hacker News
 
 #### Launch Materials
 - [ ] Product Hunt submission ready (draft saved)
-- [ ] Twitter thread ready (copy-pasted, ready to tweet)
 - [ ] Reddit posts ready in notepad
 - [ ] Hacker News post ready
 - [ ] LinkedIn post ready
@@ -251,7 +250,6 @@ Complete timeline and checklist for launching Fabrk on Product Hunt, Hacker News
 
 **Final Push**
 
-- [ ] Post final Twitter thread of the day
 - [ ] Thank everyone for support
 - [ ] Share milestone (if applicable): "We hit #1!" or "50 sales!"
 - [ ] Post in Product Hunt discussions (not self-promotion, genuine help)
@@ -287,7 +285,6 @@ Complete timeline and checklist for launching Fabrk on Product Hunt, Hacker News
 #### Day 1 (Day After Launch)
 - [ ] Post recap tweet with results
 - [ ] Share Product Hunt badge: "Product of the Day"
-- [ ] Post long-form Twitter thread: "Lessons from launching"
 - [ ] Respond to any missed comments/emails
 - [ ] Write blog post: "We launched on Product Hunt"
 - [ ] Update landing page with "Featured on Product Hunt" badge
@@ -326,7 +323,6 @@ Complete timeline and checklist for launching Fabrk on Product Hunt, Hacker News
 - [ ] Share key learnings on Twitter
 - [ ] Update marketing strategy based on data
 - [ ] Iterate on product based on feedback
-- [ ] Plan next marketing push (Twitter threads, guest posts)
 
 ---
 
@@ -410,7 +406,6 @@ Complete timeline and checklist for launching Fabrk on Product Hunt, Hacker News
 - [ ] Phone charged and notifications on
 - [ ] Laptop charged
 - [ ] Product Hunt page live
-- [ ] Twitter thread ready to post
 - [ ] Support email open and monitored
 - [ ] Stripe dashboard open
 - [ ] Analytics dashboard open
@@ -442,7 +437,6 @@ Complete timeline and checklist for launching Fabrk on Product Hunt, Hacker News
 
 ### Monday (Launch Day)
 - Product Hunt launch (12:01 AM PST)
-- Twitter thread (6 AM PST)
 - Reddit r/SideProject (6 AM PST)
 - Hacker News (6 AM PST)
 - LinkedIn post (9 AM PST)
@@ -454,13 +448,11 @@ Complete timeline and checklist for launching Fabrk on Product Hunt, Hacker News
 - Dev.to cross-post
 
 ### Wednesday (Day +2)
-- Twitter thread: "Lessons learned from launch"
 - Reddit r/webdev post
 - Medium article
 
 ### Thursday (Day +3)
 - Customer success story tweet
-- Behind-the-scenes Twitter thread
 
 ### Friday (Day +4)
 - Weekly recap tweet
@@ -540,4 +532,4 @@ Complete timeline and checklist for launching Fabrk on Product Hunt, Hacker News
 
 ---
 
-**Questions? Join the Fabrk Discord or email support@fabrk.dev.**
+**Questions? Join the Fabrk Discord or email support@fabrek.dev.**

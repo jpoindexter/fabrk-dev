@@ -371,7 +371,7 @@ Component usage | [COMPONENT-SHOWCASE.md](./COMPONENT-SHOWCASE.md)
 Deployment issues | [DEPLOYMENT.md](./DEPLOYMENT.md), [TROUBLESHOOTING.md](./TROUBLESHOOTING.md)
 Security concerns | [SECURITY-BEST-PRACTICES.md](./SECURITY-BEST-PRACTICES.md)
 Growth strategy | [GROWTH-TACTICS.md](./GROWTH-TACTICS.md)
-General questions | Discord or support@fabrk.dev
+General questions | Discord or support@fabrek.dev
 
 **Response time:** <24 hours for email, real-time on Discord
 

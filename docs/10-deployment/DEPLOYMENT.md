@@ -429,8 +429,7 @@ Resend error: Domain not verified
 
 ## Need Help?
 
-- **Email:** [support@fabrk.dev](mailto:support@fabrk.dev)
-- **Discord:** [discord.gg/fabrk](https://discord.gg/fabrk)
+- **Email:** [support@fabrek.dev](mailto:support@fabrek.dev)
 - **Docs:** Check [CLAUDE.md](../CLAUDE.md) for architecture details
 
 ---

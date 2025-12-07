@@ -23,7 +23,7 @@ We're looking for Fabrk customers who want to share their experience building wi
 
 ## How to Submit
 
-Email us at **hello@fabrk.dev** with:
+Email us at **hello@fabrek.dev** with:
 
 1. **Your product**: Name, URL, one-liner
 2. **Timeline**: How long did it take to build?
@@ -67,4 +67,4 @@ Once approved, we'll work with you to create a case study following this structu
 
 **Advertise your success story here.**
 
-Contact: hello@fabrk.dev
+Contact: hello@fabrek.dev

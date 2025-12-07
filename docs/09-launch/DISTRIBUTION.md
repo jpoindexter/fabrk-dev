@@ -21,7 +21,7 @@ Fabrk uses a **private GitHub repository** model:
    - Detailed commit messages and documentation
 
 2. **Initial Setup Support** (included)
-   - Email: support@fabrk.dev
+   - Email: support@fabrek.dev
    - Discord community access
    - Onboarding checklist (docs/ONBOARDING-CHECKLIST.md)
    - Custom domain for their documentation wiki (if needed)
@@ -359,8 +359,7 @@ QUICK START:
 5. npm run dev
 
 SUPPORT:
-- Email: support@fabrk.dev
-- Discord: https://discord.gg/fabrk
+- Email: support@fabrek.dev
 - Docs: https://fabrk.dev/docs
 
 LICENSE INFO:
@@ -428,7 +427,7 @@ Welcome aboard!
 
 ### 9.3 Handling Refunds
 
-1. Customer emails support@fabrk.dev requesting refund
+1. Customer emails support@fabrek.dev requesting refund
 2. Confirm within 24 hours
 3. Process refund through Stripe (automatic)
 4. Revoke GitHub access
@@ -468,7 +467,7 @@ Welcome aboard!
 - Resale support provided
 - Non-compete clause typically included
 
-Contact: business@fabrk.dev
+Contact: business@fabrek.dev
 
 ---
 
@@ -574,4 +573,4 @@ A: We'll create a ZIP, but GitHub is recommended for updates/version control.
 **Distribution Model v1.0**
 **Last Updated:** November 22, 2025
 
-For questions: business@fabrk.dev
+For questions: business@fabrek.dev

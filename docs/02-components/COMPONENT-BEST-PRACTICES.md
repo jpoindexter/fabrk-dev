@@ -907,4 +907,4 @@ Before shipping a component, verify:
 
 **Follow these best practices and your components will be fast, accessible, and maintainable. 🚀**
 
-**Questions? Join the Fabrk Discord or email support@fabrk.dev.**
+**Questions? Join the Fabrk Discord or email support@fabrek.dev.**

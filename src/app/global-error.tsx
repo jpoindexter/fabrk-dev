@@ -95,10 +95,10 @@ export default function GlobalError({
                 If this problem persists, please contact support:
               </p>
               <a
-                href="mailto:support@fabrk.dev"
+                href="mailto:support@fabrek.dev"
                 className="text-primary text-sm font-semibold hover:underline"
               >
-                support@fabrk.dev
+                support@fabrek.dev
               </a>
               {error.digest && (
                 <p className="text-muted-foreground mt-2 text-xs">Error ID: {error.digest}</p>

@@ -7,14 +7,7 @@
 
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardFooter,
-  Stat,
-  StatGroup,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardContent, CardFooter, Stat, StatGroup } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ThemeDropdown } from "@/components/theme/theme-dropdown";
 import {
@@ -34,10 +27,17 @@ export default function CardShowcasePage() {
       {/* Page Header */}
       <div className="flex items-start justify-between">
         <div className="space-y-2">
-          <div className={cn("border-border bg-card inline-block border px-4 py-1 text-xs", mode.radius)}>
+          <div
+            className={cn(
+              "border-border bg-card inline-block border px-4 py-1 text-xs",
+              mode.radius
+            )}
+          >
             [ SHOWCASE ] TERMINAL_CARD
           </div>
-          <h1 className={cn("text-2xl font-semibold tracking-tight lg:text-4xl", mode.font)}>TERMINAL_CARD</h1>
+          <h1 className={cn("text-2xl font-semibold tracking-tight lg:text-4xl", mode.font)}>
+            TERMINAL_CARD
+          </h1>
           <p className={cn("text-muted-foreground text-xs", mode.font)}>
             One card shell. Content is composition. Variants control tone and interactivity.
           </p>
@@ -163,11 +163,7 @@ export default function CardShowcasePage() {
         </p>
         <div className="grid gap-6 md:grid-cols-2">
           <Card>
-            <CardHeader
-              code="0x20"
-              title="ACTIONS"
-              icon={<CreditCard className="size-4" />}
-            />
+            <CardHeader code="0x20" title="ACTIONS" icon={<CreditCard className="size-4" />} />
             <CardContent>
               <div className="text-xs">
                 <span className="text-muted-foreground">DESC: </span>
@@ -185,11 +181,7 @@ export default function CardShowcasePage() {
           </Card>
 
           <Card tone="warning">
-            <CardHeader
-              code="0x21"
-              title="NOTICE"
-              icon={<AlertTriangle className="size-4" />}
-            />
+            <CardHeader code="0x21" title="NOTICE" icon={<AlertTriangle className="size-4" />} />
             <CardContent>
               <div className="text-xs">
                 <span className="text-muted-foreground">DESC: </span>
@@ -233,7 +225,7 @@ export default function CardShowcasePage() {
                 {["Authentication", "Billing", "Organizations", "Webhooks"].map(
                   (feature, i, arr) => (
                     <li key={i} className="flex items-start gap-3 text-xs">
-                      <span className="text-primary flex-shrink-0">
+                      <span className="text-primary shrink-0">
                         {i === arr.length - 1 ? "└─" : "├─"}
                       </span>
                       <span className="text-foreground">{feature}</span>

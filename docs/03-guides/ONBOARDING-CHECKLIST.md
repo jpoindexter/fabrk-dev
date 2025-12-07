@@ -574,8 +574,7 @@ Congratulations! 🎉 Your SaaS is ready to launch!
 - **Troubleshooting:** docs/TROUBLESHOOTING.md
 - **API Reference:** docs/API-REFERENCE.md
 - **Security Best Practices:** SECURITY.md
-- **Discord Community:** https://discord.gg/fabrk
-- **Email Support:** support@fabrk.dev
+- **Email Support:** support@fabrek.dev
 
 ---
 
@@ -583,4 +582,4 @@ Congratulations! 🎉 Your SaaS is ready to launch!
 
 **You've got this!** 🚀
 
-**Questions?** → support@fabrk.dev or Discord community
+**Questions?** → support@fabrek.dev or Discord community

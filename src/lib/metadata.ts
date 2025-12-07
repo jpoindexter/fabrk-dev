@@ -11,7 +11,6 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
   ogImage: "/og-image.png",
   links: {
-    twitter: "https://twitter.com/yourhandle",
     github: "https://github.com/yourusername/fabrk-boilerplate",
   },
 };
@@ -54,13 +53,6 @@ export const defaultMetadata: Metadata = {
         alt: siteConfig.name,
       },
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: siteConfig.name,
-    description: siteConfig.description,
-    images: [siteConfig.ogImage],
-    creator: "@yourhandle",
   },
   icons: {
     icon: "/favicon.ico",
@@ -124,13 +116,6 @@ export function generateMetadata({
       locale: "en_US",
       type: "website",
     },
-    twitter: {
-      card: "summary_large_image",
-      title: fullTitle,
-      description: metaDescription,
-      images: [ogImage],
-      creator: "@yourhandle",
-    },
     alternates: {
       canonical: url,
     },
@@ -148,10 +133,7 @@ export function generateOrganizationSchema() {
     description: siteConfig.description,
     url: siteConfig.url,
     logo: `${siteConfig.url}/logo.png`,
-    sameAs: [
-      siteConfig.links.twitter,
-      siteConfig.links.github,
-    ],
+    sameAs: [siteConfig.links.github],
   };
 }
 

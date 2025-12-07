@@ -800,6 +800,6 @@ Cohort      | Week 0 | Week 1 | Week 2 | Week 3
 
 ---
 
-**Questions? Join the Fabrk Discord or email support@fabrk.dev.**
+**Questions? Join the Fabrk Discord or email support@fabrek.dev.**
 
 **Ship fast. Monitor well. Sleep soundly. 😴**

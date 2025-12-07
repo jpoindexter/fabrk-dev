@@ -75,7 +75,7 @@ export const env = {
 
   // Email
   RESEND_API_KEY: process.env.RESEND_API_KEY!,
-  EMAIL_FROM: process.env.EMAIL_FROM || "support@fabrk.dev",
+  EMAIL_FROM: process.env.EMAIL_FROM || "support@fabrek.dev",
   EMAIL_REPLY_TO: process.env.EMAIL_REPLY_TO,
 
   // Cron Jobs

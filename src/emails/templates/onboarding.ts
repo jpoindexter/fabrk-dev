@@ -15,7 +15,12 @@ interface EmailData {
  * Day 1: Welcome Email
  */
 export function welcomeOnboardingEmail(data: EmailData): string {
-  const { name, productName = "Fabrk", companyName = "Fabrk", supportEmail = "support@fabrk.dev" } = data;
+  const {
+    name,
+    productName = "Fabrk",
+    companyName = "Fabrk",
+    supportEmail = "support@fabrek.dev",
+  } = data;
 
   return `
 <!DOCTYPE html>
@@ -258,11 +263,13 @@ export function gettingStartedEmail(data: EmailData): string {
 /**
  * Payment Success Email
  */
-export function paymentSuccessEmail(data: EmailData & {
-  plan: string;
-  amount: number;
-  invoiceUrl?: string;
-}): string {
+export function paymentSuccessEmail(
+  data: EmailData & {
+    plan: string;
+    amount: number;
+    invoiceUrl?: string;
+  }
+): string {
   const { name, plan, amount, invoiceUrl, companyName = "Fabrk" } = data;
 
   return `
@@ -335,7 +342,9 @@ export function paymentSuccessEmail(data: EmailData & {
                 </tr>
               </table>
 
-              ${invoiceUrl ? `
+              ${
+                invoiceUrl
+                  ? `
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
                   <td align="center" style="padding: 10px 0 30px 0;">
@@ -345,7 +354,9 @@ export function paymentSuccessEmail(data: EmailData & {
                   </td>
                 </tr>
               </table>
-              ` : ''}
+              `
+                  : ""
+              }
 
               <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4a5568;">
                 Best regards,<br>

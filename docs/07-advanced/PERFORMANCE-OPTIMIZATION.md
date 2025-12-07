@@ -924,4 +924,4 @@ Fail builds if budget exceeded.
 
 **Performance = User Experience = Conversions. Optimize relentlessly. ⚡️**
 
-**Questions? Join the Fabrk Discord or email support@fabrk.dev.**
+**Questions? Join the Fabrk Discord or email support@fabrek.dev.**

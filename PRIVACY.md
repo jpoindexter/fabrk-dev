@@ -41,7 +41,7 @@ We use the following trusted services:
 - SOC 2 compliant hosting
 
 ### Contact
-For privacy questions: **privacy@fabrk.dev**
+For privacy questions: **privacy@fabrek.dev**
 
 ---
 
