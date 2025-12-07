@@ -188,8 +188,8 @@ export default function BarChartPage() {
         "Color-blind friendly palette",
         "Accessible legend with proper labels",
       ]}
-      previous={{ title: "Donut Chart", href: "/docs/components/donut-chart" }}
-      next={{ title: "Funnel Chart", href: "/docs/components/funnel-chart" }}
+      previous={{ title: "Area Chart", href: "/docs/components/area-chart" }}
+      next={{ title: "Donut Chart", href: "/docs/components/donut-chart" }}
     />
   );
 }

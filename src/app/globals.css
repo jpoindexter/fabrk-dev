@@ -271,9 +271,27 @@
   --muted: 95% 0 0;
   /* base-300 */
   --muted-foreground: 40% 0 0;
+  --destructive: 45% 0.22 13.428;
+  --destructive-foreground: 100% 0 0;
+  --success: 55% 0.18 163.223;
+  --success-foreground: 100% 0 0;
+  --warning: 75% 0.18 84.429;
+  --warning-foreground: 0% 0 0;
+  --info: 60% 0.18 232.661;
+  --info-foreground: 100% 0 0;
   --border: 90% 0 0;
   --input: 90% 0 0;
   --ring: 49.12% 0.3096 275.75;
+  --chart-1: 49% 0.3 275;
+  --chart-2: 55% 0.25 342;
+  --chart-3: 76% 0.18 183;
+  --chart-4: 65% 0.15 120;
+  --chart-5: 70% 0.18 45;
+  --chart-6: 60% 0.22 295;
+  --chart-7: 68% 0.2 25;
+  --chart-8: 72% 0.15 200;
+  --chart-9: 58% 0.12 160;
+  --status-away: 75% 0.15 60;
 }
 
 /* Dark - Professional dark theme - DaisyUI OKLCH values */
@@ -303,9 +321,27 @@
   /* base-300 */
   --muted-foreground: 85% 0.02 256;
   /* Slightly dimmed foreground */
+  --destructive: 55% 0.22 15;
+  --destructive-foreground: 100% 0 0;
+  --success: 65% 0.18 163;
+  --success-foreground: 15% 0.03 163;
+  --warning: 80% 0.18 85;
+  --warning-foreground: 15% 0.03 85;
+  --info: 70% 0.16 230;
+  --info-foreground: 15% 0.02 230;
   --border: 21.15% 0.012 254.09;
   --input: 21.15% 0.012 254.09;
   --ring: 78.9% 0.154 211.53;
+  --chart-1: 78% 0.15 211;
+  --chart-2: 74% 0.17 318;
+  --chart-3: 79% 0.17 183;
+  --chart-4: 70% 0.15 120;
+  --chart-5: 75% 0.18 45;
+  --chart-6: 65% 0.22 295;
+  --chart-7: 72% 0.2 25;
+  --chart-8: 68% 0.15 200;
+  --chart-9: 60% 0.12 160;
+  --status-away: 80% 0.15 60;
 }
 
 /* Cupcake - Soft pastels - DaisyUI OKLCH values */
@@ -334,9 +370,27 @@
   --muted: 91.78% 0.036 73.14;
   /* base-300 */
   --muted-foreground: 50% 0.03 256;
+  --destructive: 55% 0.2 15;
+  --destructive-foreground: 100% 0 0;
+  --success: 65% 0.16 165;
+  --success-foreground: 19% 0.04 165;
+  --warning: 78% 0.15 85;
+  --warning-foreground: 20% 0.04 85;
+  --info: 65% 0.14 230;
+  --info-foreground: 100% 0 0;
   --border: 88% 0.02 73;
   --input: 88% 0.02 73;
   --ring: 76.34% 0.1303 165.48;
+  --chart-1: 76% 0.13 165;
+  --chart-2: 74% 0.17 342;
+  --chart-3: 90% 0.17 91;
+  --chart-4: 68% 0.15 120;
+  --chart-5: 72% 0.16 45;
+  --chart-6: 65% 0.18 295;
+  --chart-7: 70% 0.18 25;
+  --chart-8: 75% 0.14 200;
+  --chart-9: 62% 0.12 160;
+  --status-away: 78% 0.15 60;
 }
 
 /* Bumblebee - Yellow accents - DaisyUI OKLCH values */
@@ -365,9 +419,27 @@
   --muted: 95% 0 0;
   /* base-300 */
   --muted-foreground: 40% 0 0;
+  --destructive: 50% 0.22 15;
+  --destructive-foreground: 100% 0 0;
+  --success: 60% 0.18 163;
+  --success-foreground: 100% 0 0;
+  --warning: 83% 0.19 93;
+  --warning-foreground: 24% 0.05 93;
+  --info: 65% 0.16 230;
+  --info-foreground: 100% 0 0;
   --border: 90% 0 0;
   --input: 90% 0 0;
   --ring: 83.28% 0.1882 93.59;
+  --chart-1: 83% 0.19 93;
+  --chart-2: 79% 0.17 183;
+  --chart-3: 70% 0.15 275;
+  --chart-4: 65% 0.15 120;
+  --chart-5: 72% 0.18 45;
+  --chart-6: 60% 0.2 295;
+  --chart-7: 68% 0.18 25;
+  --chart-8: 75% 0.15 200;
+  --chart-9: 58% 0.12 160;
+  --status-away: 83% 0.19 93;
 }
 
 /* Emerald - Green tones - DaisyUI OKLCH values */
@@ -396,9 +468,27 @@
   --muted: 95% 0 0;
   /* base-300 */
   --muted-foreground: 40% 0 0;
+  --destructive: 50% 0.22 15;
+  --destructive-foreground: 100% 0 0;
+  --success: 76% 0.18 163;
+  --success-foreground: 100% 0 0;
+  --warning: 78% 0.18 85;
+  --warning-foreground: 20% 0.04 85;
+  --info: 65% 0.16 230;
+  --info-foreground: 100% 0 0;
   --border: 90% 0 0;
   --input: 90% 0 0;
   --ring: 76.73% 0.1845 163.22;
+  --chart-1: 76% 0.18 163;
+  --chart-2: 69% 0.33 342;
+  --chart-3: 76% 0.18 183;
+  --chart-4: 65% 0.15 120;
+  --chart-5: 70% 0.18 45;
+  --chart-6: 60% 0.2 295;
+  --chart-7: 68% 0.18 25;
+  --chart-8: 72% 0.15 200;
+  --chart-9: 58% 0.12 93;
+  --status-away: 75% 0.15 60;
 }
 
 /* Corporate - Blue business - DaisyUI OKLCH values */
@@ -427,9 +517,27 @@
   --muted: 95% 0 0;
   /* base-300 */
   --muted-foreground: 50% 0.02 260;
+  --destructive: 50% 0.2 15;
+  --destructive-foreground: 100% 0 0;
+  --success: 55% 0.16 163;
+  --success-foreground: 100% 0 0;
+  --warning: 75% 0.18 85;
+  --warning-foreground: 20% 0.04 85;
+  --info: 53% 0.21 258;
+  --info-foreground: 100% 0 0;
   --border: 90% 0 0;
   --input: 90% 0 0;
   --ring: 53.17% 0.2123 258.94;
+  --chart-1: 53% 0.21 258;
+  --chart-2: 29% 0.04 264;
+  --chart-3: 59% 0.12 189;
+  --chart-4: 65% 0.15 120;
+  --chart-5: 70% 0.16 45;
+  --chart-6: 55% 0.18 295;
+  --chart-7: 62% 0.18 25;
+  --chart-8: 68% 0.14 200;
+  --chart-9: 50% 0.12 160;
+  --status-away: 75% 0.15 60;
 }
 
 /* Synthwave - Neon purple/pink - DaisyUI OKLCH values (REVERSED hierarchy) */
@@ -459,9 +567,27 @@
   /* base-300 - LIGHTEST! */
   --muted-foreground: 75% 0.15 330;
   /* Slightly dimmed */
+  --destructive: 60% 0.25 15;
+  --destructive-foreground: 100% 0 0;
+  --success: 70% 0.2 163;
+  --success-foreground: 15% 0.04 163;
+  --warning: 82% 0.16 91;
+  --warning-foreground: 20% 0.04 91;
+  --info: 68% 0.16 267;
+  --info-foreground: 100% 0 0;
   --border: 25% 0.09 281.288;
   --input: 25% 0.09 281.288;
   --ring: 77.56% 0.2022 343.27;
+  --chart-1: 77% 0.2 343;
+  --chart-2: 68% 0.16 267;
+  --chart-3: 82% 0.16 91;
+  --chart-4: 70% 0.18 120;
+  --chart-5: 75% 0.2 45;
+  --chart-6: 65% 0.22 295;
+  --chart-7: 72% 0.2 25;
+  --chart-8: 68% 0.16 200;
+  --chart-9: 60% 0.14 160;
+  --status-away: 82% 0.16 91;
 }
 
 /* Retro - Vintage warm - DaisyUI OKLCH values (LIGHT theme) */
@@ -490,9 +616,27 @@
   --muted: 84.133% 0.065 90.856;
   /* base-300 */
   --muted-foreground: 35% 0.08 46;
+  --destructive: 50% 0.2 15;
+  --destructive-foreground: 100% 0 0;
+  --success: 60% 0.16 163;
+  --success-foreground: 100% 0 0;
+  --warning: 75% 0.16 85;
+  --warning-foreground: 20% 0.04 85;
+  --info: 62% 0.14 255;
+  --info-foreground: 100% 0 0;
   --border: 80% 0.05 90;
   --input: 80% 0.05 90;
   --ring: 65.27% 0.1789 10.52;
+  --chart-1: 65% 0.18 10;
+  --chart-2: 68% 0.13 185;
+  --chart-3: 62% 0.14 255;
+  --chart-4: 70% 0.15 120;
+  --chart-5: 72% 0.16 45;
+  --chart-6: 58% 0.18 295;
+  --chart-7: 65% 0.18 25;
+  --chart-8: 68% 0.14 200;
+  --chart-9: 55% 0.12 160;
+  --status-away: 75% 0.16 85;
 }
 
 /* Cyberpunk - Pink/yellow tech - DaisyUI OKLCH values (LIGHT theme) */
@@ -521,9 +665,27 @@
   --muted: 85.51% 0.179 104.32;
   /* base-300 */
   --muted-foreground: 30% 0 0;
+  --destructive: 55% 0.28 15;
+  --destructive-foreground: 100% 0 0;
+  --success: 65% 0.2 163;
+  --success-foreground: 15% 0.04 163;
+  --warning: 88% 0.19 96;
+  --warning-foreground: 26% 0.06 96;
+  --info: 80% 0.18 206;
+  --info-foreground: 19% 0.05 206;
   --border: 80% 0.12 104;
   --input: 80% 0.12 104;
   --ring: 72.32% 0.2942 7.03;
+  --chart-1: 72% 0.29 7;
+  --chart-2: 88% 0.19 96;
+  --chart-3: 80% 0.18 206;
+  --chart-4: 70% 0.2 120;
+  --chart-5: 75% 0.22 45;
+  --chart-6: 65% 0.25 295;
+  --chart-7: 72% 0.22 25;
+  --chart-8: 68% 0.18 200;
+  --chart-9: 60% 0.15 160;
+  --status-away: 88% 0.19 96;
 }
 
 /* Valentine - Romantic pink - DaisyUI OKLCH values */
@@ -552,9 +714,27 @@
   --muted: 91.51% 0.024 7.25;
   /* base-300 */
   --muted-foreground: 40% 0.08 3;
+  --destructive: 50% 0.22 15;
+  --destructive-foreground: 100% 0 0;
+  --success: 60% 0.18 163;
+  --success-foreground: 100% 0 0;
+  --warning: 78% 0.16 85;
+  --warning-foreground: 20% 0.04 85;
+  --info: 65% 0.16 230;
+  --info-foreground: 100% 0 0;
   --border: 88% 0.02 7;
   --input: 88% 0.02 7;
   --ring: 69.8% 0.2099 350.72;
+  --chart-1: 69% 0.21 350;
+  --chart-2: 73% 0.18 297;
+  --chart-3: 79% 0.17 183;
+  --chart-4: 65% 0.15 120;
+  --chart-5: 72% 0.16 45;
+  --chart-6: 60% 0.2 295;
+  --chart-7: 68% 0.18 25;
+  --chart-8: 72% 0.14 200;
+  --chart-9: 58% 0.12 160;
+  --status-away: 78% 0.16 85;
 }
 
 /* Halloween - Orange/dark - DaisyUI OKLCH values */
@@ -583,9 +763,27 @@
   --muted: 0% 0 0;
   /* base-300 */
   --muted-foreground: 75% 0 0;
+  --destructive: 55% 0.25 15;
+  --destructive-foreground: 100% 0 0;
+  --success: 80% 0.29 143;
+  --success-foreground: 15% 0.05 143;
+  --warning: 72% 0.2 48;
+  --warning-foreground: 15% 0.04 48;
+  --info: 65% 0.16 230;
+  --info-foreground: 100% 0 0;
   --border: 15% 0 0;
   --input: 15% 0 0;
   --ring: 72.38% 0.2054 48.12;
+  --chart-1: 72% 0.2 48;
+  --chart-2: 59% 0.16 336;
+  --chart-3: 80% 0.29 143;
+  --chart-4: 65% 0.18 120;
+  --chart-5: 70% 0.2 45;
+  --chart-6: 55% 0.22 295;
+  --chart-7: 68% 0.2 25;
+  --chart-8: 62% 0.16 200;
+  --chart-9: 58% 0.14 160;
+  --status-away: 72% 0.2 48;
 }
 
 /* Forest - Nature green - DaisyUI OKLCH values */
@@ -614,9 +812,27 @@
   --muted: 16.203% 0.007 17.911;
   /* base-300 */
   --muted-foreground: 74% 0.003 106;
+  --destructive: 55% 0.22 15;
+  --destructive-foreground: 100% 0 0;
+  --success: 72% 0.2 146;
+  --success-foreground: 14% 0.05 146;
+  --warning: 78% 0.18 85;
+  --warning-foreground: 18% 0.04 85;
+  --info: 68% 0.16 230;
+  --info-foreground: 100% 0 0;
   --border: 16.203% 0.007 17.911;
   --input: 16.203% 0.007 17.911;
   --ring: 72.07% 0.1965 146.02;
+  --chart-1: 72% 0.2 146;
+  --chart-2: 69% 0.33 342;
+  --chart-3: 76% 0.18 183;
+  --chart-4: 65% 0.16 120;
+  --chart-5: 70% 0.18 45;
+  --chart-6: 58% 0.2 295;
+  --chart-7: 68% 0.18 25;
+  --chart-8: 65% 0.15 200;
+  --chart-9: 55% 0.12 160;
+  --status-away: 78% 0.18 85;
 }
 
 /* Aqua - Cyan/blue - DaisyUI OKLCH values */
@@ -645,9 +861,27 @@
   --muted: 22% 0.091 267.935;
   /* base-300 */
   --muted-foreground: 80% 0.04 230;
+  --destructive: 58% 0.22 15;
+  --destructive-foreground: 100% 0 0;
+  --success: 70% 0.18 163;
+  --success-foreground: 14% 0.04 163;
+  --warning: 80% 0.18 85;
+  --warning-foreground: 18% 0.04 85;
+  --info: 76% 0.13 188;
+  --info-foreground: 14% 0.05 188;
   --border: 22% 0.091 267.935;
   --input: 22% 0.091 267.935;
   --ring: 76.78% 0.1312 188.66;
+  --chart-1: 76% 0.13 188;
+  --chart-2: 71% 0.21 343;
+  --chart-3: 75% 0.17 256;
+  --chart-4: 68% 0.16 120;
+  --chart-5: 72% 0.18 45;
+  --chart-6: 62% 0.2 295;
+  --chart-7: 70% 0.18 25;
+  --chart-8: 65% 0.15 200;
+  --chart-9: 58% 0.12 160;
+  --status-away: 80% 0.18 85;
 }
 
 /* Lo-Fi - Minimalist - DaisyUI OKLCH values */
@@ -676,9 +910,27 @@
   --muted: 93% 0 0;
   /* base-300 */
   --muted-foreground: 50% 0 0;
+  --destructive: 50% 0.2 15;
+  --destructive-foreground: 100% 0 0;
+  --success: 55% 0.15 163;
+  --success-foreground: 100% 0 0;
+  --warning: 75% 0.15 85;
+  --warning-foreground: 20% 0.03 85;
+  --info: 55% 0.12 230;
+  --info-foreground: 100% 0 0;
   --border: 88% 0 0;
   --input: 88% 0 0;
   --ring: 21% 0.006 285.885;
+  --chart-1: 21% 0.01 285;
+  --chart-2: 75% 0.01 258;
+  --chart-3: 55% 0.12 200;
+  --chart-4: 65% 0.08 120;
+  --chart-5: 70% 0.1 45;
+  --chart-6: 50% 0.15 295;
+  --chart-7: 60% 0.12 25;
+  --chart-8: 68% 0.08 180;
+  --chart-9: 45% 0.08 160;
+  --status-away: 75% 0.15 85;
 }
 
 /* Pastel - Light pastels - DaisyUI OKLCH values */
@@ -707,9 +959,27 @@
   --muted: 93.33% 0.022 298.99;
   /* base-300 */
   --muted-foreground: 50% 0.025 296;
+  --destructive: 55% 0.18 15;
+  --destructive-foreground: 100% 0 0;
+  --success: 70% 0.14 163;
+  --success-foreground: 100% 0 0;
+  --warning: 85% 0.12 94;
+  --warning-foreground: 26% 0.04 94;
+  --info: 70% 0.12 230;
+  --info-foreground: 100% 0 0;
   --border: 90% 0.015 298;
   --input: 90% 0.015 298;
   --ring: 82.11% 0.1118 331.13;
+  --chart-1: 82% 0.11 331;
+  --chart-2: 79% 0.07 182;
+  --chart-3: 85% 0.12 94;
+  --chart-4: 75% 0.1 120;
+  --chart-5: 78% 0.12 45;
+  --chart-6: 72% 0.14 295;
+  --chart-7: 76% 0.12 25;
+  --chart-8: 80% 0.1 200;
+  --chart-9: 68% 0.08 160;
+  --status-away: 85% 0.12 94;
 }
 
 /* Fantasy - Purple fantasy - DaisyUI OKLCH values */
@@ -738,9 +1008,27 @@
   --muted: 95% 0 0;
   /* base-300 */
   --muted-foreground: 40% 0 0;
+  --destructive: 50% 0.22 15;
+  --destructive-foreground: 100% 0 0;
+  --success: 60% 0.18 163;
+  --success-foreground: 100% 0 0;
+  --warning: 78% 0.18 85;
+  --warning-foreground: 20% 0.04 85;
+  --info: 60% 0.2 230;
+  --info-foreground: 100% 0 0;
   --border: 90% 0 0;
   --input: 90% 0 0;
   --ring: 49.12% 0.3096 275.75;
+  --chart-1: 49% 0.31 275;
+  --chart-2: 69% 0.33 342;
+  --chart-3: 76% 0.18 183;
+  --chart-4: 65% 0.15 120;
+  --chart-5: 70% 0.18 45;
+  --chart-6: 55% 0.25 295;
+  --chart-7: 65% 0.2 25;
+  --chart-8: 70% 0.15 200;
+  --chart-9: 55% 0.12 160;
+  --status-away: 78% 0.18 85;
 }
 
 /* Luxury - High-end dark with gold accents - DaisyUI OKLCH values (REVERSED hierarchy) */
@@ -769,9 +1057,27 @@
   --muted: 23.219% 0.004 308.229;
   /* base-300 - LIGHTEST! */
   --muted-foreground: 80% 0.08 101;
+  --destructive: 55% 0.22 15;
+  --destructive-foreground: 100% 0 0;
+  --success: 70% 0.18 163;
+  --success-foreground: 15% 0.04 163;
+  --warning: 93% 0.11 101;
+  --warning-foreground: 15% 0.02 101;
+  --info: 65% 0.14 230;
+  --info-foreground: 100% 0 0;
   --border: 23.219% 0.004 308.229;
   --input: 23.219% 0.004 308.229;
   --ring: 93.64% 0.1098 101.08;
+  --chart-1: 93% 0.11 101;
+  --chart-2: 54% 0.13 349;
+  --chart-3: 47% 0.05 345;
+  --chart-4: 70% 0.15 120;
+  --chart-5: 75% 0.16 45;
+  --chart-6: 60% 0.18 295;
+  --chart-7: 68% 0.16 25;
+  --chart-8: 65% 0.12 200;
+  --chart-9: 55% 0.1 160;
+  --status-away: 93% 0.11 101;
 }
 
 /* Dracula - Purple developer - DaisyUI OKLCH values */
@@ -800,9 +1106,27 @@
   --muted: 24.787% 0.019 277.508;
   /* base-300 */
   --muted-foreground: 87% 0.006 106;
+  --destructive: 60% 0.25 15;
+  --destructive-foreground: 100% 0 0;
+  --success: 70% 0.2 163;
+  --success-foreground: 15% 0.04 163;
+  --warning: 90% 0.18 96;
+  --warning-foreground: 27% 0.05 96;
+  --info: 68% 0.16 267;
+  --info-foreground: 100% 0 0;
   --border: 24.787% 0.019 277.508;
   --input: 24.787% 0.019 277.508;
   --ring: 77.56% 0.2022 343.27;
+  --chart-1: 77% 0.2 343;
+  --chart-2: 68% 0.16 267;
+  --chart-3: 90% 0.18 96;
+  --chart-4: 70% 0.18 120;
+  --chart-5: 75% 0.2 45;
+  --chart-6: 65% 0.22 295;
+  --chart-7: 72% 0.2 25;
+  --chart-8: 68% 0.16 200;
+  --chart-9: 60% 0.14 160;
+  --status-away: 90% 0.18 96;
 }
 
 /* Autumn - Warm earth tones - DaisyUI OKLCH values */
@@ -831,9 +1155,27 @@
   --muted: 95% 0 0;
   /* base-300 */
   --muted-foreground: 40% 0.06 12;
+  --destructive: 48% 0.17 3;
+  --destructive-foreground: 100% 0 0;
+  --success: 58% 0.16 163;
+  --success-foreground: 100% 0 0;
+  --warning: 62% 0.15 56;
+  --warning-foreground: 100% 0 0;
+  --info: 55% 0.14 230;
+  --info-foreground: 100% 0 0;
   --border: 90% 0 0;
   --input: 90% 0 0;
   --ring: 48.29% 0.1684 3.9;
+  --chart-1: 48% 0.17 3;
+  --chart-2: 62% 0.15 56;
+  --chart-3: 62% 0.08 185;
+  --chart-4: 55% 0.14 120;
+  --chart-5: 65% 0.16 45;
+  --chart-6: 50% 0.18 295;
+  --chart-7: 58% 0.16 25;
+  --chart-8: 60% 0.12 200;
+  --chart-9: 52% 0.1 160;
+  --status-away: 62% 0.15 56;
 }
 
 /* Business - Professional dark blue - DaisyUI OKLCH values */
@@ -862,9 +1204,27 @@
   --muted: 20.944% 0 0;
   /* base-300 */
   --muted-foreground: 75% 0 0;
+  --destructive: 55% 0.22 15;
+  --destructive-foreground: 100% 0 0;
+  --success: 65% 0.18 163;
+  --success-foreground: 15% 0.04 163;
+  --warning: 65% 0.18 44;
+  --warning-foreground: 100% 0 0;
+  --info: 55% 0.14 253;
+  --info-foreground: 100% 0 0;
   --border: 20.944% 0 0;
   --input: 20.944% 0 0;
   --ring: 40.68% 0.1157 253.05;
+  --chart-1: 40% 0.12 253;
+  --chart-2: 43% 0.08 264;
+  --chart-3: 65% 0.18 44;
+  --chart-4: 58% 0.14 120;
+  --chart-5: 62% 0.16 45;
+  --chart-6: 50% 0.18 295;
+  --chart-7: 55% 0.16 25;
+  --chart-8: 60% 0.12 200;
+  --chart-9: 48% 0.1 160;
+  --status-away: 65% 0.18 44;
 }
 
 /* Rich text editor placeholder */

@@ -174,8 +174,8 @@ export default function EmptyStatePage() {
         "Action button uses the Button component with full accessibility support",
         "Flexbox centering works across different container sizes",
       ]}
-      previous={{ title: "Table", href: "/docs/components/table" }}
-      next={{ title: "Stat Card", href: "/docs/components/stat-card" }}
+      previous={{ title: "Data Table Header", href: "/docs/components/data-table-header" }}
+      next={{ title: "Filters Bar", href: "/docs/components/filters-bar" }}
     />
   );
 }

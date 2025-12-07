@@ -226,7 +226,7 @@ const table = useReactTable({
         "Sort state changes announced to screen readers",
       ]}
       previous={{ title: "Code Block", href: "/docs/components/code-block" }}
-      next={{ title: "Date Picker", href: "/docs/components/date-picker" }}
+      next={{ title: "Empty State", href: "/docs/components/empty-state" }}
     />
   );
 }
