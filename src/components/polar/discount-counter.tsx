@@ -45,26 +45,16 @@ export function DiscountCounter() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className={cn(
-        "border-border bg-card flex w-full items-center justify-between gap-2 border px-4 py-4",
-        mode.radius
-      )}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className={cn("bg-muted/50 flex items-center justify-between gap-3 px-3 py-2", mode.radius)}
     >
-      <div className="flex items-center gap-2">
-        <span className="text-foreground font-mono text-sm font-medium">
-          {isAlmostGone ? "🔥" : "🎉"} Early Access Discount:
-        </span>
-        <span
-          className={`font-mono text-sm font-semibold ${isAlmostGone ? "text-destructive" : "text-primary"}`}
-        >
-          {usage.remaining} / {usage.total} left
-        </span>
-      </div>
+      <span className={cn("text-muted-foreground text-xs", mode.font)}>
+        {isAlmostGone ? "🔥" : "🎉"} {usage.remaining}/{usage.total} discounts left
+      </span>
 
       {/* Progress bar */}
-      <div className="bg-muted h-2 max-w-32 flex-1 overflow-hidden">
+      <div className={cn("bg-muted h-1.5 w-16 overflow-hidden", mode.radius)}>
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${percentageUsed}%` }}

@@ -81,41 +81,35 @@ export function PricingSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
+            className="flex flex-col items-center lg:items-start"
           >
             {/* Terminal Card */}
-            <Card size="auto" className="max-w-md">
-              <CardHeader code="0x41" title="PRICING_CONFIG" meta="pricing_config.exe │ PID:3142" />
-              <CardContent padding="lg">
-                {/* Discount Badge */}
-                <div className="mb-6">
-                  <DiscountCounter />
+            <Card size="auto" className="w-full max-w-sm">
+              <CardHeader code="0x41" title="PRICING_CONFIG" />
+              <CardContent padding="md">
+                {/* Price Display - Clean inline layout */}
+                <div className="mb-4">
+                  <div className="flex items-baseline gap-2">
+                    <span className={cn("text-muted-foreground text-sm line-through", mode.font)}>
+                      {config.pricing.fabrk.display.original}
+                    </span>
+                    <span className={cn("text-muted-foreground text-xs", mode.font)}>→</span>
+                    <span className={cn("text-foreground text-2xl font-semibold", mode.font)}>
+                      {config.pricing.fabrk.display.current}
+                    </span>
+                  </div>
+                  <div className={cn("text-muted-foreground mt-1 text-xs", mode.font)}>
+                    ONE_TIME_PAYMENT
+                  </div>
                 </div>
 
-                {/* Price Display */}
-                <Card size="auto" className="mb-6 max-w-xs">
-                  <CardContent padding="sm">
-                    <div className={cn("text-muted-foreground mb-2 text-xs", mode.font)}>
-                      PRICE:
-                    </div>
-                    <div className="flex items-baseline gap-2">
-                      <span className={cn("text-muted-foreground text-sm line-through", mode.font)}>
-                        {config.pricing.fabrk.display.original}
-                      </span>
-                      <span className={cn("text-muted-foreground text-xs", mode.font)}>→</span>
-                      <span className={cn("text-foreground text-2xl font-semibold", mode.font)}>
-                        {config.pricing.fabrk.display.current}
-                      </span>
-                    </div>
-                    <div className={cn("text-muted-foreground mt-2 text-xs", mode.font)}>
-                      TERMS: SINGLE_PAYMENT
-                    </div>
-                  </CardContent>
-                </Card>
+                {/* Discount Counter */}
+                <DiscountCounter />
 
                 {/* Features List */}
-                <div className="mb-6">
-                  <div className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
-                    [ INCLUDES ]─────────────────────
+                <div className="mt-4 mb-4">
+                  <div className={cn("text-muted-foreground mb-3 text-xs", mode.font)}>
+                    [INCLUDES]:
                   </div>
                   <FeatureList>
                     {features.map((feature, idx) => (
@@ -136,24 +130,13 @@ export function PricingSection() {
                 <PolarCheckoutButton className={cn("w-full text-xs", mode.radius, mode.font)}>
                   &gt; GET_LIFETIME_ACCESS
                 </PolarCheckoutButton>
+
+                {/* Trust line */}
+                <div className={cn("text-muted-foreground mt-3 text-center text-xs", mode.font)}>
+                  Secure checkout via Polar │ All sales final
+                </div>
               </CardContent>
             </Card>
-
-            {/* Trust Badge */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              viewport={{ once: true }}
-              className="mt-4"
-            >
-              <Badge
-                code="0x42"
-                label="SECURE"
-                meta="Checkout powered by Polar │ All sales final"
-                className="w-full"
-              />
-            </motion.div>
           </motion.div>
         </div>
       </div>
