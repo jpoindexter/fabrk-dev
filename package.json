@@ -55,11 +55,11 @@
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
-      "eslint --fix --ignore-pattern 'src/app/(marketing)/docs/**/*.tsx'",
+      "eslint --fix",
       "prettier --write"
     ],
     "src/**/*.tsx": [
-      "node .internal/scripts/utilities/pre-commit-audit.mjs --ignore-pattern 'src/app/(marketing)/docs/**/*.tsx'"
+      "node .internal/scripts/utilities/pre-commit-audit.mjs"
     ],
     "src/**/*.{json,css,md}": [
       "prettier --write"
