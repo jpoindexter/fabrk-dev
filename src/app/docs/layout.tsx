@@ -57,8 +57,7 @@ const navigation: NavSection[] = [
     title: "[02] SETUP",
     items: [
       { title: "ENV_VARIABLES", href: "/docs/deployment/environment", icon: Settings },
-      { title: "DATABASE_SETUP", href: "/docs/deployment/database", icon: Database },
-      { title: "DATABASE_PRISMA", href: "/docs/features/database", icon: Database },
+      { title: "DATABASE", href: "/docs/features/database", icon: Database },
     ],
   },
   {
@@ -95,7 +94,7 @@ const navigation: NavSection[] = [
       { title: "PROTECTED_PAGES", href: "/docs/tutorials/protected-pages", icon: Shield },
       { title: "CLOUD_STORAGE", href: "/docs/features/cloud-storage", icon: Cloud },
       { title: "FILE_UPLOADS", href: "/docs/tutorials/file-uploads", icon: Upload },
-      { title: "WEBHOOKS_SETUP", href: "/docs/tutorials/webhooks", icon: Webhook },
+      { title: "WEBHOOKS", href: "/docs/features/webhooks", icon: Webhook },
     ],
   },
   {
@@ -275,6 +274,17 @@ const navigation: NavSection[] = [
           { title: "USAGE_METER", href: "/docs/components/usage-meter", icon: BarChart3 },
         ],
       },
+      {
+        title: "[07.L] LANDING",
+        items: [
+          { title: "HERO", href: "/docs/components/hero", icon: Rocket },
+          { title: "FEATURES", href: "/docs/components/features", icon: Blocks },
+          { title: "PRICING", href: "/docs/components/pricing", icon: CreditCard },
+          { title: "TESTIMONIALS", href: "/docs/components/testimonials", icon: Users },
+          { title: "FAQ", href: "/docs/components/faq", icon: MessageSquare },
+          { title: "FOOTER", href: "/docs/components/footer", icon: Layout },
+        ],
+      },
     ],
   },
   {
@@ -299,7 +309,6 @@ const navigation: NavSection[] = [
       { title: "SEO", href: "/docs/features/seo", icon: Globe },
       { title: "API_KEYS", href: "/docs/features/api-keys", icon: Key },
       { title: "FEATURE_FLAGS", href: "/docs/features/feature-flags", icon: Flag },
-      { title: "WEBHOOKS", href: "/docs/features/webhooks", icon: Webhook },
       { title: "BLOG_SYSTEM", href: "/docs/features/blog", icon: FileText },
       { title: "I18N", href: "/docs/features/i18n", icon: Languages },
       { title: "USER_IMPERSONATION", href: "/docs/features/impersonation", icon: UserCog },
