@@ -27,7 +27,7 @@ const navLinks = [
 const sectionSuffix: Record<string, string> = {
   docs: "_DOCS",
   demo: "_DEMO",
-  templates: "_TEMPLATES",
+  library: "_LIBRARY",
   about: "_ABOUT",
   features: "_FEATURES",
   pricing: "_PRICING",
@@ -116,7 +116,7 @@ export function SiteNavigation() {
           <div className="flex items-center gap-2">
             <ThemeDropdown />
             <Button variant="outline" asChild className={cn(mode.radius, mode.font, "text-xs")}>
-              <Link href="/templates">&gt; VIEW_DEMO</Link>
+              <Link href="/library">&gt; VIEW_DEMO</Link>
             </Button>
             <Button asChild className={cn(mode.radius, mode.font, "text-xs")}>
               <Link href="/#pricing">&gt; GET_STARTED</Link>
