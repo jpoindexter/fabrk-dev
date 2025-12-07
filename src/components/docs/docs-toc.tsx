@@ -1,6 +1,6 @@
 /**
  * DocsToc - Table of Contents right sidebar
- * Extracts h2 headings from page content
+ * Extracts h2 headings from page content with scroll spy
  */
 "use client";
 
@@ -21,16 +21,21 @@ interface DocsTocProps {
 export function DocsToc({ mainRef, className }: DocsTocProps) {
   const pathname = usePathname();
   const [tocHeadings, setTocHeadings] = useState<TocHeading[]>([]);
+  const [activeId, setActiveId] = useState<string>("");
 
+  // Extract headings from page content
   useEffect(() => {
-    // Small delay to ensure content is rendered
     const timer = setTimeout(() => {
       if (mainRef.current) {
         const headings = mainRef.current.querySelectorAll("h2");
         const items = Array.from(headings).map((heading) => {
-          // Create ID from heading text if not present
           const text = heading.textContent || "";
-          const id = heading.id || text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+          const id =
+            heading.id ||
+            text
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g, "-")
+              .replace(/(^-|-$)/g, "");
           if (!heading.id) {
             heading.id = id;
           }
@@ -43,34 +48,71 @@ export function DocsToc({ mainRef, className }: DocsTocProps) {
     return () => clearTimeout(timer);
   }, [pathname, mainRef]);
 
+  // Scroll spy - track active section
+  useEffect(() => {
+    if (tocHeadings.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: "-80px 0px -80% 0px",
+        threshold: 0,
+      }
+    );
+
+    // Observe all h2 headings
+    tocHeadings.forEach(({ id }) => {
+      const element = document.getElementById(id);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, [tocHeadings]);
+
   return (
     <aside
       className={cn(
-        "sticky top-16 hidden h-[calc(100vh-4rem)] w-72 shrink-0 border-l border-border xl:block overflow-y-auto bg-background isolate",
+        "border-border bg-background sticky top-16 isolate hidden h-[calc(100vh-4rem)] w-72 shrink-0 overflow-y-auto border-l xl:block",
         className
       )}
       aria-label="Table of contents"
     >
       <div className="p-4">
-        <div className="mb-4 font-mono text-sm text-muted-foreground">[ON_THIS_PAGE]:</div>
+        <div className="text-muted-foreground mb-4 font-mono text-sm">[ON_THIS_PAGE]:</div>
         {tocHeadings.length > 0 ? (
           <nav>
-            <ul className="space-y-2 font-mono text-xs">
-              {tocHeadings.map((heading) => (
-                <li key={heading.id}>
-                  <a
-                    href={`#${heading.id}`}
-                    className="flex items-start gap-1 text-muted-foreground hover:text-foreground hover:bg-muted px-2 py-1 transition-colors"
-                  >
-                    <span className="shrink-0">&gt;</span>
-                    <span className="wrap-break-word">{heading.text}</span>
-                  </a>
-                </li>
-              ))}
+            <ul className="space-y-1 font-mono text-xs">
+              {tocHeadings.map((heading) => {
+                const isActive = activeId === heading.id;
+                return (
+                  <li key={heading.id}>
+                    <a
+                      href={`#${heading.id}`}
+                      className={cn(
+                        "flex items-start gap-1 px-2 py-1.5 transition-colors",
+                        isActive
+                          ? "border-primary bg-primary/10 text-foreground border-l-2 font-medium"
+                          : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                      )}
+                    >
+                      <span className="shrink-0">&gt;</span>
+                      <span className="break-words">{heading.text}</span>
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
         ) : (
-          <p className="font-mono text-sm text-muted-foreground/50 px-2">No sections found</p>
+          <p className="text-muted-foreground/50 px-2 font-mono text-sm">No sections found</p>
         )}
       </div>
     </aside>
