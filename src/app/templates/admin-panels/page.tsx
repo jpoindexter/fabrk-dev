@@ -1,25 +1,115 @@
 /**
- * ✅ FABRK COMPONENT
+ * FABRK COMPONENT
  * Admin Panels Category - Terminal console style
- * Production-ready ✓
+ * Production-ready
  */
 "use client";
 
 import Link from "next/link";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Settings } from "lucide-react";
+import { Card, CardHeader, CardContent, TemplatePageHeader } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { CodeBlock } from "@/components/ui/code-block";
 import { getCategoryInfo, getTemplatesByCategory } from "../template-data";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
-export default function AdminPanelsPage() {
-  const categoryTemplates = getTemplatesByCategory("admin");
-  const categoryInfo = getCategoryInfo("admin");
+const templateCode = `"use client";
 
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Settings, Users, Webhook } from "lucide-react";
+import { mode } from "@/design-system";
+import { cn } from "@/lib/utils";
+
+export default function AdminPanel() {
   return (
-    <div>
-      <main className="container mx-auto max-w-7xl space-y-12 px-6 py-12">
+    <div className="container mx-auto max-w-7xl space-y-6 p-6">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <h1 className={cn(mode.font, "text-2xl font-semibold")}>
+          Admin Panel
+        </h1>
+        <Button className={cn(mode.radius, mode.font, "text-xs")}>
+          <Settings className="mr-2 h-4 w-4" />
+          &gt; SETTINGS
+        </Button>
+      </div>
+
+      {/* Stats Grid */}
+      <div className="grid gap-4 md:grid-cols-3">
+        <Card>
+          <CardHeader code="0x00" title="TOTAL_USERS" />
+          <CardContent padding="lg">
+            <div className={cn(mode.font, "text-3xl font-semibold")}>1,234</div>
+            <p className={cn(mode.font, "text-muted-foreground text-xs")}>
+              +12% from last month
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader code="0x01" title="ACTIVE_SESSIONS" />
+          <CardContent padding="lg">
+            <div className={cn(mode.font, "text-3xl font-semibold")}>856</div>
+            <p className={cn(mode.font, "text-muted-foreground text-xs")}>
+              Currently online
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader code="0x02" title="API_REQUESTS" />
+          <CardContent padding="lg">
+            <div className={cn(mode.font, "text-3xl font-semibold")}>45.2K</div>
+            <p className={cn(mode.font, "text-muted-foreground text-xs")}>
+              Last 24 hours
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Management Sections */}
+      <div className="grid gap-4 md:grid-cols-2">
+        <Card>
+          <CardHeader code="0x03" title="USER_MANAGEMENT" />
+          <CardContent padding="lg">
+            <p className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+              Manage users, roles, and permissions
+            </p>
+            <Button className={cn(mode.radius, mode.font, "text-xs")}>
+              <Users className="mr-2 h-4 w-4" />
+              &gt; MANAGE_USERS
+            </Button>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader code="0x04" title="WEBHOOKS" />
+          <CardContent padding="lg">
+            <p className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+              Configure and monitor webhooks
+            </p>
+            <Button className={cn(mode.radius, mode.font, "text-xs")}>
+              <Webhook className="mr-2 h-4 w-4" />
+              &gt; MANAGE_WEBHOOKS
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+}`;
+
+const categoryTemplates = getTemplatesByCategory("admin");
+const categoryInfo = getCategoryInfo("admin");
+
+function AdminPanelsPreview() {
+  return (
+    <div className="bg-background/50 min-h-[600px] p-4 sm:p-8">
+      <div className="space-y-6">
         {/* Category Header */}
-        <section className="space-y-4">
+        <div className="space-y-4">
           <div className="border-border inline-block border px-4 py-1">
             <span className={cn(mode.font, "text-muted-foreground text-xs")}>
               [CATEGORY]: ADMIN_PANELS
@@ -32,7 +122,7 @@ export default function AdminPanelsPage() {
               COUNT: {categoryTemplates.length}
             </span>
           </div>
-        </section>
+        </div>
 
         {/* Templates Grid */}
         <div className="grid gap-4 md:grid-cols-2">
@@ -112,14 +202,99 @@ export default function AdminPanelsPage() {
             </Link>
           ))}
         </div>
+      </div>
+    </div>
+  );
+}
 
-        {/* Template Features Card */}
-        <Card>
-          <CardHeader code="0x00" title="ADMIN_PANEL_FEATURES" />
-          <CardContent padding="lg">
-            <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
-              [ADMIN_PANEL_TEMPLATES]:
+export default function AdminPanelsPage() {
+  return (
+    <div className="w-full overflow-x-hidden">
+      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
+        {/* Header */}
+        <TemplatePageHeader
+          badge="ADMIN_PANELS"
+          title="Admin Panels"
+          description="Backend admin interfaces for user management, webhooks, and system monitoring"
+        />
+
+        {/* Preview/Code Tabs */}
+        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
+          {/* Tab Navigation Card */}
+          <Card>
+            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <div className="flex items-center justify-between">
+              <TabsList
+                className={cn(
+                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  mode.radius
+                )}
+              >
+                <TabsTrigger
+                  value="preview"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  [PREVIEW]
+                </TabsTrigger>
+                <TabsTrigger
+                  value="code"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  [CODE]
+                </TabsTrigger>
+              </TabsList>
             </div>
+          </Card>
+
+          {/* Preview Tab Content */}
+          <TabsContent value="preview" className="mt-6 w-full max-w-full">
+            <Card className="overflow-hidden">
+              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <AdminPanelsPreview />
+            </Card>
+          </TabsContent>
+
+          {/* Code Tab Content */}
+          <TabsContent value="code" className="mt-6 w-full max-w-full">
+            <Card className="overflow-hidden">
+              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <div className="w-full max-w-full overflow-x-auto p-4">
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+              </div>
+            </Card>
+          </TabsContent>
+        </Tabs>
+
+        {/* File Structure */}
+        <Card>
+          <CardHeader code="0x02" title="FILE_STRUCTURE" />
+          <CardContent padding="md">
+            <div className={cn(mode.font, "space-y-1 text-xs")}>
+              <div className="text-muted-foreground">[FILES]:</div>
+              <div className="space-y-1 pl-4">
+                <div>
+                  <span className="text-primary">app/</span>
+                  <span className="text-muted-foreground">admin/</span>
+                  <span className="text-foreground">page.tsx</span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Features */}
+        <Card>
+          <CardHeader code="0x03" title="FEATURES" />
+          <CardContent padding="md">
             <div className={cn(mode.font, "space-y-2 text-xs")}>
               <div>
                 <span className="text-success">&gt;</span> User management with role-based access
@@ -142,10 +317,13 @@ export default function AdminPanelsPage() {
               <div>
                 <span className="text-success">&gt;</span> Webhook management and delivery history
               </div>
+              <div>
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
+              </div>
             </div>
           </CardContent>
         </Card>
-      </main>
+      </div>
     </div>
   );
 }

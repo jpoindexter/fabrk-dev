@@ -9,12 +9,8 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  PageBadge,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardContent, PageBadge } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { CodeBlock } from "@/components/ui/code-block";
 import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
 import Link from "next/link";
@@ -68,8 +64,6 @@ const mockArticle = {
       language: "typescript",
       content: `// app/api/users/route.ts
 import { NextResponse } from "next/server";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
 
 export async function GET() {
   const users = await prisma.user.findMany();
@@ -130,15 +124,165 @@ export async function POST(request: Request) {
   tags: ["Next.js", "API", "TypeScript", "Zod"],
 };
 
-export default function BlogPostTemplate() {
+const templateCode = `"use client";
+
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { CodeBlock } from "@/components/ui/code-block";
+import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
+import Link from "next/link";
+import { mode } from "@/design-system";
+import { cn } from "@/lib/utils";
+
+const mockArticle = {
+  title: "Building Scalable APIs with Next.js 15",
+  category: "Engineering",
+  author: {
+    name: "Alex Chen",
+    avatar: null,
+    role: "Senior Engineer",
+  },
+  date: "Dec 1, 2024",
+  readTime: "8 min read",
+  content: [
+    {
+      type: "paragraph",
+      content: "Next.js 15 introduces powerful new patterns for building APIs...",
+    },
+    {
+      type: "heading",
+      content: "Getting Started",
+    },
+    {
+      type: "code",
+      language: "typescript",
+      content: "// Your code here",
+    },
+  ],
+  tags: ["Next.js", "API", "TypeScript", "Zod"],
+};
+
+export default function BlogPostPage() {
   return (
     <div className="bg-background min-h-screen">
       <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
-        {/* Template Badge */}
-        <div className="mb-8">
-          <PageBadge>BLOG_POST</PageBadge>
+        {/* Back Link */}
+        <Link
+          href="/blog"
+          className="text-muted-foreground hover:text-foreground inline-flex items-center gap-2 text-sm transition-colors"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Back to Blog
+        </Link>
+
+        {/* Article Header */}
+        <header className="mb-12">
+          <Badge className={cn(mode.radius, mode.font, "mb-4 text-xs")}>
+            {mockArticle.category}
+          </Badge>
+          <h1 className={cn(mode.font, "mb-6 text-3xl font-semibold md:text-4xl")}>
+            {mockArticle.title}
+          </h1>
+          <div className="flex flex-wrap items-center gap-4">
+            <div className="flex items-center gap-4">
+              <Avatar className={cn(mode.radius, "h-10 w-10 border border-border")}>
+                <AvatarFallback className={cn(mode.radius, mode.font, "text-xs")}>
+                  {mockArticle.author.name.split(" ").map(n => n[0]).join("")}
+                </AvatarFallback>
+              </Avatar>
+              <div>
+                <div className={cn(mode.font, "text-sm font-medium")}>
+                  {mockArticle.author.name}
+                </div>
+                <div className={cn(mode.font, "text-xs text-muted-foreground")}>
+                  {mockArticle.author.role}
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center gap-4 text-xs text-muted-foreground">
+              <div className="flex items-center gap-1">
+                <Calendar className="h-3 w-3" />
+                {mockArticle.date}
+              </div>
+              <div className="flex items-center gap-1">
+                <Clock className="h-3 w-3" />
+                {mockArticle.readTime}
+              </div>
+            </div>
+          </div>
+        </header>
+
+        {/* Featured Image Placeholder */}
+        <div className="border border-border bg-muted/30 mb-12 flex aspect-video items-center justify-center">
+          <span className="font-mono text-sm text-muted-foreground">[FEATURED_IMAGE]</span>
         </div>
 
+        {/* Article Content */}
+        <article className="mb-12 space-y-6">
+          {mockArticle.content.map((block, index) => {
+            if (block.type === "heading") {
+              return (
+                <h2
+                  key={index}
+                  className={cn(
+                    mode.font,
+                    "border-b border-border mt-10 pb-2 text-xl font-semibold"
+                  )}
+                >
+                  {block.content}
+                </h2>
+              );
+            }
+
+            if (block.type === "paragraph") {
+              return (
+                <p key={index} className={cn(mode.font, "text-sm text-muted-foreground")}>
+                  {block.content}
+                </p>
+              );
+            }
+
+            if (block.type === "code") {
+              return <CodeBlock key={index} code={block.content} language={block.language} />;
+            }
+
+            return null;
+          })}
+        </article>
+
+        {/* Tags */}
+        <div className="border-t border-border mb-12 pt-6">
+          <div className="flex flex-wrap gap-2">
+            {mockArticle.tags.map((tag) => (
+              <Badge key={tag} variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
+                #{tag}
+              </Badge>
+            ))}
+          </div>
+        </div>
+
+        {/* Share + Actions */}
+        <div className="border-t border-border flex items-center justify-between pt-6">
+          <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, "text-xs")}>
+            <Share2 className="mr-2 h-3 w-3" />
+            Share
+          </Button>
+          <Link href="/blog">
+            <Button variant="ghost" size="sm" className={cn(mode.radius, mode.font, "text-xs")}>
+              View all posts →
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}`;
+
+function BlogPostPreview() {
+  return (
+    <div className="bg-background/50 min-h-[800px] p-4 sm:p-8">
+      <div className="bg-background mx-auto max-w-4xl space-y-6 p-6">
         {/* Back Link */}
         <Link
           href="/templates/blog"
@@ -153,17 +297,12 @@ export default function BlogPostTemplate() {
 
         {/* Article Header */}
         <header className="mb-12">
-          {/* Category */}
           <Badge className={cn(mode.radius, mode.font, "mb-4 text-xs")}>
             {mockArticle.category}
           </Badge>
-
-          {/* Title */}
           <h1 className={cn(mode.font, "mb-6 text-3xl leading-tight font-semibold md:text-4xl")}>
             {mockArticle.title}
           </h1>
-
-          {/* Meta: Author + Date + Read Time */}
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-4">
               <Avatar className={cn(mode.radius, "border-border h-10 w-10 border")}>
@@ -184,7 +323,6 @@ export default function BlogPostTemplate() {
                 </div>
               </div>
             </div>
-
             <div className={cn(mode.font, "text-muted-foreground flex items-center gap-4 text-xs")}>
               <div className="flex items-center gap-1">
                 <Calendar className="h-3 w-3" />
@@ -262,26 +400,113 @@ export default function BlogPostTemplate() {
             </Button>
           </Link>
         </div>
+      </div>
+    </div>
+  );
+}
+
+export default function BlogPostTemplate() {
+  return (
+    <div className="w-full overflow-x-hidden">
+      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
+        {/* Template Badge */}
+        <div className="mb-8">
+          <PageBadge>BLOG_POST</PageBadge>
+        </div>
+
+        {/* Preview/Code Tabs */}
+        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
+          {/* Tab Navigation Card */}
+          <Card>
+            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <div className="flex items-center justify-between">
+              <TabsList
+                className={cn(
+                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  mode.radius
+                )}
+              >
+                <TabsTrigger
+                  value="preview"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  [PREVIEW]
+                </TabsTrigger>
+                <TabsTrigger
+                  value="code"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  [CODE]
+                </TabsTrigger>
+              </TabsList>
+            </div>
+          </Card>
+
+          {/* Preview Tab Content */}
+          <TabsContent value="preview" className="mt-6 w-full max-w-full">
+            <Card className="overflow-hidden">
+              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <BlogPostPreview />
+            </Card>
+          </TabsContent>
+
+          {/* Code Tab Content */}
+          <TabsContent value="code" className="mt-6 w-full max-w-full">
+            <Card className="overflow-hidden">
+              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <div className="w-full max-w-full overflow-x-auto p-4">
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+              </div>
+            </Card>
+          </TabsContent>
+        </Tabs>
+
+        {/* File Structure */}
+        <Card>
+          <CardHeader code="0x02" title="FILE_STRUCTURE" />
+          <CardContent padding="md">
+            <div className={cn(mode.font, "space-y-1 text-xs")}>
+              <div className="text-muted-foreground">[FILES]:</div>
+              <div className="space-y-1 pl-4">
+                <div>
+                  <span className="text-primary">app/</span>
+                  <span className="text-muted-foreground">blog/</span>
+                  <span className="text-muted-foreground">[slug]/</span>
+                  <span className="text-foreground">page.tsx</span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Features Note */}
         <Card>
-          <CardHeader code="0x00" title="TEMPLATE_FEATURES" />
+          <CardHeader code="0x03" title="TEMPLATE_FEATURES" />
           <CardContent padding="md">
             <div className={cn(mode.font, "space-y-1 text-xs")}>
               <div>
-                <span className="text-success">✓</span> Clean, centered single-column layout
+                <span className="text-success">&gt;</span> Clean, centered single-column layout
               </div>
               <div>
-                <span className="text-success">✓</span> Author + date + read time header
+                <span className="text-success">&gt;</span> Author + date + read time header
               </div>
               <div>
-                <span className="text-success">✓</span> Code blocks with copy functionality
+                <span className="text-success">&gt;</span> Code blocks with copy functionality
               </div>
               <div>
-                <span className="text-success">✓</span> Tags and share actions
+                <span className="text-success">&gt;</span> Tags and share actions
               </div>
               <div>
-                <span className="text-success">✓</span> Industry-standard Vercel/Next.js pattern
+                <span className="text-success">&gt;</span> Industry-standard Vercel/Next.js pattern
               </div>
             </div>
           </CardContent>

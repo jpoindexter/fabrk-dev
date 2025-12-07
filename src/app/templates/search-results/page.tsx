@@ -7,13 +7,76 @@
 "use client";
 
 import { useState } from "react";
+import { Search } from "lucide-react";
+import { TemplatePageHeader, Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { CodeBlock } from "@/components/ui/code-block";
 import { SearchBar } from "./components/search-bar";
 import { FiltersSidebar } from "./components/filters-sidebar";
 import { ResultsHeader } from "./components/results-header";
 import { ResultsGrid } from "./components/results-grid";
 import { Pagination } from "./components/pagination";
-import { FeaturesCard } from "./components/features-card";
-import { TemplatePageHeader } from "@/components/ui/card";
+import { mode } from "@/design-system";
+import { cn } from "@/lib/utils";
+
+const templateCode = `"use client";
+
+import { useState } from "react";
+import { Search } from "lucide-react";
+import { Card, CardHeader } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { mode } from "@/design-system";
+import { cn } from "@/lib/utils";
+
+export default function SearchResults() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [sortBy, setSortBy] = useState("relevance");
+
+  return (
+    <div className="container mx-auto max-w-7xl space-y-6 p-6">
+      {/* Search Bar */}
+      <Card>
+        <CardHeader code="0x00" title="SEARCH" />
+        <div className="p-4">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search..."
+              className={cn(mode.radius, mode.font, "pl-10 text-xs")}
+            />
+          </div>
+        </div>
+      </Card>
+
+      {/* Main Content */}
+      <div className="flex flex-col gap-6 md:flex-row">
+        {/* Filters Sidebar */}
+        <aside className="w-full md:w-64">
+          <Card>
+            <CardHeader code="0x01" title="FILTERS" />
+            <div className="p-4">
+              {/* Filter options */}
+            </div>
+          </Card>
+        </aside>
+
+        {/* Results */}
+        <div className="flex-1 space-y-4">
+          <Card>
+            <CardHeader code="0x02" title="RESULTS" />
+            <div className="p-4">
+              {/* Results grid */}
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+}`;
 
 const mockResults = [
   {
@@ -52,24 +115,6 @@ const mockResults = [
     rating: 4.9,
     updated: "5 days ago",
   },
-  {
-    id: "5",
-    title: "Form Builder",
-    description: "Dynamic form builder with validation, custom fields, and multi-step support.",
-    category: "UI Components",
-    tags: ["form", "validation", "input"],
-    rating: 4.6,
-    updated: "1 day ago",
-  },
-  {
-    id: "6",
-    title: "Notification System",
-    description: "Toast notifications, alerts, and in-app notification center.",
-    category: "UI Components",
-    tags: ["notification", "toast", "alert"],
-    rating: 4.5,
-    updated: "4 days ago",
-  },
 ];
 
 const filterCategories = [
@@ -88,7 +133,7 @@ const filterTags = [
   { id: "responsive", label: "responsive" },
 ];
 
-export default function SearchResultsTemplate() {
+function SearchResultsPreview() {
   const [searchQuery, setSearchQuery] = useState("components");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [sortBy, setSortBy] = useState("relevance");
@@ -108,15 +153,8 @@ export default function SearchResultsTemplate() {
   };
 
   return (
-    <div>
-      <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
-        {/* Header */}
-        <TemplatePageHeader
-          badge="SEARCH_RESULTS"
-          title="Search Results"
-          description="Search interface with filters, sorting, and pagination"
-        />
-
+    <div className="bg-background/50 min-h-[600px] p-4 sm:p-8">
+      <div className="space-y-6">
         {/* Search Bar */}
         <SearchBar
           searchQuery={searchQuery}
@@ -152,9 +190,124 @@ export default function SearchResultsTemplate() {
             <Pagination currentPage={currentPage} totalPages={5} onPageChange={setCurrentPage} />
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
 
-        {/* Features Card */}
-        <FeaturesCard />
+export default function SearchResultsTemplate() {
+  return (
+    <div className="w-full overflow-x-hidden">
+      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
+        {/* Header */}
+        <TemplatePageHeader
+          badge="SEARCH_RESULTS"
+          title="Search Results"
+          description="Search interface with filters, sorting, and pagination"
+        />
+
+        {/* Preview/Code Tabs */}
+        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
+          {/* Tab Navigation Card */}
+          <Card>
+            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <div className="flex items-center justify-between">
+              <TabsList
+                className={cn(
+                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  mode.radius
+                )}
+              >
+                <TabsTrigger
+                  value="preview"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  [PREVIEW]
+                </TabsTrigger>
+                <TabsTrigger
+                  value="code"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  [CODE]
+                </TabsTrigger>
+              </TabsList>
+            </div>
+          </Card>
+
+          {/* Preview Tab Content */}
+          <TabsContent value="preview" className="mt-6 w-full max-w-full">
+            <Card className="overflow-hidden">
+              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <SearchResultsPreview />
+            </Card>
+          </TabsContent>
+
+          {/* Code Tab Content */}
+          <TabsContent value="code" className="mt-6 w-full max-w-full">
+            <Card className="overflow-hidden">
+              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <div className="w-full max-w-full overflow-x-auto p-4">
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+              </div>
+            </Card>
+          </TabsContent>
+        </Tabs>
+
+        {/* File Structure */}
+        <Card>
+          <CardHeader code="0x02" title="FILE_STRUCTURE" />
+          <CardContent padding="md">
+            <div className={cn(mode.font, "space-y-1 text-xs")}>
+              <div className="text-muted-foreground">[FILES]:</div>
+              <div className="space-y-1 pl-4">
+                <div>
+                  <span className="text-primary">app/</span>
+                  <span className="text-muted-foreground">search/</span>
+                  <span className="text-foreground">page.tsx</span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Features */}
+        <Card>
+          <CardHeader code="0x03" title="FEATURES" />
+          <CardContent padding="md">
+            <div className={cn(mode.font, "space-y-2 text-xs")}>
+              <div>
+                <span className="text-success">&gt;</span> Search input with real-time filtering
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Category and tag filters
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Sorting options (relevance, date, rating)
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Grid/list view toggle
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Pagination controls
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Responsive sidebar
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

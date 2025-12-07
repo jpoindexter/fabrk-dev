@@ -1,128 +1,113 @@
 /**
- * FABRK COMPONENT
  * Empty States Template - Terminal console style
- * Production-ready
+ * Industry-standard Preview/Code tabbed interface
  */
-
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  TemplatePageHeader,
-  FeaturesCard,
-} from "@/components/ui/card";
-import {
-  FileQuestion,
-  Search,
-  Inbox,
-  AlertCircle,
-  Plus,
-  RefreshCw,
-  Upload,
-  FolderOpen,
-  Users,
-  ShoppingCart,
-  Bell,
-  BarChart,
-} from "lucide-react";
+import { Card, CardHeader, CardContent, TemplatePageHeader } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { CodeBlock } from "@/components/ui/code-block";
+import { Inbox, Plus, Search } from "lucide-react";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
-const emptyStates = [
-  {
-    id: "no-data",
-    title: "No Data Yet",
-    description: "Start by adding your first item to see it appear here.",
-    icon: Inbox,
-    actions: [{ label: "ADD_FIRST_ITEM", primary: true, icon: Plus }],
-    terminal: ["$ query --table=items", "RESULT: 0 rows returned", "STATUS: empty_dataset"],
-  },
-  {
-    id: "first-time",
-    title: "Welcome to Your Dashboard",
-    description: "This is your workspace. Let's get you set up with your first project.",
-    icon: FolderOpen,
-    actions: [
-      { label: "CREATE_PROJECT", primary: true, icon: Plus },
-      { label: "IMPORT_DATA", primary: false, icon: Upload },
-    ],
-    terminal: [
-      "$ user.onboarding --status",
-      "PROJECTS: 0",
-      "SETUP_COMPLETE: false",
-      "HINT: create_first_project",
-    ],
-  },
-  {
-    id: "search-empty",
-    title: "No Results Found",
-    description: "We couldn't find anything matching your search. Try different keywords.",
-    icon: Search,
-    actions: [{ label: "CLEAR_SEARCH", primary: false, icon: RefreshCw }],
-    terminal: ['$ search --query="foobar123"', "MATCHES: 0", "SUGGESTIONS: try_different_keywords"],
-  },
-  {
-    id: "error-state",
-    title: "Something Went Wrong",
-    description: "We encountered an error loading your data. Please try again.",
-    icon: AlertCircle,
-    actions: [{ label: "TRY_AGAIN", primary: true, icon: RefreshCw }],
-    terminal: [
-      "$ fetch --resource=data",
-      "ERROR: connection_timeout",
-      "CODE: ERR_NETWORK_500",
-      "RETRY: recommended",
-    ],
-  },
-  {
-    id: "no-team",
-    title: "No Team Members",
-    description: "You're flying solo! Invite team members to collaborate.",
-    icon: Users,
-    actions: [{ label: "INVITE_MEMBER", primary: true, icon: Plus }],
-    terminal: ["$ team.list --project=current", "MEMBERS: 1 (you)", "HINT: invite_collaborators"],
-  },
-  {
-    id: "empty-cart",
-    title: "Your Cart is Empty",
-    description: "Looks like you haven't added anything yet. Browse our products.",
-    icon: ShoppingCart,
-    actions: [{ label: "BROWSE_PRODUCTS", primary: true, icon: Search }],
-    terminal: ["$ cart.items --user=current", "ITEMS: 0", "SUBTOTAL: $0.00", "STATUS: empty"],
-  },
-  {
-    id: "no-notifications",
-    title: "All Caught Up!",
-    description: "You have no new notifications. Check back later.",
-    icon: Bell,
-    actions: [{ label: "NOTIFICATION_SETTINGS", primary: false, icon: null }],
-    terminal: [
-      "$ notifications.unread --count",
-      "UNREAD: 0",
-      "LAST_CHECK: just now",
-      "STATUS: all_read",
-    ],
-  },
-  {
-    id: "no-analytics",
-    title: "No Analytics Data",
-    description: "Start tracking events to see your analytics dashboard.",
-    icon: BarChart,
-    actions: [
-      { label: "SETUP_TRACKING", primary: true, icon: Plus },
-      { label: "VIEW_DOCS", primary: false, icon: FileQuestion },
-    ],
-    terminal: ["$ analytics.summary --period=30d", "EVENTS: 0", "HINT: install_tracking_script"],
-  },
-];
+const templateCode = `"use client";
+
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Inbox, Plus } from "lucide-react";
+import { mode } from "@/design-system";
+import { cn } from "@/lib/utils";
+
+export default function EmptyStatePage() {
+  return (
+    <div className="flex min-h-screen items-center justify-center p-4">
+      <div className="mx-auto max-w-lg text-center">
+        {/* Icon */}
+        <div className="border-border bg-muted/30 mx-auto flex h-16 w-16 items-center justify-center border">
+          <Inbox className="text-muted-foreground h-8 w-8" />
+        </div>
+
+        {/* Title & Description */}
+        <div className="mt-4">
+          <h3 className={cn(mode.font, "mb-1 text-lg font-semibold")}>
+            No Data Yet
+          </h3>
+          <p className={cn(mode.font, "text-muted-foreground text-xs")}>
+            Start by adding your first item to see it appear here.
+          </p>
+        </div>
+
+        {/* Terminal Output */}
+        <Card className="mt-4">
+          <CardHeader code="0x00" title="OUTPUT" />
+          <CardContent>
+            <div className="space-y-0.5 text-xs">
+              <div className="text-success">$ query --table=items</div>
+              <div>RESULT: 0 rows returned</div>
+              <div>STATUS: empty_dataset</div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Action */}
+        <div className="mt-4 flex items-center justify-center">
+          <Button className={cn(mode.radius, mode.font, "text-xs")}>
+            <Plus className="mr-1 h-3 w-3" />
+            &gt; ADD_FIRST_ITEM
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}`;
+
+function EmptyStatesPreview() {
+  return (
+    <div className="bg-background/50 flex min-h-[600px] items-center justify-center p-8">
+      <div className="mx-auto max-w-lg text-center">
+        {/* Icon */}
+        <div className="border-border bg-muted/30 mx-auto flex h-16 w-16 items-center justify-center border">
+          <Inbox className="text-muted-foreground h-8 w-8" />
+        </div>
+
+        {/* Title & Description */}
+        <div className="mt-4">
+          <h3 className={cn(mode.font, "mb-1 text-lg font-semibold")}>No Data Yet</h3>
+          <p className={cn(mode.font, "text-muted-foreground text-xs")}>
+            Start by adding your first item to see it appear here.
+          </p>
+        </div>
+
+        {/* Terminal Output */}
+        <Card className="mt-4">
+          <CardHeader code="0x00" title="OUTPUT" />
+          <CardContent>
+            <div className="space-y-0.5 text-xs">
+              <div className="text-success">$ query --table=items</div>
+              <div>RESULT: 0 rows returned</div>
+              <div>STATUS: empty_dataset</div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Action */}
+        <div className="mt-4 flex items-center justify-center">
+          <Button className={cn(mode.radius, mode.font, "text-xs")}>
+            <Plus className="mr-1 h-3 w-3" />
+            &gt; ADD_FIRST_ITEM
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function EmptyStatesTemplate() {
   return (
-    <div>
-      <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
+    <div className="w-full overflow-x-hidden">
+      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
         {/* Header */}
         <TemplatePageHeader
           badge="EMPTY_STATES"
@@ -130,99 +115,66 @@ export default function EmptyStatesTemplate() {
           description="Helpful empty state patterns for various scenarios"
         />
 
-        {/* Empty State Grid */}
-        <div className="grid gap-6 md:grid-cols-2">
-          {emptyStates.map((state, index) => {
-            const Icon = state.icon;
-            return (
-              <Card key={state.id} className="flex flex-col">
-                <CardHeader
-                  code={`0x0${index}`}
-                  title={state.id.toUpperCase().replace(/-/g, "_")}
-                />
+        {/* Preview/Code Tabs */}
+        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
+          {/* Tab Navigation Card */}
+          <Card>
+            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <div className="flex items-center justify-between">
+              <TabsList
+                className={cn(
+                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  mode.radius
+                )}
+              >
+                <TabsTrigger
+                  value="preview"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  [PREVIEW]
+                </TabsTrigger>
+                <TabsTrigger
+                  value="code"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  [CODE]
+                </TabsTrigger>
+              </TabsList>
+            </div>
+          </Card>
 
-                <div className="flex h-full flex-col p-6">
-                  {/* Empty State Content */}
-                  <div className="flex flex-1 flex-col text-center">
-                    {/* Icon */}
-                    <div
-                      className={`mx-auto flex h-16 w-16 items-center justify-center border ${
-                        state.id === "error-state"
-                          ? "border-destructive bg-destructive/10"
-                          : "border-border bg-muted/30"
-                      }`}
-                    >
-                      <Icon
-                        className={`h-8 w-8 ${
-                          state.id === "error-state" ? "text-destructive" : "text-muted-foreground"
-                        }`}
-                      />
-                    </div>
+          {/* Preview Tab Content */}
+          <TabsContent value="preview" className="mt-6 w-full max-w-full">
+            <Card className="overflow-hidden">
+              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <EmptyStatesPreview />
+            </Card>
+          </TabsContent>
 
-                    {/* Title & Description */}
-                    <div className="mt-4">
-                      <h3 className={cn(mode.font, "mb-1 text-lg font-semibold")}>{state.title}</h3>
-                      <p className={cn(mode.font, "text-muted-foreground text-xs")}>
-                        {state.description}
-                      </p>
-                    </div>
-
-                    {/* Terminal Output */}
-                    <Card className="mt-4">
-                      <CardHeader code="0x00" title="OUTPUT" />
-                      <CardContent>
-                        <div className="space-y-0.5 text-xs">
-                          {state.terminal.map((line, idx) => (
-                            <div
-                              key={idx}
-                              className={
-                                line.startsWith("ERROR")
-                                  ? "text-destructive"
-                                  : line.startsWith("$")
-                                    ? "text-success"
-                                    : line.startsWith("HINT")
-                                      ? "text-warning"
-                                      : ""
-                              }
-                            >
-                              {line}
-                            </div>
-                          ))}
-                        </div>
-                      </CardContent>
-                    </Card>
-
-                    {/* Actions - pushed to bottom */}
-                    <div className="mt-auto flex items-center justify-center gap-2 pt-4">
-                      {state.actions.map((action, idx) => {
-                        const ActionIcon = action.icon;
-                        return (
-                          <Button
-                            key={idx}
-                            variant={action.primary ? "default" : "outline"}
-                            className={cn(mode.radius, mode.font, "text-xs")}
-                          >
-                            {ActionIcon && <ActionIcon className="mr-1 h-3 w-3" />}
-                            &gt; {action.label}
-                          </Button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            );
-          })}
-        </div>
+          {/* Code Tab Content */}
+          <TabsContent value="code" className="mt-6 w-full max-w-full">
+            <Card className="overflow-hidden">
+              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <div className="w-full max-w-full overflow-x-auto p-4">
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+              </div>
+            </Card>
+          </TabsContent>
+        </Tabs>
 
         {/* Use Cases Reference */}
         <Card>
-          <CardHeader code="0x08" title="USE_CASES" />
-          <div className="p-4">
-            <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
-              [WHEN_TO_USE]:
-            </div>
-            <div className={cn(mode.font, "grid gap-4 text-xs md:grid-cols-2")}>
+          <CardHeader code="0x02" title="USE_CASES" />
+          <CardContent padding="md">
+            <div className={cn(mode.font, "space-y-4 text-xs")}>
               <div className="space-y-2">
                 <div className="font-semibold">[NO_DATA]</div>
                 <div className="text-muted-foreground">
@@ -246,23 +198,38 @@ export default function EmptyStatesTemplate() {
                 <div className="text-muted-foreground">API failures, network errors, timeouts</div>
               </div>
             </div>
-          </div>
+          </CardContent>
         </Card>
 
-        {/* Features Card */}
-        <FeaturesCard
-          title="TEMPLATE_FEATURES"
-          code="0x09"
-          features={[
-            "8 common empty state patterns",
-            "Terminal-style status output",
-            "Contextual action buttons",
-            "Error state differentiation",
-            "First-time user guidance",
-            "Search result fallback",
-          ]}
-          note="Customize icons, copy, and actions based on your specific use case."
-        />
+        {/* Features */}
+        <Card>
+          <CardHeader code="0x03" title="FEATURES" />
+          <CardContent padding="md">
+            <div className={cn(mode.font, "space-y-2 text-xs")}>
+              <div>
+                <span className="text-success">&gt;</span> Common empty state patterns
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Terminal-style status output
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Contextual action buttons
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Error state differentiation
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> First-time user guidance
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Search result fallback
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

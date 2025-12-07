@@ -1,15 +1,15 @@
 /**
- * ✅ FABRK COMPONENT
  * Chart Library Template - Terminal console style
- * Production-ready ✓
+ * Industry-standard Preview/Code tabbed interface
  */
-
 "use client";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardContent, TemplatePageHeader } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { CodeBlock } from "@/components/ui/code-block";
 import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
-import { TemplatePageHeader, FeaturesCard } from "@/components/ui/card";
 import {
   LineChart,
   Line,
@@ -109,7 +109,33 @@ const CustomTooltip = ({
   return null;
 };
 
-export default function ChartLibraryTemplate() {
+const templateCode = `"use client";
+
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
+import {
+  LineChart,
+  Line,
+  AreaChart,
+  Area,
+  BarChart,
+  Bar,
+  PieChart,
+  Pie,
+  Cell,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+} from "recharts";
+import { TrendingUp, Download } from "lucide-react";
+import { mode } from "@/design-system";
+import { cn } from "@/lib/utils";
+
+export default function ChartLibrary() {
   const [activeTab, setActiveTab] = useState("line");
 
   const tabs = [
@@ -120,16 +146,93 @@ export default function ChartLibraryTemplate() {
   ];
 
   return (
-    <div>
-      {/* Page Content */}
-      <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
+    <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className={cn(mode.font, "text-2xl font-semibold")}>
+            Chart Library
+          </h1>
+          <p className="text-muted-foreground text-sm">
+            Recharts visualization components for data-driven dashboards
+          </p>
+        </div>
+        <Button className={cn(mode.radius, mode.font, "text-xs")}>
+          <Download className="mr-2 h-4 w-4" />
+          &gt; VIEW_DOCS
+        </Button>
+      </div>
+
+      {/* Stats - Terminal Style */}
+      <div className="grid gap-6 md:grid-cols-4">
+        <div className="border-border bg-card border p-4">
+          <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>
+            [TOTAL_REVENUE]:
+          </div>
+          <div className="text-4xl font-semibold">$91.9K</div>
+          <div className={cn(mode.font, "text-success mt-1 flex items-center gap-1 text-xs")}>
+            <TrendingUp className="h-3 w-3" />
+            +23.5%
+          </div>
+        </div>
+        {/* Additional stat cards... */}
+      </div>
+
+      {/* Chart Tabs - Terminal Style */}
+      <StyledTabs
+        code="0x00"
+        title="CHART_NAVIGATION"
+        tabs={tabs}
+        value={activeTab}
+        onValueChange={setActiveTab}
+      >
+        {/* Line Chart */}
+        <StyledTabsContent value="line">
+          <div className="border-border bg-card border border-t-0 p-4">
+            <ResponsiveContainer width="100%" height={400}>
+              <LineChart data={revenueData}>
+                <CartesianGrid strokeDasharray="3 3" stroke="oklch(var(--border))" />
+                <XAxis dataKey="month" tick={{ fontSize: 12 }} />
+                <YAxis tick={{ fontSize: 12 }} />
+                <Tooltip />
+                <Legend wrapperStyle={{ fontSize: "12px" }} />
+                <Line
+                  type="monotone"
+                  dataKey="revenue"
+                  stroke="oklch(var(--primary))"
+                  strokeWidth={2}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </StyledTabsContent>
+        {/* Additional chart tabs... */}
+      </StyledTabs>
+    </div>
+  );
+}`;
+
+function ChartLibraryPreview() {
+  const [activeTab, setActiveTab] = useState("line");
+
+  const tabs = [
+    { id: "line", label: "LINE_CHART" },
+    { id: "area", label: "AREA_CHART" },
+    { id: "bar", label: "BAR_CHART" },
+    { id: "pie", label: "PIE_CHART" },
+  ];
+
+  return (
+    <div className="bg-background/50 p-4 sm:p-8">
+      <div className="container mx-auto max-w-7xl space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <TemplatePageHeader
-            badge="CHART_LIBRARY"
-            title="Chart Library"
-            description="Recharts visualization components for data-driven dashboards"
-          />
+          <div>
+            <h1 className={cn(mode.font, "text-2xl font-semibold")}>Chart Library</h1>
+            <p className="text-muted-foreground text-sm">
+              Recharts visualization components for data-driven dashboards
+            </p>
+          </div>
           <Button className={cn(mode.radius, mode.font, "text-xs")}>
             <Download className="mr-2 h-4 w-4" />
             &gt; VIEW_DOCS
@@ -405,23 +508,155 @@ export default function ChartLibraryTemplate() {
             </div>
           </StyledTabsContent>
         </StyledTabs>
+      </div>
+    </div>
+  );
+}
+
+export default function ChartLibraryTemplate() {
+  return (
+    <div className="w-full overflow-x-hidden">
+      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
+        {/* Header */}
+        <TemplatePageHeader
+          badge="CHART_LIBRARY"
+          title="Chart Library"
+          description="Recharts visualization components for data-driven dashboards"
+        />
+
+        {/* Preview/Code Tabs */}
+        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
+          {/* Tab Navigation Card */}
+          <Card>
+            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <div className="flex items-center justify-between">
+              <TabsList
+                className={cn(
+                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  mode.radius
+                )}
+              >
+                <TabsTrigger
+                  value="preview"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  [PREVIEW]
+                </TabsTrigger>
+                <TabsTrigger
+                  value="code"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  [CODE]
+                </TabsTrigger>
+              </TabsList>
+            </div>
+          </Card>
+
+          {/* Preview Tab Content */}
+          <TabsContent value="preview" className="mt-6 w-full max-w-full">
+            <Card className="overflow-hidden">
+              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <ChartLibraryPreview />
+            </Card>
+          </TabsContent>
+
+          {/* Code Tab Content */}
+          <TabsContent value="code" className="mt-6 w-full max-w-full">
+            <Card className="overflow-hidden">
+              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <div className="w-full max-w-full overflow-x-auto p-4">
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+              </div>
+            </Card>
+          </TabsContent>
+        </Tabs>
+
+        {/* File Structure */}
+        <Card>
+          <CardHeader code="0x02" title="FILE_STRUCTURE" />
+          <CardContent padding="md">
+            <div className={cn(mode.font, "space-y-1 text-xs")}>
+              <div className="text-muted-foreground">[FILES]:</div>
+              <div className="space-y-1 pl-4">
+                <div>
+                  <span className="text-primary">app/</span>
+                  <span className="text-muted-foreground">(dashboard)/</span>
+                  <span className="text-foreground">charts/page.tsx</span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
+                </div>
+                <div className="text-muted-foreground mt-2">[INSTALL]: npm install recharts</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Features */}
+        <Card>
+          <CardHeader code="0x03" title="FEATURES" />
+          <CardContent padding="md">
+            <div className={cn(mode.font, "space-y-2 text-xs")}>
+              <div>
+                <span className="text-success">&gt;</span> 4 chart types (Line, Area, Bar,
+                Pie/Donut)
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Recharts library with responsive
+                containers
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Custom tooltips with terminal styling
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Solid fills with theme colors
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Custom color schemes matching design
+                system
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Formatted axes (K notation for large
+                numbers)
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Tab navigation between chart types
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Multi-line, area, bar, and pie chart
+                examples
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Implementation Note */}
-        <FeaturesCard
-          code="0x01"
-          features={[
-            "4 chart types (Line, Area, Bar, Pie/Donut)",
-            "Recharts library (npm install recharts)",
-            "Custom tooltips with terminal styling",
-            "Solid fills with theme colors",
-            "Responsive containers (adapts to screen size)",
-            "Custom color schemes matching design system",
-            "Formatted axes (K notation for large numbers)",
-            "Tab navigation between chart types",
-            "Terminal console aesthetic",
-          ]}
-          note="Replace mock data with your API. Recharts supports Scatter, Radar, Composed, Treemap, and more."
-        />
+        <Card>
+          <CardHeader code="0x04" title="IMPLEMENTATION_NOTE" />
+          <CardContent padding="md">
+            <div className={cn(mode.font, "space-y-2 text-xs")}>
+              <div className="text-muted-foreground">[USAGE]:</div>
+              <div className="space-y-1 pl-4">
+                <div>• Replace mock data with your API data</div>
+                <div>• Recharts supports Scatter, Radar, Composed, Treemap, and more</div>
+                <div>
+                  • Customize colors using design system tokens (oklch(var(--primary)), etc.)
+                </div>
+                <div>• Add animations with animationDuration prop on chart components</div>
+                <div>• Use CartesianGrid for grid lines, Legend for chart legends</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

@@ -1,27 +1,121 @@
 /**
- * ✅ FABRK COMPONENT
  * Billing Dashboard Template - Terminal console style
- * Production-ready ✓
+ * Industry-standard Preview/Code tabbed interface
  */
-
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import { ArrowUpRight } from "lucide-react";
-import { TemplatePageHeader } from "@/components/ui/card";
-
-// Extracted components
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardContent, TemplatePageHeader } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { CodeBlock } from "@/components/ui/code-block";
+import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import { CurrentPlanCard } from "./components/current-plan-card";
 import { UsageMetricsCard } from "./components/usage-metrics-card";
 import { PaymentMethodsCard } from "./components/payment-methods-card";
 import { RecentInvoicesCard } from "./components/recent-invoices-card";
 import { PlanCards } from "./components/plan-cards";
 import { BillingHistoryTable } from "./components/billing-history-table";
-import { TemplateFeaturesCard } from "./components/template-features-card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
+
+const templateCode = `"use client";
+
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
+import { ArrowUpRight } from "lucide-react";
+import { TemplatePageHeader } from "@/components/ui/card";
+import { CurrentPlanCard } from "./components/current-plan-card";
+import { UsageMetricsCard } from "./components/usage-metrics-card";
+import { PaymentMethodsCard } from "./components/payment-methods-card";
+import { RecentInvoicesCard } from "./components/recent-invoices-card";
+import { PlanCards } from "./components/plan-cards";
+import { BillingHistoryTable } from "./components/billing-history-table";
+import { mode } from "@/design-system";
+import { cn } from "@/lib/utils";
+
+const subscription = {
+  plan: "Professional",
+  status: "active",
+  price: 29,
+  billingCycle: "monthly",
+  nextBillingDate: "2024-12-15",
+  startDate: "2024-01-15",
+  features: [
+    "Unlimited projects",
+    "10 team members",
+    "Priority support",
+    "Advanced analytics",
+    "Custom integrations",
+  ],
+};
+
+const usage = {
+  users: { current: 7, limit: 10, percentage: 70 },
+  projects: { current: 23, limit: -1, percentage: 0 },
+  storage: { current: 45, limit: 100, percentage: 45, unit: "GB" },
+  apiCalls: { current: 12500, limit: 50000, percentage: 25 },
+};
+
+const tabs = [
+  { id: "overview", label: "OVERVIEW" },
+  { id: "plans", label: "PLANS" },
+  { id: "history", label: "HISTORY" },
+];
+
+export default function BillingDashboard() {
+  const [activeTab, setActiveTab] = useState("overview");
+
+  return (
+    <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <TemplatePageHeader
+          badge="BILLING_DASHBOARD"
+          title="Billing & Subscription"
+          description="Manage your subscription, payments, and billing information"
+        />
+        <Button className={cn(mode.radius, mode.font, "text-xs")}>
+          <ArrowUpRight className="mr-2 size-4" />
+          &gt; UPGRADE_PLAN
+        </Button>
+      </div>
+
+      {/* Terminal Tab Navigation */}
+      <StyledTabs
+        code="0x00"
+        title="BILLING_NAVIGATION"
+        tabs={tabs}
+        value={activeTab}
+        onValueChange={setActiveTab}
+      >
+        {/* Overview Tab */}
+        <StyledTabsContent value="overview">
+          <div className="space-y-6">
+            <CurrentPlanCard subscription={subscription} />
+            <div className="grid gap-6 md:grid-cols-2">
+              <UsageMetricsCard usage={usage} />
+              <PaymentMethodsCard />
+            </div>
+            <RecentInvoicesCard />
+          </div>
+        </StyledTabsContent>
+
+        {/* Plans Tab */}
+        <StyledTabsContent value="plans">
+          <PlanCards />
+        </StyledTabsContent>
+
+        {/* History Tab */}
+        <StyledTabsContent value="history">
+          <BillingHistoryTable />
+        </StyledTabsContent>
+      </StyledTabs>
+    </div>
+  );
+}`;
 
 // Mock data
 const subscription = {
@@ -137,7 +231,7 @@ const tabs = [
   { id: "history", label: "HISTORY" },
 ];
 
-export default function BillingDashboardTemplate() {
+function BillingPreview() {
   const [activeTab, setActiveTab] = useState("overview");
 
   const formatCurrency = (amount: number) => {
@@ -167,22 +261,8 @@ export default function BillingDashboardTemplate() {
   };
 
   return (
-    <div>
-      {/* Page Content */}
-      <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <TemplatePageHeader
-            badge="BILLING_DASHBOARD"
-            title="Billing & Subscription"
-            description="Manage your subscription, payments, and billing information"
-          />
-          <Button className={cn(mode.radius, mode.font, "text-xs")}>
-            <ArrowUpRight className="mr-2 size-4" />
-            &gt; UPGRADE_PLAN
-          </Button>
-        </div>
-
+    <div className="bg-background/50 min-h-[600px] p-4 sm:p-8">
+      <div className="container mx-auto max-w-7xl space-y-6">
         {/* Terminal Tab Navigation */}
         <StyledTabs
           code="0x00"
@@ -227,9 +307,144 @@ export default function BillingDashboardTemplate() {
             />
           </StyledTabsContent>
         </StyledTabs>
+      </div>
+    </div>
+  );
+}
 
-        {/* Implementation Note */}
-        <TemplateFeaturesCard />
+export default function BillingDashboardTemplate() {
+  return (
+    <div className="w-full overflow-x-hidden">
+      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
+        {/* Header */}
+        <TemplatePageHeader
+          badge="BILLING_DASHBOARD"
+          title="Billing & Subscription"
+          description="Manage your subscription, payments, and billing information"
+        />
+
+        {/* Preview/Code Tabs */}
+        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
+          {/* Tab Navigation Card */}
+          <Card>
+            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <div className="flex items-center justify-between">
+              <TabsList
+                className={cn(
+                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  mode.radius
+                )}
+              >
+                <TabsTrigger
+                  value="preview"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  [PREVIEW]
+                </TabsTrigger>
+                <TabsTrigger
+                  value="code"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  [CODE]
+                </TabsTrigger>
+              </TabsList>
+            </div>
+          </Card>
+
+          {/* Preview Tab Content */}
+          <TabsContent value="preview" className="mt-6 w-full max-w-full">
+            <Card className="overflow-hidden">
+              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <BillingPreview />
+            </Card>
+          </TabsContent>
+
+          {/* Code Tab Content */}
+          <TabsContent value="code" className="mt-6 w-full max-w-full">
+            <Card className="overflow-hidden">
+              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <div className="w-full max-w-full overflow-x-auto p-4">
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+              </div>
+            </Card>
+          </TabsContent>
+        </Tabs>
+
+        {/* File Structure */}
+        <Card>
+          <CardHeader code="0x02" title="FILE_STRUCTURE" />
+          <CardContent padding="md">
+            <div className={cn(mode.font, "space-y-1 text-xs")}>
+              <div className="text-muted-foreground">[FILES]:</div>
+              <div className="space-y-1 pl-4">
+                <div>
+                  <span className="text-primary">app/</span>
+                  <span className="text-muted-foreground">(dashboard)/</span>
+                  <span className="text-foreground">billing/page.tsx</span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
+                </div>
+                <div>
+                  <span className="text-primary">app/</span>
+                  <span className="text-muted-foreground">(dashboard)/billing/components/</span>
+                  <span className="text-foreground">current-plan-card.tsx</span>
+                </div>
+                <div>
+                  <span className="text-primary">app/</span>
+                  <span className="text-muted-foreground">(dashboard)/billing/components/</span>
+                  <span className="text-foreground">usage-metrics-card.tsx</span>
+                </div>
+                <div>
+                  <span className="text-primary">app/</span>
+                  <span className="text-muted-foreground">(dashboard)/billing/components/</span>
+                  <span className="text-foreground">payment-methods-card.tsx</span>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Features */}
+        <Card>
+          <CardHeader code="0x03" title="FEATURES" />
+          <CardContent padding="md">
+            <div className={cn(mode.font, "space-y-2 text-xs")}>
+              <div>
+                <span className="text-success">&gt;</span> Current plan overview with next billing
+                date
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Usage metrics (users, projects, storage,
+                API calls)
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Payment methods management
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Recent invoices with status
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Plan comparison cards
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Full billing history table
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Responsive mobile-first design
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

@@ -1,18 +1,26 @@
 /**
- * ✅ FABRK COMPONENT
  * Sign Up Template - Terminal console style
- * Production-ready ✓
+ * Industry-standard Preview/Code tabbed interface
  */
-import { Metadata } from "next";
+"use client";
+
+import Link from "next/link";
+import { Github, UserPlus } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardContent, TemplatePageHeader } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { CodeBlock } from "@/components/ui/code-block";
+import { mode } from "@/design-system";
+import { cn } from "@/lib/utils";
+
+// eslint-disable-next-line design-system/no-hardcoded-colors -- Template code contains Google brand colors for user reference
+const templateCode = `"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  TemplatePageHeader,
-  FeaturesCard,
-} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -20,16 +28,293 @@ import { Github, UserPlus } from "lucide-react";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "Sign Up Template - Fabrk",
-  description: "Production-ready registration page template with validation.",
-};
+export default function SignUpPage() {
+  return (
+    <div className="flex min-h-screen items-center justify-center p-4">
+      <div className="border-border bg-background w-full max-w-[380px] space-y-6 border p-6">
+        {/* Header */}
+        <div className="flex flex-col space-y-2 text-center">
+          <div className="border-border bg-card mx-auto mb-2 flex h-10 w-10 items-center justify-center border">
+            <UserPlus className="text-primary h-5 w-5" />
+          </div>
+          <h1 className={cn(mode.font, "text-2xl font-semibold tracking-tight")}>
+            Create an account
+          </h1>
+          <p className="text-muted-foreground text-sm">
+            Enter your information to get started
+          </p>
+        </div>
+
+        {/* Signup Form */}
+        <form className="space-y-4">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="first-name" className={cn(mode.font, "text-xs")}>
+                [FIRST_NAME]:
+              </Label>
+              <Input
+                id="first-name"
+                placeholder="John"
+                required
+                className={cn(mode.radius, mode.font, "text-xs")}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="last-name" className={cn(mode.font, "text-xs")}>
+                [LAST_NAME]:
+              </Label>
+              <Input
+                id="last-name"
+                placeholder="Doe"
+                required
+                className={cn(mode.radius, mode.font, "text-xs")}
+              />
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="email" className={cn(mode.font, "text-xs")}>
+              [EMAIL]:
+            </Label>
+            <Input
+              id="email"
+              placeholder="name@example.com"
+              type="email"
+              required
+              className={cn(mode.radius, mode.font, "text-xs")}
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="password" className={cn(mode.font, "text-xs")}>
+              [PASSWORD]:
+            </Label>
+            <Input
+              id="password"
+              type="password"
+              placeholder="Create a password"
+              required
+              className={cn(mode.radius, mode.font, "text-xs")}
+            />
+            <p className={cn(mode.font, "text-muted-foreground text-xs")}>
+              Must be at least 8 characters long
+            </p>
+          </div>
+
+          <div className="flex items-start space-x-2">
+            <Checkbox id="terms" className={cn(mode.radius, "mt-0.5")} />
+            <Label htmlFor="terms" className={cn(mode.font, "text-muted-foreground text-xs font-normal")}>
+              I agree to the Terms of Service and Privacy Policy
+            </Label>
+          </div>
+
+          <Button className={cn(mode.radius, mode.font, "w-full text-xs")} type="submit">
+            &gt; CREATE_ACCOUNT
+          </Button>
+        </form>
+
+        {/* Divider */}
+        <div className="relative">
+          <div className="absolute inset-0 flex items-center">
+            <span className="border-border w-full border-t" />
+          </div>
+          <div className="relative flex justify-center text-xs uppercase">
+            <span className="bg-background text-muted-foreground px-2">
+              Or sign up with
+            </span>
+          </div>
+        </div>
+
+        {/* Social Auth */}
+        <div className="grid grid-cols-2 gap-4">
+          <Button variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
+            <Github className="mr-2 h-4 w-4" />
+            GitHub
+          </Button>
+          <Button variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
+            <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
+            </svg>
+            Google
+          </Button>
+        </div>
+
+        {/* Footer */}
+        <p className="text-muted-foreground text-center text-sm">
+          Already have an account?{" "}
+          <Link href="/sign-in" className="hover:text-primary underline underline-offset-4">
+            Sign in
+          </Link>
+        </p>
+      </div>
+    </div>
+  );
+}`;
+
+function SignUpPreview() {
+  return (
+    <div className="bg-background/50 flex min-h-[700px] flex-col items-center justify-center p-4 sm:p-8">
+      <div className="border-border bg-background w-full max-w-[380px] space-y-6 border p-6">
+        {/* Header */}
+        <div className="flex flex-col space-y-2 text-center">
+          <div className="border-border bg-card mx-auto mb-2 flex h-10 w-10 items-center justify-center border">
+            <UserPlus className="text-primary h-5 w-5" />
+          </div>
+          <h1 className={cn(mode.font, "text-2xl font-semibold tracking-tight")}>
+            Create an account
+          </h1>
+          <p className="text-muted-foreground text-sm">
+            Enter your information to get started with Fabrk
+          </p>
+        </div>
+
+        {/* Signup Form */}
+        <div className="grid gap-6">
+          <form className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="first-name" className={cn(mode.font, "text-xs")}>
+                  [FIRST_NAME]:
+                </Label>
+                <Input
+                  id="first-name"
+                  placeholder="John"
+                  required
+                  className={cn(mode.radius, mode.font, "text-xs")}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="last-name" className={cn(mode.font, "text-xs")}>
+                  [LAST_NAME]:
+                </Label>
+                <Input
+                  id="last-name"
+                  placeholder="Doe"
+                  required
+                  className={cn(mode.radius, mode.font, "text-xs")}
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="email" className={cn(mode.font, "text-xs")}>
+                [EMAIL]:
+              </Label>
+              <Input
+                id="email"
+                placeholder="name@example.com"
+                type="email"
+                autoCapitalize="none"
+                autoComplete="email"
+                autoCorrect="off"
+                required
+                className={cn(mode.radius, mode.font, "text-xs")}
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="password" className={cn(mode.font, "text-xs")}>
+                [PASSWORD]:
+              </Label>
+              <Input
+                id="password"
+                type="password"
+                placeholder="Create a password"
+                autoComplete="new-password"
+                required
+                className={cn(mode.radius, mode.font, "text-xs")}
+              />
+              <p className={cn(mode.font, "text-muted-foreground text-xs")}>
+                Must be at least 8 characters long
+              </p>
+            </div>
+
+            <div className="flex items-start space-x-2">
+              <Checkbox id="terms" className={cn(mode.radius, "mt-0.5")} />
+              <Label
+                htmlFor="terms"
+                className={cn(
+                  mode.font,
+                  "text-muted-foreground text-xs leading-normal font-normal"
+                )}
+              >
+                I agree to the{" "}
+                <Link href="#" className="text-primary hover:underline">
+                  Terms of Service
+                </Link>{" "}
+                and{" "}
+                <Link href="#" className="text-primary hover:underline">
+                  Privacy Policy
+                </Link>
+              </Label>
+            </div>
+
+            <Button className={cn(mode.radius, mode.font, "w-full text-xs")} type="submit">
+              &gt; CREATE_ACCOUNT
+            </Button>
+          </form>
+
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="border-border w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-background text-muted-foreground px-2">Or sign up with</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <Button variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
+              <Github className="mr-2 h-4 w-4" />
+              GitHub
+            </Button>
+            <Button variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
+              {/* eslint-disable design-system/no-hardcoded-colors -- Google brand colors are intentional */}
+              <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
+                <path
+                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                  fill="#4285F4"
+                />
+                <path
+                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                  fill="#34A853"
+                />
+                <path
+                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                  fill="#FBBC05"
+                />
+                <path
+                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                  fill="#EA4335"
+                />
+              </svg>
+              {/* eslint-enable design-system/no-hardcoded-colors */}
+              Google
+            </Button>
+          </div>
+        </div>
+
+        <p className="text-muted-foreground px-8 text-center text-sm">
+          Already have an account?{" "}
+          <Link
+            href="/templates/authentication/sign-in"
+            className="hover:text-primary underline underline-offset-4"
+          >
+            Sign in
+          </Link>
+        </p>
+      </div>
+    </div>
+  );
+}
 
 export default function SignUpTemplate() {
   return (
-    <div>
-      {/* Page Content */}
-      <main className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
+    <div className="w-full overflow-x-hidden">
+      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
         {/* Header */}
         <TemplatePageHeader
           badge="SIGN_UP"
@@ -37,180 +322,106 @@ export default function SignUpTemplate() {
           description="Registration page with form validation and social providers"
         />
 
-        {/* Template Preview */}
+        {/* Preview/Code Tabs */}
+        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
+          {/* Tab Navigation Card */}
+          <Card>
+            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <div className="flex items-center justify-between">
+              <TabsList
+                className={cn(
+                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  mode.radius
+                )}
+              >
+                <TabsTrigger
+                  value="preview"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  [PREVIEW]
+                </TabsTrigger>
+                <TabsTrigger
+                  value="code"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  [CODE]
+                </TabsTrigger>
+              </TabsList>
+            </div>
+          </Card>
+
+          {/* Preview Tab Content */}
+          <TabsContent value="preview" className="mt-6 w-full max-w-full">
+            <Card className="overflow-hidden">
+              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <SignUpPreview />
+            </Card>
+          </TabsContent>
+
+          {/* Code Tab Content */}
+          <TabsContent value="code" className="mt-6 w-full max-w-full">
+            <Card className="overflow-hidden">
+              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <div className="w-full max-w-full overflow-x-auto p-4">
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+              </div>
+            </Card>
+          </TabsContent>
+        </Tabs>
+
+        {/* File Structure */}
         <Card>
-          <CardHeader code="0x00" title="PREVIEW" />
-          <CardContent padding="lg">
-            <div className="bg-background/50 flex min-h-[700px] flex-col items-center justify-center p-4 sm:p-8">
-              <div className="border-border bg-background w-full max-w-[380px] space-y-6 border p-6">
-                {/* Header */}
-                <div className="flex flex-col space-y-2 text-center">
-                  <div className="border-border bg-card mx-auto mb-2 flex h-10 w-10 items-center justify-center border">
-                    <UserPlus className="text-primary h-5 w-5" />
-                  </div>
-                  <h1 className={cn(mode.font, "text-2xl font-semibold tracking-tight")}>
-                    Create an account
-                  </h1>
-                  <p className="text-muted-foreground text-sm">
-                    Enter your information to get started with Fabrk
-                  </p>
+          <CardHeader code="0x02" title="FILE_STRUCTURE" />
+          <CardContent padding="md">
+            <div className={cn(mode.font, "space-y-1 text-xs")}>
+              <div className="text-muted-foreground">[FILES]:</div>
+              <div className="space-y-1 pl-4">
+                <div>
+                  <span className="text-primary">app/</span>
+                  <span className="text-muted-foreground">(auth)/</span>
+                  <span className="text-foreground">sign-up/page.tsx</span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
                 </div>
-
-                {/* Signup Form */}
-                <div className="grid gap-6">
-                  <form className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="first-name" className={cn(mode.font, "text-xs")}>
-                          [FIRST_NAME]:
-                        </Label>
-                        <Input
-                          id="first-name"
-                          placeholder="John"
-                          required
-                          className={cn(mode.radius, mode.font, "text-xs")}
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="last-name" className={cn(mode.font, "text-xs")}>
-                          [LAST_NAME]:
-                        </Label>
-                        <Input
-                          id="last-name"
-                          placeholder="Doe"
-                          required
-                          className={cn(mode.radius, mode.font, "text-xs")}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="email" className={cn(mode.font, "text-xs")}>
-                        [EMAIL]:
-                      </Label>
-                      <Input
-                        id="email"
-                        placeholder="name@example.com"
-                        type="email"
-                        autoCapitalize="none"
-                        autoComplete="email"
-                        autoCorrect="off"
-                        required
-                        className={cn(mode.radius, mode.font, "text-xs")}
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="password" className={cn(mode.font, "text-xs")}>
-                        [PASSWORD]:
-                      </Label>
-                      <Input
-                        id="password"
-                        type="password"
-                        placeholder="Create a password"
-                        autoComplete="new-password"
-                        required
-                        className={cn(mode.radius, mode.font, "text-xs")}
-                      />
-                      <p className={cn(mode.font, "text-muted-foreground text-xs")}>
-                        Must be at least 8 characters long
-                      </p>
-                    </div>
-
-                    <div className="flex items-start space-x-2">
-                      <Checkbox id="terms" className={cn(mode.radius, "mt-0.5")} />
-                      <Label
-                        htmlFor="terms"
-                        className={cn(
-                          mode.font,
-                          "text-muted-foreground text-xs leading-normal font-normal"
-                        )}
-                      >
-                        I agree to the{" "}
-                        <Link href="#" className="text-primary hover:underline">
-                          Terms of Service
-                        </Link>{" "}
-                        and{" "}
-                        <Link href="#" className="text-primary hover:underline">
-                          Privacy Policy
-                        </Link>
-                      </Label>
-                    </div>
-
-                    <Button className={cn(mode.radius, mode.font, "w-full text-xs")} type="submit">
-                      &gt; CREATE_ACCOUNT
-                    </Button>
-                  </form>
-
-                  <div className="relative">
-                    <div className="absolute inset-0 flex items-center">
-                      <span className="border-border w-full border-t" />
-                    </div>
-                    <div className="relative flex justify-center text-xs uppercase">
-                      <span className="bg-background text-muted-foreground px-2">
-                        Or sign up with
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4">
-                    <Button variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
-                      <Github className="mr-2 h-4 w-4" />
-                      GitHub
-                    </Button>
-                    <Button variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
-                      <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
-                        <path
-                          d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-                          className="fill-blue-600"
-                        />
-                        <path
-                          d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-                          className="fill-green-600"
-                        />
-                        <path
-                          d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-                          className="fill-yellow-500"
-                        />
-                        <path
-                          d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-                          className="fill-red-600"
-                        />
-                        <path d="M1 1h22v22H1z" fill="none" />
-                      </svg>
-                      Google
-                    </Button>
-                  </div>
-                </div>
-
-                <p className="text-muted-foreground px-8 text-center text-sm">
-                  Already have an account?{" "}
-                  <Link
-                    href="/templates/authentication/sign-in"
-                    className="hover:text-primary underline underline-offset-4"
-                  >
-                    Sign in
-                  </Link>
-                </p>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Template Features Card */}
-        <FeaturesCard
-          code="0x01"
-          title="TEMPLATE_FEATURES"
-          features={[
-            "Multi-step registration form layout",
-            "Terms of Service checkbox validation",
-            "Password strength indicator support",
-            "Social sign-up integration",
-            "Mobile-responsive card design",
-          ]}
-          note="Copy to app/(auth)/sign-up/page.tsx. Connect to NextAuth or your auth provider."
-        />
-      </main>
+        {/* Features */}
+        <Card>
+          <CardHeader code="0x03" title="FEATURES" />
+          <CardContent padding="md">
+            <div className={cn(mode.font, "space-y-2 text-xs")}>
+              <div>
+                <span className="text-success">&gt;</span> Multi-field registration form
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Terms of Service checkbox
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Social sign-up (GitHub, Google)
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Password requirements hint
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Link to sign in page
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }

@@ -6,20 +6,93 @@
 "use client";
 
 import Link from "next/link";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent, TemplatePageHeader } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { CodeBlock } from "@/components/ui/code-block";
 import { getCategoryInfo, getTemplatesByCategory } from "../template-data";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
-export default function MarketingPage() {
+const templateCode = `/**
+ * Marketing Templates Category
+ *
+ * This category contains production-ready marketing templates:
+ *
+ * 1. Landing Page Variations
+ *    - Centered Hero: Classic centered layout
+ *    - Split Hero: Two-column with visual
+ *    - Minimal Hero: Clean with email capture
+ *
+ * 2. Pricing Pages
+ *    - Billing toggle (monthly/yearly)
+ *    - Feature comparison table
+ *    - FAQ sections
+ *
+ * 3. Blog Templates
+ *    - Featured posts
+ *    - Category filters
+ *    - Pagination
+ *
+ * All templates follow terminal design system with:
+ * - mode.font for typography
+ * - mode.radius for border radius
+ * - Design tokens for colors
+ * - Card headers with terminal codes
+ *
+ * Usage:
+ * 1. Navigate to specific template
+ * 2. Copy code from CODE tab
+ * 3. Paste into your project
+ * 4. Customize data/content
+ */
+
+import Link from "next/link";
+
+export default function MarketingTemplates() {
+  const templates = [
+    {
+      name: "Landing Variations",
+      href: "/templates/landing-variations",
+      description: "Hero section variations"
+    },
+    {
+      name: "Pricing Page",
+      href: "/templates/pricing-page",
+      description: "Full pricing with comparison"
+    },
+    {
+      name: "Blog",
+      href: "/templates/blog",
+      description: "Blog listing with filters"
+    }
+  ];
+
+  return (
+    <div className="container mx-auto max-w-7xl space-y-8 px-6 py-12">
+      <h1>Marketing Templates</h1>
+      <div className="grid gap-4 md:grid-cols-2">
+        {templates.map((template) => (
+          <Link key={template.name} href={template.href}>
+            <div className="border border-border p-4">
+              <h3>{template.name}</h3>
+              <p>{template.description}</p>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}`;
+
+function MarketingPreview() {
   const categoryTemplates = getTemplatesByCategory("marketing");
   const categoryInfo = getCategoryInfo("marketing");
 
   return (
-    <div>
-      <main className="container mx-auto max-w-7xl space-y-12 px-6 py-12">
+    <div className="bg-background/50 min-h-[600px] p-4 sm:p-8">
+      <div className="mx-auto max-w-6xl space-y-8">
         {/* Category Header */}
-        <section className="space-y-4">
+        <div className="space-y-4">
           <div className="border-border inline-block border px-4 py-1">
             <span className={cn(mode.font, "text-muted-foreground text-xs")}>
               [CATEGORY]: MARKETING
@@ -32,7 +105,7 @@ export default function MarketingPage() {
               COUNT: {categoryTemplates.length}
             </span>
           </div>
-        </section>
+        </div>
 
         {/* Templates Grid */}
         <div className="grid gap-4 md:grid-cols-2">
@@ -112,10 +185,83 @@ export default function MarketingPage() {
             </Link>
           ))}
         </div>
+      </div>
+    </div>
+  );
+}
+
+export default function MarketingPage() {
+  const categoryTemplates = getTemplatesByCategory("marketing");
+  const categoryInfo = getCategoryInfo("marketing");
+
+  return (
+    <div className="w-full overflow-x-hidden">
+      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
+        {/* Header */}
+        <TemplatePageHeader
+          badge="MARKETING"
+          title="Marketing Templates"
+          description="Landing pages, pricing, blog, and marketing sections"
+        />
+
+        {/* Preview/Code Tabs */}
+        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
+          {/* Tab Navigation Card */}
+          <Card>
+            <CardHeader code="0x00" title="CATEGORY_OVERVIEW" />
+            <div className="flex items-center justify-between">
+              <TabsList
+                className={cn(
+                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  mode.radius
+                )}
+              >
+                <TabsTrigger
+                  value="preview"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  [PREVIEW]
+                </TabsTrigger>
+                <TabsTrigger
+                  value="code"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  [CODE]
+                </TabsTrigger>
+              </TabsList>
+            </div>
+          </Card>
+
+          {/* Preview Tab Content */}
+          <TabsContent value="preview" className="mt-6 w-full max-w-full">
+            <Card className="overflow-hidden">
+              <CardHeader code="0x01" title="TEMPLATES_BROWSER" />
+              <MarketingPreview />
+            </Card>
+          </TabsContent>
+
+          {/* Code Tab Content */}
+          <TabsContent value="code" className="mt-6 w-full max-w-full">
+            <Card className="overflow-hidden">
+              <CardHeader code="0x01" title="USAGE_GUIDE" />
+              <div className="w-full max-w-full overflow-x-auto p-4">
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+              </div>
+            </Card>
+          </TabsContent>
+        </Tabs>
 
         {/* Template Features Card */}
         <Card>
-          <CardHeader code="0x00" title="MARKETING_FEATURES" />
+          <CardHeader code="0x02" title="MARKETING_FEATURES" />
           <CardContent padding="lg">
             <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
               [MARKETING_TEMPLATES]:
@@ -145,7 +291,7 @@ export default function MarketingPage() {
             </div>
           </CardContent>
         </Card>
-      </main>
+      </div>
     </div>
   );
 }

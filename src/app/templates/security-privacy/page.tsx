@@ -1,25 +1,98 @@
 /**
- * ✅ FABRK COMPONENT
+ * FABRK COMPONENT
  * Security & Privacy Template - Terminal console style
- * Production-ready ✓
+ * Production-ready
  */
 
 "use client";
 
 import { useState } from "react";
 import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
-import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import { Shield, Lock, Activity, FileText, Settings } from "lucide-react";
-import { TemplatePageHeader } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { TemplatePageHeader, Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { CodeBlock } from "@/components/ui/code-block";
+import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import { SecurityScore } from "./components/security-score";
 import { SecurityTab } from "./components/security-tab";
 import { PrivacyTab } from "./components/privacy-tab";
 import { AuditTab } from "./components/audit-tab";
 import { ComplianceTab } from "./components/compliance-tab";
-import { ImplementationNote } from "./components/implementation-note";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
+
+const templateCode = `"use client";
+
+import { useState } from "react";
+import { Shield, Lock } from "lucide-react";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
+import { mode } from "@/design-system";
+import { cn } from "@/lib/utils";
+
+export default function SecurityPrivacy() {
+  const [twoFactorEnabled, setTwoFactorEnabled] = useState(false);
+  const [privacySettings, setPrivacySettings] = useState({
+    profileVisibility: true,
+    activityTracking: false,
+    analyticsSharing: false,
+  });
+
+  return (
+    <div className="container mx-auto max-w-7xl space-y-6 p-6">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <h1 className={cn(mode.font, "text-2xl font-semibold")}>
+          Security & Privacy
+        </h1>
+      </div>
+
+      {/* Security Score */}
+      <Card>
+        <CardHeader code="0x00" title="SECURITY_SCORE" />
+        <CardContent padding="lg">
+          <div className="flex items-center gap-4">
+            <div className="flex h-16 w-16 items-center justify-center border border-primary bg-primary/10">
+              <Shield className="h-8 w-8 text-primary" />
+            </div>
+            <div>
+              <div className={cn(mode.font, "text-2xl font-semibold")}>75%</div>
+              <p className={cn(mode.font, "text-muted-foreground text-xs")}>
+                Security score
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Security Settings */}
+      <Card>
+        <CardHeader code="0x01" title="SECURITY_SETTINGS" />
+        <CardContent padding="lg">
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <Label className={cn(mode.font, "text-xs")}>
+                  Two-Factor Authentication
+                </Label>
+                <p className={cn(mode.font, "text-muted-foreground text-xs")}>
+                  Add an extra layer of security
+                </p>
+              </div>
+              <Switch
+                checked={twoFactorEnabled}
+                onCheckedChange={setTwoFactorEnabled}
+              />
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}`;
 
 // Mock data
 const securityData = {
@@ -72,13 +145,6 @@ const securityData = {
       ip: "203.0.113.0",
       status: "failed" as const,
     },
-    {
-      id: "log_004",
-      action: "OAuth connected (Google)",
-      timestamp: "2024-11-05 16:30",
-      ip: "192.168.1.1",
-      status: "success" as const,
-    },
   ],
 };
 
@@ -95,16 +161,16 @@ const privacySettings = {
   cookiesMarketing: false,
 };
 
-export default function SecurityPrivacyTemplate() {
+const tabs = [
+  { id: "security", label: "SECURITY", icon: Shield },
+  { id: "privacy", label: "PRIVACY", icon: Lock },
+  { id: "audit", label: "AUDIT_LOG", icon: Activity },
+  { id: "compliance", label: "COMPLIANCE", icon: FileText },
+];
+
+function SecurityPrivacyPreview() {
   const [activeTab, setActiveTab] = useState("security");
   const [privacy, setPrivacy] = useState(privacySettings);
-
-  const tabs = [
-    { id: "security", label: "SECURITY", icon: Shield },
-    { id: "privacy", label: "PRIVACY", icon: Lock },
-    { id: "audit", label: "AUDIT_LOG", icon: Activity },
-    { id: "compliance", label: "COMPLIANCE", icon: FileText },
-  ];
 
   const handlePrivacyToggle = (key: keyof typeof privacySettings) => {
     setPrivacy((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -137,16 +203,11 @@ export default function SecurityPrivacyTemplate() {
   };
 
   return (
-    <div>
-      {/* Page Content */}
-      <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
+    <div className="bg-background/50 min-h-[600px] p-4 sm:p-8">
+      <div className="space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <TemplatePageHeader
-            badge="SECURITY_PRIVACY"
-            title="Security & Privacy"
-            description="Manage your account security, privacy settings, and data controls"
-          />
+          <h1 className={cn(mode.font, "text-2xl font-semibold")}>Security & Privacy</h1>
           <Button className={cn(mode.radius, mode.font, "text-xs")}>
             <Settings className="mr-2 h-4 w-4" />
             &gt; VIEW_AUDIT_LOG
@@ -192,9 +253,125 @@ export default function SecurityPrivacyTemplate() {
             />
           </StyledTabsContent>
         </StyledTabs>
+      </div>
+    </div>
+  );
+}
 
-        {/* Implementation Note */}
-        <ImplementationNote />
+export default function SecurityPrivacyTemplate() {
+  return (
+    <div className="w-full overflow-x-hidden">
+      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
+        {/* Header */}
+        <TemplatePageHeader
+          badge="SECURITY_PRIVACY"
+          title="Security & Privacy"
+          description="Manage your account security, privacy settings, and data controls"
+        />
+
+        {/* Preview/Code Tabs */}
+        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
+          {/* Tab Navigation Card */}
+          <Card>
+            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <div className="flex items-center justify-between">
+              <TabsList
+                className={cn(
+                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  mode.radius
+                )}
+              >
+                <TabsTrigger
+                  value="preview"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  [PREVIEW]
+                </TabsTrigger>
+                <TabsTrigger
+                  value="code"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  [CODE]
+                </TabsTrigger>
+              </TabsList>
+            </div>
+          </Card>
+
+          {/* Preview Tab Content */}
+          <TabsContent value="preview" className="mt-6 w-full max-w-full">
+            <Card className="overflow-hidden">
+              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <SecurityPrivacyPreview />
+            </Card>
+          </TabsContent>
+
+          {/* Code Tab Content */}
+          <TabsContent value="code" className="mt-6 w-full max-w-full">
+            <Card className="overflow-hidden">
+              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <div className="w-full max-w-full overflow-x-auto p-4">
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+              </div>
+            </Card>
+          </TabsContent>
+        </Tabs>
+
+        {/* File Structure */}
+        <Card>
+          <CardHeader code="0x02" title="FILE_STRUCTURE" />
+          <CardContent padding="md">
+            <div className={cn(mode.font, "space-y-1 text-xs")}>
+              <div className="text-muted-foreground">[FILES]:</div>
+              <div className="space-y-1 pl-4">
+                <div>
+                  <span className="text-primary">app/</span>
+                  <span className="text-muted-foreground">settings/security/</span>
+                  <span className="text-foreground">page.tsx</span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Features */}
+        <Card>
+          <CardHeader code="0x03" title="FEATURES" />
+          <CardContent padding="md">
+            <div className={cn(mode.font, "space-y-2 text-xs")}>
+              <div>
+                <span className="text-success">&gt;</span> Security score dashboard
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Two-factor authentication setup
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Active session management
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Privacy settings with toggles
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Audit log with filtering
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> GDPR compliance tools (data export,
+                deletion)
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

@@ -1,51 +1,65 @@
 /**
- * ✅ FABRK COMPONENT
+ * FABRK COMPONENT
  * Email Templates Showcase - Terminal console style
- * Production-ready ✓
+ * Production-ready
  */
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { Mail } from "lucide-react";
+import { TemplatePageHeader, Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { CodeBlock } from "@/components/ui/code-block";
 import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import { emailTemplates } from "./components/email-template-data";
 import { EmailStats } from "./components/email-stats";
-import { EmailFeatures } from "./components/email-features";
-import { TemplatePageHeader, Card, CardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
-// Inject custom scrollbar styling into email HTML
-function injectScrollbarStyles(html: string, primaryColor: string): string {
-  const scrollbarStyles = `
-    <style>
-      /* Custom scrollbar styling - matches main site */
-      * {
-        scrollbar-width: thin;
-        scrollbar-color: hsl(var(--border, 0 0% 90%)) transparent;
-      }
-      *:hover {
-        scrollbar-color: hsl(${primaryColor} / 0.5) transparent;
-      }
-      ::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: transparent;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: hsl(var(--border, 0 0% 90%));
-        border-radius: 4px;
-        transition: background 0.2s;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: hsl(${primaryColor} / 0.5);
-      }
-    </style>
-  `;
-  return html.replace("</head>", `${scrollbarStyles}</head>`);
-}
+const templateCode = `"use client";
+
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { mode } from "@/design-system";
+import { cn } from "@/lib/utils";
+
+export default function WelcomeEmail() {
+  return (
+    <div className="mx-auto max-w-[600px] border border-border bg-background p-8">
+      {/* Header */}
+      <div className="mb-6 border-b border-border pb-6">
+        <h1 className={cn(mode.font, "text-2xl font-semibold")}>
+          Welcome to Fabrk
+        </h1>
+      </div>
+
+      {/* Content */}
+      <div className={cn(mode.font, "mb-6 space-y-4 text-sm")}>
+        <p>Hi {"{name}"},</p>
+        <p>
+          Welcome to Fabrk! We're excited to have you on board.
+        </p>
+        <p>
+          Your account has been successfully created and you're ready to start
+          building amazing products.
+        </p>
+      </div>
+
+      {/* CTA */}
+      <div className="mb-6">
+        <Button className={cn(mode.radius, mode.font, "w-full text-xs")}>
+          &gt; GET_STARTED
+        </Button>
+      </div>
+
+      {/* Footer */}
+      <div className={cn(mode.font, "border-t border-border pt-4 text-xs text-muted-foreground")}>
+        <p>© 2024 Fabrk. All rights reserved.</p>
+      </div>
+    </div>
+  );
+}`;
 
 const tabs = emailTemplates.map((template) => ({
   id: template.id,
@@ -53,49 +67,16 @@ const tabs = emailTemplates.map((template) => ({
   icon: template.icon,
 }));
 
-export default function EmailTemplatesShowcase() {
+function EmailTemplatesPreview() {
   const [activeTab, setActiveTab] = useState(emailTemplates[0].id);
-  const [primaryColor, setPrimaryColor] = useState("271.5 81.3% 55.9%");
-
-  useEffect(() => {
-    const updatePrimaryColor = () => {
-      const color = getComputedStyle(document.documentElement).getPropertyValue("--primary").trim();
-      if (color) setPrimaryColor(color);
-    };
-
-    updatePrimaryColor();
-
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === "data-theme") {
-          updatePrimaryColor();
-        }
-      });
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-theme"],
-    });
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
-    <div>
-      {/* Page Content */}
-      <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
-        {/* Header */}
-        <TemplatePageHeader
-          badge="EMAIL_TEMPLATES"
-          title="Email Templates"
-          description="5 production-ready transactional email templates with HTML and text versions"
-        />
-
-        {/* Stats - Terminal Style */}
+    <div className="bg-background/50 min-h-[600px] p-4 sm:p-8">
+      <div className="space-y-6">
+        {/* Stats */}
         <EmailStats />
 
-        {/* Terminal Tab Navigation */}
+        {/* Email Tabs */}
         <StyledTabs
           code="0x00"
           title="EMAIL_TABS"
@@ -103,11 +84,9 @@ export default function EmailTemplatesShowcase() {
           value={activeTab}
           onValueChange={setActiveTab}
         >
-          {/* Email Previews */}
           {emailTemplates.map((template) => (
             <StyledTabsContent key={template.id} value={template.id}>
               <Card>
-                {/* Content Area */}
                 <CardContent padding="lg">
                   <div className="mb-6 flex items-center justify-between">
                     <div>
@@ -130,10 +109,9 @@ export default function EmailTemplatesShowcase() {
 
                   {/* Email Preview */}
                   <div className={cn(mode.radius, "border-border bg-muted mb-6 border p-8")}>
-                    <iframe
-                      srcDoc={injectScrollbarStyles(template.preview, primaryColor)}
-                      title={template.name}
-                      className="border-border bg-background mx-auto block min-h-[600px] w-full max-w-[600px] border"
+                    <div
+                      className="border-border bg-background mx-auto block min-h-[400px] max-w-[600px] border p-6"
+                      dangerouslySetInnerHTML={{ __html: template.preview }}
                     />
                   </div>
 
@@ -174,9 +152,125 @@ export default function EmailTemplatesShowcase() {
             </StyledTabsContent>
           ))}
         </StyledTabs>
+      </div>
+    </div>
+  );
+}
 
-        {/* Implementation Note */}
-        <EmailFeatures />
+export default function EmailTemplatesShowcase() {
+  return (
+    <div className="w-full overflow-x-hidden">
+      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
+        {/* Header */}
+        <TemplatePageHeader
+          badge="EMAIL_TEMPLATES"
+          title="Email Templates"
+          description="5 production-ready transactional email templates with HTML and text versions"
+        />
+
+        {/* Preview/Code Tabs */}
+        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
+          {/* Tab Navigation Card */}
+          <Card>
+            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <div className="flex items-center justify-between">
+              <TabsList
+                className={cn(
+                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  mode.radius
+                )}
+              >
+                <TabsTrigger
+                  value="preview"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  [PREVIEW]
+                </TabsTrigger>
+                <TabsTrigger
+                  value="code"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  [CODE]
+                </TabsTrigger>
+              </TabsList>
+            </div>
+          </Card>
+
+          {/* Preview Tab Content */}
+          <TabsContent value="preview" className="mt-6 w-full max-w-full">
+            <Card className="overflow-hidden">
+              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <EmailTemplatesPreview />
+            </Card>
+          </TabsContent>
+
+          {/* Code Tab Content */}
+          <TabsContent value="code" className="mt-6 w-full max-w-full">
+            <Card className="overflow-hidden">
+              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <div className="w-full max-w-full overflow-x-auto p-4">
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+              </div>
+            </Card>
+          </TabsContent>
+        </Tabs>
+
+        {/* File Structure */}
+        <Card>
+          <CardHeader code="0x02" title="FILE_STRUCTURE" />
+          <CardContent padding="md">
+            <div className={cn(mode.font, "space-y-1 text-xs")}>
+              <div className="text-muted-foreground">[FILES]:</div>
+              <div className="space-y-1 pl-4">
+                <div>
+                  <span className="text-primary">lib/</span>
+                  <span className="text-muted-foreground">emails/</span>
+                  <span className="text-foreground">welcome.tsx</span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Features */}
+        <Card>
+          <CardHeader code="0x03" title="FEATURES" />
+          <CardContent padding="md">
+            <div className={cn(mode.font, "space-y-2 text-xs")}>
+              <div>
+                <span className="text-success">&gt;</span> 5 transactional email templates
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Welcome, password reset, invoice, alert,
+                verification
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Dynamic variable support
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Trigger event mapping
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Responsive email layouts
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Terminal-themed design
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
