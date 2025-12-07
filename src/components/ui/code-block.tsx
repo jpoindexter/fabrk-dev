@@ -38,10 +38,10 @@ export function CodeBlock({
       role="region"
       aria-label={`Code example in ${language}`}
     >
-      {/* Copy button - icon only */}
+      {/* Copy button - icon only, white for dark nightOwl theme */}
       <button
         onClick={handleCopy}
-        className="text-primary hover:text-primary/80 absolute top-3 right-3 z-10 transition-colors"
+        className="absolute top-3 right-3 z-10 text-white/70 transition-colors hover:text-white" // intentional
         aria-label={copied ? "Code copied" : "Copy code to clipboard"}
       >
         {copied ? (
