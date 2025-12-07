@@ -6,7 +6,6 @@
 
 // Navigation & Layout
 export { Navigation } from "./navigation";
-export { Footer } from "./footer";
 
 // Hero Variations
 export { HeroSection } from "./hero-section";

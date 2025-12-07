@@ -1,5 +1,5 @@
 import { SiteNavigation } from "@/components/navigation";
-import { Footer } from "@/components/marketing/footer";
+import { Footer } from "@/components/shared/footer";
 
 export default function LegalLayout({ children }: { children: React.ReactNode }) {
   return (

@@ -30,7 +30,7 @@ import { HeroSection } from "@/components/marketing/hero-section";
 import { FeaturesSection } from "@/components/marketing/features-section";
 import { PricingSection } from "@/components/marketing/pricing-section";
 import { FAQSection } from "@/components/marketing/faq-section";
-import { Footer } from "@/components/marketing/footer";
+import { Footer } from "@/components/shared/footer";
 
 export default function HomePage() {
   return (
