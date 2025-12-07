@@ -9,12 +9,7 @@ import { useEffect, useRef } from "react";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  Badge,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardContent, Badge } from "@/components/ui/card";
 
 // Animated counter component
 function AnimatedCounter({
@@ -146,7 +141,7 @@ export function ComparisonSection() {
                     viewport={{ once: true }}
                     className={cn(
                       mode.font,
-                      "border-border -mx-4 grid cursor-default grid-cols-3 gap-4 border-b px-4 py-4 text-xs"
+                      "border-border -mx-4 grid cursor-default grid-cols-3 gap-4 border-b px-4 py-4 text-xs last:border-b-0"
                     )}
                   >
                     <div className="text-foreground">{feature.name}</div>
