@@ -1,8 +1,8 @@
 # Design System Audit - Complete Documentation
 
 **Project:** Fabrk SaaS Boilerplate
-**Audit Date:** December 5, 2025
-**Status:** Phase 1 Complete (20 of 109 components)
+**Audit Date:** December 5-7, 2025
+**Status:** Component Value Audit Complete (89 components assessed)
 
 ---
 
@@ -13,6 +13,19 @@
 | **[AUDIT_SUMMARY.md](./AUDIT_SUMMARY.md)** | Executive summary, quick status | 5 min read |
 | **[FINDINGS.md](./FINDINGS.md)** | Detailed technical findings | 15 min read |
 | **[components/README.md](./components/README.md)** | Component audit index | 10 min read |
+| **[COMPONENT_VALUE_AUDIT.md](./COMPONENT_VALUE_AUDIT.md)** | Product/market value audit protocol | 10 min read |
+
+### Component Value Audit Files
+
+| Document | Purpose |
+|----------|---------|
+| **[components-inventory.md](./components-inventory.md)** | Complete inventory of 89 components |
+| **[components-inventory.json](./components-inventory.json)** | Machine-readable inventory |
+| **[components-market-value.md](./components-market-value.md)** | Gap analysis vs industry baseline |
+| **[components-market-value.json](./components-market-value.json)** | Machine-readable market value data |
+| **[industry-baseline.md](./industry-baseline.md)** | Expected SaaS components |
+| **[industry-baseline.json](./industry-baseline.json)** | Machine-readable baseline |
+| **[../spec/components-product-strategy.md](../spec/components-product-strategy.md)** | Product strategy recommendations |
 
 ---
 
@@ -35,6 +48,37 @@ Read: **components/README.md** then specific component audits
 - Design token compliance
 - Terminal aesthetic adherence
 - Cross-component consistency
+
+### 🎯 For Product Strategy
+Read: **COMPONENT_VALUE_AUDIT.md**
+- Component market value assessment
+- Industry baseline comparison
+- Missing primitives gap analysis
+
+---
+
+## Two Types of Audits
+
+### 1. Design System Compliance Audit (This Document)
+- **Focus:** Is everything consistent with our design system?
+- **Checks:** Design tokens, spacing, accessibility, terminal aesthetic
+- **Output:** Technical fixes for compliance
+
+### 2. Component Value Audit ([COMPONENT_VALUE_AUDIT.md](./COMPONENT_VALUE_AUDIT.md))
+- **Focus:** Is this boilerplate competitive with top SaaS starters?
+- **Checks:** Market value, industry baseline, missing primitives
+- **Output:** Product strategy for component lineup
+
+**Run Value Audit:**
+```bash
+"Run the component value audit following design-system/audit/COMPONENT_VALUE_AUDIT.md"
+```
+
+**Output Files:**
+- `components-inventory.json/md` - What we have
+- `industry-baseline.json/md` - What customers expect
+- `components-market-value.json/md` - Gap analysis
+- `spec/components-product-strategy.md` - Recommendations
 
 ---
 

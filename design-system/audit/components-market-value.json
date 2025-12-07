@@ -1,0 +1,846 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "generated": "2025-12-07",
+    "status": "complete",
+    "description": "Component market value analysis comparing inventory to industry baseline"
+  },
+  "summary": {
+    "market_value": {
+      "critical": 35,
+      "high": 28,
+      "nice_to_have": 18,
+      "niche": 8
+    },
+    "baseline_overlap": {
+      "direct_match": 45,
+      "variant_or_specialization": 24,
+      "experimental": 20
+    },
+    "theme_friendly": {
+      "yes": 85,
+      "partial": 4,
+      "no": 0
+    }
+  },
+  "components": [
+    {
+      "name": "Button",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Excellent implementation with variants, sizes, loading state. Mode tokens integrated.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Input",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Solid base input with validation states and loading indicator.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Select",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Full-featured select with Radix primitives.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Checkbox",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Standard implementation.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "RadioGroup",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Standard implementation.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Switch",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Standard implementation.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Textarea",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Standard implementation.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Label",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Essential for form accessibility.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Form",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "React-hook-form integration is excellent for SaaS.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Card",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Rich card system with many sub-components. Core primitive.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Badge",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Essential for status indicators.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Avatar",
+      "market_value": "high",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Standard implementation with fallback.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Table",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Base table component.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "DataTable",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Full-featured with TanStack Table. High value for admin UIs.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Dialog",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Essential modal component.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Sheet",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Drawer/side panel. Essential for mobile and detail panels.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Popover",
+      "market_value": "high",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Base for many other components.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Tooltip",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Essential for UX hints.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "DropdownMenu",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Essential for actions and user menus.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Alert",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Essential feedback component.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Toast",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Essential for transient notifications.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Progress",
+      "market_value": "high",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Standard progress indicator.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Skeleton",
+      "market_value": "high",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Essential for loading states.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Tabs",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Core navigation component.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Breadcrumb",
+      "market_value": "high",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Standard navigation aid.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "NavigationMenu",
+      "market_value": "high",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Full mega-menu support.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Sidebar",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Essential for dashboard navigation. Collapsible with nested items.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "KpiCard",
+      "market_value": "critical",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "High-value dashboard component with trend indicator.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "StatCard",
+      "market_value": "high",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Similar to KpiCard, could potentially consolidate.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "EmptyState",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Essential for empty data scenarios with CTA.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Slider",
+      "market_value": "high",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Standard range input.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "DatePicker",
+      "market_value": "high",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Calendar-based selection. Common requirement.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Combobox",
+      "market_value": "high",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Searchable dropdown. Very useful.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "MultiSelect",
+      "market_value": "high",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Multiple selection with tags.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "FileUpload",
+      "market_value": "high",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Drag-and-drop file upload.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "AlertDialog",
+      "market_value": "high",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Confirmation dialog for destructive actions.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Command",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Command palette. Power user feature.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "NotificationCenter",
+      "market_value": "high",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Full notification system with grouping. High value.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "ActivityTimeline",
+      "market_value": "high",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Activity feed/audit log. Very useful for SaaS.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "MultiStepForm",
+      "market_value": "high",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Onboarding/checkout flows. High value.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Sparkline",
+      "market_value": "high",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Inline trend charts. Great for dashboards.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "PieChart",
+      "market_value": "high",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Standard chart.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "DonutChart",
+      "market_value": "high",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Donut with center content. Good for metrics.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "InputPassword",
+      "market_value": "high",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Password with visibility toggle. Auth essential.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "InputOTP",
+      "market_value": "high",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "2FA input. Important for secure auth.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "PasswordStrength",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Password strength indicator.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "InviteForm",
+      "market_value": "high",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Team invitation. Common SaaS pattern.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "RoleSelector",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Role selection for team management.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "MemberCard",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Team member display.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "AvatarGroup",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Stacked avatars for teams.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Banner",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Announcement banner.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "InputSearch",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Search input variant.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "InputNumber",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Numeric input with buttons.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "InputGroup",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Input with addons.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Autocomplete",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Similar to Combobox. Could consolidate.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "ColorPicker",
+      "market_value": "niche",
+      "overlap_with_baseline": "experimental",
+      "theme_friendly": true,
+      "notes": "Specialized. Theme customization use case.",
+      "recommendation": "shelf"
+    },
+    {
+      "name": "TimePicker",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Time selection.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Calendar",
+      "market_value": "high",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Base for DatePicker.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Pagination",
+      "market_value": "high",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Essential for data lists.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Gauge",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Single metric visualization.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "FunnelChart",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Conversion funnel. Analytics use case.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Heatmap",
+      "market_value": "niche",
+      "overlap_with_baseline": "experimental",
+      "theme_friendly": true,
+      "notes": "Specialized visualization.",
+      "recommendation": "shelf"
+    },
+    {
+      "name": "ContextMenu",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Right-click menus. Desktop apps.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "HoverCard",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Preview on hover.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Menubar",
+      "market_value": "niche",
+      "overlap_with_baseline": "experimental",
+      "theme_friendly": true,
+      "notes": "Desktop-style menubar. Rarely needed in SaaS.",
+      "recommendation": "shelf"
+    },
+    {
+      "name": "StyledTabs",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Pre-styled tab variants.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Accordion",
+      "market_value": "high",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "FAQs, settings sections.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Collapsible",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Single collapsible section.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "ScrollArea",
+      "market_value": "high",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Custom scrollbar styling.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "AspectRatio",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Image/video ratio maintenance.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Separator",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Visual divider.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Typography",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Foundation component.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Container",
+      "market_value": "critical",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Foundation component.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Section",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Page section wrapper.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Grid",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Layout grid.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Stack",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Layout stack.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "PageWrapper",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Page wrapper.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "CodeBlock",
+      "market_value": "high",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Syntax highlighting with copy. Great for docs/dev tools.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "MarkdownEditor",
+      "market_value": "niche",
+      "overlap_with_baseline": "experimental",
+      "theme_friendly": true,
+      "notes": "Content editing. Specific use case.",
+      "recommendation": "shelf"
+    },
+    {
+      "name": "MarkdownViewer",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Markdown rendering.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "RichTextEditor",
+      "market_value": "niche",
+      "overlap_with_baseline": "experimental",
+      "theme_friendly": true,
+      "notes": "WYSIWYG editor. Specialized.",
+      "recommendation": "shelf"
+    },
+    {
+      "name": "ImageUploader",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Image upload with cropping.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Lightbox",
+      "market_value": "niche",
+      "overlap_with_baseline": "experimental",
+      "theme_friendly": true,
+      "notes": "Image gallery viewer. Specialized.",
+      "recommendation": "shelf"
+    },
+    {
+      "name": "Rating",
+      "market_value": "niche",
+      "overlap_with_baseline": "experimental",
+      "theme_friendly": true,
+      "notes": "Star rating. Specific use case.",
+      "recommendation": "shelf"
+    },
+    {
+      "name": "Loading",
+      "market_value": "high",
+      "overlap_with_baseline": "direct_match",
+      "theme_friendly": true,
+      "notes": "Loading spinner.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "NotificationList",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Part of notification system.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "NotificationBadge",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Unread count badge.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "StatusIndicator",
+      "market_value": "nice_to_have",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Online/offline status dot.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "FormError",
+      "market_value": "high",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Error message display.",
+      "recommendation": "keep"
+    },
+    {
+      "name": "Toaster",
+      "market_value": "critical",
+      "overlap_with_baseline": "variant_or_specialization",
+      "theme_friendly": true,
+      "notes": "Toast provider. Required for toast system.",
+      "recommendation": "keep"
+    }
+  ],
+  "gaps": {
+    "critical": [
+      {
+        "name": "DashboardShell",
+        "category": "layout",
+        "importance": "critical",
+        "unlocks": "Consistent dashboard page structure with sidebar + topbar across all admin pages"
+      },
+      {
+        "name": "AuthLayout",
+        "category": "layout",
+        "importance": "critical",
+        "unlocks": "Professional sign-in/up/forgot-password pages with centered branding"
+      },
+      {
+        "name": "TopBar",
+        "category": "navigation",
+        "importance": "critical",
+        "unlocks": "Dashboard header with user menu, global search, and notification access"
+      }
+    ],
+    "high": [
+      {
+        "name": "SettingsLayout",
+        "category": "layout",
+        "importance": "high",
+        "unlocks": "Consistent settings pages with sidebar navigation pattern"
+      },
+      {
+        "name": "LineChart",
+        "category": "charts",
+        "importance": "high",
+        "unlocks": "Time-series trend visualization for metrics, revenue, and usage data"
+      },
+      {
+        "name": "BarChart",
+        "category": "charts",
+        "importance": "high",
+        "unlocks": "Comparison visualization for categories, periods, and segments"
+      },
+      {
+        "name": "AreaChart",
+        "category": "charts",
+        "importance": "high",
+        "unlocks": "Volume and cumulative trend visualization with filled regions"
+      },
+      {
+        "name": "BillingSummaryCard",
+        "category": "settings",
+        "importance": "high",
+        "unlocks": "Subscription status display with current plan and usage"
+      },
+      {
+        "name": "PlanSelector",
+        "category": "settings",
+        "importance": "high",
+        "unlocks": "Pricing tier selection during upgrade flows"
+      },
+      {
+        "name": "UsageMeter",
+        "category": "settings",
+        "importance": "high",
+        "unlocks": "Usage-based billing display showing consumption vs limits"
+      },
+      {
+        "name": "FiltersBar",
+        "category": "data_display",
+        "importance": "high",
+        "unlocks": "Reusable table filtering toolbar with search, date range, and facets"
+      }
+    ],
+    "nice_to_have": [
+      {
+        "name": "ApiKeysTable",
+        "category": "settings",
+        "importance": "nice_to_have",
+        "unlocks": "Developer settings page with API key management and rotation"
+      },
+      {
+        "name": "ChangelogTimeline",
+        "category": "data_display",
+        "importance": "nice_to_have",
+        "unlocks": "Product updates and release notes display"
+      },
+      {
+        "name": "OnboardingChecklist",
+        "category": "auth",
+        "importance": "nice_to_have",
+        "unlocks": "Setup progress tracking during new user onboarding"
+      },
+      {
+        "name": "SocialLoginButtons",
+        "category": "auth",
+        "importance": "nice_to_have",
+        "unlocks": "OAuth provider buttons (Google, GitHub, etc.) for auth pages"
+      }
+    ]
+  }
+}

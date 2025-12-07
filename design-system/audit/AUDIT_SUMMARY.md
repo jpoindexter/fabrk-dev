@@ -255,12 +255,117 @@ The Fabrk design system is **well-architected and production-ready** after criti
 
 ---
 
+## Component Value Audit (Market Analysis)
+
+**Completed:** December 7, 2025
+
+This audit assessed the competitive positioning of the Fabrk component library against industry baseline for SaaS boilerplates.
+
+### Quick Stats
+
+| Metric | Count |
+|--------|-------|
+| **Total Components** | 89 |
+| **Keep (Core)** | 81 |
+| **Shelf (Experimental)** | 8 |
+| **Missing (Gaps)** | 11 |
+
+### Market Value Distribution
+
+| Rating | Count | % |
+|--------|-------|---|
+| Critical | 35 | 39% |
+| High | 28 | 32% |
+| Nice to Have | 18 | 20% |
+| Niche | 8 | 9% |
+
+### Hero Components (Top 10)
+
+1. DataTable - Full TanStack integration
+2. KpiCard - Dashboard metrics with trends
+3. Form - React-hook-form integration
+4. Sidebar - Collapsible dashboard nav
+5. NotificationCenter - Full notification system
+6. MultiStepForm - Onboarding/checkout wizard
+7. ActivityTimeline - Activity feed/audit log
+8. Sparkline + DonutChart - Dashboard charts
+9. Toast System - Notifications
+10. EmptyState - Professional empty states
+
+### Components to Shelf
+
+Move to `/experimental` section:
+1. ColorPicker
+2. Heatmap
+3. Menubar
+4. MarkdownEditor
+5. RichTextEditor
+6. Lightbox
+7. Rating
+
+### Critical Gaps (Must Add)
+
+| Component | Why | Strategy |
+|-----------|-----|----------|
+| DashboardShell | Layout essential | Sidebar + TopBar |
+| AuthLayout | Auth page wrapper | Centered layout |
+| TopBar | Dashboard header | Compose existing |
+
+### High-Value Gaps (Differentiators)
+
+| Component | Why | Strategy |
+|-----------|-----|----------|
+| LineChart | Most requested | SVG/Recharts |
+| BarChart | Comparison data | SVG/Recharts |
+| AreaChart | Volume trends | SVG/Recharts |
+| BillingSummaryCard | SaaS billing | Card + Progress |
+| PlanSelector | Pricing tiers | Card + RadioGroup |
+
+### Competitive Position
+
+**Strengths:**
+- Form ecosystem (24 components)
+- Notification system
+- Dashboard components
+- Full DataTable with TanStack
+- Unique terminal aesthetic
+
+**Weaknesses:**
+- Missing layout shells
+- Incomplete charts (no Line/Bar)
+- No billing components
+
+**vs Competition:**
+
+| Feature | Fabrk | shadcn/ui | Tremor |
+|---------|-------|-----------|--------|
+| Components | 89 | ~40 | ~30 |
+| Charts | 6 | 0 | 12 |
+| Dashboard-Ready | Partial | No | Yes |
+| Terminal Aesthetic | Yes | No | No |
+
+### Decision Required
+
+Choose next action:
+
+> **(A)** Refactor showcase - highlight hero components
+>
+> **(B)** Add missing primitives - DashboardShell, charts
+>
+> **(C)** Shelf low-value components first
+
+**Full Details:** See `components-market-value.md` and `spec/components-product-strategy.md`
+
+---
+
 ## Contact
 
 For questions or clarifications:
 - **Technical Issues:** See `FINDINGS.md`
 - **Component Details:** See `/components/*.md`
+- **Market Value Analysis:** See `components-market-value.md`
+- **Product Strategy:** See `spec/components-product-strategy.md`
 - **Design System Docs:** See `/DESIGN_SYSTEM.md`
 
-**Last Updated:** December 5, 2025
+**Last Updated:** December 7, 2025
 **Auditor:** Claude Code (claude.ai/code)
