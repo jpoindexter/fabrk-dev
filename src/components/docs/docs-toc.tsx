@@ -7,6 +7,7 @@
 import { useState, useEffect, RefObject } from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { mode } from "@/design-system";
 
 interface TocHeading {
   id: string;
@@ -86,10 +87,10 @@ export function DocsToc({ mainRef, className }: DocsTocProps) {
       aria-label="Table of contents"
     >
       <div className="p-4">
-        <div className="text-muted-foreground mb-4 font-mono text-sm">[ON_THIS_PAGE]:</div>
+        <div className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>[ON_THIS_PAGE]:</div>
         {tocHeadings.length > 0 ? (
           <nav>
-            <ul className="space-y-1 font-mono text-xs">
+            <ul className={cn("space-y-1 text-xs", mode.font)}>
               {tocHeadings.map((heading) => {
                 const isActive = activeId === heading.id;
                 return (
@@ -112,7 +113,9 @@ export function DocsToc({ mainRef, className }: DocsTocProps) {
             </ul>
           </nav>
         ) : (
-          <p className="text-muted-foreground/50 px-2 font-mono text-sm">No sections found</p>
+          <p className={cn("text-muted-foreground/50 px-2 text-sm", mode.font)}>
+            No sections found
+          </p>
         )}
       </div>
     </aside>
