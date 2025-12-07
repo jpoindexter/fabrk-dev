@@ -97,12 +97,12 @@ export function PricingSection() {
                     <div className={cn("text-muted-foreground mb-2 text-xs", mode.font)}>
                       PRICE:
                     </div>
-                    <div className="flex items-baseline gap-4">
-                      <span className={cn("text-muted-foreground text-lg line-through", mode.font)}>
+                    <div className="flex items-baseline gap-2">
+                      <span className={cn("text-muted-foreground text-sm line-through", mode.font)}>
                         {config.pricing.fabrk.display.original}
                       </span>
                       <span className={cn("text-muted-foreground text-xs", mode.font)}>→</span>
-                      <span className={cn("text-foreground text-4xl font-semibold", mode.font)}>
+                      <span className={cn("text-foreground text-2xl font-semibold", mode.font)}>
                         {config.pricing.fabrk.display.current}
                       </span>
                     </div>
