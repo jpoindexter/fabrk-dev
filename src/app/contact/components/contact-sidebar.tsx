@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { Mail, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
 export function ContactSidebar() {
   return (
@@ -18,13 +18,13 @@ export function ContactSidebar() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x02"
             title="CONTACT"
             icon={<Mail className="text-muted-foreground size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <h3 className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
               EMAIL_US
             </h3>
@@ -38,8 +38,8 @@ export function ContactSidebar() {
             >
               &gt; support@fabrk.dev
             </a>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </motion.div>
 
       {/* Response Time */}
@@ -48,13 +48,13 @@ export function ContactSidebar() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
       >
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x03"
             title="RESPONSE"
             icon={<MessageCircle className="text-muted-foreground size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <h3 className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
               RESPONSE_TIME
             </h3>
@@ -65,8 +65,8 @@ export function ContactSidebar() {
                 mention "URGENT" in your subject.
               </span>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </motion.div>
     </div>
   );

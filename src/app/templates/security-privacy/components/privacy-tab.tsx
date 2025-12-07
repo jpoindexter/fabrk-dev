@@ -3,7 +3,7 @@
  */
 
 import { Switch } from "@/components/ui/switch";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { User, Cookie } from "lucide-react";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
@@ -26,13 +26,13 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
   return (
     <div className="space-y-6">
       {/* Profile Privacy */}
-      <TerminalCard tone="neutral">
-        <TerminalCardHeader
+      <Card tone="neutral">
+        <CardHeader
           code="0x02"
           title="PROFILE_PRIVACY"
           icon={<User className="h-4 w-4" />}
         />
-        <TerminalCardContent padding="md">
+        <CardContent padding="md">
           <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
             [PROFILE_ACTIVITY]:
           </div>
@@ -73,13 +73,13 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
               </div>
             ))}
           </div>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
 
       {/* Cookie Preferences */}
-      <TerminalCard tone="neutral">
-        <TerminalCardHeader code="0x03" title="COOKIES" icon={<Cookie className="h-4 w-4" />} />
-        <TerminalCardContent padding="md">
+      <Card tone="neutral">
+        <CardHeader code="0x03" title="COOKIES" icon={<Cookie className="h-4 w-4" />} />
+        <CardContent padding="md">
           <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
             [COOKIE_PREFERENCES]:
           </div>
@@ -124,8 +124,8 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
               </div>
             ))}
           </div>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
     </div>
   );
 }

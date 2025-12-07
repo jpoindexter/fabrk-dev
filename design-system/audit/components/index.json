@@ -1,327 +1,161 @@
 {
+  "version": "1.0.0",
   "auditDate": "2025-12-06",
-  "totalComponents": 98,
-  "compliant": 97,
-  "violations": 1,
-  "summary": {
-    "modeSystemAdoption": "77 components (78.6%) import and use mode object from @/design-system",
-    "radiusCompliance": "100% - NO rounded-sm/md/lg/xl violations found",
-    "colorCompliance": "99% - Only 1 file (color-picker.tsx) contains hex colors (expected for color picker tool)",
-    "fontCompliance": "100% - All components use mode.font or design tokens"
+  "totalComponents": 241,
+  "uiComponents": 100,
+  "categories": {
+    "primitive": 12,
+    "atom": 35,
+    "molecule": 28,
+    "organism": 15,
+    "template-piece": 10
   },
   "compliance": {
-    "usesModeSystem": 77,
-    "noRoundedViolations": 98,
-    "noHardcodedColors": 97,
-    "usesFontTokens": 98
+    "tokenUsage": {
+      "compliant": 137,
+      "violations": 104
+    },
+    "naming": {
+      "generic": 180,
+      "themeSpecific": 61
+    },
+    "themeability": {
+      "themeable": 137,
+      "hardcoded": 104
+    }
   },
-  "components": [
+  "criticalComponents": [
     {
-      "name": "Button",
-      "path": "src/components/ui/button.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant",
-      "notes": "Exemplary implementation - uses mode.radius, mode.font, mode.textTransform"
+      "name": "Card",
+      "filePath": "src/components/ui/card.tsx",
+      "category": "molecule",
+      "issues": ["Theme-specific naming (Terminal*, Styled*)"]
     },
     {
-      "name": "Card (TerminalCard)",
-      "path": "src/components/ui/card.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant",
-      "notes": "Canonical card component - uses mode.radius, mode.font throughout all subcomponents"
+      "name": "Button",
+      "filePath": "src/components/ui/button.tsx",
+      "category": "atom",
+      "issues": ["Generally compliant"]
     },
     {
       "name": "Input",
-      "path": "src/components/ui/input.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant",
-      "notes": "Uses mode.radius, mode.font, proper focus states with design tokens"
+      "filePath": "src/components/ui/input.tsx",
+      "category": "atom",
+      "issues": ["Generally compliant"]
     },
     {
       "name": "Badge",
-      "path": "src/components/ui/badge.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant",
-      "notes": "Uses mode.radius, mode.font, mode.textTransform"
+      "filePath": "src/components/ui/badge.tsx",
+      "category": "atom",
+      "issues": ["Generally compliant"]
     },
     {
       "name": "Tabs",
-      "path": "src/components/ui/tabs.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant",
-      "notes": "Uses !rounded-none override + mode.font"
-    },
-    {
-      "name": "Dialog",
-      "path": "src/components/ui/dialog.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant",
-      "notes": "Uses mode.radius on content and close button"
-    },
-    {
-      "name": "Alert",
-      "path": "src/components/ui/alert.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant",
-      "notes": "Uses mode.radius, mode.font"
-    },
-    {
-      "name": "Toast",
-      "path": "src/components/ui/toast.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant",
-      "notes": "Uses mode.radius on actions and close button, mode.font on text"
-    },
-    {
-      "name": "Select",
-      "path": "src/components/ui/select.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant",
-      "notes": "Uses mode.radius, mode.font across trigger, content, items"
-    },
-    {
-      "name": "Textarea",
-      "path": "src/components/ui/textarea.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant",
-      "notes": "Uses mode.radius, mode.font"
-    },
-    {
-      "name": "Checkbox",
-      "path": "src/components/ui/checkbox.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant",
-      "notes": "Uses mode.radius"
-    },
-    {
-      "name": "Switch",
-      "path": "src/components/ui/switch.tsx",
-      "usesMode": false,
-      "violations": 0,
-      "status": "compliant",
-      "notes": "Uses !rounded-none override directly (intentional terminal style)"
-    },
-    {
-      "name": "RadioGroup",
-      "path": "src/components/ui/radio-group.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant",
-      "notes": "Uses mode.radius on radio items"
-    },
-    {
-      "name": "DropdownMenu",
-      "path": "src/components/ui/dropdown-menu.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant",
-      "notes": "Uses mode.radius, mode.font extensively across all menu components"
-    },
-    {
-      "name": "Popover",
-      "path": "src/components/ui/popover.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant",
-      "notes": "Uses mode.radius on content"
-    },
-    {
-      "name": "Tooltip",
-      "path": "src/components/ui/tooltip.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant",
-      "notes": "Uses mode.radius, mode.font"
-    },
-    {
-      "name": "Separator",
-      "path": "src/components/ui/separator.tsx",
-      "usesMode": false,
-      "violations": 0,
-      "status": "compliant",
-      "notes": "No radius needed (1px line), uses design tokens for color"
-    },
-    {
-      "name": "Skeleton",
-      "path": "src/components/ui/skeleton.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant",
-      "notes": "Uses mode.radius"
-    },
-    {
-      "name": "Avatar",
-      "path": "src/components/ui/avatar.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant",
-      "notes": "Uses mode.radius on root and fallback"
-    },
-    {
-      "name": "Accordion",
-      "path": "src/components/ui/accordion.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant",
-      "notes": "Uses mode.font on trigger and content"
-    },
-    {
-      "name": "Calendar",
-      "path": "src/components/ui/calendar.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant",
-      "notes": "Uses mode.radius, mode.font throughout day cells and buttons"
-    },
-    {
-      "name": "Command",
-      "path": "src/components/ui/command.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant",
-      "notes": "Uses mode.radius, mode.font on root, input, items"
-    },
-    {
-      "name": "ColorPicker",
-      "path": "src/components/ui/color-picker.tsx",
-      "usesMode": true,
-      "violations": 1,
-      "status": "acceptable",
-      "notes": "Contains hex colors (lines 25-41) for default color presets - ACCEPTABLE since this is a color picker tool that requires color values"
-    },
-    {
-      "name": "StyledTabs",
-      "path": "src/components/ui/styled-tabs.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant"
-    },
-    {
-      "name": "Form",
-      "path": "src/components/ui/form.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant"
-    },
-    {
-      "name": "Table",
-      "path": "src/components/ui/table.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant"
-    },
-    {
-      "name": "Label",
-      "path": "src/components/ui/label.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant"
-    },
-    {
-      "name": "Sheet",
-      "path": "src/components/ui/sheet.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant"
-    },
-    {
-      "name": "HoverCard",
-      "path": "src/components/ui/hover-card.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant"
-    },
-    {
-      "name": "Progress",
-      "path": "src/components/ui/progress.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant"
-    },
-    {
-      "name": "Slider",
-      "path": "src/components/ui/slider.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant"
-    },
-    {
-      "name": "Breadcrumb",
-      "path": "src/components/ui/breadcrumb.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant"
-    },
-    {
-      "name": "AlertDialog",
-      "path": "src/components/ui/alert-dialog.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant"
-    },
-    {
-      "name": "ContextMenu",
-      "path": "src/components/ui/context-menu.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant"
-    },
-    {
-      "name": "Menubar",
-      "path": "src/components/ui/menubar.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant"
-    },
-    {
-      "name": "NavigationMenu",
-      "path": "src/components/ui/navigation-menu.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant"
-    },
-    {
-      "name": "ScrollArea",
-      "path": "src/components/ui/scroll-area.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant"
-    },
-    {
-      "name": "Sidebar",
-      "path": "src/components/ui/sidebar.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant"
-    },
-    {
-      "name": "Collapsible",
-      "path": "src/components/ui/collapsible.tsx",
-      "usesMode": true,
-      "violations": 0,
-      "status": "compliant"
+      "filePath": "src/components/ui/tabs.tsx",
+      "category": "molecule",
+      "issues": ["Generally compliant"]
     }
   ],
-  "recommendations": [
-    "All components are design-system compliant",
-    "Mode system adoption is excellent at 78.6%",
-    "Continue using mode object for all new components",
-    "The single violation (color-picker.tsx hex colors) is acceptable and necessary for the component's function"
-  ],
-  "nextSteps": [
-    "Consider documenting the 21 components that don't import mode (likely because they don't need radius/font styling)",
-    "Ensure all future components follow the established pattern",
-    "Monitor for any new hardcoded colors during development"
+  "componentList": [
+    { "name": "Accordion", "path": "ui/accordion.tsx", "category": "molecule" },
+    { "name": "ActivityTimeline", "path": "ui/activity-timeline.tsx", "category": "molecule" },
+    { "name": "Alert", "path": "ui/alert.tsx", "category": "molecule" },
+    { "name": "AlertDialog", "path": "ui/alert-dialog.tsx", "category": "organism" },
+    { "name": "AspectRatio", "path": "ui/aspect-ratio.tsx", "category": "primitive" },
+    { "name": "Autocomplete", "path": "ui/autocomplete.tsx", "category": "molecule" },
+    { "name": "Avatar", "path": "ui/avatar.tsx", "category": "atom" },
+    { "name": "AvatarGroup", "path": "ui/avatar-group.tsx", "category": "molecule" },
+    { "name": "Badge", "path": "ui/badge.tsx", "category": "atom" },
+    { "name": "Banner", "path": "ui/banner.tsx", "category": "molecule" },
+    { "name": "Breadcrumb", "path": "ui/breadcrumb.tsx", "category": "molecule" },
+    { "name": "Button", "path": "ui/button.tsx", "category": "atom" },
+    { "name": "Calendar", "path": "ui/calendar.tsx", "category": "molecule" },
+    { "name": "Card", "path": "ui/card.tsx", "category": "molecule" },
+    { "name": "Checkbox", "path": "ui/checkbox.tsx", "category": "atom" },
+    { "name": "CodeBlock", "path": "ui/code-block.tsx", "category": "molecule" },
+    { "name": "CodeGenerator", "path": "ui/code-generator.tsx", "category": "organism" },
+    { "name": "Collapsible", "path": "ui/collapsible.tsx", "category": "molecule" },
+    { "name": "ColorPicker", "path": "ui/color-picker.tsx", "category": "molecule" },
+    { "name": "Combobox", "path": "ui/combobox.tsx", "category": "molecule" },
+    { "name": "Command", "path": "ui/command.tsx", "category": "organism" },
+    { "name": "Container", "path": "ui/container.tsx", "category": "primitive" },
+    { "name": "ContextMenu", "path": "ui/context-menu.tsx", "category": "organism" },
+    { "name": "CopyButton", "path": "ui/copy-button.tsx", "category": "atom" },
+    { "name": "Cropper", "path": "ui/cropper.tsx", "category": "organism" },
+    { "name": "CropperControls", "path": "ui/cropper-controls.tsx", "category": "molecule" },
+    { "name": "DataTable", "path": "ui/data-table/data-table.tsx", "category": "organism" },
+    { "name": "DataTableHeader", "path": "ui/data-table-header.tsx", "category": "molecule" },
+    { "name": "DatePicker", "path": "ui/date-picker.tsx", "category": "molecule" },
+    { "name": "Dialog", "path": "ui/dialog.tsx", "category": "organism" },
+    { "name": "DonutChart", "path": "ui/donut-chart.tsx", "category": "molecule" },
+    { "name": "DropdownMenu", "path": "ui/dropdown-menu.tsx", "category": "organism" },
+    { "name": "EmptyState", "path": "ui/empty-state.tsx", "category": "molecule" },
+    { "name": "Field", "path": "ui/field.tsx", "category": "molecule" },
+    { "name": "FileUpload", "path": "ui/file-upload.tsx", "category": "organism" },
+    { "name": "Form", "path": "ui/form.tsx", "category": "organism" },
+    { "name": "FormError", "path": "ui/form-error.tsx", "category": "atom" },
+    { "name": "FunnelChart", "path": "ui/funnel-chart.tsx", "category": "molecule" },
+    { "name": "Gauge", "path": "ui/gauge.tsx", "category": "molecule" },
+    { "name": "Grid", "path": "ui/grid.tsx", "category": "primitive" },
+    { "name": "Heatmap", "path": "ui/heatmap.tsx", "category": "molecule" },
+    { "name": "HoverCard", "path": "ui/hover-card.tsx", "category": "molecule" },
+    { "name": "ImageDropzone", "path": "ui/image-dropzone.tsx", "category": "molecule" },
+    { "name": "ImageUploader", "path": "ui/image-uploader.tsx", "category": "organism" },
+    { "name": "Input", "path": "ui/input.tsx", "category": "atom" },
+    { "name": "InputGroup", "path": "ui/input-group.tsx", "category": "molecule" },
+    { "name": "InputNumber", "path": "ui/input-number.tsx", "category": "atom" },
+    { "name": "InputOTP", "path": "ui/input-otp.tsx", "category": "molecule" },
+    { "name": "InputPassword", "path": "ui/input-password.tsx", "category": "atom" },
+    { "name": "InputSearch", "path": "ui/input-search.tsx", "category": "atom" },
+    { "name": "InviteForm", "path": "ui/invite-form.tsx", "category": "organism" },
+    { "name": "KpiCard", "path": "ui/kpi-card.tsx", "category": "molecule" },
+    { "name": "Label", "path": "ui/label.tsx", "category": "atom" },
+    { "name": "Lazy", "path": "ui/lazy.tsx", "category": "primitive" },
+    { "name": "Lightbox", "path": "ui/lightbox.tsx", "category": "organism" },
+    { "name": "Loading", "path": "ui/loading.tsx", "category": "atom" },
+    { "name": "MarkdownEditor", "path": "ui/markdown-editor.tsx", "category": "organism" },
+    { "name": "MarkdownViewer", "path": "ui/markdown-viewer.tsx", "category": "molecule" },
+    { "name": "MemberCard", "path": "ui/member-card.tsx", "category": "molecule" },
+    { "name": "Menubar", "path": "ui/menubar.tsx", "category": "organism" },
+    { "name": "MultiSelect", "path": "ui/multi-select.tsx", "category": "molecule" },
+    { "name": "MultiStepForm", "path": "ui/multi-step-form.tsx", "category": "organism" },
+    { "name": "NavigationMenu", "path": "ui/navigation-menu.tsx", "category": "organism" },
+    { "name": "NotificationBadge", "path": "ui/notification-badge.tsx", "category": "atom" },
+    { "name": "NotificationCenter", "path": "ui/notification-center.tsx", "category": "organism" },
+    { "name": "NotificationList", "path": "ui/notification-list.tsx", "category": "molecule" },
+    { "name": "PageWrapper", "path": "ui/page-wrapper.tsx", "category": "template-piece" },
+    { "name": "Pagination", "path": "ui/pagination.tsx", "category": "molecule" },
+    { "name": "PasswordStrength", "path": "ui/password-strength.tsx", "category": "molecule" },
+    { "name": "PieChart", "path": "ui/pie-chart.tsx", "category": "molecule" },
+    { "name": "Popover", "path": "ui/popover.tsx", "category": "molecule" },
+    { "name": "Progress", "path": "ui/progress.tsx", "category": "atom" },
+    { "name": "PromptBuilder", "path": "ui/prompt-builder.tsx", "category": "organism" },
+    { "name": "RadioGroup", "path": "ui/radio-group.tsx", "category": "molecule" },
+    { "name": "Rating", "path": "ui/rating.tsx", "category": "atom" },
+    { "name": "RichTextEditor", "path": "ui/rich-text-editor.tsx", "category": "organism" },
+    { "name": "RoleSelector", "path": "ui/role-selector.tsx", "category": "molecule" },
+    { "name": "ScrollArea", "path": "ui/scroll-area.tsx", "category": "primitive" },
+    { "name": "Section", "path": "ui/section.tsx", "category": "template-piece" },
+    { "name": "Select", "path": "ui/select.tsx", "category": "atom" },
+    { "name": "Separator", "path": "ui/separator.tsx", "category": "primitive" },
+    { "name": "Sheet", "path": "ui/sheet.tsx", "category": "organism" },
+    { "name": "Sidebar", "path": "ui/sidebar.tsx", "category": "organism" },
+    { "name": "SimpleIcon", "path": "ui/simple-icon.tsx", "category": "atom" },
+    { "name": "Skeleton", "path": "ui/skeleton.tsx", "category": "atom" },
+    { "name": "Slider", "path": "ui/slider.tsx", "category": "atom" },
+    { "name": "Sparkline", "path": "ui/sparkline.tsx", "category": "molecule" },
+    { "name": "Stack", "path": "ui/stack.tsx", "category": "primitive" },
+    { "name": "StatCard", "path": "ui/stat-card.tsx", "category": "molecule" },
+    { "name": "StatusIndicator", "path": "ui/status-indicator.tsx", "category": "atom" },
+    { "name": "StyledTabs", "path": "ui/styled-tabs.tsx", "category": "molecule" },
+    { "name": "Switch", "path": "ui/switch.tsx", "category": "atom" },
+    { "name": "Table", "path": "ui/table.tsx", "category": "molecule" },
+    { "name": "Tabs", "path": "ui/tabs.tsx", "category": "molecule" },
+    { "name": "Textarea", "path": "ui/textarea.tsx", "category": "atom" },
+    { "name": "TimePicker", "path": "ui/time-picker.tsx", "category": "molecule" },
+    { "name": "Toast", "path": "ui/toast.tsx", "category": "molecule" },
+    { "name": "Toaster", "path": "ui/toaster.tsx", "category": "molecule" },
+    { "name": "Tooltip", "path": "ui/tooltip.tsx", "category": "molecule" },
+    { "name": "Typography", "path": "ui/typography.tsx", "category": "atom" }
   ]
 }

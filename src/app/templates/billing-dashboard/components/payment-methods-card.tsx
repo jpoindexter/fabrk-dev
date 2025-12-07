@@ -4,7 +4,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { CreditCard, Plus } from "lucide-react";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
@@ -24,13 +24,13 @@ interface PaymentMethodsCardProps {
 
 export function PaymentMethodsCard({ paymentMethods }: PaymentMethodsCardProps) {
   return (
-    <TerminalCard tone="neutral">
-      <TerminalCardHeader
+    <Card tone="neutral">
+      <CardHeader
         code="0x00"
         title="PAYMENT_METHODS"
         icon={<CreditCard className="size-4" />}
       />
-      <TerminalCardContent padding="md">
+      <CardContent padding="md">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [PAYMENT_METHODS]:
         </div>
@@ -76,7 +76,7 @@ export function PaymentMethodsCard({ paymentMethods }: PaymentMethodsCardProps) 
           <Plus className="mr-2 size-3" />
           &gt; ADD_PAYMENT_METHOD
         </Button>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

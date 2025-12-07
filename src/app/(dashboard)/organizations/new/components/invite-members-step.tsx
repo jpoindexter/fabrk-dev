@@ -7,7 +7,7 @@ import * as React from "react";
 import { UseFormReturn } from "react-hook-form";
 import { Mail, ChevronLeft, Check, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -49,14 +49,14 @@ export function InviteMembersStep({
   onSkip,
 }: InviteMembersStepProps) {
   return (
-    <TerminalCard>
-      <TerminalCardHeader
+    <Card>
+      <CardHeader
         code="0x01"
         title="INVITE_TEAM_MEMBERS"
         icon={<Mail className="h-4 w-4" />}
         meta="OPTIONAL"
       />
-      <TerminalCardContent padding="lg">
+      <CardContent padding="lg">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
@@ -156,7 +156,7 @@ export function InviteMembersStep({
             </div>
           </form>
         </Form>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

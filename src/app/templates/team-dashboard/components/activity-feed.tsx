@@ -4,7 +4,7 @@
  */
 
 import { Clock } from "lucide-react";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
@@ -23,9 +23,9 @@ interface ActivityFeedProps {
 
 export function ActivityFeed({ activities }: ActivityFeedProps) {
   return (
-    <TerminalCard size="auto">
-      <TerminalCardHeader code="0x03" title="ACTIVITY_LOG" icon={<Clock className="h-4 w-4" />} />
-      <TerminalCardContent>
+    <Card size="auto">
+      <CardHeader code="0x03" title="ACTIVITY_LOG" icon={<Clock className="h-4 w-4" />} />
+      <CardContent>
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>[ACTIVITY_FEED]:</div>
         <div className="space-y-4">
           {activities.map((activity) => (
@@ -48,7 +48,7 @@ export function ActivityFeed({ activities }: ActivityFeedProps) {
             </div>
           ))}
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

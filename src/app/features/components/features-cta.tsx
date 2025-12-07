@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { TerminalBadge } from "@/components/ui/card";
+import { Badge } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
 
@@ -26,7 +26,7 @@ export function FeaturesCTA() {
           className="text-center"
         >
           <div className="mb-4">
-            <TerminalBadge code="0x30" label="READY_TO_SHIP" />
+            <Badge code="0x30" label="READY_TO_SHIP" />
           </div>
           <h2 className={cn("mb-4 text-4xl font-semibold tracking-tight", mode.font)}>READY_TO_SHIP?</h2>
           <p className={cn("text-muted-foreground mx-auto mb-8 max-w-xl text-xs", mode.font)}>

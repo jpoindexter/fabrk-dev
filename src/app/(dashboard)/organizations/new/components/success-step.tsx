@@ -6,7 +6,7 @@
 import * as React from "react";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
 interface SuccessStepProps {
   onComplete: () => void;
@@ -14,9 +14,9 @@ interface SuccessStepProps {
 
 export function SuccessStep({ onComplete }: SuccessStepProps) {
   return (
-    <TerminalCard tone="success">
-      <TerminalCardHeader code="0x00" title="SUCCESS" icon={<Check className="h-4 w-4" />} />
-      <TerminalCardContent padding="lg">
+    <Card tone="success">
+      <CardHeader code="0x00" title="SUCCESS" icon={<Check className="h-4 w-4" />} />
+      <CardContent padding="lg">
         <div className="flex flex-col items-center justify-center">
           <div className="border-border bg-success rounded-none border p-4">
             <Check className="text-success-foreground h-8 w-8" />
@@ -29,7 +29,7 @@ export function SuccessStep({ onComplete }: SuccessStepProps) {
             &gt; GO_TO_DASHBOARD
           </Button>
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

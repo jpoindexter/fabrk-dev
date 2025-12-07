@@ -3,7 +3,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Smartphone, Clock, LogOut, Key } from "lucide-react";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
@@ -35,13 +35,13 @@ export function SecurityTab({
   return (
     <div className="space-y-6">
       {/* 2FA Section */}
-      <TerminalCard tone="neutral">
-        <TerminalCardHeader
+      <Card tone="neutral">
+        <CardHeader
           code="0x06"
           title="TWO_FACTOR"
           icon={<Smartphone className="h-4 w-4" />}
         />
-        <TerminalCardContent padding="md">
+        <CardContent padding="md">
           <div className="mb-4 flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div className="border-border bg-primary/10 flex h-10 w-10 items-center justify-center border">
@@ -74,13 +74,13 @@ export function SecurityTab({
             <Smartphone className="mr-2 h-4 w-4" />
             &gt; {twoFactorEnabled ? "MANAGE_2FA" : "ENABLE_2FA"}
           </Button>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
 
       {/* Active Sessions */}
-      <TerminalCard tone="neutral">
-        <TerminalCardHeader code="0x07" title="SESSIONS" icon={<Clock className="h-4 w-4" />} />
-        <TerminalCardContent padding="md">
+      <Card tone="neutral">
+        <CardHeader code="0x07" title="SESSIONS" icon={<Clock className="h-4 w-4" />} />
+        <CardContent padding="md">
           <div className="mb-4 flex items-center gap-4">
             <div className="border-border bg-primary/10 flex h-10 w-10 items-center justify-center border">
               <Clock className="text-primary h-5 w-5" />
@@ -135,13 +135,13 @@ export function SecurityTab({
               &gt; SIGN_OUT_ALL_OTHER_DEVICES
             </Button>
           </div>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
 
       {/* Password */}
-      <TerminalCard tone="neutral">
-        <TerminalCardHeader code="0x08" title="PASSWORD" icon={<Key className="h-4 w-4" />} />
-        <TerminalCardContent padding="md">
+      <Card tone="neutral">
+        <CardHeader code="0x08" title="PASSWORD" icon={<Key className="h-4 w-4" />} />
+        <CardContent padding="md">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div className="border-border bg-primary/10 flex h-10 w-10 items-center justify-center border">
@@ -158,8 +158,8 @@ export function SecurityTab({
               &gt; CHANGE_PASSWORD
             </Button>
           </div>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
     </div>
   );
 }

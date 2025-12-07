@@ -5,7 +5,7 @@
 
 import { Suspense } from "react";
 import { prisma } from "@/lib/prisma";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { UserManagementTable } from "@/components/admin/user-management-table";
 import { Users } from "lucide-react";
 
@@ -42,14 +42,14 @@ export default function AdminUsersPage() {
         </div>
       </div>
 
-      <TerminalCard>
-        <TerminalCardHeader
+      <Card>
+        <CardHeader
           code="0x00"
           title="ALL_USERS"
           icon={<Users className="h-4 w-4" />}
           meta="View and manage all registered users with full admin controls (showing last 100)"
         />
-        <TerminalCardContent>
+        <CardContent>
           <Suspense
             fallback={
               <div className="flex h-48 items-center justify-center">
@@ -59,8 +59,8 @@ export default function AdminUsersPage() {
           >
             <UsersTableWrapper />
           </Suspense>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
     </div>
   );
 }

@@ -2,10 +2,10 @@
 
 import { SimpleIcon } from "@/components/ui/simple-icon";
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
-  TerminalBadge,
+  Card,
+  CardHeader,
+  CardContent,
+  Badge,
 } from "@/components/ui/card";
 import { siTypescript, siPrisma, siEslint } from "simple-icons";
 import { Zap, FolderTree, Terminal, Code2 } from "lucide-react";
@@ -75,7 +75,7 @@ export function DeveloperExperienceSection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <TerminalBadge code="0x50" label="DEV_EXPERIENCE" />
+            <Badge code="0x50" label="DEV_EXPERIENCE" />
           </motion.div>
         </div>
 
@@ -130,8 +130,8 @@ export function DeveloperExperienceSection() {
                 }}
                 className="group"
               >
-                <TerminalCard className="hover:border-primary/50 transition-colors">
-                  <TerminalCardHeader
+                <Card className="hover:border-primary/50 transition-colors">
+                  <CardHeader
                     code={`0x${(index + 51).toString(16).toUpperCase()}`}
                     title=""
                     icon={
@@ -145,7 +145,7 @@ export function DeveloperExperienceSection() {
                       ) : undefined
                     }
                   />
-                  <TerminalCardContent className="p-4">
+                  <CardContent className="p-4">
                     <div className="text-foreground mb-3 text-xs font-semibold">
                       {feature.title.toUpperCase().replace(/ /g, "_")}
                     </div>
@@ -153,8 +153,8 @@ export function DeveloperExperienceSection() {
                       <span className="text-muted-foreground">DESC: </span>
                       <span className="text-foreground">{feature.description}</span>
                     </div>
-                  </TerminalCardContent>
-                </TerminalCard>
+                  </CardContent>
+                </Card>
               </motion.div>
             );
           })}

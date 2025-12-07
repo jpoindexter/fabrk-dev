@@ -24,12 +24,12 @@ import {
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
-  TerminalStat,
-  TerminalStatGroup,
-  TerminalBadge,
+  Card,
+  CardHeader,
+  CardContent,
+  Stat,
+  StatGroup,
+  Badge,
 } from "@/components/ui/card";
 
 // Typewriter effect component
@@ -229,7 +229,7 @@ export function HeroSection() {
               transition={{ duration: 0.6 }}
               className="mb-6"
             >
-              <TerminalBadge code="0x00" label="SYSTEM_INIT" meta="SAAS_BOILERPLATE_v2.0" />
+              <Badge code="0x00" label="SYSTEM_INIT" meta="SAAS_BOILERPLATE_v2.0" />
             </motion.div>
 
             {/* Headline */}
@@ -253,19 +253,19 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mb-8"
             >
-              <TerminalCard size="auto">
-                <TerminalCardHeader code="0x01" title="STATUS" />
-                <TerminalCardContent>
+              <Card size="auto">
+                <CardHeader code="0x01" title="STATUS" />
+                <CardContent>
                   <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
                     Why spend valuable time tackling auth, billing, emails, organizations, invites
                     and onboarding? Focus on your business and skip the noise.
                   </p>
-                  <TerminalStatGroup>
-                    <TerminalStat label="Speed" value="OPTIMIZED" />
-                    <TerminalStat label="Integration" value="SEAMLESS" />
-                  </TerminalStatGroup>
-                </TerminalCardContent>
-              </TerminalCard>
+                  <StatGroup>
+                    <Stat label="Speed" value="OPTIMIZED" />
+                    <Stat label="Integration" value="SEAMLESS" />
+                  </StatGroup>
+                </CardContent>
+              </Card>
             </motion.div>
 
             {/* CTAs */}
@@ -289,7 +289,7 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <TerminalBadge
+              <Badge
                 code="0x02"
                 label="POWERED_BY"
                 meta="FIB[1,1,2,3,5,8,13]"
@@ -325,11 +325,11 @@ export function HeroSection() {
               whileHover={{ scale: 1.01 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <TerminalCard size="auto">
-                <TerminalCardHeader code="0x03" title="terminal — ~/projects" />
+              <Card size="auto">
+                <CardHeader code="0x03" title="terminal — ~/projects" />
                 {/* Terminal Content */}
                 <HeroCodeDemo />
-              </TerminalCard>
+              </Card>
             </motion.div>
 
             {/* Discount Counter Below */}

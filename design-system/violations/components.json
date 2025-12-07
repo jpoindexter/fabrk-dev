@@ -1,149 +1,287 @@
 {
-  "metadata": {
-    "generated": "2025-12-06",
-    "lastUpdated": "2025-12-06",
-    "source": "PHASE 6: FINAL COMPLIANCE SWEEP",
-    "totalViolations": 0,
-    "acceptableExceptions": 19,
-    "fixedViolations": 8,
-    "categories": ["button-text", "card-padding", "label-format", "raw-html", "syntax"]
-  },
-  "violations": [],
-  "acceptableExceptions": [
-    {
-      "id": "COMP-EX-001",
-      "type": "Raw button elements",
-      "count": 19,
-      "locations": [
-        "docs/features/realtime/page.tsx",
-        "docs/features/cookie-consent/page.tsx",
-        "docs/features/notifications/page.tsx",
-        "docs/components/toaster/page.tsx",
-        "docs/components/faq/page.tsx",
-        "docs/components/collapsible/page.tsx",
-        "docs/components/notification-center/page.tsx",
-        "docs/extras/theming/page.tsx",
-        "templates/billing-dashboard/components/*.tsx",
-        "templates/user-management/components/*.tsx",
-        "(dashboard)/examples/*.tsx"
-      ],
-      "reason": "Documentation examples and table action buttons in templates"
-    },
-    {
-      "id": "COMP-EX-002",
-      "type": "Raw input elements",
-      "count": 6,
-      "locations": [
-        "docs/features/payments/page.tsx"
-      ],
-      "reason": "Checklist UI in documentation - visual only"
-    }
-  ],
-  "acceptedPatterns": [
-    {
-      "id": "PATTERN-001",
-      "componentType": "CardContent",
-      "pattern": "py-12 for empty states",
-      "reason": "Extra vertical padding for centered empty state content",
-      "gridAligned": true
-    },
-    {
-      "id": "PATTERN-002",
-      "componentType": "CardContent",
-      "pattern": "pt-6 without CardHeader",
-      "reason": "Top padding when CardContent is used without CardHeader",
-      "gridAligned": true
-    },
-    {
-      "id": "PATTERN-003",
-      "componentType": "CardContent",
-      "pattern": "p-8 for hero sections",
-      "reason": "Larger padding for prominent cards in success/hero contexts",
-      "gridAligned": true
-    }
-  ],
-  "fixed": [
-    {
-      "id": "COMP-001",
-      "file": "src/components/auth/signup-success.tsx",
-      "fix": "Changed 'Resend verification email' to '> RESEND_VERIFICATION_EMAIL'",
-      "fixedDate": "2025-12-05"
-    },
-    {
-      "id": "COMP-002",
-      "file": "src/components/security/security-settings.tsx",
-      "fix": "Changed 'Resend verification email' to '> RESEND_VERIFICATION_EMAIL'",
-      "fixedDate": "2025-12-05"
-    },
-    {
-      "id": "COMP-016",
-      "file": "src/app/contact/components/contact-form.tsx",
-      "fix": "Changed label format to '[NAME]:*' bracket style",
-      "fixedDate": "2025-12-05"
-    },
-    {
-      "id": "COMP-017",
-      "file": "src/app/contact/components/contact-form.tsx",
-      "fix": "Changed label format to '[EMAIL]:*' bracket style",
-      "fixedDate": "2025-12-05"
-    },
-    {
-      "id": "COMP-018",
-      "file": "src/app/contact/components/contact-form.tsx",
-      "fix": "Changed label format to '[SUBJECT]:*' bracket style",
-      "fixedDate": "2025-12-05"
-    },
-    {
-      "id": "COMP-019",
-      "file": "src/app/contact/components/contact-form.tsx",
-      "fix": "Changed label format to '[MESSAGE]:*' bracket style",
-      "fixedDate": "2025-12-05"
-    },
-    {
-      "id": "COMP-020",
-      "file": "src/app/contact/components/contact-form.tsx",
-      "fix": "Changed HTML entity '&gt;' to literal '>' in loading state",
-      "fixedDate": "2025-12-05"
-    },
-    {
-      "id": "COMP-009",
-      "file": "src/app/(dashboard)/organizations/new/components/success-step.tsx",
-      "fix": "Changed py-12 to px-6 pb-6 pt-6 for consistency",
-      "fixedDate": "2025-12-05"
-    }
-  ],
-  "compliance": {
-    "uiComponents": {
-      "total": 98,
-      "compliant": 98,
-      "rate": "100%"
-    },
-    "modeUsage": {
-      "componentsImportingMode": 84,
-      "totalModeUsages": 285
-    },
-    "canonicalComponents": {
-      "Button": "All production usage via @/components/ui/button",
-      "Input": "All production usage via @/components/ui/input",
-      "Card": "All production usage via TerminalCard"
-    }
-  },
+  "version": "1.0.0",
+  "auditDate": "2025-12-06",
   "summary": {
-    "byType": {
-      "button-text-format": 0,
-      "label-format": 0,
-      "raw-html-elements": 0,
-      "html-entity-syntax": 0
-    },
-    "bySeverity": {
-      "high": 0,
-      "medium": 0,
-      "low": 0
-    },
-    "status": "COMPLIANT (all exceptions are documentation/examples)"
+    "totalViolations": 127,
+    "critical": 5,
+    "major": 42,
+    "minor": 80
   },
-  "themeReadiness": {
-    "uiComponents": "READY - 84 components use mode abstraction",
-    "pages": "PARTIAL - some pages use direct classes"
+  "violations": [
+    {
+      "name": "Card (TerminalCard)",
+      "filePath": "src/components/ui/card.tsx",
+      "category": "molecule",
+      "severity": "critical",
+      "issues": {
+        "naming": {
+          "generic": false,
+          "current": "TerminalCard, TerminalCardHeader, TerminalCardContent, TerminalBadge, StyledLabel",
+          "suggestedGeneric": "Card, CardHeader, CardContent, Badge, Label"
+        },
+        "tokenUsage": {
+          "compliant": true,
+          "notes": "Uses mode.radius, mode.font correctly"
+        },
+        "themeHardcoding": {
+          "hasHardcoding": true,
+          "description": "Component names are terminal-theme specific. Should use generic names with theme applied via tokens."
+        },
+        "api": {
+          "standard": true,
+          "notes": "Props are generic (tone, size, interactive)"
+        }
+      }
+    },
+    {
+      "name": "StyledTabs",
+      "filePath": "src/components/ui/styled-tabs.tsx",
+      "category": "molecule",
+      "severity": "major",
+      "issues": {
+        "naming": {
+          "generic": false,
+          "current": "StyledTabs, StyledTabsContent",
+          "suggestedGeneric": "Tabs (use variant prop for styled version)"
+        },
+        "tokenUsage": {
+          "compliant": true,
+          "notes": "Uses mode.radius, mode.font"
+        },
+        "themeHardcoding": {
+          "hasHardcoding": true,
+          "description": "Uses TerminalCard internally, name suggests specific styling"
+        }
+      }
+    },
+    {
+      "name": "Footer",
+      "filePath": "src/components/landing/footer.tsx",
+      "category": "organism",
+      "severity": "major",
+      "issues": {
+        "tokenUsage": {
+          "compliant": false,
+          "violations": ["font-mono hardcoded 25+ times instead of mode.font"]
+        },
+        "naming": {
+          "generic": true
+        },
+        "themeHardcoding": {
+          "hasHardcoding": true,
+          "description": "Terminal-specific formatting ([PRODUCT], > prefix) hardcoded"
+        }
+      }
+    },
+    {
+      "name": "QualitySection",
+      "filePath": "src/components/landing/quality-section.tsx",
+      "category": "organism",
+      "severity": "major",
+      "issues": {
+        "tokenUsage": {
+          "compliant": false,
+          "violations": ["font-mono hardcoded on section"]
+        },
+        "naming": {
+          "generic": true
+        }
+      }
+    },
+    {
+      "name": "TechStack",
+      "filePath": "src/components/landing/tech-stack.tsx",
+      "category": "organism",
+      "severity": "major",
+      "issues": {
+        "tokenUsage": {
+          "compliant": false,
+          "violations": ["font-mono hardcoded on section"]
+        }
+      }
+    },
+    {
+      "name": "CookieConsentTabs",
+      "filePath": "src/components/cookie-consent-tabs.tsx",
+      "category": "organism",
+      "severity": "minor",
+      "issues": {
+        "tokenUsage": {
+          "compliant": false,
+          "violations": ["!rounded-none hardcoded (should use mode.radius)"]
+        }
+      }
+    },
+    {
+      "name": "SecurityRecommendationsCard",
+      "filePath": "src/components/security/security-recommendations-card.tsx",
+      "category": "molecule",
+      "severity": "minor",
+      "issues": {
+        "tokenUsage": {
+          "compliant": false,
+          "violations": ["font-mono hardcoded 6 times"]
+        }
+      }
+    },
+    {
+      "name": "Security2FACard",
+      "filePath": "src/components/security/security-2fa-card.tsx",
+      "category": "molecule",
+      "severity": "minor",
+      "issues": {
+        "tokenUsage": {
+          "compliant": false,
+          "violations": ["font-mono hardcoded 4 times"]
+        }
+      }
+    },
+    {
+      "name": "SecuritySessionsCard",
+      "filePath": "src/components/security/security-sessions-card.tsx",
+      "category": "molecule",
+      "severity": "minor",
+      "issues": {
+        "tokenUsage": {
+          "compliant": false,
+          "violations": ["font-mono hardcoded 6 times"]
+        }
+      }
+    },
+    {
+      "name": "SecurityPasswordCard",
+      "filePath": "src/components/security/security-password-card.tsx",
+      "category": "molecule",
+      "severity": "minor",
+      "issues": {
+        "tokenUsage": {
+          "compliant": false,
+          "violations": ["font-mono hardcoded"]
+        }
+      }
+    },
+    {
+      "name": "SecurityAccountsCard",
+      "filePath": "src/components/security/security-accounts-card.tsx",
+      "category": "molecule",
+      "severity": "minor",
+      "issues": {
+        "tokenUsage": {
+          "compliant": false,
+          "violations": ["font-mono hardcoded 5 times"]
+        }
+      }
+    },
+    {
+      "name": "ApiKeyGenerator",
+      "filePath": "src/components/developer/api-key-generator.tsx",
+      "category": "organism",
+      "severity": "minor",
+      "issues": {
+        "tokenUsage": {
+          "compliant": false,
+          "violations": ["font-mono hardcoded"]
+        }
+      }
+    },
+    {
+      "name": "DiscountCounter",
+      "filePath": "src/components/polar/discount-counter.tsx",
+      "category": "molecule",
+      "severity": "minor",
+      "issues": {
+        "tokenUsage": {
+          "compliant": false,
+          "violations": ["font-mono hardcoded 2 times"]
+        }
+      }
+    },
+    {
+      "name": "DocsLinkCard",
+      "filePath": "src/components/docs/blocks/docs-link-card.tsx",
+      "category": "molecule",
+      "severity": "minor",
+      "issues": {
+        "tokenUsage": {
+          "compliant": false,
+          "violations": ["font-mono hardcoded 2 times"]
+        }
+      }
+    },
+    {
+      "name": "DocsPreview",
+      "filePath": "src/components/docs/blocks/docs-preview.tsx",
+      "category": "molecule",
+      "severity": "minor",
+      "issues": {
+        "tokenUsage": {
+          "compliant": false,
+          "violations": ["font-mono hardcoded"]
+        }
+      }
+    },
+    {
+      "name": "DocsFeatureList",
+      "filePath": "src/components/docs/blocks/docs-feature-list.tsx",
+      "category": "molecule",
+      "severity": "minor",
+      "issues": {
+        "tokenUsage": {
+          "compliant": false,
+          "violations": ["font-mono hardcoded 2 times"]
+        }
+      }
+    }
+  ],
+  "uiComponentsWithoutDesignSystem": [
+    "aspect-ratio.tsx",
+    "collapsible.tsx",
+    "combobox.tsx",
+    "container.tsx",
+    "copy-button.tsx",
+    "cropper-controls.tsx",
+    "data-table-header.tsx",
+    "donut-chart.tsx",
+    "file-upload.tsx",
+    "gauge.tsx",
+    "grid.tsx",
+    "input-password.tsx",
+    "kpi-card.tsx",
+    "page-wrapper.tsx",
+    "pagination.tsx",
+    "password-strength.tsx",
+    "section.tsx",
+    "separator.tsx",
+    "simple-icon.tsx",
+    "stack.tsx",
+    "stat-card.tsx",
+    "toaster.tsx"
+  ],
+  "themeSpecificNaming": {
+    "count": 61,
+    "components": [
+      "TerminalCard",
+      "TerminalCardHeader", 
+      "TerminalCardContent",
+      "TerminalCardFooter",
+      "TerminalStat",
+      "TerminalStatGroup",
+      "TerminalBadge",
+      "StyledLabel",
+      "StyledTabs",
+      "StyledTabsContent"
+    ],
+    "suggestedGenericNames": {
+      "TerminalCard": "Card",
+      "TerminalCardHeader": "CardHeader",
+      "TerminalCardContent": "CardContent",
+      "TerminalCardFooter": "CardFooter",
+      "TerminalStat": "Stat",
+      "TerminalStatGroup": "StatGroup",
+      "TerminalBadge": "InlineBadge (or PageBadge)",
+      "StyledLabel": "FormLabel",
+      "StyledTabs": "Tabs (with variant='styled')",
+      "StyledTabsContent": "TabsContent"
+    }
   }
 }

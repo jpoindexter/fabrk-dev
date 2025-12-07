@@ -5,7 +5,7 @@
 
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
@@ -28,9 +28,9 @@ export function PendingInvitations({ invitations }: PendingInvitationsProps) {
   };
 
   return (
-    <TerminalCard size="auto">
-      <TerminalCardHeader code="0x02" title="PENDING_INVITES" />
-      <TerminalCardContent>
+    <Card size="auto">
+      <CardHeader code="0x02" title="PENDING_INVITES" />
+      <CardContent>
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [PENDING_INVITATIONS]: COUNT={invitations.length}
         </div>
@@ -64,7 +64,7 @@ export function PendingInvitations({ invitations }: PendingInvitationsProps) {
             </div>
           ))}
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

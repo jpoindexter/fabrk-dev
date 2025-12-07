@@ -15,8 +15,8 @@ import { Button } from "@/components/ui/button";
 // Section Header Component
 function SectionHeader({ code, title }: { code: string; title: string }) {
   return (
-    <div className="border-border bg-card border-b px-6 py-4">
-      <span className={cn("text-muted-foreground text-sm", mode.font)}>
+    <div className="border-border bg-card border-b px-4 py-2">
+      <span className={cn("text-muted-foreground text-xs", mode.font)}>
         [ [{code}] {title} ]
       </span>
     </div>
@@ -50,7 +50,7 @@ export default function FoundationsShowcasePage() {
       {/* Header */}
       <header className="border-border bg-background/95 sticky top-0 z-50 border-b backdrop-blur">
         <div className="flex items-center justify-between px-6 py-4">
-          <span className={cn("text-muted-foreground text-sm", mode.font)}>
+          <span className={cn("text-muted-foreground text-xs", mode.font)}>
             [ [0x00] DESIGN_SYSTEM_FOUNDATIONS ] foundations.tsx
           </span>
           <Link href="/component-showcase">
@@ -62,16 +62,16 @@ export default function FoundationsShowcasePage() {
         </div>
       </header>
 
-      <main className="container mx-auto max-w-7xl space-y-12 px-6 py-12">
+      <main className="container mx-auto max-w-7xl space-y-8 px-6 py-12">
         {/* ============================================ */}
         {/* SECTION 1: COLORS */}
         {/* ============================================ */}
         <section className={cn("border-border border", mode.radius)}>
           <SectionHeader code="0x01" title="COLORS" />
-          <div className="space-y-8 p-6">
+          <div className="space-y-6 p-6">
             {/* Background Colors */}
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [BACKGROUND]:
               </p>
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 md:grid-cols-6">
@@ -86,7 +86,7 @@ export default function FoundationsShowcasePage() {
 
             {/* Semantic Colors */}
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [SEMANTIC]:
               </p>
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 md:grid-cols-6">
@@ -101,7 +101,7 @@ export default function FoundationsShowcasePage() {
 
             {/* Text Colors */}
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>[TEXT]:</p>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>[TEXT]:</p>
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 md:grid-cols-6">
                 <div className="space-y-2">
                   <div
@@ -192,7 +192,7 @@ export default function FoundationsShowcasePage() {
 
             {/* Border Colors */}
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [BORDER]:
               </p>
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
@@ -232,10 +232,10 @@ export default function FoundationsShowcasePage() {
         {/* ============================================ */}
         <section className={cn("border-border border", mode.radius)}>
           <SectionHeader code="0x02" title="TYPOGRAPHY" />
-          <div className="space-y-8 p-6">
+          <div className="space-y-6 p-6">
             {/* Font Families */}
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [FONT_FAMILY]:
               </p>
               <div className="space-y-4">
@@ -258,7 +258,7 @@ export default function FoundationsShowcasePage() {
 
             {/* Font Sizes */}
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [FONT_SIZE]:
               </p>
               <div className="space-y-3">
@@ -287,7 +287,7 @@ export default function FoundationsShowcasePage() {
 
             {/* Font Weights */}
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [FONT_WEIGHT]:
               </p>
               <div className="space-y-3">
@@ -317,9 +317,9 @@ export default function FoundationsShowcasePage() {
         {/* ============================================ */}
         <section className={cn("border-border border", mode.radius)}>
           <SectionHeader code="0x03" title="SPACING" />
-          <div className="space-y-8 p-6">
+          <div className="space-y-6 p-6">
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [8-POINT_GRID]:
               </p>
               <div className="space-y-4">
@@ -348,7 +348,7 @@ export default function FoundationsShowcasePage() {
 
             {/* Gap Examples */}
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>[GAP]:</p>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>[GAP]:</p>
               <div className="space-y-4">
                 {[
                   { name: "gap-1", value: "4px" },
@@ -380,12 +380,12 @@ export default function FoundationsShowcasePage() {
         {/* ============================================ */}
         <section className={cn("border-border border", mode.radius)}>
           <SectionHeader code="0x04" title="RADIUS" />
-          <div className="space-y-8 p-6">
+          <div className="space-y-6 p-6">
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [BORDER_RADIUS]:
               </p>
-              <p className={cn("text-muted-foreground mb-6 text-xs", mode.font)}>
+              <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
                 Terminal theme uses rounded-none. Other values shown for reference.
               </p>
               <div className="grid grid-cols-2 gap-6 sm:grid-cols-4 md:grid-cols-7">
@@ -432,12 +432,12 @@ export default function FoundationsShowcasePage() {
         {/* ============================================ */}
         <section className={cn("border-border border", mode.radius)}>
           <SectionHeader code="0x05" title="SHADOWS" />
-          <div className="space-y-8 p-6">
+          <div className="space-y-6 p-6">
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [BOX_SHADOW]:
               </p>
-              <p className={cn("text-muted-foreground mb-6 text-xs", mode.font)}>
+              <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
                 Terminal theme uses minimal shadows. Border-based elevation preferred.
               </p>
               <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-6">
@@ -482,9 +482,9 @@ export default function FoundationsShowcasePage() {
         {/* ============================================ */}
         <section className={cn("border-border border", mode.radius)}>
           <SectionHeader code="0x06" title="MOTION" />
-          <div className="space-y-8 p-6">
+          <div className="space-y-6 p-6">
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [DURATION]:
               </p>
               <div className="space-y-3">
@@ -511,7 +511,7 @@ export default function FoundationsShowcasePage() {
             </div>
 
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [EASING]:
               </p>
               <div className="space-y-3">
@@ -539,7 +539,7 @@ export default function FoundationsShowcasePage() {
         <section className={cn("border-border border", mode.radius)}>
           <SectionHeader code="0x07" title="Z_INDEX" />
           <div className="p-6">
-            <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+            <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
               [LAYER_SCALE]:
             </p>
             <div className="space-y-3">

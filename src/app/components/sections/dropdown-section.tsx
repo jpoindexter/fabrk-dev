@@ -5,7 +5,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,13 +26,13 @@ export function DropdownSection() {
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
-        <TerminalCard>
-          <TerminalCardHeader
+        <Card>
+          <CardHeader
             code="0x70"
             title="Right_Aligned_Menu"
             meta="For actions in table rows or right-side triggers"
           />
-          <TerminalCardContent padding="md" className="flex justify-end">
+          <CardContent padding="md" className="flex justify-end">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm">
@@ -57,16 +57,16 @@ export function DropdownSection() {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
-        <TerminalCard>
-          <TerminalCardHeader
+        <Card>
+          <CardHeader
             code="0x71"
             title="Left_Aligned_Menu"
             meta="For sidebar menus or left-positioned actions"
           />
-          <TerminalCardContent padding="md" className="flex justify-start">
+          <CardContent padding="md" className="flex justify-start">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" size="sm">
@@ -86,8 +86,8 @@ export function DropdownSection() {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </div>
     </section>
   );

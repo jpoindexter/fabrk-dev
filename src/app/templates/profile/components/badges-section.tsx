@@ -5,7 +5,7 @@
 
 "use client";
 
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { LucideIcon } from "lucide-react";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
@@ -23,9 +23,9 @@ interface BadgesSectionProps {
 
 export function BadgesSection({ badges }: BadgesSectionProps) {
   return (
-    <TerminalCard tone="neutral">
-      <TerminalCardHeader code="0x01" title="BADGES" />
-      <TerminalCardContent padding="md">
+    <Card tone="neutral">
+      <CardHeader code="0x01" title="BADGES" />
+      <CardContent padding="md">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [ACHIEVEMENTS]: {badges.length} BADGES_EARNED
         </div>
@@ -43,7 +43,7 @@ export function BadgesSection({ badges }: BadgesSectionProps) {
             );
           })}
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

@@ -24,7 +24,7 @@ import {
 } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -128,15 +128,15 @@ export function TeamActivityFeed({
   };
 
   return (
-    <TerminalCard className={cn("overflow-hidden", className)}>
-      <TerminalCardHeader
+    <Card className={cn("overflow-hidden", className)}>
+      <CardHeader
         code="0x00"
         title="TEAM_ACTIVITY"
         icon={<Activity className="h-4 w-4" />}
         meta={`${activities.length} event${activities.length !== 1 ? "s" : ""}`}
       />
 
-      <TerminalCardContent padding="md" className="p-0">
+      <CardContent padding="md" className="p-0">
         <ScrollArea className="h-full" style={{ maxHeight }}>
           <div className="space-y-0 p-6 pt-0">
             {activities.length === 0 ? (
@@ -213,7 +213,7 @@ export function TeamActivityFeed({
             )}
           </div>
         </ScrollArea>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

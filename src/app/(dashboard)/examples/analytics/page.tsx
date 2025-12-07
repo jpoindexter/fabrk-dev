@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 import {
@@ -117,13 +117,13 @@ export default async function AnalyticsPage() {
           const isPositive = stat.trend === "up";
 
           return (
-            <TerminalCard key={stat.label}>
-              <TerminalCardHeader
+            <Card key={stat.label}>
+              <CardHeader
                 code={`0x${index.toString(16).padStart(2, "0")}`}
                 title={stat.label.toUpperCase().replace(/ /g, "_")}
                 icon={<Icon className="h-4 w-4" />}
               />
-              <TerminalCardContent>
+              <CardContent>
                 <div className="flex items-center justify-between">
                   <p className="text-foreground text-4xl font-semibold">{stat.value}</p>
                   <div
@@ -139,17 +139,17 @@ export default async function AnalyticsPage() {
                     <span>{stat.change}</span>
                   </div>
                 </div>
-              </TerminalCardContent>
-            </TerminalCard>
+              </CardContent>
+            </Card>
           );
         })}
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Recent Activity */}
-        <TerminalCard>
-          <TerminalCardHeader code="0x10" title="RECENT_ACTIVITY" />
-          <TerminalCardContent>
+        <Card>
+          <CardHeader code="0x10" title="RECENT_ACTIVITY" />
+          <CardContent>
             <div className="mb-4 flex justify-end">
               <button className="text-primary text-sm font-semibold hover:underline">
                 View All
@@ -172,13 +172,13 @@ export default async function AnalyticsPage() {
                 </div>
               ))}
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Top Pages */}
-        <TerminalCard>
-          <TerminalCardHeader code="0x11" title="TOP_PAGES" />
-          <TerminalCardContent>
+        <Card>
+          <CardHeader code="0x11" title="TOP_PAGES" />
+          <CardContent>
             <div className="mb-4 flex justify-end">
               <button className="text-primary text-sm font-semibold hover:underline">
                 View All
@@ -207,19 +207,19 @@ export default async function AnalyticsPage() {
                 </div>
               ))}
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </div>
 
       {/* Chart Placeholder */}
-      <TerminalCard>
-        <TerminalCardHeader
+      <Card>
+        <CardHeader
           code="0x20"
           title="REVENUE_OVER_TIME"
           icon={<TrendingUp className="h-4 w-4" />}
           meta="Monthly recurring revenue trend"
         />
-        <TerminalCardContent>
+        <CardContent>
           <div
             className={cn(
               "border-border bg-muted flex h-64 items-center justify-center border border-dashed",
@@ -236,8 +236,8 @@ export default async function AnalyticsPage() {
               </p>
             </div>
           </div>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
 
       {/* Implementation Note */}
       <div className={cn("border-primary bg-primary/5 border-2 p-4", mode.radius)}>

@@ -21,10 +21,10 @@ import {
   Mail,
 } from "lucide-react";
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
-  TerminalStat,
+  Card,
+  CardHeader,
+  CardContent,
+  Stat,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
@@ -161,8 +161,8 @@ function FeatureCard({
       }}
       className="group h-full"
     >
-      <TerminalCard interactive className="h-full">
-        <TerminalCardHeader
+      <Card interactive className="h-full">
+        <CardHeader
           code={`0x${(index + 17).toString(16).toUpperCase().padStart(2, "0")}`}
           title={module}
           icon={
@@ -174,10 +174,10 @@ function FeatureCard({
             </motion.div>
           }
         />
-        <TerminalCardContent>
+        <CardContent>
           {/* Status */}
           <div className="mb-4">
-            <TerminalStat label="STATUS" value={status} size="sm" />
+            <Stat label="STATUS" value={status} size="sm" />
           </div>
 
           {/* Description */}
@@ -185,8 +185,8 @@ function FeatureCard({
             <span className="text-muted-foreground">DESC: </span>
             <span className="text-foreground">{description}</span>
           </div>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
     </motion.div>
   );
 }
@@ -203,9 +203,9 @@ export function FeaturesShowcase() {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <TerminalCard className="mb-4 inline-block">
-            <TerminalCardHeader code="0x10" title="STACK_CONFIG" meta="FIB[89,144,233] MODULES" />
-          </TerminalCard>
+          <Card className="mb-4 inline-block">
+            <CardHeader code="0x10" title="STACK_CONFIG" meta="FIB[89,144,233] MODULES" />
+          </Card>
           <h2 className={cn("mb-4 text-2xl font-semibold tracking-tight", mode.font)}>
             SOLID_FOUNDATION
           </h2>

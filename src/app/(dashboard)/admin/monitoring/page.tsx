@@ -6,7 +6,7 @@
 "use client";
 
 import { useState, useEffect, startTransition } from "react";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -89,59 +89,59 @@ export default function AdminMonitoringPage() {
       {/* Error Stats */}
       {errorStats && (
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          <TerminalCard tone="neutral">
-            <TerminalCardHeader
+          <Card tone="neutral">
+            <CardHeader
               code="0x01"
               title="TOTAL_ERRORS"
               meta="24h"
               icon={<AlertTriangle className="h-4 w-4" />}
             />
-            <TerminalCardContent>
+            <CardContent>
               <div className="text-2xl font-semibold">{errorStats.total}</div>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
 
-          <TerminalCard tone="danger">
-            <TerminalCardHeader
+          <Card tone="danger">
+            <CardHeader
               code="0x02"
               title="ERRORS"
               icon={<AlertTriangle className="h-4 w-4" />}
             />
-            <TerminalCardContent>
+            <CardContent>
               <div className="text-2xl font-semibold">{errorStats.byType.error || 0}</div>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
 
-          <TerminalCard tone="warning">
-            <TerminalCardHeader
+          <Card tone="warning">
+            <CardHeader
               code="0x03"
               title="WARNINGS"
               icon={<AlertTriangle className="h-4 w-4" />}
             />
-            <TerminalCardContent>
+            <CardContent>
               <div className="text-2xl font-semibold">{errorStats.byType.warning || 0}</div>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
 
-          <TerminalCard tone="neutral">
-            <TerminalCardHeader code="0x04" title="INFO" icon={<Activity className="h-4 w-4" />} />
-            <TerminalCardContent>
+          <Card tone="neutral">
+            <CardHeader code="0x04" title="INFO" icon={<Activity className="h-4 w-4" />} />
+            <CardContent>
               <div className="text-2xl font-semibold">{errorStats.byType.info || 0}</div>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
         </div>
       )}
 
       {/* Performance Metrics */}
       {perfStats && Object.keys(perfStats.averages).length > 0 && (
-        <TerminalCard tone="primary">
-          <TerminalCardHeader
+        <Card tone="primary">
+          <CardHeader
             code="0x05"
             title="PERFORMANCE_METRICS"
             meta="24h averages"
             icon={<TrendingUp className="h-4 w-4" />}
           />
-          <TerminalCardContent>
+          <CardContent>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {Object.entries(perfStats.averages).map(([name, value]) => (
                 <div
@@ -156,20 +156,20 @@ export default function AdminMonitoringPage() {
                 </div>
               ))}
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       )}
 
       {/* Top Errors */}
       {errorStats && errorStats.topErrors.length > 0 && (
-        <TerminalCard tone="danger">
-          <TerminalCardHeader
+        <Card tone="danger">
+          <CardHeader
             code="0x06"
             title="MOST_FREQUENT_ERRORS"
             meta="By occurrence"
             icon={<AlertTriangle className="h-4 w-4" />}
           />
-          <TerminalCardContent>
+          <CardContent>
             <div className={cn("border", mode.radius)}>
               <Table>
                 <TableHeader>
@@ -208,20 +208,20 @@ export default function AdminMonitoringPage() {
                 </TableBody>
               </Table>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       )}
 
       {/* Recent Errors */}
       {errorStats && errorStats.recentErrors.length > 0 && (
-        <TerminalCard tone="warning">
-          <TerminalCardHeader
+        <Card tone="warning">
+          <CardHeader
             code="0x07"
             title="RECENT_ERRORS"
             meta="Last 20 events"
             icon={<Activity className="h-4 w-4" />}
           />
-          <TerminalCardContent>
+          <CardContent>
             <div className={cn("border", mode.radius)}>
               <Table>
                 <TableHeader>
@@ -260,21 +260,21 @@ export default function AdminMonitoringPage() {
                 </TableBody>
               </Table>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       )}
 
       {/* Empty State */}
       {errorStats && errorStats.total === 0 && (
-        <TerminalCard tone="success">
-          <TerminalCardContent className="flex h-48 items-center justify-center">
+        <Card tone="success">
+          <CardContent className="flex h-48 items-center justify-center">
             <div className="text-center">
               <Activity className="text-muted-foreground mx-auto h-12 w-12" />
               <h3 className="mt-4 text-lg font-semibold">No errors recorded</h3>
               <p className="text-muted-foreground text-sm">Your application is running smoothly</p>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       )}
 
       {/* Clear Logs Dialog */}

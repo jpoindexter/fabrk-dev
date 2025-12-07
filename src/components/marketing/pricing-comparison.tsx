@@ -15,10 +15,10 @@ import { Check, X, Crown, Zap } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
-  TerminalCardFooter,
+  Card,
+  CardHeader,
+  CardContent,
+  CardFooter,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
@@ -79,7 +79,7 @@ export function PricingComparison({
       {/* Plan Cards */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {plans.map((plan, index) => (
-          <TerminalCard
+          <Card
             key={plan.id}
             tone={plan.popular ? "primary" : "neutral"}
             interactive
@@ -91,7 +91,7 @@ export function PricingComparison({
               </div>
             )}
 
-            <TerminalCardHeader
+            <CardHeader
               code={`0x0${index}`}
               title={plan.name.toUpperCase()}
               icon={
@@ -102,7 +102,7 @@ export function PricingComparison({
               }
             />
 
-            <TerminalCardContent padding="md" className="space-y-4">
+            <CardContent padding="md" className="space-y-4">
               <p className="text-muted-foreground text-sm">{plan.description}</p>
 
               <div className="space-y-1">
@@ -119,9 +119,9 @@ export function PricingComparison({
                   </>
                 )}
               </div>
-            </TerminalCardContent>
+            </CardContent>
 
-            <TerminalCardFooter>
+            <CardFooter>
               <Button
                 variant={plan.popular ? "default" : "outline"}
                 className="w-full"
@@ -129,8 +129,8 @@ export function PricingComparison({
               >
                 {plan.cta}
               </Button>
-            </TerminalCardFooter>
-          </TerminalCard>
+            </CardFooter>
+          </Card>
         ))}
       </div>
 

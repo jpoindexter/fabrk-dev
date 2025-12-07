@@ -10,7 +10,7 @@ import { CheckCircle, Download, Mail, FileDown, Package } from "lucide-react";
 import Link from "next/link";
 import { Suspense, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
@@ -57,8 +57,8 @@ function SuccessContent() {
 
   return (
     <div className="bg-background flex min-h-screen items-center justify-center p-4">
-      <TerminalCard className="w-full max-w-2xl">
-        <TerminalCardContent className="space-y-6 p-8" padding="lg">
+      <Card className="w-full max-w-2xl">
+        <CardContent className="space-y-6 p-8" padding="lg">
           {/* Success Icon & Header */}
           <div className="space-y-4 text-center">
             <div className={cn("bg-primary mx-auto flex size-20 items-center justify-center", mode.radius)}>
@@ -71,28 +71,28 @@ function SuccessContent() {
           </div>
 
           {/* Check your email banner */}
-          <TerminalCard>
-            <TerminalCardHeader
+          <Card>
+            <CardHeader
               code="0x01"
               title="CHECK_YOUR_EMAIL"
               icon={<Mail className="size-4" />}
             />
-            <TerminalCardContent padding="md">
+            <CardContent padding="md">
               <p className={cn("text-muted-foreground text-xs", mode.font)}>
                 We've sent you a confirmation email with a magic link to instantly access your
                 dashboard - no password needed!
               </p>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
 
           {/* What's in the email */}
-          <TerminalCard>
-            <TerminalCardHeader
+          <Card>
+            <CardHeader
               code="0x02"
               title="EMAIL_CONTENTS"
               icon={<Package className="size-4" />}
             />
-            <TerminalCardContent padding="md">
+            <CardContent padding="md">
               <ul className={cn("text-muted-foreground space-y-4 text-xs", mode.font)}>
                 <li className="flex items-start gap-4">
                   <span className={cn("bg-primary text-primary-foreground flex size-6 shrink-0 items-center justify-center text-sm font-medium", mode.radius)}>
@@ -122,17 +122,17 @@ function SuccessContent() {
                   </span>
                 </li>
               </ul>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
 
           {/* GitHub Access */}
-          <TerminalCard>
-            <TerminalCardHeader
+          <Card>
+            <CardHeader
               code="0x03"
               title="ACCESS_YOUR_REPOSITORY"
               icon={<Download className="size-4" />}
             />
-            <TerminalCardContent padding="md">
+            <CardContent padding="md">
               <div className="space-y-4">
                 <p className={cn("text-muted-foreground text-xs", mode.font)}>
                   Check your email for the GitHub invitation. Once accepted, you'll have full access
@@ -157,8 +157,8 @@ function SuccessContent() {
                   </Button>
                 </div>
               </div>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
 
           {/* Email not received */}
           <div className="py-4 text-center">
@@ -193,8 +193,8 @@ function SuccessContent() {
               </Link>
             </p>
           </div>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
     </div>
   );
 }

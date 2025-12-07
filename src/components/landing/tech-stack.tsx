@@ -2,10 +2,10 @@
 
 import { SimpleIcon } from "@/components/ui/simple-icon";
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
-  TerminalBadge,
+  Card,
+  CardHeader,
+  CardContent,
+  Badge,
 } from "@/components/ui/card";
 import {
   siNextdotjs,
@@ -39,7 +39,7 @@ export function TechStack() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <TerminalBadge code="0x20" label="TECH_STACK" className="mb-4" />
+            <Badge code="0x20" label="TECH_STACK" className="mb-4" />
             <h2 className="text-2xl font-semibold tracking-tight">A_MODERN_STACK_YOU_CAN_TRUST</h2>
           </motion.div>
         </div>
@@ -62,9 +62,9 @@ export function TechStack() {
               }}
               className="group"
             >
-              <TerminalCard className="hover:border-primary/50 transition-colors">
-                <TerminalCardHeader code={tech.id} title="" />
-                <TerminalCardContent className="flex flex-col items-center justify-center gap-3 p-4">
+              <Card className="hover:border-primary/50 transition-colors">
+                <CardHeader code={tech.id} title="" />
+                <CardContent className="flex flex-col items-center justify-center gap-3 p-4">
                   <SimpleIcon
                     path={tech.path}
                     className="text-foreground group-hover:text-primary h-8 w-8 transition-colors"
@@ -72,8 +72,8 @@ export function TechStack() {
                   <span className="text-foreground text-xs font-medium">
                     {tech.name.toUpperCase().replace(/ /g, "_").replace(/\./g, "")}
                   </span>
-                </TerminalCardContent>
-              </TerminalCard>
+                </CardContent>
+              </Card>
             </motion.div>
           ))}
         </div>

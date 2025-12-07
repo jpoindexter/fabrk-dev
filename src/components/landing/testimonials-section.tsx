@@ -8,7 +8,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
 export function TestimonialsSection() {
   const testimonials = [
@@ -103,8 +103,8 @@ export function TestimonialsSection() {
               }}
               className="group hover:border-primary/50 transition-colors"
             >
-              <TerminalCard>
-                <TerminalCardHeader
+              <Card>
+                <CardHeader
                   code={`0x${(index + 1).toString(16).toUpperCase().padStart(2, "0")}`}
                   title="TESTIMONIAL"
                   icon={
@@ -120,7 +120,7 @@ export function TestimonialsSection() {
                     </Avatar>
                   }
                 />
-                <TerminalCardContent>
+                <CardContent>
                   <div className="mb-4 text-xs">
                     <span className="text-muted-foreground">QUOTE: </span>
                     <span className="text-foreground">"{testimonial.quote}"</span>
@@ -132,8 +132,8 @@ export function TestimonialsSection() {
                     </span>
                     <span className="text-muted-foreground"> | {testimonial.role}</span>
                   </div>
-                </TerminalCardContent>
-              </TerminalCard>
+                </CardContent>
+              </Card>
             </motion.div>
           ))}
         </div>

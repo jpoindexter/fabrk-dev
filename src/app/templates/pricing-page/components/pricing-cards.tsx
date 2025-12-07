@@ -6,10 +6,10 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
-  TerminalCardFooter,
+  Card,
+  CardHeader,
+  CardContent,
+  CardFooter,
 } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
@@ -39,15 +39,15 @@ export function PricingCards({ plans, isYearly }: PricingCardsProps) {
         const period = isYearly ? "/year" : "/month";
 
         return (
-          <TerminalCard key={plan.id} tone={plan.badge ? "primary" : "neutral"}>
+          <Card key={plan.id} tone={plan.badge ? "primary" : "neutral"}>
             {/* Card Header */}
-            <TerminalCardHeader
+            <CardHeader
               code={`0x0${idx}`}
               title={plan.name}
               meta={plan.badge || undefined}
             />
 
-            <TerminalCardContent padding="md">
+            <CardContent padding="md">
               {/* Price */}
               <div className="mb-4 text-4xl font-semibold">
                 ${price}
@@ -68,17 +68,17 @@ export function PricingCards({ plans, isYearly }: PricingCardsProps) {
                   ))}
                 </div>
               </div>
-            </TerminalCardContent>
+            </CardContent>
 
-            <TerminalCardFooter>
+            <CardFooter>
               <Button
                 variant={plan.ctaVariant}
                 className={cn(mode.radius, mode.font, "w-full text-xs")}
               >
                 &gt; {plan.cta}
               </Button>
-            </TerminalCardFooter>
-          </TerminalCard>
+            </CardFooter>
+          </Card>
         );
       })}
     </div>

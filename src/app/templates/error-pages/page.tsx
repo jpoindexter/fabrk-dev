@@ -10,9 +10,9 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
+  Card,
+  CardHeader,
+  CardContent,
   TemplatePageHeader,
   FeaturesCard,
 } from "@/components/ui/card";
@@ -144,8 +144,8 @@ export default function ErrorPagesTemplate() {
             };
             return (
               <StyledTabsContent key={error.id} value={error.id}>
-                <TerminalCard>
-                  <TerminalCardHeader
+                <Card>
+                  <CardHeader
                     code={codeMap[error.id] || "0x00"}
                     title={`ERROR_${error.code}`}
                   />
@@ -190,12 +190,12 @@ export default function ErrorPagesTemplate() {
                       </div>
 
                       {/* Terminal Output */}
-                      <TerminalCard>
-                        <TerminalCardHeader
+                      <Card>
+                        <CardHeader
                           code={error.code.replace("ERROR_", "0x")}
                           title="OUTPUT"
                         />
-                        <TerminalCardContent>
+                        <CardContent>
                           <div className="space-y-0.5 text-xs">
                             {error.terminal.map((line, idx) => (
                               <div
@@ -214,8 +214,8 @@ export default function ErrorPagesTemplate() {
                               </div>
                             ))}
                           </div>
-                        </TerminalCardContent>
-                      </TerminalCard>
+                        </CardContent>
+                      </Card>
 
                       {/* Actions */}
                       <div className="flex items-center justify-center gap-4">
@@ -263,7 +263,7 @@ export default function ErrorPagesTemplate() {
                       </div>
                     </div>
                   </div>
-                </TerminalCard>
+                </Card>
               </StyledTabsContent>
             );
           })}
@@ -280,8 +280,8 @@ export default function ErrorPagesTemplate() {
               "503": "0x07",
             };
             return (
-              <TerminalCard key={error.id}>
-                <TerminalCardHeader
+              <Card key={error.id}>
+                <CardHeader
                   code={exampleCodeMap[error.id] || "0x04"}
                   title={`${error.code}_EXAMPLE`}
                 />
@@ -307,7 +307,7 @@ export default function ErrorPagesTemplate() {
                     {error.id === "503" && "Planned downtime, updates"}
                   </div>
                 </div>
-              </TerminalCard>
+              </Card>
             );
           })}
         </div>

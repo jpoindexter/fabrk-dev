@@ -10,10 +10,10 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
-  TerminalBadge,
+  Card,
+  CardHeader,
+  CardContent,
+  Badge,
 } from "@/components/ui/card";
 import {
   Database,
@@ -41,7 +41,7 @@ export default function PrivacyPage() {
           transition={{ duration: 0.5 }}
           className="mb-6"
         >
-          <TerminalBadge code="0x00" label="LEGAL" meta="PRIVACY_POLICY" />
+          <Badge code="0x00" label="LEGAL" meta="PRIVACY_POLICY" />
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -71,26 +71,26 @@ export default function PrivacyPage() {
         transition={{ duration: 0.6, delay: 0.3 }}
         className="mb-12"
       >
-        <TerminalCard size="auto">
-          <TerminalCardHeader code="0x01" title="OVERVIEW" icon={<FileText className="size-4" />} />
-          <TerminalCardContent padding="md">
+        <Card size="auto">
+          <CardHeader code="0x01" title="OVERVIEW" icon={<FileText className="size-4" />} />
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground text-sm", mode.font)}>
               We value your privacy and are committed to protecting your personal data. This Privacy
               Policy explains how we collect, use, and safeguard your information.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </motion.div>
 
       <div className="space-y-8">
         {/* Section 1 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x10"
             title="INFORMATION_WE_COLLECT"
             icon={<Database className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <div className="space-y-6">
               <div>
                 <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>
@@ -164,17 +164,17 @@ export default function PrivacyPage() {
                 </ul>
               </div>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 2 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x20"
             title="HOW_WE_USE_YOUR_INFO"
             icon={<Scale className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               We use collected information for:
             </p>
@@ -204,17 +204,17 @@ export default function PrivacyPage() {
                 obligations, enforcing terms
               </li>
             </ul>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 3 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x30"
             title="LEGAL_BASIS_GDPR"
             icon={<Scale className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               Under GDPR, we process your data based on:
             </p>
@@ -236,17 +236,17 @@ export default function PrivacyPage() {
                 tax records)
               </li>
             </ul>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 4 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x40"
             title="DATA_SHARING_DISCLOSURE"
             icon={<Share2 className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <div className="space-y-6">
               <div>
                 <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>
@@ -301,17 +301,17 @@ export default function PrivacyPage() {
                 </p>
               </div>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 5 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x50"
             title="DATA_SECURITY"
             icon={<Lock className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               We implement industry-standard security measures:
             </p>
@@ -341,17 +341,17 @@ export default function PrivacyPage() {
                 monitoring and alerts
               </li>
             </ul>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 6 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x60"
             title="DATA_RETENTION"
             icon={<Clock className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               We retain your data for:
             </p>
@@ -371,17 +371,17 @@ export default function PrivacyPage() {
                 └─ <span className="text-foreground">BACKUPS:</span> 30 days (then auto-deleted)
               </li>
             </ul>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 7 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x70"
             title="YOUR_PRIVACY_RIGHTS"
             icon={<UserCheck className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <div className="space-y-6">
               <div>
                 <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>
@@ -462,17 +462,17 @@ export default function PrivacyPage() {
                 </p>
               </div>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 8 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x80"
             title="COOKIES_AND_TRACKING"
             icon={<Cookie className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               We use cookies for:
             </p>
@@ -497,32 +497,32 @@ export default function PrivacyPage() {
               </Link>{" "}
               for details.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 9 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x90"
             title="CHILDRENS_PRIVACY"
             icon={<Baby className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground text-sm", mode.font)}>
               Fabrk is not intended for users under 18. We do not knowingly collect data from
               children. If you believe we've collected data from a child, contact us immediately.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 10 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0xA0"
             title="INTERNATIONAL_DATA_TRANSFERS"
             icon={<Globe className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               Your data may be processed in countries outside your own. We ensure adequate
               protection through:
@@ -532,28 +532,28 @@ export default function PrivacyPage() {
               <li>├─ Data Processing Agreements with all vendors</li>
               <li>└─ Compliance with applicable data protection laws</li>
             </ul>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 11 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0xB0"
             title="POLICY_CHANGES"
             icon={<RefreshCw className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground text-sm", mode.font)}>
               We may update this policy periodically. We'll notify you of significant changes via
               email or prominent notice. Continued use after changes constitutes acceptance.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 12 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader code="0xC0" title="CONTACT_US" icon={<Mail className="size-4" />} />
-          <TerminalCardContent padding="md">
+        <Card size="auto">
+          <CardHeader code="0xC0" title="CONTACT_US" icon={<Mail className="size-4" />} />
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               Privacy questions or concerns?
             </p>
@@ -571,8 +571,8 @@ export default function PrivacyPage() {
                 </Link>
               </li>
             </ul>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </div>
 
       {/* Related Links */}
@@ -583,13 +583,13 @@ export default function PrivacyPage() {
         viewport={{ once: true }}
         className="mt-12"
       >
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0xD0"
             title="RELATED_DOCUMENTS"
             icon={<FileText className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <div className={cn("flex flex-wrap gap-4 text-xs", mode.font)}>
               <Link href="/terms" className="text-primary hover:underline">
                 &gt; TERMS_OF_SERVICE
@@ -601,8 +601,8 @@ export default function PrivacyPage() {
                 &gt; REFUND_POLICY
               </Link>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </motion.div>
     </main>
   );

@@ -19,7 +19,7 @@
 import * as React from "react";
 import { TrendingDown } from "lucide-react";
 
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
@@ -64,15 +64,15 @@ export function FunnelVisualizer({
   };
 
   return (
-    <TerminalCard className={cn("overflow-hidden", className)}>
-      <TerminalCardHeader
+    <Card className={cn("overflow-hidden", className)}>
+      <CardHeader
         code="0x02"
         title={title.toUpperCase().replace(/ /g, "_")}
         icon={<TrendingDown className="h-4 w-4" />}
         meta={`${stages.length} Stages`}
       />
 
-      <TerminalCardContent padding="md" className="space-y-6">
+      <CardContent padding="md" className="space-y-6">
         {description && <p className="text-muted-foreground text-sm">{description}</p>}
         {stages.map((stage, index) => {
           const previousValue = index > 0 ? stages[index - 1].value : null;
@@ -141,7 +141,7 @@ export function FunnelVisualizer({
             </span>
           </div>
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

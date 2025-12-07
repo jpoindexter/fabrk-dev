@@ -10,7 +10,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { HelpCircle } from "lucide-react";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
@@ -25,10 +25,10 @@ interface FAQSectionProps {
 
 export function FAQSection({ faqs }: FAQSectionProps) {
   return (
-    <TerminalCard tone="neutral">
-      <TerminalCardHeader code="0x00" title="FAQ" />
+    <Card tone="neutral">
+      <CardHeader code="0x00" title="FAQ" />
 
-      <TerminalCardContent padding="md">
+      <CardContent padding="md">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [FREQUENTLY_ASKED_QUESTIONS]:
         </div>
@@ -48,7 +48,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
             </AccordionItem>
           ))}
         </Accordion>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

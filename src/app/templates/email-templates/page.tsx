@@ -11,7 +11,7 @@ import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import { emailTemplates } from "./components/email-template-data";
 import { EmailStats } from "./components/email-stats";
 import { EmailFeatures } from "./components/email-features";
-import { TemplatePageHeader, TerminalCard, TerminalCardContent } from "@/components/ui/card";
+import { TemplatePageHeader, Card, CardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
@@ -106,9 +106,9 @@ export default function EmailTemplatesShowcase() {
           {/* Email Previews */}
           {emailTemplates.map((template) => (
             <StyledTabsContent key={template.id} value={template.id}>
-              <TerminalCard>
+              <Card>
                 {/* Content Area */}
-                <TerminalCardContent padding="lg">
+                <CardContent padding="lg">
                   <div className="mb-6 flex items-center justify-between">
                     <div>
                       <div className="mb-1 flex items-center gap-2">
@@ -169,8 +169,8 @@ export default function EmailTemplatesShowcase() {
                       </div>
                     </div>
                   </div>
-                </TerminalCardContent>
-              </TerminalCard>
+                </CardContent>
+              </Card>
             </StyledTabsContent>
           ))}
         </StyledTabs>

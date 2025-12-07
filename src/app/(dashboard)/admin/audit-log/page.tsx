@@ -5,7 +5,7 @@
 
 import { Suspense } from "react";
 import { prisma } from "@/lib/prisma";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   Table,
@@ -142,14 +142,14 @@ export default function AuditLogPage() {
         </p>
       </div>
 
-      <TerminalCard tone="neutral">
-        <TerminalCardHeader
+      <Card tone="neutral">
+        <CardHeader
           code="0x01"
           title="SECURITY_EVENTS"
           meta="Immutable logs"
           icon={<Shield className="h-4 w-4" />}
         />
-        <TerminalCardContent>
+        <CardContent>
           <Suspense
             fallback={
               <div className="flex h-48 items-center justify-center">
@@ -159,8 +159,8 @@ export default function AuditLogPage() {
           >
             <AuditLogTable />
           </Suspense>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
 
       <div className={cn("border-warning/20 bg-warning/10 border p-4", mode.radius)}>
         <h3 className="text-warning dark:text-warning mb-2 flex items-center gap-2 font-semibold">

@@ -228,11 +228,12 @@ See [components-card.md](./components-card.md) for full specification.
 | `interactive` | `boolean` | `false` | Hover state |
 
 **Subcomponents:**
-- `TerminalCard` — Main container
-- `TerminalCardHeader` — Header with code and title
-- `TerminalCardContent` — Content area
+- `Card` — Main container
+- `CardHeader` — Header with code and title
+- `CardContent` — Content area
+- `CardFooter` — Footer with actions
 - `PageBadge` — Page-level badge
-- `TerminalBadge` — Inline badge
+- `Badge` — Inline badge
 
 ---
 

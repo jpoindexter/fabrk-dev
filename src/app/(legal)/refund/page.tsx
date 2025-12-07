@@ -10,10 +10,10 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
-  TerminalBadge,
+  Card,
+  CardHeader,
+  CardContent,
+  Badge,
 } from "@/components/ui/card";
 import {
   FileText,
@@ -41,7 +41,7 @@ export default function RefundPage() {
           transition={{ duration: 0.5 }}
           className="mb-6"
         >
-          <TerminalBadge code="0x00" label="LEGAL" meta="REFUND_POLICY" />
+          <Badge code="0x00" label="LEGAL" meta="REFUND_POLICY" />
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -71,31 +71,31 @@ export default function RefundPage() {
         transition={{ duration: 0.6, delay: 0.3 }}
         className="mb-12"
       >
-        <TerminalCard size="auto" tone="danger">
-          <TerminalCardHeader
+        <Card size="auto" tone="danger">
+          <CardHeader
             code="0x01"
             title="NOTICE"
             icon={<AlertTriangle className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-foreground text-sm", mode.font)}>
               <span className="text-destructive font-semibold">ALL SALES ARE FINAL.</span> Due to
               the nature of digital products, no refunds, exchanges, or credits are available.
               Please review this policy carefully before purchasing.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </motion.div>
 
       <div className="space-y-6">
         {/* Section 1 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x10"
             title="NO_REFUNDS_POLICY"
             icon={<Ban className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               Once you gain access to the Fabrk source code and download the files, no refunds are
               available under any circumstances.
@@ -105,17 +105,17 @@ export default function RefundPage() {
               &quot;returned&quot; once downloaded. This is standard for digital products and
               software licenses.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 2 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x20"
             title="WHY_NO_REFUNDS"
             icon={<FileText className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               Unlike physical products, digital products provide immediate value upon download:
             </p>
@@ -128,17 +128,17 @@ export default function RefundPage() {
             <p className={cn("text-muted-foreground mt-4 text-sm", mode.font)}>
               This policy protects business integrity and ensures fair pricing for all customers.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 3 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x30"
             title="BEFORE_YOU_PURCHASE"
             icon={<ShoppingBag className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               We encourage you to thoroughly review Fabrk before purchasing:
             </p>
@@ -167,17 +167,17 @@ export default function RefundPage() {
             <p className={cn("text-muted-foreground mt-4 text-sm", mode.font)}>
               We want you to be fully informed before you buy.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 4 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x40"
             title="WHAT_YOU_GET"
             icon={<Package className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <div className="space-y-6">
               <div>
                 <h3 className={cn("text-muted-foreground mb-2 text-xs", mode.font)}>
@@ -202,17 +202,17 @@ export default function RefundPage() {
                 </ul>
               </div>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 5 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x50"
             title="TECHNICAL_SUPPORT"
             icon={<HeadphonesIcon className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               While we don&apos;t offer refunds, we provide comprehensive support:
             </p>
@@ -236,17 +236,17 @@ export default function RefundPage() {
             <p className={cn("text-muted-foreground mt-4 text-sm", mode.font)}>
               Our goal is to ensure you can successfully use Fabrk for your projects.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 6 - Danger Card */}
-        <TerminalCard size="auto" tone="danger">
-          <TerminalCardHeader
+        <Card size="auto" tone="danger">
+          <CardHeader
             code="0x60"
             title="CHARGEBACKS"
             icon={<AlertTriangle className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-foreground mb-4 text-xs", mode.font)}>
               <span className="text-destructive font-semibold">WARNING:</span> Initiating a
               chargeback for a valid purchase is considered fraudulent activity.
@@ -273,17 +273,17 @@ export default function RefundPage() {
               Have concerns? Contact support@fabrk.dev first. We&apos;re here to help resolve
               legitimate issues.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 7 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x70"
             title="EU_CONSUMER_RIGHTS"
             icon={<Scale className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               EU consumers have a 14-day withdrawal right under the Consumer Rights Directive
               (2011/83/EU).
@@ -296,13 +296,13 @@ export default function RefundPage() {
             <p className={cn("text-muted-foreground text-sm", mode.font)}>
               This waiver is required under Article 16(m) of the Consumer Rights Directive.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 8 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader code="0x80" title="EXCEPTIONS" icon={<Shield className="size-4" />} />
-          <TerminalCardContent padding="md">
+        <Card size="auto">
+          <CardHeader code="0x80" title="EXCEPTIONS" icon={<Shield className="size-4" />} />
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               We may issue refunds at our sole discretion in rare cases:
             </p>
@@ -324,17 +324,17 @@ export default function RefundPage() {
               Exceptions require documented proof and case-by-case evaluation. Contact
               support@fabrk.dev with details.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 9 - Governing Law */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x90"
             title="GOVERNING_LAW"
             icon={<Scale className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               This refund policy is governed by the laws of the Netherlands. Fabrk is operated by a
               Dutch BV (besloten vennootschap) registered in the Netherlands.
@@ -350,17 +350,17 @@ export default function RefundPage() {
                 └─ <span className="text-foreground">[LANGUAGE]:</span> English (binding version)
               </li>
             </ul>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 10 - Dispute Resolution */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0xA0"
             title="DISPUTE_RESOLUTION"
             icon={<Gavel className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               We encourage resolving disputes informally first. Contact support@fabrk.dev before
               initiating formal proceedings.
@@ -391,17 +391,17 @@ export default function RefundPage() {
               </a>
               .
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 11 - Acceptance */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0xB0"
             title="ACCEPTANCE"
             icon={<CheckCircle className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               By completing your purchase, you explicitly acknowledge and agree to:
             </p>
@@ -416,32 +416,32 @@ export default function RefundPage() {
               <span className="text-warning font-semibold">NOTE:</span> Checkout includes a
               mandatory checkbox confirming acceptance of these terms.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 12 - Policy Updates */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0xC0"
             title="POLICY_UPDATES"
             icon={<RefreshCw className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground text-sm", mode.font)}>
               We may modify this policy at any time. Your purchase is governed by the policy in
               effect at time of purchase.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 13 - Questions */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0xD0"
             title="QUESTIONS"
             icon={<HelpCircle className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               Have questions about this policy or Fabrk?
             </p>
@@ -463,8 +463,8 @@ export default function RefundPage() {
             <p className={cn("text-muted-foreground mt-4 text-sm", mode.font)}>
               Please reach out before buying if you have any concerns.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </div>
 
       {/* Related Links */}
@@ -475,13 +475,13 @@ export default function RefundPage() {
         viewport={{ once: true }}
         className="mt-12"
       >
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0xE0"
             title="RELATED_DOCUMENTS"
             icon={<FileText className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <div className={cn("flex flex-wrap gap-4 text-xs", mode.font)}>
               <Link href="/terms" className="text-primary hover:underline">
                 &gt; VIEW_TERMS
@@ -493,8 +493,8 @@ export default function RefundPage() {
                 &gt; VIEW_COOKIES
               </Link>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </motion.div>
     </main>
   );

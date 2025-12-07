@@ -23,7 +23,7 @@ The Component Showcase is a comprehensive visual reference for the Fabrk design 
 | `/component-showcase` | Main showcase | All 99 UI components organized by category |
 | `/component-showcase/foundations` | Design tokens | Colors, typography, spacing, radius, shadows, motion |
 | `/component-showcase/templates` | Template snippets | Hero, features, stats, pricing, testimonials, CTAs |
-| `/component-showcase/cards` | Card deep-dive | TerminalCard variants, tones, composition patterns |
+| `/component-showcase/cards` | Card deep-dive | Card variants, tones, composition patterns |
 
 ---
 
@@ -63,7 +63,7 @@ The Component Showcase is a comprehensive visual reference for the Fabrk design 
 
 1. **HERO_SECTIONS** - Centered, split, email capture variants
 2. **FEATURE_GRIDS** - 3-col, 4-col, list patterns
-3. **DASHBOARD_STATS** - StatCard, TerminalCard with stats
+3. **DASHBOARD_STATS** - StatCard, Card with stats
 4. **PRICING_CARDS** - Pricing grid with tones
 5. **TESTIMONIALS** - Quote cards with ratings
 6. **CTA_SECTIONS** - Simple CTA, banner CTA
@@ -73,7 +73,7 @@ The Component Showcase is a comprehensive visual reference for the Fabrk design 
 
 **7 Sections:**
 
-1. **BASE_CARD** - Canonical TerminalCard structure
+1. **BASE_CARD** - Canonical Card structure
 2. **TONE_VARIANTS** - neutral, primary, success, warning, danger
 3. **INTERACTIVE** - Hover states and transitions
 4. **HEADER_OPTIONS** - icon and meta props
@@ -115,7 +115,7 @@ All showcase pages import components from `@/components/ui/`:
 
 ```tsx
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 ```
 

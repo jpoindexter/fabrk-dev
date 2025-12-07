@@ -5,10 +5,10 @@ import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
-  TerminalBadge,
+  Card,
+  CardHeader,
+  CardContent,
+  Badge,
 } from "@/components/ui/card";
 
 // Animated counter component
@@ -97,7 +97,7 @@ export function StatsSection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <TerminalBadge code="0x30" label="METRICS" className="mb-4" />
+            <Badge code="0x30" label="METRICS" className="mb-4" />
             <h2 className={cn("mb-4 text-2xl font-semibold", mode.font)}>
               TRUSTED_BY_DEVELOPERS_WORLDWIDE
             </h2>
@@ -142,11 +142,11 @@ export function StatsSection() {
               }}
               className="group hover:border-primary/50 transition-colors"
             >
-              <TerminalCard>
-                <TerminalCardHeader
+              <Card>
+                <CardHeader
                   title={`[ [0x${(index + 31).toString(16).toUpperCase()}] ${stat.label.toUpperCase().replace(/ /g, "_")} ]`}
                 />
-                <TerminalCardContent>
+                <CardContent>
                   <div className={cn("text-foreground mb-2 text-3xl font-semibold", mode.font)}>
                     <AnimatedCounter
                       value={stat.value}
@@ -158,8 +158,8 @@ export function StatsSection() {
                     <span className="text-muted-foreground">DESC: </span>
                     <span className="text-foreground">{stat.description}</span>
                   </div>
-                </TerminalCardContent>
-              </TerminalCard>
+                </CardContent>
+              </Card>
             </motion.div>
           ))}
         </div>

@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Camera, Mail, User, Calendar, Shield } from "lucide-react";
@@ -96,14 +96,14 @@ export default function ProfilePage() {
       </div>
 
       {/* Avatar & Basic Info */}
-      <TerminalCard>
-        <TerminalCardHeader
+      <Card>
+        <CardHeader
           code="0x00"
           title="PROFILE_PICTURE"
           icon={<Camera className="h-4 w-4" />}
           meta="Update your profile picture and personal details"
         />
-        <TerminalCardContent className="space-y-6">
+        <CardContent className="space-y-6">
           {/* Avatar Upload */}
           <div className="flex items-center gap-6">
             <div className="relative">
@@ -180,18 +180,18 @@ export default function ProfilePage() {
               </div>
             </div>
           </div>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
 
       {/* Profile Details */}
-      <TerminalCard>
-        <TerminalCardHeader
+      <Card>
+        <CardHeader
           code="0x01"
           title="PROFILE_DETAILS"
           icon={<User className="h-4 w-4" />}
           meta="Update your bio and social links"
         />
-        <TerminalCardContent className="space-y-4">
+        <CardContent className="space-y-4">
           {!isEditing && (
             <div className="flex justify-end">
               <Button onClick={() => setIsEditing(true)}>&gt; EDIT_PROFILE</Button>
@@ -271,8 +271,8 @@ export default function ProfilePage() {
               </Button>
             </div>
           )}
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
     </div>
   );
 }

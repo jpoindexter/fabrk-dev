@@ -7,11 +7,13 @@
 
 import { motion } from "framer-motion";
 import {
-  TerminalBadge,
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
+  Badge,
+  Card,
+  CardHeader,
+  CardContent,
 } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { mode } from "@/design-system";
 
 export function AboutHero() {
   return (
@@ -21,9 +23,9 @@ export function AboutHero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="mb-6"
+          className="mb-8"
         >
-          <TerminalBadge code="0x00" label="ABOUT" meta="FABRK_ORIGIN_STORY" />
+          <Badge code="0x00" label="ABOUT" meta="FABRK_ORIGIN_STORY" />
         </motion.div>
 
         <motion.div
@@ -31,12 +33,12 @@ export function AboutHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <h1 className="text-muted-foreground mb-2 text-sm">FABRK_ABOUT:</h1>
-          <h2 className="mb-6 text-4xl font-semibold tracking-tight">
+          <p className={cn("text-muted-foreground mb-2 text-xs", mode.font)}>[FABRK_ABOUT]:</p>
+          <h1 className={cn("mb-8 text-4xl font-semibold tracking-tight lg:text-5xl", mode.font)}>
             BUILT_BY_DEVELOPERS
             <br />
             <span className="text-primary">FOR_DEVELOPERS</span>
-          </h2>
+          </h1>
         </motion.div>
 
         <motion.div
@@ -45,15 +47,15 @@ export function AboutHero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mx-auto max-w-2xl text-left"
         >
-          <TerminalCard size="auto">
-            <TerminalCardHeader code="0x01" title="MISSION_STATEMENT" />
-            <TerminalCardContent padding="md">
-              <p className="text-muted-foreground text-sm">
+          <Card size="auto">
+            <CardHeader code="0x01" title="MISSION_STATEMENT" />
+            <CardContent padding="md">
+              <p className={cn("text-muted-foreground text-sm", mode.font)}>
                 We're on a mission to eliminate the repetitive work that slows down every SaaS
                 project, so you can focus on building features that matter.
               </p>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
         </motion.div>
       </div>
     </section>

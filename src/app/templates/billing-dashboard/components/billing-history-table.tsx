@@ -4,7 +4,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Download } from "lucide-react";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
@@ -32,10 +32,10 @@ export function BillingHistoryTable({
 }: BillingHistoryTableProps) {
   return (
     <>
-      <TerminalCard tone="neutral">
-        <TerminalCardHeader code="0x00" title="BILLING_HISTORY" />
+      <Card tone="neutral">
+        <CardHeader code="0x00" title="BILLING_HISTORY" />
 
-        <TerminalCardContent padding="md">
+        <CardContent padding="md">
           <div className="mb-4 flex items-center justify-between">
             <div className={cn(mode.font, "text-muted-foreground text-xs")}>
               [BILLING_HISTORY]: COUNT={payments.length}
@@ -98,18 +98,18 @@ export function BillingHistoryTable({
               })}
             </div>
           </div>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
 
       {/* Info Note */}
-      <TerminalCard tone="neutral">
-        <TerminalCardContent padding="md">
+      <Card tone="neutral">
+        <CardContent padding="md">
           <div className={cn(mode.font, "text-xs")}>
             <span className="text-muted-foreground">[INFO]:</span> All invoices are automatically
             emailed to your registered email address. Contact support if you need assistance.
           </div>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
     </>
   );
 }

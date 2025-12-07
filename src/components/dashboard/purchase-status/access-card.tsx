@@ -9,7 +9,7 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { CheckCircle, Download, RefreshCw, XCircle } from "lucide-react";
 import { AccessCardProps } from "./purchase-status-types";
 export function AccessCard({
@@ -19,9 +19,9 @@ export function AccessCard({
 }: AccessCardProps) {
   if (!hasAccess) {
     return (
-      <TerminalCard tone="danger">
-        <TerminalCardHeader code="0x01" title="NO_ACCESS" icon={<XCircle className="h-4 w-4" />} />
-        <TerminalCardContent padding="md">
+      <Card tone="danger">
+        <CardHeader code="0x01" title="NO_ACCESS" icon={<XCircle className="h-4 w-4" />} />
+        <CardContent padding="md">
           <p className="text-muted-foreground dark:text-muted-foreground mb-4 text-sm">
             [STATUS]: Purchase required to access Fabrk boilerplate
           </p>
@@ -31,19 +31,19 @@ export function AccessCard({
           >
             <a href="/pricing">&gt; VIEW_PRICING</a>
           </Button>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
     );
   }
 
   return (
-    <TerminalCard tone="success">
-      <TerminalCardHeader
+    <Card tone="success">
+      <CardHeader
         code="0x01"
         title="ACCESS_GRANTED"
         icon={<CheckCircle className="h-4 w-4" />}
       />
-      <TerminalCardContent padding="md" className="space-y-4">
+      <CardContent padding="md" className="space-y-4">
         <div>
           <Badge variant="secondary" className="mb-2">
             COMPLETE_PACKAGE
@@ -69,7 +69,7 @@ export function AccessCard({
             </>
           )}
         </Button>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

@@ -10,7 +10,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
 const DEMO_ROUTES = [
   { id: "team", label: "Team Dashboard", path: "/templates/team-dashboard" },
@@ -57,7 +57,7 @@ export function InteractiveDemo() {
             </TabsList>
 
             {/* Demo Container */}
-            <TerminalCard className="overflow-hidden">
+            <Card className="overflow-hidden">
               {DEMO_ROUTES.map((route) => (
                 <TabsContent key={route.id} value={route.id} className="m-0">
                   <iframe
@@ -67,7 +67,7 @@ export function InteractiveDemo() {
                   />
                 </TabsContent>
               ))}
-            </TerminalCard>
+            </Card>
 
             {/* Info Box */}
             <motion.div
@@ -76,17 +76,17 @@ export function InteractiveDemo() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <TerminalCard>
-                <TerminalCardHeader title="INFO" />
-                <TerminalCardContent>
+              <Card>
+                <CardHeader title="INFO" />
+                <CardContent>
                   <p className="text-foreground text-xs">
                     <span className="text-primary font-semibold">[FULLY_INTERACTIVE]</span> All
                     dashboards and tables are fully functional. Sort columns, filter data, toggle
                     settings, and explore the full UX. These are the exact templates included in
                     Fabrk.
                   </p>
-                </TerminalCardContent>
-              </TerminalCard>
+                </CardContent>
+              </Card>
             </motion.div>
           </Tabs>
         </motion.div>

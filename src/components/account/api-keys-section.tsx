@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -110,8 +110,8 @@ export function ApiKeysSection() {
   }
 
   return (
-    <TerminalCard tone="neutral">
-      <TerminalCardHeader
+    <Card tone="neutral">
+      <CardHeader
         code="0x09"
         title="API_KEYS"
         meta={
@@ -157,7 +157,7 @@ export function ApiKeysSection() {
           </Dialog>
         }
       />
-      <TerminalCardContent>
+      <CardContent>
         {apiKeys.length === 0 ? (
           <div className={cn("border border-dashed p-8 text-center", mode.radius)}>
             <p className="text-muted-foreground mb-4 text-sm">
@@ -202,7 +202,7 @@ export function ApiKeysSection() {
             ))}
           </div>
         )}
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

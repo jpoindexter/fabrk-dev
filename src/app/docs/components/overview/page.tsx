@@ -199,7 +199,7 @@ export default function ComponentsOverviewPage() {
           description: "Import components from @/components/ui/",
           code: `// Import any component from @/components/ui/
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";`,
           language: "typescript",

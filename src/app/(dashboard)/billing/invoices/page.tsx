@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -82,8 +82,8 @@ export default async function InvoicesPage() {
 
       {/* Invoices Table */}
       {payments.length === 0 ? (
-        <TerminalCard>
-          <TerminalCardContent className="space-y-4 pt-6 text-center">
+        <Card>
+          <CardContent className="space-y-4 pt-6 text-center">
             <FileText className="text-muted-foreground mx-auto h-12 w-12" />
             <div>
               <h3 className="mb-1 font-semibold">No invoices yet</h3>
@@ -91,16 +91,16 @@ export default async function InvoicesPage() {
                 Your payment history will appear here once you make a purchase
               </p>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       ) : (
-        <TerminalCard>
-          <TerminalCardHeader
+        <Card>
+          <CardHeader
             code="0x00"
             title="PAYMENT_HISTORY"
             meta={`${payments.length} transaction${payments.length !== 1 ? "s" : ""}`}
           />
-          <TerminalCardContent>
+          <CardContent>
             <Table>
               <TableHeader>
                 <TableRow>
@@ -132,19 +132,19 @@ export default async function InvoicesPage() {
                 ))}
               </TableBody>
             </Table>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       )}
 
       {/* Information Cards */}
       <div className="mt-8 grid gap-6 md:grid-cols-2">
-        <TerminalCard>
-          <TerminalCardHeader
+        <Card>
+          <CardHeader
             code="0xF0"
             title="INVOICE_DETAILS"
             icon={<FileText className="h-4 w-4" />}
           />
-          <TerminalCardContent className="text-muted-foreground space-y-2 text-sm">
+          <CardContent className="text-muted-foreground space-y-2 text-sm">
             <p>Each invoice includes:</p>
             <ul className="ml-2 list-inside list-disc space-y-1">
               <li>Transaction date and amount</li>
@@ -152,22 +152,22 @@ export default async function InvoicesPage() {
               <li>Invoice number for records</li>
               <li>Billing information</li>
             </ul>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
-        <TerminalCard>
-          <TerminalCardHeader
+        <Card>
+          <CardHeader
             code="0xF1"
             title="EMAIL_RECEIPTS"
             icon={<CheckCircle2 className="h-4 w-4" />}
           />
-          <TerminalCardContent className="text-muted-foreground text-sm">
+          <CardContent className="text-muted-foreground text-sm">
             <p>
               We automatically send email receipts for all successful payments. Check your inbox at{" "}
               <strong>{session.user.email}</strong> for copies of your receipts.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

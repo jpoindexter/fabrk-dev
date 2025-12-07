@@ -5,15 +5,15 @@
 
 "use client";
 
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function FeaturesCard() {
   return (
-    <TerminalCard tone="neutral">
-      <TerminalCardHeader code="0x00" title="TEMPLATE_FEATURES" />
-      <TerminalCardContent padding="md">
+    <Card tone="neutral">
+      <CardHeader code="0x00" title="TEMPLATE_FEATURES" />
+      <CardContent padding="md">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [TEMPLATE_FEATURES]:
         </div>
@@ -44,7 +44,7 @@ export function FeaturesCard() {
         <div className={cn(mode.font, "text-muted-foreground mt-4 text-xs")}>
           [NOTE]: Connect to your user service to populate real data and upload avatars.
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

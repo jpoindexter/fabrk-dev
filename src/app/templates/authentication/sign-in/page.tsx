@@ -7,9 +7,9 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
+  Card,
+  CardHeader,
+  CardContent,
   TemplatePageHeader,
   FeaturesCard,
 } from "@/components/ui/card";
@@ -38,9 +38,9 @@ export default function SignInTemplate() {
         />
 
         {/* Template Preview */}
-        <TerminalCard>
-          <TerminalCardHeader code="0x00" title="PREVIEW" />
-          <TerminalCardContent padding="lg">
+        <Card>
+          <CardHeader code="0x00" title="PREVIEW" />
+          <CardContent padding="lg">
             <div className="bg-background/50 flex min-h-[600px] flex-col items-center justify-center p-4 sm:p-8">
               <div className="border-border bg-background w-full max-w-[380px] space-y-6 border p-6">
                 {/* Header */}
@@ -161,13 +161,13 @@ export default function SignInTemplate() {
                 </p>
               </div>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Template Features Card */}
-        <TerminalCard>
-          <TerminalCardHeader code="0x01" title="TEMPLATE_FEATURES" />
-          <TerminalCardContent padding="md">
+        <Card>
+          <CardHeader code="0x01" title="TEMPLATE_FEATURES" />
+          <CardContent padding="md">
             <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
               [TEMPLATE_FEATURES]:
             </div>
@@ -191,8 +191,8 @@ export default function SignInTemplate() {
                 <span className="text-success">&gt;</span> Terminal-style button variants
               </div>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </main>
     </div>
   );

@@ -6,7 +6,7 @@
 "use client";
 
 import Link from "next/link";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { getCategoryInfo, getTemplatesByCategory } from "../template-data";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
@@ -114,9 +114,9 @@ export default function MarketingPage() {
         </div>
 
         {/* Template Features Card */}
-        <TerminalCard>
-          <TerminalCardHeader code="0x00" title="MARKETING_FEATURES" />
-          <TerminalCardContent padding="lg">
+        <Card>
+          <CardHeader code="0x00" title="MARKETING_FEATURES" />
+          <CardContent padding="lg">
             <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
               [MARKETING_TEMPLATES]:
             </div>
@@ -143,8 +143,8 @@ export default function MarketingPage() {
                 <span className="text-success">&gt;</span> Footer with site navigation and links
               </div>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </main>
     </div>
   );

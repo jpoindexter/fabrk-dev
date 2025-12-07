@@ -8,7 +8,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Palette, Sparkles, Users, BarChart3, Home, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -49,8 +49,8 @@ export function ShowcaseNav() {
   const pathname = usePathname();
 
   return (
-    <TerminalCard tone="neutral">
-      <TerminalCardHeader
+    <Card tone="neutral">
+      <CardHeader
         code="0x00"
         title="SHOWCASE_PAGES"
         meta={
@@ -62,7 +62,7 @@ export function ShowcaseNav() {
           </Link>
         }
       />
-      <TerminalCardContent padding="md">
+      <CardContent padding="md">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
           {showcasePages.map((page) => {
             const Icon = page.icon;
@@ -106,7 +106,7 @@ export function ShowcaseNav() {
             );
           })}
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

@@ -11,9 +11,10 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { mode } from "@/design-system";
 import { ArrowDown, ArrowUp, Minus } from "lucide-react";
 import * as React from "react";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "./card";
+import { Card, CardHeader, CardContent } from "./card";
 
 export interface KpiCardProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
@@ -29,11 +30,11 @@ const KpiCard = React.forwardRef<HTMLDivElement, KpiCardProps>(
     const getTrendIcon = () => {
       switch (trend) {
         case "up":
-          return <ArrowUp className="h-4 w-4" />;
+          return <ArrowUp className="size-3" />;
         case "down":
-          return <ArrowDown className="h-4 w-4" />;
+          return <ArrowDown className="size-3" />;
         case "neutral":
-          return <Minus className="h-4 w-4" />;
+          return <Minus className="size-3" />;
         default:
           return null;
       }
@@ -53,12 +54,12 @@ const KpiCard = React.forwardRef<HTMLDivElement, KpiCardProps>(
     };
 
     return (
-      <TerminalCard data-slot="kpi-card" ref={ref} className={cn(className)} {...props}>
-        <TerminalCardHeader code="0x00" title={title} icon={icon} />
-        <TerminalCardContent padding="md">
-          <div className="text-2xl font-semibold">{value}</div>
+      <Card data-slot="kpi-card" ref={ref} className={cn(className)} {...props}>
+        <CardHeader code="0x00" title={title} icon={icon} />
+        <CardContent padding="md">
+          <div className={cn("text-2xl font-semibold", mode.font)}>{value}</div>
           {(change !== undefined || subtitle) && (
-            <div className="flex items-center gap-2 text-xs">
+            <div className={cn("flex items-center gap-2 text-xs", mode.font)}>
               {change !== undefined && (
                 <span className={cn("flex items-center gap-1 font-medium", getTrendColor())}>
                   {getTrendIcon()}
@@ -68,8 +69,8 @@ const KpiCard = React.forwardRef<HTMLDivElement, KpiCardProps>(
               {subtitle && <span className="text-muted-foreground">{subtitle}</span>}
             </div>
           )}
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
     );
   }
 );

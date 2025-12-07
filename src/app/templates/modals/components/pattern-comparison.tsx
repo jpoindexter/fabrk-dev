@@ -4,9 +4,9 @@
  */
 
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
+  Card,
+  CardHeader,
+  CardContent,
   StyledLabel,
 } from "@/components/ui/card";
 import { mode } from "@/design-system";
@@ -14,9 +14,9 @@ import { cn } from "@/lib/utils";
 
 export function PatternComparison() {
   return (
-    <TerminalCard>
-      <TerminalCardHeader code="0x01" title="COMPARISON" />
-      <TerminalCardContent>
+    <Card>
+      <CardHeader code="0x01" title="COMPARISON" />
+      <CardContent>
         <StyledLabel className="mb-4">WHEN_TO_USE</StyledLabel>
         <div className="border-border overflow-x-auto border">
           <table className={cn(mode.font, "w-full text-xs")}>
@@ -53,7 +53,7 @@ export function PatternComparison() {
             </tbody>
           </table>
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

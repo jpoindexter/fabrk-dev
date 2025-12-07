@@ -20,7 +20,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
@@ -88,9 +88,9 @@ export function SystemHealthWidget({
     overallStatus === "healthy" ? "success" : overallStatus === "warning" ? "warning" : "danger";
 
   return (
-    <TerminalCard tone={tone} className={className}>
+    <Card tone={tone} className={className}>
       <div className="border-border flex items-center justify-between border-b px-4 py-2">
-        <TerminalCardHeader
+        <CardHeader
           code={code}
           title="SYSTEM_HEALTH"
           meta={`Updated: ${lastUpdated.toLocaleTimeString()}`}
@@ -103,7 +103,7 @@ export function SystemHealthWidget({
         </Badge>
       </div>
 
-      <TerminalCardContent className="space-y-4">
+      <CardContent className="space-y-4">
         {/* Uptime */}
         <div className="space-y-2">
           <div className="flex items-center justify-between">
@@ -191,7 +191,7 @@ export function SystemHealthWidget({
             </span>
           </div>
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

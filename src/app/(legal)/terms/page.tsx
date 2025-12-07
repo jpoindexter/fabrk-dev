@@ -10,10 +10,10 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
-  TerminalBadge,
+  Card,
+  CardHeader,
+  CardContent,
+  Badge,
 } from "@/components/ui/card";
 import {
   FileText,
@@ -41,7 +41,7 @@ export default function TermsPage() {
           transition={{ duration: 0.5 }}
           className="mb-6"
         >
-          <TerminalBadge code="0x00" label="LEGAL" meta="TERMS_OF_SERVICE" />
+          <Badge code="0x00" label="LEGAL" meta="TERMS_OF_SERVICE" />
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -71,27 +71,27 @@ export default function TermsPage() {
         transition={{ duration: 0.6, delay: 0.3 }}
         className="mb-12"
       >
-        <TerminalCard size="auto">
-          <TerminalCardHeader code="0x01" title="NOTICE" icon={<FileText className="size-4" />} />
-          <TerminalCardContent padding="md">
+        <Card size="auto">
+          <CardHeader code="0x01" title="NOTICE" icon={<FileText className="size-4" />} />
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground text-sm", mode.font)}>
               Please read these Terms of Service carefully before purchasing or using Fabrk. By
               accessing or using our Service, you acknowledge that you have read, understood, and
               agree to be bound by these terms.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </motion.div>
 
       <div className="space-y-6">
         {/* Section 1 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x10"
             title="AGREEMENT_TO_TERMS"
             icon={<Scale className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               By accessing, purchasing, or using Fabrk (&quot;Service&quot;, &quot;Product&quot;,
               &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;), you (&quot;Buyer&quot;,
@@ -103,17 +103,17 @@ export default function TermsPage() {
               81705344, VAT: NL862188726B01). These Terms constitute a legal agreement between you
               and THEFT BV.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 2 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x20"
             title="DESCRIPTION_OF_SERVICE"
             icon={<FileText className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               Fabrk is an enterprise-grade Next.js 15 SaaS boilerplate providing 100
               production-ready components, authentication, payment processing, database integration,
@@ -192,17 +192,17 @@ export default function TermsPage() {
                 </p>
               </div>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 3 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x30"
             title="USER_ACCOUNTS"
             icon={<Users className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <div className="space-y-6">
               <div>
                 <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>
@@ -236,17 +236,17 @@ export default function TermsPage() {
                 </p>
               </div>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 4 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x40"
             title="PAYMENT_TERMS"
             icon={<CreditCard className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <div className="space-y-6">
               <div>
                 <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>[4.1] PRICING</h3>
@@ -286,17 +286,17 @@ export default function TermsPage() {
                 </div>
               </div>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 5 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x50"
             title="INTELLECTUAL_PROPERTY"
             icon={<Shield className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <div className="space-y-6">
               <div>
                 <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>[5.1] FABRK_IP</h3>
@@ -324,17 +324,17 @@ export default function TermsPage() {
                 </p>
               </div>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 6 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x60"
             title="PROHIBITED_USES"
             icon={<Ban className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-2 text-sm", mode.font)}>
               You agree NOT to use Fabrk to:
             </p>
@@ -365,17 +365,17 @@ export default function TermsPage() {
                 └─ <span className="text-destructive">✗</span> Facilitate illegal activities
               </li>
             </ul>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 7 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x70"
             title="DISCLAIMERS_LIABILITY"
             icon={<AlertTriangle className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <div className="space-y-6">
               <div>
                 <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>[7.1] AS_IS_BASIS</h3>
@@ -405,17 +405,17 @@ export default function TermsPage() {
                 </p>
               </div>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 8 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x80"
             title="UPDATES_VERSIONING"
             icon={<RefreshCw className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               Your perpetual license includes lifetime access to all v1.x updates (bug fixes,
               security patches, new components, documentation).
@@ -425,32 +425,32 @@ export default function TermsPage() {
               <li>├─ Major versions (v2.0+) may be separate products</li>
               <li>└─ No guarantee of indefinite maintenance</li>
             </ul>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 9 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0x90"
             title="INDEMNIFICATION"
             icon={<Gavel className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground text-sm", mode.font)}>
               You agree to indemnify and hold harmless Fabrk from claims arising from your use,
               violations of these Terms, violations of rights, and applications you build.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 10 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0xA0"
             title="GOVERNING_LAW"
             icon={<Globe className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-2 text-sm", mode.font)}>
               These Terms are governed by the laws of the Netherlands. Disputes shall be resolved in
               the courts of Apeldoorn, Netherlands.
@@ -458,28 +458,28 @@ export default function TermsPage() {
             <p className={cn("text-muted-foreground text-sm", mode.font)}>
               EU consumers retain all mandatory rights under EU consumer protection law.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 11 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0xB0"
             title="TERMS_CHANGES"
             icon={<Bell className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground text-sm", mode.font)}>
               We may modify these Terms at any time. Material changes will be communicated with 30
               days&apos; notice. Continued use constitutes acceptance.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 12 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader code="0xC0" title="CONTACT_INFO" icon={<Mail className="size-4" />} />
-          <TerminalCardContent padding="md">
+        <Card size="auto">
+          <CardHeader code="0xC0" title="CONTACT_INFO" icon={<Mail className="size-4" />} />
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
               Questions about these Terms?
             </p>
@@ -494,8 +494,8 @@ export default function TermsPage() {
                 </Link>
               </li>
             </ul>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </div>
 
       {/* Related Links */}
@@ -506,13 +506,13 @@ export default function TermsPage() {
         viewport={{ once: true }}
         className="mt-12"
       >
-        <TerminalCard size="auto">
-          <TerminalCardHeader
+        <Card size="auto">
+          <CardHeader
             code="0xD0"
             title="RELATED_DOCUMENTS"
             icon={<FileText className="size-4" />}
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <div className={cn("flex flex-wrap gap-4 text-xs", mode.font)}>
               <Link href="/privacy" className="text-primary hover:underline">
                 &gt; PRIVACY_POLICY
@@ -524,8 +524,8 @@ export default function TermsPage() {
                 &gt; REFUND_POLICY
               </Link>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </motion.div>
     </main>
   );

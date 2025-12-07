@@ -7,7 +7,7 @@ import * as React from "react";
 import { UseFormReturn } from "react-hook-form";
 import { Building2, ChevronRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -40,14 +40,14 @@ export function OrganizationDetailsStep({
   onCancel,
 }: OrganizationDetailsStepProps) {
   return (
-    <TerminalCard>
-      <TerminalCardHeader
+    <Card>
+      <CardHeader
         code="0x00"
         title="CREATE_ORGANIZATION"
         icon={<Building2 className="h-4 w-4" />}
         meta="STEP_1"
       />
-      <TerminalCardContent padding="lg">
+      <CardContent padding="lg">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
@@ -121,7 +121,7 @@ export function OrganizationDetailsStep({
             </div>
           </form>
         </Form>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

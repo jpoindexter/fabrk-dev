@@ -8,19 +8,19 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { ExternalLink, Github, MessageSquare, Package } from "lucide-react";
 import { ResourcesCardProps } from "./purchase-status-types";
 
 export function ResourcesCard({ hasAccess }: ResourcesCardProps) {
   return (
-    <TerminalCard tone="neutral">
-      <TerminalCardHeader
+    <Card tone="neutral">
+      <CardHeader
         code="0x03"
         title="RESOURCES_AND_SUPPORT"
         icon={<Package className="h-4 w-4" />}
       />
-      <TerminalCardContent padding="md" className="space-y-4">
+      <CardContent padding="md" className="space-y-4">
         <Button
           variant="outline"
           className="focus-visible:ring-ring w-full justify-start focus-visible:ring-2 focus-visible:outline-none"
@@ -65,7 +65,7 @@ export function ResourcesCard({ hasAccess }: ResourcesCardProps) {
             [NOTE]: Purchase Fabrk to unlock all resources
           </p>
         )}
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

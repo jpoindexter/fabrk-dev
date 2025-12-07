@@ -5,7 +5,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
 export function CardsSection() {
   return (
@@ -17,26 +17,26 @@ export function CardsSection() {
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
-        <TerminalCard>
-          <TerminalCardHeader
+        <Card>
+          <CardHeader
             code="0x30"
             title="Simple_Card"
             meta="Basic card with title and description"
           />
-          <TerminalCardContent padding="md">
+          <CardContent padding="md">
             <p className="text-muted-foreground text-sm">
               This is a simple card component with header and content sections.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
-        <TerminalCard>
-          <TerminalCardHeader
+        <Card>
+          <CardHeader
             code="0x31"
             title="Card_With_Actions"
             meta="Card with button actions"
           />
-          <TerminalCardContent padding="md" className="space-y-4">
+          <CardContent padding="md" className="space-y-4">
             <p className="text-muted-foreground text-sm">
               Cards can contain any content including forms and buttons.
             </p>
@@ -46,8 +46,8 @@ export function CardsSection() {
                 &gt; CANCEL
               </Button>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </div>
     </section>
   );

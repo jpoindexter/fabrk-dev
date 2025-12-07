@@ -1,7 +1,7 @@
 "use client";
 
 import { SimpleIcon } from "@/components/ui/simple-icon";
-import { TerminalCard, TerminalCardContent, TerminalBadge } from "@/components/ui/card";
+import { Card, CardContent, Badge } from "@/components/ui/card";
 import { siTypescript, siStorybook, siVitest, siGithubactions } from "simple-icons";
 import { CheckCircle2, TestTube2 } from "lucide-react";
 import { motion } from "framer-motion";
@@ -50,7 +50,7 @@ export function QualitySection() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <TerminalBadge code="0x70" label="QUALITY_ASSURANCE" />
+            <Badge code="0x70" label="QUALITY_ASSURANCE" />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -87,8 +87,8 @@ export function QualitySection() {
                 viewport={{ once: true }}
                 className="group"
               >
-                <TerminalCard className="hover:border-primary/50 transition-all">
-                  <TerminalCardContent className="p-8">
+                <Card className="hover:border-primary/50 transition-all">
+                  <CardContent className="p-8">
                     <div className="bg-primary/10 mb-4 inline-flex items-center justify-center p-4">
                       {item.iconComponent === "testTube" ? (
                         <TestTube2 className="text-primary h-6 w-6" />
@@ -103,8 +103,8 @@ export function QualitySection() {
                       </h3>
                     </div>
                     <span className="text-muted-foreground block text-xs">{item.description}</span>
-                  </TerminalCardContent>
-                </TerminalCard>
+                  </CardContent>
+                </Card>
               </motion.div>
             );
           })}
@@ -117,8 +117,8 @@ export function QualitySection() {
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
         >
-          <TerminalCard size="auto" className="mt-12">
-            <TerminalCardContent className="p-8">
+          <Card size="auto" className="mt-12">
+            <CardContent className="p-8">
               <div className="flex items-start gap-4">
                 <div className="shrink-0">
                   <CheckCircle2 className="text-primary h-8 w-8" />
@@ -133,8 +133,8 @@ export function QualitySection() {
                   </p>
                 </div>
               </div>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
         </motion.div>
       </div>
     </section>

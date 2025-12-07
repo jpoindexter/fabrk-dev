@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import {
   AlertDialog,
@@ -76,9 +76,9 @@ export function SessionsSection() {
   };
 
   return (
-    <TerminalCard tone="neutral">
-      <TerminalCardHeader code="0x06" title="ACTIVE_SESSIONS" />
-      <TerminalCardContent>
+    <Card tone="neutral">
+      <CardHeader code="0x06" title="ACTIVE_SESSIONS" />
+      <CardContent>
         <div className="space-y-4">
           {sessions.length === 0 ? (
             <p className="text-muted-foreground text-sm">No active sessions.</p>
@@ -130,7 +130,7 @@ export function SessionsSection() {
             </div>
           )}
         </div>
-      </TerminalCardContent>
+      </CardContent>
 
       <AlertDialog open={!!revokeSessionId} onOpenChange={() => setRevokeSessionId(null)}>
         <AlertDialogContent>
@@ -152,6 +152,6 @@ export function SessionsSection() {
           </div>
         </AlertDialogContent>
       </AlertDialog>
-    </TerminalCard>
+    </Card>
   );
 }

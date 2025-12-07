@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -78,9 +78,9 @@ export function AppearanceForm() {
   }
 
   return (
-    <TerminalCard tone="neutral">
-      <TerminalCardHeader code="0x03" title="APPEARANCE" />
-      <TerminalCardContent>
+    <Card tone="neutral">
+      <CardHeader code="0x03" title="APPEARANCE" />
+      <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
@@ -160,7 +160,7 @@ export function AppearanceForm() {
             </Button>
           </form>
         </Form>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

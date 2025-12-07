@@ -2,15 +2,15 @@
  * Email template features section
  */
 
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function EmailFeatures() {
   return (
-    <TerminalCard>
-      <TerminalCardHeader code="0x01" title="FEATURES" />
-      <TerminalCardContent padding="md">
+    <Card>
+      <CardHeader code="0x01" title="FEATURES" />
+      <CardContent padding="md">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [TEMPLATE_FEATURES]:
         </div>
@@ -49,7 +49,7 @@ export function EmailFeatures() {
         <div className={cn(mode.font, "text-muted-foreground mt-4 text-xs")}>
           [NOTE]: All templates in src/emails/. Add your Resend API key to start sending emails.
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

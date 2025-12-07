@@ -17,7 +17,7 @@
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
-import { TerminalBadge } from "@/components/ui/card";
+import { Badge } from "@/components/ui/card";
 import {
   Mail,
   Key,
@@ -51,7 +51,7 @@ export function FeaturesSection() {
           transition={{ duration: 0.6 }}
           className="mb-16 lg:mb-24"
         >
-          <TerminalBadge
+          <Badge
             code="0x30"
             label="DEEP_DIVE"
             meta="FEATURE_ANALYSIS │ FIB[377,610]"

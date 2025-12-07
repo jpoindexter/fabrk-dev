@@ -1,10 +1,10 @@
 "use client";
 
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
-  TerminalBadge,
+  Card,
+  CardHeader,
+  CardContent,
+  Badge,
 } from "@/components/ui/card";
 import { Users, Lock, Shield, Webhook, Key, Radio, Server, BarChart } from "lucide-react";
 import { motion } from "framer-motion";
@@ -74,7 +74,7 @@ export function EnterpriseFeaturesSection() {
             viewport={{ once: true }}
             className="mb-4 inline-block"
           >
-            <TerminalBadge label="ENTERPRISE_GRADE_FEATURES" />
+            <Badge label="ENTERPRISE_GRADE_FEATURES" />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -138,8 +138,8 @@ export function EnterpriseFeaturesSection() {
                 }}
                 className="group"
               >
-                <TerminalCard className="hover:border-primary/50 transition-colors">
-                  <TerminalCardHeader
+                <Card className="hover:border-primary/50 transition-colors">
+                  <CardHeader
                     code={`0x${(index + 40).toString(16).toUpperCase()}`}
                     title={feature.title
                       .toUpperCase()
@@ -153,7 +153,7 @@ export function EnterpriseFeaturesSection() {
                       )
                     }
                   />
-                  <TerminalCardContent className="p-4">
+                  <CardContent className="p-4">
                     <div className="text-foreground mb-3 text-xs font-semibold">
                       {feature.title.toUpperCase().replace(/ /g, "_").replace(/\+/g, "_AND_")}
                     </div>
@@ -161,8 +161,8 @@ export function EnterpriseFeaturesSection() {
                       <span className="text-muted-foreground">DESC: </span>
                       <span className="text-foreground">{feature.description}</span>
                     </div>
-                  </TerminalCardContent>
-                </TerminalCard>
+                  </CardContent>
+                </Card>
               </motion.div>
             );
           })}
@@ -175,8 +175,8 @@ export function EnterpriseFeaturesSection() {
           transition={{ duration: 0.6, delay: 0.7 }}
           viewport={{ once: true }}
         >
-          <TerminalCard className="mt-12 text-center">
-            <TerminalCardContent className="p-8">
+          <Card className="mt-12 text-center">
+            <CardContent className="p-8">
               <p className="text-sm font-semibold">
                 <span className="text-primary">$200,000+</span> worth of enterprise features,
                 included out-of-the-box
@@ -185,8 +185,8 @@ export function EnterpriseFeaturesSection() {
                 These features would take 6-12 months to build yourself. We've done the hard work so
                 you can focus on your product.
               </span>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
         </motion.div>
       </div>
     </section>

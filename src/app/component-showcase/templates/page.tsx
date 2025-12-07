@@ -14,20 +14,20 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
-  TerminalCardFooter,
-  TerminalStat,
-  TerminalStatGroup,
+  Card,
+  CardHeader,
+  CardContent,
+  CardFooter,
+  Stat,
+  StatGroup,
 } from "@/components/ui/card";
 import { StatCard } from "@/components/ui/stat-card";
 
 // Section Header Component
 function SectionHeader({ code, title }: { code: string; title: string }) {
   return (
-    <div className="border-border bg-card border-b px-6 py-4">
-      <span className={cn("text-muted-foreground text-sm", mode.font)}>
+    <div className="border-border bg-card border-b px-4 py-2">
+      <span className={cn("text-muted-foreground text-xs", mode.font)}>
         [ [{code}] {title} ]
       </span>
     </div>
@@ -40,7 +40,7 @@ export default function TemplateSnippetsPage() {
       {/* Header */}
       <header className="border-border bg-background/95 sticky top-0 z-50 border-b backdrop-blur">
         <div className="flex items-center justify-between px-6 py-4">
-          <span className={cn("text-muted-foreground text-sm", mode.font)}>
+          <span className={cn("text-muted-foreground text-xs", mode.font)}>
             [ [0x00] TEMPLATE_SNIPPETS ] templates.tsx
           </span>
           <Link href="/component-showcase">
@@ -52,16 +52,16 @@ export default function TemplateSnippetsPage() {
         </div>
       </header>
 
-      <main className="container mx-auto max-w-7xl space-y-12 px-6 py-12">
+      <main className="container mx-auto max-w-7xl space-y-8 px-6 py-12">
         {/* ============================================ */}
         {/* SECTION 1: HERO SNIPPETS */}
         {/* ============================================ */}
         <section className={cn("border-border border", mode.radius)}>
           <SectionHeader code="0x01" title="HERO_SECTIONS" />
-          <div className="space-y-8 p-6">
+          <div className="space-y-6 p-6">
             {/* Hero Variant 1: Centered */}
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [HERO_CENTERED]:
               </p>
               <div className={cn("border-border bg-card border p-8 text-center", mode.radius)}>
@@ -82,7 +82,7 @@ export default function TemplateSnippetsPage() {
 
             {/* Hero Variant 2: Split */}
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [HERO_SPLIT]:
               </p>
               <div
@@ -117,7 +117,7 @@ export default function TemplateSnippetsPage() {
 
             {/* Hero Variant 3: With Email Capture */}
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [HERO_EMAIL_CAPTURE]:
               </p>
               <div className={cn("border-border bg-card border p-8 text-center", mode.radius)}>
@@ -141,10 +141,10 @@ export default function TemplateSnippetsPage() {
         {/* ============================================ */}
         <section className={cn("border-border border", mode.radius)}>
           <SectionHeader code="0x02" title="FEATURE_GRIDS" />
-          <div className="space-y-8 p-6">
+          <div className="space-y-6 p-6">
             {/* Feature Grid 3-col */}
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [FEATURE_GRID_3COL]:
               </p>
               <div className="grid gap-6 md:grid-cols-3">
@@ -153,23 +153,23 @@ export default function TemplateSnippetsPage() {
                   { icon: Shield, title: "SECURE", desc: "Built-in auth and security best practices" },
                   { icon: Globe, title: "SCALABLE", desc: "Ready for production from day one" },
                 ].map((feature, i) => (
-                  <TerminalCard key={i} interactive>
-                    <TerminalCardHeader
+                  <Card key={i} interactive>
+                    <CardHeader
                       code={`0${i + 1}`}
                       title={feature.title}
                       icon={<feature.icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />}
                     />
-                    <TerminalCardContent>
+                    <CardContent>
                       <p className={cn("text-muted-foreground text-xs", mode.font)}>{feature.desc}</p>
-                    </TerminalCardContent>
-                  </TerminalCard>
+                    </CardContent>
+                  </Card>
                 ))}
               </div>
             </div>
 
             {/* Feature Grid 4-col */}
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [FEATURE_GRID_4COL]:
               </p>
               <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
@@ -197,7 +197,7 @@ export default function TemplateSnippetsPage() {
 
             {/* Feature List */}
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [FEATURE_LIST]:
               </p>
               <div className={cn("border-border bg-card border p-6", mode.radius)}>
@@ -228,10 +228,10 @@ export default function TemplateSnippetsPage() {
         {/* ============================================ */}
         <section className={cn("border-border border", mode.radius)}>
           <SectionHeader code="0x03" title="DASHBOARD_STATS" />
-          <div className="space-y-8 p-6">
+          <div className="space-y-6 p-6">
             {/* Stats Row */}
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [STATS_ROW]:
               </p>
               <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
@@ -244,46 +244,46 @@ export default function TemplateSnippetsPage() {
 
             {/* Terminal Stats */}
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [TERMINAL_STATS]:
               </p>
               <div className="grid gap-4 md:grid-cols-3">
-                <TerminalCard>
-                  <TerminalCardHeader code="0x10" title="USERS" />
-                  <TerminalCardContent>
+                <Card>
+                  <CardHeader code="0x10" title="USERS" />
+                  <CardContent>
                     <div className={cn("text-foreground mb-2 text-3xl font-bold", mode.font)}>
                       2,847
                     </div>
-                    <TerminalStatGroup>
-                      <TerminalStat label="Active" value="2,341" size="sm" />
-                      <TerminalStat label="New" value="+127" size="sm" />
-                    </TerminalStatGroup>
-                  </TerminalCardContent>
-                </TerminalCard>
-                <TerminalCard tone="success">
-                  <TerminalCardHeader code="0x11" title="MRR" />
-                  <TerminalCardContent>
+                    <StatGroup>
+                      <Stat label="Active" value="2,341" size="sm" />
+                      <Stat label="New" value="+127" size="sm" />
+                    </StatGroup>
+                  </CardContent>
+                </Card>
+                <Card tone="success">
+                  <CardHeader code="0x11" title="MRR" />
+                  <CardContent>
                     <div className={cn("text-foreground mb-2 text-3xl font-bold", mode.font)}>
                       $24,500
                     </div>
-                    <TerminalStatGroup>
-                      <TerminalStat label="Growth" value="+15%" size="sm" />
-                      <TerminalStat label="Churn" value="2.1%" size="sm" />
-                    </TerminalStatGroup>
-                  </TerminalCardContent>
-                </TerminalCard>
-                <TerminalCard tone="warning">
-                  <TerminalCardHeader code="0x12" title="SYSTEM" />
-                  <TerminalCardContent>
+                    <StatGroup>
+                      <Stat label="Growth" value="+15%" size="sm" />
+                      <Stat label="Churn" value="2.1%" size="sm" />
+                    </StatGroup>
+                  </CardContent>
+                </Card>
+                <Card tone="warning">
+                  <CardHeader code="0x12" title="SYSTEM" />
+                  <CardContent>
                     <div className={cn("text-foreground mb-2 text-3xl font-bold", mode.font)}>
                       99.9%
                     </div>
-                    <TerminalStatGroup>
-                      <TerminalStat label="Uptime" value="30d" size="sm" />
-                      <TerminalStat label="Latency" value="45ms" size="sm" />
-                    </TerminalStatGroup>
-                  </TerminalCardContent>
-                </TerminalCard>
+                    <StatGroup>
+                      <Stat label="Uptime" value="30d" size="sm" />
+                      <Stat label="Latency" value="45ms" size="sm" />
+                    </StatGroup>
+                  </CardContent>
+                </Card>
               </div>
             </div>
           </div>
@@ -294,9 +294,9 @@ export default function TemplateSnippetsPage() {
         {/* ============================================ */}
         <section className={cn("border-border border", mode.radius)}>
           <SectionHeader code="0x04" title="PRICING_CARDS" />
-          <div className="space-y-8 p-6">
+          <div className="space-y-6 p-6">
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [PRICING_GRID]:
               </p>
               <div className="grid gap-6 md:grid-cols-3">
@@ -327,13 +327,13 @@ export default function TemplateSnippetsPage() {
                     tone: "neutral" as const,
                   },
                 ].map((plan, i) => (
-                  <TerminalCard key={i} tone={plan.tone}>
-                    <TerminalCardHeader
+                  <Card key={i} tone={plan.tone}>
+                    <CardHeader
                       code={`0${i + 4}`}
                       title={plan.name}
                       meta={plan.popular ? <Badge>POPULAR</Badge> : undefined}
                     />
-                    <TerminalCardContent>
+                    <CardContent>
                       <div className={cn("text-foreground mb-1 text-3xl font-bold", mode.font)}>
                         {plan.price}
                         <span className={cn("text-muted-foreground text-sm font-normal", mode.font)}>
@@ -351,16 +351,16 @@ export default function TemplateSnippetsPage() {
                           </li>
                         ))}
                       </ul>
-                    </TerminalCardContent>
-                    <TerminalCardFooter>
+                    </CardContent>
+                    <CardFooter>
                       <Button
                         variant={plan.popular ? "default" : "outline"}
                         className="w-full"
                       >
                         &gt; {plan.cta}
                       </Button>
-                    </TerminalCardFooter>
-                  </TerminalCard>
+                    </CardFooter>
+                  </Card>
                 ))}
               </div>
             </div>
@@ -372,9 +372,9 @@ export default function TemplateSnippetsPage() {
         {/* ============================================ */}
         <section className={cn("border-border border", mode.radius)}>
           <SectionHeader code="0x05" title="TESTIMONIALS" />
-          <div className="space-y-8 p-6">
+          <div className="space-y-6 p-6">
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [TESTIMONIAL_GRID]:
               </p>
               <div className="grid gap-6 md:grid-cols-2">
@@ -392,8 +392,8 @@ export default function TemplateSnippetsPage() {
                     rating: 5,
                   },
                 ].map((testimonial, i) => (
-                  <TerminalCard key={i}>
-                    <TerminalCardContent>
+                  <Card key={i}>
+                    <CardContent>
                       <div className="mb-3 flex gap-1">
                         {Array.from({ length: testimonial.rating }).map((_, j) => (
                           <Star key={j} className="text-warning size-4 fill-current" />
@@ -410,8 +410,8 @@ export default function TemplateSnippetsPage() {
                           {testimonial.role}
                         </p>
                       </div>
-                    </TerminalCardContent>
-                  </TerminalCard>
+                    </CardContent>
+                  </Card>
                 ))}
               </div>
             </div>
@@ -423,10 +423,10 @@ export default function TemplateSnippetsPage() {
         {/* ============================================ */}
         <section className={cn("border-border border", mode.radius)}>
           <SectionHeader code="0x06" title="CTA_SECTIONS" />
-          <div className="space-y-8 p-6">
+          <div className="space-y-6 p-6">
             {/* Simple CTA */}
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [CTA_SIMPLE]:
               </p>
               <div
@@ -447,7 +447,7 @@ export default function TemplateSnippetsPage() {
 
             {/* Banner CTA */}
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [CTA_BANNER]:
               </p>
               <div
@@ -475,10 +475,10 @@ export default function TemplateSnippetsPage() {
         {/* ============================================ */}
         <section className={cn("border-border border", mode.radius)}>
           <SectionHeader code="0x07" title="LIST_PATTERNS" />
-          <div className="space-y-8 p-6">
+          <div className="space-y-6 p-6">
             {/* Docs List */}
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [DOCS_LIST]:
               </p>
               <div className="grid gap-4 md:grid-cols-2">
@@ -488,24 +488,24 @@ export default function TemplateSnippetsPage() {
                   { title: "Billing", desc: "Integrate Polar.sh subscriptions", href: "#" },
                   { title: "Database", desc: "Prisma setup and migrations", href: "#" },
                 ].map((doc, i) => (
-                  <TerminalCard key={i} interactive>
-                    <TerminalCardHeader code={`D${i + 1}`} title={doc.title} />
-                    <TerminalCardContent>
+                  <Card key={i} interactive>
+                    <CardHeader code={`D${i + 1}`} title={doc.title} />
+                    <CardContent>
                       <p className={cn("text-muted-foreground text-xs", mode.font)}>{doc.desc}</p>
-                    </TerminalCardContent>
-                  </TerminalCard>
+                    </CardContent>
+                  </Card>
                 ))}
               </div>
             </div>
 
             {/* Activity List */}
             <div>
-              <p className={cn("text-foreground mb-4 text-xs font-semibold", mode.font)}>
+              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
                 [ACTIVITY_LIST]:
               </p>
-              <TerminalCard>
-                <TerminalCardHeader code="0x20" title="RECENT_ACTIVITY" meta="5 items" />
-                <TerminalCardContent>
+              <Card>
+                <CardHeader code="0x20" title="RECENT_ACTIVITY" meta="5 items" />
+                <CardContent>
                   <div className="space-y-3">
                     {[
                       { action: "User signed up", time: "2 minutes ago", type: "success" },
@@ -529,8 +529,8 @@ export default function TemplateSnippetsPage() {
                       </div>
                     ))}
                   </div>
-                </TerminalCardContent>
-              </TerminalCard>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>

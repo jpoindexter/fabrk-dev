@@ -8,7 +8,7 @@
 
 import { motion } from "framer-motion";
 import { COMPONENT_STATS } from "./feature-data";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
 
@@ -29,22 +29,22 @@ export function StatsSection() {
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 className="group"
               >
-                <TerminalCard interactive className="flex h-full flex-col">
-                  <TerminalCardHeader
+                <Card interactive className="flex h-full flex-col">
+                  <CardHeader
                     code={`0x${hexId}`}
                     title="STAT"
                     icon={
                       <Icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
                     }
                   />
-                  <TerminalCardContent padding="md" className="flex-1">
+                  <CardContent padding="md" className="flex-1">
                     <div className={cn("text-foreground mb-2 text-2xl font-semibold", mode.font)}>{stat.value}</div>
                     <div className={cn("text-xs", mode.font)}>
                       <span className="text-muted-foreground">DESC: </span>
                       <span className="text-foreground">{stat.description}</span>
                     </div>
-                  </TerminalCardContent>
-                </TerminalCard>
+                  </CardContent>
+                </Card>
               </motion.div>
             );
           })}

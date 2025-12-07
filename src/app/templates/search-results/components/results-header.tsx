@@ -5,7 +5,7 @@
 
 import { Grid, List, SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -32,9 +32,9 @@ export function ResultsHeader({
   onViewModeChange,
 }: ResultsHeaderProps) {
   return (
-    <TerminalCard>
-      <TerminalCardHeader code="0x03" title="RESULTS" />
-      <TerminalCardContent padding="md">
+    <Card>
+      <CardHeader code="0x03" title="RESULTS" />
+      <CardContent padding="md">
         <div className="flex items-center justify-between">
           <div className={cn(mode.font, "text-muted-foreground text-xs")}>
             [SHOWING]: {resultsCount} results
@@ -71,7 +71,7 @@ export function ResultsHeader({
             </div>
           </div>
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

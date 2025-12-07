@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
-import { TerminalCard, TerminalCardContent, TerminalBadge } from "@/components/ui/card";
+import { Card, CardContent, Badge } from "@/components/ui/card";
 
 type FAQCategory = "general" | "technical" | "payment" | "license";
 
@@ -134,7 +134,7 @@ function FAQItem({ question, answer, index }: FAQItemProps) {
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
     >
-      <TerminalCard size="auto">
+      <Card size="auto">
         <button
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
@@ -153,12 +153,12 @@ function FAQItem({ question, answer, index }: FAQItemProps) {
           />
         </button>
         {isOpen && (
-          <TerminalCardContent className="border-border bg-muted/30 border-t">
+          <CardContent className="border-border bg-muted/30 border-t">
             <span className={cn("text-muted-foreground text-xs", mode.font)}>└─ [RESPONSE]: </span>
             <span className={cn("text-foreground text-xs", mode.font)}>{answer}</span>
-          </TerminalCardContent>
+          </CardContent>
         )}
-      </TerminalCard>
+      </Card>
     </motion.div>
   );
 }
@@ -179,7 +179,7 @@ export function FAQSection() {
           transition={{ duration: 0.6 }}
           className="mb-10"
         >
-          <TerminalBadge
+          <Badge
             code="0x60"
             label="KNOWLEDGE_BASE"
             meta="QUERY_SYSTEM │ FIB[13] ENTRIES"

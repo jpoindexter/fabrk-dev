@@ -3,7 +3,7 @@
  * Revenue Chart - Terminal-style bar chart
  */
 
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
@@ -26,9 +26,9 @@ export function RevenueChart({ data }: RevenueChartProps) {
   ).toFixed(1);
 
   return (
-    <TerminalCard className="lg:col-span-4">
-      <TerminalCardHeader code="0x00" title="REVENUE_CHART" />
-      <TerminalCardContent>
+    <Card className="lg:col-span-4">
+      <CardHeader code="0x00" title="REVENUE_CHART" />
+      <CardContent>
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [REVENUE_OVERVIEW]: PERIOD=6_MONTHS
         </div>
@@ -95,7 +95,7 @@ export function RevenueChart({ data }: RevenueChartProps) {
             <span className="text-success">+{growthRate}%</span>
           </div>
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

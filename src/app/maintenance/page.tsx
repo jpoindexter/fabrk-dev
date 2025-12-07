@@ -2,7 +2,7 @@ import { Wrench, Clock } from "lucide-react";
 import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Maintenance Mode",
@@ -72,9 +72,9 @@ export default function MaintenancePage() {
         </div>
 
         {/* What We're Doing */}
-        <TerminalCard size="auto" className="text-left">
-          <TerminalCardHeader code="0x00" title="CURRENT_TASKS" icon={<Wrench className="size-4" />} />
-          <TerminalCardContent padding="md">
+        <Card size="auto" className="text-left">
+          <CardHeader code="0x00" title="CURRENT_TASKS" icon={<Wrench className="size-4" />} />
+          <CardContent padding="md">
             <ul className={cn("space-y-2 text-xs text-muted-foreground", mode.font)}>
               <li className="flex items-start gap-3">
                 <span className="text-primary flex-shrink-0">├─</span>
@@ -89,8 +89,8 @@ export default function MaintenancePage() {
                 <span className="text-foreground">New features deployment</span>
               </li>
             </ul>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Support */}
         <div className="mt-12 border-t border-border pt-8">

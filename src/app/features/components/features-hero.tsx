@@ -10,10 +10,10 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
-  TerminalBadge,
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
+  Badge,
+  Card,
+  CardHeader,
+  CardContent,
 } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -30,7 +30,7 @@ export function FeaturesHero() {
             transition={{ duration: 0.5 }}
             className="mb-6"
           >
-            <TerminalBadge code="0x00" label="FEATURES" meta="COMPLETE_SAAS_TOOLKIT" />
+            <Badge code="0x00" label="FEATURES" meta="COMPLETE_SAAS_TOOLKIT" />
           </motion.div>
 
           <motion.div
@@ -51,9 +51,9 @@ export function FeaturesHero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mx-auto max-w-2xl text-left"
           >
-            <TerminalCard size="auto">
-              <TerminalCardHeader code="0x01" title="STATUS" />
-              <TerminalCardContent padding="md">
+            <Card size="auto">
+              <CardHeader code="0x01" title="STATUS" />
+              <CardContent padding="md">
                 <p className="text-muted-foreground mb-4 text-sm">
                   Stop rebuilding the same features for every project. Fabrk includes
                   authentication, payments, database, real-time, multi-tenancy, admin dashboard, and
@@ -69,8 +69,8 @@ export function FeaturesHero() {
                     <span className="text-primary">PRODUCTION_READY</span>
                   </span>
                 </div>
-              </TerminalCardContent>
-            </TerminalCard>
+              </CardContent>
+            </Card>
           </motion.div>
 
           <motion.div

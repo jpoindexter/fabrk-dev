@@ -6,7 +6,7 @@
 "use client";
 
 import React, { useState, useEffect, startTransition } from "react";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -101,53 +101,53 @@ export default function AdminSecurityPage() {
       {/* Summary Cards */}
       {summary && (
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          <TerminalCard tone="neutral">
-            <TerminalCardHeader
+          <Card tone="neutral">
+            <CardHeader
               code="0x01"
               title="TOTAL_EVENTS"
               meta="7d"
               icon={<Info className="h-4 w-4" />}
             />
-            <TerminalCardContent>
+            <CardContent>
               <div className="text-2xl font-semibold">{summary.totalEvents}</div>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
 
-          <TerminalCard tone="danger">
-            <TerminalCardHeader
+          <Card tone="danger">
+            <CardHeader
               code="0x02"
               title="CRITICAL"
               icon={<AlertTriangle className="h-4 w-4" />}
             />
-            <TerminalCardContent>
+            <CardContent>
               <div className="text-2xl font-semibold">{summary.bySeverity.critical || 0}</div>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
 
-          <TerminalCard tone="warning">
-            <TerminalCardHeader
+          <Card tone="warning">
+            <CardHeader
               code="0x03"
               title="HIGH"
               icon={<AlertTriangle className="h-4 w-4" />}
             />
-            <TerminalCardContent>
+            <CardContent>
               <div className="text-2xl font-semibold">{summary.bySeverity.high || 0}</div>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
 
-          <TerminalCard tone="neutral">
-            <TerminalCardHeader code="0x04" title="MEDIUM" icon={<Info className="h-4 w-4" />} />
-            <TerminalCardContent>
+          <Card tone="neutral">
+            <CardHeader code="0x04" title="MEDIUM" icon={<Info className="h-4 w-4" />} />
+            <CardContent>
               <div className="text-2xl font-semibold">{summary.bySeverity.medium || 0}</div>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
         </div>
       )}
 
       {/* Logs Table */}
-      <TerminalCard tone="neutral">
+      <Card tone="neutral">
         <div className="border-border flex items-center justify-between border-b px-4 py-2">
-          <TerminalCardHeader
+          <CardHeader
             code="0x05"
             title="RECENT_SECURITY_EVENTS"
             meta="Last 50 events"
@@ -167,7 +167,7 @@ export default function AdminSecurityPage() {
             </SelectContent>
           </Select>
         </div>
-        <TerminalCardContent>
+        <CardContent>
           <div className={cn("border", mode.radius)}>
             <Table>
               <TableHeader>
@@ -218,8 +218,8 @@ export default function AdminSecurityPage() {
               </TableBody>
             </Table>
           </div>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
     </div>
   );
 }

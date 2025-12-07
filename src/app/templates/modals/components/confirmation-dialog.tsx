@@ -4,7 +4,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader } from "@/components/ui/card";
+import { Card, CardHeader } from "@/components/ui/card";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,8 +22,8 @@ import { cn } from "@/lib/utils";
 
 export function ConfirmationDialog() {
   return (
-    <TerminalCard>
-      <TerminalCardHeader code="0x00" title="CONFIRMATION_DIALOG" />
+    <Card>
+      <CardHeader code="0x00" title="CONFIRMATION_DIALOG" />
       <div className="p-6">
         <div className="mb-4">
           <h3 className={cn(mode.font, "mb-1 font-semibold")}>Confirmation Dialog</h3>
@@ -73,6 +73,6 @@ export function ConfirmationDialog() {
           [USE_CASE]: Delete, logout, reset, irreversible actions
         </div>
       </div>
-    </TerminalCard>
+    </Card>
   );
 }

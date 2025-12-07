@@ -6,7 +6,7 @@
 import { Filter, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
@@ -44,9 +44,9 @@ export function FiltersSidebar({
 
   return (
     <div className="w-full shrink-0 space-y-4 md:w-64">
-      <TerminalCard>
-        <TerminalCardHeader code="0x00" title="FILTERS" icon={<Filter className="h-3 w-3" />} />
-        <TerminalCardContent padding="md">
+      <Card>
+        <CardHeader code="0x00" title="FILTERS" icon={<Filter className="h-3 w-3" />} />
+        <CardContent padding="md">
           <div className="space-y-4">
             {/* Filter Header */}
             <div className="flex items-center justify-between">
@@ -105,8 +105,8 @@ export function FiltersSidebar({
               </div>
             </div>
           </div>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
     </div>
   );
 }

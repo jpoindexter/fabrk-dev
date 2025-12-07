@@ -5,7 +5,7 @@
  */
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
 export function NavigationSection() {
   return (
@@ -16,9 +16,9 @@ export function NavigationSection() {
         <p className="text-muted-foreground text-xs">&gt; Tabs and navigation elements</p>
       </div>
 
-      <TerminalCard>
-        <TerminalCardHeader code="0x60" title="Tabs" meta="Tabbed navigation interface" />
-        <TerminalCardContent padding="md">
+      <Card>
+        <CardHeader code="0x60" title="Tabs" meta="Tabbed navigation interface" />
+        <CardContent padding="md">
           <Tabs defaultValue="tab1">
             <TabsList>
               <TabsTrigger value="tab1">Account</TabsTrigger>
@@ -42,8 +42,8 @@ export function NavigationSection() {
               <p className="text-muted-foreground text-sm">View and manage your billing details.</p>
             </TabsContent>
           </Tabs>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
     </section>
   );
 }

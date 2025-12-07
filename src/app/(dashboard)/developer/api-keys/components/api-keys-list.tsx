@@ -4,7 +4,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Key, Copy, Trash2, Loader2 } from "lucide-react";
 import { mode } from "@/design-system";
@@ -76,8 +76,8 @@ export function ApiKeysList({
 
   if (apiKeys.length === 0) {
     return (
-      <TerminalCard>
-        <TerminalCardContent className="space-y-4 pt-6 text-center">
+      <Card>
+        <CardContent className="space-y-4 pt-6 text-center">
           <Key className="text-muted-foreground mx-auto h-12 w-12" />
           <div>
             <h3 className="mb-1 font-semibold">No API keys yet</h3>
@@ -85,21 +85,21 @@ export function ApiKeysList({
               Create an API key to start making programmatic requests
             </p>
           </div>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
     );
   }
 
   return (
     <div className="space-y-4">
       {apiKeys.map((apiKey, index) => (
-        <TerminalCard key={apiKey.id}>
-          <TerminalCardHeader
+        <Card key={apiKey.id}>
+          <CardHeader
             code={`0x${index.toString(16).padStart(2, "0")}`}
             title={apiKey.name.toUpperCase().replace(/ /g, "_")}
             icon={<Key className="h-4 w-4" />}
           />
-          <TerminalCardContent>
+          <CardContent>
             <div className="mb-4 flex items-start justify-between">
               <div className="flex items-start gap-6">
                 <div>
@@ -161,8 +161,8 @@ export function ApiKeysList({
                 <Copy className="h-4 w-4" />
               </Button>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       ))}
     </div>
   );

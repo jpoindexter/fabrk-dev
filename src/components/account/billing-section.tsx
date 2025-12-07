@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { mode, formatLabel } from "@/design-system";
 import { cn } from "@/lib/utils";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
@@ -73,9 +73,9 @@ export function BillingSection() {
   };
 
   return (
-    <TerminalCard tone="neutral">
-      <TerminalCardHeader code="0x05" title="BILLING_AND_SUBSCRIPTION" />
-      <TerminalCardContent className="space-y-4">
+    <Card tone="neutral">
+      <CardHeader code="0x05" title="BILLING_AND_SUBSCRIPTION" />
+      <CardContent className="space-y-4">
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
@@ -112,7 +112,7 @@ export function BillingSection() {
             </p>
           </div>
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

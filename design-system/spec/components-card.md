@@ -14,36 +14,36 @@ The Card component system provides a unified API for all card-like UI patterns i
 ## Component Hierarchy
 
 ```
-TerminalCard (container)
-├── TerminalCardHeader (optional)
-├── TerminalCardContent (required for cards with body)
-└── TerminalCardFooter (optional)
+Card (container)
+├── CardHeader (optional)
+├── CardContent (required for cards with body)
+└── CardFooter (optional)
 
-TerminalBadge (standalone inline element, NOT a card)
+Badge (standalone inline element, NOT a card)
 ```
 
 ---
 
 ## Component API
 
-### TerminalCard
+### Card
 
-The canonical card component for the terminal design system.
+The canonical card component for the design system.
 
 ```tsx
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
-<TerminalCard>
-  <TerminalCardHeader
+<Card>
+  <CardHeader
     code="0x00"
     title="SECTION_TITLE"
     icon={<Icon className="size-4" />}
     meta="optional metadata"
   />
-  <TerminalCardContent>
+  <CardContent>
     {children}
-  </TerminalCardContent>
-</TerminalCard>
+  </CardContent>
+</Card>
 ```
 
 #### Props
@@ -66,7 +66,7 @@ import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/compone
 
 #### Subcomponents
 
-##### TerminalCardHeader
+##### CardHeader
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
@@ -75,7 +75,7 @@ import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/compone
 | `icon` | `ReactNode` | `undefined` | Icon displayed on right |
 | `meta` | `string \| ReactNode` | `undefined` | Additional metadata (e.g., "8 items") |
 
-##### TerminalCardContent
+##### CardContent
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
@@ -83,14 +83,14 @@ import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/compone
 
 ---
 
-### TerminalBadge
+### Badge
 
 Inline badge element for section headers and labels. **This is NOT a card.**
 
 ```tsx
-import { TerminalBadge } from "@/components/ui/card";
+import { Badge } from "@/components/ui/card";
 
-<TerminalBadge code="0x00" label="SYSTEM_INIT" meta="SAAS_BOILERPLATE_v2.0" />
+<Badge code="0x00" label="SYSTEM_INIT" meta="SAAS_BOILERPLATE_v2.0" />
 ```
 
 #### Props
@@ -106,16 +106,16 @@ import { TerminalBadge } from "@/components/ui/card";
 [ [0xXX] LABEL ] META
 ```
 
-#### When to Use TerminalBadge vs TerminalCard
+#### When to Use Badge vs Card
 
 | Use Case | Component |
 |----------|-----------|
-| Section header label | `TerminalBadge` |
-| Page section badge | `TerminalBadge` |
-| Trust/status indicator | `TerminalBadge` |
-| Feature card with content | `TerminalCard` |
-| Stat display | `TerminalCard` |
-| Accordion/expandable | `TerminalCard size="auto"` |
+| Section header label | `Badge` |
+| Page section badge | `Badge` |
+| Trust/status indicator | `Badge` |
+| Feature card with content | `Card` |
+| Stat display | `Card` |
+| Accordion/expandable | `Card size="auto"` |
 
 ---
 
@@ -233,16 +233,16 @@ borderColor: "border-destructive"
 ```tsx
 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
   {items.map((item, index) => (
-    <TerminalCard key={item.id} interactive>
-      <TerminalCardHeader
+    <Card key={item.id} interactive>
+      <CardHeader
         code={`0x${(index).toString(16).toUpperCase().padStart(2, '0')}`}
         title={item.title.toUpperCase().replace(/ /g, '_')}
         icon={<item.icon className="size-4" />}
       />
-      <TerminalCardContent withDesc>
+      <CardContent withDesc>
         {item.description}
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   ))}
 </div>
 ```
@@ -250,9 +250,9 @@ borderColor: "border-destructive"
 ### Feature List Card
 
 ```tsx
-<TerminalCard>
-  <TerminalCardHeader code="0x00" title="INCLUDED_FEATURES" meta={`${features.length} items`} />
-  <TerminalCardContent>
+<Card>
+  <CardHeader code="0x00" title="INCLUDED_FEATURES" meta={`${features.length} items`} />
+  <CardContent>
     <ul className="space-y-2">
       {features.map((feature, i) => (
         <li key={i} className="flex items-start gap-3 text-xs">
@@ -263,30 +263,30 @@ borderColor: "border-destructive"
         </li>
       ))}
     </ul>
-  </TerminalCardContent>
-</TerminalCard>
+  </CardContent>
+</Card>
 ```
 
 ### Metric/Stat Card
 
 ```tsx
-<TerminalCard>
-  <TerminalCardHeader code="0x50" title="METRIC_NAME" icon={<TrendingUp className="size-4" />} />
-  <TerminalCardContent>
+<Card>
+  <CardHeader code="0x50" title="METRIC_NAME" icon={<TrendingUp className="size-4" />} />
+  <CardContent>
     <div className="text-foreground mb-2 text-3xl font-semibold">85%</div>
     <div className="text-foreground mb-3 text-xs font-semibold">TEST_COVERAGE</div>
     <div className="text-xs">
       <span className="text-muted-foreground">DESC: </span>
       <span className="text-foreground">Core components covered</span>
     </div>
-  </TerminalCardContent>
-</TerminalCard>
+  </CardContent>
+</Card>
 ```
 
 ### Hero Status Card (Style A Exception)
 
 ```tsx
-// Hero cards use inline header pattern, NOT TerminalCard
+// Hero cards use inline header pattern, NOT Card component
 <div className="border-border bg-card mx-auto max-w-2xl border p-4 text-left">
   <div className="text-muted-foreground mb-4 text-xs">
     [ [0x01] STATUS ]────────────────────────
@@ -309,13 +309,13 @@ borderColor: "border-destructive"
 
 | Current Card | Migration Path |
 |--------------|----------------|
-| `Card` + inline styles | `TerminalCard` |
+| Legacy card + inline styles | `Card` |
 | `StyledCard` + `StyledCardHeader` | Already canonical |
-| `DocsCard` | Uses `TerminalCard` internally |
-| `KpiCard` | Add `TerminalCardHeader` |
-| `MemberCard` | Add `TerminalCardHeader` |
-| `OrgCard` | Add `TerminalCardHeader` |
-| Inline grid cards | Use `TerminalCard` |
+| `DocsCard` | Uses `Card` internally |
+| `KpiCard` | Add `CardHeader` |
+| `MemberCard` | Add `CardHeader` |
+| `OrgCard` | Add `CardHeader` |
+| Inline grid cards | Use `Card` |
 
 ---
 

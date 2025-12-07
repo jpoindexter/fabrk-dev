@@ -6,7 +6,7 @@
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
@@ -18,9 +18,9 @@ interface SearchBarProps {
 
 export function SearchBar({ searchQuery, onSearchChange, resultsCount }: SearchBarProps) {
   return (
-    <TerminalCard>
-      <TerminalCardHeader code="0x02" title="SEARCH" icon={<Search className="h-3 w-3" />} />
-      <TerminalCardContent padding="md">
+    <Card>
+      <CardHeader code="0x02" title="SEARCH" icon={<Search className="h-3 w-3" />} />
+      <CardContent padding="md">
         <div className="flex gap-2">
           <div className="relative flex-1">
             <Search className="text-muted-foreground pointer-events-none absolute top-1/2 left-3 z-10 h-4 w-4 -translate-y-1/2" />
@@ -36,7 +36,7 @@ export function SearchBar({ searchQuery, onSearchChange, resultsCount }: SearchB
         <div className={cn(mode.font, "text-muted-foreground mt-2 text-xs")}>
           [QUERY]: &quot;{searchQuery}&quot; | RESULTS: {resultsCount} | TIME: 0.042s
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

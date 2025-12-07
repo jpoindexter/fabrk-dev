@@ -18,7 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Send, CheckCircle2 } from "lucide-react";
 
 // Extend Window interface for dataLayer
@@ -88,12 +88,12 @@ export function ContactForm() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.1 }}
     >
-      <TerminalCard size="auto">
-        <TerminalCardHeader
+      <Card size="auto">
+        <CardHeader
           code="0x01"
           title="MESSAGE_COMPOSER"
         />
-        <TerminalCardContent padding="lg">
+        <CardContent padding="lg">
           <p className="text-muted-foreground mb-6 text-xs">
             &gt; Fill out the form below and we'll get back to you as soon as possible.
           </p>
@@ -215,8 +215,8 @@ export function ContactForm() {
               </Link>
             </p>
           </form>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
     </motion.div>
   );
 }

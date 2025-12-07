@@ -2,7 +2,7 @@
 
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { Skeleton } from "@/components/ui/skeleton";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
 export default function SkeletonPage() {
   return (
@@ -36,23 +36,23 @@ export default function SkeletonPage() {
           title: "Card Skeleton",
           description: "Full card loading state with header and content",
           preview: (
-            <TerminalCard className="w-[350px]">
-              <TerminalCardHeader code="0x00" title="LOADING" />
-              <TerminalCardContent className="space-y-2">
+            <Card className="w-[350px]">
+              <CardHeader code="0x00" title="LOADING" />
+              <CardContent className="space-y-2">
                 <Skeleton className="h-4 w-full" />
                 <Skeleton className="h-4 w-full" />
                 <Skeleton className="h-4 w-3/4" />
-              </TerminalCardContent>
-            </TerminalCard>
+              </CardContent>
+            </Card>
           ),
-          code: `<TerminalCard className="w-[350px]">
-  <TerminalCardHeader code="0x00" title="LOADING" />
-  <TerminalCardContent className="space-y-2">
+          code: `<Card className="w-[350px]">
+  <CardHeader code="0x00" title="LOADING" />
+  <CardContent className="space-y-2">
     <Skeleton className="h-4 w-full" />
     <Skeleton className="h-4 w-full" />
     <Skeleton className="h-4 w-3/4" />
-  </TerminalCardContent>
-</TerminalCard>`,
+  </CardContent>
+</Card>`,
         },
         {
           title: "Avatar Skeleton",
@@ -128,53 +128,53 @@ export default function SkeletonPage() {
           preview: (
             <div className="space-y-4">
               <div className="grid grid-cols-3 gap-4">
-                <TerminalCard>
-                  <TerminalCardContent className="space-y-2">
+                <Card>
+                  <CardContent className="space-y-2">
                     <Skeleton className="h-4 w-20" />
                     <Skeleton className="h-8 w-16" />
-                  </TerminalCardContent>
-                </TerminalCard>
-                <TerminalCard>
-                  <TerminalCardContent className="space-y-2">
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardContent className="space-y-2">
                     <Skeleton className="h-4 w-20" />
                     <Skeleton className="h-8 w-16" />
-                  </TerminalCardContent>
-                </TerminalCard>
-                <TerminalCard>
-                  <TerminalCardContent className="space-y-2">
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardContent className="space-y-2">
                     <Skeleton className="h-4 w-20" />
                     <Skeleton className="h-8 w-16" />
-                  </TerminalCardContent>
-                </TerminalCard>
+                  </CardContent>
+                </Card>
               </div>
-              <TerminalCard>
-                <TerminalCardHeader code="0x00" title="LOADING" />
-                <TerminalCardContent className="space-y-2">
+              <Card>
+                <CardHeader code="0x00" title="LOADING" />
+                <CardContent className="space-y-2">
                   <Skeleton className="h-4 w-full" />
                   <Skeleton className="h-4 w-full" />
                   <Skeleton className="h-4 w-3/4" />
-                </TerminalCardContent>
-              </TerminalCard>
+                </CardContent>
+              </Card>
             </div>
           ),
           code: `<div className="space-y-4">
   <div className="grid grid-cols-3 gap-4">
-    <TerminalCard>
-      <TerminalCardContent className="space-y-2">
+    <Card>
+      <CardContent className="space-y-2">
         <Skeleton className="h-4 w-20" />
         <Skeleton className="h-8 w-16" />
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
     {/* More stat cards... */}
   </div>
-  <TerminalCard>
-    <TerminalCardHeader code="0x00" title="LOADING" />
-    <TerminalCardContent className="space-y-2">
+  <Card>
+    <CardHeader code="0x00" title="LOADING" />
+    <CardContent className="space-y-2">
       <Skeleton className="h-4 w-full" />
       <Skeleton className="h-4 w-full" />
       <Skeleton className="h-4 w-3/4" />
-    </TerminalCardContent>
-  </TerminalCard>
+    </CardContent>
+  </Card>
 </div>`,
         },
       ]}

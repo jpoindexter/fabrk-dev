@@ -6,7 +6,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useInView } from "framer-motion";
-import { TerminalCard, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { PreviewHeader } from "./preview-header";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
@@ -55,10 +55,10 @@ export function AuthPreview() {
   }, [isInView]);
 
   return (
-    <TerminalCard ref={ref} className="w-full max-w-sm">
+    <Card ref={ref} className="w-full max-w-sm">
       <PreviewHeader title="auth_module.exe" animated />
 
-      <TerminalCardContent padding="lg">
+      <CardContent padding="lg">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>[AUTH_FORM]:</div>
 
         <div className="space-y-4">
@@ -144,7 +144,7 @@ export function AuthPreview() {
             </div>
           </div>
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

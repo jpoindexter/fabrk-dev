@@ -8,7 +8,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Copy, Key } from "lucide-react";
 import { LicenseCardProps } from "./purchase-status-types";
 
@@ -18,9 +18,9 @@ export function LicenseCard({ licenseKey, onCopyLicense, copiedLicense }: Licens
   if (!licenseKey) return null;
 
   return (
-    <TerminalCard tone="neutral">
-      <TerminalCardHeader code="0x02" title="LICENSE_KEY" icon={<Key className="h-4 w-4" />} />
-      <TerminalCardContent padding="md">
+    <Card tone="neutral">
+      <CardHeader code="0x02" title="LICENSE_KEY" icon={<Key className="h-4 w-4" />} />
+      <CardContent padding="md">
         <div className="space-y-4">
           <div className={cn("bg-muted dark:bg-muted p-6 text-sm", mode.font, mode.radius)}>
             {licenseKey}
@@ -43,7 +43,7 @@ export function LicenseCard({ licenseKey, onCopyLicense, copiedLicense }: Licens
             [NOTE]: Keep this key safe. You&apos;ll need it for future updates and support.
           </p>
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

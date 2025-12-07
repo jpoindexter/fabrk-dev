@@ -37,43 +37,41 @@ export const FormError = React.forwardRef<HTMLDivElement, FormErrorProps>(
         role="alert"
         aria-live="polite"
         className={cn(
-          "border-destructive/50 bg-destructive/15 border p-6",
+          "border-destructive/50 bg-destructive/15 border p-4",
           mode.radius,
-          "dark:border-destructive/50 dark:bg-destructive/15",
+          mode.font,
           className
         )}
       >
-        <div className={`flex gap-4`}>
-          <AlertCircle
-            className={`"h-5 w-5" text-destructive dark:text-destructive mt-0.5 shrink-0`}
-          />
-          <div className={`flex-1 space-y-2`}>
+        <div className="flex gap-3">
+          <AlertCircle className="text-destructive mt-0.5 size-4 shrink-0" />
+          <div className="flex-1 space-y-2">
             {/* What went wrong */}
-            <p className={`"text-sm" text-destructive dark:text-destructive font-medium`}>{what}</p>
+            <p className="text-destructive text-xs font-medium">{what}</p>
 
             {/* Why it happened */}
-            {why && <p className={`"text-sm" text-muted-foreground`}>{why}</p>}
+            {why && <p className="text-muted-foreground text-xs">{why}</p>}
 
             {/* How to fix it */}
             {how && (
-              <p className={`"text-sm" text-foreground`}>
-                <span className="font-medium">How to fix:</span> {how}
+              <p className="text-foreground text-xs">
+                <span className="font-semibold">How to fix:</span> {how}
               </p>
             )}
 
             {/* Actions */}
             {(onRetry || helpLink) && (
-              <div className={`flex gap-2 pt-2`}>
+              <div className="flex gap-2 pt-2">
                 {onRetry && (
-                  <Button size="sm" variant="outline" onClick={onRetry} className="h-7">
+                  <Button size="sm" variant="outline" onClick={onRetry} className="h-7 text-xs">
                     <RefreshCw className="mr-1 size-3" />
-                    Try Again
+                    &gt; RETRY
                   </Button>
                 )}
                 {helpLink && (
-                  <Button size="sm" variant="ghost" asChild className="h-7">
+                  <Button size="sm" variant="ghost" asChild className="h-7 text-xs">
                     <a href={helpLink} target="_blank" rel="noopener noreferrer">
-                      Learn More →
+                      &gt; LEARN_MORE
                     </a>
                   </Button>
                 )}

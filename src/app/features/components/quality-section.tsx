@@ -9,10 +9,10 @@
 import { motion } from "framer-motion";
 import { TestTube, Terminal, BookOpen } from "lucide-react";
 import {
-  TerminalBadge,
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
+  Badge,
+  Card,
+  CardHeader,
+  CardContent,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
@@ -29,7 +29,7 @@ export function QualitySection() {
           className="mb-12 text-center"
         >
           <div className="mb-4">
-            <TerminalBadge code="0x20" label="PRODUCTION_QUALITY" />
+            <Badge code="0x20" label="PRODUCTION_QUALITY" />
           </div>
           <h2 className={cn("mb-4 text-2xl font-semibold tracking-tight", mode.font)}>PRODUCTION_QUALITY</h2>
           <p className={cn("text-muted-foreground text-xs", mode.font)}>
@@ -68,22 +68,22 @@ export function QualitySection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group"
               >
-                <TerminalCard interactive className="flex h-full flex-col">
-                  <TerminalCardHeader
+                <Card interactive className="flex h-full flex-col">
+                  <CardHeader
                     code={item.id}
                     title="QUALITY"
                     icon={
                       <Icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
                     }
                   />
-                  <TerminalCardContent padding="md" className="flex-1">
+                  <CardContent padding="md" className="flex-1">
                     <div className={cn("text-foreground mb-3 text-xs font-semibold", mode.font)}>{item.title}</div>
                     <div className={cn("text-xs", mode.font)}>
                       <span className="text-muted-foreground">DESC: </span>
                       <span className="text-foreground">{item.desc}</span>
                     </div>
-                  </TerminalCardContent>
-                </TerminalCard>
+                  </CardContent>
+                </Card>
               </motion.div>
             );
           })}

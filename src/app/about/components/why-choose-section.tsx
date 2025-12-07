@@ -8,11 +8,13 @@
 import { motion } from "framer-motion";
 import { Clock, Shield, Layers, Gift, type LucideIcon } from "lucide-react";
 import {
-  TerminalBadge,
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
+  Badge,
+  Card,
+  CardHeader,
+  CardContent,
 } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { mode } from "@/design-system";
 
 interface Reason {
   id: string;
@@ -64,8 +66,8 @@ export function WhyChooseSection() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <TerminalBadge code="0x05" label="WHY_FABRK" className="mb-4" />
-              <h2 className="mb-4 text-2xl font-semibold lg:text-4xl">WHY_CHOOSE_FABRK</h2>
+              <Badge code="0x05" label="WHY_FABRK" className="mb-4" />
+              <h2 className={cn("mb-4 text-2xl font-semibold lg:text-4xl", mode.font)}>WHY_CHOOSE_FABRK</h2>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 12 }}
@@ -73,7 +75,7 @@ export function WhyChooseSection() {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <p className="text-muted-foreground text-sm">
+              <p className={cn("text-muted-foreground text-sm", mode.font)}>
                 We're not just selling code, we're selling time
               </p>
             </motion.div>
@@ -97,21 +99,21 @@ export function WhyChooseSection() {
                 }}
                 className="group"
               >
-                <TerminalCard interactive size="auto">
-                  <TerminalCardHeader
+                <Card interactive size="auto">
+                  <CardHeader
                     code={item.id}
                     title={item.title.slice(0, 12)}
                     icon={
                       <item.icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
                     }
                   />
-                  <TerminalCardContent padding="md">
-                    <div className="font-mono text-xs">
-                      <span className="text-muted-foreground">DESC: </span>
+                  <CardContent padding="md">
+                    <div className={cn("text-xs", mode.font)}>
+                      <span className="text-muted-foreground">[DESC]: </span>
                       <span className="text-foreground">{item.description}</span>
                     </div>
-                  </TerminalCardContent>
-                </TerminalCard>
+                  </CardContent>
+                </Card>
               </motion.div>
             ))}
           </div>

@@ -1,6 +1,6 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { TerminalCard, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Palette, Sun, Moon, Sparkles } from "lucide-react";
 
 export const metadata = {
@@ -163,12 +163,12 @@ const themes = [
             { name: "Autumn", desc: "Fall warmth", color: "#8c0327" },
             { name: "Business", desc: "Professional", color: "#1c4e80" },
           ].map((theme) => (
-            <TerminalCard
+            <Card
               key={theme.name}
               interactive
               className="hover:border-primary/50 transition-all"
             >
-              <TerminalCardContent padding="sm" className="p-4">
+              <CardContent padding="sm" className="p-4">
                 <div className="flex items-center gap-2">
                   <div
                     className="border-border h-6 w-6 rounded-none border-2"
@@ -179,8 +179,8 @@ const themes = [
                     <div className="text-muted-foreground font-mono text-xs">{theme.desc}</div>
                   </div>
                 </div>
-              </TerminalCardContent>
-            </TerminalCard>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </DocsSection>

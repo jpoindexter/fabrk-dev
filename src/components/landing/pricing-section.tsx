@@ -12,13 +12,13 @@ import { PolarCheckoutButton } from "@/components/polar/checkout-button";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
+  Card,
+  CardHeader,
+  CardContent,
   FeatureItem,
   FeatureList,
   InfoNote,
-  TerminalBadge,
+  Badge,
 } from "@/components/ui/card";
 
 export function PricingSection() {
@@ -44,7 +44,7 @@ export function PricingSection() {
             transition={{ duration: 0.6 }}
             className="flex flex-col justify-center"
           >
-            <TerminalBadge
+            <Badge
               code="0x40"
               label="PRICING"
               meta="COMMERCIAL_TIER │ FIB[144]"
@@ -65,14 +65,14 @@ export function PricingSection() {
               </p>
             </div>
 
-            <TerminalCard size="auto">
-              <TerminalCardContent padding="sm">
+            <Card size="auto">
+              <CardContent padding="sm">
                 <InfoNote label="NOTE" className="mt-0">
                   Fabrk is 40-70% more affordable than comparable Next.js starter kits. No hidden
                   charges.
                 </InfoNote>
-              </TerminalCardContent>
-            </TerminalCard>
+              </CardContent>
+            </Card>
           </motion.div>
 
           {/* Right Column - Pricing Card */}
@@ -83,21 +83,21 @@ export function PricingSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             {/* Terminal Card */}
-            <TerminalCard size="auto">
-              <TerminalCardHeader
+            <Card size="auto">
+              <CardHeader
                 code="0x41"
                 title="PRICING_CONFIG"
                 meta="pricing_config.exe │ PID:3142"
               />
-              <TerminalCardContent padding="lg">
+              <CardContent padding="lg">
                 {/* Discount Badge */}
                 <div className="mb-6">
                   <DiscountCounter />
                 </div>
 
                 {/* Price Display */}
-                <TerminalCard size="auto" className="mb-6">
-                  <TerminalCardContent padding="sm">
+                <Card size="auto" className="mb-6">
+                  <CardContent padding="sm">
                     <div className={cn("text-muted-foreground mb-2 text-xs", mode.font)}>
                       PRICE:
                     </div>
@@ -113,8 +113,8 @@ export function PricingSection() {
                     <div className={cn("text-muted-foreground mt-2 text-xs", mode.font)}>
                       TERMS: SINGLE_PAYMENT
                     </div>
-                  </TerminalCardContent>
-                </TerminalCard>
+                  </CardContent>
+                </Card>
 
                 {/* Features List */}
                 <div className="mb-6">
@@ -140,8 +140,8 @@ export function PricingSection() {
                 <PolarCheckoutButton className={cn("w-full text-xs", mode.radius, mode.font)}>
                   &gt; GET_LIFETIME_ACCESS
                 </PolarCheckoutButton>
-              </TerminalCardContent>
-            </TerminalCard>
+              </CardContent>
+            </Card>
 
             {/* Trust Badge */}
             <motion.div
@@ -151,7 +151,7 @@ export function PricingSection() {
               viewport={{ once: true }}
               className="mt-4"
             >
-              <TerminalBadge
+              <Badge
                 code="0x42"
                 label="SECURE"
                 meta="Checkout powered by Polar │ All sales final"

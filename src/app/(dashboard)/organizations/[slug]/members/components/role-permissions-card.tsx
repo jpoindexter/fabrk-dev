@@ -6,18 +6,18 @@
 "use client";
 
 import { Crown, Shield, UserCheck, UserX, Info } from "lucide-react";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 export function RolePermissionsCard() {
   return (
-    <TerminalCard>
-      <TerminalCardHeader
+    <Card>
+      <CardHeader
         code="0x02"
         title="ROLE_PERMISSIONS"
         icon={<Info className="h-4 w-4" />}
       />
-      <TerminalCardContent padding="lg">
+      <CardContent padding="lg">
         <div className="grid gap-4 md:grid-cols-2">
           <div className="border-border bg-card rounded-none border p-4">
             <div className="mb-2 flex items-center gap-2">
@@ -56,7 +56,7 @@ export function RolePermissionsCard() {
             </p>
           </div>
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

@@ -4,9 +4,9 @@
  */
 
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
+  Card,
+  CardHeader,
+  CardContent,
   StyledLabel,
   FeatureItem,
   FeatureList,
@@ -15,9 +15,9 @@ import {
 
 export function FeaturesCard() {
   return (
-    <TerminalCard>
-      <TerminalCardHeader code="0x00" title="TEMPLATE_FEATURES" />
-      <TerminalCardContent>
+    <Card>
+      <CardHeader code="0x00" title="TEMPLATE_FEATURES" />
+      <CardContent>
         <StyledLabel className="mb-4">TEMPLATE_FEATURES</StyledLabel>
         <FeatureList>
           <FeatureItem>Confirmation dialog for destructive actions</FeatureItem>
@@ -28,7 +28,7 @@ export function FeaturesCard() {
           <FeatureItem>Terminal-styled headers and labels</FeatureItem>
         </FeatureList>
         <InfoNote>All patterns use Radix UI primitives for accessibility.</InfoNote>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

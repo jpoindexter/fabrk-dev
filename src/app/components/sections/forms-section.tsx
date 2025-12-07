@@ -17,7 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { formatLabel } from "@/design-system";
 
@@ -32,13 +32,13 @@ export function FormsSection() {
         </p>
       </div>
 
-      <TerminalCard>
-        <TerminalCardHeader
+      <Card>
+        <CardHeader
           code="0x20"
           title="Input_Fields"
           meta="Text inputs with different types"
         />
-        <TerminalCardContent padding="md" className="max-w-md space-y-4">
+        <CardContent padding="md" className="max-w-md space-y-4">
           <div className="space-y-2">
             <Label htmlFor="text">{formatLabel("Text Input")}</Label>
             <Input id="text" placeholder="Enter text..." />
@@ -55,20 +55,20 @@ export function FormsSection() {
             <Label htmlFor="disabled">{formatLabel("Disabled")}</Label>
             <Input id="disabled" placeholder="Disabled input" disabled />
           </div>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
 
-      <TerminalCard>
-        <TerminalCardHeader code="0x21" title="Textarea" meta="Multi-line text input" />
-        <TerminalCardContent padding="md" className="max-w-md space-y-2">
+      <Card>
+        <CardHeader code="0x21" title="Textarea" meta="Multi-line text input" />
+        <CardContent padding="md" className="max-w-md space-y-2">
           <Label htmlFor="message-textarea">{formatLabel("Message")}</Label>
           <Textarea id="message-textarea" placeholder="Type your message here..." rows={4} />
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
 
-      <TerminalCard>
-        <TerminalCardHeader code="0x22" title="Select" meta="Dropdown selection" />
-        <TerminalCardContent padding="md" className="max-w-md space-y-2">
+      <Card>
+        <CardHeader code="0x22" title="Select" meta="Dropdown selection" />
+        <CardContent padding="md" className="max-w-md space-y-2">
           <Label htmlFor="select-option">{formatLabel("Select Option")}</Label>
           <Select>
             <SelectTrigger id="select-option" aria-label="Select an option">
@@ -80,12 +80,12 @@ export function FormsSection() {
               <SelectItem value="option3">Option 3</SelectItem>
             </SelectContent>
           </Select>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
 
-      <TerminalCard>
-        <TerminalCardHeader code="0x23" title="Checkbox_And_Radio" meta="Selection controls" />
-        <TerminalCardContent padding="md" className="space-y-4">
+      <Card>
+        <CardHeader code="0x23" title="Checkbox_And_Radio" meta="Selection controls" />
+        <CardContent padding="md" className="space-y-4">
           <div className="flex items-center space-x-2">
             <Checkbox id="terms" aria-label="Accept terms and conditions" />
             <Label htmlFor="terms">{formatLabel("Accept terms")}</Label>
@@ -107,12 +107,12 @@ export function FormsSection() {
               <Label htmlFor="option3">{formatLabel("Option 3")}</Label>
             </div>
           </RadioGroup>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
 
-      <TerminalCard>
-        <TerminalCardHeader code="0x24" title="Switch" meta="Toggle control" />
-        <TerminalCardContent padding="md" className="space-y-4">
+      <Card>
+        <CardHeader code="0x24" title="Switch" meta="Toggle control" />
+        <CardContent padding="md" className="space-y-4">
           <div className="flex items-center space-x-2">
             <Switch id="switch1" aria-label="Enable notifications" />
             <Label htmlFor="switch1">{formatLabel("Enable notifications")}</Label>
@@ -121,8 +121,8 @@ export function FormsSection() {
             <Switch id="switch2" defaultChecked aria-label="Auto-save enabled" />
             <Label htmlFor="switch2">{formatLabel("Auto-save enabled")}</Label>
           </div>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
     </section>
   );
 }

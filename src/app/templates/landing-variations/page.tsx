@@ -12,9 +12,9 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
+  Card,
+  CardHeader,
+  CardContent,
   TemplatePageHeader,
   FeaturesCard,
 } from "@/components/ui/card";
@@ -88,9 +88,9 @@ export default function LandingVariationsTemplate() {
           {/* Hero Previews */}
           {/* Centered Hero */}
           <StyledTabsContent value="centered">
-            <TerminalCard>
-              <TerminalCardHeader code="0x01" title="HERO_CENTERED" />
-              <TerminalCardContent padding="lg">
+            <Card>
+              <CardHeader code="0x01" title="HERO_CENTERED" />
+              <CardContent padding="lg">
                 <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
                   <div className="mx-auto max-w-3xl space-y-6 text-center">
                     <Badge variant="secondary" className={cn(mode.radius, mode.font, "text-xs")}>
@@ -143,15 +143,15 @@ export default function LandingVariationsTemplate() {
                     </div>
                   </div>
                 </div>
-              </TerminalCardContent>
-            </TerminalCard>
+              </CardContent>
+            </Card>
           </StyledTabsContent>
 
           {/* Split Hero */}
           <StyledTabsContent value="split">
-            <TerminalCard>
-              <TerminalCardHeader code="0x02" title="HERO_SPLIT" />
-              <TerminalCardContent padding="lg">
+            <Card>
+              <CardHeader code="0x02" title="HERO_SPLIT" />
+              <CardContent padding="lg">
                 <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
                   <div className="grid items-center gap-12 md:grid-cols-2">
                     <div className="space-y-6">
@@ -204,15 +204,15 @@ export default function LandingVariationsTemplate() {
                     </div>
                   </div>
                 </div>
-              </TerminalCardContent>
-            </TerminalCard>
+              </CardContent>
+            </Card>
           </StyledTabsContent>
 
           {/* Minimal Hero */}
           <StyledTabsContent value="minimal">
-            <TerminalCard>
-              <TerminalCardHeader code="0x03" title="HERO_MINIMAL" />
-              <TerminalCardContent padding="lg">
+            <Card>
+              <CardHeader code="0x03" title="HERO_MINIMAL" />
+              <CardContent padding="lg">
                 <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
                   <div className="mx-auto max-w-2xl space-y-8">
                     <div className="space-y-4 text-center">
@@ -265,15 +265,15 @@ export default function LandingVariationsTemplate() {
                     </div>
                   </div>
                 </div>
-              </TerminalCardContent>
-            </TerminalCard>
+              </CardContent>
+            </Card>
           </StyledTabsContent>
         </StyledTabs>
 
         {/* Quick Reference Grid */}
         <div className="grid gap-6 md:grid-cols-3">
           {heroVariations.map((variation, idx) => (
-            <TerminalCard
+            <Card
               key={variation.id}
               role="button"
               tabIndex={0}
@@ -283,8 +283,8 @@ export default function LandingVariationsTemplate() {
               onClick={() => setActiveVariation(variation.id)}
               onKeyDown={(e) => e.key === "Enter" && setActiveVariation(variation.id)}
             >
-              <TerminalCardHeader code={`0x0${idx + 4}`} title={variation.id.toUpperCase()} />
-              <TerminalCardContent padding="md">
+              <CardHeader code={`0x0${idx + 4}`} title={variation.id.toUpperCase()} />
+              <CardContent padding="md">
                 <h3 className={cn(mode.font, "mb-1 font-semibold")}>{variation.name}</h3>
                 <p className={cn(mode.font, "text-muted-foreground text-xs")}>
                   {variation.description}
@@ -294,8 +294,8 @@ export default function LandingVariationsTemplate() {
                   {variation.id === "split" && "Feature showcases, B2B"}
                   {variation.id === "minimal" && "Waitlists, early stage"}
                 </div>
-              </TerminalCardContent>
-            </TerminalCard>
+              </CardContent>
+            </Card>
           ))}
         </div>
 

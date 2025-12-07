@@ -14,9 +14,9 @@ import { Calendar, Clock, ChevronLeft, ChevronRight, ArrowRight, User } from "lu
 import { InputSearch } from "@/components/ui/input-search";
 import Link from "next/link";
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
+  Card,
+  CardHeader,
+  CardContent,
   TemplatePageHeader,
   FeaturesCard,
 } from "@/components/ui/card";
@@ -128,10 +128,10 @@ export default function BlogTemplate() {
 
         {/* Featured Post */}
         {featuredPost && activeCategory === "all" && (
-          <TerminalCard>
-            <TerminalCardHeader code="0x00" title="FEATURED_POST" />
+          <Card>
+            <CardHeader code="0x00" title="FEATURED_POST" />
 
-            <TerminalCardContent padding="lg">
+            <CardContent padding="lg">
               <div className="grid gap-6 md:grid-cols-2">
                 {/* Image Placeholder */}
                 <div className="border-border bg-muted/30 flex aspect-video items-center justify-center border">
@@ -196,8 +196,8 @@ export default function BlogTemplate() {
                   </Button>
                 </div>
               </div>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
         )}
 
         {/* Category Filters + Search - Industry standard horizontal layout */}
@@ -233,8 +233,8 @@ export default function BlogTemplate() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {regularPosts.map((post) => (
             <Link key={post.id} href="/templates/blog/post">
-              <TerminalCard interactive className="group">
-                <TerminalCardHeader code={`0x0${post.id}`} title={`POST_${post.id}`} />
+              <Card interactive className="group">
+                <CardHeader code={`0x0${post.id}`} title={`POST_${post.id}`} />
 
                 {/* Image Placeholder */}
                 <div className="border-border bg-muted/30 flex aspect-video items-center justify-center border-b">
@@ -284,15 +284,15 @@ export default function BlogTemplate() {
                     </div>
                   </div>
                 </div>
-              </TerminalCard>
+              </Card>
             </Link>
           ))}
         </div>
 
         {/* Pagination */}
-        <TerminalCard>
-          <TerminalCardHeader code="0x0A" title="PAGINATION" />
-          <TerminalCardContent padding="md">
+        <Card>
+          <CardHeader code="0x0A" title="PAGINATION" />
+          <CardContent padding="md">
             <div className="flex items-center justify-between">
               <div className={cn(mode.font, "text-muted-foreground text-xs")}>
                 [PAGE]: {currentPage} OF 3 | SHOWING {regularPosts.length} POSTS
@@ -333,8 +333,8 @@ export default function BlogTemplate() {
                 </Button>
               </div>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Features Card */}
         <FeaturesCard

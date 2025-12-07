@@ -4,7 +4,7 @@
  */
 
 import { Activity } from "lucide-react";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import type { Usage } from "./types";
 
@@ -14,13 +14,13 @@ interface UsageStatsCardProps {
 
 export function UsageStatsCard({ usage }: UsageStatsCardProps) {
   return (
-    <TerminalCard>
-      <TerminalCardHeader
+    <Card>
+      <CardHeader
         code="0x01"
         title="USAGE_THIS_MONTH"
         icon={<Activity className="h-4 w-4" />}
       />
-      <TerminalCardContent padding="lg">
+      <CardContent padding="lg">
         <div className="space-y-6">
           <div>
             <div className="mb-2 flex items-center justify-between">
@@ -55,7 +55,7 @@ export function UsageStatsCard({ usage }: UsageStatsCardProps) {
             />
           </div>
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

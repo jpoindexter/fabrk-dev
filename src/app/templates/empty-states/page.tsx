@@ -8,9 +8,9 @@
 
 import { Button } from "@/components/ui/button";
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
+  Card,
+  CardHeader,
+  CardContent,
   TemplatePageHeader,
   FeaturesCard,
 } from "@/components/ui/card";
@@ -135,8 +135,8 @@ export default function EmptyStatesTemplate() {
           {emptyStates.map((state, index) => {
             const Icon = state.icon;
             return (
-              <TerminalCard key={state.id} className="flex flex-col">
-                <TerminalCardHeader
+              <Card key={state.id} className="flex flex-col">
+                <CardHeader
                   code={`0x0${index}`}
                   title={state.id.toUpperCase().replace(/-/g, "_")}
                 />
@@ -168,9 +168,9 @@ export default function EmptyStatesTemplate() {
                     </div>
 
                     {/* Terminal Output */}
-                    <TerminalCard className="mt-4">
-                      <TerminalCardHeader code="0x00" title="OUTPUT" />
-                      <TerminalCardContent>
+                    <Card className="mt-4">
+                      <CardHeader code="0x00" title="OUTPUT" />
+                      <CardContent>
                         <div className="space-y-0.5 text-xs">
                           {state.terminal.map((line, idx) => (
                             <div
@@ -189,8 +189,8 @@ export default function EmptyStatesTemplate() {
                             </div>
                           ))}
                         </div>
-                      </TerminalCardContent>
-                    </TerminalCard>
+                      </CardContent>
+                    </Card>
 
                     {/* Actions - pushed to bottom */}
                     <div className="mt-auto flex items-center justify-center gap-2 pt-4">
@@ -210,14 +210,14 @@ export default function EmptyStatesTemplate() {
                     </div>
                   </div>
                 </div>
-              </TerminalCard>
+              </Card>
             );
           })}
         </div>
 
         {/* Use Cases Reference */}
-        <TerminalCard>
-          <TerminalCardHeader code="0x08" title="USE_CASES" />
+        <Card>
+          <CardHeader code="0x08" title="USE_CASES" />
           <div className="p-4">
             <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
               [WHEN_TO_USE]:
@@ -247,7 +247,7 @@ export default function EmptyStatesTemplate() {
               </div>
             </div>
           </div>
-        </TerminalCard>
+        </Card>
 
         {/* Features Card */}
         <FeaturesCard

@@ -6,7 +6,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -66,9 +66,9 @@ export function MembersTable({ members }: MembersTableProps) {
   };
 
   return (
-    <TerminalCard size="auto">
-      <TerminalCardHeader code="0x05" title="TEAM_MEMBERS" icon={<Users className="h-4 w-4" />} />
-      <TerminalCardContent>
+    <Card size="auto">
+      <CardHeader code="0x05" title="TEAM_MEMBERS" icon={<Users className="h-4 w-4" />} />
+      <CardContent>
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [TEAM_MEMBERS]: COUNT={members.length}
         </div>
@@ -212,7 +212,7 @@ export function MembersTable({ members }: MembersTableProps) {
             </tbody>
           </table>
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

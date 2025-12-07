@@ -2,10 +2,10 @@
 
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
-  TerminalCardFooter,
+  Card,
+  CardHeader,
+  CardContent,
+  CardFooter,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Settings } from "lucide-react";
@@ -14,185 +14,185 @@ export default function CardPage() {
   return (
     <ComponentShowcaseTemplate
       code="[UI.10]"
-      title="TerminalCard"
+      title="Card"
       description="Terminal-styled card component with header code prefix, optional icons, and flexible content areas. Uses the [ [0xXX] TITLE ] pattern for consistency."
-      importCode={`import { TerminalCard, TerminalCardHeader, TerminalCardContent, TerminalCardFooter } from "@/components/ui/card";`}
+      importCode={`import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card";`}
       mainPreview={{
         preview: (
-          <TerminalCard className="w-[350px]">
-            <TerminalCardHeader code="0x00" title="CARD_TITLE" meta="Card description" />
-            <TerminalCardContent>
+          <Card className="w-[350px]">
+            <CardHeader code="0x00" title="CARD_TITLE" meta="Card description" />
+            <CardContent>
               <p className="text-sm">
                 This is the card content area where you can place any content.
               </p>
-            </TerminalCardContent>
-            <TerminalCardFooter>
+            </CardContent>
+            <CardFooter>
               <Button variant="outline">&gt; ACTION</Button>
-            </TerminalCardFooter>
-          </TerminalCard>
+            </CardFooter>
+          </Card>
         ),
-        code: `<TerminalCard className="w-[350px]">
-  <TerminalCardHeader code="0x00" title="CARD_TITLE" meta="Card description" />
-  <TerminalCardContent>
+        code: `<Card className="w-[350px]">
+  <CardHeader code="0x00" title="CARD_TITLE" meta="Card description" />
+  <CardContent>
     <p className="text-sm">This is the card content area where you can place any content.</p>
-  </TerminalCardContent>
-  <TerminalCardFooter>
+  </CardContent>
+  <CardFooter>
     <Button variant="outline">&gt; ACTION</Button>
-  </TerminalCardFooter>
-</TerminalCard>`,
+  </CardFooter>
+</Card>`,
       }}
       variants={[
         {
           title: "Simple Card",
           description: "A minimal card with just content",
           preview: (
-            <TerminalCard className="w-[350px]">
-              <TerminalCardContent>
+            <Card className="w-[350px]">
+              <CardContent>
                 <p className="text-sm">Simple card with just content, no header or footer.</p>
-              </TerminalCardContent>
-            </TerminalCard>
+              </CardContent>
+            </Card>
           ),
-          code: `<TerminalCard className="w-[350px]">
-  <TerminalCardContent>
+          code: `<Card className="w-[350px]">
+  <CardContent>
     <p className="text-sm">Simple card with just content, no header or footer.</p>
-  </TerminalCardContent>
-</TerminalCard>`,
+  </CardContent>
+</Card>`,
         },
         {
           title: "Card with Icon",
           description: "Card with icon in header",
           preview: (
-            <TerminalCard className="w-[350px]">
-              <TerminalCardHeader
+            <Card className="w-[350px]">
+              <CardHeader
                 code="0x01"
                 title="SETTINGS"
                 icon={<Settings className="h-4 w-4" />}
               />
-              <TerminalCardContent>
+              <CardContent>
                 <p className="text-sm">Card with icon in the header area.</p>
-              </TerminalCardContent>
-            </TerminalCard>
+              </CardContent>
+            </Card>
           ),
-          code: `<TerminalCard className="w-[350px]">
-  <TerminalCardHeader
+          code: `<Card className="w-[350px]">
+  <CardHeader
     code="0x01"
     title="SETTINGS"
     icon={<Settings className="h-4 w-4" />}
   />
-  <TerminalCardContent>
+  <CardContent>
     <p className="text-sm">Card with icon in the header area.</p>
-  </TerminalCardContent>
-</TerminalCard>`,
+  </CardContent>
+</Card>`,
         },
         {
           title: "Card with Footer",
           description: "Card with action buttons in footer",
           preview: (
-            <TerminalCard className="w-[350px]">
-              <TerminalCardHeader code="0x02" title="CONFIRM_ACTION" meta="Are you sure?" />
-              <TerminalCardFooter>
+            <Card className="w-[350px]">
+              <CardHeader code="0x02" title="CONFIRM_ACTION" meta="Are you sure?" />
+              <CardFooter>
                 <Button variant="outline">&gt; CANCEL</Button>
                 <Button>&gt; CONFIRM</Button>
-              </TerminalCardFooter>
-            </TerminalCard>
+              </CardFooter>
+            </Card>
           ),
-          code: `<TerminalCard className="w-[350px]">
-  <TerminalCardHeader code="0x02" title="CONFIRM_ACTION" meta="Are you sure?" />
-  <TerminalCardFooter>
+          code: `<Card className="w-[350px]">
+  <CardHeader code="0x02" title="CONFIRM_ACTION" meta="Are you sure?" />
+  <CardFooter>
     <Button variant="outline">&gt; CANCEL</Button>
     <Button>&gt; CONFIRM</Button>
-  </TerminalCardFooter>
-</TerminalCard>`,
+  </CardFooter>
+</Card>`,
         },
         {
           title: "Interactive Card",
           description: "Card with hover effects for clickable content",
           preview: (
-            <TerminalCard className="w-[350px]" interactive>
-              <TerminalCardHeader code="0x03" title="INTERACTIVE_CARD" meta="Click or hover" />
-              <TerminalCardContent>
+            <Card className="w-[350px]" interactive>
+              <CardHeader code="0x03" title="INTERACTIVE_CARD" meta="Click or hover" />
+              <CardContent>
                 <p className="text-sm">This card has hover effects with the interactive prop.</p>
-              </TerminalCardContent>
-            </TerminalCard>
+              </CardContent>
+            </Card>
           ),
-          code: `<TerminalCard className="w-[350px]" interactive>
-  <TerminalCardHeader code="0x03" title="INTERACTIVE_CARD" meta="Click or hover" />
-  <TerminalCardContent>
+          code: `<Card className="w-[350px]" interactive>
+  <CardHeader code="0x03" title="INTERACTIVE_CARD" meta="Click or hover" />
+  <CardContent>
     <p className="text-sm">This card has hover effects with the interactive prop.</p>
-  </TerminalCardContent>
-</TerminalCard>`,
+  </CardContent>
+</Card>`,
         },
         {
           title: "Card Tones",
           description: "Cards with different tone variants",
           preview: (
             <div className="grid gap-4">
-              <TerminalCard tone="primary" className="w-[350px]">
-                <TerminalCardHeader code="0x04" title="PRIMARY_TONE" />
-                <TerminalCardContent>
+              <Card tone="primary" className="w-[350px]">
+                <CardHeader code="0x04" title="PRIMARY_TONE" />
+                <CardContent>
                   <p className="text-sm">Card with primary border tone.</p>
-                </TerminalCardContent>
-              </TerminalCard>
-              <TerminalCard tone="success" className="w-[350px]">
-                <TerminalCardHeader code="0x05" title="SUCCESS_TONE" />
-                <TerminalCardContent>
+                </CardContent>
+              </Card>
+              <Card tone="success" className="w-[350px]">
+                <CardHeader code="0x05" title="SUCCESS_TONE" />
+                <CardContent>
                   <p className="text-sm">Card with success border tone.</p>
-                </TerminalCardContent>
-              </TerminalCard>
-              <TerminalCard tone="warning" className="w-[350px]">
-                <TerminalCardHeader code="0x06" title="WARNING_TONE" />
-                <TerminalCardContent>
+                </CardContent>
+              </Card>
+              <Card tone="warning" className="w-[350px]">
+                <CardHeader code="0x06" title="WARNING_TONE" />
+                <CardContent>
                   <p className="text-sm">Card with warning border tone.</p>
-                </TerminalCardContent>
-              </TerminalCard>
+                </CardContent>
+              </Card>
             </div>
           ),
-          code: `<TerminalCard tone="primary">
-  <TerminalCardHeader code="0x04" title="PRIMARY_TONE" />
-  <TerminalCardContent>
+          code: `<Card tone="primary">
+  <CardHeader code="0x04" title="PRIMARY_TONE" />
+  <CardContent>
     <p className="text-sm">Card with primary border tone.</p>
-  </TerminalCardContent>
-</TerminalCard>
+  </CardContent>
+</Card>
 
-<TerminalCard tone="success">
-  <TerminalCardHeader code="0x05" title="SUCCESS_TONE" />
-  <TerminalCardContent>
+<Card tone="success">
+  <CardHeader code="0x05" title="SUCCESS_TONE" />
+  <CardContent>
     <p className="text-sm">Card with success border tone.</p>
-  </TerminalCardContent>
-</TerminalCard>`,
+  </CardContent>
+</Card>`,
         },
         {
           title: "Grid Layout",
           description: "Multiple cards in a responsive grid",
           preview: (
             <div className="grid grid-cols-2 gap-4">
-              <TerminalCard>
-                <TerminalCardHeader code="0x07" title="CARD_1" />
-                <TerminalCardContent>
+              <Card>
+                <CardHeader code="0x07" title="CARD_1" />
+                <CardContent>
                   <p className="text-sm">First card in grid</p>
-                </TerminalCardContent>
-              </TerminalCard>
-              <TerminalCard>
-                <TerminalCardHeader code="0x08" title="CARD_2" />
-                <TerminalCardContent>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader code="0x08" title="CARD_2" />
+                <CardContent>
                   <p className="text-sm">Second card in grid</p>
-                </TerminalCardContent>
-              </TerminalCard>
+                </CardContent>
+              </Card>
             </div>
           ),
           code: `<div className="grid grid-cols-2 gap-4">
-  <TerminalCard>
-    <TerminalCardHeader code="0x07" title="CARD_1" />
-    <TerminalCardContent>
+  <Card>
+    <CardHeader code="0x07" title="CARD_1" />
+    <CardContent>
       <p className="text-sm">First card in grid</p>
-    </TerminalCardContent>
-  </TerminalCard>
-  <TerminalCard>
-    <TerminalCardHeader code="0x08" title="CARD_2" />
-    <TerminalCardContent>
+    </CardContent>
+  </Card>
+  <Card>
+    <CardHeader code="0x08" title="CARD_2" />
+    <CardContent>
       <p className="text-sm">Second card in grid</p>
-    </TerminalCardContent>
-  </TerminalCard>
+    </CardContent>
+  </Card>
 </div>`,
         },
         {
@@ -200,33 +200,33 @@ export default function CardPage() {
           description: "Cards displaying statistics or metrics",
           preview: (
             <div className="grid grid-cols-3 gap-4">
-              <TerminalCard>
-                <TerminalCardHeader code="0x09" title="TOTAL_USERS" meta="1,234" />
-                <TerminalCardContent>
+              <Card>
+                <CardHeader code="0x09" title="TOTAL_USERS" meta="1,234" />
+                <CardContent>
                   <p className="text-muted-foreground text-xs">+12% from last month</p>
-                </TerminalCardContent>
-              </TerminalCard>
-              <TerminalCard>
-                <TerminalCardHeader code="0x0A" title="REVENUE" meta="$45.2K" />
-                <TerminalCardContent>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader code="0x0A" title="REVENUE" meta="$45.2K" />
+                <CardContent>
                   <p className="text-muted-foreground text-xs">+8% from last month</p>
-                </TerminalCardContent>
-              </TerminalCard>
-              <TerminalCard>
-                <TerminalCardHeader code="0x0B" title="CONVERSION" meta="3.2%" />
-                <TerminalCardContent>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader code="0x0B" title="CONVERSION" meta="3.2%" />
+                <CardContent>
                   <p className="text-muted-foreground text-xs">-2% from last month</p>
-                </TerminalCardContent>
-              </TerminalCard>
+                </CardContent>
+              </Card>
             </div>
           ),
           code: `<div className="grid grid-cols-3 gap-4">
-  <TerminalCard>
-    <TerminalCardHeader code="0x09" title="TOTAL_USERS" meta="1,234" />
-    <TerminalCardContent>
+  <Card>
+    <CardHeader code="0x09" title="TOTAL_USERS" meta="1,234" />
+    <CardContent>
       <p className="text-xs text-muted-foreground">+12% from last month</p>
-    </TerminalCardContent>
-  </TerminalCard>
+    </CardContent>
+  </Card>
   {/* More stat cards... */}
 </div>`,
         },
@@ -275,7 +275,7 @@ export default function CardPage() {
           name: "padding",
           type: '"sm" | "md" | "lg"',
           default: '"md"',
-          description: "Padding size for TerminalCardContent (sm=8px, md=16px, lg=24px)",
+          description: "Padding size for CardContent (sm=8px, md=16px, lg=24px)",
         },
       ]}
       accessibility={[

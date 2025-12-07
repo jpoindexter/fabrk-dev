@@ -6,7 +6,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Link2, Trash2 } from "lucide-react";
@@ -30,14 +30,14 @@ export function SecurityAccountsCard({
   onDisconnect,
 }: SecurityAccountsCardProps) {
   return (
-    <TerminalCard tone="neutral">
-      <TerminalCardHeader
+    <Card tone="neutral">
+      <CardHeader
         code="0x01"
         title="CONNECTED_ACCOUNTS"
         icon={<Link2 className="h-4 w-4" />}
         meta={`${connectedAccounts.length} ${connectedAccounts.length === 1 ? "account" : "accounts"}`}
       />
-      <TerminalCardContent className="space-y-4">
+      <CardContent className="space-y-4">
         <p className="text-muted-foreground mb-4 font-mono text-xs">
           Manage third-party accounts linked to your Fabrk account
         </p>
@@ -87,7 +87,7 @@ export function SecurityAccountsCard({
             &gt; CONNECT_GITHUB
           </Button>
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

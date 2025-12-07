@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent, TerminalBadge } from "@/components/ui/card";
+import { Card, CardHeader, CardContent, Badge } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Cookie, Settings, Shield, Globe, RefreshCw, HelpCircle } from "lucide-react";
 
@@ -24,7 +24,7 @@ export default function CookiesPage() {
           transition={{ duration: 0.5 }}
           className="mb-6"
         >
-          <TerminalBadge code="0x00" label="LEGAL" meta="COOKIE_POLICY" />
+          <Badge code="0x00" label="LEGAL" meta="COOKIE_POLICY" />
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -50,22 +50,22 @@ export default function CookiesPage() {
         transition={{ duration: 0.6, delay: 0.3 }}
         className="mb-12"
       >
-        <TerminalCard size="auto">
-          <TerminalCardHeader code="0x01" title="OVERVIEW" icon={<Cookie className="size-4" />} />
-          <TerminalCardContent padding="md">
+        <Card size="auto">
+          <CardHeader code="0x01" title="OVERVIEW" icon={<Cookie className="size-4" />} />
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground text-xs", mode.font)}>
               This Cookie Policy explains how Fabrk uses cookies and similar technologies to recognize
               you when you visit our website.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </motion.div>
 
       <div className="space-y-6">
         {/* Section 1 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader code="0x10" title="WHAT_ARE_COOKIES" icon={<Cookie className="size-4" />} />
-          <TerminalCardContent padding="md">
+        <Card size="auto">
+          <CardHeader code="0x10" title="WHAT_ARE_COOKIES" icon={<Cookie className="size-4" />} />
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
               Cookies are small text files placed on your device when you visit a website. They are
               widely used to make websites work efficiently and provide information to website owners.
@@ -88,13 +88,13 @@ export default function CookiesPage() {
                 └─ <span className="text-foreground">THIRD_PARTY:</span> Set by external services
               </li>
             </ul>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 2 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader code="0x20" title="COOKIES_WE_USE" icon={<Shield className="size-4" />} />
-          <TerminalCardContent padding="md">
+        <Card size="auto">
+          <CardHeader code="0x20" title="COOKIES_WE_USE" icon={<Shield className="size-4" />} />
+          <CardContent padding="md">
             <div className="space-y-6">
               {/* Essential Cookies */}
               <div>
@@ -248,13 +248,13 @@ export default function CookiesPage() {
                 </div>
               </div>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 3 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader code="0x30" title="MANAGE_COOKIES" icon={<Settings className="size-4" />} />
-          <TerminalCardContent padding="md">
+        <Card size="auto">
+          <CardHeader code="0x30" title="MANAGE_COOKIES" icon={<Settings className="size-4" />} />
+          <CardContent padding="md">
             <div className="space-y-4">
               <div>
                 <h3 className={cn("mb-2 text-xs font-semibold", mode.font)}>[3.1] BROWSER_SETTINGS</h3>
@@ -299,13 +299,13 @@ export default function CookiesPage() {
                 </p>
               </div>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 4 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader code="0x40" title="OTHER_TRACKING" icon={<Globe className="size-4" />} />
-          <TerminalCardContent padding="md">
+        <Card size="auto">
+          <CardHeader code="0x40" title="OTHER_TRACKING" icon={<Globe className="size-4" />} />
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-2 text-xs", mode.font)}>In addition to cookies, we may use:</p>
             <ul className={cn("text-muted-foreground space-y-1 pl-4 text-xs", mode.font)}>
               <li>
@@ -321,24 +321,24 @@ export default function CookiesPage() {
                 tracking
               </li>
             </ul>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 5 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader code="0x50" title="POLICY_UPDATES" icon={<RefreshCw className="size-4" />} />
-          <TerminalCardContent padding="md">
+        <Card size="auto">
+          <CardHeader code="0x50" title="POLICY_UPDATES" icon={<RefreshCw className="size-4" />} />
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground text-xs", mode.font)}>
               We may update this Cookie Policy. Changes will be posted with an updated "Last Updated"
               date.
             </p>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
         {/* Section 6 */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader code="0x60" title="QUESTIONS" icon={<HelpCircle className="size-4" />} />
-          <TerminalCardContent padding="md">
+        <Card size="auto">
+          <CardHeader code="0x60" title="QUESTIONS" icon={<HelpCircle className="size-4" />} />
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>Questions about cookies?</p>
             <ul className={cn("text-muted-foreground space-y-1 pl-4 text-xs", mode.font)}>
               <li>
@@ -351,8 +351,8 @@ export default function CookiesPage() {
                 </Link>
               </li>
             </ul>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </div>
 
       {/* Cookie Management Info */}
@@ -363,9 +363,9 @@ export default function CookiesPage() {
         viewport={{ once: true }}
         className="mt-12"
       >
-        <TerminalCard size="auto" tone="primary">
-          <TerminalCardHeader code="0x70" title="MANAGE_PREFERENCES" icon={<Settings className="size-4" />} />
-          <TerminalCardContent padding="md">
+        <Card size="auto" tone="primary">
+          <CardHeader code="0x70" title="MANAGE_PREFERENCES" icon={<Settings className="size-4" />} />
+          <CardContent padding="md">
             <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
               You&apos;ll see a cookie consent banner on first visit. Click below to update your
               preferences.
@@ -380,8 +380,8 @@ export default function CookiesPage() {
             >
               &gt; OPEN_COOKIE_SETTINGS
             </Button>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </motion.div>
 
       {/* Related Links */}
@@ -392,9 +392,9 @@ export default function CookiesPage() {
         viewport={{ once: true }}
         className="mt-8"
       >
-        <TerminalCard size="auto">
-          <TerminalCardHeader code="0x80" title="RELATED_DOCUMENTS" />
-          <TerminalCardContent padding="md">
+        <Card size="auto">
+          <CardHeader code="0x80" title="RELATED_DOCUMENTS" />
+          <CardContent padding="md">
             <div className={cn("flex flex-wrap gap-4 text-xs", mode.font)}>
               <Link href="/terms" className="text-primary hover:underline">
                 &gt; TERMS_OF_SERVICE
@@ -406,8 +406,8 @@ export default function CookiesPage() {
                 &gt; REFUND_POLICY
               </Link>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </motion.div>
     </main>
   );

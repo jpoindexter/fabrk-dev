@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
 
@@ -34,14 +34,14 @@ export function HeroSplit({
           <div className={`${contentOrder} flex flex-col justify-center`}>
             {/* Early Access Badge */}
             <div className="mb-6">
-              <TerminalCard className="inline-block">
-                <TerminalCardContent
+              <Card className="inline-block">
+                <CardContent
                   padding="sm"
                   className={cn("text-muted-foreground text-xs", mode.font)}
                 >
                   [ EARLY_ACCESS ] JOIN_FIRST_100_LAUNCH_CUSTOMERS
-                </TerminalCardContent>
-              </TerminalCard>
+                </CardContent>
+              </Card>
             </div>
 
             {/* Headline */}
@@ -94,14 +94,14 @@ export function HeroSplit({
             {/* Trust Badges */}
             <div className="flex flex-wrap gap-2">
               {trustBadges.map((badge) => (
-                <TerminalCard key={badge} className="inline-block">
-                  <TerminalCardContent
+                <Card key={badge} className="inline-block">
+                  <CardContent
                     padding="sm"
                     className={cn("text-muted-foreground px-2 py-1 text-xs", mode.font)}
                   >
                     [{badge}]
-                  </TerminalCardContent>
-                </TerminalCard>
+                  </CardContent>
+                </Card>
               ))}
             </div>
 

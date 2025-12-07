@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -67,9 +67,9 @@ export function DangerZone() {
   };
 
   return (
-    <TerminalCard tone="danger">
-      <TerminalCardHeader code="0xFF" title="DANGER_ZONE" />
-      <TerminalCardContent className="space-y-6">
+    <Card tone="danger">
+      <CardHeader code="0xFF" title="DANGER_ZONE" />
+      <CardContent className="space-y-6">
         <div className="border-t pt-4">
           <h3 className={cn(mode.font, "mb-2 text-xs")}>[EXPORT_YOUR_DATA]:</h3>
           <p className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
@@ -99,7 +99,7 @@ export function DangerZone() {
             &gt; DELETE_ACCOUNT
           </Button>
         </div>
-      </TerminalCardContent>
+      </CardContent>
 
       <AlertDialog open={exportDialogOpen} onOpenChange={setExportDialogOpen}>
         <AlertDialogContent className={cn(mode.radius, "border-border border")}>
@@ -168,6 +168,6 @@ export function DangerZone() {
           </div>
         </AlertDialogContent>
       </AlertDialog>
-    </TerminalCard>
+    </Card>
   );
 }

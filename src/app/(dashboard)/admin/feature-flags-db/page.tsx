@@ -6,7 +6,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
@@ -158,13 +158,13 @@ export default function FeatureFlagsDbPage() {
       </div>
 
       {showCreateForm && (
-        <TerminalCard tone="primary">
-          <TerminalCardHeader
+        <Card tone="primary">
+          <CardHeader
             code="0x00"
             title="CREATE_FEATURE_FLAG"
             icon={<Plus className="h-4 w-4" />}
           />
-          <TerminalCardContent className="space-y-4">
+          <CardContent className="space-y-4">
             <div>
               <Label>{formatLabel("Flag Name")}</Label>
               <Input
@@ -194,15 +194,15 @@ export default function FeatureFlagsDbPage() {
                 &gt; CANCEL
               </Button>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       )}
 
       <div className="grid gap-4">
         {flags.map((flag) => (
-          <TerminalCard key={flag.id} tone={flag.enabled ? "success" : "neutral"}>
+          <Card key={flag.id} tone={flag.enabled ? "success" : "neutral"}>
             <div className="border-border flex items-center justify-between border-b px-4 py-2">
-              <TerminalCardHeader
+              <CardHeader
                 code={`0x${flags.indexOf(flag) + 1}`}
                 title={flag.name.toUpperCase()}
                 meta={flag.enabled ? "Enabled" : "Disabled"}
@@ -233,7 +233,7 @@ export default function FeatureFlagsDbPage() {
                 </Button>
               </div>
             </div>
-            <TerminalCardContent>
+            <CardContent>
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <Label>{formatLabel("Rollout Percentage")}</Label>
@@ -247,16 +247,16 @@ export default function FeatureFlagsDbPage() {
                   disabled={!flag.enabled}
                 />
               </div>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
         ))}
 
         {flags.length === 0 && (
-          <TerminalCard tone="neutral">
-            <TerminalCardContent className="text-muted-foreground flex h-48 items-center justify-center">
+          <Card tone="neutral">
+            <CardContent className="text-muted-foreground flex h-48 items-center justify-center">
               No feature flags created yet. Click "New Flag" to create one.
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
         )}
       </div>
 

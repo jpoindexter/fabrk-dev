@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
@@ -99,9 +99,9 @@ export default async function UserProfilePage() {
         {/* Left Column - Profile Card */}
         <div className="space-y-6 lg:col-span-1">
           {/* Profile Info */}
-          <TerminalCard>
-            <TerminalCardHeader code="0x00" title="PROFILE_INFO" />
-            <TerminalCardContent>
+          <Card>
+            <CardHeader code="0x00" title="PROFILE_INFO" />
+            <CardContent>
               <div className="flex flex-col items-center text-center">
                 {/* Avatar */}
                 <div className="relative">
@@ -165,13 +165,13 @@ export default async function UserProfilePage() {
                   </div>
                 </div>
               </div>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
 
           {/* Contact Info */}
-          <TerminalCard>
-            <TerminalCardHeader code="0x01" title="CONTACT_INFO" />
-            <TerminalCardContent>
+          <Card>
+            <CardHeader code="0x01" title="CONTACT_INFO" />
+            <CardContent>
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
                   <Mail className="text-muted-foreground h-4 w-4" />
@@ -199,13 +199,13 @@ export default async function UserProfilePage() {
                   </a>
                 </div>
               </div>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
 
           {/* Social Links */}
-          <TerminalCard>
-            <TerminalCardHeader code="0x02" title="SOCIAL_LINKS" />
-            <TerminalCardContent>
+          <Card>
+            <CardHeader code="0x02" title="SOCIAL_LINKS" />
+            <CardContent>
               <div className="space-y-4">
                 <a
                   href={`https://twitter.com/${mockUserProfile.social.twitter.slice(1)}`}
@@ -241,16 +241,16 @@ export default async function UserProfilePage() {
                   </span>
                 </a>
               </div>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Right Column - Projects & Activity */}
         <div className="space-y-6 lg:col-span-2">
           {/* Recent Projects */}
-          <TerminalCard>
-            <TerminalCardHeader code="0x03" title="RECENT_PROJECTS" />
-            <TerminalCardContent>
+          <Card>
+            <CardHeader code="0x03" title="RECENT_PROJECTS" />
+            <CardContent>
               <div className="mb-4 flex justify-end">
                 <Button size="sm" variant="outline">
                   View All
@@ -301,13 +301,13 @@ export default async function UserProfilePage() {
                   </div>
                 ))}
               </div>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
 
           {/* Recent Activity */}
-          <TerminalCard>
-            <TerminalCardHeader code="0x04" title="RECENT_ACTIVITY" />
-            <TerminalCardContent>
+          <Card>
+            <CardHeader code="0x04" title="RECENT_ACTIVITY" />
+            <CardContent>
               <div className="space-y-4">
                 {mockUserProfile.activity.map((activity, index) => (
                   <div key={index} className="flex items-start gap-4">
@@ -329,8 +329,8 @@ export default async function UserProfilePage() {
                   </div>
                 ))}
               </div>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
         </div>
       </div>
 

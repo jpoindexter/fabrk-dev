@@ -10,9 +10,9 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
+  Card,
+  CardHeader,
+  CardContent,
   PageBadge,
 } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
@@ -264,9 +264,9 @@ export default function BlogPostTemplate() {
         </div>
 
         {/* Features Note */}
-        <TerminalCard>
-          <TerminalCardHeader code="0x00" title="TEMPLATE_FEATURES" />
-          <TerminalCardContent padding="md">
+        <Card>
+          <CardHeader code="0x00" title="TEMPLATE_FEATURES" />
+          <CardContent padding="md">
             <div className={cn(mode.font, "space-y-1 text-xs")}>
               <div>
                 <span className="text-success">✓</span> Clean, centered single-column layout
@@ -284,8 +284,8 @@ export default function BlogPostTemplate() {
                 <span className="text-success">✓</span> Industry-standard Vercel/Next.js pattern
               </div>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

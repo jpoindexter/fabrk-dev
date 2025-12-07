@@ -12,9 +12,9 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import {
   PageBadge,
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
+  Card,
+  CardHeader,
+  CardContent,
 } from "@/components/ui/card";
 import { ChevronRight, Copy, CheckCircle2, ExternalLink } from "lucide-react";
 import { parseContent } from "./content-parser";
@@ -110,8 +110,8 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
                   role="region"
                   aria-label={`Code example in ${section.language || "code"}`}
                 >
-                  <TerminalCard tone="neutral">
-                    <TerminalCardHeader
+                  <Card tone="neutral">
+                    <CardHeader
                       code="0x00"
                       title={(section.language || "code").toUpperCase()}
                       icon={
@@ -138,12 +138,12 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
                         </Button>
                       }
                     />
-                    <TerminalCardContent padding="md">
+                    <CardContent padding="md">
                       <pre className="m-0 overflow-auto text-xs leading-relaxed" tabIndex={0}>
                         <code className={cn(mode.font, "text-foreground")}>{section.content}</code>
                       </pre>
-                    </TerminalCardContent>
-                  </TerminalCard>
+                    </CardContent>
+                  </Card>
                 </div>
               );
             }
@@ -180,9 +180,9 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
         </nav>
 
         {/* Help Section */}
-        <TerminalCard tone="neutral" className="mt-12">
-          <TerminalCardHeader code="0x00" title="NEED_HELP" />
-          <TerminalCardContent padding="md">
+        <Card tone="neutral" className="mt-12">
+          <CardHeader code="0x00" title="NEED_HELP" />
+          <CardContent padding="md">
             <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>[NEED_HELP]:</div>
             <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
               Can't find what you're looking for?
@@ -213,8 +213,8 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
                 &gt; CONTACT_SUPPORT
               </Button>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </div>
     </main>
   );

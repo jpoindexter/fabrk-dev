@@ -5,7 +5,7 @@
 
 import { Download, Receipt } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -27,14 +27,14 @@ export function BillingHistoryCard({ invoices }: BillingHistoryCardProps) {
   }
 
   return (
-    <TerminalCard>
-      <TerminalCardHeader
+    <Card>
+      <CardHeader
         code="0x02"
         title="BILLING_HISTORY"
         icon={<Receipt className="h-4 w-4" />}
         meta={`${invoices.length} INVOICES`}
       />
-      <TerminalCardContent padding="lg">
+      <CardContent padding="lg">
         <Table>
           <TableHeader>
             <TableRow>
@@ -63,7 +63,7 @@ export function BillingHistoryCard({ invoices }: BillingHistoryCardProps) {
             ))}
           </TableBody>
         </Table>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

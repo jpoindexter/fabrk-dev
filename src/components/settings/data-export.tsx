@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -68,9 +68,9 @@ export function DataExport() {
   };
 
   return (
-    <TerminalCard tone="neutral">
-      <TerminalCardHeader code="0x02" title="EXPORT_DATA" />
-      <TerminalCardContent className="space-y-6">
+    <Card tone="neutral">
+      <CardHeader code="0x02" title="EXPORT_DATA" />
+      <CardContent className="space-y-6">
         <div className="space-y-4">
           <Label htmlFor="format-select" className={cn(mode.font, "text-xs")}>
             [FORMAT]:
@@ -176,8 +176,8 @@ export function DataExport() {
         <p className={cn(mode.font, "text-muted-foreground pt-2 text-xs")}>
           Your data is encrypted and will be deleted from our servers after download.
         </p>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }
 

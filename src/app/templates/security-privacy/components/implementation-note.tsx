@@ -2,16 +2,16 @@
  * Implementation Note Component - Features list
  */
 
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { FileCode } from "lucide-react";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function ImplementationNote() {
   return (
-    <TerminalCard tone="neutral">
-      <TerminalCardHeader code="0x01" title="FEATURES" icon={<FileCode className="h-4 w-4" />} />
-      <TerminalCardContent padding="md">
+    <Card tone="neutral">
+      <CardHeader code="0x01" title="FEATURES" icon={<FileCode className="h-4 w-4" />} />
+      <CardContent padding="md">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [TEMPLATE_FEATURES]:
         </div>
@@ -56,7 +56,7 @@ export function ImplementationNote() {
           [NOTE]: Integrate with src/components/security/. Add API routes for session management and
           2FA.
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

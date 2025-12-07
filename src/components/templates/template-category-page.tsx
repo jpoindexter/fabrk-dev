@@ -13,9 +13,9 @@ import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 import {
   PageBadge,
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
+  Card,
+  CardHeader,
+  CardContent,
   FeatureList,
   FeatureItem,
   StyledLabel,
@@ -74,14 +74,14 @@ export function TemplateCategoryPage({
         <div className="grid gap-4 md:grid-cols-2">
           {templates.map((template) => (
             <Link key={template.id} href={template.href}>
-              <TerminalCard interactive size="full">
-                <TerminalCardHeader
+              <Card interactive size="full">
+                <CardHeader
                   code="0x00"
                   title={template.id.toUpperCase().replace(/-/g, "_")}
                   icon={<template.icon className="text-muted-foreground size-4" />}
                 />
 
-                <TerminalCardContent>
+                <CardContent>
                   {/* Status & Badge */}
                   <div className={cn("mb-4 flex items-center justify-between text-xs", mode.font)}>
                     <div>
@@ -147,16 +147,16 @@ export function TemplateCategoryPage({
                       →
                     </span>
                   </div>
-                </TerminalCardContent>
-              </TerminalCard>
+                </CardContent>
+              </Card>
             </Link>
           ))}
         </div>
 
         {/* Template Features Card */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader code="0x01" title="features.md" />
-          <TerminalCardContent padding="lg">
+        <Card size="auto">
+          <CardHeader code="0x01" title="features.md" />
+          <CardContent padding="lg">
             <StyledLabel className="mb-4">
               {featureCardTitle.replace(/[\[\]:]/g, "").trim()}
             </StyledLabel>
@@ -165,8 +165,8 @@ export function TemplateCategoryPage({
                 <FeatureItem key={index}>{feature}</FeatureItem>
               ))}
             </FeatureList>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </main>
     </div>
   );

@@ -48,10 +48,10 @@ import {
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
-  TerminalCardFooter,
+  Card,
+  CardHeader,
+  CardContent,
+  CardFooter,
 } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { CodeBlock } from "@/components/ui/code-block";
@@ -192,13 +192,40 @@ import {
   User,
 } from "lucide-react";
 
-// Section Header Component
-function SectionHeader({ code, title }: { code: string; title: string }) {
+// Section Header Component with file link
+function SectionHeader({
+  code,
+  title,
+  files,
+}: {
+  code: string;
+  title: string;
+  files?: string[];
+}) {
   return (
     <div className="border-border bg-card border-b px-6 py-4">
-      <span className={cn("text-muted-foreground text-sm", mode.font)}>
-        [ [{code}] {title} ]
-      </span>
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <span className={cn("text-muted-foreground text-sm", mode.font)}>
+          [ [{code}] {title} ]
+        </span>
+        {files && files.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {files.map((file) => (
+              <span
+                key={file}
+                className={cn(
+                  "border-border bg-muted border px-2 py-0.5 text-xs",
+                  mode.font,
+                  mode.radius
+                )}
+                title={`src/components/ui/${file}`}
+              >
+                {file}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
@@ -340,7 +367,11 @@ export default function ComponentShowcasePage() {
           {/* SECTION 1: BUTTONS & ACTIONS */}
           {/* ============================================ */}
           <section id="buttons" className={cn("border-border border", mode.radius)}>
-            <SectionHeader code="0x01" title="BUTTONS_&_ACTIONS" />
+            <SectionHeader
+              code="0x01"
+              title="BUTTONS_&_ACTIONS"
+              files={["button.tsx", "checkbox.tsx", "switch.tsx", "radio-group.tsx", "rating.tsx", "copy-button.tsx", "loading.tsx"]}
+            />
             <div className="space-y-8 p-6">
               {/* Button Variants */}
               <div>
@@ -438,7 +469,11 @@ export default function ComponentShowcasePage() {
           {/* SECTION 2: INPUTS & FORMS */}
           {/* ============================================ */}
           <section id="inputs" className={cn("border-border border", mode.radius)}>
-            <SectionHeader code="0x02" title="INPUTS_&_FORMS" />
+            <SectionHeader
+              code="0x02"
+              title="INPUTS_&_FORMS"
+              files={["input.tsx", "input-password.tsx", "input-search.tsx", "input-number.tsx", "input-otp.tsx", "input-group.tsx", "textarea.tsx", "select.tsx", "multi-select.tsx", "combobox.tsx", "autocomplete.tsx", "date-picker.tsx", "time-picker.tsx", "color-picker.tsx", "slider.tsx", "password-strength.tsx", "field.tsx", "form-error.tsx", "label.tsx"]}
+            />
             <div className="space-y-8 p-6">
               {/* Input */}
               <div>
@@ -610,7 +645,11 @@ export default function ComponentShowcasePage() {
           {/* SECTION 3: DATA DISPLAY */}
           {/* ============================================ */}
           <section id="display" className={cn("border-border border", mode.radius)}>
-            <SectionHeader code="0x03" title="DATA_DISPLAY" />
+            <SectionHeader
+              code="0x03"
+              title="DATA_DISPLAY"
+              files={["badge.tsx", "notification-badge.tsx", "status-indicator.tsx", "avatar.tsx", "avatar-group.tsx", "card.tsx", "stat-card.tsx", "kpi-card.tsx", "table.tsx", "code-block.tsx", "typography.tsx", "calendar.tsx", "activity-timeline.tsx"]}
+            />
             <div className="space-y-8 p-6">
               {/* Badge */}
               <div>
@@ -678,21 +717,21 @@ export default function ComponentShowcasePage() {
               {/* Card */}
               <div>
                 <Label className="mb-4 block">[CARD]:</Label>
-                <TerminalCard className="max-w-sm">
-                  <TerminalCardHeader
+                <Card className="max-w-sm">
+                  <CardHeader
                     code="0x00"
                     title="CARD_TITLE"
                     meta="Card description goes here"
                   />
-                  <TerminalCardContent>
+                  <CardContent>
                     <p className="text-muted-foreground text-sm">
                       Card content with some example text.
                     </p>
-                  </TerminalCardContent>
-                  <TerminalCardFooter>
+                  </CardContent>
+                  <CardFooter>
                     <Button size="sm">&gt; ACTION</Button>
-                  </TerminalCardFooter>
-                </TerminalCard>
+                  </CardFooter>
+                </Card>
               </div>
 
               {/* StatCard */}
@@ -793,7 +832,11 @@ return greeting;`}
           {/* SECTION 4: CHARTS & VISUALIZATION */}
           {/* ============================================ */}
           <section id="charts" className={cn("border-border border", mode.radius)}>
-            <SectionHeader code="0x04" title="CHARTS_&_VISUALIZATION" />
+            <SectionHeader
+              code="0x04"
+              title="CHARTS_&_VISUALIZATION"
+              files={["pie-chart.tsx", "donut-chart.tsx", "gauge.tsx", "sparkline.tsx", "funnel-chart.tsx", "heatmap.tsx"]}
+            />
             <div className="space-y-8 p-6">
               {/* PieChart */}
               <div>
@@ -843,7 +886,11 @@ return greeting;`}
           {/* SECTION 5: FEEDBACK & STATUS */}
           {/* ============================================ */}
           <section id="feedback" className={cn("border-border border", mode.radius)}>
-            <SectionHeader code="0x05" title="FEEDBACK_&_STATUS" />
+            <SectionHeader
+              code="0x05"
+              title="FEEDBACK_&_STATUS"
+              files={["alert.tsx", "banner.tsx", "progress.tsx", "loading.tsx", "skeleton.tsx", "toaster.tsx", "empty-state.tsx"]}
+            />
             <div className="space-y-8 p-6">
               {/* Alert */}
               <div>
@@ -915,7 +962,11 @@ return greeting;`}
           {/* SECTION 6: OVERLAYS & DIALOGS */}
           {/* ============================================ */}
           <section id="overlays" className={cn("border-border border", mode.radius)}>
-            <SectionHeader code="0x06" title="OVERLAYS_&_DIALOGS" />
+            <SectionHeader
+              code="0x06"
+              title="OVERLAYS_&_DIALOGS"
+              files={["dialog.tsx", "alert-dialog.tsx", "sheet.tsx", "popover.tsx", "hover-card.tsx", "tooltip.tsx", "dropdown-menu.tsx", "context-menu.tsx", "command.tsx", "collapsible.tsx"]}
+            />
             <div className="space-y-8 p-6">
               {/* Dialog */}
               <div>
@@ -1111,7 +1162,11 @@ return greeting;`}
           {/* SECTION 7: NAVIGATION */}
           {/* ============================================ */}
           <section id="navigation" className={cn("border-border border", mode.radius)}>
-            <SectionHeader code="0x07" title="NAVIGATION" />
+            <SectionHeader
+              code="0x07"
+              title="NAVIGATION"
+              files={["tabs.tsx", "accordion.tsx", "breadcrumb.tsx", "pagination.tsx", "navigation-menu.tsx", "menubar.tsx"]}
+            />
             <div className="space-y-8 p-6">
               {/* Tabs */}
               <div>
@@ -1248,7 +1303,11 @@ return greeting;`}
           {/* SECTION 8: LAYOUT & CONTAINERS */}
           {/* ============================================ */}
           <section id="layout" className={cn("border-border border", mode.radius)}>
-            <SectionHeader code="0x08" title="LAYOUT_&_CONTAINERS" />
+            <SectionHeader
+              code="0x08"
+              title="LAYOUT_&_CONTAINERS"
+              files={["container.tsx", "grid.tsx", "scroll-area.tsx", "separator.tsx", "aspect-ratio.tsx"]}
+            />
             <div className="space-y-8 p-6">
               {/* Container */}
               <div>
@@ -1272,11 +1331,11 @@ return greeting;`}
 
               {/* ScrollArea */}
               <div>
-                <Label className="mb-4 block">[SCROLL_AREA]:</Label>
+                <Label className="mb-2 block">[SCROLL_AREA]:</Label>
                 <ScrollArea className="border-border h-32 w-48 border">
                   <div className="p-4">
                     {Array.from({ length: 10 }).map((_, i) => (
-                      <p key={i} className="text-sm">
+                      <p key={i} className={cn("text-xs", mode.font)}>
                         Scrollable item {i + 1}
                       </p>
                     ))}
@@ -1286,20 +1345,20 @@ return greeting;`}
 
               {/* Separator */}
               <div>
-                <Label className="mb-4 block">[SEPARATOR]:</Label>
+                <Label className="mb-2 block">[SEPARATOR]:</Label>
                 <div className="max-w-sm space-y-2">
-                  <p className="text-sm">Above separator</p>
+                  <p className={cn("text-xs", mode.font)}>Above separator</p>
                   <Separator />
-                  <p className="text-sm">Below separator</p>
+                  <p className={cn("text-xs", mode.font)}>Below separator</p>
                 </div>
               </div>
 
               {/* AspectRatio */}
               <div>
-                <Label className="mb-4 block">[ASPECT_RATIO]:</Label>
+                <Label className="mb-2 block">[ASPECT_RATIO]:</Label>
                 <div className="w-48">
                   <AspectRatio ratio={16 / 9} className="bg-muted flex items-center justify-center">
-                    <span className="text-muted-foreground text-sm">16:9</span>
+                    <span className={cn("text-muted-foreground text-xs", mode.font)}>16:9</span>
                   </AspectRatio>
                 </div>
               </div>

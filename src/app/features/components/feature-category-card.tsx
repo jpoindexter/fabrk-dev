@@ -9,10 +9,10 @@
 import { motion } from "framer-motion";
 import { FEATURE_CATEGORIES } from "./feature-data";
 import {
-  TerminalBadge,
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
+  Badge,
+  Card,
+  CardHeader,
+  CardContent,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
@@ -42,7 +42,7 @@ export function FeatureCategoryCard({ category, index }: FeatureCategoryCardProp
         {/* Content Side */}
         <div className="flex-1 space-y-6">
           <div className="inline-flex items-center gap-4">
-            <TerminalBadge
+            <Badge
               code={`0x${hexIndex}`}
               label={category.stats.label.toUpperCase().replace(/ /g, "_")}
               meta={category.stats.value}
@@ -62,13 +62,13 @@ export function FeatureCategoryCard({ category, index }: FeatureCategoryCardProp
 
         {/* Features List Side */}
         <div className="w-full flex-1">
-          <TerminalCard size="auto">
-            <TerminalCardHeader
+          <Card size="auto">
+            <CardHeader
               code={`0x${hexIndex}`}
               title="INCLUDED_FEATURES"
               meta={`${category.features.length} items`}
             />
-            <TerminalCardContent padding="lg">
+            <CardContent padding="lg">
               <ul className="space-y-2">
                 {category.features.map((feature, i) => (
                   <li key={i} className="flex items-start gap-3 text-xs">
@@ -79,8 +79,8 @@ export function FeatureCategoryCard({ category, index }: FeatureCategoryCardProp
                   </li>
                 ))}
               </ul>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </motion.div>

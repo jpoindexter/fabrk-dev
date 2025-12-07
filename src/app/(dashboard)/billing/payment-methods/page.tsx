@@ -8,7 +8,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import {
@@ -169,8 +169,8 @@ export default function PaymentMethodsPage() {
       {/* Payment Methods List */}
       <div className="space-y-4">
         {paymentMethods.length === 0 ? (
-          <TerminalCard>
-            <TerminalCardContent className="space-y-4 pt-6 text-center">
+          <Card>
+            <CardContent className="space-y-4 pt-6 text-center">
               <CreditCard className="text-muted-foreground mx-auto h-12 w-12" />
               <div>
                 <h3 className="mb-1 font-semibold">No payment methods</h3>
@@ -182,16 +182,16 @@ export default function PaymentMethodsPage() {
                   &gt; ADD_PAYMENT_METHOD
                 </Button>
               </div>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
         ) : (
           paymentMethods.map((method, index) => (
-            <TerminalCard key={method.id}>
-              <TerminalCardHeader
+            <Card key={method.id}>
+              <CardHeader
                 code={`0x${index.toString(16).padStart(2, "0")}`}
                 title={`${method.brand.toUpperCase()} •••• ${method.last4}`}
               />
-              <TerminalCardContent>
+              <CardContent>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-6">
                     <div className={cn("bg-primary/10 border-border border p-4", mode.radius)}>
@@ -235,37 +235,37 @@ export default function PaymentMethodsPage() {
                     </Button>
                   </div>
                 </div>
-              </TerminalCardContent>
-            </TerminalCard>
+              </CardContent>
+            </Card>
           ))
         )}
       </div>
 
       {/* Information Cards */}
       <div className="mt-8 grid gap-6 md:grid-cols-2">
-        <TerminalCard>
-          <TerminalCardHeader
+        <Card>
+          <CardHeader
             code="0xF0"
             title="SECURE_PROCESSING"
             icon={<Shield className="h-4 w-4" />}
           />
-          <TerminalCardContent className="text-muted-foreground text-sm">
+          <CardContent className="text-muted-foreground text-sm">
             All payments are processed securely through Stripe. Your payment information is
             encrypted and we never have access to your full card details.
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
 
-        <TerminalCard>
-          <TerminalCardHeader
+        <Card>
+          <CardHeader
             code="0xF1"
             title="AUTOMATIC_BILLING"
             icon={<CreditCard className="h-4 w-4" />}
           />
-          <TerminalCardContent className="text-muted-foreground text-sm">
+          <CardContent className="text-muted-foreground text-sm">
             Your default payment method will be charged automatically for subscriptions and
             recurring payments. You'll receive a receipt after each transaction.
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </div>
 
       {/* Delete Payment Method Dialog */}

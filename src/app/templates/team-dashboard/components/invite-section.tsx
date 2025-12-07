@@ -7,7 +7,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -33,9 +33,9 @@ export function InviteSection() {
   };
 
   return (
-    <TerminalCard size="auto">
-      <TerminalCardHeader code="0x00" title="INVITE_MEMBER" />
-      <TerminalCardContent>
+    <Card size="auto">
+      <CardHeader code="0x00" title="INVITE_MEMBER" />
+      <CardContent>
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [INVITE_TEAM_MEMBER]:
         </div>
@@ -89,7 +89,7 @@ export function InviteSection() {
             &gt; SEND_INVITE
           </Button>
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

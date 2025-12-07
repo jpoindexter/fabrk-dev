@@ -1,6 +1,6 @@
 /**
  * ✅ FABRK COMPONENT
- * TerminalCard - ONE canonical card component for the entire codebase.
+ * Card - ONE canonical card component for the entire codebase.
  * One shell, content is composition. Variants control tone, size, and interactivity.
  *
  * Design System Integration:
@@ -12,18 +12,21 @@
  * - "auto": Natural height, use for standalone cards, notes, badges
  * - "full": h-full for equal-height grids (default)
  *
+ * NAMING: Use generic names (Card, CardHeader, etc.) in new code.
+ * Legacy names (Card, etc.) are deprecated but still exported for compatibility.
+ *
  * @example
  * ```tsx
  * // Grid card (equal heights)
- * <TerminalCard tone="primary" interactive>
- *   <TerminalCardHeader code="0x00" title="TITLE" icon={<Icon />} />
- *   <TerminalCardContent>Any content here</TerminalCardContent>
- * </TerminalCard>
+ * <Card tone="primary" interactive>
+ *   <CardHeader code="0x00" title="TITLE" icon={<Icon />} />
+ *   <CardContent>Any content here</CardContent>
+ * </Card>
  *
  * // Standalone card (natural height)
- * <TerminalCard size="auto">
- *   <TerminalCardContent>Note content</TerminalCardContent>
- * </TerminalCard>
+ * <Card size="auto">
+ *   <CardContent>Note content</CardContent>
+ * </Card>
  * ```
  */
 
@@ -33,24 +36,24 @@ import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
 
 /**
- * TerminalCard - ONE canonical card component
+ * Card - ONE canonical card component
  * One shell, content is composition. Variants control tone, size, and interactivity.
  */
-export type TerminalCardTone = "neutral" | "primary" | "success" | "warning" | "danger";
-export type TerminalCardSize = "auto" | "full";
+export type CardTone = "neutral" | "primary" | "success" | "warning" | "danger";
+export type CardSize = "auto" | "full";
 
-export type TerminalCardProps = React.HTMLAttributes<HTMLDivElement> & {
+export type CardProps = React.HTMLAttributes<HTMLDivElement> & {
   /** Color tone for border */
-  tone?: TerminalCardTone;
+  tone?: CardTone;
   /** Size behavior: "auto" = natural height, "full" = h-full for grids */
-  size?: TerminalCardSize;
+  size?: CardSize;
   /** Enable hover/focus states for interactive cards */
   interactive?: boolean;
   /** Semantic HTML element */
   as?: "div" | "article" | "section";
 };
 
-const toneStyles: Record<TerminalCardTone, string> = {
+const toneStyles: Record<CardTone, string> = {
   neutral: "border-border",
   primary: "border-primary",
   success: "border-success",
@@ -58,12 +61,12 @@ const toneStyles: Record<TerminalCardTone, string> = {
   danger: "border-destructive",
 };
 
-const sizeStyles: Record<TerminalCardSize, string> = {
+const sizeStyles: Record<CardSize, string> = {
   auto: "", // Natural height
   full: "h-full", // Equal height for grids
 };
 
-const TerminalCard = React.forwardRef<HTMLDivElement, TerminalCardProps>(
+const Card = React.forwardRef<HTMLDivElement, CardProps>(
   (
     {
       className,
@@ -77,7 +80,7 @@ const TerminalCard = React.forwardRef<HTMLDivElement, TerminalCardProps>(
   ) => (
     <Component
       ref={ref}
-      data-slot="terminal-card"
+      data-slot="card"
       className={cn(
         // Base styles - ONE card shell
         "bg-card flex flex-col border",
@@ -98,12 +101,12 @@ const TerminalCard = React.forwardRef<HTMLDivElement, TerminalCardProps>(
     />
   )
 );
-TerminalCard.displayName = "TerminalCard";
+Card.displayName = "Card";
 
 /**
- * TerminalCardHeader - Header with terminal pattern [ [0xXX] TITLE ]
+ * CardHeader - Header with terminal pattern [ [0xXX] TITLE ]
  */
-export type TerminalCardHeaderProps = {
+export type CardHeaderProps = {
   /** Hex code displayed in brackets (e.g., "0x00", "0x01") */
   code?: string;
   /** Title displayed after the hex code in UPPERCASE_SNAKE_CASE */
@@ -116,11 +119,11 @@ export type TerminalCardHeaderProps = {
   className?: string;
 };
 
-const TerminalCardHeader = React.forwardRef<HTMLDivElement, TerminalCardHeaderProps>(
+const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
   ({ code = "0x00", title, icon, meta, className }, ref) => (
     <div
       ref={ref}
-      data-slot="terminal-card-header"
+      data-slot="card-header"
       className={cn(
         "border-border flex items-center justify-between border-b px-4 py-2",
         className
@@ -138,12 +141,12 @@ const TerminalCardHeader = React.forwardRef<HTMLDivElement, TerminalCardHeaderPr
     </div>
   )
 );
-TerminalCardHeader.displayName = "TerminalCardHeader";
+CardHeader.displayName = "CardHeader";
 
 /**
- * TerminalCardContent - Content area with configurable padding
+ * CardContent - Content area with configurable padding
  */
-export type TerminalCardContentProps = React.HTMLAttributes<HTMLDivElement> & {
+export type CardContentProps = React.HTMLAttributes<HTMLDivElement> & {
   /** Padding size */
   padding?: "sm" | "md" | "lg";
 };
@@ -154,48 +157,48 @@ const paddingStyles = {
   lg: "p-6",
 };
 
-const TerminalCardContent = React.forwardRef<HTMLDivElement, TerminalCardContentProps>(
+const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
   ({ className, padding = "md", ...props }, ref) => (
     <div
       ref={ref}
-      data-slot="terminal-card-content"
+      data-slot="card-content"
       className={cn("flex-1", paddingStyles[padding], className)}
       {...props}
     />
   )
 );
-TerminalCardContent.displayName = "TerminalCardContent";
+CardContent.displayName = "CardContent";
 
 /**
- * TerminalCardFooter - Footer area for actions
+ * CardFooter - Footer area for actions
  */
-export type TerminalCardFooterProps = React.HTMLAttributes<HTMLDivElement>;
+export type CardFooterProps = React.HTMLAttributes<HTMLDivElement>;
 
-const TerminalCardFooter = React.forwardRef<HTMLDivElement, TerminalCardFooterProps>(
+const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
   ({ className, ...props }, ref) => (
     <div
       ref={ref}
-      data-slot="terminal-card-footer"
+      data-slot="card-footer"
       className={cn("border-border flex items-center gap-2 border-t px-4 py-2", className)}
       {...props}
     />
   )
 );
-TerminalCardFooter.displayName = "TerminalCardFooter";
+CardFooter.displayName = "CardFooter";
 
 /**
- * TerminalStat - Key-value pair with label and highlighted value
+ * Stat - Key-value pair with label and highlighted value
  * Used in hero cards and stat displays
  *
  * @example
  * ```tsx
- * <TerminalStatGroup>
- *   <TerminalStat label="Speed" value="OPTIMIZED" />
- *   <TerminalStat label="Integration" value="SEAMLESS" />
- * </TerminalStatGroup>
+ * <StatGroup>
+ *   <Stat label="Speed" value="OPTIMIZED" />
+ *   <Stat label="Integration" value="SEAMLESS" />
+ * </StatGroup>
  * ```
  */
-export type TerminalStatProps = React.HTMLAttributes<HTMLSpanElement> & {
+export type StatProps = React.HTMLAttributes<HTMLSpanElement> & {
   /** Label text (muted color) */
   label: string;
   /** Value text (primary color) */
@@ -204,11 +207,11 @@ export type TerminalStatProps = React.HTMLAttributes<HTMLSpanElement> & {
   size?: "sm" | "md";
 };
 
-const TerminalStat = React.forwardRef<HTMLSpanElement, TerminalStatProps>(
+const Stat = React.forwardRef<HTMLSpanElement, StatProps>(
   ({ label, value, size = "md", className, ...props }, ref) => (
     <span
       ref={ref}
-      data-slot="terminal-stat"
+      data-slot="stat"
       className={cn(size === "sm" ? "text-xs" : "text-sm", className)}
       {...props}
     >
@@ -217,24 +220,24 @@ const TerminalStat = React.forwardRef<HTMLSpanElement, TerminalStatProps>(
     </span>
   )
 );
-TerminalStat.displayName = "TerminalStat";
+Stat.displayName = "Stat";
 
 /**
- * TerminalStatGroup - Container for multiple TerminalStat components
+ * StatGroup - Container for multiple Stat components
  */
-export type TerminalStatGroupProps = React.HTMLAttributes<HTMLDivElement>;
+export type StatGroupProps = React.HTMLAttributes<HTMLDivElement>;
 
-const TerminalStatGroup = React.forwardRef<HTMLDivElement, TerminalStatGroupProps>(
+const StatGroup = React.forwardRef<HTMLDivElement, StatGroupProps>(
   ({ className, ...props }, ref) => (
     <div
       ref={ref}
-      data-slot="terminal-stat-group"
+      data-slot="stat-group"
       className={cn("flex flex-wrap gap-4", className)}
       {...props}
     />
   )
 );
-TerminalStatGroup.displayName = "TerminalStatGroup";
+StatGroup.displayName = "StatGroup";
 
 /**
  * Bracketed label with brackets
@@ -364,20 +367,20 @@ const InfoNote = React.forwardRef<HTMLDivElement, InfoNoteProps>(
 InfoNote.displayName = "InfoNote";
 
 /**
- * TerminalBadge - Inline badge with terminal pattern [ [0xXX] LABEL ] META
+ * Badge - Inline badge with terminal pattern [ [0xXX] LABEL ] META
  * Used for section headers, page labels, and inline status indicators.
  * This is NOT a card - it's a compact inline element.
  *
  * @example
  * ```tsx
  * // Section header badge
- * <TerminalBadge code="0x00" label="SYSTEM_INIT" meta="SAAS_BOILERPLATE_v2.0" />
+ * <Badge code="0x00" label="SYSTEM_INIT" meta="SAAS_BOILERPLATE_v2.0" />
  *
  * // Simple badge without meta
- * <TerminalBadge code="0x50" label="DEV_EXPERIENCE" />
+ * <Badge code="0x50" label="DEV_EXPERIENCE" />
  * ```
  */
-export type TerminalBadgeProps = React.HTMLAttributes<HTMLDivElement> & {
+export type BadgeProps = React.HTMLAttributes<HTMLDivElement> & {
   /** Hex code displayed in brackets (e.g., "0x00", "0x01") */
   code?: string;
   /** Primary label text */
@@ -386,11 +389,11 @@ export type TerminalBadgeProps = React.HTMLAttributes<HTMLDivElement> & {
   meta?: string;
 };
 
-const TerminalBadge = React.forwardRef<HTMLDivElement, TerminalBadgeProps>(
+const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
   ({ code = "0x00", label, meta, className, ...props }, ref) => (
     <div
       ref={ref}
-      data-slot="terminal-badge"
+      data-slot="badge"
       className={cn("border-border bg-card inline-block border px-4 py-2", mode.radius, className)}
       {...props}
     >
@@ -400,7 +403,7 @@ const TerminalBadge = React.forwardRef<HTMLDivElement, TerminalBadgeProps>(
     </div>
   )
 );
-TerminalBadge.displayName = "TerminalBadge";
+Badge.displayName = "Badge";
 
 /**
  * Page badge
@@ -515,9 +518,9 @@ const FeaturesCard = React.forwardRef<HTMLDivElement, FeaturesCardProps>(
     },
     ref
   ) => (
-    <TerminalCard ref={ref} className={className} {...props}>
-      <TerminalCardHeader code={code} title={title} />
-      <TerminalCardContent>
+    <Card ref={ref} className={className} {...props}>
+      <CardHeader code={code} title={title} />
+      <CardContent>
         <StyledLabel className="mb-4">{title}</StyledLabel>
         <FeatureList>
           {features.map((feature, index) => (
@@ -527,22 +530,24 @@ const FeaturesCard = React.forwardRef<HTMLDivElement, FeaturesCardProps>(
           ))}
         </FeatureList>
         {note && <InfoNote>{note}</InfoNote>}
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   )
 );
 FeaturesCard.displayName = "FeaturesCard";
 
+// Export all components
 export {
-  // Canonical terminal components
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
-  TerminalCardFooter,
-  TerminalStat,
-  TerminalStatGroup,
-  // Inline badge (not a card)
-  TerminalBadge,
+  // Core Card components
+  Card,
+  CardHeader,
+  CardContent,
+  CardFooter,
+  // Stat components
+  Stat,
+  StatGroup,
+  // Badge
+  Badge,
   // Helper components
   StyledLabel,
   FeatureItem,

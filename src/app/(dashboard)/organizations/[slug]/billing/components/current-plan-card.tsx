@@ -14,7 +14,7 @@ import {
   CreditCard,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import type { Organization, Subscription } from "./types";
 import { getStatusBadge } from "./utils";
@@ -36,14 +36,14 @@ export function CurrentPlanCard({
   onUpgrade,
 }: CurrentPlanCardProps) {
   return (
-    <TerminalCard>
-      <TerminalCardHeader
+    <Card>
+      <CardHeader
         code="0x00"
         title="CURRENT_PLAN"
         icon={<CreditCard className="text-muted-foreground size-4" />}
         meta={subscription && getStatusBadge(subscription.status)}
       />
-      <TerminalCardContent padding="lg">
+      <CardContent padding="lg">
         {subscription ? (
           <div className="space-y-6">
             <div className="flex items-center justify-between">
@@ -129,7 +129,7 @@ export function CurrentPlanCard({
             )}
           </div>
         )}
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

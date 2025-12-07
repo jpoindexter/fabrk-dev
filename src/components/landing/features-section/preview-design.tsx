@@ -7,7 +7,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Moon, Layers, Palette } from "lucide-react";
-import { TerminalCard, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { PreviewHeader } from "./preview-header";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
@@ -51,10 +51,10 @@ export function DesignSystemPreview() {
   ];
 
   return (
-    <TerminalCard ref={ref} className="w-full max-w-md">
+    <Card ref={ref} className="w-full max-w-md">
       <PreviewHeader title="design_system.exe" animated />
 
-      <TerminalCardContent padding="lg">
+      <CardContent padding="lg">
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
@@ -115,7 +115,7 @@ export function DesignSystemPreview() {
             </motion.span>
           ))}
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

@@ -25,7 +25,7 @@ import {
 } from "recharts";
 import { DollarSign, TrendingUp } from "lucide-react";
 
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -135,8 +135,8 @@ export function RevenueChart({
   );
 
   return (
-    <TerminalCard className={cn("overflow-hidden", className)}>
-      <TerminalCardHeader
+    <Card className={cn("overflow-hidden", className)}>
+      <CardHeader
         code="0x01"
         title="REVENUE_ANALYTICS"
         icon={<DollarSign className="h-4 w-4" />}
@@ -148,7 +148,7 @@ export function RevenueChart({
         }
       />
 
-      <TerminalCardContent padding="md" className="space-y-6">
+      <CardContent padding="md" className="space-y-6">
         {/* Key Metrics */}
         <div className="grid grid-cols-2 gap-4">
           <div className={cn("border-border bg-card border p-4", mode.radius)}>
@@ -287,7 +287,7 @@ export function RevenueChart({
             )}
           </ResponsiveContainer>
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

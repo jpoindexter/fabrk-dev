@@ -13,7 +13,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Save, Trash2, AlertTriangle, Loader2, Settings as SettingsIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -174,13 +174,13 @@ export default function OrganizationSettingsPage() {
 
   if (!organization) {
     return (
-      <TerminalCard tone="danger">
-        <TerminalCardHeader
+      <Card tone="danger">
+        <CardHeader
           code="0x00"
           title="ERROR"
           icon={<AlertTriangle className="h-4 w-4" />}
         />
-        <TerminalCardContent padding="lg">
+        <CardContent padding="lg">
           <div className="text-center">
             <AlertTriangle className="text-destructive mx-auto h-12 w-12" />
             <h3 className="mt-4 text-lg font-semibold">Organization not found</h3>
@@ -188,8 +188,8 @@ export default function OrganizationSettingsPage() {
               &gt; BACK_TO_DASHBOARD
             </Button>
           </div>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
     );
   }
 
@@ -211,13 +211,13 @@ export default function OrganizationSettingsPage() {
       </div>
 
       {/* General Settings */}
-      <TerminalCard>
-        <TerminalCardHeader
+      <Card>
+        <CardHeader
           code="0x01"
           title="GENERAL_INFORMATION"
           icon={<SettingsIcon className="h-4 w-4" />}
         />
-        <TerminalCardContent padding="lg">
+        <CardContent padding="lg">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               <FormField
@@ -316,18 +316,18 @@ export default function OrganizationSettingsPage() {
               )}
             </form>
           </Form>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
 
       {/* Danger Zone (Owner Only) */}
       {organization.role === "OWNER" && (
-        <TerminalCard tone="danger">
-          <TerminalCardHeader
+        <Card tone="danger">
+          <CardHeader
             code="0x02"
             title="DANGER_ZONE"
             icon={<AlertTriangle className="h-4 w-4" />}
           />
-          <TerminalCardContent padding="lg">
+          <CardContent padding="lg">
             <div className="border-destructive bg-destructive/10 flex items-start justify-between rounded-none border p-4">
               <div className="flex-1">
                 <h4 className="font-mono text-xs font-semibold">[DELETE_ORGANIZATION]:</h4>
@@ -369,8 +369,8 @@ export default function OrganizationSettingsPage() {
                 </AlertDialogContent>
               </AlertDialog>
             </div>
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       )}
     </div>
   );

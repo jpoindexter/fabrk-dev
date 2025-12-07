@@ -18,7 +18,7 @@
 import * as React from "react";
 import { TrendingDown, TrendingUp, Minus } from "lucide-react";
 
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 import { mode } from "@/design-system";
@@ -62,9 +62,9 @@ export function AdminMetricsCard({
   const TrendIcon = isPositive ? TrendingUp : isNegative ? TrendingDown : Minus;
 
   return (
-    <TerminalCard tone={toneMap[variant]} className={className}>
-      <TerminalCardHeader code={code} title={title} icon={icon} />
-      <TerminalCardContent>
+    <Card tone={toneMap[variant]} className={className}>
+      <CardHeader code={code} title={title} icon={icon} />
+      <CardContent>
         {loading ? (
           <div className="space-y-2">
             <div className="bg-muted h-8 w-24 animate-pulse rounded" />
@@ -95,7 +95,7 @@ export function AdminMetricsCard({
             )}
           </>
         )}
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

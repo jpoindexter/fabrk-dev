@@ -4,7 +4,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { CheckCircle2, XCircle, Clock, Download } from "lucide-react";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
@@ -33,8 +33,8 @@ export function RecentInvoicesCard({
   onViewAll,
 }: RecentInvoicesCardProps) {
   return (
-    <TerminalCard tone="neutral">
-      <TerminalCardHeader
+    <Card tone="neutral">
+      <CardHeader
         code="0x00"
         title="RECENT_INVOICES"
         meta={
@@ -48,7 +48,7 @@ export function RecentInvoicesCard({
           </Button>
         }
       />
-      <TerminalCardContent padding="md">
+      <CardContent padding="md">
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [RECENT_INVOICES]: LIMIT=3
         </div>
@@ -98,7 +98,7 @@ export function RecentInvoicesCard({
             );
           })}
         </div>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

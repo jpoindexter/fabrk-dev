@@ -2,7 +2,7 @@
 
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
 export default function TabsPage() {
   return (
@@ -47,28 +47,28 @@ export default function TabsPage() {
     <TabsTrigger value="reports">Reports</TabsTrigger>
   </TabsList>
   <TabsContent value="overview">
-    <TerminalCard>
-      <TerminalCardHeader code="0x00" title="OVERVIEW" meta="View your account overview and recent activity." />
-      <TerminalCardContent className="space-y-2">
+    <Card>
+      <CardHeader code="0x00" title="OVERVIEW" meta="View your account overview and recent activity." />
+      <CardContent className="space-y-2">
         <p>Your dashboard content goes here.</p>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   </TabsContent>
   <TabsContent value="analytics">
-    <TerminalCard>
-      <TerminalCardHeader code="0x01" title="ANALYTICS" meta="View detailed analytics and insights." />
-      <TerminalCardContent className="space-y-2">
+    <Card>
+      <CardHeader code="0x01" title="ANALYTICS" meta="View detailed analytics and insights." />
+      <CardContent className="space-y-2">
         <p>Analytics data will be displayed here.</p>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   </TabsContent>
   <TabsContent value="reports">
-    <TerminalCard>
-      <TerminalCardHeader code="0x02" title="REPORTS" meta="Generate and view reports." />
-      <TerminalCardContent className="space-y-2">
+    <Card>
+      <CardHeader code="0x02" title="REPORTS" meta="Generate and view reports." />
+      <CardContent className="space-y-2">
         <p>Reports will be shown here.</p>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   </TabsContent>
 </Tabs>`,
           preview: (
@@ -79,40 +79,40 @@ export default function TabsPage() {
                 <TabsTrigger value="reports">Reports</TabsTrigger>
               </TabsList>
               <TabsContent value="overview">
-                <TerminalCard>
-                  <TerminalCardHeader
+                <Card>
+                  <CardHeader
                     code="0x00"
                     title="OVERVIEW"
                     meta="View your account overview and recent activity."
                   />
-                  <TerminalCardContent className="space-y-2">
+                  <CardContent className="space-y-2">
                     <p>Your dashboard content goes here.</p>
-                  </TerminalCardContent>
-                </TerminalCard>
+                  </CardContent>
+                </Card>
               </TabsContent>
               <TabsContent value="analytics">
-                <TerminalCard>
-                  <TerminalCardHeader
+                <Card>
+                  <CardHeader
                     code="0x01"
                     title="ANALYTICS"
                     meta="View detailed analytics and insights."
                   />
-                  <TerminalCardContent className="space-y-2">
+                  <CardContent className="space-y-2">
                     <p>Analytics data will be displayed here.</p>
-                  </TerminalCardContent>
-                </TerminalCard>
+                  </CardContent>
+                </Card>
               </TabsContent>
               <TabsContent value="reports">
-                <TerminalCard>
-                  <TerminalCardHeader
+                <Card>
+                  <CardHeader
                     code="0x02"
                     title="REPORTS"
                     meta="Generate and view reports."
                   />
-                  <TerminalCardContent className="space-y-2">
+                  <CardContent className="space-y-2">
                     <p>Reports will be shown here.</p>
-                  </TerminalCardContent>
-                </TerminalCard>
+                  </CardContent>
+                </Card>
               </TabsContent>
             </Tabs>
           ),

@@ -5,7 +5,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Mail, Download, Heart, Settings } from "lucide-react";
 
 export function ButtonsSection() {
@@ -19,13 +19,13 @@ export function ButtonsSection() {
         </p>
       </div>
 
-      <TerminalCard>
-        <TerminalCardHeader
+      <Card>
+        <CardHeader
           code="0x10"
           title="Button_Variants"
           meta="All available button styles"
         />
-        <TerminalCardContent padding="md">
+        <CardContent padding="md">
           <div className="flex flex-wrap gap-4">
             <Button>&gt; DEFAULT</Button>
             <Button variant="destructive">&gt; DESTRUCTIVE</Button>
@@ -34,26 +34,26 @@ export function ButtonsSection() {
             <Button variant="ghost">&gt; GHOST</Button>
             <Button variant="link">&gt; LINK</Button>
           </div>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
 
-      <TerminalCard>
-        <TerminalCardHeader code="0x11" title="Button_Sizes" meta="Different size options" />
-        <TerminalCardContent padding="md" className="flex flex-wrap items-center gap-4">
+      <Card>
+        <CardHeader code="0x11" title="Button_Sizes" meta="Different size options" />
+        <CardContent padding="md" className="flex flex-wrap items-center gap-4">
           <Button size="sm">&gt; SMALL</Button>
           <Button size="default">&gt; DEFAULT</Button>
           <Button size="lg">&gt; LARGE</Button>
           <Button size="xl">&gt; EXTRA_LARGE</Button>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
 
-      <TerminalCard>
-        <TerminalCardHeader
+      <Card>
+        <CardHeader
           code="0x12"
           title="Button_With_Icons"
           meta="Buttons with leading and trailing icons"
         />
-        <TerminalCardContent padding="md" className="flex flex-wrap gap-4">
+        <CardContent padding="md" className="flex flex-wrap gap-4">
           <Button>
             <Mail className="mr-2 h-4 w-4" />
             &gt; EMAIL
@@ -68,12 +68,12 @@ export function ButtonsSection() {
           <Button size="icon" variant="outline" aria-label="Settings">
             <Settings className="h-4 w-4" aria-hidden="true" />
           </Button>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
 
-      <TerminalCard>
-        <TerminalCardHeader code="0x13" title="Button_States" meta="Loading and disabled states" />
-        <TerminalCardContent padding="md" className="flex flex-wrap gap-4">
+      <Card>
+        <CardHeader code="0x13" title="Button_States" meta="Loading and disabled states" />
+        <CardContent padding="md" className="flex flex-wrap gap-4">
           <Button loading loadingText="> SAVING...">
             &gt; LOADING
           </Button>
@@ -81,8 +81,8 @@ export function ButtonsSection() {
           <Button variant="outline" disabled>
             &gt; DISABLED_OUTLINE
           </Button>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
     </section>
   );
 }

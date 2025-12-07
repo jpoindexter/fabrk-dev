@@ -8,7 +8,7 @@ import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -85,9 +85,9 @@ export function ProfileForm() {
   }
 
   return (
-    <TerminalCard tone="neutral">
-      <TerminalCardHeader code="0x08" title="PROFILE_INFORMATION" />
-      <TerminalCardContent>
+    <Card tone="neutral">
+      <CardHeader code="0x08" title="PROFILE_INFORMATION" />
+      <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
@@ -123,7 +123,7 @@ export function ProfileForm() {
             </Button>
           </form>
         </Form>
-      </TerminalCardContent>
-    </TerminalCard>
+      </CardContent>
+    </Card>
   );
 }

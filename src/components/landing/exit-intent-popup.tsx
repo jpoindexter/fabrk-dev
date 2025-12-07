@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dialog";
 import { Sparkles } from "lucide-react";
 import { PolarCheckoutButton } from "@/components/polar/checkout-button";
-import { TerminalCard, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 /* 💡 EXIT INTENT TIP: This popup offers an extra discount to visitors about to leave.
  * Update the EXTRA_DISCOUNT_ID with your Polar coupon ID for special offers.
@@ -133,8 +133,8 @@ export function ExitIntentPopup({
         </DialogHeader>
 
         {showPricing && (
-          <TerminalCard className="my-4">
-            <TerminalCardContent className="p-4">
+          <Card className="my-4">
+            <CardContent className="p-4">
               <div className="text-center">
                 <div className="mb-2 flex items-center justify-center gap-4">
                   <span className={cn(mode.font, "text-foreground text-4xl font-semibold")}>
@@ -148,8 +148,8 @@ export function ExitIntentPopup({
                   One-time payment. Lifetime access.
                 </span>
               </div>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
         )}
 
         <DialogFooter className="flex-col gap-2 sm:flex-col">

@@ -6,7 +6,7 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Bell, X } from "lucide-react";
 
 export function FeedbackSection() {
@@ -18,19 +18,19 @@ export function FeedbackSection() {
         <p className="text-muted-foreground text-xs">&gt; Alerts, badges, and status indicators</p>
       </div>
 
-      <TerminalCard>
-        <TerminalCardHeader code="0x50" title="Badges" meta="Status and category indicators" />
-        <TerminalCardContent padding="md" className="flex flex-wrap gap-4">
+      <Card>
+        <CardHeader code="0x50" title="Badges" meta="Status and category indicators" />
+        <CardContent padding="md" className="flex flex-wrap gap-4">
           <Badge>Default</Badge>
           <Badge variant="secondary">Secondary</Badge>
           <Badge variant="accent">Accent</Badge>
           <Badge variant="outline">Outline</Badge>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
 
-      <TerminalCard>
-        <TerminalCardHeader code="0x51" title="Alerts" meta="Information and warning messages" />
-        <TerminalCardContent padding="md" className="space-y-4">
+      <Card>
+        <CardHeader code="0x51" title="Alerts" meta="Information and warning messages" />
+        <CardContent padding="md" className="space-y-4">
           <Alert>
             <Bell className="h-4 w-4" />
             <AlertTitle>Heads up!</AlertTitle>
@@ -42,8 +42,8 @@ export function FeedbackSection() {
             <AlertTitle>Error</AlertTitle>
             <AlertDescription>Something went wrong. Please try again.</AlertDescription>
           </Alert>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
     </section>
   );
 }

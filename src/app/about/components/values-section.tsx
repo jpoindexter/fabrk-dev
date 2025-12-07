@@ -8,11 +8,13 @@
 import { motion } from "framer-motion";
 import { Rocket, Code, Zap, Users, Heart, CheckCircle2, type LucideIcon } from "lucide-react";
 import {
-  TerminalBadge,
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
+  Badge,
+  Card,
+  CardHeader,
+  CardContent,
 } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { mode } from "@/design-system";
 
 interface Value {
   id: string;
@@ -76,15 +78,15 @@ export function ValuesSection() {
   return (
     <section className="border-border bg-background border-t px-6 py-24">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-16 text-center">
+        <div className="mb-12 text-center">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <TerminalBadge code="0x03" label="CORE_VALUES" className="mb-4" />
-            <h2 className="mb-4 text-2xl font-semibold lg:text-4xl">CORE_VALUES</h2>
+            <Badge code="0x03" label="CORE_VALUES" className="mb-4" />
+            <h2 className={cn("mb-4 text-2xl font-semibold lg:text-4xl", mode.font)}>CORE_VALUES</h2>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -92,7 +94,7 @@ export function ValuesSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <p className="text-muted-foreground text-sm">
+            <p className={cn("text-muted-foreground text-sm", mode.font)}>
               The principles that guide everything we build
             </p>
           </motion.div>
@@ -116,8 +118,8 @@ export function ValuesSection() {
               }}
               className="group"
             >
-              <TerminalCard interactive className="flex h-full flex-col">
-                <TerminalCardHeader
+              <Card interactive className="flex h-full flex-col">
+                <CardHeader
                   code={value.id}
                   title={value.module}
                   icon={
@@ -129,10 +131,10 @@ export function ValuesSection() {
                     </motion.div>
                   }
                 />
-                <TerminalCardContent padding="md" className="flex-1">
+                <CardContent padding="md" className="flex-1">
                   {/* Status */}
-                  <div className="mb-4 font-mono text-xs">
-                    <span className="text-muted-foreground">STATUS: </span>
+                  <div className={cn("mb-4 text-xs", mode.font)}>
+                    <span className="text-muted-foreground">[STATUS]: </span>
                     <motion.span
                       className="text-success"
                       initial={{ opacity: 0 }}
@@ -144,12 +146,12 @@ export function ValuesSection() {
                   </div>
 
                   {/* Description */}
-                  <div className="font-mono text-xs">
-                    <span className="text-muted-foreground">DESC: </span>
+                  <div className={cn("text-xs", mode.font)}>
+                    <span className="text-muted-foreground">[DESC]: </span>
                     <span className="text-foreground">{value.description}</span>
                   </div>
-                </TerminalCardContent>
-              </TerminalCard>
+                </CardContent>
+              </Card>
             </motion.div>
           ))}
         </div>

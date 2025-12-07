@@ -4,7 +4,7 @@
  * Production-ready ✓
  */
 
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
@@ -20,9 +20,9 @@ export function TableOfContents() {
 
   return (
     <aside className="hidden w-64 xl:block" aria-label="Table of contents">
-      <TerminalCard tone="neutral" className="border-b border-l">
-        <TerminalCardHeader code="0x00" title="TOC" />
-        <TerminalCardContent padding="md">
+      <Card tone="neutral" className="border-b border-l">
+        <CardHeader code="0x00" title="TOC" />
+        <CardContent padding="md">
           <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>[ON_THIS_PAGE]:</div>
           <nav>
             <ul className={cn(mode.font, "space-y-2 text-xs")}>
@@ -38,8 +38,8 @@ export function TableOfContents() {
               ))}
             </ul>
           </nav>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
     </aside>
   );
 }

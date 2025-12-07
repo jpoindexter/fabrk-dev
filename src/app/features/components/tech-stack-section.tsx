@@ -9,10 +9,10 @@
 import { motion } from "framer-motion";
 import { TECH_STACK } from "./feature-data";
 import {
-  TerminalBadge,
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
+  Badge,
+  Card,
+  CardHeader,
+  CardContent,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
@@ -29,7 +29,7 @@ export function TechStackSection() {
           className="mb-12 text-center"
         >
           <div className="mb-4">
-            <TerminalBadge code="0x10" label="TECH_STACK" />
+            <Badge code="0x10" label="TECH_STACK" />
           </div>
           <h2 className={cn("mb-4 text-2xl font-semibold tracking-tight", mode.font)}>TECH_STACK</h2>
           <p className={cn("text-muted-foreground text-xs", mode.font)}>
@@ -50,15 +50,15 @@ export function TechStackSection() {
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 className="group"
               >
-                <TerminalCard interactive className="flex h-full flex-col">
-                  <TerminalCardHeader
+                <Card interactive className="flex h-full flex-col">
+                  <CardHeader
                     code={`0x${hexId}`}
                     title="STACK"
                     icon={
                       <Icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
                     }
                   />
-                  <TerminalCardContent padding="md" className="flex-1">
+                  <CardContent padding="md" className="flex-1">
                     <div className={cn("text-foreground mb-3 text-xs font-semibold", mode.font)}>
                       {tech.name.toUpperCase().replace(/ /g, "_").replace(/\./g, "")}
                     </div>
@@ -66,8 +66,8 @@ export function TechStackSection() {
                       <span className="text-muted-foreground">DESC: </span>
                       <span className="text-foreground">{tech.description}</span>
                     </div>
-                  </TerminalCardContent>
-                </TerminalCard>
+                  </CardContent>
+                </Card>
               </motion.div>
             );
           })}

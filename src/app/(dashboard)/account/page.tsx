@@ -13,7 +13,7 @@ import { ProfileForm } from "@/components/account/profile-form";
 import { SecurityForm } from "@/components/account/security-form";
 import { SessionsSection } from "@/components/account/sessions-section";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
@@ -87,80 +87,80 @@ export default function AccountPage() {
         <div className="grid gap-6 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <TabsContent value="profile" className="mt-0 space-y-4">
-              <TerminalCard>
-                <TerminalCardHeader
+              <Card>
+                <CardHeader
                   code="0x00"
                   title="PROFILE_INFORMATION"
                   icon={<User className="h-4 w-4" />}
                   meta="Update your personal details and profile picture"
                 />
-                <TerminalCardContent>
+                <CardContent>
                   <ProfileForm />
-                </TerminalCardContent>
-              </TerminalCard>
+                </CardContent>
+              </Card>
             </TabsContent>
 
             <TabsContent value="security" className="mt-0 space-y-4">
-              <TerminalCard>
-                <TerminalCardHeader
+              <Card>
+                <CardHeader
                   code="0x01"
                   title="SECURITY_SETTINGS"
                   icon={<Shield className="h-4 w-4" />}
                   meta="Manage your password and security preferences"
                 />
-                <TerminalCardContent>
+                <CardContent>
                   <SecurityForm />
-                </TerminalCardContent>
-              </TerminalCard>
+                </CardContent>
+              </Card>
             </TabsContent>
 
             <TabsContent value="billing" className="mt-0 space-y-4">
-              <TerminalCard>
-                <TerminalCardHeader
+              <Card>
+                <CardHeader
                   code="0x02"
                   title="BILLING_AND_SUBSCRIPTION"
                   icon={<CreditCard className="h-4 w-4" />}
                   meta="Manage your subscription plan and payment methods"
                 />
-                <TerminalCardContent>
+                <CardContent>
                   <BillingSection />
-                </TerminalCardContent>
-              </TerminalCard>
+                </CardContent>
+              </Card>
             </TabsContent>
 
             <TabsContent value="api-keys" className="mt-0 space-y-4">
-              <TerminalCard>
-                <TerminalCardHeader
+              <Card>
+                <CardHeader
                   code="0x03"
                   title="API_KEYS"
                   icon={<Key className="h-4 w-4" />}
                   meta="Create and manage API keys for programmatic access"
                 />
-                <TerminalCardContent>
+                <CardContent>
                   <ApiKeysSection />
-                </TerminalCardContent>
-              </TerminalCard>
+                </CardContent>
+              </Card>
             </TabsContent>
 
             <TabsContent value="sessions" className="mt-0 space-y-4">
-              <TerminalCard>
-                <TerminalCardHeader
+              <Card>
+                <CardHeader
                   code="0x04"
                   title="ACTIVE_SESSIONS"
                   icon={<Monitor className="h-4 w-4" />}
                   meta="View and manage your active sessions across devices"
                 />
-                <TerminalCardContent>
+                <CardContent>
                   <SessionsSection />
-                </TerminalCardContent>
-              </TerminalCard>
+                </CardContent>
+              </Card>
             </TabsContent>
           </div>
 
           <div className="space-y-4">
-            <TerminalCard>
-              <TerminalCardHeader code="0xF0" title="QUICK_ACTIONS" />
-              <TerminalCardContent className="space-y-2">
+            <Card>
+              <CardHeader code="0xF0" title="QUICK_ACTIONS" />
+              <CardContent className="space-y-2">
                 {tabs.map((tab) => {
                   const Icon = tab.icon;
                   return (
@@ -182,12 +182,12 @@ export default function AccountPage() {
                     </Button>
                   );
                 })}
-              </TerminalCardContent>
-            </TerminalCard>
+              </CardContent>
+            </Card>
 
-            <TerminalCard>
-              <TerminalCardHeader code="0xF1" title="ACCOUNT_STATUS" />
-              <TerminalCardContent className="space-y-4">
+            <Card>
+              <CardHeader code="0xF1" title="ACCOUNT_STATUS" />
+              <CardContent className="space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-muted-foreground text-sm">Plan</span>
                   <span className="text-sm font-medium">Pro</span>
@@ -204,12 +204,12 @@ export default function AccountPage() {
                   <span className="text-muted-foreground text-sm">Storage Used</span>
                   <span className="text-sm font-medium">2.4 GB / 10 GB</span>
                 </div>
-              </TerminalCardContent>
-            </TerminalCard>
+              </CardContent>
+            </Card>
 
-            <TerminalCard>
-              <TerminalCardHeader code="0xF2" title="NEED_HELP" />
-              <TerminalCardContent className="text-muted-foreground space-y-2 text-sm">
+            <Card>
+              <CardHeader code="0xF2" title="NEED_HELP" />
+              <CardContent className="text-muted-foreground space-y-2 text-sm">
                 <p>
                   Visit our{" "}
                   <Link href="/docs" className="text-primary hover:underline">
@@ -224,8 +224,8 @@ export default function AccountPage() {
                   </a>{" "}
                   for assistance.
                 </p>
-              </TerminalCardContent>
-            </TerminalCard>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </Tabs>

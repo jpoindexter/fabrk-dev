@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ActivityTimeline, TimelineEvent } from "@/components/ui/activity-timeline";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useDemoDates } from "@/lib/utils/demo-dates";
 
@@ -240,76 +240,76 @@ export default function ActivityTimelineDemo() {
         </TabsList>
 
         <TabsContent value="project" className="space-y-6">
-          <TerminalCard>
-            <TerminalCardHeader
+          <Card>
+            <CardHeader
               code="0x01"
               title="Project_Timeline"
               meta="Complete project history with grouped dates and filters"
             />
-            <TerminalCardContent padding="md">
+            <CardContent padding="md">
               <ActivityTimeline events={projectEvents} groupByDate={true} showFilters={true} />
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
         </TabsContent>
 
         <TabsContent value="issue" className="space-y-6">
-          <TerminalCard>
-            <TerminalCardHeader
+          <Card>
+            <CardHeader
               code="0x02"
               title="Issue_History"
               meta="Track bug reports from creation to resolution"
             />
-            <TerminalCardContent padding="md">
+            <CardContent padding="md">
               <ActivityTimeline events={issueEvents} showFilters={false} />
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
         </TabsContent>
 
         <TabsContent value="user" className="space-y-6">
-          <TerminalCard>
-            <TerminalCardHeader
+          <Card>
+            <CardHeader
               code="0x03"
               title="User_Activity"
               meta="Monitor user actions and account changes"
             />
-            <TerminalCardContent padding="md">
+            <CardContent padding="md">
               <ActivityTimeline events={userEvents} groupByDate={true} showFilters={true} />
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
         </TabsContent>
 
         <TabsContent value="system" className="space-y-6">
-          <TerminalCard>
-            <TerminalCardHeader
+          <Card>
+            <CardHeader
               code="0x04"
               title="System_Events"
               meta="Server operations, deployments, and maintenance tasks"
             />
-            <TerminalCardContent padding="md">
+            <CardContent padding="md">
               <ActivityTimeline events={systemEvents} showFilters={true} />
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
 
-          <TerminalCard>
-            <TerminalCardHeader
+          <Card>
+            <CardHeader
               code="0x05"
               title="Compact_View"
               meta="Condensed timeline without expandable details"
             />
-            <TerminalCardContent padding="md">
+            <CardContent padding="md">
               <ActivityTimeline events={systemEvents.slice(0, 3)} compact={true} />
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
         </TabsContent>
       </Tabs>
 
-      <TerminalCard>
-        <TerminalCardHeader
+      <Card>
+        <CardHeader
           code="0x06"
           title="Features"
           meta="What makes this component powerful"
         />
-        <TerminalCardContent padding="md">
+        <CardContent padding="md">
           <ul className="text-muted-foreground space-y-2 text-sm">
             <li className="flex items-start gap-2">
               <span className="text-primary font-semibold">✓</span>
@@ -374,8 +374,8 @@ export default function ActivityTimelineDemo() {
               </span>
             </li>
           </ul>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
     </div>
   );
 }

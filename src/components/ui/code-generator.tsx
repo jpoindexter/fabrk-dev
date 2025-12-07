@@ -20,7 +20,7 @@ import { mode } from "@/design-system";
 import { Code2, Copy, Download, Loader2 } from "lucide-react";
 import * as React from "react";
 import { Button } from "./button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "./card";
+import { Card, CardHeader, CardContent } from "./card";
 import { Textarea } from "./textarea";
 import { toast } from "sonner";
 
@@ -118,8 +118,8 @@ const CodeGenerator = React.forwardRef<HTMLDivElement, CodeGeneratorProps>(
         </div>
 
         {generatedCode && (
-          <TerminalCard>
-            <TerminalCardHeader
+          <Card>
+            <CardHeader
               code="0x01"
               title="GENERATED_CODE"
               icon={
@@ -135,12 +135,12 @@ const CodeGenerator = React.forwardRef<HTMLDivElement, CodeGeneratorProps>(
                 </div>
               }
             />
-            <TerminalCardContent padding="md">
+            <CardContent padding="md">
               <pre className={cn("border-border bg-card overflow-x-auto border", mode.radius)}>
                 <code className={`language-${language}`}>{generatedCode}</code>
               </pre>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
         )}
       </div>
     );

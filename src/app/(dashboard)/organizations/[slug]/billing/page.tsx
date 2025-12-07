@@ -10,7 +10,7 @@ import { useRouter, useParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { Loader2, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { toast } from "sonner";
 import type { Organization, Subscription, Invoice, Usage } from "./components/types";
 import { BillingHeader } from "./components/billing-header";
@@ -110,21 +110,21 @@ export default function OrganizationBillingPage() {
 
   if (!organization) {
     return (
-      <TerminalCard tone="danger">
-        <TerminalCardHeader
+      <Card tone="danger">
+        <CardHeader
           code="0x00"
           title="ERROR"
           icon={<AlertTriangle className="h-4 w-4" />}
         />
-        <TerminalCardContent padding="lg">
+        <CardContent padding="lg">
           <div className="text-center">
             <h3 className="text-lg font-semibold">Organization not found</h3>
             <Button onClick={() => router.push("/dashboard")} className="mt-4">
               &gt; BACK_TO_DASHBOARD
             </Button>
           </div>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
     );
   }
 

@@ -10,10 +10,10 @@ import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
 import {
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
-  TerminalBadge,
+  Card,
+  CardHeader,
+  CardContent,
+  Badge,
 } from "@/components/ui/card";
 
 // Animated counter component
@@ -94,7 +94,7 @@ export function ComparisonSection() {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <TerminalBadge
+          <Badge
             code="0x50"
             label="BUILD_VS_FABRK"
             meta="TIME_TO_MARKET │ FIB[21,34,55,89]"
@@ -115,9 +115,9 @@ export function ComparisonSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <TerminalCard size="auto">
-            <TerminalCardHeader title="[ [0x51] comparison_table.exe │ PID:4096 ]" />
-            <TerminalCardContent>
+          <Card size="auto">
+            <CardHeader title="[ [0x51] comparison_table.exe │ PID:4096 ]" />
+            <CardContent>
               {/* Column Headers */}
               <div
                 className={cn(
@@ -185,8 +185,8 @@ export function ComparisonSection() {
                 </div>
                 <div className="text-success text-center text-sm font-semibold">Ready to Ship</div>
               </motion.div>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
         </motion.div>
 
         {/* Footer Note */}
@@ -197,13 +197,13 @@ export function ComparisonSection() {
           viewport={{ once: true }}
           className="mt-6"
         >
-          <TerminalCard size="auto">
-            <TerminalCardContent>
+          <Card size="auto">
+            <CardContent>
               <span className={cn(mode.font, "text-muted-foreground text-sm")}>
                 [NOTE]: Start building your unique features on day one. Skip boilerplate.
               </span>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
         </motion.div>
       </div>
     </section>

@@ -2,7 +2,7 @@
 
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { PageWrapper } from "@/components/ui/page-wrapper";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
 export default function PageWrapperPage() {
   return (
@@ -16,22 +16,22 @@ export default function PageWrapperPage() {
         preview: (
           <div className="h-64 w-full">
             <PageWrapper>
-              <TerminalCard>
-                <TerminalCardHeader code="0x00" title="Centered_Content" />
-                <TerminalCardContent padding="md">
+              <Card>
+                <CardHeader code="0x00" title="Centered_Content" />
+                <CardContent padding="md">
                   This card is vertically and horizontally centered
-                </TerminalCardContent>
-              </TerminalCard>
+                </CardContent>
+              </Card>
             </PageWrapper>
           </div>
         ),
         code: `<PageWrapper>
-  <TerminalCard>
-    <TerminalCardHeader code="0x00" title="Login" />
-    <TerminalCardContent padding="md">
+  <Card>
+    <CardHeader code="0x00" title="Login" />
+    <CardContent padding="md">
       <p>Your login form</p>
-    </TerminalCardContent>
-  </TerminalCard>
+    </CardContent>
+  </Card>
 </PageWrapper>`,
       }}
       variants={[
@@ -41,22 +41,22 @@ export default function PageWrapperPage() {
           preview: (
             <div className="h-64 w-full">
               <PageWrapper>
-                <TerminalCard>
-                  <TerminalCardHeader code="0x01" title="Login" />
-                  <TerminalCardContent padding="md">
+                <Card>
+                  <CardHeader code="0x01" title="Login" />
+                  <CardContent padding="md">
                     Email and password form would go here
-                  </TerminalCardContent>
-                </TerminalCard>
+                  </CardContent>
+                </Card>
               </PageWrapper>
             </div>
           ),
           code: `<PageWrapper>
-  <TerminalCard>
-    <TerminalCardHeader code="0x01" title="Login" />
-    <TerminalCardContent padding="md">
+  <Card>
+    <CardHeader code="0x01" title="Login" />
+    <CardContent padding="md">
       <LoginForm />
-    </TerminalCardContent>
-  </TerminalCard>
+    </CardContent>
+  </Card>
 </PageWrapper>`,
         },
         {
@@ -85,22 +85,22 @@ export default function PageWrapperPage() {
           preview: (
             <div className="h-64 w-full">
               <PageWrapper className="bg-primary/5">
-                <TerminalCard>
-                  <TerminalCardHeader code="0x02" title="Custom_Background" />
-                  <TerminalCardContent padding="md">
+                <Card>
+                  <CardHeader code="0x02" title="Custom_Background" />
+                  <CardContent padding="md">
                     Background customized via className
-                  </TerminalCardContent>
-                </TerminalCard>
+                  </CardContent>
+                </Card>
               </PageWrapper>
             </div>
           ),
           code: `<PageWrapper className="bg-primary/5">
-  <TerminalCard>
-    <TerminalCardHeader code="0x02" title="Content" />
-    <TerminalCardContent padding="md">
+  <Card>
+    <CardHeader code="0x02" title="Content" />
+    <CardContent padding="md">
       {/* content */}
-    </TerminalCardContent>
-  </TerminalCard>
+    </CardContent>
+  </Card>
 </PageWrapper>`,
         },
         {

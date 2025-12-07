@@ -15,9 +15,9 @@ import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 import {
   PageBadge,
-  TerminalCard,
-  TerminalCardHeader,
-  TerminalCardContent,
+  Card,
+  CardHeader,
+  CardContent,
   FeatureList,
   FeatureItem,
   InfoNote,
@@ -128,9 +128,9 @@ export function TemplateShowcase({
         {children}
 
         {/* Features Card */}
-        <TerminalCard size="auto">
-          <TerminalCardHeader code="0x00" title="features.md" />
-          <TerminalCardContent>
+        <Card size="auto">
+          <CardHeader code="0x00" title="features.md" />
+          <CardContent>
             <div className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
               [TEMPLATE_FEATURES]:
             </div>
@@ -142,8 +142,8 @@ export function TemplateShowcase({
               </FeatureList>
             </div>
             {note && <InfoNote>{note}</InfoNote>}
-          </TerminalCardContent>
-        </TerminalCard>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

@@ -8,7 +8,7 @@
 
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
-import { TerminalCard, TerminalCardHeader } from "@/components/ui/card";
+import { Card, CardHeader } from "@/components/ui/card";
 import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import { Bell } from "lucide-react";
 import { Notification, initialNotifications } from "./components/notification-types";
@@ -56,9 +56,9 @@ export default function NotificationsTemplate() {
         <NotificationsHeader />
 
         {/* Main Notifications Panel */}
-        <TerminalCard>
+        <Card>
           <div className="border-border flex items-center justify-between border-b px-4 py-2">
-            <TerminalCardHeader code="0x00" title="NOTIFICATIONS" className="border-0 p-0" />
+            <CardHeader code="0x00" title="NOTIFICATIONS" className="border-0 p-0" />
             <div className="flex items-center gap-2">
               <Bell className="text-muted-foreground h-3 w-3" />
               {unreadCount > 0 && (
@@ -115,7 +115,7 @@ export default function NotificationsTemplate() {
               </StyledTabsContent>
             </StyledTabs>
           </div>
-        </TerminalCard>
+        </Card>
 
         {/* Notification Types Reference */}
         <NotificationTypesReference />

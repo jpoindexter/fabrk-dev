@@ -164,12 +164,12 @@ function TimelineItem({ event, isLast, compact }: TimelineItemProps) {
       {/* Icon */}
       <div
         className={cn(
-          "relative flex h-10 w-10 shrink-0 items-center justify-center border",
+          "relative flex size-10 shrink-0 items-center justify-center border",
           mode.radius,
           config.color
         )}
       >
-        <Icon className="text-primary-foreground h-5 w-5" />
+        <Icon className="text-primary-foreground size-5" />
       </div>
 
       {/* Content */}
@@ -177,14 +177,14 @@ function TimelineItem({ event, isLast, compact }: TimelineItemProps) {
         <div className="flex items-start justify-between gap-4">
           <div className="flex-1 space-y-1">
             <div className="flex flex-wrap items-center gap-2">
-              <p className="text-foreground font-semibold">{event.title}</p>
+              <p className={cn("text-foreground text-xs font-semibold", mode.font)}>{event.title}</p>
               <Badge variant="outline" className="text-xs">
                 {config.label}
               </Badge>
             </div>
 
-            <div className="text-muted-foreground flex items-center gap-2 text-sm">
-              <Avatar className="h-5 w-5 border">
+            <div className={cn("text-muted-foreground flex items-center gap-2 text-xs", mode.font)}>
+              <Avatar className="size-5 border">
                 <AvatarImage src={event.user.avatar} alt={event.user.name} />
                 <AvatarFallback className="text-xs">{getInitials(event.user.name)}</AvatarFallback>
               </Avatar>
@@ -213,9 +213,9 @@ function TimelineItem({ event, isLast, compact }: TimelineItemProps) {
               aria-expanded={isExpanded}
             >
               {isExpanded ? (
-                <ChevronDown className="h-4 w-4" aria-hidden="true" />
+                <ChevronDown className="size-4" aria-hidden="true" />
               ) : (
-                <ChevronRight className="h-4 w-4" aria-hidden="true" />
+                <ChevronRight className="size-4" aria-hidden="true" />
               )}
             </Button>
           )}
@@ -225,22 +225,22 @@ function TimelineItem({ event, isLast, compact }: TimelineItemProps) {
         {!compact && (isExpanded || (!hasExpandableContent && event.description)) && (
           <div className={cn("bg-card border p-4", mode.radius)}>
             {event.description && (
-              <p className="text-muted-foreground text-sm">{event.description}</p>
+              <p className={cn("text-muted-foreground text-xs", mode.font)}>{event.description}</p>
             )}
 
             {event.metadata && Object.keys(event.metadata).length > 0 && (
               <div className="mt-4 space-y-1">
                 {Object.entries(event.metadata).map(([key, value]) => (
-                  <div key={key} className="flex items-center gap-2 text-xs">
+                  <div key={key} className={cn("flex items-center gap-2 text-xs", mode.font)}>
                     <span className="text-foreground font-medium capitalize">
                       {key.replace(/_/g, " ")}:
                     </span>
                     <span className="text-muted-foreground">
                       {typeof value === "boolean" ? (
                         value ? (
-                          <Check className="text-primary h-3 w-3" />
+                          <Check className="text-primary size-3" />
                         ) : (
-                          <X className="text-destructive h-3 w-3" />
+                          <X className="text-destructive size-3" />
                         )
                       ) : (
                         String(value)
@@ -323,11 +323,11 @@ export function ActivityTimeline({
       {/* Filters */}
       {showFilters && (
         <div className="flex items-center justify-between">
-          <h3 className="text-foreground text-sm font-semibold">Activity Timeline</h3>
+          <h3 className={cn("text-foreground text-xs font-semibold", mode.font)}>Activity Timeline</h3>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="h-10 gap-2">
-                <Filter className="h-4 w-4" />
+              <Button variant="outline" size="sm" className="h-10 gap-2 text-xs">
+                <Filter className="size-4" />
                 Filter
                 <Badge variant="secondary" size="sm" className="ml-1">
                   {selectedTypes.size}
@@ -344,8 +344,8 @@ export function ActivityTimeline({
                     checked={selectedTypes.has(type as TimelineEvent["type"])}
                     onCheckedChange={() => toggleEventType(type as TimelineEvent["type"])}
                   >
-                    <div className="flex flex-1 items-center gap-2">
-                      <Icon className={cn("h-4 w-4", config.textColor)} />
+                    <div className={cn("flex flex-1 items-center gap-2 text-xs", mode.font)}>
+                      <Icon className={cn("size-4", config.textColor)} />
                       <span>{config.label}</span>
                       <Badge variant="outline" className="ml-auto">
                         {count}

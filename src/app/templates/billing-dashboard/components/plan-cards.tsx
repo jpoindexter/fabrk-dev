@@ -4,7 +4,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
@@ -33,13 +33,13 @@ export function PlanCards({ plans }: PlanCardsProps) {
       {/* Plan Cards */}
       <div className="grid gap-6 md:grid-cols-3">
         {plans.map((plan, idx) => (
-          <TerminalCard
+          <Card
             key={plan.name}
             tone={plan.current ? "primary" : "neutral"}
             className="flex flex-col"
           >
-            <TerminalCardHeader code={`0x0${idx}`} title={`${plan.name.toUpperCase()}_PLAN`} />
-            <TerminalCardContent padding="md" className="flex flex-1 flex-col">
+            <CardHeader code={`0x0${idx}`} title={`${plan.name.toUpperCase()}_PLAN`} />
+            <CardContent padding="md" className="flex flex-1 flex-col">
               <div className="mb-4 flex items-center justify-between">
                 <div className={cn(mode.font, "text-muted-foreground text-xs")}>[{plan.name}]:</div>
                 {plan.current && (
@@ -80,14 +80,14 @@ export function PlanCards({ plans }: PlanCardsProps) {
               >
                 {plan.current ? "CURRENT_PLAN" : `> SELECT_${plan.name}`}
               </Button>
-            </TerminalCardContent>
-          </TerminalCard>
+            </CardContent>
+          </Card>
         ))}
       </div>
 
       {/* Custom Plan */}
-      <TerminalCard tone="neutral">
-        <TerminalCardContent padding="md">
+      <Card tone="neutral">
+        <CardContent padding="md">
           <div className={cn(mode.font, "text-muted-foreground mb-2 text-xs")}>[CUSTOM_PLAN]:</div>
           <div className="flex items-center justify-between">
             <div>
@@ -100,8 +100,8 @@ export function PlanCards({ plans }: PlanCardsProps) {
               &gt; CONTACT_SALES
             </Button>
           </div>
-        </TerminalCardContent>
-      </TerminalCard>
+        </CardContent>
+      </Card>
     </>
   );
 }
