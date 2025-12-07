@@ -142,15 +142,15 @@ export function formatStatusText(status: string): string {
 // =============================================================================
 
 export const terminalClasses = {
-  radius: "rounded-none",
+  radius: "rounded",
   font: "font-mono",
   text: "uppercase",
   cardHeader: "font-mono text-xs text-muted-foreground",
   label: "font-mono text-xs text-muted-foreground uppercase",
-  button: "rounded-none font-mono uppercase",
-  input: "rounded-none font-mono border-border",
-  card: "rounded-none border border-border",
-  badge: "rounded-sm font-mono text-xs uppercase",
+  button: "rounded font-mono uppercase",
+  input: "rounded font-mono border-border",
+  card: "rounded border border-border",
+  badge: "rounded font-mono text-xs uppercase",
 } as const;
 
 export default terminalTheme;
