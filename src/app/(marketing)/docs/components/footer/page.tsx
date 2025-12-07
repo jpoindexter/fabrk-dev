@@ -136,7 +136,7 @@ export default function FooterPage() {
       description="Site footer with navigation links, tech stack display, and copyright information."
       mainPreview={{
         preview: <FooterDemo />,
-        code: `import { Footer } from "@/components/landing/footer";
+        code: `import { Footer } from "@/components/marketing/footer";
 
 export default function LandingPage() {
   return (

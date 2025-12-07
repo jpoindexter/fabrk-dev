@@ -5,7 +5,7 @@
  */
 
 import { SiteNavigation } from "@/components/navigation";
-import { Footer } from "@/components/landing/footer";
+import { Footer } from "@/components/marketing/footer";
 
 export default function MarketingLayout({ children }: { children: React.ReactNode }) {
   return (

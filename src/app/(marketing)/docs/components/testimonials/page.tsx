@@ -88,7 +88,7 @@ export default function TestimonialsPage() {
       description="Social proof components with customer quotes, avatars, and grid layouts."
       mainPreview={{
         preview: <TestimonialsDemo />,
-        code: `import { TestimonialsSection } from "@/components/landing/testimonials-section";
+        code: `import { TestimonialsSection } from "@/components/marketing/testimonials-section";
 
 export default function LandingPage() {
   return (

@@ -84,7 +84,7 @@ export default function NavigationPage() {
       description="Responsive navigation component with terminal-style branding, desktop links, and mobile sheet menu."
       mainPreview={{
         preview: <NavigationDemo />,
-        code: `import { Navigation } from "@/components/landing/navigation";
+        code: `import { Navigation } from "@/components/marketing/navigation";
 
 export default function LandingPage() {
   return (

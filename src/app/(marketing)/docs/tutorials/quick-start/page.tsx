@@ -25,12 +25,12 @@ export default function QuickStartPage() {
         {
           title: "Assemble Landing Page",
           description: "Update src/app/page.tsx with pre-built components",
-          code: `import { Navigation } from "@/components/landing/navigation";
-import { HeroSection } from "@/components/landing/hero-section";
-import { FeaturesSection } from "@/components/landing/features-section";
-import { PricingSection } from "@/components/landing/pricing-section";
-import { FAQSection } from "@/components/landing/faq-section";
-import { Footer } from "@/components/landing/footer";
+          code: `import { Navigation } from "@/components/marketing/navigation";
+import { HeroSection } from "@/components/marketing/hero-section";
+import { FeaturesSection } from "@/components/marketing/features-section";
+import { PricingSection } from "@/components/marketing/pricing-section";
+import { FAQSection } from "@/components/marketing/faq-section";
+import { Footer } from "@/components/marketing/footer";
 
 export default function HomePage() {
   return (

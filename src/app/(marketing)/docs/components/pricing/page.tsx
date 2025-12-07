@@ -123,7 +123,7 @@ export default function PricingPage() {
       description="Pricing tables with plan comparison, feature lists, and Stripe checkout integration."
       mainPreview={{
         preview: <PricingDemo />,
-        code: `import { PricingSection } from "@/components/landing/pricing-section";
+        code: `import { PricingSection } from "@/components/marketing/pricing-section";
 
 export default function LandingPage() {
   return (

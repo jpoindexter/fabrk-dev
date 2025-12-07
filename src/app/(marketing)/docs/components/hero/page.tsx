@@ -103,7 +103,7 @@ export default function HeroPage() {
       description="Landing page hero with terminal-style branding, animated code preview, and call-to-action buttons."
       mainPreview={{
         preview: <HeroDemo />,
-        code: `import { HeroSection } from "@/components/landing/hero-section";
+        code: `import { HeroSection } from "@/components/marketing/hero-section";
 
 export default function LandingPage() {
   return (
@@ -120,7 +120,7 @@ export default function LandingPage() {
           title: "Split Layout",
           description: "Two-column hero with code snippet",
           preview: <HeroSplitDemo />,
-          code: `import { HeroSplit } from "@/components/landing/hero-split";
+          code: `import { HeroSplit } from "@/components/marketing/hero-split";
 
 <HeroSplit
   title="Ship faster with Fabrk"

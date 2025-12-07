@@ -5,8 +5,8 @@
  */
 import { Metadata } from "next";
 import { MarketingPageHeader } from "@/components/marketing/marketing-header";
-import { PricingSection } from "@/components/landing/pricing-section";
-import { FAQSection } from "@/components/landing/faq-section";
+import { PricingSection } from "@/components/marketing/pricing-section";
+import { FAQSection } from "@/components/marketing/faq-section";
 
 export const metadata: Metadata = {
   title: "Pricing - Fabrk",

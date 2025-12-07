@@ -78,7 +78,7 @@ export default function FeaturesPage() {
       description="Grid-based feature showcases with icons, descriptions, and terminal-style headers."
       mainPreview={{
         preview: <FeaturesDemo />,
-        code: `import { FeaturesSection } from "@/components/landing/features-section";
+        code: `import { FeaturesSection } from "@/components/marketing/features-section";
 
 export default function LandingPage() {
   return (
@@ -95,7 +95,7 @@ export default function LandingPage() {
           title: "Tech Stack Display",
           description: "Technology badges with status indicators",
           preview: <TechStackDemo />,
-          code: `import { TechStack } from "@/components/landing/tech-stack";
+          code: `import { TechStack } from "@/components/marketing/tech-stack";
 
 <TechStack />
 

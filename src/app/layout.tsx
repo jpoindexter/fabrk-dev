@@ -16,7 +16,7 @@ import { CookieConsent } from "@/components/cookie-consent";
 import { GeistSans } from "geist/font/sans";
 import localFont from "next/font/local";
 import { generateOrganizationSchema, generateProductSchema } from "@/lib/metadata";
-import { AnimatedBackground } from "@/components/landing/animated-background";
+import { AnimatedBackground } from "@/components/marketing/animated-background";
 import { ThemeScript } from "@/design-system/providers";
 import "./globals.css";
 

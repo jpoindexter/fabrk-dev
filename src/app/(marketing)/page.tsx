@@ -4,14 +4,14 @@
  * Production-ready ✓
  */
 
-import { HeroSection } from "@/components/landing/hero-section";
-import { FeaturesShowcase } from "@/components/home/features-showcase";
-import { FeaturesSection } from "@/components/landing/features-section";
-import { PricingSection } from "@/components/landing/pricing-section";
-import { ComparisonSection } from "@/components/landing/comparison-section";
-import { FAQSection } from "@/components/landing/faq-section";
-import { StickyCTABar } from "@/components/landing/sticky-cta-bar";
-import { ExitIntentPopup } from "@/components/landing/exit-intent-popup";
+import { HeroSection } from "@/components/marketing/hero-section";
+import { FeaturesShowcase } from "@/components/marketing/features-showcase";
+import { FeaturesSection } from "@/components/marketing/features-section";
+import { PricingSection } from "@/components/marketing/pricing-section";
+import { ComparisonSection } from "@/components/marketing/comparison-section";
+import { FAQSection } from "@/components/marketing/faq-section";
+import { StickyCTABar } from "@/components/marketing/sticky-cta-bar";
+import { ExitIntentPopup } from "@/components/marketing/exit-intent-popup";
 
 export default function HomePage() {
   return (

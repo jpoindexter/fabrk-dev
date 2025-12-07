@@ -97,7 +97,7 @@ export default function FAQPage() {
       description="Accordion-style FAQ with expandable answers and category filtering."
       mainPreview={{
         preview: <FAQDemo />,
-        code: `import { FAQSection } from "@/components/landing/faq-section";
+        code: `import { FAQSection } from "@/components/marketing/faq-section";
 
 export default function LandingPage() {
   return (
