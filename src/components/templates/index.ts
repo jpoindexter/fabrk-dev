@@ -32,11 +32,6 @@ export type {
   SettingsSection,
   SettingsSectionCardProps,
 } from "./settings-page-template";
-export { MarketingPageTemplate, MarketingPageHeader } from "./marketing-page-template";
-export type {
-  MarketingPageTemplateProps,
-  MarketingPageHeaderProps,
-} from "./marketing-page-template";
 export { LegalPageTemplate, LegalSection } from "./legal-page-template";
 export type { LegalPageTemplateProps, LegalSectionProps } from "./legal-page-template";
 export { UtilityPageTemplate } from "./utility-page-template";
