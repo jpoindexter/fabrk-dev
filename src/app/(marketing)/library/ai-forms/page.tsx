@@ -52,92 +52,112 @@ const examplePrompts = [
   "Bug report form with severity, category, and description",
 ];
 
+// The template code - a complete standalone contact form component
 const templateCode = `"use client";
 
-import { useState } from "react";
-import { Sparkles, AlertCircle } from "lucide-react";
-import { ChatInterface, FormPreview, CodeViewer } from "@/components/ai";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
-import type { GeneratedForm } from "@/lib/ai/schemas";
 
-export default function AIFormsPage() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [generatedForm, setGeneratedForm] = useState<GeneratedForm | null>(null);
+// =============================================================================
+// ZOD SCHEMA
+// =============================================================================
+const contactFormSchema = z.object({
+  fullName: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Invalid email address"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+});
 
-  const handleSubmit = async (prompt: string) => {
-    setIsLoading(true);
-    setError(null);
+type ContactFormData = z.infer<typeof contactFormSchema>;
 
-    try {
-      const response = await fetch("/api/ai/generate-form", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt }),
-      });
+// =============================================================================
+// CONTACT FORM COMPONENT
+// =============================================================================
+export function ContactForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
+  });
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || data.error || "Failed to generate form");
-      }
-
-      setGeneratedForm(data.form);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "An unexpected error occurred");
-    } finally {
-      setIsLoading(false);
-    }
+  const onSubmit = async (data: ContactFormData) => {
+    // TODO: Handle form submission
+    await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
   };
 
   return (
-    <div className="container mx-auto max-w-7xl space-y-8 px-6 py-12">
-      {/* Header */}
-      <div className="space-y-4">
-        <div className="flex items-center gap-3">
-          <div className={cn("bg-primary/10 p-2", mode.radius)}>
-            <Sparkles className="text-primary size-6" />
-          </div>
-          <div>
-            <h1 className={cn("text-2xl font-bold", mode.font)}>AI Form Generator</h1>
-            <p className={cn("text-muted-foreground text-sm", mode.font)}>
-              Generate React Hook Form + Zod code from natural language
-            </p>
-          </div>
-        </div>
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      {/* Full Name */}
+      <div className="space-y-2">
+        <Label htmlFor="fullName" className={cn(mode.font, "text-xs")}>
+          [FULL_NAME]: <span className="text-destructive">*</span>
+        </Label>
+        <Input
+          id="fullName"
+          {...register("fullName")}
+          placeholder="Enter your name"
+          className={cn(mode.radius, mode.font, "text-xs")}
+        />
+        {errors.fullName && (
+          <p className="text-destructive text-xs">{errors.fullName.message}</p>
+        )}
       </div>
 
-      {/* Input Section */}
-      <Card>
-        <CardHeader code="0x00" title="FORM_PROMPT" />
-        <CardContent padding="lg">
-          <ChatInterface
-            onSubmit={handleSubmit}
-            isLoading={isLoading}
-            placeholder="> Describe your form..."
-          />
-        </CardContent>
-      </Card>
+      {/* Email */}
+      <div className="space-y-2">
+        <Label htmlFor="email" className={cn(mode.font, "text-xs")}>
+          [EMAIL_ADDRESS]: <span className="text-destructive">*</span>
+        </Label>
+        <Input
+          id="email"
+          type="email"
+          {...register("email")}
+          placeholder="you@example.com"
+          className={cn(mode.radius, mode.font, "text-xs")}
+        />
+        {errors.email && (
+          <p className="text-destructive text-xs">{errors.email.message}</p>
+        )}
+      </div>
 
-      {/* Error Message */}
-      {error && (
-        <Alert variant="destructive">
-          <AlertCircle className="size-4" />
-          <AlertDescription>[ERROR] {error}</AlertDescription>
-        </Alert>
-      )}
+      {/* Message */}
+      <div className="space-y-2">
+        <Label htmlFor="message" className={cn(mode.font, "text-xs")}>
+          [MESSAGE]: <span className="text-destructive">*</span>
+        </Label>
+        <Textarea
+          id="message"
+          {...register("message")}
+          placeholder="Describe your needs or question"
+          rows={4}
+          className={cn(mode.radius, mode.font, "text-xs")}
+        />
+        {errors.message && (
+          <p className="text-destructive text-xs">{errors.message.message}</p>
+        )}
+      </div>
 
-      {/* Results Section */}
-      {generatedForm && (
-        <div className="grid gap-6 lg:grid-cols-2">
-          <FormPreview form={generatedForm} />
-          <CodeViewer form={generatedForm} />
-        </div>
-      )}
-    </div>
+      {/* Submit */}
+      <Button
+        type="submit"
+        disabled={isSubmitting}
+        className={cn(mode.radius, mode.font, "w-full text-xs")}
+      >
+        {isSubmitting ? "> SENDING..." : "> SEND_MESSAGE"}
+      </Button>
+    </form>
   );
 }`;
 
