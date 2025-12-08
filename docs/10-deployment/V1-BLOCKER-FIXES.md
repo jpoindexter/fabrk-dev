@@ -42,7 +42,7 @@ grep -r "#[0-9A-Fa-f]\{6\}" src --include="*.tsx" --include="*.ts" -c | grep -v 
 
 1. **Email Templates** (99 instances - OK TO KEEP)
    - `src/emails/*.ts` (49 instances)
-   - `src/emails/templates/*.ts` (50 instances)
+   - `src/emails/library/*.ts` (50 instances)
    - **Action:** SKIP - Email clients don't support CSS variables
    - **Rationale:** Gmail, Outlook require inline hex colors
 
@@ -55,7 +55,7 @@ grep -r "#[0-9A-Fa-f]\{6\}" src --include="*.tsx" --include="*.ts" -c | grep -v 
    - `src/components/home/tech-stack-section.tsx` (12 instances)
 
 3. **Template Pages** (30 instances)
-   - `src/app/templates/email-templates/page.tsx` (51 instances)
+   - `src/app/library/email-templates/page.tsx` (51 instances)
 
 4. **Stories** (12 instances)
    - `src/stories/Header.tsx` (2 instances)
@@ -125,7 +125,7 @@ FILES=(
   "src/components/ui/funnel-chart.test.tsx"
   "src/components/ui/heatmap.test.tsx"
   "src/components/home/tech-stack-section.tsx"
-  "src/app/templates/email-templates/page.tsx"
+  "src/app/library/email-templates/page.tsx"
   "src/stories/Header.tsx"
 )
 
@@ -247,7 +247,7 @@ grep -r "#[0-9A-Fa-f]\{6\}" src/components src/app src/stories --include="*.tsx"
 
 # Expected: Only email files should have hex colors
 # src/emails/*.ts - OK
-# src/emails/templates/*.ts - OK
+# src/emails/library/*.ts - OK
 # Everything else - Should be 0
 ```
 
@@ -723,7 +723,7 @@ grep -r "#[0-9A-Fa-f]\{6\}" src --include="*.tsx" --include="*.ts" -l
 
 # If only email files, this is correct:
 # src/emails/*.ts
-# src/emails/templates/*.ts
+# src/emails/library/*.ts
 ```
 
 ### Issue: Theme switching not working after fixes

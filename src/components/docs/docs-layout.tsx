@@ -6,7 +6,7 @@
 
 import { useRef } from "react";
 import { SiteNavigation } from "@/components/navigation";
-import { Footer } from "@/components/landing/footer";
+import { Footer } from "@/components/shared/footer";
 import { DocsSidebar, NavSection } from "@/components/docs/docs-sidebar";
 import { DocsToc } from "@/components/docs/docs-toc";
 

@@ -13,7 +13,7 @@
     "lint:css": "stylelint \"src/**/*.css\" --allow-empty-input",
     "lint:css:fix": "stylelint \"src/**/*.css\" --fix --allow-empty-input",
     "lint:all": "npm run lint && npm run lint:css",
-    "scan:hex": "node scripts/utilities/scan-stray-hex.mjs",
+    "scan:hex": "node .internal/scripts/utilities/scan-stray-hex.mjs",
     "type-check": "tsc --noEmit",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
@@ -23,10 +23,10 @@
     "db:reset": "prisma db push --force-reset && npm run db:seed",
     "db:migrate": "prisma migrate dev",
     "stripe:listen": "stripe listen --forward-to http://localhost:3000/api/webhooks/stripe",
-    "jobs:worker": "node scripts/workers/job-worker.js",
-    "jobs:dev": "nodemon scripts/workers/job-worker.js",
-    "email:worker": "node scripts/workers/email-worker.js",
-    "email:dev": "nodemon scripts/workers/email-worker.js",
+    "jobs:worker": "node .internal/scripts/workers/job-worker.js",
+    "jobs:dev": "nodemon .internal/scripts/workers/job-worker.js",
+    "email:worker": "node .internal/scripts/workers/email-worker.js",
+    "email:dev": "nodemon .internal/scripts/workers/email-worker.js",
     "test": "vitest",
     "test:watch": "vitest watch",
     "test:coverage": "vitest --coverage",
@@ -46,11 +46,11 @@
     "analyze": "ANALYZE=true npm run build",
     "docs:api": "typedoc",
     "docs:serve": "serve docs/api",
-    "lighthouse": "./scripts/lighthouse-audit.sh",
+    "lighthouse": "./.internal/scripts/lighthouse-audit.sh",
     "lighthouse:ci": "lhci autorun",
-    "audit:staged": "node scripts/utilities/pre-commit-audit.mjs",
-    "audit:design": "node scripts/utilities/design-system-audit.mjs",
-    "audit:design:json": "node scripts/utilities/design-system-audit.mjs --json",
+    "audit:staged": "node .internal/scripts/utilities/pre-commit-audit.mjs",
+    "audit:design": "node .internal/scripts/utilities/design-system-audit.mjs",
+    "audit:design:json": "node .internal/scripts/utilities/design-system-audit.mjs --json",
     "prepare": "husky"
   },
   "lint-staged": {
@@ -59,7 +59,7 @@
       "prettier --write"
     ],
     "src/**/*.tsx": [
-      "node scripts/utilities/pre-commit-audit.mjs"
+      "node .internal/scripts/utilities/pre-commit-audit.mjs"
     ],
     "src/**/*.{json,css,md}": [
       "prettier --write"

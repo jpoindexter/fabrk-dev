@@ -495,7 +495,7 @@ Fabrk is substantially ready. The 5% missing is **marketing collateral** (demo v
 
 **What Fabrk has:**
 - `/components` - 234 components with live demos
-- `/templates` - 28 copy-paste templates
+- `/library` - 28 copy-paste templates
 - `/variations` - Landing page variations
 - `/examples` - Dashboard examples
 
@@ -1004,7 +1004,7 @@ This gives you the benefits of both approaches:
 - 1,000+ unique visitors
 - 3-5 minute average session
 - 30%+ scroll depth (engaged visitors)
-- 10%+ click-through to /templates or /components or demo.fabrk.dev
+- 10%+ click-through to /library or /components or demo.fabrk.dev
 
 **Revenue:**
 - 20+ purchases ($1,580 revenue)

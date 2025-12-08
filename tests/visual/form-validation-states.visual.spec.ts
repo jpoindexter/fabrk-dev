@@ -82,7 +82,7 @@ test.describe('Form Submission Validation', () => {
   });
 
   test('auth form - validation states', async ({ page }) => {
-    await page.goto('/templates/authentication');
+    await page.goto('/library/authentication');
     await page.waitForLoadState('domcontentloaded');
     await page.waitForTimeout(1000);
 
@@ -356,7 +356,7 @@ test.describe('Password Strength States', () => {
 
 test.describe('Empty States', () => {
   test('empty state component', async ({ page }) => {
-    await page.goto('/templates/empty-states');
+    await page.goto('/library/empty-states');
     await page.waitForLoadState('networkidle');
 
     const emptyState = page.locator('[class*="empty"], [data-empty="true"]').first();
@@ -369,7 +369,7 @@ test.describe('Empty States', () => {
   });
 
   test('no results state', async ({ page }) => {
-    await page.goto('/templates/search-results');
+    await page.goto('/library/search-results');
     await page.waitForLoadState('networkidle');
 
     // Look for "no results" messaging
@@ -401,7 +401,7 @@ test.describe('Error Page States', () => {
   });
 
   test('error template page', async ({ page }) => {
-    await page.goto('/templates/error-pages');
+    await page.goto('/library/error-pages');
     await page.waitForLoadState('networkidle');
 
     await expect(page).toHaveScreenshot('error-templates.png', {

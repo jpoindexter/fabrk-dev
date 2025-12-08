@@ -135,7 +135,7 @@ Complete feature list for the **$299 Premium Enterprise Next.js Boilerplate**
 ### Dashboards (3 Templates)
 
 #### 1. Analytics Dashboard
-**Path:** `/templates/analytics-dashboard`
+**Path:** `/library/analytics-dashboard`
 **Use Case:** SaaS product analytics, marketing dashboards, KPI tracking
 
 **Features:**
@@ -153,7 +153,7 @@ Complete feature list for the **$299 Premium Enterprise Next.js Boilerplate**
 ---
 
 #### 2. Team Dashboard
-**Path:** `/templates/team-dashboard`
+**Path:** `/library/team-dashboard`
 **Use Case:** Organization management, project collaboration, agency/client portals
 
 **Features:**
@@ -171,7 +171,7 @@ Complete feature list for the **$299 Premium Enterprise Next.js Boilerplate**
 ---
 
 #### 3. Chart Library
-**Path:** `/templates/chart-library`
+**Path:** `/library/chart-library`
 **Use Case:** Financial dashboards, performance metrics, data reporting
 
 **Features:**
@@ -191,7 +191,7 @@ Complete feature list for the **$299 Premium Enterprise Next.js Boilerplate**
 ### Admin Panels (1 Template)
 
 #### 4. User Management
-**Path:** `/templates/user-management`
+**Path:** `/library/user-management`
 **Use Case:** SaaS admin panels, customer management, internal tools
 
 **Features:**
@@ -212,7 +212,7 @@ Complete feature list for the **$299 Premium Enterprise Next.js Boilerplate**
 ### Account Pages (3 Templates)
 
 #### 5. Settings Page
-**Path:** `/templates/settings-page`
+**Path:** `/library/settings-page`
 **Use Case:** User preferences, account configuration, privacy controls
 
 **Features:**
@@ -226,7 +226,7 @@ Complete feature list for the **$299 Premium Enterprise Next.js Boilerplate**
 ---
 
 #### 6. Billing Dashboard
-**Path:** `/templates/billing-dashboard`
+**Path:** `/library/billing-dashboard`
 **Use Case:** SaaS billing portals, subscription management, payment history
 
 **Features:**
@@ -241,7 +241,7 @@ Complete feature list for the **$299 Premium Enterprise Next.js Boilerplate**
 ---
 
 #### 7. Security & Privacy
-**Path:** `/templates/security-privacy`
+**Path:** `/library/security-privacy`
 **Use Case:** Enterprise security settings, GDPR/CCPA compliance, user privacy controls
 
 **Features:**
@@ -257,7 +257,7 @@ Complete feature list for the **$299 Premium Enterprise Next.js Boilerplate**
 ### Marketing (2 Templates)
 
 #### 8. Email Templates
-**Path:** `/templates/email-templates`
+**Path:** `/library/email-templates`
 **Use Case:** Email system documentation, template customization, transactional email design
 
 **Features:**
@@ -276,7 +276,7 @@ Complete feature list for the **$299 Premium Enterprise Next.js Boilerplate**
 ---
 
 #### 9. Documentation Layout
-**Path:** `/templates/documentation-layout`
+**Path:** `/library/documentation-layout`
 **Use Case:** Product documentation, developer docs, API reference, knowledge base
 
 **Features:**
@@ -600,7 +600,7 @@ npm run email:dev         # Email worker with watch mode
 | **Landing Pages** | 4 variations | 1 | 1 | 2 |
 | **Color Themes** | 6 live-switch | 1 static | 2 static | 2 static |
 | **Component Showcase** | `/components` ✅ | ❌ | ❌ | ❌ |
-| **Template Gallery** | `/templates` ✅ | ❌ | ❌ | Partial |
+| **Template Gallery** | `/library` ✅ | ❌ | ❌ | Partial |
 
 ---
 
@@ -611,7 +611,7 @@ npm run email:dev         # Email worker with watch mode
 4. **4 landing page variations** - Multiple aesthetics out of the box
 5. **Next.js 16** - Newest framework version (competitors use v14)
 6. **Component showcase page** - Live interactive component demos at `/components`
-7. **Template gallery** - 9 production-ready templates at `/templates`
+7. **Template gallery** - 9 production-ready templates at `/library`
 8. **44 test files** - Comprehensive Vitest + Playwright coverage
 9. **26,813 lines of docs** - Most comprehensive documentation
 
@@ -826,7 +826,7 @@ npm run email:dev         # Email worker with watch mode
 
 ### Resources
 - **Component Showcase:** Live demos at `/components`
-- **Template Gallery:** Production templates at `/templates`
+- **Template Gallery:** Production templates at `/library`
 - **Storybook:** 82 interactive stories
 - **GitHub Repo:** Full source code access
 - **Example Apps:** 3 demo projects included

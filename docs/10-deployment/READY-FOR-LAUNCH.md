@@ -87,7 +87,7 @@ docs/
 - `src/components/ui/funnel-chart.test.tsx` - Chart colors
 - `src/components/ui/heatmap.test.tsx` - Chart colors
 - `src/components/home/tech-stack-section.tsx` - Icon colors
-- `src/app/templates/email-templates/page.tsx` - UI colors
+- `src/app/library/email-templates/page.tsx` - UI colors
 - `src/stories/Header.tsx` - Navigation colors
 
 **Automated Fix Script:** `docs/06-launch/V1-BLOCKER-FIXES.md` (lines 115-175)

@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 /**
  * TEMPLATE PAGES VISUAL REGRESSION
  *
- * Tests all ~30 template category pages in /templates/
+ * Tests all ~30 template category pages in /library/
  *
  * Run: npm run test:visual
  * Update baselines: npm run test:visual:update
@@ -39,7 +39,7 @@ test.describe('Template Pages (30 categories)', () => {
 
   for (const templateName of templatePages) {
     test(`Template: ${templateName}`, async ({ page }) => {
-      await page.goto(`/templates/${templateName}`);
+      await page.goto(`/library/${templateName}`);
       await page.waitForLoadState('networkidle');
       await page.waitForTimeout(500); // Templates may have more animations
 
@@ -73,7 +73,7 @@ test.describe('Template Pages Terminal Style', () => {
 
   for (const templateName of sampleTemplates) {
     test(`Terminal Check: ${templateName}`, async ({ page }) => {
-      await page.goto(`/templates/${templateName}`);
+      await page.goto(`/library/${templateName}`);
       await page.waitForLoadState('networkidle');
 
       // Check for banned rounded classes on buttons
@@ -146,7 +146,7 @@ test.describe('Template Component Consistency', () => {
 
   for (const templateName of templatesWithForms) {
     test(`Form Consistency: ${templateName}`, async ({ page }) => {
-      await page.goto(`/templates/${templateName}`);
+      await page.goto(`/library/${templateName}`);
       await page.waitForLoadState('networkidle');
 
       // All form inputs should have labels
@@ -185,7 +185,7 @@ test.describe('Template Data Visualization', () => {
 
   for (const templateName of templatesWithCharts) {
     test(`Charts Loaded: ${templateName}`, async ({ page }) => {
-      await page.goto(`/templates/${templateName}`);
+      await page.goto(`/library/${templateName}`);
       await page.waitForLoadState('networkidle');
       await page.waitForTimeout(1000); // Charts may need extra time to render
 
@@ -223,7 +223,7 @@ test.describe('Template Responsive - Mobile', () => {
   for (const templateName of criticalTemplates) {
     test(`Mobile: ${templateName}`, async ({ page }) => {
       await page.setViewportSize({ width: 375, height: 667 });
-      await page.goto(`/templates/${templateName}`);
+      await page.goto(`/library/${templateName}`);
       await page.waitForLoadState('networkidle');
       await page.waitForTimeout(500);
 
@@ -257,7 +257,7 @@ test.describe('Template Responsive - Tablet', () => {
   for (const templateName of criticalTemplates) {
     test(`Tablet: ${templateName}`, async ({ page }) => {
       await page.setViewportSize({ width: 768, height: 1024 });
-      await page.goto(`/templates/${templateName}`);
+      await page.goto(`/library/${templateName}`);
       await page.waitForLoadState('networkidle');
       await page.waitForTimeout(500);
 

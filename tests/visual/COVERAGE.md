@@ -21,7 +21,7 @@ This document provides a complete inventory of all pages tested by the visual re
 - `/maintenance` - Maintenance page
 - `/pricing` - Pricing page
 - `/success` - Success page
-- `/templates` - Templates overview
+- `/library` - Templates overview
 
 ### Legal Pages (4 pages)
 **File:** `full-site.visual.spec.ts`
@@ -248,30 +248,30 @@ Pages:
 ### Templates (24 pages)
 **File:** `templates-full.visual.spec.ts`
 
-- `/templates/admin-panels` - Admin panel templates
-- `/templates/documentation` - Documentation templates
-- `/templates/security-privacy` - Security/privacy templates
-- `/templates/search-results` - Search results
-- `/templates/pricing-page` - Pricing page templates
-- `/templates/billing-dashboard` - Billing dashboard
-- `/templates/email-templates` - Email templates
-- `/templates/chart-library` - Chart library
-- `/templates/modals` - Modal templates
-- `/templates/account-pages` - Account pages
-- `/templates/landing-variations` - Landing variations
-- `/templates/blog` - Blog templates
-- `/templates/error-pages` - Error pages
-- `/templates/profile` - Profile templates
-- `/templates/dashboards` - Dashboard templates
-- `/templates/marketing` - Marketing templates
-- `/templates/settings-page` - Settings page
-- `/templates/analytics-dashboard` - Analytics dashboard
-- `/templates/user-management` - User management
-- `/templates/team-dashboard` - Team dashboard
-- `/templates/empty-states` - Empty states
-- `/templates/authentication` - Authentication templates
-- `/templates/notifications` - Notification templates
-- `/templates/onboarding` - Onboarding templates
+- `/library/admin-panels` - Admin panel templates
+- `/library/documentation` - Documentation templates
+- `/library/security-privacy` - Security/privacy templates
+- `/library/search-results` - Search results
+- `/library/pricing-page` - Pricing page templates
+- `/library/billing-dashboard` - Billing dashboard
+- `/library/email-templates` - Email templates
+- `/library/chart-library` - Chart library
+- `/library/modals` - Modal templates
+- `/library/account-pages` - Account pages
+- `/library/landing-variations` - Landing variations
+- `/library/blog` - Blog templates
+- `/library/error-pages` - Error pages
+- `/library/profile` - Profile templates
+- `/library/dashboards` - Dashboard templates
+- `/library/marketing` - Marketing templates
+- `/library/settings-page` - Settings page
+- `/library/analytics-dashboard` - Analytics dashboard
+- `/library/user-management` - User management
+- `/library/team-dashboard` - Team dashboard
+- `/library/empty-states` - Empty states
+- `/library/authentication` - Authentication templates
+- `/library/notifications` - Notification templates
+- `/library/onboarding` - Onboarding templates
 
 ## Site-wide Validation Tests
 
@@ -328,7 +328,7 @@ npm run test:visual
 npx playwright test tests/visual/full-site.visual.spec.ts
 npx playwright test tests/visual/docs-components.visual.spec.ts
 npx playwright test tests/visual/docs-features.visual.spec.ts
-npx playwright test tests/visual/templates-full.visual.spec.ts
+npx playwright test tests/visual/library-full.visual.spec.ts
 npx playwright test tests/visual/site-wide-validation.spec.ts
 
 # Update snapshots (after intentional changes)

@@ -71,7 +71,7 @@ This document summarizes the completion of all requested demo pages, theme featu
 
 ## ✅ Task 3: Template Gallery
 
-### Created: `/templates` Hub Page
+### Created: `/library` Hub Page
 
 **Template Categories:**
 1. **Dashboards** (2 templates)
@@ -99,11 +99,11 @@ This document summarizes the completion of all requested demo pages, theme featu
 - "View Template" links
 - Coming soon section (6 upcoming templates)
 
-**File:** `src/app/templates/page.tsx` (294 lines)
+**File:** `src/app/library/page.tsx` (294 lines)
 
 ### Example Template: Analytics Dashboard
 
-**Created:** `/templates/analytics-dashboard`
+**Created:** `/library/analytics-dashboard`
 
 **Components Included:**
 - 4 metric cards with trend indicators
@@ -115,7 +115,7 @@ This document summarizes the completion of all requested demo pages, theme featu
 - Tabbed interface (Overview, Analytics, Reports)
 - Export functionality
 
-**File:** `src/app/templates/analytics-dashboard/page.tsx` (383 lines)
+**File:** `src/app/library/analytics-dashboard/page.tsx` (383 lines)
 
 **Real Components Used:**
 - Card, CardHeader, CardContent
@@ -169,8 +169,8 @@ This document summarizes the completion of all requested demo pages, theme featu
 ### Files Created
 - `src/app/variations/startup/page.tsx` - Startup Bold landing
 - `src/components/theme-switcher.tsx` - Theme switcher component
-- `src/app/templates/page.tsx` - Template gallery hub
-- `src/app/templates/analytics-dashboard/page.tsx` - Example template
+- `src/app/library/page.tsx` - Template gallery hub
+- `src/app/library/analytics-dashboard/page.tsx` - Example template
 - `PROMPT-PATTERNS-APPLIED.md` - Pattern analysis document
 - `DEMO-PAGES-COMPLETE.md` - This summary
 
@@ -207,8 +207,8 @@ This document summarizes the completion of all requested demo pages, theme featu
 6. **Variations Hub** - Landing comparison → `/variations`
 
 ### Templates (28 templates)
-7. **Template Gallery** - Overview → `/templates` ⭐ NEW
-8. **Analytics Dashboard** - Full example → `/templates/analytics-dashboard` ⭐ NEW
+7. **Template Gallery** - Overview → `/library` ⭐ NEW
+8. **Analytics Dashboard** - Full example → `/library/analytics-dashboard` ⭐ NEW
 
 ### Documentation
 - `CLAUDE.md` - AI assistant guide

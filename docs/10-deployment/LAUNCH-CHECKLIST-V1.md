@@ -171,7 +171,7 @@
   - [ ] Component prop types documented
   - [ ] TypeScript types exported
   - [ ] Storybook stories for all components
-  - [ ] Template usage guides (`/templates/README.md`)
+  - [ ] Template usage guides (`/library/README.md`)
 
 ### Repository Setup
 
@@ -567,7 +567,7 @@ See our [Quick Start Guide](https://github.com/yourusername/fabrk/blob/main/docs
 ## Documentation
 
 - [Component Showcase](https://fabrk.dev/components)
-- [Template Gallery](https://fabrk.dev/templates)
+- [Template Gallery](https://fabrk.dev/library)
 - [API Reference](https://docs.fabrk.dev)
 - [GitHub](https://github.com/yourusername/fabrk)
 
