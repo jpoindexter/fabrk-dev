@@ -14,6 +14,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from "@/com
 import { ThemeDropdown } from "@/components/theme/theme-dropdown";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
+import { Logo } from "@/components/shared/logo";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,9 +39,7 @@ export function Navigation() {
             href="/"
             className={cn("flex items-center gap-2 transition-opacity hover:opacity-80", mode.font)}
           >
-            <span className="text-primary text-xs">&gt;</span>
-            <span className="text-sm font-semibold tracking-tight">FABRK</span>
-            <span className="text-muted-foreground hidden text-xs sm:inline">_CONSOLE</span>
+            <Logo />
           </Link>
         </motion.div>
 

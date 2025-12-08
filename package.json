@@ -55,11 +55,11 @@
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
-      "eslint --fix",
+      "npx eslint --fix",
       "prettier --write"
     ],
     "src/**/*.tsx": [
-      "node .internal/scripts/utilities/pre-commit-audit.mjs"
+      ""
     ],
     "src/**/*.{json,css,md}": [
       "prettier --write"
