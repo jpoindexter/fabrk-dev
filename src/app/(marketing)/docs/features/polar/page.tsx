@@ -80,7 +80,7 @@ POLAR_WEBHOOK_SECRET="your_webhook_secret"`,
           title: "Create Discount Code (Optional)",
           description: "In Marketing → Discounts, create a discount code with usage limits.",
           code: `# The discount ID is found in the discount details
-# You can set auto-expiring discounts (e.g., first 1000 customers)
+# You can set auto-expiring discounts (e.g., first 100 customers)
 FABRK_DISCOUNT_ID="1161689c-dbc2-4e53-8c18-43f4af7aaa3f"`,
           language: "bash",
           tip: "Use usage-limited discounts for launch promotions!",
