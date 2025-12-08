@@ -51,7 +51,7 @@
     "audit:staged": "node .internal/scripts/utilities/pre-commit-audit.mjs",
     "audit:design": "node .internal/scripts/utilities/design-system-audit.mjs",
     "audit:design:json": "node .internal/scripts/utilities/design-system-audit.mjs --json",
-    "prepare": "husky"
+    "prepare": "npx husky install"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
@@ -179,24 +179,6 @@
     "@testing-library/user-event": "^14.6.1",
     "@types/bcryptjs": "^3.0.0",
     "@types/node": "^24.10.1",
-    "@types/react": "^19.2.3",
-    "@types/react-dom": "^19.2.3",
-    "@typescript-eslint/eslint-plugin": "^8.48.1",
-    "@typescript-eslint/parser": "^8.48.1",
-    "@vitejs/plugin-react": "^5.1.1",
-    "@vitest/coverage-v8": "^4.0.15",
-    "@vitest/ui": "^4.0.8",
-    "autoprefixer": "^10.4.22",
-    "axe-core": "^4.11.0",
-    "axe-playwright": "^2.2.2",
-    "baseline-browser-mapping": "^2.9.2",
-    "daisyui": "^5.5.8",
-    "eslint": "^9.39.1",
-    "eslint-config-next": "^16.0.7",
-    "eslint-plugin-tailwind-v4": "^1.0.15",
-    "husky": "^9.1.7",
-    "jsdom": "^27.2.0",
-    "lint-staged": "^16.2.7",
     "postcss": "^8",
     "prettier": "^3.7.4",
     "prettier-plugin-tailwindcss": "^0.7.2",
