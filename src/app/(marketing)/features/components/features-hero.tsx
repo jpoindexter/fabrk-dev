@@ -49,15 +49,15 @@ export function FeaturesHero() {
             <Card size="auto">
               <CardHeader code="0x01" title="STATUS" />
               <CardContent padding="md">
-                <p className="text-muted-foreground mb-4 text-sm">
+                <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
                   Stop rebuilding the same features for every project. Fabrk includes
                   authentication, payments, database, real-time, multi-tenancy, admin dashboard, and
                   more - all production-tested and ready to deploy.
                 </p>
-                <div className="flex flex-wrap gap-4 text-sm">
+                <div className={cn("flex flex-wrap gap-4 text-xs", mode.font)}>
                   <span>
                     <span className="text-muted-foreground">Features:</span>{" "}
-                    <span className="text-primary">8_CATEGORIES</span>
+                    <span className="text-primary">9_CATEGORIES</span>
                   </span>
                   <span>
                     <span className="text-muted-foreground">Status:</span>{" "}
