@@ -10,7 +10,7 @@ import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/sec
 import { inviteToOrganization, hasOrganizationRole } from "@/lib/teams/organizations";
 import { sendOrganizationInvite } from "@/lib/email";
 import { prisma } from "@/lib/prisma";
-import { OrgRole } from "@/generated/prisma";
+import { OrgRole } from "@/generated/prisma/client";
 import { logger } from "@/lib/logger";
 import { z } from "zod";
 

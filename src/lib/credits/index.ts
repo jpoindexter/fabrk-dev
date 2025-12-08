@@ -3,7 +3,7 @@
  * AI usage tracking and billing infrastructure
  */
 
-export { CreditTransactionType } from "@/generated/prisma";
+export { CreditTransactionType } from "@/generated/prisma/client";
 
 export { getOrCreateBalance, hasCredits, getBalance, deductCredits, addCredits } from "./balance";
 

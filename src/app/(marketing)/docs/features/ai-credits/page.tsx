@@ -131,7 +131,7 @@ const balanceRecord = await getOrCreateBalance(userId);
           title: "Add Credits (Purchase/Bonus)",
           description: "Add credits from purchases, referrals, or bonuses",
           code: `import { addCredits } from "@/lib/credits";
-import { CreditTransactionType } from "@/generated/prisma";
+import { CreditTransactionType } from "@/generated/prisma/client";
 
 // After successful purchase
 await addCredits(

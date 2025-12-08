@@ -17,7 +17,7 @@ import {
   getUserOrganizations,
 } from "@/lib/teams/organizations";
 import { prisma } from "@/lib/prisma";
-import { OrgRole } from "@/generated/prisma";
+import { OrgRole } from "@/generated/prisma/client";
 import { logger } from "@/lib/logger";
 
 // UUID v4 format regex

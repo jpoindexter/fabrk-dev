@@ -16,7 +16,7 @@ import { CookieConsent } from "@/components/cookie-consent";
 import { GeistSans } from "geist/font/sans";
 import localFont from "next/font/local";
 import { generateOrganizationSchema, generateProductSchema } from "@/lib/metadata";
-import { AnimatedBackground } from "@/components/marketing/animated-background";
+import { TerminalBackground } from "@/components/shared/terminal-background";
 import { ThemeScript } from "@/design-system/providers";
 import "./globals.css";
 
@@ -244,7 +244,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </a>
           </div>
           <div className="bg-background relative isolate flex min-h-screen flex-col">
-            <AnimatedBackground />
+            <TerminalBackground />
             <main id="main-content" className="flex-1">
               <Suspense>{children}</Suspense>
             </main>

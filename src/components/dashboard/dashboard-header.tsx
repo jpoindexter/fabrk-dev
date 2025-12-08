@@ -11,7 +11,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Home, Settings, CreditCard, Code, LogOut, User, Shield, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Logo } from "@/components/marketing/logo";
+import { Logo } from "@/components/shared/logo";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,

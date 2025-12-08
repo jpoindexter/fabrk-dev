@@ -23,10 +23,33 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { queryAuditLogs, getSecuritySummary, type AuditLogEntry } from "@/lib/security/audit-log";
 import { AlertTriangle, CheckCircle, Info, XCircle, Shield } from "lucide-react";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
+
+// Type definition for audit log entries (matches server type)
+interface AuditLogEntry {
+  id: string;
+  timestamp: Date;
+  eventType: string;
+  userId?: string;
+  userEmail?: string;
+  ipAddress?: string;
+  userAgent?: string;
+  resource?: string;
+  action: string;
+  result: "success" | "failure" | "error";
+  metadata?: Record<string, unknown>;
+  severity: "low" | "medium" | "high" | "critical";
+  hash?: string;
+}
+
+interface SecuritySummary {
+  totalEvents: number;
+  byType: Record<string, number>;
+  bySeverity: Record<string, number>;
+  criticalEvents: AuditLogEntry[];
+}
 
 function formatDate(date: Date): string {
   return new Intl.DateTimeFormat("en-US", {
@@ -66,25 +89,35 @@ function getResultIcon(result: string): React.JSX.Element {
 export default function AdminSecurityPage() {
   const [logs, setLogs] = useState<AuditLogEntry[]>([]);
   const [severityFilter, setSeverityFilter] = useState<string | undefined>();
-  const [summary, setSummary] = useState<Awaited<ReturnType<typeof getSecuritySummary>>>();
+  const [summary, setSummary] = useState<SecuritySummary>();
 
   useEffect(() => {
     // Load logs - use startTransition for non-urgent updates
     startTransition(() => {
       const loadData = async () => {
-        const filters: Parameters<typeof queryAuditLogs>[0] = {};
-        if (severityFilter && severityFilter !== "all") {
-          filters.severity = severityFilter as AuditLogEntry["severity"];
+        try {
+          // Fetch logs from API
+          const logsParams = new URLSearchParams();
+          if (severityFilter && severityFilter !== "all") {
+            logsParams.set("severity", severityFilter);
+          }
+          logsParams.set("limit", "50");
+
+          const logsResponse = await fetch(`/api/admin/audit-logs?${logsParams}`);
+          if (logsResponse.ok) {
+            const logsData = await logsResponse.json();
+            setLogs(logsData.logs || []);
+          }
+
+          // Fetch summary from API (last 7 days)
+          const summaryResponse = await fetch("/api/admin/audit-logs/summary?days=7");
+          if (summaryResponse.ok) {
+            const summaryData = await summaryResponse.json();
+            setSummary(summaryData.summary);
+          }
+        } catch (error) {
+          console.error("Failed to load audit data:", error);
         }
-        filters.limit = 50;
-
-        const auditLogs = await queryAuditLogs(filters);
-        setLogs(auditLogs);
-
-        // Load summary (last 7 days)
-        const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-        const summaryData = await getSecuritySummary(since);
-        setSummary(summaryData);
       };
 
       loadData();

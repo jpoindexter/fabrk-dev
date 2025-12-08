@@ -4,7 +4,7 @@
  */
 
 import { prisma } from "@/lib/prisma";
-import { CreditTransactionType } from "@/generated/prisma";
+import { CreditTransactionType } from "@/generated/prisma/client";
 import { getTierAllowance, type SubscriptionTier } from "./pricing";
 
 /**

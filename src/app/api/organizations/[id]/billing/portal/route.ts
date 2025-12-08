@@ -9,7 +9,7 @@ import { withCsrfProtection } from "@/lib/security/csrf";
 import { hasOrganizationRole } from "@/lib/teams/organizations";
 import { prisma } from "@/lib/prisma";
 import { stripe } from "@/lib/stripe";
-import { OrgRole } from "@/generated/prisma";
+import { OrgRole } from "@/generated/prisma/client";
 import { logger } from "@/lib/logger";
 
 interface RouteContext {
