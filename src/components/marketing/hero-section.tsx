@@ -23,14 +23,7 @@ import {
 } from "simple-icons";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  Stat,
-  StatGroup,
-  Badge,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardContent, Stat, StatGroup, Badge } from "@/components/ui/card";
 
 // Typewriter effect component
 function TypeWriter({
@@ -279,7 +272,7 @@ export function HeroSection() {
                 &gt; GET_FABRK
               </PolarCheckoutButton>
               <Button variant="outline" asChild className={cn("text-xs", mode.radius, mode.font)}>
-                <Link href="/demo">&gt; VIEW_LIVE_DEMO</Link>
+                <Link href="/docs/components/overview">&gt; VIEW_LIBRARY</Link>
               </Button>
             </motion.div>
 
@@ -289,12 +282,7 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <Badge
-                code="0x02"
-                label="POWERED_BY"
-                meta="FIB[1,1,2,3,5,8,13]"
-                className="mb-4"
-              />
+              <Badge code="0x02" label="POWERED_BY" meta="FIB[1,1,2,3,5,8,13]" className="mb-4" />
               <div className="flex flex-wrap gap-4">
                 {techStack.map((tech) => (
                   <div
