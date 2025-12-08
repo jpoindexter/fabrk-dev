@@ -39,6 +39,7 @@ import {
   FileText,
   UserCog,
   Languages,
+  Coins,
 } from "lucide-react";
 
 export const docsNavigation: NavSection[] = [
@@ -93,9 +94,10 @@ export const docsNavigation: NavSection[] = [
     items: [
       { title: "[06.1] API_ROUTES", href: "/docs/tutorials/api-routes", icon: FileCode },
       { title: "[06.2] PROTECTED_PAGES", href: "/docs/tutorials/protected-pages", icon: Shield },
-      { title: "[06.3] CLOUD_STORAGE", href: "/docs/features/cloud-storage", icon: Cloud },
-      { title: "[06.4] FILE_UPLOADS", href: "/docs/tutorials/file-uploads", icon: Upload },
-      { title: "[06.5] WEBHOOKS", href: "/docs/features/webhooks", icon: Webhook },
+      { title: "[06.3] AI_CREDITS", href: "/docs/features/ai-credits", icon: Coins },
+      { title: "[06.4] CLOUD_STORAGE", href: "/docs/features/cloud-storage", icon: Cloud },
+      { title: "[06.5] FILE_UPLOADS", href: "/docs/tutorials/file-uploads", icon: Upload },
+      { title: "[06.6] WEBHOOKS", href: "/docs/features/webhooks", icon: Webhook },
     ],
   },
   {

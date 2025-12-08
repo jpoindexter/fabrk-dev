@@ -85,6 +85,7 @@ const docsNavigation = [
     items: [
       { title: "API Routes", href: "/docs/tutorials/api-routes" },
       { title: "Protected Pages", href: "/docs/tutorials/protected-pages" },
+      { title: "AI Credits", href: "/docs/features/ai-credits" },
       { title: "Cloud Storage", href: "/docs/features/cloud-storage" },
       { title: "File Uploads", href: "/docs/tutorials/file-uploads" },
       { title: "Webhooks Setup", href: "/docs/tutorials/webhooks" },
