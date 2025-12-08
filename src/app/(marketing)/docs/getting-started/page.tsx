@@ -1,6 +1,6 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { Rocket, User, CreditCard, Mail, Database, Shield } from "lucide-react";
+import { Rocket, User, CreditCard, Mail, Database, Shield, Coins } from "lucide-react";
 
 export const metadata = {
   title: "Getting Started - Fabrk Docs",
@@ -196,6 +196,11 @@ npm run db:push && npm run dev`,
             href="/docs/features/cloud-storage"
             title="File Storage"
             description="Upload files to cloud"
+          />
+          <DocsLinkCard
+            href="/docs/features/ai-credits"
+            title="AI Credits"
+            description="Token billing for AI features"
           />
         </div>
       </DocsSection>

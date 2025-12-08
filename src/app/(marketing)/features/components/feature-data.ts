@@ -19,6 +19,7 @@ import {
   TestTube,
   BookOpen,
   Globe,
+  Coins,
 } from "lucide-react";
 
 // Core feature categories with detailed information
@@ -174,6 +175,25 @@ export const FEATURE_CATEGORIES = [
       "Batch sending support",
     ],
     stats: { label: "Email templates", value: "5+" },
+  },
+  {
+    id: "ai-credits",
+    icon: Coins,
+    title: "AI Credits System",
+    tagline: "Token-based AI billing",
+    description:
+      "Complete credit/token billing system for AI features. Track usage per endpoint, monthly allowances by tier, purchase packs, and detailed transaction history.",
+    features: [
+      "Credit balance tracking",
+      "Per-endpoint usage metering",
+      "Tier-based monthly allowances",
+      "Credit purchase packs",
+      "Transaction history",
+      "Usage analytics dashboard",
+      "Automatic refill on subscription",
+      "Insufficient credits handling",
+    ],
+    stats: { label: "Transaction types", value: "5" },
   },
 ];
 

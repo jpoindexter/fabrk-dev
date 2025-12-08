@@ -31,6 +31,9 @@ import {
   Moon,
   Palette,
   Layers,
+  Coins,
+  BarChart3,
+  Zap,
 } from "lucide-react";
 
 import { FeatureSectionLayout } from "./feature-section";
@@ -38,6 +41,7 @@ import { AuthPreview } from "./preview-auth";
 import { OrganizationPreview } from "./preview-organization";
 import { BillingPreview } from "./preview-billing";
 import { DesignSystemPreview } from "./preview-design";
+import { CreditsPreview } from "./preview-credits";
 
 export function FeaturesSection() {
   return (
@@ -145,6 +149,33 @@ export function FeaturesSection() {
             ]}
           >
             <BillingPreview />
+          </FeatureSectionLayout>
+
+          {/* AI Credits */}
+          <FeatureSectionLayout
+            spec="AI_CREDITS"
+            title="AI Credits System"
+            description="Token-based billing for AI features. Track usage, manage allowances, and monetize AI capabilities."
+            reversed
+            features={[
+              {
+                icon: Coins,
+                title: "Credit Balance",
+                description: "Track credits per user with tier-based allowances.",
+              },
+              {
+                icon: BarChart3,
+                title: "Usage Analytics",
+                description: "Visual dashboard showing daily consumption.",
+              },
+              {
+                icon: Zap,
+                title: "Per-Endpoint Metering",
+                description: "Different credit costs per AI feature.",
+              },
+            ]}
+          >
+            <CreditsPreview />
           </FeatureSectionLayout>
 
           {/* Design System */}

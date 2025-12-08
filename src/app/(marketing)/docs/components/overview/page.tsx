@@ -167,6 +167,15 @@ const componentCategories = [
       { name: "simple-icon", description: "Brand icons" },
     ],
   },
+  {
+    name: "AI Credits",
+    hex: "0x6D",
+    components: [
+      { name: "balance-display", description: "Credit balance indicator" },
+      { name: "credit-usage-chart", description: "Daily usage bar chart" },
+      { name: "credit-transaction-table", description: "Transaction history" },
+    ],
+  },
 ];
 
 export default function ComponentsOverviewPage() {
