@@ -114,16 +114,13 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { logger } from "@/lib/logger";
 import { env } from "@/lib/env";
-import {
-  isWebhookEventProcessed,
-  markWebhookEventProcessed,
-} from "@/lib/stripe/idempotency";
+import { isWebhookEventProcessed, markWebhookEventProcessed } from "@/lib/stripe/idempotency";
 import * as paymentHandlers from "./handlers/payment";
 import * as subscriptionHandlers from "./handlers/subscription";
 import * as checkoutHandlers from "./handlers/checkout";
 
 const stripe = new Stripe(env.server.STRIPE_SECRET_KEY!, {
-  apiVersion: "2025-10-29.clover",
+  apiVersion: "2025-11-17.clover",
 });
 
 export async function POST(req: Request) {

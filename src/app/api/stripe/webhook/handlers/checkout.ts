@@ -13,7 +13,7 @@ import { createHash } from "crypto";
 import Stripe from "stripe";
 
 const _stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2025-10-29.clover",
+  apiVersion: "2025-11-17.clover",
 });
 
 export async function handleCheckoutCompleted(event: Stripe.Event) {
@@ -27,9 +27,7 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
     });
 
     // Extract customer information
-    const customerEmail =
-      session.customer_email ||
-      (session.customer_details?.email as string);
+    const customerEmail = session.customer_email || (session.customer_details?.email as string);
 
     if (!customerEmail) {
       logger.error("No customer email found in checkout session");
@@ -37,12 +35,10 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
     }
 
     // Extract metadata
-    const { userId, product: _product, tier } = session.metadata || {};
-    const _isGuestPurchase = userId === "guest";
+    const { tier } = session.metadata || {};
 
     // Get or create customer ID
-    const customerId =
-      typeof session.customer === "string" ? session.customer : null;
+    const customerId = typeof session.customer === "string" ? session.customer : null;
 
     // Generate license key
     const licenseKey = generateLicenseKey();
@@ -98,7 +94,8 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
     });
 
     // Build magic link URL with plain token (sent via email)
-    const _magicLink = `${process.env.NEXT_PUBLIC_APP_URL}/magic-signin?token=${magicLinkToken}&email=${encodeURIComponent(customerEmail)}`;
+    // TODO: Add magic link to welcome email when email template supports it
+    void `${process.env.NEXT_PUBLIC_APP_URL}/magic-signin?token=${magicLinkToken}&email=${encodeURIComponent(customerEmail)}`;
 
     // Send welcome email with license key
     await sendWelcomeEmail(customerEmail, user.name || "Customer", licenseKey);
