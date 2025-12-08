@@ -149,6 +149,7 @@ const serverSchema = z.object({
 
   EMAIL_FROM: z.string().email().optional(),
   EMAIL_REPLY_TO: z.string().email().optional(),
+  CONTACT_FORM_EMAIL: z.string().email().optional(),
 
   // ============================================================================
   // CRON JOBS & BACKGROUND WORKERS

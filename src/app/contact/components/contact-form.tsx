@@ -147,6 +147,7 @@ export function ContactForm() {
                   <SelectItem value="feature">FEATURE_REQUEST</SelectItem>
                   <SelectItem value="bug">BUG_REPORT</SelectItem>
                   <SelectItem value="partnership">PARTNERSHIP_OPPORTUNITY</SelectItem>
+                  <SelectItem value="success-story">SUCCESS_STORY</SelectItem>
                   <SelectItem value="other">OTHER</SelectItem>
                 </SelectContent>
               </Select>

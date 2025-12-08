@@ -8,12 +8,22 @@ import { z } from "zod";
 import { sendEmail } from "@/lib/email";
 import { logger } from "@/lib/logger";
 import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
+import { env } from "@/lib/env";
 
 // Validation schema for contact form
 const contactSchema = z.object({
   name: z.string().min(1, "Name is required").max(100),
   email: z.string().email("Invalid email address"),
-  subject: z.enum(["sales", "support", "billing", "feature", "bug", "partnership", "other"]),
+  subject: z.enum([
+    "sales",
+    "support",
+    "billing",
+    "feature",
+    "bug",
+    "partnership",
+    "success-story",
+    "other",
+  ]),
   message: z.string().min(10, "Message must be at least 10 characters").max(5000),
 });
 
@@ -25,6 +35,7 @@ const subjectLabels: Record<string, string> = {
   feature: "Feature Request",
   bug: "Bug Report",
   partnership: "Partnership Opportunity",
+  "success-story": "Success Story",
   other: "General Inquiry",
 };
 
@@ -107,8 +118,8 @@ export async function POST(request: NextRequest) {
       </html>
     `;
 
-    // Send email to support
-    const supportEmail = "support@fabrek.dev";
+    // Send email to support (configurable via env)
+    const supportEmail = env.server.CONTACT_FORM_EMAIL || "support@fabrek.dev";
 
     const emailResult = await sendEmail(
       supportEmail,
