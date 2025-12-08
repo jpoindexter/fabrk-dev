@@ -36,51 +36,12 @@ export function PricingSection() {
       <div className="mx-auto max-w-7xl">
         {/* Two Column Layout */}
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Left Column - Description */}
+          {/* Left Column - Pricing Card */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col justify-center"
-          >
-            <Badge
-              code="0x40"
-              label="PRICING"
-              meta="COMMERCIAL_TIER │ FIB[144]"
-              className="mb-4 self-start"
-            />
-
-            <h2 className={cn("text-primary mb-2 text-sm", mode.font)}>FABRK_STARTER</h2>
-            <h3 className={cn("mb-6 text-4xl font-semibold tracking-tight", mode.font)}>
-              ONE_TIME_PURCHASE.
-              <br />
-              <span className="text-muted-foreground">UNLIMITED_PROJECTS.</span>
-            </h3>
-
-            <div className="border-border mb-6 border-l-2 pl-4">
-              <p className={cn("text-muted-foreground text-sm", mode.font)}>
-                Upon purchase, you can use the starter kits for personal and commercial projects
-                with no restrictions on the number of developers or projects.
-              </p>
-            </div>
-
-            <Card size="auto">
-              <CardContent padding="sm">
-                <InfoNote label="NOTE" className="mt-0">
-                  Fabrk is 40-70% more affordable than comparable Next.js starter kits. No hidden
-                  charges.
-                </InfoNote>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          {/* Right Column - Pricing Card */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.1 }}
             className="flex flex-col items-center justify-center"
           >
             {/* Terminal Card */}
@@ -135,6 +96,45 @@ export function PricingSection() {
                 <div className={cn("text-muted-foreground mt-3 text-center text-xs", mode.font)}>
                   Secure checkout via Polar │ All sales final
                 </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          {/* Right Column - Description */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="flex flex-col justify-center"
+          >
+            <Badge
+              code="0x40"
+              label="PRICING"
+              meta="COMMERCIAL_TIER │ FIB[144]"
+              className="mb-4 self-start"
+            />
+
+            <h2 className={cn("text-primary mb-2 text-sm", mode.font)}>FABRK_STARTER</h2>
+            <h3 className={cn("mb-6 text-4xl font-semibold tracking-tight", mode.font)}>
+              ONE_TIME_PURCHASE.
+              <br />
+              <span className="text-muted-foreground">UNLIMITED_PROJECTS.</span>
+            </h3>
+
+            <div className="border-border mb-6 border-l-2 pl-4">
+              <p className={cn("text-muted-foreground text-sm", mode.font)}>
+                Upon purchase, you can use the starter kits for personal and commercial projects
+                with no restrictions on the number of developers or projects.
+              </p>
+            </div>
+
+            <Card size="auto">
+              <CardContent padding="sm">
+                <InfoNote label="NOTE" className="mt-0">
+                  Fabrk is 40-70% more affordable than comparable Next.js starter kits. No hidden
+                  charges.
+                </InfoNote>
               </CardContent>
             </Card>
           </motion.div>
