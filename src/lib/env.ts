@@ -219,6 +219,8 @@ const serverSchema = z.object({
       return true;
     }, "OPENAI_API_KEY must be a valid OpenAI API key"),
 
+  GOOGLE_AI_API_KEY: z.string().optional(),
+
   ANTHROPIC_API_KEY: z
     .string()
     .optional()

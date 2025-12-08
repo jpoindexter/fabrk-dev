@@ -69,6 +69,8 @@
     "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
+    "@ai-sdk/google": "^2.0.44",
+    "@ai-sdk/openai": "^2.0.79",
     "@auth/prisma-adapter": "^2.11.1",
     "@hookform/resolvers": "^5.2.2",
     "@lemonsqueezy/lemonsqueezy.js": "^4.0.0",
@@ -116,6 +118,7 @@
     "@upstash/redis": "^1.35.7",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
+    "ai": "^5.0.108",
     "algoliasearch": "^5.43.0",
     "bcryptjs": "^3.0.3",
     "class-variance-authority": "^0.7.0",
