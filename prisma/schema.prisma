@@ -1,13 +1,14 @@
 // Simplified Prisma Schema - ShipFast Style
 // Only essential models for SaaS boilerplate
+// Prisma 7: URL moved to prisma.config.ts, client generated to src/generated/prisma
 
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 // ===========================

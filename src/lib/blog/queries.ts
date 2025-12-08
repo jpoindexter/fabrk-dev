@@ -4,7 +4,7 @@
  */
 
 import { prisma } from "@/lib/prisma";
-import type { BlogPost, BlogCategory, Prisma } from "@prisma/client";
+import type { BlogPost, BlogCategory, Prisma } from "@/generated/prisma";
 
 export type BlogPostWithAuthor = BlogPost & {
   author: { name: string | null; email: string; image: string | null };

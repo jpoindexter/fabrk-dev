@@ -9,7 +9,7 @@ import { auth } from "@/lib/auth";
 import { withCsrfProtection } from "@/lib/security/csrf";
 import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
 import { hasOrganizationRole, removeMember, updateMemberRole } from "@/lib/teams/organizations";
-import { OrgRole } from "@prisma/client";
+import { OrgRole } from "@/generated/prisma";
 import { logger } from "@/lib/logger";
 
 interface RouteContext {

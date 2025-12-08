@@ -17,7 +17,7 @@ import {
   getUserOrganizations,
 } from "@/lib/teams/organizations";
 import { prisma } from "@/lib/prisma";
-import { OrgRole } from "@prisma/client";
+import { OrgRole } from "@/generated/prisma";
 import { logger } from "@/lib/logger";
 
 // UUID v4 format regex
@@ -45,35 +45,24 @@ async function getOrganization(idOrSlug: string) {
   }
 }
 
-export async function GET(
-  req: NextRequest,
-  context: RouteContext
-) {
+export async function GET(req: NextRequest, context: RouteContext) {
   try {
     const { id } = await context.params;
     const session = await auth();
 
     if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const organization = await getOrganization(id);
 
     if (!organization) {
-      return NextResponse.json(
-        { error: "Organization not found" },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: "Organization not found" }, { status: 404 });
     }
 
     // Get user's role in this organization
     const userOrgs = await getUserOrganizations(session.user.id);
-    const userMembership = userOrgs.find(
-      (uo) => uo.id === organization.id
-    );
+    const userMembership = userOrgs.find((uo) => uo.id === organization.id);
 
     if (!userMembership) {
       return NextResponse.json(
@@ -95,43 +84,27 @@ export async function GET(
     });
   } catch (error: unknown) {
     logger.error("Failed to fetch organization:", error);
-    return NextResponse.json(
-      { error: "Failed to fetch organization" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to fetch organization" }, { status: 500 });
   }
 }
 
-export const PATCH = withCsrfProtection(async (
-  req: NextRequest,
-  context: RouteContext
-) => {
+export const PATCH = withCsrfProtection(async (req: NextRequest, context: RouteContext) => {
   try {
     const { id } = await context.params;
     const session = await auth();
 
     if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const organization = await getOrganization(id);
 
     if (!organization) {
-      return NextResponse.json(
-        { error: "Organization not found" },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: "Organization not found" }, { status: 404 });
     }
 
     // Verify user has permission (must be OWNER or ADMIN)
-    const canUpdate = await hasOrganizationRole(
-      organization.id,
-      session.user.id,
-      OrgRole.ADMIN
-    );
+    const canUpdate = await hasOrganizationRole(organization.id, session.user.id, OrgRole.ADMIN);
 
     if (!canUpdate) {
       return NextResponse.json(
@@ -183,43 +156,27 @@ export const PATCH = withCsrfProtection(async (
       );
     }
 
-    return NextResponse.json(
-      { error: "Failed to update organization" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to update organization" }, { status: 500 });
   }
 });
 
-export const DELETE = withCsrfProtection(async (
-  req: NextRequest,
-  context: RouteContext
-) => {
+export const DELETE = withCsrfProtection(async (req: NextRequest, context: RouteContext) => {
   try {
     const { id } = await context.params;
     const session = await auth();
 
     if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const organization = await getOrganization(id);
 
     if (!organization) {
-      return NextResponse.json(
-        { error: "Organization not found" },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: "Organization not found" }, { status: 404 });
     }
 
     // Only OWNER can delete
-    const isOwner = await hasOrganizationRole(
-      organization.id,
-      session.user.id,
-      OrgRole.OWNER
-    );
+    const isOwner = await hasOrganizationRole(organization.id, session.user.id, OrgRole.OWNER);
 
     if (!isOwner) {
       return NextResponse.json(
@@ -236,9 +193,6 @@ export const DELETE = withCsrfProtection(async (
     });
   } catch (error: unknown) {
     logger.error("Failed to delete organization:", error);
-    return NextResponse.json(
-      { error: "Failed to delete organization" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to delete organization" }, { status: 500 });
   }
 });

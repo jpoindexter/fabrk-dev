@@ -9,34 +9,24 @@ import { withCsrfProtection } from "@/lib/security/csrf";
 import { hasOrganizationRole } from "@/lib/teams/organizations";
 import { prisma } from "@/lib/prisma";
 import { stripe } from "@/lib/stripe";
-import { OrgRole } from "@prisma/client";
+import { OrgRole } from "@/generated/prisma";
 import { logger } from "@/lib/logger";
 
 interface RouteContext {
   params: Promise<{ id: string }>;
 }
 
-export const POST = withCsrfProtection(async (
-  req: NextRequest,
-  context: RouteContext
-) => {
+export const POST = withCsrfProtection(async (req: NextRequest, context: RouteContext) => {
   try {
     const { id } = await context.params;
     const session = await auth();
 
     if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     // Verify user has permission (OWNER or ADMIN)
-    const canManageBilling = await hasOrganizationRole(
-      id,
-      session.user.id,
-      OrgRole.ADMIN
-    );
+    const canManageBilling = await hasOrganizationRole(id, session.user.id, OrgRole.ADMIN);
 
     if (!canManageBilling) {
       return NextResponse.json(
@@ -52,10 +42,7 @@ export const POST = withCsrfProtection(async (
     });
 
     if (!organization) {
-      return NextResponse.json(
-        { error: "Organization not found" },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: "Organization not found" }, { status: 404 });
     }
 
     if (!organization.customerId) {
@@ -76,9 +63,6 @@ export const POST = withCsrfProtection(async (
     });
   } catch (error: unknown) {
     logger.error("Failed to create portal session:", error);
-    return NextResponse.json(
-      { error: "Failed to create billing portal session" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to create billing portal session" }, { status: 500 });
   }
 });
