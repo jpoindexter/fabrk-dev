@@ -183,7 +183,6 @@ export function FeaturesSection() {
             spec="DESIGN_SYSTEM"
             title="Design System"
             description="Foundational and advanced components covering wide range of use-cases without sacrificing flexibility."
-            reversed
             features={[
               {
                 icon: Moon,
