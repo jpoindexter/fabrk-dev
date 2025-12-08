@@ -15,6 +15,7 @@ import { emailTemplates } from "./components/email-template-data";
 import { EmailStats } from "./components/email-stats";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
+import DOMPurify from "isomorphic-dompurify";
 
 const templateCode = `"use client";
 
@@ -110,7 +111,10 @@ function EmailTemplatesPreview() {
                   <div className={cn(mode.radius, "border-border bg-muted mb-6 border p-8")}>
                     <div
                       className="border-border bg-background mx-auto block min-h-[400px] max-w-[600px] border p-6"
-                      dangerouslySetInnerHTML={{ __html: template.preview }}
+                      // SECURITY: Sanitized with DOMPurify to prevent XSS
+                      dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize(template.preview),
+                      }}
                     />
                   </div>
 
