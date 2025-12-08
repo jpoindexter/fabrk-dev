@@ -5,7 +5,7 @@
 "use client";
 
 import { Sparkles, Send } from "lucide-react";
-import { FormPreview, CodeViewer } from "@/components/ai";
+import { FormPreview, generateZodCode, generateComponentCode } from "@/components/ai";
 import { Card, CardHeader, CardContent, TemplatePageHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -281,14 +281,125 @@ function AIFormGeneratorPreview() {
           </CardContent>
         </Card>
 
-        {/* Results Section - Always visible with demo data */}
-        <div className="grid gap-6 lg:grid-cols-2">
-          {/* Live Preview */}
-          <FormPreview form={demoForm} />
+        {/* Results Section - Tabbed interface */}
+        <Tabs defaultValue="preview" className="w-full">
+          {/* Tab Navigation Card */}
+          <Card>
+            <CardHeader code="0x01" title="GENERATED_OUTPUT" />
+            <div className="flex items-center justify-between">
+              <TabsList
+                className={cn(
+                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  mode.radius
+                )}
+              >
+                <TabsTrigger
+                  value="preview"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  [PREVIEW]
+                </TabsTrigger>
+                <TabsTrigger
+                  value="schema"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  [SCHEMA]
+                </TabsTrigger>
+                <TabsTrigger
+                  value="component"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  [COMPONENT]
+                </TabsTrigger>
+              </TabsList>
+            </div>
+          </Card>
 
-          {/* Generated Code */}
-          <CodeViewer form={demoForm} />
-        </div>
+          {/* Preview Tab Content */}
+          <TabsContent value="preview" className="mt-6">
+            <Card>
+              <CardHeader code="0x02" title="FORM_PREVIEW" />
+              <div className="p-6">
+                <div className="mb-4">
+                  <h3 className={cn("text-lg font-semibold", mode.font)}>{demoForm.name}</h3>
+                  <p className={cn("text-muted-foreground text-xs", mode.font)}>
+                    {demoForm.description}
+                  </p>
+                </div>
+                <form className="space-y-4">
+                  {demoForm.fields.map((field) => (
+                    <div key={field.name} className="space-y-2">
+                      <label className={cn("text-xs", mode.font)}>
+                        [{field.label.toUpperCase()}]:
+                        {field.required && <span className="text-destructive ml-1">*</span>}
+                      </label>
+                      {field.type === "textarea" ? (
+                        <Textarea
+                          placeholder={field.placeholder}
+                          className={cn("text-sm", mode.radius, mode.font)}
+                          rows={4}
+                        />
+                      ) : (
+                        <input
+                          type={field.type}
+                          placeholder={field.placeholder}
+                          className={cn(
+                            "border-border bg-background w-full border px-3 py-2 text-sm",
+                            mode.radius,
+                            mode.font
+                          )}
+                        />
+                      )}
+                    </div>
+                  ))}
+                  <Button type="button" className={cn("w-full text-xs", mode.radius, mode.font)}>
+                    &gt; {demoForm.submitLabel.toUpperCase()}
+                  </Button>
+                </form>
+              </div>
+            </Card>
+          </TabsContent>
+
+          {/* Schema Tab Content */}
+          <TabsContent value="schema" className="mt-6">
+            <Card>
+              <CardHeader code="0x02" title="ZOD_SCHEMA" />
+              <div className="w-full max-w-full overflow-x-auto p-4">
+                <CodeBlock
+                  code={generateZodCode(demoForm)}
+                  language="typescript"
+                  maxHeight="500px"
+                />
+              </div>
+            </Card>
+          </TabsContent>
+
+          {/* Component Tab Content */}
+          <TabsContent value="component" className="mt-6">
+            <Card>
+              <CardHeader code="0x02" title="REACT_COMPONENT" />
+              <div className="w-full max-w-full overflow-x-auto p-4">
+                <CodeBlock
+                  code={generateComponentCode(demoForm)}
+                  language="tsx"
+                  maxHeight="500px"
+                />
+              </div>
+            </Card>
+          </TabsContent>
+        </Tabs>
       </div>
     </div>
   );

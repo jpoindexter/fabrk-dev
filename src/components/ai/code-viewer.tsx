@@ -17,7 +17,7 @@ interface CodeViewerProps {
 }
 
 // Generate Zod schema code
-function generateZodCode(form: GeneratedForm): string {
+export function generateZodCode(form: GeneratedForm): string {
   const lines: string[] = [
     'import { z } from "zod";',
     "",
@@ -100,7 +100,7 @@ function getZodType(field: FormField): string {
 }
 
 // Generate React component code
-function generateComponentCode(form: GeneratedForm): string {
+export function generateComponentCode(form: GeneratedForm): string {
   const schemaName = form.name.charAt(0).toLowerCase() + form.name.slice(1) + "Schema";
   const typeName = form.name + "Data";
 
@@ -228,8 +228,10 @@ export function CodeViewer({ form, className }: CodeViewerProps) {
   const componentCode = generateComponentCode(form);
 
   return (
-    <div className={cn("border-border bg-card border", mode.radius, className)}>
-      <Tabs defaultValue="schema" className="w-full">
+    <div
+      className={cn("border-border bg-card flex h-[600px] flex-col border", mode.radius, className)}
+    >
+      <Tabs defaultValue="schema" className="flex h-full flex-col">
         {/* Terminal Header */}
         <div className="border-border border-b px-4 py-2">
           <span className={cn("text-muted-foreground text-xs", mode.font)}>
@@ -268,15 +270,17 @@ export function CodeViewer({ form, className }: CodeViewerProps) {
           </TabsList>
         </div>
 
-        <TabsContent value="schema" className="mt-0">
-          <div className="w-full max-w-full overflow-x-auto p-4">
-            <CodeBlock code={zodCode} language="typescript" maxHeight="400px" />
+        {/* Schema Tab Content */}
+        <TabsContent value="schema" className="mt-0 flex-1 overflow-hidden">
+          <div className="h-full w-full max-w-full overflow-auto p-4">
+            <CodeBlock code={zodCode} language="typescript" />
           </div>
         </TabsContent>
 
-        <TabsContent value="component" className="mt-0">
-          <div className="w-full max-w-full overflow-x-auto p-4">
-            <CodeBlock code={componentCode} language="tsx" maxHeight="500px" />
+        {/* Component Tab Content */}
+        <TabsContent value="component" className="mt-0 flex-1 overflow-hidden">
+          <div className="h-full w-full max-w-full overflow-auto p-4">
+            <CodeBlock code={componentCode} language="tsx" />
           </div>
         </TabsContent>
       </Tabs>

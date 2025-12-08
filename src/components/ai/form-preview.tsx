@@ -190,13 +190,6 @@ export function FormPreview({ form, className }: FormPreviewProps) {
 
   return (
     <div className={cn("border-border bg-card border", mode.radius, className)}>
-      {/* Terminal Header */}
-      <div className="border-border bg-muted/50 border-b px-4 py-2">
-        <span className={cn("text-muted-foreground text-xs", mode.font)}>
-          [ [0x01] FORM_PREVIEW ]
-        </span>
-      </div>
-
       {/* Form Content */}
       <div className="p-6">
         <div className="mb-4">
