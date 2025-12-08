@@ -3,35 +3,136 @@
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { UsageChart } from "@/components/credits";
 
-// Generate mock data for previews
-function generateMockData(pattern: "normal" | "spike" | "low" | "empty" = "normal") {
-  const data = [];
-  const today = new Date();
+// Static mock data for previews (avoids hydration mismatch from Math.random)
+const normalData = [
+  { date: "2024-11-09", credits: 15 },
+  { date: "2024-11-10", credits: 22 },
+  { date: "2024-11-11", credits: 8 },
+  { date: "2024-11-12", credits: 31 },
+  { date: "2024-11-13", credits: 12 },
+  { date: "2024-11-14", credits: 25 },
+  { date: "2024-11-15", credits: 18 },
+  { date: "2024-11-16", credits: 5 },
+  { date: "2024-11-17", credits: 28 },
+  { date: "2024-11-18", credits: 14 },
+  { date: "2024-11-19", credits: 20 },
+  { date: "2024-11-20", credits: 9 },
+  { date: "2024-11-21", credits: 33 },
+  { date: "2024-11-22", credits: 16 },
+  { date: "2024-11-23", credits: 11 },
+  { date: "2024-11-24", credits: 24 },
+  { date: "2024-11-25", credits: 7 },
+  { date: "2024-11-26", credits: 19 },
+  { date: "2024-11-27", credits: 27 },
+  { date: "2024-11-28", credits: 13 },
+  { date: "2024-11-29", credits: 21 },
+  { date: "2024-11-30", credits: 6 },
+  { date: "2024-12-01", credits: 29 },
+  { date: "2024-12-02", credits: 17 },
+  { date: "2024-12-03", credits: 10 },
+  { date: "2024-12-04", credits: 23 },
+  { date: "2024-12-05", credits: 8 },
+  { date: "2024-12-06", credits: 26 },
+  { date: "2024-12-07", credits: 15 },
+  { date: "2024-12-08", credits: 20 },
+];
 
-  for (let i = 29; i >= 0; i--) {
-    const date = new Date(today);
-    date.setDate(date.getDate() - i);
-    const dateStr = date.toISOString().split("T")[0];
+const spikeData = [
+  { date: "2024-11-09", credits: 10 },
+  { date: "2024-11-10", credits: 8 },
+  { date: "2024-11-11", credits: 12 },
+  { date: "2024-11-12", credits: 6 },
+  { date: "2024-11-13", credits: 15 },
+  { date: "2024-11-14", credits: 9 },
+  { date: "2024-11-15", credits: 11 },
+  { date: "2024-11-16", credits: 7 },
+  { date: "2024-11-17", credits: 13 },
+  { date: "2024-11-18", credits: 10 },
+  { date: "2024-11-19", credits: 80 },
+  { date: "2024-11-20", credits: 8 },
+  { date: "2024-11-21", credits: 14 },
+  { date: "2024-11-22", credits: 6 },
+  { date: "2024-11-23", credits: 11 },
+  { date: "2024-11-24", credits: 80 },
+  { date: "2024-11-25", credits: 9 },
+  { date: "2024-11-26", credits: 12 },
+  { date: "2024-11-27", credits: 7 },
+  { date: "2024-11-28", credits: 15 },
+  { date: "2024-11-29", credits: 10 },
+  { date: "2024-11-30", credits: 8 },
+  { date: "2024-12-01", credits: 13 },
+  { date: "2024-12-02", credits: 6 },
+  { date: "2024-12-03", credits: 11 },
+  { date: "2024-12-04", credits: 9 },
+  { date: "2024-12-05", credits: 14 },
+  { date: "2024-12-06", credits: 7 },
+  { date: "2024-12-07", credits: 12 },
+  { date: "2024-12-08", credits: 10 },
+];
 
-    let credits = 0;
-    if (pattern === "normal") {
-      credits = Math.floor(Math.random() * 30) + 5;
-    } else if (pattern === "spike") {
-      credits = i === 10 || i === 5 ? 80 : Math.floor(Math.random() * 20);
-    } else if (pattern === "low") {
-      credits = Math.floor(Math.random() * 5);
-    }
+const lowData = [
+  { date: "2024-11-09", credits: 2 },
+  { date: "2024-11-10", credits: 1 },
+  { date: "2024-11-11", credits: 3 },
+  { date: "2024-11-12", credits: 0 },
+  { date: "2024-11-13", credits: 4 },
+  { date: "2024-11-14", credits: 1 },
+  { date: "2024-11-15", credits: 2 },
+  { date: "2024-11-16", credits: 0 },
+  { date: "2024-11-17", credits: 3 },
+  { date: "2024-11-18", credits: 1 },
+  { date: "2024-11-19", credits: 2 },
+  { date: "2024-11-20", credits: 4 },
+  { date: "2024-11-21", credits: 0 },
+  { date: "2024-11-22", credits: 1 },
+  { date: "2024-11-23", credits: 3 },
+  { date: "2024-11-24", credits: 2 },
+  { date: "2024-11-25", credits: 0 },
+  { date: "2024-11-26", credits: 4 },
+  { date: "2024-11-27", credits: 1 },
+  { date: "2024-11-28", credits: 2 },
+  { date: "2024-11-29", credits: 3 },
+  { date: "2024-11-30", credits: 0 },
+  { date: "2024-12-01", credits: 1 },
+  { date: "2024-12-02", credits: 4 },
+  { date: "2024-12-03", credits: 2 },
+  { date: "2024-12-04", credits: 0 },
+  { date: "2024-12-05", credits: 3 },
+  { date: "2024-12-06", credits: 1 },
+  { date: "2024-12-07", credits: 2 },
+  { date: "2024-12-08", credits: 1 },
+];
 
-    data.push({ date: dateStr, credits });
-  }
-
-  return data;
-}
-
-const normalData = generateMockData("normal");
-const spikeData = generateMockData("spike");
-const lowData = generateMockData("low");
-const emptyData = generateMockData("empty");
+const emptyData = [
+  { date: "2024-11-09", credits: 0 },
+  { date: "2024-11-10", credits: 0 },
+  { date: "2024-11-11", credits: 0 },
+  { date: "2024-11-12", credits: 0 },
+  { date: "2024-11-13", credits: 0 },
+  { date: "2024-11-14", credits: 0 },
+  { date: "2024-11-15", credits: 0 },
+  { date: "2024-11-16", credits: 0 },
+  { date: "2024-11-17", credits: 0 },
+  { date: "2024-11-18", credits: 0 },
+  { date: "2024-11-19", credits: 0 },
+  { date: "2024-11-20", credits: 0 },
+  { date: "2024-11-21", credits: 0 },
+  { date: "2024-11-22", credits: 0 },
+  { date: "2024-11-23", credits: 0 },
+  { date: "2024-11-24", credits: 0 },
+  { date: "2024-11-25", credits: 0 },
+  { date: "2024-11-26", credits: 0 },
+  { date: "2024-11-27", credits: 0 },
+  { date: "2024-11-28", credits: 0 },
+  { date: "2024-12-01", credits: 0 },
+  { date: "2024-12-02", credits: 0 },
+  { date: "2024-12-03", credits: 0 },
+  { date: "2024-12-04", credits: 0 },
+  { date: "2024-12-05", credits: 0 },
+  { date: "2024-12-06", credits: 0 },
+  { date: "2024-12-07", credits: 0 },
+  { date: "2024-12-08", credits: 0 },
+];
 
 export default function CreditUsageChartPage() {
   return (
