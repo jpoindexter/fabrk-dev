@@ -3,7 +3,7 @@
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { TransactionTable } from "@/components/credits";
 
-// Mock transaction data for previews
+// Static mock transaction data for previews (avoids hydration mismatch from Date.now)
 const mixedTransactions = [
   {
     id: "1",
@@ -11,7 +11,7 @@ const mixedTransactions = [
     type: "USAGE",
     description: "Form generation",
     endpoint: "/api/ai/generate-form",
-    createdAt: new Date(Date.now() - 1000 * 60 * 5).toISOString(), // 5 min ago
+    createdAt: "2024-12-08T14:55:00.000Z",
   },
   {
     id: "2",
@@ -19,7 +19,7 @@ const mixedTransactions = [
     type: "USAGE",
     description: "Code generation",
     endpoint: "/api/ai/generate-code",
-    createdAt: new Date(Date.now() - 1000 * 60 * 30).toISOString(), // 30 min ago
+    createdAt: "2024-12-08T14:30:00.000Z",
   },
   {
     id: "3",
@@ -27,7 +27,7 @@ const mixedTransactions = [
     type: "PURCHASE",
     description: "Purchased 500 credit pack",
     endpoint: null,
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString(), // 2 hours ago
+    createdAt: "2024-12-08T13:00:00.000Z",
   },
   {
     id: "4",
@@ -35,7 +35,7 @@ const mixedTransactions = [
     type: "SUBSCRIPTION_REFILL",
     description: "Monthly refill for starter tier",
     endpoint: null,
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString(), // 1 day ago
+    createdAt: "2024-12-07T15:00:00.000Z",
   },
 ];
 
@@ -46,7 +46,7 @@ const usageOnlyTransactions = [
     type: "USAGE",
     description: "Form generation",
     endpoint: "/api/ai/generate-form",
-    createdAt: new Date(Date.now() - 1000 * 60 * 5).toISOString(),
+    createdAt: "2024-12-08T14:55:00.000Z",
   },
   {
     id: "2",
@@ -54,7 +54,7 @@ const usageOnlyTransactions = [
     type: "USAGE",
     description: "Chat message",
     endpoint: "/api/ai/chat",
-    createdAt: new Date(Date.now() - 1000 * 60 * 10).toISOString(),
+    createdAt: "2024-12-08T14:50:00.000Z",
   },
   {
     id: "3",
@@ -62,7 +62,7 @@ const usageOnlyTransactions = [
     type: "USAGE",
     description: "Code generation",
     endpoint: "/api/ai/generate-code",
-    createdAt: new Date(Date.now() - 1000 * 60 * 15).toISOString(),
+    createdAt: "2024-12-08T14:45:00.000Z",
   },
 ];
 
@@ -73,7 +73,7 @@ const refillTransactions = [
     type: "SUBSCRIPTION_REFILL",
     description: "Monthly refill for starter tier",
     endpoint: null,
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 30).toISOString(),
+    createdAt: "2024-11-08T15:00:00.000Z",
   },
   {
     id: "2",
@@ -81,7 +81,7 @@ const refillTransactions = [
     type: "SUBSCRIPTION_REFILL",
     description: "Monthly refill for starter tier",
     endpoint: null,
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 60).toISOString(),
+    createdAt: "2024-10-08T15:00:00.000Z",
   },
 ];
 
@@ -92,7 +92,7 @@ const bonusTransactions = [
     type: "BONUS",
     description: "Referral bonus",
     endpoint: null,
-    createdAt: new Date(Date.now() - 1000 * 60 * 60).toISOString(),
+    createdAt: "2024-12-08T14:00:00.000Z",
   },
   {
     id: "2",
@@ -100,7 +100,7 @@ const bonusTransactions = [
     type: "REFUND",
     description: "Failed generation refund",
     endpoint: null,
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 3).toISOString(),
+    createdAt: "2024-12-08T12:00:00.000Z",
   },
 ];
 
