@@ -135,6 +135,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
+      data-theme="light"
+      data-visual-mode="terminal"
       suppressHydrationWarning
       className={`${GeistSans.variable} ${jetbrainsMono.variable}`}
     >
