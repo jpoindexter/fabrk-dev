@@ -16,14 +16,15 @@ const OLLAMA_BASE_URL = process.env.OLLAMA_BASE_URL || "http://localhost:11434/v
 const OLLAMA_MODEL = process.env.OLLAMA_MODEL || "llama3.1:8b";
 
 // Get the configured provider based on available API keys
-// Priority: Ollama (local) > OpenAI > Google
+// Priority: OpenAI > Google > Ollama (cloud providers have better structured output support)
 export function getConfiguredProvider(): AIProvider | null {
-  // Check for Ollama first (local development)
+  // Prefer cloud providers for better structured output support
+  if (process.env.OPENAI_API_KEY) return "openai";
+  if (process.env.GOOGLE_AI_API_KEY) return "google";
+  // Fall back to Ollama for local development (uses text parsing for JSON)
   if (process.env.OLLAMA_ENABLED === "true" || process.env.OLLAMA_BASE_URL) {
     return "ollama";
   }
-  if (process.env.OPENAI_API_KEY) return "openai";
-  if (process.env.GOOGLE_AI_API_KEY) return "google";
   return null;
 }
 

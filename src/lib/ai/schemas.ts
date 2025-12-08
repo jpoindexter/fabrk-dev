@@ -43,10 +43,16 @@ export const formFieldSchema = z.object({
     .describe("Validation rules"),
   options: z
     .array(
-      z.object({
-        value: z.string(),
-        label: z.string(),
-      })
+      z
+        .object({
+          value: z.string(),
+          label: z.string().optional(),
+        })
+        .transform((opt) => ({
+          value: opt.value,
+          // Use value as label if label is missing
+          label: opt.label || opt.value,
+        }))
     )
     .optional()
     .describe("Options for select/radio fields"),

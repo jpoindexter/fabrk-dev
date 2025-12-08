@@ -5,10 +5,8 @@
  * Generates and displays copyable React Hook Form + Zod code
  */
 
-import { useState } from "react";
-import { Check, Copy } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { CodeBlock } from "@/components/ui/code-block";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
 import type { GeneratedForm, FormField } from "@/lib/ai/schemas";
@@ -226,33 +224,29 @@ function generateFieldCode(field: FormField): string[] {
 }
 
 export function CodeViewer({ form, className }: CodeViewerProps) {
-  const [copiedTab, setCopiedTab] = useState<string | null>(null);
-
   const zodCode = generateZodCode(form);
   const componentCode = generateComponentCode(form);
 
-  const handleCopy = async (code: string, tab: string) => {
-    await navigator.clipboard.writeText(code);
-    setCopiedTab(tab);
-    setTimeout(() => setCopiedTab(null), 2000);
-  };
-
   return (
     <div className={cn("border-border bg-card border", mode.radius, className)}>
-      {/* Terminal Header */}
-      <div className="border-border bg-muted/50 border-b px-4 py-2">
-        <span className={cn("text-muted-foreground text-xs", mode.font)}>
-          [ [0x02] GENERATED_CODE ]
-        </span>
-      </div>
-
       <Tabs defaultValue="schema" className="w-full">
-        <div className="border-border border-b px-4">
-          <TabsList className={cn("h-auto w-auto gap-0 border-0 bg-transparent p-0", mode.radius)}>
+        {/* Terminal Header with Tabs */}
+        <div className="border-border border-b px-4 py-2">
+          <span className={cn("text-muted-foreground text-xs", mode.font)}>
+            [ [0x02] GENERATED_CODE ]
+          </span>
+        </div>
+        <div className="flex items-center">
+          <TabsList
+            className={cn(
+              "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+              mode.radius
+            )}
+          >
             <TabsTrigger
               value="schema"
               className={cn(
-                "data-[state=active]:border-primary border-b-2 border-transparent px-4 py-2 text-xs",
+                "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
                 mode.radius,
                 mode.font
               )}
@@ -262,7 +256,7 @@ export function CodeViewer({ form, className }: CodeViewerProps) {
             <TabsTrigger
               value="component"
               className={cn(
-                "data-[state=active]:border-primary border-b-2 border-transparent px-4 py-2 text-xs",
+                "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
                 mode.radius,
                 mode.font
               )}
@@ -273,50 +267,14 @@ export function CodeViewer({ form, className }: CodeViewerProps) {
         </div>
 
         <TabsContent value="schema" className="mt-0">
-          <div className="relative">
-            <Button
-              size="sm"
-              variant="ghost"
-              className={cn("absolute top-2 right-2 text-xs", mode.radius, mode.font)}
-              onClick={() => handleCopy(zodCode, "schema")}
-            >
-              {copiedTab === "schema" ? (
-                <>
-                  <Check className="mr-1 size-3" /> COPIED
-                </>
-              ) : (
-                <>
-                  <Copy className="mr-1 size-3" /> COPY
-                </>
-              )}
-            </Button>
-            <pre className={cn("overflow-x-auto p-4 text-xs", mode.font)}>
-              <code>{zodCode}</code>
-            </pre>
+          <div className="w-full max-w-full overflow-x-auto p-4">
+            <CodeBlock code={zodCode} language="typescript" maxHeight="400px" />
           </div>
         </TabsContent>
 
         <TabsContent value="component" className="mt-0">
-          <div className="relative">
-            <Button
-              size="sm"
-              variant="ghost"
-              className={cn("absolute top-2 right-2 text-xs", mode.radius, mode.font)}
-              onClick={() => handleCopy(componentCode, "component")}
-            >
-              {copiedTab === "component" ? (
-                <>
-                  <Check className="mr-1 size-3" /> COPIED
-                </>
-              ) : (
-                <>
-                  <Copy className="mr-1 size-3" /> COPY
-                </>
-              )}
-            </Button>
-            <pre className={cn("overflow-x-auto p-4 text-xs", mode.font)}>
-              <code>{componentCode}</code>
-            </pre>
+          <div className="w-full max-w-full overflow-x-auto p-4">
+            <CodeBlock code={componentCode} language="tsx" maxHeight="500px" />
           </div>
         </TabsContent>
       </Tabs>
