@@ -19,6 +19,8 @@ import {
   Search,
   Layers,
   Layout,
+  Sparkles,
+  FormInput,
 } from "lucide-react";
 
 export interface TemplateNavItem {
@@ -36,6 +38,13 @@ export interface TemplateNavSection {
 }
 
 export const templatesNavigation: TemplateNavSection[] = [
+  {
+    title: "AI Tools",
+    id: "ai-tools",
+    href: "/library/ai-tools",
+    icon: Sparkles,
+    items: [{ title: "AI Form Generator", href: "/library/ai-forms", icon: FormInput }],
+  },
   {
     title: "Dashboards",
     id: "dashboards",
