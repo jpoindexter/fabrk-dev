@@ -231,10 +231,10 @@ function AIFormGeneratorPreview() {
               {/* Input Area */}
               <div className="relative p-4">
                 <Textarea
-                  defaultValue="> e.g., Contact form with name, email, phone, subject dropdown, and message textarea..."
+                  defaultValue="Contact form with name, email, and message"
                   disabled
                   className={cn(
-                    "min-h-[80px] resize-none border-0 bg-transparent p-0 text-sm focus-visible:ring-0",
+                    "text-foreground min-h-[80px] resize-none border-0 bg-transparent p-0 text-sm focus-visible:ring-0 disabled:cursor-default disabled:opacity-100",
                     mode.font,
                     mode.radius
                   )}
