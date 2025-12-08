@@ -79,3 +79,14 @@ export const ConsentType = {
 } as const;
 
 export type ConsentType = (typeof ConsentType)[keyof typeof ConsentType];
+
+export const CreditTransactionType = {
+  SUBSCRIPTION_REFILL: "SUBSCRIPTION_REFILL",
+  PURCHASE: "PURCHASE",
+  USAGE: "USAGE",
+  REFUND: "REFUND",
+  BONUS: "BONUS",
+} as const;
+
+export type CreditTransactionType =
+  (typeof CreditTransactionType)[keyof typeof CreditTransactionType];

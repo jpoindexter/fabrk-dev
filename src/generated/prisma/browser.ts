@@ -136,3 +136,13 @@ export type BlogPost = Prisma.BlogPostModel;
  *
  */
 export type BlogCategory = Prisma.BlogCategoryModel;
+/**
+ * Model CreditBalance
+ *
+ */
+export type CreditBalance = Prisma.CreditBalanceModel;
+/**
+ * Model CreditTransaction
+ *
+ */
+export type CreditTransaction = Prisma.CreditTransactionModel;

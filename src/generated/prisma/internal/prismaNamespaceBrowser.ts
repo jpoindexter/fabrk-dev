@@ -72,6 +72,8 @@ export const ModelName = {
   Consent: "Consent",
   BlogPost: "BlogPost",
   BlogCategory: "BlogCategory",
+  CreditBalance: "CreditBalance",
+  CreditTransaction: "CreditTransaction",
 } as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -457,6 +459,33 @@ export const BlogCategoryScalarFieldEnum = {
 
 export type BlogCategoryScalarFieldEnum =
   (typeof BlogCategoryScalarFieldEnum)[keyof typeof BlogCategoryScalarFieldEnum];
+
+export const CreditBalanceScalarFieldEnum = {
+  id: "id",
+  userId: "userId",
+  balance: "balance",
+  monthlyAllowance: "monthlyAllowance",
+  lastRefill: "lastRefill",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+} as const;
+
+export type CreditBalanceScalarFieldEnum =
+  (typeof CreditBalanceScalarFieldEnum)[keyof typeof CreditBalanceScalarFieldEnum];
+
+export const CreditTransactionScalarFieldEnum = {
+  id: "id",
+  balanceId: "balanceId",
+  amount: "amount",
+  type: "type",
+  description: "description",
+  endpoint: "endpoint",
+  metadata: "metadata",
+  createdAt: "createdAt",
+} as const;
+
+export type CreditTransactionScalarFieldEnum =
+  (typeof CreditTransactionScalarFieldEnum)[keyof typeof CreditTransactionScalarFieldEnum];
 
 export const SortOrder = {
   asc: "asc",

@@ -399,6 +399,8 @@ export const ModelName = {
   Consent: "Consent",
   BlogPost: "BlogPost",
   BlogCategory: "BlogCategory",
+  CreditBalance: "CreditBalance",
+  CreditTransaction: "CreditTransaction",
 } as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -442,7 +444,9 @@ export type TypeMap<
       | "webhookDelivery"
       | "consent"
       | "blogPost"
-      | "blogCategory";
+      | "blogCategory"
+      | "creditBalance"
+      | "creditTransaction";
     txIsolationLevel: TransactionIsolationLevel;
   };
   model: {
@@ -2240,6 +2244,158 @@ export type TypeMap<
         };
       };
     };
+    CreditBalance: {
+      payload: Prisma.$CreditBalancePayload<ExtArgs>;
+      fields: Prisma.CreditBalanceFieldRefs;
+      operations: {
+        findUnique: {
+          args: Prisma.CreditBalanceFindUniqueArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditBalancePayload> | null;
+        };
+        findUniqueOrThrow: {
+          args: Prisma.CreditBalanceFindUniqueOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditBalancePayload>;
+        };
+        findFirst: {
+          args: Prisma.CreditBalanceFindFirstArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditBalancePayload> | null;
+        };
+        findFirstOrThrow: {
+          args: Prisma.CreditBalanceFindFirstOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditBalancePayload>;
+        };
+        findMany: {
+          args: Prisma.CreditBalanceFindManyArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditBalancePayload>[];
+        };
+        create: {
+          args: Prisma.CreditBalanceCreateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditBalancePayload>;
+        };
+        createMany: {
+          args: Prisma.CreditBalanceCreateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        createManyAndReturn: {
+          args: Prisma.CreditBalanceCreateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditBalancePayload>[];
+        };
+        delete: {
+          args: Prisma.CreditBalanceDeleteArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditBalancePayload>;
+        };
+        update: {
+          args: Prisma.CreditBalanceUpdateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditBalancePayload>;
+        };
+        deleteMany: {
+          args: Prisma.CreditBalanceDeleteManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateMany: {
+          args: Prisma.CreditBalanceUpdateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateManyAndReturn: {
+          args: Prisma.CreditBalanceUpdateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditBalancePayload>[];
+        };
+        upsert: {
+          args: Prisma.CreditBalanceUpsertArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditBalancePayload>;
+        };
+        aggregate: {
+          args: Prisma.CreditBalanceAggregateArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCreditBalance>;
+        };
+        groupBy: {
+          args: Prisma.CreditBalanceGroupByArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.CreditBalanceGroupByOutputType>[];
+        };
+        count: {
+          args: Prisma.CreditBalanceCountArgs<ExtArgs>;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.CreditBalanceCountAggregateOutputType>
+            | number;
+        };
+      };
+    };
+    CreditTransaction: {
+      payload: Prisma.$CreditTransactionPayload<ExtArgs>;
+      fields: Prisma.CreditTransactionFieldRefs;
+      operations: {
+        findUnique: {
+          args: Prisma.CreditTransactionFindUniqueArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditTransactionPayload> | null;
+        };
+        findUniqueOrThrow: {
+          args: Prisma.CreditTransactionFindUniqueOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditTransactionPayload>;
+        };
+        findFirst: {
+          args: Prisma.CreditTransactionFindFirstArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditTransactionPayload> | null;
+        };
+        findFirstOrThrow: {
+          args: Prisma.CreditTransactionFindFirstOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditTransactionPayload>;
+        };
+        findMany: {
+          args: Prisma.CreditTransactionFindManyArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditTransactionPayload>[];
+        };
+        create: {
+          args: Prisma.CreditTransactionCreateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditTransactionPayload>;
+        };
+        createMany: {
+          args: Prisma.CreditTransactionCreateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        createManyAndReturn: {
+          args: Prisma.CreditTransactionCreateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditTransactionPayload>[];
+        };
+        delete: {
+          args: Prisma.CreditTransactionDeleteArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditTransactionPayload>;
+        };
+        update: {
+          args: Prisma.CreditTransactionUpdateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditTransactionPayload>;
+        };
+        deleteMany: {
+          args: Prisma.CreditTransactionDeleteManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateMany: {
+          args: Prisma.CreditTransactionUpdateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateManyAndReturn: {
+          args: Prisma.CreditTransactionUpdateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditTransactionPayload>[];
+        };
+        upsert: {
+          args: Prisma.CreditTransactionUpsertArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditTransactionPayload>;
+        };
+        aggregate: {
+          args: Prisma.CreditTransactionAggregateArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCreditTransaction>;
+        };
+        groupBy: {
+          args: Prisma.CreditTransactionGroupByArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.CreditTransactionGroupByOutputType>[];
+        };
+        count: {
+          args: Prisma.CreditTransactionCountArgs<ExtArgs>;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.CreditTransactionCountAggregateOutputType>
+            | number;
+        };
+      };
+    };
   };
 } & {
   other: {
@@ -2647,6 +2803,33 @@ export const BlogCategoryScalarFieldEnum = {
 export type BlogCategoryScalarFieldEnum =
   (typeof BlogCategoryScalarFieldEnum)[keyof typeof BlogCategoryScalarFieldEnum];
 
+export const CreditBalanceScalarFieldEnum = {
+  id: "id",
+  userId: "userId",
+  balance: "balance",
+  monthlyAllowance: "monthlyAllowance",
+  lastRefill: "lastRefill",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+} as const;
+
+export type CreditBalanceScalarFieldEnum =
+  (typeof CreditBalanceScalarFieldEnum)[keyof typeof CreditBalanceScalarFieldEnum];
+
+export const CreditTransactionScalarFieldEnum = {
+  id: "id",
+  balanceId: "balanceId",
+  amount: "amount",
+  type: "type",
+  description: "description",
+  endpoint: "endpoint",
+  metadata: "metadata",
+  createdAt: "createdAt",
+} as const;
+
+export type CreditTransactionScalarFieldEnum =
+  (typeof CreditTransactionScalarFieldEnum)[keyof typeof CreditTransactionScalarFieldEnum];
+
 export const SortOrder = {
   asc: "asc",
   desc: "desc",
@@ -2837,6 +3020,22 @@ export type ListEnumConsentTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
 >;
 
 /**
+ * Reference to a field of type 'CreditTransactionType'
+ */
+export type EnumCreditTransactionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  "CreditTransactionType"
+>;
+
+/**
+ * Reference to a field of type 'CreditTransactionType[]'
+ */
+export type ListEnumCreditTransactionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  "CreditTransactionType[]"
+>;
+
+/**
  * Reference to a field of type 'Float'
  */
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "Float">;
@@ -2973,6 +3172,8 @@ export type GlobalOmitConfig = {
   consent?: Prisma.ConsentOmit;
   blogPost?: Prisma.BlogPostOmit;
   blogCategory?: Prisma.BlogCategoryOmit;
+  creditBalance?: Prisma.CreditBalanceOmit;
+  creditTransaction?: Prisma.CreditTransactionOmit;
 };
 
 /* Types for Logging */

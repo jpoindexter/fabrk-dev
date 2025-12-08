@@ -31,4 +31,6 @@ export type * from "./models/WebhookDelivery";
 export type * from "./models/Consent";
 export type * from "./models/BlogPost";
 export type * from "./models/BlogCategory";
+export type * from "./models/CreditBalance";
+export type * from "./models/CreditTransaction";
 export type * from "./commonInputTypes";

@@ -2,6 +2,7 @@
  * AI Form Generator API Route
  * Generates form schemas from natural language descriptions
  * Works with both structured output (OpenAI/Google) and text parsing (Ollama)
+ * Includes credit tracking for authenticated users
  */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -13,6 +14,8 @@ import {
   FORM_GENERATOR_SYSTEM_PROMPT,
   type GeneratedForm,
 } from "@/lib/ai/schemas";
+import { auth } from "@/lib/auth";
+import { hasCredits, deductCredits, CREDIT_COSTS } from "@/lib/credits";
 
 // Request schema
 const requestSchema = z.object({
@@ -44,6 +47,10 @@ const EXAMPLE_JSON = `{
 
 export async function POST(request: NextRequest) {
   try {
+    // Check authentication for credit tracking
+    const session = await auth();
+    const userId = session?.user?.id;
+
     // Check if AI is configured
     if (!isAIConfigured()) {
       return NextResponse.json(
@@ -54,6 +61,22 @@ export async function POST(request: NextRequest) {
         },
         { status: 503 }
       );
+    }
+
+    // Check credits for authenticated users
+    const creditCost = CREDIT_COSTS.FORM_GENERATION;
+    if (userId) {
+      const hasEnoughCredits = await hasCredits(userId, creditCost);
+      if (!hasEnoughCredits) {
+        return NextResponse.json(
+          {
+            error: "Insufficient credits",
+            code: "INSUFFICIENT_CREDITS",
+            message: `This operation requires ${creditCost} credits. Please upgrade your plan or wait for your monthly refill.`,
+          },
+          { status: 402 }
+        );
+      }
     }
 
     // Parse and validate request body
@@ -143,9 +166,19 @@ Respond with ONLY the JSON object, nothing else.`,
       formSchema = object;
     }
 
+    // Deduct credits for authenticated users after successful generation
+    if (userId) {
+      await deductCredits(userId, creditCost, {
+        description: "Form generation",
+        endpoint: "/api/ai/generate-form",
+        metadata: { prompt: prompt.slice(0, 100) }, // Store first 100 chars of prompt
+      });
+    }
+
     return NextResponse.json({
       success: true,
       form: formSchema,
+      creditsUsed: userId ? creditCost : 0,
     });
   } catch (error) {
     console.error("Form generation error:", error);

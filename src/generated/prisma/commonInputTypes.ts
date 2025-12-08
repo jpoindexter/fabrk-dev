@@ -459,6 +459,37 @@ export type EnumConsentTypeWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumConsentTypeFilter<$PrismaModel>;
 };
 
+export type EnumCreditTransactionTypeFilter<$PrismaModel = never> = {
+  equals?:
+    | $Enums.CreditTransactionType
+    | Prisma.EnumCreditTransactionTypeFieldRefInput<$PrismaModel>;
+  in?:
+    | $Enums.CreditTransactionType[]
+    | Prisma.ListEnumCreditTransactionTypeFieldRefInput<$PrismaModel>;
+  notIn?:
+    | $Enums.CreditTransactionType[]
+    | Prisma.ListEnumCreditTransactionTypeFieldRefInput<$PrismaModel>;
+  not?: Prisma.NestedEnumCreditTransactionTypeFilter<$PrismaModel> | $Enums.CreditTransactionType;
+};
+
+export type EnumCreditTransactionTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?:
+    | $Enums.CreditTransactionType
+    | Prisma.EnumCreditTransactionTypeFieldRefInput<$PrismaModel>;
+  in?:
+    | $Enums.CreditTransactionType[]
+    | Prisma.ListEnumCreditTransactionTypeFieldRefInput<$PrismaModel>;
+  notIn?:
+    | $Enums.CreditTransactionType[]
+    | Prisma.ListEnumCreditTransactionTypeFieldRefInput<$PrismaModel>;
+  not?:
+    | Prisma.NestedEnumCreditTransactionTypeWithAggregatesFilter<$PrismaModel>
+    | $Enums.CreditTransactionType;
+  _count?: Prisma.NestedIntFilter<$PrismaModel>;
+  _min?: Prisma.NestedEnumCreditTransactionTypeFilter<$PrismaModel>;
+  _max?: Prisma.NestedEnumCreditTransactionTypeFilter<$PrismaModel>;
+};
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>;
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>;
@@ -845,4 +876,35 @@ export type NestedEnumConsentTypeWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>;
   _min?: Prisma.NestedEnumConsentTypeFilter<$PrismaModel>;
   _max?: Prisma.NestedEnumConsentTypeFilter<$PrismaModel>;
+};
+
+export type NestedEnumCreditTransactionTypeFilter<$PrismaModel = never> = {
+  equals?:
+    | $Enums.CreditTransactionType
+    | Prisma.EnumCreditTransactionTypeFieldRefInput<$PrismaModel>;
+  in?:
+    | $Enums.CreditTransactionType[]
+    | Prisma.ListEnumCreditTransactionTypeFieldRefInput<$PrismaModel>;
+  notIn?:
+    | $Enums.CreditTransactionType[]
+    | Prisma.ListEnumCreditTransactionTypeFieldRefInput<$PrismaModel>;
+  not?: Prisma.NestedEnumCreditTransactionTypeFilter<$PrismaModel> | $Enums.CreditTransactionType;
+};
+
+export type NestedEnumCreditTransactionTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?:
+    | $Enums.CreditTransactionType
+    | Prisma.EnumCreditTransactionTypeFieldRefInput<$PrismaModel>;
+  in?:
+    | $Enums.CreditTransactionType[]
+    | Prisma.ListEnumCreditTransactionTypeFieldRefInput<$PrismaModel>;
+  notIn?:
+    | $Enums.CreditTransactionType[]
+    | Prisma.ListEnumCreditTransactionTypeFieldRefInput<$PrismaModel>;
+  not?:
+    | Prisma.NestedEnumCreditTransactionTypeWithAggregatesFilter<$PrismaModel>
+    | $Enums.CreditTransactionType;
+  _count?: Prisma.NestedIntFilter<$PrismaModel>;
+  _min?: Prisma.NestedEnumCreditTransactionTypeFilter<$PrismaModel>;
+  _max?: Prisma.NestedEnumCreditTransactionTypeFilter<$PrismaModel>;
 };

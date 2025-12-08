@@ -552,6 +552,62 @@ EXCLUDE_PATTERNS=(
 
 ---
 
+## AI Components
+
+### Architecture
+
+AI features use multi-provider support (OpenAI, Google, Ollama) via Vercel AI SDK:
+
+```
+src/
+├── components/ai/           # AI UI components
+│   ├── chat-interface.tsx   # Reusable chat input
+│   ├── form-preview.tsx     # Form preview renderer
+│   ├── code-viewer.tsx      # Code generation display
+│   └── index.ts             # Exports
+├── lib/ai/
+│   ├── provider.ts          # Multi-provider factory
+│   └── schemas.ts           # Zod schemas for AI responses
+└── app/api/ai/              # AI API routes
+    └── generate-form/route.ts
+```
+
+### Provider Configuration
+
+```typescript
+// lib/ai/provider.ts
+export function getAIProvider() {
+  const provider = env.server.AI_PROVIDER || "ollama";
+  switch (provider) {
+    case "openai": return openai(env.server.OPENAI_MODEL || "gpt-4o-mini");
+    case "google": return google(env.server.GOOGLE_MODEL || "gemini-1.5-flash");
+    case "ollama": return ollama(env.server.OLLAMA_MODEL || "llama3.1:8b");
+  }
+}
+```
+
+### Library Pages Pattern
+
+AI library pages in `src/app/(marketing)/library/` use static demos (no live API calls):
+
+```tsx
+// Static demo form data - shows what AI would generate
+const demoForm: GeneratedForm = {
+  name: "ContactForm",
+  fields: [...],
+  submitLabel: "Send Message",
+};
+
+// 3-tab interface: [PREVIEW], [SCHEMA], [COMPONENT]
+<Tabs defaultValue="preview">
+  <TabsContent value="preview"><FormPreview form={demoForm} /></TabsContent>
+  <TabsContent value="schema"><CodeBlock code={generateZodCode(demoForm)} /></TabsContent>
+  <TabsContent value="component"><CodeBlock code={generateComponentCode(demoForm)} /></TabsContent>
+</Tabs>
+```
+
+---
+
 ## Philosophy
 
 1. **Simplicity** - Clean, understandable code
