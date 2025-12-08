@@ -89,12 +89,15 @@ export function ContactForm() {
   });
 
   const onSubmit = async (data: ContactFormData) => {
-    // TODO: Handle form submission
-    await fetch("/api/contact", {
+    const response = await fetch("/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
+
+    if (!response.ok) {
+      throw new Error("Failed to send message");
+    }
   };
 
   return (
