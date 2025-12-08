@@ -24,7 +24,7 @@ import { cn } from "@/lib/utils";
 
 interface ProvidersProps {
   children: ReactNode;
-  /** Default color theme (defaults to "dark") */
+  /** Default color theme (defaults to "light") */
   defaultColorTheme?: "light" | "dark";
   /** Default visual mode (defaults to "terminal") */
   defaultVisualMode?: "terminal" | "modern" | "minimal" | "linear";
@@ -32,7 +32,7 @@ interface ProvidersProps {
 
 export function Providers({
   children,
-  defaultColorTheme = "dark",
+  defaultColorTheme = "light",
   defaultVisualMode = "terminal",
 }: ProvidersProps) {
   return (

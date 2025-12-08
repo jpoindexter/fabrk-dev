@@ -143,7 +143,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Design System: Prevent theme flash during SSR */}
         <ThemeScript
           storageKeyPrefix="fabrk"
-          defaultColorTheme="dark"
+          defaultColorTheme="light"
           defaultVisualMode="terminal"
         />
         {/* Google Consent Mode v2 - Must load BEFORE GTM */}
