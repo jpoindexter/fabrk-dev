@@ -259,12 +259,19 @@ export const docsNavigation: NavSection[] = [
       {
         title: "[07.10] SPECIALIZED",
         items: [
+          { title: "BALANCE_DISPLAY", href: "/docs/components/balance-display", icon: Coins },
           {
             title: "BILLING_SUMMARY_CARD",
             href: "/docs/components/billing-summary-card",
             icon: CreditCard,
           },
           { title: "CODE_GENERATOR", href: "/docs/components/code-generator", icon: FileCode },
+          {
+            title: "CREDIT_TRANSACTION_TABLE",
+            href: "/docs/components/credit-transaction-table",
+            icon: Coins,
+          },
+          { title: "CREDIT_USAGE_CHART", href: "/docs/components/credit-usage-chart", icon: Coins },
           { title: "INVITE_FORM", href: "/docs/components/invite-form", icon: Users },
           { title: "MARKDOWN_EDITOR", href: "/docs/components/markdown-editor", icon: FileCode },
           { title: "MARKDOWN_VIEWER", href: "/docs/components/markdown-viewer", icon: FileCode },
