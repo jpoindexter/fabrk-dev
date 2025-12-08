@@ -1,48 +1,57 @@
 "use client";
 
 /**
- * AI Form Generator Page
- * Prompt-to-Form: Generate React Hook Form + Zod forms from natural language
+ * AI Form Generator Page - Static Demo
+ * Shows a pre-populated example of the AI form generation workflow
  */
 
-import { useState } from "react";
-import { Sparkles, AlertCircle } from "lucide-react";
-import { ChatInterface, FormPreview, CodeViewer } from "@/components/ai";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Sparkles } from "lucide-react";
+import { FormPreview, CodeViewer } from "@/components/ai";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { Send } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
 import type { GeneratedForm } from "@/lib/ai/schemas";
 
+// Static demo form data - shows what AI would generate
+const demoForm: GeneratedForm = {
+  name: "ContactForm",
+  description: "A simple contact form",
+  fields: [
+    {
+      name: "fullName",
+      label: "Full Name",
+      type: "text",
+      placeholder: "Enter your name",
+      required: true,
+    },
+    {
+      name: "email",
+      label: "Email Address",
+      type: "email",
+      placeholder: "you@example.com",
+      required: true,
+    },
+    {
+      name: "message",
+      label: "Message",
+      type: "textarea",
+      placeholder: "Describe your needs or question",
+      required: true,
+    },
+  ],
+  submitLabel: "Send Message",
+};
+
 export default function AIFormsPage() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [generatedForm, setGeneratedForm] = useState<GeneratedForm | null>(null);
-
-  const handleSubmit = async (prompt: string) => {
-    setIsLoading(true);
-    setError(null);
-
-    try {
-      const response = await fetch("/api/ai/generate-form", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || data.error || "Failed to generate form");
-      }
-
-      setGeneratedForm(data.form);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "An unexpected error occurred");
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const examplePrompts = [
+    "Contact form with name, email, and message",
+    "User registration with email, password, and confirm password",
+    "Newsletter signup with email and interests dropdown",
+    "Bug report form with severity, category, and description",
+  ];
 
   return (
     <div className="container mx-auto max-w-7xl space-y-8 px-6 py-12">
@@ -70,28 +79,56 @@ export default function AIFormsPage() {
             purpose.
           </p>
 
-          <ChatInterface
-            onSubmit={handleSubmit}
-            isLoading={isLoading}
-            placeholder="> e.g., Contact form with name, email, phone, subject dropdown, and message textarea..."
-          />
+          {/* Static Chat Interface */}
+          <div className={cn("border-border bg-card border", mode.radius)}>
+            {/* Terminal Header */}
+            <div className="border-border bg-muted/50 border-b px-4 py-2">
+              <span className={cn("text-muted-foreground text-xs", mode.font)}>
+                [ [0x00] PROMPT_INPUT ]
+              </span>
+            </div>
+
+            {/* Input Area */}
+            <div className="relative p-4">
+              <Textarea
+                defaultValue="> e.g., Contact form with name, email, phone, subject dropdown, and message textarea..."
+                disabled
+                className={cn(
+                  "min-h-[80px] resize-none border-0 bg-transparent p-0 text-sm focus-visible:ring-0",
+                  mode.font,
+                  mode.radius
+                )}
+                rows={3}
+              />
+
+              {/* Submit Button */}
+              <div className="mt-4 flex items-center justify-between">
+                <span className={cn("text-muted-foreground text-xs", mode.font)}>
+                  Press Enter to submit, Shift+Enter for new line
+                </span>
+                <Button
+                  type="button"
+                  size="sm"
+                  disabled
+                  className={cn("text-xs", mode.radius, mode.font)}
+                >
+                  <Send className="mr-2 size-4" />
+                  &gt; GENERATE
+                </Button>
+              </div>
+            </div>
+          </div>
 
           {/* Example Prompts */}
           <div className="mt-4 space-y-2">
             <p className={cn("text-muted-foreground text-xs", mode.font)}>[EXAMPLES]:</p>
             <div className="flex flex-wrap gap-2">
-              {[
-                "Contact form with name, email, and message",
-                "User registration with email, password, and confirm password",
-                "Newsletter signup with email and interests dropdown",
-                "Bug report form with severity, category, and description",
-              ].map((example) => (
+              {examplePrompts.map((example) => (
                 <button
                   key={example}
-                  onClick={() => handleSubmit(example)}
-                  disabled={isLoading}
+                  disabled
                   className={cn(
-                    "border-border bg-muted/50 hover:bg-muted border px-3 py-1 text-xs transition-colors disabled:opacity-50",
+                    "border-border bg-muted/50 cursor-default border px-3 py-1 text-xs opacity-70",
                     mode.radius,
                     mode.font
                   )}
@@ -104,40 +141,14 @@ export default function AIFormsPage() {
         </CardContent>
       </Card>
 
-      {/* Error Message */}
-      {error && (
-        <Alert variant="destructive" className={mode.radius}>
-          <AlertCircle className="size-4" />
-          <AlertDescription className={cn("text-xs", mode.font)}>[ERROR] {error}</AlertDescription>
-        </Alert>
-      )}
+      {/* Results Section - Always visible with demo data */}
+      <div className="grid gap-6 lg:grid-cols-2">
+        {/* Live Preview */}
+        <FormPreview form={demoForm} />
 
-      {/* Results Section */}
-      {generatedForm && (
-        <div className="grid gap-6 lg:grid-cols-2">
-          {/* Live Preview */}
-          <FormPreview form={generatedForm} />
-
-          {/* Generated Code */}
-          <CodeViewer form={generatedForm} />
-        </div>
-      )}
-
-      {/* Empty State */}
-      {!generatedForm && !isLoading && !error && (
-        <Card>
-          <CardContent padding="lg">
-            <div className="flex flex-col items-center justify-center py-12 text-center">
-              <Sparkles className="text-muted-foreground/50 mb-4 size-12" />
-              <h3 className={cn("text-lg font-semibold", mode.font)}>No form generated yet</h3>
-              <p className={cn("text-muted-foreground max-w-md text-sm", mode.font)}>
-                Enter a description above to generate a form. The AI will create both a live preview
-                and copyable React Hook Form + Zod code.
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-      )}
+        {/* Generated Code */}
+        <CodeViewer form={demoForm} />
+      </div>
     </div>
   );
 }
