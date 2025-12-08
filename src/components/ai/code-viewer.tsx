@@ -230,13 +230,15 @@ export function CodeViewer({ form, className }: CodeViewerProps) {
   return (
     <div className={cn("border-border bg-card border", mode.radius, className)}>
       <Tabs defaultValue="schema" className="w-full">
-        {/* Terminal Header with Tabs */}
+        {/* Terminal Header */}
         <div className="border-border border-b px-4 py-2">
           <span className={cn("text-muted-foreground text-xs", mode.font)}>
             [ [0x02] GENERATED_CODE ]
           </span>
         </div>
-        <div className="flex items-center">
+
+        {/* Tab Navigation */}
+        <div className="flex items-center justify-between">
           <TabsList
             className={cn(
               "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
