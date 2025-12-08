@@ -209,6 +209,12 @@ const serverSchema = z.object({
   // ============================================================================
   // AI SERVICES (Optional)
   // ============================================================================
+  // Ollama (Local AI - recommended for development)
+  OLLAMA_ENABLED: z.string().optional(), // Set to "true" to enable Ollama
+  OLLAMA_BASE_URL: z.string().url().optional(), // Default: http://localhost:11434/v1
+  OLLAMA_MODEL: z.string().optional(), // Default: llama3.1:8b
+
+  // Cloud providers
   OPENAI_API_KEY: z
     .string()
     .optional()

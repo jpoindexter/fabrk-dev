@@ -71,6 +71,7 @@
   "dependencies": {
     "@ai-sdk/google": "^2.0.44",
     "@ai-sdk/openai": "^2.0.79",
+    "@ai-sdk/openai-compatible": "^1.0.28",
     "@auth/prisma-adapter": "^2.11.1",
     "@hookform/resolvers": "^5.2.2",
     "@lemonsqueezy/lemonsqueezy.js": "^4.0.0",
