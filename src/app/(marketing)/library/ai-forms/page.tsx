@@ -52,115 +52,144 @@ const examplePrompts = [
   "Bug report form with severity, category, and description",
 ];
 
-// The template code - a complete standalone contact form component
+// The template code - the actual AI Form Generator component
 const templateCode = `"use client";
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import { useState } from "react";
+import { Sparkles, AlertCircle } from "lucide-react";
+import { ChatInterface, FormPreview, CodeViewer } from "@/components/ai";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
+import type { GeneratedForm } from "@/lib/ai/schemas";
 
-// =============================================================================
-// ZOD SCHEMA
-// =============================================================================
-const contactFormSchema = z.object({
-  fullName: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Invalid email address"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
-});
+export default function AIFormsPage() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [generatedForm, setGeneratedForm] = useState<GeneratedForm | null>(null);
 
-type ContactFormData = z.infer<typeof contactFormSchema>;
+  const handleSubmit = async (prompt: string) => {
+    setIsLoading(true);
+    setError(null);
 
-// =============================================================================
-// CONTACT FORM COMPONENT
-// =============================================================================
-export function ContactForm() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<ContactFormData>({
-    resolver: zodResolver(contactFormSchema),
-  });
+    try {
+      const response = await fetch("/api/ai/generate-form", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt }),
+      });
 
-  const onSubmit = async (data: ContactFormData) => {
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
+      const data = await response.json();
 
-    if (!response.ok) {
-      throw new Error("Failed to send message");
+      if (!response.ok) {
+        throw new Error(data.message || data.error || "Failed to generate form");
+      }
+
+      setGeneratedForm(data.form);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An unexpected error occurred");
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-      {/* Full Name */}
-      <div className="space-y-2">
-        <Label htmlFor="fullName" className={cn(mode.font, "text-xs")}>
-          [FULL_NAME]: <span className="text-destructive">*</span>
-        </Label>
-        <Input
-          id="fullName"
-          {...register("fullName")}
-          placeholder="Enter your name"
-          className={cn(mode.radius, mode.font, "text-xs")}
-        />
-        {errors.fullName && (
-          <p className="text-destructive text-xs">{errors.fullName.message}</p>
-        )}
+    <div className="container mx-auto max-w-7xl space-y-8 px-6 py-12">
+      {/* Header */}
+      <div className="space-y-4">
+        <div className="flex items-center gap-3">
+          <div className={cn("bg-primary/10 p-2", mode.radius)}>
+            <Sparkles className="text-primary size-6" />
+          </div>
+          <div>
+            <h1 className={cn("text-2xl font-bold", mode.font)}>AI Form Generator</h1>
+            <p className={cn("text-muted-foreground text-sm", mode.font)}>
+              Generate React Hook Form + Zod code from natural language
+            </p>
+          </div>
+        </div>
       </div>
 
-      {/* Email */}
-      <div className="space-y-2">
-        <Label htmlFor="email" className={cn(mode.font, "text-xs")}>
-          [EMAIL_ADDRESS]: <span className="text-destructive">*</span>
-        </Label>
-        <Input
-          id="email"
-          type="email"
-          {...register("email")}
-          placeholder="you@example.com"
-          className={cn(mode.radius, mode.font, "text-xs")}
-        />
-        {errors.email && (
-          <p className="text-destructive text-xs">{errors.email.message}</p>
-        )}
-      </div>
+      {/* Input Section */}
+      <Card>
+        <CardHeader code="0x00" title="FORM_PROMPT" />
+        <CardContent padding="lg">
+          <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
+            &gt; Describe the form you want to create. Be specific about fields,
+            validation, and purpose.
+          </p>
 
-      {/* Message */}
-      <div className="space-y-2">
-        <Label htmlFor="message" className={cn(mode.font, "text-xs")}>
-          [MESSAGE]: <span className="text-destructive">*</span>
-        </Label>
-        <Textarea
-          id="message"
-          {...register("message")}
-          placeholder="Describe your needs or question"
-          rows={4}
-          className={cn(mode.radius, mode.font, "text-xs")}
-        />
-        {errors.message && (
-          <p className="text-destructive text-xs">{errors.message.message}</p>
-        )}
-      </div>
+          <ChatInterface
+            onSubmit={handleSubmit}
+            isLoading={isLoading}
+            placeholder="> e.g., Contact form with name, email, phone, subject dropdown..."
+          />
 
-      {/* Submit */}
-      <Button
-        type="submit"
-        disabled={isSubmitting}
-        className={cn(mode.radius, mode.font, "w-full text-xs")}
-      >
-        {isSubmitting ? "> SENDING..." : "> SEND_MESSAGE"}
-      </Button>
-    </form>
+          {/* Example Prompts */}
+          <div className="mt-4 space-y-2">
+            <p className={cn("text-muted-foreground text-xs", mode.font)}>[EXAMPLES]:</p>
+            <div className="flex flex-wrap gap-2">
+              {[
+                "Contact form with name, email, and message",
+                "User registration with email, password, and confirm password",
+                "Newsletter signup with email and interests dropdown",
+                "Bug report form with severity, category, and description",
+              ].map((example) => (
+                <button
+                  key={example}
+                  onClick={() => handleSubmit(example)}
+                  disabled={isLoading}
+                  className={cn(
+                    "border-border bg-muted/50 hover:bg-muted border px-3 py-1 text-xs transition-colors disabled:opacity-50",
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  {example}
+                </button>
+              ))}
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Error Message */}
+      {error && (
+        <Alert variant="destructive" className={mode.radius}>
+          <AlertCircle className="size-4" />
+          <AlertDescription className={cn("text-xs", mode.font)}>
+            [ERROR] {error}
+          </AlertDescription>
+        </Alert>
+      )}
+
+      {/* Results Section */}
+      {generatedForm && (
+        <div className="grid gap-6 lg:grid-cols-2">
+          <FormPreview form={generatedForm} />
+          <CodeViewer form={generatedForm} />
+        </div>
+      )}
+
+      {/* Empty State */}
+      {!generatedForm && !isLoading && !error && (
+        <Card>
+          <CardContent padding="lg">
+            <div className="flex flex-col items-center justify-center py-12 text-center">
+              <Sparkles className="text-muted-foreground/50 mb-4 size-12" />
+              <h3 className={cn("text-lg font-semibold", mode.font)}>
+                No form generated yet
+              </h3>
+              <p className={cn("text-muted-foreground max-w-md text-sm", mode.font)}>
+                Enter a description above to generate a form. The AI will create
+                both a live preview and copyable React Hook Form + Zod code.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+    </div>
   );
 }`;
 
