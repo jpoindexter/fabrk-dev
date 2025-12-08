@@ -50,7 +50,7 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 export function ThemeProvider({
   children,
   defaultTheme = DEFAULT_THEME,
-  defaultColorTheme = "dark",
+  defaultColorTheme = "light",
   defaultVisualMode = "terminal",
   storageKey,
   storageKeyPrefix = "design-system",
@@ -159,7 +159,7 @@ export function useOptionalThemeContext(): ThemeContextValue | null {
 export function ThemeScript({
   storageKey,
   storageKeyPrefix = "design-system",
-  defaultColorTheme = "dark",
+  defaultColorTheme = "light",
   defaultVisualMode = "terminal",
 }: ThemeScriptProps) {
   const colorKey = storageKey || `${storageKeyPrefix}-color-theme`;
