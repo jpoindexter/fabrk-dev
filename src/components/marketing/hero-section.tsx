@@ -9,7 +9,6 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { PolarCheckoutButton } from "@/components/polar/checkout-button";
-import { DiscountCounter } from "@/components/polar/discount-counter";
 import { motion, useInView } from "framer-motion";
 import { SimpleIcon } from "@/components/ui/simple-icon";
 import {
@@ -318,16 +317,6 @@ export function HeroSection() {
                 {/* Terminal Content */}
                 <HeroCodeDemo />
               </Card>
-            </motion.div>
-
-            {/* Discount Counter Below */}
-            <motion.div
-              className="mt-6 flex justify-center"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2.5 }}
-            >
-              <DiscountCounter />
             </motion.div>
           </motion.div>
         </div>

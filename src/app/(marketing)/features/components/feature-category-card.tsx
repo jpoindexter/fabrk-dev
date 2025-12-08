@@ -29,7 +29,7 @@ export function FeatureCategoryCard({ category, index }: FeatureCategoryCardProp
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.05 }}
       id={category.id}
-      className="scroll-mt-24"
+      className="border-border scroll-mt-24 border-t pt-16 lg:pt-20"
     >
       <div
         className={`flex flex-col ${isEven ? "lg:flex-row" : "lg:flex-row-reverse"} items-center gap-8 lg:gap-12`}
