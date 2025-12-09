@@ -4,7 +4,7 @@
  */
 
 import { getRequestConfig } from 'next-intl/server';
-import { defaultLocale, type Locale, locales } from './config';
+import { defaultLocale, type Locale, locales } from '@/config/i18n';
 
 export default getRequestConfig(async ({ requestLocale }) => {
   // Get the locale from the request

@@ -125,13 +125,13 @@ import { logger } from '@/lib/logger';
 import { prisma } from '@/lib/prisma';
 import { withRateLimit } from '@/lib/rate-limit/middleware';
 import { getOrCreateCustomer, stripe } from '@/lib/stripe/client';
-import { STRIPE_CONFIG, STRIPE_PRODUCTS } from '@/lib/stripe/config';
+import { STRIPE_CONFIG, STRIPE_PRODUCTS } from '@/config/stripe';
 import {
   generateCheckoutIdempotencyKey,
   getExistingCheckoutSession,
   storeCheckoutIdempotency,
 } from '@/lib/stripe/idempotency';
-import config from '@/config';
+import config from '@/config/app';
 import { NextRequest, NextResponse } from 'next/server';
 
 async function checkoutHandler(req: NextRequest) {

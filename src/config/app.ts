@@ -23,7 +23,7 @@ let env;
 try {
   // Only import env validation in Node.js environment (not during Next.js client bundling)
   if (typeof window === 'undefined') {
-    env = require('./lib/env').env;
+    env = require('../lib/env').env;
   }
 } catch (_) {
   // Fallback to process.env if env.ts hasn't been loaded yet
@@ -346,11 +346,12 @@ const config = {
   },
 };
 
-// Export as both config and siteConfig for compatibility
-module.exports = config;
-module.exports.siteConfig = {
+// Export as ES module default export
+export default config;
+
+// Named exports for compatibility
+export const siteConfig = {
   name: config.app.name,
   description: config.app.description,
   url: config.app.url,
 };
-module.exports.default = config;

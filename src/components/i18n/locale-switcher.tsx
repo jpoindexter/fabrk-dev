@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
 import { Globe } from 'lucide-react';
-import { locales, localeNames, localeFlags, type Locale } from '@/i18n/config';
+import { locales, localeNames, localeFlags, type Locale } from '@/config/i18n';
 
 export function LocaleSwitcher() {
   const locale = useLocale() as Locale;

@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { X, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
-import config from '@/config';
+import config from '@/config/app';
 import { Card } from '@/components/ui/card';
 
 interface StickyCTABarProps {

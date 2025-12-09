@@ -5,7 +5,7 @@
  */
 'use client';
 
-import config from '@/config';
+import config from '@/config/app';
 import { motion } from 'framer-motion';
 import { DiscountCounter } from '@/components/polar/discount-counter';
 import { PolarCheckoutButton } from '@/components/polar/checkout-button';
