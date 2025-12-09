@@ -140,7 +140,6 @@ export function SignInForm({
             onChange={(e) => setEmail(e.target.value)}
             disabled={isLoading}
             required
-            className={cn(mode.radius, mode.font, 'text-xs')}
           />
         </div>
 
@@ -167,7 +166,6 @@ export function SignInForm({
             onChange={(e) => setPassword(e.target.value)}
             disabled={isLoading}
             required
-            className={cn(mode.radius, mode.font, 'text-xs')}
           />
         </div>
 
@@ -189,11 +187,7 @@ export function SignInForm({
           </div>
         )}
 
-        <Button
-          type="submit"
-          className={cn(mode.radius, mode.font, 'w-full text-xs')}
-          disabled={isLoading}
-        >
+        <Button type="submit" className="w-full" disabled={isLoading}>
           {isLoading ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -235,7 +229,6 @@ export function SignInForm({
                 type="button"
                 onClick={() => handleSocialAuth(provider)}
                 disabled={isLoading || loadingProvider !== null}
-                className={cn(mode.radius, mode.font, 'text-xs')}
               >
                 {loadingProvider === provider.id ? (
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -353,7 +346,6 @@ export function SignUpForm({
             onChange={(e) => setName(e.target.value)}
             disabled={isLoading}
             required
-            className={cn(mode.radius, mode.font, 'text-xs')}
           />
         </div>
 
@@ -372,7 +364,6 @@ export function SignUpForm({
             onChange={(e) => setEmail(e.target.value)}
             disabled={isLoading}
             required
-            className={cn(mode.radius, mode.font, 'text-xs')}
           />
         </div>
 
@@ -389,7 +380,6 @@ export function SignUpForm({
             onChange={(e) => setPassword(e.target.value)}
             disabled={isLoading}
             required
-            className={cn(mode.radius, mode.font, 'text-xs')}
           />
         </div>
 
@@ -416,11 +406,7 @@ export function SignUpForm({
           </Label>
         </div>
 
-        <Button
-          type="submit"
-          className={cn(mode.radius, mode.font, 'w-full text-xs')}
-          disabled={isLoading || !acceptTerms}
-        >
+        <Button type="submit" className="w-full" disabled={isLoading || !acceptTerms}>
           {isLoading ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -462,7 +448,6 @@ export function SignUpForm({
                 type="button"
                 onClick={() => handleSocialAuth(provider)}
                 disabled={isLoading || loadingProvider !== null}
-                className={cn(mode.radius, mode.font, 'text-xs')}
               >
                 {loadingProvider === provider.id ? (
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />

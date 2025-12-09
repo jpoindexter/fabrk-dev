@@ -103,7 +103,6 @@ export function ContactForm() {
               </Label>
               <Input
                 id="name"
-                className="rounded-none text-sm"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 placeholder="> Enter your name..."
@@ -119,7 +118,6 @@ export function ContactForm() {
               <Input
                 id="email"
                 type="email"
-                className="rounded-none text-sm"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 placeholder="> Enter your email..."
@@ -137,7 +135,7 @@ export function ContactForm() {
                 onValueChange={(value) => setFormData({ ...formData, subject: value })}
                 required
               >
-                <SelectTrigger className="rounded-none text-sm">
+                <SelectTrigger>
                   <SelectValue placeholder="> Select a subject..." />
                 </SelectTrigger>
                 <SelectContent className="rounded-none">
@@ -160,7 +158,6 @@ export function ContactForm() {
               </Label>
               <Textarea
                 id="message"
-                className="rounded-none text-sm"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 placeholder="> Tell us more about your inquiry..."
@@ -190,12 +187,7 @@ export function ContactForm() {
             )}
 
             {/* Submit Button */}
-            <Button
-              type="submit"
-              size="lg"
-              className="w-full rounded-none text-xs"
-              disabled={status === 'loading'}
-            >
+            <Button type="submit" size="lg" className="w-full" disabled={status === 'loading'}>
               {status === 'loading' ? (
                 '> SENDING...'
               ) : (

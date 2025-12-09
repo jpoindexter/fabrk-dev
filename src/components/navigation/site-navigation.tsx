@@ -96,6 +96,7 @@ export function SiteNavigation() {
                     href={link.href}
                     className={cn(
                       mode.font,
+                      mode.radius,
                       'px-4 py-1 text-sm transition-colors',
                       isActive
                         ? 'bg-primary text-primary-foreground'
@@ -167,6 +168,7 @@ export function SiteNavigation() {
                         href={link.href}
                         className={cn(
                           mode.font,
+                          mode.radius,
                           'px-2 py-1 text-sm transition-colors',
                           isActive
                             ? 'bg-primary text-primary-foreground'

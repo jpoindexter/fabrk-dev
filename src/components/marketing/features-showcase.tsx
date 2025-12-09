@@ -188,7 +188,7 @@ function FeatureCard({
 
 export function FeaturesShowcase() {
   return (
-    <section className="border-border border-t py-16 lg:py-24">
+    <section className="border-border border-t py-20 lg:py-24">
       <div className="container mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         {/* Header */}
         <motion.div

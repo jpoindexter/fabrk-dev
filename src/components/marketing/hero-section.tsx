@@ -209,7 +209,7 @@ function HeroCodeDemo() {
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden px-6 py-16 lg:py-24">
+    <section className="relative overflow-hidden px-6 py-20 lg:py-24">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left Column - Terminal Content */}
