@@ -301,3 +301,4 @@ function getTierFromPrice(priceId: string): string {
   return "free";
 }
 // Test comment
+// Test ESLint hook
