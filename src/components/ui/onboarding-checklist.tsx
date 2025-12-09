@@ -250,7 +250,8 @@ export function OnboardingChecklist({
                                   mode.font
                                 )}
                               >
-                                &gt; {task.link.text}
+                                {"> "}
+                                {task.link.text}
                               </a>
                             )}
                           </div>

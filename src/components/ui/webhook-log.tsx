@@ -191,7 +191,7 @@ export function WebhookLog({
           className={cn(mode.radius, mode.font)}
         >
           <RefreshCw className={cn("h-4 w-4", isRefreshing && "animate-spin")} />
-          &gt; REFRESH
+          {"> "}REFRESH
         </Button>
       </div>
 

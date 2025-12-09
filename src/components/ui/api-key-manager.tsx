@@ -156,7 +156,7 @@ export function ApiKeyManager({
           <DialogTrigger asChild>
             <Button size="sm" className={cn(mode.radius, mode.font)}>
               <Plus className="h-4 w-4" />
-              &gt; GENERATE_KEY
+              {"> "}GENERATE_KEY
             </Button>
           </DialogTrigger>
           <DialogContent className={cn(mode.radius)}>
@@ -213,7 +213,7 @@ export function ApiKeyManager({
                 disabled={!newKeyName.trim() || isGenerating}
                 className={cn(mode.radius, mode.font)}
               >
-                {isGenerating ? "&gt; GENERATING..." : "&gt; GENERATE"}
+                {isGenerating ? "> GENERATING..." : "> GENERATE"}
               </Button>
             </DialogFooter>
           </DialogContent>
@@ -298,7 +298,7 @@ export function ApiKeyManager({
                     className="text-destructive focus:text-destructive"
                   >
                     <Trash2 className="mr-2 h-4 w-4" />
-                    &gt; REVOKE
+                    {"> "}REVOKE
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -319,13 +319,13 @@ export function ApiKeyManager({
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel className={cn(mode.radius, mode.font)}>
-              &gt; CANCEL
+              {"> "}CANCEL
             </AlertDialogCancel>
             <AlertDialogAction
               onClick={() => revokeId && handleRevoke(revokeId)}
               className={cn("bg-destructive hover:bg-destructive/90", mode.radius, mode.font)}
             >
-              &gt; REVOKE
+              {"> "}REVOKE
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

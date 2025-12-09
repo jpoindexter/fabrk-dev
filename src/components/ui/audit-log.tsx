@@ -185,7 +185,7 @@ export function AuditLog({
           className={cn(mode.radius, mode.font)}
         >
           <Download className="h-4 w-4" />
-          {isExporting ? "&gt; EXPORTING..." : "&gt; EXPORT_CSV"}
+          {isExporting ? "> EXPORTING..." : "> EXPORT_CSV"}
         </Button>
       </div>
 

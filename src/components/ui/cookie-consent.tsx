@@ -191,7 +191,7 @@ export function CookieConsent({
                 onClick={() => setShowCustomize(true)}
                 className={cn("text-xs", mode.radius, mode.font)}
               >
-                &gt; CUSTOMIZE
+                {"> "}CUSTOMIZE
               </Button>
               <Button
                 size="sm"
@@ -199,14 +199,14 @@ export function CookieConsent({
                 onClick={handleRejectAll}
                 className={cn("text-xs", mode.radius, mode.font)}
               >
-                &gt; REJECT_ALL
+                {"> "}REJECT_ALL
               </Button>
               <Button
                 size="sm"
                 onClick={handleAcceptAll}
                 className={cn("text-xs", mode.radius, mode.font)}
               >
-                &gt; ACCEPT_ALL
+                {"> "}ACCEPT_ALL
               </Button>
             </div>
           </div>
@@ -310,13 +310,13 @@ export function CookieConsent({
               onClick={handleRejectAll}
               className={cn("w-full sm:w-auto", mode.radius, mode.font)}
             >
-              &gt; REJECT_ALL
+              {"> "}REJECT_ALL
             </Button>
             <Button
               onClick={handleSaveCustom}
               className={cn("w-full sm:w-auto", mode.radius, mode.font)}
             >
-              &gt; SAVE_PREFERENCES
+              {"> "}SAVE_PREFERENCES
             </Button>
           </DialogFooter>
         </DialogContent>
