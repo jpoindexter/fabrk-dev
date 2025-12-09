@@ -69,6 +69,7 @@ next-env.d.ts
 prisma/*.db
 prisma/*.db-journal
 prisma/migrations
+src/generated/prisma
 
 # database backups
 backups/
