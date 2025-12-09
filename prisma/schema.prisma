@@ -378,7 +378,9 @@ model AuditLog {
   action     String // Action type (e.g., "org.member.removed", "org.deleted")
   resource   String? // Resource type (e.g., "organization", "user")
   resourceId String? // ID of the affected resource
-  metadata   Json? // Additional context (IP, user agent, etc.)
+  ipAddress  String? // IP address at time of action
+  userAgent  String? // Browser/device info
+  metadata   Json? // Additional context
   createdAt  DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -492,10 +494,13 @@ model WebhookDelivery {
   id          String    @id @default(cuid())
   webhookId   String
   event       String
-  payload     Json
-  status      String // pending, success, failed
+  method      String    @default("POST") // HTTP method (GET, POST, PUT, DELETE, PATCH)
+  payload     Json // Request payload
+  status      String // pending, success, failed, retrying
   statusCode  Int?
-  response    String?   @db.Text
+  response    String?   @db.Text // Response payload
+  error       String?   @db.Text // Error message if failed
+  duration    Int? // Request duration in milliseconds
   attempts    Int       @default(0)
   nextRetryAt DateTime?
   createdAt   DateTime  @default(now())
