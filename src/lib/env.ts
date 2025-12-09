@@ -69,25 +69,25 @@ const serverSchema = z.object({
   // ============================================================================
   // AUTHENTICATION - NextAuth v5 (CRITICAL)
   // ============================================================================
-  NEXTAUTH_SECRET: z
-    .string()
-    .min(32, "NEXTAUTH_SECRET must be at least 32 characters for security")
-    .describe("Generate with: openssl rand -base64 32"),
+  NEXTAUTH_SECRET: requiredInProduction("NEXTAUTH_SECRET").refine((val) => {
+    // In production, validate minimum length
+    if (process.env.NODE_ENV === "production" && val) {
+      return val.length >= 32;
+    }
+    return true;
+  }, "NEXTAUTH_SECRET must be at least 32 characters for security in production"),
 
-  NEXTAUTH_URL: z
-    .string()
-    .url("NEXTAUTH_URL must be a valid URL")
-    .refine((val) => {
-      // In production, must be HTTPS
-      if (process.env.NODE_ENV === "production") {
-        // Allow localhost for local production builds/testing
-        if (val.includes("localhost") || val.includes("127.0.0.1")) {
-          return true;
-        }
-        return val.startsWith("https://");
+  NEXTAUTH_URL: requiredInProduction("NEXTAUTH_URL").refine((val) => {
+    // In production, must be HTTPS (if set)
+    if (process.env.NODE_ENV === "production" && val) {
+      // Allow localhost for local production builds/testing
+      if (val.includes("localhost") || val.includes("127.0.0.1")) {
+        return true;
       }
-      return true;
-    }, "NEXTAUTH_URL must use HTTPS in production"),
+      return val.startsWith("https://");
+    }
+    return true;
+  }, "NEXTAUTH_URL must use HTTPS in production"),
 
   // Google OAuth - Required if enabled
   GOOGLE_CLIENT_ID: z.string().optional(),
@@ -437,8 +437,18 @@ const clientSchema = z.object({
 /**
  * Validate and parse environment variables
  * This will throw an error if validation fails
+ * Set SKIP_ENV_VALIDATION=true to skip validation (useful for builds/CI)
  */
 const parseEnv = () => {
+  // Allow skipping validation (useful for initial builds or CI)
+  if (process.env.SKIP_ENV_VALIDATION === "true") {
+    console.log("⚠️  Skipping environment variable validation (SKIP_ENV_VALIDATION=true)");
+    return {
+      server: process.env as any,
+      client: process.env as any,
+    };
+  }
+
   // Parse server-side env vars
   const serverEnv = serverSchema.safeParse(process.env);
 
