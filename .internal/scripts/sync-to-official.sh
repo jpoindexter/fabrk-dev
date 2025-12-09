@@ -60,17 +60,12 @@ cp "$DEV_REPO/.internal/scripts/customer-library-layout.tsx" "$OFFICIAL_REPO/src
 cp "$DEV_REPO/.internal/scripts/customer-docs-layout.tsx" "$OFFICIAL_REPO/src/app/docs/layout.tsx"
 
 # --- Core Components ---
-# Copy all src/components, then remove specific marketing ones
-cp -r "$DEV_REPO/src/components" "$OFFICIAL_REPO/src/"
-rm -rf "$OFFICIAL_REPO/src/components/landing" # Specific landing page components
-rm -rf "$OFFICIAL_REPO/src/components/marketing" # Marketing specific components
-rm -rf "$OFFICIAL_REPO/src/components/home" # Homepage specific components (if any left)
-
-# --- Shared Components ---
-cp -r "$DEV_REPO/src/components/shared" "$OFFICIAL_REPO/src/components/"
+# Copy all src/components except marketing/landing/home, excluding test files
+rsync -a --exclude='landing/' --exclude='marketing/' --exclude='home/' --exclude='*.test.ts' --exclude='*.test.tsx' --exclude='*.spec.ts' --exclude='*.spec.tsx' "$DEV_REPO/src/components/" "$OFFICIAL_REPO/src/components/"
 
 # --- Libraries ---
-cp -r "$DEV_REPO/src/lib" "$OFFICIAL_REPO/src/"
+# Copy all libraries excluding test files
+rsync -a --exclude='*.test.ts' --exclude='*.test.tsx' --exclude='*.spec.ts' --exclude='*.spec.tsx' "$DEV_REPO/src/lib/" "$OFFICIAL_REPO/src/lib/"
 
 # --- i18n ---
 cp -r "$DEV_REPO/src/i18n" "$OFFICIAL_REPO/src/"
@@ -145,15 +140,10 @@ echo -e "${YELLOW}[INFO] Processing README...${NC}"
 cp "$DEV_REPO/README.md" "$OFFICIAL_REPO/README.md" # Copy the original
 node "$DEV_REPO/.internal/scripts/utilities/clean-readme.mjs" "$OFFICIAL_REPO/README.md" # Clean it up
 
-# 7. Final cleanup - remove any remaining internal files (e.g. from `.internal` that would have been copied by rsync)
-# This is mainly for safety if any .internal pattern wasn't properly excluded in rsync or if we switch back to rsync
+# 7. Final cleanup - remove any remaining internal files (safeguard)
 rm -rf "$OFFICIAL_REPO/.internal" 2>/dev/null || true
 rm -rf "$OFFICIAL_REPO/marketing" 2>/dev/null || true
 rm -rf "$OFFICIAL_REPO/.claude" 2>/dev/null || true
-
-# 8. Remove test files - customers don't need internal tests
-echo -e "${YELLOW}[INFO] Removing test files...${NC}"
-find "$OFFICIAL_REPO/src" -type f \( -name "*.test.ts" -o -name "*.test.tsx" -o -name "*.spec.ts" -o -name "*.spec.tsx" \) -delete
 
 
 echo -e "${GREEN}[SUCCESS] Sync complete!${NC}"
