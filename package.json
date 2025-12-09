@@ -55,13 +55,14 @@
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
-      "npx prettier --write"
+      "eslint --fix",
+      "prettier --write"
     ],
     "src/**/*.tsx": [
       "node .internal/scripts/utilities/pre-commit-audit.mjs"
     ],
     "src/**/*.{json,css,md}": [
-      "npx prettier --write"
+      "prettier --write"
     ]
   },
   "prisma": {
@@ -182,6 +183,12 @@
     "@types/node": "^24.10.1",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.49.0",
+    "@typescript-eslint/parser": "^8.49.0",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "^16.0.8",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-tailwind-v4": "^1.0.15",
     "postcss": "^8",
     "prettier": "^3.7.4",
     "prettier-plugin-tailwindcss": "^0.7.2",
