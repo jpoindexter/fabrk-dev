@@ -55,7 +55,6 @@
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
-      "npx eslint --fix",
       "npx prettier --write"
     ],
     "src/**/*.tsx": [

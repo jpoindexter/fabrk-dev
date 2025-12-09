@@ -13,7 +13,11 @@ import { env } from "@/lib/env";
 // Allow builds without Stripe key when SKIP_ENV_VALIDATION is set
 const STRIPE_KEY = env.server.STRIPE_SECRET_KEY || "";
 
-if (!STRIPE_KEY && process.env.SKIP_ENV_VALIDATION !== "true" && process.env.NODE_ENV === "production") {
+if (
+  !STRIPE_KEY &&
+  process.env.SKIP_ENV_VALIDATION !== "true" &&
+  process.env.NODE_ENV === "production"
+) {
   throw new Error(
     "STRIPE_SECRET_KEY environment variable is required in production. " +
       "Please set it in your .env.local file or environment configuration."
@@ -296,3 +300,4 @@ function getTierFromPrice(priceId: string): string {
   if (priceId === env.client.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL) return "pro";
   return "free";
 }
+// Test comment
