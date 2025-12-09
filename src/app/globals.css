@@ -571,8 +571,8 @@
   /* accent-content */
   --muted: 25% 0.09 281.288;
   /* base-300 - LIGHTEST! */
-  --muted-foreground: 75% 0.15 330;
-  /* Slightly dimmed */
+  --muted-foreground: 80% 0.15 330;
+  /* Increased from 75% for WCAG AA compliance (4.5:1 contrast) */
   --destructive: 60% 0.25 15;
   --destructive-foreground: 100% 0 0;
   --success: 70% 0.2 163;
@@ -1062,7 +1062,8 @@
   /* accent-content */
   --muted: 23.219% 0.004 308.229;
   /* base-300 - LIGHTEST! */
-  --muted-foreground: 80% 0.08 101;
+  --muted-foreground: 85% 0.08 101;
+  /* Increased from 80% for WCAG AA compliance (4.5:1 contrast) */
   --destructive: 55% 0.22 15;
   --destructive-foreground: 100% 0 0;
   --success: 70% 0.18 163;
