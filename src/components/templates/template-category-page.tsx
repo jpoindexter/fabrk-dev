@@ -70,88 +70,97 @@ export function TemplateCategoryPage({
           </div>
         </section>
 
-        {/* Templates Grid */}
-        <div className="grid gap-4 md:grid-cols-2">
-          {templates.map((template) => (
-            <Link key={template.id} href={template.href}>
-              <Card interactive size="full">
-                <CardHeader
-                  code="0x00"
-                  title={template.id.toUpperCase().replace(/-/g, '_')}
-                  icon={<template.icon className="text-muted-foreground size-4" />}
-                />
+        {/* Templates Section */}
+        <section className="space-y-6">
+          <h2 className={cn('text-2xl font-semibold tracking-tight', mode.font)}>
+            Available Templates
+          </h2>
 
-                <CardContent>
-                  {/* Status & Badge */}
-                  <div className={cn('mb-4 flex items-center justify-between text-xs', mode.font)}>
-                    <div>
-                      <span className="text-muted-foreground">STATUS: </span>
-                      <span className="text-success">READY</span>
-                    </div>
-                    {template.badge && (
-                      <div
-                        className={cn(
-                          'border-primary/50 text-primary border px-2 py-0.5',
-                          mode.radius
-                        )}
-                      >
-                        {template.badge.toUpperCase()}
+          {/* Templates Grid */}
+          <div className="grid gap-4 md:grid-cols-2">
+            {templates.map((template) => (
+              <Link key={template.id} href={template.href}>
+                <Card interactive size="full">
+                  <CardHeader
+                    code="0x00"
+                    title={template.id.toUpperCase().replace(/-/g, '_')}
+                    icon={<template.icon className="text-muted-foreground size-4" />}
+                  />
+
+                  <CardContent>
+                    {/* Status & Badge */}
+                    <div
+                      className={cn('mb-4 flex items-center justify-between text-xs', mode.font)}
+                    >
+                      <div>
+                        <span className="text-muted-foreground">STATUS: </span>
+                        <span className="text-success">READY</span>
                       </div>
-                    )}
-                  </div>
-
-                  {/* Title */}
-                  <h3 className={cn('mb-2 text-lg font-semibold', mode.font)}>{template.name}</h3>
-
-                  {/* Description */}
-                  <div className={cn('mb-4 text-xs', mode.font)}>
-                    <span className="text-muted-foreground">DESC: </span>
-                    <span className="text-foreground">{template.description}</span>
-                  </div>
-
-                  {/* Features */}
-                  <div className="mb-4">
-                    <StyledLabel className="mb-2">FEATURES</StyledLabel>
-                    <div className="flex flex-wrap gap-2">
-                      {template.features.map((feature) => (
-                        <span
-                          key={feature}
+                      {template.badge && (
+                        <div
                           className={cn(
-                            'border-border border px-2 py-0.5 text-xs',
-                            mode.font,
+                            'border-primary/50 text-primary border px-2 py-0.5',
                             mode.radius
                           )}
                         >
-                          {feature}
-                        </span>
-                      ))}
+                          {template.badge.toUpperCase()}
+                        </div>
+                      )}
                     </div>
-                  </div>
 
-                  {/* Action */}
-                  <div className="flex items-center justify-between">
-                    <span
-                      className={cn(
-                        'text-primary group-hover:text-primary/80 text-xs transition-colors',
-                        mode.font
-                      )}
-                    >
-                      &gt; VIEW_TEMPLATE
-                    </span>
-                    <span
-                      className={cn(
-                        'text-muted-foreground text-xs transition-transform group-hover:translate-x-1',
-                        mode.font
-                      )}
-                    >
-                      →
-                    </span>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
-        </div>
+                    {/* Title */}
+                    <h3 className={cn('mb-2 text-lg font-semibold', mode.font)}>{template.name}</h3>
+
+                    {/* Description */}
+                    <div className={cn('mb-4 text-xs', mode.font)}>
+                      <span className="text-muted-foreground">DESC: </span>
+                      <span className="text-foreground">{template.description}</span>
+                    </div>
+
+                    {/* Features */}
+                    <div className="mb-4">
+                      <StyledLabel className="mb-2">FEATURES</StyledLabel>
+                      <div className="flex flex-wrap gap-2">
+                        {template.features.map((feature) => (
+                          <span
+                            key={feature}
+                            className={cn(
+                              'border-border border px-2 py-0.5 text-xs',
+                              mode.font,
+                              mode.radius
+                            )}
+                          >
+                            {feature}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Action */}
+                    <div className="flex items-center justify-between">
+                      <span
+                        className={cn(
+                          'text-primary group-hover:text-primary/80 text-xs transition-colors',
+                          mode.font
+                        )}
+                      >
+                        &gt; VIEW_TEMPLATE
+                      </span>
+                      <span
+                        className={cn(
+                          'text-muted-foreground text-xs transition-transform group-hover:translate-x-1',
+                          mode.font
+                        )}
+                      >
+                        →
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </section>
 
         {/* Template Features Card */}
         <Card size="auto">
