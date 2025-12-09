@@ -1257,8 +1257,8 @@
   --accent-foreground: 8% 0.01 40;
   --muted: 15% 0.02 40;
   /* Dark muted amber */
-  --muted-foreground: 55% 0.14 40;
-  /* Medium amber for muted text */
+  --muted-foreground: 65% 0.14 40;
+  /* Medium amber for muted text - increased from 55% for better contrast */
   --destructive: 60% 0.2 25;
   /* Reddish amber for errors */
   --destructive-foreground: 95% 0.05 40;
@@ -1271,8 +1271,8 @@
   --info: 75% 0.19 40;
   /* Same as primary */
   --info-foreground: 8% 0.01 40;
-  --border: 25% 0.08 40;
-  /* Subtle amber border */
+  --border: 30% 0.1 40;
+  /* Subtle amber border - increased from 25% for better visibility */
   --input: 25% 0.08 40;
   --ring: 75% 0.19 40;
   /* Bright amber focus ring */

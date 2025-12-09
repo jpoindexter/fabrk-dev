@@ -48,8 +48,7 @@ const buttonVariants = cva(
         // Destructive - danger/delete actions
         destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
         // Outline - bordered, transparent background
-        outline:
-          'border border-foreground/20 bg-background hover:bg-foreground/10 hover:border-foreground/40',
+        outline: 'border border-border bg-background hover:bg-muted hover:border-primary/50',
         // Secondary - muted background
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
         // Ghost - no background, subtle hover
