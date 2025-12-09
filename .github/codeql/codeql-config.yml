@@ -1,0 +1,25 @@
+name: "CodeQL config"
+
+# Disable default queries and use security queries only
+disable-default-queries: false
+
+# Use security-and-quality query suite
+queries:
+  - uses: security-and-quality
+
+# Paths to analyze
+paths:
+  - src
+
+# Paths to ignore
+paths-ignore:
+  - node_modules
+  - dist
+  - build
+  - .next
+  - coverage
+  - '**/*.test.ts'
+  - '**/*.test.tsx'
+  - '**/*.spec.ts'
+  - '**/*.spec.tsx'
+  - src/generated
