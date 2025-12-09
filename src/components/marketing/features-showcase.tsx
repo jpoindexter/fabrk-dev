@@ -20,12 +20,7 @@ import {
   Palette,
   Mail,
 } from "lucide-react";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  Stat,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardContent, Stat } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
 
@@ -57,7 +52,7 @@ const FEATURES = [
   {
     id: "multitenancy",
     icon: Users,
-    module: "MULTI_TENANT",
+    module: "MULTI TENANT",
     status: "ENABLED",
     title: "Multi-Tenancy",
     description: "Invite, join and switch between multiple organizations.",
@@ -204,10 +199,10 @@ export function FeaturesShowcase() {
           className="mb-12"
         >
           <Card className="mb-4 inline-block">
-            <CardHeader code="0x10" title="STACK_CONFIG" meta="FIB[89,144,233] MODULES" />
+            <CardHeader code="0x10" title="STACK CONFIG" meta="FIB[89,144,233] MODULES" />
           </Card>
           <h2 className={cn("mb-4 text-2xl font-semibold tracking-tight", mode.font)}>
-            SOLID_FOUNDATION
+            SOLID FOUNDATION
           </h2>
           <p className={cn("text-muted-foreground max-w-2xl text-sm", mode.font)}>
             Everything you need to build a production-ready SaaS. Authentication, payments,

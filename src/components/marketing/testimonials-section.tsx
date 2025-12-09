@@ -15,21 +15,21 @@ export function TestimonialsSection() {
   const testimonials = [
     {
       quote: "[EXAMPLE] Your customer quote here. Describe specific results or benefits.",
-      author: "CUSTOMER_NAME",
+      author: "Customer Name",
       role: "Role, Company",
       initials: "CN",
       color: "bg-primary text-primary-foreground",
     },
     {
       quote: "[EXAMPLE] Another testimonial highlighting a different feature or benefit.",
-      author: "CUSTOMER_NAME",
+      author: "Customer Name",
       role: "Role, Company",
       initials: "CN",
       color: "bg-accent text-accent-foreground",
     },
     {
       quote: "[EXAMPLE] Include specific metrics when possible (e.g., 'saved 40 hours').",
-      author: "CUSTOMER_NAME",
+      author: "Customer Name",
       role: "Role, Company",
       initials: "CN",
       color: "bg-secondary text-secondary-foreground",
@@ -47,7 +47,7 @@ export function TestimonialsSection() {
             viewport={{ once: true }}
           >
             <span className="text-muted-foreground text-xs">[0x00]</span>
-            <h2 className="mb-4 text-2xl font-semibold tracking-tight">LOVED_BY_DEVELOPERS</h2>
+            <h2 className="mb-4 text-2xl font-semibold tracking-tight">LOVED BY DEVELOPERS</h2>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}

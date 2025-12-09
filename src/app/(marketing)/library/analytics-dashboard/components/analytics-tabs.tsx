@@ -58,7 +58,7 @@ export function AnalyticsTabs({
     >
       {/* Overview Tab */}
       <StyledTabsContent value="overview">
-        <div className="border-border bg-card border border-t-0 p-4">
+        <div className="border-border bg-card border p-4">
           <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
             [TOP_PAGES]: SORTED_BY=VIEWS
           </div>
@@ -97,7 +97,7 @@ export function AnalyticsTabs({
 
       {/* Analytics Tab */}
       <StyledTabsContent value="analytics">
-        <div className="border-border bg-card border border-t-0 p-4">
+        <div className="border-border bg-card border p-4">
           <div className="grid gap-4 md:grid-cols-2">
             {/* Traffic Sources */}
             <div className="border-border border p-4">
@@ -140,7 +140,7 @@ export function AnalyticsTabs({
 
       {/* Reports Tab */}
       <StyledTabsContent value="reports">
-        <div className="border-border bg-card border border-t-0 p-4">
+        <div className="border-border bg-card border p-4">
           <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
             [AVAILABLE_REPORTS]:
           </div>

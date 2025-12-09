@@ -1,12 +1,7 @@
 "use client";
 
 import { SimpleIcon } from "@/components/ui/simple-icon";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  Badge,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardContent, Badge } from "@/components/ui/card";
 import { siTypescript, siPrisma, siEslint } from "simple-icons";
 import { Zap, FolderTree, Terminal, Code2 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -75,7 +70,7 @@ export function DeveloperExperienceSection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Badge code="0x50" label="DEV_EXPERIENCE" />
+            <Badge code="0x50" label="DEV EXPERIENCE" />
           </motion.div>
         </div>
 
@@ -87,7 +82,7 @@ export function DeveloperExperienceSection() {
           className="text-center"
         >
           <h2 className="mb-2 text-2xl font-semibold tracking-tight">
-            DEVELOPER_EXPERIENCE_MATTERS
+            DEVELOPER EXPERIENCE MATTERS
           </h2>
         </motion.div>
         <motion.p

@@ -83,7 +83,7 @@ export function StickyCTABar({
         isVisible ? "translate-y-0" : "translate-y-full"
       )}
     >
-      <Card className="bg-card/95 border-t-2 backdrop-blur-sm">
+      <Card className="bg-card/95 border-t backdrop-blur-sm">
         <div className="mx-auto max-w-7xl px-4 py-4">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             {/* Message */}

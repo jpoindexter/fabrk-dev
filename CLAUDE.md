@@ -41,8 +41,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 All components use terminal aesthetic:
 - `rounded-none` on all elements
-- `font-mono` for UI text
+- `font-mono` for ALL text (body tag uses `className="font-mono"`)
 - Design tokens only (no hardcoded colors)
+
+**IMPORTANT:** The `<body>` tag MUST have `className="font-mono antialiased"` to apply JetBrains Mono monospace font globally. This ensures consistent terminal aesthetic throughout the entire application.
 
 ### 2. NEVER hardcode colors
 
@@ -63,6 +65,34 @@ See [Documentation Templates](#documentation-templates) section.
 ### 4. ALWAYS include `title` prop on `DocsCard`
 
 Every card needs a terminal header.
+
+### 5. Terminal Text Casing Standards
+
+Follow these text casing rules for consistent terminal aesthetic:
+
+| Element Type | Casing Rule | Examples |
+|--------------|-------------|----------|
+| **UI Labels/Badges** | UPPERCASE | `[SYSTEM INIT]`, `[STATUS]`, `[POWERED BY]` |
+| **Button Text** | UPPERCASE with `>` prefix | `> GET FABRK`, `> VIEW LIBRARY`, `> SUBMIT` |
+| **Headlines (H1/H2)** | UPPERCASE | `BUILDING YOUR SAAS`, `JUST GOT UNFAIRLY EASY` |
+| **Body Text** | Normal sentence case | "Why spend valuable time tackling auth..." |
+| **Tech Stack Labels** | UPPERCASE | `NEXT.JS`, `REACT`, `TYPESCRIPT` |
+| **Status Values** | UPPERCASE | `OPTIMIZED`, `SEAMLESS`, `[OK]` |
+
+**Important:** Never use underscores in user-facing text. Use spaces for readability. Headlines use ALL CAPS for strong terminal aesthetic and visual impact.
+
+```tsx
+// GOOD
+<Badge label="SYSTEM INIT" />
+<Button>> GET FABRK</Button>
+<h2>BUILDING YOUR SAAS</h2>
+
+// BAD
+<Badge label="SYSTEM_INIT" />
+<Button>> GET_FABRK</Button>
+<h2>BUILDING_YOUR_SAAS</h2>
+<h2>Building Your SaaS</h2>  {/* Title Case too soft for terminal */}
+```
 
 ---
 
@@ -143,8 +173,17 @@ src/
 ### Terminal Aesthetic
 
 1. **Sharp edges** - `rounded-none` on all elements
-2. **Monospace** - `font-mono` for all UI text
+2. **Monospace everywhere** - Body tag uses `font-mono`, JetBrains Mono applied globally
 3. **Command-line feel** - Brackets, prefixes, uppercase
+
+**Font Application:**
+```tsx
+// Root layout.tsx - REQUIRED
+<body className="font-mono antialiased" suppressHydrationWarning>
+
+// This applies JetBrains Mono to ALL text site-wide
+// Components inherit this automatically - no need to add font-mono to every component
+```
 
 ### Design System Tokens (IMPORTANT)
 

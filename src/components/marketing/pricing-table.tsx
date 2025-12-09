@@ -102,7 +102,7 @@ const defaultPlans: PricingPlan[] = [
       authLibrary: "NextAuth v5",
     },
     highlighted: true,
-    cta: { text: "> GET_FABRK", href: "#pricing" },
+    cta: { text: "> GET FABRK", href: "#pricing" },
   },
 ];
 
@@ -153,22 +153,21 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
         {/* Pricing Table */}
         <div
           className={cn(
-            mode.radius,
             "[&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar-thumb]:bg-border overflow-x-auto scroll-smooth [&::-webkit-scrollbar]:h-2"
           )}
         >
           <div className="inline-block min-w-full align-middle">
-            <table className={cn(mode.radius, "border-foreground min-w-full border-2")}>
+            <table className="border-foreground min-w-full rounded-none border-2">
               {/* Header Row */}
               <thead>
                 <tr>
-                  <th className="border-foreground bg-muted sticky left-0 z-10 border-r-2 border-b-2 px-6 py-4 text-left">
+                  <th className="border-foreground bg-muted sticky left-0 z-10 rounded-none border-r-2 border-b-2 px-6 py-4 text-left">
                     <span className="text-muted-foreground text-sm font-semibold">Features</span>
                   </th>
                   {plans.map((plan) => (
                     <th
                       key={plan.name}
-                      className={`border-foreground border-b-2 border-l-2 px-6 py-4 ${
+                      className={`border-foreground rounded-none border-b-2 border-l-2 px-6 py-4 ${
                         plan.highlighted ? "bg-primary text-primary-foreground" : "bg-muted"
                       }`}
                     >
@@ -270,14 +269,14 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
         {/* Savings Highlight */}
         <div className="mt-8 text-center">
           <p className={cn(mode.font, "text-primary text-sm font-semibold")}>
-            [SAVINGS] SAVE_60-77%_WITH_FABRK • SAME_FEATURES_BETTER_STACK
+            [SAVINGS] SAVE 60-77% WITH FABRK • SAME FEATURES BETTER STACK
           </p>
         </div>
 
         {/* Final Sale Notice */}
         <div className="mt-8 text-center">
           <p className={cn(mode.font, "text-muted-foreground text-xs")}>
-            ALL_SALES_FINAL • DIGITAL_PRODUCT • LIFETIME_V1.X_UPDATES_INCLUDED
+            ALL SALES FINAL • DIGITAL PRODUCT • LIFETIME V1.X UPDATES INCLUDED
           </p>
         </div>
       </div>

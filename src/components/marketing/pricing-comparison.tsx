@@ -14,12 +14,7 @@ import * as React from "react";
 import { Check, X, Crown, Zap } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 import { mode } from "@/design-system";
@@ -135,16 +130,16 @@ export function PricingComparison({
       </div>
 
       {/* Feature Comparison Table */}
-      <div className={cn("border-border overflow-hidden border", mode.radius)}>
+      <div className="border-border overflow-hidden border">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-border bg-muted border-b">
-                <th className="p-4 text-left">
+              <tr className="border-border bg-muted rounded-none border-b">
+                <th className="rounded-none p-4 text-left">
                   <span className="text-foreground text-sm font-semibold">Features</span>
                 </th>
                 {plans.map((plan) => (
-                  <th key={plan.id} className="min-w-[120px] p-4 text-center">
+                  <th key={plan.id} className="min-w-[120px] rounded-none p-4 text-center">
                     <span className="text-foreground text-sm font-semibold">{plan.name}</span>
                   </th>
                 ))}

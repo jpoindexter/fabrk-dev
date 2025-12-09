@@ -34,60 +34,7 @@
 
 @layer base {
   /* ============================================
-     VISUAL MODES (THEMES)
-     ============================================ */
-
-  /* Modern Theme (Vercel Geist-inspired) */
-  [data-visual-mode="modern"] {
-    --radius: 0.375rem; /* 6px */
-    --font-sans: var(--font-geist-sans), "Inter", sans-serif;
-    --font-mono: var(--font-geist-mono), monospace;
-
-    /* Colors from modern.ts */
-    --background: 0% 0 0; /* #ffffff (OKLCH: 100% 0 0 -> hex #ffffff) */
-    --foreground: 0% 0 0; /* #000000 */
-
-    /* We need to use hex-to-oklch values or just use the CSS variables defined in tailwind.config 
-       if the tailwind config maps them. 
-       However, since globals.css defines the base variables, we should redefine them here 
-       but we need them in OKLCH format if we want to stick to the system.
-       
-       Let's try to stick to the design token system which maps semantic names.
-       Actually, the cleanest way is to just override the base variables with the 
-       modern theme's specific values if they differ significantly from the default "Light" theme.
-       
-       The "Light" theme in this file is already very close to Vercel's white/black.
-       The main difference is the radius and font.
-    */
-
-    --background: 100% 0 0;
-    --foreground: 0% 0 0;
-    --card: 100% 0 0;
-    --card-foreground: 0% 0 0;
-    --popover: 100% 0 0;
-    --popover-foreground: 0% 0 0;
-    --primary: 0% 0 0; /* #000000 */
-    --primary-foreground: 100% 0 0; /* #ffffff */
-
-    /* Vercel Blue for accents if needed, but standard Modern is B&W */
-    --accent: 96% 0 0;
-    --accent-foreground: 0% 0 0;
-
-    --border: 90% 0 0; /* #eaeaea approx */
-    --input: 90% 0 0;
-    --ring: 0% 0 0;
-  }
-
-  /* Terminal Theme (Default) - Sharp edges */
-  [data-visual-mode="terminal"] {
-    --radius: 0;
-    --font-sans: var(--font-jetbrains-mono), monospace;
-    /* Force mono everywhere in terminal mode */
-  }
-
-  /* ============================================
-     TERMINAL MODE OVERRIDES
-     Only apply these when data-visual-mode="terminal"
+     TERMINAL THEME STYLING
      ============================================ */
 
   /* Dark overlay for alert dialogs */

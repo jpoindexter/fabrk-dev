@@ -18,7 +18,7 @@ interface HeroVideoProps {
 }
 
 export function HeroVideo({
-  headline = "The Anti-Bloat Next.js Boilerplate",
+  headline = "THE ANTI-BLOAT NEXTJS BOILERPLATE",
   subheadline = "161 files. Not 1000. Ship your SaaS in hours, not weeks.",
   ctaPrimary = { text: "Get Fabrk", href: "#pricing" },
   ctaSecondary = { text: "View Demo", href: "#demo" },
@@ -72,7 +72,7 @@ export function HeroVideo({
                 "border-foreground/30 bg-foreground/10 text-foreground inline-block border-2 px-4 py-2 text-sm backdrop-blur-sm"
               )}
             >
-              [ EARLY_ACCESS ] JOIN_FIRST_100_CUSTOMERS
+              [ EARLY ACCESS ] JOIN FIRST 100 CUSTOMERS
             </span>
           </div>
 
@@ -143,7 +143,7 @@ export function HeroVideo({
 
           {/* Final Sale Notice */}
           <p className={cn(mode.font, "text-foreground/80 text-xs")}>
-            ALL_SALES_FINAL • LIFETIME_V1.X_UPDATES
+            ALL SALES FINAL • LIFETIME V1.X UPDATES
           </p>
         </div>
       </div>

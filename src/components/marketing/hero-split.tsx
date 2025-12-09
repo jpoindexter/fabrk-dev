@@ -16,11 +16,11 @@ interface HeroSplitProps {
 }
 
 export function HeroSplit({
-  headline = "THE_ANTI_BLOAT_NEXTJS_BOILERPLATE",
-  subheadline = "> 161_FILES_NOT_1000 // Ship your SaaS in hours, not weeks",
-  ctaPrimary = { text: "> GET_FABRK", href: "#pricing" },
-  ctaSecondary = { text: "> VIEW_DOCS", href: "/docs" },
-  trustBadges = ["TYPESCRIPT_STRICT", "POSTGRESQL_PRISMA", "NEXTJS_15", "80_PLUS_COMPONENTS"],
+  headline = "THE ANTI-BLOAT NEXTJS BOILERPLATE",
+  subheadline = "> 161 FILES NOT 1000 // Ship your SaaS in hours, not weeks",
+  ctaPrimary = { text: "> GET FABRK", href: "#pricing" },
+  ctaSecondary = { text: "> VIEW DOCS", href: "/docs" },
+  trustBadges = ["TYPESCRIPT STRICT", "POSTGRESQL PRISMA", "NEXTJS 15", "80+ COMPONENTS"],
   imagePosition = "right",
 }: HeroSplitProps) {
   const contentOrder = imagePosition === "left" ? "lg:order-2" : "lg:order-1";
@@ -39,7 +39,7 @@ export function HeroSplit({
                   padding="sm"
                   className={cn("text-muted-foreground text-xs", mode.font)}
                 >
-                  [ EARLY_ACCESS ] JOIN_FIRST_100_LAUNCH_CUSTOMERS
+                  [EARLY ACCESS] JOIN FIRST 100 LAUNCH CUSTOMERS
                 </CardContent>
               </Card>
             </div>

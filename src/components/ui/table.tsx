@@ -4,7 +4,7 @@ import { mode } from "@/design-system";
 
 const Table = React.forwardRef<HTMLTableElement, React.HTMLAttributes<HTMLTableElement>>(
   ({ className, ...props }, ref) => (
-    <div className="relative w-full overflow-auto">
+    <div className="border-border relative w-full overflow-auto border">
       <table
         ref={ref}
         className={cn("w-full caption-bottom text-xs", mode.font, className)}
@@ -65,7 +65,7 @@ const TableHead = React.forwardRef<
     ref={ref}
     scope={scope}
     className={cn(
-      "bg-muted text-muted-foreground h-12 px-4 text-left align-middle text-xs font-semibold [&:has([role=checkbox])]:pr-0",
+      "bg-muted text-muted-foreground h-12 rounded-none px-4 text-left align-middle text-xs font-semibold [&:has([role=checkbox])]:pr-0",
       mode.font,
       className
     )}

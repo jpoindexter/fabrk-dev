@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  Badge,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardContent, Badge } from "@/components/ui/card";
 import { Users, Lock, Shield, Webhook, Key, Radio, Server, BarChart } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -74,7 +69,7 @@ export function EnterpriseFeaturesSection() {
             viewport={{ once: true }}
             className="mb-4 inline-block"
           >
-            <Badge label="ENTERPRISE_GRADE_FEATURES" />
+            <Badge label="ENTERPRISE GRADE FEATURES" />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -84,7 +79,7 @@ export function EnterpriseFeaturesSection() {
           >
             <span className="text-muted-foreground text-xs">[0x00]</span>
             <h2 className="mb-4 text-2xl font-semibold tracking-tight">
-              BUILT_FOR_SCALE_SECURITY_AND_TEAMS
+              BUILT FOR SCALE, SECURITY, AND TEAMS
             </h2>
           </motion.div>
           <motion.div

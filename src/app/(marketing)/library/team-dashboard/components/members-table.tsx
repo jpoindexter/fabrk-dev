@@ -72,14 +72,20 @@ export function MembersTable({ members }: MembersTableProps) {
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [TEAM_MEMBERS]: COUNT={members.length}
         </div>
-        <div className="overflow-x-auto">
+        <div className="border-border overflow-x-auto border">
           <table className="w-full">
             <thead>
-              <tr className={cn(mode.font, "border-border bg-muted/30 border-b text-xs")}>
-                <th className="text-muted-foreground px-4 py-2 text-left">[MEMBER]</th>
-                <th className="text-muted-foreground px-4 py-2 text-left">[ROLE]</th>
-                <th className="text-muted-foreground px-4 py-2 text-left">[LAST_ACTIVE]</th>
-                <th className="text-muted-foreground px-4 py-2 text-left">[ACTIONS]</th>
+              <tr
+                className={cn(mode.font, "border-border bg-muted/30 rounded-none border-b text-xs")}
+              >
+                <th className="text-muted-foreground rounded-none px-4 py-2 text-left">[MEMBER]</th>
+                <th className="text-muted-foreground rounded-none px-4 py-2 text-left">[ROLE]</th>
+                <th className="text-muted-foreground rounded-none px-4 py-2 text-left">
+                  [LAST_ACTIVE]
+                </th>
+                <th className="text-muted-foreground rounded-none px-4 py-2 text-left">
+                  [ACTIONS]
+                </th>
               </tr>
             </thead>
             <tbody className="divide-border divide-y">

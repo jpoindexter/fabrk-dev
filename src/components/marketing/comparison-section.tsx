@@ -100,12 +100,12 @@ export function ComparisonSection() {
         >
           <Badge
             code="0x50"
-            label="BUILD_VS_FABRK"
-            meta="TIME_TO_MARKET │ FIB[21,34,55,89]"
+            label="BUILD VS FABRK"
+            meta="TIME TO MARKET │ FIB[21,34,55,89]"
             className="mb-4"
           />
           <h2 className={cn(mode.font, "mb-4 text-4xl font-semibold tracking-tight")}>
-            WHY_BUILD_FROM_SCRATCH?
+            WHY BUILD FROM SCRATCH?
           </h2>
           <p className={cn(mode.font, "text-muted-foreground max-w-2xl text-sm")}>
             See how much time and effort Fabrk saves you compared to manual setup.
@@ -120,13 +120,13 @@ export function ComparisonSection() {
           viewport={{ once: true }}
         >
           <Card size="auto">
-            <CardHeader code="0x51" title="COMPARISON_TABLE" />
+            <CardHeader code="0x51" title="COMPARISON TABLE" />
             <CardContent padding="sm">
               <Table>
                 <TableHeader>
                   <TableRow>
                     <TableHead>FEATURE</TableHead>
-                    <TableHead className="text-destructive text-center">MANUAL_SETUP</TableHead>
+                    <TableHead className="text-destructive text-center">MANUAL SETUP</TableHead>
                     <TableHead className="text-success text-center">FABRK</TableHead>
                   </TableRow>
                 </TableHeader>

@@ -1,6 +1,6 @@
 /**
  * ✅ FABRK COMPONENT
- * FAQ Section - Terminal console [KNOWLEDGE_BASE] style
+ * FAQ Section - Terminal console [KNOWLEDGE BASE] style
  * Production-ready ✓
  */
 "use client";
@@ -181,8 +181,8 @@ export function FAQSection() {
         >
           <Badge
             code="0x60"
-            label="KNOWLEDGE_BASE"
-            meta="QUERY_SYSTEM │ FIB[13] ENTRIES"
+            label="KNOWLEDGE BASE"
+            meta="QUERY SYSTEM │ FIB[13] ENTRIES"
             className="mb-4"
           />
           <h2 className={cn("mb-4 text-4xl font-semibold tracking-tight", mode.font)}>

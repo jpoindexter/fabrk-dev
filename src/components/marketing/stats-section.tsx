@@ -4,12 +4,7 @@ import { useEffect, useRef } from "react";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { mode } from "@/design-system";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  Badge,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardContent, Badge } from "@/components/ui/card";
 
 // Animated counter component
 function AnimatedCounter({
@@ -99,7 +94,7 @@ export function StatsSection() {
           >
             <Badge code="0x30" label="METRICS" className="mb-4" />
             <h2 className={cn("mb-4 text-2xl font-semibold", mode.font)}>
-              TRUSTED_BY_DEVELOPERS_WORLDWIDE
+              TRUSTED BY DEVELOPERS WORLDWIDE
             </h2>
           </motion.div>
           <motion.div

@@ -50,7 +50,7 @@ export function QualitySection() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <Badge code="0x70" label="QUALITY_ASSURANCE" />
+            <Badge code="0x70" label="QUALITY ASSURANCE" />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}

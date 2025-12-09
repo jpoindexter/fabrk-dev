@@ -1,12 +1,7 @@
 "use client";
 
 import { SimpleIcon } from "@/components/ui/simple-icon";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  Badge,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardContent, Badge } from "@/components/ui/card";
 import {
   siNextdotjs,
   siReact,
@@ -39,8 +34,8 @@ export function TechStack() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Badge code="0x20" label="TECH_STACK" className="mb-4" />
-            <h2 className="text-2xl font-semibold tracking-tight">A_MODERN_STACK_YOU_CAN_TRUST</h2>
+            <Badge code="0x20" label="TECH STACK" className="mb-4" />
+            <h2 className="text-2xl font-semibold tracking-tight">A MODERN STACK YOU CAN TRUST</h2>
           </motion.div>
         </div>
 

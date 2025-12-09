@@ -221,7 +221,7 @@ export function HeroSection() {
               transition={{ duration: 0.6 }}
               className="mb-6"
             >
-              <Badge code="0x00" label="SYSTEM_INIT" meta="SAAS_BOILERPLATE_v2.0" />
+              <Badge code="0x00" label="SYSTEM INIT" meta="SAAS_BOILERPLATE_v2.0" />
             </motion.div>
 
             {/* Headline */}
@@ -230,11 +230,11 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h1 className={cn("text-muted-foreground mb-2 text-sm", mode.font)}>FABRK_INIT:</h1>
+              <h1 className={cn("text-muted-foreground mb-2 text-sm", mode.font)}>[FABRK INIT]</h1>
               <h2 className={cn("mb-6 text-4xl font-semibold tracking-tight", mode.font)}>
-                BUILDING_YOUR_SAAS
+                BUILDING YOUR SAAS
                 <br />
-                <span className="text-primary">JUST_GOT_UNFAIRLY_EASY.</span>
+                <span className="text-primary">JUST GOT UNFAIRLY EASY.</span>
               </h2>
             </motion.div>
 
@@ -268,10 +268,10 @@ export function HeroSection() {
               className="mb-8 flex flex-col gap-4 sm:flex-row"
             >
               <PolarCheckoutButton className={cn("text-xs", mode.radius, mode.font)}>
-                &gt; GET_FABRK
+                &gt; GET FABRK
               </PolarCheckoutButton>
               <Button variant="outline" asChild className={cn("text-xs", mode.radius, mode.font)}>
-                <Link href="/docs/components/overview">&gt; VIEW_LIBRARY</Link>
+                <Link href="/docs/components/overview">&gt; VIEW LIBRARY</Link>
               </Button>
             </motion.div>
 
@@ -281,7 +281,7 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <Badge code="0x02" label="POWERED_BY" meta="FIB[1,1,2,3,5,8,13]" className="mb-4" />
+              <Badge code="0x02" label="POWERED BY" meta="FIB[1,1,2,3,5,8,13]" className="mb-4" />
               <div className="flex flex-wrap gap-4">
                 {techStack.map((tech) => (
                   <div

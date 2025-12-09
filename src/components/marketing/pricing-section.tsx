@@ -23,12 +23,12 @@ import {
 
 export function PricingSection() {
   const features = [
-    "ALL_STARTER_KITS",
-    "ALL_FEATURES",
-    "LIFETIME_ACCESS_UPDATES",
-    "UNLIMITED_PROJECTS",
-    "PERSONAL_COMMERCIAL_USAGE",
-    "SAVES_200_HOURS",
+    "ALL STARTER KITS",
+    "ALL FEATURES",
+    "LIFETIME ACCESS UPDATES",
+    "UNLIMITED PROJECTS",
+    "PERSONAL COMMERCIAL USAGE",
+    "SAVES 200 HOURS",
   ];
 
   return (
@@ -46,7 +46,7 @@ export function PricingSection() {
           >
             {/* Terminal Card */}
             <Card size="auto" className="w-full max-w-sm">
-              <CardHeader code="0x41" title="PRICING_CONFIG" />
+              <CardHeader code="0x41" title="PRICING CONFIG" />
               <CardContent padding="md">
                 {/* Price Display - Clean inline layout */}
                 <div className="mb-4">
@@ -60,7 +60,7 @@ export function PricingSection() {
                     </span>
                   </div>
                   <div className={cn("text-muted-foreground mt-1 text-xs", mode.font)}>
-                    ONE_TIME_PAYMENT
+                    ONE TIME PAYMENT
                   </div>
                 </div>
 
@@ -89,7 +89,7 @@ export function PricingSection() {
 
                 {/* CTA Button */}
                 <PolarCheckoutButton className={cn("w-full text-xs", mode.radius, mode.font)}>
-                  &gt; GET_LIFETIME_ACCESS
+                  &gt; GET LIFETIME ACCESS
                 </PolarCheckoutButton>
 
                 {/* Trust line */}
@@ -111,15 +111,15 @@ export function PricingSection() {
             <Badge
               code="0x40"
               label="PRICING"
-              meta="COMMERCIAL_TIER │ FIB[144]"
+              meta="COMMERCIAL TIER │ FIB[144]"
               className="mb-4 self-start"
             />
 
-            <h2 className={cn("text-primary mb-2 text-sm", mode.font)}>FABRK_STARTER</h2>
+            <h2 className={cn("text-primary mb-2 text-sm", mode.font)}>[FABRK STARTER]</h2>
             <h3 className={cn("mb-6 text-4xl font-semibold tracking-tight", mode.font)}>
-              ONE_TIME_PURCHASE.
+              ONE-TIME PURCHASE.
               <br />
-              <span className="text-muted-foreground">UNLIMITED_PROJECTS.</span>
+              <span className="text-muted-foreground">UNLIMITED PROJECTS.</span>
             </h3>
 
             <div className="border-border mb-6 border-l-2 pl-4">

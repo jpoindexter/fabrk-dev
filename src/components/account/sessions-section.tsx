@@ -83,17 +83,25 @@ export function SessionsSection() {
           {sessions.length === 0 ? (
             <p className="text-muted-foreground text-sm">No active sessions.</p>
           ) : (
-            <div className="overflow-x-auto">
+            <div className="border-border overflow-x-auto border">
               <table className="w-full text-sm">
                 <thead className="border-b">
-                  <tr>
-                    <th className={cn("px-2 py-2 text-left font-medium", mode.font)}>Device</th>
-                    <th className={cn("px-2 py-2 text-left font-medium", mode.font)}>Browser</th>
-                    <th className={cn("px-2 py-2 text-left font-medium", mode.font)}>IP Address</th>
-                    <th className={cn("px-2 py-2 text-left font-medium", mode.font)}>
+                  <tr className="bg-muted/30 rounded-none">
+                    <th className={cn("rounded-none px-2 py-2 text-left font-medium", mode.font)}>
+                      Device
+                    </th>
+                    <th className={cn("rounded-none px-2 py-2 text-left font-medium", mode.font)}>
+                      Browser
+                    </th>
+                    <th className={cn("rounded-none px-2 py-2 text-left font-medium", mode.font)}>
+                      IP Address
+                    </th>
+                    <th className={cn("rounded-none px-2 py-2 text-left font-medium", mode.font)}>
                       Last Active
                     </th>
-                    <th className={cn("px-2 py-2 text-left font-medium", mode.font)}>Action</th>
+                    <th className={cn("rounded-none px-2 py-2 text-left font-medium", mode.font)}>
+                      Action
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
