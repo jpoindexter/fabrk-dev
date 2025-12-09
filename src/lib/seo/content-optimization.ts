@@ -56,10 +56,7 @@ export function countWords(text: string): number {
  * Calculate keyword density
  * Returns percentage of text that each keyword represents
  */
-export function calculateKeywordDensity(
-  text: string,
-  keywords: string[]
-): Record<string, number> {
+export function calculateKeywordDensity(text: string, keywords: string[]): Record<string, number> {
   const lowerText = text.toLowerCase();
   const totalWords = countWords(text);
   const density: Record<string, number> = {};
@@ -124,10 +121,15 @@ export function extractHeadings(html: string): { level: number; text: string }[]
   let match;
   while ((match = headingRegex.exec(html)) !== null) {
     if (match[1]) {
-      // HTML heading
+      // HTML heading - sanitize nested HTML tags properly
+      let text = match[2];
+      const htmlTagPattern = /<[^>]*>/g;
+      while (htmlTagPattern.test(text)) {
+        text = text.replace(htmlTagPattern, "");
+      }
       headings.push({
         level: parseInt(match[1]),
-        text: match[2].replace(/<[^>]*>/g, "").trim(),
+        text: text.trim(),
       });
     } else if (match[3]) {
       // Markdown heading

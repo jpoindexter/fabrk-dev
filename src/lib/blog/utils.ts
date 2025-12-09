@@ -41,8 +41,20 @@ export function formatReadTime(minutes: number): string {
  * Generate an excerpt from content
  */
 export function generateExcerpt(content: string, maxLength = 160): string {
-  // Strip HTML tags if present
-  const text = content.replace(/<[^>]*>/g, "");
+  // Strip HTML tags if present - use while loop to handle nested/malformed tags
+  let text = content;
+  const htmlTagPattern = /<[^>]*>/g;
+  while (htmlTagPattern.test(text)) {
+    text = text.replace(htmlTagPattern, "");
+  }
+
+  // Also decode common HTML entities
+  text = text
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'");
 
   if (text.length <= maxLength) return text;
 

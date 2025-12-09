@@ -38,7 +38,10 @@ export const ValidationSchemas = {
     .max(30, "Username must be less than 30 characters")
     .toLowerCase()
     .trim()
-    .regex(/^[a-z0-9_-]+$/, "Username can only contain lowercase letters, numbers, underscores, and hyphens"),
+    .regex(
+      /^[a-z0-9_-]+$/,
+      "Username can only contain lowercase letters, numbers, underscores, and hyphens"
+    ),
 
   // URL validation
   url: z.string().url("Invalid URL").trim(),
@@ -87,11 +90,26 @@ export const ValidationSchemas = {
  * Remove potential XSS vectors
  */
 export function sanitizeString(input: string): string {
-  return input
-    .trim()
-    .replace(/[<>]/g, "") // Remove angle brackets
-    .replace(/javascript:/gi, "") // Remove javascript: protocol
-    .replace(/on\w+=/gi, ""); // Remove event handlers
+  // Use global regex replacements and check for dangerous URL schemes
+  let sanitized = input.trim();
+
+  // Remove angle brackets (XSS)
+  sanitized = sanitized.replace(/[<>]/g, "");
+
+  // Remove ALL dangerous URL schemes (not just javascript:)
+  // This handles: javascript:, data:, vbscript:, file:, about:
+  const dangerousSchemes = /\b(javascript|data|vbscript|file|about):/gi;
+  while (dangerousSchemes.test(sanitized)) {
+    sanitized = sanitized.replace(dangerousSchemes, "");
+  }
+
+  // Remove event handlers (onload=, onclick=, etc.)
+  const eventHandlers = /on\w+\s*=/gi;
+  while (eventHandlers.test(sanitized)) {
+    sanitized = sanitized.replace(eventHandlers, "");
+  }
+
+  return sanitized;
 }
 
 /**
@@ -129,14 +147,17 @@ export function validateEmail(email: string): { valid: boolean; email?: string; 
 /**
  * Validate and sanitize password
  */
-export function validatePassword(
-  password: string
-): { valid: boolean; password?: string; errors?: string[] } {
+export function validatePassword(password: string): {
+  valid: boolean;
+  password?: string;
+  errors?: string[];
+} {
   try {
     const validated = ValidationSchemas.password.parse(password);
     return { valid: true, password: validated };
   } catch (error: unknown) {
-    const errors = error instanceof z.ZodError ? error.issues.map((e) => e.message) : ["Invalid password"];
+    const errors =
+      error instanceof z.ZodError ? error.issues.map((e) => e.message) : ["Invalid password"];
     return { valid: false, errors };
   }
 }
@@ -177,14 +198,23 @@ export function detectSQLInjection(input: string): boolean {
  */
 export function detectXSS(input: string): boolean {
   const xssPatterns = [
-    /<script[^>]*>.*?<\/script>/gi,
-    /javascript:/gi,
+    // Properly escaped script tags with case-insensitive matching
+    /<script[\s\S]*?>[\s\S]*?<\/script>/gi,
+    // Dangerous URL schemes
+    /\b(javascript|data|vbscript|file|about):/gi,
+    // Event handlers
     /on\w+\s*=/gi,
-    /<iframe/gi,
-    /<object/gi,
-    /<embed/gi,
-    /eval\(/gi,
-    /expression\(/gi,
+    // Dangerous HTML tags
+    /<\s*iframe[\s\S]*?>/gi,
+    /<\s*object[\s\S]*?>/gi,
+    /<\s*embed[\s\S]*?>/gi,
+    /<\s*link[\s\S]*?>/gi,
+    /<\s*meta[\s\S]*?>/gi,
+    // Dangerous functions
+    /\beval\s*\(/gi,
+    /\bexpression\s*\(/gi,
+    /\bsetTimeout\s*\(/gi,
+    /\bsetInterval\s*\(/gi,
   ];
 
   return xssPatterns.some((pattern) => pattern.test(input));
@@ -202,11 +232,10 @@ export function detectPathTraversal(input: string): boolean {
 /**
  * Validate file upload
  */
-export function validateFileUpload(file: {
-  name: string;
-  size: number;
-  type: string;
-}): { valid: boolean; error?: string } {
+export function validateFileUpload(file: { name: string; size: number; type: string }): {
+  valid: boolean;
+  error?: string;
+} {
   // Check file size (10MB max)
   if (file.size > 10 * 1024 * 1024) {
     return { valid: false, error: "File size must be less than 10MB" };
