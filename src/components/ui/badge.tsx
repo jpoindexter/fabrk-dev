@@ -7,12 +7,14 @@
  * - Imports from @/design-system for static mode
  * - Radius and font from visual mode config
  * - Text transform: uppercase in terminal mode
- * - Spacing follows 8-point grid: px-2 (8px), px-4 (16px), py-2 (8px)
+ * - Compact sizing (default sm): px-2 py-0.5 text-xs [&>svg]:size-3
+ * - All icons standardized to size-3 (12px) for consistency
  *
  * @example
  * ```tsx
  * <Badge variant="default">NEW</Badge>
  * <Badge variant="destructive">ERROR</Badge>
+ * <Badge size="md">MEDIUM</Badge>
  * ```
  */
 
@@ -52,15 +54,15 @@ const badgeVariants = cva(
         outline: "bg-transparent border-foreground text-foreground hover:bg-foreground/10",
       },
       size: {
-        // Padding follows 8-point grid: px-2 (8px), px-4 (16px), py-2 (8px)
-        sm: "px-2 py-2 text-xs font-semibold [&>svg]:size-3",
-        md: "px-4 py-2 text-xs font-medium [&>svg]:size-3",
-        lg: "px-4 py-2 text-xs font-semibold [&>svg]:size-4",
+        // Compact sizing for consistent UI (matches tech stack pattern)
+        sm: "px-2 py-0.5 text-xs font-medium [&>svg]:size-3",
+        md: "px-2 py-1 text-xs font-medium [&>svg]:size-3",
+        lg: "px-3 py-1.5 text-xs font-semibold [&>svg]:size-3",
       },
     },
     defaultVariants: {
       variant: "default",
-      size: "md",
+      size: "sm",
     },
   }
 );

@@ -395,7 +395,7 @@ const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
     <div
       ref={ref}
       data-slot="badge"
-      className={cn("border-border bg-card inline-block border px-4 py-2", mode.radius, className)}
+      className={cn("border-border bg-card inline-block border px-2 py-1", mode.radius, className)}
       {...props}
     >
       <span className={cn("text-muted-foreground text-xs", mode.font)}>

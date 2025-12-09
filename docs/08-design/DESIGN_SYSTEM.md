@@ -84,6 +84,40 @@ Reference standards from CLI/terminal design best practices.
 | Width | 1-2px solid | Clear boundaries |
 | Color | Low contrast | `border-border` at 10-20% opacity |
 
+### Badge Sizing Standards
+
+**CRITICAL:** All badges must use compact sizing for visual consistency across the entire application.
+
+| Size | Padding | Text | Icon Size | Usage |
+|------|---------|------|-----------|-------|
+| sm (default) | `px-2 py-0.5` | `text-xs` | `size-3` (12px) | Status badges, inline labels |
+| md | `px-2 py-1` | `text-xs` | `size-3` (12px) | Slightly larger status |
+| lg | `px-3 py-1.5` | `text-xs` | `size-3` (12px) | Prominent badges |
+
+**Design Pattern:**
+```tsx
+// Status badge (badge.tsx component)
+<Badge variant="default" size="sm">NEW</Badge>
+<Badge variant="destructive" size="sm">ERROR</Badge>
+
+// Section header badge (card.tsx Badge)
+<Badge code="0x00" label="SYSTEM_INIT" />  // Uses px-2 py-1
+
+// With icons (standardized to size-3)
+<Badge className="gap-1">
+  <Check className="h-3 w-3" />
+  VERIFIED
+</Badge>
+```
+
+**Enforcement:**
+- Badge component defaults to `size="sm"`
+- All icons inside badges use `h-3 w-3` or `size-3` (12px)
+- Section header badges use `px-2 py-1` padding
+- Matches tech stack badge pattern for consistency
+
+**Visual Reference:** See tech stack section footer badges for canonical example.
+
 ### Animation Standards
 
 | Effect | Duration | Easing | Usage |
