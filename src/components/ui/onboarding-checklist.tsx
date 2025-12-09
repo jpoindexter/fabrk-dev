@@ -150,7 +150,9 @@ export function OnboardingChecklist({
       <div className="border-border flex items-center justify-between border-b p-4">
         <div className="flex-1">
           <div className="flex items-center gap-2">
-            <h3 className={cn('text-sm font-semibold', mode.font)}>[ GETTING_STARTED ]</h3>
+            <h3 className={cn('text-sm font-semibold tracking-tight', mode.font)}>
+              [ GETTING_STARTED ]
+            </h3>
             {isComplete && <span className="text-success text-xs">✓ COMPLETE</span>}
           </div>
           <p className={cn('text-muted-foreground mt-1 text-xs', mode.font)}>

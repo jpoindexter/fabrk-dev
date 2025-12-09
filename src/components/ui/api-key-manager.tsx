@@ -146,7 +146,7 @@ export function ApiKeyManager({
       {/* Header with Generate Button */}
       <div className="flex items-center justify-between gap-4">
         <div className="flex-1">
-          <h3 className={cn('text-sm font-semibold', mode.font)}>[ API_KEYS ]</h3>
+          <h3 className={cn('text-sm font-semibold tracking-tight', mode.font)}>[ API_KEYS ]</h3>
           <p className="text-muted-foreground mt-1 text-xs">
             Manage API keys for programmatic access
           </p>

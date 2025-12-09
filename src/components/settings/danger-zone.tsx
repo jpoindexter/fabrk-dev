@@ -71,7 +71,7 @@ export function DangerZone() {
       <CardHeader code="0xFF" title="DANGER_ZONE" />
       <CardContent className="space-y-6">
         <div className="border-t pt-4">
-          <h3 className={cn(mode.font, 'mb-2 text-xs')}>[EXPORT_YOUR_DATA]:</h3>
+          <h3 className={cn(mode.font, 'mb-2 text-xs tracking-tight')}>[EXPORT_YOUR_DATA]:</h3>
           <p className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
             Download a copy of your account data in JSON format.
           </p>
@@ -86,7 +86,9 @@ export function DangerZone() {
         </div>
 
         <div className="border-t pt-4">
-          <h3 className={cn(mode.font, 'text-destructive mb-2 text-xs')}>[DELETE_ACCOUNT]:</h3>
+          <h3 className={cn(mode.font, 'text-destructive mb-2 text-xs tracking-tight')}>
+            [DELETE_ACCOUNT]:
+          </h3>
           <p className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
             Permanently delete your account and all associated data. This action cannot be undone.
           </p>

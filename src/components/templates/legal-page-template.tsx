@@ -182,7 +182,7 @@ export interface LegalSectionProps {
 export function LegalSection({ id, title, children, className }: LegalSectionProps) {
   return (
     <section id={id} className={cn('scroll-mt-6', className)}>
-      <h2 className={cn('mb-4 text-xl font-semibold', mode.font)}>{title}</h2>
+      <h2 className={cn('mb-4 text-2xl font-semibold tracking-tight', mode.font)}>{title}</h2>
       <div className={cn('space-y-4 text-sm', mode.font)}>{children}</div>
     </section>
   );

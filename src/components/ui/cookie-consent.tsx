@@ -168,7 +168,9 @@ export function CookieConsent({
             <div className="flex flex-1 gap-3">
               <Cookie className="text-primary mt-1 h-5 w-5 flex-shrink-0" />
               <div className="space-y-2">
-                <h3 className={cn('text-sm font-semibold', mode.font)}>[ COOKIE_NOTICE ]</h3>
+                <h3 className={cn('text-sm font-semibold tracking-tight', mode.font)}>
+                  [ COOKIE_NOTICE ]
+                </h3>
                 <p className={cn('text-muted-foreground text-xs leading-relaxed', mode.font)}>
                   We use cookies to enhance your experience, analyze site traffic, and personalize
                   content. By clicking "Accept All", you consent to our use of cookies.{' '}

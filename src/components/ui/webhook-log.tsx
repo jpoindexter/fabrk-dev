@@ -177,7 +177,9 @@ export function WebhookLog({
       {/* Header with Filters */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h3 className={cn('text-sm font-semibold', mode.font)}>[ WEBHOOK_LOGS ]</h3>
+          <h3 className={cn('text-sm font-semibold tracking-tight', mode.font)}>
+            [ WEBHOOK_LOGS ]
+          </h3>
           <p className="text-muted-foreground mt-1 text-xs">
             Track webhook delivery status and debug failures
           </p>
