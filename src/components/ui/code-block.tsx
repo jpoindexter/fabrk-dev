@@ -1,10 +1,88 @@
 'use client';
 
-import { useState } from 'react';
-import { Highlight, themes } from 'prism-react-renderer';
+import { useState, useEffect } from 'react';
+import { Highlight, themes, type PrismTheme } from 'prism-react-renderer';
 import { Copy, Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
+
+/* eslint-disable design-system/no-hardcoded-colors -- Prism theme requires hex colors, cannot use design tokens */
+// Custom amber terminal theme - monochromatic amber/orange
+const amberTheme: PrismTheme = {
+  plain: {
+    color: '#FFB000',
+    backgroundColor: '#0f0a05',
+  },
+  styles: [
+    {
+      types: ['comment', 'prolog', 'doctype', 'cdata'],
+      style: {
+        color: '#996600',
+        fontStyle: 'italic',
+      },
+    },
+    {
+      types: ['namespace'],
+      style: {
+        opacity: 0.7,
+      },
+    },
+    {
+      types: ['string', 'attr-value'],
+      style: {
+        color: '#FFCC66',
+      },
+    },
+    {
+      types: ['punctuation', 'operator'],
+      style: {
+        color: '#CC8800',
+      },
+    },
+    {
+      types: [
+        'entity',
+        'url',
+        'symbol',
+        'number',
+        'boolean',
+        'variable',
+        'constant',
+        'property',
+        'regex',
+        'inserted',
+      ],
+      style: {
+        color: '#FFB000',
+      },
+    },
+    {
+      types: ['atrule', 'keyword', 'attr-name', 'selector'],
+      style: {
+        color: '#FF9500',
+      },
+    },
+    {
+      types: ['function', 'deleted', 'tag'],
+      style: {
+        color: '#FFAA00',
+      },
+    },
+    {
+      types: ['function-variable'],
+      style: {
+        color: '#FFB000',
+      },
+    },
+    {
+      types: ['tag', 'selector', 'keyword'],
+      style: {
+        color: '#FF9500',
+      },
+    },
+  ],
+};
+/* eslint-enable design-system/no-hardcoded-colors */
 
 interface CodeBlockProps {
   code: string;
@@ -22,6 +100,27 @@ export function CodeBlock({
   showLineNumbers = true,
 }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
+  const [currentTheme, setCurrentTheme] = useState<PrismTheme>(themes.nightOwl);
+
+  // Detect current theme and update syntax highlighting
+  useEffect(() => {
+    const updateTheme = () => {
+      const theme = document.documentElement.getAttribute('data-theme');
+      setCurrentTheme(theme === 'amber' ? amberTheme : themes.nightOwl);
+    };
+
+    // Initial theme detection
+    updateTheme();
+
+    // Listen for theme changes
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(code.trim());
@@ -51,7 +150,7 @@ export function CodeBlock({
         )}
       </button>
       <div className={cn('bg-card w-full min-w-0 overflow-hidden', mode.radius)}>
-        <Highlight theme={themes.nightOwl} code={code.trim()} language={language}>
+        <Highlight theme={currentTheme} code={code.trim()} language={language}>
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre
               className={`${className} m-0 p-4 text-xs leading-relaxed`}
