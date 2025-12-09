@@ -42,8 +42,8 @@ export default function AlertDialogPage() {
               <AlertDialogHeader>
                 <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                 <AlertDialogDescription>
-                  This action cannot be undone. This will permanently delete
-                  your account and remove your data from our servers.
+                  This action cannot be undone. This will permanently delete your account and remove
+                  your data from our servers.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
@@ -74,8 +74,7 @@ export default function AlertDialogPage() {
       variants={[
         {
           title: 'Delete Confirmation',
-          description:
-            'Alert dialog for confirming destructive delete actions.',
+          description: 'Alert dialog for confirming destructive delete actions.',
           preview: (
             <AlertDialog>
               <AlertDialogTrigger asChild>
@@ -85,8 +84,7 @@ export default function AlertDialogPage() {
                 <AlertDialogHeader>
                   <AlertDialogTitle>Delete this item?</AlertDialogTitle>
                   <AlertDialogDescription>
-                    This will permanently delete this item. This action cannot
-                    be undone.
+                    This will permanently delete this item. This action cannot be undone.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
@@ -130,8 +128,8 @@ export default function AlertDialogPage() {
                 <AlertDialogHeader>
                   <AlertDialogTitle>Notice</AlertDialogTitle>
                   <AlertDialogDescription>
-                    Your changes have been saved successfully. You can continue
-                    working on your project.
+                    Your changes have been saved successfully. You can continue working on your
+                    project.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
@@ -169,8 +167,7 @@ export default function AlertDialogPage() {
                 <AlertDialogHeader>
                   <AlertDialogTitle>Warning</AlertDialogTitle>
                   <AlertDialogDescription>
-                    This action may affect other users. Are you sure you want to
-                    continue?
+                    This action may affect other users. Are you sure you want to continue?
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
@@ -210,8 +207,7 @@ export default function AlertDialogPage() {
                 <AlertDialogHeader>
                   <AlertDialogTitle>Controlled State</AlertDialogTitle>
                   <AlertDialogDescription>
-                    This alert dialog can be controlled with open and
-                    onOpenChange props.
+                    This alert dialog can be controlled with open and onOpenChange props.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
@@ -255,9 +251,7 @@ export default function AlertDialogPage() {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                   <AlertDialogCancel>&gt; NOT_NOW</AlertDialogCancel>
-                  <AlertDialogAction className="bg-primary">
-                    &gt; SUBSCRIBE
-                  </AlertDialogAction>
+                  <AlertDialogAction className="bg-primary">&gt; SUBSCRIBE</AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>

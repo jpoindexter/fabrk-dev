@@ -59,9 +59,6 @@ export async function GET(req: NextRequest, context: RouteContext) {
     });
   } catch (error: unknown) {
     logger.error('Failed to fetch invoices:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch invoices' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to fetch invoices' }, { status: 500 });
   }
 }

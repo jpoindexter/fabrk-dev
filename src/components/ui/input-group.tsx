@@ -26,10 +26,7 @@ export type InputGroupProps = React.ComponentProps<'div'> & {
 };
 export type InputGroupAddonProps = React.ComponentProps<'div'> &
   VariantProps<typeof inputGroupAddonVariants>;
-export type InputGroupButtonProps = Omit<
-  React.ComponentProps<typeof Button>,
-  'size'
-> &
+export type InputGroupButtonProps = Omit<React.ComponentProps<typeof Button>, 'size'> &
   VariantProps<typeof inputGroupButtonVariants>;
 export type InputGroupTextProps = React.ComponentProps<'span'> & {
   asChild?: boolean;
@@ -78,10 +75,8 @@ const inputGroupAddonVariants = cva(
   {
     variants: {
       align: {
-        'inline-start':
-          'order-first pl-4 has-[>button]:ml-[-0.45rem] has-[>kbd]:ml-[-0.35rem]',
-        'inline-end':
-          'order-last pr-4 has-[>button]:mr-[-0.4rem] has-[>kbd]:mr-[-0.35rem]',
+        'inline-start': 'order-first pl-4 has-[>button]:ml-[-0.45rem] has-[>kbd]:ml-[-0.35rem]',
+        'inline-end': 'order-last pr-4 has-[>button]:mr-[-0.4rem] has-[>kbd]:mr-[-0.35rem]',
         'block-start':
           '[.border-b]:pb-4 order-first w-full justify-start px-4 pt-4 group-has-[>input]/input-group:pt-2.5',
         'block-end':
@@ -125,26 +120,20 @@ function InputGroupAddon({
 }
 InputGroupAddon.displayName = 'InputGroupAddon';
 
-const inputGroupButtonVariants = cva(
-  cn('flex items-center gap-2 text-xs shadow-none', mode.font),
-  {
-    variants: {
-      size: {
-        xs: cn(
-          "h-6 gap-1 px-2 has-[>svg]:px-2 [&>svg:not([class*='size-'])]:size-3.5",
-          mode.radius
-        ),
-        sm: cn('h-8 gap-2 px-2.5 has-[>svg]:px-2.5', mode.radius),
-        // Industry standard: Minimal padding p-1 for icon buttons
-        'icon-xs': cn('size-6 p-1 has-[>svg]:p-1', mode.radius),
-        'icon-sm': cn('size-8 p-1 has-[>svg]:p-1', mode.radius),
-      },
+const inputGroupButtonVariants = cva(cn('flex items-center gap-2 text-xs shadow-none', mode.font), {
+  variants: {
+    size: {
+      xs: cn("h-6 gap-1 px-2 has-[>svg]:px-2 [&>svg:not([class*='size-'])]:size-3.5", mode.radius),
+      sm: cn('h-8 gap-2 px-2.5 has-[>svg]:px-2.5', mode.radius),
+      // Industry standard: Minimal padding p-1 for icon buttons
+      'icon-xs': cn('size-6 p-1 has-[>svg]:p-1', mode.radius),
+      'icon-sm': cn('size-8 p-1 has-[>svg]:p-1', mode.radius),
     },
-    defaultVariants: {
-      size: 'xs',
-    },
-  }
-);
+  },
+  defaultVariants: {
+    size: 'xs',
+  },
+});
 
 function InputGroupButton({
   className,
@@ -166,11 +155,7 @@ function InputGroupButton({
 }
 InputGroupButton.displayName = 'InputGroupButton';
 
-function InputGroupText({
-  className,
-  asChild = false,
-  ...props
-}: InputGroupTextProps) {
+function InputGroupText({ className, asChild = false, ...props }: InputGroupTextProps) {
   const Comp = asChild ? Slot : 'span';
   return (
     <Comp
@@ -186,10 +171,7 @@ function InputGroupText({
 }
 InputGroupText.displayName = 'InputGroupText';
 
-function InputGroupInput({
-  className,
-  ...props
-}: React.ComponentProps<'input'>) {
+function InputGroupInput({ className, ...props }: React.ComponentProps<'input'>) {
   return (
     <Input
       data-slot="input-group-control"
@@ -204,10 +186,7 @@ function InputGroupInput({
 }
 InputGroupInput.displayName = 'InputGroupInput';
 
-function InputGroupTextarea({
-  className,
-  ...props
-}: React.ComponentProps<'textarea'>) {
+function InputGroupTextarea({ className, ...props }: React.ComponentProps<'textarea'>) {
   return (
     <Textarea
       data-slot="input-group-control"

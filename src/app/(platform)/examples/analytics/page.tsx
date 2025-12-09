@@ -101,9 +101,7 @@ export default async function AnalyticsPage() {
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-foreground text-4xl font-semibold tracking-tight">
-            Analytics
-          </h1>
+          <h1 className="text-foreground text-4xl font-semibold tracking-tight">Analytics</h1>
           <p className="text-muted-foreground mt-2 text-sm">
             Track your SaaS performance and growth metrics
           </p>
@@ -143,9 +141,7 @@ export default async function AnalyticsPage() {
               />
               <CardContent>
                 <div className="flex items-center justify-between">
-                  <p className="text-foreground text-4xl font-semibold">
-                    {stat.value}
-                  </p>
+                  <p className="text-foreground text-4xl font-semibold">{stat.value}</p>
                   <div
                     className={`flex items-center gap-1 text-sm font-semibold ${
                       isPositive ? 'text-success' : 'text-destructive'
@@ -185,16 +181,10 @@ export default async function AnalyticsPage() {
                   )}
                 >
                   <div>
-                    <p className="text-foreground text-sm font-semibold">
-                      {activity.action}
-                    </p>
-                    <p className="text-muted-foreground text-xs">
-                      {activity.user}
-                    </p>
+                    <p className="text-foreground text-sm font-semibold">{activity.action}</p>
+                    <p className="text-muted-foreground text-xs">{activity.user}</p>
                   </div>
-                  <p className="text-muted-foreground text-xs">
-                    {activity.time}
-                  </p>
+                  <p className="text-muted-foreground text-xs">{activity.time}</p>
                 </div>
               ))}
             </div>
@@ -220,18 +210,12 @@ export default async function AnalyticsPage() {
                   )}
                 >
                   <div className="flex-1">
-                    <p className="text-foreground text-sm font-semibold">
-                      {page.path}
-                    </p>
-                    <p className="text-muted-foreground text-xs">
-                      {page.views} views
-                    </p>
+                    <p className="text-foreground text-sm font-semibold">{page.path}</p>
+                    <p className="text-muted-foreground text-xs">{page.views} views</p>
                   </div>
                   <div
                     className={`text-sm font-semibold ${
-                      page.change.startsWith('+')
-                        ? 'text-success'
-                        : 'text-destructive'
+                      page.change.startsWith('+') ? 'text-success' : 'text-destructive'
                     }`}
                   >
                     {page.change}
@@ -272,21 +256,13 @@ export default async function AnalyticsPage() {
       </Card>
 
       {/* Implementation Note */}
-      <div
-        className={cn('border-primary bg-primary/5 border-2 p-4', mode.radius)}
-      >
+      <div className={cn('border-primary bg-primary/5 border-2 p-4', mode.radius)}>
         <p className="text-muted-foreground text-sm">
-          <span className="text-foreground font-semibold">
-            📊 Implementation Note:
-          </span>{' '}
-          This is a demo analytics page with mock data. Replace{' '}
-          <code className="bg-muted rounded px-1 py-0.5 text-xs">
-            mockAnalytics
-          </code>{' '}
-          with real data from your database. For charts, install Recharts:{' '}
-          <code className="bg-muted rounded px-1 py-0.5 text-xs">
-            npm install recharts
-          </code>
+          <span className="text-foreground font-semibold">📊 Implementation Note:</span> This is a
+          demo analytics page with mock data. Replace{' '}
+          <code className="bg-muted rounded px-1 py-0.5 text-xs">mockAnalytics</code> with real data
+          from your database. For charts, install Recharts:{' '}
+          <code className="bg-muted rounded px-1 py-0.5 text-xs">npm install recharts</code>
         </p>
       </div>
     </div>

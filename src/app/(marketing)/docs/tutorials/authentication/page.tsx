@@ -161,16 +161,14 @@ export default async function PrivatePage() {
       <DocsSection title="What is Authentication?">
         <DocsCard title="AUTHENTICATION">
           <p className="mb-4">
-            Authentication is how your app knows who someone is. When a user
-            creates an account and logs in, your app gives them a
-            &quot;pass&quot; (called a session) that proves their identity. This
-            pass gets checked every time they access protected areas of your
-            app.
+            Authentication is how your app knows who someone is. When a user creates an account and
+            logs in, your app gives them a &quot;pass&quot; (called a session) that proves their
+            identity. This pass gets checked every time they access protected areas of your app.
           </p>
           <p>
-            Think of it like a hotel key card - you check in once (log in), get
-            your key card (session), and use it to access your room (protected
-            pages) without re-checking in every time.
+            Think of it like a hotel key card - you check in once (log in), get your key card
+            (session), and use it to access your room (protected pages) without re-checking in every
+            time.
           </p>
         </DocsCard>
       </DocsSection>
@@ -183,9 +181,7 @@ export default async function PrivatePage() {
             <div>├─ Password is encrypted (never stored as plain text)</div>
             <div>├─ Account is created in your database</div>
             <div>├─ Verification email is sent (if enabled)</div>
-            <div>
-              └─ User clicks the verification link to confirm their email
-            </div>
+            <div>└─ User clicks the verification link to confirm their email</div>
           </div>
         </DocsCard>
         <DocsCard title="LOGIN_FLOW">
@@ -203,8 +199,8 @@ export default async function PrivatePage() {
       <DocsSection title="Add Google Login">
         <DocsCard title="GOOGLE_OAUTH">
           <p className="mb-4">
-            Let users sign in with their Google account. This is convenient for
-            users and often increases signup rates.
+            Let users sign in with their Google account. This is convenient for users and often
+            increases signup rates.
           </p>
           <div className="space-y-1">
             <div>
@@ -220,26 +216,22 @@ export default async function PrivatePage() {
               and create a new project
             </div>
             <div>
-              <strong>Step 2:</strong> Go to &quot;APIs &amp; Services&quot; →
-              &quot;OAuth consent screen&quot; and configure
+              <strong>Step 2:</strong> Go to &quot;APIs &amp; Services&quot; → &quot;OAuth consent
+              screen&quot; and configure
             </div>
             <div>
-              <strong>Step 3:</strong> Go to &quot;Credentials&quot; →
-              &quot;Create Credentials&quot; → &quot;OAuth client ID&quot;
+              <strong>Step 3:</strong> Go to &quot;Credentials&quot; → &quot;Create
+              Credentials&quot; → &quot;OAuth client ID&quot;
             </div>
             <div>
               <strong>Step 4:</strong> Add redirect URI:{' '}
-              <code className="bg-muted px-1">
-                http://localhost:3000/api/auth/callback/google
-              </code>
+              <code className="bg-muted px-1">http://localhost:3000/api/auth/callback/google</code>
             </div>
           </div>
         </DocsCard>
         <DocsCard title="CONFIGURATION">
           <div>
-            <code>
-              GOOGLE_CLIENT_ID=&quot;your-client-id.apps.googleusercontent.com&quot;
-            </code>
+            <code>GOOGLE_CLIENT_ID=&quot;your-client-id.apps.googleusercontent.com&quot;</code>
             <br />
             <code>GOOGLE_CLIENT_SECRET=&quot;your-client-secret&quot;</code>
           </div>
@@ -252,20 +244,16 @@ export default async function PrivatePage() {
           <p className="mb-4">Fabrk automatically protects these routes:</p>
           <div className="space-y-1">
             <div>
-              ├─ <code className="bg-muted px-1">/dashboard/*</code> - Main user
-              dashboard
+              ├─ <code className="bg-muted px-1">/dashboard/*</code> - Main user dashboard
             </div>
             <div>
-              ├─ <code className="bg-muted px-1">/settings/*</code> - User
-              settings pages
+              ├─ <code className="bg-muted px-1">/settings/*</code> - User settings pages
             </div>
             <div>
-              ├─ <code className="bg-muted px-1">/billing/*</code> - Payment and
-              subscription pages
+              ├─ <code className="bg-muted px-1">/billing/*</code> - Payment and subscription pages
             </div>
             <div>
-              └─ <code className="bg-muted px-1">/admin/*</code> - Admin-only
-              pages
+              └─ <code className="bg-muted px-1">/admin/*</code> - Admin-only pages
             </div>
           </div>
         </DocsCard>
@@ -276,16 +264,13 @@ export default async function PrivatePage() {
         <DocsCard title="FAQ">
           <div className="space-y-1">
             <div>
-              ├─ <strong>Session duration?</strong> 30 days by default. Change
-              in src/lib/auth.ts
+              ├─ <strong>Session duration?</strong> 30 days by default. Change in src/lib/auth.ts
             </div>
             <div>
-              ├─ <strong>Force logout?</strong> Increment user&apos;s
-              sessionVersion in database
+              ├─ <strong>Force logout?</strong> Increment user&apos;s sessionVersion in database
             </div>
             <div>
-              ├─ <strong>Password security?</strong> bcrypt with 12 rounds -
-              industry standard
+              ├─ <strong>Password security?</strong> bcrypt with 12 rounds - industry standard
             </div>
             <div>
               └─ <strong>More providers?</strong> NextAuth supports 50+ at{' '}

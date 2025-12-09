@@ -6,14 +6,7 @@
 'use client';
 
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
-import {
-  Activity,
-  DollarSign,
-  Upload,
-  Settings,
-  Shield,
-  Clock,
-} from 'lucide-react';
+import { Activity, DollarSign, Upload, Settings, Shield, Clock } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -70,18 +63,13 @@ export function RecentActivity({ activities }: RecentActivityProps) {
             return (
               <div
                 key={activity.id}
-                className={cn(
-                  'flex items-center gap-6 border p-4',
-                  mode.radius
-                )}
+                className={cn('flex items-center gap-6 border p-4', mode.radius)}
               >
                 <div className={cn('bg-secondary p-2', mode.radius)}>
                   <Icon className="h-4 w-4" />
                 </div>
                 <div className="flex-1">
-                  <p className="font-mono text-sm font-medium">
-                    {activity.description}
-                  </p>
+                  <p className="font-mono text-sm font-medium">{activity.description}</p>
                   <p className="text-muted-foreground flex items-center gap-1 font-mono text-xs">
                     <Clock className="h-3 w-3" />
                     {formatTimestamp(activity.timestamp)}

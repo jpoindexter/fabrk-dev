@@ -26,10 +26,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     const { organizationId } = switchOrgSchema.parse(body);
 
     // Verify user is a member of this organization
-    const isMember = await isOrganizationMember(
-      organizationId,
-      session.user.id
-    );
+    const isMember = await isOrganizationMember(organizationId, session.user.id);
 
     if (!isMember) {
       return NextResponse.json(
@@ -50,16 +47,10 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     });
   } catch (error: unknown) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: 'Invalid input', details: error.issues },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Invalid input', details: error.issues }, { status: 400 });
     }
 
     logger.error('Failed to switch organization:', error);
-    return NextResponse.json(
-      { error: 'Failed to switch organization' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to switch organization' }, { status: 500 });
   }
 });

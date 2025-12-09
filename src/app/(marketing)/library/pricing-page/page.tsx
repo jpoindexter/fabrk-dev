@@ -295,11 +295,7 @@ export default function PricingPageTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock
-                  code={templateCode}
-                  language="tsx"
-                  maxHeight="600px"
-                />
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
             </Card>
           </TabsContent>

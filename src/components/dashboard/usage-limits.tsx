@@ -2,10 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
-import {
-  formatUsageDisplay,
-  getUsagePercentage,
-} from '@/lib/features/access-control';
+import { formatUsageDisplay, getUsagePercentage } from '@/lib/features/access-control';
 import { AlertCircle, Database, FolderOpen, Globe, Users } from 'lucide-react';
 import Link from 'next/link';
 
@@ -68,10 +65,7 @@ export function UsageLimits({ user }: UsageLimitsProps) {
           const isNearLimit = percentage >= 80;
 
           return (
-            <div
-              key={resource}
-              className={cn('bg-background dark:bg-muted p-4', mode.radius)}
-            >
+            <div key={resource} className={cn('bg-background dark:bg-muted p-4', mode.radius)}>
               <div className="mb-2 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Icon className="text-muted-foreground h-4 w-4" />
@@ -103,13 +97,10 @@ export function UsageLimits({ user }: UsageLimitsProps) {
         })}
       </div>
 
-      <div
-        className={cn('bg-primary dark:bg-primary/30 mt-4 p-4', mode.radius)}
-      >
+      <div className={cn('bg-primary dark:bg-primary/30 mt-4 p-4', mode.radius)}>
         <p className="text-primary dark:text-primary text-sm">
-          💡 <strong>Tip:</strong> Upgrade to Starter to get 10x more resources
-          and unlock premium features like OAuth, payments, and email
-          integration.
+          💡 <strong>Tip:</strong> Upgrade to Starter to get 10x more resources and unlock premium
+          features like OAuth, payments, and email integration.
         </p>
       </div>
     </div>

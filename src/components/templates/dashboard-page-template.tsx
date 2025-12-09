@@ -101,9 +101,7 @@ function StatCard({ stat }: StatCardProps) {
   const { label, value, change, icon } = stat;
 
   return (
-    <div
-      className={cn('border-border bg-card space-y-2 border p-4', mode.radius)}
-    >
+    <div className={cn('border-border bg-card space-y-2 border p-4', mode.radius)}>
       {/* Header with label and icon */}
       <div className="flex items-center justify-between">
         <span className={cn('text-muted-foreground text-xs', mode.font)}>
@@ -113,9 +111,7 @@ function StatCard({ stat }: StatCardProps) {
       </div>
 
       {/* Value */}
-      <div className={cn('text-2xl font-semibold tracking-tight', mode.font)}>
-        {value}
-      </div>
+      <div className={cn('text-2xl font-semibold tracking-tight', mode.font)}>{value}</div>
 
       {/* Change indicator */}
       {change && (
@@ -135,9 +131,7 @@ function StatCard({ stat }: StatCardProps) {
             {change.direction === 'up' ? '+' : '-'}
             {Math.abs(change.value)}%
           </span>
-          <span className={cn('text-muted-foreground text-xs', mode.font)}>
-            from last period
-          </span>
+          <span className={cn('text-muted-foreground text-xs', mode.font)}>from last period</span>
         </div>
       )}
     </div>
@@ -175,15 +169,9 @@ export function DashboardPageTemplate({
       {/* Header */}
       <div className="flex items-start justify-between">
         <div className="space-y-1">
-          <h1
-            className={cn('text-4xl font-semibold tracking-tight', mode.font)}
-          >
-            {title}
-          </h1>
+          <h1 className={cn('text-4xl font-semibold tracking-tight', mode.font)}>{title}</h1>
           {description && (
-            <p className={cn('text-muted-foreground text-sm', mode.font)}>
-              {description}
-            </p>
+            <p className={cn('text-muted-foreground text-sm', mode.font)}>{description}</p>
           )}
         </div>
 

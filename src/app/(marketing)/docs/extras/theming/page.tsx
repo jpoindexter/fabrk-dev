@@ -145,15 +145,11 @@ const themes = [
       <DocsSection title="Theme System">
         <DocsCard title="THEME_SYSTEM">
           <div className="space-y-1">
-            <div>
-              ├─ 20 Color Themes: Inspired by DaisyUI&apos;s theme system
-            </div>
+            <div>├─ 20 Color Themes: Inspired by DaisyUI&apos;s theme system</div>
             <div>├─ Light/Dark Mode: Automatic dark mode with next-themes</div>
             <div>├─ Persistent: Theme choice saved to localStorage</div>
             <div>├─ No Flash: Pre-hydration loading prevents theme flash</div>
-            <div>
-              └─ Tailwind v4 Native: Works seamlessly with Tailwind CSS v4
-            </div>
+            <div>└─ Tailwind v4 Native: Works seamlessly with Tailwind CSS v4</div>
           </div>
         </DocsCard>
       </DocsSection>
@@ -183,11 +179,7 @@ const themes = [
             { name: 'Autumn', desc: 'Fall warmth', color: '#8c0327' },
             { name: 'Business', desc: 'Professional', color: '#1c4e80' },
           ].map((theme) => (
-            <Card
-              key={theme.name}
-              interactive
-              className="hover:border-primary/50 transition-all"
-            >
+            <Card key={theme.name} interactive className="hover:border-primary/50 transition-all">
               <CardContent padding="sm" className="p-4">
                 <div className="flex items-center gap-2">
                   <div
@@ -196,9 +188,7 @@ const themes = [
                   />
                   <div>
                     <div className="font-mono text-xs">{theme.name}</div>
-                    <div className="text-muted-foreground font-mono text-xs">
-                      {theme.desc}
-                    </div>
+                    <div className="text-muted-foreground font-mono text-xs">{theme.desc}</div>
                   </div>
                 </div>
               </CardContent>
@@ -211,17 +201,10 @@ const themes = [
       <DocsSection title="Best Practices">
         <DocsCard title="BEST_PRACTICES">
           <div className="space-y-1">
-            <div>
-              ├─ Use semantic colors: bg-primary instead of bg-purple-500
-            </div>
-            <div>
-              ├─ Test across themes: Verify UI works in light and dark variants
-            </div>
+            <div>├─ Use semantic colors: bg-primary instead of bg-purple-500</div>
+            <div>├─ Test across themes: Verify UI works in light and dark variants</div>
             <div>├─ Default to Light: Clean, neutral starting point</div>
-            <div>
-              └─ Customize themes: Modify colors in globals.css [data-theme]
-              selectors
-            </div>
+            <div>└─ Customize themes: Modify colors in globals.css [data-theme] selectors</div>
           </div>
         </DocsCard>
       </DocsSection>

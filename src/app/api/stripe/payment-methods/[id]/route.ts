@@ -122,10 +122,7 @@ async function deletePaymentMethodHandler(
     const session = await auth();
 
     if (!session?.user?.email) {
-      return NextResponse.json(
-        { error: 'Unauthorized - Please sign in' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Unauthorized - Please sign in' }, { status: 401 });
     }
 
     // Get payment method ID from URL params
@@ -142,10 +139,7 @@ async function deletePaymentMethodHandler(
     }
 
     if (!user.customerId) {
-      return NextResponse.json(
-        { error: 'No billing account found' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'No billing account found' }, { status: 400 });
     }
 
     // Detach payment method from customer
@@ -164,10 +158,7 @@ async function deletePaymentMethodHandler(
     });
   } catch (error: unknown) {
     logger.error('Payment method deletion error:', error);
-    return NextResponse.json(
-      { error: 'Failed to remove payment method' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to remove payment method' }, { status: 500 });
   }
 }
 

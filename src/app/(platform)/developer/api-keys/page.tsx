@@ -36,9 +36,7 @@ export default function ApiKeysPage() {
   const [isRevoking, setIsRevoking] = useState<string | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [newKeyName, setNewKeyName] = useState('');
-  const [selectedPermissions, setSelectedPermissions] = useState<string[]>([
-    'read',
-  ]);
+  const [selectedPermissions, setSelectedPermissions] = useState<string[]>(['read']);
   const [createdKey, setCreatedKey] = useState<string | null>(null);
   const [revokeDialogOpen, setRevokeDialogOpen] = useState(false);
   const [keyToRevoke, setKeyToRevoke] = useState<string | null>(null);
@@ -54,10 +52,7 @@ export default function ApiKeysPage() {
           if (data.organizations && data.organizations.length > 0) {
             setOrganizationId(data.organizations[0].id);
           } else {
-            error(
-              'No organization found',
-              'Please create an organization first to use API keys.'
-            );
+            error('No organization found', 'Please create an organization first to use API keys.');
           }
         } else {
           error('Failed to load organization', 'Please try again later');
@@ -76,25 +71,17 @@ export default function ApiKeysPage() {
 
     try {
       setLoading(true);
-      const response = await fetch(
-        `/api/api-keys?organizationId=${organizationId}`
-      );
+      const response = await fetch(`/api/api-keys?organizationId=${organizationId}`);
       if (response.ok) {
         const data = await response.json();
         setApiKeys(data);
       } else {
         const errorData = await response.json();
-        error(
-          'Failed to load API keys',
-          errorData.error || 'Please try again later'
-        );
+        error('Failed to load API keys', errorData.error || 'Please try again later');
       }
     } catch (err: unknown) {
       console.error('Error fetching API keys:', err);
-      error(
-        'Failed to load API keys',
-        'A network error occurred. Please check your connection.'
-      );
+      error('Failed to load API keys', 'A network error occurred. Please check your connection.');
     } finally {
       setLoading(false);
     }
@@ -109,26 +96,17 @@ export default function ApiKeysPage() {
 
   const handleCreateKey = async () => {
     if (!organizationId) {
-      error(
-        'Organization not loaded',
-        'Please wait for organization data to load'
-      );
+      error('Organization not loaded', 'Please wait for organization data to load');
       return;
     }
 
     if (!newKeyName.trim()) {
-      error(
-        'Name required',
-        'Please enter a descriptive name for your API key'
-      );
+      error('Name required', 'Please enter a descriptive name for your API key');
       return;
     }
 
     if (selectedPermissions.length === 0) {
-      error(
-        'Permissions required',
-        'Please select at least one permission level for the API key'
-      );
+      error('Permissions required', 'Please select at least one permission level for the API key');
       return;
     }
 
@@ -160,8 +138,7 @@ export default function ApiKeysPage() {
         const errorData = await response.json();
         error(
           'Failed to create API key',
-          errorData.error ||
-            'An error occurred while creating the API key. Please try again.'
+          errorData.error || 'An error occurred while creating the API key. Please try again.'
         );
       }
     } catch (err: unknown) {
@@ -178,10 +155,7 @@ export default function ApiKeysPage() {
   const handleCopyKey = async (key: string) => {
     try {
       await navigator.clipboard.writeText(key);
-      success(
-        'Copied to clipboard',
-        'API key has been copied to your clipboard'
-      );
+      success('Copied to clipboard', 'API key has been copied to your clipboard');
     } catch (err: unknown) {
       console.error('Error copying to clipboard:', err);
       error('Failed to copy', 'Please try copying manually');
@@ -209,8 +183,7 @@ export default function ApiKeysPage() {
         const errorData = await response.json();
         error(
           'Failed to revoke API key',
-          errorData.error ||
-            'An error occurred while revoking the API key. Please try again.'
+          errorData.error || 'An error occurred while revoking the API key. Please try again.'
         );
       }
     } catch (err: unknown) {
@@ -227,9 +200,7 @@ export default function ApiKeysPage() {
 
   const togglePermission = (permission: string) => {
     if (selectedPermissions.includes(permission)) {
-      setSelectedPermissions(
-        selectedPermissions.filter((p) => p !== permission)
-      );
+      setSelectedPermissions(selectedPermissions.filter((p) => p !== permission));
     } else {
       setSelectedPermissions([...selectedPermissions, permission]);
     }
@@ -242,10 +213,7 @@ export default function ApiKeysPage() {
 
   return (
     <div className="container mx-auto max-w-6xl px-6 py-8">
-      <ApiKeyHeader
-        isDialogOpen={isDialogOpen}
-        onDialogOpenChange={setIsDialogOpen}
-      >
+      <ApiKeyHeader isDialogOpen={isDialogOpen} onDialogOpenChange={setIsDialogOpen}>
         <CreateKeyForm
           newKeyName={newKeyName}
           selectedPermissions={selectedPermissions}

@@ -28,8 +28,7 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
     });
 
     // Extract customer information
-    const customerEmail =
-      session.customer_email || (session.customer_details?.email as string);
+    const customerEmail = session.customer_email || (session.customer_details?.email as string);
 
     if (!customerEmail) {
       logger.error('No customer email found in checkout session');
@@ -40,8 +39,7 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
     const { tier } = session.metadata || {};
 
     // Get or create customer ID
-    const customerId =
-      typeof session.customer === 'string' ? session.customer : null;
+    const customerId = typeof session.customer === 'string' ? session.customer : null;
 
     // Generate license key
     const licenseKey = generateLicenseKey();
@@ -85,9 +83,7 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
     const magicLinkExpiry = getTokenExpiration(24 * 7); // Valid for 7 days
 
     // Hash token before storing in database (security: never store plain tokens)
-    const hashedMagicToken = createHash('sha256')
-      .update(magicLinkToken)
-      .digest('hex');
+    const hashedMagicToken = createHash('sha256').update(magicLinkToken).digest('hex');
 
     // Store hashed token in database
     await prisma.verificationToken.create({

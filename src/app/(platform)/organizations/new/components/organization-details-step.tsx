@@ -63,9 +63,7 @@ export function OrganizationDetailsStep({
                       {...field}
                     />
                   </FormControl>
-                  <FormDescription>
-                    The public name of your organization
-                  </FormDescription>
+                  <FormDescription>The public name of your organization</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}

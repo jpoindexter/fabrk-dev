@@ -75,10 +75,7 @@ export interface LemonSqueezyWebhookPayload {
 /**
  * Verify Lemon Squeezy webhook signature
  */
-export function verifyWebhookSignature(
-  rawBody: string,
-  signature: string
-): boolean {
+export function verifyWebhookSignature(rawBody: string, signature: string): boolean {
   const secret = process.env.LEMONSQUEEZY_WEBHOOK_SECRET;
   if (!secret) {
     logger.error('LEMONSQUEEZY_WEBHOOK_SECRET is not configured');
@@ -94,9 +91,7 @@ export function verifyWebhookSignature(
 /**
  * Handle order_created event
  */
-export async function handleOrderCreated(
-  payload: LemonSqueezyWebhookPayload
-): Promise<void> {
+export async function handleOrderCreated(payload: LemonSqueezyWebhookPayload): Promise<void> {
   const { data, meta } = payload;
   const attributes = data.attributes;
 
@@ -114,9 +109,7 @@ export async function handleOrderCreated(
     const licenseKey = generateLicenseKey();
 
     // Determine tier from product
-    const tier =
-      attributes.first_order_item?.variant_name?.toLowerCase() ||
-      'professional';
+    const tier = attributes.first_order_item?.variant_name?.toLowerCase() || 'professional';
 
     // Upsert user
     const user = await prisma.user.upsert({
@@ -149,11 +142,7 @@ export async function handleOrderCreated(
     });
 
     // Send welcome email
-    await sendWelcomeEmail(
-      customerEmail,
-      attributes.user_name || 'Customer',
-      licenseKey
-    );
+    await sendWelcomeEmail(customerEmail, attributes.user_name || 'Customer', licenseKey);
 
     logger.info('Lemon Squeezy order processed successfully', {
       userId: user.id,
@@ -185,9 +174,7 @@ export async function handleSubscriptionCreated(
 
     // Generate license key for subscription
     const licenseKey = generateLicenseKey();
-    const tier =
-      attributes.first_order_item?.variant_name?.toLowerCase() ||
-      'professional';
+    const tier = attributes.first_order_item?.variant_name?.toLowerCase() || 'professional';
 
     // Upsert user with subscription details
     // Store Lemon Squeezy subscription in customerId with ls_sub_ prefix
@@ -256,10 +243,7 @@ export async function handleSubscriptionCancelled(
       });
     }
   } catch (error) {
-    logger.error(
-      'Error processing Lemon Squeezy subscription cancellation:',
-      error
-    );
+    logger.error('Error processing Lemon Squeezy subscription cancellation:', error);
     throw error;
   }
 }
@@ -267,9 +251,7 @@ export async function handleSubscriptionCancelled(
 /**
  * Handle order_refunded event
  */
-export async function handleOrderRefunded(
-  payload: LemonSqueezyWebhookPayload
-): Promise<void> {
+export async function handleOrderRefunded(payload: LemonSqueezyWebhookPayload): Promise<void> {
   const { data } = payload;
 
   logger.info('Processing Lemon Squeezy order_refunded', {

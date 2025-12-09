@@ -59,9 +59,7 @@ describe('Security Validation', () => {
 
   describe('Input Sanitization', () => {
     it('should sanitize dangerous input', () => {
-      expect(sanitizeString("<script>alert('xss')</script>")).toBe(
-        "scriptalert('xss')/script"
-      );
+      expect(sanitizeString("<script>alert('xss')</script>")).toBe("scriptalert('xss')/script");
       expect(sanitizeString('Hello & goodbye')).toBe('Hello & goodbye');
       expect(sanitizeString('Test "quotes"')).toBe('Test "quotes"');
     });
@@ -90,32 +88,20 @@ describe('Security Validation', () => {
 
   describe('Validation Schemas', () => {
     it('should validate email', () => {
-      expect(
-        ValidationSchemas.email.safeParse('test@example.com').success
-      ).toBe(true);
-      expect(ValidationSchemas.email.safeParse('invalid-email').success).toBe(
-        false
-      );
+      expect(ValidationSchemas.email.safeParse('test@example.com').success).toBe(true);
+      expect(ValidationSchemas.email.safeParse('invalid-email').success).toBe(false);
       expect(ValidationSchemas.email.safeParse('').success).toBe(false);
     });
 
     it('should validate password strength', () => {
-      expect(ValidationSchemas.password.safeParse('Test123!').success).toBe(
-        true
-      );
+      expect(ValidationSchemas.password.safeParse('Test123!').success).toBe(true);
       expect(ValidationSchemas.password.safeParse('weak').success).toBe(false);
-      expect(
-        ValidationSchemas.password.safeParse('nouppercaseornumber').success
-      ).toBe(false);
+      expect(ValidationSchemas.password.safeParse('nouppercaseornumber').success).toBe(false);
     });
 
     it('should validate URLs', () => {
-      expect(
-        ValidationSchemas.url.safeParse('https://example.com').success
-      ).toBe(true);
-      expect(ValidationSchemas.url.safeParse('http://test.com').success).toBe(
-        true
-      );
+      expect(ValidationSchemas.url.safeParse('https://example.com').success).toBe(true);
+      expect(ValidationSchemas.url.safeParse('http://test.com').success).toBe(true);
       expect(ValidationSchemas.url.safeParse('not-a-url').success).toBe(false);
     });
   });

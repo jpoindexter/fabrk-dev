@@ -40,8 +40,7 @@ export default function SheetPage() {
               <SheetHeader>
                 <SheetTitle>Edit profile</SheetTitle>
                 <SheetDescription>
-                  Make changes to your profile here. Click save when you're
-                  done.
+                  Make changes to your profile here. Click save when you're done.
                 </SheetDescription>
               </SheetHeader>
             </SheetContent>
@@ -64,8 +63,7 @@ export default function SheetPage() {
       variants={[
         {
           title: 'Right Side (Default)',
-          description:
-            'Sheet that slides in from the right side of the screen.',
+          description: 'Sheet that slides in from the right side of the screen.',
           preview: (
             <Sheet>
               <SheetTrigger asChild>
@@ -181,8 +179,7 @@ export default function SheetPage() {
         },
         {
           title: 'With Form',
-          description:
-            'Sheet containing a form with inputs and footer actions.',
+          description: 'Sheet containing a form with inputs and footer actions.',
           preview: (
             <Sheet>
               <SheetTrigger asChild>
@@ -192,8 +189,7 @@ export default function SheetPage() {
                 <SheetHeader>
                   <SheetTitle>Edit settings</SheetTitle>
                   <SheetDescription>
-                    Update your account settings. Changes will be saved
-                    automatically.
+                    Update your account settings. Changes will be saved automatically.
                   </SheetDescription>
                 </SheetHeader>
                 <div className="grid gap-4 py-4">

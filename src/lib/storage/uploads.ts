@@ -107,9 +107,7 @@ async function initializeS3Client() {
       },
     });
   } catch {
-    logger.warn(
-      'AWS SDK not installed. Cloud uploads will fall back to local storage.'
-    );
+    logger.warn('AWS SDK not installed. Cloud uploads will fall back to local storage.');
     return null;
   }
 }
@@ -247,9 +245,7 @@ async function uploadToCloud(
   const s3Client = await getS3Client();
 
   if (!s3Client) {
-    throw new Error(
-      'Cloud storage not configured. Falling back to local storage.'
-    );
+    throw new Error('Cloud storage not configured. Falling back to local storage.');
   }
 
   await s3Client.send(
@@ -259,9 +255,7 @@ async function uploadToCloud(
       Body: buffer,
       ContentType: mimeType,
       Metadata: metadata,
-      ...(visibility === 'public' && STORAGE_PROVIDER === 's3'
-        ? { ACL: 'public-read' }
-        : {}),
+      ...(visibility === 'public' && STORAGE_PROVIDER === 's3' ? { ACL: 'public-read' } : {}),
     })
   );
 
@@ -277,13 +271,9 @@ async function uploadToCloud(
   }
 
   // Generate signed URL for private files
-  return await getSignedUrl(
-    s3Client,
-    new GetObjectCommand({ Bucket: BUCKET_NAME, Key: key }),
-    {
-      expiresIn: 3600,
-    }
-  );
+  return await getSignedUrl(s3Client, new GetObjectCommand({ Bucket: BUCKET_NAME, Key: key }), {
+    expiresIn: 3600,
+  });
 }
 
 /**
@@ -309,15 +299,11 @@ export async function uploadFile(options: UploadOptions): Promise<{
 
   // Get file buffer
   const buffer =
-    options.file instanceof File
-      ? Buffer.from(await options.file.arrayBuffer())
-      : options.file;
+    options.file instanceof File ? Buffer.from(await options.file.arrayBuffer()) : options.file;
 
   const mimeType =
     options.mimeType ||
-    (options.file instanceof File
-      ? options.file.type
-      : 'application/octet-stream');
+    (options.file instanceof File ? options.file.type : 'application/octet-stream');
   const visibility = options.visibility || 'private';
 
   let url: string;
@@ -326,13 +312,7 @@ export async function uploadFile(options: UploadOptions): Promise<{
   // Try cloud storage first, fall back to local
   if (STORAGE_PROVIDER !== 'local') {
     try {
-      url = await uploadToCloud(
-        buffer,
-        key,
-        mimeType,
-        visibility,
-        options.metadata
-      );
+      url = await uploadToCloud(buffer, key, mimeType, visibility, options.metadata);
     } catch (error: unknown) {
       logger.warn('Cloud upload failed, falling back to local storage', {
         error,
@@ -430,10 +410,7 @@ export async function getSignedFileUrl(
 /**
  * Delete file
  */
-export async function deleteFile(
-  fileId: string,
-  userId: string
-): Promise<void> {
+export async function deleteFile(fileId: string, userId: string): Promise<void> {
   // Get upload record
   const upload = await prisma.upload.findUnique({
     where: { id: fileId },
@@ -495,10 +472,7 @@ export async function getUserUploads(userId: string, limit: number = 50) {
 /**
  * Get organization uploads
  */
-export async function getOrganizationUploads(
-  organizationId: string,
-  limit: number = 50
-) {
+export async function getOrganizationUploads(organizationId: string, limit: number = 50) {
   return await prisma.upload.findMany({
     where: { organizationId },
     orderBy: { createdAt: 'desc' },

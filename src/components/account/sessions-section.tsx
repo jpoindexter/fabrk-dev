@@ -87,44 +87,19 @@ export function SessionsSection() {
               <table className="w-full text-sm">
                 <thead className="border-b">
                   <tr className="bg-muted/30 rounded-none">
-                    <th
-                      className={cn(
-                        'rounded-none px-2 py-2 text-left font-medium',
-                        mode.font
-                      )}
-                    >
+                    <th className={cn('rounded-none px-2 py-2 text-left font-medium', mode.font)}>
                       Device
                     </th>
-                    <th
-                      className={cn(
-                        'rounded-none px-2 py-2 text-left font-medium',
-                        mode.font
-                      )}
-                    >
+                    <th className={cn('rounded-none px-2 py-2 text-left font-medium', mode.font)}>
                       Browser
                     </th>
-                    <th
-                      className={cn(
-                        'rounded-none px-2 py-2 text-left font-medium',
-                        mode.font
-                      )}
-                    >
+                    <th className={cn('rounded-none px-2 py-2 text-left font-medium', mode.font)}>
                       IP Address
                     </th>
-                    <th
-                      className={cn(
-                        'rounded-none px-2 py-2 text-left font-medium',
-                        mode.font
-                      )}
-                    >
+                    <th className={cn('rounded-none px-2 py-2 text-left font-medium', mode.font)}>
                       Last Active
                     </th>
-                    <th
-                      className={cn(
-                        'rounded-none px-2 py-2 text-left font-medium',
-                        mode.font
-                      )}
-                    >
+                    <th className={cn('rounded-none px-2 py-2 text-left font-medium', mode.font)}>
                       Action
                     </th>
                   </tr>
@@ -136,16 +111,12 @@ export function SessionsSection() {
                         <div>
                           <p className="font-medium">{session.device}</p>
                           {session.isCurrent && (
-                            <p className="text-success text-xs">
-                              Current session
-                            </p>
+                            <p className="text-success text-xs">Current session</p>
                           )}
                         </div>
                       </td>
                       <td className="px-2 py-4">{session.browser}</td>
-                      <td className={cn('px-2 py-4 text-xs', mode.font)}>
-                        {session.ip}
-                      </td>
+                      <td className={cn('px-2 py-4 text-xs', mode.font)}>{session.ip}</td>
                       <td className="px-2 py-4">{session.lastActive}</td>
                       <td className="px-2 py-4">
                         <Button
@@ -169,24 +140,18 @@ export function SessionsSection() {
         </div>
       </CardContent>
 
-      <AlertDialog
-        open={!!revokeSessionId}
-        onOpenChange={() => setRevokeSessionId(null)}
-      >
+      <AlertDialog open={!!revokeSessionId} onOpenChange={() => setRevokeSessionId(null)}>
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Revoke Session</AlertDialogTitle>
             <AlertDialogDescription>
-              This will sign out the device from this session. You can sign back
-              in anytime.
+              This will sign out the device from this session. You can sign back in anytime.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <div className="flex justify-end gap-2">
             <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
             <AlertDialogAction
-              onClick={() =>
-                revokeSessionId && handleRevokeSession(revokeSessionId)
-              }
+              onClick={() => revokeSessionId && handleRevokeSession(revokeSessionId)}
               disabled={isLoading}
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
             >

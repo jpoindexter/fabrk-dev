@@ -35,20 +35,8 @@ import { Avatar, AvatarFallback, AvatarImage } from './avatar';
 import { Badge } from './badge';
 import { Button } from './button';
 import { Input } from './input';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from './select';
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-} from './sheet';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './select';
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from './sheet';
 import {
   Search,
   Download,
@@ -105,15 +93,10 @@ export function AuditLog({
   initialLogs = [],
 }: AuditLogProps) {
   const [logs] = React.useState<AuditLogEntry[]>(initialLogs);
-  const [filteredLogs, setFilteredLogs] =
-    React.useState<AuditLogEntry[]>(initialLogs);
+  const [filteredLogs, setFilteredLogs] = React.useState<AuditLogEntry[]>(initialLogs);
   const [searchQuery, setSearchQuery] = React.useState('');
-  const [actionFilter, setActionFilter] = React.useState<AuditAction | 'all'>(
-    'all'
-  );
-  const [selectedLog, setSelectedLog] = React.useState<AuditLogEntry | null>(
-    null
-  );
+  const [actionFilter, setActionFilter] = React.useState<AuditAction | 'all'>('all');
+  const [selectedLog, setSelectedLog] = React.useState<AuditLogEntry | null>(null);
   const [isExporting, setIsExporting] = React.useState(false);
 
   // Apply filters
@@ -161,11 +144,7 @@ export function AuditLog({
   };
 
   const getActionBadgeVariant = (action: AuditAction) => {
-    if (
-      action.includes('deleted') ||
-      action.includes('revoked') ||
-      action.includes('breach')
-    ) {
+    if (action.includes('deleted') || action.includes('revoked') || action.includes('breach')) {
       return 'destructive';
     }
     if (action.includes('created') || action.includes('login')) {
@@ -192,9 +171,7 @@ export function AuditLog({
       {/* Header with Export */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h3 className={cn('text-sm font-semibold', mode.font)}>
-            [ AUDIT_LOG ]
-          </h3>
+          <h3 className={cn('text-sm font-semibold', mode.font)}>[ AUDIT_LOG ]</h3>
           <p className="text-muted-foreground mt-1 text-xs">
             Track all user actions for security and compliance
           </p>
@@ -226,13 +203,9 @@ export function AuditLog({
 
         <Select
           value={actionFilter}
-          onValueChange={(value) =>
-            setActionFilter(value as AuditAction | 'all')
-          }
+          onValueChange={(value) => setActionFilter(value as AuditAction | 'all')}
         >
-          <SelectTrigger
-            className={cn('w-full sm:w-[200px]', mode.radius, mode.font)}
-          >
+          <SelectTrigger className={cn('w-full sm:w-[200px]', mode.radius, mode.font)}>
             <SelectValue placeholder="Filter by action" />
           </SelectTrigger>
           <SelectContent className={cn(mode.radius)}>
@@ -307,27 +280,17 @@ export function AuditLog({
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                       <div className="min-w-0 flex-1">
                         <div className="flex flex-wrap items-center gap-2">
-                          <p className={cn('text-sm font-medium', mode.font)}>
-                            {log.userName}
-                          </p>
+                          <p className={cn('text-sm font-medium', mode.font)}>{log.userName}</p>
                           <Badge
                             variant={getActionBadgeVariant(log.action)}
-                            className={cn(
-                              'gap-1 px-2 py-0.5 text-xs',
-                              mode.font
-                            )}
+                            className={cn('gap-1 px-2 py-0.5 text-xs', mode.font)}
                           >
                             {getActionIcon(log.action)}
                             {getActionLabel(log.action)}
                           </Badge>
                         </div>
 
-                        <p
-                          className={cn(
-                            'text-muted-foreground mt-1 text-xs',
-                            mode.font
-                          )}
-                        >
+                        <p className={cn('text-muted-foreground mt-1 text-xs', mode.font)}>
                           {log.resource}
                         </p>
 
@@ -364,50 +327,29 @@ export function AuditLog({
       </Card>
 
       {/* Details Sheet */}
-      <Sheet
-        open={!!selectedLog}
-        onOpenChange={(open) => !open && setSelectedLog(null)}
-      >
-        <SheetContent
-          className={cn('w-full overflow-y-auto sm:max-w-2xl', mode.radius)}
-        >
+      <Sheet open={!!selectedLog} onOpenChange={(open) => !open && setSelectedLog(null)}>
+        <SheetContent className={cn('w-full overflow-y-auto sm:max-w-2xl', mode.radius)}>
           {selectedLog && (
             <>
               <SheetHeader>
-                <SheetTitle className={cn(mode.font)}>
-                  [ AUDIT_LOG_DETAILS ]
-                </SheetTitle>
-                <SheetDescription>
-                  Complete information about this action
-                </SheetDescription>
+                <SheetTitle className={cn(mode.font)}>[ AUDIT_LOG_DETAILS ]</SheetTitle>
+                <SheetDescription>Complete information about this action</SheetDescription>
               </SheetHeader>
 
               <div className="mt-6 space-y-6">
                 {/* User Info */}
                 <div className="space-y-2">
-                  <p className={cn('text-xs font-semibold', mode.font)}>
-                    [USER]:
-                  </p>
+                  <p className={cn('text-xs font-semibold', mode.font)}>[USER]:</p>
                   <div className="flex items-center gap-3">
                     <Avatar className="border-border h-12 w-12 border-2">
-                      <AvatarImage
-                        src={selectedLog.userAvatar}
-                        alt={selectedLog.userName}
-                      />
+                      <AvatarImage src={selectedLog.userAvatar} alt={selectedLog.userName} />
                       <AvatarFallback className={cn('text-sm', mode.font)}>
                         {getUserInitials(selectedLog.userName)}
                       </AvatarFallback>
                     </Avatar>
                     <div>
-                      <p className={cn('text-sm font-medium', mode.font)}>
-                        {selectedLog.userName}
-                      </p>
-                      <p
-                        className={cn(
-                          'text-muted-foreground text-xs',
-                          mode.font
-                        )}
-                      >
+                      <p className={cn('text-sm font-medium', mode.font)}>{selectedLog.userName}</p>
+                      <p className={cn('text-muted-foreground text-xs', mode.font)}>
                         {selectedLog.userEmail}
                       </p>
                     </div>
@@ -416,14 +358,10 @@ export function AuditLog({
 
                 {/* Action Details */}
                 <div className="space-y-2">
-                  <p className={cn('text-xs font-semibold', mode.font)}>
-                    [ACTION]:
-                  </p>
+                  <p className={cn('text-xs font-semibold', mode.font)}>[ACTION]:</p>
                   <div className="bg-muted border-border space-y-1 border p-3">
                     <div className="flex justify-between text-xs">
-                      <span className={cn('text-muted-foreground', mode.font)}>
-                        [TYPE]:
-                      </span>
+                      <span className={cn('text-muted-foreground', mode.font)}>[TYPE]:</span>
                       <Badge
                         variant={getActionBadgeVariant(selectedLog.action)}
                         className={cn(mode.font)}
@@ -432,17 +370,11 @@ export function AuditLog({
                       </Badge>
                     </div>
                     <div className="flex justify-between text-xs">
-                      <span className={cn('text-muted-foreground', mode.font)}>
-                        [RESOURCE]:
-                      </span>
-                      <span className={cn(mode.font)}>
-                        {selectedLog.resource}
-                      </span>
+                      <span className={cn('text-muted-foreground', mode.font)}>[RESOURCE]:</span>
+                      <span className={cn(mode.font)}>{selectedLog.resource}</span>
                     </div>
                     <div className="flex justify-between text-xs">
-                      <span className={cn('text-muted-foreground', mode.font)}>
-                        [TIMESTAMP]:
-                      </span>
+                      <span className={cn('text-muted-foreground', mode.font)}>[TIMESTAMP]:</span>
                       <span className={cn(mode.font)}>
                         {new Date(selectedLog.timestamp).toISOString()}
                       </span>
@@ -452,28 +384,15 @@ export function AuditLog({
 
                 {/* Security Info */}
                 <div className="space-y-2">
-                  <p className={cn('text-xs font-semibold', mode.font)}>
-                    [SECURITY]:
-                  </p>
+                  <p className={cn('text-xs font-semibold', mode.font)}>[SECURITY]:</p>
                   <div className="bg-muted border-border space-y-1 border p-3">
                     <div className="flex justify-between text-xs">
-                      <span className={cn('text-muted-foreground', mode.font)}>
-                        [IP_ADDRESS]:
-                      </span>
-                      <span className={cn(mode.font)}>
-                        {selectedLog.ipAddress}
-                      </span>
+                      <span className={cn('text-muted-foreground', mode.font)}>[IP_ADDRESS]:</span>
+                      <span className={cn(mode.font)}>{selectedLog.ipAddress}</span>
                     </div>
                     <div className="flex flex-col gap-1 text-xs">
-                      <span className={cn('text-muted-foreground', mode.font)}>
-                        [USER_AGENT]:
-                      </span>
-                      <span
-                        className={cn(
-                          'text-muted-foreground break-all',
-                          mode.font
-                        )}
-                      >
+                      <span className={cn('text-muted-foreground', mode.font)}>[USER_AGENT]:</span>
+                      <span className={cn('text-muted-foreground break-all', mode.font)}>
                         {selectedLog.userAgent}
                       </span>
                     </div>
@@ -483,29 +402,18 @@ export function AuditLog({
                 {/* Metadata */}
                 {Object.keys(selectedLog.metadata).length > 0 && (
                   <div className="space-y-2">
-                    <p className={cn('text-xs font-semibold', mode.font)}>
-                      [METADATA]:
-                    </p>
+                    <p className={cn('text-xs font-semibold', mode.font)}>[METADATA]:</p>
                     <div className="bg-muted border-border space-y-1 border p-3">
-                      {Object.entries(selectedLog.metadata).map(
-                        ([key, value]) => (
-                          <div
-                            key={key}
-                            className="flex justify-between text-xs"
-                          >
-                            <span
-                              className={cn('text-muted-foreground', mode.font)}
-                            >
-                              [{key.toUpperCase()}]:
-                            </span>
-                            <span className={cn(mode.font)}>
-                              {typeof value === 'object'
-                                ? JSON.stringify(value)
-                                : String(value)}
-                            </span>
-                          </div>
-                        )
-                      )}
+                      {Object.entries(selectedLog.metadata).map(([key, value]) => (
+                        <div key={key} className="flex justify-between text-xs">
+                          <span className={cn('text-muted-foreground', mode.font)}>
+                            [{key.toUpperCase()}]:
+                          </span>
+                          <span className={cn(mode.font)}>
+                            {typeof value === 'object' ? JSON.stringify(value) : String(value)}
+                          </span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 )}

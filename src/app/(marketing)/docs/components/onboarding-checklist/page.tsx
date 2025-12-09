@@ -63,9 +63,7 @@ export default function OnboardingChecklistPage() {
             <OnboardingChecklist
               tasks={tasks}
               onTaskToggle={(taskId, completed) => {
-                setTasks((prev) =>
-                  prev.map((t) => (t.id === taskId ? { ...t, completed } : t))
-                );
+                setTasks((prev) => prev.map((t) => (t.id === taskId ? { ...t, completed } : t)));
               }}
               onDismiss={() => {
                 // Handle dismiss

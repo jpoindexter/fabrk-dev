@@ -45,8 +45,7 @@ export const emailService = {
   ) {
     switch (template) {
       case 'email-verification':
-        if (!data.verificationLink)
-          throw new Error('verificationLink required');
+        if (!data.verificationLink) throw new Error('verificationLink required');
         const token = data.verificationLink.split('/').pop() || '';
         return sendVerificationEmail(to, token);
 

@@ -15,8 +15,7 @@ import type * as Prisma from '../internal/prismaNamespace';
  * Model Consent
  *
  */
-export type ConsentModel =
-  runtime.Types.Result.DefaultSelection<Prisma.$ConsentPayload>;
+export type ConsentModel = runtime.Types.Result.DefaultSelection<Prisma.$ConsentPayload>;
 
 export type AggregateConsent = {
   _count: ConsentCountAggregateOutputType | null;
@@ -107,8 +106,7 @@ export type ConsentCountAggregateInputType = {
 };
 
 export type ConsentAggregateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which Consent to aggregate.
@@ -119,9 +117,7 @@ export type ConsentAggregateArgs<
    *
    * Determine the order of Consents to fetch.
    */
-  orderBy?:
-    | Prisma.ConsentOrderByWithRelationInput
-    | Prisma.ConsentOrderByWithRelationInput[];
+  orderBy?: Prisma.ConsentOrderByWithRelationInput | Prisma.ConsentOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -169,13 +165,10 @@ export type GetConsentAggregateType<T extends ConsentAggregateArgs> = {
 };
 
 export type ConsentGroupByArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.ConsentWhereInput;
-  orderBy?:
-    | Prisma.ConsentOrderByWithAggregationInput
-    | Prisma.ConsentOrderByWithAggregationInput[];
+  orderBy?: Prisma.ConsentOrderByWithAggregationInput | Prisma.ConsentOrderByWithAggregationInput[];
   by: Prisma.ConsentScalarFieldEnum[] | Prisma.ConsentScalarFieldEnum;
   having?: Prisma.ConsentScalarWhereWithAggregatesInput;
   take?: number;
@@ -202,18 +195,17 @@ export type ConsentGroupByOutputType = {
   _max: ConsentMaxAggregateOutputType | null;
 };
 
-type GetConsentGroupByPayload<T extends ConsentGroupByArgs> =
-  Prisma.PrismaPromise<
-    Array<
-      Prisma.PickEnumerable<ConsentGroupByOutputType, T['by']> & {
-        [P in keyof T & keyof ConsentGroupByOutputType]: P extends '_count'
-          ? T[P] extends boolean
-            ? number
-            : Prisma.GetScalarType<T[P], ConsentGroupByOutputType[P]>
-          : Prisma.GetScalarType<T[P], ConsentGroupByOutputType[P]>;
-      }
-    >
-  >;
+type GetConsentGroupByPayload<T extends ConsentGroupByArgs> = Prisma.PrismaPromise<
+  Array<
+    Prisma.PickEnumerable<ConsentGroupByOutputType, T['by']> & {
+      [P in keyof T & keyof ConsentGroupByOutputType]: P extends '_count'
+        ? T[P] extends boolean
+          ? number
+          : Prisma.GetScalarType<T[P], ConsentGroupByOutputType[P]>
+        : Prisma.GetScalarType<T[P], ConsentGroupByOutputType[P]>;
+    }
+  >
+>;
 
 export type ConsentWhereInput = {
   AND?: Prisma.ConsentWhereInput | Prisma.ConsentWhereInput[];
@@ -261,11 +253,7 @@ export type ConsentWhereUniqueInput = Prisma.AtLeast<
     consentDate?: Prisma.DateTimeFilter<'Consent'> | Date | string;
     ipAddress?: Prisma.StringNullableFilter<'Consent'> | string | null;
     userAgent?: Prisma.StringNullableFilter<'Consent'> | string | null;
-    withdrawnAt?:
-      | Prisma.DateTimeNullableFilter<'Consent'>
-      | Date
-      | string
-      | null;
+    withdrawnAt?: Prisma.DateTimeNullableFilter<'Consent'> | Date | string | null;
     metadata?: Prisma.JsonNullableFilter<'Consent'>;
     createdAt?: Prisma.DateTimeFilter<'Consent'> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<'Consent'> | Date | string;
@@ -301,24 +289,12 @@ export type ConsentScalarWhereWithAggregatesInput = {
     | Prisma.ConsentScalarWhereWithAggregatesInput[];
   id?: Prisma.StringWithAggregatesFilter<'Consent'> | string;
   userId?: Prisma.StringWithAggregatesFilter<'Consent'> | string;
-  consentType?:
-    | Prisma.EnumConsentTypeWithAggregatesFilter<'Consent'>
-    | $Enums.ConsentType;
+  consentType?: Prisma.EnumConsentTypeWithAggregatesFilter<'Consent'> | $Enums.ConsentType;
   consentGiven?: Prisma.BoolWithAggregatesFilter<'Consent'> | boolean;
   consentDate?: Prisma.DateTimeWithAggregatesFilter<'Consent'> | Date | string;
-  ipAddress?:
-    | Prisma.StringNullableWithAggregatesFilter<'Consent'>
-    | string
-    | null;
-  userAgent?:
-    | Prisma.StringNullableWithAggregatesFilter<'Consent'>
-    | string
-    | null;
-  withdrawnAt?:
-    | Prisma.DateTimeNullableWithAggregatesFilter<'Consent'>
-    | Date
-    | string
-    | null;
+  ipAddress?: Prisma.StringNullableWithAggregatesFilter<'Consent'> | string | null;
+  userAgent?: Prisma.StringNullableWithAggregatesFilter<'Consent'> | string | null;
+  withdrawnAt?: Prisma.DateTimeNullableWithAggregatesFilter<'Consent'> | Date | string | null;
   metadata?: Prisma.JsonNullableWithAggregatesFilter<'Consent'>;
   createdAt?: Prisma.DateTimeWithAggregatesFilter<'Consent'> | Date | string;
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<'Consent'> | Date | string;
@@ -354,18 +330,12 @@ export type ConsentUncheckedCreateInput = {
 
 export type ConsentUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
-  consentType?:
-    | Prisma.EnumConsentTypeFieldUpdateOperationsInput
-    | $Enums.ConsentType;
+  consentType?: Prisma.EnumConsentTypeFieldUpdateOperationsInput | $Enums.ConsentType;
   consentGiven?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   consentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   ipAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   userAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  withdrawnAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  withdrawnAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -375,18 +345,12 @@ export type ConsentUpdateInput = {
 export type ConsentUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   userId?: Prisma.StringFieldUpdateOperationsInput | string;
-  consentType?:
-    | Prisma.EnumConsentTypeFieldUpdateOperationsInput
-    | $Enums.ConsentType;
+  consentType?: Prisma.EnumConsentTypeFieldUpdateOperationsInput | $Enums.ConsentType;
   consentGiven?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   consentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   ipAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   userAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  withdrawnAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  withdrawnAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -408,18 +372,12 @@ export type ConsentCreateManyInput = {
 
 export type ConsentUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
-  consentType?:
-    | Prisma.EnumConsentTypeFieldUpdateOperationsInput
-    | $Enums.ConsentType;
+  consentType?: Prisma.EnumConsentTypeFieldUpdateOperationsInput | $Enums.ConsentType;
   consentGiven?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   consentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   ipAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   userAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  withdrawnAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  withdrawnAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -428,18 +386,12 @@ export type ConsentUpdateManyMutationInput = {
 export type ConsentUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   userId?: Prisma.StringFieldUpdateOperationsInput | string;
-  consentType?:
-    | Prisma.EnumConsentTypeFieldUpdateOperationsInput
-    | $Enums.ConsentType;
+  consentType?: Prisma.EnumConsentTypeFieldUpdateOperationsInput | $Enums.ConsentType;
   consentGiven?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   consentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   ipAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   userAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  withdrawnAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  withdrawnAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -546,9 +498,7 @@ export type ConsentUpdateManyWithoutUserNestedInput = {
     | Prisma.ConsentUpsertWithWhereUniqueWithoutUserInput[];
   createMany?: Prisma.ConsentCreateManyUserInputEnvelope;
   set?: Prisma.ConsentWhereUniqueInput | Prisma.ConsentWhereUniqueInput[];
-  disconnect?:
-    | Prisma.ConsentWhereUniqueInput
-    | Prisma.ConsentWhereUniqueInput[];
+  disconnect?: Prisma.ConsentWhereUniqueInput | Prisma.ConsentWhereUniqueInput[];
   delete?: Prisma.ConsentWhereUniqueInput | Prisma.ConsentWhereUniqueInput[];
   connect?: Prisma.ConsentWhereUniqueInput | Prisma.ConsentWhereUniqueInput[];
   update?:
@@ -557,9 +507,7 @@ export type ConsentUpdateManyWithoutUserNestedInput = {
   updateMany?:
     | Prisma.ConsentUpdateManyWithWhereWithoutUserInput
     | Prisma.ConsentUpdateManyWithWhereWithoutUserInput[];
-  deleteMany?:
-    | Prisma.ConsentScalarWhereInput
-    | Prisma.ConsentScalarWhereInput[];
+  deleteMany?: Prisma.ConsentScalarWhereInput | Prisma.ConsentScalarWhereInput[];
 };
 
 export type ConsentUncheckedUpdateManyWithoutUserNestedInput = {
@@ -578,9 +526,7 @@ export type ConsentUncheckedUpdateManyWithoutUserNestedInput = {
     | Prisma.ConsentUpsertWithWhereUniqueWithoutUserInput[];
   createMany?: Prisma.ConsentCreateManyUserInputEnvelope;
   set?: Prisma.ConsentWhereUniqueInput | Prisma.ConsentWhereUniqueInput[];
-  disconnect?:
-    | Prisma.ConsentWhereUniqueInput
-    | Prisma.ConsentWhereUniqueInput[];
+  disconnect?: Prisma.ConsentWhereUniqueInput | Prisma.ConsentWhereUniqueInput[];
   delete?: Prisma.ConsentWhereUniqueInput | Prisma.ConsentWhereUniqueInput[];
   connect?: Prisma.ConsentWhereUniqueInput | Prisma.ConsentWhereUniqueInput[];
   update?:
@@ -589,9 +535,7 @@ export type ConsentUncheckedUpdateManyWithoutUserNestedInput = {
   updateMany?:
     | Prisma.ConsentUpdateManyWithWhereWithoutUserInput
     | Prisma.ConsentUpdateManyWithWhereWithoutUserInput[];
-  deleteMany?:
-    | Prisma.ConsentScalarWhereInput
-    | Prisma.ConsentScalarWhereInput[];
+  deleteMany?: Prisma.ConsentScalarWhereInput | Prisma.ConsentScalarWhereInput[];
 };
 
 export type EnumConsentTypeFieldUpdateOperationsInput = {
@@ -697,18 +641,12 @@ export type ConsentCreateManyUserInput = {
 
 export type ConsentUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
-  consentType?:
-    | Prisma.EnumConsentTypeFieldUpdateOperationsInput
-    | $Enums.ConsentType;
+  consentType?: Prisma.EnumConsentTypeFieldUpdateOperationsInput | $Enums.ConsentType;
   consentGiven?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   consentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   ipAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   userAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  withdrawnAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  withdrawnAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -716,18 +654,12 @@ export type ConsentUpdateWithoutUserInput = {
 
 export type ConsentUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
-  consentType?:
-    | Prisma.EnumConsentTypeFieldUpdateOperationsInput
-    | $Enums.ConsentType;
+  consentType?: Prisma.EnumConsentTypeFieldUpdateOperationsInput | $Enums.ConsentType;
   consentGiven?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   consentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   ipAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   userAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  withdrawnAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  withdrawnAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -735,26 +667,19 @@ export type ConsentUncheckedUpdateWithoutUserInput = {
 
 export type ConsentUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
-  consentType?:
-    | Prisma.EnumConsentTypeFieldUpdateOperationsInput
-    | $Enums.ConsentType;
+  consentType?: Prisma.EnumConsentTypeFieldUpdateOperationsInput | $Enums.ConsentType;
   consentGiven?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   consentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   ipAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   userAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  withdrawnAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  withdrawnAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type ConsentSelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -774,8 +699,7 @@ export type ConsentSelect<
 >;
 
 export type ConsentSelectCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -795,8 +719,7 @@ export type ConsentSelectCreateManyAndReturn<
 >;
 
 export type ConsentSelectUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -830,8 +753,7 @@ export type ConsentSelectScalar = {
 };
 
 export type ConsentOmit<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
   | 'id'
   | 'userId'
@@ -847,27 +769,23 @@ export type ConsentOmit<
   ExtArgs['result']['consent']
 >;
 export type ConsentInclude<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 export type ConsentIncludeCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 export type ConsentIncludeUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 
 export type $ConsentPayload<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   name: 'Consent';
   objects: {
@@ -892,20 +810,17 @@ export type $ConsentPayload<
   composites: {};
 };
 
-export type ConsentGetPayload<
-  S extends boolean | null | undefined | ConsentDefaultArgs,
-> = runtime.Types.Result.GetResult<Prisma.$ConsentPayload, S>;
+export type ConsentGetPayload<S extends boolean | null | undefined | ConsentDefaultArgs> =
+  runtime.Types.Result.GetResult<Prisma.$ConsentPayload, S>;
 
 export type ConsentCountArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = Omit<ConsentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
   select?: ConsentCountAggregateInputType | true;
 };
 
 export interface ConsentDelegate<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > {
   [K: symbol]: {
@@ -1060,12 +975,7 @@ export interface ConsentDelegate<
   create<T extends ConsentCreateArgs>(
     args: Prisma.SelectSubset<T, ConsentCreateArgs<ExtArgs>>
   ): Prisma.Prisma__ConsentClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$ConsentPayload<ExtArgs>,
-      T,
-      'create',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$ConsentPayload<ExtArgs>, T, 'create', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -1135,12 +1045,7 @@ export interface ConsentDelegate<
   delete<T extends ConsentDeleteArgs>(
     args: Prisma.SelectSubset<T, ConsentDeleteArgs<ExtArgs>>
   ): Prisma.Prisma__ConsentClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$ConsentPayload<ExtArgs>,
-      T,
-      'delete',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$ConsentPayload<ExtArgs>, T, 'delete', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -1164,12 +1069,7 @@ export interface ConsentDelegate<
   update<T extends ConsentUpdateArgs>(
     args: Prisma.SelectSubset<T, ConsentUpdateArgs<ExtArgs>>
   ): Prisma.Prisma__ConsentClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$ConsentPayload<ExtArgs>,
-      T,
-      'update',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$ConsentPayload<ExtArgs>, T, 'update', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -1271,12 +1171,7 @@ export interface ConsentDelegate<
   upsert<T extends ConsentUpsertArgs>(
     args: Prisma.SelectSubset<T, ConsentUpsertArgs<ExtArgs>>
   ): Prisma.Prisma__ConsentClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$ConsentPayload<ExtArgs>,
-      T,
-      'upsert',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$ConsentPayload<ExtArgs>, T, 'upsert', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -1376,12 +1271,7 @@ export interface ConsentDelegate<
               ? never
               : P extends string
                 ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                : [
-                    Error,
-                    'Field ',
-                    P,
-                    ` in "having" needs to be provided in "by"`,
-                  ];
+                : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
           }[HavingFields]
         : 'take' extends Prisma.Keys<T>
           ? 'orderBy' extends Prisma.Keys<T>
@@ -1411,11 +1301,8 @@ export interface ConsentDelegate<
                     : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                 }[OrderFields],
   >(
-    args: Prisma.SubsetIntersection<T, ConsentGroupByArgs, OrderByArg> &
-      InputErrors
-  ): {} extends InputErrors
-    ? GetConsentGroupByPayload<T>
-    : Prisma.PrismaPromise<InputErrors>;
+    args: Prisma.SubsetIntersection<T, ConsentGroupByArgs, OrderByArg> & InputErrors
+  ): {} extends InputErrors ? GetConsentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
   /**
    * Fields of the Consent model
    */
@@ -1431,8 +1318,7 @@ export interface ConsentDelegate<
 export interface Prisma__ConsentClient<
   T,
   Null = never,
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: 'PrismaPromise';
@@ -1457,14 +1343,8 @@ export interface Prisma__ConsentClient<
    * @returns A Promise for the completion of which ever callback is executed.
    */
   then<TResult1 = T, TResult2 = never>(
-    onfulfilled?:
-      | ((value: T) => TResult1 | PromiseLike<TResult1>)
-      | undefined
-      | null,
-    onrejected?:
-      | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-      | undefined
-      | null
+    onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
   ): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
   /**
    * Attaches a callback for only the rejection of the Promise.
@@ -1472,10 +1352,7 @@ export interface Prisma__ConsentClient<
    * @returns A Promise for the completion of the callback.
    */
   catch<TResult = never>(
-    onrejected?:
-      | ((reason: any) => TResult | PromiseLike<TResult>)
-      | undefined
-      | null
+    onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
   ): runtime.Types.Utils.JsPromise<T | TResult>;
   /**
    * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
@@ -1483,9 +1360,7 @@ export interface Prisma__ConsentClient<
    * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
    * @returns A Promise for the completion of the callback.
    */
-  finally(
-    onfinally?: (() => void) | undefined | null
-  ): runtime.Types.Utils.JsPromise<T>;
+  finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
 }
 
 /**
@@ -1510,8 +1385,7 @@ export interface ConsentFieldRefs {
  * Consent findUnique
  */
 export type ConsentFindUniqueArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Consent
@@ -1535,8 +1409,7 @@ export type ConsentFindUniqueArgs<
  * Consent findUniqueOrThrow
  */
 export type ConsentFindUniqueOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Consent
@@ -1560,8 +1433,7 @@ export type ConsentFindUniqueOrThrowArgs<
  * Consent findFirst
  */
 export type ConsentFindFirstArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Consent
@@ -1584,9 +1456,7 @@ export type ConsentFindFirstArgs<
    *
    * Determine the order of Consents to fetch.
    */
-  orderBy?:
-    | Prisma.ConsentOrderByWithRelationInput
-    | Prisma.ConsentOrderByWithRelationInput[];
+  orderBy?: Prisma.ConsentOrderByWithRelationInput | Prisma.ConsentOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1617,8 +1487,7 @@ export type ConsentFindFirstArgs<
  * Consent findFirstOrThrow
  */
 export type ConsentFindFirstOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Consent
@@ -1641,9 +1510,7 @@ export type ConsentFindFirstOrThrowArgs<
    *
    * Determine the order of Consents to fetch.
    */
-  orderBy?:
-    | Prisma.ConsentOrderByWithRelationInput
-    | Prisma.ConsentOrderByWithRelationInput[];
+  orderBy?: Prisma.ConsentOrderByWithRelationInput | Prisma.ConsentOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1674,8 +1541,7 @@ export type ConsentFindFirstOrThrowArgs<
  * Consent findMany
  */
 export type ConsentFindManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Consent
@@ -1698,9 +1564,7 @@ export type ConsentFindManyArgs<
    *
    * Determine the order of Consents to fetch.
    */
-  orderBy?:
-    | Prisma.ConsentOrderByWithRelationInput
-    | Prisma.ConsentOrderByWithRelationInput[];
+  orderBy?: Prisma.ConsentOrderByWithRelationInput | Prisma.ConsentOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1726,8 +1590,7 @@ export type ConsentFindManyArgs<
  * Consent create
  */
 export type ConsentCreateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Consent
@@ -1744,18 +1607,14 @@ export type ConsentCreateArgs<
   /**
    * The data needed to create a Consent.
    */
-  data: Prisma.XOR<
-    Prisma.ConsentCreateInput,
-    Prisma.ConsentUncheckedCreateInput
-  >;
+  data: Prisma.XOR<Prisma.ConsentCreateInput, Prisma.ConsentUncheckedCreateInput>;
 };
 
 /**
  * Consent createMany
  */
 export type ConsentCreateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to create many Consents.
@@ -1768,8 +1627,7 @@ export type ConsentCreateManyArgs<
  * Consent createManyAndReturn
  */
 export type ConsentCreateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Consent
@@ -1794,8 +1652,7 @@ export type ConsentCreateManyAndReturnArgs<
  * Consent update
  */
 export type ConsentUpdateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Consent
@@ -1812,10 +1669,7 @@ export type ConsentUpdateArgs<
   /**
    * The data needed to update a Consent.
    */
-  data: Prisma.XOR<
-    Prisma.ConsentUpdateInput,
-    Prisma.ConsentUncheckedUpdateInput
-  >;
+  data: Prisma.XOR<Prisma.ConsentUpdateInput, Prisma.ConsentUncheckedUpdateInput>;
   /**
    * Choose, which Consent to update.
    */
@@ -1826,16 +1680,12 @@ export type ConsentUpdateArgs<
  * Consent updateMany
  */
 export type ConsentUpdateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to update Consents.
    */
-  data: Prisma.XOR<
-    Prisma.ConsentUpdateManyMutationInput,
-    Prisma.ConsentUncheckedUpdateManyInput
-  >;
+  data: Prisma.XOR<Prisma.ConsentUpdateManyMutationInput, Prisma.ConsentUncheckedUpdateManyInput>;
   /**
    * Filter which Consents to update
    */
@@ -1850,8 +1700,7 @@ export type ConsentUpdateManyArgs<
  * Consent updateManyAndReturn
  */
 export type ConsentUpdateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Consent
@@ -1864,10 +1713,7 @@ export type ConsentUpdateManyAndReturnArgs<
   /**
    * The data used to update Consents.
    */
-  data: Prisma.XOR<
-    Prisma.ConsentUpdateManyMutationInput,
-    Prisma.ConsentUncheckedUpdateManyInput
-  >;
+  data: Prisma.XOR<Prisma.ConsentUpdateManyMutationInput, Prisma.ConsentUncheckedUpdateManyInput>;
   /**
    * Filter which Consents to update
    */
@@ -1886,8 +1732,7 @@ export type ConsentUpdateManyAndReturnArgs<
  * Consent upsert
  */
 export type ConsentUpsertArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Consent
@@ -1908,25 +1753,18 @@ export type ConsentUpsertArgs<
   /**
    * In case the Consent found by the `where` argument doesn't exist, create a new Consent with this data.
    */
-  create: Prisma.XOR<
-    Prisma.ConsentCreateInput,
-    Prisma.ConsentUncheckedCreateInput
-  >;
+  create: Prisma.XOR<Prisma.ConsentCreateInput, Prisma.ConsentUncheckedCreateInput>;
   /**
    * In case the Consent was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<
-    Prisma.ConsentUpdateInput,
-    Prisma.ConsentUncheckedUpdateInput
-  >;
+  update: Prisma.XOR<Prisma.ConsentUpdateInput, Prisma.ConsentUncheckedUpdateInput>;
 };
 
 /**
  * Consent delete
  */
 export type ConsentDeleteArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Consent
@@ -1950,8 +1788,7 @@ export type ConsentDeleteArgs<
  * Consent deleteMany
  */
 export type ConsentDeleteManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which Consents to delete
@@ -1967,8 +1804,7 @@ export type ConsentDeleteManyArgs<
  * Consent without action
  */
 export type ConsentDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Consent

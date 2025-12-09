@@ -28,11 +28,7 @@ export function SecurityScore({ user }: SecurityScoreProps) {
 
   return (
     <Card tone="primary">
-      <CardHeader
-        code="0x00"
-        title="SECURITY_SCORE"
-        icon={<Shield className="h-4 w-4" />}
-      />
+      <CardHeader code="0x00" title="SECURITY_SCORE" icon={<Shield className="h-4 w-4" />} />
       <CardContent padding="md">
         <div className="mb-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
@@ -54,10 +50,7 @@ export function SecurityScore({ user }: SecurityScoreProps) {
             </div>
           </div>
           <span
-            className={cn(
-              mode.font,
-              'border-warning/50 text-warning border px-2 py-0.5 text-xs'
-            )}
+            className={cn(mode.font, 'border-warning/50 text-warning border px-2 py-0.5 text-xs')}
           >
             MEDIUM_RISK
           </span>
@@ -77,15 +70,12 @@ export function SecurityScore({ user }: SecurityScoreProps) {
             ) : (
               <XCircle className="text-destructive h-4 w-4" />
             )}
-            <span>
-              TWO_FACTOR_AUTH: {user.twoFactorEnabled ? 'TRUE' : 'FALSE'}
-            </span>
+            <span>TWO_FACTOR_AUTH: {user.twoFactorEnabled ? 'TRUE' : 'FALSE'}</span>
           </div>
           <div className="flex items-center gap-2">
             <CheckCircle2 className="text-success h-4 w-4" />
             <span>
-              PASSWORD_CHANGED: {daysSincePasswordChange}_DAYS_AGO (recommended:
-              every 90 days)
+              PASSWORD_CHANGED: {daysSincePasswordChange}_DAYS_AGO (recommended: every 90 days)
             </span>
           </div>
         </div>

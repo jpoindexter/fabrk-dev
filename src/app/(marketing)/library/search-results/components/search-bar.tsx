@@ -16,18 +16,10 @@ interface SearchBarProps {
   resultsCount: number;
 }
 
-export function SearchBar({
-  searchQuery,
-  onSearchChange,
-  resultsCount,
-}: SearchBarProps) {
+export function SearchBar({ searchQuery, onSearchChange, resultsCount }: SearchBarProps) {
   return (
     <Card>
-      <CardHeader
-        code="0x02"
-        title="SEARCH"
-        icon={<Search className="h-3 w-3" />}
-      />
+      <CardHeader code="0x02" title="SEARCH" icon={<Search className="h-3 w-3" />} />
       <CardContent padding="md">
         <div className="flex gap-2">
           <div className="relative flex-1">
@@ -42,8 +34,7 @@ export function SearchBar({
           <Button className={cn(mode.font, 'text-xs')}>&gt; SEARCH</Button>
         </div>
         <div className={cn(mode.font, 'text-muted-foreground mt-2 text-xs')}>
-          [QUERY]: &quot;{searchQuery}&quot; | RESULTS: {resultsCount} | TIME:
-          0.042s
+          [QUERY]: &quot;{searchQuery}&quot; | RESULTS: {resultsCount} | TIME: 0.042s
         </div>
       </CardContent>
     </Card>

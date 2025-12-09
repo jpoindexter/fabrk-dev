@@ -21,9 +21,7 @@ function HeroDemo() {
           </h2>
           <div className="border-border bg-card mb-6 border p-4">
             <div className="mb-2">[ [0x01] STATUS ]</div>
-            <p className="mb-4">
-              Skip auth, billing, emails. Focus on your product.
-            </p>
+            <p className="mb-4">Skip auth, billing, emails. Focus on your product.</p>
             <div className="flex gap-4">
               <span>
                 <span className="text-muted-foreground">Speed:</span>{' '}
@@ -46,14 +44,11 @@ function HeroDemo() {
         {/* Right Column - Terminal */}
         <div className="border-border bg-card border">
           <div className="border-border flex items-center border-b px-4 py-2">
-            <span className="text-muted-foreground font-mono text-xs">
-              [ TERMINAL ] ~/projects
-            </span>
+            <span className="text-muted-foreground font-mono text-xs">[ TERMINAL ] ~/projects</span>
           </div>
           <div className="p-4">
             <div>
-              <span className="text-success">~</span> git clone
-              https://github.com/you/fabrk
+              <span className="text-success">~</span> git clone https://github.com/you/fabrk
             </div>
             <div className="mt-1">
               Cloning... <span className="text-success">done</span>
@@ -64,8 +59,7 @@ function HeroDemo() {
             <div className="border-success/30 bg-success/10 mt-2 border p-2">
               <div className="text-success">▲ Ready</div>
               <div>
-                Local:{' '}
-                <span className="text-primary">http://localhost:3000</span>
+                Local: <span className="text-primary">http://localhost:3000</span>
               </div>
             </div>
           </div>
@@ -81,9 +75,7 @@ function HeroSplitDemo() {
     <section className="border-border bg-background w-full border">
       <div className="grid lg:grid-cols-2">
         <div className="p-6">
-          <span className="border-border mb-4 inline-block border px-2 py-1">
-            [0x00] LAUNCH
-          </span>
+          <span className="border-border mb-4 inline-block border px-2 py-1">[0x00] LAUNCH</span>
           <h1 className="mb-4 font-mono text-xl font-semibold">
             Ship faster with <span className="text-primary">Fabrk</span>
           </h1>
@@ -142,9 +134,7 @@ export default function LandingPage() {
           preview: (
             <div className="border-border bg-card w-full max-w-md border">
               <div className="border-border flex items-center border-b px-4 py-2">
-                <span className="text-muted-foreground font-mono text-xs">
-                  [ TERMINAL ] bash
-                </span>
+                <span className="text-muted-foreground font-mono text-xs">[ TERMINAL ] bash</span>
               </div>
               <div className="p-4">
                 <div>

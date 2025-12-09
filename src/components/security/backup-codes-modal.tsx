@@ -27,11 +27,7 @@ interface BackupCodesModalProps {
   onRegenerate?: () => Promise<string[]>;
 }
 
-export function BackupCodesModal({
-  open,
-  onOpenChange,
-  onRegenerate,
-}: BackupCodesModalProps) {
+export function BackupCodesModal({ open, onOpenChange, onRegenerate }: BackupCodesModalProps) {
   const [codes, setCodes] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
@@ -54,10 +50,7 @@ export function BackupCodesModal({
       const data = await response.json();
       setCodes(data.backupCodes);
     } catch (error: unknown) {
-      showError(
-        'Error',
-        error instanceof Error ? error.message : 'Failed to fetch backup codes'
-      );
+      showError('Error', error instanceof Error ? error.message : 'Failed to fetch backup codes');
     } finally {
       setIsLoading(false);
     }
@@ -80,9 +73,7 @@ export function BackupCodesModal({
     } catch (error: unknown) {
       showError(
         'Error',
-        error instanceof Error
-          ? error.message
-          : 'Failed to regenerate backup codes'
+        error instanceof Error ? error.message : 'Failed to regenerate backup codes'
       );
     } finally {
       setIsLoading(false);
@@ -141,8 +132,8 @@ export function BackupCodesModal({
         <DialogHeader>
           <DialogTitle>Backup Codes</DialogTitle>
           <DialogDescription>
-            Save these codes in a secure place. Each code can only be used once
-            to access your account if you lose your 2FA device.
+            Save these codes in a secure place. Each code can only be used once to access your
+            account if you lose your 2FA device.
           </DialogDescription>
         </DialogHeader>
 
@@ -154,23 +145,19 @@ export function BackupCodesModal({
                 'border-primary mx-auto mb-4 h-8 w-8 animate-spin border-b-2'
               )}
             ></div>
-            <p className="text-muted-foreground text-sm">
-              Loading backup codes...
-            </p>
+            <p className="text-muted-foreground text-sm">Loading backup codes...</p>
           </div>
         ) : codes.length > 0 ? (
           <div className="space-y-4">
             <Alert>
               <AlertTriangle className="h-4 w-4" />
               <AlertDescription>
-                Store these codes in a secure location. Do not share them with
-                anyone. Each code can only be used once.
+                Store these codes in a secure location. Do not share them with anyone. Each code can
+                only be used once.
               </AlertDescription>
             </Alert>
 
-            <div
-              className={cn(mode.radius, 'bg-muted grid grid-cols-2 gap-4 p-4')}
-            >
+            <div className={cn(mode.radius, 'bg-muted grid grid-cols-2 gap-4 p-4')}>
               {codes.map((code, index) => (
                 <div
                   key={index}
@@ -179,9 +166,7 @@ export function BackupCodesModal({
                     'bg-background border-border flex items-center justify-between border p-4'
                   )}
                 >
-                  <span className={cn(mode.font, 'text-sm font-medium')}>
-                    {code}
-                  </span>
+                  <span className={cn(mode.font, 'text-sm font-medium')}>{code}</span>
                   <Button
                     variant="ghost"
                     size="sm"
@@ -199,19 +184,11 @@ export function BackupCodesModal({
             </div>
 
             <div className="flex gap-2">
-              <Button
-                variant="outline"
-                onClick={handleCopyAll}
-                className="flex-1"
-              >
+              <Button variant="outline" onClick={handleCopyAll} className="flex-1">
                 <Copy className="mr-2 h-4 w-4" />
                 &gt; COPY_ALL
               </Button>
-              <Button
-                variant="outline"
-                onClick={handleDownload}
-                className="flex-1"
-              >
+              <Button variant="outline" onClick={handleDownload} className="flex-1">
                 <Download className="mr-2 h-4 w-4" />
                 &gt; DOWNLOAD
               </Button>
@@ -228,9 +205,7 @@ export function BackupCodesModal({
           </div>
         ) : (
           <div className="py-8 text-center">
-            <p className="text-muted-foreground text-sm">
-              No backup codes available
-            </p>
+            <p className="text-muted-foreground text-sm">No backup codes available</p>
           </div>
         )}
 

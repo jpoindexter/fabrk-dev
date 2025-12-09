@@ -86,12 +86,9 @@ export function DangerZone() {
         </div>
 
         <div className="border-t pt-4">
-          <h3 className={cn(mode.font, 'text-destructive mb-2 text-xs')}>
-            [DELETE_ACCOUNT]:
-          </h3>
+          <h3 className={cn(mode.font, 'text-destructive mb-2 text-xs')}>[DELETE_ACCOUNT]:</h3>
           <p className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-            Permanently delete your account and all associated data. This action
-            cannot be undone.
+            Permanently delete your account and all associated data. This action cannot be undone.
           </p>
           <Button
             variant="destructive"
@@ -107,19 +104,14 @@ export function DangerZone() {
       <AlertDialog open={exportDialogOpen} onOpenChange={setExportDialogOpen}>
         <AlertDialogContent className={cn(mode.radius, 'border-border border')}>
           <AlertDialogHeader>
-            <AlertDialogTitle className={cn(mode.font, 'text-sm')}>
-              [EXPORT_DATA]:
-            </AlertDialogTitle>
+            <AlertDialogTitle className={cn(mode.font, 'text-sm')}>[EXPORT_DATA]:</AlertDialogTitle>
             <AlertDialogDescription className={cn(mode.font, 'text-xs')}>
-              You will receive a download of all your account data in JSON
-              format. This includes your profile, settings, and activity
-              history.
+              You will receive a download of all your account data in JSON format. This includes
+              your profile, settings, and activity history.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <div className="flex justify-end gap-2">
-            <AlertDialogCancel
-              className={cn(mode.radius, mode.font, 'text-xs')}
-            >
+            <AlertDialogCancel className={cn(mode.radius, mode.font, 'text-xs')}>
               &gt; CANCEL
             </AlertDialogCancel>
             <AlertDialogAction
@@ -134,27 +126,19 @@ export function DangerZone() {
       </AlertDialog>
 
       <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
-        <AlertDialogContent
-          className={cn('max-w-md', mode.radius, 'border-destructive border')}
-        >
+        <AlertDialogContent className={cn('max-w-md', mode.radius, 'border-destructive border')}>
           <AlertDialogHeader>
-            <AlertDialogTitle
-              className={cn(mode.font, 'text-destructive text-sm')}
-            >
+            <AlertDialogTitle className={cn(mode.font, 'text-destructive text-sm')}>
               [DELETE_ACCOUNT]:
             </AlertDialogTitle>
             <AlertDialogDescription className={cn(mode.font, 'text-xs')}>
-              This action cannot be undone. Your account and all data will be
-              permanently deleted.
+              This action cannot be undone. Your account and all data will be permanently deleted.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <div className="my-4 space-y-4">
             <div>
               <p className={cn('text-xs', mode.font, 'mb-2')}>
-                Type{' '}
-                <span className={cn(mode.font, 'bg-muted px-2 py-1')}>
-                  delete my account
-                </span>{' '}
+                Type <span className={cn(mode.font, 'bg-muted px-2 py-1')}>delete my account</span>{' '}
                 to confirm:
               </p>
               <Input
@@ -167,9 +151,7 @@ export function DangerZone() {
             </div>
           </div>
           <div className="flex justify-end gap-2">
-            <AlertDialogCancel
-              className={cn(mode.radius, mode.font, 'text-xs')}
-            >
+            <AlertDialogCancel className={cn(mode.radius, mode.font, 'text-xs')}>
               &gt; CANCEL
             </AlertDialogCancel>
             <AlertDialogAction

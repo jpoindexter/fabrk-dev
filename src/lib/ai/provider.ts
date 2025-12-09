@@ -12,8 +12,7 @@ import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
 export type AIProvider = 'openai' | 'google' | 'ollama';
 
 // Default Ollama settings
-const OLLAMA_BASE_URL =
-  process.env.OLLAMA_BASE_URL || 'http://localhost:11434/v1';
+const OLLAMA_BASE_URL = process.env.OLLAMA_BASE_URL || 'http://localhost:11434/v1';
 const OLLAMA_MODEL = process.env.OLLAMA_MODEL || 'llama3.1:8b';
 
 // Get the configured provider based on available API keys

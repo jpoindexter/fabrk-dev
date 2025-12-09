@@ -1,10 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import {
-  NotificationList,
-  Notification,
-} from '@/components/ui/notification-list';
+import { NotificationList, Notification } from '@/components/ui/notification-list';
 import { useState } from 'react';
 
 const sampleNotifications: Notification[] = [
@@ -43,13 +40,10 @@ const sampleNotifications: Notification[] = [
 ];
 
 export default function NotificationListPage() {
-  const [notifications, setNotifications] =
-    useState<Notification[]>(sampleNotifications);
+  const [notifications, setNotifications] = useState<Notification[]>(sampleNotifications);
 
   const handleMarkAsRead = (id: string) => {
-    setNotifications((prev) =>
-      prev.map((n) => (n.id === id ? { ...n, read: true } : n))
-    );
+    setNotifications((prev) => prev.map((n) => (n.id === id ? { ...n, read: true } : n)));
   };
 
   const handleDismiss = (id: string) => {
@@ -218,14 +212,11 @@ export default function NotificationListPage() {
         },
         {
           title: 'Read vs Unread',
-          description:
-            'Visual distinction between read and unread notifications',
+          description: 'Visual distinction between read and unread notifications',
           preview: (
             <div className="w-full max-w-md space-y-4">
               <div>
-                <div className="text-muted-foreground mb-2 font-mono text-xs">
-                  [UNREAD]
-                </div>
+                <div className="text-muted-foreground mb-2 font-mono text-xs">[UNREAD]</div>
                 <NotificationList
                   notifications={[
                     {
@@ -239,9 +230,7 @@ export default function NotificationListPage() {
                 />
               </div>
               <div>
-                <div className="text-muted-foreground mb-2 font-mono text-xs">
-                  [READ]
-                </div>
+                <div className="text-muted-foreground mb-2 font-mono text-xs">[READ]</div>
                 <NotificationList
                   notifications={[
                     {
@@ -317,8 +306,7 @@ export default function NotificationListPage() {
         {
           name: 'onMarkAsRead',
           type: '(id: string) => void',
-          description:
-            'Callback when a notification is clicked or marked as read',
+          description: 'Callback when a notification is clicked or marked as read',
         },
         {
           name: 'onDismiss',

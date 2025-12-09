@@ -29,12 +29,8 @@ export function SectionHeader({
         <Icon className="text-primary h-5 w-5" />
       </div>
       <div>
-        <h2 className={cn(mode.font, 'text-muted-foreground text-xs')}>
-          [{title}]:
-        </h2>
-        <p className={cn(mode.font, 'text-muted-foreground text-xs')}>
-          {description}
-        </p>
+        <h2 className={cn(mode.font, 'text-muted-foreground text-xs')}>[{title}]:</h2>
+        <p className={cn(mode.font, 'text-muted-foreground text-xs')}>{description}</p>
       </div>
     </div>
   );

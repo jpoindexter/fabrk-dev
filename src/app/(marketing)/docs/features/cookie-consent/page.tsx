@@ -1,12 +1,7 @@
 'use client';
 
 import { FeatureGuideTemplate } from '@/components/docs';
-import {
-  DocsSection,
-  DocsCard,
-  DocsLinkCard,
-  DocsPreview,
-} from '@/components/docs';
+import { DocsSection, DocsCard, DocsLinkCard, DocsPreview } from '@/components/docs';
 import { CardHeader } from '@/components/ui/card';
 import { Cookie, Shield, Settings, Download } from 'lucide-react';
 import { useState } from 'react';
@@ -28,14 +23,11 @@ function CookieConsentDemo() {
       <div className="space-y-4 p-4">
         <div className="flex items-center gap-2">
           <Cookie className="text-primary h-4 w-4" />
-          <span className="font-mono text-xs font-semibold">
-            [COOKIE_PREFERENCES]
-          </span>
+          <span className="font-mono text-xs font-semibold">[COOKIE_PREFERENCES]</span>
         </div>
 
         <p className="text-muted-foreground font-mono text-xs">
-          &gt; We use cookies to enhance your experience. Select your
-          preferences:
+          &gt; We use cookies to enhance your experience. Select your preferences:
         </p>
 
         <div className="space-y-2">
@@ -65,9 +57,7 @@ function CookieConsentDemo() {
                 } ${item.locked ? 'cursor-not-allowed opacity-50' : 'hover:border-primary cursor-pointer'}`}
                 disabled={item.locked}
               >
-                {preferences[item.key as keyof typeof preferences]
-                  ? '[ON]'
-                  : '[OFF]'}
+                {preferences[item.key as keyof typeof preferences] ? '[ON]' : '[OFF]'}
               </button>
             </div>
           ))}
@@ -116,15 +106,13 @@ export default function CookieConsentPage() {
         {
           icon: Download,
           title: 'Data Export',
-          description:
-            "Built-in 'Download My Data' button for GDPR right to access compliance.",
+          description: "Built-in 'Download My Data' button for GDPR right to access compliance.",
         },
       ]}
       setup={[
         {
           title: 'Already Included',
-          description:
-            'The cookie consent component is already in your layout. No setup required!',
+          description: 'The cookie consent component is already in your layout. No setup required!',
           code: `// Already in src/app/layout.tsx
 import { CookieConsent } from "@/components/cookie-consent";
 import { CardHeader } from "@/components/ui/card";
@@ -145,8 +133,7 @@ export default function RootLayout({ children }) {
       usage={[
         {
           title: 'Google Tag Manager Integration',
-          description:
-            'The component automatically integrates with Google Consent Mode v2',
+          description: 'The component automatically integrates with Google Consent Mode v2',
           code: `// Automatically called when user saves preferences
 gtag("consent", "update", {
   ad_storage: marketing ? "granted" : "denied",
@@ -166,8 +153,7 @@ dataLayer.push({
         },
         {
           title: 'Add/Remove Cookie Categories',
-          description:
-            'Edit the categories in src/components/cookie-consent-tabs.tsx',
+          description: 'Edit the categories in src/components/cookie-consent-tabs.tsx',
           code: `// In DetailsTabContent function
 const categories: CookieCategory[] = [
   {
@@ -229,9 +215,8 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               First Visit
             </div>
             <p className="mb-6">
-              New visitors see a &quot;Cookie Settings&quot; button in the
-              bottom-right corner. All non-essential cookies are blocked until
-              they make a choice.
+              New visitors see a &quot;Cookie Settings&quot; button in the bottom-right corner. All
+              non-essential cookies are blocked until they make a choice.
             </p>
           </DocsCard>
           <DocsCard title="STEP_02">
@@ -242,9 +227,8 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               User Makes Choice
             </div>
             <p className="mb-6">
-              Clicking the button opens a modal with three tabs: Consent (quick
-              toggles), Details (see exactly which cookies), and About (their
-              privacy rights).
+              Clicking the button opens a modal with three tabs: Consent (quick toggles), Details
+              (see exactly which cookies), and About (their privacy rights).
             </p>
           </DocsCard>
           <DocsCard title="STEP_03">
@@ -255,9 +239,8 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               Choice Saved
             </div>
             <p className="mb-6">
-              Their preference is stored in localStorage for 1 year. Google
-              Consent Mode is updated automatically, enabling/disabling
-              analytics and ads accordingly.
+              Their preference is stored in localStorage for 1 year. Google Consent Mode is updated
+              automatically, enabling/disabling analytics and ads accordingly.
             </p>
           </DocsCard>
           <DocsCard title="STEP_04">
@@ -268,8 +251,8 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               Return Visits
             </div>
             <p className="mb-6">
-              The banner doesn&apos;t show again (unless they clear storage).
-              Their saved preferences are applied immediately on page load.
+              The banner doesn&apos;t show again (unless they clear storage). Their saved
+              preferences are applied immediately on page load.
             </p>
           </DocsCard>
         </div>
@@ -284,8 +267,8 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               <div>
                 <p className="font-medium">Necessary (Always On)</p>
                 <p className="mb-6">
-                  Essential for the site to work. Includes session cookies and
-                  consent storage. Cannot be disabled.
+                  Essential for the site to work. Includes session cookies and consent storage.
+                  Cannot be disabled.
                 </p>
               </div>
             </div>
@@ -294,8 +277,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               <div>
                 <p className="font-medium">Preferences</p>
                 <p className="mb-6">
-                  Remember settings like theme (dark/light) and language. Off by
-                  default.
+                  Remember settings like theme (dark/light) and language. Off by default.
                 </p>
               </div>
             </div>
@@ -304,8 +286,8 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               <div>
                 <p className="font-medium">Statistics</p>
                 <p className="mb-6">
-                  Google Analytics and similar tools. Helps you understand how
-                  people use your app. Off by default.
+                  Google Analytics and similar tools. Helps you understand how people use your app.
+                  Off by default.
                 </p>
               </div>
             </div>
@@ -314,8 +296,8 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               <div>
                 <p className="font-medium">Marketing</p>
                 <p className="mb-6">
-                  Facebook Pixel, Google Ads conversion tracking. Used for
-                  targeted advertising. Off by default.
+                  Facebook Pixel, Google Ads conversion tracking. Used for targeted advertising. Off
+                  by default.
                 </p>
               </div>
             </div>
@@ -332,10 +314,9 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
               <p className="mb-6">
-                Technically no, but it&apos;s good practice. California (CCPA),
-                Brazil (LGPD), and other regions have similar requirements.
-                Plus, Google requires Consent Mode v2 for personalized ads even
-                in the US.
+                Technically no, but it&apos;s good practice. California (CCPA), Brazil (LGPD), and
+                other regions have similar requirements. Plus, Google requires Consent Mode v2 for
+                personalized ads even in the US.
               </p>
             </div>
           </details>
@@ -346,10 +327,9 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
               <p className="mb-6">
-                As of March 2024, Google requires Consent Mode v2 for any site
-                that uses Google Ads remarketing or audience features. Without
-                it, your ads may not work properly and you could lose audience
-                data.
+                As of March 2024, Google requires Consent Mode v2 for any site that uses Google Ads
+                remarketing or audience features. Without it, your ads may not work properly and you
+                could lose audience data.
               </p>
             </div>
           </details>
@@ -360,18 +340,11 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
               <p className="mb-6">
-                Yes! In{' '}
-                <code className="bg-muted px-1 font-mono">
-                  cookie-consent.tsx
-                </code>
-                , find the button element and change the Tailwind classes.
-                It&apos;s currently{' '}
-                <code className="bg-muted px-1 font-mono">
-                  bottom-6 right-6
-                </code>
-                . Change to{' '}
-                <code className="bg-muted px-1 font-mono">bottom-6 left-6</code>{' '}
-                for bottom-left, etc.
+                Yes! In <code className="bg-muted px-1 font-mono">cookie-consent.tsx</code>, find
+                the button element and change the Tailwind classes. It&apos;s currently{' '}
+                <code className="bg-muted px-1 font-mono">bottom-6 right-6</code>. Change to{' '}
+                <code className="bg-muted px-1 font-mono">bottom-6 left-6</code> for bottom-left,
+                etc.
               </p>
             </div>
           </details>
@@ -382,9 +355,8 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
               <p className="mb-6">
-                All non-essential cookies remain blocked. The button stays
-                visible on every page until they interact with it. This is the
-                GDPR-compliant default.
+                All non-essential cookies remain blocked. The button stays visible on every page
+                until they interact with it. This is the GDPR-compliant default.
               </p>
             </div>
           </details>
@@ -397,14 +369,8 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
           Manual Testing
           <ol className="list-inside list-decimal space-y-2">
             <li>Open your app in a private/incognito window</li>
-            <li>
-              You should see the &quot;Cookie Settings&quot; button
-              (bottom-right)
-            </li>
-            <li>
-              Click it and test each action: Accept All, Reject All, Accept
-              Selected
-            </li>
+            <li>You should see the &quot;Cookie Settings&quot; button (bottom-right)</li>
+            <li>Click it and test each action: Accept All, Reject All, Accept Selected</li>
             <li>Refresh the page - banner should not reappear</li>
             <li>
               Open DevTools → Application → Local Storage → look for{' '}
@@ -415,15 +381,10 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
           <ol className="list-inside list-decimal space-y-2">
             <li>Open DevTools → Console</li>
             <li>
-              Type <code className="bg-muted px-1 font-mono">dataLayer</code>{' '}
-              and press Enter
+              Type <code className="bg-muted px-1 font-mono">dataLayer</code> and press Enter
             </li>
             <li>
-              Look for{' '}
-              <code className="bg-muted px-1 font-mono">
-                cookie_consent_update
-              </code>{' '}
-              events
+              Look for <code className="bg-muted px-1 font-mono">cookie_consent_update</code> events
             </li>
             <li>Check that consent states match your selections</li>
           </ol>

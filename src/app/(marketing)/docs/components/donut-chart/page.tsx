@@ -1,11 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import {
-  DonutChart,
-  MetricDonutChart,
-  ProgressDonutChart,
-} from '@/components/ui/donut-chart';
+import { DonutChart, MetricDonutChart, ProgressDonutChart } from '@/components/ui/donut-chart';
 import { useState } from 'react';
 
 export default function DonutChartPage() {
@@ -37,14 +33,7 @@ export default function DonutChartPage() {
       description="A circular chart component for displaying proportional data with optional center content and interactive segments."
       importCode={`import { DonutChart, MetricDonutChart, ProgressDonutChart } from "@/components/ui/donut-chart";`}
       mainPreview={{
-        preview: (
-          <DonutChart
-            data={categoryData}
-            size={300}
-            thickness={60}
-            showLegend={true}
-          />
-        ),
+        preview: <DonutChart data={categoryData} size={300} thickness={60} showLegend={true} />,
         code: `<DonutChart
   data={[
     { label: "Design", value: 35, color: "oklch(70% 0.15 295)" },
@@ -140,9 +129,7 @@ export default function DonutChartPage() {
                 }}
               />
               {selectedSegment && (
-                <div className="text-muted-foreground text-sm">
-                  Selected: {selectedSegment}
-                </div>
+                <div className="text-muted-foreground text-sm">Selected: {selectedSegment}</div>
               )}
             </div>
           ),

@@ -3,15 +3,7 @@
  */
 
 import { ColumnDef } from '@tanstack/react-table';
-import {
-  MoreHorizontal,
-  Trash2,
-  UserCog,
-  UserX,
-  Shield,
-  User,
-  Users,
-} from 'lucide-react';
+import { MoreHorizontal, Trash2, UserCog, UserX, Shield, User, Users } from 'lucide-react';
 
 import { Checkbox } from '@/components/ui/checkbox';
 import {
@@ -51,9 +43,7 @@ export const columns: ColumnDef<UserType>[] = [
   },
   {
     accessorKey: 'name',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Name" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Name" />,
     cell: ({ row }) => (
       <div className="flex items-center gap-4">
         <div
@@ -68,17 +58,13 @@ export const columns: ColumnDef<UserType>[] = [
             .map((n) => n[0])
             .join('')}
         </div>
-        <span className={cn(mode.radius, mode.font, 'text-xs')}>
-          {row.getValue('name')}
-        </span>
+        <span className={cn(mode.radius, mode.font, 'text-xs')}>{row.getValue('name')}</span>
       </div>
     ),
   },
   {
     accessorKey: 'email',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Email" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Email" />,
     cell: ({ row }) => (
       <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
         {row.getValue('email')}
@@ -87,9 +73,7 @@ export const columns: ColumnDef<UserType>[] = [
   },
   {
     accessorKey: 'role',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Role" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Role" />,
     cell: ({ row }) => {
       const role = row.getValue<string>('role');
       const roleColors: Record<string, string> = {
@@ -97,8 +81,7 @@ export const columns: ColumnDef<UserType>[] = [
         USER: 'text-foreground border-border',
         GUEST: 'text-muted-foreground border-border',
       };
-      const RoleIcon =
-        role === 'ADMIN' ? Shield : role === 'USER' ? User : Users;
+      const RoleIcon = role === 'ADMIN' ? Shield : role === 'USER' ? User : Users;
       return (
         <span
           className={`inline-flex items-center gap-1 border px-2 py-0.5 font-mono text-xs ${roleColors[role]}`}
@@ -111,9 +94,7 @@ export const columns: ColumnDef<UserType>[] = [
   },
   {
     accessorKey: 'status',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Status" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Status" />,
     cell: ({ row }) => {
       const status = row.getValue<string>('status');
       const statusColors: Record<string, string> = {
@@ -131,9 +112,7 @@ export const columns: ColumnDef<UserType>[] = [
   },
   {
     accessorKey: 'plan',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Plan" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Plan" />,
     cell: ({ row }) => {
       const plan = row.getValue<string>('plan');
       const planColors: Record<string, string> = {
@@ -142,9 +121,7 @@ export const columns: ColumnDef<UserType>[] = [
         Free: 'text-muted-foreground border-border',
       };
       return (
-        <span
-          className={`border px-2 py-0.5 font-mono text-xs ${planColors[plan]}`}
-        >
+        <span className={`border px-2 py-0.5 font-mono text-xs ${planColors[plan]}`}>
           {plan.toUpperCase()}
         </span>
       );
@@ -152,9 +129,7 @@ export const columns: ColumnDef<UserType>[] = [
   },
   {
     accessorKey: 'createdAt',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Created" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Created" />,
     cell: ({ row }) => (
       <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
         {new Date(row.getValue('createdAt')).toLocaleDateString()}
@@ -163,9 +138,7 @@ export const columns: ColumnDef<UserType>[] = [
   },
   {
     accessorKey: 'lastLogin',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Last Login" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Last Login" />,
     cell: ({ row }) => (
       <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
         {row.getValue('lastLogin')}
@@ -188,18 +161,10 @@ export const columns: ColumnDef<UserType>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align="end"
-            className={cn(
-              mode.radius,
-              mode.font,
-              'border-border border text-xs'
-            )}
+            className={cn(mode.radius, mode.font, 'border-border border text-xs')}
           >
-            <DropdownMenuLabel className="text-muted-foreground">
-              [ACTIONS]
-            </DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(user.id)}
-            >
+            <DropdownMenuLabel className="text-muted-foreground">[ACTIONS]</DropdownMenuLabel>
+            <DropdownMenuItem onClick={() => navigator.clipboard.writeText(user.id)}>
               &gt; COPY_ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />

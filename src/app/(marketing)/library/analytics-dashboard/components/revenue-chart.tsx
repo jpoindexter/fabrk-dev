@@ -18,9 +18,7 @@ interface RevenueChartProps {
 }
 
 export function RevenueChart({ data }: RevenueChartProps) {
-  const avgRevenue = Math.round(
-    data.reduce((sum, d) => sum + d.revenue, 0) / data.length
-  );
+  const avgRevenue = Math.round(data.reduce((sum, d) => sum + d.revenue, 0) / data.length);
   const maxRevenue = Math.max(...data.map((d) => d.revenue));
   const growthRate = (
     ((data[data.length - 1].revenue - data[0].revenue) / data[0].revenue) *
@@ -53,10 +51,7 @@ export function RevenueChart({ data }: RevenueChartProps) {
           {/* Chart area */}
           <div className="border-border flex h-[200px] items-end justify-between gap-2 border-b border-l">
             {data.map((dataPoint, i) => (
-              <div
-                key={i}
-                className="flex h-full flex-1 items-end justify-center"
-              >
+              <div key={i} className="flex h-full flex-1 items-end justify-center">
                 <div
                   className="bg-primary hover:bg-primary/80 w-full max-w-12 transition-colors"
                   style={{
@@ -72,10 +67,7 @@ export function RevenueChart({ data }: RevenueChartProps) {
             {data.map((dataPoint, i) => (
               <div
                 key={i}
-                className={cn(
-                  mode.font,
-                  'text-muted-foreground flex-1 text-center text-xs'
-                )}
+                className={cn(mode.font, 'text-muted-foreground flex-1 text-center text-xs')}
               >
                 {dataPoint.month}
               </div>
@@ -92,15 +84,11 @@ export function RevenueChart({ data }: RevenueChartProps) {
         >
           <div>
             <span className="text-muted-foreground">[AVG]:</span>{' '}
-            <span className="text-foreground">
-              ${avgRevenue.toLocaleString()}
-            </span>
+            <span className="text-foreground">${avgRevenue.toLocaleString()}</span>
           </div>
           <div>
             <span className="text-muted-foreground">[MAX]:</span>{' '}
-            <span className="text-foreground">
-              ${maxRevenue.toLocaleString()}
-            </span>
+            <span className="text-foreground">${maxRevenue.toLocaleString()}</span>
           </div>
           <div>
             <span className="text-muted-foreground">[GROWTH]:</span>{' '}

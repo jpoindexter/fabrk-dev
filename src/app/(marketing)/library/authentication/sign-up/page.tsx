@@ -7,12 +7,7 @@
 import Link from 'next/link';
 import { Github, UserPlus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  TemplatePageHeader,
-} from '@/components/ui/card';
+import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -168,9 +163,7 @@ function SignUpPreview() {
           <div className="border-border bg-card mx-auto mb-2 flex h-10 w-10 items-center justify-center border">
             <UserPlus className="text-primary h-5 w-5" />
           </div>
-          <h1
-            className={cn(mode.font, 'text-2xl font-semibold tracking-tight')}
-          >
+          <h1 className={cn(mode.font, 'text-2xl font-semibold tracking-tight')}>
             Create an account
           </h1>
           <p className="text-muted-foreground text-sm">
@@ -183,10 +176,7 @@ function SignUpPreview() {
           <form className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label
-                  htmlFor="first-name"
-                  className={cn(mode.font, 'text-xs')}
-                >
+                <Label htmlFor="first-name" className={cn(mode.font, 'text-xs')}>
                   [FIRST_NAME]:
                 </Label>
                 <Input
@@ -262,10 +252,7 @@ function SignUpPreview() {
               </Label>
             </div>
 
-            <Button
-              className={cn(mode.radius, mode.font, 'w-full text-xs')}
-              type="submit"
-            >
+            <Button className={cn(mode.radius, mode.font, 'w-full text-xs')} type="submit">
               &gt; CREATE_ACCOUNT
             </Button>
           </form>
@@ -275,24 +262,16 @@ function SignUpPreview() {
               <span className="border-border w-full border-t" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background text-muted-foreground px-2">
-                Or sign up with
-              </span>
+              <span className="bg-background text-muted-foreground px-2">Or sign up with</span>
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <Button
-              variant="outline"
-              className={cn(mode.radius, mode.font, 'text-xs')}
-            >
+            <Button variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
               <Github className="mr-2 h-4 w-4" />
               GitHub
             </Button>
-            <Button
-              variant="outline"
-              className={cn(mode.radius, mode.font, 'text-xs')}
-            >
+            <Button variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
               {/* eslint-disable design-system/no-hardcoded-colors -- Google brand colors are intentional */}
               <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
                 <path
@@ -392,11 +371,7 @@ export default function SignUpTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock
-                  code={templateCode}
-                  language="tsx"
-                  maxHeight="600px"
-                />
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
             </Card>
           </TabsContent>
@@ -413,9 +388,7 @@ export default function SignUpTemplate() {
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">(auth)/</span>
                   <span className="text-foreground">sign-up/page.tsx</span>
-                  <span className="text-muted-foreground ml-4">
-                    ← Copy template here
-                  </span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
                 </div>
               </div>
             </div>
@@ -428,27 +401,22 @@ export default function SignUpTemplate() {
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> Multi-field
-                registration form
+                <span className="text-success">&gt;</span> Multi-field registration form
               </div>
               <div>
-                <span className="text-success">&gt;</span> Terms of Service
-                checkbox
+                <span className="text-success">&gt;</span> Terms of Service checkbox
               </div>
               <div>
-                <span className="text-success">&gt;</span> Social sign-up
-                (GitHub, Google)
+                <span className="text-success">&gt;</span> Social sign-up (GitHub, Google)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Password requirements
-                hint
+                <span className="text-success">&gt;</span> Password requirements hint
               </div>
               <div>
                 <span className="text-success">&gt;</span> Link to sign in page
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant
-                (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

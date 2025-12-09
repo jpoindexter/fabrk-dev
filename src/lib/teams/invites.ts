@@ -44,10 +44,7 @@ export async function inviteToOrganization(data: {
   });
 
   if (existingUser) {
-    const isMember = await isOrganizationMember(
-      existingUser.id,
-      data.organizationId
-    );
+    const isMember = await isOrganizationMember(existingUser.id, data.organizationId);
 
     if (isMember) {
       throw new Error('User is already a member of this organization');

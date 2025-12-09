@@ -37,11 +37,7 @@ const rolePermissions = [
 export function RolePermissions() {
   return (
     <Card size="auto">
-      <CardHeader
-        code="0x04"
-        title="PERMISSIONS"
-        icon={<Shield className="h-4 w-4" />}
-      />
+      <CardHeader code="0x04" title="PERMISSIONS" icon={<Shield className="h-4 w-4" />} />
       <CardContent>
         <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
           [ROLE_PERMISSIONS]:
@@ -53,9 +49,7 @@ export function RolePermissions() {
               <div key={item.role}>
                 <div className="mb-1 flex items-center gap-2">
                   <RoleIcon className="text-primary h-3 w-3" />
-                  <span className="font-semibold">
-                    {item.role.toUpperCase()}
-                  </span>
+                  <span className="font-semibold">{item.role.toUpperCase()}</span>
                 </div>
                 <div className="text-muted-foreground ml-4 space-y-0.5">
                   {item.permissions.map((perm, idx) => (

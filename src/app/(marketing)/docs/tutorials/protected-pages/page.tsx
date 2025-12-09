@@ -167,8 +167,8 @@ export function NavBar() {
       <DocsSection title="Auto-Protected Routes">
         <DocsCard title="PROTECTED_ROUTES">
           <p className="mb-4">
-            Fabrk protects these routes via middleware. Unauthenticated users
-            are automatically redirected to the home page:
+            Fabrk protects these routes via middleware. Unauthenticated users are automatically
+            redirected to the home page:
           </p>
           <div className="space-y-1">
             <div>
@@ -192,16 +192,13 @@ export function NavBar() {
         <DocsCard title="USER_ROLES">
           <div className="space-y-1">
             <div>
-              ├─ <code className="bg-muted px-1">USER</code> - Default role for
-              all users
+              ├─ <code className="bg-muted px-1">USER</code> - Default role for all users
             </div>
             <div>
-              ├─ <code className="bg-muted px-1">ADMIN</code> - Administrative
-              access
+              ├─ <code className="bg-muted px-1">ADMIN</code> - Administrative access
             </div>
             <div>
-              └─ <code className="bg-muted px-1">SUPER_ADMIN</code> - Full
-              system access
+              └─ <code className="bg-muted px-1">SUPER_ADMIN</code> - Full system access
             </div>
           </div>
         </DocsCard>

@@ -30,9 +30,7 @@ function FAQDemo() {
         <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 font-mono text-xs">
           [ [0x50] KNOWLEDGE_BASE ] FAQ
         </span>
-        <h2 className="mt-4 font-mono text-xl font-semibold">
-          FREQUENTLY_ASKED_QUESTIONS
-        </h2>
+        <h2 className="mt-4 font-mono text-xl font-semibold">FREQUENTLY_ASKED_QUESTIONS</h2>
       </div>
       <div className="space-y-2">
         {faqs.map((faq, i) => (
@@ -47,17 +45,12 @@ function FAQDemo() {
                 <span className="ml-2">{faq.q}</span>
               </span>
               <ChevronDown
-                className={cn(
-                  'h-4 w-4 transition-transform',
-                  openIndex === i && 'rotate-180'
-                )}
+                className={cn('h-4 w-4 transition-transform', openIndex === i && 'rotate-180')}
               />
             </button>
             {openIndex === i && (
               <div className="border-border bg-muted/30 border-t p-4">
-                <span className="text-muted-foreground font-mono text-xs">
-                  └─ [RESPONSE]:{' '}
-                </span>
+                <span className="text-muted-foreground font-mono text-xs">└─ [RESPONSE]: </span>
                 <span className="font-mono text-xs">{faq.a}</span>
               </div>
             )}
@@ -75,9 +68,7 @@ function FAQCategoriesDemo() {
 
   return (
     <div className="border-border bg-background w-full border p-4">
-      <div className="text-muted-foreground mb-4 font-mono text-xs">
-        [ CATEGORIES ]
-      </div>
+      <div className="text-muted-foreground mb-4 font-mono text-xs">[ CATEGORIES ]</div>
       <div className="flex flex-wrap gap-2">
         {categories.map((cat) => (
           <button
@@ -155,9 +146,7 @@ const categories = ["GENERAL", "TECHNICAL", "PAYMENT", "LICENSE"];
                 <span className="font-mono text-sm">
                   <span className="text-primary">├─</span>
                   <span className="text-muted-foreground ml-2">[QUERY]:</span>
-                  <span className="ml-2">
-                    What payment methods do you accept?
-                  </span>
+                  <span className="ml-2">What payment methods do you accept?</span>
                 </span>
                 <ChevronDown className="h-4 w-4" />
               </button>

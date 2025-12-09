@@ -48,9 +48,9 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
     },
     ref
   ) => {
-    const [uncontrolledValue, setUncontrolledValue] = React.useState<
-      number | undefined
-    >(defaultValue);
+    const [uncontrolledValue, setUncontrolledValue] = React.useState<number | undefined>(
+      defaultValue
+    );
     const value = controlledValue ?? uncontrolledValue;
 
     const updateValue = (newValue: number | undefined) => {
@@ -114,10 +114,7 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
     };
 
     return (
-      <div
-        data-slot="input-number"
-        className={cn('relative inline-flex', className)}
-      >
+      <div data-slot="input-number" className={cn('relative inline-flex', className)}>
         <Input
           ref={ref}
           type="number"
@@ -143,10 +140,7 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
               size="icon"
               className={cn('h-4 w-6 p-0', isSharpMode() && 'rounded-b-none')}
               onClick={increment}
-              disabled={
-                disabled ||
-                (max !== undefined && value !== undefined && value >= max)
-              }
+              disabled={disabled || (max !== undefined && value !== undefined && value >= max)}
               tabIndex={-1}
               aria-label="Increment value"
             >
@@ -158,10 +152,7 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
               size="icon"
               className={cn('h-4 w-6 p-0', isSharpMode() && 'rounded-t-none')}
               onClick={decrement}
-              disabled={
-                disabled ||
-                (min !== undefined && value !== undefined && value <= min)
-              }
+              disabled={disabled || (min !== undefined && value !== undefined && value <= min)}
               tabIndex={-1}
               aria-label="Decrement value"
             >

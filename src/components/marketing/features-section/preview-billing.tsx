@@ -96,9 +96,7 @@ export function BillingPreview() {
             <span className={cn(mode.font, 'block text-lg font-semibold')}>
               <BillingCounter value={29} prefix="$" delay={0.5} />
             </span>
-            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-              /month
-            </span>
+            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>/month</span>
           </div>
         </motion.div>
 

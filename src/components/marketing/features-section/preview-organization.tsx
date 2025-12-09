@@ -37,9 +37,7 @@ export function OrganizationPreview() {
 
       <CardContent padding="lg">
         <div className="mb-4 flex items-center justify-between">
-          <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-            [ORGANIZATIONS]:
-          </span>
+          <span className={cn(mode.font, 'text-muted-foreground text-xs')}>[ORGANIZATIONS]:</span>
           <button
             className={cn(
               mode.radius,
@@ -64,11 +62,7 @@ export function OrganizationPreview() {
               <Building2 className="text-muted-foreground size-4" />
               <div>
                 <span className={cn(mode.font, 'block text-xs')}>ACME_INC</span>
-                <span
-                  className={cn(mode.font, 'text-muted-foreground text-xs')}
-                >
-                  12 members
-                </span>
+                <span className={cn(mode.font, 'text-muted-foreground text-xs')}>12 members</span>
               </div>
             </div>
             <span className={cn(mode.font, 'text-success text-xs')}>OWNER</span>
@@ -87,14 +81,8 @@ export function OrganizationPreview() {
             <div className="flex items-center gap-4">
               <Building2 className="text-muted-foreground size-4" />
               <div>
-                <span className={cn(mode.font, 'block text-xs')}>
-                  STARTUP_CO
-                </span>
-                <span
-                  className={cn(mode.font, 'text-muted-foreground text-xs')}
-                >
-                  5 members
-                </span>
+                <span className={cn(mode.font, 'block text-xs')}>STARTUP_CO</span>
+                <span className={cn(mode.font, 'text-muted-foreground text-xs')}>5 members</span>
               </div>
             </div>
             <span className={cn(mode.font, 'text-success text-xs')}>ADMIN</span>
@@ -102,12 +90,7 @@ export function OrganizationPreview() {
         </div>
 
         <div className="border-border mt-4 border-t pt-4">
-          <span
-            className={cn(
-              mode.font,
-              'text-muted-foreground mb-2 block text-xs'
-            )}
-          >
+          <span className={cn(mode.font, 'text-muted-foreground mb-2 block text-xs')}>
             [ROLES]:
           </span>
           <div className="flex flex-wrap gap-2">

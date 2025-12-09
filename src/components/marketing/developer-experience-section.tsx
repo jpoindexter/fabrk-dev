@@ -19,8 +19,7 @@ export function DeveloperExperienceSection() {
     {
       iconComponent: 'folder',
       title: 'Path Aliases',
-      description:
-        'Clean imports with @/components, @/lib, @/utils. No more ../../../ hell.',
+      description: 'Clean imports with @/components, @/lib, @/utils. No more ../../../ hell.',
     },
     {
       iconComponent: 'zap',
@@ -49,8 +48,7 @@ export function DeveloperExperienceSection() {
     {
       iconComponent: 'terminal',
       title: 'Developer Commands',
-      description:
-        'npm run dev:restart kills port conflicts. Prisma Studio for database GUI.',
+      description: 'npm run dev:restart kills port conflicts. Prisma Studio for database GUI.',
     },
     {
       icon: siTypescript.path,
@@ -62,10 +60,7 @@ export function DeveloperExperienceSection() {
 
   return (
     <section
-      className={cn(
-        'border-border bg-background scroll-mt-16 border-t px-6 py-24',
-        mode.font
-      )}
+      className={cn('border-border bg-background scroll-mt-16 border-t px-6 py-24', mode.font)}
     >
       <div className="mx-auto max-w-7xl">
         <div className="mb-4 text-center">
@@ -97,8 +92,7 @@ export function DeveloperExperienceSection() {
           viewport={{ once: true }}
           className="text-muted-foreground mb-16 text-center text-sm"
         >
-          &gt; Fast builds, clean code, zero friction. Ship features, not fight
-          tooling.
+          &gt; Fast builds, clean code, zero friction. Ship features, not fight tooling.
         </motion.p>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -152,9 +146,7 @@ export function DeveloperExperienceSection() {
                     </div>
                     <div className="text-xs">
                       <span className="text-muted-foreground">DESC: </span>
-                      <span className="text-foreground">
-                        {feature.description}
-                      </span>
+                      <span className="text-foreground">{feature.description}</span>
                     </div>
                   </CardContent>
                 </Card>

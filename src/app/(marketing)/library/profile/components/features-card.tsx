@@ -19,35 +19,30 @@ export function FeaturesCard() {
         </div>
         <div className={cn(mode.font, 'space-y-2 text-xs')}>
           <div>
-            <span className="text-success">&gt;</span> User info card with
-            avatar
+            <span className="text-success">&gt;</span> User info card with avatar
           </div>
           <div>
-            <span className="text-success">&gt;</span> Stats display (projects,
-            contributions, followers)
+            <span className="text-success">&gt;</span> Stats display (projects, contributions,
+            followers)
           </div>
           <div>
             <span className="text-success">&gt;</span> Achievement badges
           </div>
           <div>
-            <span className="text-success">&gt;</span> Activity feed with
-            timestamps
+            <span className="text-success">&gt;</span> Activity feed with timestamps
           </div>
           <div>
-            <span className="text-success">&gt;</span> Projects tab with star
-            counts
+            <span className="text-success">&gt;</span> Projects tab with star counts
           </div>
           <div>
-            <span className="text-success">&gt;</span> Edit profile and settings
-            actions
+            <span className="text-success">&gt;</span> Edit profile and settings actions
           </div>
           <div>
             <span className="text-success">&gt;</span> Responsive layout
           </div>
         </div>
         <div className={cn(mode.font, 'text-muted-foreground mt-4 text-xs')}>
-          [NOTE]: Connect to your user service to populate real data and upload
-          avatars.
+          [NOTE]: Connect to your user service to populate real data and upload avatars.
         </div>
       </CardContent>
     </Card>

@@ -48,11 +48,8 @@ function getActionIcon(action: string) {
   return <Shield className="h-4 w-4" />;
 }
 
-function getActionBadgeVariant(
-  action: string
-): 'default' | 'outline' | 'secondary' {
-  if (action.includes('deleted') || action.includes('removed'))
-    return 'outline';
+function getActionBadgeVariant(action: string): 'default' | 'outline' | 'secondary' {
+  if (action.includes('deleted') || action.includes('removed')) return 'outline';
   if (action.includes('created') || action.includes('added')) return 'default';
   return 'secondary';
 }
@@ -88,12 +85,8 @@ async function AuditLogTable() {
               </TableCell>
               <TableCell>
                 <div className="flex flex-col">
-                  <span className="text-sm font-medium">
-                    {log.user.name || 'Unknown'}
-                  </span>
-                  <span className="text-muted-foreground text-xs">
-                    {log.user.email}
-                  </span>
+                  <span className="text-sm font-medium">{log.user.name || 'Unknown'}</span>
+                  <span className="text-muted-foreground text-xs">{log.user.email}</span>
                 </div>
               </TableCell>
               <TableCell>
@@ -112,12 +105,7 @@ async function AuditLogTable() {
                   <div className="flex flex-col">
                     <span className="text-sm capitalize">{log.resource}</span>
                     {log.resourceId && (
-                      <span
-                        className={cn(
-                          'text-muted-foreground text-xs',
-                          mode.font
-                        )}
-                      >
+                      <span className={cn('text-muted-foreground text-xs', mode.font)}>
                         {log.resourceId.substring(0, 16)}...
                       </span>
                     )}
@@ -150,8 +138,7 @@ export default function AuditLogPage() {
       <div>
         <h1 className="text-4xl font-semibold tracking-tight">Audit Log</h1>
         <p className="text-muted-foreground">
-          Immutable audit trail of all sensitive operations (showing last 100
-          entries)
+          Immutable audit trail of all sensitive operations (showing last 100 entries)
         </p>
       </div>
 
@@ -166,9 +153,7 @@ export default function AuditLogPage() {
           <Suspense
             fallback={
               <div className="flex h-48 items-center justify-center">
-                <div className="text-muted-foreground">
-                  Loading audit logs...
-                </div>
+                <div className="text-muted-foreground">Loading audit logs...</div>
               </div>
             }
           >
@@ -177,21 +162,15 @@ export default function AuditLogPage() {
         </CardContent>
       </Card>
 
-      <div
-        className={cn(
-          'border-warning/20 bg-warning/10 border p-4',
-          mode.radius
-        )}
-      >
+      <div className={cn('border-warning/20 bg-warning/10 border p-4', mode.radius)}>
         <h3 className="text-warning dark:text-warning mb-2 flex items-center gap-2 font-semibold">
           <Shield className="h-4 w-4" />
           Security Notice
         </h3>
         <p className="text-muted-foreground text-sm">
-          Audit logs are immutable and cannot be deleted. They are retained
-          indefinitely for security compliance. Logs include user actions,
-          impersonation events, role changes, organization modifications, and
-          feature flag updates.
+          Audit logs are immutable and cannot be deleted. They are retained indefinitely for
+          security compliance. Logs include user actions, impersonation events, role changes,
+          organization modifications, and feature flag updates.
         </p>
       </div>
     </div>

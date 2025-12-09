@@ -41,8 +41,7 @@ export default function FileUploadsTutorialPage() {
       setup={[
         {
           title: 'Install Dependencies',
-          description:
-            'Install the required packages for uploads and S3/R2 storage',
+          description: 'Install the required packages for uploads and S3/R2 storage',
           code: `npm install react-dropzone @aws-sdk/client-s3`,
           language: 'bash',
         },
@@ -69,8 +68,7 @@ S3_PUBLIC_URL="https://pub-xxx.r2.dev"`,
       usage={[
         {
           title: 'Upload API Route',
-          description:
-            'Create an API route to handle file uploads with validation',
+          description: 'Create an API route to handle file uploads with validation',
           code: `// src/app/api/upload/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -177,8 +175,7 @@ export async function POST(request: NextRequest) {
         },
         {
           title: 'Client-Side Upload Handler',
-          description:
-            'Handle the upload in your component with progress tracking',
+          description: 'Handle the upload in your component with progress tracking',
           code: `"use client";
 
 import { useState } from "react";
@@ -281,8 +278,7 @@ export function FileUploadForm() {
         },
         {
           title: 'Validation Options',
-          description:
-            'Common validation configurations for different use cases',
+          description: 'Common validation configurations for different use cases',
           code: `// Profile Avatar
 <Dropzone
   maxFiles={1}

@@ -142,18 +142,9 @@ export default function MemberCardPage() {
                 [STATUS]: PRESENCE_INDICATORS
               </div>
               <div className="grid gap-4 md:grid-cols-3">
-                <MemberCard
-                  member={{ ...sampleMember, status: 'online' }}
-                  variant="compact"
-                />
-                <MemberCard
-                  member={{ ...sampleMember, status: 'away' }}
-                  variant="compact"
-                />
-                <MemberCard
-                  member={{ ...sampleMember, status: 'offline' }}
-                  variant="compact"
-                />
+                <MemberCard member={{ ...sampleMember, status: 'online' }} variant="compact" />
+                <MemberCard member={{ ...sampleMember, status: 'away' }} variant="compact" />
+                <MemberCard member={{ ...sampleMember, status: 'offline' }} variant="compact" />
               </div>
             </div>
           ),
@@ -173,13 +164,7 @@ export default function MemberCardPage() {
                 <MemberCard
                   member={{
                     ...sampleMember,
-                    skills: [
-                      'React',
-                      'TypeScript',
-                      'Node.js',
-                      'GraphQL',
-                      'PostgreSQL',
-                    ],
+                    skills: ['React', 'TypeScript', 'Node.js', 'GraphQL', 'PostgreSQL'],
                   }}
                 />
               </div>
@@ -223,8 +208,7 @@ export default function MemberCardPage() {
           name: 'member',
           type: 'Member',
           required: true,
-          description:
-            'Member object with id, name, email, role, and optional fields',
+          description: 'Member object with id, name, email, role, and optional fields',
         },
         {
           name: 'variant',

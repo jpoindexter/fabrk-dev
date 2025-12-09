@@ -91,9 +91,7 @@ export default function LineChartPage() {
               <LineChart
                 data={sampleData}
                 xAxisKey="month"
-                series={[
-                  { dataKey: 'revenue', name: 'Revenue', showDots: true },
-                ]}
+                series={[{ dataKey: 'revenue', name: 'Revenue', showDots: true }]}
                 height={200}
                 showGrid={true}
               />

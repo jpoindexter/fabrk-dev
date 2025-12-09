@@ -16,9 +16,7 @@ import {
 describe('File Upload Validation', () => {
   describe('Magic Byte Validation', () => {
     it('should validate PNG magic bytes correctly', () => {
-      const pngBuffer = Buffer.from([
-        0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a,
-      ]);
+      const pngBuffer = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
       const result = validateFileType(pngBuffer, 'image/png');
       expect(result.valid).toBe(true);
     });
@@ -89,9 +87,7 @@ describe('File Upload Validation', () => {
 
     it('should handle Windows paths', () => {
       // Path separators removed, only filename remains
-      expect(sanitizeFilename('C:\\Windows\\System32\\file.txt')).toBe(
-        'file.txt'
-      );
+      expect(sanitizeFilename('C:\\Windows\\System32\\file.txt')).toBe('file.txt');
     });
 
     it('should handle Unix paths', () => {
@@ -117,9 +113,7 @@ describe('File Upload Validation', () => {
 
   describe('File Type Detection', () => {
     it('should detect PNG from magic bytes', () => {
-      const pngBuffer = Buffer.from([
-        0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a,
-      ]);
+      const pngBuffer = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
       expect(detectFileType(pngBuffer)).toBe('image/png');
     });
 
@@ -143,9 +137,7 @@ describe('File Upload Validation', () => {
 
   describe('Comprehensive Upload Validation', () => {
     it('should accept valid image file', async () => {
-      const pngBuffer = Buffer.from([
-        0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a,
-      ]);
+      const pngBuffer = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
       const file = {
         buffer: pngBuffer,
         name: 'test.png',
@@ -209,9 +201,7 @@ describe('File Upload Validation', () => {
     });
 
     it('should reject file with wrong MIME type', async () => {
-      const pngBuffer = Buffer.from([
-        0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a,
-      ]);
+      const pngBuffer = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
       const file = {
         buffer: pngBuffer,
         name: 'test.png',
@@ -228,9 +218,7 @@ describe('File Upload Validation', () => {
     });
 
     it('should reject file with double extension', async () => {
-      const pngBuffer = Buffer.from([
-        0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a,
-      ]);
+      const pngBuffer = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
       const file = {
         buffer: pngBuffer,
         name: 'test.php.png',
@@ -265,9 +253,7 @@ describe('File Upload Validation', () => {
     });
 
     it('should sanitize malicious filenames', async () => {
-      const pngBuffer = Buffer.from([
-        0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a,
-      ]);
+      const pngBuffer = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
 
       // Need a larger buffer for validation
       const largerBuffer = Buffer.concat([pngBuffer, Buffer.alloc(1024)]);
@@ -296,9 +282,7 @@ describe('File Upload Validation', () => {
     });
 
     it('should reject SVG with script tags', async () => {
-      const svgWithScript = Buffer.from(
-        '<svg><script>alert("XSS")</script></svg>'
-      );
+      const svgWithScript = Buffer.from('<svg><script>alert("XSS")</script></svg>');
       const file = {
         buffer: svgWithScript,
         name: 'malicious.svg',
@@ -317,9 +301,7 @@ describe('File Upload Validation', () => {
 
   describe('Avatar Validation', () => {
     it('should accept valid avatar image', async () => {
-      const pngBuffer = Buffer.from([
-        0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a,
-      ]);
+      const pngBuffer = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
       const file = {
         buffer: pngBuffer,
         name: 'avatar.png',

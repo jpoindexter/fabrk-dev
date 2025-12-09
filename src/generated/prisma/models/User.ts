@@ -15,8 +15,7 @@ import type * as Prisma from '../internal/prismaNamespace';
  * Model User
  *
  */
-export type UserModel =
-  runtime.Types.Result.DefaultSelection<Prisma.$UserPayload>;
+export type UserModel = runtime.Types.Result.DefaultSelection<Prisma.$UserPayload>;
 
 export type AggregateUser = {
   _count: UserCountAggregateOutputType | null;
@@ -203,8 +202,7 @@ export type UserCountAggregateInputType = {
 };
 
 export type UserAggregateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which User to aggregate.
@@ -215,9 +213,7 @@ export type UserAggregateArgs<
    *
    * Determine the order of Users to fetch.
    */
-  orderBy?:
-    | Prisma.UserOrderByWithRelationInput
-    | Prisma.UserOrderByWithRelationInput[];
+  orderBy?: Prisma.UserOrderByWithRelationInput | Prisma.UserOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -277,13 +273,10 @@ export type GetUserAggregateType<T extends UserAggregateArgs> = {
 };
 
 export type UserGroupByArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.UserWhereInput;
-  orderBy?:
-    | Prisma.UserOrderByWithAggregationInput
-    | Prisma.UserOrderByWithAggregationInput[];
+  orderBy?: Prisma.UserOrderByWithAggregationInput | Prisma.UserOrderByWithAggregationInput[];
   by: Prisma.UserScalarFieldEnum[] | Prisma.UserScalarFieldEnum;
   having?: Prisma.UserScalarWhereWithAggregatesInput;
   take?: number;
@@ -440,22 +433,14 @@ export type UserWhereUniqueInput = Prisma.AtLeast<
     NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[];
     name?: Prisma.StringNullableFilter<'User'> | string | null;
     image?: Prisma.StringNullableFilter<'User'> | string | null;
-    emailVerified?:
-      | Prisma.DateTimeNullableFilter<'User'>
-      | Date
-      | string
-      | null;
+    emailVerified?: Prisma.DateTimeNullableFilter<'User'> | Date | string | null;
     password?: Prisma.StringNullableFilter<'User'> | string | null;
     role?: Prisma.EnumRoleFilter<'User'> | $Enums.Role;
     tier?: Prisma.StringFilter<'User'> | string;
     subscriptionTier?: Prisma.StringNullableFilter<'User'> | string | null;
     trialEndsAt?: Prisma.DateTimeNullableFilter<'User'> | Date | string | null;
     githubUsername?: Prisma.StringNullableFilter<'User'> | string | null;
-    githubAccessAt?:
-      | Prisma.DateTimeNullableFilter<'User'>
-      | Date
-      | string
-      | null;
+    githubAccessAt?: Prisma.DateTimeNullableFilter<'User'> | Date | string | null;
     githubAccessStatus?: Prisma.StringNullableFilter<'User'> | string | null;
     resetExpires?: Prisma.DateTimeNullableFilter<'User'> | Date | string | null;
     sessionVersion?: Prisma.IntFilter<'User'> | number;
@@ -518,80 +503,31 @@ export type UserOrderByWithAggregationInput = {
 };
 
 export type UserScalarWhereWithAggregatesInput = {
-  AND?:
-    | Prisma.UserScalarWhereWithAggregatesInput
-    | Prisma.UserScalarWhereWithAggregatesInput[];
+  AND?: Prisma.UserScalarWhereWithAggregatesInput | Prisma.UserScalarWhereWithAggregatesInput[];
   OR?: Prisma.UserScalarWhereWithAggregatesInput[];
-  NOT?:
-    | Prisma.UserScalarWhereWithAggregatesInput
-    | Prisma.UserScalarWhereWithAggregatesInput[];
+  NOT?: Prisma.UserScalarWhereWithAggregatesInput | Prisma.UserScalarWhereWithAggregatesInput[];
   id?: Prisma.StringWithAggregatesFilter<'User'> | string;
   email?: Prisma.StringWithAggregatesFilter<'User'> | string;
   name?: Prisma.StringNullableWithAggregatesFilter<'User'> | string | null;
   image?: Prisma.StringNullableWithAggregatesFilter<'User'> | string | null;
-  emailVerified?:
-    | Prisma.DateTimeNullableWithAggregatesFilter<'User'>
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.DateTimeNullableWithAggregatesFilter<'User'> | Date | string | null;
   password?: Prisma.StringNullableWithAggregatesFilter<'User'> | string | null;
   role?: Prisma.EnumRoleWithAggregatesFilter<'User'> | $Enums.Role;
-  customerId?:
-    | Prisma.StringNullableWithAggregatesFilter<'User'>
-    | string
-    | null;
+  customerId?: Prisma.StringNullableWithAggregatesFilter<'User'> | string | null;
   tier?: Prisma.StringWithAggregatesFilter<'User'> | string;
-  subscriptionTier?:
-    | Prisma.StringNullableWithAggregatesFilter<'User'>
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.DateTimeNullableWithAggregatesFilter<'User'>
-    | Date
-    | string
-    | null;
-  licenseKey?:
-    | Prisma.StringNullableWithAggregatesFilter<'User'>
-    | string
-    | null;
-  githubUsername?:
-    | Prisma.StringNullableWithAggregatesFilter<'User'>
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.DateTimeNullableWithAggregatesFilter<'User'>
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.StringNullableWithAggregatesFilter<'User'>
-    | string
-    | null;
-  resetToken?:
-    | Prisma.StringNullableWithAggregatesFilter<'User'>
-    | string
-    | null;
-  resetExpires?:
-    | Prisma.DateTimeNullableWithAggregatesFilter<'User'>
-    | Date
-    | string
-    | null;
-  verifyToken?:
-    | Prisma.StringNullableWithAggregatesFilter<'User'>
-    | string
-    | null;
+  subscriptionTier?: Prisma.StringNullableWithAggregatesFilter<'User'> | string | null;
+  trialEndsAt?: Prisma.DateTimeNullableWithAggregatesFilter<'User'> | Date | string | null;
+  licenseKey?: Prisma.StringNullableWithAggregatesFilter<'User'> | string | null;
+  githubUsername?: Prisma.StringNullableWithAggregatesFilter<'User'> | string | null;
+  githubAccessAt?: Prisma.DateTimeNullableWithAggregatesFilter<'User'> | Date | string | null;
+  githubAccessStatus?: Prisma.StringNullableWithAggregatesFilter<'User'> | string | null;
+  resetToken?: Prisma.StringNullableWithAggregatesFilter<'User'> | string | null;
+  resetExpires?: Prisma.DateTimeNullableWithAggregatesFilter<'User'> | Date | string | null;
+  verifyToken?: Prisma.StringNullableWithAggregatesFilter<'User'> | string | null;
   sessionVersion?: Prisma.IntWithAggregatesFilter<'User'> | number;
   settings?: Prisma.JsonNullableWithAggregatesFilter<'User'>;
-  deletedAt?:
-    | Prisma.DateTimeNullableWithAggregatesFilter<'User'>
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.DateTimeNullableWithAggregatesFilter<'User'>
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<'User'> | Date | string | null;
+  anonymizedAt?: Prisma.DateTimeNullableWithAggregatesFilter<'User'> | Date | string | null;
   createdAt?: Prisma.DateTimeWithAggregatesFilter<'User'> | Date | string;
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<'User'> | Date | string;
 };
@@ -683,57 +619,24 @@ export type UserUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput;
@@ -757,57 +660,24 @@ export type UserUncheckedUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput;
@@ -858,57 +728,24 @@ export type UserUpdateManyMutationInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -918,57 +755,24 @@ export type UserUncheckedUpdateManyInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -1570,57 +1374,24 @@ export type UserUpdateWithoutAccountsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput;
@@ -1643,57 +1414,24 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput;
@@ -1824,57 +1562,24 @@ export type UserUpdateWithoutSessionsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput;
@@ -1897,57 +1602,24 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput;
@@ -2078,57 +1750,24 @@ export type UserUpdateWithoutPaymentsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput;
@@ -2151,57 +1790,24 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput;
@@ -2332,57 +1938,24 @@ export type UserUpdateWithoutMfaDevicesInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput;
@@ -2405,57 +1978,24 @@ export type UserUncheckedUpdateWithoutMfaDevicesInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput;
@@ -2586,57 +2126,24 @@ export type UserUpdateWithoutBackupCodesInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput;
@@ -2659,57 +2166,24 @@ export type UserUncheckedUpdateWithoutBackupCodesInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput;
@@ -2840,57 +2314,24 @@ export type UserUpdateWithoutOrganizationsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput;
@@ -2913,57 +2354,24 @@ export type UserUncheckedUpdateWithoutOrganizationsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput;
@@ -3094,57 +2502,24 @@ export type UserUpdateWithoutOrganizationInvitesInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput;
@@ -3167,57 +2542,24 @@ export type UserUncheckedUpdateWithoutOrganizationInvitesInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput;
@@ -3348,57 +2690,24 @@ export type UserUpdateWithoutUploadsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput;
@@ -3421,57 +2730,24 @@ export type UserUncheckedUpdateWithoutUploadsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput;
@@ -3602,57 +2878,24 @@ export type UserUpdateWithoutAuditLogsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput;
@@ -3675,57 +2918,24 @@ export type UserUncheckedUpdateWithoutAuditLogsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput;
@@ -3856,57 +3066,24 @@ export type UserUpdateWithoutNotificationsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput;
@@ -3929,57 +3106,24 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput;
@@ -4110,57 +3254,24 @@ export type UserUpdateWithoutApiKeysInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput;
@@ -4183,57 +3294,24 @@ export type UserUncheckedUpdateWithoutApiKeysInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput;
@@ -4364,57 +3442,24 @@ export type UserUpdateWithoutConsentsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput;
@@ -4437,57 +3482,24 @@ export type UserUncheckedUpdateWithoutConsentsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput;
@@ -4618,57 +3630,24 @@ export type UserUpdateWithoutBlogPostsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput;
@@ -4691,57 +3670,24 @@ export type UserUncheckedUpdateWithoutBlogPostsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput;
@@ -4872,57 +3818,24 @@ export type UserUpdateWithoutCreditBalanceInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput;
@@ -4945,57 +3858,24 @@ export type UserUncheckedUpdateWithoutCreditBalanceInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  emailVerified?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tier?: Prisma.StringFieldUpdateOperationsInput | string;
-  subscriptionTier?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  trialEndsAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  subscriptionTier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   licenseKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  githubUsername?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  githubAccessAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  githubAccessStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  githubUsername?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  githubAccessAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  githubAccessStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  resetExpires?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  resetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   verifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   sessionVersion?: Prisma.IntFieldUpdateOperationsInput | number;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
-  deletedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  anonymizedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  anonymizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput;
@@ -5034,8 +3914,7 @@ export type UserCountOutputType = {
 };
 
 export type UserCountOutputTypeSelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   accounts?: boolean | UserCountOutputTypeCountAccountsArgs;
   sessions?: boolean | UserCountOutputTypeCountSessionsArgs;
@@ -5043,9 +3922,7 @@ export type UserCountOutputTypeSelect<
   mfaDevices?: boolean | UserCountOutputTypeCountMfaDevicesArgs;
   backupCodes?: boolean | UserCountOutputTypeCountBackupCodesArgs;
   organizations?: boolean | UserCountOutputTypeCountOrganizationsArgs;
-  organizationInvites?:
-    | boolean
-    | UserCountOutputTypeCountOrganizationInvitesArgs;
+  organizationInvites?: boolean | UserCountOutputTypeCountOrganizationInvitesArgs;
   uploads?: boolean | UserCountOutputTypeCountUploadsArgs;
   auditLogs?: boolean | UserCountOutputTypeCountAuditLogsArgs;
   notifications?: boolean | UserCountOutputTypeCountNotificationsArgs;
@@ -5058,8 +3935,7 @@ export type UserCountOutputTypeSelect<
  * UserCountOutputType without action
  */
 export type UserCountOutputTypeDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the UserCountOutputType
@@ -5071,8 +3947,7 @@ export type UserCountOutputTypeDefaultArgs<
  * UserCountOutputType without action
  */
 export type UserCountOutputTypeCountAccountsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.AccountWhereInput;
 };
@@ -5081,8 +3956,7 @@ export type UserCountOutputTypeCountAccountsArgs<
  * UserCountOutputType without action
  */
 export type UserCountOutputTypeCountSessionsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.SessionWhereInput;
 };
@@ -5091,8 +3965,7 @@ export type UserCountOutputTypeCountSessionsArgs<
  * UserCountOutputType without action
  */
 export type UserCountOutputTypeCountPaymentsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.PaymentWhereInput;
 };
@@ -5101,8 +3974,7 @@ export type UserCountOutputTypeCountPaymentsArgs<
  * UserCountOutputType without action
  */
 export type UserCountOutputTypeCountMfaDevicesArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.MFADeviceWhereInput;
 };
@@ -5111,8 +3983,7 @@ export type UserCountOutputTypeCountMfaDevicesArgs<
  * UserCountOutputType without action
  */
 export type UserCountOutputTypeCountBackupCodesArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.BackupCodeWhereInput;
 };
@@ -5121,8 +3992,7 @@ export type UserCountOutputTypeCountBackupCodesArgs<
  * UserCountOutputType without action
  */
 export type UserCountOutputTypeCountOrganizationsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.OrganizationMemberWhereInput;
 };
@@ -5131,8 +4001,7 @@ export type UserCountOutputTypeCountOrganizationsArgs<
  * UserCountOutputType without action
  */
 export type UserCountOutputTypeCountOrganizationInvitesArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.OrganizationInviteWhereInput;
 };
@@ -5141,8 +4010,7 @@ export type UserCountOutputTypeCountOrganizationInvitesArgs<
  * UserCountOutputType without action
  */
 export type UserCountOutputTypeCountUploadsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.UploadWhereInput;
 };
@@ -5151,8 +4019,7 @@ export type UserCountOutputTypeCountUploadsArgs<
  * UserCountOutputType without action
  */
 export type UserCountOutputTypeCountAuditLogsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.AuditLogWhereInput;
 };
@@ -5161,8 +4028,7 @@ export type UserCountOutputTypeCountAuditLogsArgs<
  * UserCountOutputType without action
  */
 export type UserCountOutputTypeCountNotificationsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.NotificationWhereInput;
 };
@@ -5171,8 +4037,7 @@ export type UserCountOutputTypeCountNotificationsArgs<
  * UserCountOutputType without action
  */
 export type UserCountOutputTypeCountApiKeysArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.ApiKeyWhereInput;
 };
@@ -5181,8 +4046,7 @@ export type UserCountOutputTypeCountApiKeysArgs<
  * UserCountOutputType without action
  */
 export type UserCountOutputTypeCountConsentsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.ConsentWhereInput;
 };
@@ -5191,15 +4055,13 @@ export type UserCountOutputTypeCountConsentsArgs<
  * UserCountOutputType without action
  */
 export type UserCountOutputTypeCountBlogPostsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.BlogPostWhereInput;
 };
 
 export type UserSelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -5232,9 +4094,7 @@ export type UserSelect<
     mfaDevices?: boolean | Prisma.User$mfaDevicesArgs<ExtArgs>;
     backupCodes?: boolean | Prisma.User$backupCodesArgs<ExtArgs>;
     organizations?: boolean | Prisma.User$organizationsArgs<ExtArgs>;
-    organizationInvites?:
-      | boolean
-      | Prisma.User$organizationInvitesArgs<ExtArgs>;
+    organizationInvites?: boolean | Prisma.User$organizationInvitesArgs<ExtArgs>;
     uploads?: boolean | Prisma.User$uploadsArgs<ExtArgs>;
     auditLogs?: boolean | Prisma.User$auditLogsArgs<ExtArgs>;
     notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>;
@@ -5248,8 +4108,7 @@ export type UserSelect<
 >;
 
 export type UserSelectCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -5281,8 +4140,7 @@ export type UserSelectCreateManyAndReturn<
 >;
 
 export type UserSelectUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -5341,8 +4199,7 @@ export type UserSelectScalar = {
 };
 
 export type UserOmit<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
   | 'id'
   | 'email'
@@ -5371,8 +4228,7 @@ export type UserOmit<
   ExtArgs['result']['user']
 >;
 export type UserInclude<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>;
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>;
@@ -5391,17 +4247,14 @@ export type UserInclude<
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type UserIncludeCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {};
 export type UserIncludeUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {};
 
 export type $UserPayload<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   name: 'User';
   objects: {
@@ -5452,20 +4305,17 @@ export type $UserPayload<
   composites: {};
 };
 
-export type UserGetPayload<
-  S extends boolean | null | undefined | UserDefaultArgs,
-> = runtime.Types.Result.GetResult<Prisma.$UserPayload, S>;
+export type UserGetPayload<S extends boolean | null | undefined | UserDefaultArgs> =
+  runtime.Types.Result.GetResult<Prisma.$UserPayload, S>;
 
 export type UserCountArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = Omit<UserFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
   select?: UserCountAggregateInputType | true;
 };
 
 export interface UserDelegate<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > {
   [K: symbol]: {
@@ -5597,12 +4447,7 @@ export interface UserDelegate<
   findMany<T extends UserFindManyArgs>(
     args?: Prisma.SelectSubset<T, UserFindManyArgs<ExtArgs>>
   ): Prisma.PrismaPromise<
-    runtime.Types.Result.GetResult<
-      Prisma.$UserPayload<ExtArgs>,
-      T,
-      'findMany',
-      GlobalOmitOptions
-    >
+    runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findMany', GlobalOmitOptions>
   >;
 
   /**
@@ -5620,12 +4465,7 @@ export interface UserDelegate<
   create<T extends UserCreateArgs>(
     args: Prisma.SelectSubset<T, UserCreateArgs<ExtArgs>>
   ): Prisma.Prisma__UserClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$UserPayload<ExtArgs>,
-      T,
-      'create',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'create', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -5695,12 +4535,7 @@ export interface UserDelegate<
   delete<T extends UserDeleteArgs>(
     args: Prisma.SelectSubset<T, UserDeleteArgs<ExtArgs>>
   ): Prisma.Prisma__UserClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$UserPayload<ExtArgs>,
-      T,
-      'delete',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'delete', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -5724,12 +4559,7 @@ export interface UserDelegate<
   update<T extends UserUpdateArgs>(
     args: Prisma.SelectSubset<T, UserUpdateArgs<ExtArgs>>
   ): Prisma.Prisma__UserClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$UserPayload<ExtArgs>,
-      T,
-      'update',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'update', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -5831,12 +4661,7 @@ export interface UserDelegate<
   upsert<T extends UserUpsertArgs>(
     args: Prisma.SelectSubset<T, UserUpsertArgs<ExtArgs>>
   ): Prisma.Prisma__UserClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$UserPayload<ExtArgs>,
-      T,
-      'upsert',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'upsert', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -5936,12 +4761,7 @@ export interface UserDelegate<
               ? never
               : P extends string
                 ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                : [
-                    Error,
-                    'Field ',
-                    P,
-                    ` in "having" needs to be provided in "by"`,
-                  ];
+                : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
           }[HavingFields]
         : 'take' extends Prisma.Keys<T>
           ? 'orderBy' extends Prisma.Keys<T>
@@ -5971,11 +4791,8 @@ export interface UserDelegate<
                     : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                 }[OrderFields],
   >(
-    args: Prisma.SubsetIntersection<T, UserGroupByArgs, OrderByArg> &
-      InputErrors
-  ): {} extends InputErrors
-    ? GetUserGroupByPayload<T>
-    : Prisma.PrismaPromise<InputErrors>;
+    args: Prisma.SubsetIntersection<T, UserGroupByArgs, OrderByArg> & InputErrors
+  ): {} extends InputErrors ? GetUserGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
   /**
    * Fields of the User model
    */
@@ -5991,8 +4808,7 @@ export interface UserDelegate<
 export interface Prisma__UserClient<
   T,
   Null = never,
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: 'PrismaPromise';
@@ -6062,9 +4878,7 @@ export interface Prisma__UserClient<
       >
     | Null
   >;
-  organizationInvites<
-    T extends Prisma.User$organizationInvitesArgs<ExtArgs> = {},
-  >(
+  organizationInvites<T extends Prisma.User$organizationInvitesArgs<ExtArgs> = {}>(
     args?: Prisma.Subset<T, Prisma.User$organizationInvitesArgs<ExtArgs>>
   ): Prisma.PrismaPromise<
     | runtime.Types.Result.GetResult<
@@ -6161,14 +4975,8 @@ export interface Prisma__UserClient<
    * @returns A Promise for the completion of which ever callback is executed.
    */
   then<TResult1 = T, TResult2 = never>(
-    onfulfilled?:
-      | ((value: T) => TResult1 | PromiseLike<TResult1>)
-      | undefined
-      | null,
-    onrejected?:
-      | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-      | undefined
-      | null
+    onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
   ): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
   /**
    * Attaches a callback for only the rejection of the Promise.
@@ -6176,10 +4984,7 @@ export interface Prisma__UserClient<
    * @returns A Promise for the completion of the callback.
    */
   catch<TResult = never>(
-    onrejected?:
-      | ((reason: any) => TResult | PromiseLike<TResult>)
-      | undefined
-      | null
+    onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
   ): runtime.Types.Utils.JsPromise<T | TResult>;
   /**
    * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
@@ -6187,9 +4992,7 @@ export interface Prisma__UserClient<
    * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
    * @returns A Promise for the completion of the callback.
    */
-  finally(
-    onfinally?: (() => void) | undefined | null
-  ): runtime.Types.Utils.JsPromise<T>;
+  finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
 }
 
 /**
@@ -6227,8 +5030,7 @@ export interface UserFieldRefs {
  * User findUnique
  */
 export type UserFindUniqueArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the User
@@ -6252,8 +5054,7 @@ export type UserFindUniqueArgs<
  * User findUniqueOrThrow
  */
 export type UserFindUniqueOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the User
@@ -6277,8 +5078,7 @@ export type UserFindUniqueOrThrowArgs<
  * User findFirst
  */
 export type UserFindFirstArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the User
@@ -6301,9 +5101,7 @@ export type UserFindFirstArgs<
    *
    * Determine the order of Users to fetch.
    */
-  orderBy?:
-    | Prisma.UserOrderByWithRelationInput
-    | Prisma.UserOrderByWithRelationInput[];
+  orderBy?: Prisma.UserOrderByWithRelationInput | Prisma.UserOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -6334,8 +5132,7 @@ export type UserFindFirstArgs<
  * User findFirstOrThrow
  */
 export type UserFindFirstOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the User
@@ -6358,9 +5155,7 @@ export type UserFindFirstOrThrowArgs<
    *
    * Determine the order of Users to fetch.
    */
-  orderBy?:
-    | Prisma.UserOrderByWithRelationInput
-    | Prisma.UserOrderByWithRelationInput[];
+  orderBy?: Prisma.UserOrderByWithRelationInput | Prisma.UserOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -6391,8 +5186,7 @@ export type UserFindFirstOrThrowArgs<
  * User findMany
  */
 export type UserFindManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the User
@@ -6415,9 +5209,7 @@ export type UserFindManyArgs<
    *
    * Determine the order of Users to fetch.
    */
-  orderBy?:
-    | Prisma.UserOrderByWithRelationInput
-    | Prisma.UserOrderByWithRelationInput[];
+  orderBy?: Prisma.UserOrderByWithRelationInput | Prisma.UserOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -6443,8 +5235,7 @@ export type UserFindManyArgs<
  * User create
  */
 export type UserCreateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the User
@@ -6468,8 +5259,7 @@ export type UserCreateArgs<
  * User createMany
  */
 export type UserCreateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to create many Users.
@@ -6482,8 +5272,7 @@ export type UserCreateManyArgs<
  * User createManyAndReturn
  */
 export type UserCreateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the User
@@ -6504,8 +5293,7 @@ export type UserCreateManyAndReturnArgs<
  * User update
  */
 export type UserUpdateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the User
@@ -6533,16 +5321,12 @@ export type UserUpdateArgs<
  * User updateMany
  */
 export type UserUpdateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to update Users.
    */
-  data: Prisma.XOR<
-    Prisma.UserUpdateManyMutationInput,
-    Prisma.UserUncheckedUpdateManyInput
-  >;
+  data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyInput>;
   /**
    * Filter which Users to update
    */
@@ -6557,8 +5341,7 @@ export type UserUpdateManyArgs<
  * User updateManyAndReturn
  */
 export type UserUpdateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the User
@@ -6571,10 +5354,7 @@ export type UserUpdateManyAndReturnArgs<
   /**
    * The data used to update Users.
    */
-  data: Prisma.XOR<
-    Prisma.UserUpdateManyMutationInput,
-    Prisma.UserUncheckedUpdateManyInput
-  >;
+  data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyInput>;
   /**
    * Filter which Users to update
    */
@@ -6589,8 +5369,7 @@ export type UserUpdateManyAndReturnArgs<
  * User upsert
  */
 export type UserUpsertArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the User
@@ -6622,8 +5401,7 @@ export type UserUpsertArgs<
  * User delete
  */
 export type UserDeleteArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the User
@@ -6647,8 +5425,7 @@ export type UserDeleteArgs<
  * User deleteMany
  */
 export type UserDeleteManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which Users to delete
@@ -6664,8 +5441,7 @@ export type UserDeleteManyArgs<
  * User.accounts
  */
 export type User$accountsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Account
@@ -6680,9 +5456,7 @@ export type User$accountsArgs<
    */
   include?: Prisma.AccountInclude<ExtArgs> | null;
   where?: Prisma.AccountWhereInput;
-  orderBy?:
-    | Prisma.AccountOrderByWithRelationInput
-    | Prisma.AccountOrderByWithRelationInput[];
+  orderBy?: Prisma.AccountOrderByWithRelationInput | Prisma.AccountOrderByWithRelationInput[];
   cursor?: Prisma.AccountWhereUniqueInput;
   take?: number;
   skip?: number;
@@ -6693,8 +5467,7 @@ export type User$accountsArgs<
  * User.sessions
  */
 export type User$sessionsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Session
@@ -6709,9 +5482,7 @@ export type User$sessionsArgs<
    */
   include?: Prisma.SessionInclude<ExtArgs> | null;
   where?: Prisma.SessionWhereInput;
-  orderBy?:
-    | Prisma.SessionOrderByWithRelationInput
-    | Prisma.SessionOrderByWithRelationInput[];
+  orderBy?: Prisma.SessionOrderByWithRelationInput | Prisma.SessionOrderByWithRelationInput[];
   cursor?: Prisma.SessionWhereUniqueInput;
   take?: number;
   skip?: number;
@@ -6722,8 +5493,7 @@ export type User$sessionsArgs<
  * User.payments
  */
 export type User$paymentsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Payment
@@ -6738,9 +5508,7 @@ export type User$paymentsArgs<
    */
   include?: Prisma.PaymentInclude<ExtArgs> | null;
   where?: Prisma.PaymentWhereInput;
-  orderBy?:
-    | Prisma.PaymentOrderByWithRelationInput
-    | Prisma.PaymentOrderByWithRelationInput[];
+  orderBy?: Prisma.PaymentOrderByWithRelationInput | Prisma.PaymentOrderByWithRelationInput[];
   cursor?: Prisma.PaymentWhereUniqueInput;
   take?: number;
   skip?: number;
@@ -6751,8 +5519,7 @@ export type User$paymentsArgs<
  * User.mfaDevices
  */
 export type User$mfaDevicesArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the MFADevice
@@ -6767,23 +5534,18 @@ export type User$mfaDevicesArgs<
    */
   include?: Prisma.MFADeviceInclude<ExtArgs> | null;
   where?: Prisma.MFADeviceWhereInput;
-  orderBy?:
-    | Prisma.MFADeviceOrderByWithRelationInput
-    | Prisma.MFADeviceOrderByWithRelationInput[];
+  orderBy?: Prisma.MFADeviceOrderByWithRelationInput | Prisma.MFADeviceOrderByWithRelationInput[];
   cursor?: Prisma.MFADeviceWhereUniqueInput;
   take?: number;
   skip?: number;
-  distinct?:
-    | Prisma.MFADeviceScalarFieldEnum
-    | Prisma.MFADeviceScalarFieldEnum[];
+  distinct?: Prisma.MFADeviceScalarFieldEnum | Prisma.MFADeviceScalarFieldEnum[];
 };
 
 /**
  * User.backupCodes
  */
 export type User$backupCodesArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BackupCode
@@ -6798,23 +5560,18 @@ export type User$backupCodesArgs<
    */
   include?: Prisma.BackupCodeInclude<ExtArgs> | null;
   where?: Prisma.BackupCodeWhereInput;
-  orderBy?:
-    | Prisma.BackupCodeOrderByWithRelationInput
-    | Prisma.BackupCodeOrderByWithRelationInput[];
+  orderBy?: Prisma.BackupCodeOrderByWithRelationInput | Prisma.BackupCodeOrderByWithRelationInput[];
   cursor?: Prisma.BackupCodeWhereUniqueInput;
   take?: number;
   skip?: number;
-  distinct?:
-    | Prisma.BackupCodeScalarFieldEnum
-    | Prisma.BackupCodeScalarFieldEnum[];
+  distinct?: Prisma.BackupCodeScalarFieldEnum | Prisma.BackupCodeScalarFieldEnum[];
 };
 
 /**
  * User.organizations
  */
 export type User$organizationsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the OrganizationMember
@@ -6835,17 +5592,14 @@ export type User$organizationsArgs<
   cursor?: Prisma.OrganizationMemberWhereUniqueInput;
   take?: number;
   skip?: number;
-  distinct?:
-    | Prisma.OrganizationMemberScalarFieldEnum
-    | Prisma.OrganizationMemberScalarFieldEnum[];
+  distinct?: Prisma.OrganizationMemberScalarFieldEnum | Prisma.OrganizationMemberScalarFieldEnum[];
 };
 
 /**
  * User.organizationInvites
  */
 export type User$organizationInvitesArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the OrganizationInvite
@@ -6866,17 +5620,14 @@ export type User$organizationInvitesArgs<
   cursor?: Prisma.OrganizationInviteWhereUniqueInput;
   take?: number;
   skip?: number;
-  distinct?:
-    | Prisma.OrganizationInviteScalarFieldEnum
-    | Prisma.OrganizationInviteScalarFieldEnum[];
+  distinct?: Prisma.OrganizationInviteScalarFieldEnum | Prisma.OrganizationInviteScalarFieldEnum[];
 };
 
 /**
  * User.uploads
  */
 export type User$uploadsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Upload
@@ -6891,9 +5642,7 @@ export type User$uploadsArgs<
    */
   include?: Prisma.UploadInclude<ExtArgs> | null;
   where?: Prisma.UploadWhereInput;
-  orderBy?:
-    | Prisma.UploadOrderByWithRelationInput
-    | Prisma.UploadOrderByWithRelationInput[];
+  orderBy?: Prisma.UploadOrderByWithRelationInput | Prisma.UploadOrderByWithRelationInput[];
   cursor?: Prisma.UploadWhereUniqueInput;
   take?: number;
   skip?: number;
@@ -6904,8 +5653,7 @@ export type User$uploadsArgs<
  * User.auditLogs
  */
 export type User$auditLogsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the AuditLog
@@ -6920,9 +5668,7 @@ export type User$auditLogsArgs<
    */
   include?: Prisma.AuditLogInclude<ExtArgs> | null;
   where?: Prisma.AuditLogWhereInput;
-  orderBy?:
-    | Prisma.AuditLogOrderByWithRelationInput
-    | Prisma.AuditLogOrderByWithRelationInput[];
+  orderBy?: Prisma.AuditLogOrderByWithRelationInput | Prisma.AuditLogOrderByWithRelationInput[];
   cursor?: Prisma.AuditLogWhereUniqueInput;
   take?: number;
   skip?: number;
@@ -6933,8 +5679,7 @@ export type User$auditLogsArgs<
  * User.notifications
  */
 export type User$notificationsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Notification
@@ -6955,17 +5700,14 @@ export type User$notificationsArgs<
   cursor?: Prisma.NotificationWhereUniqueInput;
   take?: number;
   skip?: number;
-  distinct?:
-    | Prisma.NotificationScalarFieldEnum
-    | Prisma.NotificationScalarFieldEnum[];
+  distinct?: Prisma.NotificationScalarFieldEnum | Prisma.NotificationScalarFieldEnum[];
 };
 
 /**
  * User.apiKeys
  */
 export type User$apiKeysArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the ApiKey
@@ -6980,9 +5722,7 @@ export type User$apiKeysArgs<
    */
   include?: Prisma.ApiKeyInclude<ExtArgs> | null;
   where?: Prisma.ApiKeyWhereInput;
-  orderBy?:
-    | Prisma.ApiKeyOrderByWithRelationInput
-    | Prisma.ApiKeyOrderByWithRelationInput[];
+  orderBy?: Prisma.ApiKeyOrderByWithRelationInput | Prisma.ApiKeyOrderByWithRelationInput[];
   cursor?: Prisma.ApiKeyWhereUniqueInput;
   take?: number;
   skip?: number;
@@ -6993,8 +5733,7 @@ export type User$apiKeysArgs<
  * User.consents
  */
 export type User$consentsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Consent
@@ -7009,9 +5748,7 @@ export type User$consentsArgs<
    */
   include?: Prisma.ConsentInclude<ExtArgs> | null;
   where?: Prisma.ConsentWhereInput;
-  orderBy?:
-    | Prisma.ConsentOrderByWithRelationInput
-    | Prisma.ConsentOrderByWithRelationInput[];
+  orderBy?: Prisma.ConsentOrderByWithRelationInput | Prisma.ConsentOrderByWithRelationInput[];
   cursor?: Prisma.ConsentWhereUniqueInput;
   take?: number;
   skip?: number;
@@ -7022,8 +5759,7 @@ export type User$consentsArgs<
  * User.blogPosts
  */
 export type User$blogPostsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogPost
@@ -7038,9 +5774,7 @@ export type User$blogPostsArgs<
    */
   include?: Prisma.BlogPostInclude<ExtArgs> | null;
   where?: Prisma.BlogPostWhereInput;
-  orderBy?:
-    | Prisma.BlogPostOrderByWithRelationInput
-    | Prisma.BlogPostOrderByWithRelationInput[];
+  orderBy?: Prisma.BlogPostOrderByWithRelationInput | Prisma.BlogPostOrderByWithRelationInput[];
   cursor?: Prisma.BlogPostWhereUniqueInput;
   take?: number;
   skip?: number;
@@ -7051,8 +5785,7 @@ export type User$blogPostsArgs<
  * User.creditBalance
  */
 export type User$creditBalanceArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditBalance
@@ -7073,8 +5806,7 @@ export type User$creditBalanceArgs<
  * User without action
  */
 export type UserDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the User

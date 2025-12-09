@@ -28,15 +28,8 @@ export function AboutHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <p className={cn('text-muted-foreground mb-2 text-xs', mode.font)}>
-            [FABRK_ABOUT]:
-          </p>
-          <h1
-            className={cn(
-              'mb-8 text-4xl font-semibold tracking-tight lg:text-5xl',
-              mode.font
-            )}
-          >
+          <p className={cn('text-muted-foreground mb-2 text-xs', mode.font)}>[FABRK_ABOUT]:</p>
+          <h1 className={cn('mb-8 text-4xl font-semibold tracking-tight lg:text-5xl', mode.font)}>
             BUILT_BY_DEVELOPERS
             <br />
             <span className="text-primary">FOR_DEVELOPERS</span>
@@ -53,9 +46,8 @@ export function AboutHero() {
             <CardHeader code="0x01" title="MISSION_STATEMENT" />
             <CardContent padding="md">
               <p className={cn('text-muted-foreground text-sm', mode.font)}>
-                We're on a mission to eliminate the repetitive work that slows
-                down every SaaS project, so you can focus on building features
-                that matter.
+                We're on a mission to eliminate the repetitive work that slows down every SaaS
+                project, so you can focus on building features that matter.
               </p>
             </CardContent>
           </Card>

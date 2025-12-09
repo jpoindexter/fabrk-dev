@@ -4,8 +4,7 @@ import { Shield, Key, Lock, Cookie } from 'lucide-react';
 
 export const metadata = {
   title: 'CSRF Protection - Fabrk Docs',
-  description:
-    'Protect your forms and API endpoints from cross-site request forgery attacks.',
+  description: 'Protect your forms and API endpoints from cross-site request forgery attacks.',
 };
 
 export default function CSRFProtectionPage() {

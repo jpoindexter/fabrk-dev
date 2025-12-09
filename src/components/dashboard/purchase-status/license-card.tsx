@@ -14,29 +14,15 @@ import { LicenseCardProps } from './purchase-status-types';
 
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
-export function LicenseCard({
-  licenseKey,
-  onCopyLicense,
-  copiedLicense,
-}: LicenseCardProps) {
+export function LicenseCard({ licenseKey, onCopyLicense, copiedLicense }: LicenseCardProps) {
   if (!licenseKey) return null;
 
   return (
     <Card tone="neutral">
-      <CardHeader
-        code="0x02"
-        title="LICENSE_KEY"
-        icon={<Key className="h-4 w-4" />}
-      />
+      <CardHeader code="0x02" title="LICENSE_KEY" icon={<Key className="h-4 w-4" />} />
       <CardContent padding="md">
         <div className="space-y-4">
-          <div
-            className={cn(
-              'bg-muted dark:bg-muted p-6 text-sm',
-              mode.font,
-              mode.radius
-            )}
-          >
+          <div className={cn('bg-muted dark:bg-muted p-6 text-sm', mode.font, mode.radius)}>
             {licenseKey}
           </div>
           <Button
@@ -54,8 +40,7 @@ export function LicenseCard({
             )}
           </Button>
           <p className="text-muted-foreground dark:text-muted-foreground text-xs">
-            [NOTE]: Keep this key safe. You&apos;ll need it for future updates
-            and support.
+            [NOTE]: Keep this key safe. You&apos;ll need it for future updates and support.
           </p>
         </div>
       </CardContent>

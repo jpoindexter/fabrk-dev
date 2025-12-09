@@ -95,9 +95,7 @@ Main page only contains:
    const [isRevoking, setIsRevoking] = useState<string | null>(null);
    const [isDialogOpen, setIsDialogOpen] = useState(false);
    const [newKeyName, setNewKeyName] = useState('');
-   const [selectedPermissions, setSelectedPermissions] = useState<string[]>([
-     'read',
-   ]);
+   const [selectedPermissions, setSelectedPermissions] = useState<string[]>(['read']);
    const [createdKey, setCreatedKey] = useState<string | null>(null);
    const [revokeDialogOpen, setRevokeDialogOpen] = useState(false);
    const [keyToRevoke, setKeyToRevoke] = useState<string | null>(null);
@@ -212,18 +210,14 @@ Main page only contains:
    // /lib/api/api-keys.ts
    export const apiKeysApi = {
      list: (orgId: string) =>
-       fetch(`/api/api-keys?organizationId=${orgId}`).then(
-         validateApiKeysResponse
-       ),
+       fetch(`/api/api-keys?organizationId=${orgId}`).then(validateApiKeysResponse),
      create: (data: CreateKeyInput) =>
        fetch('/api/api-keys', {
          method: 'POST',
          body: JSON.stringify(data),
        }).then(validateCreateResponse),
      revoke: (id: string) =>
-       fetch(`/api/api-keys/${id}`, { method: 'DELETE' }).then(
-         validateDeleteResponse
-       ),
+       fetch(`/api/api-keys/${id}`, { method: 'DELETE' }).then(validateDeleteResponse),
    };
    ```
 

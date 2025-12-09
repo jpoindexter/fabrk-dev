@@ -89,8 +89,7 @@ await sendResetEmail(
         },
         {
           title: 'Email Queue System',
-          description:
-            'Queue emails for background sending with automatic retries',
+          description: 'Queue emails for background sending with automatic retries',
           code: `import {
   queueEmail,
   queueWelcomeEmail,
@@ -200,28 +199,22 @@ await sendOrganizationInvite("newmember@example.com", {
       {/* Email Types */}
       <DocsSection title="Email Types">
         <DocsCard title="EMAIL_TYPES">
-          <p className="mb-4">
-            The queue system supports these email types for categorization:
-          </p>
+          <p className="mb-4">The queue system supports these email types for categorization:</p>
           <div className="space-y-1">
             <div>
-              ├─ <code className="bg-muted px-1">WELCOME</code> - Post-purchase
-              welcome emails
+              ├─ <code className="bg-muted px-1">WELCOME</code> - Post-purchase welcome emails
             </div>
             <div>
-              ├─ <code className="bg-muted px-1">VERIFICATION</code> - Email
-              verification
+              ├─ <code className="bg-muted px-1">VERIFICATION</code> - Email verification
             </div>
             <div>
               ├─ <code className="bg-muted px-1">RESET</code> - Password reset
             </div>
             <div>
-              ├─ <code className="bg-muted px-1">INVOICE</code> - Payment
-              receipts
+              ├─ <code className="bg-muted px-1">INVOICE</code> - Payment receipts
             </div>
             <div>
-              └─ <code className="bg-muted px-1">NOTIFICATION</code> - General
-              notifications
+              └─ <code className="bg-muted px-1">NOTIFICATION</code> - General notifications
             </div>
           </div>
         </DocsCard>
@@ -232,28 +225,26 @@ await sendOrganizationInvite("newmember@example.com", {
         <DocsCard title="BEST_PRACTICES">
           <div className="space-y-1">
             <div>
-              ├─ <strong>Use direct sending</strong> for time-sensitive emails
-              (auth, password reset)
+              ├─ <strong>Use direct sending</strong> for time-sensitive emails (auth, password
+              reset)
             </div>
             <div>
-              ├─ <strong>Use queuing</strong> for bulk emails, notifications,
-              and post-purchase emails
+              ├─ <strong>Use queuing</strong> for bulk emails, notifications, and post-purchase
+              emails
             </div>
             <div>
-              ├─ <strong>Track user/purchase IDs</strong> for email analytics
-              and debugging
+              ├─ <strong>Track user/purchase IDs</strong> for email analytics and debugging
             </div>
             <div>
-              ├─ <strong>Set appropriate maxAttempts</strong> - 3 for important
-              emails, 1 for notifications
+              ├─ <strong>Set appropriate maxAttempts</strong> - 3 for important emails, 1 for
+              notifications
             </div>
             <div>
-              ├─ <strong>Test templates locally</strong> - without
-              RESEND_API_KEY, emails log to console
+              ├─ <strong>Test templates locally</strong> - without RESEND_API_KEY, emails log to
+              console
             </div>
             <div>
-              └─ <strong>Verify domain</strong> in Resend dashboard for better
-              deliverability
+              └─ <strong>Verify domain</strong> in Resend dashboard for better deliverability
             </div>
           </div>
         </DocsCard>

@@ -57,9 +57,7 @@ export function NotificationsForm() {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(
-          result.error || 'Failed to update notification settings'
-        );
+        throw new Error(result.error || 'Failed to update notification settings');
       }
 
       toast({
@@ -90,12 +88,9 @@ export function NotificationsForm() {
               render={({ field }) => (
                 <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className={cn(mode.font, 'text-xs')}>
-                      [SECURITY_ALERTS]:
-                    </FormLabel>
+                    <FormLabel className={cn(mode.font, 'text-xs')}>[SECURITY_ALERTS]:</FormLabel>
                     <FormDescription className={cn(mode.font, 'text-xs')}>
-                      Receive alerts for suspicious activity and security
-                      events.
+                      Receive alerts for suspicious activity and security events.
                     </FormDescription>
                   </div>
                   <FormControl>
@@ -119,9 +114,7 @@ export function NotificationsForm() {
               render={({ field }) => (
                 <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className={cn(mode.font, 'text-xs')}>
-                      [PRODUCT_UPDATES]:
-                    </FormLabel>
+                    <FormLabel className={cn(mode.font, 'text-xs')}>[PRODUCT_UPDATES]:</FormLabel>
                     <FormDescription className={cn(mode.font, 'text-xs')}>
                       Get notified about new features and improvements.
                     </FormDescription>
@@ -147,9 +140,7 @@ export function NotificationsForm() {
               render={({ field }) => (
                 <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className={cn(mode.font, 'text-xs')}>
-                      [MARKETING_EMAILS]:
-                    </FormLabel>
+                    <FormLabel className={cn(mode.font, 'text-xs')}>[MARKETING_EMAILS]:</FormLabel>
                     <FormDescription className={cn(mode.font, 'text-xs')}>
                       Receive promotional emails and special offers.
                     </FormDescription>
@@ -175,9 +166,7 @@ export function NotificationsForm() {
               render={({ field }) => (
                 <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className={cn(mode.font, 'text-xs')}>
-                      [WEEKLY_SUMMARY]:
-                    </FormLabel>
+                    <FormLabel className={cn(mode.font, 'text-xs')}>[WEEKLY_SUMMARY]:</FormLabel>
                     <FormDescription className={cn(mode.font, 'text-xs')}>
                       Get a weekly digest of your account activity.
                     </FormDescription>

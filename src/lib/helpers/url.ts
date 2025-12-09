@@ -35,10 +35,7 @@ export function buildQueryString(params: Record<string, unknown>): string {
  * @example addQueryParams("https://example.com", { foo: "bar" })
  * // "https://example.com?foo=bar"
  */
-export function addQueryParams(
-  url: string,
-  params: Record<string, unknown>
-): string {
+export function addQueryParams(url: string, params: Record<string, unknown>): string {
   const urlObj = new URL(url);
   Object.entries(params).forEach(([key, value]) => {
     if (value !== null && value !== undefined) {

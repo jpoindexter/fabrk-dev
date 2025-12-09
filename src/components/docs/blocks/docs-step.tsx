@@ -45,11 +45,8 @@ export function DocsStep({
 
       {/* Tip */}
       {tip && (
-        <p
-          className={`border-primary/50 border-l-2 pl-4 ${docsTypography.caption}`}
-        >
-          <span className="text-primary font-semibold uppercase">Tip:</span>{' '}
-          {tip}
+        <p className={`border-primary/50 border-l-2 pl-4 ${docsTypography.caption}`}>
+          <span className="text-primary font-semibold uppercase">Tip:</span> {tip}
         </p>
       )}
 

@@ -25,8 +25,7 @@ export default function AnalyticsPage() {
         {
           icon: User,
           title: 'User Identification',
-          description:
-            'Link anonymous and authenticated users across sessions.',
+          description: 'Link anonymous and authenticated users across sessions.',
         },
         {
           icon: Video,
@@ -142,8 +141,7 @@ export function CheckoutButton({ plan, price }: Props) {
         },
         {
           title: 'User Identification',
-          description:
-            'Identify users after authentication to link their activity',
+          description: 'Identify users after authentication to link their activity',
           code: `"use client";
 
 import { usePostHog } from "posthog-js/react";
@@ -265,28 +263,24 @@ export async function POST(req: Request) {
         <DocsCard title="BEST_PRACTICES">
           <ul className="space-y-1">
             <li>
-              ├─ <strong>Use consistent naming:</strong> Follow a convention
-              like <code className="bg-muted px-1">object_action</code>
+              ├─ <strong>Use consistent naming:</strong> Follow a convention like{' '}
+              <code className="bg-muted px-1">object_action</code>
             </li>
             <li>
-              ├─ <strong>Don&apos;t over-track:</strong> Focus on meaningful
-              events that inform decisions
+              ├─ <strong>Don&apos;t over-track:</strong> Focus on meaningful events that inform
+              decisions
             </li>
             <li>
-              ├─ <strong>Include context:</strong> Add properties that help
-              segment and analyze
+              ├─ <strong>Include context:</strong> Add properties that help segment and analyze
             </li>
             <li>
-              ├─ <strong>Respect privacy:</strong> Don&apos;t track PII unless
-              necessary
+              ├─ <strong>Respect privacy:</strong> Don&apos;t track PII unless necessary
             </li>
             <li>
-              ├─ <strong>Test events:</strong> Verify events appear in PostHog
-              dashboard
+              ├─ <strong>Test events:</strong> Verify events appear in PostHog dashboard
             </li>
             <li>
-              └─ <strong>Document events:</strong> Maintain a tracking plan for
-              your team
+              └─ <strong>Document events:</strong> Maintain a tracking plan for your team
             </li>
           </ul>
         </DocsCard>

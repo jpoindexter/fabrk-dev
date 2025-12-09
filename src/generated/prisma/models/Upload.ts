@@ -15,8 +15,7 @@ import type * as Prisma from '../internal/prismaNamespace';
  * Model Upload
  *
  */
-export type UploadModel =
-  runtime.Types.Result.DefaultSelection<Prisma.$UploadPayload>;
+export type UploadModel = runtime.Types.Result.DefaultSelection<Prisma.$UploadPayload>;
 
 export type AggregateUpload = {
   _count: UploadCountAggregateOutputType | null;
@@ -137,8 +136,7 @@ export type UploadCountAggregateInputType = {
 };
 
 export type UploadAggregateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which Upload to aggregate.
@@ -149,9 +147,7 @@ export type UploadAggregateArgs<
    *
    * Determine the order of Uploads to fetch.
    */
-  orderBy?:
-    | Prisma.UploadOrderByWithRelationInput
-    | Prisma.UploadOrderByWithRelationInput[];
+  orderBy?: Prisma.UploadOrderByWithRelationInput | Prisma.UploadOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -211,13 +207,10 @@ export type GetUploadAggregateType<T extends UploadAggregateArgs> = {
 };
 
 export type UploadGroupByArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.UploadWhereInput;
-  orderBy?:
-    | Prisma.UploadOrderByWithAggregationInput
-    | Prisma.UploadOrderByWithAggregationInput[];
+  orderBy?: Prisma.UploadOrderByWithAggregationInput | Prisma.UploadOrderByWithAggregationInput[];
   by: Prisma.UploadScalarFieldEnum[] | Prisma.UploadScalarFieldEnum;
   having?: Prisma.UploadScalarWhereWithAggregatesInput;
   take?: number;
@@ -250,18 +243,17 @@ export type UploadGroupByOutputType = {
   _max: UploadMaxAggregateOutputType | null;
 };
 
-type GetUploadGroupByPayload<T extends UploadGroupByArgs> =
-  Prisma.PrismaPromise<
-    Array<
-      Prisma.PickEnumerable<UploadGroupByOutputType, T['by']> & {
-        [P in keyof T & keyof UploadGroupByOutputType]: P extends '_count'
-          ? T[P] extends boolean
-            ? number
-            : Prisma.GetScalarType<T[P], UploadGroupByOutputType[P]>
-          : Prisma.GetScalarType<T[P], UploadGroupByOutputType[P]>;
-      }
-    >
-  >;
+type GetUploadGroupByPayload<T extends UploadGroupByArgs> = Prisma.PrismaPromise<
+  Array<
+    Prisma.PickEnumerable<UploadGroupByOutputType, T['by']> & {
+      [P in keyof T & keyof UploadGroupByOutputType]: P extends '_count'
+        ? T[P] extends boolean
+          ? number
+          : Prisma.GetScalarType<T[P], UploadGroupByOutputType[P]>
+        : Prisma.GetScalarType<T[P], UploadGroupByOutputType[P]>;
+    }
+  >
+>;
 
 export type UploadWhereInput = {
   AND?: Prisma.UploadWhereInput | Prisma.UploadWhereInput[];
@@ -354,19 +346,12 @@ export type UploadOrderByWithAggregationInput = {
 };
 
 export type UploadScalarWhereWithAggregatesInput = {
-  AND?:
-    | Prisma.UploadScalarWhereWithAggregatesInput
-    | Prisma.UploadScalarWhereWithAggregatesInput[];
+  AND?: Prisma.UploadScalarWhereWithAggregatesInput | Prisma.UploadScalarWhereWithAggregatesInput[];
   OR?: Prisma.UploadScalarWhereWithAggregatesInput[];
-  NOT?:
-    | Prisma.UploadScalarWhereWithAggregatesInput
-    | Prisma.UploadScalarWhereWithAggregatesInput[];
+  NOT?: Prisma.UploadScalarWhereWithAggregatesInput | Prisma.UploadScalarWhereWithAggregatesInput[];
   id?: Prisma.StringWithAggregatesFilter<'Upload'> | string;
   userId?: Prisma.StringWithAggregatesFilter<'Upload'> | string;
-  organizationId?:
-    | Prisma.StringNullableWithAggregatesFilter<'Upload'>
-    | string
-    | null;
+  organizationId?: Prisma.StringNullableWithAggregatesFilter<'Upload'> | string | null;
   filename?: Prisma.StringWithAggregatesFilter<'Upload'> | string;
   originalName?: Prisma.StringWithAggregatesFilter<'Upload'> | string;
   mimeType?: Prisma.StringWithAggregatesFilter<'Upload'> | string;
@@ -430,10 +415,7 @@ export type UploadUpdateInput = {
 export type UploadUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   userId?: Prisma.StringFieldUpdateOperationsInput | string;
-  organizationId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  organizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   filename?: Prisma.StringFieldUpdateOperationsInput | string;
   originalName?: Prisma.StringFieldUpdateOperationsInput | string;
   mimeType?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -479,10 +461,7 @@ export type UploadUpdateManyMutationInput = {
 export type UploadUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   userId?: Prisma.StringFieldUpdateOperationsInput | string;
-  organizationId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  organizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   filename?: Prisma.StringFieldUpdateOperationsInput | string;
   originalName?: Prisma.StringFieldUpdateOperationsInput | string;
   mimeType?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -561,10 +540,7 @@ export type UploadSumOrderByAggregateInput = {
 
 export type UploadCreateNestedManyWithoutUserInput = {
   create?:
-    | Prisma.XOR<
-        Prisma.UploadCreateWithoutUserInput,
-        Prisma.UploadUncheckedCreateWithoutUserInput
-      >
+    | Prisma.XOR<Prisma.UploadCreateWithoutUserInput, Prisma.UploadUncheckedCreateWithoutUserInput>
     | Prisma.UploadCreateWithoutUserInput[]
     | Prisma.UploadUncheckedCreateWithoutUserInput[];
   connectOrCreate?:
@@ -576,10 +552,7 @@ export type UploadCreateNestedManyWithoutUserInput = {
 
 export type UploadUncheckedCreateNestedManyWithoutUserInput = {
   create?:
-    | Prisma.XOR<
-        Prisma.UploadCreateWithoutUserInput,
-        Prisma.UploadUncheckedCreateWithoutUserInput
-      >
+    | Prisma.XOR<Prisma.UploadCreateWithoutUserInput, Prisma.UploadUncheckedCreateWithoutUserInput>
     | Prisma.UploadCreateWithoutUserInput[]
     | Prisma.UploadUncheckedCreateWithoutUserInput[];
   connectOrCreate?:
@@ -591,10 +564,7 @@ export type UploadUncheckedCreateNestedManyWithoutUserInput = {
 
 export type UploadUpdateManyWithoutUserNestedInput = {
   create?:
-    | Prisma.XOR<
-        Prisma.UploadCreateWithoutUserInput,
-        Prisma.UploadUncheckedCreateWithoutUserInput
-      >
+    | Prisma.XOR<Prisma.UploadCreateWithoutUserInput, Prisma.UploadUncheckedCreateWithoutUserInput>
     | Prisma.UploadCreateWithoutUserInput[]
     | Prisma.UploadUncheckedCreateWithoutUserInput[];
   connectOrCreate?:
@@ -619,10 +589,7 @@ export type UploadUpdateManyWithoutUserNestedInput = {
 
 export type UploadUncheckedUpdateManyWithoutUserNestedInput = {
   create?:
-    | Prisma.XOR<
-        Prisma.UploadCreateWithoutUserInput,
-        Prisma.UploadUncheckedCreateWithoutUserInput
-      >
+    | Prisma.XOR<Prisma.UploadCreateWithoutUserInput, Prisma.UploadUncheckedCreateWithoutUserInput>
     | Prisma.UploadCreateWithoutUserInput[]
     | Prisma.UploadUncheckedCreateWithoutUserInput[];
   connectOrCreate?:
@@ -860,9 +827,7 @@ export type UploadCreateOrConnectWithoutOrganizationInput = {
 };
 
 export type UploadCreateManyOrganizationInputEnvelope = {
-  data:
-    | Prisma.UploadCreateManyOrganizationInput
-    | Prisma.UploadCreateManyOrganizationInput[];
+  data: Prisma.UploadCreateManyOrganizationInput | Prisma.UploadCreateManyOrganizationInput[];
   skipDuplicates?: boolean;
 };
 
@@ -926,10 +891,7 @@ export type UploadUpdateWithoutUserInput = {
 
 export type UploadUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
-  organizationId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  organizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   filename?: Prisma.StringFieldUpdateOperationsInput | string;
   originalName?: Prisma.StringFieldUpdateOperationsInput | string;
   mimeType?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -944,10 +906,7 @@ export type UploadUncheckedUpdateWithoutUserInput = {
 
 export type UploadUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
-  organizationId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  organizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   filename?: Prisma.StringFieldUpdateOperationsInput | string;
   originalName?: Prisma.StringFieldUpdateOperationsInput | string;
   mimeType?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -1021,8 +980,7 @@ export type UploadUncheckedUpdateManyWithoutOrganizationInput = {
 };
 
 export type UploadSelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -1045,8 +1003,7 @@ export type UploadSelect<
 >;
 
 export type UploadSelectCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -1069,8 +1026,7 @@ export type UploadSelectCreateManyAndReturn<
 >;
 
 export type UploadSelectUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -1109,8 +1065,7 @@ export type UploadSelectScalar = {
 };
 
 export type UploadOmit<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
   | 'id'
   | 'userId'
@@ -1128,30 +1083,26 @@ export type UploadOmit<
   ExtArgs['result']['upload']
 >;
 export type UploadInclude<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   organization?: boolean | Prisma.Upload$organizationArgs<ExtArgs>;
 };
 export type UploadIncludeCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   organization?: boolean | Prisma.Upload$organizationArgs<ExtArgs>;
 };
 export type UploadIncludeUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   organization?: boolean | Prisma.Upload$organizationArgs<ExtArgs>;
 };
 
 export type $UploadPayload<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   name: 'Upload';
   objects: {
@@ -1179,20 +1130,17 @@ export type $UploadPayload<
   composites: {};
 };
 
-export type UploadGetPayload<
-  S extends boolean | null | undefined | UploadDefaultArgs,
-> = runtime.Types.Result.GetResult<Prisma.$UploadPayload, S>;
+export type UploadGetPayload<S extends boolean | null | undefined | UploadDefaultArgs> =
+  runtime.Types.Result.GetResult<Prisma.$UploadPayload, S>;
 
 export type UploadCountArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = Omit<UploadFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
   select?: UploadCountAggregateInputType | true;
 };
 
 export interface UploadDelegate<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > {
   [K: symbol]: {
@@ -1324,12 +1272,7 @@ export interface UploadDelegate<
   findMany<T extends UploadFindManyArgs>(
     args?: Prisma.SelectSubset<T, UploadFindManyArgs<ExtArgs>>
   ): Prisma.PrismaPromise<
-    runtime.Types.Result.GetResult<
-      Prisma.$UploadPayload<ExtArgs>,
-      T,
-      'findMany',
-      GlobalOmitOptions
-    >
+    runtime.Types.Result.GetResult<Prisma.$UploadPayload<ExtArgs>, T, 'findMany', GlobalOmitOptions>
   >;
 
   /**
@@ -1347,12 +1290,7 @@ export interface UploadDelegate<
   create<T extends UploadCreateArgs>(
     args: Prisma.SelectSubset<T, UploadCreateArgs<ExtArgs>>
   ): Prisma.Prisma__UploadClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$UploadPayload<ExtArgs>,
-      T,
-      'create',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$UploadPayload<ExtArgs>, T, 'create', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -1422,12 +1360,7 @@ export interface UploadDelegate<
   delete<T extends UploadDeleteArgs>(
     args: Prisma.SelectSubset<T, UploadDeleteArgs<ExtArgs>>
   ): Prisma.Prisma__UploadClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$UploadPayload<ExtArgs>,
-      T,
-      'delete',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$UploadPayload<ExtArgs>, T, 'delete', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -1451,12 +1384,7 @@ export interface UploadDelegate<
   update<T extends UploadUpdateArgs>(
     args: Prisma.SelectSubset<T, UploadUpdateArgs<ExtArgs>>
   ): Prisma.Prisma__UploadClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$UploadPayload<ExtArgs>,
-      T,
-      'update',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$UploadPayload<ExtArgs>, T, 'update', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -1558,12 +1486,7 @@ export interface UploadDelegate<
   upsert<T extends UploadUpsertArgs>(
     args: Prisma.SelectSubset<T, UploadUpsertArgs<ExtArgs>>
   ): Prisma.Prisma__UploadClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$UploadPayload<ExtArgs>,
-      T,
-      'upsert',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$UploadPayload<ExtArgs>, T, 'upsert', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -1663,12 +1586,7 @@ export interface UploadDelegate<
               ? never
               : P extends string
                 ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                : [
-                    Error,
-                    'Field ',
-                    P,
-                    ` in "having" needs to be provided in "by"`,
-                  ];
+                : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
           }[HavingFields]
         : 'take' extends Prisma.Keys<T>
           ? 'orderBy' extends Prisma.Keys<T>
@@ -1698,11 +1616,8 @@ export interface UploadDelegate<
                     : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                 }[OrderFields],
   >(
-    args: Prisma.SubsetIntersection<T, UploadGroupByArgs, OrderByArg> &
-      InputErrors
-  ): {} extends InputErrors
-    ? GetUploadGroupByPayload<T>
-    : Prisma.PrismaPromise<InputErrors>;
+    args: Prisma.SubsetIntersection<T, UploadGroupByArgs, OrderByArg> & InputErrors
+  ): {} extends InputErrors ? GetUploadGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
   /**
    * Fields of the Upload model
    */
@@ -1718,8 +1633,7 @@ export interface UploadDelegate<
 export interface Prisma__UploadClient<
   T,
   Null = never,
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: 'PrismaPromise';
@@ -1757,14 +1671,8 @@ export interface Prisma__UploadClient<
    * @returns A Promise for the completion of which ever callback is executed.
    */
   then<TResult1 = T, TResult2 = never>(
-    onfulfilled?:
-      | ((value: T) => TResult1 | PromiseLike<TResult1>)
-      | undefined
-      | null,
-    onrejected?:
-      | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-      | undefined
-      | null
+    onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
   ): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
   /**
    * Attaches a callback for only the rejection of the Promise.
@@ -1772,10 +1680,7 @@ export interface Prisma__UploadClient<
    * @returns A Promise for the completion of the callback.
    */
   catch<TResult = never>(
-    onrejected?:
-      | ((reason: any) => TResult | PromiseLike<TResult>)
-      | undefined
-      | null
+    onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
   ): runtime.Types.Utils.JsPromise<T | TResult>;
   /**
    * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
@@ -1783,9 +1688,7 @@ export interface Prisma__UploadClient<
    * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
    * @returns A Promise for the completion of the callback.
    */
-  finally(
-    onfinally?: (() => void) | undefined | null
-  ): runtime.Types.Utils.JsPromise<T>;
+  finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
 }
 
 /**
@@ -1812,8 +1715,7 @@ export interface UploadFieldRefs {
  * Upload findUnique
  */
 export type UploadFindUniqueArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Upload
@@ -1837,8 +1739,7 @@ export type UploadFindUniqueArgs<
  * Upload findUniqueOrThrow
  */
 export type UploadFindUniqueOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Upload
@@ -1862,8 +1763,7 @@ export type UploadFindUniqueOrThrowArgs<
  * Upload findFirst
  */
 export type UploadFindFirstArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Upload
@@ -1886,9 +1786,7 @@ export type UploadFindFirstArgs<
    *
    * Determine the order of Uploads to fetch.
    */
-  orderBy?:
-    | Prisma.UploadOrderByWithRelationInput
-    | Prisma.UploadOrderByWithRelationInput[];
+  orderBy?: Prisma.UploadOrderByWithRelationInput | Prisma.UploadOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1919,8 +1817,7 @@ export type UploadFindFirstArgs<
  * Upload findFirstOrThrow
  */
 export type UploadFindFirstOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Upload
@@ -1943,9 +1840,7 @@ export type UploadFindFirstOrThrowArgs<
    *
    * Determine the order of Uploads to fetch.
    */
-  orderBy?:
-    | Prisma.UploadOrderByWithRelationInput
-    | Prisma.UploadOrderByWithRelationInput[];
+  orderBy?: Prisma.UploadOrderByWithRelationInput | Prisma.UploadOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1976,8 +1871,7 @@ export type UploadFindFirstOrThrowArgs<
  * Upload findMany
  */
 export type UploadFindManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Upload
@@ -2000,9 +1894,7 @@ export type UploadFindManyArgs<
    *
    * Determine the order of Uploads to fetch.
    */
-  orderBy?:
-    | Prisma.UploadOrderByWithRelationInput
-    | Prisma.UploadOrderByWithRelationInput[];
+  orderBy?: Prisma.UploadOrderByWithRelationInput | Prisma.UploadOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -2028,8 +1920,7 @@ export type UploadFindManyArgs<
  * Upload create
  */
 export type UploadCreateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Upload
@@ -2053,8 +1944,7 @@ export type UploadCreateArgs<
  * Upload createMany
  */
 export type UploadCreateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to create many Uploads.
@@ -2067,8 +1957,7 @@ export type UploadCreateManyArgs<
  * Upload createManyAndReturn
  */
 export type UploadCreateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Upload
@@ -2093,8 +1982,7 @@ export type UploadCreateManyAndReturnArgs<
  * Upload update
  */
 export type UploadUpdateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Upload
@@ -2122,16 +2010,12 @@ export type UploadUpdateArgs<
  * Upload updateMany
  */
 export type UploadUpdateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to update Uploads.
    */
-  data: Prisma.XOR<
-    Prisma.UploadUpdateManyMutationInput,
-    Prisma.UploadUncheckedUpdateManyInput
-  >;
+  data: Prisma.XOR<Prisma.UploadUpdateManyMutationInput, Prisma.UploadUncheckedUpdateManyInput>;
   /**
    * Filter which Uploads to update
    */
@@ -2146,8 +2030,7 @@ export type UploadUpdateManyArgs<
  * Upload updateManyAndReturn
  */
 export type UploadUpdateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Upload
@@ -2160,10 +2043,7 @@ export type UploadUpdateManyAndReturnArgs<
   /**
    * The data used to update Uploads.
    */
-  data: Prisma.XOR<
-    Prisma.UploadUpdateManyMutationInput,
-    Prisma.UploadUncheckedUpdateManyInput
-  >;
+  data: Prisma.XOR<Prisma.UploadUpdateManyMutationInput, Prisma.UploadUncheckedUpdateManyInput>;
   /**
    * Filter which Uploads to update
    */
@@ -2182,8 +2062,7 @@ export type UploadUpdateManyAndReturnArgs<
  * Upload upsert
  */
 export type UploadUpsertArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Upload
@@ -2204,25 +2083,18 @@ export type UploadUpsertArgs<
   /**
    * In case the Upload found by the `where` argument doesn't exist, create a new Upload with this data.
    */
-  create: Prisma.XOR<
-    Prisma.UploadCreateInput,
-    Prisma.UploadUncheckedCreateInput
-  >;
+  create: Prisma.XOR<Prisma.UploadCreateInput, Prisma.UploadUncheckedCreateInput>;
   /**
    * In case the Upload was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<
-    Prisma.UploadUpdateInput,
-    Prisma.UploadUncheckedUpdateInput
-  >;
+  update: Prisma.XOR<Prisma.UploadUpdateInput, Prisma.UploadUncheckedUpdateInput>;
 };
 
 /**
  * Upload delete
  */
 export type UploadDeleteArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Upload
@@ -2246,8 +2118,7 @@ export type UploadDeleteArgs<
  * Upload deleteMany
  */
 export type UploadDeleteManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which Uploads to delete
@@ -2263,8 +2134,7 @@ export type UploadDeleteManyArgs<
  * Upload.organization
  */
 export type Upload$organizationArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Organization
@@ -2285,8 +2155,7 @@ export type Upload$organizationArgs<
  * Upload without action
  */
 export type UploadDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Upload

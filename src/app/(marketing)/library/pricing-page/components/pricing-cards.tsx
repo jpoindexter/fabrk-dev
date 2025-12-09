@@ -4,12 +4,7 @@
  */
 
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardFooter,
-} from '@/components/ui/card';
+import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -40,40 +35,23 @@ export function PricingCards({ plans, isYearly }: PricingCardsProps) {
         return (
           <Card key={plan.id} tone={plan.badge ? 'primary' : 'neutral'}>
             {/* Card Header */}
-            <CardHeader
-              code={`0x0${idx}`}
-              title={plan.name}
-              meta={plan.badge || undefined}
-            />
+            <CardHeader code={`0x0${idx}`} title={plan.name} meta={plan.badge || undefined} />
 
             <CardContent padding="md">
               {/* Price */}
               <div className="mb-4 text-4xl font-semibold">
                 ${price}
-                <span className="text-muted-foreground text-lg font-normal">
-                  {period}
-                </span>
+                <span className="text-muted-foreground text-lg font-normal">{period}</span>
               </div>
 
               {/* Features */}
               <div className="border-border mb-4 flex-1 border-t pt-4">
-                <div
-                  className={cn(
-                    mode.font,
-                    'text-muted-foreground mb-2 text-xs'
-                  )}
-                >
+                <div className={cn(mode.font, 'text-muted-foreground mb-2 text-xs')}>
                   [FEATURES]:
                 </div>
                 <div className="space-y-1">
                   {plan.features.map((feature, idx) => (
-                    <div
-                      key={idx}
-                      className={cn(
-                        mode.font,
-                        'flex items-center gap-2 text-xs'
-                      )}
-                    >
+                    <div key={idx} className={cn(mode.font, 'flex items-center gap-2 text-xs')}>
                       <span className="text-success">&gt;</span>
                       <span>{feature}</span>
                     </div>

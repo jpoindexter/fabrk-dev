@@ -17,19 +17,16 @@ export function FeaturesCard() {
         </div>
         <div className={cn(mode.font, 'space-y-2 text-xs')}>
           <div>
-            <span className="text-success">&gt;</span> Search bar with query
-            display
+            <span className="text-success">&gt;</span> Search bar with query display
           </div>
           <div>
             <span className="text-success">&gt;</span> Category filter sidebar
           </div>
           <div>
-            <span className="text-success">&gt;</span> Tag checkboxes with
-            multi-select
+            <span className="text-success">&gt;</span> Tag checkboxes with multi-select
           </div>
           <div>
-            <span className="text-success">&gt;</span> Sort dropdown (relevance,
-            newest, rating)
+            <span className="text-success">&gt;</span> Sort dropdown (relevance, newest, rating)
           </div>
           <div>
             <span className="text-success">&gt;</span> Grid/list view toggle
@@ -42,8 +39,7 @@ export function FeaturesCard() {
           </div>
         </div>
         <div className={cn(mode.font, 'text-muted-foreground mt-4 text-xs')}>
-          [NOTE]: Connect to your search backend (Algolia, Elasticsearch, etc.)
-          for real results.
+          [NOTE]: Connect to your search backend (Algolia, Elasticsearch, etc.) for real results.
         </div>
       </CardContent>
     </Card>

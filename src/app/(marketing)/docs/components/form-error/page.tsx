@@ -132,9 +132,7 @@ export default function FormErrorPage() {
                 </div>
                 <div>
                   <div className="text-warning font-semibold">[WHY]:</div>
-                  <div className="text-muted-foreground pl-4">
-                    Why did it happen? (Root cause)
-                  </div>
+                  <div className="text-muted-foreground pl-4">Why did it happen? (Root cause)</div>
                 </div>
                 <div>
                   <div className="text-success font-semibold">[HOW]:</div>

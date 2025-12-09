@@ -111,24 +111,14 @@ export function PieChart({
 
   return (
     <div className={cn('flex flex-col gap-4', className)}>
-      <svg
-        width={size}
-        height={size}
-        viewBox={`0 0 ${size} ${size}`}
-        className="mx-auto"
-      >
+      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="mx-auto">
         {segmentsWithAngles.map((segment, index) => {
           const { startAngle, endAngle } = segment;
 
           const isHovered = hoveredIndex === index;
           const segmentRadius = isHovered ? radius + 5 : radius;
 
-          const path = getPath(
-            startAngle,
-            endAngle,
-            segmentRadius,
-            innerRadius
-          );
+          const path = getPath(startAngle, endAngle, segmentRadius, innerRadius);
 
           return (
             <g key={index}>
@@ -137,10 +127,7 @@ export function PieChart({
                 fill={segment.color}
                 stroke="hsl(var(--background))"
                 strokeWidth={2}
-                className={cn(
-                  'cursor-pointer transition-all',
-                  isHovered && 'opacity-90'
-                )}
+                className={cn('cursor-pointer transition-all', isHovered && 'opacity-90')}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => onSegmentClick?.(segment, index)}
@@ -153,9 +140,7 @@ export function PieChart({
                   dominantBaseline="middle"
                   className="fill-background pointer-events-none text-xs font-medium"
                 >
-                  {showPercentages
-                    ? `${segment.percentage.toFixed(0)}%`
-                    : segment.label}
+                  {showPercentages ? `${segment.percentage.toFixed(0)}%` : segment.label}
                 </text>
               )}
             </g>

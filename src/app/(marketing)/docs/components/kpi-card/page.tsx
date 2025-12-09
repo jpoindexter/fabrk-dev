@@ -42,9 +42,7 @@ export default function KpiCardPage() {
           preview: (
             <div className="border-border bg-background grid gap-4 border p-6 font-mono md:grid-cols-2">
               <div>
-                <div className="text-muted-foreground mb-2 font-mono text-xs">
-                  [KPI_01]:
-                </div>
+                <div className="text-muted-foreground mb-2 font-mono text-xs">[KPI_01]:</div>
                 <KpiCard
                   title="Revenue"
                   value="$45,231"
@@ -54,9 +52,7 @@ export default function KpiCardPage() {
                 />
               </div>
               <div>
-                <div className="text-muted-foreground mb-2 font-mono text-xs">
-                  [KPI_02]:
-                </div>
+                <div className="text-muted-foreground mb-2 font-mono text-xs">[KPI_02]:</div>
                 <KpiCard
                   title="Active Users"
                   value="2,350"

@@ -93,9 +93,7 @@ export function HowTo({
               </div>
 
               <div className="flex-1">
-                <h3 className="text-foreground mb-2 text-xl font-semibold">
-                  {step.name}
-                </h3>
+                <h3 className="text-foreground mb-2 text-xl font-semibold">{step.name}</h3>
                 <p className="text-muted-foreground">{step.text}</p>
 
                 {step.image && (

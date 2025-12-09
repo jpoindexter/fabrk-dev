@@ -124,13 +124,7 @@ export function LineChart({
 }: LineChartProps) {
   const theme = useThemeColors();
   /* eslint-disable-next-line design-system/no-hardcoded-colors -- Fallback colors before theme loads */
-  const fallbackColors = [
-    '#6366f1',
-    '#8b5cf6',
-    '#22c55e',
-    '#eab308',
-    '#ef4444',
-  ];
+  const fallbackColors = ['#6366f1', '#8b5cf6', '#22c55e', '#eab308', '#ef4444'];
   const colors = theme.chart.length > 0 ? theme.chart : fallbackColors;
   // Memoize tooltip to prevent recreation on every render
   const CustomTooltip = React.useMemo(
@@ -139,33 +133,21 @@ export function LineChart({
       ({ active, payload, label }: any) => {
         if (active && payload && payload.length) {
           return (
-            <div
-              className={cn('border-border bg-card border p-3', mode.radius)}
-            >
-              <p
-                className={cn(
-                  'text-foreground mb-2 text-xs font-semibold',
-                  mode.font
-                )}
-              >
+            <div className={cn('border-border bg-card border p-3', mode.radius)}>
+              <p className={cn('text-foreground mb-2 text-xs font-semibold', mode.font)}>
                 {xAxisFormatter ? xAxisFormatter(label) : label}
               </p>
               <div className="space-y-1">
                 {/* eslint-disable design-system/no-inline-styles -- Dynamic color from Recharts entry */}
                 {payload.map((entry: any, index: number) => (
-                  <p
-                    key={index}
-                    className={cn('text-muted-foreground text-xs', mode.font)}
-                  >
+                  <p key={index} className={cn('text-muted-foreground text-xs', mode.font)}>
                     <span
                       className="mr-2 inline-block h-2 w-2"
                       style={{ backgroundColor: entry.stroke }}
                     />
                     {entry.name}:{' '}
                     <span className="text-foreground font-semibold">
-                      {tooltipFormatter
-                        ? tooltipFormatter(entry.value, entry.name)
-                        : entry.value}
+                      {tooltipFormatter ? tooltipFormatter(entry.value, entry.name) : entry.value}
                     </span>
                   </p>
                 ))}
@@ -183,13 +165,7 @@ export function LineChart({
     <div className={cn('w-full', className)}>
       <ResponsiveContainer width="100%" height={height}>
         <RechartsLineChart data={data} margin={margin}>
-          {showGrid && (
-            <CartesianGrid
-              strokeDasharray="3 3"
-              stroke={theme.border}
-              opacity={0.5}
-            />
-          )}
+          {showGrid && <CartesianGrid strokeDasharray="3 3" stroke={theme.border} opacity={0.5} />}
           <XAxis
             dataKey={xAxisKey}
             tick={{ fill: theme.muted, fontSize: 12 }}
@@ -204,9 +180,7 @@ export function LineChart({
             tickFormatter={yAxisFormatter}
           />
           {showTooltip && <Tooltip content={CustomTooltip} />}
-          {showLegend && (
-            <Legend wrapperStyle={{ fontSize: 12 }} iconType="line" />
-          )}
+          {showLegend && <Legend wrapperStyle={{ fontSize: 12 }} iconType="line" />}
           {series.map((s, index) => (
             <Line
               key={s.dataKey}
@@ -261,9 +235,7 @@ export function LineChartCard({
   ...chartProps
 }: LineChartCardProps) {
   return (
-    <div
-      className={cn('border-border bg-card border', mode.radius, cardClassName)}
-    >
+    <div className={cn('border-border bg-card border', mode.radius, cardClassName)}>
       {/* Terminal Header */}
       <div className="border-border flex items-center justify-between border-b px-4 py-3">
         <div className="flex items-center gap-3">
@@ -273,14 +245,7 @@ export function LineChartCard({
               [{code}] {title.toUpperCase()}
             </span>
             {description && (
-              <p
-                className={cn(
-                  'text-muted-foreground mt-0.5 text-xs',
-                  mode.font
-                )}
-              >
-                {description}
-              </p>
+              <p className={cn('text-muted-foreground mt-0.5 text-xs', mode.font)}>{description}</p>
             )}
           </div>
         </div>

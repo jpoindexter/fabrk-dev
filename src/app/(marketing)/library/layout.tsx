@@ -13,11 +13,7 @@ const formatSectionTitle = (title: string, index: number) =>
 // Format item titles to terminal case
 const formatItemTitle = (title: string) => toDisplayCase(title);
 
-export default function LibraryLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function LibraryLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex flex-1">
       <DocsSidebar

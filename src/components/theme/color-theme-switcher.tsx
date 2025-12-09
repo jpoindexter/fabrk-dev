@@ -62,9 +62,7 @@ export function ColorThemeSwitcher() {
 
   return (
     <div className="space-y-4">
-      <p className="text-sm font-medium">
-        Choose Theme ({themes.length} available)
-      </p>
+      <p className="text-sm font-medium">Choose Theme ({themes.length} available)</p>
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
         {themes.map((theme) => (
           <Button

@@ -15,15 +15,10 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     // Initialize PostHog on client side
-    if (
-      typeof window !== 'undefined' &&
-      process.env.NEXT_PUBLIC_POSTHOG_KEY &&
-      !posthog.__loaded
-    ) {
+    if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_POSTHOG_KEY && !posthog.__loaded) {
       posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
         api_host: '/ingest',
-        ui_host:
-          process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com',
+        ui_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com',
         // Disable in development unless explicitly enabled
         loaded: (posthog) => {
           if (process.env.NODE_ENV === 'development') {

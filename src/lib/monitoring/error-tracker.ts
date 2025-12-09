@@ -94,10 +94,7 @@ export function initErrorTracking(options?: {
 /**
  * Capture error
  */
-export function captureError(
-  error: Error | string,
-  context?: ErrorContext
-): string {
+export function captureError(error: Error | string, context?: ErrorContext): string {
   const errorMessage = typeof error === 'string' ? error : error.message;
   const errorStack = typeof error === 'string' ? undefined : error.stack;
 
@@ -157,10 +154,7 @@ export function captureError(
 /**
  * Capture warning
  */
-export function captureWarning(
-  message: string,
-  context?: ErrorContext
-): string {
+export function captureWarning(message: string, context?: ErrorContext): string {
   const report: ErrorReport = {
     id: crypto.randomUUID(),
     timestamp: new Date(),
@@ -200,22 +194,12 @@ export function captureInfo(message: string, context?: ErrorContext): string {
  */
 interface SentryWindow {
   Sentry?: {
-    setUser: (
-      user: { id: string; email?: string; username?: string } | null
-    ) => void;
-    addBreadcrumb: (breadcrumb: {
-      category: string;
-      message: string;
-      level: string;
-    }) => void;
+    setUser: (user: { id: string; email?: string; username?: string } | null) => void;
+    addBreadcrumb: (breadcrumb: { category: string; message: string; level: string }) => void;
   };
 }
 
-export function setUserContext(user: {
-  id: string;
-  email?: string;
-  name?: string;
-}) {
+export function setUserContext(user: { id: string; email?: string; name?: string }) {
   if (typeof window !== 'undefined' && (window as SentryWindow).Sentry) {
     (window as SentryWindow).Sentry!.setUser({
       id: user.id,
@@ -270,9 +254,7 @@ export function trackPerformance(metric: Omit<PerformanceMetric, 'timestamp'>) {
 export function trackPageLoad() {
   if (typeof window === 'undefined') return;
 
-  const navigation = performance.getEntriesByType(
-    'navigation'
-  )[0] as PerformanceNavigationTiming;
+  const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
 
   if (navigation) {
     trackPerformance({
@@ -284,9 +266,7 @@ export function trackPageLoad() {
 
     trackPerformance({
       name: 'dom_content_loaded',
-      value: Math.round(
-        navigation.domContentLoadedEventEnd - navigation.fetchStart
-      ),
+      value: Math.round(navigation.domContentLoadedEventEnd - navigation.fetchStart),
       unit: 'ms',
       tags: { route: window.location.pathname },
     });
@@ -303,11 +283,7 @@ export function trackPageLoad() {
 /**
  * Track API call performance
  */
-export function trackAPICall(
-  endpoint: string,
-  duration: number,
-  status: number
-) {
+export function trackAPICall(endpoint: string, duration: number, status: number) {
   trackPerformance({
     name: 'api_call',
     value: duration,

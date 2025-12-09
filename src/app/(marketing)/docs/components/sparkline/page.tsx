@@ -1,11 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import {
-  Sparkline,
-  SparklineCard,
-  SparklineGroup,
-} from '@/components/ui/sparkline';
+import { Sparkline, SparklineCard, SparklineGroup } from '@/components/ui/sparkline';
 
 export default function SparklinePage() {
   const sampleData = [4, 8, 5, 10, 7, 12, 8, 15, 11, 14];
@@ -20,14 +16,7 @@ export default function SparklinePage() {
       description="Compact line charts for showing trends and data patterns inline with text or in small spaces."
       importCode={`import { Sparkline, SparklineCard, SparklineGroup } from "@/components/ui/sparkline";`}
       mainPreview={{
-        preview: (
-          <Sparkline
-            data={sampleData}
-            width={100}
-            height={30}
-            strokeWidth={2}
-          />
-        ),
+        preview: <Sparkline data={sampleData} width={100} height={30} strokeWidth={2} />,
         code: `<Sparkline
   data={[4, 8, 5, 10, 7, 12, 8, 15, 11, 14]}
   width={100}
@@ -41,12 +30,7 @@ export default function SparklinePage() {
           description: 'Sparkline with filled area below the line',
           preview: (
             <div className="flex gap-4">
-              <Sparkline
-                data={sampleData}
-                width={100}
-                height={40}
-                showArea={true}
-              />
+              <Sparkline data={sampleData} width={100} height={40} showArea={true} />
               <Sparkline
                 data={revenueData}
                 width={100}
@@ -82,12 +66,7 @@ export default function SparklinePage() {
           description: 'Sparkline showing data points',
           preview: (
             <div className="flex gap-4">
-              <Sparkline
-                data={sampleData}
-                width={120}
-                height={40}
-                showDots={true}
-              />
+              <Sparkline data={sampleData} width={120} height={40} showDots={true} />
               <Sparkline
                 data={revenueData}
                 width={120}

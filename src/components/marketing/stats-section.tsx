@@ -38,9 +38,7 @@ function AnimatedCounter({
     const unsubscribe = springValue.on('change', (latest) => {
       if (ref.current) {
         const formatted =
-          decimals > 0
-            ? latest.toFixed(decimals)
-            : Math.floor(latest).toLocaleString();
+          decimals > 0 ? latest.toFixed(decimals) : Math.floor(latest).toLocaleString();
         ref.current.textContent = `${prefix}${formatted}${suffix}`;
       }
     });
@@ -109,8 +107,7 @@ export function StatsSection() {
             viewport={{ once: true }}
           >
             <p className={cn('text-muted-foreground text-sm', mode.font)}>
-              &gt; Join hundreds of developers shipping production-ready SaaS
-              apps
+              &gt; Join hundreds of developers shipping production-ready SaaS apps
             </p>
           </motion.div>
           <motion.div
@@ -119,12 +116,7 @@ export function StatsSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <span
-              className={cn(
-                'text-muted-foreground mt-2 block text-xs',
-                mode.font
-              )}
-            >
+            <span className={cn('text-muted-foreground mt-2 block text-xs', mode.font)}>
               *Projected estimates based on early access users
             </span>
           </motion.div>
@@ -153,12 +145,7 @@ export function StatsSection() {
                   title={`[ [0x${(index + 31).toString(16).toUpperCase()}] ${stat.label.toUpperCase().replace(/ /g, '_')} ]`}
                 />
                 <CardContent>
-                  <div
-                    className={cn(
-                      'text-foreground mb-2 text-3xl font-semibold',
-                      mode.font
-                    )}
-                  >
+                  <div className={cn('text-foreground mb-2 text-3xl font-semibold', mode.font)}>
                     <AnimatedCounter
                       value={stat.value}
                       suffix={stat.suffix}

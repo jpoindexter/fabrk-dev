@@ -104,9 +104,7 @@ export default function SidebarPage() {
             <div className="border-border flex h-96 overflow-hidden border">
               <Sidebar items={itemsWithBadges} />
               <div className="bg-muted/20 flex-1 p-6">
-                <p className="text-muted-foreground text-sm">
-                  Main content area
-                </p>
+                <p className="text-muted-foreground text-sm">Main content area</p>
               </div>
             </div>
           ),
@@ -131,9 +129,7 @@ export default function SidebarPage() {
             <div className="border-border flex h-96 overflow-hidden border">
               <Sidebar items={nestedItems} />
               <div className="bg-muted/20 flex-1 p-6">
-                <p className="text-muted-foreground text-sm">
-                  Main content area
-                </p>
+                <p className="text-muted-foreground text-sm">Main content area</p>
               </div>
             </div>
           ),
@@ -170,9 +166,7 @@ export default function SidebarPage() {
             <div className="border-border flex h-96 overflow-hidden border">
               <Sidebar items={basicItems} defaultCollapsed={true} />
               <div className="bg-muted/20 flex-1 p-6">
-                <p className="text-muted-foreground text-sm">
-                  Main content area
-                </p>
+                <p className="text-muted-foreground text-sm">Main content area</p>
               </div>
             </div>
           ),

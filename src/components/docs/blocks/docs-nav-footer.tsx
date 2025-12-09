@@ -31,9 +31,7 @@ export function DocsNavFooter({ previous, next }: DocsNavFooterProps) {
           <ChevronLeft className="h-4 w-4" aria-hidden="true" />
           <div>
             <p className={`${docsTypography.caption} uppercase`}>Previous</p>
-            <p
-              className={`${docsTypography.h4} group-hover:text-primary uppercase`}
-            >
+            <p className={`${docsTypography.h4} group-hover:text-primary uppercase`}>
               {previous.title}
             </p>
           </div>
@@ -49,9 +47,7 @@ export function DocsNavFooter({ previous, next }: DocsNavFooterProps) {
         >
           <div>
             <p className={`${docsTypography.caption} uppercase`}>Next</p>
-            <p
-              className={`${docsTypography.h4} group-hover:text-primary uppercase`}
-            >
+            <p className={`${docsTypography.h4} group-hover:text-primary uppercase`}>
               {next.title}
             </p>
           </div>

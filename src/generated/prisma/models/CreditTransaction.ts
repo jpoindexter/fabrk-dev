@@ -107,8 +107,7 @@ export type CreditTransactionCountAggregateInputType = {
 };
 
 export type CreditTransactionAggregateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which CreditTransaction to aggregate.
@@ -172,12 +171,8 @@ export type CreditTransactionAggregateArgs<
   _max?: CreditTransactionMaxAggregateInputType;
 };
 
-export type GetCreditTransactionAggregateType<
-  T extends CreditTransactionAggregateArgs,
-> = {
-  [P in keyof T & keyof AggregateCreditTransaction]: P extends
-    | '_count'
-    | 'count'
+export type GetCreditTransactionAggregateType<T extends CreditTransactionAggregateArgs> = {
+  [P in keyof T & keyof AggregateCreditTransaction]: P extends '_count' | 'count'
     ? T[P] extends true
       ? number
       : Prisma.GetScalarType<T[P], AggregateCreditTransaction[P]>
@@ -185,16 +180,13 @@ export type GetCreditTransactionAggregateType<
 };
 
 export type CreditTransactionGroupByArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.CreditTransactionWhereInput;
   orderBy?:
     | Prisma.CreditTransactionOrderByWithAggregationInput
     | Prisma.CreditTransactionOrderByWithAggregationInput[];
-  by:
-    | Prisma.CreditTransactionScalarFieldEnum[]
-    | Prisma.CreditTransactionScalarFieldEnum;
+  by: Prisma.CreditTransactionScalarFieldEnum[] | Prisma.CreditTransactionScalarFieldEnum;
   having?: Prisma.CreditTransactionScalarWhereWithAggregatesInput;
   take?: number;
   skip?: number;
@@ -221,46 +213,32 @@ export type CreditTransactionGroupByOutputType = {
   _max: CreditTransactionMaxAggregateOutputType | null;
 };
 
-type GetCreditTransactionGroupByPayload<
-  T extends CreditTransactionGroupByArgs,
-> = Prisma.PrismaPromise<
-  Array<
-    Prisma.PickEnumerable<CreditTransactionGroupByOutputType, T['by']> & {
-      [P in keyof T &
-        keyof CreditTransactionGroupByOutputType]: P extends '_count'
-        ? T[P] extends boolean
-          ? number
-          : Prisma.GetScalarType<T[P], CreditTransactionGroupByOutputType[P]>
-        : Prisma.GetScalarType<T[P], CreditTransactionGroupByOutputType[P]>;
-    }
-  >
->;
+type GetCreditTransactionGroupByPayload<T extends CreditTransactionGroupByArgs> =
+  Prisma.PrismaPromise<
+    Array<
+      Prisma.PickEnumerable<CreditTransactionGroupByOutputType, T['by']> & {
+        [P in keyof T & keyof CreditTransactionGroupByOutputType]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
+            : Prisma.GetScalarType<T[P], CreditTransactionGroupByOutputType[P]>
+          : Prisma.GetScalarType<T[P], CreditTransactionGroupByOutputType[P]>;
+      }
+    >
+  >;
 
 export type CreditTransactionWhereInput = {
-  AND?:
-    | Prisma.CreditTransactionWhereInput
-    | Prisma.CreditTransactionWhereInput[];
+  AND?: Prisma.CreditTransactionWhereInput | Prisma.CreditTransactionWhereInput[];
   OR?: Prisma.CreditTransactionWhereInput[];
-  NOT?:
-    | Prisma.CreditTransactionWhereInput
-    | Prisma.CreditTransactionWhereInput[];
+  NOT?: Prisma.CreditTransactionWhereInput | Prisma.CreditTransactionWhereInput[];
   id?: Prisma.StringFilter<'CreditTransaction'> | string;
   balanceId?: Prisma.StringFilter<'CreditTransaction'> | string;
   amount?: Prisma.IntFilter<'CreditTransaction'> | number;
-  type?:
-    | Prisma.EnumCreditTransactionTypeFilter<'CreditTransaction'>
-    | $Enums.CreditTransactionType;
-  description?:
-    | Prisma.StringNullableFilter<'CreditTransaction'>
-    | string
-    | null;
+  type?: Prisma.EnumCreditTransactionTypeFilter<'CreditTransaction'> | $Enums.CreditTransactionType;
+  description?: Prisma.StringNullableFilter<'CreditTransaction'> | string | null;
   endpoint?: Prisma.StringNullableFilter<'CreditTransaction'> | string | null;
   metadata?: Prisma.JsonNullableFilter<'CreditTransaction'>;
   createdAt?: Prisma.DateTimeFilter<'CreditTransaction'> | Date | string;
-  balance?: Prisma.XOR<
-    Prisma.CreditBalanceScalarRelationFilter,
-    Prisma.CreditBalanceWhereInput
-  >;
+  balance?: Prisma.XOR<Prisma.CreditBalanceScalarRelationFilter, Prisma.CreditBalanceWhereInput>;
 };
 
 export type CreditTransactionOrderByWithRelationInput = {
@@ -278,29 +256,19 @@ export type CreditTransactionOrderByWithRelationInput = {
 export type CreditTransactionWhereUniqueInput = Prisma.AtLeast<
   {
     id?: string;
-    AND?:
-      | Prisma.CreditTransactionWhereInput
-      | Prisma.CreditTransactionWhereInput[];
+    AND?: Prisma.CreditTransactionWhereInput | Prisma.CreditTransactionWhereInput[];
     OR?: Prisma.CreditTransactionWhereInput[];
-    NOT?:
-      | Prisma.CreditTransactionWhereInput
-      | Prisma.CreditTransactionWhereInput[];
+    NOT?: Prisma.CreditTransactionWhereInput | Prisma.CreditTransactionWhereInput[];
     balanceId?: Prisma.StringFilter<'CreditTransaction'> | string;
     amount?: Prisma.IntFilter<'CreditTransaction'> | number;
     type?:
       | Prisma.EnumCreditTransactionTypeFilter<'CreditTransaction'>
       | $Enums.CreditTransactionType;
-    description?:
-      | Prisma.StringNullableFilter<'CreditTransaction'>
-      | string
-      | null;
+    description?: Prisma.StringNullableFilter<'CreditTransaction'> | string | null;
     endpoint?: Prisma.StringNullableFilter<'CreditTransaction'> | string | null;
     metadata?: Prisma.JsonNullableFilter<'CreditTransaction'>;
     createdAt?: Prisma.DateTimeFilter<'CreditTransaction'> | Date | string;
-    balance?: Prisma.XOR<
-      Prisma.CreditBalanceScalarRelationFilter,
-      Prisma.CreditBalanceWhereInput
-    >;
+    balance?: Prisma.XOR<Prisma.CreditBalanceScalarRelationFilter, Prisma.CreditBalanceWhereInput>;
   },
   'id'
 >;
@@ -335,19 +303,10 @@ export type CreditTransactionScalarWhereWithAggregatesInput = {
   type?:
     | Prisma.EnumCreditTransactionTypeWithAggregatesFilter<'CreditTransaction'>
     | $Enums.CreditTransactionType;
-  description?:
-    | Prisma.StringNullableWithAggregatesFilter<'CreditTransaction'>
-    | string
-    | null;
-  endpoint?:
-    | Prisma.StringNullableWithAggregatesFilter<'CreditTransaction'>
-    | string
-    | null;
+  description?: Prisma.StringNullableWithAggregatesFilter<'CreditTransaction'> | string | null;
+  endpoint?: Prisma.StringNullableWithAggregatesFilter<'CreditTransaction'> | string | null;
   metadata?: Prisma.JsonNullableWithAggregatesFilter<'CreditTransaction'>;
-  createdAt?:
-    | Prisma.DateTimeWithAggregatesFilter<'CreditTransaction'>
-    | Date
-    | string;
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<'CreditTransaction'> | Date | string;
 };
 
 export type CreditTransactionCreateInput = {
@@ -375,9 +334,7 @@ export type CreditTransactionUncheckedCreateInput = {
 export type CreditTransactionUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   amount?: Prisma.IntFieldUpdateOperationsInput | number;
-  type?:
-    | Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput
-    | $Enums.CreditTransactionType;
+  type?: Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType;
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   endpoint?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
@@ -389,9 +346,7 @@ export type CreditTransactionUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   balanceId?: Prisma.StringFieldUpdateOperationsInput | string;
   amount?: Prisma.IntFieldUpdateOperationsInput | number;
-  type?:
-    | Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput
-    | $Enums.CreditTransactionType;
+  type?: Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType;
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   endpoint?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
@@ -412,9 +367,7 @@ export type CreditTransactionCreateManyInput = {
 export type CreditTransactionUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   amount?: Prisma.IntFieldUpdateOperationsInput | number;
-  type?:
-    | Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput
-    | $Enums.CreditTransactionType;
+  type?: Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType;
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   endpoint?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
@@ -425,9 +378,7 @@ export type CreditTransactionUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   balanceId?: Prisma.StringFieldUpdateOperationsInput | string;
   amount?: Prisma.IntFieldUpdateOperationsInput | number;
-  type?:
-    | Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput
-    | $Enums.CreditTransactionType;
+  type?: Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType;
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   endpoint?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
@@ -495,9 +446,7 @@ export type CreditTransactionCreateNestedManyWithoutBalanceInput = {
     | Prisma.CreditTransactionCreateOrConnectWithoutBalanceInput
     | Prisma.CreditTransactionCreateOrConnectWithoutBalanceInput[];
   createMany?: Prisma.CreditTransactionCreateManyBalanceInputEnvelope;
-  connect?:
-    | Prisma.CreditTransactionWhereUniqueInput
-    | Prisma.CreditTransactionWhereUniqueInput[];
+  connect?: Prisma.CreditTransactionWhereUniqueInput | Prisma.CreditTransactionWhereUniqueInput[];
 };
 
 export type CreditTransactionUncheckedCreateNestedManyWithoutBalanceInput = {
@@ -512,9 +461,7 @@ export type CreditTransactionUncheckedCreateNestedManyWithoutBalanceInput = {
     | Prisma.CreditTransactionCreateOrConnectWithoutBalanceInput
     | Prisma.CreditTransactionCreateOrConnectWithoutBalanceInput[];
   createMany?: Prisma.CreditTransactionCreateManyBalanceInputEnvelope;
-  connect?:
-    | Prisma.CreditTransactionWhereUniqueInput
-    | Prisma.CreditTransactionWhereUniqueInput[];
+  connect?: Prisma.CreditTransactionWhereUniqueInput | Prisma.CreditTransactionWhereUniqueInput[];
 };
 
 export type CreditTransactionUpdateManyWithoutBalanceNestedInput = {
@@ -532,18 +479,12 @@ export type CreditTransactionUpdateManyWithoutBalanceNestedInput = {
     | Prisma.CreditTransactionUpsertWithWhereUniqueWithoutBalanceInput
     | Prisma.CreditTransactionUpsertWithWhereUniqueWithoutBalanceInput[];
   createMany?: Prisma.CreditTransactionCreateManyBalanceInputEnvelope;
-  set?:
-    | Prisma.CreditTransactionWhereUniqueInput
-    | Prisma.CreditTransactionWhereUniqueInput[];
+  set?: Prisma.CreditTransactionWhereUniqueInput | Prisma.CreditTransactionWhereUniqueInput[];
   disconnect?:
     | Prisma.CreditTransactionWhereUniqueInput
     | Prisma.CreditTransactionWhereUniqueInput[];
-  delete?:
-    | Prisma.CreditTransactionWhereUniqueInput
-    | Prisma.CreditTransactionWhereUniqueInput[];
-  connect?:
-    | Prisma.CreditTransactionWhereUniqueInput
-    | Prisma.CreditTransactionWhereUniqueInput[];
+  delete?: Prisma.CreditTransactionWhereUniqueInput | Prisma.CreditTransactionWhereUniqueInput[];
+  connect?: Prisma.CreditTransactionWhereUniqueInput | Prisma.CreditTransactionWhereUniqueInput[];
   update?:
     | Prisma.CreditTransactionUpdateWithWhereUniqueWithoutBalanceInput
     | Prisma.CreditTransactionUpdateWithWhereUniqueWithoutBalanceInput[];
@@ -570,18 +511,12 @@ export type CreditTransactionUncheckedUpdateManyWithoutBalanceNestedInput = {
     | Prisma.CreditTransactionUpsertWithWhereUniqueWithoutBalanceInput
     | Prisma.CreditTransactionUpsertWithWhereUniqueWithoutBalanceInput[];
   createMany?: Prisma.CreditTransactionCreateManyBalanceInputEnvelope;
-  set?:
-    | Prisma.CreditTransactionWhereUniqueInput
-    | Prisma.CreditTransactionWhereUniqueInput[];
+  set?: Prisma.CreditTransactionWhereUniqueInput | Prisma.CreditTransactionWhereUniqueInput[];
   disconnect?:
     | Prisma.CreditTransactionWhereUniqueInput
     | Prisma.CreditTransactionWhereUniqueInput[];
-  delete?:
-    | Prisma.CreditTransactionWhereUniqueInput
-    | Prisma.CreditTransactionWhereUniqueInput[];
-  connect?:
-    | Prisma.CreditTransactionWhereUniqueInput
-    | Prisma.CreditTransactionWhereUniqueInput[];
+  delete?: Prisma.CreditTransactionWhereUniqueInput | Prisma.CreditTransactionWhereUniqueInput[];
+  connect?: Prisma.CreditTransactionWhereUniqueInput | Prisma.CreditTransactionWhereUniqueInput[];
   update?:
     | Prisma.CreditTransactionUpdateWithWhereUniqueWithoutBalanceInput
     | Prisma.CreditTransactionUpdateWithWhereUniqueWithoutBalanceInput[];
@@ -661,23 +596,14 @@ export type CreditTransactionUpdateManyWithWhereWithoutBalanceInput = {
 };
 
 export type CreditTransactionScalarWhereInput = {
-  AND?:
-    | Prisma.CreditTransactionScalarWhereInput
-    | Prisma.CreditTransactionScalarWhereInput[];
+  AND?: Prisma.CreditTransactionScalarWhereInput | Prisma.CreditTransactionScalarWhereInput[];
   OR?: Prisma.CreditTransactionScalarWhereInput[];
-  NOT?:
-    | Prisma.CreditTransactionScalarWhereInput
-    | Prisma.CreditTransactionScalarWhereInput[];
+  NOT?: Prisma.CreditTransactionScalarWhereInput | Prisma.CreditTransactionScalarWhereInput[];
   id?: Prisma.StringFilter<'CreditTransaction'> | string;
   balanceId?: Prisma.StringFilter<'CreditTransaction'> | string;
   amount?: Prisma.IntFilter<'CreditTransaction'> | number;
-  type?:
-    | Prisma.EnumCreditTransactionTypeFilter<'CreditTransaction'>
-    | $Enums.CreditTransactionType;
-  description?:
-    | Prisma.StringNullableFilter<'CreditTransaction'>
-    | string
-    | null;
+  type?: Prisma.EnumCreditTransactionTypeFilter<'CreditTransaction'> | $Enums.CreditTransactionType;
+  description?: Prisma.StringNullableFilter<'CreditTransaction'> | string | null;
   endpoint?: Prisma.StringNullableFilter<'CreditTransaction'> | string | null;
   metadata?: Prisma.JsonNullableFilter<'CreditTransaction'>;
   createdAt?: Prisma.DateTimeFilter<'CreditTransaction'> | Date | string;
@@ -696,9 +622,7 @@ export type CreditTransactionCreateManyBalanceInput = {
 export type CreditTransactionUpdateWithoutBalanceInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   amount?: Prisma.IntFieldUpdateOperationsInput | number;
-  type?:
-    | Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput
-    | $Enums.CreditTransactionType;
+  type?: Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType;
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   endpoint?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
@@ -708,9 +632,7 @@ export type CreditTransactionUpdateWithoutBalanceInput = {
 export type CreditTransactionUncheckedUpdateWithoutBalanceInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   amount?: Prisma.IntFieldUpdateOperationsInput | number;
-  type?:
-    | Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput
-    | $Enums.CreditTransactionType;
+  type?: Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType;
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   endpoint?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
@@ -720,9 +642,7 @@ export type CreditTransactionUncheckedUpdateWithoutBalanceInput = {
 export type CreditTransactionUncheckedUpdateManyWithoutBalanceInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   amount?: Prisma.IntFieldUpdateOperationsInput | number;
-  type?:
-    | Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput
-    | $Enums.CreditTransactionType;
+  type?: Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType;
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   endpoint?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
@@ -730,8 +650,7 @@ export type CreditTransactionUncheckedUpdateManyWithoutBalanceInput = {
 };
 
 export type CreditTransactionSelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -748,8 +667,7 @@ export type CreditTransactionSelect<
 >;
 
 export type CreditTransactionSelectCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -766,8 +684,7 @@ export type CreditTransactionSelectCreateManyAndReturn<
 >;
 
 export type CreditTransactionSelectUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -795,41 +712,29 @@ export type CreditTransactionSelectScalar = {
 };
 
 export type CreditTransactionOmit<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
-  | 'id'
-  | 'balanceId'
-  | 'amount'
-  | 'type'
-  | 'description'
-  | 'endpoint'
-  | 'metadata'
-  | 'createdAt',
+  'id' | 'balanceId' | 'amount' | 'type' | 'description' | 'endpoint' | 'metadata' | 'createdAt',
   ExtArgs['result']['creditTransaction']
 >;
 export type CreditTransactionInclude<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   balance?: boolean | Prisma.CreditBalanceDefaultArgs<ExtArgs>;
 };
 export type CreditTransactionIncludeCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   balance?: boolean | Prisma.CreditBalanceDefaultArgs<ExtArgs>;
 };
 export type CreditTransactionIncludeUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   balance?: boolean | Prisma.CreditBalanceDefaultArgs<ExtArgs>;
 };
 
 export type $CreditTransactionPayload<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   name: 'CreditTransaction';
   objects: {
@@ -856,18 +761,13 @@ export type CreditTransactionGetPayload<
 > = runtime.Types.Result.GetResult<Prisma.$CreditTransactionPayload, S>;
 
 export type CreditTransactionCountArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = Omit<
-  CreditTransactionFindManyArgs,
-  'select' | 'include' | 'distinct' | 'omit'
-> & {
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+> = Omit<CreditTransactionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
   select?: CreditTransactionCountAggregateInputType | true;
 };
 
 export interface CreditTransactionDelegate<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > {
   [K: symbol]: {
@@ -912,10 +812,7 @@ export interface CreditTransactionDelegate<
    * })
    */
   findUniqueOrThrow<T extends CreditTransactionFindUniqueOrThrowArgs>(
-    args: Prisma.SelectSubset<
-      T,
-      CreditTransactionFindUniqueOrThrowArgs<ExtArgs>
-    >
+    args: Prisma.SelectSubset<T, CreditTransactionFindUniqueOrThrowArgs<ExtArgs>>
   ): Prisma.Prisma__CreditTransactionClient<
     runtime.Types.Result.GetResult<
       Prisma.$CreditTransactionPayload<ExtArgs>,
@@ -970,10 +867,7 @@ export interface CreditTransactionDelegate<
    * })
    */
   findFirstOrThrow<T extends CreditTransactionFindFirstOrThrowArgs>(
-    args?: Prisma.SelectSubset<
-      T,
-      CreditTransactionFindFirstOrThrowArgs<ExtArgs>
-    >
+    args?: Prisma.SelectSubset<T, CreditTransactionFindFirstOrThrowArgs<ExtArgs>>
   ): Prisma.Prisma__CreditTransactionClient<
     runtime.Types.Result.GetResult<
       Prisma.$CreditTransactionPayload<ExtArgs>,
@@ -1078,10 +972,7 @@ export interface CreditTransactionDelegate<
    *
    */
   createManyAndReturn<T extends CreditTransactionCreateManyAndReturnArgs>(
-    args?: Prisma.SelectSubset<
-      T,
-      CreditTransactionCreateManyAndReturnArgs<ExtArgs>
-    >
+    args?: Prisma.SelectSubset<T, CreditTransactionCreateManyAndReturnArgs<ExtArgs>>
   ): Prisma.PrismaPromise<
     runtime.Types.Result.GetResult<
       Prisma.$CreditTransactionPayload<ExtArgs>,
@@ -1212,10 +1103,7 @@ export interface CreditTransactionDelegate<
    *
    */
   updateManyAndReturn<T extends CreditTransactionUpdateManyAndReturnArgs>(
-    args: Prisma.SelectSubset<
-      T,
-      CreditTransactionUpdateManyAndReturnArgs<ExtArgs>
-    >
+    args: Prisma.SelectSubset<T, CreditTransactionUpdateManyAndReturnArgs<ExtArgs>>
   ): Prisma.PrismaPromise<
     runtime.Types.Result.GetResult<
       Prisma.$CreditTransactionPayload<ExtArgs>,
@@ -1275,10 +1163,7 @@ export interface CreditTransactionDelegate<
     T extends runtime.Types.Utils.Record<'select', any>
       ? T['select'] extends true
         ? number
-        : Prisma.GetScalarType<
-            T['select'],
-            CreditTransactionCountAggregateOutputType
-          >
+        : Prisma.GetScalarType<T['select'], CreditTransactionCountAggregateOutputType>
       : number
   >;
 
@@ -1353,12 +1238,7 @@ export interface CreditTransactionDelegate<
               ? never
               : P extends string
                 ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                : [
-                    Error,
-                    'Field ',
-                    P,
-                    ` in "having" needs to be provided in "by"`,
-                  ];
+                : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
           }[HavingFields]
         : 'take' extends Prisma.Keys<T>
           ? 'orderBy' extends Prisma.Keys<T>
@@ -1388,12 +1268,7 @@ export interface CreditTransactionDelegate<
                     : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                 }[OrderFields],
   >(
-    args: Prisma.SubsetIntersection<
-      T,
-      CreditTransactionGroupByArgs,
-      OrderByArg
-    > &
-      InputErrors
+    args: Prisma.SubsetIntersection<T, CreditTransactionGroupByArgs, OrderByArg> & InputErrors
   ): {} extends InputErrors
     ? GetCreditTransactionGroupByPayload<T>
     : Prisma.PrismaPromise<InputErrors>;
@@ -1412,8 +1287,7 @@ export interface CreditTransactionDelegate<
 export interface Prisma__CreditTransactionClient<
   T,
   Null = never,
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: 'PrismaPromise';
@@ -1438,14 +1312,8 @@ export interface Prisma__CreditTransactionClient<
    * @returns A Promise for the completion of which ever callback is executed.
    */
   then<TResult1 = T, TResult2 = never>(
-    onfulfilled?:
-      | ((value: T) => TResult1 | PromiseLike<TResult1>)
-      | undefined
-      | null,
-    onrejected?:
-      | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-      | undefined
-      | null
+    onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
   ): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
   /**
    * Attaches a callback for only the rejection of the Promise.
@@ -1453,10 +1321,7 @@ export interface Prisma__CreditTransactionClient<
    * @returns A Promise for the completion of the callback.
    */
   catch<TResult = never>(
-    onrejected?:
-      | ((reason: any) => TResult | PromiseLike<TResult>)
-      | undefined
-      | null
+    onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
   ): runtime.Types.Utils.JsPromise<T | TResult>;
   /**
    * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
@@ -1464,9 +1329,7 @@ export interface Prisma__CreditTransactionClient<
    * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
    * @returns A Promise for the completion of the callback.
    */
-  finally(
-    onfinally?: (() => void) | undefined | null
-  ): runtime.Types.Utils.JsPromise<T>;
+  finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
 }
 
 /**
@@ -1488,8 +1351,7 @@ export interface CreditTransactionFieldRefs {
  * CreditTransaction findUnique
  */
 export type CreditTransactionFindUniqueArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditTransaction
@@ -1513,8 +1375,7 @@ export type CreditTransactionFindUniqueArgs<
  * CreditTransaction findUniqueOrThrow
  */
 export type CreditTransactionFindUniqueOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditTransaction
@@ -1538,8 +1399,7 @@ export type CreditTransactionFindUniqueOrThrowArgs<
  * CreditTransaction findFirst
  */
 export type CreditTransactionFindFirstArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditTransaction
@@ -1588,17 +1448,14 @@ export type CreditTransactionFindFirstArgs<
    *
    * Filter by unique combinations of CreditTransactions.
    */
-  distinct?:
-    | Prisma.CreditTransactionScalarFieldEnum
-    | Prisma.CreditTransactionScalarFieldEnum[];
+  distinct?: Prisma.CreditTransactionScalarFieldEnum | Prisma.CreditTransactionScalarFieldEnum[];
 };
 
 /**
  * CreditTransaction findFirstOrThrow
  */
 export type CreditTransactionFindFirstOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditTransaction
@@ -1647,17 +1504,14 @@ export type CreditTransactionFindFirstOrThrowArgs<
    *
    * Filter by unique combinations of CreditTransactions.
    */
-  distinct?:
-    | Prisma.CreditTransactionScalarFieldEnum
-    | Prisma.CreditTransactionScalarFieldEnum[];
+  distinct?: Prisma.CreditTransactionScalarFieldEnum | Prisma.CreditTransactionScalarFieldEnum[];
 };
 
 /**
  * CreditTransaction findMany
  */
 export type CreditTransactionFindManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditTransaction
@@ -1701,17 +1555,14 @@ export type CreditTransactionFindManyArgs<
    * Skip the first `n` CreditTransactions.
    */
   skip?: number;
-  distinct?:
-    | Prisma.CreditTransactionScalarFieldEnum
-    | Prisma.CreditTransactionScalarFieldEnum[];
+  distinct?: Prisma.CreditTransactionScalarFieldEnum | Prisma.CreditTransactionScalarFieldEnum[];
 };
 
 /**
  * CreditTransaction create
  */
 export type CreditTransactionCreateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditTransaction
@@ -1738,15 +1589,12 @@ export type CreditTransactionCreateArgs<
  * CreditTransaction createMany
  */
 export type CreditTransactionCreateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to create many CreditTransactions.
    */
-  data:
-    | Prisma.CreditTransactionCreateManyInput
-    | Prisma.CreditTransactionCreateManyInput[];
+  data: Prisma.CreditTransactionCreateManyInput | Prisma.CreditTransactionCreateManyInput[];
   skipDuplicates?: boolean;
 };
 
@@ -1754,8 +1602,7 @@ export type CreditTransactionCreateManyArgs<
  * CreditTransaction createManyAndReturn
  */
 export type CreditTransactionCreateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditTransaction
@@ -1768,9 +1615,7 @@ export type CreditTransactionCreateManyAndReturnArgs<
   /**
    * The data used to create many CreditTransactions.
    */
-  data:
-    | Prisma.CreditTransactionCreateManyInput
-    | Prisma.CreditTransactionCreateManyInput[];
+  data: Prisma.CreditTransactionCreateManyInput | Prisma.CreditTransactionCreateManyInput[];
   skipDuplicates?: boolean;
   /**
    * Choose, which related nodes to fetch as well
@@ -1782,8 +1627,7 @@ export type CreditTransactionCreateManyAndReturnArgs<
  * CreditTransaction update
  */
 export type CreditTransactionUpdateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditTransaction
@@ -1814,8 +1658,7 @@ export type CreditTransactionUpdateArgs<
  * CreditTransaction updateMany
  */
 export type CreditTransactionUpdateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to update CreditTransactions.
@@ -1838,8 +1681,7 @@ export type CreditTransactionUpdateManyArgs<
  * CreditTransaction updateManyAndReturn
  */
 export type CreditTransactionUpdateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditTransaction
@@ -1874,8 +1716,7 @@ export type CreditTransactionUpdateManyAndReturnArgs<
  * CreditTransaction upsert
  */
 export type CreditTransactionUpsertArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditTransaction
@@ -1913,8 +1754,7 @@ export type CreditTransactionUpsertArgs<
  * CreditTransaction delete
  */
 export type CreditTransactionDeleteArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditTransaction
@@ -1938,8 +1778,7 @@ export type CreditTransactionDeleteArgs<
  * CreditTransaction deleteMany
  */
 export type CreditTransactionDeleteManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which CreditTransactions to delete
@@ -1955,8 +1794,7 @@ export type CreditTransactionDeleteManyArgs<
  * CreditTransaction without action
  */
 export type CreditTransactionDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditTransaction

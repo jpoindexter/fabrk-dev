@@ -22,15 +22,9 @@ export type * from './prismaNamespace';
 export const Decimal = runtime.Decimal;
 
 export const NullTypes = {
-  DbNull: runtime.NullTypes.DbNull as new (
-    secret: never
-  ) => typeof runtime.DbNull,
-  JsonNull: runtime.NullTypes.JsonNull as new (
-    secret: never
-  ) => typeof runtime.JsonNull,
-  AnyNull: runtime.NullTypes.AnyNull as new (
-    secret: never
-  ) => typeof runtime.AnyNull,
+  DbNull: runtime.NullTypes.DbNull as new (secret: never) => typeof runtime.DbNull,
+  JsonNull: runtime.NullTypes.JsonNull as new (secret: never) => typeof runtime.JsonNull,
+  AnyNull: runtime.NullTypes.AnyNull as new (secret: never) => typeof runtime.AnyNull,
 };
 /**
  * Helper for filtering JSON entries that have `null` on the database (empty on the db)
@@ -125,8 +119,7 @@ export const UserScalarFieldEnum = {
   updatedAt: 'updatedAt',
 } as const;
 
-export type UserScalarFieldEnum =
-  (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum];
+export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum];
 
 export const AccountScalarFieldEnum = {
   id: 'id',
@@ -305,8 +298,7 @@ export const JobScalarFieldEnum = {
   updatedAt: 'updatedAt',
 } as const;
 
-export type JobScalarFieldEnum =
-  (typeof JobScalarFieldEnum)[keyof typeof JobScalarFieldEnum];
+export type JobScalarFieldEnum = (typeof JobScalarFieldEnum)[keyof typeof JobScalarFieldEnum];
 
 export const EmailQueueScalarFieldEnum = {
   id: 'id',
@@ -519,8 +511,7 @@ export const JsonNullValueInput = {
   JsonNull: 'JsonNull',
 } as const;
 
-export type JsonNullValueInput =
-  (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput];
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput];
 
 export const QueryMode = {
   default: 'default',
@@ -535,8 +526,7 @@ export const JsonNullValueFilter = {
   AnyNull: 'AnyNull',
 } as const;
 
-export type JsonNullValueFilter =
-  (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter];
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter];
 
 export const NullsOrder = {
   first: 'first',

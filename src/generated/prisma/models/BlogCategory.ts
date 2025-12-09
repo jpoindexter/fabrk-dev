@@ -15,8 +15,7 @@ import type * as Prisma from '../internal/prismaNamespace';
  * Model BlogCategory
  *
  */
-export type BlogCategoryModel =
-  runtime.Types.Result.DefaultSelection<Prisma.$BlogCategoryPayload>;
+export type BlogCategoryModel = runtime.Types.Result.DefaultSelection<Prisma.$BlogCategoryPayload>;
 
 export type AggregateBlogCategory = {
   _count: BlogCategoryCountAggregateOutputType | null;
@@ -81,8 +80,7 @@ export type BlogCategoryCountAggregateInputType = {
 };
 
 export type BlogCategoryAggregateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which BlogCategory to aggregate.
@@ -134,18 +132,16 @@ export type BlogCategoryAggregateArgs<
   _max?: BlogCategoryMaxAggregateInputType;
 };
 
-export type GetBlogCategoryAggregateType<T extends BlogCategoryAggregateArgs> =
-  {
-    [P in keyof T & keyof AggregateBlogCategory]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : Prisma.GetScalarType<T[P], AggregateBlogCategory[P]>
-      : Prisma.GetScalarType<T[P], AggregateBlogCategory[P]>;
-  };
+export type GetBlogCategoryAggregateType<T extends BlogCategoryAggregateArgs> = {
+  [P in keyof T & keyof AggregateBlogCategory]: P extends '_count' | 'count'
+    ? T[P] extends true
+      ? number
+      : Prisma.GetScalarType<T[P], AggregateBlogCategory[P]>
+    : Prisma.GetScalarType<T[P], AggregateBlogCategory[P]>;
+};
 
 export type BlogCategoryGroupByArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.BlogCategoryWhereInput;
   orderBy?:
@@ -172,18 +168,17 @@ export type BlogCategoryGroupByOutputType = {
   _max: BlogCategoryMaxAggregateOutputType | null;
 };
 
-type GetBlogCategoryGroupByPayload<T extends BlogCategoryGroupByArgs> =
-  Prisma.PrismaPromise<
-    Array<
-      Prisma.PickEnumerable<BlogCategoryGroupByOutputType, T['by']> & {
-        [P in keyof T & keyof BlogCategoryGroupByOutputType]: P extends '_count'
-          ? T[P] extends boolean
-            ? number
-            : Prisma.GetScalarType<T[P], BlogCategoryGroupByOutputType[P]>
-          : Prisma.GetScalarType<T[P], BlogCategoryGroupByOutputType[P]>;
-      }
-    >
-  >;
+type GetBlogCategoryGroupByPayload<T extends BlogCategoryGroupByArgs> = Prisma.PrismaPromise<
+  Array<
+    Prisma.PickEnumerable<BlogCategoryGroupByOutputType, T['by']> & {
+      [P in keyof T & keyof BlogCategoryGroupByOutputType]: P extends '_count'
+        ? T[P] extends boolean
+          ? number
+          : Prisma.GetScalarType<T[P], BlogCategoryGroupByOutputType[P]>
+        : Prisma.GetScalarType<T[P], BlogCategoryGroupByOutputType[P]>;
+    }
+  >
+>;
 
 export type BlogCategoryWhereInput = {
   AND?: Prisma.BlogCategoryWhereInput | Prisma.BlogCategoryWhereInput[];
@@ -247,18 +242,9 @@ export type BlogCategoryScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<'BlogCategory'> | string;
   name?: Prisma.StringWithAggregatesFilter<'BlogCategory'> | string;
   slug?: Prisma.StringWithAggregatesFilter<'BlogCategory'> | string;
-  description?:
-    | Prisma.StringNullableWithAggregatesFilter<'BlogCategory'>
-    | string
-    | null;
-  createdAt?:
-    | Prisma.DateTimeWithAggregatesFilter<'BlogCategory'>
-    | Date
-    | string;
-  updatedAt?:
-    | Prisma.DateTimeWithAggregatesFilter<'BlogCategory'>
-    | Date
-    | string;
+  description?: Prisma.StringNullableWithAggregatesFilter<'BlogCategory'> | string | null;
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<'BlogCategory'> | Date | string;
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<'BlogCategory'> | Date | string;
 };
 
 export type BlogCategoryCreateInput = {
@@ -461,8 +447,7 @@ export type BlogCategoryCountOutputType = {
 };
 
 export type BlogCategoryCountOutputTypeSelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   posts?: boolean | BlogCategoryCountOutputTypeCountPostsArgs;
 };
@@ -471,8 +456,7 @@ export type BlogCategoryCountOutputTypeSelect<
  * BlogCategoryCountOutputType without action
  */
 export type BlogCategoryCountOutputTypeDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogCategoryCountOutputType
@@ -484,15 +468,13 @@ export type BlogCategoryCountOutputTypeDefaultArgs<
  * BlogCategoryCountOutputType without action
  */
 export type BlogCategoryCountOutputTypeCountPostsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.BlogPostWhereInput;
 };
 
 export type BlogCategorySelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -508,8 +490,7 @@ export type BlogCategorySelect<
 >;
 
 export type BlogCategorySelectCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -523,8 +504,7 @@ export type BlogCategorySelectCreateManyAndReturn<
 >;
 
 export type BlogCategorySelectUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -547,31 +527,26 @@ export type BlogCategorySelectScalar = {
 };
 
 export type BlogCategoryOmit<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
   'id' | 'name' | 'slug' | 'description' | 'createdAt' | 'updatedAt',
   ExtArgs['result']['blogCategory']
 >;
 export type BlogCategoryInclude<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   posts?: boolean | Prisma.BlogCategory$postsArgs<ExtArgs>;
   _count?: boolean | Prisma.BlogCategoryCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type BlogCategoryIncludeCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {};
 export type BlogCategoryIncludeUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {};
 
 export type $BlogCategoryPayload<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   name: 'BlogCategory';
   objects: {
@@ -591,23 +566,17 @@ export type $BlogCategoryPayload<
   composites: {};
 };
 
-export type BlogCategoryGetPayload<
-  S extends boolean | null | undefined | BlogCategoryDefaultArgs,
-> = runtime.Types.Result.GetResult<Prisma.$BlogCategoryPayload, S>;
+export type BlogCategoryGetPayload<S extends boolean | null | undefined | BlogCategoryDefaultArgs> =
+  runtime.Types.Result.GetResult<Prisma.$BlogCategoryPayload, S>;
 
 export type BlogCategoryCountArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = Omit<
-  BlogCategoryFindManyArgs,
-  'select' | 'include' | 'distinct' | 'omit'
-> & {
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+> = Omit<BlogCategoryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
   select?: BlogCategoryCountAggregateInputType | true;
 };
 
 export interface BlogCategoryDelegate<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > {
   [K: symbol]: {
@@ -1003,10 +972,7 @@ export interface BlogCategoryDelegate<
     T extends runtime.Types.Utils.Record<'select', any>
       ? T['select'] extends true
         ? number
-        : Prisma.GetScalarType<
-            T['select'],
-            BlogCategoryCountAggregateOutputType
-          >
+        : Prisma.GetScalarType<T['select'], BlogCategoryCountAggregateOutputType>
       : number
   >;
 
@@ -1081,12 +1047,7 @@ export interface BlogCategoryDelegate<
               ? never
               : P extends string
                 ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                : [
-                    Error,
-                    'Field ',
-                    P,
-                    ` in "having" needs to be provided in "by"`,
-                  ];
+                : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
           }[HavingFields]
         : 'take' extends Prisma.Keys<T>
           ? 'orderBy' extends Prisma.Keys<T>
@@ -1116,11 +1077,8 @@ export interface BlogCategoryDelegate<
                     : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                 }[OrderFields],
   >(
-    args: Prisma.SubsetIntersection<T, BlogCategoryGroupByArgs, OrderByArg> &
-      InputErrors
-  ): {} extends InputErrors
-    ? GetBlogCategoryGroupByPayload<T>
-    : Prisma.PrismaPromise<InputErrors>;
+    args: Prisma.SubsetIntersection<T, BlogCategoryGroupByArgs, OrderByArg> & InputErrors
+  ): {} extends InputErrors ? GetBlogCategoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
   /**
    * Fields of the BlogCategory model
    */
@@ -1136,8 +1094,7 @@ export interface BlogCategoryDelegate<
 export interface Prisma__BlogCategoryClient<
   T,
   Null = never,
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: 'PrismaPromise';
@@ -1159,14 +1116,8 @@ export interface Prisma__BlogCategoryClient<
    * @returns A Promise for the completion of which ever callback is executed.
    */
   then<TResult1 = T, TResult2 = never>(
-    onfulfilled?:
-      | ((value: T) => TResult1 | PromiseLike<TResult1>)
-      | undefined
-      | null,
-    onrejected?:
-      | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-      | undefined
-      | null
+    onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
   ): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
   /**
    * Attaches a callback for only the rejection of the Promise.
@@ -1174,10 +1125,7 @@ export interface Prisma__BlogCategoryClient<
    * @returns A Promise for the completion of the callback.
    */
   catch<TResult = never>(
-    onrejected?:
-      | ((reason: any) => TResult | PromiseLike<TResult>)
-      | undefined
-      | null
+    onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
   ): runtime.Types.Utils.JsPromise<T | TResult>;
   /**
    * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
@@ -1185,9 +1133,7 @@ export interface Prisma__BlogCategoryClient<
    * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
    * @returns A Promise for the completion of the callback.
    */
-  finally(
-    onfinally?: (() => void) | undefined | null
-  ): runtime.Types.Utils.JsPromise<T>;
+  finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
 }
 
 /**
@@ -1207,8 +1153,7 @@ export interface BlogCategoryFieldRefs {
  * BlogCategory findUnique
  */
 export type BlogCategoryFindUniqueArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogCategory
@@ -1232,8 +1177,7 @@ export type BlogCategoryFindUniqueArgs<
  * BlogCategory findUniqueOrThrow
  */
 export type BlogCategoryFindUniqueOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogCategory
@@ -1257,8 +1201,7 @@ export type BlogCategoryFindUniqueOrThrowArgs<
  * BlogCategory findFirst
  */
 export type BlogCategoryFindFirstArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogCategory
@@ -1307,17 +1250,14 @@ export type BlogCategoryFindFirstArgs<
    *
    * Filter by unique combinations of BlogCategories.
    */
-  distinct?:
-    | Prisma.BlogCategoryScalarFieldEnum
-    | Prisma.BlogCategoryScalarFieldEnum[];
+  distinct?: Prisma.BlogCategoryScalarFieldEnum | Prisma.BlogCategoryScalarFieldEnum[];
 };
 
 /**
  * BlogCategory findFirstOrThrow
  */
 export type BlogCategoryFindFirstOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogCategory
@@ -1366,17 +1306,14 @@ export type BlogCategoryFindFirstOrThrowArgs<
    *
    * Filter by unique combinations of BlogCategories.
    */
-  distinct?:
-    | Prisma.BlogCategoryScalarFieldEnum
-    | Prisma.BlogCategoryScalarFieldEnum[];
+  distinct?: Prisma.BlogCategoryScalarFieldEnum | Prisma.BlogCategoryScalarFieldEnum[];
 };
 
 /**
  * BlogCategory findMany
  */
 export type BlogCategoryFindManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogCategory
@@ -1420,17 +1357,14 @@ export type BlogCategoryFindManyArgs<
    * Skip the first `n` BlogCategories.
    */
   skip?: number;
-  distinct?:
-    | Prisma.BlogCategoryScalarFieldEnum
-    | Prisma.BlogCategoryScalarFieldEnum[];
+  distinct?: Prisma.BlogCategoryScalarFieldEnum | Prisma.BlogCategoryScalarFieldEnum[];
 };
 
 /**
  * BlogCategory create
  */
 export type BlogCategoryCreateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogCategory
@@ -1447,25 +1381,19 @@ export type BlogCategoryCreateArgs<
   /**
    * The data needed to create a BlogCategory.
    */
-  data: Prisma.XOR<
-    Prisma.BlogCategoryCreateInput,
-    Prisma.BlogCategoryUncheckedCreateInput
-  >;
+  data: Prisma.XOR<Prisma.BlogCategoryCreateInput, Prisma.BlogCategoryUncheckedCreateInput>;
 };
 
 /**
  * BlogCategory createMany
  */
 export type BlogCategoryCreateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to create many BlogCategories.
    */
-  data:
-    | Prisma.BlogCategoryCreateManyInput
-    | Prisma.BlogCategoryCreateManyInput[];
+  data: Prisma.BlogCategoryCreateManyInput | Prisma.BlogCategoryCreateManyInput[];
   skipDuplicates?: boolean;
 };
 
@@ -1473,8 +1401,7 @@ export type BlogCategoryCreateManyArgs<
  * BlogCategory createManyAndReturn
  */
 export type BlogCategoryCreateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogCategory
@@ -1487,9 +1414,7 @@ export type BlogCategoryCreateManyAndReturnArgs<
   /**
    * The data used to create many BlogCategories.
    */
-  data:
-    | Prisma.BlogCategoryCreateManyInput
-    | Prisma.BlogCategoryCreateManyInput[];
+  data: Prisma.BlogCategoryCreateManyInput | Prisma.BlogCategoryCreateManyInput[];
   skipDuplicates?: boolean;
 };
 
@@ -1497,8 +1422,7 @@ export type BlogCategoryCreateManyAndReturnArgs<
  * BlogCategory update
  */
 export type BlogCategoryUpdateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogCategory
@@ -1515,10 +1439,7 @@ export type BlogCategoryUpdateArgs<
   /**
    * The data needed to update a BlogCategory.
    */
-  data: Prisma.XOR<
-    Prisma.BlogCategoryUpdateInput,
-    Prisma.BlogCategoryUncheckedUpdateInput
-  >;
+  data: Prisma.XOR<Prisma.BlogCategoryUpdateInput, Prisma.BlogCategoryUncheckedUpdateInput>;
   /**
    * Choose, which BlogCategory to update.
    */
@@ -1529,8 +1450,7 @@ export type BlogCategoryUpdateArgs<
  * BlogCategory updateMany
  */
 export type BlogCategoryUpdateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to update BlogCategories.
@@ -1553,8 +1473,7 @@ export type BlogCategoryUpdateManyArgs<
  * BlogCategory updateManyAndReturn
  */
 export type BlogCategoryUpdateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogCategory
@@ -1585,8 +1504,7 @@ export type BlogCategoryUpdateManyAndReturnArgs<
  * BlogCategory upsert
  */
 export type BlogCategoryUpsertArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogCategory
@@ -1607,25 +1525,18 @@ export type BlogCategoryUpsertArgs<
   /**
    * In case the BlogCategory found by the `where` argument doesn't exist, create a new BlogCategory with this data.
    */
-  create: Prisma.XOR<
-    Prisma.BlogCategoryCreateInput,
-    Prisma.BlogCategoryUncheckedCreateInput
-  >;
+  create: Prisma.XOR<Prisma.BlogCategoryCreateInput, Prisma.BlogCategoryUncheckedCreateInput>;
   /**
    * In case the BlogCategory was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<
-    Prisma.BlogCategoryUpdateInput,
-    Prisma.BlogCategoryUncheckedUpdateInput
-  >;
+  update: Prisma.XOR<Prisma.BlogCategoryUpdateInput, Prisma.BlogCategoryUncheckedUpdateInput>;
 };
 
 /**
  * BlogCategory delete
  */
 export type BlogCategoryDeleteArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogCategory
@@ -1649,8 +1560,7 @@ export type BlogCategoryDeleteArgs<
  * BlogCategory deleteMany
  */
 export type BlogCategoryDeleteManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which BlogCategories to delete
@@ -1666,8 +1576,7 @@ export type BlogCategoryDeleteManyArgs<
  * BlogCategory.posts
  */
 export type BlogCategory$postsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogPost
@@ -1682,9 +1591,7 @@ export type BlogCategory$postsArgs<
    */
   include?: Prisma.BlogPostInclude<ExtArgs> | null;
   where?: Prisma.BlogPostWhereInput;
-  orderBy?:
-    | Prisma.BlogPostOrderByWithRelationInput
-    | Prisma.BlogPostOrderByWithRelationInput[];
+  orderBy?: Prisma.BlogPostOrderByWithRelationInput | Prisma.BlogPostOrderByWithRelationInput[];
   cursor?: Prisma.BlogPostWhereUniqueInput;
   take?: number;
   skip?: number;
@@ -1695,8 +1602,7 @@ export type BlogCategory$postsArgs<
  * BlogCategory without action
  */
 export type BlogCategoryDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogCategory

@@ -233,9 +233,7 @@ type TerminalCardContentProps = {
 
 ```tsx
 <div className={cn('border-border bg-card space-y-2 border p-4', mode.radius)}>
-  <span className={cn('text-muted-foreground text-xs', mode.font)}>
-    [STAT_LABEL]:
-  </span>
+  <span className={cn('text-muted-foreground text-xs', mode.font)}>[STAT_LABEL]:</span>
   <div className="text-2xl font-semibold">$12,345</div>
 </div>
 ```

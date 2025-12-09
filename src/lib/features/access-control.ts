@@ -76,9 +76,7 @@ export function formatUsageDisplay(user: User, resource: ResourceType): string {
   // Unlimited tier
   if (limit === -1) {
     const used = getUserUsage(user, resource);
-    return resource === 'storage'
-      ? `${formatStorage(used)} / Unlimited`
-      : `${used} / Unlimited`;
+    return resource === 'storage' ? `${formatStorage(used)} / Unlimited` : `${used} / Unlimited`;
   }
 
   const used = getUserUsage(user, resource);

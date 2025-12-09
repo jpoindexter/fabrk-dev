@@ -57,9 +57,7 @@ export function EmailPreview({ template, primaryColor }: EmailPreviewProps) {
           <div className="mb-6 flex items-center justify-between">
             <div>
               <div className="mb-1 flex items-center gap-2">
-                <h2 className={cn(mode.font, 'text-lg font-semibold')}>
-                  {template.name}
-                </h2>
+                <h2 className={cn(mode.font, 'text-lg font-semibold')}>{template.name}</h2>
                 <span
                   className={cn(
                     mode.font,
@@ -76,12 +74,7 @@ export function EmailPreview({ template, primaryColor }: EmailPreviewProps) {
           </div>
 
           {/* Email Preview */}
-          <div
-            className={cn(
-              mode.radius,
-              'border-border bg-muted mb-6 border p-8'
-            )}
-          >
+          <div className={cn(mode.radius, 'border-border bg-muted mb-6 border p-8')}>
             <iframe
               srcDoc={injectScrollbarStyles(template.preview, primaryColor)}
               title={template.name}
@@ -97,15 +90,10 @@ export function EmailPreview({ template, primaryColor }: EmailPreviewProps) {
             )}
           >
             <div>
-              <div className="text-muted-foreground mb-2">
-                [TRIGGER_EVENTS]:
-              </div>
+              <div className="text-muted-foreground mb-2">[TRIGGER_EVENTS]:</div>
               <div className="flex flex-wrap gap-2">
                 {template.triggers.map((trigger, idx) => (
-                  <span
-                    key={idx}
-                    className="border-border bg-muted/30 border px-2 py-1"
-                  >
+                  <span key={idx} className="border-border bg-muted/30 border px-2 py-1">
                     &gt; {trigger}
                   </span>
                 ))}

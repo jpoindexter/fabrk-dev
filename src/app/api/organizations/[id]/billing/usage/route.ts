@@ -45,10 +45,7 @@ export async function GET(req: NextRequest, context: RouteContext) {
     });
 
     if (!organization) {
-      return NextResponse.json(
-        { error: 'Organization not found' },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: 'Organization not found' }, { status: 404 });
     }
 
     // Determine limits based on plan
@@ -59,9 +56,7 @@ export async function GET(req: NextRequest, context: RouteContext) {
       ENTERPRISE: { users: 999, storage: 1000, apiCalls: 1000000 },
     };
 
-    const limits =
-      planLimits[organization.plan as keyof typeof planLimits] ||
-      planLimits.FREE;
+    const limits = planLimits[organization.plan as keyof typeof planLimits] || planLimits.FREE;
 
     // Calculate storage (mock - in production, calculate from uploads)
     const storageUsed = organization._count.uploads * 0.5; // Assuming 500MB per upload on average
@@ -87,9 +82,6 @@ export async function GET(req: NextRequest, context: RouteContext) {
     });
   } catch (error: unknown) {
     logger.error('Failed to fetch usage:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch usage' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to fetch usage' }, { status: 500 });
   }
 }

@@ -24,12 +24,8 @@ export function DataTableToolbar<TData>({
         {searchKey && (
           <Input
             placeholder={searchPlaceholder}
-            value={
-              (table.getColumn(searchKey)?.getFilterValue() as string) ?? ''
-            }
-            onChange={(event) =>
-              table.getColumn(searchKey)?.setFilterValue(event.target.value)
-            }
+            value={(table.getColumn(searchKey)?.getFilterValue() as string) ?? ''}
+            onChange={(event) => table.getColumn(searchKey)?.setFilterValue(event.target.value)}
             className="border-border h-10 w-full max-w-sm border"
           />
         )}

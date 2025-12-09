@@ -36,16 +36,13 @@ const config = {
   // ============================================================================
   app: {
     name: 'Fabrk Boilerplate',
-    description:
-      'Production-ready SaaS boilerplate with authentication, payments, and dashboard',
+    description: 'Production-ready SaaS boilerplate with authentication, payments, and dashboard',
     url:
       env?.client?.NEXT_PUBLIC_APP_URL ||
       process.env.NEXT_PUBLIC_APP_URL ||
       'http://localhost:3000',
     author:
-      env?.client?.NEXT_PUBLIC_AUTHOR_NAME ||
-      process.env.NEXT_PUBLIC_AUTHOR_NAME ||
-      'Fabrk Team',
+      env?.client?.NEXT_PUBLIC_AUTHOR_NAME || process.env.NEXT_PUBLIC_AUTHOR_NAME || 'Fabrk Team',
     supportEmail:
       env?.client?.NEXT_PUBLIC_SUPPORT_EMAIL ||
       process.env.NEXT_PUBLIC_SUPPORT_EMAIL ||
@@ -60,12 +57,9 @@ const config = {
     sessionMaxAge: 30 * 24 * 60 * 60, // 30 days
     providers: {
       google: {
-        enabled: !!(
-          env?.server?.GOOGLE_CLIENT_ID || process.env.GOOGLE_CLIENT_ID
-        ),
+        enabled: !!(env?.server?.GOOGLE_CLIENT_ID || process.env.GOOGLE_CLIENT_ID),
         clientId: env?.server?.GOOGLE_CLIENT_ID || process.env.GOOGLE_CLIENT_ID,
-        clientSecret:
-          env?.server?.GOOGLE_CLIENT_SECRET || process.env.GOOGLE_CLIENT_SECRET,
+        clientSecret: env?.server?.GOOGLE_CLIENT_SECRET || process.env.GOOGLE_CLIENT_SECRET,
       },
       credentials: {
         enabled: true, // Email/password auth
@@ -82,8 +76,7 @@ const config = {
       env?.client?.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ||
       process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
     secretKey: env?.server?.STRIPE_SECRET_KEY || process.env.STRIPE_SECRET_KEY,
-    webhookSecret:
-      env?.server?.STRIPE_WEBHOOK_SECRET || process.env.STRIPE_WEBHOOK_SECRET,
+    webhookSecret: env?.server?.STRIPE_WEBHOOK_SECRET || process.env.STRIPE_WEBHOOK_SECRET,
 
     // Stripe Lookup Keys (one-time purchase model)
     // Using lookup keys allows price updates in Stripe dashboard without code changes
@@ -131,15 +124,9 @@ const config = {
     apiKey: env?.server?.RESEND_API_KEY || process.env.RESEND_API_KEY,
     from: {
       name: 'Fabrk Boilerplate',
-      email:
-        env?.server?.EMAIL_FROM ||
-        process.env.EMAIL_FROM ||
-        'support@fabrek.dev',
+      email: env?.server?.EMAIL_FROM || process.env.EMAIL_FROM || 'support@fabrek.dev',
     },
-    replyTo:
-      env?.server?.EMAIL_REPLY_TO ||
-      process.env.EMAIL_REPLY_TO ||
-      'support@fabrek.dev',
+    replyTo: env?.server?.EMAIL_REPLY_TO || process.env.EMAIL_REPLY_TO || 'support@fabrek.dev',
   },
 
   // ============================================================================
@@ -149,8 +136,7 @@ const config = {
   database: {
     url: env?.server?.DATABASE_URL || process.env.DATABASE_URL,
     // For connection pooling (recommended for serverless)
-    directUrl:
-      env?.server?.DATABASE_URL_DIRECT || process.env.DATABASE_URL_DIRECT,
+    directUrl: env?.server?.DATABASE_URL_DIRECT || process.env.DATABASE_URL_DIRECT,
   },
 
   // ============================================================================
@@ -160,9 +146,7 @@ const config = {
     // Authentication features
     emailVerification: true,
     passwordReset: true,
-    googleAuth: !!(
-      env?.server?.GOOGLE_CLIENT_ID || process.env.GOOGLE_CLIENT_ID
-    ),
+    googleAuth: !!(env?.server?.GOOGLE_CLIENT_ID || process.env.GOOGLE_CLIENT_ID),
 
     // Payment features
     subscriptions: true, // Enable subscriptions for trial period support
@@ -184,8 +168,7 @@ const config = {
 
     // Search features
     algoliaSearch: !!(
-      (env?.client?.NEXT_PUBLIC_ALGOLIA_APP_ID ||
-        process.env.NEXT_PUBLIC_ALGOLIA_APP_ID) &&
+      (env?.client?.NEXT_PUBLIC_ALGOLIA_APP_ID || process.env.NEXT_PUBLIC_ALGOLIA_APP_ID) &&
       (env?.client?.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY ||
         process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY)
     ),
@@ -193,10 +176,8 @@ const config = {
 
     // CMS features
     sanityCMS: !!(
-      (env?.client?.NEXT_PUBLIC_SANITY_PROJECT_ID ||
-        process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) &&
-      (env?.client?.NEXT_PUBLIC_SANITY_DATASET ||
-        process.env.NEXT_PUBLIC_SANITY_DATASET)
+      (env?.client?.NEXT_PUBLIC_SANITY_PROJECT_ID || process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) &&
+      (env?.client?.NEXT_PUBLIC_SANITY_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET)
     ),
   },
 
@@ -205,19 +186,15 @@ const config = {
   // ============================================================================
   search: {
     enabled: !!(
-      (env?.client?.NEXT_PUBLIC_ALGOLIA_APP_ID ||
-        process.env.NEXT_PUBLIC_ALGOLIA_APP_ID) &&
+      (env?.client?.NEXT_PUBLIC_ALGOLIA_APP_ID || process.env.NEXT_PUBLIC_ALGOLIA_APP_ID) &&
       (env?.client?.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY ||
         process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY)
     ),
-    appId:
-      env?.client?.NEXT_PUBLIC_ALGOLIA_APP_ID ||
-      process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
+    appId: env?.client?.NEXT_PUBLIC_ALGOLIA_APP_ID || process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
     searchApiKey:
       env?.client?.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY ||
       process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY,
-    adminApiKey:
-      env?.server?.ALGOLIA_ADMIN_API_KEY || process.env.ALGOLIA_ADMIN_API_KEY, // Server-side only
+    adminApiKey: env?.server?.ALGOLIA_ADMIN_API_KEY || process.env.ALGOLIA_ADMIN_API_KEY, // Server-side only
     indices: {
       pages: 'pages',
       components: 'components',
@@ -231,17 +208,12 @@ const config = {
   // ============================================================================
   cms: {
     enabled: !!(
-      (env?.client?.NEXT_PUBLIC_SANITY_PROJECT_ID ||
-        process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) &&
-      (env?.client?.NEXT_PUBLIC_SANITY_DATASET ||
-        process.env.NEXT_PUBLIC_SANITY_DATASET)
+      (env?.client?.NEXT_PUBLIC_SANITY_PROJECT_ID || process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) &&
+      (env?.client?.NEXT_PUBLIC_SANITY_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET)
     ),
     projectId:
-      env?.client?.NEXT_PUBLIC_SANITY_PROJECT_ID ||
-      process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-    dataset:
-      env?.client?.NEXT_PUBLIC_SANITY_DATASET ||
-      process.env.NEXT_PUBLIC_SANITY_DATASET,
+      env?.client?.NEXT_PUBLIC_SANITY_PROJECT_ID || process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+    dataset: env?.client?.NEXT_PUBLIC_SANITY_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET,
     apiToken: env?.server?.SANITY_API_TOKEN || process.env.SANITY_API_TOKEN, // Server-side only
     studio: {
       basePath: '/studio', // Studio accessible at /studio

@@ -21,18 +21,13 @@ export async function GET(request: NextRequest) {
 
     const { searchParams } = new URL(request.url);
     const days = searchParams.get('days');
-    const since = new Date(
-      Date.now() - (days ? parseInt(days, 10) : 7) * 24 * 60 * 60 * 1000
-    );
+    const since = new Date(Date.now() - (days ? parseInt(days, 10) : 7) * 24 * 60 * 60 * 1000);
 
     const summary = await getSecuritySummary(since);
 
     return NextResponse.json({ summary });
   } catch (error) {
     console.error('Failed to get security summary:', error);
-    return NextResponse.json(
-      { error: 'Failed to get security summary' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to get security summary' }, { status: 500 });
   }
 }

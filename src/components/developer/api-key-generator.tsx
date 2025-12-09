@@ -15,16 +15,7 @@
 'use client';
 
 import * as React from 'react';
-import {
-  Eye,
-  EyeOff,
-  Copy,
-  Check,
-  Key,
-  RefreshCw,
-  Trash2,
-  AlertTriangle,
-} from 'lucide-react';
+import { Eye, EyeOff, Copy, Check, Key, RefreshCw, Trash2, AlertTriangle } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -138,11 +129,7 @@ export function ApiKeyGenerator({
                       className="h-7 w-7 p-0"
                       aria-label={isVisible ? 'Hide API key' : 'Show API key'}
                     >
-                      {isVisible ? (
-                        <EyeOff className="h-4 w-4" />
-                      ) : (
-                        <Eye className="h-4 w-4" />
-                      )}
+                      {isVisible ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                     </Button>
                     <Button
                       variant="ghost"
@@ -165,35 +152,26 @@ export function ApiKeyGenerator({
               <div className="text-muted-foreground flex flex-wrap gap-4 text-xs">
                 {createdAt && (
                   <div>
-                    Created:{' '}
-                    <span className="font-medium">{formatDate(createdAt)}</span>
+                    Created: <span className="font-medium">{formatDate(createdAt)}</span>
                   </div>
                 )}
                 {lastUsed && (
                   <div>
-                    Last used:{' '}
-                    <span className="font-medium">{formatDate(lastUsed)}</span>
+                    Last used: <span className="font-medium">{formatDate(lastUsed)}</span>
                   </div>
                 )}
               </div>
             </div>
 
             {/* Security Notice */}
-            <div
-              className={cn(
-                'border-border bg-warning/10 border p-4',
-                mode.radius
-              )}
-            >
+            <div className={cn('border-border bg-warning/10 border p-4', mode.radius)}>
               <div className="flex gap-2">
                 <AlertTriangle className="text-warning mt-0.5 h-4 w-4 flex-shrink-0" />
                 <div className="flex-1 space-y-1">
-                  <p className="text-foreground text-xs font-semibold">
-                    Keep this secret!
-                  </p>
+                  <p className="text-foreground text-xs font-semibold">Keep this secret!</p>
                   <p className="text-muted-foreground text-xs">
-                    Never share your API key or commit it to version control.
-                    Anyone with this key can access your account.
+                    Never share your API key or commit it to version control. Anyone with this key
+                    can access your account.
                   </p>
                 </div>
               </div>
@@ -209,12 +187,7 @@ export function ApiKeyGenerator({
                   disabled={isGenerating}
                   className="flex-1"
                 >
-                  <RefreshCw
-                    className={cn(
-                      'mr-2 h-4 w-4',
-                      isGenerating && 'animate-spin'
-                    )}
-                  />
+                  <RefreshCw className={cn('mr-2 h-4 w-4', isGenerating && 'animate-spin')} />
                   Regenerate
                 </Button>
               )}
@@ -230,17 +203,13 @@ export function ApiKeyGenerator({
                     <AlertDialogHeader>
                       <AlertDialogTitle>Revoke API Key?</AlertDialogTitle>
                       <AlertDialogDescription>
-                        This will permanently revoke this API key. Any
-                        applications using this key will stop working. This
-                        action cannot be undone.
+                        This will permanently revoke this API key. Any applications using this key
+                        will stop working. This action cannot be undone.
                       </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                       <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
-                      <AlertDialogAction
-                        onClick={onRevoke}
-                        className="bg-destructive"
-                      >
+                      <AlertDialogAction onClick={onRevoke} className="bg-destructive">
                         Revoke Key
                       </AlertDialogAction>
                     </AlertDialogFooter>
@@ -264,9 +233,7 @@ export function ApiKeyGenerator({
                 </div>
               </div>
               <div className="space-y-1">
-                <p className="text-foreground font-semibold">
-                  No API key generated
-                </p>
+                <p className="text-foreground font-semibold">No API key generated</p>
                 <p className="text-muted-foreground text-sm">
                   Generate an API key to start using the API
                 </p>
@@ -284,15 +251,9 @@ export function ApiKeyGenerator({
         {/* Usage Example */}
         {apiKey && (
           <div className="space-y-2">
-            <p className="text-foreground text-xs font-semibold">
-              Usage Example:
-            </p>
+            <p className="text-foreground text-xs font-semibold">Usage Example:</p>
             <div
-              className={cn(
-                'border-border bg-muted/50 border p-4 text-xs',
-                mode.radius,
-                mode.font
-              )}
+              className={cn('border-border bg-muted/50 border p-4 text-xs', mode.radius, mode.font)}
             >
               <div className="text-muted-foreground">
                 curl -H "Authorization: Bearer {prefix}..."

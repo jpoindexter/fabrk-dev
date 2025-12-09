@@ -30,8 +30,7 @@ export function CodeBlock({
   };
 
   // Add $ prompt for bash/shell commands
-  const isShell =
-    language === 'bash' || language === 'sh' || language === 'shell';
+  const isShell = language === 'bash' || language === 'sh' || language === 'shell';
 
   return (
     <div
@@ -51,14 +50,8 @@ export function CodeBlock({
           <Copy className="h-4 w-4" aria-hidden="true" />
         )}
       </button>
-      <div
-        className={cn('bg-card w-full min-w-0 overflow-hidden', mode.radius)}
-      >
-        <Highlight
-          theme={themes.nightOwl}
-          code={code.trim()}
-          language={language}
-        >
+      <div className={cn('bg-card w-full min-w-0 overflow-hidden', mode.radius)}>
+        <Highlight theme={themes.nightOwl} code={code.trim()} language={language}>
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre
               className={`${className} m-0 p-4 text-xs leading-relaxed`}
@@ -73,11 +66,7 @@ export function CodeBlock({
               tabIndex={0}
             >
               {tokens.map((line, i) => (
-                <div
-                  key={i}
-                  {...getLineProps({ line })}
-                  className="flex whitespace-pre-wrap"
-                >
+                <div key={i} {...getLineProps({ line })} className="flex whitespace-pre-wrap">
                   {/* Line number */}
                   {showLineNumbers && (
                     <span className="mr-4 inline-block w-8 flex-shrink-0 text-right text-white/60 select-none">
@@ -88,9 +77,7 @@ export function CodeBlock({
                   )}
                   <span className="flex-1">
                     {/* Add $ prompt for shell commands */}
-                    {isShell && i === 0 && (
-                      <span className="text-primary mr-2 select-none">$</span>
-                    )}
+                    {isShell && i === 0 && <span className="text-primary mr-2 select-none">$</span>}
                     {isShell &&
                       i > 0 &&
                       tokens[i].length > 0 &&

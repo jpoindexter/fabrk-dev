@@ -22,15 +22,10 @@ export async function handlePaymentSucceeded(event: Stripe.Event) {
       amount: paymentIntent.amount,
     });
 
-    const customerId =
-      typeof paymentIntent.customer === 'string'
-        ? paymentIntent.customer
-        : null;
+    const customerId = typeof paymentIntent.customer === 'string' ? paymentIntent.customer : null;
 
     // Find user by customer ID
-    const user = customerId
-      ? await prisma.user.findUnique({ where: { customerId } })
-      : null;
+    const user = customerId ? await prisma.user.findUnique({ where: { customerId } }) : null;
 
     // Update existing payment record if it exists
     const existingPayment = await prisma.payment.findFirst({
@@ -96,15 +91,10 @@ export async function handlePaymentFailed(event: Stripe.Event) {
       failureMessage: paymentIntent.last_payment_error?.message,
     });
 
-    const customerId =
-      typeof paymentIntent.customer === 'string'
-        ? paymentIntent.customer
-        : null;
+    const customerId = typeof paymentIntent.customer === 'string' ? paymentIntent.customer : null;
 
     // Find user by customer ID
-    const user = customerId
-      ? await prisma.user.findUnique({ where: { customerId } })
-      : null;
+    const user = customerId ? await prisma.user.findUnique({ where: { customerId } }) : null;
 
     // Update existing payment record if it exists
     const existingPayment = await prisma.payment.findFirst({

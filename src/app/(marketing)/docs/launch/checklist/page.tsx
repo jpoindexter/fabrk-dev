@@ -142,12 +142,10 @@ npm run type-check`,
               ├─ <strong>The Pitch:</strong> 30-60s video for social media
             </div>
             <div>
-              ├─ <strong>The Walkthrough:</strong> 3-5 min demo for docs/landing
-              page
+              ├─ <strong>The Walkthrough:</strong> 3-5 min demo for docs/landing page
             </div>
             <div>
-              └─ <strong>Social Proof:</strong> Initial testimonials or beta
-              feedback
+              └─ <strong>Social Proof:</strong> Initial testimonials or beta feedback
             </div>
           </div>
         </DocsCard>
@@ -158,16 +156,13 @@ npm run type-check`,
         <DocsCard title="LAUNCH_DAY">
           <div className="space-y-1">
             <div>
-              ├─ <strong>Distribution:</strong> Verify GitHub invite system or
-              app deployment
+              ├─ <strong>Distribution:</strong> Verify GitHub invite system or app deployment
             </div>
             <div>
-              ├─ <strong>Announcement:</strong> Schedule Product Hunt,
-              Twitter/X, LinkedIn
+              ├─ <strong>Announcement:</strong> Schedule Product Hunt, Twitter/X, LinkedIn
             </div>
             <div>
-              └─ <strong>Community:</strong> Post in Discord servers and
-              subreddits
+              └─ <strong>Community:</strong> Post in Discord servers and subreddits
             </div>
           </div>
         </DocsCard>
@@ -184,8 +179,7 @@ npm run type-check`,
               ├─ <strong>Stripe:</strong> Watch for failed payments or disputes
             </div>
             <div>
-              └─ <strong>Errors:</strong> Check Vercel logs or Sentry for
-              exceptions
+              └─ <strong>Errors:</strong> Check Vercel logs or Sentry for exceptions
             </div>
           </div>
         </DocsCard>

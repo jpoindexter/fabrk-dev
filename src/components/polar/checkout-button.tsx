@@ -73,9 +73,7 @@ export function PolarCheckoutButton({
       window.location.href = data.checkoutUrl;
     } catch (error) {
       console.error('Checkout error:', error);
-      toast.error(
-        error instanceof Error ? error.message : 'Failed to start checkout'
-      );
+      toast.error(error instanceof Error ? error.message : 'Failed to start checkout');
       setIsLoading(false);
     }
   };

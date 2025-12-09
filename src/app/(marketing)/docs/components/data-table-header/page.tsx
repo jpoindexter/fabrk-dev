@@ -31,21 +31,15 @@ export default function DataTableHeaderPage() {
   const columns: ColumnDef<SampleData>[] = [
     {
       accessorKey: 'name',
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Project Name" />
-      ),
+      header: ({ column }) => <DataTableColumnHeader column={column} title="Project Name" />,
     },
     {
       accessorKey: 'status',
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Status" />
-      ),
+      header: ({ column }) => <DataTableColumnHeader column={column} title="Status" />,
     },
     {
       accessorKey: 'amount',
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Amount" />
-      ),
+      header: ({ column }) => <DataTableColumnHeader column={column} title="Amount" />,
       cell: ({ row }) => {
         const amount = row.getValue('amount') as number;
         return `$${amount.toLocaleString()}`;
@@ -79,14 +73,8 @@ export default function DataTableHeaderPage() {
                 {table.getHeaderGroups().map((headerGroup) => (
                   <tr key={headerGroup.id} className="border-border border-b">
                     {headerGroup.headers.map((header) => (
-                      <th
-                        key={header.id}
-                        className="px-4 py-4 text-left font-medium"
-                      >
-                        {flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
+                      <th key={header.id} className="px-4 py-4 text-left font-medium">
+                        {flexRender(header.column.columnDef.header, header.getContext())}
                       </th>
                     ))}
                   </tr>
@@ -97,10 +85,7 @@ export default function DataTableHeaderPage() {
                   <tr key={row.id} className="border-border border-b">
                     {row.getVisibleCells().map((cell) => (
                       <td key={cell.id} className="px-4 py-4">
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext()
-                        )}
+                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
                       </td>
                     ))}
                   </tr>
@@ -131,8 +116,7 @@ const table = useReactTable({
       variants={[
         {
           title: 'Sortable Header',
-          description:
-            'Click to toggle between ascending, descending, and unsorted',
+          description: 'Click to toggle between ascending, descending, and unsorted',
           preview: (
             <div className="space-y-2">
               <span className="text-muted-foreground font-mono text-xs">
@@ -142,19 +126,10 @@ const table = useReactTable({
                 <table className="w-full">
                   <thead>
                     {table.getHeaderGroups().map((headerGroup) => (
-                      <tr
-                        key={headerGroup.id}
-                        className="border-border border-b"
-                      >
+                      <tr key={headerGroup.id} className="border-border border-b">
                         {headerGroup.headers.map((header) => (
-                          <th
-                            key={header.id}
-                            className="px-4 py-2 text-left font-medium"
-                          >
-                            {flexRender(
-                              header.column.columnDef.header,
-                              header.getContext()
-                            )}
+                          <th key={header.id} className="px-4 py-2 text-left font-medium">
+                            {flexRender(header.column.columnDef.header, header.getContext())}
                           </th>
                         ))}
                       </tr>
@@ -174,10 +149,7 @@ const table = useReactTable({
           description: 'Shows arrows up-down icon when not sorted',
           preview: (
             <div className="flex items-center gap-2">
-              <DataTableColumnHeader
-                column={table.getColumn('name')!}
-                title="Project Name"
-              />
+              <DataTableColumnHeader column={table.getColumn('name')!} title="Project Name" />
             </div>
           ),
           code: `// Default state shows unsorted icon

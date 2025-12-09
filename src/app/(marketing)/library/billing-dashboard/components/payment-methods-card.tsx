@@ -22,16 +22,10 @@ interface PaymentMethodsCardProps {
   paymentMethods: PaymentMethod[];
 }
 
-export function PaymentMethodsCard({
-  paymentMethods,
-}: PaymentMethodsCardProps) {
+export function PaymentMethodsCard({ paymentMethods }: PaymentMethodsCardProps) {
   return (
     <Card tone="neutral">
-      <CardHeader
-        code="0x00"
-        title="PAYMENT_METHODS"
-        icon={<CreditCard className="size-4" />}
-      />
+      <CardHeader code="0x00" title="PAYMENT_METHODS" icon={<CreditCard className="size-4" />} />
       <CardContent padding="md">
         <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
           [PAYMENT_METHODS]:

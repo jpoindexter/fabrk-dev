@@ -104,11 +104,7 @@ export function SecurityForm() {
                 <FormItem>
                   <FormLabel>Current Password</FormLabel>
                   <FormControl>
-                    <Input
-                      type="password"
-                      placeholder="Enter current password"
-                      {...field}
-                    />
+                    <Input type="password" placeholder="Enter current password" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -121,15 +117,9 @@ export function SecurityForm() {
                 <FormItem>
                   <FormLabel>New Password</FormLabel>
                   <FormControl>
-                    <Input
-                      type="password"
-                      placeholder="Enter new password"
-                      {...field}
-                    />
+                    <Input type="password" placeholder="Enter new password" {...field} />
                   </FormControl>
-                  <FormDescription>
-                    Must be at least 8 characters long.
-                  </FormDescription>
+                  <FormDescription>Must be at least 8 characters long.</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -141,11 +131,7 @@ export function SecurityForm() {
                 <FormItem>
                   <FormLabel>Confirm New Password</FormLabel>
                   <FormControl>
-                    <Input
-                      type="password"
-                      placeholder="Confirm new password"
-                      {...field}
-                    />
+                    <Input type="password" placeholder="Confirm new password" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

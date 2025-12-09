@@ -63,11 +63,7 @@ export function TemplateCategoryPage({
             {CategoryIcon && <CategoryIcon className="text-primary h-6 w-6" />}
             <h1 className={cn('text-4xl font-semibold', mode.font)}>{title}</h1>
             <span
-              className={cn(
-                'border-border border px-2 py-0.5 text-xs',
-                mode.font,
-                mode.radius
-              )}
+              className={cn('border-border border px-2 py-0.5 text-xs', mode.font, mode.radius)}
             >
               COUNT: {templates.length}
             </span>
@@ -82,19 +78,12 @@ export function TemplateCategoryPage({
                 <CardHeader
                   code="0x00"
                   title={template.id.toUpperCase().replace(/-/g, '_')}
-                  icon={
-                    <template.icon className="text-muted-foreground size-4" />
-                  }
+                  icon={<template.icon className="text-muted-foreground size-4" />}
                 />
 
                 <CardContent>
                   {/* Status & Badge */}
-                  <div
-                    className={cn(
-                      'mb-4 flex items-center justify-between text-xs',
-                      mode.font
-                    )}
-                  >
+                  <div className={cn('mb-4 flex items-center justify-between text-xs', mode.font)}>
                     <div>
                       <span className="text-muted-foreground">STATUS: </span>
                       <span className="text-success">READY</span>
@@ -112,16 +101,12 @@ export function TemplateCategoryPage({
                   </div>
 
                   {/* Title */}
-                  <h3 className={cn('mb-2 text-lg font-semibold', mode.font)}>
-                    {template.name}
-                  </h3>
+                  <h3 className={cn('mb-2 text-lg font-semibold', mode.font)}>{template.name}</h3>
 
                   {/* Description */}
                   <div className={cn('mb-4 text-xs', mode.font)}>
                     <span className="text-muted-foreground">DESC: </span>
-                    <span className="text-foreground">
-                      {template.description}
-                    </span>
+                    <span className="text-foreground">{template.description}</span>
                   </div>
 
                   {/* Features */}

@@ -43,18 +43,9 @@ export function NPSSurvey({ onSubmit, onDismiss }: NPSSurveyProps) {
 
   if (step === 'thanks') {
     return (
-      <div
-        className={cn(
-          'border-success/30 bg-success/10 border p-6 text-center',
-          mode.radius
-        )}
-      >
-        <h3 className="text-success-foreground mb-2 text-lg font-semibold">
-          Thank you!
-        </h3>
-        <p className="text-success text-sm">
-          Your feedback helps us improve our product.
-        </p>
+      <div className={cn('border-success/30 bg-success/10 border p-6 text-center', mode.radius)}>
+        <h3 className="text-success-foreground mb-2 text-lg font-semibold">Thank you!</h3>
+        <p className="text-success text-sm">Your feedback helps us improve our product.</p>
       </div>
     );
   }
@@ -86,10 +77,7 @@ export function NPSSurvey({ onSubmit, onDismiss }: NPSSurveyProps) {
         />
 
         <div className="flex gap-4">
-          <Button
-            onClick={handleSubmit}
-            className={cn('flex-1', mode.font, 'text-xs')}
-          >
+          <Button onClick={handleSubmit} className={cn('flex-1', mode.font, 'text-xs')}>
             &gt; SUBMIT_FEEDBACK
           </Button>
           <Button

@@ -44,11 +44,7 @@ export async function measureAsync<T>(
 /**
  * Measure synchronous function execution time
  */
-export function measure<T>(
-  name: string,
-  fn: () => T,
-  tags?: Record<string, string>
-): T {
+export function measure<T>(name: string, fn: () => T, tags?: Record<string, string>): T {
   const start = performance.now();
 
   try {

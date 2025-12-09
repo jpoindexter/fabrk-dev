@@ -7,11 +7,7 @@
  * Truncate string with ellipsis
  * @example truncate("Hello World", 8) // "Hello..."
  */
-export function truncate(
-  str: string,
-  maxLength: number,
-  suffix: string = '...'
-): string {
+export function truncate(str: string, maxLength: number, suffix: string = '...'): string {
   if (str.length <= maxLength) return str;
   return str.slice(0, maxLength - suffix.length) + suffix;
 }
@@ -64,9 +60,7 @@ export function camelToTitle(str: string): string {
  * @example toCamelCase("hello world") // "helloWorld"
  */
 export function toCamelCase(str: string): string {
-  return str
-    .toLowerCase()
-    .replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase());
+  return str.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase());
 }
 
 /**
@@ -136,11 +130,7 @@ export function countWords(str: string): number {
  * @example pluralize(1, "item") // "1 item"
  * @example pluralize(2, "item") // "2 items"
  */
-export function pluralize(
-  count: number,
-  singular: string,
-  plural?: string
-): string {
+export function pluralize(count: number, singular: string, plural?: string): string {
   const word = count === 1 ? singular : plural || `${singular}s`;
   return `${count} ${word}`;
 }

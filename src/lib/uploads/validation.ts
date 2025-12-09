@@ -36,9 +36,7 @@ export const MAGIC_BYTES: Record<string, number[]> = {
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document': [
     0x50, 0x4b, 0x03, 0x04,
   ],
-  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': [
-    0x50, 0x4b, 0x03, 0x04,
-  ],
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': [0x50, 0x4b, 0x03, 0x04],
   'application/vnd.openxmlformats-officedocument.presentationml.presentation': [
     0x50, 0x4b, 0x03, 0x04,
   ],
@@ -80,13 +78,7 @@ export interface FileTypeConfig {
 
 export const FILE_TYPE_CONFIGS: Record<string, FileTypeConfig> = {
   image: {
-    mimeTypes: [
-      'image/jpeg',
-      'image/png',
-      'image/gif',
-      'image/webp',
-      'image/bmp',
-    ],
+    mimeTypes: ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/bmp'],
     extensions: ['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp'],
     maxSize: 10 * 1024 * 1024, // 10MB
     description: 'Image files',
@@ -160,10 +152,7 @@ function matchesMagicBytes(buffer: Buffer, magicBytes: number[]): boolean {
 /**
  * Validate file type using magic bytes
  */
-export function validateFileType(
-  buffer: Buffer,
-  mimeType: string
-): ValidationResult {
+export function validateFileType(buffer: Buffer, mimeType: string): ValidationResult {
   const magicBytes = MAGIC_BYTES[mimeType];
 
   if (!magicBytes) {
@@ -191,9 +180,7 @@ export function detectExecutable(buffer: Buffer): boolean {
     return false;
   }
 
-  return EXECUTABLE_SIGNATURES.some((signature) =>
-    matchesMagicBytes(buffer, signature)
-  );
+  return EXECUTABLE_SIGNATURES.some((signature) => matchesMagicBytes(buffer, signature));
 }
 
 /**
@@ -227,8 +214,7 @@ export function sanitizeFilename(filename: string): string {
   if (filename.length > maxLength) {
     const ext = filename.split('.').pop() || '';
     const nameWithoutExt = filename.substring(0, filename.lastIndexOf('.'));
-    filename =
-      nameWithoutExt.substring(0, maxLength - ext.length - 1) + '.' + ext;
+    filename = nameWithoutExt.substring(0, maxLength - ext.length - 1) + '.' + ext;
   }
 
   // Ensure filename is not empty
@@ -242,10 +228,7 @@ export function sanitizeFilename(filename: string): string {
 /**
  * Validate file extension against allowed types
  */
-function validateExtension(
-  filename: string,
-  allowedExtensions: string[]
-): ValidationResult {
+function validateExtension(filename: string, allowedExtensions: string[]): ValidationResult {
   const parts = filename.toLowerCase().split('.');
 
   // Check for double extensions (e.g., file.php.jpg)
@@ -301,21 +284,10 @@ function validateFileSize(size: number, maxSize: number): ValidationResult {
 /**
  * Detect potential malicious patterns in file content
  */
-function detectMaliciousPatterns(
-  buffer: Buffer,
-  mimeType: string
-): ValidationResult {
+function detectMaliciousPatterns(buffer: Buffer, mimeType: string): ValidationResult {
   // For text-based files, check for malicious scripts
-  if (
-    mimeType.startsWith('text/') ||
-    mimeType.includes('xml') ||
-    mimeType.includes('svg')
-  ) {
-    const content = buffer.toString(
-      'utf-8',
-      0,
-      Math.min(buffer.length, 1024 * 10)
-    ); // Check first 10KB
+  if (mimeType.startsWith('text/') || mimeType.includes('xml') || mimeType.includes('svg')) {
+    const content = buffer.toString('utf-8', 0, Math.min(buffer.length, 1024 * 10)); // Check first 10KB
 
     // Check for script tags
     if (/<script[^>]*>/i.test(content)) {
@@ -387,16 +359,14 @@ export async function validateUpload(
   }
 
   // 3. Validate file size
-  const maxSize =
-    config.maxSize || config.allowedTypes?.maxSize || 10 * 1024 * 1024;
+  const maxSize = config.maxSize || config.allowedTypes?.maxSize || 10 * 1024 * 1024;
   const sizeValidation = validateFileSize(size, maxSize);
   if (!sizeValidation.valid) {
     return sizeValidation;
   }
 
   // 4. Validate MIME type
-  const allowedMimeTypes =
-    config.allowedMimeTypes || config.allowedTypes?.mimeTypes || [];
+  const allowedMimeTypes = config.allowedMimeTypes || config.allowedTypes?.mimeTypes || [];
   if (allowedMimeTypes.length > 0 && !allowedMimeTypes.includes(mimeType)) {
     return {
       valid: false,
@@ -405,8 +375,7 @@ export async function validateUpload(
   }
 
   // 5. Validate extension
-  const allowedExtensions =
-    config.allowedExtensions || config.allowedTypes?.extensions || [];
+  const allowedExtensions = config.allowedExtensions || config.allowedTypes?.extensions || [];
   if (allowedExtensions.length > 0) {
     const extValidation = validateExtension(filename, allowedExtensions);
     if (!extValidation.valid) {
@@ -443,10 +412,7 @@ export async function validateUpload(
  * Validate multiple files
  */
 export async function validateMultipleUploads(
-  files: (
-    | File
-    | { buffer: Buffer; name: string; type: string; size: number }
-  )[],
+  files: (File | { buffer: Buffer; name: string; type: string; size: number })[],
   config: {
     allowedTypes?: FileTypeConfig;
     maxSize?: number;

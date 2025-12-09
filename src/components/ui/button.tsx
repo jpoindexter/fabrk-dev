@@ -46,21 +46,18 @@ const buttonVariants = cva(
         // Primary - solid background
         default: 'bg-primary text-primary-foreground hover:bg-primary/90',
         // Destructive - danger/delete actions
-        destructive:
-          'bg-destructive text-destructive-foreground hover:bg-destructive/90',
+        destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
         // Outline - bordered, transparent background
         outline:
           'border border-foreground/20 bg-background hover:bg-foreground/10 hover:border-foreground/40',
         // Secondary - muted background
-        secondary:
-          'bg-secondary text-secondary-foreground hover:bg-secondary/80',
+        secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
         // Ghost - no background, subtle hover
         ghost: 'text-foreground hover:bg-foreground/10 hover:text-foreground',
         // Link - text only with underline
         link: 'text-primary underline-offset-4 hover:underline',
         // CTA variants - larger padding for marketing sections
-        primaryCta:
-          'bg-primary text-primary-foreground hover:bg-primary/90 text-base px-6 py-4',
+        primaryCta: 'bg-primary text-primary-foreground hover:bg-primary/90 text-base px-6 py-4',
         secondaryCta:
           'bg-secondary text-secondary-foreground hover:bg-secondary/80 text-base px-6 py-4',
         ghostOnDark:
@@ -84,9 +81,7 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-  extends
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
   asChild?: boolean;
   loading?: boolean;
   loadingText?: string;

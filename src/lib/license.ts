@@ -48,7 +48,6 @@ export function generateLicenseKey(): string {
  */
 export function validateLicenseKeyFormat(key: string): boolean {
   // Format: XXXX-XXXX-XXXX-XXXX-XXXX
-  const pattern =
-    /^[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}(-\d+)?$/;
+  const pattern = /^[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}(-\d+)?$/;
   return pattern.test(key);
 }

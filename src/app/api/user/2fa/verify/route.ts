@@ -9,11 +9,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { verifyMFADevice } from '@/lib/auth/mfa';
 import { withCsrfProtection } from '@/lib/security/csrf';
-import {
-  checkRateLimitAuto,
-  getClientIdentifier,
-  RateLimiters,
-} from '@/lib/security/rate-limit';
+import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from '@/lib/security/rate-limit';
 import { logger } from '@/lib/logger';
 
 export const POST = withCsrfProtection(async (req: NextRequest) => {
@@ -30,9 +26,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
           headers: {
             'X-RateLimit-Limit': rateLimit.limit.toString(),
             'X-RateLimit-Remaining': rateLimit.remaining.toString(),
-            'Retry-After': Math.ceil(
-              (rateLimit.reset - Date.now()) / 1000
-            ).toString(),
+            'Retry-After': Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
           },
         }
       );
@@ -54,11 +48,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     }
 
     // Verify the token against the unverified MFA device
-    const isValid = await verifyMFADevice(
-      session.user.id,
-      session.user.email,
-      token
-    );
+    const isValid = await verifyMFADevice(session.user.id, session.user.email, token);
 
     if (!isValid) {
       return NextResponse.json(
@@ -73,9 +63,6 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     });
   } catch (error: unknown) {
     logger.error('[2FA Verify] Error:', error);
-    return NextResponse.json(
-      { error: 'Failed to verify 2FA code' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to verify 2FA code' }, { status: 500 });
   }
 });

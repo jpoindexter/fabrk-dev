@@ -9,10 +9,7 @@ import crypto from 'crypto';
 /**
  * Generate a unique idempotency key for checkout session
  */
-export function generateCheckoutIdempotencyKey(
-  userId: string | null,
-  priceId: string
-): string {
+export function generateCheckoutIdempotencyKey(userId: string | null, priceId: string): string {
   const timestamp = Date.now();
   const random = crypto.randomBytes(8).toString('hex');
   const userPart = userId || 'guest';
@@ -22,9 +19,7 @@ export function generateCheckoutIdempotencyKey(
 /**
  * Check if an idempotency key was already used
  */
-export async function getExistingCheckoutSession(
-  idempotencyKey: string
-): Promise<string | null> {
+export async function getExistingCheckoutSession(idempotencyKey: string): Promise<string | null> {
   const record = await prisma.checkoutSession.findUnique({
     where: { sessionId: idempotencyKey },
     select: { sessionId: true },
@@ -58,9 +53,7 @@ export async function storeCheckoutIdempotency(
 /**
  * Check if a webhook event has already been processed
  */
-export async function isWebhookEventProcessed(
-  eventId: string
-): Promise<boolean> {
+export async function isWebhookEventProcessed(eventId: string): Promise<boolean> {
   const record = await prisma.webhookEvent.findUnique({
     where: { eventId },
   });
@@ -70,9 +63,7 @@ export async function isWebhookEventProcessed(
 /**
  * Mark a webhook event as processed
  */
-export async function markWebhookEventProcessed(
-  eventId: string
-): Promise<void> {
+export async function markWebhookEventProcessed(eventId: string): Promise<void> {
   await prisma.webhookEvent.create({
     data: { eventId, processed: new Date() },
   });

@@ -7,12 +7,7 @@
 import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  TemplatePageHeader,
-} from '@/components/ui/card';
+import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { Bell, Check, AlertTriangle, Trash2 } from 'lucide-react';
@@ -192,9 +187,7 @@ function NotificationsPreview() {
   ]);
 
   const markAsRead = (id: string) => {
-    setNotifications((prev) =>
-      prev.map((n) => (n.id === id ? { ...n, read: true } : n))
-    );
+    setNotifications((prev) => prev.map((n) => (n.id === id ? { ...n, read: true } : n)));
   };
 
   const deleteNotification = (id: string) => {
@@ -208,11 +201,7 @@ function NotificationsPreview() {
       <div className="mx-auto max-w-3xl">
         <Card>
           <div className="border-border flex items-center justify-between border-b px-4 py-2">
-            <CardHeader
-              code="0x00"
-              title="NOTIFICATIONS"
-              className="border-0 p-0"
-            />
+            <CardHeader code="0x00" title="NOTIFICATIONS" className="border-0 p-0" />
             <div className="flex items-center gap-2">
               <Bell className="text-muted-foreground h-3 w-3" />
               {unreadCount > 0 && (
@@ -231,12 +220,8 @@ function NotificationsPreview() {
 
           <div className="space-y-4 p-4">
             {notifications.map((notification) => {
-              const Icon =
-                notification.type === 'warning' ? AlertTriangle : Check;
-              const colorClass =
-                notification.type === 'warning'
-                  ? 'text-warning'
-                  : 'text-success';
+              const Icon = notification.type === 'warning' ? AlertTriangle : Check;
+              const colorClass = notification.type === 'warning' ? 'text-warning' : 'text-success';
 
               return (
                 <div
@@ -267,29 +252,14 @@ function NotificationsPreview() {
                       >
                         {notification.type}
                       </Badge>
-                      <span
-                        className={cn(
-                          mode.font,
-                          'text-muted-foreground text-xs'
-                        )}
-                      >
+                      <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
                         {notification.timestamp}
                       </span>
                     </div>
-                    <h4
-                      className={cn(
-                        mode.font,
-                        'text-foreground mt-2 text-sm font-semibold'
-                      )}
-                    >
+                    <h4 className={cn(mode.font, 'text-foreground mt-2 text-sm font-semibold')}>
                       {notification.title}
                     </h4>
-                    <p
-                      className={cn(
-                        mode.font,
-                        'text-muted-foreground mt-1 text-xs'
-                      )}
-                    >
+                    <p className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
                       {notification.message}
                     </p>
 
@@ -318,12 +288,7 @@ function NotificationsPreview() {
 
                   {/* Read indicator */}
                   {!notification.read && (
-                    <span
-                      className={cn(
-                        mode.radius,
-                        'bg-primary absolute top-2 right-2 size-2'
-                      )}
-                    />
+                    <span className={cn(mode.radius, 'bg-primary absolute top-2 right-2 size-2')} />
                   )}
                 </div>
               );
@@ -395,11 +360,7 @@ export default function NotificationsTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock
-                  code={templateCode}
-                  language="tsx"
-                  maxHeight="600px"
-                />
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
             </Card>
           </TabsContent>
@@ -418,9 +379,7 @@ export default function NotificationsTemplate() {
               </div>
               <div className="space-y-2">
                 <div className="font-semibold">[SUCCESS]</div>
-                <div className="text-muted-foreground">
-                  Deployments, payments, completions
-                </div>
+                <div className="text-muted-foreground">Deployments, payments, completions</div>
               </div>
               <div className="space-y-2">
                 <div className="font-semibold">[WARNING]</div>
@@ -444,20 +403,16 @@ export default function NotificationsTemplate() {
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> Real-time
-                notification display
+                <span className="text-success">&gt;</span> Real-time notification display
               </div>
               <div>
-                <span className="text-success">&gt;</span> Read/unread state
-                management
+                <span className="text-success">&gt;</span> Read/unread state management
               </div>
               <div>
-                <span className="text-success">&gt;</span> Type-based color
-                coding
+                <span className="text-success">&gt;</span> Type-based color coding
               </div>
               <div>
-                <span className="text-success">&gt;</span> Mark as read
-                functionality
+                <span className="text-success">&gt;</span> Mark as read functionality
               </div>
               <div>
                 <span className="text-success">&gt;</span> Delete notifications
@@ -466,8 +421,7 @@ export default function NotificationsTemplate() {
                 <span className="text-success">&gt;</span> Unread count badge
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant
-                (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

@@ -4,12 +4,7 @@
  */
 'use client';
 
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  TemplatePageHeader,
-} from '@/components/ui/card';
+import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { mode } from '@/design-system';
@@ -176,9 +171,7 @@ export default function TeamDashboard() {
 }`;
 
 function TeamDashboardPreview() {
-  const activeNowCount = teamData.members.filter(
-    (m) => m.lastActive === 'Just now'
-  ).length;
+  const activeNowCount = teamData.members.filter((m) => m.lastActive === 'Just now').length;
 
   return (
     <div className="bg-background/50 p-4 sm:p-8">
@@ -281,11 +274,7 @@ export default function TeamDashboardTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock
-                  code={templateCode}
-                  language="tsx"
-                  maxHeight="600px"
-                />
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
             </Card>
           </TabsContent>
@@ -302,9 +291,7 @@ export default function TeamDashboardTemplate() {
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">(dashboard)/</span>
                   <span className="text-foreground">team/page.tsx</span>
-                  <span className="text-muted-foreground ml-4">
-                    ← Copy template here
-                  </span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
                 </div>
                 <div>
                   <span className="text-primary">components/</span>
@@ -324,9 +311,7 @@ export default function TeamDashboardTemplate() {
                 </div>
                 <div>
                   <span className="text-primary">components/</span>
-                  <span className="text-foreground">
-                    pending-invitations.tsx
-                  </span>
+                  <span className="text-foreground">pending-invitations.tsx</span>
                 </div>
                 <div>
                   <span className="text-primary">components/</span>
@@ -347,40 +332,36 @@ export default function TeamDashboardTemplate() {
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> Team member
-                management with roles (Owner, Admin, Member, Guest)
+                <span className="text-success">&gt;</span> Team member management with roles (Owner,
+                Admin, Member, Guest)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Email invitation
-                system with expiration tracking
+                <span className="text-success">&gt;</span> Email invitation system with expiration
+                tracking
               </div>
               <div>
-                <span className="text-success">&gt;</span> Member activity
-                tracking and status indicators
+                <span className="text-success">&gt;</span> Member activity tracking and status
+                indicators
               </div>
               <div>
-                <span className="text-success">&gt;</span> Role-based
-                permissions matrix
+                <span className="text-success">&gt;</span> Role-based permissions matrix
               </div>
               <div>
-                <span className="text-success">&gt;</span> Activity feed with
-                member actions history
+                <span className="text-success">&gt;</span> Activity feed with member actions history
               </div>
               <div>
-                <span className="text-success">&gt;</span> Organization stats
-                (member count, plan, limits)
+                <span className="text-success">&gt;</span> Organization stats (member count, plan,
+                limits)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Responsive layout
-                with sidebar for activity
+                <span className="text-success">&gt;</span> Responsive layout with sidebar for
+                activity
               </div>
               <div>
-                <span className="text-success">&gt;</span> Pending invitations
-                management
+                <span className="text-success">&gt;</span> Pending invitations management
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant
-                (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>
@@ -391,26 +372,13 @@ export default function TeamDashboardTemplate() {
           <CardHeader code="0x04" title="IMPLEMENTATION_NOTE" />
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
-              <div className="text-muted-foreground">
-                [BACKEND_INTEGRATION]:
-              </div>
+              <div className="text-muted-foreground">[BACKEND_INTEGRATION]:</div>
               <div className="space-y-1 pl-4">
-                <div>
-                  • Replace mock data with API calls to your team management
-                  endpoints
-                </div>
-                <div>
-                  • Implement authentication/authorization checks for role-based
-                  actions
-                </div>
-                <div>
-                  • Add email service integration for sending invitations
-                </div>
+                <div>• Replace mock data with API calls to your team management endpoints</div>
+                <div>• Implement authentication/authorization checks for role-based actions</div>
+                <div>• Add email service integration for sending invitations</div>
                 <div>• Connect to your database for persistent member data</div>
-                <div>
-                  • Add real-time updates for activity feed (optional:
-                  WebSockets/SSE)
-                </div>
+                <div>• Add real-time updates for activity feed (optional: WebSockets/SSE)</div>
               </div>
             </div>
           </CardContent>

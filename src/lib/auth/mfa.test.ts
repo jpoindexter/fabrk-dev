@@ -137,9 +137,7 @@ describe('MFA - TOTP', () => {
       const secret = generateTOTPSecret();
       const code = generateTOTP(secret);
       // Modify the code
-      const wrongCode = ((parseInt(code) + 1) % 1000000)
-        .toString()
-        .padStart(6, '0');
+      const wrongCode = ((parseInt(code) + 1) % 1000000).toString().padStart(6, '0');
       expect(verifyTOTP(wrongCode, secret)).toBe(false);
     });
   });

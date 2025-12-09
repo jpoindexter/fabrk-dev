@@ -135,10 +135,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
 
   return (
     <section
-      className={cn(
-        mode.font,
-        'border-border bg-background border-t px-6 py-24'
-      )}
+      className={cn(mode.font, 'border-border bg-background border-t px-6 py-24')}
       id="pricing"
     >
       <div className="mx-auto max-w-7xl">
@@ -149,8 +146,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
             COMPARE_AND_CHOOSE
           </h2>
           <p className="text-muted-foreground mx-auto max-w-2xl text-sm">
-            &gt; See how Fabrk stacks up against the competition. Same features,
-            60-77% cheaper.
+            &gt; See how Fabrk stacks up against the competition. Same features, 60-77% cheaper.
           </p>
         </div>
 
@@ -166,26 +162,20 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
               <thead>
                 <tr>
                   <th className="border-foreground bg-muted sticky left-0 z-10 rounded-none border-r-2 border-b-2 px-6 py-4 text-left">
-                    <span className="text-muted-foreground text-sm font-semibold">
-                      Features
-                    </span>
+                    <span className="text-muted-foreground text-sm font-semibold">Features</span>
                   </th>
                   {plans.map((plan) => (
                     <th
                       key={plan.name}
                       className={`border-foreground rounded-none border-b-2 border-l-2 px-6 py-4 ${
-                        plan.highlighted
-                          ? 'bg-primary text-primary-foreground'
-                          : 'bg-muted'
+                        plan.highlighted ? 'bg-primary text-primary-foreground' : 'bg-muted'
                       }`}
                     >
                       <div className="flex flex-col items-start gap-2">
                         <div>
                           <h3
                             className={`text-xl font-semibold ${
-                              plan.highlighted
-                                ? 'text-primary-foreground'
-                                : 'text-foreground'
+                              plan.highlighted ? 'text-primary-foreground' : 'text-foreground'
                             }`}
                           >
                             {plan.name}
@@ -202,9 +192,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                         </div>
                         <div
                           className={`text-4xl font-semibold ${
-                            plan.highlighted
-                              ? 'text-primary-foreground'
-                              : 'text-foreground'
+                            plan.highlighted ? 'text-primary-foreground' : 'text-foreground'
                           }`}
                         >
                           {plan.price}
@@ -230,9 +218,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                 {Object.entries(featureLabels).map(([key, label], _index) => (
                   <tr key={key} className="bg-card">
                     <td className="border-foreground sticky left-0 z-10 border-r-2 bg-inherit px-6 py-4">
-                      <span className="text-foreground text-sm font-semibold">
-                        {label}
-                      </span>
+                      <span className="text-foreground text-sm font-semibold">{label}</span>
                     </td>
                     {plans.map((plan) => (
                       <td
@@ -241,9 +227,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                           plan.highlighted ? '' : ''
                         }`}
                       >
-                        {renderFeatureValue(
-                          plan.features[key] as boolean | string
-                        )}
+                        {renderFeatureValue(plan.features[key] as boolean | string)}
                       </td>
                     ))}
                   </tr>
@@ -272,9 +256,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                         )}
                         asChild
                       >
-                        <Link href={plan.cta?.href || '#'}>
-                          {plan.cta?.text || 'Learn More'}
-                        </Link>
+                        <Link href={plan.cta?.href || '#'}>{plan.cta?.text || 'Learn More'}</Link>
                       </Button>
                     </td>
                   ))}

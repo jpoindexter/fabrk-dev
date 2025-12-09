@@ -10,12 +10,7 @@ import { useState } from 'react';
 import { toast } from 'sonner';
 import { Shield, Lock, Activity, FileText, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import {
-  TemplatePageHeader,
-  Card,
-  CardHeader,
-  CardContent,
-} from '@/components/ui/card';
+import { TemplatePageHeader, Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
@@ -198,9 +193,7 @@ function SecurityPrivacyPreview() {
   };
 
   const handleRequestAccess = () => {
-    toast.success(
-      '[ACCESS_REPORT]: Request submitted. You will receive a report within 30 days.'
-    );
+    toast.success('[ACCESS_REPORT]: Request submitted. You will receive a report within 30 days.');
   };
 
   const handleViewPolicy = (type: 'privacy' | 'terms') => {
@@ -210,9 +203,7 @@ function SecurityPrivacyPreview() {
   };
 
   const handleDeleteAccount = () => {
-    toast.success(
-      '[DELETE]: Account deletion initiated. Check email for confirmation.'
-    );
+    toast.success('[DELETE]: Account deletion initiated. Check email for confirmation.');
   };
 
   return (
@@ -220,9 +211,7 @@ function SecurityPrivacyPreview() {
       <div className="space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <h1 className={cn(mode.font, 'text-2xl font-semibold')}>
-            Security & Privacy
-          </h1>
+          <h1 className={cn(mode.font, 'text-2xl font-semibold')}>Security & Privacy</h1>
           <Button className={cn(mode.radius, mode.font, 'text-xs')}>
             <Settings className="mr-2 h-4 w-4" />
             &gt; VIEW_AUDIT_LOG
@@ -333,11 +322,7 @@ export default function SecurityPrivacyTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock
-                  code={templateCode}
-                  language="tsx"
-                  maxHeight="600px"
-                />
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
             </Card>
           </TabsContent>
@@ -352,13 +337,9 @@ export default function SecurityPrivacyTemplate() {
               <div className="space-y-1 pl-4">
                 <div>
                   <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">
-                    settings/security/
-                  </span>
+                  <span className="text-muted-foreground">settings/security/</span>
                   <span className="text-foreground">page.tsx</span>
-                  <span className="text-muted-foreground ml-4">
-                    ← Copy template here
-                  </span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
                 </div>
               </div>
             </div>
@@ -371,32 +352,26 @@ export default function SecurityPrivacyTemplate() {
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> Security score
-                dashboard
+                <span className="text-success">&gt;</span> Security score dashboard
               </div>
               <div>
-                <span className="text-success">&gt;</span> Two-factor
-                authentication setup
+                <span className="text-success">&gt;</span> Two-factor authentication setup
               </div>
               <div>
-                <span className="text-success">&gt;</span> Active session
-                management
+                <span className="text-success">&gt;</span> Active session management
               </div>
               <div>
-                <span className="text-success">&gt;</span> Privacy settings with
-                toggles
+                <span className="text-success">&gt;</span> Privacy settings with toggles
               </div>
               <div>
-                <span className="text-success">&gt;</span> Audit log with
-                filtering
+                <span className="text-success">&gt;</span> Audit log with filtering
               </div>
               <div>
-                <span className="text-success">&gt;</span> GDPR compliance tools
-                (data export, deletion)
+                <span className="text-success">&gt;</span> GDPR compliance tools (data export,
+                deletion)
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant
-                (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

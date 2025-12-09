@@ -62,12 +62,7 @@ export function WhyChooseSection() {
               viewport={{ once: true }}
             >
               <Badge code="0x05" label="WHY_FABRK" className="mb-4" />
-              <h2
-                className={cn(
-                  'mb-4 text-2xl font-semibold lg:text-4xl',
-                  mode.font
-                )}
-              >
+              <h2 className={cn('mb-4 text-2xl font-semibold lg:text-4xl', mode.font)}>
                 WHY_CHOOSE_FABRK
               </h2>
             </motion.div>
@@ -112,9 +107,7 @@ export function WhyChooseSection() {
                   <CardContent padding="md">
                     <div className={cn('text-xs', mode.font)}>
                       <span className="text-muted-foreground">[DESC]: </span>
-                      <span className="text-foreground">
-                        {item.description}
-                      </span>
+                      <span className="text-foreground">{item.description}</span>
                     </div>
                   </CardContent>
                 </Card>

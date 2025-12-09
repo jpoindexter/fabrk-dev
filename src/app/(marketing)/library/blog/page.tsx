@@ -10,14 +10,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import {
-  Calendar,
-  Clock,
-  ChevronLeft,
-  ChevronRight,
-  ArrowRight,
-  User,
-} from 'lucide-react';
+import { Calendar, Clock, ChevronLeft, ChevronRight, ArrowRight, User } from 'lucide-react';
 import { InputSearch } from '@/components/ui/input-search';
 import Link from 'next/link';
 import {
@@ -88,8 +81,7 @@ const mockPosts = [
   {
     id: '5',
     title: 'Joining the Fabrk Team',
-    excerpt:
-      "We're growing! Learn about our culture, values, and what it's like to work at Fabrk.",
+    excerpt: "We're growing! Learn about our culture, values, and what it's like to work at Fabrk.",
     category: 'company',
     author: { name: 'HR Team', avatar: null },
     date: 'Nov 18, 2024',
@@ -334,8 +326,7 @@ function BlogPreview() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredPosts = mockPosts.filter((post) => {
-    const matchesCategory =
-      activeCategory === 'all' || post.category === activeCategory;
+    const matchesCategory = activeCategory === 'all' || post.category === activeCategory;
     const matchesSearch =
       searchQuery === '' ||
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -360,34 +351,23 @@ function BlogPreview() {
             <div className="p-6">
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="border-border bg-muted/30 flex aspect-video items-center justify-center border">
-                  <span
-                    className={cn(mode.font, 'text-muted-foreground text-xs')}
-                  >
+                  <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
                     [FEATURED_IMAGE]
                   </span>
                 </div>
                 <div className="flex flex-col justify-center space-y-4">
                   <div className="flex items-center gap-2">
-                    <Badge
-                      variant="default"
-                      className={cn(mode.radius, mode.font, 'text-xs')}
-                    >
+                    <Badge variant="default" className={cn(mode.radius, mode.font, 'text-xs')}>
                       FEATURED
                     </Badge>
                     <Badge
                       variant="outline"
-                      className={cn(
-                        mode.radius,
-                        mode.font,
-                        'border-border text-xs'
-                      )}
+                      className={cn(mode.radius, mode.font, 'border-border text-xs')}
                     >
                       {featuredPost.category.toUpperCase()}
                     </Badge>
                   </div>
-                  <h2 className={cn(mode.font, 'text-2xl font-semibold')}>
-                    {featuredPost.title}
-                  </h2>
+                  <h2 className={cn(mode.font, 'text-2xl font-semibold')}>{featuredPost.title}</h2>
                   <p className={cn(mode.font, 'text-muted-foreground text-sm')}>
                     {featuredPost.excerpt}
                   </p>
@@ -398,15 +378,8 @@ function BlogPreview() {
                     )}
                   >
                     <div className="flex items-center gap-2">
-                      <Avatar
-                        className={cn(
-                          mode.radius,
-                          'border-border h-6 w-6 border'
-                        )}
-                      >
-                        <AvatarImage
-                          src={featuredPost.author.avatar || undefined}
-                        />
+                      <Avatar className={cn(mode.radius, 'border-border h-6 w-6 border')}>
+                        <AvatarImage src={featuredPost.author.avatar || undefined} />
                         <AvatarFallback className={cn(mode.radius, 'text-xs')}>
                           {featuredPost.author.name
                             .split(' ')
@@ -425,10 +398,7 @@ function BlogPreview() {
                       {featuredPost.readTime}
                     </div>
                   </div>
-                  <Button
-                    asChild
-                    className={cn(mode.radius, mode.font, 'w-fit text-xs')}
-                  >
+                  <Button asChild className={cn(mode.radius, mode.font, 'w-fit text-xs')}>
                     <Link href="/templates/blog/post">
                       &gt; READ_ARTICLE <ArrowRight className="ml-1 h-3 w-3" />
                     </Link>
@@ -472,27 +442,19 @@ function BlogPreview() {
             <Link key={post.id} href="/templates/blog/post">
               <div className="border-border hover:border-primary group bg-card border transition-colors">
                 <div className="border-border border-b px-4 py-2">
-                  <span
-                    className={cn(mode.font, 'text-muted-foreground text-xs')}
-                  >
+                  <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
                     [ [0x0{post.id}] POST_{post.id} ]
                   </span>
                 </div>
                 <div className="border-border bg-muted/30 flex aspect-video items-center justify-center border-b">
-                  <span
-                    className={cn(mode.font, 'text-muted-foreground text-xs')}
-                  >
+                  <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
                     [THUMBNAIL]
                   </span>
                 </div>
                 <div className="flex h-[180px] flex-col p-4">
                   <Badge
                     variant="outline"
-                    className={cn(
-                      mode.radius,
-                      mode.font,
-                      'border-border mb-2 w-fit text-xs'
-                    )}
+                    className={cn(mode.radius, mode.font, 'border-border mb-2 w-fit text-xs')}
                   >
                     {post.category.toUpperCase()}
                   </Badge>
@@ -504,12 +466,7 @@ function BlogPreview() {
                   >
                     {post.title}
                   </h3>
-                  <p
-                    className={cn(
-                      mode.font,
-                      'text-muted-foreground mb-4 line-clamp-2 text-xs'
-                    )}
-                  >
+                  <p className={cn(mode.font, 'text-muted-foreground mb-4 line-clamp-2 text-xs')}>
                     {post.excerpt}
                   </p>
                   <div className="border-border mt-auto flex items-center justify-between border-t pt-3">
@@ -566,11 +523,7 @@ function BlogPreview() {
                     variant={currentPage === page ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setCurrentPage(page)}
-                    className={cn(
-                      mode.radius,
-                      mode.font,
-                      'h-8 w-8 p-0 text-xs'
-                    )}
+                    className={cn(mode.radius, mode.font, 'h-8 w-8 p-0 text-xs')}
                   >
                     {page}
                   </Button>
@@ -654,11 +607,7 @@ export default function BlogTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock
-                  code={templateCode}
-                  language="tsx"
-                  maxHeight="600px"
-                />
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
             </Card>
           </TabsContent>
@@ -675,9 +624,7 @@ export default function BlogTemplate() {
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">blog/</span>
                   <span className="text-foreground">page.tsx</span>
-                  <span className="text-muted-foreground ml-4">
-                    ← Copy template here
-                  </span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
                 </div>
               </div>
             </div>

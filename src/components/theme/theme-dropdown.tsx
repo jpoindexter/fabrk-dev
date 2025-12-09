@@ -81,20 +81,13 @@ export function ThemeDropdown() {
 
   if (!mounted) {
     return (
-      <Button
-        variant="ghost"
-        size="sm"
-        className={mode.radius}
-        disabled
-        aria-label="Loading theme"
-      >
+      <Button variant="ghost" size="sm" className={mode.radius} disabled aria-label="Loading theme">
         <Palette className="h-4 w-4" />
       </Button>
     );
   }
 
-  const currentThemeName =
-    themes.find((t) => t.id === currentTheme)?.name || 'Light';
+  const currentThemeName = themes.find((t) => t.id === currentTheme)?.name || 'Light';
 
   return (
     <DropdownMenu>
@@ -124,9 +117,7 @@ export function ThemeDropdown() {
               style={{ backgroundColor: theme.preview }}
             />
             {theme.name}
-            {currentTheme === theme.id && (
-              <span className="ml-auto text-xs">✓</span>
-            )}
+            {currentTheme === theme.id && <span className="ml-auto text-xs">✓</span>}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

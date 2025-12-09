@@ -5,18 +5,12 @@
  */
 
 // Welcome & Onboarding
-export {
-  generateWelcomeEmailHTML,
-  type WelcomeEmailProps,
-} from './welcome-html';
+export { generateWelcomeEmailHTML, type WelcomeEmailProps } from './welcome-html';
 
 // Authentication
 export { generateVerifyEmailHTML, type VerifyEmailProps } from './verify-email';
 
-export {
-  generateResetPasswordHTML,
-  type ResetPasswordProps,
-} from './reset-password';
+export { generateResetPasswordHTML, type ResetPasswordProps } from './reset-password';
 
 // Payments & Subscriptions
 export {

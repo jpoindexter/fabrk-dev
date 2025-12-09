@@ -15,8 +15,7 @@ import type * as Prisma from '../internal/prismaNamespace';
  * Model Payment
  *
  */
-export type PaymentModel =
-  runtime.Types.Result.DefaultSelection<Prisma.$PaymentPayload>;
+export type PaymentModel = runtime.Types.Result.DefaultSelection<Prisma.$PaymentPayload>;
 
 export type AggregatePayment = {
   _count: PaymentCountAggregateOutputType | null;
@@ -111,8 +110,7 @@ export type PaymentCountAggregateInputType = {
 };
 
 export type PaymentAggregateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which Payment to aggregate.
@@ -123,9 +121,7 @@ export type PaymentAggregateArgs<
    *
    * Determine the order of Payments to fetch.
    */
-  orderBy?:
-    | Prisma.PaymentOrderByWithRelationInput
-    | Prisma.PaymentOrderByWithRelationInput[];
+  orderBy?: Prisma.PaymentOrderByWithRelationInput | Prisma.PaymentOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -185,13 +181,10 @@ export type GetPaymentAggregateType<T extends PaymentAggregateArgs> = {
 };
 
 export type PaymentGroupByArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.PaymentWhereInput;
-  orderBy?:
-    | Prisma.PaymentOrderByWithAggregationInput
-    | Prisma.PaymentOrderByWithAggregationInput[];
+  orderBy?: Prisma.PaymentOrderByWithAggregationInput | Prisma.PaymentOrderByWithAggregationInput[];
   by: Prisma.PaymentScalarFieldEnum[] | Prisma.PaymentScalarFieldEnum;
   having?: Prisma.PaymentScalarWhereWithAggregatesInput;
   take?: number;
@@ -219,18 +212,17 @@ export type PaymentGroupByOutputType = {
   _max: PaymentMaxAggregateOutputType | null;
 };
 
-type GetPaymentGroupByPayload<T extends PaymentGroupByArgs> =
-  Prisma.PrismaPromise<
-    Array<
-      Prisma.PickEnumerable<PaymentGroupByOutputType, T['by']> & {
-        [P in keyof T & keyof PaymentGroupByOutputType]: P extends '_count'
-          ? T[P] extends boolean
-            ? number
-            : Prisma.GetScalarType<T[P], PaymentGroupByOutputType[P]>
-          : Prisma.GetScalarType<T[P], PaymentGroupByOutputType[P]>;
-      }
-    >
-  >;
+type GetPaymentGroupByPayload<T extends PaymentGroupByArgs> = Prisma.PrismaPromise<
+  Array<
+    Prisma.PickEnumerable<PaymentGroupByOutputType, T['by']> & {
+      [P in keyof T & keyof PaymentGroupByOutputType]: P extends '_count'
+        ? T[P] extends boolean
+          ? number
+          : Prisma.GetScalarType<T[P], PaymentGroupByOutputType[P]>
+        : Prisma.GetScalarType<T[P], PaymentGroupByOutputType[P]>;
+    }
+  >
+>;
 
 export type PaymentWhereInput = {
   AND?: Prisma.PaymentWhereInput | Prisma.PaymentWhereInput[];
@@ -304,16 +296,10 @@ export type PaymentScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<'Payment'> | string;
   userId?: Prisma.StringWithAggregatesFilter<'Payment'> | string;
   stripeId?: Prisma.StringWithAggregatesFilter<'Payment'> | string;
-  stripePaymentId?:
-    | Prisma.StringNullableWithAggregatesFilter<'Payment'>
-    | string
-    | null;
+  stripePaymentId?: Prisma.StringNullableWithAggregatesFilter<'Payment'> | string | null;
   amount?: Prisma.IntWithAggregatesFilter<'Payment'> | number;
   status?: Prisma.StringWithAggregatesFilter<'Payment'> | string;
-  productId?:
-    | Prisma.StringNullableWithAggregatesFilter<'Payment'>
-    | string
-    | null;
+  productId?: Prisma.StringNullableWithAggregatesFilter<'Payment'> | string | null;
   createdAt?: Prisma.DateTimeWithAggregatesFilter<'Payment'> | Date | string;
 };
 
@@ -342,10 +328,7 @@ export type PaymentUncheckedCreateInput = {
 export type PaymentUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   stripeId?: Prisma.StringFieldUpdateOperationsInput | string;
-  stripePaymentId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  stripePaymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   amount?: Prisma.IntFieldUpdateOperationsInput | number;
   status?: Prisma.StringFieldUpdateOperationsInput | string;
   productId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -357,10 +340,7 @@ export type PaymentUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   userId?: Prisma.StringFieldUpdateOperationsInput | string;
   stripeId?: Prisma.StringFieldUpdateOperationsInput | string;
-  stripePaymentId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  stripePaymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   amount?: Prisma.IntFieldUpdateOperationsInput | number;
   status?: Prisma.StringFieldUpdateOperationsInput | string;
   productId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -381,10 +361,7 @@ export type PaymentCreateManyInput = {
 export type PaymentUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   stripeId?: Prisma.StringFieldUpdateOperationsInput | string;
-  stripePaymentId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  stripePaymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   amount?: Prisma.IntFieldUpdateOperationsInput | number;
   status?: Prisma.StringFieldUpdateOperationsInput | string;
   productId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -395,10 +372,7 @@ export type PaymentUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   userId?: Prisma.StringFieldUpdateOperationsInput | string;
   stripeId?: Prisma.StringFieldUpdateOperationsInput | string;
-  stripePaymentId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  stripePaymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   amount?: Prisma.IntFieldUpdateOperationsInput | number;
   status?: Prisma.StringFieldUpdateOperationsInput | string;
   productId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -502,9 +476,7 @@ export type PaymentUpdateManyWithoutUserNestedInput = {
     | Prisma.PaymentUpsertWithWhereUniqueWithoutUserInput[];
   createMany?: Prisma.PaymentCreateManyUserInputEnvelope;
   set?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[];
-  disconnect?:
-    | Prisma.PaymentWhereUniqueInput
-    | Prisma.PaymentWhereUniqueInput[];
+  disconnect?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[];
   delete?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[];
   connect?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[];
   update?:
@@ -513,9 +485,7 @@ export type PaymentUpdateManyWithoutUserNestedInput = {
   updateMany?:
     | Prisma.PaymentUpdateManyWithWhereWithoutUserInput
     | Prisma.PaymentUpdateManyWithWhereWithoutUserInput[];
-  deleteMany?:
-    | Prisma.PaymentScalarWhereInput
-    | Prisma.PaymentScalarWhereInput[];
+  deleteMany?: Prisma.PaymentScalarWhereInput | Prisma.PaymentScalarWhereInput[];
 };
 
 export type PaymentUncheckedUpdateManyWithoutUserNestedInput = {
@@ -534,9 +504,7 @@ export type PaymentUncheckedUpdateManyWithoutUserNestedInput = {
     | Prisma.PaymentUpsertWithWhereUniqueWithoutUserInput[];
   createMany?: Prisma.PaymentCreateManyUserInputEnvelope;
   set?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[];
-  disconnect?:
-    | Prisma.PaymentWhereUniqueInput
-    | Prisma.PaymentWhereUniqueInput[];
+  disconnect?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[];
   delete?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[];
   connect?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[];
   update?:
@@ -545,9 +513,7 @@ export type PaymentUncheckedUpdateManyWithoutUserNestedInput = {
   updateMany?:
     | Prisma.PaymentUpdateManyWithWhereWithoutUserInput
     | Prisma.PaymentUpdateManyWithWhereWithoutUserInput[];
-  deleteMany?:
-    | Prisma.PaymentScalarWhereInput
-    | Prisma.PaymentScalarWhereInput[];
+  deleteMany?: Prisma.PaymentScalarWhereInput | Prisma.PaymentScalarWhereInput[];
 };
 
 export type PaymentCreateWithoutUserInput = {
@@ -638,10 +604,7 @@ export type PaymentCreateManyUserInput = {
 export type PaymentUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   stripeId?: Prisma.StringFieldUpdateOperationsInput | string;
-  stripePaymentId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  stripePaymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   amount?: Prisma.IntFieldUpdateOperationsInput | number;
   status?: Prisma.StringFieldUpdateOperationsInput | string;
   productId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -651,10 +614,7 @@ export type PaymentUpdateWithoutUserInput = {
 export type PaymentUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   stripeId?: Prisma.StringFieldUpdateOperationsInput | string;
-  stripePaymentId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  stripePaymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   amount?: Prisma.IntFieldUpdateOperationsInput | number;
   status?: Prisma.StringFieldUpdateOperationsInput | string;
   productId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -664,10 +624,7 @@ export type PaymentUncheckedUpdateWithoutUserInput = {
 export type PaymentUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   stripeId?: Prisma.StringFieldUpdateOperationsInput | string;
-  stripePaymentId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  stripePaymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   amount?: Prisma.IntFieldUpdateOperationsInput | number;
   status?: Prisma.StringFieldUpdateOperationsInput | string;
   productId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -675,8 +632,7 @@ export type PaymentUncheckedUpdateManyWithoutUserInput = {
 };
 
 export type PaymentSelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -693,8 +649,7 @@ export type PaymentSelect<
 >;
 
 export type PaymentSelectCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -711,8 +666,7 @@ export type PaymentSelectCreateManyAndReturn<
 >;
 
 export type PaymentSelectUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -740,8 +694,7 @@ export type PaymentSelectScalar = {
 };
 
 export type PaymentOmit<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
   | 'id'
   | 'userId'
@@ -754,27 +707,23 @@ export type PaymentOmit<
   ExtArgs['result']['payment']
 >;
 export type PaymentInclude<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 export type PaymentIncludeCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 export type PaymentIncludeUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 
 export type $PaymentPayload<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   name: 'Payment';
   objects: {
@@ -796,20 +745,17 @@ export type $PaymentPayload<
   composites: {};
 };
 
-export type PaymentGetPayload<
-  S extends boolean | null | undefined | PaymentDefaultArgs,
-> = runtime.Types.Result.GetResult<Prisma.$PaymentPayload, S>;
+export type PaymentGetPayload<S extends boolean | null | undefined | PaymentDefaultArgs> =
+  runtime.Types.Result.GetResult<Prisma.$PaymentPayload, S>;
 
 export type PaymentCountArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = Omit<PaymentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
   select?: PaymentCountAggregateInputType | true;
 };
 
 export interface PaymentDelegate<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > {
   [K: symbol]: {
@@ -964,12 +910,7 @@ export interface PaymentDelegate<
   create<T extends PaymentCreateArgs>(
     args: Prisma.SelectSubset<T, PaymentCreateArgs<ExtArgs>>
   ): Prisma.Prisma__PaymentClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$PaymentPayload<ExtArgs>,
-      T,
-      'create',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, 'create', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -1039,12 +980,7 @@ export interface PaymentDelegate<
   delete<T extends PaymentDeleteArgs>(
     args: Prisma.SelectSubset<T, PaymentDeleteArgs<ExtArgs>>
   ): Prisma.Prisma__PaymentClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$PaymentPayload<ExtArgs>,
-      T,
-      'delete',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, 'delete', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -1068,12 +1004,7 @@ export interface PaymentDelegate<
   update<T extends PaymentUpdateArgs>(
     args: Prisma.SelectSubset<T, PaymentUpdateArgs<ExtArgs>>
   ): Prisma.Prisma__PaymentClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$PaymentPayload<ExtArgs>,
-      T,
-      'update',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, 'update', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -1175,12 +1106,7 @@ export interface PaymentDelegate<
   upsert<T extends PaymentUpsertArgs>(
     args: Prisma.SelectSubset<T, PaymentUpsertArgs<ExtArgs>>
   ): Prisma.Prisma__PaymentClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$PaymentPayload<ExtArgs>,
-      T,
-      'upsert',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, 'upsert', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -1280,12 +1206,7 @@ export interface PaymentDelegate<
               ? never
               : P extends string
                 ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                : [
-                    Error,
-                    'Field ',
-                    P,
-                    ` in "having" needs to be provided in "by"`,
-                  ];
+                : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
           }[HavingFields]
         : 'take' extends Prisma.Keys<T>
           ? 'orderBy' extends Prisma.Keys<T>
@@ -1315,11 +1236,8 @@ export interface PaymentDelegate<
                     : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                 }[OrderFields],
   >(
-    args: Prisma.SubsetIntersection<T, PaymentGroupByArgs, OrderByArg> &
-      InputErrors
-  ): {} extends InputErrors
-    ? GetPaymentGroupByPayload<T>
-    : Prisma.PrismaPromise<InputErrors>;
+    args: Prisma.SubsetIntersection<T, PaymentGroupByArgs, OrderByArg> & InputErrors
+  ): {} extends InputErrors ? GetPaymentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
   /**
    * Fields of the Payment model
    */
@@ -1335,8 +1253,7 @@ export interface PaymentDelegate<
 export interface Prisma__PaymentClient<
   T,
   Null = never,
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: 'PrismaPromise';
@@ -1361,14 +1278,8 @@ export interface Prisma__PaymentClient<
    * @returns A Promise for the completion of which ever callback is executed.
    */
   then<TResult1 = T, TResult2 = never>(
-    onfulfilled?:
-      | ((value: T) => TResult1 | PromiseLike<TResult1>)
-      | undefined
-      | null,
-    onrejected?:
-      | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-      | undefined
-      | null
+    onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
   ): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
   /**
    * Attaches a callback for only the rejection of the Promise.
@@ -1376,10 +1287,7 @@ export interface Prisma__PaymentClient<
    * @returns A Promise for the completion of the callback.
    */
   catch<TResult = never>(
-    onrejected?:
-      | ((reason: any) => TResult | PromiseLike<TResult>)
-      | undefined
-      | null
+    onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
   ): runtime.Types.Utils.JsPromise<T | TResult>;
   /**
    * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
@@ -1387,9 +1295,7 @@ export interface Prisma__PaymentClient<
    * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
    * @returns A Promise for the completion of the callback.
    */
-  finally(
-    onfinally?: (() => void) | undefined | null
-  ): runtime.Types.Utils.JsPromise<T>;
+  finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
 }
 
 /**
@@ -1411,8 +1317,7 @@ export interface PaymentFieldRefs {
  * Payment findUnique
  */
 export type PaymentFindUniqueArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Payment
@@ -1436,8 +1341,7 @@ export type PaymentFindUniqueArgs<
  * Payment findUniqueOrThrow
  */
 export type PaymentFindUniqueOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Payment
@@ -1461,8 +1365,7 @@ export type PaymentFindUniqueOrThrowArgs<
  * Payment findFirst
  */
 export type PaymentFindFirstArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Payment
@@ -1485,9 +1388,7 @@ export type PaymentFindFirstArgs<
    *
    * Determine the order of Payments to fetch.
    */
-  orderBy?:
-    | Prisma.PaymentOrderByWithRelationInput
-    | Prisma.PaymentOrderByWithRelationInput[];
+  orderBy?: Prisma.PaymentOrderByWithRelationInput | Prisma.PaymentOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1518,8 +1419,7 @@ export type PaymentFindFirstArgs<
  * Payment findFirstOrThrow
  */
 export type PaymentFindFirstOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Payment
@@ -1542,9 +1442,7 @@ export type PaymentFindFirstOrThrowArgs<
    *
    * Determine the order of Payments to fetch.
    */
-  orderBy?:
-    | Prisma.PaymentOrderByWithRelationInput
-    | Prisma.PaymentOrderByWithRelationInput[];
+  orderBy?: Prisma.PaymentOrderByWithRelationInput | Prisma.PaymentOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1575,8 +1473,7 @@ export type PaymentFindFirstOrThrowArgs<
  * Payment findMany
  */
 export type PaymentFindManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Payment
@@ -1599,9 +1496,7 @@ export type PaymentFindManyArgs<
    *
    * Determine the order of Payments to fetch.
    */
-  orderBy?:
-    | Prisma.PaymentOrderByWithRelationInput
-    | Prisma.PaymentOrderByWithRelationInput[];
+  orderBy?: Prisma.PaymentOrderByWithRelationInput | Prisma.PaymentOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1627,8 +1522,7 @@ export type PaymentFindManyArgs<
  * Payment create
  */
 export type PaymentCreateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Payment
@@ -1645,18 +1539,14 @@ export type PaymentCreateArgs<
   /**
    * The data needed to create a Payment.
    */
-  data: Prisma.XOR<
-    Prisma.PaymentCreateInput,
-    Prisma.PaymentUncheckedCreateInput
-  >;
+  data: Prisma.XOR<Prisma.PaymentCreateInput, Prisma.PaymentUncheckedCreateInput>;
 };
 
 /**
  * Payment createMany
  */
 export type PaymentCreateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to create many Payments.
@@ -1669,8 +1559,7 @@ export type PaymentCreateManyArgs<
  * Payment createManyAndReturn
  */
 export type PaymentCreateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Payment
@@ -1695,8 +1584,7 @@ export type PaymentCreateManyAndReturnArgs<
  * Payment update
  */
 export type PaymentUpdateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Payment
@@ -1713,10 +1601,7 @@ export type PaymentUpdateArgs<
   /**
    * The data needed to update a Payment.
    */
-  data: Prisma.XOR<
-    Prisma.PaymentUpdateInput,
-    Prisma.PaymentUncheckedUpdateInput
-  >;
+  data: Prisma.XOR<Prisma.PaymentUpdateInput, Prisma.PaymentUncheckedUpdateInput>;
   /**
    * Choose, which Payment to update.
    */
@@ -1727,16 +1612,12 @@ export type PaymentUpdateArgs<
  * Payment updateMany
  */
 export type PaymentUpdateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to update Payments.
    */
-  data: Prisma.XOR<
-    Prisma.PaymentUpdateManyMutationInput,
-    Prisma.PaymentUncheckedUpdateManyInput
-  >;
+  data: Prisma.XOR<Prisma.PaymentUpdateManyMutationInput, Prisma.PaymentUncheckedUpdateManyInput>;
   /**
    * Filter which Payments to update
    */
@@ -1751,8 +1632,7 @@ export type PaymentUpdateManyArgs<
  * Payment updateManyAndReturn
  */
 export type PaymentUpdateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Payment
@@ -1765,10 +1645,7 @@ export type PaymentUpdateManyAndReturnArgs<
   /**
    * The data used to update Payments.
    */
-  data: Prisma.XOR<
-    Prisma.PaymentUpdateManyMutationInput,
-    Prisma.PaymentUncheckedUpdateManyInput
-  >;
+  data: Prisma.XOR<Prisma.PaymentUpdateManyMutationInput, Prisma.PaymentUncheckedUpdateManyInput>;
   /**
    * Filter which Payments to update
    */
@@ -1787,8 +1664,7 @@ export type PaymentUpdateManyAndReturnArgs<
  * Payment upsert
  */
 export type PaymentUpsertArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Payment
@@ -1809,25 +1685,18 @@ export type PaymentUpsertArgs<
   /**
    * In case the Payment found by the `where` argument doesn't exist, create a new Payment with this data.
    */
-  create: Prisma.XOR<
-    Prisma.PaymentCreateInput,
-    Prisma.PaymentUncheckedCreateInput
-  >;
+  create: Prisma.XOR<Prisma.PaymentCreateInput, Prisma.PaymentUncheckedCreateInput>;
   /**
    * In case the Payment was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<
-    Prisma.PaymentUpdateInput,
-    Prisma.PaymentUncheckedUpdateInput
-  >;
+  update: Prisma.XOR<Prisma.PaymentUpdateInput, Prisma.PaymentUncheckedUpdateInput>;
 };
 
 /**
  * Payment delete
  */
 export type PaymentDeleteArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Payment
@@ -1851,8 +1720,7 @@ export type PaymentDeleteArgs<
  * Payment deleteMany
  */
 export type PaymentDeleteManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which Payments to delete
@@ -1868,8 +1736,7 @@ export type PaymentDeleteManyArgs<
  * Payment without action
  */
 export type PaymentDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Payment

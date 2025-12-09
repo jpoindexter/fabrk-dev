@@ -15,8 +15,7 @@ import type * as Prisma from '../internal/prismaNamespace';
  * Model ApiKey
  *
  */
-export type ApiKeyModel =
-  runtime.Types.Result.DefaultSelection<Prisma.$ApiKeyPayload>;
+export type ApiKeyModel = runtime.Types.Result.DefaultSelection<Prisma.$ApiKeyPayload>;
 
 export type AggregateApiKey = {
   _count: ApiKeyCountAggregateOutputType | null;
@@ -101,8 +100,7 @@ export type ApiKeyCountAggregateInputType = {
 };
 
 export type ApiKeyAggregateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which ApiKey to aggregate.
@@ -113,9 +111,7 @@ export type ApiKeyAggregateArgs<
    *
    * Determine the order of ApiKeys to fetch.
    */
-  orderBy?:
-    | Prisma.ApiKeyOrderByWithRelationInput
-    | Prisma.ApiKeyOrderByWithRelationInput[];
+  orderBy?: Prisma.ApiKeyOrderByWithRelationInput | Prisma.ApiKeyOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -163,13 +159,10 @@ export type GetApiKeyAggregateType<T extends ApiKeyAggregateArgs> = {
 };
 
 export type ApiKeyGroupByArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.ApiKeyWhereInput;
-  orderBy?:
-    | Prisma.ApiKeyOrderByWithAggregationInput
-    | Prisma.ApiKeyOrderByWithAggregationInput[];
+  orderBy?: Prisma.ApiKeyOrderByWithAggregationInput | Prisma.ApiKeyOrderByWithAggregationInput[];
   by: Prisma.ApiKeyScalarFieldEnum[] | Prisma.ApiKeyScalarFieldEnum;
   having?: Prisma.ApiKeyScalarWhereWithAggregatesInput;
   take?: number;
@@ -195,18 +188,17 @@ export type ApiKeyGroupByOutputType = {
   _max: ApiKeyMaxAggregateOutputType | null;
 };
 
-type GetApiKeyGroupByPayload<T extends ApiKeyGroupByArgs> =
-  Prisma.PrismaPromise<
-    Array<
-      Prisma.PickEnumerable<ApiKeyGroupByOutputType, T['by']> & {
-        [P in keyof T & keyof ApiKeyGroupByOutputType]: P extends '_count'
-          ? T[P] extends boolean
-            ? number
-            : Prisma.GetScalarType<T[P], ApiKeyGroupByOutputType[P]>
-          : Prisma.GetScalarType<T[P], ApiKeyGroupByOutputType[P]>;
-      }
-    >
-  >;
+type GetApiKeyGroupByPayload<T extends ApiKeyGroupByArgs> = Prisma.PrismaPromise<
+  Array<
+    Prisma.PickEnumerable<ApiKeyGroupByOutputType, T['by']> & {
+      [P in keyof T & keyof ApiKeyGroupByOutputType]: P extends '_count'
+        ? T[P] extends boolean
+          ? number
+          : Prisma.GetScalarType<T[P], ApiKeyGroupByOutputType[P]>
+        : Prisma.GetScalarType<T[P], ApiKeyGroupByOutputType[P]>;
+    }
+  >
+>;
 
 export type ApiKeyWhereInput = {
   AND?: Prisma.ApiKeyWhereInput | Prisma.ApiKeyWhereInput[];
@@ -222,10 +214,7 @@ export type ApiKeyWhereInput = {
   lastUsedAt?: Prisma.DateTimeNullableFilter<'ApiKey'> | Date | string | null;
   expiresAt?: Prisma.DateTimeNullableFilter<'ApiKey'> | Date | string | null;
   createdAt?: Prisma.DateTimeFilter<'ApiKey'> | Date | string;
-  organization?: Prisma.XOR<
-    Prisma.OrganizationScalarRelationFilter,
-    Prisma.OrganizationWhereInput
-  >;
+  organization?: Prisma.XOR<Prisma.OrganizationScalarRelationFilter, Prisma.OrganizationWhereInput>;
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
 };
 
@@ -285,13 +274,9 @@ export type ApiKeyOrderByWithAggregationInput = {
 };
 
 export type ApiKeyScalarWhereWithAggregatesInput = {
-  AND?:
-    | Prisma.ApiKeyScalarWhereWithAggregatesInput
-    | Prisma.ApiKeyScalarWhereWithAggregatesInput[];
+  AND?: Prisma.ApiKeyScalarWhereWithAggregatesInput | Prisma.ApiKeyScalarWhereWithAggregatesInput[];
   OR?: Prisma.ApiKeyScalarWhereWithAggregatesInput[];
-  NOT?:
-    | Prisma.ApiKeyScalarWhereWithAggregatesInput
-    | Prisma.ApiKeyScalarWhereWithAggregatesInput[];
+  NOT?: Prisma.ApiKeyScalarWhereWithAggregatesInput | Prisma.ApiKeyScalarWhereWithAggregatesInput[];
   id?: Prisma.StringWithAggregatesFilter<'ApiKey'> | string;
   organizationId?: Prisma.StringWithAggregatesFilter<'ApiKey'> | string;
   userId?: Prisma.StringWithAggregatesFilter<'ApiKey'> | string;
@@ -299,16 +284,8 @@ export type ApiKeyScalarWhereWithAggregatesInput = {
   keyPrefix?: Prisma.StringWithAggregatesFilter<'ApiKey'> | string;
   keyHash?: Prisma.StringWithAggregatesFilter<'ApiKey'> | string;
   permissions?: Prisma.StringNullableListFilter<'ApiKey'>;
-  lastUsedAt?:
-    | Prisma.DateTimeNullableWithAggregatesFilter<'ApiKey'>
-    | Date
-    | string
-    | null;
-  expiresAt?:
-    | Prisma.DateTimeNullableWithAggregatesFilter<'ApiKey'>
-    | Date
-    | string
-    | null;
+  lastUsedAt?: Prisma.DateTimeNullableWithAggregatesFilter<'ApiKey'> | Date | string | null;
+  expiresAt?: Prisma.DateTimeNullableWithAggregatesFilter<'ApiKey'> | Date | string | null;
   createdAt?: Prisma.DateTimeWithAggregatesFilter<'ApiKey'> | Date | string;
 };
 
@@ -344,16 +321,8 @@ export type ApiKeyUpdateInput = {
   keyPrefix?: Prisma.StringFieldUpdateOperationsInput | string;
   keyHash?: Prisma.StringFieldUpdateOperationsInput | string;
   permissions?: Prisma.ApiKeyUpdatepermissionsInput | string[];
-  lastUsedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  expiresAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  lastUsedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  expiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   organization?: Prisma.OrganizationUpdateOneRequiredWithoutApiKeysNestedInput;
   user?: Prisma.UserUpdateOneRequiredWithoutApiKeysNestedInput;
@@ -367,16 +336,8 @@ export type ApiKeyUncheckedUpdateInput = {
   keyPrefix?: Prisma.StringFieldUpdateOperationsInput | string;
   keyHash?: Prisma.StringFieldUpdateOperationsInput | string;
   permissions?: Prisma.ApiKeyUpdatepermissionsInput | string[];
-  lastUsedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  expiresAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  lastUsedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  expiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -399,16 +360,8 @@ export type ApiKeyUpdateManyMutationInput = {
   keyPrefix?: Prisma.StringFieldUpdateOperationsInput | string;
   keyHash?: Prisma.StringFieldUpdateOperationsInput | string;
   permissions?: Prisma.ApiKeyUpdatepermissionsInput | string[];
-  lastUsedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  expiresAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  lastUsedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  expiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -420,16 +373,8 @@ export type ApiKeyUncheckedUpdateManyInput = {
   keyPrefix?: Prisma.StringFieldUpdateOperationsInput | string;
   keyHash?: Prisma.StringFieldUpdateOperationsInput | string;
   permissions?: Prisma.ApiKeyUpdatepermissionsInput | string[];
-  lastUsedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  expiresAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  lastUsedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  expiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -490,10 +435,7 @@ export type ApiKeyMinOrderByAggregateInput = {
 
 export type ApiKeyCreateNestedManyWithoutUserInput = {
   create?:
-    | Prisma.XOR<
-        Prisma.ApiKeyCreateWithoutUserInput,
-        Prisma.ApiKeyUncheckedCreateWithoutUserInput
-      >
+    | Prisma.XOR<Prisma.ApiKeyCreateWithoutUserInput, Prisma.ApiKeyUncheckedCreateWithoutUserInput>
     | Prisma.ApiKeyCreateWithoutUserInput[]
     | Prisma.ApiKeyUncheckedCreateWithoutUserInput[];
   connectOrCreate?:
@@ -505,10 +447,7 @@ export type ApiKeyCreateNestedManyWithoutUserInput = {
 
 export type ApiKeyUncheckedCreateNestedManyWithoutUserInput = {
   create?:
-    | Prisma.XOR<
-        Prisma.ApiKeyCreateWithoutUserInput,
-        Prisma.ApiKeyUncheckedCreateWithoutUserInput
-      >
+    | Prisma.XOR<Prisma.ApiKeyCreateWithoutUserInput, Prisma.ApiKeyUncheckedCreateWithoutUserInput>
     | Prisma.ApiKeyCreateWithoutUserInput[]
     | Prisma.ApiKeyUncheckedCreateWithoutUserInput[];
   connectOrCreate?:
@@ -520,10 +459,7 @@ export type ApiKeyUncheckedCreateNestedManyWithoutUserInput = {
 
 export type ApiKeyUpdateManyWithoutUserNestedInput = {
   create?:
-    | Prisma.XOR<
-        Prisma.ApiKeyCreateWithoutUserInput,
-        Prisma.ApiKeyUncheckedCreateWithoutUserInput
-      >
+    | Prisma.XOR<Prisma.ApiKeyCreateWithoutUserInput, Prisma.ApiKeyUncheckedCreateWithoutUserInput>
     | Prisma.ApiKeyCreateWithoutUserInput[]
     | Prisma.ApiKeyUncheckedCreateWithoutUserInput[];
   connectOrCreate?:
@@ -548,10 +484,7 @@ export type ApiKeyUpdateManyWithoutUserNestedInput = {
 
 export type ApiKeyUncheckedUpdateManyWithoutUserNestedInput = {
   create?:
-    | Prisma.XOR<
-        Prisma.ApiKeyCreateWithoutUserInput,
-        Prisma.ApiKeyUncheckedCreateWithoutUserInput
-      >
+    | Prisma.XOR<Prisma.ApiKeyCreateWithoutUserInput, Prisma.ApiKeyUncheckedCreateWithoutUserInput>
     | Prisma.ApiKeyCreateWithoutUserInput[]
     | Prisma.ApiKeyUncheckedCreateWithoutUserInput[];
   connectOrCreate?:
@@ -783,9 +716,7 @@ export type ApiKeyCreateOrConnectWithoutOrganizationInput = {
 };
 
 export type ApiKeyCreateManyOrganizationInputEnvelope = {
-  data:
-    | Prisma.ApiKeyCreateManyOrganizationInput
-    | Prisma.ApiKeyCreateManyOrganizationInput[];
+  data: Prisma.ApiKeyCreateManyOrganizationInput | Prisma.ApiKeyCreateManyOrganizationInput[];
   skipDuplicates?: boolean;
 };
 
@@ -835,16 +766,8 @@ export type ApiKeyUpdateWithoutUserInput = {
   keyPrefix?: Prisma.StringFieldUpdateOperationsInput | string;
   keyHash?: Prisma.StringFieldUpdateOperationsInput | string;
   permissions?: Prisma.ApiKeyUpdatepermissionsInput | string[];
-  lastUsedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  expiresAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  lastUsedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  expiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   organization?: Prisma.OrganizationUpdateOneRequiredWithoutApiKeysNestedInput;
 };
@@ -856,16 +779,8 @@ export type ApiKeyUncheckedUpdateWithoutUserInput = {
   keyPrefix?: Prisma.StringFieldUpdateOperationsInput | string;
   keyHash?: Prisma.StringFieldUpdateOperationsInput | string;
   permissions?: Prisma.ApiKeyUpdatepermissionsInput | string[];
-  lastUsedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  expiresAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  lastUsedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  expiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -876,16 +791,8 @@ export type ApiKeyUncheckedUpdateManyWithoutUserInput = {
   keyPrefix?: Prisma.StringFieldUpdateOperationsInput | string;
   keyHash?: Prisma.StringFieldUpdateOperationsInput | string;
   permissions?: Prisma.ApiKeyUpdatepermissionsInput | string[];
-  lastUsedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  expiresAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  lastUsedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  expiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -907,16 +814,8 @@ export type ApiKeyUpdateWithoutOrganizationInput = {
   keyPrefix?: Prisma.StringFieldUpdateOperationsInput | string;
   keyHash?: Prisma.StringFieldUpdateOperationsInput | string;
   permissions?: Prisma.ApiKeyUpdatepermissionsInput | string[];
-  lastUsedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  expiresAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  lastUsedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  expiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   user?: Prisma.UserUpdateOneRequiredWithoutApiKeysNestedInput;
 };
@@ -928,16 +827,8 @@ export type ApiKeyUncheckedUpdateWithoutOrganizationInput = {
   keyPrefix?: Prisma.StringFieldUpdateOperationsInput | string;
   keyHash?: Prisma.StringFieldUpdateOperationsInput | string;
   permissions?: Prisma.ApiKeyUpdatepermissionsInput | string[];
-  lastUsedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  expiresAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  lastUsedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  expiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -948,22 +839,13 @@ export type ApiKeyUncheckedUpdateManyWithoutOrganizationInput = {
   keyPrefix?: Prisma.StringFieldUpdateOperationsInput | string;
   keyHash?: Prisma.StringFieldUpdateOperationsInput | string;
   permissions?: Prisma.ApiKeyUpdatepermissionsInput | string[];
-  lastUsedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  expiresAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  lastUsedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  expiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type ApiKeySelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -983,8 +865,7 @@ export type ApiKeySelect<
 >;
 
 export type ApiKeySelectCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -1004,8 +885,7 @@ export type ApiKeySelectCreateManyAndReturn<
 >;
 
 export type ApiKeySelectUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -1038,8 +918,7 @@ export type ApiKeySelectScalar = {
 };
 
 export type ApiKeyOmit<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
   | 'id'
   | 'organizationId'
@@ -1054,30 +933,26 @@ export type ApiKeyOmit<
   ExtArgs['result']['apiKey']
 >;
 export type ApiKeyInclude<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>;
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 export type ApiKeyIncludeCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>;
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 export type ApiKeyIncludeUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>;
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 
 export type $ApiKeyPayload<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   name: 'ApiKey';
   objects: {
@@ -1102,20 +977,17 @@ export type $ApiKeyPayload<
   composites: {};
 };
 
-export type ApiKeyGetPayload<
-  S extends boolean | null | undefined | ApiKeyDefaultArgs,
-> = runtime.Types.Result.GetResult<Prisma.$ApiKeyPayload, S>;
+export type ApiKeyGetPayload<S extends boolean | null | undefined | ApiKeyDefaultArgs> =
+  runtime.Types.Result.GetResult<Prisma.$ApiKeyPayload, S>;
 
 export type ApiKeyCountArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = Omit<ApiKeyFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
   select?: ApiKeyCountAggregateInputType | true;
 };
 
 export interface ApiKeyDelegate<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > {
   [K: symbol]: {
@@ -1247,12 +1119,7 @@ export interface ApiKeyDelegate<
   findMany<T extends ApiKeyFindManyArgs>(
     args?: Prisma.SelectSubset<T, ApiKeyFindManyArgs<ExtArgs>>
   ): Prisma.PrismaPromise<
-    runtime.Types.Result.GetResult<
-      Prisma.$ApiKeyPayload<ExtArgs>,
-      T,
-      'findMany',
-      GlobalOmitOptions
-    >
+    runtime.Types.Result.GetResult<Prisma.$ApiKeyPayload<ExtArgs>, T, 'findMany', GlobalOmitOptions>
   >;
 
   /**
@@ -1270,12 +1137,7 @@ export interface ApiKeyDelegate<
   create<T extends ApiKeyCreateArgs>(
     args: Prisma.SelectSubset<T, ApiKeyCreateArgs<ExtArgs>>
   ): Prisma.Prisma__ApiKeyClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$ApiKeyPayload<ExtArgs>,
-      T,
-      'create',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$ApiKeyPayload<ExtArgs>, T, 'create', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -1345,12 +1207,7 @@ export interface ApiKeyDelegate<
   delete<T extends ApiKeyDeleteArgs>(
     args: Prisma.SelectSubset<T, ApiKeyDeleteArgs<ExtArgs>>
   ): Prisma.Prisma__ApiKeyClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$ApiKeyPayload<ExtArgs>,
-      T,
-      'delete',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$ApiKeyPayload<ExtArgs>, T, 'delete', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -1374,12 +1231,7 @@ export interface ApiKeyDelegate<
   update<T extends ApiKeyUpdateArgs>(
     args: Prisma.SelectSubset<T, ApiKeyUpdateArgs<ExtArgs>>
   ): Prisma.Prisma__ApiKeyClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$ApiKeyPayload<ExtArgs>,
-      T,
-      'update',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$ApiKeyPayload<ExtArgs>, T, 'update', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -1481,12 +1333,7 @@ export interface ApiKeyDelegate<
   upsert<T extends ApiKeyUpsertArgs>(
     args: Prisma.SelectSubset<T, ApiKeyUpsertArgs<ExtArgs>>
   ): Prisma.Prisma__ApiKeyClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$ApiKeyPayload<ExtArgs>,
-      T,
-      'upsert',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$ApiKeyPayload<ExtArgs>, T, 'upsert', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -1586,12 +1433,7 @@ export interface ApiKeyDelegate<
               ? never
               : P extends string
                 ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                : [
-                    Error,
-                    'Field ',
-                    P,
-                    ` in "having" needs to be provided in "by"`,
-                  ];
+                : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
           }[HavingFields]
         : 'take' extends Prisma.Keys<T>
           ? 'orderBy' extends Prisma.Keys<T>
@@ -1621,11 +1463,8 @@ export interface ApiKeyDelegate<
                     : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                 }[OrderFields],
   >(
-    args: Prisma.SubsetIntersection<T, ApiKeyGroupByArgs, OrderByArg> &
-      InputErrors
-  ): {} extends InputErrors
-    ? GetApiKeyGroupByPayload<T>
-    : Prisma.PrismaPromise<InputErrors>;
+    args: Prisma.SubsetIntersection<T, ApiKeyGroupByArgs, OrderByArg> & InputErrors
+  ): {} extends InputErrors ? GetApiKeyGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
   /**
    * Fields of the ApiKey model
    */
@@ -1641,8 +1480,7 @@ export interface ApiKeyDelegate<
 export interface Prisma__ApiKeyClient<
   T,
   Null = never,
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: 'PrismaPromise';
@@ -1681,14 +1519,8 @@ export interface Prisma__ApiKeyClient<
    * @returns A Promise for the completion of which ever callback is executed.
    */
   then<TResult1 = T, TResult2 = never>(
-    onfulfilled?:
-      | ((value: T) => TResult1 | PromiseLike<TResult1>)
-      | undefined
-      | null,
-    onrejected?:
-      | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-      | undefined
-      | null
+    onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
   ): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
   /**
    * Attaches a callback for only the rejection of the Promise.
@@ -1696,10 +1528,7 @@ export interface Prisma__ApiKeyClient<
    * @returns A Promise for the completion of the callback.
    */
   catch<TResult = never>(
-    onrejected?:
-      | ((reason: any) => TResult | PromiseLike<TResult>)
-      | undefined
-      | null
+    onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
   ): runtime.Types.Utils.JsPromise<T | TResult>;
   /**
    * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
@@ -1707,9 +1536,7 @@ export interface Prisma__ApiKeyClient<
    * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
    * @returns A Promise for the completion of the callback.
    */
-  finally(
-    onfinally?: (() => void) | undefined | null
-  ): runtime.Types.Utils.JsPromise<T>;
+  finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
 }
 
 /**
@@ -1733,8 +1560,7 @@ export interface ApiKeyFieldRefs {
  * ApiKey findUnique
  */
 export type ApiKeyFindUniqueArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the ApiKey
@@ -1758,8 +1584,7 @@ export type ApiKeyFindUniqueArgs<
  * ApiKey findUniqueOrThrow
  */
 export type ApiKeyFindUniqueOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the ApiKey
@@ -1783,8 +1608,7 @@ export type ApiKeyFindUniqueOrThrowArgs<
  * ApiKey findFirst
  */
 export type ApiKeyFindFirstArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the ApiKey
@@ -1807,9 +1631,7 @@ export type ApiKeyFindFirstArgs<
    *
    * Determine the order of ApiKeys to fetch.
    */
-  orderBy?:
-    | Prisma.ApiKeyOrderByWithRelationInput
-    | Prisma.ApiKeyOrderByWithRelationInput[];
+  orderBy?: Prisma.ApiKeyOrderByWithRelationInput | Prisma.ApiKeyOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1840,8 +1662,7 @@ export type ApiKeyFindFirstArgs<
  * ApiKey findFirstOrThrow
  */
 export type ApiKeyFindFirstOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the ApiKey
@@ -1864,9 +1685,7 @@ export type ApiKeyFindFirstOrThrowArgs<
    *
    * Determine the order of ApiKeys to fetch.
    */
-  orderBy?:
-    | Prisma.ApiKeyOrderByWithRelationInput
-    | Prisma.ApiKeyOrderByWithRelationInput[];
+  orderBy?: Prisma.ApiKeyOrderByWithRelationInput | Prisma.ApiKeyOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1897,8 +1716,7 @@ export type ApiKeyFindFirstOrThrowArgs<
  * ApiKey findMany
  */
 export type ApiKeyFindManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the ApiKey
@@ -1921,9 +1739,7 @@ export type ApiKeyFindManyArgs<
    *
    * Determine the order of ApiKeys to fetch.
    */
-  orderBy?:
-    | Prisma.ApiKeyOrderByWithRelationInput
-    | Prisma.ApiKeyOrderByWithRelationInput[];
+  orderBy?: Prisma.ApiKeyOrderByWithRelationInput | Prisma.ApiKeyOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1949,8 +1765,7 @@ export type ApiKeyFindManyArgs<
  * ApiKey create
  */
 export type ApiKeyCreateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the ApiKey
@@ -1974,8 +1789,7 @@ export type ApiKeyCreateArgs<
  * ApiKey createMany
  */
 export type ApiKeyCreateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to create many ApiKeys.
@@ -1988,8 +1802,7 @@ export type ApiKeyCreateManyArgs<
  * ApiKey createManyAndReturn
  */
 export type ApiKeyCreateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the ApiKey
@@ -2014,8 +1827,7 @@ export type ApiKeyCreateManyAndReturnArgs<
  * ApiKey update
  */
 export type ApiKeyUpdateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the ApiKey
@@ -2043,16 +1855,12 @@ export type ApiKeyUpdateArgs<
  * ApiKey updateMany
  */
 export type ApiKeyUpdateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to update ApiKeys.
    */
-  data: Prisma.XOR<
-    Prisma.ApiKeyUpdateManyMutationInput,
-    Prisma.ApiKeyUncheckedUpdateManyInput
-  >;
+  data: Prisma.XOR<Prisma.ApiKeyUpdateManyMutationInput, Prisma.ApiKeyUncheckedUpdateManyInput>;
   /**
    * Filter which ApiKeys to update
    */
@@ -2067,8 +1875,7 @@ export type ApiKeyUpdateManyArgs<
  * ApiKey updateManyAndReturn
  */
 export type ApiKeyUpdateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the ApiKey
@@ -2081,10 +1888,7 @@ export type ApiKeyUpdateManyAndReturnArgs<
   /**
    * The data used to update ApiKeys.
    */
-  data: Prisma.XOR<
-    Prisma.ApiKeyUpdateManyMutationInput,
-    Prisma.ApiKeyUncheckedUpdateManyInput
-  >;
+  data: Prisma.XOR<Prisma.ApiKeyUpdateManyMutationInput, Prisma.ApiKeyUncheckedUpdateManyInput>;
   /**
    * Filter which ApiKeys to update
    */
@@ -2103,8 +1907,7 @@ export type ApiKeyUpdateManyAndReturnArgs<
  * ApiKey upsert
  */
 export type ApiKeyUpsertArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the ApiKey
@@ -2125,25 +1928,18 @@ export type ApiKeyUpsertArgs<
   /**
    * In case the ApiKey found by the `where` argument doesn't exist, create a new ApiKey with this data.
    */
-  create: Prisma.XOR<
-    Prisma.ApiKeyCreateInput,
-    Prisma.ApiKeyUncheckedCreateInput
-  >;
+  create: Prisma.XOR<Prisma.ApiKeyCreateInput, Prisma.ApiKeyUncheckedCreateInput>;
   /**
    * In case the ApiKey was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<
-    Prisma.ApiKeyUpdateInput,
-    Prisma.ApiKeyUncheckedUpdateInput
-  >;
+  update: Prisma.XOR<Prisma.ApiKeyUpdateInput, Prisma.ApiKeyUncheckedUpdateInput>;
 };
 
 /**
  * ApiKey delete
  */
 export type ApiKeyDeleteArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the ApiKey
@@ -2167,8 +1963,7 @@ export type ApiKeyDeleteArgs<
  * ApiKey deleteMany
  */
 export type ApiKeyDeleteManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which ApiKeys to delete
@@ -2184,8 +1979,7 @@ export type ApiKeyDeleteManyArgs<
  * ApiKey without action
  */
 export type ApiKeyDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the ApiKey

@@ -89,16 +89,10 @@ export function MetricDonutChart({
       onSegmentClick={onSegmentClick}
       centerContent={
         <div className="px-4 text-center">
-          <p className="mb-1 text-3xl leading-none font-semibold">
-            {metric.value}
-          </p>
-          <p className="text-muted-foreground text-xs font-medium">
-            {metric.label}
-          </p>
+          <p className="mb-1 text-3xl leading-none font-semibold">{metric.value}</p>
+          <p className="text-muted-foreground text-xs font-medium">{metric.label}</p>
           {metric.sublabel && (
-            <p className="text-muted-foreground mt-0.5 text-xs">
-              {metric.sublabel}
-            </p>
+            <p className="text-muted-foreground mt-0.5 text-xs">{metric.sublabel}</p>
           )}
         </div>
       }
@@ -146,13 +140,9 @@ export function ProgressDonutChart({
       centerContent={
         <div className="px-4 text-center">
           {showPercentage && (
-            <p className="mb-1 text-3xl leading-none font-semibold">
-              {percentage.toFixed(0)}%
-            </p>
+            <p className="mb-1 text-3xl leading-none font-semibold">{percentage.toFixed(0)}%</p>
           )}
-          {label && (
-            <p className="text-muted-foreground text-xs font-medium">{label}</p>
-          )}
+          {label && <p className="text-muted-foreground text-xs font-medium">{label}</p>}
         </div>
       }
       className={className}

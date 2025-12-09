@@ -380,15 +380,9 @@ describe('Rate Limiting', () => {
       }));
 
       // Auth should be most strict (lowest rate)
-      expect(normalized[0].requestsPerMinute).toBeLessThan(
-        normalized[1].requestsPerMinute
-      );
-      expect(normalized[1].requestsPerMinute).toBeLessThan(
-        normalized[2].requestsPerMinute
-      );
-      expect(normalized[2].requestsPerMinute).toBeLessThan(
-        normalized[3].requestsPerMinute
-      );
+      expect(normalized[0].requestsPerMinute).toBeLessThan(normalized[1].requestsPerMinute);
+      expect(normalized[1].requestsPerMinute).toBeLessThan(normalized[2].requestsPerMinute);
+      expect(normalized[2].requestsPerMinute).toBeLessThan(normalized[3].requestsPerMinute);
     });
   });
 
@@ -400,9 +394,7 @@ describe('Rate Limiting', () => {
       };
 
       // Burst of 10 requests
-      const promises = Array.from({ length: 10 }, () =>
-        checkRateLimit('test-user', config)
-      );
+      const promises = Array.from({ length: 10 }, () => checkRateLimit('test-user', config));
       const results = await Promise.all(promises);
 
       // First 5 should succeed

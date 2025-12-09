@@ -30,10 +30,7 @@ export interface NotificationBadgeProps {
   className?: string;
 }
 
-const NotificationBadge = React.forwardRef<
-  HTMLDivElement,
-  NotificationBadgeProps
->(
+const NotificationBadge = React.forwardRef<HTMLDivElement, NotificationBadgeProps>(
   (
     {
       count,
@@ -61,8 +58,7 @@ const NotificationBadge = React.forwardRef<
     // Variant styles
     const variantStyles = {
       primary: 'bg-primary text-primary-foreground border-primary',
-      destructive:
-        'bg-destructive text-destructive-foreground border-destructive',
+      destructive: 'bg-destructive text-destructive-foreground border-destructive',
       success: 'bg-success text-success-foreground border-success',
       warning: 'bg-warning text-warning-foreground border-warning',
     };

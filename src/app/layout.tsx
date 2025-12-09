@@ -15,10 +15,7 @@ import { PostHogPageView } from '@/components/analytics/posthog-pageview';
 import { CookieConsent } from '@/components/cookie-consent';
 import { GeistSans } from 'geist/font/sans';
 import localFont from 'next/font/local';
-import {
-  generateOrganizationSchema,
-  generateProductSchema,
-} from '@/lib/metadata';
+import { generateOrganizationSchema, generateProductSchema } from '@/lib/metadata';
 import { TerminalBackground } from '@/components/shared/terminal-background';
 import { ThemeScript } from '@/design-system/providers';
 import { env } from '@/lib/env';
@@ -63,9 +60,7 @@ export const metadata: Metadata = {
       { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
     ],
-    apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
   },
   manifest: '/site.webmanifest',
   description:
@@ -113,8 +108,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Fabrk - Build Production Apps at AI Speed',
-    description:
-      '169 production-ready components with automated quality enforcement',
+    description: '169 production-ready components with automated quality enforcement',
     images: ['/og-image.png'],
     creator: '@fabrk',
     site: '@fabrk',
@@ -138,11 +132,7 @@ export const metadata: Metadata = {
   category: 'technology',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   const defaultVisualTheme = env.client.NEXT_PUBLIC_DEFAULT_VISUAL_THEME;
 
   return (

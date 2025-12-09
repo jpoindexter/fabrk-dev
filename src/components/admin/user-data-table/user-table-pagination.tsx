@@ -23,8 +23,7 @@ export function UserTablePagination({ table }: UserTablePaginationProps) {
       <div className={cn('text-muted-foreground text-sm', mode.font)}>
         {selectedRows.length > 0 && (
           <span>
-            {selectedRows.length} of {table.getFilteredRowModel().rows.length}{' '}
-            row(s) selected
+            {selectedRows.length} of {table.getFilteredRowModel().rows.length} row(s) selected
           </span>
         )}
       </div>
@@ -38,8 +37,7 @@ export function UserTablePagination({ table }: UserTablePaginationProps) {
           Previous
         </Button>
         <div className={cn('text-muted-foreground text-sm', mode.font)}>
-          Page {table.getState().pagination.pageIndex + 1} of{' '}
-          {table.getPageCount()}
+          Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
         </div>
         <Button
           variant="outline"

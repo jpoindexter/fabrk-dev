@@ -171,9 +171,7 @@ function findPageByHref(pathname: string): {
     return {
       section: componentsSection || null,
       page: {
-        title:
-          pageName.charAt(0).toUpperCase() +
-          pageName.slice(1).replace(/-/g, ' '),
+        title: pageName.charAt(0).toUpperCase() + pageName.slice(1).replace(/-/g, ' '),
         href: pathname,
       },
     };
@@ -197,9 +195,7 @@ export function DocsNav() {
         >
           <span className="text-primary text-xs">&gt;</span>
           <span className="text-sm font-semibold tracking-tight">FABRK</span>
-          <span className="text-muted-foreground hidden text-xs sm:inline">
-            _DOCS
-          </span>
+          <span className="text-muted-foreground hidden text-xs sm:inline">_DOCS</span>
         </Link>
 
         {/* Breadcrumbs - Center */}
@@ -209,9 +205,7 @@ export function DocsNav() {
               {/* Root docs level */}
               {isRoot && (
                 <BreadcrumbItem>
-                  <BreadcrumbPage className="text-foreground">
-                    DOCS
-                  </BreadcrumbPage>
+                  <BreadcrumbPage className="text-foreground">DOCS</BreadcrumbPage>
                 </BreadcrumbItem>
               )}
 
@@ -220,10 +214,7 @@ export function DocsNav() {
                 <>
                   <BreadcrumbItem>
                     <BreadcrumbLink asChild>
-                      <Link
-                        href="/docs"
-                        className="text-muted-foreground hover:text-foreground"
-                      >
+                      <Link href="/docs" className="text-muted-foreground hover:text-foreground">
                         DOCS
                       </Link>
                     </BreadcrumbLink>
@@ -253,10 +244,7 @@ export function DocsNav() {
                 <>
                   <BreadcrumbItem>
                     <BreadcrumbLink asChild>
-                      <Link
-                        href="/docs"
-                        className="text-muted-foreground hover:text-foreground"
-                      >
+                      <Link href="/docs" className="text-muted-foreground hover:text-foreground">
                         DOCS
                       </Link>
                     </BreadcrumbLink>

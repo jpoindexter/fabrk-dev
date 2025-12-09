@@ -5,17 +5,8 @@
 'use client';
 
 import { Sparkles, Send } from 'lucide-react';
-import {
-  FormPreview,
-  generateZodCode,
-  generateComponentCode,
-} from '@/components/ai';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  TemplatePageHeader,
-} from '@/components/ui/card';
+import { FormPreview, generateZodCode, generateComponentCode } from '@/components/ai';
+import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
@@ -212,9 +203,7 @@ function AIFormGeneratorPreview() {
             <Sparkles className="text-primary size-6" />
           </div>
           <div>
-            <h1 className={cn('text-2xl font-bold', mode.font)}>
-              AI Form Generator
-            </h1>
+            <h1 className={cn('text-2xl font-bold', mode.font)}>AI Form Generator</h1>
             <p className={cn('text-muted-foreground text-sm', mode.font)}>
               Generate React Hook Form + Zod code from natural language
             </p>
@@ -226,17 +215,15 @@ function AIFormGeneratorPreview() {
           <CardHeader code="0x00" title="FORM_PROMPT" />
           <CardContent padding="lg">
             <p className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
-              &gt; Describe the form you want to create. Be specific about
-              fields, validation, and purpose.
+              &gt; Describe the form you want to create. Be specific about fields, validation, and
+              purpose.
             </p>
 
             {/* Static Chat Interface */}
             <div className={cn('border-border bg-card border', mode.radius)}>
               {/* Terminal Header */}
               <div className="border-border bg-muted/50 border-b px-4 py-2">
-                <span
-                  className={cn('text-muted-foreground text-xs', mode.font)}
-                >
+                <span className={cn('text-muted-foreground text-xs', mode.font)}>
                   [ [0x00] PROMPT_INPUT ]
                 </span>
               </div>
@@ -256,9 +243,7 @@ function AIFormGeneratorPreview() {
 
                 {/* Submit Button */}
                 <div className="mt-4 flex items-center justify-between">
-                  <span
-                    className={cn('text-muted-foreground text-xs', mode.font)}
-                  >
+                  <span className={cn('text-muted-foreground text-xs', mode.font)}>
                     Press Enter to submit, Shift+Enter for new line
                   </span>
                   <Button
@@ -276,9 +261,7 @@ function AIFormGeneratorPreview() {
 
             {/* Example Prompts */}
             <div className="mt-4 space-y-2">
-              <p className={cn('text-muted-foreground text-xs', mode.font)}>
-                [EXAMPLES]:
-              </p>
+              <p className={cn('text-muted-foreground text-xs', mode.font)}>[EXAMPLES]:</p>
               <div className="flex flex-wrap gap-2">
                 {examplePrompts.map((example) => (
                   <button
@@ -350,9 +333,7 @@ function AIFormGeneratorPreview() {
               <CardHeader code="0x02" title="FORM_PREVIEW" />
               <div className="p-6">
                 <div className="mb-4">
-                  <h3 className={cn('text-lg font-semibold', mode.font)}>
-                    {demoForm.name}
-                  </h3>
+                  <h3 className={cn('text-lg font-semibold', mode.font)}>{demoForm.name}</h3>
                   <p className={cn('text-muted-foreground text-xs', mode.font)}>
                     {demoForm.description}
                   </p>
@@ -362,9 +343,7 @@ function AIFormGeneratorPreview() {
                     <div key={field.name} className="space-y-2">
                       <label className={cn('text-xs', mode.font)}>
                         [{field.label.toUpperCase()}]:
-                        {field.required && (
-                          <span className="text-destructive ml-1">*</span>
-                        )}
+                        {field.required && <span className="text-destructive ml-1">*</span>}
                       </label>
                       {field.type === 'textarea' ? (
                         <Textarea
@@ -385,10 +364,7 @@ function AIFormGeneratorPreview() {
                       )}
                     </div>
                   ))}
-                  <Button
-                    type="button"
-                    className={cn('w-full text-xs', mode.radius, mode.font)}
-                  >
+                  <Button type="button" className={cn('w-full text-xs', mode.radius, mode.font)}>
                     &gt; {demoForm.submitLabel.toUpperCase()}
                   </Button>
                 </form>
@@ -489,11 +465,7 @@ export default function AIFormGeneratorTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock
-                  code={templateCode}
-                  language="tsx"
-                  maxHeight="600px"
-                />
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
             </Card>
           </TabsContent>
@@ -509,20 +481,14 @@ export default function AIFormGeneratorTemplate() {
                 <div>
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">api/ai/</span>
-                  <span className="text-foreground">
-                    generate-form/route.ts
-                  </span>
-                  <span className="text-muted-foreground ml-4">
-                    ← AI endpoint
-                  </span>
+                  <span className="text-foreground">generate-form/route.ts</span>
+                  <span className="text-muted-foreground ml-4">← AI endpoint</span>
                 </div>
                 <div>
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">(tools)/</span>
                   <span className="text-foreground">ai-forms/page.tsx</span>
-                  <span className="text-muted-foreground ml-4">
-                    ← Copy template here
-                  </span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
                 </div>
                 <div>
                   <span className="text-primary">components/</span>
@@ -555,36 +521,30 @@ export default function AIFormGeneratorTemplate() {
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> Natural language to
-                form generation
+                <span className="text-success">&gt;</span> Natural language to form generation
               </div>
               <div>
-                <span className="text-success">&gt;</span> React Hook Form + Zod
-                schema output
+                <span className="text-success">&gt;</span> React Hook Form + Zod schema output
               </div>
               <div>
-                <span className="text-success">&gt;</span> Live form preview
-                with all field types
+                <span className="text-success">&gt;</span> Live form preview with all field types
               </div>
               <div>
-                <span className="text-success">&gt;</span> Copyable schema and
-                component code
+                <span className="text-success">&gt;</span> Copyable schema and component code
               </div>
               <div>
-                <span className="text-success">&gt;</span> Supports text, email,
-                password, select, textarea, checkbox, radio
+                <span className="text-success">&gt;</span> Supports text, email, password, select,
+                textarea, checkbox, radio
               </div>
               <div>
-                <span className="text-success">&gt;</span> Multi-provider AI
-                support (OpenAI, Google, Ollama)
+                <span className="text-success">&gt;</span> Multi-provider AI support (OpenAI,
+                Google, Ollama)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Terminal-styled chat
-                interface
+                <span className="text-success">&gt;</span> Terminal-styled chat interface
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant
-                (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

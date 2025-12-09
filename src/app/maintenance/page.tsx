@@ -30,25 +30,17 @@ export default function MaintenancePage() {
         </div>
 
         {/* Message */}
-        <h1
-          className={cn(
-            'text-foreground mb-4 text-4xl font-semibold',
-            mode.font
-          )}
-        >
+        <h1 className={cn('text-foreground mb-4 text-4xl font-semibold', mode.font)}>
           SCHEDULED_MAINTENANCE
         </h1>
         <p className={cn('text-muted-foreground mb-6 text-sm', mode.font)}>
-          We're currently performing scheduled maintenance to improve your
-          experience. We'll be back shortly!
+          We're currently performing scheduled maintenance to improve your experience. We'll be back
+          shortly!
         </p>
 
         {/* Estimated Time */}
         <div
-          className={cn(
-            'bg-warning/10 mb-8 inline-flex items-center gap-2 px-6 py-4',
-            mode.radius
-          )}
+          className={cn('bg-warning/10 mb-8 inline-flex items-center gap-2 px-6 py-4', mode.radius)}
         >
           <Clock className="text-warning size-5" />
           <span className={cn('text-warning text-xs font-medium', mode.font)}>
@@ -66,10 +58,7 @@ export default function MaintenancePage() {
               href="https://status.yourapp.com"
               target="_blank"
               rel="noopener noreferrer"
-              className={cn(
-                'text-primary text-xs font-semibold hover:underline',
-                mode.font
-              )}
+              className={cn('text-primary text-xs font-semibold hover:underline', mode.font)}
             >
               STATUS_PAGE
             </a>
@@ -78,18 +67,9 @@ export default function MaintenancePage() {
 
         {/* What We're Doing */}
         <Card size="auto" className="text-left">
-          <CardHeader
-            code="0x00"
-            title="CURRENT_TASKS"
-            icon={<Wrench className="size-4" />}
-          />
+          <CardHeader code="0x00" title="CURRENT_TASKS" icon={<Wrench className="size-4" />} />
           <CardContent padding="md">
-            <ul
-              className={cn(
-                'text-muted-foreground space-y-2 text-xs',
-                mode.font
-              )}
-            >
+            <ul className={cn('text-muted-foreground space-y-2 text-xs', mode.font)}>
               <li className="flex items-start gap-3">
                 <span className="text-primary flex-shrink-0">├─</span>
                 <span className="text-foreground">
@@ -98,9 +78,7 @@ export default function MaintenancePage() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary flex-shrink-0">├─</span>
-                <span className="text-foreground">
-                  Security updates and patches
-                </span>
+                <span className="text-foreground">Security updates and patches</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary flex-shrink-0">└─</span>
@@ -117,10 +95,7 @@ export default function MaintenancePage() {
           </p>
           <a
             href="mailto:support@fabrek.dev"
-            className={cn(
-              'text-primary text-xs font-semibold hover:underline',
-              mode.font
-            )}
+            className={cn('text-primary text-xs font-semibold hover:underline', mode.font)}
           >
             support@fabrek.dev
           </a>

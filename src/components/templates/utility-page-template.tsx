@@ -84,28 +84,18 @@ export function UtilityPageTemplate({
   showHomeLink = false,
   className,
 }: UtilityPageTemplateProps) {
-  const displayIcon = icon || (
-    <AlertCircle className="text-muted-foreground h-16 w-16" />
-  );
+  const displayIcon = icon || <AlertCircle className="text-muted-foreground h-16 w-16" />;
 
   return (
     <div
-      className={cn(
-        'flex min-h-screen flex-col items-center justify-center px-4 py-16',
-        className
-      )}
+      className={cn('flex min-h-screen flex-col items-center justify-center px-4 py-16', className)}
     >
       <div className="flex flex-col items-center space-y-6 text-center">
         {/* Icon */}
         <div className="text-muted-foreground">{displayIcon}</div>
 
         {/* Error Code Badge */}
-        <div
-          className={cn(
-            'border-border inline-block border px-4 py-1',
-            mode.radius
-          )}
-        >
+        <div className={cn('border-border inline-block border px-4 py-1', mode.radius)}>
           <span className={cn('text-muted-foreground text-xs', mode.font)}>
             [ERROR_CODE]: {code.toUpperCase()}
           </span>
@@ -117,9 +107,7 @@ export function UtilityPageTemplate({
         </h1>
 
         {/* Description */}
-        <p className={cn('text-muted-foreground max-w-md text-sm', mode.font)}>
-          {description}
-        </p>
+        <p className={cn('text-muted-foreground max-w-md text-sm', mode.font)}>{description}</p>
 
         {/* Actions */}
         <div className="flex flex-col gap-3 sm:flex-row">

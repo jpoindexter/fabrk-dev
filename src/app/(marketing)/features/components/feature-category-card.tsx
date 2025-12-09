@@ -17,10 +17,7 @@ interface FeatureCategoryCardProps {
   index: number;
 }
 
-export function FeatureCategoryCard({
-  category,
-  index,
-}: FeatureCategoryCardProps) {
+export function FeatureCategoryCard({ category, index }: FeatureCategoryCardProps) {
   const Icon = category.icon;
   const isEven = index % 2 === 0;
   const hexIndex = (index + 1).toString(16).toUpperCase().padStart(2, '0');
@@ -48,25 +45,16 @@ export function FeatureCategoryCard({
           </div>
 
           <div>
-            <span className={cn('text-muted-foreground text-xs', mode.font)}>
-              [0x{hexIndex}]
-            </span>
-            <h2
-              className={cn('text-2xl font-semibold tracking-tight', mode.font)}
-            >
-              {category.title
-                .toUpperCase()
-                .replace(/ /g, '_')
-                .replace(/&/g, 'AND')}
+            <span className={cn('text-muted-foreground text-xs', mode.font)}>[0x{hexIndex}]</span>
+            <h2 className={cn('text-2xl font-semibold tracking-tight', mode.font)}>
+              {category.title.toUpperCase().replace(/ /g, '_').replace(/&/g, 'AND')}
             </h2>
             <span className={cn('text-primary text-xs font-medium', mode.font)}>
               &gt; {category.tagline}
             </span>
           </div>
 
-          <p className={cn('text-muted-foreground text-xs', mode.font)}>
-            {category.description}
-          </p>
+          <p className={cn('text-muted-foreground text-xs', mode.font)}>{category.description}</p>
         </div>
 
         {/* Features List Side */}
@@ -80,10 +68,7 @@ export function FeatureCategoryCard({
             <CardContent padding="lg">
               <ul className="space-y-2">
                 {category.features.map((feature, i) => (
-                  <li
-                    key={i}
-                    className={cn('flex items-start gap-3 text-xs', mode.font)}
-                  >
+                  <li key={i} className={cn('flex items-start gap-3 text-xs', mode.font)}>
                     <span className="text-primary flex-shrink-0">
                       {i === category.features.length - 1 ? '└─' : '├─'}
                     </span>

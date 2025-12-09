@@ -76,22 +76,13 @@ export function TemplateShowcase({
           <div className="flex items-center gap-2">
             <PageBadge>{code}</PageBadge>
             {badge && (
-              <Badge
-                variant="default"
-                className={cn('text-xs', mode.font, mode.radius)}
-              >
+              <Badge variant="default" className={cn('text-xs', mode.font, mode.radius)}>
                 {badge.toUpperCase()}
               </Badge>
             )}
           </div>
-          <h1
-            className={cn('text-4xl font-semibold tracking-tight', mode.font)}
-          >
-            {title}
-          </h1>
-          <p className={cn('text-muted-foreground text-sm', mode.font)}>
-            {description}
-          </p>
+          <h1 className={cn('text-4xl font-semibold tracking-tight', mode.font)}>{title}</h1>
+          <p className={cn('text-muted-foreground text-sm', mode.font)}>{description}</p>
 
           {/* Action buttons */}
           <div className="flex items-center gap-2 pt-2">
@@ -140,9 +131,7 @@ export function TemplateShowcase({
         <Card size="auto">
           <CardHeader code="0x00" title="features.md" />
           <CardContent>
-            <div
-              className={cn('text-muted-foreground mb-4 text-xs', mode.font)}
-            >
+            <div className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
               [TEMPLATE_FEATURES]:
             </div>
             <div className="grid gap-x-8 gap-y-1.5 md:grid-cols-2 lg:grid-cols-3">

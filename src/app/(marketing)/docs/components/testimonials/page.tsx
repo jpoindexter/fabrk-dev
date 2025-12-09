@@ -31,9 +31,7 @@ function TestimonialsDemo() {
       <div className="mb-6 text-center">
         <span className="text-muted-foreground text-xs">[0x40]</span>
         <h2 className="mt-2 text-xl font-semibold">LOVED_BY_DEVELOPERS</h2>
-        <p className="text-muted-foreground mt-1 text-xs">
-          &gt; Early access customer feedback
-        </p>
+        <p className="text-muted-foreground mt-1 text-xs">&gt; Early access customer feedback</p>
       </div>
       <div className="grid gap-4 md:grid-cols-3">
         {testimonials.map((t, i) => (
@@ -41,12 +39,8 @@ function TestimonialsDemo() {
             key={i}
             className="border-border bg-card hover:border-primary/50 border p-4 transition-all"
           >
-            <div className="text-muted-foreground mb-2 text-xs">
-              [0x0{i + 1}]
-            </div>
-            <p className="text-muted-foreground mb-4 text-xs">
-              &quot;{t.quote}&quot;
-            </p>
+            <div className="text-muted-foreground mb-2 text-xs">[0x0{i + 1}]</div>
+            <p className="text-muted-foreground mb-4 text-xs">&quot;{t.quote}&quot;</p>
             <div className="flex items-center gap-4">
               <Avatar className="h-8 w-8">
                 <AvatarFallback className="bg-primary/10 text-primary text-xs">
@@ -55,9 +49,7 @@ function TestimonialsDemo() {
               </Avatar>
               <div>
                 <span className="block text-xs font-semibold">{t.author}</span>
-                <span className="text-muted-foreground block text-xs">
-                  {t.role}
-                </span>
+                <span className="text-muted-foreground block text-xs">{t.role}</span>
               </div>
             </div>
           </div>
@@ -73,20 +65,15 @@ function TestimonialCardDemo() {
     <div className="w-full max-w-md font-mono">
       <div className="text-muted-foreground mb-2 text-xs">[0x01]</div>
       <p className="text-muted-foreground mb-6 text-sm">
-        &quot;[EXAMPLE] Your customer quote here. Include specific results or
-        metrics.&quot;
+        &quot;[EXAMPLE] Your customer quote here. Include specific results or metrics.&quot;
       </p>
       <div className="flex items-center gap-4">
         <Avatar className="h-10 w-10">
-          <AvatarFallback className="bg-primary/10 text-primary">
-            CN
-          </AvatarFallback>
+          <AvatarFallback className="bg-primary/10 text-primary">CN</AvatarFallback>
         </Avatar>
         <div>
           <span className="block text-sm font-semibold">CUSTOMER_NAME</span>
-          <span className="text-muted-foreground block text-xs">
-            Role @ Company
-          </span>
+          <span className="text-muted-foreground block text-xs">Role @ Company</span>
         </div>
       </div>
     </div>
@@ -142,10 +129,7 @@ export default function LandingPage() {
             <div className="flex items-center gap-4">
               <div className="flex -space-x-2">
                 {['SC', 'MJ', 'ER', 'DK'].map((initials, i) => (
-                  <Avatar
-                    key={i}
-                    className="border-background h-8 w-8 border-2"
-                  >
+                  <Avatar key={i} className="border-background h-8 w-8 border-2">
                     <AvatarFallback className="bg-primary/10 text-primary text-xs">
                       {initials}
                     </AvatarFallback>

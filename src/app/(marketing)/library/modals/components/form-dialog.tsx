@@ -56,18 +56,14 @@ export function FormDialog({ open, onOpenChange }: FormDialogProps) {
             </DialogHeader>
             <div className="space-y-4 py-4">
               <div className="space-y-2">
-                <Label className={cn(mode.font, 'text-xs')}>
-                  [PROJECT_NAME]:
-                </Label>
+                <Label className={cn(mode.font, 'text-xs')}>[PROJECT_NAME]:</Label>
                 <Input
                   placeholder="my-awesome-project"
                   className={cn(mode.radius, mode.font, 'text-sm')}
                 />
               </div>
               <div className="space-y-2">
-                <Label className={cn(mode.font, 'text-xs')}>
-                  [DESCRIPTION]:
-                </Label>
+                <Label className={cn(mode.font, 'text-xs')}>[DESCRIPTION]:</Label>
                 <Textarea
                   placeholder="Describe your project..."
                   className={cn(mode.radius, mode.font, 'resize-none text-sm')}

@@ -4,11 +4,7 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import {
-  generateLicenseKey,
-  generateUniqueLicenseKey,
-  validateLicenseKeyFormat,
-} from './license';
+import { generateLicenseKey, generateUniqueLicenseKey, validateLicenseKeyFormat } from './license';
 
 describe('generateLicenseKey', () => {
   it('should generate a key with correct format (XXXX-XXXX-XXXX-XXXX-XXXX)', () => {
@@ -78,9 +74,7 @@ describe('validateLicenseKeyFormat', () => {
   });
 
   it('should validate keys with timestamp suffix', () => {
-    expect(
-      validateLicenseKeyFormat('ABCD-EFGH-JKLM-NPQR-STUV-1699123456789')
-    ).toBe(true);
+    expect(validateLicenseKeyFormat('ABCD-EFGH-JKLM-NPQR-STUV-1699123456789')).toBe(true);
   });
 
   it('should reject invalid formats', () => {

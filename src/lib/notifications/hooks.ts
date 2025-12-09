@@ -25,8 +25,7 @@ import {
  * Hook to access notifications
  */
 export function useNotifications() {
-  const [notifications, setNotifications] =
-    useState<Notification[]>(getNotifications());
+  const [notifications, setNotifications] = useState<Notification[]>(getNotifications());
   const [unreadCount, setUnreadCount] = useState(getUnreadCount());
 
   useEffect(() => {

@@ -59,9 +59,7 @@ export function BillingHistoryTable({
               )}
             >
               <span className="text-muted-foreground">[DATE]</span>
-              <span className="text-muted-foreground col-span-2">
-                [DESCRIPTION]
-              </span>
+              <span className="text-muted-foreground col-span-2">[DESCRIPTION]</span>
               <span className="text-muted-foreground">[AMOUNT]</span>
               <span className="text-muted-foreground">[STATUS]</span>
             </div>
@@ -77,9 +75,7 @@ export function BillingHistoryTable({
                     )}
                   >
                     <span>{formatDate(payment.date)}</span>
-                    <span className="text-muted-foreground col-span-2">
-                      {payment.description}
-                    </span>
+                    <span className="text-muted-foreground col-span-2">{payment.description}</span>
                     <span>{formatCurrency(payment.amount)}</span>
                     <div className="flex items-center gap-2">
                       <span
@@ -109,9 +105,8 @@ export function BillingHistoryTable({
       <Card tone="neutral">
         <CardContent padding="md">
           <div className={cn(mode.font, 'text-xs')}>
-            <span className="text-muted-foreground">[INFO]:</span> All invoices
-            are automatically emailed to your registered email address. Contact
-            support if you need assistance.
+            <span className="text-muted-foreground">[INFO]:</span> All invoices are automatically
+            emailed to your registered email address. Contact support if you need assistance.
           </div>
         </CardContent>
       </Card>

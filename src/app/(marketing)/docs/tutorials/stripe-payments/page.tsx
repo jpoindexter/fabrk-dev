@@ -50,8 +50,7 @@ STRIPE_WEBHOOK_SECRET="whsec_..."`,
         },
         {
           title: 'Create a Product',
-          description:
-            'Go to Stripe Dashboard → Products → Add product. Copy the Price ID.',
+          description: 'Go to Stripe Dashboard → Products → Add product. Copy the Price ID.',
           code: `# .env.local
 NEXT_PUBLIC_STRIPE_PRICE_FABRK="price_your_price_id"`,
           language: 'bash',
@@ -149,41 +148,28 @@ stripe: {
         <DocsCard title="WEBHOOK_EVENTS">
           <p className="mb-4">
             The webhook handler is at{' '}
-            <code className="bg-muted px-1">
-              src/app/api/webhooks/stripe/route.ts
-            </code>
-            . Key events handled:
+            <code className="bg-muted px-1">src/app/api/webhooks/stripe/route.ts</code>. Key events
+            handled:
           </p>
           <div className="space-y-1">
             <div>
-              ├─{' '}
-              <code className="bg-muted px-1">checkout.session.completed</code>{' '}
-              - Payment successful
+              ├─ <code className="bg-muted px-1">checkout.session.completed</code> - Payment
+              successful
             </div>
             <div>
-              ├─{' '}
-              <code className="bg-muted px-1">
-                customer.subscription.created
-              </code>{' '}
-              - New subscription
+              ├─ <code className="bg-muted px-1">customer.subscription.created</code> - New
+              subscription
             </div>
             <div>
-              ├─{' '}
-              <code className="bg-muted px-1">
-                customer.subscription.updated
-              </code>{' '}
-              - Subscription changed
+              ├─ <code className="bg-muted px-1">customer.subscription.updated</code> - Subscription
+              changed
             </div>
             <div>
-              ├─{' '}
-              <code className="bg-muted px-1">
-                customer.subscription.deleted
-              </code>{' '}
-              - Subscription cancelled
+              ├─ <code className="bg-muted px-1">customer.subscription.deleted</code> - Subscription
+              cancelled
             </div>
             <div>
-              └─ <code className="bg-muted px-1">invoice.payment_failed</code> -
-              Payment failed
+              └─ <code className="bg-muted px-1">invoice.payment_failed</code> - Payment failed
             </div>
           </div>
         </DocsCard>
@@ -195,16 +181,13 @@ stripe: {
           <p className="mb-4">Use these test cards in development:</p>
           <div className="space-y-1">
             <div>
-              ├─ <code className="bg-muted px-1">4242 4242 4242 4242</code> -
-              Successful payment
+              ├─ <code className="bg-muted px-1">4242 4242 4242 4242</code> - Successful payment
             </div>
             <div>
-              ├─ <code className="bg-muted px-1">4000 0000 0000 0002</code> -
-              Declined
+              ├─ <code className="bg-muted px-1">4000 0000 0000 0002</code> - Declined
             </div>
             <div>
-              └─ <code className="bg-muted px-1">4000 0000 0000 3220</code> -
-              Requires 3D Secure
+              └─ <code className="bg-muted px-1">4000 0000 0000 3220</code> - Requires 3D Secure
             </div>
           </div>
         </DocsCard>

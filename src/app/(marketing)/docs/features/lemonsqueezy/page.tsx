@@ -1,14 +1,7 @@
 import { FeatureGuideTemplate } from '@/components/docs';
 import { DocsSection, DocsCard, DocsCallout } from '@/components/docs';
 import Link from 'next/link';
-import {
-  CircleDollarSign,
-  CreditCard,
-  Globe,
-  Shield,
-  Bell,
-  Users,
-} from 'lucide-react';
+import { CircleDollarSign, CreditCard, Globe, Shield, Bell, Users } from 'lucide-react';
 
 export const metadata = {
   title: 'Lemon Squeezy Payments - Fabrk Docs',
@@ -28,14 +21,12 @@ export default function LemonSqueezyPage() {
         {
           icon: CircleDollarSign,
           title: 'Merchant of Record',
-          description:
-            'Lemon Squeezy handles taxes, refunds, and compliance globally.',
+          description: 'Lemon Squeezy handles taxes, refunds, and compliance globally.',
         },
         {
           icon: Globe,
           title: 'Global Tax Handling',
-          description:
-            'Automatic VAT, GST, and sales tax calculation and remittance.',
+          description: 'Automatic VAT, GST, and sales tax calculation and remittance.',
         },
         {
           icon: CreditCard,
@@ -50,8 +41,7 @@ export default function LemonSqueezyPage() {
         {
           icon: Bell,
           title: 'Webhook Events',
-          description:
-            'Real-time notifications for orders, subscriptions, and more.',
+          description: 'Real-time notifications for orders, subscriptions, and more.',
         },
         {
           icon: Users,
@@ -91,8 +81,7 @@ NEXT_PUBLIC_LEMONSQUEEZY_VARIANT_ENTERPRISE="123458"`,
         },
         {
           title: 'Setup Webhooks',
-          description:
-            "In Settings → Webhooks, create a webhook pointing to your app's endpoint.",
+          description: "In Settings → Webhooks, create a webhook pointing to your app's endpoint.",
           code: `# Production webhook URL
 https://your-domain.com/api/lemonsqueezy/webhook
 
@@ -110,8 +99,7 @@ https://your-domain.com/api/lemonsqueezy/webhook
       usage={[
         {
           title: 'Checkout Button Component',
-          description:
-            'Create a checkout session and redirect to Lemon Squeezy',
+          description: 'Create a checkout session and redirect to Lemon Squeezy',
           code: `"use client";
 
 import { useState } from "react";
@@ -254,10 +242,9 @@ export async function POST(req: Request) {
           </div>
         </DocsCard>
         <DocsCallout variant="info" title="When to use Lemon Squeezy">
-          Choose Lemon Squeezy if you sell to consumers globally and don&apos;t
-          want to deal with VAT, GST, or sales tax registration in 100+
-          countries. The higher fees are worth it for the compliance peace of
-          mind.
+          Choose Lemon Squeezy if you sell to consumers globally and don&apos;t want to deal with
+          VAT, GST, or sales tax registration in 100+ countries. The higher fees are worth it for
+          the compliance peace of mind.
         </DocsCallout>
       </DocsSection>
 
@@ -267,21 +254,15 @@ export async function POST(req: Request) {
           <div className="space-y-2">
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">order_created</code>
-              <span className="text-muted-foreground">
-                New purchase completed
-              </span>
+              <span className="text-muted-foreground">New purchase completed</span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">subscription_created</code>
-              <span className="text-muted-foreground">
-                New subscription started
-              </span>
+              <span className="text-muted-foreground">New subscription started</span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">subscription_updated</code>
-              <span className="text-muted-foreground">
-                Plan changed or modified
-              </span>
+              <span className="text-muted-foreground">Plan changed or modified</span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">subscription_cancelled</code>
@@ -289,9 +270,7 @@ export async function POST(req: Request) {
             </div>
             <div className="flex justify-between">
               <code className="bg-muted px-1">subscription_payment_failed</code>
-              <span className="text-muted-foreground">
-                Payment attempt failed
-              </span>
+              <span className="text-muted-foreground">Payment attempt failed</span>
             </div>
           </div>
         </DocsCard>
@@ -305,8 +284,8 @@ export async function POST(req: Request) {
               What fees does Lemon Squeezy charge?
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
-              5% + $0.50 per transaction. This includes all payment processing,
-              tax handling, and fraud protection. No monthly fees.
+              5% + $0.50 per transaction. This includes all payment processing, tax handling, and
+              fraud protection. No monthly fees.
             </div>
           </details>
 
@@ -315,9 +294,8 @@ export async function POST(req: Request) {
               How do payouts work?
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
-              Lemon Squeezy pays out weekly or monthly (your choice) via PayPal
-              or bank transfer. There&apos;s a small delay while they handle tax
-              remittance.
+              Lemon Squeezy pays out weekly or monthly (your choice) via PayPal or bank transfer.
+              There&apos;s a small delay while they handle tax remittance.
             </div>
           </details>
 
@@ -326,8 +304,8 @@ export async function POST(req: Request) {
               Can I use both Stripe and Lemon Squeezy?
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
-              Yes! Many SaaS apps use Stripe for B2B (where customers handle
-              their own taxes) and Lemon Squeezy for B2C international sales.
+              Yes! Many SaaS apps use Stripe for B2B (where customers handle their own taxes) and
+              Lemon Squeezy for B2C international sales.
             </div>
           </details>
         </div>
@@ -337,14 +315,9 @@ export async function POST(req: Request) {
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/trial">
-            <DocsCard
-              title="FREE_TRIALS"
-              className="hover:border-primary/50 h-full transition-all"
-            >
+            <DocsCard title="FREE_TRIALS" className="hover:border-primary/50 h-full transition-all">
               Free Trials
-              <p className="mb-6">
-                Let users try your product before paying with trial periods.
-              </p>
+              <p className="mb-6">Let users try your product before paying with trial periods.</p>
             </DocsCard>
           </Link>
           <Link href="/docs/features/payments">
@@ -353,9 +326,7 @@ export async function POST(req: Request) {
               className="hover:border-primary/50 h-full transition-all"
             >
               Stripe Setup
-              <p className="mb-6">
-                Set up Stripe for direct payment processing with lower fees.
-              </p>
+              <p className="mb-6">Set up Stripe for direct payment processing with lower fees.</p>
             </DocsCard>
           </Link>
         </div>

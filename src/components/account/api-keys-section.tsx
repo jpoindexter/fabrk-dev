@@ -123,8 +123,8 @@ export function ApiKeysSection() {
               <DialogHeader>
                 <DialogTitle>Generate API Key</DialogTitle>
                 <DialogDescription>
-                  Create a new API key for your application. Keep it secure and
-                  don't share it publicly.
+                  Create a new API key for your application. Keep it secure and don't share it
+                  publicly.
                 </DialogDescription>
               </DialogHeader>
               <div className="space-y-4 py-4">
@@ -137,8 +137,7 @@ export function ApiKeysSection() {
                     onChange={(e) => setNewKeyName(e.target.value)}
                   />
                   <p className="text-muted-foreground text-xs">
-                    Give your API key a descriptive name to identify its
-                    purpose.
+                    Give your API key a descriptive name to identify its purpose.
                   </p>
                 </div>
               </div>
@@ -160,9 +159,7 @@ export function ApiKeysSection() {
       />
       <CardContent>
         {apiKeys.length === 0 ? (
-          <div
-            className={cn('border border-dashed p-8 text-center', mode.radius)}
-          >
+          <div className={cn('border border-dashed p-8 text-center', mode.radius)}>
             <p className="text-muted-foreground mb-4 text-sm">
               No API keys yet. Generate one to get started.
             </p>
@@ -170,31 +167,18 @@ export function ApiKeysSection() {
         ) : (
           <div className="space-y-4">
             {apiKeys.map((apiKey) => (
-              <div
-                key={apiKey.id}
-                className={cn('space-y-4 border p-4', mode.radius)}
-              >
+              <div key={apiKey.id} className={cn('space-y-4 border p-4', mode.radius)}>
                 <div className="flex items-start justify-between">
                   <div>
                     <p className="font-medium">{apiKey.name}</p>
-                    <p className="text-muted-foreground text-xs">
-                      Created on {apiKey.createdAt}
-                    </p>
+                    <p className="text-muted-foreground text-xs">Created on {apiKey.createdAt}</p>
                   </div>
-                  {apiKey.lastUsed && (
-                    <Badge variant="outline">
-                      Last used: {apiKey.lastUsed}
-                    </Badge>
-                  )}
+                  {apiKey.lastUsed && <Badge variant="outline">Last used: {apiKey.lastUsed}</Badge>}
                 </div>
 
                 <div className="space-y-2">
                   <div className="flex gap-2">
-                    <Input
-                      value={apiKey.key}
-                      readOnly
-                      className={cn('text-sm', mode.font)}
-                    />
+                    <Input value={apiKey.key} readOnly className={cn('text-sm', mode.font)} />
                     <Button
                       variant="outline"
                       onClick={() => handleCopyKey(apiKey.key)}

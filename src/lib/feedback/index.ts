@@ -35,19 +35,12 @@ export type FeedbackCategory =
   | 'support'
   | 'other';
 
-export type FeedbackStatus =
-  | 'new'
-  | 'acknowledged'
-  | 'in_progress'
-  | 'resolved'
-  | 'closed';
+export type FeedbackStatus = 'new' | 'acknowledged' | 'in_progress' | 'resolved' | 'closed';
 
 /**
  * Analyze feedback sentiment (simple heuristic)
  */
-export function analyzeSentiment(
-  message: string
-): 'positive' | 'neutral' | 'negative' {
+export function analyzeSentiment(message: string): 'positive' | 'neutral' | 'negative' {
   const positiveWords = [
     'great',
     'excellent',
@@ -72,12 +65,8 @@ export function analyzeSentiment(
 
   const lowerMessage = message.toLowerCase();
 
-  const positiveCount = positiveWords.filter((word) =>
-    lowerMessage.includes(word)
-  ).length;
-  const negativeCount = negativeWords.filter((word) =>
-    lowerMessage.includes(word)
-  ).length;
+  const positiveCount = positiveWords.filter((word) => lowerMessage.includes(word)).length;
+  const negativeCount = negativeWords.filter((word) => lowerMessage.includes(word)).length;
 
   if (positiveCount > negativeCount) return 'positive';
   if (negativeCount > positiveCount) return 'negative';
@@ -96,9 +85,7 @@ export function categorizeFeedback(message: string): FeedbackCategory {
   if (lowerMessage.match(/(ui|ux|design|layout|button|color|theme)/)) {
     return 'ui_ux';
   }
-  if (
-    lowerMessage.match(/(billing|payment|charge|subscription|refund|price)/)
-  ) {
+  if (lowerMessage.match(/(billing|payment|charge|subscription|refund|price)/)) {
     return 'billing';
   }
   if (lowerMessage.match(/(doc|documentation|guide|tutorial|help)/)) {

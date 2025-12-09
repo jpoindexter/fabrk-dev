@@ -35,9 +35,7 @@ export function TechStack() {
             viewport={{ once: true }}
           >
             <Badge code="0x20" label="TECH STACK" className="mb-4" />
-            <h2 className="text-2xl font-semibold tracking-tight">
-              A MODERN STACK YOU CAN TRUST
-            </h2>
+            <h2 className="text-2xl font-semibold tracking-tight">A MODERN STACK YOU CAN TRUST</h2>
           </motion.div>
         </div>
 
@@ -67,10 +65,7 @@ export function TechStack() {
                     className="text-foreground group-hover:text-primary h-8 w-8 transition-colors"
                   />
                   <span className="text-foreground text-xs font-medium">
-                    {tech.name
-                      .toUpperCase()
-                      .replace(/ /g, '_')
-                      .replace(/\./g, '')}
+                    {tech.name.toUpperCase().replace(/ /g, '_').replace(/\./g, '')}
                   </span>
                 </CardContent>
               </Card>

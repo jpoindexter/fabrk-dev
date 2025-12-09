@@ -54,25 +54,19 @@ export function SystemHealthWidget({
   lastUpdated = new Date(),
   className,
 }: SystemHealthWidgetProps) {
-  const getUptimeStatus = (
-    uptime: number
-  ): 'healthy' | 'warning' | 'critical' => {
+  const getUptimeStatus = (uptime: number): 'healthy' | 'warning' | 'critical' => {
     if (uptime >= 99.5) return 'healthy';
     if (uptime >= 99.0) return 'warning';
     return 'critical';
   };
 
-  const getResponseTimeStatus = (
-    time: number
-  ): 'healthy' | 'warning' | 'critical' => {
+  const getResponseTimeStatus = (time: number): 'healthy' | 'warning' | 'critical' => {
     if (time <= 200) return 'healthy';
     if (time <= 500) return 'warning';
     return 'critical';
   };
 
-  const getErrorRateStatus = (
-    rate: number
-  ): 'healthy' | 'warning' | 'critical' => {
+  const getErrorRateStatus = (rate: number): 'healthy' | 'warning' | 'critical' => {
     if (rate <= 0.5) return 'healthy';
     if (rate <= 2.0) return 'warning';
     return 'critical';
@@ -82,11 +76,7 @@ export function SystemHealthWidget({
   const responseTimeStatus = getResponseTimeStatus(avgResponseTime);
   const errorRateStatus = getErrorRateStatus(errorRate);
 
-  const overallStatus = [
-    uptimeStatus,
-    responseTimeStatus,
-    errorRateStatus,
-  ].includes('critical')
+  const overallStatus = [uptimeStatus, responseTimeStatus, errorRateStatus].includes('critical')
     ? 'critical'
     : [uptimeStatus, responseTimeStatus, errorRateStatus].includes('warning')
       ? 'warning'
@@ -95,11 +85,7 @@ export function SystemHealthWidget({
   const StatusIcon = overallStatus === 'healthy' ? CheckCircle2 : AlertTriangle;
 
   const tone =
-    overallStatus === 'healthy'
-      ? 'success'
-      : overallStatus === 'warning'
-        ? 'warning'
-        : 'danger';
+    overallStatus === 'healthy' ? 'success' : overallStatus === 'warning' ? 'warning' : 'danger';
 
   return (
     <Card tone={tone} className={className}>
@@ -111,10 +97,7 @@ export function SystemHealthWidget({
           icon={<Activity className="h-4 w-4" />}
           className="border-0 p-0"
         />
-        <Badge
-          variant={overallStatus === 'healthy' ? 'default' : 'accent'}
-          className="font-medium"
-        >
+        <Badge variant={overallStatus === 'healthy' ? 'default' : 'accent'} className="font-medium">
           <StatusIcon className="mr-1 h-3 w-3" />
           {overallStatus.toUpperCase()}
         </Badge>
@@ -126,17 +109,11 @@ export function SystemHealthWidget({
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="text-muted-foreground h-4 w-4" />
-              <span className="text-foreground text-sm font-medium">
-                Uptime
-              </span>
+              <span className="text-foreground text-sm font-medium">Uptime</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-foreground text-lg font-bold">
-                {uptime}%
-              </span>
-              {uptime >= 99.9 && (
-                <TrendingUp className="text-primary h-4 w-4" />
-              )}
+              <span className="text-foreground text-lg font-bold">{uptime}%</span>
+              {uptime >= 99.9 && <TrendingUp className="text-primary h-4 w-4" />}
             </div>
           </div>
           <Progress
@@ -155,14 +132,10 @@ export function SystemHealthWidget({
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Clock className="text-muted-foreground h-4 w-4" />
-              <span className="text-foreground text-sm font-medium">
-                Avg Response Time
-              </span>
+              <span className="text-foreground text-sm font-medium">Avg Response Time</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-foreground text-lg font-bold">
-                {avgResponseTime}ms
-              </span>
+              <span className="text-foreground text-lg font-bold">{avgResponseTime}ms</span>
               <TrendingDown className="text-primary h-4 w-4" />
             </div>
           </div>
@@ -191,17 +164,11 @@ export function SystemHealthWidget({
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <AlertTriangle className="text-muted-foreground h-4 w-4" />
-              <span className="text-foreground text-sm font-medium">
-                Error Rate
-              </span>
+              <span className="text-foreground text-sm font-medium">Error Rate</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-foreground text-lg font-bold">
-                {errorRate}%
-              </span>
-              {errorRate <= 0.5 && (
-                <TrendingDown className="text-primary h-4 w-4" />
-              )}
+              <span className="text-foreground text-lg font-bold">{errorRate}%</span>
+              {errorRate <= 0.5 && <TrendingDown className="text-primary h-4 w-4" />}
             </div>
           </div>
           <Progress
@@ -216,13 +183,9 @@ export function SystemHealthWidget({
         </div>
 
         {/* Requests Per Minute */}
-        <div
-          className={cn('border-border bg-accent/50 border p-4', mode.radius)}
-        >
+        <div className={cn('border-border bg-accent/50 border p-4', mode.radius)}>
           <div className="flex items-center justify-between">
-            <span className="text-muted-foreground text-sm font-medium">
-              Requests/min
-            </span>
+            <span className="text-muted-foreground text-sm font-medium">Requests/min</span>
             <span className="text-foreground text-xl font-bold">
               {requestsPerMinute.toLocaleString()}
             </span>

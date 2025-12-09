@@ -3,10 +3,4 @@
  * Internationalization configuration and utilities
  */
 
-export {
-  locales,
-  defaultLocale,
-  localeNames,
-  localeFlags,
-  type Locale,
-} from './config';
+export { locales, defaultLocale, localeNames, localeFlags, type Locale } from './config';

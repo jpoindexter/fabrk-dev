@@ -17,9 +17,7 @@ export interface GeneratedApiKey {
  * @param environment - 'live' or 'test'
  * @returns Generated API key with prefix and hash
  */
-export function generateApiKey(
-  environment: 'live' | 'test' = 'live'
-): GeneratedApiKey {
+export function generateApiKey(environment: 'live' | 'test' = 'live'): GeneratedApiKey {
   // Generate 32 random bytes (256 bits)
   const randomBytes = crypto.randomBytes(32);
 

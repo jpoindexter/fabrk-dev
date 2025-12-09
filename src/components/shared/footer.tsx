@@ -45,9 +45,7 @@ export function Footer() {
               >
                 <SimpleIcon path={tech.path} className="size-3.5" />
                 <span className={cn('text-xs', mode.font)}>{tech.name}</span>
-                <span className={cn('text-success text-xs', mode.font)}>
-                  [OK]
-                </span>
+                <span className={cn('text-success text-xs', mode.font)}>[OK]</span>
               </div>
             ))}
           </div>
@@ -69,19 +67,11 @@ export function Footer() {
                 )}
               >
                 <span className="text-primary text-sm">&gt;</span>
-                <span className="text-xl font-semibold tracking-tight">
-                  FABRK
-                </span>
+                <span className="text-xl font-semibold tracking-tight">FABRK</span>
               </Link>
               <div className="mt-4 flex items-center gap-2">
-                <span
-                  className={cn('text-muted-foreground text-xs', mode.font)}
-                >
-                  └─ [STATUS]:
-                </span>
-                <span className={cn('text-success text-xs', mode.font)}>
-                  ■ OPERATIONAL
-                </span>
+                <span className={cn('text-muted-foreground text-xs', mode.font)}>└─ [STATUS]:</span>
+                <span className={cn('text-success text-xs', mode.font)}>■ OPERATIONAL</span>
               </div>
             </div>
 
@@ -92,18 +82,10 @@ export function Footer() {
                 <div className="divide-border grid grid-cols-3 divide-x">
                   {/* Product */}
                   <div className="p-4">
-                    <div
-                      className={cn(
-                        'text-muted-foreground mb-4 text-xs',
-                        mode.font
-                      )}
-                    >
+                    <div className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
                       [ PRODUCT ]
                     </div>
-                    <nav
-                      aria-label="Product links"
-                      className="flex flex-col gap-2"
-                    >
+                    <nav aria-label="Product links" className="flex flex-col gap-2">
                       <Link
                         href="#features"
                         className={cn(
@@ -136,18 +118,10 @@ export function Footer() {
 
                   {/* Company */}
                   <div className="p-4">
-                    <div
-                      className={cn(
-                        'text-muted-foreground mb-4 text-xs',
-                        mode.font
-                      )}
-                    >
+                    <div className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
                       [ COMPANY ]
                     </div>
-                    <nav
-                      aria-label="Company links"
-                      className="flex flex-col gap-2"
-                    >
+                    <nav aria-label="Company links" className="flex flex-col gap-2">
                       <Link
                         href="/about"
                         className={cn(
@@ -171,18 +145,10 @@ export function Footer() {
 
                   {/* Legal */}
                   <div className="p-4">
-                    <div
-                      className={cn(
-                        'text-muted-foreground mb-4 text-xs',
-                        mode.font
-                      )}
-                    >
+                    <div className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
                       [ LEGAL ]
                     </div>
-                    <nav
-                      aria-label="Legal links"
-                      className="flex flex-col gap-2"
-                    >
+                    <nav aria-label="Legal links" className="flex flex-col gap-2">
                       <Link
                         href="/terms"
                         className={cn(
@@ -231,10 +197,7 @@ export function Footer() {
       {/* Bottom: Copyright */}
       <div className="border-border border-t px-4 py-6 sm:px-6">
         <div className={cn('text-muted-foreground text-xs', mode.font)}>
-          <span>
-            [ [0x7F] COPYRIGHT ] © {new Date().getFullYear()} Fabrk │ All rights
-            reserved
-          </span>
+          <span>[ [0x7F] COPYRIGHT ] © {new Date().getFullYear()} Fabrk │ All rights reserved</span>
         </div>
       </div>
     </footer>

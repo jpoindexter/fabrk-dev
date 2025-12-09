@@ -18,11 +18,7 @@ const mockLogs = [
       null,
       2
     ),
-    responsePayload: JSON.stringify(
-      { status: 'received', id: 'evt_123' },
-      null,
-      2
-    ),
+    responsePayload: JSON.stringify({ status: 'received', id: 'evt_123' }, null, 2),
     error: null,
     timestamp: new Date('2025-12-09T10:30:00'),
     duration: 342,
@@ -34,11 +30,7 @@ const mockLogs = [
     method: 'POST' as const,
     status: 'failed' as const,
     statusCode: 500,
-    requestPayload: JSON.stringify(
-      { event: 'payment.completed', amount: 4999 },
-      null,
-      2
-    ),
+    requestPayload: JSON.stringify({ event: 'payment.completed', amount: 4999 }, null, 2),
     responsePayload: null,
     error: 'Connection timeout after 5000ms',
     timestamp: new Date('2025-12-09T09:15:00'),
@@ -137,8 +129,7 @@ export default function WebhookLogPage() {
           name: 'pollInterval',
           type: 'number',
           default: '5000',
-          description:
-            'Polling interval in milliseconds (when realtimeUpdates is true).',
+          description: 'Polling interval in milliseconds (when realtimeUpdates is true).',
         },
       ]}
       accessibility={[

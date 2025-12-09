@@ -47,21 +47,13 @@ export function BillingHistoryCard({ invoices }: BillingHistoryCardProps) {
           <TableBody>
             {invoices.map((invoice) => (
               <TableRow key={invoice.id}>
-                <TableCell>
-                  {new Date(invoice.created).toLocaleDateString()}
-                </TableCell>
-                <TableCell className="font-medium">
-                  ${(invoice.amount / 100).toFixed(2)}
-                </TableCell>
+                <TableCell>{new Date(invoice.created).toLocaleDateString()}</TableCell>
+                <TableCell className="font-medium">${(invoice.amount / 100).toFixed(2)}</TableCell>
                 <TableCell>{getInvoiceStatusBadge(invoice.status)}</TableCell>
                 <TableCell>
                   {invoice.invoicePdf && (
                     <Button variant="ghost" size="sm" asChild>
-                      <a
-                        href={invoice.invoicePdf}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
+                      <a href={invoice.invoicePdf} target="_blank" rel="noopener noreferrer">
                         <Download className="h-4 w-4" />
                       </a>
                     </Button>

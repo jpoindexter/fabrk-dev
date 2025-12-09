@@ -199,26 +199,14 @@ export function FeaturesShowcase() {
           className="mb-12"
         >
           <Card className="mb-4 inline-block">
-            <CardHeader
-              code="0x10"
-              title="STACK CONFIG"
-              meta="FIB[89,144,233] MODULES"
-            />
+            <CardHeader code="0x10" title="STACK CONFIG" meta="FIB[89,144,233] MODULES" />
           </Card>
-          <h2
-            className={cn(
-              'mb-4 text-2xl font-semibold tracking-tight',
-              mode.font
-            )}
-          >
+          <h2 className={cn('mb-4 text-2xl font-semibold tracking-tight', mode.font)}>
             SOLID FOUNDATION
           </h2>
-          <p
-            className={cn('text-muted-foreground max-w-2xl text-sm', mode.font)}
-          >
-            Everything you need to build a production-ready SaaS.
-            Authentication, payments, multi-tenancy, and more—all pre-configured
-            and ready to customize.
+          <p className={cn('text-muted-foreground max-w-2xl text-sm', mode.font)}>
+            Everything you need to build a production-ready SaaS. Authentication, payments,
+            multi-tenancy, and more—all pre-configured and ready to customize.
           </p>
         </motion.div>
 

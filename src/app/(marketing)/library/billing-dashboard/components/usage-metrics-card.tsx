@@ -38,12 +38,7 @@ export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
 
         <div className="space-y-4">
           <div className="space-y-2">
-            <div
-              className={cn(
-                mode.font,
-                'flex items-center justify-between text-xs'
-              )}
-            >
+            <div className={cn(mode.font, 'flex items-center justify-between text-xs')}>
               <span className="flex items-center gap-2">
                 <Users className="size-3" />
                 [TEAM_MEMBERS]:
@@ -56,12 +51,7 @@ export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
           </div>
 
           <div className="space-y-2">
-            <div
-              className={cn(
-                mode.font,
-                'flex items-center justify-between text-xs'
-              )}
-            >
+            <div className={cn(mode.font, 'flex items-center justify-between text-xs')}>
               <span className="flex items-center gap-2">
                 <HardDrive className="size-3" />
                 [STORAGE]:
@@ -76,19 +66,13 @@ export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
           </div>
 
           <div className="space-y-2">
-            <div
-              className={cn(
-                mode.font,
-                'flex items-center justify-between text-xs'
-              )}
-            >
+            <div className={cn(mode.font, 'flex items-center justify-between text-xs')}>
               <span className="flex items-center gap-2">
                 <Zap className="size-3" />
                 [API_CALLS]:
               </span>
               <span>
-                {usage.apiCalls.current.toLocaleString()} /{' '}
-                {usage.apiCalls.limit.toLocaleString()}
+                {usage.apiCalls.current.toLocaleString()} / {usage.apiCalls.limit.toLocaleString()}
               </span>
             </div>
             <Progress value={usage.apiCalls.percentage} className="h-2" />

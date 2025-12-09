@@ -39,24 +39,16 @@ export function Breadcrumbs({ items, showHome = true }: BreadcrumbsProps) {
     <>
       <SchemaScript schema={schema} />
 
-      <nav
-        aria-label="Breadcrumb"
-        className="flex items-center space-x-2 text-sm"
-      >
+      <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
         {allItems.map((item, index) => {
           const isLast = index === allItems.length - 1;
 
           return (
             <div key={item.url} className="flex items-center">
-              {index > 0 && (
-                <ChevronRight className="text-muted-foreground mx-2 h-4 w-4" />
-              )}
+              {index > 0 && <ChevronRight className="text-muted-foreground mx-2 h-4 w-4" />}
 
               {isLast ? (
-                <span
-                  className="text-foreground font-medium"
-                  aria-current="page"
-                >
+                <span className="text-foreground font-medium" aria-current="page">
                   {item.name}
                 </span>
               ) : (
@@ -64,11 +56,7 @@ export function Breadcrumbs({ items, showHome = true }: BreadcrumbsProps) {
                   href={item.url}
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  {index === 0 && showHome ? (
-                    <Home className="h-4 w-4" />
-                  ) : (
-                    item.name
-                  )}
+                  {index === 0 && showHome ? <Home className="h-4 w-4" /> : item.name}
                 </Link>
               )}
             </div>

@@ -151,10 +151,7 @@ export function AuthPageTemplate({
 }: AuthPageTemplateProps) {
   return (
     <div
-      className={cn(
-        'flex min-h-screen flex-col items-center justify-center p-4 sm:p-8',
-        className
-      )}
+      className={cn('flex min-h-screen flex-col items-center justify-center p-4 sm:p-8', className)}
     >
       <div
         className={cn(
@@ -175,16 +172,10 @@ export function AuthPageTemplate({
           </div>
 
           {/* Title */}
-          <h1
-            className={cn('text-2xl font-semibold tracking-tight', mode.font)}
-          >
-            {title}
-          </h1>
+          <h1 className={cn('text-2xl font-semibold tracking-tight', mode.font)}>{title}</h1>
 
           {/* Description */}
-          <p className={cn('text-muted-foreground text-sm', mode.font)}>
-            {description}
-          </p>
+          <p className={cn('text-muted-foreground text-sm', mode.font)}>{description}</p>
         </div>
 
         {/* Error Message */}
@@ -205,26 +196,18 @@ export function AuthPageTemplate({
           {fields.map((field, index) => (
             <div key={field.name} className="space-y-2">
               <div className="flex items-center justify-between">
-                <Label
-                  htmlFor={field.name}
-                  className={cn('text-xs', mode.font)}
-                >
+                <Label htmlFor={field.name} className={cn('text-xs', mode.font)}>
                   [{field.label}]:
                 </Label>
                 {/* Show forgot password link on password field if enabled */}
-                {forgotPasswordLink &&
-                  field.type === 'password' &&
-                  index === fields.length - 1 && (
-                    <Link
-                      href={forgotPasswordHref}
-                      className={cn(
-                        'text-primary text-xs hover:underline',
-                        mode.font
-                      )}
-                    >
-                      Forgot password?
-                    </Link>
-                  )}
+                {forgotPasswordLink && field.type === 'password' && index === fields.length - 1 && (
+                  <Link
+                    href={forgotPasswordHref}
+                    className={cn('text-primary text-xs hover:underline', mode.font)}
+                  >
+                    Forgot password?
+                  </Link>
+                )}
               </div>
 
               {field.type === 'password' ? (
@@ -258,10 +241,7 @@ export function AuthPageTemplate({
               <Checkbox id="remember" name="remember" disabled={loading} />
               <Label
                 htmlFor="remember"
-                className={cn(
-                  'text-muted-foreground text-xs font-normal',
-                  mode.font
-                )}
+                className={cn('text-muted-foreground text-xs font-normal', mode.font)}
               >
                 Remember me for 30 days
               </Label>
@@ -269,12 +249,7 @@ export function AuthPageTemplate({
           )}
 
           {/* Submit Button */}
-          <Button
-            type="submit"
-            className="w-full"
-            disabled={loading}
-            loading={loading}
-          >
+          <Button type="submit" className="w-full" disabled={loading} loading={loading}>
             &gt; {submitLabel.toUpperCase().replace(/ /g, '_')}
           </Button>
         </form>
@@ -288,12 +263,7 @@ export function AuthPageTemplate({
                 <span className="border-border w-full border-t" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span
-                  className={cn(
-                    'bg-background text-muted-foreground px-2',
-                    mode.font
-                  )}
-                >
+                <span className={cn('bg-background text-muted-foreground px-2', mode.font)}>
                   Or continue with
                 </span>
               </div>
@@ -318,12 +288,7 @@ export function AuthPageTemplate({
 
         {/* Alternate Link */}
         {alternateLink && (
-          <p
-            className={cn(
-              'text-muted-foreground text-center text-sm',
-              mode.font
-            )}
-          >
+          <p className={cn('text-muted-foreground text-center text-sm', mode.font)}>
             {alternateLink.label}{' '}
             <Link
               href={alternateLink.href}

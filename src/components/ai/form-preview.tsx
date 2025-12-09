@@ -79,10 +79,7 @@ function FormFieldPreview({ field }: { field: FormField }) {
                   value={option.value}
                   className="size-4"
                 />
-                <Label
-                  htmlFor={`${name}-${option.value}`}
-                  className={cn('text-sm', mode.font)}
-                >
+                <Label htmlFor={`${name}-${option.value}`} className={cn('text-sm', mode.font)}>
                   {option.label}
                 </Label>
               </div>
@@ -91,22 +88,10 @@ function FormFieldPreview({ field }: { field: FormField }) {
         );
 
       case 'date':
-        return (
-          <Input
-            id={name}
-            type="date"
-            className={cn('text-sm', mode.radius, mode.font)}
-          />
-        );
+        return <Input id={name} type="date" className={cn('text-sm', mode.radius, mode.font)} />;
 
       case 'time':
-        return (
-          <Input
-            id={name}
-            type="time"
-            className={cn('text-sm', mode.radius, mode.font)}
-          />
-        );
+        return <Input id={name} type="time" className={cn('text-sm', mode.radius, mode.font)} />;
 
       case 'datetime':
         return (
@@ -118,13 +103,7 @@ function FormFieldPreview({ field }: { field: FormField }) {
         );
 
       case 'file':
-        return (
-          <Input
-            id={name}
-            type="file"
-            className={cn('text-sm', mode.radius, mode.font)}
-          />
-        );
+        return <Input id={name} type="file" className={cn('text-sm', mode.radius, mode.font)} />;
 
       case 'number':
         return (
@@ -215,12 +194,8 @@ export function FormPreview({ form, className }: FormPreviewProps) {
       {/* Form Content */}
       <div className="p-6">
         <div className="mb-4">
-          <h3 className={cn('text-lg font-semibold', mode.font)}>
-            {form.name}
-          </h3>
-          <p className={cn('text-muted-foreground text-xs', mode.font)}>
-            {form.description}
-          </p>
+          <h3 className={cn('text-lg font-semibold', mode.font)}>{form.name}</h3>
+          <p className={cn('text-muted-foreground text-xs', mode.font)}>{form.description}</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -228,10 +203,7 @@ export function FormPreview({ form, className }: FormPreviewProps) {
             <FormFieldPreview key={field.name} field={field} />
           ))}
 
-          <Button
-            type="submit"
-            className={cn('w-full text-xs', mode.radius, mode.font)}
-          >
+          <Button type="submit" className={cn('w-full text-xs', mode.radius, mode.font)}>
             &gt; {form.submitLabel.toUpperCase()}
           </Button>
         </form>

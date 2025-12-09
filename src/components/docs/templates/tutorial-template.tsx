@@ -95,12 +95,7 @@ export function TutorialTemplate({
   return (
     <div className={docsSpacing.pageSections}>
       {/* Header */}
-      <DocsHeader
-        code={code}
-        category={category}
-        title={title}
-        description={description}
-      />
+      <DocsHeader code={code} category={category} title={title} description={description} />
 
       {/* Warning (if any) */}
       {warning && (
@@ -115,9 +110,7 @@ export function TutorialTemplate({
           {difficulty && (
             <div className="flex items-center gap-2">
               <span className="text-muted-foreground">Difficulty:</span>
-              <span
-                className={`font-mono text-sm uppercase ${difficultyColors[difficulty]}`}
-              >
+              <span className={`font-mono text-sm uppercase ${difficultyColors[difficulty]}`}>
                 {difficulty}
               </span>
             </div>

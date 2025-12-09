@@ -50,11 +50,7 @@ export function noContentResponse(): NextResponse {
 /**
  * Error response helper
  */
-export function errorResponse(
-  error: string,
-  status: number = 500,
-  code?: string
-): NextResponse {
+export function errorResponse(error: string, status: number = 500, code?: string): NextResponse {
   return NextResponse.json(
     {
       success: false,
@@ -88,18 +84,14 @@ export function validationError(
 /**
  * Not found response (404)
  */
-export function notFoundResponse(
-  message: string = 'Resource not found'
-): NextResponse {
+export function notFoundResponse(message: string = 'Resource not found'): NextResponse {
   return errorResponse(message, 404, 'NOT_FOUND');
 }
 
 /**
  * Unauthorized response (401)
  */
-export function unauthorizedResponse(
-  message: string = 'Unauthorized'
-): NextResponse {
+export function unauthorizedResponse(message: string = 'Unauthorized'): NextResponse {
   return errorResponse(message, 401, 'UNAUTHORIZED');
 }
 
@@ -113,9 +105,7 @@ export function forbiddenResponse(message: string = 'Forbidden'): NextResponse {
 /**
  * Conflict response (409)
  */
-export function conflictResponse(
-  message: string = 'Resource conflict'
-): NextResponse {
+export function conflictResponse(message: string = 'Resource conflict'): NextResponse {
   return errorResponse(message, 409, 'CONFLICT');
 }
 

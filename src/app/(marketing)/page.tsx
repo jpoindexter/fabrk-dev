@@ -34,10 +34,7 @@ export default function HomePage() {
       </section>
 
       {/* Overlays */}
-      <StickyCTABar
-        message="Launch your SaaS in days, not months"
-        ctaText="Get Fabrk Now"
-      />
+      <StickyCTABar message="Launch your SaaS in days, not months" ctaText="Get Fabrk Now" />
       <ExitIntentPopup
         title="Wait! Before You Go..."
         description="Get Fabrk and launch your SaaS 10x faster. 234 components, authentication, payments, and more."

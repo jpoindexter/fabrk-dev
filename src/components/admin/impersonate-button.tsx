@@ -83,15 +83,11 @@ export function ImpersonateButton({
       </DialogTrigger>
       <DialogContent className="border-border bg-card border">
         <DialogHeader>
-          <DialogTitle className={cn('text-foreground', mode.font)}>
-            [IMPERSONATE_USER]
-          </DialogTitle>
-          <DialogDescription
-            className={cn('text-muted-foreground text-sm', mode.font)}
-          >
+          <DialogTitle className={cn('text-foreground', mode.font)}>[IMPERSONATE_USER]</DialogTitle>
+          <DialogDescription className={cn('text-muted-foreground text-sm', mode.font)}>
             You will view the dashboard as{' '}
-            <strong className="text-foreground">{userName || userEmail}</strong>
-            . This action will be logged.
+            <strong className="text-foreground">{userName || userEmail}</strong>. This action will
+            be logged.
           </DialogDescription>
         </DialogHeader>
 
@@ -112,11 +108,7 @@ export function ImpersonateButton({
             </p>
           </div>
 
-          {error && (
-            <p className={cn('text-destructive text-xs', mode.font)}>
-              [ERROR]: {error}
-            </p>
-          )}
+          {error && <p className={cn('text-destructive text-xs', mode.font)}>[ERROR]: {error}</p>}
         </div>
 
         <DialogFooter>

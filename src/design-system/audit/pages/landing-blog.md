@@ -69,12 +69,8 @@ export default async function BlogPage({ searchParams }: Props) {
     <span className="text-muted-foreground font-mono text-xs">[ BLOG ]</span>
   </div>
   <div className="p-6">
-    <h1 className="text-foreground mb-2 font-mono text-3xl font-bold">
-      &gt; LATEST_POSTS
-    </h1>
-    <p className="text-muted-foreground font-mono text-sm">
-      Articles, tutorials, and updates
-    </p>
+    <h1 className="text-foreground mb-2 font-mono text-3xl font-bold">&gt; LATEST_POSTS</h1>
+    <p className="text-muted-foreground font-mono text-sm">Articles, tutorials, and updates</p>
   </div>
 </div>
 ```
@@ -177,9 +173,7 @@ export default async function BlogPage({ searchParams }: Props) {
     >
       <div className="text-muted-foreground mb-2 flex items-center gap-2 font-mono text-xs">
         {post.category && (
-          <span className="text-primary">
-            [{post.category.name.toUpperCase()}]
-          </span>
+          <span className="text-primary">[{post.category.name.toUpperCase()}]</span>
         )}
         <span>{formatDate(post.publishedAt || post.createdAt)}</span>
       </div>
@@ -265,10 +259,7 @@ export default async function BlogPostPage({ params }: Props) {
 
 ```tsx
 <div className="mb-8">
-  <Link
-    href="/blog"
-    className="text-muted-foreground hover:text-primary font-mono text-xs"
-  >
+  <Link href="/blog" className="text-muted-foreground hover:text-primary font-mono text-xs">
     &lt;- BACK_TO_BLOG
   </Link>
 </div>
@@ -297,9 +288,7 @@ export default async function BlogPostPage({ params }: Props) {
     )}
 
     {/* Title */}
-    <h1 className="text-foreground mb-4 font-mono text-2xl font-bold md:text-3xl">
-      {post.title}
-    </h1>
+    <h1 className="text-foreground mb-4 font-mono text-2xl font-bold md:text-3xl">{post.title}</h1>
 
     {/* Meta */}
     <div className="text-muted-foreground flex flex-wrap items-center gap-4 font-mono text-xs">
@@ -379,10 +368,7 @@ export default async function BlogPostPage({ params }: Props) {
 
 ```tsx
 <div className="border-border bg-card mt-8 flex items-center justify-between border p-4">
-  <Link
-    href="/blog"
-    className="text-muted-foreground hover:text-primary font-mono text-xs"
-  >
+  <Link href="/blog" className="text-muted-foreground hover:text-primary font-mono text-xs">
     &lt;- ALL_POSTS
   </Link>
   <div className="text-muted-foreground font-mono text-xs">
@@ -642,10 +628,7 @@ className = 'h-6 w-6 rounded-none border border-border';
 ### 2. Create BlogPageTemplate
 
 ```tsx
-<BlogPageTemplate
-  title="LATEST_POSTS"
-  description="Articles, tutorials, and updates"
->
+<BlogPageTemplate title="LATEST_POSTS" description="Articles, tutorials, and updates">
   {/* Content */}
 </BlogPageTemplate>
 ```

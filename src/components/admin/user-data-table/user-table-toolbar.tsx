@@ -39,9 +39,7 @@ export function UserTableToolbar({
           <Input
             placeholder="Search users..."
             value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
-            onChange={(event) =>
-              table.getColumn('name')?.setFilterValue(event.target.value)
-            }
+            onChange={(event) => table.getColumn('name')?.setFilterValue(event.target.value)}
             className="pl-8"
           />
         </div>

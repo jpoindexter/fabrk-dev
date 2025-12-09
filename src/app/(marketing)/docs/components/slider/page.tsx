@@ -22,19 +22,10 @@ export default function SliderPage() {
         preview: (
           <div className="max-w-md space-y-2">
             <div className="flex items-center justify-between">
-              <Label className="text-muted-foreground font-mono text-xs">
-                [VALUE]
-              </Label>
-              <span className="text-primary font-mono text-xs">
-                {value1[0]}
-              </span>
+              <Label className="text-muted-foreground font-mono text-xs">[VALUE]</Label>
+              <span className="text-primary font-mono text-xs">{value1[0]}</span>
             </div>
-            <Slider
-              value={value1}
-              onValueChange={setValue1}
-              max={100}
-              step={1}
-            />
+            <Slider value={value1} onValueChange={setValue1} max={100} step={1} />
           </div>
         ),
         code: `const [value, setValue] = useState([50]);
@@ -53,19 +44,12 @@ export default function SliderPage() {
           preview: (
             <div className="max-w-md space-y-2">
               <div className="flex items-center justify-between">
-                <Label className="text-muted-foreground font-mono text-xs">
-                  [RANGE]
-                </Label>
+                <Label className="text-muted-foreground font-mono text-xs">[RANGE]</Label>
                 <span className="text-primary font-mono text-xs">
                   {value2[0]} - {value2[1]}
                 </span>
               </div>
-              <Slider
-                value={value2}
-                onValueChange={setValue2}
-                max={100}
-                step={1}
-              />
+              <Slider value={value2} onValueChange={setValue2} max={100} step={1} />
             </div>
           ),
           code: `const [value, setValue] = useState([25, 75]);
@@ -83,19 +67,10 @@ export default function SliderPage() {
           preview: (
             <div className="max-w-md space-y-2">
               <div className="flex items-center justify-between">
-                <Label className="text-muted-foreground font-mono text-xs">
-                  [STEP: 10]
-                </Label>
-                <span className="text-primary font-mono text-xs">
-                  {value3[0]}
-                </span>
+                <Label className="text-muted-foreground font-mono text-xs">[STEP: 10]</Label>
+                <span className="text-primary font-mono text-xs">{value3[0]}</span>
               </div>
-              <Slider
-                value={value3}
-                onValueChange={setValue3}
-                max={100}
-                step={10}
-              />
+              <Slider value={value3} onValueChange={setValue3} max={100} step={10} />
             </div>
           ),
           code: `<Slider
@@ -114,17 +89,9 @@ export default function SliderPage() {
                 <Label className="text-muted-foreground font-mono text-xs">
                   [RANGE: -50 to 50]
                 </Label>
-                <span className="text-primary font-mono text-xs">
-                  {value4[0]}
-                </span>
+                <span className="text-primary font-mono text-xs">{value4[0]}</span>
               </div>
-              <Slider
-                value={value4}
-                onValueChange={setValue4}
-                min={-50}
-                max={50}
-                step={1}
-              />
+              <Slider value={value4} onValueChange={setValue4} min={-50} max={50} step={1} />
             </div>
           ),
           code: `<Slider
@@ -140,9 +107,7 @@ export default function SliderPage() {
           description: 'Disabled slider that cannot be interacted with',
           preview: (
             <div className="max-w-md space-y-2">
-              <Label className="text-muted-foreground font-mono text-xs">
-                [DISABLED]
-              </Label>
+              <Label className="text-muted-foreground font-mono text-xs">[DISABLED]</Label>
               <Slider value={[60]} disabled max={100} step={1} />
             </div>
           ),
@@ -154,12 +119,8 @@ export default function SliderPage() {
           preview: (
             <div className="max-w-md space-y-2">
               <div className="flex items-center justify-between">
-                <Label className="text-muted-foreground font-mono text-xs">
-                  [VOLUME]
-                </Label>
-                <span className="text-primary font-mono text-xs">
-                  {value1[0]}%
-                </span>
+                <Label className="text-muted-foreground font-mono text-xs">[VOLUME]</Label>
+                <span className="text-primary font-mono text-xs">{value1[0]}%</span>
               </div>
               <Slider
                 value={value1}
@@ -182,24 +143,13 @@ export default function SliderPage() {
           description: 'Slider with terminal-themed container',
           preview: (
             <div className="space-y-4">
-              <div className="text-muted-foreground font-mono text-xs">
-                [CONFIGURATION]:
-              </div>
+              <div className="text-muted-foreground font-mono text-xs">[CONFIGURATION]:</div>
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground font-mono text-xs">
-                    THRESHOLD:
-                  </span>
-                  <span className="text-primary font-mono text-xs">
-                    &gt; {value1[0]}%
-                  </span>
+                  <span className="text-muted-foreground font-mono text-xs">THRESHOLD:</span>
+                  <span className="text-primary font-mono text-xs">&gt; {value1[0]}%</span>
                 </div>
-                <Slider
-                  value={value1}
-                  onValueChange={setValue1}
-                  max={100}
-                  step={1}
-                />
+                <Slider value={value1} onValueChange={setValue1} max={100} step={1} />
               </div>
             </div>
           ),

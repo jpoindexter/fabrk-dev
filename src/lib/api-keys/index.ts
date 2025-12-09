@@ -3,11 +3,7 @@
  * Centralized exports for API key management
  */
 
-export {
-  generateApiKey,
-  isValidApiKeyFormat,
-  type GeneratedApiKey,
-} from './generator';
+export { generateApiKey, isValidApiKeyFormat, type GeneratedApiKey } from './generator';
 export { hashApiKey, verifyApiKey } from './hasher';
 export {
   validateApiKey,

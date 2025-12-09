@@ -122,8 +122,7 @@ export default function BillingSummaryCardPage() {
           name: 'plan',
           type: 'BillingPlan',
           required: true,
-          description:
-            'Current plan details (name, price, interval, features).',
+          description: 'Current plan details (name, price, interval, features).',
         },
         {
           name: 'status',

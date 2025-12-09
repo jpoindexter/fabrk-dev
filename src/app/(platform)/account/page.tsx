@@ -60,19 +60,11 @@ export default function AccountPage() {
   return (
     <div className="container mx-auto max-w-6xl px-6 py-8">
       <div className="mb-8">
-        <h1 className="text-4xl font-semibold tracking-tight">
-          Account Settings
-        </h1>
-        <p className="text-muted-foreground mt-2">
-          Manage your account settings and preferences
-        </p>
+        <h1 className="text-4xl font-semibold tracking-tight">Account Settings</h1>
+        <p className="text-muted-foreground mt-2">Manage your account settings and preferences</p>
       </div>
 
-      <Tabs
-        value={activeTab}
-        onValueChange={setActiveTab}
-        className="space-y-6"
-      >
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
         <TabsList className="grid h-auto w-full max-w-6xl grid-cols-5 p-2">
           {tabs.map((tab) => {
             const Icon = tab.icon;
@@ -179,16 +171,13 @@ export default function AccountPage() {
                         'flex w-full items-start gap-6 p-6 text-left transition-colors',
                         mode.radius,
                         'hover:bg-primary hover:text-primary-foreground',
-                        activeTab === tab.value &&
-                          'bg-primary text-primary-foreground'
+                        activeTab === tab.value && 'bg-primary text-primary-foreground'
                       )}
                     >
                       <Icon className="mt-0.5 size-5" />
                       <div className="space-y-0.5">
                         <p className="text-sm font-medium">{tab.label}</p>
-                        <p className="text-muted-foreground text-xs">
-                          {tab.description}
-                        </p>
+                        <p className="text-muted-foreground text-xs">{tab.description}</p>
                       </div>
                     </Button>
                   );
@@ -205,20 +194,14 @@ export default function AccountPage() {
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-muted-foreground text-sm">Status</span>
-                  <span className="text-primary text-sm font-medium">
-                    Active
-                  </span>
+                  <span className="text-primary text-sm font-medium">Active</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground text-sm">
-                    Member Since
-                  </span>
+                  <span className="text-muted-foreground text-sm">Member Since</span>
                   <span className="text-sm font-medium">Jan 2024</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground text-sm">
-                    Storage Used
-                  </span>
+                  <span className="text-muted-foreground text-sm">Storage Used</span>
                   <span className="text-sm font-medium">2.4 GB / 10 GB</span>
                 </div>
               </CardContent>

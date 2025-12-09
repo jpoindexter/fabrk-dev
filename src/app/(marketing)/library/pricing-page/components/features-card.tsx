@@ -17,12 +17,10 @@ export function FeaturesCard() {
         </div>
         <div className={cn(mode.font, 'space-y-2 text-xs')}>
           <div>
-            <span className="text-success">&gt;</span> 3-tier pricing cards with
-            terminal styling
+            <span className="text-success">&gt;</span> 3-tier pricing cards with terminal styling
           </div>
           <div>
-            <span className="text-success">&gt;</span> Monthly/yearly toggle
-            with savings badge
+            <span className="text-success">&gt;</span> Monthly/yearly toggle with savings badge
           </div>
           <div>
             <span className="text-success">&gt;</span> Feature comparison table
@@ -37,13 +35,11 @@ export function FeaturesCard() {
             <span className="text-success">&gt;</span> Responsive grid layout
           </div>
           <div>
-            <span className="text-success">&gt;</span> Design token colors (no
-            hardcoded values)
+            <span className="text-success">&gt;</span> Design token colors (no hardcoded values)
           </div>
         </div>
         <div className={cn(mode.font, 'text-muted-foreground mt-4 text-xs')}>
-          [NOTE]: Connect to your payment provider (Stripe/Polar.sh) for live
-          checkout.
+          [NOTE]: Connect to your payment provider (Stripe/Polar.sh) for live checkout.
         </div>
       </CardContent>
     </Card>

@@ -11,13 +11,7 @@ import { useSession } from 'next-auth/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
-import {
-  Save,
-  Trash2,
-  AlertTriangle,
-  Loader2,
-  Settings as SettingsIcon,
-} from 'lucide-react';
+import { Save, Trash2, AlertTriangle, Loader2, Settings as SettingsIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import {
@@ -52,10 +46,7 @@ const settingsSchema = z.object({
   slug: z
     .string()
     .min(2, 'Slug must be at least 2 characters')
-    .regex(
-      /^[a-z0-9-]+$/,
-      'Slug can only contain lowercase letters, numbers, and hyphens'
-    ),
+    .regex(/^[a-z0-9-]+$/, 'Slug can only contain lowercase letters, numbers, and hyphens'),
   logo: z.string().url().optional().or(z.literal('')),
 });
 
@@ -77,9 +68,7 @@ export default function OrganizationSettingsPage() {
   const [loading, setLoading] = React.useState(true);
   const [saving, setSaving] = React.useState(false);
   const [deleting, setDeleting] = React.useState(false);
-  const [organization, setOrganization] = React.useState<Organization | null>(
-    null
-  );
+  const [organization, setOrganization] = React.useState<Organization | null>(null);
 
   const form = useForm<SettingsFormData>({
     resolver: zodResolver(settingsSchema),
@@ -145,10 +134,7 @@ export default function OrganizationSettingsPage() {
         router.push(`/organizations/${data.slug}/settings`);
       }
     } catch (error: unknown) {
-      const errorMessage =
-        error instanceof Error
-          ? error.message
-          : 'Failed to update organization';
+      const errorMessage = error instanceof Error ? error.message : 'Failed to update organization';
       toast.error(errorMessage);
     } finally {
       setSaving(false);
@@ -172,10 +158,7 @@ export default function OrganizationSettingsPage() {
       toast.success('Organization deleted successfully');
       router.push('/dashboard');
     } catch (error: unknown) {
-      const errorMessage =
-        error instanceof Error
-          ? error.message
-          : 'Failed to delete organization';
+      const errorMessage = error instanceof Error ? error.message : 'Failed to delete organization';
       toast.error(errorMessage);
       setDeleting(false);
     }
@@ -192,17 +175,11 @@ export default function OrganizationSettingsPage() {
   if (!organization) {
     return (
       <Card tone="danger">
-        <CardHeader
-          code="0x00"
-          title="ERROR"
-          icon={<AlertTriangle className="h-4 w-4" />}
-        />
+        <CardHeader code="0x00" title="ERROR" icon={<AlertTriangle className="h-4 w-4" />} />
         <CardContent padding="lg">
           <div className="text-center">
             <AlertTriangle className="text-destructive mx-auto h-12 w-12" />
-            <h3 className="mt-4 text-lg font-semibold">
-              Organization not found
-            </h3>
+            <h3 className="mt-4 text-lg font-semibold">Organization not found</h3>
             <Button onClick={() => router.push('/dashboard')} className="mt-4">
               &gt; BACK_TO_DASHBOARD
             </Button>
@@ -222,9 +199,7 @@ export default function OrganizationSettingsPage() {
           <SettingsIcon className="text-primary-foreground h-6 w-6" />
         </div>
         <div>
-          <h1 className="font-mono text-4xl font-semibold">
-            ORGANIZATION_SETTINGS
-          </h1>
+          <h1 className="font-mono text-4xl font-semibold">ORGANIZATION_SETTINGS</h1>
           <p className="text-muted-foreground">
             Manage your organization's information and preferences
           </p>
@@ -255,9 +230,7 @@ export default function OrganizationSettingsPage() {
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription>
-                      The public name of your organization
-                    </FormDescription>
+                    <FormDescription>The public name of your organization</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -319,9 +292,7 @@ export default function OrganizationSettingsPage() {
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription>
-                      Direct URL to your organization's logo image
-                    </FormDescription>
+                    <FormDescription>Direct URL to your organization's logo image</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -329,17 +300,11 @@ export default function OrganizationSettingsPage() {
 
               {isOwnerOrAdmin && (
                 <div className="flex justify-end gap-2 pt-4">
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={() => form.reset()}
-                  >
+                  <Button type="button" variant="outline" onClick={() => form.reset()}>
                     &gt; RESET
                   </Button>
                   <Button type="submit" disabled={saving}>
-                    {saving && (
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    )}
+                    {saving && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                     <Save className="mr-2 h-4 w-4" />
                     &gt; SAVE_CHANGES
                   </Button>
@@ -361,12 +326,10 @@ export default function OrganizationSettingsPage() {
           <CardContent padding="lg">
             <div className="border-destructive bg-destructive/10 flex items-start justify-between rounded-none border p-4">
               <div className="flex-1">
-                <h4 className="font-mono text-xs font-semibold">
-                  [DELETE_ORGANIZATION]:
-                </h4>
+                <h4 className="font-mono text-xs font-semibold">[DELETE_ORGANIZATION]:</h4>
                 <p className="text-muted-foreground mt-1 text-sm">
-                  Permanently delete this organization and all associated data.
-                  This action cannot be undone.
+                  Permanently delete this organization and all associated data. This action cannot
+                  be undone.
                 </p>
               </div>
               <AlertDialog>
@@ -384,8 +347,8 @@ export default function OrganizationSettingsPage() {
                     </AlertDialogTitle>
                     <AlertDialogDescription>
                       Are you absolutely sure? This will permanently delete{' '}
-                      <strong>{organization.name}</strong> and remove all
-                      members, data, and settings. This action cannot be undone.
+                      <strong>{organization.name}</strong> and remove all members, data, and
+                      settings. This action cannot be undone.
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
@@ -395,9 +358,7 @@ export default function OrganizationSettingsPage() {
                       disabled={deleting}
                       className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
                     >
-                      {deleting && (
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      )}
+                      {deleting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                       &gt; DELETE_ORGANIZATION
                     </AlertDialogAction>
                   </AlertDialogFooter>

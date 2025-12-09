@@ -48,13 +48,7 @@ export default function FunnelChartPage() {
         {
           title: 'With Values Only',
           description: 'Display absolute numbers without percentages',
-          preview: (
-            <FunnelChart
-              data={marketingFunnel}
-              showPercentages={false}
-              height={300}
-            />
-          ),
+          preview: <FunnelChart data={marketingFunnel} showPercentages={false} height={300} />,
           code: `<FunnelChart
   data={funnel}
   showPercentages={false}
@@ -98,9 +92,7 @@ export default function FunnelChartPage() {
               <FunnelChart
                 data={salesFunnel}
                 height={300}
-                onStageClick={(stage, _index) =>
-                  alert(`Clicked: ${stage.label} (${stage.value})`)
-                }
+                onStageClick={(stage, _index) => alert(`Clicked: ${stage.label} (${stage.value})`)}
               />
             </div>
           ),
@@ -114,9 +106,7 @@ export default function FunnelChartPage() {
         {
           title: 'Compact Funnel',
           description: 'Smaller funnel for dashboards',
-          preview: (
-            <FunnelChart data={simpleFunnel} height={200} width={300} gap={4} />
-          ),
+          preview: <FunnelChart data={simpleFunnel} height={200} width={300} gap={4} />,
           code: `<FunnelChart
   data={funnel}
   height={200}
@@ -193,8 +183,7 @@ export default function FunnelChartPage() {
           name: 'direction',
           type: '"vertical" | "horizontal"',
           default: '"vertical"',
-          description:
-            'Orientation of the funnel (vertical only currently supported)',
+          description: 'Orientation of the funnel (vertical only currently supported)',
         },
         {
           name: 'className',

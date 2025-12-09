@@ -13,14 +13,7 @@ import {
   CommandShortcut,
 } from '@/components/ui/command';
 import { useState } from 'react';
-import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Settings,
-  Smile,
-  User,
-} from 'lucide-react';
+import { Calculator, Calendar, CreditCard, Settings, Smile, User } from 'lucide-react';
 
 export default function CommandPage() {
   const [open, setOpen] = useState(false);
@@ -125,8 +118,7 @@ export default function CommandPage() {
       variants={[
         {
           title: 'Command Dialog',
-          description:
-            'Command menu as a modal dialog triggered by keyboard shortcut.',
+          description: 'Command menu as a modal dialog triggered by keyboard shortcut.',
           preview: (
             <div>
               <p className="text-muted-foreground mb-4 text-sm">

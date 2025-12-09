@@ -29,9 +29,6 @@ export async function GET(_req: NextRequest) {
     });
   } catch (error: unknown) {
     logger.error('Failed to fetch organizations:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch organizations' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to fetch organizations' }, { status: 500 });
   }
 }

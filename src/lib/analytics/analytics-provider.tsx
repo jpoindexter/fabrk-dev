@@ -18,8 +18,7 @@ export function AnalyticsProvider({ children }: AnalyticsProviderProps) {
   useEffect(() => {
     // Initialize analytics on mount
     // Note: NODE_ENV is a special Next.js variable, not in env schema
-    const isDev =
-      typeof window !== 'undefined' && window.location.hostname === 'localhost';
+    const isDev = typeof window !== 'undefined' && window.location.hostname === 'localhost';
     initAnalytics({
       providers: getEnabledProviders(),
       debug: isDev,

@@ -7,11 +7,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { sendEmail } from '@/lib/email';
 import { logger } from '@/lib/logger';
-import {
-  checkRateLimitAuto,
-  getClientIdentifier,
-  RateLimiters,
-} from '@/lib/security/rate-limit';
+import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from '@/lib/security/rate-limit';
 import { env } from '@/lib/env';
 
 // Validation schema for contact form
@@ -28,10 +24,7 @@ const contactSchema = z.object({
     'success-story',
     'other',
   ]),
-  message: z
-    .string()
-    .min(10, 'Message must be at least 10 characters')
-    .max(5000),
+  message: z.string().min(10, 'Message must be at least 10 characters').max(5000),
 });
 
 // Subject display names
@@ -60,9 +53,7 @@ export async function POST(request: NextRequest) {
           headers: {
             'X-RateLimit-Limit': rateLimit.limit.toString(),
             'X-RateLimit-Remaining': rateLimit.remaining.toString(),
-            'Retry-After': Math.ceil(
-              (rateLimit.reset - Date.now()) / 1000
-            ).toString(),
+            'Retry-After': Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
           },
         }
       );

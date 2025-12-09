@@ -87,9 +87,7 @@ export function createNotification(
 /**
  * Show toast notification
  */
-export function showToast(
-  toast: Omit<ToastNotification, 'id'>
-): ToastNotification {
+export function showToast(toast: Omit<ToastNotification, 'id'>): ToastNotification {
   const newToast: ToastNotification = {
     id: crypto.randomUUID(),
     duration: 5000, // Default 5 seconds
@@ -105,11 +103,7 @@ export function showToast(
  * Quick notification helpers
  */
 export const notify = {
-  success: (
-    title: string,
-    message: string,
-    options?: Partial<Notification>
-  ) => {
+  success: (title: string, message: string, options?: Partial<Notification>) => {
     return createNotification({
       type: 'success',
       title,
@@ -131,11 +125,7 @@ export const notify = {
     });
   },
 
-  warning: (
-    title: string,
-    message: string,
-    options?: Partial<Notification>
-  ) => {
+  warning: (title: string, message: string, options?: Partial<Notification>) => {
     return createNotification({
       type: 'warning',
       title,
@@ -246,9 +236,7 @@ export function clearAllNotifications() {
 export function getNotifications(): Notification[] {
   // Remove expired notifications
   const now = new Date();
-  notifications = notifications.filter(
-    (n) => !n.expiresAt || n.expiresAt > now
-  );
+  notifications = notifications.filter((n) => !n.expiresAt || n.expiresAt > now);
 
   return [...notifications];
 }
@@ -270,18 +258,14 @@ export function getNotificationsByType(type: NotificationType): Notification[] {
 /**
  * Get notifications by priority
  */
-export function getNotificationsByPriority(
-  priority: NotificationPriority
-): Notification[] {
+export function getNotificationsByPriority(priority: NotificationPriority): Notification[] {
   return notifications.filter((n) => n.priority === priority);
 }
 
 /**
  * Subscribe to notifications
  */
-export function subscribeToNotifications(
-  listener: NotificationListener
-): () => void {
+export function subscribeToNotifications(listener: NotificationListener): () => void {
   notificationListeners.push(listener);
 
   // Return unsubscribe function

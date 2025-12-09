@@ -145,9 +145,7 @@ async function checkoutHandler(req: NextRequest) {
 
     // Validate the price ID against all available products
     const validProducts = Object.entries(STRIPE_PRODUCTS);
-    const matchedProduct = validProducts.find(
-      ([, product]) => product.priceId === priceId
-    );
+    const matchedProduct = validProducts.find(([, product]) => product.priceId === priceId);
 
     if (!matchedProduct) {
       return NextResponse.json({ error: 'Invalid price ID' }, { status: 400 });
@@ -166,11 +164,7 @@ async function checkoutHandler(req: NextRequest) {
 
       if (user) {
         userId = user.id;
-        customerId = await getOrCreateCustomer(
-          user.email,
-          user.id,
-          user.customerId
-        );
+        customerId = await getOrCreateCustomer(user.email, user.id, user.customerId);
 
         // Update user with customer ID if newly created
         if (!user.customerId) {
@@ -184,8 +178,7 @@ async function checkoutHandler(req: NextRequest) {
 
     // Generate or use provided idempotency key
     const idempotencyKey =
-      clientIdempotencyKey ||
-      generateCheckoutIdempotencyKey(userId || null, priceId);
+      clientIdempotencyKey || generateCheckoutIdempotencyKey(userId || null, priceId);
 
     // Check if this idempotency key was already used
     const existingSessionId = await getExistingCheckoutSession(idempotencyKey);
@@ -196,8 +189,7 @@ async function checkoutHandler(req: NextRequest) {
       });
 
       // Retrieve the existing session from Stripe
-      const existingSession =
-        await stripe.checkout.sessions.retrieve(existingSessionId);
+      const existingSession = await stripe.checkout.sessions.retrieve(existingSessionId);
       return NextResponse.json({ url: existingSession.url });
     }
 
@@ -262,12 +254,7 @@ async function checkoutHandler(req: NextRequest) {
     );
 
     // Store idempotency record in database
-    await storeCheckoutIdempotency(
-      idempotencyKey,
-      userId || null,
-      checkoutSession.id,
-      priceId
-    );
+    await storeCheckoutIdempotency(idempotencyKey, userId || null, checkoutSession.id, priceId);
 
     logger.info('Created new checkout session', {
       idempotencyKey,
@@ -279,10 +266,7 @@ async function checkoutHandler(req: NextRequest) {
     return NextResponse.json({ url: checkoutSession.url });
   } catch (error: unknown) {
     logger.error('Checkout error:', error);
-    return NextResponse.json(
-      { error: 'Failed to create checkout session' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to create checkout session' }, { status: 500 });
   }
 }
 

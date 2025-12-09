@@ -107,9 +107,7 @@ interface EmptyStateProps {
 }
 
 function EmptyState({ emptyState, createAction }: EmptyStateProps) {
-  const icon = emptyState?.icon || (
-    <Inbox className="text-muted-foreground h-12 w-12" />
-  );
+  const icon = emptyState?.icon || <Inbox className="text-muted-foreground h-12 w-12" />;
   const title = emptyState?.title || 'No data';
   const description = emptyState?.description || 'No items found.';
   const action = emptyState?.action || createAction;
@@ -125,12 +123,7 @@ function EmptyState({ emptyState, createAction }: EmptyStateProps) {
       <h3 className={cn('mb-2 text-lg font-semibold', mode.font)}>
         [{title.toUpperCase().replace(/ /g, '_')}]
       </h3>
-      <p
-        className={cn(
-          'text-muted-foreground mb-6 max-w-sm text-center text-sm',
-          mode.font
-        )}
-      >
+      <p className={cn('text-muted-foreground mb-6 max-w-sm text-center text-sm', mode.font)}>
         {description}
       </p>
       {action && (
@@ -157,9 +150,7 @@ function LoadingState() {
     >
       {/* rounded-full is required here for the spinning animation to render correctly */}
       <div className="border-primary mb-4 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
-      <p className={cn('text-muted-foreground text-sm', mode.font)}>
-        [LOADING]...
-      </p>
+      <p className={cn('text-muted-foreground text-sm', mode.font)}>[LOADING]...</p>
     </div>
   );
 }
@@ -188,15 +179,9 @@ export function ListPageTemplate<TData, TValue = unknown>({
       {/* Header */}
       <div className="flex items-start justify-between">
         <div className="space-y-1">
-          <h1
-            className={cn('text-4xl font-semibold tracking-tight', mode.font)}
-          >
-            {title}
-          </h1>
+          <h1 className={cn('text-4xl font-semibold tracking-tight', mode.font)}>{title}</h1>
           {description && (
-            <p className={cn('text-muted-foreground text-sm', mode.font)}>
-              {description}
-            </p>
+            <p className={cn('text-muted-foreground text-sm', mode.font)}>{description}</p>
           )}
         </div>
 

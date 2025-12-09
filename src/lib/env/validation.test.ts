@@ -25,9 +25,7 @@ describe('Environment Variable Validation', () => {
       (process.env as { DATABASE_URL?: string }).DATABASE_URL = undefined;
       const result = validateEnv();
       expect(result.valid).toBe(false);
-      expect(result.errors.some((e) => e.variable === 'DATABASE_URL')).toBe(
-        true
-      );
+      expect(result.errors.some((e) => e.variable === 'DATABASE_URL')).toBe(true);
     });
 
     it('should fail when DATABASE_URL is not a PostgreSQL URL', () => {
@@ -35,10 +33,7 @@ describe('Environment Variable Validation', () => {
       const result = validateEnv();
       expect(result.valid).toBe(false);
       expect(
-        result.errors.some(
-          (e) =>
-            e.variable === 'DATABASE_URL' && e.message.includes('PostgreSQL')
-        )
+        result.errors.some((e) => e.variable === 'DATABASE_URL' && e.message.includes('PostgreSQL'))
       ).toBe(true);
     });
 
@@ -52,9 +47,7 @@ describe('Environment Variable Validation', () => {
       process.env.RESEND_API_KEY = 're_123';
 
       const result = validateEnv();
-      expect(
-        result.errors.filter((e) => e.variable === 'DATABASE_URL')
-      ).toHaveLength(0);
+      expect(result.errors.filter((e) => e.variable === 'DATABASE_URL')).toHaveLength(0);
     });
 
     it('should fail when NEXTAUTH_SECRET is too short', () => {
@@ -63,9 +56,7 @@ describe('Environment Variable Validation', () => {
       expect(result.valid).toBe(false);
       expect(
         result.errors.some(
-          (e) =>
-            e.variable === 'NEXTAUTH_SECRET' &&
-            e.message.includes('32 characters')
+          (e) => e.variable === 'NEXTAUTH_SECRET' && e.message.includes('32 characters')
         )
       ).toBe(true);
     });
@@ -75,9 +66,7 @@ describe('Environment Variable Validation', () => {
       const result = validateEnv();
       expect(result.valid).toBe(false);
       expect(
-        result.errors.some(
-          (e) => e.variable === 'STRIPE_SECRET_KEY' && e.message.includes('sk_')
-        )
+        result.errors.some((e) => e.variable === 'STRIPE_SECRET_KEY' && e.message.includes('sk_'))
       ).toBe(true);
     });
 
@@ -86,9 +75,7 @@ describe('Environment Variable Validation', () => {
       const result = validateEnv();
       expect(result.valid).toBe(false);
       expect(
-        result.errors.some(
-          (e) => e.variable === 'RESEND_API_KEY' && e.message.includes('re_')
-        )
+        result.errors.some((e) => e.variable === 'RESEND_API_KEY' && e.message.includes('re_'))
       ).toBe(true);
     });
   });
@@ -100,9 +87,7 @@ describe('Environment Variable Validation', () => {
 
       const result = validateEnv();
       expect(
-        result.errors.some(
-          (e) => e.variable === 'GOOGLE_CLIENT_SECRET' && e.category === 'OAuth'
-        )
+        result.errors.some((e) => e.variable === 'GOOGLE_CLIENT_SECRET' && e.category === 'OAuth')
       ).toBe(true);
     });
 
@@ -121,9 +106,7 @@ describe('Environment Variable Validation', () => {
       process.env.GOOGLE_CLIENT_SECRET = 'test-secret';
 
       const result = validateEnv();
-      expect(result.errors.filter((e) => e.category === 'OAuth')).toHaveLength(
-        0
-      );
+      expect(result.errors.filter((e) => e.category === 'OAuth')).toHaveLength(0);
     });
 
     it('should fail when Pusher vars are incomplete', () => {
@@ -142,9 +125,7 @@ describe('Environment Variable Validation', () => {
       process.env.OPENAI_API_KEY = 'wrong_prefix';
       const result = validateEnv();
       expect(
-        result.errors.some(
-          (e) => e.variable === 'OPENAI_API_KEY' && e.message.includes('sk-')
-        )
+        result.errors.some((e) => e.variable === 'OPENAI_API_KEY' && e.message.includes('sk-'))
       ).toBe(true);
     });
 
@@ -153,8 +134,7 @@ describe('Environment Variable Validation', () => {
       const result = validateEnv();
       expect(
         result.errors.some(
-          (e) =>
-            e.variable === 'ANTHROPIC_API_KEY' && e.message.includes('sk-ant-')
+          (e) => e.variable === 'ANTHROPIC_API_KEY' && e.message.includes('sk-ant-')
         )
       ).toBe(true);
     });
@@ -165,8 +145,7 @@ describe('Environment Variable Validation', () => {
       expect(
         result.errors.some(
           (e) =>
-            e.variable === 'NEXT_PUBLIC_STRIPE_PRICE_STARTER' &&
-            e.message.includes('default value')
+            e.variable === 'NEXT_PUBLIC_STRIPE_PRICE_STARTER' && e.message.includes('default value')
         )
       ).toBe(true);
     });
@@ -177,10 +156,7 @@ describe('Environment Variable Validation', () => {
       process.env.NEXTAUTH_URL = 'not-a-url';
       const result = validateEnv();
       expect(
-        result.errors.some(
-          (e) =>
-            e.variable === 'NEXTAUTH_URL' && e.message.includes('valid URL')
-        )
+        result.errors.some((e) => e.variable === 'NEXTAUTH_URL' && e.message.includes('valid URL'))
       ).toBe(true);
     });
 
@@ -189,9 +165,7 @@ describe('Environment Variable Validation', () => {
       const result = validateEnv();
       expect(
         result.errors.some(
-          (e) =>
-            e.variable === 'NEXT_PUBLIC_POSTHOG_HOST' &&
-            e.message.includes('valid URL')
+          (e) => e.variable === 'NEXT_PUBLIC_POSTHOG_HOST' && e.message.includes('valid URL')
         )
       ).toBe(true);
     });
@@ -200,9 +174,7 @@ describe('Environment Variable Validation', () => {
       process.env.UPSTASH_REDIS_REST_URL = 'not-a-url';
       process.env.UPSTASH_REDIS_REST_TOKEN = 'token';
       const result = validateEnv();
-      expect(
-        result.errors.some((e) => e.variable === 'UPSTASH_REDIS_REST_URL')
-      ).toBe(true);
+      expect(result.errors.some((e) => e.variable === 'UPSTASH_REDIS_REST_URL')).toBe(true);
     });
   });
 
@@ -211,10 +183,7 @@ describe('Environment Variable Validation', () => {
       process.env.EMAIL_FROM = 'not-an-email';
       const result = validateEnv();
       expect(
-        result.errors.some(
-          (e) =>
-            e.variable === 'EMAIL_FROM' && e.message.includes('valid email')
-        )
+        result.errors.some((e) => e.variable === 'EMAIL_FROM' && e.message.includes('valid email'))
       ).toBe(true);
     });
 
@@ -229,9 +198,7 @@ describe('Environment Variable Validation', () => {
       process.env.RESEND_API_KEY = 're_123';
 
       const result = validateEnv();
-      expect(
-        result.errors.filter((e) => e.variable === 'EMAIL_FROM')
-      ).toHaveLength(0);
+      expect(result.errors.filter((e) => e.variable === 'EMAIL_FROM')).toHaveLength(0);
     });
   });
 

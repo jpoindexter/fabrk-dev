@@ -74,33 +74,24 @@ const users: User[] = [
 const columns: ColumnDef<User>[] = [
   {
     accessorKey: 'name',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Name" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Name" />,
     cell: ({ row }) => {
       if (!row) return null;
       return (
         <div className="flex items-center gap-2">
           <div
-            className={cn(
-              'bg-primary/10 flex h-8 w-8 items-center justify-center',
-              mode.radius
-            )}
+            className={cn('bg-primary/10 flex h-8 w-8 items-center justify-center', mode.radius)}
           >
             <User className="text-primary h-4 w-4" />
           </div>
-          <span className="text-foreground font-medium">
-            {row.getValue('name')}
-          </span>
+          <span className="text-foreground font-medium">{row.getValue('name')}</span>
         </div>
       );
     },
   },
   {
     accessorKey: 'email',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Email" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Email" />,
     cell: ({ row }) => {
       if (!row) return null;
       return (
@@ -113,9 +104,7 @@ const columns: ColumnDef<User>[] = [
   },
   {
     accessorKey: 'role',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Role" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Role" />,
     cell: ({ row }) => {
       if (!row) return null;
       const role = row.getValue('role') as string;
@@ -127,9 +116,7 @@ const columns: ColumnDef<User>[] = [
               ``,
               mode.radius,
               `px-2 py-1 text-xs font-semibold ${
-                role === 'ADMIN'
-                  ? 'bg-primary/20 text-primary'
-                  : 'bg-muted text-muted-foreground'
+                role === 'ADMIN' ? 'bg-primary/20 text-primary' : 'bg-muted text-muted-foreground'
               }`
             )}
           >
@@ -141,9 +128,7 @@ const columns: ColumnDef<User>[] = [
   },
   {
     accessorKey: 'status',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Status" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Status" />,
     cell: ({ row }) => {
       if (!row) return null;
       const status = row.getValue('status') as string;
@@ -168,16 +153,10 @@ const columns: ColumnDef<User>[] = [
   },
   {
     accessorKey: 'createdAt',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Joined" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Joined" />,
     cell: ({ row }) => {
       if (!row) return null;
-      return (
-        <span className="text-muted-foreground">
-          {row.getValue('createdAt')}
-        </span>
-      );
+      return <span className="text-muted-foreground">{row.getValue('createdAt')}</span>;
     },
   },
   {
@@ -197,17 +176,13 @@ const columns: ColumnDef<User>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="border-border border">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(user.id)}
-            >
+            <DropdownMenuItem onClick={() => navigator.clipboard.writeText(user.id)}>
               Copy user ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>View details</DropdownMenuItem>
             <DropdownMenuItem>Edit user</DropdownMenuItem>
-            <DropdownMenuItem className="text-destructive">
-              Delete user
-            </DropdownMenuItem>
+            <DropdownMenuItem className="text-destructive">Delete user</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
@@ -221,12 +196,8 @@ export default function AdminPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-foreground text-4xl font-semibold">
-            User Management
-          </h1>
-          <p className="text-muted-foreground">
-            Manage users, roles, and permissions
-          </p>
+          <h1 className="text-foreground text-4xl font-semibold">User Management</h1>
+          <p className="text-muted-foreground">Manage users, roles, and permissions</p>
         </div>
         <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
           &gt; ADD_USER
@@ -236,17 +207,11 @@ export default function AdminPage() {
       {/* Stats Cards */}
       <div className="grid gap-4 md:grid-cols-3">
         <div className={cn('border-border bg-card border p-6', mode.radius)}>
-          <p className="text-muted-foreground text-sm font-medium">
-            Total Users
-          </p>
-          <p className="text-foreground text-4xl font-semibold">
-            {users.length}
-          </p>
+          <p className="text-muted-foreground text-sm font-medium">Total Users</p>
+          <p className="text-foreground text-4xl font-semibold">{users.length}</p>
         </div>
         <div className={cn('border-border bg-card border p-6', mode.radius)}>
-          <p className="text-muted-foreground text-sm font-medium">
-            Active Users
-          </p>
+          <p className="text-muted-foreground text-sm font-medium">Active Users</p>
           <p className="text-success text-4xl font-semibold">
             {users.filter((u) => u.status === 'active').length}
           </p>

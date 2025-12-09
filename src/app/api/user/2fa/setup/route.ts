@@ -17,11 +17,7 @@ import {
 import { prisma } from '@/lib/prisma';
 import { AuditLog } from '@/lib/security/audit-log';
 import { withCsrfProtection } from '@/lib/security/csrf';
-import {
-  checkRateLimitAuto,
-  getClientIdentifier,
-  RateLimiters,
-} from '@/lib/security/rate-limit';
+import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from '@/lib/security/rate-limit';
 import { logger } from '@/lib/logger';
 
 export const POST = withCsrfProtection(async (req: NextRequest) => {
@@ -38,9 +34,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
           headers: {
             'X-RateLimit-Limit': rateLimit.limit.toString(),
             'X-RateLimit-Remaining': rateLimit.remaining.toString(),
-            'Retry-After': Math.ceil(
-              (rateLimit.reset - Date.now()) / 1000
-            ).toString(),
+            'Retry-After': Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
           },
         }
       );
@@ -110,8 +104,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
       secret,
       qrCodeUri,
       backupCodes,
-      message:
-        '2FA setup initiated. Please verify with your authenticator app.',
+      message: '2FA setup initiated. Please verify with your authenticator app.',
     });
   } catch (error: unknown) {
     logger.error('[2FA Setup] Error:', error);

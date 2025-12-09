@@ -28,14 +28,12 @@ export default function BackgroundJobsPage() {
         {
           icon: Database,
           title: 'Job Queues',
-          description:
-            'Persistent queue with priority support for organizing tasks.',
+          description: 'Persistent queue with priority support for organizing tasks.',
         },
         {
           icon: RefreshCw,
           title: 'Workers',
-          description:
-            'Process jobs asynchronously with dedicated worker processes.',
+          description: 'Process jobs asynchronously with dedicated worker processes.',
         },
         {
           icon: Mail,

@@ -142,18 +142,14 @@ export async function GET(_req: NextRequest) {
     const currentMonthSignups = recentSignups;
     const userGrowth =
       previousMonthSignups > 0
-        ? ((currentMonthSignups - previousMonthSignups) /
-            previousMonthSignups) *
-          100
+        ? ((currentMonthSignups - previousMonthSignups) / previousMonthSignups) * 100
         : 100;
 
     const currentMonthRevenueValue = monthlyRevenue._sum.amount || 0;
     const previousMonthRevenueValue = previousMonthRevenue._sum.amount || 0;
     const revenueGrowth =
       previousMonthRevenueValue > 0
-        ? ((currentMonthRevenueValue - previousMonthRevenueValue) /
-            previousMonthRevenueValue) *
-          100
+        ? ((currentMonthRevenueValue - previousMonthRevenueValue) / previousMonthRevenueValue) * 100
         : 100;
 
     return NextResponse.json({
@@ -180,9 +176,6 @@ export async function GET(_req: NextRequest) {
     });
   } catch (error: unknown) {
     logger.error('Failed to fetch admin stats:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch stats' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to fetch stats' }, { status: 500 });
   }
 }

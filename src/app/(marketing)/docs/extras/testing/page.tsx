@@ -250,27 +250,22 @@ jobs:
         <DocsCard title="BEST_PRACTICES">
           <div className="space-y-1">
             <div>
-              ├─ <strong>Test behavior, not implementation</strong> - Focus on
-              user experience
+              ├─ <strong>Test behavior, not implementation</strong> - Focus on user experience
             </div>
             <div>
-              ├─ <strong>Use data-testid sparingly</strong> - Prefer semantic
-              queries
+              ├─ <strong>Use data-testid sparingly</strong> - Prefer semantic queries
             </div>
             <div>
-              ├─ <strong>Mock external services</strong> - Don't hit real APIs
-              in unit tests
+              ├─ <strong>Mock external services</strong> - Don't hit real APIs in unit tests
             </div>
             <div>
-              ├─ <strong>Keep tests isolated</strong> - Each test should be
-              independent
+              ├─ <strong>Keep tests isolated</strong> - Each test should be independent
             </div>
             <div>
               ├─ <strong>Use meaningful assertions</strong> - Test what matters
             </div>
             <div>
-              └─ <strong>Write tests that fail first</strong> - TDD when
-              appropriate
+              └─ <strong>Write tests that fail first</strong> - TDD when appropriate
             </div>
           </div>
         </DocsCard>

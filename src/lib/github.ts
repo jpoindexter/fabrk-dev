@@ -98,8 +98,7 @@ export async function grantRepositoryAccess(
       repoUrl,
     };
   } catch (error: unknown) {
-    const errorMessage =
-      error instanceof Error ? error.message : 'Unknown error';
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
 
     logger.error('Error granting repository access', {
       githubUsername,
@@ -116,10 +115,7 @@ export async function grantRepositoryAccess(
     }
 
     // Check if user already has access
-    if (
-      errorMessage.includes('Validation Failed') ||
-      errorMessage.includes('already has access')
-    ) {
+    if (errorMessage.includes('Validation Failed') || errorMessage.includes('already has access')) {
       const repoUrl = `https://github.com/${env.server.GITHUB_REPO_OWNER}/${env.server.GITHUB_REPO_NAME}`;
       return {
         success: true,
@@ -169,8 +165,7 @@ export async function revokeRepositoryAccess(githubUsername: string): Promise<{
       message: `Access revoked for ${githubUsername}`,
     };
   } catch (error: unknown) {
-    const errorMessage =
-      error instanceof Error ? error.message : 'Unknown error';
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
 
     logger.error('Error revoking repository access', {
       githubUsername,
@@ -188,9 +183,7 @@ export async function revokeRepositoryAccess(githubUsername: string): Promise<{
 /**
  * Check if a user has access to the repository
  */
-export async function checkRepositoryAccess(
-  githubUsername: string
-): Promise<boolean> {
+export async function checkRepositoryAccess(githubUsername: string): Promise<boolean> {
   try {
     const octokit = getOctokit();
 
@@ -227,8 +220,7 @@ export async function listRepositoryCollaborators(): Promise<
 
     return collaborators.data.map((collab) => ({
       username: collab.login,
-      permission:
-        collab.role_name || collab.permissions?.pull ? 'pull' : 'push',
+      permission: collab.role_name || collab.permissions?.pull ? 'pull' : 'push',
       type: collab.type,
     }));
   } catch (error: unknown) {

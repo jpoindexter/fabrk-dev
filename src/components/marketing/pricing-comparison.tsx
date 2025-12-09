@@ -14,12 +14,7 @@ import * as React from 'react';
 import { Check, X, Crown, Zap } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardFooter,
-} from '@/components/ui/card';
+import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 
 import { mode } from '@/design-system';
@@ -103,25 +98,17 @@ export function PricingComparison({
             />
 
             <CardContent padding="md" className="space-y-4">
-              <p className="text-muted-foreground text-sm">
-                {plan.description}
-              </p>
+              <p className="text-muted-foreground text-sm">{plan.description}</p>
 
               <div className="space-y-1">
                 {plan.price === 'Custom' ? (
-                  <div className="text-foreground text-3xl font-bold">
-                    Custom
-                  </div>
+                  <div className="text-foreground text-3xl font-bold">Custom</div>
                 ) : (
                   <>
                     <div className="flex items-baseline gap-1">
-                      <span className="text-foreground text-3xl font-bold">
-                        ${plan.price}
-                      </span>
+                      <span className="text-foreground text-3xl font-bold">${plan.price}</span>
                       {plan.interval && (
-                        <span className="text-muted-foreground text-sm">
-                          /{plan.interval}
-                        </span>
+                        <span className="text-muted-foreground text-sm">/{plan.interval}</span>
                       )}
                     </div>
                   </>
@@ -149,18 +136,11 @@ export function PricingComparison({
             <thead>
               <tr className="border-border bg-muted rounded-none border-b">
                 <th className="rounded-none p-4 text-left">
-                  <span className="text-foreground text-sm font-semibold">
-                    Features
-                  </span>
+                  <span className="text-foreground text-sm font-semibold">Features</span>
                 </th>
                 {plans.map((plan) => (
-                  <th
-                    key={plan.id}
-                    className="min-w-[120px] rounded-none p-4 text-center"
-                  >
-                    <span className="text-foreground text-sm font-semibold">
-                      {plan.name}
-                    </span>
+                  <th key={plan.id} className="min-w-[120px] rounded-none p-4 text-center">
+                    <span className="text-foreground text-sm font-semibold">{plan.name}</span>
                   </th>
                 ))}
               </tr>
@@ -179,25 +159,21 @@ export function PricingComparison({
                         </td>
                       </tr>
                       {/* Category Features */}
-                      {getFeaturesByCategory(category).map(
-                        (feature, featureIndex) => (
-                          <tr
-                            key={`${category}-${featureIndex}`}
-                            className="border-border hover:bg-muted/50 border-t transition-colors"
-                          >
-                            <td className="p-4">
-                              <span className="text-foreground text-sm">
-                                {feature.name}
-                              </span>
+                      {getFeaturesByCategory(category).map((feature, featureIndex) => (
+                        <tr
+                          key={`${category}-${featureIndex}`}
+                          className="border-border hover:bg-muted/50 border-t transition-colors"
+                        >
+                          <td className="p-4">
+                            <span className="text-foreground text-sm">{feature.name}</span>
+                          </td>
+                          {plans.map((plan) => (
+                            <td key={plan.id} className="p-4 text-center">
+                              {renderFeatureValue(feature.plans[plan.id])}
                             </td>
-                            {plans.map((plan) => (
-                              <td key={plan.id} className="p-4 text-center">
-                                {renderFeatureValue(feature.plans[plan.id])}
-                              </td>
-                            ))}
-                          </tr>
-                        )
-                      )}
+                          ))}
+                        </tr>
+                      ))}
                     </React.Fragment>
                   ))}
                 </>
@@ -209,9 +185,7 @@ export function PricingComparison({
                       className="border-border hover:bg-primary/5 border-t transition-colors"
                     >
                       <td className="p-4">
-                        <span className="text-foreground text-sm">
-                          {feature.name}
-                        </span>
+                        <span className="text-foreground text-sm">{feature.name}</span>
                       </td>
                       {plans.map((plan) => (
                         <td key={plan.id} className="p-4 text-center">
@@ -228,15 +202,8 @@ export function PricingComparison({
       </div>
 
       {/* Bottom CTA */}
-      <div
-        className={cn(
-          'border-border bg-card border p-6 text-center',
-          mode.radius
-        )}
-      >
-        <h3 className="text-foreground mb-2 text-xl font-bold">
-          Need help choosing?
-        </h3>
+      <div className={cn('border-border bg-card border p-6 text-center', mode.radius)}>
+        <h3 className="text-foreground mb-2 text-xl font-bold">Need help choosing?</h3>
         <p className="text-muted-foreground mb-4 text-sm">
           Contact our team for personalized recommendations
         </p>

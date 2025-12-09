@@ -485,9 +485,7 @@
       "modeRadius": "Both Skeleton implementations",
       "violations": 0,
       "exceptions": 1,
-      "acceptedExceptions": [
-        "V002 - Separator (1px line, radius not applicable)"
-      ],
+      "acceptedExceptions": ["V002 - Separator (1px line, radius not applicable)"],
       "notes": "All 6 components DS-compliant. Skeleton uses mode.radius. LoadingContainer uses mode.font. Separator is accepted-exception - 1px line, uses bg-border correctly."
     }
   ],

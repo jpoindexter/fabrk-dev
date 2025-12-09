@@ -30,18 +30,11 @@ interface StepProfileProps {
   onRoleChange: (value: string) => void;
 }
 
-export function StepProfile({
-  fullName,
-  role,
-  onFullNameChange,
-  onRoleChange,
-}: StepProfileProps) {
+export function StepProfile({ fullName, role, onFullNameChange, onRoleChange }: StepProfileProps) {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className={cn(mode.font, 'mb-1 text-xl font-semibold')}>
-          Your Profile
-        </h2>
+        <h2 className={cn(mode.font, 'mb-1 text-xl font-semibold')}>Your Profile</h2>
         <p className={cn(mode.font, 'text-muted-foreground text-xs')}>
           Tell us a bit about yourself
         </p>

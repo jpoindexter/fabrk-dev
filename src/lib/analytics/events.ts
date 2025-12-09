@@ -205,10 +205,7 @@ export async function trackAdminImpersonation(
   targetUserId: string,
   action: 'started' | 'ended'
 ): Promise<void> {
-  const event =
-    action === 'started'
-      ? 'admin_impersonation_started'
-      : 'admin_impersonation_ended';
+  const event = action === 'started' ? 'admin_impersonation_started' : 'admin_impersonation_ended';
 
   await trackEvent(event, {
     userId: adminUserId,

@@ -23,12 +23,8 @@ export function StepPreferences({
   return (
     <div className="space-y-6">
       <div>
-        <h2 className={cn(mode.font, 'mb-1 text-xl font-semibold')}>
-          Preferences
-        </h2>
-        <p className={cn(mode.font, 'text-muted-foreground text-xs')}>
-          Customize your experience
-        </p>
+        <h2 className={cn(mode.font, 'mb-1 text-xl font-semibold')}>Preferences</h2>
+        <p className={cn(mode.font, 'text-muted-foreground text-xs')}>Customize your experience</p>
       </div>
 
       <div className="space-y-4">
@@ -46,9 +42,7 @@ export function StepPreferences({
             </div>
             <Checkbox
               checked={emailUpdates}
-              onCheckedChange={(checked) =>
-                onEmailUpdatesChange(checked as boolean)
-              }
+              onCheckedChange={(checked) => onEmailUpdatesChange(checked as boolean)}
             />
           </div>
 
@@ -61,9 +55,7 @@ export function StepPreferences({
             </div>
             <Checkbox
               checked={productTips}
-              onCheckedChange={(checked) =>
-                onProductTipsChange(checked as boolean)
-              }
+              onCheckedChange={(checked) => onProductTipsChange(checked as boolean)}
             />
           </div>
         </div>

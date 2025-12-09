@@ -15,11 +15,7 @@ import { resend, FROM_EMAIL, APP_NAME, APP_URL } from './email-core';
  * @example
  * await sendWelcomeEmail("user@example.com", "John Doe", "abc123")
  */
-export async function sendWelcomeEmail(
-  to: string,
-  name: string,
-  licenseKey?: string
-) {
+export async function sendWelcomeEmail(to: string, name: string, licenseKey?: string) {
   if (!resend) {
     logger.debug('📧 [DEV] Welcome email to:', to);
     return { success: true };

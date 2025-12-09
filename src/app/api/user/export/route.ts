@@ -7,11 +7,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
-import {
-  checkRateLimitAuto,
-  getClientIdentifier,
-  RateLimiters,
-} from '@/lib/security/rate-limit';
+import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from '@/lib/security/rate-limit';
 import { logger } from '@/lib/logger';
 
 export async function GET(req: NextRequest) {
@@ -28,9 +24,7 @@ export async function GET(req: NextRequest) {
           headers: {
             'X-RateLimit-Limit': rateLimit.limit.toString(),
             'X-RateLimit-Remaining': rateLimit.remaining.toString(),
-            'Retry-After': Math.ceil(
-              (rateLimit.reset - Date.now()) / 1000
-            ).toString(),
+            'Retry-After': Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
           },
         }
       );
@@ -121,9 +115,6 @@ export async function GET(req: NextRequest) {
     });
   } catch (error: unknown) {
     logger.error('[Data Export] Error:', error);
-    return NextResponse.json(
-      { error: 'Failed to export data' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to export data' }, { status: 500 });
   }
 }

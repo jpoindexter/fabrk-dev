@@ -186,8 +186,7 @@ export async function POST(req: Request) {
         },
         {
           title: 'Retry Logic',
-          description:
-            'Failed webhooks are automatically retried with exponential backoff',
+          description: 'Failed webhooks are automatically retried with exponential backoff',
           code: `// Retry configuration
 const RETRY_CONFIG = {
   maxRetries: 5,
@@ -238,9 +237,7 @@ async function queueWebhookRetry(
       {/* Event Types Section */}
       <DocsSection title="Event Types">
         <DocsCard title="EVENT_TYPES">
-          <p className="mb-4">
-            Available webhook event types organized by category:
-          </p>
+          <p className="mb-4">Available webhook event types organized by category:</p>
           <div className="grid gap-6 md:grid-cols-2">
             <div>
               User Events
@@ -287,28 +284,23 @@ async function queueWebhookRetry(
         <DocsCard title="SECURITY_BEST_PRACTICES">
           <ul className="space-y-1">
             <li>
-              ├─ <strong>Always verify signatures:</strong> Use HMAC-SHA256 with
-              timing-safe comparison
+              ├─ <strong>Always verify signatures:</strong> Use HMAC-SHA256 with timing-safe
+              comparison
             </li>
             <li>
-              ├─ <strong>Use HTTPS only:</strong> Never send webhooks to HTTP
-              endpoints
+              ├─ <strong>Use HTTPS only:</strong> Never send webhooks to HTTP endpoints
             </li>
             <li>
-              ├─ <strong>Rotate secrets:</strong> Allow users to regenerate
-              webhook secrets
+              ├─ <strong>Rotate secrets:</strong> Allow users to regenerate webhook secrets
             </li>
             <li>
-              ├─ <strong>Validate payloads:</strong> Sanitize and validate all
-              webhook payloads
+              ├─ <strong>Validate payloads:</strong> Sanitize and validate all webhook payloads
             </li>
             <li>
-              ├─ <strong>Set timeouts:</strong> Use short timeouts (5-10s) for
-              webhook deliveries
+              ├─ <strong>Set timeouts:</strong> Use short timeouts (5-10s) for webhook deliveries
             </li>
             <li>
-              └─ <strong>Log everything:</strong> Track all deliveries for
-              debugging and audit
+              └─ <strong>Log everything:</strong> Track all deliveries for debugging and audit
             </li>
           </ul>
         </DocsCard>

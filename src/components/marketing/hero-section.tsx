@@ -22,14 +22,7 @@ import {
 } from 'simple-icons';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  Stat,
-  StatGroup,
-  Badge,
-} from '@/components/ui/card';
+import { Card, CardHeader, CardContent, Stat, StatGroup, Badge } from '@/components/ui/card';
 
 // Typewriter effect component
 function TypeWriter({
@@ -138,8 +131,7 @@ function HeroCodeDemo() {
         animate={{ opacity: step >= 1 ? 1 : 0 }}
         className="text-muted-foreground mt-1"
       >
-        Cloning into &apos;my-saas&apos;...{' '}
-        <span className="text-success">done</span>
+        Cloning into &apos;my-saas&apos;... <span className="text-success">done</span>
       </motion.div>
 
       {/* cd && npm install */}
@@ -229,11 +221,7 @@ export function HeroSection() {
               transition={{ duration: 0.6 }}
               className="mb-6"
             >
-              <Badge
-                code="0x00"
-                label="SYSTEM INIT"
-                meta="SAAS_BOILERPLATE_v2.0"
-              />
+              <Badge code="0x00" label="SYSTEM INIT" meta="SAAS_BOILERPLATE_v2.0" />
             </motion.div>
 
             {/* Headline */}
@@ -242,17 +230,8 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h1
-                className={cn('text-muted-foreground mb-2 text-sm', mode.font)}
-              >
-                [FABRK INIT]
-              </h1>
-              <h2
-                className={cn(
-                  'mb-6 text-4xl font-semibold tracking-tight',
-                  mode.font
-                )}
-              >
+              <h1 className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>[FABRK INIT]</h1>
+              <h2 className={cn('mb-6 text-4xl font-semibold tracking-tight', mode.font)}>
                 BUILDING YOUR SAAS
                 <br />
                 <span className="text-primary">JUST GOT UNFAIRLY EASY.</span>
@@ -269,15 +248,9 @@ export function HeroSection() {
               <Card size="auto">
                 <CardHeader code="0x01" title="STATUS" />
                 <CardContent>
-                  <p
-                    className={cn(
-                      'text-muted-foreground mb-4 text-sm',
-                      mode.font
-                    )}
-                  >
-                    Why spend valuable time tackling auth, billing, emails,
-                    organizations, invites and onboarding? Focus on your
-                    business and skip the noise.
+                  <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
+                    Why spend valuable time tackling auth, billing, emails, organizations, invites
+                    and onboarding? Focus on your business and skip the noise.
                   </p>
                   <StatGroup>
                     <Stat label="Speed" value="OPTIMIZED" />
@@ -294,16 +267,10 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mb-8 flex flex-col gap-4 sm:flex-row"
             >
-              <PolarCheckoutButton
-                className={cn('text-xs', mode.radius, mode.font)}
-              >
+              <PolarCheckoutButton className={cn('text-xs', mode.radius, mode.font)}>
                 &gt; GET FABRK
               </PolarCheckoutButton>
-              <Button
-                variant="outline"
-                asChild
-                className={cn('text-xs', mode.radius, mode.font)}
-              >
+              <Button variant="outline" asChild className={cn('text-xs', mode.radius, mode.font)}>
                 <Link href="/docs/components/overview">&gt; VIEW LIBRARY</Link>
               </Button>
             </motion.div>
@@ -314,12 +281,7 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <Badge
-                code="0x02"
-                label="POWERED BY"
-                meta="FIB[1,1,2,3,5,8,13]"
-                className="mb-4"
-              />
+              <Badge code="0x02" label="POWERED BY" meta="FIB[1,1,2,3,5,8,13]" className="mb-4" />
               <div className="flex flex-wrap gap-4">
                 {techStack.map((tech) => (
                   <div
@@ -330,12 +292,8 @@ export function HeroSection() {
                     )}
                   >
                     <SimpleIcon path={tech.path} className="size-3.5" />
-                    <span className={cn('text-xs', mode.font)}>
-                      {tech.name}
-                    </span>
-                    <span className={cn('text-success text-xs', mode.font)}>
-                      [OK]
-                    </span>
+                    <span className={cn('text-xs', mode.font)}>{tech.name}</span>
+                    <span className={cn('text-success text-xs', mode.font)}>[OK]</span>
                   </div>
                 ))}
               </div>

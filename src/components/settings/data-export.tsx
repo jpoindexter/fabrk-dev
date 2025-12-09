@@ -75,33 +75,20 @@ export function DataExport() {
           <Label htmlFor="format-select" className={cn(mode.font, 'text-xs')}>
             [FORMAT]:
           </Label>
-          <Select
-            value={format}
-            onValueChange={(value) => setFormat(value as ExportFormat)}
-          >
-            <SelectTrigger
-              id="format-select"
-              disabled={isLoading}
-              className={mode.radius}
-            >
+          <Select value={format} onValueChange={(value) => setFormat(value as ExportFormat)}>
+            <SelectTrigger id="format-select" disabled={isLoading} className={mode.radius}>
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
               <SelectItem
                 value="json"
-                className={cn(
-                  mode.radius,
-                  'focus:bg-primary focus:text-primary-foreground'
-                )}
+                className={cn(mode.radius, 'focus:bg-primary focus:text-primary-foreground')}
               >
                 JSON
               </SelectItem>
               <SelectItem
                 value="csv"
-                className={cn(
-                  mode.radius,
-                  'focus:bg-primary focus:text-primary-foreground'
-                )}
+                className={cn(mode.radius, 'focus:bg-primary focus:text-primary-foreground')}
               >
                 CSV
               </SelectItem>
@@ -122,10 +109,7 @@ export function DataExport() {
               />
               <Label
                 htmlFor="profile"
-                className={cn(
-                  mode.font,
-                  'flex-1 cursor-pointer text-xs font-normal'
-                )}
+                className={cn(mode.font, 'flex-1 cursor-pointer text-xs font-normal')}
               >
                 Profile Information
               </Label>
@@ -141,10 +125,7 @@ export function DataExport() {
               />
               <Label
                 htmlFor="settings"
-                className={cn(
-                  mode.font,
-                  'flex-1 cursor-pointer text-xs font-normal'
-                )}
+                className={cn(mode.font, 'flex-1 cursor-pointer text-xs font-normal')}
               >
                 Settings & Preferences
               </Label>
@@ -160,10 +141,7 @@ export function DataExport() {
               />
               <Label
                 htmlFor="activity"
-                className={cn(
-                  mode.font,
-                  'flex-1 cursor-pointer text-xs font-normal'
-                )}
+                className={cn(mode.font, 'flex-1 cursor-pointer text-xs font-normal')}
               >
                 Activity History
               </Label>
@@ -179,10 +157,7 @@ export function DataExport() {
               />
               <Label
                 htmlFor="preferences"
-                className={cn(
-                  mode.font,
-                  'flex-1 cursor-pointer text-xs font-normal'
-                )}
+                className={cn(mode.font, 'flex-1 cursor-pointer text-xs font-normal')}
               >
                 User Preferences
               </Label>
@@ -199,8 +174,7 @@ export function DataExport() {
         </Button>
 
         <p className={cn(mode.font, 'text-muted-foreground pt-2 text-xs')}>
-          Your data is encrypted and will be deleted from our servers after
-          download.
+          Your data is encrypted and will be deleted from our servers after download.
         </p>
       </CardContent>
     </Card>

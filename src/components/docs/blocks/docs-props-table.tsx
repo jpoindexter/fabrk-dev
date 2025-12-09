@@ -29,17 +29,10 @@ interface DocsPropsTableProps {
 
 export function DocsPropsTable({ props }: DocsPropsTableProps) {
   return (
-    <div
-      className={cn(
-        'border-border bg-card overflow-hidden border',
-        mode.radius
-      )}
-    >
+    <div className={cn('border-border bg-card overflow-hidden border', mode.radius)}>
       {/* Terminal Header */}
       <div className="border-border bg-card border-b px-4 py-2">
-        <span className="text-muted-foreground font-mono text-xs">
-          [ [0x00] API_REFERENCE ]
-        </span>
+        <span className="text-muted-foreground font-mono text-xs">[ [0x00] API_REFERENCE ]</span>
       </div>
       <Table>
         <TableHeader>
@@ -55,9 +48,7 @@ export function DocsPropsTable({ props }: DocsPropsTableProps) {
             <TableRow key={prop.name}>
               <TableCell className="font-mono text-xs">
                 {prop.name}
-                {prop.required && (
-                  <span className="text-destructive ml-1">*</span>
-                )}
+                {prop.required && <span className="text-destructive ml-1">*</span>}
               </TableCell>
               <TableCell>
                 <code className={docsTypography.code}>{prop.type}</code>
@@ -69,9 +60,7 @@ export function DocsPropsTable({ props }: DocsPropsTableProps) {
                   <span className="text-muted-foreground">-</span>
                 )}
               </TableCell>
-              <TableCell className={docsTypography.caption}>
-                {prop.description}
-              </TableCell>
+              <TableCell className={docsTypography.caption}>{prop.description}</TableCell>
             </TableRow>
           ))}
         </TableBody>

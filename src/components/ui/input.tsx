@@ -30,19 +30,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  (
-    {
-      className,
-      error,
-      success,
-      disabled,
-      loading,
-      loadingText,
-      type,
-      ...props
-    },
-    ref
-  ) => {
+  ({ className, error, success, disabled, loading, loadingText, type, ...props }, ref) => {
     // UX Heuristic #1: Visibility of System Status
     // UX Heuristic #4: Consistency & Standards
     return (
@@ -83,9 +71,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           )}
           aria-invalid={error ? 'true' : undefined}
           aria-busy={loading ? 'true' : undefined}
-          aria-describedby={
-            loading && loadingText ? 'input-loading' : undefined
-          }
+          aria-describedby={loading && loadingText ? 'input-loading' : undefined}
           {...props}
         />
         {loading && (

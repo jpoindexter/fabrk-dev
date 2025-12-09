@@ -1,14 +1,6 @@
 import { FeatureGuideTemplate } from '@/components/docs';
 import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
-import {
-  Rocket,
-  User,
-  CreditCard,
-  Mail,
-  Database,
-  Shield,
-  Coins,
-} from 'lucide-react';
+import { Rocket, User, CreditCard, Mail, Database, Shield, Coins } from 'lucide-react';
 
 export const metadata = {
   title: 'Getting Started - Fabrk Docs',
@@ -145,16 +137,14 @@ npm run db:push && npm run dev`,
       <DocsSection title="What Is Fabrk?">
         <DocsCard code="10" title="OVERVIEW">
           <p className="mb-4">
-            Fabrk is a ready-to-use foundation for building software businesses.
-            Think of it like buying a house that already has the plumbing,
-            electrical, and HVAC installed - you just need to decorate and move
-            in.
+            Fabrk is a ready-to-use foundation for building software businesses. Think of it like
+            buying a house that already has the plumbing, electrical, and HVAC installed - you just
+            need to decorate and move in.
           </p>
           <p>
-            Instead of spending months building user accounts, payment
-            processing, and email systems from scratch, Fabrk gives you all of
-            that working on day one. You can focus on what makes your product
-            unique.
+            Instead of spending months building user accounts, payment processing, and email systems
+            from scratch, Fabrk gives you all of that working on day one. You can focus on what
+            makes your product unique.
           </p>
         </DocsCard>
       </DocsSection>
@@ -186,30 +176,22 @@ npm run db:push && npm run dev`,
         <DocsCard code="30" title="COMMON_ERRORS">
           <div className="space-y-4">
             <div>
-              <p className="text-foreground mb-1 font-semibold">
-                [ERROR]: PORT_3000_IN_USE
-              </p>
+              <p className="text-foreground mb-1 font-semibold">[ERROR]: PORT_3000_IN_USE</p>
               <p>
-                Run on different port:{' '}
-                <code className="bg-muted px-1">npm run dev -- -p 3001</code>
+                Run on different port: <code className="bg-muted px-1">npm run dev -- -p 3001</code>
               </p>
             </div>
             <div>
-              <p className="text-foreground mb-1 font-semibold">
-                [ERROR]: CANNOT_CONNECT_DATABASE
-              </p>
+              <p className="text-foreground mb-1 font-semibold">[ERROR]: CANNOT_CONNECT_DATABASE</p>
               <p>
-                Check DATABASE_URL in .env.local, ensure no extra spaces,
-                database is running, IP allowed
+                Check DATABASE_URL in .env.local, ensure no extra spaces, database is running, IP
+                allowed
               </p>
             </div>
             <div>
-              <p className="text-foreground mb-1 font-semibold">
-                [ERROR]: NEXTAUTH_SECRET_MISSING
-              </p>
+              <p className="text-foreground mb-1 font-semibold">[ERROR]: NEXTAUTH_SECRET_MISSING</p>
               <p>
-                Generate with:{' '}
-                <code className="bg-muted px-1">openssl rand -base64 32</code>
+                Generate with: <code className="bg-muted px-1">openssl rand -base64 32</code>
               </p>
             </div>
           </div>

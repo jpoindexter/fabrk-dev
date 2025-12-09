@@ -107,11 +107,7 @@ These cards already follow the terminal card pattern and need no migration:
 
 ```tsx
 <TerminalCard>
-  <TerminalCardHeader
-    code="0x00"
-    title="TITLE"
-    icon={<Icon className="size-4" />}
-  />
+  <TerminalCardHeader code="0x00" title="TITLE" icon={<Icon className="size-4" />} />
   <TerminalCardContent>
     <div className="text-xs">
       <span className="text-muted-foreground">DESC: </span>
@@ -125,11 +121,7 @@ These cards already follow the terminal card pattern and need no migration:
 
 ```tsx
 <StyledCard>
-  <StyledCardHeader
-    code="0x00"
-    title="TITLE"
-    icon={<Icon className="size-4" />}
-  />
+  <StyledCardHeader code="0x00" title="TITLE" icon={<Icon className="size-4" />} />
   <div className="p-4">
     <div className="text-xs">
       <span className="text-muted-foreground">DESC: </span>

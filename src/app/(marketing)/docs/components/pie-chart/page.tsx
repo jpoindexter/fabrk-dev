@@ -55,9 +55,7 @@ export default function PieChartPage() {
         {
           title: 'With Labels on Segments',
           description: 'Display labels directly on pie segments',
-          preview: (
-            <PieChart data={revenueData} showLabels={true} showLegend={false} />
-          ),
+          preview: <PieChart data={revenueData} showLabels={true} showLegend={false} />,
           code: `<PieChart
   data={data}
   showLabels={true}
@@ -137,8 +135,7 @@ export default function PieChartPage() {
           name: 'data',
           type: 'PieChartDataItem[]',
           required: true,
-          description:
-            'Array of data items with label, value, and optional color',
+          description: 'Array of data items with label, value, and optional color',
         },
         {
           name: 'size',
@@ -150,8 +147,7 @@ export default function PieChartPage() {
           name: 'showLabels',
           type: 'boolean',
           default: 'false',
-          description:
-            'Display labels on pie segments (only if percentage > 5%)',
+          description: 'Display labels on pie segments (only if percentage > 5%)',
         },
         {
           name: 'showPercentages',

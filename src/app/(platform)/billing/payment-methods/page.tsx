@@ -21,14 +21,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
-import {
-  CreditCard,
-  Plus,
-  Trash2,
-  CheckCircle2,
-  ArrowLeft,
-  Shield,
-} from 'lucide-react';
+import { CreditCard, Plus, Trash2, CheckCircle2, ArrowLeft, Shield } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
@@ -73,10 +66,7 @@ export default function PaymentMethodsPage() {
       // Redirect to Stripe Checkout
       window.location.href = url;
     } catch (error: unknown) {
-      showError(
-        'Error',
-        error instanceof Error ? error.message : 'Failed to add payment method'
-      );
+      showError('Error', error instanceof Error ? error.message : 'Failed to add payment method');
     } finally {
       setIsLoading(false);
     }
@@ -103,9 +93,7 @@ export default function PaymentMethodsPage() {
     } catch (error: unknown) {
       showError(
         'Error',
-        error instanceof Error
-          ? error.message
-          : 'Failed to set default payment method'
+        error instanceof Error ? error.message : 'Failed to set default payment method'
       );
     }
   };
@@ -117,12 +105,9 @@ export default function PaymentMethodsPage() {
 
     try {
       // Detach payment method from customer
-      const response = await fetch(
-        `/api/stripe/payment-methods/${methodToDelete}`,
-        {
-          method: 'DELETE',
-        }
-      );
+      const response = await fetch(`/api/stripe/payment-methods/${methodToDelete}`, {
+        method: 'DELETE',
+      });
 
       if (!response.ok) {
         const data = await response.json();
@@ -136,9 +121,7 @@ export default function PaymentMethodsPage() {
     } catch (error: unknown) {
       showError(
         'Error',
-        error instanceof Error
-          ? error.message
-          : 'Failed to delete payment method'
+        error instanceof Error ? error.message : 'Failed to delete payment method'
       );
     } finally {
       setMethodToDelete(null);
@@ -162,9 +145,7 @@ export default function PaymentMethodsPage() {
         </Link>
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="mb-2 text-4xl font-semibold tracking-tight">
-              Payment Methods
-            </h1>
+            <h1 className="mb-2 text-4xl font-semibold tracking-tight">Payment Methods</h1>
             <p className="text-muted-foreground text-lg">
               Manage your payment methods and billing information
             </p>
@@ -180,8 +161,8 @@ export default function PaymentMethodsPage() {
       <Alert className="mb-6">
         <Shield className="h-4 w-4" />
         <AlertDescription>
-          All payment information is securely processed by Stripe. We never
-          store your complete card details.
+          All payment information is securely processed by Stripe. We never store your complete card
+          details.
         </AlertDescription>
       </Alert>
 
@@ -213,12 +194,7 @@ export default function PaymentMethodsPage() {
               <CardContent>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-6">
-                    <div
-                      className={cn(
-                        'bg-primary/10 border-border border p-4',
-                        mode.radius
-                      )}
-                    >
+                    <div className={cn('bg-primary/10 border-border border p-4', mode.radius)}>
                       {getCardIcon()}
                     </div>
                     <div>
@@ -268,15 +244,10 @@ export default function PaymentMethodsPage() {
       {/* Information Cards */}
       <div className="mt-8 grid gap-6 md:grid-cols-2">
         <Card>
-          <CardHeader
-            code="0xF0"
-            title="SECURE_PROCESSING"
-            icon={<Shield className="h-4 w-4" />}
-          />
+          <CardHeader code="0xF0" title="SECURE_PROCESSING" icon={<Shield className="h-4 w-4" />} />
           <CardContent className="text-muted-foreground text-sm">
-            All payments are processed securely through Stripe. Your payment
-            information is encrypted and we never have access to your full card
-            details.
+            All payments are processed securely through Stripe. Your payment information is
+            encrypted and we never have access to your full card details.
           </CardContent>
         </Card>
 
@@ -287,9 +258,8 @@ export default function PaymentMethodsPage() {
             icon={<CreditCard className="h-4 w-4" />}
           />
           <CardContent className="text-muted-foreground text-sm">
-            Your default payment method will be charged automatically for
-            subscriptions and recurring payments. You'll receive a receipt after
-            each transaction.
+            Your default payment method will be charged automatically for subscriptions and
+            recurring payments. You'll receive a receipt after each transaction.
           </CardContent>
         </Card>
       </div>
@@ -300,8 +270,8 @@ export default function PaymentMethodsPage() {
           <AlertDialogHeader>
             <AlertDialogTitle>Remove Payment Method?</AlertDialogTitle>
             <AlertDialogDescription>
-              This will permanently remove this payment method from your
-              account. You can add it again later if needed.
+              This will permanently remove this payment method from your account. You can add it
+              again later if needed.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

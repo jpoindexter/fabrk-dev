@@ -24,21 +24,12 @@ interface ActivityFeedProps {
 export function ActivityFeed({ activities }: ActivityFeedProps) {
   return (
     <Card size="auto">
-      <CardHeader
-        code="0x03"
-        title="ACTIVITY_LOG"
-        icon={<Clock className="h-4 w-4" />}
-      />
+      <CardHeader code="0x03" title="ACTIVITY_LOG" icon={<Clock className="h-4 w-4" />} />
       <CardContent>
-        <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-          [ACTIVITY_FEED]:
-        </div>
+        <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>[ACTIVITY_FEED]:</div>
         <div className="space-y-4">
           {activities.map((activity) => (
-            <div
-              key={activity.id}
-              className="border-primary flex gap-4 border-l-2 pl-4"
-            >
+            <div key={activity.id} className="border-primary flex gap-4 border-l-2 pl-4">
               <Clock className="text-muted-foreground mt-0.5 h-3 w-3 shrink-0" />
               <div className={cn(mode.font, 'text-xs')}>
                 <p>
@@ -51,9 +42,7 @@ export function ActivityFeed({ activities }: ActivityFeedProps) {
                   </span>{' '}
                   <span className="text-foreground">{activity.target}</span>
                 </p>
-                {activity.details && (
-                  <p className="text-muted-foreground">{activity.details}</p>
-                )}
+                {activity.details && <p className="text-muted-foreground">{activity.details}</p>}
                 <p className="text-muted-foreground">{activity.timestamp}</p>
               </div>
             </div>

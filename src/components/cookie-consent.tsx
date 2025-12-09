@@ -8,11 +8,7 @@
 
 import { Cookie, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import {
-  AboutTabContent,
-  ConsentTabContent,
-  DetailsTabContent,
-} from './cookie-consent-tabs';
+import { AboutTabContent, ConsentTabContent, DetailsTabContent } from './cookie-consent-tabs';
 import type { CookiePreferences } from './cookie-consent-types';
 import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
 
@@ -128,8 +124,7 @@ export function CookieConsent() {
     if (hasHydrated.current) return;
     hasHydrated.current = true;
 
-    const { preferences: savedPrefs, showButton: shouldShowButton } =
-      getInitialPreferences();
+    const { preferences: savedPrefs, showButton: shouldShowButton } = getInitialPreferences();
     // eslint-disable-next-line react-hooks/set-state-in-effect -- Required for hydration-safe localStorage sync; server renders default, client updates from storage
     setConsentState({ showButton: shouldShowButton, preferences: savedPrefs });
 
@@ -148,10 +143,7 @@ export function CookieConsent() {
 
     window.addEventListener('open-cookie-settings', handleOpenCookieSettings);
     return () => {
-      window.removeEventListener(
-        'open-cookie-settings',
-        handleOpenCookieSettings
-      );
+      window.removeEventListener('open-cookie-settings', handleOpenCookieSettings);
     };
   }, []);
 

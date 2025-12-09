@@ -79,16 +79,11 @@ export function BillingSection() {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className={cn('text-sm font-medium', mode.font)}>
-                {formatLabel('CURRENT_PLAN')}
-              </p>
-              <p className={cn('text-2xl font-semibold', mode.font)}>
-                {billingInfo.plan}
-              </p>
+              <p className={cn('text-sm font-medium', mode.font)}>{formatLabel('CURRENT_PLAN')}</p>
+              <p className={cn('text-2xl font-semibold', mode.font)}>{billingInfo.plan}</p>
             </div>
             <Badge variant={getStatusBadgeVariant(billingInfo.status)}>
-              {billingInfo.status.charAt(0).toUpperCase() +
-                billingInfo.status.slice(1)}
+              {billingInfo.status.charAt(0).toUpperCase() + billingInfo.status.slice(1)}
             </Badge>
           </div>
 
@@ -101,25 +96,19 @@ export function BillingSection() {
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-muted-foreground">Current period ends</span>
-              <span className="font-medium">
-                {billingInfo.currentPeriodEnd}
-              </span>
+              <span className="font-medium">{billingInfo.currentPeriodEnd}</span>
             </div>
           </div>
 
           <Separator />
 
           <div className="space-y-2">
-            <Button
-              onClick={handleManageBilling}
-              disabled={isLoading}
-              className="w-full"
-            >
+            <Button onClick={handleManageBilling} disabled={isLoading} className="w-full">
               {isLoading ? '> LOADING...' : '> MANAGE_BILLING'}
             </Button>
             <p className="text-muted-foreground text-center text-xs">
-              You'll be redirected to Stripe's secure portal to manage your
-              subscription, payment methods, and view invoices.
+              You'll be redirected to Stripe's secure portal to manage your subscription, payment
+              methods, and view invoices.
             </p>
           </div>
         </div>

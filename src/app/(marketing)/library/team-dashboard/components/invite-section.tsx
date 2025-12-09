@@ -48,9 +48,7 @@ export function InviteSection() {
             className={cn(mode.radius, mode.font, 'flex-1 text-xs')}
           />
           <Select value={inviteRole} onValueChange={setInviteRole}>
-            <SelectTrigger
-              className={cn(mode.radius, mode.font, 'w-32 text-xs')}
-            >
+            <SelectTrigger className={cn(mode.radius, mode.font, 'w-32 text-xs')}>
               <SelectValue />
             </SelectTrigger>
             <SelectContent className={cn(mode.radius)}>
@@ -86,10 +84,7 @@ export function InviteSection() {
               </SelectItem>
             </SelectContent>
           </Select>
-          <Button
-            onClick={handleInvite}
-            className={cn(mode.radius, mode.font, 'text-xs')}
-          >
+          <Button onClick={handleInvite} className={cn(mode.radius, mode.font, 'text-xs')}>
             <Send className="mr-2 h-4 w-4" />
             &gt; SEND_INVITE
           </Button>

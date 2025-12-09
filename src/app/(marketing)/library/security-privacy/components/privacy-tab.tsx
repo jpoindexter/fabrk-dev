@@ -27,11 +27,7 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
     <div className="space-y-6">
       {/* Profile Privacy */}
       <Card tone="neutral">
-        <CardHeader
-          code="0x02"
-          title="PROFILE_PRIVACY"
-          icon={<User className="h-4 w-4" />}
-        />
+        <CardHeader code="0x02" title="PROFILE_PRIVACY" icon={<User className="h-4 w-4" />} />
         <CardContent padding="md">
           <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
             [PROFILE_ACTIVITY]:
@@ -78,11 +74,7 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
 
       {/* Cookie Preferences */}
       <Card tone="neutral">
-        <CardHeader
-          code="0x03"
-          title="COOKIES"
-          icon={<Cookie className="h-4 w-4" />}
-        />
+        <CardHeader code="0x03" title="COOKIES" icon={<Cookie className="h-4 w-4" />} />
         <CardContent padding="md">
           <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
             [COOKIE_PREFERENCES]:

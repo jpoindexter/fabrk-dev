@@ -1,12 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import {
-  Spinner,
-  Skeleton,
-  LoadingContainer,
-  LoadingButton,
-} from '@/components/ui/loading';
+import { Spinner, Skeleton, LoadingContainer, LoadingButton } from '@/components/ui/loading';
 import { useState } from 'react';
 
 export default function LoadingPage() {
@@ -31,8 +26,7 @@ export default function LoadingPage() {
       variants={[
         {
           title: 'Spinner Sizes',
-          description:
-            'Spinner component in different sizes: small, medium, and large.',
+          description: 'Spinner component in different sizes: small, medium, and large.',
           preview: (
             <div className="flex items-center gap-4">
               <Spinner size="sm" />
@@ -94,8 +88,7 @@ export default function LoadingPage() {
         },
         {
           title: 'Loading Container',
-          description:
-            'Full-page loading state with spinner and optional message.',
+          description: 'Full-page loading state with spinner and optional message.',
           preview: <LoadingContainer>Loading your content...</LoadingContainer>,
           code: `<LoadingContainer>
   Loading your content...
@@ -105,11 +98,7 @@ export default function LoadingPage() {
           title: 'Loading Button',
           description: 'Button with integrated loading state.',
           preview: (
-            <LoadingButton
-              loading={loading}
-              onClick={handleClick}
-              loadingText="Saving..."
-            >
+            <LoadingButton loading={loading} onClick={handleClick} loadingText="Saving...">
               Save Changes
             </LoadingButton>
           ),
@@ -140,21 +129,18 @@ const handleClick = () => {
           name: 'variant',
           type: '"text" | "circular" | "rectangular"',
           default: '"text"',
-          description:
-            'The shape variant of the skeleton (Skeleton component only).',
+          description: 'The shape variant of the skeleton (Skeleton component only).',
         },
         {
           name: 'loading',
           type: 'boolean',
           default: 'false',
-          description:
-            'Whether the button is in loading state (LoadingButton only).',
+          description: 'Whether the button is in loading state (LoadingButton only).',
         },
         {
           name: 'loadingText',
           type: 'string',
-          description:
-            'Text to display when button is loading (LoadingButton only).',
+          description: 'Text to display when button is loading (LoadingButton only).',
         },
         {
           name: 'className',

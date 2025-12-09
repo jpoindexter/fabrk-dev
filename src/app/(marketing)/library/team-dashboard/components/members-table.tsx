@@ -24,15 +24,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import {
-  Users,
-  Crown,
-  Shield,
-  Eye,
-  MoreHorizontal,
-  Trash2,
-  type LucideIcon,
-} from 'lucide-react';
+import { Users, Crown, Shield, Eye, MoreHorizontal, Trash2, type LucideIcon } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -75,11 +67,7 @@ export function MembersTable({ members }: MembersTableProps) {
 
   return (
     <Card size="auto">
-      <CardHeader
-        code="0x05"
-        title="TEAM_MEMBERS"
-        icon={<Users className="h-4 w-4" />}
-      />
+      <CardHeader code="0x05" title="TEAM_MEMBERS" icon={<Users className="h-4 w-4" />} />
       <CardContent>
         <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
           [TEAM_MEMBERS]: COUNT={members.length}
@@ -88,17 +76,10 @@ export function MembersTable({ members }: MembersTableProps) {
           <table className="w-full">
             <thead>
               <tr
-                className={cn(
-                  mode.font,
-                  'border-border bg-muted/30 rounded-none border-b text-xs'
-                )}
+                className={cn(mode.font, 'border-border bg-muted/30 rounded-none border-b text-xs')}
               >
-                <th className="text-muted-foreground rounded-none px-4 py-2 text-left">
-                  [MEMBER]
-                </th>
-                <th className="text-muted-foreground rounded-none px-4 py-2 text-left">
-                  [ROLE]
-                </th>
+                <th className="text-muted-foreground rounded-none px-4 py-2 text-left">[MEMBER]</th>
+                <th className="text-muted-foreground rounded-none px-4 py-2 text-left">[ROLE]</th>
                 <th className="text-muted-foreground rounded-none px-4 py-2 text-left">
                   [LAST_ACTIVE]
                 </th>
@@ -126,15 +107,8 @@ export function MembersTable({ members }: MembersTableProps) {
                             .join('')}
                         </div>
                         <div>
-                          <p className={cn(mode.font, 'text-xs font-semibold')}>
-                            {member.name}
-                          </p>
-                          <p
-                            className={cn(
-                              mode.font,
-                              'text-muted-foreground text-xs'
-                            )}
-                          >
+                          <p className={cn(mode.font, 'text-xs font-semibold')}>{member.name}</p>
+                          <p className={cn(mode.font, 'text-muted-foreground text-xs')}>
                             {member.email}
                           </p>
                         </div>
@@ -151,12 +125,7 @@ export function MembersTable({ members }: MembersTableProps) {
                         {member.role.toUpperCase()}
                       </span>
                     </td>
-                    <td
-                      className={cn(
-                        mode.font,
-                        'text-muted-foreground px-4 py-4 text-xs'
-                      )}
-                    >
+                    <td className={cn(mode.font, 'text-muted-foreground px-4 py-4 text-xs')}>
                       {member.lastActive}
                     </td>
                     <td className="px-4 py-4">
@@ -172,34 +141,24 @@ export function MembersTable({ members }: MembersTableProps) {
                         </DropdownMenuTrigger>
                         <DropdownMenuContent
                           align="end"
-                          className={cn(
-                            mode.radius,
-                            mode.font,
-                            'border-border border text-xs'
-                          )}
+                          className={cn(mode.radius, mode.font, 'border-border border text-xs')}
                         >
                           <DropdownMenuLabel>[ACTIONS]:</DropdownMenuLabel>
                           <DropdownMenuSeparator />
                           {member.role !== 'owner' && (
                             <>
                               <DropdownMenuItem
-                                onClick={() =>
-                                  handleRoleChange(member.id, 'admin')
-                                }
+                                onClick={() => handleRoleChange(member.id, 'admin')}
                               >
                                 &gt; SET_ROLE: ADMIN
                               </DropdownMenuItem>
                               <DropdownMenuItem
-                                onClick={() =>
-                                  handleRoleChange(member.id, 'member')
-                                }
+                                onClick={() => handleRoleChange(member.id, 'member')}
                               >
                                 &gt; SET_ROLE: MEMBER
                               </DropdownMenuItem>
                               <DropdownMenuItem
-                                onClick={() =>
-                                  handleRoleChange(member.id, 'guest')
-                                }
+                                onClick={() => handleRoleChange(member.id, 'guest')}
                               >
                                 &gt; SET_ROLE: GUEST
                               </DropdownMenuItem>
@@ -225,16 +184,12 @@ export function MembersTable({ members }: MembersTableProps) {
                                   <AlertDialogTitle className={cn(mode.font)}>
                                     [CONFIRM_REMOVAL]
                                   </AlertDialogTitle>
-                                  <AlertDialogDescription
-                                    className={cn(mode.font, 'text-xs')}
-                                  >
-                                    WARNING: This action will remove the member
-                                    from the team. They will lose all access.
+                                  <AlertDialogDescription className={cn(mode.font, 'text-xs')}>
+                                    WARNING: This action will remove the member from the team. They
+                                    will lose all access.
                                   </AlertDialogDescription>
                                   <div className="flex justify-end gap-4">
-                                    <AlertDialogCancel
-                                      className={cn(mode.font, 'text-xs')}
-                                    >
+                                    <AlertDialogCancel className={cn(mode.font, 'text-xs')}>
                                       &gt; CANCEL
                                     </AlertDialogCancel>
                                     <AlertDialogAction
@@ -252,9 +207,7 @@ export function MembersTable({ members }: MembersTableProps) {
                             </>
                           )}
                           {member.role === 'owner' && (
-                            <DropdownMenuItem disabled>
-                              [LOCKED]: OWNER_ROLE
-                            </DropdownMenuItem>
+                            <DropdownMenuItem disabled>[LOCKED]: OWNER_ROLE</DropdownMenuItem>
                           )}
                         </DropdownMenuContent>
                       </DropdownMenu>

@@ -19,9 +19,7 @@ export function SecurityRecommendationsCard({
   twoFactorEnabled,
   connectedAccountsCount,
 }: SecurityRecommendationsCardProps) {
-  const warningCount = [!emailVerified, !twoFactorEnabled].filter(
-    Boolean
-  ).length;
+  const warningCount = [!emailVerified, !twoFactorEnabled].filter(Boolean).length;
 
   return (
     <Card tone={warningCount > 0 ? 'warning' : 'success'}>
@@ -40,17 +38,13 @@ export function SecurityRecommendationsCard({
           {!emailVerified && (
             <li className="flex items-start gap-2">
               <AlertTriangle className="text-warning mt-0.5 h-4 w-4 shrink-0" />
-              <span className="font-mono text-xs">
-                Verify your email address
-              </span>
+              <span className="font-mono text-xs">Verify your email address</span>
             </li>
           )}
           {!twoFactorEnabled && (
             <li className="flex items-start gap-2">
               <AlertTriangle className="text-warning mt-0.5 h-4 w-4 shrink-0" />
-              <span className="font-mono text-xs">
-                Enable two-factor authentication
-              </span>
+              <span className="font-mono text-xs">Enable two-factor authentication</span>
             </li>
           )}
           {connectedAccountsCount === 0 && (
@@ -63,15 +57,11 @@ export function SecurityRecommendationsCard({
           )}
           <li className="flex items-start gap-2">
             <CheckCircle2 className="text-success mt-0.5 h-4 w-4 shrink-0" />
-            <span className="font-mono text-xs">
-              Use a strong, unique password
-            </span>
+            <span className="font-mono text-xs">Use a strong, unique password</span>
           </li>
           <li className="flex items-start gap-2">
             <CheckCircle2 className="text-success mt-0.5 h-4 w-4 shrink-0" />
-            <span className="font-mono text-xs">
-              Review your active sessions regularly
-            </span>
+            <span className="font-mono text-xs">Review your active sessions regularly</span>
           </li>
         </ul>
       </CardContent>

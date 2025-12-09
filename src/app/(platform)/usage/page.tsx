@@ -32,8 +32,7 @@ async function getUsageData(userId: string) {
     });
 
     const tier = (user?.tier || 'free') as SubscriptionTier;
-    const allowance =
-      TIER_ALLOWANCES[tier] === Infinity ? 999999 : TIER_ALLOWANCES[tier];
+    const allowance = TIER_ALLOWANCES[tier] === Infinity ? 999999 : TIER_ALLOWANCES[tier];
 
     balance = await prisma.creditBalance.create({
       data: {
@@ -85,8 +84,7 @@ async function getUsageData(userId: string) {
 
   // Calculate days until refill (compute here to avoid impure Date.now() in render)
   const daysUntilRefill = Math.ceil(
-    (balance.lastRefill.getTime() + 30 * 24 * 60 * 60 * 1000 - Date.now()) /
-      (24 * 60 * 60 * 1000)
+    (balance.lastRefill.getTime() + 30 * 24 * 60 * 60 * 1000 - Date.now()) / (24 * 60 * 60 * 1000)
   );
 
   return {
@@ -126,11 +124,7 @@ async function UsageDashboard({ userId }: { userId: string }) {
       {/* Key Metrics */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card tone="primary">
-          <CardHeader
-            code="0x01"
-            title="CURRENT_BALANCE"
-            icon={<Coins className="h-4 w-4" />}
-          />
+          <CardHeader code="0x01" title="CURRENT_BALANCE" icon={<Coins className="h-4 w-4" />} />
           <CardContent>
             <div className="text-2xl font-semibold">{data.balance}</div>
             <p className="text-muted-foreground text-xs">
@@ -140,44 +134,26 @@ async function UsageDashboard({ userId }: { userId: string }) {
         </Card>
 
         <Card tone="neutral">
-          <CardHeader
-            code="0x02"
-            title="USAGE_30D"
-            icon={<TrendingDown className="h-4 w-4" />}
-          />
+          <CardHeader code="0x02" title="USAGE_30D" icon={<TrendingDown className="h-4 w-4" />} />
           <CardContent>
             <div className="text-2xl font-semibold">{data.totalUsage}</div>
-            <p className="text-muted-foreground text-xs">
-              credits used this month
-            </p>
+            <p className="text-muted-foreground text-xs">credits used this month</p>
           </CardContent>
         </Card>
 
         <Card tone="success">
-          <CardHeader
-            code="0x03"
-            title="TIER"
-            icon={<Activity className="h-4 w-4" />}
-          />
+          <CardHeader code="0x03" title="TIER" icon={<Activity className="h-4 w-4" />} />
           <CardContent>
             <div className="text-2xl font-semibold uppercase">{data.tier}</div>
-            <p className="text-muted-foreground text-xs">
-              {data.monthlyAllowance} credits/month
-            </p>
+            <p className="text-muted-foreground text-xs">{data.monthlyAllowance} credits/month</p>
           </CardContent>
         </Card>
 
         <Card tone="primary">
-          <CardHeader
-            code="0x04"
-            title="NEXT_REFILL"
-            icon={<Calendar className="h-4 w-4" />}
-          />
+          <CardHeader code="0x04" title="NEXT_REFILL" icon={<Calendar className="h-4 w-4" />} />
           <CardContent>
             <div className="text-2xl font-semibold">{data.daysUntilRefill}</div>
-            <p className="text-muted-foreground text-xs">
-              days until credit refresh
-            </p>
+            <p className="text-muted-foreground text-xs">days until credit refresh</p>
           </CardContent>
         </Card>
       </div>
@@ -198,11 +174,7 @@ async function UsageDashboard({ userId }: { userId: string }) {
                 className={cn(
                   'h-full transition-all',
                   mode.radius,
-                  percentage > 50
-                    ? 'bg-primary'
-                    : percentage > 20
-                      ? 'bg-warning'
-                      : 'bg-destructive'
+                  percentage > 50 ? 'bg-primary' : percentage > 20 ? 'bg-warning' : 'bg-destructive'
                 )}
                 style={{ width: `${Math.min(percentage, 100)}%` }}
               />
@@ -240,9 +212,7 @@ export default async function UsagePage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className={cn('text-4xl font-semibold tracking-tight', mode.font)}>
-          AI Credit Usage
-        </h1>
+        <h1 className={cn('text-4xl font-semibold tracking-tight', mode.font)}>AI Credit Usage</h1>
         <p className={cn('text-muted-foreground', mode.font)}>
           Monitor your AI credit balance and usage history
         </p>
@@ -251,9 +221,7 @@ export default async function UsagePage() {
       <Suspense
         fallback={
           <div className="flex h-96 items-center justify-center">
-            <div className={cn('text-muted-foreground', mode.font)}>
-              Loading usage data...
-            </div>
+            <div className={cn('text-muted-foreground', mode.font)}>Loading usage data...</div>
           </div>
         }
       >

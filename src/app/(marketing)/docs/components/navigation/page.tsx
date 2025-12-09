@@ -2,12 +2,7 @@
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
 import { Button } from '@/components/ui/button';
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-  SheetTitle,
-} from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 import Link from 'next/link';
 
@@ -27,25 +22,14 @@ function NavigationDemo() {
 
         {/* Desktop Nav */}
         <div className="hidden items-center gap-4 md:flex">
-          <span className="text-muted-foreground font-mono text-xs">
-            [NAVIGATE]:
-          </span>
-          <Link
-            href="#"
-            className="text-muted-foreground hover:text-foreground font-mono text-xs"
-          >
+          <span className="text-muted-foreground font-mono text-xs">[NAVIGATE]:</span>
+          <Link href="#" className="text-muted-foreground hover:text-foreground font-mono text-xs">
             FEATURES
           </Link>
-          <Link
-            href="#"
-            className="text-muted-foreground hover:text-foreground font-mono text-xs"
-          >
+          <Link href="#" className="text-muted-foreground hover:text-foreground font-mono text-xs">
             PRICING
           </Link>
-          <Link
-            href="#"
-            className="text-muted-foreground hover:text-foreground font-mono text-xs"
-          >
+          <Link href="#" className="text-muted-foreground hover:text-foreground font-mono text-xs">
             DOCS
           </Link>
           <div className="bg-border h-4 w-px" />
@@ -73,9 +57,7 @@ function NavigationDemo() {
             <SheetContent side="right" className="w-[280px] rounded-none">
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="flex flex-col gap-4 pt-8">
-                <span className="text-muted-foreground font-mono text-xs">
-                  [NAVIGATE]:
-                </span>
+                <span className="text-muted-foreground font-mono text-xs">[NAVIGATE]:</span>
                 <Link href="#" className="font-mono text-sm">
                   &gt; FEATURES
                 </Link>
@@ -119,41 +101,23 @@ export default function LandingPage() {
           description: 'Sheet-based mobile navigation',
           preview: (
             <div className="border-border bg-card w-full border p-4">
-              <div className="text-muted-foreground mb-4 font-mono text-xs">
-                [SYSTEM_MENU]
-              </div>
+              <div className="text-muted-foreground mb-4 font-mono text-xs">[SYSTEM_MENU]</div>
               <div className="flex flex-col gap-4">
-                <span className="text-muted-foreground font-mono text-xs">
-                  [NAVIGATE]:
-                </span>
-                <Link
-                  href="#"
-                  className="text-foreground hover:text-primary font-mono text-sm"
-                >
+                <span className="text-muted-foreground font-mono text-xs">[NAVIGATE]:</span>
+                <Link href="#" className="text-foreground hover:text-primary font-mono text-sm">
                   &gt; FEATURES
                 </Link>
-                <Link
-                  href="#"
-                  className="text-foreground hover:text-primary font-mono text-sm"
-                >
+                <Link href="#" className="text-foreground hover:text-primary font-mono text-sm">
                   &gt; PRICING
                 </Link>
-                <Link
-                  href="#"
-                  className="text-foreground hover:text-primary font-mono text-sm"
-                >
+                <Link href="#" className="text-foreground hover:text-primary font-mono text-sm">
                   &gt; DOCS
                 </Link>
-                <Link
-                  href="#"
-                  className="text-foreground hover:text-primary font-mono text-sm"
-                >
+                <Link href="#" className="text-foreground hover:text-primary font-mono text-sm">
                   &gt; FAQ
                 </Link>
                 <div className="border-border border-t pt-4">
-                  <Button className="w-full font-mono text-xs">
-                    &gt; GET_STARTED
-                  </Button>
+                  <Button className="w-full font-mono text-xs">&gt; GET_STARTED</Button>
                 </div>
               </div>
             </div>

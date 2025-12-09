@@ -60,12 +60,7 @@ class Logger {
 
   error(message: string, error?: Error | unknown, ...args: LogArg[]) {
     if (error instanceof Error) {
-      this.log(
-        'error',
-        message,
-        { error: error.message, stack: error.stack },
-        ...args
-      );
+      this.log('error', message, { error: error.message, stack: error.stack }, ...args);
     } else {
       this.log('error', message, error as LogArg, ...args);
     }

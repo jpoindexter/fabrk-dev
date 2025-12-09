@@ -24,24 +24,13 @@ export function DataTable({ table }: DataTableProps) {
                 key={header.id}
                 className="flex-1"
                 style={{
-                  width:
-                    header.id === 'select'
-                      ? 40
-                      : header.id === 'actions'
-                        ? 60
-                        : undefined,
-                  flex:
-                    header.id === 'select' || header.id === 'actions'
-                      ? '0 0 auto'
-                      : 1,
+                  width: header.id === 'select' ? 40 : header.id === 'actions' ? 60 : undefined,
+                  flex: header.id === 'select' || header.id === 'actions' ? '0 0 auto' : 1,
                 }}
               >
                 {header.isPlaceholder
                   ? null
-                  : flexRender(
-                      header.column.columnDef.header,
-                      header.getContext()
-                    )}
+                  : flexRender(header.column.columnDef.header, header.getContext())}
               </div>
             ))}
           </div>
@@ -70,10 +59,7 @@ export function DataTable({ table }: DataTableProps) {
                           ? 60
                           : undefined,
                     flex:
-                      cell.column.id === 'select' ||
-                      cell.column.id === 'actions'
-                        ? '0 0 auto'
-                        : 1,
+                      cell.column.id === 'select' || cell.column.id === 'actions' ? '0 0 auto' : 1,
                   }}
                 >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}

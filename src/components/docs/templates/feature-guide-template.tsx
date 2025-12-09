@@ -107,12 +107,7 @@ export function FeatureGuideTemplate({
   return (
     <div className={docsSpacing.pageSections}>
       {/* Header */}
-      <DocsHeader
-        code={code}
-        category={category}
-        title={title}
-        description={description}
-      />
+      <DocsHeader code={code} category={category} title={title} description={description} />
 
       {/* Warning (if any) */}
       {warning && (
@@ -147,17 +142,9 @@ export function FeatureGuideTemplate({
         <DocsSection title="Usage">
           <div className={docsSpacing.sectionItems}>
             {usage.map((example, index) => (
-              <DocsCard
-                key={index}
-                title={example.title.toUpperCase().replace(/\s+/g, '_')}
-              >
-                {example.description && (
-                  <p className="mb-6">{example.description}</p>
-                )}
-                <CodeBlock
-                  code={example.code}
-                  language={example.language || 'typescript'}
-                />
+              <DocsCard key={index} title={example.title.toUpperCase().replace(/\s+/g, '_')}>
+                {example.description && <p className="mb-6">{example.description}</p>}
+                <CodeBlock code={example.code} language={example.language || 'typescript'} />
               </DocsCard>
             ))}
           </div>
@@ -172,52 +159,31 @@ export function FeatureGuideTemplate({
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-border border-b">
-                    <th
-                      className={`pb-2 text-left uppercase ${docsTypography.caption}`}
-                    >
-                      Option
-                    </th>
-                    <th
-                      className={`pb-2 text-left uppercase ${docsTypography.caption}`}
-                    >
-                      Type
-                    </th>
-                    <th
-                      className={`pb-2 text-left uppercase ${docsTypography.caption}`}
-                    >
+                    <th className={`pb-2 text-left uppercase ${docsTypography.caption}`}>Option</th>
+                    <th className={`pb-2 text-left uppercase ${docsTypography.caption}`}>Type</th>
+                    <th className={`pb-2 text-left uppercase ${docsTypography.caption}`}>
                       Default
                     </th>
-                    <th
-                      className={`pb-2 text-left uppercase ${docsTypography.caption}`}
-                    >
+                    <th className={`pb-2 text-left uppercase ${docsTypography.caption}`}>
                       Description
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   {configuration.map((option, index) => (
-                    <tr
-                      key={index}
-                      className="border-border border-b last:border-0"
-                    >
+                    <tr key={index} className="border-border border-b last:border-0">
                       <td className="py-2 font-mono">{option.name}</td>
                       <td className="py-2">
-                        <code className={docsTypography.code}>
-                          {option.type}
-                        </code>
+                        <code className={docsTypography.code}>{option.type}</code>
                       </td>
                       <td className="py-2">
                         {option.default ? (
-                          <code className={docsTypography.code}>
-                            {option.default}
-                          </code>
+                          <code className={docsTypography.code}>{option.default}</code>
                         ) : (
                           '-'
                         )}
                       </td>
-                      <td className={`py-2 ${docsTypography.caption}`}>
-                        {option.description}
-                      </td>
+                      <td className={`py-2 ${docsTypography.caption}`}>{option.description}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -232,13 +198,8 @@ export function FeatureGuideTemplate({
         <DocsSection title="Troubleshooting">
           <div className={docsSpacing.sectionItems}>
             {troubleshooting.map((item, index) => (
-              <DocsCard
-                key={index}
-                title={`ERROR_${(index + 1).toString().padStart(2, '0')}`}
-              >
-                <p className="text-foreground mb-2 font-semibold">
-                  {item.problem}
-                </p>
+              <DocsCard key={index} title={`ERROR_${(index + 1).toString().padStart(2, '0')}`}>
+                <p className="text-foreground mb-2 font-semibold">{item.problem}</p>
                 <p>{item.solution}</p>
               </DocsCard>
             ))}

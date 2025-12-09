@@ -114,9 +114,7 @@ function Breadcrumbs({ items }: BreadcrumbsProps) {
     <nav className="flex items-center gap-1" aria-label="Breadcrumb">
       {items.map((item, index) => (
         <React.Fragment key={index}>
-          {index > 0 && (
-            <ChevronRight className="text-muted-foreground h-4 w-4" />
-          )}
+          {index > 0 && <ChevronRight className="text-muted-foreground h-4 w-4" />}
           {item.href ? (
             <Link
               href={item.href}
@@ -128,9 +126,7 @@ function Breadcrumbs({ items }: BreadcrumbsProps) {
               {item.label}
             </Link>
           ) : (
-            <span className={cn('text-foreground text-sm', mode.font)}>
-              {item.label}
-            </span>
+            <span className={cn('text-foreground text-sm', mode.font)}>{item.label}</span>
           )}
         </React.Fragment>
       ))}
@@ -155,9 +151,7 @@ function MetadataSidebar({ items }: MetadataSidebarProps) {
       )}
     >
       <div className="border-border border-b pb-2">
-        <span className={cn('text-muted-foreground text-xs', mode.font)}>
-          [ [0x00] METADATA ]
-        </span>
+        <span className={cn('text-muted-foreground text-xs', mode.font)}>[ [0x00] METADATA ]</span>
       </div>
       <div className="space-y-4">
         {items.map((item, index) => (
@@ -198,8 +192,7 @@ function TabNavigation({ tabs, activeTab, onTabChange }: TabsProps) {
               : 'text-muted-foreground hover:text-foreground border-transparent'
           )}
         >
-          [ [{String(index).padStart(2, '0')}]{' '}
-          {tab.label.toUpperCase().replace(/ /g, '_')} ]
+          [ [{String(index).padStart(2, '0')}] {tab.label.toUpperCase().replace(/ /g, '_')} ]
         </button>
       ))}
     </div>
@@ -221,23 +214,17 @@ export function DetailPageTemplate({
 }: DetailPageTemplateProps) {
   const [activeTab, setActiveTab] = React.useState(tabs?.[0]?.value ?? '');
 
-  const activeTabContent = tabs?.find(
-    (tab) => tab.value === activeTab
-  )?.content;
+  const activeTabContent = tabs?.find((tab) => tab.value === activeTab)?.content;
   const content = tabs ? activeTabContent : children;
 
   return (
     <div className={cn('mx-auto max-w-6xl space-y-6', className)}>
       {/* Breadcrumbs */}
-      {breadcrumbs && breadcrumbs.length > 0 && (
-        <Breadcrumbs items={breadcrumbs} />
-      )}
+      {breadcrumbs && breadcrumbs.length > 0 && <Breadcrumbs items={breadcrumbs} />}
 
       {/* Header */}
       <div className="flex items-start justify-between">
-        <h1 className={cn('text-4xl font-semibold tracking-tight', mode.font)}>
-          {title}
-        </h1>
+        <h1 className={cn('text-4xl font-semibold tracking-tight', mode.font)}>{title}</h1>
 
         {actions && actions.length > 0 && (
           <div className="flex items-center gap-2">
@@ -266,11 +253,7 @@ export function DetailPageTemplate({
         <div className="min-w-0 flex-1">
           {/* Tabs */}
           {tabs && tabs.length > 0 && (
-            <TabNavigation
-              tabs={tabs}
-              activeTab={activeTab}
-              onTabChange={setActiveTab}
-            />
+            <TabNavigation tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
           )}
 
           {/* Content */}
@@ -278,9 +261,7 @@ export function DetailPageTemplate({
         </div>
 
         {/* Metadata Sidebar */}
-        {metadata && metadata.length > 0 && (
-          <MetadataSidebar items={metadata} />
-        )}
+        {metadata && metadata.length > 0 && <MetadataSidebar items={metadata} />}
       </div>
     </div>
   );

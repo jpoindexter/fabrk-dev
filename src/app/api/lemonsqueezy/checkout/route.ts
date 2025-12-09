@@ -1,14 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
-import {
-  checkRateLimitAuto,
-  getClientIdentifier,
-  RateLimiters,
-} from '@/lib/security/rate-limit';
-import {
-  createLemonSqueezyCheckout,
-  getVariantIdForTier,
-} from '@/lib/lemonsqueezy';
+import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from '@/lib/security/rate-limit';
+import { createLemonSqueezyCheckout, getVariantIdForTier } from '@/lib/lemonsqueezy';
 import { logger } from '@/lib/logger';
 
 /**
@@ -33,10 +26,7 @@ export async function POST(req: NextRequest) {
 
     // Validate tier or custom variant ID
     if (!tier && !customVariantId) {
-      return NextResponse.json(
-        { error: 'Either tier or variantId is required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Either tier or variantId is required' }, { status: 400 });
     }
 
     // Get session for logged-in users
@@ -71,9 +61,6 @@ export async function POST(req: NextRequest) {
     });
   } catch (error) {
     logger.error('Error creating Lemon Squeezy checkout:', error);
-    return NextResponse.json(
-      { error: 'Failed to create checkout session' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to create checkout session' }, { status: 500 });
   }
 }

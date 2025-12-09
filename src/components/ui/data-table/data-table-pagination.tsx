@@ -28,12 +28,7 @@
 import { Table } from '@tanstack/react-table';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
-import {
-  ChevronLeft,
-  ChevronRight,
-  ChevronsLeft,
-  ChevronsRight,
-} from 'lucide-react';
+import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
 import * as React from 'react';
 
 import { Button } from '@/components/ui/button';
@@ -45,9 +40,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-interface DataTablePaginationProps<
-  TData,
-> extends React.HTMLAttributes<HTMLElement> {
+interface DataTablePaginationProps<TData> extends React.HTMLAttributes<HTMLElement> {
   table: Table<TData>;
   pageSizeOptions?: number[];
 }
@@ -58,11 +51,7 @@ export type { DataTablePaginationProps };
  * Data table pagination component
  */
 function DataTablePaginationInner<TData>(
-  {
-    table,
-    pageSizeOptions = [10, 20, 30, 40, 50],
-    className,
-  }: DataTablePaginationProps<TData>,
+  { table, pageSizeOptions = [10, 20, 30, 40, 50], className }: DataTablePaginationProps<TData>,
   ref: React.ForwardedRef<HTMLElement>
 ) {
   return (
@@ -88,31 +77,19 @@ function DataTablePaginationInner<TData>(
             }}
           >
             <SelectTrigger className="focus-visible:ring-ring h-8 w-[70px] font-semibold focus-visible:ring-2 focus-visible:outline-none">
-              <SelectValue
-                placeholder={`${table.getState().pagination.pageSize}`}
-              />
+              <SelectValue placeholder={`${table.getState().pagination.pageSize}`} />
             </SelectTrigger>
             <SelectContent className="min-w-[70px]">
               {pageSizeOptions.map((pageSize) => (
-                <SelectItem
-                  key={pageSize}
-                  value={`${pageSize}`}
-                  className="font-semibold"
-                >
+                <SelectItem key={pageSize} value={`${pageSize}`} className="font-semibold">
                   {pageSize}
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
         </div>
-        <div
-          className={cn(
-            'flex w-24 items-center justify-center text-xs font-medium',
-            mode.font
-          )}
-        >
-          Page {table.getState().pagination.pageIndex + 1} of{' '}
-          {table.getPageCount()}
+        <div className={cn('flex w-24 items-center justify-center text-xs font-medium', mode.font)}>
+          Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
         </div>
         <div className={`flex items-center space-x-2`}>
           <Button
@@ -157,13 +134,10 @@ function DataTablePaginationInner<TData>(
   );
 }
 
-export const DataTablePagination = React.forwardRef(
-  DataTablePaginationInner
-) as <TData>(
+export const DataTablePagination = React.forwardRef(DataTablePaginationInner) as <TData>(
   props: DataTablePaginationProps<TData> & {
     ref?: React.ForwardedRef<HTMLElement>;
   }
 ) => ReturnType<typeof DataTablePaginationInner>;
 
-(DataTablePagination as unknown as { displayName: string }).displayName =
-  'DataTablePagination';
+(DataTablePagination as unknown as { displayName: string }).displayName = 'DataTablePagination';

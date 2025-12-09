@@ -23,13 +23,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import {
-  AlertTriangle,
-  CheckCircle,
-  Info,
-  XCircle,
-  Shield,
-} from 'lucide-react';
+import { AlertTriangle, CheckCircle, Info, XCircle, Shield } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -64,9 +58,7 @@ function formatDate(date: Date): string {
   }).format(new Date(date));
 }
 
-function getSeverityColor(
-  severity: string
-): 'destructive' | 'default' | 'secondary' | 'outline' {
+function getSeverityColor(severity: string): 'destructive' | 'default' | 'secondary' | 'outline' {
   switch (severity) {
     case 'critical':
       return 'destructive';
@@ -111,18 +103,14 @@ export default function AdminSecurityPage() {
           }
           logsParams.set('limit', '50');
 
-          const logsResponse = await fetch(
-            `/api/admin/audit-logs?${logsParams}`
-          );
+          const logsResponse = await fetch(`/api/admin/audit-logs?${logsParams}`);
           if (logsResponse.ok) {
             const logsData = await logsResponse.json();
             setLogs(logsData.logs || []);
           }
 
           // Fetch summary from API (last 7 days)
-          const summaryResponse = await fetch(
-            '/api/admin/audit-logs/summary?days=7'
-          );
+          const summaryResponse = await fetch('/api/admin/audit-logs/summary?days=7');
           if (summaryResponse.ok) {
             const summaryData = await summaryResponse.json();
             setSummary(summaryData.summary);
@@ -140,9 +128,7 @@ export default function AdminSecurityPage() {
     <div className="space-y-6">
       <div>
         <h1 className="text-4xl font-semibold tracking-tight">Security Logs</h1>
-        <p className="text-muted-foreground">
-          Monitor security events and audit logs
-        </p>
+        <p className="text-muted-foreground">Monitor security events and audit logs</p>
       </div>
 
       {/* Summary Cards */}
@@ -156,48 +142,28 @@ export default function AdminSecurityPage() {
               icon={<Info className="h-4 w-4" />}
             />
             <CardContent>
-              <div className="text-2xl font-semibold">
-                {summary.totalEvents}
-              </div>
+              <div className="text-2xl font-semibold">{summary.totalEvents}</div>
             </CardContent>
           </Card>
 
           <Card tone="danger">
-            <CardHeader
-              code="0x02"
-              title="CRITICAL"
-              icon={<AlertTriangle className="h-4 w-4" />}
-            />
+            <CardHeader code="0x02" title="CRITICAL" icon={<AlertTriangle className="h-4 w-4" />} />
             <CardContent>
-              <div className="text-2xl font-semibold">
-                {summary.bySeverity.critical || 0}
-              </div>
+              <div className="text-2xl font-semibold">{summary.bySeverity.critical || 0}</div>
             </CardContent>
           </Card>
 
           <Card tone="warning">
-            <CardHeader
-              code="0x03"
-              title="HIGH"
-              icon={<AlertTriangle className="h-4 w-4" />}
-            />
+            <CardHeader code="0x03" title="HIGH" icon={<AlertTriangle className="h-4 w-4" />} />
             <CardContent>
-              <div className="text-2xl font-semibold">
-                {summary.bySeverity.high || 0}
-              </div>
+              <div className="text-2xl font-semibold">{summary.bySeverity.high || 0}</div>
             </CardContent>
           </Card>
 
           <Card tone="neutral">
-            <CardHeader
-              code="0x04"
-              title="MEDIUM"
-              icon={<Info className="h-4 w-4" />}
-            />
+            <CardHeader code="0x04" title="MEDIUM" icon={<Info className="h-4 w-4" />} />
             <CardContent>
-              <div className="text-2xl font-semibold">
-                {summary.bySeverity.medium || 0}
-              </div>
+              <div className="text-2xl font-semibold">{summary.bySeverity.medium || 0}</div>
             </CardContent>
           </Card>
         </div>
@@ -242,10 +208,7 @@ export default function AdminSecurityPage() {
               <TableBody>
                 {logs.length === 0 ? (
                   <TableRow>
-                    <TableCell
-                      colSpan={6}
-                      className="text-muted-foreground text-center"
-                    >
+                    <TableCell colSpan={6} className="text-muted-foreground text-center">
                       No security events found
                     </TableCell>
                   </TableRow>
@@ -255,9 +218,7 @@ export default function AdminSecurityPage() {
                       <TableCell className="text-muted-foreground text-xs">
                         {formatDate(log.timestamp)}
                       </TableCell>
-                      <TableCell className={cn('text-xs', mode.font)}>
-                        {log.eventType}
-                      </TableCell>
+                      <TableCell className={cn('text-xs', mode.font)}>{log.eventType}</TableCell>
                       <TableCell>{log.action}</TableCell>
                       <TableCell className="text-sm">
                         {log.userEmail || log.userId || '—'}
@@ -265,9 +226,7 @@ export default function AdminSecurityPage() {
                       <TableCell>
                         <div className="flex items-center gap-2">
                           {getResultIcon(log.result)}
-                          <span className="text-sm capitalize">
-                            {log.result}
-                          </span>
+                          <span className="text-sm capitalize">{log.result}</span>
                         </div>
                       </TableCell>
                       <TableCell>

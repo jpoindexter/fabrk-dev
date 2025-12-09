@@ -53,10 +53,7 @@ export default function RegisterPage() {
           />
         </div>
 
-        <Button
-          className={cn(mode.radius, mode.font, 'w-full text-xs')}
-          type="submit"
-        >
+        <Button className={cn(mode.radius, mode.font, 'w-full text-xs')} type="submit">
           &gt; CREATE_ACCOUNT
         </Button>
       </form>
@@ -67,25 +64,17 @@ export default function RegisterPage() {
           <span className="border-border w-full border-t" />
         </div>
         <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-background text-muted-foreground px-2">
-            Or continue with
-          </span>
+          <span className="bg-background text-muted-foreground px-2">Or continue with</span>
         </div>
       </div>
 
       {/* Social Auth */}
       <div className="grid grid-cols-2 gap-4">
-        <Button
-          variant="outline"
-          className={cn(mode.radius, mode.font, 'text-xs')}
-        >
+        <Button variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
           <Github className="mr-2 h-4 w-4" />
           GitHub
         </Button>
-        <Button
-          variant="outline"
-          className={cn(mode.radius, mode.font, 'text-xs')}
-        >
+        <Button variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
           {/* eslint-disable design-system/no-hardcoded-colors -- Google brand colors are intentional */}
           <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
             <path
@@ -113,10 +102,7 @@ export default function RegisterPage() {
       {/* Footer */}
       <p className="text-muted-foreground text-center text-sm">
         Already have an account?{' '}
-        <Link
-          href="/login"
-          className="hover:text-primary underline underline-offset-4"
-        >
+        <Link href="/login" className="hover:text-primary underline underline-offset-4">
           Sign in
         </Link>
       </p>

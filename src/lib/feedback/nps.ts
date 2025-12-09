@@ -157,11 +157,7 @@ export function shouldShowNPSSurvey(user: {
   if (daysSinceSignup < 7) return false;
 
   // If never shown, show after 14 days for engaged users
-  if (
-    !user.lastNPSDate &&
-    daysSinceSignup >= 14 &&
-    user.engagementLevel !== 'low'
-  ) {
+  if (!user.lastNPSDate && daysSinceSignup >= 14 && user.engagementLevel !== 'low') {
     return true;
   }
 
@@ -178,8 +174,7 @@ export function shouldShowNPSSurvey(user: {
     if (user.engagementLevel === 'high' && daysSinceLastNPS >= 90) return true;
 
     // For medium engagement, wait 180 days
-    if (user.engagementLevel === 'medium' && daysSinceLastNPS >= 180)
-      return true;
+    if (user.engagementLevel === 'medium' && daysSinceLastNPS >= 180) return true;
   }
 
   return false;

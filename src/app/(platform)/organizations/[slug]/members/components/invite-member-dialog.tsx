@@ -35,15 +35,10 @@ interface InviteMemberDialogProps {
   organizationName: string;
 }
 
-export function InviteMemberDialog({
-  organizationId,
-  organizationName,
-}: InviteMemberDialogProps) {
+export function InviteMemberDialog({ organizationId, organizationName }: InviteMemberDialogProps) {
   const [inviting, setInviting] = React.useState(false);
   const [inviteEmail, setInviteEmail] = React.useState('');
-  const [inviteRole, setInviteRole] = React.useState<
-    'ADMIN' | 'MEMBER' | 'GUEST'
-  >('MEMBER');
+  const [inviteRole, setInviteRole] = React.useState<'ADMIN' | 'MEMBER' | 'GUEST'>('MEMBER');
 
   const handleInvite = async () => {
     if (!inviteEmail) return;
@@ -69,8 +64,7 @@ export function InviteMemberDialog({
       setInviteEmail('');
       setInviteRole('MEMBER');
     } catch (error: unknown) {
-      const errorMessage =
-        error instanceof Error ? error.message : 'Failed to send invitation';
+      const errorMessage = error instanceof Error ? error.message : 'Failed to send invitation';
       toast.error(errorMessage);
     } finally {
       setInviting(false);
@@ -88,9 +82,7 @@ export function InviteMemberDialog({
       <DialogContent className={cn('border-border border', mode.radius)}>
         <DialogHeader>
           <DialogTitle>Invite Team Member</DialogTitle>
-          <DialogDescription>
-            Send an invitation to join {organizationName}
-          </DialogDescription>
+          <DialogDescription>Send an invitation to join {organizationName}</DialogDescription>
         </DialogHeader>
         <div className="space-y-4 py-4">
           <div className="space-y-2">
@@ -108,19 +100,12 @@ export function InviteMemberDialog({
             <Label htmlFor="role">{formatLabel('Role')}</Label>
             <Select
               value={inviteRole}
-              onValueChange={(val) =>
-                setInviteRole(val as 'ADMIN' | 'MEMBER' | 'GUEST')
-              }
+              onValueChange={(val) => setInviteRole(val as 'ADMIN' | 'MEMBER' | 'GUEST')}
             >
-              <SelectTrigger
-                id="role"
-                className={cn('border-border border', mode.radius)}
-              >
+              <SelectTrigger id="role" className={cn('border-border border', mode.radius)}>
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent
-                className={cn('border-border border', mode.radius)}
-              >
+              <SelectContent className={cn('border-border border', mode.radius)}>
                 <SelectItem value="MEMBER">Member</SelectItem>
                 <SelectItem value="ADMIN">Admin</SelectItem>
                 <SelectItem value="GUEST">Guest</SelectItem>

@@ -239,8 +239,8 @@ model OrganizationMember {
       <DocsSection title="Migrations">
         <DocsCard title="MIGRATIONS">
           <p className="mb-6">
-            For production, use migrations instead of{' '}
-            <code className="bg-muted px-1">db:push</code>:
+            For production, use migrations instead of <code className="bg-muted px-1">db:push</code>
+            :
           </p>
           <CodeBlock
             language="bash"
@@ -261,16 +261,15 @@ npx prisma migrate status`}
         <div className="space-y-4">
           <DocsCard title="USER_UPDATES">
             <p className="mb-6">
-              Update user data with validation. Use{' '}
-              <code className="bg-muted px-1">select</code> to return only
-              needed fields and avoid exposing sensitive data like passwords.
+              Update user data with validation. Use <code className="bg-muted px-1">select</code> to
+              return only needed fields and avoid exposing sensitive data like passwords.
             </p>
           </DocsCard>
 
           <DocsCard title="SOFT_DELETES">
             <p className="mb-6">
-              Add <code className="bg-muted px-1">deletedAt DateTime?</code>{' '}
-              field to models and filter with{' '}
+              Add <code className="bg-muted px-1">deletedAt DateTime?</code> field to models and
+              filter with{' '}
               <code className="bg-muted px-1">
                 where: {'{'} deletedAt: null {'}'}
               </code>{' '}
@@ -292,8 +291,7 @@ npx prisma migrate status`}
             <p className="mb-6">
               Calculate totals with{' '}
               <code className="bg-muted px-1">
-                prisma.payment.aggregate({'{'} _sum: {'{'} amount: true {'}'}{' '}
-                {'}'})
+                prisma.payment.aggregate({'{'} _sum: {'{'} amount: true {'}'} {'}'})
               </code>{' '}
               for dashboards and reports.
             </p>
@@ -310,18 +308,17 @@ npx prisma migrate status`}
               <code className="bg-muted px-1">@/lib/db</code>
             </li>
             <li>
-              ├─ Use <code className="bg-muted px-1">select</code> to fetch only
-              needed fields
+              ├─ Use <code className="bg-muted px-1">select</code> to fetch only needed fields
             </li>
             <li>├─ Add indexes for frequently queried fields</li>
             <li>├─ Use transactions for multi-step operations</li>
             <li>
-              ├─ Never expose sensitive fields like{' '}
-              <code className="bg-muted px-1">password</code> in API responses
+              ├─ Never expose sensitive fields like <code className="bg-muted px-1">password</code>{' '}
+              in API responses
             </li>
             <li>
-              ├─ Use migrations in production,{' '}
-              <code className="bg-muted px-1">db:push</code> only in development
+              ├─ Use migrations in production, <code className="bg-muted px-1">db:push</code> only
+              in development
             </li>
             <li>└─ Set up connection pooling for production (PgBouncer)</li>
           </ul>

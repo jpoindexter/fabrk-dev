@@ -35,9 +35,7 @@ export default function DatePickerPage() {
   onChange={setDate}
   showMonthYearPicker
 />`,
-          preview: (
-            <DatePicker value={date} onChange={setDate} showMonthYearPicker />
-          ),
+          preview: <DatePicker value={date} onChange={setDate} showMonthYearPicker />,
         },
         {
           title: 'Date Range',
@@ -71,9 +69,7 @@ export default function DatePickerPage() {
   onChange={setDateTime}
   showTime
 />`,
-          preview: (
-            <DatePicker value={dateTime} onChange={setDateTime} showTime />
-          ),
+          preview: <DatePicker value={dateTime} onChange={setDateTime} showTime />,
         },
         {
           title: 'Month Only',
@@ -114,14 +110,7 @@ export default function DatePickerPage() {
   showTime
   use24Hour
 />`,
-          preview: (
-            <DatePicker
-              value={dateTime}
-              onChange={setDateTime}
-              showTime
-              use24Hour
-            />
-          ),
+          preview: <DatePicker value={dateTime} onChange={setDateTime} showTime use24Hour />,
         },
         {
           title: 'Disabled State',

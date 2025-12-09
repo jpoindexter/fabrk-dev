@@ -29,10 +29,7 @@ export const ValidationSchemas = {
     .min(1, 'Name is required')
     .max(100, 'Name must be less than 100 characters')
     .trim()
-    .regex(
-      /^[a-zA-Z\s\-']+$/,
-      'Name can only contain letters, spaces, hyphens, and apostrophes'
-    ),
+    .regex(/^[a-zA-Z\s\-']+$/, 'Name can only contain letters, spaces, hyphens, and apostrophes'),
 
   // Username validation
   username: z
@@ -146,8 +143,7 @@ export function validateEmail(email: string): {
     const validated = ValidationSchemas.email.parse(email);
     return { valid: true, email: validated };
   } catch (error: unknown) {
-    const errorMessage =
-      error instanceof z.ZodError ? error.issues[0]?.message : 'Invalid email';
+    const errorMessage = error instanceof z.ZodError ? error.issues[0]?.message : 'Invalid email';
     return { valid: false, error: errorMessage };
   }
 }
@@ -165,9 +161,7 @@ export function validatePassword(password: string): {
     return { valid: true, password: validated };
   } catch (error: unknown) {
     const errors =
-      error instanceof z.ZodError
-        ? error.issues.map((e) => e.message)
-        : ['Invalid password'];
+      error instanceof z.ZodError ? error.issues.map((e) => e.message) : ['Invalid password'];
     return { valid: false, errors };
   }
 }
@@ -242,11 +236,7 @@ export function detectPathTraversal(input: string): boolean {
 /**
  * Validate file upload
  */
-export function validateFileUpload(file: {
-  name: string;
-  size: number;
-  type: string;
-}): {
+export function validateFileUpload(file: { name: string; size: number; type: string }): {
   valid: boolean;
   error?: string;
 } {
@@ -319,9 +309,7 @@ export function createSchema<T extends z.ZodType>(schema: T) {
   return {
     parse: (data: unknown) => schema.parse(data),
     safeParse: (data: unknown) => schema.safeParse(data),
-    validate: (
-      data: unknown
-    ): { valid: boolean; data?: z.infer<T>; errors?: string[] } => {
+    validate: (data: unknown): { valid: boolean; data?: z.infer<T>; errors?: string[] } => {
       const result = schema.safeParse(data);
       if (result.success) {
         return { valid: true, data: result.data };

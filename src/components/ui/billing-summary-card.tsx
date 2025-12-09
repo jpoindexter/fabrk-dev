@@ -7,12 +7,7 @@ import { mode } from '@/design-system';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
-export type BillingStatus =
-  | 'active'
-  | 'trial'
-  | 'past_due'
-  | 'canceled'
-  | 'paused';
+export type BillingStatus = 'active' | 'trial' | 'past_due' | 'canceled' | 'paused';
 
 export interface BillingPlan {
   name: string;
@@ -142,12 +137,8 @@ export function BillingSummaryCard({
         <div className="flex items-start justify-between">
           {/* Left: Plan Info */}
           <div>
-            <p className={cn('text-muted-foreground mb-1 text-xs', mode.font)}>
-              [CURRENT_PLAN]:
-            </p>
-            <p className={cn('text-foreground text-2xl font-bold', mode.font)}>
-              {plan.name}
-            </p>
+            <p className={cn('text-muted-foreground mb-1 text-xs', mode.font)}>[CURRENT_PLAN]:</p>
+            <p className={cn('text-foreground text-2xl font-bold', mode.font)}>{plan.name}</p>
             <p className={cn('text-muted-foreground text-xs', mode.font)}>
               {formatPrice(plan.price, plan.interval)}
             </p>
@@ -158,9 +149,7 @@ export function BillingSummaryCard({
               </p>
             )}
             {status === 'active' && currentPeriodEnd && (
-              <p
-                className={cn('text-muted-foreground mt-2 text-xs', mode.font)}
-              >
+              <p className={cn('text-muted-foreground mt-2 text-xs', mode.font)}>
                 Next billing: {formatDate(currentPeriodEnd)}
               </p>
             )}
@@ -180,17 +169,12 @@ export function BillingSummaryCard({
         {/* Plan Features (optional) */}
         {plan.features && plan.features.length > 0 && (
           <div className="mt-4">
-            <p className={cn('text-muted-foreground mb-2 text-xs', mode.font)}>
-              [INCLUDES]:
-            </p>
+            <p className={cn('text-muted-foreground mb-2 text-xs', mode.font)}>[INCLUDES]:</p>
             <ul className="space-y-1">
               {plan.features.map((feature, index) => (
                 <li
                   key={index}
-                  className={cn(
-                    'text-muted-foreground flex items-center gap-2 text-xs',
-                    mode.font
-                  )}
+                  className={cn('text-muted-foreground flex items-center gap-2 text-xs', mode.font)}
                 >
                   <Zap className="text-primary h-3 w-3" />
                   {feature}
@@ -213,35 +197,20 @@ export function BillingSummaryCard({
               return (
                 <div key={index}>
                   <div className="mb-1 flex items-center justify-between text-xs">
-                    <span className={cn('font-medium', mode.font)}>
-                      {item.name}
-                    </span>
-                    <span
-                      className={cn('text-muted-foreground text-xs', mode.font)}
-                    >
-                      {item.used.toLocaleString()} /{' '}
-                      {item.limit.toLocaleString()}
+                    <span className={cn('font-medium', mode.font)}>{item.name}</span>
+                    <span className={cn('text-muted-foreground text-xs', mode.font)}>
+                      {item.used.toLocaleString()} / {item.limit.toLocaleString()}
                       {item.unit && ` ${item.unit}`}
                     </span>
                   </div>
-                  <div
-                    className={cn(
-                      'bg-muted relative h-2 w-full overflow-hidden',
-                      mode.radius
-                    )}
-                  >
+                  <div className={cn('bg-muted relative h-2 w-full overflow-hidden', mode.radius)}>
                     <div
-                      className={cn(
-                        'h-full transition-all',
-                        getUsageColor(percentage)
-                      )}
+                      className={cn('h-full transition-all', getUsageColor(percentage))}
                       style={{ width: `${percentage}%` }}
                     />
                   </div>
                   {percentage >= 90 && (
-                    <p
-                      className={cn('text-destructive mt-1 text-xs', mode.font)}
-                    >
+                    <p className={cn('text-destructive mt-1 text-xs', mode.font)}>
                       <AlertTriangle className="mr-1 inline h-3 w-3" />
                       Approaching limit
                     </p>
@@ -256,11 +225,7 @@ export function BillingSummaryCard({
       {/* Actions */}
       <div className="flex flex-wrap items-center gap-2 p-4">
         {showUpgrade && onUpgrade && (
-          <Button
-            onClick={onUpgrade}
-            size="sm"
-            className={cn(mode.radius, mode.font)}
-          >
+          <Button onClick={onUpgrade} size="sm" className={cn(mode.radius, mode.font)}>
             &gt; UPGRADE_PLAN
           </Button>
         )}
@@ -280,11 +245,7 @@ export function BillingSummaryCard({
             onClick={onCancel}
             variant="ghost"
             size="sm"
-            className={cn(
-              'text-destructive hover:text-destructive',
-              mode.radius,
-              mode.font
-            )}
+            className={cn('text-destructive hover:text-destructive', mode.radius, mode.font)}
           >
             CANCEL
           </Button>
@@ -347,11 +308,7 @@ export function UsageMeter({
         </span>
       </div>
       <div
-        className={cn(
-          'bg-muted relative w-full overflow-hidden',
-          sizeClasses[size],
-          mode.radius
-        )}
+        className={cn('bg-muted relative w-full overflow-hidden', sizeClasses[size], mode.radius)}
       >
         <div
           className={cn('h-full transition-all', getColor())}
@@ -428,24 +385,15 @@ export function PlanSelector({
 
             {/* Plan Info */}
             <div className="mb-4 pt-2">
-              <h3 className={cn('text-lg font-bold', mode.font)}>
-                {plan.name}
-              </h3>
+              <h3 className={cn('text-lg font-bold', mode.font)}>{plan.name}</h3>
               <div className="mt-2">
                 <span className="text-3xl font-bold">${plan.price}</span>
-                <span
-                  className={cn('text-muted-foreground text-xs', mode.font)}
-                >
+                <span className={cn('text-muted-foreground text-xs', mode.font)}>
                   /{plan.interval === 'month' ? 'mo' : 'yr'}
                 </span>
               </div>
               {plan.description && (
-                <p
-                  className={cn(
-                    'text-muted-foreground mt-2 text-xs',
-                    mode.font
-                  )}
-                >
+                <p className={cn('text-muted-foreground mt-2 text-xs', mode.font)}>
                   {plan.description}
                 </p>
               )}
@@ -456,10 +404,7 @@ export function PlanSelector({
               {plan.features.map((feature, index) => (
                 <li
                   key={index}
-                  className={cn(
-                    'text-muted-foreground flex items-center gap-2 text-xs',
-                    mode.font
-                  )}
+                  className={cn('text-muted-foreground flex items-center gap-2 text-xs', mode.font)}
                 >
                   <CheckCircle className="text-success h-3 w-3 flex-shrink-0" />
                   {feature}
@@ -474,11 +419,7 @@ export function PlanSelector({
               className={cn('w-full', mode.radius, mode.font)}
               disabled={isCurrent}
             >
-              {isCurrent
-                ? 'CURRENT_PLAN'
-                : isSelected
-                  ? 'SELECTED'
-                  : '> SELECT'}
+              {isCurrent ? 'CURRENT_PLAN' : isSelected ? 'SELECTED' : '> SELECT'}
             </Button>
           </div>
         );

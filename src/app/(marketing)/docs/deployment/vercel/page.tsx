@@ -84,8 +84,7 @@ vercel
         },
         {
           title: 'Required Environment Variables',
-          description:
-            'Add in Vercel Dashboard → Settings → Environment Variables',
+          description: 'Add in Vercel Dashboard → Settings → Environment Variables',
           code: `# Core (Required)
 DATABASE_URL="postgresql://..."
 NEXTAUTH_URL="https://your-domain.vercel.app"
@@ -212,8 +211,8 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`,
                 <strong>Build Fails with Prisma Error:</strong>
               </p>
               <p>
-                Add <code className="bg-muted px-1">prisma generate</code> to
-                build command in package.json
+                Add <code className="bg-muted px-1">prisma generate</code> to build command in
+                package.json
               </p>
             </div>
             <div>

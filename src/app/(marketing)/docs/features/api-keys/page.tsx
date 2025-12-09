@@ -20,14 +20,12 @@ export default function ApiKeysPage() {
         {
           icon: Key,
           title: '256-bit Keys',
-          description:
-            'Cryptographically secure random generation for maximum security.',
+          description: 'Cryptographically secure random generation for maximum security.',
         },
         {
           icon: Shield,
           title: 'SHA-256 Hashing',
-          description:
-            'Only hashes stored in database - raw keys never persisted.',
+          description: 'Only hashes stored in database - raw keys never persisted.',
         },
         {
           icon: Lock,
@@ -37,8 +35,7 @@ export default function ApiKeysPage() {
         {
           icon: Clock,
           title: 'Rate Limiting',
-          description:
-            'Protect against abuse with configurable rate limits per tier.',
+          description: 'Protect against abuse with configurable rate limits per tier.',
         },
       ]}
       usage={[
@@ -342,35 +339,28 @@ export async function GET(req: Request) {
         <DocsCard title="SECURITY_BEST_PRACTICES">
           <ul className="space-y-1">
             <li>
-              ├─ <strong>Never log full keys:</strong> Only log the prefix for
-              debugging
+              ├─ <strong>Never log full keys:</strong> Only log the prefix for debugging
             </li>
             <li>
-              ├─ <strong>Show key once:</strong> Display the full key only at
-              creation time
+              ├─ <strong>Show key once:</strong> Display the full key only at creation time
             </li>
             <li>
               ├─ <strong>Use HTTPS only:</strong> Never transmit keys over HTTP
             </li>
             <li>
-              ├─ <strong>Implement expiration:</strong> Set reasonable
-              expiration dates
+              ├─ <strong>Implement expiration:</strong> Set reasonable expiration dates
             </li>
             <li>
-              ├─ <strong>Allow revocation:</strong> Users should be able to
-              revoke keys instantly
+              ├─ <strong>Allow revocation:</strong> Users should be able to revoke keys instantly
             </li>
             <li>
-              ├─ <strong>Track usage:</strong> Log last used timestamps and
-              access patterns
+              ├─ <strong>Track usage:</strong> Log last used timestamps and access patterns
             </li>
             <li>
-              ├─ <strong>Scope permissions:</strong> Follow principle of least
-              privilege
+              ├─ <strong>Scope permissions:</strong> Follow principle of least privilege
             </li>
             <li>
-              └─ <strong>Rate limit aggressively:</strong> Protect against brute
-              force and abuse
+              └─ <strong>Rate limit aggressively:</strong> Protect against brute force and abuse
             </li>
           </ul>
         </DocsCard>

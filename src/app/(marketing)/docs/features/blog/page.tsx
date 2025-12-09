@@ -5,8 +5,7 @@ import { FileText, Tag, Search, Eye, Calendar, Edit, Code } from 'lucide-react';
 
 export const metadata = {
   title: 'Blog System - Fabrk Docs',
-  description:
-    'Database-driven blog with categories, SEO optimization, and admin management.',
+  description: 'Database-driven blog with categories, SEO optimization, and admin management.',
 };
 
 export default function BlogPage() {
@@ -21,38 +20,32 @@ export default function BlogPage() {
         {
           icon: FileText,
           title: 'Database Storage',
-          description:
-            'Posts stored in PostgreSQL via Prisma - full control, no vendor lock-in.',
+          description: 'Posts stored in PostgreSQL via Prisma - full control, no vendor lock-in.',
         },
         {
           icon: Code,
           title: 'MDX Support',
-          description:
-            'Use React components in posts - callouts, code blocks, embeds, and more.',
+          description: 'Use React components in posts - callouts, code blocks, embeds, and more.',
         },
         {
           icon: Tag,
           title: 'Categories',
-          description:
-            'Organize posts with categories for easy navigation and filtering.',
+          description: 'Organize posts with categories for easy navigation and filtering.',
         },
         {
           icon: Search,
           title: 'SEO Optimized',
-          description:
-            'Custom meta titles, descriptions, and OpenGraph for each post.',
+          description: 'Custom meta titles, descriptions, and OpenGraph for each post.',
         },
         {
           icon: Eye,
           title: 'View Tracking',
-          description:
-            'Automatic view count tracking for analytics and popular posts.',
+          description: 'Automatic view count tracking for analytics and popular posts.',
         },
         {
           icon: Calendar,
           title: 'Draft & Publish',
-          description:
-            'Save drafts, schedule publishing, or publish immediately.',
+          description: 'Save drafts, schedule publishing, or publish immediately.',
         },
         {
           icon: Edit,
@@ -289,12 +282,10 @@ export function formatDate(date: Date | string): string {
         <DocsCard title="FEATURES">
           <ul className="space-y-1">
             <li>
-              ├─ <strong>Slug Generation:</strong> Auto-generate URL slugs from
-              titles
+              ├─ <strong>Slug Generation:</strong> Auto-generate URL slugs from titles
             </li>
             <li>
-              ├─ <strong>Read Time:</strong> Automatic calculation based on word
-              count
+              ├─ <strong>Read Time:</strong> Automatic calculation based on word count
             </li>
             <li>
               ├─ <strong>View Tracking:</strong> Count page views per post
@@ -312,8 +303,7 @@ export function formatDate(date: Date | string): string {
               ├─ <strong>SEO Fields:</strong> Custom meta title and description
             </li>
             <li>
-              └─ <strong>Author Attribution:</strong> Link posts to user
-              accounts
+              └─ <strong>Author Attribution:</strong> Link posts to user accounts
             </li>
           </ul>
         </DocsCard>
@@ -322,9 +312,8 @@ export function formatDate(date: Date | string): string {
       {/* MDX Components */}
       <DocsSection title="MDX Components">
         <DocsCallout variant="info" title="React in Your Content">
-          Blog posts support MDX - write Markdown with embedded React
-          components. Create rich, interactive content without leaving your
-          editor.
+          Blog posts support MDX - write Markdown with embedded React components. Create rich,
+          interactive content without leaving your editor.
         </DocsCallout>
         <DocsCard title="AVAILABLE_COMPONENTS">
           <div className="space-y-4">
@@ -333,20 +322,16 @@ export function formatDate(date: Date | string): string {
                 <h4 className="font-mono text-xs font-semibold">Content</h4>
                 <ul className="text-muted-foreground space-y-1 font-mono text-xs">
                   <li>
-                    • <code className="bg-muted px-1">Callout</code> - Info,
-                    warning, error, success
+                    • <code className="bg-muted px-1">Callout</code> - Info, warning, error, success
                   </li>
                   <li>
-                    • <code className="bg-muted px-1">Terminal</code> - Command
-                    display
+                    • <code className="bg-muted px-1">Terminal</code> - Command display
                   </li>
                   <li>
-                    • <code className="bg-muted px-1">CodeBlock</code> - Syntax
-                    highlighting
+                    • <code className="bg-muted px-1">CodeBlock</code> - Syntax highlighting
                   </li>
                   <li>
-                    • <code className="bg-muted px-1">Steps</code> -
-                    Step-by-step guides
+                    • <code className="bg-muted px-1">Steps</code> - Step-by-step guides
                   </li>
                 </ul>
               </div>
@@ -354,28 +339,22 @@ export function formatDate(date: Date | string): string {
                 <h4 className="font-mono text-xs font-semibold">Layout</h4>
                 <ul className="text-muted-foreground space-y-1 font-mono text-xs">
                   <li>
-                    • <code className="bg-muted px-1">CardGrid</code> - Feature
-                    grids
+                    • <code className="bg-muted px-1">CardGrid</code> - Feature grids
                   </li>
                   <li>
-                    • <code className="bg-muted px-1">ComparisonTable</code> -
-                    Feature tables
+                    • <code className="bg-muted px-1">ComparisonTable</code> - Feature tables
                   </li>
                   <li>
-                    • <code className="bg-muted px-1">YouTube</code> - Video
-                    embeds
+                    • <code className="bg-muted px-1">YouTube</code> - Video embeds
                   </li>
                   <li>
-                    • <code className="bg-muted px-1">Kbd</code> - Keyboard
-                    shortcuts
+                    • <code className="bg-muted px-1">Kbd</code> - Keyboard shortcuts
                   </li>
                 </ul>
               </div>
             </div>
             <div className="border-border border-t pt-4">
-              <h4 className="mb-2 font-mono text-xs font-semibold">
-                Example Usage
-              </h4>
+              <h4 className="mb-2 font-mono text-xs font-semibold">Example Usage</h4>
               <pre className="bg-muted overflow-x-auto p-4 text-xs">
                 {`<Callout type="warning" title="Important">
   This is a warning callout in your blog post.
@@ -396,10 +375,9 @@ export function formatDate(date: Date | string): string {
       {/* Why Database Blog */}
       <DocsSection title="Why Database Over CMS">
         <DocsCallout variant="info" title="Full Control">
-          Unlike headless CMS solutions (Contentful, Sanity), a database-driven
-          blog gives you complete control over your data, no API rate limits,
-          and zero vendor dependencies. Perfect for SaaS products where content
-          is part of your core offering.
+          Unlike headless CMS solutions (Contentful, Sanity), a database-driven blog gives you
+          complete control over your data, no API rate limits, and zero vendor dependencies. Perfect
+          for SaaS products where content is part of your core offering.
         </DocsCallout>
         <DocsCard title="COMPARISON">
           <div className="grid gap-6 sm:grid-cols-2">
@@ -438,9 +416,7 @@ export function formatDate(date: Date | string): string {
             </div>
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">seoDescription</code>
-              <span className="text-muted-foreground">
-                Meta description (defaults to excerpt)
-              </span>
+              <span className="text-muted-foreground">Meta description (defaults to excerpt)</span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">featuredImage</code>
@@ -448,9 +424,7 @@ export function formatDate(date: Date | string): string {
             </div>
             <div className="flex justify-between">
               <code className="bg-muted px-1">slug</code>
-              <span className="text-muted-foreground">
-                URL path (/blog/your-slug)
-              </span>
+              <span className="text-muted-foreground">URL path (/blog/your-slug)</span>
             </div>
           </div>
         </DocsCard>
@@ -460,14 +434,9 @@ export function formatDate(date: Date | string): string {
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/seo">
-            <DocsCard
-              title="SEO_SETUP"
-              className="hover:border-primary/50 h-full transition-all"
-            >
+            <DocsCard title="SEO_SETUP" className="hover:border-primary/50 h-full transition-all">
               SEO Configuration
-              <p className="mb-6">
-                Learn how to optimize your blog posts for search engines.
-              </p>
+              <p className="mb-6">Learn how to optimize your blog posts for search engines.</p>
             </DocsCard>
           </Link>
           <Link href="/docs/tutorials/file-uploads">
@@ -476,9 +445,7 @@ export function formatDate(date: Date | string): string {
               className="hover:border-primary/50 h-full transition-all"
             >
               File Uploads
-              <p className="mb-6">
-                Upload featured images and media for your blog posts.
-              </p>
+              <p className="mb-6">Upload featured images and media for your blog posts.</p>
             </DocsCard>
           </Link>
         </div>

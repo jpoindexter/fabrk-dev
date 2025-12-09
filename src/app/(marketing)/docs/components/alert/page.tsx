@@ -17,9 +17,7 @@ export default function AlertPage() {
           <Alert>
             <Info className="h-5 w-5" />
             <AlertTitle>Heads up!</AlertTitle>
-            <AlertDescription>
-              You can add components to your app using the cli.
-            </AlertDescription>
+            <AlertDescription>You can add components to your app using the cli.</AlertDescription>
           </Alert>
         ),
         code: `<Alert>
@@ -58,9 +56,7 @@ export default function AlertPage() {
             <Alert variant="destructive">
               <XCircle className="h-5 w-5" />
               <AlertTitle>Error</AlertTitle>
-              <AlertDescription>
-                Your session has expired. Please log in again.
-              </AlertDescription>
+              <AlertDescription>Your session has expired. Please log in again.</AlertDescription>
             </Alert>
           ),
           code: `<Alert variant="destructive">
@@ -78,9 +74,7 @@ export default function AlertPage() {
             <Alert variant="success">
               <CheckCircle2 className="h-5 w-5" />
               <AlertTitle>Success</AlertTitle>
-              <AlertDescription>
-                Your changes have been saved successfully.
-              </AlertDescription>
+              <AlertDescription>Your changes have been saved successfully.</AlertDescription>
             </Alert>
           ),
           code: `<Alert variant="success">
@@ -97,9 +91,7 @@ export default function AlertPage() {
           preview: (
             <Alert>
               <AlertTitle>Note</AlertTitle>
-              <AlertDescription>
-                This alert does not include an icon.
-              </AlertDescription>
+              <AlertDescription>This alert does not include an icon.</AlertDescription>
             </Alert>
           ),
           code: `<Alert>
@@ -115,9 +107,7 @@ export default function AlertPage() {
           preview: (
             <Alert>
               <AlertCircle className="h-5 w-5" />
-              <AlertTitle>
-                Important: Maintenance scheduled for tonight
-              </AlertTitle>
+              <AlertTitle>Important: Maintenance scheduled for tonight</AlertTitle>
             </Alert>
           ),
           code: `<Alert>

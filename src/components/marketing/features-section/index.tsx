@@ -45,10 +45,7 @@ import { CreditsPreview } from './preview-credits';
 
 export function FeaturesSection() {
   return (
-    <section
-      id="features"
-      className="border-border scroll-mt-16 border-t px-6 py-20 lg:py-24"
-    >
+    <section id="features" className="border-border scroll-mt-16 border-t px-6 py-20 lg:py-24">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <motion.div
@@ -64,19 +61,12 @@ export function FeaturesSection() {
             meta="FEATURE_ANALYSIS │ FIB[377,610]"
             className="mb-4"
           />
-          <h2
-            className={cn(
-              mode.font,
-              'mb-4 text-4xl font-semibold tracking-tight'
-            )}
-          >
+          <h2 className={cn(mode.font, 'mb-4 text-4xl font-semibold tracking-tight')}>
             BUILT_FOR_SERIOUS_SAAS_PRODUCTS
           </h2>
-          <p
-            className={cn(mode.font, 'text-muted-foreground max-w-2xl text-sm')}
-          >
-            Includes many foundational and advanced components that cover a wide
-            range of use-cases without sacrificing flexibility and design.
+          <p className={cn(mode.font, 'text-muted-foreground max-w-2xl text-sm')}>
+            Includes many foundational and advanced components that cover a wide range of use-cases
+            without sacrificing flexibility and design.
           </p>
         </motion.div>
 
@@ -91,14 +81,12 @@ export function FeaturesSection() {
               {
                 icon: Mail,
                 title: 'Email/Password',
-                description:
-                  'Verify email, change password, forgot password flows.',
+                description: 'Verify email, change password, forgot password flows.',
               },
               {
                 icon: Key,
                 title: 'Social Sign-In',
-                description:
-                  'Google, Microsoft, or configure additional providers.',
+                description: 'Google, Microsoft, or configure additional providers.',
               },
               {
                 icon: Shield,
@@ -173,8 +161,7 @@ export function FeaturesSection() {
               {
                 icon: Coins,
                 title: 'Credit Balance',
-                description:
-                  'Track credits per user with tier-based allowances.',
+                description: 'Track credits per user with tier-based allowances.',
               },
               {
                 icon: BarChart3,

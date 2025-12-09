@@ -31,9 +31,7 @@ export function DocsCard({ children, className, code, title }: DocsCardProps) {
           </span>
         </div>
       )}
-      <div className="text-muted-foreground p-4 font-mono text-xs">
-        {children}
-      </div>
+      <div className="text-muted-foreground p-4 font-mono text-xs">{children}</div>
     </div>
   );
 }

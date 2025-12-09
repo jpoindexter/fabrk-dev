@@ -154,12 +154,8 @@ function FAQItem({ question, answer, index }: FAQItemProps) {
         </button>
         {isOpen && (
           <CardContent className="border-border bg-muted/30 border-t">
-            <span className={cn('text-muted-foreground text-xs', mode.font)}>
-              └─ [RESPONSE]:{' '}
-            </span>
-            <span className={cn('text-foreground text-xs', mode.font)}>
-              {answer}
-            </span>
+            <span className={cn('text-muted-foreground text-xs', mode.font)}>└─ [RESPONSE]: </span>
+            <span className={cn('text-foreground text-xs', mode.font)}>{answer}</span>
           </CardContent>
         )}
       </Card>
@@ -173,10 +169,7 @@ export function FAQSection() {
   const filteredFaqs = faqs.filter((faq) => faq.category === activeCategory);
 
   return (
-    <section
-      id="faq"
-      className="border-border scroll-mt-16 border-t px-6 py-20 lg:py-24"
-    >
+    <section id="faq" className="border-border scroll-mt-16 border-t px-6 py-20 lg:py-24">
       <div className="mx-auto max-w-4xl">
         {/* Header */}
         <motion.div
@@ -192,12 +185,7 @@ export function FAQSection() {
             meta="QUERY SYSTEM │ FIB[13] ENTRIES"
             className="mb-4"
           />
-          <h2
-            className={cn(
-              'mb-4 text-4xl font-semibold tracking-tight',
-              mode.font
-            )}
-          >
+          <h2 className={cn('mb-4 text-4xl font-semibold tracking-tight', mode.font)}>
             FREQUENTLY_ASKED_QUESTIONS
           </h2>
         </motion.div>
@@ -211,9 +199,7 @@ export function FAQSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div
-              className={cn('text-muted-foreground mb-4 text-xs', mode.font)}
-            >
+            <div className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
               [ CATEGORIES ]
             </div>
             <div className="flex flex-row gap-2 lg:flex-col lg:gap-1">

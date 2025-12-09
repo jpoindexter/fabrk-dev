@@ -216,9 +216,7 @@ export default function PaginationPage() {
                   <PaginationPrevious href="#" />
                 </PaginationItem>
                 <PaginationItem>
-                  <span className="text-muted-foreground px-4 text-sm">
-                    Page 2 of 10
-                  </span>
+                  <span className="text-muted-foreground px-4 text-sm">Page 2 of 10</span>
                 </PaginationItem>
                 <PaginationItem>
                   <PaginationNext href="#" />

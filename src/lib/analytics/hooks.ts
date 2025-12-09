@@ -19,8 +19,7 @@ export function usePageTracking() {
 
   useEffect(() => {
     if (pathname) {
-      const url =
-        pathname + (searchParams?.toString() ? `?${searchParams}` : '');
+      const url = pathname + (searchParams?.toString() ? `?${searchParams}` : '');
       trackPageView(url, document.title);
     }
   }, [pathname, searchParams]);
@@ -80,17 +79,14 @@ export function useTrackFeature(featureName: string) {
  * Track errors
  */
 export function useTrackError() {
-  return useCallback(
-    (error: Error | string, severity: 'low' | 'medium' | 'high' = 'medium') => {
-      const errorMessage = error instanceof Error ? error.message : error;
-      trackEvent('error_occurred', {
-        error: errorMessage,
-        page: window.location.pathname,
-        severity,
-      });
-    },
-    []
-  );
+  return useCallback((error: Error | string, severity: 'low' | 'medium' | 'high' = 'medium') => {
+    const errorMessage = error instanceof Error ? error.message : error;
+    trackEvent('error_occurred', {
+      error: errorMessage,
+      page: window.location.pathname,
+      severity,
+    });
+  }, []);
 }
 
 /**
@@ -144,10 +140,7 @@ export function useTrackDownload() {
  * Generic event tracker
  */
 export function useTrackEvent() {
-  return useCallback(
-    <T extends AnalyticsEvent>(event: T['name'], props?: T['props']) => {
-      trackEvent(event, props);
-    },
-    []
-  );
+  return useCallback(<T extends AnalyticsEvent>(event: T['name'], props?: T['props']) => {
+    trackEvent(event, props);
+  }, []);
 }

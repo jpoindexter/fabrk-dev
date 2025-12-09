@@ -5,12 +5,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  TemplatePageHeader,
-} from '@/components/ui/card';
+import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import {
@@ -262,19 +257,13 @@ function ErrorPagesPreview() {
 
         {/* Error Code */}
         <div className={cn(mode.font)}>
-          <span className="text-destructive text-6xl font-semibold">
-            {error.code}
-          </span>
+          <span className="text-destructive text-6xl font-semibold">{error.code}</span>
         </div>
 
         {/* Title & Description */}
         <div>
-          <h2 className={cn(mode.font, 'mb-2 text-2xl font-semibold')}>
-            {error.title}
-          </h2>
-          <p className={cn(mode.font, 'text-muted-foreground text-sm')}>
-            {error.description}
-          </p>
+          <h2 className={cn(mode.font, 'mb-2 text-2xl font-semibold')}>{error.title}</h2>
+          <p className={cn(mode.font, 'text-muted-foreground text-sm')}>{error.description}</p>
         </div>
 
         {/* Terminal Output */}
@@ -308,10 +297,7 @@ function ErrorPagesPreview() {
             <Home className="mr-1 h-3 w-3" />
             &gt; GO_HOME
           </Button>
-          <Button
-            variant="outline"
-            className={cn(mode.radius, mode.font, 'text-xs')}
-          >
+          <Button variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
             <ArrowLeft className="mr-1 h-3 w-3" />
             &gt; GO_BACK
           </Button>
@@ -386,11 +372,7 @@ export default function ErrorPagesTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock
-                  code={templateCode}
-                  language="tsx"
-                  maxHeight="600px"
-                />
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
             </Card>
           </TabsContent>
@@ -406,24 +388,18 @@ export default function ErrorPagesTemplate() {
                 <div>
                   <span className="text-primary">app/</span>
                   <span className="text-foreground">not-found.tsx</span>
-                  <span className="text-muted-foreground ml-4">
-                    ← 404 errors
-                  </span>
+                  <span className="text-muted-foreground ml-4">← 404 errors</span>
                 </div>
                 <div>
                   <span className="text-primary">app/</span>
                   <span className="text-foreground">error.tsx</span>
-                  <span className="text-muted-foreground ml-4">
-                    ← Generic errors
-                  </span>
+                  <span className="text-muted-foreground ml-4">← Generic errors</span>
                 </div>
                 <div>
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">maintenance/</span>
                   <span className="text-foreground">page.tsx</span>
-                  <span className="text-muted-foreground ml-4">
-                    ← 503 maintenance
-                  </span>
+                  <span className="text-muted-foreground ml-4">← 503 maintenance</span>
                 </div>
               </div>
             </div>
@@ -436,32 +412,25 @@ export default function ErrorPagesTemplate() {
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> Generic error, 404,
-                500, 503 templates
+                <span className="text-success">&gt;</span> Generic error, 404, 500, 503 templates
               </div>
               <div>
-                <span className="text-success">&gt;</span> Terminal-style error
-                output
+                <span className="text-success">&gt;</span> Terminal-style error output
               </div>
               <div>
-                <span className="text-success">&gt;</span> Contextual action
-                buttons
+                <span className="text-success">&gt;</span> Contextual action buttons
               </div>
               <div>
-                <span className="text-success">&gt;</span> Request ID for
-                debugging
+                <span className="text-success">&gt;</span> Request ID for debugging
               </div>
               <div>
-                <span className="text-success">&gt;</span> Color-coded severity
-                (error vs warning)
+                <span className="text-success">&gt;</span> Color-coded severity (error vs warning)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Maintenance mode with
-                ETA
+                <span className="text-success">&gt;</span> Maintenance mode with ETA
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant
-                (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

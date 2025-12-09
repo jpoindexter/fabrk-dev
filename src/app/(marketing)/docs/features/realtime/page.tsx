@@ -4,8 +4,7 @@ import { Bell, Activity, Users, Zap } from 'lucide-react';
 
 export const metadata = {
   title: 'Real-Time with Pusher - Fabrk Documentation',
-  description:
-    'Learn how to implement real-time features using Pusher in your Fabrk application.',
+  description: 'Learn how to implement real-time features using Pusher in your Fabrk application.',
 };
 
 export default function RealtimePage() {
@@ -20,33 +19,28 @@ export default function RealtimePage() {
         {
           icon: Bell,
           title: 'Notifications',
-          description:
-            'Real-time bell icon updates with badge counts when events occur.',
+          description: 'Real-time bell icon updates with badge counts when events occur.',
         },
         {
           icon: Activity,
           title: 'Activity Feed',
-          description:
-            'Live organization events and updates pushed instantly to all members.',
+          description: 'Live organization events and updates pushed instantly to all members.',
         },
         {
           icon: Users,
           title: 'Presence Tracking',
-          description:
-            'Show online members in real-time with automatic join/leave detection.',
+          description: 'Show online members in real-time with automatic join/leave detection.',
         },
         {
           icon: Zap,
           title: 'Instant Delivery',
-          description:
-            'Sub-second message delivery with WebSocket connections.',
+          description: 'Sub-second message delivery with WebSocket connections.',
         },
       ]}
       setup={[
         {
           title: 'Configure Pusher Credentials',
-          description:
-            'Add your Pusher credentials to your environment variables',
+          description: 'Add your Pusher credentials to your environment variables',
           code: `# .env.local
 PUSHER_APP_ID=your_app_id
 PUSHER_KEY=your_key
@@ -62,8 +56,7 @@ NEXT_PUBLIC_PUSHER_CLUSTER=your_cluster`,
       usage={[
         {
           title: 'Server-Side Usage',
-          description:
-            'Use the server client to trigger events from your API routes',
+          description: 'Use the server client to trigger events from your API routes',
           code: `// src/lib/pusher/server.ts
 import Pusher from "pusher";
 
@@ -101,8 +94,7 @@ await pusherServer.trigger(
         },
         {
           title: 'Client-Side Usage',
-          description:
-            'Subscribe to channels and listen for events in your React components',
+          description: 'Subscribe to channels and listen for events in your React components',
           code: `// src/lib/pusher/client.ts
 import PusherClient from "pusher-js";
 
@@ -210,14 +202,12 @@ export function OnlineMembers({ orgId }: { orgId: string }) {
         <DocsCard title="BEST_PRACTICES">
           <ul className="space-y-1">
             <li>
-              ├─ Use private channels (
-              <code className="bg-muted px-1">private-</code>) for user-specific
-              data
+              ├─ Use private channels (<code className="bg-muted px-1">private-</code>) for
+              user-specific data
             </li>
             <li>
-              ├─ Use presence channels (
-              <code className="bg-muted px-1">presence-</code>) for tracking
-              online status
+              ├─ Use presence channels (<code className="bg-muted px-1">presence-</code>) for
+              tracking online status
             </li>
             <li>├─ Always unsubscribe from channels when components unmount</li>
             <li>├─ Handle connection errors gracefully with retry logic</li>

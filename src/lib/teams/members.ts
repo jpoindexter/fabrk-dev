@@ -53,10 +53,7 @@ export async function removeMember(
   }
 
   // Check if remover has permission
-  const hasPermission = await hasOrganizationRole(removedBy, organizationId, [
-    'OWNER',
-    'ADMIN',
-  ]);
+  const hasPermission = await hasOrganizationRole(removedBy, organizationId, ['OWNER', 'ADMIN']);
 
   if (!hasPermission) {
     throw new Error('Insufficient permissions');
@@ -97,10 +94,7 @@ export async function updateMemberRole(
   }
 
   // Check if updater has permission
-  const hasPermission = await hasOrganizationRole(updatedBy, organizationId, [
-    'OWNER',
-    'ADMIN',
-  ]);
+  const hasPermission = await hasOrganizationRole(updatedBy, organizationId, ['OWNER', 'ADMIN']);
 
   if (!hasPermission) {
     throw new Error('Insufficient permissions');

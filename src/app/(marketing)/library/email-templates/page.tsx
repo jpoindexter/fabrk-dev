@@ -7,12 +7,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  TemplatePageHeader,
-  Card,
-  CardHeader,
-  CardContent,
-} from '@/components/ui/card';
+import { TemplatePageHeader, Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
@@ -92,9 +87,7 @@ function EmailTemplatesPreview() {
                   <div className="mb-6 flex items-center justify-between">
                     <div>
                       <div className="mb-1 flex items-center gap-2">
-                        <h2 className={cn(mode.font, 'text-lg font-semibold')}>
-                          {template.name}
-                        </h2>
+                        <h2 className={cn(mode.font, 'text-lg font-semibold')}>{template.name}</h2>
                         <span
                           className={cn(
                             mode.font,
@@ -104,24 +97,14 @@ function EmailTemplatesPreview() {
                           {template.category}
                         </span>
                       </div>
-                      <p
-                        className={cn(
-                          mode.font,
-                          'text-muted-foreground text-sm'
-                        )}
-                      >
+                      <p className={cn(mode.font, 'text-muted-foreground text-sm')}>
                         {template.description}
                       </p>
                     </div>
                   </div>
 
                   {/* Email Preview */}
-                  <div
-                    className={cn(
-                      mode.radius,
-                      'border-border bg-muted mb-6 border p-8'
-                    )}
-                  >
+                  <div className={cn(mode.radius, 'border-border bg-muted mb-6 border p-8')}>
                     <div
                       className="border-border bg-background mx-auto block min-h-[400px] max-w-[600px] border p-6"
                       // SECURITY: Sanitized with DOMPurify to prevent XSS
@@ -139,15 +122,10 @@ function EmailTemplatesPreview() {
                     )}
                   >
                     <div>
-                      <div className="text-muted-foreground mb-2">
-                        [TRIGGER_EVENTS]:
-                      </div>
+                      <div className="text-muted-foreground mb-2">[TRIGGER_EVENTS]:</div>
                       <div className="flex flex-wrap gap-2">
                         {template.triggers.map((trigger, idx) => (
-                          <span
-                            key={idx}
-                            className="border-border bg-muted/30 border px-2 py-1"
-                          >
+                          <span key={idx} className="border-border bg-muted/30 border px-2 py-1">
                             &gt; {trigger}
                           </span>
                         ))}
@@ -155,9 +133,7 @@ function EmailTemplatesPreview() {
                     </div>
 
                     <div>
-                      <div className="text-muted-foreground mb-2">
-                        [VARIABLES]:
-                      </div>
+                      <div className="text-muted-foreground mb-2">[VARIABLES]:</div>
                       <div className="flex flex-wrap gap-2">
                         {template.variables.map((variable, idx) => (
                           <span
@@ -240,11 +216,7 @@ export default function EmailTemplatesShowcase() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock
-                  code={templateCode}
-                  language="tsx"
-                  maxHeight="600px"
-                />
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
             </Card>
           </TabsContent>
@@ -261,9 +233,7 @@ export default function EmailTemplatesShowcase() {
                   <span className="text-primary">lib/</span>
                   <span className="text-muted-foreground">emails/</span>
                   <span className="text-foreground">welcome.tsx</span>
-                  <span className="text-muted-foreground ml-4">
-                    ← Copy template here
-                  </span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
                 </div>
               </div>
             </div>
@@ -276,31 +246,26 @@ export default function EmailTemplatesShowcase() {
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> 5 transactional email
-                templates
+                <span className="text-success">&gt;</span> 5 transactional email templates
               </div>
               <div>
-                <span className="text-success">&gt;</span> Welcome, password
-                reset, invoice, alert, verification
+                <span className="text-success">&gt;</span> Welcome, password reset, invoice, alert,
+                verification
               </div>
               <div>
-                <span className="text-success">&gt;</span> Dynamic variable
-                support
+                <span className="text-success">&gt;</span> Dynamic variable support
               </div>
               <div>
                 <span className="text-success">&gt;</span> Trigger event mapping
               </div>
               <div>
-                <span className="text-success">&gt;</span> Responsive email
-                layouts
+                <span className="text-success">&gt;</span> Responsive email layouts
               </div>
               <div>
-                <span className="text-success">&gt;</span> Terminal-themed
-                design
+                <span className="text-success">&gt;</span> Terminal-themed design
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant
-                (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

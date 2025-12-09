@@ -91,8 +91,7 @@ Account settings hub with tabbed interface for managing:
 
    ```tsx
    // BAD - rounded corners instead of rounded-none
-   className =
-     'data-[state=active]:bg-background flex flex-col items-center gap-2 px-4 py-4';
+   className = 'data-[state=active]:bg-background flex flex-col items-center gap-2 px-4 py-4';
    ```
 
    - **Impact**: Tabs have soft corners, breaks terminal aesthetic

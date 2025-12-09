@@ -44,11 +44,7 @@ function BalanceDisplayPreview({
           className={cn(
             'h-full transition-all',
             mode.radius,
-            percentage > 50
-              ? 'bg-primary'
-              : percentage > 20
-                ? 'bg-warning'
-                : 'bg-destructive'
+            percentage > 50 ? 'bg-primary' : percentage > 20 ? 'bg-warning' : 'bg-destructive'
           )}
           style={{ width: `${Math.min(percentage, 100)}%` }}
         />
@@ -69,11 +65,7 @@ export default function BalanceDisplayPage() {
       mainPreview={{
         preview: (
           <div className="mx-auto max-w-xs space-y-4 p-4">
-            <BalanceDisplayPreview
-              balance={750}
-              monthlyAllowance={1000}
-              tier="starter"
-            />
+            <BalanceDisplayPreview balance={750} monthlyAllowance={1000} tier="starter" />
           </div>
         ),
         code: `<BalanceDisplay />`,
@@ -94,11 +86,7 @@ export default function BalanceDisplayPage() {
           description: 'Yellow warning color when below 50% capacity.',
           preview: (
             <div className="mx-auto max-w-xs p-4">
-              <BalanceDisplayPreview
-                balance={350}
-                monthlyAllowance={1000}
-                tier="starter"
-              />
+              <BalanceDisplayPreview balance={350} monthlyAllowance={1000} tier="starter" />
             </div>
           ),
           code: `// Automatically shows warning when balance < 50%`,
@@ -108,11 +96,7 @@ export default function BalanceDisplayPage() {
           description: 'Red destructive color when below 20% capacity.',
           preview: (
             <div className="mx-auto max-w-xs p-4">
-              <BalanceDisplayPreview
-                balance={150}
-                monthlyAllowance={1000}
-                tier="starter"
-              />
+              <BalanceDisplayPreview balance={150} monthlyAllowance={1000} tier="starter" />
             </div>
           ),
           code: `// Automatically shows critical when balance < 20%`,
@@ -122,21 +106,9 @@ export default function BalanceDisplayPage() {
           description: "Display adapts to show the user's subscription tier.",
           preview: (
             <div className="mx-auto max-w-xs space-y-4 p-4">
-              <BalanceDisplayPreview
-                balance={80}
-                monthlyAllowance={100}
-                tier="free"
-              />
-              <BalanceDisplayPreview
-                balance={800}
-                monthlyAllowance={1000}
-                tier="starter"
-              />
-              <BalanceDisplayPreview
-                balance={8000}
-                monthlyAllowance={10000}
-                tier="pro"
-              />
+              <BalanceDisplayPreview balance={80} monthlyAllowance={100} tier="free" />
+              <BalanceDisplayPreview balance={800} monthlyAllowance={1000} tier="starter" />
+              <BalanceDisplayPreview balance={8000} monthlyAllowance={10000} tier="pro" />
             </div>
           ),
           code: `// Tier displayed automatically from user's subscription`,

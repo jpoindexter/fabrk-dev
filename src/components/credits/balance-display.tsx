@@ -21,10 +21,7 @@ interface BalanceDisplayProps {
   compact?: boolean;
 }
 
-export function BalanceDisplay({
-  className,
-  compact = false,
-}: BalanceDisplayProps) {
+export function BalanceDisplay({ className, compact = false }: BalanceDisplayProps) {
   const [data, setData] = useState<BalanceData | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -86,18 +83,12 @@ export function BalanceDisplay({
           className={cn(
             'h-full transition-all',
             mode.radius,
-            percentage > 50
-              ? 'bg-primary'
-              : percentage > 20
-                ? 'bg-warning'
-                : 'bg-destructive'
+            percentage > 50 ? 'bg-primary' : percentage > 20 ? 'bg-warning' : 'bg-destructive'
           )}
           style={{ width: `${Math.min(percentage, 100)}%` }}
         />
       </div>
-      <div className="text-muted-foreground text-xs uppercase">
-        {data.tier} tier
-      </div>
+      <div className="text-muted-foreground text-xs uppercase">{data.tier} tier</div>
     </div>
   );
 }

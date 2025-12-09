@@ -1,12 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardFooter,
-} from '@/components/ui/card';
+import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Settings } from 'lucide-react';
 
@@ -20,11 +15,7 @@ export default function CardPage() {
       mainPreview={{
         preview: (
           <Card className="w-[350px]">
-            <CardHeader
-              code="0x00"
-              title="CARD_TITLE"
-              meta="Card description"
-            />
+            <CardHeader code="0x00" title="CARD_TITLE" meta="Card description" />
             <CardContent>
               <p className="text-sm">
                 This is the card content area where you can place any content.
@@ -52,9 +43,7 @@ export default function CardPage() {
           preview: (
             <Card className="w-[350px]">
               <CardContent>
-                <p className="text-sm">
-                  Simple card with just content, no header or footer.
-                </p>
+                <p className="text-sm">Simple card with just content, no header or footer.</p>
               </CardContent>
             </Card>
           ),
@@ -69,11 +58,7 @@ export default function CardPage() {
           description: 'Card with icon in header',
           preview: (
             <Card className="w-[350px]">
-              <CardHeader
-                code="0x01"
-                title="SETTINGS"
-                icon={<Settings className="h-4 w-4" />}
-              />
+              <CardHeader code="0x01" title="SETTINGS" icon={<Settings className="h-4 w-4" />} />
               <CardContent>
                 <p className="text-sm">Card with icon in the header area.</p>
               </CardContent>
@@ -95,11 +80,7 @@ export default function CardPage() {
           description: 'Card with action buttons in footer',
           preview: (
             <Card className="w-[350px]">
-              <CardHeader
-                code="0x02"
-                title="CONFIRM_ACTION"
-                meta="Are you sure?"
-              />
+              <CardHeader code="0x02" title="CONFIRM_ACTION" meta="Are you sure?" />
               <CardFooter>
                 <Button variant="outline">&gt; CANCEL</Button>
                 <Button>&gt; CONFIRM</Button>
@@ -119,15 +100,9 @@ export default function CardPage() {
           description: 'Card with hover effects for clickable content',
           preview: (
             <Card className="w-[350px]" interactive>
-              <CardHeader
-                code="0x03"
-                title="INTERACTIVE_CARD"
-                meta="Click or hover"
-              />
+              <CardHeader code="0x03" title="INTERACTIVE_CARD" meta="Click or hover" />
               <CardContent>
-                <p className="text-sm">
-                  This card has hover effects with the interactive prop.
-                </p>
+                <p className="text-sm">This card has hover effects with the interactive prop.</p>
               </CardContent>
             </Card>
           ),
@@ -219,25 +194,19 @@ export default function CardPage() {
               <Card>
                 <CardHeader code="0x09" title="TOTAL_USERS" meta="1,234" />
                 <CardContent>
-                  <p className="text-muted-foreground text-xs">
-                    +12% from last month
-                  </p>
+                  <p className="text-muted-foreground text-xs">+12% from last month</p>
                 </CardContent>
               </Card>
               <Card>
                 <CardHeader code="0x0A" title="REVENUE" meta="$45.2K" />
                 <CardContent>
-                  <p className="text-muted-foreground text-xs">
-                    +8% from last month
-                  </p>
+                  <p className="text-muted-foreground text-xs">+8% from last month</p>
                 </CardContent>
               </Card>
               <Card>
                 <CardHeader code="0x0B" title="CONVERSION" meta="3.2%" />
                 <CardContent>
-                  <p className="text-muted-foreground text-xs">
-                    -2% from last month
-                  </p>
+                  <p className="text-muted-foreground text-xs">-2% from last month</p>
                 </CardContent>
               </Card>
             </div>
@@ -258,14 +227,12 @@ export default function CardPage() {
           name: 'code',
           type: 'string',
           default: '"0x00"',
-          description:
-            "Hex code displayed in header brackets (e.g., '0x00', '0x01')",
+          description: "Hex code displayed in header brackets (e.g., '0x00', '0x01')",
         },
         {
           name: 'title',
           type: 'string',
-          description:
-            'Title displayed in header in UPPERCASE_SNAKE_CASE format',
+          description: 'Title displayed in header in UPPERCASE_SNAKE_CASE format',
         },
         {
           name: 'icon',
@@ -299,8 +266,7 @@ export default function CardPage() {
           name: 'padding',
           type: '"sm" | "md" | "lg"',
           default: '"md"',
-          description:
-            'Padding size for CardContent (sm=8px, md=16px, lg=24px)',
+          description: 'Padding size for CardContent (sm=8px, md=16px, lg=24px)',
         },
       ]}
       accessibility={[

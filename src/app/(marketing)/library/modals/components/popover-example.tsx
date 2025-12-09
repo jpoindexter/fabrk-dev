@@ -5,11 +5,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader } from '@/components/ui/card';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Info, X } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
@@ -28,28 +24,20 @@ export function PopoverExample() {
 
         <Popover>
           <PopoverTrigger asChild>
-            <Button
-              variant="outline"
-              className={cn(mode.radius, mode.font, 'text-xs')}
-            >
+            <Button variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
               <Info className="mr-1 h-3 w-3" />
               &gt; MORE_INFO
             </Button>
           </PopoverTrigger>
           <PopoverContent className={cn(mode.radius, 'border-border w-80')}>
             <div className="space-y-4">
-              <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                [INFO]:
-              </div>
+              <div className={cn(mode.font, 'text-muted-foreground text-xs')}>[INFO]:</div>
               <div className={cn(mode.font, 'text-sm')}>
-                This popover displays contextual information without blocking
-                the page. Great for help text, quick actions, or mini forms.
+                This popover displays contextual information without blocking the page. Great for
+                help text, quick actions, or mini forms.
               </div>
               <div className="flex items-center gap-2">
-                <Button
-                  size="sm"
-                  className={cn(mode.radius, mode.font, 'h-7 text-xs')}
-                >
+                <Button size="sm" className={cn(mode.radius, mode.font, 'h-7 text-xs')}>
                   &gt; LEARN_MORE
                 </Button>
                 <Button

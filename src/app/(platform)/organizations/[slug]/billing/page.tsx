@@ -12,12 +12,7 @@ import { Loader2, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { toast } from 'sonner';
-import type {
-  Organization,
-  Subscription,
-  Invoice,
-  Usage,
-} from './components/types';
+import type { Organization, Subscription, Invoice, Usage } from './components/types';
 import { BillingHeader } from './components/billing-header';
 import { CurrentPlanCard } from './components/current-plan-card';
 import { UsageStatsCard } from './components/usage-stats-card';
@@ -30,12 +25,8 @@ export default function OrganizationBillingPage() {
   const params = useParams();
   const { data: _session } = useSession();
   const [loading, setLoading] = React.useState(true);
-  const [organization, setOrganization] = React.useState<Organization | null>(
-    null
-  );
-  const [subscription, setSubscription] = React.useState<Subscription | null>(
-    null
-  );
+  const [organization, setOrganization] = React.useState<Organization | null>(null);
+  const [subscription, setSubscription] = React.useState<Subscription | null>(null);
   const [invoices, setInvoices] = React.useState<Invoice[]>([]);
   const [usage, setUsage] = React.useState<Usage | null>(null);
   const [loadingPortal, setLoadingPortal] = React.useState(false);
@@ -51,18 +42,11 @@ export default function OrganizationBillingPage() {
 
         // Fetch billing data if customer exists
         if (orgData.organization.customerId) {
-          const [subResponse, invoicesResponse, usageResponse] =
-            await Promise.all([
-              fetch(
-                `/api/organizations/${orgData.organization.id}/billing/subscription`
-              ),
-              fetch(
-                `/api/organizations/${orgData.organization.id}/billing/invoices`
-              ),
-              fetch(
-                `/api/organizations/${orgData.organization.id}/billing/usage`
-              ),
-            ]);
+          const [subResponse, invoicesResponse, usageResponse] = await Promise.all([
+            fetch(`/api/organizations/${orgData.organization.id}/billing/subscription`),
+            fetch(`/api/organizations/${orgData.organization.id}/billing/invoices`),
+            fetch(`/api/organizations/${orgData.organization.id}/billing/usage`),
+          ]);
 
           if (subResponse.ok) {
             const subData = await subResponse.json();
@@ -97,12 +81,9 @@ export default function OrganizationBillingPage() {
 
     setLoadingPortal(true);
     try {
-      const response = await fetch(
-        `/api/organizations/${organization.id}/billing/portal`,
-        {
-          method: 'POST',
-        }
-      );
+      const response = await fetch(`/api/organizations/${organization.id}/billing/portal`, {
+        method: 'POST',
+      });
 
       if (!response.ok) throw new Error('Failed to create portal session');
 
@@ -130,11 +111,7 @@ export default function OrganizationBillingPage() {
   if (!organization) {
     return (
       <Card tone="danger">
-        <CardHeader
-          code="0x00"
-          title="ERROR"
-          icon={<AlertTriangle className="h-4 w-4" />}
-        />
+        <CardHeader code="0x00" title="ERROR" icon={<AlertTriangle className="h-4 w-4" />} />
         <CardContent padding="lg">
           <div className="text-center">
             <h3 className="text-lg font-semibold">Organization not found</h3>

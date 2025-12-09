@@ -1,16 +1,7 @@
 'use client';
 
 import { Card, CardHeader, CardContent, Badge } from '@/components/ui/card';
-import {
-  Users,
-  Lock,
-  Shield,
-  Webhook,
-  Key,
-  Radio,
-  Server,
-  BarChart,
-} from 'lucide-react';
+import { Users, Lock, Shield, Webhook, Key, Radio, Server, BarChart } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
@@ -68,12 +59,7 @@ export function EnterpriseFeaturesSection() {
   ];
 
   return (
-    <section
-      className={cn(
-        'border-border bg-background border-t px-6 py-24',
-        mode.font
-      )}
-    >
+    <section className={cn('border-border bg-background border-t px-6 py-24', mode.font)}>
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <motion.div
@@ -103,9 +89,8 @@ export function EnterpriseFeaturesSection() {
             viewport={{ once: true }}
           >
             <p className="text-muted-foreground mx-auto max-w-2xl text-sm">
-              &gt; Production-ready enterprise features that would cost $10,000+
-              to build yourself. All included, fully tested, and ready to
-              deploy.
+              &gt; Production-ready enterprise features that would cost $10,000+ to build yourself.
+              All included, fully tested, and ready to deploy.
             </p>
           </motion.div>
         </div>
@@ -165,16 +150,11 @@ export function EnterpriseFeaturesSection() {
                   />
                   <CardContent className="p-4">
                     <div className="text-foreground mb-3 text-xs font-semibold">
-                      {feature.title
-                        .toUpperCase()
-                        .replace(/ /g, '_')
-                        .replace(/\+/g, '_AND_')}
+                      {feature.title.toUpperCase().replace(/ /g, '_').replace(/\+/g, '_AND_')}
                     </div>
                     <div className="text-xs">
                       <span className="text-muted-foreground">DESC: </span>
-                      <span className="text-foreground">
-                        {feature.description}
-                      </span>
+                      <span className="text-foreground">{feature.description}</span>
                     </div>
                   </CardContent>
                 </Card>
@@ -193,12 +173,12 @@ export function EnterpriseFeaturesSection() {
           <Card className="mt-12 text-center">
             <CardContent className="p-8">
               <p className="text-sm font-semibold">
-                <span className="text-primary">$200,000+</span> worth of
-                enterprise features, included out-of-the-box
+                <span className="text-primary">$200,000+</span> worth of enterprise features,
+                included out-of-the-box
               </p>
               <span className="text-muted-foreground mt-2 block text-xs">
-                These features would take 6-12 months to build yourself. We've
-                done the hard work so you can focus on your product.
+                These features would take 6-12 months to build yourself. We've done the hard work so
+                you can focus on your product.
               </span>
             </CardContent>
           </Card>

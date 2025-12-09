@@ -246,12 +246,8 @@ Tutorials: [TUT.01] - [TUT.99]
 export function DocsAccordion({ title, children }) {
   return (
     <details className="border-border bg-card border">
-      <summary className="cursor-pointer p-4 font-mono text-sm font-medium">
-        {title}
-      </summary>
-      <div className="border-border text-muted-foreground border-t p-4 text-sm">
-        {children}
-      </div>
+      <summary className="cursor-pointer p-4 font-mono text-sm font-medium">{title}</summary>
+      <div className="border-border text-muted-foreground border-t p-4 text-sm">{children}</div>
     </details>
   );
 }
@@ -307,10 +303,7 @@ Use the correct template for each page type:
 
 ```js
 // Check for hardcoded inline code styling
-if (
-  /className="[^"]*bg-muted[^"]*px-/.test(content) &&
-  !content.includes('docsTypography.code')
-) {
+if (/className="[^"]*bg-muted[^"]*px-/.test(content) && !content.includes('docsTypography.code')) {
   warn('Inline code not using docsTypography.code token');
 }
 

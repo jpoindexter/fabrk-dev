@@ -18,12 +18,7 @@ const ALLOWED_ORIGINS = process.env.CORS_ALLOWED_ORIGINS?.split(',') ?? [
 const ALLOWED_METHODS = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'];
 
 // Allowed headers
-const ALLOWED_HEADERS = [
-  'Content-Type',
-  'Authorization',
-  'X-Requested-With',
-  'X-API-Key',
-];
+const ALLOWED_HEADERS = ['Content-Type', 'Authorization', 'X-Requested-With', 'X-API-Key'];
 
 // Max age for preflight cache (24 hours)
 const MAX_AGE = 86400;
@@ -61,10 +56,7 @@ export function handleCorsPreFlight(request: NextRequest): NextResponse {
 /**
  * Add CORS headers to an existing response
  */
-export function withCors(
-  request: NextRequest,
-  response: NextResponse
-): NextResponse {
+export function withCors(request: NextRequest, response: NextResponse): NextResponse {
   const corsHeaders = getCorsHeaders(request);
 
   corsHeaders.forEach((value, key) => {

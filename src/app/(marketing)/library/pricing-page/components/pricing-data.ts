@@ -75,8 +75,7 @@ export const faqs = [
   },
   {
     question: 'Is there a free trial?',
-    answer:
-      'Yes! Pro plan comes with a 14-day free trial. No credit card required to start.',
+    answer: 'Yes! Pro plan comes with a 14-day free trial. No credit card required to start.',
   },
   {
     question: 'What happens when I exceed my limits?',

@@ -135,11 +135,7 @@ const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
       </span>
       {(icon || meta) && (
         <span className="flex items-center gap-2">
-          {meta && (
-            <span className={cn('text-muted-foreground text-xs', mode.font)}>
-              {meta}
-            </span>
-          )}
+          {meta && <span className={cn('text-muted-foreground text-xs', mode.font)}>{meta}</span>}
           {icon}
         </span>
       )}
@@ -184,10 +180,7 @@ const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
     <div
       ref={ref}
       data-slot="card-footer"
-      className={cn(
-        'border-border flex items-center gap-2 border-t px-4 py-2',
-        className
-      )}
+      className={cn('border-border flex items-center gap-2 border-t px-4 py-2', className)}
       {...props}
     />
   )
@@ -402,11 +395,7 @@ const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
     <div
       ref={ref}
       data-slot="badge"
-      className={cn(
-        'border-border bg-card inline-block border px-2 py-1',
-        mode.radius,
-        className
-      )}
+      className={cn('border-border bg-card inline-block border px-2 py-1', mode.radius, className)}
       {...props}
     >
       <span className={cn('text-muted-foreground text-xs', mode.font)}>
@@ -438,11 +427,7 @@ const PageBadge = React.forwardRef<HTMLDivElement, PageBadgeProps>(
     <div
       ref={ref}
       data-slot="page-badge"
-      className={cn(
-        'border-border inline-block border px-4 py-1',
-        mode.radius,
-        className
-      )}
+      className={cn('border-border inline-block border px-4 py-1', mode.radius, className)}
       {...props}
     >
       <span className={cn('text-muted-foreground text-xs', mode.font)}>
@@ -477,21 +462,8 @@ export type TemplatePageHeaderProps = React.HTMLAttributes<HTMLDivElement> & {
   badgePrefix?: string;
 };
 
-const TemplatePageHeader = React.forwardRef<
-  HTMLDivElement,
-  TemplatePageHeaderProps
->(
-  (
-    {
-      badge,
-      title,
-      description,
-      badgePrefix = 'TEMPLATE',
-      className,
-      ...props
-    },
-    ref
-  ) => (
+const TemplatePageHeader = React.forwardRef<HTMLDivElement, TemplatePageHeaderProps>(
+  ({ badge, title, description, badgePrefix = 'TEMPLATE', className, ...props }, ref) => (
     <div
       ref={ref}
       data-slot="template-page-header"
@@ -499,13 +471,9 @@ const TemplatePageHeader = React.forwardRef<
       {...props}
     >
       <PageBadge prefix={badgePrefix}>{badge}</PageBadge>
-      <h1 className={cn('text-4xl font-semibold tracking-tight', mode.font)}>
-        {title}
-      </h1>
+      <h1 className={cn('text-4xl font-semibold tracking-tight', mode.font)}>{title}</h1>
       {description && (
-        <p className={cn('text-muted-foreground text-sm', mode.font)}>
-          {description}
-        </p>
+        <p className={cn('text-muted-foreground text-sm', mode.font)}>{description}</p>
       )}
     </div>
   )

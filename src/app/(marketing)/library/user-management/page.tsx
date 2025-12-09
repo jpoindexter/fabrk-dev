@@ -20,12 +20,7 @@ import {
 import { UserPlus, Download } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  TemplatePageHeader,
-} from '@/components/ui/card';
+import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { columns } from './components/user-table-columns';
@@ -167,15 +162,7 @@ function UserManagementPreview() {
   });
 
   const exportToCSV = useCallback(() => {
-    const headers = [
-      'Name',
-      'Email',
-      'Role',
-      'Status',
-      'Plan',
-      'Created',
-      'Last Login',
-    ];
+    const headers = ['Name', 'Email', 'Role', 'Status', 'Plan', 'Created', 'Last Login'];
     const csvData = mockUsers.map((user) => [
       user.name,
       user.email,
@@ -186,10 +173,7 @@ function UserManagementPreview() {
       user.lastLogin,
     ]);
 
-    const csv = [
-      headers.join(','),
-      ...csvData.map((row) => row.join(',')),
-    ].join('\n');
+    const csv = [headers.join(','), ...csvData.map((row) => row.join(','))].join('\n');
 
     const blob = new Blob([csv], { type: 'text/csv' });
     const url = window.URL.createObjectURL(blob);
@@ -204,9 +188,7 @@ function UserManagementPreview() {
       <div className="space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <h1 className={cn(mode.font, 'text-2xl font-semibold')}>
-            User Management
-          </h1>
+          <h1 className={cn(mode.font, 'text-2xl font-semibold')}>User Management</h1>
           <Button className={cn(mode.radius, mode.font, 'text-xs')}>
             <UserPlus className="mr-2 h-4 w-4" />
             &gt; ADD_USER
@@ -312,11 +294,7 @@ export default function UserManagementTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock
-                  code={templateCode}
-                  language="tsx"
-                  maxHeight="600px"
-                />
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
             </Card>
           </TabsContent>
@@ -333,9 +311,7 @@ export default function UserManagementTemplate() {
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">admin/users/</span>
                   <span className="text-foreground">page.tsx</span>
-                  <span className="text-muted-foreground ml-4">
-                    ← Copy template here
-                  </span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
                 </div>
               </div>
             </div>
@@ -348,31 +324,25 @@ export default function UserManagementTemplate() {
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> TanStack Table
-                integration
+                <span className="text-success">&gt;</span> TanStack Table integration
               </div>
               <div>
-                <span className="text-success">&gt;</span> Sorting, filtering,
-                pagination
+                <span className="text-success">&gt;</span> Sorting, filtering, pagination
               </div>
               <div>
-                <span className="text-success">&gt;</span> CSV export
-                functionality
+                <span className="text-success">&gt;</span> CSV export functionality
               </div>
               <div>
                 <span className="text-success">&gt;</span> User stats dashboard
               </div>
               <div>
-                <span className="text-success">&gt;</span> Role-based status
-                badges
+                <span className="text-success">&gt;</span> Role-based status badges
               </div>
               <div>
-                <span className="text-success">&gt;</span> Responsive table
-                layout
+                <span className="text-success">&gt;</span> Responsive table layout
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant
-                (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

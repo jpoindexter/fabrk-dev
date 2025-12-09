@@ -89,10 +89,4 @@ const InputOTPSeparator = React.forwardRef<
 ));
 InputOTPSeparator.displayName = 'InputOTPSeparator';
 
-export {
-  InputOTP,
-  InputOTP as InputOtp,
-  InputOTPGroup,
-  InputOTPSeparator,
-  InputOTPSlot,
-};
+export { InputOTP, InputOTP as InputOtp, InputOTPGroup, InputOTPSeparator, InputOTPSlot };

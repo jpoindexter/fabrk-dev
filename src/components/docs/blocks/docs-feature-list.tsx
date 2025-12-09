@@ -24,11 +24,7 @@ interface DocsFeatureListProps {
   startIndex?: number;
 }
 
-export function DocsFeatureList({
-  features,
-  columns = 3,
-  startIndex = 1,
-}: DocsFeatureListProps) {
+export function DocsFeatureList({ features, columns = 3, startIndex = 1 }: DocsFeatureListProps) {
   const gridCols =
     columns === 2
       ? 'md:grid-cols-2'
@@ -40,10 +36,7 @@ export function DocsFeatureList({
     <div className={`grid gap-4 ${gridCols}`}>
       {features.map((feature, index) => {
         const Icon = feature.icon;
-        const hexCode = (startIndex + index)
-          .toString(16)
-          .toUpperCase()
-          .padStart(2, '0');
+        const hexCode = (startIndex + index).toString(16).toUpperCase().padStart(2, '0');
         const moduleCode =
           feature.module ||
           feature.title

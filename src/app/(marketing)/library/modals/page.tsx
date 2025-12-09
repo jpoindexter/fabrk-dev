@@ -5,12 +5,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  TemplatePageHeader,
-} from '@/components/ui/card';
+import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import {
@@ -96,10 +91,7 @@ function ModalsPreview() {
     <div className="bg-background/50 flex min-h-[600px] items-center justify-center p-8">
       <AlertDialog>
         <AlertDialogTrigger asChild>
-          <Button
-            variant="destructive"
-            className={cn(mode.radius, mode.font, 'text-xs')}
-          >
+          <Button variant="destructive" className={cn(mode.radius, mode.font, 'text-xs')}>
             <Trash2 className="mr-1 h-3 w-3" />
             &gt; DELETE_ITEM
           </Button>
@@ -111,18 +103,14 @@ function ModalsPreview() {
                 <AlertTriangle className="text-destructive h-5 w-5" />
               </div>
             </div>
-            <AlertDialogTitle className={cn(mode.font)}>
-              [CONFIRM_DELETE]
-            </AlertDialogTitle>
+            <AlertDialogTitle className={cn(mode.font)}>[CONFIRM_DELETE]</AlertDialogTitle>
             <AlertDialogDescription className={cn(mode.font, 'text-sm')}>
-              This action cannot be undone. This will permanently delete the
-              item and remove all associated data from our servers.
+              This action cannot be undone. This will permanently delete the item and remove all
+              associated data from our servers.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel
-              className={cn(mode.radius, mode.font, 'text-xs')}
-            >
+            <AlertDialogCancel className={cn(mode.radius, mode.font, 'text-xs')}>
               &gt; CANCEL
             </AlertDialogCancel>
             <AlertDialogAction
@@ -201,11 +189,7 @@ export default function ModalsTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock
-                  code={templateCode}
-                  language="tsx"
-                  maxHeight="600px"
-                />
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
             </Card>
           </TabsContent>
@@ -236,9 +220,7 @@ export default function ModalsTemplate() {
               </div>
               <div className="space-y-2">
                 <div className="font-semibold">[POPOVER]</div>
-                <div className="text-muted-foreground">
-                  Contextual menus, dropdowns, tooltips
-                </div>
+                <div className="text-muted-foreground">Contextual menus, dropdowns, tooltips</div>
               </div>
             </div>
           </CardContent>
@@ -250,31 +232,25 @@ export default function ModalsTemplate() {
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> AlertDialog for
-                destructive actions
+                <span className="text-success">&gt;</span> AlertDialog for destructive actions
               </div>
               <div>
-                <span className="text-success">&gt;</span> Dialog for forms and
-                content
+                <span className="text-success">&gt;</span> Dialog for forms and content
               </div>
               <div>
                 <span className="text-success">&gt;</span> Sheet for side panels
               </div>
               <div>
-                <span className="text-success">&gt;</span> Popover for
-                contextual menus
+                <span className="text-success">&gt;</span> Popover for contextual menus
               </div>
               <div>
-                <span className="text-success">&gt;</span> Keyboard navigation
-                (ESC to close)
+                <span className="text-success">&gt;</span> Keyboard navigation (ESC to close)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Focus trap and
-                accessibility
+                <span className="text-success">&gt;</span> Focus trap and accessibility
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant
-                (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

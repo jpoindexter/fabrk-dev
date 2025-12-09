@@ -21,11 +21,7 @@ export default function InputNumberPage() {
   placeholder="Enter a number"
 />`,
         preview: (
-          <InputNumber
-            value={value}
-            onValueChange={setValue}
-            placeholder="Enter a number"
-          />
+          <InputNumber value={value} onValueChange={setValue} placeholder="Enter a number" />
         ),
       }}
       variants={[
@@ -59,12 +55,7 @@ export default function InputNumberPage() {
   placeholder="Step by 5"
 />`,
           preview: (
-            <InputNumber
-              value={value}
-              onValueChange={setValue}
-              step={5}
-              placeholder="Step by 5"
-            />
+            <InputNumber value={value} onValueChange={setValue} step={5} placeholder="Step by 5" />
           ),
         },
         {

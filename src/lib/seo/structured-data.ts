@@ -243,9 +243,7 @@ export function generateHowToSchema(data: {
  * Generate Breadcrumb schema (for navigation)
  * Helps with site structure understanding (SEO + GEO)
  */
-export function generateBreadcrumbSchema(
-  items: { name: string; url: string }[]
-) {
+export function generateBreadcrumbSchema(items: { name: string; url: string }[]) {
   const baseUrl = siteConfig.url;
 
   return {
@@ -272,8 +270,7 @@ export function generateReviewSchema(reviews: Review[], productName?: string) {
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: (
-        reviews.reduce((sum, r) => sum + r.reviewRating.ratingValue, 0) /
-        reviews.length
+        reviews.reduce((sum, r) => sum + r.reviewRating.ratingValue, 0) / reviews.length
       ).toFixed(1),
       reviewCount: reviews.length,
       bestRating: 5,

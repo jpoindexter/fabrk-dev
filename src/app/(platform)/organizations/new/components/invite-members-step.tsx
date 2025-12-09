@@ -87,10 +87,7 @@ export function InviteMembersStep({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Default Role</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger className="border-border rounded-none border">
                         <SelectValue placeholder="Select a role" />
@@ -100,41 +97,31 @@ export function InviteMembersStep({
                       <SelectItem value="MEMBER">
                         <div className="flex items-center gap-2">
                           <Badge variant="secondary">MEMBER</Badge>
-                          <span className="text-muted-foreground text-xs">
-                            Standard access
-                          </span>
+                          <span className="text-muted-foreground text-xs">Standard access</span>
                         </div>
                       </SelectItem>
                       <SelectItem value="ADMIN">
                         <div className="flex items-center gap-2">
                           <Badge variant="default">ADMIN</Badge>
-                          <span className="text-muted-foreground text-xs">
-                            Can manage members
-                          </span>
+                          <span className="text-muted-foreground text-xs">Can manage members</span>
                         </div>
                       </SelectItem>
                       <SelectItem value="GUEST">
                         <div className="flex items-center gap-2">
                           <Badge variant="outline">GUEST</Badge>
-                          <span className="text-muted-foreground text-xs">
-                            Limited access
-                          </span>
+                          <span className="text-muted-foreground text-xs">Limited access</span>
                         </div>
                       </SelectItem>
                     </SelectContent>
                   </Select>
-                  <FormDescription>
-                    The role assigned to all invited members
-                  </FormDescription>
+                  <FormDescription>The role assigned to all invited members</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
             />
 
             <div className="border-border bg-muted rounded-none border p-4">
-              <h4 className="mb-2 font-mono text-xs font-semibold">
-                [ROLE_PERMISSIONS]:
-              </h4>
+              <h4 className="mb-2 font-mono text-xs font-semibold">[ROLE_PERMISSIONS]:</h4>
               <ul className="text-muted-foreground space-y-1 text-sm">
                 <li>
                   • <strong>OWNER</strong>: Full control (assigned to creator)

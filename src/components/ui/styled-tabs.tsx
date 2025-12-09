@@ -67,18 +67,14 @@ export function StyledTabs({
   className,
   description,
 }: StyledTabsProps) {
-  const descriptionText =
-    typeof description === 'function' ? description(value) : description;
+  const descriptionText = typeof description === 'function' ? description(value) : description;
 
   return (
     <Tabs value={value} onValueChange={onValueChange} className={className}>
       <Card tone="neutral">
         <CardHeader code={code} title={title} />
         <TabsList
-          className={cn(
-            'h-auto w-full justify-start border-0 bg-transparent p-0',
-            mode.radius
-          )}
+          className={cn('h-auto w-full justify-start border-0 bg-transparent p-0', mode.radius)}
         >
           {tabs.map((tab, index) => {
             const Icon = tab.icon;
@@ -100,10 +96,7 @@ export function StyledTabs({
         </TabsList>
         {descriptionText && (
           <div
-            className={cn(
-              'text-muted-foreground border-border border-t p-4 text-xs',
-              mode.font
-            )}
+            className={cn('text-muted-foreground border-border border-t p-4 text-xs', mode.font)}
           >
             [SELECTED]: {descriptionText}
           </div>
@@ -124,11 +117,7 @@ export interface StyledTabsContentProps {
  * Content panel for StyledTabs
  * Automatically applies floating spacing (mt-6)
  */
-export function StyledTabsContent({
-  value,
-  children,
-  className,
-}: StyledTabsContentProps) {
+export function StyledTabsContent({ value, children, className }: StyledTabsContentProps) {
   return (
     <TabsContent value={value} className={cn('mt-6', className)}>
       {children}

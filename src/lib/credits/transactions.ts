@@ -17,10 +17,7 @@ export interface TransactionFilters {
 /**
  * Get transaction history for a user
  */
-export async function getTransactionHistory(
-  userId: string,
-  filters: TransactionFilters = {}
-) {
+export async function getTransactionHistory(userId: string, filters: TransactionFilters = {}) {
   const balance = await getOrCreateBalance(userId);
 
   const where: Record<string, unknown> = { balanceId: balance.id };
@@ -91,10 +88,7 @@ export async function getUsageStats(userId: string, days: number = 30) {
 /**
  * Get total usage for a period
  */
-export async function getTotalUsage(
-  userId: string,
-  days: number = 30
-): Promise<number> {
+export async function getTotalUsage(userId: string, days: number = 30): Promise<number> {
   const stats = await getUsageStats(userId, days);
   return stats.reduce((sum, day) => sum + day.credits, 0);
 }

@@ -31,17 +31,14 @@ config.runtimeDataModel = JSON.parse(
   '{"models":{"User":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"email","kind":"scalar","type":"String"},{"name":"name","kind":"scalar","type":"String"},{"name":"image","kind":"scalar","type":"String"},{"name":"emailVerified","kind":"scalar","type":"DateTime"},{"name":"password","kind":"scalar","type":"String"},{"name":"role","kind":"enum","type":"Role"},{"name":"customerId","kind":"scalar","type":"String"},{"name":"tier","kind":"scalar","type":"String"},{"name":"subscriptionTier","kind":"scalar","type":"String"},{"name":"trialEndsAt","kind":"scalar","type":"DateTime"},{"name":"licenseKey","kind":"scalar","type":"String"},{"name":"githubUsername","kind":"scalar","type":"String"},{"name":"githubAccessAt","kind":"scalar","type":"DateTime"},{"name":"githubAccessStatus","kind":"scalar","type":"String"},{"name":"resetToken","kind":"scalar","type":"String"},{"name":"resetExpires","kind":"scalar","type":"DateTime"},{"name":"verifyToken","kind":"scalar","type":"String"},{"name":"sessionVersion","kind":"scalar","type":"Int"},{"name":"settings","kind":"scalar","type":"Json"},{"name":"deletedAt","kind":"scalar","type":"DateTime"},{"name":"anonymizedAt","kind":"scalar","type":"DateTime"},{"name":"createdAt","kind":"scalar","type":"DateTime"},{"name":"updatedAt","kind":"scalar","type":"DateTime"},{"name":"accounts","kind":"object","type":"Account","relationName":"AccountToUser"},{"name":"sessions","kind":"object","type":"Session","relationName":"SessionToUser"},{"name":"payments","kind":"object","type":"Payment","relationName":"PaymentToUser"},{"name":"mfaDevices","kind":"object","type":"MFADevice","relationName":"MFADeviceToUser"},{"name":"backupCodes","kind":"object","type":"BackupCode","relationName":"BackupCodeToUser"},{"name":"organizations","kind":"object","type":"OrganizationMember","relationName":"OrganizationMemberToUser"},{"name":"organizationInvites","kind":"object","type":"OrganizationInvite","relationName":"OrganizationInviteToUser"},{"name":"uploads","kind":"object","type":"Upload","relationName":"UploadToUser"},{"name":"auditLogs","kind":"object","type":"AuditLog","relationName":"AuditLogToUser"},{"name":"notifications","kind":"object","type":"Notification","relationName":"NotificationToUser"},{"name":"apiKeys","kind":"object","type":"ApiKey","relationName":"ApiKeyToUser"},{"name":"consents","kind":"object","type":"Consent","relationName":"ConsentToUser"},{"name":"blogPosts","kind":"object","type":"BlogPost","relationName":"BlogPostToUser"},{"name":"creditBalance","kind":"object","type":"CreditBalance","relationName":"CreditBalanceToUser"}],"dbName":null},"Account":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"userId","kind":"scalar","type":"String"},{"name":"type","kind":"scalar","type":"String"},{"name":"provider","kind":"scalar","type":"String"},{"name":"providerAccountId","kind":"scalar","type":"String"},{"name":"refresh_token","kind":"scalar","type":"String"},{"name":"access_token","kind":"scalar","type":"String"},{"name":"expires_at","kind":"scalar","type":"Int"},{"name":"token_type","kind":"scalar","type":"String"},{"name":"scope","kind":"scalar","type":"String"},{"name":"id_token","kind":"scalar","type":"String"},{"name":"session_state","kind":"scalar","type":"String"},{"name":"user","kind":"object","type":"User","relationName":"AccountToUser"}],"dbName":null},"Session":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"sessionToken","kind":"scalar","type":"String"},{"name":"userId","kind":"scalar","type":"String"},{"name":"expires","kind":"scalar","type":"DateTime"},{"name":"user","kind":"object","type":"User","relationName":"SessionToUser"}],"dbName":null},"VerificationToken":{"fields":[{"name":"identifier","kind":"scalar","type":"String"},{"name":"token","kind":"scalar","type":"String"},{"name":"expires","kind":"scalar","type":"DateTime"}],"dbName":null},"Payment":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"userId","kind":"scalar","type":"String"},{"name":"stripeId","kind":"scalar","type":"String"},{"name":"stripePaymentId","kind":"scalar","type":"String"},{"name":"amount","kind":"scalar","type":"Int"},{"name":"status","kind":"scalar","type":"String"},{"name":"productId","kind":"scalar","type":"String"},{"name":"createdAt","kind":"scalar","type":"DateTime"},{"name":"user","kind":"object","type":"User","relationName":"PaymentToUser"}],"dbName":null},"CheckoutSession":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"userId","kind":"scalar","type":"String"},{"name":"sessionId","kind":"scalar","type":"String"},{"name":"priceId","kind":"scalar","type":"String"},{"name":"createdAt","kind":"scalar","type":"DateTime"},{"name":"expiresAt","kind":"scalar","type":"DateTime"}],"dbName":null},"WebhookEvent":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"eventId","kind":"scalar","type":"String"},{"name":"processed","kind":"scalar","type":"DateTime"}],"dbName":null},"MFADevice":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"userId","kind":"scalar","type":"String"},{"name":"type","kind":"scalar","type":"String"},{"name":"secret","kind":"scalar","type":"String"},{"name":"verified","kind":"scalar","type":"Boolean"},{"name":"name","kind":"scalar","type":"String"},{"name":"lastUsed","kind":"scalar","type":"DateTime"},{"name":"createdAt","kind":"scalar","type":"DateTime"},{"name":"user","kind":"object","type":"User","relationName":"MFADeviceToUser"}],"dbName":null},"BackupCode":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"userId","kind":"scalar","type":"String"},{"name":"code","kind":"scalar","type":"String"},{"name":"used","kind":"scalar","type":"Boolean"},{"name":"usedAt","kind":"scalar","type":"DateTime"},{"name":"createdAt","kind":"scalar","type":"DateTime"},{"name":"user","kind":"object","type":"User","relationName":"BackupCodeToUser"}],"dbName":null},"Organization":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"name","kind":"scalar","type":"String"},{"name":"slug","kind":"scalar","type":"String"},{"name":"description","kind":"scalar","type":"String"},{"name":"logo","kind":"scalar","type":"String"},{"name":"plan","kind":"scalar","type":"String"},{"name":"customerId","kind":"scalar","type":"String"},{"name":"subscriptionId","kind":"scalar","type":"String"},{"name":"settings","kind":"scalar","type":"Json"},{"name":"createdAt","kind":"scalar","type":"DateTime"},{"name":"updatedAt","kind":"scalar","type":"DateTime"},{"name":"members","kind":"object","type":"OrganizationMember","relationName":"OrganizationToOrganizationMember"},{"name":"invites","kind":"object","type":"OrganizationInvite","relationName":"OrganizationToOrganizationInvite"},{"name":"uploads","kind":"object","type":"Upload","relationName":"OrganizationToUpload"},{"name":"apiKeys","kind":"object","type":"ApiKey","relationName":"ApiKeyToOrganization"},{"name":"webhooks","kind":"object","type":"Webhook","relationName":"OrganizationToWebhook"}],"dbName":null},"OrganizationMember":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"organizationId","kind":"scalar","type":"String"},{"name":"userId","kind":"scalar","type":"String"},{"name":"role","kind":"enum","type":"OrgRole"},{"name":"joinedAt","kind":"scalar","type":"DateTime"},{"name":"organization","kind":"object","type":"Organization","relationName":"OrganizationToOrganizationMember"},{"name":"user","kind":"object","type":"User","relationName":"OrganizationMemberToUser"}],"dbName":null},"OrganizationInvite":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"organizationId","kind":"scalar","type":"String"},{"name":"email","kind":"scalar","type":"String"},{"name":"role","kind":"enum","type":"OrgRole"},{"name":"invitedBy","kind":"scalar","type":"String"},{"name":"token","kind":"scalar","type":"String"},{"name":"expiresAt","kind":"scalar","type":"DateTime"},{"name":"acceptedAt","kind":"scalar","type":"DateTime"},{"name":"createdAt","kind":"scalar","type":"DateTime"},{"name":"organization","kind":"object","type":"Organization","relationName":"OrganizationToOrganizationInvite"},{"name":"inviter","kind":"object","type":"User","relationName":"OrganizationInviteToUser"}],"dbName":null},"Upload":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"userId","kind":"scalar","type":"String"},{"name":"organizationId","kind":"scalar","type":"String"},{"name":"filename","kind":"scalar","type":"String"},{"name":"originalName","kind":"scalar","type":"String"},{"name":"mimeType","kind":"scalar","type":"String"},{"name":"size","kind":"scalar","type":"Int"},{"name":"url","kind":"scalar","type":"String"},{"name":"key","kind":"scalar","type":"String"},{"name":"bucket","kind":"scalar","type":"String"},{"name":"metadata","kind":"scalar","type":"Json"},{"name":"visibility","kind":"scalar","type":"String"},{"name":"createdAt","kind":"scalar","type":"DateTime"},{"name":"user","kind":"object","type":"User","relationName":"UploadToUser"},{"name":"organization","kind":"object","type":"Organization","relationName":"OrganizationToUpload"}],"dbName":null},"Job":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"type","kind":"scalar","type":"String"},{"name":"status","kind":"enum","type":"JobStatus"},{"name":"priority","kind":"scalar","type":"Int"},{"name":"attempts","kind":"scalar","type":"Int"},{"name":"maxAttempts","kind":"scalar","type":"Int"},{"name":"data","kind":"scalar","type":"Json"},{"name":"result","kind":"scalar","type":"Json"},{"name":"error","kind":"scalar","type":"String"},{"name":"scheduledFor","kind":"scalar","type":"DateTime"},{"name":"startedAt","kind":"scalar","type":"DateTime"},{"name":"completedAt","kind":"scalar","type":"DateTime"},{"name":"createdAt","kind":"scalar","type":"DateTime"},{"name":"updatedAt","kind":"scalar","type":"DateTime"}],"dbName":null},"EmailQueue":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"type","kind":"enum","type":"EmailType"},{"name":"to","kind":"scalar","type":"String"},{"name":"subject","kind":"scalar","type":"String"},{"name":"html","kind":"scalar","type":"String"},{"name":"status","kind":"enum","type":"EmailStatus"},{"name":"userId","kind":"scalar","type":"String"},{"name":"purchaseId","kind":"scalar","type":"String"},{"name":"metadata","kind":"scalar","type":"Json"},{"name":"attempts","kind":"scalar","type":"Int"},{"name":"maxAttempts","kind":"scalar","type":"Int"},{"name":"lastError","kind":"scalar","type":"String"},{"name":"sentAt","kind":"scalar","type":"DateTime"},{"name":"createdAt","kind":"scalar","type":"DateTime"},{"name":"updatedAt","kind":"scalar","type":"DateTime"}],"dbName":null},"AuditLog":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"userId","kind":"scalar","type":"String"},{"name":"action","kind":"scalar","type":"String"},{"name":"resource","kind":"scalar","type":"String"},{"name":"resourceId","kind":"scalar","type":"String"},{"name":"ipAddress","kind":"scalar","type":"String"},{"name":"userAgent","kind":"scalar","type":"String"},{"name":"metadata","kind":"scalar","type":"Json"},{"name":"createdAt","kind":"scalar","type":"DateTime"},{"name":"user","kind":"object","type":"User","relationName":"AuditLogToUser"}],"dbName":null},"FeatureFlag":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"name","kind":"scalar","type":"String"},{"name":"description","kind":"scalar","type":"String"},{"name":"enabled","kind":"scalar","type":"Boolean"},{"name":"rolloutPercentage","kind":"scalar","type":"Int"},{"name":"createdAt","kind":"scalar","type":"DateTime"},{"name":"updatedAt","kind":"scalar","type":"DateTime"}],"dbName":null},"Notification":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"userId","kind":"scalar","type":"String"},{"name":"type","kind":"enum","type":"NotificationType"},{"name":"title","kind":"scalar","type":"String"},{"name":"message","kind":"scalar","type":"String"},{"name":"read","kind":"scalar","type":"Boolean"},{"name":"link","kind":"scalar","type":"String"},{"name":"metadata","kind":"scalar","type":"Json"},{"name":"createdAt","kind":"scalar","type":"DateTime"},{"name":"user","kind":"object","type":"User","relationName":"NotificationToUser"}],"dbName":null},"ApiKey":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"organizationId","kind":"scalar","type":"String"},{"name":"userId","kind":"scalar","type":"String"},{"name":"name","kind":"scalar","type":"String"},{"name":"keyPrefix","kind":"scalar","type":"String"},{"name":"keyHash","kind":"scalar","type":"String"},{"name":"permissions","kind":"scalar","type":"String"},{"name":"lastUsedAt","kind":"scalar","type":"DateTime"},{"name":"expiresAt","kind":"scalar","type":"DateTime"},{"name":"createdAt","kind":"scalar","type":"DateTime"},{"name":"organization","kind":"object","type":"Organization","relationName":"ApiKeyToOrganization"},{"name":"user","kind":"object","type":"User","relationName":"ApiKeyToUser"}],"dbName":null},"Webhook":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"organizationId","kind":"scalar","type":"String"},{"name":"url","kind":"scalar","type":"String"},{"name":"secret","kind":"scalar","type":"String"},{"name":"events","kind":"scalar","type":"String"},{"name":"enabled","kind":"scalar","type":"Boolean"},{"name":"createdAt","kind":"scalar","type":"DateTime"},{"name":"updatedAt","kind":"scalar","type":"DateTime"},{"name":"organization","kind":"object","type":"Organization","relationName":"OrganizationToWebhook"},{"name":"deliveries","kind":"object","type":"WebhookDelivery","relationName":"WebhookToWebhookDelivery"}],"dbName":null},"WebhookDelivery":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"webhookId","kind":"scalar","type":"String"},{"name":"event","kind":"scalar","type":"String"},{"name":"method","kind":"scalar","type":"String"},{"name":"payload","kind":"scalar","type":"Json"},{"name":"status","kind":"scalar","type":"String"},{"name":"statusCode","kind":"scalar","type":"Int"},{"name":"response","kind":"scalar","type":"String"},{"name":"error","kind":"scalar","type":"String"},{"name":"duration","kind":"scalar","type":"Int"},{"name":"attempts","kind":"scalar","type":"Int"},{"name":"nextRetryAt","kind":"scalar","type":"DateTime"},{"name":"createdAt","kind":"scalar","type":"DateTime"},{"name":"webhook","kind":"object","type":"Webhook","relationName":"WebhookToWebhookDelivery"}],"dbName":null},"Consent":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"userId","kind":"scalar","type":"String"},{"name":"consentType","kind":"enum","type":"ConsentType"},{"name":"consentGiven","kind":"scalar","type":"Boolean"},{"name":"consentDate","kind":"scalar","type":"DateTime"},{"name":"ipAddress","kind":"scalar","type":"String"},{"name":"userAgent","kind":"scalar","type":"String"},{"name":"withdrawnAt","kind":"scalar","type":"DateTime"},{"name":"metadata","kind":"scalar","type":"Json"},{"name":"createdAt","kind":"scalar","type":"DateTime"},{"name":"updatedAt","kind":"scalar","type":"DateTime"},{"name":"user","kind":"object","type":"User","relationName":"ConsentToUser"}],"dbName":null},"BlogPost":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"slug","kind":"scalar","type":"String"},{"name":"title","kind":"scalar","type":"String"},{"name":"excerpt","kind":"scalar","type":"String"},{"name":"content","kind":"scalar","type":"String"},{"name":"featured","kind":"scalar","type":"Boolean"},{"name":"published","kind":"scalar","type":"Boolean"},{"name":"authorId","kind":"scalar","type":"String"},{"name":"author","kind":"object","type":"User","relationName":"BlogPostToUser"},{"name":"categoryId","kind":"scalar","type":"String"},{"name":"category","kind":"object","type":"BlogCategory","relationName":"BlogCategoryToBlogPost"},{"name":"featuredImage","kind":"scalar","type":"String"},{"name":"readTime","kind":"scalar","type":"Int"},{"name":"seoTitle","kind":"scalar","type":"String"},{"name":"seoDescription","kind":"scalar","type":"String"},{"name":"viewCount","kind":"scalar","type":"Int"},{"name":"createdAt","kind":"scalar","type":"DateTime"},{"name":"publishedAt","kind":"scalar","type":"DateTime"},{"name":"updatedAt","kind":"scalar","type":"DateTime"}],"dbName":null},"BlogCategory":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"name","kind":"scalar","type":"String"},{"name":"slug","kind":"scalar","type":"String"},{"name":"description","kind":"scalar","type":"String"},{"name":"posts","kind":"object","type":"BlogPost","relationName":"BlogCategoryToBlogPost"},{"name":"createdAt","kind":"scalar","type":"DateTime"},{"name":"updatedAt","kind":"scalar","type":"DateTime"}],"dbName":null},"CreditBalance":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"userId","kind":"scalar","type":"String"},{"name":"balance","kind":"scalar","type":"Int"},{"name":"monthlyAllowance","kind":"scalar","type":"Int"},{"name":"lastRefill","kind":"scalar","type":"DateTime"},{"name":"createdAt","kind":"scalar","type":"DateTime"},{"name":"updatedAt","kind":"scalar","type":"DateTime"},{"name":"user","kind":"object","type":"User","relationName":"CreditBalanceToUser"},{"name":"transactions","kind":"object","type":"CreditTransaction","relationName":"CreditBalanceToCreditTransaction"}],"dbName":null},"CreditTransaction":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"balanceId","kind":"scalar","type":"String"},{"name":"amount","kind":"scalar","type":"Int"},{"name":"type","kind":"enum","type":"CreditTransactionType"},{"name":"description","kind":"scalar","type":"String"},{"name":"endpoint","kind":"scalar","type":"String"},{"name":"metadata","kind":"scalar","type":"Json"},{"name":"createdAt","kind":"scalar","type":"DateTime"},{"name":"balance","kind":"object","type":"CreditBalance","relationName":"CreditBalanceToCreditTransaction"}],"dbName":null}},"enums":{},"types":{}}'
 );
 
-async function decodeBase64AsWasm(
-  wasmBase64: string
-): Promise<WebAssembly.Module> {
+async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
   const { Buffer } = await import('node:buffer');
   const wasmArray = Buffer.from(wasmBase64, 'base64');
   return new WebAssembly.Module(wasmArray);
 }
 
 config.compilerWasm = {
-  getRuntime: async () =>
-    await import('@prisma/client/runtime/query_compiler_bg.postgresql.mjs'),
+  getRuntime: async () => await import('@prisma/client/runtime/query_compiler_bg.postgresql.mjs'),
 
   getQueryCompilerWasmModule: async () => {
     const { wasm } =
@@ -80,8 +77,7 @@ export interface PrismaClientConstructor {
     }
       ? U
       : Prisma.PrismaClientOptions['omit'],
-    ExtArgs extends runtime.Types.Extensions.InternalArgs =
-      runtime.Types.Extensions.DefaultArgs,
+    ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   >(
     options: Prisma.Subset<Options, Prisma.PrismaClientOptions>
   ): PrismaClient<LogOpts, OmitOpts, ExtArgs>;
@@ -111,9 +107,7 @@ export interface PrismaClient<
 
   $on<V extends LogOpts>(
     eventType: V,
-    callback: (
-      event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent
-    ) => void
+    callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void
   ): PrismaClient;
 
   /**
@@ -150,10 +144,7 @@ export interface PrismaClient<
    *
    * Read more in our [docs](https://pris.ly/d/raw-queries).
    */
-  $executeRawUnsafe<T = unknown>(
-    query: string,
-    ...values: any[]
-  ): Prisma.PrismaPromise<number>;
+  $executeRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<number>;
 
   /**
    * Performs a prepared raw query and returns the `SELECT` data.
@@ -179,10 +170,7 @@ export interface PrismaClient<
    *
    * Read more in our [docs](https://pris.ly/d/raw-queries).
    */
-  $queryRawUnsafe<T = unknown>(
-    query: string,
-    ...values: any[]
-  ): Prisma.PrismaPromise<T>;
+  $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
 
   /**
    * Allows the running of a sequence of read/write operations that are guaranteed to either succeed or fail as a whole.
@@ -203,9 +191,7 @@ export interface PrismaClient<
   ): runtime.Types.Utils.JsPromise<runtime.Types.Utils.UnwrapTuple<P>>;
 
   $transaction<R>(
-    fn: (
-      prisma: Omit<PrismaClient, runtime.ITXClientDenyList>
-    ) => runtime.Types.Utils.JsPromise<R>,
+    fn: (prisma: Omit<PrismaClient, runtime.ITXClientDenyList>) => runtime.Types.Utils.JsPromise<R>,
     options?: {
       maxWait?: number;
       timeout?: number;
@@ -263,10 +249,7 @@ export interface PrismaClient<
    * const verificationTokens = await prisma.verificationToken.findMany()
    * ```
    */
-  get verificationToken(): Prisma.VerificationTokenDelegate<
-    ExtArgs,
-    { omit: OmitOpts }
-  >;
+  get verificationToken(): Prisma.VerificationTokenDelegate<ExtArgs, { omit: OmitOpts }>;
 
   /**
    * `prisma.payment`: Exposes CRUD operations for the **Payment** model.
@@ -286,10 +269,7 @@ export interface PrismaClient<
    * const checkoutSessions = await prisma.checkoutSession.findMany()
    * ```
    */
-  get checkoutSession(): Prisma.CheckoutSessionDelegate<
-    ExtArgs,
-    { omit: OmitOpts }
-  >;
+  get checkoutSession(): Prisma.CheckoutSessionDelegate<ExtArgs, { omit: OmitOpts }>;
 
   /**
    * `prisma.webhookEvent`: Exposes CRUD operations for the **WebhookEvent** model.
@@ -339,10 +319,7 @@ export interface PrismaClient<
    * const organizationMembers = await prisma.organizationMember.findMany()
    * ```
    */
-  get organizationMember(): Prisma.OrganizationMemberDelegate<
-    ExtArgs,
-    { omit: OmitOpts }
-  >;
+  get organizationMember(): Prisma.OrganizationMemberDelegate<ExtArgs, { omit: OmitOpts }>;
 
   /**
    * `prisma.organizationInvite`: Exposes CRUD operations for the **OrganizationInvite** model.
@@ -352,10 +329,7 @@ export interface PrismaClient<
    * const organizationInvites = await prisma.organizationInvite.findMany()
    * ```
    */
-  get organizationInvite(): Prisma.OrganizationInviteDelegate<
-    ExtArgs,
-    { omit: OmitOpts }
-  >;
+  get organizationInvite(): Prisma.OrganizationInviteDelegate<ExtArgs, { omit: OmitOpts }>;
 
   /**
    * `prisma.upload`: Exposes CRUD operations for the **Upload** model.
@@ -445,10 +419,7 @@ export interface PrismaClient<
    * const webhookDeliveries = await prisma.webhookDelivery.findMany()
    * ```
    */
-  get webhookDelivery(): Prisma.WebhookDeliveryDelegate<
-    ExtArgs,
-    { omit: OmitOpts }
-  >;
+  get webhookDelivery(): Prisma.WebhookDeliveryDelegate<ExtArgs, { omit: OmitOpts }>;
 
   /**
    * `prisma.consent`: Exposes CRUD operations for the **Consent** model.
@@ -488,10 +459,7 @@ export interface PrismaClient<
    * const creditBalances = await prisma.creditBalance.findMany()
    * ```
    */
-  get creditBalance(): Prisma.CreditBalanceDelegate<
-    ExtArgs,
-    { omit: OmitOpts }
-  >;
+  get creditBalance(): Prisma.CreditBalanceDelegate<ExtArgs, { omit: OmitOpts }>;
 
   /**
    * `prisma.creditTransaction`: Exposes CRUD operations for the **CreditTransaction** model.
@@ -501,10 +469,7 @@ export interface PrismaClient<
    * const creditTransactions = await prisma.creditTransaction.findMany()
    * ```
    */
-  get creditTransaction(): Prisma.CreditTransactionDelegate<
-    ExtArgs,
-    { omit: OmitOpts }
-  >;
+  get creditTransaction(): Prisma.CreditTransactionDelegate<ExtArgs, { omit: OmitOpts }>;
 }
 
 export function getPrismaClientClass(): PrismaClientConstructor {

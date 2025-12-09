@@ -44,9 +44,7 @@ export function DocsLayout({
           {fullWidth ? (
             children
           ) : (
-            <div className="mx-auto max-w-3xl px-6 py-8 lg:px-8">
-              {children}
-            </div>
+            <div className="mx-auto max-w-3xl px-6 py-8 lg:px-8">{children}</div>
           )}
         </main>
 

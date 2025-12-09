@@ -13,11 +13,7 @@ interface DashboardHeaderProps {
   userInitials: string;
 }
 
-export function DashboardHeader({
-  userName,
-  userImage,
-  userInitials,
-}: DashboardHeaderProps) {
+export function DashboardHeader({ userName, userImage, userInitials }: DashboardHeaderProps) {
   const firstName = userName?.split(' ')[0] || 'User';
 
   return (

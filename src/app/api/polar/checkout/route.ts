@@ -5,11 +5,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { createCheckoutSession, isPolarConfigured } from '@/lib/polar';
-import {
-  checkRateLimitAuto,
-  getClientIdentifier,
-  RateLimiters,
-} from '@/lib/security/rate-limit';
+import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from '@/lib/security/rate-limit';
 import { logger } from '@/lib/logger';
 
 export async function POST(request: NextRequest) {
@@ -25,9 +21,7 @@ export async function POST(request: NextRequest) {
         headers: {
           'X-RateLimit-Limit': rateLimit.limit.toString(),
           'X-RateLimit-Remaining': rateLimit.remaining.toString(),
-          'Retry-After': Math.ceil(
-            (rateLimit.reset - Date.now()) / 1000
-          ).toString(),
+          'Retry-After': Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
         },
       }
     );

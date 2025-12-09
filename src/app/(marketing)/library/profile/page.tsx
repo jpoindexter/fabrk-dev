@@ -5,21 +5,8 @@
  */
 'use client';
 
-import {
-  Star,
-  GitBranch,
-  MessageSquare,
-  Award,
-  Zap,
-  TrendingUp,
-  Activity,
-} from 'lucide-react';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  TemplatePageHeader,
-} from '@/components/ui/card';
+import { Star, GitBranch, MessageSquare, Award, Zap, TrendingUp, Activity } from 'lucide-react';
+import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { ProfileHeader } from './components/profile-header';
@@ -285,11 +272,7 @@ export default function ProfilePageTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock
-                  code={templateCode}
-                  language="tsx"
-                  maxHeight="600px"
-                />
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
             </Card>
           </TabsContent>
@@ -306,29 +289,21 @@ export default function ProfilePageTemplate() {
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">(dashboard)/</span>
                   <span className="text-foreground">profile/page.tsx</span>
-                  <span className="text-muted-foreground ml-4">
-                    ← Copy template here
-                  </span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
                 </div>
                 <div>
                   <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">
-                    (dashboard)/profile/components/
-                  </span>
+                  <span className="text-muted-foreground">(dashboard)/profile/components/</span>
                   <span className="text-foreground">profile-header.tsx</span>
                 </div>
                 <div>
                   <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">
-                    (dashboard)/profile/components/
-                  </span>
+                  <span className="text-muted-foreground">(dashboard)/profile/components/</span>
                   <span className="text-foreground">badges-section.tsx</span>
                 </div>
                 <div>
                   <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">
-                    (dashboard)/profile/components/
-                  </span>
+                  <span className="text-muted-foreground">(dashboard)/profile/components/</span>
                   <span className="text-foreground">profile-tabs.tsx</span>
                 </div>
               </div>
@@ -342,32 +317,25 @@ export default function ProfilePageTemplate() {
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> User profile header
-                with avatar and stats
+                <span className="text-success">&gt;</span> User profile header with avatar and stats
               </div>
               <div>
-                <span className="text-success">&gt;</span> Achievement badges
-                display
+                <span className="text-success">&gt;</span> Achievement badges display
               </div>
               <div>
-                <span className="text-success">&gt;</span> Tabbed navigation
-                (Activity, Projects)
+                <span className="text-success">&gt;</span> Tabbed navigation (Activity, Projects)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Activity feed with
-                timestamps
+                <span className="text-success">&gt;</span> Activity feed with timestamps
               </div>
               <div>
-                <span className="text-success">&gt;</span> Project cards with
-                stats
+                <span className="text-success">&gt;</span> Project cards with stats
               </div>
               <div>
-                <span className="text-success">&gt;</span> Responsive
-                mobile-first design
+                <span className="text-success">&gt;</span> Responsive mobile-first design
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant
-                (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

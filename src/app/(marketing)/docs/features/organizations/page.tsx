@@ -206,8 +206,7 @@ export async function checkPermission(
       <DocsSection title="Database Schema">
         <DocsCard title="DATABASE_SCHEMA">
           <p className="mb-6">
-            Core models in{' '}
-            <code className="bg-muted px-1">prisma/schema.prisma</code>:
+            Core models in <code className="bg-muted px-1">prisma/schema.prisma</code>:
           </p>
           <CodeBlock
             language="prisma"
@@ -341,27 +340,14 @@ model OrganizationInvite {
             <li>├─ Always check permissions before any organization action</li>
             <li>├─ Use database transactions for multi-step operations</li>
             <li>
-              ├─ Scope all queries by{' '}
-              <code className="bg-muted px-1">organizationId</code>
+              ├─ Scope all queries by <code className="bg-muted px-1">organizationId</code>
             </li>
-            <li>
-              ├─ Send email notifications for important events (invite, role
-              change)
-            </li>
+            <li>├─ Send email notifications for important events (invite, role change)</li>
             <li>├─ Allow users to belong to multiple organizations</li>
             <li>├─ Implement organization switching in the UI</li>
-            <li>
-              ├─ Log audit trail for compliance (member changes, permission
-              changes)
-            </li>
-            <li>
-              ├─ Handle organization deletion carefully (soft delete
-              recommended)
-            </li>
-            <li>
-              └─ Prevent owners from removing themselves without transferring
-              ownership
-            </li>
+            <li>├─ Log audit trail for compliance (member changes, permission changes)</li>
+            <li>├─ Handle organization deletion carefully (soft delete recommended)</li>
+            <li>└─ Prevent owners from removing themselves without transferring ownership</li>
           </ul>
         </DocsCard>
       </DocsSection>

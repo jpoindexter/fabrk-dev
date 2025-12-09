@@ -3,11 +3,7 @@
 import Link from 'next/link';
 import { ShieldCheck, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from '@/components/ui/input-otp';
+import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -42,10 +38,7 @@ export default function TwoFactorPage() {
           </InputOTP>
         </div>
 
-        <Button
-          className={cn(mode.radius, mode.font, 'w-full text-xs')}
-          type="submit"
-        >
+        <Button className={cn(mode.radius, mode.font, 'w-full text-xs')} type="submit">
           &gt; VERIFY
         </Button>
       </form>

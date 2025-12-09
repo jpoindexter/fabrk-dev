@@ -34,9 +34,7 @@ const SelectGroup = SelectPrimitive.Group;
 
 const SelectValue = SelectPrimitive.Value;
 
-export type SelectTriggerProps = React.ComponentPropsWithoutRef<
-  typeof SelectPrimitive.Trigger
->;
+export type SelectTriggerProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>;
 
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
@@ -63,9 +61,7 @@ const SelectTrigger = React.forwardRef<
 ));
 SelectTrigger.displayName = 'SelectTrigger';
 
-export type SelectContentProps = React.ComponentPropsWithoutRef<
-  typeof SelectPrimitive.Content
->;
+export type SelectContentProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>;
 
 /**
  * SelectContent displays the dropdown options for a Select component.
@@ -144,9 +140,7 @@ const SelectContent = React.forwardRef<
 ));
 SelectContent.displayName = 'SelectContent';
 
-export type SelectItemProps = React.ComponentPropsWithoutRef<
-  typeof SelectPrimitive.Item
->;
+export type SelectItemProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>;
 
 /**
  * SelectItem represents an option within a Select dropdown.
@@ -207,9 +201,7 @@ const SelectItem = React.forwardRef<
 ));
 SelectItem.displayName = 'SelectItem';
 
-export type SelectLabelProps = React.ComponentPropsWithoutRef<
-  typeof SelectPrimitive.Label
->;
+export type SelectLabelProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label>;
 
 const SelectLabel = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Label>,
@@ -223,9 +215,7 @@ const SelectLabel = React.forwardRef<
 ));
 SelectLabel.displayName = 'SelectLabel';
 
-export type SelectSeparatorProps = React.ComponentPropsWithoutRef<
-  typeof SelectPrimitive.Separator
->;
+export type SelectSeparatorProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>;
 
 const SelectSeparator = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Separator>,
@@ -245,10 +235,7 @@ const SelectScrollUpButton = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.ScrollUpButton
     ref={ref}
-    className={cn(
-      'flex cursor-default items-center justify-center py-1',
-      className
-    )}
+    className={cn('flex cursor-default items-center justify-center py-1', className)}
     {...props}
   >
     <ChevronUp className="size-4" />
@@ -262,10 +249,7 @@ const SelectScrollDownButton = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.ScrollDownButton
     ref={ref}
-    className={cn(
-      'flex cursor-default items-center justify-center py-1',
-      className
-    )}
+    className={cn('flex cursor-default items-center justify-center py-1', className)}
     {...props}
   >
     <ChevronDown className="size-4" />

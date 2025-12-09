@@ -114,10 +114,7 @@ import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { logger } from '@/lib/logger';
 import { env } from '@/lib/env';
-import {
-  isWebhookEventProcessed,
-  markWebhookEventProcessed,
-} from '@/lib/stripe/idempotency';
+import { isWebhookEventProcessed, markWebhookEventProcessed } from '@/lib/stripe/idempotency';
 import * as paymentHandlers from './handlers/payment';
 import * as subscriptionHandlers from './handlers/subscription';
 import * as checkoutHandlers from './handlers/checkout';
@@ -135,8 +132,7 @@ export async function POST(req: Request) {
   let event: Stripe.Event;
 
   try {
-    const webhookSecret =
-      env.server.STRIPE_WEBHOOK_SECRET || 'whsec_placeholder';
+    const webhookSecret = env.server.STRIPE_WEBHOOK_SECRET || 'whsec_placeholder';
     event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
   } catch (error: unknown) {
     logger.error('Webhook signature verification failed', error);

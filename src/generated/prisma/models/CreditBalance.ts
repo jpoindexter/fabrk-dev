@@ -109,8 +109,7 @@ export type CreditBalanceCountAggregateInputType = {
 };
 
 export type CreditBalanceAggregateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which CreditBalance to aggregate.
@@ -174,9 +173,7 @@ export type CreditBalanceAggregateArgs<
   _max?: CreditBalanceMaxAggregateInputType;
 };
 
-export type GetCreditBalanceAggregateType<
-  T extends CreditBalanceAggregateArgs,
-> = {
+export type GetCreditBalanceAggregateType<T extends CreditBalanceAggregateArgs> = {
   [P in keyof T & keyof AggregateCreditBalance]: P extends '_count' | 'count'
     ? T[P] extends true
       ? number
@@ -185,16 +182,13 @@ export type GetCreditBalanceAggregateType<
 };
 
 export type CreditBalanceGroupByArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.CreditBalanceWhereInput;
   orderBy?:
     | Prisma.CreditBalanceOrderByWithAggregationInput
     | Prisma.CreditBalanceOrderByWithAggregationInput[];
-  by:
-    | Prisma.CreditBalanceScalarFieldEnum[]
-    | Prisma.CreditBalanceScalarFieldEnum;
+  by: Prisma.CreditBalanceScalarFieldEnum[] | Prisma.CreditBalanceScalarFieldEnum;
   having?: Prisma.CreditBalanceScalarWhereWithAggregatesInput;
   take?: number;
   skip?: number;
@@ -220,19 +214,17 @@ export type CreditBalanceGroupByOutputType = {
   _max: CreditBalanceMaxAggregateOutputType | null;
 };
 
-type GetCreditBalanceGroupByPayload<T extends CreditBalanceGroupByArgs> =
-  Prisma.PrismaPromise<
-    Array<
-      Prisma.PickEnumerable<CreditBalanceGroupByOutputType, T['by']> & {
-        [P in keyof T &
-          keyof CreditBalanceGroupByOutputType]: P extends '_count'
-          ? T[P] extends boolean
-            ? number
-            : Prisma.GetScalarType<T[P], CreditBalanceGroupByOutputType[P]>
-          : Prisma.GetScalarType<T[P], CreditBalanceGroupByOutputType[P]>;
-      }
-    >
-  >;
+type GetCreditBalanceGroupByPayload<T extends CreditBalanceGroupByArgs> = Prisma.PrismaPromise<
+  Array<
+    Prisma.PickEnumerable<CreditBalanceGroupByOutputType, T['by']> & {
+      [P in keyof T & keyof CreditBalanceGroupByOutputType]: P extends '_count'
+        ? T[P] extends boolean
+          ? number
+          : Prisma.GetScalarType<T[P], CreditBalanceGroupByOutputType[P]>
+        : Prisma.GetScalarType<T[P], CreditBalanceGroupByOutputType[P]>;
+    }
+  >
+>;
 
 export type CreditBalanceWhereInput = {
   AND?: Prisma.CreditBalanceWhereInput | Prisma.CreditBalanceWhereInput[];
@@ -306,18 +298,9 @@ export type CreditBalanceScalarWhereWithAggregatesInput = {
   userId?: Prisma.StringWithAggregatesFilter<'CreditBalance'> | string;
   balance?: Prisma.IntWithAggregatesFilter<'CreditBalance'> | number;
   monthlyAllowance?: Prisma.IntWithAggregatesFilter<'CreditBalance'> | number;
-  lastRefill?:
-    | Prisma.DateTimeWithAggregatesFilter<'CreditBalance'>
-    | Date
-    | string;
-  createdAt?:
-    | Prisma.DateTimeWithAggregatesFilter<'CreditBalance'>
-    | Date
-    | string;
-  updatedAt?:
-    | Prisma.DateTimeWithAggregatesFilter<'CreditBalance'>
-    | Date
-    | string;
+  lastRefill?: Prisma.DateTimeWithAggregatesFilter<'CreditBalance'> | Date | string;
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<'CreditBalance'> | Date | string;
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<'CreditBalance'> | Date | string;
 };
 
 export type CreditBalanceCreateInput = {
@@ -670,8 +653,7 @@ export type CreditBalanceCountOutputType = {
 };
 
 export type CreditBalanceCountOutputTypeSelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   transactions?: boolean | CreditBalanceCountOutputTypeCountTransactionsArgs;
 };
@@ -680,8 +662,7 @@ export type CreditBalanceCountOutputTypeSelect<
  * CreditBalanceCountOutputType without action
  */
 export type CreditBalanceCountOutputTypeDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditBalanceCountOutputType
@@ -693,15 +674,13 @@ export type CreditBalanceCountOutputTypeDefaultArgs<
  * CreditBalanceCountOutputType without action
  */
 export type CreditBalanceCountOutputTypeCountTransactionsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.CreditTransactionWhereInput;
 };
 
 export type CreditBalanceSelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -719,8 +698,7 @@ export type CreditBalanceSelect<
 >;
 
 export type CreditBalanceSelectCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -736,8 +714,7 @@ export type CreditBalanceSelectCreateManyAndReturn<
 >;
 
 export type CreditBalanceSelectUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -763,42 +740,31 @@ export type CreditBalanceSelectScalar = {
 };
 
 export type CreditBalanceOmit<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
-  | 'id'
-  | 'userId'
-  | 'balance'
-  | 'monthlyAllowance'
-  | 'lastRefill'
-  | 'createdAt'
-  | 'updatedAt',
+  'id' | 'userId' | 'balance' | 'monthlyAllowance' | 'lastRefill' | 'createdAt' | 'updatedAt',
   ExtArgs['result']['creditBalance']
 >;
 export type CreditBalanceInclude<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   transactions?: boolean | Prisma.CreditBalance$transactionsArgs<ExtArgs>;
   _count?: boolean | Prisma.CreditBalanceCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type CreditBalanceIncludeCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 export type CreditBalanceIncludeUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 
 export type $CreditBalancePayload<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   name: 'CreditBalance';
   objects: {
@@ -825,18 +791,13 @@ export type CreditBalanceGetPayload<
 > = runtime.Types.Result.GetResult<Prisma.$CreditBalancePayload, S>;
 
 export type CreditBalanceCountArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = Omit<
-  CreditBalanceFindManyArgs,
-  'select' | 'include' | 'distinct' | 'omit'
-> & {
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+> = Omit<CreditBalanceFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
   select?: CreditBalanceCountAggregateInputType | true;
 };
 
 export interface CreditBalanceDelegate<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > {
   [K: symbol]: {
@@ -1232,10 +1193,7 @@ export interface CreditBalanceDelegate<
     T extends runtime.Types.Utils.Record<'select', any>
       ? T['select'] extends true
         ? number
-        : Prisma.GetScalarType<
-            T['select'],
-            CreditBalanceCountAggregateOutputType
-          >
+        : Prisma.GetScalarType<T['select'], CreditBalanceCountAggregateOutputType>
       : number
   >;
 
@@ -1310,12 +1268,7 @@ export interface CreditBalanceDelegate<
               ? never
               : P extends string
                 ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                : [
-                    Error,
-                    'Field ',
-                    P,
-                    ` in "having" needs to be provided in "by"`,
-                  ];
+                : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
           }[HavingFields]
         : 'take' extends Prisma.Keys<T>
           ? 'orderBy' extends Prisma.Keys<T>
@@ -1345,11 +1298,8 @@ export interface CreditBalanceDelegate<
                     : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                 }[OrderFields],
   >(
-    args: Prisma.SubsetIntersection<T, CreditBalanceGroupByArgs, OrderByArg> &
-      InputErrors
-  ): {} extends InputErrors
-    ? GetCreditBalanceGroupByPayload<T>
-    : Prisma.PrismaPromise<InputErrors>;
+    args: Prisma.SubsetIntersection<T, CreditBalanceGroupByArgs, OrderByArg> & InputErrors
+  ): {} extends InputErrors ? GetCreditBalanceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
   /**
    * Fields of the CreditBalance model
    */
@@ -1365,8 +1315,7 @@ export interface CreditBalanceDelegate<
 export interface Prisma__CreditBalanceClient<
   T,
   Null = never,
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: 'PrismaPromise';
@@ -1402,14 +1351,8 @@ export interface Prisma__CreditBalanceClient<
    * @returns A Promise for the completion of which ever callback is executed.
    */
   then<TResult1 = T, TResult2 = never>(
-    onfulfilled?:
-      | ((value: T) => TResult1 | PromiseLike<TResult1>)
-      | undefined
-      | null,
-    onrejected?:
-      | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-      | undefined
-      | null
+    onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
   ): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
   /**
    * Attaches a callback for only the rejection of the Promise.
@@ -1417,10 +1360,7 @@ export interface Prisma__CreditBalanceClient<
    * @returns A Promise for the completion of the callback.
    */
   catch<TResult = never>(
-    onrejected?:
-      | ((reason: any) => TResult | PromiseLike<TResult>)
-      | undefined
-      | null
+    onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
   ): runtime.Types.Utils.JsPromise<T | TResult>;
   /**
    * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
@@ -1428,9 +1368,7 @@ export interface Prisma__CreditBalanceClient<
    * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
    * @returns A Promise for the completion of the callback.
    */
-  finally(
-    onfinally?: (() => void) | undefined | null
-  ): runtime.Types.Utils.JsPromise<T>;
+  finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
 }
 
 /**
@@ -1451,8 +1389,7 @@ export interface CreditBalanceFieldRefs {
  * CreditBalance findUnique
  */
 export type CreditBalanceFindUniqueArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditBalance
@@ -1476,8 +1413,7 @@ export type CreditBalanceFindUniqueArgs<
  * CreditBalance findUniqueOrThrow
  */
 export type CreditBalanceFindUniqueOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditBalance
@@ -1501,8 +1437,7 @@ export type CreditBalanceFindUniqueOrThrowArgs<
  * CreditBalance findFirst
  */
 export type CreditBalanceFindFirstArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditBalance
@@ -1551,17 +1486,14 @@ export type CreditBalanceFindFirstArgs<
    *
    * Filter by unique combinations of CreditBalances.
    */
-  distinct?:
-    | Prisma.CreditBalanceScalarFieldEnum
-    | Prisma.CreditBalanceScalarFieldEnum[];
+  distinct?: Prisma.CreditBalanceScalarFieldEnum | Prisma.CreditBalanceScalarFieldEnum[];
 };
 
 /**
  * CreditBalance findFirstOrThrow
  */
 export type CreditBalanceFindFirstOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditBalance
@@ -1610,17 +1542,14 @@ export type CreditBalanceFindFirstOrThrowArgs<
    *
    * Filter by unique combinations of CreditBalances.
    */
-  distinct?:
-    | Prisma.CreditBalanceScalarFieldEnum
-    | Prisma.CreditBalanceScalarFieldEnum[];
+  distinct?: Prisma.CreditBalanceScalarFieldEnum | Prisma.CreditBalanceScalarFieldEnum[];
 };
 
 /**
  * CreditBalance findMany
  */
 export type CreditBalanceFindManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditBalance
@@ -1664,17 +1593,14 @@ export type CreditBalanceFindManyArgs<
    * Skip the first `n` CreditBalances.
    */
   skip?: number;
-  distinct?:
-    | Prisma.CreditBalanceScalarFieldEnum
-    | Prisma.CreditBalanceScalarFieldEnum[];
+  distinct?: Prisma.CreditBalanceScalarFieldEnum | Prisma.CreditBalanceScalarFieldEnum[];
 };
 
 /**
  * CreditBalance create
  */
 export type CreditBalanceCreateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditBalance
@@ -1691,25 +1617,19 @@ export type CreditBalanceCreateArgs<
   /**
    * The data needed to create a CreditBalance.
    */
-  data: Prisma.XOR<
-    Prisma.CreditBalanceCreateInput,
-    Prisma.CreditBalanceUncheckedCreateInput
-  >;
+  data: Prisma.XOR<Prisma.CreditBalanceCreateInput, Prisma.CreditBalanceUncheckedCreateInput>;
 };
 
 /**
  * CreditBalance createMany
  */
 export type CreditBalanceCreateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to create many CreditBalances.
    */
-  data:
-    | Prisma.CreditBalanceCreateManyInput
-    | Prisma.CreditBalanceCreateManyInput[];
+  data: Prisma.CreditBalanceCreateManyInput | Prisma.CreditBalanceCreateManyInput[];
   skipDuplicates?: boolean;
 };
 
@@ -1717,8 +1637,7 @@ export type CreditBalanceCreateManyArgs<
  * CreditBalance createManyAndReturn
  */
 export type CreditBalanceCreateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditBalance
@@ -1731,9 +1650,7 @@ export type CreditBalanceCreateManyAndReturnArgs<
   /**
    * The data used to create many CreditBalances.
    */
-  data:
-    | Prisma.CreditBalanceCreateManyInput
-    | Prisma.CreditBalanceCreateManyInput[];
+  data: Prisma.CreditBalanceCreateManyInput | Prisma.CreditBalanceCreateManyInput[];
   skipDuplicates?: boolean;
   /**
    * Choose, which related nodes to fetch as well
@@ -1745,8 +1662,7 @@ export type CreditBalanceCreateManyAndReturnArgs<
  * CreditBalance update
  */
 export type CreditBalanceUpdateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditBalance
@@ -1763,10 +1679,7 @@ export type CreditBalanceUpdateArgs<
   /**
    * The data needed to update a CreditBalance.
    */
-  data: Prisma.XOR<
-    Prisma.CreditBalanceUpdateInput,
-    Prisma.CreditBalanceUncheckedUpdateInput
-  >;
+  data: Prisma.XOR<Prisma.CreditBalanceUpdateInput, Prisma.CreditBalanceUncheckedUpdateInput>;
   /**
    * Choose, which CreditBalance to update.
    */
@@ -1777,8 +1690,7 @@ export type CreditBalanceUpdateArgs<
  * CreditBalance updateMany
  */
 export type CreditBalanceUpdateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to update CreditBalances.
@@ -1801,8 +1713,7 @@ export type CreditBalanceUpdateManyArgs<
  * CreditBalance updateManyAndReturn
  */
 export type CreditBalanceUpdateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditBalance
@@ -1837,8 +1748,7 @@ export type CreditBalanceUpdateManyAndReturnArgs<
  * CreditBalance upsert
  */
 export type CreditBalanceUpsertArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditBalance
@@ -1859,25 +1769,18 @@ export type CreditBalanceUpsertArgs<
   /**
    * In case the CreditBalance found by the `where` argument doesn't exist, create a new CreditBalance with this data.
    */
-  create: Prisma.XOR<
-    Prisma.CreditBalanceCreateInput,
-    Prisma.CreditBalanceUncheckedCreateInput
-  >;
+  create: Prisma.XOR<Prisma.CreditBalanceCreateInput, Prisma.CreditBalanceUncheckedCreateInput>;
   /**
    * In case the CreditBalance was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<
-    Prisma.CreditBalanceUpdateInput,
-    Prisma.CreditBalanceUncheckedUpdateInput
-  >;
+  update: Prisma.XOR<Prisma.CreditBalanceUpdateInput, Prisma.CreditBalanceUncheckedUpdateInput>;
 };
 
 /**
  * CreditBalance delete
  */
 export type CreditBalanceDeleteArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditBalance
@@ -1901,8 +1804,7 @@ export type CreditBalanceDeleteArgs<
  * CreditBalance deleteMany
  */
 export type CreditBalanceDeleteManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which CreditBalances to delete
@@ -1918,8 +1820,7 @@ export type CreditBalanceDeleteManyArgs<
  * CreditBalance.transactions
  */
 export type CreditBalance$transactionsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditTransaction
@@ -1940,17 +1841,14 @@ export type CreditBalance$transactionsArgs<
   cursor?: Prisma.CreditTransactionWhereUniqueInput;
   take?: number;
   skip?: number;
-  distinct?:
-    | Prisma.CreditTransactionScalarFieldEnum
-    | Prisma.CreditTransactionScalarFieldEnum[];
+  distinct?: Prisma.CreditTransactionScalarFieldEnum | Prisma.CreditTransactionScalarFieldEnum[];
 };
 
 /**
  * CreditBalance without action
  */
 export type CreditBalanceDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CreditBalance

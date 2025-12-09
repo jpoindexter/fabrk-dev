@@ -48,29 +48,21 @@ interface SecuritySettingsProps {
   }>;
 }
 
-export function SecuritySettings({
-  user,
-  connectedAccounts,
-}: SecuritySettingsProps) {
+export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsProps) {
   const { info, error } = useToast();
   const fetchWithCsrf = useCsrfFetch();
 
   // Loading states
   const [isEnabling2FA, setIsEnabling2FA] = useState(false);
   const [isDisabling2FA, setIsDisabling2FA] = useState(false);
-  const [disconnectingProvider, setDisconnectingProvider] = useState<
-    string | null
-  >(null);
+  const [disconnectingProvider, setDisconnectingProvider] = useState<string | null>(null);
   const [isInvalidatingSessions, setIsInvalidatingSessions] = useState(false);
 
   // Dialog states
   const [disable2FADialogOpen, setDisable2FADialogOpen] = useState(false);
   const [disconnectDialogOpen, setDisconnectDialogOpen] = useState(false);
-  const [providerToDisconnect, setProviderToDisconnect] = useState<
-    string | null
-  >(null);
-  const [invalidateSessionsDialogOpen, setInvalidateSessionsDialogOpen] =
-    useState(false);
+  const [providerToDisconnect, setProviderToDisconnect] = useState<string | null>(null);
+  const [invalidateSessionsDialogOpen, setInvalidateSessionsDialogOpen] = useState(false);
   const [backupCodesModalOpen, setBackupCodesModalOpen] = useState(false);
 
   // 2FA Setup Modal states
@@ -100,9 +92,7 @@ export function SecuritySettings({
     } catch (err: unknown) {
       error(
         'Error enabling 2FA',
-        err instanceof Error
-          ? err.message
-          : 'Failed to enable two-factor authentication'
+        err instanceof Error ? err.message : 'Failed to enable two-factor authentication'
       );
     } finally {
       setIsEnabling2FA(false);
@@ -118,10 +108,7 @@ export function SecuritySettings({
 
       if (!response.ok) {
         const data = await response.json();
-        error(
-          'Verification Failed',
-          data.error || 'Please check your code and try again'
-        );
+        error('Verification Failed', data.error || 'Please check your code and try again');
         return false;
       }
 
@@ -130,9 +117,7 @@ export function SecuritySettings({
     } catch (err: unknown) {
       error(
         'Verification Failed',
-        err instanceof Error
-          ? err.message
-          : 'Please check your code and try again'
+        err instanceof Error ? err.message : 'Please check your code and try again'
       );
       return false;
     }
@@ -164,9 +149,7 @@ export function SecuritySettings({
     } catch (err: unknown) {
       error(
         'Error disabling 2FA',
-        err instanceof Error
-          ? err.message
-          : 'Failed to disable two-factor authentication'
+        err instanceof Error ? err.message : 'Failed to disable two-factor authentication'
       );
     } finally {
       setIsDisabling2FA(false);
@@ -185,12 +168,9 @@ export function SecuritySettings({
     setDisconnectDialogOpen(false);
 
     try {
-      const response = await fetchWithCsrf(
-        `/api/user/accounts/${providerToDisconnect}`,
-        {
-          method: 'DELETE',
-        }
-      );
+      const response = await fetchWithCsrf(`/api/user/accounts/${providerToDisconnect}`, {
+        method: 'DELETE',
+      });
 
       if (!response.ok) {
         const data = await response.json();
@@ -205,9 +185,7 @@ export function SecuritySettings({
     } catch (err: unknown) {
       error(
         'Error disconnecting account',
-        err instanceof Error
-          ? err.message
-          : `Failed to disconnect ${providerToDisconnect} account`
+        err instanceof Error ? err.message : `Failed to disconnect ${providerToDisconnect} account`
       );
     } finally {
       setDisconnectingProvider(null);
@@ -220,22 +198,16 @@ export function SecuritySettings({
     setInvalidateSessionsDialogOpen(false);
 
     try {
-      const response = await fetchWithCsrf(
-        '/api/user/sessions/invalidate-all',
-        {
-          method: 'POST',
-        }
-      );
+      const response = await fetchWithCsrf('/api/user/sessions/invalidate-all', {
+        method: 'POST',
+      });
 
       if (!response.ok) {
         const data = await response.json();
         throw new Error(data.error || 'Failed to invalidate sessions');
       }
 
-      info(
-        'Sessions Invalidated',
-        'All other sessions have been logged out. Redirecting...'
-      );
+      info('Sessions Invalidated', 'All other sessions have been logged out. Redirecting...');
 
       setTimeout(() => {
         window.location.href = '/dashboard';
@@ -271,8 +243,7 @@ export function SecuritySettings({
         <Alert>
           <AlertTriangle className="h-4 w-4" />
           <AlertDescription>
-            Your email is not verified. Please check your inbox for the
-            verification link.
+            Your email is not verified. Please check your inbox for the verification link.
             <Button variant="link" className="ml-2 h-auto p-0">
               &gt; RESEND_VERIFICATION_EMAIL
             </Button>

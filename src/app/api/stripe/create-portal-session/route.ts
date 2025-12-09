@@ -117,10 +117,7 @@ async function createPortalSessionHandler(_req: NextRequest) {
     const session = await auth();
 
     if (!session?.user?.email) {
-      return NextResponse.json(
-        { error: 'Unauthorized - Please sign in' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Unauthorized - Please sign in' }, { status: 401 });
     }
 
     // Get user from database
@@ -154,10 +151,7 @@ async function createPortalSessionHandler(_req: NextRequest) {
     return NextResponse.json({ url: portalSession.url });
   } catch (error: unknown) {
     logger.error('Portal session creation error:', error);
-    return NextResponse.json(
-      { error: 'Failed to create portal session' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to create portal session' }, { status: 500 });
   }
 }
 

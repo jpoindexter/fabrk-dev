@@ -17,10 +17,7 @@ import { logger } from '@/lib/logger';
 let Ratelimit: typeof import('@upstash/ratelimit').Ratelimit;
 let Redis: typeof import('@upstash/redis').Redis;
 let redisClient: import('@upstash/redis').Redis | null = null;
-let rateLimiters: Record<
-  string,
-  import('@upstash/ratelimit').Ratelimit
-> | null = null;
+let rateLimiters: Record<string, import('@upstash/ratelimit').Ratelimit> | null = null;
 
 // Check for Upstash configuration
 const UPSTASH_URL = process.env.UPSTASH_REDIS_REST_URL;
@@ -82,11 +79,7 @@ const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
 
 // Emit warning once if using in-memory in production
 let productionWarningEmitted = false;
-if (
-  process.env.NODE_ENV === 'production' &&
-  !isRedisConfigured &&
-  !productionWarningEmitted
-) {
+if (process.env.NODE_ENV === 'production' && !isRedisConfigured && !productionWarningEmitted) {
   productionWarningEmitted = true;
   logger.warn(
     '⚠️ WARNING: In-memory rate limiting detected in production. ' +
@@ -211,10 +204,7 @@ export function withRateLimit<T extends unknown[]>(
 ) {
   return async (req: NextRequest, ...args: T): Promise<NextResponse> => {
     const clientId = getClientId(req);
-    const { allowed, remaining, resetAt } = await checkRateLimit(
-      clientId,
-      type
-    );
+    const { allowed, remaining, resetAt } = await checkRateLimit(clientId, type);
 
     if (!allowed) {
       const resetIn = Math.ceil((resetAt - Date.now()) / 1000);
@@ -240,15 +230,9 @@ export function withRateLimit<T extends unknown[]>(
     const response = await handler(req, ...args);
 
     // Add rate limit headers to response
-    response.headers.set(
-      'X-RateLimit-Limit',
-      String(RATE_LIMITS[type].requests)
-    );
+    response.headers.set('X-RateLimit-Limit', String(RATE_LIMITS[type].requests));
     response.headers.set('X-RateLimit-Remaining', String(remaining));
-    response.headers.set(
-      'X-RateLimit-Reset',
-      String(Math.ceil(resetAt / 1000))
-    );
+    response.headers.set('X-RateLimit-Reset', String(Math.ceil(resetAt / 1000)));
 
     return response;
   };

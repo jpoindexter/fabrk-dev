@@ -77,10 +77,7 @@ const DialogContent = React.forwardRef<
 ));
 DialogContent.displayName = 'DialogContent';
 
-const DialogHeader = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
+const DialogHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     data-slot="dialog-overlay"
     className={cn('flex flex-col gap-2 text-center sm:text-left', className)}
@@ -88,16 +85,9 @@ const DialogHeader = ({
   />
 );
 
-const DialogFooter = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
+const DialogFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn(
-      'flex flex-col sm:flex-row sm:justify-between sm:space-x-2',
-      className,
-      ''
-    )}
+    className={cn('flex flex-col sm:flex-row sm:justify-between sm:space-x-2', className, '')}
     {...props}
   />
 );
@@ -109,11 +99,7 @@ const DialogTitle = React.forwardRef<
   <DialogPrimitive.Title
     data-slot="dialog-title"
     ref={ref}
-    className={cn(
-      'text-lg leading-none font-semibold tracking-tight',
-      mode.font,
-      className
-    )}
+    className={cn('text-lg leading-none font-semibold tracking-tight', mode.font, className)}
     {...props}
   />
 ));

@@ -7,12 +7,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  TemplatePageHeader,
-} from '@/components/ui/card';
+import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
@@ -102,14 +97,11 @@ const CustomTooltip = ({
 }) => {
   if (active && payload && payload.length) {
     return (
-      <div
-        className={cn(mode.font, 'border-border bg-card border p-4 text-xs')}
-      >
+      <div className={cn(mode.font, 'border-border bg-card border p-4 text-xs')}>
         <p className="mb-1 font-semibold">{label}</p>
         {payload.map((entry: TooltipPayload, index: number) => (
           <p key={index} style={{ color: entry.color }}>
-            <span className="font-semibold">{entry.name}:</span> $
-            {entry.value.toLocaleString()}
+            <span className="font-semibold">{entry.name}:</span> ${entry.value.toLocaleString()}
           </p>
         ))}
       </div>
@@ -237,9 +229,7 @@ function ChartLibraryPreview() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className={cn(mode.font, 'text-2xl font-semibold')}>
-              Chart Library
-            </h1>
+            <h1 className={cn(mode.font, 'text-2xl font-semibold')}>Chart Library</h1>
             <p className="text-muted-foreground text-sm">
               Recharts visualization components for data-driven dashboards
             </p>
@@ -253,69 +243,41 @@ function ChartLibraryPreview() {
         {/* Stats - Terminal Style */}
         <div className="grid gap-6 md:grid-cols-4">
           <div className="border-border bg-card border p-4">
-            <div
-              className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}
-            >
+            <div className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}>
               [TOTAL_REVENUE]:
             </div>
             <div className="text-4xl font-semibold">$91.9K</div>
-            <div
-              className={cn(
-                mode.font,
-                'text-success mt-1 flex items-center gap-1 text-xs'
-              )}
-            >
+            <div className={cn(mode.font, 'text-success mt-1 flex items-center gap-1 text-xs')}>
               <TrendingUp className="h-3 w-3" />
               +23.5%
             </div>
           </div>
           <div className="border-border bg-card border p-4">
-            <div
-              className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}
-            >
+            <div className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}>
               [ACTIVE_USERS]:
             </div>
             <div className="text-4xl font-semibold">12.5K</div>
-            <div
-              className={cn(
-                mode.font,
-                'text-success mt-1 flex items-center gap-1 text-xs'
-              )}
-            >
+            <div className={cn(mode.font, 'text-success mt-1 flex items-center gap-1 text-xs')}>
               <TrendingUp className="h-3 w-3" />
               +941%
             </div>
           </div>
           <div className="border-border bg-card border p-4">
-            <div
-              className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}
-            >
+            <div className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}>
               [CONVERSION_RATE]:
             </div>
             <div className="text-4xl font-semibold">4.5%</div>
-            <div
-              className={cn(
-                mode.font,
-                'text-success mt-1 flex items-center gap-1 text-xs'
-              )}
-            >
+            <div className={cn(mode.font, 'text-success mt-1 flex items-center gap-1 text-xs')}>
               <TrendingUp className="h-3 w-3" />
               +0.8%
             </div>
           </div>
           <div className="border-border bg-card border p-4">
-            <div
-              className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}
-            >
+            <div className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}>
               [AVG_ORDER_VALUE]:
             </div>
             <div className="text-4xl font-semibold">$89</div>
-            <div
-              className={cn(
-                mode.font,
-                'text-destructive mt-1 flex items-center gap-1 text-xs'
-              )}
-            >
+            <div className={cn(mode.font, 'text-destructive mt-1 flex items-center gap-1 text-xs')}>
               <TrendingUp className="h-3 w-3 rotate-180" />
               -2.3%
             </div>
@@ -335,35 +297,20 @@ function ChartLibraryPreview() {
             <div className="border-border bg-card border border-t-0 p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
-                  <div
-                    className={cn(mode.font, 'text-muted-foreground text-xs')}
-                  >
+                  <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
                     [REVENUE_OVERVIEW]:
                   </div>
-                  <div
-                    className={cn(
-                      mode.font,
-                      'text-muted-foreground mt-1 text-xs'
-                    )}
-                  >
+                  <div className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
                     Monthly revenue, expenses, and profit (2024)
                   </div>
                 </div>
-                <span
-                  className={cn(
-                    mode.font,
-                    'border-border border px-2 py-0.5 text-xs'
-                  )}
-                >
+                <span className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}>
                   MULTI_LINE
                 </span>
               </div>
               <ResponsiveContainer width="100%" height={400}>
                 <LineChart data={revenueData}>
-                  <CartesianGrid
-                    strokeDasharray="3 3"
-                    stroke="oklch(var(--border))"
-                  />
+                  <CartesianGrid strokeDasharray="3 3" stroke="oklch(var(--border))" />
                   <XAxis
                     dataKey="month"
                     tick={{ fontSize: 12 }}
@@ -407,35 +354,20 @@ function ChartLibraryPreview() {
             <div className="border-border bg-card border border-t-0 p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
-                  <div
-                    className={cn(mode.font, 'text-muted-foreground text-xs')}
-                  >
+                  <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
                     [USER_GROWTH]:
                   </div>
-                  <div
-                    className={cn(
-                      mode.font,
-                      'text-muted-foreground mt-1 text-xs'
-                    )}
-                  >
+                  <div className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
                     Total active users over time
                   </div>
                 </div>
-                <span
-                  className={cn(
-                    mode.font,
-                    'border-border border px-2 py-0.5 text-xs'
-                  )}
-                >
+                <span className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}>
                   SOLID_FILL
                 </span>
               </div>
               <ResponsiveContainer width="100%" height={400}>
                 <AreaChart data={userGrowthData}>
-                  <CartesianGrid
-                    strokeDasharray="3 3"
-                    stroke="oklch(var(--border))"
-                  />
+                  <CartesianGrid strokeDasharray="3 3" stroke="oklch(var(--border))" />
                   <XAxis
                     dataKey="month"
                     tick={{ fontSize: 12 }}
@@ -471,35 +403,20 @@ function ChartLibraryPreview() {
             <div className="border-border bg-card border border-t-0 p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
-                  <div
-                    className={cn(mode.font, 'text-muted-foreground text-xs')}
-                  >
+                  <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
                     [CONVERSION_FUNNEL]:
                   </div>
-                  <div
-                    className={cn(
-                      mode.font,
-                      'text-muted-foreground mt-1 text-xs'
-                    )}
-                  >
+                  <div className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
                     User journey from visitor to retained customer
                   </div>
                 </div>
-                <span
-                  className={cn(
-                    mode.font,
-                    'border-border border px-2 py-0.5 text-xs'
-                  )}
-                >
+                <span className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}>
                   HORIZONTAL_BARS
                 </span>
               </div>
               <ResponsiveContainer width="100%" height={400}>
                 <BarChart data={conversionFunnelData} layout="vertical">
-                  <CartesianGrid
-                    strokeDasharray="3 3"
-                    stroke="oklch(var(--border))"
-                  />
+                  <CartesianGrid strokeDasharray="3 3" stroke="oklch(var(--border))" />
                   <XAxis
                     type="number"
                     tick={{ fontSize: 12 }}
@@ -519,11 +436,7 @@ function ChartLibraryPreview() {
                       fontSize: '12px',
                     }}
                   />
-                  <Bar
-                    dataKey="count"
-                    fill="oklch(var(--primary))"
-                    radius={[0, 0, 0, 0]}
-                  />
+                  <Bar dataKey="count" fill="oklch(var(--primary))" radius={[0, 0, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -534,26 +447,14 @@ function ChartLibraryPreview() {
             <div className="border-border bg-card border border-t-0 p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
-                  <div
-                    className={cn(mode.font, 'text-muted-foreground text-xs')}
-                  >
+                  <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
                     [TRAFFIC_SOURCES]:
                   </div>
-                  <div
-                    className={cn(
-                      mode.font,
-                      'text-muted-foreground mt-1 text-xs'
-                    )}
-                  >
+                  <div className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
                     Distribution of website visitors by source
                   </div>
                 </div>
-                <span
-                  className={cn(
-                    mode.font,
-                    'border-border border px-2 py-0.5 text-xs'
-                  )}
-                >
+                <span className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}>
                   DONUT_CHART
                 </span>
               </div>
@@ -585,13 +486,7 @@ function ChartLibraryPreview() {
 
                 <div className="space-y-4">
                   {trafficSourceData.map((source, idx) => (
-                    <div
-                      key={idx}
-                      className={cn(
-                        mode.font,
-                        'flex items-center gap-4 text-sm'
-                      )}
-                    >
+                    <div key={idx} className={cn(mode.font, 'flex items-center gap-4 text-sm')}>
                       {}
                       <div
                         className="border-border h-4 w-4 border"
@@ -599,16 +494,10 @@ function ChartLibraryPreview() {
                       />
                       <span className="w-32">{source.name}</span>
                       <div className="text-right">
-                        <div className="font-semibold">
-                          {source.value.toLocaleString()}
-                        </div>
+                        <div className="font-semibold">{source.value.toLocaleString()}</div>
                         <div className="text-muted-foreground">
                           {(
-                            (source.value /
-                              trafficSourceData.reduce(
-                                (a, b) => a + b.value,
-                                0
-                              )) *
+                            (source.value / trafficSourceData.reduce((a, b) => a + b.value, 0)) *
                             100
                           ).toFixed(1)}
                           %
@@ -686,11 +575,7 @@ export default function ChartLibraryTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock
-                  code={templateCode}
-                  language="tsx"
-                  maxHeight="600px"
-                />
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
             </Card>
           </TabsContent>
@@ -707,13 +592,9 @@ export default function ChartLibraryTemplate() {
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">(dashboard)/</span>
                   <span className="text-foreground">charts/page.tsx</span>
-                  <span className="text-muted-foreground ml-4">
-                    ← Copy template here
-                  </span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
                 </div>
-                <div className="text-muted-foreground mt-2">
-                  [INSTALL]: npm install recharts
-                </div>
+                <div className="text-muted-foreground mt-2">[INSTALL]: npm install recharts</div>
               </div>
             </div>
           </CardContent>
@@ -725,40 +606,36 @@ export default function ChartLibraryTemplate() {
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> 4 chart types (Line,
-                Area, Bar, Pie/Donut)
+                <span className="text-success">&gt;</span> 4 chart types (Line, Area, Bar,
+                Pie/Donut)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Recharts library with
-                responsive containers
+                <span className="text-success">&gt;</span> Recharts library with responsive
+                containers
               </div>
               <div>
-                <span className="text-success">&gt;</span> Custom tooltips with
-                terminal styling
+                <span className="text-success">&gt;</span> Custom tooltips with terminal styling
               </div>
               <div>
-                <span className="text-success">&gt;</span> Solid fills with
-                theme colors
+                <span className="text-success">&gt;</span> Solid fills with theme colors
               </div>
               <div>
-                <span className="text-success">&gt;</span> Custom color schemes
-                matching design system
+                <span className="text-success">&gt;</span> Custom color schemes matching design
+                system
               </div>
               <div>
-                <span className="text-success">&gt;</span> Formatted axes (K
-                notation for large numbers)
+                <span className="text-success">&gt;</span> Formatted axes (K notation for large
+                numbers)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Tab navigation
-                between chart types
+                <span className="text-success">&gt;</span> Tab navigation between chart types
               </div>
               <div>
-                <span className="text-success">&gt;</span> Multi-line, area,
-                bar, and pie chart examples
+                <span className="text-success">&gt;</span> Multi-line, area, bar, and pie chart
+                examples
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant
-                (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>
@@ -772,21 +649,12 @@ export default function ChartLibraryTemplate() {
               <div className="text-muted-foreground">[USAGE]:</div>
               <div className="space-y-1 pl-4">
                 <div>• Replace mock data with your API data</div>
+                <div>• Recharts supports Scatter, Radar, Composed, Treemap, and more</div>
                 <div>
-                  • Recharts supports Scatter, Radar, Composed, Treemap, and
-                  more
+                  • Customize colors using design system tokens (oklch(var(--primary)), etc.)
                 </div>
-                <div>
-                  • Customize colors using design system tokens
-                  (oklch(var(--primary)), etc.)
-                </div>
-                <div>
-                  • Add animations with animationDuration prop on chart
-                  components
-                </div>
-                <div>
-                  • Use CartesianGrid for grid lines, Legend for chart legends
-                </div>
+                <div>• Add animations with animationDuration prop on chart components</div>
+                <div>• Use CartesianGrid for grid lines, Legend for chart legends</div>
               </div>
             </div>
           </CardContent>

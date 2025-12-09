@@ -20,8 +20,7 @@ export default function CloudStoragePage() {
         {
           icon: Cloud,
           title: 'Multi-Provider',
-          description:
-            'Works with Cloudflare R2, AWS S3, or local storage automatically.',
+          description: 'Works with Cloudflare R2, AWS S3, or local storage automatically.',
         },
         {
           icon: Zap,
@@ -36,8 +35,7 @@ export default function CloudStoragePage() {
         {
           icon: Shield,
           title: 'Secure Uploads',
-          description:
-            'File validation, signed URLs, and access control built-in.',
+          description: 'File validation, signed URLs, and access control built-in.',
         },
       ]}
       setup={[
@@ -232,10 +230,9 @@ export function FileUploader() {
       <DocsSection title="Provider Priority">
         <DocsCard title="PROVIDER_PRIORITY">
           <p className="mb-4">
-            Fabrk automatically detects which storage provider you have
-            configured and uses it. This means you can start with local storage
-            during development and switch to cloud in production without
-            changing your code.
+            Fabrk automatically detects which storage provider you have configured and uses it. This
+            means you can start with local storage during development and switch to cloud in
+            production without changing your code.
           </p>
           <div className="space-y-2">
             <div className="border-border flex items-center gap-4 border p-4">
@@ -311,9 +308,8 @@ export function FileUploader() {
                 1
               </span>
               <span>
-                <strong>Validate file types:</strong> Never trust the file
-                extension. Check MIME type server-side to prevent malicious
-                uploads.
+                <strong>Validate file types:</strong> Never trust the file extension. Check MIME
+                type server-side to prevent malicious uploads.
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -321,8 +317,8 @@ export function FileUploader() {
                 2
               </span>
               <span>
-                <strong>Limit file sizes:</strong> Set reasonable limits to
-                prevent storage abuse and server crashes.
+                <strong>Limit file sizes:</strong> Set reasonable limits to prevent storage abuse
+                and server crashes.
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -330,8 +326,8 @@ export function FileUploader() {
                 3
               </span>
               <span>
-                <strong>Use signed URLs:</strong> For private files, generate
-                time-limited signed URLs instead of public links.
+                <strong>Use signed URLs:</strong> For private files, generate time-limited signed
+                URLs instead of public links.
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -339,8 +335,8 @@ export function FileUploader() {
                 4
               </span>
               <span>
-                <strong>Organize by user/org:</strong> Store files in user or
-                organization folders to enable access control.
+                <strong>Organize by user/org:</strong> Store files in user or organization folders
+                to enable access control.
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -348,8 +344,8 @@ export function FileUploader() {
                 5
               </span>
               <span>
-                <strong>Scan for malware:</strong> Consider adding virus
-                scanning for user-uploaded files in production.
+                <strong>Scan for malware:</strong> Consider adding virus scanning for user-uploaded
+                files in production.
               </span>
             </li>
           </ul>
@@ -365,12 +361,12 @@ export function FileUploader() {
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
               <p>
-                <strong>Cloudflare R2:</strong> $0.015/GB/month for storage,
-                zero egress fees. First 10GB free.
+                <strong>Cloudflare R2:</strong> $0.015/GB/month for storage, zero egress fees. First
+                10GB free.
               </p>
               <p className="mt-2">
-                <strong>AWS S3:</strong> ~$0.023/GB/month storage + $0.09/GB
-                egress. Egress fees can add up quickly.
+                <strong>AWS S3:</strong> ~$0.023/GB/month storage + $0.09/GB egress. Egress fees can
+                add up quickly.
               </p>
             </div>
           </details>
@@ -381,9 +377,9 @@ export function FileUploader() {
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
               <p>
-                By default, Fabrk validates files up to 10MB. You can change
-                this in your upload options. For larger files (videos, etc.),
-                consider using direct-to-storage uploads with presigned URLs.
+                By default, Fabrk validates files up to 10MB. You can change this in your upload
+                options. For larger files (videos, etc.), consider using direct-to-storage uploads
+                with presigned URLs.
               </p>
             </div>
           </details>
@@ -394,10 +390,9 @@ export function FileUploader() {
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
               <p>
-                Fabrk uses one provider at a time based on which env vars are
-                set. R2 takes priority if both are configured. If you need
-                multi-provider support, you&apos;d need to customize the storage
-                module.
+                Fabrk uses one provider at a time based on which env vars are set. R2 takes priority
+                if both are configured. If you need multi-provider support, you&apos;d need to
+                customize the storage module.
               </p>
             </div>
           </details>
@@ -408,10 +403,9 @@ export function FileUploader() {
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
               <p>
-                Use the <code className="bg-muted px-1">deleteFile(key)</code>{' '}
-                function from the storage module. The key is returned when you
-                upload a file. Make sure to also remove the file reference from
-                your database.
+                Use the <code className="bg-muted px-1">deleteFile(key)</code> function from the
+                storage module. The key is returned when you upload a file. Make sure to also remove
+                the file reference from your database.
               </p>
             </div>
           </details>

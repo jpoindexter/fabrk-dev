@@ -7,12 +7,7 @@
 import { useState } from 'react';
 import { Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  TemplatePageHeader,
-} from '@/components/ui/card';
+import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { mode } from '@/design-system';
@@ -99,9 +94,7 @@ function AnalyticsDashboardPreview() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className={cn(mode.font, 'text-2xl font-semibold')}>
-              Analytics Dashboard
-            </h1>
+            <h1 className={cn(mode.font, 'text-2xl font-semibold')}>Analytics Dashboard</h1>
             <p className="text-muted-foreground text-sm">
               Track revenue, users, conversions, and growth metrics
             </p>
@@ -194,11 +187,7 @@ export default function AnalyticsDashboardTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock
-                  code={templateCode}
-                  language="tsx"
-                  maxHeight="600px"
-                />
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
             </Card>
           </TabsContent>
@@ -215,9 +204,7 @@ export default function AnalyticsDashboardTemplate() {
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">(dashboard)/</span>
                   <span className="text-foreground">analytics/page.tsx</span>
-                  <span className="text-muted-foreground ml-4">
-                    ← Copy template here
-                  </span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
                 </div>
                 <div>
                   <span className="text-primary">components/</span>
@@ -246,40 +233,35 @@ export default function AnalyticsDashboardTemplate() {
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> 4 key metric cards
-                (revenue, users, conversions, growth)
+                <span className="text-success">&gt;</span> 4 key metric cards (revenue, users,
+                conversions, growth)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Revenue overview
-                chart with 6-month data
+                <span className="text-success">&gt;</span> Revenue overview chart with 6-month data
               </div>
               <div>
-                <span className="text-success">&gt;</span> Recent activity feed
-                with user avatars
+                <span className="text-success">&gt;</span> Recent activity feed with user avatars
               </div>
               <div>
-                <span className="text-success">&gt;</span> Tabbed analytics
-                section (Overview, Analytics, Reports)
+                <span className="text-success">&gt;</span> Tabbed analytics section (Overview,
+                Analytics, Reports)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Top performing pages
-                table with bounce rates
+                <span className="text-success">&gt;</span> Top performing pages table with bounce
+                rates
               </div>
               <div>
-                <span className="text-success">&gt;</span> Traffic sources
-                breakdown with progress bars
+                <span className="text-success">&gt;</span> Traffic sources breakdown with progress
+                bars
               </div>
               <div>
-                <span className="text-success">&gt;</span> Device breakdown
-                statistics
+                <span className="text-success">&gt;</span> Device breakdown statistics
               </div>
               <div>
-                <span className="text-success">&gt;</span> Report generation
-                templates
+                <span className="text-success">&gt;</span> Report generation templates
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant
-                (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

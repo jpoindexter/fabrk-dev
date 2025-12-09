@@ -50,28 +50,18 @@ interface DocsSidebarProps {
 }
 
 // Helper to find which section contains the current path
-function findActiveSectionIndex(
-  pathname: string,
-  navigation: NavSection[]
-): number {
+function findActiveSectionIndex(pathname: string, navigation: NavSection[]): number {
   return navigation.findIndex(
     (section) =>
       section.items.some((item) => pathname === item.href) ||
       pathname === section.href ||
-      section.subSections?.some((sub) =>
-        sub.items.some((item) => pathname === item.href)
-      )
+      section.subSections?.some((sub) => sub.items.some((item) => pathname === item.href))
   );
 }
 
 // Helper to find which sub-section contains the current path
-function findActiveSubSectionIndex(
-  pathname: string,
-  subSections: NavSubSection[]
-): number {
-  return subSections.findIndex((sub) =>
-    sub.items.some((item) => pathname === item.href)
-  );
+function findActiveSubSectionIndex(pathname: string, subSections: NavSubSection[]): number {
+  return subSections.findIndex((sub) => sub.items.some((item) => pathname === item.href));
 }
 
 export function DocsSidebar({
@@ -93,25 +83,20 @@ export function DocsSidebar({
   });
 
   // Track expanded sub-sections: key = "sectionIndex-subSectionIndex"
-  const [expandedSubSections, setExpandedSubSections] = useState<Set<string>>(
-    () => {
-      const initial = new Set<string>();
-      // Auto-expand sub-section containing active item
-      if (activeSectionIndex >= 0) {
-        const section = navigation[activeSectionIndex];
-        if (section.subSections) {
-          const activeSubIndex = findActiveSubSectionIndex(
-            pathname,
-            section.subSections
-          );
-          if (activeSubIndex >= 0) {
-            initial.add(`${activeSectionIndex}-${activeSubIndex}`);
-          }
+  const [expandedSubSections, setExpandedSubSections] = useState<Set<string>>(() => {
+    const initial = new Set<string>();
+    // Auto-expand sub-section containing active item
+    if (activeSectionIndex >= 0) {
+      const section = navigation[activeSectionIndex];
+      if (section.subSections) {
+        const activeSubIndex = findActiveSubSectionIndex(pathname, section.subSections);
+        if (activeSubIndex >= 0) {
+          initial.add(`${activeSectionIndex}-${activeSubIndex}`);
         }
       }
-      return initial;
     }
-  );
+    return initial;
+  });
 
   // Sidebar collapse state
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -135,9 +120,7 @@ export function DocsSidebar({
         const matchingSubSections = section.subSections
           ?.map((sub) => ({
             ...sub,
-            items: sub.items.filter((item) =>
-              item.title.toLowerCase().includes(query)
-            ),
+            items: sub.items.filter((item) => item.title.toLowerCase().includes(query)),
           }))
           .filter((sub) => sub.items.length > 0);
 
@@ -152,9 +135,7 @@ export function DocsSidebar({
           return {
             ...section,
             items: sectionMatches ? section.items : matchingItems,
-            subSections: sectionMatches
-              ? section.subSections
-              : matchingSubSections,
+            subSections: sectionMatches ? section.subSections : matchingSubSections,
           };
         }
         return null;
@@ -195,10 +176,7 @@ export function DocsSidebar({
       // Expand sub-section containing active item
       const section = navigation[newActiveIndex];
       if (section.subSections) {
-        const activeSubIndex = findActiveSubSectionIndex(
-          pathname,
-          section.subSections
-        );
+        const activeSubIndex = findActiveSubSectionIndex(pathname, section.subSections);
         if (activeSubIndex >= 0) {
           const subKey = `${newActiveIndex}-${activeSubIndex}`;
 
@@ -313,9 +291,7 @@ export function DocsSidebar({
             const hasActiveItem =
               section.items.some((item) => pathname === item.href) ||
               pathname === section.href ||
-              section.subSections?.some((sub) =>
-                sub.items.some((item) => pathname === item.href)
-              );
+              section.subSections?.some((sub) => sub.items.some((item) => pathname === item.href));
             const sectionKey = section.id || section.title;
             const displayTitle = formatSectionTitle
               ? formatSectionTitle(section.title, sectionIndex)
@@ -328,9 +304,7 @@ export function DocsSidebar({
                   onClick={() => toggleSection(sectionIndex)}
                   className={cn(
                     'flex w-full items-center gap-2 py-2 text-xs font-semibold transition-colors',
-                    hasActiveItem
-                      ? 'text-primary'
-                      : 'text-muted-foreground hover:text-foreground',
+                    hasActiveItem ? 'text-primary' : 'text-muted-foreground hover:text-foreground',
                     mode.font
                   )}
                 >
@@ -403,9 +377,7 @@ export function DocsSidebar({
                         <div key={subSection.title} className="mt-1">
                           {/* Sub-section header */}
                           <button
-                            onClick={() =>
-                              toggleSubSection(sectionIndex, subIndex)
-                            }
+                            onClick={() => toggleSubSection(sectionIndex, subIndex)}
                             className={cn(
                               'flex w-full items-center gap-2 py-1 text-xs font-medium transition-colors',
                               hasActiveSubItem

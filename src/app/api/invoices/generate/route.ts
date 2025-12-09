@@ -165,10 +165,7 @@ async function generateInvoiceHandler(req: NextRequest) {
     const session = await auth();
 
     if (!session?.user?.email) {
-      return NextResponse.json(
-        { error: 'Unauthorized - Please sign in' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Unauthorized - Please sign in' }, { status: 401 });
     }
 
     // Parse request body
@@ -179,10 +176,7 @@ async function generateInvoiceHandler(req: NextRequest) {
     };
 
     if (!paymentId) {
-      return NextResponse.json(
-        { error: 'Payment ID is required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Payment ID is required' }, { status: 400 });
     }
 
     // Get user from database
@@ -220,18 +214,13 @@ async function generateInvoiceHandler(req: NextRequest) {
     if (format === 'url') {
       try {
         // Retrieve the payment intent from Stripe
-        const paymentIntent = await stripe.paymentIntents.retrieve(
-          payment.stripeId
-        );
+        const paymentIntent = await stripe.paymentIntents.retrieve(payment.stripeId);
 
         // Get the invoice if one exists
         const piWithInvoice = paymentIntent as unknown as {
           invoice?: string | null;
         };
-        if (
-          piWithInvoice.invoice &&
-          typeof piWithInvoice.invoice === 'string'
-        ) {
+        if (piWithInvoice.invoice && typeof piWithInvoice.invoice === 'string') {
           const invoice = await stripe.invoices.retrieve(piWithInvoice.invoice);
 
           if (invoice.hosted_invoice_url) {
@@ -295,10 +284,7 @@ async function generateInvoiceHandler(req: NextRequest) {
     return NextResponse.json({ invoice: invoiceData });
   } catch (error: unknown) {
     logger.error('Invoice generation error:', error);
-    return NextResponse.json(
-      { error: 'Failed to generate invoice' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to generate invoice' }, { status: 500 });
   }
 }
 

@@ -44,11 +44,8 @@ export function DataTable<TData, TValue>({
   onRowClick,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  );
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({});
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
+  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
 
   // eslint-disable-next-line react-hooks/incompatible-library -- TanStack Table API design is incompatible with React Compiler but works correctly
@@ -73,11 +70,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="space-y-4">
-      <DataTableToolbar
-        table={table}
-        searchKey={searchKey}
-        searchPlaceholder={searchPlaceholder}
-      />
+      <DataTableToolbar table={table} searchKey={searchKey} searchPlaceholder={searchPlaceholder} />
       <div
         className={cn(
           'border-border bg-card [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar-thumb]:bg-border overflow-x-auto scroll-smooth border [&::-webkit-scrollbar]:h-2',
@@ -95,16 +88,10 @@ export function DataTable<TData, TValue>({
                 {headerGroup.headers.map((header) => {
                   if (!header || !header.column) return null;
                   return (
-                    <TableHead
-                      key={header.id}
-                      className="text-foreground font-semibold"
-                    >
+                    <TableHead key={header.id} className="text-foreground font-semibold">
                       {header.isPlaceholder
                         ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
+                        : flexRender(header.column.columnDef.header, header.getContext())}
                     </TableHead>
                   );
                 })}
@@ -122,37 +109,26 @@ export function DataTable<TData, TValue>({
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </TableCell>
                   ))}
                 </TableRow>
               ))
             ) : (
               <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className="h-24 text-center"
-                >
+                <TableCell colSpan={columns.length} className="h-24 text-center">
                   <div className="flex flex-col items-center justify-center gap-2">
-                    <p
-                      className={cn('text-muted-foreground text-xs', mode.font)}
-                    >
+                    <p className={cn('text-muted-foreground text-xs', mode.font)}>
                       No results found.
                     </p>
-                    {searchKey &&
-                      !!table.getColumn(searchKey)?.getFilterValue() && (
-                        <button
-                          onClick={() =>
-                            table.getColumn(searchKey)?.setFilterValue('')
-                          }
-                          className="text-primary text-xs hover:underline"
-                        >
-                          Clear search
-                        </button>
-                      )}
+                    {searchKey && !!table.getColumn(searchKey)?.getFilterValue() && (
+                      <button
+                        onClick={() => table.getColumn(searchKey)?.setFilterValue('')}
+                        className="text-primary text-xs hover:underline"
+                      >
+                        Clear search
+                      </button>
+                    )}
                   </div>
                 </TableCell>
               </TableRow>

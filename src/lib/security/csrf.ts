@@ -153,10 +153,7 @@ export function withCsrfProtection<T extends unknown[]>(
  * Generate and set CSRF token for client-side forms
  * Call this in your layout or page to provide token to client
  */
-export function ensureCsrfToken(
-  req: NextRequest,
-  response: NextResponse
-): void {
+export function ensureCsrfToken(req: NextRequest, response: NextResponse): void {
   const existingToken = getCsrfTokenFromCookie(req);
 
   if (!existingToken || !validateCsrfToken(existingToken)) {

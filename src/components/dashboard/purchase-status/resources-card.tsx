@@ -27,11 +27,7 @@ export function ResourcesCard({ hasAccess }: ResourcesCardProps) {
           disabled={!hasAccess}
           asChild
         >
-          <a
-            href="https://github.com/fabrk/boilerplate"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://github.com/fabrk/boilerplate" target="_blank" rel="noopener noreferrer">
             <Github className="mr-2 h-4 w-4" />
             &gt; GITHUB_REPOSITORY
             {hasAccess && <ExternalLink className="ml-auto h-4 w-4" />}

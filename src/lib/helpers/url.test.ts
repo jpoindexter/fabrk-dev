@@ -107,24 +107,17 @@ describe('addQueryParams', () => {
 
 describe('removeQueryParams', () => {
   it('should remove specified params', () => {
-    const result = removeQueryParams('https://example.com?foo=bar&baz=qux', [
-      'foo',
-    ]);
+    const result = removeQueryParams('https://example.com?foo=bar&baz=qux', ['foo']);
     expect(result).toBe('https://example.com/?baz=qux');
   });
 
   it('should remove multiple params', () => {
-    const result = removeQueryParams('https://example.com?a=1&b=2&c=3', [
-      'a',
-      'c',
-    ]);
+    const result = removeQueryParams('https://example.com?a=1&b=2&c=3', ['a', 'c']);
     expect(result).toBe('https://example.com/?b=2');
   });
 
   it('should handle non-existent params', () => {
-    const result = removeQueryParams('https://example.com?foo=bar', [
-      'nonexistent',
-    ]);
+    const result = removeQueryParams('https://example.com?foo=bar', ['nonexistent']);
     expect(result).toBe('https://example.com/?foo=bar');
   });
 
@@ -144,9 +137,7 @@ describe('getQueryParam', () => {
   });
 
   it('should handle encoded values', () => {
-    expect(getQueryParam('https://example.com?name=John%20Doe', 'name')).toBe(
-      'John Doe'
-    );
+    expect(getQueryParam('https://example.com?name=John%20Doe', 'name')).toBe('John Doe');
   });
 });
 
@@ -180,9 +171,7 @@ describe('getSubdomain', () => {
 
 describe('isExternalUrl', () => {
   it('should return false for internal URLs', () => {
-    expect(isExternalUrl('https://example.com/page', 'example.com')).toBe(
-      false
-    );
+    expect(isExternalUrl('https://example.com/page', 'example.com')).toBe(false);
   });
 
   it('should return true for external URLs', () => {
@@ -211,8 +200,7 @@ describe('sanitizeUrl', () => {
   });
 
   it('should remove default sensitive params', () => {
-    const url =
-      'https://example.com?token=a&api_key=b&secret=c&password=d&page=1';
+    const url = 'https://example.com?token=a&api_key=b&secret=c&password=d&page=1';
     const result = sanitizeUrl(url);
     expect(result).not.toContain('token=');
     expect(result).not.toContain('api_key=');
@@ -262,9 +250,7 @@ describe('joinPaths', () => {
   });
 
   it('should filter empty parts', () => {
-    expect(joinPaths('https://example.com', '', 'api')).toBe(
-      'https://example.com/api'
-    );
+    expect(joinPaths('https://example.com', '', 'api')).toBe('https://example.com/api');
   });
 
   it('should handle single path', () => {

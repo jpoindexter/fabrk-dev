@@ -64,12 +64,7 @@ const variantConfig: Record<
   },
 };
 
-export function DocsCallout({
-  variant = 'info',
-  title,
-  children,
-  className,
-}: DocsCalloutProps) {
+export function DocsCallout({ variant = 'info', title, children, className }: DocsCalloutProps) {
   const config = variantConfig[variant];
   const Icon = config.icon;
 
@@ -83,16 +78,9 @@ export function DocsCallout({
       </div>
       <div className={cn('p-4', config.bgColor)}>
         <div className="flex items-start gap-4">
-          <Icon
-            className={cn('mt-0.5 h-5 w-5 shrink-0', config.iconColor)}
-            aria-hidden="true"
-          />
+          <Icon className={cn('mt-0.5 h-5 w-5 shrink-0', config.iconColor)} aria-hidden="true" />
           <div className="space-y-1">
-            {title && (
-              <p className={`font-semibold uppercase ${docsTypography.h4}`}>
-                {title}
-              </p>
-            )}
+            {title && <p className={`font-semibold uppercase ${docsTypography.h4}`}>{title}</p>}
             <div className={docsTypography.body}>{children}</div>
           </div>
         </div>

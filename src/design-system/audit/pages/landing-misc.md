@@ -37,11 +37,7 @@ function SuccessContent() {
 export default function SuccessPage() {
   return (
     <Suspense
-      fallback={
-        <div className="flex min-h-screen items-center justify-center">
-          Loading...
-        </div>
-      }
+      fallback={<div className="flex min-h-screen items-center justify-center">Loading...</div>}
     >
       <SuccessContent />
     </Suspense>
@@ -114,9 +110,7 @@ export default function SuccessPage() {
     <Mail className="text-foreground h-6 w-6" />
     <h3 className="text-lg font-semibold">Check Your Email</h3>
   </div>
-  <p className="text-muted-foreground text-center">
-    We've sent you a confirmation email...
-  </p>
+  <p className="text-muted-foreground text-center">We've sent you a confirmation email...</p>
 </div>
 ```
 
@@ -140,8 +134,7 @@ export default function SuccessPage() {
         1
       </span>
       <span>
-        <strong className="text-foreground">GitHub Repository Access</strong> -
-        Description
+        <strong className="text-foreground">GitHub Repository Access</strong> - Description
       </span>
     </li>
     {/* More items */}
@@ -173,11 +166,7 @@ export default function SuccessPage() {
   </p>
   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
     <Button asChild size="lg" className="w-full">
-      <a
-        href="https://github.com/notifications"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://github.com/notifications" target="_blank" rel="noopener noreferrer">
         <Download className="mr-2 h-4 w-4" />
         Check GitHub Invitations
       </a>
@@ -446,9 +435,7 @@ export default function MaintenancePage() {
 
 ```tsx
 <div className="mb-8">
-  <p className="text-muted-foreground mb-2 text-sm">
-    For real-time updates, follow us on:
-  </p>
+  <p className="text-muted-foreground mb-2 text-sm">For real-time updates, follow us on:</p>
   <div className="flex justify-center gap-4">
     <a
       href="https://twitter.com/yourhandle"
@@ -482,9 +469,7 @@ export default function MaintenancePage() {
 
 ```tsx
 <div className="border-border/60 bg-card rounded-none border p-6 text-left">
-  <h2 className="text-foreground mb-4 text-lg font-semibold">
-    What we're working on:
-  </h2>
+  <h2 className="text-foreground mb-4 text-lg font-semibold">What we're working on:</h2>
   <ul className="text-muted-foreground space-y-2 text-sm">
     <li className="flex items-start gap-2">
       <span className="text-primary">•</span>

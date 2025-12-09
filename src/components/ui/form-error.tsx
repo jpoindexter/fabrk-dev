@@ -28,18 +28,7 @@ export interface FormErrorProps {
 }
 
 export const FormError = React.forwardRef<HTMLDivElement, FormErrorProps>(
-  (
-    {
-      what = 'Something went wrong',
-      why,
-      how,
-      onRetry,
-      helpLink,
-      className,
-      id,
-    },
-    ref
-  ) => {
+  ({ what = 'Something went wrong', why, how, onRetry, helpLink, className, id }, ref) => {
     return (
       <div
         data-slot="form-error"
@@ -74,28 +63,14 @@ export const FormError = React.forwardRef<HTMLDivElement, FormErrorProps>(
             {(onRetry || helpLink) && (
               <div className="flex gap-2 pt-2">
                 {onRetry && (
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    onClick={onRetry}
-                    className="h-7 text-xs"
-                  >
+                  <Button size="sm" variant="outline" onClick={onRetry} className="h-7 text-xs">
                     <RefreshCw className="mr-1 size-3" />
                     &gt; RETRY
                   </Button>
                 )}
                 {helpLink && (
-                  <Button
-                    size="sm"
-                    variant="ghost"
-                    asChild
-                    className="h-7 text-xs"
-                  >
-                    <a
-                      href={helpLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                  <Button size="sm" variant="ghost" asChild className="h-7 text-xs">
+                    <a href={helpLink} target="_blank" rel="noopener noreferrer">
                       &gt; LEARN_MORE
                     </a>
                   </Button>

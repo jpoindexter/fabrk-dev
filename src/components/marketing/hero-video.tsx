@@ -22,12 +22,7 @@ export function HeroVideo({
   subheadline = '161 files. Not 1000. Ship your SaaS in hours, not weeks.',
   ctaPrimary = { text: 'Get Fabrk', href: '#pricing' },
   ctaSecondary = { text: 'View Demo', href: '#demo' },
-  trustBadges = [
-    'TypeScript Strict',
-    'PostgreSQL',
-    'Next.js 15',
-    '80+ Components',
-  ],
+  trustBadges = ['TypeScript Strict', 'PostgreSQL', 'Next.js 15', '80+ Components'],
   videoSrc,
   videoPoster,
   overlayOpacity = 0.6,
@@ -132,12 +127,7 @@ export function HeroVideo({
           </div>
 
           {/* Trust Badges */}
-          <div
-            className={cn(
-              mode.font,
-              'mb-8 flex flex-wrap justify-center gap-4'
-            )}
-          >
+          <div className={cn(mode.font, 'mb-8 flex flex-wrap justify-center gap-4')}>
             {trustBadges.map((badge) => (
               <span
                 key={badge}

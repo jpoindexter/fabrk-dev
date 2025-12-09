@@ -7,11 +7,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import { withCsrfProtection } from '@/lib/security/csrf';
-import {
-  checkRateLimitAuto,
-  getClientIdentifier,
-  RateLimiters,
-} from '@/lib/security/rate-limit';
+import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from '@/lib/security/rate-limit';
 import { hash, compare } from 'bcryptjs';
 import { z } from 'zod';
 import { logger } from '@/lib/logger';
@@ -35,9 +31,7 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
           headers: {
             'X-RateLimit-Limit': rateLimit.limit.toString(),
             'X-RateLimit-Remaining': rateLimit.remaining.toString(),
-            'Retry-After': Math.ceil(
-              (rateLimit.reset - Date.now()) / 1000
-            ).toString(),
+            'Retry-After': Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
           },
         }
       );
@@ -69,10 +63,7 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
     const isValid = await compare(validatedData.currentPassword, user.password);
 
     if (!isValid) {
-      return NextResponse.json(
-        { error: 'Current password is incorrect' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Current password is incorrect' }, { status: 400 });
     }
 
     // Hash new password
@@ -97,16 +88,10 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
     });
   } catch (error: unknown) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: 'Invalid input', details: error.issues },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Invalid input', details: error.issues }, { status: 400 });
     }
 
     logger.error('[Password Change] Error:', error);
-    return NextResponse.json(
-      { error: 'Failed to change password' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to change password' }, { status: 500 });
   }
 });

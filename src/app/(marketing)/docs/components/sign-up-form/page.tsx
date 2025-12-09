@@ -45,10 +45,7 @@ export default function SignUpFormPage() {
           description: 'Form displaying an error message.',
           preview: (
             <div className="border-border mx-auto max-w-md border p-4">
-              <SignUpForm
-                error="This email is already registered."
-                socialProviders={[]}
-              />
+              <SignUpForm error="This email is already registered." socialProviders={[]} />
             </div>
           ),
           code: `<SignUpForm error="This email is already registered." />`,

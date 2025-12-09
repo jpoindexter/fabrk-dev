@@ -50,10 +50,7 @@ export function getInvoiceStatusBadge(status: string) {
       );
     case 'open':
       return (
-        <Badge
-          variant="secondary"
-          className="w-24 justify-center font-semibold"
-        >
+        <Badge variant="secondary" className="w-24 justify-center font-semibold">
           Open
         </Badge>
       );
@@ -70,8 +67,6 @@ export function getInvoiceStatusBadge(status: string) {
         </Badge>
       );
     default:
-      return (
-        <Badge className="w-24 justify-center font-semibold">{status}</Badge>
-      );
+      return <Badge className="w-24 justify-center font-semibold">{status}</Badge>;
   }
 }

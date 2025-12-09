@@ -90,8 +90,7 @@ import { WaitlistForm } from "@/components/waitlist-form";
         },
         {
           title: 'Production Deployment',
-          description:
-            'Push to Vercel for automatic SSL, edge caching, and CI/CD',
+          description: 'Push to Vercel for automatic SSL, edge caching, and CI/CD',
           code: `git add .
 git commit -m "Initial MVP release"
 git push origin main`,

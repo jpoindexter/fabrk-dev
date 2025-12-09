@@ -37,28 +37,19 @@ export function InvoiceTable({ payments }: InvoiceTableProps) {
     switch (status) {
       case 'succeeded':
         return (
-          <Badge
-            variant="default"
-            className="w-24 justify-center font-semibold"
-          >
+          <Badge variant="default" className="w-24 justify-center font-semibold">
             Paid
           </Badge>
         );
       case 'failed':
         return (
-          <Badge
-            variant="outline"
-            className="w-24 justify-center font-semibold"
-          >
+          <Badge variant="outline" className="w-24 justify-center font-semibold">
             Failed
           </Badge>
         );
       default:
         return (
-          <Badge
-            variant="secondary"
-            className="w-24 justify-center font-semibold"
-          >
+          <Badge variant="secondary" className="w-24 justify-center font-semibold">
             Pending
           </Badge>
         );
@@ -126,10 +117,7 @@ export function InvoiceTable({ payments }: InvoiceTableProps) {
       success('Invoice opened', 'The invoice has been opened in a new window');
     } catch (err: unknown) {
       console.error('Invoice download error:', err);
-      error(
-        'Download failed',
-        err instanceof Error ? err.message : 'Failed to download invoice'
-      );
+      error('Download failed', err instanceof Error ? err.message : 'Failed to download invoice');
     } finally {
       setDownloadingId(null);
     }
@@ -149,22 +137,16 @@ export function InvoiceTable({ payments }: InvoiceTableProps) {
       <TableBody>
         {payments.map((payment) => (
           <TableRow key={payment.id}>
-            <TableCell className="font-medium">
-              {formatDate(payment.createdAt)}
-            </TableCell>
+            <TableCell className="font-medium">{formatDate(payment.createdAt)}</TableCell>
             <TableCell>
               <div>
-                <p className="font-medium">
-                  {payment.productId || 'One-time purchase'}
-                </p>
+                <p className="font-medium">{payment.productId || 'One-time purchase'}</p>
                 <p className="text-muted-foreground text-xs">
                   Invoice #{payment.stripeId?.slice(-8)}
                 </p>
               </div>
             </TableCell>
-            <TableCell className={mode.font}>
-              {formatCurrency(payment.amount)}
-            </TableCell>
+            <TableCell className={mode.font}>{formatCurrency(payment.amount)}</TableCell>
             <TableCell>{getStatusBadge(payment.status)}</TableCell>
             <TableCell className="text-right">
               {payment.status === 'succeeded' && (

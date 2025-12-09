@@ -15,8 +15,7 @@ import type * as Prisma from '../internal/prismaNamespace';
  * Model FeatureFlag
  *
  */
-export type FeatureFlagModel =
-  runtime.Types.Result.DefaultSelection<Prisma.$FeatureFlagPayload>;
+export type FeatureFlagModel = runtime.Types.Result.DefaultSelection<Prisma.$FeatureFlagPayload>;
 
 export type AggregateFeatureFlag = {
   _count: FeatureFlagCountAggregateOutputType | null;
@@ -105,8 +104,7 @@ export type FeatureFlagCountAggregateInputType = {
 };
 
 export type FeatureFlagAggregateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which FeatureFlag to aggregate.
@@ -179,8 +177,7 @@ export type GetFeatureFlagAggregateType<T extends FeatureFlagAggregateArgs> = {
 };
 
 export type FeatureFlagGroupByArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.FeatureFlagWhereInput;
   orderBy?:
@@ -212,18 +209,17 @@ export type FeatureFlagGroupByOutputType = {
   _max: FeatureFlagMaxAggregateOutputType | null;
 };
 
-type GetFeatureFlagGroupByPayload<T extends FeatureFlagGroupByArgs> =
-  Prisma.PrismaPromise<
-    Array<
-      Prisma.PickEnumerable<FeatureFlagGroupByOutputType, T['by']> & {
-        [P in keyof T & keyof FeatureFlagGroupByOutputType]: P extends '_count'
-          ? T[P] extends boolean
-            ? number
-            : Prisma.GetScalarType<T[P], FeatureFlagGroupByOutputType[P]>
-          : Prisma.GetScalarType<T[P], FeatureFlagGroupByOutputType[P]>;
-      }
-    >
-  >;
+type GetFeatureFlagGroupByPayload<T extends FeatureFlagGroupByArgs> = Prisma.PrismaPromise<
+  Array<
+    Prisma.PickEnumerable<FeatureFlagGroupByOutputType, T['by']> & {
+      [P in keyof T & keyof FeatureFlagGroupByOutputType]: P extends '_count'
+        ? T[P] extends boolean
+          ? number
+          : Prisma.GetScalarType<T[P], FeatureFlagGroupByOutputType[P]>
+        : Prisma.GetScalarType<T[P], FeatureFlagGroupByOutputType[P]>;
+    }
+  >
+>;
 
 export type FeatureFlagWhereInput = {
   AND?: Prisma.FeatureFlagWhereInput | Prisma.FeatureFlagWhereInput[];
@@ -289,20 +285,11 @@ export type FeatureFlagScalarWhereWithAggregatesInput = {
     | Prisma.FeatureFlagScalarWhereWithAggregatesInput[];
   id?: Prisma.StringWithAggregatesFilter<'FeatureFlag'> | string;
   name?: Prisma.StringWithAggregatesFilter<'FeatureFlag'> | string;
-  description?:
-    | Prisma.StringNullableWithAggregatesFilter<'FeatureFlag'>
-    | string
-    | null;
+  description?: Prisma.StringNullableWithAggregatesFilter<'FeatureFlag'> | string | null;
   enabled?: Prisma.BoolWithAggregatesFilter<'FeatureFlag'> | boolean;
   rolloutPercentage?: Prisma.IntWithAggregatesFilter<'FeatureFlag'> | number;
-  createdAt?:
-    | Prisma.DateTimeWithAggregatesFilter<'FeatureFlag'>
-    | Date
-    | string;
-  updatedAt?:
-    | Prisma.DateTimeWithAggregatesFilter<'FeatureFlag'>
-    | Date
-    | string;
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<'FeatureFlag'> | Date | string;
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<'FeatureFlag'> | Date | string;
 };
 
 export type FeatureFlagCreateInput = {
@@ -414,8 +401,7 @@ export type FeatureFlagSumOrderByAggregateInput = {
 };
 
 export type FeatureFlagSelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -430,8 +416,7 @@ export type FeatureFlagSelect<
 >;
 
 export type FeatureFlagSelectCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -446,8 +431,7 @@ export type FeatureFlagSelectCreateManyAndReturn<
 >;
 
 export type FeatureFlagSelectUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -472,22 +456,14 @@ export type FeatureFlagSelectScalar = {
 };
 
 export type FeatureFlagOmit<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
-  | 'id'
-  | 'name'
-  | 'description'
-  | 'enabled'
-  | 'rolloutPercentage'
-  | 'createdAt'
-  | 'updatedAt',
+  'id' | 'name' | 'description' | 'enabled' | 'rolloutPercentage' | 'createdAt' | 'updatedAt',
   ExtArgs['result']['featureFlag']
 >;
 
 export type $FeatureFlagPayload<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   name: 'FeatureFlag';
   objects: {};
@@ -506,23 +482,17 @@ export type $FeatureFlagPayload<
   composites: {};
 };
 
-export type FeatureFlagGetPayload<
-  S extends boolean | null | undefined | FeatureFlagDefaultArgs,
-> = runtime.Types.Result.GetResult<Prisma.$FeatureFlagPayload, S>;
+export type FeatureFlagGetPayload<S extends boolean | null | undefined | FeatureFlagDefaultArgs> =
+  runtime.Types.Result.GetResult<Prisma.$FeatureFlagPayload, S>;
 
 export type FeatureFlagCountArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = Omit<
-  FeatureFlagFindManyArgs,
-  'select' | 'include' | 'distinct' | 'omit'
-> & {
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+> = Omit<FeatureFlagFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
   select?: FeatureFlagCountAggregateInputType | true;
 };
 
 export interface FeatureFlagDelegate<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > {
   [K: symbol]: {
@@ -993,12 +963,7 @@ export interface FeatureFlagDelegate<
               ? never
               : P extends string
                 ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                : [
-                    Error,
-                    'Field ',
-                    P,
-                    ` in "having" needs to be provided in "by"`,
-                  ];
+                : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
           }[HavingFields]
         : 'take' extends Prisma.Keys<T>
           ? 'orderBy' extends Prisma.Keys<T>
@@ -1028,11 +993,8 @@ export interface FeatureFlagDelegate<
                     : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                 }[OrderFields],
   >(
-    args: Prisma.SubsetIntersection<T, FeatureFlagGroupByArgs, OrderByArg> &
-      InputErrors
-  ): {} extends InputErrors
-    ? GetFeatureFlagGroupByPayload<T>
-    : Prisma.PrismaPromise<InputErrors>;
+    args: Prisma.SubsetIntersection<T, FeatureFlagGroupByArgs, OrderByArg> & InputErrors
+  ): {} extends InputErrors ? GetFeatureFlagGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
   /**
    * Fields of the FeatureFlag model
    */
@@ -1048,8 +1010,7 @@ export interface FeatureFlagDelegate<
 export interface Prisma__FeatureFlagClient<
   T,
   Null = never,
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: 'PrismaPromise';
@@ -1060,14 +1021,8 @@ export interface Prisma__FeatureFlagClient<
    * @returns A Promise for the completion of which ever callback is executed.
    */
   then<TResult1 = T, TResult2 = never>(
-    onfulfilled?:
-      | ((value: T) => TResult1 | PromiseLike<TResult1>)
-      | undefined
-      | null,
-    onrejected?:
-      | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-      | undefined
-      | null
+    onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
   ): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
   /**
    * Attaches a callback for only the rejection of the Promise.
@@ -1075,10 +1030,7 @@ export interface Prisma__FeatureFlagClient<
    * @returns A Promise for the completion of the callback.
    */
   catch<TResult = never>(
-    onrejected?:
-      | ((reason: any) => TResult | PromiseLike<TResult>)
-      | undefined
-      | null
+    onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
   ): runtime.Types.Utils.JsPromise<T | TResult>;
   /**
    * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
@@ -1086,9 +1038,7 @@ export interface Prisma__FeatureFlagClient<
    * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
    * @returns A Promise for the completion of the callback.
    */
-  finally(
-    onfinally?: (() => void) | undefined | null
-  ): runtime.Types.Utils.JsPromise<T>;
+  finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
 }
 
 /**
@@ -1109,8 +1059,7 @@ export interface FeatureFlagFieldRefs {
  * FeatureFlag findUnique
  */
 export type FeatureFlagFindUniqueArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the FeatureFlag
@@ -1130,8 +1079,7 @@ export type FeatureFlagFindUniqueArgs<
  * FeatureFlag findUniqueOrThrow
  */
 export type FeatureFlagFindUniqueOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the FeatureFlag
@@ -1151,8 +1099,7 @@ export type FeatureFlagFindUniqueOrThrowArgs<
  * FeatureFlag findFirst
  */
 export type FeatureFlagFindFirstArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the FeatureFlag
@@ -1197,17 +1144,14 @@ export type FeatureFlagFindFirstArgs<
    *
    * Filter by unique combinations of FeatureFlags.
    */
-  distinct?:
-    | Prisma.FeatureFlagScalarFieldEnum
-    | Prisma.FeatureFlagScalarFieldEnum[];
+  distinct?: Prisma.FeatureFlagScalarFieldEnum | Prisma.FeatureFlagScalarFieldEnum[];
 };
 
 /**
  * FeatureFlag findFirstOrThrow
  */
 export type FeatureFlagFindFirstOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the FeatureFlag
@@ -1252,17 +1196,14 @@ export type FeatureFlagFindFirstOrThrowArgs<
    *
    * Filter by unique combinations of FeatureFlags.
    */
-  distinct?:
-    | Prisma.FeatureFlagScalarFieldEnum
-    | Prisma.FeatureFlagScalarFieldEnum[];
+  distinct?: Prisma.FeatureFlagScalarFieldEnum | Prisma.FeatureFlagScalarFieldEnum[];
 };
 
 /**
  * FeatureFlag findMany
  */
 export type FeatureFlagFindManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the FeatureFlag
@@ -1302,17 +1243,14 @@ export type FeatureFlagFindManyArgs<
    * Skip the first `n` FeatureFlags.
    */
   skip?: number;
-  distinct?:
-    | Prisma.FeatureFlagScalarFieldEnum
-    | Prisma.FeatureFlagScalarFieldEnum[];
+  distinct?: Prisma.FeatureFlagScalarFieldEnum | Prisma.FeatureFlagScalarFieldEnum[];
 };
 
 /**
  * FeatureFlag create
  */
 export type FeatureFlagCreateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the FeatureFlag
@@ -1325,18 +1263,14 @@ export type FeatureFlagCreateArgs<
   /**
    * The data needed to create a FeatureFlag.
    */
-  data: Prisma.XOR<
-    Prisma.FeatureFlagCreateInput,
-    Prisma.FeatureFlagUncheckedCreateInput
-  >;
+  data: Prisma.XOR<Prisma.FeatureFlagCreateInput, Prisma.FeatureFlagUncheckedCreateInput>;
 };
 
 /**
  * FeatureFlag createMany
  */
 export type FeatureFlagCreateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to create many FeatureFlags.
@@ -1349,8 +1283,7 @@ export type FeatureFlagCreateManyArgs<
  * FeatureFlag createManyAndReturn
  */
 export type FeatureFlagCreateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the FeatureFlag
@@ -1371,8 +1304,7 @@ export type FeatureFlagCreateManyAndReturnArgs<
  * FeatureFlag update
  */
 export type FeatureFlagUpdateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the FeatureFlag
@@ -1385,10 +1317,7 @@ export type FeatureFlagUpdateArgs<
   /**
    * The data needed to update a FeatureFlag.
    */
-  data: Prisma.XOR<
-    Prisma.FeatureFlagUpdateInput,
-    Prisma.FeatureFlagUncheckedUpdateInput
-  >;
+  data: Prisma.XOR<Prisma.FeatureFlagUpdateInput, Prisma.FeatureFlagUncheckedUpdateInput>;
   /**
    * Choose, which FeatureFlag to update.
    */
@@ -1399,8 +1328,7 @@ export type FeatureFlagUpdateArgs<
  * FeatureFlag updateMany
  */
 export type FeatureFlagUpdateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to update FeatureFlags.
@@ -1423,8 +1351,7 @@ export type FeatureFlagUpdateManyArgs<
  * FeatureFlag updateManyAndReturn
  */
 export type FeatureFlagUpdateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the FeatureFlag
@@ -1455,8 +1382,7 @@ export type FeatureFlagUpdateManyAndReturnArgs<
  * FeatureFlag upsert
  */
 export type FeatureFlagUpsertArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the FeatureFlag
@@ -1473,25 +1399,18 @@ export type FeatureFlagUpsertArgs<
   /**
    * In case the FeatureFlag found by the `where` argument doesn't exist, create a new FeatureFlag with this data.
    */
-  create: Prisma.XOR<
-    Prisma.FeatureFlagCreateInput,
-    Prisma.FeatureFlagUncheckedCreateInput
-  >;
+  create: Prisma.XOR<Prisma.FeatureFlagCreateInput, Prisma.FeatureFlagUncheckedCreateInput>;
   /**
    * In case the FeatureFlag was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<
-    Prisma.FeatureFlagUpdateInput,
-    Prisma.FeatureFlagUncheckedUpdateInput
-  >;
+  update: Prisma.XOR<Prisma.FeatureFlagUpdateInput, Prisma.FeatureFlagUncheckedUpdateInput>;
 };
 
 /**
  * FeatureFlag delete
  */
 export type FeatureFlagDeleteArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the FeatureFlag
@@ -1511,8 +1430,7 @@ export type FeatureFlagDeleteArgs<
  * FeatureFlag deleteMany
  */
 export type FeatureFlagDeleteManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which FeatureFlags to delete
@@ -1528,8 +1446,7 @@ export type FeatureFlagDeleteManyArgs<
  * FeatureFlag without action
  */
 export type FeatureFlagDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the FeatureFlag

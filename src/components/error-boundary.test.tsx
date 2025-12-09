@@ -44,9 +44,7 @@ describe('ErrorBoundary', () => {
     );
 
     expect(screen.getByText('Something went wrong')).toBeInTheDocument();
-    expect(
-      screen.getByText(/We're sorry for the inconvenience/)
-    ).toBeInTheDocument();
+    expect(screen.getByText(/We're sorry for the inconvenience/)).toBeInTheDocument();
   });
 
   it('should render custom fallback when provided', () => {

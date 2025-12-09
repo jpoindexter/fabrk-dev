@@ -26,9 +26,7 @@ export function ConfirmationDialog() {
       <CardHeader code="0x00" title="CONFIRMATION_DIALOG" />
       <div className="p-6">
         <div className="mb-4">
-          <h3 className={cn(mode.font, 'mb-1 font-semibold')}>
-            Confirmation Dialog
-          </h3>
+          <h3 className={cn(mode.font, 'mb-1 font-semibold')}>Confirmation Dialog</h3>
           <p className={cn(mode.font, 'text-muted-foreground text-xs')}>
             Destructive action confirmation with cancel option
           </p>
@@ -36,10 +34,7 @@ export function ConfirmationDialog() {
 
         <AlertDialog>
           <AlertDialogTrigger asChild>
-            <Button
-              variant="destructive"
-              className={cn(mode.radius, mode.font, 'text-xs')}
-            >
+            <Button variant="destructive" className={cn(mode.radius, mode.font, 'text-xs')}>
               <Trash2 className="mr-1 h-3 w-3" />
               &gt; DELETE_ITEM
             </Button>
@@ -51,18 +46,14 @@ export function ConfirmationDialog() {
                   <AlertTriangle className="text-destructive h-5 w-5" />
                 </div>
               </div>
-              <AlertDialogTitle className={cn(mode.font)}>
-                [CONFIRM_DELETE]
-              </AlertDialogTitle>
+              <AlertDialogTitle className={cn(mode.font)}>[CONFIRM_DELETE]</AlertDialogTitle>
               <AlertDialogDescription className={cn(mode.font, 'text-sm')}>
-                This action cannot be undone. This will permanently delete the
-                item and remove all associated data from our servers.
+                This action cannot be undone. This will permanently delete the item and remove all
+                associated data from our servers.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel
-                className={cn(mode.radius, mode.font, 'text-xs')}
-              >
+              <AlertDialogCancel className={cn(mode.radius, mode.font, 'text-xs')}>
                 &gt; CANCEL
               </AlertDialogCancel>
               <AlertDialogAction

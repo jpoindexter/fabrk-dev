@@ -77,10 +77,7 @@ export interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
-  (
-    { className, variant = 'text', width: _width, height: _height, ...props },
-    ref
-  ) => {
+  ({ className, variant = 'text', width: _width, height: _height, ...props }, ref) => {
     const variantClasses = {
       text: 'h-4 w-full',
       circular: '',
@@ -110,29 +107,21 @@ export interface LoadingContainerProps extends React.HTMLAttributes<HTMLDivEleme
   children?: React.ReactNode;
 }
 
-export const LoadingContainer = React.forwardRef<
-  HTMLDivElement,
-  LoadingContainerProps
->(({ children, className, ...props }, ref) => {
-  return (
-    <div
-      data-slot="loading-container"
-      ref={ref}
-      className={cn(
-        'flex min-h-96 flex-col items-center justify-center gap-6',
-        className
-      )}
-      {...props}
-    >
-      <Spinner size="lg" />
-      {children && (
-        <p className={cn('text-muted-foreground text-base', mode.font)}>
-          {children}
-        </p>
-      )}
-    </div>
-  );
-});
+export const LoadingContainer = React.forwardRef<HTMLDivElement, LoadingContainerProps>(
+  ({ children, className, ...props }, ref) => {
+    return (
+      <div
+        data-slot="loading-container"
+        ref={ref}
+        className={cn('flex min-h-96 flex-col items-center justify-center gap-6', className)}
+        {...props}
+      >
+        <Spinner size="lg" />
+        {children && <p className={cn('text-muted-foreground text-base', mode.font)}>{children}</p>}
+      </div>
+    );
+  }
+);
 LoadingContainer.displayName = 'LoadingContainer';
 
 // Loading Button Component
@@ -141,22 +130,16 @@ export interface LoadingButtonProps extends ButtonProps {
   loadingText?: string;
 }
 
-export const LoadingButton = React.forwardRef<
-  HTMLButtonElement,
-  LoadingButtonProps
->(({ loading, loadingText, children, disabled, ...props }, ref) => {
-  return (
-    <Button
-      data-slot="loading-button"
-      ref={ref}
-      disabled={loading || disabled}
-      {...props}
-    >
-      {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-      {loading && loadingText ? loadingText : children}
-    </Button>
-  );
-});
+export const LoadingButton = React.forwardRef<HTMLButtonElement, LoadingButtonProps>(
+  ({ loading, loadingText, children, disabled, ...props }, ref) => {
+    return (
+      <Button data-slot="loading-button" ref={ref} disabled={loading || disabled} {...props}>
+        {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+        {loading && loadingText ? loadingText : children}
+      </Button>
+    );
+  }
+);
 LoadingButton.displayName = 'LoadingButton';
 
 // Loading Spinner (alias for Spinner for compatibility)

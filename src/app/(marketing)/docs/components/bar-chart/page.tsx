@@ -1,11 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import {
-  BarChart,
-  BarChartCard,
-  StackedBarChart,
-} from '@/components/ui/bar-chart';
+import { BarChart, BarChartCard, StackedBarChart } from '@/components/ui/bar-chart';
 import { BarChart3 } from 'lucide-react';
 
 const sampleData = [

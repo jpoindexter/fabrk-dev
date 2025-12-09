@@ -259,11 +259,7 @@ borderColor: 'border-destructive';
 
 ```tsx
 <Card>
-  <CardHeader
-    code="0x00"
-    title="INCLUDED_FEATURES"
-    meta={`${features.length} items`}
-  />
+  <CardHeader code="0x00" title="INCLUDED_FEATURES" meta={`${features.length} items`} />
   <CardContent>
     <ul className="space-y-2">
       {features.map((feature, i) => (
@@ -283,16 +279,10 @@ borderColor: 'border-destructive';
 
 ```tsx
 <Card>
-  <CardHeader
-    code="0x50"
-    title="METRIC_NAME"
-    icon={<TrendingUp className="size-4" />}
-  />
+  <CardHeader code="0x50" title="METRIC_NAME" icon={<TrendingUp className="size-4" />} />
   <CardContent>
     <div className="text-foreground mb-2 text-3xl font-semibold">85%</div>
-    <div className="text-foreground mb-3 text-xs font-semibold">
-      TEST_COVERAGE
-    </div>
+    <div className="text-foreground mb-3 text-xs font-semibold">TEST_COVERAGE</div>
     <div className="text-xs">
       <span className="text-muted-foreground">DESC: </span>
       <span className="text-foreground">Core components covered</span>

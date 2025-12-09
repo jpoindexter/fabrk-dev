@@ -38,9 +38,7 @@ const containerVariants = cva('mx-auto w-full', {
 });
 
 export interface ContainerProps
-  extends
-    React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof containerVariants> {
+  extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof containerVariants> {
   /**
    * Semantic element to render (div, main, section, article, etc.)
    * Use "main" for main content area, "section" for content sections

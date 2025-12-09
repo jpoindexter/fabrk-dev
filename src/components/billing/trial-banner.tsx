@@ -45,8 +45,7 @@ export function TrialBanner({ trialEndsAt, tier }: TrialBannerProps) {
         <Clock className="text-destructive h-4 w-4" />
         <AlertDescription className="flex items-center justify-between">
           <span className="text-destructive font-medium">
-            Your free trial has ended. Upgrade now to continue using all
-            features.
+            Your free trial has ended. Upgrade now to continue using all features.
           </span>
           <Button asChild size="sm" className="ml-4">
             <Link href="/pricing">
@@ -63,20 +62,10 @@ export function TrialBanner({ trialEndsAt, tier }: TrialBannerProps) {
   const isUrgent = daysRemaining <= 3;
 
   return (
-    <Alert
-      className={
-        isUrgent
-          ? 'border-warning bg-warning/10'
-          : 'border-primary bg-primary/10'
-      }
-    >
-      <Clock
-        className={`h-4 w-4 ${isUrgent ? 'text-warning' : 'text-primary'}`}
-      />
+    <Alert className={isUrgent ? 'border-warning bg-warning/10' : 'border-primary bg-primary/10'}>
+      <Clock className={`h-4 w-4 ${isUrgent ? 'text-warning' : 'text-primary'}`} />
       <AlertDescription className="flex items-center justify-between">
-        <span
-          className={isUrgent ? 'text-warning font-medium' : 'text-primary'}
-        >
+        <span className={isUrgent ? 'text-warning font-medium' : 'text-primary'}>
           {daysRemaining === 1
             ? 'Your free trial ends tomorrow!'
             : `${daysRemaining} days remaining in your free trial.`}

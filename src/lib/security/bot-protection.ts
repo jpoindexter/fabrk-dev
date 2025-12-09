@@ -201,9 +201,7 @@ export function shouldAllowBot(detection: BotDetectionResult): boolean {
  * Honeypot field verification
  * Add hidden fields to forms - bots will fill them, humans won't
  */
-export function verifyHoneypot(
-  honeypotValue: string | null | undefined
-): boolean {
+export function verifyHoneypot(honeypotValue: string | null | undefined): boolean {
   // Honeypot should be empty
   return !honeypotValue || honeypotValue.trim() === '';
 }
@@ -251,9 +249,7 @@ export interface CaptchaVerification {
 /**
  * Verify hCaptcha response
  */
-export async function verifyHCaptcha(
-  token: string
-): Promise<CaptchaVerification> {
+export async function verifyHCaptcha(token: string): Promise<CaptchaVerification> {
   const secret = process.env.HCAPTCHA_SECRET_KEY;
 
   if (!secret) {
@@ -297,14 +293,11 @@ export async function verifyRecaptcha(
   }
 
   try {
-    const response = await fetch(
-      'https://www.google.com/recaptcha/api/siteverify',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `secret=${secret}&response=${token}`,
-      }
-    );
+    const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `secret=${secret}&response=${token}`,
+    });
 
     const data = await response.json();
 
@@ -324,9 +317,7 @@ export async function verifyRecaptcha(
 /**
  * Verify Cloudflare Turnstile response
  */
-export async function verifyTurnstile(
-  token: string
-): Promise<CaptchaVerification> {
+export async function verifyTurnstile(token: string): Promise<CaptchaVerification> {
   const secret = process.env.TURNSTILE_SECRET_KEY;
 
   if (!secret) {
@@ -335,14 +326,11 @@ export async function verifyTurnstile(
   }
 
   try {
-    const response = await fetch(
-      'https://challenges.cloudflare.com/turnstile/v0/siteverify',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ secret, response: token }),
-      }
-    );
+    const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ secret, response: token }),
+    });
 
     const data = await response.json();
 

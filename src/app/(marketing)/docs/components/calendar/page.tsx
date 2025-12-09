@@ -76,12 +76,7 @@ export default function CalendarPage() {
         {
           title: 'Multiple Dates',
           description: 'Select multiple individual dates.',
-          preview: (
-            <Calendar
-              mode="multiple"
-              className="border-border rounded-none border"
-            />
-          ),
+          preview: <Calendar mode="multiple" className="border-border rounded-none border" />,
           code: `const [dates, setDates] = useState<Date[]>();
 
 <Calendar
@@ -113,9 +108,7 @@ export default function CalendarPage() {
           preview: (
             <Calendar
               mode="single"
-              disabled={(date) =>
-                date < new Date() || date < new Date('1900-01-01')
-              }
+              disabled={(date) => date < new Date() || date < new Date('1900-01-01')}
               className="border-border rounded-none border"
             />
           ),
@@ -177,8 +170,7 @@ export default function CalendarPage() {
                       </>
                     ) : (
                       <>
-                        <span className="text-muted-foreground">&gt;</span> No
-                        date selected
+                        <span className="text-muted-foreground">&gt;</span> No date selected
                       </>
                     )}
                   </p>

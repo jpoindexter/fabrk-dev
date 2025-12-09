@@ -387,11 +387,7 @@ Template Documentation
 <FeaturesCard
   code="0x02"
   title="AUTH_FEATURES"
-  features={[
-    'NextAuth v5 integration',
-    'JWT sessions (30-day)',
-    'Social login (Google, GitHub)',
-  ]}
+  features={['NextAuth v5 integration', 'JWT sessions (30-day)', 'Social login (Google, GitHub)']}
   note="Configure in src/lib/auth.ts"
   featureIcon="check"
 />

@@ -69,10 +69,7 @@ export function AboutCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
-          className={cn(
-            'text-muted-foreground flex justify-center gap-4 text-xs',
-            mode.font
-          )}
+          className={cn('text-muted-foreground flex justify-center gap-4 text-xs', mode.font)}
         >
           <span className="text-success">■ INSTANT_ACCESS</span>
           <span className="text-success">■ LIFETIME_UPDATES</span>

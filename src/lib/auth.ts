@@ -17,10 +17,7 @@ import Google from 'next-auth/providers/google';
  */
 
 // Session version cache to avoid N+1 queries
-const sessionVersionCache = new Map<
-  string,
-  { version: number; timestamp: number }
->();
+const sessionVersionCache = new Map<string, { version: number; timestamp: number }>();
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 const MAX_CACHE_SIZE = 1000;
 
@@ -36,10 +33,7 @@ function getCachedSessionVersion(userId: string): number | null {
 
 function setCachedSessionVersion(userId: string, version: number) {
   if (sessionVersionCache.size >= MAX_CACHE_SIZE) {
-    const entriesToDelete = Array.from(sessionVersionCache.keys()).slice(
-      0,
-      100
-    );
+    const entriesToDelete = Array.from(sessionVersionCache.keys()).slice(0, 100);
     entriesToDelete.forEach((key) => sessionVersionCache.delete(key));
   }
   sessionVersionCache.set(userId, { version, timestamp: Date.now() });
@@ -87,9 +81,7 @@ export const authConfig: NextAuthConfig = {
         // Magic link authentication
         if (credentials.magicToken) {
           // Hash the incoming token to match stored hash (security: tokens are hashed in DB)
-          const hashedToken = await hashTokenWebCrypto(
-            credentials.magicToken as string
-          );
+          const hashedToken = await hashTokenWebCrypto(credentials.magicToken as string);
 
           const magicToken = await prisma.verificationToken.findFirst({
             where: {
@@ -121,10 +113,7 @@ export const authConfig: NextAuthConfig = {
           return null;
         }
 
-        const isPasswordValid = await compare(
-          credentials.password as string,
-          user.password
-        );
+        const isPasswordValid = await compare(credentials.password as string, user.password);
 
         if (!isPasswordValid) {
           return null;

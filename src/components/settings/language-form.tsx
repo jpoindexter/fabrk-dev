@@ -68,9 +68,7 @@ export function LanguageForm() {
     } catch (err: unknown) {
       error(
         'Error',
-        err instanceof Error
-          ? err.message
-          : 'Failed to update language settings. Please try again.'
+        err instanceof Error ? err.message : 'Failed to update language settings. Please try again.'
       );
     } finally {
       setIsLoading(false);
@@ -88,13 +86,8 @@ export function LanguageForm() {
               name="language"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className={cn(mode.font, 'text-xs')}>
-                    [INTERFACE_LANGUAGE]:
-                  </FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
+                  <FormLabel className={cn(mode.font, 'text-xs')}>[INTERFACE_LANGUAGE]:</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger className={mode.radius}>
                         <SelectValue placeholder="Select a language" />

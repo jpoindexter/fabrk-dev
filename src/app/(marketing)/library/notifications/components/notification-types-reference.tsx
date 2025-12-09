@@ -29,12 +29,8 @@ export function NotificationTypesReference() {
             </div>
             <div className="p-4 text-center">
               <Icon className={`mx-auto mb-2 h-6 w-6 text-${item.color}`} />
-              <div className={cn(mode.font, 'text-xs font-medium')}>
-                {item.label}
-              </div>
-              <div
-                className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}
-              >
+              <div className={cn(mode.font, 'text-xs font-medium')}>{item.label}</div>
+              <div className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
                 [{item.type.toUpperCase()}]
               </div>
             </div>

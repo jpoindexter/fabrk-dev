@@ -111,9 +111,7 @@ async function isDatabaseAvailable(): Promise<boolean> {
 /**
  * Generate hash for audit log entry (tamper detection)
  */
-async function generateEntryHash(
-  entry: Omit<AuditLogEntry, 'hash'>
-): Promise<string> {
+async function generateEntryHash(entry: Omit<AuditLogEntry, 'hash'>): Promise<string> {
   const data = JSON.stringify({
     id: entry.id,
     timestamp: entry.timestamp.toISOString(),
@@ -235,12 +233,7 @@ export const AuditLog = {
       severity: 'medium',
     }),
 
-  suspiciousLogin: (
-    userId: string,
-    email: string,
-    reason: string,
-    ip?: string
-  ) =>
+  suspiciousLogin: (userId: string, email: string, reason: string, ip?: string) =>
     logAuditEvent({
       eventType: 'auth.suspicious_login',
       userId,
@@ -308,11 +301,7 @@ export const AuditLog = {
       metadata: { payload: payload.substring(0, 200) }, // Truncate
     }),
 
-  sqlInjectionAttempt: (
-    userId: string | undefined,
-    ip: string,
-    query: string
-  ) =>
+  sqlInjectionAttempt: (userId: string | undefined, ip: string, query: string) =>
     logAuditEvent({
       eventType: 'security.sql_injection_attempt',
       userId,
@@ -356,12 +345,7 @@ export const AuditLog = {
       metadata: { targetUserId, targetEmail, resourceId: targetUserId },
     }),
 
-  configChanged: (
-    adminId: string,
-    configKey: string,
-    oldValue: unknown,
-    newValue: unknown
-  ) =>
+  configChanged: (adminId: string, configKey: string, oldValue: unknown, newValue: unknown) =>
     logAuditEvent({
       eventType: 'admin.config_changed',
       userId: adminId,
@@ -486,11 +470,8 @@ export async function queryAuditLogs(filters: {
           userAgent: metadata?.userAgent as string | undefined,
           resource: log.resource || undefined,
           action: (metadata?.originalAction as string) || log.action,
-          result:
-            (metadata?.result as 'success' | 'failure' | 'error') || 'success',
-          severity:
-            (metadata?.severity as 'low' | 'medium' | 'high' | 'critical') ||
-            'low',
+          result: (metadata?.result as 'success' | 'failure' | 'error') || 'success',
+          severity: (metadata?.severity as 'low' | 'medium' | 'high' | 'critical') || 'low',
           metadata: metadata || undefined,
           hash: metadata?.hash as string | undefined,
         };
@@ -578,9 +559,7 @@ export async function exportAuditLogs(
 /**
  * Verify log integrity (check for tampering)
  */
-export async function verifyLogIntegrity(
-  entry: AuditLogEntry
-): Promise<boolean> {
+export async function verifyLogIntegrity(entry: AuditLogEntry): Promise<boolean> {
   const { hash, ...entryWithoutHash } = entry;
   if (!hash) return false;
   const expectedHash = await generateEntryHash(entryWithoutHash);

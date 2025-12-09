@@ -15,8 +15,7 @@ import type * as Prisma from '../internal/prismaNamespace';
  * Model MFADevice
  *
  */
-export type MFADeviceModel =
-  runtime.Types.Result.DefaultSelection<Prisma.$MFADevicePayload>;
+export type MFADeviceModel = runtime.Types.Result.DefaultSelection<Prisma.$MFADevicePayload>;
 
 export type AggregateMFADevice = {
   _count: MFADeviceCountAggregateOutputType | null;
@@ -93,8 +92,7 @@ export type MFADeviceCountAggregateInputType = {
 };
 
 export type MFADeviceAggregateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which MFADevice to aggregate.
@@ -105,9 +103,7 @@ export type MFADeviceAggregateArgs<
    *
    * Determine the order of MFADevices to fetch.
    */
-  orderBy?:
-    | Prisma.MFADeviceOrderByWithRelationInput
-    | Prisma.MFADeviceOrderByWithRelationInput[];
+  orderBy?: Prisma.MFADeviceOrderByWithRelationInput | Prisma.MFADeviceOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -155,8 +151,7 @@ export type GetMFADeviceAggregateType<T extends MFADeviceAggregateArgs> = {
 };
 
 export type MFADeviceGroupByArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.MFADeviceWhereInput;
   orderBy?:
@@ -185,18 +180,17 @@ export type MFADeviceGroupByOutputType = {
   _max: MFADeviceMaxAggregateOutputType | null;
 };
 
-type GetMFADeviceGroupByPayload<T extends MFADeviceGroupByArgs> =
-  Prisma.PrismaPromise<
-    Array<
-      Prisma.PickEnumerable<MFADeviceGroupByOutputType, T['by']> & {
-        [P in keyof T & keyof MFADeviceGroupByOutputType]: P extends '_count'
-          ? T[P] extends boolean
-            ? number
-            : Prisma.GetScalarType<T[P], MFADeviceGroupByOutputType[P]>
-          : Prisma.GetScalarType<T[P], MFADeviceGroupByOutputType[P]>;
-      }
-    >
-  >;
+type GetMFADeviceGroupByPayload<T extends MFADeviceGroupByArgs> = Prisma.PrismaPromise<
+  Array<
+    Prisma.PickEnumerable<MFADeviceGroupByOutputType, T['by']> & {
+      [P in keyof T & keyof MFADeviceGroupByOutputType]: P extends '_count'
+        ? T[P] extends boolean
+          ? number
+          : Prisma.GetScalarType<T[P], MFADeviceGroupByOutputType[P]>
+        : Prisma.GetScalarType<T[P], MFADeviceGroupByOutputType[P]>;
+    }
+  >
+>;
 
 export type MFADeviceWhereInput = {
   AND?: Prisma.MFADeviceWhereInput | Prisma.MFADeviceWhereInput[];
@@ -236,11 +230,7 @@ export type MFADeviceWhereUniqueInput = Prisma.AtLeast<
     secret?: Prisma.StringNullableFilter<'MFADevice'> | string | null;
     verified?: Prisma.BoolFilter<'MFADevice'> | boolean;
     name?: Prisma.StringNullableFilter<'MFADevice'> | string | null;
-    lastUsed?:
-      | Prisma.DateTimeNullableFilter<'MFADevice'>
-      | Date
-      | string
-      | null;
+    lastUsed?: Prisma.DateTimeNullableFilter<'MFADevice'> | Date | string | null;
     createdAt?: Prisma.DateTimeFilter<'MFADevice'> | Date | string;
     user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
   },
@@ -272,17 +262,10 @@ export type MFADeviceScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<'MFADevice'> | string;
   userId?: Prisma.StringWithAggregatesFilter<'MFADevice'> | string;
   type?: Prisma.StringWithAggregatesFilter<'MFADevice'> | string;
-  secret?:
-    | Prisma.StringNullableWithAggregatesFilter<'MFADevice'>
-    | string
-    | null;
+  secret?: Prisma.StringNullableWithAggregatesFilter<'MFADevice'> | string | null;
   verified?: Prisma.BoolWithAggregatesFilter<'MFADevice'> | boolean;
   name?: Prisma.StringNullableWithAggregatesFilter<'MFADevice'> | string | null;
-  lastUsed?:
-    | Prisma.DateTimeNullableWithAggregatesFilter<'MFADevice'>
-    | Date
-    | string
-    | null;
+  lastUsed?: Prisma.DateTimeNullableWithAggregatesFilter<'MFADevice'> | Date | string | null;
   createdAt?: Prisma.DateTimeWithAggregatesFilter<'MFADevice'> | Date | string;
 };
 
@@ -314,11 +297,7 @@ export type MFADeviceUpdateInput = {
   secret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  lastUsed?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  lastUsed?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   user?: Prisma.UserUpdateOneRequiredWithoutMfaDevicesNestedInput;
 };
@@ -330,11 +309,7 @@ export type MFADeviceUncheckedUpdateInput = {
   secret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  lastUsed?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  lastUsed?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -355,11 +330,7 @@ export type MFADeviceUpdateManyMutationInput = {
   secret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  lastUsed?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  lastUsed?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -370,11 +341,7 @@ export type MFADeviceUncheckedUpdateManyInput = {
   secret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  lastUsed?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  lastUsed?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -433,9 +400,7 @@ export type MFADeviceCreateNestedManyWithoutUserInput = {
     | Prisma.MFADeviceCreateOrConnectWithoutUserInput
     | Prisma.MFADeviceCreateOrConnectWithoutUserInput[];
   createMany?: Prisma.MFADeviceCreateManyUserInputEnvelope;
-  connect?:
-    | Prisma.MFADeviceWhereUniqueInput
-    | Prisma.MFADeviceWhereUniqueInput[];
+  connect?: Prisma.MFADeviceWhereUniqueInput | Prisma.MFADeviceWhereUniqueInput[];
 };
 
 export type MFADeviceUncheckedCreateNestedManyWithoutUserInput = {
@@ -450,9 +415,7 @@ export type MFADeviceUncheckedCreateNestedManyWithoutUserInput = {
     | Prisma.MFADeviceCreateOrConnectWithoutUserInput
     | Prisma.MFADeviceCreateOrConnectWithoutUserInput[];
   createMany?: Prisma.MFADeviceCreateManyUserInputEnvelope;
-  connect?:
-    | Prisma.MFADeviceWhereUniqueInput
-    | Prisma.MFADeviceWhereUniqueInput[];
+  connect?: Prisma.MFADeviceWhereUniqueInput | Prisma.MFADeviceWhereUniqueInput[];
 };
 
 export type MFADeviceUpdateManyWithoutUserNestedInput = {
@@ -471,24 +434,16 @@ export type MFADeviceUpdateManyWithoutUserNestedInput = {
     | Prisma.MFADeviceUpsertWithWhereUniqueWithoutUserInput[];
   createMany?: Prisma.MFADeviceCreateManyUserInputEnvelope;
   set?: Prisma.MFADeviceWhereUniqueInput | Prisma.MFADeviceWhereUniqueInput[];
-  disconnect?:
-    | Prisma.MFADeviceWhereUniqueInput
-    | Prisma.MFADeviceWhereUniqueInput[];
-  delete?:
-    | Prisma.MFADeviceWhereUniqueInput
-    | Prisma.MFADeviceWhereUniqueInput[];
-  connect?:
-    | Prisma.MFADeviceWhereUniqueInput
-    | Prisma.MFADeviceWhereUniqueInput[];
+  disconnect?: Prisma.MFADeviceWhereUniqueInput | Prisma.MFADeviceWhereUniqueInput[];
+  delete?: Prisma.MFADeviceWhereUniqueInput | Prisma.MFADeviceWhereUniqueInput[];
+  connect?: Prisma.MFADeviceWhereUniqueInput | Prisma.MFADeviceWhereUniqueInput[];
   update?:
     | Prisma.MFADeviceUpdateWithWhereUniqueWithoutUserInput
     | Prisma.MFADeviceUpdateWithWhereUniqueWithoutUserInput[];
   updateMany?:
     | Prisma.MFADeviceUpdateManyWithWhereWithoutUserInput
     | Prisma.MFADeviceUpdateManyWithWhereWithoutUserInput[];
-  deleteMany?:
-    | Prisma.MFADeviceScalarWhereInput
-    | Prisma.MFADeviceScalarWhereInput[];
+  deleteMany?: Prisma.MFADeviceScalarWhereInput | Prisma.MFADeviceScalarWhereInput[];
 };
 
 export type MFADeviceUncheckedUpdateManyWithoutUserNestedInput = {
@@ -507,24 +462,16 @@ export type MFADeviceUncheckedUpdateManyWithoutUserNestedInput = {
     | Prisma.MFADeviceUpsertWithWhereUniqueWithoutUserInput[];
   createMany?: Prisma.MFADeviceCreateManyUserInputEnvelope;
   set?: Prisma.MFADeviceWhereUniqueInput | Prisma.MFADeviceWhereUniqueInput[];
-  disconnect?:
-    | Prisma.MFADeviceWhereUniqueInput
-    | Prisma.MFADeviceWhereUniqueInput[];
-  delete?:
-    | Prisma.MFADeviceWhereUniqueInput
-    | Prisma.MFADeviceWhereUniqueInput[];
-  connect?:
-    | Prisma.MFADeviceWhereUniqueInput
-    | Prisma.MFADeviceWhereUniqueInput[];
+  disconnect?: Prisma.MFADeviceWhereUniqueInput | Prisma.MFADeviceWhereUniqueInput[];
+  delete?: Prisma.MFADeviceWhereUniqueInput | Prisma.MFADeviceWhereUniqueInput[];
+  connect?: Prisma.MFADeviceWhereUniqueInput | Prisma.MFADeviceWhereUniqueInput[];
   update?:
     | Prisma.MFADeviceUpdateWithWhereUniqueWithoutUserInput
     | Prisma.MFADeviceUpdateWithWhereUniqueWithoutUserInput[];
   updateMany?:
     | Prisma.MFADeviceUpdateManyWithWhereWithoutUserInput
     | Prisma.MFADeviceUpdateManyWithWhereWithoutUserInput[];
-  deleteMany?:
-    | Prisma.MFADeviceScalarWhereInput
-    | Prisma.MFADeviceScalarWhereInput[];
+  deleteMany?: Prisma.MFADeviceScalarWhereInput | Prisma.MFADeviceScalarWhereInput[];
 };
 
 export type BoolFieldUpdateOperationsInput = {
@@ -560,9 +507,7 @@ export type MFADeviceCreateOrConnectWithoutUserInput = {
 };
 
 export type MFADeviceCreateManyUserInputEnvelope = {
-  data:
-    | Prisma.MFADeviceCreateManyUserInput
-    | Prisma.MFADeviceCreateManyUserInput[];
+  data: Prisma.MFADeviceCreateManyUserInput | Prisma.MFADeviceCreateManyUserInput[];
   skipDuplicates?: boolean;
 };
 
@@ -624,11 +569,7 @@ export type MFADeviceUpdateWithoutUserInput = {
   secret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  lastUsed?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  lastUsed?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -638,11 +579,7 @@ export type MFADeviceUncheckedUpdateWithoutUserInput = {
   secret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  lastUsed?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  lastUsed?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -652,17 +589,12 @@ export type MFADeviceUncheckedUpdateManyWithoutUserInput = {
   secret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  lastUsed?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  lastUsed?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type MFADeviceSelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -679,8 +611,7 @@ export type MFADeviceSelect<
 >;
 
 export type MFADeviceSelectCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -697,8 +628,7 @@ export type MFADeviceSelectCreateManyAndReturn<
 >;
 
 export type MFADeviceSelectUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -726,41 +656,29 @@ export type MFADeviceSelectScalar = {
 };
 
 export type MFADeviceOmit<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
-  | 'id'
-  | 'userId'
-  | 'type'
-  | 'secret'
-  | 'verified'
-  | 'name'
-  | 'lastUsed'
-  | 'createdAt',
+  'id' | 'userId' | 'type' | 'secret' | 'verified' | 'name' | 'lastUsed' | 'createdAt',
   ExtArgs['result']['mFADevice']
 >;
 export type MFADeviceInclude<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 export type MFADeviceIncludeCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 export type MFADeviceIncludeUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 
 export type $MFADevicePayload<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   name: 'MFADevice';
   objects: {
@@ -782,20 +700,17 @@ export type $MFADevicePayload<
   composites: {};
 };
 
-export type MFADeviceGetPayload<
-  S extends boolean | null | undefined | MFADeviceDefaultArgs,
-> = runtime.Types.Result.GetResult<Prisma.$MFADevicePayload, S>;
+export type MFADeviceGetPayload<S extends boolean | null | undefined | MFADeviceDefaultArgs> =
+  runtime.Types.Result.GetResult<Prisma.$MFADevicePayload, S>;
 
 export type MFADeviceCountArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = Omit<MFADeviceFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
   select?: MFADeviceCountAggregateInputType | true;
 };
 
 export interface MFADeviceDelegate<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > {
   [K: symbol]: {
@@ -1266,12 +1181,7 @@ export interface MFADeviceDelegate<
               ? never
               : P extends string
                 ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                : [
-                    Error,
-                    'Field ',
-                    P,
-                    ` in "having" needs to be provided in "by"`,
-                  ];
+                : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
           }[HavingFields]
         : 'take' extends Prisma.Keys<T>
           ? 'orderBy' extends Prisma.Keys<T>
@@ -1301,11 +1211,8 @@ export interface MFADeviceDelegate<
                     : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                 }[OrderFields],
   >(
-    args: Prisma.SubsetIntersection<T, MFADeviceGroupByArgs, OrderByArg> &
-      InputErrors
-  ): {} extends InputErrors
-    ? GetMFADeviceGroupByPayload<T>
-    : Prisma.PrismaPromise<InputErrors>;
+    args: Prisma.SubsetIntersection<T, MFADeviceGroupByArgs, OrderByArg> & InputErrors
+  ): {} extends InputErrors ? GetMFADeviceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
   /**
    * Fields of the MFADevice model
    */
@@ -1321,8 +1228,7 @@ export interface MFADeviceDelegate<
 export interface Prisma__MFADeviceClient<
   T,
   Null = never,
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: 'PrismaPromise';
@@ -1347,14 +1253,8 @@ export interface Prisma__MFADeviceClient<
    * @returns A Promise for the completion of which ever callback is executed.
    */
   then<TResult1 = T, TResult2 = never>(
-    onfulfilled?:
-      | ((value: T) => TResult1 | PromiseLike<TResult1>)
-      | undefined
-      | null,
-    onrejected?:
-      | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-      | undefined
-      | null
+    onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
   ): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
   /**
    * Attaches a callback for only the rejection of the Promise.
@@ -1362,10 +1262,7 @@ export interface Prisma__MFADeviceClient<
    * @returns A Promise for the completion of the callback.
    */
   catch<TResult = never>(
-    onrejected?:
-      | ((reason: any) => TResult | PromiseLike<TResult>)
-      | undefined
-      | null
+    onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
   ): runtime.Types.Utils.JsPromise<T | TResult>;
   /**
    * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
@@ -1373,9 +1270,7 @@ export interface Prisma__MFADeviceClient<
    * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
    * @returns A Promise for the completion of the callback.
    */
-  finally(
-    onfinally?: (() => void) | undefined | null
-  ): runtime.Types.Utils.JsPromise<T>;
+  finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
 }
 
 /**
@@ -1397,8 +1292,7 @@ export interface MFADeviceFieldRefs {
  * MFADevice findUnique
  */
 export type MFADeviceFindUniqueArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the MFADevice
@@ -1422,8 +1316,7 @@ export type MFADeviceFindUniqueArgs<
  * MFADevice findUniqueOrThrow
  */
 export type MFADeviceFindUniqueOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the MFADevice
@@ -1447,8 +1340,7 @@ export type MFADeviceFindUniqueOrThrowArgs<
  * MFADevice findFirst
  */
 export type MFADeviceFindFirstArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the MFADevice
@@ -1471,9 +1363,7 @@ export type MFADeviceFindFirstArgs<
    *
    * Determine the order of MFADevices to fetch.
    */
-  orderBy?:
-    | Prisma.MFADeviceOrderByWithRelationInput
-    | Prisma.MFADeviceOrderByWithRelationInput[];
+  orderBy?: Prisma.MFADeviceOrderByWithRelationInput | Prisma.MFADeviceOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1497,17 +1387,14 @@ export type MFADeviceFindFirstArgs<
    *
    * Filter by unique combinations of MFADevices.
    */
-  distinct?:
-    | Prisma.MFADeviceScalarFieldEnum
-    | Prisma.MFADeviceScalarFieldEnum[];
+  distinct?: Prisma.MFADeviceScalarFieldEnum | Prisma.MFADeviceScalarFieldEnum[];
 };
 
 /**
  * MFADevice findFirstOrThrow
  */
 export type MFADeviceFindFirstOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the MFADevice
@@ -1530,9 +1417,7 @@ export type MFADeviceFindFirstOrThrowArgs<
    *
    * Determine the order of MFADevices to fetch.
    */
-  orderBy?:
-    | Prisma.MFADeviceOrderByWithRelationInput
-    | Prisma.MFADeviceOrderByWithRelationInput[];
+  orderBy?: Prisma.MFADeviceOrderByWithRelationInput | Prisma.MFADeviceOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1556,17 +1441,14 @@ export type MFADeviceFindFirstOrThrowArgs<
    *
    * Filter by unique combinations of MFADevices.
    */
-  distinct?:
-    | Prisma.MFADeviceScalarFieldEnum
-    | Prisma.MFADeviceScalarFieldEnum[];
+  distinct?: Prisma.MFADeviceScalarFieldEnum | Prisma.MFADeviceScalarFieldEnum[];
 };
 
 /**
  * MFADevice findMany
  */
 export type MFADeviceFindManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the MFADevice
@@ -1589,9 +1471,7 @@ export type MFADeviceFindManyArgs<
    *
    * Determine the order of MFADevices to fetch.
    */
-  orderBy?:
-    | Prisma.MFADeviceOrderByWithRelationInput
-    | Prisma.MFADeviceOrderByWithRelationInput[];
+  orderBy?: Prisma.MFADeviceOrderByWithRelationInput | Prisma.MFADeviceOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1610,17 +1490,14 @@ export type MFADeviceFindManyArgs<
    * Skip the first `n` MFADevices.
    */
   skip?: number;
-  distinct?:
-    | Prisma.MFADeviceScalarFieldEnum
-    | Prisma.MFADeviceScalarFieldEnum[];
+  distinct?: Prisma.MFADeviceScalarFieldEnum | Prisma.MFADeviceScalarFieldEnum[];
 };
 
 /**
  * MFADevice create
  */
 export type MFADeviceCreateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the MFADevice
@@ -1637,18 +1514,14 @@ export type MFADeviceCreateArgs<
   /**
    * The data needed to create a MFADevice.
    */
-  data: Prisma.XOR<
-    Prisma.MFADeviceCreateInput,
-    Prisma.MFADeviceUncheckedCreateInput
-  >;
+  data: Prisma.XOR<Prisma.MFADeviceCreateInput, Prisma.MFADeviceUncheckedCreateInput>;
 };
 
 /**
  * MFADevice createMany
  */
 export type MFADeviceCreateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to create many MFADevices.
@@ -1661,8 +1534,7 @@ export type MFADeviceCreateManyArgs<
  * MFADevice createManyAndReturn
  */
 export type MFADeviceCreateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the MFADevice
@@ -1687,8 +1559,7 @@ export type MFADeviceCreateManyAndReturnArgs<
  * MFADevice update
  */
 export type MFADeviceUpdateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the MFADevice
@@ -1705,10 +1576,7 @@ export type MFADeviceUpdateArgs<
   /**
    * The data needed to update a MFADevice.
    */
-  data: Prisma.XOR<
-    Prisma.MFADeviceUpdateInput,
-    Prisma.MFADeviceUncheckedUpdateInput
-  >;
+  data: Prisma.XOR<Prisma.MFADeviceUpdateInput, Prisma.MFADeviceUncheckedUpdateInput>;
   /**
    * Choose, which MFADevice to update.
    */
@@ -1719,8 +1587,7 @@ export type MFADeviceUpdateArgs<
  * MFADevice updateMany
  */
 export type MFADeviceUpdateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to update MFADevices.
@@ -1743,8 +1610,7 @@ export type MFADeviceUpdateManyArgs<
  * MFADevice updateManyAndReturn
  */
 export type MFADeviceUpdateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the MFADevice
@@ -1779,8 +1645,7 @@ export type MFADeviceUpdateManyAndReturnArgs<
  * MFADevice upsert
  */
 export type MFADeviceUpsertArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the MFADevice
@@ -1801,25 +1666,18 @@ export type MFADeviceUpsertArgs<
   /**
    * In case the MFADevice found by the `where` argument doesn't exist, create a new MFADevice with this data.
    */
-  create: Prisma.XOR<
-    Prisma.MFADeviceCreateInput,
-    Prisma.MFADeviceUncheckedCreateInput
-  >;
+  create: Prisma.XOR<Prisma.MFADeviceCreateInput, Prisma.MFADeviceUncheckedCreateInput>;
   /**
    * In case the MFADevice was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<
-    Prisma.MFADeviceUpdateInput,
-    Prisma.MFADeviceUncheckedUpdateInput
-  >;
+  update: Prisma.XOR<Prisma.MFADeviceUpdateInput, Prisma.MFADeviceUncheckedUpdateInput>;
 };
 
 /**
  * MFADevice delete
  */
 export type MFADeviceDeleteArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the MFADevice
@@ -1843,8 +1701,7 @@ export type MFADeviceDeleteArgs<
  * MFADevice deleteMany
  */
 export type MFADeviceDeleteManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which MFADevices to delete
@@ -1860,8 +1717,7 @@ export type MFADeviceDeleteManyArgs<
  * MFADevice without action
  */
 export type MFADeviceDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the MFADevice

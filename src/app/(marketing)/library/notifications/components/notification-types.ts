@@ -3,14 +3,7 @@
  * Notification types and utilities
  */
 
-import {
-  Bell,
-  Check,
-  Info,
-  AlertTriangle,
-  AlertCircle,
-  MessageSquare,
-} from 'lucide-react';
+import { Bell, Check, Info, AlertTriangle, AlertCircle, MessageSquare } from 'lucide-react';
 
 export interface Notification {
   id: string;

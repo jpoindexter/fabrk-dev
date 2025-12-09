@@ -9,11 +9,7 @@ import { prisma } from '@/lib/prisma';
 import { withCsrfProtection } from '@/lib/security/csrf';
 import { z } from 'zod';
 import { logger } from '@/lib/logger';
-import {
-  checkRateLimit,
-  getClientIdentifier,
-  RateLimiters,
-} from '@/lib/security/rate-limit';
+import { checkRateLimit, getClientIdentifier, RateLimiters } from '@/lib/security/rate-limit';
 
 const roleSchema = z.object({
   userId: z.string(),
@@ -39,9 +35,7 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
             'X-RateLimit-Limit': rateLimit.limit.toString(),
             'X-RateLimit-Remaining': rateLimit.remaining.toString(),
             'X-RateLimit-Reset': rateLimit.reset.toString(),
-            'Retry-After': Math.ceil(
-              (rateLimit.reset - Date.now()) / 1000
-            ).toString(),
+            'Retry-After': Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
           },
         }
       );
@@ -51,10 +45,7 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
 
     // Check if user is admin
     if (!session?.user?.id || session.user.role !== 'ADMIN') {
-      return NextResponse.json(
-        { error: 'Unauthorized. Admin access required.' },
-        { status: 403 }
-      );
+      return NextResponse.json({ error: 'Unauthorized. Admin access required.' }, { status: 403 });
     }
 
     const body = await req.json();
@@ -62,10 +53,7 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
 
     // Prevent user from changing their own role
     if (validatedData.userId === session.user.id) {
-      return NextResponse.json(
-        { error: 'Cannot change your own role' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Cannot change your own role' }, { status: 400 });
     }
 
     // Update user role
@@ -80,16 +68,10 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
     });
   } catch (error: unknown) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: 'Invalid input', details: error.issues },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Invalid input', details: error.issues }, { status: 400 });
     }
 
     logger.error('[Admin Role Update] Error:', error);
-    return NextResponse.json(
-      { error: 'Failed to update user role' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to update user role' }, { status: 500 });
   }
 });

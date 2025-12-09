@@ -59,18 +59,11 @@ export function AuthPreview() {
       <PreviewHeader title="auth_module.exe" animated />
 
       <CardContent padding="lg">
-        <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-          [AUTH_FORM]:
-        </div>
+        <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>[AUTH_FORM]:</div>
 
         <div className="space-y-4">
           <div>
-            <span
-              className={cn(
-                mode.font,
-                'text-muted-foreground mb-2 block text-xs'
-              )}
-            >
+            <span className={cn(mode.font, 'text-muted-foreground mb-2 block text-xs')}>
               EMAIL:
             </span>
             <div
@@ -88,12 +81,7 @@ export function AuthPreview() {
             </div>
           </div>
           <div>
-            <span
-              className={cn(
-                mode.font,
-                'text-muted-foreground mb-2 block text-xs'
-              )}
-            >
+            <span className={cn(mode.font, 'text-muted-foreground mb-2 block text-xs')}>
               PASSWORD:
             </span>
             <div
@@ -108,13 +96,9 @@ export function AuthPreview() {
                   <span className="text-primary">|</span>
                 )}
               </span>
-              {passwordDots === 0 &&
-                emailText.length >= fullEmail.length &&
-                showCursor && (
-                  <span className={cn(mode.font, 'text-primary text-xs')}>
-                    |
-                  </span>
-                )}
+              {passwordDots === 0 && emailText.length >= fullEmail.length && showCursor && (
+                <span className={cn(mode.font, 'text-primary text-xs')}>|</span>
+              )}
             </div>
           </div>
           <div
@@ -133,11 +117,7 @@ export function AuthPreview() {
             </div>
             <div className="relative flex justify-center">
               <span
-                className={cn(
-                  mode.radius,
-                  mode.font,
-                  'bg-card text-muted-foreground px-2 text-xs'
-                )}
+                className={cn(mode.radius, mode.font, 'bg-card text-muted-foreground px-2 text-xs')}
               >
                 OR
               </span>

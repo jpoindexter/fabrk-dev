@@ -91,9 +91,7 @@ export function AnalyticsChart({
         return (
           <ResponsiveContainer width="100%" height={height}>
             <LineChart {...commonProps}>
-              {showGrid && (
-                <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
-              )}
+              {showGrid && <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />}
               <XAxis
                 dataKey={xKey}
                 className="text-muted-foreground text-xs"
@@ -130,9 +128,7 @@ export function AnalyticsChart({
         return (
           <ResponsiveContainer width="100%" height={height}>
             <BarChart {...commonProps}>
-              {showGrid && (
-                <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
-              )}
+              {showGrid && <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />}
               <XAxis
                 dataKey={xKey}
                 className="text-muted-foreground text-xs"
@@ -166,9 +162,7 @@ export function AnalyticsChart({
         return (
           <ResponsiveContainer width="100%" height={height}>
             <AreaChart {...commonProps}>
-              {showGrid && (
-                <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
-              )}
+              {showGrid && <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />}
               <XAxis
                 dataKey={xKey}
                 className="text-muted-foreground text-xs"
@@ -210,18 +204,13 @@ export function AnalyticsChart({
                 cx="50%"
                 cy="50%"
                 labelLine={false}
-                label={({ name, percent }) =>
-                  `${name} ${((percent || 0) * 100).toFixed(0)}%`
-                }
+                label={({ name, percent }) => `${name} ${((percent || 0) * 100).toFixed(0)}%`}
                 outerRadius={80}
                 fill="hsl(var(--primary))"
                 dataKey={yKeys[0]}
               >
                 {data.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={colors[index % colors.length]}
-                  />
+                  <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
                 ))}
               </Pie>
               <Tooltip
@@ -251,9 +240,7 @@ export function AnalyticsChart({
         />
       )}
       <CardContent padding="md">
-        {description && (
-          <p className="text-muted-foreground mb-4 text-sm">{description}</p>
-        )}
+        {description && <p className="text-muted-foreground mb-4 text-sm">{description}</p>}
         {renderChart()}
       </CardContent>
     </Card>

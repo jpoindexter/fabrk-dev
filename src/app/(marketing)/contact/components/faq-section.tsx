@@ -33,9 +33,7 @@ export function FaqSection() {
         >
           [ [0x04] FAQ ]
         </span>
-        <h2 className={cn('mb-2 text-2xl font-semibold', mode.font)}>
-          FREQUENTLY_ASKED_QUESTIONS
-        </h2>
+        <h2 className={cn('mb-2 text-2xl font-semibold', mode.font)}>FREQUENTLY_ASKED_QUESTIONS</h2>
         <p className={cn('text-muted-foreground text-xs', mode.font)}>
           Everything you need to know
         </p>
@@ -51,10 +49,7 @@ export function FaqSection() {
           >
             <AccordionItem
               value="refunds"
-              className={cn(
-                'border-border bg-card border transition-all',
-                mode.radius
-              )}
+              className={cn('border-border bg-card border transition-all', mode.radius)}
             >
               <AccordionTrigger
                 className={cn(
@@ -64,12 +59,9 @@ export function FaqSection() {
               >
                 [Q] DO_YOU_OFFER_REFUNDS?
               </AccordionTrigger>
-              <AccordionContent
-                className={cn('text-muted-foreground px-6 text-xs', mode.font)}
-              >
-                [A] No, all sales are final. Due to the nature of digital
-                products, we do not offer refunds once you have access to the
-                code. Please review our{' '}
+              <AccordionContent className={cn('text-muted-foreground px-6 text-xs', mode.font)}>
+                [A] No, all sales are final. Due to the nature of digital products, we do not offer
+                refunds once you have access to the code. Please review our{' '}
                 <Link href="/refund" className="text-primary hover:underline">
                   REFUND_POLICY
                 </Link>{' '}
@@ -86,10 +78,7 @@ export function FaqSection() {
           >
             <AccordionItem
               value="support"
-              className={cn(
-                'border-border bg-card border transition-all',
-                mode.radius
-              )}
+              className={cn('border-border bg-card border transition-all', mode.radius)}
             >
               <AccordionTrigger
                 className={cn(
@@ -99,11 +88,9 @@ export function FaqSection() {
               >
                 [Q] IS_TECHNICAL_SUPPORT_INCLUDED?
               </AccordionTrigger>
-              <AccordionContent
-                className={cn('text-muted-foreground px-6 text-xs', mode.font)}
-              >
-                [A] Yes, we provide email support for all license holders.
-                Response time is typically within 24 hours.
+              <AccordionContent className={cn('text-muted-foreground px-6 text-xs', mode.font)}>
+                [A] Yes, we provide email support for all license holders. Response time is
+                typically within 24 hours.
               </AccordionContent>
             </AccordionItem>
           </motion.div>
@@ -116,10 +103,7 @@ export function FaqSection() {
           >
             <AccordionItem
               value="client-projects"
-              className={cn(
-                'border-border bg-card border transition-all',
-                mode.radius
-              )}
+              className={cn('border-border bg-card border transition-all', mode.radius)}
             >
               <AccordionTrigger
                 className={cn(
@@ -129,11 +113,9 @@ export function FaqSection() {
               >
                 [Q] CAN_I_USE_FABRK_FOR_CLIENT_PROJECTS?
               </AccordionTrigger>
-              <AccordionContent
-                className={cn('text-muted-foreground px-6 text-xs', mode.font)}
-              >
-                [A] Absolutely! Your license allows you to create unlimited
-                projects for yourself or clients.
+              <AccordionContent className={cn('text-muted-foreground px-6 text-xs', mode.font)}>
+                [A] Absolutely! Your license allows you to create unlimited projects for yourself or
+                clients.
               </AccordionContent>
             </AccordionItem>
           </motion.div>
@@ -146,10 +128,7 @@ export function FaqSection() {
           >
             <AccordionItem
               value="updates"
-              className={cn(
-                'border-border bg-card border transition-all',
-                mode.radius
-              )}
+              className={cn('border-border bg-card border transition-all', mode.radius)}
             >
               <AccordionTrigger
                 className={cn(
@@ -159,11 +138,8 @@ export function FaqSection() {
               >
                 [Q] DO_I_GET_LIFETIME_UPDATES?
               </AccordionTrigger>
-              <AccordionContent
-                className={cn('text-muted-foreground px-6 text-xs', mode.font)}
-              >
-                [A] Yes, all future updates and improvements are included at no
-                additional cost.
+              <AccordionContent className={cn('text-muted-foreground px-6 text-xs', mode.font)}>
+                [A] Yes, all future updates and improvements are included at no additional cost.
               </AccordionContent>
             </AccordionItem>
           </motion.div>

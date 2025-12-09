@@ -92,9 +92,7 @@ export function SignInForm({
   const [email, setEmail] = React.useState(defaultEmail);
   const [password, setPassword] = React.useState('');
   const [rememberMe, setRememberMe] = React.useState(false);
-  const [loadingProvider, setLoadingProvider] = React.useState<string | null>(
-    null
-  );
+  const [loadingProvider, setLoadingProvider] = React.useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -148,19 +146,13 @@ export function SignInForm({
 
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <Label
-              htmlFor="signin-password"
-              className={cn(mode.font, 'text-xs')}
-            >
+            <Label htmlFor="signin-password" className={cn(mode.font, 'text-xs')}>
               [PASSWORD]:
             </Label>
             {forgotPasswordHref && (
               <Link
                 href={forgotPasswordHref}
-                className={cn(
-                  'text-primary text-xs hover:underline',
-                  mode.font
-                )}
+                className={cn('text-primary text-xs hover:underline', mode.font)}
               >
                 Forgot password?
               </Link>
@@ -190,10 +182,7 @@ export function SignInForm({
             />
             <Label
               htmlFor="signin-remember"
-              className={cn(
-                mode.font,
-                'text-muted-foreground text-xs font-normal'
-              )}
+              className={cn(mode.font, 'text-muted-foreground text-xs font-normal')}
             >
               Remember me for 30 days
             </Label>
@@ -224,12 +213,7 @@ export function SignInForm({
               <span className="border-border w-full border-t" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span
-                className={cn(
-                  'bg-background text-muted-foreground px-2',
-                  mode.font
-                )}
-              >
+              <span className={cn('bg-background text-muted-foreground px-2', mode.font)}>
                 Or continue with
               </span>
             </div>
@@ -267,16 +251,11 @@ export function SignInForm({
 
       {/* Sign Up Link */}
       {signUpHref && (
-        <p
-          className={cn('text-muted-foreground text-center text-xs', mode.font)}
-        >
+        <p className={cn('text-muted-foreground text-center text-xs', mode.font)}>
           Don&apos;t have an account?{' '}
           <Link
             href={signUpHref}
-            className={cn(
-              'hover:text-primary underline underline-offset-4',
-              mode.font
-            )}
+            className={cn('hover:text-primary underline underline-offset-4', mode.font)}
           >
             Sign up
           </Link>
@@ -328,9 +307,7 @@ export function SignUpForm({
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [acceptTerms, setAcceptTerms] = React.useState(false);
-  const [loadingProvider, setLoadingProvider] = React.useState<string | null>(
-    null
-  );
+  const [loadingProvider, setLoadingProvider] = React.useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -426,10 +403,7 @@ export function SignUpForm({
           />
           <Label
             htmlFor="signup-terms"
-            className={cn(
-              mode.font,
-              'text-muted-foreground text-xs leading-relaxed font-normal'
-            )}
+            className={cn(mode.font, 'text-muted-foreground text-xs leading-relaxed font-normal')}
           >
             I agree to the{' '}
             <Link href={termsHref} className="text-primary hover:underline">
@@ -466,12 +440,7 @@ export function SignUpForm({
               <span className="border-border w-full border-t" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span
-                className={cn(
-                  'bg-background text-muted-foreground px-2',
-                  mode.font
-                )}
-              >
+              <span className={cn('bg-background text-muted-foreground px-2', mode.font)}>
                 Or continue with
               </span>
             </div>
@@ -509,16 +478,11 @@ export function SignUpForm({
 
       {/* Sign In Link */}
       {signInHref && (
-        <p
-          className={cn('text-muted-foreground text-center text-xs', mode.font)}
-        >
+        <p className={cn('text-muted-foreground text-center text-xs', mode.font)}>
           Already have an account?{' '}
           <Link
             href={signInHref}
-            className={cn(
-              'hover:text-primary underline underline-offset-4',
-              mode.font
-            )}
+            className={cn('hover:text-primary underline underline-offset-4', mode.font)}
           >
             Sign in
           </Link>

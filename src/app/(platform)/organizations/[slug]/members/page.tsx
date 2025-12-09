@@ -10,13 +10,7 @@ import { useRouter, useParams } from 'next/navigation';
 import { Loader2, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
-import {
-  Table,
-  TableBody,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table';
+import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { toast } from 'sonner';
 import { MembersPageHeader } from './components/members-page-header';
 import { MemberTableRow } from './components/member-table-row';
@@ -48,9 +42,7 @@ export default function OrganizationMembersPage() {
   const router = useRouter();
   const params = useParams();
   const [loading, setLoading] = React.useState(true);
-  const [organization, setOrganization] = React.useState<Organization | null>(
-    null
-  );
+  const [organization, setOrganization] = React.useState<Organization | null>(null);
   const [members, setMembers] = React.useState<Member[]>([]);
 
   React.useEffect(() => {
@@ -86,12 +78,9 @@ export default function OrganizationMembersPage() {
     if (!organization) return;
 
     try {
-      const response = await fetch(
-        `/api/organizations/${organization.id}/members/${memberId}`,
-        {
-          method: 'DELETE',
-        }
-      );
+      const response = await fetch(`/api/organizations/${organization.id}/members/${memberId}`, {
+        method: 'DELETE',
+      });
 
       if (!response.ok) {
         const error = await response.json();
@@ -101,8 +90,7 @@ export default function OrganizationMembersPage() {
       setMembers((prev) => prev.filter((m) => m.id !== memberId));
       toast.success('Member removed successfully');
     } catch (error: unknown) {
-      const errorMessage =
-        error instanceof Error ? error.message : 'Failed to remove member';
+      const errorMessage = error instanceof Error ? error.message : 'Failed to remove member';
       toast.error(errorMessage);
     }
   };
@@ -111,14 +99,11 @@ export default function OrganizationMembersPage() {
     if (!organization) return;
 
     try {
-      const response = await fetch(
-        `/api/organizations/${organization.id}/members/${memberId}`,
-        {
-          method: 'PATCH',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ role: newRole }),
-        }
-      );
+      const response = await fetch(`/api/organizations/${organization.id}/members/${memberId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ role: newRole }),
+      });
 
       if (!response.ok) {
         const error = await response.json();
@@ -126,14 +111,11 @@ export default function OrganizationMembersPage() {
       }
 
       setMembers((prev) =>
-        prev.map((m) =>
-          m.id === memberId ? { ...m, role: newRole as Member['role'] } : m
-        )
+        prev.map((m) => (m.id === memberId ? { ...m, role: newRole as Member['role'] } : m))
       );
       toast.success('Member role updated successfully');
     } catch (error: unknown) {
-      const errorMessage =
-        error instanceof Error ? error.message : 'Failed to update role';
+      const errorMessage = error instanceof Error ? error.message : 'Failed to update role';
       toast.error(errorMessage);
     }
   };
@@ -149,11 +131,7 @@ export default function OrganizationMembersPage() {
   if (!organization) {
     return (
       <Card tone="danger">
-        <CardHeader
-          code="0x00"
-          title="ERROR"
-          icon={<Loader2 className="h-4 w-4" />}
-        />
+        <CardHeader code="0x00" title="ERROR" icon={<Loader2 className="h-4 w-4" />} />
         <CardContent padding="lg">
           <div className="text-center">
             <h3 className="text-lg font-semibold">Organization not found</h3>

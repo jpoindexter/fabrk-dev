@@ -42,10 +42,7 @@ export async function getOrCreateBalance(userId: string) {
 /**
  * Check if user has enough credits
  */
-export async function hasCredits(
-  userId: string,
-  amount: number
-): Promise<boolean> {
+export async function hasCredits(userId: string, amount: number): Promise<boolean> {
   const balance = await getOrCreateBalance(userId);
   return balance.balance >= amount;
 }

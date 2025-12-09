@@ -91,20 +91,13 @@ interface SidebarNavProps {
   onSectionChange?: (sectionId: string) => void;
 }
 
-function SidebarNav({
-  sections,
-  activeSection,
-  onSectionChange,
-}: SidebarNavProps) {
+function SidebarNav({ sections, activeSection, onSectionChange }: SidebarNavProps) {
   const regularSections = sections.filter((s) => !s.isDanger);
   const dangerSections = sections.filter((s) => s.isDanger);
 
   return (
     <nav
-      className={cn(
-        'border-border bg-card sticky top-6 h-fit w-64 shrink-0 border',
-        mode.radius
-      )}
+      className={cn('border-border bg-card sticky top-6 h-fit w-64 shrink-0 border', mode.radius)}
     >
       {/* Regular Sections */}
       <div className="p-2">
@@ -181,15 +174,9 @@ export function SettingsPageTemplate({
       {/* Header */}
       <div className="flex items-start justify-between">
         <div className="space-y-1">
-          <h1
-            className={cn('text-4xl font-semibold tracking-tight', mode.font)}
-          >
-            {title}
-          </h1>
+          <h1 className={cn('text-4xl font-semibold tracking-tight', mode.font)}>{title}</h1>
           {description && (
-            <p className={cn('text-muted-foreground text-sm', mode.font)}>
-              {description}
-            </p>
+            <p className={cn('text-muted-foreground text-sm', mode.font)}>{description}</p>
           )}
         </div>
 
@@ -276,17 +263,14 @@ export function SettingsSectionCard({
             isDanger ? 'text-destructive' : 'text-muted-foreground'
           )}
         >
-          [ {isDanger ? '[!]' : '[0x00]'}{' '}
-          {title.toUpperCase().replace(/ /g, '_')} ]
+          [ {isDanger ? '[!]' : '[0x00]'} {title.toUpperCase().replace(/ /g, '_')} ]
         </span>
       </div>
 
       {/* Content */}
       <div className="space-y-4 p-4">
         {description && (
-          <p className={cn('text-muted-foreground text-sm', mode.font)}>
-            {description}
-          </p>
+          <p className={cn('text-muted-foreground text-sm', mode.font)}>{description}</p>
         )}
         {children}
       </div>

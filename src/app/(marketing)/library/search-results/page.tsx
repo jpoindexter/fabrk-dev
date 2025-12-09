@@ -8,12 +8,7 @@
 
 import { useState } from 'react';
 import { Search } from 'lucide-react';
-import {
-  TemplatePageHeader,
-  Card,
-  CardHeader,
-  CardContent,
-} from '@/components/ui/card';
+import { TemplatePageHeader, Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { SearchBar } from './components/search-bar';
@@ -87,8 +82,7 @@ const mockResults = [
   {
     id: '1',
     title: 'Button Component',
-    description:
-      'Primary, secondary, outline, and ghost button variants with loading states.',
+    description: 'Primary, secondary, outline, and ghost button variants with loading states.',
     category: 'UI Components',
     tags: ['button', 'interactive', 'form'],
     rating: 4.9,
@@ -97,8 +91,7 @@ const mockResults = [
   {
     id: '2',
     title: 'Data Table',
-    description:
-      'Sortable, filterable data table with pagination and row selection.',
+    description: 'Sortable, filterable data table with pagination and row selection.',
     category: 'UI Components',
     tags: ['table', 'data', 'sorting'],
     rating: 4.8,
@@ -107,8 +100,7 @@ const mockResults = [
   {
     id: '3',
     title: 'Authentication Flow',
-    description:
-      'Complete auth flow with login, signup, password reset, and OAuth.',
+    description: 'Complete auth flow with login, signup, password reset, and OAuth.',
     category: 'Templates',
     tags: ['auth', 'login', 'security'],
     rating: 4.7,
@@ -117,8 +109,7 @@ const mockResults = [
   {
     id: '4',
     title: 'Dashboard Layout',
-    description:
-      'Responsive dashboard layout with sidebar, header, and content areas.',
+    description: 'Responsive dashboard layout with sidebar, header, and content areas.',
     category: 'Templates',
     tags: ['dashboard', 'layout', 'responsive'],
     rating: 4.9,
@@ -196,11 +187,7 @@ function SearchResultsPreview() {
 
             <ResultsGrid results={mockResults} viewMode={viewMode} />
 
-            <Pagination
-              currentPage={currentPage}
-              totalPages={5}
-              onPageChange={setCurrentPage}
-            />
+            <Pagination currentPage={currentPage} totalPages={5} onPageChange={setCurrentPage} />
           </div>
         </div>
       </div>
@@ -268,11 +255,7 @@ export default function SearchResultsTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock
-                  code={templateCode}
-                  language="tsx"
-                  maxHeight="600px"
-                />
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
             </Card>
           </TabsContent>
@@ -289,9 +272,7 @@ export default function SearchResultsTemplate() {
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">search/</span>
                   <span className="text-foreground">page.tsx</span>
-                  <span className="text-muted-foreground ml-4">
-                    ← Copy template here
-                  </span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
                 </div>
               </div>
             </div>
@@ -304,16 +285,13 @@ export default function SearchResultsTemplate() {
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> Search input with
-                real-time filtering
+                <span className="text-success">&gt;</span> Search input with real-time filtering
               </div>
               <div>
-                <span className="text-success">&gt;</span> Category and tag
-                filters
+                <span className="text-success">&gt;</span> Category and tag filters
               </div>
               <div>
-                <span className="text-success">&gt;</span> Sorting options
-                (relevance, date, rating)
+                <span className="text-success">&gt;</span> Sorting options (relevance, date, rating)
               </div>
               <div>
                 <span className="text-success">&gt;</span> Grid/list view toggle
@@ -325,8 +303,7 @@ export default function SearchResultsTemplate() {
                 <span className="text-success">&gt;</span> Responsive sidebar
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant
-                (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

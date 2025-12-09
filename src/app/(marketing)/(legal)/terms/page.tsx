@@ -43,15 +43,8 @@ export default function TermsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <h1 className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>
-            FABRK_LEGAL:
-          </h1>
-          <h2
-            className={cn(
-              'mb-4 text-4xl font-semibold tracking-tight',
-              mode.font
-            )}
-          >
+          <h1 className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>FABRK_LEGAL:</h1>
+          <h2 className={cn('mb-4 text-4xl font-semibold tracking-tight', mode.font)}>
             TERMS_OF_SERVICE
           </h2>
         </motion.div>
@@ -74,17 +67,12 @@ export default function TermsPage() {
         className="mb-12"
       >
         <Card size="auto">
-          <CardHeader
-            code="0x01"
-            title="NOTICE"
-            icon={<FileText className="size-4" />}
-          />
+          <CardHeader code="0x01" title="NOTICE" icon={<FileText className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground text-sm', mode.font)}>
-              Please read these Terms of Service carefully before purchasing or
-              using Fabrk. By accessing or using our Service, you acknowledge
-              that you have read, understood, and agree to be bound by these
-              terms.
+              Please read these Terms of Service carefully before purchasing or using Fabrk. By
+              accessing or using our Service, you acknowledge that you have read, understood, and
+              agree to be bound by these terms.
             </p>
           </CardContent>
         </Card>
@@ -93,23 +81,18 @@ export default function TermsPage() {
       <div className="space-y-6">
         {/* Section 1 */}
         <Card size="auto">
-          <CardHeader
-            code="0x10"
-            title="AGREEMENT_TO_TERMS"
-            icon={<Scale className="size-4" />}
-          />
+          <CardHeader code="0x10" title="AGREEMENT_TO_TERMS" icon={<Scale className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
-              By accessing, purchasing, or using Fabrk (&quot;Service&quot;,
-              &quot;Product&quot;, &quot;we&quot;, &quot;us&quot;, or
-              &quot;our&quot;), you (&quot;Buyer&quot;, &quot;User&quot;,
-              &quot;you&quot;) agree to be bound by these Terms of Service
+              By accessing, purchasing, or using Fabrk (&quot;Service&quot;, &quot;Product&quot;,
+              &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;), you (&quot;Buyer&quot;,
+              &quot;User&quot;, &quot;you&quot;) agree to be bound by these Terms of Service
               (&quot;Terms&quot;).
             </p>
             <p className={cn('text-muted-foreground text-sm', mode.font)}>
-              Fabrk is a product offered by THEFT BV, a company registered in
-              the Netherlands (KVK: 81705344, VAT: NL862188726B01). These Terms
-              constitute a legal agreement between you and THEFT BV.
+              Fabrk is a product offered by THEFT BV, a company registered in the Netherlands (KVK:
+              81705344, VAT: NL862188726B01). These Terms constitute a legal agreement between you
+              and THEFT BV.
             </p>
           </CardContent>
         </Card>
@@ -123,9 +106,9 @@ export default function TermsPage() {
           />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
-              Fabrk is an enterprise-grade Next.js 15 SaaS boilerplate providing
-              100 production-ready components, authentication, payment
-              processing, database integration, multi-tenancy, and more.
+              Fabrk is an enterprise-grade Next.js 15 SaaS boilerplate providing 100
+              production-ready components, authentication, payment processing, database integration,
+              multi-tenancy, and more.
             </p>
 
             <div className="space-y-6">
@@ -133,29 +116,14 @@ export default function TermsPage() {
                 <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
                   [2.1] PERPETUAL_LICENSE_GRANT
                 </h3>
-                <p
-                  className={cn(
-                    'text-muted-foreground mb-2 text-sm',
-                    mode.font
-                  )}
-                >
-                  Upon successful payment of €299 per developer seat, we grant
-                  you a non-exclusive, non-transferable, perpetual license to:
+                <p className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>
+                  Upon successful payment of €299 per developer seat, we grant you a non-exclusive,
+                  non-transferable, perpetual license to:
                 </p>
-                <ul
-                  className={cn(
-                    'text-muted-foreground space-y-1 pl-4 text-sm',
-                    mode.font
-                  )}
-                >
+                <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
                   <li>├─ Access and download the complete Fabrk source code</li>
-                  <li>
-                    ├─ Use the source code for unlimited commercial and personal
-                    projects
-                  </li>
-                  <li>
-                    ├─ Modify, customize, and extend the code for your own use
-                  </li>
+                  <li>├─ Use the source code for unlimited commercial and personal projects</li>
+                  <li>├─ Modify, customize, and extend the code for your own use</li>
                   <li>├─ Deploy unlimited applications built with Fabrk</li>
                   <li>├─ Receive all v1.x updates at no additional cost</li>
                   <li>└─ Use Fabrk components in client projects</li>
@@ -166,28 +134,14 @@ export default function TermsPage() {
                 <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
                   [2.1.1] PER_SEAT_LICENSE
                 </h3>
-                <p
-                  className={cn(
-                    'text-muted-foreground mb-2 text-sm',
-                    mode.font
-                  )}
-                >
-                  One license permits one natural person (developer) to access
-                  and use the Fabrk source code. For teams:
+                <p className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>
+                  One license permits one natural person (developer) to access and use the Fabrk
+                  source code. For teams:
                 </p>
-                <ul
-                  className={cn(
-                    'text-muted-foreground space-y-1 pl-4 text-sm',
-                    mode.font
-                  )}
-                >
-                  <li>
-                    ├─ Purchase one license per developer with code access
-                  </li>
+                <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
+                  <li>├─ Purchase one license per developer with code access</li>
                   <li>├─ Licenses may be reassigned permanently</li>
-                  <li>
-                    └─ May not be used concurrently by multiple individuals
-                  </li>
+                  <li>└─ May not be used concurrently by multiple individuals</li>
                 </ul>
               </div>
 
@@ -195,48 +149,37 @@ export default function TermsPage() {
                 <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
                   [2.2] LICENSE_RESTRICTIONS
                 </h3>
-                <p
-                  className={cn(
-                    'text-muted-foreground mb-2 text-sm',
-                    mode.font
-                  )}
-                >
+                <p className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>
                   You are expressly PROHIBITED from:
                 </p>
-                <ul
-                  className={cn(
-                    'text-muted-foreground space-y-1 pl-4 text-sm',
-                    mode.font
-                  )}
-                >
+                <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
                   <li>
-                    ├─ <span className="text-destructive">✗</span> Reselling,
-                    redistributing, or sharing the source code
+                    ├─ <span className="text-destructive">✗</span> Reselling, redistributing, or
+                    sharing the source code
                   </li>
                   <li>
-                    ├─ <span className="text-destructive">✗</span> Creating
-                    derivative boilerplate products for sale
+                    ├─ <span className="text-destructive">✗</span> Creating derivative boilerplate
+                    products for sale
                   </li>
                   <li>
-                    ├─ <span className="text-destructive">✗</span> Claiming the
-                    code as your own original creation
+                    ├─ <span className="text-destructive">✗</span> Claiming the code as your own
+                    original creation
                   </li>
                   <li>
-                    ├─ <span className="text-destructive">✗</span> Building
-                    competing boilerplate products
+                    ├─ <span className="text-destructive">✗</span> Building competing boilerplate
+                    products
                   </li>
                   <li>
-                    ├─ <span className="text-destructive">✗</span> Removing
-                    copyright notices or license files
+                    ├─ <span className="text-destructive">✗</span> Removing copyright notices or
+                    license files
                   </li>
                   <li>
-                    └─ <span className="text-destructive">✗</span> Sharing
-                    account credentials
+                    └─ <span className="text-destructive">✗</span> Sharing account credentials
                   </li>
                 </ul>
                 <p className={cn('text-destructive mt-2 text-xs', mode.font)}>
-                  Violation results in immediate license termination and may
-                  subject you to legal action.
+                  Violation results in immediate license termination and may subject you to legal
+                  action.
                 </p>
               </div>
             </div>
@@ -245,26 +188,15 @@ export default function TermsPage() {
 
         {/* Section 3 */}
         <Card size="auto">
-          <CardHeader
-            code="0x30"
-            title="USER_ACCOUNTS"
-            icon={<Users className="size-4" />}
-          />
+          <CardHeader code="0x30" title="USER_ACCOUNTS" icon={<Users className="size-4" />} />
           <CardContent padding="md">
             <div className="space-y-6">
               <div>
                 <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
                   [3.1] ACCOUNT_SECURITY
                 </h3>
-                <ul
-                  className={cn(
-                    'text-muted-foreground space-y-1 pl-4 text-sm',
-                    mode.font
-                  )}
-                >
-                  <li>
-                    ├─ Provide accurate, current information during registration
-                  </li>
+                <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
+                  <li>├─ Provide accurate, current information during registration</li>
                   <li>├─ Maintain security of your account credentials</li>
                   <li>├─ Notify us immediately of unauthorized access</li>
                   <li>├─ Accept responsibility for all account activities</li>
@@ -276,34 +208,18 @@ export default function TermsPage() {
                 <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
                   [3.2] ACCOUNT_TERMINATION
                 </h3>
-                <p
-                  className={cn(
-                    'text-muted-foreground mb-2 text-sm',
-                    mode.font
-                  )}
-                >
+                <p className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>
                   We may terminate your account for:
                 </p>
-                <ul
-                  className={cn(
-                    'text-muted-foreground space-y-1 pl-4 text-sm',
-                    mode.font
-                  )}
-                >
+                <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
                   <li>├─ Violation of these Terms</li>
                   <li>├─ Fraudulent or illegal activity</li>
                   <li>├─ Sharing or redistributing source code</li>
                   <li>├─ Bad faith chargebacks</li>
                   <li>└─ Security threats or unauthorized access attempts</li>
                 </ul>
-                <p
-                  className={cn(
-                    'text-muted-foreground mt-2 text-sm',
-                    mode.font
-                  )}
-                >
-                  Termination does not entitle you to a refund under any
-                  circumstances.
+                <p className={cn('text-muted-foreground mt-2 text-sm', mode.font)}>
+                  Termination does not entitle you to a refund under any circumstances.
                 </p>
               </div>
             </div>
@@ -312,22 +228,14 @@ export default function TermsPage() {
 
         {/* Section 4 */}
         <Card size="auto">
-          <CardHeader
-            code="0x40"
-            title="PAYMENT_TERMS"
-            icon={<CreditCard className="size-4" />}
-          />
+          <CardHeader code="0x40" title="PAYMENT_TERMS" icon={<CreditCard className="size-4" />} />
           <CardContent padding="md">
             <div className="space-y-6">
               <div>
-                <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
-                  [4.1] PRICING
-                </h3>
+                <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>[4.1] PRICING</h3>
                 <p className={cn('text-muted-foreground text-sm', mode.font)}>
                   Current price:{' '}
-                  <span className="text-foreground font-semibold">
-                    €299 per developer seat
-                  </span>{' '}
+                  <span className="text-foreground font-semibold">€299 per developer seat</span>{' '}
                   (one-time payment, lifetime license, no recurring fees).
                 </p>
               </div>
@@ -337,9 +245,9 @@ export default function TermsPage() {
                   [4.2] PAYMENT_PROCESSING
                 </h3>
                 <p className={cn('text-muted-foreground text-sm', mode.font)}>
-                  Payments processed via Polar and/or Stripe. By completing
-                  purchase, you authorize the charge and acknowledge this is a
-                  final sale of a digital product with no refunds.
+                  Payments processed via Polar and/or Stripe. By completing purchase, you authorize
+                  the charge and acknowledge this is a final sale of a digital product with no
+                  refunds.
                 </p>
               </div>
 
@@ -354,12 +262,9 @@ export default function TermsPage() {
                   )}
                 >
                   <p className={cn('text-foreground text-xs', mode.font)}>
-                    <span className="text-destructive font-semibold">
-                      ALL SALES ARE FINAL.
-                    </span>{' '}
-                    Once you gain access to the source code, no refunds,
-                    exchanges, or credits are available. Digital products cannot
-                    be &quot;returned&quot; once downloaded.
+                    <span className="text-destructive font-semibold">ALL SALES ARE FINAL.</span>{' '}
+                    Once you gain access to the source code, no refunds, exchanges, or credits are
+                    available. Digital products cannot be &quot;returned&quot; once downloaded.
                   </p>
                 </div>
               </div>
@@ -377,24 +282,18 @@ export default function TermsPage() {
           <CardContent padding="md">
             <div className="space-y-6">
               <div>
-                <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
-                  [5.1] FABRK_IP
-                </h3>
+                <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>[5.1] FABRK_IP</h3>
                 <p className={cn('text-muted-foreground text-sm', mode.font)}>
-                  All source code, components, templates, documentation remain
-                  exclusive property of Fabrk. Your purchase grants a license to
-                  use, not ownership.
+                  All source code, components, templates, documentation remain exclusive property of
+                  Fabrk. Your purchase grants a license to use, not ownership.
                 </p>
               </div>
 
               <div>
-                <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
-                  [5.2] YOUR_CONTENT
-                </h3>
+                <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>[5.2] YOUR_CONTENT</h3>
                 <p className={cn('text-muted-foreground text-sm', mode.font)}>
-                  You retain full ownership of applications and products you
-                  create using Fabrk as a foundation. We claim no rights to your
-                  custom applications.
+                  You retain full ownership of applications and products you create using Fabrk as a
+                  foundation. We claim no rights to your custom applications.
                 </p>
               </div>
 
@@ -403,9 +302,8 @@ export default function TermsPage() {
                   [5.3] THIRD_PARTY_DEPS
                 </h3>
                 <p className={cn('text-muted-foreground text-sm', mode.font)}>
-                  Fabrk uses open-source libraries (Next.js, React, Prisma,
-                  etc.) subject to their own licenses. You are responsible for
-                  compliance.
+                  Fabrk uses open-source libraries (Next.js, React, Prisma, etc.) subject to their
+                  own licenses. You are responsible for compliance.
                 </p>
               </div>
             </div>
@@ -414,52 +312,36 @@ export default function TermsPage() {
 
         {/* Section 6 */}
         <Card size="auto">
-          <CardHeader
-            code="0x60"
-            title="PROHIBITED_USES"
-            icon={<Ban className="size-4" />}
-          />
+          <CardHeader code="0x60" title="PROHIBITED_USES" icon={<Ban className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>
               You agree NOT to use Fabrk to:
             </p>
-            <ul
-              className={cn(
-                'text-muted-foreground space-y-1 pl-4 text-sm',
-                mode.font
-              )}
-            >
+            <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
               <li>
-                ├─ <span className="text-destructive">✗</span> Violate any laws
-                or regulations
+                ├─ <span className="text-destructive">✗</span> Violate any laws or regulations
               </li>
               <li>
-                ├─ <span className="text-destructive">✗</span> Infringe
-                intellectual property rights
+                ├─ <span className="text-destructive">✗</span> Infringe intellectual property rights
               </li>
               <li>
-                ├─ <span className="text-destructive">✗</span> Transmit malware
-                or harmful code
+                ├─ <span className="text-destructive">✗</span> Transmit malware or harmful code
               </li>
               <li>
-                ├─ <span className="text-destructive">✗</span> Engage in fraud
-                or deceptive practices
+                ├─ <span className="text-destructive">✗</span> Engage in fraud or deceptive
+                practices
               </li>
               <li>
-                ├─ <span className="text-destructive">✗</span> Harass, abuse, or
-                harm others
+                ├─ <span className="text-destructive">✗</span> Harass, abuse, or harm others
               </li>
               <li>
-                ├─ <span className="text-destructive">✗</span> Collect data
-                without proper consent
+                ├─ <span className="text-destructive">✗</span> Collect data without proper consent
               </li>
               <li>
-                ├─ <span className="text-destructive">✗</span> Interfere with
-                our systems
+                ├─ <span className="text-destructive">✗</span> Interfere with our systems
               </li>
               <li>
-                └─ <span className="text-destructive">✗</span> Facilitate
-                illegal activities
+                └─ <span className="text-destructive">✗</span> Facilitate illegal activities
               </li>
             </ul>
           </CardContent>
@@ -475,14 +357,11 @@ export default function TermsPage() {
           <CardContent padding="md">
             <div className="space-y-6">
               <div>
-                <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
-                  [7.1] AS_IS_BASIS
-                </h3>
+                <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>[7.1] AS_IS_BASIS</h3>
                 <p className={cn('text-muted-foreground text-sm', mode.font)}>
-                  FABRK IS PROVIDED &quot;AS IS&quot; AND &quot;AS
-                  AVAILABLE&quot; WITHOUT WARRANTIES OF ANY KIND, INCLUDING
-                  MERCHANTABILITY, FITNESS FOR PURPOSE, NON-INFRINGEMENT, OR
-                  ERROR-FREE OPERATION.
+                  FABRK IS PROVIDED &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; WITHOUT
+                  WARRANTIES OF ANY KIND, INCLUDING MERCHANTABILITY, FITNESS FOR PURPOSE,
+                  NON-INFRINGEMENT, OR ERROR-FREE OPERATION.
                 </p>
               </div>
 
@@ -490,25 +369,13 @@ export default function TermsPage() {
                 <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
                   [7.2] LIMITATION_OF_LIABILITY
                 </h3>
-                <p
-                  className={cn(
-                    'text-muted-foreground mb-2 text-sm',
-                    mode.font
-                  )}
-                >
-                  FABRK SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL,
-                  SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING:
+                <p className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>
+                  FABRK SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR
+                  PUNITIVE DAMAGES, INCLUDING:
                 </p>
-                <ul
-                  className={cn(
-                    'text-muted-foreground space-y-1 pl-4 text-sm',
-                    mode.font
-                  )}
-                >
+                <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
                   <li>├─ Loss of profits, revenue, data, or business</li>
-                  <li>
-                    ├─ Damages from errors, bugs, or security vulnerabilities
-                  </li>
+                  <li>├─ Damages from errors, bugs, or security vulnerabilities</li>
                   <li>├─ Damages from third-party services</li>
                   <li>└─ Damages from unauthorized access</li>
                 </ul>
@@ -529,16 +396,10 @@ export default function TermsPage() {
           />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
-              Your perpetual license includes lifetime access to all v1.x
-              updates (bug fixes, security patches, new components,
-              documentation).
+              Your perpetual license includes lifetime access to all v1.x updates (bug fixes,
+              security patches, new components, documentation).
             </p>
-            <ul
-              className={cn(
-                'text-muted-foreground space-y-1 pl-4 text-sm',
-                mode.font
-              )}
-            >
+            <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
               <li>├─ Updates delivered via GitHub repository access</li>
               <li>├─ Major versions (v2.0+) may be separate products</li>
               <li>└─ No guarantee of indefinite maintenance</li>
@@ -548,75 +409,50 @@ export default function TermsPage() {
 
         {/* Section 9 */}
         <Card size="auto">
-          <CardHeader
-            code="0x90"
-            title="INDEMNIFICATION"
-            icon={<Gavel className="size-4" />}
-          />
+          <CardHeader code="0x90" title="INDEMNIFICATION" icon={<Gavel className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground text-sm', mode.font)}>
-              You agree to indemnify and hold harmless Fabrk from claims arising
-              from your use, violations of these Terms, violations of rights,
-              and applications you build.
+              You agree to indemnify and hold harmless Fabrk from claims arising from your use,
+              violations of these Terms, violations of rights, and applications you build.
             </p>
           </CardContent>
         </Card>
 
         {/* Section 10 */}
         <Card size="auto">
-          <CardHeader
-            code="0xA0"
-            title="GOVERNING_LAW"
-            icon={<Globe className="size-4" />}
-          />
+          <CardHeader code="0xA0" title="GOVERNING_LAW" icon={<Globe className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>
-              These Terms are governed by the laws of the Netherlands. Disputes
-              shall be resolved in the courts of Apeldoorn, Netherlands.
+              These Terms are governed by the laws of the Netherlands. Disputes shall be resolved in
+              the courts of Apeldoorn, Netherlands.
             </p>
             <p className={cn('text-muted-foreground text-sm', mode.font)}>
-              EU consumers retain all mandatory rights under EU consumer
-              protection law.
+              EU consumers retain all mandatory rights under EU consumer protection law.
             </p>
           </CardContent>
         </Card>
 
         {/* Section 11 */}
         <Card size="auto">
-          <CardHeader
-            code="0xB0"
-            title="TERMS_CHANGES"
-            icon={<Bell className="size-4" />}
-          />
+          <CardHeader code="0xB0" title="TERMS_CHANGES" icon={<Bell className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground text-sm', mode.font)}>
-              We may modify these Terms at any time. Material changes will be
-              communicated with 30 days&apos; notice. Continued use constitutes
-              acceptance.
+              We may modify these Terms at any time. Material changes will be communicated with 30
+              days&apos; notice. Continued use constitutes acceptance.
             </p>
           </CardContent>
         </Card>
 
         {/* Section 12 */}
         <Card size="auto">
-          <CardHeader
-            code="0xC0"
-            title="CONTACT_INFO"
-            icon={<Mail className="size-4" />}
-          />
+          <CardHeader code="0xC0" title="CONTACT_INFO" icon={<Mail className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
               Questions about these Terms?
             </p>
-            <ul
-              className={cn(
-                'text-muted-foreground space-y-1 pl-4 text-sm',
-                mode.font
-              )}
-            >
+            <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
               <li>
-                ├─ <span className="text-foreground">EMAIL:</span>{' '}
-                support@fabrek.dev
+                ├─ <span className="text-foreground">EMAIL:</span> support@fabrek.dev
               </li>
               <li>
                 └─ <span className="text-foreground">FORM:</span>{' '}

@@ -1,11 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import {
-  AreaChart,
-  AreaChartCard,
-  StackedAreaChart,
-} from '@/components/ui/area-chart';
+import { AreaChart, AreaChartCard, StackedAreaChart } from '@/components/ui/area-chart';
 import { TrendingUp } from 'lucide-react';
 
 const sampleData = [
@@ -96,9 +92,7 @@ export default function AreaChartPage() {
               <AreaChart
                 data={sampleData}
                 xAxisKey="month"
-                series={[
-                  { dataKey: 'revenue', name: 'Revenue', fillOpacity: 0.3 },
-                ]}
+                series={[{ dataKey: 'revenue', name: 'Revenue', fillOpacity: 0.3 }]}
                 height={200}
                 gradient={false}
               />

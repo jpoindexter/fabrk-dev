@@ -97,12 +97,7 @@ export function GettingStartedTemplate({
   return (
     <div className={docsSpacing.pageSections}>
       {/* Header */}
-      <DocsHeader
-        code={code}
-        category={category}
-        title={title}
-        description={description}
-      />
+      <DocsHeader code={code} category={category} title={title} description={description} />
 
       {/* Warning (if any) */}
       {warning && (
@@ -158,16 +153,10 @@ export function GettingStartedTemplate({
                       ) : (
                         <span className="font-mono text-sm">{req.name}</span>
                       )}
-                      {req.version && (
-                        <code className={docsTypography.code}>
-                          {req.version}
-                        </code>
-                      )}
+                      {req.version && <code className={docsTypography.code}>{req.version}</code>}
                     </div>
                     {req.description && (
-                      <p className={`mt-1 ${docsTypography.caption}`}>
-                        {req.description}
-                      </p>
+                      <p className={`mt-1 ${docsTypography.caption}`}>{req.description}</p>
                     )}
                   </div>
                 </li>
@@ -201,15 +190,11 @@ export function GettingStartedTemplate({
                       aria-hidden="true"
                     />
                   )}
-                  <h3
-                    className={`uppercase ${docsTypography.h4} group-hover:text-primary`}
-                  >
+                  <h3 className={`uppercase ${docsTypography.h4} group-hover:text-primary`}>
                     {link.title}
                   </h3>
                 </div>
-                <p className={`mt-2 ${docsTypography.caption}`}>
-                  {link.description}
-                </p>
+                <p className={`mt-2 ${docsTypography.caption}`}>{link.description}</p>
               </a>
             ))}
           </div>

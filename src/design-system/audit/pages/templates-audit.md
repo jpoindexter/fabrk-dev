@@ -48,11 +48,7 @@ import { cn } from '@/lib/utils';
 **Pattern:** Consistent use of `TemplatePageHeader` component
 
 ```tsx
-<TemplatePageHeader
-  badge="TEMPLATE_NAME"
-  title="Display Name"
-  description="Description text"
-/>
+<TemplatePageHeader badge="TEMPLATE_NAME" title="Display Name" description="Description text" />
 ```
 
 **Compliance:** ✅ 97% (29/30 templates)
@@ -65,9 +61,7 @@ import { cn } from '@/lib/utils';
 
 ```tsx
 <div className="border-border inline-block border px-4 py-1">
-  <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-    [CATEGORY]: TEMPLATE_NAME
-  </span>
+  <span className={cn(mode.font, 'text-muted-foreground text-xs')}>[CATEGORY]: TEMPLATE_NAME</span>
 </div>
 ```
 

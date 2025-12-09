@@ -49,10 +49,7 @@ export function FunnelChart({
   return (
     <div className={cn('space-y-4', className)}>
       <div
-        className={cn(
-          'relative',
-          isVertical ? 'flex flex-col' : 'flex flex-row'
-        )}
+        className={cn('relative', isVertical ? 'flex flex-col' : 'flex flex-row')}
         style={{
           width: isVertical ? width : '100%',
           height: isVertical ? height : 'auto',
@@ -61,25 +58,19 @@ export function FunnelChart({
       >
         {data.map((stage, index) => {
           const percentage = (stage.value / maxValue) * 100;
-          const conversionRate =
-            index > 0 ? (stage.value / data[index - 1].value) * 100 : 100;
+          const conversionRate = index > 0 ? (stage.value / data[index - 1].value) * 100 : 100;
           const isHovered = hoveredIndex === index;
-          const color =
-            stage.color || DEFAULT_COLORS[index % DEFAULT_COLORS.length];
+          const color = stage.color || DEFAULT_COLORS[index % DEFAULT_COLORS.length];
 
           if (isVertical) {
-            const stageHeight =
-              (height - gap * (data.length - 1)) / data.length;
+            const stageHeight = (height - gap * (data.length - 1)) / data.length;
             return (
               <div
                 key={index}
                 role="button"
                 tabIndex={0}
                 aria-label={`${stage.label}: ${stage.value}`}
-                className={cn(
-                  'relative cursor-pointer transition-all',
-                  isHovered && 'scale-105'
-                )}
+                className={cn('relative cursor-pointer transition-all', isHovered && 'scale-105')}
                 style={{ height: stageHeight }}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
@@ -91,11 +82,7 @@ export function FunnelChart({
                   }
                 }}
               >
-                <svg
-                  width={width}
-                  height={stageHeight}
-                  viewBox={`0 0 ${width} ${stageHeight}`}
-                >
+                <svg width={width} height={stageHeight} viewBox={`0 0 ${width} ${stageHeight}`}>
                   <path
                     d={`M ${(width * (100 - percentage)) / 200} 0 L ${width - (width * (100 - percentage)) / 200} 0 L ${width - (width * (100 - (index < data.length - 1 ? (data[index + 1].value / maxValue) * 100 : percentage))) / 200} ${stageHeight} L ${(width * (100 - (index < data.length - 1 ? (data[index + 1].value / maxValue) * 100 : percentage))) / 200} ${stageHeight} Z`}
                     fill={color}
@@ -108,9 +95,7 @@ export function FunnelChart({
                   <div className="text-center">
                     <p className="text-sm font-medium">{stage.label}</p>
                     {showValues && (
-                      <p className="text-lg font-semibold">
-                        {stage.value.toLocaleString()}
-                      </p>
+                      <p className="text-lg font-semibold">{stage.value.toLocaleString()}</p>
                     )}
                     {showPercentages && index > 0 && (
                       <p className="text-foreground/70 text-xs">
@@ -129,10 +114,7 @@ export function FunnelChart({
                 role="button"
                 tabIndex={0}
                 aria-label={`${stage.label}: ${stage.value}`}
-                className={cn(
-                  'relative cursor-pointer transition-all',
-                  isHovered && 'scale-105'
-                )}
+                className={cn('relative cursor-pointer transition-all', isHovered && 'scale-105')}
                 style={{ width: stageWidth }}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
@@ -144,11 +126,7 @@ export function FunnelChart({
                   }
                 }}
               >
-                <svg
-                  width={stageWidth}
-                  height={height}
-                  viewBox={`0 0 ${stageWidth} ${height}`}
-                >
+                <svg width={stageWidth} height={height} viewBox={`0 0 ${stageWidth} ${height}`}>
                   <path
                     d={`M 0 ${(height * (100 - percentage)) / 200} L ${stageWidth} ${(height * (100 - (index < data.length - 1 ? (data[index + 1].value / maxValue) * 100 : percentage))) / 200} L ${stageWidth} ${height - (height * (100 - (index < data.length - 1 ? (data[index + 1].value / maxValue) * 100 : percentage))) / 200} L 0 ${height - (height * (100 - percentage)) / 200} Z`}
                     fill={color}
@@ -161,9 +139,7 @@ export function FunnelChart({
                   <div className="text-center">
                     <p className="text-sm font-medium">{stage.label}</p>
                     {showValues && (
-                      <p className="text-lg font-semibold">
-                        {stage.value.toLocaleString()}
-                      </p>
+                      <p className="text-lg font-semibold">{stage.value.toLocaleString()}</p>
                     )}
                   </div>
                 </div>
@@ -188,8 +164,7 @@ export function FunnelChart({
             <div
               className={cn('border-border h-3 w-3 border', mode.radius)}
               style={{
-                backgroundColor:
-                  stage.color || DEFAULT_COLORS[index % DEFAULT_COLORS.length],
+                backgroundColor: stage.color || DEFAULT_COLORS[index % DEFAULT_COLORS.length],
               }}
             />
           </div>

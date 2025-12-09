@@ -5,13 +5,7 @@
 
 export { CreditTransactionType } from '@/generated/prisma/client';
 
-export {
-  getOrCreateBalance,
-  hasCredits,
-  getBalance,
-  deductCredits,
-  addCredits,
-} from './balance';
+export { getOrCreateBalance, hasCredits, getBalance, deductCredits, addCredits } from './balance';
 
 export {
   getTransactionHistory,
@@ -29,8 +23,4 @@ export {
   type SubscriptionTier,
 } from './pricing';
 
-export {
-  refillCreditsIfEligible,
-  updateTierAllowance,
-  isEligibleForRefill,
-} from './refill';
+export { refillCreditsIfEligible, updateTierAllowance, isEligibleForRefill } from './refill';

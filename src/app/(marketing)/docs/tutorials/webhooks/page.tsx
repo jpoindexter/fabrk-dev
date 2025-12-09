@@ -111,39 +111,24 @@ curl -X POST http://localhost:3000/api/test-webhook \\
         <DocsCard title="HEADERS">
           <div className="space-y-1">
             <div>
-              ├─{' '}
-              <code className="bg-muted px-1 font-mono text-xs">
-                X-Webhook-Signature
-              </code>{' '}
-              - HMAC-SHA256 signature
+              ├─ <code className="bg-muted px-1 font-mono text-xs">X-Webhook-Signature</code> -
+              HMAC-SHA256 signature
             </div>
             <div>
-              ├─{' '}
-              <code className="bg-muted px-1 font-mono text-xs">
-                X-Webhook-Event
-              </code>{' '}
-              - Event type
+              ├─ <code className="bg-muted px-1 font-mono text-xs">X-Webhook-Event</code> - Event
+              type
             </div>
             <div>
-              ├─{' '}
-              <code className="bg-muted px-1 font-mono text-xs">
-                X-Webhook-Delivery-ID
-              </code>{' '}
-              - Unique delivery ID
+              ├─ <code className="bg-muted px-1 font-mono text-xs">X-Webhook-Delivery-ID</code> -
+              Unique delivery ID
             </div>
             <div>
-              ├─{' '}
-              <code className="bg-muted px-1 font-mono text-xs">
-                X-Webhook-Retry
-              </code>{' '}
-              - Retry attempt number
+              ├─ <code className="bg-muted px-1 font-mono text-xs">X-Webhook-Retry</code> - Retry
+              attempt number
             </div>
             <div>
-              └─{' '}
-              <code className="bg-muted px-1 font-mono text-xs">
-                User-Agent
-              </code>{' '}
-              - Fabrk-Webhooks/1.0
+              └─ <code className="bg-muted px-1 font-mono text-xs">User-Agent</code> -
+              Fabrk-Webhooks/1.0
             </div>
           </div>
         </DocsCard>

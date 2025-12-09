@@ -6,15 +6,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { withCsrfProtection } from '@/lib/security/csrf';
-import {
-  checkRateLimitAuto,
-  getClientIdentifier,
-  RateLimiters,
-} from '@/lib/security/rate-limit';
-import {
-  inviteToOrganization,
-  hasOrganizationRole,
-} from '@/lib/teams/organizations';
+import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from '@/lib/security/rate-limit';
+import { inviteToOrganization, hasOrganizationRole } from '@/lib/teams/organizations';
 import { sendOrganizationInvite } from '@/lib/email';
 import { prisma } from '@/lib/prisma';
 import { OrgRole } from '@/generated/prisma/client';
@@ -41,9 +34,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
           headers: {
             'X-RateLimit-Limit': rateLimit.limit.toString(),
             'X-RateLimit-Remaining': rateLimit.remaining.toString(),
-            'Retry-After': Math.ceil(
-              (rateLimit.reset - Date.now()) / 1000
-            ).toString(),
+            'Retry-After': Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
           },
         }
       );
@@ -60,11 +51,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     const { organizationId, email, role } = validatedData;
 
     // Verify user has permission to invite (must be OWNER or ADMIN)
-    const canInvite = await hasOrganizationRole(
-      organizationId,
-      session.user.id,
-      OrgRole.ADMIN
-    );
+    const canInvite = await hasOrganizationRole(organizationId, session.user.id, OrgRole.ADMIN);
 
     if (!canInvite) {
       return NextResponse.json(
@@ -75,8 +62,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
 
     // Validate role
     const validRoles: OrgRole[] = ['OWNER', 'ADMIN', 'MEMBER', 'GUEST'];
-    const inviteRole =
-      role && validRoles.includes(role) ? role : OrgRole.MEMBER;
+    const inviteRole = role && validRoles.includes(role) ? role : OrgRole.MEMBER;
 
     const invite = await inviteToOrganization({
       organizationId,
@@ -116,32 +102,20 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     });
   } catch (error: unknown) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: 'Invalid input', details: error.issues },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Invalid input', details: error.issues }, { status: 400 });
     }
 
-    const errorMessage =
-      error instanceof Error ? error.message : 'Failed to send invitation';
+    const errorMessage = error instanceof Error ? error.message : 'Failed to send invitation';
     logger.error('Failed to send invitation:', errorMessage);
 
     // Handle Prisma duplicate invitations
-    if (
-      error &&
-      typeof error === 'object' &&
-      'code' in error &&
-      error.code === 'P2002'
-    ) {
+    if (error && typeof error === 'object' && 'code' in error && error.code === 'P2002') {
       return NextResponse.json(
         { error: 'An invitation to this email already exists' },
         { status: 409 }
       );
     }
 
-    return NextResponse.json(
-      { error: 'Failed to send invitation' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to send invitation' }, { status: 500 });
   }
 });

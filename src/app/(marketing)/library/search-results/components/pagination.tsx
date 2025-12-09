@@ -15,11 +15,7 @@ interface PaginationProps {
   onPageChange: (page: number) => void;
 }
 
-export function Pagination({
-  currentPage,
-  totalPages,
-  onPageChange,
-}: PaginationProps) {
+export function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) {
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
@@ -57,9 +53,7 @@ export function Pagination({
             <Button
               variant="outline"
               size="sm"
-              onClick={() =>
-                onPageChange(Math.min(totalPages, currentPage + 1))
-              }
+              onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
               disabled={currentPage === totalPages}
               className={cn(mode.font, 'h-8 text-xs')}
             >

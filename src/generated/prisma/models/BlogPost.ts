@@ -15,8 +15,7 @@ import type * as Prisma from '../internal/prismaNamespace';
  * Model BlogPost
  *
  */
-export type BlogPostModel =
-  runtime.Types.Result.DefaultSelection<Prisma.$BlogPostPayload>;
+export type BlogPostModel = runtime.Types.Result.DefaultSelection<Prisma.$BlogPostPayload>;
 
 export type AggregateBlogPost = {
   _count: BlogPostCountAggregateOutputType | null;
@@ -169,8 +168,7 @@ export type BlogPostCountAggregateInputType = {
 };
 
 export type BlogPostAggregateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which BlogPost to aggregate.
@@ -181,9 +179,7 @@ export type BlogPostAggregateArgs<
    *
    * Determine the order of BlogPosts to fetch.
    */
-  orderBy?:
-    | Prisma.BlogPostOrderByWithRelationInput
-    | Prisma.BlogPostOrderByWithRelationInput[];
+  orderBy?: Prisma.BlogPostOrderByWithRelationInput | Prisma.BlogPostOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -243,8 +239,7 @@ export type GetBlogPostAggregateType<T extends BlogPostAggregateArgs> = {
 };
 
 export type BlogPostGroupByArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.BlogPostWhereInput;
   orderBy?:
@@ -286,18 +281,17 @@ export type BlogPostGroupByOutputType = {
   _max: BlogPostMaxAggregateOutputType | null;
 };
 
-type GetBlogPostGroupByPayload<T extends BlogPostGroupByArgs> =
-  Prisma.PrismaPromise<
-    Array<
-      Prisma.PickEnumerable<BlogPostGroupByOutputType, T['by']> & {
-        [P in keyof T & keyof BlogPostGroupByOutputType]: P extends '_count'
-          ? T[P] extends boolean
-            ? number
-            : Prisma.GetScalarType<T[P], BlogPostGroupByOutputType[P]>
-          : Prisma.GetScalarType<T[P], BlogPostGroupByOutputType[P]>;
-      }
-    >
-  >;
+type GetBlogPostGroupByPayload<T extends BlogPostGroupByArgs> = Prisma.PrismaPromise<
+  Array<
+    Prisma.PickEnumerable<BlogPostGroupByOutputType, T['by']> & {
+      [P in keyof T & keyof BlogPostGroupByOutputType]: P extends '_count'
+        ? T[P] extends boolean
+          ? number
+          : Prisma.GetScalarType<T[P], BlogPostGroupByOutputType[P]>
+        : Prisma.GetScalarType<T[P], BlogPostGroupByOutputType[P]>;
+    }
+  >
+>;
 
 export type BlogPostWhereInput = {
   AND?: Prisma.BlogPostWhereInput | Prisma.BlogPostWhereInput[];
@@ -318,11 +312,7 @@ export type BlogPostWhereInput = {
   seoDescription?: Prisma.StringNullableFilter<'BlogPost'> | string | null;
   viewCount?: Prisma.IntFilter<'BlogPost'> | number;
   createdAt?: Prisma.DateTimeFilter<'BlogPost'> | Date | string;
-  publishedAt?:
-    | Prisma.DateTimeNullableFilter<'BlogPost'>
-    | Date
-    | string
-    | null;
+  publishedAt?: Prisma.DateTimeNullableFilter<'BlogPost'> | Date | string | null;
   updatedAt?: Prisma.DateTimeFilter<'BlogPost'> | Date | string;
   author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
   category?: Prisma.XOR<
@@ -373,11 +363,7 @@ export type BlogPostWhereUniqueInput = Prisma.AtLeast<
     seoDescription?: Prisma.StringNullableFilter<'BlogPost'> | string | null;
     viewCount?: Prisma.IntFilter<'BlogPost'> | number;
     createdAt?: Prisma.DateTimeFilter<'BlogPost'> | Date | string;
-    publishedAt?:
-      | Prisma.DateTimeNullableFilter<'BlogPost'>
-      | Date
-      | string
-      | null;
+    publishedAt?: Prisma.DateTimeNullableFilter<'BlogPost'> | Date | string | null;
     updatedAt?: Prisma.DateTimeFilter<'BlogPost'> | Date | string;
     author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
     category?: Prisma.XOR<
@@ -424,38 +410,19 @@ export type BlogPostScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<'BlogPost'> | string;
   slug?: Prisma.StringWithAggregatesFilter<'BlogPost'> | string;
   title?: Prisma.StringWithAggregatesFilter<'BlogPost'> | string;
-  excerpt?:
-    | Prisma.StringNullableWithAggregatesFilter<'BlogPost'>
-    | string
-    | null;
+  excerpt?: Prisma.StringNullableWithAggregatesFilter<'BlogPost'> | string | null;
   content?: Prisma.StringWithAggregatesFilter<'BlogPost'> | string;
   featured?: Prisma.BoolWithAggregatesFilter<'BlogPost'> | boolean;
   published?: Prisma.BoolWithAggregatesFilter<'BlogPost'> | boolean;
   authorId?: Prisma.StringWithAggregatesFilter<'BlogPost'> | string;
-  categoryId?:
-    | Prisma.StringNullableWithAggregatesFilter<'BlogPost'>
-    | string
-    | null;
-  featuredImage?:
-    | Prisma.StringNullableWithAggregatesFilter<'BlogPost'>
-    | string
-    | null;
+  categoryId?: Prisma.StringNullableWithAggregatesFilter<'BlogPost'> | string | null;
+  featuredImage?: Prisma.StringNullableWithAggregatesFilter<'BlogPost'> | string | null;
   readTime?: Prisma.IntNullableWithAggregatesFilter<'BlogPost'> | number | null;
-  seoTitle?:
-    | Prisma.StringNullableWithAggregatesFilter<'BlogPost'>
-    | string
-    | null;
-  seoDescription?:
-    | Prisma.StringNullableWithAggregatesFilter<'BlogPost'>
-    | string
-    | null;
+  seoTitle?: Prisma.StringNullableWithAggregatesFilter<'BlogPost'> | string | null;
+  seoDescription?: Prisma.StringNullableWithAggregatesFilter<'BlogPost'> | string | null;
   viewCount?: Prisma.IntWithAggregatesFilter<'BlogPost'> | number;
   createdAt?: Prisma.DateTimeWithAggregatesFilter<'BlogPost'> | Date | string;
-  publishedAt?:
-    | Prisma.DateTimeNullableWithAggregatesFilter<'BlogPost'>
-    | Date
-    | string
-    | null;
+  publishedAt?: Prisma.DateTimeNullableWithAggregatesFilter<'BlogPost'> | Date | string | null;
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<'BlogPost'> | Date | string;
 };
 
@@ -507,23 +474,13 @@ export type BlogPostUpdateInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string;
   featured?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-  featuredImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  featuredImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   readTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  seoDescription?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   viewCount?: Prisma.IntFieldUpdateOperationsInput | number;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  publishedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   author?: Prisma.UserUpdateOneRequiredWithoutBlogPostsNestedInput;
   category?: Prisma.BlogCategoryUpdateOneWithoutPostsNestedInput;
@@ -539,23 +496,13 @@ export type BlogPostUncheckedUpdateInput = {
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   authorId?: Prisma.StringFieldUpdateOperationsInput | string;
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  featuredImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  featuredImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   readTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  seoDescription?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   viewCount?: Prisma.IntFieldUpdateOperationsInput | number;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  publishedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -587,23 +534,13 @@ export type BlogPostUpdateManyMutationInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string;
   featured?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-  featuredImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  featuredImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   readTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  seoDescription?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   viewCount?: Prisma.IntFieldUpdateOperationsInput | number;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  publishedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -617,23 +554,13 @@ export type BlogPostUncheckedUpdateManyInput = {
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   authorId?: Prisma.StringFieldUpdateOperationsInput | string;
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  featuredImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  featuredImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   readTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  seoDescription?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   viewCount?: Prisma.IntFieldUpdateOperationsInput | number;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  publishedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -763,9 +690,7 @@ export type BlogPostUpdateManyWithoutAuthorNestedInput = {
     | Prisma.BlogPostUpsertWithWhereUniqueWithoutAuthorInput[];
   createMany?: Prisma.BlogPostCreateManyAuthorInputEnvelope;
   set?: Prisma.BlogPostWhereUniqueInput | Prisma.BlogPostWhereUniqueInput[];
-  disconnect?:
-    | Prisma.BlogPostWhereUniqueInput
-    | Prisma.BlogPostWhereUniqueInput[];
+  disconnect?: Prisma.BlogPostWhereUniqueInput | Prisma.BlogPostWhereUniqueInput[];
   delete?: Prisma.BlogPostWhereUniqueInput | Prisma.BlogPostWhereUniqueInput[];
   connect?: Prisma.BlogPostWhereUniqueInput | Prisma.BlogPostWhereUniqueInput[];
   update?:
@@ -774,9 +699,7 @@ export type BlogPostUpdateManyWithoutAuthorNestedInput = {
   updateMany?:
     | Prisma.BlogPostUpdateManyWithWhereWithoutAuthorInput
     | Prisma.BlogPostUpdateManyWithWhereWithoutAuthorInput[];
-  deleteMany?:
-    | Prisma.BlogPostScalarWhereInput
-    | Prisma.BlogPostScalarWhereInput[];
+  deleteMany?: Prisma.BlogPostScalarWhereInput | Prisma.BlogPostScalarWhereInput[];
 };
 
 export type BlogPostUncheckedUpdateManyWithoutAuthorNestedInput = {
@@ -795,9 +718,7 @@ export type BlogPostUncheckedUpdateManyWithoutAuthorNestedInput = {
     | Prisma.BlogPostUpsertWithWhereUniqueWithoutAuthorInput[];
   createMany?: Prisma.BlogPostCreateManyAuthorInputEnvelope;
   set?: Prisma.BlogPostWhereUniqueInput | Prisma.BlogPostWhereUniqueInput[];
-  disconnect?:
-    | Prisma.BlogPostWhereUniqueInput
-    | Prisma.BlogPostWhereUniqueInput[];
+  disconnect?: Prisma.BlogPostWhereUniqueInput | Prisma.BlogPostWhereUniqueInput[];
   delete?: Prisma.BlogPostWhereUniqueInput | Prisma.BlogPostWhereUniqueInput[];
   connect?: Prisma.BlogPostWhereUniqueInput | Prisma.BlogPostWhereUniqueInput[];
   update?:
@@ -806,9 +727,7 @@ export type BlogPostUncheckedUpdateManyWithoutAuthorNestedInput = {
   updateMany?:
     | Prisma.BlogPostUpdateManyWithWhereWithoutAuthorInput
     | Prisma.BlogPostUpdateManyWithWhereWithoutAuthorInput[];
-  deleteMany?:
-    | Prisma.BlogPostScalarWhereInput
-    | Prisma.BlogPostScalarWhereInput[];
+  deleteMany?: Prisma.BlogPostScalarWhereInput | Prisma.BlogPostScalarWhereInput[];
 };
 
 export type BlogPostCreateNestedManyWithoutCategoryInput = {
@@ -857,9 +776,7 @@ export type BlogPostUpdateManyWithoutCategoryNestedInput = {
     | Prisma.BlogPostUpsertWithWhereUniqueWithoutCategoryInput[];
   createMany?: Prisma.BlogPostCreateManyCategoryInputEnvelope;
   set?: Prisma.BlogPostWhereUniqueInput | Prisma.BlogPostWhereUniqueInput[];
-  disconnect?:
-    | Prisma.BlogPostWhereUniqueInput
-    | Prisma.BlogPostWhereUniqueInput[];
+  disconnect?: Prisma.BlogPostWhereUniqueInput | Prisma.BlogPostWhereUniqueInput[];
   delete?: Prisma.BlogPostWhereUniqueInput | Prisma.BlogPostWhereUniqueInput[];
   connect?: Prisma.BlogPostWhereUniqueInput | Prisma.BlogPostWhereUniqueInput[];
   update?:
@@ -868,9 +785,7 @@ export type BlogPostUpdateManyWithoutCategoryNestedInput = {
   updateMany?:
     | Prisma.BlogPostUpdateManyWithWhereWithoutCategoryInput
     | Prisma.BlogPostUpdateManyWithWhereWithoutCategoryInput[];
-  deleteMany?:
-    | Prisma.BlogPostScalarWhereInput
-    | Prisma.BlogPostScalarWhereInput[];
+  deleteMany?: Prisma.BlogPostScalarWhereInput | Prisma.BlogPostScalarWhereInput[];
 };
 
 export type BlogPostUncheckedUpdateManyWithoutCategoryNestedInput = {
@@ -889,9 +804,7 @@ export type BlogPostUncheckedUpdateManyWithoutCategoryNestedInput = {
     | Prisma.BlogPostUpsertWithWhereUniqueWithoutCategoryInput[];
   createMany?: Prisma.BlogPostCreateManyCategoryInputEnvelope;
   set?: Prisma.BlogPostWhereUniqueInput | Prisma.BlogPostWhereUniqueInput[];
-  disconnect?:
-    | Prisma.BlogPostWhereUniqueInput
-    | Prisma.BlogPostWhereUniqueInput[];
+  disconnect?: Prisma.BlogPostWhereUniqueInput | Prisma.BlogPostWhereUniqueInput[];
   delete?: Prisma.BlogPostWhereUniqueInput | Prisma.BlogPostWhereUniqueInput[];
   connect?: Prisma.BlogPostWhereUniqueInput | Prisma.BlogPostWhereUniqueInput[];
   update?:
@@ -900,9 +813,7 @@ export type BlogPostUncheckedUpdateManyWithoutCategoryNestedInput = {
   updateMany?:
     | Prisma.BlogPostUpdateManyWithWhereWithoutCategoryInput
     | Prisma.BlogPostUpdateManyWithWhereWithoutCategoryInput[];
-  deleteMany?:
-    | Prisma.BlogPostScalarWhereInput
-    | Prisma.BlogPostScalarWhereInput[];
+  deleteMany?: Prisma.BlogPostScalarWhereInput | Prisma.BlogPostScalarWhereInput[];
 };
 
 export type BlogPostCreateWithoutAuthorInput = {
@@ -952,9 +863,7 @@ export type BlogPostCreateOrConnectWithoutAuthorInput = {
 };
 
 export type BlogPostCreateManyAuthorInputEnvelope = {
-  data:
-    | Prisma.BlogPostCreateManyAuthorInput
-    | Prisma.BlogPostCreateManyAuthorInput[];
+  data: Prisma.BlogPostCreateManyAuthorInput | Prisma.BlogPostCreateManyAuthorInput[];
   skipDuplicates?: boolean;
 };
 
@@ -1005,11 +914,7 @@ export type BlogPostScalarWhereInput = {
   seoDescription?: Prisma.StringNullableFilter<'BlogPost'> | string | null;
   viewCount?: Prisma.IntFilter<'BlogPost'> | number;
   createdAt?: Prisma.DateTimeFilter<'BlogPost'> | Date | string;
-  publishedAt?:
-    | Prisma.DateTimeNullableFilter<'BlogPost'>
-    | Date
-    | string
-    | null;
+  publishedAt?: Prisma.DateTimeNullableFilter<'BlogPost'> | Date | string | null;
   updatedAt?: Prisma.DateTimeFilter<'BlogPost'> | Date | string;
 };
 
@@ -1060,9 +965,7 @@ export type BlogPostCreateOrConnectWithoutCategoryInput = {
 };
 
 export type BlogPostCreateManyCategoryInputEnvelope = {
-  data:
-    | Prisma.BlogPostCreateManyCategoryInput
-    | Prisma.BlogPostCreateManyCategoryInput[];
+  data: Prisma.BlogPostCreateManyCategoryInput | Prisma.BlogPostCreateManyCategoryInput[];
   skipDuplicates?: boolean;
 };
 
@@ -1121,23 +1024,13 @@ export type BlogPostUpdateWithoutAuthorInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string;
   featured?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-  featuredImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  featuredImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   readTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  seoDescription?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   viewCount?: Prisma.IntFieldUpdateOperationsInput | number;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  publishedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   category?: Prisma.BlogCategoryUpdateOneWithoutPostsNestedInput;
 };
@@ -1151,23 +1044,13 @@ export type BlogPostUncheckedUpdateWithoutAuthorInput = {
   featured?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  featuredImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  featuredImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   readTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  seoDescription?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   viewCount?: Prisma.IntFieldUpdateOperationsInput | number;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  publishedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -1180,23 +1063,13 @@ export type BlogPostUncheckedUpdateManyWithoutAuthorInput = {
   featured?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  featuredImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  featuredImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   readTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  seoDescription?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   viewCount?: Prisma.IntFieldUpdateOperationsInput | number;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  publishedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -1227,23 +1100,13 @@ export type BlogPostUpdateWithoutCategoryInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string;
   featured?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-  featuredImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  featuredImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   readTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  seoDescription?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   viewCount?: Prisma.IntFieldUpdateOperationsInput | number;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  publishedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   author?: Prisma.UserUpdateOneRequiredWithoutBlogPostsNestedInput;
 };
@@ -1257,23 +1120,13 @@ export type BlogPostUncheckedUpdateWithoutCategoryInput = {
   featured?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   authorId?: Prisma.StringFieldUpdateOperationsInput | string;
-  featuredImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  featuredImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   readTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  seoDescription?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   viewCount?: Prisma.IntFieldUpdateOperationsInput | number;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  publishedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -1286,29 +1139,18 @@ export type BlogPostUncheckedUpdateManyWithoutCategoryInput = {
   featured?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   authorId?: Prisma.StringFieldUpdateOperationsInput | string;
-  featuredImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  featuredImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   readTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   seoTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  seoDescription?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  seoDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   viewCount?: Prisma.IntFieldUpdateOperationsInput | number;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  publishedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type BlogPostSelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -1335,8 +1177,7 @@ export type BlogPostSelect<
 >;
 
 export type BlogPostSelectCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -1363,8 +1204,7 @@ export type BlogPostSelectCreateManyAndReturn<
 >;
 
 export type BlogPostSelectUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -1411,8 +1251,7 @@ export type BlogPostSelectScalar = {
 };
 
 export type BlogPostOmit<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
   | 'id'
   | 'slug'
@@ -1434,30 +1273,26 @@ export type BlogPostOmit<
   ExtArgs['result']['blogPost']
 >;
 export type BlogPostInclude<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   author?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   category?: boolean | Prisma.BlogPost$categoryArgs<ExtArgs>;
 };
 export type BlogPostIncludeCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   author?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   category?: boolean | Prisma.BlogPost$categoryArgs<ExtArgs>;
 };
 export type BlogPostIncludeUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   author?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   category?: boolean | Prisma.BlogPost$categoryArgs<ExtArgs>;
 };
 
 export type $BlogPostPayload<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   name: 'BlogPost';
   objects: {
@@ -1489,20 +1324,17 @@ export type $BlogPostPayload<
   composites: {};
 };
 
-export type BlogPostGetPayload<
-  S extends boolean | null | undefined | BlogPostDefaultArgs,
-> = runtime.Types.Result.GetResult<Prisma.$BlogPostPayload, S>;
+export type BlogPostGetPayload<S extends boolean | null | undefined | BlogPostDefaultArgs> =
+  runtime.Types.Result.GetResult<Prisma.$BlogPostPayload, S>;
 
 export type BlogPostCountArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = Omit<BlogPostFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
   select?: BlogPostCountAggregateInputType | true;
 };
 
 export interface BlogPostDelegate<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > {
   [K: symbol]: {
@@ -1973,12 +1805,7 @@ export interface BlogPostDelegate<
               ? never
               : P extends string
                 ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                : [
-                    Error,
-                    'Field ',
-                    P,
-                    ` in "having" needs to be provided in "by"`,
-                  ];
+                : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
           }[HavingFields]
         : 'take' extends Prisma.Keys<T>
           ? 'orderBy' extends Prisma.Keys<T>
@@ -2008,11 +1835,8 @@ export interface BlogPostDelegate<
                     : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                 }[OrderFields],
   >(
-    args: Prisma.SubsetIntersection<T, BlogPostGroupByArgs, OrderByArg> &
-      InputErrors
-  ): {} extends InputErrors
-    ? GetBlogPostGroupByPayload<T>
-    : Prisma.PrismaPromise<InputErrors>;
+    args: Prisma.SubsetIntersection<T, BlogPostGroupByArgs, OrderByArg> & InputErrors
+  ): {} extends InputErrors ? GetBlogPostGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
   /**
    * Fields of the BlogPost model
    */
@@ -2028,8 +1852,7 @@ export interface BlogPostDelegate<
 export interface Prisma__BlogPostClient<
   T,
   Null = never,
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: 'PrismaPromise';
@@ -2067,14 +1890,8 @@ export interface Prisma__BlogPostClient<
    * @returns A Promise for the completion of which ever callback is executed.
    */
   then<TResult1 = T, TResult2 = never>(
-    onfulfilled?:
-      | ((value: T) => TResult1 | PromiseLike<TResult1>)
-      | undefined
-      | null,
-    onrejected?:
-      | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-      | undefined
-      | null
+    onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
   ): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
   /**
    * Attaches a callback for only the rejection of the Promise.
@@ -2082,10 +1899,7 @@ export interface Prisma__BlogPostClient<
    * @returns A Promise for the completion of the callback.
    */
   catch<TResult = never>(
-    onrejected?:
-      | ((reason: any) => TResult | PromiseLike<TResult>)
-      | undefined
-      | null
+    onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
   ): runtime.Types.Utils.JsPromise<T | TResult>;
   /**
    * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
@@ -2093,9 +1907,7 @@ export interface Prisma__BlogPostClient<
    * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
    * @returns A Promise for the completion of the callback.
    */
-  finally(
-    onfinally?: (() => void) | undefined | null
-  ): runtime.Types.Utils.JsPromise<T>;
+  finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
 }
 
 /**
@@ -2126,8 +1938,7 @@ export interface BlogPostFieldRefs {
  * BlogPost findUnique
  */
 export type BlogPostFindUniqueArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogPost
@@ -2151,8 +1962,7 @@ export type BlogPostFindUniqueArgs<
  * BlogPost findUniqueOrThrow
  */
 export type BlogPostFindUniqueOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogPost
@@ -2176,8 +1986,7 @@ export type BlogPostFindUniqueOrThrowArgs<
  * BlogPost findFirst
  */
 export type BlogPostFindFirstArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogPost
@@ -2200,9 +2009,7 @@ export type BlogPostFindFirstArgs<
    *
    * Determine the order of BlogPosts to fetch.
    */
-  orderBy?:
-    | Prisma.BlogPostOrderByWithRelationInput
-    | Prisma.BlogPostOrderByWithRelationInput[];
+  orderBy?: Prisma.BlogPostOrderByWithRelationInput | Prisma.BlogPostOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -2233,8 +2040,7 @@ export type BlogPostFindFirstArgs<
  * BlogPost findFirstOrThrow
  */
 export type BlogPostFindFirstOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogPost
@@ -2257,9 +2063,7 @@ export type BlogPostFindFirstOrThrowArgs<
    *
    * Determine the order of BlogPosts to fetch.
    */
-  orderBy?:
-    | Prisma.BlogPostOrderByWithRelationInput
-    | Prisma.BlogPostOrderByWithRelationInput[];
+  orderBy?: Prisma.BlogPostOrderByWithRelationInput | Prisma.BlogPostOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -2290,8 +2094,7 @@ export type BlogPostFindFirstOrThrowArgs<
  * BlogPost findMany
  */
 export type BlogPostFindManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogPost
@@ -2314,9 +2117,7 @@ export type BlogPostFindManyArgs<
    *
    * Determine the order of BlogPosts to fetch.
    */
-  orderBy?:
-    | Prisma.BlogPostOrderByWithRelationInput
-    | Prisma.BlogPostOrderByWithRelationInput[];
+  orderBy?: Prisma.BlogPostOrderByWithRelationInput | Prisma.BlogPostOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -2342,8 +2143,7 @@ export type BlogPostFindManyArgs<
  * BlogPost create
  */
 export type BlogPostCreateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogPost
@@ -2360,18 +2160,14 @@ export type BlogPostCreateArgs<
   /**
    * The data needed to create a BlogPost.
    */
-  data: Prisma.XOR<
-    Prisma.BlogPostCreateInput,
-    Prisma.BlogPostUncheckedCreateInput
-  >;
+  data: Prisma.XOR<Prisma.BlogPostCreateInput, Prisma.BlogPostUncheckedCreateInput>;
 };
 
 /**
  * BlogPost createMany
  */
 export type BlogPostCreateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to create many BlogPosts.
@@ -2384,8 +2180,7 @@ export type BlogPostCreateManyArgs<
  * BlogPost createManyAndReturn
  */
 export type BlogPostCreateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogPost
@@ -2410,8 +2205,7 @@ export type BlogPostCreateManyAndReturnArgs<
  * BlogPost update
  */
 export type BlogPostUpdateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogPost
@@ -2428,10 +2222,7 @@ export type BlogPostUpdateArgs<
   /**
    * The data needed to update a BlogPost.
    */
-  data: Prisma.XOR<
-    Prisma.BlogPostUpdateInput,
-    Prisma.BlogPostUncheckedUpdateInput
-  >;
+  data: Prisma.XOR<Prisma.BlogPostUpdateInput, Prisma.BlogPostUncheckedUpdateInput>;
   /**
    * Choose, which BlogPost to update.
    */
@@ -2442,16 +2233,12 @@ export type BlogPostUpdateArgs<
  * BlogPost updateMany
  */
 export type BlogPostUpdateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to update BlogPosts.
    */
-  data: Prisma.XOR<
-    Prisma.BlogPostUpdateManyMutationInput,
-    Prisma.BlogPostUncheckedUpdateManyInput
-  >;
+  data: Prisma.XOR<Prisma.BlogPostUpdateManyMutationInput, Prisma.BlogPostUncheckedUpdateManyInput>;
   /**
    * Filter which BlogPosts to update
    */
@@ -2466,8 +2253,7 @@ export type BlogPostUpdateManyArgs<
  * BlogPost updateManyAndReturn
  */
 export type BlogPostUpdateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogPost
@@ -2480,10 +2266,7 @@ export type BlogPostUpdateManyAndReturnArgs<
   /**
    * The data used to update BlogPosts.
    */
-  data: Prisma.XOR<
-    Prisma.BlogPostUpdateManyMutationInput,
-    Prisma.BlogPostUncheckedUpdateManyInput
-  >;
+  data: Prisma.XOR<Prisma.BlogPostUpdateManyMutationInput, Prisma.BlogPostUncheckedUpdateManyInput>;
   /**
    * Filter which BlogPosts to update
    */
@@ -2502,8 +2285,7 @@ export type BlogPostUpdateManyAndReturnArgs<
  * BlogPost upsert
  */
 export type BlogPostUpsertArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogPost
@@ -2524,25 +2306,18 @@ export type BlogPostUpsertArgs<
   /**
    * In case the BlogPost found by the `where` argument doesn't exist, create a new BlogPost with this data.
    */
-  create: Prisma.XOR<
-    Prisma.BlogPostCreateInput,
-    Prisma.BlogPostUncheckedCreateInput
-  >;
+  create: Prisma.XOR<Prisma.BlogPostCreateInput, Prisma.BlogPostUncheckedCreateInput>;
   /**
    * In case the BlogPost was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<
-    Prisma.BlogPostUpdateInput,
-    Prisma.BlogPostUncheckedUpdateInput
-  >;
+  update: Prisma.XOR<Prisma.BlogPostUpdateInput, Prisma.BlogPostUncheckedUpdateInput>;
 };
 
 /**
  * BlogPost delete
  */
 export type BlogPostDeleteArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogPost
@@ -2566,8 +2341,7 @@ export type BlogPostDeleteArgs<
  * BlogPost deleteMany
  */
 export type BlogPostDeleteManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which BlogPosts to delete
@@ -2583,8 +2357,7 @@ export type BlogPostDeleteManyArgs<
  * BlogPost.category
  */
 export type BlogPost$categoryArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogCategory
@@ -2605,8 +2378,7 @@ export type BlogPost$categoryArgs<
  * BlogPost without action
  */
 export type BlogPostDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BlogPost

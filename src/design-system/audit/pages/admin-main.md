@@ -158,9 +158,7 @@ High-level admin dashboard displaying:
   </CardHeader>
   <CardContent>
     <div className="font-mono text-2xl font-semibold">{stats.totalUsers}</div>
-    <p className="text-muted-foreground font-mono text-xs">
-      +{stats.recentUsers} [LAST_7D]
-    </p>
+    <p className="text-muted-foreground font-mono text-xs">+{stats.recentUsers} [LAST_7D]</p>
   </CardContent>
 </Card>
 ```

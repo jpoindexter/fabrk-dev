@@ -1,20 +1,15 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import {
-  ToastTitle,
-  ToastDescription,
-  ToastClose,
-  ToastViewport,
-} from '@/components/ui/toaster';
+import { ToastTitle, ToastDescription, ToastClose, ToastViewport } from '@/components/ui/toaster';
 import { Toast, ToastProvider } from '@/components/ui/toast';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 
 function ToasterDemo() {
-  const [toasts, setToasts] = useState<
-    Array<{ id: string; title: string; description?: string }>
-  >([]);
+  const [toasts, setToasts] = useState<Array<{ id: string; title: string; description?: string }>>(
+    []
+  );
 
   const showToast = (title: string, description?: string) => {
     const id = Date.now().toString();
@@ -55,9 +50,7 @@ function ToasterDemo() {
           <Toast key={id} id={id}>
             <div className="grid gap-1">
               <ToastTitle>{title}</ToastTitle>
-              {description && (
-                <ToastDescription>{description}</ToastDescription>
-              )}
+              {description && <ToastDescription>{description}</ToastDescription>}
             </div>
             <ToastClose />
           </Toast>
@@ -174,9 +167,7 @@ function App() {
             <div className="border-border bg-background w-full max-w-md rounded-none border p-6">
               <div className="grid gap-1">
                 <div className="font-medium">Changes saved</div>
-                <div className="opacity-90">
-                  Your profile has been updated successfully.
-                </div>
+                <div className="opacity-90">Your profile has been updated successfully.</div>
               </div>
             </div>
           ),
@@ -197,9 +188,7 @@ function App() {
             <div className="border-border bg-background flex w-full max-w-md items-center justify-between gap-6 rounded-none border p-6">
               <div className="grid gap-1">
                 <div className="font-medium">File deleted</div>
-                <div className="opacity-90">
-                  Your file has been moved to trash.
-                </div>
+                <div className="opacity-90">Your file has been moved to trash.</div>
               </div>
               <button className="border-border bg-background inline-flex h-8 shrink-0 items-center justify-center rounded-none border px-4 text-sm font-medium">
                 Undo
@@ -226,9 +215,7 @@ function App() {
             <div className="border-destructive bg-destructive text-destructive-foreground w-full max-w-md rounded-none border p-6">
               <div className="grid gap-1">
                 <div className="font-medium">Error</div>
-                <div className="opacity-90">
-                  Failed to save changes. Please try again.
-                </div>
+                <div className="opacity-90">Failed to save changes. Please try again.</div>
               </div>
             </div>
           ),
@@ -299,8 +286,7 @@ export default function RootLayout({ children }) {
         {
           name: 'Toast',
           type: 'Component',
-          description:
-            "Root toast component. Accepts variant prop ('default' | 'destructive')",
+          description: "Root toast component. Accepts variant prop ('default' | 'destructive')",
         },
         {
           name: 'ToastProvider',
@@ -320,8 +306,7 @@ export default function RootLayout({ children }) {
         {
           name: 'ToastAction',
           type: 'Component',
-          description:
-            'Action button component. Requires altText prop for accessibility',
+          description: 'Action button component. Requires altText prop for accessibility',
         },
         {
           name: 'ToastClose',

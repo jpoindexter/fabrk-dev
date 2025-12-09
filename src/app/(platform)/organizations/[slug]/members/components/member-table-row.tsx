@@ -7,14 +7,7 @@
 
 import * as React from 'react';
 import { useSession } from 'next-auth/react';
-import {
-  MoreVertical,
-  Shield,
-  Trash2,
-  Crown,
-  UserCheck,
-  UserX,
-} from 'lucide-react';
+import { MoreVertical, Shield, Trash2, Crown, UserCheck, UserX } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -106,22 +99,15 @@ export function MemberTableRow({
           </Avatar>
           <div>
             <p className="font-medium">{member.user.name}</p>
-            {isCurrentUser && (
-              <span className="text-muted-foreground text-xs">(You)</span>
-            )}
+            {isCurrentUser && <span className="text-muted-foreground text-xs">(You)</span>}
           </div>
         </div>
       </TableCell>
       <TableCell>
-        <span className="text-muted-foreground text-sm">
-          {member.user.email}
-        </span>
+        <span className="text-muted-foreground text-sm">{member.user.email}</span>
       </TableCell>
       <TableCell>
-        <Badge
-          variant={getRoleBadgeVariant(member.role)}
-          className="w-24 justify-center gap-1"
-        >
+        <Badge variant={getRoleBadgeVariant(member.role)} className="w-24 justify-center gap-1">
           {getRoleIcon(member.role)}
           {member.role}
         </Badge>
@@ -135,18 +121,11 @@ export function MemberTableRow({
         {canManage && (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                aria-label="Manage member options"
-              >
+              <Button variant="ghost" size="icon" aria-label="Manage member options">
                 <MoreVertical className="h-4 w-4" aria-hidden="true" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent
-              align="end"
-              className={cn('border-border border', mode.radius)}
-            >
+            <DropdownMenuContent align="end" className={cn('border-border border', mode.radius)}>
               <DropdownMenuLabel>Manage Member</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem

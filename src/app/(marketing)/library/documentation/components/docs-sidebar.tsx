@@ -47,9 +47,7 @@ export function DocsSidebar({ activeDoc, onDocChange }: DocsSidebarProps) {
                         <span>{page.title}</span>
                         {page.badge && (
                           <Badge
-                            variant={
-                              activeDoc === page.id ? 'secondary' : 'outline'
-                            }
+                            variant={activeDoc === page.id ? 'secondary' : 'outline'}
                             className={cn(mode.radius, 'h-5 py-0 text-xs')}
                           >
                             {page.badge}

@@ -51,9 +51,7 @@ const serverSchema = z.object({
   // ============================================================================
   // NODE ENVIRONMENT
   // ============================================================================
-  NODE_ENV: z
-    .enum(['development', 'production', 'test'])
-    .default('development'),
+  NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
 
   // ============================================================================
   // DATABASE - Required in production, optional in development
@@ -93,10 +91,7 @@ const serverSchema = z.object({
 
   // Google OAuth - Required if enabled
   GOOGLE_CLIENT_ID: z.string().optional(),
-  GOOGLE_CLIENT_SECRET: conditionalRequired(
-    !!process.env.GOOGLE_CLIENT_ID,
-    'GOOGLE_CLIENT_SECRET'
-  ),
+  GOOGLE_CLIENT_SECRET: conditionalRequired(!!process.env.GOOGLE_CLIENT_ID, 'GOOGLE_CLIENT_SECRET'),
 
   // ============================================================================
   // STRIPE PAYMENTS - Required if subscriptions/payments enabled
@@ -165,10 +160,7 @@ const serverSchema = z.object({
   // PUSHER REAL-TIME (Optional)
   // ============================================================================
   PUSHER_APP_ID: z.string().optional(),
-  PUSHER_SECRET: conditionalRequired(
-    !!process.env.PUSHER_APP_ID,
-    'PUSHER_SECRET'
-  ),
+  PUSHER_SECRET: conditionalRequired(!!process.env.PUSHER_APP_ID, 'PUSHER_SECRET'),
 
   // ============================================================================
   // ALGOLIA SEARCH (Optional)
@@ -209,14 +201,8 @@ const serverSchema = z.object({
   // FILE STORAGE - S3 Compatible (Optional)
   // ============================================================================
   S3_ENDPOINT: z.string().url().optional(),
-  S3_ACCESS_KEY_ID: conditionalRequired(
-    !!process.env.S3_BUCKET_NAME,
-    'S3_ACCESS_KEY_ID'
-  ),
-  S3_SECRET_ACCESS_KEY: conditionalRequired(
-    !!process.env.S3_BUCKET_NAME,
-    'S3_SECRET_ACCESS_KEY'
-  ),
+  S3_ACCESS_KEY_ID: conditionalRequired(!!process.env.S3_BUCKET_NAME, 'S3_ACCESS_KEY_ID'),
+  S3_SECRET_ACCESS_KEY: conditionalRequired(!!process.env.S3_BUCKET_NAME, 'S3_SECRET_ACCESS_KEY'),
   S3_BUCKET_NAME: z.string().optional(),
   AWS_REGION: z.string().optional(),
 
@@ -329,10 +315,7 @@ const clientSchema = z.object({
     .url('NEXT_PUBLIC_APP_URL must be a valid URL')
     .default('http://localhost:3000'),
 
-  NEXT_PUBLIC_API_URL: z
-    .string()
-    .url('NEXT_PUBLIC_API_URL must be a valid URL')
-    .optional(),
+  NEXT_PUBLIC_API_URL: z.string().url('NEXT_PUBLIC_API_URL must be a valid URL').optional(),
 
   // ============================================================================
   // APP METADATA
@@ -446,11 +429,7 @@ const clientSchema = z.object({
   // POSTHOG ANALYTICS
   // ============================================================================
   NEXT_PUBLIC_POSTHOG_KEY: z.string().optional(),
-  NEXT_PUBLIC_POSTHOG_HOST: z
-    .string()
-    .url()
-    .optional()
-    .default('https://app.posthog.com'),
+  NEXT_PUBLIC_POSTHOG_HOST: z.string().url().optional().default('https://app.posthog.com'),
 
   // ============================================================================
   // GOOGLE ANALYTICS
@@ -471,9 +450,7 @@ const clientSchema = z.object({
 const parseEnv = () => {
   // Allow skipping validation (useful for initial builds or CI)
   if (process.env.SKIP_ENV_VALIDATION === 'true') {
-    console.log(
-      '⚠️  Skipping environment variable validation (SKIP_ENV_VALIDATION=true)'
-    );
+    console.log('⚠️  Skipping environment variable validation (SKIP_ENV_VALIDATION=true)');
     return {
       server: process.env as any,
       client: process.env as any,
@@ -487,9 +464,7 @@ const parseEnv = () => {
     // Use console.error for startup errors (before logger is fully initialized)
     console.error('❌ Invalid server environment variables:');
     console.error(JSON.stringify(serverEnv.error.format(), null, 2));
-    throw new Error(
-      'Invalid server environment variables. See error details above.'
-    );
+    throw new Error('Invalid server environment variables. See error details above.');
   }
 
   // Parse client-side env vars
@@ -499,9 +474,7 @@ const parseEnv = () => {
     // Use console.error for startup errors (before logger is fully initialized)
     console.error('❌ Invalid client environment variables:');
     console.error(JSON.stringify(clientEnv.error.format(), null, 2));
-    throw new Error(
-      'Invalid client environment variables. See error details above.'
-    );
+    throw new Error('Invalid client environment variables. See error details above.');
   }
 
   return {
@@ -561,9 +534,7 @@ if (isProduction) {
   }
 
   if (!env.server.UPSTASH_REDIS_REST_URL) {
-    warnings.push(
-      'UPSTASH_REDIS_REST_URL is not set (rate limiting will use in-memory cache)'
-    );
+    warnings.push('UPSTASH_REDIS_REST_URL is not set (rate limiting will use in-memory cache)');
   }
 
   if (warnings.length > 0) {

@@ -8,10 +8,7 @@ export interface ResetPasswordProps {
   resetUrl: string;
 }
 
-export function generateResetPasswordHTML({
-  name,
-  resetUrl,
-}: ResetPasswordProps): string {
+export function generateResetPasswordHTML({ name, resetUrl }: ResetPasswordProps): string {
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -91,10 +88,7 @@ export function generateResetPasswordHTML({
   `.trim();
 }
 
-export function generateResetPasswordText({
-  name,
-  resetUrl,
-}: ResetPasswordProps): string {
+export function generateResetPasswordText({ name, resetUrl }: ResetPasswordProps): string {
   return `
 Reset Your Password
 

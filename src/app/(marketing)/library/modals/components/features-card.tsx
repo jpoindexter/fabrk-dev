@@ -27,9 +27,7 @@ export function FeaturesCard() {
           <FeatureItem>Accessible with keyboard navigation</FeatureItem>
           <FeatureItem>Terminal-styled headers and labels</FeatureItem>
         </FeatureList>
-        <InfoNote>
-          All patterns use Radix UI primitives for accessibility.
-        </InfoNote>
+        <InfoNote>All patterns use Radix UI primitives for accessibility.</InfoNote>
       </CardContent>
     </Card>
   );

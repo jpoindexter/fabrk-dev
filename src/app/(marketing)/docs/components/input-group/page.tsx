@@ -10,16 +10,7 @@ import {
   InputGroupText,
   InputGroupTextarea,
 } from '@/components/ui/input-group';
-import {
-  Search,
-  Mail,
-  DollarSign,
-  Lock,
-  Eye,
-  EyeOff,
-  X,
-  Send,
-} from 'lucide-react';
+import { Search, Mail, DollarSign, Lock, Eye, EyeOff, X, Send } from 'lucide-react';
 import { useState } from 'react';
 
 function PasswordToggleExample() {
@@ -30,20 +21,10 @@ function PasswordToggleExample() {
       <InputGroupAddon align="inline-start">
         <Lock className="size-4" />
       </InputGroupAddon>
-      <InputGroupInput
-        type={showPassword ? 'text' : 'password'}
-        placeholder="Enter password"
-      />
+      <InputGroupInput type={showPassword ? 'text' : 'password'} placeholder="Enter password" />
       <InputGroupAddon align="inline-end">
-        <InputGroupButton
-          size="icon-xs"
-          onClick={() => setShowPassword(!showPassword)}
-        >
-          {showPassword ? (
-            <EyeOff className="size-4" />
-          ) : (
-            <Eye className="size-4" />
-          )}
+        <InputGroupButton size="icon-xs" onClick={() => setShowPassword(!showPassword)}>
+          {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
         </InputGroupButton>
       </InputGroupAddon>
     </InputGroup>
@@ -137,10 +118,7 @@ export default function InputGroupPage() {
               />
               {searchValue && (
                 <InputGroupAddon align="inline-end">
-                  <InputGroupButton
-                    size="icon-xs"
-                    onClick={() => setSearchValue('')}
-                  >
+                  <InputGroupButton size="icon-xs" onClick={() => setSearchValue('')}>
                     <X className="size-4" />
                   </InputGroupButton>
                 </InputGroupAddon>

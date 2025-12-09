@@ -32,29 +32,19 @@ export function TableToolbar({ table }: TableToolbarProps) {
           <Input
             placeholder="search_users..."
             value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
-            onChange={(event) =>
-              table.getColumn('name')?.setFilterValue(event.target.value)
-            }
+            onChange={(event) => table.getColumn('name')?.setFilterValue(event.target.value)}
             className={cn(mode.radius, mode.font, 'pl-10 text-xs')}
           />
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button
-              variant="outline"
-              size="sm"
-              className={cn(mode.radius, mode.font, 'text-xs')}
-            >
+            <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, 'text-xs')}>
               [COLUMNS] <ChevronDown className="ml-2 h-3 w-3" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align="end"
-            className={cn(
-              mode.radius,
-              mode.font,
-              'border-border border text-xs'
-            )}
+            className={cn(mode.radius, mode.font, 'border-border border text-xs')}
           >
             {table
               .getAllColumns()
@@ -63,14 +53,9 @@ export function TableToolbar({ table }: TableToolbarProps) {
                 return (
                   <DropdownMenuCheckboxItem
                     key={column.id}
-                    className={cn(
-                      mode.radius,
-                      'focus:bg-primary focus:text-primary-foreground'
-                    )}
+                    className={cn(mode.radius, 'focus:bg-primary focus:text-primary-foreground')}
                     checked={column.getIsVisible()}
-                    onCheckedChange={(value) =>
-                      column.toggleVisibility(!!value)
-                    }
+                    onCheckedChange={(value) => column.toggleVisibility(!!value)}
                   >
                     {column.id.toUpperCase()}
                   </DropdownMenuCheckboxItem>
@@ -86,19 +71,11 @@ export function TableToolbar({ table }: TableToolbarProps) {
           <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
             SELECTED: {selectedCount}
           </span>
-          <Button
-            variant="outline"
-            size="sm"
-            className={cn(mode.radius, mode.font, 'h-7 text-xs')}
-          >
+          <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, 'h-7 text-xs')}>
             <UserCog className="mr-1 h-3 w-3" />
             &gt; ROLE
           </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            className={cn(mode.radius, mode.font, 'h-7 text-xs')}
-          >
+          <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, 'h-7 text-xs')}>
             <UserX className="mr-1 h-3 w-3" />
             &gt; SUSPEND
           </Button>

@@ -976,9 +976,7 @@ export function AnimatedCounter({
     const unsubscribe = springValue.on('change', (latest) => {
       if (ref.current) {
         const formatted =
-          decimals > 0
-            ? latest.toFixed(decimals)
-            : Math.floor(latest).toLocaleString();
+          decimals > 0 ? latest.toFixed(decimals) : Math.floor(latest).toLocaleString();
         ref.current.textContent = `${prefix}${formatted}${suffix}`;
       }
     });

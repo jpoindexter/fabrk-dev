@@ -60,10 +60,7 @@ export default async function BlogPostPage({ params }: Props) {
       <article className="container mx-auto max-w-4xl px-4 py-12">
         {/* Breadcrumb */}
         <div className="mb-8">
-          <Link
-            href="/blog"
-            className="text-muted-foreground hover:text-primary font-mono text-xs"
-          >
+          <Link href="/blog" className="text-muted-foreground hover:text-primary font-mono text-xs">
             &lt;- BACK_TO_BLOG
           </Link>
         </div>
@@ -71,9 +68,7 @@ export default async function BlogPostPage({ params }: Props) {
         {/* Header */}
         <header className="border-border bg-card mb-8 border">
           <div className="border-border border-b px-6 py-2">
-            <span className="text-muted-foreground font-mono text-xs">
-              [ ARTICLE ]
-            </span>
+            <span className="text-muted-foreground font-mono text-xs">[ ARTICLE ]</span>
           </div>
           <div className="p-6">
             {/* Category */}
@@ -136,10 +131,7 @@ export default async function BlogPostPage({ params }: Props) {
 
         {/* Footer */}
         <div className="border-border bg-card mt-8 flex items-center justify-between border p-4">
-          <Link
-            href="/blog"
-            className="text-muted-foreground hover:text-primary font-mono text-xs"
-          >
+          <Link href="/blog" className="text-muted-foreground hover:text-primary font-mono text-xs">
             &lt;- ALL_POSTS
           </Link>
           <div className="text-muted-foreground font-mono text-xs">

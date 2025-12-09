@@ -86,8 +86,7 @@ export default function DashboardPage() {
       .join('')
       .toUpperCase() || 'U';
 
-  const isAdmin =
-    session?.user?.role === 'ADMIN' || session?.user?.role === 'SUPER_ADMIN';
+  const isAdmin = session?.user?.role === 'ADMIN' || session?.user?.role === 'SUPER_ADMIN';
 
   return (
     <div className="space-y-8">
@@ -104,10 +103,7 @@ export default function DashboardPage() {
         <QuickActions isAdmin={isAdmin} />
       </div>
 
-      <AccountStatus
-        mfaEnabled={session?.user?.mfaEnabled}
-        userTier={session?.user?.tier}
-      />
+      <AccountStatus mfaEnabled={session?.user?.mfaEnabled} userTier={session?.user?.tier} />
     </div>
   );
 }

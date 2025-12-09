@@ -113,10 +113,7 @@ async function setupIntentHandler(_req: NextRequest) {
     const session = await auth();
 
     if (!session?.user?.email) {
-      return NextResponse.json(
-        { error: 'Unauthorized - Please sign in' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Unauthorized - Please sign in' }, { status: 401 });
     }
 
     // Get user from database
@@ -129,11 +126,7 @@ async function setupIntentHandler(_req: NextRequest) {
     }
 
     // Get or create Stripe customer
-    const customerId = await getOrCreateCustomer(
-      user.email,
-      user.id,
-      user.customerId
-    );
+    const customerId = await getOrCreateCustomer(user.email, user.id, user.customerId);
 
     // Update user with customer ID if newly created
     if (!user.customerId) {
@@ -169,10 +162,7 @@ async function setupIntentHandler(_req: NextRequest) {
     });
   } catch (error: unknown) {
     logger.error('SetupIntent creation error:', error);
-    return NextResponse.json(
-      { error: 'Failed to create setup intent' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to create setup intent' }, { status: 500 });
   }
 }
 

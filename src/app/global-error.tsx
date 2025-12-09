@@ -45,8 +45,8 @@ export default function GlobalError({
               Critical Application Error
             </h1>
             <p className="text-muted-foreground mb-8 text-lg">
-              We apologize, but a critical error has occurred. Our team has been
-              notified and is working to resolve the issue.
+              We apologize, but a critical error has occurred. Our team has been notified and is
+              working to resolve the issue.
             </p>
 
             {/* Error Details (Development Only) */}
@@ -59,9 +59,7 @@ export default function GlobalError({
                   {error.message}
                 </p>
                 {error.digest && (
-                  <p className="text-destructive mt-2 text-xs">
-                    Error ID: {error.digest}
-                  </p>
+                  <p className="text-destructive mt-2 text-xs">Error ID: {error.digest}</p>
                 )}
                 {error.stack && (
                   <details className="mt-4">
@@ -103,9 +101,7 @@ export default function GlobalError({
                 support@fabrek.dev
               </a>
               {error.digest && (
-                <p className="text-muted-foreground mt-2 text-xs">
-                  Error ID: {error.digest}
-                </p>
+                <p className="text-muted-foreground mt-2 text-xs">Error ID: {error.digest}</p>
               )}
             </div>
           </div>

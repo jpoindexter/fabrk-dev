@@ -121,9 +121,7 @@ overview =
 **Caption Text** (Payments page line 209):
 
 ```tsx
-<p className={`${docsTypography.caption} mt-4`}>
-  Use any future expiration date...
-</p>
+<p className={`${docsTypography.caption} mt-4`}>Use any future expiration date...</p>
 ```
 
 - ✅ Uses `docsTypography.caption`
@@ -658,9 +656,7 @@ usage={[
 
 5. **Create DocsTable component** for key-value tables:
    ```tsx
-   <DocsTable
-     rows={[{ key: 'Successful payment', value: '4242 4242 4242 4242' }]}
-   />
+   <DocsTable rows={[{ key: 'Successful payment', value: '4242 4242 4242 4242' }]} />
    ```
 
 ### Pattern Documentation Needed

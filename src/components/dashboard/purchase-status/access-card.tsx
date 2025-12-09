@@ -20,11 +20,7 @@ export function AccessCard({
   if (!hasAccess) {
     return (
       <Card tone="danger">
-        <CardHeader
-          code="0x01"
-          title="NO_ACCESS"
-          icon={<XCircle className="h-4 w-4" />}
-        />
+        <CardHeader code="0x01" title="NO_ACCESS" icon={<XCircle className="h-4 w-4" />} />
         <CardContent padding="md">
           <p className="text-muted-foreground dark:text-muted-foreground mb-4 text-sm">
             [STATUS]: Purchase required to access Fabrk boilerplate
@@ -42,19 +38,14 @@ export function AccessCard({
 
   return (
     <Card tone="success">
-      <CardHeader
-        code="0x01"
-        title="ACCESS_GRANTED"
-        icon={<CheckCircle className="h-4 w-4" />}
-      />
+      <CardHeader code="0x01" title="ACCESS_GRANTED" icon={<CheckCircle className="h-4 w-4" />} />
       <CardContent padding="md" className="space-y-4">
         <div>
           <Badge variant="secondary" className="mb-2">
             COMPLETE_PACKAGE
           </Badge>
           <p className="text-muted-foreground dark:text-muted-foreground text-sm">
-            [STATUS]: Lifetime access to all Fabrk components, templates, and
-            updates
+            [STATUS]: Lifetime access to all Fabrk components, templates, and updates
           </p>
         </div>
         <Button

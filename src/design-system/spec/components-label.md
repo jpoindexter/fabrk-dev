@@ -195,9 +195,7 @@ cn(
     {formatLabel('Email')}
   </Label>
   <Input id="email" error />
-  <p className="text-destructive font-mono text-xs">
-    [ERROR]: Invalid email format
-  </p>
+  <p className="text-destructive font-mono text-xs">[ERROR]: Invalid email format</p>
 </div>
 ```
 

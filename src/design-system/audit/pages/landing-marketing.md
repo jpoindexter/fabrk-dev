@@ -178,11 +178,7 @@ All in `/src/app/contact/components/`:
   <div className="container mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
     <div className="space-y-24 lg:space-y-32">
       {FEATURE_CATEGORIES.map((category, index) => (
-        <FeatureCategoryCard
-          key={category.id}
-          category={category}
-          index={index}
-        />
+        <FeatureCategoryCard key={category.id} category={category} index={index} />
       ))}
     </div>
   </div>

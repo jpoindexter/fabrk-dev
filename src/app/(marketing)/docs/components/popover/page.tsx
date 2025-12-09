@@ -2,11 +2,7 @@
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
 import { Button } from '@/components/ui/button';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Settings, Info } from 'lucide-react';
@@ -29,9 +25,7 @@ export default function PopoverPage() {
             <PopoverContent>
               <div className="space-y-2">
                 <h4 className="leading-none font-semibold">Dimensions</h4>
-                <p className="text-muted-foreground text-sm">
-                  Set the dimensions for the layer.
-                </p>
+                <p className="text-muted-foreground text-sm">Set the dimensions for the layer.</p>
               </div>
             </PopoverContent>
           </Popover>
@@ -66,26 +60,16 @@ export default function PopoverPage() {
                 <div className="grid gap-4">
                   <div className="space-y-2">
                     <h4 className="leading-none font-semibold">Settings</h4>
-                    <p className="text-muted-foreground text-sm">
-                      Configure your preferences.
-                    </p>
+                    <p className="text-muted-foreground text-sm">Configure your preferences.</p>
                   </div>
                   <div className="grid gap-2">
                     <div className="grid grid-cols-3 items-center gap-4">
                       <Label htmlFor="width">{formatLabel('Width')}</Label>
-                      <Input
-                        id="width"
-                        defaultValue="100%"
-                        className="col-span-2 h-8"
-                      />
+                      <Input id="width" defaultValue="100%" className="col-span-2 h-8" />
                     </div>
                     <div className="grid grid-cols-3 items-center gap-4">
                       <Label htmlFor="height">{formatLabel('Height')}</Label>
-                      <Input
-                        id="height"
-                        defaultValue="25px"
-                        className="col-span-2 h-8"
-                      />
+                      <Input id="height" defaultValue="25px" className="col-span-2 h-8" />
                     </div>
                   </div>
                 </div>
@@ -178,11 +162,7 @@ export default function PopoverPage() {
           preview: (
             <Popover>
               <PopoverTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  aria-label="Show more information"
-                >
+                <Button variant="ghost" size="icon" aria-label="Show more information">
                   <Info className="h-4 w-4" />
                 </Button>
               </PopoverTrigger>
@@ -222,8 +202,8 @@ export default function PopoverPage() {
                 <div className="space-y-2">
                   <h4 className="font-semibold">Custom Width</h4>
                   <p className="text-muted-foreground text-sm">
-                    This popover has a custom width of 384px (w-96). You can
-                    adjust the width using Tailwind classes.
+                    This popover has a custom width of 384px (w-96). You can adjust the width using
+                    Tailwind classes.
                   </p>
                 </div>
               </PopoverContent>
@@ -265,15 +245,13 @@ export default function PopoverPage() {
           name: 'modal',
           type: 'boolean',
           default: 'false',
-          description:
-            'Whether the popover is modal (blocks interaction with page).',
+          description: 'Whether the popover is modal (blocks interaction with page).',
         },
         {
           name: 'align',
           type: '"start" | "center" | "end"',
           default: '"center"',
-          description:
-            'The preferred alignment of the popover with the trigger.',
+          description: 'The preferred alignment of the popover with the trigger.',
         },
         {
           name: 'sideOffset',

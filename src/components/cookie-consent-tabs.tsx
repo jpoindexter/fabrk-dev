@@ -21,126 +21,60 @@ export function ConsentTabContent({
   return (
     <div className="space-y-6">
       <div className="space-y-4">
-        <div
-          className={cn(
-            'bg-muted flex items-center justify-between border p-4',
-            mode.radius
-          )}
-        >
+        <div className={cn('bg-muted flex items-center justify-between border p-4', mode.radius)}>
           <div className="flex-1">
-            <h4
-              className={cn(
-                'text-foreground text-sm leading-tight font-semibold',
-                mode.font
-              )}
-            >
+            <h4 className={cn('text-foreground text-sm leading-tight font-semibold', mode.font)}>
               NECESSARY_COOKIES
             </h4>
-            <p
-              className={cn(
-                'text-muted-foreground mt-1 text-xs leading-relaxed',
-                mode.font
-              )}
-            >
+            <p className={cn('text-muted-foreground mt-1 text-xs leading-relaxed', mode.font)}>
               Essential for website functionality. Cannot be disabled.
             </p>
           </div>
           <Switch checked={true} disabled />
         </div>
 
-        <div
-          className={cn(
-            'flex items-center justify-between border p-4',
-            mode.radius
-          )}
-        >
+        <div className={cn('flex items-center justify-between border p-4', mode.radius)}>
           <div className="flex-1">
-            <h4
-              className={cn(
-                'text-foreground text-sm leading-tight font-semibold',
-                mode.font
-              )}
-            >
+            <h4 className={cn('text-foreground text-sm leading-tight font-semibold', mode.font)}>
               PREFERENCE_COOKIES
             </h4>
-            <p
-              className={cn(
-                'text-muted-foreground mt-1 text-xs leading-relaxed',
-                mode.font
-              )}
-            >
+            <p className={cn('text-muted-foreground mt-1 text-xs leading-relaxed', mode.font)}>
               Remember your settings and preferences.
             </p>
           </div>
           <Switch
             checked={preferences.preferences}
-            onCheckedChange={(checked) =>
-              setPreferences({ ...preferences, preferences: checked })
-            }
+            onCheckedChange={(checked) => setPreferences({ ...preferences, preferences: checked })}
           />
         </div>
 
-        <div
-          className={cn(
-            'flex items-center justify-between border p-4',
-            mode.radius
-          )}
-        >
+        <div className={cn('flex items-center justify-between border p-4', mode.radius)}>
           <div className="flex-1">
-            <h4
-              className={cn(
-                'text-foreground text-sm leading-tight font-semibold',
-                mode.font
-              )}
-            >
+            <h4 className={cn('text-foreground text-sm leading-tight font-semibold', mode.font)}>
               STATISTICS_COOKIES
             </h4>
-            <p
-              className={cn(
-                'text-muted-foreground mt-1 text-xs leading-relaxed',
-                mode.font
-              )}
-            >
+            <p className={cn('text-muted-foreground mt-1 text-xs leading-relaxed', mode.font)}>
               Help us understand how visitors interact with our website.
             </p>
           </div>
           <Switch
             checked={preferences.statistics}
-            onCheckedChange={(checked) =>
-              setPreferences({ ...preferences, statistics: checked })
-            }
+            onCheckedChange={(checked) => setPreferences({ ...preferences, statistics: checked })}
           />
         </div>
 
-        <div
-          className={cn(
-            'flex items-center justify-between border p-4',
-            mode.radius
-          )}
-        >
+        <div className={cn('flex items-center justify-between border p-4', mode.radius)}>
           <div className="flex-1">
-            <h4
-              className={cn(
-                'text-foreground text-sm leading-tight font-semibold',
-                mode.font
-              )}
-            >
+            <h4 className={cn('text-foreground text-sm leading-tight font-semibold', mode.font)}>
               MARKETING_COOKIES
             </h4>
-            <p
-              className={cn(
-                'text-muted-foreground mt-1 text-xs leading-relaxed',
-                mode.font
-              )}
-            >
+            <p className={cn('text-muted-foreground mt-1 text-xs leading-relaxed', mode.font)}>
               Used to track visitors across websites for relevant advertising.
             </p>
           </div>
           <Switch
             checked={preferences.marketing}
-            onCheckedChange={(checked) =>
-              setPreferences({ ...preferences, marketing: checked })
-            }
+            onCheckedChange={(checked) => setPreferences({ ...preferences, marketing: checked })}
           />
         </div>
       </div>
@@ -149,18 +83,10 @@ export function ConsentTabContent({
         <Button onClick={acceptAll} className={cn('flex-1', mode.font)}>
           &gt; ACCEPT_ALL
         </Button>
-        <Button
-          onClick={acceptSelected}
-          variant="outline"
-          className={cn('flex-1', mode.font)}
-        >
+        <Button onClick={acceptSelected} variant="outline" className={cn('flex-1', mode.font)}>
           &gt; ACCEPT_SELECTED
         </Button>
-        <Button
-          onClick={rejectAll}
-          variant="outline"
-          className={cn('flex-1', mode.font)}
-        >
+        <Button onClick={rejectAll} variant="outline" className={cn('flex-1', mode.font)}>
           &gt; REJECT_ALL
         </Button>
       </div>
@@ -168,16 +94,12 @@ export function ConsentTabContent({
   );
 }
 
-export function DetailsTabContent({
-  preferences,
-  setPreferences,
-}: DetailsTabContentProps) {
+export function DetailsTabContent({ preferences, setPreferences }: DetailsTabContentProps) {
   const categories: CookieCategory[] = [
     {
       id: 'necessary',
       name: 'Necessary',
-      description:
-        'These cookies are essential for the website to function properly.',
+      description: 'These cookies are essential for the website to function properly.',
       required: true,
       cookies: [
         {
@@ -212,8 +134,7 @@ export function DetailsTabContent({
     {
       id: 'statistics',
       name: 'Statistics',
-      description:
-        'These cookies help us understand how visitors use our website.',
+      description: 'These cookies help us understand how visitors use our website.',
       cookies: [
         {
           name: '_ga',
@@ -252,20 +173,10 @@ export function DetailsTabContent({
         <div key={category.id} className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h4
-                className={cn(
-                  'text-foreground text-sm leading-tight font-semibold',
-                  mode.font
-                )}
-              >
+              <h4 className={cn('text-foreground text-sm leading-tight font-semibold', mode.font)}>
                 [{category.name.toUpperCase().replace(/ /g, '_')}]
               </h4>
-              <p
-                className={cn(
-                  'text-muted-foreground text-xs leading-relaxed',
-                  mode.font
-                )}
-              >
+              <p className={cn('text-muted-foreground text-xs leading-relaxed', mode.font)}>
                 {category.description}
               </p>
             </div>
@@ -279,20 +190,10 @@ export function DetailsTabContent({
           </div>
           <div className="space-y-2">
             {category.cookies.map((cookie) => (
-              <div
-                key={cookie.name}
-                className="bg-muted !rounded-none border p-4"
-              >
+              <div key={cookie.name} className="bg-muted !rounded-none border p-4">
                 <div className="flex items-center justify-between">
-                  <span className={cn('text-xs font-semibold', mode.font)}>
-                    {cookie.name}
-                  </span>
-                  <span
-                    className={cn(
-                      'text-muted-foreground text-xs font-normal',
-                      mode.font
-                    )}
-                  >
+                  <span className={cn('text-xs font-semibold', mode.font)}>{cookie.name}</span>
+                  <span className={cn('text-muted-foreground text-xs font-normal', mode.font)}>
                     {cookie.duration}
                   </span>
                 </div>
@@ -318,32 +219,24 @@ export function AboutTabContent({}: AboutTabContentProps) {
     <div className="space-y-6">
       <div className="space-y-4">
         <div>
-          <h4 className={cn('mb-2 text-sm font-semibold', mode.font)}>
-            WHAT_ARE_COOKIES
-          </h4>
+          <h4 className={cn('mb-2 text-sm font-semibold', mode.font)}>WHAT_ARE_COOKIES</h4>
           <p className={cn('text-muted-foreground text-xs', mode.font)}>
-            Cookies are small text files that are placed on your device when you
-            visit a website. They help the website remember information about
-            your visit, which can make your next visit easier and the site more
-            useful to you.
+            Cookies are small text files that are placed on your device when you visit a website.
+            They help the website remember information about your visit, which can make your next
+            visit easier and the site more useful to you.
           </p>
         </div>
 
         <div>
-          <h4 className={cn('mb-2 text-sm font-semibold', mode.font)}>
-            HOW_WE_USE_COOKIES
-          </h4>
+          <h4 className={cn('mb-2 text-sm font-semibold', mode.font)}>HOW_WE_USE_COOKIES</h4>
           <p className={cn('text-muted-foreground text-xs', mode.font)}>
-            We use different types of cookies for various purposes, including
-            improving your browsing experience, analyzing site traffic, and
-            serving personalized content or ads.
+            We use different types of cookies for various purposes, including improving your
+            browsing experience, analyzing site traffic, and serving personalized content or ads.
           </p>
         </div>
 
         <div>
-          <h4 className={cn('mb-2 text-sm font-semibold', mode.font)}>
-            YOUR_RIGHTS
-          </h4>
+          <h4 className={cn('mb-2 text-sm font-semibold', mode.font)}>YOUR_RIGHTS</h4>
           <p className={cn('text-muted-foreground text-xs', mode.font)}>
             Under GDPR and other privacy regulations, you have the right to:
           </p>
@@ -363,22 +256,17 @@ export function AboutTabContent({}: AboutTabContentProps) {
         </div>
 
         <div className="bg-primary/10 !rounded-none border p-4">
-          <h4 className={cn('text-primary text-sm font-semibold', mode.font)}>
-            GDPR_COMPLIANT
-          </h4>
+          <h4 className={cn('text-primary text-sm font-semibold', mode.font)}>GDPR_COMPLIANT</h4>
           <p className={cn('text-primary/80 mt-1 text-xs', mode.font)}>
-            Our cookie policy and consent management comply with GDPR
-            requirements.
+            Our cookie policy and consent management comply with GDPR requirements.
           </p>
         </div>
 
         <div>
-          <h4 className={cn('mb-2 text-sm font-semibold', mode.font)}>
-            CONTACT_US
-          </h4>
+          <h4 className={cn('mb-2 text-sm font-semibold', mode.font)}>CONTACT_US</h4>
           <p className={cn('text-muted-foreground text-xs', mode.font)}>
-            If you have questions about our use of cookies or your privacy
-            rights, please contact us at support@fabrek.dev
+            If you have questions about our use of cookies or your privacy rights, please contact us
+            at support@fabrek.dev
           </p>
         </div>
       </div>

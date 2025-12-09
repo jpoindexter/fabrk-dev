@@ -22,9 +22,7 @@ export interface ValidatedApiKey {
  * @param key - API key to validate
  * @returns Validated API key details or null if invalid
  */
-export async function validateApiKey(
-  key: string
-): Promise<ValidatedApiKey | null> {
+export async function validateApiKey(key: string): Promise<ValidatedApiKey | null> {
   try {
     // Basic format validation
     if (!isValidApiKeyFormat(key)) {
@@ -57,9 +55,7 @@ export async function validateApiKey(
     }
 
     // Track usage (async, don't wait)
-    trackApiKeyUsage(apiKey.id).catch((err) =>
-      logger.error('Failed to track API key usage', err)
-    );
+    trackApiKeyUsage(apiKey.id).catch((err) => logger.error('Failed to track API key usage', err));
 
     return apiKey;
   } catch (error: unknown) {
@@ -73,9 +69,7 @@ export async function validateApiKey(
  * @param key - API key
  * @returns Array of permissions or null if invalid
  */
-export async function getApiKeyPermissions(
-  key: string
-): Promise<string[] | null> {
+export async function getApiKeyPermissions(key: string): Promise<string[] | null> {
   const validatedKey = await validateApiKey(key);
   return validatedKey ? validatedKey.permissions : null;
 }
@@ -86,10 +80,7 @@ export async function getApiKeyPermissions(
  * @param permission - Permission to check (e.g., 'read', 'write', 'admin')
  * @returns True if key has permission
  */
-export async function checkPermission(
-  key: string,
-  permission: string
-): Promise<boolean> {
+export async function checkPermission(key: string, permission: string): Promise<boolean> {
   const permissions = await getApiKeyPermissions(key);
   return permissions ? permissions.includes(permission) : false;
 }
@@ -110,9 +101,7 @@ export async function trackApiKeyUsage(keyId: string): Promise<void> {
  * @param authHeader - Authorization header value
  * @returns API key or null
  */
-export function extractApiKeyFromHeader(
-  authHeader: string | null
-): string | null {
+export function extractApiKeyFromHeader(authHeader: string | null): string | null {
   if (!authHeader) {
     return null;
   }

@@ -15,10 +15,8 @@ import { env } from '@/lib/env';
 function getTierFromPriceId(priceId: string): string {
   const priceMap: Record<string, string> = {
     [env.client.NEXT_PUBLIC_STRIPE_PRICE_STARTER || 'price_starter']: 'starter',
-    [env.client.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL || 'price_professional']:
-      'professional',
-    [env.client.NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE || 'price_enterprise']:
-      'enterprise',
+    [env.client.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL || 'price_professional']: 'professional',
+    [env.client.NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE || 'price_enterprise']: 'enterprise',
   };
   return priceMap[priceId] || 'professional';
 }
@@ -39,8 +37,7 @@ export async function handleSubscriptionCreated(event: Stripe.Event) {
       trialEnd: subscription.trial_end,
     });
 
-    const customerId =
-      typeof subscription.customer === 'string' ? subscription.customer : null;
+    const customerId = typeof subscription.customer === 'string' ? subscription.customer : null;
     if (!customerId) {
       logger.error('No customer ID found in subscription');
       return;
@@ -51,8 +48,7 @@ export async function handleSubscriptionCreated(event: Stripe.Event) {
     const tier = priceId ? getTierFromPriceId(priceId) : 'professional';
 
     // Check if this is a trial subscription
-    const isTrialing =
-      subscription.status === 'trialing' && subscription.trial_end;
+    const isTrialing = subscription.status === 'trialing' && subscription.trial_end;
     const trialEndsAt = isTrialing
       ? new Date(subscription.trial_end! * 1000) // Convert Unix timestamp to Date
       : null;
@@ -94,8 +90,7 @@ export async function handleSubscriptionUpdated(event: Stripe.Event) {
       status: subscription.status,
     });
 
-    const customerId =
-      typeof subscription.customer === 'string' ? subscription.customer : null;
+    const customerId = typeof subscription.customer === 'string' ? subscription.customer : null;
     if (!customerId) {
       logger.error('No customer ID found in subscription');
       return;
@@ -138,8 +133,7 @@ export async function handleSubscriptionDeleted(event: Stripe.Event) {
       customerId: subscription.customer,
     });
 
-    const customerId =
-      typeof subscription.customer === 'string' ? subscription.customer : null;
+    const customerId = typeof subscription.customer === 'string' ? subscription.customer : null;
     if (!customerId) {
       logger.error('No customer ID found in subscription');
       return;

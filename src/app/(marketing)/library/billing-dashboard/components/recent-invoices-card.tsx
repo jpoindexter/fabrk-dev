@@ -74,9 +74,7 @@ export function RecentInvoicesCard({
                   )}
                   <div>
                     <div>{payment.description}</div>
-                    <div className="text-muted-foreground">
-                      {formatDate(payment.date)}
-                    </div>
+                    <div className="text-muted-foreground">{formatDate(payment.date)}</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">

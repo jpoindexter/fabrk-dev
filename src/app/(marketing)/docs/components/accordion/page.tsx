@@ -26,9 +26,7 @@ export default function AccordionPage() {
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
               <AccordionTrigger>Is it accessible?</AccordionTrigger>
-              <AccordionContent>
-                Yes. It adheres to the WAI-ARIA design pattern.
-              </AccordionContent>
+              <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
             </AccordionItem>
           </Accordion>
         ),
@@ -50,15 +48,13 @@ export default function AccordionPage() {
               <AccordionItem value="item-1">
                 <AccordionTrigger>Authentication</AccordionTrigger>
                 <AccordionContent>
-                  NextAuth v5 with JWT sessions. Supports credentials and OAuth
-                  providers.
+                  NextAuth v5 with JWT sessions. Supports credentials and OAuth providers.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">
                 <AccordionTrigger>Database</AccordionTrigger>
                 <AccordionContent>
-                  PostgreSQL with Prisma ORM. Includes migrations and type
-                  safety.
+                  PostgreSQL with Prisma ORM. Includes migrations and type safety.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3">
@@ -141,12 +137,7 @@ export default function AccordionPage() {
           title: 'Default Open',
           description: 'Accordion with a default expanded item.',
           preview: (
-            <Accordion
-              type="single"
-              collapsible
-              defaultValue="item-2"
-              className="w-full"
-            >
+            <Accordion type="single" collapsible defaultValue="item-2" className="w-full">
               <AccordionItem value="item-1">
                 <AccordionTrigger>Development</AccordionTrigger>
                 <AccordionContent>
@@ -156,15 +147,13 @@ export default function AccordionPage() {
               <AccordionItem value="item-2">
                 <AccordionTrigger>Build</AccordionTrigger>
                 <AccordionContent>
-                  Run npm run build to create a production build with
-                  optimizations.
+                  Run npm run build to create a production build with optimizations.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3">
                 <AccordionTrigger>Deploy</AccordionTrigger>
                 <AccordionContent>
-                  Deploy to Vercel with automatic CI/CD and edge runtime
-                  support.
+                  Deploy to Vercel with automatic CI/CD and edge runtime support.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
@@ -203,8 +192,7 @@ export default function AccordionPage() {
                 </AccordionTrigger>
                 <AccordionContent>
                   <span className="font-mono text-sm">
-                    Use value and onValueChange props to control the accordion
-                    state externally.
+                    Use value and onValueChange props to control the accordion state externally.
                   </span>
                 </AccordionContent>
               </AccordionItem>
@@ -227,8 +215,7 @@ export default function AccordionPage() {
           name: 'type',
           type: '"single" | "multiple"',
           default: '"single"',
-          description:
-            'Determines whether one or multiple items can be opened.',
+          description: 'Determines whether one or multiple items can be opened.',
         },
         {
           name: 'collapsible',

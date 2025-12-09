@@ -1,14 +1,7 @@
 import { FeatureGuideTemplate } from '@/components/docs';
 import { DocsSection, DocsCard, DocsCallout } from '@/components/docs';
 import Link from 'next/link';
-import {
-  Globe,
-  Languages,
-  Flag,
-  Folder,
-  FileJson,
-  Settings,
-} from 'lucide-react';
+import { Globe, Languages, Flag, Folder, FileJson, Settings } from 'lucide-react';
 
 export const metadata = {
   title: 'Internationalization (i18n) - Fabrk Docs',
@@ -27,14 +20,12 @@ export default function I18nPage() {
         {
           icon: Globe,
           title: '6 Languages',
-          description:
-            'English, Spanish, French, German, Portuguese, Japanese included.',
+          description: 'English, Spanish, French, German, Portuguese, Japanese included.',
         },
         {
           icon: Languages,
           title: 'Type-safe',
-          description:
-            'TypeScript support for translation keys and parameters.',
+          description: 'TypeScript support for translation keys and parameters.',
         },
         {
           icon: Flag,
@@ -44,14 +35,12 @@ export default function I18nPage() {
         {
           icon: Folder,
           title: 'Organized Messages',
-          description:
-            'JSON files organized by namespace (common, auth, nav, etc.).',
+          description: 'JSON files organized by namespace (common, auth, nav, etc.).',
         },
         {
           icon: FileJson,
           title: 'Easy to Extend',
-          description:
-            'Add new languages by copying and translating a JSON file.',
+          description: 'Add new languages by copying and translating a JSON file.',
         },
         {
           icon: Settings,
@@ -300,9 +289,7 @@ export const localeFlags: Record<Locale, string> = {
       {/* Message Namespaces */}
       <DocsSection title="Message Namespaces">
         <DocsCard title="NAMESPACES">
-          <p className="mb-4">
-            Messages are organized into logical namespaces:
-          </p>
+          <p className="mb-4">Messages are organized into logical namespaces:</p>
           <div className="space-y-2">
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">common</code>
@@ -318,27 +305,19 @@ export const localeFlags: Record<Locale, string> = {
             </div>
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">nav</code>
-              <span className="text-muted-foreground">
-                Navigation labels (dashboard, settings)
-              </span>
+              <span className="text-muted-foreground">Navigation labels (dashboard, settings)</span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">dashboard</code>
-              <span className="text-muted-foreground">
-                Dashboard-specific strings
-              </span>
+              <span className="text-muted-foreground">Dashboard-specific strings</span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">settings</code>
-              <span className="text-muted-foreground">
-                Settings page strings
-              </span>
+              <span className="text-muted-foreground">Settings page strings</span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">billing</code>
-              <span className="text-muted-foreground">
-                Billing and subscription strings
-              </span>
+              <span className="text-muted-foreground">Billing and subscription strings</span>
             </div>
             <div className="flex justify-between">
               <code className="bg-muted px-1">errors</code>
@@ -351,35 +330,30 @@ export const localeFlags: Record<Locale, string> = {
       {/* Tips */}
       <DocsSection title="Best Practices">
         <DocsCallout variant="info" title="Translation Tips">
-          Keep translation keys descriptive (e.g., &quot;signInButton&quot; not
-          &quot;btn1&quot;). Use namespaces to organize related strings.
-          Consider hiring professional translators for customer-facing content -
-          machine translations often miss nuances.
+          Keep translation keys descriptive (e.g., &quot;signInButton&quot; not &quot;btn1&quot;).
+          Use namespaces to organize related strings. Consider hiring professional translators for
+          customer-facing content - machine translations often miss nuances.
         </DocsCallout>
         <DocsCard title="TIPS">
           <ul className="space-y-1">
             <li>
-              ├─ <strong>Namespace by feature:</strong> Keep related strings
-              together
+              ├─ <strong>Namespace by feature:</strong> Keep related strings together
             </li>
             <li>
-              ├─ <strong>Use descriptive keys:</strong>{' '}
-              &quot;welcomeMessage&quot; not &quot;msg1&quot;
+              ├─ <strong>Use descriptive keys:</strong> &quot;welcomeMessage&quot; not
+              &quot;msg1&quot;
             </li>
             <li>
               ├─ <strong>Include context:</strong> Add comments for translators
             </li>
             <li>
-              ├─ <strong>Handle plurals:</strong> Use ICU message format for
-              counts
+              ├─ <strong>Handle plurals:</strong> Use ICU message format for counts
             </li>
             <li>
-              ├─ <strong>Test RTL:</strong> Test with RTL languages (Arabic,
-              Hebrew)
+              ├─ <strong>Test RTL:</strong> Test with RTL languages (Arabic, Hebrew)
             </li>
             <li>
-              └─ <strong>Fallback gracefully:</strong> Missing keys fall back to
-              default locale
+              └─ <strong>Fallback gracefully:</strong> Missing keys fall back to default locale
             </li>
           </ul>
         </DocsCard>
@@ -419,8 +393,8 @@ export const localeFlags: Record<Locale, string> = {
               Where should I put the locale switcher?
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
-              Common placements: footer, header settings menu, or user profile
-              dropdown. Make it easily accessible but not distracting.
+              Common placements: footer, header settings menu, or user profile dropdown. Make it
+              easily accessible but not distracting.
             </div>
           </details>
         </div>
@@ -435,9 +409,7 @@ export const localeFlags: Record<Locale, string> = {
               className="hover:border-primary/50 h-full transition-all"
             >
               SEO for Multiple Languages
-              <p className="mb-6">
-                Learn how to optimize SEO metadata for each locale.
-              </p>
+              <p className="mb-6">Learn how to optimize SEO metadata for each locale.</p>
             </DocsCard>
           </Link>
           <Link href="/docs/features/lemonsqueezy">
@@ -446,9 +418,7 @@ export const localeFlags: Record<Locale, string> = {
               className="hover:border-primary/50 h-full transition-all"
             >
               Global Payments
-              <p className="mb-6">
-                Accept payments from users worldwide with Lemon Squeezy.
-              </p>
+              <p className="mb-6">Accept payments from users worldwide with Lemon Squeezy.</p>
             </DocsCard>
           </Link>
         </div>

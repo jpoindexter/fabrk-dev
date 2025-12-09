@@ -69,9 +69,7 @@ export function PrivacyForm() {
     } catch (err: unknown) {
       error(
         'Error',
-        err instanceof Error
-          ? err.message
-          : 'Failed to update privacy settings. Please try again.'
+        err instanceof Error ? err.message : 'Failed to update privacy settings. Please try again.'
       );
     } finally {
       setIsLoading(false);
@@ -118,12 +116,9 @@ export function PrivacyForm() {
               render={({ field }) => (
                 <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className={cn(mode.font, 'text-xs')}>
-                      [ACTIVITY_TRACKING]:
-                    </FormLabel>
+                    <FormLabel className={cn(mode.font, 'text-xs')}>[ACTIVITY_TRACKING]:</FormLabel>
                     <FormDescription className={cn(mode.font, 'text-xs')}>
-                      Allow us to track your activity to improve your
-                      experience.
+                      Allow us to track your activity to improve your experience.
                     </FormDescription>
                   </div>
                   <FormControl>
@@ -147,9 +142,7 @@ export function PrivacyForm() {
               render={({ field }) => (
                 <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className={cn(mode.font, 'text-xs')}>
-                      [ANALYTICS_SHARING]:
-                    </FormLabel>
+                    <FormLabel className={cn(mode.font, 'text-xs')}>[ANALYTICS_SHARING]:</FormLabel>
                     <FormDescription className={cn(mode.font, 'text-xs')}>
                       Share anonymous usage data to help us improve the product.
                     </FormDescription>
@@ -175,9 +168,7 @@ export function PrivacyForm() {
               render={({ field }) => (
                 <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className={cn(mode.font, 'text-xs')}>
-                      [SEARCH_INDEXING]:
-                    </FormLabel>
+                    <FormLabel className={cn(mode.font, 'text-xs')}>[SEARCH_INDEXING]:</FormLabel>
                     <FormDescription className={cn(mode.font, 'text-xs')}>
                       Allow search engines to index your profile.
                     </FormDescription>
@@ -203,9 +194,7 @@ export function PrivacyForm() {
               render={({ field }) => (
                 <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className={cn(mode.font, 'text-xs')}>
-                      [DATA_RETENTION]:
-                    </FormLabel>
+                    <FormLabel className={cn(mode.font, 'text-xs')}>[DATA_RETENTION]:</FormLabel>
                     <FormDescription className={cn(mode.font, 'text-xs')}>
                       Keep my account data if I delete my account.
                     </FormDescription>

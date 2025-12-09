@@ -27,10 +27,7 @@ const passwordSchema = z
 /**
  * Email validation schema
  */
-const emailSchema = z
-  .string()
-  .email('Invalid email address')
-  .min(1, 'Email is required');
+const emailSchema = z.string().email('Invalid email address').min(1, 'Email is required');
 
 /**
  * Login form schema

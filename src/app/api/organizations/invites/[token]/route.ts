@@ -31,10 +31,7 @@ export async function GET(req: NextRequest, context: RouteContext) {
     });
 
     if (!invite) {
-      return NextResponse.json(
-        { error: 'Invitation not found' },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: 'Invitation not found' }, { status: 404 });
     }
 
     // Check if already accepted
@@ -47,10 +44,7 @@ export async function GET(req: NextRequest, context: RouteContext) {
 
     // Check if expired
     if (new Date(invite.expiresAt) < new Date()) {
-      return NextResponse.json(
-        { error: 'This invitation has expired' },
-        { status: 410 }
-      );
+      return NextResponse.json({ error: 'This invitation has expired' }, { status: 410 });
     }
 
     // Fetch inviter details
@@ -74,9 +68,6 @@ export async function GET(req: NextRequest, context: RouteContext) {
     });
   } catch (error: unknown) {
     logger.error('Failed to fetch invitation:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch invitation' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to fetch invitation' }, { status: 500 });
   }
 }

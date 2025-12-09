@@ -5,12 +5,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  TemplatePageHeader,
-} from '@/components/ui/card';
+import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
@@ -209,12 +204,7 @@ const plans = [
   {
     name: 'PROFESSIONAL',
     price: 29,
-    features: [
-      'Unlimited projects',
-      '10 team members',
-      'Priority support',
-      'Advanced analytics',
-    ],
+    features: ['Unlimited projects', '10 team members', 'Priority support', 'Advanced analytics'],
     current: true,
   },
   {
@@ -280,10 +270,7 @@ function BillingPreview() {
           {/* Overview Tab */}
           <StyledTabsContent value="overview">
             <div className="space-y-6">
-              <CurrentPlanCard
-                subscription={subscription}
-                formatDate={formatDate}
-              />
+              <CurrentPlanCard subscription={subscription} formatDate={formatDate} />
 
               {/* Usage Stats and Payment Methods Grid */}
               <div className="grid gap-6 md:grid-cols-2">
@@ -381,11 +368,7 @@ export default function BillingDashboardTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock
-                  code={templateCode}
-                  language="tsx"
-                  maxHeight="600px"
-                />
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
             </Card>
           </TabsContent>
@@ -402,34 +385,22 @@ export default function BillingDashboardTemplate() {
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">(dashboard)/</span>
                   <span className="text-foreground">billing/page.tsx</span>
-                  <span className="text-muted-foreground ml-4">
-                    ← Copy template here
-                  </span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
                 </div>
                 <div>
                   <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">
-                    (dashboard)/billing/components/
-                  </span>
+                  <span className="text-muted-foreground">(dashboard)/billing/components/</span>
                   <span className="text-foreground">current-plan-card.tsx</span>
                 </div>
                 <div>
                   <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">
-                    (dashboard)/billing/components/
-                  </span>
-                  <span className="text-foreground">
-                    usage-metrics-card.tsx
-                  </span>
+                  <span className="text-muted-foreground">(dashboard)/billing/components/</span>
+                  <span className="text-foreground">usage-metrics-card.tsx</span>
                 </div>
                 <div>
                   <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">
-                    (dashboard)/billing/components/
-                  </span>
-                  <span className="text-foreground">
-                    payment-methods-card.tsx
-                  </span>
+                  <span className="text-muted-foreground">(dashboard)/billing/components/</span>
+                  <span className="text-foreground">payment-methods-card.tsx</span>
                 </div>
               </div>
             </div>
@@ -442,35 +413,30 @@ export default function BillingDashboardTemplate() {
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> Current plan overview
-                with next billing date
+                <span className="text-success">&gt;</span> Current plan overview with next billing
+                date
               </div>
               <div>
-                <span className="text-success">&gt;</span> Usage metrics (users,
-                projects, storage, API calls)
+                <span className="text-success">&gt;</span> Usage metrics (users, projects, storage,
+                API calls)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Payment methods
-                management
+                <span className="text-success">&gt;</span> Payment methods management
               </div>
               <div>
-                <span className="text-success">&gt;</span> Recent invoices with
-                status
+                <span className="text-success">&gt;</span> Recent invoices with status
               </div>
               <div>
                 <span className="text-success">&gt;</span> Plan comparison cards
               </div>
               <div>
-                <span className="text-success">&gt;</span> Full billing history
-                table
+                <span className="text-success">&gt;</span> Full billing history table
               </div>
               <div>
-                <span className="text-success">&gt;</span> Responsive
-                mobile-first design
+                <span className="text-success">&gt;</span> Responsive mobile-first design
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant
-                (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

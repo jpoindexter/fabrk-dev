@@ -2,12 +2,7 @@
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
 import { Button } from '@/components/ui/button';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Plus, Trash2, Edit, Save, Settings } from 'lucide-react';
 
 export default function TooltipPage() {
@@ -50,11 +45,7 @@ export default function TooltipPage() {
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    aria-label="Add new item"
-                  >
+                  <Button variant="outline" size="icon" aria-label="Add new item">
                     <Plus className="h-4 w-4" />
                   </Button>
                 </TooltipTrigger>
@@ -84,11 +75,7 @@ export default function TooltipPage() {
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button
-                    variant="destructive"
-                    size="icon"
-                    aria-label="Delete permanently"
-                  >
+                  <Button variant="destructive" size="icon" aria-label="Delete permanently">
                     <Trash2 className="h-4 w-4" />
                   </Button>
                 </TooltipTrigger>
@@ -124,10 +111,7 @@ export default function TooltipPage() {
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>
-                    Save{' '}
-                    <kbd className="bg-muted border-border ml-1 border px-1 text-xs">
-                      ⌘S
-                    </kbd>
+                    Save <kbd className="bg-muted border-border ml-1 border px-1 text-xs">⌘S</kbd>
                   </p>
                 </TooltipContent>
               </Tooltip>

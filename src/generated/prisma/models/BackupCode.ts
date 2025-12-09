@@ -15,8 +15,7 @@ import type * as Prisma from '../internal/prismaNamespace';
  * Model BackupCode
  *
  */
-export type BackupCodeModel =
-  runtime.Types.Result.DefaultSelection<Prisma.$BackupCodePayload>;
+export type BackupCodeModel = runtime.Types.Result.DefaultSelection<Prisma.$BackupCodePayload>;
 
 export type AggregateBackupCode = {
   _count: BackupCodeCountAggregateOutputType | null;
@@ -81,8 +80,7 @@ export type BackupCodeCountAggregateInputType = {
 };
 
 export type BackupCodeAggregateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which BackupCode to aggregate.
@@ -93,9 +91,7 @@ export type BackupCodeAggregateArgs<
    *
    * Determine the order of BackupCodes to fetch.
    */
-  orderBy?:
-    | Prisma.BackupCodeOrderByWithRelationInput
-    | Prisma.BackupCodeOrderByWithRelationInput[];
+  orderBy?: Prisma.BackupCodeOrderByWithRelationInput | Prisma.BackupCodeOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -143,8 +139,7 @@ export type GetBackupCodeAggregateType<T extends BackupCodeAggregateArgs> = {
 };
 
 export type BackupCodeGroupByArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.BackupCodeWhereInput;
   orderBy?:
@@ -171,18 +166,17 @@ export type BackupCodeGroupByOutputType = {
   _max: BackupCodeMaxAggregateOutputType | null;
 };
 
-type GetBackupCodeGroupByPayload<T extends BackupCodeGroupByArgs> =
-  Prisma.PrismaPromise<
-    Array<
-      Prisma.PickEnumerable<BackupCodeGroupByOutputType, T['by']> & {
-        [P in keyof T & keyof BackupCodeGroupByOutputType]: P extends '_count'
-          ? T[P] extends boolean
-            ? number
-            : Prisma.GetScalarType<T[P], BackupCodeGroupByOutputType[P]>
-          : Prisma.GetScalarType<T[P], BackupCodeGroupByOutputType[P]>;
-      }
-    >
-  >;
+type GetBackupCodeGroupByPayload<T extends BackupCodeGroupByArgs> = Prisma.PrismaPromise<
+  Array<
+    Prisma.PickEnumerable<BackupCodeGroupByOutputType, T['by']> & {
+      [P in keyof T & keyof BackupCodeGroupByOutputType]: P extends '_count'
+        ? T[P] extends boolean
+          ? number
+          : Prisma.GetScalarType<T[P], BackupCodeGroupByOutputType[P]>
+        : Prisma.GetScalarType<T[P], BackupCodeGroupByOutputType[P]>;
+    }
+  >
+>;
 
 export type BackupCodeWhereInput = {
   AND?: Prisma.BackupCodeWhereInput | Prisma.BackupCodeWhereInput[];
@@ -247,11 +241,7 @@ export type BackupCodeScalarWhereWithAggregatesInput = {
   userId?: Prisma.StringWithAggregatesFilter<'BackupCode'> | string;
   code?: Prisma.StringWithAggregatesFilter<'BackupCode'> | string;
   used?: Prisma.BoolWithAggregatesFilter<'BackupCode'> | boolean;
-  usedAt?:
-    | Prisma.DateTimeNullableWithAggregatesFilter<'BackupCode'>
-    | Date
-    | string
-    | null;
+  usedAt?: Prisma.DateTimeNullableWithAggregatesFilter<'BackupCode'> | Date | string | null;
   createdAt?: Prisma.DateTimeWithAggregatesFilter<'BackupCode'> | Date | string;
 };
 
@@ -277,11 +267,7 @@ export type BackupCodeUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   code?: Prisma.StringFieldUpdateOperationsInput | string;
   used?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-  usedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  usedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   user?: Prisma.UserUpdateOneRequiredWithoutBackupCodesNestedInput;
 };
@@ -291,11 +277,7 @@ export type BackupCodeUncheckedUpdateInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string;
   code?: Prisma.StringFieldUpdateOperationsInput | string;
   used?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-  usedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  usedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -312,11 +294,7 @@ export type BackupCodeUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   code?: Prisma.StringFieldUpdateOperationsInput | string;
   used?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-  usedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  usedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -325,11 +303,7 @@ export type BackupCodeUncheckedUpdateManyInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string;
   code?: Prisma.StringFieldUpdateOperationsInput | string;
   used?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-  usedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  usedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -382,9 +356,7 @@ export type BackupCodeCreateNestedManyWithoutUserInput = {
     | Prisma.BackupCodeCreateOrConnectWithoutUserInput
     | Prisma.BackupCodeCreateOrConnectWithoutUserInput[];
   createMany?: Prisma.BackupCodeCreateManyUserInputEnvelope;
-  connect?:
-    | Prisma.BackupCodeWhereUniqueInput
-    | Prisma.BackupCodeWhereUniqueInput[];
+  connect?: Prisma.BackupCodeWhereUniqueInput | Prisma.BackupCodeWhereUniqueInput[];
 };
 
 export type BackupCodeUncheckedCreateNestedManyWithoutUserInput = {
@@ -399,9 +371,7 @@ export type BackupCodeUncheckedCreateNestedManyWithoutUserInput = {
     | Prisma.BackupCodeCreateOrConnectWithoutUserInput
     | Prisma.BackupCodeCreateOrConnectWithoutUserInput[];
   createMany?: Prisma.BackupCodeCreateManyUserInputEnvelope;
-  connect?:
-    | Prisma.BackupCodeWhereUniqueInput
-    | Prisma.BackupCodeWhereUniqueInput[];
+  connect?: Prisma.BackupCodeWhereUniqueInput | Prisma.BackupCodeWhereUniqueInput[];
 };
 
 export type BackupCodeUpdateManyWithoutUserNestedInput = {
@@ -420,24 +390,16 @@ export type BackupCodeUpdateManyWithoutUserNestedInput = {
     | Prisma.BackupCodeUpsertWithWhereUniqueWithoutUserInput[];
   createMany?: Prisma.BackupCodeCreateManyUserInputEnvelope;
   set?: Prisma.BackupCodeWhereUniqueInput | Prisma.BackupCodeWhereUniqueInput[];
-  disconnect?:
-    | Prisma.BackupCodeWhereUniqueInput
-    | Prisma.BackupCodeWhereUniqueInput[];
-  delete?:
-    | Prisma.BackupCodeWhereUniqueInput
-    | Prisma.BackupCodeWhereUniqueInput[];
-  connect?:
-    | Prisma.BackupCodeWhereUniqueInput
-    | Prisma.BackupCodeWhereUniqueInput[];
+  disconnect?: Prisma.BackupCodeWhereUniqueInput | Prisma.BackupCodeWhereUniqueInput[];
+  delete?: Prisma.BackupCodeWhereUniqueInput | Prisma.BackupCodeWhereUniqueInput[];
+  connect?: Prisma.BackupCodeWhereUniqueInput | Prisma.BackupCodeWhereUniqueInput[];
   update?:
     | Prisma.BackupCodeUpdateWithWhereUniqueWithoutUserInput
     | Prisma.BackupCodeUpdateWithWhereUniqueWithoutUserInput[];
   updateMany?:
     | Prisma.BackupCodeUpdateManyWithWhereWithoutUserInput
     | Prisma.BackupCodeUpdateManyWithWhereWithoutUserInput[];
-  deleteMany?:
-    | Prisma.BackupCodeScalarWhereInput
-    | Prisma.BackupCodeScalarWhereInput[];
+  deleteMany?: Prisma.BackupCodeScalarWhereInput | Prisma.BackupCodeScalarWhereInput[];
 };
 
 export type BackupCodeUncheckedUpdateManyWithoutUserNestedInput = {
@@ -456,24 +418,16 @@ export type BackupCodeUncheckedUpdateManyWithoutUserNestedInput = {
     | Prisma.BackupCodeUpsertWithWhereUniqueWithoutUserInput[];
   createMany?: Prisma.BackupCodeCreateManyUserInputEnvelope;
   set?: Prisma.BackupCodeWhereUniqueInput | Prisma.BackupCodeWhereUniqueInput[];
-  disconnect?:
-    | Prisma.BackupCodeWhereUniqueInput
-    | Prisma.BackupCodeWhereUniqueInput[];
-  delete?:
-    | Prisma.BackupCodeWhereUniqueInput
-    | Prisma.BackupCodeWhereUniqueInput[];
-  connect?:
-    | Prisma.BackupCodeWhereUniqueInput
-    | Prisma.BackupCodeWhereUniqueInput[];
+  disconnect?: Prisma.BackupCodeWhereUniqueInput | Prisma.BackupCodeWhereUniqueInput[];
+  delete?: Prisma.BackupCodeWhereUniqueInput | Prisma.BackupCodeWhereUniqueInput[];
+  connect?: Prisma.BackupCodeWhereUniqueInput | Prisma.BackupCodeWhereUniqueInput[];
   update?:
     | Prisma.BackupCodeUpdateWithWhereUniqueWithoutUserInput
     | Prisma.BackupCodeUpdateWithWhereUniqueWithoutUserInput[];
   updateMany?:
     | Prisma.BackupCodeUpdateManyWithWhereWithoutUserInput
     | Prisma.BackupCodeUpdateManyWithWhereWithoutUserInput[];
-  deleteMany?:
-    | Prisma.BackupCodeScalarWhereInput
-    | Prisma.BackupCodeScalarWhereInput[];
+  deleteMany?: Prisma.BackupCodeScalarWhereInput | Prisma.BackupCodeScalarWhereInput[];
 };
 
 export type BackupCodeCreateWithoutUserInput = {
@@ -501,9 +455,7 @@ export type BackupCodeCreateOrConnectWithoutUserInput = {
 };
 
 export type BackupCodeCreateManyUserInputEnvelope = {
-  data:
-    | Prisma.BackupCodeCreateManyUserInput
-    | Prisma.BackupCodeCreateManyUserInput[];
+  data: Prisma.BackupCodeCreateManyUserInput | Prisma.BackupCodeCreateManyUserInput[];
   skipDuplicates?: boolean;
 };
 
@@ -559,11 +511,7 @@ export type BackupCodeUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   code?: Prisma.StringFieldUpdateOperationsInput | string;
   used?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-  usedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  usedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -571,11 +519,7 @@ export type BackupCodeUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   code?: Prisma.StringFieldUpdateOperationsInput | string;
   used?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-  usedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  usedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -583,17 +527,12 @@ export type BackupCodeUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   code?: Prisma.StringFieldUpdateOperationsInput | string;
   used?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-  usedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  usedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type BackupCodeSelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -608,8 +547,7 @@ export type BackupCodeSelect<
 >;
 
 export type BackupCodeSelectCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -624,8 +562,7 @@ export type BackupCodeSelectCreateManyAndReturn<
 >;
 
 export type BackupCodeSelectUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -649,34 +586,29 @@ export type BackupCodeSelectScalar = {
 };
 
 export type BackupCodeOmit<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
   'id' | 'userId' | 'code' | 'used' | 'usedAt' | 'createdAt',
   ExtArgs['result']['backupCode']
 >;
 export type BackupCodeInclude<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 export type BackupCodeIncludeCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 export type BackupCodeIncludeUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 
 export type $BackupCodePayload<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   name: 'BackupCode';
   objects: {
@@ -696,20 +628,17 @@ export type $BackupCodePayload<
   composites: {};
 };
 
-export type BackupCodeGetPayload<
-  S extends boolean | null | undefined | BackupCodeDefaultArgs,
-> = runtime.Types.Result.GetResult<Prisma.$BackupCodePayload, S>;
+export type BackupCodeGetPayload<S extends boolean | null | undefined | BackupCodeDefaultArgs> =
+  runtime.Types.Result.GetResult<Prisma.$BackupCodePayload, S>;
 
 export type BackupCodeCountArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = Omit<BackupCodeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
   select?: BackupCodeCountAggregateInputType | true;
 };
 
 export interface BackupCodeDelegate<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > {
   [K: symbol]: {
@@ -1180,12 +1109,7 @@ export interface BackupCodeDelegate<
               ? never
               : P extends string
                 ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                : [
-                    Error,
-                    'Field ',
-                    P,
-                    ` in "having" needs to be provided in "by"`,
-                  ];
+                : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
           }[HavingFields]
         : 'take' extends Prisma.Keys<T>
           ? 'orderBy' extends Prisma.Keys<T>
@@ -1215,11 +1139,8 @@ export interface BackupCodeDelegate<
                     : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                 }[OrderFields],
   >(
-    args: Prisma.SubsetIntersection<T, BackupCodeGroupByArgs, OrderByArg> &
-      InputErrors
-  ): {} extends InputErrors
-    ? GetBackupCodeGroupByPayload<T>
-    : Prisma.PrismaPromise<InputErrors>;
+    args: Prisma.SubsetIntersection<T, BackupCodeGroupByArgs, OrderByArg> & InputErrors
+  ): {} extends InputErrors ? GetBackupCodeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
   /**
    * Fields of the BackupCode model
    */
@@ -1235,8 +1156,7 @@ export interface BackupCodeDelegate<
 export interface Prisma__BackupCodeClient<
   T,
   Null = never,
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: 'PrismaPromise';
@@ -1261,14 +1181,8 @@ export interface Prisma__BackupCodeClient<
    * @returns A Promise for the completion of which ever callback is executed.
    */
   then<TResult1 = T, TResult2 = never>(
-    onfulfilled?:
-      | ((value: T) => TResult1 | PromiseLike<TResult1>)
-      | undefined
-      | null,
-    onrejected?:
-      | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-      | undefined
-      | null
+    onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
   ): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
   /**
    * Attaches a callback for only the rejection of the Promise.
@@ -1276,10 +1190,7 @@ export interface Prisma__BackupCodeClient<
    * @returns A Promise for the completion of the callback.
    */
   catch<TResult = never>(
-    onrejected?:
-      | ((reason: any) => TResult | PromiseLike<TResult>)
-      | undefined
-      | null
+    onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
   ): runtime.Types.Utils.JsPromise<T | TResult>;
   /**
    * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
@@ -1287,9 +1198,7 @@ export interface Prisma__BackupCodeClient<
    * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
    * @returns A Promise for the completion of the callback.
    */
-  finally(
-    onfinally?: (() => void) | undefined | null
-  ): runtime.Types.Utils.JsPromise<T>;
+  finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
 }
 
 /**
@@ -1309,8 +1218,7 @@ export interface BackupCodeFieldRefs {
  * BackupCode findUnique
  */
 export type BackupCodeFindUniqueArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BackupCode
@@ -1334,8 +1242,7 @@ export type BackupCodeFindUniqueArgs<
  * BackupCode findUniqueOrThrow
  */
 export type BackupCodeFindUniqueOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BackupCode
@@ -1359,8 +1266,7 @@ export type BackupCodeFindUniqueOrThrowArgs<
  * BackupCode findFirst
  */
 export type BackupCodeFindFirstArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BackupCode
@@ -1383,9 +1289,7 @@ export type BackupCodeFindFirstArgs<
    *
    * Determine the order of BackupCodes to fetch.
    */
-  orderBy?:
-    | Prisma.BackupCodeOrderByWithRelationInput
-    | Prisma.BackupCodeOrderByWithRelationInput[];
+  orderBy?: Prisma.BackupCodeOrderByWithRelationInput | Prisma.BackupCodeOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1409,17 +1313,14 @@ export type BackupCodeFindFirstArgs<
    *
    * Filter by unique combinations of BackupCodes.
    */
-  distinct?:
-    | Prisma.BackupCodeScalarFieldEnum
-    | Prisma.BackupCodeScalarFieldEnum[];
+  distinct?: Prisma.BackupCodeScalarFieldEnum | Prisma.BackupCodeScalarFieldEnum[];
 };
 
 /**
  * BackupCode findFirstOrThrow
  */
 export type BackupCodeFindFirstOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BackupCode
@@ -1442,9 +1343,7 @@ export type BackupCodeFindFirstOrThrowArgs<
    *
    * Determine the order of BackupCodes to fetch.
    */
-  orderBy?:
-    | Prisma.BackupCodeOrderByWithRelationInput
-    | Prisma.BackupCodeOrderByWithRelationInput[];
+  orderBy?: Prisma.BackupCodeOrderByWithRelationInput | Prisma.BackupCodeOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1468,17 +1367,14 @@ export type BackupCodeFindFirstOrThrowArgs<
    *
    * Filter by unique combinations of BackupCodes.
    */
-  distinct?:
-    | Prisma.BackupCodeScalarFieldEnum
-    | Prisma.BackupCodeScalarFieldEnum[];
+  distinct?: Prisma.BackupCodeScalarFieldEnum | Prisma.BackupCodeScalarFieldEnum[];
 };
 
 /**
  * BackupCode findMany
  */
 export type BackupCodeFindManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BackupCode
@@ -1501,9 +1397,7 @@ export type BackupCodeFindManyArgs<
    *
    * Determine the order of BackupCodes to fetch.
    */
-  orderBy?:
-    | Prisma.BackupCodeOrderByWithRelationInput
-    | Prisma.BackupCodeOrderByWithRelationInput[];
+  orderBy?: Prisma.BackupCodeOrderByWithRelationInput | Prisma.BackupCodeOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1522,17 +1416,14 @@ export type BackupCodeFindManyArgs<
    * Skip the first `n` BackupCodes.
    */
   skip?: number;
-  distinct?:
-    | Prisma.BackupCodeScalarFieldEnum
-    | Prisma.BackupCodeScalarFieldEnum[];
+  distinct?: Prisma.BackupCodeScalarFieldEnum | Prisma.BackupCodeScalarFieldEnum[];
 };
 
 /**
  * BackupCode create
  */
 export type BackupCodeCreateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BackupCode
@@ -1549,18 +1440,14 @@ export type BackupCodeCreateArgs<
   /**
    * The data needed to create a BackupCode.
    */
-  data: Prisma.XOR<
-    Prisma.BackupCodeCreateInput,
-    Prisma.BackupCodeUncheckedCreateInput
-  >;
+  data: Prisma.XOR<Prisma.BackupCodeCreateInput, Prisma.BackupCodeUncheckedCreateInput>;
 };
 
 /**
  * BackupCode createMany
  */
 export type BackupCodeCreateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to create many BackupCodes.
@@ -1573,8 +1460,7 @@ export type BackupCodeCreateManyArgs<
  * BackupCode createManyAndReturn
  */
 export type BackupCodeCreateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BackupCode
@@ -1599,8 +1485,7 @@ export type BackupCodeCreateManyAndReturnArgs<
  * BackupCode update
  */
 export type BackupCodeUpdateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BackupCode
@@ -1617,10 +1502,7 @@ export type BackupCodeUpdateArgs<
   /**
    * The data needed to update a BackupCode.
    */
-  data: Prisma.XOR<
-    Prisma.BackupCodeUpdateInput,
-    Prisma.BackupCodeUncheckedUpdateInput
-  >;
+  data: Prisma.XOR<Prisma.BackupCodeUpdateInput, Prisma.BackupCodeUncheckedUpdateInput>;
   /**
    * Choose, which BackupCode to update.
    */
@@ -1631,8 +1513,7 @@ export type BackupCodeUpdateArgs<
  * BackupCode updateMany
  */
 export type BackupCodeUpdateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to update BackupCodes.
@@ -1655,8 +1536,7 @@ export type BackupCodeUpdateManyArgs<
  * BackupCode updateManyAndReturn
  */
 export type BackupCodeUpdateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BackupCode
@@ -1691,8 +1571,7 @@ export type BackupCodeUpdateManyAndReturnArgs<
  * BackupCode upsert
  */
 export type BackupCodeUpsertArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BackupCode
@@ -1713,25 +1592,18 @@ export type BackupCodeUpsertArgs<
   /**
    * In case the BackupCode found by the `where` argument doesn't exist, create a new BackupCode with this data.
    */
-  create: Prisma.XOR<
-    Prisma.BackupCodeCreateInput,
-    Prisma.BackupCodeUncheckedCreateInput
-  >;
+  create: Prisma.XOR<Prisma.BackupCodeCreateInput, Prisma.BackupCodeUncheckedCreateInput>;
   /**
    * In case the BackupCode was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<
-    Prisma.BackupCodeUpdateInput,
-    Prisma.BackupCodeUncheckedUpdateInput
-  >;
+  update: Prisma.XOR<Prisma.BackupCodeUpdateInput, Prisma.BackupCodeUncheckedUpdateInput>;
 };
 
 /**
  * BackupCode delete
  */
 export type BackupCodeDeleteArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BackupCode
@@ -1755,8 +1627,7 @@ export type BackupCodeDeleteArgs<
  * BackupCode deleteMany
  */
 export type BackupCodeDeleteManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which BackupCodes to delete
@@ -1772,8 +1643,7 @@ export type BackupCodeDeleteManyArgs<
  * BackupCode without action
  */
 export type BackupCodeDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the BackupCode

@@ -6,15 +6,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import {
-  Rocket,
-  Code,
-  Zap,
-  Users,
-  Heart,
-  CheckCircle2,
-  type LucideIcon,
-} from 'lucide-react';
+import { Rocket, Code, Zap, Users, Heart, CheckCircle2, type LucideIcon } from 'lucide-react';
 import { Badge, Card, CardHeader, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
@@ -65,8 +57,7 @@ const values: Value[] = [
     icon: Heart,
     module: 'NO_LOCK_IN',
     status: 'OPEN',
-    description:
-      'You own the code. No proprietary frameworks, no vendor lock-in. Deploy anywhere.',
+    description: 'You own the code. No proprietary frameworks, no vendor lock-in. Deploy anywhere.',
   },
   {
     id: '0x06',
@@ -90,12 +81,7 @@ export function ValuesSection() {
             viewport={{ once: true }}
           >
             <Badge code="0x03" label="CORE_VALUES" className="mb-4" />
-            <h2
-              className={cn(
-                'mb-4 text-2xl font-semibold lg:text-4xl',
-                mode.font
-              )}
-            >
+            <h2 className={cn('mb-4 text-2xl font-semibold lg:text-4xl', mode.font)}>
               CORE_VALUES
             </h2>
           </motion.div>

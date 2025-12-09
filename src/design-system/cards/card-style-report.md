@@ -202,8 +202,7 @@ className =
   'group border-border bg-card hover:border-primary/50 flex h-full flex-col border transition-colors';
 
 // Header
-className =
-  'border-border flex items-center justify-between border-b px-4 py-2';
+className = 'border-border flex items-center justify-between border-b px-4 py-2';
 // Header text: [ [0xXX] TITLE ]
 // Header icon: size-4, group-hover:text-primary
 

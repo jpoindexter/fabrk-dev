@@ -39,8 +39,7 @@ function SuccessContent() {
 
       if (response.ok) {
         toast.success('Email Sent!', {
-          description:
-            'Check your inbox - the confirmation email has been resent.',
+          description: 'Check your inbox - the confirmation email has been resent.',
         });
       } else {
         toast.error('Failed to Send', {
@@ -70,44 +69,28 @@ function SuccessContent() {
             >
               <CheckCircle className="text-primary-foreground size-12" />
             </div>
-            <h1 className={cn('text-4xl font-semibold', mode.font)}>
-              PURCHASE_SUCCESSFUL
-            </h1>
+            <h1 className={cn('text-4xl font-semibold', mode.font)}>PURCHASE_SUCCESSFUL</h1>
             <p className={cn('text-muted-foreground text-sm', mode.font)}>
-              Thank you for your purchase. Your payment has been processed
-              successfully.
+              Thank you for your purchase. Your payment has been processed successfully.
             </p>
           </div>
 
           {/* Check your email banner */}
           <Card>
-            <CardHeader
-              code="0x01"
-              title="CHECK_YOUR_EMAIL"
-              icon={<Mail className="size-4" />}
-            />
+            <CardHeader code="0x01" title="CHECK_YOUR_EMAIL" icon={<Mail className="size-4" />} />
             <CardContent padding="md">
               <p className={cn('text-muted-foreground text-xs', mode.font)}>
-                We've sent you a confirmation email with a magic link to
-                instantly access your dashboard - no password needed!
+                We've sent you a confirmation email with a magic link to instantly access your
+                dashboard - no password needed!
               </p>
             </CardContent>
           </Card>
 
           {/* What's in the email */}
           <Card>
-            <CardHeader
-              code="0x02"
-              title="EMAIL_CONTENTS"
-              icon={<Package className="size-4" />}
-            />
+            <CardHeader code="0x02" title="EMAIL_CONTENTS" icon={<Package className="size-4" />} />
             <CardContent padding="md">
-              <ul
-                className={cn(
-                  'text-muted-foreground space-y-4 text-xs',
-                  mode.font
-                )}
-              >
+              <ul className={cn('text-muted-foreground space-y-4 text-xs', mode.font)}>
                 <li className="flex items-start gap-4">
                   <span
                     className={cn(
@@ -118,10 +101,8 @@ function SuccessContent() {
                     1
                   </span>
                   <span>
-                    <strong className="text-foreground">
-                      GITHUB_REPOSITORY_ACCESS
-                    </strong>{' '}
-                    - You've been invited to the private Fabrk repository
+                    <strong className="text-foreground">GITHUB_REPOSITORY_ACCESS</strong> - You've
+                    been invited to the private Fabrk repository
                   </span>
                 </li>
                 <li className="flex items-start gap-4">
@@ -134,8 +115,8 @@ function SuccessContent() {
                     2
                   </span>
                   <span>
-                    <strong className="text-foreground">MAGIC_LINK</strong> -
-                    Click to instantly access your dashboard (valid for 7 days)
+                    <strong className="text-foreground">MAGIC_LINK</strong> - Click to instantly
+                    access your dashboard (valid for 7 days)
                   </span>
                 </li>
                 <li className="flex items-start gap-4">
@@ -148,10 +129,8 @@ function SuccessContent() {
                     3
                   </span>
                   <span>
-                    <strong className="text-foreground">
-                      GETTING_STARTED_GUIDE
-                    </strong>{' '}
-                    - Next steps to clone and use your boilerplate
+                    <strong className="text-foreground">GETTING_STARTED_GUIDE</strong> - Next steps
+                    to clone and use your boilerplate
                   </span>
                 </li>
               </ul>
@@ -168,8 +147,8 @@ function SuccessContent() {
             <CardContent padding="md">
               <div className="space-y-4">
                 <p className={cn('text-muted-foreground text-xs', mode.font)}>
-                  Check your email for the GitHub invitation. Once accepted,
-                  you'll have full access to clone and download the boilerplate.
+                  Check your email for the GitHub invitation. Once accepted, you'll have full access
+                  to clone and download the boilerplate.
                 </p>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <Button asChild size="lg" className="w-full text-xs">
@@ -182,17 +161,8 @@ function SuccessContent() {
                       &gt; CHECK_GITHUB
                     </a>
                   </Button>
-                  <Button
-                    asChild
-                    variant="outline"
-                    size="lg"
-                    className="w-full text-xs"
-                  >
-                    <a
-                      href="/docs/getting-started"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                  <Button asChild variant="outline" size="lg" className="w-full text-xs">
+                    <a href="/docs/getting-started" target="_blank" rel="noopener noreferrer">
                       <FileDown className="mr-2 size-4" />
                       &gt; VIEW_DOCS
                     </a>
@@ -208,12 +178,7 @@ function SuccessContent() {
               Didn't receive the email? Check your spam folder.
             </p>
             {!isResending ? (
-              <Button
-                onClick={handleResendEmail}
-                variant="link"
-                size="sm"
-                className="text-xs"
-              >
+              <Button onClick={handleResendEmail} variant="link" size="sm" className="text-xs">
                 &gt; CLICK_TO_RESEND
               </Button>
             ) : (
@@ -236,12 +201,7 @@ function SuccessContent() {
 
           {/* Alternative action */}
           <div className="flex flex-col gap-4 sm:flex-row">
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="flex-1 text-xs"
-            >
+            <Button asChild variant="outline" size="lg" className="flex-1 text-xs">
               <Link href="/">&gt; RETURN_HOME</Link>
             </Button>
           </div>

@@ -66,12 +66,7 @@ export function Sparkline({
       className={cn('sparkline', className)}
     >
       {showArea && areaPathData && (
-        <path
-          d={areaPathData}
-          fill={fillColor || color}
-          opacity={0.2}
-          className="sparkline-area"
-        />
+        <path d={areaPathData} fill={fillColor || color} opacity={0.2} className="sparkline-area" />
       )}
       <path
         d={pathData}
@@ -135,13 +130,7 @@ export function SparklineCard({
             </p>
           )}
         </div>
-        <Sparkline
-          data={data}
-          width={80}
-          height={40}
-          color={sparklineColor}
-          showArea={showArea}
-        />
+        <Sparkline data={data} width={80} height={40} color={sparklineColor} showArea={showArea} />
       </div>
     </div>
   );

@@ -53,13 +53,7 @@ export default function InputPage() {
         {
           title: 'Success State',
           description: 'Input showing success.',
-          preview: (
-            <Input
-              success
-              placeholder="Valid input"
-              defaultValue="john@example.com"
-            />
-          ),
+          preview: <Input success placeholder="Valid input" defaultValue="john@example.com" />,
           code: `<Input success placeholder="Valid input" defaultValue="john@example.com" />`,
         },
         {

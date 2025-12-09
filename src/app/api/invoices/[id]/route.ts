@@ -11,10 +11,7 @@ export const dynamic = 'force-dynamic';
  * Retrieves Stripe invoice URL for a payment
  * Returns the hosted invoice URL from Stripe
  */
-export async function GET(
-  req: Request,
-  { params }: { params: Promise<{ id: string }> }
-) {
+export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const session = await auth();
     if (!session?.user) {
@@ -57,44 +54,33 @@ export async function GET(
     try {
       // Try as payment intent first
       if (payment.stripeId.startsWith('pi_')) {
-        const paymentIntent = await stripe.paymentIntents.retrieve(
-          payment.stripeId
-        );
+        const paymentIntent = await stripe.paymentIntents.retrieve(payment.stripeId);
 
         if ((paymentIntent as unknown as { invoice?: string | null }).invoice) {
           const invoice = await stripe.invoices.retrieve(
             (paymentIntent as unknown as { invoice: string }).invoice
           );
-          invoiceUrl =
-            invoice.hosted_invoice_url || invoice.invoice_pdf || null;
+          invoiceUrl = invoice.hosted_invoice_url || invoice.invoice_pdf || null;
         }
       }
       // Try as checkout session
       else if (payment.stripeId.startsWith('cs_')) {
-        const checkoutSession = await stripe.checkout.sessions.retrieve(
-          payment.stripeId
-        );
+        const checkoutSession = await stripe.checkout.sessions.retrieve(payment.stripeId);
 
         if (checkoutSession.invoice) {
-          const invoice = await stripe.invoices.retrieve(
-            checkoutSession.invoice as string
-          );
-          invoiceUrl =
-            invoice.hosted_invoice_url || invoice.invoice_pdf || null;
+          const invoice = await stripe.invoices.retrieve(checkoutSession.invoice as string);
+          invoiceUrl = invoice.hosted_invoice_url || invoice.invoice_pdf || null;
         } else if (checkoutSession.payment_intent) {
           // Get payment intent from checkout session
           const paymentIntent = await stripe.paymentIntents.retrieve(
             checkoutSession.payment_intent as string
           );
 
-          if (
-            (paymentIntent as unknown as { invoice?: string | null }).invoice
-          ) {
+          if ((paymentIntent as unknown as { invoice?: string | null }).invoice) {
             const invoice = await stripe.invoices.retrieve(
               (paymentIntent as unknown as { invoice: string }).invoice
             );
-            invoiceUrl =
-              invoice.hosted_invoice_url || invoice.invoice_pdf || null;
+            invoiceUrl = invoice.hosted_invoice_url || invoice.invoice_pdf || null;
           }
         }
       }
@@ -116,9 +102,6 @@ export async function GET(
     }
   } catch (error: unknown) {
     logger.error('Invoice retrieval error:', error);
-    return NextResponse.json(
-      { error: 'Failed to retrieve invoice' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to retrieve invoice' }, { status: 500 });
   }
 }

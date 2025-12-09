@@ -48,8 +48,7 @@ try {
 }
 
 try {
-  Anthropic =
-    require('@anthropic-ai/sdk').default || require('@anthropic-ai/sdk');
+  Anthropic = require('@anthropic-ai/sdk').default || require('@anthropic-ai/sdk');
   anthropic = new Anthropic({
     apiKey: process.env.ANTHROPIC_API_KEY,
   });
@@ -96,11 +95,7 @@ const TOKEN_PRICING = {
 /**
  * Calculate cost
  */
-function calculateCost(
-  model: string,
-  promptTokens: number,
-  completionTokens: number
-): number {
+function calculateCost(model: string, promptTokens: number, completionTokens: number): number {
   const pricing = TOKEN_PRICING[model as keyof typeof TOKEN_PRICING];
   if (!pricing) return 0;
 
@@ -137,9 +132,7 @@ export async function chatWithOpenAI(options: {
   stream?: boolean;
 }): Promise<AIResponse | AsyncIterable<string>> {
   if (!openai) {
-    throw new Error(
-      'OpenAI SDK not installed. Install with: npm install openai'
-    );
+    throw new Error('OpenAI SDK not installed. Install with: npm install openai');
   }
 
   const model = options.model || 'gpt-3.5-turbo';
@@ -183,9 +176,7 @@ export async function chatWithOpenAI(options: {
             totalTokens: usage.total_tokens,
           }
         : undefined,
-      cost: usage
-        ? calculateCost(model, usage.prompt_tokens, usage.completion_tokens)
-        : undefined,
+      cost: usage ? calculateCost(model, usage.prompt_tokens, usage.completion_tokens) : undefined,
       model,
       provider: 'openai',
     };
@@ -219,9 +210,7 @@ export async function chatWithClaude(options: {
   stream?: boolean;
 }): Promise<AIResponse | AsyncIterable<string>> {
   if (!anthropic) {
-    throw new Error(
-      'Anthropic SDK not installed. Install with: npm install @anthropic-ai/sdk'
-    );
+    throw new Error('Anthropic SDK not installed. Install with: npm install @anthropic-ai/sdk');
   }
 
   const model = options.model || 'claude-3-sonnet-20240229';
@@ -243,10 +232,7 @@ export async function chatWithClaude(options: {
 
     return (async function* () {
       for await (const event of stream) {
-        if (
-          event.type === 'content_block_delta' &&
-          event.delta.type === 'text_delta'
-        ) {
+        if (event.type === 'content_block_delta' && event.delta.type === 'text_delta') {
           yield event.delta.text;
         }
       }
@@ -261,8 +247,7 @@ export async function chatWithClaude(options: {
       max_tokens: options.maxTokens || 1024,
     });
 
-    const content =
-      message.content[0]?.type === 'text' ? message.content[0].text : '';
+    const content = message.content[0]?.type === 'text' ? message.content[0].text : '';
 
     return {
       content,
@@ -271,11 +256,7 @@ export async function chatWithClaude(options: {
         completionTokens: message.usage.output_tokens,
         totalTokens: message.usage.input_tokens + message.usage.output_tokens,
       },
-      cost: calculateCost(
-        model,
-        message.usage.input_tokens,
-        message.usage.output_tokens
-      ),
+      cost: calculateCost(model, message.usage.input_tokens, message.usage.output_tokens),
       model,
       provider: 'anthropic',
     };
@@ -342,9 +323,7 @@ export async function generateEmbeddings(
   model: string = 'text-embedding-3-small'
 ): Promise<number[][]> {
   if (!openai) {
-    throw new Error(
-      'OpenAI SDK not installed. Install with: npm install openai'
-    );
+    throw new Error('OpenAI SDK not installed. Install with: npm install openai');
   }
 
   const response = await openai.embeddings.create({
@@ -364,9 +343,7 @@ export async function moderateContent(text: string): Promise<{
   scores: Record<string, number>;
 }> {
   if (!openai) {
-    throw new Error(
-      'OpenAI SDK not installed. Install with: npm install openai'
-    );
+    throw new Error('OpenAI SDK not installed. Install with: npm install openai');
   }
 
   const response = await openai.moderations.create({
@@ -393,9 +370,7 @@ export async function generateImage(options: {
   n?: number;
 }): Promise<string[]> {
   if (!openai) {
-    throw new Error(
-      'OpenAI SDK not installed. Install with: npm install openai'
-    );
+    throw new Error('OpenAI SDK not installed. Install with: npm install openai');
   }
 
   const response = await openai.images.generate({
@@ -418,9 +393,7 @@ export async function textToSpeech(options: {
   model?: 'tts-1' | 'tts-1-hd';
 }): Promise<Buffer> {
   if (!openai) {
-    throw new Error(
-      'OpenAI SDK not installed. Install with: npm install openai'
-    );
+    throw new Error('OpenAI SDK not installed. Install with: npm install openai');
   }
 
   const response = await openai.audio.speech.create({
@@ -443,9 +416,7 @@ export async function speechToText(
   }
 ): Promise<string> {
   if (!openai) {
-    throw new Error(
-      'OpenAI SDK not installed. Install with: npm install openai'
-    );
+    throw new Error('OpenAI SDK not installed. Install with: npm install openai');
   }
 
   const response = await openai.audio.transcriptions.create({
@@ -461,9 +432,7 @@ export async function speechToText(
 /**
  * Helper: Stream to string
  */
-export async function streamToString(
-  stream: AsyncIterable<string>
-): Promise<string> {
+export async function streamToString(stream: AsyncIterable<string>): Promise<string> {
   let result = '';
   for await (const chunk of stream) {
     result += chunk;

@@ -4,11 +4,7 @@
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import {
-  getStorageProvider,
-  isCloudStorageConfigured,
-  validateFile,
-} from './uploads';
+import { getStorageProvider, isCloudStorageConfigured, validateFile } from './uploads';
 
 describe('Storage Provider', () => {
   const originalEnv = process.env;

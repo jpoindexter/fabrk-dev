@@ -146,21 +146,15 @@ export default function FeatureFlagsDbPage() {
   };
 
   if (loading) {
-    return (
-      <div className="flex h-48 items-center justify-center">Loading...</div>
-    );
+    return <div className="flex h-48 items-center justify-center">Loading...</div>;
   }
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-4xl font-semibold tracking-tight">
-            Feature Flags (Database)
-          </h1>
-          <p className="text-muted-foreground">
-            Persistent feature flags with rollout control
-          </p>
+          <h1 className="text-4xl font-semibold tracking-tight">Feature Flags (Database)</h1>
+          <p className="text-muted-foreground">Persistent feature flags with rollout control</p>
         </div>
         <Button onClick={() => setShowCreateForm(!showCreateForm)}>
           <Plus className="mr-2 h-4 w-4" />
@@ -170,19 +164,13 @@ export default function FeatureFlagsDbPage() {
 
       {showCreateForm && (
         <Card tone="primary">
-          <CardHeader
-            code="0x00"
-            title="CREATE_FEATURE_FLAG"
-            icon={<Plus className="h-4 w-4" />}
-          />
+          <CardHeader code="0x00" title="CREATE_FEATURE_FLAG" icon={<Plus className="h-4 w-4" />} />
           <CardContent className="space-y-4">
             <div>
               <Label>{formatLabel('Flag Name')}</Label>
               <Input
                 value={newFlag.name}
-                onChange={(e) =>
-                  setNewFlag({ ...newFlag, name: e.target.value })
-                }
+                onChange={(e) => setNewFlag({ ...newFlag, name: e.target.value })}
                 placeholder="new_feature"
               />
             </div>
@@ -190,27 +178,20 @@ export default function FeatureFlagsDbPage() {
               <Label>{formatLabel('Description')}</Label>
               <Textarea
                 value={newFlag.description}
-                onChange={(e) =>
-                  setNewFlag({ ...newFlag, description: e.target.value })
-                }
+                onChange={(e) => setNewFlag({ ...newFlag, description: e.target.value })}
                 placeholder="What does this flag control?"
               />
             </div>
             <div className="flex items-center space-x-2">
               <Switch
                 checked={newFlag.enabled}
-                onCheckedChange={(checked) =>
-                  setNewFlag({ ...newFlag, enabled: checked })
-                }
+                onCheckedChange={(checked) => setNewFlag({ ...newFlag, enabled: checked })}
               />
               <Label>{formatLabel('Enable immediately')}</Label>
             </div>
             <div className="flex gap-2">
               <Button onClick={handleCreate}>&gt; CREATE</Button>
-              <Button
-                variant="outline"
-                onClick={() => setShowCreateForm(false)}
-              >
+              <Button variant="outline" onClick={() => setShowCreateForm(false)}>
                 &gt; CANCEL
               </Button>
             </div>
@@ -234,14 +215,9 @@ export default function FeatureFlagsDbPage() {
                   <Switch
                     id={`toggle-${flag.id}`}
                     checked={flag.enabled}
-                    onCheckedChange={(checked) =>
-                      handleToggle(flag.id, checked)
-                    }
+                    onCheckedChange={(checked) => handleToggle(flag.id, checked)}
                   />
-                  <Label
-                    htmlFor={`toggle-${flag.id}`}
-                    className="cursor-pointer"
-                  >
+                  <Label htmlFor={`toggle-${flag.id}`} className="cursor-pointer">
                     {formatLabel(flag.enabled ? 'Enabled' : 'Disabled')}
                   </Label>
                 </div>
@@ -254,10 +230,7 @@ export default function FeatureFlagsDbPage() {
                   }}
                   aria-label="Delete feature flag"
                 >
-                  <Trash2
-                    className="text-destructive h-4 w-4"
-                    aria-hidden="true"
-                  />
+                  <Trash2 className="text-destructive h-4 w-4" aria-hidden="true" />
                 </Button>
               </div>
             </div>
@@ -269,9 +242,7 @@ export default function FeatureFlagsDbPage() {
                 </div>
                 <Slider
                   value={[flag.rolloutPercentage]}
-                  onValueCommit={(value) =>
-                    handleRolloutChange(flag.id, value[0])
-                  }
+                  onValueCommit={(value) => handleRolloutChange(flag.id, value[0])}
                   max={100}
                   step={5}
                   disabled={!flag.enabled}
@@ -296,8 +267,8 @@ export default function FeatureFlagsDbPage() {
           <AlertDialogHeader>
             <AlertDialogTitle>Delete Feature Flag?</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete the
-              feature flag and remove it from all configurations.
+              This action cannot be undone. This will permanently delete the feature flag and remove
+              it from all configurations.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

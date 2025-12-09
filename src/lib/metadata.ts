@@ -7,8 +7,7 @@ import type { Metadata } from 'next';
 
 export const siteConfig = {
   name: 'Fabrk Boilerplate',
-  description:
-    'Production-ready Next.js SaaS boilerplate with authentication, payments, and more',
+  description: 'Production-ready Next.js SaaS boilerplate with authentication, payments, and more',
   url: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
   ogImage: '/og-image.png',
   links: {
@@ -92,8 +91,7 @@ export function generateMetadata({
   noIndex = false,
   path = '',
 }: GenerateMetadataProps): Metadata {
-  const fullTitle =
-    title === siteConfig.name ? title : `${title} | ${siteConfig.name}`;
+  const fullTitle = title === siteConfig.name ? title : `${title} | ${siteConfig.name}`;
   const metaDescription = description || siteConfig.description;
   const ogImage = image || siteConfig.ogImage;
   const url = `${siteConfig.url}${path}`;
@@ -168,9 +166,7 @@ export function generateProductSchema() {
 /**
  * Generate breadcrumb JSON-LD structured data
  */
-export function generateBreadcrumbSchema(
-  items: { name: string; url: string }[]
-) {
+export function generateBreadcrumbSchema(items: { name: string; url: string }[]) {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -186,9 +182,7 @@ export function generateBreadcrumbSchema(
 /**
  * Generate FAQ JSON-LD structured data
  */
-export function generateFAQSchema(
-  faqs: { question: string; answer: string }[]
-) {
+export function generateFAQSchema(faqs: { question: string; answer: string }[]) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',

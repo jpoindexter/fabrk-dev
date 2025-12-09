@@ -131,9 +131,7 @@ const BACKUP_CODE_LENGTH = 8;
 /**
  * Generate backup codes
  */
-export function generateBackupCodes(
-  count: number = BACKUP_CODE_COUNT
-): string[] {
+export function generateBackupCodes(count: number = BACKUP_CODE_COUNT): string[] {
   const codes: string[] = [];
 
   for (let i = 0; i < count; i++) {
@@ -356,10 +354,7 @@ export async function hasMFAEnabled(userId: string): Promise<boolean> {
 /**
  * Disable MFA for user
  */
-export async function disableMFA(
-  userId: string,
-  userEmail: string
-): Promise<void> {
+export async function disableMFA(userId: string, userEmail: string): Promise<void> {
   // Delete all devices
   await prisma.mFADevice.deleteMany({
     where: { userId },
@@ -414,10 +409,7 @@ export async function getBackupCodeStats(userId: string) {
 /**
  * Regenerate backup codes
  */
-export async function regenerateBackupCodes(
-  userId: string,
-  userEmail: string
-): Promise<string[]> {
+export async function regenerateBackupCodes(userId: string, userEmail: string): Promise<string[]> {
   // Delete old backup codes
   await prisma.backupCode.deleteMany({
     where: { userId },

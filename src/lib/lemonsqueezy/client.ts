@@ -3,10 +3,7 @@
  * SDK initialization and configuration
  */
 
-import {
-  lemonSqueezySetup,
-  getAuthenticatedUser,
-} from '@lemonsqueezy/lemonsqueezy.js';
+import { lemonSqueezySetup, getAuthenticatedUser } from '@lemonsqueezy/lemonsqueezy.js';
 
 /**
  * Initialize Lemon Squeezy SDK

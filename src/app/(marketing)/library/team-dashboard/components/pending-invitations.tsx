@@ -49,12 +49,7 @@ export function PendingInvitations({ invitations }: PendingInvitationsProps) {
                 <span>{new Date(invitation.sentAt).toLocaleDateString()}</span>
               </div>
               <div className="flex items-center gap-4">
-                <span
-                  className={cn(
-                    mode.font,
-                    'border-border border px-2 py-0.5 text-xs'
-                  )}
-                >
+                <span className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}>
                   ROLE: {invitation.role.toUpperCase()}
                 </span>
                 <Button

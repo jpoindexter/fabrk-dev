@@ -23,9 +23,7 @@ export function TableOfContents() {
       <Card tone="neutral" className="border-b border-l">
         <CardHeader code="0x00" title="TOC" />
         <CardContent padding="md">
-          <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-            [ON_THIS_PAGE]:
-          </div>
+          <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>[ON_THIS_PAGE]:</div>
           <nav>
             <ul className={cn(mode.font, 'space-y-2 text-xs')}>
               {headings.map((heading, idx) => (

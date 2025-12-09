@@ -258,18 +258,10 @@ NEXT_PUBLIC_POSTHOG_HOST="https://app.posthog.com"`,
         <DocsCard title="SECURITY">
           <div className="space-y-1">
             <div>├─ Never commit secrets - Add .env.local to .gitignore</div>
-            <div>
-              ├─ Rotate secrets regularly - Especially after team changes
-            </div>
-            <div>
-              ├─ Use separate keys - Different keys for dev/staging/prod
-            </div>
-            <div>
-              ├─ Limit access - Use least-privilege API keys when possible
-            </div>
-            <div>
-              └─ Monitor usage - Check Stripe/Resend dashboards for anomalies
-            </div>
+            <div>├─ Rotate secrets regularly - Especially after team changes</div>
+            <div>├─ Use separate keys - Different keys for dev/staging/prod</div>
+            <div>├─ Limit access - Use least-privilege API keys when possible</div>
+            <div>└─ Monitor usage - Check Stripe/Resend dashboards for anomalies</div>
           </div>
         </DocsCard>
       </DocsSection>

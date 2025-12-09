@@ -222,30 +222,23 @@ psql $DATABASE_URL < backup.sql`,
         <DocsCard title="PROVIDERS">
           <div className="space-y-1">
             <div>
-              ├─{' '}
-              <code className="bg-muted px-1 font-mono text-xs">Supabase</code>{' '}
-              - Free tier, great DX (recommended)
+              ├─ <code className="bg-muted px-1 font-mono text-xs">Supabase</code> - Free tier,
+              great DX (recommended)
             </div>
             <div>
-              ├─ <code className="bg-muted px-1 font-mono text-xs">Neon</code> -
-              Serverless PostgreSQL with branching
+              ├─ <code className="bg-muted px-1 font-mono text-xs">Neon</code> - Serverless
+              PostgreSQL with branching
             </div>
             <div>
-              ├─{' '}
-              <code className="bg-muted px-1 font-mono text-xs">Railway</code> -
-              Simple and affordable
+              ├─ <code className="bg-muted px-1 font-mono text-xs">Railway</code> - Simple and
+              affordable
             </div>
             <div>
-              ├─{' '}
-              <code className="bg-muted px-1 font-mono text-xs">
-                PlanetScale
-              </code>{' '}
-              - MySQL alternative
+              ├─ <code className="bg-muted px-1 font-mono text-xs">PlanetScale</code> - MySQL
+              alternative
             </div>
             <div>
-              ├─{' '}
-              <code className="bg-muted px-1 font-mono text-xs">AWS RDS</code> -
-              Enterprise-grade
+              ├─ <code className="bg-muted px-1 font-mono text-xs">AWS RDS</code> - Enterprise-grade
             </div>
           </div>
         </DocsCard>
@@ -257,15 +250,10 @@ psql $DATABASE_URL < backup.sql`,
           <div className="space-y-1">
             <div>
               ├─ Add indexes - Index frequently queried columns:{' '}
-              <code className="bg-muted px-1 font-mono text-xs">
-                @@index([userId, createdAt])
-              </code>
+              <code className="bg-muted px-1 font-mono text-xs">@@index([userId, createdAt])</code>
             </div>
             <div>├─ Use select - Only fetch needed fields</div>
-            <div>
-              ├─ Batch operations - Use createMany/updateMany for multiple
-              records
-            </div>
+            <div>├─ Batch operations - Use createMany/updateMany for multiple records</div>
             <div>└─ Enable logging - Debug slow queries</div>
           </div>
         </DocsCard>

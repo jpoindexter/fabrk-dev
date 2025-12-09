@@ -12,11 +12,7 @@ import { Badge } from '@/components/ui/badge';
 export function RolePermissionsCard() {
   return (
     <Card>
-      <CardHeader
-        code="0x02"
-        title="ROLE_PERMISSIONS"
-        icon={<Info className="h-4 w-4" />}
-      />
+      <CardHeader code="0x02" title="ROLE_PERMISSIONS" icon={<Info className="h-4 w-4" />} />
       <CardContent padding="lg">
         <div className="grid gap-4 md:grid-cols-2">
           <div className="border-border bg-card rounded-none border p-4">
@@ -25,8 +21,7 @@ export function RolePermissionsCard() {
               <Badge variant="default">OWNER</Badge>
             </div>
             <p className="text-muted-foreground text-sm">
-              Full control over organization, including deletion and ownership
-              transfer.
+              Full control over organization, including deletion and ownership transfer.
             </p>
           </div>
           <div className="border-border bg-card rounded-none border p-4">
@@ -35,8 +30,7 @@ export function RolePermissionsCard() {
               <Badge variant="secondary">ADMIN</Badge>
             </div>
             <p className="text-muted-foreground text-sm">
-              Can manage members, settings, and billing. Cannot delete
-              organization.
+              Can manage members, settings, and billing. Cannot delete organization.
             </p>
           </div>
           <div className="border-border bg-card rounded-none border p-4">

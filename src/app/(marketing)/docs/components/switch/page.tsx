@@ -17,9 +17,7 @@ export default function SwitchPage() {
         preview: (
           <div className="flex items-center gap-2">
             <Switch id="notifications" />
-            <Label htmlFor="notifications">
-              {formatLabel('Enable notifications')}
-            </Label>
+            <Label htmlFor="notifications">{formatLabel('Enable notifications')}</Label>
           </div>
         ),
         code: `<div className="flex items-center gap-2">
@@ -72,15 +70,11 @@ export default function SwitchPage() {
           preview: (
             <div className="grid gap-4">
               <div className="flex items-center justify-between">
-                <Label htmlFor="emails">
-                  {formatLabel('Email notifications')}
-                </Label>
+                <Label htmlFor="emails">{formatLabel('Email notifications')}</Label>
                 <Switch id="emails" defaultChecked />
               </div>
               <div className="flex items-center justify-between">
-                <Label htmlFor="push">
-                  {formatLabel('Push notifications')}
-                </Label>
+                <Label htmlFor="push">{formatLabel('Push notifications')}</Label>
                 <Switch id="push" />
               </div>
               <div className="flex items-center justify-between">

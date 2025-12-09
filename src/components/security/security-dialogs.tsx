@@ -22,21 +22,15 @@ interface Disable2FADialogProps {
   onConfirm: () => void;
 }
 
-export function Disable2FADialog({
-  open,
-  onOpenChange,
-  onConfirm,
-}: Disable2FADialogProps) {
+export function Disable2FADialog({ open, onOpenChange, onConfirm }: Disable2FADialogProps) {
   return (
     <AlertDialog open={open} onOpenChange={onOpenChange}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>
-            Disable Two-Factor Authentication?
-          </AlertDialogTitle>
+          <AlertDialogTitle>Disable Two-Factor Authentication?</AlertDialogTitle>
           <AlertDialogDescription>
-            This will remove an important security layer from your account. You
-            will only need your password to sign in.
+            This will remove an important security layer from your account. You will only need your
+            password to sign in.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
@@ -72,15 +66,13 @@ export function DisconnectAccountDialog({
         <AlertDialogHeader>
           <AlertDialogTitle>Disconnect {provider} Account?</AlertDialogTitle>
           <AlertDialogDescription>
-            This will disconnect your {provider} account. You&apos;ll need
-            another way to sign in (password or another OAuth provider).
+            This will disconnect your {provider} account. You&apos;ll need another way to sign in
+            (password or another OAuth provider).
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
-          <AlertDialogAction onClick={onConfirm}>
-            &gt; DISCONNECT
-          </AlertDialogAction>
+          <AlertDialogAction onClick={onConfirm}>&gt; DISCONNECT</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
@@ -104,15 +96,13 @@ export function InvalidateSessionsDialog({
         <AlertDialogHeader>
           <AlertDialogTitle>Sign Out All Other Sessions?</AlertDialogTitle>
           <AlertDialogDescription>
-            This will log you out of all devices except this one. You&apos;ll
-            need to sign in again on those devices.
+            This will log you out of all devices except this one. You&apos;ll need to sign in again
+            on those devices.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
-          <AlertDialogAction onClick={onConfirm}>
-            &gt; SIGN_OUT_ALL_SESSIONS
-          </AlertDialogAction>
+          <AlertDialogAction onClick={onConfirm}>&gt; SIGN_OUT_ALL_SESSIONS</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

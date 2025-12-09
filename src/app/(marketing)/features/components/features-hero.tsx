@@ -33,18 +33,10 @@ export function FeaturesHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h1 className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>
-              FABRK_FEATURES:
-            </h1>
-            <h2
-              className={cn(
-                'mb-6 text-4xl font-semibold tracking-tight',
-                mode.font
-              )}
-            >
+            <h1 className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>FABRK_FEATURES:</h1>
+            <h2 className={cn('mb-6 text-4xl font-semibold tracking-tight', mode.font)}>
               EVERY_FEATURE_YOU_NEED
-              <br className="hidden sm:block" />{' '}
-              <span className="text-primary">ALREADY_BUILT</span>
+              <br className="hidden sm:block" /> <span className="text-primary">ALREADY_BUILT</span>
             </h2>
           </motion.div>
 
@@ -57,16 +49,10 @@ export function FeaturesHero() {
             <Card size="auto">
               <CardHeader code="0x01" title="STATUS" />
               <CardContent padding="md">
-                <p
-                  className={cn(
-                    'text-muted-foreground mb-4 text-xs',
-                    mode.font
-                  )}
-                >
-                  Stop rebuilding the same features for every project. Fabrk
-                  includes authentication, payments, database, real-time,
-                  multi-tenancy, admin dashboard, and more - all
-                  production-tested and ready to deploy.
+                <p className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
+                  Stop rebuilding the same features for every project. Fabrk includes
+                  authentication, payments, database, real-time, multi-tenancy, admin dashboard, and
+                  more - all production-tested and ready to deploy.
                 </p>
                 <div className={cn('flex flex-wrap gap-4 text-xs', mode.font)}>
                   <span>

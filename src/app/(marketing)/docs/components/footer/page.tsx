@@ -10,15 +10,10 @@ function FooterDemo() {
     <footer className="border-border bg-background w-full border">
       {/* Tech Stack Bar */}
       <div className="border-border border-b p-4">
-        <div className="text-muted-foreground mb-2 font-mono text-xs">
-          [ TECH_STACK ]
-        </div>
+        <div className="text-muted-foreground mb-2 font-mono text-xs">[ TECH_STACK ]</div>
         <div className="flex flex-wrap gap-2">
           {['NEXT.JS', 'REACT', 'TYPESCRIPT', 'TAILWIND'].map((tech) => (
-            <span
-              key={tech}
-              className="border-border bg-card border px-2 py-1 font-mono text-xs"
-            >
+            <span key={tech} className="border-border bg-card border px-2 py-1 font-mono text-xs">
               {tech} <span className="text-success">[OK]</span>
             </span>
           ))}
@@ -47,9 +42,7 @@ function FooterDemo() {
           <CardHeader code="0x00" title="COMPONENT" />
           <div className="divide-border grid grid-cols-3 divide-x">
             <div className="p-4">
-              <div className="text-muted-foreground mb-2 font-mono text-xs">
-                [ PRODUCT ]
-              </div>
+              <div className="text-muted-foreground mb-2 font-mono text-xs">[ PRODUCT ]</div>
               <div className="flex flex-col gap-1">
                 <Link
                   href="#"
@@ -66,9 +59,7 @@ function FooterDemo() {
               </div>
             </div>
             <div className="p-4">
-              <div className="text-muted-foreground mb-2 font-mono text-xs">
-                [ COMPANY ]
-              </div>
+              <div className="text-muted-foreground mb-2 font-mono text-xs">[ COMPANY ]</div>
               <div className="flex flex-col gap-1">
                 <Link
                   href="#"
@@ -85,9 +76,7 @@ function FooterDemo() {
               </div>
             </div>
             <div className="p-4">
-              <div className="text-muted-foreground mb-2 font-mono text-xs">
-                [ LEGAL ]
-              </div>
+              <div className="text-muted-foreground mb-2 font-mono text-xs">[ LEGAL ]</div>
               <div className="flex flex-col gap-1">
                 <Link
                   href="#"
@@ -122,26 +111,15 @@ function SimpleFooterDemo() {
   return (
     <footer className="border-border bg-background w-full border p-4">
       <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-        <span className="text-muted-foreground font-mono text-xs">
-          © 2024 Your Company
-        </span>
+        <span className="text-muted-foreground font-mono text-xs">© 2024 Your Company</span>
         <nav className="flex gap-4">
-          <Link
-            href="#"
-            className="text-muted-foreground hover:text-foreground font-mono text-xs"
-          >
+          <Link href="#" className="text-muted-foreground hover:text-foreground font-mono text-xs">
             Privacy
           </Link>
-          <Link
-            href="#"
-            className="text-muted-foreground hover:text-foreground font-mono text-xs"
-          >
+          <Link href="#" className="text-muted-foreground hover:text-foreground font-mono text-xs">
             Terms
           </Link>
-          <Link
-            href="#"
-            className="text-muted-foreground hover:text-foreground font-mono text-xs"
-          >
+          <Link href="#" className="text-muted-foreground hover:text-foreground font-mono text-xs">
             Contact
           </Link>
         </nav>

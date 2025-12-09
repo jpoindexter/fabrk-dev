@@ -25,8 +25,5 @@ export function verifyApiKey(key: string, hash: string): boolean {
   const keyHash = hashApiKey(key);
 
   // Constant-time comparison to prevent timing attacks
-  return crypto.timingSafeEqual(
-    Buffer.from(keyHash, 'hex'),
-    Buffer.from(hash, 'hex')
-  );
+  return crypto.timingSafeEqual(Buffer.from(keyHash, 'hex'), Buffer.from(hash, 'hex'));
 }

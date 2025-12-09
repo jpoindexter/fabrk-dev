@@ -39,29 +39,23 @@ export type ToastViewportProps = React.ComponentProps<'div'>;
 
 export type ToasterProps = React.HTMLAttributes<HTMLDivElement>;
 
-export const Toaster = React.forwardRef<HTMLDivElement, ToasterProps>(
-  ({ ...props }, ref) => {
-    const toasts: ToastItem[] = [];
+export const Toaster = React.forwardRef<HTMLDivElement, ToasterProps>(({ ...props }, ref) => {
+  const toasts: ToastItem[] = [];
 
-    return (
-      <div data-slot="toaster" ref={ref} {...props}>
-        <ToastProvider>
-          {toasts.map(function ({ id, ...props }: ToastItem) {
-            return <Toast key={id} id={id} {...props} />;
-          })}
-        </ToastProvider>
-      </div>
-    );
-  }
-);
+  return (
+    <div data-slot="toaster" ref={ref} {...props}>
+      <ToastProvider>
+        {toasts.map(function ({ id, ...props }: ToastItem) {
+          return <Toast key={id} id={id} {...props} />;
+        })}
+      </ToastProvider>
+    </div>
+  );
+});
 Toaster.displayName = 'Toaster';
 
 // Export additional components for test compatibility
-export const ToastAction = ({
-  children,
-  altText,
-  ...props
-}: ToastActionInnerProps) => (
+export const ToastAction = ({ children, altText, ...props }: ToastActionInnerProps) => (
   <button data-slot="toast-action" aria-label={altText} {...props}>
     {children}
   </button>
@@ -75,10 +69,7 @@ export const ToastTitle = ({ children }: ToastContentProps) => (
 );
 ToastTitle.displayName = 'ToastTitle';
 export const ToastDescription = ({ children }: ToastContentProps) => (
-  <div
-    data-slot="toast-description"
-    className={`"text-sm" dark:text-muted-foreground opacity-90`}
-  >
+  <div data-slot="toast-description" className={`"text-sm" dark:text-muted-foreground opacity-90`}>
     {children}
   </div>
 );

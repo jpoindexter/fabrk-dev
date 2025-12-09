@@ -37,16 +37,14 @@ export function InteractiveDemo() {
               LIVE_DEMO_EXPLORE_TEMPLATES
             </h2>
             <p className="text-muted-foreground mx-auto max-w-2xl text-sm">
-              &gt; See production-ready dashboards, data tables, and settings
-              pages. Click tabs to explore.
+              &gt; See production-ready dashboards, data tables, and settings pages. Click tabs to
+              explore.
             </p>
           </div>
 
           {/* Tabbed Demo */}
           <Tabs defaultValue="team" className="space-y-6">
-            <TabsList
-              className={cn('grid w-full grid-cols-4 gap-2', mode.radius)}
-            >
+            <TabsList className={cn('grid w-full grid-cols-4 gap-2', mode.radius)}>
               {DEMO_ROUTES.map((route) => (
                 <TabsTrigger
                   key={route.id}
@@ -82,12 +80,10 @@ export function InteractiveDemo() {
                 <CardHeader title="INFO" />
                 <CardContent>
                   <p className="text-foreground text-xs">
-                    <span className="text-primary font-semibold">
-                      [FULLY_INTERACTIVE]
-                    </span>{' '}
-                    All dashboards and tables are fully functional. Sort
-                    columns, filter data, toggle settings, and explore the full
-                    UX. These are the exact templates included in Fabrk.
+                    <span className="text-primary font-semibold">[FULLY_INTERACTIVE]</span> All
+                    dashboards and tables are fully functional. Sort columns, filter data, toggle
+                    settings, and explore the full UX. These are the exact templates included in
+                    Fabrk.
                   </p>
                 </CardContent>
               </Card>

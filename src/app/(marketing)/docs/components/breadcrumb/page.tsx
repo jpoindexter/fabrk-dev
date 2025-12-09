@@ -151,9 +151,7 @@ export default function BreadcrumbDocsPage() {
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                  <BreadcrumbLink href="/docs/components">
-                    Components
-                  </BreadcrumbLink>
+                  <BreadcrumbLink href="/docs/components">Components</BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
@@ -216,15 +214,9 @@ export default function BreadcrumbDocsPage() {
                       <BreadcrumbEllipsis className="h-4 w-4" />
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="start">
-                      <DropdownMenuItem className="font-semibold">
-                        Documentation
-                      </DropdownMenuItem>
-                      <DropdownMenuItem className="font-semibold">
-                        Guides
-                      </DropdownMenuItem>
-                      <DropdownMenuItem className="font-semibold">
-                        Components
-                      </DropdownMenuItem>
+                      <DropdownMenuItem className="font-semibold">Documentation</DropdownMenuItem>
+                      <DropdownMenuItem className="font-semibold">Guides</DropdownMenuItem>
+                      <DropdownMenuItem className="font-semibold">Components</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </BreadcrumbItem>
@@ -238,8 +230,7 @@ export default function BreadcrumbDocsPage() {
         },
         {
           title: 'With Next.js Link',
-          description:
-            'Use asChild prop to integrate with Next.js Link component',
+          description: 'Use asChild prop to integrate with Next.js Link component',
           code: `import Link from "next/link";
 
 <Breadcrumb>
@@ -288,8 +279,7 @@ export default function BreadcrumbDocsPage() {
         {
           name: 'separator',
           type: 'React.ReactNode',
-          description:
-            'Custom separator to use between breadcrumb items on the Breadcrumb root',
+          description: 'Custom separator to use between breadcrumb items on the Breadcrumb root',
         },
         {
           name: 'asChild',

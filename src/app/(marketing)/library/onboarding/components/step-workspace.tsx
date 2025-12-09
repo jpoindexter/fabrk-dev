@@ -52,12 +52,8 @@ export function StepWorkspace({
   return (
     <div className="space-y-6">
       <div>
-        <h2 className={cn(mode.font, 'mb-1 text-xl font-semibold')}>
-          Your Workspace
-        </h2>
-        <p className={cn(mode.font, 'text-muted-foreground text-xs')}>
-          Set up your team workspace
-        </p>
+        <h2 className={cn(mode.font, 'mb-1 text-xl font-semibold')}>Your Workspace</h2>
+        <p className={cn(mode.font, 'text-muted-foreground text-xs')}>Set up your team workspace</p>
       </div>
 
       <div className="space-y-4">
@@ -92,9 +88,7 @@ export function StepWorkspace({
         </div>
 
         <div className="space-y-2">
-          <Label className={cn(mode.font, 'text-xs')}>
-            [PRIMARY_USE_CASE]:
-          </Label>
+          <Label className={cn(mode.font, 'text-xs')}>[PRIMARY_USE_CASE]:</Label>
           <div className="space-y-2">
             {useCases.map((useCase) => (
               <div key={useCase.id} className="flex items-center space-x-2">
@@ -103,10 +97,7 @@ export function StepWorkspace({
                   checked={selectedUseCases.includes(useCase.id)}
                   onCheckedChange={() => onToggleUseCase(useCase.id)}
                 />
-                <label
-                  htmlFor={useCase.id}
-                  className={cn(mode.font, 'cursor-pointer text-xs')}
-                >
+                <label htmlFor={useCase.id} className={cn(mode.font, 'cursor-pointer text-xs')}>
                   {useCase.label}
                 </label>
               </div>

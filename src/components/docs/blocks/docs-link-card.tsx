@@ -40,9 +40,7 @@ export function DocsLinkCard({
         </div>
         {/* Content */}
         <div className="p-4">
-          <p className="text-muted-foreground font-mono text-xs">
-            DESC: {description}
-          </p>
+          <p className="text-muted-foreground font-mono text-xs">DESC: {description}</p>
         </div>
       </div>
     </Link>

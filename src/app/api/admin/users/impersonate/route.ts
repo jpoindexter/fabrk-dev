@@ -24,10 +24,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     const { userId, reason } = body;
 
     if (!userId) {
-      return NextResponse.json(
-        { error: 'User ID is required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'User ID is required' }, { status: 400 });
     }
 
     // Find target user
@@ -104,10 +101,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     });
   } catch (error) {
     logger.error('Error starting impersonation:', error);
-    return NextResponse.json(
-      { error: 'Failed to start impersonation' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to start impersonation' }, { status: 500 });
   }
 });
 
@@ -121,10 +115,7 @@ export async function DELETE() {
     const impersonationCookie = cookieStore.get(IMPERSONATION_COOKIE);
 
     if (!impersonationCookie) {
-      return NextResponse.json(
-        { error: 'Not currently impersonating' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Not currently impersonating' }, { status: 400 });
     }
 
     const impersonationData = JSON.parse(impersonationCookie.value);
@@ -137,8 +128,7 @@ export async function DELETE() {
         resource: 'user',
         resourceId: impersonationData.targetUserId,
         metadata: {
-          duration:
-            Date.now() - new Date(impersonationData.startedAt).getTime(),
+          duration: Date.now() - new Date(impersonationData.startedAt).getTime(),
         },
       },
     });
@@ -158,10 +148,7 @@ export async function DELETE() {
     });
   } catch (error) {
     logger.error('Error ending impersonation:', error);
-    return NextResponse.json(
-      { error: 'Failed to end impersonation' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to end impersonation' }, { status: 500 });
   }
 }
 

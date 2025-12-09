@@ -15,8 +15,7 @@ export default function ContainerPage() {
         preview: (
           <Container className="border-border bg-card border">
             <div className="border-muted-foreground/30 rounded-none border border-dashed p-4">
-              <span className="text-primary">&gt;</span> Container with default
-              size (2xl)
+              <span className="text-primary">&gt;</span> Container with default size (2xl)
             </div>
           </Container>
         ),
@@ -155,8 +154,7 @@ export default function ContainerPage() {
           name: 'as',
           type: 'React.ElementType',
           default: '"div"',
-          description:
-            'HTML element to render (div, main, section, article, etc.).',
+          description: 'HTML element to render (div, main, section, article, etc.).',
         },
       ]}
       accessibility={[

@@ -27,11 +27,7 @@ export default function InputSearchPage() {
   placeholder="Search..."
 />`,
         preview: (
-          <InputSearch
-            value={searchValue}
-            onValueChange={setSearchValue}
-            placeholder="Search..."
-          />
+          <InputSearch value={searchValue} onValueChange={setSearchValue} placeholder="Search..." />
         ),
       }}
       variants={[
@@ -79,13 +75,7 @@ export default function InputSearchPage() {
   disabled
   placeholder="Disabled..."
 />`,
-          preview: (
-            <InputSearch
-              value="Disabled search"
-              disabled
-              placeholder="Disabled..."
-            />
-          ),
+          preview: <InputSearch value="Disabled search" disabled placeholder="Disabled..." />,
         },
         {
           title: 'With Clear Handler',

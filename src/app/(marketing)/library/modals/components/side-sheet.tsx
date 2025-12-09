@@ -39,10 +39,7 @@ export function SideSheet({ open, onOpenChange }: SideSheetProps) {
 
         <Sheet open={open} onOpenChange={onOpenChange}>
           <SheetTrigger asChild>
-            <Button
-              variant="outline"
-              className={cn(mode.radius, mode.font, 'text-xs')}
-            >
+            <Button variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
               <Menu className="mr-1 h-3 w-3" />
               &gt; OPEN_DRAWER
             </Button>
@@ -56,12 +53,7 @@ export function SideSheet({ open, onOpenChange }: SideSheetProps) {
             </SheetHeader>
             <div className="space-y-4 py-6">
               <div className="border-border border p-4">
-                <div
-                  className={cn(
-                    mode.font,
-                    'text-muted-foreground mb-2 text-xs'
-                  )}
-                >
+                <div className={cn(mode.font, 'text-muted-foreground mb-2 text-xs')}>
                   [GENERAL]:
                 </div>
                 <div className="space-y-2">
@@ -76,9 +68,7 @@ export function SideSheet({ open, onOpenChange }: SideSheetProps) {
                     </Button>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className={cn(mode.font, 'text-sm')}>
-                      Notifications
-                    </span>
+                    <span className={cn(mode.font, 'text-sm')}>Notifications</span>
                     <Button
                       variant="outline"
                       size="sm"
@@ -90,33 +80,20 @@ export function SideSheet({ open, onOpenChange }: SideSheetProps) {
                 </div>
               </div>
               <div className="border-border border p-4">
-                <div
-                  className={cn(
-                    mode.font,
-                    'text-muted-foreground mb-2 text-xs'
-                  )}
-                >
+                <div className={cn(mode.font, 'text-muted-foreground mb-2 text-xs')}>
                   [ACCOUNT]:
                 </div>
                 <div className="space-y-2">
                   <Button
                     variant="ghost"
-                    className={cn(
-                      mode.radius,
-                      mode.font,
-                      'w-full justify-start text-xs'
-                    )}
+                    className={cn(mode.radius, mode.font, 'w-full justify-start text-xs')}
                   >
                     <Edit className="mr-2 h-3 w-3" />
                     Edit Profile
                   </Button>
                   <Button
                     variant="ghost"
-                    className={cn(
-                      mode.radius,
-                      mode.font,
-                      'w-full justify-start text-xs'
-                    )}
+                    className={cn(mode.radius, mode.font, 'w-full justify-start text-xs')}
                   >
                     <Settings className="mr-2 h-3 w-3" />
                     Preferences

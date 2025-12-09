@@ -51,10 +51,7 @@ export async function getTrialStatus(userId: string): Promise<TrialStatus> {
 
   // Calculate days remaining
   const msRemaining = trialEndsAt.getTime() - now.getTime();
-  const daysRemaining = Math.max(
-    0,
-    Math.ceil(msRemaining / (1000 * 60 * 60 * 24))
-  );
+  const daysRemaining = Math.max(0, Math.ceil(msRemaining / (1000 * 60 * 60 * 24)));
 
   return {
     isInTrial: !isExpired && user.tier === 'trial',

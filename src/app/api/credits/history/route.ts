@@ -5,11 +5,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
-import {
-  getTransactionHistory,
-  getUsageStats,
-  getTotalUsage,
-} from '@/lib/credits';
+import { getTransactionHistory, getUsageStats, getTotalUsage } from '@/lib/credits';
 
 export async function GET(request: NextRequest) {
   try {
@@ -45,9 +41,6 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(response);
   } catch (error) {
     console.error('Error fetching transaction history:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch history' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to fetch history' }, { status: 500 });
   }
 }

@@ -63,10 +63,8 @@ title = 'Rate_Limiting';
 ### Descriptions
 
 ```tsx
-description =
-  'Protect your forms and API endpoints from cross-site request forgery attacks.';
-description =
-  'Protect your API endpoints from abuse with configurable rate limiting middleware.';
+description = 'Protect your forms and API endpoints from cross-site request forgery attacks.';
+description = 'Protect your API endpoints from abuse with configurable rate limiting middleware.';
 ```
 
 - **Style**: Security-focused, protective language

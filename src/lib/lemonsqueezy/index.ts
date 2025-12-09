@@ -3,11 +3,7 @@
  * Payment processing with Lemon Squeezy
  */
 
-export {
-  initLemonSqueezy,
-  verifyLemonSqueezyConnection,
-  getStoreId,
-} from './client';
+export { initLemonSqueezy, verifyLemonSqueezyConnection, getStoreId } from './client';
 export {
   createLemonSqueezyCheckout,
   getVariantIdForTier,

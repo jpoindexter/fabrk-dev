@@ -40,23 +40,18 @@ const badgeVariants = cva(
     variants: {
       variant: {
         // Primary - main action/status
-        default:
-          'bg-primary text-primary-foreground border-primary hover:bg-primary/90',
+        default: 'bg-primary text-primary-foreground border-primary hover:bg-primary/90',
         // Secondary - muted status
-        secondary:
-          'bg-secondary text-secondary-foreground border-secondary hover:bg-secondary/90',
+        secondary: 'bg-secondary text-secondary-foreground border-secondary hover:bg-secondary/90',
         // Accent - highlighted status
-        accent:
-          'bg-accent text-accent-foreground border-accent hover:bg-accent/90',
+        accent: 'bg-accent text-accent-foreground border-accent hover:bg-accent/90',
         // Destructive - error/warning
         destructive:
           'bg-destructive text-destructive-foreground border-destructive hover:bg-destructive/90',
         // Neutral - subtle/default
-        neutral:
-          'bg-background text-foreground border-foreground hover:bg-muted',
+        neutral: 'bg-background text-foreground border-foreground hover:bg-muted',
         // Outline - bordered only
-        outline:
-          'bg-transparent border-foreground text-foreground hover:bg-foreground/10',
+        outline: 'bg-transparent border-foreground text-foreground hover:bg-foreground/10',
       },
       size: {
         // Compact sizing for consistent UI (matches tech stack pattern)

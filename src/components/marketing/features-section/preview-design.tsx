@@ -85,9 +85,7 @@ export function DesignSystemPreview() {
                 </motion.div>
                 <span className={cn(mode.font, 'text-xs')}>{item.label}</span>
               </div>
-              <span className={cn(mode.font, 'text-success text-xs')}>
-                {item.value}
-              </span>
+              <span className={cn(mode.font, 'text-success text-xs')}>{item.value}</span>
             </motion.div>
           ))}
         </div>
@@ -115,10 +113,7 @@ export function DesignSystemPreview() {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 1.2 + idx * 0.1 }}
-              className={cn(
-                mode.font,
-                'text-muted-foreground text-center text-xs'
-              )}
+              className={cn(mode.font, 'text-muted-foreground text-center text-xs')}
             >
               {color.name}
             </motion.span>

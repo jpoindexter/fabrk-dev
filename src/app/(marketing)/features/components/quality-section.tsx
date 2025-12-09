@@ -26,17 +26,11 @@ export function QualitySection() {
           <div className="mb-4">
             <Badge code="0x20" label="PRODUCTION_QUALITY" />
           </div>
-          <h2
-            className={cn(
-              'mb-4 text-2xl font-semibold tracking-tight',
-              mode.font
-            )}
-          >
+          <h2 className={cn('mb-4 text-2xl font-semibold tracking-tight', mode.font)}>
             PRODUCTION_QUALITY
           </h2>
           <p className={cn('text-muted-foreground text-xs', mode.font)}>
-            Not just boilerplate. Enterprise-grade code with comprehensive
-            testing.
+            Not just boilerplate. Enterprise-grade code with comprehensive testing.
           </p>
         </motion.div>
 
@@ -80,12 +74,7 @@ export function QualitySection() {
                     }
                   />
                   <CardContent padding="md" className="flex-1">
-                    <div
-                      className={cn(
-                        'text-foreground mb-3 text-xs font-semibold',
-                        mode.font
-                      )}
-                    >
+                    <div className={cn('text-foreground mb-3 text-xs font-semibold', mode.font)}>
                       {item.title}
                     </div>
                     <div className={cn('text-xs', mode.font)}>

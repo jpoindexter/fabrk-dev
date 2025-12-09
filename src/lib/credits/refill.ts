@@ -12,20 +12,14 @@ import { getTierAllowance, type SubscriptionTier } from './pricing';
  */
 export function isEligibleForRefill(lastRefill: Date): boolean {
   const now = new Date();
-  const oneMonthAgo = new Date(
-    now.getFullYear(),
-    now.getMonth() - 1,
-    now.getDate()
-  );
+  const oneMonthAgo = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate());
   return lastRefill <= oneMonthAgo;
 }
 
 /**
  * Refill a user's credits if eligible
  */
-export async function refillCreditsIfEligible(
-  userId: string
-): Promise<boolean> {
+export async function refillCreditsIfEligible(userId: string): Promise<boolean> {
   const balance = await prisma.creditBalance.findUnique({
     where: { userId },
     include: { user: { select: { tier: true } } },

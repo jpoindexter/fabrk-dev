@@ -42,10 +42,7 @@ export interface ConsentRecord {
 /**
  * Export all user data (GDPR Right to Access)
  */
-export async function exportUserData(
-  userId: string,
-  userEmail: string
-): Promise<GDPRDataExport> {
+export async function exportUserData(userId: string, userEmail: string): Promise<GDPRDataExport> {
   // Log the export request
   await AuditLog.gdprDataExported(userId, userEmail);
 
@@ -97,11 +94,7 @@ export async function deleteUserData(
     anonymize?: boolean; // Anonymize instead of hard delete
   } = {}
 ): Promise<{ success: boolean; deletedRecords: Record<string, number> }> {
-  const {
-    keepAuditLogs = true,
-    keepPaymentRecords = true,
-    anonymize = true,
-  } = options;
+  const { keepAuditLogs = true, keepPaymentRecords = true, anonymize = true } = options;
 
   // Log the deletion request
   await AuditLog.gdprDataDeleted(userId, userEmail);
@@ -183,9 +176,7 @@ export async function anonymizeUserData(userId: string): Promise<void> {
 /**
  * Record user consent
  */
-export async function recordConsent(
-  consent: Omit<ConsentRecord, 'consentDate'>
-): Promise<void> {
+export async function recordConsent(consent: Omit<ConsentRecord, 'consentDate'>): Promise<void> {
   const record: ConsentRecord = {
     ...consent,
     consentDate: new Date(),
@@ -200,10 +191,7 @@ export async function recordConsent(
 /**
  * Check if user has given consent
  */
-export async function hasConsent(
-  _userId: string,
-  _consentType: string
-): Promise<boolean> {
+export async function hasConsent(_userId: string, _consentType: string): Promise<boolean> {
   // In production, check database
   // const consent = await prisma.consent.findFirst({
   //   where: { userId, consentType },
@@ -217,10 +205,7 @@ export async function hasConsent(
 /**
  * Revoke user consent
  */
-export async function revokeConsent(
-  userId: string,
-  consentType: string
-): Promise<void> {
+export async function revokeConsent(userId: string, consentType: string): Promise<void> {
   await recordConsent({
     userId,
     consentType,
@@ -231,9 +216,7 @@ export async function revokeConsent(
 /**
  * Get all consents for user
  */
-export async function getUserConsents(
-  _userId: string
-): Promise<ConsentRecord[]> {
+export async function getUserConsents(_userId: string): Promise<ConsentRecord[]> {
   // In production:
   // return await prisma.consent.findMany({
   //   where: { userId },
@@ -334,10 +317,7 @@ You have the right to lodge a complaint with your local data protection authorit
 /**
  * Data Retention Policy Checker
  */
-export function shouldDeleteData(
-  createdAt: Date,
-  retentionPeriodDays: number
-): boolean {
+export function shouldDeleteData(createdAt: Date, retentionPeriodDays: number): boolean {
   const now = new Date();
   const daysSinceCreation = Math.floor(
     (now.getTime() - createdAt.getTime()) / (1000 * 60 * 60 * 24)
@@ -391,14 +371,8 @@ export function detectPII(text: string): {
  */
 export function redactPII(text: string): string {
   return text
-    .replace(
-      /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g,
-      '[EMAIL REDACTED]'
-    )
-    .replace(
-      /(\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/g,
-      '[PHONE REDACTED]'
-    )
+    .replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, '[EMAIL REDACTED]')
+    .replace(/(\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/g, '[PHONE REDACTED]')
     .replace(/\d{3}-\d{2}-\d{4}/g, '[SSN REDACTED]')
     .replace(/\d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4}/g, '[CARD REDACTED]');
 }

@@ -83,17 +83,14 @@ export function AdminMetricsCard({
                     'border-border flex items-center gap-1 px-2 py-0.5 text-xs font-semibold',
                     mode.radius,
                     isPositive && 'border-primary bg-primary/10 text-primary',
-                    isNegative &&
-                      'border-destructive bg-destructive/10 text-destructive',
+                    isNegative && 'border-destructive bg-destructive/10 text-destructive',
                     isNeutral && 'border-border bg-muted text-muted-foreground'
                   )}
                 >
                   <TrendIcon className="h-3 w-3" />
                   {Math.abs(change).toFixed(1)}%
                 </div>
-                <span className="text-muted-foreground text-xs">
-                  {changeLabel}
-                </span>
+                <span className="text-muted-foreground text-xs">{changeLabel}</span>
               </div>
             )}
           </>

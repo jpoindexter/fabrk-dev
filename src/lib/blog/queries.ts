@@ -62,9 +62,7 @@ export async function getPostBySlug(
 /**
  * Get a single post by ID (for admin)
  */
-export async function getPostById(
-  id: string
-): Promise<BlogPostWithAuthor | null> {
+export async function getPostById(id: string): Promise<BlogPostWithAuthor | null> {
   return prisma.blogPost.findUnique({
     where: { id },
     include: {
@@ -180,9 +178,7 @@ export async function incrementViewCount(id: string): Promise<void> {
 /**
  * Get all categories
  */
-export async function getCategories(): Promise<
-  (BlogCategory & { _count: { posts: number } })[]
-> {
+export async function getCategories(): Promise<(BlogCategory & { _count: { posts: number } })[]> {
   return prisma.blogCategory.findMany({
     include: { _count: { select: { posts: true } } },
     orderBy: { name: 'asc' },

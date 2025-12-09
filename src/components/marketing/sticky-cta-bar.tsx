@@ -88,9 +88,7 @@ export function StickyCTABar({
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             {/* Message */}
             <div className="flex flex-col items-center gap-2 sm:flex-row sm:items-center">
-              <span className="text-center text-xs font-medium sm:text-left">
-                {message}
-              </span>
+              <span className="text-center text-xs font-medium sm:text-left">{message}</span>
               {showPrice && (
                 <div className="flex items-center gap-2">
                   <span
@@ -110,11 +108,7 @@ export function StickyCTABar({
 
             {/* CTA + Dismiss */}
             <div className="flex items-center gap-2">
-              <Button
-                asChild
-                size="sm"
-                className={cn(mode.radius, mode.font, 'text-xs')}
-              >
+              <Button asChild size="sm" className={cn(mode.radius, mode.font, 'text-xs')}>
                 <Link href={ctaHref}>
                   &gt; {ctaText.toUpperCase().replace(/ /g, '_')}
                   <ArrowRight className="ml-2 h-3 w-3" />

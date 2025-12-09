@@ -4,12 +4,7 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import {
-  generateCSP,
-  securityHeaders,
-  isAllowedOrigin,
-  generateNonce,
-} from './headers';
+import { generateCSP, securityHeaders, isAllowedOrigin, generateNonce } from './headers';
 
 describe('generateCSP', () => {
   it('should generate valid CSP string', () => {
@@ -124,9 +119,7 @@ describe('securityHeaders', () => {
 
   it('should include X-Content-Type-Options', () => {
     const headers = securityHeaders();
-    const xContentType = headers.find(
-      (h) => h.key === 'X-Content-Type-Options'
-    );
+    const xContentType = headers.find((h) => h.key === 'X-Content-Type-Options');
 
     expect(xContentType).toBeDefined();
     expect(xContentType?.value).toBe('nosniff');
@@ -152,9 +145,7 @@ describe('securityHeaders', () => {
 
   it('should include Permissions-Policy', () => {
     const headers = securityHeaders();
-    const permissionsPolicy = headers.find(
-      (h) => h.key === 'Permissions-Policy'
-    );
+    const permissionsPolicy = headers.find((h) => h.key === 'Permissions-Policy');
 
     expect(permissionsPolicy).toBeDefined();
     expect(permissionsPolicy?.value).toContain('camera=()');
@@ -164,9 +155,7 @@ describe('securityHeaders', () => {
 
   it('should disable FLoC', () => {
     const headers = securityHeaders();
-    const permissionsPolicy = headers.find(
-      (h) => h.key === 'Permissions-Policy'
-    );
+    const permissionsPolicy = headers.find((h) => h.key === 'Permissions-Policy');
 
     expect(permissionsPolicy?.value).toContain('interest-cohort=()');
   });
@@ -189,9 +178,7 @@ describe('securityHeaders', () => {
 
   it('should include X-Permitted-Cross-Domain-Policies', () => {
     const headers = securityHeaders();
-    const crossDomain = headers.find(
-      (h) => h.key === 'X-Permitted-Cross-Domain-Policies'
-    );
+    const crossDomain = headers.find((h) => h.key === 'X-Permitted-Cross-Domain-Policies');
 
     expect(crossDomain).toBeDefined();
     expect(crossDomain?.value).toBe('none');
@@ -209,17 +196,13 @@ describe('isAllowedOrigin', () => {
   it('should return false for disallowed origin', () => {
     const allowedOrigins = ['https://example.com'];
 
-    expect(isAllowedOrigin('https://malicious.com', allowedOrigins)).toBe(
-      false
-    );
+    expect(isAllowedOrigin('https://malicious.com', allowedOrigins)).toBe(false);
   });
 
   it('should handle wildcard origin', () => {
     const allowedOrigins = ['*'];
 
-    expect(isAllowedOrigin('https://any-domain.com', allowedOrigins)).toBe(
-      true
-    );
+    expect(isAllowedOrigin('https://any-domain.com', allowedOrigins)).toBe(true);
     expect(isAllowedOrigin('https://malicious.com', allowedOrigins)).toBe(true);
   });
 

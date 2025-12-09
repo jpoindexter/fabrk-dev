@@ -37,10 +37,7 @@ export interface NotificationListProps {
   onDismiss?: (id: string) => void;
 }
 
-export const NotificationList = React.forwardRef<
-  HTMLDivElement,
-  NotificationListProps
->(
+export const NotificationList = React.forwardRef<HTMLDivElement, NotificationListProps>(
   (
     {
       className,
@@ -55,33 +52,14 @@ export const NotificationList = React.forwardRef<
   ) => {
     if (loading) {
       return (
-        <div
-          data-slot="notification-list"
-          ref={ref}
-          className={cn(`space-y-2`, className, '')}
-        >
+        <div data-slot="notification-list" ref={ref} className={cn(`space-y-2`, className, '')}>
           {[...Array(3)].map((_, i) => (
             <div key={i} className={`animate-pulse`}>
               <div className={`flex gap-6`}>
-                <div
-                  className={cn(
-                    `"h-8 w-8" border-border bg-card border`,
-                    mode.radius
-                  )}
-                />
+                <div className={cn(`"h-8 w-8" border-border bg-card border`, mode.radius)} />
                 <div className={`flex-1 space-y-2`}>
-                  <div
-                    className={cn(
-                      'border-border bg-card h-4 w-3/4 border',
-                      mode.radius
-                    )}
-                  />
-                  <div
-                    className={cn(
-                      'border-border bg-card h-3 w-1/2 border',
-                      mode.radius
-                    )}
-                  />
+                  <div className={cn('border-border bg-card h-4 w-3/4 border', mode.radius)} />
+                  <div className={cn('border-border bg-card h-3 w-1/2 border', mode.radius)} />
                 </div>
               </div>
             </div>
@@ -92,9 +70,7 @@ export const NotificationList = React.forwardRef<
 
     if (error) {
       return (
-        <div className={cn('text-destructive p-6', className, '')}>
-          Error loading notifications
-        </div>
+        <div className={cn('text-destructive p-6', className, '')}>Error loading notifications</div>
       );
     }
 
@@ -111,9 +87,7 @@ export const NotificationList = React.forwardRef<
         case 'error':
           return <X className={`"h-4 w-4" text-destructive`} />;
         default:
-          return (
-            <Bell className={`"h-4 w-4" text-primary dark:text-primary`} />
-          );
+          return <Bell className={`"h-4 w-4" text-primary dark:text-primary`} />;
       }
     };
 

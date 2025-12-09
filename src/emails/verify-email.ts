@@ -7,10 +7,7 @@ export interface VerifyEmailProps {
   verificationUrl: string;
 }
 
-export function generateVerifyEmailHTML({
-  name,
-  verificationUrl,
-}: VerifyEmailProps): string {
+export function generateVerifyEmailHTML({ name, verificationUrl }: VerifyEmailProps): string {
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -89,10 +86,7 @@ export function generateVerifyEmailHTML({
   `.trim();
 }
 
-export function generateVerifyEmailText({
-  name,
-  verificationUrl,
-}: VerifyEmailProps): string {
+export function generateVerifyEmailText({ name, verificationUrl }: VerifyEmailProps): string {
   return `
 Verify Your Email
 

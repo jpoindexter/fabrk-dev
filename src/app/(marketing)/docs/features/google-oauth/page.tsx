@@ -215,15 +215,11 @@ export function LoginForm() {
         <DocsCard title="BEST_PRACTICES">
           <ul className="space-y-1">
             <li>├─ Always offer email/password as an alternative to OAuth</li>
-            <li>
-              ├─ Handle account linking for users who sign up with email first
-            </li>
+            <li>├─ Handle account linking for users who sign up with email first</li>
             <li>├─ Request minimal scopes (email, profile, openid)</li>
             <li>├─ Store refresh tokens securely if you need offline access</li>
             <li>├─ Publish your app for production (removes 100 user limit)</li>
-            <li>
-              ├─ Add your privacy policy and terms links to consent screen
-            </li>
+            <li>├─ Add your privacy policy and terms links to consent screen</li>
             <li>└─ Test with multiple Google accounts during development</li>
           </ul>
         </DocsCard>

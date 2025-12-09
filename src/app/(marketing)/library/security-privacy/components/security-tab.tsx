@@ -36,11 +36,7 @@ export function SecurityTab({
     <div className="space-y-6">
       {/* 2FA Section */}
       <Card tone="neutral">
-        <CardHeader
-          code="0x06"
-          title="TWO_FACTOR"
-          icon={<Smartphone className="h-4 w-4" />}
-        />
+        <CardHeader code="0x06" title="TWO_FACTOR" icon={<Smartphone className="h-4 w-4" />} />
         <CardContent padding="md">
           <div className="mb-4 flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -67,13 +63,10 @@ export function SecurityTab({
             </span>
           </div>
           <p className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-            Use an authenticator app like Google Authenticator or Authy to
-            generate time-based codes.
+            Use an authenticator app like Google Authenticator or Authy to generate time-based
+            codes.
           </p>
-          <Button
-            onClick={onEnable2FA}
-            className={cn(mode.radius, mode.font, 'text-xs')}
-          >
+          <Button onClick={onEnable2FA} className={cn(mode.radius, mode.font, 'text-xs')}>
             <Smartphone className="mr-2 h-4 w-4" />
             &gt; {twoFactorEnabled ? 'MANAGE_2FA' : 'ENABLE_2FA'}
           </Button>
@@ -82,11 +75,7 @@ export function SecurityTab({
 
       {/* Active Sessions */}
       <Card tone="neutral">
-        <CardHeader
-          code="0x07"
-          title="SESSIONS"
-          icon={<Clock className="h-4 w-4" />}
-        />
+        <CardHeader code="0x07" title="SESSIONS" icon={<Clock className="h-4 w-4" />} />
         <CardContent padding="md">
           <div className="mb-4 flex items-center gap-4">
             <div className="border-border bg-primary/10 flex h-10 w-10 items-center justify-center border">
@@ -116,9 +105,7 @@ export function SecurityTab({
                   <div className="text-muted-foreground">
                     {session.location} • {session.ip}
                   </div>
-                  <div className="text-muted-foreground">
-                    Last active: {session.lastActive}
-                  </div>
+                  <div className="text-muted-foreground">Last active: {session.lastActive}</div>
                 </div>
                 {!session.isCurrent && (
                   <Button
@@ -149,11 +136,7 @@ export function SecurityTab({
 
       {/* Password */}
       <Card tone="neutral">
-        <CardHeader
-          code="0x08"
-          title="PASSWORD"
-          icon={<Key className="h-4 w-4" />}
-        />
+        <CardHeader code="0x08" title="PASSWORD" icon={<Key className="h-4 w-4" />} />
         <CardContent padding="md">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -161,19 +144,13 @@ export function SecurityTab({
                 <Key className="text-primary h-5 w-5" />
               </div>
               <div>
+                <div className={cn(mode.font, 'text-muted-foreground text-xs')}>[PASSWORD]:</div>
                 <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                  [PASSWORD]:
-                </div>
-                <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                  Last changed:{' '}
-                  {new Date(lastPasswordChange).toLocaleDateString()}
+                  Last changed: {new Date(lastPasswordChange).toLocaleDateString()}
                 </div>
               </div>
             </div>
-            <Button
-              variant="outline"
-              className={cn(mode.radius, mode.font, 'text-xs')}
-            >
+            <Button variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
               &gt; CHANGE_PASSWORD
             </Button>
           </div>

@@ -9,11 +9,7 @@ import { prisma } from '@/lib/prisma';
 import { withCsrfProtection } from '@/lib/security/csrf';
 import { z } from 'zod';
 import { logger } from '@/lib/logger';
-import {
-  checkRateLimit,
-  getClientIdentifier,
-  RateLimiters,
-} from '@/lib/security/rate-limit';
+import { checkRateLimit, getClientIdentifier, RateLimiters } from '@/lib/security/rate-limit';
 
 const suspendSchema = z.object({
   userId: z.string(),
@@ -38,9 +34,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
             'X-RateLimit-Limit': rateLimit.limit.toString(),
             'X-RateLimit-Remaining': rateLimit.remaining.toString(),
             'X-RateLimit-Reset': rateLimit.reset.toString(),
-            'Retry-After': Math.ceil(
-              (rateLimit.reset - Date.now()) / 1000
-            ).toString(),
+            'Retry-After': Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
           },
         }
       );
@@ -50,10 +44,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
 
     // Check if user is admin
     if (!session?.user?.id || session.user.role !== 'ADMIN') {
-      return NextResponse.json(
-        { error: 'Unauthorized. Admin access required.' },
-        { status: 403 }
-      );
+      return NextResponse.json({ error: 'Unauthorized. Admin access required.' }, { status: 403 });
     }
 
     const body = await req.json();
@@ -61,10 +52,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
 
     // Prevent user from suspending themselves
     if (validatedData.userId === session.user.id) {
-      return NextResponse.json(
-        { error: 'Cannot suspend your own account' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Cannot suspend your own account' }, { status: 400 });
     }
 
     // Delete all active sessions to effectively suspend the user
@@ -78,16 +66,10 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     });
   } catch (error: unknown) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: 'Invalid input', details: error.issues },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Invalid input', details: error.issues }, { status: 400 });
     }
 
     logger.error('[Admin Suspend User] Error:', error);
-    return NextResponse.json(
-      { error: 'Failed to suspend user' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to suspend user' }, { status: 500 });
   }
 });

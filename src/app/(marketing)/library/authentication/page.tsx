@@ -26,18 +26,9 @@ export default function AuthenticationPage() {
             </span>
           </div>
           <div className="flex items-center gap-4">
-            {categoryInfo && (
-              <categoryInfo.icon className="text-primary h-6 w-6" />
-            )}
-            <h1 className={cn(mode.font, 'text-4xl font-semibold')}>
-              Authentication
-            </h1>
-            <span
-              className={cn(
-                mode.font,
-                'border-border border px-2 py-0.5 text-xs'
-              )}
-            >
+            {categoryInfo && <categoryInfo.icon className="text-primary h-6 w-6" />}
+            <h1 className={cn(mode.font, 'text-4xl font-semibold')}>Authentication</h1>
+            <span className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}>
               COUNT: {categoryTemplates.length}
             </span>
           </div>
@@ -50,9 +41,7 @@ export default function AuthenticationPage() {
               <div className="group border-border bg-card hover:border-primary/50 border transition-colors">
                 {/* Card Header */}
                 <div className="border-border flex items-center justify-between border-b px-4 py-2">
-                  <span
-                    className={cn(mode.font, 'text-muted-foreground text-xs')}
-                  >
+                  <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
                     [TEMPLATE]: {template.id.toUpperCase().replace(/-/g, '_')}
                   </span>
                   <template.icon className="text-muted-foreground size-4" />
@@ -61,12 +50,7 @@ export default function AuthenticationPage() {
                 {/* Card Content */}
                 <div className="p-4">
                   {/* Status & Badge */}
-                  <div
-                    className={cn(
-                      mode.font,
-                      'mb-4 flex items-center justify-between text-xs'
-                    )}
-                  >
+                  <div className={cn(mode.font, 'mb-4 flex items-center justify-between text-xs')}>
                     <div>
                       <span className="text-muted-foreground">STATUS: </span>
                       <span className="text-success">READY</span>
@@ -79,36 +63,24 @@ export default function AuthenticationPage() {
                   </div>
 
                   {/* Title */}
-                  <h3 className={cn(mode.font, 'mb-2 text-lg font-semibold')}>
-                    {template.name}
-                  </h3>
+                  <h3 className={cn(mode.font, 'mb-2 text-lg font-semibold')}>{template.name}</h3>
 
                   {/* Description */}
                   <div className={cn(mode.font, 'mb-4 text-xs')}>
                     <span className="text-muted-foreground">DESC: </span>
-                    <span className="text-foreground">
-                      {template.description}
-                    </span>
+                    <span className="text-foreground">{template.description}</span>
                   </div>
 
                   {/* Features */}
                   <div className="mb-4">
-                    <div
-                      className={cn(
-                        mode.font,
-                        'text-muted-foreground mb-2 text-xs'
-                      )}
-                    >
+                    <div className={cn(mode.font, 'text-muted-foreground mb-2 text-xs')}>
                       [FEATURES]:
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {template.features.map((feature) => (
                         <span
                           key={feature}
-                          className={cn(
-                            mode.font,
-                            'border-border border px-2 py-0.5 text-xs'
-                          )}
+                          className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}
                         >
                           {feature}
                         </span>
@@ -145,35 +117,33 @@ export default function AuthenticationPage() {
         <Card>
           <CardHeader code="0x00" title="AUTH_FEATURES" />
           <CardContent padding="lg">
-            <div
-              className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}
-            >
+            <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
               [AUTH_TEMPLATES]:
             </div>
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> Pre-built flows for
-                Login, Register, and Recovery
+                <span className="text-success">&gt;</span> Pre-built flows for Login, Register, and
+                Recovery
               </div>
               <div>
-                <span className="text-success">&gt;</span> Integrated with
-                NextAuth v5 and OAuth providers
+                <span className="text-success">&gt;</span> Integrated with NextAuth v5 and OAuth
+                providers
               </div>
               <div>
-                <span className="text-success">&gt;</span> Form validation using
-                Zod and React Hook Form
+                <span className="text-success">&gt;</span> Form validation using Zod and React Hook
+                Form
               </div>
               <div>
-                <span className="text-success">&gt;</span> Accessible components
-                (ARIA) and keyboard navigation
+                <span className="text-success">&gt;</span> Accessible components (ARIA) and keyboard
+                navigation
               </div>
               <div>
-                <span className="text-success">&gt;</span> Responsive designs
-                that work on all devices
+                <span className="text-success">&gt;</span> Responsive designs that work on all
+                devices
               </div>
               <div>
-                <span className="text-success">&gt;</span> Secure implementation
-                with CSRF protection
+                <span className="text-success">&gt;</span> Secure implementation with CSRF
+                protection
               </div>
             </div>
           </CardContent>

@@ -172,21 +172,14 @@ export async function GET(request: NextRequest) {
 
     // Check if payment was successful
     if (session.payment_status !== 'paid') {
-      return NextResponse.json(
-        { error: 'Payment not completed' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Payment not completed' }, { status: 400 });
     }
 
     // Get customer email
-    const customerEmail =
-      session.customer_email || session.customer_details?.email;
+    const customerEmail = session.customer_email || session.customer_details?.email;
 
     if (!customerEmail) {
-      return NextResponse.json(
-        { error: 'Customer email not found' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Customer email not found' }, { status: 400 });
     }
 
     // Find payment in database
@@ -210,8 +203,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json(
         {
           error: 'Payment not found',
-          message:
-            'Your purchase is being processed. Please check your email for details.',
+          message: 'Your purchase is being processed. Please check your email for details.',
         },
         { status: 202 }
       );

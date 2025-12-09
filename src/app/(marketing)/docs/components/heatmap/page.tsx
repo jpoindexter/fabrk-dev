@@ -71,9 +71,7 @@ export default function HeatmapPage() {
         {
           title: 'With Values Displayed',
           description: 'Show numeric values inside each cell',
-          preview: (
-            <Heatmap data={compactData} showValues={true} cellSize={60} />
-          ),
+          preview: <Heatmap data={compactData} showValues={true} cellSize={60} />,
           code: `<Heatmap
   data={data}
   showValues={true}
@@ -132,9 +130,7 @@ export default function HeatmapPage() {
             <Heatmap
               data={monthlyData}
               cellSize={45}
-              onCellClick={(item) =>
-                alert(`${item.y} × ${item.x}: ${item.value}`)
-              }
+              onCellClick={(item) => alert(`${item.y} × ${item.x}: ${item.value}`)}
             />
           ),
           code: `<Heatmap
@@ -168,8 +164,7 @@ export default function HeatmapPage() {
           name: 'colorScale',
           type: 'string[]',
           default: '5-color blue gradient',
-          description:
-            'Array of colors for intensity gradient from low to high',
+          description: 'Array of colors for intensity gradient from low to high',
         },
         {
           name: 'showValues',

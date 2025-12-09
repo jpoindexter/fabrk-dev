@@ -80,10 +80,7 @@ export function AnalyticsTabs({
               {pageData.map((row, i) => (
                 <div
                   key={i}
-                  className={cn(
-                    mode.font,
-                    'hover:bg-muted/30 grid grid-cols-4 px-4 py-4 text-xs'
-                  )}
+                  className={cn(mode.font, 'hover:bg-muted/30 grid grid-cols-4 px-4 py-4 text-xs')}
                 >
                   <span className="text-foreground">{row.page}</span>
                   <span className="text-muted-foreground">{row.views}</span>
@@ -104,24 +101,15 @@ export function AnalyticsTabs({
           <div className="grid gap-4 md:grid-cols-2">
             {/* Traffic Sources */}
             <div className="border-border border p-4">
-              <div
-                className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}
-              >
+              <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
                 [TRAFFIC_SOURCES]:
               </div>
               <div className="space-y-4">
                 {trafficSources.map((source, i) => (
                   <div key={i} className="space-y-1">
-                    <div
-                      className={cn(
-                        mode.font,
-                        'flex items-center justify-between text-xs'
-                      )}
-                    >
+                    <div className={cn(mode.font, 'flex items-center justify-between text-xs')}>
                       <span className="text-foreground">{source.source}</span>
-                      <span className="text-muted-foreground">
-                        {source.percentage}%
-                      </span>
+                      <span className="text-muted-foreground">{source.percentage}%</span>
                     </div>
                     <Progress value={source.percentage} className="h-2" />
                   </div>
@@ -131,24 +119,15 @@ export function AnalyticsTabs({
 
             {/* Device Breakdown */}
             <div className="border-border border p-4">
-              <div
-                className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}
-              >
+              <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
                 [DEVICE_BREAKDOWN]:
               </div>
               <div className="space-y-4">
                 {deviceBreakdown.map((device, i) => (
                   <div key={i} className="space-y-1">
-                    <div
-                      className={cn(
-                        mode.font,
-                        'flex items-center justify-between text-xs'
-                      )}
-                    >
+                    <div className={cn(mode.font, 'flex items-center justify-between text-xs')}>
                       <span className="text-foreground">{device.device}</span>
-                      <span className="text-muted-foreground">
-                        {device.percentage}%
-                      </span>
+                      <span className="text-muted-foreground">{device.percentage}%</span>
                     </div>
                     <Progress value={device.percentage} className="h-2" />
                   </div>
@@ -178,15 +157,8 @@ export function AnalyticsTabs({
               <div key={i} className="border-border border p-4">
                 <div className="mb-4 flex items-start justify-between">
                   <div>
-                    <div className={cn(mode.font, 'text-foreground text-xs')}>
-                      [{report.name}]
-                    </div>
-                    <div
-                      className={cn(
-                        mode.font,
-                        'text-muted-foreground mt-1 text-xs'
-                      )}
-                    >
+                    <div className={cn(mode.font, 'text-foreground text-xs')}>[{report.name}]</div>
+                    <div className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
                       {report.desc}
                     </div>
                   </div>

@@ -3,10 +3,7 @@
  * Create checkout sessions for one-time and subscription payments
  */
 
-import {
-  createCheckout,
-  type NewCheckout,
-} from '@lemonsqueezy/lemonsqueezy.js';
+import { createCheckout, type NewCheckout } from '@lemonsqueezy/lemonsqueezy.js';
 import { initLemonSqueezy, getStoreId } from './client';
 import { logger } from '@/lib/logger';
 
@@ -43,14 +40,10 @@ export async function createLemonSqueezyCheckout(
     const checkoutData: NewCheckout = {
       productOptions: {
         enabledVariants: options.enabledVariants,
-        redirectUrl:
-          options.redirectUrl || `${process.env.NEXT_PUBLIC_APP_URL}/success`,
+        redirectUrl: options.redirectUrl || `${process.env.NEXT_PUBLIC_APP_URL}/success`,
         receiptButtonText: options.receiptButtonText || 'Go to Dashboard',
-        receiptLinkUrl:
-          options.receiptLinkUrl ||
-          `${process.env.NEXT_PUBLIC_APP_URL}/dashboard`,
-        receiptThankYouNote:
-          options.receiptThankYouNote || 'Thank you for your purchase!',
+        receiptLinkUrl: options.receiptLinkUrl || `${process.env.NEXT_PUBLIC_APP_URL}/dashboard`,
+        receiptThankYouNote: options.receiptThankYouNote || 'Thank you for your purchase!',
       },
       checkoutOptions: {
         embed: false,
@@ -67,11 +60,7 @@ export async function createLemonSqueezyCheckout(
       },
     };
 
-    const { data, error } = await createCheckout(
-      storeId,
-      options.variantId,
-      checkoutData
-    );
+    const { data, error } = await createCheckout(storeId, options.variantId, checkoutData);
 
     if (error) {
       logger.error('Lemon Squeezy checkout error:', error);

@@ -84,8 +84,5 @@ export function verifyWebhookSignature(
   const expectedSignature = hmac.digest('hex');
 
   // Timing-safe comparison
-  return crypto.timingSafeEqual(
-    Buffer.from(signature),
-    Buffer.from(expectedSignature)
-  );
+  return crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(expectedSignature));
 }

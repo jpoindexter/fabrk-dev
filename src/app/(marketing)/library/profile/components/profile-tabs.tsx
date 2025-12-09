@@ -64,9 +64,7 @@ export function ProfileTabs({ activity, projects }: ProfileTabsProps) {
                 </div>
                 <div className="flex-1">
                   <div className={cn(mode.font, 'text-sm')}>{item.title}</div>
-                  <div
-                    className={cn(mode.font, 'text-muted-foreground text-xs')}
-                  >
+                  <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
                     {item.timestamp}
                   </div>
                 </div>
@@ -86,21 +84,12 @@ export function ProfileTabs({ activity, projects }: ProfileTabsProps) {
               <div className="flex items-start justify-between">
                 <div>
                   <div className="mb-1 flex items-center gap-2">
-                    <span
-                      className={cn(
-                        mode.font,
-                        'text-primary text-sm font-medium'
-                      )}
-                    >
+                    <span className={cn(mode.font, 'text-primary text-sm font-medium')}>
                       {project.name}
                     </span>
                     <Badge
                       variant="outline"
-                      className={cn(
-                        mode.radius,
-                        mode.font,
-                        'border-border text-xs'
-                      )}
+                      className={cn(mode.radius, mode.font, 'border-border text-xs')}
                     >
                       {project.language}
                     </Badge>
@@ -110,18 +99,13 @@ export function ProfileTabs({ activity, projects }: ProfileTabsProps) {
                   </p>
                 </div>
                 <div
-                  className={cn(
-                    mode.font,
-                    'text-muted-foreground flex items-center gap-1 text-xs'
-                  )}
+                  className={cn(mode.font, 'text-muted-foreground flex items-center gap-1 text-xs')}
                 >
                   <Star className="h-3 w-3" />
                   {project.stars}
                 </div>
               </div>
-              <div
-                className={cn(mode.font, 'text-muted-foreground mt-2 text-xs')}
-              >
+              <div className={cn(mode.font, 'text-muted-foreground mt-2 text-xs')}>
                 Updated {project.updated}
               </div>
             </div>

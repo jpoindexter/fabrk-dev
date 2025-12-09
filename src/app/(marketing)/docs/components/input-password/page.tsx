@@ -41,9 +41,7 @@ export default function InputPasswordPage() {
         {
           title: 'Without Toggle',
           description: 'Password input without the visibility toggle.',
-          preview: (
-            <InputPassword placeholder="Hidden password" showToggle={false} />
-          ),
+          preview: <InputPassword placeholder="Hidden password" showToggle={false} />,
           code: `<InputPassword placeholder="Hidden password" showToggle={false} />`,
         },
         {

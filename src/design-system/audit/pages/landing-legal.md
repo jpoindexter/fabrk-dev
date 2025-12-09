@@ -265,9 +265,7 @@ transition={{ duration: 0.5/0.6, delay: 0/0.1/0.2 }}
   viewport={{ once: true }}
   className="border-border bg-card mt-12 border p-6"
 >
-  <span className="text-muted-foreground mb-4 block text-xs">
-    [ RELATED_DOCUMENTS ]
-  </span>
+  <span className="text-muted-foreground mb-4 block text-xs">[ RELATED_DOCUMENTS ]</span>
   <div className="flex flex-wrap gap-4 text-xs">
     <Link href="/terms" className="text-primary hover:underline">
       &gt; TERMS_OF_SERVICE

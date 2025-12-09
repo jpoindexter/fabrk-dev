@@ -26,9 +26,7 @@ export function StepComplete({ formData }: StepCompleteProps) {
         <CheckCircle2 className="text-success h-8 w-8" />
       </div>
       <div>
-        <h2 className={cn(mode.font, 'mb-2 text-2xl font-semibold')}>
-          You're All Set!
-        </h2>
+        <h2 className={cn(mode.font, 'mb-2 text-2xl font-semibold')}>You're All Set!</h2>
         <p className={cn(mode.font, 'text-muted-foreground text-sm')}>
           Your account is ready. Let's start building something amazing.
         </p>
@@ -40,12 +38,10 @@ export function StepComplete({ formData }: StepCompleteProps) {
         </div>
         <div className={cn(mode.font, 'space-y-2 text-xs')}>
           <div>
-            <span className="text-muted-foreground">NAME:</span>{' '}
-            {formData.fullName || 'Not set'}
+            <span className="text-muted-foreground">NAME:</span> {formData.fullName || 'Not set'}
           </div>
           <div>
-            <span className="text-muted-foreground">ROLE:</span>{' '}
-            {formData.role || 'Not set'}
+            <span className="text-muted-foreground">ROLE:</span> {formData.role || 'Not set'}
           </div>
           <div>
             <span className="text-muted-foreground">WORKSPACE:</span>{' '}
@@ -58,9 +54,7 @@ export function StepComplete({ formData }: StepCompleteProps) {
         </div>
       </div>
 
-      <Button className={cn(mode.radius, mode.font, 'text-xs')}>
-        &gt; GO_TO_DASHBOARD
-      </Button>
+      <Button className={cn(mode.radius, mode.font, 'text-xs')}>&gt; GO_TO_DASHBOARD</Button>
     </div>
   );
 }

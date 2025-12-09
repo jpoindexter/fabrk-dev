@@ -15,10 +15,7 @@ export async function GET() {
     return NextResponse.json(categories);
   } catch (error) {
     logger.error('Error fetching blog categories:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch categories' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to fetch categories' }, { status: 500 });
   }
 }
 
@@ -51,12 +48,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
 
     return NextResponse.json(category, { status: 201 });
   } catch (error: unknown) {
-    if (
-      error &&
-      typeof error === 'object' &&
-      'code' in error &&
-      error.code === 'P2002'
-    ) {
+    if (error && typeof error === 'object' && 'code' in error && error.code === 'P2002') {
       return NextResponse.json(
         { error: 'A category with this name or slug already exists' },
         { status: 400 }
@@ -64,10 +56,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     }
 
     logger.error('Error creating blog category:', error);
-    return NextResponse.json(
-      { error: 'Failed to create category' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to create category' }, { status: 500 });
   }
 });
 
@@ -86,10 +75,7 @@ export const DELETE = withCsrfProtection(async (req: NextRequest) => {
     const id = searchParams.get('id');
 
     if (!id) {
-      return NextResponse.json(
-        { error: 'Category ID is required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Category ID is required' }, { status: 400 });
     }
 
     await deleteCategory(id);
@@ -99,9 +85,6 @@ export const DELETE = withCsrfProtection(async (req: NextRequest) => {
     return NextResponse.json({ success: true });
   } catch (error) {
     logger.error('Error deleting blog category:', error);
-    return NextResponse.json(
-      { error: 'Failed to delete category' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to delete category' }, { status: 500 });
   }
 });

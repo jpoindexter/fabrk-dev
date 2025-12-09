@@ -25,9 +25,7 @@ export function AccountStatus({ mfaEnabled, userTier }: AccountStatusProps) {
           Current account information and status
         </p>
         <div className="grid gap-6 md:grid-cols-3">
-          <div
-            className={cn('flex items-center gap-4 border p-4', mode.radius)}
-          >
+          <div className={cn('flex items-center gap-4 border p-4', mode.radius)}>
             <Shield className="text-muted-foreground h-5 w-5" />
             <div>
               <p className="font-mono text-sm font-medium">Security</p>
@@ -39,9 +37,7 @@ export function AccountStatus({ mfaEnabled, userTier }: AccountStatusProps) {
             </div>
           </div>
 
-          <div
-            className={cn('flex items-center gap-4 border p-4', mode.radius)}
-          >
+          <div className={cn('flex items-center gap-4 border p-4', mode.radius)}>
             <Users className="text-muted-foreground h-5 w-5" />
             <div>
               <p className="font-mono text-sm font-medium">Account Type</p>
@@ -51,15 +47,11 @@ export function AccountStatus({ mfaEnabled, userTier }: AccountStatusProps) {
             </div>
           </div>
 
-          <div
-            className={cn('flex items-center gap-4 border p-4', mode.radius)}
-          >
+          <div className={cn('flex items-center gap-4 border p-4', mode.radius)}>
             <Activity className="text-muted-foreground h-5 w-5" />
             <div>
               <p className="font-mono text-sm font-medium">Status</p>
-              <Badge className="bg-success text-success-foreground mt-1">
-                Active
-              </Badge>
+              <Badge className="bg-success text-success-foreground mt-1">Active</Badge>
             </div>
           </div>
         </div>

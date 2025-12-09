@@ -17,12 +17,8 @@ export default function LoginPage() {
         <div className="border-border bg-card mx-auto mb-2 flex h-10 w-10 items-center justify-center border">
           <Lock className="text-primary h-5 w-5" />
         </div>
-        <h1 className={cn(mode.font, 'text-2xl font-semibold tracking-tight')}>
-          Welcome back
-        </h1>
-        <p className="text-muted-foreground text-sm">
-          Enter your email to sign in to your account
-        </p>
+        <h1 className={cn(mode.font, 'text-2xl font-semibold tracking-tight')}>Welcome back</h1>
+        <p className="text-muted-foreground text-sm">Enter your email to sign in to your account</p>
       </div>
 
       {/* Login Form */}
@@ -46,10 +42,7 @@ export default function LoginPage() {
             <Label htmlFor="password" className={cn(mode.font, 'text-xs')}>
               [PASSWORD]:
             </Label>
-            <Link
-              href="/forgot-password"
-              className="text-primary text-xs hover:underline"
-            >
+            <Link href="/forgot-password" className="text-primary text-xs hover:underline">
               Forgot password?
             </Link>
           </div>
@@ -66,19 +59,13 @@ export default function LoginPage() {
           <Checkbox id="remember" className={cn(mode.radius)} />
           <Label
             htmlFor="remember"
-            className={cn(
-              mode.font,
-              'text-muted-foreground text-xs font-normal'
-            )}
+            className={cn(mode.font, 'text-muted-foreground text-xs font-normal')}
           >
             Remember me for 30 days
           </Label>
         </div>
 
-        <Button
-          className={cn(mode.radius, mode.font, 'w-full text-xs')}
-          type="submit"
-        >
+        <Button className={cn(mode.radius, mode.font, 'w-full text-xs')} type="submit">
           &gt; SIGN_IN
         </Button>
       </form>
@@ -89,25 +76,17 @@ export default function LoginPage() {
           <span className="border-border w-full border-t" />
         </div>
         <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-background text-muted-foreground px-2">
-            Or continue with
-          </span>
+          <span className="bg-background text-muted-foreground px-2">Or continue with</span>
         </div>
       </div>
 
       {/* Social Auth */}
       <div className="grid grid-cols-2 gap-4">
-        <Button
-          variant="outline"
-          className={cn(mode.radius, mode.font, 'text-xs')}
-        >
+        <Button variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
           <Github className="mr-2 h-4 w-4" />
           GitHub
         </Button>
-        <Button
-          variant="outline"
-          className={cn(mode.radius, mode.font, 'text-xs')}
-        >
+        <Button variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
           {/* eslint-disable design-system/no-hardcoded-colors -- Google brand colors are intentional */}
           <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
             <path
@@ -135,10 +114,7 @@ export default function LoginPage() {
       {/* Footer */}
       <p className="text-muted-foreground text-center text-sm">
         Don&apos;t have an account?{' '}
-        <Link
-          href="/register"
-          className="hover:text-primary underline underline-offset-4"
-        >
+        <Link href="/register" className="hover:text-primary underline underline-offset-4">
           Sign up
         </Link>
       </p>

@@ -18,11 +18,7 @@ const adminNavItems = [
   { href: '/admin/monitoring', label: 'Monitoring' },
 ];
 
-export default async function AdminLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const session = await auth();
 
   // Redirect if not admin
@@ -57,9 +53,7 @@ export default async function AdminLayout({
           </nav>
         </aside>
 
-        <main className="flex w-full flex-col overflow-hidden py-6">
-          {children}
-        </main>
+        <main className="flex w-full flex-col overflow-hidden py-6">{children}</main>
       </div>
     </div>
   );

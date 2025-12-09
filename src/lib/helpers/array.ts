@@ -84,11 +84,7 @@ export function groupBy<T>(arr: T[], key: keyof T): Record<string, T[]> {
  * Sort array of objects by key
  * @example sortBy([{age: 30}, {age: 20}], "age") // [{age: 20}, {age: 30}]
  */
-export function sortBy<T>(
-  arr: T[],
-  key: keyof T,
-  order: 'asc' | 'desc' = 'asc'
-): T[] {
+export function sortBy<T>(arr: T[], key: keyof T, order: 'asc' | 'desc' = 'asc'): T[] {
   return [...arr].sort((a, b) => {
     const valueA = a[key];
     const valueB = b[key];
@@ -142,8 +138,7 @@ export function flatten<T>(arr: (T | T[])[]): T[] {
  */
 export function flattenDeep<T = unknown>(arr: unknown[]): T[] {
   return arr.reduce<T[]>(
-    (flat, item) =>
-      flat.concat(Array.isArray(item) ? flattenDeep<T>(item) : (item as T)),
+    (flat, item) => flat.concat(Array.isArray(item) ? flattenDeep<T>(item) : (item as T)),
     []
   );
 }

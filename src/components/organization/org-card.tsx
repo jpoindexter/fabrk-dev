@@ -16,14 +16,7 @@
 'use client';
 
 import * as React from 'react';
-import {
-  Users,
-  Crown,
-  CheckCircle2,
-  MoreVertical,
-  Settings,
-  LogOut,
-} from 'lucide-react';
+import { Users, Crown, CheckCircle2, MoreVertical, Settings, LogOut } from 'lucide-react';
 
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -103,9 +96,7 @@ export function OrgCard({
         <div className="flex items-start justify-between gap-4">
           {/* Left side - Logo & Info */}
           <div className="flex min-w-0 flex-1 items-start gap-4">
-            <Avatar
-              className={cn('border-border h-12 w-12 border', mode.radius)}
-            >
+            <Avatar className={cn('border-border h-12 w-12 border', mode.radius)}>
               {logo ? (
                 <AvatarImage src={logo} alt={name} />
               ) : (
@@ -117,14 +108,9 @@ export function OrgCard({
 
             <div className="min-w-0 flex-1 space-y-2">
               <div className="space-y-1">
-                <h3 className="text-foreground truncate text-lg font-semibold">
-                  {name}
-                </h3>
+                <h3 className="text-foreground truncate text-lg font-semibold">{name}</h3>
                 <div className="flex flex-wrap items-center gap-2">
-                  <Badge
-                    variant="outline"
-                    className={cn('text-xs font-medium', planColors[plan])}
-                  >
+                  <Badge variant="outline" className={cn('text-xs font-medium', planColors[plan])}>
                     {plan}
                   </Badge>
                   {role === 'Owner' && (

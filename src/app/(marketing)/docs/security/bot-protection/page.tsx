@@ -41,8 +41,7 @@ export default function BotProtectionPage() {
       usage={[
         {
           title: 'Honeypot Fields',
-          description:
-            "Add invisible fields that bots will fill but humans won't",
+          description: "Add invisible fields that bots will fill but humans won't",
           code: `// Client-side form component
 "use client";
 
@@ -105,8 +104,7 @@ export async function POST(request: NextRequest) {
         },
         {
           title: 'Time-based Validation',
-          description:
-            'Reject submissions that are too fast (bots) or too slow (stale tokens)',
+          description: 'Reject submissions that are too fast (bots) or too slow (stale tokens)',
           code: `// Client-side: Add timestamp to form
 "use client";
 

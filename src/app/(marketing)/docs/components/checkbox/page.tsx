@@ -17,9 +17,7 @@ export default function CheckboxPage() {
         preview: (
           <div className="flex items-center gap-2">
             <Checkbox id="terms" />
-            <Label htmlFor="terms">
-              {formatLabel('Accept terms and conditions')}
-            </Label>
+            <Label htmlFor="terms">{formatLabel('Accept terms and conditions')}</Label>
           </div>
         ),
         code: `<div className="flex items-center gap-2">
@@ -46,9 +44,7 @@ export default function CheckboxPage() {
           preview: (
             <div className="flex items-center gap-2">
               <Checkbox id="newsletter" />
-              <Label htmlFor="newsletter">
-                {formatLabel('Subscribe to newsletter')}
-              </Label>
+              <Label htmlFor="newsletter">{formatLabel('Subscribe to newsletter')}</Label>
             </div>
           ),
           code: `<div className="flex items-center gap-2">

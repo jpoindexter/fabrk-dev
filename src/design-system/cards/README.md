@@ -84,9 +84,7 @@ import {
     }
   />
   <TerminalCardContent>
-    <div className="text-foreground mb-3 text-xs font-semibold">
-      MODULE_NAME
-    </div>
+    <div className="text-foreground mb-3 text-xs font-semibold">MODULE_NAME</div>
     <div className="text-xs">
       <span className="text-muted-foreground">DESC: </span>
       <span className="text-foreground">Description here</span>
@@ -104,9 +102,7 @@ import {
     <ul className="space-y-2">
       {features.map((feature, i, arr) => (
         <li key={i} className="flex items-start gap-3 text-xs">
-          <span className="text-primary">
-            {i === arr.length - 1 ? '└─' : '├─'}
-          </span>
+          <span className="text-primary">{i === arr.length - 1 ? '└─' : '├─'}</span>
           <span className="text-foreground">{feature}</span>
         </li>
       ))}

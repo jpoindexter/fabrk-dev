@@ -122,9 +122,7 @@ export function generateAIRobotRules(allowedBots: string[] = []): string {
  */
 export function isAICrawler(userAgent: string): boolean {
   const lowerUA = userAgent.toLowerCase();
-  return AI_CRAWLERS.some((bot) =>
-    lowerUA.includes(bot.userAgent.toLowerCase())
-  );
+  return AI_CRAWLERS.some((bot) => lowerUA.includes(bot.userAgent.toLowerCase()));
 }
 
 /**
@@ -132,10 +130,7 @@ export function isAICrawler(userAgent: string): boolean {
  */
 export function getAICrawlerInfo(userAgent: string): AIBotConfig | null {
   const lowerUA = userAgent.toLowerCase();
-  return (
-    AI_CRAWLERS.find((bot) => lowerUA.includes(bot.userAgent.toLowerCase())) ||
-    null
-  );
+  return AI_CRAWLERS.find((bot) => lowerUA.includes(bot.userAgent.toLowerCase())) || null;
 }
 
 /**
@@ -230,9 +225,7 @@ export function generateAIMetadata(data: {
  * Structure content for "People Also Ask" optimization (AEO)
  * Formats Q&A pairs for maximum visibility
  */
-export function formatPeopleAlsoAsk(
-  questions: Array<{ q: string; a: string }>
-) {
+export function formatPeopleAlsoAsk(questions: Array<{ q: string; a: string }>) {
   return questions.map((item) => ({
     '@type': 'Question',
     name: item.q,
@@ -383,11 +376,7 @@ export interface CrawlerLog {
   ip: string;
 }
 
-export function logAICrawler(
-  userAgent: string,
-  path: string,
-  ip: string
-): CrawlerLog | null {
+export function logAICrawler(userAgent: string, path: string, ip: string): CrawlerLog | null {
   const botInfo = getAICrawlerInfo(userAgent);
 
   if (!botInfo) return null;

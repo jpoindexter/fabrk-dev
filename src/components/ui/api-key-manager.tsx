@@ -146,9 +146,7 @@ export function ApiKeyManager({
       {/* Header with Generate Button */}
       <div className="flex items-center justify-between gap-4">
         <div className="flex-1">
-          <h3 className={cn('text-sm font-semibold', mode.font)}>
-            [ API_KEYS ]
-          </h3>
+          <h3 className={cn('text-sm font-semibold', mode.font)}>[ API_KEYS ]</h3>
           <p className="text-muted-foreground mt-1 text-xs">
             Manage API keys for programmatic access
           </p>
@@ -163,12 +161,9 @@ export function ApiKeyManager({
           </DialogTrigger>
           <DialogContent className={cn(mode.radius)}>
             <DialogHeader>
-              <DialogTitle className={cn(mode.font)}>
-                [ GENERATE_API_KEY ]
-              </DialogTitle>
+              <DialogTitle className={cn(mode.font)}>[ GENERATE_API_KEY ]</DialogTitle>
               <DialogDescription>
-                Create a new API key for programmatic access. Give it a
-                descriptive name.
+                Create a new API key for programmatic access. Give it a descriptive name.
               </DialogDescription>
             </DialogHeader>
 
@@ -190,19 +185,13 @@ export function ApiKeyManager({
 
               {generatedKey && (
                 <div className="bg-muted border-border space-y-2 border p-4">
-                  <p className={cn('text-muted-foreground text-xs', mode.font)}>
-                    [KEY_GENERATED]:
-                  </p>
+                  <p className={cn('text-muted-foreground text-xs', mode.font)}>[KEY_GENERATED]:</p>
                   <div className="bg-background border-border flex items-center gap-2 border p-2">
-                    <code className={cn('flex-1 text-xs', mode.font)}>
-                      {generatedKey.key}
-                    </code>
+                    <code className={cn('flex-1 text-xs', mode.font)}>{generatedKey.key}</code>
                     <Button
                       size="sm"
                       variant="ghost"
-                      onClick={() =>
-                        handleCopy(generatedKey.key, generatedKey.id)
-                      }
+                      onClick={() => handleCopy(generatedKey.key, generatedKey.id)}
                     >
                       {copiedId === generatedKey.id ? (
                         <Check className="h-4 w-4" />
@@ -258,28 +247,18 @@ export function ApiKeyManager({
           filteredKeys.map((key) => (
             <Card
               key={key.id}
-              className={cn(
-                'flex items-center justify-between gap-4 p-4',
-                mode.radius
-              )}
+              className={cn('flex items-center justify-between gap-4 p-4', mode.radius)}
             >
               <div className="min-w-0 flex-1 space-y-1">
                 <div className="flex items-center gap-2">
-                  <p className={cn('text-sm font-medium', mode.font)}>
-                    {key.name}
-                  </p>
+                  <p className={cn('text-sm font-medium', mode.font)}>{key.name}</p>
                   <Badge variant="outline" className={cn('text-xs', mode.font)}>
                     {key.id}
                   </Badge>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <code
-                    className={cn(
-                      'text-muted-foreground flex-1 truncate text-xs',
-                      mode.font
-                    )}
-                  >
+                  <code className={cn('text-muted-foreground flex-1 truncate text-xs', mode.font)}>
                     {maskKey(key.key)}
                   </code>
                   <Button
@@ -313,10 +292,7 @@ export function ApiKeyManager({
                     <MoreVertical className="h-4 w-4" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  align="end"
-                  className={cn(mode.radius, mode.font)}
-                >
+                <DropdownMenuContent align="end" className={cn(mode.radius, mode.font)}>
                   <DropdownMenuItem
                     onClick={() => setRevokeId(key.id)}
                     className="text-destructive focus:text-destructive"
@@ -332,18 +308,13 @@ export function ApiKeyManager({
       </div>
 
       {/* Revoke Confirmation Dialog */}
-      <AlertDialog
-        open={!!revokeId}
-        onOpenChange={(open) => !open && setRevokeId(null)}
-      >
+      <AlertDialog open={!!revokeId} onOpenChange={(open) => !open && setRevokeId(null)}>
         <AlertDialogContent className={cn(mode.radius)}>
           <AlertDialogHeader>
-            <AlertDialogTitle className={cn(mode.font)}>
-              [ CONFIRM_REVOCATION ]
-            </AlertDialogTitle>
+            <AlertDialogTitle className={cn(mode.font)}>[ CONFIRM_REVOCATION ]</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently revoke the API
-              key and any applications using it will lose access.
+              This action cannot be undone. This will permanently revoke the API key and any
+              applications using it will lose access.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
@@ -352,11 +323,7 @@ export function ApiKeyManager({
             </AlertDialogCancel>
             <AlertDialogAction
               onClick={() => revokeId && handleRevoke(revokeId)}
-              className={cn(
-                'bg-destructive hover:bg-destructive/90',
-                mode.radius,
-                mode.font
-              )}
+              className={cn('bg-destructive hover:bg-destructive/90', mode.radius, mode.font)}
             >
               {'> '}REVOKE
             </AlertDialogAction>

@@ -40,10 +40,7 @@ interface SEOScore {
  * @param text - Content to analyze
  * @param wordsPerMinute - Average reading speed (default: 200)
  */
-export function calculateReadingTime(
-  text: string,
-  wordsPerMinute: number = 200
-): number {
+export function calculateReadingTime(text: string, wordsPerMinute: number = 200): number {
   const words = text.trim().split(/\s+/).length;
   return Math.ceil(words / wordsPerMinute);
 }
@@ -59,10 +56,7 @@ export function countWords(text: string): number {
  * Calculate keyword density
  * Returns percentage of text that each keyword represents
  */
-export function calculateKeywordDensity(
-  text: string,
-  keywords: string[]
-): Record<string, number> {
+export function calculateKeywordDensity(text: string, keywords: string[]): Record<string, number> {
   const lowerText = text.toLowerCase();
   const totalWords = countWords(text);
   const density: Record<string, number> = {};
@@ -85,10 +79,7 @@ export function calculateKeywordDensity(
 export function calculateReadabilityScore(text: string): number {
   const sentences = text.split(/[.!?]+/).filter((s) => s.trim().length > 0);
   const words = text.trim().split(/\s+/);
-  const syllables = words.reduce(
-    (count, word) => count + countSyllables(word),
-    0
-  );
+  const syllables = words.reduce((count, word) => count + countSyllables(word), 0);
 
   if (sentences.length === 0 || words.length === 0) return 0;
 
@@ -96,8 +87,7 @@ export function calculateReadabilityScore(text: string): number {
   const avgSyllablesPerWord = syllables / words.length;
 
   // Flesch Reading Ease formula
-  const score =
-    206.835 - 1.015 * avgWordsPerSentence - 84.6 * avgSyllablesPerWord;
+  const score = 206.835 - 1.015 * avgWordsPerSentence - 84.6 * avgSyllablesPerWord;
 
   return Math.max(0, Math.min(100, Math.round(score)));
 }
@@ -124,9 +114,7 @@ function countSyllables(word: string): number {
  * Extract heading structure from HTML or markdown
  * Critical for AEO - helps with featured snippet selection
  */
-export function extractHeadings(
-  html: string
-): { level: number; text: string }[] {
+export function extractHeadings(html: string): { level: number; text: string }[] {
   const headingRegex = /<h([1-6])[^>]*>(.*?)<\/h\1>|^(#{1,6})\s+(.+)$/gim;
   const headings: { level: number; text: string }[] = [];
 
@@ -200,10 +188,7 @@ export function analyzeContent(text: string): ContentAnalysis {
  * Score content for SEO/AEO optimization
  * Returns 0-100 score with recommendations
  */
-export function scoreContent(
-  text: string,
-  targetKeywords: string[] = []
-): SEOScore {
+export function scoreContent(text: string, targetKeywords: string[] = []): SEOScore {
   const analysis = analyzeContent(text);
   const recommendations: string[] = [];
   let readabilityScore = 0;
@@ -214,14 +199,9 @@ export function scoreContent(
   // Readability (30 points)
   if (analysis.readabilityScore >= 60 && analysis.readabilityScore <= 70) {
     readabilityScore = 30;
-  } else if (
-    analysis.readabilityScore >= 50 &&
-    analysis.readabilityScore <= 80
-  ) {
+  } else if (analysis.readabilityScore >= 50 && analysis.readabilityScore <= 80) {
     readabilityScore = 20;
-    recommendations.push(
-      'Improve readability to 60-70 range for optimal comprehension'
-    );
+    recommendations.push('Improve readability to 60-70 range for optimal comprehension');
   } else {
     readabilityScore = 10;
     recommendations.push('Readability needs improvement - simplify sentences');
@@ -250,8 +230,7 @@ export function scoreContent(
   if (targetKeywords.length > 0) {
     const density = calculateKeywordDensity(text, targetKeywords);
     const avgDensity =
-      Object.values(density).reduce((sum, d) => sum + d, 0) /
-      targetKeywords.length;
+      Object.values(density).reduce((sum, d) => sum + d, 0) / targetKeywords.length;
 
     if (avgDensity >= 1 && avgDensity <= 3) {
       keywordsScore = 20;
@@ -353,9 +332,7 @@ export function extractKeyFacts(text: string): string[] {
   sentences.forEach((sentence) => {
     const trimmed = sentence.trim();
     if (
-      /\b(is|are|was|were|means|refers to|defined as|equals|represents)\b/i.test(
-        trimmed
-      ) ||
+      /\b(is|are|was|were|means|refers to|defined as|equals|represents)\b/i.test(trimmed) ||
       /\d+%|\d+x|#\d+/.test(trimmed) ||
       trimmed.length > 20
     ) {

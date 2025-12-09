@@ -6,12 +6,7 @@
 'use client';
 
 import Link from 'next/link';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  TemplatePageHeader,
-} from '@/components/ui/card';
+import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { getCategoryInfo, getTemplatesByCategory } from '../library-data';
@@ -104,18 +99,9 @@ function MarketingPreview() {
             </span>
           </div>
           <div className="flex items-center gap-4">
-            {categoryInfo && (
-              <categoryInfo.icon className="text-primary h-6 w-6" />
-            )}
-            <h1 className={cn(mode.font, 'text-4xl font-semibold')}>
-              Marketing
-            </h1>
-            <span
-              className={cn(
-                mode.font,
-                'border-border border px-2 py-0.5 text-xs'
-              )}
-            >
+            {categoryInfo && <categoryInfo.icon className="text-primary h-6 w-6" />}
+            <h1 className={cn(mode.font, 'text-4xl font-semibold')}>Marketing</h1>
+            <span className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}>
               COUNT: {categoryTemplates.length}
             </span>
           </div>
@@ -128,9 +114,7 @@ function MarketingPreview() {
               <div className="group border-border bg-card hover:border-primary/50 border transition-colors">
                 {/* Card Header */}
                 <div className="border-border flex items-center justify-between border-b px-4 py-2">
-                  <span
-                    className={cn(mode.font, 'text-muted-foreground text-xs')}
-                  >
+                  <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
                     [TEMPLATE]: {template.id.toUpperCase().replace(/-/g, '_')}
                   </span>
                   <template.icon className="text-muted-foreground size-4" />
@@ -139,12 +123,7 @@ function MarketingPreview() {
                 {/* Card Content */}
                 <div className="p-4">
                   {/* Status & Badge */}
-                  <div
-                    className={cn(
-                      mode.font,
-                      'mb-4 flex items-center justify-between text-xs'
-                    )}
-                  >
+                  <div className={cn(mode.font, 'mb-4 flex items-center justify-between text-xs')}>
                     <div>
                       <span className="text-muted-foreground">STATUS: </span>
                       <span className="text-success">READY</span>
@@ -157,36 +136,24 @@ function MarketingPreview() {
                   </div>
 
                   {/* Title */}
-                  <h3 className={cn(mode.font, 'mb-2 text-lg font-semibold')}>
-                    {template.name}
-                  </h3>
+                  <h3 className={cn(mode.font, 'mb-2 text-lg font-semibold')}>{template.name}</h3>
 
                   {/* Description */}
                   <div className={cn(mode.font, 'mb-4 text-xs')}>
                     <span className="text-muted-foreground">DESC: </span>
-                    <span className="text-foreground">
-                      {template.description}
-                    </span>
+                    <span className="text-foreground">{template.description}</span>
                   </div>
 
                   {/* Features */}
                   <div className="mb-4">
-                    <div
-                      className={cn(
-                        mode.font,
-                        'text-muted-foreground mb-2 text-xs'
-                      )}
-                    >
+                    <div className={cn(mode.font, 'text-muted-foreground mb-2 text-xs')}>
                       [FEATURES]:
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {template.features.map((feature) => (
                         <span
                           key={feature}
-                          className={cn(
-                            mode.font,
-                            'border-border border px-2 py-0.5 text-xs'
-                          )}
+                          className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}
                         >
                           {feature}
                         </span>
@@ -283,11 +250,7 @@ export default function MarketingPage() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="USAGE_GUIDE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock
-                  code={templateCode}
-                  language="tsx"
-                  maxHeight="600px"
-                />
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
             </Card>
           </TabsContent>
@@ -297,39 +260,30 @@ export default function MarketingPage() {
         <Card>
           <CardHeader code="0x02" title="MARKETING_FEATURES" />
           <CardContent padding="lg">
-            <div
-              className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}
-            >
+            <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
               [MARKETING_TEMPLATES]:
             </div>
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> Landing pages with
-                hero sections
+                <span className="text-success">&gt;</span> Landing pages with hero sections
               </div>
               <div>
-                <span className="text-success">&gt;</span> Feature showcase
-                sections with icons
+                <span className="text-success">&gt;</span> Feature showcase sections with icons
               </div>
               <div>
-                <span className="text-success">&gt;</span> Testimonials and
-                social proof
+                <span className="text-success">&gt;</span> Testimonials and social proof
               </div>
               <div>
-                <span className="text-success">&gt;</span> Pricing tables with
-                plan comparison
+                <span className="text-success">&gt;</span> Pricing tables with plan comparison
               </div>
               <div>
-                <span className="text-success">&gt;</span> Call-to-action
-                sections and buttons
+                <span className="text-success">&gt;</span> Call-to-action sections and buttons
               </div>
               <div>
-                <span className="text-success">&gt;</span> Newsletter signup
-                forms
+                <span className="text-success">&gt;</span> Newsletter signup forms
               </div>
               <div>
-                <span className="text-success">&gt;</span> Footer with site
-                navigation and links
+                <span className="text-success">&gt;</span> Footer with site navigation and links
               </div>
             </div>
           </CardContent>

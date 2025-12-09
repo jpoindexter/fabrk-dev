@@ -410,11 +410,7 @@ All templates correctly use:
 **Consistent Pattern:**
 
 ```tsx
-<TemplatePageHeader
-  badge="TEMPLATE_NAME"
-  title="Title"
-  description="Description"
-/>
+<TemplatePageHeader badge="TEMPLATE_NAME" title="Title" description="Description" />
 ```
 
 **Compliance:** ✅ 100% (all 30 pages use this pattern)
@@ -705,11 +701,7 @@ src/app/templates/
 ### Page Header Pattern
 
 ```tsx
-<TemplatePageHeader
-  badge="TEMPLATE_NAME"
-  title="Title"
-  description="Description text"
-/>
+<TemplatePageHeader badge="TEMPLATE_NAME" title="Title" description="Description text" />
 ```
 
 ### Card Header Pattern

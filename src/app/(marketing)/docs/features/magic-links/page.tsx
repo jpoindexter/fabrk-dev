@@ -208,23 +208,19 @@ export function MagicLinkForm() {
         <DocsCard title="SECURITY">
           <ul className="space-y-1">
             <li>
-              ├─ <strong>Single-use tokens:</strong> Delete tokens after
-              verification
+              ├─ <strong>Single-use tokens:</strong> Delete tokens after verification
             </li>
             <li>
               ├─ <strong>Short expiry:</strong> 24 hours or less recommended
             </li>
             <li>
-              ├─ <strong>Secure generation:</strong> Use cryptographically
-              secure random tokens
+              ├─ <strong>Secure generation:</strong> Use cryptographically secure random tokens
             </li>
             <li>
-              ├─ <strong>Rate limiting:</strong> Prevent abuse by limiting
-              requests per email
+              ├─ <strong>Rate limiting:</strong> Prevent abuse by limiting requests per email
             </li>
             <li>
-              └─ <strong>HTTPS only:</strong> Magic links should only work over
-              HTTPS in production
+              └─ <strong>HTTPS only:</strong> Magic links should only work over HTTPS in production
             </li>
           </ul>
         </DocsCard>

@@ -15,8 +15,7 @@ import type * as Prisma from '../internal/prismaNamespace';
  * Model WebhookEvent
  *
  */
-export type WebhookEventModel =
-  runtime.Types.Result.DefaultSelection<Prisma.$WebhookEventPayload>;
+export type WebhookEventModel = runtime.Types.Result.DefaultSelection<Prisma.$WebhookEventPayload>;
 
 export type AggregateWebhookEvent = {
   _count: WebhookEventCountAggregateOutputType | null;
@@ -63,8 +62,7 @@ export type WebhookEventCountAggregateInputType = {
 };
 
 export type WebhookEventAggregateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which WebhookEvent to aggregate.
@@ -116,18 +114,16 @@ export type WebhookEventAggregateArgs<
   _max?: WebhookEventMaxAggregateInputType;
 };
 
-export type GetWebhookEventAggregateType<T extends WebhookEventAggregateArgs> =
-  {
-    [P in keyof T & keyof AggregateWebhookEvent]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : Prisma.GetScalarType<T[P], AggregateWebhookEvent[P]>
-      : Prisma.GetScalarType<T[P], AggregateWebhookEvent[P]>;
-  };
+export type GetWebhookEventAggregateType<T extends WebhookEventAggregateArgs> = {
+  [P in keyof T & keyof AggregateWebhookEvent]: P extends '_count' | 'count'
+    ? T[P] extends true
+      ? number
+      : Prisma.GetScalarType<T[P], AggregateWebhookEvent[P]>
+    : Prisma.GetScalarType<T[P], AggregateWebhookEvent[P]>;
+};
 
 export type WebhookEventGroupByArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.WebhookEventWhereInput;
   orderBy?:
@@ -151,18 +147,17 @@ export type WebhookEventGroupByOutputType = {
   _max: WebhookEventMaxAggregateOutputType | null;
 };
 
-type GetWebhookEventGroupByPayload<T extends WebhookEventGroupByArgs> =
-  Prisma.PrismaPromise<
-    Array<
-      Prisma.PickEnumerable<WebhookEventGroupByOutputType, T['by']> & {
-        [P in keyof T & keyof WebhookEventGroupByOutputType]: P extends '_count'
-          ? T[P] extends boolean
-            ? number
-            : Prisma.GetScalarType<T[P], WebhookEventGroupByOutputType[P]>
-          : Prisma.GetScalarType<T[P], WebhookEventGroupByOutputType[P]>;
-      }
-    >
-  >;
+type GetWebhookEventGroupByPayload<T extends WebhookEventGroupByArgs> = Prisma.PrismaPromise<
+  Array<
+    Prisma.PickEnumerable<WebhookEventGroupByOutputType, T['by']> & {
+      [P in keyof T & keyof WebhookEventGroupByOutputType]: P extends '_count'
+        ? T[P] extends boolean
+          ? number
+          : Prisma.GetScalarType<T[P], WebhookEventGroupByOutputType[P]>
+        : Prisma.GetScalarType<T[P], WebhookEventGroupByOutputType[P]>;
+    }
+  >
+>;
 
 export type WebhookEventWhereInput = {
   AND?: Prisma.WebhookEventWhereInput | Prisma.WebhookEventWhereInput[];
@@ -210,10 +205,7 @@ export type WebhookEventScalarWhereWithAggregatesInput = {
     | Prisma.WebhookEventScalarWhereWithAggregatesInput[];
   id?: Prisma.StringWithAggregatesFilter<'WebhookEvent'> | string;
   eventId?: Prisma.StringWithAggregatesFilter<'WebhookEvent'> | string;
-  processed?:
-    | Prisma.DateTimeWithAggregatesFilter<'WebhookEvent'>
-    | Date
-    | string;
+  processed?: Prisma.DateTimeWithAggregatesFilter<'WebhookEvent'> | Date | string;
 };
 
 export type WebhookEventCreateInput = {
@@ -277,8 +269,7 @@ export type WebhookEventMinOrderByAggregateInput = {
 };
 
 export type WebhookEventSelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -289,8 +280,7 @@ export type WebhookEventSelect<
 >;
 
 export type WebhookEventSelectCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -301,8 +291,7 @@ export type WebhookEventSelectCreateManyAndReturn<
 >;
 
 export type WebhookEventSelectUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -319,16 +308,14 @@ export type WebhookEventSelectScalar = {
 };
 
 export type WebhookEventOmit<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
   'id' | 'eventId' | 'processed',
   ExtArgs['result']['webhookEvent']
 >;
 
 export type $WebhookEventPayload<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   name: 'WebhookEvent';
   objects: {};
@@ -343,23 +330,17 @@ export type $WebhookEventPayload<
   composites: {};
 };
 
-export type WebhookEventGetPayload<
-  S extends boolean | null | undefined | WebhookEventDefaultArgs,
-> = runtime.Types.Result.GetResult<Prisma.$WebhookEventPayload, S>;
+export type WebhookEventGetPayload<S extends boolean | null | undefined | WebhookEventDefaultArgs> =
+  runtime.Types.Result.GetResult<Prisma.$WebhookEventPayload, S>;
 
 export type WebhookEventCountArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = Omit<
-  WebhookEventFindManyArgs,
-  'select' | 'include' | 'distinct' | 'omit'
-> & {
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+> = Omit<WebhookEventFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
   select?: WebhookEventCountAggregateInputType | true;
 };
 
 export interface WebhookEventDelegate<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > {
   [K: symbol]: {
@@ -755,10 +736,7 @@ export interface WebhookEventDelegate<
     T extends runtime.Types.Utils.Record<'select', any>
       ? T['select'] extends true
         ? number
-        : Prisma.GetScalarType<
-            T['select'],
-            WebhookEventCountAggregateOutputType
-          >
+        : Prisma.GetScalarType<T['select'], WebhookEventCountAggregateOutputType>
       : number
   >;
 
@@ -833,12 +811,7 @@ export interface WebhookEventDelegate<
               ? never
               : P extends string
                 ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                : [
-                    Error,
-                    'Field ',
-                    P,
-                    ` in "having" needs to be provided in "by"`,
-                  ];
+                : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
           }[HavingFields]
         : 'take' extends Prisma.Keys<T>
           ? 'orderBy' extends Prisma.Keys<T>
@@ -868,11 +841,8 @@ export interface WebhookEventDelegate<
                     : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                 }[OrderFields],
   >(
-    args: Prisma.SubsetIntersection<T, WebhookEventGroupByArgs, OrderByArg> &
-      InputErrors
-  ): {} extends InputErrors
-    ? GetWebhookEventGroupByPayload<T>
-    : Prisma.PrismaPromise<InputErrors>;
+    args: Prisma.SubsetIntersection<T, WebhookEventGroupByArgs, OrderByArg> & InputErrors
+  ): {} extends InputErrors ? GetWebhookEventGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
   /**
    * Fields of the WebhookEvent model
    */
@@ -888,8 +858,7 @@ export interface WebhookEventDelegate<
 export interface Prisma__WebhookEventClient<
   T,
   Null = never,
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: 'PrismaPromise';
@@ -900,14 +869,8 @@ export interface Prisma__WebhookEventClient<
    * @returns A Promise for the completion of which ever callback is executed.
    */
   then<TResult1 = T, TResult2 = never>(
-    onfulfilled?:
-      | ((value: T) => TResult1 | PromiseLike<TResult1>)
-      | undefined
-      | null,
-    onrejected?:
-      | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-      | undefined
-      | null
+    onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
   ): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
   /**
    * Attaches a callback for only the rejection of the Promise.
@@ -915,10 +878,7 @@ export interface Prisma__WebhookEventClient<
    * @returns A Promise for the completion of the callback.
    */
   catch<TResult = never>(
-    onrejected?:
-      | ((reason: any) => TResult | PromiseLike<TResult>)
-      | undefined
-      | null
+    onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
   ): runtime.Types.Utils.JsPromise<T | TResult>;
   /**
    * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
@@ -926,9 +886,7 @@ export interface Prisma__WebhookEventClient<
    * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
    * @returns A Promise for the completion of the callback.
    */
-  finally(
-    onfinally?: (() => void) | undefined | null
-  ): runtime.Types.Utils.JsPromise<T>;
+  finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
 }
 
 /**
@@ -945,8 +903,7 @@ export interface WebhookEventFieldRefs {
  * WebhookEvent findUnique
  */
 export type WebhookEventFindUniqueArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookEvent
@@ -966,8 +923,7 @@ export type WebhookEventFindUniqueArgs<
  * WebhookEvent findUniqueOrThrow
  */
 export type WebhookEventFindUniqueOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookEvent
@@ -987,8 +943,7 @@ export type WebhookEventFindUniqueOrThrowArgs<
  * WebhookEvent findFirst
  */
 export type WebhookEventFindFirstArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookEvent
@@ -1033,17 +988,14 @@ export type WebhookEventFindFirstArgs<
    *
    * Filter by unique combinations of WebhookEvents.
    */
-  distinct?:
-    | Prisma.WebhookEventScalarFieldEnum
-    | Prisma.WebhookEventScalarFieldEnum[];
+  distinct?: Prisma.WebhookEventScalarFieldEnum | Prisma.WebhookEventScalarFieldEnum[];
 };
 
 /**
  * WebhookEvent findFirstOrThrow
  */
 export type WebhookEventFindFirstOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookEvent
@@ -1088,17 +1040,14 @@ export type WebhookEventFindFirstOrThrowArgs<
    *
    * Filter by unique combinations of WebhookEvents.
    */
-  distinct?:
-    | Prisma.WebhookEventScalarFieldEnum
-    | Prisma.WebhookEventScalarFieldEnum[];
+  distinct?: Prisma.WebhookEventScalarFieldEnum | Prisma.WebhookEventScalarFieldEnum[];
 };
 
 /**
  * WebhookEvent findMany
  */
 export type WebhookEventFindManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookEvent
@@ -1138,17 +1087,14 @@ export type WebhookEventFindManyArgs<
    * Skip the first `n` WebhookEvents.
    */
   skip?: number;
-  distinct?:
-    | Prisma.WebhookEventScalarFieldEnum
-    | Prisma.WebhookEventScalarFieldEnum[];
+  distinct?: Prisma.WebhookEventScalarFieldEnum | Prisma.WebhookEventScalarFieldEnum[];
 };
 
 /**
  * WebhookEvent create
  */
 export type WebhookEventCreateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookEvent
@@ -1161,25 +1107,19 @@ export type WebhookEventCreateArgs<
   /**
    * The data needed to create a WebhookEvent.
    */
-  data: Prisma.XOR<
-    Prisma.WebhookEventCreateInput,
-    Prisma.WebhookEventUncheckedCreateInput
-  >;
+  data: Prisma.XOR<Prisma.WebhookEventCreateInput, Prisma.WebhookEventUncheckedCreateInput>;
 };
 
 /**
  * WebhookEvent createMany
  */
 export type WebhookEventCreateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to create many WebhookEvents.
    */
-  data:
-    | Prisma.WebhookEventCreateManyInput
-    | Prisma.WebhookEventCreateManyInput[];
+  data: Prisma.WebhookEventCreateManyInput | Prisma.WebhookEventCreateManyInput[];
   skipDuplicates?: boolean;
 };
 
@@ -1187,8 +1127,7 @@ export type WebhookEventCreateManyArgs<
  * WebhookEvent createManyAndReturn
  */
 export type WebhookEventCreateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookEvent
@@ -1201,9 +1140,7 @@ export type WebhookEventCreateManyAndReturnArgs<
   /**
    * The data used to create many WebhookEvents.
    */
-  data:
-    | Prisma.WebhookEventCreateManyInput
-    | Prisma.WebhookEventCreateManyInput[];
+  data: Prisma.WebhookEventCreateManyInput | Prisma.WebhookEventCreateManyInput[];
   skipDuplicates?: boolean;
 };
 
@@ -1211,8 +1148,7 @@ export type WebhookEventCreateManyAndReturnArgs<
  * WebhookEvent update
  */
 export type WebhookEventUpdateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookEvent
@@ -1225,10 +1161,7 @@ export type WebhookEventUpdateArgs<
   /**
    * The data needed to update a WebhookEvent.
    */
-  data: Prisma.XOR<
-    Prisma.WebhookEventUpdateInput,
-    Prisma.WebhookEventUncheckedUpdateInput
-  >;
+  data: Prisma.XOR<Prisma.WebhookEventUpdateInput, Prisma.WebhookEventUncheckedUpdateInput>;
   /**
    * Choose, which WebhookEvent to update.
    */
@@ -1239,8 +1172,7 @@ export type WebhookEventUpdateArgs<
  * WebhookEvent updateMany
  */
 export type WebhookEventUpdateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to update WebhookEvents.
@@ -1263,8 +1195,7 @@ export type WebhookEventUpdateManyArgs<
  * WebhookEvent updateManyAndReturn
  */
 export type WebhookEventUpdateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookEvent
@@ -1295,8 +1226,7 @@ export type WebhookEventUpdateManyAndReturnArgs<
  * WebhookEvent upsert
  */
 export type WebhookEventUpsertArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookEvent
@@ -1313,25 +1243,18 @@ export type WebhookEventUpsertArgs<
   /**
    * In case the WebhookEvent found by the `where` argument doesn't exist, create a new WebhookEvent with this data.
    */
-  create: Prisma.XOR<
-    Prisma.WebhookEventCreateInput,
-    Prisma.WebhookEventUncheckedCreateInput
-  >;
+  create: Prisma.XOR<Prisma.WebhookEventCreateInput, Prisma.WebhookEventUncheckedCreateInput>;
   /**
    * In case the WebhookEvent was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<
-    Prisma.WebhookEventUpdateInput,
-    Prisma.WebhookEventUncheckedUpdateInput
-  >;
+  update: Prisma.XOR<Prisma.WebhookEventUpdateInput, Prisma.WebhookEventUncheckedUpdateInput>;
 };
 
 /**
  * WebhookEvent delete
  */
 export type WebhookEventDeleteArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookEvent
@@ -1351,8 +1274,7 @@ export type WebhookEventDeleteArgs<
  * WebhookEvent deleteMany
  */
 export type WebhookEventDeleteManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which WebhookEvents to delete
@@ -1368,8 +1290,7 @@ export type WebhookEventDeleteManyArgs<
  * WebhookEvent without action
  */
 export type WebhookEventDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookEvent

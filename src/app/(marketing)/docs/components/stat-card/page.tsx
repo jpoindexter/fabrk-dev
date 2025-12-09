@@ -2,14 +2,7 @@
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
 import { StatCard } from '@/components/ui/stat-card';
-import {
-  DollarSign,
-  Users,
-  Activity,
-  CreditCard,
-  TrendingUp,
-  ShoppingCart,
-} from 'lucide-react';
+import { DollarSign, Users, Activity, CreditCard, TrendingUp, ShoppingCart } from 'lucide-react';
 
 export default function StatCardPage() {
   return (
@@ -141,11 +134,7 @@ export default function StatCardPage() {
                 value="10,482"
                 icon={<Users className="h-4 w-4" />}
               />
-              <StatCard
-                title="Revenue"
-                value="$89,234"
-                icon={<DollarSign className="h-4 w-4" />}
-              />
+              <StatCard title="Revenue" value="$89,234" icon={<DollarSign className="h-4 w-4" />} />
               <StatCard
                 title="Transactions"
                 value="3,456"

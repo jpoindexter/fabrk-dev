@@ -8,11 +8,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { generateObject, generateText } from 'ai';
 import { z } from 'zod';
-import {
-  getModel,
-  isAIConfigured,
-  getConfiguredProvider,
-} from '@/lib/ai/provider';
+import { getModel, isAIConfigured, getConfiguredProvider } from '@/lib/ai/provider';
 import {
   generatedFormSchema,
   FORM_GENERATOR_SYSTEM_PROMPT,
@@ -141,8 +137,7 @@ Respond with ONLY the JSON object, nothing else.`,
           return NextResponse.json(
             {
               error: 'Invalid form structure',
-              message:
-                'The AI generated an invalid form structure. Please try again.',
+              message: 'The AI generated an invalid form structure. Please try again.',
               details: validated.error.flatten(),
             },
             { status: 422 }
@@ -155,8 +150,7 @@ Respond with ONLY the JSON object, nothing else.`,
         return NextResponse.json(
           {
             error: 'Failed to parse AI response',
-            message:
-              'The AI did not return valid JSON. Please try again with a simpler prompt.',
+            message: 'The AI did not return valid JSON. Please try again with a simpler prompt.',
           },
           { status: 422 }
         );
@@ -197,15 +191,11 @@ Respond with ONLY the JSON object, nothing else.`,
           { status: 503 }
         );
       }
-      if (
-        error.message.includes('ECONNREFUSED') ||
-        error.message.includes('fetch failed')
-      ) {
+      if (error.message.includes('ECONNREFUSED') || error.message.includes('fetch failed')) {
         return NextResponse.json(
           {
             error: 'AI service unavailable',
-            message:
-              'Could not connect to AI service. Make sure Ollama is running: ollama serve',
+            message: 'Could not connect to AI service. Make sure Ollama is running: ollama serve',
           },
           { status: 503 }
         );

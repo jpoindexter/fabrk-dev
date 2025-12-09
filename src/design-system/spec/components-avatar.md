@@ -48,12 +48,7 @@ import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 ### Avatar (Container)
 
 ```tsx
-<Avatar
-  className={cn(
-    'relative flex h-10 w-10 shrink-0 overflow-hidden border',
-    mode.radius
-  )}
-/>
+<Avatar className={cn('relative flex h-10 w-10 shrink-0 overflow-hidden border', mode.radius)} />
 ```
 
 **NEVER hardcode `rounded-none` or `rounded-full` - use `mode.radius`.**

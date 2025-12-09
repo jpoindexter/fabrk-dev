@@ -40,10 +40,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(posts);
   } catch (error) {
     logger.error('Error fetching blog posts:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch posts' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to fetch posts' }, { status: 500 });
   }
 }
 
@@ -77,10 +74,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     } = body;
 
     if (!title || !content) {
-      return NextResponse.json(
-        { error: 'Title and content are required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Title and content are required' }, { status: 400 });
     }
 
     // Generate slug from title
@@ -113,22 +107,11 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     return NextResponse.json(post, { status: 201 });
   } catch (error: unknown) {
     // Handle unique constraint violation (duplicate slug)
-    if (
-      error &&
-      typeof error === 'object' &&
-      'code' in error &&
-      error.code === 'P2002'
-    ) {
-      return NextResponse.json(
-        { error: 'A post with this slug already exists' },
-        { status: 400 }
-      );
+    if (error && typeof error === 'object' && 'code' in error && error.code === 'P2002') {
+      return NextResponse.json({ error: 'A post with this slug already exists' }, { status: 400 });
     }
 
     logger.error('Error creating blog post:', error);
-    return NextResponse.json(
-      { error: 'Failed to create post' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to create post' }, { status: 500 });
   }
 });

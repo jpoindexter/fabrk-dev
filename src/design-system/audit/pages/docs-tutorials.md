@@ -61,8 +61,7 @@ title = 'Quick_Start';
 ### Descriptions
 
 ```tsx
-description =
-  'Assemble a production-ready landing page and core features in minutes.';
+description = 'Assemble a production-ready landing page and core features in minutes.';
 ```
 
 - **Style**: Action-oriented, time-focused

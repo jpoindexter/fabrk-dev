@@ -81,8 +81,7 @@ export type CheckoutSessionCountAggregateInputType = {
 };
 
 export type CheckoutSessionAggregateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which CheckoutSession to aggregate.
@@ -134,9 +133,7 @@ export type CheckoutSessionAggregateArgs<
   _max?: CheckoutSessionMaxAggregateInputType;
 };
 
-export type GetCheckoutSessionAggregateType<
-  T extends CheckoutSessionAggregateArgs,
-> = {
+export type GetCheckoutSessionAggregateType<T extends CheckoutSessionAggregateArgs> = {
   [P in keyof T & keyof AggregateCheckoutSession]: P extends '_count' | 'count'
     ? T[P] extends true
       ? number
@@ -145,16 +142,13 @@ export type GetCheckoutSessionAggregateType<
 };
 
 export type CheckoutSessionGroupByArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.CheckoutSessionWhereInput;
   orderBy?:
     | Prisma.CheckoutSessionOrderByWithAggregationInput
     | Prisma.CheckoutSessionOrderByWithAggregationInput[];
-  by:
-    | Prisma.CheckoutSessionScalarFieldEnum[]
-    | Prisma.CheckoutSessionScalarFieldEnum;
+  by: Prisma.CheckoutSessionScalarFieldEnum[] | Prisma.CheckoutSessionScalarFieldEnum;
   having?: Prisma.CheckoutSessionScalarWhereWithAggregatesInput;
   take?: number;
   skip?: number;
@@ -175,19 +169,17 @@ export type CheckoutSessionGroupByOutputType = {
   _max: CheckoutSessionMaxAggregateOutputType | null;
 };
 
-type GetCheckoutSessionGroupByPayload<T extends CheckoutSessionGroupByArgs> =
-  Prisma.PrismaPromise<
-    Array<
-      Prisma.PickEnumerable<CheckoutSessionGroupByOutputType, T['by']> & {
-        [P in keyof T &
-          keyof CheckoutSessionGroupByOutputType]: P extends '_count'
-          ? T[P] extends boolean
-            ? number
-            : Prisma.GetScalarType<T[P], CheckoutSessionGroupByOutputType[P]>
-          : Prisma.GetScalarType<T[P], CheckoutSessionGroupByOutputType[P]>;
-      }
-    >
-  >;
+type GetCheckoutSessionGroupByPayload<T extends CheckoutSessionGroupByArgs> = Prisma.PrismaPromise<
+  Array<
+    Prisma.PickEnumerable<CheckoutSessionGroupByOutputType, T['by']> & {
+      [P in keyof T & keyof CheckoutSessionGroupByOutputType]: P extends '_count'
+        ? T[P] extends boolean
+          ? number
+          : Prisma.GetScalarType<T[P], CheckoutSessionGroupByOutputType[P]>
+        : Prisma.GetScalarType<T[P], CheckoutSessionGroupByOutputType[P]>;
+    }
+  >
+>;
 
 export type CheckoutSessionWhereInput = {
   AND?: Prisma.CheckoutSessionWhereInput | Prisma.CheckoutSessionWhereInput[];
@@ -249,14 +241,8 @@ export type CheckoutSessionScalarWhereWithAggregatesInput = {
   userId?: Prisma.StringWithAggregatesFilter<'CheckoutSession'> | string;
   sessionId?: Prisma.StringWithAggregatesFilter<'CheckoutSession'> | string;
   priceId?: Prisma.StringWithAggregatesFilter<'CheckoutSession'> | string;
-  createdAt?:
-    | Prisma.DateTimeWithAggregatesFilter<'CheckoutSession'>
-    | Date
-    | string;
-  expiresAt?:
-    | Prisma.DateTimeWithAggregatesFilter<'CheckoutSession'>
-    | Date
-    | string;
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<'CheckoutSession'> | Date | string;
+  expiresAt?: Prisma.DateTimeWithAggregatesFilter<'CheckoutSession'> | Date | string;
 };
 
 export type CheckoutSessionCreateInput = {
@@ -350,8 +336,7 @@ export type CheckoutSessionMinOrderByAggregateInput = {
 };
 
 export type CheckoutSessionSelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -365,8 +350,7 @@ export type CheckoutSessionSelect<
 >;
 
 export type CheckoutSessionSelectCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -380,8 +364,7 @@ export type CheckoutSessionSelectCreateManyAndReturn<
 >;
 
 export type CheckoutSessionSelectUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -404,16 +387,14 @@ export type CheckoutSessionSelectScalar = {
 };
 
 export type CheckoutSessionOmit<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
   'id' | 'userId' | 'sessionId' | 'priceId' | 'createdAt' | 'expiresAt',
   ExtArgs['result']['checkoutSession']
 >;
 
 export type $CheckoutSessionPayload<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   name: 'CheckoutSession';
   objects: {};
@@ -436,18 +417,13 @@ export type CheckoutSessionGetPayload<
 > = runtime.Types.Result.GetResult<Prisma.$CheckoutSessionPayload, S>;
 
 export type CheckoutSessionCountArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = Omit<
-  CheckoutSessionFindManyArgs,
-  'select' | 'include' | 'distinct' | 'omit'
-> & {
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+> = Omit<CheckoutSessionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
   select?: CheckoutSessionCountAggregateInputType | true;
 };
 
 export interface CheckoutSessionDelegate<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > {
   [K: symbol]: {
@@ -652,10 +628,7 @@ export interface CheckoutSessionDelegate<
    *
    */
   createManyAndReturn<T extends CheckoutSessionCreateManyAndReturnArgs>(
-    args?: Prisma.SelectSubset<
-      T,
-      CheckoutSessionCreateManyAndReturnArgs<ExtArgs>
-    >
+    args?: Prisma.SelectSubset<T, CheckoutSessionCreateManyAndReturnArgs<ExtArgs>>
   ): Prisma.PrismaPromise<
     runtime.Types.Result.GetResult<
       Prisma.$CheckoutSessionPayload<ExtArgs>,
@@ -786,10 +759,7 @@ export interface CheckoutSessionDelegate<
    *
    */
   updateManyAndReturn<T extends CheckoutSessionUpdateManyAndReturnArgs>(
-    args: Prisma.SelectSubset<
-      T,
-      CheckoutSessionUpdateManyAndReturnArgs<ExtArgs>
-    >
+    args: Prisma.SelectSubset<T, CheckoutSessionUpdateManyAndReturnArgs<ExtArgs>>
   ): Prisma.PrismaPromise<
     runtime.Types.Result.GetResult<
       Prisma.$CheckoutSessionPayload<ExtArgs>,
@@ -849,10 +819,7 @@ export interface CheckoutSessionDelegate<
     T extends runtime.Types.Utils.Record<'select', any>
       ? T['select'] extends true
         ? number
-        : Prisma.GetScalarType<
-            T['select'],
-            CheckoutSessionCountAggregateOutputType
-          >
+        : Prisma.GetScalarType<T['select'], CheckoutSessionCountAggregateOutputType>
       : number
   >;
 
@@ -927,12 +894,7 @@ export interface CheckoutSessionDelegate<
               ? never
               : P extends string
                 ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                : [
-                    Error,
-                    'Field ',
-                    P,
-                    ` in "having" needs to be provided in "by"`,
-                  ];
+                : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
           }[HavingFields]
         : 'take' extends Prisma.Keys<T>
           ? 'orderBy' extends Prisma.Keys<T>
@@ -962,8 +924,7 @@ export interface CheckoutSessionDelegate<
                     : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                 }[OrderFields],
   >(
-    args: Prisma.SubsetIntersection<T, CheckoutSessionGroupByArgs, OrderByArg> &
-      InputErrors
+    args: Prisma.SubsetIntersection<T, CheckoutSessionGroupByArgs, OrderByArg> & InputErrors
   ): {} extends InputErrors
     ? GetCheckoutSessionGroupByPayload<T>
     : Prisma.PrismaPromise<InputErrors>;
@@ -982,8 +943,7 @@ export interface CheckoutSessionDelegate<
 export interface Prisma__CheckoutSessionClient<
   T,
   Null = never,
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: 'PrismaPromise';
@@ -994,14 +954,8 @@ export interface Prisma__CheckoutSessionClient<
    * @returns A Promise for the completion of which ever callback is executed.
    */
   then<TResult1 = T, TResult2 = never>(
-    onfulfilled?:
-      | ((value: T) => TResult1 | PromiseLike<TResult1>)
-      | undefined
-      | null,
-    onrejected?:
-      | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-      | undefined
-      | null
+    onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
   ): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
   /**
    * Attaches a callback for only the rejection of the Promise.
@@ -1009,10 +963,7 @@ export interface Prisma__CheckoutSessionClient<
    * @returns A Promise for the completion of the callback.
    */
   catch<TResult = never>(
-    onrejected?:
-      | ((reason: any) => TResult | PromiseLike<TResult>)
-      | undefined
-      | null
+    onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
   ): runtime.Types.Utils.JsPromise<T | TResult>;
   /**
    * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
@@ -1020,9 +971,7 @@ export interface Prisma__CheckoutSessionClient<
    * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
    * @returns A Promise for the completion of the callback.
    */
-  finally(
-    onfinally?: (() => void) | undefined | null
-  ): runtime.Types.Utils.JsPromise<T>;
+  finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
 }
 
 /**
@@ -1042,8 +991,7 @@ export interface CheckoutSessionFieldRefs {
  * CheckoutSession findUnique
  */
 export type CheckoutSessionFindUniqueArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CheckoutSession
@@ -1063,8 +1011,7 @@ export type CheckoutSessionFindUniqueArgs<
  * CheckoutSession findUniqueOrThrow
  */
 export type CheckoutSessionFindUniqueOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CheckoutSession
@@ -1084,8 +1031,7 @@ export type CheckoutSessionFindUniqueOrThrowArgs<
  * CheckoutSession findFirst
  */
 export type CheckoutSessionFindFirstArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CheckoutSession
@@ -1130,17 +1076,14 @@ export type CheckoutSessionFindFirstArgs<
    *
    * Filter by unique combinations of CheckoutSessions.
    */
-  distinct?:
-    | Prisma.CheckoutSessionScalarFieldEnum
-    | Prisma.CheckoutSessionScalarFieldEnum[];
+  distinct?: Prisma.CheckoutSessionScalarFieldEnum | Prisma.CheckoutSessionScalarFieldEnum[];
 };
 
 /**
  * CheckoutSession findFirstOrThrow
  */
 export type CheckoutSessionFindFirstOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CheckoutSession
@@ -1185,17 +1128,14 @@ export type CheckoutSessionFindFirstOrThrowArgs<
    *
    * Filter by unique combinations of CheckoutSessions.
    */
-  distinct?:
-    | Prisma.CheckoutSessionScalarFieldEnum
-    | Prisma.CheckoutSessionScalarFieldEnum[];
+  distinct?: Prisma.CheckoutSessionScalarFieldEnum | Prisma.CheckoutSessionScalarFieldEnum[];
 };
 
 /**
  * CheckoutSession findMany
  */
 export type CheckoutSessionFindManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CheckoutSession
@@ -1235,17 +1175,14 @@ export type CheckoutSessionFindManyArgs<
    * Skip the first `n` CheckoutSessions.
    */
   skip?: number;
-  distinct?:
-    | Prisma.CheckoutSessionScalarFieldEnum
-    | Prisma.CheckoutSessionScalarFieldEnum[];
+  distinct?: Prisma.CheckoutSessionScalarFieldEnum | Prisma.CheckoutSessionScalarFieldEnum[];
 };
 
 /**
  * CheckoutSession create
  */
 export type CheckoutSessionCreateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CheckoutSession
@@ -1258,25 +1195,19 @@ export type CheckoutSessionCreateArgs<
   /**
    * The data needed to create a CheckoutSession.
    */
-  data: Prisma.XOR<
-    Prisma.CheckoutSessionCreateInput,
-    Prisma.CheckoutSessionUncheckedCreateInput
-  >;
+  data: Prisma.XOR<Prisma.CheckoutSessionCreateInput, Prisma.CheckoutSessionUncheckedCreateInput>;
 };
 
 /**
  * CheckoutSession createMany
  */
 export type CheckoutSessionCreateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to create many CheckoutSessions.
    */
-  data:
-    | Prisma.CheckoutSessionCreateManyInput
-    | Prisma.CheckoutSessionCreateManyInput[];
+  data: Prisma.CheckoutSessionCreateManyInput | Prisma.CheckoutSessionCreateManyInput[];
   skipDuplicates?: boolean;
 };
 
@@ -1284,8 +1215,7 @@ export type CheckoutSessionCreateManyArgs<
  * CheckoutSession createManyAndReturn
  */
 export type CheckoutSessionCreateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CheckoutSession
@@ -1298,9 +1228,7 @@ export type CheckoutSessionCreateManyAndReturnArgs<
   /**
    * The data used to create many CheckoutSessions.
    */
-  data:
-    | Prisma.CheckoutSessionCreateManyInput
-    | Prisma.CheckoutSessionCreateManyInput[];
+  data: Prisma.CheckoutSessionCreateManyInput | Prisma.CheckoutSessionCreateManyInput[];
   skipDuplicates?: boolean;
 };
 
@@ -1308,8 +1236,7 @@ export type CheckoutSessionCreateManyAndReturnArgs<
  * CheckoutSession update
  */
 export type CheckoutSessionUpdateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CheckoutSession
@@ -1322,10 +1249,7 @@ export type CheckoutSessionUpdateArgs<
   /**
    * The data needed to update a CheckoutSession.
    */
-  data: Prisma.XOR<
-    Prisma.CheckoutSessionUpdateInput,
-    Prisma.CheckoutSessionUncheckedUpdateInput
-  >;
+  data: Prisma.XOR<Prisma.CheckoutSessionUpdateInput, Prisma.CheckoutSessionUncheckedUpdateInput>;
   /**
    * Choose, which CheckoutSession to update.
    */
@@ -1336,8 +1260,7 @@ export type CheckoutSessionUpdateArgs<
  * CheckoutSession updateMany
  */
 export type CheckoutSessionUpdateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to update CheckoutSessions.
@@ -1360,8 +1283,7 @@ export type CheckoutSessionUpdateManyArgs<
  * CheckoutSession updateManyAndReturn
  */
 export type CheckoutSessionUpdateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CheckoutSession
@@ -1392,8 +1314,7 @@ export type CheckoutSessionUpdateManyAndReturnArgs<
  * CheckoutSession upsert
  */
 export type CheckoutSessionUpsertArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CheckoutSession
@@ -1410,25 +1331,18 @@ export type CheckoutSessionUpsertArgs<
   /**
    * In case the CheckoutSession found by the `where` argument doesn't exist, create a new CheckoutSession with this data.
    */
-  create: Prisma.XOR<
-    Prisma.CheckoutSessionCreateInput,
-    Prisma.CheckoutSessionUncheckedCreateInput
-  >;
+  create: Prisma.XOR<Prisma.CheckoutSessionCreateInput, Prisma.CheckoutSessionUncheckedCreateInput>;
   /**
    * In case the CheckoutSession was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<
-    Prisma.CheckoutSessionUpdateInput,
-    Prisma.CheckoutSessionUncheckedUpdateInput
-  >;
+  update: Prisma.XOR<Prisma.CheckoutSessionUpdateInput, Prisma.CheckoutSessionUncheckedUpdateInput>;
 };
 
 /**
  * CheckoutSession delete
  */
 export type CheckoutSessionDeleteArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CheckoutSession
@@ -1448,8 +1362,7 @@ export type CheckoutSessionDeleteArgs<
  * CheckoutSession deleteMany
  */
 export type CheckoutSessionDeleteManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which CheckoutSessions to delete
@@ -1465,8 +1378,7 @@ export type CheckoutSessionDeleteManyArgs<
  * CheckoutSession without action
  */
 export type CheckoutSessionDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the CheckoutSession

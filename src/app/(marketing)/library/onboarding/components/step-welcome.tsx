@@ -14,12 +14,9 @@ export function StepWelcome() {
         <Sparkles className="text-primary h-8 w-8" />
       </div>
       <div>
-        <h2 className={cn(mode.font, 'mb-2 text-2xl font-semibold')}>
-          Welcome to Fabrk
-        </h2>
+        <h2 className={cn(mode.font, 'mb-2 text-2xl font-semibold')}>Welcome to Fabrk</h2>
         <p className={cn(mode.font, 'text-muted-foreground text-sm')}>
-          Let's get you set up in just a few steps. This will only take about 2
-          minutes.
+          Let's get you set up in just a few steps. This will only take about 2 minutes.
         </p>
       </div>
       <div className="border-border border p-4 text-left">

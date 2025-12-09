@@ -129,10 +129,7 @@ async function setDefaultPaymentMethodHandler(req: NextRequest) {
     const session = await auth();
 
     if (!session?.user?.email) {
-      return NextResponse.json(
-        { error: 'Unauthorized - Please sign in' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Unauthorized - Please sign in' }, { status: 401 });
     }
 
     // Parse request body
@@ -140,10 +137,7 @@ async function setDefaultPaymentMethodHandler(req: NextRequest) {
     const { paymentMethodId } = body as { paymentMethodId?: string };
 
     if (!paymentMethodId) {
-      return NextResponse.json(
-        { error: 'Payment method ID is required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Payment method ID is required' }, { status: 400 });
     }
 
     // Get user from database
@@ -183,10 +177,7 @@ async function setDefaultPaymentMethodHandler(req: NextRequest) {
     });
   } catch (error: unknown) {
     logger.error('Default payment method update error:', error);
-    return NextResponse.json(
-      { error: 'Failed to update default payment method' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to update default payment method' }, { status: 500 });
   }
 }
 

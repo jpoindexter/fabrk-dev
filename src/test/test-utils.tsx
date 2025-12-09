@@ -45,16 +45,11 @@ interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
   session?: any;
 }
 
-export function renderWithProviders(
-  ui: ReactElement,
-  options?: CustomRenderOptions
-) {
+export function renderWithProviders(ui: ReactElement, options?: CustomRenderOptions) {
   const { session, ...renderOptions } = options || {};
 
   return render(ui, {
-    wrapper: ({ children }) => (
-      <Providers session={session}>{children}</Providers>
-    ),
+    wrapper: ({ children }) => <Providers session={session}>{children}</Providers>,
     ...renderOptions,
   });
 }
@@ -71,9 +66,7 @@ export function mockApiResponse(data: any, status = 200) {
 // Mock fetch
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function mockFetch(response: any, status = 200) {
-  global.fetch = vi.fn(() =>
-    Promise.resolve(mockApiResponse(response, status))
-  );
+  global.fetch = vi.fn(() => Promise.resolve(mockApiResponse(response, status)));
 }
 
 // Wait for async updates

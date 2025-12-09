@@ -43,8 +43,7 @@ export function SecurityAccountsCard({
         </p>
         {connectedAccounts.length === 0 ? (
           <p className="text-muted-foreground font-mono text-xs">
-            No connected accounts. You can link Google or GitHub for faster
-            sign-in.
+            No connected accounts. You can link Google or GitHub for faster sign-in.
           </p>
         ) : (
           <div className="space-y-4">
@@ -60,9 +59,7 @@ export function SecurityAccountsCard({
                   <Badge variant="outline" className="font-mono capitalize">
                     {account.provider}
                   </Badge>
-                  <span className="text-muted-foreground font-mono text-xs">
-                    Connected
-                  </span>
+                  <span className="text-muted-foreground font-mono text-xs">Connected</span>
                 </div>
                 <Button
                   variant="ghost"

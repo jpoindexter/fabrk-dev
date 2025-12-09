@@ -8,12 +8,7 @@
 
 import { useState } from 'react';
 import { BookOpen } from 'lucide-react';
-import {
-  TemplatePageHeader,
-  Card,
-  CardHeader,
-  CardContent,
-} from '@/components/ui/card';
+import { TemplatePageHeader, Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { DocsSidebar } from './components/docs-sidebar';
@@ -170,11 +165,7 @@ export default function DocumentationLayoutTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock
-                  code={templateCode}
-                  language="tsx"
-                  maxHeight="600px"
-                />
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
             </Card>
           </TabsContent>
@@ -191,9 +182,7 @@ export default function DocumentationLayoutTemplate() {
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">docs/</span>
                   <span className="text-foreground">layout.tsx</span>
-                  <span className="text-muted-foreground ml-4">
-                    ← Copy template here
-                  </span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
                 </div>
               </div>
             </div>
@@ -206,32 +195,26 @@ export default function DocumentationLayoutTemplate() {
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> Three-column layout
-                (sidebar, content, TOC)
+                <span className="text-success">&gt;</span> Three-column layout (sidebar, content,
+                TOC)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Hierarchical
-                navigation
+                <span className="text-success">&gt;</span> Hierarchical navigation
               </div>
               <div>
-                <span className="text-success">&gt;</span> Active link
-                highlighting
+                <span className="text-success">&gt;</span> Active link highlighting
               </div>
               <div>
-                <span className="text-success">&gt;</span> Table of contents
-                with auto-scroll
+                <span className="text-success">&gt;</span> Table of contents with auto-scroll
               </div>
               <div>
-                <span className="text-success">&gt;</span> Markdown-friendly
-                content area
+                <span className="text-success">&gt;</span> Markdown-friendly content area
               </div>
               <div>
-                <span className="text-success">&gt;</span> Responsive
-                collapsible sidebars
+                <span className="text-success">&gt;</span> Responsive collapsible sidebars
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant
-                (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

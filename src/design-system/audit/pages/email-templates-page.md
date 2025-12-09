@@ -64,10 +64,7 @@ background-color: #6366f1;
 
 ```tsx
 <DocsCard title="EMAIL_STYLING_EXCEPTION">
-  <p>
-    Email HTML requires inline styles with hardcoded colors due to email client
-    limitations.
-  </p>
+  <p>Email HTML requires inline styles with hardcoded colors due to email client limitations.</p>
   <div className="space-y-1">
     <div>├─ ❌ Email clients don't support external CSS</div>
     <div>├─ ❌ Email clients don't support CSS variables</div>

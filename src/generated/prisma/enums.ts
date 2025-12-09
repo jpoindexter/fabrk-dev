@@ -66,8 +66,7 @@ export const NotificationType = {
   SYSTEM: 'SYSTEM',
 } as const;
 
-export type NotificationType =
-  (typeof NotificationType)[keyof typeof NotificationType];
+export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType];
 
 export const ConsentType = {
   MARKETING: 'MARKETING',

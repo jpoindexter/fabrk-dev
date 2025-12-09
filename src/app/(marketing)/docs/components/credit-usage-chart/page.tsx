@@ -187,8 +187,7 @@ export default function CreditUsageChartPage() {
           name: 'data',
           type: '{ date: string; credits: number }[]',
           required: true,
-          description:
-            'Array of daily usage data with ISO date strings and credit counts.',
+          description: 'Array of daily usage data with ISO date strings and credit counts.',
         },
         {
           name: 'className',

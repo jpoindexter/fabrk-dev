@@ -26,14 +26,12 @@ export default function SEOPage() {
         {
           icon: Share2,
           title: 'Social Cards',
-          description:
-            'OpenGraph and Twitter card support for beautiful social sharing previews.',
+          description: 'OpenGraph and Twitter card support for beautiful social sharing previews.',
         },
         {
           icon: FileText,
           title: 'Structured Data',
-          description:
-            'JSON-LD structured data for rich search results and knowledge panels.',
+          description: 'JSON-LD structured data for rich search results and knowledge panels.',
         },
         {
           icon: Globe,
@@ -196,36 +194,32 @@ export default async function sitemap() {
           <DocsCard title="LANDING_PAGE_SEO">
             Landing Page SEO
             <p className="mb-6">
-              Configure meta tags for your homepage with compelling title and
-              description that matches your value proposition. Include OpenGraph
-              image (1200x630px recommended).
+              Configure meta tags for your homepage with compelling title and description that
+              matches your value proposition. Include OpenGraph image (1200x630px recommended).
             </p>
           </DocsCard>
 
           <DocsCard title="BLOG_POST_SEO">
             Blog Post Optimization
             <p className="mb-6">
-              Use dynamic metadata generation to automatically pull title,
-              description, and featured image from your CMS or database for each
-              blog post.
+              Use dynamic metadata generation to automatically pull title, description, and featured
+              image from your CMS or database for each blog post.
             </p>
           </DocsCard>
 
           <DocsCard title="PRODUCT_PAGES">
             Product Pages
             <p className="mb-6">
-              Add Product schema structured data for e-commerce features,
-              including price, availability, and reviews for rich snippets in
-              search results.
+              Add Product schema structured data for e-commerce features, including price,
+              availability, and reviews for rich snippets in search results.
             </p>
           </DocsCard>
 
           <DocsCard title="LOCALIZED_CONTENT">
             Localized Content
             <p className="mb-6">
-              Use hreflang tags and locale-specific metadata for international
-              SEO. Fabrk's i18n system automatically handles alternate language
-              links.
+              Use hreflang tags and locale-specific metadata for international SEO. Fabrk's i18n
+              system automatically handles alternate language links.
             </p>
           </DocsCard>
         </div>
@@ -235,10 +229,7 @@ export default async function sitemap() {
       <DocsSection title="Best Practices">
         <DocsCard title="SEO_BEST_PRACTICES">
           <ul className="space-y-1">
-            <li>
-              ├─ Keep titles under 60 characters for full display in search
-              results
-            </li>
+            <li>├─ Keep titles under 60 characters for full display in search results</li>
             <li>├─ Write descriptions between 120-160 characters</li>
             <li>├─ Use unique titles and descriptions for every page</li>
             <li>├─ Include primary keyword near the beginning of titles</li>

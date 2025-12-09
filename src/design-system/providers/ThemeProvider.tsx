@@ -60,10 +60,8 @@ export function ThemeProvider({
   const visualKey = `${storageKeyPrefix}-visual-mode`;
 
   const [theme, setThemeState] = useState<ThemeName>(defaultTheme);
-  const [colorTheme, setColorThemeState] =
-    useState<ColorThemeName>(defaultColorTheme);
-  const [visualMode, setVisualModeState] =
-    useState<VisualModeName>(defaultVisualMode);
+  const [colorTheme, setColorThemeState] = useState<ColorThemeName>(defaultColorTheme);
+  const [visualMode, setVisualModeState] = useState<VisualModeName>(defaultVisualMode);
   const [mounted, setMounted] = useState(false);
 
   // Load from localStorage on mount
@@ -80,10 +78,7 @@ export function ThemeProvider({
     }
 
     const storedVisual = localStorage.getItem(visualKey);
-    if (
-      storedVisual &&
-      ['terminal', 'modern', 'minimal', 'linear'].includes(storedVisual)
-    ) {
+    if (storedVisual && ['terminal', 'modern', 'minimal', 'linear'].includes(storedVisual)) {
       setVisualModeState(storedVisual as VisualModeName);
     }
 
@@ -185,12 +180,7 @@ export function ThemeScript({
     })();
   `;
 
-  return (
-    <script
-      dangerouslySetInnerHTML={{ __html: script }}
-      suppressHydrationWarning
-    />
-  );
+  return <script dangerouslySetInnerHTML={{ __html: script }} suppressHydrationWarning />;
 }
 
 export default ThemeProvider;

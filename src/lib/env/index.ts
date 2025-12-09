@@ -13,11 +13,7 @@
  * In production, it throws for any critical configuration issues.
  */
 
-import {
-  validateEnvOrThrow,
-  validateEnvWithWarnings,
-  getFeatureSummary,
-} from './validation';
+import { validateEnvOrThrow, validateEnvWithWarnings, getFeatureSummary } from './validation';
 import { logger } from '@/lib/logger';
 
 // Run validation based on environment
@@ -56,10 +52,8 @@ export const env = {
   DATABASE_URL_DIRECT: process.env.DATABASE_URL_DIRECT,
 
   // Application URLs
-  NEXT_PUBLIC_APP_URL:
-    process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
-  NEXT_PUBLIC_API_URL:
-    process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api',
+  NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
+  NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api',
 
   // NextAuth
   NEXTAUTH_URL: process.env.NEXTAUTH_URL!,
@@ -72,16 +66,12 @@ export const env = {
   // Stripe
   STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY!,
   STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET!,
-  NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:
-    process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!,
+  NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!,
 
   // Stripe Pricing Tiers
-  NEXT_PUBLIC_STRIPE_PRICE_STARTER:
-    process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER,
-  NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL:
-    process.env.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL,
-  NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE:
-    process.env.NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE,
+  NEXT_PUBLIC_STRIPE_PRICE_STARTER: process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER,
+  NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL: process.env.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL,
+  NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE: process.env.NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE,
 
   // Email
   RESEND_API_KEY: process.env.RESEND_API_KEY!,
@@ -99,8 +89,7 @@ export const env = {
 
   // Algolia Search (Optional)
   NEXT_PUBLIC_ALGOLIA_APP_ID: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
-  NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY:
-    process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY,
+  NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY: process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY,
   ALGOLIA_ADMIN_API_KEY: process.env.ALGOLIA_ADMIN_API_KEY,
 
   // Sanity CMS (Optional)
@@ -143,8 +132,7 @@ export const env = {
 
   // PostHog Analytics (Optional)
   NEXT_PUBLIC_POSTHOG_KEY: process.env.NEXT_PUBLIC_POSTHOG_KEY,
-  NEXT_PUBLIC_POSTHOG_HOST:
-    process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://app.posthog.com',
+  NEXT_PUBLIC_POSTHOG_HOST: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://app.posthog.com',
 } as const;
 
 /**

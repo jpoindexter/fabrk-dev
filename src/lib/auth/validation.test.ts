@@ -149,9 +149,7 @@ describe('Auth Validation Schemas', () => {
       const result = registerSchema.safeParse(shortPassword);
       expect(result.success).toBe(false);
       if (!result.success) {
-        const passwordError = result.error.issues.find(
-          (i) => i.path[0] === 'password'
-        );
+        const passwordError = result.error.issues.find((i) => i.path[0] === 'password');
         expect(passwordError?.message).toContain('8 characters');
       }
     });
@@ -167,9 +165,7 @@ describe('Auth Validation Schemas', () => {
       const result = registerSchema.safeParse(noUppercase);
       expect(result.success).toBe(false);
       if (!result.success) {
-        const passwordError = result.error.issues.find(
-          (i) => i.path[0] === 'password'
-        );
+        const passwordError = result.error.issues.find((i) => i.path[0] === 'password');
         expect(passwordError?.message).toContain('uppercase');
       }
     });
@@ -185,9 +181,7 @@ describe('Auth Validation Schemas', () => {
       const result = registerSchema.safeParse(noLowercase);
       expect(result.success).toBe(false);
       if (!result.success) {
-        const passwordError = result.error.issues.find(
-          (i) => i.path[0] === 'password'
-        );
+        const passwordError = result.error.issues.find((i) => i.path[0] === 'password');
         expect(passwordError?.message).toContain('lowercase');
       }
     });
@@ -203,9 +197,7 @@ describe('Auth Validation Schemas', () => {
       const result = registerSchema.safeParse(noNumber);
       expect(result.success).toBe(false);
       if (!result.success) {
-        const passwordError = result.error.issues.find(
-          (i) => i.path[0] === 'password'
-        );
+        const passwordError = result.error.issues.find((i) => i.path[0] === 'password');
         expect(passwordError?.message).toContain('number');
       }
     });
@@ -221,9 +213,7 @@ describe('Auth Validation Schemas', () => {
       const result = registerSchema.safeParse(mismatchedPasswords);
       expect(result.success).toBe(false);
       if (!result.success) {
-        const confirmError = result.error.issues.find(
-          (i) => i.path[0] === 'confirmPassword'
-        );
+        const confirmError = result.error.issues.find((i) => i.path[0] === 'confirmPassword');
         expect(confirmError?.message).toContain('do not match');
       }
     });
@@ -239,9 +229,7 @@ describe('Auth Validation Schemas', () => {
       const result = registerSchema.safeParse(termsNotAccepted);
       expect(result.success).toBe(false);
       if (!result.success) {
-        const termsError = result.error.issues.find(
-          (i) => i.path[0] === 'acceptTerms'
-        );
+        const termsError = result.error.issues.find((i) => i.path[0] === 'acceptTerms');
         expect(termsError?.message).toContain('accept');
       }
     });
@@ -334,9 +322,7 @@ describe('Auth Validation Schemas', () => {
       const result = resetPasswordSchema.safeParse(mismatchedPasswords);
       expect(result.success).toBe(false);
       if (!result.success) {
-        const confirmError = result.error.issues.find(
-          (i) => i.path[0] === 'confirmPassword'
-        );
+        const confirmError = result.error.issues.find((i) => i.path[0] === 'confirmPassword');
         expect(confirmError?.message).toContain('do not match');
       }
     });
@@ -398,9 +384,7 @@ describe('calculatePasswordStrength', () => {
   });
 
   it('should cap score at 100', () => {
-    const ultraStrong = calculatePasswordStrength(
-      'UltraSecureP@ssw0rd!WithSpecialChars123456789'
-    );
+    const ultraStrong = calculatePasswordStrength('UltraSecureP@ssw0rd!WithSpecialChars123456789');
     expect(ultraStrong.score).toBeLessThanOrEqual(100);
   });
 

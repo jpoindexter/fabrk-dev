@@ -1,10 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import {
-  NotificationCenter,
-  Notification,
-} from '@/components/ui/notification-center';
+import { NotificationCenter, Notification } from '@/components/ui/notification-center';
 import { useState } from 'react';
 
 // Sample notifications
@@ -13,8 +10,7 @@ const createNotifications = (): Notification[] => [
     id: '1',
     type: 'info',
     title: 'New feature available',
-    message:
-      'Check out the new dashboard analytics. Now you can track your metrics in real-time.',
+    message: 'Check out the new dashboard analytics. Now you can track your metrics in real-time.',
     timestamp: new Date(Date.now() - 5 * 60 * 1000), // 5 minutes ago
     read: false,
   },
@@ -30,8 +26,7 @@ const createNotifications = (): Notification[] => [
     id: '3',
     type: 'warning',
     title: 'Storage almost full',
-    message:
-      "You've used 90% of your storage quota. Consider upgrading your plan.",
+    message: "You've used 90% of your storage quota. Consider upgrading your plan.",
     timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000), // 1 day ago
     read: true,
     actionLabel: 'Upgrade',
@@ -41,8 +36,7 @@ const createNotifications = (): Notification[] => [
     id: '4',
     type: 'error',
     title: 'Deployment failed',
-    message:
-      'Your latest deployment encountered an error. Check the logs for details.',
+    message: 'Your latest deployment encountered an error. Check the logs for details.',
     timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), // 2 days ago
     read: true,
   },
@@ -58,14 +52,10 @@ const createNotifications = (): Notification[] => [
 ];
 
 function NotificationCenterDemo() {
-  const [notifications, setNotifications] = useState<Notification[]>(
-    createNotifications()
-  );
+  const [notifications, setNotifications] = useState<Notification[]>(createNotifications());
 
   const handleMarkAsRead = (id: string) => {
-    setNotifications((prev) =>
-      prev.map((n) => (n.id === id ? { ...n, read: true } : n))
-    );
+    setNotifications((prev) => prev.map((n) => (n.id === id ? { ...n, read: true } : n)));
   };
 
   const handleMarkAllAsRead = () => {
@@ -92,9 +82,9 @@ function NotificationCenterDemo() {
 }
 
 export default function NotificationCenterPage() {
-  const [_basicNotifications, _setBasicNotifications] = useState<
-    Notification[]
-  >(createNotifications().slice(0, 3));
+  const [_basicNotifications, _setBasicNotifications] = useState<Notification[]>(
+    createNotifications().slice(0, 3)
+  );
 
   return (
     <ComponentShowcaseTemplate
@@ -142,9 +132,7 @@ export default function NotificationCenterPage() {
           description: 'Different notification types with appropriate icons',
           preview: (
             <div className="w-full max-w-md space-y-4">
-              <div className="text-muted-foreground font-mono text-xs">
-                [NOTIFICATION_TYPES]
-              </div>
+              <div className="text-muted-foreground font-mono text-xs">[NOTIFICATION_TYPES]</div>
               <div className="space-y-2">
                 {[
                   {
@@ -173,10 +161,7 @@ export default function NotificationCenterPage() {
                     color: 'text-primary',
                   },
                 ].map(({ type, label, color }) => (
-                  <div
-                    key={type}
-                    className="flex items-center gap-2 font-mono text-sm"
-                  >
+                  <div key={type} className="flex items-center gap-2 font-mono text-sm">
                     <span className={color}>&gt;</span>
                     <span className="text-muted-foreground">{label}</span>
                   </div>
@@ -200,9 +185,7 @@ const notification: Notification = {
           description: 'Notifications can include actionable buttons',
           preview: (
             <div className="w-full max-w-md space-y-2">
-              <div className="text-muted-foreground font-mono text-xs">
-                [ACTION_EXAMPLE]
-              </div>
+              <div className="text-muted-foreground font-mono text-xs">[ACTION_EXAMPLE]</div>
               <div className="space-y-2">
                 <div className="text-sm font-semibold">Storage almost full</div>
                 <p className="text-muted-foreground text-sm">
@@ -230,13 +213,10 @@ const notification: Notification = {
         },
         {
           title: 'Grouped by Date',
-          description:
-            'Automatically groups notifications by Today, Yesterday, This Week, Older',
+          description: 'Automatically groups notifications by Today, Yesterday, This Week, Older',
           preview: (
             <div className="w-full max-w-md space-y-4">
-              <div className="text-muted-foreground font-mono text-xs">
-                [DATE_GROUPS]
-              </div>
+              <div className="text-muted-foreground font-mono text-xs">[DATE_GROUPS]</div>
               {['Today', 'Yesterday', 'This Week', 'Older'].map((group) => (
                 <div key={group} className="space-y-2">
                   <div className="bg-muted rounded-none px-4 py-2">
@@ -260,13 +240,9 @@ const notification: Notification = {
           preview: (
             <div className="flex flex-col items-center justify-center px-4 py-12">
               <div className="bg-muted mb-4 flex h-16 w-16 items-center justify-center rounded-none">
-                <span className="text-muted-foreground font-mono text-2xl">
-                  0
-                </span>
+                <span className="text-muted-foreground font-mono text-2xl">0</span>
               </div>
-              <p className="text-foreground mb-1 font-semibold">
-                You're all caught up!
-              </p>
+              <p className="text-foreground mb-1 font-semibold">You're all caught up!</p>
               <p className="text-muted-foreground text-center text-sm">
                 No new notifications at the moment
               </p>
@@ -282,9 +258,7 @@ const notification: Notification = {
           description: 'Automatically mark notifications as read when clicked',
           preview: (
             <div className="w-full max-w-md space-y-2">
-              <div className="text-muted-foreground font-mono text-xs">
-                [AUTO_READ_ENABLED]
-              </div>
+              <div className="text-muted-foreground font-mono text-xs">[AUTO_READ_ENABLED]</div>
               <p className="text-muted-foreground text-sm">
                 Click any notification to automatically mark it as read
               </p>
@@ -301,9 +275,7 @@ const notification: Notification = {
           description: 'Control the maximum height of the notification list',
           preview: (
             <div className="w-full max-w-md space-y-2">
-              <div className="text-muted-foreground font-mono text-xs">
-                [MAX_HEIGHT]: 400px
-              </div>
+              <div className="text-muted-foreground font-mono text-xs">[MAX_HEIGHT]: 400px</div>
               <p className="text-muted-foreground text-sm">
                 List scrolls when content exceeds max height
               </p>

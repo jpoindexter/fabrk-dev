@@ -18,12 +18,6 @@ export {
   type BlogPostWithAuthor,
 } from './queries';
 
-export {
-  generateSlug,
-  formatDate,
-  formatReadTime,
-  generateExcerpt,
-  isValidSlug,
-} from './utils';
+export { generateSlug, formatDate, formatReadTime, generateExcerpt, isValidSlug } from './utils';
 
 export { mdxComponents } from './mdx-components';

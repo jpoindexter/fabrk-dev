@@ -16,11 +16,7 @@ export type CalendarProps = DayPickerProps & {
 };
 
 // Custom caption component with integrated nav buttons
-function CustomMonthCaption({
-  calendarMonth,
-}: {
-  calendarMonth: { date: Date };
-}) {
+function CustomMonthCaption({ calendarMonth }: { calendarMonth: { date: Date } }) {
   const { goToMonth, nextMonth, previousMonth } = useDayPicker();
 
   return (
@@ -30,9 +26,7 @@ function CustomMonthCaption({
         size="icon"
         className={cn('h-8 w-8 p-0', mode.radius)}
         disabled={!previousMonth}
-        onClick={() =>
-          previousMonth && goToMonth(subMonths(calendarMonth.date, 1))
-        }
+        onClick={() => previousMonth && goToMonth(subMonths(calendarMonth.date, 1))}
         aria-label="Previous month"
       >
         <ChevronLeft className="h-4 w-4" aria-hidden="true" />
@@ -65,18 +59,14 @@ function Calendar({
 }: CalendarProps) {
   const handleTodayClick = () => {
     if (props.mode === 'single' && 'onSelect' in props) {
-      const onSelect = props.onSelect as
-        | ((date: Date | undefined) => void)
-        | undefined;
+      const onSelect = props.onSelect as ((date: Date | undefined) => void) | undefined;
       onSelect?.(new Date());
     }
   };
 
   const handleClearClick = () => {
     if (props.mode === 'single' && 'onSelect' in props) {
-      const onSelect = props.onSelect as
-        | ((date: Date | undefined) => void)
-        | undefined;
+      const onSelect = props.onSelect as ((date: Date | undefined) => void) | undefined;
       onSelect?.(undefined);
     }
     onClear?.();
@@ -101,10 +91,7 @@ function Calendar({
           // Grid
           month_grid: 'w-full border-collapse',
           weekdays: 'flex',
-          weekday: cn(
-            'text-muted-foreground w-9 text-xs font-semibold text-center',
-            mode.font
-          ),
+          weekday: cn('text-muted-foreground w-9 text-xs font-semibold text-center', mode.font),
           week: 'flex w-full mt-2',
 
           // Day cells

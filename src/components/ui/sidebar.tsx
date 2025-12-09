@@ -23,16 +23,9 @@ interface SidebarProps {
   onItemClick?: (item: SidebarItem) => void;
 }
 
-export function Sidebar({
-  items,
-  defaultCollapsed = false,
-  className,
-  onItemClick,
-}: SidebarProps) {
+export function Sidebar({ items, defaultCollapsed = false, className, onItemClick }: SidebarProps) {
   const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed);
-  const [expandedItems, setExpandedItems] = React.useState<Set<string>>(
-    new Set()
-  );
+  const [expandedItems, setExpandedItems] = React.useState<Set<string>>(new Set());
 
   const toggleExpanded = (id: string) => {
     setExpandedItems((prev) => {
@@ -125,16 +118,10 @@ export function Sidebar({
           className="ml-auto"
           aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
         >
-          {isCollapsed ? (
-            <Menu className="h-5 w-5" />
-          ) : (
-            <X className="h-5 w-5" />
-          )}
+          {isCollapsed ? <Menu className="h-5 w-5" /> : <X className="h-5 w-5" />}
         </Button>
       </div>
-      <nav className="flex-1 space-y-1 p-2">
-        {items.map((item) => renderItem(item))}
-      </nav>
+      <nav className="flex-1 space-y-1 p-2">{items.map((item) => renderItem(item))}</nav>
     </aside>
   );
 }

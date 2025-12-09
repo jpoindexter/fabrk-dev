@@ -30,10 +30,7 @@ async function trialHandler(req: NextRequest) {
     const { priceId } = body as { priceId: string };
 
     if (!priceId) {
-      return NextResponse.json(
-        { error: 'Price ID is required for trial' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Price ID is required for trial' }, { status: 400 });
     }
 
     // User must be authenticated to start a trial
@@ -54,10 +51,7 @@ async function trialHandler(req: NextRequest) {
 
     // Check if user already had a trial
     if (user.trialEndsAt) {
-      return NextResponse.json(
-        { error: 'You have already used your free trial' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'You have already used your free trial' }, { status: 400 });
     }
 
     // Check if user already has a subscription
@@ -69,11 +63,7 @@ async function trialHandler(req: NextRequest) {
     }
 
     // Get or create Stripe customer
-    const customerId = await getOrCreateCustomer(
-      user.email,
-      user.id,
-      user.customerId
-    );
+    const customerId = await getOrCreateCustomer(user.email, user.id, user.customerId);
 
     // Update user with customer ID if newly created
     if (!user.customerId) {
@@ -118,10 +108,7 @@ async function trialHandler(req: NextRequest) {
     return NextResponse.json({ url: checkoutSession.url });
   } catch (error: unknown) {
     logger.error('Trial checkout error:', error);
-    return NextResponse.json(
-      { error: 'Failed to create trial checkout session' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to create trial checkout session' }, { status: 500 });
   }
 }
 

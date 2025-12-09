@@ -50,12 +50,7 @@ export function Gauge({
   const angleRange = endAngle - startAngle;
   const currentAngle = startAngle + (angleRange * percentage) / 100;
 
-  const getArcPath = (
-    radius: number,
-    startAngle: number,
-    endAngle: number,
-    thickness: number
-  ) => {
+  const getArcPath = (radius: number, startAngle: number, endAngle: number, thickness: number) => {
     const innerRadius = radius - thickness / 2;
     const outerRadius = radius + thickness / 2;
 
@@ -117,14 +112,10 @@ export function Gauge({
         {/* Segments or single value arc */}
         {segments ? (
           segments.map((segment, index) => {
-            const prevValue = segments
-              .slice(0, index)
-              .reduce((sum, s) => sum + s.value, 0);
-            const segmentStart =
-              startAngle + (angleRange * prevValue) / (max - min);
+            const prevValue = segments.slice(0, index).reduce((sum, s) => sum + s.value, 0);
+            const segmentStart = startAngle + (angleRange * prevValue) / (max - min);
             const segmentEnd =
-              startAngle +
-              (angleRange * (prevValue + segment.value)) / (max - min);
+              startAngle + (angleRange * (prevValue + segment.value)) / (max - min);
 
             return (
               <path
@@ -193,9 +184,7 @@ export function Gauge({
             {normalizedValue.toFixed(0)}
             {unit && <span className="text-lg">{unit}</span>}
           </p>
-          {label && (
-            <p className="text-muted-foreground mt-1 text-xs">{label}</p>
-          )}
+          {label && <p className="text-muted-foreground mt-1 text-xs">{label}</p>}
         </div>
       )}
     </div>

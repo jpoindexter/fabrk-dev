@@ -26,8 +26,7 @@ export default function MFAPage() {
         {
           icon: Key,
           title: '6-Digit TOTP Codes',
-          description:
-            'Standard TOTP codes that change every 30 seconds. RFC 6238 compliant.',
+          description: 'Standard TOTP codes that change every 30 seconds. RFC 6238 compliant.',
         },
         {
           icon: Shield,
@@ -45,8 +44,7 @@ export default function MFAPage() {
       setup={[
         {
           title: 'Configure MFA Issuer Name',
-          description:
-            'Customize the issuer name (shown in authenticator apps) in src/config.js',
+          description: 'Customize the issuer name (shown in authenticator apps) in src/config.js',
           code: `// src/config.js
 
 export const config = {
@@ -168,9 +166,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
             <ol className="list-inside list-decimal space-y-1">
               <li>User goes to Settings → Security</li>
               <li>Clicks &quot;Enable Two-Factor Authentication&quot;</li>
-              <li>
-                Scans QR code with authenticator app (or enters secret manually)
-              </li>
+              <li>Scans QR code with authenticator app (or enters secret manually)</li>
               <li>Enters the 6-digit code from their app to verify setup</li>
               <li>Receives 10 backup codes to save somewhere safe</li>
               <li>2FA is now enabled on their account</li>
@@ -181,9 +177,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
             Logging In With 2FA
             <ol className="list-inside list-decimal space-y-1">
               <li>User enters email and password as normal</li>
-              <li>
-                If 2FA is enabled, they&apos;re asked for a verification code
-              </li>
+              <li>If 2FA is enabled, they&apos;re asked for a verification code</li>
               <li>User opens authenticator app and enters the current code</li>
               <li>If code is correct, they&apos;re logged in</li>
             </ol>
@@ -192,15 +186,10 @@ export async function deleteAccount(userId: string, mfaCode: string) {
           <DocsCard title="BACKUP_CODES">
             Lost Phone? Use Backup Code
             <ol className="list-inside list-decimal space-y-1">
-              <li>
-                On the verification screen, click &quot;Use backup code&quot;
-              </li>
+              <li>On the verification screen, click &quot;Use backup code&quot;</li>
               <li>Enter one of the 10 backup codes (format: XXXX-XXXX)</li>
               <li>That code is now used up and won&apos;t work again</li>
-              <li>
-                After logging in, set up a new authenticator and generate new
-                backup codes
-              </li>
+              <li>After logging in, set up a new authenticator and generate new backup codes</li>
             </ol>
           </DocsCard>
         </div>
@@ -210,9 +199,8 @@ export async function deleteAccount(userId: string, mfaCode: string) {
       <DocsSection title="About Backup Codes">
         <DocsCard title="BACKUP_INFO" className="bg-muted/50">
           <p className="mb-4">
-            Backup codes are essential for account recovery. They let users log
-            in even if they lose access to their authenticator app (lost phone,
-            new device, etc.).
+            Backup codes are essential for account recovery. They let users log in even if they lose
+            access to their authenticator app (lost phone, new device, etc.).
           </p>
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="space-y-2">
@@ -246,8 +234,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
             </summary>
             <div className="text-muted-foreground border-t p-4 text-sm">
               <p className="mb-6">
-                Any app that supports TOTP (RFC 6238) works. Popular options
-                include:
+                Any app that supports TOTP (RFC 6238) works. Popular options include:
               </p>
               <ul className="mt-2 space-y-1">
                 <li>• Google Authenticator</li>
@@ -265,8 +252,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
             </summary>
             <div className="text-muted-foreground border-t p-4 text-sm">
               <p className="mb-6">
-                They can use one of their 10 backup codes to log in. After
-                logging in, they should:
+                They can use one of their 10 backup codes to log in. After logging in, they should:
               </p>
               <ol className="mt-2 list-inside list-decimal">
                 <li>Disable 2FA</li>
@@ -281,19 +267,14 @@ export async function deleteAccount(userId: string, mfaCode: string) {
               What if user loses phone AND backup codes?
             </summary>
             <div className="text-muted-foreground border-t p-4 text-sm">
-              <p className="mb-6">
-                This is a worst-case scenario. You have a few options:
-              </p>
+              <p className="mb-6">This is a worst-case scenario. You have a few options:</p>
               <ul className="mt-2 space-y-1">
                 <li>• Require identity verification (ID upload, video call)</li>
                 <li>• Disable 2FA from admin panel after verification</li>
-                <li>
-                  • Implement an account recovery flow with security questions
-                </li>
+                <li>• Implement an account recovery flow with security questions</li>
               </ul>
               <p className="mt-2">
-                This is why it&apos;s important to tell users to save their
-                backup codes securely!
+                This is why it&apos;s important to tell users to save their backup codes securely!
               </p>
             </div>
           </details>
@@ -304,11 +285,9 @@ export async function deleteAccount(userId: string, mfaCode: string) {
             </summary>
             <div className="text-muted-foreground border-t p-4 text-sm">
               <p className="mb-6">
-                2FA is opt-in by default. To require it, you&apos;d add
-                middleware that checks if{' '}
-                <code className="bg-muted px-1 font-mono">user.mfaEnabled</code>{' '}
-                is true and redirects users to set it up if not. This is common
-                for enterprise/admin users.
+                2FA is opt-in by default. To require it, you&apos;d add middleware that checks if{' '}
+                <code className="bg-muted px-1 font-mono">user.mfaEnabled</code> is true and
+                redirects users to set it up if not. This is common for enterprise/admin users.
               </p>
             </div>
           </details>
@@ -320,9 +299,9 @@ export async function deleteAccount(userId: string, mfaCode: string) {
             <div className="text-muted-foreground border-t p-4 text-sm">
               <p className="mb-6">
                 TOTP secrets are encrypted before storage using your{' '}
-                <code className="bg-muted px-1 font-mono">NEXTAUTH_SECRET</code>
-                . Backup codes are hashed with SHA-256. Even if your database is
-                compromised, attackers can&apos;t use the raw values.
+                <code className="bg-muted px-1 font-mono">NEXTAUTH_SECRET</code>. Backup codes are
+                hashed with SHA-256. Even if your database is compromised, attackers can&apos;t use
+                the raw values.
               </p>
             </div>
           </details>
@@ -332,22 +311,19 @@ export async function deleteAccount(userId: string, mfaCode: string) {
       {/* Future Enhancements Section */}
       <DocsSection title="Future Enhancements">
         <p className="mb-4">
-          The current implementation covers TOTP (authenticator apps). Future
-          versions may include:
+          The current implementation covers TOTP (authenticator apps). Future versions may include:
         </p>
         <div className="grid gap-4 sm:grid-cols-2">
           <DocsCard title="SMS_VERIFICATION">
             SMS Verification
             <p className="mb-6">
-              Text message codes as an alternative (requires Twilio
-              integration).
+              Text message codes as an alternative (requires Twilio integration).
             </p>
           </DocsCard>
           <DocsCard title="WEBAUTHN_PASSKEYS">
             WebAuthn/Passkeys
             <p className="mb-6">
-              Hardware security keys and biometric authentication (Touch ID,
-              Face ID).
+              Hardware security keys and biometric authentication (Touch ID, Face ID).
             </p>
           </DocsCard>
         </div>

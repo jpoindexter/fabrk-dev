@@ -19,12 +19,7 @@ function PricingDemo() {
       name: 'PRO',
       price: '$29',
       period: '/month',
-      features: [
-        'Unlimited Projects',
-        'Priority Support',
-        '100GB Storage',
-        'API Access',
-      ],
+      features: ['Unlimited Projects', 'Priority Support', '100GB Storage', 'API Access'],
       cta: 'UPGRADE_NOW',
       popular: true,
     },
@@ -32,12 +27,7 @@ function PricingDemo() {
       name: 'ENTERPRISE',
       price: 'Custom',
       period: '',
-      features: [
-        'Custom Solutions',
-        '24/7 Support',
-        'Unlimited Storage',
-        'SLA',
-      ],
+      features: ['Custom Solutions', '24/7 Support', 'Unlimited Storage', 'SLA'],
       cta: 'CONTACT_SALES',
       popular: false,
     },
@@ -49,9 +39,7 @@ function PricingDemo() {
         <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 font-mono text-xs">
           [ [0x30] PRICING ] SELECT_PLAN
         </span>
-        <h2 className="mt-4 font-mono text-xl font-semibold">
-          CHOOSE_YOUR_PLAN
-        </h2>
+        <h2 className="mt-4 font-mono text-xl font-semibold">CHOOSE_YOUR_PLAN</h2>
       </div>
       <div className="grid gap-4 md:grid-cols-3">
         {plans.map((plan) => (
@@ -60,19 +48,13 @@ function PricingDemo() {
             className={`bg-card border p-6 ${plan.popular ? 'border-primary' : 'border-border'}`}
           >
             {plan.popular && (
-              <span className="text-primary mb-2 inline-block font-mono text-xs">
-                [POPULAR]
-              </span>
+              <span className="text-primary mb-2 inline-block font-mono text-xs">[POPULAR]</span>
             )}
             <div className="mb-4">
-              <span className="text-muted-foreground font-mono text-xs">
-                {plan.name}
-              </span>
+              <span className="text-muted-foreground font-mono text-xs">{plan.name}</span>
               <div className="mt-1 font-mono text-2xl font-semibold">
                 {plan.price}
-                <span className="text-muted-foreground text-sm">
-                  {plan.period}
-                </span>
+                <span className="text-muted-foreground text-sm">{plan.period}</span>
               </div>
             </div>
             <ul className="mb-6 space-y-2">
@@ -103,13 +85,9 @@ function PricingDemo() {
 function PricingCardDemo() {
   return (
     <div className="border-primary bg-card w-full max-w-sm border p-6">
-      <span className="text-primary mb-2 inline-block font-mono text-xs">
-        [RECOMMENDED]
-      </span>
+      <span className="text-primary mb-2 inline-block font-mono text-xs">[RECOMMENDED]</span>
       <div className="mb-4">
-        <span className="text-muted-foreground font-mono text-xs">
-          LIFETIME
-        </span>
+        <span className="text-muted-foreground font-mono text-xs">LIFETIME</span>
         <div className="mt-1 font-mono text-4xl font-semibold">
           $299<span className="text-muted-foreground text-sm"> one-time</span>
         </div>

@@ -15,15 +15,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
-import {
-  Globe,
-  Download,
-  Eye,
-  FileText,
-  UserX,
-  AlertTriangle,
-  Trash2,
-} from 'lucide-react';
+import { Globe, Download, Eye, FileText, UserX, AlertTriangle, Trash2 } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -51,20 +43,14 @@ export function ComplianceTab({
     <div className="space-y-6">
       {/* GDPR Rights */}
       <Card tone="neutral">
-        <CardHeader
-          code="0x04"
-          title="GDPR_RIGHTS"
-          icon={<Globe className="h-4 w-4" />}
-        />
+        <CardHeader code="0x04" title="GDPR_RIGHTS" icon={<Globe className="h-4 w-4" />} />
         <CardContent padding="md">
           <div className="mb-4 flex items-center gap-4">
             <div className="border-border bg-primary/10 flex h-10 w-10 items-center justify-center border">
               <Globe className="text-primary h-5 w-5" />
             </div>
             <div>
-              <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                [GDPR_RIGHTS]:
-              </div>
+              <div className={cn(mode.font, 'text-muted-foreground text-xs')}>[GDPR_RIGHTS]:</div>
               <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
                 Exercise your data protection rights
               </div>
@@ -73,11 +59,7 @@ export function ComplianceTab({
           <div className="space-y-2">
             <Button
               variant="outline"
-              className={cn(
-                mode.radius,
-                mode.font,
-                'w-full justify-start text-xs'
-              )}
+              className={cn(mode.radius, mode.font, 'w-full justify-start text-xs')}
               onClick={onExportData}
             >
               <Download className="mr-2 h-4 w-4" />
@@ -85,11 +67,7 @@ export function ComplianceTab({
             </Button>
             <Button
               variant="outline"
-              className={cn(
-                mode.radius,
-                mode.font,
-                'w-full justify-start text-xs'
-              )}
+              className={cn(mode.radius, mode.font, 'w-full justify-start text-xs')}
               onClick={onRequestAccess}
             >
               <Eye className="mr-2 h-4 w-4" />
@@ -97,11 +75,7 @@ export function ComplianceTab({
             </Button>
             <Button
               variant="outline"
-              className={cn(
-                mode.radius,
-                mode.font,
-                'w-full justify-start text-xs'
-              )}
+              className={cn(mode.radius, mode.font, 'w-full justify-start text-xs')}
               onClick={() => onViewPolicy('privacy')}
             >
               <FileText className="mr-2 h-4 w-4" />
@@ -109,11 +83,7 @@ export function ComplianceTab({
             </Button>
             <Button
               variant="outline"
-              className={cn(
-                mode.radius,
-                mode.font,
-                'w-full justify-start text-xs'
-              )}
+              className={cn(mode.radius, mode.font, 'w-full justify-start text-xs')}
               onClick={() => onViewPolicy('terms')}
             >
               <FileText className="mr-2 h-4 w-4" />
@@ -125,41 +95,27 @@ export function ComplianceTab({
 
       {/* Danger Zone */}
       <Card tone="danger">
-        <CardHeader
-          code="0x05"
-          title="DANGER_ZONE"
-          icon={<UserX className="h-4 w-4" />}
-        />
+        <CardHeader code="0x05" title="DANGER_ZONE" icon={<UserX className="h-4 w-4" />} />
         <CardContent padding="md">
           <div className="mb-4 flex items-center gap-4">
             <div className="border-border bg-destructive/10 flex h-10 w-10 items-center justify-center border">
               <UserX className="text-destructive h-5 w-5" />
             </div>
             <div>
-              <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                [DANGER_ZONE]:
-              </div>
+              <div className={cn(mode.font, 'text-muted-foreground text-xs')}>[DANGER_ZONE]:</div>
               <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
                 Irreversible actions - proceed with caution
               </div>
             </div>
           </div>
-          <Alert
-            className={cn(
-              mode.radius,
-              'mb-4 flex items-center justify-center gap-2'
-            )}
-          >
+          <Alert className={cn(mode.radius, 'mb-4 flex items-center justify-center gap-2')}>
             <AlertTriangle className="h-4 w-4" />
             <AlertDescription className={cn(mode.font, 'text-xs')}>
-              [WARNING]: Deleting your account is permanent and cannot be
-              undone. All your data will be permanently erased.
+              [WARNING]: Deleting your account is permanent and cannot be undone. All your data will
+              be permanently erased.
             </AlertDescription>
           </Alert>
-          <AlertDialog
-            open={deleteDialogOpen}
-            onOpenChange={setDeleteDialogOpen}
-          >
+          <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
             <div className="flex justify-end">
               <AlertDialogTrigger asChild>
                 <Button
@@ -172,22 +128,16 @@ export function ComplianceTab({
                 </Button>
               </AlertDialogTrigger>
             </div>
-            <AlertDialogContent
-              className={cn(mode.radius, 'border-destructive border')}
-            >
-              <AlertDialogTitle
-                className={cn(mode.font, 'text-destructive text-sm')}
-              >
+            <AlertDialogContent className={cn(mode.radius, 'border-destructive border')}>
+              <AlertDialogTitle className={cn(mode.font, 'text-destructive text-sm')}>
                 [DELETE_ACCOUNT]:
               </AlertDialogTitle>
               <AlertDialogDescription className={cn(mode.font, 'text-xs')}>
-                Are you sure you want to delete your account? This action cannot
-                be undone. All your data will be permanently erased.
+                Are you sure you want to delete your account? This action cannot be undone. All your
+                data will be permanently erased.
               </AlertDialogDescription>
               <div className="flex justify-end gap-4">
-                <AlertDialogCancel
-                  className={cn(mode.radius, mode.font, 'text-xs')}
-                >
+                <AlertDialogCancel className={cn(mode.radius, mode.font, 'text-xs')}>
                   &gt; CANCEL
                 </AlertDialogCancel>
                 <AlertDialogAction

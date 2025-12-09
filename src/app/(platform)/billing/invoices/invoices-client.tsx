@@ -34,21 +34,14 @@ export function InvoicesClient({ paymentId }: InvoicesClientProps) {
       toast.success('Opening invoice...');
     } catch (error) {
       console.error('Invoice download error:', error);
-      toast.error(
-        error instanceof Error ? error.message : 'Failed to download invoice'
-      );
+      toast.error(error instanceof Error ? error.message : 'Failed to download invoice');
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <Button
-      variant="ghost"
-      size="sm"
-      onClick={handleDownload}
-      disabled={isLoading}
-    >
+    <Button variant="ghost" size="sm" onClick={handleDownload} disabled={isLoading}>
       {isLoading ? (
         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
       ) : (

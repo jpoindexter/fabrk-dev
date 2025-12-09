@@ -99,12 +99,7 @@ export function ComponentShowcaseTemplate({
   return (
     <div className={docsSpacing.pageSections}>
       {/* Header */}
-      <DocsHeader
-        code={code}
-        category={category}
-        title={title}
-        description={description}
-      />
+      <DocsHeader code={code} category={category} title={title} description={description} />
 
       {/* Warning (if any) */}
       {warning && (
@@ -172,17 +167,11 @@ export function ComponentShowcaseTemplate({
         <DocsSection title="Usage">
           <div className={docsSpacing.sectionItems}>
             {usageExamples.map((example, index) => (
-              <DocsCard
-                key={index}
-                title={example.title.toUpperCase().replace(/\s+/g, '_')}
-              >
+              <DocsCard key={index} title={example.title.toUpperCase().replace(/\s+/g, '_')}>
                 {example.description && (
                   <p className={docsTypography.body}>{example.description}</p>
                 )}
-                <CodeBlock
-                  code={example.code}
-                  language={example.language || 'tsx'}
-                />
+                <CodeBlock code={example.code} language={example.language || 'tsx'} />
               </DocsCard>
             ))}
           </div>

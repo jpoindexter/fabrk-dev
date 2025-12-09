@@ -65,9 +65,7 @@ interface UserManagementTableProps {
   initialUsers: User[];
 }
 
-export function UserManagementTable({
-  initialUsers,
-}: UserManagementTableProps) {
+export function UserManagementTable({ initialUsers }: UserManagementTableProps) {
   const router = useRouter();
   const [users, setUsers] = useState(initialUsers);
   const [searchQuery, setSearchQuery] = useState('');
@@ -98,14 +96,11 @@ export function UserManagementTable({
         throw new Error(error.error || 'Failed to update role');
       }
 
-      setUsers(
-        users.map((u) => (u.id === userId ? { ...u, role: newRole } : u))
-      );
+      setUsers(users.map((u) => (u.id === userId ? { ...u, role: newRole } : u)));
       toast.success('User role updated successfully');
       router.refresh();
     } catch (error: unknown) {
-      const errorMessage =
-        error instanceof Error ? error.message : 'Failed to update user role';
+      const errorMessage = error instanceof Error ? error.message : 'Failed to update user role';
       toast.error(errorMessage);
     } finally {
       setActionLoading(false);
@@ -132,8 +127,7 @@ export function UserManagementTable({
       toast.success('User deleted successfully');
       router.refresh();
     } catch (error: unknown) {
-      const errorMessage =
-        error instanceof Error ? error.message : 'Failed to delete user';
+      const errorMessage = error instanceof Error ? error.message : 'Failed to delete user';
       toast.error(errorMessage);
     } finally {
       setActionLoading(false);
@@ -159,8 +153,7 @@ export function UserManagementTable({
       toast.success('User suspended successfully');
       router.refresh();
     } catch (error: unknown) {
-      const errorMessage =
-        error instanceof Error ? error.message : 'Failed to suspend user';
+      const errorMessage = error instanceof Error ? error.message : 'Failed to suspend user';
       toast.error(errorMessage);
     } finally {
       setActionLoading(false);
@@ -223,19 +216,14 @@ export function UserManagementTable({
           <TableBody>
             {filteredUsers.length === 0 ? (
               <TableRow>
-                <TableCell
-                  colSpan={8}
-                  className="text-muted-foreground text-center"
-                >
+                <TableCell colSpan={8} className="text-muted-foreground text-center">
                   No users found
                 </TableCell>
               </TableRow>
             ) : (
               filteredUsers.map((user) => (
                 <TableRow key={user.id}>
-                  <TableCell className="font-medium">
-                    {user.name || '—'}
-                  </TableCell>
+                  <TableCell className="font-medium">{user.name || '—'}</TableCell>
                   <TableCell>{user.email}</TableCell>
                   <TableCell>
                     <Badge
@@ -246,10 +234,7 @@ export function UserManagementTable({
                     </Badge>
                   </TableCell>
                   <TableCell>
-                    <Badge
-                      variant="outline"
-                      className="w-24 justify-center font-semibold"
-                    >
+                    <Badge variant="outline" className="w-24 justify-center font-semibold">
                       {user.tier || 'FREE'}
                     </Badge>
                   </TableCell>
@@ -263,10 +248,7 @@ export function UserManagementTable({
                         Yes
                       </Badge>
                     ) : (
-                      <Badge
-                        variant="accent"
-                        className="w-24 justify-center font-semibold"
-                      >
+                      <Badge variant="accent" className="w-24 justify-center font-semibold">
                         No
                       </Badge>
                     )}
@@ -277,11 +259,7 @@ export function UserManagementTable({
                   <TableCell className="text-right">
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          disabled={actionLoading}
-                        >
+                        <Button variant="ghost" size="sm" disabled={actionLoading}>
                           <MoreHorizontal className="h-4 w-4" />
                         </Button>
                       </DropdownMenuTrigger>
@@ -290,17 +268,12 @@ export function UserManagementTable({
                         <DropdownMenuSeparator />
                         <DropdownMenuItem
                           onClick={() =>
-                            handleRoleChange(
-                              user.id,
-                              user.role === 'ADMIN' ? 'USER' : 'ADMIN'
-                            )
+                            handleRoleChange(user.id, user.role === 'ADMIN' ? 'USER' : 'ADMIN')
                           }
                           className="font-semibold"
                         >
                           <UserCog className="mr-2 h-4 w-4" />
-                          {user.role === 'ADMIN'
-                            ? 'Remove Admin'
-                            : 'Make Admin'}
+                          {user.role === 'ADMIN' ? 'Remove Admin' : 'Make Admin'}
                         </DropdownMenuItem>
                         <DropdownMenuItem
                           onClick={() => handleSuspendUser(user.id)}
@@ -336,9 +309,9 @@ export function UserManagementTable({
           <AlertDialogHeader>
             <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete the
-              user account for <strong>{selectedUser?.email}</strong> and remove
-              all associated data from the database.
+              This action cannot be undone. This will permanently delete the user account for{' '}
+              <strong>{selectedUser?.email}</strong> and remove all associated data from the
+              database.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

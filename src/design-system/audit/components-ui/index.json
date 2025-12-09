@@ -5,13 +5,7 @@
   "totalComponents": 85,
   "auditedFamilies": {
     "count": 5,
-    "families": [
-      "Typography",
-      "Pagination",
-      "Overlays",
-      "Form Controls",
-      "Utilities"
-    ],
+    "families": ["Typography", "Pagination", "Overlays", "Form Controls", "Utilities"],
     "status": "complete"
   },
   "categories": {
@@ -104,14 +98,7 @@
     },
     "layout": {
       "count": 6,
-      "components": [
-        "container",
-        "stack",
-        "grid",
-        "section",
-        "page-wrapper",
-        "aspect-ratio"
-      ]
+      "components": ["container", "stack", "grid", "section", "page-wrapper", "aspect-ratio"]
     },
     "typography": {
       "count": 2,
@@ -119,14 +106,7 @@
     },
     "charts": {
       "count": 5,
-      "components": [
-        "donut-chart",
-        "pie-chart",
-        "funnel-chart",
-        "gauge",
-        "heatmap",
-        "sparkline"
-      ]
+      "components": ["donut-chart", "pie-chart", "funnel-chart", "gauge", "heatmap", "sparkline"]
     }
   },
   "complianceStats": {

@@ -38,9 +38,7 @@ export default function AdminUsersPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-4xl font-semibold tracking-tight">Users</h1>
-          <p className="text-muted-foreground">
-            Manage and monitor all user accounts
-          </p>
+          <p className="text-muted-foreground">Manage and monitor all user accounts</p>
         </div>
       </div>
 

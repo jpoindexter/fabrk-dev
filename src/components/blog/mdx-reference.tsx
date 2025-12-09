@@ -106,17 +106,8 @@ function CopyButton({ text }: { text: string }) {
   };
 
   return (
-    <Button
-      variant="ghost"
-      size="sm"
-      onClick={handleCopy}
-      className="h-8 w-8 p-0"
-    >
-      {copied ? (
-        <Check className="text-success h-4 w-4" />
-      ) : (
-        <Copy className="h-4 w-4" />
-      )}
+    <Button variant="ghost" size="sm" onClick={handleCopy} className="h-8 w-8 p-0">
+      {copied ? <Check className="text-success h-4 w-4" /> : <Copy className="h-4 w-4" />}
     </Button>
   );
 }
@@ -137,8 +128,7 @@ export function MdxReference() {
 
         <div className="space-y-4">
           <p className="text-muted-foreground font-mono text-sm">
-            Use these components in your blog content to create rich,
-            interactive posts.
+            Use these components in your blog content to create rich, interactive posts.
           </p>
 
           <Tabs defaultValue="callout" className="w-full">
@@ -209,9 +199,7 @@ export function MdxReference() {
 
           {/* Basic Markdown */}
           <div className="border-border border-t pt-4">
-            <h3 className="mb-3 font-mono text-sm font-semibold">
-              BASIC_MARKDOWN
-            </h3>
+            <h3 className="mb-3 font-mono text-sm font-semibold">BASIC_MARKDOWN</h3>
             <div className="text-muted-foreground grid gap-2 font-mono text-xs">
               <div className="border-border flex justify-between border-b pb-1">
                 <span>**bold**</span>

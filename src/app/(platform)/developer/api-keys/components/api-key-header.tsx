@@ -20,18 +20,12 @@ interface ApiKeyHeaderProps {
   children: React.ReactNode;
 }
 
-export function ApiKeyHeader({
-  isDialogOpen,
-  onDialogOpenChange,
-  children,
-}: ApiKeyHeaderProps) {
+export function ApiKeyHeader({ isDialogOpen, onDialogOpenChange, children }: ApiKeyHeaderProps) {
   return (
     <div className="mb-8">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="mb-2 text-4xl font-semibold tracking-tight">
-            API Keys
-          </h1>
+          <h1 className="mb-2 text-4xl font-semibold tracking-tight">API Keys</h1>
           <p className="text-muted-foreground text-lg">
             Manage API keys for programmatic access to your account
           </p>

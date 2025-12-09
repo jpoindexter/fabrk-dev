@@ -81,9 +81,7 @@ export function ExitIntentPopup({
     const exitIntentShown = localStorage.getItem('exit-intent-shown');
     if (exitIntentShown) {
       const shownDate = new Date(exitIntentShown);
-      const expiryDate = new Date(
-        shownDate.getTime() + cookieExpiry * 24 * 60 * 60 * 1000
-      );
+      const expiryDate = new Date(shownDate.getTime() + cookieExpiry * 24 * 60 * 60 * 1000);
       if (new Date() < expiryDate) {
         // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: Initialize state from localStorage on mount
         setHasShown(true);
@@ -128,9 +126,7 @@ export function ExitIntentPopup({
               <Sparkles className="text-primary h-8 w-8" />
             </div>
           </div>
-          <DialogTitle className={cn(mode.font, 'text-center text-2xl')}>
-            {title}
-          </DialogTitle>
+          <DialogTitle className={cn(mode.font, 'text-center text-2xl')}>{title}</DialogTitle>
           <DialogDescription className={cn(mode.font, 'text-center text-sm')}>
             {description}
           </DialogDescription>
@@ -141,20 +137,10 @@ export function ExitIntentPopup({
             <CardContent className="p-4">
               <div className="text-center">
                 <div className="mb-2 flex items-center justify-center gap-4">
-                  <span
-                    className={cn(
-                      mode.font,
-                      'text-foreground text-4xl font-semibold'
-                    )}
-                  >
+                  <span className={cn(mode.font, 'text-foreground text-4xl font-semibold')}>
                     $175
                   </span>
-                  <span
-                    className={cn(
-                      mode.font,
-                      'text-muted-foreground text-lg line-through'
-                    )}
-                  >
+                  <span className={cn(mode.font, 'text-muted-foreground text-lg line-through')}>
                     $299
                   </span>
                 </div>

@@ -23,12 +23,7 @@ export async function sendOrganizationInvite(
   }
 ) {
   if (!resend) {
-    logger.debug(
-      '📧 [DEV] Organization invite to:',
-      to,
-      '- Org:',
-      params.organizationName
-    );
+    logger.debug('📧 [DEV] Organization invite to:', to, '- Org:', params.organizationName);
     return { success: true };
   }
 

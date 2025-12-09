@@ -28,9 +28,7 @@ describe('Token Utilities', () => {
     });
 
     it('should generate unique tokens each time', () => {
-      const tokens = new Set(
-        Array.from({ length: 100 }, () => generateSecureToken())
-      );
+      const tokens = new Set(Array.from({ length: 100 }, () => generateSecureToken()));
       expect(tokens.size).toBe(100); // All should be unique
     });
   });
@@ -49,9 +47,7 @@ describe('Token Utilities', () => {
     });
 
     it('should generate unique keys', () => {
-      const keys = new Set(
-        Array.from({ length: 100 }, () => generateLicenseKey())
-      );
+      const keys = new Set(Array.from({ length: 100 }, () => generateLicenseKey()));
       // While not cryptographically guaranteed, 100 keys should be unique
       expect(keys.size).toBe(100);
     });

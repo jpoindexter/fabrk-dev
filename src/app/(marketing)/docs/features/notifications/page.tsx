@@ -20,26 +20,22 @@ export default function NotificationsPage() {
         {
           icon: Zap,
           title: 'Real-time Delivery',
-          description:
-            'Instant push notifications via Pusher - users see updates immediately.',
+          description: 'Instant push notifications via Pusher - users see updates immediately.',
         },
         {
           icon: Database,
           title: 'Persistence',
-          description:
-            'All notifications stored in database for history and retrieval.',
+          description: 'All notifications stored in database for history and retrieval.',
         },
         {
           icon: Bell,
           title: 'Bell Icon Badge',
-          description:
-            'Visual unread count indicator that updates in real-time.',
+          description: 'Visual unread count indicator that updates in real-time.',
         },
         {
           icon: CheckCircle,
           title: 'Read/Unread States',
-          description:
-            'Mark individual or all notifications as read with one click.',
+          description: 'Mark individual or all notifications as read with one click.',
         },
       ]}
       usage={[
@@ -130,8 +126,7 @@ await createNotification({
         },
         {
           title: 'Bell Icon Component',
-          description:
-            'The notification bell with real-time updates and dropdown',
+          description: 'The notification bell with real-time updates and dropdown',
           code: `"use client";
 
 import { useState, useEffect } from "react";
@@ -274,28 +269,25 @@ export async function POST(req: Request) {
         <DocsCard title="BEST_PRACTICES">
           <ul className="space-y-1">
             <li>
-              ├─ <strong>Be selective:</strong> Only notify for important,
-              actionable events
+              ├─ <strong>Be selective:</strong> Only notify for important, actionable events
             </li>
             <li>
-              ├─ <strong>Clear titles:</strong> Make notifications scannable at
-              a glance
+              ├─ <strong>Clear titles:</strong> Make notifications scannable at a glance
             </li>
             <li>
-              ├─ <strong>Include links:</strong> Let users take action directly
-              from the notification
+              ├─ <strong>Include links:</strong> Let users take action directly from the
+              notification
             </li>
             <li>
-              ├─ <strong>Cleanup old notifications:</strong> Archive or delete
-              notifications older than 30 days
+              ├─ <strong>Cleanup old notifications:</strong> Archive or delete notifications older
+              than 30 days
             </li>
             <li>
-              ├─ <strong>Allow preferences:</strong> Let users control which
-              notifications they receive
+              ├─ <strong>Allow preferences:</strong> Let users control which notifications they
+              receive
             </li>
             <li>
-              └─ <strong>Test thoroughly:</strong> Ensure real-time and
-              persistence work together
+              └─ <strong>Test thoroughly:</strong> Ensure real-time and persistence work together
             </li>
           </ul>
         </DocsCard>

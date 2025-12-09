@@ -16,12 +16,7 @@ interface DocsHeaderProps {
   description: string;
 }
 
-export function DocsHeader({
-  code,
-  category,
-  title,
-  description,
-}: DocsHeaderProps) {
+export function DocsHeader({ code, category, title, description }: DocsHeaderProps) {
   return (
     <div>
       {/* Terminal-style badge */}

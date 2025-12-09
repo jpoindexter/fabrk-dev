@@ -53,8 +53,7 @@ export function RevenueChart({
   showArr = true,
   className,
 }: RevenueChartProps) {
-  const [selectedPeriod, setSelectedPeriod] =
-    React.useState<Period>(initialPeriod);
+  const [selectedPeriod, setSelectedPeriod] = React.useState<Period>(initialPeriod);
   const [chartType, setChartType] = React.useState<'line' | 'area'>('area');
 
   const periods: { label: string; value: Period }[] = [
@@ -107,9 +106,7 @@ export function RevenueChart({
       ({ active, payload }: any) => {
         if (active && payload && payload.length) {
           return (
-            <div
-              className={cn('border-border bg-card border p-4', mode.radius)}
-            >
+            <div className={cn('border-border bg-card border p-4', mode.radius)}>
               <p className="text-foreground mb-2 text-sm font-semibold">
                 {payload[0].payload.period}
               </p>
@@ -155,23 +152,12 @@ export function RevenueChart({
         {/* Key Metrics */}
         <div className="grid grid-cols-2 gap-4">
           <div className={cn('border-border bg-card border p-4', mode.radius)}>
-            <p className="text-muted-foreground mb-1 text-xs font-medium">
-              Current MRR
-            </p>
-            <p className="text-foreground text-2xl font-bold">
-              {formatCompactCurrency(latestMRR)}
-            </p>
+            <p className="text-muted-foreground mb-1 text-xs font-medium">Current MRR</p>
+            <p className="text-foreground text-2xl font-bold">{formatCompactCurrency(latestMRR)}</p>
           </div>
           {showArr && (
-            <div
-              className={cn(
-                'border-border bg-accent/50 border p-4',
-                mode.radius
-              )}
-            >
-              <p className="text-muted-foreground mb-1 text-xs font-medium">
-                Projected ARR
-              </p>
+            <div className={cn('border-border bg-accent/50 border p-4', mode.radius)}>
+              <p className="text-muted-foreground mb-1 text-xs font-medium">Projected ARR</p>
               <p className="text-foreground text-2xl font-bold">
                 {formatCompactCurrency(latestARR)}
               </p>
@@ -185,9 +171,7 @@ export function RevenueChart({
             {periods.map((period) => (
               <Button
                 key={period.value}
-                variant={
-                  selectedPeriod === period.value ? 'default' : 'outline'
-                }
+                variant={selectedPeriod === period.value ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setSelectedPeriod(period.value)}
               >
@@ -217,35 +201,16 @@ export function RevenueChart({
         <div className={cn('border-border bg-card border p-4', mode.radius)}>
           <ResponsiveContainer width="100%" height={300}>
             {chartType === 'area' ? (
-              <AreaChart
-                data={data}
-                margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-              >
+              <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                 <defs>
                   <linearGradient id="colorMrr" x1="0" y1="0" x2="0" y2="1">
-                    <stop
-                      offset="5%"
-                      stopColor="hsl(var(--primary))"
-                      stopOpacity={0.3}
-                    />
-                    <stop
-                      offset="95%"
-                      stopColor="hsl(var(--primary))"
-                      stopOpacity={0}
-                    />
+                    <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.3} />
+                    <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0} />
                   </linearGradient>
                   {showArr && (
                     <linearGradient id="colorArr" x1="0" y1="0" x2="0" y2="1">
-                      <stop
-                        offset="5%"
-                        stopColor="hsl(var(--accent))"
-                        stopOpacity={0.3}
-                      />
-                      <stop
-                        offset="95%"
-                        stopColor="hsl(var(--accent))"
-                        stopOpacity={0}
-                      />
+                      <stop offset="5%" stopColor="hsl(var(--accent))" stopOpacity={0.3} />
+                      <stop offset="95%" stopColor="hsl(var(--accent))" stopOpacity={0} />
                     </linearGradient>
                   )}
                 </defs>
@@ -284,10 +249,7 @@ export function RevenueChart({
                 )}
               </AreaChart>
             ) : (
-              <LineChart
-                data={data}
-                margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-              >
+              <LineChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
                 <XAxis
                   dataKey="period"

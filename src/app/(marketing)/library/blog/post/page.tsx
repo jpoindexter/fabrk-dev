@@ -300,23 +300,14 @@ function BlogPostPreview() {
           <Badge className={cn(mode.radius, mode.font, 'mb-4 text-xs')}>
             {mockArticle.category}
           </Badge>
-          <h1
-            className={cn(
-              mode.font,
-              'mb-6 text-3xl leading-tight font-semibold md:text-4xl'
-            )}
-          >
+          <h1 className={cn(mode.font, 'mb-6 text-3xl leading-tight font-semibold md:text-4xl')}>
             {mockArticle.title}
           </h1>
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-4">
-              <Avatar
-                className={cn(mode.radius, 'border-border h-10 w-10 border')}
-              >
+              <Avatar className={cn(mode.radius, 'border-border h-10 w-10 border')}>
                 <AvatarImage src={mockArticle.author.avatar || undefined} />
-                <AvatarFallback
-                  className={cn(mode.radius, mode.font, 'text-xs')}
-                >
+                <AvatarFallback className={cn(mode.radius, mode.font, 'text-xs')}>
                   {mockArticle.author.name
                     .split(' ')
                     .map((n) => n[0])
@@ -332,12 +323,7 @@ function BlogPostPreview() {
                 </div>
               </div>
             </div>
-            <div
-              className={cn(
-                mode.font,
-                'text-muted-foreground flex items-center gap-4 text-xs'
-              )}
-            >
+            <div className={cn(mode.font, 'text-muted-foreground flex items-center gap-4 text-xs')}>
               <div className="flex items-center gap-1">
                 <Calendar className="h-3 w-3" />
                 {mockArticle.date}
@@ -352,9 +338,7 @@ function BlogPostPreview() {
 
         {/* Featured Image Placeholder */}
         <div className="border-border bg-muted/30 mb-12 flex aspect-video items-center justify-center border">
-          <span className={cn(mode.font, 'text-muted-foreground text-sm')}>
-            [FEATURED_IMAGE]
-          </span>
+          <span className={cn(mode.font, 'text-muted-foreground text-sm')}>[FEATURED_IMAGE]</span>
         </div>
 
         {/* Article Content */}
@@ -378,10 +362,7 @@ function BlogPostPreview() {
               return (
                 <p
                   key={index}
-                  className={cn(
-                    mode.font,
-                    'text-muted-foreground text-sm leading-relaxed'
-                  )}
+                  className={cn(mode.font, 'text-muted-foreground text-sm leading-relaxed')}
                 >
                   {block.content}
                 </p>
@@ -389,13 +370,7 @@ function BlogPostPreview() {
             }
 
             if (block.type === 'code') {
-              return (
-                <CodeBlock
-                  key={index}
-                  code={block.content}
-                  language={block.language}
-                />
-              );
+              return <CodeBlock key={index} code={block.content} language={block.language} />;
             }
 
             return null;
@@ -406,11 +381,7 @@ function BlogPostPreview() {
         <div className="border-border mb-12 border-t pt-6">
           <div className="flex flex-wrap gap-2">
             {mockArticle.tags.map((tag) => (
-              <Badge
-                key={tag}
-                variant="outline"
-                className={cn(mode.radius, mode.font, 'text-xs')}
-              >
+              <Badge key={tag} variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
                 #{tag}
               </Badge>
             ))}
@@ -419,20 +390,12 @@ function BlogPostPreview() {
 
         {/* Share + Actions */}
         <div className="border-border flex items-center justify-between border-t pt-6">
-          <Button
-            variant="outline"
-            size="sm"
-            className={cn(mode.radius, mode.font, 'text-xs')}
-          >
+          <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, 'text-xs')}>
             <Share2 className="mr-2 h-3 w-3" />
             Share
           </Button>
           <Link href="/templates/blog">
-            <Button
-              variant="ghost"
-              size="sm"
-              className={cn(mode.radius, mode.font, 'text-xs')}
-            >
+            <Button variant="ghost" size="sm" className={cn(mode.radius, mode.font, 'text-xs')}>
               View all posts →
             </Button>
           </Link>
@@ -500,11 +463,7 @@ export default function BlogPostTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock
-                  code={templateCode}
-                  language="tsx"
-                  maxHeight="600px"
-                />
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
             </Card>
           </TabsContent>
@@ -522,9 +481,7 @@ export default function BlogPostTemplate() {
                   <span className="text-muted-foreground">blog/</span>
                   <span className="text-muted-foreground">[slug]/</span>
                   <span className="text-foreground">page.tsx</span>
-                  <span className="text-muted-foreground ml-4">
-                    ← Copy template here
-                  </span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
                 </div>
               </div>
             </div>
@@ -537,24 +494,19 @@ export default function BlogPostTemplate() {
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> Clean, centered
-                single-column layout
+                <span className="text-success">&gt;</span> Clean, centered single-column layout
               </div>
               <div>
-                <span className="text-success">&gt;</span> Author + date + read
-                time header
+                <span className="text-success">&gt;</span> Author + date + read time header
               </div>
               <div>
-                <span className="text-success">&gt;</span> Code blocks with copy
-                functionality
+                <span className="text-success">&gt;</span> Code blocks with copy functionality
               </div>
               <div>
-                <span className="text-success">&gt;</span> Tags and share
-                actions
+                <span className="text-success">&gt;</span> Tags and share actions
               </div>
               <div>
-                <span className="text-success">&gt;</span> Industry-standard
-                Vercel/Next.js pattern
+                <span className="text-success">&gt;</span> Industry-standard Vercel/Next.js pattern
               </div>
             </div>
           </CardContent>

@@ -107,10 +107,7 @@ export function createUserColumns({
       cell: ({ row }) => {
         const role = row.getValue('role') as string;
         return (
-          <Badge
-            variant={role === 'ADMIN' ? 'default' : 'secondary'}
-            className="font-medium"
-          >
+          <Badge variant={role === 'ADMIN' ? 'default' : 'secondary'} className="font-medium">
             {role}
           </Badge>
         );
@@ -124,11 +121,7 @@ export function createUserColumns({
         return (
           <Badge
             variant={
-              status === 'ACTIVE'
-                ? 'default'
-                : status === 'SUSPENDED'
-                  ? 'accent'
-                  : 'secondary'
+              status === 'ACTIVE' ? 'default' : status === 'SUSPENDED' ? 'accent' : 'secondary'
             }
             className="font-medium"
           >
@@ -165,8 +158,7 @@ export function createUserColumns({
       header: 'Last Login',
       cell: ({ row }) => {
         const date = row.getValue('lastLogin') as Date | undefined;
-        if (!date)
-          return <span className="text-muted-foreground text-xs">Never</span>;
+        if (!date) return <span className="text-muted-foreground text-xs">Never</span>;
         return (
           <span className="text-muted-foreground text-sm">
             {new Date(date).toLocaleDateString()}
@@ -190,9 +182,7 @@ export function createUserColumns({
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-[160px]">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <DropdownMenuItem
-                onClick={() => navigator.clipboard.writeText(user.id)}
-              >
+              <DropdownMenuItem onClick={() => navigator.clipboard.writeText(user.id)}>
                 Copy user ID
               </DropdownMenuItem>
               <DropdownMenuSeparator />

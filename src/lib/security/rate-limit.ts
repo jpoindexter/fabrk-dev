@@ -99,9 +99,7 @@ export function getClientIdentifier(req: NextRequest): string {
 
   // Fall back to IP address
   const forwarded = req.headers.get('x-forwarded-for');
-  const ip = forwarded
-    ? forwarded.split(',')[0]
-    : req.headers.get('x-real-ip') || 'unknown';
+  const ip = forwarded ? forwarded.split(',')[0] : req.headers.get('x-real-ip') || 'unknown';
 
   return `ip:${ip}`;
 }
@@ -128,9 +126,7 @@ export function rateLimit(config: RateLimitConfig) {
             'X-RateLimit-Limit': result.limit.toString(),
             'X-RateLimit-Remaining': result.remaining.toString(),
             'X-RateLimit-Reset': result.reset.toString(),
-            'Retry-After': Math.ceil(
-              (result.reset - Date.now()) / 1000
-            ).toString(),
+            'Retry-After': Math.ceil((result.reset - Date.now()) / 1000).toString(),
           },
         }
       );
@@ -188,10 +184,7 @@ let ratelimitInstances = new Map<string, unknown>();
 function getRedisClient(): unknown {
   if (redisClient) return redisClient;
 
-  if (
-    !process.env.UPSTASH_REDIS_REST_URL ||
-    !process.env.UPSTASH_REDIS_REST_TOKEN
-  ) {
+  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
     return null;
   }
 
@@ -206,9 +199,7 @@ function getRedisClient(): unknown {
 
     return redisClient;
   } catch {
-    logger.warn(
-      '[Rate Limit] @upstash/redis not installed, using in-memory rate limiting'
-    );
+    logger.warn('[Rate Limit] @upstash/redis not installed, using in-memory rate limiting');
     return null;
   }
 }
@@ -231,10 +222,7 @@ function getRatelimitInstance(config: RateLimitConfig): unknown {
 
     const instance = new Ratelimit({
       redis,
-      limiter: Ratelimit.slidingWindow(
-        config.maxRequests,
-        `${config.interval}ms`
-      ),
+      limiter: Ratelimit.slidingWindow(config.maxRequests, `${config.interval}ms`),
       analytics: true,
       prefix: 'ratelimit',
     });
@@ -242,9 +230,7 @@ function getRatelimitInstance(config: RateLimitConfig): unknown {
     ratelimitInstances.set(key, instance);
     return instance;
   } catch {
-    logger.warn(
-      '[Rate Limit] @upstash/ratelimit not installed, using in-memory rate limiting'
-    );
+    logger.warn('[Rate Limit] @upstash/ratelimit not installed, using in-memory rate limiting');
     return null;
   }
 }
@@ -284,15 +270,10 @@ export async function checkRateLimitRedis(
 
   try {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Dynamic import from @upstash/ratelimit
-    const { success, limit, remaining, reset } = await (ratelimit as any).limit(
-      identifier
-    );
+    const { success, limit, remaining, reset } = await (ratelimit as any).limit(identifier);
     return { success, limit, remaining, reset };
   } catch (error: unknown) {
-    logger.error(
-      '[Rate Limit] Upstash error, falling back to in-memory',
-      error
-    );
+    logger.error('[Rate Limit] Upstash error, falling back to in-memory', error);
     return checkRateLimit(identifier, config);
   }
 }
@@ -337,9 +318,7 @@ export function rateLimitAuto(config: RateLimitConfig) {
             'X-RateLimit-Limit': result.limit.toString(),
             'X-RateLimit-Remaining': result.remaining.toString(),
             'X-RateLimit-Reset': result.reset.toString(),
-            'Retry-After': Math.ceil(
-              (result.reset - Date.now()) / 1000
-            ).toString(),
+            'Retry-After': Math.ceil((result.reset - Date.now()) / 1000).toString(),
           },
         }
       );
@@ -366,9 +345,6 @@ export function isBlacklisted(ip: string, blacklist: string[] = []): boolean {
 /**
  * Exponential backoff calculator
  */
-export function calculateBackoff(
-  attempts: number,
-  baseDelay: number = 1000
-): number {
+export function calculateBackoff(attempts: number, baseDelay: number = 1000): number {
   return Math.min(baseDelay * Math.pow(2, attempts), 60000); // Max 60 seconds
 }

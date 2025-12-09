@@ -25,26 +25,16 @@ export function ContactSidebar() {
             icon={<Mail className="text-muted-foreground size-4" />}
           />
           <CardContent padding="md">
-            <h3
-              className={cn(
-                'text-foreground mb-2 text-xs font-semibold',
-                mode.font
-              )}
-            >
+            <h3 className={cn('text-foreground mb-2 text-xs font-semibold', mode.font)}>
               EMAIL_US
             </h3>
             <div className={cn('text-xs', mode.font)}>
               <span className="text-muted-foreground">DESC: </span>
-              <span className="text-foreground">
-                Prefer email? Send us a message directly:
-              </span>
+              <span className="text-foreground">Prefer email? Send us a message directly:</span>
             </div>
             <a
               href="mailto:support@fabrek.dev"
-              className={cn(
-                'text-primary mt-2 block text-xs hover:underline',
-                mode.font
-              )}
+              className={cn('text-primary mt-2 block text-xs hover:underline', mode.font)}
             >
               &gt; support@fabrek.dev
             </a>
@@ -65,19 +55,14 @@ export function ContactSidebar() {
             icon={<MessageCircle className="text-muted-foreground size-4" />}
           />
           <CardContent padding="md">
-            <h3
-              className={cn(
-                'text-foreground mb-2 text-xs font-semibold',
-                mode.font
-              )}
-            >
+            <h3 className={cn('text-foreground mb-2 text-xs font-semibold', mode.font)}>
               RESPONSE_TIME
             </h3>
             <div className={cn('text-xs', mode.font)}>
               <span className="text-muted-foreground">DESC: </span>
               <span className="text-foreground">
-                We typically respond within 24 hours during business days. For
-                urgent issues, please mention "URGENT" in your subject.
+                We typically respond within 24 hours during business days. For urgent issues, please
+                mention "URGENT" in your subject.
               </span>
             </div>
           </CardContent>

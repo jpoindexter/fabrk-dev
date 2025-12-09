@@ -154,10 +154,7 @@ export function TeamActivityFeed({
                   const Icon = config.icon;
 
                   return (
-                    <div
-                      key={activity.id}
-                      className="group relative flex gap-4"
-                    >
+                    <div key={activity.id} className="group relative flex gap-4">
                       {/* Avatar with icon badge */}
                       <div className="relative flex-shrink-0">
                         <Avatar className="border-border h-10 w-10 border">
@@ -181,12 +178,8 @@ export function TeamActivityFeed({
                         <div className="flex items-start justify-between gap-2">
                           <div className="min-w-0 flex-1">
                             <p className="text-foreground text-sm">
-                              <span className="font-semibold">
-                                {activity.user.name}
-                              </span>{' '}
-                              <span className="text-muted-foreground">
-                                {activity.action}
-                              </span>
+                              <span className="font-semibold">{activity.user.name}</span>{' '}
+                              <span className="text-muted-foreground">{activity.action}</span>
                               {activity.target && (
                                 <span className="text-foreground font-medium">
                                   {' '}
@@ -203,22 +196,15 @@ export function TeamActivityFeed({
                         </div>
 
                         {/* Metadata */}
-                        {activity.metadata &&
-                          Object.keys(activity.metadata).length > 0 && (
-                            <div className="mt-2 flex flex-wrap gap-2">
-                              {Object.entries(activity.metadata).map(
-                                ([key, value]) => (
-                                  <Badge
-                                    key={key}
-                                    variant="secondary"
-                                    className="text-xs font-normal"
-                                  >
-                                    {key}: {String(value)}
-                                  </Badge>
-                                )
-                              )}
-                            </div>
-                          )}
+                        {activity.metadata && Object.keys(activity.metadata).length > 0 && (
+                          <div className="mt-2 flex flex-wrap gap-2">
+                            {Object.entries(activity.metadata).map(([key, value]) => (
+                              <Badge key={key} variant="secondary" className="text-xs font-normal">
+                                {key}: {String(value)}
+                              </Badge>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </div>
                   );

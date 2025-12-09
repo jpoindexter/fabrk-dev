@@ -24,10 +24,7 @@ import { NextRequest, NextResponse } from 'next/server';
  * - Trusted Types (modern browsers)
  * - Upgrade insecure requests
  */
-export function generateCSP(options?: {
-  isDevelopment?: boolean;
-  nonce?: string;
-}): string {
+export function generateCSP(options?: { isDevelopment?: boolean; nonce?: string }): string {
   const { isDevelopment = false, nonce } = options || {};
 
   const directives: Record<string, string[]> = {
@@ -72,11 +69,7 @@ export function generateCSP(options?: {
     ],
 
     // Frames: Stripe payment elements only
-    'frame-src': [
-      "'self'",
-      'https://js.stripe.com',
-      'https://hooks.stripe.com',
-    ],
+    'frame-src': ["'self'", 'https://js.stripe.com', 'https://hooks.stripe.com'],
 
     // Web Workers: Same-origin only
     'worker-src': ["'self'", 'blob:'],
@@ -208,10 +201,7 @@ export interface CORSOptions {
 /**
  * Apply CORS headers
  */
-export function applyCORSHeaders(
-  response: NextResponse,
-  options: CORSOptions = {}
-): NextResponse {
+export function applyCORSHeaders(response: NextResponse, options: CORSOptions = {}): NextResponse {
   const {
     origin = '*',
     methods = ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -232,17 +222,11 @@ export function applyCORSHeaders(
   response.headers.set('Access-Control-Allow-Methods', methods.join(', '));
 
   // Set allowed headers
-  response.headers.set(
-    'Access-Control-Allow-Headers',
-    allowedHeaders.join(', ')
-  );
+  response.headers.set('Access-Control-Allow-Headers', allowedHeaders.join(', '));
 
   // Set exposed headers
   if (exposedHeaders.length > 0) {
-    response.headers.set(
-      'Access-Control-Expose-Headers',
-      exposedHeaders.join(', ')
-    );
+    response.headers.set('Access-Control-Expose-Headers', exposedHeaders.join(', '));
   }
 
   // Set credentials
@@ -266,9 +250,6 @@ export function generateNonce(): string {
 /**
  * Check if request is from allowed origin
  */
-export function isAllowedOrigin(
-  origin: string,
-  allowedOrigins: string[]
-): boolean {
+export function isAllowedOrigin(origin: string, allowedOrigins: string[]): boolean {
   return allowedOrigins.includes(origin) || allowedOrigins.includes('*');
 }

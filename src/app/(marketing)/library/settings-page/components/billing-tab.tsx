@@ -39,24 +39,16 @@ export function BillingTab() {
               </div>
             </div>
             <div className="flex gap-4">
-              <Button
-                variant="outline"
-                className={cn(mode.radius, mode.font, 'flex-1 text-xs')}
-              >
+              <Button variant="outline" className={cn(mode.radius, mode.font, 'flex-1 text-xs')}>
                 &gt; CHANGE_PLAN
               </Button>
-              <Button
-                variant="outline"
-                className={cn(mode.radius, mode.font, 'flex-1 text-xs')}
-              >
+              <Button variant="outline" className={cn(mode.radius, mode.font, 'flex-1 text-xs')}>
                 &gt; VIEW_INVOICES
               </Button>
             </div>
           </div>
           <div>
-            <div
-              className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}
-            >
+            <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
               [PAYMENT_METHODS]:
             </div>
             <div
@@ -65,13 +57,9 @@ export function BillingTab() {
                 'text-muted-foreground border-border border py-4 text-center text-xs'
               )}
             >
-              No payment methods added yet. Use Stripe Customer Portal to manage
-              payment methods.
+              No payment methods added yet. Use Stripe Customer Portal to manage payment methods.
             </div>
-            <Button
-              variant="outline"
-              className={cn(mode.radius, mode.font, 'mt-4 w-full text-xs')}
-            >
+            <Button variant="outline" className={cn(mode.radius, mode.font, 'mt-4 w-full text-xs')}>
               &gt; ADD_PAYMENT_METHOD
             </Button>
           </div>

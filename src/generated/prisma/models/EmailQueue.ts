@@ -15,8 +15,7 @@ import type * as Prisma from '../internal/prismaNamespace';
  * Model EmailQueue
  *
  */
-export type EmailQueueModel =
-  runtime.Types.Result.DefaultSelection<Prisma.$EmailQueuePayload>;
+export type EmailQueueModel = runtime.Types.Result.DefaultSelection<Prisma.$EmailQueuePayload>;
 
 export type AggregateEmailQueue = {
   _count: EmailQueueCountAggregateOutputType | null;
@@ -153,8 +152,7 @@ export type EmailQueueCountAggregateInputType = {
 };
 
 export type EmailQueueAggregateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which EmailQueue to aggregate.
@@ -165,9 +163,7 @@ export type EmailQueueAggregateArgs<
    *
    * Determine the order of EmailQueues to fetch.
    */
-  orderBy?:
-    | Prisma.EmailQueueOrderByWithRelationInput
-    | Prisma.EmailQueueOrderByWithRelationInput[];
+  orderBy?: Prisma.EmailQueueOrderByWithRelationInput | Prisma.EmailQueueOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -227,8 +223,7 @@ export type GetEmailQueueAggregateType<T extends EmailQueueAggregateArgs> = {
 };
 
 export type EmailQueueGroupByArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.EmailQueueWhereInput;
   orderBy?:
@@ -268,18 +263,17 @@ export type EmailQueueGroupByOutputType = {
   _max: EmailQueueMaxAggregateOutputType | null;
 };
 
-type GetEmailQueueGroupByPayload<T extends EmailQueueGroupByArgs> =
-  Prisma.PrismaPromise<
-    Array<
-      Prisma.PickEnumerable<EmailQueueGroupByOutputType, T['by']> & {
-        [P in keyof T & keyof EmailQueueGroupByOutputType]: P extends '_count'
-          ? T[P] extends boolean
-            ? number
-            : Prisma.GetScalarType<T[P], EmailQueueGroupByOutputType[P]>
-          : Prisma.GetScalarType<T[P], EmailQueueGroupByOutputType[P]>;
-      }
-    >
-  >;
+type GetEmailQueueGroupByPayload<T extends EmailQueueGroupByArgs> = Prisma.PrismaPromise<
+  Array<
+    Prisma.PickEnumerable<EmailQueueGroupByOutputType, T['by']> & {
+      [P in keyof T & keyof EmailQueueGroupByOutputType]: P extends '_count'
+        ? T[P] extends boolean
+          ? number
+          : Prisma.GetScalarType<T[P], EmailQueueGroupByOutputType[P]>
+        : Prisma.GetScalarType<T[P], EmailQueueGroupByOutputType[P]>;
+    }
+  >
+>;
 
 export type EmailQueueWhereInput = {
   AND?: Prisma.EmailQueueWhereInput | Prisma.EmailQueueWhereInput[];
@@ -376,35 +370,18 @@ export type EmailQueueScalarWhereWithAggregatesInput = {
     | Prisma.EmailQueueScalarWhereWithAggregatesInput
     | Prisma.EmailQueueScalarWhereWithAggregatesInput[];
   id?: Prisma.StringWithAggregatesFilter<'EmailQueue'> | string;
-  type?:
-    | Prisma.EnumEmailTypeWithAggregatesFilter<'EmailQueue'>
-    | $Enums.EmailType;
+  type?: Prisma.EnumEmailTypeWithAggregatesFilter<'EmailQueue'> | $Enums.EmailType;
   to?: Prisma.StringWithAggregatesFilter<'EmailQueue'> | string;
   subject?: Prisma.StringWithAggregatesFilter<'EmailQueue'> | string;
   html?: Prisma.StringWithAggregatesFilter<'EmailQueue'> | string;
-  status?:
-    | Prisma.EnumEmailStatusWithAggregatesFilter<'EmailQueue'>
-    | $Enums.EmailStatus;
-  userId?:
-    | Prisma.StringNullableWithAggregatesFilter<'EmailQueue'>
-    | string
-    | null;
-  purchaseId?:
-    | Prisma.StringNullableWithAggregatesFilter<'EmailQueue'>
-    | string
-    | null;
+  status?: Prisma.EnumEmailStatusWithAggregatesFilter<'EmailQueue'> | $Enums.EmailStatus;
+  userId?: Prisma.StringNullableWithAggregatesFilter<'EmailQueue'> | string | null;
+  purchaseId?: Prisma.StringNullableWithAggregatesFilter<'EmailQueue'> | string | null;
   metadata?: Prisma.JsonNullableWithAggregatesFilter<'EmailQueue'>;
   attempts?: Prisma.IntWithAggregatesFilter<'EmailQueue'> | number;
   maxAttempts?: Prisma.IntWithAggregatesFilter<'EmailQueue'> | number;
-  lastError?:
-    | Prisma.StringNullableWithAggregatesFilter<'EmailQueue'>
-    | string
-    | null;
-  sentAt?:
-    | Prisma.DateTimeNullableWithAggregatesFilter<'EmailQueue'>
-    | Date
-    | string
-    | null;
+  lastError?: Prisma.StringNullableWithAggregatesFilter<'EmailQueue'> | string | null;
+  sentAt?: Prisma.DateTimeNullableWithAggregatesFilter<'EmailQueue'> | Date | string | null;
   createdAt?: Prisma.DateTimeWithAggregatesFilter<'EmailQueue'> | Date | string;
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<'EmailQueue'> | Date | string;
 };
@@ -451,20 +428,14 @@ export type EmailQueueUpdateInput = {
   to?: Prisma.StringFieldUpdateOperationsInput | string;
   subject?: Prisma.StringFieldUpdateOperationsInput | string;
   html?: Prisma.StringFieldUpdateOperationsInput | string;
-  status?:
-    | Prisma.EnumEmailStatusFieldUpdateOperationsInput
-    | $Enums.EmailStatus;
+  status?: Prisma.EnumEmailStatusFieldUpdateOperationsInput | $Enums.EmailStatus;
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   purchaseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   attempts?: Prisma.IntFieldUpdateOperationsInput | number;
   maxAttempts?: Prisma.IntFieldUpdateOperationsInput | number;
   lastError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  sentAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -475,20 +446,14 @@ export type EmailQueueUncheckedUpdateInput = {
   to?: Prisma.StringFieldUpdateOperationsInput | string;
   subject?: Prisma.StringFieldUpdateOperationsInput | string;
   html?: Prisma.StringFieldUpdateOperationsInput | string;
-  status?:
-    | Prisma.EnumEmailStatusFieldUpdateOperationsInput
-    | $Enums.EmailStatus;
+  status?: Prisma.EnumEmailStatusFieldUpdateOperationsInput | $Enums.EmailStatus;
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   purchaseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   attempts?: Prisma.IntFieldUpdateOperationsInput | number;
   maxAttempts?: Prisma.IntFieldUpdateOperationsInput | number;
   lastError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  sentAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -517,20 +482,14 @@ export type EmailQueueUpdateManyMutationInput = {
   to?: Prisma.StringFieldUpdateOperationsInput | string;
   subject?: Prisma.StringFieldUpdateOperationsInput | string;
   html?: Prisma.StringFieldUpdateOperationsInput | string;
-  status?:
-    | Prisma.EnumEmailStatusFieldUpdateOperationsInput
-    | $Enums.EmailStatus;
+  status?: Prisma.EnumEmailStatusFieldUpdateOperationsInput | $Enums.EmailStatus;
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   purchaseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   attempts?: Prisma.IntFieldUpdateOperationsInput | number;
   maxAttempts?: Prisma.IntFieldUpdateOperationsInput | number;
   lastError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  sentAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -541,20 +500,14 @@ export type EmailQueueUncheckedUpdateManyInput = {
   to?: Prisma.StringFieldUpdateOperationsInput | string;
   subject?: Prisma.StringFieldUpdateOperationsInput | string;
   html?: Prisma.StringFieldUpdateOperationsInput | string;
-  status?:
-    | Prisma.EnumEmailStatusFieldUpdateOperationsInput
-    | $Enums.EmailStatus;
+  status?: Prisma.EnumEmailStatusFieldUpdateOperationsInput | $Enums.EmailStatus;
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   purchaseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   attempts?: Prisma.IntFieldUpdateOperationsInput | number;
   maxAttempts?: Prisma.IntFieldUpdateOperationsInput | number;
   lastError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  sentAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -630,8 +583,7 @@ export type EnumEmailStatusFieldUpdateOperationsInput = {
 };
 
 export type EmailQueueSelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -654,8 +606,7 @@ export type EmailQueueSelect<
 >;
 
 export type EmailQueueSelectCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -678,8 +629,7 @@ export type EmailQueueSelectCreateManyAndReturn<
 >;
 
 export type EmailQueueSelectUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -720,8 +670,7 @@ export type EmailQueueSelectScalar = {
 };
 
 export type EmailQueueOmit<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
   | 'id'
   | 'type'
@@ -742,8 +691,7 @@ export type EmailQueueOmit<
 >;
 
 export type $EmailQueuePayload<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   name: 'EmailQueue';
   objects: {};
@@ -770,20 +718,17 @@ export type $EmailQueuePayload<
   composites: {};
 };
 
-export type EmailQueueGetPayload<
-  S extends boolean | null | undefined | EmailQueueDefaultArgs,
-> = runtime.Types.Result.GetResult<Prisma.$EmailQueuePayload, S>;
+export type EmailQueueGetPayload<S extends boolean | null | undefined | EmailQueueDefaultArgs> =
+  runtime.Types.Result.GetResult<Prisma.$EmailQueuePayload, S>;
 
 export type EmailQueueCountArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = Omit<EmailQueueFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
   select?: EmailQueueCountAggregateInputType | true;
 };
 
 export interface EmailQueueDelegate<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > {
   [K: symbol]: {
@@ -1254,12 +1199,7 @@ export interface EmailQueueDelegate<
               ? never
               : P extends string
                 ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                : [
-                    Error,
-                    'Field ',
-                    P,
-                    ` in "having" needs to be provided in "by"`,
-                  ];
+                : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
           }[HavingFields]
         : 'take' extends Prisma.Keys<T>
           ? 'orderBy' extends Prisma.Keys<T>
@@ -1289,11 +1229,8 @@ export interface EmailQueueDelegate<
                     : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                 }[OrderFields],
   >(
-    args: Prisma.SubsetIntersection<T, EmailQueueGroupByArgs, OrderByArg> &
-      InputErrors
-  ): {} extends InputErrors
-    ? GetEmailQueueGroupByPayload<T>
-    : Prisma.PrismaPromise<InputErrors>;
+    args: Prisma.SubsetIntersection<T, EmailQueueGroupByArgs, OrderByArg> & InputErrors
+  ): {} extends InputErrors ? GetEmailQueueGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
   /**
    * Fields of the EmailQueue model
    */
@@ -1309,8 +1246,7 @@ export interface EmailQueueDelegate<
 export interface Prisma__EmailQueueClient<
   T,
   Null = never,
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: 'PrismaPromise';
@@ -1321,14 +1257,8 @@ export interface Prisma__EmailQueueClient<
    * @returns A Promise for the completion of which ever callback is executed.
    */
   then<TResult1 = T, TResult2 = never>(
-    onfulfilled?:
-      | ((value: T) => TResult1 | PromiseLike<TResult1>)
-      | undefined
-      | null,
-    onrejected?:
-      | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-      | undefined
-      | null
+    onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
   ): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
   /**
    * Attaches a callback for only the rejection of the Promise.
@@ -1336,10 +1266,7 @@ export interface Prisma__EmailQueueClient<
    * @returns A Promise for the completion of the callback.
    */
   catch<TResult = never>(
-    onrejected?:
-      | ((reason: any) => TResult | PromiseLike<TResult>)
-      | undefined
-      | null
+    onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
   ): runtime.Types.Utils.JsPromise<T | TResult>;
   /**
    * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
@@ -1347,9 +1274,7 @@ export interface Prisma__EmailQueueClient<
    * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
    * @returns A Promise for the completion of the callback.
    */
-  finally(
-    onfinally?: (() => void) | undefined | null
-  ): runtime.Types.Utils.JsPromise<T>;
+  finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
 }
 
 /**
@@ -1378,8 +1303,7 @@ export interface EmailQueueFieldRefs {
  * EmailQueue findUnique
  */
 export type EmailQueueFindUniqueArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the EmailQueue
@@ -1399,8 +1323,7 @@ export type EmailQueueFindUniqueArgs<
  * EmailQueue findUniqueOrThrow
  */
 export type EmailQueueFindUniqueOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the EmailQueue
@@ -1420,8 +1343,7 @@ export type EmailQueueFindUniqueOrThrowArgs<
  * EmailQueue findFirst
  */
 export type EmailQueueFindFirstArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the EmailQueue
@@ -1440,9 +1362,7 @@ export type EmailQueueFindFirstArgs<
    *
    * Determine the order of EmailQueues to fetch.
    */
-  orderBy?:
-    | Prisma.EmailQueueOrderByWithRelationInput
-    | Prisma.EmailQueueOrderByWithRelationInput[];
+  orderBy?: Prisma.EmailQueueOrderByWithRelationInput | Prisma.EmailQueueOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1466,17 +1386,14 @@ export type EmailQueueFindFirstArgs<
    *
    * Filter by unique combinations of EmailQueues.
    */
-  distinct?:
-    | Prisma.EmailQueueScalarFieldEnum
-    | Prisma.EmailQueueScalarFieldEnum[];
+  distinct?: Prisma.EmailQueueScalarFieldEnum | Prisma.EmailQueueScalarFieldEnum[];
 };
 
 /**
  * EmailQueue findFirstOrThrow
  */
 export type EmailQueueFindFirstOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the EmailQueue
@@ -1495,9 +1412,7 @@ export type EmailQueueFindFirstOrThrowArgs<
    *
    * Determine the order of EmailQueues to fetch.
    */
-  orderBy?:
-    | Prisma.EmailQueueOrderByWithRelationInput
-    | Prisma.EmailQueueOrderByWithRelationInput[];
+  orderBy?: Prisma.EmailQueueOrderByWithRelationInput | Prisma.EmailQueueOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1521,17 +1436,14 @@ export type EmailQueueFindFirstOrThrowArgs<
    *
    * Filter by unique combinations of EmailQueues.
    */
-  distinct?:
-    | Prisma.EmailQueueScalarFieldEnum
-    | Prisma.EmailQueueScalarFieldEnum[];
+  distinct?: Prisma.EmailQueueScalarFieldEnum | Prisma.EmailQueueScalarFieldEnum[];
 };
 
 /**
  * EmailQueue findMany
  */
 export type EmailQueueFindManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the EmailQueue
@@ -1550,9 +1462,7 @@ export type EmailQueueFindManyArgs<
    *
    * Determine the order of EmailQueues to fetch.
    */
-  orderBy?:
-    | Prisma.EmailQueueOrderByWithRelationInput
-    | Prisma.EmailQueueOrderByWithRelationInput[];
+  orderBy?: Prisma.EmailQueueOrderByWithRelationInput | Prisma.EmailQueueOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1571,17 +1481,14 @@ export type EmailQueueFindManyArgs<
    * Skip the first `n` EmailQueues.
    */
   skip?: number;
-  distinct?:
-    | Prisma.EmailQueueScalarFieldEnum
-    | Prisma.EmailQueueScalarFieldEnum[];
+  distinct?: Prisma.EmailQueueScalarFieldEnum | Prisma.EmailQueueScalarFieldEnum[];
 };
 
 /**
  * EmailQueue create
  */
 export type EmailQueueCreateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the EmailQueue
@@ -1594,18 +1501,14 @@ export type EmailQueueCreateArgs<
   /**
    * The data needed to create a EmailQueue.
    */
-  data: Prisma.XOR<
-    Prisma.EmailQueueCreateInput,
-    Prisma.EmailQueueUncheckedCreateInput
-  >;
+  data: Prisma.XOR<Prisma.EmailQueueCreateInput, Prisma.EmailQueueUncheckedCreateInput>;
 };
 
 /**
  * EmailQueue createMany
  */
 export type EmailQueueCreateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to create many EmailQueues.
@@ -1618,8 +1521,7 @@ export type EmailQueueCreateManyArgs<
  * EmailQueue createManyAndReturn
  */
 export type EmailQueueCreateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the EmailQueue
@@ -1640,8 +1542,7 @@ export type EmailQueueCreateManyAndReturnArgs<
  * EmailQueue update
  */
 export type EmailQueueUpdateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the EmailQueue
@@ -1654,10 +1555,7 @@ export type EmailQueueUpdateArgs<
   /**
    * The data needed to update a EmailQueue.
    */
-  data: Prisma.XOR<
-    Prisma.EmailQueueUpdateInput,
-    Prisma.EmailQueueUncheckedUpdateInput
-  >;
+  data: Prisma.XOR<Prisma.EmailQueueUpdateInput, Prisma.EmailQueueUncheckedUpdateInput>;
   /**
    * Choose, which EmailQueue to update.
    */
@@ -1668,8 +1566,7 @@ export type EmailQueueUpdateArgs<
  * EmailQueue updateMany
  */
 export type EmailQueueUpdateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to update EmailQueues.
@@ -1692,8 +1589,7 @@ export type EmailQueueUpdateManyArgs<
  * EmailQueue updateManyAndReturn
  */
 export type EmailQueueUpdateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the EmailQueue
@@ -1724,8 +1620,7 @@ export type EmailQueueUpdateManyAndReturnArgs<
  * EmailQueue upsert
  */
 export type EmailQueueUpsertArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the EmailQueue
@@ -1742,25 +1637,18 @@ export type EmailQueueUpsertArgs<
   /**
    * In case the EmailQueue found by the `where` argument doesn't exist, create a new EmailQueue with this data.
    */
-  create: Prisma.XOR<
-    Prisma.EmailQueueCreateInput,
-    Prisma.EmailQueueUncheckedCreateInput
-  >;
+  create: Prisma.XOR<Prisma.EmailQueueCreateInput, Prisma.EmailQueueUncheckedCreateInput>;
   /**
    * In case the EmailQueue was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<
-    Prisma.EmailQueueUpdateInput,
-    Prisma.EmailQueueUncheckedUpdateInput
-  >;
+  update: Prisma.XOR<Prisma.EmailQueueUpdateInput, Prisma.EmailQueueUncheckedUpdateInput>;
 };
 
 /**
  * EmailQueue delete
  */
 export type EmailQueueDeleteArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the EmailQueue
@@ -1780,8 +1668,7 @@ export type EmailQueueDeleteArgs<
  * EmailQueue deleteMany
  */
 export type EmailQueueDeleteManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which EmailQueues to delete
@@ -1797,8 +1684,7 @@ export type EmailQueueDeleteManyArgs<
  * EmailQueue without action
  */
 export type EmailQueueDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the EmailQueue

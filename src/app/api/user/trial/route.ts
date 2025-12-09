@@ -21,9 +21,6 @@ export async function GET() {
 
     return NextResponse.json(status);
   } catch {
-    return NextResponse.json(
-      { error: 'Failed to get trial status' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to get trial status' }, { status: 500 });
   }
 }

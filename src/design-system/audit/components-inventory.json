@@ -99,11 +99,7 @@
       "category": "form",
       "description": "Interactive button with variants, sizes, and loading state",
       "complexity_level": "medium",
-      "dependencies": [
-        "@radix-ui/react-slot",
-        "class-variance-authority",
-        "design-system"
-      ],
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority", "design-system"],
       "used_in": ["all forms", "actions"]
     },
     {
@@ -301,11 +297,7 @@
       "category": "form",
       "description": "Form wrapper with validation integration (react-hook-form)",
       "complexity_level": "high",
-      "dependencies": [
-        "react-hook-form",
-        "@hookform/resolvers",
-        "design-system"
-      ],
+      "dependencies": ["react-hook-form", "@hookform/resolvers", "design-system"],
       "used_in": ["forms"]
     },
     {
@@ -412,11 +404,7 @@
       "complexity_level": "high",
       "dependencies": ["@tanstack/react-table", "table", "design-system"],
       "used_in": ["admin panels", "dashboards"],
-      "sub_components": [
-        "DataTablePagination",
-        "DataTableToolbar",
-        "DataTableColumnHeader"
-      ]
+      "sub_components": ["DataTablePagination", "DataTableToolbar", "DataTableColumnHeader"]
     },
     {
       "name": "ActivityTimeline",
@@ -514,13 +502,7 @@
       "category": "feedback",
       "description": "Full notification center with grouping, actions, mark as read",
       "complexity_level": "high",
-      "dependencies": [
-        "dropdown-menu",
-        "avatar",
-        "scroll-area",
-        "button",
-        "design-system"
-      ],
+      "dependencies": ["dropdown-menu", "avatar", "scroll-area", "button", "design-system"],
       "used_in": ["app header"]
     },
     {

@@ -25,14 +25,7 @@ export interface Template {
   id: string;
   name: string;
   description: string;
-  category:
-    | 'dashboard'
-    | 'admin'
-    | 'account'
-    | 'marketing'
-    | 'auth'
-    | 'ux'
-    | 'patterns';
+  category: 'dashboard' | 'admin' | 'account' | 'marketing' | 'auth' | 'ux' | 'patterns';
   icon: React.ElementType;
   badge?: string;
   href: string;
@@ -43,8 +36,7 @@ export const templates: Template[] = [
   {
     id: 'analytics-dashboard',
     name: 'Analytics Dashboard',
-    description:
-      'Complete dashboard with charts, metrics, and data visualization',
+    description: 'Complete dashboard with charts, metrics, and data visualization',
     category: 'dashboard',
     icon: BarChart3,
     badge: 'Popular',
@@ -58,12 +50,7 @@ export const templates: Template[] = [
     category: 'admin',
     icon: Users,
     href: '/library/user-management',
-    features: [
-      'User table',
-      'Role management',
-      'Search & filter',
-      'Actions menu',
-    ],
+    features: ['User table', 'Role management', 'Search & filter', 'Actions menu'],
   },
   {
     id: 'settings-page',
@@ -123,8 +110,7 @@ export const templates: Template[] = [
   {
     id: 'chart-library',
     name: 'Chart Library',
-    description:
-      'Data visualization with Recharts (line, area, bar, pie charts)',
+    description: 'Data visualization with Recharts (line, area, bar, pie charts)',
     category: 'dashboard',
     icon: BarChart3,
     badge: 'New',
@@ -148,12 +134,7 @@ export const templates: Template[] = [
     category: 'auth',
     icon: Users,
     href: '/library/authentication/sign-up',
-    features: [
-      'Form Validation',
-      'Password Strength',
-      'Social Auth',
-      'Terms check',
-    ],
+    features: ['Form Validation', 'Password Strength', 'Social Auth', 'Terms check'],
   },
   {
     id: 'forgot-password',
@@ -182,12 +163,7 @@ export const templates: Template[] = [
     icon: DollarSign,
     badge: 'New',
     href: '/library/pricing-page',
-    features: [
-      'Monthly/yearly toggle',
-      'Feature comparison',
-      'FAQ section',
-      'Popular badge',
-    ],
+    features: ['Monthly/yearly toggle', 'Feature comparison', 'FAQ section', 'Popular badge'],
   },
   {
     id: 'blog',
@@ -201,17 +177,11 @@ export const templates: Template[] = [
   {
     id: 'blog-post',
     name: 'Blog Post',
-    description:
-      'Individual article view with rich content, code blocks, and engagement',
+    description: 'Individual article view with rich content, code blocks, and engagement',
     category: 'marketing',
     icon: FileText,
     href: '/library/blog/post',
-    features: [
-      'Rich content',
-      'Code blocks',
-      'Table of contents',
-      'Related posts',
-    ],
+    features: ['Rich content', 'Code blocks', 'Table of contents', 'Related posts'],
   },
   {
     id: 'landing-variations',
@@ -220,12 +190,7 @@ export const templates: Template[] = [
     category: 'marketing',
     icon: Layout,
     href: '/library/landing-variations',
-    features: [
-      'Centered hero',
-      'Split layout',
-      'Minimal hero',
-      'Interactive preview',
-    ],
+    features: ['Centered hero', 'Split layout', 'Minimal hero', 'Interactive preview'],
   },
   // User Experience - New templates
   {
@@ -236,12 +201,7 @@ export const templates: Template[] = [
     icon: Rocket,
     badge: 'New',
     href: '/library/onboarding',
-    features: [
-      'Step indicator',
-      'Progress bar',
-      'Form validation',
-      '5-step wizard',
-    ],
+    features: ['Step indicator', 'Progress bar', 'Form validation', '5-step wizard'],
   },
   {
     id: 'profile',
@@ -259,12 +219,7 @@ export const templates: Template[] = [
     category: 'ux',
     icon: Bell,
     href: '/library/notifications',
-    features: [
-      'All/Unread tabs',
-      'Mark as read',
-      '5 notification types',
-      'Delete actions',
-    ],
+    features: ['All/Unread tabs', 'Mark as read', '5 notification types', 'Delete actions'],
   },
   {
     id: 'search-results',
@@ -273,12 +228,7 @@ export const templates: Template[] = [
     category: 'ux',
     icon: Search,
     href: '/library/search-results',
-    features: [
-      'Filter sidebar',
-      'Sort options',
-      'Grid/list view',
-      'Pagination',
-    ],
+    features: ['Filter sidebar', 'Sort options', 'Grid/list view', 'Pagination'],
   },
   // Patterns - New templates
   {
@@ -289,12 +239,7 @@ export const templates: Template[] = [
     icon: AlertTriangle,
     badge: 'New',
     href: '/library/error-pages',
-    features: [
-      '404 not found',
-      '500 server error',
-      '503 maintenance',
-      'Terminal output',
-    ],
+    features: ['404 not found', '500 server error', '503 maintenance', 'Terminal output'],
   },
   {
     id: 'empty-states',
@@ -303,12 +248,7 @@ export const templates: Template[] = [
     category: 'patterns',
     icon: Inbox,
     href: '/library/empty-states',
-    features: [
-      'No data',
-      'First-time user',
-      'Search no results',
-      'Error state',
-    ],
+    features: ['No data', 'First-time user', 'Search no results', 'Error state'],
   },
   {
     id: 'modals',

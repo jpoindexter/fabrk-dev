@@ -1,19 +1,11 @@
 import { FeatureGuideTemplate } from '@/components/docs';
 import { DocsSection, DocsCard, DocsCallout } from '@/components/docs';
 import Link from 'next/link';
-import {
-  UserCog,
-  Shield,
-  Eye,
-  FileText,
-  AlertTriangle,
-  Lock,
-} from 'lucide-react';
+import { UserCog, Shield, Eye, FileText, AlertTriangle, Lock } from 'lucide-react';
 
 export const metadata = {
   title: 'User Impersonation - Fabrk Docs',
-  description:
-    'Admin feature to view the application as any user for debugging and support.',
+  description: 'Admin feature to view the application as any user for debugging and support.',
 };
 
 export default function ImpersonationPage() {
@@ -43,8 +35,7 @@ export default function ImpersonationPage() {
         {
           icon: FileText,
           title: 'Audit Logging',
-          description:
-            'Every impersonation is logged with reason and timestamps.',
+          description: 'Every impersonation is logged with reason and timestamps.',
         },
         {
           icon: AlertTriangle,
@@ -328,10 +319,9 @@ export function ImpersonateButton({ userId, userName }: ImpersonateButtonProps) 
       {/* Security Considerations */}
       <DocsSection title="Security Considerations">
         <DocsCallout variant="warning" title="Handle with Care">
-          Impersonation is a powerful feature that should only be available to
-          trusted admins. Always require a reason, log all activity, and
-          consider implementing additional controls like IP restrictions or
-          approval workflows for sensitive environments.
+          Impersonation is a powerful feature that should only be available to trusted admins.
+          Always require a reason, log all activity, and consider implementing additional controls
+          like IP restrictions or approval workflows for sensitive environments.
         </DocsCallout>
         <DocsCard title="SECURITY_BEST_PRACTICES">
           <ul className="space-y-1">
@@ -342,27 +332,23 @@ export function ImpersonateButton({ userId, userName }: ImpersonateButtonProps) 
               ├─ <strong>Require reason:</strong> Force admins to document why
             </li>
             <li>
-              ├─ <strong>Audit logging:</strong> Log start, actions, and end of
-              sessions
+              ├─ <strong>Audit logging:</strong> Log start, actions, and end of sessions
             </li>
             <li>
               ├─ <strong>Session timeout:</strong> Auto-expire after 1 hour max
             </li>
             <li>
-              ├─ <strong>No admin impersonation:</strong> Prevent impersonating
-              other admins
+              ├─ <strong>No admin impersonation:</strong> Prevent impersonating other admins
             </li>
             <li>
-              ├─ <strong>Visual indicator:</strong> Clear banner so admin knows
-              they&apos;re impersonating
+              ├─ <strong>Visual indicator:</strong> Clear banner so admin knows they&apos;re
+              impersonating
             </li>
             <li>
-              ├─ <strong>httpOnly cookies:</strong> Prevent JavaScript access to
-              session data
+              ├─ <strong>httpOnly cookies:</strong> Prevent JavaScript access to session data
             </li>
             <li>
-              └─ <strong>One-click exit:</strong> Easy way to return to admin
-              session
+              └─ <strong>One-click exit:</strong> Easy way to return to admin session
             </li>
           </ul>
         </DocsCard>
@@ -397,29 +383,19 @@ export function ImpersonateButton({ userId, userName }: ImpersonateButtonProps) 
       {/* Audit Trail */}
       <DocsSection title="Audit Trail">
         <DocsCard title="LOGGED_EVENTS">
-          <p className="mb-4">
-            All impersonation activity is logged to the audit trail:
-          </p>
+          <p className="mb-4">All impersonation activity is logged to the audit trail:</p>
           <div className="space-y-2">
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">admin.user_impersonated</code>
-              <span className="text-muted-foreground">
-                Impersonation started
-              </span>
+              <span className="text-muted-foreground">Impersonation started</span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">admin.impersonation_ended</code>
-              <span className="text-muted-foreground">
-                Admin returned to their session
-              </span>
+              <span className="text-muted-foreground">Admin returned to their session</span>
             </div>
             <div className="flex justify-between">
-              <code className="bg-muted px-1">
-                user.action_during_impersonation
-              </code>
-              <span className="text-muted-foreground">
-                Actions taken while impersonating
-              </span>
+              <code className="bg-muted px-1">user.action_during_impersonation</code>
+              <span className="text-muted-foreground">Actions taken while impersonating</span>
             </div>
           </div>
         </DocsCard>
@@ -428,9 +404,7 @@ export function ImpersonateButton({ userId, userName }: ImpersonateButtonProps) 
       {/* Integration */}
       <DocsSection title="Integration">
         <DocsCard title="ADD_TO_DASHBOARD">
-          <p className="mb-4">
-            Add the impersonation banner to your dashboard layout:
-          </p>
+          <p className="mb-4">Add the impersonation banner to your dashboard layout:</p>
           <pre className="bg-muted overflow-x-auto p-4">
             <code>{`// src/app/(dashboard)/layout.tsx
 import { ImpersonationBanner } from "@/components/admin/impersonation-banner";
@@ -467,9 +441,7 @@ export default function DashboardLayout({ children }) {
               className="hover:border-primary/50 h-full transition-all"
             >
               Organizations
-              <p className="mb-6">
-                Manage teams and organization-level permissions.
-              </p>
+              <p className="mb-6">Manage teams and organization-level permissions.</p>
             </DocsCard>
           </Link>
         </div>

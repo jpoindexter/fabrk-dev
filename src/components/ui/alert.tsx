@@ -60,12 +60,7 @@ function Alert({
     <div
       data-slot="alert"
       role="alert"
-      className={cn(
-        alertVariants({ variant }),
-        mode.radius,
-        mode.font,
-        className
-      )}
+      className={cn(alertVariants({ variant }), mode.radius, mode.font, className)}
       {...props}
     />
   );
@@ -75,19 +70,13 @@ function AlertTitle({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       data-slot="alert-title"
-      className={cn(
-        'col-start-2 line-clamp-1 min-h-4 font-semibold tracking-tight',
-        className
-      )}
+      className={cn('col-start-2 line-clamp-1 min-h-4 font-semibold tracking-tight', className)}
       {...props}
     />
   );
 }
 
-function AlertDescription({
-  className,
-  ...props
-}: React.ComponentProps<'div'>) {
+function AlertDescription({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       data-slot="alert-description"

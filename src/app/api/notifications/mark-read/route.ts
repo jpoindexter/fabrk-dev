@@ -41,10 +41,7 @@ async function markReadHandler(req: NextRequest) {
     }
 
     if (!notificationId) {
-      return NextResponse.json(
-        { error: 'Missing notificationId' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Missing notificationId' }, { status: 400 });
     }
 
     // Mark specific notification as read
@@ -57,10 +54,7 @@ async function markReadHandler(req: NextRequest) {
     });
 
     if (!notification) {
-      return NextResponse.json(
-        { error: 'Notification not found' },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: 'Notification not found' }, { status: 404 });
     }
 
     await prisma.notification.update({
@@ -71,17 +65,11 @@ async function markReadHandler(req: NextRequest) {
     return NextResponse.json({ success: true, marked: notificationId });
   } catch (error: unknown) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: 'Invalid input', details: error.issues },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Invalid input', details: error.issues }, { status: 400 });
     }
 
     logger.error('Failed to mark notification as read:', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
 

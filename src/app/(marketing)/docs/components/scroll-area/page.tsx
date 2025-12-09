@@ -16,10 +16,7 @@ export default function ScrollAreaPage() {
           <ScrollArea className="h-48 w-full">
             <div className="p-4">
               {Array.from({ length: 20 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="border-border border-b py-2 last:border-0"
-                >
+                <div key={i} className="border-border border-b py-2 last:border-0">
                   <span className="text-primary">&gt;</span> Item {i + 1}
                 </div>
               ))}
@@ -87,12 +84,9 @@ export default function ScrollAreaPage() {
             <ScrollArea className="h-48 w-full">
               <div className="w-[800px] p-4">
                 {Array.from({ length: 15 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className="border-border border-b py-2 last:border-0"
-                  >
-                    <span className="text-primary">&gt;</span> Wide content that
-                    scrolls horizontally - Item {i + 1}
+                  <div key={i} className="border-border border-b py-2 last:border-0">
+                    <span className="text-primary">&gt;</span> Wide content that scrolls
+                    horizontally - Item {i + 1}
                   </div>
                 ))}
               </div>
@@ -146,12 +140,8 @@ export default function ScrollAreaPage() {
               <div className="space-y-4 p-4">
                 {Array.from({ length: 10 }).map((_, i) => (
                   <div key={i} className="space-y-1">
-                    <div className="text-primary font-semibold">
-                      User {i + 1}
-                    </div>
-                    <div className="bg-background p-2">
-                      This is a message in the chat
-                    </div>
+                    <div className="text-primary font-semibold">User {i + 1}</div>
+                    <div className="bg-background p-2">This is a message in the chat</div>
                   </div>
                 ))}
               </div>

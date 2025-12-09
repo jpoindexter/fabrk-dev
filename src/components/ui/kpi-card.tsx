@@ -26,10 +26,7 @@ export interface KpiCardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const KpiCard = React.forwardRef<HTMLDivElement, KpiCardProps>(
-  (
-    { title, value, change, trend, subtitle, icon, className, ...props },
-    ref
-  ) => {
+  ({ title, value, change, trend, subtitle, icon, className, ...props }, ref) => {
     const getTrendIcon = () => {
       switch (trend) {
         case 'up':
@@ -64,19 +61,12 @@ const KpiCard = React.forwardRef<HTMLDivElement, KpiCardProps>(
           {(change !== undefined || subtitle) && (
             <div className={cn('flex items-center gap-2 text-xs', mode.font)}>
               {change !== undefined && (
-                <span
-                  className={cn(
-                    'flex items-center gap-1 font-medium',
-                    getTrendColor()
-                  )}
-                >
+                <span className={cn('flex items-center gap-1 font-medium', getTrendColor())}>
                   {getTrendIcon()}
                   {Math.abs(change)}%
                 </span>
               )}
-              {subtitle && (
-                <span className="text-muted-foreground">{subtitle}</span>
-              )}
+              {subtitle && <span className="text-muted-foreground">{subtitle}</span>}
             </div>
           )}
         </CardContent>

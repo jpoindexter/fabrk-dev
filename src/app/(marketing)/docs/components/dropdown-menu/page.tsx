@@ -176,17 +176,10 @@ const [showActivityBar, setShowActivityBar] = useState(false);
               <DropdownMenuContent className="w-56">
                 <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuRadioGroup
-                  value={position}
-                  onValueChange={setPosition}
-                >
+                <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
                   <DropdownMenuRadioItem value="top">Top</DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem value="bottom">
-                    Bottom
-                  </DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem value="right">
-                    Right
-                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="bottom">Bottom</DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="right">Right</DropdownMenuRadioItem>
                 </DropdownMenuRadioGroup>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -338,8 +331,7 @@ const [showActivityBar, setShowActivityBar] = useState(false);
         {
           name: 'sideOffset',
           type: 'number',
-          description:
-            'Distance in pixels between the trigger and the dropdown content',
+          description: 'Distance in pixels between the trigger and the dropdown content',
           default: '4',
         },
         {
@@ -352,26 +344,22 @@ const [showActivityBar, setShowActivityBar] = useState(false);
         {
           name: 'checked',
           type: 'boolean',
-          description:
-            'For DropdownMenuCheckboxItem - the controlled checked state',
+          description: 'For DropdownMenuCheckboxItem - the controlled checked state',
         },
         {
           name: 'onCheckedChange',
           type: '(checked: boolean) => void',
-          description:
-            'For DropdownMenuCheckboxItem - callback when checked state changes',
+          description: 'For DropdownMenuCheckboxItem - callback when checked state changes',
         },
         {
           name: 'value',
           type: 'string',
-          description:
-            'For DropdownMenuRadioGroup - the value of the selected item',
+          description: 'For DropdownMenuRadioGroup - the value of the selected item',
         },
         {
           name: 'onValueChange',
           type: '(value: string) => void',
-          description:
-            'For DropdownMenuRadioGroup - callback when the selected value changes',
+          description: 'For DropdownMenuRadioGroup - callback when the selected value changes',
         },
       ]}
       accessibility={[

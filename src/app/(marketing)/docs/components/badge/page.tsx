@@ -107,24 +107,15 @@ export default function BadgePage() {
           description: 'Interactive badges with remove functionality',
           preview: (
             <div className="flex flex-wrap gap-2">
-              <Badge
-                variant="secondary"
-                className="hover:bg-secondary/80 cursor-pointer"
-              >
+              <Badge variant="secondary" className="hover:bg-secondary/80 cursor-pointer">
                 React
                 <X className="ml-1 h-3 w-3" />
               </Badge>
-              <Badge
-                variant="secondary"
-                className="hover:bg-secondary/80 cursor-pointer"
-              >
+              <Badge variant="secondary" className="hover:bg-secondary/80 cursor-pointer">
                 TypeScript
                 <X className="ml-1 h-3 w-3" />
               </Badge>
-              <Badge
-                variant="secondary"
-                className="hover:bg-secondary/80 cursor-pointer"
-              >
+              <Badge variant="secondary" className="hover:bg-secondary/80 cursor-pointer">
                 Tailwind
                 <X className="ml-1 h-3 w-3" />
               </Badge>

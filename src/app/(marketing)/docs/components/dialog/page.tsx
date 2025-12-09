@@ -41,8 +41,7 @@ export default function DialogPage() {
               <DialogHeader>
                 <DialogTitle>Are you sure?</DialogTitle>
                 <DialogDescription>
-                  This action cannot be undone. This will permanently delete
-                  your account.
+                  This action cannot be undone. This will permanently delete your account.
                 </DialogDescription>
               </DialogHeader>
             </DialogContent>
@@ -75,8 +74,7 @@ export default function DialogPage() {
                 <DialogHeader>
                   <DialogTitle>Edit profile</DialogTitle>
                   <DialogDescription>
-                    Make changes to your profile here. Click save when you're
-                    done.
+                    Make changes to your profile here. Click save when you're done.
                   </DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-4 py-4">
@@ -84,21 +82,13 @@ export default function DialogPage() {
                     <Label htmlFor="name" className="text-right">
                       {formatLabel('Name')}
                     </Label>
-                    <Input
-                      id="name"
-                      defaultValue="Pedro Duarte"
-                      className="col-span-3"
-                    />
+                    <Input id="name" defaultValue="Pedro Duarte" className="col-span-3" />
                   </div>
                   <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="username" className="text-right">
                       {formatLabel('Username')}
                     </Label>
-                    <Input
-                      id="username"
-                      defaultValue="@peduarte"
-                      className="col-span-3"
-                    />
+                    <Input id="username" defaultValue="@peduarte" className="col-span-3" />
                   </div>
                 </div>
                 <DialogFooter>
@@ -150,8 +140,8 @@ export default function DialogPage() {
                 <DialogHeader>
                   <DialogTitle>Delete Account</DialogTitle>
                   <DialogDescription>
-                    This action cannot be undone. This will permanently delete
-                    your account and remove your data from our servers.
+                    This action cannot be undone. This will permanently delete your account and
+                    remove your data from our servers.
                   </DialogDescription>
                 </DialogHeader>
                 <DialogFooter>
@@ -213,8 +203,7 @@ export default function DialogPage() {
         },
         {
           title: 'Controlled Dialog',
-          description:
-            'Dialog with controlled open state using state management.',
+          description: 'Dialog with controlled open state using state management.',
           preview: (
             <Dialog>
               <DialogTrigger asChild>
@@ -224,8 +213,8 @@ export default function DialogPage() {
                 <DialogHeader>
                   <DialogTitle>Controlled State</DialogTitle>
                   <DialogDescription>
-                    This dialog's open state can be controlled externally using
-                    the open and onOpenChange props.
+                    This dialog's open state can be controlled externally using the open and
+                    onOpenChange props.
                   </DialogDescription>
                 </DialogHeader>
               </DialogContent>
@@ -258,8 +247,7 @@ export default function DialogPage() {
                 </DialogHeader>
                 <div className="py-4">
                   <p className="text-muted-foreground text-sm">
-                    Sometimes you don't need a description, just a title and
-                    content.
+                    Sometimes you don't need a description, just a title and content.
                   </p>
                 </div>
               </DialogContent>
@@ -303,8 +291,7 @@ export default function DialogPage() {
           name: 'modal',
           type: 'boolean',
           default: 'true',
-          description:
-            'Whether the dialog is modal (blocks interaction with page).',
+          description: 'Whether the dialog is modal (blocks interaction with page).',
         },
       ]}
       accessibility={[

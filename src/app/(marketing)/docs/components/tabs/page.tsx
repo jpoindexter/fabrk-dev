@@ -31,20 +31,15 @@ export default function TabsPage() {
               <TabsTrigger value="account">Account</TabsTrigger>
               <TabsTrigger value="password">Password</TabsTrigger>
             </TabsList>
-            <TabsContent value="account">
-              Make changes to your account here.
-            </TabsContent>
-            <TabsContent value="password">
-              Change your password here.
-            </TabsContent>
+            <TabsContent value="account">Make changes to your account here.</TabsContent>
+            <TabsContent value="password">Change your password here.</TabsContent>
           </Tabs>
         ),
       }}
       variants={[
         {
           title: 'With Cards',
-          description:
-            'Tabs combined with card components for structured content',
+          description: 'Tabs combined with card components for structured content',
           code: `<Tabs defaultValue="overview" className="w-full">
   <TabsList>
     <TabsTrigger value="overview">Overview</TabsTrigger>
@@ -109,11 +104,7 @@ export default function TabsPage() {
               </TabsContent>
               <TabsContent value="reports">
                 <Card>
-                  <CardHeader
-                    code="0x02"
-                    title="REPORTS"
-                    meta="Generate and view reports."
-                  />
+                  <CardHeader code="0x02" title="REPORTS" meta="Generate and view reports." />
                   <CardContent className="space-y-2">
                     <p>Reports will be shown here.</p>
                   </CardContent>
@@ -150,9 +141,7 @@ export default function TabsPage() {
                 </TabsTrigger>
                 <TabsTrigger value="another">Another</TabsTrigger>
               </TabsList>
-              <TabsContent value="enabled">
-                This tab is enabled and active.
-              </TabsContent>
+              <TabsContent value="enabled">This tab is enabled and active.</TabsContent>
               <TabsContent value="disabled">
                 This content won't be shown as the tab is disabled.
               </TabsContent>
@@ -220,11 +209,7 @@ export default function TabsPage() {
   </div>
 </Tabs>`,
           preview: (
-            <Tabs
-              defaultValue="tab1"
-              orientation="vertical"
-              className="flex gap-4"
-            >
+            <Tabs defaultValue="tab1" orientation="vertical" className="flex gap-4">
               <TabsList className="h-auto flex-col">
                 <TabsTrigger value="tab1" className="w-full justify-start">
                   Profile
@@ -237,9 +222,7 @@ export default function TabsPage() {
                 </TabsTrigger>
               </TabsList>
               <div className="flex-1">
-                <TabsContent value="tab1">
-                  Profile settings and information
-                </TabsContent>
+                <TabsContent value="tab1">Profile settings and information</TabsContent>
                 <TabsContent value="tab2">Application settings</TabsContent>
                 <TabsContent value="tab3">Notification preferences</TabsContent>
               </div>
@@ -273,8 +256,7 @@ export default function TabsPage() {
         {
           name: 'disabled',
           type: 'boolean',
-          description:
-            'When true on TabsTrigger, prevents interaction with that tab',
+          description: 'When true on TabsTrigger, prevents interaction with that tab',
           default: 'false',
         },
       ]}

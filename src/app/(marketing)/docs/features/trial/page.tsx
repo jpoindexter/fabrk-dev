@@ -26,20 +26,17 @@ export default function TrialPage() {
         {
           icon: Bell,
           title: 'Countdown Banner',
-          description:
-            'Automatic banner showing days remaining with color-coded urgency levels.',
+          description: 'Automatic banner showing days remaining with color-coded urgency levels.',
         },
         {
           icon: CreditCard,
           title: 'Stripe Integration',
-          description:
-            'Seamless trial-to-paid conversion with optional credit card upfront.',
+          description: 'Seamless trial-to-paid conversion with optional credit card upfront.',
         },
         {
           icon: TrendingUp,
           title: 'Abuse Prevention',
-          description:
-            "Track users who've already used trials to prevent multiple free trials.",
+          description: "Track users who've already used trials to prevent multiple free trials.",
         },
       ]}
       setup={[
@@ -142,8 +139,7 @@ export default function DashboardLayout({ children }) {
         },
         {
           title: 'Stripe Trial Integration',
-          description:
-            'If you require credit card upfront, Stripe handles the trial automatically',
+          description: 'If you require credit card upfront, Stripe handles the trial automatically',
           code: `// Create subscription with trial period
 const subscription = await stripe.subscriptions.create({
   customer: customerId,
@@ -169,28 +165,27 @@ const subscription = await stripe.subscriptions.create({
         <div className="space-y-4">
           <DocsCard title="STEP_01">
             <p className="mb-4">
-              User clicks &quot;Start Free Trial&quot; on your pricing page.
-              They create an account (no credit card required by default) and
-              immediately get access to premium features.
+              User clicks &quot;Start Free Trial&quot; on your pricing page. They create an account
+              (no credit card required by default) and immediately get access to premium features.
             </p>
           </DocsCard>
           <DocsCard title="STEP_02">
             <p className="mb-4">
-              While on trial, users see a banner showing how many days are left.
-              This creates gentle urgency without being annoying.
+              While on trial, users see a banner showing how many days are left. This creates gentle
+              urgency without being annoying.
             </p>
           </DocsCard>
           <DocsCard title="STEP_03">
             <p className="mb-4">
-              When trial is almost over (last 3 days), the banner becomes more
-              prominent. Users are prompted to subscribe before losing access.
+              When trial is almost over (last 3 days), the banner becomes more prominent. Users are
+              prompted to subscribe before losing access.
             </p>
           </DocsCard>
           <DocsCard title="STEP_04">
             <p className="mb-4">
-              When trial ends, users can no longer access premium features. They
-              see a message encouraging them to subscribe. If you require credit
-              card upfront, Stripe automatically starts charging.
+              When trial ends, users can no longer access premium features. They see a message
+              encouraging them to subscribe. If you require credit card upfront, Stripe
+              automatically starts charging.
             </p>
           </DocsCard>
         </div>
@@ -239,36 +234,36 @@ const subscription = await stripe.subscriptions.create({
             <li className="flex items-start gap-2">
               <span className="text-primary font-semibold">1.</span>
               <span>
-                <strong>Email reminders:</strong> Send emails at trial midpoint,
-                3 days before, and 1 day before expiration.
+                <strong>Email reminders:</strong> Send emails at trial midpoint, 3 days before, and
+                1 day before expiration.
               </span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-primary font-semibold">2.</span>
               <span>
-                <strong>Show value early:</strong> Get users to their &quot;aha
-                moment&quot; in the first 2 days, not day 14.
+                <strong>Show value early:</strong> Get users to their &quot;aha moment&quot; in the
+                first 2 days, not day 14.
               </span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-primary font-semibold">3.</span>
               <span>
-                <strong>Don&apos;t restrict too much:</strong> Let trial users
-                see the full product. Restricted trials feel frustrating.
+                <strong>Don&apos;t restrict too much:</strong> Let trial users see the full product.
+                Restricted trials feel frustrating.
               </span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-primary font-semibold">4.</span>
               <span>
-                <strong>Track engagement:</strong> Users who don&apos;t engage
-                by day 3 rarely convert. Reach out proactively.
+                <strong>Track engagement:</strong> Users who don&apos;t engage by day 3 rarely
+                convert. Reach out proactively.
               </span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-primary font-semibold">5.</span>
               <span>
-                <strong>Prevent abuse:</strong> Fabrk tracks who has used a
-                trial before, preventing multiple free trials per user.
+                <strong>Prevent abuse:</strong> Fabrk tracks who has used a trial before, preventing
+                multiple free trials per user.
               </span>
             </li>
           </ul>
@@ -284,9 +279,8 @@ const subscription = await stripe.subscriptions.create({
             </summary>
             <div className="text-muted-foreground border-t p-4 text-sm">
               <p>
-                No. Fabrk tracks whether a user has already used a trial. Once
-                they&apos;ve had one, they can only subscribe (no second trial).
-                This prevents abuse.
+                No. Fabrk tracks whether a user has already used a trial. Once they&apos;ve had one,
+                they can only subscribe (no second trial). This prevents abuse.
               </p>
             </div>
           </details>
@@ -297,9 +291,8 @@ const subscription = await stripe.subscriptions.create({
             </summary>
             <div className="text-muted-foreground border-t p-4 text-sm">
               <p>
-                User data is preserved. They just can&apos;t access premium
-                features. If they subscribe later, all their data is still
-                there. This encourages conversion.
+                User data is preserved. They just can&apos;t access premium features. If they
+                subscribe later, all their data is still there. This encourages conversion.
               </p>
             </div>
           </details>
@@ -310,10 +303,9 @@ const subscription = await stripe.subscriptions.create({
             </summary>
             <div className="text-muted-foreground border-t p-4 text-sm">
               <p>
-                It depends on your business. Card-required trials have fewer
-                signups but higher conversion (40-60%). No-card trials get more
-                signups but lower conversion (10-20%). Test both if you&apos;re
-                unsure.
+                It depends on your business. Card-required trials have fewer signups but higher
+                conversion (40-60%). No-card trials get more signups but lower conversion (10-20%).
+                Test both if you&apos;re unsure.
               </p>
             </div>
           </details>
@@ -324,10 +316,9 @@ const subscription = await stripe.subscriptions.create({
             </summary>
             <div className="text-muted-foreground border-t p-4 text-sm">
               <p>
-                Update the user&apos;s{' '}
-                <code className="bg-muted px-1 font-mono">trialEndsAt</code>{' '}
-                field in the database to a future date. You can also do this via
-                Stripe if using their trial system.
+                Update the user&apos;s <code className="bg-muted px-1 font-mono">trialEndsAt</code>{' '}
+                field in the database to a future date. You can also do this via Stripe if using
+                their trial system.
               </p>
             </div>
           </details>

@@ -37,8 +37,7 @@ export function Providers({
   defaultVisualMode,
 }: ProvidersProps) {
   // Read from environment variable, fallback to prop
-  const visualTheme =
-    defaultVisualMode || env.client.NEXT_PUBLIC_DEFAULT_VISUAL_THEME;
+  const visualTheme = defaultVisualMode || env.client.NEXT_PUBLIC_DEFAULT_VISUAL_THEME;
 
   return (
     <SessionProvider>
@@ -52,11 +51,7 @@ export function Providers({
           position="top-right"
           richColors
           toastOptions={{
-            className: cn(
-              'border border-border text-xs',
-              mode.radius,
-              mode.font
-            ),
+            className: cn('border border-border text-xs', mode.radius, mode.font),
           }}
         />
       </ThemeProvider>

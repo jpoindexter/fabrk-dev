@@ -7,11 +7,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import { withCsrfProtection } from '@/lib/security/csrf';
-import {
-  checkRateLimitAuto,
-  getClientIdentifier,
-  RateLimiters,
-} from '@/lib/security/rate-limit';
+import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from '@/lib/security/rate-limit';
 import { compare } from 'bcryptjs';
 import { z } from 'zod';
 import { logger } from '@/lib/logger';
@@ -35,9 +31,7 @@ export const DELETE = withCsrfProtection(async (req: NextRequest) => {
           headers: {
             'X-RateLimit-Limit': rateLimit.limit.toString(),
             'X-RateLimit-Remaining': rateLimit.remaining.toString(),
-            'Retry-After': Math.ceil(
-              (rateLimit.reset - Date.now()) / 1000
-            ).toString(),
+            'Retry-After': Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
           },
         }
       );
@@ -69,10 +63,7 @@ export const DELETE = withCsrfProtection(async (req: NextRequest) => {
     const isValid = await compare(validatedData.password, user.password);
 
     if (!isValid) {
-      return NextResponse.json(
-        { error: 'Password is incorrect' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Password is incorrect' }, { status: 400 });
     }
 
     // Delete user and all related data (cascade)
@@ -86,16 +77,10 @@ export const DELETE = withCsrfProtection(async (req: NextRequest) => {
     });
   } catch (error: unknown) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: 'Invalid input', details: error.issues },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Invalid input', details: error.issues }, { status: 400 });
     }
 
     logger.error('[Account Delete] Error:', error);
-    return NextResponse.json(
-      { error: 'Failed to delete account' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to delete account' }, { status: 500 });
   }
 });

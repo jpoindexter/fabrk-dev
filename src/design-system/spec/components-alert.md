@@ -76,10 +76,7 @@ import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 
 ```tsx
 <AlertDescription
-  className={cn(
-    'col-start-2 grid justify-items-start gap-1 text-xs font-normal',
-    mode.font
-  )}
+  className={cn('col-start-2 grid justify-items-start gap-1 text-xs font-normal', mode.font)}
 />
 ```
 

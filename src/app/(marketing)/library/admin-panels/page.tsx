@@ -6,12 +6,7 @@
 'use client';
 
 import Link from 'next/link';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  TemplatePageHeader,
-} from '@/components/ui/card';
+import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { getCategoryInfo, getTemplatesByCategory } from '../library-data';
@@ -120,18 +115,9 @@ function AdminPanelsPreview() {
             </span>
           </div>
           <div className="flex items-center gap-4">
-            {categoryInfo && (
-              <categoryInfo.icon className="text-primary h-6 w-6" />
-            )}
-            <h1 className={cn(mode.font, 'text-4xl font-semibold')}>
-              Admin Panels
-            </h1>
-            <span
-              className={cn(
-                mode.font,
-                'border-border border px-2 py-0.5 text-xs'
-              )}
-            >
+            {categoryInfo && <categoryInfo.icon className="text-primary h-6 w-6" />}
+            <h1 className={cn(mode.font, 'text-4xl font-semibold')}>Admin Panels</h1>
+            <span className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}>
               COUNT: {categoryTemplates.length}
             </span>
           </div>
@@ -144,9 +130,7 @@ function AdminPanelsPreview() {
               <div className="group border-border bg-card hover:border-primary/50 border transition-colors">
                 {/* Card Header */}
                 <div className="border-border flex items-center justify-between border-b px-4 py-2">
-                  <span
-                    className={cn(mode.font, 'text-muted-foreground text-xs')}
-                  >
+                  <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
                     [TEMPLATE]: {template.id.toUpperCase().replace(/-/g, '_')}
                   </span>
                   <template.icon className="text-muted-foreground size-4" />
@@ -155,12 +139,7 @@ function AdminPanelsPreview() {
                 {/* Card Content */}
                 <div className="p-4">
                   {/* Status & Badge */}
-                  <div
-                    className={cn(
-                      mode.font,
-                      'mb-4 flex items-center justify-between text-xs'
-                    )}
-                  >
+                  <div className={cn(mode.font, 'mb-4 flex items-center justify-between text-xs')}>
                     <div>
                       <span className="text-muted-foreground">STATUS: </span>
                       <span className="text-success">READY</span>
@@ -173,36 +152,24 @@ function AdminPanelsPreview() {
                   </div>
 
                   {/* Title */}
-                  <h3 className={cn(mode.font, 'mb-2 text-lg font-semibold')}>
-                    {template.name}
-                  </h3>
+                  <h3 className={cn(mode.font, 'mb-2 text-lg font-semibold')}>{template.name}</h3>
 
                   {/* Description */}
                   <div className={cn(mode.font, 'mb-4 text-xs')}>
                     <span className="text-muted-foreground">DESC: </span>
-                    <span className="text-foreground">
-                      {template.description}
-                    </span>
+                    <span className="text-foreground">{template.description}</span>
                   </div>
 
                   {/* Features */}
                   <div className="mb-4">
-                    <div
-                      className={cn(
-                        mode.font,
-                        'text-muted-foreground mb-2 text-xs'
-                      )}
-                    >
+                    <div className={cn(mode.font, 'text-muted-foreground mb-2 text-xs')}>
                       [FEATURES]:
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {template.features.map((feature) => (
                         <span
                           key={feature}
-                          className={cn(
-                            mode.font,
-                            'border-border border px-2 py-0.5 text-xs'
-                          )}
+                          className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}
                         >
                           {feature}
                         </span>
@@ -299,11 +266,7 @@ export default function AdminPanelsPage() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock
-                  code={templateCode}
-                  language="tsx"
-                  maxHeight="600px"
-                />
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
             </Card>
           </TabsContent>
@@ -320,9 +283,7 @@ export default function AdminPanelsPage() {
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">admin/</span>
                   <span className="text-foreground">page.tsx</span>
-                  <span className="text-muted-foreground ml-4">
-                    ← Copy template here
-                  </span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
                 </div>
               </div>
             </div>
@@ -335,32 +296,28 @@ export default function AdminPanelsPage() {
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> User management with
-                role-based access control
+                <span className="text-success">&gt;</span> User management with role-based access
+                control
               </div>
               <div>
-                <span className="text-success">&gt;</span> Invitation system
-                with 7-day token expiry
+                <span className="text-success">&gt;</span> Invitation system with 7-day token expiry
               </div>
               <div>
-                <span className="text-success">&gt;</span> Organization switcher
-                with multi-tenancy support
+                <span className="text-success">&gt;</span> Organization switcher with multi-tenancy
+                support
               </div>
               <div>
-                <span className="text-success">&gt;</span> Audit logs and
-                activity tracking
+                <span className="text-success">&gt;</span> Audit logs and activity tracking
               </div>
               <div>
-                <span className="text-success">&gt;</span> Data tables with
-                sorting, filtering, and pagination
+                <span className="text-success">&gt;</span> Data tables with sorting, filtering, and
+                pagination
               </div>
               <div>
-                <span className="text-success">&gt;</span> Webhook management
-                and delivery history
+                <span className="text-success">&gt;</span> Webhook management and delivery history
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant
-                (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

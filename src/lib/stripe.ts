@@ -81,10 +81,7 @@ export async function getOrCreateCustomer(
  * const key = generateIdempotencyKey("user123", "price_abc")
  * // Returns: "checkout_user123_price_abc_1699123456789_a1b2c3d4"
  */
-export function generateIdempotencyKey(
-  userId: string,
-  priceId: string
-): string {
+export function generateIdempotencyKey(userId: string, priceId: string): string {
   const timestamp = Date.now();
   const random = crypto.randomBytes(8).toString('hex');
   return `checkout_${userId}_${priceId}_${timestamp}_${random}`;
@@ -266,9 +263,7 @@ export async function createCheckoutSession(
  *   await handleCheckoutCompleted(event.data.object)
  * }
  */
-export async function handleCheckoutCompleted(
-  session: Stripe.Checkout.Session
-) {
+export async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   const userId = session.metadata?.userId;
   if (!userId) {
     logger.error('No userId in session metadata');
@@ -302,8 +297,7 @@ export async function handleCheckoutCompleted(
 function getTierFromPrice(priceId: string): string {
   // Get from config.js or env vars
   if (priceId === env.client.NEXT_PUBLIC_STRIPE_PRICE_STARTER) return 'starter';
-  if (priceId === env.client.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL)
-    return 'pro';
+  if (priceId === env.client.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL) return 'pro';
   return 'free';
 }
 // Test comment

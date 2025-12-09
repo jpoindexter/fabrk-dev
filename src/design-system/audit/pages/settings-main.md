@@ -126,9 +126,7 @@ Centralized settings hub with modular sections:
 4. **Icon Size Consistency** (Line 101-105)
 
    ```tsx
-   <Icon
-     className={`size-5 ${section.isDanger ? 'text-destructive' : 'text-primary'}`}
-   />
+   <Icon className={`size-5 ${section.isDanger ? 'text-destructive' : 'text-primary'}`} />
    ```
 
    - Uses `size-5` (newer Tailwind syntax)
@@ -200,9 +198,7 @@ Centralized settings hub with modular sections:
         <CardTitle className="font-mono text-xs uppercase">
           [{section.title.toUpperCase().replace(/ /g, '_')}]
         </CardTitle>
-        <CardDescription className="font-mono text-xs">
-          {section.description}
-        </CardDescription>
+        <CardDescription className="font-mono text-xs">{section.description}</CardDescription>
       </div>
     </div>
   </CardHeader>

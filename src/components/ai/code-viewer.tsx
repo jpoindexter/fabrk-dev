@@ -101,8 +101,7 @@ function getZodType(field: FormField): string {
 
 // Generate React component code
 export function generateComponentCode(form: GeneratedForm): string {
-  const schemaName =
-    form.name.charAt(0).toLowerCase() + form.name.slice(1) + 'Schema';
+  const schemaName = form.name.charAt(0).toLowerCase() + form.name.slice(1) + 'Schema';
   const typeName = form.name + 'Data';
 
   const lines: string[] = [
@@ -147,21 +146,15 @@ export function generateComponentCode(form: GeneratedForm): string {
   lines.push('  };');
   lines.push('');
   lines.push('  return (');
-  lines.push(
-    '    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">'
-  );
+  lines.push('    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">');
 
   form.fields.forEach((field) => {
     lines.push(...generateFieldCode(field));
   });
 
   lines.push('');
-  lines.push(
-    '      <Button type="submit" disabled={isSubmitting} className="w-full">'
-  );
-  lines.push(
-    `        {isSubmitting ? "Submitting..." : "${form.submitLabel}"}`
-  );
+  lines.push('      <Button type="submit" disabled={isSubmitting} className="w-full">');
+  lines.push(`        {isSubmitting ? "Submitting..." : "${form.submitLabel}"}`);
   lines.push('      </Button>');
   lines.push('    </form>');
   lines.push('  );');
@@ -193,9 +186,7 @@ function generateFieldCode(field: FormField): string[] {
       break;
     case 'checkbox':
       lines.push('        <div className="flex items-center space-x-2">');
-      lines.push(
-        `          <Checkbox id="${name}" {...register("${name}")} />`
-      );
+      lines.push(`          <Checkbox id="${name}" {...register("${name}")} />`);
       lines.push(`          <Label htmlFor="${name}">${label}</Label>`);
       lines.push('        </div>');
       break;
@@ -208,9 +199,7 @@ function generateFieldCode(field: FormField): string[] {
       lines.push('          </SelectTrigger>');
       lines.push('          <SelectContent>');
       field.options?.forEach((opt) => {
-        lines.push(
-          `            <SelectItem value="${opt.value}">${opt.label}</SelectItem>`
-        );
+        lines.push(`            <SelectItem value="${opt.value}">${opt.label}</SelectItem>`);
       });
       lines.push('          </SelectContent>');
       lines.push('        </Select>');
@@ -227,11 +216,7 @@ function generateFieldCode(field: FormField): string[] {
   }
 
   lines.push(`        {errors.${name} && (`);
-  lines.push(
-    '          <p className="text-sm text-destructive">{errors.' +
-      name +
-      '.message}</p>'
-  );
+  lines.push('          <p className="text-sm text-destructive">{errors.' + name + '.message}</p>');
   lines.push('        )}');
   lines.push('      </div>');
 
@@ -244,11 +229,7 @@ export function CodeViewer({ form, className }: CodeViewerProps) {
 
   return (
     <div
-      className={cn(
-        'border-border bg-card flex h-[600px] flex-col border',
-        mode.radius,
-        className
-      )}
+      className={cn('border-border bg-card flex h-[600px] flex-col border', mode.radius, className)}
     >
       <Tabs defaultValue="schema" className="flex h-full flex-col">
         {/* Terminal Header */}

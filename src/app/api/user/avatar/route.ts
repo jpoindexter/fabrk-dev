@@ -30,10 +30,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
 
     // Validate file size
     if (file.size > MAX_FILE_SIZE) {
-      return NextResponse.json(
-        { error: 'File too large. Maximum size is 5MB' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'File too large. Maximum size is 5MB' }, { status: 400 });
     }
 
     // Validate file type
@@ -77,17 +74,13 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
       logger.error('[Avatar Upload] S3 not configured:', uploadError);
       return NextResponse.json(
         {
-          error:
-            'File upload service not configured. Please set up S3 environment variables.',
+          error: 'File upload service not configured. Please set up S3 environment variables.',
         },
         { status: 503 }
       );
     }
   } catch (error: unknown) {
     logger.error('[Avatar Upload] Error:', error);
-    return NextResponse.json(
-      { error: 'Failed to upload avatar' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to upload avatar' }, { status: 500 });
   }
 });

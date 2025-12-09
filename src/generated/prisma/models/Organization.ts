@@ -15,8 +15,7 @@ import type * as Prisma from '../internal/prismaNamespace';
  * Model Organization
  *
  */
-export type OrganizationModel =
-  runtime.Types.Result.DefaultSelection<Prisma.$OrganizationPayload>;
+export type OrganizationModel = runtime.Types.Result.DefaultSelection<Prisma.$OrganizationPayload>;
 
 export type AggregateOrganization = {
   _count: OrganizationCountAggregateOutputType | null;
@@ -107,8 +106,7 @@ export type OrganizationCountAggregateInputType = {
 };
 
 export type OrganizationAggregateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which Organization to aggregate.
@@ -160,18 +158,16 @@ export type OrganizationAggregateArgs<
   _max?: OrganizationMaxAggregateInputType;
 };
 
-export type GetOrganizationAggregateType<T extends OrganizationAggregateArgs> =
-  {
-    [P in keyof T & keyof AggregateOrganization]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : Prisma.GetScalarType<T[P], AggregateOrganization[P]>
-      : Prisma.GetScalarType<T[P], AggregateOrganization[P]>;
-  };
+export type GetOrganizationAggregateType<T extends OrganizationAggregateArgs> = {
+  [P in keyof T & keyof AggregateOrganization]: P extends '_count' | 'count'
+    ? T[P] extends true
+      ? number
+      : Prisma.GetScalarType<T[P], AggregateOrganization[P]>
+    : Prisma.GetScalarType<T[P], AggregateOrganization[P]>;
+};
 
 export type OrganizationGroupByArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.OrganizationWhereInput;
   orderBy?:
@@ -203,18 +199,17 @@ export type OrganizationGroupByOutputType = {
   _max: OrganizationMaxAggregateOutputType | null;
 };
 
-type GetOrganizationGroupByPayload<T extends OrganizationGroupByArgs> =
-  Prisma.PrismaPromise<
-    Array<
-      Prisma.PickEnumerable<OrganizationGroupByOutputType, T['by']> & {
-        [P in keyof T & keyof OrganizationGroupByOutputType]: P extends '_count'
-          ? T[P] extends boolean
-            ? number
-            : Prisma.GetScalarType<T[P], OrganizationGroupByOutputType[P]>
-          : Prisma.GetScalarType<T[P], OrganizationGroupByOutputType[P]>;
-      }
-    >
-  >;
+type GetOrganizationGroupByPayload<T extends OrganizationGroupByArgs> = Prisma.PrismaPromise<
+  Array<
+    Prisma.PickEnumerable<OrganizationGroupByOutputType, T['by']> & {
+      [P in keyof T & keyof OrganizationGroupByOutputType]: P extends '_count'
+        ? T[P] extends boolean
+          ? number
+          : Prisma.GetScalarType<T[P], OrganizationGroupByOutputType[P]>
+        : Prisma.GetScalarType<T[P], OrganizationGroupByOutputType[P]>;
+    }
+  >
+>;
 
 export type OrganizationWhereInput = {
   AND?: Prisma.OrganizationWhereInput | Prisma.OrganizationWhereInput[];
@@ -269,10 +264,7 @@ export type OrganizationWhereUniqueInput = Prisma.AtLeast<
     description?: Prisma.StringNullableFilter<'Organization'> | string | null;
     logo?: Prisma.StringNullableFilter<'Organization'> | string | null;
     plan?: Prisma.StringFilter<'Organization'> | string;
-    subscriptionId?:
-      | Prisma.StringNullableFilter<'Organization'>
-      | string
-      | null;
+    subscriptionId?: Prisma.StringNullableFilter<'Organization'> | string | null;
     settings?: Prisma.JsonNullableFilter<'Organization'>;
     createdAt?: Prisma.DateTimeFilter<'Organization'> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<'Organization'> | Date | string;
@@ -313,32 +305,14 @@ export type OrganizationScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<'Organization'> | string;
   name?: Prisma.StringWithAggregatesFilter<'Organization'> | string;
   slug?: Prisma.StringWithAggregatesFilter<'Organization'> | string;
-  description?:
-    | Prisma.StringNullableWithAggregatesFilter<'Organization'>
-    | string
-    | null;
-  logo?:
-    | Prisma.StringNullableWithAggregatesFilter<'Organization'>
-    | string
-    | null;
+  description?: Prisma.StringNullableWithAggregatesFilter<'Organization'> | string | null;
+  logo?: Prisma.StringNullableWithAggregatesFilter<'Organization'> | string | null;
   plan?: Prisma.StringWithAggregatesFilter<'Organization'> | string;
-  customerId?:
-    | Prisma.StringNullableWithAggregatesFilter<'Organization'>
-    | string
-    | null;
-  subscriptionId?:
-    | Prisma.StringNullableWithAggregatesFilter<'Organization'>
-    | string
-    | null;
+  customerId?: Prisma.StringNullableWithAggregatesFilter<'Organization'> | string | null;
+  subscriptionId?: Prisma.StringNullableWithAggregatesFilter<'Organization'> | string | null;
   settings?: Prisma.JsonNullableWithAggregatesFilter<'Organization'>;
-  createdAt?:
-    | Prisma.DateTimeWithAggregatesFilter<'Organization'>
-    | Date
-    | string;
-  updatedAt?:
-    | Prisma.DateTimeWithAggregatesFilter<'Organization'>
-    | Date
-    | string;
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<'Organization'> | Date | string;
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<'Organization'> | Date | string;
 };
 
 export type OrganizationCreateInput = {
@@ -387,10 +361,7 @@ export type OrganizationUpdateInput = {
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   plan?: Prisma.StringFieldUpdateOperationsInput | string;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  subscriptionId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  subscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -409,10 +380,7 @@ export type OrganizationUncheckedUpdateInput = {
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   plan?: Prisma.StringFieldUpdateOperationsInput | string;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  subscriptionId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  subscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -445,10 +413,7 @@ export type OrganizationUpdateManyMutationInput = {
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   plan?: Prisma.StringFieldUpdateOperationsInput | string;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  subscriptionId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  subscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -462,10 +427,7 @@ export type OrganizationUncheckedUpdateManyInput = {
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   plan?: Prisma.StringFieldUpdateOperationsInput | string;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  subscriptionId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  subscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -725,10 +687,7 @@ export type OrganizationUpdateWithoutMembersInput = {
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   plan?: Prisma.StringFieldUpdateOperationsInput | string;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  subscriptionId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  subscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -746,10 +705,7 @@ export type OrganizationUncheckedUpdateWithoutMembersInput = {
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   plan?: Prisma.StringFieldUpdateOperationsInput | string;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  subscriptionId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  subscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -831,10 +787,7 @@ export type OrganizationUpdateWithoutInvitesInput = {
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   plan?: Prisma.StringFieldUpdateOperationsInput | string;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  subscriptionId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  subscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -852,10 +805,7 @@ export type OrganizationUncheckedUpdateWithoutInvitesInput = {
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   plan?: Prisma.StringFieldUpdateOperationsInput | string;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  subscriptionId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  subscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -937,10 +887,7 @@ export type OrganizationUpdateWithoutUploadsInput = {
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   plan?: Prisma.StringFieldUpdateOperationsInput | string;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  subscriptionId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  subscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -958,10 +905,7 @@ export type OrganizationUncheckedUpdateWithoutUploadsInput = {
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   plan?: Prisma.StringFieldUpdateOperationsInput | string;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  subscriptionId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  subscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -1043,10 +987,7 @@ export type OrganizationUpdateWithoutApiKeysInput = {
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   plan?: Prisma.StringFieldUpdateOperationsInput | string;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  subscriptionId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  subscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -1064,10 +1005,7 @@ export type OrganizationUncheckedUpdateWithoutApiKeysInput = {
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   plan?: Prisma.StringFieldUpdateOperationsInput | string;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  subscriptionId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  subscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -1149,10 +1087,7 @@ export type OrganizationUpdateWithoutWebhooksInput = {
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   plan?: Prisma.StringFieldUpdateOperationsInput | string;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  subscriptionId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  subscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -1170,10 +1105,7 @@ export type OrganizationUncheckedUpdateWithoutWebhooksInput = {
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   plan?: Prisma.StringFieldUpdateOperationsInput | string;
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  subscriptionId?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  subscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   settings?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -1196,8 +1128,7 @@ export type OrganizationCountOutputType = {
 };
 
 export type OrganizationCountOutputTypeSelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   members?: boolean | OrganizationCountOutputTypeCountMembersArgs;
   invites?: boolean | OrganizationCountOutputTypeCountInvitesArgs;
@@ -1210,8 +1141,7 @@ export type OrganizationCountOutputTypeSelect<
  * OrganizationCountOutputType without action
  */
 export type OrganizationCountOutputTypeDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the OrganizationCountOutputType
@@ -1223,8 +1153,7 @@ export type OrganizationCountOutputTypeDefaultArgs<
  * OrganizationCountOutputType without action
  */
 export type OrganizationCountOutputTypeCountMembersArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.OrganizationMemberWhereInput;
 };
@@ -1233,8 +1162,7 @@ export type OrganizationCountOutputTypeCountMembersArgs<
  * OrganizationCountOutputType without action
  */
 export type OrganizationCountOutputTypeCountInvitesArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.OrganizationInviteWhereInput;
 };
@@ -1243,8 +1171,7 @@ export type OrganizationCountOutputTypeCountInvitesArgs<
  * OrganizationCountOutputType without action
  */
 export type OrganizationCountOutputTypeCountUploadsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.UploadWhereInput;
 };
@@ -1253,8 +1180,7 @@ export type OrganizationCountOutputTypeCountUploadsArgs<
  * OrganizationCountOutputType without action
  */
 export type OrganizationCountOutputTypeCountApiKeysArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.ApiKeyWhereInput;
 };
@@ -1263,15 +1189,13 @@ export type OrganizationCountOutputTypeCountApiKeysArgs<
  * OrganizationCountOutputType without action
  */
 export type OrganizationCountOutputTypeCountWebhooksArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.WebhookWhereInput;
 };
 
 export type OrganizationSelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -1296,8 +1220,7 @@ export type OrganizationSelect<
 >;
 
 export type OrganizationSelectCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -1316,8 +1239,7 @@ export type OrganizationSelectCreateManyAndReturn<
 >;
 
 export type OrganizationSelectUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -1350,8 +1272,7 @@ export type OrganizationSelectScalar = {
 };
 
 export type OrganizationOmit<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
   | 'id'
   | 'name'
@@ -1367,8 +1288,7 @@ export type OrganizationOmit<
   ExtArgs['result']['organization']
 >;
 export type OrganizationInclude<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   members?: boolean | Prisma.Organization$membersArgs<ExtArgs>;
   invites?: boolean | Prisma.Organization$invitesArgs<ExtArgs>;
@@ -1378,17 +1298,14 @@ export type OrganizationInclude<
   _count?: boolean | Prisma.OrganizationCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type OrganizationIncludeCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {};
 export type OrganizationIncludeUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {};
 
 export type $OrganizationPayload<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   name: 'Organization';
   objects: {
@@ -1417,23 +1334,17 @@ export type $OrganizationPayload<
   composites: {};
 };
 
-export type OrganizationGetPayload<
-  S extends boolean | null | undefined | OrganizationDefaultArgs,
-> = runtime.Types.Result.GetResult<Prisma.$OrganizationPayload, S>;
+export type OrganizationGetPayload<S extends boolean | null | undefined | OrganizationDefaultArgs> =
+  runtime.Types.Result.GetResult<Prisma.$OrganizationPayload, S>;
 
 export type OrganizationCountArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = Omit<
-  OrganizationFindManyArgs,
-  'select' | 'include' | 'distinct' | 'omit'
-> & {
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+> = Omit<OrganizationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
   select?: OrganizationCountAggregateInputType | true;
 };
 
 export interface OrganizationDelegate<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > {
   [K: symbol]: {
@@ -1829,10 +1740,7 @@ export interface OrganizationDelegate<
     T extends runtime.Types.Utils.Record<'select', any>
       ? T['select'] extends true
         ? number
-        : Prisma.GetScalarType<
-            T['select'],
-            OrganizationCountAggregateOutputType
-          >
+        : Prisma.GetScalarType<T['select'], OrganizationCountAggregateOutputType>
       : number
   >;
 
@@ -1907,12 +1815,7 @@ export interface OrganizationDelegate<
               ? never
               : P extends string
                 ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                : [
-                    Error,
-                    'Field ',
-                    P,
-                    ` in "having" needs to be provided in "by"`,
-                  ];
+                : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
           }[HavingFields]
         : 'take' extends Prisma.Keys<T>
           ? 'orderBy' extends Prisma.Keys<T>
@@ -1942,11 +1845,8 @@ export interface OrganizationDelegate<
                     : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                 }[OrderFields],
   >(
-    args: Prisma.SubsetIntersection<T, OrganizationGroupByArgs, OrderByArg> &
-      InputErrors
-  ): {} extends InputErrors
-    ? GetOrganizationGroupByPayload<T>
-    : Prisma.PrismaPromise<InputErrors>;
+    args: Prisma.SubsetIntersection<T, OrganizationGroupByArgs, OrderByArg> & InputErrors
+  ): {} extends InputErrors ? GetOrganizationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
   /**
    * Fields of the Organization model
    */
@@ -1962,8 +1862,7 @@ export interface OrganizationDelegate<
 export interface Prisma__OrganizationClient<
   T,
   Null = never,
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: 'PrismaPromise';
@@ -2029,14 +1928,8 @@ export interface Prisma__OrganizationClient<
    * @returns A Promise for the completion of which ever callback is executed.
    */
   then<TResult1 = T, TResult2 = never>(
-    onfulfilled?:
-      | ((value: T) => TResult1 | PromiseLike<TResult1>)
-      | undefined
-      | null,
-    onrejected?:
-      | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-      | undefined
-      | null
+    onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
   ): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
   /**
    * Attaches a callback for only the rejection of the Promise.
@@ -2044,10 +1937,7 @@ export interface Prisma__OrganizationClient<
    * @returns A Promise for the completion of the callback.
    */
   catch<TResult = never>(
-    onrejected?:
-      | ((reason: any) => TResult | PromiseLike<TResult>)
-      | undefined
-      | null
+    onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
   ): runtime.Types.Utils.JsPromise<T | TResult>;
   /**
    * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
@@ -2055,9 +1945,7 @@ export interface Prisma__OrganizationClient<
    * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
    * @returns A Promise for the completion of the callback.
    */
-  finally(
-    onfinally?: (() => void) | undefined | null
-  ): runtime.Types.Utils.JsPromise<T>;
+  finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
 }
 
 /**
@@ -2082,8 +1970,7 @@ export interface OrganizationFieldRefs {
  * Organization findUnique
  */
 export type OrganizationFindUniqueArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Organization
@@ -2107,8 +1994,7 @@ export type OrganizationFindUniqueArgs<
  * Organization findUniqueOrThrow
  */
 export type OrganizationFindUniqueOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Organization
@@ -2132,8 +2018,7 @@ export type OrganizationFindUniqueOrThrowArgs<
  * Organization findFirst
  */
 export type OrganizationFindFirstArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Organization
@@ -2182,17 +2067,14 @@ export type OrganizationFindFirstArgs<
    *
    * Filter by unique combinations of Organizations.
    */
-  distinct?:
-    | Prisma.OrganizationScalarFieldEnum
-    | Prisma.OrganizationScalarFieldEnum[];
+  distinct?: Prisma.OrganizationScalarFieldEnum | Prisma.OrganizationScalarFieldEnum[];
 };
 
 /**
  * Organization findFirstOrThrow
  */
 export type OrganizationFindFirstOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Organization
@@ -2241,17 +2123,14 @@ export type OrganizationFindFirstOrThrowArgs<
    *
    * Filter by unique combinations of Organizations.
    */
-  distinct?:
-    | Prisma.OrganizationScalarFieldEnum
-    | Prisma.OrganizationScalarFieldEnum[];
+  distinct?: Prisma.OrganizationScalarFieldEnum | Prisma.OrganizationScalarFieldEnum[];
 };
 
 /**
  * Organization findMany
  */
 export type OrganizationFindManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Organization
@@ -2295,17 +2174,14 @@ export type OrganizationFindManyArgs<
    * Skip the first `n` Organizations.
    */
   skip?: number;
-  distinct?:
-    | Prisma.OrganizationScalarFieldEnum
-    | Prisma.OrganizationScalarFieldEnum[];
+  distinct?: Prisma.OrganizationScalarFieldEnum | Prisma.OrganizationScalarFieldEnum[];
 };
 
 /**
  * Organization create
  */
 export type OrganizationCreateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Organization
@@ -2322,25 +2198,19 @@ export type OrganizationCreateArgs<
   /**
    * The data needed to create a Organization.
    */
-  data: Prisma.XOR<
-    Prisma.OrganizationCreateInput,
-    Prisma.OrganizationUncheckedCreateInput
-  >;
+  data: Prisma.XOR<Prisma.OrganizationCreateInput, Prisma.OrganizationUncheckedCreateInput>;
 };
 
 /**
  * Organization createMany
  */
 export type OrganizationCreateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to create many Organizations.
    */
-  data:
-    | Prisma.OrganizationCreateManyInput
-    | Prisma.OrganizationCreateManyInput[];
+  data: Prisma.OrganizationCreateManyInput | Prisma.OrganizationCreateManyInput[];
   skipDuplicates?: boolean;
 };
 
@@ -2348,8 +2218,7 @@ export type OrganizationCreateManyArgs<
  * Organization createManyAndReturn
  */
 export type OrganizationCreateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Organization
@@ -2362,9 +2231,7 @@ export type OrganizationCreateManyAndReturnArgs<
   /**
    * The data used to create many Organizations.
    */
-  data:
-    | Prisma.OrganizationCreateManyInput
-    | Prisma.OrganizationCreateManyInput[];
+  data: Prisma.OrganizationCreateManyInput | Prisma.OrganizationCreateManyInput[];
   skipDuplicates?: boolean;
 };
 
@@ -2372,8 +2239,7 @@ export type OrganizationCreateManyAndReturnArgs<
  * Organization update
  */
 export type OrganizationUpdateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Organization
@@ -2390,10 +2256,7 @@ export type OrganizationUpdateArgs<
   /**
    * The data needed to update a Organization.
    */
-  data: Prisma.XOR<
-    Prisma.OrganizationUpdateInput,
-    Prisma.OrganizationUncheckedUpdateInput
-  >;
+  data: Prisma.XOR<Prisma.OrganizationUpdateInput, Prisma.OrganizationUncheckedUpdateInput>;
   /**
    * Choose, which Organization to update.
    */
@@ -2404,8 +2267,7 @@ export type OrganizationUpdateArgs<
  * Organization updateMany
  */
 export type OrganizationUpdateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to update Organizations.
@@ -2428,8 +2290,7 @@ export type OrganizationUpdateManyArgs<
  * Organization updateManyAndReturn
  */
 export type OrganizationUpdateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Organization
@@ -2460,8 +2321,7 @@ export type OrganizationUpdateManyAndReturnArgs<
  * Organization upsert
  */
 export type OrganizationUpsertArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Organization
@@ -2482,25 +2342,18 @@ export type OrganizationUpsertArgs<
   /**
    * In case the Organization found by the `where` argument doesn't exist, create a new Organization with this data.
    */
-  create: Prisma.XOR<
-    Prisma.OrganizationCreateInput,
-    Prisma.OrganizationUncheckedCreateInput
-  >;
+  create: Prisma.XOR<Prisma.OrganizationCreateInput, Prisma.OrganizationUncheckedCreateInput>;
   /**
    * In case the Organization was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<
-    Prisma.OrganizationUpdateInput,
-    Prisma.OrganizationUncheckedUpdateInput
-  >;
+  update: Prisma.XOR<Prisma.OrganizationUpdateInput, Prisma.OrganizationUncheckedUpdateInput>;
 };
 
 /**
  * Organization delete
  */
 export type OrganizationDeleteArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Organization
@@ -2524,8 +2377,7 @@ export type OrganizationDeleteArgs<
  * Organization deleteMany
  */
 export type OrganizationDeleteManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which Organizations to delete
@@ -2541,8 +2393,7 @@ export type OrganizationDeleteManyArgs<
  * Organization.members
  */
 export type Organization$membersArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the OrganizationMember
@@ -2563,17 +2414,14 @@ export type Organization$membersArgs<
   cursor?: Prisma.OrganizationMemberWhereUniqueInput;
   take?: number;
   skip?: number;
-  distinct?:
-    | Prisma.OrganizationMemberScalarFieldEnum
-    | Prisma.OrganizationMemberScalarFieldEnum[];
+  distinct?: Prisma.OrganizationMemberScalarFieldEnum | Prisma.OrganizationMemberScalarFieldEnum[];
 };
 
 /**
  * Organization.invites
  */
 export type Organization$invitesArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the OrganizationInvite
@@ -2594,17 +2442,14 @@ export type Organization$invitesArgs<
   cursor?: Prisma.OrganizationInviteWhereUniqueInput;
   take?: number;
   skip?: number;
-  distinct?:
-    | Prisma.OrganizationInviteScalarFieldEnum
-    | Prisma.OrganizationInviteScalarFieldEnum[];
+  distinct?: Prisma.OrganizationInviteScalarFieldEnum | Prisma.OrganizationInviteScalarFieldEnum[];
 };
 
 /**
  * Organization.uploads
  */
 export type Organization$uploadsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Upload
@@ -2619,9 +2464,7 @@ export type Organization$uploadsArgs<
    */
   include?: Prisma.UploadInclude<ExtArgs> | null;
   where?: Prisma.UploadWhereInput;
-  orderBy?:
-    | Prisma.UploadOrderByWithRelationInput
-    | Prisma.UploadOrderByWithRelationInput[];
+  orderBy?: Prisma.UploadOrderByWithRelationInput | Prisma.UploadOrderByWithRelationInput[];
   cursor?: Prisma.UploadWhereUniqueInput;
   take?: number;
   skip?: number;
@@ -2632,8 +2475,7 @@ export type Organization$uploadsArgs<
  * Organization.apiKeys
  */
 export type Organization$apiKeysArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the ApiKey
@@ -2648,9 +2490,7 @@ export type Organization$apiKeysArgs<
    */
   include?: Prisma.ApiKeyInclude<ExtArgs> | null;
   where?: Prisma.ApiKeyWhereInput;
-  orderBy?:
-    | Prisma.ApiKeyOrderByWithRelationInput
-    | Prisma.ApiKeyOrderByWithRelationInput[];
+  orderBy?: Prisma.ApiKeyOrderByWithRelationInput | Prisma.ApiKeyOrderByWithRelationInput[];
   cursor?: Prisma.ApiKeyWhereUniqueInput;
   take?: number;
   skip?: number;
@@ -2661,8 +2501,7 @@ export type Organization$apiKeysArgs<
  * Organization.webhooks
  */
 export type Organization$webhooksArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Webhook
@@ -2677,9 +2516,7 @@ export type Organization$webhooksArgs<
    */
   include?: Prisma.WebhookInclude<ExtArgs> | null;
   where?: Prisma.WebhookWhereInput;
-  orderBy?:
-    | Prisma.WebhookOrderByWithRelationInput
-    | Prisma.WebhookOrderByWithRelationInput[];
+  orderBy?: Prisma.WebhookOrderByWithRelationInput | Prisma.WebhookOrderByWithRelationInput[];
   cursor?: Prisma.WebhookWhereUniqueInput;
   take?: number;
   skip?: number;
@@ -2690,8 +2527,7 @@ export type Organization$webhooksArgs<
  * Organization without action
  */
 export type OrganizationDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Organization

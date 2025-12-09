@@ -28,10 +28,7 @@ export function AccountTab() {
           <div className="space-y-4">
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-2">
-                <Label
-                  htmlFor="fullname"
-                  className={cn(mode.radius, mode.font, 'text-xs')}
-                >
+                <Label htmlFor="fullname" className={cn(mode.radius, mode.font, 'text-xs')}>
                   [FULL_NAME]:
                 </Label>
                 <Input
@@ -42,10 +39,7 @@ export function AccountTab() {
                 />
               </div>
               <div className="space-y-2">
-                <Label
-                  htmlFor="email"
-                  className={cn(mode.radius, mode.font, 'text-xs')}
-                >
+                <Label htmlFor="email" className={cn(mode.radius, mode.font, 'text-xs')}>
                   [EMAIL]:
                 </Label>
                 <Input
@@ -56,10 +50,7 @@ export function AccountTab() {
                 />
               </div>
               <div className="space-y-2">
-                <Label
-                  htmlFor="company"
-                  className={cn(mode.radius, mode.font, 'text-xs')}
-                >
+                <Label htmlFor="company" className={cn(mode.radius, mode.font, 'text-xs')}>
                   [COMPANY]:
                 </Label>
                 <Input
@@ -70,10 +61,7 @@ export function AccountTab() {
                 />
               </div>
               <div className="space-y-2">
-                <Label
-                  htmlFor="jobtitle"
-                  className={cn(mode.radius, mode.font, 'text-xs')}
-                >
+                <Label htmlFor="jobtitle" className={cn(mode.radius, mode.font, 'text-xs')}>
                   [JOB_TITLE]:
                 </Label>
                 <Input
@@ -85,10 +73,7 @@ export function AccountTab() {
               </div>
             </div>
             <div className="space-y-2">
-              <Label
-                htmlFor="bio"
-                className={cn(mode.radius, mode.font, 'text-xs')}
-              >
+              <Label htmlFor="bio" className={cn(mode.radius, mode.font, 'text-xs')}>
                 [BIO]:
               </Label>
               <Textarea
@@ -99,15 +84,10 @@ export function AccountTab() {
               />
             </div>
             <div className="flex justify-end gap-4">
-              <Button
-                variant="outline"
-                className={cn(mode.radius, mode.font, 'text-xs')}
-              >
+              <Button variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
                 &gt; CANCEL
               </Button>
-              <Button className={cn(mode.radius, mode.font, 'text-xs')}>
-                &gt; SAVE_CHANGES
-              </Button>
+              <Button className={cn(mode.radius, mode.font, 'text-xs')}>&gt; SAVE_CHANGES</Button>
             </div>
           </div>
         </div>
@@ -130,14 +110,9 @@ export function AccountTab() {
             >
               <div>
                 <div>[PASSWORD]:</div>
-                <div className="text-muted-foreground">
-                  Last changed 3 months ago
-                </div>
+                <div className="text-muted-foreground">Last changed 3 months ago</div>
               </div>
-              <Button
-                variant="outline"
-                className={cn(mode.radius, mode.font, 'w-24 text-xs')}
-              >
+              <Button variant="outline" className={cn(mode.radius, mode.font, 'w-24 text-xs')}>
                 &gt; CHANGE
               </Button>
             </div>
@@ -149,14 +124,9 @@ export function AccountTab() {
             >
               <div>
                 <div>[TWO_FACTOR_AUTH]:</div>
-                <div className="text-muted-foreground">
-                  Add an extra layer of security
-                </div>
+                <div className="text-muted-foreground">Add an extra layer of security</div>
               </div>
-              <Button
-                variant="outline"
-                className={cn(mode.radius, mode.font, 'w-24 text-xs')}
-              >
+              <Button variant="outline" className={cn(mode.radius, mode.font, 'w-24 text-xs')}>
                 &gt; ENABLE
               </Button>
             </div>
@@ -168,14 +138,9 @@ export function AccountTab() {
             >
               <div>
                 <div>[ACTIVE_SESSIONS]:</div>
-                <div className="text-muted-foreground">
-                  Manage devices and sessions
-                </div>
+                <div className="text-muted-foreground">Manage devices and sessions</div>
               </div>
-              <Button
-                variant="outline"
-                className={cn(mode.radius, mode.font, 'w-24 text-xs')}
-              >
+              <Button variant="outline" className={cn(mode.radius, mode.font, 'w-24 text-xs')}>
                 &gt; VIEW
               </Button>
             </div>

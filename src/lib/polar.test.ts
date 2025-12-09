@@ -10,20 +10,13 @@ import crypto from 'crypto';
  * Webhook signature verification (extracted for testing)
  * This matches the implementation in polar.ts
  */
-function verifyWebhookSignature(
-  payload: string,
-  signature: string,
-  secret: string
-): boolean {
+function verifyWebhookSignature(payload: string, signature: string, secret: string): boolean {
   const hmac = crypto.createHmac('sha256', secret);
   hmac.update(payload);
   const expectedSignature = hmac.digest('hex');
 
   // Timing-safe comparison
-  return crypto.timingSafeEqual(
-    Buffer.from(signature),
-    Buffer.from(expectedSignature)
-  );
+  return crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(expectedSignature));
 }
 
 describe('Polar Webhook Verification', () => {
@@ -36,9 +29,7 @@ describe('Polar Webhook Verification', () => {
       hmac.update(payload);
       const validSignature = hmac.digest('hex');
 
-      expect(verifyWebhookSignature(payload, validSignature, secret)).toBe(
-        true
-      );
+      expect(verifyWebhookSignature(payload, validSignature, secret)).toBe(true);
     });
 
     it('should throw for invalid signature length', () => {
@@ -46,9 +37,7 @@ describe('Polar Webhook Verification', () => {
       const invalidSignature = 'invalid-signature-that-wont-match';
 
       // timingSafeEqual throws when buffer lengths don't match
-      expect(() =>
-        verifyWebhookSignature(payload, invalidSignature, secret)
-      ).toThrow();
+      expect(() => verifyWebhookSignature(payload, invalidSignature, secret)).toThrow();
     });
 
     it('should return false for tampered payload', () => {
@@ -61,9 +50,7 @@ describe('Polar Webhook Verification', () => {
       const signature = hmac.digest('hex');
 
       // Verify with tampered payload should fail
-      expect(verifyWebhookSignature(tamperedPayload, signature, secret)).toBe(
-        false
-      );
+      expect(verifyWebhookSignature(tamperedPayload, signature, secret)).toBe(false);
     });
 
     it('should return false for wrong secret', () => {
@@ -75,9 +62,7 @@ describe('Polar Webhook Verification', () => {
       const signature = hmac.digest('hex');
 
       // Verify with wrong secret should fail
-      expect(verifyWebhookSignature(payload, signature, 'wrong-secret')).toBe(
-        false
-      );
+      expect(verifyWebhookSignature(payload, signature, 'wrong-secret')).toBe(false);
     });
 
     it('should handle empty payload', () => {
@@ -136,8 +121,6 @@ describe('Polar Configuration', () => {
   it('should have valid UUID format for discount ID', () => {
     // The discount ID should be a valid UUID
     const discountId = '1161689c-dbc2-4e53-8c18-43f4af7aaa3f';
-    expect(discountId).toMatch(
-      /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
-    );
+    expect(discountId).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i);
   });
 });

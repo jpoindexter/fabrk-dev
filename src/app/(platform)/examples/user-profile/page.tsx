@@ -82,9 +82,7 @@ export default async function UserProfilePage() {
     <div className="space-y-8 p-8">
       {/* Page Header */}
       <div className="flex items-center justify-between">
-        <h1 className="text-foreground text-4xl font-semibold tracking-tight">
-          User Profile
-        </h1>
+        <h1 className="text-foreground text-4xl font-semibold tracking-tight">User Profile</h1>
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm">
             <Share2 className="mr-2 h-4 w-4" />
@@ -108,10 +106,7 @@ export default async function UserProfilePage() {
                 {/* Avatar */}
                 <div className="relative">
                   <div
-                    className={cn(
-                      'border-border h-32 w-32 overflow-hidden border',
-                      mode.radius
-                    )}
+                    className={cn('border-border h-32 w-32 overflow-hidden border', mode.radius)}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
@@ -126,9 +121,7 @@ export default async function UserProfilePage() {
                       mode.radius
                     )}
                   >
-                    <div
-                      className={cn('bg-success h-3 w-3', mode.radius)}
-                    ></div>
+                    <div className={cn('bg-success h-3 w-3', mode.radius)}></div>
                   </div>
                 </div>
 
@@ -182,9 +175,7 @@ export default async function UserProfilePage() {
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
                   <Mail className="text-muted-foreground h-4 w-4" />
-                  <span className="text-muted-foreground text-sm">
-                    {mockUserProfile.email}
-                  </span>
+                  <span className="text-muted-foreground text-sm">{mockUserProfile.email}</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <Calendar className="text-muted-foreground h-4 w-4" />
@@ -194,9 +185,7 @@ export default async function UserProfilePage() {
                 </div>
                 <div className="flex items-center gap-4">
                   <MapPin className="text-muted-foreground h-4 w-4" />
-                  <span className="text-muted-foreground text-sm">
-                    {mockUserProfile.location}
-                  </span>
+                  <span className="text-muted-foreground text-sm">{mockUserProfile.location}</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <LinkIcon className="text-muted-foreground h-4 w-4" />
@@ -276,9 +265,7 @@ export default async function UserProfilePage() {
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
-                          <h4 className="text-foreground text-lg font-semibold">
-                            {project.name}
-                          </h4>
+                          <h4 className="text-foreground text-lg font-semibold">{project.name}</h4>
                           <span
                             className={cn(
                               `inline-block`,
@@ -295,9 +282,7 @@ export default async function UserProfilePage() {
                             {project.status}
                           </span>
                         </div>
-                        <p className="text-muted-foreground mt-1 text-sm">
-                          {project.description}
-                        </p>
+                        <p className="text-muted-foreground mt-1 text-sm">{project.description}</p>
                         <div className="mt-4 flex flex-wrap gap-2">
                           {project.tech.map((tech) => (
                             <span
@@ -337,13 +322,9 @@ export default async function UserProfilePage() {
                     <div className="flex-1">
                       <p className="text-foreground text-sm">
                         <span className="font-semibold">{activity.action}</span>{' '}
-                        <span className="text-muted-foreground">
-                          {activity.item}
-                        </span>
+                        <span className="text-muted-foreground">{activity.item}</span>
                       </p>
-                      <p className="text-muted-foreground/80 text-xs">
-                        {activity.time}
-                      </p>
+                      <p className="text-muted-foreground/80 text-xs">{activity.time}</p>
                     </div>
                   </div>
                 ))}
@@ -354,19 +335,13 @@ export default async function UserProfilePage() {
       </div>
 
       {/* Implementation Note */}
-      <div
-        className={cn('border-primary bg-primary/5 border-2 p-4', mode.radius)}
-      >
+      <div className={cn('border-primary bg-primary/5 border-2 p-4', mode.radius)}>
         <p className="text-muted-foreground text-sm">
-          <span className="text-foreground font-semibold">
-            👤 Implementation Note:
-          </span>{' '}
-          This is a demo user profile page with mock data. Replace{' '}
-          <code className="bg-muted rounded px-1 py-0.5 text-xs">
-            mockUserProfile
-          </code>{' '}
-          with real user data from your database. Add edit functionality with
-          forms and image upload for avatars.
+          <span className="text-foreground font-semibold">👤 Implementation Note:</span> This is a
+          demo user profile page with mock data. Replace{' '}
+          <code className="bg-muted rounded px-1 py-0.5 text-xs">mockUserProfile</code> with real
+          user data from your database. Add edit functionality with forms and image upload for
+          avatars.
         </p>
       </div>
     </div>

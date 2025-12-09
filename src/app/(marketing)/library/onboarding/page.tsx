@@ -7,19 +7,8 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  User,
-  Building2,
-  Settings,
-  CheckCircle2,
-  Sparkles,
-} from 'lucide-react';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  TemplatePageHeader,
-} from '@/components/ui/card';
+import { User, Building2, Settings, CheckCircle2, Sparkles } from 'lucide-react';
+import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { ProgressSection } from './components/progress-section';
@@ -177,11 +166,7 @@ function OnboardingPreview() {
       <Card className="w-full max-w-2xl">
         <CardHeader code="0x00" title="ONBOARDING" />
 
-        <ProgressSection
-          currentStep={currentStep}
-          steps={steps}
-          progress={progress}
-        />
+        <ProgressSection currentStep={currentStep} steps={steps} progress={progress} />
 
         <div className="min-h-[400px] p-6">
           {currentStep === 1 && <StepWelcome />}
@@ -190,12 +175,8 @@ function OnboardingPreview() {
             <StepProfile
               fullName={formData.fullName}
               role={formData.role}
-              onFullNameChange={(value) =>
-                setFormData({ ...formData, fullName: value })
-              }
-              onRoleChange={(value) =>
-                setFormData({ ...formData, role: value })
-              }
+              onFullNameChange={(value) => setFormData({ ...formData, fullName: value })}
+              onRoleChange={(value) => setFormData({ ...formData, role: value })}
             />
           )}
 
@@ -204,12 +185,8 @@ function OnboardingPreview() {
               workspaceName={formData.workspaceName}
               teamSize={formData.teamSize}
               selectedUseCases={formData.useCases}
-              onWorkspaceNameChange={(value) =>
-                setFormData({ ...formData, workspaceName: value })
-              }
-              onTeamSizeChange={(value) =>
-                setFormData({ ...formData, teamSize: value })
-              }
+              onWorkspaceNameChange={(value) => setFormData({ ...formData, workspaceName: value })}
+              onTeamSizeChange={(value) => setFormData({ ...formData, teamSize: value })}
               onToggleUseCase={toggleUseCase}
             />
           )}
@@ -221,9 +198,7 @@ function OnboardingPreview() {
               onEmailUpdatesChange={(checked) =>
                 setFormData({ ...formData, emailUpdates: checked })
               }
-              onProductTipsChange={(checked) =>
-                setFormData({ ...formData, productTips: checked })
-              }
+              onProductTipsChange={(checked) => setFormData({ ...formData, productTips: checked })}
             />
           )}
 
@@ -231,11 +206,7 @@ function OnboardingPreview() {
         </div>
 
         {currentStep < 5 && (
-          <NavigationControls
-            currentStep={currentStep}
-            onBack={handleBack}
-            onNext={handleNext}
-          />
+          <NavigationControls currentStep={currentStep} onBack={handleBack} onNext={handleNext} />
         )}
       </Card>
     </div>
@@ -302,11 +273,7 @@ export default function OnboardingTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock
-                  code={templateCode}
-                  language="tsx"
-                  maxHeight="600px"
-                />
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
             </Card>
           </TabsContent>
@@ -323,9 +290,7 @@ export default function OnboardingTemplate() {
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">onboarding/</span>
                   <span className="text-foreground">page.tsx</span>
-                  <span className="text-muted-foreground ml-4">
-                    ← Copy template here
-                  </span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
                 </div>
               </div>
             </div>
@@ -338,30 +303,25 @@ export default function OnboardingTemplate() {
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> 5-step onboarding
-                flow
+                <span className="text-success">&gt;</span> 5-step onboarding flow
               </div>
               <div>
-                <span className="text-success">&gt;</span> Progress tracking
-                with visual indicators
+                <span className="text-success">&gt;</span> Progress tracking with visual indicators
               </div>
               <div>
                 <span className="text-success">&gt;</span> Form state management
               </div>
               <div>
-                <span className="text-success">&gt;</span> Navigation controls
-                (back/next)
+                <span className="text-success">&gt;</span> Navigation controls (back/next)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Multi-select use case
-                options
+                <span className="text-success">&gt;</span> Multi-select use case options
               </div>
               <div>
                 <span className="text-success">&gt;</span> Completion summary
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant
-                (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

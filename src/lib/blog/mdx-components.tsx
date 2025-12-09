@@ -36,14 +36,8 @@ function Callout({
       <div className="flex items-start gap-4">
         <span className="font-mono text-sm font-semibold">{icons[type]}</span>
         <div className="flex-1">
-          {title && (
-            <p className="mb-2 font-mono text-sm font-semibold uppercase">
-              {title}
-            </p>
-          )}
-          <div className="text-muted-foreground font-mono text-sm">
-            {children}
-          </div>
+          {title && <p className="mb-2 font-mono text-sm font-semibold uppercase">{title}</p>}
+          <div className="text-muted-foreground font-mono text-sm">{children}</div>
         </div>
       </div>
     </div>
@@ -64,9 +58,7 @@ function CodeBlock({
     <div className="border-border my-6 overflow-hidden border">
       {filename && (
         <div className="border-border bg-muted border-b px-4 py-2">
-          <span className="text-muted-foreground font-mono text-xs">
-            {filename}
-          </span>
+          <span className="text-muted-foreground font-mono text-xs">{filename}</span>
         </div>
       )}
       <pre className="bg-muted overflow-x-auto p-4">
@@ -78,11 +70,7 @@ function CodeBlock({
 
 // Step-by-step guide component
 function Steps({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="border-primary/30 my-6 space-y-4 border-l-2 pl-6">
-      {children}
-    </div>
-  );
+  return <div className="border-primary/30 my-6 space-y-4 border-l-2 pl-6">{children}</div>;
 }
 
 function Step({
@@ -99,22 +87,14 @@ function Step({
       <div className="border-primary bg-background text-primary absolute -left-8 flex h-6 w-6 items-center justify-center border font-mono text-xs">
         {number}
       </div>
-      <h4 className="mb-2 font-mono text-sm font-semibold uppercase">
-        {title}
-      </h4>
+      <h4 className="mb-2 font-mono text-sm font-semibold uppercase">{title}</h4>
       <div className="text-muted-foreground font-mono text-sm">{children}</div>
     </div>
   );
 }
 
 // Feature comparison table
-function ComparisonTable({
-  headers,
-  rows,
-}: {
-  headers: string[];
-  rows: string[][];
-}) {
+function ComparisonTable({ headers, rows }: { headers: string[]; rows: string[][] }) {
   return (
     <div className="border-border my-6 overflow-x-auto border">
       <table className="w-full font-mono text-sm">
@@ -179,25 +159,13 @@ function Tweet({ id }: { id: string }) {
 
 // Card grid for showcasing features
 function CardGrid({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="my-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {children}
-    </div>
-  );
+  return <div className="my-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{children}</div>;
 }
 
-function Card({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
+function Card({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="border-border bg-card border p-4">
-      <h4 className="mb-2 font-mono text-sm font-semibold uppercase">
-        {title}
-      </h4>
+      <h4 className="mb-2 font-mono text-sm font-semibold uppercase">{title}</h4>
       <div className="text-muted-foreground font-mono text-xs">{children}</div>
     </div>
   );
@@ -217,9 +185,7 @@ function Terminal({ command, output }: { command: string; output?: string }) {
   return (
     <div className="border-border bg-muted my-6 overflow-hidden border">
       <div className="border-border bg-card border-b px-4 py-2">
-        <span className="text-muted-foreground font-mono text-xs">
-          [ TERMINAL ]
-        </span>
+        <span className="text-muted-foreground font-mono text-xs">[ TERMINAL ]</span>
       </div>
       <div className="p-4 font-mono text-sm">
         <div className="flex items-center gap-2">
@@ -258,13 +224,9 @@ export const mdxComponents: MDXComponents = {
 
   // Paragraphs and text
   p: ({ children }) => (
-    <p className="text-foreground mb-4 font-mono text-sm leading-relaxed">
-      {children}
-    </p>
+    <p className="text-foreground mb-4 font-mono text-sm leading-relaxed">{children}</p>
   ),
-  strong: ({ children }) => (
-    <strong className="text-foreground font-semibold">{children}</strong>
-  ),
+  strong: ({ children }) => <strong className="text-foreground font-semibold">{children}</strong>,
   em: ({ children }) => <em className="italic">{children}</em>,
 
   // Lists
@@ -310,9 +272,7 @@ export const mdxComponents: MDXComponents = {
     <code className="bg-muted px-1.5 py-0.5 font-mono text-sm">{children}</code>
   ),
   pre: ({ children }) => (
-    <pre className="border-border bg-muted my-6 overflow-x-auto border p-4">
-      {children}
-    </pre>
+    <pre className="border-border bg-muted my-6 overflow-x-auto border p-4">{children}</pre>
   ),
 
   // Blockquote
@@ -353,13 +313,9 @@ export const mdxComponents: MDXComponents = {
       <table className="w-full font-mono text-sm">{children}</table>
     </div>
   ),
-  thead: ({ children }) => (
-    <thead className="border-border bg-muted border-b">{children}</thead>
-  ),
+  thead: ({ children }) => <thead className="border-border bg-muted border-b">{children}</thead>,
   tbody: ({ children }) => <tbody>{children}</tbody>,
-  tr: ({ children }) => (
-    <tr className="border-border border-b last:border-0">{children}</tr>
-  ),
+  tr: ({ children }) => <tr className="border-border border-b last:border-0">{children}</tr>,
   th: ({ children }) => (
     <th className="text-muted-foreground px-4 py-2 text-left text-xs font-semibold uppercase">
       {children}

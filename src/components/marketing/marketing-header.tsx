@@ -27,36 +27,23 @@ export function MarketingPageHeader({
   className,
 }: MarketingPageHeaderProps) {
   return (
-    <section
-      className={cn('border-border border-b px-6 py-16 lg:py-20', className)}
-    >
+    <section className={cn('border-border border-b px-6 py-16 lg:py-20', className)}>
       <div className="mx-auto max-w-4xl text-center">
         {/* Terminal Badge */}
         <div className="border-border bg-card mb-4 inline-block border px-4 py-1">
           <span className={cn('text-muted-foreground text-xs', mode.font)}>
-            [ [{code}] {title.toUpperCase().replace(/ /g, '_')} ]
-            {badge ? ` ${badge}` : ''}
+            [ [{code}] {title.toUpperCase().replace(/ /g, '_')} ]{badge ? ` ${badge}` : ''}
           </span>
         </div>
 
         {/* Title */}
-        <h1
-          className={cn(
-            'mb-4 text-4xl font-semibold tracking-tight',
-            mode.font
-          )}
-        >
+        <h1 className={cn('mb-4 text-4xl font-semibold tracking-tight', mode.font)}>
           {title.toUpperCase().replace(/ /g, '_')}
         </h1>
 
         {/* Description */}
         {description && (
-          <p
-            className={cn(
-              'text-muted-foreground mx-auto max-w-2xl text-sm',
-              mode.font
-            )}
-          >
+          <p className={cn('text-muted-foreground mx-auto max-w-2xl text-sm', mode.font)}>
             &gt; {description.toUpperCase().replace(/ /g, '_')}
           </p>
         )}

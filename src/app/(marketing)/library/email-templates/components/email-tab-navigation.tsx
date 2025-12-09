@@ -34,8 +34,7 @@ export function EmailTabNavigation({ templates }: EmailTabNavigationProps) {
                 mode.font
               )}
             >
-              <Icon className="h-3 w-3" />[
-              {template.name.toUpperCase().replace(/ /g, '_')}]
+              <Icon className="h-3 w-3" />[{template.name.toUpperCase().replace(/ /g, '_')}]
             </TabsTrigger>
           );
         })}

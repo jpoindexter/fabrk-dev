@@ -76,12 +76,8 @@ export class ErrorBoundary extends Component<Props, State> {
             We're sorry for the inconvenience. Please try refreshing the page.
           </p>
           {process.env.NODE_ENV === 'development' && this.state.error && (
-            <details
-              className={cn('mb-4 max-w-2xl border p-4 text-left', mode.radius)}
-            >
-              <summary className="cursor-pointer font-semibold">
-                Error Details
-              </summary>
+            <details className={cn('mb-4 max-w-2xl border p-4 text-left', mode.radius)}>
+              <summary className="cursor-pointer font-semibold">Error Details</summary>
               <pre className={cn('mt-2 overflow-auto text-xs', mode.font)}>
                 {this.state.error.message}
                 {'\n\n'}

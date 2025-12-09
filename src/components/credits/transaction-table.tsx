@@ -50,19 +50,10 @@ function formatDate(dateStr: string) {
   });
 }
 
-export function TransactionTable({
-  transactions,
-  className,
-}: TransactionTableProps) {
+export function TransactionTable({ transactions, className }: TransactionTableProps) {
   if (transactions.length === 0) {
     return (
-      <div
-        className={cn(
-          'text-muted-foreground py-8 text-center text-sm',
-          mode.font,
-          className
-        )}
-      >
+      <div className={cn('text-muted-foreground py-8 text-center text-sm', mode.font, className)}>
         No transactions yet
       </div>
     );
@@ -85,9 +76,7 @@ export function TransactionTable({
                 {tx.description || tx.type.replace('_', ' ')}
               </div>
               {tx.endpoint && (
-                <div className="text-muted-foreground text-[10px]">
-                  {tx.endpoint}
-                </div>
+                <div className="text-muted-foreground text-[10px]">{tx.endpoint}</div>
               )}
             </div>
           </div>
@@ -101,9 +90,7 @@ export function TransactionTable({
               {tx.amount > 0 ? '+' : ''}
               {tx.amount}
             </div>
-            <div className="text-muted-foreground text-[10px]">
-              {formatDate(tx.createdAt)}
-            </div>
+            <div className="text-muted-foreground text-[10px]">{formatDate(tx.createdAt)}</div>
           </div>
         </div>
       ))}

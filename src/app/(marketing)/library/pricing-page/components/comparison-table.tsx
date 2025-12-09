@@ -50,9 +50,7 @@ export function ComparisonTable({ features }: ComparisonTableProps) {
                 <th className="text-muted-foreground rounded-none px-4 py-4 text-center">
                   STARTER
                 </th>
-                <th className="text-primary rounded-none px-4 py-4 text-center">
-                  PRO
-                </th>
+                <th className="text-primary rounded-none px-4 py-4 text-center">PRO</th>
                 <th className="text-muted-foreground rounded-none px-4 py-4 text-center">
                   ENTERPRISE
                 </th>
@@ -62,15 +60,9 @@ export function ComparisonTable({ features }: ComparisonTableProps) {
               {features.map((feature, idx) => (
                 <tr key={idx} className="hover:bg-muted/30">
                   <td className="px-4 py-4">{feature.name}</td>
-                  <td className="px-4 py-4 text-center">
-                    {renderCell(feature.starter)}
-                  </td>
-                  <td className="px-4 py-4 text-center">
-                    {renderCell(feature.pro)}
-                  </td>
-                  <td className="px-4 py-4 text-center">
-                    {renderCell(feature.enterprise)}
-                  </td>
+                  <td className="px-4 py-4 text-center">{renderCell(feature.starter)}</td>
+                  <td className="px-4 py-4 text-center">{renderCell(feature.pro)}</td>
+                  <td className="px-4 py-4 text-center">{renderCell(feature.enterprise)}</td>
                 </tr>
               ))}
             </tbody>

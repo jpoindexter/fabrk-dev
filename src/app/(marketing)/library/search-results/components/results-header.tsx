@@ -41,9 +41,7 @@ export function ResultsHeader({
           </div>
           <div className="flex items-center gap-2">
             <Select value={sortBy} onValueChange={onSortChange}>
-              <SelectTrigger
-                className={cn(mode.radius, mode.font, 'h-8 w-[140px] text-xs')}
-              >
+              <SelectTrigger className={cn(mode.radius, mode.font, 'h-8 w-[140px] text-xs')}>
                 <SlidersHorizontal className="mr-1 h-3 w-3" />
                 <SelectValue />
               </SelectTrigger>
@@ -66,10 +64,7 @@ export function ResultsHeader({
                 variant={viewMode === 'list' ? 'default' : 'ghost'}
                 size="sm"
                 onClick={() => onViewModeChange('list')}
-                className={cn(
-                  mode.radius,
-                  'border-border h-8 w-8 border-l p-0'
-                )}
+                className={cn(mode.radius, 'border-border h-8 w-8 border-l p-0')}
               >
                 <List className="h-3 w-3" />
               </Button>

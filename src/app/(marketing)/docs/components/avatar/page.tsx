@@ -61,10 +61,7 @@ export default function AvatarPage() {
                 <AvatarFallback className="text-xs">SM</AvatarFallback>
               </Avatar>
               <Avatar className="h-10 w-10">
-                <AvatarImage
-                  src="https://github.com/shadcn.png"
-                  alt="Default"
-                />
+                <AvatarImage src="https://github.com/shadcn.png" alt="Default" />
                 <AvatarFallback>MD</AvatarFallback>
               </Avatar>
               <Avatar className="h-16 w-16">
@@ -72,10 +69,7 @@ export default function AvatarPage() {
                 <AvatarFallback className="text-lg">LG</AvatarFallback>
               </Avatar>
               <Avatar className="h-24 w-24">
-                <AvatarImage
-                  src="https://github.com/shadcn.png"
-                  alt="Extra Large"
-                />
+                <AvatarImage src="https://github.com/shadcn.png" alt="Extra Large" />
                 <AvatarFallback className="text-2xl">XL</AvatarFallback>
               </Avatar>
             </div>
@@ -132,14 +126,10 @@ export default function AvatarPage() {
           preview: (
             <div className="flex gap-4">
               <Avatar>
-                <AvatarFallback className="bg-primary text-primary-foreground">
-                  AB
-                </AvatarFallback>
+                <AvatarFallback className="bg-primary text-primary-foreground">AB</AvatarFallback>
               </Avatar>
               <Avatar>
-                <AvatarFallback className="bg-success text-success-foreground">
-                  CD
-                </AvatarFallback>
+                <AvatarFallback className="bg-success text-success-foreground">CD</AvatarFallback>
               </Avatar>
               <Avatar>
                 <AvatarFallback className="bg-secondary text-secondary-foreground">
@@ -147,9 +137,7 @@ export default function AvatarPage() {
                 </AvatarFallback>
               </Avatar>
               <Avatar>
-                <AvatarFallback className="bg-warning text-warning-foreground">
-                  GH
-                </AvatarFallback>
+                <AvatarFallback className="bg-warning text-warning-foreground">GH</AvatarFallback>
               </Avatar>
             </div>
           ),
@@ -167,20 +155,14 @@ export default function AvatarPage() {
             <div className="flex gap-4">
               <div className="relative">
                 <Avatar>
-                  <AvatarImage
-                    src="https://github.com/shadcn.png"
-                    alt="Online User"
-                  />
+                  <AvatarImage src="https://github.com/shadcn.png" alt="Online User" />
                   <AvatarFallback>ON</AvatarFallback>
                 </Avatar>
                 <span className="border-background bg-success absolute right-0 bottom-0 h-3 w-3 border-2" />
               </div>
               <div className="relative">
                 <Avatar>
-                  <AvatarImage
-                    src="https://github.com/vercel.png"
-                    alt="Busy User"
-                  />
+                  <AvatarImage src="https://github.com/vercel.png" alt="Busy User" />
                   <AvatarFallback>BS</AvatarFallback>
                 </Avatar>
                 <span className="border-background bg-warning absolute right-0 bottom-0 h-3 w-3 border-2" />
@@ -206,8 +188,7 @@ export default function AvatarPage() {
         {
           name: 'Avatar',
           type: 'React.ComponentProps',
-          description:
-            'Root avatar container - accepts all div props plus Radix Avatar.Root props',
+          description: 'Root avatar container - accepts all div props plus Radix Avatar.Root props',
         },
         {
           name: 'AvatarImage.src',
@@ -222,14 +203,12 @@ export default function AvatarPage() {
         {
           name: 'AvatarFallback',
           type: 'React.ReactNode',
-          description:
-            'Content to display when image fails to load or while loading',
+          description: 'Content to display when image fails to load or while loading',
         },
         {
           name: 'className',
           type: 'string',
-          description:
-            'Additional CSS classes to apply to any avatar component',
+          description: 'Additional CSS classes to apply to any avatar component',
         },
       ]}
       accessibility={[

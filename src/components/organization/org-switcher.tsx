@@ -134,11 +134,7 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
         >
           {currentOrg?.logo ? (
             /* eslint-disable-next-line @next/next/no-img-element */
-            <img
-              src={currentOrg.logo}
-              alt={currentOrg.name}
-              className="h-5 w-5 rounded"
-            />
+            <img src={currentOrg.logo} alt={currentOrg.name} className="h-5 w-5 rounded" />
           ) : (
             <Building2 className="text-muted-foreground h-4 w-4" />
           )}
@@ -165,24 +161,14 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
             <div className="flex w-full items-center gap-2">
               {org.logo ? (
                 /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  src={org.logo}
-                  alt={org.name}
-                  className="h-5 w-5 rounded"
-                />
+                <img src={org.logo} alt={org.name} className="h-5 w-5 rounded" />
               ) : (
                 <Building2 className="text-muted-foreground h-4 w-4" />
               )}
               <span className="flex-1 truncate text-sm">{org.name}</span>
-              {currentOrg?.id === org.id && (
-                <Check className="text-primary h-4 w-4" />
-              )}
+              {currentOrg?.id === org.id && <Check className="text-primary h-4 w-4" />}
             </div>
-            {org.role && (
-              <span className="text-muted-foreground ml-auto text-xs">
-                {org.role}
-              </span>
-            )}
+            {org.role && <span className="text-muted-foreground ml-auto text-xs">{org.role}</span>}
           </DropdownMenuItem>
         ))}
         <DropdownMenuSeparator />

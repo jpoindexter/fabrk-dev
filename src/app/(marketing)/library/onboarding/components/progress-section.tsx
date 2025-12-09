@@ -20,11 +20,7 @@ interface ProgressSectionProps {
   progress: number;
 }
 
-export function ProgressSection({
-  currentStep,
-  steps,
-  progress,
-}: ProgressSectionProps) {
+export function ProgressSection({ currentStep, steps, progress }: ProgressSectionProps) {
   return (
     <div className="border-border border-b p-4">
       <div className="mb-2 flex items-center justify-between">
@@ -59,11 +55,7 @@ export function ProgressSection({
               </div>
               <span
                 className={`font-mono text-xs ${
-                  isActive
-                    ? 'text-primary'
-                    : isCompleted
-                      ? 'text-success'
-                      : 'text-muted-foreground'
+                  isActive ? 'text-primary' : isCompleted ? 'text-success' : 'text-muted-foreground'
                 }`}
               >
                 {step.name}

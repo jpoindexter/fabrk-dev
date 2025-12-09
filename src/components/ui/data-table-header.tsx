@@ -32,10 +32,7 @@ import * as React from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
-interface DataTableColumnHeaderProps<
-  TData,
-  TValue,
-> extends React.HTMLAttributes<HTMLDivElement> {
+interface DataTableColumnHeaderProps<TData, TValue> extends React.HTMLAttributes<HTMLDivElement> {
   column: Column<TData, TValue>;
   title: string;
 }
@@ -51,11 +48,7 @@ function DataTableColumnHeaderInner<TData = unknown, TValue = unknown>(
 ) {
   if (!column.getCanSort()) {
     return (
-      <div
-        data-slot="data-table-column-header"
-        ref={ref}
-        className={cn(className, '')}
-      >
+      <div data-slot="data-table-column-header" ref={ref} className={cn(className, '')}>
         {title}
       </div>
     );
@@ -91,14 +84,14 @@ function DataTableColumnHeaderInner<TData = unknown, TValue = unknown>(
   );
 }
 
-export const DataTableColumnHeader = React.forwardRef(
-  DataTableColumnHeaderInner
-) as <TData, TValue>(
+export const DataTableColumnHeader = React.forwardRef(DataTableColumnHeaderInner) as <
+  TData,
+  TValue,
+>(
   props: DataTableColumnHeaderProps<TData, TValue> & {
     ref?: React.ForwardedRef<HTMLDivElement>;
   }
 ) => ReturnType<typeof DataTableColumnHeaderInner>;
 
-(
-  DataTableColumnHeader as React.ForwardRefExoticComponent<unknown>
-).displayName = 'DataTableColumnHeader';
+(DataTableColumnHeader as React.ForwardRefExoticComponent<unknown>).displayName =
+  'DataTableColumnHeader';

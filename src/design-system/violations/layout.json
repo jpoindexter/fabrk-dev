@@ -26,13 +26,7 @@
       "grid-cols-6",
       "grid-cols-12"
     ],
-    "responsiveBreakpoints": [
-      "sm:640px",
-      "md:768px",
-      "lg:1024px",
-      "xl:1280px",
-      "2xl:1536px"
-    ],
+    "responsiveBreakpoints": ["sm:640px", "md:768px", "lg:1024px", "xl:1280px", "2xl:1536px"],
     "containerPadding": "px-4 sm:px-6 lg:px-8"
   },
   "violations": [],

@@ -129,9 +129,5 @@ export {
   formatTerminalCardHeader,
   formatTerminalStatusText,
 };
-export {
-  formatModernButtonText,
-  formatModernLabelText,
-  formatModernCardHeader,
-};
+export { formatModernButtonText, formatModernLabelText, formatModernCardHeader };
 export { formatSoftButtonText, formatSoftLabelText, formatSoftCardHeader };

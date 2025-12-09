@@ -44,18 +44,12 @@ export function FeatureSectionLayout({
           <Badge label="SPEC" meta={spec} className="mb-4 self-start" />
 
           {/* Title */}
-          <h3 className={cn(mode.font, 'mb-4 text-2xl font-semibold')}>
-            {title}
-          </h3>
+          <h3 className={cn(mode.font, 'mb-4 text-2xl font-semibold')}>{title}</h3>
 
           {/* Description */}
           <div className="border-border mb-6 border-l-2 pl-4">
-            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-              │ [DESC]:{' '}
-            </span>
-            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-              {description}
-            </span>
+            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>│ [DESC]: </span>
+            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>{description}</span>
           </div>
 
           {/* Feature List */}

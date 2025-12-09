@@ -16,19 +16,10 @@ import { prisma } from '@/lib/prisma';
 export type { OrgRole } from './types';
 
 // Re-export member management functions
-export {
-  hasOrganizationRole,
-  removeMember,
-  updateMemberRole,
-  transferOwnership,
-} from './members';
+export { hasOrganizationRole, removeMember, updateMemberRole, transferOwnership } from './members';
 
 // Re-export invitation functions
-export {
-  isOrganizationMember,
-  inviteToOrganization,
-  acceptInvite,
-} from './invites';
+export { isOrganizationMember, inviteToOrganization, acceptInvite } from './invites';
 
 /**
  * Creates a new organization with an initial owner member
@@ -179,10 +170,7 @@ export async function getUserOrganizations(userId: string) {
  * await deleteOrganization("org_456", "owner_123");
  * ```
  */
-export async function deleteOrganization(
-  organizationId: string,
-  userId: string
-): Promise<void> {
+export async function deleteOrganization(organizationId: string, userId: string): Promise<void> {
   // Import hasOrganizationRole to avoid circular dependency
   const { hasOrganizationRole } = await import('./members');
 
@@ -248,10 +236,7 @@ export async function updateOrganizationSettings(
   const { hasOrganizationRole } = await import('./members');
 
   // Verify user has permission
-  const hasPermission = await hasOrganizationRole(userId, organizationId, [
-    'OWNER',
-    'ADMIN',
-  ]);
+  const hasPermission = await hasOrganizationRole(userId, organizationId, ['OWNER', 'ADMIN']);
 
   if (!hasPermission) {
     throw new Error('Insufficient permissions');

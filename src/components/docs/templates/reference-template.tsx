@@ -103,12 +103,7 @@ export function ReferenceTemplate({
   return (
     <div className={docsSpacing.pageSections}>
       {/* Header */}
-      <DocsHeader
-        code={code}
-        category={category}
-        title={title}
-        description={description}
-      />
+      <DocsHeader code={code} category={category} title={title} description={description} />
 
       {/* Warning (if any) */}
       {warning && (
@@ -147,57 +142,37 @@ export function ReferenceTemplate({
         <DocsSection title="Methods">
           <div className={docsSpacing.sectionItems}>
             {methods.map((method, index) => (
-              <DocsCard
-                key={index}
-                title={`METHOD_${(index + 1).toString().padStart(2, '0')}`}
-              >
-                <h3 className={`font-mono ${docsTypography.h4}`}>
-                  {method.name}
-                </h3>
+              <DocsCard key={index} title={`METHOD_${(index + 1).toString().padStart(2, '0')}`}>
+                <h3 className={`font-mono ${docsTypography.h4}`}>{method.name}</h3>
                 <p className={docsTypography.body}>{method.description}</p>
                 <div className="mt-4">
-                  <p className={`uppercase ${docsTypography.caption} mb-2`}>
-                    Signature
-                  </p>
+                  <p className={`uppercase ${docsTypography.caption} mb-2`}>Signature</p>
                   <CodeBlock code={method.signature} language="typescript" />
                 </div>
                 {method.parameters && method.parameters.length > 0 && (
                   <div className="mt-4">
-                    <p className={`uppercase ${docsTypography.caption} mb-2`}>
-                      Parameters
-                    </p>
+                    <p className={`uppercase ${docsTypography.caption} mb-2`}>Parameters</p>
                     <div className="overflow-x-auto">
                       <table className="w-full text-sm">
                         <thead>
                           <tr className="border-border border-b">
-                            <th
-                              className={`pb-2 text-left uppercase ${docsTypography.caption}`}
-                            >
+                            <th className={`pb-2 text-left uppercase ${docsTypography.caption}`}>
                               Name
                             </th>
-                            <th
-                              className={`pb-2 text-left uppercase ${docsTypography.caption}`}
-                            >
+                            <th className={`pb-2 text-left uppercase ${docsTypography.caption}`}>
                               Type
                             </th>
-                            <th
-                              className={`pb-2 text-left uppercase ${docsTypography.caption}`}
-                            >
+                            <th className={`pb-2 text-left uppercase ${docsTypography.caption}`}>
                               Description
                             </th>
                           </tr>
                         </thead>
                         <tbody>
                           {method.parameters.map((param, pIndex) => (
-                            <tr
-                              key={pIndex}
-                              className="border-border border-b last:border-0"
-                            >
+                            <tr key={pIndex} className="border-border border-b last:border-0">
                               <td className="py-2 font-mono">{param.name}</td>
                               <td className="py-2">
-                                <code className={docsTypography.code}>
-                                  {param.type}
-                                </code>
+                                <code className={docsTypography.code}>{param.type}</code>
                               </td>
                               <td className={`py-2 ${docsTypography.caption}`}>
                                 {param.description}
@@ -211,19 +186,13 @@ export function ReferenceTemplate({
                 )}
                 {method.returns && (
                   <div className="mt-4">
-                    <p className={`uppercase ${docsTypography.caption} mb-2`}>
-                      Returns
-                    </p>
-                    <code className={docsTypography.code}>
-                      {method.returns}
-                    </code>
+                    <p className={`uppercase ${docsTypography.caption} mb-2`}>Returns</p>
+                    <code className={docsTypography.code}>{method.returns}</code>
                   </div>
                 )}
                 {method.example && (
                   <div className="mt-4">
-                    <p className={`uppercase ${docsTypography.caption} mb-2`}>
-                      Example
-                    </p>
+                    <p className={`uppercase ${docsTypography.caption} mb-2`}>Example</p>
                     <CodeBlock code={method.example} language="typescript" />
                   </div>
                 )}
@@ -245,17 +214,11 @@ export function ReferenceTemplate({
         <DocsSection title="Examples">
           <div className={docsSpacing.sectionItems}>
             {examples.map((example, index) => (
-              <DocsCard
-                key={index}
-                title={example.title.toUpperCase().replace(/\s+/g, '_')}
-              >
+              <DocsCard key={index} title={example.title.toUpperCase().replace(/\s+/g, '_')}>
                 {example.description && (
                   <p className={docsTypography.body}>{example.description}</p>
                 )}
-                <CodeBlock
-                  code={example.code}
-                  language={example.language || 'typescript'}
-                />
+                <CodeBlock code={example.code} language={example.language || 'typescript'} />
               </DocsCard>
             ))}
           </div>
@@ -269,16 +232,11 @@ export function ReferenceTemplate({
             <ul className="space-y-4">
               {relatedLinks.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-primary font-mono text-sm hover:underline"
-                  >
+                  <a href={link.href} className="text-primary font-mono text-sm hover:underline">
                     {link.title}
                   </a>
                   {link.description && (
-                    <p className={`mt-1 ${docsTypography.caption}`}>
-                      {link.description}
-                    </p>
+                    <p className={`mt-1 ${docsTypography.caption}`}>{link.description}</p>
                   )}
                 </li>
               ))}

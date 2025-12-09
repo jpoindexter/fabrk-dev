@@ -88,13 +88,8 @@ export function AppearanceForm() {
               name="language"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className={cn(mode.font, 'text-xs')}>
-                    [LANGUAGE]:
-                  </FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
+                  <FormLabel className={cn(mode.font, 'text-xs')}>[LANGUAGE]:</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger className={mode.radius}>
                         <SelectValue placeholder="Select a language" />

@@ -6,14 +6,7 @@
 
 import { AppearanceForm } from '@/components/settings/appearance-form';
 import { Button } from '@/components/ui/button';
-import {
-  Shield,
-  CreditCard,
-  Bell,
-  Download,
-  Palette,
-  Settings,
-} from 'lucide-react';
+import { Shield, CreditCard, Bell, Download, Palette, Settings } from 'lucide-react';
 import { CodeWindow } from './code-window';
 import { SectionHeader } from './section-header';
 import { mode } from '@/design-system';

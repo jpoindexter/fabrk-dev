@@ -12,13 +12,7 @@ import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 
 // Animated counter for credits
-function CreditCounter({
-  value,
-  delay = 0,
-}: {
-  value: number;
-  delay?: number;
-}) {
+function CreditCounter({ value, delay = 0 }: { value: number; delay?: number }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-50px' });
@@ -95,17 +89,10 @@ export function CreditsPreview() {
             </motion.span>
           </div>
           <div className="text-right">
-            <span
-              className={cn(
-                mode.font,
-                'text-success block text-lg font-semibold'
-              )}
-            >
+            <span className={cn(mode.font, 'text-success block text-lg font-semibold')}>
               <CreditCounter value={847} delay={0.5} />
             </span>
-            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-              credits
-            </span>
+            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>credits</span>
           </div>
         </motion.div>
 
@@ -140,10 +127,7 @@ export function CreditsPreview() {
             {usageBars.map((bar, i) => (
               <span
                 key={i}
-                className={cn(
-                  mode.font,
-                  'text-muted-foreground flex-1 text-center text-[10px]'
-                )}
+                className={cn(mode.font, 'text-muted-foreground flex-1 text-center text-[10px]')}
               >
                 {bar.day}
               </span>

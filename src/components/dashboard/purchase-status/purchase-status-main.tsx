@@ -14,17 +14,12 @@ import { LicenseCard } from './license-card';
 import { PurchaseStatusProps } from './purchase-status-types';
 import { ResourcesCard } from './resources-card';
 
-export function PurchaseStatus({
-  user,
-  purchase,
-  className = '',
-}: PurchaseStatusProps) {
+export function PurchaseStatus({ user, purchase, className = '' }: PurchaseStatusProps) {
   const [isGeneratingDownload, setIsGeneratingDownload] = useState(false);
   const [_downloadUrl, setDownloadUrl] = useState<string | null>(null);
   const [copiedLicense, setCopiedLicense] = useState(false);
 
-  const hasAccess =
-    user.tier === 'complete' || purchase?.status === 'completed';
+  const hasAccess = user.tier === 'complete' || purchase?.status === 'completed';
   const licenseKey = purchase?.licenseKey || user.licenseKey;
 
   const handleGenerateDownload = async () => {

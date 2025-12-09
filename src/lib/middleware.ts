@@ -14,19 +14,14 @@ export default auth((req) => {
   const isOnAdmin = req.nextUrl.pathname.startsWith('/admin');
   const isOnBilling = req.nextUrl.pathname.startsWith('/billing');
   const isOnSettings = req.nextUrl.pathname.startsWith('/settings');
-  const isProtectedRoute =
-    isOnDashboard || isOnAdmin || isOnBilling || isOnSettings;
+  const isProtectedRoute = isOnDashboard || isOnAdmin || isOnBilling || isOnSettings;
 
   if (isProtectedRoute && !isLoggedIn) {
     return NextResponse.redirect(new URL('/', req.url));
   }
 
   // Check admin routes
-  if (
-    isOnAdmin &&
-    req.auth?.user?.role !== 'ADMIN' &&
-    req.auth?.user?.role !== 'SUPER_ADMIN'
-  ) {
+  if (isOnAdmin && req.auth?.user?.role !== 'ADMIN' && req.auth?.user?.role !== 'SUPER_ADMIN') {
     return NextResponse.redirect(new URL('/dashboard', req.url));
   }
 

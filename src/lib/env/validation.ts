@@ -112,8 +112,7 @@ function validateRequired(): ValidationError[] {
   if (!isPresent(process.env.NEXTAUTH_SECRET)) {
     errors.push({
       variable: 'NEXTAUTH_SECRET',
-      message:
-        'NextAuth secret is required. Generate with: openssl rand -base64 32',
+      message: 'NextAuth secret is required. Generate with: openssl rand -base64 32',
       category: 'Authentication',
     });
   } else if (!hasMinLength(process.env.NEXTAUTH_SECRET, 32)) {
@@ -162,9 +161,7 @@ function validateRequired(): ValidationError[] {
         'Stripe publishable key is required. Get it from: https://dashboard.stripe.com/test/apikeys',
       category: 'Payment',
     });
-  } else if (
-    !hasPrefix(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY, 'pk_')
-  ) {
+  } else if (!hasPrefix(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY, 'pk_')) {
     errors.push({
       variable: 'NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY',
       message: 'Must start with pk_test_ or pk_live_',
@@ -176,8 +173,7 @@ function validateRequired(): ValidationError[] {
   if (!isPresent(process.env.RESEND_API_KEY)) {
     errors.push({
       variable: 'RESEND_API_KEY',
-      message:
-        'Resend API key is required. Get it from: https://resend.com/api-keys',
+      message: 'Resend API key is required. Get it from: https://resend.com/api-keys',
       category: 'Email',
     });
   } else if (!hasPrefix(process.env.RESEND_API_KEY, 're_')) {
@@ -197,10 +193,7 @@ function validateRequired(): ValidationError[] {
   }
 
   // Application URLs
-  if (
-    process.env.NEXT_PUBLIC_APP_URL &&
-    !isValidUrl(process.env.NEXT_PUBLIC_APP_URL)
-  ) {
+  if (process.env.NEXT_PUBLIC_APP_URL && !isValidUrl(process.env.NEXT_PUBLIC_APP_URL)) {
     errors.push({
       variable: 'NEXT_PUBLIC_APP_URL',
       message: 'Must be a valid URL',
@@ -208,10 +201,7 @@ function validateRequired(): ValidationError[] {
     });
   }
 
-  if (
-    process.env.NEXT_PUBLIC_API_URL &&
-    !isValidUrl(process.env.NEXT_PUBLIC_API_URL)
-  ) {
+  if (process.env.NEXT_PUBLIC_API_URL && !isValidUrl(process.env.NEXT_PUBLIC_API_URL)) {
     errors.push({
       variable: 'NEXT_PUBLIC_API_URL',
       message: 'Must be a valid URL',
@@ -229,10 +219,7 @@ function validateOptional(): ValidationError[] {
   const errors: ValidationError[] = [];
 
   // Google OAuth (optional, but must be valid if present)
-  if (
-    process.env.GOOGLE_CLIENT_ID &&
-    !isPresent(process.env.GOOGLE_CLIENT_SECRET)
-  ) {
+  if (process.env.GOOGLE_CLIENT_ID && !isPresent(process.env.GOOGLE_CLIENT_SECRET)) {
     errors.push({
       variable: 'GOOGLE_CLIENT_SECRET',
       message: 'Required when GOOGLE_CLIENT_ID is set',
@@ -240,10 +227,7 @@ function validateOptional(): ValidationError[] {
     });
   }
 
-  if (
-    process.env.GOOGLE_CLIENT_SECRET &&
-    !isPresent(process.env.GOOGLE_CLIENT_ID)
-  ) {
+  if (process.env.GOOGLE_CLIENT_SECRET && !isPresent(process.env.GOOGLE_CLIENT_ID)) {
     errors.push({
       variable: 'GOOGLE_CLIENT_ID',
       message: 'Required when GOOGLE_CLIENT_SECRET is set',
@@ -307,10 +291,7 @@ function validateOptional(): ValidationError[] {
     process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
     process.env.NEXT_PUBLIC_SANITY_DATASET,
   ];
-  const sanityVarNames = [
-    'NEXT_PUBLIC_SANITY_PROJECT_ID',
-    'NEXT_PUBLIC_SANITY_DATASET',
-  ];
+  const sanityVarNames = ['NEXT_PUBLIC_SANITY_PROJECT_ID', 'NEXT_PUBLIC_SANITY_DATASET'];
   const sanityPresent = sanityVars.filter((v) => isPresent(v)).length;
 
   if (sanityPresent > 0 && sanityPresent < 2) {
@@ -327,10 +308,7 @@ function validateOptional(): ValidationError[] {
   }
 
   // Upstash Redis (all or nothing)
-  const redisVars = [
-    process.env.UPSTASH_REDIS_REST_URL,
-    process.env.UPSTASH_REDIS_REST_TOKEN,
-  ];
+  const redisVars = [process.env.UPSTASH_REDIS_REST_URL, process.env.UPSTASH_REDIS_REST_TOKEN];
   const redisVarNames = ['UPSTASH_REDIS_REST_URL', 'UPSTASH_REDIS_REST_TOKEN'];
   const redisPresent = redisVars.filter((v) => isPresent(v)).length;
 
@@ -339,8 +317,7 @@ function validateOptional(): ValidationError[] {
       if (!isPresent(redisVars[index])) {
         errors.push({
           variable: varName,
-          message:
-            'Both UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN must be set together',
+          message: 'Both UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN must be set together',
           category: 'Cache (Redis)',
         });
       }
@@ -365,11 +342,7 @@ function validateOptional(): ValidationError[] {
     process.env.S3_SECRET_ACCESS_KEY,
     process.env.S3_BUCKET_NAME,
   ];
-  const s3VarNames = [
-    'S3_ACCESS_KEY_ID',
-    'S3_SECRET_ACCESS_KEY',
-    'S3_BUCKET_NAME',
-  ];
+  const s3VarNames = ['S3_ACCESS_KEY_ID', 'S3_SECRET_ACCESS_KEY', 'S3_BUCKET_NAME'];
   const s3Present = s3Vars.filter((v) => isPresent(v)).length;
 
   if (s3Present > 0 && s3Present < 3) {
@@ -386,10 +359,7 @@ function validateOptional(): ValidationError[] {
   }
 
   // Validate S3 endpoint if present
-  if (
-    isPresent(process.env.S3_ENDPOINT) &&
-    !isValidUrl(process.env.S3_ENDPOINT)
-  ) {
+  if (isPresent(process.env.S3_ENDPOINT) && !isValidUrl(process.env.S3_ENDPOINT)) {
     errors.push({
       variable: 'S3_ENDPOINT',
       message: 'Must be a valid HTTPS URL',
@@ -433,10 +403,7 @@ function validateOptional(): ValidationError[] {
   }
 
   // OpenAI validation
-  if (
-    isPresent(process.env.OPENAI_API_KEY) &&
-    !hasPrefix(process.env.OPENAI_API_KEY, 'sk-')
-  ) {
+  if (isPresent(process.env.OPENAI_API_KEY) && !hasPrefix(process.env.OPENAI_API_KEY, 'sk-')) {
     errors.push({
       variable: 'OPENAI_API_KEY',
       message: 'Must start with sk-',
@@ -457,44 +424,25 @@ function validateOptional(): ValidationError[] {
   }
 
   // Stripe pricing tiers validation (warn if using defaults)
-  const stripeDefaultPrices = [
-    'price_starter',
-    'price_professional',
-    'price_enterprise',
-  ];
-  if (
-    stripeDefaultPrices.includes(
-      process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER || ''
-    )
-  ) {
+  const stripeDefaultPrices = ['price_starter', 'price_professional', 'price_enterprise'];
+  if (stripeDefaultPrices.includes(process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER || '')) {
     errors.push({
       variable: 'NEXT_PUBLIC_STRIPE_PRICE_STARTER',
-      message:
-        'Using default value. Replace with your actual Stripe Price ID from the dashboard',
+      message: 'Using default value. Replace with your actual Stripe Price ID from the dashboard',
       category: 'Payment (Stripe Prices)',
     });
   }
-  if (
-    stripeDefaultPrices.includes(
-      process.env.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL || ''
-    )
-  ) {
+  if (stripeDefaultPrices.includes(process.env.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL || '')) {
     errors.push({
       variable: 'NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL',
-      message:
-        'Using default value. Replace with your actual Stripe Price ID from the dashboard',
+      message: 'Using default value. Replace with your actual Stripe Price ID from the dashboard',
       category: 'Payment (Stripe Prices)',
     });
   }
-  if (
-    stripeDefaultPrices.includes(
-      process.env.NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE || ''
-    )
-  ) {
+  if (stripeDefaultPrices.includes(process.env.NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE || '')) {
     errors.push({
       variable: 'NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE',
-      message:
-        'Using default value. Replace with your actual Stripe Price ID from the dashboard',
+      message: 'Using default value. Replace with your actual Stripe Price ID from the dashboard',
       category: 'Payment (Stripe Prices)',
     });
   }
@@ -548,9 +496,7 @@ function formatErrors(errors: ValidationError[]): string {
     });
   });
 
-  lines.push(
-    '════════════════════════════════════════════════════════════════'
-  );
+  lines.push('════════════════════════════════════════════════════════════════');
   lines.push('');
   lines.push('Setup Instructions:');
   lines.push('  1. Copy .env.example to .env.local');
@@ -560,9 +506,7 @@ function formatErrors(errors: ValidationError[]): string {
   lines.push('');
   lines.push('Documentation: https://fabrk.dev/docs/setup');
   lines.push('');
-  lines.push(
-    '════════════════════════════════════════════════════════════════'
-  );
+  lines.push('════════════════════════════════════════════════════════════════');
   lines.push('');
 
   return lines.join('\n');
@@ -590,18 +534,9 @@ export function validateEnvWithWarnings(): void {
 
   if (!result.valid) {
     // Separate critical errors from warnings
-    const criticalCategories = [
-      'Database',
-      'Authentication',
-      'Payment',
-      'Email',
-    ];
-    const criticalErrors = result.errors.filter((e) =>
-      criticalCategories.includes(e.category)
-    );
-    const warnings = result.errors.filter(
-      (e) => !criticalCategories.includes(e.category)
-    );
+    const criticalCategories = ['Database', 'Authentication', 'Payment', 'Email'];
+    const criticalErrors = result.errors.filter((e) => criticalCategories.includes(e.category));
+    const warnings = result.errors.filter((e) => !criticalCategories.includes(e.category));
 
     // Critical errors should throw
     if (criticalErrors.length > 0) {
@@ -613,9 +548,7 @@ export function validateEnvWithWarnings(): void {
     if (warnings.length > 0) {
       logger.warn('\n⚠️  Environment Variable Warnings:\n');
       warnings.forEach((warning) => {
-        logger.warn(
-          `  [${warning.category}] ${warning.variable}: ${warning.message}`
-        );
+        logger.warn(`  [${warning.category}] ${warning.variable}: ${warning.message}`);
       });
       logger.warn('\n');
     }
@@ -631,8 +564,7 @@ export function getFeatureSummary(): {
 } {
   const features = {
     'Google OAuth':
-      isPresent(process.env.GOOGLE_CLIENT_ID) &&
-      isPresent(process.env.GOOGLE_CLIENT_SECRET),
+      isPresent(process.env.GOOGLE_CLIENT_ID) && isPresent(process.env.GOOGLE_CLIENT_SECRET),
     'Real-Time (Pusher)': isPresent(process.env.NEXT_PUBLIC_PUSHER_KEY),
     'Analytics (PostHog)': isPresent(process.env.NEXT_PUBLIC_POSTHOG_KEY),
     'Search (Algolia)': isPresent(process.env.NEXT_PUBLIC_ALGOLIA_APP_ID),

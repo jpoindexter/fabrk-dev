@@ -47,11 +47,7 @@ export function analyzeContentComprehensive(
     requireSchema?: boolean;
   } = {}
 ): ComprehensiveScore {
-  const {
-    minWordCount = 300,
-    targetReadability = 65,
-    requireSchema = true,
-  } = options;
+  const { minWordCount = 300, targetReadability = 65, requireSchema = true } = options;
 
   const analysis = analyzeContent(content);
   const _seoScore = scoreContent(content, targetKeywords);
@@ -64,10 +60,7 @@ export function analyzeContentComprehensive(
   };
 
   const overall = Math.round(
-    scores.seo * 0.3 +
-      scores.aeo * 0.3 +
-      scores.geo * 0.25 +
-      scores.readability * 0.15
+    scores.seo * 0.3 + scores.aeo * 0.3 + scores.geo * 0.25 + scores.readability * 0.15
   );
 
   const grade = getGrade(overall);
@@ -92,10 +85,7 @@ export function analyzeContentComprehensive(
 /**
  * Calculate SEO score (0-100)
  */
-function calculateSEOScore(
-  analysis: ContentAnalysis,
-  keywords: string[]
-): number {
+function calculateSEOScore(analysis: ContentAnalysis, keywords: string[]): number {
   let score = 0;
 
   // Word count (20 points)
@@ -239,9 +229,7 @@ function identifyImprovements(
   }
 
   if (!analysis.hasQuestions) {
-    improvements.push(
-      'Add question-based headings for "People Also Ask" optimization'
-    );
+    improvements.push('Add question-based headings for "People Also Ask" optimization');
   }
 
   if (!analysis.hasList) {
@@ -270,9 +258,7 @@ function identifyImprovements(
 /**
  * Generate prioritized action items
  */
-function generateActionItems(
-  improvements: string[]
-): Array<{
+function generateActionItems(improvements: string[]): Array<{
   priority: 'high' | 'medium' | 'low';
   task: string;
   impact: string;
@@ -331,9 +317,7 @@ function generateActionItems(
 
   // Sort by priority
   const priorityOrder = { high: 1, medium: 2, low: 3 };
-  return actionItems.sort(
-    (a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]
-  );
+  return actionItems.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
 }
 
 /**
@@ -370,9 +354,7 @@ export function generateSEOReport(analysis: ComprehensiveScore): string {
   if (analysis.actionItems.length > 0) {
     report += `### 🎯 Action Items\n\n`;
 
-    const highPriority = analysis.actionItems.filter(
-      (item) => item.priority === 'high'
-    );
+    const highPriority = analysis.actionItems.filter((item) => item.priority === 'high');
     if (highPriority.length > 0) {
       report += `#### High Priority\n`;
       highPriority.forEach((item, index) => {
@@ -380,9 +362,7 @@ export function generateSEOReport(analysis: ComprehensiveScore): string {
       });
     }
 
-    const mediumPriority = analysis.actionItems.filter(
-      (item) => item.priority === 'medium'
-    );
+    const mediumPriority = analysis.actionItems.filter((item) => item.priority === 'medium');
     if (mediumPriority.length > 0) {
       report += `#### Medium Priority\n`;
       mediumPriority.forEach((item, index) => {
@@ -390,9 +370,7 @@ export function generateSEOReport(analysis: ComprehensiveScore): string {
       });
     }
 
-    const lowPriority = analysis.actionItems.filter(
-      (item) => item.priority === 'low'
-    );
+    const lowPriority = analysis.actionItems.filter((item) => item.priority === 'low');
     if (lowPriority.length > 0) {
       report += `#### Low Priority\n`;
       lowPriority.forEach((item, index) => {

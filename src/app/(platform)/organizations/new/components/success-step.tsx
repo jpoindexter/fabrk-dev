@@ -15,11 +15,7 @@ interface SuccessStepProps {
 export function SuccessStep({ onComplete }: SuccessStepProps) {
   return (
     <Card tone="success">
-      <CardHeader
-        code="0x00"
-        title="SUCCESS"
-        icon={<Check className="h-4 w-4" />}
-      />
+      <CardHeader code="0x00" title="SUCCESS" icon={<Check className="h-4 w-4" />} />
       <CardContent padding="lg">
         <div className="flex flex-col items-center justify-center">
           <div className="border-border bg-success rounded-none border p-4">

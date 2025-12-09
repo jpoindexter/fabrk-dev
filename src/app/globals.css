@@ -89,39 +89,23 @@
   }
 
   /* Selected day - use primary color */
-  [data-visual-mode='terminal']
-    [data-slot='calendar']
-    .rdp-selected
-    .rdp-day_button,
-  [data-visual-mode='terminal']
-    [data-slot='calendar']
-    .rdp-day_button[aria-selected='true'],
-  [data-visual-mode='terminal']
-    [data-slot='calendar']
-    [aria-selected='true']
-    > .rdp-day_button {
+  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-selected .rdp-day_button,
+  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-day_button[aria-selected='true'],
+  [data-visual-mode='terminal'] [data-slot='calendar'] [aria-selected='true'] > .rdp-day_button {
     background-color: oklch(var(--primary)) !important;
     color: oklch(var(--primary-foreground)) !important;
   }
 
   /* Today - use muted background */
-  [data-visual-mode='terminal']
-    [data-slot='calendar']
-    .rdp-today
-    .rdp-day_button,
-  [data-visual-mode='terminal']
-    [data-slot='calendar']
-    .rdp-day_button[data-today='true'] {
+  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-today .rdp-day_button,
+  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-day_button[data-today='true'] {
     background-color: oklch(var(--muted)) !important;
     color: oklch(var(--foreground)) !important;
     font-weight: 600 !important;
   }
 
   /* Today that is also selected - primary takes precedence */
-  [data-visual-mode='terminal']
-    [data-slot='calendar']
-    .rdp-today.rdp-selected
-    .rdp-day_button,
+  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-today.rdp-selected .rdp-day_button,
   [data-visual-mode='terminal']
     [data-slot='calendar']
     .rdp-today
@@ -132,26 +116,15 @@
   }
 
   /* Range selection - middle days */
-  [data-visual-mode='terminal']
-    [data-slot='calendar']
-    .rdp-range_middle
-    .rdp-day_button,
-  [data-visual-mode='terminal']
-    [data-slot='calendar']
-    .rdp-day_button.rdp-range_middle {
+  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-range_middle .rdp-day_button,
+  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-day_button.rdp-range_middle {
     background-color: oklch(var(--muted)) !important;
     color: oklch(var(--foreground)) !important;
   }
 
   /* Range start and end */
-  [data-visual-mode='terminal']
-    [data-slot='calendar']
-    .rdp-range_start
-    .rdp-day_button,
-  [data-visual-mode='terminal']
-    [data-slot='calendar']
-    .rdp-range_end
-    .rdp-day_button {
+  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-range_start .rdp-day_button,
+  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-range_end .rdp-day_button {
     background-color: oklch(var(--primary)) !important;
     color: oklch(var(--primary-foreground)) !important;
   }
@@ -185,8 +158,8 @@
   /* Font families */
   --font-sans: var(--font-geist-sans);
   --font-mono:
-    var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
-    Consolas, 'Liberation Mono', 'Courier New', monospace;
+    var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
 
   /* Border radius */
   --radius: 0.5rem;

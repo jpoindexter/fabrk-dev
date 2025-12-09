@@ -1,16 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import {
-  Bell,
-  Check,
-  X,
-  Info,
-  AlertTriangle,
-  CheckCircle,
-  XCircle,
-  AtSign,
-} from 'lucide-react';
+import { Bell, Check, X, Info, AlertTriangle, CheckCircle, XCircle, AtSign } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 import { Button } from '@/components/ui/button';
@@ -75,8 +66,7 @@ const formatTimestamp = (timestamp: Date | string): string => {
   if (diffInSeconds < 60) return 'Just now';
   if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)}m ago`;
   if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)}h ago`;
-  if (diffInSeconds < 604800)
-    return `${Math.floor(diffInSeconds / 86400)}d ago`;
+  if (diffInSeconds < 604800) return `${Math.floor(diffInSeconds / 86400)}d ago`;
 
   return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 };
@@ -98,9 +88,7 @@ const groupNotificationsByDate = (
       typeof notification.timestamp === 'string'
         ? new Date(notification.timestamp)
         : notification.timestamp;
-    const diffInDays = Math.floor(
-      (now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24)
-    );
+    const diffInDays = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24));
 
     if (diffInDays === 0) {
       groups.Today.push(notification);
@@ -114,9 +102,7 @@ const groupNotificationsByDate = (
   });
 
   // Remove empty groups
-  return Object.fromEntries(
-    Object.entries(groups).filter(([_, items]) => items.length > 0)
-  );
+  return Object.fromEntries(Object.entries(groups).filter(([_, items]) => items.length > 0));
 };
 
 // Individual notification item component
@@ -127,163 +113,141 @@ interface NotificationItemProps {
   autoMarkAsRead?: boolean;
 }
 
-const NotificationItem = React.forwardRef<
-  HTMLDivElement,
-  NotificationItemProps
->(({ notification, onMarkAsRead, onDelete, autoMarkAsRead }, ref) => {
-  const [isHovered, setIsHovered] = React.useState(false);
+const NotificationItem = React.forwardRef<HTMLDivElement, NotificationItemProps>(
+  ({ notification, onMarkAsRead, onDelete, autoMarkAsRead }, ref) => {
+    const [isHovered, setIsHovered] = React.useState(false);
 
-  const handleClick = () => {
-    if (autoMarkAsRead && !notification.read && onMarkAsRead) {
-      onMarkAsRead(notification.id);
-    }
-  };
+    const handleClick = () => {
+      if (autoMarkAsRead && !notification.read && onMarkAsRead) {
+        onMarkAsRead(notification.id);
+      }
+    };
 
-  const handleMarkAsRead = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (onMarkAsRead) {
-      onMarkAsRead(notification.id);
-    }
-  };
+    const handleMarkAsRead = (e: React.MouseEvent) => {
+      e.stopPropagation();
+      if (onMarkAsRead) {
+        onMarkAsRead(notification.id);
+      }
+    };
 
-  const handleDelete = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (onDelete) {
-      onDelete(notification.id);
-    }
-  };
+    const handleDelete = (e: React.MouseEvent) => {
+      e.stopPropagation();
+      if (onDelete) {
+        onDelete(notification.id);
+      }
+    };
 
-  const handleAction = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (notification.onAction) {
-      notification.onAction();
-    }
-  };
+    const handleAction = (e: React.MouseEvent) => {
+      e.stopPropagation();
+      if (notification.onAction) {
+        notification.onAction();
+      }
+    };
 
-  return (
-    <div
-      ref={ref}
-      role="button"
-      tabIndex={0}
-      aria-label={notification.title}
-      className={cn(
-        'relative flex gap-4 border border-transparent p-4 transition-all',
-        mode.radius,
-        'hover:bg-muted/50 cursor-pointer hover:border',
-        !notification.read && 'bg-primary/5'
-      )}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onClick={handleClick}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          handleClick();
-        }
-      }}
-    >
-      {/* Unread indicator */}
-      {!notification.read && (
-        <div
-          className={cn(
-            'bg-primary absolute top-1/2 left-1 h-2 w-2 -translate-y-1/2',
-            mode.radius
-          )}
-        />
-      )}
-
-      {/* Avatar or icon */}
-      <div className="ml-4 flex-shrink-0">
-        {notification.avatar ? (
-          <Avatar className="h-10 w-10">
-            <AvatarImage src={notification.avatar} alt={notification.title} />
-            <AvatarFallback>
-              {notification.title.substring(0, 2).toUpperCase()}
-            </AvatarFallback>
-          </Avatar>
-        ) : (
+    return (
+      <div
+        ref={ref}
+        role="button"
+        tabIndex={0}
+        aria-label={notification.title}
+        className={cn(
+          'relative flex gap-4 border border-transparent p-4 transition-all',
+          mode.radius,
+          'hover:bg-muted/50 cursor-pointer hover:border',
+          !notification.read && 'bg-primary/5'
+        )}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onClick={handleClick}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleClick();
+          }
+        }}
+      >
+        {/* Unread indicator */}
+        {!notification.read && (
           <div
             className={cn(
-              'bg-background flex h-10 w-10 items-center justify-center border',
+              'bg-primary absolute top-1/2 left-1 h-2 w-2 -translate-y-1/2',
               mode.radius
             )}
-          >
-            {getNotificationIcon(notification.type)}
+          />
+        )}
+
+        {/* Avatar or icon */}
+        <div className="ml-4 flex-shrink-0">
+          {notification.avatar ? (
+            <Avatar className="h-10 w-10">
+              <AvatarImage src={notification.avatar} alt={notification.title} />
+              <AvatarFallback>{notification.title.substring(0, 2).toUpperCase()}</AvatarFallback>
+            </Avatar>
+          ) : (
+            <div
+              className={cn(
+                'bg-background flex h-10 w-10 items-center justify-center border',
+                mode.radius
+              )}
+            >
+              {getNotificationIcon(notification.type)}
+            </div>
+          )}
+        </div>
+
+        {/* Content */}
+        <div className="min-w-0 flex-1">
+          <div className="flex items-start justify-between gap-2">
+            <p className={cn('text-foreground text-xs font-semibold', mode.font)}>
+              {notification.title}
+            </p>
+            <span className="text-muted-foreground text-xs whitespace-nowrap">
+              {formatTimestamp(notification.timestamp)}
+            </span>
+          </div>
+          <p className={cn('text-muted-foreground mt-0.5 line-clamp-2 text-xs', mode.font)}>
+            {notification.message}
+          </p>
+
+          {/* Action button */}
+          {notification.actionLabel && notification.onAction && (
+            <Button size="sm" variant="outline" className="mt-2 h-7 text-xs" onClick={handleAction}>
+              {notification.actionLabel}
+            </Button>
+          )}
+        </div>
+
+        {/* Actions (visible on hover) */}
+        {isHovered && (
+          <div className="flex flex-shrink-0 items-start gap-1">
+            {!notification.read && onMarkAsRead && (
+              <button
+                onClick={handleMarkAsRead}
+                className={cn('hover:bg-muted p-1 transition-colors', mode.radius)}
+                aria-label="Mark as read"
+              >
+                <Check className="text-success h-4 w-4" aria-hidden="true" />
+              </button>
+            )}
+            {onDelete && (
+              <button
+                onClick={handleDelete}
+                className={cn('hover:bg-muted p-1 transition-colors', mode.radius)}
+                aria-label="Delete notification"
+              >
+                <X className="text-destructive h-4 w-4" aria-hidden="true" />
+              </button>
+            )}
           </div>
         )}
       </div>
-
-      {/* Content */}
-      <div className="min-w-0 flex-1">
-        <div className="flex items-start justify-between gap-2">
-          <p className={cn('text-foreground text-xs font-semibold', mode.font)}>
-            {notification.title}
-          </p>
-          <span className="text-muted-foreground text-xs whitespace-nowrap">
-            {formatTimestamp(notification.timestamp)}
-          </span>
-        </div>
-        <p
-          className={cn(
-            'text-muted-foreground mt-0.5 line-clamp-2 text-xs',
-            mode.font
-          )}
-        >
-          {notification.message}
-        </p>
-
-        {/* Action button */}
-        {notification.actionLabel && notification.onAction && (
-          <Button
-            size="sm"
-            variant="outline"
-            className="mt-2 h-7 text-xs"
-            onClick={handleAction}
-          >
-            {notification.actionLabel}
-          </Button>
-        )}
-      </div>
-
-      {/* Actions (visible on hover) */}
-      {isHovered && (
-        <div className="flex flex-shrink-0 items-start gap-1">
-          {!notification.read && onMarkAsRead && (
-            <button
-              onClick={handleMarkAsRead}
-              className={cn(
-                'hover:bg-muted p-1 transition-colors',
-                mode.radius
-              )}
-              aria-label="Mark as read"
-            >
-              <Check className="text-success h-4 w-4" aria-hidden="true" />
-            </button>
-          )}
-          {onDelete && (
-            <button
-              onClick={handleDelete}
-              className={cn(
-                'hover:bg-muted p-1 transition-colors',
-                mode.radius
-              )}
-              aria-label="Delete notification"
-            >
-              <X className="text-destructive h-4 w-4" aria-hidden="true" />
-            </button>
-          )}
-        </div>
-      )}
-    </div>
-  );
-});
+    );
+  }
+);
 NotificationItem.displayName = 'NotificationItem';
 
 // Main NotificationCenter component
-export const NotificationCenter = React.forwardRef<
-  HTMLDivElement,
-  NotificationCenterProps
->(
+export const NotificationCenter = React.forwardRef<HTMLDivElement, NotificationCenterProps>(
   (
     {
       notifications,
@@ -301,10 +265,8 @@ export const NotificationCenter = React.forwardRef<
     const [open, setOpen] = React.useState(false);
     const unreadCount = notifications.filter((n) => !n.read).length;
     const sortedNotifications = [...notifications].sort((a, b) => {
-      const dateA =
-        typeof a.timestamp === 'string' ? new Date(a.timestamp) : a.timestamp;
-      const dateB =
-        typeof b.timestamp === 'string' ? new Date(b.timestamp) : b.timestamp;
+      const dateA = typeof a.timestamp === 'string' ? new Date(a.timestamp) : a.timestamp;
+      const dateB = typeof b.timestamp === 'string' ? new Date(b.timestamp) : b.timestamp;
       return dateB.getTime() - dateA.getTime();
     });
 
@@ -346,12 +308,7 @@ export const NotificationCenter = React.forwardRef<
             <h3 className="text-lg font-semibold">Notifications</h3>
             <div className="flex items-center gap-2">
               {unreadCount > 0 && onMarkAllAsRead && (
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="h-8 text-xs"
-                  onClick={onMarkAllAsRead}
-                >
+                <Button variant="ghost" size="sm" className="h-8 text-xs" onClick={onMarkAllAsRead}>
                   <Check className="mr-1 h-3 w-3" />
                   Mark all read
                 </Button>
@@ -381,33 +338,18 @@ export const NotificationCenter = React.forwardRef<
               >
                 <Bell className="text-muted-foreground h-8 w-8" />
               </div>
-              <p className="text-foreground mb-1 font-semibold">
-                You're all caught up!
-              </p>
-              <p
-                className={cn(
-                  'text-muted-foreground text-center text-xs',
-                  mode.font
-                )}
-              >
+              <p className="text-foreground mb-1 font-semibold">You're all caught up!</p>
+              <p className={cn('text-muted-foreground text-center text-xs', mode.font)}>
                 No new notifications at the moment
               </p>
             </div>
           ) : (
-            <ScrollArea
-              className="h-full"
-              style={{ maxHeight: `${maxHeight - 73}px` }}
-            >
+            <ScrollArea className="h-full" style={{ maxHeight: `${maxHeight - 73}px` }}>
               <div className="space-y-1 p-2">
                 {Object.entries(groupedNotifications).map(([group, items]) => (
                   <div key={group}>
                     {groupByDate && (
-                      <div
-                        className={cn(
-                          'bg-muted sticky top-0 z-10 mb-2 px-4 py-2',
-                          mode.radius
-                        )}
-                      >
+                      <div className={cn('bg-muted sticky top-0 z-10 mb-2 px-4 py-2', mode.radius)}>
                         <span className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
                           {group}
                         </span>

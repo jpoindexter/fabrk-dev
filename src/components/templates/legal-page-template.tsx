@@ -116,23 +116,14 @@ export function LegalPageTemplate({
       <div className="flex items-start justify-between">
         <div className="space-y-2">
           {/* Badge */}
-          <div
-            className={cn(
-              'border-border inline-block border px-4 py-1',
-              mode.radius
-            )}
-          >
+          <div className={cn('border-border inline-block border px-4 py-1', mode.radius)}>
             <span className={cn('text-muted-foreground text-xs', mode.font)}>
               [LEGAL]: {title.toUpperCase().replace(/ /g, '_')}
             </span>
           </div>
 
           {/* Title */}
-          <h1
-            className={cn('text-4xl font-semibold tracking-tight', mode.font)}
-          >
-            {title}
-          </h1>
+          <h1 className={cn('text-4xl font-semibold tracking-tight', mode.font)}>{title}</h1>
 
           {/* Last Updated */}
           <p className={cn('text-muted-foreground text-sm', mode.font)}>
@@ -164,9 +155,7 @@ export function LegalPageTemplate({
         </article>
 
         {/* Table of Contents Sidebar */}
-        {tableOfContents && tocItems.length > 0 && (
-          <TableOfContents items={tocItems} />
-        )}
+        {tableOfContents && tocItems.length > 0 && <TableOfContents items={tocItems} />}
       </div>
     </div>
   );
@@ -190,12 +179,7 @@ export interface LegalSectionProps {
   className?: string;
 }
 
-export function LegalSection({
-  id,
-  title,
-  children,
-  className,
-}: LegalSectionProps) {
+export function LegalSection({ id, title, children, className }: LegalSectionProps) {
   return (
     <section id={id} className={cn('scroll-mt-6', className)}>
       <h2 className={cn('mb-4 text-xl font-semibold', mode.font)}>{title}</h2>

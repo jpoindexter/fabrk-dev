@@ -23,10 +23,7 @@ const organizationSchema = z.object({
   slug: z
     .string()
     .min(2, 'Slug must be at least 2 characters')
-    .regex(
-      /^[a-z0-9-]+$/,
-      'Slug can only contain lowercase letters, numbers, and hyphens'
-    ),
+    .regex(/^[a-z0-9-]+$/, 'Slug can only contain lowercase letters, numbers, and hyphens'),
 });
 
 const inviteSchema = z.object({
@@ -97,10 +94,7 @@ export default function CreateOrganizationPage() {
       toast.success('Organization created successfully!');
       setStep(2);
     } catch (error: unknown) {
-      const errorMessage =
-        error instanceof Error
-          ? error.message
-          : 'Failed to create organization';
+      const errorMessage = error instanceof Error ? error.message : 'Failed to create organization';
       toast.error(errorMessage);
     } finally {
       setLoading(false);
@@ -169,9 +163,7 @@ export default function CreateOrganizationPage() {
         />
       )}
 
-      {step === 3 && (
-        <SuccessStep onComplete={() => router.push('/dashboard')} />
-      )}
+      {step === 3 && <SuccessStep onComplete={() => router.push('/dashboard')} />}
     </div>
   );
 }

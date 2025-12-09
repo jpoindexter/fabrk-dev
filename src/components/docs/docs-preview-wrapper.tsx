@@ -12,9 +12,6 @@ interface DocsPreviewWrapperProps {
   className?: string;
 }
 
-export function DocsPreviewWrapper({
-  children,
-  className,
-}: DocsPreviewWrapperProps) {
+export function DocsPreviewWrapper({ children, className }: DocsPreviewWrapperProps) {
   return <div className={cn('terminal-preview', className)}>{children}</div>;
 }

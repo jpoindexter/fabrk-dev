@@ -191,13 +191,9 @@ await resend.batch.send(emails);`,
       <DocsSection title="Best Practices">
         <DocsCard title="BEST_PRACTICES">
           <ul className="space-y-1">
-            <li>
-              ├─ Use direct send for auth emails, queue for everything else
-            </li>
+            <li>├─ Use direct send for auth emails, queue for everything else</li>
             <li>├─ Always include unsubscribe links for marketing emails</li>
-            <li>
-              ├─ Test emails with real inboxes (Gmail, Outlook) before launch
-            </li>
+            <li>├─ Test emails with real inboxes (Gmail, Outlook) before launch</li>
             <li>├─ Keep subjects under 50 characters for mobile</li>
             <li>├─ Use preheader text for email preview optimization</li>
             <li>├─ Include plain text fallback for accessibility</li>

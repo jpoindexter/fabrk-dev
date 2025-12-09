@@ -14,11 +14,7 @@ interface NotificationItemProps {
   onDelete: (id: string) => void;
 }
 
-export function NotificationItem({
-  notification,
-  onMarkAsRead,
-  onDelete,
-}: NotificationItemProps) {
+export function NotificationItem({ notification, onMarkAsRead, onDelete }: NotificationItemProps) {
   // Use useMemo to ensure Icon and colorClass are stable across renders
   const { Icon, colorClass } = useMemo(
     () => ({
@@ -48,11 +44,7 @@ export function NotificationItem({
         <div className="flex items-center justify-between">
           <Badge
             variant="outline"
-            className={cn(
-              mode.radius,
-              mode.font,
-              'border-border px-2 py-0.5 text-xs uppercase'
-            )}
+            className={cn(mode.radius, mode.font, 'border-border px-2 py-0.5 text-xs uppercase')}
           >
             {notification.type.replace(/_/g, ' ')}
           </Badge>
@@ -60,12 +52,7 @@ export function NotificationItem({
             {notification.timestamp}
           </span>
         </div>
-        <h4
-          className={cn(
-            mode.font,
-            'text-foreground mt-2 text-sm font-semibold'
-          )}
-        >
+        <h4 className={cn(mode.font, 'text-foreground mt-2 text-sm font-semibold')}>
           {notification.title}
         </h4>
         <p className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
@@ -77,11 +64,7 @@ export function NotificationItem({
             variant="link"
             size="sm"
             asChild
-            className={cn(
-              mode.radius,
-              mode.font,
-              'mt-2 px-0 text-xs font-semibold'
-            )}
+            className={cn(mode.radius, mode.font, 'mt-2 px-0 text-xs font-semibold')}
           >
             <Link href={notification.actionUrl}>VIEW_DETAILS</Link>
           </Button>
@@ -112,12 +95,7 @@ export function NotificationItem({
 
       {/* Read indicator */}
       {!notification.read && (
-        <span
-          className={cn(
-            mode.radius,
-            'bg-primary absolute top-2 right-2 size-2'
-          )}
-        />
+        <span className={cn(mode.radius, 'bg-primary absolute top-2 right-2 size-2')} />
       )}
     </div>
   );

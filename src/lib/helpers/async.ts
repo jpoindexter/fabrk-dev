@@ -147,9 +147,7 @@ export function throttleAsync<T extends (...args: any[]) => Promise<any>>(
 /**
  * Execute promises sequentially
  */
-export async function sequential<T>(
-  promises: (() => Promise<T>)[]
-): Promise<T[]> {
+export async function sequential<T>(promises: (() => Promise<T>)[]): Promise<T[]> {
   const results: T[] = [];
   for (const promiseFn of promises) {
     results.push(await promiseFn());
@@ -160,9 +158,7 @@ export async function sequential<T>(
 /**
  * Safe promise wrapper that never throws
  */
-export async function safe<T>(
-  promise: Promise<T>
-): Promise<[Error | null, T | null]> {
+export async function safe<T>(promise: Promise<T>): Promise<[Error | null, T | null]> {
   try {
     const data = await promise;
     return [null, data];

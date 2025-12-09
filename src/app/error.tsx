@@ -36,17 +36,12 @@ export default function Error({
         </div>
 
         {/* Error Message */}
-        <h1
-          className={cn(
-            'text-foreground mb-4 text-4xl font-semibold',
-            mode.font
-          )}
-        >
+        <h1 className={cn('text-foreground mb-4 text-4xl font-semibold', mode.font)}>
           SOMETHING_WENT_WRONG
         </h1>
         <p className={cn('text-muted-foreground mb-8 text-sm', mode.font)}>
-          We're sorry, but something unexpected happened. This error has been
-          logged and we're looking into it.
+          We're sorry, but something unexpected happened. This error has been logged and we're
+          looking into it.
         </p>
 
         {/* Error Details (Development Only) */}
@@ -57,19 +52,10 @@ export default function Error({
               mode.radius
             )}
           >
-            <p
-              className={cn(
-                'text-destructive mb-2 text-xs font-semibold',
-                mode.font
-              )}
-            >
+            <p className={cn('text-destructive mb-2 text-xs font-semibold', mode.font)}>
               [ERROR_DETAILS]:
             </p>
-            <p
-              className={cn('text-destructive text-xs break-words', mode.font)}
-            >
-              {error.message}
-            </p>
+            <p className={cn('text-destructive text-xs break-words', mode.font)}>{error.message}</p>
             {error.digest && (
               <p className={cn('text-destructive mt-2 text-xs', mode.font)}>
                 [ERROR_ID]: {error.digest}
@@ -99,10 +85,7 @@ export default function Error({
           </p>
           <a
             href="mailto:support@fabrek.dev"
-            className={cn(
-              'text-primary text-xs font-semibold hover:underline',
-              mode.font
-            )}
+            className={cn('text-primary text-xs font-semibold hover:underline', mode.font)}
           >
             support@fabrek.dev
           </a>

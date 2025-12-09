@@ -13,12 +13,7 @@
 
 import { logger } from '@/lib/logger';
 
-export type AnalyticsProvider =
-  | 'ga4'
-  | 'plausible'
-  | 'posthog'
-  | 'mixpanel'
-  | 'custom';
+export type AnalyticsProvider = 'ga4' | 'plausible' | 'posthog' | 'mixpanel' | 'custom';
 
 // Event definitions (type-safe)
 export type AnalyticsEvent =
@@ -130,10 +125,7 @@ export function initAnalytics(options: AnalyticsConfig) {
  * Track event
  * Type-safe event tracking with automatic provider routing
  */
-export function trackEvent<T extends AnalyticsEvent>(
-  event: T['name'],
-  props?: T['props']
-) {
+export function trackEvent<T extends AnalyticsEvent>(event: T['name'], props?: T['props']) {
   if (!config.enabled) return;
 
   if (config.debug) {
@@ -207,11 +199,7 @@ export function trackRevenue(
   }
 
   // GA4 purchase event
-  if (
-    config.providers.includes('ga4') &&
-    typeof window !== 'undefined' &&
-    window.gtag
-  ) {
+  if (config.providers.includes('ga4') && typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', 'purchase', {
       transaction_id: transactionId,
       value: amount,
@@ -221,11 +209,7 @@ export function trackRevenue(
   }
 
   // PostHog revenue tracking
-  if (
-    config.providers.includes('posthog') &&
-    typeof window !== 'undefined' &&
-    window.posthog
-  ) {
+  if (config.providers.includes('posthog') && typeof window !== 'undefined' && window.posthog) {
     window.posthog.capture('purchase', {
       transaction_id: transactionId,
       value: amount,
@@ -288,11 +272,7 @@ function trackPlausibleEvent(event: string, props?: Record<string, unknown>) {
     const plausibleProps: Record<string, string | number | boolean> = {};
     if (props) {
       Object.entries(props).forEach(([key, value]) => {
-        if (
-          typeof value === 'string' ||
-          typeof value === 'number' ||
-          typeof value === 'boolean'
-        ) {
+        if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
           plausibleProps[key] = value;
         } else if (value !== null && value !== undefined) {
           plausibleProps[key] = String(value);

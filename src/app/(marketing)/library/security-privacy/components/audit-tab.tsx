@@ -23,21 +23,13 @@ interface AuditTabProps {
 export function AuditTab({ auditLog }: AuditTabProps) {
   return (
     <Card tone="neutral">
-      <CardHeader
-        code="0x09"
-        title="AUDIT"
-        icon={<Activity className="h-4 w-4" />}
-      />
+      <CardHeader code="0x09" title="AUDIT" icon={<Activity className="h-4 w-4" />} />
       <CardContent padding="md">
         <div className="mb-4 flex items-center justify-between">
           <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
             [SECURITY_AUDIT_LOG]: COUNT={auditLog.length}
           </div>
-          <Button
-            variant="outline"
-            size="sm"
-            className={cn(mode.radius, mode.font, 'h-7 text-xs')}
-          >
+          <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, 'h-7 text-xs')}>
             <Download className="mr-2 h-3 w-3" />
             &gt; EXPORT
           </Button>
@@ -60,10 +52,7 @@ export function AuditTab({ auditLog }: AuditTabProps) {
             {auditLog.map((log) => (
               <div
                 key={log.id}
-                className={cn(
-                  mode.font,
-                  'hover:bg-muted/30 grid grid-cols-4 px-4 py-4 text-xs'
-                )}
+                className={cn(mode.font, 'hover:bg-muted/30 grid grid-cols-4 px-4 py-4 text-xs')}
               >
                 <span>{log.action}</span>
                 <span className="text-muted-foreground">{log.timestamp}</span>

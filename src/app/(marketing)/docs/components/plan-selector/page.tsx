@@ -18,12 +18,7 @@ const plans = [
     price: 29,
     interval: 'month' as const,
     description: 'For growing teams',
-    features: [
-      'Unlimited projects',
-      '10GB storage',
-      'Priority support',
-      'API access',
-    ],
+    features: ['Unlimited projects', '10GB storage', 'Priority support', 'API access'],
     popular: true,
   },
   {
@@ -53,11 +48,7 @@ export default function PlanSelectorPage() {
       mainPreview={{
         preview: (
           <div className="p-4">
-            <PlanSelector
-              plans={plans}
-              selectedPlanId="pro"
-              onSelectPlan={() => {}}
-            />
+            <PlanSelector plans={plans} selectedPlanId="pro" onSelectPlan={() => {}} />
           </div>
         ),
         code: `const plans = [

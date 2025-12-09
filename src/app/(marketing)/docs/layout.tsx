@@ -5,11 +5,7 @@ import { DocsToc } from '@/components/docs/docs-toc';
 import { useRef } from 'react';
 import { docsNavigation } from './docs-nav-data';
 
-export default function DocsLayoutPage({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function DocsLayoutPage({ children }: { children: React.ReactNode }) {
   const mainRef = useRef<HTMLElement>(null);
 
   return (

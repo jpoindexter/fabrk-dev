@@ -77,9 +77,7 @@ export function ProfileForm() {
     } catch (err: unknown) {
       error(
         'Error',
-        err instanceof Error
-          ? err.message
-          : 'Failed to update profile. Please try again.'
+        err instanceof Error ? err.message : 'Failed to update profile. Please try again.'
       );
     } finally {
       setIsLoading(false);
@@ -101,9 +99,7 @@ export function ProfileForm() {
                   <FormControl>
                     <Input placeholder="Your name" {...field} />
                   </FormControl>
-                  <FormDescription>
-                    This is your public display name.
-                  </FormDescription>
+                  <FormDescription>This is your public display name.</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -115,15 +111,9 @@ export function ProfileForm() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input
-                      type="email"
-                      placeholder="your.email@example.com"
-                      {...field}
-                    />
+                    <Input type="email" placeholder="your.email@example.com" {...field} />
                   </FormControl>
-                  <FormDescription>
-                    Your email address for account notifications.
-                  </FormDescription>
+                  <FormDescription>Your email address for account notifications.</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}

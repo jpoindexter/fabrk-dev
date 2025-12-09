@@ -15,9 +15,7 @@ interface PreviewHeaderProps {
 export function PreviewHeader({ title }: PreviewHeaderProps) {
   return (
     <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-      <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-        [ {title} ]
-      </span>
+      <span className={cn(mode.font, 'text-muted-foreground text-xs')}>[ {title} ]</span>
     </div>
   );
 }

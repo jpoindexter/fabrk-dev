@@ -15,8 +15,7 @@ import type * as Prisma from '../internal/prismaNamespace';
  * Model Job
  *
  */
-export type JobModel =
-  runtime.Types.Result.DefaultSelection<Prisma.$JobPayload>;
+export type JobModel = runtime.Types.Result.DefaultSelection<Prisma.$JobPayload>;
 
 export type AggregateJob = {
   _count: JobCountAggregateOutputType | null;
@@ -147,8 +146,7 @@ export type JobCountAggregateInputType = {
 };
 
 export type JobAggregateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which Job to aggregate.
@@ -159,9 +157,7 @@ export type JobAggregateArgs<
    *
    * Determine the order of Jobs to fetch.
    */
-  orderBy?:
-    | Prisma.JobOrderByWithRelationInput
-    | Prisma.JobOrderByWithRelationInput[];
+  orderBy?: Prisma.JobOrderByWithRelationInput | Prisma.JobOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -221,13 +217,10 @@ export type GetJobAggregateType<T extends JobAggregateArgs> = {
 };
 
 export type JobGroupByArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.JobWhereInput;
-  orderBy?:
-    | Prisma.JobOrderByWithAggregationInput
-    | Prisma.JobOrderByWithAggregationInput[];
+  orderBy?: Prisma.JobOrderByWithAggregationInput | Prisma.JobOrderByWithAggregationInput[];
   by: Prisma.JobScalarFieldEnum[] | Prisma.JobScalarFieldEnum;
   having?: Prisma.JobScalarWhereWithAggregatesInput;
   take?: number;
@@ -356,13 +349,9 @@ export type JobOrderByWithAggregationInput = {
 };
 
 export type JobScalarWhereWithAggregatesInput = {
-  AND?:
-    | Prisma.JobScalarWhereWithAggregatesInput
-    | Prisma.JobScalarWhereWithAggregatesInput[];
+  AND?: Prisma.JobScalarWhereWithAggregatesInput | Prisma.JobScalarWhereWithAggregatesInput[];
   OR?: Prisma.JobScalarWhereWithAggregatesInput[];
-  NOT?:
-    | Prisma.JobScalarWhereWithAggregatesInput
-    | Prisma.JobScalarWhereWithAggregatesInput[];
+  NOT?: Prisma.JobScalarWhereWithAggregatesInput | Prisma.JobScalarWhereWithAggregatesInput[];
   id?: Prisma.StringWithAggregatesFilter<'Job'> | string;
   type?: Prisma.StringWithAggregatesFilter<'Job'> | string;
   status?: Prisma.EnumJobStatusWithAggregatesFilter<'Job'> | $Enums.JobStatus;
@@ -372,21 +361,9 @@ export type JobScalarWhereWithAggregatesInput = {
   data?: Prisma.JsonNullableWithAggregatesFilter<'Job'>;
   result?: Prisma.JsonNullableWithAggregatesFilter<'Job'>;
   error?: Prisma.StringNullableWithAggregatesFilter<'Job'> | string | null;
-  scheduledFor?:
-    | Prisma.DateTimeNullableWithAggregatesFilter<'Job'>
-    | Date
-    | string
-    | null;
-  startedAt?:
-    | Prisma.DateTimeNullableWithAggregatesFilter<'Job'>
-    | Date
-    | string
-    | null;
-  completedAt?:
-    | Prisma.DateTimeNullableWithAggregatesFilter<'Job'>
-    | Date
-    | string
-    | null;
+  scheduledFor?: Prisma.DateTimeNullableWithAggregatesFilter<'Job'> | Date | string | null;
+  startedAt?: Prisma.DateTimeNullableWithAggregatesFilter<'Job'> | Date | string | null;
+  completedAt?: Prisma.DateTimeNullableWithAggregatesFilter<'Job'> | Date | string | null;
   createdAt?: Prisma.DateTimeWithAggregatesFilter<'Job'> | Date | string;
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<'Job'> | Date | string;
 };
@@ -435,21 +412,9 @@ export type JobUpdateInput = {
   data?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   result?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   error?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  scheduledFor?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  startedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  completedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  scheduledFor?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -464,21 +429,9 @@ export type JobUncheckedUpdateInput = {
   data?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   result?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   error?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  scheduledFor?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  startedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  completedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  scheduledFor?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -510,21 +463,9 @@ export type JobUpdateManyMutationInput = {
   data?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   result?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   error?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  scheduledFor?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  startedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  completedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  scheduledFor?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -539,21 +480,9 @@ export type JobUncheckedUpdateManyInput = {
   data?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   result?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
   error?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  scheduledFor?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  startedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  completedAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
+  scheduledFor?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -622,8 +551,7 @@ export type EnumJobStatusFieldUpdateOperationsInput = {
 };
 
 export type JobSelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -645,8 +573,7 @@ export type JobSelect<
 >;
 
 export type JobSelectCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -668,8 +595,7 @@ export type JobSelectCreateManyAndReturn<
 >;
 
 export type JobSelectUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -708,8 +634,7 @@ export type JobSelectScalar = {
 };
 
 export type JobOmit<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
   | 'id'
   | 'type'
@@ -729,8 +654,7 @@ export type JobOmit<
 >;
 
 export type $JobPayload<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   name: 'Job';
   objects: {};
@@ -756,20 +680,17 @@ export type $JobPayload<
   composites: {};
 };
 
-export type JobGetPayload<
-  S extends boolean | null | undefined | JobDefaultArgs,
-> = runtime.Types.Result.GetResult<Prisma.$JobPayload, S>;
+export type JobGetPayload<S extends boolean | null | undefined | JobDefaultArgs> =
+  runtime.Types.Result.GetResult<Prisma.$JobPayload, S>;
 
 export type JobCountArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = Omit<JobFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
   select?: JobCountAggregateInputType | true;
 };
 
 export interface JobDelegate<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > {
   [K: symbol]: {
@@ -901,12 +822,7 @@ export interface JobDelegate<
   findMany<T extends JobFindManyArgs>(
     args?: Prisma.SelectSubset<T, JobFindManyArgs<ExtArgs>>
   ): Prisma.PrismaPromise<
-    runtime.Types.Result.GetResult<
-      Prisma.$JobPayload<ExtArgs>,
-      T,
-      'findMany',
-      GlobalOmitOptions
-    >
+    runtime.Types.Result.GetResult<Prisma.$JobPayload<ExtArgs>, T, 'findMany', GlobalOmitOptions>
   >;
 
   /**
@@ -924,12 +840,7 @@ export interface JobDelegate<
   create<T extends JobCreateArgs>(
     args: Prisma.SelectSubset<T, JobCreateArgs<ExtArgs>>
   ): Prisma.Prisma__JobClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$JobPayload<ExtArgs>,
-      T,
-      'create',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$JobPayload<ExtArgs>, T, 'create', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -999,12 +910,7 @@ export interface JobDelegate<
   delete<T extends JobDeleteArgs>(
     args: Prisma.SelectSubset<T, JobDeleteArgs<ExtArgs>>
   ): Prisma.Prisma__JobClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$JobPayload<ExtArgs>,
-      T,
-      'delete',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$JobPayload<ExtArgs>, T, 'delete', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -1028,12 +934,7 @@ export interface JobDelegate<
   update<T extends JobUpdateArgs>(
     args: Prisma.SelectSubset<T, JobUpdateArgs<ExtArgs>>
   ): Prisma.Prisma__JobClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$JobPayload<ExtArgs>,
-      T,
-      'update',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$JobPayload<ExtArgs>, T, 'update', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -1135,12 +1036,7 @@ export interface JobDelegate<
   upsert<T extends JobUpsertArgs>(
     args: Prisma.SelectSubset<T, JobUpsertArgs<ExtArgs>>
   ): Prisma.Prisma__JobClient<
-    runtime.Types.Result.GetResult<
-      Prisma.$JobPayload<ExtArgs>,
-      T,
-      'upsert',
-      GlobalOmitOptions
-    >,
+    runtime.Types.Result.GetResult<Prisma.$JobPayload<ExtArgs>, T, 'upsert', GlobalOmitOptions>,
     never,
     ExtArgs,
     GlobalOmitOptions
@@ -1240,12 +1136,7 @@ export interface JobDelegate<
               ? never
               : P extends string
                 ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                : [
-                    Error,
-                    'Field ',
-                    P,
-                    ` in "having" needs to be provided in "by"`,
-                  ];
+                : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
           }[HavingFields]
         : 'take' extends Prisma.Keys<T>
           ? 'orderBy' extends Prisma.Keys<T>
@@ -1276,9 +1167,7 @@ export interface JobDelegate<
                 }[OrderFields],
   >(
     args: Prisma.SubsetIntersection<T, JobGroupByArgs, OrderByArg> & InputErrors
-  ): {} extends InputErrors
-    ? GetJobGroupByPayload<T>
-    : Prisma.PrismaPromise<InputErrors>;
+  ): {} extends InputErrors ? GetJobGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
   /**
    * Fields of the Job model
    */
@@ -1294,8 +1183,7 @@ export interface JobDelegate<
 export interface Prisma__JobClient<
   T,
   Null = never,
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: 'PrismaPromise';
@@ -1306,14 +1194,8 @@ export interface Prisma__JobClient<
    * @returns A Promise for the completion of which ever callback is executed.
    */
   then<TResult1 = T, TResult2 = never>(
-    onfulfilled?:
-      | ((value: T) => TResult1 | PromiseLike<TResult1>)
-      | undefined
-      | null,
-    onrejected?:
-      | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-      | undefined
-      | null
+    onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
   ): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
   /**
    * Attaches a callback for only the rejection of the Promise.
@@ -1321,10 +1203,7 @@ export interface Prisma__JobClient<
    * @returns A Promise for the completion of the callback.
    */
   catch<TResult = never>(
-    onrejected?:
-      | ((reason: any) => TResult | PromiseLike<TResult>)
-      | undefined
-      | null
+    onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
   ): runtime.Types.Utils.JsPromise<T | TResult>;
   /**
    * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
@@ -1332,9 +1211,7 @@ export interface Prisma__JobClient<
    * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
    * @returns A Promise for the completion of the callback.
    */
-  finally(
-    onfinally?: (() => void) | undefined | null
-  ): runtime.Types.Utils.JsPromise<T>;
+  finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
 }
 
 /**
@@ -1362,8 +1239,7 @@ export interface JobFieldRefs {
  * Job findUnique
  */
 export type JobFindUniqueArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Job
@@ -1383,8 +1259,7 @@ export type JobFindUniqueArgs<
  * Job findUniqueOrThrow
  */
 export type JobFindUniqueOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Job
@@ -1404,8 +1279,7 @@ export type JobFindUniqueOrThrowArgs<
  * Job findFirst
  */
 export type JobFindFirstArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Job
@@ -1424,9 +1298,7 @@ export type JobFindFirstArgs<
    *
    * Determine the order of Jobs to fetch.
    */
-  orderBy?:
-    | Prisma.JobOrderByWithRelationInput
-    | Prisma.JobOrderByWithRelationInput[];
+  orderBy?: Prisma.JobOrderByWithRelationInput | Prisma.JobOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1457,8 +1329,7 @@ export type JobFindFirstArgs<
  * Job findFirstOrThrow
  */
 export type JobFindFirstOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Job
@@ -1477,9 +1348,7 @@ export type JobFindFirstOrThrowArgs<
    *
    * Determine the order of Jobs to fetch.
    */
-  orderBy?:
-    | Prisma.JobOrderByWithRelationInput
-    | Prisma.JobOrderByWithRelationInput[];
+  orderBy?: Prisma.JobOrderByWithRelationInput | Prisma.JobOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1510,8 +1379,7 @@ export type JobFindFirstOrThrowArgs<
  * Job findMany
  */
 export type JobFindManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Job
@@ -1530,9 +1398,7 @@ export type JobFindManyArgs<
    *
    * Determine the order of Jobs to fetch.
    */
-  orderBy?:
-    | Prisma.JobOrderByWithRelationInput
-    | Prisma.JobOrderByWithRelationInput[];
+  orderBy?: Prisma.JobOrderByWithRelationInput | Prisma.JobOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1558,8 +1424,7 @@ export type JobFindManyArgs<
  * Job create
  */
 export type JobCreateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Job
@@ -1579,8 +1444,7 @@ export type JobCreateArgs<
  * Job createMany
  */
 export type JobCreateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to create many Jobs.
@@ -1593,8 +1457,7 @@ export type JobCreateManyArgs<
  * Job createManyAndReturn
  */
 export type JobCreateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Job
@@ -1615,8 +1478,7 @@ export type JobCreateManyAndReturnArgs<
  * Job update
  */
 export type JobUpdateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Job
@@ -1640,16 +1502,12 @@ export type JobUpdateArgs<
  * Job updateMany
  */
 export type JobUpdateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to update Jobs.
    */
-  data: Prisma.XOR<
-    Prisma.JobUpdateManyMutationInput,
-    Prisma.JobUncheckedUpdateManyInput
-  >;
+  data: Prisma.XOR<Prisma.JobUpdateManyMutationInput, Prisma.JobUncheckedUpdateManyInput>;
   /**
    * Filter which Jobs to update
    */
@@ -1664,8 +1522,7 @@ export type JobUpdateManyArgs<
  * Job updateManyAndReturn
  */
 export type JobUpdateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Job
@@ -1678,10 +1535,7 @@ export type JobUpdateManyAndReturnArgs<
   /**
    * The data used to update Jobs.
    */
-  data: Prisma.XOR<
-    Prisma.JobUpdateManyMutationInput,
-    Prisma.JobUncheckedUpdateManyInput
-  >;
+  data: Prisma.XOR<Prisma.JobUpdateManyMutationInput, Prisma.JobUncheckedUpdateManyInput>;
   /**
    * Filter which Jobs to update
    */
@@ -1696,8 +1550,7 @@ export type JobUpdateManyAndReturnArgs<
  * Job upsert
  */
 export type JobUpsertArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Job
@@ -1725,8 +1578,7 @@ export type JobUpsertArgs<
  * Job delete
  */
 export type JobDeleteArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Job
@@ -1746,8 +1598,7 @@ export type JobDeleteArgs<
  * Job deleteMany
  */
 export type JobDeleteManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which Jobs to delete
@@ -1763,8 +1614,7 @@ export type JobDeleteManyArgs<
  * Job without action
  */
 export type JobDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the Job

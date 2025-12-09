@@ -6,12 +6,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import {
-  getPublishedPosts,
-  getCategories,
-  formatDate,
-  formatReadTime,
-} from '@/lib/blog';
+import { getPublishedPosts, getCategories, formatDate, formatReadTime } from '@/lib/blog';
 
 export const metadata: Metadata = {
   title: 'Blog | Fabrk',
@@ -40,9 +35,7 @@ export default async function BlogPage({
         {/* Header */}
         <div className="border-border bg-card mb-12 border">
           <div className="border-border border-b px-6 py-2">
-            <span className="text-muted-foreground font-mono text-xs">
-              [ BLOG ]
-            </span>
+            <span className="text-muted-foreground font-mono text-xs">[ BLOG ]</span>
           </div>
           <div className="p-6">
             <h1 className="text-foreground mb-2 font-mono text-4xl font-semibold">
@@ -88,9 +81,7 @@ export default async function BlogPage({
         {/* Featured Posts */}
         {featuredPosts.length > 0 && !categorySlug && (
           <div className="mb-12">
-            <h2 className="text-muted-foreground mb-4 font-mono text-xs">
-              [ FEATURED ]
-            </h2>
+            <h2 className="text-muted-foreground mb-4 font-mono text-xs">[ FEATURED ]</h2>
             <div className="grid gap-6 md:grid-cols-2">
               {featuredPosts.map((post) => (
                 <Link
@@ -111,13 +102,9 @@ export default async function BlogPage({
                   <div className="p-6">
                     <div className="text-muted-foreground mb-2 flex items-center gap-2 font-mono text-xs">
                       {post.category && (
-                        <span className="text-primary">
-                          [{post.category.name.toUpperCase()}]
-                        </span>
+                        <span className="text-primary">[{post.category.name.toUpperCase()}]</span>
                       )}
-                      <span>
-                        {formatDate(post.publishedAt || post.createdAt)}
-                      </span>
+                      <span>{formatDate(post.publishedAt || post.createdAt)}</span>
                       <span>•</span>
                       <span>{formatReadTime(post.readTime || 1)}</span>
                     </div>
@@ -125,9 +112,7 @@ export default async function BlogPage({
                       {post.title}
                     </h3>
                     {post.excerpt && (
-                      <p className="text-muted-foreground font-mono text-sm">
-                        {post.excerpt}
-                      </p>
+                      <p className="text-muted-foreground font-mono text-sm">{post.excerpt}</p>
                     )}
                   </div>
                 </Link>
@@ -139,9 +124,7 @@ export default async function BlogPage({
         {/* All Posts */}
         {regularPosts.length > 0 ? (
           <div>
-            <h2 className="text-muted-foreground mb-4 font-mono text-xs">
-              [ ALL_POSTS ]
-            </h2>
+            <h2 className="text-muted-foreground mb-4 font-mono text-xs">[ ALL_POSTS ]</h2>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {regularPosts.map((post) => (
                 <Link
@@ -151,20 +134,15 @@ export default async function BlogPage({
                 >
                   <div className="text-muted-foreground mb-2 flex items-center gap-2 font-mono text-xs">
                     {post.category && (
-                      <span className="text-primary">
-                        [{post.category.name.toUpperCase()}]
-                      </span>
+                      <span className="text-primary">[{post.category.name.toUpperCase()}]</span>
                     )}
-                    <span>
-                      {formatDate(post.publishedAt || post.createdAt)}
-                    </span>
+                    <span>{formatDate(post.publishedAt || post.createdAt)}</span>
                   </div>
                   <h3 className="text-foreground group-hover:text-primary mb-2 font-mono text-sm font-semibold">
                     {post.title}
                   </h3>
                   <div className="text-muted-foreground font-mono text-xs">
-                    {formatReadTime(post.readTime || 1)} •{' '}
-                    {post.author.name || 'Anonymous'}
+                    {formatReadTime(post.readTime || 1)} • {post.author.name || 'Anonymous'}
                   </div>
                 </Link>
               ))}

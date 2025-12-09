@@ -47,11 +47,7 @@ export function NotificationsActionsBar({
           <Archive className="mr-1 h-3 w-3" />
           &gt; CLEAR_ALL
         </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          className={cn(mode.radius, mode.font, 'h-7 text-xs')}
-        >
+        <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, 'h-7 text-xs')}>
           <Settings className="mr-1 h-3 w-3" />
           &gt; SETTINGS
         </Button>

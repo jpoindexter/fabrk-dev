@@ -210,15 +210,13 @@ warning("Warning", "Please be careful.");`,
         {
           name: 'dismiss',
           type: '(toastId?: string | number) => void',
-          description:
-            'Dismiss a specific toast or all toasts if no ID provided.',
+          description: 'Dismiss a specific toast or all toasts if no ID provided.',
         },
       ]}
       usageExamples={[
         {
           title: 'Setup',
-          description:
-            'The toast system uses Sonner and is pre-configured in your layout.',
+          description: 'The toast system uses Sonner and is pre-configured in your layout.',
           code: `import { Toaster } from "sonner";
 
 export default function RootLayout({ children }) {

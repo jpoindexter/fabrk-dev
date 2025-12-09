@@ -29,17 +29,12 @@ export function MembersPageHeader({
         </div>
         <div>
           <h1 className="text-4xl font-semibold">Team Members</h1>
-          <p className="text-muted-foreground">
-            Manage members and roles for {organizationName}
-          </p>
+          <p className="text-muted-foreground">Manage members and roles for {organizationName}</p>
         </div>
       </div>
 
       {isOwnerOrAdmin && (
-        <InviteMemberDialog
-          organizationId={organizationId}
-          organizationName={organizationName}
-        />
+        <InviteMemberDialog organizationId={organizationId} organizationName={organizationName} />
       )}
     </div>
   );

@@ -14,11 +14,7 @@ interface NavigationControlsProps {
   onNext: () => void;
 }
 
-export function NavigationControls({
-  currentStep,
-  onBack,
-  onNext,
-}: NavigationControlsProps) {
+export function NavigationControls({ currentStep, onBack, onNext }: NavigationControlsProps) {
   return (
     <div className="border-border flex items-center justify-between border-t px-6 py-4">
       <Button
@@ -30,10 +26,7 @@ export function NavigationControls({
         <ArrowLeft className="mr-1 h-3 w-3" />
         BACK
       </Button>
-      <Button
-        onClick={onNext}
-        className={cn(mode.radius, mode.font, 'text-xs')}
-      >
+      <Button onClick={onNext} className={cn(mode.radius, mode.font, 'text-xs')}>
         {currentStep === 4 ? 'COMPLETE' : 'NEXT'}
         <ArrowRight className="ml-1 h-3 w-3" />
       </Button>

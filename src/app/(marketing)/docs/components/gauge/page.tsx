@@ -24,14 +24,7 @@ export default function GaugePage() {
           description: 'Gauge with custom min and max values',
           preview: (
             <div className="flex flex-wrap justify-center gap-8">
-              <Gauge
-                value={3500}
-                min={0}
-                max={5000}
-                label="Revenue"
-                unit="$"
-                showValue={true}
-              />
+              <Gauge value={3500} min={0} max={5000} label="Revenue" unit="$" showValue={true} />
               <Gauge
                 value={42}
                 min={0}
@@ -92,13 +85,7 @@ export default function GaugePage() {
           description: 'Gauges with different sizes, angles, and colors',
           preview: (
             <div className="flex flex-wrap justify-center gap-8">
-              <Gauge
-                value={80}
-                size={150}
-                thickness={15}
-                label="Small"
-                showValue={true}
-              />
+              <Gauge value={80} size={150} thickness={15} label="Small" showValue={true} />
               <Gauge
                 value={45}
                 size={250}
@@ -130,19 +117,9 @@ export default function GaugePage() {
           description: 'Color-coded gauge for scores with automatic thresholds',
           preview: (
             <div className="flex flex-wrap justify-center gap-8">
-              <ScoreGauge
-                score={92}
-                maxScore={100}
-                label="Excellent"
-                size={180}
-              />
+              <ScoreGauge score={92} maxScore={100} label="Excellent" size={180} />
               <ScoreGauge score={68} maxScore={100} label="Good" size={180} />
-              <ScoreGauge
-                score={35}
-                maxScore={100}
-                label="Needs Work"
-                size={180}
-              />
+              <ScoreGauge score={35} maxScore={100} label="Needs Work" size={180} />
             </div>
           ),
           code: `<ScoreGauge

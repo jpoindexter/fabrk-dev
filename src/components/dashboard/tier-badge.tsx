@@ -19,11 +19,7 @@ const tierIcons = {
   enterprise: Sparkles,
 };
 
-export function TierBadge({
-  tier,
-  showIcon = true,
-  size = 'md',
-}: TierBadgeProps) {
+export function TierBadge({ tier, showIcon = true, size = 'md' }: TierBadgeProps) {
   const tierName = (tier || 'trial') as TierName;
   const displayName = TIER_NAMES[tierName] || 'Trial';
   const variant = TIER_BADGES[tierName] || TIER_BADGES.trial;
@@ -42,11 +38,7 @@ export function TierBadge({
       className="flex items-center gap-2 font-medium"
     >
       {showIcon && (
-        <Icon
-          className={
-            size === 'sm' ? 'size-3' : size === 'lg' ? 'h-5 w-5' : 'h-4 w-4'
-          }
-        />
+        <Icon className={size === 'sm' ? 'size-3' : size === 'lg' ? 'h-5 w-5' : 'h-4 w-4'} />
       )}
       {displayName.toUpperCase()}
     </Badge>

@@ -50,15 +50,8 @@ export default function LabelPage() {
               <Label htmlFor="password" required error>
                 {formatLabel('Password')}
               </Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="Enter password"
-                error
-              />
-              <p className="text-destructive text-xs">
-                Password must be at least 12 characters
-              </p>
+              <Input id="password" type="password" placeholder="Enter password" error />
+              <p className="text-destructive text-xs">Password must be at least 12 characters</p>
             </div>
           ),
           code: `<Label htmlFor="password" required error>
@@ -79,9 +72,7 @@ export default function LabelPage() {
           preview: (
             <div className="flex items-center gap-2">
               <Checkbox id="terms" />
-              <Label htmlFor="terms">
-                {formatLabel('Accept terms and conditions')}
-              </Label>
+              <Label htmlFor="terms">{formatLabel('Accept terms and conditions')}</Label>
             </div>
           ),
           code: `<div className="flex items-center gap-2">
@@ -94,9 +85,7 @@ export default function LabelPage() {
           description: 'Label for toggle switch control.',
           preview: (
             <div className="flex items-center justify-between">
-              <Label htmlFor="notifications">
-                {formatLabel('Email Notifications')}
-              </Label>
+              <Label htmlFor="notifications">{formatLabel('Email Notifications')}</Label>
               <Switch id="notifications" />
             </div>
           ),
@@ -132,8 +121,7 @@ export default function LabelPage() {
                   <span className="text-primary">font-size</span>: 14px
                 </div>
                 <div className="text-muted-foreground">
-                  <span className="text-primary">font-weight</span>: 600
-                  (semibold)
+                  <span className="text-primary">font-weight</span>: 600 (semibold)
                 </div>
                 <div className="text-muted-foreground">
                   <span className="text-primary">line-height</span>: 1.4
@@ -163,15 +151,9 @@ tracking-normal      // Letter spacing`,
                 </span>
               </div>
               <div className="space-y-2 text-xs">
-                <div className="text-primary font-semibold">
-                  [HEURISTIC #5]:
-                </div>
-                <div className="text-muted-foreground pl-4">
-                  Error Prevention
-                </div>
-                <div className="text-success mt-2 font-semibold">
-                  [IMPLEMENTATION]:
-                </div>
+                <div className="text-primary font-semibold">[HEURISTIC #5]:</div>
+                <div className="text-muted-foreground pl-4">Error Prevention</div>
+                <div className="text-success mt-2 font-semibold">[IMPLEMENTATION]:</div>
                 <div className="text-muted-foreground pl-4">
                   Show required indicator (*) to prevent submission errors
                 </div>

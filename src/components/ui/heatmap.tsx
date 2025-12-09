@@ -37,9 +37,7 @@ export function Heatmap({
   className,
   onCellClick,
 }: HeatmapProps) {
-  const [hoveredCell, setHoveredCell] = React.useState<HeatmapDataItem | null>(
-    null
-  );
+  const [hoveredCell, setHoveredCell] = React.useState<HeatmapDataItem | null>(null);
 
   const xLabels = Array.from(new Set(data.map((d) => d.x))).sort();
   const yLabels = Array.from(new Set(data.map((d) => d.y))).sort();
@@ -51,10 +49,7 @@ export function Heatmap({
 
   const getColor = (value: number) => {
     const normalized = (value - minValue) / range;
-    const index = Math.min(
-      Math.floor(normalized * colorScale.length),
-      colorScale.length - 1
-    );
+    const index = Math.min(Math.floor(normalized * colorScale.length), colorScale.length - 1);
     return colorScale[index];
   };
 
@@ -97,11 +92,7 @@ export function Heatmap({
 
           <div className="flex flex-col" style={{ gap: `${gap}px` }}>
             {yLabels.map((yLabel) => (
-              <div
-                key={String(yLabel)}
-                className="flex"
-                style={{ gap: `${gap}px` }}
-              >
+              <div key={String(yLabel)} className="flex" style={{ gap: `${gap}px` }}>
                 {xLabels.map((xLabel) => {
                   const cellData = getCellData(xLabel, yLabel);
                   const isHovered = hoveredCell === cellData;
@@ -142,11 +133,7 @@ export function Heatmap({
                         }
                       }}
                     >
-                      {showValues && (
-                        <span className="text-xs font-medium">
-                          {cellData.value}
-                        </span>
-                      )}
+                      {showValues && <span className="text-xs font-medium">{cellData.value}</span>}
                     </div>
                   );
                 })}
@@ -158,10 +145,7 @@ export function Heatmap({
 
       {hoveredCell && (
         <div
-          className={cn(
-            'bg-card absolute right-0 bottom-0 left-0 mt-4 border p-4',
-            mode.radius
-          )}
+          className={cn('bg-card absolute right-0 bottom-0 left-0 mt-4 border p-4', mode.radius)}
         >
           <p className="text-xs font-medium">
             {hoveredCell.y} × {hoveredCell.x}

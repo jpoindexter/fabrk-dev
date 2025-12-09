@@ -152,20 +152,17 @@ function Example() {
           preview: (
             <div className="space-y-4 p-4 font-mono text-sm">
               <div className="text-muted-foreground">
-                <span className="text-primary">&gt;</span> Form Component
-                Structure
+                <span className="text-primary">&gt;</span> Form Component Structure
               </div>
               <div className="text-muted-foreground space-y-2 pl-4">
                 <div>
                   <span className="text-success">&gt;</span> Form (Provider)
                 </div>
                 <div className="pl-4">
-                  <span className="text-success">&gt;</span> FormField
-                  (Controller)
+                  <span className="text-success">&gt;</span> FormField (Controller)
                 </div>
                 <div className="pl-8">
-                  <span className="text-success">&gt;</span> FormItem
-                  (Container)
+                  <span className="text-success">&gt;</span> FormItem (Container)
                 </div>
                 <div className="pl-12">
                   <span className="text-success">&gt;</span> FormLabel
@@ -207,9 +204,7 @@ function Example() {
           preview: (
             <div className="space-y-4 p-4 font-mono text-sm">
               <div className="border-border flex items-center border-b pb-2">
-                <span className="text-muted-foreground text-xs">
-                  [ VALIDATION ] validation.ts
-                </span>
+                <span className="text-muted-foreground text-xs">[ VALIDATION ] validation.ts</span>
               </div>
               <div className="space-y-1 text-xs">
                 <div className="text-muted-foreground">

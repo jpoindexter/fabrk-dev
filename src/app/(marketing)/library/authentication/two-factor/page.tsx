@@ -7,17 +7,8 @@
 import Link from 'next/link';
 import { ShieldCheck, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  TemplatePageHeader,
-} from '@/components/ui/card';
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from '@/components/ui/input-otp';
+import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
+import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { mode } from '@/design-system';
@@ -103,14 +94,12 @@ function TwoFactorPreview() {
           <div className="border-border bg-card mx-auto mb-2 flex h-10 w-10 items-center justify-center border">
             <ShieldCheck className="text-primary h-5 w-5" />
           </div>
-          <h1
-            className={cn(mode.font, 'text-2xl font-semibold tracking-tight')}
-          >
+          <h1 className={cn(mode.font, 'text-2xl font-semibold tracking-tight')}>
             Two-factor authentication
           </h1>
           <p className="text-muted-foreground text-sm">
-            We sent a verification code to your email. Enter the code from the
-            email in the field below.
+            We sent a verification code to your email. Enter the code from the email in the field
+            below.
           </p>
         </div>
 
@@ -130,10 +119,7 @@ function TwoFactorPreview() {
               </InputOTP>
             </div>
 
-            <Button
-              className={cn(mode.radius, mode.font, 'w-full text-xs')}
-              type="submit"
-            >
+            <Button className={cn(mode.radius, mode.font, 'w-full text-xs')} type="submit">
               &gt; VERIFY
             </Button>
           </form>
@@ -222,11 +208,7 @@ export default function TwoFactorTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock
-                  code={templateCode}
-                  language="tsx"
-                  maxHeight="600px"
-                />
+                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
             </Card>
           </TabsContent>
@@ -243,9 +225,7 @@ export default function TwoFactorTemplate() {
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">(auth)/</span>
                   <span className="text-foreground">two-factor/page.tsx</span>
-                  <span className="text-muted-foreground ml-4">
-                    ← Copy template here
-                  </span>
+                  <span className="text-muted-foreground ml-4">← Copy template here</span>
                 </div>
               </div>
             </div>
@@ -258,24 +238,19 @@ export default function TwoFactorTemplate() {
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> OTP input with
-                6-digit slots
+                <span className="text-success">&gt;</span> OTP input with 6-digit slots
               </div>
               <div>
-                <span className="text-success">&gt;</span> Auto-focus and
-                keyboard navigation
+                <span className="text-success">&gt;</span> Auto-focus and keyboard navigation
               </div>
               <div>
-                <span className="text-success">&gt;</span> Resend code
-                functionality
+                <span className="text-success">&gt;</span> Resend code functionality
               </div>
               <div>
-                <span className="text-success">&gt;</span> Back to login
-                navigation
+                <span className="text-success">&gt;</span> Back to login navigation
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant
-                (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

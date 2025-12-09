@@ -76,12 +76,8 @@ export default async function InvoicesPage() {
             Back to Billing
           </Button>
         </Link>
-        <h1 className="mb-2 text-4xl font-semibold tracking-tight">
-          Invoices & Receipts
-        </h1>
-        <p className="text-muted-foreground text-lg">
-          View and download your payment history
-        </p>
+        <h1 className="mb-2 text-4xl font-semibold tracking-tight">Invoices & Receipts</h1>
+        <p className="text-muted-foreground text-lg">View and download your payment history</p>
       </div>
 
       {/* Invoices Table */}
@@ -118,22 +114,16 @@ export default async function InvoicesPage() {
               <TableBody>
                 {payments.map((payment) => (
                   <TableRow key={payment.id}>
-                    <TableCell className="font-medium">
-                      {formatDate(payment.createdAt)}
-                    </TableCell>
+                    <TableCell className="font-medium">{formatDate(payment.createdAt)}</TableCell>
                     <TableCell>
                       <div>
-                        <p className="font-medium">
-                          {payment.productId || 'One-time purchase'}
-                        </p>
+                        <p className="font-medium">{payment.productId || 'One-time purchase'}</p>
                         <p className="text-muted-foreground text-xs">
                           Invoice #{payment.stripeId?.slice(-8)}
                         </p>
                       </div>
                     </TableCell>
-                    <TableCell className={mode.font}>
-                      {formatCurrency(payment.amount)}
-                    </TableCell>
+                    <TableCell className={mode.font}>{formatCurrency(payment.amount)}</TableCell>
                     <TableCell>{getStatusBadge(payment.status)}</TableCell>
                     <TableCell className="text-right">
                       <InvoicesClient paymentId={payment.id} />
@@ -149,11 +139,7 @@ export default async function InvoicesPage() {
       {/* Information Cards */}
       <div className="mt-8 grid gap-6 md:grid-cols-2">
         <Card>
-          <CardHeader
-            code="0xF0"
-            title="INVOICE_DETAILS"
-            icon={<FileText className="h-4 w-4" />}
-          />
+          <CardHeader code="0xF0" title="INVOICE_DETAILS" icon={<FileText className="h-4 w-4" />} />
           <CardContent className="text-muted-foreground space-y-2 text-sm">
             <p>Each invoice includes:</p>
             <ul className="ml-2 list-inside list-disc space-y-1">
@@ -173,9 +159,8 @@ export default async function InvoicesPage() {
           />
           <CardContent className="text-muted-foreground text-sm">
             <p>
-              We automatically send email receipts for all successful payments.
-              Check your inbox at <strong>{session.user.email}</strong> for
-              copies of your receipts.
+              We automatically send email receipts for all successful payments. Check your inbox at{' '}
+              <strong>{session.user.email}</strong> for copies of your receipts.
             </p>
           </CardContent>
         </Card>

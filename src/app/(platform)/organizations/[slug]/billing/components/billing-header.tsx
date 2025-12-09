@@ -21,9 +21,7 @@ export function BillingHeader({ organization }: BillingHeaderProps) {
         </div>
         <div>
           <h1 className="text-4xl font-semibold">Billing & Subscription</h1>
-          <p className="text-muted-foreground">
-            Manage billing for {organization.name}
-          </p>
+          <p className="text-muted-foreground">Manage billing for {organization.name}</p>
         </div>
       </div>
     </div>

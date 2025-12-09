@@ -58,17 +58,11 @@ export function UserDataTable({
   className,
 }: UserDataTableProps) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  );
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({});
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
+  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
 
-  const columns = React.useMemo(
-    () => createUserColumns({ onEdit, onDelete }),
-    [onEdit, onDelete]
-  );
+  const columns = React.useMemo(() => createUserColumns({ onEdit, onDelete }), [onEdit, onDelete]);
 
   // eslint-disable-next-line react-hooks/incompatible-library -- TanStack Table API design is incompatible with React Compiler but works correctly
   const table = useReactTable({
@@ -107,16 +101,10 @@ export function UserDataTable({
               <TableRow key={headerGroup.id} className="border-border border-b">
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead
-                      key={header.id}
-                      className="text-foreground font-semibold"
-                    >
+                    <TableHead key={header.id} className="text-foreground font-semibold">
                       {header.isPlaceholder
                         ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
+                        : flexRender(header.column.columnDef.header, header.getContext())}
                     </TableHead>
                   );
                 })}
@@ -133,20 +121,14 @@ export function UserDataTable({
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </TableCell>
                   ))}
                 </TableRow>
               ))
             ) : (
               <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className="h-24 text-center"
-                >
+                <TableCell colSpan={columns.length} className="h-24 text-center">
                   <div className="text-muted-foreground flex flex-col items-center justify-center gap-2">
                     <Users className="h-8 w-8" />
                     <p>No users found.</p>

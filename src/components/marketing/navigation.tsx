@@ -10,13 +10,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-  SheetClose,
-  SheetTitle,
-} from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from '@/components/ui/sheet';
 import { ThemeDropdown } from '@/components/theme/theme-dropdown';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
@@ -43,10 +37,7 @@ export function Navigation() {
         >
           <Link
             href="/"
-            className={cn(
-              'flex items-center gap-2 transition-opacity hover:opacity-80',
-              mode.font
-            )}
+            className={cn('flex items-center gap-2 transition-opacity hover:opacity-80', mode.font)}
           >
             <Logo />
           </Link>
@@ -64,9 +55,7 @@ export function Navigation() {
         >
           {/* Navigation Links with [NAVIGATE]: prefix */}
           <div className="flex items-center gap-1">
-            <span className={cn('text-muted-foreground text-xs', mode.font)}>
-              [NAVIGATE]:
-            </span>
+            <span className={cn('text-muted-foreground text-xs', mode.font)}>[NAVIGATE]:</span>
             <div className="flex items-center">
               {navLinks.map((link, _index) => (
                 <Link
@@ -89,11 +78,7 @@ export function Navigation() {
           {/* Theme + CTA Buttons */}
           <div className="flex items-center gap-2">
             <ThemeDropdown />
-            <Button
-              variant="outline"
-              asChild
-              className={cn('text-xs', mode.radius, mode.font)}
-            >
+            <Button variant="outline" asChild className={cn('text-xs', mode.radius, mode.font)}>
               <Link href="/demo">&gt; VIEW_DEMO</Link>
             </Button>
             <Button asChild className={cn('text-xs', mode.radius, mode.font)}>
@@ -122,24 +107,15 @@ export function Navigation() {
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent
-              side="right"
-              className={cn('w-[300px] p-6', mode.radius)}
-            >
+            <SheetContent side="right" className={cn('w-[300px] p-6', mode.radius)}>
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="border-border mb-6 border-b pb-4">
-                <span
-                  className={cn('text-muted-foreground text-xs', mode.font)}
-                >
+                <span className={cn('text-muted-foreground text-xs', mode.font)}>
                   [SYSTEM_MENU]
                 </span>
               </div>
               <nav className="flex flex-col space-y-4">
-                <span
-                  className={cn('text-muted-foreground text-xs', mode.font)}
-                >
-                  [NAVIGATE]:
-                </span>
+                <span className={cn('text-muted-foreground text-xs', mode.font)}>[NAVIGATE]:</span>
                 {navLinks.map((link) => (
                   <SheetClose key={link.href} asChild>
                     <Link
@@ -155,12 +131,7 @@ export function Navigation() {
                   </SheetClose>
                 ))}
                 <div className="border-border border-t pt-6">
-                  <span
-                    className={cn(
-                      'text-muted-foreground mb-4 block text-xs',
-                      mode.font
-                    )}
-                  >
+                  <span className={cn('text-muted-foreground mb-4 block text-xs', mode.font)}>
                     [THEME]:
                   </span>
                   <div className="mb-4 flex items-center gap-2">
@@ -168,12 +139,7 @@ export function Navigation() {
                   </div>
                 </div>
                 <div className="border-border border-t pt-6">
-                  <span
-                    className={cn(
-                      'text-muted-foreground mb-4 block text-xs',
-                      mode.font
-                    )}
-                  >
+                  <span className={cn('text-muted-foreground mb-4 block text-xs', mode.font)}>
                     [ACTIONS]:
                   </span>
                   <SheetClose asChild>
@@ -186,14 +152,7 @@ export function Navigation() {
                     </Button>
                   </SheetClose>
                   <SheetClose asChild>
-                    <Button
-                      className={cn(
-                        'mt-4 w-full text-xs',
-                        mode.radius,
-                        mode.font
-                      )}
-                      asChild
-                    >
+                    <Button className={cn('mt-4 w-full text-xs', mode.radius, mode.font)} asChild>
                       <Link href="#pricing">&gt; GET_STARTED</Link>
                     </Button>
                   </SheetClose>
@@ -203,10 +162,7 @@ export function Navigation() {
           </Sheet>
 
           {/* Mobile CTA Button */}
-          <Button
-            asChild
-            className={cn('text-xs md:hidden', mode.radius, mode.font)}
-          >
+          <Button asChild className={cn('text-xs md:hidden', mode.radius, mode.font)}>
             <Link href="#pricing" className="scroll-smooth">
               &gt; START
             </Link>

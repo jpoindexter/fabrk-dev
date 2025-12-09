@@ -53,8 +53,7 @@ UPSTASH_REDIS_REST_TOKEN="your-redis-token"`,
       usage={[
         {
           title: 'Basic Setup',
-          description:
-            'Add rate limiting to any API route using the rate limiter middleware',
+          description: 'Add rate limiting to any API route using the rate limiter middleware',
           code: `// src/lib/rate-limit.ts
 
 import { Ratelimit } from "@upstash/ratelimit";
@@ -127,8 +126,7 @@ export async function POST(request: NextRequest) {
         },
         {
           title: 'Custom Limits per Endpoint',
-          description:
-            'Configure different rate limits for different endpoints',
+          description: 'Configure different rate limits for different endpoints',
           code: `// src/lib/rate-limit.ts
 
 import { Ratelimit } from "@upstash/ratelimit";
@@ -167,8 +165,7 @@ export const writeLimiter = new Ratelimit({
         },
         {
           title: 'User-Based Rate Limiting',
-          description:
-            'Rate limit by user ID instead of IP for authenticated endpoints',
+          description: 'Rate limit by user ID instead of IP for authenticated endpoints',
           code: `// src/app/api/protected-route/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
