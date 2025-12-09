@@ -1,6 +1,40 @@
-# Fabrk - GitHub Copilot Instructions
+# Fabrk - GitHub Copilot Instructions (Development Version)
 
-**Note:** Customer-facing version. For development instructions with sync workflow, see `.internal/.github/copilot-instructions-dev.md`.
+**Note:** This is the DEVELOPMENT version with sync workflow. Customer-facing version is in root: `.github/copilot-instructions.md`.
+
+## Dual Repo Architecture
+
+### Quick Reference
+| Repo | Purpose |
+|------|---------|
+| fabrk_plate (this repo) | Development + Marketing |
+| fabrk-official | Customer-facing boilerplate |
+
+### What Syncs to Official
+- Core boilerplate: `src/app/(platform)/*`, `(auth)/*`, `api/*`
+- UI components: `src/components/ui/*`, `dashboard/*`, `shared/*`
+- Documentation: `src/app/docs/*`, `library/*`
+- Libraries: `src/lib/*` (test files excluded automatically)
+- Configs, prisma, public assets
+
+### What Stays Private
+- Marketing: `src/app/(marketing)/*`, `src/app/page.tsx`
+- Marketing components: `src/components/landing/*`, `marketing/*`, `home/*`
+- Internal tools: `.internal/*`, `.claude/*`
+- This file
+
+### Sync Workflow
+```bash
+# After boilerplate changes:
+./scripts/sync-to-official.sh
+
+# Then push official repo:
+cd ../fabrk-official
+git add -A && git commit -m "Sync updates"
+git push
+```
+
+---
 
 ## Project Overview
 
@@ -44,20 +78,22 @@ import { mode } from "@/design-system";
 ```
 src/
 ├── app/
-│   ├── (platform)/        # Dashboard pages
-│   ├── (auth)/            # Auth pages
-│   ├── templates/         # Copy-paste templates
-│   ├── docs/              # Documentation
-│   └── api/               # API routes
+│   ├── (platform)/        # Dashboard pages → SYNCS
+│   ├── (auth)/            # Auth pages → SYNCS
+│   ├── (marketing)/       # Your landing pages → PRIVATE
+│   ├── templates/         # Copy-paste templates → SYNCS
+│   ├── docs/              # Documentation → SYNCS
+│   └── api/               # API routes → SYNCS
 ├── components/
-│   ├── ui/                # Base components (LOCKED)
-│   ├── dashboard/         # Dashboard components
-│   └── shared/            # Reusable components
+│   ├── ui/                # Base components (LOCKED) → SYNCS
+│   ├── dashboard/         # Dashboard components → SYNCS
+│   ├── shared/            # Reusable components → SYNCS
+│   └── landing/           # Marketing components → PRIVATE
 ├── lib/
-│   ├── auth.ts            # NextAuth config
-│   ├── db/                # Prisma client
-│   └── env.ts             # Env validation
-└── config.js              # Central config
+│   ├── auth.ts            # NextAuth config → SYNCS
+│   ├── db/                # Prisma client → SYNCS
+│   └── env.ts             # Env validation → SYNCS
+└── config.js              # Central config → SYNCS
 ```
 
 ## Common Patterns
@@ -115,6 +151,7 @@ npm run lint             # ESLint + hex scan
 npm run scan:hex         # Detect hardcoded colors
 npm run db:push          # Push schema changes
 npm run db:studio        # Prisma Studio
+./scripts/sync-to-official.sh  # Sync to customer repo
 ```
 
 ## Pre-Commit Hooks (Automatic)
@@ -127,6 +164,22 @@ Every commit runs:
 
 **Emergency bypass:** `git commit --no-verify`
 
+## Adding New Features
+
+**For Boilerplate (Will Sync):**
+1. Add files to boilerplate directories
+2. Commit to dev repo
+3. Run `./scripts/sync-to-official.sh`
+4. Push official repo
+
+**For Marketing (Stays Private):**
+1. Add files to `src/app/(marketing)/` or `src/components/landing/`
+2. Commit to dev repo
+3. No sync needed
+
+**If you add new private files outside marketing directories:**
+Edit `scripts/sync-to-official.sh` to exclude them.
+
 ## Key Rules Summary
 
 1. **Design tokens only** - No hex values or Tailwind color scales
@@ -135,5 +188,6 @@ Every commit runs:
 4. **Component titles** - DocsCard must have `title` prop
 5. **Env validation** - Use `env` helper, never `process.env`
 6. **Server-first** - Default to Server Components, add "use client" only when needed
+7. **Test files excluded** - *.test.ts, *.spec.ts automatically filtered from sync
 
-For comprehensive documentation, see `CLAUDE.md` in the project root.
+For comprehensive documentation, see `.internal/CLAUDE-DEV.md`.

@@ -1,6 +1,6 @@
-# Fabrk - GitHub Copilot Instructions
+# Fabrk - Codeium Instructions
 
-**Note:** Customer-facing version. For development instructions with sync workflow, see `.internal/.github/copilot-instructions-dev.md`.
+**Note:** Customer-facing version. For development instructions with sync workflow, see `.internal/.codeium/cue-dev`.
 
 ## Project Overview
 
@@ -11,33 +11,33 @@
 ## Critical Rules
 
 ### 1. Terminal Aesthetic (Non-Negotiable)
-- **ALL elements**: `rounded-none` (never rounded-sm/md/lg/xl)
-- **ALL UI text**: `font-mono`
-- **Style**: Command-line feel with brackets `[ ]`, prefixes `>`, uppercase
+- ALL elements: `rounded-none` (never rounded-sm/md/lg/xl)
+- ALL UI text: `font-mono`
+- Style: Command-line feel with brackets [ ], prefixes >, uppercase
 
 ### 2. Design Tokens Only (NO Hardcoded Colors)
 ```tsx
-// ✓ GOOD
+// GOOD
 import { mode } from "@/design-system";
-<Button className={cn(mode.radius, mode.font, "bg-primary text-primary-foreground")}>
+<Button className={cn(mode.radius, mode.font, "text-xs")}>
   > SUBMIT
 </Button>
 
-// ✗ BAD - will fail pre-commit
+// BAD - will fail pre-commit
 <Button className="rounded-lg bg-purple-500 text-white">Submit</Button>
 ```
 
 **Allowed tokens:**
-- Backgrounds: `bg-background`, `bg-card`, `bg-muted`, `bg-primary`
-- Text: `text-foreground`, `text-muted-foreground`, `text-primary`
-- Borders: `border-border`, `border-primary`
+- Backgrounds: bg-background, bg-card, bg-muted, bg-primary
+- Text: text-foreground, text-muted-foreground, text-primary
+- Borders: border-border, border-primary
 
-**Banned:** `bg-white`, `bg-gray-*`, `text-gray-*`, `#hex`, `rounded-sm/md/lg/xl`
+**Banned:** bg-white, bg-gray-*, text-gray-*, #hex, rounded-sm/md/lg/xl
 
 ### 3. Component Architecture
-- **Templates** (`src/app/templates/`): Use Preview/Code tabbed interface
-- **Docs** (`src/app/docs/`): Use standard templates (ComponentShowcaseTemplate, FeatureGuideTemplate, etc.)
-- **DocsCard**: MUST include `title` prop
+- Templates (src/app/templates/): Use Preview/Code tabbed interface
+- Docs (src/app/docs/): Use standard templates (ComponentShowcaseTemplate, FeatureGuideTemplate)
+- DocsCard: MUST include title prop
 
 ## File Structure
 
@@ -66,10 +66,10 @@ src/
 ```ts
 import { env } from "@/lib/env";
 
-// ✓ GOOD
+// GOOD
 const key = env.server.DATABASE_URL;
 
-// ✗ BAD
+// BAD
 const key = process.env.DATABASE_URL;
 ```
 
@@ -120,20 +120,20 @@ npm run db:studio        # Prisma Studio
 ## Pre-Commit Hooks (Automatic)
 
 Every commit runs:
-- TypeScript compilation (`tsc --noEmit`)
+- TypeScript compilation (tsc --noEmit)
 - ESLint with auto-fix
 - Prettier formatting
 - Design system audit (no hardcoded colors, no console.log)
 
-**Emergency bypass:** `git commit --no-verify`
+Emergency bypass: git commit --no-verify
 
 ## Key Rules Summary
 
-1. **Design tokens only** - No hex values or Tailwind color scales
-2. **Terminal aesthetic** - `rounded-none` and `font-mono` everywhere
-3. **Mode tokens** - Import from `@/design-system` for consistency
-4. **Component titles** - DocsCard must have `title` prop
-5. **Env validation** - Use `env` helper, never `process.env`
-6. **Server-first** - Default to Server Components, add "use client" only when needed
+1. Design tokens only - No hex values or Tailwind color scales
+2. Terminal aesthetic - rounded-none and font-mono everywhere
+3. Mode tokens - Import from @/design-system for consistency
+4. Component titles - DocsCard must have title prop
+5. Env validation - Use env helper, never process.env
+6. Server-first - Default to Server Components, add "use client" only when needed
 
-For comprehensive documentation, see `CLAUDE.md` in the project root.
+For comprehensive documentation, see CLAUDE.md in the project root.
