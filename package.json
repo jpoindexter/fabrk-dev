@@ -109,6 +109,7 @@
     "@sanity/client": "^7.13.1",
     "@sanity/image-url": "^2.0.2",
     "@sanity/vision": "^4.19.0",
+    "@swc/helpers": "^0.5.17",
     "@tailwindcss/postcss": "^4.0.9",
     "@tailwindcss/typography": "^0.5.19",
     "@tanstack/react-table": "^8.21.3",
