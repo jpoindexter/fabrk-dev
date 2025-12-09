@@ -1,4 +1,6 @@
-# Fabrk (Fabrk_plate) - AI Context
+# Fabrk - AI Context (Gemini)
+
+**Note:** Customer-facing version. For development instructions with sync workflow, see `.internal/GEMINI-DEV.md`.
 
 ## Project Overview
 
@@ -28,6 +30,21 @@
     *   Borders: `border-border`, `border-primary`
 *   **Import:** Use the `mode` object from `@/design-system` for consistent styling classes (e.g., `mode.radius`, `mode.font`).
 
+```tsx
+import { mode } from "@/design-system";
+import { cn } from "@/lib/utils";
+
+// GOOD
+<Button className={cn(mode.radius, mode.font, "text-xs")}>
+  > SUBMIT
+</Button>
+
+// BAD - will fail pre-commit checks
+<Button className="rounded-lg bg-purple-500 text-white">
+  Submit
+</Button>
+```
+
 ### 3. Component Architecture
 *   **Templates:** All pages in `src/app/templates/` must use the Preview/Code tabbed interface pattern.
 *   **Docs:** All documentation pages in `src/app/docs/` must use standard templates (`ComponentShowcaseTemplate`, `FeatureGuideTemplate`, etc.).
@@ -35,22 +52,19 @@
 
 ## Architecture & Directory Structure
 
-This project uses a **Dual Repo** model:
-1.  **`Fabrk_plate` (Current):** Internal development repo containing both boilerplate code AND private marketing assets.
-2.  **`fabrk-official`:** Customer-facing boilerplate (synced via `scripts/sync-to-official.sh`).
-
 ### Key Directories
 *   **`src/app/`**: App Router pages.
-    *   `(dashboard)/`: Protected app routes.
+    *   `(platform)/`: Protected app routes (dashboard, settings, billing).
+    *   `(auth)/`: Authentication pages (login, register, forgot-password).
     *   `templates/`: Copy-pasteable boilerplate templates.
     *   `docs/`: Documentation site.
+    *   `api/`: API routes for backend logic.
 *   **`src/components/`**:
-    *   `ui/`: Locked Radix UI primitives.
-    *   `landing/`: Marketing components (private).
-    *   `dashboard/`: App components.
-*   **`src/lib/`**: Core logic (Auth, DB, Env validation).
+    *   `ui/`: Locked Radix UI primitives (button, input, card, etc.).
+    *   `dashboard/`: App-specific components.
+    *   `shared/`: Reusable components across the app.
+*   **`src/lib/`**: Core logic (Auth, DB, Env validation, utilities).
 *   **`prisma/`**: Database schema and seed scripts.
-*   **`scripts/`**: Utility scripts (sync, audit, setup).
 
 ## Key Commands
 
@@ -63,15 +77,91 @@ This project uses a **Dual Repo** model:
 *   `npm run db:push`: Push schema changes to the database.
 *   `npm run db:seed`: Seed the database with test data.
 *   `npm run db:reset`: Reset database and re-seed.
+*   `npm run db:studio`: Open Prisma Studio (database GUI).
 
 ### Testing & Quality
 *   `npm test`: Run unit tests (Vitest).
 *   `npm run test:e2e`: Run E2E tests (Playwright).
-*   `npm run lint`: Run ESLint.
+*   `npm run lint`: Run ESLint with auto-fix.
 *   `npm run scan:hex`: **CRITICAL** - Scan for banned hardcoded hex colors.
-*   `npm run audit:staged`: Run design system audit on staged files.
 
-## Common Workflows
+## Common Patterns
 
-*   **Syncing to Official:** Run `./scripts/sync-to-official.sh` to propagate boilerplate changes while excluding private marketing files.
-*   **Environment:** use `env.server.KEY` or `env.client.KEY` from `@/lib/env` instead of `process.env`.
+### Environment Variables
+**Never** use `process.env` directly. Use the validated env helper:
+
+```ts
+import { env } from "@/lib/env";
+
+// GOOD
+const key = env.server.DATABASE_URL;
+const publicKey = env.client.NEXT_PUBLIC_APP_URL;
+
+// BAD - will fail pre-commit
+const key = process.env.DATABASE_URL;
+```
+
+### Protected API Routes
+```ts
+import { NextResponse } from "next/server";
+import { auth } from "@/lib/auth";
+
+export async function GET() {
+  const session = await auth();
+  if (!session?.user) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  // Your protected logic here
+  return NextResponse.json({ data: "..." });
+}
+```
+
+### Component Pattern
+```tsx
+"use client"; // Only when client interactivity needed
+
+import { mode } from "@/design-system";
+import { cn } from "@/lib/utils";
+
+interface Props {
+  title: string;
+  onAction?: () => void;
+}
+
+export function ExampleComponent({ title, onAction }: Props) {
+  return (
+    <div className={cn("border border-border bg-card p-4", mode.radius)}>
+      <span className={cn("text-xs text-muted-foreground", mode.font)}>
+        [ {title} ]
+      </span>
+      {onAction && (
+        <button
+          onClick={onAction}
+          className={cn(mode.radius, mode.font, "mt-2 text-xs")}
+        >
+          > ACTION
+        </button>
+      )}
+    </div>
+  );
+}
+```
+
+## Pre-Commit Hooks
+
+Git commits automatically run these checks:
+- TypeScript compilation (`tsc --noEmit`)
+- ESLint with auto-fix
+- Prettier formatting
+- Design system audit (no hardcoded colors, no `console.log`, etc.)
+
+**Bypass (emergency only):** `git commit --no-verify`
+
+## For More Details
+
+See `CLAUDE.md` for comprehensive documentation including:
+- Complete architecture overview
+- Design system specifications
+- Template patterns for docs/templates pages
+- Troubleshooting guide
