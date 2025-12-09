@@ -1,6 +1,6 @@
-# CLAUDE.md
+# CLAUDE-DEV.md (Development Version)
 
-**Note:** This is the customer-facing version that syncs to the official repo. For development instructions including sync workflow, see `.internal/CLAUDE-DEV.md`.
+**Note:** This is the DEVELOPMENT version with sync workflow instructions. The customer-facing version (without sync references) is in the root: `CLAUDE.md`.
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
@@ -21,7 +21,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 | Need | Do This |
 |------|---------|
+| Sync to official repo | `./scripts/sync-to-official.sh` |
 | Design system rules | See `DESIGN_SYSTEM.md` |
+| Run full audit | See `.claude/audit/README.md` |
 | Pre-commit checks | Automatic via Husky (see below) |
 | Add memory | Type `# your instruction here` |
 
@@ -89,7 +91,66 @@ npm run db:reset         # Reset and reseed
 # Testing
 npm test                 # Vitest unit tests
 npm run test:e2e         # Playwright E2E tests
+
+# Sync to Official Repo
+./scripts/sync-to-official.sh    # Sync boilerplate to customer repo
 ```
+
+---
+
+## Dual Repo Architecture
+
+This project uses a **two-repo model** to separate the product (boilerplate) from the marketing site.
+
+### Repos
+
+| Repo | Purpose | URL |
+|------|---------|-----|
+| `Fabrk_plate` | Development repo (you are here) | Private |
+| `fabrk-official` | Customer-facing boilerplate | https://github.com/Theft-SUDO/fabrk-official |
+
+### What Goes Where
+
+**Boilerplate (syncs to official):**
+- `src/components/ui/*` - Base UI components
+- `src/app/(platform)/*`, `(auth)/*` - Core boilerplate pages
+- `src/app/docs/*`, `library/*` - Documentation & templates
+- `src/app/api/*` - API routes
+- `src/lib/*` - Libraries (test files excluded automatically)
+- Config files, prisma, public assets
+- CLAUDE.md (customer version, no sync references)
+
+**Marketing (stays private):**
+- `src/app/(marketing)/*` - Your landing pages
+- `src/app/page.tsx` - Your homepage
+- `src/components/landing/*`, `marketing/*`, `home/*` - Marketing components
+- `.internal/*`, `.claude/*` - Internal docs and tools
+- README.md (dev version with sync instructions)
+- CLAUDE-DEV.md (this file)
+
+### Sync Workflow
+
+```bash
+# After making boilerplate changes:
+./scripts/sync-to-official.sh
+
+# Then push official repo:
+cd ../fabrk-official
+git add -A && git commit -m "Sync updates from dev"
+git push
+```
+
+The sync script:
+- Uses rsync with whitelist approach
+- Excludes test files automatically (*.test.ts, *.test.tsx, *.spec.ts, *.spec.tsx)
+- Excludes marketing components
+- Replaces your homepage with boilerplate placeholder
+
+### Adding New Files
+
+When creating new files, ask:
+- **Is this for customers?** → Goes to boilerplate directories, will sync
+- **Is this for YOUR Fabrk marketing?** → Add to marketing directories, stays private
 
 ---
 
