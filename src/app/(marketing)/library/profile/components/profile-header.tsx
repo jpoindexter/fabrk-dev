@@ -59,7 +59,9 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
           <div className="flex flex-1 flex-col gap-4">
             {/* Name + Buttons row */}
             <div className="flex items-center justify-between gap-4">
-              <h2 className={cn(mode.font, 'text-2xl font-semibold')}>{user.name}</h2>
+              <h2 className={cn(mode.font, 'text-2xl font-semibold tracking-tight')}>
+                {user.name}
+              </h2>
               <div className="flex gap-2">
                 <Button className={cn(mode.radius, mode.font, 'text-xs')}>
                   <Edit className="mr-1 h-3 w-3" />

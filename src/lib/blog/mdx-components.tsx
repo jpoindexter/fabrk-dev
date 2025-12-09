@@ -207,7 +207,7 @@ export const mdxComponents: MDXComponents = {
     </h1>
   ),
   h2: ({ children }) => (
-    <h2 className="border-border text-foreground mt-8 mb-4 border-b pb-2 font-mono text-2xl font-semibold uppercase">
+    <h2 className="border-border text-foreground mt-8 mb-4 border-b pb-2 font-mono text-2xl font-semibold tracking-tight uppercase">
       {children}
     </h2>
   ),

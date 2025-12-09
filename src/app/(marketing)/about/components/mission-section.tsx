@@ -22,7 +22,9 @@ export function MissionSection() {
             viewport={{ once: true }}
           >
             <Badge code="0x02" label="OUR_MISSION" className="mb-4" />
-            <h2 className={cn('text-2xl font-semibold lg:text-4xl', mode.font)}>OUR_MISSION</h2>
+            <h2 className={cn('text-2xl font-semibold tracking-tight lg:text-4xl', mode.font)}>
+              OUR_MISSION
+            </h2>
           </motion.div>
 
           <motion.div

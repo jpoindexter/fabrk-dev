@@ -26,7 +26,9 @@ export function StepComplete({ formData }: StepCompleteProps) {
         <CheckCircle2 className="text-success h-8 w-8" />
       </div>
       <div>
-        <h2 className={cn(mode.font, 'mb-2 text-2xl font-semibold')}>You're All Set!</h2>
+        <h2 className={cn(mode.font, 'mb-2 text-2xl font-semibold tracking-tight')}>
+          You're All Set!
+        </h2>
         <p className={cn(mode.font, 'text-muted-foreground text-sm')}>
           Your account is ready. Let's start building something amazing.
         </p>

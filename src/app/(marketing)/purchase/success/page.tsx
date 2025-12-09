@@ -34,7 +34,7 @@ export default function PurchaseSuccessPage() {
 
         {/* What's Next */}
         <div className="bg-card border-border mb-8 rounded-none border p-8">
-          <h2 className="mb-6 text-2xl font-semibold">What's Next?</h2>
+          <h2 className="mb-6 text-2xl font-semibold tracking-tight">What's Next?</h2>
 
           <div className="space-y-6">
             {/* Email */}

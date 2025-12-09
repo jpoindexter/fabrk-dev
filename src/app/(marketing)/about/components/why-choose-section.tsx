@@ -62,7 +62,9 @@ export function WhyChooseSection() {
               viewport={{ once: true }}
             >
               <Badge code="0x05" label="WHY_FABRK" className="mb-4" />
-              <h2 className={cn('mb-4 text-2xl font-semibold lg:text-4xl', mode.font)}>
+              <h2
+                className={cn('mb-4 text-2xl font-semibold tracking-tight lg:text-4xl', mode.font)}
+              >
                 WHY_CHOOSE_FABRK
               </h2>
             </motion.div>

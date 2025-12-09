@@ -81,7 +81,7 @@ export function ValuesSection() {
             viewport={{ once: true }}
           >
             <Badge code="0x03" label="CORE_VALUES" className="mb-4" />
-            <h2 className={cn('mb-4 text-2xl font-semibold lg:text-4xl', mode.font)}>
+            <h2 className={cn('mb-4 text-2xl font-semibold tracking-tight lg:text-4xl', mode.font)}>
               CORE_VALUES
             </h2>
           </motion.div>

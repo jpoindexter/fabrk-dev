@@ -145,7 +145,7 @@ export default function ErrorPage() {
 
         {/* Title & Description */}
         <div>
-          <h2 className={cn(mode.font, "mb-2 text-2xl font-semibold")}>
+          <h2 className={cn(mode.font, "mb-2 text-2xl font-semibold tracking-tight")}>
             {error.title}
           </h2>
           <p className={cn(mode.font, "text-muted-foreground text-sm")}>
@@ -262,7 +262,9 @@ function ErrorPagesPreview() {
 
         {/* Title & Description */}
         <div>
-          <h2 className={cn(mode.font, 'mb-2 text-2xl font-semibold')}>{error.title}</h2>
+          <h2 className={cn(mode.font, 'mb-2 text-2xl font-semibold tracking-tight')}>
+            {error.title}
+          </h2>
           <p className={cn(mode.font, 'text-muted-foreground text-sm')}>{error.description}</p>
         </div>
 

@@ -96,7 +96,7 @@ export function StatsSection() {
             viewport={{ once: true }}
           >
             <Badge code="0x30" label="METRICS" className="mb-4" />
-            <h2 className={cn('mb-4 text-2xl font-semibold', mode.font)}>
+            <h2 className={cn('mb-4 text-2xl font-semibold tracking-tight', mode.font)}>
               TRUSTED BY DEVELOPERS WORLDWIDE
             </h2>
           </motion.div>

@@ -126,7 +126,7 @@ export default async function UserProfilePage() {
                 </div>
 
                 {/* Name & Role */}
-                <h2 className="text-foreground mt-4 text-2xl font-semibold">
+                <h2 className="text-foreground mt-4 text-2xl font-semibold tracking-tight">
                   {mockUserProfile.name}
                 </h2>
                 <span

@@ -174,7 +174,7 @@ export default function BlogPage() {
                     {featuredPost.category.toUpperCase()}
                   </Badge>
                 </div>
-                <h2 className={cn(mode.font, "text-2xl font-semibold")}>{featuredPost.title}</h2>
+                <h2 className={cn(mode.font, "text-2xl font-semibold tracking-tight")}>{featuredPost.title}</h2>
                 <p className={cn(mode.font, "text-sm text-muted-foreground")}>{featuredPost.excerpt}</p>
                 <div className="flex items-center gap-4 text-xs text-muted-foreground">
                   <div className="flex items-center gap-2">
@@ -367,7 +367,9 @@ function BlogPreview() {
                       {featuredPost.category.toUpperCase()}
                     </Badge>
                   </div>
-                  <h2 className={cn(mode.font, 'text-2xl font-semibold')}>{featuredPost.title}</h2>
+                  <h2 className={cn(mode.font, 'text-2xl font-semibold tracking-tight')}>
+                    {featuredPost.title}
+                  </h2>
                   <p className={cn(mode.font, 'text-muted-foreground text-sm')}>
                     {featuredPost.excerpt}
                   </p>
