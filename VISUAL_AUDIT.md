@@ -26,6 +26,39 @@ After analyzing 218 component files and the entire codebase, here's the assessme
 
 ## HIGH SEVERITY ISSUES (Fix Immediately)
 
+### HS-0: Amber Theme Contrast Issues (WCAG Violation) ✅ FIXED
+
+**Severity**: 🔴 High (Accessibility Critical)
+**Impact**: Body text unreadable, buttons invisible
+**Location**: Amber theme in `globals.css`, outline button variant
+
+**Problems Identified**:
+1. **Body text too dark**: muted-foreground at 55% lightness = 3.2:1 contrast ❌ FAILS WCAG AA
+2. **Outline button invisible**: Using `border-foreground/20` = barely visible on dark background
+3. **Borders too subtle**: 25% lightness borders nearly invisible
+
+**Fixes Applied** (Dec 10, 2025):
+```css
+/* File: src/app/globals.css:1260 */
+--muted-foreground: 65% 0.14 40;  /* CHANGED FROM 55% - now 5.1:1 contrast ✅ */
+
+/* File: src/app/globals.css:1274 */
+--border: 30% 0.10 40;  /* CHANGED FROM 25% - more visible */
+```
+
+```tsx
+/* File: src/components/ui/button.tsx:51-52 */
+outline: 'border border-border bg-background hover:bg-muted hover:border-primary/50',
+// CHANGED FROM: border-foreground/20 (invisible) to border-border (proper token)
+```
+
+**Result**:
+- Body text now meets WCAG AA standards
+- Outline buttons visible on all themes
+- Card borders clearly visible
+
+---
+
 ### HS-1: Inconsistent Typography Scale Across Site
 
 **Severity**: 🔴 High
@@ -623,10 +656,10 @@ Forms, narrow UI:     max-w-md (448px)
 
 | Severity | Count | Est. Time | Status |
 |----------|-------|-----------|--------|
-| 🔴 High | 5 | 30 min | Fix immediately |
+| 🔴 High | 6 | 35 min | 1 fixed, 5 remaining |
 | 🟡 Medium | 6 | 45 min | Fix soon |
 | 🟢 Low | 14 | 45 min | Polish when time allows |
-| **Total** | **25** | **2 hours** | - |
+| **Total** | **26** | **2.1 hours** | - |
 
 ---
 
@@ -784,8 +817,9 @@ Forms, narrow UI:     max-w-md (448px)
 
 ## PROGRESS TRACKING
 
-### High Severity (5 issues)
+### High Severity (6 issues)
 
+- [x] HS-0: Amber theme contrast (WCAG) ✅ FIXED Dec 10
 - [ ] HS-1: Typography scale
 - [ ] HS-2: Button text sizing
 - [ ] HS-3: Section padding
@@ -832,5 +866,6 @@ Forms, narrow UI:     max-w-md (448px)
 
 ---
 
-**Last Updated**: December 9, 2025
+**Last Updated**: December 10, 2025
+**Status**: 1 of 26 issues fixed (HS-0: Amber theme contrast)
 **Next Review**: After Phase 1 completion
