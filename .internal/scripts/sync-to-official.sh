@@ -151,6 +151,10 @@ rm -rf "$OFFICIAL_REPO/.internal" 2>/dev/null || true
 rm -rf "$OFFICIAL_REPO/marketing" 2>/dev/null || true
 rm -rf "$OFFICIAL_REPO/.claude" 2>/dev/null || true
 
+# 8. Remove test files - customers don't need internal tests
+echo -e "${YELLOW}[INFO] Removing test files...${NC}"
+find "$OFFICIAL_REPO/src" -type f \( -name "*.test.ts" -o -name "*.test.tsx" -o -name "*.spec.ts" -o -name "*.spec.tsx" \) -delete
+
 
 echo -e "${GREEN}[SUCCESS] Sync complete!${NC}"
 echo ""
