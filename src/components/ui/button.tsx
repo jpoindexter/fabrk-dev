@@ -55,12 +55,12 @@ const buttonVariants = cva(
         ghost: 'text-foreground hover:bg-foreground/10 hover:text-foreground',
         // Link - text only with underline
         link: 'text-primary underline-offset-4 hover:underline',
-        // CTA variants - larger padding for marketing sections
-        primaryCta: 'bg-primary text-primary-foreground hover:bg-primary/90 text-base px-6 py-4',
+        // CTA variants - larger padding for marketing sections (terminal aesthetic: text-xs)
+        primaryCta: 'bg-primary text-primary-foreground hover:bg-primary/90 text-xs px-6 py-4',
         secondaryCta:
-          'bg-secondary text-secondary-foreground hover:bg-secondary/80 text-base px-6 py-4',
+          'bg-secondary text-secondary-foreground hover:bg-secondary/80 text-xs px-6 py-4',
         ghostOnDark:
-          'border border-foreground/30 bg-transparent text-foreground hover:bg-foreground/10 text-base px-6 py-4',
+          'border border-foreground/30 bg-transparent text-foreground hover:bg-foreground/10 text-xs px-6 py-4',
       },
       size: {
         // WCAG 2.1 AA: min-h-[44px] ensures adequate touch target on mobile

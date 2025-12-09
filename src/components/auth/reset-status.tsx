@@ -21,7 +21,7 @@ export function TokenExpired() {
   return (
     <div className="p-6 text-center">
       <X className="m-4 size-full" />
-      <h2 className="dark:text-muted-foreground m-4 text-base font-semibold">Link Expired</h2>
+      <h2 className="dark:text-muted-foreground m-4 text-xs font-semibold">Link Expired</h2>
       <p className="m-4">This password reset link has expired or is invalid.</p>
       <Link href="/forgot-password">
         <Button className="focus-visible:ring-ring m-4 focus-visible:ring-2 focus-visible:outline-none">
@@ -50,13 +50,13 @@ export function ResetSuccess() {
   return (
     <div className="p-6 text-center">
       <ShieldCheck className="m-4 size-full" />
-      <h2 className="dark:text-muted-foreground m-4 text-base font-semibold">
+      <h2 className="dark:text-muted-foreground m-4 text-xs font-semibold">
         Password Reset Successfully
       </h2>
       <p className="m-4">
         Your password has been reset. You can now sign in with your new password.
       </p>
-      <p className="dark:text-muted-foreground m-4 text-base">Redirecting to sign in...</p>
+      <p className="dark:text-muted-foreground m-4 text-xs">Redirecting to sign in...</p>
       <Link href="/sign-in">
         <Button className="focus-visible:ring-ring m-4 focus-visible:ring-2 focus-visible:outline-none">
           &gt; GO_TO_SIGN_IN

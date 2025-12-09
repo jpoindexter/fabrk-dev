@@ -28,7 +28,7 @@ export function TierBadge({ tier, showIcon = true, size = 'md' }: TierBadgeProps
   const _sizeClasses = {
     sm: 'text-xs px-2 py-1',
     md: 'text-sm px-2 py-1',
-    lg: 'text-base px-4 py-2',
+    lg: 'text-sm px-4 py-2',
   };
 
   return (

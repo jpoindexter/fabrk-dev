@@ -55,12 +55,7 @@ export function HeroSplit({
             </h1>
 
             {/* Subheadline */}
-            <p
-              className={cn(
-                mode.font,
-                'text-muted-foreground mb-8 text-sm leading-relaxed sm:text-base'
-              )}
-            >
+            <p className={cn(mode.font, 'text-muted-foreground mb-8 text-sm leading-relaxed')}>
               {subheadline}
             </p>
 

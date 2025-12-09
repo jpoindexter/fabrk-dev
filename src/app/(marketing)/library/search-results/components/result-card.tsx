@@ -32,7 +32,7 @@ export function ResultCard({ result }: ResultCardProps) {
       </div>
       <div className="p-4">
         <div className="mb-2 flex items-start justify-between gap-2">
-          <h3 className={cn(mode.font, 'text-base font-semibold')}>{result.title}</h3>
+          <h3 className={cn(mode.font, 'text-sm font-semibold')}>{result.title}</h3>
           <div className={cn(mode.font, 'text-warning flex items-center gap-1 text-xs')}>
             <Star className="h-3 w-3 fill-current" />
             {result.rating}

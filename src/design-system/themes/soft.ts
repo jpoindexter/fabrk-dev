@@ -136,7 +136,7 @@ export const softClasses = {
   radius: 'rounded-xl',
   font: 'font-sans',
   text: '',
-  cardHeader: 'font-sans text-base font-semibold',
+  cardHeader: 'font-sans text-sm font-semibold',
   label: 'font-sans text-sm text-muted-foreground capitalize',
   button: 'rounded-xl font-sans shadow-sm',
   input: 'rounded-lg font-sans border-input',

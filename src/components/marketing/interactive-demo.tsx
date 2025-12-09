@@ -46,11 +46,7 @@ export function InteractiveDemo() {
           <Tabs defaultValue="team" className="space-y-6">
             <TabsList className={cn('grid w-full grid-cols-4 gap-2', mode.radius)}>
               {DEMO_ROUTES.map((route) => (
-                <TabsTrigger
-                  key={route.id}
-                  value={route.id}
-                  className={cn('text-sm sm:text-base', mode.radius)}
-                >
+                <TabsTrigger key={route.id} value={route.id} className={cn('text-sm', mode.radius)}>
                   {route.label}
                 </TabsTrigger>
               ))}

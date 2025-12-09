@@ -117,7 +117,7 @@ export const LoadingContainer = React.forwardRef<HTMLDivElement, LoadingContaine
         {...props}
       >
         <Spinner size="lg" />
-        {children && <p className={cn('text-muted-foreground text-base', mode.font)}>{children}</p>}
+        {children && <p className={cn('text-muted-foreground text-xs', mode.font)}>{children}</p>}
       </div>
     );
   }

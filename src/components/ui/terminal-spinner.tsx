@@ -48,7 +48,7 @@ export function TerminalSpinner({
   }, [speed]);
 
   const sizeClasses = {
-    sm: 'text-base',
+    sm: 'text-sm',
     md: 'text-2xl',
     lg: 'text-4xl',
   };
