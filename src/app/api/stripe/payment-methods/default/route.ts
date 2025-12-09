@@ -117,12 +117,12 @@
  * Sets the customer's default payment method for future charges
  */
 
-import { auth } from "@/lib/auth";
-import { logger } from "@/lib/logger";
-import { prisma } from "@/lib/prisma";
-import { withRateLimit } from "@/lib/rate-limit/middleware";
-import { stripe } from "@/lib/stripe/client";
-import { NextRequest, NextResponse } from "next/server";
+import { auth } from '@/lib/auth';
+import { logger } from '@/lib/logger';
+import { prisma } from '@/lib/prisma';
+import { withRateLimit } from '@/lib/rate-limit/middleware';
+import { stripe } from '@/lib/stripe/client';
+import { NextRequest, NextResponse } from 'next/server';
 
 async function setDefaultPaymentMethodHandler(req: NextRequest) {
   try {
@@ -130,7 +130,7 @@ async function setDefaultPaymentMethodHandler(req: NextRequest) {
 
     if (!session?.user?.email) {
       return NextResponse.json(
-        { error: "Unauthorized - Please sign in" },
+        { error: 'Unauthorized - Please sign in' },
         { status: 401 }
       );
     }
@@ -141,7 +141,7 @@ async function setDefaultPaymentMethodHandler(req: NextRequest) {
 
     if (!paymentMethodId) {
       return NextResponse.json(
-        { error: "Payment method ID is required" },
+        { error: 'Payment method ID is required' },
         { status: 400 }
       );
     }
@@ -152,15 +152,14 @@ async function setDefaultPaymentMethodHandler(req: NextRequest) {
     });
 
     if (!user) {
-      return NextResponse.json(
-        { error: "User not found" },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
 
     if (!user.customerId) {
       return NextResponse.json(
-        { error: "No billing account found. Please add a payment method first." },
+        {
+          error: 'No billing account found. Please add a payment method first.',
+        },
         { status: 400 }
       );
     }
@@ -172,7 +171,7 @@ async function setDefaultPaymentMethodHandler(req: NextRequest) {
       },
     });
 
-    logger.info("Updated default payment method", {
+    logger.info('Updated default payment method', {
       userId: user.id,
       customerId: user.customerId,
       paymentMethodId,
@@ -180,16 +179,16 @@ async function setDefaultPaymentMethodHandler(req: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      message: "Default payment method updated",
+      message: 'Default payment method updated',
     });
   } catch (error: unknown) {
-    logger.error("Default payment method update error:", error);
+    logger.error('Default payment method update error:', error);
     return NextResponse.json(
-      { error: "Failed to update default payment method" },
+      { error: 'Failed to update default payment method' },
       { status: 500 }
     );
   }
 }
 
 // Apply rate limiting: 10 requests per minute for payment endpoints
-export const POST = withRateLimit(setDefaultPaymentMethodHandler, "payment");
+export const POST = withRateLimit(setDefaultPaymentMethodHandler, 'payment');

@@ -23,15 +23,15 @@
  * ```
  */
 
-"use client";
+'use client';
 
-import * as React from "react";
-import { ColumnDef } from "@tanstack/react-table";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { DataTable } from "@/components/ui/data-table/data-table";
-import { Plus, Inbox } from "lucide-react";
+import * as React from 'react';
+import { ColumnDef } from '@tanstack/react-table';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { DataTable } from '@/components/ui/data-table/data-table';
+import { Plus, Inbox } from 'lucide-react';
 
 // =============================================================================
 // TYPES
@@ -107,29 +107,36 @@ interface EmptyStateProps {
 }
 
 function EmptyState({ emptyState, createAction }: EmptyStateProps) {
-  const icon = emptyState?.icon || <Inbox className="text-muted-foreground h-12 w-12" />;
-  const title = emptyState?.title || "No data";
-  const description = emptyState?.description || "No items found.";
+  const icon = emptyState?.icon || (
+    <Inbox className="text-muted-foreground h-12 w-12" />
+  );
+  const title = emptyState?.title || 'No data';
+  const description = emptyState?.description || 'No items found.';
   const action = emptyState?.action || createAction;
 
   return (
     <div
       className={cn(
-        "border-border bg-card flex flex-col items-center justify-center border py-16",
+        'border-border bg-card flex flex-col items-center justify-center border py-16',
         mode.radius
       )}
     >
       <div className="text-muted-foreground mb-4">{icon}</div>
-      <h3 className={cn("mb-2 text-lg font-semibold", mode.font)}>
-        [{title.toUpperCase().replace(/ /g, "_")}]
+      <h3 className={cn('mb-2 text-lg font-semibold', mode.font)}>
+        [{title.toUpperCase().replace(/ /g, '_')}]
       </h3>
-      <p className={cn("text-muted-foreground mb-6 max-w-sm text-center text-sm", mode.font)}>
+      <p
+        className={cn(
+          'text-muted-foreground mb-6 max-w-sm text-center text-sm',
+          mode.font
+        )}
+      >
         {description}
       </p>
       {action && (
         <Button onClick={action.onClick}>
           <Plus className="mr-2 h-4 w-4" />
-          &gt; {action.label.toUpperCase().replace(/ /g, "_")}
+          &gt; {action.label.toUpperCase().replace(/ /g, '_')}
         </Button>
       )}
     </div>
@@ -144,13 +151,15 @@ function LoadingState() {
   return (
     <div
       className={cn(
-        "border-border bg-card flex flex-col items-center justify-center border py-16",
+        'border-border bg-card flex flex-col items-center justify-center border py-16',
         mode.radius
       )}
     >
       {/* rounded-full is required here for the spinning animation to render correctly */}
       <div className="border-primary mb-4 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
-      <p className={cn("text-muted-foreground text-sm", mode.font)}>[LOADING]...</p>
+      <p className={cn('text-muted-foreground text-sm', mode.font)}>
+        [LOADING]...
+      </p>
     </div>
   );
 }
@@ -175,20 +184,26 @@ export function ListPageTemplate<TData, TValue = unknown>({
   const hasData = data.length > 0;
 
   return (
-    <div className={cn("mx-auto max-w-6xl space-y-6", className)}>
+    <div className={cn('mx-auto max-w-6xl space-y-6', className)}>
       {/* Header */}
       <div className="flex items-start justify-between">
         <div className="space-y-1">
-          <h1 className={cn("text-4xl font-semibold tracking-tight", mode.font)}>{title}</h1>
+          <h1
+            className={cn('text-4xl font-semibold tracking-tight', mode.font)}
+          >
+            {title}
+          </h1>
           {description && (
-            <p className={cn("text-muted-foreground text-sm", mode.font)}>{description}</p>
+            <p className={cn('text-muted-foreground text-sm', mode.font)}>
+              {description}
+            </p>
           )}
         </div>
 
         {createAction && (
           <Button onClick={createAction.onClick}>
             <Plus className="mr-2 h-4 w-4" />
-            &gt; {createAction.label.toUpperCase().replace(/ /g, "_")}
+            &gt; {createAction.label.toUpperCase().replace(/ /g, '_')}
           </Button>
         )}
       </div>

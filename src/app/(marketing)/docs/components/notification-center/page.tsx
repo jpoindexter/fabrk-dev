@@ -1,61 +1,71 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { NotificationCenter, Notification } from "@/components/ui/notification-center";
-import { useState } from "react";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import {
+  NotificationCenter,
+  Notification,
+} from '@/components/ui/notification-center';
+import { useState } from 'react';
 
 // Sample notifications
 const createNotifications = (): Notification[] => [
   {
-    id: "1",
-    type: "info",
-    title: "New feature available",
-    message: "Check out the new dashboard analytics. Now you can track your metrics in real-time.",
+    id: '1',
+    type: 'info',
+    title: 'New feature available',
+    message:
+      'Check out the new dashboard analytics. Now you can track your metrics in real-time.',
     timestamp: new Date(Date.now() - 5 * 60 * 1000), // 5 minutes ago
     read: false,
   },
   {
-    id: "2",
-    type: "success",
-    title: "Payment successful",
-    message: "Your subscription has been renewed for another month.",
+    id: '2',
+    type: 'success',
+    title: 'Payment successful',
+    message: 'Your subscription has been renewed for another month.',
     timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 hours ago
     read: false,
   },
   {
-    id: "3",
-    type: "warning",
-    title: "Storage almost full",
-    message: "You've used 90% of your storage quota. Consider upgrading your plan.",
+    id: '3',
+    type: 'warning',
+    title: 'Storage almost full',
+    message:
+      "You've used 90% of your storage quota. Consider upgrading your plan.",
     timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000), // 1 day ago
     read: true,
-    actionLabel: "Upgrade",
+    actionLabel: 'Upgrade',
     onAction: () => void 0, // Demo: would trigger upgrade flow
   },
   {
-    id: "4",
-    type: "error",
-    title: "Deployment failed",
-    message: "Your latest deployment encountered an error. Check the logs for details.",
+    id: '4',
+    type: 'error',
+    title: 'Deployment failed',
+    message:
+      'Your latest deployment encountered an error. Check the logs for details.',
     timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), // 2 days ago
     read: true,
   },
   {
-    id: "5",
-    type: "mention",
-    title: "Sarah mentioned you",
-    message: "Sarah mentioned you in a comment on the Q3 Report document.",
+    id: '5',
+    type: 'mention',
+    title: 'Sarah mentioned you',
+    message: 'Sarah mentioned you in a comment on the Q3 Report document.',
     timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000), // 3 days ago
     read: true,
-    avatar: "https://github.com/shadcn.png",
+    avatar: 'https://github.com/shadcn.png',
   },
 ];
 
 function NotificationCenterDemo() {
-  const [notifications, setNotifications] = useState<Notification[]>(createNotifications());
+  const [notifications, setNotifications] = useState<Notification[]>(
+    createNotifications()
+  );
 
   const handleMarkAsRead = (id: string) => {
-    setNotifications((prev) => prev.map((n) => (n.id === id ? { ...n, read: true } : n)));
+    setNotifications((prev) =>
+      prev.map((n) => (n.id === id ? { ...n, read: true } : n))
+    );
   };
 
   const handleMarkAllAsRead = () => {
@@ -82,9 +92,9 @@ function NotificationCenterDemo() {
 }
 
 export default function NotificationCenterPage() {
-  const [_basicNotifications, _setBasicNotifications] = useState<Notification[]>(
-    createNotifications().slice(0, 3)
-  );
+  const [_basicNotifications, _setBasicNotifications] = useState<
+    Notification[]
+  >(createNotifications().slice(0, 3));
 
   return (
     <ComponentShowcaseTemplate
@@ -128,20 +138,45 @@ export default function NotificationCenterPage() {
       }}
       variants={[
         {
-          title: "Notification Types",
-          description: "Different notification types with appropriate icons",
+          title: 'Notification Types',
+          description: 'Different notification types with appropriate icons',
           preview: (
             <div className="w-full max-w-md space-y-4">
-              <div className="text-muted-foreground font-mono text-xs">[NOTIFICATION_TYPES]</div>
+              <div className="text-muted-foreground font-mono text-xs">
+                [NOTIFICATION_TYPES]
+              </div>
               <div className="space-y-2">
                 {[
-                  { type: "info" as const, label: "INFO", color: "text-primary" },
-                  { type: "success" as const, label: "SUCCESS", color: "text-success" },
-                  { type: "warning" as const, label: "WARNING", color: "text-accent" },
-                  { type: "error" as const, label: "ERROR", color: "text-destructive" },
-                  { type: "mention" as const, label: "MENTION", color: "text-primary" },
+                  {
+                    type: 'info' as const,
+                    label: 'INFO',
+                    color: 'text-primary',
+                  },
+                  {
+                    type: 'success' as const,
+                    label: 'SUCCESS',
+                    color: 'text-success',
+                  },
+                  {
+                    type: 'warning' as const,
+                    label: 'WARNING',
+                    color: 'text-accent',
+                  },
+                  {
+                    type: 'error' as const,
+                    label: 'ERROR',
+                    color: 'text-destructive',
+                  },
+                  {
+                    type: 'mention' as const,
+                    label: 'MENTION',
+                    color: 'text-primary',
+                  },
                 ].map(({ type, label, color }) => (
-                  <div key={type} className="flex items-center gap-2 font-mono text-sm">
+                  <div
+                    key={type}
+                    className="flex items-center gap-2 font-mono text-sm"
+                  >
                     <span className={color}>&gt;</span>
                     <span className="text-muted-foreground">{label}</span>
                   </div>
@@ -161,11 +196,13 @@ const notification: Notification = {
 };`,
         },
         {
-          title: "With Action Buttons",
-          description: "Notifications can include actionable buttons",
+          title: 'With Action Buttons',
+          description: 'Notifications can include actionable buttons',
           preview: (
             <div className="w-full max-w-md space-y-2">
-              <div className="text-muted-foreground font-mono text-xs">[ACTION_EXAMPLE]</div>
+              <div className="text-muted-foreground font-mono text-xs">
+                [ACTION_EXAMPLE]
+              </div>
               <div className="space-y-2">
                 <div className="text-sm font-semibold">Storage almost full</div>
                 <p className="text-muted-foreground text-sm">
@@ -192,12 +229,15 @@ const notification: Notification = {
 };`,
         },
         {
-          title: "Grouped by Date",
-          description: "Automatically groups notifications by Today, Yesterday, This Week, Older",
+          title: 'Grouped by Date',
+          description:
+            'Automatically groups notifications by Today, Yesterday, This Week, Older',
           preview: (
             <div className="w-full max-w-md space-y-4">
-              <div className="text-muted-foreground font-mono text-xs">[DATE_GROUPS]</div>
-              {["Today", "Yesterday", "This Week", "Older"].map((group) => (
+              <div className="text-muted-foreground font-mono text-xs">
+                [DATE_GROUPS]
+              </div>
+              {['Today', 'Yesterday', 'This Week', 'Older'].map((group) => (
                 <div key={group} className="space-y-2">
                   <div className="bg-muted rounded-none px-4 py-2">
                     <span className="text-muted-foreground font-mono text-xs font-semibold tracking-wide uppercase">
@@ -215,14 +255,18 @@ const notification: Notification = {
 />`,
         },
         {
-          title: "Empty State",
-          description: "Friendly empty state when no notifications exist",
+          title: 'Empty State',
+          description: 'Friendly empty state when no notifications exist',
           preview: (
             <div className="flex flex-col items-center justify-center px-4 py-12">
               <div className="bg-muted mb-4 flex h-16 w-16 items-center justify-center rounded-none">
-                <span className="text-muted-foreground font-mono text-2xl">0</span>
+                <span className="text-muted-foreground font-mono text-2xl">
+                  0
+                </span>
               </div>
-              <p className="text-foreground mb-1 font-semibold">You're all caught up!</p>
+              <p className="text-foreground mb-1 font-semibold">
+                You're all caught up!
+              </p>
               <p className="text-muted-foreground text-center text-sm">
                 No new notifications at the moment
               </p>
@@ -234,11 +278,13 @@ const notification: Notification = {
 />`,
         },
         {
-          title: "Auto Mark as Read",
-          description: "Automatically mark notifications as read when clicked",
+          title: 'Auto Mark as Read',
+          description: 'Automatically mark notifications as read when clicked',
           preview: (
             <div className="w-full max-w-md space-y-2">
-              <div className="text-muted-foreground font-mono text-xs">[AUTO_READ_ENABLED]</div>
+              <div className="text-muted-foreground font-mono text-xs">
+                [AUTO_READ_ENABLED]
+              </div>
               <p className="text-muted-foreground text-sm">
                 Click any notification to automatically mark it as read
               </p>
@@ -251,11 +297,13 @@ const notification: Notification = {
 />`,
         },
         {
-          title: "Custom Max Height",
-          description: "Control the maximum height of the notification list",
+          title: 'Custom Max Height',
+          description: 'Control the maximum height of the notification list',
           preview: (
             <div className="w-full max-w-md space-y-2">
-              <div className="text-muted-foreground font-mono text-xs">[MAX_HEIGHT]: 400px</div>
+              <div className="text-muted-foreground font-mono text-xs">
+                [MAX_HEIGHT]: 400px
+              </div>
               <p className="text-muted-foreground text-sm">
                 List scrolls when content exceeds max height
               </p>
@@ -270,66 +318,72 @@ const notification: Notification = {
       ]}
       props={[
         {
-          name: "notifications",
-          type: "Notification[]",
-          description: "Array of notification objects to display",
+          name: 'notifications',
+          type: 'Notification[]',
+          description: 'Array of notification objects to display',
         },
         {
-          name: "onMarkAsRead",
-          type: "(id: string) => void",
-          description: "Callback when a notification is marked as read",
+          name: 'onMarkAsRead',
+          type: '(id: string) => void',
+          description: 'Callback when a notification is marked as read',
         },
         {
-          name: "onMarkAllAsRead",
-          type: "() => void",
-          description: "Callback when all notifications are marked as read",
+          name: 'onMarkAllAsRead',
+          type: '() => void',
+          description: 'Callback when all notifications are marked as read',
         },
         {
-          name: "onDelete",
-          type: "(id: string) => void",
-          description: "Callback when a notification is deleted",
+          name: 'onDelete',
+          type: '(id: string) => void',
+          description: 'Callback when a notification is deleted',
         },
         {
-          name: "onClearAll",
-          type: "() => void",
-          description: "Callback when all notifications are cleared",
+          name: 'onClearAll',
+          type: '() => void',
+          description: 'Callback when all notifications are cleared',
         },
         {
-          name: "maxHeight",
-          type: "number",
-          default: "600",
-          description: "Maximum height of the notification list in pixels",
+          name: 'maxHeight',
+          type: 'number',
+          default: '600',
+          description: 'Maximum height of the notification list in pixels',
         },
         {
-          name: "groupByDate",
-          type: "boolean",
-          default: "true",
-          description: "Group notifications by date (Today, Yesterday, etc.)",
+          name: 'groupByDate',
+          type: 'boolean',
+          default: 'true',
+          description: 'Group notifications by date (Today, Yesterday, etc.)',
         },
         {
-          name: "autoMarkAsRead",
-          type: "boolean",
-          default: "false",
-          description: "Automatically mark notifications as read when clicked",
+          name: 'autoMarkAsRead',
+          type: 'boolean',
+          default: 'false',
+          description: 'Automatically mark notifications as read when clicked',
         },
         {
-          name: "className",
-          type: "string",
-          description: "Additional CSS classes for the trigger button",
+          name: 'className',
+          type: 'string',
+          description: 'Additional CSS classes for the trigger button',
         },
       ]}
       accessibility={[
-        "Bell icon button has aria-label with unread count",
-        "Dropdown uses proper DropdownMenu primitives with keyboard navigation",
-        "Individual notifications are keyboard accessible with Enter/Space",
-        "Mark as read and delete buttons visible on hover and focus",
-        "Action buttons have proper aria-labels",
-        "Unread notifications indicated visually with background color and dot",
-        "Timestamps use relative formatting for better comprehension",
-        "Empty state provides clear feedback when no notifications exist",
+        'Bell icon button has aria-label with unread count',
+        'Dropdown uses proper DropdownMenu primitives with keyboard navigation',
+        'Individual notifications are keyboard accessible with Enter/Space',
+        'Mark as read and delete buttons visible on hover and focus',
+        'Action buttons have proper aria-labels',
+        'Unread notifications indicated visually with background color and dot',
+        'Timestamps use relative formatting for better comprehension',
+        'Empty state provides clear feedback when no notifications exist',
       ]}
-      previous={{ title: "Notification Badge", href: "/docs/components/notification-badge" }}
-      next={{ title: "Notification List", href: "/docs/components/notification-list" }}
+      previous={{
+        title: 'Notification Badge',
+        href: '/docs/components/notification-badge',
+      }}
+      next={{
+        title: 'Notification List',
+        href: '/docs/components/notification-list',
+      }}
     />
   );
 }

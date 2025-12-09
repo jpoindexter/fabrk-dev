@@ -1,12 +1,19 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard, DocsCallout } from "@/components/docs";
-import Link from "next/link";
-import { CircleDollarSign, CreditCard, Globe, Shield, Bell, Users } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard, DocsCallout } from '@/components/docs';
+import Link from 'next/link';
+import {
+  CircleDollarSign,
+  CreditCard,
+  Globe,
+  Shield,
+  Bell,
+  Users,
+} from 'lucide-react';
 
 export const metadata = {
-  title: "Lemon Squeezy Payments - Fabrk Docs",
+  title: 'Lemon Squeezy Payments - Fabrk Docs',
   description:
-    "Accept payments with Lemon Squeezy. Handle global taxes, subscriptions, and digital product sales with ease.",
+    'Accept payments with Lemon Squeezy. Handle global taxes, subscriptions, and digital product sales with ease.',
 };
 
 export default function LemonSqueezyPage() {
@@ -20,54 +27,57 @@ export default function LemonSqueezyPage() {
       features={[
         {
           icon: CircleDollarSign,
-          title: "Merchant of Record",
-          description: "Lemon Squeezy handles taxes, refunds, and compliance globally.",
+          title: 'Merchant of Record',
+          description:
+            'Lemon Squeezy handles taxes, refunds, and compliance globally.',
         },
         {
           icon: Globe,
-          title: "Global Tax Handling",
-          description: "Automatic VAT, GST, and sales tax calculation and remittance.",
+          title: 'Global Tax Handling',
+          description:
+            'Automatic VAT, GST, and sales tax calculation and remittance.',
         },
         {
           icon: CreditCard,
-          title: "Multiple Payment Methods",
-          description: "Cards, PayPal, and local payment methods supported.",
+          title: 'Multiple Payment Methods',
+          description: 'Cards, PayPal, and local payment methods supported.',
         },
         {
           icon: Shield,
-          title: "Fraud Protection",
-          description: "Built-in fraud detection and chargeback protection.",
+          title: 'Fraud Protection',
+          description: 'Built-in fraud detection and chargeback protection.',
         },
         {
           icon: Bell,
-          title: "Webhook Events",
-          description: "Real-time notifications for orders, subscriptions, and more.",
+          title: 'Webhook Events',
+          description:
+            'Real-time notifications for orders, subscriptions, and more.',
         },
         {
           icon: Users,
-          title: "Customer Portal",
-          description: "Self-serve subscription management for your customers.",
+          title: 'Customer Portal',
+          description: 'Self-serve subscription management for your customers.',
         },
       ]}
       setup={[
         {
-          title: "Create Lemon Squeezy Account",
+          title: 'Create Lemon Squeezy Account',
           description:
-            "Go to lemonsqueezy.com and create a store. Complete your onboarding to enable payments.",
+            'Go to lemonsqueezy.com and create a store. Complete your onboarding to enable payments.',
         },
         {
-          title: "Get API Keys",
+          title: 'Get API Keys',
           description:
-            "In Settings → API, create a new API key with full access. Copy your Store ID from the store settings.",
+            'In Settings → API, create a new API key with full access. Copy your Store ID from the store settings.',
         },
         {
-          title: "Create Products",
+          title: 'Create Products',
           description:
             "Go to Products and create items for each tier. Each product variant has a unique ID you'll use for checkout.",
         },
         {
-          title: "Add Keys to App",
-          description: "Add these to your .env.local file",
+          title: 'Add Keys to App',
+          description: 'Add these to your .env.local file',
           code: `# Lemon Squeezy API Keys
 LEMONSQUEEZY_API_KEY="your_api_key_here"
 LEMONSQUEEZY_STORE_ID="your_store_id"
@@ -77,11 +87,12 @@ LEMONSQUEEZY_WEBHOOK_SECRET="your_webhook_secret"
 NEXT_PUBLIC_LEMONSQUEEZY_VARIANT_STARTER="123456"
 NEXT_PUBLIC_LEMONSQUEEZY_VARIANT_PRO="123457"
 NEXT_PUBLIC_LEMONSQUEEZY_VARIANT_ENTERPRISE="123458"`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Setup Webhooks",
-          description: "In Settings → Webhooks, create a webhook pointing to your app's endpoint.",
+          title: 'Setup Webhooks',
+          description:
+            "In Settings → Webhooks, create a webhook pointing to your app's endpoint.",
           code: `# Production webhook URL
 https://your-domain.com/api/lemonsqueezy/webhook
 
@@ -92,14 +103,15 @@ https://your-domain.com/api/lemonsqueezy/webhook
 # - subscription_cancelled
 # - subscription_payment_success
 # - subscription_payment_failed`,
-          language: "bash",
-          tip: "Copy the webhook signing secret and add it as LEMONSQUEEZY_WEBHOOK_SECRET",
+          language: 'bash',
+          tip: 'Copy the webhook signing secret and add it as LEMONSQUEEZY_WEBHOOK_SECRET',
         },
       ]}
       usage={[
         {
-          title: "Checkout Button Component",
-          description: "Create a checkout session and redirect to Lemon Squeezy",
+          title: 'Checkout Button Component',
+          description:
+            'Create a checkout session and redirect to Lemon Squeezy',
           code: `"use client";
 
 import { useState } from "react";
@@ -139,11 +151,11 @@ export function LemonSqueezyCheckout({ variantId, planName }) {
     </Button>
   );
 }`,
-          language: "tsx",
+          language: 'tsx',
         },
         {
-          title: "API Route: Create Checkout",
-          description: "Server-side checkout creation",
+          title: 'API Route: Create Checkout',
+          description: 'Server-side checkout creation',
           code: `// src/app/api/lemonsqueezy/checkout/route.ts
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
@@ -176,11 +188,11 @@ export async function POST(req: Request) {
     );
   }
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Webhook Handler",
-          description: "Handle Lemon Squeezy webhook events",
+          title: 'Webhook Handler',
+          description: 'Handle Lemon Squeezy webhook events',
           code: `// src/app/api/lemonsqueezy/webhook/route.ts
 import { NextResponse } from "next/server";
 import crypto from "crypto";
@@ -209,11 +221,11 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Webhook failed" }, { status: 500 });
   }
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
       ]}
-      previous={{ title: "Stripe Payments", href: "/docs/features/payments" }}
-      next={{ title: "Free Trials", href: "/docs/features/trial" }}
+      previous={{ title: 'Stripe Payments', href: '/docs/features/payments' }}
+      next={{ title: 'Free Trials', href: '/docs/features/trial' }}
     >
       {/* Why Lemon Squeezy Section */}
       <DocsSection title="Stripe vs Lemon Squeezy">
@@ -242,9 +254,10 @@ export async function POST(req: Request) {
           </div>
         </DocsCard>
         <DocsCallout variant="info" title="When to use Lemon Squeezy">
-          Choose Lemon Squeezy if you sell to consumers globally and don&apos;t want to deal with
-          VAT, GST, or sales tax registration in 100+ countries. The higher fees are worth it for
-          the compliance peace of mind.
+          Choose Lemon Squeezy if you sell to consumers globally and don&apos;t
+          want to deal with VAT, GST, or sales tax registration in 100+
+          countries. The higher fees are worth it for the compliance peace of
+          mind.
         </DocsCallout>
       </DocsSection>
 
@@ -254,15 +267,21 @@ export async function POST(req: Request) {
           <div className="space-y-2">
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">order_created</code>
-              <span className="text-muted-foreground">New purchase completed</span>
+              <span className="text-muted-foreground">
+                New purchase completed
+              </span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">subscription_created</code>
-              <span className="text-muted-foreground">New subscription started</span>
+              <span className="text-muted-foreground">
+                New subscription started
+              </span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">subscription_updated</code>
-              <span className="text-muted-foreground">Plan changed or modified</span>
+              <span className="text-muted-foreground">
+                Plan changed or modified
+              </span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">subscription_cancelled</code>
@@ -270,7 +289,9 @@ export async function POST(req: Request) {
             </div>
             <div className="flex justify-between">
               <code className="bg-muted px-1">subscription_payment_failed</code>
-              <span className="text-muted-foreground">Payment attempt failed</span>
+              <span className="text-muted-foreground">
+                Payment attempt failed
+              </span>
             </div>
           </div>
         </DocsCard>
@@ -284,8 +305,8 @@ export async function POST(req: Request) {
               What fees does Lemon Squeezy charge?
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
-              5% + $0.50 per transaction. This includes all payment processing, tax handling, and
-              fraud protection. No monthly fees.
+              5% + $0.50 per transaction. This includes all payment processing,
+              tax handling, and fraud protection. No monthly fees.
             </div>
           </details>
 
@@ -294,8 +315,9 @@ export async function POST(req: Request) {
               How do payouts work?
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
-              Lemon Squeezy pays out weekly or monthly (your choice) via PayPal or bank transfer.
-              There&apos;s a small delay while they handle tax remittance.
+              Lemon Squeezy pays out weekly or monthly (your choice) via PayPal
+              or bank transfer. There&apos;s a small delay while they handle tax
+              remittance.
             </div>
           </details>
 
@@ -304,8 +326,8 @@ export async function POST(req: Request) {
               Can I use both Stripe and Lemon Squeezy?
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
-              Yes! Many SaaS apps use Stripe for B2B (where customers handle their own taxes) and
-              Lemon Squeezy for B2C international sales.
+              Yes! Many SaaS apps use Stripe for B2B (where customers handle
+              their own taxes) and Lemon Squeezy for B2C international sales.
             </div>
           </details>
         </div>
@@ -315,9 +337,14 @@ export async function POST(req: Request) {
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/trial">
-            <DocsCard title="FREE_TRIALS" className="hover:border-primary/50 h-full transition-all">
+            <DocsCard
+              title="FREE_TRIALS"
+              className="hover:border-primary/50 h-full transition-all"
+            >
               Free Trials
-              <p className="mb-6">Let users try your product before paying with trial periods.</p>
+              <p className="mb-6">
+                Let users try your product before paying with trial periods.
+              </p>
             </DocsCard>
           </Link>
           <Link href="/docs/features/payments">
@@ -326,7 +353,9 @@ export async function POST(req: Request) {
               className="hover:border-primary/50 h-full transition-all"
             >
               Stripe Setup
-              <p className="mb-6">Set up Stripe for direct payment processing with lower fees.</p>
+              <p className="mb-6">
+                Set up Stripe for direct payment processing with lower fees.
+              </p>
             </DocsCard>
           </Link>
         </div>

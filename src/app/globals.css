@@ -3,10 +3,10 @@
  * Multiple themes available: black, purple, green, blue, orange, rose.
  * Toggle themes via the ThemeDropdown component or ColorThemeSwitcher.
  */
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
-@plugin "@tailwindcss/typography";
+@plugin '@tailwindcss/typography';
 
 @keyframes bar-grow {
   0% {
@@ -38,18 +38,18 @@
      ============================================ */
 
   /* Dark overlay for alert dialogs */
-  [data-visual-mode="terminal"] [data-slot="alert-dialog-overlay"] {
+  [data-visual-mode='terminal'] [data-slot='alert-dialog-overlay'] {
     background-color: rgba(0, 0, 0, 0.8) !important;
   }
 
   /* Sonner toast terminal styling */
-  [data-visual-mode="terminal"] [data-sonner-toast] {
+  [data-visual-mode='terminal'] [data-sonner-toast] {
     border-radius: 0 !important;
     font-family: var(--font-mono) !important;
     font-size: 0.75rem !important;
   }
 
-  [data-visual-mode="terminal"] [data-sonner-toast] [data-content] {
+  [data-visual-mode='terminal'] [data-sonner-toast] [data-content] {
     font-family: var(--font-mono) !important;
   }
 
@@ -65,7 +65,7 @@
      ============================================ */
 
   /* Reset all react-day-picker CSS custom properties */
-  [data-visual-mode="terminal"] [data-slot="calendar"] {
+  [data-visual-mode='terminal'] [data-slot='calendar'] {
     --rdp-accent-color: oklch(var(--primary)) !important;
     --rdp-accent-background-color: oklch(var(--primary)) !important;
     --rdp-day_button-border-radius: 0 !important;
@@ -84,61 +84,88 @@
   }
 
   /* Terminal aesthetic: Sharp corners on ALL elements */
-  [data-visual-mode="terminal"] [data-slot="calendar"] * {
+  [data-visual-mode='terminal'] [data-slot='calendar'] * {
     border-radius: 0 !important;
   }
 
   /* Selected day - use primary color */
-  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-selected .rdp-day_button,
-  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-day_button[aria-selected="true"],
-  [data-visual-mode="terminal"] [data-slot="calendar"] [aria-selected="true"] > .rdp-day_button {
+  [data-visual-mode='terminal']
+    [data-slot='calendar']
+    .rdp-selected
+    .rdp-day_button,
+  [data-visual-mode='terminal']
+    [data-slot='calendar']
+    .rdp-day_button[aria-selected='true'],
+  [data-visual-mode='terminal']
+    [data-slot='calendar']
+    [aria-selected='true']
+    > .rdp-day_button {
     background-color: oklch(var(--primary)) !important;
     color: oklch(var(--primary-foreground)) !important;
   }
 
   /* Today - use muted background */
-  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-today .rdp-day_button,
-  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-day_button[data-today="true"] {
+  [data-visual-mode='terminal']
+    [data-slot='calendar']
+    .rdp-today
+    .rdp-day_button,
+  [data-visual-mode='terminal']
+    [data-slot='calendar']
+    .rdp-day_button[data-today='true'] {
     background-color: oklch(var(--muted)) !important;
     color: oklch(var(--foreground)) !important;
     font-weight: 600 !important;
   }
 
   /* Today that is also selected - primary takes precedence */
-  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-today.rdp-selected .rdp-day_button,
-  [data-visual-mode="terminal"]
-    [data-slot="calendar"]
+  [data-visual-mode='terminal']
+    [data-slot='calendar']
+    .rdp-today.rdp-selected
+    .rdp-day_button,
+  [data-visual-mode='terminal']
+    [data-slot='calendar']
     .rdp-today
-    [aria-selected="true"]
+    [aria-selected='true']
     > .rdp-day_button {
     background-color: oklch(var(--primary)) !important;
     color: oklch(var(--primary-foreground)) !important;
   }
 
   /* Range selection - middle days */
-  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-range_middle .rdp-day_button,
-  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-day_button.rdp-range_middle {
+  [data-visual-mode='terminal']
+    [data-slot='calendar']
+    .rdp-range_middle
+    .rdp-day_button,
+  [data-visual-mode='terminal']
+    [data-slot='calendar']
+    .rdp-day_button.rdp-range_middle {
     background-color: oklch(var(--muted)) !important;
     color: oklch(var(--foreground)) !important;
   }
 
   /* Range start and end */
-  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-range_start .rdp-day_button,
-  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-range_end .rdp-day_button {
+  [data-visual-mode='terminal']
+    [data-slot='calendar']
+    .rdp-range_start
+    .rdp-day_button,
+  [data-visual-mode='terminal']
+    [data-slot='calendar']
+    .rdp-range_end
+    .rdp-day_button {
     background-color: oklch(var(--primary)) !important;
     color: oklch(var(--primary-foreground)) !important;
   }
 
   /* Day button hover */
-  [data-visual-mode="terminal"]
-    [data-slot="calendar"]
-    .rdp-day_button:hover:not([aria-selected="true"]) {
+  [data-visual-mode='terminal']
+    [data-slot='calendar']
+    .rdp-day_button:hover:not([aria-selected='true']) {
     background-color: oklch(var(--muted)) !important;
     color: oklch(var(--foreground)) !important;
   }
 
   /* Weekday headers - terminal style */
-  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-weekday {
+  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-weekday {
     color: oklch(var(--muted-foreground)) !important;
     font-family: var(--font-mono) !important;
     font-size: 0.75rem !important;
@@ -146,8 +173,8 @@
   }
 
   /* Caption/month label - terminal style */
-  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-caption_label,
-  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-month_caption {
+  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-caption_label,
+  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-month_caption {
     font-family: var(--font-mono) !important;
     font-size: 0.875rem !important;
     font-weight: 600 !important;
@@ -158,8 +185,8 @@
   /* Font families */
   --font-sans: var(--font-geist-sans);
   --font-mono:
-    var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+    var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, 'Liberation Mono', 'Courier New', monospace;
 
   /* Border radius */
   --radius: 0.5rem;
@@ -243,31 +270,33 @@
    ============================================ */
 
 /* Light - Clean white theme - DaisyUI OKLCH values */
-[data-theme="light"] {
-  --background: 98% 0 0;
-  /* base-200 */
-  --foreground: 21% 0.006 285.885;
-  /* base-content */
+[data-theme='light'] {
+  --background: 99% 0 0;
+  /* Vercel off-white #FAFAFA */
+  --foreground: 0% 0 0;
+  /* Pure black #000000 */
   --card: 100% 0 0;
-  /* base-100 */
-  --card-foreground: 21% 0.006 285.885;
+  /* Pure white #FFFFFF */
+  --card-foreground: 0% 0 0;
+  /* Pure black */
   --popover: 100% 0 0;
-  --popover-foreground: 21% 0.006 285.885;
-  --primary: 49.12% 0.3096 275.75;
-  /* primary */
-  --primary-foreground: 100% 0.02 320;
-  /* primary-content */
-  --secondary: 55% 0.25 342.55;
-  /* secondary - darkened for WCAG AA contrast */
+  --popover-foreground: 0% 0 0;
+  --primary: 0% 0 0;
+  /* Pure black #000000 */
+  --primary-foreground: 100% 0 0;
+  /* Pure white #FFFFFF */
+  --secondary: 12% 0 0;
+  /* Very dark gray #1F1F1F */
   --secondary-foreground: 100% 0 0;
-  /* secondary-content - white for contrast */
-  --accent: 76.76% 0.184 183.61;
-  /* accent */
-  --accent-foreground: 15.35% 0.0368 183.61;
-  /* accent-content */
-  --muted: 95% 0 0;
-  /* base-300 */
-  --muted-foreground: 40% 0 0;
+  /* White for contrast */
+  --accent: 55% 0.21 250;
+  /* Vercel blue #0070F3 */
+  --accent-foreground: 100% 0 0;
+  /* White on blue */
+  --muted: 97% 0 0;
+  /* Very light gray #F5F5F5 */
+  --muted-foreground: 45% 0 0;
+  /* Medium gray #666666 */
   --destructive: 45% 0.22 13.428;
   --destructive-foreground: 100% 0 0;
   --success: 55% 0.18 163.223;
@@ -276,9 +305,12 @@
   --warning-foreground: 0% 0 0;
   --info: 60% 0.18 232.661;
   --info-foreground: 100% 0 0;
-  --border: 90% 0 0;
-  --input: 90% 0 0;
-  --ring: 49.12% 0.3096 275.75;
+  --border: 93% 0 0;
+  /* Light gray border #EAEAEA */
+  --input: 93% 0 0;
+  /* Same as border */
+  --ring: 0% 0 0;
+  /* Black ring for focus */
   --chart-1: 49% 0.3 275;
   --chart-2: 55% 0.25 342;
   --chart-3: 76% 0.18 183;
@@ -292,32 +324,33 @@
 }
 
 /* Dark - Professional dark theme - DaisyUI OKLCH values */
-[data-theme="dark"] {
-  --background: 23.26% 0.014 253.1;
-  /* base-200 */
-  --foreground: 97.807% 0.029 256.847;
-  /* base-content */
-  --card: 25.33% 0.016 252.42;
-  /* base-100 */
-  --card-foreground: 97.807% 0.029 256.847;
-  --popover: 25.33% 0.016 252.42;
-  --popover-foreground: 97.807% 0.029 256.847;
-  --primary: 78.9% 0.154 211.53;
-  /* primary */
-  --primary-foreground: 15.83% 0.017 212.09;
-  /* primary-content */
-  --secondary: 74.8% 0.172 318.72;
-  /* secondary */
-  --secondary-foreground: 15.49% 0.0307 318.72;
-  /* secondary-content */
-  --accent: 79.82% 0.171 183.61;
-  /* accent */
-  --accent-foreground: 15.35% 0.0368 183.61;
-  /* accent-content */
-  --muted: 21.15% 0.012 254.09;
-  /* base-300 */
-  --muted-foreground: 85% 0.02 256;
-  /* Slightly dimmed foreground */
+[data-theme='dark'] {
+  --background: 0% 0 0;
+  /* Pure black #000000 */
+  --foreground: 100% 0 0;
+  /* Pure white #FFFFFF */
+  --card: 10% 0 0;
+  /* Very dark gray #111111 */
+  --card-foreground: 100% 0 0;
+  /* Pure white */
+  --popover: 10% 0 0;
+  --popover-foreground: 100% 0 0;
+  --primary: 100% 0 0;
+  /* Pure white #FFFFFF */
+  --primary-foreground: 0% 0 0;
+  /* Pure black #000000 */
+  --secondary: 90% 0 0;
+  /* Light gray */
+  --secondary-foreground: 0% 0 0;
+  /* Black for contrast */
+  --accent: 55% 0.21 250;
+  /* Vercel blue #0070F3 */
+  --accent-foreground: 100% 0 0;
+  /* White on blue */
+  --muted: 12% 0 0;
+  /* Dark gray #1A1A1A */
+  --muted-foreground: 60% 0 0;
+  /* Light gray #888888 */
   --destructive: 55% 0.22 15;
   --destructive-foreground: 100% 0 0;
   --success: 65% 0.18 163;
@@ -326,9 +359,12 @@
   --warning-foreground: 15% 0.03 85;
   --info: 70% 0.16 230;
   --info-foreground: 15% 0.02 230;
-  --border: 21.15% 0.012 254.09;
-  --input: 21.15% 0.012 254.09;
-  --ring: 78.9% 0.154 211.53;
+  --border: 22% 0 0;
+  /* Dark gray border #333333 */
+  --input: 22% 0 0;
+  /* Same as border */
+  --ring: 100% 0 0;
+  /* White ring for focus */
   --chart-1: 78% 0.15 211;
   --chart-2: 74% 0.17 318;
   --chart-3: 79% 0.17 183;
@@ -342,7 +378,7 @@
 }
 
 /* Cupcake - Soft pastels - DaisyUI OKLCH values */
-[data-theme="cupcake"] {
+[data-theme='cupcake'] {
   --background: 94.51% 0.026 73.14;
   /* base-200 */
   --foreground: 27.84% 0.05 256.79;
@@ -391,7 +427,7 @@
 }
 
 /* Bumblebee - Yellow accents - DaisyUI OKLCH values */
-[data-theme="bumblebee"] {
+[data-theme='bumblebee'] {
   --background: 98% 0 0;
   /* base-200 */
   --foreground: 21% 0.006 285.885;
@@ -440,7 +476,7 @@
 }
 
 /* Emerald - Green tones - DaisyUI OKLCH values */
-[data-theme="emerald"] {
+[data-theme='emerald'] {
   --background: 98% 0 0;
   /* base-200 */
   --foreground: 21% 0.006 285.885;
@@ -489,7 +525,7 @@
 }
 
 /* Corporate - Blue business - DaisyUI OKLCH values */
-[data-theme="corporate"] {
+[data-theme='corporate'] {
   --background: 98% 0 0;
   /* base-200 */
   --foreground: 37.1% 0.032 262.99;
@@ -538,7 +574,7 @@
 }
 
 /* Synthwave - Neon purple/pink - DaisyUI OKLCH values (REVERSED hierarchy) */
-[data-theme="synthwave"] {
+[data-theme='synthwave'] {
   --background: 20% 0.09 281.288;
   /* base-200 - LIGHTER than cards! */
   --foreground: 86.49% 0.2132 330.49;
@@ -588,7 +624,7 @@
 }
 
 /* Retro - Vintage warm - DaisyUI OKLCH values (LIGHT theme) */
-[data-theme="retro"] {
+[data-theme='retro'] {
   --background: 88.272% 0.049 91.774;
   /* base-200 */
   --foreground: 41% 0.112 45.904;
@@ -637,7 +673,7 @@
 }
 
 /* Cyberpunk - Pink/yellow tech - DaisyUI OKLCH values (LIGHT theme) */
-[data-theme="cyberpunk"] {
+[data-theme='cyberpunk'] {
   --background: 91.51% 0.179 104.32;
   /* base-200 */
   --foreground: 0% 0 0;
@@ -686,7 +722,7 @@
 }
 
 /* Valentine - Romantic pink - DaisyUI OKLCH values */
-[data-theme="valentine"] {
+[data-theme='valentine'] {
   --background: 93.68% 0.0185 7.25;
   /* base-200 */
   --foreground: 28.74% 0.1009 3.07;
@@ -735,7 +771,7 @@
 }
 
 /* Halloween - Orange/dark - DaisyUI OKLCH values */
-[data-theme="halloween"] {
+[data-theme='halloween'] {
   --background: 14% 0.004 49.25;
   /* base-200 */
   --foreground: 84.955% 0 0;
@@ -784,7 +820,7 @@
 }
 
 /* Forest - Nature green - DaisyUI OKLCH values */
-[data-theme="forest"] {
+[data-theme='forest'] {
   --background: 18.522% 0.007 17.911;
   /* base-200 */
   --foreground: 84.77% 0.003 106.424;
@@ -833,7 +869,7 @@
 }
 
 /* Aqua - Cyan/blue - DaisyUI OKLCH values */
-[data-theme="aqua"] {
+[data-theme='aqua'] {
   --background: 28% 0.091 267.935;
   /* base-200 */
   --foreground: 90% 0.058 230.902;
@@ -882,7 +918,7 @@
 }
 
 /* Lo-Fi - Minimalist - DaisyUI OKLCH values */
-[data-theme="lofi"] {
+[data-theme='lofi'] {
   --background: 97% 0 0;
   /* base-200 */
   --foreground: 21% 0.006 285.885;
@@ -931,7 +967,7 @@
 }
 
 /* Pastel - Light pastels - DaisyUI OKLCH values */
-[data-theme="pastel"] {
+[data-theme='pastel'] {
   --background: 95.85% 0.016 298.99;
   /* base-200 */
   --foreground: 37.91% 0.034 296.01;
@@ -980,7 +1016,7 @@
 }
 
 /* Fantasy - Purple fantasy - DaisyUI OKLCH values */
-[data-theme="fantasy"] {
+[data-theme='fantasy'] {
   --background: 98% 0 0;
   /* base-200 */
   --foreground: 21% 0.006 285.885;
@@ -1029,7 +1065,7 @@
 }
 
 /* Luxury - High-end dark with gold accents - DaisyUI OKLCH values (REVERSED hierarchy) */
-[data-theme="luxury"] {
+[data-theme='luxury'] {
   --background: 20.219% 0.004 308.229;
   /* base-200 - LIGHTER than cards! */
   --foreground: 93.64% 0.1098 101.08;
@@ -1078,7 +1114,7 @@
 }
 
 /* Dracula - Purple developer - DaisyUI OKLCH values */
-[data-theme="dracula"] {
+[data-theme='dracula'] {
   --background: 26.805% 0.02 277.508;
   /* base-200 */
   --foreground: 97.747% 0.007 106.545;
@@ -1127,7 +1163,7 @@
 }
 
 /* Autumn - Warm earth tones - DaisyUI OKLCH values */
-[data-theme="autumn"] {
+[data-theme='autumn'] {
   --background: 98% 0 0;
   /* base-200 */
   --foreground: 25.04% 0.0818 12.77;
@@ -1176,7 +1212,7 @@
 }
 
 /* Business - Professional dark blue - DaisyUI OKLCH values */
-[data-theme="business"] {
+[data-theme='business'] {
   --background: 22.648% 0 0;
   /* base-200 */
   --foreground: 84.87% 0 0;
@@ -1323,16 +1359,16 @@
 }
 
 .terminal-bracket::before {
-  content: "[";
+  content: '[';
 }
 
 .terminal-bracket::after {
-  content: "]";
+  content: ']';
 }
 
 /* Terminal command prefix */
 .terminal-cmd::before {
-  content: "> ";
+  content: '> ';
   color: oklch(var(--primary));
 }
 
@@ -1358,7 +1394,7 @@
 }
 
 .terminal-box::before {
-  content: "";
+  content: '';
   position: absolute;
   top: -1px;
   left: 1rem;
@@ -1389,14 +1425,14 @@
 }
 
 .terminal-cursor::after {
-  content: "█";
+  content: '█';
   animation: terminal-blink 1s step-end infinite;
   color: oklch(var(--primary));
 }
 
 /* Terminal scanline effect (subtle) */
 .terminal-scanlines::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -1556,48 +1592,48 @@
 
 /* Specific component overrides for terminal preview */
 .terminal-preview button,
-.terminal-preview [data-slot="button"],
+.terminal-preview [data-slot='button'],
 .terminal-preview input,
-.terminal-preview [data-slot="input"],
+.terminal-preview [data-slot='input'],
 .terminal-preview textarea,
 .terminal-preview select,
-.terminal-preview [data-slot="select-trigger"],
-.terminal-preview [data-slot="select-content"],
-.terminal-preview [data-slot="card"],
-.terminal-preview [data-slot="dialog-content"],
-.terminal-preview [data-slot="alert-dialog-content"],
-.terminal-preview [data-slot="popover-content"],
-.terminal-preview [data-slot="dropdown-menu-content"],
-.terminal-preview [data-slot="tooltip-content"],
-.terminal-preview [data-slot="sheet-content"],
-.terminal-preview [data-slot="command"],
-.terminal-preview [data-slot="tabs-list"],
-.terminal-preview [data-slot="tabs-trigger"],
-.terminal-preview [data-slot="badge"],
-.terminal-preview [data-slot="avatar"],
-.terminal-preview [data-slot="avatar-fallback"],
-.terminal-preview [data-slot="skeleton"],
-.terminal-preview [data-slot="switch"],
-.terminal-preview [data-slot="checkbox"],
-.terminal-preview [data-slot="radio"],
-.terminal-preview [data-slot="slider-thumb"],
-.terminal-preview [data-slot="progress"],
-.terminal-preview [data-slot="alert"],
-.terminal-preview [data-slot="calendar"],
-.terminal-preview [data-slot="dropzone"],
-.terminal-preview [data-slot="file-upload"],
-.terminal-preview [role="combobox"],
-.terminal-preview [role="listbox"],
-.terminal-preview [role="option"],
-.terminal-preview [role="menuitem"],
-.terminal-preview [role="dialog"],
-.terminal-preview [role="alertdialog"],
+.terminal-preview [data-slot='select-trigger'],
+.terminal-preview [data-slot='select-content'],
+.terminal-preview [data-slot='card'],
+.terminal-preview [data-slot='dialog-content'],
+.terminal-preview [data-slot='alert-dialog-content'],
+.terminal-preview [data-slot='popover-content'],
+.terminal-preview [data-slot='dropdown-menu-content'],
+.terminal-preview [data-slot='tooltip-content'],
+.terminal-preview [data-slot='sheet-content'],
+.terminal-preview [data-slot='command'],
+.terminal-preview [data-slot='tabs-list'],
+.terminal-preview [data-slot='tabs-trigger'],
+.terminal-preview [data-slot='badge'],
+.terminal-preview [data-slot='avatar'],
+.terminal-preview [data-slot='avatar-fallback'],
+.terminal-preview [data-slot='skeleton'],
+.terminal-preview [data-slot='switch'],
+.terminal-preview [data-slot='checkbox'],
+.terminal-preview [data-slot='radio'],
+.terminal-preview [data-slot='slider-thumb'],
+.terminal-preview [data-slot='progress'],
+.terminal-preview [data-slot='alert'],
+.terminal-preview [data-slot='calendar'],
+.terminal-preview [data-slot='dropzone'],
+.terminal-preview [data-slot='file-upload'],
+.terminal-preview [role='combobox'],
+.terminal-preview [role='listbox'],
+.terminal-preview [role='option'],
+.terminal-preview [role='menuitem'],
+.terminal-preview [role='dialog'],
+.terminal-preview [role='alertdialog'],
 .terminal-preview kbd {
   border-radius: 0 !important;
 }
 
 /* Override any inline border-radius styles */
-.terminal-preview [style*="border-radius"] {
+.terminal-preview [style*='border-radius'] {
   border-radius: 0 !important;
 }
 
@@ -1609,14 +1645,14 @@
 /* Input/textarea styling for terminal previews - match contact page */
 .terminal-preview input,
 .terminal-preview textarea,
-.terminal-preview [data-slot="input"] input,
-.terminal-preview [data-slot="select-trigger"] {
+.terminal-preview [data-slot='input'] input,
+.terminal-preview [data-slot='select-trigger'] {
   background-color: oklch(var(--card)) !important;
   border: 1px solid oklch(var(--border)) !important;
 }
 
 /* Ensure dropzone has proper background */
-.terminal-preview [data-slot="dropzone"] {
+.terminal-preview [data-slot='dropzone'] {
   background-color: oklch(var(--card)) !important;
 }
 
@@ -1627,43 +1663,43 @@
    ============================================ */
 
 /* Target dialogs on docs pages - they render in portals */
-body:has(.terminal-preview) [data-slot="dialog-content"],
-body:has(.terminal-preview) [data-slot="alert-dialog-content"],
-body:has(.terminal-preview) [data-slot="sheet-content"],
-body:has(.terminal-preview) [data-slot="popover-content"],
-body:has(.terminal-preview) [data-slot="dropdown-menu-content"],
-body:has(.terminal-preview) [data-slot="select-content"],
-body:has(.terminal-preview) [data-slot="tooltip-content"],
-body:has(.terminal-preview) [data-slot="command"],
-body:has(.terminal-preview) [role="dialog"],
-body:has(.terminal-preview) [role="alertdialog"] {
+body:has(.terminal-preview) [data-slot='dialog-content'],
+body:has(.terminal-preview) [data-slot='alert-dialog-content'],
+body:has(.terminal-preview) [data-slot='sheet-content'],
+body:has(.terminal-preview) [data-slot='popover-content'],
+body:has(.terminal-preview) [data-slot='dropdown-menu-content'],
+body:has(.terminal-preview) [data-slot='select-content'],
+body:has(.terminal-preview) [data-slot='tooltip-content'],
+body:has(.terminal-preview) [data-slot='command'],
+body:has(.terminal-preview) [role='dialog'],
+body:has(.terminal-preview) [role='alertdialog'] {
   border-radius: 0 !important;
 }
 
 /* Also target all children within these portaled elements */
-body:has(.terminal-preview) [data-slot="dialog-content"] *,
-body:has(.terminal-preview) [data-slot="alert-dialog-content"] *,
-body:has(.terminal-preview) [data-slot="sheet-content"] *,
-body:has(.terminal-preview) [data-slot="popover-content"] *,
-body:has(.terminal-preview) [data-slot="dropdown-menu-content"] *,
-body:has(.terminal-preview) [data-slot="select-content"] *,
-body:has(.terminal-preview) [role="dialog"] *,
-body:has(.terminal-preview) [role="alertdialog"] * {
+body:has(.terminal-preview) [data-slot='dialog-content'] *,
+body:has(.terminal-preview) [data-slot='alert-dialog-content'] *,
+body:has(.terminal-preview) [data-slot='sheet-content'] *,
+body:has(.terminal-preview) [data-slot='popover-content'] *,
+body:has(.terminal-preview) [data-slot='dropdown-menu-content'] *,
+body:has(.terminal-preview) [data-slot='select-content'] *,
+body:has(.terminal-preview) [role='dialog'] *,
+body:has(.terminal-preview) [role='alertdialog'] * {
   border-radius: 0 !important;
 }
 
 /* Terminal font styling for dialogs on docs pages */
-body:has(.terminal-preview) [data-slot="dialog-content"],
-body:has(.terminal-preview) [data-slot="alert-dialog-content"],
-body:has(.terminal-preview) [data-slot="sheet-content"],
-body:has(.terminal-preview) [role="dialog"],
-body:has(.terminal-preview) [role="alertdialog"] {
+body:has(.terminal-preview) [data-slot='dialog-content'],
+body:has(.terminal-preview) [data-slot='alert-dialog-content'],
+body:has(.terminal-preview) [data-slot='sheet-content'],
+body:has(.terminal-preview) [role='dialog'],
+body:has(.terminal-preview) [role='alertdialog'] {
   font-family: var(--font-mono) !important;
 }
 
 /* Dialog title - terminal style */
-body:has(.terminal-preview) [data-slot="dialog-title"],
-body:has(.terminal-preview) [data-slot="alert-dialog-title"] {
+body:has(.terminal-preview) [data-slot='dialog-title'],
+body:has(.terminal-preview) [data-slot='alert-dialog-title'] {
   font-family: var(--font-mono) !important;
   font-size: 0.875rem !important;
   font-weight: 600 !important;
@@ -1672,18 +1708,18 @@ body:has(.terminal-preview) [data-slot="alert-dialog-title"] {
 }
 
 /* Dialog description - terminal style */
-body:has(.terminal-preview) [data-slot="dialog-description"],
-body:has(.terminal-preview) [data-slot="alert-dialog-description"] {
+body:has(.terminal-preview) [data-slot='dialog-description'],
+body:has(.terminal-preview) [data-slot='alert-dialog-description'] {
   font-family: var(--font-mono) !important;
   font-size: 0.75rem !important;
   color: oklch(var(--muted-foreground)) !important;
 }
 
 /* Dialog inputs - terminal style */
-body:has(.terminal-preview) [data-slot="dialog-content"] input,
-body:has(.terminal-preview) [data-slot="dialog-content"] textarea,
-body:has(.terminal-preview) [data-slot="alert-dialog-content"] input,
-body:has(.terminal-preview) [data-slot="alert-dialog-content"] textarea {
+body:has(.terminal-preview) [data-slot='dialog-content'] input,
+body:has(.terminal-preview) [data-slot='dialog-content'] textarea,
+body:has(.terminal-preview) [data-slot='alert-dialog-content'] input,
+body:has(.terminal-preview) [data-slot='alert-dialog-content'] textarea {
   background-color: oklch(var(--card)) !important;
   border: 1px solid oklch(var(--border)) !important;
   font-family: var(--font-mono) !important;

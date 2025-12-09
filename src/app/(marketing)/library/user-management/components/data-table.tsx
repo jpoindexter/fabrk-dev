@@ -2,11 +2,11 @@
  * Data table component with terminal styling
  */
 
-import { Table } from "@tanstack/react-table";
-import { flexRender } from "@tanstack/react-table";
-import type { User } from "./types";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { Table } from '@tanstack/react-table';
+import { flexRender } from '@tanstack/react-table';
+import type { User } from './types';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 interface DataTableProps {
   table: Table<User>;
@@ -24,13 +24,24 @@ export function DataTable({ table }: DataTableProps) {
                 key={header.id}
                 className="flex-1"
                 style={{
-                  width: header.id === "select" ? 40 : header.id === "actions" ? 60 : undefined,
-                  flex: header.id === "select" || header.id === "actions" ? "0 0 auto" : 1,
+                  width:
+                    header.id === 'select'
+                      ? 40
+                      : header.id === 'actions'
+                        ? 60
+                        : undefined,
+                  flex:
+                    header.id === 'select' || header.id === 'actions'
+                      ? '0 0 auto'
+                      : 1,
                 }}
               >
                 {header.isPlaceholder
                   ? null
-                  : flexRender(header.column.columnDef.header, header.getContext())}
+                  : flexRender(
+                      header.column.columnDef.header,
+                      header.getContext()
+                    )}
               </div>
             ))}
           </div>
@@ -44,7 +55,7 @@ export function DataTable({ table }: DataTableProps) {
             <div
               key={row.id}
               className={`hover:bg-muted/30 flex items-center px-4 py-4 ${
-                row.getIsSelected() ? "bg-primary/5" : ""
+                row.getIsSelected() ? 'bg-primary/5' : ''
               }`}
             >
               {row.getVisibleCells().map((cell) => (
@@ -53,13 +64,16 @@ export function DataTable({ table }: DataTableProps) {
                   className="flex-1"
                   style={{
                     width:
-                      cell.column.id === "select"
+                      cell.column.id === 'select'
                         ? 40
-                        : cell.column.id === "actions"
+                        : cell.column.id === 'actions'
                           ? 60
                           : undefined,
                     flex:
-                      cell.column.id === "select" || cell.column.id === "actions" ? "0 0 auto" : 1,
+                      cell.column.id === 'select' ||
+                      cell.column.id === 'actions'
+                        ? '0 0 auto'
+                        : 1,
                   }}
                 >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -69,7 +83,7 @@ export function DataTable({ table }: DataTableProps) {
           ))
         ) : (
           <div className="px-4 py-8 text-center">
-            <span className={cn(mode.font, "text-muted-foreground text-xs")}>
+            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
               [NO_RESULTS]: Query returned 0 users
             </span>
           </div>

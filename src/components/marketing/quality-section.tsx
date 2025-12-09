@@ -1,42 +1,50 @@
-"use client";
+'use client';
 
-import { SimpleIcon } from "@/components/ui/simple-icon";
-import { Card, CardContent, Badge } from "@/components/ui/card";
-import { siTypescript, siStorybook, siVitest, siGithubactions } from "simple-icons";
-import { CheckCircle2, TestTube2 } from "lucide-react";
-import { motion } from "framer-motion";
+import { SimpleIcon } from '@/components/ui/simple-icon';
+import { Card, CardContent, Badge } from '@/components/ui/card';
+import {
+  siTypescript,
+  siStorybook,
+  siVitest,
+  siGithubactions,
+} from 'simple-icons';
+import { CheckCircle2, TestTube2 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export function QualitySection() {
   const qualityMetrics = [
     {
-      metric: "85%",
-      label: "Test Coverage",
-      description: "Core components and flows are covered by Vitest and integration tests",
+      metric: '85%',
+      label: 'Test Coverage',
+      description:
+        'Core components and flows are covered by Vitest and integration tests',
       icon: siVitest.path,
     },
     {
-      metric: "95%",
-      label: "Storybook Coverage",
-      description: "Most components are documented in interactive Storybook",
+      metric: '95%',
+      label: 'Storybook Coverage',
+      description: 'Most components are documented in interactive Storybook',
       icon: siStorybook.path,
     },
     {
-      metric: "100%",
-      label: "TypeScript Strict",
-      description: "Full TypeScript strict mode enforcement across the codebase",
+      metric: '100%',
+      label: 'TypeScript Strict',
+      description:
+        'Full TypeScript strict mode enforcement across the codebase',
       icon: siTypescript.path,
     },
     {
-      metric: "6",
-      label: "CI/CD Pipelines",
-      description: "Automated lint, test, build, E2E, performance, and PR checks",
+      metric: '6',
+      label: 'CI/CD Pipelines',
+      description:
+        'Automated lint, test, build, E2E, performance, and PR checks',
       icon: siGithubactions.path,
     },
     {
-      metric: "114+",
-      label: "Comprehensive Tests",
-      description: "Unit tests + E2E Playwright tests for critical user flows",
-      iconComponent: "testTube",
+      metric: '114+',
+      label: 'Comprehensive Tests',
+      description: 'Unit tests + E2E Playwright tests for critical user flows',
+      iconComponent: 'testTube',
     },
   ];
 
@@ -70,8 +78,9 @@ export function QualitySection() {
             viewport={{ once: true }}
           >
             <p className="text-muted-foreground mx-auto max-w-2xl text-sm">
-              &gt; Every component is battle-tested with comprehensive coverage. No cutting corners,
-              no technical debt. Production-ready from day one.
+              &gt; Every component is battle-tested with comprehensive coverage.
+              No cutting corners, no technical debt. Production-ready from day
+              one.
             </p>
           </motion.div>
         </div>
@@ -90,19 +99,26 @@ export function QualitySection() {
                 <Card className="hover:border-primary/50 transition-all">
                   <CardContent className="p-8">
                     <div className="bg-primary/10 mb-4 inline-flex items-center justify-center p-4">
-                      {item.iconComponent === "testTube" ? (
+                      {item.iconComponent === 'testTube' ? (
                         <TestTube2 className="text-primary h-6 w-6" />
                       ) : (
-                        <SimpleIcon path={item.icon!} className="text-primary h-6 w-6" />
+                        <SimpleIcon
+                          path={item.icon!}
+                          className="text-primary h-6 w-6"
+                        />
                       )}
                     </div>
                     <div className="mb-4">
-                      <div className="text-foreground text-4xl font-semibold">{item.metric}</div>
+                      <div className="text-foreground text-4xl font-semibold">
+                        {item.metric}
+                      </div>
                       <h3 className="mt-1 text-lg font-semibold">
-                        {item.label.toUpperCase().replace(/ /g, "_")}
+                        {item.label.toUpperCase().replace(/ /g, '_')}
                       </h3>
                     </div>
-                    <span className="text-muted-foreground block text-xs">{item.description}</span>
+                    <span className="text-muted-foreground block text-xs">
+                      {item.description}
+                    </span>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -124,11 +140,14 @@ export function QualitySection() {
                   <CheckCircle2 className="text-primary h-8 w-8" />
                 </div>
                 <div>
-                  <h3 className="mb-2 text-lg font-semibold">QUALITY_GUARANTEE</h3>
+                  <h3 className="mb-2 text-lg font-semibold">
+                    QUALITY_GUARANTEE
+                  </h3>
                   <p className="text-muted-foreground text-sm">
-                    Unlike other boilerplates that ship untested code, every Fabrk component is
-                    rigorously tested, documented in Storybook, and validated by CI/CD pipelines.
-                    You're not inheriting technical debt—you're getting production-grade
+                    Unlike other boilerplates that ship untested code, every
+                    Fabrk component is rigorously tested, documented in
+                    Storybook, and validated by CI/CD pipelines. You're not
+                    inheriting technical debt—you're getting production-grade
                     infrastructure.
                   </p>
                 </div>

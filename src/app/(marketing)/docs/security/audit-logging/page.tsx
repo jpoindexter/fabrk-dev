@@ -1,6 +1,6 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsLinkCard } from "@/components/docs";
-import { FileText, Search, Bell, Database } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsLinkCard } from '@/components/docs';
+import { FileText, Search, Bell, Database } from 'lucide-react';
 import {
   DatabaseSchemaSection,
   AuditServiceSection,
@@ -8,11 +8,12 @@ import {
   QueryingLogsSection,
   LogRetentionSection,
   SecurityAlertsSection,
-} from "./components";
+} from './components';
 
 export const metadata = {
-  title: "Audit Logging - Fabrk Docs",
-  description: "Track user actions for compliance. Immutable audit trail with 18+ event types and admin viewer.",
+  title: 'Audit Logging - Fabrk Docs',
+  description:
+    'Track user actions for compliance. Immutable audit trail with 18+ event types and admin viewer.',
 };
 
 export default function AuditLoggingPage() {
@@ -24,10 +25,26 @@ export default function AuditLoggingPage() {
       description="Track security-relevant events and user actions for compliance and debugging."
       overview="Audit logging creates an immutable record of security-relevant events. Track logins, payments, admin actions, and more for compliance requirements and security investigations."
       features={[
-        { icon: Database, title: "Persistent Storage", description: "Database-backed audit log storage." },
-        { icon: FileText, title: "Event Types", description: "18+ pre-defined security event types." },
-        { icon: Search, title: "Searchable", description: "Filter by user, action, category, and date." },
-        { icon: Bell, title: "Alerts", description: "Send alerts for critical security events." },
+        {
+          icon: Database,
+          title: 'Persistent Storage',
+          description: 'Database-backed audit log storage.',
+        },
+        {
+          icon: FileText,
+          title: 'Event Types',
+          description: '18+ pre-defined security event types.',
+        },
+        {
+          icon: Search,
+          title: 'Searchable',
+          description: 'Filter by user, action, category, and date.',
+        },
+        {
+          icon: Bell,
+          title: 'Alerts',
+          description: 'Send alerts for critical security events.',
+        },
       ]}
       usage={[
         DatabaseSchemaSection(),
@@ -37,8 +54,11 @@ export default function AuditLoggingPage() {
         LogRetentionSection(),
         SecurityAlertsSection(),
       ]}
-      previous={{ title: "Rate Limiting", href: "/docs/security/rate-limiting" }}
-      next={{ title: "CSRF Protection", href: "/docs/security/csrf" }}
+      previous={{
+        title: 'Rate Limiting',
+        href: '/docs/security/rate-limiting',
+      }}
+      next={{ title: 'CSRF Protection', href: '/docs/security/csrf' }}
     >
       {/* Next Steps Section */}
       <DocsSection title="Next Steps">

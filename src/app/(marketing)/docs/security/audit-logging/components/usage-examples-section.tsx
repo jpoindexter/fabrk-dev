@@ -1,7 +1,7 @@
 export function UsageExamplesSection() {
   return {
-    title: "Usage Examples",
-    description: "Log events throughout your application",
+    title: 'Usage Examples',
+    description: 'Log events throughout your application',
     code: `// Login event
 // src/app/api/auth/login/route.ts
 
@@ -69,6 +69,6 @@ await createAuditLog({
   },
   request,
 });`,
-    language: "typescript" as const,
+    language: 'typescript' as const,
   };
 }

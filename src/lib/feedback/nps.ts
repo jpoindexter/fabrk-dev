@@ -17,15 +17,15 @@ export interface NPSResponse {
   followUpQuestions?: Record<string, string>;
 }
 
-export type NPSCategory = "detractor" | "passive" | "promoter";
+export type NPSCategory = 'detractor' | 'passive' | 'promoter';
 
 /**
  * Categorize NPS score
  */
 export function categorizeNPSScore(score: number): NPSCategory {
-  if (score <= 6) return "detractor";
-  if (score <= 8) return "passive";
-  return "promoter";
+  if (score <= 6) return 'detractor';
+  if (score <= 8) return 'passive';
+  return 'promoter';
 }
 
 /**
@@ -38,8 +38,8 @@ export function calculateNPS(responses: NPSResponse[]): number {
 
   const categories = responses.map((r) => categorizeNPSScore(r.score));
 
-  const promoters = categories.filter((c) => c === "promoter").length;
-  const detractors = categories.filter((c) => c === "detractor").length;
+  const promoters = categories.filter((c) => c === 'promoter').length;
+  const detractors = categories.filter((c) => c === 'detractor').length;
   const total = responses.length;
 
   const promoterPercentage = (promoters / total) * 100;
@@ -60,9 +60,9 @@ export function getNPSDistribution(responses: NPSResponse[]): {
   const categories = responses.map((r) => categorizeNPSScore(r.score));
 
   return {
-    promoters: categories.filter((c) => c === "promoter").length,
-    passives: categories.filter((c) => c === "passive").length,
-    detractors: categories.filter((c) => c === "detractor").length,
+    promoters: categories.filter((c) => c === 'promoter').length,
+    passives: categories.filter((c) => c === 'passive').length,
+    detractors: categories.filter((c) => c === 'detractor').length,
     total: responses.length,
   };
 }
@@ -77,36 +77,36 @@ export function interpretNPS(score: number): {
 } {
   if (score >= 70) {
     return {
-      label: "Excellent",
-      description: "World-class customer satisfaction",
-      emoji: "🌟",
+      label: 'Excellent',
+      description: 'World-class customer satisfaction',
+      emoji: '🌟',
     };
   }
   if (score >= 50) {
     return {
-      label: "Great",
-      description: "Strong customer loyalty",
-      emoji: "😊",
+      label: 'Great',
+      description: 'Strong customer loyalty',
+      emoji: '😊',
     };
   }
   if (score >= 30) {
     return {
-      label: "Good",
-      description: "Above average satisfaction",
-      emoji: "👍",
+      label: 'Good',
+      description: 'Above average satisfaction',
+      emoji: '👍',
     };
   }
   if (score >= 0) {
     return {
-      label: "Needs Improvement",
-      description: "Room for enhancement",
-      emoji: "😐",
+      label: 'Needs Improvement',
+      description: 'Room for enhancement',
+      emoji: '😐',
     };
   }
   return {
-    label: "Poor",
-    description: "Requires immediate attention",
-    emoji: "😞",
+    label: 'Poor',
+    description: 'Requires immediate attention',
+    emoji: '😞',
   };
 }
 
@@ -117,25 +117,25 @@ export function getFollowUpQuestions(score: number): string[] {
   const category = categorizeNPSScore(score);
 
   switch (category) {
-    case "promoter":
+    case 'promoter':
       return [
-        "What do you love most about our product?",
-        "Would you be willing to write a testimonial?",
-        "Do you know anyone else who might benefit from our product?",
+        'What do you love most about our product?',
+        'Would you be willing to write a testimonial?',
+        'Do you know anyone else who might benefit from our product?',
       ];
 
-    case "passive":
+    case 'passive':
       return [
-        "What would make you more likely to recommend us?",
-        "What features would you like to see improved?",
-        "Is there anything preventing you from using us more often?",
+        'What would make you more likely to recommend us?',
+        'What features would you like to see improved?',
+        'Is there anything preventing you from using us more often?',
       ];
 
-    case "detractor":
+    case 'detractor':
       return [
-        "What disappointed you about your experience?",
-        "What would we need to change for you to recommend us?",
-        "Can we schedule a call to discuss your concerns?",
+        'What disappointed you about your experience?',
+        'What would we need to change for you to recommend us?',
+        'Can we schedule a call to discuss your concerns?',
       ];
   }
 }
@@ -146,7 +146,7 @@ export function getFollowUpQuestions(score: number): string[] {
 export function shouldShowNPSSurvey(user: {
   signupDate: Date;
   lastNPSDate?: Date;
-  engagementLevel: "low" | "medium" | "high";
+  engagementLevel: 'low' | 'medium' | 'high';
 }): boolean {
   const now = new Date();
 
@@ -157,7 +157,11 @@ export function shouldShowNPSSurvey(user: {
   if (daysSinceSignup < 7) return false;
 
   // If never shown, show after 14 days for engaged users
-  if (!user.lastNPSDate && daysSinceSignup >= 14 && user.engagementLevel !== "low") {
+  if (
+    !user.lastNPSDate &&
+    daysSinceSignup >= 14 &&
+    user.engagementLevel !== 'low'
+  ) {
     return true;
   }
 
@@ -171,10 +175,11 @@ export function shouldShowNPSSurvey(user: {
     if (daysSinceLastNPS < 90) return false;
 
     // For highly engaged users, can show every 90 days
-    if (user.engagementLevel === "high" && daysSinceLastNPS >= 90) return true;
+    if (user.engagementLevel === 'high' && daysSinceLastNPS >= 90) return true;
 
     // For medium engagement, wait 180 days
-    if (user.engagementLevel === "medium" && daysSinceLastNPS >= 180) return true;
+    if (user.engagementLevel === 'medium' && daysSinceLastNPS >= 180)
+      return true;
   }
 
   return false;
@@ -193,15 +198,15 @@ export function formatNPS(score: number): string {
 export function getNPSTrend(
   current: number,
   previous: number
-): { direction: "up" | "down" | "stable"; change: number } {
+): { direction: 'up' | 'down' | 'stable'; change: number } {
   const change = current - previous;
 
   if (Math.abs(change) < 5) {
-    return { direction: "stable", change };
+    return { direction: 'stable', change };
   }
 
   return {
-    direction: change > 0 ? "up" : "down",
+    direction: change > 0 ? 'up' : 'down',
     change: Math.abs(change),
   };
 }

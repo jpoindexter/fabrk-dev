@@ -18,7 +18,12 @@
     },
     "GET_FABRK": {
       "canonical": "> GET_FABRK",
-      "variants": ["Get Fabrk", "GET FABRK", "EXECUTE: GET_FABRK", "> Get Fabrk"],
+      "variants": [
+        "Get Fabrk",
+        "GET FABRK",
+        "EXECUTE: GET_FABRK",
+        "> Get Fabrk"
+      ],
       "usage": "Purchase/checkout CTA"
     },
     "SAVE_CHANGES": {
@@ -33,7 +38,12 @@
     },
     "VIEW_DOCUMENTATION": {
       "canonical": "> VIEW_DOCUMENTATION",
-      "variants": ["View Documentation", "VIEW: DOCUMENTATION", "View Docs", "> VIEW_DOCS"],
+      "variants": [
+        "View Documentation",
+        "VIEW: DOCUMENTATION",
+        "View Docs",
+        "> VIEW_DOCS"
+      ],
       "usage": "Link to documentation"
     },
     "VIEW_LIVE_DEMO": {
@@ -43,7 +53,11 @@
     },
     "VIEW_ALL_FEATURES": {
       "canonical": "> VIEW_ALL_FEATURES",
-      "variants": ["View All Features", "VIEW: ALL_FEATURES", "See All Features"],
+      "variants": [
+        "View All Features",
+        "VIEW: ALL_FEATURES",
+        "See All Features"
+      ],
       "usage": "Link to features page"
     },
     "VIEW_TEMPLATES": {
@@ -88,7 +102,11 @@
     },
     "SIGN_OUT_ALL_SESSIONS": {
       "canonical": "> SIGN_OUT_ALL_SESSIONS",
-      "variants": ["Sign Out All Sessions", "Sign Out All", "Invalidate Sessions"],
+      "variants": [
+        "Sign Out All Sessions",
+        "Sign Out All",
+        "Invalidate Sessions"
+      ],
       "usage": "Session invalidation"
     },
     "ENABLE_2FA": {
@@ -234,7 +252,14 @@
   },
   "tabLabels": {
     "format": "[TAB_NAME]",
-    "examples": ["[CONSENT]", "[DETAILS]", "[ABOUT]", "[OVERVIEW]", "[ANALYTICS]", "[REPORTS]"]
+    "examples": [
+      "[CONSENT]",
+      "[DETAILS]",
+      "[ABOUT]",
+      "[OVERVIEW]",
+      "[ANALYTICS]",
+      "[REPORTS]"
+    ]
   },
   "deprecated": {
     "EXECUTE_prefix": {

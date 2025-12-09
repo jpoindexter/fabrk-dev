@@ -1,66 +1,71 @@
-"use client";
+'use client';
 
-import { SimpleIcon } from "@/components/ui/simple-icon";
-import { Card, CardHeader, CardContent, Badge } from "@/components/ui/card";
-import { siTypescript, siPrisma, siEslint } from "simple-icons";
-import { Zap, FolderTree, Terminal, Code2 } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { motion } from "framer-motion";
+import { SimpleIcon } from '@/components/ui/simple-icon';
+import { Card, CardHeader, CardContent, Badge } from '@/components/ui/card';
+import { siTypescript, siPrisma, siEslint } from 'simple-icons';
+import { Zap, FolderTree, Terminal, Code2 } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { motion } from 'framer-motion';
 
 export function DeveloperExperienceSection() {
   const features = [
     {
       icon: siTypescript.path,
-      title: "TypeScript Strict Mode",
+      title: 'TypeScript Strict Mode',
       description:
-        "Full type safety with strict mode enabled. Catch errors at compile time, not runtime.",
+        'Full type safety with strict mode enabled. Catch errors at compile time, not runtime.',
     },
     {
-      iconComponent: "folder",
-      title: "Path Aliases",
-      description: "Clean imports with @/components, @/lib, @/utils. No more ../../../ hell.",
+      iconComponent: 'folder',
+      title: 'Path Aliases',
+      description:
+        'Clean imports with @/components, @/lib, @/utils. No more ../../../ hell.',
     },
     {
-      iconComponent: "zap",
-      title: "Turbopack Hot Reload",
+      iconComponent: 'zap',
+      title: 'Turbopack Hot Reload',
       description:
-        "Lightning-fast refresh during development. See changes instantly without losing state.",
+        'Lightning-fast refresh during development. See changes instantly without losing state.',
     },
     {
       icon: siPrisma.path,
-      title: "Prisma Type Generation",
+      title: 'Prisma Type Generation',
       description:
-        "Auto-generated TypeScript types for your database schema. Type-safe queries with autocomplete.",
+        'Auto-generated TypeScript types for your database schema. Type-safe queries with autocomplete.',
     },
     {
       icon: siEslint.path,
-      title: "ESLint + Hex Scanner",
+      title: 'ESLint + Hex Scanner',
       description:
-        "Enforce code quality with ESLint. Custom hex color scanner prevents hardcoded colors.",
+        'Enforce code quality with ESLint. Custom hex color scanner prevents hardcoded colors.',
     },
     {
-      iconComponent: "code",
-      title: "VS Code Configuration",
+      iconComponent: 'code',
+      title: 'VS Code Configuration',
       description:
-        "Pre-configured settings, extensions, and snippets. Tailwind IntelliSense integrated.",
+        'Pre-configured settings, extensions, and snippets. Tailwind IntelliSense integrated.',
     },
     {
-      iconComponent: "terminal",
-      title: "Developer Commands",
-      description: "npm run dev:restart kills port conflicts. Prisma Studio for database GUI.",
+      iconComponent: 'terminal',
+      title: 'Developer Commands',
+      description:
+        'npm run dev:restart kills port conflicts. Prisma Studio for database GUI.',
     },
     {
       icon: siTypescript.path,
-      title: "100% TypeScript Coverage",
+      title: '100% TypeScript Coverage',
       description:
-        "Every file is TypeScript. No .js files, no any types. Production-ready type safety.",
+        'Every file is TypeScript. No .js files, no any types. Production-ready type safety.',
     },
   ];
 
   return (
     <section
-      className={cn("border-border bg-background scroll-mt-16 border-t px-6 py-24", mode.font)}
+      className={cn(
+        'border-border bg-background scroll-mt-16 border-t px-6 py-24',
+        mode.font
+      )}
     >
       <div className="mx-auto max-w-7xl">
         <div className="mb-4 text-center">
@@ -92,19 +97,20 @@ export function DeveloperExperienceSection() {
           viewport={{ once: true }}
           className="text-muted-foreground mb-16 text-center text-sm"
         >
-          &gt; Fast builds, clean code, zero friction. Ship features, not fight tooling.
+          &gt; Fast builds, clean code, zero friction. Ship features, not fight
+          tooling.
         </motion.p>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {features.map((feature, index) => {
             const IconComponent =
-              feature.iconComponent === "folder"
+              feature.iconComponent === 'folder'
                 ? FolderTree
-                : feature.iconComponent === "zap"
+                : feature.iconComponent === 'zap'
                   ? Zap
-                  : feature.iconComponent === "terminal"
+                  : feature.iconComponent === 'terminal'
                     ? Terminal
-                    : feature.iconComponent === "code"
+                    : feature.iconComponent === 'code'
                       ? Code2
                       : null;
 
@@ -113,7 +119,7 @@ export function DeveloperExperienceSection() {
                 key={feature.title}
                 initial={{ opacity: 0, y: 20, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-50px" }}
+                viewport={{ once: true, margin: '-50px' }}
                 transition={{
                   duration: 0.5,
                   delay: index * 0.08,
@@ -142,11 +148,13 @@ export function DeveloperExperienceSection() {
                   />
                   <CardContent className="p-4">
                     <div className="text-foreground mb-3 text-xs font-semibold">
-                      {feature.title.toUpperCase().replace(/ /g, "_")}
+                      {feature.title.toUpperCase().replace(/ /g, '_')}
                     </div>
                     <div className="text-xs">
                       <span className="text-muted-foreground">DESC: </span>
-                      <span className="text-foreground">{feature.description}</span>
+                      <span className="text-foreground">
+                        {feature.description}
+                      </span>
                     </div>
                   </CardContent>
                 </Card>

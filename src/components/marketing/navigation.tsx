@@ -3,26 +3,32 @@
  * Navigation - Terminal console style with [NAVIGATE] labels
  * Production-ready ✓
  */
-"use client";
+'use client';
 
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { useState } from "react";
-import { Menu } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from "@/components/ui/sheet";
-import { ThemeDropdown } from "@/components/theme/theme-dropdown";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { Logo } from "@/components/shared/logo";
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { Menu } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetClose,
+  SheetTitle,
+} from '@/components/ui/sheet';
+import { ThemeDropdown } from '@/components/theme/theme-dropdown';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { Logo } from '@/components/shared/logo';
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const navLinks = [
-    { label: "FEATURES", href: "/features" },
-    { label: "PRICING", href: "#pricing" },
-    { label: "DOCS", href: "/docs" },
-    { label: "FAQ", href: "#faq" },
+    { label: 'FEATURES', href: '/features' },
+    { label: 'PRICING', href: '#pricing' },
+    { label: 'DOCS', href: '/docs' },
+    { label: 'FAQ', href: '#faq' },
   ];
 
   return (
@@ -37,7 +43,10 @@ export function Navigation() {
         >
           <Link
             href="/"
-            className={cn("flex items-center gap-2 transition-opacity hover:opacity-80", mode.font)}
+            className={cn(
+              'flex items-center gap-2 transition-opacity hover:opacity-80',
+              mode.font
+            )}
           >
             <Logo />
           </Link>
@@ -55,14 +64,16 @@ export function Navigation() {
         >
           {/* Navigation Links with [NAVIGATE]: prefix */}
           <div className="flex items-center gap-1">
-            <span className={cn("text-muted-foreground text-xs", mode.font)}>[NAVIGATE]:</span>
+            <span className={cn('text-muted-foreground text-xs', mode.font)}>
+              [NAVIGATE]:
+            </span>
             <div className="flex items-center">
               {navLinks.map((link, _index) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "text-muted-foreground hover:text-foreground px-4 py-1 text-sm transition-colors",
+                    'text-muted-foreground hover:text-foreground px-4 py-1 text-sm transition-colors',
                     mode.font
                   )}
                 >
@@ -78,10 +89,14 @@ export function Navigation() {
           {/* Theme + CTA Buttons */}
           <div className="flex items-center gap-2">
             <ThemeDropdown />
-            <Button variant="outline" asChild className={cn("text-xs", mode.radius, mode.font)}>
+            <Button
+              variant="outline"
+              asChild
+              className={cn('text-xs', mode.radius, mode.font)}
+            >
               <Link href="/demo">&gt; VIEW_DEMO</Link>
             </Button>
-            <Button asChild className={cn("text-xs", mode.radius, mode.font)}>
+            <Button asChild className={cn('text-xs', mode.radius, mode.font)}>
               <Link href="#pricing" className="scroll-smooth">
                 &gt; GET_STARTED
               </Link>
@@ -101,27 +116,36 @@ export function Navigation() {
               <Button
                 variant="ghost"
                 size="icon"
-                className={cn("h-10 w-10", mode.radius)}
+                className={cn('h-10 w-10', mode.radius)}
                 aria-label="Open menu"
               >
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className={cn("w-[300px] p-6", mode.radius)}>
+            <SheetContent
+              side="right"
+              className={cn('w-[300px] p-6', mode.radius)}
+            >
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="border-border mb-6 border-b pb-4">
-                <span className={cn("text-muted-foreground text-xs", mode.font)}>
+                <span
+                  className={cn('text-muted-foreground text-xs', mode.font)}
+                >
                   [SYSTEM_MENU]
                 </span>
               </div>
               <nav className="flex flex-col space-y-4">
-                <span className={cn("text-muted-foreground text-xs", mode.font)}>[NAVIGATE]:</span>
+                <span
+                  className={cn('text-muted-foreground text-xs', mode.font)}
+                >
+                  [NAVIGATE]:
+                </span>
                 {navLinks.map((link) => (
                   <SheetClose key={link.href} asChild>
                     <Link
                       href={link.href}
                       className={cn(
-                        "text-foreground hover:text-primary text-sm transition-colors",
+                        'text-foreground hover:text-primary text-sm transition-colors',
                         mode.font
                       )}
                       onClick={() => setIsOpen(false)}
@@ -131,7 +155,12 @@ export function Navigation() {
                   </SheetClose>
                 ))}
                 <div className="border-border border-t pt-6">
-                  <span className={cn("text-muted-foreground mb-4 block text-xs", mode.font)}>
+                  <span
+                    className={cn(
+                      'text-muted-foreground mb-4 block text-xs',
+                      mode.font
+                    )}
+                  >
                     [THEME]:
                   </span>
                   <div className="mb-4 flex items-center gap-2">
@@ -139,20 +168,32 @@ export function Navigation() {
                   </div>
                 </div>
                 <div className="border-border border-t pt-6">
-                  <span className={cn("text-muted-foreground mb-4 block text-xs", mode.font)}>
+                  <span
+                    className={cn(
+                      'text-muted-foreground mb-4 block text-xs',
+                      mode.font
+                    )}
+                  >
                     [ACTIONS]:
                   </span>
                   <SheetClose asChild>
                     <Button
                       variant="outline"
-                      className={cn("w-full text-xs", mode.radius, mode.font)}
+                      className={cn('w-full text-xs', mode.radius, mode.font)}
                       asChild
                     >
                       <Link href="/demo">&gt; VIEW_DEMO</Link>
                     </Button>
                   </SheetClose>
                   <SheetClose asChild>
-                    <Button className={cn("mt-4 w-full text-xs", mode.radius, mode.font)} asChild>
+                    <Button
+                      className={cn(
+                        'mt-4 w-full text-xs',
+                        mode.radius,
+                        mode.font
+                      )}
+                      asChild
+                    >
                       <Link href="#pricing">&gt; GET_STARTED</Link>
                     </Button>
                   </SheetClose>
@@ -162,7 +203,10 @@ export function Navigation() {
           </Sheet>
 
           {/* Mobile CTA Button */}
-          <Button asChild className={cn("text-xs md:hidden", mode.radius, mode.font)}>
+          <Button
+            asChild
+            className={cn('text-xs md:hidden', mode.radius, mode.font)}
+          >
             <Link href="#pricing" className="scroll-smooth">
               &gt; START
             </Link>

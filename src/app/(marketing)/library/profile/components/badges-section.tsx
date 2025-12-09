@@ -3,12 +3,12 @@
  * Badges Section - User achievements display
  */
 
-"use client";
+'use client';
 
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { LucideIcon } from "lucide-react";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { LucideIcon } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 interface Badge {
   id: string;
@@ -26,7 +26,7 @@ export function BadgesSection({ badges }: BadgesSectionProps) {
     <Card tone="neutral">
       <CardHeader code="0x01" title="BADGES" />
       <CardContent padding="md">
-        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+        <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
           [ACHIEVEMENTS]: {badges.length} BADGES_EARNED
         </div>
         <div className="flex flex-wrap gap-4">
@@ -38,7 +38,7 @@ export function BadgesSection({ badges }: BadgesSectionProps) {
                 className="border-border bg-muted/30 flex items-center gap-2 border px-4 py-2"
               >
                 <Icon className={`h-4 w-4 text-${badge.color}`} />
-                <span className={cn(mode.font, "text-xs")}>{badge.name}</span>
+                <span className={cn(mode.font, 'text-xs')}>{badge.name}</span>
               </div>
             );
           })}

@@ -1,11 +1,19 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { Rocket, User, CreditCard, Mail, Database, Shield, Coins } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
+import {
+  Rocket,
+  User,
+  CreditCard,
+  Mail,
+  Database,
+  Shield,
+  Coins,
+} from 'lucide-react';
 
 export const metadata = {
-  title: "Getting Started - Fabrk Docs",
+  title: 'Getting Started - Fabrk Docs',
   description:
-    "Set up your Fabrk SaaS boilerplate in minutes. Install dependencies, configure environment variables, and launch your first app.",
+    'Set up your Fabrk SaaS boilerplate in minutes. Install dependencies, configure environment variables, and launch your first app.',
 };
 
 export default function GettingStartedPage() {
@@ -17,69 +25,93 @@ export default function GettingStartedPage() {
       description="Everything you need to launch your SaaS, from first download to first customer."
       overview="Fabrk is a ready-to-use foundation for building software businesses. Includes user accounts, payments, email, database, security, and landing page - all working on day one."
       features={[
-        { icon: User, title: "User Accounts", description: "Sign up, login, password reset." },
-        { icon: CreditCard, title: "Payments", description: "Stripe subscriptions ready." },
-        { icon: Mail, title: "Email", description: "Resend transactional emails." },
-        { icon: Database, title: "Database", description: "PostgreSQL with Prisma ORM." },
-        { icon: Shield, title: "Security", description: "2FA, CSRF, secure sessions." },
-        { icon: Rocket, title: "Landing Page", description: "Hero, pricing, FAQ included." },
+        {
+          icon: User,
+          title: 'User Accounts',
+          description: 'Sign up, login, password reset.',
+        },
+        {
+          icon: CreditCard,
+          title: 'Payments',
+          description: 'Stripe subscriptions ready.',
+        },
+        {
+          icon: Mail,
+          title: 'Email',
+          description: 'Resend transactional emails.',
+        },
+        {
+          icon: Database,
+          title: 'Database',
+          description: 'PostgreSQL with Prisma ORM.',
+        },
+        {
+          icon: Shield,
+          title: 'Security',
+          description: '2FA, CSRF, secure sessions.',
+        },
+        {
+          icon: Rocket,
+          title: 'Landing Page',
+          description: 'Hero, pricing, FAQ included.',
+        },
       ]}
       setup={[
         {
-          title: "Check Your System",
-          description: "Ensure Node.js v18.17+ is installed",
+          title: 'Check Your System',
+          description: 'Ensure Node.js v18.17+ is installed',
           code: `node --version`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Download Fabrk",
-          description: "Clone the repository",
+          title: 'Download Fabrk',
+          description: 'Clone the repository',
           code: `git clone https://github.com/your-username/fabrk.git my-saas
 cd my-saas`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Install Dependencies",
-          description: "Download all required libraries (1-2 min)",
+          title: 'Install Dependencies',
+          description: 'Download all required libraries (1-2 min)',
           code: `npm install`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Create Config File",
-          description: "Create your private settings file",
+          title: 'Create Config File',
+          description: 'Create your private settings file',
           code: `cp .env.example .env.local`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Setup Database",
-          description: "Add PostgreSQL connection string to .env.local",
+          title: 'Setup Database',
+          description: 'Add PostgreSQL connection string to .env.local',
           code: `DATABASE_URL="postgresql://username:password@host:5432/database"`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Configure Settings",
-          description: "Add required environment variables",
+          title: 'Configure Settings',
+          description: 'Add required environment variables',
           code: `DATABASE_URL="postgresql://..."
 NEXTAUTH_URL="http://localhost:3000"
 NEXTAUTH_SECRET="paste-your-secret-here"`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Initialize Database",
-          description: "Create the database tables",
+          title: 'Initialize Database',
+          description: 'Create the database tables',
           code: `npm run db:push`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Start Your App",
-          description: "Launch the development server",
+          title: 'Start Your App',
+          description: 'Launch the development server',
           code: `npm run dev`,
-          language: "bash",
+          language: 'bash',
         },
       ]}
       usage={[
         {
-          title: "Quick Start (5 min)",
+          title: 'Quick Start (5 min)',
           description: "Already know Next.js? Here's the fastest path",
           code: `# Clone, install, configure
 git clone https://github.com/your-username/fabrk.git my-saas
@@ -88,39 +120,41 @@ cp .env.example .env.local
 
 # Add your DATABASE_URL to .env.local, then:
 npm run db:push && npm run dev`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Generate Secret",
-          description: "Create a secure NEXTAUTH_SECRET",
+          title: 'Generate Secret',
+          description: 'Create a secure NEXTAUTH_SECRET',
           code: `openssl rand -base64 32`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Database Providers",
-          description: "Easiest options for PostgreSQL",
+          title: 'Database Providers',
+          description: 'Easiest options for PostgreSQL',
           code: `# Free tier options:
 # - Neon (neon.tech) - Serverless
 # - Supabase (supabase.com) - Extra features
 # - Railway (railway.app) - Pay-as-you-go`,
-          language: "bash",
+          language: 'bash',
         },
       ]}
-      previous={{ title: "Docs", href: "/docs" }}
-      next={{ title: "Architecture", href: "/docs/architecture" }}
+      previous={{ title: 'Docs', href: '/docs' }}
+      next={{ title: 'Architecture', href: '/docs/architecture' }}
     >
       {/* What is Fabrk */}
       <DocsSection title="What Is Fabrk?">
         <DocsCard code="10" title="OVERVIEW">
           <p className="mb-4">
-            Fabrk is a ready-to-use foundation for building software businesses. Think of it like
-            buying a house that already has the plumbing, electrical, and HVAC installed - you just
-            need to decorate and move in.
+            Fabrk is a ready-to-use foundation for building software businesses.
+            Think of it like buying a house that already has the plumbing,
+            electrical, and HVAC installed - you just need to decorate and move
+            in.
           </p>
           <p>
-            Instead of spending months building user accounts, payment processing, and email systems
-            from scratch, Fabrk gives you all of that working on day one. You can focus on what
-            makes your product unique.
+            Instead of spending months building user accounts, payment
+            processing, and email systems from scratch, Fabrk gives you all of
+            that working on day one. You can focus on what makes your product
+            unique.
           </p>
         </DocsCard>
       </DocsSection>
@@ -152,22 +186,30 @@ npm run db:push && npm run dev`,
         <DocsCard code="30" title="COMMON_ERRORS">
           <div className="space-y-4">
             <div>
-              <p className="text-foreground mb-1 font-semibold">[ERROR]: PORT_3000_IN_USE</p>
+              <p className="text-foreground mb-1 font-semibold">
+                [ERROR]: PORT_3000_IN_USE
+              </p>
               <p>
-                Run on different port: <code className="bg-muted px-1">npm run dev -- -p 3001</code>
+                Run on different port:{' '}
+                <code className="bg-muted px-1">npm run dev -- -p 3001</code>
               </p>
             </div>
             <div>
-              <p className="text-foreground mb-1 font-semibold">[ERROR]: CANNOT_CONNECT_DATABASE</p>
+              <p className="text-foreground mb-1 font-semibold">
+                [ERROR]: CANNOT_CONNECT_DATABASE
+              </p>
               <p>
-                Check DATABASE_URL in .env.local, ensure no extra spaces, database is running, IP
-                allowed
+                Check DATABASE_URL in .env.local, ensure no extra spaces,
+                database is running, IP allowed
               </p>
             </div>
             <div>
-              <p className="text-foreground mb-1 font-semibold">[ERROR]: NEXTAUTH_SECRET_MISSING</p>
+              <p className="text-foreground mb-1 font-semibold">
+                [ERROR]: NEXTAUTH_SECRET_MISSING
+              </p>
               <p>
-                Generate with: <code className="bg-muted px-1">openssl rand -base64 32</code>
+                Generate with:{' '}
+                <code className="bg-muted px-1">openssl rand -base64 32</code>
               </p>
             </div>
           </div>

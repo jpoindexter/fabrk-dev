@@ -3,7 +3,7 @@
  * Defines tier limits and usage tracking
  */
 
-type ResourceType = "users" | "projects" | "apiCalls" | "storage";
+type ResourceType = 'users' | 'projects' | 'apiCalls' | 'storage';
 
 interface User {
   subscriptionTier?: string;
@@ -54,7 +54,7 @@ const TIER_LIMITS: Record<string, Record<ResourceType, number>> = {
  * Get usage percentage for a resource
  */
 export function getUsagePercentage(user: User, resource: ResourceType): number {
-  const tier = user.subscriptionTier || "trial";
+  const tier = user.subscriptionTier || 'trial';
   const limit = TIER_LIMITS[tier]?.[resource] || TIER_LIMITS.trial[resource];
 
   // Unlimited tier
@@ -70,13 +70,13 @@ export function getUsagePercentage(user: User, resource: ResourceType): number {
  * Format usage display string (e.g., "3 / 10" or "500 MB / 1 GB")
  */
 export function formatUsageDisplay(user: User, resource: ResourceType): string {
-  const tier = user.subscriptionTier || "trial";
+  const tier = user.subscriptionTier || 'trial';
   const limit = TIER_LIMITS[tier]?.[resource] || TIER_LIMITS.trial[resource];
 
   // Unlimited tier
   if (limit === -1) {
     const used = getUserUsage(user, resource);
-    return resource === "storage"
+    return resource === 'storage'
       ? `${formatStorage(used)} / Unlimited`
       : `${used} / Unlimited`;
   }
@@ -84,12 +84,12 @@ export function formatUsageDisplay(user: User, resource: ResourceType): string {
   const used = getUserUsage(user, resource);
 
   // Format storage specially
-  if (resource === "storage") {
+  if (resource === 'storage') {
     return `${formatStorage(used)} / ${formatStorage(limit)}`;
   }
 
   // Format API calls with K suffix
-  if (resource === "apiCalls") {
+  if (resource === 'apiCalls') {
     return `${formatNumber(used)} / ${formatNumber(limit)}`;
   }
 
@@ -101,13 +101,13 @@ export function formatUsageDisplay(user: User, resource: ResourceType): string {
  */
 function getUserUsage(user: User, resource: ResourceType): number {
   switch (resource) {
-    case "users":
+    case 'users':
       return user.userCount || 0;
-    case "projects":
+    case 'projects':
       return user.projectCount || 0;
-    case "apiCalls":
+    case 'apiCalls':
       return user.apiCalls || 0;
-    case "storage":
+    case 'storage':
       return user.storageUsed || 0;
     default:
       return 0;

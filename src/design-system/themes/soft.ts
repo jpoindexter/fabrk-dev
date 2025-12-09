@@ -5,8 +5,8 @@
  * Consumer-facing apps, approachable design.
  */
 
-import { primitives } from "../tokens/primitives";
-import type { SemanticTokens } from "../tokens/semantic";
+import { primitives } from '../tokens/primitives';
+import type { SemanticTokens } from '../tokens/semantic';
 
 export const softTheme: SemanticTokens = {
   color: {
@@ -54,8 +54,8 @@ export const softTheme: SemanticTokens = {
   radius: {
     button: primitives.radius.xl,
     input: primitives.radius.lg,
-    card: primitives.radius["2xl"],
-    modal: primitives.radius["2xl"],
+    card: primitives.radius['2xl'],
+    modal: primitives.radius['2xl'],
     badge: primitives.radius.full,
     avatar: primitives.radius.full,
   },
@@ -72,9 +72,9 @@ export const softTheme: SemanticTokens = {
     ui: primitives.fontFamily.sans,
   },
   textTransform: {
-    button: "none",
-    label: "capitalize",
-    heading: "none",
+    button: 'none',
+    label: 'capitalize',
+    heading: 'none',
   },
   spacing: {
     component: {
@@ -133,15 +133,15 @@ export function formatCardHeader(title: string): string {
 // =============================================================================
 
 export const softClasses = {
-  radius: "rounded-xl",
-  font: "font-sans",
-  text: "",
-  cardHeader: "font-sans text-base font-semibold",
-  label: "font-sans text-sm text-muted-foreground capitalize",
-  button: "rounded-xl font-sans shadow-sm",
-  input: "rounded-lg font-sans border-input",
-  card: "rounded-2xl border border-border shadow-md",
-  badge: "rounded-full font-sans text-xs",
+  radius: 'rounded-xl',
+  font: 'font-sans',
+  text: '',
+  cardHeader: 'font-sans text-base font-semibold',
+  label: 'font-sans text-sm text-muted-foreground capitalize',
+  button: 'rounded-xl font-sans shadow-sm',
+  input: 'rounded-lg font-sans border-input',
+  card: 'rounded-2xl border border-border shadow-md',
+  badge: 'rounded-full font-sans text-xs',
 } as const;
 
 export default softTheme;

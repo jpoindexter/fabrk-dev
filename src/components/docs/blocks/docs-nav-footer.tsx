@@ -2,9 +2,9 @@
  * DocsNavFooter - Previous/Next navigation links
  */
 
-import Link from "next/link";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { docsTypography } from "../typography";
+import Link from 'next/link';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { docsTypography } from '../typography';
 
 interface NavLink {
   title: string;
@@ -22,16 +22,18 @@ export function DocsNavFooter({ previous, next }: DocsNavFooterProps) {
   if (!previous && !next) return null;
 
   return (
-    <nav className="flex items-center justify-between border-t border-border pt-6 mt-16">
+    <nav className="border-border mt-16 flex items-center justify-between border-t pt-6">
       {previous ? (
         <Link
           href={previous.href}
-          className="group flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+          className="group text-muted-foreground hover:text-foreground flex items-center gap-2 transition-colors"
         >
           <ChevronLeft className="h-4 w-4" aria-hidden="true" />
           <div>
             <p className={`${docsTypography.caption} uppercase`}>Previous</p>
-            <p className={`${docsTypography.h4} uppercase group-hover:text-primary`}>
+            <p
+              className={`${docsTypography.h4} group-hover:text-primary uppercase`}
+            >
               {previous.title}
             </p>
           </div>
@@ -43,11 +45,13 @@ export function DocsNavFooter({ previous, next }: DocsNavFooterProps) {
       {next ? (
         <Link
           href={next.href}
-          className="group flex items-center gap-2 text-right text-muted-foreground hover:text-foreground transition-colors"
+          className="group text-muted-foreground hover:text-foreground flex items-center gap-2 text-right transition-colors"
         >
           <div>
             <p className={`${docsTypography.caption} uppercase`}>Next</p>
-            <p className={`${docsTypography.h4} uppercase group-hover:text-primary`}>
+            <p
+              className={`${docsTypography.h4} group-hover:text-primary uppercase`}
+            >
               {next.title}
             </p>
           </div>

@@ -877,12 +877,12 @@ Admin Components:
 
 // appearance-form.tsx:165
 {
-  isLoading ? "> SAVING..." : "> SAVE_CHANGES";
+  isLoading ? '> SAVING...' : '> SAVE_CHANGES';
 }
 
 // impersonate-button.tsx:127
 {
-  loading ? "STARTING..." : "> START_IMPERSONATION";
+  loading ? 'STARTING...' : '> START_IMPERSONATION';
 }
 ```
 
@@ -891,12 +891,12 @@ Admin Components:
 ```tsx
 // profile-form.tsx:140-142
 <Button type="submit" disabled={isLoading}>
-  {isLoading ? "Saving..." : "Save Changes"}
+  {isLoading ? 'Saving...' : 'Save Changes'}
 </Button>;
 
 // billing-section.tsx:123
 {
-  isLoading ? "Loading..." : "Manage Billing";
+  isLoading ? 'Loading...' : 'Manage Billing';
 }
 ```
 
@@ -938,7 +938,7 @@ Admin Components:
 ```tsx
 // user-management-table.tsx:229-235
 <Badge
-  variant={user.role === "ADMIN" ? "default" : "secondary"}
+  variant={user.role === 'ADMIN' ? 'default' : 'secondary'}
   className="w-24 justify-center font-semibold"
 >
   {user.role}
@@ -1068,7 +1068,7 @@ Security Components:
 
 ```tsx
 <Button type="submit" disabled={isLoading}>
-  {isLoading ? "Updating..." : "Update Password"}
+  {isLoading ? 'Updating...' : 'Update Password'}
 </Button>
 ```
 
@@ -1082,7 +1082,7 @@ Security Components:
 
 ```tsx
 <Button disabled={isInvalidatingSessions} className="w-full">
-  {isInvalidatingSessions ? "INVALIDATING..." : "> SIGN_OUT_ALL_SESSIONS"}
+  {isInvalidatingSessions ? 'INVALIDATING...' : '> SIGN_OUT_ALL_SESSIONS'}
 </Button>
 ```
 

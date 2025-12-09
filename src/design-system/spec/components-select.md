@@ -24,7 +24,7 @@ import {
   SelectGroup,
   SelectLabel,
   SelectSeparator,
-} from "@/components/ui/select";
+} from '@/components/ui/select';
 ```
 
 ### Basic Usage
@@ -66,7 +66,7 @@ import {
 ```tsx
 <SelectTrigger
   className={cn(
-    "bg-background flex h-[48px] w-full items-center justify-between border px-4 text-xs sm:h-8",
+    'bg-background flex h-[48px] w-full items-center justify-between border px-4 text-xs sm:h-8',
     mode.radius,
     mode.font
   )}
@@ -78,7 +78,7 @@ import {
 ```tsx
 <SelectContent
   className={cn(
-    "bg-popover text-popover-foreground relative z-50 max-h-96 min-w-32 overflow-hidden border",
+    'bg-popover text-popover-foreground relative z-50 max-h-96 min-w-32 overflow-hidden border',
     mode.radius
   )}
 />
@@ -89,7 +89,7 @@ import {
 ```tsx
 <SelectItem
   className={cn(
-    "hover:bg-primary hover:text-primary-foreground relative flex h-[48px] w-full cursor-default items-center pr-2 pl-8 text-xs sm:h-auto sm:py-2",
+    'hover:bg-primary hover:text-primary-foreground relative flex h-[48px] w-full cursor-default items-center pr-2 pl-8 text-xs sm:h-auto sm:py-2',
     mode.radius,
     mode.font
   )}
@@ -129,7 +129,7 @@ import {
 
 ```tsx
 <div className="space-y-2">
-  <Label htmlFor="role">{formatLabel("Role")}</Label>
+  <Label htmlFor="role">{formatLabel('Role')}</Label>
   <Select>
     <SelectTrigger id="role">
       <SelectValue placeholder="Select role" />

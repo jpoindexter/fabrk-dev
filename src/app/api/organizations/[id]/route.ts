@@ -7,21 +7,22 @@
  * DELETE - Delete organization (requires OWNER)
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@/lib/auth";
-import { withCsrfProtection } from "@/lib/security/csrf";
+import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@/lib/auth';
+import { withCsrfProtection } from '@/lib/security/csrf';
 import {
   getOrganizationBySlug,
   hasOrganizationRole,
   deleteOrganization,
   getUserOrganizations,
-} from "@/lib/teams/organizations";
-import { prisma } from "@/lib/prisma";
-import { OrgRole } from "@/generated/prisma/client";
-import { logger } from "@/lib/logger";
+} from '@/lib/teams/organizations';
+import { prisma } from '@/lib/prisma';
+import { OrgRole } from '@/generated/prisma/client';
+import { logger } from '@/lib/logger';
 
 // UUID v4 format regex
-const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+const UUID_REGEX =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 // Route context interface for Next.js 15+ async params
 interface RouteContext {
@@ -51,13 +52,16 @@ export async function GET(req: NextRequest, context: RouteContext) {
     const session = await auth();
 
     if (!session?.user?.id) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     const organization = await getOrganization(id);
 
     if (!organization) {
-      return NextResponse.json({ error: "Organization not found" }, { status: 404 });
+      return NextResponse.json(
+        { error: 'Organization not found' },
+        { status: 404 }
+      );
     }
 
     // Get user's role in this organization
@@ -66,7 +70,7 @@ export async function GET(req: NextRequest, context: RouteContext) {
 
     if (!userMembership) {
       return NextResponse.json(
-        { error: "You are not a member of this organization" },
+        { error: 'You are not a member of this organization' },
         { status: 403 }
       );
     }
@@ -83,116 +87,154 @@ export async function GET(req: NextRequest, context: RouteContext) {
       },
     });
   } catch (error: unknown) {
-    logger.error("Failed to fetch organization:", error);
-    return NextResponse.json({ error: "Failed to fetch organization" }, { status: 500 });
+    logger.error('Failed to fetch organization:', error);
+    return NextResponse.json(
+      { error: 'Failed to fetch organization' },
+      { status: 500 }
+    );
   }
 }
 
-export const PATCH = withCsrfProtection(async (req: NextRequest, context: RouteContext) => {
-  try {
-    const { id } = await context.params;
-    const session = await auth();
+export const PATCH = withCsrfProtection(
+  async (req: NextRequest, context: RouteContext) => {
+    try {
+      const { id } = await context.params;
+      const session = await auth();
 
-    if (!session?.user?.id) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
+      if (!session?.user?.id) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      }
 
-    const organization = await getOrganization(id);
+      const organization = await getOrganization(id);
 
-    if (!organization) {
-      return NextResponse.json({ error: "Organization not found" }, { status: 404 });
-    }
+      if (!organization) {
+        return NextResponse.json(
+          { error: 'Organization not found' },
+          { status: 404 }
+        );
+      }
 
-    // Verify user has permission (must be OWNER or ADMIN)
-    const canUpdate = await hasOrganizationRole(organization.id, session.user.id, OrgRole.ADMIN);
+      // Verify user has permission (must be OWNER or ADMIN)
+      const canUpdate = await hasOrganizationRole(
+        organization.id,
+        session.user.id,
+        OrgRole.ADMIN
+      );
 
-    if (!canUpdate) {
+      if (!canUpdate) {
+        return NextResponse.json(
+          { error: "You don't have permission to update this organization" },
+          { status: 403 }
+        );
+      }
+
+      const body = await req.json();
+      const { name, description, slug, logo } = body;
+
+      // Validate slug if provided
+      if (slug && !/^[a-z0-9-]+$/.test(slug)) {
+        return NextResponse.json(
+          {
+            error:
+              'Slug can only contain lowercase letters, numbers, and hyphens',
+          },
+          { status: 400 }
+        );
+      }
+
+      const updated = await prisma.organization.update({
+        where: { id: organization.id },
+        data: {
+          ...(name && { name }),
+          ...(description !== undefined && { description }),
+          ...(slug && { slug }),
+          ...(logo !== undefined && { logo: logo || null }),
+        },
+      });
+
+      return NextResponse.json({
+        success: true,
+        organization: {
+          id: updated.id,
+          name: updated.name,
+          slug: updated.slug,
+          description: updated.description,
+          logo: updated.logo,
+        },
+      });
+    } catch (error: unknown) {
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : 'Failed to update organization';
+      logger.error('Failed to update organization:', errorMessage);
+
+      // Check for Prisma unique constraint violation
+      if (
+        error &&
+        typeof error === 'object' &&
+        'code' in error &&
+        error.code === 'P2002'
+      ) {
+        return NextResponse.json(
+          { error: 'An organization with this slug already exists' },
+          { status: 409 }
+        );
+      }
+
       return NextResponse.json(
-        { error: "You don't have permission to update this organization" },
-        { status: 403 }
+        { error: 'Failed to update organization' },
+        { status: 500 }
       );
     }
-
-    const body = await req.json();
-    const { name, description, slug, logo } = body;
-
-    // Validate slug if provided
-    if (slug && !/^[a-z0-9-]+$/.test(slug)) {
-      return NextResponse.json(
-        { error: "Slug can only contain lowercase letters, numbers, and hyphens" },
-        { status: 400 }
-      );
-    }
-
-    const updated = await prisma.organization.update({
-      where: { id: organization.id },
-      data: {
-        ...(name && { name }),
-        ...(description !== undefined && { description }),
-        ...(slug && { slug }),
-        ...(logo !== undefined && { logo: logo || null }),
-      },
-    });
-
-    return NextResponse.json({
-      success: true,
-      organization: {
-        id: updated.id,
-        name: updated.name,
-        slug: updated.slug,
-        description: updated.description,
-        logo: updated.logo,
-      },
-    });
-  } catch (error: unknown) {
-    const errorMessage = error instanceof Error ? error.message : "Failed to update organization";
-    logger.error("Failed to update organization:", errorMessage);
-
-    // Check for Prisma unique constraint violation
-    if (error && typeof error === "object" && "code" in error && error.code === "P2002") {
-      return NextResponse.json(
-        { error: "An organization with this slug already exists" },
-        { status: 409 }
-      );
-    }
-
-    return NextResponse.json({ error: "Failed to update organization" }, { status: 500 });
   }
-});
+);
 
-export const DELETE = withCsrfProtection(async (req: NextRequest, context: RouteContext) => {
-  try {
-    const { id } = await context.params;
-    const session = await auth();
+export const DELETE = withCsrfProtection(
+  async (req: NextRequest, context: RouteContext) => {
+    try {
+      const { id } = await context.params;
+      const session = await auth();
 
-    if (!session?.user?.id) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
+      if (!session?.user?.id) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      }
 
-    const organization = await getOrganization(id);
+      const organization = await getOrganization(id);
 
-    if (!organization) {
-      return NextResponse.json({ error: "Organization not found" }, { status: 404 });
-    }
+      if (!organization) {
+        return NextResponse.json(
+          { error: 'Organization not found' },
+          { status: 404 }
+        );
+      }
 
-    // Only OWNER can delete
-    const isOwner = await hasOrganizationRole(organization.id, session.user.id, OrgRole.OWNER);
+      // Only OWNER can delete
+      const isOwner = await hasOrganizationRole(
+        organization.id,
+        session.user.id,
+        OrgRole.OWNER
+      );
 
-    if (!isOwner) {
+      if (!isOwner) {
+        return NextResponse.json(
+          { error: 'Only the organization owner can delete it' },
+          { status: 403 }
+        );
+      }
+
+      await deleteOrganization(organization.id, session.user.id);
+
+      return NextResponse.json({
+        success: true,
+        message: 'Organization deleted successfully',
+      });
+    } catch (error: unknown) {
+      logger.error('Failed to delete organization:', error);
       return NextResponse.json(
-        { error: "Only the organization owner can delete it" },
-        { status: 403 }
+        { error: 'Failed to delete organization' },
+        { status: 500 }
       );
     }
-
-    await deleteOrganization(organization.id, session.user.id);
-
-    return NextResponse.json({
-      success: true,
-      message: "Organization deleted successfully",
-    });
-  } catch (error: unknown) {
-    logger.error("Failed to delete organization:", error);
-    return NextResponse.json({ error: "Failed to delete organization" }, { status: 500 });
   }
-});
+);

@@ -21,7 +21,7 @@ export {
   type ErrorContext,
   type ErrorReport,
   type PerformanceMetric,
-} from "./error-tracker";
+} from './error-tracker';
 
 // Performance monitoring
 export {
@@ -34,4 +34,4 @@ export {
   usePerformanceTracker,
   trackAPIPerformance,
   trackQueryPerformance,
-} from "./performance";
+} from './performance';

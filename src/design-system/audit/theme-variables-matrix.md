@@ -128,7 +128,7 @@ This matrix documents which CSS variables are defined in each theme. Variables n
 Add the missing 10 variables to ALL 20 themes:
 
 ```css
-[data-theme="THEME_NAME"] {
+[data-theme='THEME_NAME'] {
   /* ... existing variables ... */
 
   /* Status Colors */

@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
 /**
  * Terminal-Styled Chat Interface
  * A reusable chat input component with terminal aesthetic
  */
 
-import { useState, useRef, useEffect } from "react";
-import { Send, Loader2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+import { useState, useRef, useEffect } from 'react';
+import { Send, Loader2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Textarea } from '@/components/ui/textarea';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 interface ChatInterfaceProps {
   onSubmit: (message: string) => Promise<void>;
@@ -22,18 +22,18 @@ interface ChatInterfaceProps {
 
 export function ChatInterface({
   onSubmit,
-  placeholder = "> Describe your form...",
+  placeholder = '> Describe your form...',
   disabled = false,
   isLoading = false,
   className,
 }: ChatInterfaceProps) {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   // Auto-resize textarea
   useEffect(() => {
     if (textareaRef.current) {
-      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = 'auto';
       textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, 200)}px`;
     }
   }, [input]);
@@ -43,23 +43,23 @@ export function ChatInterface({
     if (!input.trim() || isLoading || disabled) return;
 
     const message = input.trim();
-    setInput("");
+    setInput('');
     await onSubmit(message);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && !e.shiftKey) {
+    if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSubmit(e);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className={cn("relative", className)}>
-      <div className={cn("border-border bg-card border", mode.radius)}>
+    <form onSubmit={handleSubmit} className={cn('relative', className)}>
+      <div className={cn('border-border bg-card border', mode.radius)}>
         {/* Terminal Header */}
         <div className="border-border bg-muted/50 border-b px-4 py-2">
-          <span className={cn("text-muted-foreground text-xs", mode.font)}>
+          <span className={cn('text-muted-foreground text-xs', mode.font)}>
             [ [0x00] PROMPT_INPUT ]
           </span>
         </div>
@@ -74,7 +74,7 @@ export function ChatInterface({
             placeholder={placeholder}
             disabled={disabled || isLoading}
             className={cn(
-              "min-h-[80px] resize-none border-0 bg-transparent p-0 text-sm focus-visible:ring-0",
+              'min-h-[80px] resize-none border-0 bg-transparent p-0 text-sm focus-visible:ring-0',
               mode.font,
               mode.radius
             )}
@@ -83,14 +83,14 @@ export function ChatInterface({
 
           {/* Submit Button */}
           <div className="mt-4 flex items-center justify-between">
-            <span className={cn("text-muted-foreground text-xs", mode.font)}>
+            <span className={cn('text-muted-foreground text-xs', mode.font)}>
               Press Enter to submit, Shift+Enter for new line
             </span>
             <Button
               type="submit"
               size="sm"
               disabled={!input.trim() || isLoading || disabled}
-              className={cn("text-xs", mode.radius, mode.font)}
+              className={cn('text-xs', mode.radius, mode.font)}
             >
               {isLoading ? (
                 <>

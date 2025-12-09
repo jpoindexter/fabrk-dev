@@ -1,10 +1,11 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { Rocket, Globe, Lock, Layers } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
+import { Rocket, Globe, Lock, Layers } from 'lucide-react';
 
 export const metadata = {
-  title: "Deploy to Vercel - Fabrk Docs",
-  description: "Deploy your Fabrk app to Vercel with automatic SSL, CDN, and edge functions. Step-by-step guide included.",
+  title: 'Deploy to Vercel - Fabrk Docs',
+  description:
+    'Deploy your Fabrk app to Vercel with automatic SSL, CDN, and edge functions. Step-by-step guide included.',
 };
 
 export default function DeployVercelPage() {
@@ -16,23 +17,39 @@ export default function DeployVercelPage() {
       description="Deploy your Fabrk application to Vercel with automatic SSL, CDN, and edge functions."
       overview="Complete Vercel deployment with automatic HTTPS, global CDN, preview deployments for PRs, and environment variable management."
       features={[
-        { icon: Lock, title: "Auto HTTPS", description: "SSL with custom domains." },
-        { icon: Globe, title: "Global CDN", description: "Static assets worldwide." },
-        { icon: Layers, title: "Preview URLs", description: "Every PR gets a URL." },
-        { icon: Rocket, title: "Edge Functions", description: "Middleware at the edge." },
+        {
+          icon: Lock,
+          title: 'Auto HTTPS',
+          description: 'SSL with custom domains.',
+        },
+        {
+          icon: Globe,
+          title: 'Global CDN',
+          description: 'Static assets worldwide.',
+        },
+        {
+          icon: Layers,
+          title: 'Preview URLs',
+          description: 'Every PR gets a URL.',
+        },
+        {
+          icon: Rocket,
+          title: 'Edge Functions',
+          description: 'Middleware at the edge.',
+        },
       ]}
       setup={[
         {
-          title: "Push to GitHub",
-          description: "Your code must be in a Git repository",
+          title: 'Push to GitHub',
+          description: 'Your code must be in a Git repository',
         },
         {
-          title: "Connect to Vercel",
-          description: "Go to vercel.com/new and import your repository",
+          title: 'Connect to Vercel',
+          description: 'Go to vercel.com/new and import your repository',
         },
         {
-          title: "Configure Environment",
-          description: "Add required environment variables",
+          title: 'Configure Environment',
+          description: 'Add required environment variables',
           code: `# Core (Required)
 DATABASE_URL="postgresql://..."
 NEXTAUTH_URL="https://your-domain.vercel.app"
@@ -40,17 +57,17 @@ NEXTAUTH_SECRET="your-32-character-secret"
 
 # Generate NEXTAUTH_SECRET with:
 openssl rand -base64 32`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Deploy",
-          description: "Click deploy and wait ~2 minutes",
+          title: 'Deploy',
+          description: 'Click deploy and wait ~2 minutes',
         },
       ]}
       usage={[
         {
-          title: "One-Click Deploy",
-          description: "Fastest way to deploy",
+          title: 'One-Click Deploy',
+          description: 'Fastest way to deploy',
           code: `# Add this button to your README
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/fabrk)
 
@@ -63,11 +80,12 @@ vercel
 # 2. Project name? your-app-name
 # 3. Directory? ./
 # 4. Override settings? No`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Required Environment Variables",
-          description: "Add in Vercel Dashboard → Settings → Environment Variables",
+          title: 'Required Environment Variables',
+          description:
+            'Add in Vercel Dashboard → Settings → Environment Variables',
           code: `# Core (Required)
 DATABASE_URL="postgresql://..."
 NEXTAUTH_URL="https://your-domain.vercel.app"
@@ -85,11 +103,11 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_live_..."
 GOOGLE_CLIENT_ID="..."
 GOOGLE_CLIENT_SECRET="..."
 NEXT_PUBLIC_APP_URL="https://your-domain.com"`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "vercel.json Configuration",
-          description: "Optional advanced settings",
+          title: 'vercel.json Configuration',
+          description: 'Optional advanced settings',
           code: `// vercel.json
 {
   "buildCommand": "prisma generate && next build",
@@ -109,11 +127,11 @@ NEXT_PUBLIC_APP_URL="https://your-domain.com"`,
     { "path": "/api/cron/cleanup", "schedule": "0 0 * * *" }
   ]
 }`,
-          language: "json",
+          language: 'json',
         },
         {
-          title: "Custom Domain",
-          description: "Connect your custom domain",
+          title: 'Custom Domain',
+          description: 'Connect your custom domain',
           code: `# 1. Go to Project Settings → Domains
 # 2. Add your domain (e.g., myapp.com)
 # 3. Add DNS records at your registrar:
@@ -130,11 +148,11 @@ Value: cname.vercel-dns.com
 
 # 4. Wait for DNS propagation (up to 48 hours)
 # 5. SSL certificate is automatically provisioned`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Stripe Webhook Setup",
-          description: "Configure production webhooks",
+          title: 'Stripe Webhook Setup',
+          description: 'Configure production webhooks',
           code: `# 1. Go to Stripe Dashboard → Webhooks
 # 2. Click "Add endpoint"
 # 3. Enter URL: https://your-domain.com/api/webhooks/stripe
@@ -147,11 +165,11 @@ Value: cname.vercel-dns.com
 #    - invoice.payment_failed
 # 5. Copy the webhook signing secret
 # 6. Add it as STRIPE_WEBHOOK_SECRET in Vercel`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Preview Deployments",
-          description: "Every PR gets a unique preview URL",
+          title: 'Preview Deployments',
+          description: 'Every PR gets a unique preview URL',
           code: `# Preview URL format
 https://your-project-git-branch-name-your-team.vercel.app
 
@@ -165,11 +183,11 @@ https://fabrk-git-feature-auth-acme.vercel.app
 # Use test Stripe keys for previews
 STRIPE_SECRET_KEY="sk_test_..."
 STRIPE_WEBHOOK_SECRET="whsec_test_..."`,
-          language: "bash",
+          language: 'bash',
         },
       ]}
-      previous={{ title: "Database", href: "/docs/deployment/database" }}
-      next={{ title: "Environment", href: "/docs/deployment/environment" }}
+      previous={{ title: 'Database', href: '/docs/deployment/database' }}
+      next={{ title: 'Environment', href: '/docs/deployment/environment' }}
     >
       {/* What You Get */}
       <DocsSection title="What You Get">
@@ -190,15 +208,30 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`,
         <DocsCard title="TROUBLESHOOTING">
           <div className="space-y-4">
             <div>
-              <p className="mb-4"><strong>Build Fails with Prisma Error:</strong></p>
-              <p>Add <code className="bg-muted px-1">prisma generate</code> to build command in package.json</p>
+              <p className="mb-4">
+                <strong>Build Fails with Prisma Error:</strong>
+              </p>
+              <p>
+                Add <code className="bg-muted px-1">prisma generate</code> to
+                build command in package.json
+              </p>
             </div>
             <div>
-              <p className="mb-4"><strong>Environment Variables Not Working:</strong></p>
-              <p>1. Check correct environment (Prod/Preview/Dev)<br/>2. Client-side vars need NEXT_PUBLIC_ prefix<br/>3. Redeploy after adding variables</p>
+              <p className="mb-4">
+                <strong>Environment Variables Not Working:</strong>
+              </p>
+              <p>
+                1. Check correct environment (Prod/Preview/Dev)
+                <br />
+                2. Client-side vars need NEXT_PUBLIC_ prefix
+                <br />
+                3. Redeploy after adding variables
+              </p>
             </div>
             <div>
-              <p className="mb-4"><strong>Database Connection Timeout:</strong></p>
+              <p className="mb-4">
+                <strong>Database Connection Timeout:</strong>
+              </p>
               <p>Use connection pooling (Supabase Pooler or PgBouncer)</p>
             </div>
           </div>

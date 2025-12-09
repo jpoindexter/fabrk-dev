@@ -4,12 +4,12 @@
  * Production-ready ✓
  */
 
-import { DataExportSection } from "@/components/settings/data-export";
-import { NotificationsForm } from "@/components/settings/notifications-form";
-import { PrivacyForm } from "@/components/settings/privacy-form";
-import { Bell, Lock, Download } from "lucide-react";
-import { CodeWindow } from "./code-window";
-import { SectionHeader } from "./section-header";
+import { DataExportSection } from '@/components/settings/data-export';
+import { NotificationsForm } from '@/components/settings/notifications-form';
+import { PrivacyForm } from '@/components/settings/privacy-form';
+import { Bell, Lock, Download } from 'lucide-react';
+import { CodeWindow } from './code-window';
+import { SectionHeader } from './section-header';
 
 export function PrivacyTab() {
   return (

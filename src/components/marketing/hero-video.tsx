@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { useState } from 'react';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 interface HeroVideoProps {
   headline?: string;
@@ -18,11 +18,16 @@ interface HeroVideoProps {
 }
 
 export function HeroVideo({
-  headline = "THE ANTI-BLOAT NEXTJS BOILERPLATE",
-  subheadline = "161 files. Not 1000. Ship your SaaS in hours, not weeks.",
-  ctaPrimary = { text: "Get Fabrk", href: "#pricing" },
-  ctaSecondary = { text: "View Demo", href: "#demo" },
-  trustBadges = ["TypeScript Strict", "PostgreSQL", "Next.js 15", "80+ Components"],
+  headline = 'THE ANTI-BLOAT NEXTJS BOILERPLATE',
+  subheadline = '161 files. Not 1000. Ship your SaaS in hours, not weeks.',
+  ctaPrimary = { text: 'Get Fabrk', href: '#pricing' },
+  ctaSecondary = { text: 'View Demo', href: '#demo' },
+  trustBadges = [
+    'TypeScript Strict',
+    'PostgreSQL',
+    'Next.js 15',
+    '80+ Components',
+  ],
   videoSrc,
   videoPoster,
   overlayOpacity = 0.6,
@@ -69,7 +74,7 @@ export function HeroVideo({
               className={cn(
                 mode.radius,
                 mode.font,
-                "border-foreground/30 bg-foreground/10 text-foreground inline-block border-2 px-4 py-2 text-sm backdrop-blur-sm"
+                'border-foreground/30 bg-foreground/10 text-foreground inline-block border-2 px-4 py-2 text-sm backdrop-blur-sm'
               )}
             >
               [ EARLY ACCESS ] JOIN FIRST 100 CUSTOMERS
@@ -80,7 +85,7 @@ export function HeroVideo({
           <h1
             className={cn(
               mode.font,
-              "text-foreground mb-8 text-5xl leading-tight font-semibold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
+              'text-foreground mb-8 text-5xl leading-tight font-semibold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl'
             )}
           >
             {headline}
@@ -90,7 +95,7 @@ export function HeroVideo({
           <p
             className={cn(
               mode.font,
-              "text-foreground/90 mx-auto mb-12 max-w-2xl text-lg leading-relaxed sm:text-xl"
+              'text-foreground/90 mx-auto mb-12 max-w-2xl text-lg leading-relaxed sm:text-xl'
             )}
           >
             &gt; {subheadline}
@@ -103,12 +108,12 @@ export function HeroVideo({
               className={cn(
                 mode.radius,
                 mode.font,
-                "bg-card text-foreground hover:bg-muted h-14 px-8 text-sm font-semibold transition-all hover:scale-105"
+                'bg-card text-foreground hover:bg-muted h-14 px-8 text-sm font-semibold transition-all hover:scale-105'
               )}
               asChild
             >
               <Link href={ctaPrimary.href}>
-                &gt; {ctaPrimary.text.toUpperCase().replace(/ /g, "_")}
+                &gt; {ctaPrimary.text.toUpperCase().replace(/ /g, '_')}
               </Link>
             </Button>
             <Button
@@ -116,33 +121,38 @@ export function HeroVideo({
               className={cn(
                 mode.radius,
                 mode.font,
-                "border-foreground text-foreground hover:bg-card hover:text-foreground h-14 border-2 bg-transparent px-8 text-sm font-semibold transition-all"
+                'border-foreground text-foreground hover:bg-card hover:text-foreground h-14 border-2 bg-transparent px-8 text-sm font-semibold transition-all'
               )}
               asChild
             >
               <Link href={ctaSecondary.href}>
-                &gt; VIEW_{ctaSecondary.text.toUpperCase().replace(/ /g, "_")}
+                &gt; VIEW_{ctaSecondary.text.toUpperCase().replace(/ /g, '_')}
               </Link>
             </Button>
           </div>
 
           {/* Trust Badges */}
-          <div className={cn(mode.font, "mb-8 flex flex-wrap justify-center gap-4")}>
+          <div
+            className={cn(
+              mode.font,
+              'mb-8 flex flex-wrap justify-center gap-4'
+            )}
+          >
             {trustBadges.map((badge) => (
               <span
                 key={badge}
                 className={cn(
                   mode.radius,
-                  "border-foreground/30 bg-foreground/10 text-foreground border-2 px-4 py-1 text-xs backdrop-blur-sm"
+                  'border-foreground/30 bg-foreground/10 text-foreground border-2 px-4 py-1 text-xs backdrop-blur-sm'
                 )}
               >
-                [{badge.toUpperCase().replace(/ /g, "_")}]
+                [{badge.toUpperCase().replace(/ /g, '_')}]
               </span>
             ))}
           </div>
 
           {/* Final Sale Notice */}
-          <p className={cn(mode.font, "text-foreground/80 text-xs")}>
+          <p className={cn(mode.font, 'text-foreground/80 text-xs')}>
             ALL SALES FINAL • LIFETIME V1.X UPDATES
           </p>
         </div>

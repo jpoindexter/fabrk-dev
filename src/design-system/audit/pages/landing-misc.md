@@ -16,11 +16,11 @@
 ### Architecture
 
 ```tsx
-"use client";
+'use client';
 
 function SuccessContent() {
   const searchParams = useSearchParams();
-  const sessionId = searchParams.get("session_id");
+  const sessionId = searchParams.get('session_id');
   const [isResending, setIsResending] = useState(false);
 
   // ... resend email handler
@@ -37,7 +37,11 @@ function SuccessContent() {
 export default function SuccessPage() {
   return (
     <Suspense
-      fallback={<div className="flex min-h-screen items-center justify-center">Loading...</div>}
+      fallback={
+        <div className="flex min-h-screen items-center justify-center">
+          Loading...
+        </div>
+      }
     >
       <SuccessContent />
     </Suspense>
@@ -110,7 +114,9 @@ export default function SuccessPage() {
     <Mail className="text-foreground h-6 w-6" />
     <h3 className="text-lg font-semibold">Check Your Email</h3>
   </div>
-  <p className="text-muted-foreground text-center">We've sent you a confirmation email...</p>
+  <p className="text-muted-foreground text-center">
+    We've sent you a confirmation email...
+  </p>
 </div>
 ```
 
@@ -134,7 +140,8 @@ export default function SuccessPage() {
         1
       </span>
       <span>
-        <strong className="text-foreground">GitHub Repository Access</strong> - Description
+        <strong className="text-foreground">GitHub Repository Access</strong> -
+        Description
       </span>
     </li>
     {/* More items */}
@@ -166,7 +173,11 @@ export default function SuccessPage() {
   </p>
   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
     <Button asChild size="lg" className="w-full">
-      <a href="https://github.com/notifications" target="_blank" rel="noopener noreferrer">
+      <a
+        href="https://github.com/notifications"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <Download className="mr-2 h-4 w-4" />
         Check GitHub Invitations
       </a>
@@ -281,32 +292,32 @@ const [isResending, setIsResending] = useState(false);
 
 const handleResendEmail = async () => {
   if (!sessionId) {
-    toast.error("Session ID not found. Please contact support.");
+    toast.error('Session ID not found. Please contact support.');
     return;
   }
 
   setIsResending(true);
   try {
-    const response = await fetch("/api/resend-purchase-email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+    const response = await fetch('/api/resend-purchase-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ sessionId }),
     });
 
     const data = await response.json();
 
     if (response.ok) {
-      toast.success("Email Sent!", {
-        description: "Check your inbox...",
+      toast.success('Email Sent!', {
+        description: 'Check your inbox...',
       });
     } else {
-      toast.error("Failed to Send", {
-        description: data.error || "Please try again...",
+      toast.error('Failed to Send', {
+        description: data.error || 'Please try again...',
       });
     }
   } catch {
-    toast.error("Error", {
-      description: "Failed to resend email...",
+    toast.error('Error', {
+      description: 'Failed to resend email...',
     });
   } finally {
     setIsResending(false);
@@ -331,9 +342,9 @@ const handleResendEmail = async () => {
 
 ```tsx
 export const metadata: Metadata = {
-  title: "Maintenance Mode",
+  title: 'Maintenance Mode',
   description: "We're currently performing scheduled maintenance.",
-  robots: "noindex, nofollow", // SEO: Don't index maintenance page
+  robots: 'noindex, nofollow', // SEO: Don't index maintenance page
 };
 
 export default function MaintenancePage() {
@@ -435,7 +446,9 @@ export default function MaintenancePage() {
 
 ```tsx
 <div className="mb-8">
-  <p className="text-muted-foreground mb-2 text-sm">For real-time updates, follow us on:</p>
+  <p className="text-muted-foreground mb-2 text-sm">
+    For real-time updates, follow us on:
+  </p>
   <div className="flex justify-center gap-4">
     <a
       href="https://twitter.com/yourhandle"
@@ -469,7 +482,9 @@ export default function MaintenancePage() {
 
 ```tsx
 <div className="border-border/60 bg-card rounded-none border p-6 text-left">
-  <h2 className="text-foreground mb-4 text-lg font-semibold">What we're working on:</h2>
+  <h2 className="text-foreground mb-4 text-lg font-semibold">
+    What we're working on:
+  </h2>
   <ul className="text-muted-foreground space-y-2 text-sm">
     <li className="flex items-start gap-2">
       <span className="text-primary">•</span>
@@ -737,8 +752,8 @@ variants: {
 - **Should add:**
   ```tsx
   export const metadata: Metadata = {
-    title: "Purchase Successful | Fabrk",
-    robots: "noindex, nofollow", // Don't index checkout pages
+    title: 'Purchase Successful | Fabrk',
+    robots: 'noindex, nofollow', // Don't index checkout pages
   };
   ```
 

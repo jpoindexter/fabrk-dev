@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
+import { ComponentShowcaseTemplate } from '@/components/docs';
 import {
   Form,
   FormControl,
@@ -9,24 +9,24 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
 
 const formSchema = z.object({
-  username: z.string().min(3, "Username must be at least 3 characters"),
-  email: z.string().email("Invalid email address"),
+  username: z.string().min(3, 'Username must be at least 3 characters'),
+  email: z.string().email('Invalid email address'),
 });
 
 function BasicFormExample() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
-      email: "",
+      username: '',
+      email: '',
     },
   });
 
@@ -147,22 +147,25 @@ function Example() {
       }}
       variants={[
         {
-          title: "Form Structure",
-          description: "Basic structure of a form with FormItem components.",
+          title: 'Form Structure',
+          description: 'Basic structure of a form with FormItem components.',
           preview: (
             <div className="space-y-4 p-4 font-mono text-sm">
               <div className="text-muted-foreground">
-                <span className="text-primary">&gt;</span> Form Component Structure
+                <span className="text-primary">&gt;</span> Form Component
+                Structure
               </div>
               <div className="text-muted-foreground space-y-2 pl-4">
                 <div>
                   <span className="text-success">&gt;</span> Form (Provider)
                 </div>
                 <div className="pl-4">
-                  <span className="text-success">&gt;</span> FormField (Controller)
+                  <span className="text-success">&gt;</span> FormField
+                  (Controller)
                 </div>
                 <div className="pl-8">
-                  <span className="text-success">&gt;</span> FormItem (Container)
+                  <span className="text-success">&gt;</span> FormItem
+                  (Container)
                 </div>
                 <div className="pl-12">
                   <span className="text-success">&gt;</span> FormLabel
@@ -199,16 +202,18 @@ function Example() {
 </Form>`,
         },
         {
-          title: "Validation Example",
-          description: "Form with comprehensive validation rules.",
+          title: 'Validation Example',
+          description: 'Form with comprehensive validation rules.',
           preview: (
             <div className="space-y-4 p-4 font-mono text-sm">
               <div className="border-border flex items-center border-b pb-2">
-                <span className="text-muted-foreground text-xs">[ VALIDATION ] validation.ts</span>
+                <span className="text-muted-foreground text-xs">
+                  [ VALIDATION ] validation.ts
+                </span>
               </div>
               <div className="space-y-1 text-xs">
                 <div className="text-muted-foreground">
-                  <span className="text-primary">const</span> schema{" "}
+                  <span className="text-primary">const</span> schema{' '}
                   <span className="text-primary">=</span> z.object(&#123;
                 </div>
                 <div className="text-muted-foreground pl-4">
@@ -245,35 +250,35 @@ function Example() {
       ]}
       props={[
         {
-          name: "control",
-          type: "Control<TFieldValues>",
-          default: "-",
-          description: "Form control object from useForm hook.",
+          name: 'control',
+          type: 'Control<TFieldValues>',
+          default: '-',
+          description: 'Form control object from useForm hook.',
         },
         {
-          name: "name",
-          type: "FieldPath<TFieldValues>",
-          default: "-",
-          description: "Name of the field in the form schema.",
+          name: 'name',
+          type: 'FieldPath<TFieldValues>',
+          default: '-',
+          description: 'Name of the field in the form schema.',
         },
         {
-          name: "render",
-          type: "({ field }) => ReactElement",
-          default: "-",
-          description: "Render function that receives field props.",
+          name: 'render',
+          type: '({ field }) => ReactElement',
+          default: '-',
+          description: 'Render function that receives field props.',
         },
       ]}
       accessibility={[
-        "Integrates with react-hook-form for full accessibility support",
-        "FormLabel automatically associates with inputs via htmlFor",
-        "FormMessage announces errors with proper ARIA attributes",
-        "FormDescription provides additional context for screen readers",
-        "aria-invalid automatically set on fields with errors",
-        "FormControl manages focus and keyboard navigation",
-        "Validation errors announced via aria-live regions",
+        'Integrates with react-hook-form for full accessibility support',
+        'FormLabel automatically associates with inputs via htmlFor',
+        'FormMessage announces errors with proper ARIA attributes',
+        'FormDescription provides additional context for screen readers',
+        'aria-invalid automatically set on fields with errors',
+        'FormControl manages focus and keyboard navigation',
+        'Validation errors announced via aria-live regions',
       ]}
-      previous={{ title: "Footer", href: "/docs/components/footer" }}
-      next={{ title: "Form Error", href: "/docs/components/form-error" }}
+      previous={{ title: 'Footer', href: '/docs/components/footer' }}
+      next={{ title: 'Form Error', href: '/docs/components/form-error' }}
     />
   );
 }

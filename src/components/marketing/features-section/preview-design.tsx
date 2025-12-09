@@ -2,19 +2,19 @@
  * Design System Preview Component
  * Terminal-style design system showcase
  */
-"use client";
+'use client';
 
-import { useState, useEffect, useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { Moon, Layers, Palette } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { PreviewHeader } from "./preview-header";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+import { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { Moon, Layers, Palette } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { PreviewHeader } from './preview-header';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 export function DesignSystemPreview() {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [componentCount, setComponentCount] = useState(0);
 
   useEffect(() => {
@@ -38,16 +38,16 @@ export function DesignSystemPreview() {
   }, [isInView]);
 
   const items = [
-    { icon: Moon, label: "THEMES", value: "LIGHT + DARK" },
-    { icon: Layers, label: "COMPONENTS", value: `${componentCount}+ SHADCN` },
-    { icon: Palette, label: "STYLING", value: "TAILWIND CSS" },
+    { icon: Moon, label: 'THEMES', value: 'LIGHT + DARK' },
+    { icon: Layers, label: 'COMPONENTS', value: `${componentCount}+ SHADCN` },
+    { icon: Palette, label: 'STYLING', value: 'TAILWIND CSS' },
   ];
 
   const colors = [
-    { name: "PRIMARY", class: "bg-primary" },
-    { name: "SECONDARY", class: "bg-secondary" },
-    { name: "ACCENT", class: "bg-accent" },
-    { name: "MUTED", class: "bg-muted" },
+    { name: 'PRIMARY', class: 'bg-primary' },
+    { name: 'SECONDARY', class: 'bg-secondary' },
+    { name: 'ACCENT', class: 'bg-accent' },
+    { name: 'MUTED', class: 'bg-muted' },
   ];
 
   return (
@@ -58,7 +58,7 @@ export function DesignSystemPreview() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
-          className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}
+          className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}
         >
           [DESIGN_SYSTEM]:
         </motion.div>
@@ -73,7 +73,7 @@ export function DesignSystemPreview() {
               whileHover={{ x: 4 }}
               className={cn(
                 mode.radius,
-                "border-border bg-background hover:border-primary/50 flex cursor-pointer items-center justify-between border p-4 transition-colors"
+                'border-border bg-background hover:border-primary/50 flex cursor-pointer items-center justify-between border p-4 transition-colors'
               )}
             >
               <div className="flex items-center gap-4">
@@ -83,9 +83,11 @@ export function DesignSystemPreview() {
                 >
                   <item.icon className="text-primary size-4" />
                 </motion.div>
-                <span className={cn(mode.font, "text-xs")}>{item.label}</span>
+                <span className={cn(mode.font, 'text-xs')}>{item.label}</span>
               </div>
-              <span className={cn(mode.font, "text-success text-xs")}>{item.value}</span>
+              <span className={cn(mode.font, 'text-success text-xs')}>
+                {item.value}
+              </span>
             </motion.div>
           ))}
         </div>
@@ -96,7 +98,11 @@ export function DesignSystemPreview() {
               key={color.name}
               initial={{ scaleY: 0 }}
               animate={isInView ? { scaleY: 1 } : {}}
-              transition={{ delay: 0.8 + idx * 0.1, duration: 0.3, ease: "easeOut" }}
+              transition={{
+                delay: 0.8 + idx * 0.1,
+                duration: 0.3,
+                ease: 'easeOut',
+              }}
               style={{ originY: 1 }}
               className={cn(mode.radius, `h-8 ${color.class}`)}
             />
@@ -109,7 +115,10 @@ export function DesignSystemPreview() {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 1.2 + idx * 0.1 }}
-              className={cn(mode.font, "text-muted-foreground text-center text-xs")}
+              className={cn(
+                mode.font,
+                'text-muted-foreground text-center text-xs'
+              )}
             >
               {color.name}
             </motion.span>

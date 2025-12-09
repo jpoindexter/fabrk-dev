@@ -3,10 +3,10 @@
  * Visual indicator for multi-step wizard progress
  */
 
-import * as React from "react";
-import { Check } from "lucide-react";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import * as React from 'react';
+import { Check } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 interface ProgressStepsProps {
   currentStep: number;
@@ -24,8 +24,8 @@ export function ProgressSteps({ currentStep, totalSteps }: ProgressStepsProps) {
               mode.radius,
               `border font-semibold transition-all ${
                 currentStep >= s
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-card text-muted-foreground"
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-card text-muted-foreground'
               }`
             )}
           >
@@ -34,7 +34,7 @@ export function ProgressSteps({ currentStep, totalSteps }: ProgressStepsProps) {
           {s < totalSteps && (
             <div
               className={`h-0.5 w-12 transition-all ${
-                currentStep > s ? "bg-primary" : "bg-border"
+                currentStep > s ? 'bg-primary' : 'bg-border'
               }`}
             />
           )}

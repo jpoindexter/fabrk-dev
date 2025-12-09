@@ -102,10 +102,10 @@ Expected terminal aesthetic (inherited from components):
 <MarketingPageTemplate
   hero={<HeroSection />}
   sections={[
-    { id: "comparison", component: <ComparisonSection /> }, // Early positioning
-    { id: "features", component: <FeaturesSection /> },
-    { id: "pricing", component: <PricingSection /> },
-    { id: "faq", component: <FAQSection /> },
+    { id: 'comparison', component: <ComparisonSection /> }, // Early positioning
+    { id: 'features', component: <FeaturesSection /> },
+    { id: 'pricing', component: <PricingSection /> },
+    { id: 'faq', component: <FAQSection /> },
   ]}
 />
 ```

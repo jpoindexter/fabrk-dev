@@ -1,10 +1,11 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
-import { BarChart3, User, Video, ToggleLeft } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard } from '@/components/docs';
+import { BarChart3, User, Video, ToggleLeft } from 'lucide-react';
 
 export const metadata = {
-  title: "Analytics with PostHog - Fabrk Documentation",
-  description: "Learn how to integrate PostHog analytics for event tracking, user identification, and feature flags.",
+  title: 'Analytics with PostHog - Fabrk Documentation',
+  description:
+    'Learn how to integrate PostHog analytics for event tracking, user identification, and feature flags.',
 };
 
 export default function AnalyticsPage() {
@@ -16,36 +17,53 @@ export default function AnalyticsPage() {
       description="Product analytics, session recordings, and feature flags with PostHog integration."
       overview="Fabrk integrates PostHog for comprehensive product analytics. Track user behavior, analyze conversion funnels, record sessions, and manage feature flags all in one platform."
       features={[
-        { icon: BarChart3, title: "Event Tracking", description: "Custom events with properties for detailed analytics." },
-        { icon: User, title: "User Identification", description: "Link anonymous and authenticated users across sessions." },
-        { icon: Video, title: "Session Recording", description: "Watch user sessions to understand behavior (optional)." },
-        { icon: ToggleLeft, title: "Feature Flags", description: "A/B testing and gradual rollouts built-in." },
+        {
+          icon: BarChart3,
+          title: 'Event Tracking',
+          description: 'Custom events with properties for detailed analytics.',
+        },
+        {
+          icon: User,
+          title: 'User Identification',
+          description:
+            'Link anonymous and authenticated users across sessions.',
+        },
+        {
+          icon: Video,
+          title: 'Session Recording',
+          description: 'Watch user sessions to understand behavior (optional).',
+        },
+        {
+          icon: ToggleLeft,
+          title: 'Feature Flags',
+          description: 'A/B testing and gradual rollouts built-in.',
+        },
       ]}
       setup={[
         {
-          title: "Configure PostHog Credentials",
-          description: "Add your PostHog credentials to environment variables",
+          title: 'Configure PostHog Credentials',
+          description: 'Add your PostHog credentials to environment variables',
           code: `# .env.local
 NEXT_PUBLIC_POSTHOG_KEY=phc_your_project_key
 NEXT_PUBLIC_POSTHOG_HOST=https://app.posthog.com`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Enable Analytics in Config",
-          description: "Enable analytics in your config",
+          title: 'Enable Analytics in Config',
+          description: 'Enable analytics in your config',
           code: `// src/config.js
 module.exports = {
   features: {
     analytics: true, // Enable PostHog
   },
 };`,
-          language: "javascript",
+          language: 'javascript',
         },
       ]}
       usage={[
         {
-          title: "PostHog Provider Setup",
-          description: "Initialize PostHog in your application",
+          title: 'PostHog Provider Setup',
+          description: 'Initialize PostHog in your application',
           code: `// src/components/providers/posthog-provider.tsx
 "use client";
 
@@ -81,11 +99,11 @@ export default function RootLayout({ children }) {
     </html>
   );
 }`,
-          language: "tsx",
+          language: 'tsx',
         },
         {
-          title: "Tracking Events",
-          description: "Track custom events throughout your application",
+          title: 'Tracking Events',
+          description: 'Track custom events throughout your application',
           code: `"use client";
 
 import { usePostHog } from "posthog-js/react";
@@ -120,11 +138,12 @@ export function CheckoutButton({ plan, price }: Props) {
 // - settings_changed
 // - organization_created
 // - member_invited`,
-          language: "tsx",
+          language: 'tsx',
         },
         {
-          title: "User Identification",
-          description: "Identify users after authentication to link their activity",
+          title: 'User Identification',
+          description:
+            'Identify users after authentication to link their activity',
           code: `"use client";
 
 import { usePostHog } from "posthog-js/react";
@@ -160,11 +179,11 @@ const handleLogout = () => {
   posthog.reset(); // Clear user identity
   signOut();
 };`,
-          language: "tsx",
+          language: 'tsx',
         },
         {
-          title: "Page View Tracking",
-          description: "Track page views with the Next.js router",
+          title: 'Page View Tracking',
+          description: 'Track page views with the Next.js router',
           code: `"use client";
 
 import { usePathname, useSearchParams } from "next/navigation";
@@ -190,11 +209,11 @@ export function PageViewTracker() {
 
   return null;
 }`,
-          language: "tsx",
+          language: 'tsx',
         },
         {
-          title: "Server-Side Tracking",
-          description: "Track events from API routes and server actions",
+          title: 'Server-Side Tracking',
+          description: 'Track events from API routes and server actions',
           code: `// src/lib/analytics/server.ts
 import { PostHog } from "posthog-node";
 
@@ -232,22 +251,43 @@ export async function POST(req: Request) {
 
   return Response.json({ success: true });
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
       ]}
-      previous={{ title: "Background Jobs", href: "/docs/features/background-jobs" }}
-      next={{ title: "Feature Flags", href: "/docs/features/feature-flags" }}
+      previous={{
+        title: 'Background Jobs',
+        href: '/docs/features/background-jobs',
+      }}
+      next={{ title: 'Feature Flags', href: '/docs/features/feature-flags' }}
     >
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
         <DocsCard title="BEST_PRACTICES">
           <ul className="space-y-1">
-            <li>├─ <strong>Use consistent naming:</strong> Follow a convention like <code className="bg-muted px-1">object_action</code></li>
-            <li>├─ <strong>Don&apos;t over-track:</strong> Focus on meaningful events that inform decisions</li>
-            <li>├─ <strong>Include context:</strong> Add properties that help segment and analyze</li>
-            <li>├─ <strong>Respect privacy:</strong> Don&apos;t track PII unless necessary</li>
-            <li>├─ <strong>Test events:</strong> Verify events appear in PostHog dashboard</li>
-            <li>└─ <strong>Document events:</strong> Maintain a tracking plan for your team</li>
+            <li>
+              ├─ <strong>Use consistent naming:</strong> Follow a convention
+              like <code className="bg-muted px-1">object_action</code>
+            </li>
+            <li>
+              ├─ <strong>Don&apos;t over-track:</strong> Focus on meaningful
+              events that inform decisions
+            </li>
+            <li>
+              ├─ <strong>Include context:</strong> Add properties that help
+              segment and analyze
+            </li>
+            <li>
+              ├─ <strong>Respect privacy:</strong> Don&apos;t track PII unless
+              necessary
+            </li>
+            <li>
+              ├─ <strong>Test events:</strong> Verify events appear in PostHog
+              dashboard
+            </li>
+            <li>
+              └─ <strong>Document events:</strong> Maintain a tracking plan for
+              your team
+            </li>
           </ul>
         </DocsCard>
       </DocsSection>

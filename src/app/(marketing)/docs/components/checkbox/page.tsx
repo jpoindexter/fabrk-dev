@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
-import { formatLabel } from "@/design-system";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Label } from '@/components/ui/label';
+import { formatLabel } from '@/design-system';
 
 export default function CheckboxPage() {
   return (
@@ -17,7 +17,9 @@ export default function CheckboxPage() {
         preview: (
           <div className="flex items-center gap-2">
             <Checkbox id="terms" />
-            <Label htmlFor="terms">{formatLabel("Accept terms and conditions")}</Label>
+            <Label htmlFor="terms">
+              {formatLabel('Accept terms and conditions')}
+            </Label>
           </div>
         ),
         code: `<div className="flex items-center gap-2">
@@ -27,24 +29,26 @@ export default function CheckboxPage() {
       }}
       variants={[
         {
-          title: "Default",
-          description: "Standard checkbox.",
+          title: 'Default',
+          description: 'Standard checkbox.',
           preview: <Checkbox />,
           code: `<Checkbox />`,
         },
         {
-          title: "Checked",
-          description: "Checkbox in checked state.",
+          title: 'Checked',
+          description: 'Checkbox in checked state.',
           preview: <Checkbox defaultChecked />,
           code: `<Checkbox defaultChecked />`,
         },
         {
-          title: "With Label",
-          description: "Checkbox with an associated label.",
+          title: 'With Label',
+          description: 'Checkbox with an associated label.',
           preview: (
             <div className="flex items-center gap-2">
               <Checkbox id="newsletter" />
-              <Label htmlFor="newsletter">{formatLabel("Subscribe to newsletter")}</Label>
+              <Label htmlFor="newsletter">
+                {formatLabel('Subscribe to newsletter')}
+              </Label>
             </div>
           ),
           code: `<div className="flex items-center gap-2">
@@ -53,33 +57,33 @@ export default function CheckboxPage() {
 </div>`,
         },
         {
-          title: "Disabled",
-          description: "Disabled checkbox.",
+          title: 'Disabled',
+          description: 'Disabled checkbox.',
           preview: <Checkbox disabled />,
           code: `<Checkbox disabled />`,
         },
         {
-          title: "Disabled Checked",
-          description: "Disabled checkbox in checked state.",
+          title: 'Disabled Checked',
+          description: 'Disabled checkbox in checked state.',
           preview: <Checkbox disabled defaultChecked />,
           code: `<Checkbox disabled defaultChecked />`,
         },
         {
-          title: "Checkbox Group",
-          description: "Multiple checkboxes as a group.",
+          title: 'Checkbox Group',
+          description: 'Multiple checkboxes as a group.',
           preview: (
             <div className="grid gap-2">
               <div className="flex items-center gap-2">
                 <Checkbox id="option1" defaultChecked />
-                <Label htmlFor="option1">{formatLabel("Option 1")}</Label>
+                <Label htmlFor="option1">{formatLabel('Option 1')}</Label>
               </div>
               <div className="flex items-center gap-2">
                 <Checkbox id="option2" />
-                <Label htmlFor="option2">{formatLabel("Option 2")}</Label>
+                <Label htmlFor="option2">{formatLabel('Option 2')}</Label>
               </div>
               <div className="flex items-center gap-2">
                 <Checkbox id="option3" />
-                <Label htmlFor="option3">{formatLabel("Option 3")}</Label>
+                <Label htmlFor="option3">{formatLabel('Option 3')}</Label>
               </div>
             </div>
           ),
@@ -101,41 +105,41 @@ export default function CheckboxPage() {
       ]}
       props={[
         {
-          name: "checked",
-          type: "boolean",
-          description: "Controlled checked state.",
+          name: 'checked',
+          type: 'boolean',
+          description: 'Controlled checked state.',
         },
         {
-          name: "defaultChecked",
-          type: "boolean",
-          description: "The default checked state for uncontrolled usage.",
+          name: 'defaultChecked',
+          type: 'boolean',
+          description: 'The default checked state for uncontrolled usage.',
         },
         {
-          name: "onCheckedChange",
-          type: "(checked: boolean) => void",
-          description: "Event handler called when the checked state changes.",
+          name: 'onCheckedChange',
+          type: '(checked: boolean) => void',
+          description: 'Event handler called when the checked state changes.',
         },
         {
-          name: "disabled",
-          type: "boolean",
-          default: "false",
-          description: "Disable the checkbox.",
+          name: 'disabled',
+          type: 'boolean',
+          default: 'false',
+          description: 'Disable the checkbox.',
         },
         {
-          name: "required",
-          type: "boolean",
-          default: "false",
-          description: "Mark the checkbox as required.",
+          name: 'required',
+          type: 'boolean',
+          default: 'false',
+          description: 'Mark the checkbox as required.',
         },
       ]}
       accessibility={[
-        "Built on Radix UI Checkbox primitive for full accessibility",
-        "Supports keyboard navigation with Space to toggle",
-        "Uses aria-checked for screen readers",
-        "Focus visible ring for keyboard navigation",
+        'Built on Radix UI Checkbox primitive for full accessibility',
+        'Supports keyboard navigation with Space to toggle',
+        'Uses aria-checked for screen readers',
+        'Focus visible ring for keyboard navigation',
       ]}
-      previous={{ title: "Select", href: "/docs/components/select" }}
-      next={{ title: "Switch", href: "/docs/components/switch" }}
+      previous={{ title: 'Select', href: '/docs/components/select' }}
+      next={{ title: 'Switch', href: '/docs/components/switch' }}
     />
   );
 }

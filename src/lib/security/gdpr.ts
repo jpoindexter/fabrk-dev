@@ -11,8 +11,8 @@
  * - Consent Management
  */
 
-import { AuditLog } from "./audit-log";
-import { logger } from "@/lib/logger";
+import { AuditLog } from './audit-log';
+import { logger } from '@/lib/logger';
 
 export interface GDPRDataExport {
   userId: string;
@@ -25,7 +25,7 @@ export interface GDPRDataExport {
     otherData: Record<string, unknown>;
   };
   metadata: {
-    format: "json" | "csv";
+    format: 'json' | 'csv';
     version: string;
   };
 }
@@ -42,7 +42,10 @@ export interface ConsentRecord {
 /**
  * Export all user data (GDPR Right to Access)
  */
-export async function exportUserData(userId: string, userEmail: string): Promise<GDPRDataExport> {
+export async function exportUserData(
+  userId: string,
+  userEmail: string
+): Promise<GDPRDataExport> {
   // Log the export request
   await AuditLog.gdprDataExported(userId, userEmail);
 
@@ -74,8 +77,8 @@ export async function exportUserData(userId: string, userEmail: string): Promise
       },
     },
     metadata: {
-      format: "json",
-      version: "1.0",
+      format: 'json',
+      version: '1.0',
     },
   };
 
@@ -94,7 +97,11 @@ export async function deleteUserData(
     anonymize?: boolean; // Anonymize instead of hard delete
   } = {}
 ): Promise<{ success: boolean; deletedRecords: Record<string, number> }> {
-  const { keepAuditLogs = true, keepPaymentRecords = true, anonymize = true } = options;
+  const {
+    keepAuditLogs = true,
+    keepPaymentRecords = true,
+    anonymize = true,
+  } = options;
 
   // Log the deletion request
   await AuditLog.gdprDataDeleted(userId, userEmail);
@@ -176,7 +183,9 @@ export async function anonymizeUserData(userId: string): Promise<void> {
 /**
  * Record user consent
  */
-export async function recordConsent(consent: Omit<ConsentRecord, "consentDate">): Promise<void> {
+export async function recordConsent(
+  consent: Omit<ConsentRecord, 'consentDate'>
+): Promise<void> {
   const record: ConsentRecord = {
     ...consent,
     consentDate: new Date(),
@@ -185,13 +194,16 @@ export async function recordConsent(consent: Omit<ConsentRecord, "consentDate">)
   // In production, save to database
   // await prisma.consent.create({ data: record });
 
-  logger.info("[GDPR] Consent recorded", { record });
+  logger.info('[GDPR] Consent recorded', { record });
 }
 
 /**
  * Check if user has given consent
  */
-export async function hasConsent(_userId: string, _consentType: string): Promise<boolean> {
+export async function hasConsent(
+  _userId: string,
+  _consentType: string
+): Promise<boolean> {
   // In production, check database
   // const consent = await prisma.consent.findFirst({
   //   where: { userId, consentType },
@@ -205,7 +217,10 @@ export async function hasConsent(_userId: string, _consentType: string): Promise
 /**
  * Revoke user consent
  */
-export async function revokeConsent(userId: string, consentType: string): Promise<void> {
+export async function revokeConsent(
+  userId: string,
+  consentType: string
+): Promise<void> {
   await recordConsent({
     userId,
     consentType,
@@ -216,7 +231,9 @@ export async function revokeConsent(userId: string, consentType: string): Promis
 /**
  * Get all consents for user
  */
-export async function getUserConsents(_userId: string): Promise<ConsentRecord[]> {
+export async function getUserConsents(
+  _userId: string
+): Promise<ConsentRecord[]> {
   // In production:
   // return await prisma.consent.findMany({
   //   where: { userId },
@@ -340,27 +357,27 @@ export function detectPII(text: string): {
 
   // Email
   if (/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/.test(text)) {
-    types.push("email");
+    types.push('email');
   }
 
   // Phone number
   if (/(\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/.test(text)) {
-    types.push("phone");
+    types.push('phone');
   }
 
   // SSN (US)
   if (/\d{3}-\d{2}-\d{4}/.test(text)) {
-    types.push("ssn");
+    types.push('ssn');
   }
 
   // Credit card
   if (/\d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4}/.test(text)) {
-    types.push("credit_card");
+    types.push('credit_card');
   }
 
   // IP address
   if (/\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/.test(text)) {
-    types.push("ip_address");
+    types.push('ip_address');
   }
 
   return {
@@ -374,8 +391,14 @@ export function detectPII(text: string): {
  */
 export function redactPII(text: string): string {
   return text
-    .replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, "[EMAIL REDACTED]")
-    .replace(/(\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/g, "[PHONE REDACTED]")
-    .replace(/\d{3}-\d{2}-\d{4}/g, "[SSN REDACTED]")
-    .replace(/\d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4}/g, "[CARD REDACTED]");
+    .replace(
+      /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g,
+      '[EMAIL REDACTED]'
+    )
+    .replace(
+      /(\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/g,
+      '[PHONE REDACTED]'
+    )
+    .replace(/\d{3}-\d{2}-\d{4}/g, '[SSN REDACTED]')
+    .replace(/\d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4}/g, '[CARD REDACTED]');
 }

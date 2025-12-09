@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Github, UserPlus } from "lucide-react";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Github, UserPlus } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export default function RegisterPage() {
   return (
@@ -16,7 +16,7 @@ export default function RegisterPage() {
         <div className="border-border bg-card mx-auto mb-2 flex h-10 w-10 items-center justify-center border">
           <UserPlus className="text-primary h-5 w-5" />
         </div>
-        <h1 className={cn(mode.font, "text-2xl font-semibold tracking-tight")}>
+        <h1 className={cn(mode.font, 'text-2xl font-semibold tracking-tight')}>
           Create an account
         </h1>
         <p className="text-muted-foreground text-sm">
@@ -27,7 +27,7 @@ export default function RegisterPage() {
       {/* Register Form */}
       <form className="space-y-4">
         <div className="space-y-2">
-          <Label htmlFor="email" className={cn(mode.font, "text-xs")}>
+          <Label htmlFor="email" className={cn(mode.font, 'text-xs')}>
             [EMAIL]:
           </Label>
           <Input
@@ -37,11 +37,11 @@ export default function RegisterPage() {
             autoCapitalize="none"
             autoComplete="email"
             autoCorrect="off"
-            className={cn(mode.radius, mode.font, "text-xs")}
+            className={cn(mode.radius, mode.font, 'text-xs')}
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="password" className={cn(mode.font, "text-xs")}>
+          <Label htmlFor="password" className={cn(mode.font, 'text-xs')}>
             [PASSWORD]:
           </Label>
           <Input
@@ -49,11 +49,14 @@ export default function RegisterPage() {
             type="password"
             placeholder="••••••••"
             autoComplete="new-password"
-            className={cn(mode.radius, mode.font, "text-xs")}
+            className={cn(mode.radius, mode.font, 'text-xs')}
           />
         </div>
 
-        <Button className={cn(mode.radius, mode.font, "w-full text-xs")} type="submit">
+        <Button
+          className={cn(mode.radius, mode.font, 'w-full text-xs')}
+          type="submit"
+        >
           &gt; CREATE_ACCOUNT
         </Button>
       </form>
@@ -64,17 +67,25 @@ export default function RegisterPage() {
           <span className="border-border w-full border-t" />
         </div>
         <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-background text-muted-foreground px-2">Or continue with</span>
+          <span className="bg-background text-muted-foreground px-2">
+            Or continue with
+          </span>
         </div>
       </div>
 
       {/* Social Auth */}
       <div className="grid grid-cols-2 gap-4">
-        <Button variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
+        <Button
+          variant="outline"
+          className={cn(mode.radius, mode.font, 'text-xs')}
+        >
           <Github className="mr-2 h-4 w-4" />
           GitHub
         </Button>
-        <Button variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
+        <Button
+          variant="outline"
+          className={cn(mode.radius, mode.font, 'text-xs')}
+        >
           {/* eslint-disable design-system/no-hardcoded-colors -- Google brand colors are intentional */}
           <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
             <path
@@ -101,8 +112,11 @@ export default function RegisterPage() {
 
       {/* Footer */}
       <p className="text-muted-foreground text-center text-sm">
-        Already have an account?{" "}
-        <Link href="/login" className="hover:text-primary underline underline-offset-4">
+        Already have an account?{' '}
+        <Link
+          href="/login"
+          className="hover:text-primary underline underline-offset-4"
+        >
           Sign in
         </Link>
       </p>

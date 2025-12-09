@@ -1,11 +1,11 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { Cloud, HardDrive, Shield, Zap } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
+import { Cloud, HardDrive, Shield, Zap } from 'lucide-react';
 
 export const metadata = {
-  title: "Cloud Storage - Fabrk Docs",
+  title: 'Cloud Storage - Fabrk Docs',
   description:
-    "Store files with Cloudflare R2, AWS S3, or local storage. Automatic provider detection and signed URL generation.",
+    'Store files with Cloudflare R2, AWS S3, or local storage. Automatic provider detection and signed URL generation.',
 };
 
 export default function CloudStoragePage() {
@@ -19,29 +19,31 @@ export default function CloudStoragePage() {
       features={[
         {
           icon: Cloud,
-          title: "Multi-Provider",
-          description: "Works with Cloudflare R2, AWS S3, or local storage automatically.",
+          title: 'Multi-Provider',
+          description:
+            'Works with Cloudflare R2, AWS S3, or local storage automatically.',
         },
         {
           icon: Zap,
-          title: "Zero Egress Fees",
-          description: "R2 recommended for huge savings on bandwidth costs.",
+          title: 'Zero Egress Fees',
+          description: 'R2 recommended for huge savings on bandwidth costs.',
         },
         {
           icon: HardDrive,
-          title: "Unlimited Storage",
-          description: "Virtually unlimited storage with cloud providers.",
+          title: 'Unlimited Storage',
+          description: 'Virtually unlimited storage with cloud providers.',
         },
         {
           icon: Shield,
-          title: "Secure Uploads",
-          description: "File validation, signed URLs, and access control built-in.",
+          title: 'Secure Uploads',
+          description:
+            'File validation, signed URLs, and access control built-in.',
         },
       ]}
       setup={[
         {
-          title: "Setup Cloudflare R2 (Recommended)",
-          description: "R2 is the recommended provider due to zero egress fees",
+          title: 'Setup Cloudflare R2 (Recommended)',
+          description: 'R2 is the recommended provider due to zero egress fees',
           code: `# .env.local
 
 # Cloudflare R2 Configuration
@@ -52,11 +54,11 @@ CLOUDFLARE_R2_ENDPOINT="https://your-account-id.r2.cloudflarestorage.com"
 
 # Optional: Public URL for the bucket
 CLOUDFLARE_R2_PUBLIC_URL="https://uploads.yourdomain.com"`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Setup AWS S3 (Alternative)",
-          description: "If you prefer S3 or already use AWS",
+          title: 'Setup AWS S3 (Alternative)',
+          description: 'If you prefer S3 or already use AWS',
           code: `# .env.local
 
 # AWS S3 Configuration
@@ -64,13 +66,13 @@ AWS_S3_ACCESS_KEY_ID="your-access-key-id"
 AWS_S3_SECRET_ACCESS_KEY="your-secret-access-key"
 AWS_S3_BUCKET="my-saas-uploads"
 AWS_S3_REGION="us-east-1"`,
-          language: "bash",
+          language: 'bash',
         },
       ]}
       usage={[
         {
-          title: "Upload a File",
-          description: "Use the upload utility to store files",
+          title: 'Upload a File',
+          description: 'Use the upload utility to store files',
           code: `import { uploadFile, getStorageProvider } from "@/lib/storage/uploads";
 
 // Check which provider is being used
@@ -91,11 +93,11 @@ if (result.success) {
 } else {
 
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "File Validation",
-          description: "Validate files before uploading",
+          title: 'File Validation',
+          description: 'Validate files before uploading',
           code: `import { validateFile } from "@/lib/storage/uploads";
 
 // Validate file size and type
@@ -115,11 +117,11 @@ if (!validation.valid) {
   // "File too large. Maximum size is 10MB"
   // "File type not allowed. Allowed: image/jpeg, image/png..."
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "API Route Example",
-          description: "Handle file uploads in your API",
+          title: 'API Route Example',
+          description: 'Handle file uploads in your API',
           code: `// src/app/api/upload/route.ts
 
 import { auth } from "@/lib/auth";
@@ -162,11 +164,11 @@ export async function POST(request: Request) {
     message: "File uploaded successfully",
   });
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Client-Side Upload Component",
-          description: "React component for file uploads",
+          title: 'Client-Side Upload Component',
+          description: 'React component for file uploads',
           code: `"use client";
 
 import { useState } from "react";
@@ -217,19 +219,23 @@ export function FileUploader() {
     </div>
   );
 }`,
-          language: "tsx",
+          language: 'tsx',
         },
       ]}
-      previous={{ title: "Feature Flags", href: "/docs/features/feature-flags" }}
-      next={{ title: "Authentication", href: "/docs/tutorials/authentication" }}
+      previous={{
+        title: 'Feature Flags',
+        href: '/docs/features/feature-flags',
+      }}
+      next={{ title: 'Authentication', href: '/docs/tutorials/authentication' }}
     >
       {/* Provider Priority Section */}
       <DocsSection title="Provider Priority">
         <DocsCard title="PROVIDER_PRIORITY">
           <p className="mb-4">
-            Fabrk automatically detects which storage provider you have configured and uses it. This
-            means you can start with local storage during development and switch to cloud in
-            production without changing your code.
+            Fabrk automatically detects which storage provider you have
+            configured and uses it. This means you can start with local storage
+            during development and switch to cloud in production without
+            changing your code.
           </p>
           <div className="space-y-2">
             <div className="border-border flex items-center gap-4 border p-4">
@@ -305,8 +311,9 @@ export function FileUploader() {
                 1
               </span>
               <span>
-                <strong>Validate file types:</strong> Never trust the file extension. Check MIME
-                type server-side to prevent malicious uploads.
+                <strong>Validate file types:</strong> Never trust the file
+                extension. Check MIME type server-side to prevent malicious
+                uploads.
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -314,8 +321,8 @@ export function FileUploader() {
                 2
               </span>
               <span>
-                <strong>Limit file sizes:</strong> Set reasonable limits to prevent storage abuse
-                and server crashes.
+                <strong>Limit file sizes:</strong> Set reasonable limits to
+                prevent storage abuse and server crashes.
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -323,8 +330,8 @@ export function FileUploader() {
                 3
               </span>
               <span>
-                <strong>Use signed URLs:</strong> For private files, generate time-limited signed
-                URLs instead of public links.
+                <strong>Use signed URLs:</strong> For private files, generate
+                time-limited signed URLs instead of public links.
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -332,8 +339,8 @@ export function FileUploader() {
                 4
               </span>
               <span>
-                <strong>Organize by user/org:</strong> Store files in user or organization folders
-                to enable access control.
+                <strong>Organize by user/org:</strong> Store files in user or
+                organization folders to enable access control.
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -341,8 +348,8 @@ export function FileUploader() {
                 5
               </span>
               <span>
-                <strong>Scan for malware:</strong> Consider adding virus scanning for user-uploaded
-                files in production.
+                <strong>Scan for malware:</strong> Consider adding virus
+                scanning for user-uploaded files in production.
               </span>
             </li>
           </ul>
@@ -358,12 +365,12 @@ export function FileUploader() {
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
               <p>
-                <strong>Cloudflare R2:</strong> $0.015/GB/month for storage, zero egress fees. First
-                10GB free.
+                <strong>Cloudflare R2:</strong> $0.015/GB/month for storage,
+                zero egress fees. First 10GB free.
               </p>
               <p className="mt-2">
-                <strong>AWS S3:</strong> ~$0.023/GB/month storage + $0.09/GB egress. Egress fees can
-                add up quickly.
+                <strong>AWS S3:</strong> ~$0.023/GB/month storage + $0.09/GB
+                egress. Egress fees can add up quickly.
               </p>
             </div>
           </details>
@@ -374,9 +381,9 @@ export function FileUploader() {
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
               <p>
-                By default, Fabrk validates files up to 10MB. You can change this in your upload
-                options. For larger files (videos, etc.), consider using direct-to-storage uploads
-                with presigned URLs.
+                By default, Fabrk validates files up to 10MB. You can change
+                this in your upload options. For larger files (videos, etc.),
+                consider using direct-to-storage uploads with presigned URLs.
               </p>
             </div>
           </details>
@@ -387,9 +394,10 @@ export function FileUploader() {
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
               <p>
-                Fabrk uses one provider at a time based on which env vars are set. R2 takes priority
-                if both are configured. If you need multi-provider support, you&apos;d need to
-                customize the storage module.
+                Fabrk uses one provider at a time based on which env vars are
+                set. R2 takes priority if both are configured. If you need
+                multi-provider support, you&apos;d need to customize the storage
+                module.
               </p>
             </div>
           </details>
@@ -400,9 +408,10 @@ export function FileUploader() {
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
               <p>
-                Use the <code className="bg-muted px-1">deleteFile(key)</code> function from the
-                storage module. The key is returned when you upload a file. Make sure to also remove
-                the file reference from your database.
+                Use the <code className="bg-muted px-1">deleteFile(key)</code>{' '}
+                function from the storage module. The key is returned when you
+                upload a file. Make sure to also remove the file reference from
+                your database.
               </p>
             </div>
           </details>

@@ -120,19 +120,19 @@
  * Supports both authenticated and guest checkout
  */
 
-import { auth } from "@/lib/auth";
-import { logger } from "@/lib/logger";
-import { prisma } from "@/lib/prisma";
-import { withRateLimit } from "@/lib/rate-limit/middleware";
-import { getOrCreateCustomer, stripe } from "@/lib/stripe/client";
-import { STRIPE_CONFIG, STRIPE_PRODUCTS } from "@/lib/stripe/config";
+import { auth } from '@/lib/auth';
+import { logger } from '@/lib/logger';
+import { prisma } from '@/lib/prisma';
+import { withRateLimit } from '@/lib/rate-limit/middleware';
+import { getOrCreateCustomer, stripe } from '@/lib/stripe/client';
+import { STRIPE_CONFIG, STRIPE_PRODUCTS } from '@/lib/stripe/config';
 import {
   generateCheckoutIdempotencyKey,
   getExistingCheckoutSession,
   storeCheckoutIdempotency,
-} from "@/lib/stripe/idempotency";
-import config from "@/config";
-import { NextRequest, NextResponse } from "next/server";
+} from '@/lib/stripe/idempotency';
+import config from '@/config';
+import { NextRequest, NextResponse } from 'next/server';
 
 async function checkoutHandler(req: NextRequest) {
   try {
@@ -145,10 +145,12 @@ async function checkoutHandler(req: NextRequest) {
 
     // Validate the price ID against all available products
     const validProducts = Object.entries(STRIPE_PRODUCTS);
-    const matchedProduct = validProducts.find(([, product]) => product.priceId === priceId);
+    const matchedProduct = validProducts.find(
+      ([, product]) => product.priceId === priceId
+    );
 
     if (!matchedProduct) {
-      return NextResponse.json({ error: "Invalid price ID" }, { status: 400 });
+      return NextResponse.json({ error: 'Invalid price ID' }, { status: 400 });
     }
 
     const [tierName, _product] = matchedProduct;
@@ -164,7 +166,11 @@ async function checkoutHandler(req: NextRequest) {
 
       if (user) {
         userId = user.id;
-        customerId = await getOrCreateCustomer(user.email, user.id, user.customerId);
+        customerId = await getOrCreateCustomer(
+          user.email,
+          user.id,
+          user.customerId
+        );
 
         // Update user with customer ID if newly created
         if (!user.customerId) {
@@ -177,26 +183,34 @@ async function checkoutHandler(req: NextRequest) {
     }
 
     // Generate or use provided idempotency key
-    const idempotencyKey = clientIdempotencyKey || generateCheckoutIdempotencyKey(userId || null, priceId);
+    const idempotencyKey =
+      clientIdempotencyKey ||
+      generateCheckoutIdempotencyKey(userId || null, priceId);
 
     // Check if this idempotency key was already used
     const existingSessionId = await getExistingCheckoutSession(idempotencyKey);
     if (existingSessionId) {
-      logger.info("Returning existing checkout session", {
+      logger.info('Returning existing checkout session', {
         idempotencyKey,
         sessionId: existingSessionId,
       });
 
       // Retrieve the existing session from Stripe
-      const existingSession = await stripe.checkout.sessions.retrieve(existingSessionId);
+      const existingSession =
+        await stripe.checkout.sessions.retrieve(existingSessionId);
       return NextResponse.json({ url: existingSession.url });
     }
 
     // Check if early adopter promotion code is active and apply if available
     const discounts: Array<{ promotion_code?: string }> = [];
-    if (config.stripe.coupons.earlyAdopter.active && config.stripe.coupons.earlyAdopter.promotionCodeId) {
-      discounts.push({ promotion_code: config.stripe.coupons.earlyAdopter.promotionCodeId });
-      logger.info("Early adopter promotion code applied", {
+    if (
+      config.stripe.coupons.earlyAdopter.active &&
+      config.stripe.coupons.earlyAdopter.promotionCodeId
+    ) {
+      discounts.push({
+        promotion_code: config.stripe.coupons.earlyAdopter.promotionCodeId,
+      });
+      logger.info('Early adopter promotion code applied', {
         promotionCode: config.stripe.coupons.earlyAdopter.code,
         promotionCodeId: config.stripe.coupons.earlyAdopter.promotionCodeId,
         discount: config.stripe.coupons.earlyAdopter.discountAmount,
@@ -208,8 +222,8 @@ async function checkoutHandler(req: NextRequest) {
       {
         // Only set customer if logged in, otherwise Stripe creates new customer
         ...(customerId ? { customer: customerId } : {}),
-        mode: "payment", // One-time payment
-        payment_method_types: ["card"],
+        mode: 'payment', // One-time payment
+        payment_method_types: ['card'],
         line_items: [
           {
             price: priceId,
@@ -220,7 +234,7 @@ async function checkoutHandler(req: NextRequest) {
         success_url: `${STRIPE_CONFIG.successUrl}&product=${tierName}`,
         cancel_url: STRIPE_CONFIG.cancelUrl,
         metadata: {
-          userId: userId || "guest",
+          userId: userId || 'guest',
           product: tierName,
           tier: tierName,
           idempotencyKey, // Store for reference
@@ -228,16 +242,16 @@ async function checkoutHandler(req: NextRequest) {
         // Note: Cannot use both allow_promotion_codes and discounts together
         // If automatic coupon is applied, users cannot add additional promo codes
         ...(discounts.length === 0 ? { allow_promotion_codes: true } : {}),
-        billing_address_collection: "required", // Collect billing address
-        customer_creation: "always", // Always create/link customer (required for email)
+        billing_address_collection: 'required', // Collect billing address
+        customer_creation: 'always', // Always create/link customer (required for email)
         custom_fields: [
           {
-            key: "github_username",
+            key: 'github_username',
             label: {
-              type: "custom",
-              custom: "GitHub Username (for repo access)",
+              type: 'custom',
+              custom: 'GitHub Username (for repo access)',
             },
-            type: "text",
+            type: 'text',
             optional: false,
           },
         ],
@@ -248,9 +262,14 @@ async function checkoutHandler(req: NextRequest) {
     );
 
     // Store idempotency record in database
-    await storeCheckoutIdempotency(idempotencyKey, userId || null, checkoutSession.id, priceId);
+    await storeCheckoutIdempotency(
+      idempotencyKey,
+      userId || null,
+      checkoutSession.id,
+      priceId
+    );
 
-    logger.info("Created new checkout session", {
+    logger.info('Created new checkout session', {
       idempotencyKey,
       sessionId: checkoutSession.id,
       userId,
@@ -259,10 +278,13 @@ async function checkoutHandler(req: NextRequest) {
 
     return NextResponse.json({ url: checkoutSession.url });
   } catch (error: unknown) {
-    logger.error("Checkout error:", error);
-    return NextResponse.json({ error: "Failed to create checkout session" }, { status: 500 });
+    logger.error('Checkout error:', error);
+    return NextResponse.json(
+      { error: 'Failed to create checkout session' },
+      { status: 500 }
+    );
   }
 }
 
 // Apply rate limiting: 10 requests per minute for payment endpoints
-export const POST = withRateLimit(checkoutHandler, "payment");
+export const POST = withRateLimit(checkoutHandler, 'payment');

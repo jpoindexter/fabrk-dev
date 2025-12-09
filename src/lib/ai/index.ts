@@ -39,7 +39,7 @@ let openai: any;
 let anthropic: any;
 
 try {
-  OpenAI = require("openai").default || require("openai");
+  OpenAI = require('openai').default || require('openai');
   openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
   });
@@ -48,7 +48,8 @@ try {
 }
 
 try {
-  Anthropic = require("@anthropic-ai/sdk").default || require("@anthropic-ai/sdk");
+  Anthropic =
+    require('@anthropic-ai/sdk').default || require('@anthropic-ai/sdk');
   anthropic = new Anthropic({
     apiKey: process.env.ANTHROPIC_API_KEY,
   });
@@ -56,12 +57,15 @@ try {
   // Anthropic SDK is optional - silent skip for optional dependencies
 }
 
-export type AIProvider = "openai" | "anthropic";
-export type OpenAIModel = "gpt-4" | "gpt-4-turbo" | "gpt-3.5-turbo";
-export type AnthropicModel = "claude-3-opus-20240229" | "claude-3-sonnet-20240229" | "claude-3-haiku-20240307";
+export type AIProvider = 'openai' | 'anthropic';
+export type OpenAIModel = 'gpt-4' | 'gpt-4-turbo' | 'gpt-3.5-turbo';
+export type AnthropicModel =
+  | 'claude-3-opus-20240229'
+  | 'claude-3-sonnet-20240229'
+  | 'claude-3-haiku-20240307';
 
 export interface AIMessage {
-  role: "system" | "user" | "assistant";
+  role: 'system' | 'user' | 'assistant';
   content: string;
 }
 
@@ -81,12 +85,12 @@ export interface AIResponse {
  * Token pricing (per 1M tokens)
  */
 const TOKEN_PRICING = {
-  "gpt-4": { input: 30, output: 60 },
-  "gpt-4-turbo": { input: 10, output: 30 },
-  "gpt-3.5-turbo": { input: 0.5, output: 1.5 },
-  "claude-3-opus-20240229": { input: 15, output: 75 },
-  "claude-3-sonnet-20240229": { input: 3, output: 15 },
-  "claude-3-haiku-20240307": { input: 0.25, output: 1.25 },
+  'gpt-4': { input: 30, output: 60 },
+  'gpt-4-turbo': { input: 10, output: 30 },
+  'gpt-3.5-turbo': { input: 0.5, output: 1.5 },
+  'claude-3-opus-20240229': { input: 15, output: 75 },
+  'claude-3-sonnet-20240229': { input: 3, output: 15 },
+  'claude-3-haiku-20240307': { input: 0.25, output: 1.25 },
 };
 
 /**
@@ -133,10 +137,12 @@ export async function chatWithOpenAI(options: {
   stream?: boolean;
 }): Promise<AIResponse | AsyncIterable<string>> {
   if (!openai) {
-    throw new Error("OpenAI SDK not installed. Install with: npm install openai");
+    throw new Error(
+      'OpenAI SDK not installed. Install with: npm install openai'
+    );
   }
 
-  const model = options.model || "gpt-3.5-turbo";
+  const model = options.model || 'gpt-3.5-turbo';
 
   if (options.stream) {
     // Streaming response
@@ -166,7 +172,7 @@ export async function chatWithOpenAI(options: {
     });
 
     const usage = completion.usage;
-    const content = completion.choices[0]?.message?.content || "";
+    const content = completion.choices[0]?.message?.content || '';
 
     return {
       content,
@@ -181,7 +187,7 @@ export async function chatWithOpenAI(options: {
         ? calculateCost(model, usage.prompt_tokens, usage.completion_tokens)
         : undefined,
       model,
-      provider: "openai",
+      provider: 'openai',
     };
   }
 }
@@ -213,14 +219,16 @@ export async function chatWithClaude(options: {
   stream?: boolean;
 }): Promise<AIResponse | AsyncIterable<string>> {
   if (!anthropic) {
-    throw new Error("Anthropic SDK not installed. Install with: npm install @anthropic-ai/sdk");
+    throw new Error(
+      'Anthropic SDK not installed. Install with: npm install @anthropic-ai/sdk'
+    );
   }
 
-  const model = options.model || "claude-3-sonnet-20240229";
+  const model = options.model || 'claude-3-sonnet-20240229';
 
   // Separate system message
-  const systemMessage = options.messages.find((m) => m.role === "system");
-  const messages = options.messages.filter((m) => m.role !== "system");
+  const systemMessage = options.messages.find((m) => m.role === 'system');
+  const messages = options.messages.filter((m) => m.role !== 'system');
 
   if (options.stream) {
     // Streaming response
@@ -235,7 +243,10 @@ export async function chatWithClaude(options: {
 
     return (async function* () {
       for await (const event of stream) {
-        if (event.type === "content_block_delta" && event.delta.type === "text_delta") {
+        if (
+          event.type === 'content_block_delta' &&
+          event.delta.type === 'text_delta'
+        ) {
           yield event.delta.text;
         }
       }
@@ -251,7 +262,7 @@ export async function chatWithClaude(options: {
     });
 
     const content =
-      message.content[0]?.type === "text" ? message.content[0].text : "";
+      message.content[0]?.type === 'text' ? message.content[0].text : '';
 
     return {
       content,
@@ -266,7 +277,7 @@ export async function chatWithClaude(options: {
         message.usage.output_tokens
       ),
       model,
-      provider: "anthropic",
+      provider: 'anthropic',
     };
   }
 }
@@ -282,13 +293,13 @@ export async function chat(options: {
   maxTokens?: number;
   stream?: boolean;
 }): Promise<AIResponse | AsyncIterable<string>> {
-  const provider = options.provider || "openai";
+  const provider = options.provider || 'openai';
 
-  if (provider === "openai") {
+  if (provider === 'openai') {
     if (options.stream) {
       return chatWithOpenAI({
         messages: options.messages,
-        model: (options.model as OpenAIModel) || "gpt-3.5-turbo",
+        model: (options.model as OpenAIModel) || 'gpt-3.5-turbo',
         temperature: options.temperature,
         maxTokens: options.maxTokens,
         stream: true,
@@ -296,7 +307,7 @@ export async function chat(options: {
     } else {
       return chatWithOpenAI({
         messages: options.messages,
-        model: (options.model as OpenAIModel) || "gpt-3.5-turbo",
+        model: (options.model as OpenAIModel) || 'gpt-3.5-turbo',
         temperature: options.temperature,
         maxTokens: options.maxTokens,
         stream: false,
@@ -306,7 +317,7 @@ export async function chat(options: {
     if (options.stream) {
       return chatWithClaude({
         messages: options.messages,
-        model: (options.model as AnthropicModel) || "claude-3-sonnet-20240229",
+        model: (options.model as AnthropicModel) || 'claude-3-sonnet-20240229',
         temperature: options.temperature,
         maxTokens: options.maxTokens,
         stream: true,
@@ -314,7 +325,7 @@ export async function chat(options: {
     } else {
       return chatWithClaude({
         messages: options.messages,
-        model: (options.model as AnthropicModel) || "claude-3-sonnet-20240229",
+        model: (options.model as AnthropicModel) || 'claude-3-sonnet-20240229',
         temperature: options.temperature,
         maxTokens: options.maxTokens,
         stream: false,
@@ -328,10 +339,12 @@ export async function chat(options: {
  */
 export async function generateEmbeddings(
   text: string | string[],
-  model: string = "text-embedding-3-small"
+  model: string = 'text-embedding-3-small'
 ): Promise<number[][]> {
   if (!openai) {
-    throw new Error("OpenAI SDK not installed. Install with: npm install openai");
+    throw new Error(
+      'OpenAI SDK not installed. Install with: npm install openai'
+    );
   }
 
   const response = await openai.embeddings.create({
@@ -351,7 +364,9 @@ export async function moderateContent(text: string): Promise<{
   scores: Record<string, number>;
 }> {
   if (!openai) {
-    throw new Error("OpenAI SDK not installed. Install with: npm install openai");
+    throw new Error(
+      'OpenAI SDK not installed. Install with: npm install openai'
+    );
   }
 
   const response = await openai.moderations.create({
@@ -372,24 +387,26 @@ export async function moderateContent(text: string): Promise<{
  */
 export async function generateImage(options: {
   prompt: string;
-  model?: "dall-e-2" | "dall-e-3";
-  size?: "256x256" | "512x512" | "1024x1024" | "1792x1024" | "1024x1792";
-  quality?: "standard" | "hd";
+  model?: 'dall-e-2' | 'dall-e-3';
+  size?: '256x256' | '512x512' | '1024x1024' | '1792x1024' | '1024x1792';
+  quality?: 'standard' | 'hd';
   n?: number;
 }): Promise<string[]> {
   if (!openai) {
-    throw new Error("OpenAI SDK not installed. Install with: npm install openai");
+    throw new Error(
+      'OpenAI SDK not installed. Install with: npm install openai'
+    );
   }
 
   const response = await openai.images.generate({
-    model: options.model || "dall-e-3",
+    model: options.model || 'dall-e-3',
     prompt: options.prompt,
-    size: options.size || "1024x1024",
-    quality: options.quality || "standard",
+    size: options.size || '1024x1024',
+    quality: options.quality || 'standard',
     n: options.n || 1,
   });
 
-  return response.data.map((d: { url?: string }) => d.url || "");
+  return response.data.map((d: { url?: string }) => d.url || '');
 }
 
 /**
@@ -397,16 +414,18 @@ export async function generateImage(options: {
  */
 export async function textToSpeech(options: {
   text: string;
-  voice?: "alloy" | "echo" | "fable" | "onyx" | "nova" | "shimmer";
-  model?: "tts-1" | "tts-1-hd";
+  voice?: 'alloy' | 'echo' | 'fable' | 'onyx' | 'nova' | 'shimmer';
+  model?: 'tts-1' | 'tts-1-hd';
 }): Promise<Buffer> {
   if (!openai) {
-    throw new Error("OpenAI SDK not installed. Install with: npm install openai");
+    throw new Error(
+      'OpenAI SDK not installed. Install with: npm install openai'
+    );
   }
 
   const response = await openai.audio.speech.create({
-    model: options.model || "tts-1",
-    voice: options.voice || "alloy",
+    model: options.model || 'tts-1',
+    voice: options.voice || 'alloy',
     input: options.text,
   });
 
@@ -424,12 +443,14 @@ export async function speechToText(
   }
 ): Promise<string> {
   if (!openai) {
-    throw new Error("OpenAI SDK not installed. Install with: npm install openai");
+    throw new Error(
+      'OpenAI SDK not installed. Install with: npm install openai'
+    );
   }
 
   const response = await openai.audio.transcriptions.create({
     file: audioFile,
-    model: "whisper-1",
+    model: 'whisper-1',
     language: options?.language,
     prompt: options?.prompt,
   });
@@ -440,8 +461,10 @@ export async function speechToText(
 /**
  * Helper: Stream to string
  */
-export async function streamToString(stream: AsyncIterable<string>): Promise<string> {
-  let result = "";
+export async function streamToString(
+  stream: AsyncIterable<string>
+): Promise<string> {
+  let result = '';
   for await (const chunk of stream) {
     result += chunk;
   }

@@ -183,7 +183,7 @@ For clarity, add comments to acceptable hex color usage:
 
 ```tsx
 // eslint-disable-next-line design-system/no-hardcoded-colors -- ColorPicker component data
-const [color, setColor] = useState("#8b5cf6");
+const [color, setColor] = useState('#8b5cf6');
 
 // eslint-disable-next-line design-system/no-hardcoded-colors -- Google brand requirement
 <svg>
@@ -194,7 +194,7 @@ const [color, setColor] = useState("#8b5cf6");
 const emailHTML = '<div style="background: #6366f1;">...</div>';
 
 // eslint-disable-next-line design-system/no-hardcoded-colors -- Theme preview data
-const themes = [{ preview: "#ffffff" }];
+const themes = [{ preview: '#ffffff' }];
 ```
 
 ### 2. Document Exception Categories

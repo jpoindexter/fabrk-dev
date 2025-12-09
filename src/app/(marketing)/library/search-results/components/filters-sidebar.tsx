@@ -3,12 +3,12 @@
  * Filters Sidebar - Category and tag filters
  */
 
-import { Filter, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { Filter, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 interface FilterCategory {
   id: string;
@@ -40,23 +40,33 @@ export function FiltersSidebar({
   onTagToggle,
   onClearFilters,
 }: FiltersSidebarProps) {
-  const hasActiveFilters = selectedCategory !== "all" || selectedTags.length > 0;
+  const hasActiveFilters =
+    selectedCategory !== 'all' || selectedTags.length > 0;
 
   return (
     <div className="w-full shrink-0 space-y-4 md:w-64">
       <Card>
-        <CardHeader code="0x00" title="FILTERS" icon={<Filter className="h-3 w-3" />} />
+        <CardHeader
+          code="0x00"
+          title="FILTERS"
+          icon={<Filter className="h-3 w-3" />}
+        />
         <CardContent padding="md">
           <div className="space-y-4">
             {/* Filter Header */}
             <div className="flex items-center justify-between">
-              <div className={cn(mode.font, "flex items-center gap-2 text-xs")}>[FILTERS]</div>
+              <div className={cn(mode.font, 'flex items-center gap-2 text-xs')}>
+                [FILTERS]
+              </div>
               {hasActiveFilters && (
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={onClearFilters}
-                  className={cn(mode.font, "text-muted-foreground h-6 px-2 text-xs")}
+                  className={cn(
+                    mode.font,
+                    'text-muted-foreground h-6 px-2 text-xs'
+                  )}
                 >
                   <X className="mr-1 h-3 w-3" />
                   CLEAR
@@ -66,7 +76,9 @@ export function FiltersSidebar({
 
             {/* Category Filter */}
             <div className="space-y-2">
-              <div className={cn(mode.font, "text-muted-foreground text-xs")}>[CATEGORY]:</div>
+              <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
+                [CATEGORY]:
+              </div>
               <div className="space-y-1">
                 {categories.map((category) => (
                   <button
@@ -74,8 +86,8 @@ export function FiltersSidebar({
                     onClick={() => onCategoryChange(category.id)}
                     className={`border-border flex w-full items-center justify-between border px-2 py-2 font-mono text-xs transition-colors ${
                       selectedCategory === category.id
-                        ? "bg-primary text-primary-foreground"
-                        : "hover:bg-muted"
+                        ? 'bg-primary text-primary-foreground'
+                        : 'hover:bg-muted'
                     }`}
                   >
                     <span>{category.label}</span>
@@ -87,17 +99,25 @@ export function FiltersSidebar({
 
             {/* Tags Filter */}
             <div className="space-y-2">
-              <div className={cn(mode.font, "text-muted-foreground text-xs")}>[TAGS]:</div>
+              <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
+                [TAGS]:
+              </div>
               <div className="space-y-1">
                 {tags.map((tag) => (
-                  <div key={tag.id} className="flex items-center gap-2 px-2 py-1">
+                  <div
+                    key={tag.id}
+                    className="flex items-center gap-2 px-2 py-1"
+                  >
                     <Checkbox
                       id={tag.id}
                       checked={selectedTags.includes(tag.id)}
                       onCheckedChange={() => onTagToggle(tag.id)}
                       className={cn(mode.radius)}
                     />
-                    <label htmlFor={tag.id} className={cn(mode.font, "cursor-pointer text-xs")}>
+                    <label
+                      htmlFor={tag.id}
+                      className={cn(mode.font, 'cursor-pointer text-xs')}
+                    >
                       {tag.label}
                     </label>
                   </div>

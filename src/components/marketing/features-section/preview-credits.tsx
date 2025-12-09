@@ -2,20 +2,26 @@
  * AI Credits Preview Component
  * Terminal-style credit balance with animated usage bars
  */
-"use client";
+'use client';
 
-import { useState, useEffect, useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
-import { PreviewHeader } from "./preview-header";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+import { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { Card, CardContent } from '@/components/ui/card';
+import { PreviewHeader } from './preview-header';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 // Animated counter for credits
-function CreditCounter({ value, delay = 0 }: { value: number; delay?: number }) {
+function CreditCounter({
+  value,
+  delay = 0,
+}: {
+  value: number;
+  delay?: number;
+}) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
 
   useEffect(() => {
     if (!isInView) return;
@@ -43,18 +49,18 @@ function CreditCounter({ value, delay = 0 }: { value: number; delay?: number }) 
 
 // Usage bar data (static to avoid hydration)
 const usageBars = [
-  { day: "M", height: 45 },
-  { day: "T", height: 30 },
-  { day: "W", height: 65 },
-  { day: "T", height: 40 },
-  { day: "F", height: 80 },
-  { day: "S", height: 25 },
-  { day: "S", height: 15 },
+  { day: 'M', height: 45 },
+  { day: 'T', height: 30 },
+  { day: 'W', height: 65 },
+  { day: 'T', height: 40 },
+  { day: 'F', height: 80 },
+  { day: 'S', height: 25 },
+  { day: 'S', height: 15 },
 ];
 
 export function CreditsPreview() {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
     <Card ref={ref} className="w-full max-w-md">
@@ -64,7 +70,7 @@ export function CreditsPreview() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
-          className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}
+          className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}
         >
           [AI_CREDITS]:
         </motion.div>
@@ -76,23 +82,30 @@ export function CreditsPreview() {
           transition={{ delay: 0.2 }}
           className={cn(
             mode.radius,
-            "border-border bg-background mb-4 flex items-center justify-between border p-4"
+            'border-border bg-background mb-4 flex items-center justify-between border p-4'
           )}
         >
           <div>
-            <span className={cn(mode.font, "block text-xs")}>BALANCE</span>
+            <span className={cn(mode.font, 'block text-xs')}>BALANCE</span>
             <motion.span
-              className={cn(mode.font, "text-muted-foreground text-xs")}
-              whileHover={{ color: "hsl(var(--primary))", x: 2 }}
+              className={cn(mode.font, 'text-muted-foreground text-xs')}
+              whileHover={{ color: 'hsl(var(--primary))', x: 2 }}
             >
               &gt; buy_credits
             </motion.span>
           </div>
           <div className="text-right">
-            <span className={cn(mode.font, "text-success block text-lg font-semibold")}>
+            <span
+              className={cn(
+                mode.font,
+                'text-success block text-lg font-semibold'
+              )}
+            >
               <CreditCounter value={847} delay={0.5} />
             </span>
-            <span className={cn(mode.font, "text-muted-foreground text-xs")}>credits</span>
+            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
+              credits
+            </span>
           </div>
         </motion.div>
 
@@ -101,9 +114,9 @@ export function CreditsPreview() {
           initial={{ opacity: 0, y: 10 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.4 }}
-          className={cn(mode.radius, "border-border bg-background border p-4")}
+          className={cn(mode.radius, 'border-border bg-background border p-4')}
         >
-          <div className={cn(mode.font, "mb-3 flex justify-between text-xs")}>
+          <div className={cn(mode.font, 'mb-3 flex justify-between text-xs')}>
             <span className="text-muted-foreground">WEEKLY_USAGE</span>
             <span>
               <CreditCounter value={153} delay={0.8} /> used
@@ -127,7 +140,10 @@ export function CreditsPreview() {
             {usageBars.map((bar, i) => (
               <span
                 key={i}
-                className={cn(mode.font, "text-muted-foreground flex-1 text-center text-[10px]")}
+                className={cn(
+                  mode.font,
+                  'text-muted-foreground flex-1 text-center text-[10px]'
+                )}
               >
                 {bar.day}
               </span>
@@ -141,11 +157,11 @@ export function CreditsPreview() {
             transition={{ delay: 1.2 }}
             className="border-border mt-3 border-t pt-3"
           >
-            <div className={cn(mode.font, "flex justify-between text-xs")}>
+            <div className={cn(mode.font, 'flex justify-between text-xs')}>
               <span className="text-muted-foreground">Form generation</span>
               <span className="text-destructive">-10</span>
             </div>
-            <div className={cn(mode.font, "flex justify-between text-xs")}>
+            <div className={cn(mode.font, 'flex justify-between text-xs')}>
               <span className="text-muted-foreground">Code generation</span>
               <span className="text-destructive">-20</span>
             </div>

@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
 /**
  * Usage Chart Component
  * Displays credit usage over time as a bar chart
  */
 
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 interface UsageData {
   date: string;
@@ -25,7 +25,7 @@ export function UsageChart({ data, className }: UsageChartProps) {
   const recentData = data.slice(-14);
 
   return (
-    <div className={cn("space-y-4", mode.font, className)}>
+    <div className={cn('space-y-4', mode.font, className)}>
       <div className="flex h-32 items-end gap-1">
         {recentData.map((day) => {
           const height = (day.credits / maxCredits) * 100;
@@ -33,16 +33,21 @@ export function UsageChart({ data, className }: UsageChartProps) {
           const dayLabel = date.getDate();
 
           return (
-            <div key={day.date} className="group relative flex flex-1 flex-col items-center">
+            <div
+              key={day.date}
+              className="group relative flex flex-1 flex-col items-center"
+            >
               <div
                 className={cn(
-                  "min-h-[2px] w-full transition-all",
+                  'min-h-[2px] w-full transition-all',
                   mode.radius,
-                  day.credits > 0 ? "bg-primary" : "bg-muted"
+                  day.credits > 0 ? 'bg-primary' : 'bg-muted'
                 )}
                 style={{ height: `${Math.max(height, 2)}%` }}
               />
-              <span className="text-muted-foreground mt-1 text-[10px]">{dayLabel}</span>
+              <span className="text-muted-foreground mt-1 text-[10px]">
+                {dayLabel}
+              </span>
 
               {/* Tooltip on hover */}
               <div className="bg-popover border-border absolute -top-8 left-1/2 hidden -translate-x-1/2 border px-2 py-1 text-xs group-hover:block">

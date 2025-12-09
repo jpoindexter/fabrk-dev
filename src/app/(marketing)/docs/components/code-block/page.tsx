@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { CodeBlock } from "@/components/ui/code-block";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { CodeBlock } from '@/components/ui/code-block';
 
 export default function CodeBlockPage() {
   const typescriptCode = `function greet(name: string): string {
@@ -92,8 +92,8 @@ export function TodoList() {
       }}
       variants={[
         {
-          title: "JavaScript",
-          description: "JavaScript syntax highlighting",
+          title: 'JavaScript',
+          description: 'JavaScript syntax highlighting',
           preview: <CodeBlock code={javascriptCode} language="javascript" />,
           code: `<CodeBlock
   code={jsCode}
@@ -101,8 +101,8 @@ export function TodoList() {
 />`,
         },
         {
-          title: "Python",
-          description: "Python syntax highlighting",
+          title: 'Python',
+          description: 'Python syntax highlighting',
           preview: <CodeBlock code={pythonCode} language="python" />,
           code: `<CodeBlock
   code={pythonCode}
@@ -110,8 +110,8 @@ export function TodoList() {
 />`,
         },
         {
-          title: "Bash/Shell",
-          description: "Shell commands with $ prompt",
+          title: 'Bash/Shell',
+          description: 'Shell commands with $ prompt',
           preview: <CodeBlock code={bashCode} language="bash" />,
           code: `<CodeBlock
   code={bashCode}
@@ -119,8 +119,8 @@ export function TodoList() {
 />`,
         },
         {
-          title: "JSON",
-          description: "JSON syntax highlighting",
+          title: 'JSON',
+          description: 'JSON syntax highlighting',
           preview: <CodeBlock code={jsonCode} language="json" />,
           code: `<CodeBlock
   code={jsonCode}
@@ -128,8 +128,8 @@ export function TodoList() {
 />`,
         },
         {
-          title: "CSS",
-          description: "CSS syntax highlighting",
+          title: 'CSS',
+          description: 'CSS syntax highlighting',
           preview: <CodeBlock code={cssCode} language="css" />,
           code: `<CodeBlock
   code={cssCode}
@@ -137,11 +137,11 @@ export function TodoList() {
 />`,
         },
         {
-          title: "With Copy Button",
-          description: "Hover to reveal copy button in top-right corner",
+          title: 'With Copy Button',
+          description: 'Hover to reveal copy button in top-right corner',
           preview: (
             <div className="space-y-2">
-              <span className="font-mono text-xs text-muted-foreground">
+              <span className="text-muted-foreground font-mono text-xs">
                 [HOVER]: Hover over code to see copy button
               </span>
               <CodeBlock code={typescriptCode} language="typescript" />
@@ -151,8 +151,8 @@ export function TodoList() {
 <CodeBlock code={code} language="typescript" />`,
         },
         {
-          title: "Long Code Scroll",
-          description: "Scrollable for long code blocks",
+          title: 'Long Code Scroll',
+          description: 'Scrollable for long code blocks',
           preview: <CodeBlock code={longCode} language="typescript" />,
           code: `// Automatically scrollable for overflow
 <CodeBlock code={longCode} language="typescript" />`,
@@ -160,29 +160,30 @@ export function TodoList() {
       ]}
       props={[
         {
-          name: "code",
-          type: "string",
-          default: "-",
-          description: "The code string to display",
+          name: 'code',
+          type: 'string',
+          default: '-',
+          description: 'The code string to display',
         },
         {
-          name: "language",
-          type: "string",
+          name: 'language',
+          type: 'string',
           default: '"typescript"',
-          description: "Programming language for syntax highlighting (typescript, javascript, python, bash, json, css, etc.)",
+          description:
+            'Programming language for syntax highlighting (typescript, javascript, python, bash, json, css, etc.)',
         },
       ]}
       accessibility={[
-        "Uses semantic pre and code elements",
-        "Copy button has descriptive aria-label",
-        "Copy success state announced via aria-label change",
+        'Uses semantic pre and code elements',
+        'Copy button has descriptive aria-label',
+        'Copy success state announced via aria-label change',
         "Code block has role='region' with aria-label",
-        "Keyboard focusable with tabIndex for screen reader access",
-        "Shell commands ($) use non-selectable prompts for better copying",
-        "Copy button hidden from screen readers with aria-hidden icons",
+        'Keyboard focusable with tabIndex for screen reader access',
+        'Shell commands ($) use non-selectable prompts for better copying',
+        'Copy button hidden from screen readers with aria-hidden icons',
       ]}
-      previous={{ title: "Checkbox", href: "/docs/components/checkbox" }}
-      next={{ title: "Collapsible", href: "/docs/components/collapsible" }}
+      previous={{ title: 'Checkbox', href: '/docs/components/checkbox' }}
+      next={{ title: 'Collapsible', href: '/docs/components/collapsible' }}
     />
   );
 }

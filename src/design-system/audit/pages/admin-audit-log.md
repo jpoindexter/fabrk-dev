@@ -109,7 +109,7 @@ prisma.auditLog.findMany({
   include: {
     user: { select: { id, email, name } },
   },
-  orderBy: { createdAt: "desc" },
+  orderBy: { createdAt: 'desc' },
   take: 100,
 });
 ```

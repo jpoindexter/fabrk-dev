@@ -3,12 +3,19 @@
  * Displays dashboard statistics in card format
  */
 
-"use client";
+'use client';
 
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
-import { DollarSign, Users, Upload, TrendingUp, ArrowUpRight, ArrowDownRight } from "lucide-react";
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
+import {
+  DollarSign,
+  Users,
+  Upload,
+  TrendingUp,
+  ArrowUpRight,
+  ArrowDownRight,
+} from 'lucide-react';
 
 interface DashboardStats {
   totalRevenue: number;
@@ -35,13 +42,26 @@ interface StatCardProps {
   customContent?: React.ReactNode;
 }
 
-function StatCard({ title, icon: Icon, value, change, loading, customContent }: StatCardProps) {
-  const terminalTitle = title.toUpperCase().replace(/ /g, "_");
+function StatCard({
+  title,
+  icon: Icon,
+  value,
+  change,
+  loading,
+  customContent,
+}: StatCardProps) {
+  const terminalTitle = title.toUpperCase().replace(/ /g, '_');
   return (
     <Card>
-      <CardHeader code="0x00" title={terminalTitle} icon={<Icon className="h-4 w-4" />} />
+      <CardHeader
+        code="0x00"
+        title={terminalTitle}
+        icon={<Icon className="h-4 w-4" />}
+      />
       <CardContent>
-        <div className="font-mono text-2xl font-semibold">{loading ? "..." : value}</div>
+        <div className="font-mono text-2xl font-semibold">
+          {loading ? '...' : value}
+        </div>
         {!loading && change !== undefined && (
           <p className="text-muted-foreground flex items-center gap-1 font-mono text-xs">
             {change >= 0 ? (
@@ -78,7 +98,7 @@ export function StatsCards({ stats, loading }: StatsCardsProps) {
       <StatCard
         title="Active Users"
         icon={Users}
-        value={stats?.activeUsers.toLocaleString() || ""}
+        value={stats?.activeUsers.toLocaleString() || ''}
         change={stats?.usersChange}
         loading={loading}
       />
@@ -86,7 +106,7 @@ export function StatsCards({ stats, loading }: StatsCardsProps) {
       <StatCard
         title="Total Uploads"
         icon={Upload}
-        value={stats?.totalUploads.toLocaleString() || ""}
+        value={stats?.totalUploads.toLocaleString() || ''}
         change={stats?.uploadsChange}
         loading={loading}
       />
@@ -99,10 +119,17 @@ export function StatsCards({ stats, loading }: StatsCardsProps) {
         customContent={
           stats && (
             <div className="mt-2">
-              <div className={cn("bg-secondary h-2 w-full overflow-hidden", mode.radius)}>
+              <div
+                className={cn(
+                  'bg-secondary h-2 w-full overflow-hidden',
+                  mode.radius
+                )}
+              >
                 <div
                   className="bg-primary h-full transition-all duration-300"
-                  data-storage-percent={(stats.storageUsed / stats.storageLimit) * 100}
+                  data-storage-percent={
+                    (stats.storageUsed / stats.storageLimit) * 100
+                  }
                   style={{
                     width: `${(stats.storageUsed / stats.storageLimit) * 100}%`,
                   }}

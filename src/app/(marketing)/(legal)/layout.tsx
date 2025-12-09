@@ -1,7 +1,11 @@
-import { SiteNavigation } from "@/components/navigation";
-import { Footer } from "@/components/shared/footer";
+import { SiteNavigation } from '@/components/navigation';
+import { Footer } from '@/components/shared/footer';
 
-export default function LegalLayout({ children }: { children: React.ReactNode }) {
+export default function LegalLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <div className="bg-background min-h-screen">
       <SiteNavigation />

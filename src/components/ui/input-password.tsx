@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 /**
  * ✅ FABRK COMPONENT
@@ -10,14 +10,16 @@
  * ```
  */
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
-import { Eye, EyeOff } from "lucide-react";
-import * as React from "react";
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { cn } from '@/lib/utils';
+import { Eye, EyeOff } from 'lucide-react';
+import * as React from 'react';
 
-export interface InputPasswordProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> {
+export interface InputPasswordProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  'type'
+> {
   showToggle?: boolean;
 }
 
@@ -29,8 +31,8 @@ const InputPassword = React.forwardRef<HTMLInputElement, InputPasswordProps>(
       <div data-slot="input-password" className="relative">
         <Input
           ref={ref}
-          type={showPassword ? "text" : "password"}
-          className={cn(showToggle && "pr-10", className)}
+          type={showPassword ? 'text' : 'password'}
+          className={cn(showToggle && 'pr-10', className)}
           disabled={disabled}
           {...props}
         />
@@ -39,11 +41,13 @@ const InputPassword = React.forwardRef<HTMLInputElement, InputPasswordProps>(
             type="button"
             variant="ghost"
             size="sm"
-            className={cn("absolute top-0 right-0 h-full px-4 py-1 hover:bg-transparent")}
+            className={cn(
+              'absolute top-0 right-0 h-full px-4 py-1 hover:bg-transparent'
+            )}
             onClick={() => setShowPassword(!showPassword)}
             disabled={disabled}
             tabIndex={-1}
-            aria-label={showPassword ? "Hide password" : "Show password"}
+            aria-label={showPassword ? 'Hide password' : 'Show password'}
           >
             {showPassword ? (
               <EyeOff className="text-muted-foreground h-4 w-4" />
@@ -56,6 +60,6 @@ const InputPassword = React.forwardRef<HTMLInputElement, InputPasswordProps>(
     );
   }
 );
-InputPassword.displayName = "InputPassword";
+InputPassword.displayName = 'InputPassword';
 
 export { InputPassword };

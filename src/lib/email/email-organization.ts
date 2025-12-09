@@ -3,8 +3,8 @@
  * Team invitation emails
  */
 
-import { logger } from "@/lib/logger";
-import { resend, FROM_EMAIL, APP_NAME, APP_URL } from "./email-core";
+import { logger } from '@/lib/logger';
+import { resend, FROM_EMAIL, APP_NAME, APP_URL } from './email-core';
 
 /**
  * Send organization invitation email
@@ -23,7 +23,12 @@ export async function sendOrganizationInvite(
   }
 ) {
   if (!resend) {
-    logger.debug("📧 [DEV] Organization invite to:", to, "- Org:", params.organizationName);
+    logger.debug(
+      '📧 [DEV] Organization invite to:',
+      to,
+      '- Org:',
+      params.organizationName
+    );
     return { success: true };
   }
 
@@ -59,10 +64,10 @@ export async function sendOrganizationInvite(
             <div class="info-box">
               <strong>Your Role:</strong> <span class="badge">${params.role}</span>
               <p style="margin: 8px 0 0 0; color: #6b7280; font-size: 14px;">
-                ${params.role === "OWNER" ? "Full control over the organization" : ""}
-                ${params.role === "ADMIN" ? "Manage members, settings, and billing" : ""}
-                ${params.role === "MEMBER" ? "Standard access to organization resources" : ""}
-                ${params.role === "GUEST" ? "Limited read-only access" : ""}
+                ${params.role === 'OWNER' ? 'Full control over the organization' : ''}
+                ${params.role === 'ADMIN' ? 'Manage members, settings, and billing' : ''}
+                ${params.role === 'MEMBER' ? 'Standard access to organization resources' : ''}
+                ${params.role === 'GUEST' ? 'Limited read-only access' : ''}
               </p>
             </div>
 
@@ -100,7 +105,7 @@ export async function sendOrganizationInvite(
     });
     return { success: true };
   } catch (error: unknown) {
-    logger.error("Failed to send organization invite:", error);
+    logger.error('Failed to send organization invite:', error);
     return { success: false, error };
   }
 }

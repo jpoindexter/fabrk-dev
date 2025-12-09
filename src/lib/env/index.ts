@@ -13,11 +13,15 @@
  * In production, it throws for any critical configuration issues.
  */
 
-import { validateEnvOrThrow, validateEnvWithWarnings, getFeatureSummary } from "./validation";
-import { logger } from "@/lib/logger";
+import {
+  validateEnvOrThrow,
+  validateEnvWithWarnings,
+  getFeatureSummary,
+} from './validation';
+import { logger } from '@/lib/logger';
 
 // Run validation based on environment
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === 'production') {
   // In production, fail fast if critical env vars are missing
   validateEnvOrThrow();
 } else {
@@ -25,17 +29,17 @@ if (process.env.NODE_ENV === "production") {
   validateEnvWithWarnings();
 
   // Log feature summary in development
-  if (process.env.NODE_ENV === "development") {
+  if (process.env.NODE_ENV === 'development') {
     const summary = getFeatureSummary();
     if (summary.enabled.length > 0) {
-      logger.debug("\n✅ Optional features enabled:");
+      logger.debug('\n✅ Optional features enabled:');
       summary.enabled.forEach((feature) => logger.debug(`   - ${feature}`));
     }
     if (summary.disabled.length > 0) {
-      logger.debug("\n⚪ Optional features disabled:");
+      logger.debug('\n⚪ Optional features disabled:');
       summary.disabled.forEach((feature) => logger.debug(`   - ${feature}`));
     }
-    logger.debug("");
+    logger.debug('');
   }
 }
 
@@ -45,15 +49,17 @@ if (process.env.NODE_ENV === "production") {
  */
 export const env = {
   // Node Environment
-  NODE_ENV: process.env.NODE_ENV as "development" | "production" | "test",
+  NODE_ENV: process.env.NODE_ENV as 'development' | 'production' | 'test',
 
   // Database
   DATABASE_URL: process.env.DATABASE_URL!,
   DATABASE_URL_DIRECT: process.env.DATABASE_URL_DIRECT,
 
   // Application URLs
-  NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
-  NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api",
+  NEXT_PUBLIC_APP_URL:
+    process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
+  NEXT_PUBLIC_API_URL:
+    process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api',
 
   // NextAuth
   NEXTAUTH_URL: process.env.NEXTAUTH_URL!,
@@ -66,16 +72,20 @@ export const env = {
   // Stripe
   STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY!,
   STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET!,
-  NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!,
+  NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:
+    process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!,
 
   // Stripe Pricing Tiers
-  NEXT_PUBLIC_STRIPE_PRICE_STARTER: process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER,
-  NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL: process.env.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL,
-  NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE: process.env.NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE,
+  NEXT_PUBLIC_STRIPE_PRICE_STARTER:
+    process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER,
+  NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL:
+    process.env.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL,
+  NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE:
+    process.env.NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE,
 
   // Email
   RESEND_API_KEY: process.env.RESEND_API_KEY!,
-  EMAIL_FROM: process.env.EMAIL_FROM || "support@fabrek.dev",
+  EMAIL_FROM: process.env.EMAIL_FROM || 'support@fabrek.dev',
   EMAIL_REPLY_TO: process.env.EMAIL_REPLY_TO,
 
   // Cron Jobs
@@ -89,7 +99,8 @@ export const env = {
 
   // Algolia Search (Optional)
   NEXT_PUBLIC_ALGOLIA_APP_ID: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
-  NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY: process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY,
+  NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY:
+    process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY,
   ALGOLIA_ADMIN_API_KEY: process.env.ALGOLIA_ADMIN_API_KEY,
 
   // Sanity CMS (Optional)
@@ -109,7 +120,7 @@ export const env = {
   SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN,
 
   // Application Version
-  NEXT_PUBLIC_APP_VERSION: process.env.NEXT_PUBLIC_APP_VERSION || "1.0.0",
+  NEXT_PUBLIC_APP_VERSION: process.env.NEXT_PUBLIC_APP_VERSION || '1.0.0',
 
   // Redis Cache (Upstash) - Optional
   UPSTASH_REDIS_REST_URL: process.env.UPSTASH_REDIS_REST_URL,
@@ -120,19 +131,20 @@ export const env = {
   S3_ACCESS_KEY_ID: process.env.S3_ACCESS_KEY_ID,
   S3_SECRET_ACCESS_KEY: process.env.S3_SECRET_ACCESS_KEY,
   S3_BUCKET_NAME: process.env.S3_BUCKET_NAME,
-  AWS_REGION: process.env.AWS_REGION || "auto",
+  AWS_REGION: process.env.AWS_REGION || 'auto',
 
   // AI APIs (Optional)
   OPENAI_API_KEY: process.env.OPENAI_API_KEY,
   ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY,
 
   // Background Jobs
-  JOB_WORKER_CONCURRENCY: process.env.JOB_WORKER_CONCURRENCY || "5",
-  JOB_WORKER_INTERVAL: process.env.JOB_WORKER_INTERVAL || "1000",
+  JOB_WORKER_CONCURRENCY: process.env.JOB_WORKER_CONCURRENCY || '5',
+  JOB_WORKER_INTERVAL: process.env.JOB_WORKER_INTERVAL || '1000',
 
   // PostHog Analytics (Optional)
   NEXT_PUBLIC_POSTHOG_KEY: process.env.NEXT_PUBLIC_POSTHOG_KEY,
-  NEXT_PUBLIC_POSTHOG_HOST: process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://app.posthog.com",
+  NEXT_PUBLIC_POSTHOG_HOST:
+    process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://app.posthog.com',
 } as const;
 
 /**
@@ -162,4 +174,4 @@ export {
   validateEnvOrThrow,
   validateEnvWithWarnings,
   getFeatureSummary,
-} from "./validation";
+} from './validation';

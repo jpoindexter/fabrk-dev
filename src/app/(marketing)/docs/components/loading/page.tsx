@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
+import { ComponentShowcaseTemplate } from '@/components/docs';
 import {
   Spinner,
   Skeleton,
   LoadingContainer,
-  LoadingButton
-} from "@/components/ui/loading";
-import { useState } from "react";
+  LoadingButton,
+} from '@/components/ui/loading';
+import { useState } from 'react';
 
 export default function LoadingPage() {
   const [loading, setLoading] = useState(false);
@@ -30,8 +30,9 @@ export default function LoadingPage() {
       }}
       variants={[
         {
-          title: "Spinner Sizes",
-          description: "Spinner component in different sizes: small, medium, and large.",
+          title: 'Spinner Sizes',
+          description:
+            'Spinner component in different sizes: small, medium, and large.',
           preview: (
             <div className="flex items-center gap-4">
               <Spinner size="sm" />
@@ -46,10 +47,10 @@ export default function LoadingPage() {
 </div>`,
         },
         {
-          title: "Skeleton Text",
-          description: "Text skeleton loader for placeholder content.",
+          title: 'Skeleton Text',
+          description: 'Text skeleton loader for placeholder content.',
           preview: (
-            <div className="space-y-2 w-full">
+            <div className="w-full space-y-2">
               <Skeleton variant="text" />
               <Skeleton variant="text" className="w-3/4" />
               <Skeleton variant="text" className="w-1/2" />
@@ -62,8 +63,8 @@ export default function LoadingPage() {
 </div>`,
         },
         {
-          title: "Skeleton Circular",
-          description: "Circular skeleton for avatar placeholders.",
+          title: 'Skeleton Circular',
+          description: 'Circular skeleton for avatar placeholders.',
           preview: (
             <div className="flex items-center gap-4">
               <Skeleton variant="circular" className="h-12 w-12" />
@@ -78,10 +79,10 @@ export default function LoadingPage() {
 </div>`,
         },
         {
-          title: "Skeleton Rectangular",
-          description: "Rectangular skeleton for card and image placeholders.",
+          title: 'Skeleton Rectangular',
+          description: 'Rectangular skeleton for card and image placeholders.',
           preview: (
-            <div className="space-y-4 w-full">
+            <div className="w-full space-y-4">
               <Skeleton variant="rectangular" className="h-32 w-full" />
               <Skeleton variant="rectangular" className="h-48 w-full" />
             </div>
@@ -92,20 +93,17 @@ export default function LoadingPage() {
 </div>`,
         },
         {
-          title: "Loading Container",
-          description: "Full-page loading state with spinner and optional message.",
-          preview: (
-            <LoadingContainer>
-              Loading your content...
-            </LoadingContainer>
-          ),
+          title: 'Loading Container',
+          description:
+            'Full-page loading state with spinner and optional message.',
+          preview: <LoadingContainer>Loading your content...</LoadingContainer>,
           code: `<LoadingContainer>
   Loading your content...
 </LoadingContainer>`,
         },
         {
-          title: "Loading Button",
-          description: "Button with integrated loading state.",
+          title: 'Loading Button',
+          description: 'Button with integrated loading state.',
           preview: (
             <LoadingButton
               loading={loading}
@@ -133,43 +131,46 @@ const handleClick = () => {
       ]}
       props={[
         {
-          name: "size",
+          name: 'size',
           type: '"sm" | "md" | "lg"',
           default: '"md"',
-          description: "The size of the spinner (Spinner component only).",
+          description: 'The size of the spinner (Spinner component only).',
         },
         {
-          name: "variant",
+          name: 'variant',
           type: '"text" | "circular" | "rectangular"',
           default: '"text"',
-          description: "The shape variant of the skeleton (Skeleton component only).",
+          description:
+            'The shape variant of the skeleton (Skeleton component only).',
         },
         {
-          name: "loading",
-          type: "boolean",
-          default: "false",
-          description: "Whether the button is in loading state (LoadingButton only).",
+          name: 'loading',
+          type: 'boolean',
+          default: 'false',
+          description:
+            'Whether the button is in loading state (LoadingButton only).',
         },
         {
-          name: "loadingText",
-          type: "string",
-          description: "Text to display when button is loading (LoadingButton only).",
+          name: 'loadingText',
+          type: 'string',
+          description:
+            'Text to display when button is loading (LoadingButton only).',
         },
         {
-          name: "className",
-          type: "string",
-          description: "Additional CSS classes to apply to the component.",
+          name: 'className',
+          type: 'string',
+          description: 'Additional CSS classes to apply to the component.',
         },
       ]}
       accessibility={[
         "Spinner includes role='status' and aria-label='Loading'",
         "Skeleton uses aria-hidden='true' to avoid screen reader noise",
-        "LoadingButton disables interaction during loading state",
-        "Loading indicator uses Loader2 icon with proper animation",
-        "Screen reader-only text announces loading state changes",
+        'LoadingButton disables interaction during loading state',
+        'Loading indicator uses Loader2 icon with proper animation',
+        'Screen reader-only text announces loading state changes',
       ]}
-      previous={{ title: "Progress", href: "/docs/components/progress" }}
-      next={{ title: "Badge", href: "/docs/components/badge" }}
+      previous={{ title: 'Progress', href: '/docs/components/progress' }}
+      next={{ title: 'Badge', href: '/docs/components/badge' }}
     />
   );
 }

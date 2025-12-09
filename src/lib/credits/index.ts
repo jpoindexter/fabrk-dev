@@ -3,16 +3,22 @@
  * AI usage tracking and billing infrastructure
  */
 
-export { CreditTransactionType } from "@/generated/prisma/client";
+export { CreditTransactionType } from '@/generated/prisma/client';
 
-export { getOrCreateBalance, hasCredits, getBalance, deductCredits, addCredits } from "./balance";
+export {
+  getOrCreateBalance,
+  hasCredits,
+  getBalance,
+  deductCredits,
+  addCredits,
+} from './balance';
 
 export {
   getTransactionHistory,
   getUsageStats,
   getTotalUsage,
   type TransactionFilters,
-} from "./transactions";
+} from './transactions';
 
 export {
   CREDIT_COSTS,
@@ -21,6 +27,10 @@ export {
   getTierAllowance,
   type CreditCostKey,
   type SubscriptionTier,
-} from "./pricing";
+} from './pricing';
 
-export { refillCreditsIfEligible, updateTierAllowance, isEligibleForRefill } from "./refill";
+export {
+  refillCreditsIfEligible,
+  updateTierAllowance,
+  isEligibleForRefill,
+} from './refill';

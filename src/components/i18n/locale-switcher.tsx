@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
 /**
  * Locale Switcher
  * Dropdown to change the application language
  */
 
-import { useLocale } from "next-intl";
-import { useRouter, usePathname } from "next/navigation";
+import { useLocale } from 'next-intl';
+import { useRouter, usePathname } from 'next/navigation';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import { Globe } from "lucide-react";
-import { locales, localeNames, localeFlags, type Locale } from "@/i18n/config";
+} from '@/components/ui/dropdown-menu';
+import { Button } from '@/components/ui/button';
+import { Globe } from 'lucide-react';
+import { locales, localeNames, localeFlags, type Locale } from '@/i18n/config';
 
 export function LocaleSwitcher() {
   const locale = useLocale() as Locale;
@@ -24,7 +24,7 @@ export function LocaleSwitcher() {
 
   function handleLocaleChange(newLocale: Locale) {
     // Replace the locale segment in the path
-    const segments = pathname.split("/");
+    const segments = pathname.split('/');
 
     // Check if first segment is a locale
     if (locales.includes(segments[1] as Locale)) {
@@ -34,7 +34,7 @@ export function LocaleSwitcher() {
       segments.splice(1, 0, newLocale);
     }
 
-    const newPath = segments.join("/") || "/";
+    const newPath = segments.join('/') || '/';
     router.push(newPath);
   }
 
@@ -58,7 +58,7 @@ export function LocaleSwitcher() {
             key={loc}
             onClick={() => handleLocaleChange(loc)}
             className={`cursor-pointer font-mono text-xs ${
-              loc === locale ? "bg-primary/10 text-primary" : ""
+              loc === locale ? 'bg-primary/10 text-primary' : ''
             }`}
           >
             <span className="mr-2">{localeFlags[loc]}</span>

@@ -3,39 +3,39 @@
  * Quick reference guide for MDX components in blog posts
  */
 
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { HelpCircle, Copy, Check } from "lucide-react";
+} from '@/components/ui/dialog';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { HelpCircle, Copy, Check } from 'lucide-react';
 
 const examples = {
   callout: {
-    title: "Callout",
-    description: "Highlight important information",
+    title: 'Callout',
+    description: 'Highlight important information',
     code: `<Callout type="info" title="Pro Tip">
   This is an informational callout. Use "warning", "error", or "success" for different styles.
 </Callout>`,
   },
   terminal: {
-    title: "Terminal",
-    description: "Display terminal commands",
+    title: 'Terminal',
+    description: 'Display terminal commands',
     code: `<Terminal
   command="npm install next-mdx-remote"
   output="added 42 packages in 2s"
 />`,
   },
   steps: {
-    title: "Steps",
-    description: "Step-by-step instructions",
+    title: 'Steps',
+    description: 'Step-by-step instructions',
     code: `<Steps>
   <Step number={1} title="Install Dependencies">
     Run npm install to get started.
@@ -49,13 +49,13 @@ const examples = {
 </Steps>`,
   },
   youtube: {
-    title: "YouTube",
-    description: "Embed YouTube videos",
+    title: 'YouTube',
+    description: 'Embed YouTube videos',
     code: `<YouTube id="dQw4w9WgXcQ" title="Tutorial Video" />`,
   },
   cards: {
-    title: "Card Grid",
-    description: "Display features or options",
+    title: 'Card Grid',
+    description: 'Display features or options',
     code: `<CardGrid>
   <Card title="Feature One">
     Description of the first feature.
@@ -69,8 +69,8 @@ const examples = {
 </CardGrid>`,
   },
   table: {
-    title: "Comparison Table",
-    description: "Compare features or options",
+    title: 'Comparison Table',
+    description: 'Compare features or options',
     code: `<ComparisonTable
   headers={["Feature", "Free", "Pro"]}
   rows={[
@@ -81,13 +81,13 @@ const examples = {
 />`,
   },
   keyboard: {
-    title: "Keyboard Shortcuts",
-    description: "Display keyboard shortcuts",
+    title: 'Keyboard Shortcuts',
+    description: 'Display keyboard shortcuts',
     code: `Press <Kbd>Ctrl</Kbd> + <Kbd>S</Kbd> to save.`,
   },
   codeblock: {
-    title: "Code Block",
-    description: "Syntax-highlighted code",
+    title: 'Code Block',
+    description: 'Syntax-highlighted code',
     code: `<CodeBlock language="typescript" filename="src/lib/example.ts">
 {\`function greet(name: string) {
   return \\\`Hello, \\\${name}!\\\`;
@@ -106,8 +106,17 @@ function CopyButton({ text }: { text: string }) {
   };
 
   return (
-    <Button variant="ghost" size="sm" onClick={handleCopy} className="h-8 w-8 p-0">
-      {copied ? <Check className="text-success h-4 w-4" /> : <Copy className="h-4 w-4" />}
+    <Button
+      variant="ghost"
+      size="sm"
+      onClick={handleCopy}
+      className="h-8 w-8 p-0"
+    >
+      {copied ? (
+        <Check className="text-success h-4 w-4" />
+      ) : (
+        <Copy className="h-4 w-4" />
+      )}
     </Button>
   );
 }
@@ -128,7 +137,8 @@ export function MdxReference() {
 
         <div className="space-y-4">
           <p className="text-muted-foreground font-mono text-sm">
-            Use these components in your blog content to create rich, interactive posts.
+            Use these components in your blog content to create rich,
+            interactive posts.
           </p>
 
           <Tabs defaultValue="callout" className="w-full">
@@ -199,7 +209,9 @@ export function MdxReference() {
 
           {/* Basic Markdown */}
           <div className="border-border border-t pt-4">
-            <h3 className="mb-3 font-mono text-sm font-semibold">BASIC_MARKDOWN</h3>
+            <h3 className="mb-3 font-mono text-sm font-semibold">
+              BASIC_MARKDOWN
+            </h3>
             <div className="text-muted-foreground grid gap-2 font-mono text-xs">
               <div className="border-border flex justify-between border-b pb-1">
                 <span>**bold**</span>

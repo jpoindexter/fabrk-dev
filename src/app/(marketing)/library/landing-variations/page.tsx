@@ -4,22 +4,22 @@
  * Production-ready
  */
 
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
+import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
 import {
   Card,
   CardHeader,
   CardContent,
   TemplatePageHeader,
   FeaturesCard,
-} from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { CodeBlock } from "@/components/ui/code-block";
+} from '@/components/ui/card';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { CodeBlock } from '@/components/ui/code-block';
 import {
   ArrowRight,
   Play,
@@ -30,25 +30,25 @@ import {
   Check,
   Star,
   ChevronRight,
-} from "lucide-react";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+} from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 const heroVariations = [
   {
-    id: "centered",
-    name: "Centered Hero",
-    description: "Classic centered layout with headline, subtext, and CTAs",
+    id: 'centered',
+    name: 'Centered Hero',
+    description: 'Classic centered layout with headline, subtext, and CTAs',
   },
   {
-    id: "split",
-    name: "Split Hero",
-    description: "Two-column layout with text and visual side by side",
+    id: 'split',
+    name: 'Split Hero',
+    description: 'Two-column layout with text and visual side by side',
   },
   {
-    id: "minimal",
-    name: "Minimal Hero",
-    description: "Clean, focused hero with single CTA and trust badges",
+    id: 'minimal',
+    name: 'Minimal Hero',
+    description: 'Clean, focused hero with single CTA and trust badges',
   },
 ];
 
@@ -213,11 +213,11 @@ export default function LandingPage() {
 }`;
 
 function LandingVariationsPreview() {
-  const [activeVariation, setActiveVariation] = useState("centered");
+  const [activeVariation, setActiveVariation] = useState('centered');
 
   const tabs = heroVariations.map((v) => ({
     id: v.id,
-    label: v.name.toUpperCase().replace(" ", "_"),
+    label: v.name.toUpperCase().replace(' ', '_'),
   }));
 
   return (
@@ -235,37 +235,54 @@ function LandingVariationsPreview() {
           <StyledTabsContent value="centered">
             <div className="border-border bg-card border">
               <div className="border-border border-b px-4 py-2">
-                <span className={cn(mode.font, "text-muted-foreground text-xs")}>
+                <span
+                  className={cn(mode.font, 'text-muted-foreground text-xs')}
+                >
                   [ [0x01] HERO_CENTERED ]
                 </span>
               </div>
               <div className="p-6">
                 <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
                   <div className="mx-auto max-w-3xl space-y-6 text-center">
-                    <Badge variant="secondary" className={cn(mode.radius, mode.font, "text-xs")}>
+                    <Badge
+                      variant="secondary"
+                      className={cn(mode.radius, mode.font, 'text-xs')}
+                    >
                       <Sparkles className="mr-1 h-3 w-3" />
                       NEW: VERSION 2.0 RELEASED
                     </Badge>
 
                     <h2
-                      className={cn(mode.font, "text-4xl font-semibold tracking-tight md:text-5xl")}
+                      className={cn(
+                        mode.font,
+                        'text-4xl font-semibold tracking-tight md:text-5xl'
+                      )}
                     >
                       Build faster with
                       <span className="text-primary"> production-ready </span>
                       components
                     </h2>
 
-                    <p className={cn(mode.font, "text-muted-foreground mx-auto max-w-xl text-sm")}>
-                      Ship your SaaS in days, not months. 234 components, authentication, payments,
-                      and everything you need to launch.
+                    <p
+                      className={cn(
+                        mode.font,
+                        'text-muted-foreground mx-auto max-w-xl text-sm'
+                      )}
+                    >
+                      Ship your SaaS in days, not months. 234 components,
+                      authentication, payments, and everything you need to
+                      launch.
                     </p>
 
                     <div className="flex items-center justify-center gap-4">
-                      <Button className={cn(mode.radius, mode.font, "text-xs")}>
+                      <Button className={cn(mode.radius, mode.font, 'text-xs')}>
                         &gt; GET_STARTED
                         <ArrowRight className="ml-1 h-3 w-3" />
                       </Button>
-                      <Button variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
+                      <Button
+                        variant="outline"
+                        className={cn(mode.radius, mode.font, 'text-xs')}
+                      >
                         <Play className="mr-1 h-3 w-3" />
                         &gt; WATCH_DEMO
                       </Button>
@@ -274,7 +291,7 @@ function LandingVariationsPreview() {
                     <div
                       className={cn(
                         mode.font,
-                        "text-muted-foreground flex items-center justify-center gap-6 pt-4 text-xs"
+                        'text-muted-foreground flex items-center justify-center gap-6 pt-4 text-xs'
                       )}
                     >
                       <div className="flex items-center gap-1">
@@ -300,7 +317,9 @@ function LandingVariationsPreview() {
           <StyledTabsContent value="split">
             <div className="border-border bg-card border">
               <div className="border-border border-b px-4 py-2">
-                <span className={cn(mode.font, "text-muted-foreground text-xs")}>
+                <span
+                  className={cn(mode.font, 'text-muted-foreground text-xs')}
+                >
                   [ [0x02] HERO_SPLIT ]
                 </span>
               </div>
@@ -308,30 +327,47 @@ function LandingVariationsPreview() {
                 <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
                   <div className="grid items-center gap-12 md:grid-cols-2">
                     <div className="space-y-6">
-                      <Badge variant="secondary" className={cn(mode.radius, mode.font, "text-xs")}>
+                      <Badge
+                        variant="secondary"
+                        className={cn(mode.radius, mode.font, 'text-xs')}
+                      >
                         <Zap className="mr-1 h-3 w-3" />
                         TRUSTED BY 10,000+ DEVELOPERS
                       </Badge>
 
-                      <h2 className={cn(mode.font, "text-4xl font-semibold tracking-tight")}>
+                      <h2
+                        className={cn(
+                          mode.font,
+                          'text-4xl font-semibold tracking-tight'
+                        )}
+                      >
                         The fastest way to build your
                         <span className="text-primary"> next SaaS</span>
                       </h2>
 
-                      <p className={cn(mode.font, "text-muted-foreground text-sm")}>
-                        Stop reinventing the wheel. Our boilerplate gives you authentication,
-                        payments, emails, and a beautiful UI out of the box.
+                      <p
+                        className={cn(
+                          mode.font,
+                          'text-muted-foreground text-sm'
+                        )}
+                      >
+                        Stop reinventing the wheel. Our boilerplate gives you
+                        authentication, payments, emails, and a beautiful UI out
+                        of the box.
                       </p>
 
                       <div className="space-y-4">
                         {[
-                          { icon: Shield, text: "Enterprise-grade security" },
-                          { icon: Rocket, text: "Deploy in minutes" },
-                          { icon: Sparkles, text: "AI-powered features" },
+                          { icon: Shield, text: 'Enterprise-grade security' },
+                          { icon: Rocket, text: 'Deploy in minutes' },
+                          { icon: Sparkles, text: 'AI-powered features' },
                         ].map((item, idx) => (
                           <div
                             key={idx}
-                            className={cn(mode.font, "flex items-center gap-2 text-sm")}
+                            className={cn(
+                              mode.font,
+                              'flex items-center gap-2 text-sm'
+                            )}
                           >
                             <item.icon className="text-primary h-4 w-4" />
                             {item.text}
@@ -340,18 +376,28 @@ function LandingVariationsPreview() {
                       </div>
 
                       <div className="flex items-center gap-4">
-                        <Button className={cn(mode.radius, mode.font, "text-xs")}>
+                        <Button
+                          className={cn(mode.radius, mode.font, 'text-xs')}
+                        >
                           &gt; START_BUILDING
                           <ChevronRight className="ml-1 h-3 w-3" />
                         </Button>
-                        <Button variant="link" className={cn(mode.font, "text-primary text-xs")}>
+                        <Button
+                          variant="link"
+                          className={cn(mode.font, 'text-primary text-xs')}
+                        >
                           View documentation →
                         </Button>
                       </div>
                     </div>
 
                     <div className="border-border bg-muted/30 flex aspect-video items-center justify-center border">
-                      <span className={cn(mode.font, "text-muted-foreground text-xs")}>
+                      <span
+                        className={cn(
+                          mode.font,
+                          'text-muted-foreground text-xs'
+                        )}
+                      >
                         [PRODUCT_SCREENSHOT]
                       </span>
                     </div>
@@ -365,7 +411,9 @@ function LandingVariationsPreview() {
           <StyledTabsContent value="minimal">
             <div className="border-border bg-card border">
               <div className="border-border border-b px-4 py-2">
-                <span className={cn(mode.font, "text-muted-foreground text-xs")}>
+                <span
+                  className={cn(mode.font, 'text-muted-foreground text-xs')}
+                >
                   [ [0x03] HERO_MINIMAL ]
                 </span>
               </div>
@@ -376,14 +424,19 @@ function LandingVariationsPreview() {
                       <h2
                         className={cn(
                           mode.font,
-                          "text-4xl font-semibold tracking-tight md:text-5xl"
+                          'text-4xl font-semibold tracking-tight md:text-5xl'
                         )}
                       >
                         Ship your startup
                         <span className="text-primary"> this weekend</span>
                       </h2>
 
-                      <p className={cn(mode.font, "text-muted-foreground text-sm")}>
+                      <p
+                        className={cn(
+                          mode.font,
+                          'text-muted-foreground text-sm'
+                        )}
+                      >
                         Everything you need. Nothing you don&apos;t.
                       </p>
                     </div>
@@ -391,9 +444,15 @@ function LandingVariationsPreview() {
                     <div className="mx-auto flex max-w-md items-center gap-2">
                       <Input
                         placeholder="Enter your email"
-                        className={cn(mode.radius, mode.font, "text-sm")}
+                        className={cn(mode.radius, mode.font, 'text-sm')}
                       />
-                      <Button className={cn(mode.radius, mode.font, "text-xs whitespace-nowrap")}>
+                      <Button
+                        className={cn(
+                          mode.radius,
+                          mode.font,
+                          'text-xs whitespace-nowrap'
+                        )}
+                      >
                         &gt; GET_ACCESS
                       </Button>
                     </div>
@@ -401,9 +460,17 @@ function LandingVariationsPreview() {
                     <div className="flex items-center justify-center gap-8 pt-4">
                       <div className="flex items-center gap-1">
                         {[1, 2, 3, 4, 5].map((i) => (
-                          <Star key={i} className="text-warning fill-warning h-4 w-4" />
+                          <Star
+                            key={i}
+                            className="text-warning fill-warning h-4 w-4"
+                          />
                         ))}
-                        <span className={cn(mode.font, "text-muted-foreground ml-2 text-xs")}>
+                        <span
+                          className={cn(
+                            mode.font,
+                            'text-muted-foreground ml-2 text-xs'
+                          )}
+                        >
                           4.9/5 from 200+ reviews
                         </span>
                       </div>
@@ -412,13 +479,21 @@ function LandingVariationsPreview() {
                     <div
                       className={cn(
                         mode.font,
-                        "text-muted-foreground flex items-center justify-center gap-6 text-xs"
+                        'text-muted-foreground flex items-center justify-center gap-6 text-xs'
                       )}
                     >
-                      <span className="border-border border px-2 py-1">VERCEL</span>
-                      <span className="border-border border px-2 py-1">STRIPE</span>
-                      <span className="border-border border px-2 py-1">PRISMA</span>
-                      <span className="border-border border px-2 py-1">NEXT.JS</span>
+                      <span className="border-border border px-2 py-1">
+                        VERCEL
+                      </span>
+                      <span className="border-border border px-2 py-1">
+                        STRIPE
+                      </span>
+                      <span className="border-border border px-2 py-1">
+                        PRISMA
+                      </span>
+                      <span className="border-border border px-2 py-1">
+                        NEXT.JS
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -450,14 +525,14 @@ export default function LandingVariationsTemplate() {
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
-                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  'h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0',
                   mode.radius
                 )}
               >
                 <TabsTrigger
                   value="preview"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -467,7 +542,7 @@ export default function LandingVariationsTemplate() {
                 <TabsTrigger
                   value="code"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -491,7 +566,11 @@ export default function LandingVariationsTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+                <CodeBlock
+                  code={templateCode}
+                  language="tsx"
+                  maxHeight="600px"
+                />
               </div>
             </Card>
           </TabsContent>
@@ -501,13 +580,15 @@ export default function LandingVariationsTemplate() {
         <Card>
           <CardHeader code="0x02" title="FILE_STRUCTURE" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-1 text-xs")}>
+            <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>
               <div className="space-y-1 pl-4">
                 <div>
                   <span className="text-primary">app/</span>
                   <span className="text-foreground">page.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Copy template here</span>
+                  <span className="text-muted-foreground ml-4">
+                    ← Copy template here
+                  </span>
                 </div>
               </div>
             </div>
@@ -519,12 +600,12 @@ export default function LandingVariationsTemplate() {
           title="TEMPLATE_FEATURES"
           code="0x07"
           features={[
-            "3 hero variations (centered, split, minimal)",
-            "Interactive variation switcher",
-            "Trust badges and social proof",
-            "Email capture form",
-            "Feature highlights",
-            "Responsive layouts",
+            '3 hero variations (centered, split, minimal)',
+            'Interactive variation switcher',
+            'Trust badges and social proof',
+            'Email capture form',
+            'Feature highlights',
+            'Responsive layouts',
           ]}
           note="Mix and match elements from each variation to create your perfect landing page."
         />

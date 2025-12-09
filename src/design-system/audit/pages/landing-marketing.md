@@ -62,10 +62,10 @@
 <MarketingPageTemplate
   hero={<AboutHero />}
   sections={[
-    { id: "mission", component: <MissionSection /> },
-    { id: "values", component: <ValuesSection /> },
-    { id: "story", component: <StorySection /> },
-    { id: "why-choose", component: <WhyChooseSection /> },
+    { id: 'mission', component: <MissionSection /> },
+    { id: 'values', component: <ValuesSection /> },
+    { id: 'story', component: <StorySection /> },
+    { id: 'why-choose', component: <WhyChooseSection /> },
   ]}
   cta={<AboutCTA />}
 />
@@ -153,11 +153,11 @@ All in `/src/app/contact/components/`:
 <MarketingPageTemplate
   hero={<FeaturesHero />}
   sections={[
-    { id: "stats", component: <StatsSection /> },
-    { id: "category-nav", component: <CategoryNavigation /> },
-    { id: "feature-categories", component: <FeatureCategoriesSection /> },
-    { id: "tech-stack", component: <TechStackSection /> },
-    { id: "quality", component: <QualitySection /> },
+    { id: 'stats', component: <StatsSection /> },
+    { id: 'category-nav', component: <CategoryNavigation /> },
+    { id: 'feature-categories', component: <FeatureCategoriesSection /> },
+    { id: 'tech-stack', component: <TechStackSection /> },
+    { id: 'quality', component: <QualitySection /> },
   ]}
   cta={<FeaturesCTA />}
 />
@@ -178,7 +178,11 @@ All in `/src/app/contact/components/`:
   <div className="container mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
     <div className="space-y-24 lg:space-y-32">
       {FEATURE_CATEGORIES.map((category, index) => (
-        <FeatureCategoryCard key={category.id} category={category} index={index} />
+        <FeatureCategoryCard
+          key={category.id}
+          category={category}
+          index={index}
+        />
       ))}
     </div>
   </div>

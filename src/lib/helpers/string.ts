@@ -7,7 +7,11 @@
  * Truncate string with ellipsis
  * @example truncate("Hello World", 8) // "Hello..."
  */
-export function truncate(str: string, maxLength: number, suffix: string = "..."): string {
+export function truncate(
+  str: string,
+  maxLength: number,
+  suffix: string = '...'
+): string {
   if (str.length <= maxLength) return str;
   return str.slice(0, maxLength - suffix.length) + suffix;
 }
@@ -20,9 +24,9 @@ export function slugify(str: string): string {
   return str
     .toLowerCase()
     .trim()
-    .replace(/[^\w\s-]/g, "")
-    .replace(/[\s_-]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 }
 
 /**
@@ -39,9 +43,9 @@ export function capitalize(str: string): string {
  */
 export function capitalizeWords(str: string): string {
   return str
-    .split(" ")
+    .split(' ')
     .map((word) => capitalize(word))
-    .join(" ");
+    .join(' ');
 }
 
 /**
@@ -50,7 +54,7 @@ export function capitalizeWords(str: string): string {
  */
 export function camelToTitle(str: string): string {
   return str
-    .replace(/([A-Z])/g, " $1")
+    .replace(/([A-Z])/g, ' $1')
     .replace(/^./, (str) => str.toUpperCase())
     .trim();
 }
@@ -71,10 +75,10 @@ export function toCamelCase(str: string): string {
  */
 export function toSnakeCase(str: string): string {
   return str
-    .replace(/\W+/g, " ")
+    .replace(/\W+/g, ' ')
     .split(/ |\B(?=[A-Z])/)
     .map((word) => word.toLowerCase())
-    .join("_");
+    .join('_');
 }
 
 /**
@@ -83,9 +87,9 @@ export function toSnakeCase(str: string): string {
  */
 export function getInitials(name: string, maxLength: number = 2): string {
   return name
-    .split(" ")
+    .split(' ')
     .map((word) => word[0])
-    .join("")
+    .join('')
     .toUpperCase()
     .slice(0, maxLength);
 }
@@ -95,8 +99,8 @@ export function getInitials(name: string, maxLength: number = 2): string {
  * @example randomString(16) // "a8f3k2m9p1q4r7s6"
  */
 export function randomString(length: number): string {
-  const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
-  let result = "";
+  const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+  let result = '';
   for (let i = 0; i < length; i++) {
     result += chars.charAt(Math.floor(Math.random() * chars.length));
   }
@@ -108,8 +112,8 @@ export function randomString(length: number): string {
  * @example maskEmail("user@example.com") // "u***@example.com"
  */
 export function maskEmail(email: string): string {
-  const [name, domain] = email.split("@");
-  return `${name[0]}${"*".repeat(name.length - 1)}@${domain}`;
+  const [name, domain] = email.split('@');
+  return `${name[0]}${'*'.repeat(name.length - 1)}@${domain}`;
 }
 
 /**
@@ -117,7 +121,7 @@ export function maskEmail(email: string): string {
  * @example maskCreditCard("1234567890123456") // "************3456"
  */
 export function maskCreditCard(cardNumber: string): string {
-  return "*".repeat(cardNumber.length - 4) + cardNumber.slice(-4);
+  return '*'.repeat(cardNumber.length - 4) + cardNumber.slice(-4);
 }
 
 /**
@@ -132,7 +136,11 @@ export function countWords(str: string): number {
  * @example pluralize(1, "item") // "1 item"
  * @example pluralize(2, "item") // "2 items"
  */
-export function pluralize(count: number, singular: string, plural?: string): string {
+export function pluralize(
+  count: number,
+  singular: string,
+  plural?: string
+): string {
   const word = count === 1 ? singular : plural || `${singular}s`;
   return `${count} ${word}`;
 }

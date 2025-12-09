@@ -1,10 +1,11 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
-import { MousePointer, Link2, Image, Settings } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard } from '@/components/docs';
+import { MousePointer, Link2, Image, Settings } from 'lucide-react';
 
 export const metadata = {
-  title: "Google OAuth Setup - Fabrk Docs",
-  description: "Enable Google Sign-In for your SaaS. Step-by-step guide to configure Google OAuth with NextAuth v5.",
+  title: 'Google OAuth Setup - Fabrk Docs',
+  description:
+    'Enable Google Sign-In for your SaaS. Step-by-step guide to configure Google OAuth with NextAuth v5.',
 };
 
 export default function GoogleOAuthPage() {
@@ -16,32 +17,55 @@ export default function GoogleOAuthPage() {
       description="Enable one-click Google sign-in for your users with OAuth 2.0 integration."
       overview="Fabrk supports Google OAuth through NextAuth v5 with one-click sign-in with Google accounts, automatic account linking for existing email users, profile photo and name sync from Google, conditional enabling based on environment variables, and secure token handling with JWT sessions."
       features={[
-        { icon: MousePointer, title: "Frictionless Onboarding", description: "Reduce signup friction with one-click Google sign-in. Users can start using your app in seconds without creating a password." },
-        { icon: Link2, title: "Account Linking", description: "Allow existing email/password users to link their Google account for faster future logins while keeping their existing data." },
-        { icon: Settings, title: "G Suite Organizations", description: "Perfect for B2B SaaS targeting companies using Google Workspace. Users sign in with their work Google accounts." },
-        { icon: Image, title: "Profile Sync", description: "Automatically sync user profile photo and name from Google, reducing setup steps and improving UX." },
+        {
+          icon: MousePointer,
+          title: 'Frictionless Onboarding',
+          description:
+            'Reduce signup friction with one-click Google sign-in. Users can start using your app in seconds without creating a password.',
+        },
+        {
+          icon: Link2,
+          title: 'Account Linking',
+          description:
+            'Allow existing email/password users to link their Google account for faster future logins while keeping their existing data.',
+        },
+        {
+          icon: Settings,
+          title: 'G Suite Organizations',
+          description:
+            'Perfect for B2B SaaS targeting companies using Google Workspace. Users sign in with their work Google accounts.',
+        },
+        {
+          icon: Image,
+          title: 'Profile Sync',
+          description:
+            'Automatically sync user profile photo and name from Google, reducing setup steps and improving UX.',
+        },
       ]}
       setup={[
         {
-          title: "Create Google Cloud Project",
-          description: "Go to Google Cloud Console, create a new project, navigate to APIs & Services → OAuth consent screen, configure with User type: External, your app name, support email, and authorized domains. Add scopes: email, profile, openid.",
+          title: 'Create Google Cloud Project',
+          description:
+            'Go to Google Cloud Console, create a new project, navigate to APIs & Services → OAuth consent screen, configure with User type: External, your app name, support email, and authorized domains. Add scopes: email, profile, openid.',
         },
         {
-          title: "Create OAuth Credentials",
-          description: "Go to APIs & Services → Credentials, click Create Credentials → OAuth client ID, select Web application. Add Authorized JavaScript origins (http://localhost:3000 for dev, https://yourdomain.com for prod). Add Authorized redirect URIs: http://localhost:3000/api/auth/callback/google and https://yourdomain.com/api/auth/callback/google. Copy the Client ID and Client Secret.",
+          title: 'Create OAuth Credentials',
+          description:
+            'Go to APIs & Services → Credentials, click Create Credentials → OAuth client ID, select Web application. Add Authorized JavaScript origins (http://localhost:3000 for dev, https://yourdomain.com for prod). Add Authorized redirect URIs: http://localhost:3000/api/auth/callback/google and https://yourdomain.com/api/auth/callback/google. Copy the Client ID and Client Secret.',
         },
         {
-          title: "Set Environment Variables",
-          description: "Add to .env.local. Google OAuth is automatically enabled when these variables are set.",
+          title: 'Set Environment Variables',
+          description:
+            'Add to .env.local. Google OAuth is automatically enabled when these variables are set.',
           code: `GOOGLE_CLIENT_ID="xxxxxxxxxxxx.apps.googleusercontent.com"
 GOOGLE_CLIENT_SECRET="GOCSPX-xxxxxxxxxxxx"`,
-          language: "bash",
+          language: 'bash',
         },
       ]}
       usage={[
         {
-          title: "Auth Configuration",
-          description: "Google provider is configured in src/lib/auth.ts",
+          title: 'Auth Configuration',
+          description: 'Google provider is configured in src/lib/auth.ts',
           code: `// src/lib/auth.ts
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
@@ -93,11 +117,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
   },
 });`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Sign In Button",
-          description: "Add Google sign-in to your login page",
+          title: 'Sign In Button',
+          description: 'Add Google sign-in to your login page',
           code: `"use client";
 
 import { signIn } from "next-auth/react";
@@ -132,11 +156,11 @@ export function GoogleSignInButton() {
     </Button>
   );
 }`,
-          language: "tsx",
+          language: 'tsx',
         },
         {
-          title: "Conditional Rendering",
-          description: "Show Google button only when configured",
+          title: 'Conditional Rendering',
+          description: 'Show Google button only when configured',
           code: `import { config } from "@/config";
 
 export function LoginForm() {
@@ -163,36 +187,43 @@ export function LoginForm() {
     </div>
   );
 }`,
-          language: "tsx",
+          language: 'tsx',
         },
       ]}
       troubleshooting={[
         {
-          problem: "Error: redirect_uri_mismatch",
-          solution: "The callback URL doesn't match what's configured in Google Cloud Console. Ensure your redirect URI exactly matches, including protocol (http vs https).",
+          problem: 'Error: redirect_uri_mismatch',
+          solution:
+            "The callback URL doesn't match what's configured in Google Cloud Console. Ensure your redirect URI exactly matches, including protocol (http vs https).",
         },
         {
-          problem: "Error: access_denied",
-          solution: "User denied access or app is in testing mode with unverified users. Add test users in OAuth consent screen or publish the app.",
+          problem: 'Error: access_denied',
+          solution:
+            'User denied access or app is in testing mode with unverified users. Add test users in OAuth consent screen or publish the app.',
         },
         {
-          problem: "Button not appearing",
-          solution: "Check that GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET are set. Restart the dev server after adding env vars.",
+          problem: 'Button not appearing',
+          solution:
+            'Check that GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET are set. Restart the dev server after adding env vars.',
         },
       ]}
-      previous={{ title: "Payments", href: "/docs/features/payments" }}
-      next={{ title: "Emails", href: "/docs/features/emails" }}
+      previous={{ title: 'Payments', href: '/docs/features/payments' }}
+      next={{ title: 'Emails', href: '/docs/features/emails' }}
     >
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
         <DocsCard title="BEST_PRACTICES">
           <ul className="space-y-1">
             <li>├─ Always offer email/password as an alternative to OAuth</li>
-            <li>├─ Handle account linking for users who sign up with email first</li>
+            <li>
+              ├─ Handle account linking for users who sign up with email first
+            </li>
             <li>├─ Request minimal scopes (email, profile, openid)</li>
             <li>├─ Store refresh tokens securely if you need offline access</li>
             <li>├─ Publish your app for production (removes 100 user limit)</li>
-            <li>├─ Add your privacy policy and terms links to consent screen</li>
+            <li>
+              ├─ Add your privacy policy and terms links to consent screen
+            </li>
             <li>└─ Test with multiple Google accounts during development</li>
           </ul>
         </DocsCard>

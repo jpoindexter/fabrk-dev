@@ -199,15 +199,16 @@ The codebase contains **50+ card-like UI patterns** across components and inline
 ```tsx
 // Container
 className =
-  "group border-border bg-card hover:border-primary/50 flex h-full flex-col border transition-colors";
+  'group border-border bg-card hover:border-primary/50 flex h-full flex-col border transition-colors';
 
 // Header
-className = "border-border flex items-center justify-between border-b px-4 py-2";
+className =
+  'border-border flex items-center justify-between border-b px-4 py-2';
 // Header text: [ [0xXX] TITLE ]
 // Header icon: size-4, group-hover:text-primary
 
 // Content
-className = "flex-1 p-4";
+className = 'flex-1 p-4';
 // DESC: prefix for descriptions
 ```
 
@@ -215,10 +216,10 @@ className = "flex-1 p-4";
 
 ```tsx
 // Container
-className = "border-border bg-card mx-auto max-w-2xl border p-4 text-left";
+className = 'border-border bg-card mx-auto max-w-2xl border p-4 text-left';
 
 // Header (inline)
-className = "text-muted-foreground mb-4 text-xs";
+className = 'text-muted-foreground mb-4 text-xs';
 // Pattern: [ [0x01] STATUS ]────────────────────────
 
 // Content - no DESC: prefix

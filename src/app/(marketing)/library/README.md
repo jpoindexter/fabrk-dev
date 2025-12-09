@@ -431,7 +431,7 @@ Start with a template and build on it:
 Templates use TanStack Table v8 for complex data:
 
 ```typescript
-import { useReactTable, getCoreRowModel } from "@tanstack/react-table";
+import { useReactTable, getCoreRowModel } from '@tanstack/react-table';
 
 const table = useReactTable({
   data: users,
@@ -499,10 +499,10 @@ Search for `mock` in each template file:
 
 ```typescript
 // BEFORE (mock data)
-const mockUsers = [{ id: "1", name: "John Doe", email: "john@example.com" }];
+const mockUsers = [{ id: '1', name: 'John Doe', email: 'john@example.com' }];
 
 // AFTER (real data)
-const { data: users } = await fetch("/api/users");
+const { data: users } = await fetch('/api/users');
 ```
 
 ### Adding Authentication
@@ -510,11 +510,11 @@ const { data: users } = await fetch("/api/users");
 Wrap template content with auth checks:
 
 ```typescript
-import { auth } from "@/lib/auth";
+import { auth } from '@/lib/auth';
 
 export default async function ProtectedTemplate() {
   const session = await auth();
-  if (!session?.user) redirect("/login");
+  if (!session?.user) redirect('/login');
 
   // ... template content
 }
@@ -525,7 +525,7 @@ export default async function ProtectedTemplate() {
 All templates use Tailwind responsive classes:
 
 ```typescript
-className = "grid md:grid-cols-2 lg:grid-cols-4 gap-6";
+className = 'grid md:grid-cols-2 lg:grid-cols-4 gap-6';
 // Mobile: 1 column
 // Tablet: 2 columns
 // Desktop: 4 columns

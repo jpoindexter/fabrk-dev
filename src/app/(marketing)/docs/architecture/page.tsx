@@ -1,9 +1,9 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { Layers, Shield, Database, Workflow } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
+import { Layers, Shield, Database, Workflow } from 'lucide-react';
 
 export const metadata = {
-  title: "Architecture Overview - Fabrk Docs",
+  title: 'Architecture Overview - Fabrk Docs',
   description:
     "Understand Fabrk's enterprise-grade architecture. Next.js 15 App Router, Prisma ORM, NextAuth v5, and production-ready patterns.",
 };
@@ -19,29 +19,29 @@ export default function ArchitecturePage() {
       features={[
         {
           icon: Layers,
-          title: "App Router",
-          description: "Next.js 15 RSC + Server Actions.",
+          title: 'App Router',
+          description: 'Next.js 15 RSC + Server Actions.',
         },
         {
           icon: Shield,
-          title: "NextAuth v5",
-          description: "JWT sessions, RBAC, 2FA.",
+          title: 'NextAuth v5',
+          description: 'JWT sessions, RBAC, 2FA.',
         },
         {
           icon: Database,
-          title: "Prisma ORM",
-          description: "Type-safe PostgreSQL queries.",
+          title: 'Prisma ORM',
+          description: 'Type-safe PostgreSQL queries.',
         },
         {
           icon: Workflow,
-          title: "Service Layer",
-          description: "Clean separation of concerns.",
+          title: 'Service Layer',
+          description: 'Clean separation of concerns.',
         },
       ]}
       usage={[
         {
-          title: "Mutation Flow (Server Actions)",
-          description: "Example of a typical server action flow",
+          title: 'Mutation Flow (Server Actions)',
+          description: 'Example of a typical server action flow',
           code: `// 1. Client invokes action
 const { execute, status } = useAction(updateUserProfile);
 
@@ -58,11 +58,11 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
 
   return user;
 });`,
-          language: "typescript",
+          language: 'typescript',
         },
       ]}
-      previous={{ title: "Getting Started", href: "/docs/getting-started" }}
-      next={{ title: "Features", href: "/docs/features/database" }}
+      previous={{ title: 'Getting Started', href: '/docs/getting-started' }}
+      next={{ title: 'Features', href: '/docs/features/database' }}
     >
       {/* Architecture Diagram */}
       <DocsSection title="High-Level Overview">
@@ -83,7 +83,9 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
 
             {/* Edge Layer */}
             <div className="border-border bg-muted border p-4">
-              <div className="text-foreground mb-4 text-center font-semibold">EDGE</div>
+              <div className="text-foreground mb-4 text-center font-semibold">
+                EDGE
+              </div>
               <div className="flex flex-wrap items-center justify-center gap-4">
                 <div className="border-border bg-card border p-4 text-center">
                   <div>Vercel Edge</div>
@@ -106,11 +108,15 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
 
             {/* Server Layer */}
             <div className="border-border bg-muted border p-4">
-              <div className="text-foreground mb-4 text-center font-semibold">SERVER</div>
+              <div className="text-foreground mb-4 text-center font-semibold">
+                SERVER
+              </div>
               <div className="border-border bg-card border p-4">
                 <div className="mb-4 text-center">Next.js App Router</div>
                 <div className="flex flex-wrap items-center justify-center gap-4">
-                  <div className="border-border bg-muted border p-4 text-center">RSC Pages</div>
+                  <div className="border-border bg-muted border p-4 text-center">
+                    RSC Pages
+                  </div>
                   <div className="border-border bg-muted border p-4 text-center">
                     Server Actions
                   </div>
@@ -151,8 +157,9 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
         <div className="grid gap-4 sm:grid-cols-2">
           <DocsCard title="AUTH_SECURITY">
             <p className="mb-4">
-              Built on NextAuth.js v5. Sessions are stateless (JWT) by default for edge
-              compatibility, but can be database-persisted for strict session management.
+              Built on NextAuth.js v5. Sessions are stateless (JWT) by default
+              for edge compatibility, but can be database-persisted for strict
+              session management.
             </p>
             <div className="space-y-1">
               <div>├─ Role-Based Access Control (RBAC)</div>
@@ -163,8 +170,9 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
 
           <DocsCard title="DATABASE_LAYER">
             <p className="mb-4">
-              Prisma ORM provides a type-safe interface to PostgreSQL. We use a &quot;Service
-              Layer&quot; pattern to abstract database logic from UI components.
+              Prisma ORM provides a type-safe interface to PostgreSQL. We use a
+              &quot;Service Layer&quot; pattern to abstract database logic from
+              UI components.
             </p>
             <div className="space-y-1">
               <div>├─ Automated migrations</div>
@@ -179,8 +187,9 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
       <DocsSection title="Data Flow & Patterns">
         <DocsCard title="DATA_FLOW">
           <p className="mb-4">
-            We strictly follow unidirectional data flow. Server Actions are used for mutations,
-            while React Server Components (RSC) handle data fetching.
+            We strictly follow unidirectional data flow. Server Actions are used
+            for mutations, while React Server Components (RSC) handle data
+            fetching.
           </p>
           <div className="space-y-1">
             <div>├─ RSC for data fetching (no useEffect)</div>
@@ -195,12 +204,20 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
       <DocsSection title="Scalability Considerations">
         <DocsCard title="SCALABILITY">
           <p className="mb-4">
-            Fabrk is designed to scale from 0 to 1M+ users without major refactoring.
+            Fabrk is designed to scale from 0 to 1M+ users without major
+            refactoring.
           </p>
           <div className="space-y-1">
-            <div>├─ Edge Caching: Static assets and ISR pages cached at the edge</div>
-            <div>├─ Serverless Database: Compatible with Neon/Supabase for auto-scaling</div>
-            <div>└─ Job Queues: Background jobs decoupled using Inngest (optional)</div>
+            <div>
+              ├─ Edge Caching: Static assets and ISR pages cached at the edge
+            </div>
+            <div>
+              ├─ Serverless Database: Compatible with Neon/Supabase for
+              auto-scaling
+            </div>
+            <div>
+              └─ Job Queues: Background jobs decoupled using Inngest (optional)
+            </div>
           </div>
         </DocsCard>
       </DocsSection>

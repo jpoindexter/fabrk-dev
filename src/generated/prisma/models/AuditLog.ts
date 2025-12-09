@@ -7,15 +7,16 @@
  *
  * 🟢 You can import this file directly.
  */
-import type * as runtime from "@prisma/client/runtime/client";
-import type * as $Enums from "../enums";
-import type * as Prisma from "../internal/prismaNamespace";
+import type * as runtime from '@prisma/client/runtime/client';
+import type * as $Enums from '../enums';
+import type * as Prisma from '../internal/prismaNamespace';
 
 /**
  * Model AuditLog
  *
  */
-export type AuditLogModel = runtime.Types.Result.DefaultSelection<Prisma.$AuditLogPayload>;
+export type AuditLogModel =
+  runtime.Types.Result.DefaultSelection<Prisma.$AuditLogPayload>;
 
 export type AggregateAuditLog = {
   _count: AuditLogCountAggregateOutputType | null;
@@ -94,7 +95,8 @@ export type AuditLogCountAggregateInputType = {
 };
 
 export type AuditLogAggregateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which AuditLog to aggregate.
@@ -105,7 +107,9 @@ export type AuditLogAggregateArgs<
    *
    * Determine the order of AuditLogs to fetch.
    */
-  orderBy?: Prisma.AuditLogOrderByWithRelationInput | Prisma.AuditLogOrderByWithRelationInput[];
+  orderBy?:
+    | Prisma.AuditLogOrderByWithRelationInput
+    | Prisma.AuditLogOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -145,7 +149,7 @@ export type AuditLogAggregateArgs<
 };
 
 export type GetAuditLogAggregateType<T extends AuditLogAggregateArgs> = {
-  [P in keyof T & keyof AggregateAuditLog]: P extends "_count" | "count"
+  [P in keyof T & keyof AggregateAuditLog]: P extends '_count' | 'count'
     ? T[P] extends true
       ? number
       : Prisma.GetScalarType<T[P], AggregateAuditLog[P]>
@@ -153,7 +157,8 @@ export type GetAuditLogAggregateType<T extends AuditLogAggregateArgs> = {
 };
 
 export type AuditLogGroupByArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.AuditLogWhereInput;
   orderBy?:
@@ -183,31 +188,32 @@ export type AuditLogGroupByOutputType = {
   _max: AuditLogMaxAggregateOutputType | null;
 };
 
-type GetAuditLogGroupByPayload<T extends AuditLogGroupByArgs> = Prisma.PrismaPromise<
-  Array<
-    Prisma.PickEnumerable<AuditLogGroupByOutputType, T["by"]> & {
-      [P in keyof T & keyof AuditLogGroupByOutputType]: P extends "_count"
-        ? T[P] extends boolean
-          ? number
-          : Prisma.GetScalarType<T[P], AuditLogGroupByOutputType[P]>
-        : Prisma.GetScalarType<T[P], AuditLogGroupByOutputType[P]>;
-    }
-  >
->;
+type GetAuditLogGroupByPayload<T extends AuditLogGroupByArgs> =
+  Prisma.PrismaPromise<
+    Array<
+      Prisma.PickEnumerable<AuditLogGroupByOutputType, T['by']> & {
+        [P in keyof T & keyof AuditLogGroupByOutputType]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
+            : Prisma.GetScalarType<T[P], AuditLogGroupByOutputType[P]>
+          : Prisma.GetScalarType<T[P], AuditLogGroupByOutputType[P]>;
+      }
+    >
+  >;
 
 export type AuditLogWhereInput = {
   AND?: Prisma.AuditLogWhereInput | Prisma.AuditLogWhereInput[];
   OR?: Prisma.AuditLogWhereInput[];
   NOT?: Prisma.AuditLogWhereInput | Prisma.AuditLogWhereInput[];
-  id?: Prisma.StringFilter<"AuditLog"> | string;
-  userId?: Prisma.StringFilter<"AuditLog"> | string;
-  action?: Prisma.StringFilter<"AuditLog"> | string;
-  resource?: Prisma.StringNullableFilter<"AuditLog"> | string | null;
-  resourceId?: Prisma.StringNullableFilter<"AuditLog"> | string | null;
-  ipAddress?: Prisma.StringNullableFilter<"AuditLog"> | string | null;
-  userAgent?: Prisma.StringNullableFilter<"AuditLog"> | string | null;
-  metadata?: Prisma.JsonNullableFilter<"AuditLog">;
-  createdAt?: Prisma.DateTimeFilter<"AuditLog"> | Date | string;
+  id?: Prisma.StringFilter<'AuditLog'> | string;
+  userId?: Prisma.StringFilter<'AuditLog'> | string;
+  action?: Prisma.StringFilter<'AuditLog'> | string;
+  resource?: Prisma.StringNullableFilter<'AuditLog'> | string | null;
+  resourceId?: Prisma.StringNullableFilter<'AuditLog'> | string | null;
+  ipAddress?: Prisma.StringNullableFilter<'AuditLog'> | string | null;
+  userAgent?: Prisma.StringNullableFilter<'AuditLog'> | string | null;
+  metadata?: Prisma.JsonNullableFilter<'AuditLog'>;
+  createdAt?: Prisma.DateTimeFilter<'AuditLog'> | Date | string;
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
 };
 
@@ -230,17 +236,17 @@ export type AuditLogWhereUniqueInput = Prisma.AtLeast<
     AND?: Prisma.AuditLogWhereInput | Prisma.AuditLogWhereInput[];
     OR?: Prisma.AuditLogWhereInput[];
     NOT?: Prisma.AuditLogWhereInput | Prisma.AuditLogWhereInput[];
-    userId?: Prisma.StringFilter<"AuditLog"> | string;
-    action?: Prisma.StringFilter<"AuditLog"> | string;
-    resource?: Prisma.StringNullableFilter<"AuditLog"> | string | null;
-    resourceId?: Prisma.StringNullableFilter<"AuditLog"> | string | null;
-    ipAddress?: Prisma.StringNullableFilter<"AuditLog"> | string | null;
-    userAgent?: Prisma.StringNullableFilter<"AuditLog"> | string | null;
-    metadata?: Prisma.JsonNullableFilter<"AuditLog">;
-    createdAt?: Prisma.DateTimeFilter<"AuditLog"> | Date | string;
+    userId?: Prisma.StringFilter<'AuditLog'> | string;
+    action?: Prisma.StringFilter<'AuditLog'> | string;
+    resource?: Prisma.StringNullableFilter<'AuditLog'> | string | null;
+    resourceId?: Prisma.StringNullableFilter<'AuditLog'> | string | null;
+    ipAddress?: Prisma.StringNullableFilter<'AuditLog'> | string | null;
+    userAgent?: Prisma.StringNullableFilter<'AuditLog'> | string | null;
+    metadata?: Prisma.JsonNullableFilter<'AuditLog'>;
+    createdAt?: Prisma.DateTimeFilter<'AuditLog'> | Date | string;
     user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
   },
-  "id"
+  'id'
 >;
 
 export type AuditLogOrderByWithAggregationInput = {
@@ -266,15 +272,27 @@ export type AuditLogScalarWhereWithAggregatesInput = {
   NOT?:
     | Prisma.AuditLogScalarWhereWithAggregatesInput
     | Prisma.AuditLogScalarWhereWithAggregatesInput[];
-  id?: Prisma.StringWithAggregatesFilter<"AuditLog"> | string;
-  userId?: Prisma.StringWithAggregatesFilter<"AuditLog"> | string;
-  action?: Prisma.StringWithAggregatesFilter<"AuditLog"> | string;
-  resource?: Prisma.StringNullableWithAggregatesFilter<"AuditLog"> | string | null;
-  resourceId?: Prisma.StringNullableWithAggregatesFilter<"AuditLog"> | string | null;
-  ipAddress?: Prisma.StringNullableWithAggregatesFilter<"AuditLog"> | string | null;
-  userAgent?: Prisma.StringNullableWithAggregatesFilter<"AuditLog"> | string | null;
-  metadata?: Prisma.JsonNullableWithAggregatesFilter<"AuditLog">;
-  createdAt?: Prisma.DateTimeWithAggregatesFilter<"AuditLog"> | Date | string;
+  id?: Prisma.StringWithAggregatesFilter<'AuditLog'> | string;
+  userId?: Prisma.StringWithAggregatesFilter<'AuditLog'> | string;
+  action?: Prisma.StringWithAggregatesFilter<'AuditLog'> | string;
+  resource?:
+    | Prisma.StringNullableWithAggregatesFilter<'AuditLog'>
+    | string
+    | null;
+  resourceId?:
+    | Prisma.StringNullableWithAggregatesFilter<'AuditLog'>
+    | string
+    | null;
+  ipAddress?:
+    | Prisma.StringNullableWithAggregatesFilter<'AuditLog'>
+    | string
+    | null;
+  userAgent?:
+    | Prisma.StringNullableWithAggregatesFilter<'AuditLog'>
+    | string
+    | null;
+  metadata?: Prisma.JsonNullableWithAggregatesFilter<'AuditLog'>;
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<'AuditLog'> | Date | string;
 };
 
 export type AuditLogCreateInput = {
@@ -450,7 +468,9 @@ export type AuditLogUpdateManyWithoutUserNestedInput = {
     | Prisma.AuditLogUpsertWithWhereUniqueWithoutUserInput[];
   createMany?: Prisma.AuditLogCreateManyUserInputEnvelope;
   set?: Prisma.AuditLogWhereUniqueInput | Prisma.AuditLogWhereUniqueInput[];
-  disconnect?: Prisma.AuditLogWhereUniqueInput | Prisma.AuditLogWhereUniqueInput[];
+  disconnect?:
+    | Prisma.AuditLogWhereUniqueInput
+    | Prisma.AuditLogWhereUniqueInput[];
   delete?: Prisma.AuditLogWhereUniqueInput | Prisma.AuditLogWhereUniqueInput[];
   connect?: Prisma.AuditLogWhereUniqueInput | Prisma.AuditLogWhereUniqueInput[];
   update?:
@@ -459,7 +479,9 @@ export type AuditLogUpdateManyWithoutUserNestedInput = {
   updateMany?:
     | Prisma.AuditLogUpdateManyWithWhereWithoutUserInput
     | Prisma.AuditLogUpdateManyWithWhereWithoutUserInput[];
-  deleteMany?: Prisma.AuditLogScalarWhereInput | Prisma.AuditLogScalarWhereInput[];
+  deleteMany?:
+    | Prisma.AuditLogScalarWhereInput
+    | Prisma.AuditLogScalarWhereInput[];
 };
 
 export type AuditLogUncheckedUpdateManyWithoutUserNestedInput = {
@@ -478,7 +500,9 @@ export type AuditLogUncheckedUpdateManyWithoutUserNestedInput = {
     | Prisma.AuditLogUpsertWithWhereUniqueWithoutUserInput[];
   createMany?: Prisma.AuditLogCreateManyUserInputEnvelope;
   set?: Prisma.AuditLogWhereUniqueInput | Prisma.AuditLogWhereUniqueInput[];
-  disconnect?: Prisma.AuditLogWhereUniqueInput | Prisma.AuditLogWhereUniqueInput[];
+  disconnect?:
+    | Prisma.AuditLogWhereUniqueInput
+    | Prisma.AuditLogWhereUniqueInput[];
   delete?: Prisma.AuditLogWhereUniqueInput | Prisma.AuditLogWhereUniqueInput[];
   connect?: Prisma.AuditLogWhereUniqueInput | Prisma.AuditLogWhereUniqueInput[];
   update?:
@@ -487,7 +511,9 @@ export type AuditLogUncheckedUpdateManyWithoutUserNestedInput = {
   updateMany?:
     | Prisma.AuditLogUpdateManyWithWhereWithoutUserInput
     | Prisma.AuditLogUpdateManyWithWhereWithoutUserInput[];
-  deleteMany?: Prisma.AuditLogScalarWhereInput | Prisma.AuditLogScalarWhereInput[];
+  deleteMany?:
+    | Prisma.AuditLogScalarWhereInput
+    | Prisma.AuditLogScalarWhereInput[];
 };
 
 export type AuditLogCreateWithoutUserInput = {
@@ -521,7 +547,9 @@ export type AuditLogCreateOrConnectWithoutUserInput = {
 };
 
 export type AuditLogCreateManyUserInputEnvelope = {
-  data: Prisma.AuditLogCreateManyUserInput | Prisma.AuditLogCreateManyUserInput[];
+  data:
+    | Prisma.AuditLogCreateManyUserInput
+    | Prisma.AuditLogCreateManyUserInput[];
   skipDuplicates?: boolean;
 };
 
@@ -557,15 +585,15 @@ export type AuditLogScalarWhereInput = {
   AND?: Prisma.AuditLogScalarWhereInput | Prisma.AuditLogScalarWhereInput[];
   OR?: Prisma.AuditLogScalarWhereInput[];
   NOT?: Prisma.AuditLogScalarWhereInput | Prisma.AuditLogScalarWhereInput[];
-  id?: Prisma.StringFilter<"AuditLog"> | string;
-  userId?: Prisma.StringFilter<"AuditLog"> | string;
-  action?: Prisma.StringFilter<"AuditLog"> | string;
-  resource?: Prisma.StringNullableFilter<"AuditLog"> | string | null;
-  resourceId?: Prisma.StringNullableFilter<"AuditLog"> | string | null;
-  ipAddress?: Prisma.StringNullableFilter<"AuditLog"> | string | null;
-  userAgent?: Prisma.StringNullableFilter<"AuditLog"> | string | null;
-  metadata?: Prisma.JsonNullableFilter<"AuditLog">;
-  createdAt?: Prisma.DateTimeFilter<"AuditLog"> | Date | string;
+  id?: Prisma.StringFilter<'AuditLog'> | string;
+  userId?: Prisma.StringFilter<'AuditLog'> | string;
+  action?: Prisma.StringFilter<'AuditLog'> | string;
+  resource?: Prisma.StringNullableFilter<'AuditLog'> | string | null;
+  resourceId?: Prisma.StringNullableFilter<'AuditLog'> | string | null;
+  ipAddress?: Prisma.StringNullableFilter<'AuditLog'> | string | null;
+  userAgent?: Prisma.StringNullableFilter<'AuditLog'> | string | null;
+  metadata?: Prisma.JsonNullableFilter<'AuditLog'>;
+  createdAt?: Prisma.DateTimeFilter<'AuditLog'> | Date | string;
 };
 
 export type AuditLogCreateManyUserInput = {
@@ -613,7 +641,8 @@ export type AuditLogUncheckedUpdateManyWithoutUserInput = {
 };
 
 export type AuditLogSelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -627,11 +656,12 @@ export type AuditLogSelect<
     createdAt?: boolean;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   },
-  ExtArgs["result"]["auditLog"]
+  ExtArgs['result']['auditLog']
 >;
 
 export type AuditLogSelectCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -645,11 +675,12 @@ export type AuditLogSelectCreateManyAndReturn<
     createdAt?: boolean;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   },
-  ExtArgs["result"]["auditLog"]
+  ExtArgs['result']['auditLog']
 >;
 
 export type AuditLogSelectUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -663,7 +694,7 @@ export type AuditLogSelectUpdateManyAndReturn<
     createdAt?: boolean;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   },
-  ExtArgs["result"]["auditLog"]
+  ExtArgs['result']['auditLog']
 >;
 
 export type AuditLogSelectScalar = {
@@ -679,39 +710,44 @@ export type AuditLogSelectScalar = {
 };
 
 export type AuditLogOmit<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
-  | "id"
-  | "userId"
-  | "action"
-  | "resource"
-  | "resourceId"
-  | "ipAddress"
-  | "userAgent"
-  | "metadata"
-  | "createdAt",
-  ExtArgs["result"]["auditLog"]
+  | 'id'
+  | 'userId'
+  | 'action'
+  | 'resource'
+  | 'resourceId'
+  | 'ipAddress'
+  | 'userAgent'
+  | 'metadata'
+  | 'createdAt',
+  ExtArgs['result']['auditLog']
 >;
 export type AuditLogInclude<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 export type AuditLogIncludeCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 export type AuditLogIncludeUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 
 export type $AuditLogPayload<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
-  name: "AuditLog";
+  name: 'AuditLog';
   objects: {
     user: Prisma.$UserPayload<ExtArgs>;
   };
@@ -727,25 +763,31 @@ export type $AuditLogPayload<
       metadata: runtime.JsonValue | null;
       createdAt: Date;
     },
-    ExtArgs["result"]["auditLog"]
+    ExtArgs['result']['auditLog']
   >;
   composites: {};
 };
 
-export type AuditLogGetPayload<S extends boolean | null | undefined | AuditLogDefaultArgs> =
-  runtime.Types.Result.GetResult<Prisma.$AuditLogPayload, S>;
+export type AuditLogGetPayload<
+  S extends boolean | null | undefined | AuditLogDefaultArgs,
+> = runtime.Types.Result.GetResult<Prisma.$AuditLogPayload, S>;
 
 export type AuditLogCountArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
-> = Omit<AuditLogFindManyArgs, "select" | "include" | "distinct" | "omit"> & {
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = Omit<AuditLogFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
   select?: AuditLogCountAggregateInputType | true;
 };
 
 export interface AuditLogDelegate<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > {
-  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>["model"]["AuditLog"]; meta: { name: "AuditLog" } };
+  [K: symbol]: {
+    types: Prisma.TypeMap<ExtArgs>['model']['AuditLog'];
+    meta: { name: 'AuditLog' };
+  };
   /**
    * Find zero or one AuditLog that matches the filter.
    * @param {AuditLogFindUniqueArgs} args - Arguments to find a AuditLog
@@ -763,7 +805,7 @@ export interface AuditLogDelegate<
     runtime.Types.Result.GetResult<
       Prisma.$AuditLogPayload<ExtArgs>,
       T,
-      "findUnique",
+      'findUnique',
       GlobalOmitOptions
     > | null,
     null,
@@ -789,7 +831,7 @@ export interface AuditLogDelegate<
     runtime.Types.Result.GetResult<
       Prisma.$AuditLogPayload<ExtArgs>,
       T,
-      "findUniqueOrThrow",
+      'findUniqueOrThrow',
       GlobalOmitOptions
     >,
     never,
@@ -816,7 +858,7 @@ export interface AuditLogDelegate<
     runtime.Types.Result.GetResult<
       Prisma.$AuditLogPayload<ExtArgs>,
       T,
-      "findFirst",
+      'findFirst',
       GlobalOmitOptions
     > | null,
     null,
@@ -844,7 +886,7 @@ export interface AuditLogDelegate<
     runtime.Types.Result.GetResult<
       Prisma.$AuditLogPayload<ExtArgs>,
       T,
-      "findFirstOrThrow",
+      'findFirstOrThrow',
       GlobalOmitOptions
     >,
     never,
@@ -874,7 +916,7 @@ export interface AuditLogDelegate<
     runtime.Types.Result.GetResult<
       Prisma.$AuditLogPayload<ExtArgs>,
       T,
-      "findMany",
+      'findMany',
       GlobalOmitOptions
     >
   >;
@@ -897,7 +939,7 @@ export interface AuditLogDelegate<
     runtime.Types.Result.GetResult<
       Prisma.$AuditLogPayload<ExtArgs>,
       T,
-      "create",
+      'create',
       GlobalOmitOptions
     >,
     never,
@@ -949,7 +991,7 @@ export interface AuditLogDelegate<
     runtime.Types.Result.GetResult<
       Prisma.$AuditLogPayload<ExtArgs>,
       T,
-      "createManyAndReturn",
+      'createManyAndReturn',
       GlobalOmitOptions
     >
   >;
@@ -972,7 +1014,7 @@ export interface AuditLogDelegate<
     runtime.Types.Result.GetResult<
       Prisma.$AuditLogPayload<ExtArgs>,
       T,
-      "delete",
+      'delete',
       GlobalOmitOptions
     >,
     never,
@@ -1001,7 +1043,7 @@ export interface AuditLogDelegate<
     runtime.Types.Result.GetResult<
       Prisma.$AuditLogPayload<ExtArgs>,
       T,
-      "update",
+      'update',
       GlobalOmitOptions
     >,
     never,
@@ -1080,7 +1122,7 @@ export interface AuditLogDelegate<
     runtime.Types.Result.GetResult<
       Prisma.$AuditLogPayload<ExtArgs>,
       T,
-      "updateManyAndReturn",
+      'updateManyAndReturn',
       GlobalOmitOptions
     >
   >;
@@ -1108,7 +1150,7 @@ export interface AuditLogDelegate<
     runtime.Types.Result.GetResult<
       Prisma.$AuditLogPayload<ExtArgs>,
       T,
-      "upsert",
+      'upsert',
       GlobalOmitOptions
     >,
     never,
@@ -1132,10 +1174,10 @@ export interface AuditLogDelegate<
   count<T extends AuditLogCountArgs>(
     args?: Prisma.Subset<T, AuditLogCountArgs>
   ): Prisma.PrismaPromise<
-    T extends runtime.Types.Utils.Record<"select", any>
-      ? T["select"] extends true
+    T extends runtime.Types.Utils.Record<'select', any>
+      ? T['select'] extends true
         ? number
-        : Prisma.GetScalarType<T["select"], AuditLogCountAggregateOutputType>
+        : Prisma.GetScalarType<T['select'], AuditLogCountAggregateOutputType>
       : number
   >;
 
@@ -1188,20 +1230,20 @@ export interface AuditLogDelegate<
   groupBy<
     T extends AuditLogGroupByArgs,
     HasSelectOrTake extends Prisma.Or<
-      Prisma.Extends<"skip", Prisma.Keys<T>>,
-      Prisma.Extends<"take", Prisma.Keys<T>>
+      Prisma.Extends<'skip', Prisma.Keys<T>>,
+      Prisma.Extends<'take', Prisma.Keys<T>>
     >,
     OrderByArg extends Prisma.True extends HasSelectOrTake
-      ? { orderBy: AuditLogGroupByArgs["orderBy"] }
-      : { orderBy?: AuditLogGroupByArgs["orderBy"] },
+      ? { orderBy: AuditLogGroupByArgs['orderBy'] }
+      : { orderBy?: AuditLogGroupByArgs['orderBy'] },
     OrderFields extends Prisma.ExcludeUnderscoreKeys<
-      Prisma.Keys<Prisma.MaybeTupleToUnion<T["orderBy"]>>
+      Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>
     >,
-    ByFields extends Prisma.MaybeTupleToUnion<T["by"]>,
+    ByFields extends Prisma.MaybeTupleToUnion<T['by']>,
     ByValid extends Prisma.Has<ByFields, OrderFields>,
-    HavingFields extends Prisma.GetHavingFields<T["having"]>,
+    HavingFields extends Prisma.GetHavingFields<T['having']>,
     HavingValid extends Prisma.Has<ByFields, HavingFields>,
-    ByEmpty extends T["by"] extends never[] ? Prisma.True : Prisma.False,
+    ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False,
     InputErrors extends ByEmpty extends Prisma.True
       ? `Error: "by" must not be empty.`
       : HavingValid extends Prisma.False
@@ -1210,10 +1252,15 @@ export interface AuditLogDelegate<
               ? never
               : P extends string
                 ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                : [Error, "Field ", P, ` in "having" needs to be provided in "by"`];
+                : [
+                    Error,
+                    'Field ',
+                    P,
+                    ` in "having" needs to be provided in "by"`,
+                  ];
           }[HavingFields]
-        : "take" extends Prisma.Keys<T>
-          ? "orderBy" extends Prisma.Keys<T>
+        : 'take' extends Prisma.Keys<T>
+          ? 'orderBy' extends Prisma.Keys<T>
             ? ByValid extends Prisma.True
               ? {}
               : {
@@ -1222,8 +1269,8 @@ export interface AuditLogDelegate<
                     : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                 }[OrderFields]
             : 'Error: If you provide "take", you also need to provide "orderBy"'
-          : "skip" extends Prisma.Keys<T>
-            ? "orderBy" extends Prisma.Keys<T>
+          : 'skip' extends Prisma.Keys<T>
+            ? 'orderBy' extends Prisma.Keys<T>
               ? ByValid extends Prisma.True
                 ? {}
                 : {
@@ -1240,8 +1287,11 @@ export interface AuditLogDelegate<
                     : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                 }[OrderFields],
   >(
-    args: Prisma.SubsetIntersection<T, AuditLogGroupByArgs, OrderByArg> & InputErrors
-  ): {} extends InputErrors ? GetAuditLogGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    args: Prisma.SubsetIntersection<T, AuditLogGroupByArgs, OrderByArg> &
+      InputErrors
+  ): {} extends InputErrors
+    ? GetAuditLogGroupByPayload<T>
+    : Prisma.PrismaPromise<InputErrors>;
   /**
    * Fields of the AuditLog model
    */
@@ -1257,17 +1307,18 @@ export interface AuditLogDelegate<
 export interface Prisma__AuditLogClient<
   T,
   Null = never,
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
-  readonly [Symbol.toStringTag]: "PrismaPromise";
+  readonly [Symbol.toStringTag]: 'PrismaPromise';
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(
     args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>
   ): Prisma.Prisma__UserClient<
     | runtime.Types.Result.GetResult<
         Prisma.$UserPayload<ExtArgs>,
         T,
-        "findUniqueOrThrow",
+        'findUniqueOrThrow',
         GlobalOmitOptions
       >
     | Null,
@@ -1282,8 +1333,14 @@ export interface Prisma__AuditLogClient<
    * @returns A Promise for the completion of which ever callback is executed.
    */
   then<TResult1 = T, TResult2 = never>(
-    onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
-    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
+    onfulfilled?:
+      | ((value: T) => TResult1 | PromiseLike<TResult1>)
+      | undefined
+      | null,
+    onrejected?:
+      | ((reason: any) => TResult2 | PromiseLike<TResult2>)
+      | undefined
+      | null
   ): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
   /**
    * Attaches a callback for only the rejection of the Promise.
@@ -1291,7 +1348,10 @@ export interface Prisma__AuditLogClient<
    * @returns A Promise for the completion of the callback.
    */
   catch<TResult = never>(
-    onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
+    onrejected?:
+      | ((reason: any) => TResult | PromiseLike<TResult>)
+      | undefined
+      | null
   ): runtime.Types.Utils.JsPromise<T | TResult>;
   /**
    * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
@@ -1299,22 +1359,24 @@ export interface Prisma__AuditLogClient<
    * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
    * @returns A Promise for the completion of the callback.
    */
-  finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+  finally(
+    onfinally?: (() => void) | undefined | null
+  ): runtime.Types.Utils.JsPromise<T>;
 }
 
 /**
  * Fields of the AuditLog model
  */
 export interface AuditLogFieldRefs {
-  readonly id: Prisma.FieldRef<"AuditLog", "String">;
-  readonly userId: Prisma.FieldRef<"AuditLog", "String">;
-  readonly action: Prisma.FieldRef<"AuditLog", "String">;
-  readonly resource: Prisma.FieldRef<"AuditLog", "String">;
-  readonly resourceId: Prisma.FieldRef<"AuditLog", "String">;
-  readonly ipAddress: Prisma.FieldRef<"AuditLog", "String">;
-  readonly userAgent: Prisma.FieldRef<"AuditLog", "String">;
-  readonly metadata: Prisma.FieldRef<"AuditLog", "Json">;
-  readonly createdAt: Prisma.FieldRef<"AuditLog", "DateTime">;
+  readonly id: Prisma.FieldRef<'AuditLog', 'String'>;
+  readonly userId: Prisma.FieldRef<'AuditLog', 'String'>;
+  readonly action: Prisma.FieldRef<'AuditLog', 'String'>;
+  readonly resource: Prisma.FieldRef<'AuditLog', 'String'>;
+  readonly resourceId: Prisma.FieldRef<'AuditLog', 'String'>;
+  readonly ipAddress: Prisma.FieldRef<'AuditLog', 'String'>;
+  readonly userAgent: Prisma.FieldRef<'AuditLog', 'String'>;
+  readonly metadata: Prisma.FieldRef<'AuditLog', 'Json'>;
+  readonly createdAt: Prisma.FieldRef<'AuditLog', 'DateTime'>;
 }
 
 // Custom InputTypes
@@ -1322,7 +1384,8 @@ export interface AuditLogFieldRefs {
  * AuditLog findUnique
  */
 export type AuditLogFindUniqueArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the AuditLog
@@ -1346,7 +1409,8 @@ export type AuditLogFindUniqueArgs<
  * AuditLog findUniqueOrThrow
  */
 export type AuditLogFindUniqueOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the AuditLog
@@ -1370,7 +1434,8 @@ export type AuditLogFindUniqueOrThrowArgs<
  * AuditLog findFirst
  */
 export type AuditLogFindFirstArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the AuditLog
@@ -1393,7 +1458,9 @@ export type AuditLogFindFirstArgs<
    *
    * Determine the order of AuditLogs to fetch.
    */
-  orderBy?: Prisma.AuditLogOrderByWithRelationInput | Prisma.AuditLogOrderByWithRelationInput[];
+  orderBy?:
+    | Prisma.AuditLogOrderByWithRelationInput
+    | Prisma.AuditLogOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1424,7 +1491,8 @@ export type AuditLogFindFirstArgs<
  * AuditLog findFirstOrThrow
  */
 export type AuditLogFindFirstOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the AuditLog
@@ -1447,7 +1515,9 @@ export type AuditLogFindFirstOrThrowArgs<
    *
    * Determine the order of AuditLogs to fetch.
    */
-  orderBy?: Prisma.AuditLogOrderByWithRelationInput | Prisma.AuditLogOrderByWithRelationInput[];
+  orderBy?:
+    | Prisma.AuditLogOrderByWithRelationInput
+    | Prisma.AuditLogOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1478,7 +1548,8 @@ export type AuditLogFindFirstOrThrowArgs<
  * AuditLog findMany
  */
 export type AuditLogFindManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the AuditLog
@@ -1501,7 +1572,9 @@ export type AuditLogFindManyArgs<
    *
    * Determine the order of AuditLogs to fetch.
    */
-  orderBy?: Prisma.AuditLogOrderByWithRelationInput | Prisma.AuditLogOrderByWithRelationInput[];
+  orderBy?:
+    | Prisma.AuditLogOrderByWithRelationInput
+    | Prisma.AuditLogOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
@@ -1527,7 +1600,8 @@ export type AuditLogFindManyArgs<
  * AuditLog create
  */
 export type AuditLogCreateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the AuditLog
@@ -1544,14 +1618,18 @@ export type AuditLogCreateArgs<
   /**
    * The data needed to create a AuditLog.
    */
-  data: Prisma.XOR<Prisma.AuditLogCreateInput, Prisma.AuditLogUncheckedCreateInput>;
+  data: Prisma.XOR<
+    Prisma.AuditLogCreateInput,
+    Prisma.AuditLogUncheckedCreateInput
+  >;
 };
 
 /**
  * AuditLog createMany
  */
 export type AuditLogCreateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to create many AuditLogs.
@@ -1564,7 +1642,8 @@ export type AuditLogCreateManyArgs<
  * AuditLog createManyAndReturn
  */
 export type AuditLogCreateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the AuditLog
@@ -1589,7 +1668,8 @@ export type AuditLogCreateManyAndReturnArgs<
  * AuditLog update
  */
 export type AuditLogUpdateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the AuditLog
@@ -1606,7 +1686,10 @@ export type AuditLogUpdateArgs<
   /**
    * The data needed to update a AuditLog.
    */
-  data: Prisma.XOR<Prisma.AuditLogUpdateInput, Prisma.AuditLogUncheckedUpdateInput>;
+  data: Prisma.XOR<
+    Prisma.AuditLogUpdateInput,
+    Prisma.AuditLogUncheckedUpdateInput
+  >;
   /**
    * Choose, which AuditLog to update.
    */
@@ -1617,12 +1700,16 @@ export type AuditLogUpdateArgs<
  * AuditLog updateMany
  */
 export type AuditLogUpdateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to update AuditLogs.
    */
-  data: Prisma.XOR<Prisma.AuditLogUpdateManyMutationInput, Prisma.AuditLogUncheckedUpdateManyInput>;
+  data: Prisma.XOR<
+    Prisma.AuditLogUpdateManyMutationInput,
+    Prisma.AuditLogUncheckedUpdateManyInput
+  >;
   /**
    * Filter which AuditLogs to update
    */
@@ -1637,7 +1724,8 @@ export type AuditLogUpdateManyArgs<
  * AuditLog updateManyAndReturn
  */
 export type AuditLogUpdateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the AuditLog
@@ -1650,7 +1738,10 @@ export type AuditLogUpdateManyAndReturnArgs<
   /**
    * The data used to update AuditLogs.
    */
-  data: Prisma.XOR<Prisma.AuditLogUpdateManyMutationInput, Prisma.AuditLogUncheckedUpdateManyInput>;
+  data: Prisma.XOR<
+    Prisma.AuditLogUpdateManyMutationInput,
+    Prisma.AuditLogUncheckedUpdateManyInput
+  >;
   /**
    * Filter which AuditLogs to update
    */
@@ -1669,7 +1760,8 @@ export type AuditLogUpdateManyAndReturnArgs<
  * AuditLog upsert
  */
 export type AuditLogUpsertArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the AuditLog
@@ -1690,18 +1782,25 @@ export type AuditLogUpsertArgs<
   /**
    * In case the AuditLog found by the `where` argument doesn't exist, create a new AuditLog with this data.
    */
-  create: Prisma.XOR<Prisma.AuditLogCreateInput, Prisma.AuditLogUncheckedCreateInput>;
+  create: Prisma.XOR<
+    Prisma.AuditLogCreateInput,
+    Prisma.AuditLogUncheckedCreateInput
+  >;
   /**
    * In case the AuditLog was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<Prisma.AuditLogUpdateInput, Prisma.AuditLogUncheckedUpdateInput>;
+  update: Prisma.XOR<
+    Prisma.AuditLogUpdateInput,
+    Prisma.AuditLogUncheckedUpdateInput
+  >;
 };
 
 /**
  * AuditLog delete
  */
 export type AuditLogDeleteArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the AuditLog
@@ -1725,7 +1824,8 @@ export type AuditLogDeleteArgs<
  * AuditLog deleteMany
  */
 export type AuditLogDeleteManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which AuditLogs to delete
@@ -1741,7 +1841,8 @@ export type AuditLogDeleteManyArgs<
  * AuditLog without action
  */
 export type AuditLogDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the AuditLog

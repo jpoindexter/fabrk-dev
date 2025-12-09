@@ -63,21 +63,21 @@ A color picker component with multiple display variants (default, compact, inlin
 
 ```typescript
 const defaultPresets = [
-  "#D0021B",
-  "#F5A623",
-  "#F8E71C",
-  "#8B572A",
-  "#7ED321",
-  "#417505",
-  "#BD10E0",
-  "#9013FE",
-  "#4A90D9",
-  "#50E3C2",
-  "#B8E986",
-  "#000000",
-  "#4A4A4A",
-  "#9B9B9B",
-  "#FFFFFF",
+  '#D0021B',
+  '#F5A623',
+  '#F8E71C',
+  '#8B572A',
+  '#7ED321',
+  '#417505',
+  '#BD10E0',
+  '#9013FE',
+  '#4A90D9',
+  '#50E3C2',
+  '#B8E986',
+  '#000000',
+  '#4A4A4A',
+  '#9B9B9B',
+  '#FFFFFF',
 ];
 ```
 

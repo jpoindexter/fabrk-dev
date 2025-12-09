@@ -2,15 +2,20 @@
  * Empty States Template - Terminal console style
  * Industry-standard Preview/Code tabbed interface
  */
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent, TemplatePageHeader } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { CodeBlock } from "@/components/ui/code-block";
-import { Inbox, Plus } from "lucide-react";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  TemplatePageHeader,
+} from '@/components/ui/card';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { CodeBlock } from '@/components/ui/code-block';
+import { Inbox, Plus } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 const templateCode = `"use client";
 
@@ -74,8 +79,10 @@ function EmptyStatesPreview() {
 
         {/* Title & Description */}
         <div className="mt-4">
-          <h3 className={cn(mode.font, "mb-1 text-lg font-semibold")}>No Data Yet</h3>
-          <p className={cn(mode.font, "text-muted-foreground text-xs")}>
+          <h3 className={cn(mode.font, 'mb-1 text-lg font-semibold')}>
+            No Data Yet
+          </h3>
+          <p className={cn(mode.font, 'text-muted-foreground text-xs')}>
             Start by adding your first item to see it appear here.
           </p>
         </div>
@@ -94,7 +101,7 @@ function EmptyStatesPreview() {
 
         {/* Action */}
         <div className="mt-4 flex items-center justify-center">
-          <Button className={cn(mode.radius, mode.font, "text-xs")}>
+          <Button className={cn(mode.radius, mode.font, 'text-xs')}>
             <Plus className="mr-1 h-3 w-3" />
             &gt; ADD_FIRST_ITEM
           </Button>
@@ -123,14 +130,14 @@ export default function EmptyStatesTemplate() {
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
-                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  'h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0',
                   mode.radius
                 )}
               >
                 <TabsTrigger
                   value="preview"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -140,7 +147,7 @@ export default function EmptyStatesTemplate() {
                 <TabsTrigger
                   value="code"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -164,7 +171,11 @@ export default function EmptyStatesTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+                <CodeBlock
+                  code={templateCode}
+                  language="tsx"
+                  maxHeight="600px"
+                />
               </div>
             </Card>
           </TabsContent>
@@ -174,7 +185,7 @@ export default function EmptyStatesTemplate() {
         <Card>
           <CardHeader code="0x02" title="USE_CASES" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-4 text-xs")}>
+            <div className={cn(mode.font, 'space-y-4 text-xs')}>
               <div className="space-y-2">
                 <div className="font-semibold">[NO_DATA]</div>
                 <div className="text-muted-foreground">
@@ -195,7 +206,9 @@ export default function EmptyStatesTemplate() {
               </div>
               <div className="space-y-2">
                 <div className="font-semibold">[ERROR_STATE]</div>
-                <div className="text-muted-foreground">API failures, network errors, timeouts</div>
+                <div className="text-muted-foreground">
+                  API failures, network errors, timeouts
+                </div>
               </div>
             </div>
           </CardContent>
@@ -205,27 +218,34 @@ export default function EmptyStatesTemplate() {
         <Card>
           <CardHeader code="0x03" title="FEATURES" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-2 text-xs")}>
+            <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> Common empty state patterns
+                <span className="text-success">&gt;</span> Common empty state
+                patterns
               </div>
               <div>
-                <span className="text-success">&gt;</span> Terminal-style status output
+                <span className="text-success">&gt;</span> Terminal-style status
+                output
               </div>
               <div>
-                <span className="text-success">&gt;</span> Contextual action buttons
+                <span className="text-success">&gt;</span> Contextual action
+                buttons
               </div>
               <div>
-                <span className="text-success">&gt;</span> Error state differentiation
+                <span className="text-success">&gt;</span> Error state
+                differentiation
               </div>
               <div>
-                <span className="text-success">&gt;</span> First-time user guidance
+                <span className="text-success">&gt;</span> First-time user
+                guidance
               </div>
               <div>
-                <span className="text-success">&gt;</span> Search result fallback
+                <span className="text-success">&gt;</span> Search result
+                fallback
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant
+                (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

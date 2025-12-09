@@ -3,9 +3,9 @@
  * Functions for inviting and onboarding new team members
  */
 
-import { prisma } from "@/lib/prisma";
-import * as crypto from "crypto";
-import type { OrgRole } from "./types";
+import { prisma } from '@/lib/prisma';
+import * as crypto from 'crypto';
+import type { OrgRole } from './types';
 
 /**
  * Check if user is member of organization
@@ -50,7 +50,7 @@ export async function inviteToOrganization(data: {
     );
 
     if (isMember) {
-      throw new Error("User is already a member of this organization");
+      throw new Error('User is already a member of this organization');
     }
   }
 
@@ -74,7 +74,7 @@ export async function inviteToOrganization(data: {
   }
 
   // Generate invite token
-  const token = crypto.randomBytes(32).toString("hex");
+  const token = crypto.randomBytes(32).toString('hex');
 
   // Create invite
   const invite = await prisma.organizationInvite.create({
@@ -115,15 +115,15 @@ export async function acceptInvite(
   });
 
   if (!invite) {
-    throw new Error("Invite not found");
+    throw new Error('Invite not found');
   }
 
   if (invite.acceptedAt) {
-    throw new Error("Invite already accepted");
+    throw new Error('Invite already accepted');
   }
 
   if (invite.expiresAt < new Date()) {
-    throw new Error("Invite expired");
+    throw new Error('Invite expired');
   }
 
   // Verify email matches user
@@ -132,7 +132,7 @@ export async function acceptInvite(
   });
 
   if (!user || user.email !== invite.email) {
-    throw new Error("Invite email does not match user");
+    throw new Error('Invite email does not match user');
   }
 
   // Add user to organization

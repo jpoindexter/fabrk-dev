@@ -3,15 +3,16 @@
  * SEO and social media metadata for the application
  */
 
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
 export const siteConfig = {
-  name: "Fabrk Boilerplate",
-  description: "Production-ready Next.js SaaS boilerplate with authentication, payments, and more",
-  url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
-  ogImage: "/og-image.png",
+  name: 'Fabrk Boilerplate',
+  description:
+    'Production-ready Next.js SaaS boilerplate with authentication, payments, and more',
+  url: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
+  ogImage: '/og-image.png',
   links: {
-    github: "https://github.com/yourusername/fabrk-boilerplate",
+    github: 'https://github.com/yourusername/fabrk-boilerplate',
   },
 };
 
@@ -22,25 +23,25 @@ export const defaultMetadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: [
-    "Next.js",
-    "React",
-    "Tailwind CSS",
-    "SaaS",
-    "Boilerplate",
-    "Authentication",
-    "Stripe",
-    "Prisma",
+    'Next.js',
+    'React',
+    'Tailwind CSS',
+    'SaaS',
+    'Boilerplate',
+    'Authentication',
+    'Stripe',
+    'Prisma',
   ],
   authors: [
     {
-      name: "Your Name",
-      url: "https://yourwebsite.com",
+      name: 'Your Name',
+      url: 'https://yourwebsite.com',
     },
   ],
-  creator: "Your Name",
+  creator: 'Your Name',
   openGraph: {
-    type: "website",
-    locale: "en_US",
+    type: 'website',
+    locale: 'en_US',
     url: siteConfig.url,
     title: siteConfig.name,
     description: siteConfig.description,
@@ -55,11 +56,11 @@ export const defaultMetadata: Metadata = {
     ],
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    icon: '/favicon.ico',
+    shortcut: '/favicon-16x16.png',
+    apple: '/apple-touch-icon.png',
   },
-  manifest: "/site.webmanifest",
+  manifest: '/site.webmanifest',
 };
 
 /**
@@ -89,9 +90,10 @@ export function generateMetadata({
   description,
   image,
   noIndex = false,
-  path = "",
+  path = '',
 }: GenerateMetadataProps): Metadata {
-  const fullTitle = title === siteConfig.name ? title : `${title} | ${siteConfig.name}`;
+  const fullTitle =
+    title === siteConfig.name ? title : `${title} | ${siteConfig.name}`;
   const metaDescription = description || siteConfig.description;
   const ogImage = image || siteConfig.ogImage;
   const url = `${siteConfig.url}${path}`;
@@ -99,7 +101,7 @@ export function generateMetadata({
   return {
     title: fullTitle,
     description: metaDescription,
-    robots: noIndex ? "noindex, nofollow" : "index, follow",
+    robots: noIndex ? 'noindex, nofollow' : 'index, follow',
     openGraph: {
       title: fullTitle,
       description: metaDescription,
@@ -113,8 +115,8 @@ export function generateMetadata({
           alt: fullTitle,
         },
       ],
-      locale: "en_US",
-      type: "website",
+      locale: 'en_US',
+      type: 'website',
     },
     alternates: {
       canonical: url,
@@ -127,8 +129,8 @@ export function generateMetadata({
  */
 export function generateOrganizationSchema() {
   return {
-    "@context": "https://schema.org",
-    "@type": "Organization",
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
     name: siteConfig.name,
     description: siteConfig.description,
     url: siteConfig.url,
@@ -142,23 +144,23 @@ export function generateOrganizationSchema() {
  */
 export function generateProductSchema() {
   return {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
     name: siteConfig.name,
     description: siteConfig.description,
     url: siteConfig.url,
-    applicationCategory: "DeveloperApplication",
-    operatingSystem: "Web",
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Web',
     offers: {
-      "@type": "Offer",
-      price: "79",
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
+      '@type': 'Offer',
+      price: '79',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
     },
     aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      ratingCount: "127",
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      ratingCount: '127',
     },
   };
 }
@@ -166,12 +168,14 @@ export function generateProductSchema() {
 /**
  * Generate breadcrumb JSON-LD structured data
  */
-export function generateBreadcrumbSchema(items: { name: string; url: string }[]) {
+export function generateBreadcrumbSchema(
+  items: { name: string; url: string }[]
+) {
   return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
     itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
+      '@type': 'ListItem',
       position: index + 1,
       name: item.name,
       item: `${siteConfig.url}${item.url}`,
@@ -182,15 +186,17 @@ export function generateBreadcrumbSchema(items: { name: string; url: string }[])
 /**
  * Generate FAQ JSON-LD structured data
  */
-export function generateFAQSchema(faqs: { question: string; answer: string }[]) {
+export function generateFAQSchema(
+  faqs: { question: string; answer: string }[]
+) {
   return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
     mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
+      '@type': 'Question',
       name: faq.question,
       acceptedAnswer: {
-        "@type": "Answer",
+        '@type': 'Answer',
         text: faq.answer,
       },
     })),

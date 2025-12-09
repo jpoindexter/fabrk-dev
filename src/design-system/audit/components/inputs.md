@@ -84,8 +84,9 @@ Comprehensive input system covering:
 ### Issues
 
 1. **Inconsistent placeholder styling:**
+
    ```tsx
-   "placeholder:text-muted-foreground placeholder:font-normal";
+   'placeholder:text-muted-foreground placeholder:font-normal';
    ```
 
    - `font-normal` overrides `mode.font` for placeholders
@@ -142,6 +143,7 @@ Comprehensive input system covering:
    - **Bug:** Malformed className string
 
 2. **Button hover background:**
+
    ```tsx
    className={`hover:bg-background/0`}
    ```
@@ -251,8 +253,8 @@ Comprehensive input system covering:
 **Unique Pattern:**
 
 ```tsx
-mode.radius === "rounded-none" ? "rounded-b-none" : "";
-mode.radius === "rounded-none" ? "rounded-t-none" : "";
+mode.radius === 'rounded-none' ? 'rounded-b-none' : '';
+mode.radius === 'rounded-none' ? 'rounded-t-none' : '';
 ```
 
 - Removes specific corners for stacked buttons
@@ -274,7 +276,7 @@ mode.radius === "rounded-none" ? "rounded-t-none" : "";
 1. **Mode radius string comparison:**
 
    ```tsx
-   mode.radius === "rounded-none" ? "rounded-b-none" : "";
+   mode.radius === 'rounded-none' ? 'rounded-b-none' : '';
    ```
 
    - Assumes `mode.radius` is literal string `"rounded-none"`
@@ -338,8 +340,8 @@ Extends `input-otp` library:
 
 ```tsx
 cn(
-  "border-y border-r",
-  "first:border-l",
+  'border-y border-r',
+  'first:border-l',
   mode.radius // Applied to all slots
 );
 ```
@@ -366,6 +368,7 @@ cn(
    - **Fix:** Use `cn()` with conditional logic
 
 2. **Trailing empty strings:**
+
    ```tsx
    className={cn("...", className, "")}
    ```
@@ -517,7 +520,7 @@ cn(
 Container-level focus state:
 
 ```tsx
-"has-[[data-slot=input-group-control]:focus-visible]:ring-ring";
+'has-[[data-slot=input-group-control]:focus-visible]:ring-ring';
 ```
 
 - Focus on nested input applies ring to container
@@ -526,7 +529,7 @@ Container-level focus state:
 #### 4. Error State Propagation
 
 ```tsx
-"has-[[data-slot][aria-invalid=true]]:border-destructive";
+'has-[[data-slot][aria-invalid=true]]:border-destructive';
 ```
 
 - Error state on input propagates to container
@@ -546,7 +549,7 @@ Container-level focus state:
 1. **Complex selector patterns:**
 
    ```tsx
-   "has-[>[data-align=inline-start]]:[&>input]:pl-2";
+   'has-[>[data-align=inline-start]]:[&>input]:pl-2';
    ```
 
    - Uses `:has()` and descendant selectors
@@ -564,6 +567,7 @@ Container-level focus state:
    - Affects keyboard shortcut display
 
 3. **Addon click handler:**
+
    ```tsx
    onClick={(e) => {
      if ((e.target as HTMLElement).closest("button")) {

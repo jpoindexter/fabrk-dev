@@ -3,17 +3,17 @@
  * View credit balance, usage history, and analytics
  */
 
-import { Suspense } from "react";
-import { redirect } from "next/navigation";
-import { auth } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { Coins, Activity, TrendingDown, Calendar } from "lucide-react";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
-import { UsageChart } from "@/components/credits/usage-chart";
-import { TransactionTable } from "@/components/credits/transaction-table";
-import { TIER_ALLOWANCES, type SubscriptionTier } from "@/lib/credits/pricing";
+import { Suspense } from 'react';
+import { redirect } from 'next/navigation';
+import { auth } from '@/lib/auth';
+import { prisma } from '@/lib/prisma';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Coins, Activity, TrendingDown, Calendar } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
+import { UsageChart } from '@/components/credits/usage-chart';
+import { TransactionTable } from '@/components/credits/transaction-table';
+import { TIER_ALLOWANCES, type SubscriptionTier } from '@/lib/credits/pricing';
 
 async function getUsageData(userId: string) {
   const thirtyDaysAgo = new Date();
@@ -31,8 +31,9 @@ async function getUsageData(userId: string) {
       select: { tier: true },
     });
 
-    const tier = (user?.tier || "free") as SubscriptionTier;
-    const allowance = TIER_ALLOWANCES[tier] === Infinity ? 999999 : TIER_ALLOWANCES[tier];
+    const tier = (user?.tier || 'free') as SubscriptionTier;
+    const allowance =
+      TIER_ALLOWANCES[tier] === Infinity ? 999999 : TIER_ALLOWANCES[tier];
 
     balance = await prisma.creditBalance.create({
       data: {
@@ -47,7 +48,7 @@ async function getUsageData(userId: string) {
   // Get transactions
   const transactions = await prisma.creditTransaction.findMany({
     where: { balanceId: balance.id },
-    orderBy: { createdAt: "desc" },
+    orderBy: { createdAt: 'desc' },
     take: 20,
   });
 
@@ -55,16 +56,16 @@ async function getUsageData(userId: string) {
   const usageTransactions = await prisma.creditTransaction.findMany({
     where: {
       balanceId: balance.id,
-      type: "USAGE",
+      type: 'USAGE',
       createdAt: { gte: thirtyDaysAgo },
     },
-    orderBy: { createdAt: "asc" },
+    orderBy: { createdAt: 'asc' },
   });
 
   // Group by day
   const dailyUsage: Record<string, number> = {};
   usageTransactions.forEach((tx: { createdAt: Date; amount: number }) => {
-    const day = tx.createdAt.toISOString().split("T")[0];
+    const day = tx.createdAt.toISOString().split('T')[0];
     dailyUsage[day] = (dailyUsage[day] || 0) + Math.abs(tx.amount);
   });
 
@@ -73,7 +74,7 @@ async function getUsageData(userId: string) {
   for (let i = 29; i >= 0; i--) {
     const date = new Date();
     date.setDate(date.getDate() - i);
-    const dateStr = date.toISOString().split("T")[0];
+    const dateStr = date.toISOString().split('T')[0];
     usageStats.push({
       date: dateStr,
       credits: dailyUsage[dateStr] || 0,
@@ -84,13 +85,14 @@ async function getUsageData(userId: string) {
 
   // Calculate days until refill (compute here to avoid impure Date.now() in render)
   const daysUntilRefill = Math.ceil(
-    (balance.lastRefill.getTime() + 30 * 24 * 60 * 60 * 1000 - Date.now()) / (24 * 60 * 60 * 1000)
+    (balance.lastRefill.getTime() + 30 * 24 * 60 * 60 * 1000 - Date.now()) /
+      (24 * 60 * 60 * 1000)
   );
 
   return {
     balance: balance.balance,
     monthlyAllowance: balance.monthlyAllowance,
-    tier: balance.user.tier || "free",
+    tier: balance.user.tier || 'free',
     lastRefill: balance.lastRefill,
     daysUntilRefill: Math.max(0, daysUntilRefill),
     transactions: transactions.map(
@@ -124,7 +126,11 @@ async function UsageDashboard({ userId }: { userId: string }) {
       {/* Key Metrics */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card tone="primary">
-          <CardHeader code="0x01" title="CURRENT_BALANCE" icon={<Coins className="h-4 w-4" />} />
+          <CardHeader
+            code="0x01"
+            title="CURRENT_BALANCE"
+            icon={<Coins className="h-4 w-4" />}
+          />
           <CardContent>
             <div className="text-2xl font-semibold">{data.balance}</div>
             <p className="text-muted-foreground text-xs">
@@ -134,26 +140,44 @@ async function UsageDashboard({ userId }: { userId: string }) {
         </Card>
 
         <Card tone="neutral">
-          <CardHeader code="0x02" title="USAGE_30D" icon={<TrendingDown className="h-4 w-4" />} />
+          <CardHeader
+            code="0x02"
+            title="USAGE_30D"
+            icon={<TrendingDown className="h-4 w-4" />}
+          />
           <CardContent>
             <div className="text-2xl font-semibold">{data.totalUsage}</div>
-            <p className="text-muted-foreground text-xs">credits used this month</p>
+            <p className="text-muted-foreground text-xs">
+              credits used this month
+            </p>
           </CardContent>
         </Card>
 
         <Card tone="success">
-          <CardHeader code="0x03" title="TIER" icon={<Activity className="h-4 w-4" />} />
+          <CardHeader
+            code="0x03"
+            title="TIER"
+            icon={<Activity className="h-4 w-4" />}
+          />
           <CardContent>
             <div className="text-2xl font-semibold uppercase">{data.tier}</div>
-            <p className="text-muted-foreground text-xs">{data.monthlyAllowance} credits/month</p>
+            <p className="text-muted-foreground text-xs">
+              {data.monthlyAllowance} credits/month
+            </p>
           </CardContent>
         </Card>
 
         <Card tone="primary">
-          <CardHeader code="0x04" title="NEXT_REFILL" icon={<Calendar className="h-4 w-4" />} />
+          <CardHeader
+            code="0x04"
+            title="NEXT_REFILL"
+            icon={<Calendar className="h-4 w-4" />}
+          />
           <CardContent>
             <div className="text-2xl font-semibold">{data.daysUntilRefill}</div>
-            <p className="text-muted-foreground text-xs">days until credit refresh</p>
+            <p className="text-muted-foreground text-xs">
+              days until credit refresh
+            </p>
           </CardContent>
         </Card>
       </div>
@@ -169,12 +193,16 @@ async function UsageDashboard({ userId }: { userId: string }) {
                 {data.balance} / {data.monthlyAllowance}
               </span>
             </div>
-            <div className={cn("bg-muted h-3 w-full", mode.radius)}>
+            <div className={cn('bg-muted h-3 w-full', mode.radius)}>
               <div
                 className={cn(
-                  "h-full transition-all",
+                  'h-full transition-all',
                   mode.radius,
-                  percentage > 50 ? "bg-primary" : percentage > 20 ? "bg-warning" : "bg-destructive"
+                  percentage > 50
+                    ? 'bg-primary'
+                    : percentage > 20
+                      ? 'bg-warning'
+                      : 'bg-destructive'
                 )}
                 style={{ width: `${Math.min(percentage, 100)}%` }}
               />
@@ -206,14 +234,16 @@ export default async function UsagePage() {
   const session = await auth();
 
   if (!session?.user?.id) {
-    redirect("/auth/login");
+    redirect('/auth/login');
   }
 
   return (
     <div className="space-y-6">
       <div>
-        <h1 className={cn("text-4xl font-semibold tracking-tight", mode.font)}>AI Credit Usage</h1>
-        <p className={cn("text-muted-foreground", mode.font)}>
+        <h1 className={cn('text-4xl font-semibold tracking-tight', mode.font)}>
+          AI Credit Usage
+        </h1>
+        <p className={cn('text-muted-foreground', mode.font)}>
           Monitor your AI credit balance and usage history
         </p>
       </div>
@@ -221,7 +251,9 @@ export default async function UsagePage() {
       <Suspense
         fallback={
           <div className="flex h-96 items-center justify-center">
-            <div className={cn("text-muted-foreground", mode.font)}>Loading usage data...</div>
+            <div className={cn('text-muted-foreground', mode.font)}>
+              Loading usage data...
+            </div>
           </div>
         }
       >

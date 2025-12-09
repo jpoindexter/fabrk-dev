@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
-import { Square } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+import * as React from 'react';
+import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
+import { Square } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 const RadioGroup = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
@@ -13,7 +13,7 @@ const RadioGroup = React.forwardRef<
   return (
     <RadioGroupPrimitive.Root
       data-slot="radio-group"
-      className={cn("grid gap-2", className)}
+      className={cn('grid gap-2', className)}
       {...props}
       ref={ref}
     />
@@ -30,10 +30,10 @@ const RadioGroupItem = React.forwardRef<
       ref={ref}
       data-slot="radio-group-item"
       className={cn(
-        "text-primary ring-offset-background aspect-square h-5 w-5 border transition-colors",
+        'text-primary ring-offset-background aspect-square h-5 w-5 border transition-colors',
         mode.radius,
-        "focus-visible:ring-primary focus:outline-none focus-visible:ring-2",
-        "disabled:cursor-not-allowed disabled:opacity-50",
+        'focus-visible:ring-primary focus:outline-none focus-visible:ring-2',
+        'disabled:cursor-not-allowed disabled:opacity-50',
         className
       )}
       {...props}

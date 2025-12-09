@@ -1,12 +1,12 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { Card, CardContent } from "@/components/ui/card";
-import { Palette, Sun, Moon, Sparkles } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
+import { Card, CardContent } from '@/components/ui/card';
+import { Palette, Sun, Moon, Sparkles } from 'lucide-react';
 
 export const metadata = {
-  title: "Theming & Colors - Fabrk Docs",
+  title: 'Theming & Colors - Fabrk Docs',
   description:
-    "Customize your Fabrk app with 20 built-in color themes. Switch themes instantly or create your own brand colors.",
+    'Customize your Fabrk app with 20 built-in color themes. Switch themes instantly or create your own brand colors.',
 };
 
 export default function ThemingPage() {
@@ -18,15 +18,31 @@ export default function ThemingPage() {
       description="Choose from 20 professionally-designed color themes or create your own."
       overview="20 color themes inspired by DaisyUI. Light/dark mode with next-themes, persistent localStorage, no theme flash, and Tailwind v4 native."
       features={[
-        { icon: Palette, title: "20 Themes", description: "DaisyUI-inspired palettes." },
-        { icon: Sun, title: "Light/Dark", description: "Automatic mode switching." },
-        { icon: Moon, title: "Persistent", description: "Saved to localStorage." },
-        { icon: Sparkles, title: "No Flash", description: "Pre-hydration loading." },
+        {
+          icon: Palette,
+          title: '20 Themes',
+          description: 'DaisyUI-inspired palettes.',
+        },
+        {
+          icon: Sun,
+          title: 'Light/Dark',
+          description: 'Automatic mode switching.',
+        },
+        {
+          icon: Moon,
+          title: 'Persistent',
+          description: 'Saved to localStorage.',
+        },
+        {
+          icon: Sparkles,
+          title: 'No Flash',
+          description: 'Pre-hydration loading.',
+        },
       ]}
       usage={[
         {
-          title: "Theme Switcher Component",
-          description: "Compact dropdown for navbar",
+          title: 'Theme Switcher Component',
+          description: 'Compact dropdown for navbar',
           code: `import { ThemeDropdown } from "@/components/theme/theme-dropdown";
 
 export function MyNavbar() {
@@ -36,11 +52,11 @@ export function MyNavbar() {
     </nav>
   );
 }`,
-          language: "tsx",
+          language: 'tsx',
         },
         {
-          title: "How It Works",
-          description: "Themes applied via data-theme attribute",
+          title: 'How It Works',
+          description: 'Themes applied via data-theme attribute',
           code: `<!-- Themes work via data-theme attribute (DaisyUI pattern) -->
 <html data-theme="light">
   <!-- data-theme="light" sets the color palette -->
@@ -52,11 +68,11 @@ export function MyNavbar() {
   const theme = localStorage.getItem('theme') || 'light';
   document.documentElement.setAttribute('data-theme', theme);
 </script>`,
-          language: "html",
+          language: 'html',
         },
         {
-          title: "CSS Implementation",
-          description: "Each theme defines CSS variables in globals.css",
+          title: 'CSS Implementation',
+          description: 'Each theme defines CSS variables in globals.css',
           code: `/* Light (default) */
 [data-theme="light"] {
   --primary: 259 94% 51%;
@@ -79,11 +95,11 @@ export function MyNavbar() {
   --background: 231 15% 18%;
   /* ...more variables */
 }`,
-          language: "css",
+          language: 'css',
         },
         {
-          title: "Using Theme Colors",
-          description: "Always use semantic color classes",
+          title: 'Using Theme Colors',
+          description: 'Always use semantic color classes',
           code: `// ✅ GOOD - Theme-aware colors
 <button className="bg-primary text-primary-foreground">
   Matches active theme (light, synthwave, dracula, etc.)
@@ -97,11 +113,11 @@ export function MyNavbar() {
 <button className="bg-[hardcoded] text-[hardcoded]">
   Always same color, ignores theme selection
 </button>`,
-          language: "tsx",
+          language: 'tsx',
         },
         {
-          title: "Adding Custom Themes",
-          description: "Add your own DaisyUI-style themes",
+          title: 'Adding Custom Themes',
+          description: 'Add your own DaisyUI-style themes',
           code: `/* Step 1: Add CSS in globals.css */
 [data-theme="ocean"] {
   --primary: 199 89% 48%;
@@ -119,21 +135,25 @@ const themes = [
   // ...existing DaisyUI themes...
   { id: "ocean", name: "Ocean", preview: "#0ea5e9" }, // Your custom theme
 ];`,
-          language: "css",
+          language: 'css',
         },
       ]}
-      previous={{ title: "Testing", href: "/docs/extras/testing" }}
-      next={{ title: "Launch Checklist", href: "/docs/launch/checklist" }}
+      previous={{ title: 'Testing', href: '/docs/extras/testing' }}
+      next={{ title: 'Launch Checklist', href: '/docs/launch/checklist' }}
     >
       {/* Theme System */}
       <DocsSection title="Theme System">
         <DocsCard title="THEME_SYSTEM">
           <div className="space-y-1">
-            <div>├─ 20 Color Themes: Inspired by DaisyUI&apos;s theme system</div>
+            <div>
+              ├─ 20 Color Themes: Inspired by DaisyUI&apos;s theme system
+            </div>
             <div>├─ Light/Dark Mode: Automatic dark mode with next-themes</div>
             <div>├─ Persistent: Theme choice saved to localStorage</div>
             <div>├─ No Flash: Pre-hydration loading prevents theme flash</div>
-            <div>└─ Tailwind v4 Native: Works seamlessly with Tailwind CSS v4</div>
+            <div>
+              └─ Tailwind v4 Native: Works seamlessly with Tailwind CSS v4
+            </div>
           </div>
         </DocsCard>
       </DocsSection>
@@ -142,26 +162,26 @@ const themes = [
       <DocsSection title="Available Color Themes">
         <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { name: "Light", desc: "Default", color: "#ffffff" },
-            { name: "Dark", desc: "Default dark", color: "#1d232a" },
-            { name: "Cupcake", desc: "Soft pastel", color: "#65c3c8" },
-            { name: "Bumblebee", desc: "Yellow gold", color: "#e0a82e" },
-            { name: "Emerald", desc: "Green fresh", color: "#66cc8a" },
-            { name: "Corporate", desc: "Business blue", color: "#4b6bfb" },
-            { name: "Synthwave", desc: "Neon retro", color: "#e779c1" },
-            { name: "Retro", desc: "Vintage warm", color: "#ef9995" },
-            { name: "Cyberpunk", desc: "Futuristic", color: "#ff7598" },
-            { name: "Valentine", desc: "Romantic pink", color: "#e96d7b" },
-            { name: "Halloween", desc: "Spooky orange", color: "#ff7700" },
-            { name: "Forest", desc: "Nature green", color: "#1eb854" },
-            { name: "Aqua", desc: "Ocean cyan", color: "#09ecf3" },
-            { name: "Lo-Fi", desc: "Minimal dark", color: "#0d0d0d" },
-            { name: "Pastel", desc: "Soft colors", color: "#d1c1d7" },
-            { name: "Fantasy", desc: "Magic purple", color: "#6e0b75" },
-            { name: "Luxury", desc: "Elegant gold", color: "#ffffff" },
-            { name: "Dracula", desc: "Dark purple", color: "#ff79c6" },
-            { name: "Autumn", desc: "Fall warmth", color: "#8c0327" },
-            { name: "Business", desc: "Professional", color: "#1c4e80" },
+            { name: 'Light', desc: 'Default', color: '#ffffff' },
+            { name: 'Dark', desc: 'Default dark', color: '#1d232a' },
+            { name: 'Cupcake', desc: 'Soft pastel', color: '#65c3c8' },
+            { name: 'Bumblebee', desc: 'Yellow gold', color: '#e0a82e' },
+            { name: 'Emerald', desc: 'Green fresh', color: '#66cc8a' },
+            { name: 'Corporate', desc: 'Business blue', color: '#4b6bfb' },
+            { name: 'Synthwave', desc: 'Neon retro', color: '#e779c1' },
+            { name: 'Retro', desc: 'Vintage warm', color: '#ef9995' },
+            { name: 'Cyberpunk', desc: 'Futuristic', color: '#ff7598' },
+            { name: 'Valentine', desc: 'Romantic pink', color: '#e96d7b' },
+            { name: 'Halloween', desc: 'Spooky orange', color: '#ff7700' },
+            { name: 'Forest', desc: 'Nature green', color: '#1eb854' },
+            { name: 'Aqua', desc: 'Ocean cyan', color: '#09ecf3' },
+            { name: 'Lo-Fi', desc: 'Minimal dark', color: '#0d0d0d' },
+            { name: 'Pastel', desc: 'Soft colors', color: '#d1c1d7' },
+            { name: 'Fantasy', desc: 'Magic purple', color: '#6e0b75' },
+            { name: 'Luxury', desc: 'Elegant gold', color: '#ffffff' },
+            { name: 'Dracula', desc: 'Dark purple', color: '#ff79c6' },
+            { name: 'Autumn', desc: 'Fall warmth', color: '#8c0327' },
+            { name: 'Business', desc: 'Professional', color: '#1c4e80' },
           ].map((theme) => (
             <Card
               key={theme.name}
@@ -176,7 +196,9 @@ const themes = [
                   />
                   <div>
                     <div className="font-mono text-xs">{theme.name}</div>
-                    <div className="text-muted-foreground font-mono text-xs">{theme.desc}</div>
+                    <div className="text-muted-foreground font-mono text-xs">
+                      {theme.desc}
+                    </div>
                   </div>
                 </div>
               </CardContent>
@@ -189,10 +211,17 @@ const themes = [
       <DocsSection title="Best Practices">
         <DocsCard title="BEST_PRACTICES">
           <div className="space-y-1">
-            <div>├─ Use semantic colors: bg-primary instead of bg-purple-500</div>
-            <div>├─ Test across themes: Verify UI works in light and dark variants</div>
+            <div>
+              ├─ Use semantic colors: bg-primary instead of bg-purple-500
+            </div>
+            <div>
+              ├─ Test across themes: Verify UI works in light and dark variants
+            </div>
             <div>├─ Default to Light: Clean, neutral starting point</div>
-            <div>└─ Customize themes: Modify colors in globals.css [data-theme] selectors</div>
+            <div>
+              └─ Customize themes: Modify colors in globals.css [data-theme]
+              selectors
+            </div>
           </div>
         </DocsCard>
       </DocsSection>

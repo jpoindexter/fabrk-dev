@@ -4,8 +4,8 @@
  * Uses [ [0xXX] TITLE ] format for consistency
  */
 
-import Link from "next/link";
-import { cn } from "@/lib/utils";
+import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 interface DocsLinkCardProps {
   /** Link destination */
@@ -20,21 +20,27 @@ interface DocsLinkCardProps {
   className?: string;
 }
 
-export function DocsLinkCard({ href, title, description, code = "00", className }: DocsLinkCardProps) {
+export function DocsLinkCard({
+  href,
+  title,
+  description,
+  code = '00',
+  className,
+}: DocsLinkCardProps) {
   const headerTitle = title.toUpperCase().replace(/\s+/g, '_');
 
   return (
-    <Link href={href} className={cn("block group", className)}>
-      <div className="h-full border border-border bg-card transition-all hover:border-primary/50">
+    <Link href={href} className={cn('group block', className)}>
+      <div className="border-border bg-card hover:border-primary/50 h-full border transition-all">
         {/* Terminal Header */}
-        <div className="border-b border-border px-4 py-2">
-          <span className="font-mono text-xs text-muted-foreground group-hover:text-primary transition-colors">
+        <div className="border-border border-b px-4 py-2">
+          <span className="text-muted-foreground group-hover:text-primary font-mono text-xs transition-colors">
             [ [0x{code}] {headerTitle} ]
           </span>
         </div>
         {/* Content */}
         <div className="p-4">
-          <p className="font-mono text-xs text-muted-foreground">
+          <p className="text-muted-foreground font-mono text-xs">
             DESC: {description}
           </p>
         </div>

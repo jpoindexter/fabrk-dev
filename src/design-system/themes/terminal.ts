@@ -5,8 +5,8 @@
  * Developer tools, CLI-inspired aesthetic.
  */
 
-import { primitives } from "../tokens/primitives";
-import type { SemanticTokens } from "../tokens/semantic";
+import { primitives } from '../tokens/primitives';
+import type { SemanticTokens } from '../tokens/semantic';
 
 export const terminalTheme: SemanticTokens = {
   color: {
@@ -72,9 +72,9 @@ export const terminalTheme: SemanticTokens = {
     ui: primitives.fontFamily.mono,
   },
   textTransform: {
-    button: "uppercase",
-    label: "uppercase",
-    heading: "uppercase",
+    button: 'uppercase',
+    label: 'uppercase',
+    heading: 'uppercase',
   },
   spacing: {
     component: {
@@ -109,7 +109,7 @@ export const terminalTheme: SemanticTokens = {
  * Example: "Save Changes" → "> SAVE_CHANGES"
  */
 export function formatButtonText(text: string): string {
-  return `> ${text.toUpperCase().replace(/ /g, "_")}`;
+  return `> ${text.toUpperCase().replace(/ /g, '_')}`;
 }
 
 /**
@@ -125,7 +125,7 @@ export function formatLabelText(label: string): string {
  * Example: ("Settings", "00") → "[ [0x00] SETTINGS ]"
  */
 export function formatCardHeader(title: string, code?: string): string {
-  const hexCode = code ? `[0x${code}] ` : "";
+  const hexCode = code ? `[0x${code}] ` : '';
   return `[ ${hexCode}${title.toUpperCase()} ]`;
 }
 
@@ -142,15 +142,15 @@ export function formatStatusText(status: string): string {
 // =============================================================================
 
 export const terminalClasses = {
-  radius: "rounded-none",
-  font: "font-mono",
-  text: "uppercase",
-  cardHeader: "font-mono text-xs text-muted-foreground",
-  label: "font-mono text-xs text-muted-foreground uppercase",
-  button: "rounded-none font-mono uppercase",
-  input: "rounded-none font-mono border-border",
-  card: "rounded-none border border-border",
-  badge: "rounded-sm font-mono text-xs uppercase",
+  radius: 'rounded-none',
+  font: 'font-mono',
+  text: 'uppercase',
+  cardHeader: 'font-mono text-xs text-muted-foreground',
+  label: 'font-mono text-xs text-muted-foreground uppercase',
+  button: 'rounded-none font-mono uppercase',
+  input: 'rounded-none font-mono border-border',
+  card: 'rounded-none border border-border',
+  badge: 'rounded-sm font-mono text-xs uppercase',
 } as const;
 
 export default terminalTheme;

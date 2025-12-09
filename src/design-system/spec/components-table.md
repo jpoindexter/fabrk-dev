@@ -24,7 +24,7 @@ import {
   TableRow,
   TableCell,
   TableCaption,
-} from "@/components/ui/table";
+} from '@/components/ui/table';
 ```
 
 ### Basic Usage
@@ -70,7 +70,7 @@ import {
 ### Table (Container)
 
 ```tsx
-<Table className={cn("w-full caption-bottom text-xs", mode.font)} />
+<Table className={cn('w-full caption-bottom text-xs', mode.font)} />
 ```
 
 Wrapped in scrollable container for responsive overflow.
@@ -86,7 +86,7 @@ Wrapped in scrollable container for responsive overflow.
 ```tsx
 <TableHead
   className={cn(
-    "bg-muted text-muted-foreground h-12 px-4 text-left align-middle text-xs font-semibold",
+    'bg-muted text-muted-foreground h-12 px-4 text-left align-middle text-xs font-semibold',
     mode.font
   )}
 />
@@ -119,7 +119,7 @@ Wrapped in scrollable container for responsive overflow.
 ### TableCaption
 
 ```tsx
-<TableCaption className={cn("text-muted-foreground mt-4 text-xs", mode.font)} />
+<TableCaption className={cn('text-muted-foreground mt-4 text-xs', mode.font)} />
 ```
 
 ---
@@ -157,7 +157,7 @@ Wrapped in scrollable container for responsive overflow.
 ### With Selection
 
 ```tsx
-<TableRow data-state={isSelected ? "selected" : undefined}>
+<TableRow data-state={isSelected ? 'selected' : undefined}>
   <TableCell>
     <Checkbox checked={isSelected} onCheckedChange={setSelected} />
   </TableCell>

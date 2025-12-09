@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
+import { ComponentShowcaseTemplate } from '@/components/docs';
 import {
   InputGroup,
   InputGroupAddon,
@@ -9,9 +9,18 @@ import {
   InputGroupSeparator,
   InputGroupText,
   InputGroupTextarea,
-} from "@/components/ui/input-group";
-import { Search, Mail, DollarSign, Lock, Eye, EyeOff, X, Send } from "lucide-react";
-import { useState } from "react";
+} from '@/components/ui/input-group';
+import {
+  Search,
+  Mail,
+  DollarSign,
+  Lock,
+  Eye,
+  EyeOff,
+  X,
+  Send,
+} from 'lucide-react';
+import { useState } from 'react';
 
 function PasswordToggleExample() {
   const [showPassword, setShowPassword] = useState(false);
@@ -22,7 +31,7 @@ function PasswordToggleExample() {
         <Lock className="size-4" />
       </InputGroupAddon>
       <InputGroupInput
-        type={showPassword ? "text" : "password"}
+        type={showPassword ? 'text' : 'password'}
         placeholder="Enter password"
       />
       <InputGroupAddon align="inline-end">
@@ -30,7 +39,11 @@ function PasswordToggleExample() {
           size="icon-xs"
           onClick={() => setShowPassword(!showPassword)}
         >
-          {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+          {showPassword ? (
+            <EyeOff className="size-4" />
+          ) : (
+            <Eye className="size-4" />
+          )}
         </InputGroupButton>
       </InputGroupAddon>
     </InputGroup>
@@ -38,7 +51,7 @@ function PasswordToggleExample() {
 }
 
 export default function InputGroupPage() {
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
 
   return (
     <ComponentShowcaseTemplate
@@ -73,8 +86,8 @@ export default function InputGroupPage() {
       }}
       variants={[
         {
-          title: "With Trailing Icon",
-          description: "Icon positioned at the end of input.",
+          title: 'With Trailing Icon',
+          description: 'Icon positioned at the end of input.',
           preview: (
             <InputGroup>
               <InputGroupInput type="email" placeholder="you@example.com" />
@@ -91,8 +104,8 @@ export default function InputGroupPage() {
 </InputGroup>`,
         },
         {
-          title: "With Text Addon",
-          description: "Text prefix for input context.",
+          title: 'With Text Addon',
+          description: 'Text prefix for input context.',
           preview: (
             <InputGroup>
               <InputGroupAddon>
@@ -113,8 +126,8 @@ export default function InputGroupPage() {
 </InputGroup>`,
         },
         {
-          title: "With Button",
-          description: "Action button integrated with input.",
+          title: 'With Button',
+          description: 'Action button integrated with input.',
           preview: (
             <InputGroup>
               <InputGroupInput
@@ -124,7 +137,10 @@ export default function InputGroupPage() {
               />
               {searchValue && (
                 <InputGroupAddon align="inline-end">
-                  <InputGroupButton size="icon-xs" onClick={() => setSearchValue("")}>
+                  <InputGroupButton
+                    size="icon-xs"
+                    onClick={() => setSearchValue('')}
+                  >
                     <X className="size-4" />
                   </InputGroupButton>
                 </InputGroupAddon>
@@ -149,8 +165,8 @@ export default function InputGroupPage() {
 </InputGroup>`,
         },
         {
-          title: "Password Toggle",
-          description: "Password input with show/hide toggle.",
+          title: 'Password Toggle',
+          description: 'Password input with show/hide toggle.',
           preview: <PasswordToggleExample />,
           code: `const [showPassword, setShowPassword] = useState(false);
 
@@ -173,8 +189,8 @@ export default function InputGroupPage() {
 </InputGroup>`,
         },
         {
-          title: "With Separator",
-          description: "Multiple addons separated visually.",
+          title: 'With Separator',
+          description: 'Multiple addons separated visually.',
           preview: (
             <InputGroup>
               <InputGroupAddon>
@@ -205,8 +221,8 @@ export default function InputGroupPage() {
 </InputGroup>`,
         },
         {
-          title: "Block Layout - Top",
-          description: "Addon positioned above the input.",
+          title: 'Block Layout - Top',
+          description: 'Addon positioned above the input.',
           preview: (
             <InputGroup>
               <InputGroupAddon align="block-start">
@@ -223,8 +239,8 @@ export default function InputGroupPage() {
 </InputGroup>`,
         },
         {
-          title: "Block Layout - Bottom",
-          description: "Addon positioned below the input.",
+          title: 'Block Layout - Bottom',
+          description: 'Addon positioned below the input.',
           preview: (
             <InputGroup>
               <InputGroupInput type="text" placeholder="Username" />
@@ -245,8 +261,8 @@ export default function InputGroupPage() {
 </InputGroup>`,
         },
         {
-          title: "With Textarea",
-          description: "Multi-line text input with send button.",
+          title: 'With Textarea',
+          description: 'Multi-line text input with send button.',
           preview: (
             <InputGroup>
               <InputGroupTextarea placeholder="Type your message..." rows={3} />
@@ -271,47 +287,47 @@ export default function InputGroupPage() {
       ]}
       props={[
         {
-          name: "size",
+          name: 'size',
           type: '"sm" | "md" | "lg"',
           default: '"md"',
-          description: "Size variant for the input group.",
+          description: 'Size variant for the input group.',
         },
         {
-          name: "align",
+          name: 'align',
           type: '"inline-start" | "inline-end" | "block-start" | "block-end"',
           default: '"inline-start"',
-          description: "Position of the addon relative to input.",
+          description: 'Position of the addon relative to input.',
         },
         {
-          name: "variant",
-          type: "ButtonVariant",
+          name: 'variant',
+          type: 'ButtonVariant',
           default: '"ghost"',
-          description: "Button variant for InputGroupButton.",
+          description: 'Button variant for InputGroupButton.',
         },
         {
-          name: "asChild",
-          type: "boolean",
-          default: "false",
-          description: "Render InputGroupText as child element.",
+          name: 'asChild',
+          type: 'boolean',
+          default: 'false',
+          description: 'Render InputGroupText as child element.',
         },
         {
-          name: "orientation",
+          name: 'orientation',
           type: '"vertical" | "horizontal"',
           default: '"vertical"',
-          description: "Separator orientation.",
+          description: 'Separator orientation.',
         },
       ]}
       accessibility={[
-        "Input maintains focus when clicking on addons",
-        "Keyboard navigation works for all interactive elements",
-        "Buttons have appropriate size targets for touch devices",
-        "Icons have proper sizing and do not interfere with text",
-        "Focus visible styles applied to interactive elements",
-        "Disabled state prevents all interactions",
-        "ARIA attributes properly managed on input element",
+        'Input maintains focus when clicking on addons',
+        'Keyboard navigation works for all interactive elements',
+        'Buttons have appropriate size targets for touch devices',
+        'Icons have proper sizing and do not interfere with text',
+        'Focus visible styles applied to interactive elements',
+        'Disabled state prevents all interactions',
+        'ARIA attributes properly managed on input element',
       ]}
-      previous={{ title: "Input", href: "/docs/components/input" }}
-      next={{ title: "Input Number", href: "/docs/components/input-number" }}
+      previous={{ title: 'Input', href: '/docs/components/input' }}
+      next={{ title: 'Input Number', href: '/docs/components/input-number' }}
     />
   );
 }

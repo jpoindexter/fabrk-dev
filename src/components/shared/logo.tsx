@@ -5,22 +5,22 @@
  * Production-ready ✓
  */
 
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 interface LogoProps {
   size?: number;
   className?: string;
 }
 
-export function Logo({ size = 20, className = "" }: LogoProps = {}) {
+export function Logo({ size = 20, className = '' }: LogoProps = {}) {
   // Calculate proportional height (28:40 ratio from original)
   const height = (size / 28) * 40;
 
   return (
     <div
       className={cn(
-        "border-foreground bg-primary inline-flex items-center gap-2 border-2 px-2 py-1 transition-all hover:-translate-y-0.5",
+        'border-foreground bg-primary inline-flex items-center gap-2 border-2 px-2 py-1 transition-all hover:-translate-y-0.5',
         mode.radius
       )}
     >

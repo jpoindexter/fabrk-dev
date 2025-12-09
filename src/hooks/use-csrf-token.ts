@@ -3,22 +3,22 @@
  * Provides CSRF token for client-side API requests
  */
 
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
 /**
  * Get CSRF token from cookie (client-side)
  */
 function getCsrfToken(): string | null {
-  if (typeof document === "undefined") return null;
+  if (typeof document === 'undefined') return null;
 
-  const cookies = document.cookie.split(";");
-  const csrfCookie = cookies.find((c) => c.trim().startsWith("csrf_token="));
+  const cookies = document.cookie.split(';');
+  const csrfCookie = cookies.find((c) => c.trim().startsWith('csrf_token='));
 
   if (!csrfCookie) return null;
 
-  return csrfCookie.split("=")[1];
+  return csrfCookie.split('=')[1];
 }
 
 /**
@@ -64,14 +64,14 @@ export function useCsrfFetch() {
     const headers = new Headers(options.headers);
 
     // Add CSRF token for state-changing requests
-    const method = options.method?.toUpperCase() || "GET";
-    if (!["GET", "HEAD", "OPTIONS"].includes(method) && csrfToken) {
-      headers.set("x-csrf-token", csrfToken);
+    const method = options.method?.toUpperCase() || 'GET';
+    if (!['GET', 'HEAD', 'OPTIONS'].includes(method) && csrfToken) {
+      headers.set('x-csrf-token', csrfToken);
     }
 
     // Add Content-Type if not set and body exists
-    if (options.body && !headers.has("Content-Type")) {
-      headers.set("Content-Type", "application/json");
+    if (options.body && !headers.has('Content-Type')) {
+      headers.set('Content-Type', 'application/json');
     }
 
     return fetch(url, {

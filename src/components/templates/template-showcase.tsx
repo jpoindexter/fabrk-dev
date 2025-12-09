@@ -4,15 +4,15 @@
  * Provides consistent header, features card, and code copy functionality
  */
 
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Copy, Check, Code, ExternalLink } from "lucide-react";
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Copy, Check, Code, ExternalLink } from 'lucide-react';
 
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 import {
   PageBadge,
   Card,
@@ -21,7 +21,7 @@ import {
   FeatureList,
   FeatureItem,
   InfoNote,
-} from "@/components/ui/card";
+} from '@/components/ui/card';
 interface TemplateShowcaseProps {
   /** Template code identifier (e.g., "BLOG", "ANALYTICS") */
   code: string;
@@ -64,7 +64,7 @@ export function TemplateShowcase({
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error("Failed to copy code:", err);
+      console.error('Failed to copy code:', err);
     }
   };
 
@@ -76,13 +76,22 @@ export function TemplateShowcase({
           <div className="flex items-center gap-2">
             <PageBadge>{code}</PageBadge>
             {badge && (
-              <Badge variant="default" className={cn("text-xs", mode.font, mode.radius)}>
+              <Badge
+                variant="default"
+                className={cn('text-xs', mode.font, mode.radius)}
+              >
                 {badge.toUpperCase()}
               </Badge>
             )}
           </div>
-          <h1 className={cn("text-4xl font-semibold tracking-tight", mode.font)}>{title}</h1>
-          <p className={cn("text-muted-foreground text-sm", mode.font)}>{description}</p>
+          <h1
+            className={cn('text-4xl font-semibold tracking-tight', mode.font)}
+          >
+            {title}
+          </h1>
+          <p className={cn('text-muted-foreground text-sm', mode.font)}>
+            {description}
+          </p>
 
           {/* Action buttons */}
           <div className="flex items-center gap-2 pt-2">
@@ -91,8 +100,8 @@ export function TemplateShowcase({
                 variant="outline"
                 size="sm"
                 onClick={handleCopyCode}
-                className={cn("text-xs", mode.font, mode.radius)}
-                aria-label={copied ? "Code copied" : "Copy template code"}
+                className={cn('text-xs', mode.font, mode.radius)}
+                aria-label={copied ? 'Code copied' : 'Copy template code'}
               >
                 {copied ? (
                   <>
@@ -112,7 +121,7 @@ export function TemplateShowcase({
                 variant="outline"
                 size="sm"
                 asChild
-                className={cn("text-xs", mode.font, mode.radius)}
+                className={cn('text-xs', mode.font, mode.radius)}
               >
                 <a href={sourceUrl} target="_blank" rel="noopener noreferrer">
                   <Code className="mr-1 h-3 w-3" />
@@ -131,7 +140,9 @@ export function TemplateShowcase({
         <Card size="auto">
           <CardHeader code="0x00" title="features.md" />
           <CardContent>
-            <div className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
+            <div
+              className={cn('text-muted-foreground mb-4 text-xs', mode.font)}
+            >
               [TEMPLATE_FEATURES]:
             </div>
             <div className="grid gap-x-8 gap-y-1.5 md:grid-cols-2 lg:grid-cols-3">

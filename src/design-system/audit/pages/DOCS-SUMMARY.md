@@ -221,8 +221,8 @@ None found.
 // typography.ts
 export const docsTypography = {
   // ... existing
-  h4Uppercase: "font-mono text-sm font-bold uppercase",
-  treeList: "font-mono text-sm text-muted-foreground space-y-1",
+  h4Uppercase: 'font-mono text-sm font-bold uppercase',
+  treeList: 'font-mono text-sm text-muted-foreground space-y-1',
 };
 ```
 
@@ -246,8 +246,12 @@ Tutorials: [TUT.01] - [TUT.99]
 export function DocsAccordion({ title, children }) {
   return (
     <details className="border-border bg-card border">
-      <summary className="cursor-pointer p-4 font-mono text-sm font-medium">{title}</summary>
-      <div className="border-border text-muted-foreground border-t p-4 text-sm">{children}</div>
+      <summary className="cursor-pointer p-4 font-mono text-sm font-medium">
+        {title}
+      </summary>
+      <div className="border-border text-muted-foreground border-t p-4 text-sm">
+        {children}
+      </div>
     </details>
   );
 }
@@ -303,14 +307,17 @@ Use the correct template for each page type:
 
 ```js
 // Check for hardcoded inline code styling
-if (/className="[^"]*bg-muted[^"]*px-/.test(content) && !content.includes("docsTypography.code")) {
-  warn("Inline code not using docsTypography.code token");
+if (
+  /className="[^"]*bg-muted[^"]*px-/.test(content) &&
+  !content.includes('docsTypography.code')
+) {
+  warn('Inline code not using docsTypography.code token');
 }
 
 // Check for duplicate code badges
 const codeBadges = content.match(/code="\[0x[0-9A-F]{2}\]"/g);
 if (codeBadges && new Set(codeBadges).size !== codeBadges.length) {
-  warn("Duplicate code badges found");
+  warn('Duplicate code badges found');
 }
 ```
 

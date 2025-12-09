@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { Button } from "@/components/ui/button";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { Button } from '@/components/ui/button';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import {
   Form,
   FormControl,
@@ -16,25 +16,25 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { useToast } from "@/hooks/use-toast";
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { useToast } from '@/hooks/use-toast';
 
 const securityFormSchema = z
   .object({
     currentPassword: z.string().min(8, {
-      message: "Password must be at least 8 characters.",
+      message: 'Password must be at least 8 characters.',
     }),
     newPassword: z.string().min(8, {
-      message: "Password must be at least 8 characters.",
+      message: 'Password must be at least 8 characters.',
     }),
     confirmPassword: z.string().min(8, {
-      message: "Password must be at least 8 characters.",
+      message: 'Password must be at least 8 characters.',
     }),
   })
   .refine((data) => data.newPassword === data.confirmPassword, {
     message: "Passwords don't match",
-    path: ["confirmPassword"],
+    path: ['confirmPassword'],
   });
 
 type SecurityFormValues = z.infer<typeof securityFormSchema>;
@@ -46,9 +46,9 @@ export function SecurityForm() {
   const form = useForm<SecurityFormValues>({
     resolver: zodResolver(securityFormSchema),
     defaultValues: {
-      currentPassword: "",
-      newPassword: "",
-      confirmPassword: "",
+      currentPassword: '',
+      newPassword: '',
+      confirmPassword: '',
     },
   });
 
@@ -56,9 +56,9 @@ export function SecurityForm() {
     setIsLoading(true);
 
     try {
-      const response = await fetch("/api/user/password", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
+      const response = await fetch('/api/user/password', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           currentPassword: data.currentPassword,
           newPassword: data.newPassword,
@@ -69,22 +69,22 @@ export function SecurityForm() {
 
       if (!response.ok) {
         toast({
-          title: "Error",
-          description: result.error || "Failed to update password",
+          title: 'Error',
+          description: result.error || 'Failed to update password',
         });
         return;
       }
 
       toast({
-        title: "Password updated",
-        description: "Your password has been changed successfully.",
+        title: 'Password updated',
+        description: 'Your password has been changed successfully.',
       });
 
       form.reset();
     } catch {
       toast({
-        title: "Error",
-        description: "Failed to update password. Please try again.",
+        title: 'Error',
+        description: 'Failed to update password. Please try again.',
       });
     } finally {
       setIsLoading(false);
@@ -104,7 +104,11 @@ export function SecurityForm() {
                 <FormItem>
                   <FormLabel>Current Password</FormLabel>
                   <FormControl>
-                    <Input type="password" placeholder="Enter current password" {...field} />
+                    <Input
+                      type="password"
+                      placeholder="Enter current password"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -117,9 +121,15 @@ export function SecurityForm() {
                 <FormItem>
                   <FormLabel>New Password</FormLabel>
                   <FormControl>
-                    <Input type="password" placeholder="Enter new password" {...field} />
+                    <Input
+                      type="password"
+                      placeholder="Enter new password"
+                      {...field}
+                    />
                   </FormControl>
-                  <FormDescription>Must be at least 8 characters long.</FormDescription>
+                  <FormDescription>
+                    Must be at least 8 characters long.
+                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -131,14 +141,18 @@ export function SecurityForm() {
                 <FormItem>
                   <FormLabel>Confirm New Password</FormLabel>
                   <FormControl>
-                    <Input type="password" placeholder="Confirm new password" {...field} />
+                    <Input
+                      type="password"
+                      placeholder="Confirm new password"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
             <Button type="submit" disabled={isLoading}>
-              {isLoading ? "> UPDATING..." : "> UPDATE_PASSWORD"}
+              {isLoading ? '> UPDATING...' : '> UPDATE_PASSWORD'}
             </Button>
           </form>
         </Form>

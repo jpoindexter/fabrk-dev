@@ -3,8 +3,8 @@
  * Server-side message loading
  */
 
-import { getRequestConfig } from "next-intl/server";
-import { defaultLocale, type Locale, locales } from "./config";
+import { getRequestConfig } from 'next-intl/server';
+import { defaultLocale, type Locale, locales } from './config';
 
 export default getRequestConfig(async ({ requestLocale }) => {
   // Get the locale from the request

@@ -4,64 +4,64 @@
  * Based on Vercel/Next.js blog patterns
  */
 
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Card, CardHeader, CardContent, PageBadge } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { CodeBlock } from "@/components/ui/code-block";
-import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
-import Link from "next/link";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Card, CardHeader, CardContent, PageBadge } from '@/components/ui/card';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { CodeBlock } from '@/components/ui/code-block';
+import { ArrowLeft, Calendar, Clock, Share2 } from 'lucide-react';
+import Link from 'next/link';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 // Mock article data
 const mockArticle = {
-  title: "Building Scalable APIs with Next.js 15",
+  title: 'Building Scalable APIs with Next.js 15',
   excerpt:
-    "Learn how to build production-ready APIs using Next.js 15 App Router with type-safe endpoints and middleware.",
-  category: "Engineering",
+    'Learn how to build production-ready APIs using Next.js 15 App Router with type-safe endpoints and middleware.',
+  category: 'Engineering',
   author: {
-    name: "Alex Chen",
+    name: 'Alex Chen',
     avatar: null,
-    role: "Senior Engineer",
+    role: 'Senior Engineer',
   },
-  date: "Dec 1, 2024",
-  readTime: "8 min read",
+  date: 'Dec 1, 2024',
+  readTime: '8 min read',
   content: [
     {
-      type: "paragraph",
+      type: 'paragraph',
       content:
         "Next.js 15 introduces powerful new patterns for building APIs that scale. In this comprehensive guide, we'll explore the best practices for creating type-safe, performant API routes using the App Router.",
     },
     {
-      type: "heading",
-      content: "Getting Started",
+      type: 'heading',
+      content: 'Getting Started',
     },
     {
-      type: "paragraph",
+      type: 'paragraph',
       content:
-        "Before diving in, ensure you have Next.js 15 installed. The new App Router provides a file-system based approach to API routes that makes organization intuitive.",
+        'Before diving in, ensure you have Next.js 15 installed. The new App Router provides a file-system based approach to API routes that makes organization intuitive.',
     },
     {
-      type: "code",
-      language: "bash",
-      content: "npm create next-app@latest my-api --typescript",
+      type: 'code',
+      language: 'bash',
+      content: 'npm create next-app@latest my-api --typescript',
     },
     {
-      type: "heading",
-      content: "Route Handlers",
+      type: 'heading',
+      content: 'Route Handlers',
     },
     {
-      type: "paragraph",
+      type: 'paragraph',
       content:
-        "Route Handlers are defined in route.ts files and support all HTTP methods. They provide native Request and Response objects for maximum flexibility.",
+        'Route Handlers are defined in route.ts files and support all HTTP methods. They provide native Request and Response objects for maximum flexibility.',
     },
     {
-      type: "code",
-      language: "typescript",
+      type: 'code',
+      language: 'typescript',
       content: `// app/api/users/route.ts
 import { NextResponse } from "next/server";
 
@@ -77,17 +77,17 @@ export async function POST(request: Request) {
 }`,
     },
     {
-      type: "heading",
-      content: "Type Safety with Zod",
+      type: 'heading',
+      content: 'Type Safety with Zod',
     },
     {
-      type: "paragraph",
+      type: 'paragraph',
       content:
-        "Runtime validation is crucial for API reliability. Zod provides excellent TypeScript integration for validating incoming requests.",
+        'Runtime validation is crucial for API reliability. Zod provides excellent TypeScript integration for validating incoming requests.',
     },
     {
-      type: "code",
-      language: "typescript",
+      type: 'code',
+      language: 'typescript',
       content: `import { z } from "zod";
 
 const createUserSchema = z.object({
@@ -112,16 +112,16 @@ export async function POST(request: Request) {
 }`,
     },
     {
-      type: "heading",
-      content: "Conclusion",
+      type: 'heading',
+      content: 'Conclusion',
     },
     {
-      type: "paragraph",
+      type: 'paragraph',
       content:
         "Next.js 15's API routes provide a powerful foundation for building scalable backends. Combined with TypeScript and Zod, you can create APIs that are both type-safe and maintainable.",
     },
   ],
-  tags: ["Next.js", "API", "TypeScript", "Zod"],
+  tags: ['Next.js', 'API', 'TypeScript', 'Zod'],
 };
 
 const templateCode = `"use client";
@@ -288,7 +288,7 @@ function BlogPostPreview() {
           href="/templates/blog"
           className={cn(
             mode.font,
-            "text-muted-foreground hover:text-foreground mb-8 inline-flex items-center gap-2 text-sm transition-colors"
+            'text-muted-foreground hover:text-foreground mb-8 inline-flex items-center gap-2 text-sm transition-colors'
           )}
         >
           <ArrowLeft className="h-4 w-4" />
@@ -297,33 +297,47 @@ function BlogPostPreview() {
 
         {/* Article Header */}
         <header className="mb-12">
-          <Badge className={cn(mode.radius, mode.font, "mb-4 text-xs")}>
+          <Badge className={cn(mode.radius, mode.font, 'mb-4 text-xs')}>
             {mockArticle.category}
           </Badge>
-          <h1 className={cn(mode.font, "mb-6 text-3xl leading-tight font-semibold md:text-4xl")}>
+          <h1
+            className={cn(
+              mode.font,
+              'mb-6 text-3xl leading-tight font-semibold md:text-4xl'
+            )}
+          >
             {mockArticle.title}
           </h1>
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-4">
-              <Avatar className={cn(mode.radius, "border-border h-10 w-10 border")}>
+              <Avatar
+                className={cn(mode.radius, 'border-border h-10 w-10 border')}
+              >
                 <AvatarImage src={mockArticle.author.avatar || undefined} />
-                <AvatarFallback className={cn(mode.radius, mode.font, "text-xs")}>
+                <AvatarFallback
+                  className={cn(mode.radius, mode.font, 'text-xs')}
+                >
                   {mockArticle.author.name
-                    .split(" ")
+                    .split(' ')
                     .map((n) => n[0])
-                    .join("")}
+                    .join('')}
                 </AvatarFallback>
               </Avatar>
               <div>
-                <div className={cn(mode.font, "text-sm font-medium")}>
+                <div className={cn(mode.font, 'text-sm font-medium')}>
                   {mockArticle.author.name}
                 </div>
-                <div className={cn(mode.font, "text-muted-foreground text-xs")}>
+                <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
                   {mockArticle.author.role}
                 </div>
               </div>
             </div>
-            <div className={cn(mode.font, "text-muted-foreground flex items-center gap-4 text-xs")}>
+            <div
+              className={cn(
+                mode.font,
+                'text-muted-foreground flex items-center gap-4 text-xs'
+              )}
+            >
               <div className="flex items-center gap-1">
                 <Calendar className="h-3 w-3" />
                 {mockArticle.date}
@@ -338,19 +352,21 @@ function BlogPostPreview() {
 
         {/* Featured Image Placeholder */}
         <div className="border-border bg-muted/30 mb-12 flex aspect-video items-center justify-center border">
-          <span className={cn(mode.font, "text-muted-foreground text-sm")}>[FEATURED_IMAGE]</span>
+          <span className={cn(mode.font, 'text-muted-foreground text-sm')}>
+            [FEATURED_IMAGE]
+          </span>
         </div>
 
         {/* Article Content */}
         <article className="mb-12 space-y-6">
           {mockArticle.content.map((block, index) => {
-            if (block.type === "heading") {
+            if (block.type === 'heading') {
               return (
                 <h2
                   key={index}
                   className={cn(
                     mode.font,
-                    "border-border mt-10 border-b pb-2 text-xl font-semibold"
+                    'border-border mt-10 border-b pb-2 text-xl font-semibold'
                   )}
                 >
                   {block.content}
@@ -358,19 +374,28 @@ function BlogPostPreview() {
               );
             }
 
-            if (block.type === "paragraph") {
+            if (block.type === 'paragraph') {
               return (
                 <p
                   key={index}
-                  className={cn(mode.font, "text-muted-foreground text-sm leading-relaxed")}
+                  className={cn(
+                    mode.font,
+                    'text-muted-foreground text-sm leading-relaxed'
+                  )}
                 >
                   {block.content}
                 </p>
               );
             }
 
-            if (block.type === "code") {
-              return <CodeBlock key={index} code={block.content} language={block.language} />;
+            if (block.type === 'code') {
+              return (
+                <CodeBlock
+                  key={index}
+                  code={block.content}
+                  language={block.language}
+                />
+              );
             }
 
             return null;
@@ -381,7 +406,11 @@ function BlogPostPreview() {
         <div className="border-border mb-12 border-t pt-6">
           <div className="flex flex-wrap gap-2">
             {mockArticle.tags.map((tag) => (
-              <Badge key={tag} variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
+              <Badge
+                key={tag}
+                variant="outline"
+                className={cn(mode.radius, mode.font, 'text-xs')}
+              >
                 #{tag}
               </Badge>
             ))}
@@ -390,12 +419,20 @@ function BlogPostPreview() {
 
         {/* Share + Actions */}
         <div className="border-border flex items-center justify-between border-t pt-6">
-          <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, "text-xs")}>
+          <Button
+            variant="outline"
+            size="sm"
+            className={cn(mode.radius, mode.font, 'text-xs')}
+          >
             <Share2 className="mr-2 h-3 w-3" />
             Share
           </Button>
           <Link href="/templates/blog">
-            <Button variant="ghost" size="sm" className={cn(mode.radius, mode.font, "text-xs")}>
+            <Button
+              variant="ghost"
+              size="sm"
+              className={cn(mode.radius, mode.font, 'text-xs')}
+            >
               View all posts →
             </Button>
           </Link>
@@ -422,14 +459,14 @@ export default function BlogPostTemplate() {
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
-                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  'h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0',
                   mode.radius
                 )}
               >
                 <TabsTrigger
                   value="preview"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -439,7 +476,7 @@ export default function BlogPostTemplate() {
                 <TabsTrigger
                   value="code"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -463,7 +500,11 @@ export default function BlogPostTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+                <CodeBlock
+                  code={templateCode}
+                  language="tsx"
+                  maxHeight="600px"
+                />
               </div>
             </Card>
           </TabsContent>
@@ -473,7 +514,7 @@ export default function BlogPostTemplate() {
         <Card>
           <CardHeader code="0x02" title="FILE_STRUCTURE" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-1 text-xs")}>
+            <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>
               <div className="space-y-1 pl-4">
                 <div>
@@ -481,7 +522,9 @@ export default function BlogPostTemplate() {
                   <span className="text-muted-foreground">blog/</span>
                   <span className="text-muted-foreground">[slug]/</span>
                   <span className="text-foreground">page.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Copy template here</span>
+                  <span className="text-muted-foreground ml-4">
+                    ← Copy template here
+                  </span>
                 </div>
               </div>
             </div>
@@ -492,21 +535,26 @@ export default function BlogPostTemplate() {
         <Card>
           <CardHeader code="0x03" title="TEMPLATE_FEATURES" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-1 text-xs")}>
+            <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> Clean, centered single-column layout
+                <span className="text-success">&gt;</span> Clean, centered
+                single-column layout
               </div>
               <div>
-                <span className="text-success">&gt;</span> Author + date + read time header
+                <span className="text-success">&gt;</span> Author + date + read
+                time header
               </div>
               <div>
-                <span className="text-success">&gt;</span> Code blocks with copy functionality
+                <span className="text-success">&gt;</span> Code blocks with copy
+                functionality
               </div>
               <div>
-                <span className="text-success">&gt;</span> Tags and share actions
+                <span className="text-success">&gt;</span> Tags and share
+                actions
               </div>
               <div>
-                <span className="text-success">&gt;</span> Industry-standard Vercel/Next.js pattern
+                <span className="text-success">&gt;</span> Industry-standard
+                Vercel/Next.js pattern
               </div>
             </div>
           </CardContent>

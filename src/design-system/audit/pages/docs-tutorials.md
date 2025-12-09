@@ -43,7 +43,7 @@
 ### Tutorial Code Badges
 
 ```tsx
-code = "[0x00]"; // Quick Start
+code = '[0x00]'; // Quick Start
 ```
 
 - **Format**: Same as features `[0xXX]`
@@ -52,7 +52,7 @@ code = "[0x00]"; // Quick Start
 ### Tutorial Titles
 
 ```tsx
-title = "Quick_Start";
+title = 'Quick_Start';
 ```
 
 - **Format**: Uppercase with underscores (same as features)
@@ -61,7 +61,8 @@ title = "Quick_Start";
 ### Descriptions
 
 ```tsx
-description = "Assemble a production-ready landing page and core features in minutes.";
+description =
+  'Assemble a production-ready landing page and core features in minutes.';
 ```
 
 - **Style**: Action-oriented, time-focused
@@ -71,7 +72,7 @@ description = "Assemble a production-ready landing page and core features in min
 
 ```tsx
 overview =
-  "This guide assumes you have completed the Getting Started setup and have your local development server running.";
+  'This guide assumes you have completed the Getting Started setup and have your local development server running.';
 ```
 
 - **Style**: Prerequisites-focused
@@ -317,10 +318,10 @@ git push origin main`,
 ### Action-Oriented Titles
 
 ```tsx
-title: "Assemble Landing Page";
-title: "Configure App Metadata";
-title: "Enable Lead Capture (Optional)";
-title: "Production Deployment";
+title: 'Assemble Landing Page';
+title: 'Configure App Metadata';
+title: 'Enable Lead Capture (Optional)';
+title: 'Production Deployment';
 ```
 
 - Imperative mood ("Assemble", "Configure", "Enable")
@@ -340,7 +341,7 @@ title: "Production Deployment";
 
 ```tsx
 overview =
-  "This guide assumes you have completed the Getting Started setup and have your local development server running.";
+  'This guide assumes you have completed the Getting Started setup and have your local development server running.';
 ```
 
 - Clearly states prerequisites
@@ -406,12 +407,12 @@ overview =
 3. **Add tutorial metadata** for better navigation:
    ```tsx
    export const metadata = {
-     title: "Quick Start - Fabrk Docs",
-     description: "...",
+     title: 'Quick Start - Fabrk Docs',
+     description: '...',
      // Add these:
-     duration: "10 minutes",
-     difficulty: "Beginner",
-     prerequisites: ["Getting Started", "Node.js installed"],
+     duration: '10 minutes',
+     difficulty: 'Beginner',
+     prerequisites: ['Getting Started', 'Node.js installed'],
    };
    ```
 

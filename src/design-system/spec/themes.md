@@ -200,13 +200,13 @@ interface ThemeUtils {
 Themes are applied via CSS custom properties:
 
 ```css
-:root[data-theme="terminal"] {
+:root[data-theme='terminal'] {
   --radius-button: 0;
   --font-body: var(--font-mono);
   --shadow-card: none;
 }
 
-:root[data-theme="modern"] {
+:root[data-theme='modern'] {
   --radius-button: 0.375rem;
   --font-body: var(--font-sans);
   --shadow-card: var(--shadow-sm);
@@ -311,8 +311,8 @@ formatStatusText("active")           → "Active"
 
 ```typescript
 // themes/custom.ts
-import { primitives } from "../tokens/primitives";
-import type { SemanticTokens } from "../tokens/semantic";
+import { primitives } from '../tokens/primitives';
+import type { SemanticTokens } from '../tokens/semantic';
 
 export const customTheme: SemanticTokens = {
   color: {
@@ -339,9 +339,9 @@ export const customTheme: SemanticTokens = {
     ui: primitives.fontFamily.sans,
   },
   textTransform: {
-    button: "capitalize",
-    label: "none",
-    heading: "none",
+    button: 'capitalize',
+    label: 'none',
+    heading: 'none',
   },
 };
 ```
@@ -350,13 +350,13 @@ export const customTheme: SemanticTokens = {
 
 ```typescript
 export const customClasses = {
-  radius: "rounded-md",
-  font: "font-sans",
-  text: "",
-  card: "rounded-lg border border-border shadow-sm",
-  button: "rounded-md font-sans shadow-xs",
-  input: "rounded-md font-sans border-border",
-  badge: "rounded-full font-sans text-xs",
+  radius: 'rounded-md',
+  font: 'font-sans',
+  text: '',
+  card: 'rounded-lg border border-border shadow-sm',
+  button: 'rounded-md font-sans shadow-xs',
+  input: 'rounded-md font-sans border-border',
+  badge: 'rounded-full font-sans text-xs',
 };
 ```
 
@@ -364,7 +364,7 @@ export const customClasses = {
 
 ```typescript
 // themes/index.ts
-import { customTheme, customClasses } from "./custom";
+import { customTheme, customClasses } from './custom';
 
 export const themes = {
   terminal: terminalTheme,

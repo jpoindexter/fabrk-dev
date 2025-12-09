@@ -3,20 +3,20 @@
  * Toolbar for user data table with search, bulk actions, and column visibility.
  */
 
-"use client";
+'use client';
 
-import { Table } from "@tanstack/react-table";
-import { ChevronDown, Search, Trash2 } from "lucide-react";
+import { Table } from '@tanstack/react-table';
+import { ChevronDown, Search, Trash2 } from 'lucide-react';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
-import { UserData } from "./user-table-columns";
+} from '@/components/ui/dropdown-menu';
+import { Input } from '@/components/ui/input';
+import { UserData } from './user-table-columns';
 
 interface UserTableToolbarProps {
   table: Table<UserData>;
@@ -34,13 +34,13 @@ export function UserTableToolbar({
   return (
     <div className="flex items-center justify-between gap-4">
       <div className="flex flex-1 items-center gap-2">
-        <div className="relative flex-1 max-w-sm">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+        <div className="relative max-w-sm flex-1">
+          <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
           <Input
             placeholder="Search users..."
-            value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+            value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
             onChange={(event) =>
-              table.getColumn("name")?.setFilterValue(event.target.value)
+              table.getColumn('name')?.setFilterValue(event.target.value)
             }
             className="pl-8"
           />
@@ -56,7 +56,8 @@ export function UserTableToolbar({
             }}
           >
             <Trash2 className="mr-2 h-4 w-4" />
-            Delete {selectedRows.length} user{selectedRows.length > 1 ? "s" : ""}
+            Delete {selectedRows.length} user
+            {selectedRows.length > 1 ? 's' : ''}
           </Button>
         )}
       </div>

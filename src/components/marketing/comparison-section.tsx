@@ -3,13 +3,13 @@
  * Comparison Section - Terminal console table style
  * Production-ready ✓
  */
-"use client";
+'use client';
 
-import { useEffect, useRef } from "react";
-import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { Card, CardHeader, CardContent, Badge } from "@/components/ui/card";
+import { useEffect, useRef } from 'react';
+import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { Card, CardHeader, CardContent, Badge } from '@/components/ui/card';
 import {
   Table,
   TableHeader,
@@ -18,12 +18,12 @@ import {
   TableHead,
   TableRow,
   TableCell,
-} from "@/components/ui/table";
+} from '@/components/ui/table';
 
 // Animated counter component
 function AnimatedCounter({
   value,
-  suffix = "",
+  suffix = '',
   duration = 1.5,
 }: {
   value: number;
@@ -32,8 +32,11 @@ function AnimatedCounter({
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const motionValue = useMotionValue(0);
-  const springValue = useSpring(motionValue, { duration: duration * 1000, bounce: 0 });
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const springValue = useSpring(motionValue, {
+    duration: duration * 1000,
+    bounce: 0,
+  });
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
 
   useEffect(() => {
     if (isInView) {
@@ -42,7 +45,7 @@ function AnimatedCounter({
   }, [isInView, motionValue, value]);
 
   useEffect(() => {
-    const unsubscribe = springValue.on("change", (latest) => {
+    const unsubscribe = springValue.on('change', (latest) => {
       if (ref.current) {
         ref.current.textContent = `${Math.floor(latest)}${suffix}`;
       }
@@ -56,34 +59,34 @@ function AnimatedCounter({
 export function ComparisonSection() {
   const features = [
     {
-      name: "Authentication (Email + OAuth)",
+      name: 'Authentication (Email + OAuth)',
       hours: 20,
-      fabrk: "Ready in minutes",
+      fabrk: 'Ready in minutes',
     },
     {
-      name: "Stripe Payments Integration",
+      name: 'Stripe Payments Integration',
       hours: 15,
-      fabrk: "Pre-configured",
+      fabrk: 'Pre-configured',
     },
     {
-      name: "Database Schema + ORM",
+      name: 'Database Schema + ORM',
       hours: 10,
-      fabrk: "Integrated",
+      fabrk: 'Integrated',
     },
     {
-      name: "Multi-Tenancy",
+      name: 'Multi-Tenancy',
       hours: 25,
-      fabrk: "Built-in",
+      fabrk: 'Built-in',
     },
     {
-      name: "Design System",
+      name: 'Design System',
       hours: 30,
-      fabrk: "Included",
+      fabrk: 'Included',
     },
     {
-      name: "Advanced Features",
+      name: 'Advanced Features',
       hours: 40,
-      fabrk: "Ready components",
+      fabrk: 'Ready components',
     },
   ];
 
@@ -104,11 +107,19 @@ export function ComparisonSection() {
             meta="TIME TO MARKET │ FIB[21,34,55,89]"
             className="mb-4"
           />
-          <h2 className={cn(mode.font, "mb-4 text-4xl font-semibold tracking-tight")}>
+          <h2
+            className={cn(
+              mode.font,
+              'mb-4 text-4xl font-semibold tracking-tight'
+            )}
+          >
             WHY BUILD FROM SCRATCH?
           </h2>
-          <p className={cn(mode.font, "text-muted-foreground max-w-2xl text-sm")}>
-            See how much time and effort Fabrk saves you compared to manual setup.
+          <p
+            className={cn(mode.font, 'text-muted-foreground max-w-2xl text-sm')}
+          >
+            See how much time and effort Fabrk saves you compared to manual
+            setup.
           </p>
         </motion.div>
 
@@ -126,14 +137,20 @@ export function ComparisonSection() {
                 <TableHeader>
                   <TableRow>
                     <TableHead>FEATURE</TableHead>
-                    <TableHead className="text-destructive text-center">MANUAL SETUP</TableHead>
-                    <TableHead className="text-success text-center">FABRK</TableHead>
+                    <TableHead className="text-destructive text-center">
+                      MANUAL SETUP
+                    </TableHead>
+                    <TableHead className="text-success text-center">
+                      FABRK
+                    </TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {features.map((feature, index) => (
                     <TableRow key={index}>
-                      <TableCell className="text-foreground">{feature.name}</TableCell>
+                      <TableCell className="text-foreground">
+                        {feature.name}
+                      </TableCell>
                       <TableCell className="text-center">
                         <span className="text-destructive">✗</span>
                         <span className="text-muted-foreground ml-2">
@@ -146,7 +163,9 @@ export function ComparisonSection() {
                       </TableCell>
                       <TableCell className="text-center">
                         <span className="text-success">✓</span>
-                        <span className="text-foreground ml-2">{feature.fabrk}</span>
+                        <span className="text-foreground ml-2">
+                          {feature.fabrk}
+                        </span>
                       </TableCell>
                     </TableRow>
                   ))}
@@ -155,7 +174,11 @@ export function ComparisonSection() {
                   <TableRow>
                     <TableCell className="font-semibold">TOTAL</TableCell>
                     <TableCell className="text-destructive text-center font-semibold">
-                      <AnimatedCounter value={140} suffix="+ hours" duration={2.5} />
+                      <AnimatedCounter
+                        value={140}
+                        suffix="+ hours"
+                        duration={2.5}
+                      />
                     </TableCell>
                     <TableCell className="text-success text-center font-semibold">
                       Ready to Ship
@@ -177,8 +200,9 @@ export function ComparisonSection() {
         >
           <Card size="auto">
             <CardContent padding="sm">
-              <span className={cn(mode.font, "text-muted-foreground text-xs")}>
-                [NOTE]: Start building your unique features on day one. Skip boilerplate.
+              <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
+                [NOTE]: Start building your unique features on day one. Skip
+                boilerplate.
               </span>
             </CardContent>
           </Card>

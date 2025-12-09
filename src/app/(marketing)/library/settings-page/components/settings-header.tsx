@@ -4,7 +4,7 @@
  * Production-ready ✓
  */
 
-import { TemplatePageHeader } from "@/components/ui/card";
+import { TemplatePageHeader } from '@/components/ui/card';
 
 export function SettingsHeader() {
   return (

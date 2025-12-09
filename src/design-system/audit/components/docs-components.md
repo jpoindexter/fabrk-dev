@@ -246,7 +246,7 @@ DOCS / SECTION / PAGE_TITLE
 **Sticky Behavior:**
 
 ```typescript
-className = "sticky top-0 z-50 border-b backdrop-blur";
+className = 'sticky top-0 z-50 border-b backdrop-blur';
 ```
 
 **Compliance:** 100% ✅
@@ -291,14 +291,14 @@ const id =
   heading.id ||
   text
     .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
 ```
 
 **Sticky Behavior:**
 
 ```typescript
-className = "sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto";
+className = 'sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto';
 ```
 
 **Compliance:** 100% ✅
@@ -380,7 +380,7 @@ export function DocsPreviewWrapper({ children, className }: Props) {
 **Title Transformation:**
 
 ```typescript
-const headerTitle = title?.toUpperCase().replace(/\s+/g, "_") || "INFO";
+const headerTitle = title?.toUpperCase().replace(/\s+/g, '_') || 'INFO';
 ```
 
 **Compliance:** 100% ✅
@@ -519,7 +519,7 @@ const moduleCode =
   feature.module ||
   feature.title
     .toUpperCase()
-    .replace(/[\s-]+/g, "_")
+    .replace(/[\s-]+/g, '_')
     .slice(0, 12);
 ```
 
@@ -618,7 +618,7 @@ TIP: {step.tip}
 **Hex Code Generation:**
 
 ```typescript
-const hexCode = (index + 1).toString(16).toUpperCase().padStart(2, "0");
+const hexCode = (index + 1).toString(16).toUpperCase().padStart(2, '0');
 ```
 
 **Props:**
@@ -697,7 +697,7 @@ interface Prop {
 **Variants:**
 
 ```typescript
-type CalloutVariant = "info" | "warning" | "tip" | "danger";
+type CalloutVariant = 'info' | 'warning' | 'tip' | 'danger';
 ```
 
 **Variant Configuration:**
@@ -846,8 +846,8 @@ DESC: {description}
 **Hover Behavior:**
 
 ```typescript
-className = "group";
-groupClassName = "group-hover:text-primary group-hover:border-primary/50";
+className = 'group';
+groupClassName = 'group-hover:text-primary group-hover:border-primary/50';
 ```
 
 **Props:**
@@ -1602,7 +1602,7 @@ DOCS / SECTION / PAGE_TITLE
 1. **Title Transformation**
 
    ```typescript
-   const headerTitle = title.toUpperCase().replace(/\s+/g, "_");
+   const headerTitle = title.toUpperCase().replace(/\s+/g, '_');
    ```
 
    - Consistent across all components
@@ -1611,7 +1611,7 @@ DOCS / SECTION / PAGE_TITLE
 2. **Hex Code Generation**
 
    ```typescript
-   const hexCode = (index + 1).toString(16).toUpperCase().padStart(2, "0");
+   const hexCode = (index + 1).toString(16).toUpperCase().padStart(2, '0');
    ```
 
    - Auto-increments for lists
@@ -1629,7 +1629,7 @@ DOCS / SECTION / PAGE_TITLE
 4. **Design Token Usage**
 
    ```typescript
-   className = "border-border bg-card text-muted-foreground";
+   className = 'border-border bg-card text-muted-foreground';
    ```
 
    - Always semantic names

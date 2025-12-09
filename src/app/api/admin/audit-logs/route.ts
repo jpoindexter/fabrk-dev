@@ -3,15 +3,15 @@
  * GET /api/admin/audit-logs - Query audit logs
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@/lib/auth";
-import { queryAuditLogs, type AuditLogEntry } from "@/lib/security/audit-log";
+import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@/lib/auth';
+import { queryAuditLogs, type AuditLogEntry } from '@/lib/security/audit-log';
 
 export async function GET(request: NextRequest) {
   try {
     const session = await auth();
     if (!session?.user) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     // Check admin role (you may want to add role checking here)
@@ -20,12 +20,12 @@ export async function GET(request: NextRequest) {
     // }
 
     const { searchParams } = new URL(request.url);
-    const severityParam = searchParams.get("severity");
-    const limit = searchParams.get("limit");
+    const severityParam = searchParams.get('severity');
+    const limit = searchParams.get('limit');
 
     const filters: Parameters<typeof queryAuditLogs>[0] = {};
-    if (severityParam && severityParam !== "all") {
-      filters.severity = severityParam as AuditLogEntry["severity"];
+    if (severityParam && severityParam !== 'all') {
+      filters.severity = severityParam as AuditLogEntry['severity'];
     }
     filters.limit = limit ? parseInt(limit, 10) : 50;
 
@@ -33,7 +33,10 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ logs });
   } catch (error) {
-    console.error("Failed to query audit logs:", error);
-    return NextResponse.json({ error: "Failed to query audit logs" }, { status: 500 });
+    console.error('Failed to query audit logs:', error);
+    return NextResponse.json(
+      { error: 'Failed to query audit logs' },
+      { status: 500 }
+    );
   }
 }

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
+import { ComponentShowcaseTemplate } from '@/components/docs';
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -15,15 +15,24 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuSubContent,
   DropdownMenuShortcut,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import { Settings, User, LogOut, Mail, MessageSquare, PlusCircle, UserPlus, Keyboard } from "lucide-react";
-import { useState } from "react";
+} from '@/components/ui/dropdown-menu';
+import { Button } from '@/components/ui/button';
+import {
+  Settings,
+  User,
+  LogOut,
+  Mail,
+  MessageSquare,
+  PlusCircle,
+  UserPlus,
+  Keyboard,
+} from 'lucide-react';
+import { useState } from 'react';
 
 export default function DropdownMenuPage() {
   const [showStatusBar, setShowStatusBar] = useState(true);
   const [showActivityBar, setShowActivityBar] = useState(false);
-  const [position, setPosition] = useState("bottom");
+  const [position, setPosition] = useState('bottom');
 
   return (
     <ComponentShowcaseTemplate
@@ -90,8 +99,8 @@ import { Button } from "@/components/ui/button";
       }}
       variants={[
         {
-          title: "With Checkboxes",
-          description: "Menu items that can be toggled on and off",
+          title: 'With Checkboxes',
+          description: 'Menu items that can be toggled on and off',
           code: `const [showStatusBar, setShowStatusBar] = useState(true);
 const [showActivityBar, setShowActivityBar] = useState(false);
 
@@ -141,8 +150,8 @@ const [showActivityBar, setShowActivityBar] = useState(false);
           ),
         },
         {
-          title: "With Radio Group",
-          description: "Menu items for selecting one option from a group",
+          title: 'With Radio Group',
+          description: 'Menu items for selecting one option from a group',
           code: `const [position, setPosition] = useState("bottom");
 
 <DropdownMenu>
@@ -167,18 +176,25 @@ const [showActivityBar, setShowActivityBar] = useState(false);
               <DropdownMenuContent className="w-56">
                 <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
+                <DropdownMenuRadioGroup
+                  value={position}
+                  onValueChange={setPosition}
+                >
                   <DropdownMenuRadioItem value="top">Top</DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem value="bottom">Bottom</DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem value="right">Right</DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="bottom">
+                    Bottom
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="right">
+                    Right
+                  </DropdownMenuRadioItem>
                 </DropdownMenuRadioGroup>
               </DropdownMenuContent>
             </DropdownMenu>
           ),
         },
         {
-          title: "With Submenu",
-          description: "Nested menu items for hierarchical navigation",
+          title: 'With Submenu',
+          description: 'Nested menu items for hierarchical navigation',
           code: `<DropdownMenu>
   <DropdownMenuTrigger asChild>
     <Button variant="outline">&gt; ACTIONS</Button>
@@ -257,8 +273,8 @@ const [showActivityBar, setShowActivityBar] = useState(false);
           ),
         },
         {
-          title: "With Shortcuts",
-          description: "Display keyboard shortcuts alongside menu items",
+          title: 'With Shortcuts',
+          description: 'Display keyboard shortcuts alongside menu items',
           code: `<DropdownMenu>
   <DropdownMenuTrigger asChild>
     <Button variant="outline">&gt; KEYBOARD_SHORTCUTS</Button>
@@ -313,59 +329,66 @@ const [showActivityBar, setShowActivityBar] = useState(false);
       ]}
       props={[
         {
-          name: "align",
+          name: 'align',
           type: '"start" | "center" | "end"',
-          description: "Horizontal alignment of the dropdown menu relative to the trigger. Use 'end' for right-aligned (table actions, navbar), 'start' for left-aligned (sidebar menus).",
+          description:
+            "Horizontal alignment of the dropdown menu relative to the trigger. Use 'end' for right-aligned (table actions, navbar), 'start' for left-aligned (sidebar menus).",
           default: '"center"',
         },
         {
-          name: "sideOffset",
-          type: "number",
-          description: "Distance in pixels between the trigger and the dropdown content",
-          default: "4",
+          name: 'sideOffset',
+          type: 'number',
+          description:
+            'Distance in pixels between the trigger and the dropdown content',
+          default: '4',
         },
         {
-          name: "inset",
-          type: "boolean",
-          description: "Adds left padding for alignment with items that have indicators (checkboxes, radio buttons)",
-          default: "false",
+          name: 'inset',
+          type: 'boolean',
+          description:
+            'Adds left padding for alignment with items that have indicators (checkboxes, radio buttons)',
+          default: 'false',
         },
         {
-          name: "checked",
-          type: "boolean",
-          description: "For DropdownMenuCheckboxItem - the controlled checked state",
+          name: 'checked',
+          type: 'boolean',
+          description:
+            'For DropdownMenuCheckboxItem - the controlled checked state',
         },
         {
-          name: "onCheckedChange",
-          type: "(checked: boolean) => void",
-          description: "For DropdownMenuCheckboxItem - callback when checked state changes",
+          name: 'onCheckedChange',
+          type: '(checked: boolean) => void',
+          description:
+            'For DropdownMenuCheckboxItem - callback when checked state changes',
         },
         {
-          name: "value",
-          type: "string",
-          description: "For DropdownMenuRadioGroup - the value of the selected item",
+          name: 'value',
+          type: 'string',
+          description:
+            'For DropdownMenuRadioGroup - the value of the selected item',
         },
         {
-          name: "onValueChange",
-          type: "(value: string) => void",
-          description: "For DropdownMenuRadioGroup - callback when the selected value changes",
+          name: 'onValueChange',
+          type: '(value: string) => void',
+          description:
+            'For DropdownMenuRadioGroup - callback when the selected value changes',
         },
       ]}
       accessibility={[
-        "Supports keyboard navigation with arrow keys",
-        "Can be opened and closed with Enter or Space when focused",
-        "Escape key closes the menu",
-        "Automatically manages focus when opening and closing",
-        "Supports typeahead - type to focus menu items",
-        "Screen readers announce menu state and selected items",
+        'Supports keyboard navigation with arrow keys',
+        'Can be opened and closed with Enter or Space when focused',
+        'Escape key closes the menu',
+        'Automatically manages focus when opening and closing',
+        'Supports typeahead - type to focus menu items',
+        'Screen readers announce menu state and selected items',
       ]}
       previous={{
-        title: "Tabs",
-        href: "/docs/components/tabs",
+        title: 'Tabs',
+        href: '/docs/components/tabs',
       }}
       next={{
-        title: "Breadcrumb",
-        href: "/docs/components/breadcrumb",
+        title: 'Breadcrumb',
+        href: '/docs/components/breadcrumb',
       }}
     />
   );

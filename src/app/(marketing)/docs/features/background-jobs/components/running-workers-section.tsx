@@ -1,7 +1,7 @@
 export function RunningWorkersSection() {
   return {
-    title: "Running Workers",
-    description: "Start workers for different queues",
+    title: 'Running Workers',
+    description: 'Start workers for different queues',
     code: `# Development (with auto-restart)
 npm run jobs:dev        # Default queue worker
 npm run email:dev       # Email queue worker
@@ -35,6 +35,6 @@ services:
     command: node scripts/worker.js
     environment:
       - QUEUE=webhooks`,
-    language: "bash",
+    language: 'bash',
   };
 }

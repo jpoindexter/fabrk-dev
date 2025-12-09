@@ -45,7 +45,7 @@ User management dashboard for viewing and managing all user accounts.
 
 ```typescript
 prisma.user.findMany({
-  orderBy: { createdAt: "desc" },
+  orderBy: { createdAt: 'desc' },
   take: 100,
   include: {
     _count: { select: { sessions: true } },

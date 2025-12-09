@@ -4,17 +4,17 @@
  * Production-ready ✓
  */
 
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import { PageBadge, Card, CardHeader, CardContent } from "@/components/ui/card";
-import { ChevronRight, Copy, CheckCircle2, ExternalLink } from "lucide-react";
-import { parseContent } from "./content-parser";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
+import { PageBadge, Card, CardHeader, CardContent } from '@/components/ui/card';
+import { ChevronRight, Copy, CheckCircle2, ExternalLink } from 'lucide-react';
+import { parseContent } from './content-parser';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 interface DocsContentProps {
   currentDoc: {
@@ -41,11 +41,20 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
         <PageBadge>DOCUMENTATION</PageBadge>
 
         {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className={cn(mode.font, "flex items-center gap-2 text-xs")}>
+        <nav
+          aria-label="Breadcrumb"
+          className={cn(mode.font, 'flex items-center gap-2 text-xs')}
+        >
           <span className="text-muted-foreground">Docs</span>
-          <ChevronRight className="text-muted-foreground h-3 w-3" aria-hidden="true" />
+          <ChevronRight
+            className="text-muted-foreground h-3 w-3"
+            aria-hidden="true"
+          />
           <span className="text-muted-foreground">Getting Started</span>
-          <ChevronRight className="text-muted-foreground h-3 w-3" aria-hidden="true" />
+          <ChevronRight
+            className="text-muted-foreground h-3 w-3"
+            aria-hidden="true"
+          />
           <span className="text-foreground" aria-current="page">
             {currentDoc.title}
           </span>
@@ -54,21 +63,29 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
         {/* Page Header */}
         <header>
           <h1
-            className={cn(mode.font, "text-foreground mb-4 text-4xl font-semibold tracking-tight")}
+            className={cn(
+              mode.font,
+              'text-foreground mb-4 text-4xl font-semibold tracking-tight'
+            )}
           >
             {currentDoc.title}
           </h1>
-          <p className={cn(mode.font, "text-muted-foreground mb-4 text-sm")}>
+          <p className={cn(mode.font, 'text-muted-foreground mb-4 text-sm')}>
             {currentDoc.description}
           </p>
           <div className="flex items-center gap-4">
-            <Badge variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
-              <time dateTime={currentDoc.lastUpdated}>Last updated: {currentDoc.lastUpdated}</time>
+            <Badge
+              variant="outline"
+              className={cn(mode.radius, mode.font, 'text-xs')}
+            >
+              <time dateTime={currentDoc.lastUpdated}>
+                Last updated: {currentDoc.lastUpdated}
+              </time>
             </Badge>
             <Button
               variant="ghost"
               size="sm"
-              className={cn(mode.radius, mode.font, "text-xs")}
+              className={cn(mode.radius, mode.font, 'text-xs')}
               aria-label="Edit this page on GitHub"
             >
               <ExternalLink className="mr-2 h-3 w-3" aria-hidden="true" />
@@ -82,51 +99,61 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
         {/* Content */}
         <article className="max-w-none space-y-4">
           {parseContent(currentDoc.content).map((section, idx) => {
-            if (section.type === "heading") {
+            if (section.type === 'heading') {
               return (
                 <h2
                   key={idx}
                   className={cn(
                     mode.font,
-                    "text-foreground mt-8 mb-4 scroll-mt-20 text-sm font-semibold"
+                    'text-foreground mt-8 mb-4 scroll-mt-20 text-sm font-semibold'
                   )}
-                  id={section.content.toLowerCase().replace(/\s+/g, "-")}
+                  id={section.content.toLowerCase().replace(/\s+/g, '-')}
                 >
-                  [{section.content.toUpperCase().replace(/ /g, "_")}]:
+                  [{section.content.toUpperCase().replace(/ /g, '_')}]:
                 </h2>
               );
             }
 
-            if (section.type === "code") {
+            if (section.type === 'code') {
               return (
                 <div
                   key={idx}
                   className="not-prose my-6"
                   role="region"
-                  aria-label={`Code example in ${section.language || "code"}`}
+                  aria-label={`Code example in ${section.language || 'code'}`}
                 >
                   <Card tone="neutral">
                     <CardHeader
                       code="0x00"
-                      title={(section.language || "code").toUpperCase()}
+                      title={(section.language || 'code').toUpperCase()}
                       icon={
                         <Button
                           variant="ghost"
                           size="sm"
-                          onClick={() => handleCopyCode(section.content, `code-${idx}`)}
-                          className={cn(mode.radius, mode.font, "h-7 text-xs")}
+                          onClick={() =>
+                            handleCopyCode(section.content, `code-${idx}`)
+                          }
+                          className={cn(mode.radius, mode.font, 'h-7 text-xs')}
                           aria-label={
-                            copiedCode === `code-${idx}` ? "Code copied" : "Copy code to clipboard"
+                            copiedCode === `code-${idx}`
+                              ? 'Code copied'
+                              : 'Copy code to clipboard'
                           }
                         >
                           {copiedCode === `code-${idx}` ? (
                             <>
-                              <CheckCircle2 className="mr-1 h-3 w-3" aria-hidden="true" />
+                              <CheckCircle2
+                                className="mr-1 h-3 w-3"
+                                aria-hidden="true"
+                              />
                               COPIED
                             </>
                           ) : (
                             <>
-                              <Copy className="mr-1 h-3 w-3" aria-hidden="true" />
+                              <Copy
+                                className="mr-1 h-3 w-3"
+                                aria-hidden="true"
+                              />
                               &gt; COPY
                             </>
                           )}
@@ -134,8 +161,13 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
                       }
                     />
                     <CardContent padding="md">
-                      <pre className="m-0 overflow-auto text-xs leading-relaxed" tabIndex={0}>
-                        <code className={cn(mode.font, "text-foreground")}>{section.content}</code>
+                      <pre
+                        className="m-0 overflow-auto text-xs leading-relaxed"
+                        tabIndex={0}
+                      >
+                        <code className={cn(mode.font, 'text-foreground')}>
+                          {section.content}
+                        </code>
                       </pre>
                     </CardContent>
                   </Card>
@@ -146,7 +178,10 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
             return (
               <p
                 key={idx}
-                className={cn(mode.font, "text-muted-foreground text-xs leading-relaxed")}
+                className={cn(
+                  mode.font,
+                  'text-muted-foreground text-xs leading-relaxed'
+                )}
               >
                 {section.content}
               </p>
@@ -157,17 +192,20 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
         {/* Page Navigation */}
         <Separator className="my-12" />
 
-        <nav aria-label="Page navigation" className="flex items-center justify-between">
+        <nav
+          aria-label="Page navigation"
+          className="flex items-center justify-between"
+        >
           <Button
             variant="outline"
-            className={cn(mode.radius, mode.font, "text-xs")}
+            className={cn(mode.radius, mode.font, 'text-xs')}
             aria-label="Go to previous page: Installation"
           >
             &lt; PREVIOUS: INSTALLATION
           </Button>
           <Button
             variant="default"
-            className={cn(mode.radius, mode.font, "text-xs")}
+            className={cn(mode.radius, mode.font, 'text-xs')}
             aria-label="Go to next page: Environment Setup"
           >
             NEXT: ENVIRONMENT_SETUP &gt;
@@ -178,14 +216,24 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
         <Card tone="neutral" className="mt-12">
           <CardHeader code="0x00" title="NEED_HELP" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>[NEED_HELP]:</div>
-            <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+            <div
+              className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}
+            >
+              [NEED_HELP]:
+            </div>
+            <div
+              className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}
+            >
               Can't find what you're looking for?
             </div>
             <div className="space-y-2">
               <Button
                 variant="outline"
-                className={cn(mode.radius, mode.font, "w-full justify-start text-xs")}
+                className={cn(
+                  mode.radius,
+                  mode.font,
+                  'w-full justify-start text-xs'
+                )}
                 aria-label="Ask question on GitHub Discussions"
               >
                 <ExternalLink className="mr-2 h-3 w-3" aria-hidden="true" />
@@ -193,7 +241,11 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
               </Button>
               <Button
                 variant="outline"
-                className={cn(mode.radius, mode.font, "w-full justify-start text-xs")}
+                className={cn(
+                  mode.radius,
+                  mode.font,
+                  'w-full justify-start text-xs'
+                )}
                 aria-label="Report an issue on GitHub"
               >
                 <ExternalLink className="mr-2 h-3 w-3" aria-hidden="true" />
@@ -201,7 +253,11 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
               </Button>
               <Button
                 variant="outline"
-                className={cn(mode.radius, mode.font, "w-full justify-start text-xs")}
+                className={cn(
+                  mode.radius,
+                  mode.font,
+                  'w-full justify-start text-xs'
+                )}
                 aria-label="Contact support team"
               >
                 <ExternalLink className="mr-2 h-3 w-3" aria-hidden="true" />

@@ -1,10 +1,11 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { Settings, Key, Shield, CheckCircle } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
+import { Settings, Key, Shield, CheckCircle } from 'lucide-react';
 
 export const metadata = {
-  title: "Environment Variables - Fabrk Docs",
-  description: "Configure all environment variables for Fabrk. Database, Stripe, auth providers, email, and optional integrations.",
+  title: 'Environment Variables - Fabrk Docs',
+  description:
+    'Configure all environment variables for Fabrk. Database, Stripe, auth providers, email, and optional integrations.',
 };
 
 export default function EnvironmentVariablesPage() {
@@ -16,39 +17,55 @@ export default function EnvironmentVariablesPage() {
       description="Complete guide to configuring all environment variables for development and production."
       overview="All variables validated at startup with Zod. Client-side variables use NEXT_PUBLIC_ prefix. Different values for dev/preview/production."
       features={[
-        { icon: Settings, title: "Zod Validation", description: "Type-safe at startup." },
-        { icon: Key, title: "Secrets", description: "Never commit .env.local." },
-        { icon: Shield, title: "Env-Specific", description: "Dev/preview/production." },
-        { icon: CheckCircle, title: "Required", description: "Database, auth, Stripe." },
+        {
+          icon: Settings,
+          title: 'Zod Validation',
+          description: 'Type-safe at startup.',
+        },
+        {
+          icon: Key,
+          title: 'Secrets',
+          description: 'Never commit .env.local.',
+        },
+        {
+          icon: Shield,
+          title: 'Env-Specific',
+          description: 'Dev/preview/production.',
+        },
+        {
+          icon: CheckCircle,
+          title: 'Required',
+          description: 'Database, auth, Stripe.',
+        },
       ]}
       setup={[
         {
-          title: "Copy Example",
-          description: "Start with the example environment file",
+          title: 'Copy Example',
+          description: 'Start with the example environment file',
           code: `cp .env.example .env.local`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Generate Secret",
-          description: "Create a secure NEXTAUTH_SECRET",
+          title: 'Generate Secret',
+          description: 'Create a secure NEXTAUTH_SECRET',
           code: `openssl rand -base64 32`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Configure Database",
-          description: "Set your PostgreSQL connection string",
+          title: 'Configure Database',
+          description: 'Set your PostgreSQL connection string',
           code: `DATABASE_URL="postgresql://user:password@host:5432/database"`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Add Services",
-          description: "Configure Stripe, email, and OAuth providers",
+          title: 'Add Services',
+          description: 'Configure Stripe, email, and OAuth providers',
         },
       ]}
       usage={[
         {
-          title: "Required Variables",
-          description: "These must be set for the app to run",
+          title: 'Required Variables',
+          description: 'These must be set for the app to run',
           code: `# .env.local
 
 # Database - PostgreSQL connection string
@@ -60,11 +77,11 @@ NEXTAUTH_SECRET="your-32-character-secret-here"
 
 # App URL (used for links in emails, etc.)
 NEXT_PUBLIC_APP_URL="http://localhost:3000"`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Authentication",
-          description: "Configure OAuth providers",
+          title: 'Authentication',
+          description: 'Configure OAuth providers',
           code: `# Google OAuth (optional - enables Google login)
 GOOGLE_CLIENT_ID="your-client-id.apps.googleusercontent.com"
 GOOGLE_CLIENT_SECRET="your-client-secret"
@@ -75,11 +92,11 @@ GOOGLE_CLIENT_SECRET="your-client-secret"
 # 3. Add redirect URI:
 #    - Dev: http://localhost:3000/api/auth/callback/google
 #    - Prod: https://your-domain.com/api/auth/callback/google`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Email (Resend)",
-          description: "Configure email sending",
+          title: 'Email (Resend)',
+          description: 'Configure email sending',
           code: `# Resend API Key
 RESEND_API_KEY="re_..."
 
@@ -91,11 +108,11 @@ EMAIL_FROM="noreply@your-domain.com"
 # 2. Verify your domain
 # 3. Create API key
 # 4. Add DNS records for domain verification`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Stripe Payments",
-          description: "Configure payment processing",
+          title: 'Stripe Payments',
+          description: 'Configure payment processing',
           code: `# Stripe API Keys
 STRIPE_SECRET_KEY="sk_test_..."           # Server-side
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."  # Client-side
@@ -114,11 +131,11 @@ NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE="price_..."
 
 # Test webhook locally:
 # stripe listen --forward-to localhost:3000/api/webhooks/stripe`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Analytics (Optional)",
-          description: "Track user behavior and metrics",
+          title: 'Analytics (Optional)',
+          description: 'Track user behavior and metrics',
           code: `# PostHog Analytics
 NEXT_PUBLIC_POSTHOG_KEY="phc_..."
 NEXT_PUBLIC_POSTHOG_HOST="https://app.posthog.com"
@@ -130,11 +147,11 @@ NEXT_PUBLIC_POSTHOG_HOST="https://app.posthog.com"
 
 # Google Analytics (alternative)
 NEXT_PUBLIC_GA_MEASUREMENT_ID="G-..."`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Environment Validation",
-          description: "All variables validated at startup in src/lib/env.ts",
+          title: 'Environment Validation',
+          description: 'All variables validated at startup in src/lib/env.ts',
           code: `// src/lib/env.ts
 import { z } from "zod";
 
@@ -164,11 +181,11 @@ import { env } from "@/lib/env";
 
 const dbUrl = env.server.DATABASE_URL;  // Type-safe!
 const appUrl = env.client.NEXT_PUBLIC_APP_URL;`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Environment-Specific Configuration",
-          description: "Use different values for different environments",
+          title: 'Environment-Specific Configuration',
+          description: 'Use different values for different environments',
           code: `# Development (.env.local)
 NODE_ENV="development"
 NEXTAUTH_URL="http://localhost:3000"
@@ -186,11 +203,11 @@ NODE_ENV="production"
 NEXTAUTH_URL="https://your-domain.com"
 STRIPE_SECRET_KEY="sk_live_..."  # Live keys!
 DATABASE_URL="postgresql://...production-db..."`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Complete Example",
-          description: "Full development environment setup",
+          title: 'Complete Example',
+          description: 'Full development environment setup',
           code: `# .env.local - Complete Development Setup
 
 # Core
@@ -218,11 +235,11 @@ NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL="price_..."
 # Analytics (optional)
 NEXT_PUBLIC_POSTHOG_KEY="phc_..."
 NEXT_PUBLIC_POSTHOG_HOST="https://app.posthog.com"`,
-          language: "bash",
+          language: 'bash',
         },
       ]}
-      previous={{ title: "Vercel", href: "/docs/deployment/vercel" }}
-      next={{ title: "Database", href: "/docs/deployment/database" }}
+      previous={{ title: 'Vercel', href: '/docs/deployment/vercel' }}
+      next={{ title: 'Database', href: '/docs/deployment/database' }}
     >
       {/* Key Points */}
       <DocsSection title="Key Points">
@@ -241,10 +258,18 @@ NEXT_PUBLIC_POSTHOG_HOST="https://app.posthog.com"`,
         <DocsCard title="SECURITY">
           <div className="space-y-1">
             <div>├─ Never commit secrets - Add .env.local to .gitignore</div>
-            <div>├─ Rotate secrets regularly - Especially after team changes</div>
-            <div>├─ Use separate keys - Different keys for dev/staging/prod</div>
-            <div>├─ Limit access - Use least-privilege API keys when possible</div>
-            <div>└─ Monitor usage - Check Stripe/Resend dashboards for anomalies</div>
+            <div>
+              ├─ Rotate secrets regularly - Especially after team changes
+            </div>
+            <div>
+              ├─ Use separate keys - Different keys for dev/staging/prod
+            </div>
+            <div>
+              ├─ Limit access - Use least-privilege API keys when possible
+            </div>
+            <div>
+              └─ Monitor usage - Check Stripe/Resend dashboards for anomalies
+            </div>
           </div>
         </DocsCard>
       </DocsSection>

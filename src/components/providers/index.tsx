@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { ReactNode } from "react";
-import { SessionProvider } from "next-auth/react";
-import { Toaster } from "sonner";
-import { ThemeProvider } from "@/design-system/providers";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
-import { env } from "@/lib/env";
+import { ReactNode } from 'react';
+import { SessionProvider } from 'next-auth/react';
+import { Toaster } from 'sonner';
+import { ThemeProvider } from '@/design-system/providers';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
+import { env } from '@/lib/env';
 
 /**
  * Client-side providers
@@ -26,18 +26,19 @@ import { env } from "@/lib/env";
 interface ProvidersProps {
   children: ReactNode;
   /** Default color theme (defaults to "light") */
-  defaultColorTheme?: "light" | "dark";
+  defaultColorTheme?: 'light' | 'dark';
   /** Default visual mode (defaults to "terminal") */
-  defaultVisualMode?: "terminal" | "modern" | "minimal" | "linear";
+  defaultVisualMode?: 'terminal' | 'modern' | 'minimal' | 'linear';
 }
 
 export function Providers({
   children,
-  defaultColorTheme = "light",
+  defaultColorTheme = 'light',
   defaultVisualMode,
 }: ProvidersProps) {
   // Read from environment variable, fallback to prop
-  const visualTheme = defaultVisualMode || env.client.NEXT_PUBLIC_DEFAULT_VISUAL_THEME;
+  const visualTheme =
+    defaultVisualMode || env.client.NEXT_PUBLIC_DEFAULT_VISUAL_THEME;
 
   return (
     <SessionProvider>
@@ -51,7 +52,11 @@ export function Providers({
           position="top-right"
           richColors
           toastOptions={{
-            className: cn("border border-border text-xs", mode.radius, mode.font),
+            className: cn(
+              'border border-border text-xs',
+              mode.radius,
+              mode.font
+            ),
           }}
         />
       </ThemeProvider>

@@ -3,14 +3,14 @@
  * Catches React errors and provides fallback UI
  */
 
-"use client";
+'use client';
 
-import React, { Component, ReactNode } from "react";
-import { captureError } from "@/lib/monitoring/error-tracker";
-import { Button } from "@/components/ui/button";
-import { AlertCircle } from "lucide-react";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import React, { Component, ReactNode } from 'react';
+import { captureError } from '@/lib/monitoring/error-tracker';
+import { Button } from '@/components/ui/button';
+import { AlertCircle } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 interface Props {
   children: ReactNode;
@@ -37,7 +37,7 @@ export class ErrorBoundary extends Component<Props, State> {
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     // Log error to tracking system
     captureError(error, {
-      component: errorInfo.componentStack?.split("\n")[1]?.trim(),
+      component: errorInfo.componentStack?.split('\n')[1]?.trim(),
       metadata: {
         componentStack: errorInfo.componentStack,
       },
@@ -75,12 +75,16 @@ export class ErrorBoundary extends Component<Props, State> {
           <p className="text-muted-foreground mb-6">
             We're sorry for the inconvenience. Please try refreshing the page.
           </p>
-          {process.env.NODE_ENV === "development" && this.state.error && (
-            <details className={cn("mb-4 max-w-2xl border p-4 text-left", mode.radius)}>
-              <summary className="cursor-pointer font-semibold">Error Details</summary>
-              <pre className={cn("mt-2 overflow-auto text-xs", mode.font)}>
+          {process.env.NODE_ENV === 'development' && this.state.error && (
+            <details
+              className={cn('mb-4 max-w-2xl border p-4 text-left', mode.radius)}
+            >
+              <summary className="cursor-pointer font-semibold">
+                Error Details
+              </summary>
+              <pre className={cn('mt-2 overflow-auto text-xs', mode.font)}>
                 {this.state.error.message}
-                {"\n\n"}
+                {'\n\n'}
                 {this.state.error.stack}
               </pre>
             </details>

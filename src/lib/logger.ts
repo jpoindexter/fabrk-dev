@@ -3,13 +3,21 @@
  * Provides consistent logging across the application
  */
 
-type LogLevel = "info" | "warn" | "error" | "debug";
+type LogLevel = 'info' | 'warn' | 'error' | 'debug';
 
-type LogArg = string | number | boolean | null | undefined | Error | Record<string, unknown> | unknown[];
+type LogArg =
+  | string
+  | number
+  | boolean
+  | null
+  | undefined
+  | Error
+  | Record<string, unknown>
+  | unknown[];
 
 class Logger {
   private sanitizeSensitiveData(data: LogArg): LogArg {
-    if (typeof data === "string") {
+    if (typeof data === 'string') {
       // Redact potential sensitive patterns
       return data
         .replace(/password['":\s]+[^,}\]]+/gi, 'password":"[REDACTED]"')
@@ -26,14 +34,14 @@ class Logger {
     const logMessage = `[${timestamp}] [${level.toUpperCase()}] ${message}`;
 
     switch (level) {
-      case "error":
+      case 'error':
         console.error(logMessage, ...sanitizedArgs);
         break;
-      case "warn":
+      case 'warn':
         console.warn(logMessage, ...sanitizedArgs);
         break;
-      case "debug":
-        if (process.env.NODE_ENV === "development") {
+      case 'debug':
+        if (process.env.NODE_ENV === 'development') {
           console.debug(logMessage, ...sanitizedArgs);
         }
         break;
@@ -43,23 +51,28 @@ class Logger {
   }
 
   info(message: string, ...args: LogArg[]) {
-    this.log("info", message, ...args);
+    this.log('info', message, ...args);
   }
 
   warn(message: string, ...args: LogArg[]) {
-    this.log("warn", message, ...args);
+    this.log('warn', message, ...args);
   }
 
   error(message: string, error?: Error | unknown, ...args: LogArg[]) {
     if (error instanceof Error) {
-      this.log("error", message, { error: error.message, stack: error.stack }, ...args);
+      this.log(
+        'error',
+        message,
+        { error: error.message, stack: error.stack },
+        ...args
+      );
     } else {
-      this.log("error", message, error as LogArg, ...args);
+      this.log('error', message, error as LogArg, ...args);
     }
   }
 
   debug(message: string, ...args: LogArg[]) {
-    this.log("debug", message, ...args);
+    this.log('debug', message, ...args);
   }
 }
 

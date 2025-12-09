@@ -25,7 +25,7 @@ export {
   type ToastNotification,
   type NotificationType,
   type NotificationPriority,
-} from "./notification-manager";
+} from './notification-manager';
 
 // React hooks
-export { useNotifications, useToast, useNotify } from "./hooks";
+export { useNotifications, useToast, useNotify } from './hooks';

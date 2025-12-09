@@ -41,7 +41,7 @@ export async function retry<T>(
     }
   }
 
-  throw new Error("Retry failed");
+  throw new Error('Retry failed');
 }
 
 /**
@@ -51,7 +51,7 @@ export async function retry<T>(
 export async function withTimeout<T>(
   promise: Promise<T>,
   timeoutMs: number,
-  timeoutError: Error = new Error("Operation timed out")
+  timeoutError: Error = new Error('Operation timed out')
 ): Promise<T> {
   const timeoutPromise = new Promise<never>((_, reject) =>
     setTimeout(() => reject(timeoutError), timeoutMs)
@@ -130,7 +130,7 @@ export function throttleAsync<T extends (...args: any[]) => Promise<any>>(
 
   return async (...args: Parameters<T>): Promise<ReturnType<T>> => {
     if (inThrottle) {
-      throw new Error("Function is throttled");
+      throw new Error('Function is throttled');
     }
 
     inThrottle = true;

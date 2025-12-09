@@ -1,7 +1,7 @@
 export function EmailWorkerSection() {
   return {
-    title: "Email Worker",
-    description: "Dedicated worker for processing email queue",
+    title: 'Email Worker',
+    description: 'Dedicated worker for processing email queue',
     code: `// scripts/email-worker.ts
 import { Resend } from "resend";
 import { getNextJob, completeJob, failJob } from "@/lib/jobs/queue";
@@ -63,6 +63,6 @@ function sleep(ms: number) {
 }
 
 processEmailQueue();`,
-    language: "typescript",
+    language: 'typescript',
   };
 }

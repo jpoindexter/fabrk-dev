@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { redirect } from 'next/navigation';
 
 export default function BillingPage() {
-  redirect("/library/billing-dashboard");
+  redirect('/library/billing-dashboard');
 }

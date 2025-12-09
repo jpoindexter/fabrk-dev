@@ -43,8 +43,8 @@
 ### Security Code Badges
 
 ```tsx
-code = "[0x80]"; // CSRF Protection
-code = "[0x80]"; // Rate Limiting (same code - inconsistency?)
+code = '[0x80]'; // CSRF Protection
+code = '[0x80]'; // Rate Limiting (same code - inconsistency?)
 ```
 
 - **Format**: `[0x80]` for security category
@@ -53,8 +53,8 @@ code = "[0x80]"; // Rate Limiting (same code - inconsistency?)
 ### Security Titles
 
 ```tsx
-title = "CSRF_Protection";
-title = "Rate_Limiting";
+title = 'CSRF_Protection';
+title = 'Rate_Limiting';
 ```
 
 - **Format**: Uppercase with underscores
@@ -63,8 +63,10 @@ title = "Rate_Limiting";
 ### Descriptions
 
 ```tsx
-description = "Protect your forms and API endpoints from cross-site request forgery attacks.";
-description = "Protect your API endpoints from abuse with configurable rate limiting middleware.";
+description =
+  'Protect your forms and API endpoints from cross-site request forgery attacks.';
+description =
+  'Protect your API endpoints from abuse with configurable rate limiting middleware.';
 ```
 
 - **Style**: Security-focused, protective language
@@ -74,7 +76,7 @@ description = "Protect your API endpoints from abuse with configurable rate limi
 
 ```tsx
 overview =
-  "CSRF protection prevents attackers from tricking users into performing unwanted actions on your site. NextAuth v5 automatically protects all authentication routes with CSRF tokens.";
+  'CSRF protection prevents attackers from tricking users into performing unwanted actions on your site. NextAuth v5 automatically protects all authentication routes with CSRF tokens.';
 ```
 
 - **Style**: Explains the threat + the solution
@@ -408,10 +410,10 @@ All security pages use `FeatureGuideTemplate` correctly:
 
 ```tsx
 // CSRF page
-code = "[0x80]";
+code = '[0x80]';
 
 // Rate Limiting page
-code = "[0x80]";
+code = '[0x80]';
 ```
 
 - **Problem**: Both use `[0x80]`
@@ -531,13 +533,13 @@ UPSTASH_REDIS_REST_TOKEN="your-redis-token"`,
 
 ```tsx
 {
-  error: "Too many requests. Please try again later.";
+  error: 'Too many requests. Please try again later.';
 }
 {
-  error: "Invalid CSRF token";
+  error: 'Invalid CSRF token';
 }
 {
-  error: "Invalid request origin";
+  error: 'Invalid request origin';
 }
 ```
 
@@ -618,9 +620,9 @@ headers: {
    ```tsx
    <SecurityChecklist
      items={[
-       { check: "CSRF tokens on all forms", status: "auto" },
-       { check: "Rate limiting on auth endpoints", status: "manual" },
-       { check: "Origin validation", status: "optional" },
+       { check: 'CSRF tokens on all forms', status: 'auto' },
+       { check: 'Rate limiting on auth endpoints', status: 'manual' },
+       { check: 'Origin validation', status: 'optional' },
      ]}
    />
    ```

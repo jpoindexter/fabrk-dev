@@ -1,10 +1,14 @@
-import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
-import { withCsrfProtection } from "@/lib/security/csrf";
-import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
-import { generateApiKey } from "@/lib/api-keys/generator";
-import { logger } from "@/lib/logger";
+import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@/lib/auth';
+import { prisma } from '@/lib/prisma';
+import { withCsrfProtection } from '@/lib/security/csrf';
+import {
+  checkRateLimitAuto,
+  getClientIdentifier,
+  RateLimiters,
+} from '@/lib/security/rate-limit';
+import { generateApiKey } from '@/lib/api-keys/generator';
+import { logger } from '@/lib/logger';
 
 /**
  * GET /api/api-keys
@@ -15,15 +19,18 @@ export async function GET(_req: NextRequest) {
   try {
     const session = await auth();
     if (!session?.user?.id) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     // Get organization ID from query params
     const { searchParams } = new URL(_req.url);
-    const organizationId = searchParams.get("organizationId");
+    const organizationId = searchParams.get('organizationId');
 
     if (!organizationId) {
-      return NextResponse.json({ error: "Organization ID is required" }, { status: 400 });
+      return NextResponse.json(
+        { error: 'Organization ID is required' },
+        { status: 400 }
+      );
     }
 
     // Verify user is a member of the organization
@@ -37,7 +44,7 @@ export async function GET(_req: NextRequest) {
     });
 
     if (!membership) {
-      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
     // Fetch API keys for the organization
@@ -58,13 +65,16 @@ export async function GET(_req: NextRequest) {
           },
         },
       },
-      orderBy: { createdAt: "desc" },
+      orderBy: { createdAt: 'desc' },
     });
 
     return NextResponse.json(apiKeys);
   } catch (error: unknown) {
-    logger.error("Error fetching API keys:", error);
-    return NextResponse.json({ error: "Failed to fetch API keys" }, { status: 500 });
+    logger.error('Error fetching API keys:', error);
+    return NextResponse.json(
+      { error: 'Failed to fetch API keys' },
+      { status: 500 }
+    );
   }
 }
 
@@ -81,13 +91,15 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
 
     if (!rateLimit.success) {
       return NextResponse.json(
-        { error: "Too many requests. Please try again later." },
+        { error: 'Too many requests. Please try again later.' },
         {
           status: 429,
           headers: {
-            "X-RateLimit-Limit": rateLimit.limit.toString(),
-            "X-RateLimit-Remaining": rateLimit.remaining.toString(),
-            "Retry-After": Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
+            'X-RateLimit-Limit': rateLimit.limit.toString(),
+            'X-RateLimit-Remaining': rateLimit.remaining.toString(),
+            'Retry-After': Math.ceil(
+              (rateLimit.reset - Date.now()) / 1000
+            ).toString(),
           },
         }
       );
@@ -95,7 +107,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
 
     const session = await auth();
     if (!session?.user?.id) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     const body = await req.json();
@@ -104,16 +116,19 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     // Validate required fields
     if (!organizationId || !name || !permissions) {
       return NextResponse.json(
-        { error: "Missing required fields: organizationId, name, permissions" },
+        { error: 'Missing required fields: organizationId, name, permissions' },
         { status: 400 }
       );
     }
 
     // Validate permissions array
-    const validPermissions = ["read", "write", "admin"];
-    if (!Array.isArray(permissions) || !permissions.every((p) => validPermissions.includes(p))) {
+    const validPermissions = ['read', 'write', 'admin'];
+    if (
+      !Array.isArray(permissions) ||
+      !permissions.every((p) => validPermissions.includes(p))
+    ) {
       return NextResponse.json(
-        { error: "Invalid permissions. Must be array of: read, write, admin" },
+        { error: 'Invalid permissions. Must be array of: read, write, admin' },
         { status: 400 }
       );
     }
@@ -128,9 +143,12 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
       },
     });
 
-    if (!membership || (membership.role !== "ADMIN" && membership.role !== "OWNER")) {
+    if (
+      !membership ||
+      (membership.role !== 'ADMIN' && membership.role !== 'OWNER')
+    ) {
       return NextResponse.json(
-        { error: "Forbidden. Requires ADMIN or OWNER role." },
+        { error: 'Forbidden. Requires ADMIN or OWNER role.' },
         { status: 403 }
       );
     }
@@ -142,13 +160,13 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
 
     if (existingKeysCount >= 10) {
       return NextResponse.json(
-        { error: "Maximum of 10 API keys per organization" },
+        { error: 'Maximum of 10 API keys per organization' },
         { status: 400 }
       );
     }
 
     // Generate API key
-    const generated = generateApiKey("live");
+    const generated = generateApiKey('live');
 
     // Parse expiration date if provided
     const expirationDate = expiresAt ? new Date(expiresAt) : null;
@@ -174,7 +192,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
       },
     });
 
-    logger.info("API key created", {
+    logger.info('API key created', {
       keyId: apiKey.id,
       organizationId,
       userId: session.user.id,
@@ -186,7 +204,10 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
       key: generated.key, // Full key returned only once
     });
   } catch (error: unknown) {
-    logger.error("Error creating API key:", error);
-    return NextResponse.json({ error: "Failed to create API key" }, { status: 500 });
+    logger.error('Error creating API key:', error);
+    return NextResponse.json(
+      { error: 'Failed to create API key' },
+      { status: 500 }
+    );
   }
 });

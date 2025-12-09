@@ -1,10 +1,11 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
-import { Mail, Key, UserPlus, Shield } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard } from '@/components/docs';
+import { Mail, Key, UserPlus, Shield } from 'lucide-react';
 
 export const metadata = {
-  title: "Magic Link Auth - Fabrk Docs",
-  description: "Passwordless authentication with magic links. Let users sign in with just their email address.",
+  title: 'Magic Link Auth - Fabrk Docs',
+  description:
+    'Passwordless authentication with magic links. Let users sign in with just their email address.',
 };
 
 export default function MagicLinksPage() {
@@ -16,47 +17,67 @@ export default function MagicLinksPage() {
       description="Passwordless authentication via email magic links for frictionless sign-in."
       overview="Magic links provide passwordless authentication by sending a unique, time-limited link to the user's email. Features include one-click sign-in from email, no password to remember or manage, automatic email verification, time-limited tokens (24 hours default), and single-use links for security."
       features={[
-        { icon: Mail, title: "Passwordless Primary Auth", description: "Use magic links as the primary authentication method. Great for apps where security matters but password fatigue is a concern." },
-        { icon: Key, title: "Secondary Sign-In Option", description: "Offer alongside password auth with 'Forgot password? Sign in with email instead' for users who prefer passwordless." },
-        { icon: Shield, title: "Account Recovery", description: "Use magic links for account recovery when users forget their password, without requiring a separate password reset flow." },
-        { icon: UserPlus, title: "Invite-Based Onboarding", description: "Send magic link invites to new team members. They click the link to join without setting up credentials first." },
+        {
+          icon: Mail,
+          title: 'Passwordless Primary Auth',
+          description:
+            'Use magic links as the primary authentication method. Great for apps where security matters but password fatigue is a concern.',
+        },
+        {
+          icon: Key,
+          title: 'Secondary Sign-In Option',
+          description:
+            "Offer alongside password auth with 'Forgot password? Sign in with email instead' for users who prefer passwordless.",
+        },
+        {
+          icon: Shield,
+          title: 'Account Recovery',
+          description:
+            'Use magic links for account recovery when users forget their password, without requiring a separate password reset flow.',
+        },
+        {
+          icon: UserPlus,
+          title: 'Invite-Based Onboarding',
+          description:
+            'Send magic link invites to new team members. They click the link to join without setting up credentials first.',
+        },
       ]}
       setup={[
         {
-          title: "Enable Magic Links",
-          description: "Enable the feature in src/config.js",
+          title: 'Enable Magic Links',
+          description: 'Enable the feature in src/config.js',
           code: `export const config = {
   features: {
     magicLinks: true,
     // ...other features
   },
 };`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Configure Email",
-          description: "Ensure email is configured in .env.local",
+          title: 'Configure Email',
+          description: 'Ensure email is configured in .env.local',
           code: `RESEND_API_KEY="re_xxxxxxxxxxxx"
 EMAIL_FROM="Your App <noreply@yourdomain.com>"
 NEXT_PUBLIC_APP_URL="http://localhost:3000"`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Token Settings",
-          description: "Configure token expiration",
+          title: 'Token Settings',
+          description: 'Configure token expiration',
           code: `export const config = {
   auth: {
     magicLinkExpiry: 24 * 60 * 60 * 1000, // 24 hours in ms
     // ...
   },
 };`,
-          language: "typescript",
+          language: 'typescript',
         },
       ]}
       usage={[
         {
-          title: "Request Magic Link API",
-          description: "Create the API endpoint at /api/auth/magic-link",
+          title: 'Request Magic Link API',
+          description: 'Create the API endpoint at /api/auth/magic-link',
           code: `// src/app/api/auth/magic-link/route.ts
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
@@ -112,11 +133,11 @@ export async function POST(request: Request) {
     message: "Magic link sent to your email",
   });
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Magic Link Request Form",
-          description: "Client-side form component",
+          title: 'Magic Link Request Form',
+          description: 'Client-side form component',
           code: `"use client";
 
 import { useState } from "react";
@@ -176,21 +197,35 @@ export function MagicLinkForm() {
     </form>
   );
 }`,
-          language: "tsx",
+          language: 'tsx',
         },
       ]}
-      previous={{ title: "Webhooks", href: "/docs/features/webhooks" }}
-      next={{ title: "MFA", href: "/docs/features/mfa" }}
+      previous={{ title: 'Webhooks', href: '/docs/features/webhooks' }}
+      next={{ title: 'MFA', href: '/docs/features/mfa' }}
     >
       {/* Security Considerations Section */}
       <DocsSection title="Security Considerations">
         <DocsCard title="SECURITY">
           <ul className="space-y-1">
-            <li>├─ <strong>Single-use tokens:</strong> Delete tokens after verification</li>
-            <li>├─ <strong>Short expiry:</strong> 24 hours or less recommended</li>
-            <li>├─ <strong>Secure generation:</strong> Use cryptographically secure random tokens</li>
-            <li>├─ <strong>Rate limiting:</strong> Prevent abuse by limiting requests per email</li>
-            <li>└─ <strong>HTTPS only:</strong> Magic links should only work over HTTPS in production</li>
+            <li>
+              ├─ <strong>Single-use tokens:</strong> Delete tokens after
+              verification
+            </li>
+            <li>
+              ├─ <strong>Short expiry:</strong> 24 hours or less recommended
+            </li>
+            <li>
+              ├─ <strong>Secure generation:</strong> Use cryptographically
+              secure random tokens
+            </li>
+            <li>
+              ├─ <strong>Rate limiting:</strong> Prevent abuse by limiting
+              requests per email
+            </li>
+            <li>
+              └─ <strong>HTTPS only:</strong> Magic links should only work over
+              HTTPS in production
+            </li>
           </ul>
         </DocsCard>
       </DocsSection>

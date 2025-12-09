@@ -3,9 +3,9 @@
  * Revenue Chart - Terminal-style bar chart
  */
 
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export interface RevenueDataPoint {
   month: string;
@@ -18,7 +18,9 @@ interface RevenueChartProps {
 }
 
 export function RevenueChart({ data }: RevenueChartProps) {
-  const avgRevenue = Math.round(data.reduce((sum, d) => sum + d.revenue, 0) / data.length);
+  const avgRevenue = Math.round(
+    data.reduce((sum, d) => sum + d.revenue, 0) / data.length
+  );
   const maxRevenue = Math.max(...data.map((d) => d.revenue));
   const growthRate = (
     ((data[data.length - 1].revenue - data[0].revenue) / data[0].revenue) *
@@ -29,7 +31,7 @@ export function RevenueChart({ data }: RevenueChartProps) {
     <Card className="lg:col-span-4">
       <CardHeader code="0x00" title="REVENUE_CHART" />
       <CardContent>
-        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+        <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
           [REVENUE_OVERVIEW]: PERIOD=6_MONTHS
         </div>
 
@@ -39,7 +41,7 @@ export function RevenueChart({ data }: RevenueChartProps) {
           <div
             className={cn(
               mode.font,
-              "text-muted-foreground absolute top-0 bottom-6 left-0 flex flex-col justify-between text-xs"
+              'text-muted-foreground absolute top-0 bottom-6 left-0 flex flex-col justify-between text-xs'
             )}
           >
             <span>$60k</span>
@@ -51,7 +53,10 @@ export function RevenueChart({ data }: RevenueChartProps) {
           {/* Chart area */}
           <div className="border-border flex h-[200px] items-end justify-between gap-2 border-b border-l">
             {data.map((dataPoint, i) => (
-              <div key={i} className="flex h-full flex-1 items-end justify-center">
+              <div
+                key={i}
+                className="flex h-full flex-1 items-end justify-center"
+              >
                 <div
                   className="bg-primary hover:bg-primary/80 w-full max-w-12 transition-colors"
                   style={{
@@ -67,7 +72,10 @@ export function RevenueChart({ data }: RevenueChartProps) {
             {data.map((dataPoint, i) => (
               <div
                 key={i}
-                className={cn(mode.font, "text-muted-foreground flex-1 text-center text-xs")}
+                className={cn(
+                  mode.font,
+                  'text-muted-foreground flex-1 text-center text-xs'
+                )}
               >
                 {dataPoint.month}
               </div>
@@ -79,19 +87,23 @@ export function RevenueChart({ data }: RevenueChartProps) {
         <div
           className={cn(
             mode.font,
-            "border-border mt-4 grid grid-cols-3 gap-4 border-t pt-4 text-xs"
+            'border-border mt-4 grid grid-cols-3 gap-4 border-t pt-4 text-xs'
           )}
         >
           <div>
-            <span className="text-muted-foreground">[AVG]:</span>{" "}
-            <span className="text-foreground">${avgRevenue.toLocaleString()}</span>
+            <span className="text-muted-foreground">[AVG]:</span>{' '}
+            <span className="text-foreground">
+              ${avgRevenue.toLocaleString()}
+            </span>
           </div>
           <div>
-            <span className="text-muted-foreground">[MAX]:</span>{" "}
-            <span className="text-foreground">${maxRevenue.toLocaleString()}</span>
+            <span className="text-muted-foreground">[MAX]:</span>{' '}
+            <span className="text-foreground">
+              ${maxRevenue.toLocaleString()}
+            </span>
           </div>
           <div>
-            <span className="text-muted-foreground">[GROWTH]:</span>{" "}
+            <span className="text-muted-foreground">[GROWTH]:</span>{' '}
             <span className="text-success">+{growthRate}%</span>
           </div>
         </div>

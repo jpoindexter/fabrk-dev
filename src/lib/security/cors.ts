@@ -5,20 +5,25 @@
  * Internal API routes should NOT use this to prevent CSRF attacks.
  */
 
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
 // Allowed origins for CORS (customize based on your needs)
-const ALLOWED_ORIGINS = process.env.CORS_ALLOWED_ORIGINS?.split(",") ?? [
-  "http://localhost:3000",
-  "http://localhost:3001",
+const ALLOWED_ORIGINS = process.env.CORS_ALLOWED_ORIGINS?.split(',') ?? [
+  'http://localhost:3000',
+  'http://localhost:3001',
 ];
 
 // Allowed HTTP methods
-const ALLOWED_METHODS = ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"];
+const ALLOWED_METHODS = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'];
 
 // Allowed headers
-const ALLOWED_HEADERS = ["Content-Type", "Authorization", "X-Requested-With", "X-API-Key"];
+const ALLOWED_HEADERS = [
+  'Content-Type',
+  'Authorization',
+  'X-Requested-With',
+  'X-API-Key',
+];
 
 // Max age for preflight cache (24 hours)
 const MAX_AGE = 86400;
@@ -27,20 +32,20 @@ const MAX_AGE = 86400;
  * Get CORS headers for a request
  */
 export function getCorsHeaders(request: NextRequest): Headers {
-  const origin = request.headers.get("origin");
+  const origin = request.headers.get('origin');
   const headers = new Headers();
 
   // Check if origin is allowed
   if (origin && ALLOWED_ORIGINS.includes(origin)) {
-    headers.set("Access-Control-Allow-Origin", origin);
-  } else if (ALLOWED_ORIGINS.includes("*")) {
-    headers.set("Access-Control-Allow-Origin", "*");
+    headers.set('Access-Control-Allow-Origin', origin);
+  } else if (ALLOWED_ORIGINS.includes('*')) {
+    headers.set('Access-Control-Allow-Origin', '*');
   }
 
-  headers.set("Access-Control-Allow-Methods", ALLOWED_METHODS.join(", "));
-  headers.set("Access-Control-Allow-Headers", ALLOWED_HEADERS.join(", "));
-  headers.set("Access-Control-Max-Age", MAX_AGE.toString());
-  headers.set("Access-Control-Allow-Credentials", "true");
+  headers.set('Access-Control-Allow-Methods', ALLOWED_METHODS.join(', '));
+  headers.set('Access-Control-Allow-Headers', ALLOWED_HEADERS.join(', '));
+  headers.set('Access-Control-Max-Age', MAX_AGE.toString());
+  headers.set('Access-Control-Allow-Credentials', 'true');
 
   return headers;
 }
@@ -56,7 +61,10 @@ export function handleCorsPreFlight(request: NextRequest): NextResponse {
 /**
  * Add CORS headers to an existing response
  */
-export function withCors(request: NextRequest, response: NextResponse): NextResponse {
+export function withCors(
+  request: NextRequest,
+  response: NextResponse
+): NextResponse {
   const corsHeaders = getCorsHeaders(request);
 
   corsHeaders.forEach((value, key) => {
@@ -85,7 +93,7 @@ export function withCorsHandler(
 ) {
   return async (request: NextRequest): Promise<NextResponse> => {
     // Handle preflight
-    if (request.method === "OPTIONS") {
+    if (request.method === 'OPTIONS') {
       return handleCorsPreFlight(request);
     }
 
@@ -104,7 +112,7 @@ export function withCorsHandler(
  * Check if the request origin is allowed
  */
 export function isOriginAllowed(request: NextRequest): boolean {
-  const origin = request.headers.get("origin");
+  const origin = request.headers.get('origin');
   if (!origin) return true; // Same-origin requests don't have origin header
-  return ALLOWED_ORIGINS.includes(origin) || ALLOWED_ORIGINS.includes("*");
+  return ALLOWED_ORIGINS.includes(origin) || ALLOWED_ORIGINS.includes('*');
 }

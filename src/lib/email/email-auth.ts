@@ -3,8 +3,8 @@
  * Verification and password reset emails
  */
 
-import { logger } from "@/lib/logger";
-import { resend, FROM_EMAIL, APP_URL } from "./email-core";
+import { logger } from '@/lib/logger';
+import { resend, FROM_EMAIL, APP_URL } from './email-core';
 
 /**
  * Send email verification link
@@ -16,7 +16,7 @@ import { resend, FROM_EMAIL, APP_URL } from "./email-core";
  */
 export async function sendVerificationEmail(to: string, token: string) {
   if (!resend) {
-    logger.debug("📧 [DEV] Verification email to:", to, "- Token:", token);
+    logger.debug('📧 [DEV] Verification email to:', to, '- Token:', token);
     return { success: true };
   }
 
@@ -26,7 +26,7 @@ export async function sendVerificationEmail(to: string, token: string) {
     await resend.emails.send({
       from: FROM_EMAIL,
       to,
-      subject: "Verify your email",
+      subject: 'Verify your email',
       html: `
         <h2>Verify your email address</h2>
         <p>Click the link below to verify your email:</p>
@@ -36,7 +36,7 @@ export async function sendVerificationEmail(to: string, token: string) {
     });
     return { success: true };
   } catch (error: unknown) {
-    logger.error("Failed to send verification email:", error);
+    logger.error('Failed to send verification email:', error);
     return { success: false, error };
   }
 }
@@ -51,7 +51,7 @@ export async function sendVerificationEmail(to: string, token: string) {
  */
 export async function sendResetEmail(to: string, token: string) {
   if (!resend) {
-    logger.debug("📧 [DEV] Reset email to:", to, "- Token:", token);
+    logger.debug('📧 [DEV] Reset email to:', to, '- Token:', token);
     return { success: true };
   }
 
@@ -61,7 +61,7 @@ export async function sendResetEmail(to: string, token: string) {
     await resend.emails.send({
       from: FROM_EMAIL,
       to,
-      subject: "Reset your password",
+      subject: 'Reset your password',
       html: `
         <h2>Reset your password</h2>
         <p>Click the link below to reset your password:</p>
@@ -72,7 +72,7 @@ export async function sendResetEmail(to: string, token: string) {
     });
     return { success: true };
   } catch (error: unknown) {
-    logger.error("Failed to send reset email:", error);
+    logger.error('Failed to send reset email:', error);
     return { success: false, error };
   }
 }

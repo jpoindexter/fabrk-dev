@@ -129,11 +129,11 @@
  * Full error handling ✓
  */
 
-import { logger } from "@/lib/logger";
-import { prisma } from "@/lib/prisma";
-import { stripe } from "@/lib/stripe/client";
-import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
+import { logger } from '@/lib/logger';
+import { prisma } from '@/lib/prisma';
+import { stripe } from '@/lib/stripe/client';
+import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 
 // Validation schema
 const verifySchema = z.object({
@@ -147,14 +147,14 @@ const verifySchema = z.object({
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
-    const sessionId = searchParams.get("session_id");
+    const sessionId = searchParams.get('session_id');
 
     // Validate input
     const validationResult = verifySchema.safeParse({ session_id: sessionId });
     if (!validationResult.success) {
       return NextResponse.json(
         {
-          error: "Invalid session ID",
+          error: 'Invalid session ID',
           details: validationResult.error.flatten(),
         },
         { status: 400 }
@@ -163,23 +163,30 @@ export async function GET(request: NextRequest) {
 
     // Retrieve session from Stripe
     const session = await stripe.checkout.sessions.retrieve(sessionId!, {
-      expand: ["customer", "payment_intent"],
+      expand: ['customer', 'payment_intent'],
     });
 
     if (!session) {
-      return NextResponse.json({ error: "Session not found" }, { status: 404 });
+      return NextResponse.json({ error: 'Session not found' }, { status: 404 });
     }
 
     // Check if payment was successful
-    if (session.payment_status !== "paid") {
-      return NextResponse.json({ error: "Payment not completed" }, { status: 400 });
+    if (session.payment_status !== 'paid') {
+      return NextResponse.json(
+        { error: 'Payment not completed' },
+        { status: 400 }
+      );
     }
 
     // Get customer email
-    const customerEmail = session.customer_email || session.customer_details?.email;
+    const customerEmail =
+      session.customer_email || session.customer_details?.email;
 
     if (!customerEmail) {
-      return NextResponse.json({ error: "Customer email not found" }, { status: 400 });
+      return NextResponse.json(
+        { error: 'Customer email not found' },
+        { status: 400 }
+      );
     }
 
     // Find payment in database
@@ -202,8 +209,9 @@ export async function GET(request: NextRequest) {
       // Payment might not be processed yet by webhook
       return NextResponse.json(
         {
-          error: "Payment not found",
-          message: "Your purchase is being processed. Please check your email for details.",
+          error: 'Payment not found',
+          message:
+            'Your purchase is being processed. Please check your email for details.',
         },
         { status: 202 }
       );
@@ -211,25 +219,25 @@ export async function GET(request: NextRequest) {
 
     // Return payment details
     return NextResponse.json({
-      licenseKey: payment.user.licenseKey || "",
+      licenseKey: payment.user.licenseKey || '',
       email: payment.user.email,
-      name: payment.user.name || "",
+      name: payment.user.name || '',
       downloadUrl: payment.user.licenseKey
         ? `${process.env.NEXT_PUBLIC_APP_URL}/api/download?key=${payment.user.licenseKey}`
-        : "",
+        : '',
       purchaseDate: payment.createdAt,
       status: payment.status,
     });
   } catch (error: unknown) {
-    logger.error("Verification error:", {
-      error: error instanceof Error ? error.message : "Unknown error",
+    logger.error('Verification error:', {
+      error: error instanceof Error ? error.message : 'Unknown error',
       timestamp: new Date().toISOString(),
     });
 
     return NextResponse.json(
       {
-        error: "Verification failed",
-        message: "Unable to verify purchase. Please contact support.",
+        error: 'Verification failed',
+        message: 'Unable to verify purchase. Please contact support.',
       },
       { status: 500 }
     );

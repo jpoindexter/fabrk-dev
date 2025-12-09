@@ -148,11 +148,13 @@ When Stripe price IDs are still using default values:
 ### Development vs Production
 
 **Development Mode:**
+
 - Shows warnings for non-critical issues (optional features, default values)
 - Only throws errors for critical configuration (Database, Auth, Payment, Email)
 - Displays feature summary showing what's enabled/disabled
 
 **Production Mode:**
+
 - Throws immediately for ANY validation error
 - Fails fast to prevent runtime issues
 - No feature summary (assumes production is properly configured)

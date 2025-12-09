@@ -4,12 +4,12 @@
  * Production-ready ✓
  */
 
-"use client";
+'use client';
 
-import Link from "next/link";
-import { FEATURE_CATEGORIES } from "./feature-data";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+import Link from 'next/link';
+import { FEATURE_CATEGORIES } from './feature-data';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 export function CategoryNavigation() {
   return (
@@ -23,13 +23,13 @@ export function CategoryNavigation() {
                 key={category.id}
                 href={`#${category.id}`}
                 className={cn(
-                  "border-border bg-card text-muted-foreground hover:bg-muted hover:text-foreground flex items-center gap-2 border px-4 py-2 text-xs font-medium whitespace-nowrap transition-colors",
+                  'border-border bg-card text-muted-foreground hover:bg-muted hover:text-foreground flex items-center gap-2 border px-4 py-2 text-xs font-medium whitespace-nowrap transition-colors',
                   mode.radius,
                   mode.font
                 )}
               >
                 <Icon className="size-4" />
-                {category.title.split(" ")[0].toUpperCase()}
+                {category.title.split(' ')[0].toUpperCase()}
               </Link>
             );
           })}

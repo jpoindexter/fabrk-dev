@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@/lib/auth";
-import { getPublishedPosts, getAllPosts, createPost } from "@/lib/blog";
-import { generateSlug, generateExcerpt, isValidSlug } from "@/lib/blog";
-import { withCsrfProtection } from "@/lib/security/csrf";
-import { logger } from "@/lib/logger";
+import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@/lib/auth';
+import { getPublishedPosts, getAllPosts, createPost } from '@/lib/blog';
+import { generateSlug, generateExcerpt, isValidSlug } from '@/lib/blog';
+import { withCsrfProtection } from '@/lib/security/csrf';
+import { logger } from '@/lib/logger';
 
 /**
  * GET /api/blog/posts
@@ -12,17 +12,17 @@ import { logger } from "@/lib/logger";
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
-    const limit = parseInt(searchParams.get("limit") || "10");
-    const offset = parseInt(searchParams.get("offset") || "0");
-    const category = searchParams.get("category") || undefined;
-    const featured = searchParams.get("featured");
-    const all = searchParams.get("all") === "true";
+    const limit = parseInt(searchParams.get('limit') || '10');
+    const offset = parseInt(searchParams.get('offset') || '0');
+    const category = searchParams.get('category') || undefined;
+    const featured = searchParams.get('featured');
+    const all = searchParams.get('all') === 'true';
 
     // Check if admin requesting all posts
     if (all) {
       const session = await auth();
-      if (session?.user?.role !== "ADMIN") {
-        return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+      if (session?.user?.role !== 'ADMIN') {
+        return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
       }
 
       const posts = await getAllPosts({ limit, offset });
@@ -34,13 +34,16 @@ export async function GET(req: NextRequest) {
       limit,
       offset,
       categorySlug: category,
-      featured: featured === "true" ? true : undefined,
+      featured: featured === 'true' ? true : undefined,
     });
 
     return NextResponse.json(posts);
   } catch (error) {
-    logger.error("Error fetching blog posts:", error);
-    return NextResponse.json({ error: "Failed to fetch posts" }, { status: 500 });
+    logger.error('Error fetching blog posts:', error);
+    return NextResponse.json(
+      { error: 'Failed to fetch posts' },
+      { status: 500 }
+    );
   }
 }
 
@@ -52,12 +55,12 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
     const session = await auth();
     if (!session?.user?.id) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     // Only admins can create posts
-    if (session.user.role !== "ADMIN") {
-      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    if (session.user.role !== 'ADMIN') {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
     const body = await req.json();
@@ -74,7 +77,10 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     } = body;
 
     if (!title || !content) {
-      return NextResponse.json({ error: "Title and content are required" }, { status: 400 });
+      return NextResponse.json(
+        { error: 'Title and content are required' },
+        { status: 400 }
+      );
     }
 
     // Generate slug from title
@@ -102,16 +108,27 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
       featured: featured || false,
     });
 
-    logger.info("Blog post created", { postId: post.id, title });
+    logger.info('Blog post created', { postId: post.id, title });
 
     return NextResponse.json(post, { status: 201 });
   } catch (error: unknown) {
     // Handle unique constraint violation (duplicate slug)
-    if (error && typeof error === "object" && "code" in error && error.code === "P2002") {
-      return NextResponse.json({ error: "A post with this slug already exists" }, { status: 400 });
+    if (
+      error &&
+      typeof error === 'object' &&
+      'code' in error &&
+      error.code === 'P2002'
+    ) {
+      return NextResponse.json(
+        { error: 'A post with this slug already exists' },
+        { status: 400 }
+      );
     }
 
-    logger.error("Error creating blog post:", error);
-    return NextResponse.json({ error: "Failed to create post" }, { status: 500 });
+    logger.error('Error creating blog post:', error);
+    return NextResponse.json(
+      { error: 'Failed to create post' },
+      { status: 500 }
+    );
   }
 });

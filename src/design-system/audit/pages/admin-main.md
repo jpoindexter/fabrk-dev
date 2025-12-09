@@ -109,6 +109,7 @@ High-level admin dashboard displaying:
    - **Fix**: Standardize icon position
 
 5. **Badge Color Usage** (Lines 213-219, 223-229, 233-239, 243-249)
+
    ```tsx
    className={cn(
      "bg-success/10 text-success px-2 py-1 text-xs font-semibold",
@@ -157,7 +158,9 @@ High-level admin dashboard displaying:
   </CardHeader>
   <CardContent>
     <div className="font-mono text-2xl font-semibold">{stats.totalUsers}</div>
-    <p className="text-muted-foreground font-mono text-xs">+{stats.recentUsers} [LAST_7D]</p>
+    <p className="text-muted-foreground font-mono text-xs">
+      +{stats.recentUsers} [LAST_7D]
+    </p>
   </CardContent>
 </Card>
 ```

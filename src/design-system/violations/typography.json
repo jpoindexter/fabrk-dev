@@ -20,7 +20,12 @@
       "text-7xl",
       "text-8xl"
     ],
-    "allowedWeights": ["font-normal", "font-medium", "font-semibold", "font-bold"],
+    "allowedWeights": [
+      "font-normal",
+      "font-medium",
+      "font-semibold",
+      "font-bold"
+    ],
     "allowedLineHeights": [
       "leading-none",
       "leading-tight",

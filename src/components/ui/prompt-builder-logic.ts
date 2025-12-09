@@ -3,7 +3,7 @@
  * Prompt builder business logic and state management
  */
 
-import { useState, useCallback } from "react";
+import { useState, useCallback } from 'react';
 
 export interface PromptTemplate {
   id: string;
@@ -18,7 +18,7 @@ export interface PromptVariable {
   name: string;
   value: string;
   description?: string;
-  type?: "text" | "select";
+  type?: 'text' | 'select';
   options?: string[];
 }
 
@@ -51,30 +51,39 @@ export function usePromptBuilder({
   onSaveTemplate,
   onCopyPrompt,
 }: UsePromptBuilderOptions) {
-  const [promptContent, setPromptContent] = useState(defaultTemplate?.content || "");
-  const [variables, setVariables] = useState<PromptVariable[]>(defaultTemplate?.variables || []);
-  const [selectedTemplate, setSelectedTemplate] = useState<string | null>(defaultTemplate?.id || null);
-  const [templateName, setTemplateName] = useState("");
-  const [activeTab, setActiveTab] = useState("editor");
+  const [promptContent, setPromptContent] = useState(
+    defaultTemplate?.content || ''
+  );
+  const [variables, setVariables] = useState<PromptVariable[]>(
+    defaultTemplate?.variables || []
+  );
+  const [selectedTemplate, setSelectedTemplate] = useState<string | null>(
+    defaultTemplate?.id || null
+  );
+  const [templateName, setTemplateName] = useState('');
+  const [activeTab, setActiveTab] = useState('editor');
 
   const addVariable = useCallback(() => {
     if (variables.length >= maxVariables) return;
 
     const newVariable: PromptVariable = {
       id: `var-${Date.now()}`,
-      name: "",
-      value: "",
-      type: "text",
+      name: '',
+      value: '',
+      type: 'text',
     };
 
     setVariables([...variables, newVariable]);
   }, [variables, maxVariables]);
 
-  const updateVariable = useCallback((id: string, updates: Partial<PromptVariable>) => {
-    setVariables((prev) =>
-      prev.map((v) => (v.id === id ? { ...v, ...updates } : v))
-    );
-  }, []);
+  const updateVariable = useCallback(
+    (id: string, updates: Partial<PromptVariable>) => {
+      setVariables((prev) =>
+        prev.map((v) => (v.id === id ? { ...v, ...updates } : v))
+      );
+    },
+    []
+  );
 
   const removeVariable = useCallback((id: string) => {
     setVariables((prev) => prev.filter((v) => v.id !== id));
@@ -85,8 +94,11 @@ export function usePromptBuilder({
 
     // Replace variables in the format {{variableName}}
     variables.forEach((variable) => {
-      const pattern = new RegExp(`\\{\\{${variable.name}\\}\\}`, "g");
-      processed = processed.replace(pattern, variable.value || `{{${variable.name}}}`);
+      const pattern = new RegExp(`\\{\\{${variable.name}\\}\\}`, 'g');
+      processed = processed.replace(
+        pattern,
+        variable.value || `{{${variable.name}}}`
+      );
     });
 
     return processed;
@@ -107,8 +119,8 @@ export function usePromptBuilder({
       return {
         id: `var-${Date.now()}-${name}`,
         name,
-        value: "",
-        type: "text",
+        value: '',
+        type: 'text',
       };
     });
 
@@ -138,7 +150,7 @@ export function usePromptBuilder({
     };
 
     onSaveTemplate?.(template);
-    setTemplateName("");
+    setTemplateName('');
   }, [templateName, promptContent, variables, onSaveTemplate]);
 
   const handleCopy = useCallback(() => {

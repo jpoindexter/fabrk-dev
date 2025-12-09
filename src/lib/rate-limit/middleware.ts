@@ -10,14 +10,17 @@
  * - Multiple rate limit tiers (auth, payment, api)
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import { logger } from "@/lib/logger";
+import { NextRequest, NextResponse } from 'next/server';
+import { logger } from '@/lib/logger';
 
 // Upstash Redis imports (production rate limiting)
-let Ratelimit: typeof import("@upstash/ratelimit").Ratelimit;
-let Redis: typeof import("@upstash/redis").Redis;
-let redisClient: import("@upstash/redis").Redis | null = null;
-let rateLimiters: Record<string, import("@upstash/ratelimit").Ratelimit> | null = null;
+let Ratelimit: typeof import('@upstash/ratelimit').Ratelimit;
+let Redis: typeof import('@upstash/redis').Redis;
+let redisClient: import('@upstash/redis').Redis | null = null;
+let rateLimiters: Record<
+  string,
+  import('@upstash/ratelimit').Ratelimit
+> | null = null;
 
 // Check for Upstash configuration
 const UPSTASH_URL = process.env.UPSTASH_REDIS_REST_URL;
@@ -30,8 +33,8 @@ async function initializeRedis() {
 
   if (isRedisConfigured) {
     try {
-      const upstashRatelimit = await import("@upstash/ratelimit");
-      const upstashRedis = await import("@upstash/redis");
+      const upstashRatelimit = await import('@upstash/ratelimit');
+      const upstashRedis = await import('@upstash/redis');
 
       Ratelimit = upstashRatelimit.Ratelimit;
       Redis = upstashRedis.Redis;
@@ -45,28 +48,28 @@ async function initializeRedis() {
       rateLimiters = {
         auth: new Ratelimit({
           redis: redisClient,
-          limiter: Ratelimit.slidingWindow(5, "15 m"), // 5 requests per 15 minutes
+          limiter: Ratelimit.slidingWindow(5, '15 m'), // 5 requests per 15 minutes
           analytics: true,
-          prefix: "ratelimit:auth",
+          prefix: 'ratelimit:auth',
         }),
         payment: new Ratelimit({
           redis: redisClient,
-          limiter: Ratelimit.slidingWindow(10, "1 m"), // 10 requests per minute
+          limiter: Ratelimit.slidingWindow(10, '1 m'), // 10 requests per minute
           analytics: true,
-          prefix: "ratelimit:payment",
+          prefix: 'ratelimit:payment',
         }),
         api: new Ratelimit({
           redis: redisClient,
-          limiter: Ratelimit.slidingWindow(100, "1 m"), // 100 requests per minute
+          limiter: Ratelimit.slidingWindow(100, '1 m'), // 100 requests per minute
           analytics: true,
-          prefix: "ratelimit:api",
+          prefix: 'ratelimit:api',
         }),
       };
 
-      logger.info("✅ Redis rate limiting initialized (production-ready)");
+      logger.info('✅ Redis rate limiting initialized (production-ready)');
       return rateLimiters;
     } catch (error) {
-      logger.error("Failed to initialize Redis rate limiting:", error);
+      logger.error('Failed to initialize Redis rate limiting:', error);
       return null;
     }
   }
@@ -79,13 +82,17 @@ const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
 
 // Emit warning once if using in-memory in production
 let productionWarningEmitted = false;
-if (process.env.NODE_ENV === "production" && !isRedisConfigured && !productionWarningEmitted) {
+if (
+  process.env.NODE_ENV === 'production' &&
+  !isRedisConfigured &&
+  !productionWarningEmitted
+) {
   productionWarningEmitted = true;
   logger.warn(
-    "⚠️ WARNING: In-memory rate limiting detected in production. " +
-    "This will not work correctly with multiple server instances. " +
-    "Please configure UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN " +
-    "for production rate limiting."
+    '⚠️ WARNING: In-memory rate limiting detected in production. ' +
+      'This will not work correctly with multiple server instances. ' +
+      'Please configure UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN ' +
+      'for production rate limiting.'
   );
 }
 
@@ -103,11 +110,11 @@ type RateLimitType = keyof typeof RATE_LIMITS;
  */
 function getClientId(req: NextRequest): string {
   // Try to get IP from headers (works with proxies/load balancers)
-  const forwarded = req.headers.get("x-forwarded-for");
-  const realIp = req.headers.get("x-real-ip");
+  const forwarded = req.headers.get('x-forwarded-for');
+  const realIp = req.headers.get('x-real-ip');
 
   if (forwarded) {
-    return forwarded.split(",")[0].trim();
+    return forwarded.split(',')[0].trim();
   }
 
   if (realIp) {
@@ -115,7 +122,7 @@ function getClientId(req: NextRequest): string {
   }
 
   // Fallback to connection IP (may not work in serverless)
-  return "unknown";
+  return 'unknown';
 }
 
 /**
@@ -191,7 +198,7 @@ function cleanupExpiredEntries() {
 }
 
 // Run cleanup every 5 minutes (only for in-memory fallback)
-if (typeof setInterval !== "undefined") {
+if (typeof setInterval !== 'undefined') {
   setInterval(cleanupExpiredEntries, 5 * 60 * 1000);
 }
 
@@ -200,27 +207,30 @@ if (typeof setInterval !== "undefined") {
  */
 export function withRateLimit<T extends unknown[]>(
   handler: (req: NextRequest, ...args: T) => Promise<NextResponse>,
-  type: RateLimitType = "api"
+  type: RateLimitType = 'api'
 ) {
   return async (req: NextRequest, ...args: T): Promise<NextResponse> => {
     const clientId = getClientId(req);
-    const { allowed, remaining, resetAt } = await checkRateLimit(clientId, type);
+    const { allowed, remaining, resetAt } = await checkRateLimit(
+      clientId,
+      type
+    );
 
     if (!allowed) {
       const resetIn = Math.ceil((resetAt - Date.now()) / 1000);
 
       return NextResponse.json(
         {
-          error: "Too many requests",
+          error: 'Too many requests',
           message: `Rate limit exceeded. Try again in ${resetIn} seconds.`,
         },
         {
           status: 429,
           headers: {
-            "X-RateLimit-Limit": String(RATE_LIMITS[type].requests),
-            "X-RateLimit-Remaining": "0",
-            "X-RateLimit-Reset": String(Math.ceil(resetAt / 1000)),
-            "Retry-After": String(resetIn),
+            'X-RateLimit-Limit': String(RATE_LIMITS[type].requests),
+            'X-RateLimit-Remaining': '0',
+            'X-RateLimit-Reset': String(Math.ceil(resetAt / 1000)),
+            'Retry-After': String(resetIn),
           },
         }
       );
@@ -230,9 +240,15 @@ export function withRateLimit<T extends unknown[]>(
     const response = await handler(req, ...args);
 
     // Add rate limit headers to response
-    response.headers.set("X-RateLimit-Limit", String(RATE_LIMITS[type].requests));
-    response.headers.set("X-RateLimit-Remaining", String(remaining));
-    response.headers.set("X-RateLimit-Reset", String(Math.ceil(resetAt / 1000)));
+    response.headers.set(
+      'X-RateLimit-Limit',
+      String(RATE_LIMITS[type].requests)
+    );
+    response.headers.set('X-RateLimit-Remaining', String(remaining));
+    response.headers.set(
+      'X-RateLimit-Reset',
+      String(Math.ceil(resetAt / 1000))
+    );
 
     return response;
   };
@@ -249,13 +265,13 @@ export function isRedisRateLimitingActive(): boolean {
  * Get rate limiting status for health checks
  */
 export async function getRateLimitingStatus(): Promise<{
-  mode: "redis" | "memory";
+  mode: 'redis' | 'memory';
   configured: boolean;
   healthy: boolean;
 }> {
   if (!isRedisConfigured) {
     return {
-      mode: "memory",
+      mode: 'memory',
       configured: false,
       healthy: true, // In-memory always "healthy" but not recommended
     };
@@ -264,13 +280,13 @@ export async function getRateLimitingStatus(): Promise<{
   try {
     const limiters = await initializeRedis();
     return {
-      mode: "redis",
+      mode: 'redis',
       configured: true,
       healthy: !!limiters,
     };
   } catch {
     return {
-      mode: "redis",
+      mode: 'redis',
       configured: true,
       healthy: false,
     };

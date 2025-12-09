@@ -8,7 +8,7 @@
  * ```
  */
 
-import { z } from "zod";
+import { z } from 'zod';
 
 /**
  * Password validation rules
@@ -19,18 +19,18 @@ import { z } from "zod";
  */
 const passwordSchema = z
   .string()
-  .min(8, "Password must be at least 8 characters")
-  .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
-  .regex(/[a-z]/, "Password must contain at least one lowercase letter")
-  .regex(/[0-9]/, "Password must contain at least one number");
+  .min(8, 'Password must be at least 8 characters')
+  .regex(/[A-Z]/, 'Password must contain at least one uppercase letter')
+  .regex(/[a-z]/, 'Password must contain at least one lowercase letter')
+  .regex(/[0-9]/, 'Password must contain at least one number');
 
 /**
  * Email validation schema
  */
 const emailSchema = z
   .string()
-  .email("Invalid email address")
-  .min(1, "Email is required");
+  .email('Invalid email address')
+  .min(1, 'Email is required');
 
 /**
  * Login form schema
@@ -39,7 +39,7 @@ const emailSchema = z
  */
 export const loginSchema = z.object({
   email: emailSchema,
-  password: z.string().min(1, "Password is required"),
+  password: z.string().min(1, 'Password is required'),
   rememberMe: z.boolean().optional(),
 });
 
@@ -55,16 +55,16 @@ export const registerSchema = z
   .object({
     email: emailSchema,
     password: passwordSchema,
-    confirmPassword: z.string().min(1, "Confirm password is required"),
+    confirmPassword: z.string().min(1, 'Confirm password is required'),
     name: z.string().optional(),
     acceptTerms: z.boolean().refine((val) => val === true, {
-      message: "You must accept the terms and conditions",
+      message: 'You must accept the terms and conditions',
     }),
     subscribeNewsletter: z.boolean().optional(),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match",
-    path: ["confirmPassword"],
+    message: 'Passwords do not match',
+    path: ['confirmPassword'],
   });
 
 export type RegisterInput = z.infer<typeof registerSchema>;
@@ -92,11 +92,11 @@ export type ForgotPasswordFormData = ForgotPasswordInput; // Alias for backward 
 export const resetPasswordSchema = z
   .object({
     password: passwordSchema,
-    confirmPassword: z.string().min(1, "Confirm password is required"),
+    confirmPassword: z.string().min(1, 'Confirm password is required'),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match",
-    path: ["confirmPassword"],
+    message: 'Passwords do not match',
+    path: ['confirmPassword'],
   });
 
 export type ResetPasswordInput = z.infer<typeof resetPasswordSchema>;
@@ -109,7 +109,7 @@ export type ResetPasswordFormData = ResetPasswordInput; // Alias for backward co
 export function calculatePasswordStrength(password: string) {
   let score = 0;
 
-  if (!password) return { score: 0, label: "Too weak" };
+  if (!password) return { score: 0, label: 'Too weak' };
 
   // Length scoring
   if (password.length >= 8) score += 20;
@@ -123,10 +123,10 @@ export function calculatePasswordStrength(password: string) {
   if (/[^a-zA-Z0-9]/.test(password)) score += 15;
 
   // Label based on score
-  let label = "Too weak";
-  if (score >= 75) label = "Strong";
-  else if (score >= 50) label = "Fair";
-  else if (score >= 25) label = "Weak";
+  let label = 'Too weak';
+  if (score >= 75) label = 'Strong';
+  else if (score >= 50) label = 'Fair';
+  else if (score >= 25) label = 'Weak';
 
   return { score: Math.min(score, 100), label };
 }

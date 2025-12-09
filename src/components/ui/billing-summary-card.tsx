@@ -1,18 +1,23 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { Calendar, Zap, AlertTriangle, CheckCircle, Clock } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import * as React from 'react';
+import { Calendar, Zap, AlertTriangle, CheckCircle, Clock } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 
-export type BillingStatus = "active" | "trial" | "past_due" | "canceled" | "paused";
+export type BillingStatus =
+  | 'active'
+  | 'trial'
+  | 'past_due'
+  | 'canceled'
+  | 'paused';
 
 export interface BillingPlan {
   name: string;
   price: number;
-  interval: "month" | "year";
+  interval: 'month' | 'year';
   features?: string[];
 }
 
@@ -50,19 +55,35 @@ const statusConfig: Record<
   BillingStatus,
   {
     label: string;
-    variant: "default" | "secondary" | "destructive" | "outline";
+    variant: 'default' | 'secondary' | 'destructive' | 'outline';
     icon: React.ReactNode;
   }
 > = {
-  active: { label: "ACTIVE", variant: "default", icon: <CheckCircle className="h-3 w-3" /> },
-  trial: { label: "TRIAL", variant: "secondary", icon: <Clock className="h-3 w-3" /> },
+  active: {
+    label: 'ACTIVE',
+    variant: 'default',
+    icon: <CheckCircle className="h-3 w-3" />,
+  },
+  trial: {
+    label: 'TRIAL',
+    variant: 'secondary',
+    icon: <Clock className="h-3 w-3" />,
+  },
   past_due: {
-    label: "PAST_DUE",
-    variant: "destructive",
+    label: 'PAST_DUE',
+    variant: 'destructive',
     icon: <AlertTriangle className="h-3 w-3" />,
   },
-  canceled: { label: "CANCELED", variant: "outline", icon: <AlertTriangle className="h-3 w-3" /> },
-  paused: { label: "PAUSED", variant: "outline", icon: <Clock className="h-3 w-3" /> },
+  canceled: {
+    label: 'CANCELED',
+    variant: 'outline',
+    icon: <AlertTriangle className="h-3 w-3" />,
+  },
+  paused: {
+    label: 'PAUSED',
+    variant: 'outline',
+    icon: <Clock className="h-3 w-3" />,
+  },
 };
 
 export function BillingSummaryCard({
@@ -80,15 +101,15 @@ export function BillingSummaryCard({
   const statusInfo = statusConfig[status];
 
   const formatDate = (date: Date) => {
-    return new Intl.DateTimeFormat("en-US", {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
+    return new Intl.DateTimeFormat('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
     }).format(date);
   };
 
-  const formatPrice = (price: number, interval: "month" | "year") => {
-    return `$${price}/${interval === "month" ? "mo" : "yr"}`;
+  const formatPrice = (price: number, interval: 'month' | 'year') => {
+    return `$${price}/${interval === 'month' ? 'mo' : 'yr'}`;
   };
 
   const getDaysRemaining = (endDate: Date) => {
@@ -102,16 +123,16 @@ export function BillingSummaryCard({
   };
 
   const getUsageColor = (percentage: number) => {
-    if (percentage >= 90) return "bg-destructive";
-    if (percentage >= 75) return "bg-warning";
-    return "bg-primary";
+    if (percentage >= 90) return 'bg-destructive';
+    if (percentage >= 75) return 'bg-warning';
+    return 'bg-primary';
   };
 
   return (
-    <div className={cn("border-border bg-card border", mode.radius, className)}>
+    <div className={cn('border-border bg-card border', mode.radius, className)}>
       {/* Terminal Header */}
       <div className="border-border border-b px-4 py-2">
-        <span className={cn("text-muted-foreground text-xs", mode.font)}>
+        <span className={cn('text-muted-foreground text-xs', mode.font)}>
           [ [0x00] BILLING_SUMMARY ]
         </span>
       </div>
@@ -121,24 +142,30 @@ export function BillingSummaryCard({
         <div className="flex items-start justify-between">
           {/* Left: Plan Info */}
           <div>
-            <p className={cn("text-muted-foreground mb-1 text-xs", mode.font)}>[CURRENT_PLAN]:</p>
-            <p className={cn("text-foreground text-2xl font-bold", mode.font)}>{plan.name}</p>
-            <p className={cn("text-muted-foreground text-xs", mode.font)}>
+            <p className={cn('text-muted-foreground mb-1 text-xs', mode.font)}>
+              [CURRENT_PLAN]:
+            </p>
+            <p className={cn('text-foreground text-2xl font-bold', mode.font)}>
+              {plan.name}
+            </p>
+            <p className={cn('text-muted-foreground text-xs', mode.font)}>
               {formatPrice(plan.price, plan.interval)}
             </p>
             {/* Billing/Trial Info - now under plan details */}
-            {status === "trial" && trialEnd && (
-              <p className={cn("text-warning mt-2 text-xs", mode.font)}>
+            {status === 'trial' && trialEnd && (
+              <p className={cn('text-warning mt-2 text-xs', mode.font)}>
                 Trial ends in {getDaysRemaining(trialEnd)} days
               </p>
             )}
-            {status === "active" && currentPeriodEnd && (
-              <p className={cn("text-muted-foreground mt-2 text-xs", mode.font)}>
+            {status === 'active' && currentPeriodEnd && (
+              <p
+                className={cn('text-muted-foreground mt-2 text-xs', mode.font)}
+              >
                 Next billing: {formatDate(currentPeriodEnd)}
               </p>
             )}
-            {status === "past_due" && (
-              <p className={cn("text-destructive mt-2 text-xs", mode.font)}>
+            {status === 'past_due' && (
+              <p className={cn('text-destructive mt-2 text-xs', mode.font)}>
                 Action required: Update payment method
               </p>
             )}
@@ -153,12 +180,17 @@ export function BillingSummaryCard({
         {/* Plan Features (optional) */}
         {plan.features && plan.features.length > 0 && (
           <div className="mt-4">
-            <p className={cn("text-muted-foreground mb-2 text-xs", mode.font)}>[INCLUDES]:</p>
+            <p className={cn('text-muted-foreground mb-2 text-xs', mode.font)}>
+              [INCLUDES]:
+            </p>
             <ul className="space-y-1">
               {plan.features.map((feature, index) => (
                 <li
                   key={index}
-                  className={cn("text-muted-foreground flex items-center gap-2 text-xs", mode.font)}
+                  className={cn(
+                    'text-muted-foreground flex items-center gap-2 text-xs',
+                    mode.font
+                  )}
                 >
                   <Zap className="text-primary h-3 w-3" />
                   {feature}
@@ -172,7 +204,7 @@ export function BillingSummaryCard({
       {/* Usage Section */}
       {usage.length > 0 && (
         <div className="border-border border-b p-4">
-          <p className={cn("text-muted-foreground mb-3 text-xs", mode.font)}>
+          <p className={cn('text-muted-foreground mb-3 text-xs', mode.font)}>
             [USAGE_THIS_PERIOD]:
           </p>
           <div className="space-y-3">
@@ -181,20 +213,35 @@ export function BillingSummaryCard({
               return (
                 <div key={index}>
                   <div className="mb-1 flex items-center justify-between text-xs">
-                    <span className={cn("font-medium", mode.font)}>{item.name}</span>
-                    <span className={cn("text-muted-foreground text-xs", mode.font)}>
-                      {item.used.toLocaleString()} / {item.limit.toLocaleString()}
+                    <span className={cn('font-medium', mode.font)}>
+                      {item.name}
+                    </span>
+                    <span
+                      className={cn('text-muted-foreground text-xs', mode.font)}
+                    >
+                      {item.used.toLocaleString()} /{' '}
+                      {item.limit.toLocaleString()}
                       {item.unit && ` ${item.unit}`}
                     </span>
                   </div>
-                  <div className={cn("bg-muted relative h-2 w-full overflow-hidden", mode.radius)}>
+                  <div
+                    className={cn(
+                      'bg-muted relative h-2 w-full overflow-hidden',
+                      mode.radius
+                    )}
+                  >
                     <div
-                      className={cn("h-full transition-all", getUsageColor(percentage))}
+                      className={cn(
+                        'h-full transition-all',
+                        getUsageColor(percentage)
+                      )}
                       style={{ width: `${percentage}%` }}
                     />
                   </div>
                   {percentage >= 90 && (
-                    <p className={cn("text-destructive mt-1 text-xs", mode.font)}>
+                    <p
+                      className={cn('text-destructive mt-1 text-xs', mode.font)}
+                    >
                       <AlertTriangle className="mr-1 inline h-3 w-3" />
                       Approaching limit
                     </p>
@@ -209,7 +256,11 @@ export function BillingSummaryCard({
       {/* Actions */}
       <div className="flex flex-wrap items-center gap-2 p-4">
         {showUpgrade && onUpgrade && (
-          <Button onClick={onUpgrade} size="sm" className={cn(mode.radius, mode.font)}>
+          <Button
+            onClick={onUpgrade}
+            size="sm"
+            className={cn(mode.radius, mode.font)}
+          >
             &gt; UPGRADE_PLAN
           </Button>
         )}
@@ -224,12 +275,16 @@ export function BillingSummaryCard({
             MANAGE_BILLING
           </Button>
         )}
-        {onCancel && status === "active" && (
+        {onCancel && status === 'active' && (
           <Button
             onClick={onCancel}
             variant="ghost"
             size="sm"
-            className={cn("text-destructive hover:text-destructive", mode.radius, mode.font)}
+            className={cn(
+              'text-destructive hover:text-destructive',
+              mode.radius,
+              mode.font
+            )}
           >
             CANCEL
           </Button>
@@ -253,7 +308,7 @@ export interface UsageMeterProps {
   /** Show percentage */
   showPercentage?: boolean;
   /** Size variant */
-  size?: "sm" | "md" | "lg";
+  size?: 'sm' | 'md' | 'lg';
   /** Additional className */
   className?: string;
 }
@@ -264,38 +319,42 @@ export function UsageMeter({
   limit,
   unit,
   showPercentage = true,
-  size = "md",
+  size = 'md',
   className,
 }: UsageMeterProps) {
   const percentage = Math.min(Math.round((used / limit) * 100), 100);
 
   const getColor = () => {
-    if (percentage >= 90) return "bg-destructive";
-    if (percentage >= 75) return "bg-warning";
-    return "bg-primary";
+    if (percentage >= 90) return 'bg-destructive';
+    if (percentage >= 75) return 'bg-warning';
+    return 'bg-primary';
   };
 
   const sizeClasses = {
-    sm: "h-1",
-    md: "h-2",
-    lg: "h-3",
+    sm: 'h-1',
+    md: 'h-2',
+    lg: 'h-3',
   };
 
   return (
-    <div className={cn("space-y-1", className)}>
+    <div className={cn('space-y-1', className)}>
       <div className="flex items-center justify-between">
-        <span className={cn("text-xs font-medium", mode.font)}>{label}</span>
-        <span className={cn("text-muted-foreground text-xs", mode.font)}>
+        <span className={cn('text-xs font-medium', mode.font)}>{label}</span>
+        <span className={cn('text-muted-foreground text-xs', mode.font)}>
           {used.toLocaleString()} / {limit.toLocaleString()}
           {unit && ` ${unit}`}
           {showPercentage && ` (${percentage}%)`}
         </span>
       </div>
       <div
-        className={cn("bg-muted relative w-full overflow-hidden", sizeClasses[size], mode.radius)}
+        className={cn(
+          'bg-muted relative w-full overflow-hidden',
+          sizeClasses[size],
+          mode.radius
+        )}
       >
         <div
-          className={cn("h-full transition-all", getColor())}
+          className={cn('h-full transition-all', getColor())}
           style={{ width: `${percentage}%` }}
         />
       </div>
@@ -309,7 +368,7 @@ export interface PlanOption {
   id: string;
   name: string;
   price: number;
-  interval: "month" | "year";
+  interval: 'month' | 'year';
   description?: string;
   features: string[];
   popular?: boolean;
@@ -336,7 +395,7 @@ export function PlanSelector({
   className,
 }: PlanSelectorProps) {
   return (
-    <div className={cn("grid gap-4 md:grid-cols-2 lg:grid-cols-3", className)}>
+    <div className={cn('grid gap-4 md:grid-cols-2 lg:grid-cols-3', className)}>
       {plans.map((plan) => {
         const isSelected = selectedPlanId === plan.id;
         const isCurrent = plan.current;
@@ -345,12 +404,12 @@ export function PlanSelector({
           <div
             key={plan.id}
             className={cn(
-              "bg-card relative border p-4 transition-all",
+              'bg-card relative border p-4 transition-all',
               mode.radius,
               isSelected
-                ? "border-primary ring-primary ring-2"
-                : "border-border hover:border-primary/50",
-              plan.popular && "ring-primary/20 ring-2"
+                ? 'border-primary ring-primary ring-2'
+                : 'border-border hover:border-primary/50',
+              plan.popular && 'ring-primary/20 ring-2'
             )}
           >
             {/* Popular Badge */}
@@ -369,15 +428,24 @@ export function PlanSelector({
 
             {/* Plan Info */}
             <div className="mb-4 pt-2">
-              <h3 className={cn("text-lg font-bold", mode.font)}>{plan.name}</h3>
+              <h3 className={cn('text-lg font-bold', mode.font)}>
+                {plan.name}
+              </h3>
               <div className="mt-2">
                 <span className="text-3xl font-bold">${plan.price}</span>
-                <span className={cn("text-muted-foreground text-xs", mode.font)}>
-                  /{plan.interval === "month" ? "mo" : "yr"}
+                <span
+                  className={cn('text-muted-foreground text-xs', mode.font)}
+                >
+                  /{plan.interval === 'month' ? 'mo' : 'yr'}
                 </span>
               </div>
               {plan.description && (
-                <p className={cn("text-muted-foreground mt-2 text-xs", mode.font)}>
+                <p
+                  className={cn(
+                    'text-muted-foreground mt-2 text-xs',
+                    mode.font
+                  )}
+                >
                   {plan.description}
                 </p>
               )}
@@ -388,7 +456,10 @@ export function PlanSelector({
               {plan.features.map((feature, index) => (
                 <li
                   key={index}
-                  className={cn("text-muted-foreground flex items-center gap-2 text-xs", mode.font)}
+                  className={cn(
+                    'text-muted-foreground flex items-center gap-2 text-xs',
+                    mode.font
+                  )}
                 >
                   <CheckCircle className="text-success h-3 w-3 flex-shrink-0" />
                   {feature}
@@ -399,11 +470,15 @@ export function PlanSelector({
             {/* Select Button */}
             <Button
               onClick={() => onSelectPlan?.(plan.id)}
-              variant={isSelected || isCurrent ? "default" : "outline"}
-              className={cn("w-full", mode.radius, mode.font)}
+              variant={isSelected || isCurrent ? 'default' : 'outline'}
+              className={cn('w-full', mode.radius, mode.font)}
               disabled={isCurrent}
             >
-              {isCurrent ? "CURRENT_PLAN" : isSelected ? "SELECTED" : "> SELECT"}
+              {isCurrent
+                ? 'CURRENT_PLAN'
+                : isSelected
+                  ? 'SELECTED'
+                  : '> SELECT'}
             </Button>
           </div>
         );

@@ -10,26 +10,26 @@
  * ```
  */
 
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { Loader2 } from "lucide-react";
-import * as React from "react";
-import { Button, ButtonProps } from "./button";
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { Loader2 } from 'lucide-react';
+import * as React from 'react';
+import { Button, ButtonProps } from './button';
 
 // Spinner Component
 
-export type LoadingSpinnerProps = React.ComponentProps<"div">;
+export type LoadingSpinnerProps = React.ComponentProps<'div'>;
 
 export interface SpinnerProps extends React.HTMLAttributes<HTMLDivElement> {
-  size?: "sm" | "md" | "lg";
+  size?: 'sm' | 'md' | 'lg';
 }
 
 export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
-  ({ className, size = "md", ...props }, ref) => {
+  ({ className, size = 'md', ...props }, ref) => {
     const sizeClasses = {
-      sm: "h-4 w-4",
-      md: "h-8 w-8",
-      lg: "h-12 w-12",
+      sm: 'h-4 w-4',
+      md: 'h-8 w-8',
+      lg: 'h-12 w-12',
     };
 
     return (
@@ -38,11 +38,11 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
         ref={ref}
         role="status"
         aria-label="Loading"
-        className={cn("flex items-center justify-center", className)}
+        className={cn('flex items-center justify-center', className)}
         {...props}
       >
         <svg
-          className={cn("text-primary animate-spin", sizeClasses[size])}
+          className={cn('text-primary animate-spin', sizeClasses[size])}
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -67,21 +67,24 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
     );
   }
 );
-Spinner.displayName = "Spinner";
+Spinner.displayName = 'Spinner';
 
 // Skeleton Component
 export interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: "text" | "circular" | "rectangular";
+  variant?: 'text' | 'circular' | 'rectangular';
   width?: string | number;
   height?: string | number;
 }
 
 export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
-  ({ className, variant = "text", width: _width, height: _height, ...props }, ref) => {
+  (
+    { className, variant = 'text', width: _width, height: _height, ...props },
+    ref
+  ) => {
     const variantClasses = {
-      text: "h-4 w-full",
-      circular: "",
-      rectangular: "",
+      text: 'h-4 w-full',
+      circular: '',
+      rectangular: '',
     };
 
     return (
@@ -89,7 +92,7 @@ export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
         data-slot="skeleton"
         ref={ref}
         className={cn(
-          "bg-card border-border h-full w-full animate-pulse border",
+          'bg-card border-border h-full w-full animate-pulse border',
           mode.radius,
           variantClasses[variant],
           className
@@ -100,29 +103,37 @@ export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
     );
   }
 );
-Skeleton.displayName = "Skeleton";
+Skeleton.displayName = 'Skeleton';
 
 // Loading Container for full-page loading
 export interface LoadingContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 
-export const LoadingContainer = React.forwardRef<HTMLDivElement, LoadingContainerProps>(
-  ({ children, className, ...props }, ref) => {
-    return (
-      <div
-        data-slot="loading-container"
-        ref={ref}
-        className={cn("flex min-h-96 flex-col items-center justify-center gap-6", className)}
-        {...props}
-      >
-        <Spinner size="lg" />
-        {children && <p className={cn("text-muted-foreground text-base", mode.font)}>{children}</p>}
-      </div>
-    );
-  }
-);
-LoadingContainer.displayName = "LoadingContainer";
+export const LoadingContainer = React.forwardRef<
+  HTMLDivElement,
+  LoadingContainerProps
+>(({ children, className, ...props }, ref) => {
+  return (
+    <div
+      data-slot="loading-container"
+      ref={ref}
+      className={cn(
+        'flex min-h-96 flex-col items-center justify-center gap-6',
+        className
+      )}
+      {...props}
+    >
+      <Spinner size="lg" />
+      {children && (
+        <p className={cn('text-muted-foreground text-base', mode.font)}>
+          {children}
+        </p>
+      )}
+    </div>
+  );
+});
+LoadingContainer.displayName = 'LoadingContainer';
 
 // Loading Button Component
 export interface LoadingButtonProps extends ButtonProps {
@@ -130,18 +141,24 @@ export interface LoadingButtonProps extends ButtonProps {
   loadingText?: string;
 }
 
-export const LoadingButton = React.forwardRef<HTMLButtonElement, LoadingButtonProps>(
-  ({ loading, loadingText, children, disabled, ...props }, ref) => {
-    return (
-      <Button data-slot="loading-button" ref={ref} disabled={loading || disabled} {...props}>
-        {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-        {loading && loadingText ? loadingText : children}
-      </Button>
-    );
-  }
-);
-LoadingButton.displayName = "LoadingButton";
+export const LoadingButton = React.forwardRef<
+  HTMLButtonElement,
+  LoadingButtonProps
+>(({ loading, loadingText, children, disabled, ...props }, ref) => {
+  return (
+    <Button
+      data-slot="loading-button"
+      ref={ref}
+      disabled={loading || disabled}
+      {...props}
+    >
+      {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+      {loading && loadingText ? loadingText : children}
+    </Button>
+  );
+});
+LoadingButton.displayName = 'LoadingButton';
 
 // Loading Spinner (alias for Spinner for compatibility)
 export const LoadingSpinner = Spinner;
-LoadingSpinner.displayName = "LoadingSpinner";
+LoadingSpinner.displayName = 'LoadingSpinner';

@@ -2,13 +2,13 @@
  * DocsSidebar - Shared collapsible sidebar for docs and templates
  * Terminal console style navigation
  */
-"use client";
+'use client';
 
-import Link from "next/link";
-import { useState, useEffect, useMemo } from "react";
-import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+import Link from 'next/link';
+import { useState, useEffect, useMemo } from 'react';
+import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 import {
   ChevronRight,
   PanelLeftClose,
@@ -17,7 +17,7 @@ import {
   LucideIcon,
   Search,
   X,
-} from "lucide-react";
+} from 'lucide-react';
 
 export interface NavItem {
   title: string;
@@ -50,18 +50,28 @@ interface DocsSidebarProps {
 }
 
 // Helper to find which section contains the current path
-function findActiveSectionIndex(pathname: string, navigation: NavSection[]): number {
+function findActiveSectionIndex(
+  pathname: string,
+  navigation: NavSection[]
+): number {
   return navigation.findIndex(
     (section) =>
       section.items.some((item) => pathname === item.href) ||
       pathname === section.href ||
-      section.subSections?.some((sub) => sub.items.some((item) => pathname === item.href))
+      section.subSections?.some((sub) =>
+        sub.items.some((item) => pathname === item.href)
+      )
   );
 }
 
 // Helper to find which sub-section contains the current path
-function findActiveSubSectionIndex(pathname: string, subSections: NavSubSection[]): number {
-  return subSections.findIndex((sub) => sub.items.some((item) => pathname === item.href));
+function findActiveSubSectionIndex(
+  pathname: string,
+  subSections: NavSubSection[]
+): number {
+  return subSections.findIndex((sub) =>
+    sub.items.some((item) => pathname === item.href)
+  );
 }
 
 export function DocsSidebar({
@@ -83,26 +93,31 @@ export function DocsSidebar({
   });
 
   // Track expanded sub-sections: key = "sectionIndex-subSectionIndex"
-  const [expandedSubSections, setExpandedSubSections] = useState<Set<string>>(() => {
-    const initial = new Set<string>();
-    // Auto-expand sub-section containing active item
-    if (activeSectionIndex >= 0) {
-      const section = navigation[activeSectionIndex];
-      if (section.subSections) {
-        const activeSubIndex = findActiveSubSectionIndex(pathname, section.subSections);
-        if (activeSubIndex >= 0) {
-          initial.add(`${activeSectionIndex}-${activeSubIndex}`);
+  const [expandedSubSections, setExpandedSubSections] = useState<Set<string>>(
+    () => {
+      const initial = new Set<string>();
+      // Auto-expand sub-section containing active item
+      if (activeSectionIndex >= 0) {
+        const section = navigation[activeSectionIndex];
+        if (section.subSections) {
+          const activeSubIndex = findActiveSubSectionIndex(
+            pathname,
+            section.subSections
+          );
+          if (activeSubIndex >= 0) {
+            initial.add(`${activeSectionIndex}-${activeSubIndex}`);
+          }
         }
       }
+      return initial;
     }
-    return initial;
-  });
+  );
 
   // Sidebar collapse state
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   // Search state
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Filter navigation based on search query
   const filteredNavigation = useMemo(() => {
@@ -120,7 +135,9 @@ export function DocsSidebar({
         const matchingSubSections = section.subSections
           ?.map((sub) => ({
             ...sub,
-            items: sub.items.filter((item) => item.title.toLowerCase().includes(query)),
+            items: sub.items.filter((item) =>
+              item.title.toLowerCase().includes(query)
+            ),
           }))
           .filter((sub) => sub.items.length > 0);
 
@@ -135,7 +152,9 @@ export function DocsSidebar({
           return {
             ...section,
             items: sectionMatches ? section.items : matchingItems,
-            subSections: sectionMatches ? section.subSections : matchingSubSections,
+            subSections: sectionMatches
+              ? section.subSections
+              : matchingSubSections,
           };
         }
         return null;
@@ -176,7 +195,10 @@ export function DocsSidebar({
       // Expand sub-section containing active item
       const section = navigation[newActiveIndex];
       if (section.subSections) {
-        const activeSubIndex = findActiveSubSectionIndex(pathname, section.subSections);
+        const activeSubIndex = findActiveSubSectionIndex(
+          pathname,
+          section.subSections
+        );
         if (activeSubIndex >= 0) {
           const subKey = `${newActiveIndex}-${activeSubIndex}`;
 
@@ -218,8 +240,8 @@ export function DocsSidebar({
     <aside
       className={cn(
         mode.font,
-        "border-border scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border hover:scrollbar-thumb-primary/50 bg-background sticky top-16 isolate hidden h-[calc(100vh-4rem)] shrink-0 overflow-y-auto border-r transition-all duration-300 md:block",
-        sidebarCollapsed ? "w-12" : "w-72",
+        'border-border scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border hover:scrollbar-thumb-primary/50 bg-background sticky top-16 isolate hidden h-[calc(100vh-4rem)] shrink-0 overflow-y-auto border-r transition-all duration-300 md:block',
+        sidebarCollapsed ? 'w-12' : 'w-72',
         className
       )}
     >
@@ -262,7 +284,7 @@ export function DocsSidebar({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className={cn(
-                "border-border bg-muted/50 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/20 w-full border py-2 pr-7 pl-7 text-xs focus:ring-1 focus:outline-none",
+                'border-border bg-muted/50 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/20 w-full border py-2 pr-7 pl-7 text-xs focus:ring-1 focus:outline-none',
                 mode.font,
                 mode.radius
               )}
@@ -270,7 +292,7 @@ export function DocsSidebar({
             />
             {searchQuery && (
               <button
-                onClick={() => setSearchQuery("")}
+                onClick={() => setSearchQuery('')}
                 className="text-muted-foreground hover:text-foreground absolute top-1/2 right-2 -translate-y-1/2"
                 aria-label="Clear search"
               >
@@ -291,27 +313,31 @@ export function DocsSidebar({
             const hasActiveItem =
               section.items.some((item) => pathname === item.href) ||
               pathname === section.href ||
-              section.subSections?.some((sub) => sub.items.some((item) => pathname === item.href));
+              section.subSections?.some((sub) =>
+                sub.items.some((item) => pathname === item.href)
+              );
             const sectionKey = section.id || section.title;
             const displayTitle = formatSectionTitle
               ? formatSectionTitle(section.title, sectionIndex)
               : section.title;
 
             return (
-              <div key={sectionKey} className={cn(sectionIndex > 0 && "mt-2")}>
+              <div key={sectionKey} className={cn(sectionIndex > 0 && 'mt-2')}>
                 {/* Collapsible Section Header */}
                 <button
                   onClick={() => toggleSection(sectionIndex)}
                   className={cn(
-                    "flex w-full items-center gap-2 py-2 text-xs font-semibold transition-colors",
-                    hasActiveItem ? "text-primary" : "text-muted-foreground hover:text-foreground",
+                    'flex w-full items-center gap-2 py-2 text-xs font-semibold transition-colors',
+                    hasActiveItem
+                      ? 'text-primary'
+                      : 'text-muted-foreground hover:text-foreground',
                     mode.font
                   )}
                 >
                   <ChevronRight
                     className={cn(
-                      "h-3 w-3 shrink-0 transition-transform",
-                      isExpanded && "rotate-90"
+                      'h-3 w-3 shrink-0 transition-transform',
+                      isExpanded && 'rotate-90'
                     )}
                   />
                   {displayTitle}
@@ -336,7 +362,7 @@ export function DocsSidebar({
                             target="_blank"
                             rel="noopener noreferrer"
                             className={cn(
-                              "text-muted-foreground hover:bg-muted hover:text-foreground flex items-center gap-2 px-2 py-1 text-xs transition-colors",
+                              'text-muted-foreground hover:bg-muted hover:text-foreground flex items-center gap-2 px-2 py-1 text-xs transition-colors',
                               mode.font
                             )}
                           >
@@ -352,10 +378,10 @@ export function DocsSidebar({
                           key={item.href}
                           href={item.href}
                           className={cn(
-                            "flex items-center gap-2 px-2 py-1 text-xs transition-colors",
+                            'flex items-center gap-2 px-2 py-1 text-xs transition-colors',
                             isActive
-                              ? "bg-primary text-primary-foreground"
-                              : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                              ? 'bg-primary text-primary-foreground'
+                              : 'text-muted-foreground hover:bg-muted hover:text-foreground',
                             mode.font
                           )}
                         >
@@ -377,19 +403,21 @@ export function DocsSidebar({
                         <div key={subSection.title} className="mt-1">
                           {/* Sub-section header */}
                           <button
-                            onClick={() => toggleSubSection(sectionIndex, subIndex)}
+                            onClick={() =>
+                              toggleSubSection(sectionIndex, subIndex)
+                            }
                             className={cn(
-                              "flex w-full items-center gap-2 py-1 text-xs font-medium transition-colors",
+                              'flex w-full items-center gap-2 py-1 text-xs font-medium transition-colors',
                               hasActiveSubItem
-                                ? "text-primary"
-                                : "text-muted-foreground hover:text-foreground",
+                                ? 'text-primary'
+                                : 'text-muted-foreground hover:text-foreground',
                               mode.font
                             )}
                           >
                             <ChevronRight
                               className={cn(
-                                "h-2.5 w-2.5 shrink-0 transition-transform",
-                                isSubExpanded && "rotate-90"
+                                'h-2.5 w-2.5 shrink-0 transition-transform',
+                                isSubExpanded && 'rotate-90'
                               )}
                             />
                             {subSection.title}
@@ -410,10 +438,10 @@ export function DocsSidebar({
                                     key={item.href}
                                     href={item.href}
                                     className={cn(
-                                      "flex items-center gap-2 px-2 py-0.5 text-xs transition-colors",
+                                      'flex items-center gap-2 px-2 py-0.5 text-xs transition-colors',
                                       isActive
-                                        ? "bg-primary text-primary-foreground"
-                                        : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                                        ? 'bg-primary text-primary-foreground'
+                                        : 'text-muted-foreground hover:bg-muted hover:text-foreground',
                                       mode.font
                                     )}
                                   >

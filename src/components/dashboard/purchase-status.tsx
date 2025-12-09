@@ -6,4 +6,4 @@
  */
 
 // Re-export from modular implementation
-export * from "./purchase-status/index";
+export * from './purchase-status/index';

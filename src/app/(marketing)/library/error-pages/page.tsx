@@ -2,12 +2,17 @@
  * Error Pages Template - Terminal console style
  * Industry-standard Preview/Code tabbed interface
  */
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent, TemplatePageHeader } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { CodeBlock } from "@/components/ui/code-block";
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  TemplatePageHeader,
+} from '@/components/ui/card';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { CodeBlock } from '@/components/ui/code-block';
 import {
   FileQuestion,
   ServerCrash,
@@ -16,9 +21,9 @@ import {
   RefreshCw,
   ArrowLeft,
   AlertTriangle,
-} from "lucide-react";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+} from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 const templateCode = `"use client";
 
@@ -229,19 +234,19 @@ export default function ErrorPage() {
 
 function ErrorPagesPreview() {
   const error = {
-    code: "404",
-    title: "Page Not Found",
+    code: '404',
+    title: 'Page Not Found',
     description: "The page you're looking for doesn't exist or has been moved.",
     icon: FileQuestion,
     terminal: [
-      "$ curl -I https://fabrk.ai/unknown-page",
-      "HTTP/1.1 404 Not Found",
-      "Content-Type: text/html",
-      "X-Request-ID: abc123",
-      "",
-      "ERROR: Resource not found in database",
-      "PATH: /unknown-page",
-      "TIMESTAMP: 2024-11-12T14:23:45Z",
+      '$ curl -I https://fabrk.ai/unknown-page',
+      'HTTP/1.1 404 Not Found',
+      'Content-Type: text/html',
+      'X-Request-ID: abc123',
+      '',
+      'ERROR: Resource not found in database',
+      'PATH: /unknown-page',
+      'TIMESTAMP: 2024-11-12T14:23:45Z',
     ],
   };
 
@@ -257,13 +262,19 @@ function ErrorPagesPreview() {
 
         {/* Error Code */}
         <div className={cn(mode.font)}>
-          <span className="text-destructive text-6xl font-semibold">{error.code}</span>
+          <span className="text-destructive text-6xl font-semibold">
+            {error.code}
+          </span>
         </div>
 
         {/* Title & Description */}
         <div>
-          <h2 className={cn(mode.font, "mb-2 text-2xl font-semibold")}>{error.title}</h2>
-          <p className={cn(mode.font, "text-muted-foreground text-sm")}>{error.description}</p>
+          <h2 className={cn(mode.font, 'mb-2 text-2xl font-semibold')}>
+            {error.title}
+          </h2>
+          <p className={cn(mode.font, 'text-muted-foreground text-sm')}>
+            {error.description}
+          </p>
         </div>
 
         {/* Terminal Output */}
@@ -275,13 +286,13 @@ function ErrorPagesPreview() {
                 <div
                   key={idx}
                   className={
-                    line.startsWith("ERROR")
-                      ? "text-destructive"
-                      : line.startsWith("$")
-                        ? "text-success"
-                        : line === ""
-                          ? "h-2"
-                          : ""
+                    line.startsWith('ERROR')
+                      ? 'text-destructive'
+                      : line.startsWith('$')
+                        ? 'text-success'
+                        : line === ''
+                          ? 'h-2'
+                          : ''
                   }
                 >
                   {line}
@@ -293,18 +304,21 @@ function ErrorPagesPreview() {
 
         {/* Actions */}
         <div className="flex items-center justify-center gap-4">
-          <Button className={cn(mode.radius, mode.font, "text-xs")}>
+          <Button className={cn(mode.radius, mode.font, 'text-xs')}>
             <Home className="mr-1 h-3 w-3" />
             &gt; GO_HOME
           </Button>
-          <Button variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
+          <Button
+            variant="outline"
+            className={cn(mode.radius, mode.font, 'text-xs')}
+          >
             <ArrowLeft className="mr-1 h-3 w-3" />
             &gt; GO_BACK
           </Button>
         </div>
 
         {/* Request ID */}
-        <div className={cn(mode.font, "text-muted-foreground text-xs")}>
+        <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
           [REQUEST_ID]: req_abc123def456
         </div>
       </div>
@@ -331,14 +345,14 @@ export default function ErrorPagesTemplate() {
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
-                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  'h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0',
                   mode.radius
                 )}
               >
                 <TabsTrigger
                   value="preview"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -348,7 +362,7 @@ export default function ErrorPagesTemplate() {
                 <TabsTrigger
                   value="code"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -372,7 +386,11 @@ export default function ErrorPagesTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+                <CodeBlock
+                  code={templateCode}
+                  language="tsx"
+                  maxHeight="600px"
+                />
               </div>
             </Card>
           </TabsContent>
@@ -382,24 +400,30 @@ export default function ErrorPagesTemplate() {
         <Card>
           <CardHeader code="0x02" title="FILE_STRUCTURE" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-1 text-xs")}>
+            <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>
               <div className="space-y-1 pl-4">
                 <div>
                   <span className="text-primary">app/</span>
                   <span className="text-foreground">not-found.tsx</span>
-                  <span className="text-muted-foreground ml-4">← 404 errors</span>
+                  <span className="text-muted-foreground ml-4">
+                    ← 404 errors
+                  </span>
                 </div>
                 <div>
                   <span className="text-primary">app/</span>
                   <span className="text-foreground">error.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Generic errors</span>
+                  <span className="text-muted-foreground ml-4">
+                    ← Generic errors
+                  </span>
                 </div>
                 <div>
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">maintenance/</span>
                   <span className="text-foreground">page.tsx</span>
-                  <span className="text-muted-foreground ml-4">← 503 maintenance</span>
+                  <span className="text-muted-foreground ml-4">
+                    ← 503 maintenance
+                  </span>
                 </div>
               </div>
             </div>
@@ -410,27 +434,34 @@ export default function ErrorPagesTemplate() {
         <Card>
           <CardHeader code="0x03" title="FEATURES" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-2 text-xs")}>
+            <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> Generic error, 404, 500, 503 templates
+                <span className="text-success">&gt;</span> Generic error, 404,
+                500, 503 templates
               </div>
               <div>
-                <span className="text-success">&gt;</span> Terminal-style error output
+                <span className="text-success">&gt;</span> Terminal-style error
+                output
               </div>
               <div>
-                <span className="text-success">&gt;</span> Contextual action buttons
+                <span className="text-success">&gt;</span> Contextual action
+                buttons
               </div>
               <div>
-                <span className="text-success">&gt;</span> Request ID for debugging
+                <span className="text-success">&gt;</span> Request ID for
+                debugging
               </div>
               <div>
-                <span className="text-success">&gt;</span> Color-coded severity (error vs warning)
+                <span className="text-success">&gt;</span> Color-coded severity
+                (error vs warning)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Maintenance mode with ETA
+                <span className="text-success">&gt;</span> Maintenance mode with
+                ETA
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant
+                (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

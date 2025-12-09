@@ -13,32 +13,39 @@
  * ```
  */
 
-"use client";
+'use client';
 
-import * as React from "react";
-import { Users, Crown, CheckCircle2, MoreVertical, Settings, LogOut } from "lucide-react";
+import * as React from 'react';
+import {
+  Users,
+  Crown,
+  CheckCircle2,
+  MoreVertical,
+  Settings,
+  LogOut,
+} from 'lucide-react';
 
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+} from '@/components/ui/dropdown-menu';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 export interface OrgCardProps {
   id?: string;
   name: string;
   logo?: string;
   memberCount: number;
-  plan: "Free" | "Starter" | "Pro" | "Enterprise";
-  role?: "Owner" | "Admin" | "Member";
+  plan: 'Free' | 'Starter' | 'Pro' | 'Enterprise';
+  role?: 'Owner' | 'Admin' | 'Member';
   isActive?: boolean;
   onSelect?: () => void;
   onSettings?: () => void;
@@ -47,10 +54,10 @@ export interface OrgCardProps {
 }
 
 const planColors = {
-  Free: "bg-muted text-muted-foreground",
-  Starter: "bg-primary/10 text-primary border-primary/20",
-  Pro: "bg-accent text-accent-foreground",
-  Enterprise: "bg-gradient-to-r from-primary to-accent text-primary-foreground",
+  Free: 'bg-muted text-muted-foreground',
+  Starter: 'bg-primary/10 text-primary border-primary/20',
+  Pro: 'bg-accent text-accent-foreground',
+  Enterprise: 'bg-gradient-to-r from-primary to-accent text-primary-foreground',
 };
 
 export function OrgCard({
@@ -59,7 +66,7 @@ export function OrgCard({
   logo,
   memberCount,
   plan,
-  role = "Member",
+  role = 'Member',
   isActive = false,
   onSelect,
   onSettings,
@@ -67,17 +74,17 @@ export function OrgCard({
   className,
 }: OrgCardProps) {
   const initials = name
-    .split(" ")
+    .split(' ')
     .map((word) => word[0])
-    .join("")
+    .join('')
     .toUpperCase()
     .slice(0, 2);
 
   return (
     <Card
       interactive
-      tone={isActive ? "primary" : "neutral"}
-      className={cn("group relative cursor-pointer", className)}
+      tone={isActive ? 'primary' : 'neutral'}
+      className={cn('group relative cursor-pointer', className)}
       onClick={onSelect}
     >
       <CardContent padding="lg">
@@ -85,7 +92,7 @@ export function OrgCard({
         {isActive && (
           <div
             className={cn(
-              "bg-primary absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center",
+              'bg-primary absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center',
               mode.radius
             )}
           >
@@ -96,7 +103,9 @@ export function OrgCard({
         <div className="flex items-start justify-between gap-4">
           {/* Left side - Logo & Info */}
           <div className="flex min-w-0 flex-1 items-start gap-4">
-            <Avatar className={cn("border-border h-12 w-12 border", mode.radius)}>
+            <Avatar
+              className={cn('border-border h-12 w-12 border', mode.radius)}
+            >
               {logo ? (
                 <AvatarImage src={logo} alt={name} />
               ) : (
@@ -108,12 +117,17 @@ export function OrgCard({
 
             <div className="min-w-0 flex-1 space-y-2">
               <div className="space-y-1">
-                <h3 className="text-foreground truncate text-lg font-semibold">{name}</h3>
+                <h3 className="text-foreground truncate text-lg font-semibold">
+                  {name}
+                </h3>
                 <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className={cn("text-xs font-medium", planColors[plan])}>
+                  <Badge
+                    variant="outline"
+                    className={cn('text-xs font-medium', planColors[plan])}
+                  >
                     {plan}
                   </Badge>
-                  {role === "Owner" && (
+                  {role === 'Owner' && (
                     <Badge variant="outline" className="text-xs font-medium">
                       <Crown className="mr-1 h-3 w-3" />
                       {role}
@@ -125,7 +139,7 @@ export function OrgCard({
               <div className="text-muted-foreground flex items-center gap-2 text-sm">
                 <Users className="h-4 w-4" />
                 <span>
-                  {memberCount} member{memberCount !== 1 ? "s" : ""}
+                  {memberCount} member{memberCount !== 1 ? 's' : ''}
                 </span>
               </div>
             </div>
@@ -153,7 +167,7 @@ export function OrgCard({
                   <DropdownMenuSeparator />
                 </>
               )}
-              {onLeave && role !== "Owner" && (
+              {onLeave && role !== 'Owner' && (
                 <DropdownMenuItem
                   onClick={onLeave}
                   className="text-destructive focus:text-destructive"

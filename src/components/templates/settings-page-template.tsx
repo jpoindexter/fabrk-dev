@@ -24,13 +24,13 @@
  * ```
  */
 
-"use client";
+'use client';
 
-import * as React from "react";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { Settings } from "lucide-react";
+import * as React from 'react';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { Settings } from 'lucide-react';
 
 // =============================================================================
 // TYPES
@@ -91,13 +91,20 @@ interface SidebarNavProps {
   onSectionChange?: (sectionId: string) => void;
 }
 
-function SidebarNav({ sections, activeSection, onSectionChange }: SidebarNavProps) {
+function SidebarNav({
+  sections,
+  activeSection,
+  onSectionChange,
+}: SidebarNavProps) {
   const regularSections = sections.filter((s) => !s.isDanger);
   const dangerSections = sections.filter((s) => s.isDanger);
 
   return (
     <nav
-      className={cn("border-border bg-card sticky top-6 h-fit w-64 shrink-0 border", mode.radius)}
+      className={cn(
+        'border-border bg-card sticky top-6 h-fit w-64 shrink-0 border',
+        mode.radius
+      )}
     >
       {/* Regular Sections */}
       <div className="p-2">
@@ -106,12 +113,12 @@ function SidebarNav({ sections, activeSection, onSectionChange }: SidebarNavProp
             key={section.id}
             onClick={() => onSectionChange?.(section.id)}
             className={cn(
-              "flex w-full items-center gap-2 px-3 py-2 text-left text-sm transition-colors",
+              'flex w-full items-center gap-2 px-3 py-2 text-left text-sm transition-colors',
               mode.font,
               mode.radius,
               activeSection === section.id
-                ? "bg-primary text-primary-foreground"
-                : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                ? 'bg-primary text-primary-foreground'
+                : 'text-muted-foreground hover:bg-muted hover:text-foreground'
             )}
           >
             {section.icon || <Settings className="h-4 w-4" />}
@@ -130,12 +137,12 @@ function SidebarNav({ sections, activeSection, onSectionChange }: SidebarNavProp
                 key={section.id}
                 onClick={() => onSectionChange?.(section.id)}
                 className={cn(
-                  "flex w-full items-center gap-2 px-3 py-2 text-left text-sm transition-colors",
+                  'flex w-full items-center gap-2 px-3 py-2 text-left text-sm transition-colors',
                   mode.font,
                   mode.radius,
                   activeSection === section.id
-                    ? "bg-destructive text-destructive-foreground"
-                    : "text-destructive hover:bg-destructive/10"
+                    ? 'bg-destructive text-destructive-foreground'
+                    : 'text-destructive hover:bg-destructive/10'
                 )}
               >
                 {section.icon}
@@ -161,7 +168,7 @@ export function SettingsPageTemplate({
   onSectionChange,
   onSave,
   onReset,
-  saveLabel = "Save Changes",
+  saveLabel = 'Save Changes',
   saving = false,
   description,
   className,
@@ -170,13 +177,19 @@ export function SettingsPageTemplate({
   const effectiveActiveSection = activeSection || sections[0]?.id;
 
   return (
-    <div className={cn("mx-auto max-w-4xl space-y-6", className)}>
+    <div className={cn('mx-auto max-w-4xl space-y-6', className)}>
       {/* Header */}
       <div className="flex items-start justify-between">
         <div className="space-y-1">
-          <h1 className={cn("text-4xl font-semibold tracking-tight", mode.font)}>{title}</h1>
+          <h1
+            className={cn('text-4xl font-semibold tracking-tight', mode.font)}
+          >
+            {title}
+          </h1>
           {description && (
-            <p className={cn("text-muted-foreground text-sm", mode.font)}>{description}</p>
+            <p className={cn('text-muted-foreground text-sm', mode.font)}>
+              {description}
+            </p>
           )}
         </div>
 
@@ -190,7 +203,7 @@ export function SettingsPageTemplate({
             )}
             {onSave && (
               <Button onClick={onSave} disabled={saving} loading={saving}>
-                &gt; {saveLabel.toUpperCase().replace(/ /g, "_")}
+                &gt; {saveLabel.toUpperCase().replace(/ /g, '_')}
               </Button>
             )}
           </div>
@@ -243,34 +256,37 @@ export function SettingsSectionCard({
   return (
     <div
       className={cn(
-        "border p-0",
+        'border p-0',
         mode.radius,
-        isDanger ? "border-destructive" : "border-border",
+        isDanger ? 'border-destructive' : 'border-border',
         className
       )}
     >
       {/* Header */}
       <div
         className={cn(
-          "border-b px-4 py-2",
-          isDanger ? "border-destructive bg-destructive/5" : "border-border"
+          'border-b px-4 py-2',
+          isDanger ? 'border-destructive bg-destructive/5' : 'border-border'
         )}
       >
         <span
           className={cn(
-            "text-xs",
+            'text-xs',
             mode.font,
-            isDanger ? "text-destructive" : "text-muted-foreground"
+            isDanger ? 'text-destructive' : 'text-muted-foreground'
           )}
         >
-          [ {isDanger ? "[!]" : "[0x00]"} {title.toUpperCase().replace(/ /g, "_")} ]
+          [ {isDanger ? '[!]' : '[0x00]'}{' '}
+          {title.toUpperCase().replace(/ /g, '_')} ]
         </span>
       </div>
 
       {/* Content */}
       <div className="space-y-4 p-4">
         {description && (
-          <p className={cn("text-muted-foreground text-sm", mode.font)}>{description}</p>
+          <p className={cn('text-muted-foreground text-sm', mode.font)}>
+            {description}
+          </p>
         )}
         {children}
       </div>

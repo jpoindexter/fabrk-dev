@@ -1,10 +1,11 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { Database, Cloud, Server, Zap } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
+import { Database, Cloud, Server, Zap } from 'lucide-react';
 
 export const metadata = {
-  title: "Database Setup - Fabrk Docs",
-  description: "Set up PostgreSQL for your Fabrk app. Connect to Supabase, PlanetScale, or any Postgres provider with Prisma ORM.",
+  title: 'Database Setup - Fabrk Docs',
+  description:
+    'Set up PostgreSQL for your Fabrk app. Connect to Supabase, PlanetScale, or any Postgres provider with Prisma ORM.',
 };
 
 export default function DatabaseSetupPage() {
@@ -16,30 +17,42 @@ export default function DatabaseSetupPage() {
       description="Set up a production PostgreSQL database with Prisma ORM."
       overview="5 database providers supported: Supabase (recommended), Neon, Railway, PlanetScale, and AWS RDS. All use Prisma ORM with connection pooling."
       features={[
-        { icon: Database, title: "PostgreSQL", description: "Full SQL database support." },
-        { icon: Cloud, title: "Supabase", description: "Free tier with great DX." },
-        { icon: Zap, title: "Neon", description: "Serverless with branching." },
-        { icon: Server, title: "Railway", description: "Simple and affordable." },
+        {
+          icon: Database,
+          title: 'PostgreSQL',
+          description: 'Full SQL database support.',
+        },
+        {
+          icon: Cloud,
+          title: 'Supabase',
+          description: 'Free tier with great DX.',
+        },
+        { icon: Zap, title: 'Neon', description: 'Serverless with branching.' },
+        {
+          icon: Server,
+          title: 'Railway',
+          description: 'Simple and affordable.',
+        },
       ]}
       setup={[
         {
-          title: "Choose Provider",
-          description: "Supabase recommended for free tier and DX",
+          title: 'Choose Provider',
+          description: 'Supabase recommended for free tier and DX',
         },
         {
-          title: "Create Project",
-          description: "Sign up and create a new database project",
+          title: 'Create Project',
+          description: 'Sign up and create a new database project',
         },
         {
-          title: "Get Connection String",
-          description: "Copy the PostgreSQL connection URL",
+          title: 'Get Connection String',
+          description: 'Copy the PostgreSQL connection URL',
           code: `# Supabase connection (with pooler for serverless)
 DATABASE_URL="postgresql://postgres.[PROJECT]:[PASSWORD]@aws-0-[REGION].pooler.supabase.com:6543/postgres?pgbouncer=true"`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Initialize Database",
-          description: "Push schema and optionally seed data",
+          title: 'Initialize Database',
+          description: 'Push schema and optionally seed data',
           code: `# Push schema to database
 npm run db:push
 
@@ -51,13 +64,13 @@ npm run db:seed
 
 # Open Prisma Studio to view data
 npm run db:studio`,
-          language: "bash",
+          language: 'bash',
         },
       ]}
       usage={[
         {
-          title: "Supabase Setup (Recommended)",
-          description: "Step-by-step Supabase configuration",
+          title: 'Supabase Setup (Recommended)',
+          description: 'Step-by-step Supabase configuration',
           code: `# 1. Go to supabase.com and create an account
 # 2. Click "New Project"
 # 3. Set a strong database password
@@ -72,11 +85,11 @@ DATABASE_URL="postgresql://postgres:[PASSWORD]@db.[PROJECT].supabase.co:5432/pos
 
 # Pooler connection (for app - recommended)
 DATABASE_URL="postgresql://postgres.[PROJECT]:[PASSWORD]@aws-0-[REGION].pooler.supabase.com:6543/postgres?pgbouncer=true"`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Neon Setup",
-          description: "Serverless PostgreSQL with branching",
+          title: 'Neon Setup',
+          description: 'Serverless PostgreSQL with branching',
           code: `# 1. Sign up at neon.tech
 # 2. Create a new project
 # 3. Copy the connection string
@@ -86,22 +99,22 @@ DATABASE_URL="postgresql://[user]:[password]@[endpoint].neon.tech/[dbname]?sslmo
 
 # Enable connection pooling
 DATABASE_URL="postgresql://[user]:[password]@[endpoint]-pooler.neon.tech/[dbname]?sslmode=require"`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Railway Setup",
-          description: "Simple deployment platform",
+          title: 'Railway Setup',
+          description: 'Simple deployment platform',
           code: `# 1. Sign up at railway.app
 # 2. Create new project → Add PostgreSQL
 # 3. Copy DATABASE_URL from Variables tab
 
 # Railway connection string
 DATABASE_URL="postgresql://postgres:[password]@[host].railway.app:5432/railway"`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Connection Pooling",
-          description: "Essential for serverless deployments",
+          title: 'Connection Pooling',
+          description: 'Essential for serverless deployments',
           code: `# Why pooling matters:
 # - Serverless functions create new connections per request
 # - PostgreSQL has connection limits (~100 by default)
@@ -120,11 +133,11 @@ datasource db {
   url      = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")  // For Supabase pooling
 }`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Prisma Schema Overview",
-          description: "Key models in prisma/schema.prisma",
+          title: 'Prisma Schema Overview',
+          description: 'Key models in prisma/schema.prisma',
           code: `// Core authentication
 model User {
   id            String    @id @default(cuid())
@@ -157,11 +170,11 @@ model Payment {
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }`,
-          language: "prisma",
+          language: 'prisma',
         },
         {
-          title: "Database Migrations",
-          description: "Managing schema changes in production",
+          title: 'Database Migrations',
+          description: 'Managing schema changes in production',
           code: `# Development - Quick iterations
 npm run db:push  # Pushes schema changes directly
 
@@ -179,11 +192,11 @@ npx prisma migrate status
 
 # Reset database (DANGER - deletes all data)
 npm run db:reset`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Database Backups",
-          description: "Backup strategies per provider",
+          title: 'Database Backups',
+          description: 'Backup strategies per provider',
           code: `# Supabase
 # - Automatic daily backups (Pro plan)
 # - Point-in-time recovery (Pro plan)
@@ -198,21 +211,42 @@ pg_dump $DATABASE_URL > backup.sql
 
 # Restore
 psql $DATABASE_URL < backup.sql`,
-          language: "bash",
+          language: 'bash',
         },
       ]}
-      previous={{ title: "Environment", href: "/docs/deployment/environment" }}
-      next={{ title: "Vercel", href: "/docs/deployment/vercel" }}
+      previous={{ title: 'Environment', href: '/docs/deployment/environment' }}
+      next={{ title: 'Vercel', href: '/docs/deployment/vercel' }}
     >
       {/* Database Providers */}
       <DocsSection title="Database Providers">
         <DocsCard title="PROVIDERS">
           <div className="space-y-1">
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">Supabase</code> - Free tier, great DX (recommended)</div>
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">Neon</code> - Serverless PostgreSQL with branching</div>
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">Railway</code> - Simple and affordable</div>
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">PlanetScale</code> - MySQL alternative</div>
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">AWS RDS</code> - Enterprise-grade</div>
+            <div>
+              ├─{' '}
+              <code className="bg-muted px-1 font-mono text-xs">Supabase</code>{' '}
+              - Free tier, great DX (recommended)
+            </div>
+            <div>
+              ├─ <code className="bg-muted px-1 font-mono text-xs">Neon</code> -
+              Serverless PostgreSQL with branching
+            </div>
+            <div>
+              ├─{' '}
+              <code className="bg-muted px-1 font-mono text-xs">Railway</code> -
+              Simple and affordable
+            </div>
+            <div>
+              ├─{' '}
+              <code className="bg-muted px-1 font-mono text-xs">
+                PlanetScale
+              </code>{' '}
+              - MySQL alternative
+            </div>
+            <div>
+              ├─{' '}
+              <code className="bg-muted px-1 font-mono text-xs">AWS RDS</code> -
+              Enterprise-grade
+            </div>
           </div>
         </DocsCard>
       </DocsSection>
@@ -221,9 +255,17 @@ psql $DATABASE_URL < backup.sql`,
       <DocsSection title="Performance Tips">
         <DocsCard title="PERFORMANCE">
           <div className="space-y-1">
-            <div>├─ Add indexes - Index frequently queried columns: <code className="bg-muted px-1 font-mono text-xs">@@index([userId, createdAt])</code></div>
+            <div>
+              ├─ Add indexes - Index frequently queried columns:{' '}
+              <code className="bg-muted px-1 font-mono text-xs">
+                @@index([userId, createdAt])
+              </code>
+            </div>
             <div>├─ Use select - Only fetch needed fields</div>
-            <div>├─ Batch operations - Use createMany/updateMany for multiple records</div>
+            <div>
+              ├─ Batch operations - Use createMany/updateMany for multiple
+              records
+            </div>
             <div>└─ Enable logging - Debug slow queries</div>
           </div>
         </DocsCard>

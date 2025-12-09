@@ -410,9 +410,9 @@ mode.textTransform === "uppercase" && "uppercase"
 
 ```tsx
 const DEFAULT_COLORS = [
-  "oklch(70% 0.15 240)", // Primary blue
-  "oklch(70% 0.15 210)", // Blue-cyan
-  "oklch(70% 0.15 180)", // Cyan
+  'oklch(70% 0.15 240)', // Primary blue
+  'oklch(70% 0.15 210)', // Blue-cyan
+  'oklch(70% 0.15 180)', // Cyan
   // ... all use OKLCH color space
 ];
 ```

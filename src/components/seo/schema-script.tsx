@@ -7,7 +7,7 @@
  * Security: Uses CSP nonce to eliminate 'unsafe-inline' requirement
  */
 
-import { NonceScript } from "@/components/security/nonce-script";
+import { NonceScript } from '@/components/security/nonce-script';
 
 interface SchemaScriptProps {
   schema: object | object[];
@@ -26,10 +26,7 @@ export async function SchemaScript({ schema }: SchemaScriptProps) {
   return (
     <>
       {schemaArray.map((item, index) => (
-        <NonceScript
-          key={index}
-          type="application/ld+json"
-        >
+        <NonceScript key={index} type="application/ld+json">
           {JSON.stringify(item)}
         </NonceScript>
       ))}

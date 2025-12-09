@@ -17,15 +17,12 @@ export function getPostHogClient(): PostHog | null {
   }
 
   if (!posthogClient) {
-    posthogClient = new PostHog(
-      process.env.NEXT_PUBLIC_POSTHOG_KEY,
-      {
-        host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://app.posthog.com',
-        // Flush events every 30 seconds or when 20 events are queued
-        flushAt: 20,
-        flushInterval: 30000,
-      }
-    );
+    posthogClient = new PostHog(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
+      host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://app.posthog.com',
+      // Flush events every 30 seconds or when 20 events are queued
+      flushAt: 20,
+      flushInterval: 30000,
+    });
   }
 
   return posthogClient;

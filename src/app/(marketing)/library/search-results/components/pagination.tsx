@@ -3,11 +3,11 @@
  * Pagination - Page navigation controls
  */
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 interface PaginationProps {
   currentPage: number;
@@ -15,7 +15,11 @@ interface PaginationProps {
   onPageChange: (page: number) => void;
 }
 
-export function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) {
+export function Pagination({
+  currentPage,
+  totalPages,
+  onPageChange,
+}: PaginationProps) {
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
@@ -23,7 +27,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
       <CardHeader code="0x04" title="PAGINATION" />
       <CardContent padding="md">
         <div className="flex items-center justify-between">
-          <div className={cn(mode.font, "text-muted-foreground text-xs")}>
+          <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
             [PAGE]: {currentPage} OF {totalPages}
           </div>
           <div className="flex items-center gap-2">
@@ -32,7 +36,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
               size="sm"
               onClick={() => onPageChange(Math.max(1, currentPage - 1))}
               disabled={currentPage === 1}
-              className={cn(mode.font, "h-8 text-xs")}
+              className={cn(mode.font, 'h-8 text-xs')}
             >
               <ChevronLeft className="mr-1 h-3 w-3" />
               PREV
@@ -41,10 +45,10 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
               {pages.map((page) => (
                 <Button
                   key={page}
-                  variant={currentPage === page ? "default" : "outline"}
+                  variant={currentPage === page ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => onPageChange(page)}
-                  className={cn(mode.font, "h-8 w-8 p-0 text-xs")}
+                  className={cn(mode.font, 'h-8 w-8 p-0 text-xs')}
                 >
                   {page}
                 </Button>
@@ -53,9 +57,11 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
             <Button
               variant="outline"
               size="sm"
-              onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
+              onClick={() =>
+                onPageChange(Math.min(totalPages, currentPage + 1))
+              }
               disabled={currentPage === totalPages}
-              className={cn(mode.font, "h-8 text-xs")}
+              className={cn(mode.font, 'h-8 text-xs')}
             >
               NEXT
               <ChevronRight className="ml-1 h-3 w-3" />

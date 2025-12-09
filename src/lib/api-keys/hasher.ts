@@ -1,4 +1,4 @@
-import crypto from "crypto";
+import crypto from 'crypto';
 
 /**
  * API Key Hasher
@@ -11,7 +11,7 @@ import crypto from "crypto";
  * @returns SHA-256 hash in hex format
  */
 export function hashApiKey(key: string): string {
-  return crypto.createHash("sha256").update(key).digest("hex");
+  return crypto.createHash('sha256').update(key).digest('hex');
 }
 
 /**
@@ -25,5 +25,8 @@ export function verifyApiKey(key: string, hash: string): boolean {
   const keyHash = hashApiKey(key);
 
   // Constant-time comparison to prevent timing attacks
-  return crypto.timingSafeEqual(Buffer.from(keyHash, "hex"), Buffer.from(hash, "hex"));
+  return crypto.timingSafeEqual(
+    Buffer.from(keyHash, 'hex'),
+    Buffer.from(hash, 'hex')
+  );
 }

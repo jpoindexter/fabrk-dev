@@ -7,4 +7,4 @@
  * This file re-exports for backwards compatibility
  */
 
-export { FeaturesSection, FeatureSection } from "./features-section/index";
+export { FeaturesSection, FeatureSection } from './features-section/index';

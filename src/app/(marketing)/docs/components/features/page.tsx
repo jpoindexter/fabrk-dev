@@ -1,17 +1,21 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { Shield, Zap, Lock, Database, Mail, CreditCard } from "lucide-react";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { Shield, Zap, Lock, Database, Mail, CreditCard } from 'lucide-react';
 
 // Simplified Features Demo
 function FeaturesDemo() {
   const features = [
-    { icon: Shield, title: "AUTHENTICATION", desc: "NextAuth v5 with multiple providers" },
-    { icon: CreditCard, title: "PAYMENTS", desc: "Stripe integration ready" },
-    { icon: Mail, title: "EMAIL", desc: "Resend for transactional emails" },
-    { icon: Database, title: "DATABASE", desc: "Prisma ORM with PostgreSQL" },
-    { icon: Lock, title: "SECURITY", desc: "CSRF, rate limiting, validation" },
-    { icon: Zap, title: "PERFORMANCE", desc: "Optimized for Core Web Vitals" },
+    {
+      icon: Shield,
+      title: 'AUTHENTICATION',
+      desc: 'NextAuth v5 with multiple providers',
+    },
+    { icon: CreditCard, title: 'PAYMENTS', desc: 'Stripe integration ready' },
+    { icon: Mail, title: 'EMAIL', desc: 'Resend for transactional emails' },
+    { icon: Database, title: 'DATABASE', desc: 'Prisma ORM with PostgreSQL' },
+    { icon: Lock, title: 'SECURITY', desc: 'CSRF, rate limiting, validation' },
+    { icon: Zap, title: 'PERFORMANCE', desc: 'Optimized for Core Web Vitals' },
   ];
 
   return (
@@ -20,7 +24,9 @@ function FeaturesDemo() {
         <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 font-mono text-xs">
           [ [0x20] FEATURES ] CORE_MODULES
         </span>
-        <h2 className="mt-4 font-mono text-xl font-semibold">WHAT&apos;S_INCLUDED</h2>
+        <h2 className="mt-4 font-mono text-xl font-semibold">
+          WHAT&apos;S_INCLUDED
+        </h2>
       </div>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {features.map((feature) => (
@@ -30,9 +36,13 @@ function FeaturesDemo() {
           >
             <div className="mb-4 flex items-center gap-2">
               <feature.icon className="text-primary h-4 w-4" />
-              <span className="font-mono text-xs font-semibold">{feature.title}</span>
+              <span className="font-mono text-xs font-semibold">
+                {feature.title}
+              </span>
             </div>
-            <p className="text-muted-foreground font-mono text-xs">{feature.desc}</p>
+            <p className="text-muted-foreground font-mono text-xs">
+              {feature.desc}
+            </p>
           </div>
         ))}
       </div>
@@ -43,11 +53,11 @@ function FeaturesDemo() {
 // Tech Stack variant
 function TechStackDemo() {
   const tech = [
-    { name: "NEXT.JS", status: "OK" },
-    { name: "REACT", status: "OK" },
-    { name: "TYPESCRIPT", status: "OK" },
-    { name: "TAILWIND", status: "OK" },
-    { name: "PRISMA", status: "OK" },
+    { name: 'NEXT.JS', status: 'OK' },
+    { name: 'REACT', status: 'OK' },
+    { name: 'TYPESCRIPT', status: 'OK' },
+    { name: 'TAILWIND', status: 'OK' },
+    { name: 'PRISMA', status: 'OK' },
   ];
 
   return (
@@ -92,8 +102,8 @@ export default function LandingPage() {
       }}
       variants={[
         {
-          title: "Tech Stack Display",
-          description: "Technology badges with status indicators",
+          title: 'Tech Stack Display',
+          description: 'Technology badges with status indicators',
           preview: <TechStackDemo />,
           code: `import { TechStack } from "@/components/marketing/tech-stack";
 
@@ -102,16 +112,19 @@ export default function LandingPage() {
 // Displays technology logos with [OK] status badges`,
         },
         {
-          title: "Feature Card",
-          description: "Individual feature card component",
+          title: 'Feature Card',
+          description: 'Individual feature card component',
           preview: (
             <div className="border-border bg-card hover:border-primary/50 max-w-sm border p-4 transition-colors">
               <div className="mb-4 flex items-center gap-2">
                 <Shield className="text-primary h-4 w-4" />
-                <span className="font-mono text-xs font-semibold">AUTHENTICATION</span>
+                <span className="font-mono text-xs font-semibold">
+                  AUTHENTICATION
+                </span>
               </div>
               <p className="text-muted-foreground font-mono text-xs">
-                NextAuth v5 with Google OAuth, credentials, and magic link support.
+                NextAuth v5 with Google OAuth, credentials, and magic link
+                support.
               </p>
             </div>
           ),
@@ -128,25 +141,25 @@ export default function LandingPage() {
       ]}
       props={[
         {
-          name: "features",
-          type: "{ icon: LucideIcon; title: string; description: string }[]",
-          description: "Array of features to display",
+          name: 'features',
+          type: '{ icon: LucideIcon; title: string; description: string }[]',
+          description: 'Array of features to display',
         },
         {
-          name: "columns",
-          type: "2 | 3 | 4",
-          description: "Number of columns in the grid",
-          default: "3",
+          name: 'columns',
+          type: '2 | 3 | 4',
+          description: 'Number of columns in the grid',
+          default: '3',
         },
       ]}
       accessibility={[
-        "Icons are decorative and hidden from screen readers",
-        "Each feature has semantic heading structure",
-        "Keyboard navigation through focusable cards",
-        "High contrast text for readability",
+        'Icons are decorative and hidden from screen readers',
+        'Each feature has semantic heading structure',
+        'Keyboard navigation through focusable cards',
+        'High contrast text for readability',
       ]}
-      previous={{ title: "Hero", href: "/docs/components/hero" }}
-      next={{ title: "Pricing", href: "/docs/components/pricing" }}
+      previous={{ title: 'Hero', href: '/docs/components/hero' }}
+      next={{ title: 'Pricing', href: '/docs/components/pricing' }}
     />
   );
 }

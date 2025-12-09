@@ -1,8 +1,8 @@
-"use client";
+'use client';
 /* eslint-disable react-hooks/incompatible-library */
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { DataTableColumnHeader } from "@/components/ui/data-table-header";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { DataTableColumnHeader } from '@/components/ui/data-table-header';
 import {
   useReactTable,
   getCoreRowModel,
@@ -10,8 +10,8 @@ import {
   ColumnDef,
   flexRender,
   SortingState,
-} from "@tanstack/react-table";
-import { useState } from "react";
+} from '@tanstack/react-table';
+import { useState } from 'react';
 
 type SampleData = {
   id: number;
@@ -22,26 +22,32 @@ type SampleData = {
 
 export default function DataTableHeaderPage() {
   const data: SampleData[] = [
-    { id: 1, name: "Project Alpha", status: "Active", amount: 12500 },
-    { id: 2, name: "Project Beta", status: "Pending", amount: 8300 },
-    { id: 3, name: "Project Gamma", status: "Completed", amount: 15750 },
-    { id: 4, name: "Project Delta", status: "Active", amount: 9200 },
+    { id: 1, name: 'Project Alpha', status: 'Active', amount: 12500 },
+    { id: 2, name: 'Project Beta', status: 'Pending', amount: 8300 },
+    { id: 3, name: 'Project Gamma', status: 'Completed', amount: 15750 },
+    { id: 4, name: 'Project Delta', status: 'Active', amount: 9200 },
   ];
 
   const columns: ColumnDef<SampleData>[] = [
     {
-      accessorKey: "name",
-      header: ({ column }) => <DataTableColumnHeader column={column} title="Project Name" />,
+      accessorKey: 'name',
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title="Project Name" />
+      ),
     },
     {
-      accessorKey: "status",
-      header: ({ column }) => <DataTableColumnHeader column={column} title="Status" />,
+      accessorKey: 'status',
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title="Status" />
+      ),
     },
     {
-      accessorKey: "amount",
-      header: ({ column }) => <DataTableColumnHeader column={column} title="Amount" />,
+      accessorKey: 'amount',
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title="Amount" />
+      ),
       cell: ({ row }) => {
-        const amount = row.getValue("amount") as number;
+        const amount = row.getValue('amount') as number;
         return `$${amount.toLocaleString()}`;
       },
     },
@@ -73,8 +79,14 @@ export default function DataTableHeaderPage() {
                 {table.getHeaderGroups().map((headerGroup) => (
                   <tr key={headerGroup.id} className="border-border border-b">
                     {headerGroup.headers.map((header) => (
-                      <th key={header.id} className="px-4 py-4 text-left font-medium">
-                        {flexRender(header.column.columnDef.header, header.getContext())}
+                      <th
+                        key={header.id}
+                        className="px-4 py-4 text-left font-medium"
+                      >
+                        {flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
                       </th>
                     ))}
                   </tr>
@@ -85,7 +97,10 @@ export default function DataTableHeaderPage() {
                   <tr key={row.id} className="border-border border-b">
                     {row.getVisibleCells().map((cell) => (
                       <td key={cell.id} className="px-4 py-4">
-                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
                       </td>
                     ))}
                   </tr>
@@ -115,8 +130,9 @@ const table = useReactTable({
       }}
       variants={[
         {
-          title: "Sortable Header",
-          description: "Click to toggle between ascending, descending, and unsorted",
+          title: 'Sortable Header',
+          description:
+            'Click to toggle between ascending, descending, and unsorted',
           preview: (
             <div className="space-y-2">
               <span className="text-muted-foreground font-mono text-xs">
@@ -126,10 +142,19 @@ const table = useReactTable({
                 <table className="w-full">
                   <thead>
                     {table.getHeaderGroups().map((headerGroup) => (
-                      <tr key={headerGroup.id} className="border-border border-b">
+                      <tr
+                        key={headerGroup.id}
+                        className="border-border border-b"
+                      >
                         {headerGroup.headers.map((header) => (
-                          <th key={header.id} className="px-4 py-2 text-left font-medium">
-                            {flexRender(header.column.columnDef.header, header.getContext())}
+                          <th
+                            key={header.id}
+                            className="px-4 py-2 text-left font-medium"
+                          >
+                            {flexRender(
+                              header.column.columnDef.header,
+                              header.getContext()
+                            )}
                           </th>
                         ))}
                       </tr>
@@ -145,19 +170,22 @@ const table = useReactTable({
 />`,
         },
         {
-          title: "Unsorted State",
-          description: "Shows arrows up-down icon when not sorted",
+          title: 'Unsorted State',
+          description: 'Shows arrows up-down icon when not sorted',
           preview: (
             <div className="flex items-center gap-2">
-              <DataTableColumnHeader column={table.getColumn("name")!} title="Project Name" />
+              <DataTableColumnHeader
+                column={table.getColumn('name')!}
+                title="Project Name"
+              />
             </div>
           ),
           code: `// Default state shows unsorted icon
 <DataTableColumnHeader column={column} title="Project Name" />`,
         },
         {
-          title: "Sorted Ascending",
-          description: "Shows up arrow when sorted A-Z or 0-9",
+          title: 'Sorted Ascending',
+          description: 'Shows up arrow when sorted A-Z or 0-9',
           preview: (
             <div className="space-y-2">
               <span className="text-muted-foreground font-mono text-xs">
@@ -173,8 +201,8 @@ const table = useReactTable({
 // ArrowUp icon is displayed`,
         },
         {
-          title: "Sorted Descending",
-          description: "Shows down arrow when sorted Z-A or 9-0",
+          title: 'Sorted Descending',
+          description: 'Shows down arrow when sorted Z-A or 9-0',
           preview: (
             <div className="space-y-2">
               <span className="text-muted-foreground font-mono text-xs">
@@ -190,8 +218,8 @@ const table = useReactTable({
 // ArrowDown icon is displayed`,
         },
         {
-          title: "Non-Sortable Column",
-          description: "Renders as plain text when column cannot be sorted",
+          title: 'Non-Sortable Column',
+          description: 'Renders as plain text when column cannot be sorted',
           preview: <div className="font-mono text-sm">Actions</div>,
           code: `// When column.getCanSort() === false
 // Renders without button or icons`,
@@ -199,34 +227,34 @@ const table = useReactTable({
       ]}
       props={[
         {
-          name: "column",
-          type: "Column<TData, TValue>",
-          default: "-",
-          description: "TanStack Table column instance",
+          name: 'column',
+          type: 'Column<TData, TValue>',
+          default: '-',
+          description: 'TanStack Table column instance',
         },
         {
-          name: "title",
-          type: "string",
-          default: "-",
-          description: "Display text for the column header",
+          name: 'title',
+          type: 'string',
+          default: '-',
+          description: 'Display text for the column header',
         },
         {
-          name: "className",
-          type: "string",
-          default: "-",
-          description: "Additional CSS classes for the header container",
+          name: 'className',
+          type: 'string',
+          default: '-',
+          description: 'Additional CSS classes for the header container',
         },
       ]}
       accessibility={[
-        "Uses Button component with proper keyboard support",
-        "aria-label describes current sort state and action",
-        "Focus visible styles for keyboard navigation",
-        "Icons have proper ARIA attributes",
-        "Non-sortable columns render as plain div without button semantics",
-        "Sort state changes announced to screen readers",
+        'Uses Button component with proper keyboard support',
+        'aria-label describes current sort state and action',
+        'Focus visible styles for keyboard navigation',
+        'Icons have proper ARIA attributes',
+        'Non-sortable columns render as plain div without button semantics',
+        'Sort state changes announced to screen readers',
       ]}
-      previous={{ title: "Code Block", href: "/docs/components/code-block" }}
-      next={{ title: "Empty State", href: "/docs/components/empty-state" }}
+      previous={{ title: 'Code Block', href: '/docs/components/code-block' }}
+      next={{ title: 'Empty State', href: '/docs/components/empty-state' }}
     />
   );
 }

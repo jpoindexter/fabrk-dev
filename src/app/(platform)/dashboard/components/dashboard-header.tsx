@@ -3,9 +3,9 @@
  * Displays welcome message and user avatar
  */
 
-"use client";
+'use client';
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 interface DashboardHeaderProps {
   userName?: string | null;
@@ -13,8 +13,12 @@ interface DashboardHeaderProps {
   userInitials: string;
 }
 
-export function DashboardHeader({ userName, userImage, userInitials }: DashboardHeaderProps) {
-  const firstName = userName?.split(" ")[0] || "User";
+export function DashboardHeader({
+  userName,
+  userImage,
+  userInitials,
+}: DashboardHeaderProps) {
+  const firstName = userName?.split(' ')[0] || 'User';
 
   return (
     <div className="flex items-center justify-between">
@@ -27,7 +31,7 @@ export function DashboardHeader({ userName, userImage, userInitials }: Dashboard
         </p>
       </div>
       <Avatar className="h-12 w-12">
-        <AvatarImage src={userImage || ""} />
+        <AvatarImage src={userImage || ''} />
         <AvatarFallback>{userInitials}</AvatarFallback>
       </Avatar>
     </div>

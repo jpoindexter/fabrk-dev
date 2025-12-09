@@ -3,9 +3,12 @@
  * Create checkout sessions for one-time and subscription payments
  */
 
-import { createCheckout, type NewCheckout } from "@lemonsqueezy/lemonsqueezy.js";
-import { initLemonSqueezy, getStoreId } from "./client";
-import { logger } from "@/lib/logger";
+import {
+  createCheckout,
+  type NewCheckout,
+} from '@lemonsqueezy/lemonsqueezy.js';
+import { initLemonSqueezy, getStoreId } from './client';
+import { logger } from '@/lib/logger';
 
 export interface CheckoutOptions {
   variantId: string;
@@ -40,10 +43,14 @@ export async function createLemonSqueezyCheckout(
     const checkoutData: NewCheckout = {
       productOptions: {
         enabledVariants: options.enabledVariants,
-        redirectUrl: options.redirectUrl || `${process.env.NEXT_PUBLIC_APP_URL}/success`,
-        receiptButtonText: options.receiptButtonText || "Go to Dashboard",
-        receiptLinkUrl: options.receiptLinkUrl || `${process.env.NEXT_PUBLIC_APP_URL}/dashboard`,
-        receiptThankYouNote: options.receiptThankYouNote || "Thank you for your purchase!",
+        redirectUrl:
+          options.redirectUrl || `${process.env.NEXT_PUBLIC_APP_URL}/success`,
+        receiptButtonText: options.receiptButtonText || 'Go to Dashboard',
+        receiptLinkUrl:
+          options.receiptLinkUrl ||
+          `${process.env.NEXT_PUBLIC_APP_URL}/dashboard`,
+        receiptThankYouNote:
+          options.receiptThankYouNote || 'Thank you for your purchase!',
       },
       checkoutOptions: {
         embed: false,
@@ -54,21 +61,25 @@ export async function createLemonSqueezyCheckout(
         email: options.email,
         name: options.name,
         custom: {
-          user_id: options.userId || "guest",
+          user_id: options.userId || 'guest',
           ...options.customData,
         },
       },
     };
 
-    const { data, error } = await createCheckout(storeId, options.variantId, checkoutData);
+    const { data, error } = await createCheckout(
+      storeId,
+      options.variantId,
+      checkoutData
+    );
 
     if (error) {
-      logger.error("Lemon Squeezy checkout error:", error);
+      logger.error('Lemon Squeezy checkout error:', error);
       throw new Error(`Failed to create checkout: ${error.message}`);
     }
 
     if (!data?.data?.attributes?.url) {
-      throw new Error("No checkout URL returned from Lemon Squeezy");
+      throw new Error('No checkout URL returned from Lemon Squeezy');
     }
 
     return {
@@ -76,7 +87,7 @@ export async function createLemonSqueezyCheckout(
       checkoutId: data.data.id,
     };
   } catch (error) {
-    logger.error("Error creating Lemon Squeezy checkout:", error);
+    logger.error('Error creating Lemon Squeezy checkout:', error);
     throw error;
   }
 }

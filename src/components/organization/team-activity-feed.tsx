@@ -8,9 +8,9 @@
  * ```
  */
 
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 import {
   FileText,
   MessageSquare,
@@ -21,25 +21,25 @@ import {
   Edit,
   CheckCircle2,
   Activity,
-} from "lucide-react";
-import { formatDistanceToNow } from "date-fns";
+} from 'lucide-react';
+import { formatDistanceToNow } from 'date-fns';
 
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 export type ActivityType =
-  | "created"
-  | "updated"
-  | "deleted"
-  | "commented"
-  | "uploaded"
-  | "invited"
-  | "completed"
-  | "configured";
+  | 'created'
+  | 'updated'
+  | 'deleted'
+  | 'commented'
+  | 'uploaded'
+  | 'invited'
+  | 'completed'
+  | 'configured';
 
 export interface TeamActivity {
   id: string;
@@ -68,43 +68,43 @@ const activityConfig: Record<
 > = {
   created: {
     icon: FileText,
-    color: "text-primary",
-    bgColor: "bg-primary/10",
+    color: 'text-primary',
+    bgColor: 'bg-primary/10',
   },
   updated: {
     icon: Edit,
-    color: "text-accent",
-    bgColor: "bg-accent/10",
+    color: 'text-accent',
+    bgColor: 'bg-accent/10',
   },
   deleted: {
     icon: Trash2,
-    color: "text-destructive",
-    bgColor: "bg-destructive/10",
+    color: 'text-destructive',
+    bgColor: 'bg-destructive/10',
   },
   commented: {
     icon: MessageSquare,
-    color: "text-primary",
-    bgColor: "bg-primary/10",
+    color: 'text-primary',
+    bgColor: 'bg-primary/10',
   },
   uploaded: {
     icon: Upload,
-    color: "text-accent",
-    bgColor: "bg-accent/10",
+    color: 'text-accent',
+    bgColor: 'bg-accent/10',
   },
   invited: {
     icon: UserPlus,
-    color: "text-primary",
-    bgColor: "bg-primary/10",
+    color: 'text-primary',
+    bgColor: 'bg-primary/10',
   },
   completed: {
     icon: CheckCircle2,
-    color: "text-primary",
-    bgColor: "bg-primary/10",
+    color: 'text-primary',
+    bgColor: 'bg-primary/10',
   },
   configured: {
     icon: Settings,
-    color: "text-muted-foreground",
-    bgColor: "bg-muted",
+    color: 'text-muted-foreground',
+    bgColor: 'bg-muted',
   },
 };
 
@@ -116,9 +116,9 @@ export function TeamActivityFeed({
 }: TeamActivityFeedProps) {
   const getInitials = (name: string) => {
     return name
-      .split(" ")
+      .split(' ')
       .map((n) => n[0])
-      .join("")
+      .join('')
       .toUpperCase()
       .slice(0, 2);
   };
@@ -128,12 +128,12 @@ export function TeamActivityFeed({
   };
 
   return (
-    <Card className={cn("overflow-hidden", className)}>
+    <Card className={cn('overflow-hidden', className)}>
       <CardHeader
         code="0x00"
         title="TEAM_ACTIVITY"
         icon={<Activity className="h-4 w-4" />}
-        meta={`${activities.length} event${activities.length !== 1 ? "s" : ""}`}
+        meta={`${activities.length} event${activities.length !== 1 ? 's' : ''}`}
       />
 
       <CardContent padding="md" className="p-0">
@@ -154,7 +154,10 @@ export function TeamActivityFeed({
                   const Icon = config.icon;
 
                   return (
-                    <div key={activity.id} className="group relative flex gap-4">
+                    <div
+                      key={activity.id}
+                      className="group relative flex gap-4"
+                    >
                       {/* Avatar with icon badge */}
                       <div className="relative flex-shrink-0">
                         <Avatar className="border-border h-10 w-10 border">
@@ -164,12 +167,12 @@ export function TeamActivityFeed({
                         </Avatar>
                         <div
                           className={cn(
-                            "border-border absolute -right-1 -bottom-1 flex h-5 w-5 items-center justify-center border",
+                            'border-border absolute -right-1 -bottom-1 flex h-5 w-5 items-center justify-center border',
                             mode.radius,
                             config.bgColor
                           )}
                         >
-                          <Icon className={cn("h-3 w-3", config.color)} />
+                          <Icon className={cn('h-3 w-3', config.color)} />
                         </div>
                       </div>
 
@@ -178,11 +181,15 @@ export function TeamActivityFeed({
                         <div className="flex items-start justify-between gap-2">
                           <div className="min-w-0 flex-1">
                             <p className="text-foreground text-sm">
-                              <span className="font-semibold">{activity.user.name}</span>{" "}
-                              <span className="text-muted-foreground">{activity.action}</span>
+                              <span className="font-semibold">
+                                {activity.user.name}
+                              </span>{' '}
+                              <span className="text-muted-foreground">
+                                {activity.action}
+                              </span>
                               {activity.target && (
                                 <span className="text-foreground font-medium">
-                                  {" "}
+                                  {' '}
                                   {activity.target}
                                 </span>
                               )}
@@ -196,15 +203,22 @@ export function TeamActivityFeed({
                         </div>
 
                         {/* Metadata */}
-                        {activity.metadata && Object.keys(activity.metadata).length > 0 && (
-                          <div className="mt-2 flex flex-wrap gap-2">
-                            {Object.entries(activity.metadata).map(([key, value]) => (
-                              <Badge key={key} variant="secondary" className="text-xs font-normal">
-                                {key}: {String(value)}
-                              </Badge>
-                            ))}
-                          </div>
-                        )}
+                        {activity.metadata &&
+                          Object.keys(activity.metadata).length > 0 && (
+                            <div className="mt-2 flex flex-wrap gap-2">
+                              {Object.entries(activity.metadata).map(
+                                ([key, value]) => (
+                                  <Badge
+                                    key={key}
+                                    variant="secondary"
+                                    className="text-xs font-normal"
+                                  >
+                                    {key}: {String(value)}
+                                  </Badge>
+                                )
+                              )}
+                            </div>
+                          )}
                       </div>
                     </div>
                   );

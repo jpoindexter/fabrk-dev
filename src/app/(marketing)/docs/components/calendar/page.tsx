@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { Calendar } from "@/components/ui/calendar";
-import { useState } from "react";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { Calendar } from '@/components/ui/calendar';
+import { useState } from 'react';
 
 export default function CalendarPage() {
   const [date, setDate] = useState<Date | undefined>(new Date());
@@ -20,7 +20,7 @@ export default function CalendarPage() {
             mode="single"
             selected={date}
             onSelect={setDate}
-            className="rounded-none border border-border"
+            className="border-border rounded-none border"
           />
         ),
         code: `const [date, setDate] = useState<Date | undefined>(new Date());
@@ -34,14 +34,14 @@ export default function CalendarPage() {
       }}
       variants={[
         {
-          title: "Single Date",
-          description: "Select a single date from the calendar.",
+          title: 'Single Date',
+          description: 'Select a single date from the calendar.',
           preview: (
             <Calendar
               mode="single"
               selected={date}
               onSelect={setDate}
-              className="rounded-none border border-border"
+              className="border-border rounded-none border"
             />
           ),
           code: `const [date, setDate] = useState<Date>();
@@ -54,13 +54,13 @@ export default function CalendarPage() {
 />`,
         },
         {
-          title: "Date Range",
-          description: "Select a range of dates (start and end).",
+          title: 'Date Range',
+          description: 'Select a range of dates (start and end).',
           preview: (
             <Calendar
               mode="range"
               numberOfMonths={2}
-              className="rounded-none border border-border"
+              className="border-border rounded-none border"
             />
           ),
           code: `const [range, setRange] = useState<DateRange>();
@@ -74,10 +74,13 @@ export default function CalendarPage() {
 />`,
         },
         {
-          title: "Multiple Dates",
-          description: "Select multiple individual dates.",
+          title: 'Multiple Dates',
+          description: 'Select multiple individual dates.',
           preview: (
-            <Calendar mode="multiple" className="rounded-none border border-border" />
+            <Calendar
+              mode="multiple"
+              className="border-border rounded-none border"
+            />
           ),
           code: `const [dates, setDates] = useState<Date[]>();
 
@@ -89,13 +92,13 @@ export default function CalendarPage() {
 />`,
         },
         {
-          title: "Without Outside Days",
-          description: "Hide days from previous/next months.",
+          title: 'Without Outside Days',
+          description: 'Hide days from previous/next months.',
           preview: (
             <Calendar
               mode="single"
               showOutsideDays={false}
-              className="rounded-none border border-border"
+              className="border-border rounded-none border"
             />
           ),
           code: `<Calendar
@@ -105,15 +108,15 @@ export default function CalendarPage() {
 />`,
         },
         {
-          title: "Disabled Dates",
-          description: "Disable specific dates or date ranges.",
+          title: 'Disabled Dates',
+          description: 'Disable specific dates or date ranges.',
           preview: (
             <Calendar
               mode="single"
               disabled={(date) =>
-                date < new Date() || date < new Date("1900-01-01")
+                date < new Date() || date < new Date('1900-01-01')
               }
-              className="rounded-none border border-border"
+              className="border-border rounded-none border"
             />
           ),
           code: `<Calendar
@@ -125,13 +128,13 @@ export default function CalendarPage() {
 />`,
         },
         {
-          title: "Multiple Months",
-          description: "Show multiple months side by side.",
+          title: 'Multiple Months',
+          description: 'Show multiple months side by side.',
           preview: (
             <Calendar
               mode="single"
               numberOfMonths={2}
-              className="rounded-none border border-border"
+              className="border-border rounded-none border"
             />
           ),
           code: `<Calendar
@@ -141,13 +144,13 @@ export default function CalendarPage() {
 />`,
         },
         {
-          title: "With Default Month",
-          description: "Set the initial month to display.",
+          title: 'With Default Month',
+          description: 'Set the initial month to display.',
           preview: (
             <Calendar
               mode="single"
               defaultMonth={new Date(2024, 0)}
-              className="rounded-none border border-border"
+              className="border-border rounded-none border"
             />
           ),
           code: `<Calendar
@@ -157,31 +160,31 @@ export default function CalendarPage() {
 />`,
         },
         {
-          title: "Footer Content",
-          description: "Add custom footer content below the calendar.",
+          title: 'Footer Content',
+          description: 'Add custom footer content below the calendar.',
           preview: (
             <Calendar
               mode="single"
               selected={date}
               onSelect={setDate}
               footer={
-                <div className="mt-2 pt-2 border-t border-border">
-                  <p className="font-mono text-xs text-muted-foreground">
+                <div className="border-border mt-2 border-t pt-2">
+                  <p className="text-muted-foreground font-mono text-xs">
                     {date ? (
                       <>
-                        <span className="text-primary">&gt;</span> Selected:{" "}
+                        <span className="text-primary">&gt;</span> Selected:{' '}
                         {date.toLocaleDateString()}
                       </>
                     ) : (
                       <>
-                        <span className="text-muted-foreground">&gt;</span>{" "}
-                        No date selected
+                        <span className="text-muted-foreground">&gt;</span> No
+                        date selected
                       </>
                     )}
                   </p>
                 </div>
               }
-              className="rounded-none border border-border"
+              className="border-border rounded-none border"
             />
           ),
           code: `<Calendar
@@ -198,71 +201,71 @@ export default function CalendarPage() {
       ]}
       props={[
         {
-          name: "mode",
+          name: 'mode',
           type: '"single" | "multiple" | "range"',
           default: '"single"',
-          description: "Selection mode for the calendar.",
+          description: 'Selection mode for the calendar.',
         },
         {
-          name: "selected",
-          type: "Date | Date[] | DateRange",
-          default: "undefined",
-          description: "The selected date(s) based on mode.",
+          name: 'selected',
+          type: 'Date | Date[] | DateRange',
+          default: 'undefined',
+          description: 'The selected date(s) based on mode.',
         },
         {
-          name: "onSelect",
-          type: "(date: Date | Date[] | DateRange) => void",
-          default: "undefined",
-          description: "Callback when date selection changes.",
+          name: 'onSelect',
+          type: '(date: Date | Date[] | DateRange) => void',
+          default: 'undefined',
+          description: 'Callback when date selection changes.',
         },
         {
-          name: "defaultMonth",
-          type: "Date",
-          default: "new Date()",
-          description: "The month to display initially.",
+          name: 'defaultMonth',
+          type: 'Date',
+          default: 'new Date()',
+          description: 'The month to display initially.',
         },
         {
-          name: "numberOfMonths",
-          type: "number",
-          default: "1",
-          description: "Number of months to display.",
+          name: 'numberOfMonths',
+          type: 'number',
+          default: '1',
+          description: 'Number of months to display.',
         },
         {
-          name: "showOutsideDays",
-          type: "boolean",
-          default: "true",
-          description: "Show days from previous/next months.",
+          name: 'showOutsideDays',
+          type: 'boolean',
+          default: 'true',
+          description: 'Show days from previous/next months.',
         },
         {
-          name: "disabled",
-          type: "boolean | Date[] | ((date: Date) => boolean)",
-          default: "false",
-          description: "Disable specific dates or all dates.",
+          name: 'disabled',
+          type: 'boolean | Date[] | ((date: Date) => boolean)',
+          default: 'false',
+          description: 'Disable specific dates or all dates.',
         },
         {
-          name: "footer",
-          type: "ReactNode",
-          default: "undefined",
-          description: "Custom content to render in the footer.",
+          name: 'footer',
+          type: 'ReactNode',
+          default: 'undefined',
+          description: 'Custom content to render in the footer.',
         },
         {
-          name: "className",
-          type: "string",
-          default: "undefined",
-          description: "Additional CSS classes for the calendar.",
+          name: 'className',
+          type: 'string',
+          default: 'undefined',
+          description: 'Additional CSS classes for the calendar.',
         },
       ]}
       accessibility={[
-        "Built on react-day-picker with full ARIA support",
-        "Keyboard navigation with arrow keys (↓/↑/←/→)",
-        "Tab key moves between calendar controls",
-        "Space/Enter selects the focused date",
-        "Screen readers announce selected dates and navigation",
-        "Disabled dates are properly communicated to assistive tech",
-        "Focus indicators for keyboard navigation",
+        'Built on react-day-picker with full ARIA support',
+        'Keyboard navigation with arrow keys (↓/↑/←/→)',
+        'Tab key moves between calendar controls',
+        'Space/Enter selects the focused date',
+        'Screen readers announce selected dates and navigation',
+        'Disabled dates are properly communicated to assistive tech',
+        'Focus indicators for keyboard navigation',
       ]}
-      previous={{ title: "Button", href: "/docs/components/button" }}
-      next={{ title: "Card", href: "/docs/components/card" }}
+      previous={{ title: 'Button', href: '/docs/components/button' }}
+      next={{ title: 'Card', href: '/docs/components/card' }}
     />
   );
 }

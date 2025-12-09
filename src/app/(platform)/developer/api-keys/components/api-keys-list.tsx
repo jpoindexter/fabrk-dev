@@ -3,12 +3,12 @@
  * Displays list of API keys or empty state
  */
 
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Key, Copy, Trash2, Loader2 } from "lucide-react";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Key, Copy, Trash2, Loader2 } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 interface ApiKey {
   id: string;
@@ -32,30 +32,30 @@ interface ApiKeysListProps {
 }
 
 const formatDate = (dateString: string | null) => {
-  if (!dateString) return "Never";
-  return new Intl.DateTimeFormat("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
+  if (!dateString) return 'Never';
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
   }).format(new Date(dateString));
 };
 
 const maskKey = (keyPrefix: string) => {
-  return `${keyPrefix}${"•".repeat(40)}`;
+  return `${keyPrefix}${'•'.repeat(40)}`;
 };
 
 const getPermissionBadgeVariant = (
   permission: string
-): "default" | "secondary" | "accent" | "outline" => {
+): 'default' | 'secondary' | 'accent' | 'outline' => {
   switch (permission) {
-    case "read":
-      return "default";
-    case "write":
-      return "secondary";
-    case "admin":
-      return "accent";
+    case 'read':
+      return 'default';
+    case 'write':
+      return 'secondary';
+    case 'admin':
+      return 'accent';
     default:
-      return "outline";
+      return 'outline';
   }
 };
 
@@ -95,8 +95,8 @@ export function ApiKeysList({
       {apiKeys.map((apiKey, index) => (
         <Card key={apiKey.id}>
           <CardHeader
-            code={`0x${index.toString(16).padStart(2, "0")}`}
-            title={apiKey.name.toUpperCase().replace(/ /g, "_")}
+            code={`0x${index.toString(16).padStart(2, '0')}`}
+            title={apiKey.name.toUpperCase().replace(/ /g, '_')}
             icon={<Key className="h-4 w-4" />}
           />
           <CardContent>
@@ -115,7 +115,7 @@ export function ApiKeysList({
                     ))}
                   </div>
                   <p className="text-muted-foreground text-sm">
-                    Created {formatDate(apiKey.createdAt)} by{" "}
+                    Created {formatDate(apiKey.createdAt)} by{' '}
                     {apiKey.user.name || apiKey.user.email}
                   </p>
                   <p className="text-muted-foreground text-sm">
@@ -146,7 +146,7 @@ export function ApiKeysList({
             <div className="flex items-center gap-2">
               <code
                 className={cn(
-                  "bg-muted border-border flex-1 rounded border p-2 text-sm",
+                  'bg-muted border-border flex-1 rounded border p-2 text-sm',
                   mode.font
                 )}
               >

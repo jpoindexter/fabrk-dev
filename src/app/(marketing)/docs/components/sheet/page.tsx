@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { Button } from "@/components/ui/button";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { Button } from '@/components/ui/button';
 import {
   Sheet,
   SheetContent,
@@ -10,9 +10,9 @@ import {
   SheetTitle,
   SheetTrigger,
   SheetFooter,
-} from "@/components/ui/sheet";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+} from '@/components/ui/sheet';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 export default function SheetPage() {
   return (
@@ -40,7 +40,8 @@ export default function SheetPage() {
               <SheetHeader>
                 <SheetTitle>Edit profile</SheetTitle>
                 <SheetDescription>
-                  Make changes to your profile here. Click save when you're done.
+                  Make changes to your profile here. Click save when you're
+                  done.
                 </SheetDescription>
               </SheetHeader>
             </SheetContent>
@@ -62,8 +63,9 @@ export default function SheetPage() {
       }}
       variants={[
         {
-          title: "Right Side (Default)",
-          description: "Sheet that slides in from the right side of the screen.",
+          title: 'Right Side (Default)',
+          description:
+            'Sheet that slides in from the right side of the screen.',
           preview: (
             <Sheet>
               <SheetTrigger asChild>
@@ -91,8 +93,8 @@ export default function SheetPage() {
 </Sheet>`,
         },
         {
-          title: "Left Side",
-          description: "Sheet that slides in from the left side of the screen.",
+          title: 'Left Side',
+          description: 'Sheet that slides in from the left side of the screen.',
           preview: (
             <Sheet>
               <SheetTrigger asChild>
@@ -120,8 +122,8 @@ export default function SheetPage() {
 </Sheet>`,
         },
         {
-          title: "Top Side",
-          description: "Sheet that slides in from the top of the screen.",
+          title: 'Top Side',
+          description: 'Sheet that slides in from the top of the screen.',
           preview: (
             <Sheet>
               <SheetTrigger asChild>
@@ -149,8 +151,8 @@ export default function SheetPage() {
 </Sheet>`,
         },
         {
-          title: "Bottom Side",
-          description: "Sheet that slides in from the bottom of the screen.",
+          title: 'Bottom Side',
+          description: 'Sheet that slides in from the bottom of the screen.',
           preview: (
             <Sheet>
               <SheetTrigger asChild>
@@ -178,8 +180,9 @@ export default function SheetPage() {
 </Sheet>`,
         },
         {
-          title: "With Form",
-          description: "Sheet containing a form with inputs and footer actions.",
+          title: 'With Form',
+          description:
+            'Sheet containing a form with inputs and footer actions.',
           preview: (
             <Sheet>
               <SheetTrigger asChild>
@@ -189,7 +192,8 @@ export default function SheetPage() {
                 <SheetHeader>
                   <SheetTitle>Edit settings</SheetTitle>
                   <SheetDescription>
-                    Update your account settings. Changes will be saved automatically.
+                    Update your account settings. Changes will be saved
+                    automatically.
                   </SheetDescription>
                 </SheetHeader>
                 <div className="grid gap-4 py-4">
@@ -240,42 +244,45 @@ export default function SheetPage() {
       ]}
       props={[
         {
-          name: "open",
-          type: "boolean",
-          default: "undefined",
-          description: "Control the open state of the sheet.",
+          name: 'open',
+          type: 'boolean',
+          default: 'undefined',
+          description: 'Control the open state of the sheet.',
         },
         {
-          name: "onOpenChange",
-          type: "(open: boolean) => void",
-          default: "undefined",
-          description: "Event handler called when the open state changes.",
+          name: 'onOpenChange',
+          type: '(open: boolean) => void',
+          default: 'undefined',
+          description: 'Event handler called when the open state changes.',
         },
         {
-          name: "defaultOpen",
-          type: "boolean",
-          default: "false",
-          description: "The initial open state in uncontrolled mode.",
+          name: 'defaultOpen',
+          type: 'boolean',
+          default: 'false',
+          description: 'The initial open state in uncontrolled mode.',
         },
         {
-          name: "side",
+          name: 'side',
           type: '"top" | "right" | "bottom" | "left"',
           default: '"right"',
-          description: "The side of the screen from which the sheet slides in.",
+          description: 'The side of the screen from which the sheet slides in.',
         },
       ]}
       accessibility={[
-        "Implements ARIA dialog pattern with proper role",
-        "Focus is trapped within the sheet when open",
-        "SheetTitle provides accessible name via aria-labelledby",
-        "SheetDescription provides description via aria-describedby",
-        "Escape key closes the sheet",
-        "Click outside or on overlay closes the sheet",
-        "Focus returns to trigger element when closed",
-        "Close button has accessible label",
+        'Implements ARIA dialog pattern with proper role',
+        'Focus is trapped within the sheet when open',
+        'SheetTitle provides accessible name via aria-labelledby',
+        'SheetDescription provides description via aria-describedby',
+        'Escape key closes the sheet',
+        'Click outside or on overlay closes the sheet',
+        'Focus returns to trigger element when closed',
+        'Close button has accessible label',
       ]}
-      previous={{ title: "Alert Dialog", href: "/docs/components/alert-dialog" }}
-      next={{ title: "Popover", href: "/docs/components/popover" }}
+      previous={{
+        title: 'Alert Dialog',
+        href: '/docs/components/alert-dialog',
+      }}
+      next={{ title: 'Popover', href: '/docs/components/popover' }}
     />
   );
 }

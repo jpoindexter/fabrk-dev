@@ -3,14 +3,16 @@
  * Base email sending functionality and service object
  */
 
-import { Resend } from "resend";
-import { logger } from "@/lib/logger";
-import { env } from "@/lib/env";
+import { Resend } from 'resend';
+import { logger } from '@/lib/logger';
+import { env } from '@/lib/env';
 
-export const resend = env.server.RESEND_API_KEY ? new Resend(env.server.RESEND_API_KEY) : null;
+export const resend = env.server.RESEND_API_KEY
+  ? new Resend(env.server.RESEND_API_KEY)
+  : null;
 
-export const FROM_EMAIL = env.server.EMAIL_FROM || "noreply@yourdomain.com";
-export const APP_NAME = "Fabrk";
+export const FROM_EMAIL = env.server.EMAIL_FROM || 'noreply@yourdomain.com';
+export const APP_NAME = 'Fabrk';
 export const APP_URL = env.client.NEXT_PUBLIC_APP_URL;
 
 /**
@@ -22,7 +24,7 @@ export const APP_URL = env.client.NEXT_PUBLIC_APP_URL;
  */
 export async function sendEmail(to: string, subject: string, html: string) {
   if (!resend) {
-    logger.debug("📧 [DEV] Email to:", to, "Subject:", subject);
+    logger.debug('📧 [DEV] Email to:', to, 'Subject:', subject);
     return { success: true };
   }
 
@@ -35,7 +37,7 @@ export async function sendEmail(to: string, subject: string, html: string) {
     });
     return { success: true };
   } catch (error: unknown) {
-    logger.error("Failed to send email:", error);
+    logger.error('Failed to send email:', error);
     return { success: false, error };
   }
 }

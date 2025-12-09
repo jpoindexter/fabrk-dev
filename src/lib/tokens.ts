@@ -1,4 +1,4 @@
-import { randomBytes } from "crypto";
+import { randomBytes } from 'crypto';
 
 /**
  * Generate a cryptographically secure random token
@@ -7,7 +7,7 @@ import { randomBytes } from "crypto";
  * @returns Hex-encoded token string
  */
 export function generateSecureToken(length: number = 32): string {
-  return randomBytes(length).toString("hex");
+  return randomBytes(length).toString('hex');
 }
 
 /**
@@ -16,7 +16,7 @@ export function generateSecureToken(length: number = 32): string {
  * @returns Formatted license key
  */
 export function generateLicenseKey(): string {
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   const segments = 4;
   const segmentLength = 4;
 
@@ -24,8 +24,8 @@ export function generateLicenseKey(): string {
     return Array.from({ length: segmentLength }, () => {
       const randomIndex = Math.floor(Math.random() * chars.length);
       return chars[randomIndex];
-    }).join("");
-  }).join("-");
+    }).join('');
+  }).join('-');
 
   return key;
 }

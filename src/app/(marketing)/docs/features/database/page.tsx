@@ -1,11 +1,11 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
-import { CodeBlock } from "@/components/ui/code-block";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard } from '@/components/docs';
+import { CodeBlock } from '@/components/ui/code-block';
 
 export const metadata = {
-  title: "Prisma Database - Fabrk Docs",
+  title: 'Prisma Database - Fabrk Docs',
   description:
-    "Work with Prisma ORM in Fabrk. Schema design, migrations, queries, and best practices for your SaaS database.",
+    'Work with Prisma ORM in Fabrk. Schema design, migrations, queries, and best practices for your SaaS database.',
 };
 
 export default function DatabasePage() {
@@ -18,18 +18,18 @@ export default function DatabasePage() {
       overview="Fabrk uses Prisma ORM with PostgreSQL for type-safe database operations. The system includes pre-built models for users, organizations, payments, and more. It provides type-safe queries with full TypeScript support, migration management for schema changes, seeding scripts for development data, and connection pooling for production."
       setup={[
         {
-          title: "Set Database URL",
-          description: "Add your PostgreSQL connection string to .env.local",
+          title: 'Set Database URL',
+          description: 'Add your PostgreSQL connection string to .env.local',
           code: `DATABASE_URL="postgresql://user:password@localhost:5432/fabrk?schema=public"
 
 # For production with connection pooling (e.g., Supabase):
 DATABASE_URL="postgresql://user:password@host:6543/postgres?pgbouncer=true"
 DIRECT_URL="postgresql://user:password@host:5432/postgres"`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Initialize Database",
-          description: "Push the schema to your database",
+          title: 'Initialize Database',
+          description: 'Push the schema to your database',
           code: `# Push schema changes (development)
 npm run db:push
 
@@ -41,20 +41,20 @@ npm run db:seed
 
 # Reset and reseed
 npm run db:reset`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Prisma Studio",
-          description: "Browse and edit data with the visual GUI",
+          title: 'Prisma Studio',
+          description: 'Browse and edit data with the visual GUI',
           code: `npm run db:studio
 # Opens at http://localhost:5555`,
-          language: "bash",
+          language: 'bash',
         },
       ]}
       usage={[
         {
-          title: "Database Client",
-          description: "Use the singleton client from src/lib/db/index.ts",
+          title: 'Database Client',
+          description: 'Use the singleton client from src/lib/db/index.ts',
           code: `import { prisma } from "@/lib/db";
 
 // Find user by email
@@ -81,11 +81,11 @@ const newUser = await prisma.user.create({
     },
   },
 });`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "API Route Queries",
-          description: "Use Prisma in API routes",
+          title: 'API Route Queries',
+          description: 'Use Prisma in API routes',
           code: `// src/app/api/v1/users/route.ts
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
@@ -110,11 +110,11 @@ export async function GET() {
 
   return NextResponse.json(user);
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Transactions",
-          description: "Use transactions for atomic operations",
+          title: 'Transactions',
+          description: 'Use transactions for atomic operations',
           code: `// Transfer ownership atomically
 const result = await prisma.$transaction(async (tx) => {
   // Remove current owner
@@ -140,11 +140,11 @@ const result = await prisma.$transaction(async (tx) => {
 
   return newOwner;
 });`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Pagination",
-          description: "Implement cursor-based pagination",
+          title: 'Pagination',
+          description: 'Implement cursor-based pagination',
           code: `const pageSize = 20;
 
 const users = await prisma.user.findMany({
@@ -159,17 +159,17 @@ const data = hasNextPage ? users.slice(0, -1) : users;
 const nextCursor = hasNextPage ? data[data.length - 1].id : null;
 
 return { data, nextCursor, hasNextPage };`,
-          language: "typescript",
+          language: 'typescript',
         },
       ]}
-      previous={{ title: "Getting Started", href: "/docs/getting-started" }}
-      next={{ title: "Payments", href: "/docs/features/payments" }}
+      previous={{ title: 'Getting Started', href: '/docs/getting-started' }}
+      next={{ title: 'Payments', href: '/docs/features/payments' }}
     >
       {/* Core Models Section */}
       <DocsSection title="Core Models">
         <DocsCard title="CORE_MODELS">
           <p className="mb-6">
-            Fabrk includes these pre-built models in{" "}
+            Fabrk includes these pre-built models in{' '}
             <code className="bg-muted px-1">prisma/schema.prisma</code>:
           </p>
           <CodeBlock
@@ -239,8 +239,8 @@ model OrganizationMember {
       <DocsSection title="Migrations">
         <DocsCard title="MIGRATIONS">
           <p className="mb-6">
-            For production, use migrations instead of <code className="bg-muted px-1">db:push</code>
-            :
+            For production, use migrations instead of{' '}
+            <code className="bg-muted px-1">db:push</code>:
           </p>
           <CodeBlock
             language="bash"
@@ -261,38 +261,40 @@ npx prisma migrate status`}
         <div className="space-y-4">
           <DocsCard title="USER_UPDATES">
             <p className="mb-6">
-              Update user data with validation. Use <code className="bg-muted px-1">select</code> to
-              return only needed fields and avoid exposing sensitive data like passwords.
+              Update user data with validation. Use{' '}
+              <code className="bg-muted px-1">select</code> to return only
+              needed fields and avoid exposing sensitive data like passwords.
             </p>
           </DocsCard>
 
           <DocsCard title="SOFT_DELETES">
             <p className="mb-6">
-              Add <code className="bg-muted px-1">deletedAt DateTime?</code> field to models and
-              filter with{" "}
+              Add <code className="bg-muted px-1">deletedAt DateTime?</code>{' '}
+              field to models and filter with{' '}
               <code className="bg-muted px-1">
-                where: {"{"} deletedAt: null {"}"}
-              </code>{" "}
+                where: {'{'} deletedAt: null {'}'}
+              </code>{' '}
               for recoverable deletes.
             </p>
           </DocsCard>
 
           <DocsCard title="FULL_TEXT_SEARCH">
             <p className="mb-6">
-              Use Prisma&apos;s full-text search with PostgreSQL:{" "}
+              Use Prisma&apos;s full-text search with PostgreSQL:{' '}
               <code className="bg-muted px-1">
-                where: {"{"} name: {"{"} search: &quot;query&quot; {"}"} {"}"}
-              </code>{" "}
+                where: {'{'} name: {'{'} search: &quot;query&quot; {'}'} {'}'}
+              </code>{' '}
               for searching user names or content.
             </p>
           </DocsCard>
 
           <DocsCard title="AGGREGATIONS">
             <p className="mb-6">
-              Calculate totals with{" "}
+              Calculate totals with{' '}
               <code className="bg-muted px-1">
-                prisma.payment.aggregate({"{"} _sum: {"{"} amount: true {"}"} {"}"})
-              </code>{" "}
+                prisma.payment.aggregate({'{'} _sum: {'{'} amount: true {'}'}{' '}
+                {'}'})
+              </code>{' '}
               for dashboards and reports.
             </p>
           </DocsCard>
@@ -304,21 +306,22 @@ npx prisma migrate status`}
         <DocsCard title="BEST_PRACTICES">
           <ul className="space-y-1">
             <li>
-              ├─ Always use the singleton client from{" "}
+              ├─ Always use the singleton client from{' '}
               <code className="bg-muted px-1">@/lib/db</code>
             </li>
             <li>
-              ├─ Use <code className="bg-muted px-1">select</code> to fetch only needed fields
+              ├─ Use <code className="bg-muted px-1">select</code> to fetch only
+              needed fields
             </li>
             <li>├─ Add indexes for frequently queried fields</li>
             <li>├─ Use transactions for multi-step operations</li>
             <li>
-              ├─ Never expose sensitive fields like <code className="bg-muted px-1">password</code>{" "}
-              in API responses
+              ├─ Never expose sensitive fields like{' '}
+              <code className="bg-muted px-1">password</code> in API responses
             </li>
             <li>
-              ├─ Use migrations in production, <code className="bg-muted px-1">db:push</code> only
-              in development
+              ├─ Use migrations in production,{' '}
+              <code className="bg-muted px-1">db:push</code> only in development
             </li>
             <li>└─ Set up connection pooling for production (PgBouncer)</li>
           </ul>

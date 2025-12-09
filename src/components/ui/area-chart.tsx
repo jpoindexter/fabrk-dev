@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 import {
   AreaChart as RechartsAreaChart,
   Area,
@@ -10,9 +10,9 @@ import {
   Tooltip,
   ResponsiveContainer,
   Legend,
-} from "recharts";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+} from 'recharts';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 // Hook to get computed CSS colors that update with theme changes
 function useThemeColors() {
@@ -21,20 +21,20 @@ function useThemeColors() {
     chart: string[];
     muted: string;
     border: string;
-  }>({ chart: [], muted: "#888", border: "#444" });
+  }>({ chart: [], muted: '#888', border: '#444' });
   React.useEffect(() => {
     const updateColors = () => {
       const style = getComputedStyle(document.documentElement);
       setColors({
         chart: [
-          `oklch(${style.getPropertyValue("--primary").trim()})`,
-          `oklch(${style.getPropertyValue("--accent").trim()})`,
-          `oklch(${style.getPropertyValue("--success").trim()})`,
-          `oklch(${style.getPropertyValue("--warning").trim()})`,
-          `oklch(${style.getPropertyValue("--error").trim()})`,
+          `oklch(${style.getPropertyValue('--primary').trim()})`,
+          `oklch(${style.getPropertyValue('--accent').trim()})`,
+          `oklch(${style.getPropertyValue('--success').trim()})`,
+          `oklch(${style.getPropertyValue('--warning').trim()})`,
+          `oklch(${style.getPropertyValue('--error').trim()})`,
         ],
-        muted: `oklch(${style.getPropertyValue("--base-content").trim()} / 0.6)`,
-        border: `oklch(${style.getPropertyValue("--base-content").trim()} / 0.2)`,
+        muted: `oklch(${style.getPropertyValue('--base-content').trim()} / 0.6)`,
+        border: `oklch(${style.getPropertyValue('--base-content').trim()} / 0.2)`,
       });
     };
     /* eslint-enable design-system/no-hardcoded-colors */
@@ -44,7 +44,7 @@ function useThemeColors() {
     // Watch for theme changes via data-theme attribute
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
-        if (mutation.attributeName === "data-theme") {
+        if (mutation.attributeName === 'data-theme') {
           updateColors();
         }
       });
@@ -74,7 +74,7 @@ export interface AreaChartSeries {
   /** Stroke width */
   strokeWidth?: number;
   /** Line type */
-  type?: "linear" | "monotone" | "step" | "stepBefore" | "stepAfter";
+  type?: 'linear' | 'monotone' | 'step' | 'stepBefore' | 'stepAfter';
   /** Stack ID for stacked areas */
   stackId?: string;
   /** Show dots on the line */
@@ -129,7 +129,13 @@ export function AreaChart({
 }: AreaChartProps) {
   const theme = useThemeColors();
   /* eslint-disable-next-line design-system/no-hardcoded-colors -- Fallback colors before theme loads */
-  const fallbackColors = ["#6366f1", "#8b5cf6", "#22c55e", "#eab308", "#ef4444"];
+  const fallbackColors = [
+    '#6366f1',
+    '#8b5cf6',
+    '#22c55e',
+    '#eab308',
+    '#ef4444',
+  ];
   const colors = theme.chart.length > 0 ? theme.chart : fallbackColors;
 
   // Memoize tooltip to prevent recreation on every render
@@ -139,21 +145,33 @@ export function AreaChart({
       ({ active, payload, label }: any) => {
         if (active && payload && payload.length) {
           return (
-            <div className={cn("border-border bg-card border p-3", mode.radius)}>
-              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
+            <div
+              className={cn('border-border bg-card border p-3', mode.radius)}
+            >
+              <p
+                className={cn(
+                  'text-foreground mb-2 text-xs font-semibold',
+                  mode.font
+                )}
+              >
                 {xAxisFormatter ? xAxisFormatter(label) : label}
               </p>
               <div className="space-y-1">
                 {/* eslint-disable design-system/no-inline-styles -- Dynamic color from Recharts entry */}
                 {payload.map((entry: any, index: number) => (
-                  <p key={index} className={cn("text-muted-foreground text-xs", mode.font)}>
+                  <p
+                    key={index}
+                    className={cn('text-muted-foreground text-xs', mode.font)}
+                  >
                     <span
                       className="mr-2 inline-block h-2 w-2"
                       style={{ backgroundColor: entry.stroke }}
                     />
-                    {entry.name}:{" "}
+                    {entry.name}:{' '}
                     <span className="text-foreground font-semibold">
-                      {tooltipFormatter ? tooltipFormatter(entry.value, entry.name) : entry.value}
+                      {tooltipFormatter
+                        ? tooltipFormatter(entry.value, entry.name)
+                        : entry.value}
                     </span>
                   </p>
                 ))}
@@ -168,7 +186,7 @@ export function AreaChart({
   );
 
   return (
-    <div className={cn("w-full", className)}>
+    <div className={cn('w-full', className)}>
       <ResponsiveContainer width="100%" height={height}>
         <RechartsAreaChart data={data} margin={margin}>
           {/* Gradient definitions */}
@@ -193,7 +211,13 @@ export function AreaChart({
             </defs>
           )}
 
-          {showGrid && <CartesianGrid strokeDasharray="3 3" stroke={theme.border} opacity={0.5} />}
+          {showGrid && (
+            <CartesianGrid
+              strokeDasharray="3 3"
+              stroke={theme.border}
+              opacity={0.5}
+            />
+          )}
           <XAxis
             dataKey={xAxisKey}
             tick={{ fill: theme.muted, fontSize: 12 }}
@@ -208,13 +232,15 @@ export function AreaChart({
             tickFormatter={yAxisFormatter}
           />
           {showTooltip && <Tooltip content={CustomTooltip} />}
-          {showLegend && <Legend wrapperStyle={{ fontSize: 12 }} iconType="rect" />}
+          {showLegend && (
+            <Legend wrapperStyle={{ fontSize: 12 }} iconType="rect" />
+          )}
           {series.map((s, index) => {
             const color = s.color || colors[index % colors.length];
             return (
               <Area
                 key={s.dataKey}
-                type={s.type || "monotone"}
+                type={s.type || 'monotone'}
                 dataKey={s.dataKey}
                 name={s.name || s.dataKey}
                 stroke={color}
@@ -260,7 +286,7 @@ export interface AreaChartCardProps extends AreaChartProps {
 export function AreaChartCard({
   title,
   description,
-  code = "0x00",
+  code = '0x00',
   icon,
   headerActions,
   cardClassName,
@@ -268,17 +294,26 @@ export function AreaChartCard({
   ...chartProps
 }: AreaChartCardProps) {
   return (
-    <div className={cn("border-border bg-card border", mode.radius, cardClassName)}>
+    <div
+      className={cn('border-border bg-card border', mode.radius, cardClassName)}
+    >
       {/* Terminal Header */}
       <div className="border-border flex items-center justify-between border-b px-4 py-3">
         <div className="flex items-center gap-3">
           {icon}
           <div>
-            <span className={cn("text-muted-foreground text-xs", mode.font)}>
+            <span className={cn('text-muted-foreground text-xs', mode.font)}>
               [{code}] {title.toUpperCase()}
             </span>
             {description && (
-              <p className={cn("text-muted-foreground mt-0.5 text-xs", mode.font)}>{description}</p>
+              <p
+                className={cn(
+                  'text-muted-foreground mt-0.5 text-xs',
+                  mode.font
+                )}
+              >
+                {description}
+              </p>
             )}
           </div>
         </div>
@@ -295,7 +330,7 @@ export function AreaChartCard({
 
 /* ----- Stacked Area Chart Variant ----- */
 
-export interface StackedAreaChartProps extends Omit<AreaChartProps, "series"> {
+export interface StackedAreaChartProps extends Omit<AreaChartProps, 'series'> {
   /** Data keys for each stack segment */
   stackKeys: string[];
   /** Labels for each stack segment */
@@ -312,14 +347,21 @@ export function StackedAreaChart({
 }: StackedAreaChartProps) {
   const theme = useThemeColors();
   /* eslint-disable-next-line design-system/no-hardcoded-colors -- Fallback colors before theme loads */
-  const fallbackColors = ["#6366f1", "#8b5cf6", "#22c55e", "#eab308", "#ef4444"];
-  const colors = stackColors || (theme.chart.length > 0 ? theme.chart : fallbackColors);
+  const fallbackColors = [
+    '#6366f1',
+    '#8b5cf6',
+    '#22c55e',
+    '#eab308',
+    '#ef4444',
+  ];
+  const colors =
+    stackColors || (theme.chart.length > 0 ? theme.chart : fallbackColors);
 
   const series: AreaChartSeries[] = stackKeys.map((key, index) => ({
     dataKey: key,
     name: stackLabels?.[index] || key,
     color: colors[index % colors.length],
-    stackId: "stack",
+    stackId: 'stack',
     fillOpacity: 0.6,
   }));
 

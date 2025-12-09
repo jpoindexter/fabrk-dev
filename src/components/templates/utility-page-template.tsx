@@ -26,12 +26,12 @@
  * ```
  */
 
-import * as React from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { AlertCircle, Home } from "lucide-react";
+import * as React from 'react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { AlertCircle, Home } from 'lucide-react';
 
 // =============================================================================
 // TYPES
@@ -84,44 +84,56 @@ export function UtilityPageTemplate({
   showHomeLink = false,
   className,
 }: UtilityPageTemplateProps) {
-  const displayIcon = icon || <AlertCircle className="text-muted-foreground h-16 w-16" />;
+  const displayIcon = icon || (
+    <AlertCircle className="text-muted-foreground h-16 w-16" />
+  );
 
   return (
     <div
-      className={cn("flex min-h-screen flex-col items-center justify-center px-4 py-16", className)}
+      className={cn(
+        'flex min-h-screen flex-col items-center justify-center px-4 py-16',
+        className
+      )}
     >
       <div className="flex flex-col items-center space-y-6 text-center">
         {/* Icon */}
         <div className="text-muted-foreground">{displayIcon}</div>
 
         {/* Error Code Badge */}
-        <div className={cn("border-border inline-block border px-4 py-1", mode.radius)}>
-          <span className={cn("text-muted-foreground text-xs", mode.font)}>
+        <div
+          className={cn(
+            'border-border inline-block border px-4 py-1',
+            mode.radius
+          )}
+        >
+          <span className={cn('text-muted-foreground text-xs', mode.font)}>
             [ERROR_CODE]: {code.toUpperCase()}
           </span>
         </div>
 
         {/* Title */}
-        <h1 className={cn("text-4xl font-bold tracking-tight", mode.font)}>
-          {title.toUpperCase().replace(/ /g, "_")}
+        <h1 className={cn('text-4xl font-bold tracking-tight', mode.font)}>
+          {title.toUpperCase().replace(/ /g, '_')}
         </h1>
 
         {/* Description */}
-        <p className={cn("text-muted-foreground max-w-md text-sm", mode.font)}>{description}</p>
+        <p className={cn('text-muted-foreground max-w-md text-sm', mode.font)}>
+          {description}
+        </p>
 
         {/* Actions */}
         <div className="flex flex-col gap-3 sm:flex-row">
           {primaryAction && (
             <Button asChild>
               <Link href={primaryAction.href}>
-                &gt; {primaryAction.label.toUpperCase().replace(/ /g, "_")}
+                &gt; {primaryAction.label.toUpperCase().replace(/ /g, '_')}
               </Link>
             </Button>
           )}
           {secondaryAction && (
             <Button variant="outline" asChild>
               <Link href={secondaryAction.href}>
-                &gt; {secondaryAction.label.toUpperCase().replace(/ /g, "_")}
+                &gt; {secondaryAction.label.toUpperCase().replace(/ /g, '_')}
               </Link>
             </Button>
           )}
@@ -132,7 +144,7 @@ export function UtilityPageTemplate({
           <Link
             href="/"
             className={cn(
-              "text-muted-foreground hover:text-foreground mt-4 flex items-center gap-2 text-sm transition-colors",
+              'text-muted-foreground hover:text-foreground mt-4 flex items-center gap-2 text-sm transition-colors',
               mode.font
             )}
           >

@@ -2,11 +2,11 @@
  * Privacy Tab Component - Profile privacy and cookie preferences
  */
 
-import { Switch } from "@/components/ui/switch";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { User, Cookie } from "lucide-react";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { Switch } from '@/components/ui/switch';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { User, Cookie } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 interface PrivacySettings {
   profileVisibility: boolean;
@@ -27,27 +27,31 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
     <div className="space-y-6">
       {/* Profile Privacy */}
       <Card tone="neutral">
-        <CardHeader code="0x02" title="PROFILE_PRIVACY" icon={<User className="h-4 w-4" />} />
+        <CardHeader
+          code="0x02"
+          title="PROFILE_PRIVACY"
+          icon={<User className="h-4 w-4" />}
+        />
         <CardContent padding="md">
-          <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+          <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
             [PROFILE_ACTIVITY]:
           </div>
-          <div className={cn(mode.font, "space-y-4 text-xs")}>
+          <div className={cn(mode.font, 'space-y-4 text-xs')}>
             {[
               {
-                key: "profileVisibility" as const,
-                label: "PROFILE_VISIBILITY",
-                desc: "Allow your profile to be visible to other users",
+                key: 'profileVisibility' as const,
+                label: 'PROFILE_VISIBILITY',
+                desc: 'Allow your profile to be visible to other users',
               },
               {
-                key: "activityTracking" as const,
-                label: "ACTIVITY_TRACKING",
-                desc: "Track my activity to improve experience",
+                key: 'activityTracking' as const,
+                label: 'ACTIVITY_TRACKING',
+                desc: 'Track my activity to improve experience',
               },
               {
-                key: "searchIndexing" as const,
-                label: "SEARCH_INDEXING",
-                desc: "Allow search engines to index your profile",
+                key: 'searchIndexing' as const,
+                label: 'SEARCH_INDEXING',
+                desc: 'Allow search engines to index your profile',
               },
             ].map((setting) => (
               <div
@@ -63,7 +67,7 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
                   onCheckedChange={() => onToggle(setting.key)}
                   className={cn(
                     mode.radius,
-                    "h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:rounded-none [&>span]:data-[state=checked]:translate-x-4"
+                    'h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:rounded-none [&>span]:data-[state=checked]:translate-x-4'
                   )}
                 />
               </div>
@@ -74,29 +78,33 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
 
       {/* Cookie Preferences */}
       <Card tone="neutral">
-        <CardHeader code="0x03" title="COOKIES" icon={<Cookie className="h-4 w-4" />} />
+        <CardHeader
+          code="0x03"
+          title="COOKIES"
+          icon={<Cookie className="h-4 w-4" />}
+        />
         <CardContent padding="md">
-          <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+          <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
             [COOKIE_PREFERENCES]:
           </div>
-          <div className={cn(mode.font, "space-y-4 text-xs")}>
+          <div className={cn(mode.font, 'space-y-4 text-xs')}>
             {[
               {
-                key: "cookiesEssential" as const,
-                label: "ESSENTIAL",
-                desc: "Required for the site to function (cannot be disabled)",
+                key: 'cookiesEssential' as const,
+                label: 'ESSENTIAL',
+                desc: 'Required for the site to function (cannot be disabled)',
                 disabled: true,
               },
               {
-                key: "cookiesAnalytics" as const,
-                label: "ANALYTICS",
-                desc: "Help us understand how you use the site",
+                key: 'cookiesAnalytics' as const,
+                label: 'ANALYTICS',
+                desc: 'Help us understand how you use the site',
                 disabled: false,
               },
               {
-                key: "cookiesMarketing" as const,
-                label: "MARKETING",
-                desc: "Used to show relevant ads",
+                key: 'cookiesMarketing' as const,
+                label: 'MARKETING',
+                desc: 'Used to show relevant ads',
                 disabled: false,
               },
             ].map((setting) => (
@@ -114,7 +122,7 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
                   disabled={setting.disabled}
                   className={cn(
                     mode.radius,
-                    "h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:rounded-none [&>span]:data-[state=checked]:translate-x-4"
+                    'h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:rounded-none [&>span]:data-[state=checked]:translate-x-4'
                   )}
                 />
               </div>

@@ -14,11 +14,11 @@
  * model files in the `model` directory!
  */
 
-import * as runtime from "@prisma/client/runtime/client";
-import type * as Prisma from "../models";
-import { type PrismaClient } from "./class";
+import * as runtime from '@prisma/client/runtime/client';
+import type * as Prisma from '../models';
+import { type PrismaClient } from './class';
 
-export type * from "../models";
+export type * from '../models';
 
 export type DMMF = typeof runtime.DMMF;
 
@@ -28,17 +28,23 @@ export type PrismaPromise<T> = runtime.Types.Public.PrismaPromise<T>;
  * Prisma Errors
  */
 
-export const PrismaClientKnownRequestError = runtime.PrismaClientKnownRequestError;
-export type PrismaClientKnownRequestError = runtime.PrismaClientKnownRequestError;
+export const PrismaClientKnownRequestError =
+  runtime.PrismaClientKnownRequestError;
+export type PrismaClientKnownRequestError =
+  runtime.PrismaClientKnownRequestError;
 
-export const PrismaClientUnknownRequestError = runtime.PrismaClientUnknownRequestError;
-export type PrismaClientUnknownRequestError = runtime.PrismaClientUnknownRequestError;
+export const PrismaClientUnknownRequestError =
+  runtime.PrismaClientUnknownRequestError;
+export type PrismaClientUnknownRequestError =
+  runtime.PrismaClientUnknownRequestError;
 
 export const PrismaClientRustPanicError = runtime.PrismaClientRustPanicError;
 export type PrismaClientRustPanicError = runtime.PrismaClientRustPanicError;
 
-export const PrismaClientInitializationError = runtime.PrismaClientInitializationError;
-export type PrismaClientInitializationError = runtime.PrismaClientInitializationError;
+export const PrismaClientInitializationError =
+  runtime.PrismaClientInitializationError;
+export type PrismaClientInitializationError =
+  runtime.PrismaClientInitializationError;
 
 export const PrismaClientValidationError = runtime.PrismaClientValidationError;
 export type PrismaClientValidationError = runtime.PrismaClientValidationError;
@@ -66,9 +72,19 @@ export type DecimalJsLike = runtime.DecimalJsLike;
  */
 export type Extension = runtime.Types.Extensions.UserArgs;
 export const getExtensionContext = runtime.Extensions.getExtensionContext;
-export type Args<T, F extends runtime.Operation> = runtime.Types.Public.Args<T, F>;
-export type Payload<T, F extends runtime.Operation = never> = runtime.Types.Public.Payload<T, F>;
-export type Result<T, A, F extends runtime.Operation> = runtime.Types.Public.Result<T, A, F>;
+export type Args<T, F extends runtime.Operation> = runtime.Types.Public.Args<
+  T,
+  F
+>;
+export type Payload<
+  T,
+  F extends runtime.Operation = never,
+> = runtime.Types.Public.Payload<T, F>;
+export type Result<
+  T,
+  A,
+  F extends runtime.Operation,
+> = runtime.Types.Public.Result<T, A, F>;
 export type Exact<A, W> = runtime.Types.Public.Exact<A, W>;
 
 export type PrismaVersion = {
@@ -81,8 +97,8 @@ export type PrismaVersion = {
  * Query Engine version: ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba
  */
 export const prismaVersion: PrismaVersion = {
-  client: "7.1.0",
-  engine: "ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba",
+  client: '7.1.0',
+  engine: 'ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba',
 };
 
 /**
@@ -98,9 +114,15 @@ export type InputJsonArray = runtime.InputJsonArray;
 export type InputJsonValue = runtime.InputJsonValue;
 
 export const NullTypes = {
-  DbNull: runtime.NullTypes.DbNull as new (secret: never) => typeof runtime.DbNull,
-  JsonNull: runtime.NullTypes.JsonNull as new (secret: never) => typeof runtime.JsonNull,
-  AnyNull: runtime.NullTypes.AnyNull as new (secret: never) => typeof runtime.AnyNull,
+  DbNull: runtime.NullTypes.DbNull as new (
+    secret: never
+  ) => typeof runtime.DbNull,
+  JsonNull: runtime.NullTypes.JsonNull as new (
+    secret: never
+  ) => typeof runtime.JsonNull,
+  AnyNull: runtime.NullTypes.AnyNull as new (
+    secret: never
+  ) => typeof runtime.AnyNull,
 };
 /**
  * Helper for filtering JSON entries that have `null` on the database (empty on the db)
@@ -158,9 +180,9 @@ export type Subset<T, U> = {
 export type SelectSubset<T, U> = {
   [key in keyof T]: key extends keyof U ? T[key] : never;
 } & (T extends SelectAndInclude
-  ? "Please either choose `select` or `include`."
+  ? 'Please either choose `select` or `include`.'
   : T extends SelectAndOmit
-    ? "Please either choose `select` or `omit`."
+    ? 'Please either choose `select` or `omit`.'
     : {});
 
 /**
@@ -223,9 +245,11 @@ type _Either<O extends object, K extends Key, strict extends Boolean> = {
   0: EitherLoose<O, K>;
 }[strict];
 
-export type Either<O extends object, K extends Key, strict extends Boolean = 1> = O extends unknown
-  ? _Either<O, K, strict>
-  : never;
+export type Either<
+  O extends object,
+  K extends Key,
+  strict extends Boolean = 1,
+> = O extends unknown ? _Either<O, K, strict> : never;
 
 export type Union = any;
 
@@ -234,9 +258,9 @@ export type PatchUndefined<O extends object, O1 extends object> = {
 } & {};
 
 /** Helper Types for "Merge" **/
-export type IntersectOf<U extends Union> = (U extends unknown ? (k: U) => void : never) extends (
-  k: infer I
-) => void
+export type IntersectOf<U extends Union> = (
+  U extends unknown ? (k: U) => void : never
+) extends (k: infer I) => void
   ? I
   : never;
 
@@ -255,7 +279,9 @@ type _Merge<U extends object> = IntersectOf<
 
 type Key = string | number | symbol;
 type AtStrict<O extends object, K extends Key> = O[K & keyof O];
-type AtLoose<O extends object, K extends Key> = O extends unknown ? AtStrict<O, K> : never;
+type AtLoose<O extends object, K extends Key> = O extends unknown
+  ? AtStrict<O, K>
+  : never;
 export type At<O extends object, K extends Key, strict extends Boolean = 1> = {
   1: AtStrict<O, K>;
   0: AtLoose<O, K>;
@@ -313,7 +339,9 @@ export type Extends<A1 extends any, A2 extends any> = [A1] extends [never]
     ? 1
     : 0;
 
-export type Has<U extends Union, U1 extends Union> = Not<Extends<Exclude<U1, U>, U1>>;
+export type Has<U extends Union, U1 extends Union> = Not<
+  Extends<Exclude<U1, U>, U1>
+>;
 
 export type Or<B1 extends Boolean, B2 extends Boolean> = {
   0: {
@@ -334,16 +362,21 @@ export type GetScalarType<T, O> = O extends object
     }
   : never;
 
-type FieldPaths<T, U = Omit<T, "_avg" | "_sum" | "_count" | "_min" | "_max">> =
+type FieldPaths<T, U = Omit<T, '_avg' | '_sum' | '_count' | '_min' | '_max'>> =
   IsObject<T> extends True ? U : T;
 
 export type GetHavingFields<T> = {
-  [K in keyof T]: Or<Or<Extends<"OR", K>, Extends<"AND", K>>, Extends<"NOT", K>> extends True
+  [K in keyof T]: Or<
+    Or<Extends<'OR', K>, Extends<'AND', K>>,
+    Extends<'NOT', K>
+  > extends True
     ? // infer is only needed to not hit TS limit
       // based on the brilliant idea of Pierre-Antoine Mills
       // https://github.com/microsoft/TypeScript/issues/30188#issuecomment-478938437
       T[K] extends infer TK
-      ? GetHavingFields<UnEnumerate<TK> extends object ? Merge<UnEnumerate<TK>> : never>
+      ? GetHavingFields<
+          UnEnumerate<TK> extends object ? Merge<UnEnumerate<TK>> : never
+        >
       : never
     : {} extends FieldPaths<T[K]>
       ? never
@@ -360,60 +393,66 @@ export type MaybeTupleToUnion<T> = T extends any[] ? TupleToUnion<T> : T;
 /**
  * Like `Pick`, but additionally can also accept an array of keys
  */
-export type PickEnumerable<T, K extends Enumerable<keyof T> | keyof T> = Prisma__Pick<
+export type PickEnumerable<
   T,
-  MaybeTupleToUnion<K>
->;
+  K extends Enumerable<keyof T> | keyof T,
+> = Prisma__Pick<T, MaybeTupleToUnion<K>>;
 
 /**
  * Exclude all keys with underscores
  */
-export type ExcludeUnderscoreKeys<T extends string> = T extends `_${string}` ? never : T;
+export type ExcludeUnderscoreKeys<T extends string> = T extends `_${string}`
+  ? never
+  : T;
 
 export type FieldRef<Model, FieldType> = runtime.FieldRef<Model, FieldType>;
 
-type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRef<Model, FieldType>;
+type FieldRefInputType<Model, FieldType> = Model extends never
+  ? never
+  : FieldRef<Model, FieldType>;
 
 export const ModelName = {
-  User: "User",
-  Account: "Account",
-  Session: "Session",
-  VerificationToken: "VerificationToken",
-  Payment: "Payment",
-  CheckoutSession: "CheckoutSession",
-  WebhookEvent: "WebhookEvent",
-  MFADevice: "MFADevice",
-  BackupCode: "BackupCode",
-  Organization: "Organization",
-  OrganizationMember: "OrganizationMember",
-  OrganizationInvite: "OrganizationInvite",
-  Upload: "Upload",
-  Job: "Job",
-  EmailQueue: "EmailQueue",
-  AuditLog: "AuditLog",
-  FeatureFlag: "FeatureFlag",
-  Notification: "Notification",
-  ApiKey: "ApiKey",
-  Webhook: "Webhook",
-  WebhookDelivery: "WebhookDelivery",
-  Consent: "Consent",
-  BlogPost: "BlogPost",
-  BlogCategory: "BlogCategory",
-  CreditBalance: "CreditBalance",
-  CreditTransaction: "CreditTransaction",
+  User: 'User',
+  Account: 'Account',
+  Session: 'Session',
+  VerificationToken: 'VerificationToken',
+  Payment: 'Payment',
+  CheckoutSession: 'CheckoutSession',
+  WebhookEvent: 'WebhookEvent',
+  MFADevice: 'MFADevice',
+  BackupCode: 'BackupCode',
+  Organization: 'Organization',
+  OrganizationMember: 'OrganizationMember',
+  OrganizationInvite: 'OrganizationInvite',
+  Upload: 'Upload',
+  Job: 'Job',
+  EmailQueue: 'EmailQueue',
+  AuditLog: 'AuditLog',
+  FeatureFlag: 'FeatureFlag',
+  Notification: 'Notification',
+  ApiKey: 'ApiKey',
+  Webhook: 'Webhook',
+  WebhookDelivery: 'WebhookDelivery',
+  Consent: 'Consent',
+  BlogPost: 'BlogPost',
+  BlogCategory: 'BlogCategory',
+  CreditBalance: 'CreditBalance',
+  CreditTransaction: 'CreditTransaction',
 } as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 
-export interface TypeMapCb<GlobalOmitOptions = {}> extends runtime.Types.Utils.Fn<
+export interface TypeMapCb<GlobalOmitOptions = {}> extends runtime.Types.Utils
+  .Fn<
   { extArgs: runtime.Types.Extensions.InternalArgs },
   runtime.Types.Utils.Record<string, any>
 > {
-  returns: TypeMap<this["params"]["extArgs"], GlobalOmitOptions>;
+  returns: TypeMap<this['params']['extArgs'], GlobalOmitOptions>;
 }
 
 export type TypeMap<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > = {
   globalOmitOptions: {
@@ -421,32 +460,32 @@ export type TypeMap<
   };
   meta: {
     modelProps:
-      | "user"
-      | "account"
-      | "session"
-      | "verificationToken"
-      | "payment"
-      | "checkoutSession"
-      | "webhookEvent"
-      | "mFADevice"
-      | "backupCode"
-      | "organization"
-      | "organizationMember"
-      | "organizationInvite"
-      | "upload"
-      | "job"
-      | "emailQueue"
-      | "auditLog"
-      | "featureFlag"
-      | "notification"
-      | "apiKey"
-      | "webhook"
-      | "webhookDelivery"
-      | "consent"
-      | "blogPost"
-      | "blogCategory"
-      | "creditBalance"
-      | "creditTransaction";
+      | 'user'
+      | 'account'
+      | 'session'
+      | 'verificationToken'
+      | 'payment'
+      | 'checkoutSession'
+      | 'webhookEvent'
+      | 'mFADevice'
+      | 'backupCode'
+      | 'organization'
+      | 'organizationMember'
+      | 'organizationInvite'
+      | 'upload'
+      | 'job'
+      | 'emailQueue'
+      | 'auditLog'
+      | 'featureFlag'
+      | 'notification'
+      | 'apiKey'
+      | 'webhook'
+      | 'webhookDelivery'
+      | 'consent'
+      | 'blogPost'
+      | 'blogCategory'
+      | 'creditBalance'
+      | 'creditTransaction';
     txIsolationLevel: TransactionIsolationLevel;
   };
   model: {
@@ -520,7 +559,9 @@ export type TypeMap<
         };
         count: {
           args: Prisma.UserCountArgs<ExtArgs>;
-          result: runtime.Types.Utils.Optional<Prisma.UserCountAggregateOutputType> | number;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.UserCountAggregateOutputType>
+            | number;
         };
       };
     };
@@ -594,7 +635,9 @@ export type TypeMap<
         };
         count: {
           args: Prisma.AccountCountArgs<ExtArgs>;
-          result: runtime.Types.Utils.Optional<Prisma.AccountCountAggregateOutputType> | number;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.AccountCountAggregateOutputType>
+            | number;
         };
       };
     };
@@ -668,7 +711,9 @@ export type TypeMap<
         };
         count: {
           args: Prisma.SessionCountArgs<ExtArgs>;
-          result: runtime.Types.Utils.Optional<Prisma.SessionCountAggregateOutputType> | number;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.SessionCountAggregateOutputType>
+            | number;
         };
       };
     };
@@ -818,7 +863,9 @@ export type TypeMap<
         };
         count: {
           args: Prisma.PaymentCountArgs<ExtArgs>;
-          result: runtime.Types.Utils.Optional<Prisma.PaymentCountAggregateOutputType> | number;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.PaymentCountAggregateOutputType>
+            | number;
         };
       };
     };
@@ -1044,7 +1091,9 @@ export type TypeMap<
         };
         count: {
           args: Prisma.MFADeviceCountArgs<ExtArgs>;
-          result: runtime.Types.Utils.Optional<Prisma.MFADeviceCountAggregateOutputType> | number;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.MFADeviceCountAggregateOutputType>
+            | number;
         };
       };
     };
@@ -1118,7 +1167,9 @@ export type TypeMap<
         };
         count: {
           args: Prisma.BackupCodeCountArgs<ExtArgs>;
-          result: runtime.Types.Utils.Optional<Prisma.BackupCodeCountAggregateOutputType> | number;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.BackupCodeCountAggregateOutputType>
+            | number;
         };
       };
     };
@@ -1420,7 +1471,9 @@ export type TypeMap<
         };
         count: {
           args: Prisma.UploadCountArgs<ExtArgs>;
-          result: runtime.Types.Utils.Optional<Prisma.UploadCountAggregateOutputType> | number;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.UploadCountAggregateOutputType>
+            | number;
         };
       };
     };
@@ -1494,7 +1547,9 @@ export type TypeMap<
         };
         count: {
           args: Prisma.JobCountArgs<ExtArgs>;
-          result: runtime.Types.Utils.Optional<Prisma.JobCountAggregateOutputType> | number;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.JobCountAggregateOutputType>
+            | number;
         };
       };
     };
@@ -1568,7 +1623,9 @@ export type TypeMap<
         };
         count: {
           args: Prisma.EmailQueueCountArgs<ExtArgs>;
-          result: runtime.Types.Utils.Optional<Prisma.EmailQueueCountAggregateOutputType> | number;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.EmailQueueCountAggregateOutputType>
+            | number;
         };
       };
     };
@@ -1642,7 +1699,9 @@ export type TypeMap<
         };
         count: {
           args: Prisma.AuditLogCountArgs<ExtArgs>;
-          result: runtime.Types.Utils.Optional<Prisma.AuditLogCountAggregateOutputType> | number;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.AuditLogCountAggregateOutputType>
+            | number;
         };
       };
     };
@@ -1716,7 +1775,9 @@ export type TypeMap<
         };
         count: {
           args: Prisma.FeatureFlagCountArgs<ExtArgs>;
-          result: runtime.Types.Utils.Optional<Prisma.FeatureFlagCountAggregateOutputType> | number;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.FeatureFlagCountAggregateOutputType>
+            | number;
         };
       };
     };
@@ -1866,7 +1927,9 @@ export type TypeMap<
         };
         count: {
           args: Prisma.ApiKeyCountArgs<ExtArgs>;
-          result: runtime.Types.Utils.Optional<Prisma.ApiKeyCountAggregateOutputType> | number;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.ApiKeyCountAggregateOutputType>
+            | number;
         };
       };
     };
@@ -1940,7 +2003,9 @@ export type TypeMap<
         };
         count: {
           args: Prisma.WebhookCountArgs<ExtArgs>;
-          result: runtime.Types.Utils.Optional<Prisma.WebhookCountAggregateOutputType> | number;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.WebhookCountAggregateOutputType>
+            | number;
         };
       };
     };
@@ -2090,7 +2155,9 @@ export type TypeMap<
         };
         count: {
           args: Prisma.ConsentCountArgs<ExtArgs>;
-          result: runtime.Types.Utils.Optional<Prisma.ConsentCountAggregateOutputType> | number;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.ConsentCountAggregateOutputType>
+            | number;
         };
       };
     };
@@ -2164,7 +2231,9 @@ export type TypeMap<
         };
         count: {
           args: Prisma.BlogPostCountArgs<ExtArgs>;
-          result: runtime.Types.Utils.Optional<Prisma.BlogPostCountAggregateOutputType> | number;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.BlogPostCountAggregateOutputType>
+            | number;
         };
       };
     };
@@ -2426,418 +2495,420 @@ export type TypeMap<
  */
 
 export const TransactionIsolationLevel = runtime.makeStrictEnum({
-  ReadUncommitted: "ReadUncommitted",
-  ReadCommitted: "ReadCommitted",
-  RepeatableRead: "RepeatableRead",
-  Serializable: "Serializable",
+  ReadUncommitted: 'ReadUncommitted',
+  ReadCommitted: 'ReadCommitted',
+  RepeatableRead: 'RepeatableRead',
+  Serializable: 'Serializable',
 } as const);
 
 export type TransactionIsolationLevel =
   (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel];
 
 export const UserScalarFieldEnum = {
-  id: "id",
-  email: "email",
-  name: "name",
-  image: "image",
-  emailVerified: "emailVerified",
-  password: "password",
-  role: "role",
-  customerId: "customerId",
-  tier: "tier",
-  subscriptionTier: "subscriptionTier",
-  trialEndsAt: "trialEndsAt",
-  licenseKey: "licenseKey",
-  githubUsername: "githubUsername",
-  githubAccessAt: "githubAccessAt",
-  githubAccessStatus: "githubAccessStatus",
-  resetToken: "resetToken",
-  resetExpires: "resetExpires",
-  verifyToken: "verifyToken",
-  sessionVersion: "sessionVersion",
-  settings: "settings",
-  deletedAt: "deletedAt",
-  anonymizedAt: "anonymizedAt",
-  createdAt: "createdAt",
-  updatedAt: "updatedAt",
+  id: 'id',
+  email: 'email',
+  name: 'name',
+  image: 'image',
+  emailVerified: 'emailVerified',
+  password: 'password',
+  role: 'role',
+  customerId: 'customerId',
+  tier: 'tier',
+  subscriptionTier: 'subscriptionTier',
+  trialEndsAt: 'trialEndsAt',
+  licenseKey: 'licenseKey',
+  githubUsername: 'githubUsername',
+  githubAccessAt: 'githubAccessAt',
+  githubAccessStatus: 'githubAccessStatus',
+  resetToken: 'resetToken',
+  resetExpires: 'resetExpires',
+  verifyToken: 'verifyToken',
+  sessionVersion: 'sessionVersion',
+  settings: 'settings',
+  deletedAt: 'deletedAt',
+  anonymizedAt: 'anonymizedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
 } as const;
 
-export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum];
+export type UserScalarFieldEnum =
+  (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum];
 
 export const AccountScalarFieldEnum = {
-  id: "id",
-  userId: "userId",
-  type: "type",
-  provider: "provider",
-  providerAccountId: "providerAccountId",
-  refresh_token: "refresh_token",
-  access_token: "access_token",
-  expires_at: "expires_at",
-  token_type: "token_type",
-  scope: "scope",
-  id_token: "id_token",
-  session_state: "session_state",
+  id: 'id',
+  userId: 'userId',
+  type: 'type',
+  provider: 'provider',
+  providerAccountId: 'providerAccountId',
+  refresh_token: 'refresh_token',
+  access_token: 'access_token',
+  expires_at: 'expires_at',
+  token_type: 'token_type',
+  scope: 'scope',
+  id_token: 'id_token',
+  session_state: 'session_state',
 } as const;
 
 export type AccountScalarFieldEnum =
   (typeof AccountScalarFieldEnum)[keyof typeof AccountScalarFieldEnum];
 
 export const SessionScalarFieldEnum = {
-  id: "id",
-  sessionToken: "sessionToken",
-  userId: "userId",
-  expires: "expires",
+  id: 'id',
+  sessionToken: 'sessionToken',
+  userId: 'userId',
+  expires: 'expires',
 } as const;
 
 export type SessionScalarFieldEnum =
   (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum];
 
 export const VerificationTokenScalarFieldEnum = {
-  identifier: "identifier",
-  token: "token",
-  expires: "expires",
+  identifier: 'identifier',
+  token: 'token',
+  expires: 'expires',
 } as const;
 
 export type VerificationTokenScalarFieldEnum =
   (typeof VerificationTokenScalarFieldEnum)[keyof typeof VerificationTokenScalarFieldEnum];
 
 export const PaymentScalarFieldEnum = {
-  id: "id",
-  userId: "userId",
-  stripeId: "stripeId",
-  stripePaymentId: "stripePaymentId",
-  amount: "amount",
-  status: "status",
-  productId: "productId",
-  createdAt: "createdAt",
+  id: 'id',
+  userId: 'userId',
+  stripeId: 'stripeId',
+  stripePaymentId: 'stripePaymentId',
+  amount: 'amount',
+  status: 'status',
+  productId: 'productId',
+  createdAt: 'createdAt',
 } as const;
 
 export type PaymentScalarFieldEnum =
   (typeof PaymentScalarFieldEnum)[keyof typeof PaymentScalarFieldEnum];
 
 export const CheckoutSessionScalarFieldEnum = {
-  id: "id",
-  userId: "userId",
-  sessionId: "sessionId",
-  priceId: "priceId",
-  createdAt: "createdAt",
-  expiresAt: "expiresAt",
+  id: 'id',
+  userId: 'userId',
+  sessionId: 'sessionId',
+  priceId: 'priceId',
+  createdAt: 'createdAt',
+  expiresAt: 'expiresAt',
 } as const;
 
 export type CheckoutSessionScalarFieldEnum =
   (typeof CheckoutSessionScalarFieldEnum)[keyof typeof CheckoutSessionScalarFieldEnum];
 
 export const WebhookEventScalarFieldEnum = {
-  id: "id",
-  eventId: "eventId",
-  processed: "processed",
+  id: 'id',
+  eventId: 'eventId',
+  processed: 'processed',
 } as const;
 
 export type WebhookEventScalarFieldEnum =
   (typeof WebhookEventScalarFieldEnum)[keyof typeof WebhookEventScalarFieldEnum];
 
 export const MFADeviceScalarFieldEnum = {
-  id: "id",
-  userId: "userId",
-  type: "type",
-  secret: "secret",
-  verified: "verified",
-  name: "name",
-  lastUsed: "lastUsed",
-  createdAt: "createdAt",
+  id: 'id',
+  userId: 'userId',
+  type: 'type',
+  secret: 'secret',
+  verified: 'verified',
+  name: 'name',
+  lastUsed: 'lastUsed',
+  createdAt: 'createdAt',
 } as const;
 
 export type MFADeviceScalarFieldEnum =
   (typeof MFADeviceScalarFieldEnum)[keyof typeof MFADeviceScalarFieldEnum];
 
 export const BackupCodeScalarFieldEnum = {
-  id: "id",
-  userId: "userId",
-  code: "code",
-  used: "used",
-  usedAt: "usedAt",
-  createdAt: "createdAt",
+  id: 'id',
+  userId: 'userId',
+  code: 'code',
+  used: 'used',
+  usedAt: 'usedAt',
+  createdAt: 'createdAt',
 } as const;
 
 export type BackupCodeScalarFieldEnum =
   (typeof BackupCodeScalarFieldEnum)[keyof typeof BackupCodeScalarFieldEnum];
 
 export const OrganizationScalarFieldEnum = {
-  id: "id",
-  name: "name",
-  slug: "slug",
-  description: "description",
-  logo: "logo",
-  plan: "plan",
-  customerId: "customerId",
-  subscriptionId: "subscriptionId",
-  settings: "settings",
-  createdAt: "createdAt",
-  updatedAt: "updatedAt",
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  description: 'description',
+  logo: 'logo',
+  plan: 'plan',
+  customerId: 'customerId',
+  subscriptionId: 'subscriptionId',
+  settings: 'settings',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
 } as const;
 
 export type OrganizationScalarFieldEnum =
   (typeof OrganizationScalarFieldEnum)[keyof typeof OrganizationScalarFieldEnum];
 
 export const OrganizationMemberScalarFieldEnum = {
-  id: "id",
-  organizationId: "organizationId",
-  userId: "userId",
-  role: "role",
-  joinedAt: "joinedAt",
+  id: 'id',
+  organizationId: 'organizationId',
+  userId: 'userId',
+  role: 'role',
+  joinedAt: 'joinedAt',
 } as const;
 
 export type OrganizationMemberScalarFieldEnum =
   (typeof OrganizationMemberScalarFieldEnum)[keyof typeof OrganizationMemberScalarFieldEnum];
 
 export const OrganizationInviteScalarFieldEnum = {
-  id: "id",
-  organizationId: "organizationId",
-  email: "email",
-  role: "role",
-  invitedBy: "invitedBy",
-  token: "token",
-  expiresAt: "expiresAt",
-  acceptedAt: "acceptedAt",
-  createdAt: "createdAt",
+  id: 'id',
+  organizationId: 'organizationId',
+  email: 'email',
+  role: 'role',
+  invitedBy: 'invitedBy',
+  token: 'token',
+  expiresAt: 'expiresAt',
+  acceptedAt: 'acceptedAt',
+  createdAt: 'createdAt',
 } as const;
 
 export type OrganizationInviteScalarFieldEnum =
   (typeof OrganizationInviteScalarFieldEnum)[keyof typeof OrganizationInviteScalarFieldEnum];
 
 export const UploadScalarFieldEnum = {
-  id: "id",
-  userId: "userId",
-  organizationId: "organizationId",
-  filename: "filename",
-  originalName: "originalName",
-  mimeType: "mimeType",
-  size: "size",
-  url: "url",
-  key: "key",
-  bucket: "bucket",
-  metadata: "metadata",
-  visibility: "visibility",
-  createdAt: "createdAt",
+  id: 'id',
+  userId: 'userId',
+  organizationId: 'organizationId',
+  filename: 'filename',
+  originalName: 'originalName',
+  mimeType: 'mimeType',
+  size: 'size',
+  url: 'url',
+  key: 'key',
+  bucket: 'bucket',
+  metadata: 'metadata',
+  visibility: 'visibility',
+  createdAt: 'createdAt',
 } as const;
 
 export type UploadScalarFieldEnum =
   (typeof UploadScalarFieldEnum)[keyof typeof UploadScalarFieldEnum];
 
 export const JobScalarFieldEnum = {
-  id: "id",
-  type: "type",
-  status: "status",
-  priority: "priority",
-  attempts: "attempts",
-  maxAttempts: "maxAttempts",
-  data: "data",
-  result: "result",
-  error: "error",
-  scheduledFor: "scheduledFor",
-  startedAt: "startedAt",
-  completedAt: "completedAt",
-  createdAt: "createdAt",
-  updatedAt: "updatedAt",
+  id: 'id',
+  type: 'type',
+  status: 'status',
+  priority: 'priority',
+  attempts: 'attempts',
+  maxAttempts: 'maxAttempts',
+  data: 'data',
+  result: 'result',
+  error: 'error',
+  scheduledFor: 'scheduledFor',
+  startedAt: 'startedAt',
+  completedAt: 'completedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
 } as const;
 
-export type JobScalarFieldEnum = (typeof JobScalarFieldEnum)[keyof typeof JobScalarFieldEnum];
+export type JobScalarFieldEnum =
+  (typeof JobScalarFieldEnum)[keyof typeof JobScalarFieldEnum];
 
 export const EmailQueueScalarFieldEnum = {
-  id: "id",
-  type: "type",
-  to: "to",
-  subject: "subject",
-  html: "html",
-  status: "status",
-  userId: "userId",
-  purchaseId: "purchaseId",
-  metadata: "metadata",
-  attempts: "attempts",
-  maxAttempts: "maxAttempts",
-  lastError: "lastError",
-  sentAt: "sentAt",
-  createdAt: "createdAt",
-  updatedAt: "updatedAt",
+  id: 'id',
+  type: 'type',
+  to: 'to',
+  subject: 'subject',
+  html: 'html',
+  status: 'status',
+  userId: 'userId',
+  purchaseId: 'purchaseId',
+  metadata: 'metadata',
+  attempts: 'attempts',
+  maxAttempts: 'maxAttempts',
+  lastError: 'lastError',
+  sentAt: 'sentAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
 } as const;
 
 export type EmailQueueScalarFieldEnum =
   (typeof EmailQueueScalarFieldEnum)[keyof typeof EmailQueueScalarFieldEnum];
 
 export const AuditLogScalarFieldEnum = {
-  id: "id",
-  userId: "userId",
-  action: "action",
-  resource: "resource",
-  resourceId: "resourceId",
-  ipAddress: "ipAddress",
-  userAgent: "userAgent",
-  metadata: "metadata",
-  createdAt: "createdAt",
+  id: 'id',
+  userId: 'userId',
+  action: 'action',
+  resource: 'resource',
+  resourceId: 'resourceId',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  metadata: 'metadata',
+  createdAt: 'createdAt',
 } as const;
 
 export type AuditLogScalarFieldEnum =
   (typeof AuditLogScalarFieldEnum)[keyof typeof AuditLogScalarFieldEnum];
 
 export const FeatureFlagScalarFieldEnum = {
-  id: "id",
-  name: "name",
-  description: "description",
-  enabled: "enabled",
-  rolloutPercentage: "rolloutPercentage",
-  createdAt: "createdAt",
-  updatedAt: "updatedAt",
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  enabled: 'enabled',
+  rolloutPercentage: 'rolloutPercentage',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
 } as const;
 
 export type FeatureFlagScalarFieldEnum =
   (typeof FeatureFlagScalarFieldEnum)[keyof typeof FeatureFlagScalarFieldEnum];
 
 export const NotificationScalarFieldEnum = {
-  id: "id",
-  userId: "userId",
-  type: "type",
-  title: "title",
-  message: "message",
-  read: "read",
-  link: "link",
-  metadata: "metadata",
-  createdAt: "createdAt",
+  id: 'id',
+  userId: 'userId',
+  type: 'type',
+  title: 'title',
+  message: 'message',
+  read: 'read',
+  link: 'link',
+  metadata: 'metadata',
+  createdAt: 'createdAt',
 } as const;
 
 export type NotificationScalarFieldEnum =
   (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum];
 
 export const ApiKeyScalarFieldEnum = {
-  id: "id",
-  organizationId: "organizationId",
-  userId: "userId",
-  name: "name",
-  keyPrefix: "keyPrefix",
-  keyHash: "keyHash",
-  permissions: "permissions",
-  lastUsedAt: "lastUsedAt",
-  expiresAt: "expiresAt",
-  createdAt: "createdAt",
+  id: 'id',
+  organizationId: 'organizationId',
+  userId: 'userId',
+  name: 'name',
+  keyPrefix: 'keyPrefix',
+  keyHash: 'keyHash',
+  permissions: 'permissions',
+  lastUsedAt: 'lastUsedAt',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt',
 } as const;
 
 export type ApiKeyScalarFieldEnum =
   (typeof ApiKeyScalarFieldEnum)[keyof typeof ApiKeyScalarFieldEnum];
 
 export const WebhookScalarFieldEnum = {
-  id: "id",
-  organizationId: "organizationId",
-  url: "url",
-  secret: "secret",
-  events: "events",
-  enabled: "enabled",
-  createdAt: "createdAt",
-  updatedAt: "updatedAt",
+  id: 'id',
+  organizationId: 'organizationId',
+  url: 'url',
+  secret: 'secret',
+  events: 'events',
+  enabled: 'enabled',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
 } as const;
 
 export type WebhookScalarFieldEnum =
   (typeof WebhookScalarFieldEnum)[keyof typeof WebhookScalarFieldEnum];
 
 export const WebhookDeliveryScalarFieldEnum = {
-  id: "id",
-  webhookId: "webhookId",
-  event: "event",
-  method: "method",
-  payload: "payload",
-  status: "status",
-  statusCode: "statusCode",
-  response: "response",
-  error: "error",
-  duration: "duration",
-  attempts: "attempts",
-  nextRetryAt: "nextRetryAt",
-  createdAt: "createdAt",
+  id: 'id',
+  webhookId: 'webhookId',
+  event: 'event',
+  method: 'method',
+  payload: 'payload',
+  status: 'status',
+  statusCode: 'statusCode',
+  response: 'response',
+  error: 'error',
+  duration: 'duration',
+  attempts: 'attempts',
+  nextRetryAt: 'nextRetryAt',
+  createdAt: 'createdAt',
 } as const;
 
 export type WebhookDeliveryScalarFieldEnum =
   (typeof WebhookDeliveryScalarFieldEnum)[keyof typeof WebhookDeliveryScalarFieldEnum];
 
 export const ConsentScalarFieldEnum = {
-  id: "id",
-  userId: "userId",
-  consentType: "consentType",
-  consentGiven: "consentGiven",
-  consentDate: "consentDate",
-  ipAddress: "ipAddress",
-  userAgent: "userAgent",
-  withdrawnAt: "withdrawnAt",
-  metadata: "metadata",
-  createdAt: "createdAt",
-  updatedAt: "updatedAt",
+  id: 'id',
+  userId: 'userId',
+  consentType: 'consentType',
+  consentGiven: 'consentGiven',
+  consentDate: 'consentDate',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  withdrawnAt: 'withdrawnAt',
+  metadata: 'metadata',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
 } as const;
 
 export type ConsentScalarFieldEnum =
   (typeof ConsentScalarFieldEnum)[keyof typeof ConsentScalarFieldEnum];
 
 export const BlogPostScalarFieldEnum = {
-  id: "id",
-  slug: "slug",
-  title: "title",
-  excerpt: "excerpt",
-  content: "content",
-  featured: "featured",
-  published: "published",
-  authorId: "authorId",
-  categoryId: "categoryId",
-  featuredImage: "featuredImage",
-  readTime: "readTime",
-  seoTitle: "seoTitle",
-  seoDescription: "seoDescription",
-  viewCount: "viewCount",
-  createdAt: "createdAt",
-  publishedAt: "publishedAt",
-  updatedAt: "updatedAt",
+  id: 'id',
+  slug: 'slug',
+  title: 'title',
+  excerpt: 'excerpt',
+  content: 'content',
+  featured: 'featured',
+  published: 'published',
+  authorId: 'authorId',
+  categoryId: 'categoryId',
+  featuredImage: 'featuredImage',
+  readTime: 'readTime',
+  seoTitle: 'seoTitle',
+  seoDescription: 'seoDescription',
+  viewCount: 'viewCount',
+  createdAt: 'createdAt',
+  publishedAt: 'publishedAt',
+  updatedAt: 'updatedAt',
 } as const;
 
 export type BlogPostScalarFieldEnum =
   (typeof BlogPostScalarFieldEnum)[keyof typeof BlogPostScalarFieldEnum];
 
 export const BlogCategoryScalarFieldEnum = {
-  id: "id",
-  name: "name",
-  slug: "slug",
-  description: "description",
-  createdAt: "createdAt",
-  updatedAt: "updatedAt",
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
 } as const;
 
 export type BlogCategoryScalarFieldEnum =
   (typeof BlogCategoryScalarFieldEnum)[keyof typeof BlogCategoryScalarFieldEnum];
 
 export const CreditBalanceScalarFieldEnum = {
-  id: "id",
-  userId: "userId",
-  balance: "balance",
-  monthlyAllowance: "monthlyAllowance",
-  lastRefill: "lastRefill",
-  createdAt: "createdAt",
-  updatedAt: "updatedAt",
+  id: 'id',
+  userId: 'userId',
+  balance: 'balance',
+  monthlyAllowance: 'monthlyAllowance',
+  lastRefill: 'lastRefill',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
 } as const;
 
 export type CreditBalanceScalarFieldEnum =
   (typeof CreditBalanceScalarFieldEnum)[keyof typeof CreditBalanceScalarFieldEnum];
 
 export const CreditTransactionScalarFieldEnum = {
-  id: "id",
-  balanceId: "balanceId",
-  amount: "amount",
-  type: "type",
-  description: "description",
-  endpoint: "endpoint",
-  metadata: "metadata",
-  createdAt: "createdAt",
+  id: 'id',
+  balanceId: 'balanceId',
+  amount: 'amount',
+  type: 'type',
+  description: 'description',
+  endpoint: 'endpoint',
+  metadata: 'metadata',
+  createdAt: 'createdAt',
 } as const;
 
 export type CreditTransactionScalarFieldEnum =
   (typeof CreditTransactionScalarFieldEnum)[keyof typeof CreditTransactionScalarFieldEnum];
 
 export const SortOrder = {
-  asc: "asc",
-  desc: "desc",
+  asc: 'asc',
+  desc: 'desc',
 } as const;
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder];
@@ -2854,11 +2925,12 @@ export const JsonNullValueInput = {
   JsonNull: JsonNull,
 } as const;
 
-export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput];
+export type JsonNullValueInput =
+  (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput];
 
 export const QueryMode = {
-  default: "default",
-  insensitive: "insensitive",
+  default: 'default',
+  insensitive: 'insensitive',
 } as const;
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode];
@@ -2869,11 +2941,12 @@ export const JsonNullValueFilter = {
   AnyNull: AnyNull,
 } as const;
 
-export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter];
+export type JsonNullValueFilter =
+  (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter];
 
 export const NullsOrder = {
-  first: "first",
-  last: "last",
+  first: 'first',
+  last: 'last',
 } as const;
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder];
@@ -2885,95 +2958,137 @@ export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder];
 /**
  * Reference to a field of type 'String'
  */
-export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "String">;
+export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  'String'
+>;
 
 /**
  * Reference to a field of type 'String[]'
  */
-export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "String[]">;
+export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  'String[]'
+>;
 
 /**
  * Reference to a field of type 'DateTime'
  */
-export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "DateTime">;
+export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  'DateTime'
+>;
 
 /**
  * Reference to a field of type 'DateTime[]'
  */
-export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "DateTime[]">;
+export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  'DateTime[]'
+>;
 
 /**
  * Reference to a field of type 'Role'
  */
-export type EnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "Role">;
+export type EnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  'Role'
+>;
 
 /**
  * Reference to a field of type 'Role[]'
  */
-export type ListEnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "Role[]">;
+export type ListEnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  'Role[]'
+>;
 
 /**
  * Reference to a field of type 'Int'
  */
-export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "Int">;
+export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  'Int'
+>;
 
 /**
  * Reference to a field of type 'Int[]'
  */
-export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "Int[]">;
+export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  'Int[]'
+>;
 
 /**
  * Reference to a field of type 'Json'
  */
-export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "Json">;
+export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  'Json'
+>;
 
 /**
  * Reference to a field of type 'QueryMode'
  */
-export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "QueryMode">;
+export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  'QueryMode'
+>;
 
 /**
  * Reference to a field of type 'Boolean'
  */
-export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "Boolean">;
+export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  'Boolean'
+>;
 
 /**
  * Reference to a field of type 'OrgRole'
  */
-export type EnumOrgRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "OrgRole">;
+export type EnumOrgRoleFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  'OrgRole'
+>;
 
 /**
  * Reference to a field of type 'OrgRole[]'
  */
 export type ListEnumOrgRoleFieldRefInput<$PrismaModel> = FieldRefInputType<
   $PrismaModel,
-  "OrgRole[]"
+  'OrgRole[]'
 >;
 
 /**
  * Reference to a field of type 'JobStatus'
  */
-export type EnumJobStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "JobStatus">;
+export type EnumJobStatusFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  'JobStatus'
+>;
 
 /**
  * Reference to a field of type 'JobStatus[]'
  */
 export type ListEnumJobStatusFieldRefInput<$PrismaModel> = FieldRefInputType<
   $PrismaModel,
-  "JobStatus[]"
+  'JobStatus[]'
 >;
 
 /**
  * Reference to a field of type 'EmailType'
  */
-export type EnumEmailTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "EmailType">;
+export type EnumEmailTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  'EmailType'
+>;
 
 /**
  * Reference to a field of type 'EmailType[]'
  */
 export type ListEnumEmailTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
   $PrismaModel,
-  "EmailType[]"
+  'EmailType[]'
 >;
 
 /**
@@ -2981,7 +3096,7 @@ export type ListEnumEmailTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
  */
 export type EnumEmailStatusFieldRefInput<$PrismaModel> = FieldRefInputType<
   $PrismaModel,
-  "EmailStatus"
+  'EmailStatus'
 >;
 
 /**
@@ -2989,7 +3104,7 @@ export type EnumEmailStatusFieldRefInput<$PrismaModel> = FieldRefInputType<
  */
 export type ListEnumEmailStatusFieldRefInput<$PrismaModel> = FieldRefInputType<
   $PrismaModel,
-  "EmailStatus[]"
+  'EmailStatus[]'
 >;
 
 /**
@@ -2997,23 +3112,21 @@ export type ListEnumEmailStatusFieldRefInput<$PrismaModel> = FieldRefInputType<
  */
 export type EnumNotificationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
   $PrismaModel,
-  "NotificationType"
+  'NotificationType'
 >;
 
 /**
  * Reference to a field of type 'NotificationType[]'
  */
-export type ListEnumNotificationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
-  $PrismaModel,
-  "NotificationType[]"
->;
+export type ListEnumNotificationTypeFieldRefInput<$PrismaModel> =
+  FieldRefInputType<$PrismaModel, 'NotificationType[]'>;
 
 /**
  * Reference to a field of type 'ConsentType'
  */
 export type EnumConsentTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
   $PrismaModel,
-  "ConsentType"
+  'ConsentType'
 >;
 
 /**
@@ -3021,34 +3134,36 @@ export type EnumConsentTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
  */
 export type ListEnumConsentTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
   $PrismaModel,
-  "ConsentType[]"
+  'ConsentType[]'
 >;
 
 /**
  * Reference to a field of type 'CreditTransactionType'
  */
-export type EnumCreditTransactionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
-  $PrismaModel,
-  "CreditTransactionType"
->;
+export type EnumCreditTransactionTypeFieldRefInput<$PrismaModel> =
+  FieldRefInputType<$PrismaModel, 'CreditTransactionType'>;
 
 /**
  * Reference to a field of type 'CreditTransactionType[]'
  */
-export type ListEnumCreditTransactionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
-  $PrismaModel,
-  "CreditTransactionType[]"
->;
+export type ListEnumCreditTransactionTypeFieldRefInput<$PrismaModel> =
+  FieldRefInputType<$PrismaModel, 'CreditTransactionType[]'>;
 
 /**
  * Reference to a field of type 'Float'
  */
-export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "Float">;
+export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  'Float'
+>;
 
 /**
  * Reference to a field of type 'Float[]'
  */
-export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "Float[]">;
+export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  'Float[]'
+>;
 
 /**
  * Batch Payload for updateMany & deleteMany & createMany
@@ -3059,12 +3174,12 @@ export type BatchPayload = {
 
 export const defineExtension = runtime.Extensions
   .defineExtension as unknown as runtime.Types.Extensions.ExtendsHook<
-  "define",
+  'define',
   TypeMapCb,
   runtime.Types.Extensions.DefaultArgs
 >;
 export type DefaultPrismaClient = PrismaClient;
-export type ErrorFormat = "pretty" | "colorless" | "minimal";
+export type ErrorFormat = 'pretty' | 'colorless' | 'minimal';
 export type PrismaClientOptions = (
   | {
       /**
@@ -3182,15 +3297,17 @@ export type GlobalOmitConfig = {
 };
 
 /* Types for Logging */
-export type LogLevel = "info" | "query" | "warn" | "error";
+export type LogLevel = 'info' | 'query' | 'warn' | 'error';
 export type LogDefinition = {
   level: LogLevel;
-  emit: "stdout" | "event";
+  emit: 'stdout' | 'event';
 };
 
 export type CheckIsLogLevel<T> = T extends LogLevel ? T : never;
 
-export type GetLogType<T> = CheckIsLogLevel<T extends LogDefinition ? T["level"] : T>;
+export type GetLogType<T> = CheckIsLogLevel<
+  T extends LogDefinition ? T['level'] : T
+>;
 
 export type GetEvents<T extends any[]> =
   T extends Array<LogLevel | LogDefinition> ? GetLogType<T[number]> : never;
@@ -3211,29 +3328,32 @@ export type LogEvent = {
 /* End Types for Logging */
 
 export type PrismaAction =
-  | "findUnique"
-  | "findUniqueOrThrow"
-  | "findMany"
-  | "findFirst"
-  | "findFirstOrThrow"
-  | "create"
-  | "createMany"
-  | "createManyAndReturn"
-  | "update"
-  | "updateMany"
-  | "updateManyAndReturn"
-  | "upsert"
-  | "delete"
-  | "deleteMany"
-  | "executeRaw"
-  | "queryRaw"
-  | "aggregate"
-  | "count"
-  | "runCommandRaw"
-  | "findRaw"
-  | "groupBy";
+  | 'findUnique'
+  | 'findUniqueOrThrow'
+  | 'findMany'
+  | 'findFirst'
+  | 'findFirstOrThrow'
+  | 'create'
+  | 'createMany'
+  | 'createManyAndReturn'
+  | 'update'
+  | 'updateMany'
+  | 'updateManyAndReturn'
+  | 'upsert'
+  | 'delete'
+  | 'deleteMany'
+  | 'executeRaw'
+  | 'queryRaw'
+  | 'aggregate'
+  | 'count'
+  | 'runCommandRaw'
+  | 'findRaw'
+  | 'groupBy';
 
 /**
  * `PrismaClient` proxy available in interactive transactions.
  */
-export type TransactionClient = Omit<DefaultPrismaClient, runtime.ITXClientDenyList>;
+export type TransactionClient = Omit<
+  DefaultPrismaClient,
+  runtime.ITXClientDenyList
+>;

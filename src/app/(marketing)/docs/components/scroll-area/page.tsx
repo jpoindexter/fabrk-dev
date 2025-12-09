@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
 export default function ScrollAreaPage() {
   return (
@@ -18,7 +18,7 @@ export default function ScrollAreaPage() {
               {Array.from({ length: 20 }).map((_, i) => (
                 <div
                   key={i}
-                  className="border-b border-border py-2 last:border-0"
+                  className="border-border border-b py-2 last:border-0"
                 >
                   <span className="text-primary">&gt;</span> Item {i + 1}
                 </div>
@@ -36,16 +36,13 @@ export default function ScrollAreaPage() {
       }}
       variants={[
         {
-          title: "Vertical Scroll",
-          description: "Default vertical scrolling behavior.",
+          title: 'Vertical Scroll',
+          description: 'Default vertical scrolling behavior.',
           preview: (
             <ScrollArea className="h-48 w-full">
-              <div className="p-4 space-y-2">
+              <div className="space-y-2 p-4">
                 {Array.from({ length: 15 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className="bg-background p-2"
-                  >
+                  <div key={i} className="bg-background p-2">
                     Scrollable item {i + 1}
                   </div>
                 ))}
@@ -57,15 +54,15 @@ export default function ScrollAreaPage() {
 </ScrollArea>`,
         },
         {
-          title: "Horizontal Scroll",
-          description: "Horizontal scrolling with custom scrollbar.",
+          title: 'Horizontal Scroll',
+          description: 'Horizontal scrolling with custom scrollbar.',
           preview: (
             <ScrollArea className="w-full">
               <div className="flex gap-4 p-4">
                 {Array.from({ length: 20 }).map((_, i) => (
                   <div
                     key={i}
-                    className="flex h-24 w-32 shrink-0 items-center justify-center bg-background"
+                    className="bg-background flex h-24 w-32 shrink-0 items-center justify-center"
                   >
                     {i + 1}
                   </div>
@@ -84,17 +81,18 @@ export default function ScrollAreaPage() {
 </ScrollArea>`,
         },
         {
-          title: "Both Directions",
-          description: "Enable both horizontal and vertical scrolling.",
+          title: 'Both Directions',
+          description: 'Enable both horizontal and vertical scrolling.',
           preview: (
             <ScrollArea className="h-48 w-full">
               <div className="w-[800px] p-4">
                 {Array.from({ length: 15 }).map((_, i) => (
                   <div
                     key={i}
-                    className="border-b border-border py-2 last:border-0"
+                    className="border-border border-b py-2 last:border-0"
                   >
-                    <span className="text-primary">&gt;</span> Wide content that scrolls horizontally - Item {i + 1}
+                    <span className="text-primary">&gt;</span> Wide content that
+                    scrolls horizontally - Item {i + 1}
                   </div>
                 ))}
               </div>
@@ -107,8 +105,8 @@ export default function ScrollAreaPage() {
 </ScrollArea>`,
         },
         {
-          title: "Code Block",
-          description: "Perfect for scrollable code snippets.",
+          title: 'Code Block',
+          description: 'Perfect for scrollable code snippets.',
           preview: (
             <ScrollArea className="h-48 w-full">
               <pre className="p-4">
@@ -141,14 +139,16 @@ export default function ScrollAreaPage() {
 </ScrollArea>`,
         },
         {
-          title: "Chat Messages",
-          description: "Scrollable chat or message history.",
+          title: 'Chat Messages',
+          description: 'Scrollable chat or message history.',
           preview: (
             <ScrollArea className="h-48 w-full">
               <div className="space-y-4 p-4">
                 {Array.from({ length: 10 }).map((_, i) => (
                   <div key={i} className="space-y-1">
-                    <div className="font-semibold text-primary">User {i + 1}</div>
+                    <div className="text-primary font-semibold">
+                      User {i + 1}
+                    </div>
                     <div className="bg-background p-2">
                       This is a message in the chat
                     </div>
@@ -171,28 +171,28 @@ export default function ScrollAreaPage() {
       ]}
       props={[
         {
-          name: "orientation (ScrollBar)",
+          name: 'orientation (ScrollBar)',
           type: '"vertical" | "horizontal"',
           default: '"vertical"',
-          description: "Direction of the scrollbar.",
+          description: 'Direction of the scrollbar.',
         },
         {
-          name: "className",
-          type: "string",
-          default: "-",
-          description: "Additional CSS classes for styling.",
+          name: 'className',
+          type: 'string',
+          default: '-',
+          description: 'Additional CSS classes for styling.',
         },
       ]}
       accessibility={[
-        "Uses Radix UI ScrollArea primitive with full accessibility support",
-        "Maintains keyboard navigation (arrow keys, Page Up/Down, Home/End)",
-        "Scrollbar visible on hover and during scroll",
-        "Supports touch gestures on mobile devices",
-        "Customizable scrollbar appearance while maintaining native behavior",
-        "Preserves semantic HTML structure for screen readers",
+        'Uses Radix UI ScrollArea primitive with full accessibility support',
+        'Maintains keyboard navigation (arrow keys, Page Up/Down, Home/End)',
+        'Scrollbar visible on hover and during scroll',
+        'Supports touch gestures on mobile devices',
+        'Customizable scrollbar appearance while maintaining native behavior',
+        'Preserves semantic HTML structure for screen readers',
       ]}
-      previous={{ title: "Select", href: "/docs/components/select" }}
-      next={{ title: "Section", href: "/docs/components/section" }}
+      previous={{ title: 'Select', href: '/docs/components/select' }}
+      next={{ title: 'Section', href: '/docs/components/section' }}
     />
   );
 }

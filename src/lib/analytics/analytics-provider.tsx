@@ -3,12 +3,12 @@
  * Initializes analytics and provides tracking context
  */
 
-"use client";
+'use client';
 
-import { useEffect } from "react";
-import { initAnalytics } from "./tracking";
-import { usePageTracking } from "./hooks";
-import { env } from "@/lib/env";
+import { useEffect } from 'react';
+import { initAnalytics } from './tracking';
+import { usePageTracking } from './hooks';
+import { env } from '@/lib/env';
 
 interface AnalyticsProviderProps {
   children: React.ReactNode;
@@ -18,7 +18,8 @@ export function AnalyticsProvider({ children }: AnalyticsProviderProps) {
   useEffect(() => {
     // Initialize analytics on mount
     // Note: NODE_ENV is a special Next.js variable, not in env schema
-    const isDev = typeof window !== "undefined" && window.location.hostname === "localhost";
+    const isDev =
+      typeof window !== 'undefined' && window.location.hostname === 'localhost';
     initAnalytics({
       providers: getEnabledProviders(),
       debug: isDev,
@@ -34,23 +35,23 @@ export function AnalyticsProvider({ children }: AnalyticsProviderProps) {
   return <>{children}</>;
 }
 
-function getEnabledProviders(): ("ga4" | "plausible" | "posthog" | "custom")[] {
-  const providers: ("ga4" | "plausible" | "posthog" | "custom")[] = [];
+function getEnabledProviders(): ('ga4' | 'plausible' | 'posthog' | 'custom')[] {
+  const providers: ('ga4' | 'plausible' | 'posthog' | 'custom')[] = [];
 
   if (env.client.NEXT_PUBLIC_GA4_MEASUREMENT_ID) {
-    providers.push("ga4");
+    providers.push('ga4');
   }
 
   if (env.client.NEXT_PUBLIC_PLAUSIBLE_DOMAIN) {
-    providers.push("plausible");
+    providers.push('plausible');
   }
 
   if (env.client.NEXT_PUBLIC_POSTHOG_KEY) {
-    providers.push("posthog");
+    providers.push('posthog');
   }
 
   // Always enable custom analytics endpoint
-  providers.push("custom");
+  providers.push('custom');
 
   return providers;
 }

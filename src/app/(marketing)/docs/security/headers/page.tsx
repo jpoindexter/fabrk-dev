@@ -1,10 +1,11 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { Shield, Lock, Globe, FileCode } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
+import { Shield, Lock, Globe, FileCode } from 'lucide-react';
 
 export const metadata = {
-  title: "Security Headers - Fabrk Docs",
-  description: "Configure HSTS, CSP, X-Frame-Options, and other security headers. Production-ready defaults included.",
+  title: 'Security Headers - Fabrk Docs',
+  description:
+    'Configure HSTS, CSP, X-Frame-Options, and other security headers. Production-ready defaults included.',
 };
 
 export default function SecurityHeadersPage() {
@@ -16,15 +17,31 @@ export default function SecurityHeadersPage() {
       description="Configure HTTP security headers including HSTS, CSP, X-Frame-Options, and more."
       overview="Security headers protect your application from common web vulnerabilities like XSS, clickjacking, and man-in-the-middle attacks. Fabrk includes production-ready defaults you can customize."
       features={[
-        { icon: Lock, title: "HSTS", description: "Strict-Transport-Security enforces HTTPS connections." },
-        { icon: Shield, title: "CSP", description: "Content-Security-Policy prevents XSS attacks." },
-        { icon: Globe, title: "X-Frame-Options", description: "Prevents clickjacking by controlling iframe embedding." },
-        { icon: FileCode, title: "Permissions Policy", description: "Control browser feature access like camera and mic." },
+        {
+          icon: Lock,
+          title: 'HSTS',
+          description: 'Strict-Transport-Security enforces HTTPS connections.',
+        },
+        {
+          icon: Shield,
+          title: 'CSP',
+          description: 'Content-Security-Policy prevents XSS attacks.',
+        },
+        {
+          icon: Globe,
+          title: 'X-Frame-Options',
+          description: 'Prevents clickjacking by controlling iframe embedding.',
+        },
+        {
+          icon: FileCode,
+          title: 'Permissions Policy',
+          description: 'Control browser feature access like camera and mic.',
+        },
       ]}
       usage={[
         {
-          title: "Next.js Configuration",
-          description: "Add security headers in next.config.js",
+          title: 'Next.js Configuration',
+          description: 'Add security headers in next.config.js',
           code: `// next.config.js
 
 /** @type {import('next').NextConfig} */
@@ -65,11 +82,11 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;`,
-          language: "javascript",
+          language: 'javascript',
         },
         {
-          title: "Content Security Policy",
-          description: "Configure a strict CSP to prevent XSS attacks",
+          title: 'Content Security Policy',
+          description: 'Configure a strict CSP to prevent XSS attacks',
           code: `// next.config.js
 
 const ContentSecurityPolicy = \`
@@ -103,11 +120,11 @@ const nextConfig = {
     ];
   },
 };`,
-          language: "javascript",
+          language: 'javascript',
         },
         {
-          title: "Nonce-based CSP",
-          description: "Use nonces for stricter CSP without unsafe-inline",
+          title: 'Nonce-based CSP',
+          description: 'Use nonces for stricter CSP without unsafe-inline',
           code: `// src/middleware.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -164,11 +181,11 @@ export default async function RootLayout({
     </html>
   );
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "HSTS Configuration",
-          description: "Enforce HTTPS with Strict-Transport-Security",
+          title: 'HSTS Configuration',
+          description: 'Enforce HTTPS with Strict-Transport-Security',
           code: `// HSTS Header Options
 
 // Standard (2 years)
@@ -184,11 +201,11 @@ export default async function RootLayout({
 // - max-age: Time in seconds browser remembers HTTPS
 // - includeSubDomains: Apply to all subdomains
 // - preload: Allow browser vendors to hardcode`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Permissions Policy",
-          description: "Control browser feature access",
+          title: 'Permissions Policy',
+          description: 'Control browser feature access',
           code: `// Common Permissions Policy configurations
 
 // Minimal (most secure)
@@ -215,11 +232,11 @@ export default async function RootLayout({
 // gyroscope, keyboard-map, magnetometer, microphone, midi,
 // payment, picture-in-picture, publickey-credentials-get,
 // screen-wake-lock, sync-xhr, usb, web-share, xr-spatial-tracking`,
-          language: "javascript",
+          language: 'javascript',
         },
         {
-          title: "Vercel Configuration",
-          description: "Alternative: Configure headers in vercel.json",
+          title: 'Vercel Configuration',
+          description: 'Alternative: Configure headers in vercel.json',
           code: `// vercel.json
 
 {
@@ -247,11 +264,11 @@ export default async function RootLayout({
     }
   ]
 }`,
-          language: "json",
+          language: 'json',
         },
         {
-          title: "Testing Headers",
-          description: "Verify your security headers are working",
+          title: 'Testing Headers',
+          description: 'Verify your security headers are working',
           code: `# Test with curl
 curl -I https://yoursite.com
 
@@ -262,18 +279,19 @@ curl -I https://yoursite.com
 
 # Browser DevTools
 # Network tab → Select request → Headers tab`,
-          language: "bash",
+          language: 'bash',
         },
       ]}
-      previous={{ title: "CSRF Protection", href: "/docs/security/csrf" }}
-      next={{ title: "Schema Validation", href: "/docs/security/validation" }}
+      previous={{ title: 'CSRF Protection', href: '/docs/security/csrf' }}
+      next={{ title: 'Schema Validation', href: '/docs/security/validation' }}
     >
       {/* HSTS Warning */}
       <DocsSection title="Important Notes">
         <DocsCard title="WARNING" className="bg-muted/50">
           <p className="mb-4">
-            Only use the HSTS preload directive once you&apos;re certain all subdomains support HTTPS.
-            It&apos;s difficult to remove from the preload list once submitted.
+            Only use the HSTS preload directive once you&apos;re certain all
+            subdomains support HTTPS. It&apos;s difficult to remove from the
+            preload list once submitted.
           </p>
         </DocsCard>
       </DocsSection>

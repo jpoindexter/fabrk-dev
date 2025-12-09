@@ -1,8 +1,15 @@
-import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@/lib/auth";
-import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
-import { createLemonSqueezyCheckout, getVariantIdForTier } from "@/lib/lemonsqueezy";
-import { logger } from "@/lib/logger";
+import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@/lib/auth';
+import {
+  checkRateLimitAuto,
+  getClientIdentifier,
+  RateLimiters,
+} from '@/lib/security/rate-limit';
+import {
+  createLemonSqueezyCheckout,
+  getVariantIdForTier,
+} from '@/lib/lemonsqueezy';
+import { logger } from '@/lib/logger';
 
 /**
  * POST /api/lemonsqueezy/checkout
@@ -16,7 +23,7 @@ export async function POST(req: NextRequest) {
 
     if (!rateLimit.success) {
       return NextResponse.json(
-        { error: "Too many requests. Please try again later." },
+        { error: 'Too many requests. Please try again later.' },
         { status: 429 }
       );
     }
@@ -26,12 +33,15 @@ export async function POST(req: NextRequest) {
 
     // Validate tier or custom variant ID
     if (!tier && !customVariantId) {
-      return NextResponse.json({ error: "Either tier or variantId is required" }, { status: 400 });
+      return NextResponse.json(
+        { error: 'Either tier or variantId is required' },
+        { status: 400 }
+      );
     }
 
     // Get session for logged-in users
     const session = await auth();
-    const userId = session?.user?.id || "guest";
+    const userId = session?.user?.id || 'guest';
     const customerEmail = email || session?.user?.email;
     const customerName = name || session?.user?.name;
 
@@ -45,11 +55,11 @@ export async function POST(req: NextRequest) {
       name: customerName,
       userId,
       customData: {
-        tier: tier || "custom",
+        tier: tier || 'custom',
       },
     });
 
-    logger.info("Lemon Squeezy checkout created", {
+    logger.info('Lemon Squeezy checkout created', {
       checkoutId,
       userId,
       tier,
@@ -60,7 +70,10 @@ export async function POST(req: NextRequest) {
       checkoutId,
     });
   } catch (error) {
-    logger.error("Error creating Lemon Squeezy checkout:", error);
-    return NextResponse.json({ error: "Failed to create checkout session" }, { status: 500 });
+    logger.error('Error creating Lemon Squeezy checkout:', error);
+    return NextResponse.json(
+      { error: 'Failed to create checkout session' },
+      { status: 500 }
+    );
   }
 }

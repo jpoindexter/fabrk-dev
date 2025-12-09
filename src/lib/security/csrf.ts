@@ -11,25 +11,25 @@
  * 3. So attacker cannot set the x-csrf-token header to match the cookie
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import { randomBytes } from "crypto";
+import { NextRequest, NextResponse } from 'next/server';
+import { randomBytes } from 'crypto';
 
 const CSRF_TOKEN_LENGTH = 32;
-const CSRF_COOKIE_NAME = "csrf_token";
-const CSRF_HEADER_NAME = "x-csrf-token";
+const CSRF_COOKIE_NAME = 'csrf_token';
+const CSRF_HEADER_NAME = 'x-csrf-token';
 
 /**
  * Generate a cryptographically secure CSRF token (for Node.js runtime)
  */
 export function generateCsrfToken(): string {
-  return randomBytes(CSRF_TOKEN_LENGTH).toString("base64url");
+  return randomBytes(CSRF_TOKEN_LENGTH).toString('base64url');
 }
 
 /**
  * Validate a CSRF token - just check it exists and has reasonable length
  */
 export function validateCsrfToken(token: string): boolean {
-  if (!token || typeof token !== "string") {
+  if (!token || typeof token !== 'string') {
     return false;
   }
   // Token should be at least 32 characters (base64url encoded 32 bytes)
@@ -56,9 +56,9 @@ export function getCsrfTokenFromHeader(req: NextRequest): string | null {
 export function setCsrfCookie(response: NextResponse, token: string): void {
   response.cookies.set(CSRF_COOKIE_NAME, token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/",
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    path: '/',
     maxAge: 60 * 60 * 24, // 24 hours
   });
 }
@@ -83,7 +83,7 @@ export function validateCsrfMiddleware(req: NextRequest): {
 } {
   // Skip CSRF for safe methods
   const method = req.method.toUpperCase();
-  if (["GET", "HEAD", "OPTIONS"].includes(method)) {
+  if (['GET', 'HEAD', 'OPTIONS'].includes(method)) {
     return { valid: true };
   }
 
@@ -93,21 +93,21 @@ export function validateCsrfMiddleware(req: NextRequest): {
 
   // Both must be present
   if (!cookieToken) {
-    return { valid: false, error: "Missing CSRF cookie token" };
+    return { valid: false, error: 'Missing CSRF cookie token' };
   }
 
   if (!headerToken) {
-    return { valid: false, error: "Missing CSRF header token" };
+    return { valid: false, error: 'Missing CSRF header token' };
   }
 
   // Tokens must match (Double Submit Cookie pattern)
   if (cookieToken !== headerToken) {
-    return { valid: false, error: "CSRF tokens do not match" };
+    return { valid: false, error: 'CSRF tokens do not match' };
   }
 
   // Validate token signature
   if (!validateCsrfToken(cookieToken)) {
-    return { valid: false, error: "Invalid CSRF token signature" };
+    return { valid: false, error: 'Invalid CSRF token signature' };
   }
 
   return { valid: true };
@@ -138,8 +138,8 @@ export function withCsrfProtection<T extends unknown[]>(
     if (!csrfCheck.valid) {
       return NextResponse.json(
         {
-          error: "CSRF validation failed",
-          message: csrfCheck.error || "Invalid request"
+          error: 'CSRF validation failed',
+          message: csrfCheck.error || 'Invalid request',
         },
         { status: 403 }
       );
@@ -153,7 +153,10 @@ export function withCsrfProtection<T extends unknown[]>(
  * Generate and set CSRF token for client-side forms
  * Call this in your layout or page to provide token to client
  */
-export function ensureCsrfToken(req: NextRequest, response: NextResponse): void {
+export function ensureCsrfToken(
+  req: NextRequest,
+  response: NextResponse
+): void {
   const existingToken = getCsrfTokenFromCookie(req);
 
   if (!existingToken || !validateCsrfToken(existingToken)) {

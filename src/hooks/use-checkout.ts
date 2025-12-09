@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export function useCheckout() {
   const [isLoading, setIsLoading] = useState(false);
@@ -13,10 +13,10 @@ export function useCheckout() {
     setError(null);
 
     try {
-      const response = await fetch("/api/stripe/checkout", {
-        method: "POST",
+      const response = await fetch('/api/stripe/checkout', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ priceId }),
       });
@@ -24,18 +24,18 @@ export function useCheckout() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Failed to create checkout session");
+        throw new Error(data.error || 'Failed to create checkout session');
       }
 
       if (data.url) {
         // Redirect to Stripe checkout
         window.location.href = data.url;
       } else {
-        throw new Error("No checkout URL returned");
+        throw new Error('No checkout URL returned');
       }
     } catch (err: unknown) {
       const errorMessage =
-        err instanceof Error ? err.message : "Something went wrong";
+        err instanceof Error ? err.message : 'Something went wrong';
       setError(errorMessage);
     } finally {
       setIsLoading(false);

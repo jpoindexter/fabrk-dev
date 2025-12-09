@@ -613,7 +613,7 @@ All 20 landing/marketing components have been audited for design system complian
 - `text-xs`, `text-sm`, `text-lg`, `text-2xl`, `text-4xl`
 - ⚠️ **ISSUE (line 43):** Uses `font-mono` directly instead of `mode.font`
   ```tsx
-  className = "border-border bg-background border-t px-6 py-24 font-mono";
+  className = 'border-border bg-background border-t px-6 py-24 font-mono';
   // Should be: cn(mode.font, "border-border bg-background border-t px-6 py-24")
   ```
 
@@ -656,7 +656,7 @@ All 20 landing/marketing components have been audited for design system complian
 - `text-xs`, `text-2xl`
 - ⚠️ **ISSUE (line 24):** Uses `font-mono` directly instead of `mode.font`
   ```tsx
-  className = "border-border bg-background border-t px-6 py-24 font-mono";
+  className = 'border-border bg-background border-t px-6 py-24 font-mono';
   // Should be: cn(mode.font, "border-border bg-background border-t px-6 py-24")
   ```
 
@@ -938,10 +938,10 @@ Currently duplicated in `stats-section.tsx` and `comparison-section.tsx`. Extrac
 
 ```tsx
 // components/ui/animated-counter.tsx
-"use client";
+'use client';
 
-import { useEffect, useRef } from "react";
-import { useInView, useMotionValue, useSpring } from "framer-motion";
+import { useEffect, useRef } from 'react';
+import { useInView, useMotionValue, useSpring } from 'framer-motion';
 
 interface AnimatedCounterProps {
   value: number;
@@ -953,15 +953,18 @@ interface AnimatedCounterProps {
 
 export function AnimatedCounter({
   value,
-  suffix = "",
-  prefix = "",
+  suffix = '',
+  prefix = '',
   decimals = 0,
   duration = 2,
 }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const motionValue = useMotionValue(0);
-  const springValue = useSpring(motionValue, { duration: duration * 1000, bounce: 0 });
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const springValue = useSpring(motionValue, {
+    duration: duration * 1000,
+    bounce: 0,
+  });
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   useEffect(() => {
     if (isInView) {
@@ -970,10 +973,12 @@ export function AnimatedCounter({
   }, [isInView, motionValue, value]);
 
   useEffect(() => {
-    const unsubscribe = springValue.on("change", (latest) => {
+    const unsubscribe = springValue.on('change', (latest) => {
       if (ref.current) {
         const formatted =
-          decimals > 0 ? latest.toFixed(decimals) : Math.floor(latest).toLocaleString();
+          decimals > 0
+            ? latest.toFixed(decimals)
+            : Math.floor(latest).toLocaleString();
         ref.current.textContent = `${prefix}${formatted}${suffix}`;
       }
     });
@@ -1030,9 +1035,9 @@ Add to `/lib/utils.ts`:
 
 ```tsx
 export const scrollbar = {
-  thin: "[&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar-thumb]:bg-border",
+  thin: '[&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar-thumb]:bg-border',
   medium:
-    "[&::-webkit-scrollbar]:h-4 [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar-thumb]:bg-border",
+    '[&::-webkit-scrollbar]:h-4 [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar-thumb]:bg-border',
 } as const;
 ```
 

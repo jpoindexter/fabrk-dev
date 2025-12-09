@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import React, { createContext, useContext, useEffect, useState } from "react";
-import type { ThemeName } from "../themes";
-import { DEFAULT_THEME, THEME_NAMES } from "../themes";
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import type { ThemeName } from '../themes';
+import { DEFAULT_THEME, THEME_NAMES } from '../themes';
 
 // =============================================================================
 // CONTEXT TYPES
 // =============================================================================
 
-export type VisualModeName = "terminal" | "modern" | "minimal" | "linear";
-export type ColorThemeName = "light" | "dark";
+export type VisualModeName = 'terminal' | 'modern' | 'minimal' | 'linear';
+export type ColorThemeName = 'light' | 'dark';
 
 export interface ThemeContextValue {
   theme: ThemeName;
@@ -50,18 +50,20 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 export function ThemeProvider({
   children,
   defaultTheme = DEFAULT_THEME,
-  defaultColorTheme = "light",
-  defaultVisualMode = "modern",
+  defaultColorTheme = 'light',
+  defaultVisualMode = 'modern',
   storageKey,
-  storageKeyPrefix = "design-system",
+  storageKeyPrefix = 'design-system',
   persist = true,
 }: ThemeProviderProps) {
   const colorKey = storageKey || `${storageKeyPrefix}-color-theme`;
   const visualKey = `${storageKeyPrefix}-visual-mode`;
 
   const [theme, setThemeState] = useState<ThemeName>(defaultTheme);
-  const [colorTheme, setColorThemeState] = useState<ColorThemeName>(defaultColorTheme);
-  const [visualMode, setVisualModeState] = useState<VisualModeName>(defaultVisualMode);
+  const [colorTheme, setColorThemeState] =
+    useState<ColorThemeName>(defaultColorTheme);
+  const [visualMode, setVisualModeState] =
+    useState<VisualModeName>(defaultVisualMode);
   const [mounted, setMounted] = useState(false);
 
   // Load from localStorage on mount
@@ -73,12 +75,15 @@ export function ThemeProvider({
     }
 
     const storedColor = localStorage.getItem(colorKey);
-    if (storedColor && ["light", "dark"].includes(storedColor)) {
+    if (storedColor && ['light', 'dark'].includes(storedColor)) {
       setColorThemeState(storedColor as ColorThemeName);
     }
 
     const storedVisual = localStorage.getItem(visualKey);
-    if (storedVisual && ["terminal", "modern", "minimal", "linear"].includes(storedVisual)) {
+    if (
+      storedVisual &&
+      ['terminal', 'modern', 'minimal', 'linear'].includes(storedVisual)
+    ) {
       setVisualModeState(storedVisual as VisualModeName);
     }
 
@@ -94,8 +99,8 @@ export function ThemeProvider({
       localStorage.setItem(visualKey, visualMode);
     }
 
-    document.documentElement.setAttribute("data-theme", colorTheme);
-    document.documentElement.setAttribute("data-visual-mode", visualMode);
+    document.documentElement.setAttribute('data-theme', colorTheme);
+    document.documentElement.setAttribute('data-visual-mode', visualMode);
   }, [colorTheme, visualMode, colorKey, visualKey, mounted, persist]);
 
   const setTheme = (newTheme: ThemeName) => {
@@ -105,13 +110,13 @@ export function ThemeProvider({
   };
 
   const setColorTheme = (newTheme: ColorThemeName) => {
-    if (["light", "dark"].includes(newTheme)) {
+    if (['light', 'dark'].includes(newTheme)) {
       setColorThemeState(newTheme);
     }
   };
 
   const setVisualMode = (newMode: VisualModeName) => {
-    if (["terminal", "modern", "minimal", "linear"].includes(newMode)) {
+    if (['terminal', 'modern', 'minimal', 'linear'].includes(newMode)) {
       setVisualModeState(newMode);
     }
   };
@@ -139,7 +144,7 @@ export function ThemeProvider({
 export function useThemeContext(): ThemeContextValue {
   const context = useContext(ThemeContext);
   if (!context) {
-    throw new Error("useThemeContext must be used within a ThemeProvider");
+    throw new Error('useThemeContext must be used within a ThemeProvider');
   }
   return context;
 }
@@ -158,9 +163,9 @@ export function useOptionalThemeContext(): ThemeContextValue | null {
  */
 export function ThemeScript({
   storageKey,
-  storageKeyPrefix = "design-system",
-  defaultColorTheme = "light",
-  defaultVisualMode = "terminal",
+  storageKeyPrefix = 'design-system',
+  defaultColorTheme = 'light',
+  defaultVisualMode = 'terminal',
 }: ThemeScriptProps) {
   const colorKey = storageKey || `${storageKeyPrefix}-color-theme`;
   const visualKey = `${storageKeyPrefix}-visual-mode`;
@@ -180,7 +185,12 @@ export function ThemeScript({
     })();
   `;
 
-  return <script dangerouslySetInnerHTML={{ __html: script }} suppressHydrationWarning />;
+  return (
+    <script
+      dangerouslySetInnerHTML={{ __html: script }}
+      suppressHydrationWarning
+    />
+  );
 }
 
 export default ThemeProvider;

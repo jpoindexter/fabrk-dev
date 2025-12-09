@@ -3,16 +3,16 @@
  * Used by: /docs/getting-started/*, /docs/introduction/*
  */
 
-import { LucideIcon } from "lucide-react";
-import { DocsHeader } from "../blocks/docs-header";
-import { DocsSection } from "../blocks/docs-section";
-import { DocsCard } from "../blocks/docs-card";
-import { DocsStepList } from "../blocks/docs-step-list";
-import { DocsFeatureList } from "../blocks/docs-feature-list";
-import { DocsCallout } from "../blocks/docs-callout";
-import { DocsNavFooter } from "../blocks/docs-nav-footer";
-import { docsTypography } from "../typography";
-import { docsSpacing } from "../spacing";
+import { LucideIcon } from 'lucide-react';
+import { DocsHeader } from '../blocks/docs-header';
+import { DocsSection } from '../blocks/docs-section';
+import { DocsCard } from '../blocks/docs-card';
+import { DocsStepList } from '../blocks/docs-step-list';
+import { DocsFeatureList } from '../blocks/docs-feature-list';
+import { DocsCallout } from '../blocks/docs-callout';
+import { DocsNavFooter } from '../blocks/docs-nav-footer';
+import { docsTypography } from '../typography';
+import { docsSpacing } from '../spacing';
 
 interface Feature {
   icon: LucideIcon;
@@ -80,7 +80,7 @@ interface GettingStartedTemplateProps {
 
 export function GettingStartedTemplate({
   code,
-  category = "Getting Started",
+  category = 'Getting Started',
   title,
   description,
   introduction,
@@ -141,7 +141,7 @@ export function GettingStartedTemplate({
             <ul className="space-y-4">
               {requirements.map((req, index) => (
                 <li key={index} className="flex items-start gap-4">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center border border-border bg-muted font-mono text-xs">
+                  <span className="border-border bg-muted flex h-6 w-6 shrink-0 items-center justify-center border font-mono text-xs">
                     {index + 1}
                   </span>
                   <div>
@@ -151,7 +151,7 @@ export function GettingStartedTemplate({
                           href={req.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="font-mono text-sm text-primary hover:underline"
+                          className="text-primary font-mono text-sm hover:underline"
                         >
                           {req.name}
                         </a>
@@ -159,11 +159,15 @@ export function GettingStartedTemplate({
                         <span className="font-mono text-sm">{req.name}</span>
                       )}
                       {req.version && (
-                        <code className={docsTypography.code}>{req.version}</code>
+                        <code className={docsTypography.code}>
+                          {req.version}
+                        </code>
                       )}
                     </div>
                     {req.description && (
-                      <p className={`mt-1 ${docsTypography.caption}`}>{req.description}</p>
+                      <p className={`mt-1 ${docsTypography.caption}`}>
+                        {req.description}
+                      </p>
                     )}
                   </div>
                 </li>
@@ -188,17 +192,24 @@ export function GettingStartedTemplate({
               <a
                 key={index}
                 href={link.href}
-                className="group block border border-border p-4 hover:border-primary transition-colors"
+                className="group border-border hover:border-primary block border p-4 transition-colors"
               >
                 <div className="flex items-center gap-4">
                   {link.icon && (
-                    <link.icon className="h-5 w-5 text-muted-foreground group-hover:text-primary" aria-hidden="true" />
+                    <link.icon
+                      className="text-muted-foreground group-hover:text-primary h-5 w-5"
+                      aria-hidden="true"
+                    />
                   )}
-                  <h3 className={`uppercase ${docsTypography.h4} group-hover:text-primary`}>
+                  <h3
+                    className={`uppercase ${docsTypography.h4} group-hover:text-primary`}
+                  >
                     {link.title}
                   </h3>
                 </div>
-                <p className={`mt-2 ${docsTypography.caption}`}>{link.description}</p>
+                <p className={`mt-2 ${docsTypography.caption}`}>
+                  {link.description}
+                </p>
               </a>
             ))}
           </div>

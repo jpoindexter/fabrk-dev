@@ -15,8 +15,8 @@
 ### Import
 
 ```tsx
-import { Label } from "@/components/ui/label";
-import { formatLabel } from "@/design-system";
+import { Label } from '@/components/ui/label';
+import { formatLabel } from '@/design-system';
 ```
 
 ### Basic Usage
@@ -69,8 +69,8 @@ import { formatLabel } from "@/design-system";
 **Helper function:**
 
 ```tsx
-import { formatLabel } from "@/design-system";
-formatLabel("Email Address"); // Returns "[EMAIL_ADDRESS]:"
+import { formatLabel } from '@/design-system';
+formatLabel('Email Address'); // Returns "[EMAIL_ADDRESS]:"
 ```
 
 ---
@@ -91,9 +91,9 @@ The Label component automatically applies:
 
 ```tsx
 cn(
-  "text-xs font-semibold",
+  'text-xs font-semibold',
   mode.font, // font-mono
-  error && "text-destructive",
+  error && 'text-destructive',
   className
 );
 ```
@@ -107,21 +107,21 @@ cn(
 ### Default State
 
 ```tsx
-<Label>{formatLabel("Username")}</Label>
+<Label>{formatLabel('Username')}</Label>
 // [USERNAME]:
 ```
 
 ### Required State
 
 ```tsx
-<Label required>{formatLabel("Password")}</Label>
+<Label required>{formatLabel('Password')}</Label>
 // [PASSWORD]: *
 ```
 
 ### Error State
 
 ```tsx
-<Label error>{formatLabel("Email")}</Label>
+<Label error>{formatLabel('Email')}</Label>
 // [EMAIL]: (in red)
 ```
 
@@ -179,7 +179,7 @@ cn(
 ```tsx
 <div className="space-y-2">
   <Label htmlFor="email" required>
-    {formatLabel("Email")}
+    {formatLabel('Email')}
   </Label>
   <Input id="email" type="email" placeholder="you@example.com" />
 </div>
@@ -192,10 +192,12 @@ cn(
 ```tsx
 <div className="space-y-2">
   <Label htmlFor="email" error>
-    {formatLabel("Email")}
+    {formatLabel('Email')}
   </Label>
   <Input id="email" error />
-  <p className="text-destructive font-mono text-xs">[ERROR]: Invalid email format</p>
+  <p className="text-destructive font-mono text-xs">
+    [ERROR]: Invalid email format
+  </p>
 </div>
 ```
 

@@ -14,13 +14,13 @@
  * ```
  */
 
-import { Slot } from "@radix-ui/react-slot";
-import { cva, type VariantProps } from "class-variance-authority";
-import { Loader2 } from "lucide-react";
-import * as React from "react";
+import { Slot } from '@radix-ui/react-slot';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { Loader2 } from 'lucide-react';
+import * as React from 'react';
 
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 /**
  * Button Variants using Design System Tokens
@@ -39,49 +39,53 @@ import { mode } from "@/design-system";
  */
 const buttonVariants = cva(
   // Base styles - focus ring from design tokens
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
   {
     variants: {
       variant: {
         // Primary - solid background
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default: 'bg-primary text-primary-foreground hover:bg-primary/90',
         // Destructive - danger/delete actions
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        destructive:
+          'bg-destructive text-destructive-foreground hover:bg-destructive/90',
         // Outline - bordered, transparent background
         outline:
-          "border border-foreground/20 bg-background hover:bg-foreground/10 hover:border-foreground/40",
+          'border border-foreground/20 bg-background hover:bg-foreground/10 hover:border-foreground/40',
         // Secondary - muted background
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        secondary:
+          'bg-secondary text-secondary-foreground hover:bg-secondary/80',
         // Ghost - no background, subtle hover
-        ghost: "text-foreground hover:bg-foreground/10 hover:text-foreground",
+        ghost: 'text-foreground hover:bg-foreground/10 hover:text-foreground',
         // Link - text only with underline
-        link: "text-primary underline-offset-4 hover:underline",
+        link: 'text-primary underline-offset-4 hover:underline',
         // CTA variants - larger padding for marketing sections
-        primaryCta: "bg-primary text-primary-foreground hover:bg-primary/90 text-base px-6 py-4",
+        primaryCta:
+          'bg-primary text-primary-foreground hover:bg-primary/90 text-base px-6 py-4',
         secondaryCta:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80 text-base px-6 py-4",
+          'bg-secondary text-secondary-foreground hover:bg-secondary/80 text-base px-6 py-4',
         ghostOnDark:
-          "border border-foreground/30 bg-transparent text-foreground hover:bg-foreground/10 text-base px-6 py-4",
+          'border border-foreground/30 bg-transparent text-foreground hover:bg-foreground/10 text-base px-6 py-4',
       },
       size: {
         // WCAG 2.1 AA: min-h-[44px] ensures adequate touch target on mobile
         // Heights follow 8-point grid: h-8 (32px), h-9 (36px), h-10 (40px), h-12 (48px)
-        default: "min-h-[44px] px-4 py-2 sm:min-h-0 sm:h-8",
-        sm: "min-h-[44px] min-w-[44px] px-2 text-xs sm:min-h-0 sm:min-w-0 sm:h-8",
-        lg: "min-h-[44px] px-6 sm:min-h-0 sm:h-10",
-        xl: "min-h-[44px] px-8 text-lg sm:min-h-0 sm:h-12",
-        icon: "min-h-[44px] min-w-[44px] sm:min-h-0 sm:min-w-0 sm:h-10 sm:w-10",
+        default: 'min-h-[44px] px-4 py-2 sm:min-h-0 sm:h-8',
+        sm: 'min-h-[44px] min-w-[44px] px-2 text-xs sm:min-h-0 sm:min-w-0 sm:h-8',
+        lg: 'min-h-[44px] px-6 sm:min-h-0 sm:h-10',
+        xl: 'min-h-[44px] px-8 text-lg sm:min-h-0 sm:h-12',
+        icon: 'min-h-[44px] min-w-[44px] sm:min-h-0 sm:min-w-0 sm:h-10 sm:w-10',
       },
     },
     defaultVariants: {
-      variant: "default",
-      size: "default",
+      variant: 'default',
+      size: 'default',
     },
   }
 );
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
   loading?: boolean;
@@ -96,14 +100,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       size,
       asChild = false,
       loading = false,
-      loadingText = "> LOADING...",
+      loadingText = '> LOADING...',
       children,
       disabled,
       ...props
     },
     ref
   ) => {
-    const Comp = asChild ? Slot : "button";
+    const Comp = asChild ? Slot : 'button';
 
     // UX Heuristic #1: Visibility of System Status
     // Visual Mode System: Apply radius, font, and text transform from mode config
@@ -114,12 +118,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           buttonVariants({ variant, size }),
           mode.radius,
           mode.font,
-          mode.textTransform === "uppercase" && "uppercase",
+          mode.textTransform === 'uppercase' && 'uppercase',
           className
         )}
         ref={ref}
         disabled={disabled || loading}
-        aria-busy={loading ? "true" : undefined}
+        aria-busy={loading ? 'true' : undefined}
         aria-label={loading ? loadingText : undefined}
         {...props}
       >
@@ -135,6 +139,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     );
   }
 );
-Button.displayName = "Button";
+Button.displayName = 'Button';
 
 export { Button, buttonVariants };

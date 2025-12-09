@@ -11,10 +11,10 @@
  * ```
  */
 
-import { toast as sonnerToast } from "sonner";
+import { toast as sonnerToast } from 'sonner';
 
 // Re-export toast for direct usage
-export { toast } from "sonner";
+export { toast } from 'sonner';
 
 /**
  * Show success toast notification

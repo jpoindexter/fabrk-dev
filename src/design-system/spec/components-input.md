@@ -15,7 +15,7 @@
 ### Import
 
 ```tsx
-import { Input } from "@/components/ui/input";
+import { Input } from '@/components/ui/input';
 ```
 
 ### Basic Usage
@@ -100,10 +100,10 @@ The Input component automatically applies:
 
 ```tsx
 cn(
-  "bg-background flex h-8 w-full border px-4 py-2 text-xs font-normal",
+  'bg-background flex h-8 w-full border px-4 py-2 text-xs font-normal',
   mode.radius, // rounded-none
   mode.font, // font-mono
-  "focus-visible:ring-primary focus-visible:ring-2",
+  'focus-visible:ring-primary focus-visible:ring-2',
   className
 );
 ```
@@ -151,8 +151,8 @@ cn(
 Always pair Input with Label component:
 
 ```tsx
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
 
 <div className="space-y-2">
   <Label htmlFor="email">[EMAIL]:</Label>

@@ -11,9 +11,9 @@
  * ```
  */
 
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import * as React from "react";
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import * as React from 'react';
 
 export interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   required?: boolean;
@@ -28,11 +28,11 @@ const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
         ref={ref}
         className={cn(
           // Sharp mode typography
-          "text-xs font-semibold",
+          'text-xs font-semibold',
           mode.font,
-          "peer-disabled:cursor-not-allowed peer-disabled:opacity-50",
-          "transition-colors duration-200",
-          error && "text-destructive",
+          'peer-disabled:cursor-not-allowed peer-disabled:opacity-50',
+          'transition-colors duration-200',
+          error && 'text-destructive',
           className
         )}
         {...props}
@@ -48,6 +48,6 @@ const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
     );
   }
 );
-Label.displayName = "Label";
+Label.displayName = 'Label';
 
 export { Label };

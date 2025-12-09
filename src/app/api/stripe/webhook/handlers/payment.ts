@@ -4,9 +4,9 @@
  * Under 150 lines ✓
  */
 
-import Stripe from "stripe";
-import { prisma } from "@/lib/prisma";
-import { logger } from "@/lib/logger";
+import Stripe from 'stripe';
+import { prisma } from '@/lib/prisma';
+import { logger } from '@/lib/logger';
 
 /**
  * Handle successful payment intent
@@ -16,13 +16,16 @@ export async function handlePaymentSucceeded(event: Stripe.Event) {
   const paymentIntent = event.data.object as Stripe.PaymentIntent;
 
   try {
-    logger.info("Processing payment_intent.succeeded", {
+    logger.info('Processing payment_intent.succeeded', {
       paymentIntentId: paymentIntent.id,
       customerId: paymentIntent.customer,
       amount: paymentIntent.amount,
     });
 
-    const customerId = typeof paymentIntent.customer === "string" ? paymentIntent.customer : null;
+    const customerId =
+      typeof paymentIntent.customer === 'string'
+        ? paymentIntent.customer
+        : null;
 
     // Find user by customer ID
     const user = customerId
@@ -38,11 +41,11 @@ export async function handlePaymentSucceeded(event: Stripe.Event) {
       await prisma.payment.update({
         where: { id: existingPayment.id },
         data: {
-          status: "succeeded",
+          status: 'succeeded',
           amount: paymentIntent.amount,
         },
       });
-      logger.info("Updated existing payment record", {
+      logger.info('Updated existing payment record', {
         paymentId: existingPayment.id,
       });
     } else if (user) {
@@ -53,26 +56,26 @@ export async function handlePaymentSucceeded(event: Stripe.Event) {
           stripeId: paymentIntent.id,
           stripePaymentId: paymentIntent.id,
           amount: paymentIntent.amount,
-          status: "succeeded",
-          productId: paymentIntent.metadata?.productId || "unknown",
+          status: 'succeeded',
+          productId: paymentIntent.metadata?.productId || 'unknown',
         },
       });
-      logger.info("Created new payment record", {
+      logger.info('Created new payment record', {
         userId: user.id,
         amount: paymentIntent.amount,
       });
     } else {
-      logger.warn("Payment succeeded but no user found", {
+      logger.warn('Payment succeeded but no user found', {
         paymentIntentId: paymentIntent.id,
         customerId,
       });
     }
 
-    logger.info("Payment succeeded processed successfully", {
+    logger.info('Payment succeeded processed successfully', {
       paymentIntentId: paymentIntent.id,
     });
   } catch (error: unknown) {
-    logger.error("Error processing payment_intent.succeeded", error);
+    logger.error('Error processing payment_intent.succeeded', error);
     throw error;
   }
 }
@@ -85,7 +88,7 @@ export async function handlePaymentFailed(event: Stripe.Event) {
   const paymentIntent = event.data.object as Stripe.PaymentIntent;
 
   try {
-    logger.error("Processing payment_intent.payment_failed", {
+    logger.error('Processing payment_intent.payment_failed', {
       paymentIntentId: paymentIntent.id,
       customerId: paymentIntent.customer,
       amount: paymentIntent.amount,
@@ -93,7 +96,10 @@ export async function handlePaymentFailed(event: Stripe.Event) {
       failureMessage: paymentIntent.last_payment_error?.message,
     });
 
-    const customerId = typeof paymentIntent.customer === "string" ? paymentIntent.customer : null;
+    const customerId =
+      typeof paymentIntent.customer === 'string'
+        ? paymentIntent.customer
+        : null;
 
     // Find user by customer ID
     const user = customerId
@@ -109,10 +115,10 @@ export async function handlePaymentFailed(event: Stripe.Event) {
       await prisma.payment.update({
         where: { id: existingPayment.id },
         data: {
-          status: "failed",
+          status: 'failed',
         },
       });
-      logger.info("Updated payment record to failed status", {
+      logger.info('Updated payment record to failed status', {
         paymentId: existingPayment.id,
       });
     } else if (user) {
@@ -123,21 +129,21 @@ export async function handlePaymentFailed(event: Stripe.Event) {
           stripeId: paymentIntent.id,
           stripePaymentId: paymentIntent.id,
           amount: paymentIntent.amount,
-          status: "failed",
-          productId: paymentIntent.metadata?.productId || "unknown",
+          status: 'failed',
+          productId: paymentIntent.metadata?.productId || 'unknown',
         },
       });
-      logger.info("Created failed payment record", {
+      logger.info('Created failed payment record', {
         userId: user.id,
       });
     }
 
-    logger.warn("Payment failed processed", {
+    logger.warn('Payment failed processed', {
       paymentIntentId: paymentIntent.id,
       failureCode: paymentIntent.last_payment_error?.code,
     });
   } catch (error: unknown) {
-    logger.error("Error processing payment_intent.payment_failed", error);
+    logger.error('Error processing payment_intent.payment_failed', error);
     throw error;
   }
 }

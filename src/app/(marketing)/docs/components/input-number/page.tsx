@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { InputNumber } from "@/components/ui/input-number";
-import { useState } from "react";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { InputNumber } from '@/components/ui/input-number';
+import { useState } from 'react';
 
 export default function InputNumberPage() {
   const [value, setValue] = useState<number | undefined>(0);
@@ -30,8 +30,8 @@ export default function InputNumberPage() {
       }}
       variants={[
         {
-          title: "With Min/Max Range",
-          description: "Constrain values between 0 and 100",
+          title: 'With Min/Max Range',
+          description: 'Constrain values between 0 and 100',
           code: `<InputNumber
   value={rangeValue}
   onValueChange={setRangeValue}
@@ -50,8 +50,8 @@ export default function InputNumberPage() {
           ),
         },
         {
-          title: "Custom Step",
-          description: "Increment/decrement by 5",
+          title: 'Custom Step',
+          description: 'Increment/decrement by 5',
           code: `<InputNumber
   value={value}
   onValueChange={setValue}
@@ -68,8 +68,8 @@ export default function InputNumberPage() {
           ),
         },
         {
-          title: "Decimal Precision",
-          description: "Support decimal values with 2 decimal places",
+          title: 'Decimal Precision',
+          description: 'Support decimal values with 2 decimal places',
           code: `<InputNumber
   value={decimalValue}
   onValueChange={setDecimalValue}
@@ -88,8 +88,8 @@ export default function InputNumberPage() {
           ),
         },
         {
-          title: "Without Controls",
-          description: "Hide the stepper buttons",
+          title: 'Without Controls',
+          description: 'Hide the stepper buttons',
           code: `<InputNumber
   value={value}
   onValueChange={setValue}
@@ -106,8 +106,8 @@ export default function InputNumberPage() {
           ),
         },
         {
-          title: "Disabled",
-          description: "Disabled state",
+          title: 'Disabled',
+          description: 'Disabled state',
           code: `<InputNumber
   value={42}
   disabled
@@ -118,69 +118,69 @@ export default function InputNumberPage() {
       ]}
       props={[
         {
-          name: "value",
-          type: "number | undefined",
-          description: "The controlled value of the input",
+          name: 'value',
+          type: 'number | undefined',
+          description: 'The controlled value of the input',
         },
         {
-          name: "defaultValue",
-          type: "number",
-          default: "0",
-          description: "The default value (uncontrolled mode)",
+          name: 'defaultValue',
+          type: 'number',
+          default: '0',
+          description: 'The default value (uncontrolled mode)',
         },
         {
-          name: "onValueChange",
-          type: "(value: number | undefined) => void",
-          description: "Callback when the value changes",
+          name: 'onValueChange',
+          type: '(value: number | undefined) => void',
+          description: 'Callback when the value changes',
         },
         {
-          name: "min",
-          type: "number",
-          description: "Minimum allowed value",
+          name: 'min',
+          type: 'number',
+          description: 'Minimum allowed value',
         },
         {
-          name: "max",
-          type: "number",
-          description: "Maximum allowed value",
+          name: 'max',
+          type: 'number',
+          description: 'Maximum allowed value',
         },
         {
-          name: "step",
-          type: "number",
-          default: "1",
-          description: "Increment/decrement step size",
+          name: 'step',
+          type: 'number',
+          default: '1',
+          description: 'Increment/decrement step size',
         },
         {
-          name: "precision",
-          type: "number",
-          description: "Number of decimal places to round to",
+          name: 'precision',
+          type: 'number',
+          description: 'Number of decimal places to round to',
         },
         {
-          name: "showControls",
-          type: "boolean",
-          default: "true",
-          description: "Whether to show increment/decrement buttons",
+          name: 'showControls',
+          type: 'boolean',
+          default: 'true',
+          description: 'Whether to show increment/decrement buttons',
         },
         {
-          name: "disabled",
-          type: "boolean",
-          description: "Disable the input",
+          name: 'disabled',
+          type: 'boolean',
+          description: 'Disable the input',
         },
       ]}
       accessibility={[
         "Uses role='spinbutton' for proper screen reader identification",
-        "aria-valuemin, aria-valuemax, and aria-valuenow attributes set appropriately",
+        'aria-valuemin, aria-valuemax, and aria-valuenow attributes set appropriately',
         "Increment button has aria-label='Increment value'",
         "Decrement button has aria-label='Decrement value'",
-        "Arrow Up/Down keys increment/decrement the value",
-        "Stepper buttons are disabled when min/max limits are reached",
+        'Arrow Up/Down keys increment/decrement the value',
+        'Stepper buttons are disabled when min/max limits are reached',
       ]}
       previous={{
-        title: "Input Search",
-        href: "/docs/components/input-search",
+        title: 'Input Search',
+        href: '/docs/components/input-search',
       }}
       next={{
-        title: "Input OTP",
-        href: "/docs/components/input-otp",
+        title: 'Input OTP',
+        href: '/docs/components/input-otp',
       }}
     />
   );

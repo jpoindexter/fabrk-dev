@@ -69,24 +69,31 @@ export function randomItems<T>(arr: T[], count: number): T[] {
  * // { a: [{type: "a"}, {type: "a"}], b: [{type: "b"}] }
  */
 export function groupBy<T>(arr: T[], key: keyof T): Record<string, T[]> {
-  return arr.reduce((groups, item) => {
-    const value = String(item[key]);
-    if (!groups[value]) groups[value] = [];
-    groups[value].push(item);
-    return groups;
-  }, {} as Record<string, T[]>);
+  return arr.reduce(
+    (groups, item) => {
+      const value = String(item[key]);
+      if (!groups[value]) groups[value] = [];
+      groups[value].push(item);
+      return groups;
+    },
+    {} as Record<string, T[]>
+  );
 }
 
 /**
  * Sort array of objects by key
  * @example sortBy([{age: 30}, {age: 20}], "age") // [{age: 20}, {age: 30}]
  */
-export function sortBy<T>(arr: T[], key: keyof T, order: "asc" | "desc" = "asc"): T[] {
+export function sortBy<T>(
+  arr: T[],
+  key: keyof T,
+  order: 'asc' | 'desc' = 'asc'
+): T[] {
   return [...arr].sort((a, b) => {
     const valueA = a[key];
     const valueB = b[key];
     const comparison = valueA > valueB ? 1 : valueA < valueB ? -1 : 0;
-    return order === "asc" ? comparison : -comparison;
+    return order === 'asc' ? comparison : -comparison;
   });
 }
 
@@ -96,7 +103,7 @@ export function sortBy<T>(arr: T[], key: keyof T, order: "asc" | "desc" = "asc")
 export function sum(arr: number[]): number;
 export function sum<T>(arr: T[], key: keyof T): number;
 export function sum<T>(arr: number[] | T[], key?: keyof T): number {
-  if (typeof arr[0] === "number") {
+  if (typeof arr[0] === 'number') {
     return (arr as number[]).reduce((sum, num) => sum + num, 0);
   }
   return (arr as T[]).reduce((sum, item) => sum + Number(item[key!]), 0);
@@ -135,7 +142,8 @@ export function flatten<T>(arr: (T | T[])[]): T[] {
  */
 export function flattenDeep<T = unknown>(arr: unknown[]): T[] {
   return arr.reduce<T[]>(
-    (flat, item) => flat.concat(Array.isArray(item) ? flattenDeep<T>(item) : (item as T)),
+    (flat, item) =>
+      flat.concat(Array.isArray(item) ? flattenDeep<T>(item) : (item as T)),
     []
   );
 }

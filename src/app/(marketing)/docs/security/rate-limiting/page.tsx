@@ -1,10 +1,11 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsLinkCard } from "@/components/docs";
-import { Gauge, User, Server, Zap } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsLinkCard } from '@/components/docs';
+import { Gauge, User, Server, Zap } from 'lucide-react';
 
 export const metadata = {
-  title: "Rate Limiting - Fabrk Docs",
-  description: "Protect your API from abuse with rate limiting. Redis-backed limits per user, IP, or endpoint.",
+  title: 'Rate Limiting - Fabrk Docs',
+  description:
+    'Protect your API from abuse with rate limiting. Redis-backed limits per user, IP, or endpoint.',
 };
 
 export default function RateLimitingPage() {
@@ -16,27 +17,44 @@ export default function RateLimitingPage() {
       description="Protect your API endpoints from abuse with configurable rate limiting middleware."
       overview="Rate limiting prevents abuse by limiting how many requests a user or IP can make in a given time period. This protects against DDoS attacks, brute force attempts, and API abuse."
       features={[
-        { icon: Gauge, title: "Token Bucket", description: "Smooth rate limiting with token bucket algorithm." },
-        { icon: Server, title: "Per Endpoint", description: "Configure different limits for different endpoints." },
-        { icon: User, title: "User-Based", description: "Rate limit by user ID for authenticated endpoints." },
-        { icon: Zap, title: "Redis Support", description: "Redis support for distributed systems." },
+        {
+          icon: Gauge,
+          title: 'Token Bucket',
+          description: 'Smooth rate limiting with token bucket algorithm.',
+        },
+        {
+          icon: Server,
+          title: 'Per Endpoint',
+          description: 'Configure different limits for different endpoints.',
+        },
+        {
+          icon: User,
+          title: 'User-Based',
+          description: 'Rate limit by user ID for authenticated endpoints.',
+        },
+        {
+          icon: Zap,
+          title: 'Redis Support',
+          description: 'Redis support for distributed systems.',
+        },
       ]}
       setup={[
         {
-          title: "Environment Variables",
-          description: "Configure Upstash Redis for production rate limiting",
+          title: 'Environment Variables',
+          description: 'Configure Upstash Redis for production rate limiting',
           code: `# .env.local
 
 # Upstash Redis (get from https://upstash.com)
 UPSTASH_REDIS_REST_URL="https://your-redis.upstash.io"
 UPSTASH_REDIS_REST_TOKEN="your-redis-token"`,
-          language: "bash",
+          language: 'bash',
         },
       ]}
       usage={[
         {
-          title: "Basic Setup",
-          description: "Add rate limiting to any API route using the rate limiter middleware",
+          title: 'Basic Setup',
+          description:
+            'Add rate limiting to any API route using the rate limiter middleware',
           code: `// src/lib/rate-limit.ts
 
 import { Ratelimit } from "@upstash/ratelimit";
@@ -68,11 +86,11 @@ export function rateLimit(ip: string, limit: number = 10) {
   tokenCache.set(ip, tokenCount + 1);
   return { success: true, remaining: limit - tokenCount - 1 };
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "API Route Integration",
-          description: "Apply rate limiting to your API routes",
+          title: 'API Route Integration',
+          description: 'Apply rate limiting to your API routes',
           code: `// src/app/api/your-route/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -105,11 +123,12 @@ export async function POST(request: NextRequest) {
   // Process request normally
   return NextResponse.json({ success: true });
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Custom Limits per Endpoint",
-          description: "Configure different rate limits for different endpoints",
+          title: 'Custom Limits per Endpoint',
+          description:
+            'Configure different rate limits for different endpoints',
           code: `// src/lib/rate-limit.ts
 
 import { Ratelimit } from "@upstash/ratelimit";
@@ -144,11 +163,12 @@ export const writeLimiter = new Ratelimit({
   limiter: Ratelimit.slidingWindow(20, "60 s"), // 20 per minute
   prefix: "ratelimit:write",
 });`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "User-Based Rate Limiting",
-          description: "Rate limit by user ID instead of IP for authenticated endpoints",
+          title: 'User-Based Rate Limiting',
+          description:
+            'Rate limit by user ID instead of IP for authenticated endpoints',
           code: `// src/app/api/protected-route/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -183,11 +203,14 @@ export async function POST(request: NextRequest) {
     remaining
   });
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
       ]}
-      previous={{ title: "Bot Protection", href: "/docs/security/bot-protection" }}
-      next={{ title: "Audit Logging", href: "/docs/security/audit-logging" }}
+      previous={{
+        title: 'Bot Protection',
+        href: '/docs/security/bot-protection',
+      }}
+      next={{ title: 'Audit Logging', href: '/docs/security/audit-logging' }}
     >
       {/* Next Steps Section */}
       <DocsSection title="Next Steps">

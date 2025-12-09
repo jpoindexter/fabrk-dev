@@ -12,16 +12,16 @@
  */
 
 export type NotificationType =
-  | "info"
-  | "success"
-  | "warning"
-  | "error"
-  | "feature"
-  | "payment"
-  | "security"
-  | "system";
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'feature'
+  | 'payment'
+  | 'security'
+  | 'system';
 
-export type NotificationPriority = "low" | "medium" | "high" | "urgent";
+export type NotificationPriority = 'low' | 'medium' | 'high' | 'urgent';
 
 export interface Notification {
   id: string;
@@ -60,7 +60,7 @@ let toastListeners: ToastListener[] = [];
  * Create notification
  */
 export function createNotification(
-  notification: Omit<Notification, "id" | "read" | "createdAt">
+  notification: Omit<Notification, 'id' | 'read' | 'createdAt'>
 ): Notification {
   const newNotification: Notification = {
     id: crypto.randomUUID(),
@@ -88,7 +88,7 @@ export function createNotification(
  * Show toast notification
  */
 export function showToast(
-  toast: Omit<ToastNotification, "id">
+  toast: Omit<ToastNotification, 'id'>
 ): ToastNotification {
   const newToast: ToastNotification = {
     id: crypto.randomUUID(),
@@ -105,12 +105,16 @@ export function showToast(
  * Quick notification helpers
  */
 export const notify = {
-  success: (title: string, message: string, options?: Partial<Notification>) => {
+  success: (
+    title: string,
+    message: string,
+    options?: Partial<Notification>
+  ) => {
     return createNotification({
-      type: "success",
+      type: 'success',
       title,
       message,
-      priority: "low",
+      priority: 'low',
       persistent: false,
       ...options,
     });
@@ -118,21 +122,25 @@ export const notify = {
 
   error: (title: string, message: string, options?: Partial<Notification>) => {
     return createNotification({
-      type: "error",
+      type: 'error',
       title,
       message,
-      priority: "high",
+      priority: 'high',
       persistent: true,
       ...options,
     });
   },
 
-  warning: (title: string, message: string, options?: Partial<Notification>) => {
+  warning: (
+    title: string,
+    message: string,
+    options?: Partial<Notification>
+  ) => {
     return createNotification({
-      type: "warning",
+      type: 'warning',
       title,
       message,
-      priority: "medium",
+      priority: 'medium',
       persistent: false,
       ...options,
     });
@@ -140,10 +148,10 @@ export const notify = {
 
   info: (title: string, message: string, options?: Partial<Notification>) => {
     return createNotification({
-      type: "info",
+      type: 'info',
       title,
       message,
-      priority: "low",
+      priority: 'low',
       persistent: false,
       ...options,
     });
@@ -151,25 +159,25 @@ export const notify = {
 
   feature: (title: string, message: string, actionUrl?: string) => {
     return createNotification({
-      type: "feature",
+      type: 'feature',
       title,
       message,
-      priority: "medium",
+      priority: 'medium',
       persistent: true,
       actionUrl,
-      actionLabel: "Learn More",
+      actionLabel: 'Learn More',
     });
   },
 
   payment: (title: string, message: string, actionUrl?: string) => {
     return createNotification({
-      type: "payment",
+      type: 'payment',
       title,
       message,
-      priority: "high",
+      priority: 'high',
       persistent: true,
       actionUrl,
-      actionLabel: "View Details",
+      actionLabel: 'View Details',
     });
   },
 };
@@ -179,19 +187,19 @@ export const notify = {
  */
 export const toast = {
   success: (title: string, message: string) => {
-    return showToast({ type: "success", title, message });
+    return showToast({ type: 'success', title, message });
   },
 
   error: (title: string, message: string, duration = 7000) => {
-    return showToast({ type: "error", title, message, duration });
+    return showToast({ type: 'error', title, message, duration });
   },
 
   warning: (title: string, message: string) => {
-    return showToast({ type: "warning", title, message });
+    return showToast({ type: 'warning', title, message });
   },
 
   info: (title: string, message: string) => {
-    return showToast({ type: "info", title, message });
+    return showToast({ type: 'info', title, message });
   },
 };
 
@@ -255,9 +263,7 @@ export function getUnreadCount(): number {
 /**
  * Get notifications by type
  */
-export function getNotificationsByType(
-  type: NotificationType
-): Notification[] {
+export function getNotificationsByType(type: NotificationType): Notification[] {
   return notifications.filter((n) => n.type === type);
 }
 

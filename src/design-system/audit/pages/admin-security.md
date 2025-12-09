@@ -85,7 +85,8 @@ getResultIcon(result: string): React.JSX.Element
 ```typescript
 const [logs, setLogs] = useState<AuditLogEntry[]>([]);
 const [severityFilter, setSeverityFilter] = useState<string | undefined>();
-const [summary, setSummary] = useState<Awaited<ReturnType<typeof getSecuritySummary>>>();
+const [summary, setSummary] =
+  useState<Awaited<ReturnType<typeof getSecuritySummary>>>();
 ```
 
 ## Data Loading

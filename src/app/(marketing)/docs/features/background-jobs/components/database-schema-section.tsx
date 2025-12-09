@@ -1,7 +1,7 @@
 export function DatabaseSchemaSection() {
   return {
-    title: "Database Schema",
-    description: "Job model in Prisma schema",
+    title: 'Database Schema',
+    description: 'Job model in Prisma schema',
     code: `// prisma/schema.prisma
 model Job {
   id          String   @id @default(cuid())
@@ -27,6 +27,6 @@ model Job {
   @@index([queue, status, runAt])
   @@index([status, runAt])
 }`,
-    language: "prisma",
+    language: 'prisma',
   };
 }

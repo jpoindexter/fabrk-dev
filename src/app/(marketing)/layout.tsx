@@ -4,10 +4,14 @@
  * Includes SiteNavigation and Footer.
  */
 
-import { SiteNavigation } from "@/components/navigation";
-import { Footer } from "@/components/shared/footer";
+import { SiteNavigation } from '@/components/navigation';
+import { Footer } from '@/components/shared/footer';
 
-export default function MarketingLayout({ children }: { children: React.ReactNode }) {
+export default function MarketingLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <>
       <SiteNavigation />

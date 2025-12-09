@@ -193,13 +193,13 @@ The Fabrk template library contains **30 template showcase pages** organized acr
 
 ```tsx
 // Outer container
-className = "container mx-auto max-w-7xl space-y-{6|12} px-6 py-{8|12}";
+className = 'container mx-auto max-w-7xl space-y-{6|12} px-6 py-{8|12}';
 
 // Card padding
-className = "p-{4|6|8}";
+className = 'p-{4|6|8}';
 
 // Section gaps
-className = "space-y-{2|4|6}";
+className = 'space-y-{2|4|6}';
 ```
 
 #### Grid Layouts
@@ -340,8 +340,8 @@ space-y-12   // ✅ (48px)
 
 ```tsx
 // Mobile-first approach
-className = "flex flex-col md:flex-row";
-className = "grid gap-4 md:grid-cols-2 lg:grid-cols-3";
+className = 'flex flex-col md:flex-row';
+className = 'grid gap-4 md:grid-cols-2 lg:grid-cols-3';
 ```
 
 **Usage:** 30/30 pages use responsive breakpoints (100%)
@@ -410,7 +410,11 @@ All templates correctly use:
 **Consistent Pattern:**
 
 ```tsx
-<TemplatePageHeader badge="TEMPLATE_NAME" title="Title" description="Description" />
+<TemplatePageHeader
+  badge="TEMPLATE_NAME"
+  title="Title"
+  description="Description"
+/>
 ```
 
 **Compliance:** ✅ 100% (all 30 pages use this pattern)
@@ -441,12 +445,12 @@ All templates correctly use:
 **Pattern Used:** (Account, Admin, Dashboards, Auth, Marketing)
 
 ```tsx
-"use client";
+'use client';
 
-import { getCategoryInfo, getTemplatesByCategory } from "../template-data";
+import { getCategoryInfo, getTemplatesByCategory } from '../template-data';
 
-const categoryTemplates = getTemplatesByCategory("category-id");
-const categoryInfo = getCategoryInfo("category-id");
+const categoryTemplates = getTemplatesByCategory('category-id');
+const categoryInfo = getCategoryInfo('category-id');
 
 // Renders:
 // 1. Category header with icon, count badge
@@ -581,13 +585,13 @@ className="text-warning" // Yellow
 
 ```tsx
 // Most common (2-column on desktop)
-className = "grid gap-4 md:grid-cols-2";
+className = 'grid gap-4 md:grid-cols-2';
 
 // Three-column variant
-className = "grid gap-6 md:grid-cols-2 lg:grid-cols-3";
+className = 'grid gap-6 md:grid-cols-2 lg:grid-cols-3';
 
 // Four-column variant
-className = "grid gap-4 md:grid-cols-2 lg:grid-cols-4";
+className = 'grid gap-4 md:grid-cols-2 lg:grid-cols-4';
 ```
 
 ---
@@ -701,7 +705,11 @@ src/app/templates/
 ### Page Header Pattern
 
 ```tsx
-<TemplatePageHeader badge="TEMPLATE_NAME" title="Title" description="Description text" />
+<TemplatePageHeader
+  badge="TEMPLATE_NAME"
+  title="Title"
+  description="Description text"
+/>
 ```
 
 ### Card Header Pattern
@@ -724,7 +732,7 @@ src/app/templates/
 ### Terminal Label Pattern
 
 ```tsx
-<Label className={cn(mode.font, "text-xs")}>[LABEL]:</Label>
+<Label className={cn(mode.font, 'text-xs')}>[LABEL]:</Label>
 ```
 
 ### Terminal Output Pattern

@@ -1,12 +1,19 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard, DocsCallout } from "@/components/docs";
-import Link from "next/link";
-import { CircleDollarSign, CreditCard, Zap, Shield, Tag, Users } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard, DocsCallout } from '@/components/docs';
+import Link from 'next/link';
+import {
+  CircleDollarSign,
+  CreditCard,
+  Zap,
+  Shield,
+  Tag,
+  Users,
+} from 'lucide-react';
 
 export const metadata = {
-  title: "Polar.sh Payments - Fabrk Docs",
+  title: 'Polar.sh Payments - Fabrk Docs',
   description:
-    "Accept payments with Polar.sh. Optimized for digital products and SaaS with built-in discount codes.",
+    'Accept payments with Polar.sh. Optimized for digital products and SaaS with built-in discount codes.',
 };
 
 export default function PolarPage() {
@@ -20,76 +27,79 @@ export default function PolarPage() {
       features={[
         {
           icon: CircleDollarSign,
-          title: "Simple Pricing",
-          description: "Competitive fees with transparent pricing, no hidden charges.",
+          title: 'Simple Pricing',
+          description:
+            'Competitive fees with transparent pricing, no hidden charges.',
         },
         {
           icon: Zap,
-          title: "Quick Integration",
-          description: "Get up and running in minutes with the SDK.",
+          title: 'Quick Integration',
+          description: 'Get up and running in minutes with the SDK.',
         },
         {
           icon: Tag,
-          title: "Built-in Discounts",
-          description: "Create discount codes with usage limits directly in dashboard.",
+          title: 'Built-in Discounts',
+          description:
+            'Create discount codes with usage limits directly in dashboard.',
         },
         {
           icon: Shield,
-          title: "Secure Checkout",
-          description: "PCI-compliant hosted checkout pages.",
+          title: 'Secure Checkout',
+          description: 'PCI-compliant hosted checkout pages.',
         },
         {
           icon: CreditCard,
-          title: "Multiple Methods",
-          description: "Cards, Apple Pay, Google Pay supported.",
+          title: 'Multiple Methods',
+          description: 'Cards, Apple Pay, Google Pay supported.',
         },
         {
           icon: Users,
-          title: "Customer Portal",
-          description: "Self-serve license management for customers.",
+          title: 'Customer Portal',
+          description: 'Self-serve license management for customers.',
         },
       ]}
       setup={[
         {
-          title: "Create Polar Account",
+          title: 'Create Polar Account',
           description:
-            "Go to polar.sh and create an account. Set up your organization and complete onboarding.",
+            'Go to polar.sh and create an account. Set up your organization and complete onboarding.',
         },
         {
-          title: "Get API Keys",
+          title: 'Get API Keys',
           description:
-            "Go to Settings → Developer Settings and create an access token with full permissions.",
+            'Go to Settings → Developer Settings and create an access token with full permissions.',
         },
         {
-          title: "Create Product",
+          title: 'Create Product',
           description:
-            "Go to Products and create your digital product. Copy the Product ID from the product details page.",
+            'Go to Products and create your digital product. Copy the Product ID from the product details page.',
         },
         {
-          title: "Add Keys to App",
-          description: "Add these to your .env.local file",
+          title: 'Add Keys to App',
+          description: 'Add these to your .env.local file',
           code: `# Polar.sh API Keys
 POLAR_ACCESS_TOKEN="your_access_token_here"
 NEXT_PUBLIC_POLAR_PRODUCT_ID="your_product_id"
 
 # Optional: Webhook secret for order notifications
 POLAR_WEBHOOK_SECRET="your_webhook_secret"`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Create Discount Code (Optional)",
-          description: "In Marketing → Discounts, create a discount code with usage limits.",
+          title: 'Create Discount Code (Optional)',
+          description:
+            'In Marketing → Discounts, create a discount code with usage limits.',
           code: `# The discount ID is found in the discount details
 # You can set auto-expiring discounts (e.g., first 100 customers)
 FABRK_DISCOUNT_ID="1161689c-dbc2-4e53-8c18-43f4af7aaa3f"`,
-          language: "bash",
-          tip: "Use usage-limited discounts for launch promotions!",
+          language: 'bash',
+          tip: 'Use usage-limited discounts for launch promotions!',
         },
       ]}
       usage={[
         {
-          title: "Checkout Button Component",
-          description: "Pre-built component that handles checkout flow",
+          title: 'Checkout Button Component',
+          description: 'Pre-built component that handles checkout flow',
           code: `"use client";
 
 import { useState } from "react";
@@ -145,11 +155,12 @@ export function PolarCheckoutButton({
     </Button>
   );
 }`,
-          language: "tsx",
+          language: 'tsx',
         },
         {
-          title: "API Route: Create Checkout",
-          description: "Server-side checkout session creation with rate limiting",
+          title: 'API Route: Create Checkout',
+          description:
+            'Server-side checkout session creation with rate limiting',
           code: `// src/app/api/polar/checkout/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { createCheckoutSession, isPolarConfigured } from "@/lib/polar";
@@ -199,11 +210,11 @@ export async function POST(request: NextRequest) {
     );
   }
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Polar SDK Functions",
-          description: "Core functions for interacting with Polar API",
+          title: 'Polar SDK Functions',
+          description: 'Core functions for interacting with Polar API',
           code: `// src/lib/polar.ts
 import { Polar } from "@polar-sh/sdk";
 import { env } from "@/lib/env";
@@ -241,11 +252,11 @@ export async function getProduct() {
   if (!PRODUCT_ID) throw new Error("Product ID not configured");
   return polar.products.get({ id: PRODUCT_ID });
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
       ]}
-      previous={{ title: "Stripe Payments", href: "/docs/features/payments" }}
-      next={{ title: "Lemon Squeezy", href: "/docs/features/lemonsqueezy" }}
+      previous={{ title: 'Stripe Payments', href: '/docs/features/payments' }}
+      next={{ title: 'Lemon Squeezy', href: '/docs/features/lemonsqueezy' }}
     >
       {/* Polar vs Stripe vs Lemon Squeezy */}
       <DocsSection title="Payment Provider Comparison">
@@ -284,9 +295,9 @@ export async function getProduct() {
           </div>
         </DocsCard>
         <DocsCallout variant="info" title="When to use Polar">
-          Choose Polar for selling digital products like boilerplates, templates, courses, or
-          one-time purchases. It&apos;s optimized for indie hackers and has the simplest
-          integration.
+          Choose Polar for selling digital products like boilerplates,
+          templates, courses, or one-time purchases. It&apos;s optimized for
+          indie hackers and has the simplest integration.
         </DocsCallout>
       </DocsSection>
 
@@ -294,9 +305,10 @@ export async function getProduct() {
       <DocsSection title="Development Mode">
         <DocsCard title="MOCK_CHECKOUT">
           <p className="mb-6">
-            When <code className="bg-muted px-1">POLAR_ACCESS_TOKEN</code> is not set, the checkout
-            API returns a mock response that redirects to your success page. This lets you test the
-            full purchase flow without real payments.
+            When <code className="bg-muted px-1">POLAR_ACCESS_TOKEN</code> is
+            not set, the checkout API returns a mock response that redirects to
+            your success page. This lets you test the full purchase flow without
+            real payments.
           </p>
           <div className="bg-muted mt-4 p-4">
             <pre>{`// Mock response when Polar isn't configured
@@ -315,18 +327,20 @@ export async function getProduct() {
             <div className="border-border border-b pb-4">
               Usage-Limited Discounts
               <p className="mb-6">
-                Create discounts that auto-expire after N uses. Perfect for &quot;First 100
-                customers get 25% off&quot; promotions.
+                Create discounts that auto-expire after N uses. Perfect for
+                &quot;First 100 customers get 25% off&quot; promotions.
               </p>
             </div>
             <div className="border-border border-b pb-4">
               Time-Limited Discounts
-              <p className="mb-6">Set expiration dates for launch week or holiday promotions.</p>
+              <p className="mb-6">
+                Set expiration dates for launch week or holiday promotions.
+              </p>
             </div>
             <div className="pb-4">
               Exit Intent Discounts
               <p className="mb-6">
-                Pass a special discount ID when user tries to leave. See{" "}
+                Pass a special discount ID when user tries to leave. See{' '}
                 <code className="bg-muted px-1">exit-intent-popup.tsx</code>.
               </p>
             </div>
@@ -340,19 +354,33 @@ export async function getProduct() {
           <div className="space-y-2">
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">src/lib/polar.ts</code>
-              <span className="text-muted-foreground">SDK client and helpers</span>
+              <span className="text-muted-foreground">
+                SDK client and helpers
+              </span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
-              <code className="bg-muted px-1">src/app/api/polar/checkout/route.ts</code>
-              <span className="text-muted-foreground">Checkout API endpoint</span>
+              <code className="bg-muted px-1">
+                src/app/api/polar/checkout/route.ts
+              </code>
+              <span className="text-muted-foreground">
+                Checkout API endpoint
+              </span>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
-              <code className="bg-muted px-1">src/components/polar/checkout-button.tsx</code>
-              <span className="text-muted-foreground">Checkout button component</span>
+              <code className="bg-muted px-1">
+                src/components/polar/checkout-button.tsx
+              </code>
+              <span className="text-muted-foreground">
+                Checkout button component
+              </span>
             </div>
             <div className="flex justify-between">
-              <code className="bg-muted px-1">src/components/polar/discount-counter.tsx</code>
-              <span className="text-muted-foreground">Usage counter display</span>
+              <code className="bg-muted px-1">
+                src/components/polar/discount-counter.tsx
+              </code>
+              <span className="text-muted-foreground">
+                Usage counter display
+              </span>
             </div>
           </div>
         </DocsCard>
@@ -367,7 +395,9 @@ export async function getProduct() {
               className="hover:border-primary/50 h-full transition-all"
             >
               Lemon Squeezy
-              <p className="mb-6">Alternative with merchant of record for global tax handling.</p>
+              <p className="mb-6">
+                Alternative with merchant of record for global tax handling.
+              </p>
             </DocsCard>
           </Link>
           <Link href="/docs/features/payments">
@@ -376,7 +406,9 @@ export async function getProduct() {
               className="hover:border-primary/50 h-full transition-all"
             >
               Stripe Setup
-              <p className="mb-6">Industry-standard payment processing with subscriptions.</p>
+              <p className="mb-6">
+                Industry-standard payment processing with subscriptions.
+              </p>
             </DocsCard>
           </Link>
         </div>

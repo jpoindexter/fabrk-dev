@@ -4,13 +4,13 @@
  * Production-ready multi-tenancy switcher for navbar
  */
 
-"use client";
+'use client';
 
-import * as React from "react";
-import { useRouter } from "next/navigation";
-import { Check, ChevronsUpDown, Plus, Building2 } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import * as React from 'react';
+import { useRouter } from 'next/navigation';
+import { Check, ChevronsUpDown, Plus, Building2 } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,8 +18,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { mode } from "@/design-system";
+} from '@/components/ui/dropdown-menu';
+import { mode } from '@/design-system';
 
 interface Organization {
   id: string;
@@ -43,8 +43,8 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
   React.useEffect(() => {
     const fetchOrganizations = async () => {
       try {
-        const response = await fetch("/api/organizations");
-        if (!response.ok) throw new Error("Failed to fetch organizations");
+        const response = await fetch('/api/organizations');
+        if (!response.ok) throw new Error('Failed to fetch organizations');
 
         const data = await response.json();
         setOrganizations(data.organizations || []);
@@ -70,13 +70,13 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
 
   const handleSwitchOrg = async (orgId: string) => {
     try {
-      const response = await fetch("/api/organizations/switch", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const response = await fetch('/api/organizations/switch', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ organizationId: orgId }),
       });
 
-      if (!response.ok) throw new Error("Failed to switch organization");
+      if (!response.ok) throw new Error('Failed to switch organization');
 
       const selected = organizations.find((org) => org.id === orgId);
       setCurrentOrg(selected || null);
@@ -91,14 +91,14 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
 
   const handleCreateOrg = () => {
     setOpen(false);
-    router.push("/organizations/new");
+    router.push('/organizations/new');
   };
 
   if (loading) {
     return (
       <div
         className={cn(
-          "border-border bg-card flex items-center gap-2 border px-4 py-2",
+          'border-border bg-card flex items-center gap-2 border px-4 py-2',
           mode.radius
         )}
       >
@@ -127,26 +127,30 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
           aria-expanded={open}
           aria-label="Select organization"
           className={cn(
-            "border-border w-[200px] justify-between gap-2 border transition-all",
+            'border-border w-[200px] justify-between gap-2 border transition-all',
             mode.radius,
             className
           )}
         >
           {currentOrg?.logo ? (
             /* eslint-disable-next-line @next/next/no-img-element */
-            <img src={currentOrg.logo} alt={currentOrg.name} className="h-5 w-5 rounded" />
+            <img
+              src={currentOrg.logo}
+              alt={currentOrg.name}
+              className="h-5 w-5 rounded"
+            />
           ) : (
             <Building2 className="text-muted-foreground h-4 w-4" />
           )}
           <span className="flex-1 truncate text-left text-sm font-medium">
-            {currentOrg?.name || "Select organization"}
+            {currentOrg?.name || 'Select organization'}
           </span>
           <ChevronsUpDown className="h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className={cn("border-border w-[200px] border", mode.radius)}
+        className={cn('border-border w-[200px] border', mode.radius)}
       >
         <DropdownMenuLabel className="text-muted-foreground text-xs">
           Your Organizations
@@ -161,14 +165,24 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
             <div className="flex w-full items-center gap-2">
               {org.logo ? (
                 /* eslint-disable-next-line @next/next/no-img-element */
-                <img src={org.logo} alt={org.name} className="h-5 w-5 rounded" />
+                <img
+                  src={org.logo}
+                  alt={org.name}
+                  className="h-5 w-5 rounded"
+                />
               ) : (
                 <Building2 className="text-muted-foreground h-4 w-4" />
               )}
               <span className="flex-1 truncate text-sm">{org.name}</span>
-              {currentOrg?.id === org.id && <Check className="text-primary h-4 w-4" />}
+              {currentOrg?.id === org.id && (
+                <Check className="text-primary h-4 w-4" />
+              )}
             </div>
-            {org.role && <span className="text-muted-foreground ml-auto text-xs">{org.role}</span>}
+            {org.role && (
+              <span className="text-muted-foreground ml-auto text-xs">
+                {org.role}
+              </span>
+            )}
           </DropdownMenuItem>
         ))}
         <DropdownMenuSeparator />

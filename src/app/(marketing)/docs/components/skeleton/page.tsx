@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 
 export default function SkeletonPage() {
   return (
@@ -17,8 +17,8 @@ export default function SkeletonPage() {
       }}
       variants={[
         {
-          title: "Text Skeleton",
-          description: "Skeleton placeholders for text content",
+          title: 'Text Skeleton',
+          description: 'Skeleton placeholders for text content',
           preview: (
             <div className="space-y-2">
               <Skeleton className="h-4 w-[250px]" />
@@ -33,8 +33,8 @@ export default function SkeletonPage() {
 </div>`,
         },
         {
-          title: "Card Skeleton",
-          description: "Full card loading state with header and content",
+          title: 'Card Skeleton',
+          description: 'Full card loading state with header and content',
           preview: (
             <Card className="w-[350px]">
               <CardHeader code="0x00" title="LOADING" />
@@ -55,8 +55,8 @@ export default function SkeletonPage() {
 </Card>`,
         },
         {
-          title: "Avatar Skeleton",
-          description: "Circular skeleton for avatar placeholders",
+          title: 'Avatar Skeleton',
+          description: 'Circular skeleton for avatar placeholders',
           preview: (
             <div className="flex items-center space-x-4">
               <Skeleton className="h-12 w-12 rounded-none" />
@@ -75,8 +75,8 @@ export default function SkeletonPage() {
 </div>`,
         },
         {
-          title: "List Skeleton",
-          description: "Skeleton for a list of items",
+          title: 'List Skeleton',
+          description: 'Skeleton for a list of items',
           preview: (
             <div className="space-y-4">
               {[1, 2, 3].map((i) => (
@@ -103,8 +103,8 @@ export default function SkeletonPage() {
 </div>`,
         },
         {
-          title: "Image Skeleton",
-          description: "Rectangle skeleton for image placeholders",
+          title: 'Image Skeleton',
+          description: 'Rectangle skeleton for image placeholders',
           preview: (
             <div className="space-y-4">
               <Skeleton className="h-[200px] w-full rounded-none" />
@@ -123,8 +123,8 @@ export default function SkeletonPage() {
 </div>`,
         },
         {
-          title: "Dashboard Skeleton",
-          description: "Complex skeleton for dashboard widgets",
+          title: 'Dashboard Skeleton',
+          description: 'Complex skeleton for dashboard widgets',
           preview: (
             <div className="space-y-4">
               <div className="grid grid-cols-3 gap-4">
@@ -180,27 +180,27 @@ export default function SkeletonPage() {
       ]}
       props={[
         {
-          name: "className",
-          type: "string",
+          name: 'className',
+          type: 'string',
           description:
-            "CSS classes for sizing and styling the skeleton. Use Tailwind utilities for width (w-*) and height (h-*)",
+            'CSS classes for sizing and styling the skeleton. Use Tailwind utilities for width (w-*) and height (h-*)',
         },
         {
-          name: "...props",
-          type: "React.HTMLAttributes<HTMLDivElement>",
-          description: "All standard div HTML attributes are supported",
+          name: '...props',
+          type: 'React.HTMLAttributes<HTMLDivElement>',
+          description: 'All standard div HTML attributes are supported',
         },
       ]}
       accessibility={[
         "Skeleton components are purely visual - they don't require specific accessibility attributes",
-        "The pulse animation provides a clear visual indicator that content is loading",
+        'The pulse animation provides a clear visual indicator that content is loading',
         "Consider adding aria-busy='true' or aria-label='Loading content' to parent containers when using skeletons",
-        "For screen readers, ensure the actual content has proper loading states with appropriate ARIA live regions",
-        "The skeleton should match the layout of the actual content to prevent layout shift",
-        "Use rounded-none for terminal-style design consistency",
+        'For screen readers, ensure the actual content has proper loading states with appropriate ARIA live regions',
+        'The skeleton should match the layout of the actual content to prevent layout shift',
+        'Use rounded-none for terminal-style design consistency',
       ]}
-      previous={{ title: "Avatar", href: "/docs/components/avatar" }}
-      next={{ title: "Form Components", href: "/docs/components" }}
+      previous={{ title: 'Avatar', href: '/docs/components/avatar' }}
+      next={{ title: 'Form Components', href: '/docs/components' }}
     />
   );
 }

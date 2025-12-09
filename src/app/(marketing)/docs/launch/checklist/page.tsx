@@ -1,10 +1,11 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { Code, CreditCard, Megaphone, Rocket } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
+import { Code, CreditCard, Megaphone, Rocket } from 'lucide-react';
 
 export const metadata = {
-  title: "Launch Checklist - Fabrk Docs",
-  description: "Ensure your Fabrk app is production-ready. Complete pre-launch checklist for code, payments, and marketing.",
+  title: 'Launch Checklist - Fabrk Docs',
+  description:
+    'Ensure your Fabrk app is production-ready. Complete pre-launch checklist for code, payments, and marketing.',
 };
 
 export default function LaunchChecklistPage() {
@@ -16,47 +17,63 @@ export default function LaunchChecklistPage() {
       description="A comprehensive guide to ensuring your Fabrk application is production-ready."
       overview="5-phase launch process: pre-launch verification, Stripe setup, marketing assets, launch day execution, and post-launch monitoring."
       features={[
-        { icon: Code, title: "Code Quality", description: "TypeScript, linting, security." },
-        { icon: CreditCard, title: "Stripe Setup", description: "Products, webhooks, coupons." },
-        { icon: Megaphone, title: "Marketing", description: "Videos, demos, social proof." },
-        { icon: Rocket, title: "Launch Day", description: "Distribution, announcements." },
+        {
+          icon: Code,
+          title: 'Code Quality',
+          description: 'TypeScript, linting, security.',
+        },
+        {
+          icon: CreditCard,
+          title: 'Stripe Setup',
+          description: 'Products, webhooks, coupons.',
+        },
+        {
+          icon: Megaphone,
+          title: 'Marketing',
+          description: 'Videos, demos, social proof.',
+        },
+        {
+          icon: Rocket,
+          title: 'Launch Day',
+          description: 'Distribution, announcements.',
+        },
       ]}
       setup={[
         {
-          title: "Resolve TODOs",
-          description: "Search for TODO or FIXME in src/ and resolve them",
+          title: 'Resolve TODOs',
+          description: 'Search for TODO or FIXME in src/ and resolve them',
           code: `grep -r "TODO" src/`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Verify Types",
-          description: "Ensure no TypeScript errors",
+          title: 'Verify Types',
+          description: 'Ensure no TypeScript errors',
           code: `npm run type-check`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Run Linting",
-          description: "Catch potential issues",
+          title: 'Run Linting',
+          description: 'Catch potential issues',
           code: `npm run lint`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Check Dependencies",
-          description: "Audit for security vulnerabilities",
+          title: 'Check Dependencies',
+          description: 'Audit for security vulnerabilities',
           code: `npm audit`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Build Locally",
-          description: "Verify production build succeeds",
+          title: 'Build Locally',
+          description: 'Verify production build succeeds',
           code: `npm run build`,
-          language: "bash",
+          language: 'bash',
         },
       ]}
       usage={[
         {
-          title: "Useful Commands",
-          description: "Pre-launch verification commands",
+          title: 'Useful Commands',
+          description: 'Pre-launch verification commands',
           code: `# Run full test suite
 npm run test:all
 
@@ -68,11 +85,11 @@ npm run build
 
 # Check types
 npm run type-check`,
-          language: "bash",
+          language: 'bash',
         },
       ]}
-      previous={{ title: "Theming", href: "/docs/extras/theming" }}
-      next={{ title: "Getting Started", href: "/docs/getting-started" }}
+      previous={{ title: 'Theming', href: '/docs/extras/theming' }}
+      next={{ title: 'Getting Started', href: '/docs/getting-started' }}
     >
       {/* Phase 1: Pre-Launch */}
       <DocsSection title="Phase 1: Pre-Launch Verification">
@@ -121,9 +138,17 @@ npm run type-check`,
       <DocsSection title="Phase 3: Marketing Assets">
         <DocsCard title="MARKETING">
           <div className="space-y-1">
-            <div>├─ <strong>The Pitch:</strong> 30-60s video for social media</div>
-            <div>├─ <strong>The Walkthrough:</strong> 3-5 min demo for docs/landing page</div>
-            <div>└─ <strong>Social Proof:</strong> Initial testimonials or beta feedback</div>
+            <div>
+              ├─ <strong>The Pitch:</strong> 30-60s video for social media
+            </div>
+            <div>
+              ├─ <strong>The Walkthrough:</strong> 3-5 min demo for docs/landing
+              page
+            </div>
+            <div>
+              └─ <strong>Social Proof:</strong> Initial testimonials or beta
+              feedback
+            </div>
           </div>
         </DocsCard>
       </DocsSection>
@@ -132,9 +157,18 @@ npm run type-check`,
       <DocsSection title="Phase 4: Launch Day Execution">
         <DocsCard title="LAUNCH_DAY">
           <div className="space-y-1">
-            <div>├─ <strong>Distribution:</strong> Verify GitHub invite system or app deployment</div>
-            <div>├─ <strong>Announcement:</strong> Schedule Product Hunt, Twitter/X, LinkedIn</div>
-            <div>└─ <strong>Community:</strong> Post in Discord servers and subreddits</div>
+            <div>
+              ├─ <strong>Distribution:</strong> Verify GitHub invite system or
+              app deployment
+            </div>
+            <div>
+              ├─ <strong>Announcement:</strong> Schedule Product Hunt,
+              Twitter/X, LinkedIn
+            </div>
+            <div>
+              └─ <strong>Community:</strong> Post in Discord servers and
+              subreddits
+            </div>
           </div>
         </DocsCard>
       </DocsSection>
@@ -143,9 +177,16 @@ npm run type-check`,
       <DocsSection title="Phase 5: Post-Launch Monitoring">
         <DocsCard title="POST_LAUNCH">
           <div className="space-y-1">
-            <div>├─ <strong>Support:</strong> Monitor support email for 48 hours</div>
-            <div>├─ <strong>Stripe:</strong> Watch for failed payments or disputes</div>
-            <div>└─ <strong>Errors:</strong> Check Vercel logs or Sentry for exceptions</div>
+            <div>
+              ├─ <strong>Support:</strong> Monitor support email for 48 hours
+            </div>
+            <div>
+              ├─ <strong>Stripe:</strong> Watch for failed payments or disputes
+            </div>
+            <div>
+              └─ <strong>Errors:</strong> Check Vercel logs or Sentry for
+              exceptions
+            </div>
           </div>
         </DocsCard>
       </DocsSection>

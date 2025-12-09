@@ -3,9 +3,9 @@
  * Get, check, and modify user credit balances
  */
 
-import { prisma } from "@/lib/prisma";
-import { CreditTransactionType } from "@/generated/prisma/client";
-import { getTierAllowance, type SubscriptionTier } from "./pricing";
+import { prisma } from '@/lib/prisma';
+import { CreditTransactionType } from '@/generated/prisma/client';
+import { getTierAllowance, type SubscriptionTier } from './pricing';
 
 /**
  * Get or create a user's credit balance
@@ -23,7 +23,7 @@ export async function getOrCreateBalance(userId: string) {
       select: { tier: true },
     });
 
-    const tier = (user?.tier || "free") as SubscriptionTier;
+    const tier = (user?.tier || 'free') as SubscriptionTier;
     const allowance = getTierAllowance(tier);
 
     balance = await prisma.creditBalance.create({
@@ -42,7 +42,10 @@ export async function getOrCreateBalance(userId: string) {
 /**
  * Check if user has enough credits
  */
-export async function hasCredits(userId: string, amount: number): Promise<boolean> {
+export async function hasCredits(
+  userId: string,
+  amount: number
+): Promise<boolean> {
   const balance = await getOrCreateBalance(userId);
   return balance.balance >= amount;
 }
@@ -73,7 +76,7 @@ export async function deductCredits(
     return {
       success: false,
       newBalance: balance.balance,
-      error: "Insufficient credits",
+      error: 'Insufficient credits',
     };
   }
 

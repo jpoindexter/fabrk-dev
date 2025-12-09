@@ -3,7 +3,7 @@
  * Track and analyze application performance
  */
 
-import { trackPerformance } from "./error-tracker";
+import { trackPerformance } from './error-tracker';
 
 /**
  * Measure function execution time
@@ -22,7 +22,7 @@ export async function measureAsync<T>(
     trackPerformance({
       name,
       value: Math.round(duration),
-      unit: "ms",
+      unit: 'ms',
       tags,
     });
 
@@ -33,8 +33,8 @@ export async function measureAsync<T>(
     trackPerformance({
       name,
       value: Math.round(duration),
-      unit: "ms",
-      tags: { ...tags, status: "error" },
+      unit: 'ms',
+      tags: { ...tags, status: 'error' },
     });
 
     throw error;
@@ -58,7 +58,7 @@ export function measure<T>(
     trackPerformance({
       name,
       value: Math.round(duration),
-      unit: "ms",
+      unit: 'ms',
       tags,
     });
 
@@ -69,8 +69,8 @@ export function measure<T>(
     trackPerformance({
       name,
       value: Math.round(duration),
-      unit: "ms",
-      tags: { ...tags, status: "error" },
+      unit: 'ms',
+      tags: { ...tags, status: 'error' },
     });
 
     throw error;
@@ -97,7 +97,7 @@ export class PerformanceMarker {
     trackPerformance({
       name: this.name,
       value: Math.round(duration),
-      unit: "ms",
+      unit: 'ms',
       tags: { ...this.tags, ...additionalTags },
     });
 
@@ -109,24 +109,27 @@ export class PerformanceMarker {
  * Track Web Vitals (Core Web Vitals)
  */
 export function trackWebVitals() {
-  if (typeof window === "undefined") return;
+  if (typeof window === 'undefined') return;
 
   // Largest Contentful Paint (LCP)
   const observer = new PerformanceObserver((list) => {
     for (const entry of list.getEntries()) {
-      const lcp = entry as PerformanceEntry & { renderTime?: number; loadTime?: number };
+      const lcp = entry as PerformanceEntry & {
+        renderTime?: number;
+        loadTime?: number;
+      };
       const value = lcp.renderTime || lcp.loadTime || 0;
 
       trackPerformance({
-        name: "lcp",
+        name: 'lcp',
         value: Math.round(value),
-        unit: "ms",
-        tags: { metric: "core_web_vital" },
+        unit: 'ms',
+        tags: { metric: 'core_web_vital' },
       });
     }
   });
 
-  observer.observe({ type: "largest-contentful-paint", buffered: true });
+  observer.observe({ type: 'largest-contentful-paint', buffered: true });
 
   // First Input Delay (FID)
   const fidObserver = new PerformanceObserver((list) => {
@@ -134,37 +137,40 @@ export function trackWebVitals() {
       const fid = entry as PerformanceEventTiming;
 
       trackPerformance({
-        name: "fid",
+        name: 'fid',
         value: Math.round(fid.processingStart - fid.startTime),
-        unit: "ms",
-        tags: { metric: "core_web_vital" },
+        unit: 'ms',
+        tags: { metric: 'core_web_vital' },
       });
     }
   });
 
-  fidObserver.observe({ type: "first-input", buffered: true });
+  fidObserver.observe({ type: 'first-input', buffered: true });
 
   // Cumulative Layout Shift (CLS)
   let clsValue = 0;
   const clsObserver = new PerformanceObserver((list) => {
     for (const entry of list.getEntries()) {
-      const layoutShift = entry as PerformanceEntry & { value?: number; hadRecentInput?: boolean };
+      const layoutShift = entry as PerformanceEntry & {
+        value?: number;
+        hadRecentInput?: boolean;
+      };
       if (!layoutShift.hadRecentInput) {
         clsValue += layoutShift.value || 0;
       }
     }
   });
 
-  clsObserver.observe({ type: "layout-shift", buffered: true });
+  clsObserver.observe({ type: 'layout-shift', buffered: true });
 
   // Report CLS when page is hidden
-  document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "hidden") {
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') {
       trackPerformance({
-        name: "cls",
+        name: 'cls',
         value: Math.round(clsValue * 1000), // CLS is a score, multiply for readability
-        unit: "count",
-        tags: { metric: "core_web_vital" },
+        unit: 'count',
+        tags: { metric: 'core_web_vital' },
       });
     }
   });
@@ -174,7 +180,7 @@ export function trackWebVitals() {
  * Track resource loading performance
  */
 export function trackResourceLoad(resourceType: string) {
-  if (typeof window === "undefined") return;
+  if (typeof window === 'undefined') return;
 
   const observer = new PerformanceObserver((list) => {
     for (const entry of list.getEntries()) {
@@ -182,19 +188,19 @@ export function trackResourceLoad(resourceType: string) {
 
       if (resource.initiatorType === resourceType) {
         trackPerformance({
-          name: "resource_load",
+          name: 'resource_load',
           value: Math.round(resource.duration),
-          unit: "ms",
+          unit: 'ms',
           tags: {
             type: resourceType,
-            name: resource.name.split("/").pop() || "unknown",
+            name: resource.name.split('/').pop() || 'unknown',
           },
         });
       }
     }
   });
 
-  observer.observe({ type: "resource", buffered: true });
+  observer.observe({ type: 'resource', buffered: true });
 }
 
 /**
@@ -209,31 +215,31 @@ interface PerformanceWithMemory extends Performance {
 }
 
 export function trackMemoryUsage() {
-  if (typeof window === "undefined") return;
+  if (typeof window === 'undefined') return;
 
   const memory = (performance as PerformanceWithMemory).memory;
   if (!memory) return;
 
   setInterval(() => {
     trackPerformance({
-      name: "memory_used",
+      name: 'memory_used',
       value: Math.round(memory.usedJSHeapSize / 1024 / 1024),
-      unit: "bytes",
-      tags: { metric: "memory" },
+      unit: 'bytes',
+      tags: { metric: 'memory' },
     });
 
     trackPerformance({
-      name: "memory_total",
+      name: 'memory_total',
       value: Math.round(memory.totalJSHeapSize / 1024 / 1024),
-      unit: "bytes",
-      tags: { metric: "memory" },
+      unit: 'bytes',
+      tags: { metric: 'memory' },
     });
 
     trackPerformance({
-      name: "memory_limit",
+      name: 'memory_limit',
       value: Math.round(memory.jsHeapSizeLimit / 1024 / 1024),
-      unit: "bytes",
-      tags: { metric: "memory" },
+      unit: 'bytes',
+      tags: { metric: 'memory' },
     });
   }, 30000); // Every 30 seconds
 }
@@ -242,7 +248,7 @@ export function trackMemoryUsage() {
  * Track React component render time
  */
 export function usePerformanceTracker(componentName: string) {
-  if (typeof window === "undefined") return;
+  if (typeof window === 'undefined') return;
 
   const marker = new PerformanceMarker(`render_${componentName}`, {
     component: componentName,
@@ -267,14 +273,14 @@ export async function trackAPIPerformance(
     const duration = performance.now() - start;
 
     trackPerformance({
-      name: "api_call",
+      name: 'api_call',
       value: Math.round(duration),
-      unit: "ms",
+      unit: 'ms',
       tags: {
         endpoint,
         method,
         status: response.status.toString(),
-        success: response.ok ? "true" : "false",
+        success: response.ok ? 'true' : 'false',
       },
     });
 
@@ -283,14 +289,14 @@ export async function trackAPIPerformance(
     const duration = performance.now() - start;
 
     trackPerformance({
-      name: "api_call",
+      name: 'api_call',
       value: Math.round(duration),
-      unit: "ms",
+      unit: 'ms',
       tags: {
         endpoint,
         method,
-        status: "error",
-        success: "false",
+        status: 'error',
+        success: 'false',
       },
     });
 
@@ -305,5 +311,5 @@ export async function trackQueryPerformance<T>(
   queryName: string,
   fn: () => Promise<T>
 ): Promise<T> {
-  return measureAsync(`db_query_${queryName}`, fn, { type: "database" });
+  return measureAsync(`db_query_${queryName}`, fn, { type: 'database' });
 }

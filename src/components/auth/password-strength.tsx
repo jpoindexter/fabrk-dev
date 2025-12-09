@@ -6,8 +6,8 @@
  * - UX heuristics applied ✓
  */
 
-import { Progress } from "@/components/ui/progress";
-import { calculatePasswordStrength } from "@/lib/auth/validation";
+import { Progress } from '@/components/ui/progress';
+import { calculatePasswordStrength } from '@/lib/auth/validation';
 // Tokens import removed - using Tailwind classes directly
 
 export function PasswordStrength({ password }: { password: string }) {
@@ -16,15 +16,15 @@ export function PasswordStrength({ password }: { password: string }) {
   if (!password) return null;
 
   const _getStrengthColor = () => {
-    if (strength.score >= 75) return "text-success";
-    if (strength.score >= 50) return "text-warning";
-    return "text-destructive";
+    if (strength.score >= 75) return 'text-success';
+    if (strength.score >= 50) return 'text-warning';
+    return 'text-destructive';
   };
 
   return (
     <div className="m-4">
       <Progress value={strength.score} className="m-4" />
-      <div className="text-base dark:text-muted-foreground">
+      <div className="dark:text-muted-foreground text-base">
         Password strength: {strength.label}
       </div>
     </div>

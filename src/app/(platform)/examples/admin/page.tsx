@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { ColumnDef } from "@tanstack/react-table";
-import { MoreHorizontal, Mail, Shield, User } from "lucide-react";
-import { DataTable } from "@/components/ui/data-table";
-import { DataTableColumnHeader } from "@/components/ui/data-table/data-table-column-header";
-import { Button } from "@/components/ui/button";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { ColumnDef } from '@tanstack/react-table';
+import { MoreHorizontal, Mail, Shield, User } from 'lucide-react';
+import { DataTable } from '@/components/ui/data-table';
+import { DataTableColumnHeader } from '@/components/ui/data-table/data-table-column-header';
+import { Button } from '@/components/ui/button';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,100 +14,111 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from '@/components/ui/dropdown-menu';
 
 // Example user type
 type User = {
   id: string;
   name: string;
   email: string;
-  role: "USER" | "ADMIN";
-  status: "active" | "inactive" | "pending";
+  role: 'USER' | 'ADMIN';
+  status: 'active' | 'inactive' | 'pending';
   createdAt: string;
 };
 
 // Example data
 const users: User[] = [
   {
-    id: "1",
-    name: "John Doe",
-    email: "john@example.com",
-    role: "ADMIN",
-    status: "active",
-    createdAt: "2025-01-01",
+    id: '1',
+    name: 'John Doe',
+    email: 'john@example.com',
+    role: 'ADMIN',
+    status: 'active',
+    createdAt: '2025-01-01',
   },
   {
-    id: "2",
-    name: "Jane Smith",
-    email: "jane@example.com",
-    role: "USER",
-    status: "active",
-    createdAt: "2025-01-02",
+    id: '2',
+    name: 'Jane Smith',
+    email: 'jane@example.com',
+    role: 'USER',
+    status: 'active',
+    createdAt: '2025-01-02',
   },
   {
-    id: "3",
-    name: "Bob Johnson",
-    email: "bob@example.com",
-    role: "USER",
-    status: "pending",
-    createdAt: "2025-01-03",
+    id: '3',
+    name: 'Bob Johnson',
+    email: 'bob@example.com',
+    role: 'USER',
+    status: 'pending',
+    createdAt: '2025-01-03',
   },
   {
-    id: "4",
-    name: "Alice Williams",
-    email: "alice@example.com",
-    role: "USER",
-    status: "active",
-    createdAt: "2025-01-04",
+    id: '4',
+    name: 'Alice Williams',
+    email: 'alice@example.com',
+    role: 'USER',
+    status: 'active',
+    createdAt: '2025-01-04',
   },
   {
-    id: "5",
-    name: "Charlie Brown",
-    email: "charlie@example.com",
-    role: "USER",
-    status: "inactive",
-    createdAt: "2025-01-05",
+    id: '5',
+    name: 'Charlie Brown',
+    email: 'charlie@example.com',
+    role: 'USER',
+    status: 'inactive',
+    createdAt: '2025-01-05',
   },
 ];
 
 // Column definitions
 const columns: ColumnDef<User>[] = [
   {
-    accessorKey: "name",
-    header: ({ column }) => <DataTableColumnHeader column={column} title="Name" />,
+    accessorKey: 'name',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Name" />
+    ),
     cell: ({ row }) => {
       if (!row) return null;
       return (
         <div className="flex items-center gap-2">
           <div
-            className={cn("bg-primary/10 flex h-8 w-8 items-center justify-center", mode.radius)}
+            className={cn(
+              'bg-primary/10 flex h-8 w-8 items-center justify-center',
+              mode.radius
+            )}
           >
             <User className="text-primary h-4 w-4" />
           </div>
-          <span className="text-foreground font-medium">{row.getValue("name")}</span>
+          <span className="text-foreground font-medium">
+            {row.getValue('name')}
+          </span>
         </div>
       );
     },
   },
   {
-    accessorKey: "email",
-    header: ({ column }) => <DataTableColumnHeader column={column} title="Email" />,
+    accessorKey: 'email',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Email" />
+    ),
     cell: ({ row }) => {
       if (!row) return null;
       return (
         <div className="text-muted-foreground flex items-center gap-2">
           <Mail className="h-4 w-4" />
-          <span>{row.getValue("email")}</span>
+          <span>{row.getValue('email')}</span>
         </div>
       );
     },
   },
   {
-    accessorKey: "role",
-    header: ({ column }) => <DataTableColumnHeader column={column} title="Role" />,
+    accessorKey: 'role',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Role" />
+    ),
     cell: ({ row }) => {
       if (!row) return null;
-      const role = row.getValue("role") as string;
+      const role = row.getValue('role') as string;
       return (
         <div className="flex items-center gap-2">
           <Shield className="text-muted-foreground h-4 w-4" />
@@ -116,7 +127,9 @@ const columns: ColumnDef<User>[] = [
               ``,
               mode.radius,
               `px-2 py-1 text-xs font-semibold ${
-                role === "ADMIN" ? "bg-primary/20 text-primary" : "bg-muted text-muted-foreground"
+                role === 'ADMIN'
+                  ? 'bg-primary/20 text-primary'
+                  : 'bg-muted text-muted-foreground'
               }`
             )}
           >
@@ -127,22 +140,24 @@ const columns: ColumnDef<User>[] = [
     },
   },
   {
-    accessorKey: "status",
-    header: ({ column }) => <DataTableColumnHeader column={column} title="Status" />,
+    accessorKey: 'status',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Status" />
+    ),
     cell: ({ row }) => {
       if (!row) return null;
-      const status = row.getValue("status") as string;
+      const status = row.getValue('status') as string;
       return (
         <span
           className={cn(
             `inline-flex`,
             mode.radius,
             `px-4 py-1 text-xs font-semibold ${
-              status === "active"
-                ? "bg-success/20 text-success-foreground"
-                : status === "pending"
-                  ? "bg-warning/20 text-warning-foreground"
-                  : "bg-destructive/20 text-destructive-foreground"
+              status === 'active'
+                ? 'bg-success/20 text-success-foreground'
+                : status === 'pending'
+                  ? 'bg-warning/20 text-warning-foreground'
+                  : 'bg-destructive/20 text-destructive-foreground'
             }`
           )}
         >
@@ -152,15 +167,21 @@ const columns: ColumnDef<User>[] = [
     },
   },
   {
-    accessorKey: "createdAt",
-    header: ({ column }) => <DataTableColumnHeader column={column} title="Joined" />,
+    accessorKey: 'createdAt',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Joined" />
+    ),
     cell: ({ row }) => {
       if (!row) return null;
-      return <span className="text-muted-foreground">{row.getValue("createdAt")}</span>;
+      return (
+        <span className="text-muted-foreground">
+          {row.getValue('createdAt')}
+        </span>
+      );
     },
   },
   {
-    id: "actions",
+    id: 'actions',
     header: () => <div className="text-right">Actions</div>,
     cell: ({ row }) => {
       if (!row) return null;
@@ -176,13 +197,17 @@ const columns: ColumnDef<User>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="border-border border">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem onClick={() => navigator.clipboard.writeText(user.id)}>
+            <DropdownMenuItem
+              onClick={() => navigator.clipboard.writeText(user.id)}
+            >
               Copy user ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>View details</DropdownMenuItem>
             <DropdownMenuItem>Edit user</DropdownMenuItem>
-            <DropdownMenuItem className="text-destructive">Delete user</DropdownMenuItem>
+            <DropdownMenuItem className="text-destructive">
+              Delete user
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
@@ -196,8 +221,12 @@ export default function AdminPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-foreground text-4xl font-semibold">User Management</h1>
-          <p className="text-muted-foreground">Manage users, roles, and permissions</p>
+          <h1 className="text-foreground text-4xl font-semibold">
+            User Management
+          </h1>
+          <p className="text-muted-foreground">
+            Manage users, roles, and permissions
+          </p>
         </div>
         <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
           &gt; ADD_USER
@@ -206,20 +235,26 @@ export default function AdminPage() {
 
       {/* Stats Cards */}
       <div className="grid gap-4 md:grid-cols-3">
-        <div className={cn("border-border bg-card border p-6", mode.radius)}>
-          <p className="text-muted-foreground text-sm font-medium">Total Users</p>
-          <p className="text-foreground text-4xl font-semibold">{users.length}</p>
-        </div>
-        <div className={cn("border-border bg-card border p-6", mode.radius)}>
-          <p className="text-muted-foreground text-sm font-medium">Active Users</p>
-          <p className="text-success text-4xl font-semibold">
-            {users.filter((u) => u.status === "active").length}
+        <div className={cn('border-border bg-card border p-6', mode.radius)}>
+          <p className="text-muted-foreground text-sm font-medium">
+            Total Users
+          </p>
+          <p className="text-foreground text-4xl font-semibold">
+            {users.length}
           </p>
         </div>
-        <div className={cn("border-border bg-card border p-6", mode.radius)}>
+        <div className={cn('border-border bg-card border p-6', mode.radius)}>
+          <p className="text-muted-foreground text-sm font-medium">
+            Active Users
+          </p>
+          <p className="text-success text-4xl font-semibold">
+            {users.filter((u) => u.status === 'active').length}
+          </p>
+        </div>
+        <div className={cn('border-border bg-card border p-6', mode.radius)}>
           <p className="text-muted-foreground text-sm font-medium">Admins</p>
           <p className="text-primary text-4xl font-semibold">
-            {users.filter((u) => u.role === "ADMIN").length}
+            {users.filter((u) => u.role === 'ADMIN').length}
           </p>
         </div>
       </div>

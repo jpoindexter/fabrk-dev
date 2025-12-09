@@ -3,14 +3,14 @@
  * Column definitions for user data table with sorting and custom cell rendering.
  */
 
-"use client";
+'use client';
 
-import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown, MoreHorizontal, Trash2, UserCog } from "lucide-react";
+import { ColumnDef } from '@tanstack/react-table';
+import { ArrowUpDown, MoreHorizontal, Trash2, UserCog } from 'lucide-react';
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,15 +18,15 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+} from '@/components/ui/dropdown-menu';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 
 export interface UserData {
   id: string;
   name: string;
   email: string;
-  role: "USER" | "ADMIN";
-  status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
+  role: 'USER' | 'ADMIN';
+  status: 'ACTIVE' | 'INACTIVE' | 'SUSPENDED';
   createdAt: Date;
   lastLogin?: Date;
 }
@@ -42,12 +42,12 @@ export function createUserColumns({
 }: CreateColumnsOptions): ColumnDef<UserData>[] {
   return [
     {
-      id: "select",
+      id: 'select',
       header: ({ table }) => (
         <Checkbox
           checked={
             table.getIsAllPageRowsSelected() ||
-            (table.getIsSomePageRowsSelected() && "indeterminate")
+            (table.getIsSomePageRowsSelected() && 'indeterminate')
           }
           onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
           aria-label="Select all"
@@ -64,12 +64,12 @@ export function createUserColumns({
       enableHiding: false,
     },
     {
-      accessorKey: "name",
+      accessorKey: 'name',
       header: ({ column }) => {
         return (
           <Button
             variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+            onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
             className="hover:bg-primary hover:text-primary-foreground h-8 px-2"
           >
             User
@@ -78,12 +78,12 @@ export function createUserColumns({
         );
       },
       cell: ({ row }) => {
-        const name = row.getValue("name") as string;
+        const name = row.getValue('name') as string;
         const email = row.original.email;
         const initials = name
-          .split(" ")
+          .split(' ')
           .map((n) => n[0])
-          .join("")
+          .join('')
           .toUpperCase();
 
         return (
@@ -102,26 +102,33 @@ export function createUserColumns({
       },
     },
     {
-      accessorKey: "role",
-      header: "Role",
+      accessorKey: 'role',
+      header: 'Role',
       cell: ({ row }) => {
-        const role = row.getValue("role") as string;
+        const role = row.getValue('role') as string;
         return (
-          <Badge variant={role === "ADMIN" ? "default" : "secondary"} className="font-medium">
+          <Badge
+            variant={role === 'ADMIN' ? 'default' : 'secondary'}
+            className="font-medium"
+          >
             {role}
           </Badge>
         );
       },
     },
     {
-      accessorKey: "status",
-      header: "Status",
+      accessorKey: 'status',
+      header: 'Status',
       cell: ({ row }) => {
-        const status = row.getValue("status") as string;
+        const status = row.getValue('status') as string;
         return (
           <Badge
             variant={
-              status === "ACTIVE" ? "default" : status === "SUSPENDED" ? "accent" : "secondary"
+              status === 'ACTIVE'
+                ? 'default'
+                : status === 'SUSPENDED'
+                  ? 'accent'
+                  : 'secondary'
             }
             className="font-medium"
           >
@@ -131,12 +138,12 @@ export function createUserColumns({
       },
     },
     {
-      accessorKey: "createdAt",
+      accessorKey: 'createdAt',
       header: ({ column }) => {
         return (
           <Button
             variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+            onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
             className="hover:bg-primary hover:text-primary-foreground h-8 px-2"
           >
             Created
@@ -145,7 +152,7 @@ export function createUserColumns({
         );
       },
       cell: ({ row }) => {
-        const date = row.getValue("createdAt") as Date;
+        const date = row.getValue('createdAt') as Date;
         return (
           <span className="text-muted-foreground text-sm">
             {new Date(date).toLocaleDateString()}
@@ -154,11 +161,12 @@ export function createUserColumns({
       },
     },
     {
-      accessorKey: "lastLogin",
-      header: "Last Login",
+      accessorKey: 'lastLogin',
+      header: 'Last Login',
       cell: ({ row }) => {
-        const date = row.getValue("lastLogin") as Date | undefined;
-        if (!date) return <span className="text-muted-foreground text-xs">Never</span>;
+        const date = row.getValue('lastLogin') as Date | undefined;
+        if (!date)
+          return <span className="text-muted-foreground text-xs">Never</span>;
         return (
           <span className="text-muted-foreground text-sm">
             {new Date(date).toLocaleDateString()}
@@ -167,7 +175,7 @@ export function createUserColumns({
       },
     },
     {
-      id: "actions",
+      id: 'actions',
       enableHiding: false,
       cell: ({ row }) => {
         const user = row.original;
@@ -182,7 +190,9 @@ export function createUserColumns({
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-[160px]">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <DropdownMenuItem onClick={() => navigator.clipboard.writeText(user.id)}>
+              <DropdownMenuItem
+                onClick={() => navigator.clipboard.writeText(user.id)}
+              >
                 Copy user ID
               </DropdownMenuItem>
               <DropdownMenuSeparator />

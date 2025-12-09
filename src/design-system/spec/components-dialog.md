@@ -24,7 +24,7 @@ import {
   DialogDescription,
   DialogFooter,
   DialogClose,
-} from "@/components/ui/dialog";
+} from '@/components/ui/dialog';
 ```
 
 ### Basic Usage
@@ -79,7 +79,7 @@ import {
 ```tsx
 <DialogContent
   className={cn(
-    "bg-background fixed top-1/2 left-1/2 z-50 grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 border p-6",
+    'bg-background fixed top-1/2 left-1/2 z-50 grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 border p-6',
     mode.radius
   )}
 />
@@ -100,7 +100,7 @@ import {
 ### DialogDescription
 
 ```tsx
-<DialogDescription className={cn("text-muted-foreground text-xs", mode.font)} />
+<DialogDescription className={cn('text-muted-foreground text-xs', mode.font)} />
 ```
 
 ### DialogFooter

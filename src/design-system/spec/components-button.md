@@ -15,7 +15,7 @@
 ### Import
 
 ```tsx
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 ```
 
 ### Basic Usage
@@ -66,8 +66,8 @@ import { Button } from "@/components/ui/button";
 **Helper function available:**
 
 ```tsx
-import { formatButtonText } from "@/design-system";
-formatButtonText("Save Changes"); // Returns "> SAVE_CHANGES"
+import { formatButtonText } from '@/design-system';
+formatButtonText('Save Changes'); // Returns "> SAVE_CHANGES"
 ```
 
 ---
@@ -119,7 +119,7 @@ cn(
   buttonVariants({ variant, size }),
   mode.radius, // rounded-none
   mode.font, // font-mono
-  mode.textTransform === "uppercase" && "uppercase",
+  mode.textTransform === 'uppercase' && 'uppercase',
   className
 );
 ```

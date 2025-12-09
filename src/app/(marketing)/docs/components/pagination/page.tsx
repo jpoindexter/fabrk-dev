@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
+import { ComponentShowcaseTemplate } from '@/components/docs';
 import {
   Pagination,
   PaginationContent,
@@ -11,7 +11,7 @@ import {
   PaginationFirst,
   PaginationLast,
   PaginationEllipsis,
-} from "@/components/ui/pagination";
+} from '@/components/ui/pagination';
 
 export default function PaginationPage() {
   return (
@@ -55,7 +55,9 @@ export default function PaginationPage() {
                 <PaginationPrevious href="#" />
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href="#" isActive>1</PaginationLink>
+                <PaginationLink href="#" isActive>
+                  1
+                </PaginationLink>
               </PaginationItem>
               <PaginationItem>
                 <PaginationLink href="#">2</PaginationLink>
@@ -72,8 +74,8 @@ export default function PaginationPage() {
       }}
       variants={[
         {
-          title: "With Ellipsis",
-          description: "Show ellipsis for large page ranges",
+          title: 'With Ellipsis',
+          description: 'Show ellipsis for large page ranges',
           code: `<Pagination>
   <PaginationContent>
     <PaginationItem>
@@ -109,7 +111,9 @@ export default function PaginationPage() {
                   <PaginationLink href="#">1</PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink href="#" isActive>2</PaginationLink>
+                  <PaginationLink href="#" isActive>
+                    2
+                  </PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
                   <PaginationLink href="#">3</PaginationLink>
@@ -128,8 +132,8 @@ export default function PaginationPage() {
           ),
         },
         {
-          title: "With First and Last",
-          description: "Include first and last page navigation buttons",
+          title: 'With First and Last',
+          description: 'Include first and last page navigation buttons',
           code: `import { PaginationFirst, PaginationLast } from "@/components/ui/pagination";
 
 <Pagination>
@@ -170,7 +174,9 @@ export default function PaginationPage() {
                   <PaginationLink href="#">1</PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink href="#" isActive>2</PaginationLink>
+                  <PaginationLink href="#" isActive>
+                    2
+                  </PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
                   <PaginationLink href="#">3</PaginationLink>
@@ -186,8 +192,8 @@ export default function PaginationPage() {
           ),
         },
         {
-          title: "Minimal",
-          description: "Simple pagination with only previous and next buttons",
+          title: 'Minimal',
+          description: 'Simple pagination with only previous and next buttons',
           code: `<Pagination>
   <PaginationContent>
     <PaginationItem>
@@ -210,7 +216,7 @@ export default function PaginationPage() {
                   <PaginationPrevious href="#" />
                 </PaginationItem>
                 <PaginationItem>
-                  <span className="text-sm text-muted-foreground px-4">
+                  <span className="text-muted-foreground px-4 text-sm">
                     Page 2 of 10
                   </span>
                 </PaginationItem>
@@ -222,8 +228,8 @@ export default function PaginationPage() {
           ),
         },
         {
-          title: "Compact (Icon Only)",
-          description: "Icon-only buttons for compact layouts",
+          title: 'Compact (Icon Only)',
+          description: 'Icon-only buttons for compact layouts',
           code: `<Pagination>
   <PaginationContent>
     <PaginationItem>
@@ -288,38 +294,38 @@ export default function PaginationPage() {
       ]}
       props={[
         {
-          name: "isActive",
-          type: "boolean",
-          description: "For PaginationLink - marks the current active page",
-          default: "false",
+          name: 'isActive',
+          type: 'boolean',
+          description: 'For PaginationLink - marks the current active page',
+          default: 'false',
         },
         {
-          name: "size",
+          name: 'size',
           type: '"default" | "icon"',
-          description: "For PaginationLink - controls the button size",
+          description: 'For PaginationLink - controls the button size',
           default: '"icon"',
         },
         {
-          name: "href",
-          type: "string",
-          description: "The URL to navigate to when the link is clicked",
+          name: 'href',
+          type: 'string',
+          description: 'The URL to navigate to when the link is clicked',
         },
       ]}
       accessibility={[
         "Uses semantic nav element with aria-label='pagination'",
         "Active page is marked with aria-current='page'",
-        "Previous/Next buttons have descriptive aria-labels",
-        "First/Last buttons have descriptive aria-labels",
-        "Ellipsis is hidden from screen readers with aria-hidden",
-        "Keyboard navigable with Tab key",
+        'Previous/Next buttons have descriptive aria-labels',
+        'First/Last buttons have descriptive aria-labels',
+        'Ellipsis is hidden from screen readers with aria-hidden',
+        'Keyboard navigable with Tab key',
       ]}
       previous={{
-        title: "Breadcrumb",
-        href: "/docs/components/breadcrumb",
+        title: 'Breadcrumb',
+        href: '/docs/components/breadcrumb',
       }}
       next={{
-        title: "Components",
-        href: "/docs/components",
+        title: 'Components',
+        href: '/docs/components',
       }}
     />
   );

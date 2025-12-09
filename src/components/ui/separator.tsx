@@ -1,27 +1,27 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { cn } from "@/lib/utils";
+import * as React from 'react';
+import { cn } from '@/lib/utils';
 
-interface SeparatorProps extends React.ComponentProps<"div"> {
-  orientation?: "horizontal" | "vertical";
+interface SeparatorProps extends React.ComponentProps<'div'> {
+  orientation?: 'horizontal' | 'vertical';
   decorative?: boolean;
 }
 
 export function Separator({
   className,
-  orientation = "horizontal",
+  orientation = 'horizontal',
   decorative = true,
   ...props
 }: SeparatorProps) {
   return (
     <div
       data-slot="separator"
-      role={decorative ? "none" : "separator"}
-      {...(!decorative && { "aria-orientation": orientation })}
+      role={decorative ? 'none' : 'separator'}
+      {...(!decorative && { 'aria-orientation': orientation })}
       className={cn(
-        "bg-border shrink-0",
-        orientation === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]",
+        'bg-border shrink-0',
+        orientation === 'horizontal' ? 'h-[1px] w-full' : 'h-full w-[1px]',
         className
       )}
       {...props}

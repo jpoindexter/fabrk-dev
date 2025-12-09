@@ -13,9 +13,9 @@
  * ```
  */
 
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 import {
   LineChart,
   BarChart,
@@ -32,13 +32,13 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-} from "recharts";
+} from 'recharts';
 
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import { BarChart3 } from "lucide-react";
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
+import { BarChart3 } from 'lucide-react';
 
-export type ChartType = "line" | "bar" | "area" | "pie";
+export type ChartType = 'line' | 'bar' | 'area' | 'pie';
 
 export interface ChartDataPoint {
   [key: string]: string | number;
@@ -59,19 +59,19 @@ interface AnalyticsChartProps {
 }
 
 const DEFAULT_COLORS = [
-  "hsl(var(--primary))",
-  "hsl(var(--accent))",
-  "oklch(var(--chart-6))",
-  "oklch(var(--chart-7))",
-  "oklch(var(--chart-8))",
-  "oklch(var(--chart-9))",
+  'hsl(var(--primary))',
+  'hsl(var(--accent))',
+  'oklch(var(--chart-6))',
+  'oklch(var(--chart-7))',
+  'oklch(var(--chart-8))',
+  'oklch(var(--chart-9))',
 ];
 
 export function AnalyticsChart({
   type,
   data,
-  xKey = "name",
-  yKeys = ["value"],
+  xKey = 'name',
+  yKeys = ['value'],
   title,
   description,
   colors = DEFAULT_COLORS,
@@ -87,25 +87,27 @@ export function AnalyticsChart({
     };
 
     switch (type) {
-      case "line":
+      case 'line':
         return (
           <ResponsiveContainer width="100%" height={height}>
             <LineChart {...commonProps}>
-              {showGrid && <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />}
+              {showGrid && (
+                <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
+              )}
               <XAxis
                 dataKey={xKey}
                 className="text-muted-foreground text-xs"
-                tick={{ fill: "hsl(var(--muted-foreground))" }}
+                tick={{ fill: 'hsl(var(--muted-foreground))' }}
               />
               <YAxis
                 className="text-muted-foreground text-xs"
-                tick={{ fill: "hsl(var(--muted-foreground))" }}
+                tick={{ fill: 'hsl(var(--muted-foreground))' }}
               />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: "hsl(var(--card))",
-                  border: "1px solid hsl(var(--border))",
-                  borderRadius: "var(--radius)",
+                  backgroundColor: 'hsl(var(--card))',
+                  border: '1px solid hsl(var(--border))',
+                  borderRadius: 'var(--radius)',
                 }}
               />
               {showLegend && <Legend />}
@@ -124,25 +126,27 @@ export function AnalyticsChart({
           </ResponsiveContainer>
         );
 
-      case "bar":
+      case 'bar':
         return (
           <ResponsiveContainer width="100%" height={height}>
             <BarChart {...commonProps}>
-              {showGrid && <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />}
+              {showGrid && (
+                <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
+              )}
               <XAxis
                 dataKey={xKey}
                 className="text-muted-foreground text-xs"
-                tick={{ fill: "hsl(var(--muted-foreground))" }}
+                tick={{ fill: 'hsl(var(--muted-foreground))' }}
               />
               <YAxis
                 className="text-muted-foreground text-xs"
-                tick={{ fill: "hsl(var(--muted-foreground))" }}
+                tick={{ fill: 'hsl(var(--muted-foreground))' }}
               />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: "hsl(var(--card))",
-                  border: "1px solid hsl(var(--border))",
-                  borderRadius: "var(--radius)",
+                  backgroundColor: 'hsl(var(--card))',
+                  border: '1px solid hsl(var(--border))',
+                  borderRadius: 'var(--radius)',
                 }}
               />
               {showLegend && <Legend />}
@@ -158,25 +162,27 @@ export function AnalyticsChart({
           </ResponsiveContainer>
         );
 
-      case "area":
+      case 'area':
         return (
           <ResponsiveContainer width="100%" height={height}>
             <AreaChart {...commonProps}>
-              {showGrid && <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />}
+              {showGrid && (
+                <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
+              )}
               <XAxis
                 dataKey={xKey}
                 className="text-muted-foreground text-xs"
-                tick={{ fill: "hsl(var(--muted-foreground))" }}
+                tick={{ fill: 'hsl(var(--muted-foreground))' }}
               />
               <YAxis
                 className="text-muted-foreground text-xs"
-                tick={{ fill: "hsl(var(--muted-foreground))" }}
+                tick={{ fill: 'hsl(var(--muted-foreground))' }}
               />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: "hsl(var(--card))",
-                  border: "1px solid hsl(var(--border))",
-                  borderRadius: "var(--radius)",
+                  backgroundColor: 'hsl(var(--card))',
+                  border: '1px solid hsl(var(--border))',
+                  borderRadius: 'var(--radius)',
                 }}
               />
               {showLegend && <Legend />}
@@ -195,7 +201,7 @@ export function AnalyticsChart({
           </ResponsiveContainer>
         );
 
-      case "pie":
+      case 'pie':
         return (
           <ResponsiveContainer width="100%" height={height}>
             <PieChart>
@@ -204,20 +210,25 @@ export function AnalyticsChart({
                 cx="50%"
                 cy="50%"
                 labelLine={false}
-                label={({ name, percent }) => `${name} ${((percent || 0) * 100).toFixed(0)}%`}
+                label={({ name, percent }) =>
+                  `${name} ${((percent || 0) * 100).toFixed(0)}%`
+                }
                 outerRadius={80}
                 fill="hsl(var(--primary))"
                 dataKey={yKeys[0]}
               >
                 {data.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={colors[index % colors.length]}
+                  />
                 ))}
               </Pie>
               <Tooltip
                 contentStyle={{
-                  backgroundColor: "hsl(var(--card))",
-                  border: "1px solid hsl(var(--border))",
-                  borderRadius: "var(--radius)",
+                  backgroundColor: 'hsl(var(--card))',
+                  border: '1px solid hsl(var(--border))',
+                  borderRadius: 'var(--radius)',
                 }}
               />
               {showLegend && <Legend />}
@@ -231,16 +242,18 @@ export function AnalyticsChart({
   };
 
   return (
-    <Card className={cn("overflow-hidden", className)}>
+    <Card className={cn('overflow-hidden', className)}>
       {(title || description) && (
         <CardHeader
           code="0x03"
-          title={title ? title.toUpperCase().replace(/ /g, "_") : "ANALYTICS"}
+          title={title ? title.toUpperCase().replace(/ /g, '_') : 'ANALYTICS'}
           icon={<BarChart3 className="h-4 w-4" />}
         />
       )}
       <CardContent padding="md">
-        {description && <p className="text-muted-foreground mb-4 text-sm">{description}</p>}
+        {description && (
+          <p className="text-muted-foreground mb-4 text-sm">{description}</p>
+        )}
         {renderChart()}
       </CardContent>
     </Card>

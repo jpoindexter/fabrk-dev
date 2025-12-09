@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -12,9 +12,9 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-} from "@tanstack/react-table";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+} from '@tanstack/react-table';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 import {
   Table,
@@ -23,10 +23,10 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from '@/components/ui/table';
 
-import { DataTablePagination } from "./data-table-pagination";
-import { DataTableToolbar } from "./data-table-toolbar";
+import { DataTablePagination } from './data-table-pagination';
+import { DataTableToolbar } from './data-table-toolbar';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -40,12 +40,15 @@ export function DataTable<TData, TValue>({
   columns,
   data,
   searchKey,
-  searchPlaceholder = "Search...",
+  searchPlaceholder = 'Search...',
   onRowClick,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
-  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+    []
+  );
+  const [columnVisibility, setColumnVisibility] =
+    React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
 
   // eslint-disable-next-line react-hooks/incompatible-library -- TanStack Table API design is incompatible with React Compiler but works correctly
@@ -70,10 +73,14 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="space-y-4">
-      <DataTableToolbar table={table} searchKey={searchKey} searchPlaceholder={searchPlaceholder} />
+      <DataTableToolbar
+        table={table}
+        searchKey={searchKey}
+        searchPlaceholder={searchPlaceholder}
+      />
       <div
         className={cn(
-          "border-border bg-card [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar-thumb]:bg-border overflow-x-auto scroll-smooth border [&::-webkit-scrollbar]:h-2",
+          'border-border bg-card [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar-thumb]:bg-border overflow-x-auto scroll-smooth border [&::-webkit-scrollbar]:h-2',
           mode.radius,
           `[&::-webkit-scrollbar-thumb]:${mode.radius}`
         )}
@@ -88,10 +95,16 @@ export function DataTable<TData, TValue>({
                 {headerGroup.headers.map((header) => {
                   if (!header || !header.column) return null;
                   return (
-                    <TableHead key={header.id} className="text-foreground font-semibold">
+                    <TableHead
+                      key={header.id}
+                      className="text-foreground font-semibold"
+                    >
                       {header.isPlaceholder
                         ? null
-                        : flexRender(header.column.columnDef.header, header.getContext())}
+                        : flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
                     </TableHead>
                   );
                 })}
@@ -103,32 +116,43 @@ export function DataTable<TData, TValue>({
               table.getRowModel().rows.map((row, index) => (
                 <TableRow
                   key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
+                  data-state={row.getIsSelected() && 'selected'}
                   onClick={() => onRowClick?.(row.original)}
-                  className={`border-foreground/10 border-b ${index % 2 === 0 ? "bg-card" : "bg-muted"} ${onRowClick ? "hover:bg-muted/50 cursor-pointer" : ""} ${row.getIsSelected() ? "bg-primary/10" : ""} `}
+                  className={`border-foreground/10 border-b ${index % 2 === 0 ? 'bg-card' : 'bg-muted'} ${onRowClick ? 'hover:bg-muted/50 cursor-pointer' : ''} ${row.getIsSelected() ? 'bg-primary/10' : ''} `}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
                     </TableCell>
                   ))}
                 </TableRow>
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={columns.length} className="h-24 text-center">
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center"
+                >
                   <div className="flex flex-col items-center justify-center gap-2">
-                    <p className={cn("text-muted-foreground text-xs", mode.font)}>
+                    <p
+                      className={cn('text-muted-foreground text-xs', mode.font)}
+                    >
                       No results found.
                     </p>
-                    {searchKey && !!table.getColumn(searchKey)?.getFilterValue() && (
-                      <button
-                        onClick={() => table.getColumn(searchKey)?.setFilterValue("")}
-                        className="text-primary text-xs hover:underline"
-                      >
-                        Clear search
-                      </button>
-                    )}
+                    {searchKey &&
+                      !!table.getColumn(searchKey)?.getFilterValue() && (
+                        <button
+                          onClick={() =>
+                            table.getColumn(searchKey)?.setFilterValue('')
+                          }
+                          className="text-primary text-xs hover:underline"
+                        >
+                          Clear search
+                        </button>
+                      )}
                   </div>
                 </TableCell>
               </TableRow>

@@ -40,7 +40,10 @@ interface SEOScore {
  * @param text - Content to analyze
  * @param wordsPerMinute - Average reading speed (default: 200)
  */
-export function calculateReadingTime(text: string, wordsPerMinute: number = 200): number {
+export function calculateReadingTime(
+  text: string,
+  wordsPerMinute: number = 200
+): number {
   const words = text.trim().split(/\s+/).length;
   return Math.ceil(words / wordsPerMinute);
 }
@@ -56,13 +59,16 @@ export function countWords(text: string): number {
  * Calculate keyword density
  * Returns percentage of text that each keyword represents
  */
-export function calculateKeywordDensity(text: string, keywords: string[]): Record<string, number> {
+export function calculateKeywordDensity(
+  text: string,
+  keywords: string[]
+): Record<string, number> {
   const lowerText = text.toLowerCase();
   const totalWords = countWords(text);
   const density: Record<string, number> = {};
 
   keywords.forEach((keyword) => {
-    const regex = new RegExp(`\\b${keyword.toLowerCase()}\\b`, "g");
+    const regex = new RegExp(`\\b${keyword.toLowerCase()}\\b`, 'g');
     const matches = lowerText.match(regex);
     const count = matches ? matches.length : 0;
     density[keyword] = parseFloat(((count / totalWords) * 100).toFixed(2));
@@ -79,7 +85,10 @@ export function calculateKeywordDensity(text: string, keywords: string[]): Recor
 export function calculateReadabilityScore(text: string): number {
   const sentences = text.split(/[.!?]+/).filter((s) => s.trim().length > 0);
   const words = text.trim().split(/\s+/);
-  const syllables = words.reduce((count, word) => count + countSyllables(word), 0);
+  const syllables = words.reduce(
+    (count, word) => count + countSyllables(word),
+    0
+  );
 
   if (sentences.length === 0 || words.length === 0) return 0;
 
@@ -87,7 +96,8 @@ export function calculateReadabilityScore(text: string): number {
   const avgSyllablesPerWord = syllables / words.length;
 
   // Flesch Reading Ease formula
-  const score = 206.835 - 1.015 * avgWordsPerSentence - 84.6 * avgSyllablesPerWord;
+  const score =
+    206.835 - 1.015 * avgWordsPerSentence - 84.6 * avgSyllablesPerWord;
 
   return Math.max(0, Math.min(100, Math.round(score)));
 }
@@ -103,9 +113,9 @@ function countSyllables(word: string): number {
   let count = vowels ? vowels.length : 0;
 
   // Subtract silent e
-  if (word.endsWith("e")) count--;
+  if (word.endsWith('e')) count--;
   // Subtract silent endings
-  if (word.endsWith("le") || word.endsWith("les")) count++;
+  if (word.endsWith('le') || word.endsWith('les')) count++;
 
   return Math.max(1, count);
 }
@@ -114,7 +124,9 @@ function countSyllables(word: string): number {
  * Extract heading structure from HTML or markdown
  * Critical for AEO - helps with featured snippet selection
  */
-export function extractHeadings(html: string): { level: number; text: string }[] {
+export function extractHeadings(
+  html: string
+): { level: number; text: string }[] {
   const headingRegex = /<h([1-6])[^>]*>(.*?)<\/h\1>|^(#{1,6})\s+(.+)$/gim;
   const headings: { level: number; text: string }[] = [];
 
@@ -125,7 +137,7 @@ export function extractHeadings(html: string): { level: number; text: string }[]
       let text = match[2];
       const htmlTagPattern = /<[^>]*>/g;
       while (htmlTagPattern.test(text)) {
-        text = text.replace(htmlTagPattern, "");
+        text = text.replace(htmlTagPattern, '');
       }
       headings.push({
         level: parseInt(match[1]),
@@ -188,7 +200,10 @@ export function analyzeContent(text: string): ContentAnalysis {
  * Score content for SEO/AEO optimization
  * Returns 0-100 score with recommendations
  */
-export function scoreContent(text: string, targetKeywords: string[] = []): SEOScore {
+export function scoreContent(
+  text: string,
+  targetKeywords: string[] = []
+): SEOScore {
   const analysis = analyzeContent(text);
   const recommendations: string[] = [];
   let readabilityScore = 0;
@@ -199,49 +214,55 @@ export function scoreContent(text: string, targetKeywords: string[] = []): SEOSc
   // Readability (30 points)
   if (analysis.readabilityScore >= 60 && analysis.readabilityScore <= 70) {
     readabilityScore = 30;
-  } else if (analysis.readabilityScore >= 50 && analysis.readabilityScore <= 80) {
+  } else if (
+    analysis.readabilityScore >= 50 &&
+    analysis.readabilityScore <= 80
+  ) {
     readabilityScore = 20;
-    recommendations.push("Improve readability to 60-70 range for optimal comprehension");
+    recommendations.push(
+      'Improve readability to 60-70 range for optimal comprehension'
+    );
   } else {
     readabilityScore = 10;
-    recommendations.push("Readability needs improvement - simplify sentences");
+    recommendations.push('Readability needs improvement - simplify sentences');
   }
 
   // Structure (30 points)
   if (analysis.headingStructure.length > 0) {
     structureScore += 10;
   } else {
-    recommendations.push("Add headings (H2, H3) to improve structure");
+    recommendations.push('Add headings (H2, H3) to improve structure');
   }
 
   if (analysis.wordCount >= 300) {
     structureScore += 10;
   } else {
-    recommendations.push("Increase content length to at least 300 words");
+    recommendations.push('Increase content length to at least 300 words');
   }
 
   if (analysis.paragraphCount >= 3) {
     structureScore += 10;
   } else {
-    recommendations.push("Break content into more paragraphs for readability");
+    recommendations.push('Break content into more paragraphs for readability');
   }
 
   // Keywords (20 points)
   if (targetKeywords.length > 0) {
     const density = calculateKeywordDensity(text, targetKeywords);
     const avgDensity =
-      Object.values(density).reduce((sum, d) => sum + d, 0) / targetKeywords.length;
+      Object.values(density).reduce((sum, d) => sum + d, 0) /
+      targetKeywords.length;
 
     if (avgDensity >= 1 && avgDensity <= 3) {
       keywordsScore = 20;
     } else if (avgDensity > 0 && avgDensity < 1) {
       keywordsScore = 10;
-      recommendations.push("Increase keyword usage (target 1-3% density)");
+      recommendations.push('Increase keyword usage (target 1-3% density)');
     } else if (avgDensity > 3) {
       keywordsScore = 10;
-      recommendations.push("Reduce keyword density to avoid over-optimization");
+      recommendations.push('Reduce keyword density to avoid over-optimization');
     } else {
-      recommendations.push("Add target keywords to content");
+      recommendations.push('Add target keywords to content');
     }
   }
 
@@ -249,13 +270,13 @@ export function scoreContent(text: string, targetKeywords: string[] = []): SEOSc
   if (analysis.hasQuestions) {
     aeoScore += 7;
   } else {
-    recommendations.push("Add question-based headings for featured snippets");
+    recommendations.push('Add question-based headings for featured snippets');
   }
 
   if (analysis.hasList) {
     aeoScore += 7;
   } else {
-    recommendations.push("Add lists or numbered steps for better AEO");
+    recommendations.push('Add lists or numbered steps for better AEO');
   }
 
   if (analysis.hasTable) {
@@ -332,7 +353,9 @@ export function extractKeyFacts(text: string): string[] {
   sentences.forEach((sentence) => {
     const trimmed = sentence.trim();
     if (
-      /\b(is|are|was|were|means|refers to|defined as|equals|represents)\b/i.test(trimmed) ||
+      /\b(is|are|was|were|means|refers to|defined as|equals|represents)\b/i.test(
+        trimmed
+      ) ||
       /\d+%|\d+x|#\d+/.test(trimmed) ||
       trimmed.length > 20
     ) {

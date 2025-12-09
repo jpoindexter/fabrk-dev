@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { KpiCard } from "@/components/ui/kpi-card";
-import { DollarSign, Users, TrendingUp, Activity } from "lucide-react";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { KpiCard } from '@/components/ui/kpi-card';
+import { DollarSign, Users, TrendingUp, Activity } from 'lucide-react';
 
 export default function KpiCardPage() {
   return (
@@ -14,8 +14,10 @@ export default function KpiCardPage() {
       importCode={`import { KpiCard } from "@/components/ui/kpi-card";`}
       mainPreview={{
         preview: (
-          <div className="border border-border bg-background p-6 font-mono">
-            <div className="mb-4 font-mono text-xs text-muted-foreground">[METRICS]: REVENUE_INDICATOR</div>
+          <div className="border-border bg-background border p-6 font-mono">
+            <div className="text-muted-foreground mb-4 font-mono text-xs">
+              [METRICS]: REVENUE_INDICATOR
+            </div>
             <KpiCard
               title="Total Revenue"
               value="$45,231"
@@ -35,12 +37,14 @@ export default function KpiCardPage() {
       }}
       variants={[
         {
-          title: "With Icon",
-          description: "KPI card with custom icon",
+          title: 'With Icon',
+          description: 'KPI card with custom icon',
           preview: (
-            <div className="grid gap-4 md:grid-cols-2 border border-border bg-background p-6 font-mono">
+            <div className="border-border bg-background grid gap-4 border p-6 font-mono md:grid-cols-2">
               <div>
-                <div className="mb-2 font-mono text-xs text-muted-foreground">[KPI_01]:</div>
+                <div className="text-muted-foreground mb-2 font-mono text-xs">
+                  [KPI_01]:
+                </div>
                 <KpiCard
                   title="Revenue"
                   value="$45,231"
@@ -50,7 +54,9 @@ export default function KpiCardPage() {
                 />
               </div>
               <div>
-                <div className="mb-2 font-mono text-xs text-muted-foreground">[KPI_02]:</div>
+                <div className="text-muted-foreground mb-2 font-mono text-xs">
+                  [KPI_02]:
+                </div>
                 <KpiCard
                   title="Active Users"
                   value="2,350"
@@ -78,11 +84,13 @@ export default function KpiCardPage() {
 />`,
         },
         {
-          title: "Downward Trend",
-          description: "Display negative changes with down trend",
+          title: 'Downward Trend',
+          description: 'Display negative changes with down trend',
           preview: (
-            <div className="border border-border bg-background p-6 font-mono">
-              <div className="mb-4 font-mono text-xs text-muted-foreground">[ALERT]: DECLINING_METRIC</div>
+            <div className="border-border bg-background border p-6 font-mono">
+              <div className="text-muted-foreground mb-4 font-mono text-xs">
+                [ALERT]: DECLINING_METRIC
+              </div>
               <KpiCard
                 title="Bounce Rate"
                 value="42.5%"
@@ -103,11 +111,13 @@ export default function KpiCardPage() {
 />`,
         },
         {
-          title: "Neutral Trend",
-          description: "Show no significant change with neutral indicator",
+          title: 'Neutral Trend',
+          description: 'Show no significant change with neutral indicator',
           preview: (
-            <div className="border border-border bg-background p-6 font-mono">
-              <div className="mb-4 font-mono text-xs text-muted-foreground">[STATUS]: STABLE_METRIC</div>
+            <div className="border-border bg-background border p-6 font-mono">
+              <div className="text-muted-foreground mb-4 font-mono text-xs">
+                [STATUS]: STABLE_METRIC
+              </div>
               <KpiCard
                 title="Conversion Rate"
                 value="3.2%"
@@ -126,16 +136,14 @@ export default function KpiCardPage() {
 />`,
         },
         {
-          title: "Without Change Indicator",
-          description: "Simple KPI card without trend",
+          title: 'Without Change Indicator',
+          description: 'Simple KPI card without trend',
           preview: (
-            <div className="border border-border bg-background p-6 font-mono">
-              <div className="mb-4 font-mono text-xs text-muted-foreground">[METRIC]: TOTAL_ORDERS</div>
-              <KpiCard
-                title="Total Orders"
-                value="1,234"
-                subtitle="all time"
-              />
+            <div className="border-border bg-background border p-6 font-mono">
+              <div className="text-muted-foreground mb-4 font-mono text-xs">
+                [METRIC]: TOTAL_ORDERS
+              </div>
+              <KpiCard title="Total Orders" value="1,234" subtitle="all time" />
             </div>
           ),
           code: `<KpiCard
@@ -145,11 +153,13 @@ export default function KpiCardPage() {
 />`,
         },
         {
-          title: "Dashboard Grid",
-          description: "Multiple KPI cards in a grid layout",
+          title: 'Dashboard Grid',
+          description: 'Multiple KPI cards in a grid layout',
           preview: (
-            <div className="border border-border bg-background p-6 font-mono">
-              <div className="mb-4 font-mono text-xs text-muted-foreground">[DASHBOARD]: OVERVIEW_METRICS</div>
+            <div className="border-border bg-background border p-6 font-mono">
+              <div className="text-muted-foreground mb-4 font-mono text-xs">
+                [DASHBOARD]: OVERVIEW_METRICS
+              </div>
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                 <KpiCard
                   title="Revenue"
@@ -192,53 +202,53 @@ export default function KpiCardPage() {
       ]}
       props={[
         {
-          name: "title",
-          type: "string",
+          name: 'title',
+          type: 'string',
           required: true,
-          description: "The KPI label/title",
+          description: 'The KPI label/title',
         },
         {
-          name: "value",
-          type: "string | number",
+          name: 'value',
+          type: 'string | number',
           required: true,
-          description: "The primary value to display",
+          description: 'The primary value to display',
         },
         {
-          name: "change",
-          type: "number",
-          description: "Percentage change value (absolute value displayed)",
+          name: 'change',
+          type: 'number',
+          description: 'Percentage change value (absolute value displayed)',
         },
         {
-          name: "trend",
+          name: 'trend',
           type: '"up" | "down" | "neutral"',
-          description: "Trend direction with corresponding color",
+          description: 'Trend direction with corresponding color',
         },
         {
-          name: "subtitle",
-          type: "string",
-          description: "Additional context text below the change indicator",
+          name: 'subtitle',
+          type: 'string',
+          description: 'Additional context text below the change indicator',
         },
         {
-          name: "icon",
-          type: "React.ReactNode",
-          description: "Icon element to display in the header",
+          name: 'icon',
+          type: 'React.ReactNode',
+          description: 'Icon element to display in the header',
         },
         {
-          name: "className",
-          type: "string",
-          description: "Additional CSS classes for the card",
+          name: 'className',
+          type: 'string',
+          description: 'Additional CSS classes for the card',
         },
       ]}
       accessibility={[
-        "Uses Card component with semantic structure",
-        "Trend icons use lucide-react with proper sizing",
-        "Color-coded trends: success (up), destructive (down), muted (neutral)",
-        "Change values automatically use Math.abs for display",
-        "Title uses CardTitle for proper heading hierarchy",
-        "All text uses design tokens for theme compatibility",
+        'Uses Card component with semantic structure',
+        'Trend icons use lucide-react with proper sizing',
+        'Color-coded trends: success (up), destructive (down), muted (neutral)',
+        'Change values automatically use Math.abs for display',
+        'Title uses CardTitle for proper heading hierarchy',
+        'All text uses design tokens for theme compatibility',
       ]}
-      previous={{ title: "Heatmap", href: "/docs/components/heatmap" }}
-      next={{ title: "Member Card", href: "/docs/components/member-card" }}
+      previous={{ title: 'Heatmap', href: '/docs/components/heatmap' }}
+      next={{ title: 'Member Card', href: '/docs/components/member-card' }}
     />
   );
 }

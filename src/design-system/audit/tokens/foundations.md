@@ -264,15 +264,15 @@ Base unit: 4px (0.25rem)
 ### Current Configuration
 
 ```typescript
-export const CURRENT_MODE: VisualMode = "sharp";
+export const CURRENT_MODE: VisualMode = 'sharp';
 
 export const mode = {
-  radius: "rounded-none",
-  font: "font-mono",
-  buttonPrefix: "> ",
-  labelFormat: "brackets",
-  cardHeader: "bracketed",
-  textTransform: "uppercase",
+  radius: 'rounded-none',
+  font: 'font-mono',
+  buttonPrefix: '> ',
+  labelFormat: 'brackets',
+  cardHeader: 'bracketed',
+  textTransform: 'uppercase',
 };
 ```
 

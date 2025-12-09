@@ -4,20 +4,20 @@
  * Production-ready
  */
 
-"use client";
+'use client';
 
-import { useState } from "react";
-import { PricingHeader } from "./components/pricing-header";
-import { PricingCards } from "./components/pricing-cards";
-import { ComparisonTable } from "./components/comparison-table";
-import { FAQSection } from "./components/faq-section";
-import { FeaturesCard } from "./components/features-card";
-import { plans, faqs, comparisonFeatures } from "./components/pricing-data";
-import { Card, CardHeader, TemplatePageHeader } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { CodeBlock } from "@/components/ui/code-block";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { useState } from 'react';
+import { PricingHeader } from './components/pricing-header';
+import { PricingCards } from './components/pricing-cards';
+import { ComparisonTable } from './components/comparison-table';
+import { FAQSection } from './components/faq-section';
+import { FeaturesCard } from './components/features-card';
+import { plans, faqs, comparisonFeatures } from './components/pricing-data';
+import { Card, CardHeader, TemplatePageHeader } from '@/components/ui/card';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { CodeBlock } from '@/components/ui/code-block';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 const templateCode = `"use client";
 
@@ -254,14 +254,14 @@ export default function PricingPageTemplate() {
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
-                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  'h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0',
                   mode.radius
                 )}
               >
                 <TabsTrigger
                   value="preview"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -271,7 +271,7 @@ export default function PricingPageTemplate() {
                 <TabsTrigger
                   value="code"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -295,7 +295,11 @@ export default function PricingPageTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+                <CodeBlock
+                  code={templateCode}
+                  language="tsx"
+                  maxHeight="600px"
+                />
               </div>
             </Card>
           </TabsContent>

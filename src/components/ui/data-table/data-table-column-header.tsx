@@ -1,11 +1,13 @@
-"use client";
+'use client';
 
-import { Column } from "@tanstack/react-table";
-import { ArrowDown, ArrowUp, ChevronsUpDown } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Column } from '@tanstack/react-table';
+import { ArrowDown, ArrowUp, ChevronsUpDown } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
-interface DataTableColumnHeaderProps<TData, TValue>
-  extends React.HTMLAttributes<HTMLDivElement> {
+interface DataTableColumnHeaderProps<
+  TData,
+  TValue,
+> extends React.HTMLAttributes<HTMLDivElement> {
   column: Column<TData, TValue>;
   title: string;
 }
@@ -20,15 +22,15 @@ export function DataTableColumnHeader<TData, TValue>({
   }
 
   return (
-    <div className={cn("flex items-center space-x-2", className)}>
+    <div className={cn('flex items-center space-x-2', className)}>
       <button
-        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        className="flex items-center gap-2 hover:text-primary"
+        onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        className="hover:text-primary flex items-center gap-2"
       >
         <span>{title}</span>
-        {column.getIsSorted() === "desc" ? (
+        {column.getIsSorted() === 'desc' ? (
           <ArrowDown className="h-4 w-4" />
-        ) : column.getIsSorted() === "asc" ? (
+        ) : column.getIsSorted() === 'asc' ? (
           <ArrowUp className="h-4 w-4" />
         ) : (
           <ChevronsUpDown className="h-4 w-4 opacity-50" />

@@ -3,13 +3,13 @@
  * Key reasons to choose Fabrk
  */
 
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { Clock, Shield, Layers, Gift, type LucideIcon } from "lucide-react";
-import { Badge, Card, CardHeader, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+import { motion } from 'framer-motion';
+import { Clock, Shield, Layers, Gift, type LucideIcon } from 'lucide-react';
+import { Badge, Card, CardHeader, CardContent } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 interface Reason {
   id: string;
@@ -20,32 +20,32 @@ interface Reason {
 
 const reasons: Reason[] = [
   {
-    id: "0x10",
-    title: "SAVE_WEEKS_OF_DEVELOPMENT",
+    id: '0x10',
+    title: 'SAVE_WEEKS_OF_DEVELOPMENT',
     icon: Clock,
     description:
-      "What normally takes 2-4 weeks to build from scratch is ready in minutes. Focus on your unique features, not boilerplate.",
+      'What normally takes 2-4 weeks to build from scratch is ready in minutes. Focus on your unique features, not boilerplate.',
   },
   {
-    id: "0x11",
-    title: "PRODUCTION_GRADE_SECURITY",
+    id: '0x11',
+    title: 'PRODUCTION_GRADE_SECURITY',
     icon: Shield,
     description:
-      "Security headers, rate limiting, token hashing, CSRF protection—all the security best practices implemented and tested.",
+      'Security headers, rate limiting, token hashing, CSRF protection—all the security best practices implemented and tested.',
   },
   {
-    id: "0x12",
-    title: "MODERN_TECH_STACK",
+    id: '0x12',
+    title: 'MODERN_TECH_STACK',
     icon: Layers,
     description:
       "Built on Next.js 15, TypeScript, Prisma, NextAuth v5, and Stripe. The tools you're already using or want to learn.",
   },
   {
-    id: "0x13",
-    title: "LIFETIME_UPDATES",
+    id: '0x13',
+    title: 'LIFETIME_UPDATES',
     icon: Gift,
     description:
-      "One-time payment, lifetime access to all updates. No subscriptions, no hidden fees.",
+      'One-time payment, lifetime access to all updates. No subscriptions, no hidden fees.',
   },
 ];
 
@@ -62,7 +62,12 @@ export function WhyChooseSection() {
               viewport={{ once: true }}
             >
               <Badge code="0x05" label="WHY_FABRK" className="mb-4" />
-              <h2 className={cn("mb-4 text-2xl font-semibold lg:text-4xl", mode.font)}>
+              <h2
+                className={cn(
+                  'mb-4 text-2xl font-semibold lg:text-4xl',
+                  mode.font
+                )}
+              >
                 WHY_CHOOSE_FABRK
               </h2>
             </motion.div>
@@ -72,7 +77,7 @@ export function WhyChooseSection() {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <p className={cn("text-muted-foreground text-sm", mode.font)}>
+              <p className={cn('text-muted-foreground text-sm', mode.font)}>
                 We're not just selling code, we're selling time
               </p>
             </motion.div>
@@ -105,9 +110,11 @@ export function WhyChooseSection() {
                     }
                   />
                   <CardContent padding="md">
-                    <div className={cn("text-xs", mode.font)}>
+                    <div className={cn('text-xs', mode.font)}>
                       <span className="text-muted-foreground">[DESC]: </span>
-                      <span className="text-foreground">{item.description}</span>
+                      <span className="text-foreground">
+                        {item.description}
+                      </span>
                     </div>
                   </CardContent>
                 </Card>

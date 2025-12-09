@@ -1,12 +1,19 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard, DocsCallout } from "@/components/docs";
-import Link from "next/link";
-import { CreditCard, RefreshCw, Clock, Users, Bell, Shield } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard, DocsCallout } from '@/components/docs';
+import Link from 'next/link';
+import {
+  CreditCard,
+  RefreshCw,
+  Clock,
+  Users,
+  Bell,
+  Shield,
+} from 'lucide-react';
 
 export const metadata = {
-  title: "Stripe Payments - Fabrk Docs",
+  title: 'Stripe Payments - Fabrk Docs',
   description:
-    "Accept payments with Stripe. Set up subscriptions, one-time payments, webhooks, and customer portal integration.",
+    'Accept payments with Stripe. Set up subscriptions, one-time payments, webhooks, and customer portal integration.',
 };
 
 export default function PaymentsPage() {
@@ -20,55 +27,59 @@ export default function PaymentsPage() {
       features={[
         {
           icon: CreditCard,
-          title: "One-Time Payments",
+          title: 'One-Time Payments',
           description:
-            "Sell lifetime access or single products. Customer pays once, gets access forever.",
+            'Sell lifetime access or single products. Customer pays once, gets access forever.',
         },
         {
           icon: RefreshCw,
-          title: "Subscriptions",
-          description: "Monthly or yearly recurring payments. Automatic billing and renewal.",
+          title: 'Subscriptions',
+          description:
+            'Monthly or yearly recurring payments. Automatic billing and renewal.',
         },
         {
           icon: Clock,
-          title: "Free Trials",
-          description: "Let users try before they buy. Converts to paid at trial end.",
+          title: 'Free Trials',
+          description:
+            'Let users try before they buy. Converts to paid at trial end.',
         },
         {
           icon: Users,
-          title: "Customer Portal",
-          description: "Users manage their own billing - update card, change plan, cancel.",
+          title: 'Customer Portal',
+          description:
+            'Users manage their own billing - update card, change plan, cancel.',
         },
         {
           icon: Bell,
-          title: "Webhook Handling",
-          description: "Your app reacts to payment events in real-time.",
+          title: 'Webhook Handling',
+          description: 'Your app reacts to payment events in real-time.',
         },
         {
           icon: Shield,
-          title: "Duplicate Protection",
-          description: "Prevents accidental double charges from page refreshes.",
+          title: 'Duplicate Protection',
+          description:
+            'Prevents accidental double charges from page refreshes.',
         },
       ]}
       setup={[
         {
-          title: "Create Stripe Account",
+          title: 'Create Stripe Account',
           description:
             "Go to stripe.com and create an account. It's free to sign up. You won't pay anything until you process real payments.",
         },
         {
-          title: "Get API Keys",
+          title: 'Get API Keys',
           description:
-            "In the Stripe Dashboard, go to Developers → API keys. Copy your test keys. Test keys start with sk_test_ and pk_test_. Live keys start with sk_live_ and pk_live_.",
+            'In the Stripe Dashboard, go to Developers → API keys. Copy your test keys. Test keys start with sk_test_ and pk_test_. Live keys start with sk_live_ and pk_live_.',
         },
         {
-          title: "Create Products",
+          title: 'Create Products',
           description:
-            "Go to Products in Stripe Dashboard. Create products for each pricing tier (e.g., Starter, Pro, Enterprise). Each product has a price ID like price_1234567890.",
+            'Go to Products in Stripe Dashboard. Create products for each pricing tier (e.g., Starter, Pro, Enterprise). Each product has a price ID like price_1234567890.',
         },
         {
-          title: "Add Keys to App",
-          description: "Add these to your .env.local file",
+          title: 'Add Keys to App',
+          description: 'Add these to your .env.local file',
           code: `# Stripe API Keys (test mode)
 STRIPE_SECRET_KEY="sk_test_your_secret_key"
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_your_publishable_key"
@@ -77,12 +88,12 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_your_publishable_key"
 NEXT_PUBLIC_STRIPE_PRICE_STARTER="price_your_starter_price"
 NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL="price_your_pro_price"
 NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE="price_your_enterprise_price"`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Setup Webhooks",
+          title: 'Setup Webhooks',
           description:
-            "Install the Stripe CLI to test webhooks locally. This gives you a webhook secret starting with whsec_.",
+            'Install the Stripe CLI to test webhooks locally. This gives you a webhook secret starting with whsec_.',
           code: `# Install Stripe CLI (macOS)
 brew install stripe/stripe-cli/stripe
 
@@ -91,14 +102,14 @@ stripe login
 
 # Forward webhooks to your local app
 npm run stripe:listen`,
-          language: "bash",
+          language: 'bash',
           tip: 'Add STRIPE_WEBHOOK_SECRET="whsec_your_webhook_secret" to your .env.local',
         },
       ]}
       usage={[
         {
-          title: "Checkout Button Component",
-          description: "Add this to any pricing card or button",
+          title: 'Checkout Button Component',
+          description: 'Add this to any pricing card or button',
           code: `"use client";
 
 import { useState } from "react";
@@ -139,11 +150,11 @@ export function CheckoutButton({ priceId, planName }) {
     </Button>
   );
 }`,
-          language: "tsx",
+          language: 'tsx',
         },
         {
-          title: "Customer Portal Link",
-          description: "Let users manage their own subscription",
+          title: 'Customer Portal Link',
+          description: 'Let users manage their own subscription',
           code: `"use client";
 
 import { Button } from "@/components/ui/button";
@@ -164,11 +175,11 @@ export function ManageBillingButton() {
     </Button>
   );
 }`,
-          language: "tsx",
+          language: 'tsx',
         },
       ]}
-      previous={{ title: "Database", href: "/docs/features/database" }}
-      next={{ title: "Google OAuth", href: "/docs/features/google-oauth" }}
+      previous={{ title: 'Database', href: '/docs/features/database' }}
+      next={{ title: 'Google OAuth', href: '/docs/features/google-oauth' }}
     >
       {/* Why Stripe Section */}
       <DocsSection title="Why Stripe">
@@ -199,19 +210,25 @@ export function ManageBillingButton() {
       {/* Understanding Webhooks */}
       <DocsSection title="Understanding Webhooks">
         <DocsCallout variant="info" title="Think of webhooks like a doorbell">
-          When Stripe processes a payment, it &quot;rings your doorbell&quot; (sends a webhook) to
-          let you know something happened. Your app answers the door and takes appropriate action.
-          Without webhooks, you&apos;d have to constantly ask Stripe &quot;did anyone pay yet?&quot;
-          - which is inefficient and slow. With webhooks, Stripe tells you instantly.
+          When Stripe processes a payment, it &quot;rings your doorbell&quot;
+          (sends a webhook) to let you know something happened. Your app answers
+          the door and takes appropriate action. Without webhooks, you&apos;d
+          have to constantly ask Stripe &quot;did anyone pay yet?&quot; - which
+          is inefficient and slow. With webhooks, Stripe tells you instantly.
         </DocsCallout>
         <DocsCard title="WEBHOOK_EVENTS">
           <p className="mb-6">
-            Common webhook events: <code className="bg-muted px-1">checkout.session.completed</code>{" "}
+            Common webhook events:{' '}
+            <code className="bg-muted px-1">checkout.session.completed</code>{' '}
             (someone paid),
-            <code className="bg-muted ml-1 px-1">customer.subscription.deleted</code> (someone
-            cancelled),
-            <code className="bg-muted ml-1 px-1">invoice.payment_failed</code> (payment didn&apos;t
-            go through).
+            <code className="bg-muted ml-1 px-1">
+              customer.subscription.deleted
+            </code>{' '}
+            (someone cancelled),
+            <code className="bg-muted ml-1 px-1">
+              invoice.payment_failed
+            </code>{' '}
+            (payment didn&apos;t go through).
           </p>
         </DocsCard>
       </DocsSection>
@@ -220,8 +237,9 @@ export function ManageBillingButton() {
       <DocsSection title="Testing Payments">
         <DocsCard title="TEST_CARDS">
           <p className="mb-6">
-            Always test payments before going live. Stripe provides test card numbers that simulate
-            different scenarios without charging real money.
+            Always test payments before going live. Stripe provides test card
+            numbers that simulate different scenarios without charging real
+            money.
           </p>
           Test Card Numbers
           <div className="mt-2 space-y-2">
@@ -234,7 +252,9 @@ export function ManageBillingButton() {
               <code className="bg-muted px-1">4000 0000 0000 0002</code>
             </div>
             <div className="border-border flex justify-between border-b pb-2">
-              <span className="text-muted-foreground">Requires authentication</span>
+              <span className="text-muted-foreground">
+                Requires authentication
+              </span>
               <code className="bg-muted px-1">4000 0025 0000 3155</code>
             </div>
             <div className="flex justify-between">
@@ -243,7 +263,8 @@ export function ManageBillingButton() {
             </div>
           </div>
           <p className="mt-4">
-            Use any future expiration date, any 3-digit CVC, and any billing ZIP code.
+            Use any future expiration date, any 3-digit CVC, and any billing ZIP
+            code.
           </p>
         </DocsCard>
       </DocsSection>
@@ -256,8 +277,9 @@ export function ManageBillingButton() {
               How much does Stripe charge?
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
-              Standard pricing is 2.9% + 30 cents per successful transaction. For example, a $100
-              payment costs you $3.20. There are no monthly fees.
+              Standard pricing is 2.9% + 30 cents per successful transaction.
+              For example, a $100 payment costs you $3.20. There are no monthly
+              fees.
             </div>
           </details>
 
@@ -266,8 +288,9 @@ export function ManageBillingButton() {
               When do I get my money?
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
-              By default, Stripe sends payouts to your bank account on a 2-day rolling basis. You
-              can change this to daily or weekly in your Stripe settings.
+              By default, Stripe sends payouts to your bank account on a 2-day
+              rolling basis. You can change this to daily or weekly in your
+              Stripe settings.
             </div>
           </details>
 
@@ -276,8 +299,9 @@ export function ManageBillingButton() {
               What happens if a payment fails?
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
-              Stripe automatically retries failed subscription payments up to 4 times over a few
-              weeks. You&apos;ll receive webhook events to handle access accordingly.
+              Stripe automatically retries failed subscription payments up to 4
+              times over a few weeks. You&apos;ll receive webhook events to
+              handle access accordingly.
             </div>
           </details>
 
@@ -286,9 +310,9 @@ export function ManageBillingButton() {
               How do I handle refunds?
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
-              Issue refunds directly from the Stripe Dashboard. Go to the payment, click
-              &quot;Refund&quot;, and enter the amount. Stripe sends a webhook so you can revoke
-              access.
+              Issue refunds directly from the Stripe Dashboard. Go to the
+              payment, click &quot;Refund&quot;, and enter the amount. Stripe
+              sends a webhook so you can revoke access.
             </div>
           </details>
 
@@ -297,8 +321,9 @@ export function ManageBillingButton() {
               Can customers pay in different currencies?
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
-              Yes! Stripe supports 135+ currencies. You can create prices in different currencies or
-              let Stripe auto-convert based on the customer&apos;s location.
+              Yes! Stripe supports 135+ currencies. You can create prices in
+              different currencies or let Stripe auto-convert based on the
+              customer&apos;s location.
             </div>
           </details>
         </div>
@@ -319,7 +344,9 @@ export function ManageBillingButton() {
             </li>
             <li className="flex items-center gap-2">
               <input type="checkbox" className="rounded" readOnly />
-              <span>Add production webhook secret to your hosting provider</span>
+              <span>
+                Add production webhook secret to your hosting provider
+              </span>
             </li>
             <li className="flex items-center gap-2">
               <input type="checkbox" className="rounded" readOnly />
@@ -341,9 +368,14 @@ export function ManageBillingButton() {
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/trial">
-            <DocsCard title="FREE_TRIALS" className="hover:border-primary/50 h-full transition-all">
+            <DocsCard
+              title="FREE_TRIALS"
+              className="hover:border-primary/50 h-full transition-all"
+            >
               Free Trials
-              <p className="mb-6">Let users try your product before paying with trial periods.</p>
+              <p className="mb-6">
+                Let users try your product before paying with trial periods.
+              </p>
             </DocsCard>
           </Link>
           <Link href="/docs/features/emails">
@@ -351,7 +383,9 @@ export function ManageBillingButton() {
               title="TRANSACTIONAL_EMAILS"
               className="hover:border-primary/50 h-full transition-all"
             >
-              <p className="mb-6">Send purchase confirmations and invoices to customers.</p>
+              <p className="mb-6">
+                Send purchase confirmations and invoices to customers.
+              </p>
             </DocsCard>
           </Link>
         </div>

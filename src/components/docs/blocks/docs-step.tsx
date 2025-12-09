@@ -3,8 +3,8 @@
  * Consistent step badge styling across all docs
  */
 
-import { docsTypography } from "../typography";
-import { CodeBlock } from "@/components/ui/code-block";
+import { docsTypography } from '../typography';
+import { CodeBlock } from '@/components/ui/code-block';
 
 interface DocsStepProps {
   /** Step number (1, 2, 3...) */
@@ -28,7 +28,7 @@ export function DocsStep({
   title,
   description,
   code,
-  language = "bash",
+  language = 'bash',
   tip,
   children,
 }: DocsStepProps) {
@@ -38,19 +38,18 @@ export function DocsStep({
       <h3 className={`uppercase ${docsTypography.h3}`}>{title}</h3>
 
       {/* Description */}
-      {description && (
-        <p className={docsTypography.body}>{description}</p>
-      )}
+      {description && <p className={docsTypography.body}>{description}</p>}
 
       {/* Code block */}
-      {code && (
-        <CodeBlock code={code} language={language} />
-      )}
+      {code && <CodeBlock code={code} language={language} />}
 
       {/* Tip */}
       {tip && (
-        <p className={`border-l-2 border-primary/50 pl-4 ${docsTypography.caption}`}>
-          <span className="font-semibold uppercase text-primary">Tip:</span> {tip}
+        <p
+          className={`border-primary/50 border-l-2 pl-4 ${docsTypography.caption}`}
+        >
+          <span className="text-primary font-semibold uppercase">Tip:</span>{' '}
+          {tip}
         </p>
       )}
 

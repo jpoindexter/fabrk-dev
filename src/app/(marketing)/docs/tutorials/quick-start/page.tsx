@@ -1,10 +1,11 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsLinkCard } from "@/components/docs";
-import { Rocket, Layout, Settings, Upload } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsLinkCard } from '@/components/docs';
+import { Rocket, Layout, Settings, Upload } from 'lucide-react';
 
 export const metadata = {
-  title: "Quick Start Guide - Fabrk Docs",
-  description: "Launch your MVP in minutes. Assemble a production-ready landing page with authentication, payments, and core SaaS features.",
+  title: 'Quick Start Guide - Fabrk Docs',
+  description:
+    'Launch your MVP in minutes. Assemble a production-ready landing page with authentication, payments, and core SaaS features.',
 };
 
 export default function QuickStartPage() {
@@ -16,15 +17,31 @@ export default function QuickStartPage() {
       description="Assemble a production-ready landing page and core features in minutes."
       overview="This guide assumes you have completed the Getting Started setup and have your local development server running."
       features={[
-        { icon: Rocket, title: "Fast Setup", description: "Launch in minutes with pre-built components." },
-        { icon: Layout, title: "Landing Page", description: "Responsive, accessible landing sections." },
-        { icon: Settings, title: "Config", description: "Centralized app configuration." },
-        { icon: Upload, title: "Deploy", description: "Push to Vercel for production." },
+        {
+          icon: Rocket,
+          title: 'Fast Setup',
+          description: 'Launch in minutes with pre-built components.',
+        },
+        {
+          icon: Layout,
+          title: 'Landing Page',
+          description: 'Responsive, accessible landing sections.',
+        },
+        {
+          icon: Settings,
+          title: 'Config',
+          description: 'Centralized app configuration.',
+        },
+        {
+          icon: Upload,
+          title: 'Deploy',
+          description: 'Push to Vercel for production.',
+        },
       ]}
       usage={[
         {
-          title: "Assemble Landing Page",
-          description: "Update src/app/page.tsx with pre-built components",
+          title: 'Assemble Landing Page',
+          description: 'Update src/app/page.tsx with pre-built components',
           code: `import { Navigation } from "@/components/marketing/navigation";
 import { HeroSection } from "@/components/marketing/hero-section";
 import { FeaturesSection } from "@/components/marketing/features-section";
@@ -44,11 +61,11 @@ export default function HomePage() {
     </div>
   );
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Configure App Metadata",
-          description: "Open src/config.js to customize your app",
+          title: 'Configure App Metadata',
+          description: 'Open src/config.js to customize your app',
           code: `const config = {
   app: {
     name: "Acme Corp",
@@ -59,29 +76,30 @@ export default function HomePage() {
   },
   // ...
 };`,
-          language: "javascript",
+          language: 'javascript',
         },
         {
-          title: "Enable Lead Capture (Optional)",
-          description: "Swap the CTA for a waitlist form for Coming Soon pages",
+          title: 'Enable Lead Capture (Optional)',
+          description: 'Swap the CTA for a waitlist form for Coming Soon pages',
           code: `// In hero-section.tsx
 import { WaitlistForm } from "@/components/waitlist-form";
 
 // Replace Button with:
 <WaitlistForm />`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Production Deployment",
-          description: "Push to Vercel for automatic SSL, edge caching, and CI/CD",
+          title: 'Production Deployment',
+          description:
+            'Push to Vercel for automatic SSL, edge caching, and CI/CD',
           code: `git add .
 git commit -m "Initial MVP release"
 git push origin main`,
-          language: "bash",
+          language: 'bash',
         },
       ]}
-      previous={{ title: "Getting Started", href: "/docs/getting-started" }}
-      next={{ title: "Authentication", href: "/docs/tutorials/authentication" }}
+      previous={{ title: 'Getting Started', href: '/docs/getting-started' }}
+      next={{ title: 'Authentication', href: '/docs/tutorials/authentication' }}
     >
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">

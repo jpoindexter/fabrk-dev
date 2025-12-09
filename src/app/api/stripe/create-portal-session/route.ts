@@ -105,12 +105,12 @@
  * Alternative endpoint for creating billing portal sessions
  */
 
-import { auth } from "@/lib/auth";
-import { logger } from "@/lib/logger";
-import { prisma } from "@/lib/prisma";
-import { withRateLimit } from "@/lib/rate-limit/middleware";
-import { stripe } from "@/lib/stripe/client";
-import { NextRequest, NextResponse } from "next/server";
+import { auth } from '@/lib/auth';
+import { logger } from '@/lib/logger';
+import { prisma } from '@/lib/prisma';
+import { withRateLimit } from '@/lib/rate-limit/middleware';
+import { stripe } from '@/lib/stripe/client';
+import { NextRequest, NextResponse } from 'next/server';
 
 async function createPortalSessionHandler(_req: NextRequest) {
   try {
@@ -118,7 +118,7 @@ async function createPortalSessionHandler(_req: NextRequest) {
 
     if (!session?.user?.email) {
       return NextResponse.json(
-        { error: "Unauthorized - Please sign in" },
+        { error: 'Unauthorized - Please sign in' },
         { status: 401 }
       );
     }
@@ -129,15 +129,12 @@ async function createPortalSessionHandler(_req: NextRequest) {
     });
 
     if (!user) {
-      return NextResponse.json(
-        { error: "User not found" },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
 
     if (!user.customerId) {
       return NextResponse.json(
-        { error: "No billing account found. Please make a purchase first." },
+        { error: 'No billing account found. Please make a purchase first.' },
         { status: 400 }
       );
     }
@@ -148,7 +145,7 @@ async function createPortalSessionHandler(_req: NextRequest) {
       return_url: `${process.env.NEXTAUTH_URL}/billing`,
     });
 
-    logger.info("Created billing portal session", {
+    logger.info('Created billing portal session', {
       userId: user.id,
       customerId: user.customerId,
       portalSessionId: portalSession.id,
@@ -156,13 +153,13 @@ async function createPortalSessionHandler(_req: NextRequest) {
 
     return NextResponse.json({ url: portalSession.url });
   } catch (error: unknown) {
-    logger.error("Portal session creation error:", error);
+    logger.error('Portal session creation error:', error);
     return NextResponse.json(
-      { error: "Failed to create portal session" },
+      { error: 'Failed to create portal session' },
       { status: 500 }
     );
   }
 }
 
 // Apply rate limiting: 10 requests per minute for payment endpoints
-export const POST = withRateLimit(createPortalSessionHandler, "payment");
+export const POST = withRateLimit(createPortalSessionHandler, 'payment');

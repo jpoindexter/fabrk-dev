@@ -3,11 +3,11 @@
  * Step 1: Collect organization name, slug, and description
  */
 
-import * as React from "react";
-import { UseFormReturn } from "react-hook-form";
-import { Building2, ChevronRight, Loader2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import * as React from 'react';
+import { UseFormReturn } from 'react-hook-form';
+import { Building2, ChevronRight, Loader2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import {
   Form,
   FormControl,
@@ -16,9 +16,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 interface OrganizationFormData {
   name: string;
@@ -63,7 +63,9 @@ export function OrganizationDetailsStep({
                       {...field}
                     />
                   </FormControl>
-                  <FormDescription>The public name of your organization</FormDescription>
+                  <FormDescription>
+                    The public name of your organization
+                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -83,7 +85,8 @@ export function OrganizationDetailsStep({
                     />
                   </FormControl>
                   <FormDescription>
-                    Used in your organization's URL: /org/{field.value || "your-slug"}
+                    Used in your organization's URL: /org/
+                    {field.value || 'your-slug'}
                   </FormDescription>
                   <FormMessage />
                 </FormItem>

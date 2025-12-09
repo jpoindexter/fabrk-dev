@@ -70,7 +70,7 @@ The page already has proper suppression comments:
 ```tsx
 // Line 210 (in component-showcase.tsx example):
 // eslint-disable-next-line design-system/no-hardcoded-colors -- ColorPicker requires hex value
-const [color, setColor] = React.useState("#3b82f6");
+const [color, setColor] = React.useState('#3b82f6');
 ```
 
 ## Recommendation
@@ -79,8 +79,8 @@ const [color, setColor] = React.useState("#3b82f6");
 
 ```tsx
 // eslint-disable-next-line design-system/no-hardcoded-colors -- ColorPicker component data values
-const [color, setColor] = useState("#8b5cf6");
-const [compactColor, setCompactColor] = useState("#22C55E");
+const [color, setColor] = useState('#8b5cf6');
+const [compactColor, setCompactColor] = useState('#22C55E');
 ```
 
 ## Terminal Design Compliance

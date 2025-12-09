@@ -8,110 +8,116 @@
  * Next.js 16 requires ALL layouts to have <html> and <body> tags.
  */
 
-import type { Metadata } from "next";
-import { Suspense } from "react";
-import { Providers } from "@/components/providers";
-import { PostHogPageView } from "@/components/analytics/posthog-pageview";
-import { CookieConsent } from "@/components/cookie-consent";
-import { GeistSans } from "geist/font/sans";
-import localFont from "next/font/local";
-import { generateOrganizationSchema, generateProductSchema } from "@/lib/metadata";
-import { TerminalBackground } from "@/components/shared/terminal-background";
-import { ThemeScript } from "@/design-system/providers";
-import { env } from "@/lib/env";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Suspense } from 'react';
+import { Providers } from '@/components/providers';
+import { PostHogPageView } from '@/components/analytics/posthog-pageview';
+import { CookieConsent } from '@/components/cookie-consent';
+import { GeistSans } from 'geist/font/sans';
+import localFont from 'next/font/local';
+import {
+  generateOrganizationSchema,
+  generateProductSchema,
+} from '@/lib/metadata';
+import { TerminalBackground } from '@/components/shared/terminal-background';
+import { ThemeScript } from '@/design-system/providers';
+import { env } from '@/lib/env';
+import './globals.css';
 
 const jetbrainsMono = localFont({
   src: [
     {
-      path: "../../public/fonts/jetbrains-mono/JetBrainsMono-Regular.woff2",
-      weight: "400",
-      style: "normal",
+      path: '../../public/fonts/jetbrains-mono/JetBrainsMono-Regular.woff2',
+      weight: '400',
+      style: 'normal',
     },
     {
-      path: "../../public/fonts/jetbrains-mono/JetBrainsMono-Medium.woff2",
-      weight: "500",
-      style: "normal",
+      path: '../../public/fonts/jetbrains-mono/JetBrainsMono-Medium.woff2',
+      weight: '500',
+      style: 'normal',
     },
     {
-      path: "../../public/fonts/jetbrains-mono/JetBrainsMono-SemiBold.woff2",
-      weight: "600",
-      style: "normal",
+      path: '../../public/fonts/jetbrains-mono/JetBrainsMono-SemiBold.woff2',
+      weight: '600',
+      style: 'normal',
     },
     {
-      path: "../../public/fonts/jetbrains-mono/JetBrainsMono-Bold.woff2",
-      weight: "700",
-      style: "normal",
+      path: '../../public/fonts/jetbrains-mono/JetBrainsMono-Bold.woff2',
+      weight: '700',
+      style: 'normal',
     },
   ],
-  variable: "--font-jetbrains-mono",
-  display: "swap",
+  variable: '--font-jetbrains-mono',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://fabrk.dev"),
+  metadataBase: new URL('https://fabrk.dev'),
   title: {
-    default: "Fabrk - Build Production Apps at AI Speed",
-    template: "%s | Fabrk",
+    default: 'Fabrk - Build Production Apps at AI Speed',
+    template: '%s | Fabrk',
   },
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
     ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
-  manifest: "/site.webmanifest",
+  manifest: '/site.webmanifest',
   description:
-    "A complete UI system with 169 production-ready components, design tokens, automated testing, and AI workflows. Build faster with enforced quality standards.",
+    'A complete UI system with 169 production-ready components, design tokens, automated testing, and AI workflows. Build faster with enforced quality standards.',
   keywords: [
-    "ui components",
-    "design system",
-    "react components",
-    "nextjs",
-    "typescript",
-    "tailwind css",
-    "ai workflows",
-    "component library",
-    "design tokens",
-    "accessibility",
-    "wcag",
-    "production ready",
+    'ui components',
+    'design system',
+    'react components',
+    'nextjs',
+    'typescript',
+    'tailwind css',
+    'ai workflows',
+    'component library',
+    'design tokens',
+    'accessibility',
+    'wcag',
+    'production ready',
   ],
-  authors: [{ name: "Fabrk", url: "https://fabrk.dev" }],
-  creator: "Fabrk",
-  publisher: "Fabrk",
+  authors: [{ name: 'Fabrk', url: 'https://fabrk.dev' }],
+  creator: 'Fabrk',
+  publisher: 'Fabrk',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    title: "Fabrk - Build Production Apps at AI Speed",
+    title: 'Fabrk - Build Production Apps at AI Speed',
     description:
-      "169 production-ready components with automated quality enforcement and AI workflows",
-    type: "website",
-    locale: "en_US",
-    url: "https://fabrk.dev",
-    siteName: "Fabrk",
+      '169 production-ready components with automated quality enforcement and AI workflows',
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://fabrk.dev',
+    siteName: 'Fabrk',
     images: [
       {
-        url: "/og-image.png",
+        url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: "Fabrk - Build Production Apps at AI Speed",
-        type: "image/png",
+        alt: 'Fabrk - Build Production Apps at AI Speed',
+        type: 'image/png',
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Fabrk - Build Production Apps at AI Speed",
-    description: "169 production-ready components with automated quality enforcement",
-    images: ["/og-image.png"],
-    creator: "@fabrk",
-    site: "@fabrk",
+    card: 'summary_large_image',
+    title: 'Fabrk - Build Production Apps at AI Speed',
+    description:
+      '169 production-ready components with automated quality enforcement',
+    images: ['/og-image.png'],
+    creator: '@fabrk',
+    site: '@fabrk',
   },
   robots: {
     index: true,
@@ -119,9 +125,9 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
   },
   // Add your site verification codes when ready
@@ -129,10 +135,14 @@ export const metadata: Metadata = {
   //   google: "your-google-verification-code",
   //   yandex: "your-yandex-verification-code",
   // },
-  category: "technology",
+  category: 'technology',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const defaultVisualTheme = env.client.NEXT_PUBLIC_DEFAULT_VISUAL_THEME;
 
   return (
@@ -217,7 +227,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             src="https://www.googletagmanager.com/ns.html?id=GTM-T47RSZPP"
             height="0"
             width="0"
-            style={{ display: "none", visibility: "hidden" }}
+            style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
         <Providers>

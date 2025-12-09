@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { Table } from "@tanstack/react-table";
-import { X } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Table } from '@tanstack/react-table';
+import { X } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
@@ -14,7 +14,7 @@ interface DataTableToolbarProps<TData> {
 export function DataTableToolbar<TData>({
   table,
   searchKey,
-  searchPlaceholder = "Search...",
+  searchPlaceholder = 'Search...',
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
 
@@ -24,11 +24,13 @@ export function DataTableToolbar<TData>({
         {searchKey && (
           <Input
             placeholder={searchPlaceholder}
-            value={(table.getColumn(searchKey)?.getFilterValue() as string) ?? ""}
+            value={
+              (table.getColumn(searchKey)?.getFilterValue() as string) ?? ''
+            }
             onChange={(event) =>
               table.getColumn(searchKey)?.setFilterValue(event.target.value)
             }
-            className="h-10 w-full max-w-sm border border-border"
+            className="border-border h-10 w-full max-w-sm border"
           />
         )}
         {isFiltered && (

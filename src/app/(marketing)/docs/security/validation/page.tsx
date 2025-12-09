@@ -1,10 +1,11 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsLinkCard } from "@/components/docs";
-import { Shield, FileCheck, Code, Settings } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsLinkCard } from '@/components/docs';
+import { Shield, FileCheck, Code, Settings } from 'lucide-react';
 
 export const metadata = {
-  title: "Schema Validation - Fabrk Docs",
-  description: "Validate API inputs with Zod schemas. Type-safe validation for forms, API routes, and environment variables.",
+  title: 'Schema Validation - Fabrk Docs',
+  description:
+    'Validate API inputs with Zod schemas. Type-safe validation for forms, API routes, and environment variables.',
 };
 
 export default function SchemaValidationPage() {
@@ -16,15 +17,31 @@ export default function SchemaValidationPage() {
       description="Validate all inputs with Zod schemas for type-safe, secure data handling."
       overview="Schema validation ensures all data entering your application is properly validated and typed. Zod provides runtime validation with automatic TypeScript type inference."
       features={[
-        { icon: Shield, title: "Type-Safe", description: "Full TypeScript inference from your schemas." },
-        { icon: FileCheck, title: "API Validation", description: "Validate request and response bodies." },
-        { icon: Code, title: "Form Validation", description: "Works with react-hook-form out of the box." },
-        { icon: Settings, title: "Env Validation", description: "Validate environment variables at startup." },
+        {
+          icon: Shield,
+          title: 'Type-Safe',
+          description: 'Full TypeScript inference from your schemas.',
+        },
+        {
+          icon: FileCheck,
+          title: 'API Validation',
+          description: 'Validate request and response bodies.',
+        },
+        {
+          icon: Code,
+          title: 'Form Validation',
+          description: 'Works with react-hook-form out of the box.',
+        },
+        {
+          icon: Settings,
+          title: 'Env Validation',
+          description: 'Validate environment variables at startup.',
+        },
       ]}
       usage={[
         {
-          title: "Basic Zod Schema",
-          description: "Define schemas to validate data",
+          title: 'Basic Zod Schema',
+          description: 'Define schemas to validate data',
           code: `// src/lib/validations/user.ts
 
 import { z } from "zod";
@@ -49,11 +66,11 @@ export const userSchema = z.object({
 
 // Infer TypeScript type from schema
 export type UserInput = z.infer<typeof userSchema>;`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "API Route Validation",
-          description: "Validate request bodies in API routes",
+          title: 'API Route Validation',
+          description: 'Validate request bodies in API routes',
           code: `// src/app/api/users/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -96,11 +113,11 @@ export async function POST(request: NextRequest) {
     );
   }
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Common Validation Patterns",
-          description: "Reusable validation patterns for common fields",
+          title: 'Common Validation Patterns',
+          description: 'Reusable validation patterns for common fields',
           code: `// src/lib/validations/common.ts
 
 import { z } from "zod";
@@ -147,11 +164,11 @@ export const sortSchema = z.object({
   sortBy: z.string().optional(),
   order: z.enum(["asc", "desc"]).default("desc"),
 });`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Form Validation",
-          description: "Use schemas with react-hook-form",
+          title: 'Form Validation',
+          description: 'Use schemas with react-hook-form',
           code: `"use client";
 
 import { useForm } from "react-hook-form";
@@ -207,11 +224,11 @@ export function ContactForm() {
     </form>
   );
 }`,
-          language: "tsx",
+          language: 'tsx',
         },
         {
-          title: "Query Parameter Validation",
-          description: "Validate URL search params",
+          title: 'Query Parameter Validation',
+          description: 'Validate URL search params',
           code: `// src/app/api/items/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -245,11 +262,11 @@ export async function GET(request: NextRequest) {
   // Use validated params for database query
   // ...
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Environment Variable Validation",
-          description: "Validate environment variables at startup",
+          title: 'Environment Variable Validation',
+          description: 'Validate environment variables at startup',
           code: `// src/lib/env.ts
 
 import { z } from "zod";
@@ -280,11 +297,11 @@ if (!parsed.success) {
 }
 
 export const env = parsed.data;`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Custom Transformations",
-          description: "Transform and sanitize data during validation",
+          title: 'Custom Transformations',
+          description: 'Transform and sanitize data during validation',
           code: `import { z } from "zod";
 
 const userInputSchema = z.object({
@@ -319,11 +336,11 @@ const userInputSchema = z.object({
     .string()
     .transform((val) => val.split(",").map((s) => s.trim())),
 });`,
-          language: "typescript",
+          language: 'typescript',
         },
       ]}
-      previous={{ title: "Security Headers", href: "/docs/security/headers" }}
-      next={{ title: "Bot Protection", href: "/docs/security/bot-protection" }}
+      previous={{ title: 'Security Headers', href: '/docs/security/headers' }}
+      next={{ title: 'Bot Protection', href: '/docs/security/bot-protection' }}
     >
       {/* Next Steps Section */}
       <DocsSection title="Next Steps">

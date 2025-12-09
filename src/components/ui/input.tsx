@@ -15,12 +15,12 @@
  * ```
  */
 
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { Loader2 } from "lucide-react";
-import * as React from "react";
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { Loader2 } from 'lucide-react';
+import * as React from 'react';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: boolean;
@@ -30,7 +30,19 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, error, success, disabled, loading, loadingText, type, ...props }, ref) => {
+  (
+    {
+      className,
+      error,
+      success,
+      disabled,
+      loading,
+      loadingText,
+      type,
+      ...props
+    },
+    ref
+  ) => {
     // UX Heuristic #1: Visibility of System Status
     // UX Heuristic #4: Consistency & Standards
     return (
@@ -41,37 +53,39 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           disabled={disabled || loading}
           className={cn(
             // Base styles - radius and font from Visual Mode System
-            "bg-background flex h-8 w-full border px-4 py-2 text-xs font-normal transition-colors",
+            'bg-background flex h-8 w-full border px-4 py-2 text-xs font-normal transition-colors',
             mode.radius,
             mode.font,
 
             // Vercel focus state - thin ring
-            "focus-visible:ring-primary focus-visible:ring-2 focus-visible:outline-none",
+            'focus-visible:ring-primary focus-visible:ring-2 focus-visible:outline-none',
 
             // File input styles - font from Visual Mode System
-            "file:text-foreground file:border-0 file:bg-transparent file:text-xs file:font-normal",
-            mode.font.replace("font-", "file:font-"),
+            'file:text-foreground file:border-0 file:bg-transparent file:text-xs file:font-normal',
+            mode.font.replace('font-', 'file:font-'),
 
             // Placeholder styles
-            "placeholder:text-muted-foreground placeholder:font-normal",
+            'placeholder:text-muted-foreground placeholder:font-normal',
 
             // Disabled state
-            "disabled:cursor-not-allowed disabled:opacity-50",
+            'disabled:cursor-not-allowed disabled:opacity-50',
 
             // Loading state - Add padding for spinner
-            loading && "pr-10",
+            loading && 'pr-10',
 
             // Error state - Red border
-            error && "border-destructive focus-visible:ring-destructive",
+            error && 'border-destructive focus-visible:ring-destructive',
 
             // Success state - Green ring
-            success && "focus-visible:ring-success",
+            success && 'focus-visible:ring-success',
 
             className
           )}
-          aria-invalid={error ? "true" : undefined}
-          aria-busy={loading ? "true" : undefined}
-          aria-describedby={loading && loadingText ? "input-loading" : undefined}
+          aria-invalid={error ? 'true' : undefined}
+          aria-busy={loading ? 'true' : undefined}
+          aria-describedby={
+            loading && loadingText ? 'input-loading' : undefined
+          }
           {...props}
         />
         {loading && (
@@ -88,6 +102,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     );
   }
 );
-Input.displayName = "Input";
+Input.displayName = 'Input';
 
 export { Input };

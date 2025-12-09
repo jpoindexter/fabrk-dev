@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { Container } from "@/components/ui/container";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { Container } from '@/components/ui/container';
 
 export default function ContainerPage() {
   return (
@@ -13,9 +13,10 @@ export default function ContainerPage() {
       importCode={`import { Container } from "@/components/ui/container"`}
       mainPreview={{
         preview: (
-          <Container className="border border-border bg-card">
-            <div className="rounded-none border border-dashed border-muted-foreground/30 p-4">
-              <span className="text-primary">&gt;</span> Container with default size (2xl)
+          <Container className="border-border bg-card border">
+            <div className="border-muted-foreground/30 rounded-none border border-dashed p-4">
+              <span className="text-primary">&gt;</span> Container with default
+              size (2xl)
             </div>
           </Container>
         ),
@@ -25,11 +26,11 @@ export default function ContainerPage() {
       }}
       variants={[
         {
-          title: "Small",
-          description: "Compact container for focused content (640px max).",
+          title: 'Small',
+          description: 'Compact container for focused content (640px max).',
           preview: (
-            <Container size="sm" className="border border-border bg-card">
-              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4">
+            <Container size="sm" className="border-border bg-card border">
+              <div className="border-muted-foreground/30 rounded-none border border-dashed p-4">
                 max-w-screen-sm
               </div>
             </Container>
@@ -39,11 +40,11 @@ export default function ContainerPage() {
 </Container>`,
         },
         {
-          title: "Medium",
-          description: "Medium width for articles and forms (768px max).",
+          title: 'Medium',
+          description: 'Medium width for articles and forms (768px max).',
           preview: (
-            <Container size="md" className="border border-border bg-card">
-              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4">
+            <Container size="md" className="border-border bg-card border">
+              <div className="border-muted-foreground/30 rounded-none border border-dashed p-4">
                 max-w-screen-md
               </div>
             </Container>
@@ -53,11 +54,11 @@ export default function ContainerPage() {
 </Container>`,
         },
         {
-          title: "Large",
-          description: "Large container for dashboards (1024px max).",
+          title: 'Large',
+          description: 'Large container for dashboards (1024px max).',
           preview: (
-            <Container size="lg" className="border border-border bg-card">
-              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4">
+            <Container size="lg" className="border-border bg-card border">
+              <div className="border-muted-foreground/30 rounded-none border border-dashed p-4">
                 max-w-screen-lg
               </div>
             </Container>
@@ -67,11 +68,11 @@ export default function ContainerPage() {
 </Container>`,
         },
         {
-          title: "Extra Large",
-          description: "Wide container for data tables (1280px max).",
+          title: 'Extra Large',
+          description: 'Wide container for data tables (1280px max).',
           preview: (
-            <Container size="xl" className="border border-border bg-card">
-              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4">
+            <Container size="xl" className="border-border bg-card border">
+              <div className="border-muted-foreground/30 rounded-none border border-dashed p-4">
                 max-w-screen-xl
               </div>
             </Container>
@@ -81,11 +82,11 @@ export default function ContainerPage() {
 </Container>`,
         },
         {
-          title: "2XL (Default)",
-          description: "Maximum width for full layouts (1536px max).",
+          title: '2XL (Default)',
+          description: 'Maximum width for full layouts (1536px max).',
           preview: (
-            <Container size="2xl" className="border border-border bg-card">
-              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4">
+            <Container size="2xl" className="border-border bg-card border">
+              <div className="border-muted-foreground/30 rounded-none border border-dashed p-4">
                 max-w-screen-2xl
               </div>
             </Container>
@@ -95,11 +96,11 @@ export default function ContainerPage() {
 </Container>`,
         },
         {
-          title: "Prose",
-          description: "Optimized for long-form reading (65ch max).",
+          title: 'Prose',
+          description: 'Optimized for long-form reading (65ch max).',
           preview: (
-            <Container size="prose" className="border border-border bg-card">
-              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4">
+            <Container size="prose" className="border-border bg-card border">
+              <div className="border-muted-foreground/30 rounded-none border border-dashed p-4">
                 max-w-prose
               </div>
             </Container>
@@ -109,11 +110,11 @@ export default function ContainerPage() {
 </Container>`,
         },
         {
-          title: "No Padding",
-          description: "Remove horizontal padding for custom spacing.",
+          title: 'No Padding',
+          description: 'Remove horizontal padding for custom spacing.',
           preview: (
-            <Container padding="none" className="border border-border bg-card">
-              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4">
+            <Container padding="none" className="border-border bg-card border">
+              <div className="border-muted-foreground/30 rounded-none border border-dashed p-4">
                 No padding applied
               </div>
             </Container>
@@ -123,11 +124,11 @@ export default function ContainerPage() {
 </Container>`,
         },
         {
-          title: "As Main Element",
-          description: "Render as semantic <main> element.",
+          title: 'As Main Element',
+          description: 'Render as semantic <main> element.',
           preview: (
-            <Container as="main" className="border border-border bg-card">
-              <div className="rounded-none border border-dashed border-muted-foreground/30 p-4">
+            <Container as="main" className="border-border bg-card border">
+              <div className="border-muted-foreground/30 rounded-none border border-dashed p-4">
                 &lt;main&gt; element
               </div>
             </Container>
@@ -139,33 +140,34 @@ export default function ContainerPage() {
       ]}
       props={[
         {
-          name: "size",
+          name: 'size',
           type: '"sm" | "md" | "lg" | "xl" | "2xl" | "full" | "prose"',
           default: '"2xl"',
-          description: "Maximum width of the container.",
+          description: 'Maximum width of the container.',
         },
         {
-          name: "padding",
+          name: 'padding',
           type: '"none" | "sm" | "md" | "lg" | "xl"',
           default: '"md"',
-          description: "Horizontal padding applied to the container.",
+          description: 'Horizontal padding applied to the container.',
         },
         {
-          name: "as",
-          type: "React.ElementType",
+          name: 'as',
+          type: 'React.ElementType',
           default: '"div"',
-          description: "HTML element to render (div, main, section, article, etc.).",
+          description:
+            'HTML element to render (div, main, section, article, etc.).',
         },
       ]}
       accessibility={[
         "Uses semantic HTML elements based on 'as' prop",
-        "Maintains consistent horizontal padding on all devices",
-        "Centers content with automatic margins",
-        "Supports all standard HTML attributes",
-        "Responsive padding scales appropriately on mobile",
+        'Maintains consistent horizontal padding on all devices',
+        'Centers content with automatic margins',
+        'Supports all standard HTML attributes',
+        'Responsive padding scales appropriately on mobile',
       ]}
-      previous={{ title: "Combobox", href: "/docs/components/combobox" }}
-      next={{ title: "Context Menu", href: "/docs/components/context-menu" }}
+      previous={{ title: 'Combobox', href: '/docs/components/combobox' }}
+      next={{ title: 'Context Menu', href: '/docs/components/context-menu' }}
     />
   );
 }

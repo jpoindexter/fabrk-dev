@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { DayPicker, DayPickerProps, useDayPicker } from "react-day-picker";
-import { format, addMonths, subMonths } from "date-fns";
+import * as React from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { DayPicker, DayPickerProps, useDayPicker } from 'react-day-picker';
+import { format, addMonths, subMonths } from 'date-fns';
 
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { Button } from "@/components/ui/button";
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { Button } from '@/components/ui/button';
 
 export type CalendarProps = DayPickerProps & {
   showTodayButton?: boolean;
@@ -16,7 +16,11 @@ export type CalendarProps = DayPickerProps & {
 };
 
 // Custom caption component with integrated nav buttons
-function CustomMonthCaption({ calendarMonth }: { calendarMonth: { date: Date } }) {
+function CustomMonthCaption({
+  calendarMonth,
+}: {
+  calendarMonth: { date: Date };
+}) {
   const { goToMonth, nextMonth, previousMonth } = useDayPicker();
 
   return (
@@ -24,20 +28,22 @@ function CustomMonthCaption({ calendarMonth }: { calendarMonth: { date: Date } }
       <Button
         variant="outline"
         size="icon"
-        className={cn("h-8 w-8 p-0", mode.radius)}
+        className={cn('h-8 w-8 p-0', mode.radius)}
         disabled={!previousMonth}
-        onClick={() => previousMonth && goToMonth(subMonths(calendarMonth.date, 1))}
+        onClick={() =>
+          previousMonth && goToMonth(subMonths(calendarMonth.date, 1))
+        }
         aria-label="Previous month"
       >
         <ChevronLeft className="h-4 w-4" aria-hidden="true" />
       </Button>
-      <span className={cn("text-sm font-semibold", mode.font)}>
-        {format(calendarMonth.date, "MMMM yyyy")}
+      <span className={cn('text-sm font-semibold', mode.font)}>
+        {format(calendarMonth.date, 'MMMM yyyy')}
       </span>
       <Button
         variant="outline"
         size="icon"
-        className={cn("h-8 w-8 p-0", mode.radius)}
+        className={cn('h-8 w-8 p-0', mode.radius)}
         disabled={!nextMonth}
         onClick={() => nextMonth && goToMonth(addMonths(calendarMonth.date, 1))}
         aria-label="Next month"
@@ -58,15 +64,19 @@ function Calendar({
   ...props
 }: CalendarProps) {
   const handleTodayClick = () => {
-    if (props.mode === "single" && "onSelect" in props) {
-      const onSelect = props.onSelect as ((date: Date | undefined) => void) | undefined;
+    if (props.mode === 'single' && 'onSelect' in props) {
+      const onSelect = props.onSelect as
+        | ((date: Date | undefined) => void)
+        | undefined;
       onSelect?.(new Date());
     }
   };
 
   const handleClearClick = () => {
-    if (props.mode === "single" && "onSelect" in props) {
-      const onSelect = props.onSelect as ((date: Date | undefined) => void) | undefined;
+    if (props.mode === 'single' && 'onSelect' in props) {
+      const onSelect = props.onSelect as
+        | ((date: Date | undefined) => void)
+        | undefined;
       onSelect?.(undefined);
     }
     onClear?.();
@@ -77,46 +87,49 @@ function Calendar({
       <DayPicker
         showOutsideDays={showOutsideDays}
         data-slot="calendar"
-        className={cn("p-4", className)}
+        className={cn('p-4', className)}
         classNames={{
           // Layout
-          months: "flex flex-col sm:flex-row gap-4",
-          month: "flex flex-col",
+          months: 'flex flex-col sm:flex-row gap-4',
+          month: 'flex flex-col',
 
           // Hide default nav (we use custom caption with nav)
-          nav: "hidden",
-          button_previous: "hidden",
-          button_next: "hidden",
+          nav: 'hidden',
+          button_previous: 'hidden',
+          button_next: 'hidden',
 
           // Grid
-          month_grid: "w-full border-collapse",
-          weekdays: "flex",
-          weekday: cn("text-muted-foreground w-9 text-xs font-semibold text-center", mode.font),
-          week: "flex w-full mt-2",
+          month_grid: 'w-full border-collapse',
+          weekdays: 'flex',
+          weekday: cn(
+            'text-muted-foreground w-9 text-xs font-semibold text-center',
+            mode.font
+          ),
+          week: 'flex w-full mt-2',
 
           // Day cells
-          day: cn("h-9 w-9 text-center text-xs p-0 relative", mode.font),
+          day: cn('h-9 w-9 text-center text-xs p-0 relative', mode.font),
           day_button: cn(
-            "h-9 w-9 p-0 text-xs font-normal",
+            'h-9 w-9 p-0 text-xs font-normal',
             mode.radius,
             mode.font,
-            "hover:bg-muted hover:text-foreground",
-            "focus-visible:outline-2 focus-visible:outline-ring",
-            "disabled:pointer-events-none disabled:opacity-50"
+            'hover:bg-muted hover:text-foreground',
+            'focus-visible:outline-2 focus-visible:outline-ring',
+            'disabled:pointer-events-none disabled:opacity-50'
           ),
 
           // States
           selected:
-            "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground",
-          today: "bg-muted text-foreground font-semibold",
-          outside: "text-muted-foreground opacity-50",
-          disabled: "text-muted-foreground opacity-50",
-          hidden: "invisible",
+            'bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground',
+          today: 'bg-muted text-foreground font-semibold',
+          outside: 'text-muted-foreground opacity-50',
+          disabled: 'text-muted-foreground opacity-50',
+          hidden: 'invisible',
 
           // Range selection
-          range_middle: "bg-muted text-foreground",
-          range_start: cn("bg-primary text-primary-foreground", mode.radius),
-          range_end: cn("bg-primary text-primary-foreground", mode.radius),
+          range_middle: 'bg-muted text-foreground',
+          range_start: cn('bg-primary text-primary-foreground', mode.radius),
+          range_end: cn('bg-primary text-primary-foreground', mode.radius),
 
           ...classNames,
         }}
@@ -131,20 +144,20 @@ function Calendar({
             <Button
               variant="outline"
               size="sm"
-              className={cn("flex-1 text-xs", mode.radius, mode.font)}
+              className={cn('flex-1 text-xs', mode.radius, mode.font)}
               onClick={handleTodayClick}
             >
-              {"> TODAY"}
+              {'> TODAY'}
             </Button>
           )}
           {showClearButton && (
             <Button
               variant="ghost"
               size="sm"
-              className={cn("flex-1 text-xs", mode.radius, mode.font)}
+              className={cn('flex-1 text-xs', mode.radius, mode.font)}
               onClick={handleClearClick}
             >
-              {"> CLEAR"}
+              {'> CLEAR'}
             </Button>
           )}
         </div>
@@ -152,6 +165,6 @@ function Calendar({
     </div>
   );
 }
-Calendar.displayName = "Calendar";
+Calendar.displayName = 'Calendar';
 
 export { Calendar };

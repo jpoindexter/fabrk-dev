@@ -12,12 +12,12 @@
  * - preview-billing.tsx - Billing portal animation
  * - preview-design.tsx - Design system showcase
  */
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { Badge } from "@/components/ui/card";
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { Badge } from '@/components/ui/card';
 import {
   Mail,
   Key,
@@ -34,18 +34,21 @@ import {
   Coins,
   BarChart3,
   Zap,
-} from "lucide-react";
+} from 'lucide-react';
 
-import { FeatureSectionLayout } from "./feature-section";
-import { AuthPreview } from "./preview-auth";
-import { OrganizationPreview } from "./preview-organization";
-import { BillingPreview } from "./preview-billing";
-import { DesignSystemPreview } from "./preview-design";
-import { CreditsPreview } from "./preview-credits";
+import { FeatureSectionLayout } from './feature-section';
+import { AuthPreview } from './preview-auth';
+import { OrganizationPreview } from './preview-organization';
+import { BillingPreview } from './preview-billing';
+import { DesignSystemPreview } from './preview-design';
+import { CreditsPreview } from './preview-credits';
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="border-border scroll-mt-16 border-t px-6 py-20 lg:py-24">
+    <section
+      id="features"
+      className="border-border scroll-mt-16 border-t px-6 py-20 lg:py-24"
+    >
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <motion.div
@@ -61,12 +64,19 @@ export function FeaturesSection() {
             meta="FEATURE_ANALYSIS │ FIB[377,610]"
             className="mb-4"
           />
-          <h2 className={cn(mode.font, "mb-4 text-4xl font-semibold tracking-tight")}>
+          <h2
+            className={cn(
+              mode.font,
+              'mb-4 text-4xl font-semibold tracking-tight'
+            )}
+          >
             BUILT_FOR_SERIOUS_SAAS_PRODUCTS
           </h2>
-          <p className={cn(mode.font, "text-muted-foreground max-w-2xl text-sm")}>
-            Includes many foundational and advanced components that cover a wide range of use-cases
-            without sacrificing flexibility and design.
+          <p
+            className={cn(mode.font, 'text-muted-foreground max-w-2xl text-sm')}
+          >
+            Includes many foundational and advanced components that cover a wide
+            range of use-cases without sacrificing flexibility and design.
           </p>
         </motion.div>
 
@@ -80,18 +90,20 @@ export function FeaturesSection() {
             features={[
               {
                 icon: Mail,
-                title: "Email/Password",
-                description: "Verify email, change password, forgot password flows.",
+                title: 'Email/Password',
+                description:
+                  'Verify email, change password, forgot password flows.',
               },
               {
                 icon: Key,
-                title: "Social Sign-In",
-                description: "Google, Microsoft, or configure additional providers.",
+                title: 'Social Sign-In',
+                description:
+                  'Google, Microsoft, or configure additional providers.',
               },
               {
                 icon: Shield,
-                title: "Multi-Factor",
-                description: "MFA/2FA using TOTP with authenticator apps.",
+                title: 'Multi-Factor',
+                description: 'MFA/2FA using TOTP with authenticator apps.',
               },
             ]}
           >
@@ -107,18 +119,18 @@ export function FeaturesSection() {
             features={[
               {
                 icon: UserPlus,
-                title: "Invitations",
-                description: "Invite members, assign roles and gate access.",
+                title: 'Invitations',
+                description: 'Invite members, assign roles and gate access.',
               },
               {
                 icon: Users,
-                title: "Roles",
-                description: "Predefined membership roles or add your own.",
+                title: 'Roles',
+                description: 'Predefined membership roles or add your own.',
               },
               {
                 icon: ArrowLeftRight,
-                title: "Transfer Ownership",
-                description: "Give ownership to another member.",
+                title: 'Transfer Ownership',
+                description: 'Give ownership to another member.',
               },
             ]}
           >
@@ -133,18 +145,18 @@ export function FeaturesSection() {
             features={[
               {
                 icon: Receipt,
-                title: "Billing Portal",
-                description: "View transactions, invoices, manage plans.",
+                title: 'Billing Portal',
+                description: 'View transactions, invoices, manage plans.',
               },
               {
                 icon: Gauge,
-                title: "Restricted Access",
-                description: "Gate features until user upgrades.",
+                title: 'Restricted Access',
+                description: 'Gate features until user upgrades.',
               },
               {
                 icon: DollarSign,
-                title: "Billing Granularity",
-                description: "Per org, per seat, or usage-based.",
+                title: 'Billing Granularity',
+                description: 'Per org, per seat, or usage-based.',
               },
             ]}
           >
@@ -160,18 +172,19 @@ export function FeaturesSection() {
             features={[
               {
                 icon: Coins,
-                title: "Credit Balance",
-                description: "Track credits per user with tier-based allowances.",
+                title: 'Credit Balance',
+                description:
+                  'Track credits per user with tier-based allowances.',
               },
               {
                 icon: BarChart3,
-                title: "Usage Analytics",
-                description: "Visual dashboard showing daily consumption.",
+                title: 'Usage Analytics',
+                description: 'Visual dashboard showing daily consumption.',
               },
               {
                 icon: Zap,
-                title: "Per-Endpoint Metering",
-                description: "Different credit costs per AI feature.",
+                title: 'Per-Endpoint Metering',
+                description: 'Different credit costs per AI feature.',
               },
             ]}
           >
@@ -186,18 +199,18 @@ export function FeaturesSection() {
             features={[
               {
                 icon: Moon,
-                title: "Responsive Design",
-                description: "Works on all screen sizes out of the box.",
+                title: 'Responsive Design',
+                description: 'Works on all screen sizes out of the box.',
               },
               {
                 icon: Palette,
-                title: "Light and Dark Themes",
-                description: "Toggle with a switch button.",
+                title: 'Light and Dark Themes',
+                description: 'Toggle with a switch button.',
               },
               {
                 icon: Layers,
-                title: "Shadcn UI + Tailwind",
-                description: "50+ accessible components included.",
+                title: 'Shadcn UI + Tailwind',
+                description: '50+ accessible components included.',
               },
             ]}
           >

@@ -21,7 +21,7 @@ import {
   Layout,
   Sparkles,
   FormInput,
-} from "lucide-react";
+} from 'lucide-react';
 
 export interface TemplateNavItem {
   title: string;
@@ -39,87 +39,155 @@ export interface TemplateNavSection {
 
 export const templatesNavigation: TemplateNavSection[] = [
   {
-    title: "AI Tools",
-    id: "ai-tools",
-    href: "/library/ai-tools",
+    title: 'AI Tools',
+    id: 'ai-tools',
+    href: '/library/ai-tools',
     icon: Sparkles,
-    items: [{ title: "AI Form Generator", href: "/library/ai-forms", icon: FormInput }],
+    items: [
+      {
+        title: 'AI Form Generator',
+        href: '/library/ai-forms',
+        icon: FormInput,
+      },
+    ],
   },
   {
-    title: "Dashboards",
-    id: "dashboards",
-    href: "/library/dashboards",
+    title: 'Dashboards',
+    id: 'dashboards',
+    href: '/library/dashboards',
     icon: LayoutDashboard,
     items: [
-      { title: "Analytics Dashboard", href: "/library/analytics-dashboard", icon: BarChart3 },
-      { title: "Team Dashboard", href: "/library/team-dashboard", icon: Users },
-      { title: "Chart Library", href: "/library/chart-library", icon: LineChart },
+      {
+        title: 'Analytics Dashboard',
+        href: '/library/analytics-dashboard',
+        icon: BarChart3,
+      },
+      { title: 'Team Dashboard', href: '/library/team-dashboard', icon: Users },
+      {
+        title: 'Chart Library',
+        href: '/library/chart-library',
+        icon: LineChart,
+      },
     ],
   },
   {
-    title: "Authentication",
-    id: "authentication",
-    href: "/library/authentication",
+    title: 'Authentication',
+    id: 'authentication',
+    href: '/library/authentication',
     icon: Lock,
     items: [
-      { title: "Sign In", href: "/library/authentication/sign-in", icon: Lock },
-      { title: "Sign Up", href: "/library/authentication/sign-up", icon: Users },
-      { title: "Forgot Password", href: "/library/authentication/forgot-password", icon: Shield },
-      { title: "Two-Factor Auth", href: "/library/authentication/two-factor", icon: Lock },
+      { title: 'Sign In', href: '/library/authentication/sign-in', icon: Lock },
+      {
+        title: 'Sign Up',
+        href: '/library/authentication/sign-up',
+        icon: Users,
+      },
+      {
+        title: 'Forgot Password',
+        href: '/library/authentication/forgot-password',
+        icon: Shield,
+      },
+      {
+        title: 'Two-Factor Auth',
+        href: '/library/authentication/two-factor',
+        icon: Lock,
+      },
     ],
   },
   {
-    title: "Admin Panels",
-    id: "admin-panels",
-    href: "/library/admin-panels",
+    title: 'Admin Panels',
+    id: 'admin-panels',
+    href: '/library/admin-panels',
     icon: Settings,
-    items: [{ title: "User Management", href: "/library/user-management", icon: Users }],
+    items: [
+      {
+        title: 'User Management',
+        href: '/library/user-management',
+        icon: Users,
+      },
+    ],
   },
   {
-    title: "Account Pages",
-    id: "account-pages",
-    href: "/library/account-pages",
+    title: 'Account Pages',
+    id: 'account-pages',
+    href: '/library/account-pages',
     icon: CreditCard,
     items: [
-      { title: "Settings Page", href: "/library/settings-page", icon: Settings },
-      { title: "Billing Dashboard", href: "/library/billing-dashboard", icon: CreditCard },
-      { title: "Security & Privacy", href: "/library/security-privacy", icon: Shield },
+      {
+        title: 'Settings Page',
+        href: '/library/settings-page',
+        icon: Settings,
+      },
+      {
+        title: 'Billing Dashboard',
+        href: '/library/billing-dashboard',
+        icon: CreditCard,
+      },
+      {
+        title: 'Security & Privacy',
+        href: '/library/security-privacy',
+        icon: Shield,
+      },
     ],
   },
   {
-    title: "Marketing",
-    id: "marketing",
-    href: "/library/marketing",
+    title: 'Marketing',
+    id: 'marketing',
+    href: '/library/marketing',
     icon: FileText,
     items: [
-      { title: "Documentation", href: "/library/documentation", icon: FileText },
-      { title: "Email Templates", href: "/library/email-templates", icon: Mail },
-      { title: "Pricing Page", href: "/library/pricing-page", icon: DollarSign },
-      { title: "Blog", href: "/library/blog", icon: Newspaper },
-      { title: "Landing Variations", href: "/library/landing-variations", icon: Layout },
+      {
+        title: 'Documentation',
+        href: '/library/documentation',
+        icon: FileText,
+      },
+      {
+        title: 'Email Templates',
+        href: '/library/email-templates',
+        icon: Mail,
+      },
+      {
+        title: 'Pricing Page',
+        href: '/library/pricing-page',
+        icon: DollarSign,
+      },
+      { title: 'Blog', href: '/library/blog', icon: Newspaper },
+      {
+        title: 'Landing Variations',
+        href: '/library/landing-variations',
+        icon: Layout,
+      },
     ],
   },
   {
-    title: "User Experience",
-    id: "user-experience",
-    href: "/library/user-experience",
+    title: 'User Experience',
+    id: 'user-experience',
+    href: '/library/user-experience',
     icon: User,
     items: [
-      { title: "Onboarding", href: "/library/onboarding", icon: Rocket },
-      { title: "Profile Page", href: "/library/profile", icon: User },
-      { title: "Notifications", href: "/library/notifications", icon: Bell },
-      { title: "Search Results", href: "/library/search-results", icon: Search },
+      { title: 'Onboarding', href: '/library/onboarding', icon: Rocket },
+      { title: 'Profile Page', href: '/library/profile', icon: User },
+      { title: 'Notifications', href: '/library/notifications', icon: Bell },
+      {
+        title: 'Search Results',
+        href: '/library/search-results',
+        icon: Search,
+      },
     ],
   },
   {
-    title: "Patterns",
-    id: "patterns",
-    href: "/library/patterns",
+    title: 'Patterns',
+    id: 'patterns',
+    href: '/library/patterns',
     icon: Layers,
     items: [
-      { title: "Error Pages", href: "/library/error-pages", icon: AlertTriangle },
-      { title: "Empty States", href: "/library/empty-states", icon: Inbox },
-      { title: "Modal Patterns", href: "/library/modals", icon: Layers },
+      {
+        title: 'Error Pages',
+        href: '/library/error-pages',
+        icon: AlertTriangle,
+      },
+      { title: 'Empty States', href: '/library/empty-states', icon: Inbox },
+      { title: 'Modal Patterns', href: '/library/modals', icon: Layers },
     ],
   },
 ];
@@ -145,5 +213,5 @@ export function findTemplateByHref(href: string): {
 
 // Convert title to terminal-style format (UPPER_SNAKE_CASE)
 export function toDisplayCase(str: string): string {
-  return str.toUpperCase().replace(/\s+/g, "_").replace(/&/g, "");
+  return str.toUpperCase().replace(/\s+/g, '_').replace(/&/g, '');
 }

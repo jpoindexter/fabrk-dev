@@ -15,7 +15,7 @@
 ### Import
 
 ```tsx
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 ```
 
 ### Basic Usage
@@ -48,7 +48,12 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 ### Avatar (Container)
 
 ```tsx
-<Avatar className={cn("relative flex h-10 w-10 shrink-0 overflow-hidden border", mode.radius)} />
+<Avatar
+  className={cn(
+    'relative flex h-10 w-10 shrink-0 overflow-hidden border',
+    mode.radius
+  )}
+/>
 ```
 
 **NEVER hardcode `rounded-none` or `rounded-full` - use `mode.radius`.**
@@ -68,7 +73,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 ```tsx
 <AvatarFallback
   className={cn(
-    "bg-muted flex h-full w-full items-center justify-center text-xs font-medium",
+    'bg-muted flex h-full w-full items-center justify-center text-xs font-medium',
     mode.radius,
     mode.font
   )}
@@ -128,11 +133,11 @@ The Avatar component automatically applies `mode.radius` from the design system:
 
 ```tsx
 // Avatar root
-cn("relative flex h-10 w-10 shrink-0 overflow-hidden border", mode.radius);
+cn('relative flex h-10 w-10 shrink-0 overflow-hidden border', mode.radius);
 
 // AvatarFallback
 cn(
-  "bg-muted flex h-full w-full items-center justify-center text-xs font-medium",
+  'bg-muted flex h-full w-full items-center justify-center text-xs font-medium',
   mode.radius,
   mode.font
 );
@@ -159,7 +164,7 @@ cn(
 ### Avatar Group
 
 ```tsx
-import { AvatarGroup } from "@/components/ui/avatar-group";
+import { AvatarGroup } from '@/components/ui/avatar-group';
 
 <AvatarGroup max={4}>
   <Avatar>
@@ -179,14 +184,14 @@ import { AvatarGroup } from "@/components/ui/avatar-group";
 ```tsx
 const getInitials = (name: string) => {
   return name
-    .split(" ")
+    .split(' ')
     .map((n) => n[0])
-    .join("")
+    .join('')
     .toUpperCase()
     .slice(0, 2);
 };
 
-<AvatarFallback>{getInitials("John Doe")}</AvatarFallback>;
+<AvatarFallback>{getInitials('John Doe')}</AvatarFallback>;
 // Renders: JD
 ```
 

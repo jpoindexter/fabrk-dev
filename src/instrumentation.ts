@@ -11,11 +11,11 @@ export async function register() {
 
   if (process.env.NEXT_RUNTIME === 'nodejs') {
     // Server-side only code
-    console.log('Server instrumentation loaded')
+    console.log('Server instrumentation loaded');
   }
 
   if (process.env.NEXT_RUNTIME === 'edge') {
     // Edge runtime code
-    console.log('Edge instrumentation loaded')
+    console.log('Edge instrumentation loaded');
   }
 }

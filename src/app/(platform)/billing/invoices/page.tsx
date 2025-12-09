@@ -1,9 +1,9 @@
-import { auth } from "@/lib/auth";
-import { redirect } from "next/navigation";
-import { prisma } from "@/lib/prisma";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { auth } from '@/lib/auth';
+import { redirect } from 'next/navigation';
+import { prisma } from '@/lib/prisma';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import {
   Table,
   TableBody,
@@ -11,22 +11,22 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, FileText, CheckCircle2 } from "lucide-react";
-import { InvoicesClient } from "./invoices-client";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+} from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
+import { ArrowLeft, FileText, CheckCircle2 } from 'lucide-react';
+import { InvoicesClient } from './invoices-client';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export const metadata = {
-  title: "Invoices | Fabrk",
-  description: "View and download your payment invoices and receipts",
+  title: 'Invoices | Fabrk',
+  description: 'View and download your payment invoices and receipts',
 };
 
 export default async function InvoicesPage() {
   const session = await auth();
   if (!session?.user) {
-    redirect("/login");
+    redirect('/login');
   }
 
   // Fetch user's payments from database
@@ -35,16 +35,16 @@ export default async function InvoicesPage() {
       userId: session.user.id,
     },
     orderBy: {
-      createdAt: "desc",
+      createdAt: 'desc',
     },
     take: 50, // Show last 50 payments
   });
 
   const getStatusBadge = (status: string) => {
     switch (status) {
-      case "succeeded":
+      case 'succeeded':
         return <Badge variant="default">Paid</Badge>;
-      case "failed":
+      case 'failed':
         return <Badge variant="outline">Failed</Badge>;
       default:
         return <Badge variant="secondary">Pending</Badge>;
@@ -52,17 +52,17 @@ export default async function InvoicesPage() {
   };
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
     }).format(amount / 100);
   };
 
   const formatDate = (date: Date) => {
-    return new Intl.DateTimeFormat("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
+    return new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
     }).format(new Date(date));
   };
 
@@ -76,8 +76,12 @@ export default async function InvoicesPage() {
             Back to Billing
           </Button>
         </Link>
-        <h1 className="mb-2 text-4xl font-semibold tracking-tight">Invoices & Receipts</h1>
-        <p className="text-muted-foreground text-lg">View and download your payment history</p>
+        <h1 className="mb-2 text-4xl font-semibold tracking-tight">
+          Invoices & Receipts
+        </h1>
+        <p className="text-muted-foreground text-lg">
+          View and download your payment history
+        </p>
       </div>
 
       {/* Invoices Table */}
@@ -98,7 +102,7 @@ export default async function InvoicesPage() {
           <CardHeader
             code="0x00"
             title="PAYMENT_HISTORY"
-            meta={`${payments.length} transaction${payments.length !== 1 ? "s" : ""}`}
+            meta={`${payments.length} transaction${payments.length !== 1 ? 's' : ''}`}
           />
           <CardContent>
             <Table>
@@ -114,16 +118,22 @@ export default async function InvoicesPage() {
               <TableBody>
                 {payments.map((payment) => (
                   <TableRow key={payment.id}>
-                    <TableCell className="font-medium">{formatDate(payment.createdAt)}</TableCell>
+                    <TableCell className="font-medium">
+                      {formatDate(payment.createdAt)}
+                    </TableCell>
                     <TableCell>
                       <div>
-                        <p className="font-medium">{payment.productId || "One-time purchase"}</p>
+                        <p className="font-medium">
+                          {payment.productId || 'One-time purchase'}
+                        </p>
                         <p className="text-muted-foreground text-xs">
                           Invoice #{payment.stripeId?.slice(-8)}
                         </p>
                       </div>
                     </TableCell>
-                    <TableCell className={mode.font}>{formatCurrency(payment.amount)}</TableCell>
+                    <TableCell className={mode.font}>
+                      {formatCurrency(payment.amount)}
+                    </TableCell>
                     <TableCell>{getStatusBadge(payment.status)}</TableCell>
                     <TableCell className="text-right">
                       <InvoicesClient paymentId={payment.id} />
@@ -139,7 +149,11 @@ export default async function InvoicesPage() {
       {/* Information Cards */}
       <div className="mt-8 grid gap-6 md:grid-cols-2">
         <Card>
-          <CardHeader code="0xF0" title="INVOICE_DETAILS" icon={<FileText className="h-4 w-4" />} />
+          <CardHeader
+            code="0xF0"
+            title="INVOICE_DETAILS"
+            icon={<FileText className="h-4 w-4" />}
+          />
           <CardContent className="text-muted-foreground space-y-2 text-sm">
             <p>Each invoice includes:</p>
             <ul className="ml-2 list-inside list-disc space-y-1">
@@ -159,8 +173,9 @@ export default async function InvoicesPage() {
           />
           <CardContent className="text-muted-foreground text-sm">
             <p>
-              We automatically send email receipts for all successful payments. Check your inbox at{" "}
-              <strong>{session.user.email}</strong> for copies of your receipts.
+              We automatically send email receipts for all successful payments.
+              Check your inbox at <strong>{session.user.email}</strong> for
+              copies of your receipts.
             </p>
           </CardContent>
         </Card>

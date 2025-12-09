@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
+import { ComponentShowcaseTemplate } from '@/components/docs';
 import {
   Table,
   TableBody,
@@ -10,7 +10,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from '@/components/ui/table';
 
 export default function TablePage() {
   return (
@@ -97,8 +97,8 @@ export default function TablePage() {
       }}
       variants={[
         {
-          title: "Simple Table",
-          description: "Basic table without caption or footer",
+          title: 'Simple Table',
+          description: 'Basic table without caption or footer',
           preview: (
             <Table>
               <TableHeader>
@@ -145,8 +145,8 @@ export default function TablePage() {
 </Table>`,
         },
         {
-          title: "Selected Rows",
-          description: "Highlight specific rows using data-state",
+          title: 'Selected Rows',
+          description: 'Highlight specific rows using data-state',
           preview: (
             <Table>
               <TableHeader>
@@ -193,8 +193,8 @@ export default function TablePage() {
 </Table>`,
         },
         {
-          title: "Responsive Table",
-          description: "Scrollable table container for mobile",
+          title: 'Responsive Table',
+          description: 'Scrollable table container for mobile',
           preview: (
             <Table>
               <TableHeader>
@@ -246,21 +246,21 @@ export default function TablePage() {
       ]}
       props={[
         {
-          name: "className",
-          type: "string",
-          description: "Additional CSS classes",
+          name: 'className',
+          type: 'string',
+          description: 'Additional CSS classes',
         },
       ]}
       accessibility={[
-        "Uses semantic HTML table elements (table, thead, tbody, tfoot)",
+        'Uses semantic HTML table elements (table, thead, tbody, tfoot)',
         "TableHead elements have scope='col' by default for screen readers",
-        "TableCaption provides accessible description of table content",
-        "Responsive wrapper prevents horizontal overflow on mobile",
-        "Hover states on rows improve visual feedback",
-        "Selected rows use data-state attribute for styling",
+        'TableCaption provides accessible description of table content',
+        'Responsive wrapper prevents horizontal overflow on mobile',
+        'Hover states on rows improve visual feedback',
+        'Selected rows use data-state attribute for styling',
       ]}
-      previous={{ title: "Tooltip", href: "/docs/components/tooltip" }}
-      next={{ title: "Empty State", href: "/docs/components/empty-state" }}
+      previous={{ title: 'Tooltip', href: '/docs/components/tooltip' }}
+      next={{ title: 'Empty State', href: '/docs/components/empty-state' }}
     />
   );
 }

@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { Badge } from "@/components/ui/badge";
-import { Check, X, AlertCircle, Info } from "lucide-react";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { Badge } from '@/components/ui/badge';
+import { Check, X, AlertCircle, Info } from 'lucide-react';
 
 export default function BadgePage() {
   return (
@@ -12,15 +12,13 @@ export default function BadgePage() {
       description="A versatile inline label component for displaying status, categories, or metadata with multiple style variants and sizes."
       importCode={`import { Badge } from "@/components/ui/badge";`}
       mainPreview={{
-        preview: (
-          <Badge>Default Badge</Badge>
-        ),
+        preview: <Badge>Default Badge</Badge>,
         code: `<Badge>Default Badge</Badge>`,
       }}
       variants={[
         {
-          title: "Variants",
-          description: "All available badge style variants",
+          title: 'Variants',
+          description: 'All available badge style variants',
           preview: (
             <div className="flex flex-wrap gap-2">
               <Badge variant="default">Default</Badge>
@@ -39,8 +37,8 @@ export default function BadgePage() {
 <Badge variant="outline">Outline</Badge>`,
         },
         {
-          title: "Sizes",
-          description: "Small, medium, and large badge sizes",
+          title: 'Sizes',
+          description: 'Small, medium, and large badge sizes',
           preview: (
             <div className="flex flex-wrap items-center gap-2">
               <Badge size="sm">Small</Badge>
@@ -53,8 +51,8 @@ export default function BadgePage() {
 <Badge size="lg">Large</Badge>`,
         },
         {
-          title: "With Icons",
-          description: "Badges with icons for additional context",
+          title: 'With Icons',
+          description: 'Badges with icons for additional context',
           preview: (
             <div className="flex flex-wrap gap-2">
               <Badge variant="default">
@@ -85,8 +83,8 @@ export default function BadgePage() {
 </Badge>`,
         },
         {
-          title: "Status Indicators",
-          description: "Use badges to show status or state",
+          title: 'Status Indicators',
+          description: 'Use badges to show status or state',
           preview: (
             <div className="flex flex-wrap gap-2">
               <Badge variant="default">Active</Badge>
@@ -105,21 +103,30 @@ export default function BadgePage() {
 <Badge variant="outline">Archived</Badge>`,
         },
         {
-          title: "Removable Badges",
-          description: "Interactive badges with remove functionality",
+          title: 'Removable Badges',
+          description: 'Interactive badges with remove functionality',
           preview: (
             <div className="flex flex-wrap gap-2">
-              <Badge variant="secondary" className="cursor-pointer hover:bg-secondary/80">
+              <Badge
+                variant="secondary"
+                className="hover:bg-secondary/80 cursor-pointer"
+              >
                 React
-                <X className="h-3 w-3 ml-1" />
+                <X className="ml-1 h-3 w-3" />
               </Badge>
-              <Badge variant="secondary" className="cursor-pointer hover:bg-secondary/80">
+              <Badge
+                variant="secondary"
+                className="hover:bg-secondary/80 cursor-pointer"
+              >
                 TypeScript
-                <X className="h-3 w-3 ml-1" />
+                <X className="ml-1 h-3 w-3" />
               </Badge>
-              <Badge variant="secondary" className="cursor-pointer hover:bg-secondary/80">
+              <Badge
+                variant="secondary"
+                className="hover:bg-secondary/80 cursor-pointer"
+              >
                 Tailwind
-                <X className="h-3 w-3 ml-1" />
+                <X className="ml-1 h-3 w-3" />
               </Badge>
             </div>
           ),
@@ -129,24 +136,42 @@ export default function BadgePage() {
 </Badge>`,
         },
         {
-          title: "Size Variants Combined",
-          description: "Different sizes across all variants",
+          title: 'Size Variants Combined',
+          description: 'Different sizes across all variants',
           preview: (
             <div className="space-y-4">
-              <div className="flex flex-wrap gap-2 items-center">
-                <Badge variant="default" size="sm">Small</Badge>
-                <Badge variant="secondary" size="sm">Small</Badge>
-                <Badge variant="accent" size="sm">Small</Badge>
+              <div className="flex flex-wrap items-center gap-2">
+                <Badge variant="default" size="sm">
+                  Small
+                </Badge>
+                <Badge variant="secondary" size="sm">
+                  Small
+                </Badge>
+                <Badge variant="accent" size="sm">
+                  Small
+                </Badge>
               </div>
-              <div className="flex flex-wrap gap-2 items-center">
-                <Badge variant="default" size="md">Medium</Badge>
-                <Badge variant="secondary" size="md">Medium</Badge>
-                <Badge variant="accent" size="md">Medium</Badge>
+              <div className="flex flex-wrap items-center gap-2">
+                <Badge variant="default" size="md">
+                  Medium
+                </Badge>
+                <Badge variant="secondary" size="md">
+                  Medium
+                </Badge>
+                <Badge variant="accent" size="md">
+                  Medium
+                </Badge>
               </div>
-              <div className="flex flex-wrap gap-2 items-center">
-                <Badge variant="default" size="lg">Large</Badge>
-                <Badge variant="secondary" size="lg">Large</Badge>
-                <Badge variant="accent" size="lg">Large</Badge>
+              <div className="flex flex-wrap items-center gap-2">
+                <Badge variant="default" size="lg">
+                  Large
+                </Badge>
+                <Badge variant="secondary" size="lg">
+                  Large
+                </Badge>
+                <Badge variant="accent" size="lg">
+                  Large
+                </Badge>
               </div>
             </div>
           ),
@@ -157,39 +182,39 @@ export default function BadgePage() {
       ]}
       props={[
         {
-          name: "variant",
+          name: 'variant',
           type: '"default" | "secondary" | "accent" | "destructive" | "neutral" | "outline"',
           default: '"default"',
-          description: "Visual style variant of the badge",
+          description: 'Visual style variant of the badge',
         },
         {
-          name: "size",
+          name: 'size',
           type: '"sm" | "md" | "lg"',
           default: '"md"',
-          description: "Size of the badge",
+          description: 'Size of the badge',
         },
         {
-          name: "asChild",
-          type: "boolean",
-          default: "false",
-          description: "Use Radix UI Slot to render as a different element",
+          name: 'asChild',
+          type: 'boolean',
+          default: 'false',
+          description: 'Use Radix UI Slot to render as a different element',
         },
         {
-          name: "className",
-          type: "string",
-          description: "Additional CSS classes to apply",
+          name: 'className',
+          type: 'string',
+          description: 'Additional CSS classes to apply',
         },
       ]}
       accessibility={[
-        "Badges use semantic span elements by default",
+        'Badges use semantic span elements by default',
         "Use descriptive text content that clearly indicates the badge's purpose",
-        "When badges are interactive, ensure they have proper hover states and cursor styling",
-        "Icons inside badges should be decorative - the text should convey the full meaning",
-        "Minimum py-1.5 (6px) vertical padding ensures touch-friendly spacing on mobile devices",
-        "Use appropriate color variants to convey meaning (destructive for errors, accent for warnings)",
+        'When badges are interactive, ensure they have proper hover states and cursor styling',
+        'Icons inside badges should be decorative - the text should convey the full meaning',
+        'Minimum py-1.5 (6px) vertical padding ensures touch-friendly spacing on mobile devices',
+        'Use appropriate color variants to convey meaning (destructive for errors, accent for warnings)',
       ]}
-      previous={{ title: "Card", href: "/docs/components/card" }}
-      next={{ title: "Avatar", href: "/docs/components/avatar" }}
+      previous={{ title: 'Card', href: '/docs/components/card' }}
+      next={{ title: 'Avatar', href: '/docs/components/avatar' }}
     />
   );
 }

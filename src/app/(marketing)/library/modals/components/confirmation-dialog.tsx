@@ -3,8 +3,8 @@
  * Confirmation Dialog - AlertDialog for destructive actions
  */
 
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader } from "@/components/ui/card";
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader } from '@/components/ui/card';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -15,10 +15,10 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import { AlertTriangle, Trash2 } from "lucide-react";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+} from '@/components/ui/alert-dialog';
+import { AlertTriangle, Trash2 } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export function ConfirmationDialog() {
   return (
@@ -26,41 +26,50 @@ export function ConfirmationDialog() {
       <CardHeader code="0x00" title="CONFIRMATION_DIALOG" />
       <div className="p-6">
         <div className="mb-4">
-          <h3 className={cn(mode.font, "mb-1 font-semibold")}>Confirmation Dialog</h3>
-          <p className={cn(mode.font, "text-muted-foreground text-xs")}>
+          <h3 className={cn(mode.font, 'mb-1 font-semibold')}>
+            Confirmation Dialog
+          </h3>
+          <p className={cn(mode.font, 'text-muted-foreground text-xs')}>
             Destructive action confirmation with cancel option
           </p>
         </div>
 
         <AlertDialog>
           <AlertDialogTrigger asChild>
-            <Button variant="destructive" className={cn(mode.radius, mode.font, "text-xs")}>
+            <Button
+              variant="destructive"
+              className={cn(mode.radius, mode.font, 'text-xs')}
+            >
               <Trash2 className="mr-1 h-3 w-3" />
               &gt; DELETE_ITEM
             </Button>
           </AlertDialogTrigger>
-          <AlertDialogContent className={cn(mode.radius, "border-border")}>
+          <AlertDialogContent className={cn(mode.radius, 'border-border')}>
             <AlertDialogHeader>
               <div className="mb-2 flex items-center gap-2">
                 <div className="border-destructive bg-destructive/10 border p-2">
                   <AlertTriangle className="text-destructive h-5 w-5" />
                 </div>
               </div>
-              <AlertDialogTitle className={cn(mode.font)}>[CONFIRM_DELETE]</AlertDialogTitle>
-              <AlertDialogDescription className={cn(mode.font, "text-sm")}>
-                This action cannot be undone. This will permanently delete the item and remove all
-                associated data from our servers.
+              <AlertDialogTitle className={cn(mode.font)}>
+                [CONFIRM_DELETE]
+              </AlertDialogTitle>
+              <AlertDialogDescription className={cn(mode.font, 'text-sm')}>
+                This action cannot be undone. This will permanently delete the
+                item and remove all associated data from our servers.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel className={cn(mode.radius, mode.font, "text-xs")}>
+              <AlertDialogCancel
+                className={cn(mode.radius, mode.font, 'text-xs')}
+              >
                 &gt; CANCEL
               </AlertDialogCancel>
               <AlertDialogAction
                 className={cn(
                   mode.radius,
                   mode.font,
-                  "bg-destructive text-destructive-foreground hover:bg-destructive/90 text-xs"
+                  'bg-destructive text-destructive-foreground hover:bg-destructive/90 text-xs'
                 )}
               >
                 &gt; DELETE
@@ -69,7 +78,7 @@ export function ConfirmationDialog() {
           </AlertDialogContent>
         </AlertDialog>
 
-        <div className={cn(mode.font, "text-muted-foreground mt-4 text-xs")}>
+        <div className={cn(mode.font, 'text-muted-foreground mt-4 text-xs')}>
           [USE_CASE]: Delete, logout, reset, irreversible actions
         </div>
       </div>

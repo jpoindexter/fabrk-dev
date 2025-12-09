@@ -2,13 +2,13 @@
  * Feature Section Layout Component
  * Two-column layout with text content and visual preview
  */
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { FeatureItem, type FeatureItemProps } from "./feature-item";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { Badge } from "@/components/ui/card";
+import { motion } from 'framer-motion';
+import { FeatureItem, type FeatureItemProps } from './feature-item';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { Badge } from '@/components/ui/card';
 
 interface FeatureSectionLayoutProps {
   spec: string;
@@ -30,13 +30,13 @@ export function FeatureSectionLayout({
   return (
     <div className="border-border border-t pt-16 lg:pt-20">
       <div
-        className={`grid gap-8 lg:grid-cols-2 lg:gap-12 ${reversed ? "lg:[&>*:first-child]:order-2" : ""}`}
+        className={`grid gap-8 lg:grid-cols-2 lg:gap-12 ${reversed ? 'lg:[&>*:first-child]:order-2' : ''}`}
       >
         {/* Text Content */}
         <motion.div
           initial={{ opacity: 0, x: reversed ? 20 : -20 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
           className="flex flex-col justify-center"
         >
@@ -44,12 +44,18 @@ export function FeatureSectionLayout({
           <Badge label="SPEC" meta={spec} className="mb-4 self-start" />
 
           {/* Title */}
-          <h3 className={cn(mode.font, "mb-4 text-2xl font-semibold")}>{title}</h3>
+          <h3 className={cn(mode.font, 'mb-4 text-2xl font-semibold')}>
+            {title}
+          </h3>
 
           {/* Description */}
           <div className="border-border mb-6 border-l-2 pl-4">
-            <span className={cn(mode.font, "text-muted-foreground text-xs")}>│ [DESC]: </span>
-            <span className={cn(mode.font, "text-muted-foreground text-xs")}>{description}</span>
+            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
+              │ [DESC]:{' '}
+            </span>
+            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
+              {description}
+            </span>
           </div>
 
           {/* Feature List */}
@@ -64,7 +70,7 @@ export function FeatureSectionLayout({
         <motion.div
           initial={{ opacity: 0, x: reversed ? -20 : 20 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="flex items-center justify-center"
         >

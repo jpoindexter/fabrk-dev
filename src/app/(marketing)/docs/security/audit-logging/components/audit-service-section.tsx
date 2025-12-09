@@ -1,7 +1,7 @@
 export function AuditServiceSection() {
   return {
-    title: "Audit Service",
-    description: "Create a service to log events",
+    title: 'Audit Service',
+    description: 'Create a service to log events',
     code: `// src/lib/audit.ts
 
 import { prisma } from "@/lib/db";
@@ -87,6 +87,6 @@ export async function createAuditLog(input: AuditLogInput) {
     },
   });
 }`,
-    language: "typescript" as const,
+    language: 'typescript' as const,
   };
 }

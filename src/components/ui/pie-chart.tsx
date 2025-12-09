@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+import * as React from 'react';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 export interface PieChartDataItem {
   label: string;
@@ -22,14 +22,14 @@ interface PieChartProps {
 }
 
 const DEFAULT_COLORS = [
-  "hsl(var(--primary))",
-  "hsl(var(--accent))",
-  "hsl(var(--secondary))",
-  "oklch(70% 0.15 240)",
-  "oklch(70% 0.15 160)",
-  "oklch(70% 0.15 60)",
-  "oklch(70% 0.20 340)",
-  "oklch(60% 0.20 25)",
+  'hsl(var(--primary))',
+  'hsl(var(--accent))',
+  'hsl(var(--secondary))',
+  'oklch(70% 0.15 240)',
+  'oklch(70% 0.15 160)',
+  'oklch(70% 0.15 60)',
+  'oklch(70% 0.20 340)',
+  'oklch(60% 0.20 25)',
 ];
 
 export function PieChart({
@@ -110,15 +110,25 @@ export function PieChart({
   }, []);
 
   return (
-    <div className={cn("flex flex-col gap-4", className)}>
-      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="mx-auto">
+    <div className={cn('flex flex-col gap-4', className)}>
+      <svg
+        width={size}
+        height={size}
+        viewBox={`0 0 ${size} ${size}`}
+        className="mx-auto"
+      >
         {segmentsWithAngles.map((segment, index) => {
           const { startAngle, endAngle } = segment;
 
           const isHovered = hoveredIndex === index;
           const segmentRadius = isHovered ? radius + 5 : radius;
 
-          const path = getPath(startAngle, endAngle, segmentRadius, innerRadius);
+          const path = getPath(
+            startAngle,
+            endAngle,
+            segmentRadius,
+            innerRadius
+          );
 
           return (
             <g key={index}>
@@ -127,7 +137,10 @@ export function PieChart({
                 fill={segment.color}
                 stroke="hsl(var(--background))"
                 strokeWidth={2}
-                className={cn("cursor-pointer transition-all", isHovered && "opacity-90")}
+                className={cn(
+                  'cursor-pointer transition-all',
+                  isHovered && 'opacity-90'
+                )}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => onSegmentClick?.(segment, index)}
@@ -140,7 +153,9 @@ export function PieChart({
                   dominantBaseline="middle"
                   className="fill-background pointer-events-none text-xs font-medium"
                 >
-                  {showPercentages ? `${segment.percentage.toFixed(0)}%` : segment.label}
+                  {showPercentages
+                    ? `${segment.percentage.toFixed(0)}%`
+                    : segment.label}
                 </text>
               )}
             </g>
@@ -157,24 +172,24 @@ export function PieChart({
               tabIndex={0}
               aria-label={`${segment.label}: ${segment.percentage.toFixed(1)}%`}
               className={cn(
-                "flex cursor-pointer items-center gap-2 transition-opacity",
-                hoveredIndex !== null && hoveredIndex !== index && "opacity-50"
+                'flex cursor-pointer items-center gap-2 transition-opacity',
+                hoveredIndex !== null && hoveredIndex !== index && 'opacity-50'
               )}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
               onClick={() => onSegmentClick?.(segment, index)}
               onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
+                if (e.key === 'Enter' || e.key === ' ') {
                   e.preventDefault();
                   onSegmentClick?.(segment, index);
                 }
               }}
             >
               <div
-                className={cn("h-3 w-3 border", mode.radius)}
+                className={cn('h-3 w-3 border', mode.radius)}
                 style={{ backgroundColor: segment.color }}
               />
-              <span className={cn("text-xs font-medium", mode.font)}>
+              <span className={cn('text-xs font-medium', mode.font)}>
                 {segment.label}
                 {showPercentages && (
                   <span className="text-muted-foreground ml-1">

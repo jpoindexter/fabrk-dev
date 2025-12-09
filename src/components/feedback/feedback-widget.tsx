@@ -3,33 +3,37 @@
  * Floating feedback button with form
  */
 
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { MessageCircle, X, Star } from "lucide-react";
-import type { FeedbackType } from "@/lib/feedback";
+} from '@/components/ui/select';
+import { MessageCircle, X, Star } from 'lucide-react';
+import type { FeedbackType } from '@/lib/feedback';
 
-import { mode } from "@/design-system";
-import { formatLabel } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { mode } from '@/design-system';
+import { formatLabel } from '@/design-system';
+import { cn } from '@/lib/utils';
 interface FeedbackWidgetProps {
-  onSubmit: (feedback: { type: FeedbackType; message: string; rating?: number }) => void;
+  onSubmit: (feedback: {
+    type: FeedbackType;
+    message: string;
+    rating?: number;
+  }) => void;
 }
 
 export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [type, setType] = useState<FeedbackType>("feature_request");
-  const [message, setMessage] = useState("");
+  const [type, setType] = useState<FeedbackType>('feature_request');
+  const [message, setMessage] = useState('');
   const [rating, setRating] = useState<number>(0);
   const [submitted, setSubmitted] = useState(false);
 
@@ -46,7 +50,7 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
     setTimeout(() => {
       setIsOpen(false);
       setSubmitted(false);
-      setMessage("");
+      setMessage('');
       setRating(0);
     }, 2000);
   };
@@ -56,7 +60,7 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
       <button
         onClick={() => setIsOpen(true)}
         className={cn(
-          "bg-info text-info-foreground hover:bg-info/80 fixed right-6 bottom-6 flex h-14 w-14 items-center justify-center transition-all hover:scale-110",
+          'bg-info text-info-foreground hover:bg-info/80 fixed right-6 bottom-6 flex h-14 w-14 items-center justify-center transition-all hover:scale-110',
           mode.radius
         )}
         aria-label="Give feedback"
@@ -67,7 +71,12 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
   }
 
   return (
-    <div className={cn("border-border bg-card fixed right-6 bottom-6 w-96 border", mode.radius)}>
+    <div
+      className={cn(
+        'border-border bg-card fixed right-6 bottom-6 w-96 border',
+        mode.radius
+      )}
+    >
       <div className="border-border flex items-center justify-between border-b p-4">
         <h3 className="text-foreground font-semibold">Send Feedback</h3>
         <button
@@ -82,14 +91,23 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
       {submitted ? (
         <div className="p-6 text-center">
           <div className="mb-2 text-4xl">✅</div>
-          <h4 className="text-foreground mb-1 font-semibold">Thanks for your feedback!</h4>
-          <p className="text-muted-foreground text-sm">We appreciate your input.</p>
+          <h4 className="text-foreground mb-1 font-semibold">
+            Thanks for your feedback!
+          </h4>
+          <p className="text-muted-foreground text-sm">
+            We appreciate your input.
+          </p>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="p-4">
           <div className="mb-4">
-            <Label htmlFor="feedback-type">{formatLabel("Feedback Type")}</Label>
-            <Select value={type} onValueChange={(v) => setType(v as FeedbackType)}>
+            <Label htmlFor="feedback-type">
+              {formatLabel('Feedback Type')}
+            </Label>
+            <Select
+              value={type}
+              onValueChange={(v) => setType(v as FeedbackType)}
+            >
               <SelectTrigger id="feedback-type">
                 <SelectValue />
               </SelectTrigger>
@@ -105,7 +123,9 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
           </div>
 
           <div className="mb-4">
-            <Label htmlFor="feedback-message">{formatLabel("Your Feedback")}</Label>
+            <Label htmlFor="feedback-message">
+              {formatLabel('Your Feedback')}
+            </Label>
             <Textarea
               id="feedback-message"
               value={message}
@@ -117,7 +137,7 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
           </div>
 
           <div className="mb-4">
-            <Label>{formatLabel("Rating (optional)")}</Label>
+            <Label>{formatLabel('Rating (optional)')}</Label>
             <div className="flex gap-2">
               {[1, 2, 3, 4, 5].map((num) => (
                 <button
@@ -129,7 +149,9 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
                 >
                   <Star
                     className={`h-6 w-6 ${
-                      num <= rating ? "fill-warning text-warning" : "text-muted-foreground/50"
+                      num <= rating
+                        ? 'fill-warning text-warning'
+                        : 'text-muted-foreground/50'
                     }`}
                   />
                 </button>
@@ -137,7 +159,7 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
             </div>
           </div>
 
-          <Button type="submit" className={cn("w-full", mode.font, "text-xs")}>
+          <Button type="submit" className={cn('w-full', mode.font, 'text-xs')}>
             &gt; SUBMIT_FEEDBACK
           </Button>
         </form>

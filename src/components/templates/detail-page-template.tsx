@@ -30,14 +30,14 @@
  * ```
  */
 
-"use client";
+'use client';
 
-import * as React from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { ChevronRight } from "lucide-react";
+import * as React from 'react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { ChevronRight } from 'lucide-react';
 
 // =============================================================================
 // TYPES
@@ -56,7 +56,7 @@ export interface DetailAction {
   /** Click handler */
   onClick: () => void;
   /** Button variant */
-  variant?: "primary" | "secondary" | "destructive";
+  variant?: 'primary' | 'secondary' | 'destructive';
 }
 
 export interface DetailTab {
@@ -114,19 +114,23 @@ function Breadcrumbs({ items }: BreadcrumbsProps) {
     <nav className="flex items-center gap-1" aria-label="Breadcrumb">
       {items.map((item, index) => (
         <React.Fragment key={index}>
-          {index > 0 && <ChevronRight className="text-muted-foreground h-4 w-4" />}
+          {index > 0 && (
+            <ChevronRight className="text-muted-foreground h-4 w-4" />
+          )}
           {item.href ? (
             <Link
               href={item.href}
               className={cn(
-                "text-muted-foreground hover:text-foreground text-sm transition-colors",
+                'text-muted-foreground hover:text-foreground text-sm transition-colors',
                 mode.font
               )}
             >
               {item.label}
             </Link>
           ) : (
-            <span className={cn("text-foreground text-sm", mode.font)}>{item.label}</span>
+            <span className={cn('text-foreground text-sm', mode.font)}>
+              {item.label}
+            </span>
           )}
         </React.Fragment>
       ))}
@@ -146,20 +150,22 @@ function MetadataSidebar({ items }: MetadataSidebarProps) {
   return (
     <aside
       className={cn(
-        "border-border bg-card sticky top-6 h-fit w-80 shrink-0 space-y-4 border p-4",
+        'border-border bg-card sticky top-6 h-fit w-80 shrink-0 space-y-4 border p-4',
         mode.radius
       )}
     >
       <div className="border-border border-b pb-2">
-        <span className={cn("text-muted-foreground text-xs", mode.font)}>[ [0x00] METADATA ]</span>
+        <span className={cn('text-muted-foreground text-xs', mode.font)}>
+          [ [0x00] METADATA ]
+        </span>
       </div>
       <div className="space-y-4">
         {items.map((item, index) => (
           <div key={index} className="space-y-1">
-            <span className={cn("text-muted-foreground text-xs", mode.font)}>
-              [{item.label.toUpperCase().replace(/ /g, "_")}]:
+            <span className={cn('text-muted-foreground text-xs', mode.font)}>
+              [{item.label.toUpperCase().replace(/ /g, '_')}]:
             </span>
-            <div className={cn("text-sm", mode.font)}>{item.value}</div>
+            <div className={cn('text-sm', mode.font)}>{item.value}</div>
           </div>
         ))}
       </div>
@@ -185,14 +191,15 @@ function TabNavigation({ tabs, activeTab, onTabChange }: TabsProps) {
           key={tab.value}
           onClick={() => onTabChange(tab.value)}
           className={cn(
-            "border-border -mb-px border-b-2 px-4 py-2 text-xs transition-colors",
+            'border-border -mb-px border-b-2 px-4 py-2 text-xs transition-colors',
             mode.font,
             activeTab === tab.value
-              ? "border-primary text-foreground"
-              : "text-muted-foreground hover:text-foreground border-transparent"
+              ? 'border-primary text-foreground'
+              : 'text-muted-foreground hover:text-foreground border-transparent'
           )}
         >
-          [ [{String(index).padStart(2, "0")}] {tab.label.toUpperCase().replace(/ /g, "_")} ]
+          [ [{String(index).padStart(2, '0')}]{' '}
+          {tab.label.toUpperCase().replace(/ /g, '_')} ]
         </button>
       ))}
     </div>
@@ -212,19 +219,25 @@ export function DetailPageTemplate({
   metadata,
   className,
 }: DetailPageTemplateProps) {
-  const [activeTab, setActiveTab] = React.useState(tabs?.[0]?.value ?? "");
+  const [activeTab, setActiveTab] = React.useState(tabs?.[0]?.value ?? '');
 
-  const activeTabContent = tabs?.find((tab) => tab.value === activeTab)?.content;
+  const activeTabContent = tabs?.find(
+    (tab) => tab.value === activeTab
+  )?.content;
   const content = tabs ? activeTabContent : children;
 
   return (
-    <div className={cn("mx-auto max-w-6xl space-y-6", className)}>
+    <div className={cn('mx-auto max-w-6xl space-y-6', className)}>
       {/* Breadcrumbs */}
-      {breadcrumbs && breadcrumbs.length > 0 && <Breadcrumbs items={breadcrumbs} />}
+      {breadcrumbs && breadcrumbs.length > 0 && (
+        <Breadcrumbs items={breadcrumbs} />
+      )}
 
       {/* Header */}
       <div className="flex items-start justify-between">
-        <h1 className={cn("text-4xl font-semibold tracking-tight", mode.font)}>{title}</h1>
+        <h1 className={cn('text-4xl font-semibold tracking-tight', mode.font)}>
+          {title}
+        </h1>
 
         {actions && actions.length > 0 && (
           <div className="flex items-center gap-2">
@@ -232,15 +245,15 @@ export function DetailPageTemplate({
               <Button
                 key={index}
                 variant={
-                  action.variant === "destructive"
-                    ? "destructive"
-                    : action.variant === "secondary"
-                      ? "outline"
-                      : "default"
+                  action.variant === 'destructive'
+                    ? 'destructive'
+                    : action.variant === 'secondary'
+                      ? 'outline'
+                      : 'default'
                 }
                 onClick={action.onClick}
               >
-                &gt; {action.label.toUpperCase().replace(/ /g, "_")}
+                &gt; {action.label.toUpperCase().replace(/ /g, '_')}
               </Button>
             ))}
           </div>
@@ -253,15 +266,21 @@ export function DetailPageTemplate({
         <div className="min-w-0 flex-1">
           {/* Tabs */}
           {tabs && tabs.length > 0 && (
-            <TabNavigation tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
+            <TabNavigation
+              tabs={tabs}
+              activeTab={activeTab}
+              onTabChange={setActiveTab}
+            />
           )}
 
           {/* Content */}
-          <div className={cn(tabs ? "pt-6" : "")}>{content}</div>
+          <div className={cn(tabs ? 'pt-6' : '')}>{content}</div>
         </div>
 
         {/* Metadata Sidebar */}
-        {metadata && metadata.length > 0 && <MetadataSidebar items={metadata} />}
+        {metadata && metadata.length > 0 && (
+          <MetadataSidebar items={metadata} />
+        )}
       </div>
     </div>
   );

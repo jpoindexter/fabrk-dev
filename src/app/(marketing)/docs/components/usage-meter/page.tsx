@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { UsageMeter } from "@/components/ui/billing-summary-card";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { UsageMeter } from '@/components/ui/billing-summary-card';
 
 export default function UsageMeterPage() {
   return (
@@ -25,8 +25,8 @@ export default function UsageMeterPage() {
       }}
       variants={[
         {
-          title: "Warning State (75%+)",
-          description: "Meter shows warning color when usage is high.",
+          title: 'Warning State (75%+)',
+          description: 'Meter shows warning color when usage is high.',
           preview: (
             <div className="mx-auto max-w-md space-y-4 p-4">
               <UsageMeter label="Storage" used={3.8} limit={5} unit="GB" />
@@ -35,8 +35,8 @@ export default function UsageMeterPage() {
           code: `<UsageMeter label="Storage" used={3.8} limit={5} unit="GB" />`,
         },
         {
-          title: "Critical State (90%+)",
-          description: "Meter shows destructive color when near limit.",
+          title: 'Critical State (90%+)',
+          description: 'Meter shows destructive color when near limit.',
           preview: (
             <div className="mx-auto max-w-md space-y-4 p-4">
               <UsageMeter label="API Calls" used={9500} limit={10000} />
@@ -45,8 +45,8 @@ export default function UsageMeterPage() {
           code: `<UsageMeter label="API Calls" used={9500} limit={10000} />`,
         },
         {
-          title: "Size Variants",
-          description: "Different sizes for various contexts.",
+          title: 'Size Variants',
+          description: 'Different sizes for various contexts.',
           preview: (
             <div className="mx-auto max-w-md space-y-4 p-4">
               <UsageMeter label="Small" used={50} limit={100} size="sm" />
@@ -59,8 +59,8 @@ export default function UsageMeterPage() {
 <UsageMeter label="Large" used={50} limit={100} size="lg" />`,
         },
         {
-          title: "Without Percentage",
-          description: "Hide percentage display.",
+          title: 'Without Percentage',
+          description: 'Hide percentage display.',
           preview: (
             <div className="mx-auto max-w-md space-y-4 p-4">
               <UsageMeter
@@ -82,31 +82,50 @@ export default function UsageMeterPage() {
         },
       ]}
       props={[
-        { name: "label", type: "string", required: true, description: "Meter label text." },
-        { name: "used", type: "number", required: true, description: "Current usage value." },
-        { name: "limit", type: "number", required: true, description: "Maximum limit value." },
-        { name: "unit", type: "string", description: "Unit label (e.g., 'GB', 'MB')." },
         {
-          name: "showPercentage",
-          type: "boolean",
-          default: "true",
-          description: "Show percentage in display.",
+          name: 'label',
+          type: 'string',
+          required: true,
+          description: 'Meter label text.',
         },
         {
-          name: "size",
+          name: 'used',
+          type: 'number',
+          required: true,
+          description: 'Current usage value.',
+        },
+        {
+          name: 'limit',
+          type: 'number',
+          required: true,
+          description: 'Maximum limit value.',
+        },
+        {
+          name: 'unit',
+          type: 'string',
+          description: "Unit label (e.g., 'GB', 'MB').",
+        },
+        {
+          name: 'showPercentage',
+          type: 'boolean',
+          default: 'true',
+          description: 'Show percentage in display.',
+        },
+        {
+          name: 'size',
           type: '"sm" | "md" | "lg"',
           default: '"md"',
-          description: "Progress bar size.",
+          description: 'Progress bar size.',
         },
       ]}
       accessibility={[
-        "Progress value communicated via text",
-        "Color-coded states with text fallback",
-        "Semantic progress structure",
-        "Unit labels for clarity",
+        'Progress value communicated via text',
+        'Color-coded states with text fallback',
+        'Semantic progress structure',
+        'Unit labels for clarity',
       ]}
-      previous={{ title: "Simple Icon", href: "/docs/components/simple-icon" }}
-      next={{ title: "Overview", href: "/docs/components/overview" }}
+      previous={{ title: 'Simple Icon', href: '/docs/components/simple-icon' }}
+      next={{ title: 'Overview', href: '/docs/components/overview' }}
     />
   );
 }

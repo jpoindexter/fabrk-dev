@@ -1,10 +1,10 @@
-import { Metadata } from "next";
-import { auth } from "@/lib/auth";
-import { redirect } from "next/navigation";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { Metadata } from 'next';
+import { auth } from '@/lib/auth';
+import { redirect } from 'next/navigation';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 import {
   User,
   Mail,
@@ -17,27 +17,27 @@ import {
   Edit,
   Share2,
   MoreVertical,
-} from "lucide-react";
+} from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: "User Profile - Fabrk Dashboard",
-  description: "View and manage user profile",
+  title: 'User Profile - Fabrk Dashboard',
+  description: 'View and manage user profile',
 };
 
 // Mock user data - replace with real data from your database
 const mockUserProfile = {
-  name: "Alex Johnson",
-  email: "alex@example.com",
-  avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Alex",
-  role: "Pro Member",
-  joinedDate: "January 2024",
-  location: "San Francisco, CA",
-  website: "alexjohnson.dev",
-  bio: "Full-stack developer and indie hacker. Building SaaS products that solve real problems. Currently working on my third startup.",
+  name: 'Alex Johnson',
+  email: 'alex@example.com',
+  avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Alex',
+  role: 'Pro Member',
+  joinedDate: 'January 2024',
+  location: 'San Francisco, CA',
+  website: 'alexjohnson.dev',
+  bio: 'Full-stack developer and indie hacker. Building SaaS products that solve real problems. Currently working on my third startup.',
   social: {
-    twitter: "@alexjohnson",
-    github: "alexjohnson",
-    linkedin: "alexjohnson",
+    twitter: '@alexjohnson',
+    github: 'alexjohnson',
+    linkedin: 'alexjohnson',
   },
   stats: {
     projects: 12,
@@ -46,28 +46,28 @@ const mockUserProfile = {
   },
   recentProjects: [
     {
-      name: "TaskFlow Pro",
-      description: "Project management for small teams",
-      status: "Live",
-      tech: ["Next.js", "PostgreSQL", "Stripe"],
+      name: 'TaskFlow Pro',
+      description: 'Project management for small teams',
+      status: 'Live',
+      tech: ['Next.js', 'PostgreSQL', 'Stripe'],
     },
     {
-      name: "EmailKit",
-      description: "Transactional email templates",
-      status: "In Development",
-      tech: ["React", "Tailwind", "Resend"],
+      name: 'EmailKit',
+      description: 'Transactional email templates',
+      status: 'In Development',
+      tech: ['React', 'Tailwind', 'Resend'],
     },
     {
-      name: "AuthHub",
-      description: "Authentication microservice",
-      status: "Planning",
-      tech: ["Node.js", "Redis", "JWT"],
+      name: 'AuthHub',
+      description: 'Authentication microservice',
+      status: 'Planning',
+      tech: ['Node.js', 'Redis', 'JWT'],
     },
   ],
   activity: [
-    { action: "Created new project", item: "TaskFlow Pro", time: "2 days ago" },
-    { action: "Updated profile", item: "Added bio", time: "1 week ago" },
-    { action: "Joined Fabrk", item: "Pro Member", time: "2 weeks ago" },
+    { action: 'Created new project', item: 'TaskFlow Pro', time: '2 days ago' },
+    { action: 'Updated profile', item: 'Added bio', time: '1 week ago' },
+    { action: 'Joined Fabrk', item: 'Pro Member', time: '2 weeks ago' },
   ],
 };
 
@@ -75,14 +75,16 @@ export default async function UserProfilePage() {
   const session = await auth();
 
   if (!session?.user) {
-    redirect("/login");
+    redirect('/login');
   }
 
   return (
     <div className="space-y-8 p-8">
       {/* Page Header */}
       <div className="flex items-center justify-between">
-        <h1 className="text-foreground text-4xl font-semibold tracking-tight">User Profile</h1>
+        <h1 className="text-foreground text-4xl font-semibold tracking-tight">
+          User Profile
+        </h1>
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm">
             <Share2 className="mr-2 h-4 w-4" />
@@ -106,7 +108,10 @@ export default async function UserProfilePage() {
                 {/* Avatar */}
                 <div className="relative">
                   <div
-                    className={cn("border-border h-32 w-32 overflow-hidden border", mode.radius)}
+                    className={cn(
+                      'border-border h-32 w-32 overflow-hidden border',
+                      mode.radius
+                    )}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
@@ -117,11 +122,13 @@ export default async function UserProfilePage() {
                   </div>
                   <div
                     className={cn(
-                      "border-background bg-success absolute right-0 bottom-0 border-2 p-1",
+                      'border-background bg-success absolute right-0 bottom-0 border-2 p-1',
                       mode.radius
                     )}
                   >
-                    <div className={cn("bg-success h-3 w-3", mode.radius)}></div>
+                    <div
+                      className={cn('bg-success h-3 w-3', mode.radius)}
+                    ></div>
                   </div>
                 </div>
 
@@ -131,7 +138,7 @@ export default async function UserProfilePage() {
                 </h2>
                 <span
                   className={cn(
-                    "border-border bg-primary text-primary-foreground mt-1 inline-block border px-4 py-1 text-xs font-semibold",
+                    'border-border bg-primary text-primary-foreground mt-1 inline-block border px-4 py-1 text-xs font-semibold',
                     mode.radius
                   )}
                 >
@@ -175,7 +182,9 @@ export default async function UserProfilePage() {
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
                   <Mail className="text-muted-foreground h-4 w-4" />
-                  <span className="text-muted-foreground text-sm">{mockUserProfile.email}</span>
+                  <span className="text-muted-foreground text-sm">
+                    {mockUserProfile.email}
+                  </span>
                 </div>
                 <div className="flex items-center gap-4">
                   <Calendar className="text-muted-foreground h-4 w-4" />
@@ -185,7 +194,9 @@ export default async function UserProfilePage() {
                 </div>
                 <div className="flex items-center gap-4">
                   <MapPin className="text-muted-foreground h-4 w-4" />
-                  <span className="text-muted-foreground text-sm">{mockUserProfile.location}</span>
+                  <span className="text-muted-foreground text-sm">
+                    {mockUserProfile.location}
+                  </span>
                 </div>
                 <div className="flex items-center gap-4">
                   <LinkIcon className="text-muted-foreground h-4 w-4" />
@@ -265,24 +276,28 @@ export default async function UserProfilePage() {
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
-                          <h4 className="text-foreground text-lg font-semibold">{project.name}</h4>
+                          <h4 className="text-foreground text-lg font-semibold">
+                            {project.name}
+                          </h4>
                           <span
                             className={cn(
                               `inline-block`,
                               mode.radius,
                               `px-2 py-0.5 text-xs font-semibold ${
-                                project.status === "Live"
-                                  ? "bg-success/20 text-success"
-                                  : project.status === "In Development"
-                                    ? "bg-info/20 text-info"
-                                    : "bg-warning/20 text-warning"
+                                project.status === 'Live'
+                                  ? 'bg-success/20 text-success'
+                                  : project.status === 'In Development'
+                                    ? 'bg-info/20 text-info'
+                                    : 'bg-warning/20 text-warning'
                               }`
                             )}
                           >
                             {project.status}
                           </span>
                         </div>
-                        <p className="text-muted-foreground mt-1 text-sm">{project.description}</p>
+                        <p className="text-muted-foreground mt-1 text-sm">
+                          {project.description}
+                        </p>
                         <div className="mt-4 flex flex-wrap gap-2">
                           {project.tech.map((tech) => (
                             <span
@@ -313,7 +328,7 @@ export default async function UserProfilePage() {
                   <div key={index} className="flex items-start gap-4">
                     <div
                       className={cn(
-                        "border-border bg-primary/10 flex h-10 w-10 flex-shrink-0 items-center justify-center border",
+                        'border-border bg-primary/10 flex h-10 w-10 flex-shrink-0 items-center justify-center border',
                         mode.radius
                       )}
                     >
@@ -321,10 +336,14 @@ export default async function UserProfilePage() {
                     </div>
                     <div className="flex-1">
                       <p className="text-foreground text-sm">
-                        <span className="font-semibold">{activity.action}</span>{" "}
-                        <span className="text-muted-foreground">{activity.item}</span>
+                        <span className="font-semibold">{activity.action}</span>{' '}
+                        <span className="text-muted-foreground">
+                          {activity.item}
+                        </span>
                       </p>
-                      <p className="text-muted-foreground/80 text-xs">{activity.time}</p>
+                      <p className="text-muted-foreground/80 text-xs">
+                        {activity.time}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -335,13 +354,19 @@ export default async function UserProfilePage() {
       </div>
 
       {/* Implementation Note */}
-      <div className={cn("border-primary bg-primary/5 border-2 p-4", mode.radius)}>
+      <div
+        className={cn('border-primary bg-primary/5 border-2 p-4', mode.radius)}
+      >
         <p className="text-muted-foreground text-sm">
-          <span className="text-foreground font-semibold">👤 Implementation Note:</span> This is a
-          demo user profile page with mock data. Replace{" "}
-          <code className="bg-muted rounded px-1 py-0.5 text-xs">mockUserProfile</code> with real
-          user data from your database. Add edit functionality with forms and image upload for
-          avatars.
+          <span className="text-foreground font-semibold">
+            👤 Implementation Note:
+          </span>{' '}
+          This is a demo user profile page with mock data. Replace{' '}
+          <code className="bg-muted rounded px-1 py-0.5 text-xs">
+            mockUserProfile
+          </code>{' '}
+          with real user data from your database. Add edit functionality with
+          forms and image upload for avatars.
         </p>
       </div>
     </div>

@@ -769,7 +769,11 @@
     {
       "phase": 2,
       "name": "Secondary Flows",
-      "templates": ["SettingsPageTemplate", "MarketingPageTemplate", "LegalPageTemplate"],
+      "templates": [
+        "SettingsPageTemplate",
+        "MarketingPageTemplate",
+        "LegalPageTemplate"
+      ],
       "totalPages": 22,
       "priority": "medium"
     },

@@ -25,7 +25,7 @@
  * ```
  */
 
-import { useState } from "react";
+import { useState } from 'react';
 
 interface DemoDateUtils {
   /** Current time (page load) */
@@ -69,15 +69,20 @@ interface DemoDateUtils {
  * ```
  */
 export function useDemoDates(fixedBase?: string): DemoDateUtils {
-  const [base] = useState(() => fixedBase ? new Date(fixedBase) : new Date());
+  const [base] = useState(() => (fixedBase ? new Date(fixedBase) : new Date()));
 
   return {
     now: () => base,
-    minutesAgo: (minutes: number) => new Date(base.getTime() - minutes * 60 * 1000),
-    hoursAgo: (hours: number) => new Date(base.getTime() - hours * 60 * 60 * 1000),
-    daysAgo: (days: number) => new Date(base.getTime() - days * 24 * 60 * 60 * 1000),
-    weeksAgo: (weeks: number) => new Date(base.getTime() - weeks * 7 * 24 * 60 * 60 * 1000),
-    monthsAgo: (months: number) => new Date(base.getTime() - months * 30 * 24 * 60 * 60 * 1000),
+    minutesAgo: (minutes: number) =>
+      new Date(base.getTime() - minutes * 60 * 1000),
+    hoursAgo: (hours: number) =>
+      new Date(base.getTime() - hours * 60 * 60 * 1000),
+    daysAgo: (days: number) =>
+      new Date(base.getTime() - days * 24 * 60 * 60 * 1000),
+    weeksAgo: (weeks: number) =>
+      new Date(base.getTime() - weeks * 7 * 24 * 60 * 60 * 1000),
+    monthsAgo: (months: number) =>
+      new Date(base.getTime() - months * 30 * 24 * 60 * 60 * 1000),
     base,
   };
 }
@@ -91,15 +96,22 @@ export function useDemoDates(fixedBase?: string): DemoDateUtils {
  * @param baseDate - Optional fixed base date (for deterministic stories)
  * @returns Object with date generation utilities
  */
-export function generateDemoDates(baseDate?: Date): Omit<DemoDateUtils, 'base'> {
+export function generateDemoDates(
+  baseDate?: Date
+): Omit<DemoDateUtils, 'base'> {
   const base = baseDate || new Date();
 
   return {
     now: () => base,
-    minutesAgo: (minutes: number) => new Date(base.getTime() - minutes * 60 * 1000),
-    hoursAgo: (hours: number) => new Date(base.getTime() - hours * 60 * 60 * 1000),
-    daysAgo: (days: number) => new Date(base.getTime() - days * 24 * 60 * 60 * 1000),
-    weeksAgo: (weeks: number) => new Date(base.getTime() - weeks * 7 * 24 * 60 * 60 * 1000),
-    monthsAgo: (months: number) => new Date(base.getTime() - months * 30 * 24 * 60 * 60 * 1000),
+    minutesAgo: (minutes: number) =>
+      new Date(base.getTime() - minutes * 60 * 1000),
+    hoursAgo: (hours: number) =>
+      new Date(base.getTime() - hours * 60 * 60 * 1000),
+    daysAgo: (days: number) =>
+      new Date(base.getTime() - days * 24 * 60 * 60 * 1000),
+    weeksAgo: (weeks: number) =>
+      new Date(base.getTime() - weeks * 7 * 24 * 60 * 60 * 1000),
+    monthsAgo: (months: number) =>
+      new Date(base.getTime() - months * 30 * 24 * 60 * 60 * 1000),
   };
 }

@@ -3,8 +3,8 @@
  * Terminal-style card with single-line header
  */
 
-import { CodeBlock } from "@/components/ui/code-block";
-import { cn } from "@/lib/utils";
+import { CodeBlock } from '@/components/ui/code-block';
+import { cn } from '@/lib/utils';
 
 interface DocsPreviewProps {
   /** Preview title */
@@ -27,14 +27,14 @@ export function DocsPreview({
   title,
   preview,
   code,
-  language = "tsx",
-  hexCode = "00",
+  language = 'tsx',
+  hexCode = '00',
   className,
 }: DocsPreviewProps) {
-  const headerTitle = title.toUpperCase().replace(/\s+/g, "_");
+  const headerTitle = title.toUpperCase().replace(/\s+/g, '_');
 
   return (
-    <div className={cn("border-border bg-card border", className)}>
+    <div className={cn('border-border bg-card border', className)}>
       {/* Header - single line only */}
       <div className="border-border bg-card border-b px-4 py-2">
         <span className="text-muted-foreground font-mono text-xs">

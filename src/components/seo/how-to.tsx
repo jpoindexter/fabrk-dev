@@ -4,12 +4,12 @@
  * Appears in featured snippets and voice search results
  */
 
-import { Check } from "lucide-react";
-import { generateHowToSchema } from "@/lib/seo/structured-data";
-import { SchemaScript } from "./schema-script";
+import { Check } from 'lucide-react';
+import { generateHowToSchema } from '@/lib/seo/structured-data';
+import { SchemaScript } from './schema-script';
 
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 export interface HowToStep {
   name: string;
   text: string;
@@ -85,7 +85,7 @@ export function HowTo({
             <li key={index} className="flex gap-4">
               <div
                 className={cn(
-                  "bg-info text-info-foreground flex h-8 w-8 flex-shrink-0 items-center justify-center font-semibold",
+                  'bg-info text-info-foreground flex h-8 w-8 flex-shrink-0 items-center justify-center font-semibold',
                   mode.radius
                 )}
               >
@@ -93,7 +93,9 @@ export function HowTo({
               </div>
 
               <div className="flex-1">
-                <h3 className="text-foreground mb-2 text-xl font-semibold">{step.name}</h3>
+                <h3 className="text-foreground mb-2 text-xl font-semibold">
+                  {step.name}
+                </h3>
                 <p className="text-muted-foreground">{step.text}</p>
 
                 {step.image && (
@@ -101,7 +103,7 @@ export function HowTo({
                   <img
                     src={step.image}
                     alt={step.name}
-                    className={cn("border-border mt-4 border", mode.radius)}
+                    className={cn('border-border mt-4 border', mode.radius)}
                   />
                 )}
               </div>

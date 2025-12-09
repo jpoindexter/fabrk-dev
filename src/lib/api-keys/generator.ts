@@ -1,5 +1,5 @@
-import crypto from "crypto";
-import { hashApiKey } from "./hasher";
+import crypto from 'crypto';
+import { hashApiKey } from './hasher';
 
 /**
  * API Key Generator
@@ -17,19 +17,21 @@ export interface GeneratedApiKey {
  * @param environment - 'live' or 'test'
  * @returns Generated API key with prefix and hash
  */
-export function generateApiKey(environment: "live" | "test" = "live"): GeneratedApiKey {
+export function generateApiKey(
+  environment: 'live' | 'test' = 'live'
+): GeneratedApiKey {
   // Generate 32 random bytes (256 bits)
   const randomBytes = crypto.randomBytes(32);
 
   // Convert to base64url (URL-safe base64)
   const randomString = randomBytes
-    .toString("base64")
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_")
-    .replace(/=/g, "");
+    .toString('base64')
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=/g, '');
 
   // Create full key with prefix
-  const prefix = environment === "live" ? "sk_live_" : "sk_test_";
+  const prefix = environment === 'live' ? 'sk_live_' : 'sk_test_';
   const key = `${prefix}${randomString}`;
 
   // Extract display prefix (first 12 chars)
@@ -52,7 +54,7 @@ export function generateApiKey(environment: "live" | "test" = "live"): Generated
  */
 export function isValidApiKeyFormat(key: string): boolean {
   // Must start with sk_live_ or sk_test_
-  if (!key.startsWith("sk_live_") && !key.startsWith("sk_test_")) {
+  if (!key.startsWith('sk_live_') && !key.startsWith('sk_test_')) {
     return false;
   }
 

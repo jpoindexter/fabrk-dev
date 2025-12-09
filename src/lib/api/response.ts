@@ -3,7 +3,7 @@
  * Standardized response helpers for API routes
  */
 
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
 
 interface ApiResponse<T = unknown> {
   success: boolean;
@@ -35,7 +35,7 @@ export function successResponse<T = unknown>(
  */
 export function createdResponse<T = unknown>(
   data: T,
-  message: string = "Resource created successfully"
+  message: string = 'Resource created successfully'
 ): NextResponse {
   return successResponse(data, message, 201);
 }
@@ -70,14 +70,14 @@ export function errorResponse(
  * Validation error response (400)
  */
 export function validationError(
-  message: string = "Validation failed",
+  message: string = 'Validation failed',
   details?: Record<string, unknown> | unknown[]
 ): NextResponse {
   return NextResponse.json(
     {
       success: false,
       error: message,
-      code: "VALIDATION_ERROR",
+      code: 'VALIDATION_ERROR',
       details,
       timestamp: new Date().toISOString(),
     },
@@ -89,55 +89,53 @@ export function validationError(
  * Not found response (404)
  */
 export function notFoundResponse(
-  message: string = "Resource not found"
+  message: string = 'Resource not found'
 ): NextResponse {
-  return errorResponse(message, 404, "NOT_FOUND");
+  return errorResponse(message, 404, 'NOT_FOUND');
 }
 
 /**
  * Unauthorized response (401)
  */
 export function unauthorizedResponse(
-  message: string = "Unauthorized"
+  message: string = 'Unauthorized'
 ): NextResponse {
-  return errorResponse(message, 401, "UNAUTHORIZED");
+  return errorResponse(message, 401, 'UNAUTHORIZED');
 }
 
 /**
  * Forbidden response (403)
  */
-export function forbiddenResponse(
-  message: string = "Forbidden"
-): NextResponse {
-  return errorResponse(message, 403, "FORBIDDEN");
+export function forbiddenResponse(message: string = 'Forbidden'): NextResponse {
+  return errorResponse(message, 403, 'FORBIDDEN');
 }
 
 /**
  * Conflict response (409)
  */
 export function conflictResponse(
-  message: string = "Resource conflict"
+  message: string = 'Resource conflict'
 ): NextResponse {
-  return errorResponse(message, 409, "CONFLICT");
+  return errorResponse(message, 409, 'CONFLICT');
 }
 
 /**
  * Rate limit response (429)
  */
 export function rateLimitResponse(
-  message: string = "Too many requests",
+  message: string = 'Too many requests',
   retryAfter?: number
 ): NextResponse {
   const headers: HeadersInit = {};
   if (retryAfter) {
-    headers["Retry-After"] = retryAfter.toString();
+    headers['Retry-After'] = retryAfter.toString();
   }
 
   return NextResponse.json(
     {
       success: false,
       error: message,
-      code: "RATE_LIMIT_EXCEEDED",
+      code: 'RATE_LIMIT_EXCEEDED',
       retryAfter,
       timestamp: new Date().toISOString(),
     },

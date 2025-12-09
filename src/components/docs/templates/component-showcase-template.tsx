@@ -3,18 +3,18 @@
  * Used by: /docs/components/* (shadcn/ui style with live previews)
  */
 
-"use client";
+'use client';
 
-import { DocsHeader } from "../blocks/docs-header";
-import { DocsSection } from "../blocks/docs-section";
-import { DocsCard } from "../blocks/docs-card";
-import { DocsPreview } from "../blocks/docs-preview";
-import { DocsPropsTable } from "../blocks/docs-props-table";
-import { DocsCallout } from "../blocks/docs-callout";
-import { DocsNavFooter } from "../blocks/docs-nav-footer";
-import { CodeBlock } from "@/components/ui/code-block";
-import { docsTypography } from "../typography";
-import { docsSpacing } from "../spacing";
+import { DocsHeader } from '../blocks/docs-header';
+import { DocsSection } from '../blocks/docs-section';
+import { DocsCard } from '../blocks/docs-card';
+import { DocsPreview } from '../blocks/docs-preview';
+import { DocsPropsTable } from '../blocks/docs-props-table';
+import { DocsCallout } from '../blocks/docs-callout';
+import { DocsNavFooter } from '../blocks/docs-nav-footer';
+import { CodeBlock } from '@/components/ui/code-block';
+import { docsTypography } from '../typography';
+import { docsSpacing } from '../spacing';
 
 interface Prop {
   name: string;
@@ -81,7 +81,7 @@ interface ComponentShowcaseTemplateProps {
 
 export function ComponentShowcaseTemplate({
   code,
-  category = "Components",
+  category = 'Components',
   title,
   description,
   installCommand,
@@ -172,11 +172,17 @@ export function ComponentShowcaseTemplate({
         <DocsSection title="Usage">
           <div className={docsSpacing.sectionItems}>
             {usageExamples.map((example, index) => (
-              <DocsCard key={index} title={example.title.toUpperCase().replace(/\s+/g, '_')}>
+              <DocsCard
+                key={index}
+                title={example.title.toUpperCase().replace(/\s+/g, '_')}
+              >
                 {example.description && (
                   <p className={docsTypography.body}>{example.description}</p>
                 )}
-                <CodeBlock code={example.code} language={example.language || "tsx"} />
+                <CodeBlock
+                  code={example.code}
+                  language={example.language || 'tsx'}
+                />
               </DocsCard>
             ))}
           </div>
@@ -187,7 +193,7 @@ export function ComponentShowcaseTemplate({
       {accessibility && accessibility.length > 0 && (
         <DocsSection title="Accessibility">
           <DocsCard title="A11Y">
-            <ul className="list-disc list-inside space-y-2">
+            <ul className="list-inside list-disc space-y-2">
               {accessibility.map((note, index) => (
                 <li key={index} className={docsTypography.body}>
                   {note}

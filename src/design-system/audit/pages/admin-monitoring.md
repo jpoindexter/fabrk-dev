@@ -77,8 +77,10 @@ Error tracking and performance monitoring dashboard.
 ## State Management
 
 ```typescript
-const [errorStats, setErrorStats] = useState<ReturnType<typeof getErrorStats>>();
-const [perfStats, setPerformanceStats] = useState<ReturnType<typeof getPerformanceStats>>();
+const [errorStats, setErrorStats] =
+  useState<ReturnType<typeof getErrorStats>>();
+const [perfStats, setPerformanceStats] =
+  useState<ReturnType<typeof getPerformanceStats>>();
 const [refreshKey, setRefreshKey] = useState(0);
 const [clearLogsDialogOpen, setClearLogsDialogOpen] = useState(false);
 ```

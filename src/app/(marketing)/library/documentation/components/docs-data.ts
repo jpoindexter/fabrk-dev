@@ -4,57 +4,57 @@
  * Production-ready ✓
  */
 
-import { Rocket, Code, Book, Settings } from "lucide-react";
+import { Rocket, Code, Book, Settings } from 'lucide-react';
 
 // Documentation structure
 export const docsStructure = [
   {
-    section: "Getting Started",
+    section: 'Getting Started',
     icon: Rocket,
     pages: [
-      { id: "intro", title: "Introduction", badge: null },
-      { id: "installation", title: "Installation", badge: null },
-      { id: "quick-start", title: "Quick Start", badge: "Popular" },
-      { id: "env-setup", title: "Environment Setup", badge: null },
+      { id: 'intro', title: 'Introduction', badge: null },
+      { id: 'installation', title: 'Installation', badge: null },
+      { id: 'quick-start', title: 'Quick Start', badge: 'Popular' },
+      { id: 'env-setup', title: 'Environment Setup', badge: null },
     ],
   },
   {
-    section: "Core Features",
+    section: 'Core Features',
     icon: Code,
     pages: [
-      { id: "auth", title: "Authentication", badge: null },
-      { id: "database", title: "Database & Prisma", badge: null },
-      { id: "payments", title: "Stripe Payments", badge: null },
-      { id: "emails", title: "Email System", badge: null },
+      { id: 'auth', title: 'Authentication', badge: null },
+      { id: 'database', title: 'Database & Prisma', badge: null },
+      { id: 'payments', title: 'Stripe Payments', badge: null },
+      { id: 'emails', title: 'Email System', badge: null },
     ],
   },
   {
-    section: "Components",
+    section: 'Components',
     icon: Book,
     pages: [
-      { id: "ui-components", title: "UI Components", badge: null },
-      { id: "forms", title: "Forms & Validation", badge: null },
-      { id: "tables", title: "Data Tables", badge: null },
-      { id: "layouts", title: "Page Layouts", badge: null },
+      { id: 'ui-components', title: 'UI Components', badge: null },
+      { id: 'forms', title: 'Forms & Validation', badge: null },
+      { id: 'tables', title: 'Data Tables', badge: null },
+      { id: 'layouts', title: 'Page Layouts', badge: null },
     ],
   },
   {
-    section: "Configuration",
+    section: 'Configuration',
     icon: Settings,
     pages: [
-      { id: "config", title: "Central Config", badge: null },
-      { id: "styling", title: "Styling & Themes", badge: null },
-      { id: "deployment", title: "Deployment", badge: null },
+      { id: 'config', title: 'Central Config', badge: null },
+      { id: 'styling', title: 'Styling & Themes', badge: null },
+      { id: 'deployment', title: 'Deployment', badge: null },
     ],
   },
 ];
 
 // Sample documentation content
 export const docContent = {
-  "quick-start": {
-    title: "Quick Start Guide",
-    description: "Get up and running with Fabrk in 5 minutes",
-    lastUpdated: "November 10, 2024",
+  'quick-start': {
+    title: 'Quick Start Guide',
+    description: 'Get up and running with Fabrk in 5 minutes',
+    lastUpdated: 'November 10, 2024',
     content: `
 Welcome to Fabrk! This guide will help you get started in minutes.
 

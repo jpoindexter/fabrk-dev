@@ -4,16 +4,16 @@
  * Production-ready ✓
  */
 
-"use client";
+'use client';
 
-import { FeaturesHero } from "./components/features-hero";
-import { StatsSection } from "./components/stats-section";
-import { CategoryNavigation } from "./components/category-navigation";
-import { FeatureCategoryCard } from "./components/feature-category-card";
-import { TechStackSection } from "./components/tech-stack-section";
-import { QualitySection } from "./components/quality-section";
-import { FeaturesCTA } from "./components/features-cta";
-import { FEATURE_CATEGORIES } from "./components/feature-data";
+import { FeaturesHero } from './components/features-hero';
+import { StatsSection } from './components/stats-section';
+import { CategoryNavigation } from './components/category-navigation';
+import { FeatureCategoryCard } from './components/feature-category-card';
+import { TechStackSection } from './components/tech-stack-section';
+import { QualitySection } from './components/quality-section';
+import { FeaturesCTA } from './components/features-cta';
+import { FEATURE_CATEGORIES } from './components/feature-data';
 
 function FeatureCategoriesSection() {
   return (
@@ -21,7 +21,11 @@ function FeatureCategoriesSection() {
       <div className="container mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <div className="space-y-16 lg:space-y-24">
           {FEATURE_CATEGORIES.map((category, index) => (
-            <FeatureCategoryCard key={category.id} category={category} index={index} />
+            <FeatureCategoryCard
+              key={category.id}
+              category={category}
+              index={index}
+            />
           ))}
         </div>
       </div>

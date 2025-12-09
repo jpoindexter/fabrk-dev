@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
+import { ComponentShowcaseTemplate } from '@/components/docs';
 import {
   Select,
   SelectContent,
@@ -9,9 +9,9 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Label } from "@/components/ui/label";
-import { formatLabel } from "@/design-system";
+} from '@/components/ui/select';
+import { Label } from '@/components/ui/label';
+import { formatLabel } from '@/design-system';
 
 export default function SelectPage() {
   return (
@@ -53,11 +53,11 @@ export default function SelectPage() {
       }}
       variants={[
         {
-          title: "With Label",
-          description: "Select with an associated label.",
+          title: 'With Label',
+          description: 'Select with an associated label.',
           preview: (
             <div className="grid gap-2">
-              <Label htmlFor="framework">{formatLabel("Framework")}</Label>
+              <Label htmlFor="framework">{formatLabel('Framework')}</Label>
               <Select>
                 <SelectTrigger id="framework" className="w-[200px]">
                   <SelectValue placeholder="Select framework" />
@@ -85,8 +85,8 @@ export default function SelectPage() {
 </div>`,
         },
         {
-          title: "With Groups",
-          description: "Select with grouped options.",
+          title: 'With Groups',
+          description: 'Select with grouped options.',
           preview: (
             <Select>
               <SelectTrigger className="w-[200px]">
@@ -127,8 +127,8 @@ export default function SelectPage() {
 </Select>`,
         },
         {
-          title: "Disabled",
-          description: "Disabled select component.",
+          title: 'Disabled',
+          description: 'Disabled select component.',
           preview: (
             <Select disabled>
               <SelectTrigger className="w-[200px]">
@@ -149,8 +149,8 @@ export default function SelectPage() {
 </Select>`,
         },
         {
-          title: "With Disabled Item",
-          description: "Select with a disabled option.",
+          title: 'With Disabled Item',
+          description: 'Select with a disabled option.',
           preview: (
             <Select>
               <SelectTrigger className="w-[200px]">
@@ -179,40 +179,40 @@ export default function SelectPage() {
       ]}
       props={[
         {
-          name: "defaultValue",
-          type: "string",
-          description: "The value of the select when initially rendered.",
+          name: 'defaultValue',
+          type: 'string',
+          description: 'The value of the select when initially rendered.',
         },
         {
-          name: "value",
-          type: "string",
-          description: "Controlled value of the select.",
+          name: 'value',
+          type: 'string',
+          description: 'Controlled value of the select.',
         },
         {
-          name: "onValueChange",
-          type: "(value: string) => void",
-          description: "Event handler called when the value changes.",
+          name: 'onValueChange',
+          type: '(value: string) => void',
+          description: 'Event handler called when the value changes.',
         },
         {
-          name: "disabled",
-          type: "boolean",
-          default: "false",
-          description: "Disable the select.",
+          name: 'disabled',
+          type: 'boolean',
+          default: 'false',
+          description: 'Disable the select.',
         },
         {
-          name: "placeholder",
-          type: "string",
-          description: "Placeholder text shown when no value is selected.",
+          name: 'placeholder',
+          type: 'string',
+          description: 'Placeholder text shown when no value is selected.',
         },
       ]}
       accessibility={[
-        "Built on Radix UI Select primitive for full accessibility",
-        "Keyboard navigation with Arrow keys, Enter, and Escape",
-        "Type-ahead search to jump to options",
-        "Screen reader announcements for selection changes",
+        'Built on Radix UI Select primitive for full accessibility',
+        'Keyboard navigation with Arrow keys, Enter, and Escape',
+        'Type-ahead search to jump to options',
+        'Screen reader announcements for selection changes',
       ]}
-      previous={{ title: "Textarea", href: "/docs/components/textarea" }}
-      next={{ title: "Checkbox", href: "/docs/components/checkbox" }}
+      previous={{ title: 'Textarea', href: '/docs/components/textarea' }}
+      next={{ title: 'Checkbox', href: '/docs/components/checkbox' }}
     />
   );
 }

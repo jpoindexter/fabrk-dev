@@ -1,10 +1,11 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { Mail, Send, Clock, Users } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
+import { Mail, Send, Clock, Users } from 'lucide-react';
 
 export const metadata = {
-  title: "Email Templates - Fabrk Docs",
-  description: "Create beautiful transactional emails. Pre-built templates for verification, password reset, and welcome emails.",
+  title: 'Email Templates - Fabrk Docs',
+  description:
+    'Create beautiful transactional emails. Pre-built templates for verification, password reset, and welcome emails.',
 };
 
 export default function EmailTemplatesTutorialPage() {
@@ -16,26 +17,42 @@ export default function EmailTemplatesTutorialPage() {
       description="Create and send beautiful transactional emails with Resend and lightweight HTML templates."
       overview="Resend API integration for reliable email delivery, lightweight HTML templates for maximum performance, direct sending for immediate emails (auth), queue system for background sending (notifications), and pre-built templates (welcome, verification, reset)."
       features={[
-        { icon: Mail, title: "Resend API", description: "Reliable email delivery with tracking." },
-        { icon: Send, title: "Direct Send", description: "Immediate sending for auth emails." },
-        { icon: Clock, title: "Queue System", description: "Background sending with retries." },
-        { icon: Users, title: "Org Invites", description: "Beautiful organization invitations." },
+        {
+          icon: Mail,
+          title: 'Resend API',
+          description: 'Reliable email delivery with tracking.',
+        },
+        {
+          icon: Send,
+          title: 'Direct Send',
+          description: 'Immediate sending for auth emails.',
+        },
+        {
+          icon: Clock,
+          title: 'Queue System',
+          description: 'Background sending with retries.',
+        },
+        {
+          icon: Users,
+          title: 'Org Invites',
+          description: 'Beautiful organization invitations.',
+        },
       ]}
       setup={[
         {
-          title: "Configure Resend",
-          description: "Sign up at resend.com and get your API key",
+          title: 'Configure Resend',
+          description: 'Sign up at resend.com and get your API key',
           code: `# .env.local
 
 RESEND_API_KEY="re_xxxxxxxxxxxx"
 EMAIL_FROM="noreply@yourdomain.com"`,
-          language: "bash",
+          language: 'bash',
         },
       ]}
       usage={[
         {
-          title: "Sending Emails",
-          description: "Use the email service functions from src/lib/email.ts",
+          title: 'Sending Emails',
+          description: 'Use the email service functions from src/lib/email.ts',
           code: `import {
   sendEmail,
   sendWelcomeEmail,
@@ -68,11 +85,12 @@ await sendResetEmail(
   "user@example.com",
   "reset-token-xyz"
 );`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Email Queue System",
-          description: "Queue emails for background sending with automatic retries",
+          title: 'Email Queue System',
+          description:
+            'Queue emails for background sending with automatic retries',
           code: `import {
   queueEmail,
   queueWelcomeEmail,
@@ -98,11 +116,11 @@ await queueWelcomeEmail({
   githubUsername: "johndoe",
   purchaseId: "purchase_456"
 });`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Creating Custom Templates",
-          description: "Create HTML template functions in src/emails/",
+          title: 'Creating Custom Templates',
+          description: 'Create HTML template functions in src/emails/',
           code: `// src/emails/invoice-html.ts
 
 interface InvoiceEmailProps {
@@ -153,11 +171,11 @@ export function generateInvoiceEmailHTML({
 </html>
   \`.trim();
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Organization Invites",
-          description: "Send beautiful organization invitation emails",
+          title: 'Organization Invites',
+          description: 'Send beautiful organization invitation emails',
           code: `import { sendOrganizationInvite } from "@/lib/email";
 
 await sendOrganizationInvite("newmember@example.com", {
@@ -167,22 +185,44 @@ await sendOrganizationInvite("newmember@example.com", {
   token: "invite-token-abc",
   expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
 });`,
-          language: "typescript",
+          language: 'typescript',
         },
       ]}
-      previous={{ title: "Authentication", href: "/docs/tutorials/authentication" }}
-      next={{ title: "Stripe Payments", href: "/docs/tutorials/stripe-payments" }}
+      previous={{
+        title: 'Authentication',
+        href: '/docs/tutorials/authentication',
+      }}
+      next={{
+        title: 'Stripe Payments',
+        href: '/docs/tutorials/stripe-payments',
+      }}
     >
       {/* Email Types */}
       <DocsSection title="Email Types">
         <DocsCard title="EMAIL_TYPES">
-          <p className="mb-4">The queue system supports these email types for categorization:</p>
+          <p className="mb-4">
+            The queue system supports these email types for categorization:
+          </p>
           <div className="space-y-1">
-            <div>├─ <code className="bg-muted px-1">WELCOME</code> - Post-purchase welcome emails</div>
-            <div>├─ <code className="bg-muted px-1">VERIFICATION</code> - Email verification</div>
-            <div>├─ <code className="bg-muted px-1">RESET</code> - Password reset</div>
-            <div>├─ <code className="bg-muted px-1">INVOICE</code> - Payment receipts</div>
-            <div>└─ <code className="bg-muted px-1">NOTIFICATION</code> - General notifications</div>
+            <div>
+              ├─ <code className="bg-muted px-1">WELCOME</code> - Post-purchase
+              welcome emails
+            </div>
+            <div>
+              ├─ <code className="bg-muted px-1">VERIFICATION</code> - Email
+              verification
+            </div>
+            <div>
+              ├─ <code className="bg-muted px-1">RESET</code> - Password reset
+            </div>
+            <div>
+              ├─ <code className="bg-muted px-1">INVOICE</code> - Payment
+              receipts
+            </div>
+            <div>
+              └─ <code className="bg-muted px-1">NOTIFICATION</code> - General
+              notifications
+            </div>
           </div>
         </DocsCard>
       </DocsSection>
@@ -191,12 +231,30 @@ await sendOrganizationInvite("newmember@example.com", {
       <DocsSection title="Best Practices">
         <DocsCard title="BEST_PRACTICES">
           <div className="space-y-1">
-            <div>├─ <strong>Use direct sending</strong> for time-sensitive emails (auth, password reset)</div>
-            <div>├─ <strong>Use queuing</strong> for bulk emails, notifications, and post-purchase emails</div>
-            <div>├─ <strong>Track user/purchase IDs</strong> for email analytics and debugging</div>
-            <div>├─ <strong>Set appropriate maxAttempts</strong> - 3 for important emails, 1 for notifications</div>
-            <div>├─ <strong>Test templates locally</strong> - without RESEND_API_KEY, emails log to console</div>
-            <div>└─ <strong>Verify domain</strong> in Resend dashboard for better deliverability</div>
+            <div>
+              ├─ <strong>Use direct sending</strong> for time-sensitive emails
+              (auth, password reset)
+            </div>
+            <div>
+              ├─ <strong>Use queuing</strong> for bulk emails, notifications,
+              and post-purchase emails
+            </div>
+            <div>
+              ├─ <strong>Track user/purchase IDs</strong> for email analytics
+              and debugging
+            </div>
+            <div>
+              ├─ <strong>Set appropriate maxAttempts</strong> - 3 for important
+              emails, 1 for notifications
+            </div>
+            <div>
+              ├─ <strong>Test templates locally</strong> - without
+              RESEND_API_KEY, emails log to console
+            </div>
+            <div>
+              └─ <strong>Verify domain</strong> in Resend dashboard for better
+              deliverability
+            </div>
           </div>
         </DocsCard>
       </DocsSection>

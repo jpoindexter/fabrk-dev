@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
 
 export default function ToastPage() {
   const { toast, success, error, info, warning } = useToast();
@@ -20,8 +20,8 @@ import { Toaster } from "@/components/ui/toaster"`}
           <Button
             onClick={() => {
               toast({
-                title: "Notification",
-                description: "This is a toast notification.",
+                title: 'Notification',
+                description: 'This is a toast notification.',
               });
             }}
           >
@@ -43,13 +43,13 @@ import { Toaster } from "@/components/ui/toaster"`}
       }}
       variants={[
         {
-          title: "Simple Toast",
-          description: "Basic toast with just a description.",
+          title: 'Simple Toast',
+          description: 'Basic toast with just a description.',
           preview: (
             <Button
               onClick={() => {
                 toast({
-                  description: "Your message has been sent.",
+                  description: 'Your message has been sent.',
                 });
               }}
             >
@@ -61,14 +61,14 @@ import { Toaster } from "@/components/ui/toaster"`}
 });`,
         },
         {
-          title: "With Title",
-          description: "Toast with both title and description.",
+          title: 'With Title',
+          description: 'Toast with both title and description.',
           preview: (
             <Button
               onClick={() => {
                 toast({
-                  title: "Success",
-                  description: "Your changes have been saved.",
+                  title: 'Success',
+                  description: 'Your changes have been saved.',
                 });
               }}
             >
@@ -81,12 +81,12 @@ import { Toaster } from "@/components/ui/toaster"`}
 });`,
         },
         {
-          title: "Success Toast",
-          description: "Success notification toast.",
+          title: 'Success Toast',
+          description: 'Success notification toast.',
           preview: (
             <Button
               onClick={() => {
-                success("Success", "Your changes have been saved.");
+                success('Success', 'Your changes have been saved.');
               }}
             >
               Success
@@ -96,13 +96,13 @@ import { Toaster } from "@/components/ui/toaster"`}
 success("Success", "Your changes have been saved.");`,
         },
         {
-          title: "Error Toast",
-          description: "Toast for error messages.",
+          title: 'Error Toast',
+          description: 'Toast for error messages.',
           preview: (
             <Button
               variant="destructive"
               onClick={() => {
-                error("Error", "Something went wrong. Please try again.");
+                error('Error', 'Something went wrong. Please try again.');
               }}
             >
               Show Error
@@ -112,16 +112,16 @@ success("Success", "Your changes have been saved.");`,
 error("Error", "Something went wrong. Please try again.");`,
         },
         {
-          title: "With Action",
-          description: "Toast with an action button.",
+          title: 'With Action',
+          description: 'Toast with an action button.',
           preview: (
             <Button
               onClick={() => {
                 toast({
-                  title: "Undo Available",
-                  description: "File moved to trash.",
+                  title: 'Undo Available',
+                  description: 'File moved to trash.',
                   action: {
-                    label: "Undo",
+                    label: 'Undo',
                     onClick: () => {},
                   },
                 });
@@ -140,14 +140,14 @@ error("Error", "Something went wrong. Please try again.");`,
 });`,
         },
         {
-          title: "Info & Warning",
-          description: "Info and warning toast variants.",
+          title: 'Info & Warning',
+          description: 'Info and warning toast variants.',
           preview: (
             <div className="flex gap-2">
               <Button
                 variant="outline"
                 onClick={() => {
-                  info("Info", "This is informational.");
+                  info('Info', 'This is informational.');
                 }}
               >
                 Info
@@ -155,7 +155,7 @@ error("Error", "Something went wrong. Please try again.");`,
               <Button
                 variant="outline"
                 onClick={() => {
-                  warning("Warning", "Please be careful.");
+                  warning('Warning', 'Please be careful.');
                 }}
               >
                 Warning
@@ -173,50 +173,52 @@ warning("Warning", "Please be careful.");`,
       ]}
       props={[
         {
-          name: "title",
-          type: "string",
-          description: "The title of the toast (optional).",
+          name: 'title',
+          type: 'string',
+          description: 'The title of the toast (optional).',
         },
         {
-          name: "description",
-          type: "string",
-          description: "The description text for the toast.",
+          name: 'description',
+          type: 'string',
+          description: 'The description text for the toast.',
         },
         {
-          name: "action",
-          type: "{ label: string; onClick: () => void }",
-          description: "Optional action button configuration.",
+          name: 'action',
+          type: '{ label: string; onClick: () => void }',
+          description: 'Optional action button configuration.',
         },
         {
-          name: "success",
-          type: "(title: string, description?: string) => void",
-          description: "Show a success toast notification.",
+          name: 'success',
+          type: '(title: string, description?: string) => void',
+          description: 'Show a success toast notification.',
         },
         {
-          name: "error",
-          type: "(title: string, description?: string) => void",
-          description: "Show an error toast notification.",
+          name: 'error',
+          type: '(title: string, description?: string) => void',
+          description: 'Show an error toast notification.',
         },
         {
-          name: "info",
-          type: "(title: string, description?: string) => void",
-          description: "Show an info toast notification.",
+          name: 'info',
+          type: '(title: string, description?: string) => void',
+          description: 'Show an info toast notification.',
         },
         {
-          name: "warning",
-          type: "(title: string, description?: string) => void",
-          description: "Show a warning toast notification.",
+          name: 'warning',
+          type: '(title: string, description?: string) => void',
+          description: 'Show a warning toast notification.',
         },
         {
-          name: "dismiss",
-          type: "(toastId?: string | number) => void",
-          description: "Dismiss a specific toast or all toasts if no ID provided.",
+          name: 'dismiss',
+          type: '(toastId?: string | number) => void',
+          description:
+            'Dismiss a specific toast or all toasts if no ID provided.',
         },
       ]}
       usageExamples={[
         {
-          title: "Setup",
-          description: "The toast system uses Sonner and is pre-configured in your layout.",
+          title: 'Setup',
+          description:
+            'The toast system uses Sonner and is pre-configured in your layout.',
           code: `import { Toaster } from "sonner";
 
 export default function RootLayout({ children }) {
@@ -231,8 +233,8 @@ export default function RootLayout({ children }) {
 }`,
         },
         {
-          title: "Basic Usage",
-          description: "Use the toast hook in your components.",
+          title: 'Basic Usage',
+          description: 'Use the toast hook in your components.',
           code: `import { useToast } from "@/hooks/use-toast";
 
 export function MyComponent() {
@@ -253,8 +255,8 @@ export function MyComponent() {
 }`,
         },
         {
-          title: "Error Handling",
-          description: "Show error toasts in try-catch blocks.",
+          title: 'Error Handling',
+          description: 'Show error toasts in try-catch blocks.',
           code: `const { toast } = useToast();
 
 async function handleSubmit() {
@@ -275,15 +277,15 @@ async function handleSubmit() {
         },
       ]}
       accessibility={[
-        "Toasts are announced to screen readers",
-        "Automatically dismissed after duration expires",
-        "Can be manually dismissed with close button",
-        "Keyboard accessible close button",
-        "Proper ARIA roles and attributes",
-        "Focus management for action buttons",
+        'Toasts are announced to screen readers',
+        'Automatically dismissed after duration expires',
+        'Can be manually dismissed with close button',
+        'Keyboard accessible close button',
+        'Proper ARIA roles and attributes',
+        'Focus management for action buttons',
       ]}
-      previous={{ title: "Command", href: "/docs/components/command" }}
-      next={{ title: "Cropper", href: "/docs/components/cropper" }}
+      previous={{ title: 'Command', href: '/docs/components/command' }}
+      next={{ title: 'Cropper', href: '/docs/components/cropper' }}
     />
   );
 }

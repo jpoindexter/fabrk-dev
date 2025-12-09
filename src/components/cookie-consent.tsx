@@ -4,16 +4,20 @@
  * Integrates with Google Consent Mode v2 for GTM
  */
 
-"use client";
+'use client';
 
-import { Cookie, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import { AboutTabContent, ConsentTabContent, DetailsTabContent } from "./cookie-consent-tabs";
-import type { CookiePreferences } from "./cookie-consent-types";
-import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
+import { Cookie, X } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import {
+  AboutTabContent,
+  ConsentTabContent,
+  DetailsTabContent,
+} from './cookie-consent-tabs';
+import type { CookiePreferences } from './cookie-consent-types';
+import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
 
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 const DEFAULT_PREFERENCES: CookiePreferences = {
   necessary: true,
   preferences: false,
@@ -26,17 +30,17 @@ function getInitialPreferences(): {
   preferences: CookiePreferences;
   showButton: boolean;
 } {
-  if (typeof window === "undefined") {
+  if (typeof window === 'undefined') {
     return { preferences: DEFAULT_PREFERENCES, showButton: false };
   }
 
   try {
-    const testKey = "__cookie_consent_test__";
-    localStorage.setItem(testKey, "test");
+    const testKey = '__cookie_consent_test__';
+    localStorage.setItem(testKey, 'test');
     localStorage.removeItem(testKey);
 
-    const consent = localStorage.getItem("cookie-consent");
-    const consentDate = localStorage.getItem("cookie-consent-date");
+    const consent = localStorage.getItem('cookie-consent');
+    const consentDate = localStorage.getItem('cookie-consent-date');
 
     if (consent && consentDate) {
       const daysSinceConsent = Math.floor(
@@ -54,7 +58,7 @@ function getInitialPreferences(): {
 
 // Helper to update Google Consent Mode
 function updateGoogleConsent(prefs: CookiePreferences) {
-  if (typeof window === "undefined") return;
+  if (typeof window === 'undefined') return;
 
   const win = window as Window & {
     dataLayer?: unknown[];
@@ -70,18 +74,18 @@ function updateGoogleConsent(prefs: CookiePreferences) {
   }
 
   // Update consent state
-  win.gtag("consent", "update", {
-    ad_storage: prefs.marketing ? "granted" : "denied",
-    ad_user_data: prefs.marketing ? "granted" : "denied",
-    ad_personalization: prefs.marketing ? "granted" : "denied",
-    analytics_storage: prefs.statistics ? "granted" : "denied",
-    functionality_storage: prefs.preferences ? "granted" : "denied",
-    personalization_storage: prefs.marketing ? "granted" : "denied",
+  win.gtag('consent', 'update', {
+    ad_storage: prefs.marketing ? 'granted' : 'denied',
+    ad_user_data: prefs.marketing ? 'granted' : 'denied',
+    ad_personalization: prefs.marketing ? 'granted' : 'denied',
+    analytics_storage: prefs.statistics ? 'granted' : 'denied',
+    functionality_storage: prefs.preferences ? 'granted' : 'denied',
+    personalization_storage: prefs.marketing ? 'granted' : 'denied',
   });
 
   // Also push event for GTM triggers
   win.dataLayer?.push({
-    event: "cookie_consent_update",
+    event: 'cookie_consent_update',
     cookie_consent: prefs,
   });
 }
@@ -103,7 +107,7 @@ export function CookieConsent() {
   });
   const [showModal, setShowModal] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
-  const [activeTab, setActiveTab] = useState("consent");
+  const [activeTab, setActiveTab] = useState('consent');
 
   // Destructure for convenience
   const { showButton, preferences } = consentState;
@@ -124,7 +128,8 @@ export function CookieConsent() {
     if (hasHydrated.current) return;
     hasHydrated.current = true;
 
-    const { preferences: savedPrefs, showButton: shouldShowButton } = getInitialPreferences();
+    const { preferences: savedPrefs, showButton: shouldShowButton } =
+      getInitialPreferences();
     // eslint-disable-next-line react-hooks/set-state-in-effect -- Required for hydration-safe localStorage sync; server renders default, client updates from storage
     setConsentState({ showButton: shouldShowButton, preferences: savedPrefs });
 
@@ -138,23 +143,26 @@ export function CookieConsent() {
   useEffect(() => {
     const handleOpenCookieSettings = () => {
       setShowModal(true);
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     };
 
-    window.addEventListener("open-cookie-settings", handleOpenCookieSettings);
+    window.addEventListener('open-cookie-settings', handleOpenCookieSettings);
     return () => {
-      window.removeEventListener("open-cookie-settings", handleOpenCookieSettings);
+      window.removeEventListener(
+        'open-cookie-settings',
+        handleOpenCookieSettings
+      );
     };
   }, []);
 
   const saveConsent = (prefs: CookiePreferences) => {
     try {
-      localStorage.setItem("cookie-consent", JSON.stringify(prefs));
-      localStorage.setItem("cookie-consent-date", new Date().toISOString());
+      localStorage.setItem('cookie-consent', JSON.stringify(prefs));
+      localStorage.setItem('cookie-consent-date', new Date().toISOString());
       updateGoogleConsent(prefs);
       closeModal();
     } catch (e) {
-      console.error("Could not save cookie consent", e);
+      console.error('Could not save cookie consent', e);
     }
   };
 
@@ -190,18 +198,18 @@ export function CookieConsent() {
       setShowModal(false);
       setShowButton(false);
       setIsExiting(false);
-      setActiveTab("consent");
+      setActiveTab('consent');
     }, 300);
   };
 
   const openModal = () => {
     setShowModal(true);
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = 'hidden';
   };
 
   useEffect(() => {
     if (!showModal) {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     }
   }, [showModal]);
 
@@ -213,14 +221,14 @@ export function CookieConsent() {
       {showButton && !showModal && (
         <div
           className={cn(
-            "bg-background text-foreground animate-in slide-in-from-bottom-5 fixed right-6 bottom-6 z-50 flex items-center border transition-all duration-300",
+            'bg-background text-foreground animate-in slide-in-from-bottom-5 fixed right-6 bottom-6 z-50 flex items-center border transition-all duration-300',
             mode.radius
           )}
         >
           <button
             onClick={openModal}
             className={cn(
-              "hover:bg-muted flex items-center gap-2 px-4 py-3 transition-colors",
+              'hover:bg-muted flex items-center gap-2 px-4 py-3 transition-colors',
               mode.font
             )}
             aria-label="Cookie Settings"
@@ -244,7 +252,7 @@ export function CookieConsent() {
           <div
             className="bg-background/80 fixed inset-0 backdrop-blur-sm"
             onClick={closeModal}
-            onKeyDown={(e) => e.key === "Escape" && closeModal()}
+            onKeyDown={(e) => e.key === 'Escape' && closeModal()}
             role="button"
             tabIndex={0}
             aria-label="Close modal"
@@ -252,8 +260,8 @@ export function CookieConsent() {
           <div className="flex min-h-full items-center justify-center p-4">
             <div
               className={cn(
-                "bg-background relative w-full max-w-2xl transition-all duration-300",
-                isExiting ? "scale-95 opacity-0" : "scale-100 opacity-100"
+                'bg-background relative w-full max-w-2xl transition-all duration-300',
+                isExiting ? 'scale-95 opacity-0' : 'scale-100 opacity-100'
               )}
             >
               {/* Close button - positioned in header row */}
@@ -270,9 +278,9 @@ export function CookieConsent() {
                 code="00"
                 title="COOKIE_PREFERENCES"
                 tabs={[
-                  { id: "consent", label: "CONSENT" },
-                  { id: "details", label: "DETAILS" },
-                  { id: "about", label: "ABOUT" },
+                  { id: 'consent', label: 'CONSENT' },
+                  { id: 'details', label: 'DETAILS' },
+                  { id: 'about', label: 'ABOUT' },
                 ]}
                 value={activeTab}
                 onValueChange={setActiveTab}

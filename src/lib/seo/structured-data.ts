@@ -8,7 +8,7 @@
  * - GEO: AI citations in ChatGPT, Gemini, Google AI Overview
  */
 
-import { siteConfig } from "@/lib/metadata";
+import { siteConfig } from '@/lib/metadata';
 
 interface Organization {
   name: string;
@@ -58,7 +58,7 @@ interface Article {
 interface FAQ {
   question: string;
   answer: string;
-  acceptedAnswerType?: "text" | "html";
+  acceptedAnswerType?: 'text' | 'html';
 }
 
 interface HowToStep {
@@ -86,29 +86,29 @@ export function generateOrganizationSchema(data?: Partial<Organization>) {
   const baseUrl = siteConfig.url;
 
   return {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": `${baseUrl}#organization`,
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': `${baseUrl}#organization`,
     name: data?.name || siteConfig.name,
     description: data?.description || siteConfig.description,
     url: baseUrl,
     logo: {
-      "@type": "ImageObject",
+      '@type': 'ImageObject',
       url: data?.logo || `${baseUrl}/logo.png`,
       width: 512,
       height: 512,
     },
     foundingDate: data?.foundingDate,
     founders: data?.founders?.map((name) => ({
-      "@type": "Person",
+      '@type': 'Person',
       name,
     })),
     sameAs: data?.sameAs || [siteConfig.links.github],
     contactPoint: data?.contactPoint || {
-      "@type": "ContactPoint",
-      contactType: "Customer Support",
-      email: "support@fabrek.dev",
-      availableLanguage: ["English"],
+      '@type': 'ContactPoint',
+      contactType: 'Customer Support',
+      email: 'support@fabrek.dev',
+      availableLanguage: ['English'],
     },
   };
 }
@@ -121,31 +121,31 @@ export function generateSoftwareApplicationSchema(data?: Partial<Product>) {
   const baseUrl = siteConfig.url;
 
   return {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "@id": `${baseUrl}#software`,
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    '@id': `${baseUrl}#software`,
     name: data?.name || siteConfig.name,
     description: data?.description || siteConfig.description,
     url: baseUrl,
-    applicationCategory: "DeveloperApplication",
-    operatingSystem: "Web, macOS, Windows, Linux",
-    softwareVersion: "1.0",
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Web, macOS, Windows, Linux',
+    softwareVersion: '1.0',
     offers: {
-      "@type": "Offer",
-      price: data?.price || "79",
-      priceCurrency: data?.priceCurrency || "USD",
-      availability: "https://schema.org/InStock",
+      '@type': 'Offer',
+      price: data?.price || '79',
+      priceCurrency: data?.priceCurrency || 'USD',
+      availability: 'https://schema.org/InStock',
       url: `${baseUrl}/pricing`,
       validFrom: new Date().toISOString(),
     },
     aggregateRating: data?.aggregateRating && {
-      "@type": "AggregateRating",
+      '@type': 'AggregateRating',
       ratingValue: data.aggregateRating.ratingValue,
       reviewCount: data.aggregateRating.reviewCount,
-      bestRating: data.aggregateRating.bestRating || "5",
+      bestRating: data.aggregateRating.bestRating || '5',
     },
     author: {
-      "@type": "Organization",
+      '@type': 'Organization',
       name: siteConfig.name,
     },
   };
@@ -159,19 +159,19 @@ export function generateArticleSchema(data: Article) {
   const baseUrl = siteConfig.url;
 
   return {
-    "@context": "https://schema.org",
-    "@type": "Article",
+    '@context': 'https://schema.org',
+    '@type': 'Article',
     headline: data.headline,
     description: data.description,
     author: {
-      "@type": "Person",
+      '@type': 'Person',
       name: data.author,
     },
     publisher: {
-      "@type": "Organization",
+      '@type': 'Organization',
       name: siteConfig.name,
       logo: {
-        "@type": "ImageObject",
+        '@type': 'ImageObject',
         url: `${baseUrl}/logo.png`,
       },
     },
@@ -181,8 +181,8 @@ export function generateArticleSchema(data: Article) {
     articleSection: data.articleSection,
     wordCount: data.wordCount,
     mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": baseUrl,
+      '@type': 'WebPage',
+      '@id': baseUrl,
     },
   };
 }
@@ -193,13 +193,13 @@ export function generateArticleSchema(data: Article) {
  */
 export function generateFAQSchema(faqs: FAQ[]) {
   return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
     mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
+      '@type': 'Question',
       name: faq.question,
       acceptedAnswer: {
-        "@type": "Answer",
+        '@type': 'Answer',
         text: faq.answer,
       },
     })),
@@ -218,18 +218,18 @@ export function generateHowToSchema(data: {
   estimatedCost?: string;
 }) {
   return {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
     name: data.name,
     description: data.description,
     totalTime: data.totalTime,
     estimatedCost: data.estimatedCost && {
-      "@type": "MonetaryAmount",
-      currency: "USD",
+      '@type': 'MonetaryAmount',
+      currency: 'USD',
       value: data.estimatedCost,
     },
     step: data.steps.map((step, index) => ({
-      "@type": "HowToStep",
+      '@type': 'HowToStep',
       position: index + 1,
       name: step.name,
       text: step.text,
@@ -243,17 +243,19 @@ export function generateHowToSchema(data: {
  * Generate Breadcrumb schema (for navigation)
  * Helps with site structure understanding (SEO + GEO)
  */
-export function generateBreadcrumbSchema(items: { name: string; url: string }[]) {
+export function generateBreadcrumbSchema(
+  items: { name: string; url: string }[]
+) {
   const baseUrl = siteConfig.url;
 
   return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
     itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
+      '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      item: item.url.startsWith("http") ? item.url : `${baseUrl}${item.url}`,
+      item: item.url.startsWith('http') ? item.url : `${baseUrl}${item.url}`,
     })),
   };
 }
@@ -264,27 +266,28 @@ export function generateBreadcrumbSchema(items: { name: string; url: string }[])
  */
 export function generateReviewSchema(reviews: Review[], productName?: string) {
   return {
-    "@context": "https://schema.org",
-    "@type": "Product",
+    '@context': 'https://schema.org',
+    '@type': 'Product',
     name: productName || siteConfig.name,
     aggregateRating: {
-      "@type": "AggregateRating",
+      '@type': 'AggregateRating',
       ratingValue: (
-        reviews.reduce((sum, r) => sum + r.reviewRating.ratingValue, 0) / reviews.length
+        reviews.reduce((sum, r) => sum + r.reviewRating.ratingValue, 0) /
+        reviews.length
       ).toFixed(1),
       reviewCount: reviews.length,
       bestRating: 5,
     },
     review: reviews.map((review) => ({
-      "@type": "Review",
+      '@type': 'Review',
       author: {
-        "@type": "Person",
+        '@type': 'Person',
         name: review.author,
       },
       datePublished: review.datePublished,
       reviewBody: review.reviewBody,
       reviewRating: {
-        "@type": "Rating",
+        '@type': 'Rating',
         ratingValue: review.reviewRating.ratingValue,
         bestRating: review.reviewRating.bestRating || 5,
       },
@@ -300,19 +303,19 @@ export function generateWebSiteSchema() {
   const baseUrl = siteConfig.url;
 
   return {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": `${baseUrl}#website`,
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${baseUrl}#website`,
     url: baseUrl,
     name: siteConfig.name,
     description: siteConfig.description,
     potentialAction: {
-      "@type": "SearchAction",
+      '@type': 'SearchAction',
       target: {
-        "@type": "EntryPoint",
+        '@type': 'EntryPoint',
         urlTemplate: `${baseUrl}/search?q={search_term_string}`,
       },
-      "query-input": "required name=search_term_string",
+      'query-input': 'required name=search_term_string',
     },
   };
 }
@@ -330,8 +333,8 @@ export function generateVideoSchema(data: {
   contentUrl: string;
 }) {
   return {
-    "@context": "https://schema.org",
-    "@type": "VideoObject",
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
     name: data.name,
     description: data.description,
     thumbnailUrl: data.thumbnailUrl,
@@ -354,12 +357,12 @@ export function generateCourseSchema(data: {
   const baseUrl = siteConfig.url;
 
   return {
-    "@context": "https://schema.org",
-    "@type": "Course",
+    '@context': 'https://schema.org',
+    '@type': 'Course',
     name: data.name,
     description: data.description,
     provider: {
-      "@type": "Organization",
+      '@type': 'Organization',
       name: data.provider,
       sameAs: baseUrl,
     },

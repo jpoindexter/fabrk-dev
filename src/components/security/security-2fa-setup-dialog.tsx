@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
 /**
  * 2FA Setup Dialog
  * Multi-step modal for setting up two-factor authentication
  */
 
-import { useState } from "react";
-import { QRCodeSVG } from "qrcode.react";
-import { Button } from "@/components/ui/button";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { useState } from 'react';
+import { QRCodeSVG } from 'qrcode.react';
+import { Button } from '@/components/ui/button';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import {
   Dialog,
   DialogContent,
@@ -16,18 +16,24 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from '@/components/ui/dialog';
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
   InputOTPSeparator,
-} from "@/components/ui/input-otp";
-import { AlertTriangle, Loader2, Copy, Check, CheckCircle2 } from "lucide-react";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+} from '@/components/ui/input-otp';
+import {
+  AlertTriangle,
+  Loader2,
+  Copy,
+  Check,
+  CheckCircle2,
+} from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
-type SetupStep = "qr" | "verify" | "backup";
+type SetupStep = 'qr' | 'verify' | 'backup';
 
 interface Security2FASetupDialogProps {
   open: boolean;
@@ -48,8 +54,8 @@ export function Security2FASetupDialog({
   onVerify,
   onComplete,
 }: Security2FASetupDialogProps) {
-  const [setupStep, setSetupStep] = useState<SetupStep>("qr");
-  const [verificationCode, setVerificationCode] = useState("");
+  const [setupStep, setSetupStep] = useState<SetupStep>('qr');
+  const [verificationCode, setVerificationCode] = useState('');
   const [isVerifying, setIsVerifying] = useState(false);
   const [copiedSecret, setCopiedSecret] = useState(false);
 
@@ -70,9 +76,9 @@ export function Security2FASetupDialog({
     try {
       const success = await onVerify(verificationCode);
       if (success) {
-        setSetupStep("backup");
+        setSetupStep('backup');
       } else {
-        setVerificationCode("");
+        setVerificationCode('');
       }
     } finally {
       setIsVerifying(false);
@@ -81,12 +87,12 @@ export function Security2FASetupDialog({
 
   const handleClose = () => {
     onOpenChange(false);
-    if (setupStep === "backup") {
+    if (setupStep === 'backup') {
       onComplete();
     }
     // Reset state for next open
-    setSetupStep("qr");
-    setVerificationCode("");
+    setSetupStep('qr');
+    setVerificationCode('');
   };
 
   return (
@@ -94,23 +100,27 @@ export function Security2FASetupDialog({
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>
-            {setupStep === "qr" && "Set Up Two-Factor Authentication"}
-            {setupStep === "verify" && "Verify Your Authenticator"}
-            {setupStep === "backup" && "Save Your Backup Codes"}
+            {setupStep === 'qr' && 'Set Up Two-Factor Authentication'}
+            {setupStep === 'verify' && 'Verify Your Authenticator'}
+            {setupStep === 'backup' && 'Save Your Backup Codes'}
           </DialogTitle>
           <DialogDescription>
-            {setupStep === "qr" &&
-              "Scan the QR code with your authenticator app (Google Authenticator, Authy, etc.)"}
-            {setupStep === "verify" && "Enter the 6-digit code from your authenticator app"}
-            {setupStep === "backup" &&
-              "Store these codes safely. You can use them to sign in if you lose access to your authenticator."}
+            {setupStep === 'qr' &&
+              'Scan the QR code with your authenticator app (Google Authenticator, Authy, etc.)'}
+            {setupStep === 'verify' &&
+              'Enter the 6-digit code from your authenticator app'}
+            {setupStep === 'backup' &&
+              'Store these codes safely. You can use them to sign in if you lose access to your authenticator.'}
           </DialogDescription>
         </DialogHeader>
 
-        {setupStep === "qr" && (
+        {setupStep === 'qr' && (
           <div className="space-y-4">
             <div
-              className={cn("bg-card border-border flex justify-center border p-4", mode.radius)}
+              className={cn(
+                'bg-card border-border flex justify-center border p-4',
+                mode.radius
+              )}
             >
               <QRCodeSVG value={qrCodeUri} size={200} />
             </div>
@@ -118,9 +128,21 @@ export function Security2FASetupDialog({
               <p className="text-muted-foreground text-center text-sm">
                 Can&apos;t scan? Enter this code manually:
               </p>
-              <div className={cn("bg-muted flex items-center gap-2 p-2", mode.radius)}>
-                <code className={cn("flex-1 text-xs break-all", mode.font)}>{totpSecret}</code>
-                <Button variant="ghost" size="sm" onClick={handleCopySecret} className="shrink-0">
+              <div
+                className={cn(
+                  'bg-muted flex items-center gap-2 p-2',
+                  mode.radius
+                )}
+              >
+                <code className={cn('flex-1 text-xs break-all', mode.font)}>
+                  {totpSecret}
+                </code>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleCopySecret}
+                  className="shrink-0"
+                >
                   {copiedSecret ? (
                     <Check className="text-success h-4 w-4" />
                   ) : (
@@ -130,14 +152,14 @@ export function Security2FASetupDialog({
               </div>
             </div>
             <DialogFooter>
-              <Button onClick={() => setSetupStep("verify")} className="w-full">
+              <Button onClick={() => setSetupStep('verify')} className="w-full">
                 &gt; CONTINUE
               </Button>
             </DialogFooter>
           </div>
         )}
 
-        {setupStep === "verify" && (
+        {setupStep === 'verify' && (
           <div className="space-y-4">
             <div className="flex justify-center">
               <InputOTP
@@ -160,7 +182,11 @@ export function Security2FASetupDialog({
               </InputOTP>
             </div>
             <DialogFooter className="flex-col gap-2 sm:flex-row">
-              <Button variant="outline" onClick={() => setSetupStep("qr")} disabled={isVerifying}>
+              <Button
+                variant="outline"
+                onClick={() => setSetupStep('qr')}
+                disabled={isVerifying}
+              >
                 &gt; BACK
               </Button>
               <Button
@@ -168,18 +194,25 @@ export function Security2FASetupDialog({
                 disabled={verificationCode.length !== 6 || isVerifying}
                 className="flex-1"
               >
-                {isVerifying && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                {isVerifying ? "> VERIFYING..." : "> VERIFY_AND_ENABLE"}
+                {isVerifying && (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                )}
+                {isVerifying ? '> VERIFYING...' : '> VERIFY_AND_ENABLE'}
               </Button>
             </DialogFooter>
           </div>
         )}
 
-        {setupStep === "backup" && (
+        {setupStep === 'backup' && (
           <div className="space-y-4">
-            <div className={cn("bg-muted grid grid-cols-2 gap-2 p-4", mode.radius)}>
+            <div
+              className={cn('bg-muted grid grid-cols-2 gap-2 p-4', mode.radius)}
+            >
               {backupCodes.map((code, i) => (
-                <code key={i} className={cn("py-1 text-center text-sm", mode.font)}>
+                <code
+                  key={i}
+                  className={cn('py-1 text-center text-sm', mode.font)}
+                >
                   {code}
                 </code>
               ))}

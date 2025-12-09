@@ -3,11 +3,11 @@
  * Notifications list with empty state
  */
 
-import { Bell } from "lucide-react";
-import { Notification } from "./notification-types";
-import { NotificationItem } from "./notification-item";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { Bell } from 'lucide-react';
+import { Notification } from './notification-types';
+import { NotificationItem } from './notification-item';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 interface NotificationsListProps {
   notifications: Notification[];
@@ -26,10 +26,12 @@ export function NotificationsList({
     return (
       <div className="border-border bg-muted/30 border p-8 text-center">
         <Bell className="text-muted-foreground mx-auto mb-2 h-8 w-8" />
-        <div className={cn(mode.font, "text-muted-foreground text-sm")}>
-          {activeTab === "unread" ? "[NO_UNREAD_NOTIFICATIONS]" : "[NO_NOTIFICATIONS]"}
+        <div className={cn(mode.font, 'text-muted-foreground text-sm')}>
+          {activeTab === 'unread'
+            ? '[NO_UNREAD_NOTIFICATIONS]'
+            : '[NO_NOTIFICATIONS]'}
         </div>
-        <div className={cn(mode.font, "text-muted-foreground mt-1 text-xs")}>
+        <div className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
           You&apos;re all caught up!
         </div>
       </div>

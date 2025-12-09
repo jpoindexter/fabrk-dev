@@ -3,16 +3,16 @@
  * Final call-to-action with pricing and features links
  */
 
-"use client";
+'use client';
 
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import config from "@/config";
-import { Badge, Card, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import config from '@/config';
+import { Badge, Card, CardContent } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 export function AboutCTA() {
   return (
@@ -25,7 +25,7 @@ export function AboutCTA() {
           viewport={{ once: true }}
         >
           <Badge code="0xFF" label="EXECUTE" className="mb-4" />
-          <h2 className={cn("text-2xl font-semibold lg:text-4xl", mode.font)}>
+          <h2 className={cn('text-2xl font-semibold lg:text-4xl', mode.font)}>
             READY_TO_BUILD_YOUR_SAAS
           </h2>
         </motion.div>
@@ -39,7 +39,7 @@ export function AboutCTA() {
         >
           <Card size="auto">
             <CardContent padding="md">
-              <p className={cn("text-muted-foreground text-sm", mode.font)}>
+              <p className={cn('text-muted-foreground text-sm', mode.font)}>
                 Join 500+ developers who are shipping faster with Fabrk.
               </p>
             </CardContent>
@@ -69,7 +69,10 @@ export function AboutCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
-          className={cn("text-muted-foreground flex justify-center gap-4 text-xs", mode.font)}
+          className={cn(
+            'text-muted-foreground flex justify-center gap-4 text-xs',
+            mode.font
+          )}
         >
           <span className="text-success">■ INSTANT_ACCESS</span>
           <span className="text-success">■ LIFETIME_UPDATES</span>

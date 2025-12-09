@@ -1,10 +1,11 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
-import { Bell, Activity, Users, Zap } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard } from '@/components/docs';
+import { Bell, Activity, Users, Zap } from 'lucide-react';
 
 export const metadata = {
-  title: "Real-Time with Pusher - Fabrk Documentation",
-  description: "Learn how to implement real-time features using Pusher in your Fabrk application.",
+  title: 'Real-Time with Pusher - Fabrk Documentation',
+  description:
+    'Learn how to implement real-time features using Pusher in your Fabrk application.',
 };
 
 export default function RealtimePage() {
@@ -16,15 +17,36 @@ export default function RealtimePage() {
       description="Build real-time features like notifications, presence tracking, and activity feeds using Pusher Channels."
       overview="Fabrk integrates Pusher Channels to provide real-time communication between your server and clients. This enables instant updates for notifications, live activity feeds, and presence tracking to show who's online in your organization."
       features={[
-        { icon: Bell, title: "Notifications", description: "Real-time bell icon updates with badge counts when events occur." },
-        { icon: Activity, title: "Activity Feed", description: "Live organization events and updates pushed instantly to all members." },
-        { icon: Users, title: "Presence Tracking", description: "Show online members in real-time with automatic join/leave detection." },
-        { icon: Zap, title: "Instant Delivery", description: "Sub-second message delivery with WebSocket connections." },
+        {
+          icon: Bell,
+          title: 'Notifications',
+          description:
+            'Real-time bell icon updates with badge counts when events occur.',
+        },
+        {
+          icon: Activity,
+          title: 'Activity Feed',
+          description:
+            'Live organization events and updates pushed instantly to all members.',
+        },
+        {
+          icon: Users,
+          title: 'Presence Tracking',
+          description:
+            'Show online members in real-time with automatic join/leave detection.',
+        },
+        {
+          icon: Zap,
+          title: 'Instant Delivery',
+          description:
+            'Sub-second message delivery with WebSocket connections.',
+        },
       ]}
       setup={[
         {
-          title: "Configure Pusher Credentials",
-          description: "Add your Pusher credentials to your environment variables",
+          title: 'Configure Pusher Credentials',
+          description:
+            'Add your Pusher credentials to your environment variables',
           code: `# .env.local
 PUSHER_APP_ID=your_app_id
 PUSHER_KEY=your_key
@@ -34,13 +56,14 @@ PUSHER_CLUSTER=your_cluster
 # Client-side (exposed to browser)
 NEXT_PUBLIC_PUSHER_KEY=your_key
 NEXT_PUBLIC_PUSHER_CLUSTER=your_cluster`,
-          language: "bash",
+          language: 'bash',
         },
       ]}
       usage={[
         {
-          title: "Server-Side Usage",
-          description: "Use the server client to trigger events from your API routes",
+          title: 'Server-Side Usage',
+          description:
+            'Use the server client to trigger events from your API routes',
           code: `// src/lib/pusher/server.ts
 import Pusher from "pusher";
 
@@ -74,11 +97,12 @@ await pusherServer.trigger(
     timestamp: new Date().toISOString(),
   }
 );`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Client-Side Usage",
-          description: "Subscribe to channels and listen for events in your React components",
+          title: 'Client-Side Usage',
+          description:
+            'Subscribe to channels and listen for events in your React components',
           code: `// src/lib/pusher/client.ts
 import PusherClient from "pusher-js";
 
@@ -123,11 +147,11 @@ export function NotificationBell({ userId }: { userId: string }) {
     </button>
   );
 }`,
-          language: "tsx",
+          language: 'tsx',
         },
         {
-          title: "Presence Channels",
-          description: "Track which members are online in an organization",
+          title: 'Presence Channels',
+          description: 'Track which members are online in an organization',
           code: `// Client-side presence subscription
 "use client";
 import { useEffect, useState } from "react";
@@ -169,18 +193,32 @@ export function OnlineMembers({ orgId }: { orgId: string }) {
     </div>
   );
 }`,
-          language: "tsx",
+          language: 'tsx',
         },
       ]}
-      previous={{ title: "Notifications", href: "/docs/features/notifications" }}
-      next={{ title: "Background Jobs", href: "/docs/features/background-jobs" }}
+      previous={{
+        title: 'Notifications',
+        href: '/docs/features/notifications',
+      }}
+      next={{
+        title: 'Background Jobs',
+        href: '/docs/features/background-jobs',
+      }}
     >
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
         <DocsCard title="BEST_PRACTICES">
           <ul className="space-y-1">
-            <li>├─ Use private channels (<code className="bg-muted px-1">private-</code>) for user-specific data</li>
-            <li>├─ Use presence channels (<code className="bg-muted px-1">presence-</code>) for tracking online status</li>
+            <li>
+              ├─ Use private channels (
+              <code className="bg-muted px-1">private-</code>) for user-specific
+              data
+            </li>
+            <li>
+              ├─ Use presence channels (
+              <code className="bg-muted px-1">presence-</code>) for tracking
+              online status
+            </li>
             <li>├─ Always unsubscribe from channels when components unmount</li>
             <li>├─ Handle connection errors gracefully with retry logic</li>
             <li>└─ Batch events when possible to reduce message count</li>

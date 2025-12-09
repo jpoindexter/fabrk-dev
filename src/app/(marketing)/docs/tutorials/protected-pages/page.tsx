@@ -1,11 +1,11 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { Shield, Lock, User, Eye } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
+import { Shield, Lock, User, Eye } from 'lucide-react';
 
 export const metadata = {
-  title: "Protected Pages - Fabrk Docs",
+  title: 'Protected Pages - Fabrk Docs',
   description:
-    "Secure pages with authentication. Middleware protection, role-based access, and redirect patterns.",
+    'Secure pages with authentication. Middleware protection, role-based access, and redirect patterns.',
 };
 
 export default function ProtectedPagesTutorialPage() {
@@ -17,15 +17,31 @@ export default function ProtectedPagesTutorialPage() {
       description="Create pages that require authentication to access."
       overview="Middleware-based route protection with automatic redirects, role-based access control, and conditional UI rendering based on authentication state."
       features={[
-        { icon: Shield, title: "Middleware", description: "Automatic route protection." },
-        { icon: Lock, title: "Role-Based", description: "USER, ADMIN, SUPER_ADMIN roles." },
-        { icon: User, title: "Session Hook", description: "Client-side auth state." },
-        { icon: Eye, title: "Conditional UI", description: "Show/hide based on auth." },
+        {
+          icon: Shield,
+          title: 'Middleware',
+          description: 'Automatic route protection.',
+        },
+        {
+          icon: Lock,
+          title: 'Role-Based',
+          description: 'USER, ADMIN, SUPER_ADMIN roles.',
+        },
+        {
+          icon: User,
+          title: 'Session Hook',
+          description: 'Client-side auth state.',
+        },
+        {
+          icon: Eye,
+          title: 'Conditional UI',
+          description: 'Show/hide based on auth.',
+        },
       ]}
       usage={[
         {
-          title: "Creating a Protected Page",
-          description: "Create your page under a protected directory",
+          title: 'Creating a Protected Page',
+          description: 'Create your page under a protected directory',
           code: `// src/app/(dashboard)/dashboard/my-feature/page.tsx
 
 import { auth } from "@/lib/auth";
@@ -43,11 +59,11 @@ export default async function MyFeaturePage() {
     </div>
   );
 }`,
-          language: "tsx",
+          language: 'tsx',
         },
         {
-          title: "Adding New Protected Routes",
-          description: "Update middleware to protect additional routes",
+          title: 'Adding New Protected Routes',
+          description: 'Update middleware to protect additional routes',
           code: `// src/middleware.ts
 
 // Find this section and add your routes:
@@ -58,11 +74,11 @@ const isOnSettings = pathnameWithoutLocale.startsWith('/settings');
 const isOnMyFeature = pathnameWithoutLocale.startsWith('/my-feature'); // Add this
 
 const isProtectedRoute = isOnDashboard || isOnAdmin || isOnBilling || isOnSettings || isOnMyFeature;`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Role-Based Access Control",
-          description: "Restrict pages by user role",
+          title: 'Role-Based Access Control',
+          description: 'Restrict pages by user role',
           code: `// src/app/(dashboard)/admin/page.tsx
 
 import { auth } from "@/lib/auth";
@@ -83,11 +99,11 @@ export default async function AdminPage() {
     </div>
   );
 }`,
-          language: "tsx",
+          language: 'tsx',
         },
         {
-          title: "Client Component Protection",
-          description: "Use the session hook for client components",
+          title: 'Client Component Protection',
+          description: 'Use the session hook for client components',
           code: `"use client";
 
 import { useSession } from "next-auth/react";
@@ -110,11 +126,11 @@ export function ProtectedClientComponent() {
     </div>
   );
 }`,
-          language: "tsx",
+          language: 'tsx',
         },
         {
-          title: "Conditional UI Based on Auth",
-          description: "Show different content based on authentication state",
+          title: 'Conditional UI Based on Auth',
+          description: 'Show different content based on authentication state',
           code: `"use client";
 
 import { useSession } from "next-auth/react";
@@ -141,18 +157,18 @@ export function NavBar() {
     </nav>
   );
 }`,
-          language: "tsx",
+          language: 'tsx',
         },
       ]}
-      previous={{ title: "File Uploads", href: "/docs/tutorials/file-uploads" }}
-      next={{ title: "Webhooks", href: "/docs/tutorials/webhooks" }}
+      previous={{ title: 'File Uploads', href: '/docs/tutorials/file-uploads' }}
+      next={{ title: 'Webhooks', href: '/docs/tutorials/webhooks' }}
     >
       {/* Protected Routes */}
       <DocsSection title="Auto-Protected Routes">
         <DocsCard title="PROTECTED_ROUTES">
           <p className="mb-4">
-            Fabrk protects these routes via middleware. Unauthenticated users are automatically
-            redirected to the home page:
+            Fabrk protects these routes via middleware. Unauthenticated users
+            are automatically redirected to the home page:
           </p>
           <div className="space-y-1">
             <div>
@@ -176,13 +192,16 @@ export function NavBar() {
         <DocsCard title="USER_ROLES">
           <div className="space-y-1">
             <div>
-              ├─ <code className="bg-muted px-1">USER</code> - Default role for all users
+              ├─ <code className="bg-muted px-1">USER</code> - Default role for
+              all users
             </div>
             <div>
-              ├─ <code className="bg-muted px-1">ADMIN</code> - Administrative access
+              ├─ <code className="bg-muted px-1">ADMIN</code> - Administrative
+              access
             </div>
             <div>
-              └─ <code className="bg-muted px-1">SUPER_ADMIN</code> - Full system access
+              └─ <code className="bg-muted px-1">SUPER_ADMIN</code> - Full
+              system access
             </div>
           </div>
         </DocsCard>

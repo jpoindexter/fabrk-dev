@@ -82,13 +82,13 @@ Organization settings management with general info editing and danger zone for o
 
 ```typescript
 const settingsSchema = z.object({
-  name: z.string().min(2, "..."),
+  name: z.string().min(2, '...'),
   description: z.string().optional(),
   slug: z
     .string()
-    .min(2, "...")
-    .regex(/^[a-z0-9-]+$/, "..."),
-  logo: z.string().url().optional().or(z.literal("")),
+    .min(2, '...')
+    .regex(/^[a-z0-9-]+$/, '...'),
+  logo: z.string().url().optional().or(z.literal('')),
 });
 ```
 

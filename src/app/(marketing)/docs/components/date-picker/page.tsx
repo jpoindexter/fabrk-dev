@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { DatePicker } from "@/components/ui/date-picker";
-import { useState } from "react";
-import { DateRange } from "react-day-picker";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { DatePicker } from '@/components/ui/date-picker';
+import { useState } from 'react';
+import { DateRange } from 'react-day-picker';
 
 export default function DatePickerPage() {
   const [date, setDate] = useState<Date | undefined>();
@@ -28,8 +28,8 @@ export default function DatePickerPage() {
       }}
       variants={[
         {
-          title: "Single Date",
-          description: "Basic date selection with month/year dropdowns.",
+          title: 'Single Date',
+          description: 'Basic date selection with month/year dropdowns.',
           code: `<DatePicker
   value={date}
   onChange={setDate}
@@ -40,8 +40,8 @@ export default function DatePickerPage() {
           ),
         },
         {
-          title: "Date Range",
-          description: "Select a start and end date with preset options.",
+          title: 'Date Range',
+          description: 'Select a start and end date with preset options.',
           code: `const [range, setRange] = useState<DateRange>();
 
 <DatePicker
@@ -62,8 +62,8 @@ export default function DatePickerPage() {
           ),
         },
         {
-          title: "Date + Time",
-          description: "Pick both date and time with tabbed interface.",
+          title: 'Date + Time',
+          description: 'Pick both date and time with tabbed interface.',
           code: `const [dateTime, setDateTime] = useState<Date>();
 
 <DatePicker
@@ -76,8 +76,8 @@ export default function DatePickerPage() {
           ),
         },
         {
-          title: "Month Only",
-          description: "Select just month and year, no day grid.",
+          title: 'Month Only',
+          description: 'Select just month and year, no day grid.',
           code: `const [month, setMonth] = useState<Date>();
 
 <DatePicker
@@ -88,8 +88,8 @@ export default function DatePickerPage() {
           preview: <DatePicker value={month} onChange={setMonth} monthOnly />,
         },
         {
-          title: "With Min/Max Dates",
-          description: "Restrict selectable date range.",
+          title: 'With Min/Max Dates',
+          description: 'Restrict selectable date range.',
           code: `<DatePicker
   value={date}
   onChange={setDate}
@@ -106,8 +106,8 @@ export default function DatePickerPage() {
           ),
         },
         {
-          title: "24-Hour Time",
-          description: "Use 24-hour format for time picker.",
+          title: '24-Hour Time',
+          description: 'Use 24-hour format for time picker.',
           code: `<DatePicker
   value={dateTime}
   onChange={setDateTime}
@@ -124,8 +124,8 @@ export default function DatePickerPage() {
           ),
         },
         {
-          title: "Disabled State",
-          description: "Disabled date picker.",
+          title: 'Disabled State',
+          description: 'Disabled date picker.',
           code: `<DatePicker
   value={new Date()}
   disabled
@@ -135,110 +135,110 @@ export default function DatePickerPage() {
       ]}
       props={[
         {
-          name: "mode",
+          name: 'mode',
           type: '"single" | "range" | "multiple"',
           default: '"single"',
-          description: "Selection mode",
+          description: 'Selection mode',
         },
         {
-          name: "value",
-          type: "Date | undefined",
-          description: "Selected date (single mode)",
+          name: 'value',
+          type: 'Date | undefined',
+          description: 'Selected date (single mode)',
         },
         {
-          name: "rangeValue",
-          type: "DateRange | undefined",
-          description: "Selected range (range mode)",
+          name: 'rangeValue',
+          type: 'DateRange | undefined',
+          description: 'Selected range (range mode)',
         },
         {
-          name: "onChange",
-          type: "(date: Date | undefined) => void",
-          description: "Callback for single date selection",
+          name: 'onChange',
+          type: '(date: Date | undefined) => void',
+          description: 'Callback for single date selection',
         },
         {
-          name: "onRangeChange",
-          type: "(range: DateRange | undefined) => void",
-          description: "Callback for range selection",
+          name: 'onRangeChange',
+          type: '(range: DateRange | undefined) => void',
+          description: 'Callback for range selection',
         },
         {
-          name: "showTime",
-          type: "boolean",
-          default: "false",
-          description: "Show time picker (single mode)",
+          name: 'showTime',
+          type: 'boolean',
+          default: 'false',
+          description: 'Show time picker (single mode)',
         },
         {
-          name: "use24Hour",
-          type: "boolean",
-          default: "false",
-          description: "Use 24-hour time format",
+          name: 'use24Hour',
+          type: 'boolean',
+          default: 'false',
+          description: 'Use 24-hour time format',
         },
         {
-          name: "showPresets",
-          type: "boolean",
-          default: "false",
-          description: "Show preset quick selects (range mode)",
+          name: 'showPresets',
+          type: 'boolean',
+          default: 'false',
+          description: 'Show preset quick selects (range mode)',
         },
         {
-          name: "showMonthYearPicker",
-          type: "boolean",
-          default: "false",
-          description: "Show month/year dropdown selectors",
+          name: 'showMonthYearPicker',
+          type: 'boolean',
+          default: 'false',
+          description: 'Show month/year dropdown selectors',
         },
         {
-          name: "monthOnly",
-          type: "boolean",
-          default: "false",
-          description: "Month-only picker (no day grid)",
+          name: 'monthOnly',
+          type: 'boolean',
+          default: 'false',
+          description: 'Month-only picker (no day grid)',
         },
         {
-          name: "numberOfMonths",
-          type: "1 | 2",
-          default: "1",
-          description: "Number of months to display",
+          name: 'numberOfMonths',
+          type: '1 | 2',
+          default: '1',
+          description: 'Number of months to display',
         },
         {
-          name: "minDate",
-          type: "Date",
-          description: "Minimum selectable date",
+          name: 'minDate',
+          type: 'Date',
+          description: 'Minimum selectable date',
         },
         {
-          name: "maxDate",
-          type: "Date",
-          description: "Maximum selectable date",
+          name: 'maxDate',
+          type: 'Date',
+          description: 'Maximum selectable date',
         },
         {
-          name: "disabled",
-          type: "boolean",
-          default: "false",
-          description: "Disable the picker",
+          name: 'disabled',
+          type: 'boolean',
+          default: 'false',
+          description: 'Disable the picker',
         },
         {
-          name: "placeholder",
-          type: "string",
-          description: "Custom placeholder text",
+          name: 'placeholder',
+          type: 'string',
+          description: 'Custom placeholder text',
         },
         {
-          name: "className",
-          type: "string",
-          description: "Additional CSS classes",
+          name: 'className',
+          type: 'string',
+          description: 'Additional CSS classes',
         },
       ]}
       accessibility={[
-        "Full keyboard navigation in calendar grid",
-        "Arrow keys move between dates",
-        "Enter/Space selects focused date",
-        "Escape closes popover",
-        "Calendar auto-focuses on open",
-        "Screen readers announce date selections",
-        "Time inputs have labeled spinners",
+        'Full keyboard navigation in calendar grid',
+        'Arrow keys move between dates',
+        'Enter/Space selects focused date',
+        'Escape closes popover',
+        'Calendar auto-focuses on open',
+        'Screen readers announce date selections',
+        'Time inputs have labeled spinners',
       ]}
       previous={{
-        title: "Calendar",
-        href: "/docs/components/calendar",
+        title: 'Calendar',
+        href: '/docs/components/calendar',
       }}
       next={{
-        title: "Dialog",
-        href: "/docs/components/dialog",
+        title: 'Dialog',
+        href: '/docs/components/dialog',
       }}
     />
   );

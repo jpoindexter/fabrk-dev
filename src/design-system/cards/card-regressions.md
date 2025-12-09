@@ -174,10 +174,10 @@ Components use mode.radius → "rounded-none"
 
 ```typescript
 type TerminalCardProps = {
-  tone?: "neutral" | "primary" | "success" | "warning" | "danger";
-  size?: "auto" | "full";
+  tone?: 'neutral' | 'primary' | 'success' | 'warning' | 'danger';
+  size?: 'auto' | 'full';
   interactive?: boolean;
-  as?: "div" | "article" | "section";
+  as?: 'div' | 'article' | 'section';
 };
 ```
 
@@ -196,7 +196,7 @@ type TerminalCardHeaderProps = {
 
 ```typescript
 type TerminalCardContentProps = {
-  padding?: "sm" | "md" | "lg";
+  padding?: 'sm' | 'md' | 'lg';
 };
 ```
 
@@ -232,8 +232,10 @@ type TerminalCardContentProps = {
 ### Stat Card (Dashboard)
 
 ```tsx
-<div className={cn("border-border bg-card space-y-2 border p-4", mode.radius)}>
-  <span className={cn("text-muted-foreground text-xs", mode.font)}>[STAT_LABEL]:</span>
+<div className={cn('border-border bg-card space-y-2 border p-4', mode.radius)}>
+  <span className={cn('text-muted-foreground text-xs', mode.font)}>
+    [STAT_LABEL]:
+  </span>
   <div className="text-2xl font-semibold">$12,345</div>
 </div>
 ```

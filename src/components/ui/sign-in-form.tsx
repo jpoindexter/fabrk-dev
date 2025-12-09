@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import Link from "next/link";
-import { Github, Loader2 } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
+import * as React from 'react';
+import Link from 'next/link';
+import { Github, Loader2 } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
 
 export interface SignInFormData {
   email: string;
@@ -46,13 +46,13 @@ export interface SignInFormProps {
 
 const defaultSocialProviders: SocialProvider[] = [
   {
-    id: "github",
-    name: "GitHub",
+    id: 'github',
+    name: 'GitHub',
     icon: <Github className="h-4 w-4" />,
   },
   {
-    id: "google",
-    name: "Google",
+    id: 'google',
+    name: 'Google',
     /* eslint-disable design-system/no-hardcoded-colors -- Google brand colors required */
     icon: (
       <svg className="h-4 w-4" viewBox="0 0 24 24">
@@ -81,18 +81,20 @@ const defaultSocialProviders: SocialProvider[] = [
 export function SignInForm({
   onSubmit,
   socialProviders = defaultSocialProviders,
-  forgotPasswordHref = "/forgot-password",
-  signUpHref = "/sign-up",
+  forgotPasswordHref = '/forgot-password',
+  signUpHref = '/sign-up',
   showRememberMe = true,
-  defaultEmail = "",
+  defaultEmail = '',
   isLoading = false,
   error,
   className,
 }: SignInFormProps) {
   const [email, setEmail] = React.useState(defaultEmail);
-  const [password, setPassword] = React.useState("");
+  const [password, setPassword] = React.useState('');
   const [rememberMe, setRememberMe] = React.useState(false);
-  const [loadingProvider, setLoadingProvider] = React.useState<string | null>(null);
+  const [loadingProvider, setLoadingProvider] = React.useState<string | null>(
+    null
+  );
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -109,12 +111,12 @@ export function SignInForm({
   };
 
   return (
-    <div className={cn("space-y-6", className)}>
+    <div className={cn('space-y-6', className)}>
       {/* Error Message */}
       {error && (
         <div
           className={cn(
-            "border-destructive bg-destructive/10 text-destructive border p-3 text-xs",
+            'border-destructive bg-destructive/10 text-destructive border p-3 text-xs',
             mode.radius,
             mode.font
           )}
@@ -126,7 +128,7 @@ export function SignInForm({
       {/* Email/Password Form */}
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="space-y-2">
-          <Label htmlFor="signin-email" className={cn(mode.font, "text-xs")}>
+          <Label htmlFor="signin-email" className={cn(mode.font, 'text-xs')}>
             [EMAIL]:
           </Label>
           <Input
@@ -140,19 +142,25 @@ export function SignInForm({
             onChange={(e) => setEmail(e.target.value)}
             disabled={isLoading}
             required
-            className={cn(mode.radius, mode.font, "text-xs")}
+            className={cn(mode.radius, mode.font, 'text-xs')}
           />
         </div>
 
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <Label htmlFor="signin-password" className={cn(mode.font, "text-xs")}>
+            <Label
+              htmlFor="signin-password"
+              className={cn(mode.font, 'text-xs')}
+            >
               [PASSWORD]:
             </Label>
             {forgotPasswordHref && (
               <Link
                 href={forgotPasswordHref}
-                className={cn("text-primary text-xs hover:underline", mode.font)}
+                className={cn(
+                  'text-primary text-xs hover:underline',
+                  mode.font
+                )}
               >
                 Forgot password?
               </Link>
@@ -167,7 +175,7 @@ export function SignInForm({
             onChange={(e) => setPassword(e.target.value)}
             disabled={isLoading}
             required
-            className={cn(mode.radius, mode.font, "text-xs")}
+            className={cn(mode.radius, mode.font, 'text-xs')}
           />
         </div>
 
@@ -182,7 +190,10 @@ export function SignInForm({
             />
             <Label
               htmlFor="signin-remember"
-              className={cn(mode.font, "text-muted-foreground text-xs font-normal")}
+              className={cn(
+                mode.font,
+                'text-muted-foreground text-xs font-normal'
+              )}
             >
               Remember me for 30 days
             </Label>
@@ -191,7 +202,7 @@ export function SignInForm({
 
         <Button
           type="submit"
-          className={cn(mode.radius, mode.font, "w-full text-xs")}
+          className={cn(mode.radius, mode.font, 'w-full text-xs')}
           disabled={isLoading}
         >
           {isLoading ? (
@@ -200,7 +211,7 @@ export function SignInForm({
               SIGNING_IN...
             </>
           ) : (
-            "&gt; SIGN_IN"
+            '&gt; SIGN_IN'
           )}
         </Button>
       </form>
@@ -213,7 +224,12 @@ export function SignInForm({
               <span className="border-border w-full border-t" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className={cn("bg-background text-muted-foreground px-2", mode.font)}>
+              <span
+                className={cn(
+                  'bg-background text-muted-foreground px-2',
+                  mode.font
+                )}
+              >
                 Or continue with
               </span>
             </div>
@@ -222,10 +238,10 @@ export function SignInForm({
           {/* Social Auth Buttons */}
           <div
             className={cn(
-              "grid gap-4",
-              socialProviders.length === 1 && "grid-cols-1",
-              socialProviders.length === 2 && "grid-cols-2",
-              socialProviders.length >= 3 && "grid-cols-2 sm:grid-cols-3"
+              'grid gap-4',
+              socialProviders.length === 1 && 'grid-cols-1',
+              socialProviders.length === 2 && 'grid-cols-2',
+              socialProviders.length >= 3 && 'grid-cols-2 sm:grid-cols-3'
             )}
           >
             {socialProviders.map((provider) => (
@@ -235,7 +251,7 @@ export function SignInForm({
                 type="button"
                 onClick={() => handleSocialAuth(provider)}
                 disabled={isLoading || loadingProvider !== null}
-                className={cn(mode.radius, mode.font, "text-xs")}
+                className={cn(mode.radius, mode.font, 'text-xs')}
               >
                 {loadingProvider === provider.id ? (
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -251,11 +267,16 @@ export function SignInForm({
 
       {/* Sign Up Link */}
       {signUpHref && (
-        <p className={cn("text-muted-foreground text-center text-xs", mode.font)}>
-          Don&apos;t have an account?{" "}
+        <p
+          className={cn('text-muted-foreground text-center text-xs', mode.font)}
+        >
+          Don&apos;t have an account?{' '}
           <Link
             href={signUpHref}
-            className={cn("hover:text-primary underline underline-offset-4", mode.font)}
+            className={cn(
+              'hover:text-primary underline underline-offset-4',
+              mode.font
+            )}
           >
             Sign up
           </Link>
@@ -296,18 +317,20 @@ export interface SignUpFormProps {
 export function SignUpForm({
   onSubmit,
   socialProviders = defaultSocialProviders,
-  signInHref = "/sign-in",
-  termsHref = "/terms",
-  privacyHref = "/privacy",
+  signInHref = '/sign-in',
+  termsHref = '/terms',
+  privacyHref = '/privacy',
   isLoading = false,
   error,
   className,
 }: SignUpFormProps) {
-  const [name, setName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
   const [acceptTerms, setAcceptTerms] = React.useState(false);
-  const [loadingProvider, setLoadingProvider] = React.useState<string | null>(null);
+  const [loadingProvider, setLoadingProvider] = React.useState<string | null>(
+    null
+  );
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -324,12 +347,12 @@ export function SignUpForm({
   };
 
   return (
-    <div className={cn("space-y-6", className)}>
+    <div className={cn('space-y-6', className)}>
       {/* Error Message */}
       {error && (
         <div
           className={cn(
-            "border-destructive bg-destructive/10 text-destructive border p-3 text-xs",
+            'border-destructive bg-destructive/10 text-destructive border p-3 text-xs',
             mode.radius,
             mode.font
           )}
@@ -341,7 +364,7 @@ export function SignUpForm({
       {/* Sign Up Form */}
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="space-y-2">
-          <Label htmlFor="signup-name" className={cn(mode.font, "text-xs")}>
+          <Label htmlFor="signup-name" className={cn(mode.font, 'text-xs')}>
             [NAME]:
           </Label>
           <Input
@@ -353,12 +376,12 @@ export function SignUpForm({
             onChange={(e) => setName(e.target.value)}
             disabled={isLoading}
             required
-            className={cn(mode.radius, mode.font, "text-xs")}
+            className={cn(mode.radius, mode.font, 'text-xs')}
           />
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="signup-email" className={cn(mode.font, "text-xs")}>
+          <Label htmlFor="signup-email" className={cn(mode.font, 'text-xs')}>
             [EMAIL]:
           </Label>
           <Input
@@ -372,12 +395,12 @@ export function SignUpForm({
             onChange={(e) => setEmail(e.target.value)}
             disabled={isLoading}
             required
-            className={cn(mode.radius, mode.font, "text-xs")}
+            className={cn(mode.radius, mode.font, 'text-xs')}
           />
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="signup-password" className={cn(mode.font, "text-xs")}>
+          <Label htmlFor="signup-password" className={cn(mode.font, 'text-xs')}>
             [PASSWORD]:
           </Label>
           <Input
@@ -389,7 +412,7 @@ export function SignUpForm({
             onChange={(e) => setPassword(e.target.value)}
             disabled={isLoading}
             required
-            className={cn(mode.radius, mode.font, "text-xs")}
+            className={cn(mode.radius, mode.font, 'text-xs')}
           />
         </div>
 
@@ -399,17 +422,20 @@ export function SignUpForm({
             checked={acceptTerms}
             onCheckedChange={(checked) => setAcceptTerms(checked === true)}
             disabled={isLoading}
-            className={cn(mode.radius, "mt-0.5")}
+            className={cn(mode.radius, 'mt-0.5')}
           />
           <Label
             htmlFor="signup-terms"
-            className={cn(mode.font, "text-muted-foreground text-xs leading-relaxed font-normal")}
+            className={cn(
+              mode.font,
+              'text-muted-foreground text-xs leading-relaxed font-normal'
+            )}
           >
-            I agree to the{" "}
+            I agree to the{' '}
             <Link href={termsHref} className="text-primary hover:underline">
               Terms of Service
-            </Link>{" "}
-            and{" "}
+            </Link>{' '}
+            and{' '}
             <Link href={privacyHref} className="text-primary hover:underline">
               Privacy Policy
             </Link>
@@ -418,7 +444,7 @@ export function SignUpForm({
 
         <Button
           type="submit"
-          className={cn(mode.radius, mode.font, "w-full text-xs")}
+          className={cn(mode.radius, mode.font, 'w-full text-xs')}
           disabled={isLoading || !acceptTerms}
         >
           {isLoading ? (
@@ -427,7 +453,7 @@ export function SignUpForm({
               CREATING_ACCOUNT...
             </>
           ) : (
-            "&gt; CREATE_ACCOUNT"
+            '&gt; CREATE_ACCOUNT'
           )}
         </Button>
       </form>
@@ -440,7 +466,12 @@ export function SignUpForm({
               <span className="border-border w-full border-t" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className={cn("bg-background text-muted-foreground px-2", mode.font)}>
+              <span
+                className={cn(
+                  'bg-background text-muted-foreground px-2',
+                  mode.font
+                )}
+              >
                 Or continue with
               </span>
             </div>
@@ -449,10 +480,10 @@ export function SignUpForm({
           {/* Social Auth Buttons */}
           <div
             className={cn(
-              "grid gap-4",
-              socialProviders.length === 1 && "grid-cols-1",
-              socialProviders.length === 2 && "grid-cols-2",
-              socialProviders.length >= 3 && "grid-cols-2 sm:grid-cols-3"
+              'grid gap-4',
+              socialProviders.length === 1 && 'grid-cols-1',
+              socialProviders.length === 2 && 'grid-cols-2',
+              socialProviders.length >= 3 && 'grid-cols-2 sm:grid-cols-3'
             )}
           >
             {socialProviders.map((provider) => (
@@ -462,7 +493,7 @@ export function SignUpForm({
                 type="button"
                 onClick={() => handleSocialAuth(provider)}
                 disabled={isLoading || loadingProvider !== null}
-                className={cn(mode.radius, mode.font, "text-xs")}
+                className={cn(mode.radius, mode.font, 'text-xs')}
               >
                 {loadingProvider === provider.id ? (
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -478,11 +509,16 @@ export function SignUpForm({
 
       {/* Sign In Link */}
       {signInHref && (
-        <p className={cn("text-muted-foreground text-center text-xs", mode.font)}>
-          Already have an account?{" "}
+        <p
+          className={cn('text-muted-foreground text-center text-xs', mode.font)}
+        >
+          Already have an account?{' '}
           <Link
             href={signInHref}
-            className={cn("hover:text-primary underline underline-offset-4", mode.font)}
+            className={cn(
+              'hover:text-primary underline underline-offset-4',
+              mode.font
+            )}
           >
             Sign in
           </Link>

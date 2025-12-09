@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { X, ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import config from "@/config";
-import { Card } from "@/components/ui/card";
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { X, ArrowRight } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import config from '@/config';
+import { Card } from '@/components/ui/card';
 
 interface StickyCTABarProps {
   /**
@@ -39,17 +39,17 @@ interface StickyCTABarProps {
 
 export function StickyCTABar({
   showAfterScroll = 300,
-  ctaText = "Get Started",
-  ctaHref = "#pricing",
-  message = "Launch your SaaS faster with Fabrk",
+  ctaText = 'Get Started',
+  ctaHref = '#pricing',
+  message = 'Launch your SaaS faster with Fabrk',
   showPrice = true,
 }: StickyCTABarProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
 
   useEffect(() => {
-    const dismissed = localStorage.getItem("sticky-cta-dismissed");
-    if (dismissed === "true") {
+    const dismissed = localStorage.getItem('sticky-cta-dismissed');
+    if (dismissed === 'true') {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: Initialize state from localStorage on mount
       setIsDismissed(true);
     }
@@ -63,15 +63,15 @@ export function StickyCTABar({
       setIsVisible(scrolled && !isDismissed);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     handleScroll(); // Check initial state
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [showAfterScroll, isDismissed]);
 
   const handleDismiss = () => {
     setIsDismissed(true);
-    localStorage.setItem("sticky-cta-dismissed", "true");
+    localStorage.setItem('sticky-cta-dismissed', 'true');
   };
 
   if (isDismissed) return null;
@@ -79,8 +79,8 @@ export function StickyCTABar({
   return (
     <div
       className={cn(
-        "fixed right-0 bottom-0 left-0 z-40 transform transition-transform duration-300",
-        isVisible ? "translate-y-0" : "translate-y-full"
+        'fixed right-0 bottom-0 left-0 z-40 transform transition-transform duration-300',
+        isVisible ? 'translate-y-0' : 'translate-y-full'
       )}
     >
       <Card className="bg-card/95 border-t backdrop-blur-sm">
@@ -88,13 +88,15 @@ export function StickyCTABar({
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             {/* Message */}
             <div className="flex flex-col items-center gap-2 sm:flex-row sm:items-center">
-              <span className="text-center text-xs font-medium sm:text-left">{message}</span>
+              <span className="text-center text-xs font-medium sm:text-left">
+                {message}
+              </span>
               {showPrice && (
                 <div className="flex items-center gap-2">
                   <span
                     className={cn(
                       mode.radius,
-                      "border-primary bg-primary text-primary-foreground border px-2 py-0.5 text-xs"
+                      'border-primary bg-primary text-primary-foreground border px-2 py-0.5 text-xs'
                     )}
                   >
                     {config.pricing.fabrk.display.current}
@@ -108,16 +110,20 @@ export function StickyCTABar({
 
             {/* CTA + Dismiss */}
             <div className="flex items-center gap-2">
-              <Button asChild size="sm" className={cn(mode.radius, mode.font, "text-xs")}>
+              <Button
+                asChild
+                size="sm"
+                className={cn(mode.radius, mode.font, 'text-xs')}
+              >
                 <Link href={ctaHref}>
-                  &gt; {ctaText.toUpperCase().replace(/ /g, "_")}
+                  &gt; {ctaText.toUpperCase().replace(/ /g, '_')}
                   <ArrowRight className="ml-2 h-3 w-3" />
                 </Link>
               </Button>
               <Button
                 variant="ghost"
                 size="icon"
-                className={cn(mode.radius, "h-8 w-8")}
+                className={cn(mode.radius, 'h-8 w-8')}
                 onClick={handleDismiss}
                 aria-label="Dismiss"
               >

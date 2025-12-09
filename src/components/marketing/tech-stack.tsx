@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { SimpleIcon } from "@/components/ui/simple-icon";
-import { Card, CardHeader, CardContent, Badge } from "@/components/ui/card";
+import { SimpleIcon } from '@/components/ui/simple-icon';
+import { Card, CardHeader, CardContent, Badge } from '@/components/ui/card';
 import {
   siNextdotjs,
   siReact,
@@ -10,18 +10,18 @@ import {
   siAuth0,
   siResend,
   siStripe,
-} from "simple-icons";
-import { motion } from "framer-motion";
+} from 'simple-icons';
+import { motion } from 'framer-motion';
 
 export function TechStack() {
   const technologies = [
-    { name: "Next.js", path: siNextdotjs.path, id: "0x20" },
-    { name: "React", path: siReact.path, id: "0x21" },
-    { name: "Tailwind CSS", path: siTailwindcss.path, id: "0x22" },
-    { name: "Prisma", path: siPrisma.path, id: "0x23" },
-    { name: "NextAuth", path: siAuth0.path, id: "0x24" },
-    { name: "Stripe", path: siStripe.path, id: "0x25" },
-    { name: "Resend", path: siResend.path, id: "0x26" },
+    { name: 'Next.js', path: siNextdotjs.path, id: '0x20' },
+    { name: 'React', path: siReact.path, id: '0x21' },
+    { name: 'Tailwind CSS', path: siTailwindcss.path, id: '0x22' },
+    { name: 'Prisma', path: siPrisma.path, id: '0x23' },
+    { name: 'NextAuth', path: siAuth0.path, id: '0x24' },
+    { name: 'Stripe', path: siStripe.path, id: '0x25' },
+    { name: 'Resend', path: siResend.path, id: '0x26' },
   ];
 
   return (
@@ -35,7 +35,9 @@ export function TechStack() {
             viewport={{ once: true }}
           >
             <Badge code="0x20" label="TECH STACK" className="mb-4" />
-            <h2 className="text-2xl font-semibold tracking-tight">A MODERN STACK YOU CAN TRUST</h2>
+            <h2 className="text-2xl font-semibold tracking-tight">
+              A MODERN STACK YOU CAN TRUST
+            </h2>
           </motion.div>
         </div>
 
@@ -45,7 +47,7 @@ export function TechStack() {
               key={tech.name}
               initial={{ opacity: 0, y: 20, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: '-50px' }}
               transition={{
                 duration: 0.5,
                 delay: index * 0.05,
@@ -65,7 +67,10 @@ export function TechStack() {
                     className="text-foreground group-hover:text-primary h-8 w-8 transition-colors"
                   />
                   <span className="text-foreground text-xs font-medium">
-                    {tech.name.toUpperCase().replace(/ /g, "_").replace(/\./g, "")}
+                    {tech.name
+                      .toUpperCase()
+                      .replace(/ /g, '_')
+                      .replace(/\./g, '')}
                   </span>
                 </CardContent>
               </Card>

@@ -105,7 +105,7 @@ Includes comprehensive examples of every UI component in the design system.
 
 ```tsx
 // eslint-disable-next-line design-system/no-hardcoded-colors -- ColorPicker requires hex value
-const [color, setColor] = React.useState("#3b82f6");
+const [color, setColor] = React.useState('#3b82f6');
 ```
 
 ### Static Data

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { SignUpForm } from "@/components/ui/sign-in-form";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { SignUpForm } from '@/components/ui/sign-in-form';
 
 export default function SignUpFormPage() {
   return (
@@ -31,8 +31,8 @@ export default function SignUpFormPage() {
       }}
       variants={[
         {
-          title: "Without Social Auth",
-          description: "Sign up form with only email/password.",
+          title: 'Without Social Auth',
+          description: 'Sign up form with only email/password.',
           preview: (
             <div className="border-border mx-auto max-w-md border p-4">
               <SignUpForm socialProviders={[]} />
@@ -41,11 +41,14 @@ export default function SignUpFormPage() {
           code: `<SignUpForm socialProviders={[]} />`,
         },
         {
-          title: "With Error",
-          description: "Form displaying an error message.",
+          title: 'With Error',
+          description: 'Form displaying an error message.',
           preview: (
             <div className="border-border mx-auto max-w-md border p-4">
-              <SignUpForm error="This email is already registered." socialProviders={[]} />
+              <SignUpForm
+                error="This email is already registered."
+                socialProviders={[]}
+              />
             </div>
           ),
           code: `<SignUpForm error="This email is already registered." />`,
@@ -53,49 +56,56 @@ export default function SignUpFormPage() {
       ]}
       props={[
         {
-          name: "onSubmit",
-          type: "(data: SignUpFormData) => void | Promise<void>",
-          description: "Form submission handler.",
+          name: 'onSubmit',
+          type: '(data: SignUpFormData) => void | Promise<void>',
+          description: 'Form submission handler.',
         },
         {
-          name: "socialProviders",
-          type: "SocialProvider[]",
-          description: "Social auth provider buttons.",
+          name: 'socialProviders',
+          type: 'SocialProvider[]',
+          description: 'Social auth provider buttons.',
         },
         {
-          name: "signInHref",
-          type: "string",
+          name: 'signInHref',
+          type: 'string',
           default: '"/sign-in"',
-          description: "Sign in link URL.",
+          description: 'Sign in link URL.',
         },
         {
-          name: "termsHref",
-          type: "string",
+          name: 'termsHref',
+          type: 'string',
           default: '"/terms"',
-          description: "Terms of service link URL.",
+          description: 'Terms of service link URL.',
         },
         {
-          name: "privacyHref",
-          type: "string",
+          name: 'privacyHref',
+          type: 'string',
           default: '"/privacy"',
-          description: "Privacy policy link URL.",
+          description: 'Privacy policy link URL.',
         },
         {
-          name: "isLoading",
-          type: "boolean",
-          default: "false",
-          description: "Loading/submitting state.",
+          name: 'isLoading',
+          type: 'boolean',
+          default: 'false',
+          description: 'Loading/submitting state.',
         },
-        { name: "error", type: "string", description: "Error message to display." },
+        {
+          name: 'error',
+          type: 'string',
+          description: 'Error message to display.',
+        },
       ]}
       accessibility={[
-        "Proper form labels and associations",
-        "Terms checkbox required for submission",
-        "Error messages linked to inputs",
-        "Keyboard navigable",
+        'Proper form labels and associations',
+        'Terms checkbox required for submission',
+        'Error messages linked to inputs',
+        'Keyboard navigable',
       ]}
-      previous={{ title: "Sign In Form", href: "/docs/components/sign-in-form" }}
-      next={{ title: "Simple Icon", href: "/docs/components/simple-icon" }}
+      previous={{
+        title: 'Sign In Form',
+        href: '/docs/components/sign-in-form',
+      }}
+      next={{ title: 'Simple Icon', href: '/docs/components/simple-icon' }}
     />
   );
 }

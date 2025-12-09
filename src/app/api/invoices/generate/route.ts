@@ -153,12 +153,12 @@
  * Generates invoice PDFs or returns Stripe-hosted invoice URLs
  */
 
-import { auth } from "@/lib/auth";
-import { logger } from "@/lib/logger";
-import { prisma } from "@/lib/prisma";
-import { withRateLimit } from "@/lib/rate-limit/middleware";
-import { stripe } from "@/lib/stripe/client";
-import { NextRequest, NextResponse } from "next/server";
+import { auth } from '@/lib/auth';
+import { logger } from '@/lib/logger';
+import { prisma } from '@/lib/prisma';
+import { withRateLimit } from '@/lib/rate-limit/middleware';
+import { stripe } from '@/lib/stripe/client';
+import { NextRequest, NextResponse } from 'next/server';
 
 async function generateInvoiceHandler(req: NextRequest) {
   try {
@@ -166,21 +166,21 @@ async function generateInvoiceHandler(req: NextRequest) {
 
     if (!session?.user?.email) {
       return NextResponse.json(
-        { error: "Unauthorized - Please sign in" },
+        { error: 'Unauthorized - Please sign in' },
         { status: 401 }
       );
     }
 
     // Parse request body
     const body = await req.json();
-    const { paymentId, format = "url" } = body as {
+    const { paymentId, format = 'url' } = body as {
       paymentId?: string;
-      format?: "url" | "pdf";
+      format?: 'url' | 'pdf';
     };
 
     if (!paymentId) {
       return NextResponse.json(
-        { error: "Payment ID is required" },
+        { error: 'Payment ID is required' },
         { status: 400 }
       );
     }
@@ -191,10 +191,7 @@ async function generateInvoiceHandler(req: NextRequest) {
     });
 
     if (!user) {
-      return NextResponse.json(
-        { error: "User not found" },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
 
     // Get payment from database
@@ -203,30 +200,24 @@ async function generateInvoiceHandler(req: NextRequest) {
     });
 
     if (!payment) {
-      return NextResponse.json(
-        { error: "Payment not found" },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: 'Payment not found' }, { status: 404 });
     }
 
     // Verify payment belongs to user
     if (payment.userId !== user.id) {
-      return NextResponse.json(
-        { error: "Access denied" },
-        { status: 403 }
-      );
+      return NextResponse.json({ error: 'Access denied' }, { status: 403 });
     }
 
     // Only generate invoices for successful payments
-    if (payment.status !== "succeeded") {
+    if (payment.status !== 'succeeded') {
       return NextResponse.json(
-        { error: "Invoice only available for successful payments" },
+        { error: 'Invoice only available for successful payments' },
         { status: 400 }
       );
     }
 
     // Approach 1: Return Stripe-hosted invoice URL (default)
-    if (format === "url") {
+    if (format === 'url') {
       try {
         // Retrieve the payment intent from Stripe
         const paymentIntent = await stripe.paymentIntents.retrieve(
@@ -234,12 +225,17 @@ async function generateInvoiceHandler(req: NextRequest) {
         );
 
         // Get the invoice if one exists
-        const piWithInvoice = paymentIntent as unknown as { invoice?: string | null };
-        if (piWithInvoice.invoice && typeof piWithInvoice.invoice === "string") {
+        const piWithInvoice = paymentIntent as unknown as {
+          invoice?: string | null;
+        };
+        if (
+          piWithInvoice.invoice &&
+          typeof piWithInvoice.invoice === 'string'
+        ) {
           const invoice = await stripe.invoices.retrieve(piWithInvoice.invoice);
 
           if (invoice.hosted_invoice_url) {
-            logger.info("Generated invoice URL", {
+            logger.info('Generated invoice URL', {
               userId: user.id,
               paymentId,
               invoiceId: invoice.id,
@@ -253,12 +249,12 @@ async function generateInvoiceHandler(req: NextRequest) {
         }
 
         // If no invoice exists, return payment receipt URL or generate custom invoice data
-        logger.warn("No Stripe invoice found for payment", {
+        logger.warn('No Stripe invoice found for payment', {
           paymentId,
           stripeId: payment.stripeId,
         });
       } catch (stripeError: unknown) {
-        logger.error("Stripe invoice retrieval error:", stripeError);
+        logger.error('Stripe invoice retrieval error:', stripeError);
         // Continue to custom invoice generation
       }
     }
@@ -276,7 +272,7 @@ async function generateInvoiceHandler(req: NextRequest) {
       },
       items: [
         {
-          description: payment.productId || "One-time purchase",
+          description: payment.productId || 'One-time purchase',
           quantity: 1,
           unitPrice: payment.amount,
           total: payment.amount,
@@ -285,12 +281,12 @@ async function generateInvoiceHandler(req: NextRequest) {
       subtotal: payment.amount,
       tax: 0, // Add tax calculation if applicable
       total: payment.amount,
-      currency: "USD",
-      paymentMethod: "Card",
+      currency: 'USD',
+      paymentMethod: 'Card',
       transactionId: payment.stripeId,
     };
 
-    logger.info("Generated custom invoice data", {
+    logger.info('Generated custom invoice data', {
       userId: user.id,
       paymentId,
       invoiceNumber: invoiceData.number,
@@ -298,13 +294,13 @@ async function generateInvoiceHandler(req: NextRequest) {
 
     return NextResponse.json({ invoice: invoiceData });
   } catch (error: unknown) {
-    logger.error("Invoice generation error:", error);
+    logger.error('Invoice generation error:', error);
     return NextResponse.json(
-      { error: "Failed to generate invoice" },
+      { error: 'Failed to generate invoice' },
       { status: 500 }
     );
   }
 }
 
 // Apply rate limiting: 100 requests per minute for API endpoints
-export const POST = withRateLimit(generateInvoiceHandler, "api");
+export const POST = withRateLimit(generateInvoiceHandler, 'api');

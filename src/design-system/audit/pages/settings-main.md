@@ -126,7 +126,9 @@ Centralized settings hub with modular sections:
 4. **Icon Size Consistency** (Line 101-105)
 
    ```tsx
-   <Icon className={`size-5 ${section.isDanger ? "text-destructive" : "text-primary"}`} />
+   <Icon
+     className={`size-5 ${section.isDanger ? 'text-destructive' : 'text-primary'}`}
+   />
    ```
 
    - Uses `size-5` (newer Tailwind syntax)
@@ -134,6 +136,7 @@ Centralized settings hub with modular sections:
    - **Fix**: Standardize to `h-5 w-5` or document `size-*` usage
 
 5. **Double Spacing with Separator** (Line 90)
+
    ```tsx
    {
      index > 0 && <Separator className="mb-8" />;
@@ -182,22 +185,24 @@ Centralized settings hub with modular sections:
     <div className="flex items-center gap-6">
       <div
         className={cn(
-          "rounded-none p-2", // FIXED: Added rounded-none
-          section.isDanger ? "bg-destructive/10" : "bg-primary/10"
+          'rounded-none p-2', // FIXED: Added rounded-none
+          section.isDanger ? 'bg-destructive/10' : 'bg-primary/10'
         )}
       >
         <Icon
           className={`h-5 w-5 ${
             // FIXED: Changed to h-5 w-5
-            section.isDanger ? "text-destructive" : "text-primary"
+            section.isDanger ? 'text-destructive' : 'text-primary'
           }`}
         />
       </div>
       <div>
         <CardTitle className="font-mono text-xs uppercase">
-          [{section.title.toUpperCase().replace(/ /g, "_")}]
+          [{section.title.toUpperCase().replace(/ /g, '_')}]
         </CardTitle>
-        <CardDescription className="font-mono text-xs">{section.description}</CardDescription>
+        <CardDescription className="font-mono text-xs">
+          {section.description}
+        </CardDescription>
       </div>
     </div>
   </CardHeader>

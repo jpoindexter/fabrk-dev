@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { Separator } from "@/components/ui/separator";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { Separator } from '@/components/ui/separator';
 
 export default function SeparatorPage() {
   return (
@@ -31,8 +31,8 @@ export default function SeparatorPage() {
       }}
       variants={[
         {
-          title: "Horizontal (Default)",
-          description: "Default horizontal separator line.",
+          title: 'Horizontal (Default)',
+          description: 'Default horizontal separator line.',
           preview: (
             <div className="w-full max-w-md space-y-4">
               <div>Section 1</div>
@@ -43,8 +43,8 @@ export default function SeparatorPage() {
           code: `<Separator />`,
         },
         {
-          title: "Vertical",
-          description: "Vertical separator for inline content.",
+          title: 'Vertical',
+          description: 'Vertical separator for inline content.',
           preview: (
             <div className="flex h-12 items-center gap-4">
               <div>Left</div>
@@ -61,8 +61,8 @@ export default function SeparatorPage() {
 </div>`,
         },
         {
-          title: "Decorative",
-          description: "Visual separator without semantic meaning (default).",
+          title: 'Decorative',
+          description: 'Visual separator without semantic meaning (default).',
           preview: (
             <div className="w-full max-w-md space-y-4">
               <div>Visual separation only</div>
@@ -73,8 +73,8 @@ export default function SeparatorPage() {
           code: `<Separator decorative />`,
         },
         {
-          title: "Semantic",
-          description: "Separator with semantic role for screen readers.",
+          title: 'Semantic',
+          description: 'Separator with semantic role for screen readers.',
           preview: (
             <div className="w-full max-w-md space-y-4">
               <div>Section 1</div>
@@ -85,8 +85,8 @@ export default function SeparatorPage() {
           code: `<Separator decorative={false} />`,
         },
         {
-          title: "In List",
-          description: "Separator between list items.",
+          title: 'In List',
+          description: 'Separator between list items.',
           preview: (
             <div className="w-full max-w-md">
               <div className="p-4">
@@ -111,8 +111,8 @@ export default function SeparatorPage() {
 </div>`,
         },
         {
-          title: "Custom Color",
-          description: "Separator with custom styling.",
+          title: 'Custom Color',
+          description: 'Separator with custom styling.',
           preview: (
             <div className="w-full max-w-md space-y-4">
               <div>Above</div>
@@ -123,8 +123,8 @@ export default function SeparatorPage() {
           code: `<Separator className="bg-primary" />`,
         },
         {
-          title: "Thicker Line",
-          description: "Separator with increased height.",
+          title: 'Thicker Line',
+          description: 'Separator with increased height.',
           preview: (
             <div className="w-full max-w-md space-y-4">
               <div>Above</div>
@@ -135,8 +135,8 @@ export default function SeparatorPage() {
           code: `<Separator className="h-[2px]" />`,
         },
         {
-          title: "With Text",
-          description: "Separator with centered text label.",
+          title: 'With Text',
+          description: 'Separator with centered text label.',
           preview: (
             <div className="w-full max-w-md">
               <div className="relative">
@@ -161,34 +161,35 @@ export default function SeparatorPage() {
       ]}
       props={[
         {
-          name: "orientation",
+          name: 'orientation',
           type: '"horizontal" | "vertical"',
           default: '"horizontal"',
-          description: "Direction of the separator.",
+          description: 'Direction of the separator.',
         },
         {
-          name: "decorative",
-          type: "boolean",
-          default: "true",
-          description: "If true, role is 'none'. If false, role is 'separator' with aria-orientation.",
+          name: 'decorative',
+          type: 'boolean',
+          default: 'true',
+          description:
+            "If true, role is 'none'. If false, role is 'separator' with aria-orientation.",
         },
         {
-          name: "className",
-          type: "string",
-          default: "-",
-          description: "Additional CSS classes for custom styling.",
+          name: 'className',
+          type: 'string',
+          default: '-',
+          description: 'Additional CSS classes for custom styling.',
         },
       ]}
       accessibility={[
-        "Uses proper ARIA roles based on decorative prop",
+        'Uses proper ARIA roles based on decorative prop',
         "Decorative separators have role='none' (not announced by screen readers)",
         "Semantic separators have role='separator' with aria-orientation",
-        "Horizontal separators: h-[1px] w-full",
-        "Vertical separators: h-full w-[1px]",
-        "Background uses design token (bg-border) for theme support",
+        'Horizontal separators: h-[1px] w-full',
+        'Vertical separators: h-full w-[1px]',
+        'Background uses design token (bg-border) for theme support',
       ]}
-      previous={{ title: "Select", href: "/docs/components/select" }}
-      next={{ title: "Sheet", href: "/docs/components/sheet" }}
+      previous={{ title: 'Select', href: '/docs/components/select' }}
+      next={{ title: 'Sheet', href: '/docs/components/sheet' }}
     />
   );
 }

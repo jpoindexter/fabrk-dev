@@ -7,12 +7,16 @@
  * Useful for security events like password changes or suspicious activity
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
-import { withCsrfProtection } from "@/lib/security/csrf";
-import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
-import { logger } from "@/lib/logger";
+import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@/lib/auth';
+import { prisma } from '@/lib/prisma';
+import { withCsrfProtection } from '@/lib/security/csrf';
+import {
+  checkRateLimitAuto,
+  getClientIdentifier,
+  RateLimiters,
+} from '@/lib/security/rate-limit';
+import { logger } from '@/lib/logger';
 
 export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
@@ -22,13 +26,15 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
 
     if (!rateLimit.success) {
       return NextResponse.json(
-        { error: "Too many requests. Please try again later." },
+        { error: 'Too many requests. Please try again later.' },
         {
           status: 429,
           headers: {
-            "X-RateLimit-Limit": rateLimit.limit.toString(),
-            "X-RateLimit-Remaining": rateLimit.remaining.toString(),
-            "Retry-After": Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
+            'X-RateLimit-Limit': rateLimit.limit.toString(),
+            'X-RateLimit-Remaining': rateLimit.remaining.toString(),
+            'Retry-After': Math.ceil(
+              (rateLimit.reset - Date.now()) / 1000
+            ).toString(),
           },
         }
       );
@@ -37,7 +43,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     const session = await auth();
 
     if (!session?.user?.id || !session?.user?.email) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     // Get current user data
@@ -51,7 +57,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     });
 
     if (!user) {
-      return NextResponse.json({ error: "User not found" }, { status: 404 });
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
 
     // Get count of active sessions before invalidation
@@ -86,12 +92,15 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
 
     return NextResponse.json({
       success: true,
-      message: "All sessions invalidated successfully",
+      message: 'All sessions invalidated successfully',
       sessionsInvalidated: activeSessions,
       newSessionVersion: updatedUser.sessionVersion,
     });
   } catch (error: unknown) {
-    logger.error("[Session Invalidation] Error:", error);
-    return NextResponse.json({ error: "Failed to invalidate sessions" }, { status: 500 });
+    logger.error('[Session Invalidation] Error:', error);
+    return NextResponse.json(
+      { error: 'Failed to invalidate sessions' },
+      { status: 500 }
+    );
   }
 });

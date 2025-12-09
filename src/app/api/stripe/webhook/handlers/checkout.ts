@@ -4,34 +4,35 @@
  * Handles checkout.session.completed event
  */
 
-import { prisma } from "@/lib/prisma";
-import { logger } from "@/lib/logger";
-import { generateLicenseKey } from "@/lib/license";
-import { sendWelcomeEmail } from "@/lib/email";
-import { generateSecureToken, getTokenExpiration } from "@/lib/tokens";
-import { createHash } from "crypto";
-import Stripe from "stripe";
+import { prisma } from '@/lib/prisma';
+import { logger } from '@/lib/logger';
+import { generateLicenseKey } from '@/lib/license';
+import { sendWelcomeEmail } from '@/lib/email';
+import { generateSecureToken, getTokenExpiration } from '@/lib/tokens';
+import { createHash } from 'crypto';
+import Stripe from 'stripe';
 
-const STRIPE_KEY = process.env.STRIPE_SECRET_KEY || "sk_test_placeholder";
+const STRIPE_KEY = process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder';
 const _stripe = new Stripe(STRIPE_KEY, {
-  apiVersion: "2025-11-17.clover",
+  apiVersion: '2025-11-17.clover',
 });
 
 export async function handleCheckoutCompleted(event: Stripe.Event) {
   const session = event.data.object as Stripe.Checkout.Session;
 
   try {
-    logger.info("Processing checkout.session.completed", {
+    logger.info('Processing checkout.session.completed', {
       sessionId: session.id,
       customerEmail: session.customer_email,
       customerId: session.customer,
     });
 
     // Extract customer information
-    const customerEmail = session.customer_email || (session.customer_details?.email as string);
+    const customerEmail =
+      session.customer_email || (session.customer_details?.email as string);
 
     if (!customerEmail) {
-      logger.error("No customer email found in checkout session");
+      logger.error('No customer email found in checkout session');
       return;
     }
 
@@ -39,7 +40,8 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
     const { tier } = session.metadata || {};
 
     // Get or create customer ID
-    const customerId = typeof session.customer === "string" ? session.customer : null;
+    const customerId =
+      typeof session.customer === 'string' ? session.customer : null;
 
     // Generate license key
     const licenseKey = generateLicenseKey();
@@ -50,21 +52,21 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
       update: {
         customerId: customerId || undefined,
         licenseKey,
-        tier: tier || "professional",
-        subscriptionTier: tier || "professional",
+        tier: tier || 'professional',
+        subscriptionTier: tier || 'professional',
       },
       create: {
         email: customerEmail,
         name: session.customer_details?.name || null,
         customerId,
         licenseKey,
-        tier: tier || "professional",
-        subscriptionTier: tier || "professional",
+        tier: tier || 'professional',
+        subscriptionTier: tier || 'professional',
         emailVerified: new Date(), // Auto-verify since they paid
       },
     });
 
-    logger.info("User upserted", { userId: user.id, email: customerEmail });
+    logger.info('User upserted', { userId: user.id, email: customerEmail });
 
     // Create payment record
     await prisma.payment.create({
@@ -73,8 +75,8 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
         stripeId: session.id,
         stripePaymentId: session.payment_intent as string,
         amount: session.amount_total || 0,
-        status: "succeeded",
-        productId: tier || "professional",
+        status: 'succeeded',
+        productId: tier || 'professional',
       },
     });
 
@@ -83,7 +85,9 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
     const magicLinkExpiry = getTokenExpiration(24 * 7); // Valid for 7 days
 
     // Hash token before storing in database (security: never store plain tokens)
-    const hashedMagicToken = createHash("sha256").update(magicLinkToken).digest("hex");
+    const hashedMagicToken = createHash('sha256')
+      .update(magicLinkToken)
+      .digest('hex');
 
     // Store hashed token in database
     await prisma.verificationToken.create({
@@ -99,15 +103,15 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
     void `${process.env.NEXT_PUBLIC_APP_URL}/magic-signin?token=${magicLinkToken}&email=${encodeURIComponent(customerEmail)}`;
 
     // Send welcome email with license key
-    await sendWelcomeEmail(customerEmail, user.name || "Customer", licenseKey);
+    await sendWelcomeEmail(customerEmail, user.name || 'Customer', licenseKey);
 
-    logger.info("Purchase processed successfully", {
+    logger.info('Purchase processed successfully', {
       userId: user.id,
       email: customerEmail,
       tier,
     });
   } catch (error: unknown) {
-    logger.error("Error processing checkout.session.completed", error);
+    logger.error('Error processing checkout.session.completed', error);
     throw error;
   }
 }

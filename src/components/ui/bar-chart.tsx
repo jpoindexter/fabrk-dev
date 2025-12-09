@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 import {
   BarChart as RechartsBarChart,
   Bar,
@@ -11,9 +11,9 @@ import {
   ResponsiveContainer,
   Legend,
   Cell,
-} from "recharts";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+} from 'recharts';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 // Hook to get computed CSS colors that update with theme changes
 function useThemeColors() {
@@ -22,21 +22,21 @@ function useThemeColors() {
     chart: string[];
     muted: string;
     border: string;
-  }>({ chart: [], muted: "#888", border: "#444" });
+  }>({ chart: [], muted: '#888', border: '#444' });
   React.useEffect(() => {
     const updateColors = () => {
       const style = getComputedStyle(document.documentElement);
       setColors({
         chart: [
-          `oklch(${style.getPropertyValue("--primary").trim()})`,
-          `oklch(${style.getPropertyValue("--accent").trim()})`,
-          `oklch(${style.getPropertyValue("--success").trim()})`,
-          `oklch(${style.getPropertyValue("--warning").trim()})`,
-          `oklch(${style.getPropertyValue("--error").trim()})`,
-          `oklch(${style.getPropertyValue("--secondary").trim()})`,
+          `oklch(${style.getPropertyValue('--primary').trim()})`,
+          `oklch(${style.getPropertyValue('--accent').trim()})`,
+          `oklch(${style.getPropertyValue('--success').trim()})`,
+          `oklch(${style.getPropertyValue('--warning').trim()})`,
+          `oklch(${style.getPropertyValue('--error').trim()})`,
+          `oklch(${style.getPropertyValue('--secondary').trim()})`,
         ],
-        muted: `oklch(${style.getPropertyValue("--base-content").trim()} / 0.6)`,
-        border: `oklch(${style.getPropertyValue("--base-content").trim()} / 0.2)`,
+        muted: `oklch(${style.getPropertyValue('--base-content').trim()} / 0.6)`,
+        border: `oklch(${style.getPropertyValue('--base-content').trim()} / 0.2)`,
       });
     };
     /* eslint-enable design-system/no-hardcoded-colors */
@@ -46,7 +46,7 @@ function useThemeColors() {
     // Watch for theme changes via data-theme attribute
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
-        if (mutation.attributeName === "data-theme") {
+        if (mutation.attributeName === 'data-theme') {
           updateColors();
         }
       });
@@ -135,8 +135,16 @@ export function BarChart({
 }: BarChartProps) {
   const theme = useThemeColors();
   /* eslint-disable-next-line design-system/no-hardcoded-colors -- Fallback colors before theme loads */
-  const fallbackColors = ["#6366f1", "#8b5cf6", "#22c55e", "#eab308", "#ef4444", "#64748b"];
-  const colors = customColors || (theme.chart.length > 0 ? theme.chart : fallbackColors);
+  const fallbackColors = [
+    '#6366f1',
+    '#8b5cf6',
+    '#22c55e',
+    '#eab308',
+    '#ef4444',
+    '#64748b',
+  ];
+  const colors =
+    customColors || (theme.chart.length > 0 ? theme.chart : fallbackColors);
   // Memoize tooltip to prevent recreation on every render
   const CustomTooltip = React.useMemo(
     () =>
@@ -144,21 +152,33 @@ export function BarChart({
       ({ active, payload, label }: any) => {
         if (active && payload && payload.length) {
           return (
-            <div className={cn("border-border bg-card border p-3", mode.radius)}>
-              <p className={cn("text-foreground mb-2 text-xs font-semibold", mode.font)}>
+            <div
+              className={cn('border-border bg-card border p-3', mode.radius)}
+            >
+              <p
+                className={cn(
+                  'text-foreground mb-2 text-xs font-semibold',
+                  mode.font
+                )}
+              >
                 {xAxisFormatter ? xAxisFormatter(label) : label}
               </p>
               <div className="space-y-1">
                 {/* eslint-disable design-system/no-inline-styles -- Dynamic color from Recharts entry */}
                 {payload.map((entry: any, index: number) => (
-                  <p key={index} className={cn("text-muted-foreground text-xs", mode.font)}>
+                  <p
+                    key={index}
+                    className={cn('text-muted-foreground text-xs', mode.font)}
+                  >
                     <span
                       className="mr-2 inline-block h-2 w-2"
                       style={{ backgroundColor: entry.fill }}
                     />
-                    {entry.name}:{" "}
+                    {entry.name}:{' '}
                     <span className="text-foreground font-semibold">
-                      {tooltipFormatter ? tooltipFormatter(entry.value, entry.name) : entry.value}
+                      {tooltipFormatter
+                        ? tooltipFormatter(entry.value, entry.name)
+                        : entry.value}
                     </span>
                   </p>
                 ))}
@@ -173,12 +193,12 @@ export function BarChart({
   );
 
   return (
-    <div className={cn("w-full", className)}>
+    <div className={cn('w-full', className)}>
       <ResponsiveContainer width="100%" height={height}>
         <RechartsBarChart
           data={data}
           margin={margin}
-          layout={horizontal ? "vertical" : "horizontal"}
+          layout={horizontal ? 'vertical' : 'horizontal'}
           barGap={barGap}
         >
           {showGrid && (
@@ -227,22 +247,34 @@ export function BarChart({
             </>
           )}
           {showTooltip && (
-            <Tooltip content={CustomTooltip} cursor={{ fill: theme.border, opacity: 0.3 }} />
+            <Tooltip
+              content={CustomTooltip}
+              cursor={{ fill: theme.border, opacity: 0.3 }}
+            />
           )}
-          {showLegend && <Legend wrapperStyle={{ fontSize: 12 }} iconType="square" />}
+          {showLegend && (
+            <Legend wrapperStyle={{ fontSize: 12 }} iconType="square" />
+          )}
           {series.map((s, seriesIndex) => (
             <Bar
               key={s.dataKey}
               dataKey={s.dataKey}
               name={s.name || s.dataKey}
-              fill={colorByIndex ? undefined : s.color || colors[seriesIndex % colors.length]}
+              fill={
+                colorByIndex
+                  ? undefined
+                  : s.color || colors[seriesIndex % colors.length]
+              }
               stackId={s.stackId}
               barSize={barSize}
               radius={s.radius ?? 0}
             >
               {colorByIndex &&
                 data.map((_, dataIndex) => (
-                  <Cell key={`cell-${dataIndex}`} fill={colors[dataIndex % colors.length]} />
+                  <Cell
+                    key={`cell-${dataIndex}`}
+                    fill={colors[dataIndex % colors.length]}
+                  />
                 ))}
             </Bar>
           ))}
@@ -272,7 +304,7 @@ export interface BarChartCardProps extends BarChartProps {
 export function BarChartCard({
   title,
   description,
-  code = "0x00",
+  code = '0x00',
   icon,
   headerActions,
   cardClassName,
@@ -280,17 +312,26 @@ export function BarChartCard({
   ...chartProps
 }: BarChartCardProps) {
   return (
-    <div className={cn("border-border bg-card border", mode.radius, cardClassName)}>
+    <div
+      className={cn('border-border bg-card border', mode.radius, cardClassName)}
+    >
       {/* Terminal Header */}
       <div className="border-border flex items-center justify-between border-b px-4 py-3">
         <div className="flex items-center gap-3">
           {icon}
           <div>
-            <span className={cn("text-muted-foreground text-xs", mode.font)}>
+            <span className={cn('text-muted-foreground text-xs', mode.font)}>
               [{code}] {title.toUpperCase()}
             </span>
             {description && (
-              <p className={cn("text-muted-foreground mt-0.5 text-xs", mode.font)}>{description}</p>
+              <p
+                className={cn(
+                  'text-muted-foreground mt-0.5 text-xs',
+                  mode.font
+                )}
+              >
+                {description}
+              </p>
             )}
           </div>
         </div>
@@ -307,7 +348,7 @@ export function BarChartCard({
 
 /* ----- Stacked Bar Chart Variant ----- */
 
-export interface StackedBarChartProps extends Omit<BarChartProps, "series"> {
+export interface StackedBarChartProps extends Omit<BarChartProps, 'series'> {
   /** Data keys for each stack segment */
   stackKeys: string[];
   /** Labels for each stack segment */
@@ -324,14 +365,22 @@ export function StackedBarChart({
 }: StackedBarChartProps) {
   const theme = useThemeColors();
   /* eslint-disable-next-line design-system/no-hardcoded-colors -- Fallback colors before theme loads */
-  const fallbackColors = ["#6366f1", "#8b5cf6", "#22c55e", "#eab308", "#ef4444", "#64748b"];
-  const colors = stackColors || (theme.chart.length > 0 ? theme.chart : fallbackColors);
+  const fallbackColors = [
+    '#6366f1',
+    '#8b5cf6',
+    '#22c55e',
+    '#eab308',
+    '#ef4444',
+    '#64748b',
+  ];
+  const colors =
+    stackColors || (theme.chart.length > 0 ? theme.chart : fallbackColors);
 
   const series: BarChartSeries[] = stackKeys.map((key, index) => ({
     dataKey: key,
     name: stackLabels?.[index] || key,
     color: colors[index % colors.length],
-    stackId: "stack",
+    stackId: 'stack',
     radius: index === stackKeys.length - 1 ? [4, 4, 0, 0] : 0,
   }));
 

@@ -15,7 +15,7 @@
 ### Import
 
 ```tsx
-import { Badge } from "@/components/ui/badge";
+import { Badge } from '@/components/ui/badge';
 ```
 
 ### Basic Usage
@@ -85,7 +85,7 @@ cn(
   badgeVariants({ variant, size }),
   mode.radius, // rounded-none
   mode.font, // font-mono
-  mode.textTransform === "uppercase" && "uppercase",
+  mode.textTransform === 'uppercase' && 'uppercase',
   className
 );
 ```

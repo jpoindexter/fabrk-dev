@@ -3,13 +3,17 @@
  * PATCH /api/user/settings
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
-import { withCsrfProtection } from "@/lib/security/csrf";
-import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
-import { z } from "zod";
-import { logger } from "@/lib/logger";
+import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@/lib/auth';
+import { prisma } from '@/lib/prisma';
+import { withCsrfProtection } from '@/lib/security/csrf';
+import {
+  checkRateLimitAuto,
+  getClientIdentifier,
+  RateLimiters,
+} from '@/lib/security/rate-limit';
+import { z } from 'zod';
+import { logger } from '@/lib/logger';
 
 const settingsSchema = z.object({
   // Privacy settings
@@ -34,13 +38,13 @@ const settingsSchema = z.object({
     .optional(),
 
   // Language preference
-  language: z.enum(["en", "es", "fr", "de", "ja", "zh", "pt", "ko"]).optional(),
+  language: z.enum(['en', 'es', 'fr', 'de', 'ja', 'zh', 'pt', 'ko']).optional(),
 
   // Appearance settings
   appearance: z
     .object({
-      theme: z.enum(["light", "dark", "system"]).optional(),
-      language: z.enum(["en", "es", "fr", "de", "ja"]).optional(),
+      theme: z.enum(['light', 'dark', 'system']).optional(),
+      language: z.enum(['en', 'es', 'fr', 'de', 'ja']).optional(),
     })
     .optional(),
 });
@@ -50,7 +54,7 @@ export async function GET(_req: Request) {
     const session = await auth();
 
     if (!session?.user?.id) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     const user = await prisma.user.findUnique({
@@ -62,8 +66,11 @@ export async function GET(_req: Request) {
 
     return NextResponse.json({ settings: user?.settings || {} });
   } catch (error: unknown) {
-    logger.error("[Settings Get] Error:", error);
-    return NextResponse.json({ error: "Failed to fetch settings" }, { status: 500 });
+    logger.error('[Settings Get] Error:', error);
+    return NextResponse.json(
+      { error: 'Failed to fetch settings' },
+      { status: 500 }
+    );
   }
 }
 
@@ -75,13 +82,15 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
 
     if (!rateLimit.success) {
       return NextResponse.json(
-        { error: "Too many requests. Please try again later." },
+        { error: 'Too many requests. Please try again later.' },
         {
           status: 429,
           headers: {
-            "X-RateLimit-Limit": rateLimit.limit.toString(),
-            "X-RateLimit-Remaining": rateLimit.remaining.toString(),
-            "Retry-After": Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
+            'X-RateLimit-Limit': rateLimit.limit.toString(),
+            'X-RateLimit-Remaining': rateLimit.remaining.toString(),
+            'Retry-After': Math.ceil(
+              (rateLimit.reset - Date.now()) / 1000
+            ).toString(),
           },
         }
       );
@@ -90,7 +99,7 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
     const session = await auth();
 
     if (!session?.user?.id) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     const body = await req.json();
@@ -102,7 +111,8 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
       select: { settings: true },
     });
 
-    const currentSettings = (currentUser?.settings as Record<string, unknown>) || {};
+    const currentSettings =
+      (currentUser?.settings as Record<string, unknown>) || {};
 
     // Merge new settings with existing settings
     const updatedSettings = {
@@ -143,10 +153,16 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
     return NextResponse.json({ settings: user.settings });
   } catch (error: unknown) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json({ error: "Invalid input", details: error.issues }, { status: 400 });
+      return NextResponse.json(
+        { error: 'Invalid input', details: error.issues },
+        { status: 400 }
+      );
     }
 
-    logger.error("[Settings Update] Error:", error);
-    return NextResponse.json({ error: "Failed to update settings" }, { status: 500 });
+    logger.error('[Settings Update] Error:', error);
+    return NextResponse.json(
+      { error: 'Failed to update settings' },
+      { status: 500 }
+    );
   }
 });

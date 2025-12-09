@@ -3,10 +3,10 @@
  * Displays API usage examples and security best practices
  */
 
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { Code, AlertTriangle } from "lucide-react";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Code, AlertTriangle } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 interface ApiDocumentationProps {
   organizationId: string | null;
@@ -16,11 +16,18 @@ export function ApiDocumentation({ organizationId }: ApiDocumentationProps) {
   return (
     <div className="mt-8 grid gap-6 md:grid-cols-2">
       <Card>
-        <CardHeader code="0xF0" title="GETTING_STARTED" icon={<Code className="h-4 w-4" />} />
+        <CardHeader
+          code="0xF0"
+          title="GETTING_STARTED"
+          icon={<Code className="h-4 w-4" />}
+        />
         <CardContent className="text-muted-foreground space-y-2 text-sm">
           <p>Include your API key in the Authorization header:</p>
           <code
-            className={cn("bg-muted border-border block rounded border p-4 text-xs", mode.font)}
+            className={cn(
+              'bg-muted border-border block rounded border p-4 text-xs',
+              mode.font
+            )}
           >
             Authorization: Bearer YOUR_API_KEY
           </code>
@@ -28,11 +35,11 @@ export function ApiDocumentation({ organizationId }: ApiDocumentationProps) {
             <p className="mb-2 font-semibold">Example (cURL):</p>
             <code
               className={cn(
-                "bg-muted border-border block rounded border p-4 text-xs whitespace-pre-wrap",
+                'bg-muted border-border block rounded border p-4 text-xs whitespace-pre-wrap',
                 mode.font
               )}
             >
-              {`curl https://yourdomain.com/api/v1/organizations/${organizationId || "{org_id}"} \\
+              {`curl https://yourdomain.com/api/v1/organizations/${organizationId || '{org_id}'} \\
   -H "Authorization: Bearer sk_live_..."`}
             </code>
           </div>

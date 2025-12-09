@@ -49,7 +49,7 @@ export {
   zIndex,
   borderWidth,
   accessibility,
-} from "./tokens/primitives";
+} from './tokens/primitives';
 
 export type {
   SemanticTokens,
@@ -59,9 +59,9 @@ export type {
   FontTokens,
   TextTransformTokens,
   SpacingTokens,
-} from "./tokens/semantic";
+} from './tokens/semantic';
 
-export { cssVariableNames } from "./tokens/semantic";
+export { cssVariableNames } from './tokens/semantic';
 
 // =============================================================================
 // THEME EXPORTS
@@ -93,9 +93,9 @@ export {
   formatSoftButtonText,
   formatSoftLabelText,
   formatSoftCardHeader,
-} from "./themes";
+} from './themes';
 
-export type { ThemeName, ThemeUtils } from "./themes";
+export type { ThemeName, ThemeUtils } from './themes';
 
 // =============================================================================
 // BACKWARDS COMPATIBILITY LAYER
@@ -103,7 +103,7 @@ export type { ThemeName, ThemeUtils } from "./themes";
 // The following exports maintain compatibility with the 100+ components
 // that import from @/design-system using the old API.
 
-import { CURRENT_THEME, terminalClasses } from "./themes";
+import { CURRENT_THEME, terminalClasses } from './themes';
 
 /**
  * Visual mode configuration interface (for backwards compatibility)
@@ -113,9 +113,9 @@ export interface ModeConfig {
   font: string;
   shadow: string;
   buttonPrefix: string;
-  labelFormat: "brackets" | "plain";
-  cardHeader: "bracketed" | "simple" | "minimal";
-  textTransform: "uppercase" | "normal";
+  labelFormat: 'brackets' | 'plain';
+  cardHeader: 'bracketed' | 'simple' | 'minimal';
+  textTransform: 'uppercase' | 'normal';
   inputStyle: string;
   borderWidth: string;
 }
@@ -127,20 +127,20 @@ export interface ModeConfig {
 export const mode: ModeConfig = {
   radius: terminalClasses.radius,
   font: terminalClasses.font,
-  shadow: "",
-  buttonPrefix: "> ",
-  labelFormat: "brackets",
-  cardHeader: "bracketed",
-  textTransform: "uppercase",
+  shadow: '',
+  buttonPrefix: '> ',
+  labelFormat: 'brackets',
+  cardHeader: 'bracketed',
+  textTransform: 'uppercase',
   inputStyle: terminalClasses.input,
-  borderWidth: "border",
+  borderWidth: 'border',
 };
 
 /**
  * Format a label according to current mode
  */
 export function formatLabel(label: string): string {
-  if (mode.labelFormat === "brackets") {
+  if (mode.labelFormat === 'brackets') {
     return `[${label.toUpperCase()}]:`;
   }
   return label;
@@ -150,8 +150,8 @@ export function formatLabel(label: string): string {
  * Format button text according to current mode
  */
 export function formatButtonText(text: string): string {
-  if (mode.textTransform === "uppercase") {
-    return `${mode.buttonPrefix}${text.toUpperCase().replace(/ /g, "_")}`;
+  if (mode.textTransform === 'uppercase') {
+    return `${mode.buttonPrefix}${text.toUpperCase().replace(/ /g, '_')}`;
   }
   return `${mode.buttonPrefix}${text}`;
 }
@@ -160,8 +160,8 @@ export function formatButtonText(text: string): string {
  * Format card title according to current mode
  */
 export function formatCardTitle(title: string, code?: string): string {
-  if (mode.cardHeader === "bracketed") {
-    const hexCode = code ? `[0x${code}] ` : "";
+  if (mode.cardHeader === 'bracketed') {
+    const hexCode = code ? `[0x${code}] ` : '';
     return `[ ${hexCode}${title.toUpperCase()} ]`;
   }
   return title;
@@ -171,14 +171,14 @@ export function formatCardTitle(title: string, code?: string): string {
  * Check if current mode is sharp (terminal)
  */
 export function isSharpMode(): boolean {
-  return CURRENT_THEME === "terminal";
+  return CURRENT_THEME === 'terminal';
 }
 
 /**
  * Check if current mode uses rounded corners
  */
 export function hasRoundedCorners(): boolean {
-  return CURRENT_THEME !== "terminal";
+  return CURRENT_THEME !== 'terminal';
 }
 
 // =============================================================================

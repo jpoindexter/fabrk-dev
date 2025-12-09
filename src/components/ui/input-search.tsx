@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 /**
  * ✅ FABRK COMPONENT
@@ -10,14 +10,16 @@
  * ```
  */
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { Loader2, Search, X } from "lucide-react";
-import * as React from "react";
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { Loader2, Search, X } from 'lucide-react';
+import * as React from 'react';
 
-export interface InputSearchProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type" | "onChange"> {
+export interface InputSearchProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  'type' | 'onChange'
+> {
   value?: string;
   onValueChange?: (value: string) => void;
   onClear?: () => void;
@@ -40,7 +42,7 @@ const InputSearch = React.forwardRef<HTMLInputElement, InputSearchProps>(
     ref
   ) => {
     const handleClear = () => {
-      onValueChange?.("");
+      onValueChange?.('');
       onClear?.();
     };
 
@@ -54,13 +56,13 @@ const InputSearch = React.forwardRef<HTMLInputElement, InputSearchProps>(
           onChange={(e) => onValueChange?.(e.target.value)}
           disabled={disabled}
           className={cn(
-            "border-border bg-background flex h-8 w-full border py-2 pr-4 pl-10 text-xs transition-colors",
+            'border-border bg-background flex h-8 w-full border py-2 pr-4 pl-10 text-xs transition-colors',
             mode.radius,
             mode.font,
-            "placeholder:text-muted-foreground",
-            "focus-visible:ring-primary focus-visible:ring-2 focus-visible:outline-none",
-            "disabled:cursor-not-allowed disabled:opacity-50",
-            (showClearButton || loading) && "pr-10",
+            'placeholder:text-muted-foreground',
+            'focus-visible:ring-primary focus-visible:ring-2 focus-visible:outline-none',
+            'disabled:cursor-not-allowed disabled:opacity-50',
+            (showClearButton || loading) && 'pr-10',
             className
           )}
           {...props}
@@ -89,6 +91,6 @@ const InputSearch = React.forwardRef<HTMLInputElement, InputSearchProps>(
     );
   }
 );
-InputSearch.displayName = "InputSearch";
+InputSearch.displayName = 'InputSearch';
 
 export { InputSearch };

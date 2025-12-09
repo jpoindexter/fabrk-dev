@@ -115,9 +115,9 @@ When theme switching is enabled:
 All showcase pages import components from `@/components/ui/`:
 
 ```tsx
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { mode } from "@/design-system";
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { mode } from '@/design-system';
 ```
 
 ### Design Token Usage
@@ -144,7 +144,7 @@ All sections use the standard terminal header pattern:
 function SectionHeader({ code, title }: { code: string; title: string }) {
   return (
     <div className="border-border bg-card border-b px-6 py-4">
-      <span className={cn("text-muted-foreground text-sm", mode.font)}>
+      <span className={cn('text-muted-foreground text-sm', mode.font)}>
         [ [{code}] {title} ]
       </span>
     </div>

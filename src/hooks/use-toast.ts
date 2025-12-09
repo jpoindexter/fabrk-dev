@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { toast as sonnerToast } from "sonner";
+import { toast as sonnerToast } from 'sonner';
 
 export interface ToastOptions {
   title?: string;
@@ -17,10 +17,14 @@ export function useToast() {
   return {
     toast: (options: ToastOptions) => {
       const { title, description, action } = options;
-      const message = title ? `${title}${description ? `: ${description}` : ""}` : description;
+      const message = title
+        ? `${title}${description ? `: ${description}` : ''}`
+        : description;
 
       sonnerToast.success(message, {
-        action: action ? { label: action.label, onClick: action.onClick } : undefined,
+        action: action
+          ? { label: action.label, onClick: action.onClick }
+          : undefined,
       });
     },
     dismiss: (toastId?: string | number) => {

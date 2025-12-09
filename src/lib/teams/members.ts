@@ -3,8 +3,8 @@
  * Functions for managing team members
  */
 
-import { prisma } from "@/lib/prisma";
-import type { OrgRole } from "./types";
+import { prisma } from '@/lib/prisma';
+import type { OrgRole } from './types';
 
 /**
  * Check if user has role in organization
@@ -48,18 +48,18 @@ export async function removeMember(
     },
   });
 
-  if (member?.role === "OWNER") {
-    throw new Error("Cannot remove organization owner");
+  if (member?.role === 'OWNER') {
+    throw new Error('Cannot remove organization owner');
   }
 
   // Check if remover has permission
   const hasPermission = await hasOrganizationRole(removedBy, organizationId, [
-    "OWNER",
-    "ADMIN",
+    'OWNER',
+    'ADMIN',
   ]);
 
   if (!hasPermission) {
-    throw new Error("Insufficient permissions");
+    throw new Error('Insufficient permissions');
   }
 
   // Remove member
@@ -92,18 +92,18 @@ export async function updateMemberRole(
     },
   });
 
-  if (member?.role === "OWNER") {
-    throw new Error("Cannot change owner role");
+  if (member?.role === 'OWNER') {
+    throw new Error('Cannot change owner role');
   }
 
   // Check if updater has permission
   const hasPermission = await hasOrganizationRole(updatedBy, organizationId, [
-    "OWNER",
-    "ADMIN",
+    'OWNER',
+    'ADMIN',
   ]);
 
   if (!hasPermission) {
-    throw new Error("Insufficient permissions");
+    throw new Error('Insufficient permissions');
   }
 
   // Update role
@@ -138,8 +138,8 @@ export async function transferOwnership(
     },
   });
 
-  if (currentOwner?.role !== "OWNER") {
-    throw new Error("Only owner can transfer ownership");
+  if (currentOwner?.role !== 'OWNER') {
+    throw new Error('Only owner can transfer ownership');
   }
 
   // Verify new owner is a member
@@ -153,7 +153,7 @@ export async function transferOwnership(
   });
 
   if (!newOwner) {
-    throw new Error("New owner must be a member of the organization");
+    throw new Error('New owner must be a member of the organization');
   }
 
   // Update both roles in a transaction
@@ -166,7 +166,7 @@ export async function transferOwnership(
           userId: currentOwnerId,
         },
       },
-      data: { role: "ADMIN" },
+      data: { role: 'ADMIN' },
     }),
     // Promote new owner
     prisma.organizationMember.update({
@@ -176,7 +176,7 @@ export async function transferOwnership(
           userId: newOwnerId,
         },
       },
-      data: { role: "OWNER" },
+      data: { role: 'OWNER' },
     }),
   ]);
 }

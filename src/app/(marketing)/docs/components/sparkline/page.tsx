@@ -1,7 +1,11 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { Sparkline, SparklineCard, SparklineGroup } from "@/components/ui/sparkline";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import {
+  Sparkline,
+  SparklineCard,
+  SparklineGroup,
+} from '@/components/ui/sparkline';
 
 export default function SparklinePage() {
   const sampleData = [4, 8, 5, 10, 7, 12, 8, 15, 11, 14];
@@ -33,8 +37,8 @@ export default function SparklinePage() {
       }}
       variants={[
         {
-          title: "With Area Fill",
-          description: "Sparkline with filled area below the line",
+          title: 'With Area Fill',
+          description: 'Sparkline with filled area below the line',
           preview: (
             <div className="flex gap-4">
               <Sparkline
@@ -74,8 +78,8 @@ export default function SparklinePage() {
 />`,
         },
         {
-          title: "With Dots",
-          description: "Sparkline showing data points",
+          title: 'With Dots',
+          description: 'Sparkline showing data points',
           preview: (
             <div className="flex gap-4">
               <Sparkline
@@ -108,21 +112,21 @@ export default function SparklinePage() {
 />`,
         },
         {
-          title: "Sparkline Card",
-          description: "Metric card with embedded sparkline",
+          title: 'Sparkline Card',
+          description: 'Metric card with embedded sparkline',
           preview: (
             <div className="grid gap-4 md:grid-cols-2">
               <SparklineCard
                 title="Revenue"
                 value="$12,345"
-                change={{ value: 12.5, label: "vs last month" }}
+                change={{ value: 12.5, label: 'vs last month' }}
                 data={revenueData}
                 sparklineColor="oklch(70% 0.15 160)"
               />
               <SparklineCard
                 title="Active Users"
                 value="2,847"
-                change={{ value: -5.2, label: "vs last week" }}
+                change={{ value: -5.2, label: 'vs last week' }}
                 data={usersData}
                 sparklineColor="oklch(70% 0.15 295)"
               />
@@ -144,28 +148,28 @@ export default function SparklinePage() {
 />`,
         },
         {
-          title: "Sparkline Group",
-          description: "List of metrics with inline sparklines",
+          title: 'Sparkline Group',
+          description: 'List of metrics with inline sparklines',
           preview: (
             <SparklineGroup
               items={[
                 {
-                  label: "Page Views",
+                  label: 'Page Views',
                   value: 12345,
                   data: [100, 120, 115, 140, 130, 150, 145, 160],
-                  color: "oklch(70% 0.15 220)",
+                  color: 'oklch(70% 0.15 220)',
                 },
                 {
-                  label: "Sessions",
+                  label: 'Sessions',
                   value: 8234,
                   data: [80, 85, 90, 95, 88, 100, 105, 110],
-                  color: "oklch(70% 0.15 160)",
+                  color: 'oklch(70% 0.15 160)',
                 },
                 {
-                  label: "Bounce Rate",
+                  label: 'Bounce Rate',
                   value: 42.3,
                   data: [50, 48, 45, 43, 44, 42, 41, 40],
-                  color: "oklch(70% 0.15 30)",
+                  color: 'oklch(70% 0.15 30)',
                 },
               ]}
             />
@@ -188,8 +192,8 @@ export default function SparklinePage() {
 />`,
         },
         {
-          title: "Custom Colors",
-          description: "Sparklines with different color schemes",
+          title: 'Custom Colors',
+          description: 'Sparklines with different color schemes',
           preview: (
             <div className="flex gap-4">
               <Sparkline
@@ -230,69 +234,69 @@ export default function SparklinePage() {
       ]}
       props={[
         {
-          name: "data",
-          type: "number[]",
+          name: 'data',
+          type: 'number[]',
           required: true,
-          description: "Array of numeric values to plot",
+          description: 'Array of numeric values to plot',
         },
         {
-          name: "width",
-          type: "number",
-          default: "100",
-          description: "Width of the sparkline in pixels",
+          name: 'width',
+          type: 'number',
+          default: '100',
+          description: 'Width of the sparkline in pixels',
         },
         {
-          name: "height",
-          type: "number",
-          default: "30",
-          description: "Height of the sparkline in pixels",
+          name: 'height',
+          type: 'number',
+          default: '30',
+          description: 'Height of the sparkline in pixels',
         },
         {
-          name: "strokeWidth",
-          type: "number",
-          default: "2",
-          description: "Width of the line stroke",
+          name: 'strokeWidth',
+          type: 'number',
+          default: '2',
+          description: 'Width of the line stroke',
         },
         {
-          name: "color",
-          type: "string",
+          name: 'color',
+          type: 'string',
           default: '"hsl(var(--primary))"',
-          description: "Color of the line",
+          description: 'Color of the line',
         },
         {
-          name: "fillColor",
-          type: "string",
-          description: "Color of the area fill (defaults to color)",
+          name: 'fillColor',
+          type: 'string',
+          description: 'Color of the area fill (defaults to color)',
         },
         {
-          name: "showArea",
-          type: "boolean",
-          default: "false",
-          description: "Show filled area below line",
+          name: 'showArea',
+          type: 'boolean',
+          default: 'false',
+          description: 'Show filled area below line',
         },
         {
-          name: "showDots",
-          type: "boolean",
-          default: "false",
-          description: "Show dots at data points",
+          name: 'showDots',
+          type: 'boolean',
+          default: 'false',
+          description: 'Show dots at data points',
         },
         {
-          name: "className",
-          type: "string",
-          description: "Additional CSS classes",
+          name: 'className',
+          type: 'string',
+          description: 'Additional CSS classes',
         },
       ]}
       accessibility={[
-        "Sparklines are decorative visualizations - always provide text alternatives",
-        "Use SparklineCard to combine sparklines with accessible text metrics",
-        "SVG elements have semantic class names for styling",
-        "Automatically scales data to fit the available space",
-        "Minimum 2 data points required to render",
-        "Works with any numeric data range (auto-scales)",
-        "Color customization supports any valid CSS color",
+        'Sparklines are decorative visualizations - always provide text alternatives',
+        'Use SparklineCard to combine sparklines with accessible text metrics',
+        'SVG elements have semantic class names for styling',
+        'Automatically scales data to fit the available space',
+        'Minimum 2 data points required to render',
+        'Works with any numeric data range (auto-scales)',
+        'Color customization supports any valid CSS color',
       ]}
-      previous={{ title: "Stat Card", href: "/docs/components/stat-card" }}
-      next={{ title: "Gauge", href: "/docs/components/gauge" }}
+      previous={{ title: 'Stat Card', href: '/docs/components/stat-card' }}
+      next={{ title: 'Gauge', href: '/docs/components/gauge' }}
     />
   );
 }

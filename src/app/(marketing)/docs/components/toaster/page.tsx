@@ -1,18 +1,20 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
+import { ComponentShowcaseTemplate } from '@/components/docs';
 import {
   ToastTitle,
   ToastDescription,
   ToastClose,
   ToastViewport,
-} from "@/components/ui/toaster";
-import { Toast, ToastProvider } from "@/components/ui/toast";
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
+} from '@/components/ui/toaster';
+import { Toast, ToastProvider } from '@/components/ui/toast';
+import { Button } from '@/components/ui/button';
+import { useState } from 'react';
 
 function ToasterDemo() {
-  const [toasts, setToasts] = useState<Array<{ id: string; title: string; description?: string }>>([]);
+  const [toasts, setToasts] = useState<
+    Array<{ id: string; title: string; description?: string }>
+  >([]);
 
   const showToast = (title: string, description?: string) => {
     const id = Date.now().toString();
@@ -28,21 +30,21 @@ function ToasterDemo() {
         <Button
           variant="outline"
           className="rounded-none"
-          onClick={() => showToast("Success", "Your changes have been saved.")}
+          onClick={() => showToast('Success', 'Your changes have been saved.')}
         >
           Show Toast
         </Button>
         <Button
           variant="outline"
           className="rounded-none"
-          onClick={() => showToast("Error", "Something went wrong.")}
+          onClick={() => showToast('Error', 'Something went wrong.')}
         >
           Show Error
         </Button>
         <Button
           variant="outline"
           className="rounded-none"
-          onClick={() => showToast("Simple notification")}
+          onClick={() => showToast('Simple notification')}
         >
           Simple Toast
         </Button>
@@ -53,7 +55,9 @@ function ToasterDemo() {
           <Toast key={id} id={id}>
             <div className="grid gap-1">
               <ToastTitle>{title}</ToastTitle>
-              {description && <ToastDescription>{description}</ToastDescription>}
+              {description && (
+                <ToastDescription>{description}</ToastDescription>
+              )}
             </div>
             <ToastClose />
           </Toast>
@@ -93,8 +97,8 @@ function App() {
       }}
       variants={[
         {
-          title: "Toast Components",
-          description: "Building blocks for creating toast notifications",
+          title: 'Toast Components',
+          description: 'Building blocks for creating toast notifications',
           preview: (
             <div className="space-y-4">
               <div className="mb-4">[COMPONENTS]</div>
@@ -151,10 +155,10 @@ function App() {
 </ToastProvider>`,
         },
         {
-          title: "With Title Only",
-          description: "Simple toast with just a title",
+          title: 'With Title Only',
+          description: 'Simple toast with just a title',
           preview: (
-            <div className="w-full max-w-md rounded-none border border-border bg-background p-6">
+            <div className="border-border bg-background w-full max-w-md rounded-none border p-6">
               <div className="font-medium">Notification sent</div>
             </div>
           ),
@@ -164,10 +168,10 @@ function App() {
 </Toast>`,
         },
         {
-          title: "With Title and Description",
-          description: "Toast with title and supporting text",
+          title: 'With Title and Description',
+          description: 'Toast with title and supporting text',
           preview: (
-            <div className="w-full max-w-md rounded-none border border-border bg-background p-6">
+            <div className="border-border bg-background w-full max-w-md rounded-none border p-6">
               <div className="grid gap-1">
                 <div className="font-medium">Changes saved</div>
                 <div className="opacity-90">
@@ -187,17 +191,17 @@ function App() {
 </Toast>`,
         },
         {
-          title: "With Action Button",
-          description: "Toast with an actionable button",
+          title: 'With Action Button',
+          description: 'Toast with an actionable button',
           preview: (
-            <div className="w-full max-w-md flex items-center justify-between gap-6 rounded-none border border-border bg-background p-6">
+            <div className="border-border bg-background flex w-full max-w-md items-center justify-between gap-6 rounded-none border p-6">
               <div className="grid gap-1">
                 <div className="font-medium">File deleted</div>
                 <div className="opacity-90">
                   Your file has been moved to trash.
                 </div>
               </div>
-              <button className="inline-flex h-8 shrink-0 items-center justify-center rounded-none border border-border bg-background px-4 text-sm font-medium">
+              <button className="border-border bg-background inline-flex h-8 shrink-0 items-center justify-center rounded-none border px-4 text-sm font-medium">
                 Undo
               </button>
             </div>
@@ -216,10 +220,10 @@ function App() {
 </Toast>`,
         },
         {
-          title: "Destructive Variant",
-          description: "Error toast with destructive styling",
+          title: 'Destructive Variant',
+          description: 'Error toast with destructive styling',
           preview: (
-            <div className="w-full max-w-md rounded-none border border-destructive bg-destructive p-6 text-destructive-foreground">
+            <div className="border-destructive bg-destructive text-destructive-foreground w-full max-w-md rounded-none border p-6">
               <div className="grid gap-1">
                 <div className="font-medium">Error</div>
                 <div className="opacity-90">
@@ -239,8 +243,8 @@ function App() {
 </Toast>`,
         },
         {
-          title: "Toast Provider Setup",
-          description: "Provider wraps your app to manage toasts",
+          title: 'Toast Provider Setup',
+          description: 'Provider wraps your app to manage toasts',
           preview: (
             <div className="space-y-4">
               <div className="mb-4">[SETUP]</div>
@@ -269,8 +273,8 @@ export default function RootLayout({ children }) {
 }`,
         },
         {
-          title: "Viewport Positioning",
-          description: "ToastViewport controls where toasts appear",
+          title: 'Viewport Positioning',
+          description: 'ToastViewport controls where toasts appear',
           preview: (
             <div className="space-y-4">
               <div className="mb-4">[POSITION]</div>
@@ -293,58 +297,63 @@ export default function RootLayout({ children }) {
       ]}
       props={[
         {
-          name: "Toast",
-          type: "Component",
-          description: "Root toast component. Accepts variant prop ('default' | 'destructive')",
+          name: 'Toast',
+          type: 'Component',
+          description:
+            "Root toast component. Accepts variant prop ('default' | 'destructive')",
         },
         {
-          name: "ToastProvider",
-          type: "Component",
-          description: "Required wrapper component that manages toast state",
+          name: 'ToastProvider',
+          type: 'Component',
+          description: 'Required wrapper component that manages toast state',
         },
         {
-          name: "ToastTitle",
-          type: "Component",
-          description: "Toast title text with medium font weight",
+          name: 'ToastTitle',
+          type: 'Component',
+          description: 'Toast title text with medium font weight',
         },
         {
-          name: "ToastDescription",
-          type: "Component",
-          description: "Toast description text with muted styling",
+          name: 'ToastDescription',
+          type: 'Component',
+          description: 'Toast description text with muted styling',
         },
         {
-          name: "ToastAction",
-          type: "Component",
-          description: "Action button component. Requires altText prop for accessibility",
+          name: 'ToastAction',
+          type: 'Component',
+          description:
+            'Action button component. Requires altText prop for accessibility',
         },
         {
-          name: "ToastClose",
-          type: "Component",
-          description: "Close button with X icon, positioned absolutely",
+          name: 'ToastClose',
+          type: 'Component',
+          description: 'Close button with X icon, positioned absolutely',
         },
         {
-          name: "ToastViewport",
-          type: "Component",
-          description: "Viewport container that positions toasts on screen",
+          name: 'ToastViewport',
+          type: 'Component',
+          description: 'Viewport container that positions toasts on screen',
         },
         {
-          name: "Toaster",
-          type: "Component",
-          description: "Complete toaster component with built-in provider",
+          name: 'Toaster',
+          type: 'Component',
+          description: 'Complete toaster component with built-in provider',
         },
       ]}
       accessibility={[
-        "Uses Radix UI Toast primitives for full accessibility",
-        "ToastAction requires altText prop for screen readers",
+        'Uses Radix UI Toast primitives for full accessibility',
+        'ToastAction requires altText prop for screen readers',
         "Close button has aria-label='Close' by default",
-        "Toasts announce to screen readers with appropriate aria-live regions",
-        "Keyboard accessible with Escape key to dismiss",
-        "Focus management handled automatically",
-        "Swipe gestures supported on touch devices",
-        "Auto-dismissal can be paused on hover or focus",
+        'Toasts announce to screen readers with appropriate aria-live regions',
+        'Keyboard accessible with Escape key to dismiss',
+        'Focus management handled automatically',
+        'Swipe gestures supported on touch devices',
+        'Auto-dismissal can be paused on hover or focus',
       ]}
-      previous={{ title: "Notification List", href: "/docs/components/notification-list" }}
-      next={{ title: "Tooltip", href: "/docs/components/tooltip" }}
+      previous={{
+        title: 'Notification List',
+        href: '/docs/components/notification-list',
+      }}
+      next={{ title: 'Tooltip', href: '/docs/components/tooltip' }}
     />
   );
 }

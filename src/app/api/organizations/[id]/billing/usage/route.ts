@@ -3,36 +3,30 @@
  * GET - Fetch organization's current usage metrics
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@/lib/auth";
-import { isOrganizationMember } from "@/lib/teams/organizations";
-import { prisma } from "@/lib/prisma";
-import { logger } from "@/lib/logger";
+import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@/lib/auth';
+import { isOrganizationMember } from '@/lib/teams/organizations';
+import { prisma } from '@/lib/prisma';
+import { logger } from '@/lib/logger';
 
 interface RouteContext {
   params: Promise<{ id: string }>;
 }
 
-export async function GET(
-  req: NextRequest,
-  context: RouteContext
-) {
+export async function GET(req: NextRequest, context: RouteContext) {
   try {
     const { id } = await context.params;
     const session = await auth();
 
     if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     // Verify user is a member
     const isMember = await isOrganizationMember(id, session.user.id);
     if (!isMember) {
       return NextResponse.json(
-        { error: "You are not a member of this organization" },
+        { error: 'You are not a member of this organization' },
         { status: 403 }
       );
     }
@@ -52,7 +46,7 @@ export async function GET(
 
     if (!organization) {
       return NextResponse.json(
-        { error: "Organization not found" },
+        { error: 'Organization not found' },
         { status: 404 }
       );
     }
@@ -65,7 +59,9 @@ export async function GET(
       ENTERPRISE: { users: 999, storage: 1000, apiCalls: 1000000 },
     };
 
-    const limits = planLimits[organization.plan as keyof typeof planLimits] || planLimits.FREE;
+    const limits =
+      planLimits[organization.plan as keyof typeof planLimits] ||
+      planLimits.FREE;
 
     // Calculate storage (mock - in production, calculate from uploads)
     const storageUsed = organization._count.uploads * 0.5; // Assuming 500MB per upload on average
@@ -90,9 +86,9 @@ export async function GET(
       },
     });
   } catch (error: unknown) {
-    logger.error("Failed to fetch usage:", error);
+    logger.error('Failed to fetch usage:', error);
     return NextResponse.json(
-      { error: "Failed to fetch usage" },
+      { error: 'Failed to fetch usage' },
       { status: 500 }
     );
   }

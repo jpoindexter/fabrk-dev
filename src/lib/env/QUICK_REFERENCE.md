@@ -32,8 +32,8 @@ If environment variables are missing or invalid, you'll see clear error messages
 import { env, features } from '@/lib/env';
 
 // All required vars are guaranteed to exist
-const dbUrl = env.DATABASE_URL;           // ✅ Type-safe
-const stripeKey = env.STRIPE_SECRET_KEY;  // ✅ Type-safe
+const dbUrl = env.DATABASE_URL; // ✅ Type-safe
+const stripeKey = env.STRIPE_SECRET_KEY; // ✅ Type-safe
 
 // Check if optional features are enabled
 if (features.pusher) {
@@ -80,12 +80,14 @@ RESEND_API_KEY="re_..."
 ## Optional Features
 
 ### Google OAuth
+
 ```bash
 GOOGLE_CLIENT_ID="your-client-id"
 GOOGLE_CLIENT_SECRET="your-client-secret"
 ```
 
 ### Pusher (Real-Time)
+
 ```bash
 PUSHER_APP_ID="your-app-id"
 PUSHER_SECRET="your-secret"
@@ -94,12 +96,14 @@ NEXT_PUBLIC_PUSHER_CLUSTER="us2"
 ```
 
 ### PostHog (Analytics)
+
 ```bash
 NEXT_PUBLIC_POSTHOG_KEY="phc_..."
 NEXT_PUBLIC_POSTHOG_HOST="https://app.posthog.com"
 ```
 
 ### Redis (Cache)
+
 ```bash
 UPSTASH_REDIS_REST_URL="https://..."
 UPSTASH_REDIS_REST_TOKEN="..."
@@ -108,6 +112,7 @@ UPSTASH_REDIS_REST_TOKEN="..."
 ## Common Issues
 
 ### Issue: "DATABASE_URL is required"
+
 **Solution:** Add DATABASE_URL to .env.local
 
 ```bash
@@ -115,13 +120,15 @@ DATABASE_URL="postgresql://user:password@localhost:5432/fabrk"
 ```
 
 ### Issue: "NEXTAUTH_SECRET must be at least 32 characters"
+
 **Solution:** Generate a secure secret
 
 ```bash
 openssl rand -base64 32
 ```
 
-### Issue: "STRIPE_SECRET_KEY must start with sk_"
+### Issue: "STRIPE*SECRET_KEY must start with sk*"
+
 **Solution:** Copy the correct key from Stripe dashboard
 
 ```bash
@@ -133,6 +140,7 @@ STRIPE_SECRET_KEY="your-stripe-key"
 ```
 
 ### Issue: "All Pusher variables must be set together"
+
 **Solution:** Either set all 4 Pusher vars or remove them all
 
 ```bash
@@ -153,19 +161,21 @@ Check which features are enabled:
 ```typescript
 import { features } from '@/lib/env';
 
-console.log(features.pusher);      // true/false
+console.log(features.pusher); // true/false
 console.log(features.googleOAuth); // true/false
-console.log(features.redis);       // true/false
+console.log(features.redis); // true/false
 ```
 
 ## Development vs Production
 
 **Development:**
+
 - Shows warnings for optional features
 - Only throws for critical errors
 - Displays feature summary
 
 **Production:**
+
 - Throws for ANY validation error
 - Fails fast
 - No warnings
@@ -190,21 +200,21 @@ import { validateEnv, validateEnvOrThrow } from '@/lib/env';
 import { getFeatureSummary } from '@/lib/env';
 
 const summary = getFeatureSummary();
-console.log(summary.enabled);  // ['Google OAuth', 'Pusher', ...]
+console.log(summary.enabled); // ['Google OAuth', 'Pusher', ...]
 console.log(summary.disabled); // ['Algolia', 'Sanity', ...]
 ```
 
 ## Cheat Sheet
 
-| Task | Command/Code |
-|------|--------------|
-| Copy env file | `cp .env.example .env.local` |
-| Generate secret | `openssl rand -base64 32` |
-| Check validation | `npm run dev` (will fail if invalid) |
-| Type-safe env | `import { env } from '@/lib/env'` |
-| Check features | `import { features } from '@/lib/env'` |
-| Manual validation | `validateEnvOrThrow()` |
-| Get summary | `getFeatureSummary()` |
+| Task              | Command/Code                           |
+| ----------------- | -------------------------------------- |
+| Copy env file     | `cp .env.example .env.local`           |
+| Generate secret   | `openssl rand -base64 32`              |
+| Check validation  | `npm run dev` (will fail if invalid)   |
+| Type-safe env     | `import { env } from '@/lib/env'`      |
+| Check features    | `import { features } from '@/lib/env'` |
+| Manual validation | `validateEnvOrThrow()`                 |
+| Get summary       | `getFeatureSummary()`                  |
 
 ## Files
 

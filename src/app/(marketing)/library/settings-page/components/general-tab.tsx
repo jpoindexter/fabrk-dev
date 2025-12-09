@@ -4,13 +4,20 @@
  * Production-ready ✓
  */
 
-import { AppearanceForm } from "@/components/settings/appearance-form";
-import { Button } from "@/components/ui/button";
-import { Shield, CreditCard, Bell, Download, Palette, Settings } from "lucide-react";
-import { CodeWindow } from "./code-window";
-import { SectionHeader } from "./section-header";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { AppearanceForm } from '@/components/settings/appearance-form';
+import { Button } from '@/components/ui/button';
+import {
+  Shield,
+  CreditCard,
+  Bell,
+  Download,
+  Palette,
+  Settings,
+} from 'lucide-react';
+import { CodeWindow } from './code-window';
+import { SectionHeader } from './section-header';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export function GeneralTab() {
   return (
@@ -38,28 +45,28 @@ export function GeneralTab() {
           <div className="grid gap-6 md:grid-cols-2">
             <Button
               variant="outline"
-              className={cn(mode.radius, mode.font, "justify-start text-xs")}
+              className={cn(mode.radius, mode.font, 'justify-start text-xs')}
             >
               <Shield className="mr-2 h-4 w-4" />
               &gt; SECURITY_SETTINGS
             </Button>
             <Button
               variant="outline"
-              className={cn(mode.radius, mode.font, "justify-start text-xs")}
+              className={cn(mode.radius, mode.font, 'justify-start text-xs')}
             >
               <CreditCard className="mr-2 h-4 w-4" />
               &gt; BILLING_SETTINGS
             </Button>
             <Button
               variant="outline"
-              className={cn(mode.radius, mode.font, "justify-start text-xs")}
+              className={cn(mode.radius, mode.font, 'justify-start text-xs')}
             >
               <Bell className="mr-2 h-4 w-4" />
               &gt; NOTIFICATION_PREFS
             </Button>
             <Button
               variant="outline"
-              className={cn(mode.radius, mode.font, "justify-start text-xs")}
+              className={cn(mode.radius, mode.font, 'justify-start text-xs')}
             >
               <Download className="mr-2 h-4 w-4" />
               &gt; EXPORT_MY_DATA

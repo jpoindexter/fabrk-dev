@@ -3,20 +3,17 @@
  * GET - Fetch user's organizations
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@/lib/auth";
-import { getUserOrganizations } from "@/lib/teams/organizations";
-import { logger } from "@/lib/logger";
+import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@/lib/auth';
+import { getUserOrganizations } from '@/lib/teams/organizations';
+import { logger } from '@/lib/logger';
 
 export async function GET(_req: NextRequest) {
   try {
     const session = await auth();
 
     if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     const organizations = await getUserOrganizations(session.user.id);
@@ -31,9 +28,9 @@ export async function GET(_req: NextRequest) {
       })),
     });
   } catch (error: unknown) {
-    logger.error("Failed to fetch organizations:", error);
+    logger.error('Failed to fetch organizations:', error);
     return NextResponse.json(
-      { error: "Failed to fetch organizations" },
+      { error: 'Failed to fetch organizations' },
       { status: 500 }
     );
   }

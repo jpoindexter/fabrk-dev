@@ -4,14 +4,14 @@
  * Production-ready ✓
  */
 
-import { HeroSection } from "@/components/marketing/hero-section";
-import { FeaturesShowcase } from "@/components/marketing/features-showcase";
-import { FeaturesSection } from "@/components/marketing/features-section";
-import { PricingSection } from "@/components/marketing/pricing-section";
-import { ComparisonSection } from "@/components/marketing/comparison-section";
-import { FAQSection } from "@/components/marketing/faq-section";
-import { StickyCTABar } from "@/components/marketing/sticky-cta-bar";
-import { ExitIntentPopup } from "@/components/marketing/exit-intent-popup";
+import { HeroSection } from '@/components/marketing/hero-section';
+import { FeaturesShowcase } from '@/components/marketing/features-showcase';
+import { FeaturesSection } from '@/components/marketing/features-section';
+import { PricingSection } from '@/components/marketing/pricing-section';
+import { ComparisonSection } from '@/components/marketing/comparison-section';
+import { FAQSection } from '@/components/marketing/faq-section';
+import { StickyCTABar } from '@/components/marketing/sticky-cta-bar';
+import { ExitIntentPopup } from '@/components/marketing/exit-intent-popup';
 
 export default function HomePage() {
   return (
@@ -34,7 +34,10 @@ export default function HomePage() {
       </section>
 
       {/* Overlays */}
-      <StickyCTABar message="Launch your SaaS in days, not months" ctaText="Get Fabrk Now" />
+      <StickyCTABar
+        message="Launch your SaaS in days, not months"
+        ctaText="Get Fabrk Now"
+      />
       <ExitIntentPopup
         title="Wait! Before You Go..."
         description="Get Fabrk and launch your SaaS 10x faster. 234 components, authentication, payments, and more."

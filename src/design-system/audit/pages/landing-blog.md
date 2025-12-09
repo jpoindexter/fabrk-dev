@@ -69,8 +69,12 @@ export default async function BlogPage({ searchParams }: Props) {
     <span className="text-muted-foreground font-mono text-xs">[ BLOG ]</span>
   </div>
   <div className="p-6">
-    <h1 className="text-foreground mb-2 font-mono text-3xl font-bold">&gt; LATEST_POSTS</h1>
-    <p className="text-muted-foreground font-mono text-sm">Articles, tutorials, and updates</p>
+    <h1 className="text-foreground mb-2 font-mono text-3xl font-bold">
+      &gt; LATEST_POSTS
+    </h1>
+    <p className="text-muted-foreground font-mono text-sm">
+      Articles, tutorials, and updates
+    </p>
   </div>
 </div>
 ```
@@ -92,8 +96,8 @@ export default async function BlogPage({ searchParams }: Props) {
       href="/blog"
       className={`border px-3 py-1 font-mono text-xs transition-colors ${
         !categorySlug
-          ? "border-primary bg-primary text-primary-foreground"
-          : "border-border bg-card text-muted-foreground hover:border-primary hover:text-foreground"
+          ? 'border-primary bg-primary text-primary-foreground'
+          : 'border-border bg-card text-muted-foreground hover:border-primary hover:text-foreground'
       }`}
     >
       ALL ({posts.length})
@@ -173,7 +177,9 @@ export default async function BlogPage({ searchParams }: Props) {
     >
       <div className="text-muted-foreground mb-2 flex items-center gap-2 font-mono text-xs">
         {post.category && (
-          <span className="text-primary">[{post.category.name.toUpperCase()}]</span>
+          <span className="text-primary">
+            [{post.category.name.toUpperCase()}]
+          </span>
         )}
         <span>{formatDate(post.publishedAt || post.createdAt)}</span>
       </div>
@@ -181,7 +187,7 @@ export default async function BlogPage({ searchParams }: Props) {
         {post.title}
       </h3>
       <div className="text-muted-foreground font-mono text-xs">
-        {formatReadTime(post.readTime || 1)} • {post.author.name || "Anonymous"}
+        {formatReadTime(post.readTime || 1)} • {post.author.name || 'Anonymous'}
       </div>
     </Link>
   ))}
@@ -259,7 +265,10 @@ export default async function BlogPostPage({ params }: Props) {
 
 ```tsx
 <div className="mb-8">
-  <Link href="/blog" className="text-muted-foreground hover:text-primary font-mono text-xs">
+  <Link
+    href="/blog"
+    className="text-muted-foreground hover:text-primary font-mono text-xs"
+  >
     &lt;- BACK_TO_BLOG
   </Link>
 </div>
@@ -288,7 +297,9 @@ export default async function BlogPostPage({ params }: Props) {
     )}
 
     {/* Title */}
-    <h1 className="text-foreground mb-4 font-mono text-2xl font-bold md:text-3xl">{post.title}</h1>
+    <h1 className="text-foreground mb-4 font-mono text-2xl font-bold md:text-3xl">
+      {post.title}
+    </h1>
 
     {/* Meta */}
     <div className="text-muted-foreground flex flex-wrap items-center gap-4 font-mono text-xs">
@@ -296,13 +307,13 @@ export default async function BlogPostPage({ params }: Props) {
       {post.author.image && (
         <Image
           src={post.author.image}
-          alt={`${post.author.name || "Author"} avatar`}
+          alt={`${post.author.name || 'Author'} avatar`}
           width={24}
           height={24}
           className="h-6 w-6 rounded-full"
         />
       )}
-      <span>{post.author.name || "Anonymous"}</span>
+      <span>{post.author.name || 'Anonymous'}</span>
       <span>|</span>
       <span>{formatDate(post.publishedAt || post.createdAt)}</span>
       <span>|</span>
@@ -368,7 +379,10 @@ export default async function BlogPostPage({ params }: Props) {
 
 ```tsx
 <div className="border-border bg-card mt-8 flex items-center justify-between border p-4">
-  <Link href="/blog" className="text-muted-foreground hover:text-primary font-mono text-xs">
+  <Link
+    href="/blog"
+    className="text-muted-foreground hover:text-primary font-mono text-xs"
+  >
     &lt;- ALL_POSTS
   </Link>
   <div className="text-muted-foreground font-mono text-xs">
@@ -425,7 +439,7 @@ className={`rounded-none border px-3 py-1 ...`}
 #### 2. Rounded Avatar
 
 ```tsx
-className = "h-6 w-6 rounded-full"; // Should be rounded-none
+className = 'h-6 w-6 rounded-full'; // Should be rounded-none
 ```
 
 #### 3. Container Padding Inconsistency
@@ -565,7 +579,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPostBySlug(slug);
 
   if (!post) {
-    return { title: "Post Not Found" };
+    return { title: 'Post Not Found' };
   }
 
   return {
@@ -574,9 +588,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: post.seoTitle || post.title,
       description: post.seoDescription || post.excerpt || undefined,
-      type: "article",
+      type: 'article',
       publishedTime: post.publishedAt?.toISOString(),
-      authors: [post.author.name || "Fabrk"],
+      authors: [post.author.name || 'Fabrk'],
       images: post.featuredImage ? [post.featuredImage] : undefined,
     },
   };
@@ -619,16 +633,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 ```tsx
 // Pills
-className = "rounded-none border px-3 py-1 ...";
+className = 'rounded-none border px-3 py-1 ...';
 
 // Avatar (if keeping terminal aesthetic)
-className = "h-6 w-6 rounded-none border border-border";
+className = 'h-6 w-6 rounded-none border border-border';
 ```
 
 ### 2. Create BlogPageTemplate
 
 ```tsx
-<BlogPageTemplate title="LATEST_POSTS" description="Articles, tutorials, and updates">
+<BlogPageTemplate
+  title="LATEST_POSTS"
+  description="Articles, tutorials, and updates"
+>
   {/* Content */}
 </BlogPageTemplate>
 ```

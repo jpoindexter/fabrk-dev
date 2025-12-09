@@ -3,9 +3,9 @@
  * Global test configuration and mocks
  */
 
-import { afterEach, vi } from "vitest";
-import { cleanup } from "@testing-library/react";
-import "@testing-library/jest-dom/vitest";
+import { afterEach, vi } from 'vitest';
+import { cleanup } from '@testing-library/react';
+import '@testing-library/jest-dom/vitest';
 
 // Cleanup after each test
 afterEach(() => {
@@ -13,7 +13,7 @@ afterEach(() => {
 });
 
 // Mock Next.js router
-vi.mock("next/navigation", () => ({
+vi.mock('next/navigation', () => ({
   useRouter: () => ({
     push: vi.fn(),
     replace: vi.fn(),
@@ -22,17 +22,17 @@ vi.mock("next/navigation", () => ({
     forward: vi.fn(),
     prefetch: vi.fn(),
   }),
-  usePathname: () => "/",
+  usePathname: () => '/',
   useSearchParams: () => new URLSearchParams(),
   redirect: vi.fn(),
   notFound: vi.fn(),
 }));
 
 // Mock NextAuth
-vi.mock("next-auth/react", () => ({
+vi.mock('next-auth/react', () => ({
   useSession: () => ({
     data: null,
-    status: "unauthenticated",
+    status: 'unauthenticated',
   }),
   signIn: vi.fn(),
   signOut: vi.fn(),
@@ -40,9 +40,9 @@ vi.mock("next-auth/react", () => ({
 }));
 
 // Mock environment variables
-process.env.DATABASE_URL = "postgresql://test:test@localhost:5432/test";
-process.env.NEXTAUTH_URL = "http://localhost:3000";
-process.env.NEXTAUTH_SECRET = "test-secret-that-is-at-least-32-characters-long";
+process.env.DATABASE_URL = 'postgresql://test:test@localhost:5432/test';
+process.env.NEXTAUTH_URL = 'http://localhost:3000';
+process.env.NEXTAUTH_SECRET = 'test-secret-that-is-at-least-32-characters-long';
 
 // Global test utilities
 global.ResizeObserver = vi.fn().mockImplementation(() => ({
@@ -52,7 +52,7 @@ global.ResizeObserver = vi.fn().mockImplementation(() => ({
 }));
 
 // Mock window.matchMedia
-Object.defineProperty(window, "matchMedia", {
+Object.defineProperty(window, 'matchMedia', {
   writable: true,
   value: vi.fn().mockImplementation((query) => ({
     matches: false,

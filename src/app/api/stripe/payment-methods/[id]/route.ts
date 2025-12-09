@@ -107,12 +107,12 @@
  * Detaches a payment method from the customer
  */
 
-import { auth } from "@/lib/auth";
-import { logger } from "@/lib/logger";
-import { prisma } from "@/lib/prisma";
-import { withRateLimit } from "@/lib/rate-limit/middleware";
-import { stripe } from "@/lib/stripe/client";
-import { NextRequest, NextResponse } from "next/server";
+import { auth } from '@/lib/auth';
+import { logger } from '@/lib/logger';
+import { prisma } from '@/lib/prisma';
+import { withRateLimit } from '@/lib/rate-limit/middleware';
+import { stripe } from '@/lib/stripe/client';
+import { NextRequest, NextResponse } from 'next/server';
 
 async function deletePaymentMethodHandler(
   req: NextRequest,
@@ -123,7 +123,7 @@ async function deletePaymentMethodHandler(
 
     if (!session?.user?.email) {
       return NextResponse.json(
-        { error: "Unauthorized - Please sign in" },
+        { error: 'Unauthorized - Please sign in' },
         { status: 401 }
       );
     }
@@ -138,15 +138,12 @@ async function deletePaymentMethodHandler(
     });
 
     if (!user) {
-      return NextResponse.json(
-        { error: "User not found" },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
 
     if (!user.customerId) {
       return NextResponse.json(
-        { error: "No billing account found" },
+        { error: 'No billing account found' },
         { status: 400 }
       );
     }
@@ -155,7 +152,7 @@ async function deletePaymentMethodHandler(
     // This removes it from the customer's saved payment methods
     await stripe.paymentMethods.detach(paymentMethodId);
 
-    logger.info("Deleted payment method", {
+    logger.info('Deleted payment method', {
       userId: user.id,
       customerId: user.customerId,
       paymentMethodId,
@@ -163,16 +160,16 @@ async function deletePaymentMethodHandler(
 
     return NextResponse.json({
       success: true,
-      message: "Payment method removed",
+      message: 'Payment method removed',
     });
   } catch (error: unknown) {
-    logger.error("Payment method deletion error:", error);
+    logger.error('Payment method deletion error:', error);
     return NextResponse.json(
-      { error: "Failed to remove payment method" },
+      { error: 'Failed to remove payment method' },
       { status: 500 }
     );
   }
 }
 
 // Apply rate limiting: 10 requests per minute for payment endpoints
-export const DELETE = withRateLimit(deletePaymentMethodHandler, "payment");
+export const DELETE = withRateLimit(deletePaymentMethodHandler, 'payment');

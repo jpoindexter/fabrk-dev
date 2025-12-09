@@ -35,7 +35,10 @@ export function buildQueryString(params: Record<string, unknown>): string {
  * @example addQueryParams("https://example.com", { foo: "bar" })
  * // "https://example.com?foo=bar"
  */
-export function addQueryParams(url: string, params: Record<string, unknown>): string {
+export function addQueryParams(
+  url: string,
+  params: Record<string, unknown>
+): string {
   const urlObj = new URL(url);
   Object.entries(params).forEach(([key, value]) => {
     if (value !== null && value !== undefined) {
@@ -70,8 +73,8 @@ export function getQueryParam(url: string, key: string): string | null {
  */
 export function getDomain(url: string): string {
   const urlObj = new URL(url);
-  const parts = urlObj.hostname.split(".");
-  return parts.slice(-2).join(".");
+  const parts = urlObj.hostname.split('.');
+  return parts.slice(-2).join('.');
 }
 
 /**
@@ -80,7 +83,7 @@ export function getDomain(url: string): string {
  */
 export function getSubdomain(url: string): string | null {
   const urlObj = new URL(url);
-  const parts = urlObj.hostname.split(".");
+  const parts = urlObj.hostname.split('.');
   return parts.length > 2 ? parts[0] : null;
 }
 
@@ -101,7 +104,7 @@ export function isExternalUrl(url: string, currentDomain: string): boolean {
  */
 export function sanitizeUrl(
   url: string,
-  sensitiveParams: string[] = ["token", "api_key", "secret", "password"]
+  sensitiveParams: string[] = ['token', 'api_key', 'secret', 'password']
 ): string {
   return removeQueryParams(url, sensitiveParams);
 }
@@ -122,9 +125,9 @@ export function getPath(url: string): string {
 export function joinPaths(...parts: string[]): string {
   return parts
     .map((part, index) => {
-      if (index === 0) return part.replace(/\/$/, "");
-      return part.replace(/^\//, "").replace(/\/$/, "");
+      if (index === 0) return part.replace(/\/$/, '');
+      return part.replace(/^\//, '').replace(/\/$/, '');
     })
     .filter(Boolean)
-    .join("/");
+    .join('/');
 }

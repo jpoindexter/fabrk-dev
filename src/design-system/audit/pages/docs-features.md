@@ -38,9 +38,9 @@
 ### Feature Code Badges
 
 ```tsx
-code = "[0x30]"; // Payments
-code = "[0x40]"; // Emails
-code = "[0x10]"; // Database
+code = '[0x30]'; // Payments
+code = '[0x40]'; // Emails
+code = '[0x10]'; // Database
 ```
 
 - **Format**: `[0xXX]` where XX is hex number
@@ -50,9 +50,9 @@ code = "[0x10]"; // Database
 ### Feature Titles
 
 ```tsx
-title = "Stripe_Payments";
-title = "Email_With_Resend";
-title = "Database_Prisma";
+title = 'Stripe_Payments';
+title = 'Email_With_Resend';
+title = 'Database_Prisma';
 ```
 
 - **Format**: Uppercase with underscores (terminal style)
@@ -61,8 +61,8 @@ title = "Database_Prisma";
 ### Descriptions
 
 ```tsx
-description = "Accept payments and manage subscriptions with Stripe.";
-description = "Production-ready email system with React Email templates...";
+description = 'Accept payments and manage subscriptions with Stripe.';
+description = 'Production-ready email system with React Email templates...';
 ```
 
 - **Style**: Plain English, concise
@@ -121,7 +121,9 @@ overview =
 **Caption Text** (Payments page line 209):
 
 ```tsx
-<p className={`${docsTypography.caption} mt-4`}>Use any future expiration date...</p>
+<p className={`${docsTypography.caption} mt-4`}>
+  Use any future expiration date...
+</p>
 ```
 
 - ✅ Uses `docsTypography.caption`
@@ -625,7 +627,7 @@ usage={[
 1. **Create uppercase variant** of h4 in typography system:
 
    ```ts
-   h4Uppercase: "font-mono text-sm font-bold uppercase";
+   h4Uppercase: 'font-mono text-sm font-bold uppercase';
    ```
 
 2. **Remove manual margins** from typography token usage:
@@ -651,12 +653,14 @@ usage={[
 4. **Document tree list pattern** in typography system:
 
    ```ts
-   treeList: "font-mono text-sm text-muted-foreground space-y-1";
+   treeList: 'font-mono text-sm text-muted-foreground space-y-1';
    ```
 
 5. **Create DocsTable component** for key-value tables:
    ```tsx
-   <DocsTable rows={[{ key: "Successful payment", value: "4242 4242 4242 4242" }]} />
+   <DocsTable
+     rows={[{ key: 'Successful payment', value: '4242 4242 4242 4242' }]}
+   />
    ```
 
 ### Pattern Documentation Needed

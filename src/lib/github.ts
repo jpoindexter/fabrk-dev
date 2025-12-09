@@ -3,9 +3,9 @@
  * Handles granting customers access to private boilerplate repositories
  */
 
-import { Octokit } from "@octokit/rest";
-import { logger } from "@/lib/logger";
-import { env } from "@/lib/env";
+import { Octokit } from '@octokit/rest';
+import { logger } from '@/lib/logger';
+import { env } from '@/lib/env';
 
 let octokitInstance: Octokit | null = null;
 
@@ -16,7 +16,7 @@ let octokitInstance: Octokit | null = null;
 function getOctokit(): Octokit {
   if (!octokitInstance) {
     if (!env.server.GITHUB_ACCESS_TOKEN) {
-      throw new Error("GITHUB_ACCESS_TOKEN environment variable not set");
+      throw new Error('GITHUB_ACCESS_TOKEN environment variable not set');
     }
 
     octokitInstance = new Octokit({
@@ -33,7 +33,7 @@ function getOctokit(): Octokit {
  */
 export async function grantRepositoryAccess(
   githubUsername: string,
-  permission: "pull" | "push" | "admin" = "pull"
+  permission: 'pull' | 'push' | 'admin' = 'pull'
 ): Promise<{
   success: boolean;
   message: string;
@@ -45,12 +45,13 @@ export async function grantRepositoryAccess(
     if (!/^[a-zA-Z0-9_-]+$/.test(githubUsername)) {
       return {
         success: false,
-        message: "Invalid GitHub username format",
-        error: "GitHub username must contain only alphanumeric characters, hyphens, and underscores",
+        message: 'Invalid GitHub username format',
+        error:
+          'GitHub username must contain only alphanumeric characters, hyphens, and underscores',
       };
     }
 
-    logger.info("Granting repository access", {
+    logger.info('Granting repository access', {
       githubUsername,
       permission,
       repo: `${env.server.GITHUB_REPO_OWNER}/${env.server.GITHUB_REPO_NAME}`,
@@ -64,13 +65,13 @@ export async function grantRepositoryAccess(
         username: githubUsername,
       });
     } catch (error: unknown) {
-      logger.error("GitHub user not found", {
+      logger.error('GitHub user not found', {
         githubUsername,
         error,
       });
       return {
         success: false,
-        message: "GitHub user not found",
+        message: 'GitHub user not found',
         error: `The GitHub username "${githubUsername}" does not exist. Please verify it's correct.`,
       };
     }
@@ -85,7 +86,7 @@ export async function grantRepositoryAccess(
 
     const repoUrl = `https://github.com/${env.server.GITHUB_REPO_OWNER}/${env.server.GITHUB_REPO_NAME}`;
 
-    logger.info("Repository access granted successfully", {
+    logger.info('Repository access granted successfully', {
       githubUsername,
       repo: `${env.server.GITHUB_REPO_OWNER}/${env.server.GITHUB_REPO_NAME}`,
       repoUrl,
@@ -98,38 +99,38 @@ export async function grantRepositoryAccess(
     };
   } catch (error: unknown) {
     const errorMessage =
-      error instanceof Error ? error.message : "Unknown error";
+      error instanceof Error ? error.message : 'Unknown error';
 
-    logger.error("Error granting repository access", {
+    logger.error('Error granting repository access', {
       githubUsername,
       error: errorMessage,
     });
 
     // Check if it's a rate limit error
-    if (errorMessage.includes("API rate limit")) {
+    if (errorMessage.includes('API rate limit')) {
       return {
         success: false,
-        message: "GitHub API rate limit exceeded",
-        error: "Please try again in a few minutes",
+        message: 'GitHub API rate limit exceeded',
+        error: 'Please try again in a few minutes',
       };
     }
 
     // Check if user already has access
     if (
-      errorMessage.includes("Validation Failed") ||
-      errorMessage.includes("already has access")
+      errorMessage.includes('Validation Failed') ||
+      errorMessage.includes('already has access')
     ) {
       const repoUrl = `https://github.com/${env.server.GITHUB_REPO_OWNER}/${env.server.GITHUB_REPO_NAME}`;
       return {
         success: true,
-        message: "User already has access to the repository",
+        message: 'User already has access to the repository',
         repoUrl,
       };
     }
 
     return {
       success: false,
-      message: "Failed to grant repository access",
+      message: 'Failed to grant repository access',
       error: errorMessage,
     };
   }
@@ -139,15 +140,13 @@ export async function grantRepositoryAccess(
  * Revoke a GitHub user's access to the Fabrk boilerplate repository
  * Useful for refunds or license revocation
  */
-export async function revokeRepositoryAccess(
-  githubUsername: string
-): Promise<{
+export async function revokeRepositoryAccess(githubUsername: string): Promise<{
   success: boolean;
   message: string;
   error?: string;
 }> {
   try {
-    logger.info("Revoking repository access", {
+    logger.info('Revoking repository access', {
       githubUsername,
       repo: `${env.server.GITHUB_REPO_OWNER}/${env.server.GITHUB_REPO_NAME}`,
     });
@@ -160,7 +159,7 @@ export async function revokeRepositoryAccess(
       username: githubUsername,
     });
 
-    logger.info("Repository access revoked successfully", {
+    logger.info('Repository access revoked successfully', {
       githubUsername,
       repo: `${env.server.GITHUB_REPO_OWNER}/${env.server.GITHUB_REPO_NAME}`,
     });
@@ -171,16 +170,16 @@ export async function revokeRepositoryAccess(
     };
   } catch (error: unknown) {
     const errorMessage =
-      error instanceof Error ? error.message : "Unknown error";
+      error instanceof Error ? error.message : 'Unknown error';
 
-    logger.error("Error revoking repository access", {
+    logger.error('Error revoking repository access', {
       githubUsername,
       error: errorMessage,
     });
 
     return {
       success: false,
-      message: "Failed to revoke repository access",
+      message: 'Failed to revoke repository access',
       error: errorMessage,
     };
   }
@@ -228,11 +227,12 @@ export async function listRepositoryCollaborators(): Promise<
 
     return collaborators.data.map((collab) => ({
       username: collab.login,
-      permission: collab.role_name || collab.permissions?.pull ? "pull" : "push",
+      permission:
+        collab.role_name || collab.permissions?.pull ? 'pull' : 'push',
       type: collab.type,
     }));
   } catch (error: unknown) {
-    logger.error("Error listing repository collaborators", error);
+    logger.error('Error listing repository collaborators', error);
     return [];
   }
 }

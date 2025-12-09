@@ -101,12 +101,12 @@
  * Allows users to add payment methods without immediate charge
  */
 
-import { auth } from "@/lib/auth";
-import { logger } from "@/lib/logger";
-import { prisma } from "@/lib/prisma";
-import { withRateLimit } from "@/lib/rate-limit/middleware";
-import { getOrCreateCustomer, stripe } from "@/lib/stripe/client";
-import { NextRequest, NextResponse } from "next/server";
+import { auth } from '@/lib/auth';
+import { logger } from '@/lib/logger';
+import { prisma } from '@/lib/prisma';
+import { withRateLimit } from '@/lib/rate-limit/middleware';
+import { getOrCreateCustomer, stripe } from '@/lib/stripe/client';
+import { NextRequest, NextResponse } from 'next/server';
 
 async function setupIntentHandler(_req: NextRequest) {
   try {
@@ -114,7 +114,7 @@ async function setupIntentHandler(_req: NextRequest) {
 
     if (!session?.user?.email) {
       return NextResponse.json(
-        { error: "Unauthorized - Please sign in" },
+        { error: 'Unauthorized - Please sign in' },
         { status: 401 }
       );
     }
@@ -125,10 +125,7 @@ async function setupIntentHandler(_req: NextRequest) {
     });
 
     if (!user) {
-      return NextResponse.json(
-        { error: "User not found" },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
 
     // Get or create Stripe customer
@@ -151,8 +148,8 @@ async function setupIntentHandler(_req: NextRequest) {
     // Using Checkout is consistent with the rest of the codebase
     const checkoutSession = await stripe.checkout.sessions.create({
       customer: customerId,
-      mode: "setup",
-      payment_method_types: ["card"],
+      mode: 'setup',
+      payment_method_types: ['card'],
       success_url: `${process.env.NEXT_PUBLIC_APP_URL}/billing/payment-methods?setup=success`,
       cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/billing/payment-methods?setup=cancelled`,
       metadata: {
@@ -160,7 +157,7 @@ async function setupIntentHandler(_req: NextRequest) {
       },
     });
 
-    logger.info("Created SetupIntent Checkout Session", {
+    logger.info('Created SetupIntent Checkout Session', {
       userId: user.id,
       customerId,
       sessionId: checkoutSession.id,
@@ -171,13 +168,13 @@ async function setupIntentHandler(_req: NextRequest) {
       customerId,
     });
   } catch (error: unknown) {
-    logger.error("SetupIntent creation error:", error);
+    logger.error('SetupIntent creation error:', error);
     return NextResponse.json(
-      { error: "Failed to create setup intent" },
+      { error: 'Failed to create setup intent' },
       { status: 500 }
     );
   }
 }
 
 // Apply rate limiting: 10 requests per minute for payment endpoints
-export const POST = withRateLimit(setupIntentHandler, "payment");
+export const POST = withRateLimit(setupIntentHandler, 'payment');

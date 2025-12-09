@@ -3,8 +3,8 @@
  * Wraps multiple DocsStep components with consistent spacing
  */
 
-import { DocsStep } from "./docs-step";
-import { docsSpacing } from "../spacing";
+import { DocsStep } from './docs-step';
+import { docsSpacing } from '../spacing';
 
 interface Step {
   title: string;
@@ -18,11 +18,11 @@ interface DocsStepListProps {
   /** Array of steps */
   steps: Step[];
   /** Variant: "card" wraps each step in a card, "inline" shows steps without cards */
-  variant?: "card" | "inline";
+  variant?: 'card' | 'inline';
 }
 
-export function DocsStepList({ steps, variant = "card" }: DocsStepListProps) {
-  if (variant === "inline") {
+export function DocsStepList({ steps, variant = 'card' }: DocsStepListProps) {
+  if (variant === 'inline') {
     return (
       <div className={docsSpacing.stepList}>
         {steps.map((step, index) => (
@@ -44,8 +44,8 @@ export function DocsStepList({ steps, variant = "card" }: DocsStepListProps) {
   return (
     <div className={docsSpacing.stepList}>
       {steps.map((step, index) => {
-        const hexCode = (index + 1).toString(16).toUpperCase().padStart(2, "0");
-        const titleSlug = step.title.toUpperCase().replace(/\s+/g, "_");
+        const hexCode = (index + 1).toString(16).toUpperCase().padStart(2, '0');
+        const titleSlug = step.title.toUpperCase().replace(/\s+/g, '_');
         return (
           <div key={index} className="border-border bg-card border">
             {/* Terminal header */}
@@ -73,7 +73,10 @@ export function DocsStepList({ steps, variant = "card" }: DocsStepListProps) {
               )}
               {!step.code && step.tip && (
                 <p className="text-muted-foreground border-primary/50 border-l-2 pl-4 font-mono text-xs">
-                  <span className="text-primary font-semibold uppercase">Tip:</span> {step.tip}
+                  <span className="text-primary font-semibold uppercase">
+                    Tip:
+                  </span>{' '}
+                  {step.tip}
                 </p>
               )}
             </div>

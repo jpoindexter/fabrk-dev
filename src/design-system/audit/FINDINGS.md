@@ -99,7 +99,7 @@ className={cn(
 
 ```tsx
 // ⚠️ FRAGILE: Assumes mode.radius is literal string "rounded-none"
-mode.radius === "rounded-none" ? "rounded-b-none" : "";
+mode.radius === 'rounded-none' ? 'rounded-b-none' : '';
 ```
 
 **Why It's Fragile:**
@@ -112,13 +112,13 @@ mode.radius === "rounded-none" ? "rounded-b-none" : "";
 
 ```tsx
 // Option 1: CSS-based (no JS comparison)
-"[&>button:first-child]:rounded-b-none";
+'[&>button:first-child]:rounded-b-none';
 
 // Option 2: Mode helper function
-mode.isSharp ? "rounded-b-none" : "";
+mode.isSharp ? 'rounded-b-none' : '';
 
 // Option 3: Conditional class composition
-cn("rounded", mode.radius, isTopButton && "rounded-b-none");
+cn('rounded', mode.radius, isTopButton && 'rounded-b-none');
 ```
 
 **Priority:** **LOW** - Works now but needs refactoring
@@ -232,7 +232,7 @@ cn("rounded", mode.radius, isTopButton && "rounded-b-none");
 **Issue:**
 
 ```tsx
-"placeholder:text-muted-foreground placeholder:font-normal";
+'placeholder:text-muted-foreground placeholder:font-normal';
 //                                  ^^^^^^^^^^^^^^^^^^
 // Overrides mode.font (won't be monospace in terminal mode)
 ```

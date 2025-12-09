@@ -3,10 +3,10 @@
  * Admin interface for managing users
  */
 
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   Table,
   TableBody,
@@ -14,10 +14,10 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+} from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -25,7 +25,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from '@/components/ui/dropdown-menu';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -35,19 +35,19 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+} from '@/components/ui/alert-dialog';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { MoreHorizontal, Search, UserCog, Ban, Trash2 } from "lucide-react";
-import { toast } from "sonner";
+} from '@/components/ui/select';
+import { MoreHorizontal, Search, UserCog, Ban, Trash2 } from 'lucide-react';
+import { toast } from 'sonner';
 
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 interface User {
   id: string;
   name: string | null;
@@ -65,11 +65,13 @@ interface UserManagementTableProps {
   initialUsers: User[];
 }
 
-export function UserManagementTable({ initialUsers }: UserManagementTableProps) {
+export function UserManagementTable({
+  initialUsers,
+}: UserManagementTableProps) {
   const router = useRouter();
   const [users, setUsers] = useState(initialUsers);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [roleFilter, setRoleFilter] = useState("all");
+  const [searchQuery, setSearchQuery] = useState('');
+  const [roleFilter, setRoleFilter] = useState('all');
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [actionLoading, setActionLoading] = useState(false);
@@ -78,29 +80,32 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
     const matchesSearch =
       user.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
       user.email.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesRole = roleFilter === "all" || user.role === roleFilter;
+    const matchesRole = roleFilter === 'all' || user.role === roleFilter;
     return matchesSearch && matchesRole;
   });
 
   const handleRoleChange = async (userId: string, newRole: string) => {
     setActionLoading(true);
     try {
-      const response = await fetch("/api/admin/users/role", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
+      const response = await fetch('/api/admin/users/role', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId, role: newRole }),
       });
 
       if (!response.ok) {
         const error = await response.json();
-        throw new Error(error.error || "Failed to update role");
+        throw new Error(error.error || 'Failed to update role');
       }
 
-      setUsers(users.map((u) => (u.id === userId ? { ...u, role: newRole } : u)));
-      toast.success("User role updated successfully");
+      setUsers(
+        users.map((u) => (u.id === userId ? { ...u, role: newRole } : u))
+      );
+      toast.success('User role updated successfully');
       router.refresh();
     } catch (error: unknown) {
-      const errorMessage = error instanceof Error ? error.message : "Failed to update user role";
+      const errorMessage =
+        error instanceof Error ? error.message : 'Failed to update user role';
       toast.error(errorMessage);
     } finally {
       setActionLoading(false);
@@ -112,22 +117,23 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
 
     setActionLoading(true);
     try {
-      const response = await fetch("/api/admin/users/delete", {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
+      const response = await fetch('/api/admin/users/delete', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId: selectedUser.id }),
       });
 
       if (!response.ok) {
         const error = await response.json();
-        throw new Error(error.error || "Failed to delete user");
+        throw new Error(error.error || 'Failed to delete user');
       }
 
       setUsers(users.filter((u) => u.id !== selectedUser.id));
-      toast.success("User deleted successfully");
+      toast.success('User deleted successfully');
       router.refresh();
     } catch (error: unknown) {
-      const errorMessage = error instanceof Error ? error.message : "Failed to delete user";
+      const errorMessage =
+        error instanceof Error ? error.message : 'Failed to delete user';
       toast.error(errorMessage);
     } finally {
       setActionLoading(false);
@@ -139,21 +145,22 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
   const handleSuspendUser = async (userId: string) => {
     setActionLoading(true);
     try {
-      const response = await fetch("/api/admin/users/suspend", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const response = await fetch('/api/admin/users/suspend', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId }),
       });
 
       if (!response.ok) {
         const error = await response.json();
-        throw new Error(error.error || "Failed to suspend user");
+        throw new Error(error.error || 'Failed to suspend user');
       }
 
-      toast.success("User suspended successfully");
+      toast.success('User suspended successfully');
       router.refresh();
     } catch (error: unknown) {
-      const errorMessage = error instanceof Error ? error.message : "Failed to suspend user";
+      const errorMessage =
+        error instanceof Error ? error.message : 'Failed to suspend user';
       toast.error(errorMessage);
     } finally {
       setActionLoading(false);
@@ -161,9 +168,9 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
   };
 
   const formatDate = (date: Date) => {
-    return new Intl.DateTimeFormat("en-US", {
-      dateStyle: "medium",
-      timeStyle: "short",
+    return new Intl.DateTimeFormat('en-US', {
+      dateStyle: 'medium',
+      timeStyle: 'short',
     }).format(new Date(date));
   };
 
@@ -199,7 +206,7 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
       </div>
 
       {/* Table */}
-      <div className={cn("border", mode.radius)}>
+      <div className={cn('border', mode.radius)}>
         <Table>
           <TableHeader>
             <TableRow>
@@ -216,26 +223,34 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
           <TableBody>
             {filteredUsers.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={8} className="text-muted-foreground text-center">
+                <TableCell
+                  colSpan={8}
+                  className="text-muted-foreground text-center"
+                >
                   No users found
                 </TableCell>
               </TableRow>
             ) : (
               filteredUsers.map((user) => (
                 <TableRow key={user.id}>
-                  <TableCell className="font-medium">{user.name || "—"}</TableCell>
+                  <TableCell className="font-medium">
+                    {user.name || '—'}
+                  </TableCell>
                   <TableCell>{user.email}</TableCell>
                   <TableCell>
                     <Badge
-                      variant={user.role === "ADMIN" ? "default" : "secondary"}
+                      variant={user.role === 'ADMIN' ? 'default' : 'secondary'}
                       className="w-24 justify-center font-semibold"
                     >
                       {user.role}
                     </Badge>
                   </TableCell>
                   <TableCell>
-                    <Badge variant="outline" className="w-24 justify-center font-semibold">
-                      {user.tier || "FREE"}
+                    <Badge
+                      variant="outline"
+                      className="w-24 justify-center font-semibold"
+                    >
+                      {user.tier || 'FREE'}
                     </Badge>
                   </TableCell>
                   <TableCell>{user._count.sessions}</TableCell>
@@ -248,7 +263,10 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
                         Yes
                       </Badge>
                     ) : (
-                      <Badge variant="accent" className="w-24 justify-center font-semibold">
+                      <Badge
+                        variant="accent"
+                        className="w-24 justify-center font-semibold"
+                      >
                         No
                       </Badge>
                     )}
@@ -259,7 +277,11 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
                   <TableCell className="text-right">
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="sm" disabled={actionLoading}>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          disabled={actionLoading}
+                        >
                           <MoreHorizontal className="h-4 w-4" />
                         </Button>
                       </DropdownMenuTrigger>
@@ -268,12 +290,17 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
                         <DropdownMenuSeparator />
                         <DropdownMenuItem
                           onClick={() =>
-                            handleRoleChange(user.id, user.role === "ADMIN" ? "USER" : "ADMIN")
+                            handleRoleChange(
+                              user.id,
+                              user.role === 'ADMIN' ? 'USER' : 'ADMIN'
+                            )
                           }
                           className="font-semibold"
                         >
                           <UserCog className="mr-2 h-4 w-4" />
-                          {user.role === "ADMIN" ? "Remove Admin" : "Make Admin"}
+                          {user.role === 'ADMIN'
+                            ? 'Remove Admin'
+                            : 'Make Admin'}
                         </DropdownMenuItem>
                         <DropdownMenuItem
                           onClick={() => handleSuspendUser(user.id)}
@@ -309,9 +336,9 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
           <AlertDialogHeader>
             <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete the user account for{" "}
-              <strong>{selectedUser?.email}</strong> and remove all associated data from the
-              database.
+              This action cannot be undone. This will permanently delete the
+              user account for <strong>{selectedUser?.email}</strong> and remove
+              all associated data from the database.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
@@ -321,7 +348,7 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
               disabled={actionLoading}
             >
-              {actionLoading ? "> DELETING..." : "> DELETE_USER"}
+              {actionLoading ? '> DELETING...' : '> DELETE_USER'}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { FormError, commonErrors } from "@/components/ui/form-error";
-import { useState } from "react";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { FormError, commonErrors } from '@/components/ui/form-error';
+import { useState } from 'react';
 
 export default function FormErrorPage() {
   const [retryCount, setRetryCount] = useState(0);
@@ -30,8 +30,8 @@ export default function FormErrorPage() {
       }}
       variants={[
         {
-          title: "With Retry Action",
-          description: "Error message with retry button.",
+          title: 'With Retry Action',
+          description: 'Error message with retry button.',
           preview: (
             <FormError
               what="Failed to load data"
@@ -48,8 +48,8 @@ export default function FormErrorPage() {
 />`,
         },
         {
-          title: "With Help Link",
-          description: "Error with link to documentation.",
+          title: 'With Help Link',
+          description: 'Error with link to documentation.',
           preview: (
             <FormError
               what="Payment processing failed"
@@ -66,40 +66,40 @@ export default function FormErrorPage() {
 />`,
         },
         {
-          title: "Network Error (Common Pattern)",
-          description: "Pre-configured network error message.",
+          title: 'Network Error (Common Pattern)',
+          description: 'Pre-configured network error message.',
           preview: <FormError {...commonErrors.network} />,
           code: `import { FormError, commonErrors } from "@/components/ui/form-error";
 
 <FormError {...commonErrors.network} />`,
         },
         {
-          title: "Validation Error - Email",
-          description: "Pre-configured email validation error.",
+          title: 'Validation Error - Email',
+          description: 'Pre-configured email validation error.',
           preview: <FormError {...commonErrors.validation.email} />,
           code: `<FormError {...commonErrors.validation.email} />`,
         },
         {
-          title: "Validation Error - Password",
-          description: "Pre-configured password validation error.",
+          title: 'Validation Error - Password',
+          description: 'Pre-configured password validation error.',
           preview: <FormError {...commonErrors.validation.password} />,
           code: `<FormError {...commonErrors.validation.password} />`,
         },
         {
-          title: "Auth Error - Session Expired",
-          description: "Pre-configured session expiration error.",
+          title: 'Auth Error - Session Expired',
+          description: 'Pre-configured session expiration error.',
           preview: <FormError {...commonErrors.auth.sessionExpired} />,
           code: `<FormError {...commonErrors.auth.sessionExpired} />`,
         },
         {
-          title: "Upload Error - File Too Large",
-          description: "Pre-configured file size error.",
+          title: 'Upload Error - File Too Large',
+          description: 'Pre-configured file size error.',
           preview: <FormError {...commonErrors.upload.tooLarge} />,
           code: `<FormError {...commonErrors.upload.tooLarge} />`,
         },
         {
-          title: "Payment Error - Declined",
-          description: "Pre-configured payment declined error.",
+          title: 'Payment Error - Declined',
+          description: 'Pre-configured payment declined error.',
           preview: (
             <FormError
               {...commonErrors.payment.declined}
@@ -114,8 +114,8 @@ export default function FormErrorPage() {
 />`,
         },
         {
-          title: "Error Formula Pattern",
-          description: "The What/Why/How formula for clear error messages.",
+          title: 'Error Formula Pattern',
+          description: 'The What/Why/How formula for clear error messages.',
           preview: (
             <div className="space-y-4 p-4 font-mono text-sm">
               <div className="border-border flex items-center border-b pb-2">
@@ -132,7 +132,9 @@ export default function FormErrorPage() {
                 </div>
                 <div>
                   <div className="text-warning font-semibold">[WHY]:</div>
-                  <div className="text-muted-foreground pl-4">Why did it happen? (Root cause)</div>
+                  <div className="text-muted-foreground pl-4">
+                    Why did it happen? (Root cause)
+                  </div>
                 </div>
                 <div>
                   <div className="text-success font-semibold">[HOW]:</div>
@@ -162,52 +164,52 @@ export default function FormErrorPage() {
       ]}
       props={[
         {
-          name: "what",
-          type: "string",
+          name: 'what',
+          type: 'string',
           default: '"Something went wrong"',
-          description: "What went wrong (clear, specific description).",
+          description: 'What went wrong (clear, specific description).',
         },
         {
-          name: "why",
-          type: "string",
-          default: "-",
-          description: "Why it happened (root cause explanation).",
+          name: 'why',
+          type: 'string',
+          default: '-',
+          description: 'Why it happened (root cause explanation).',
         },
         {
-          name: "how",
-          type: "string",
-          default: "-",
-          description: "How to fix it (actionable steps for recovery).",
+          name: 'how',
+          type: 'string',
+          default: '-',
+          description: 'How to fix it (actionable steps for recovery).',
         },
         {
-          name: "onRetry",
-          type: "() => void",
-          default: "-",
-          description: "Callback function for retry button.",
+          name: 'onRetry',
+          type: '() => void',
+          default: '-',
+          description: 'Callback function for retry button.',
         },
         {
-          name: "helpLink",
-          type: "string",
-          default: "-",
-          description: "URL to help documentation.",
+          name: 'helpLink',
+          type: 'string',
+          default: '-',
+          description: 'URL to help documentation.',
         },
         {
-          name: "className",
-          type: "string",
-          default: "-",
-          description: "Additional CSS classes.",
+          name: 'className',
+          type: 'string',
+          default: '-',
+          description: 'Additional CSS classes.',
         },
       ]}
       accessibility={[
-        "Uses role=alert to announce errors to screen readers",
-        "aria-live=polite ensures error is announced without interrupting",
-        "Clear visual hierarchy with icon and structured content",
-        "Actionable buttons with clear labels (Try Again, Learn More)",
-        "Color is not the only indicator (uses icon and text)",
-        "Links open in new tab with rel=noopener noreferrer for security",
+        'Uses role=alert to announce errors to screen readers',
+        'aria-live=polite ensures error is announced without interrupting',
+        'Clear visual hierarchy with icon and structured content',
+        'Actionable buttons with clear labels (Try Again, Learn More)',
+        'Color is not the only indicator (uses icon and text)',
+        'Links open in new tab with rel=noopener noreferrer for security',
       ]}
-      previous={{ title: "Form", href: "/docs/components/form" }}
-      next={{ title: "Gauge", href: "/docs/components/gauge" }}
+      previous={{ title: 'Form', href: '/docs/components/form' }}
+      next={{ title: 'Gauge', href: '/docs/components/gauge' }}
     />
   );
 }

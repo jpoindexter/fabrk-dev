@@ -71,22 +71,25 @@
  *           window.location.href = url; // Redirect to portal
  */
 
-import { auth } from "@/lib/auth";
-import { logger } from "@/lib/logger";
-import { prisma } from "@/lib/prisma";
-import { stripe } from "@/lib/stripe/client";
-import { env } from "@/lib/env";
-import { withCsrfProtection } from "@/lib/security/csrf";
-import { NextRequest, NextResponse } from "next/server";
+import { auth } from '@/lib/auth';
+import { logger } from '@/lib/logger';
+import { prisma } from '@/lib/prisma';
+import { stripe } from '@/lib/stripe/client';
+import { env } from '@/lib/env';
+import { withCsrfProtection } from '@/lib/security/csrf';
+import { NextRequest, NextResponse } from 'next/server';
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 async function portalHandler(_req: NextRequest) {
   try {
     const session = await auth();
 
     if (!session?.user?.email) {
-      return NextResponse.json({ error: "Unauthorized - Please sign in" }, { status: 401 });
+      return NextResponse.json(
+        { error: 'Unauthorized - Please sign in' },
+        { status: 401 }
+      );
     }
 
     // Get user from database
@@ -96,7 +99,7 @@ async function portalHandler(_req: NextRequest) {
 
     if (!user?.customerId) {
       return NextResponse.json(
-        { error: "No billing account found. Please make a purchase first." },
+        { error: 'No billing account found. Please make a purchase first.' },
         { status: 400 }
       );
     }
@@ -109,8 +112,11 @@ async function portalHandler(_req: NextRequest) {
 
     return NextResponse.json({ url: portalSession.url });
   } catch (error: unknown) {
-    logger.error("Portal session error:", error);
-    return NextResponse.json({ error: "Failed to create portal session" }, { status: 500 });
+    logger.error('Portal session error:', error);
+    return NextResponse.json(
+      { error: 'Failed to create portal session' },
+      { status: 500 }
+    );
   }
 }
 

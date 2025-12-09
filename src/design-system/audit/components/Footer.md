@@ -56,12 +56,12 @@ No naming violations.
 
 ```jsx
 // Hardcoded terminal formatting:
-"[ PRODUCT ]";
-"[ COMPANY ]";
-"[ LEGAL ]";
-"> FEATURES";
-"[STATUS]:";
-"└─ [STATUS]:";
+'[ PRODUCT ]';
+'[ COMPANY ]';
+'[ LEGAL ]';
+'> FEATURES';
+'[STATUS]:';
+'└─ [STATUS]:';
 ```
 
 **Recommendation:** Use `formatLabel()` from design system for bracket formatting.
@@ -108,7 +108,9 @@ These should use theme utilities or be configurable.
 <div className="text-muted-foreground mb-4 font-mono text-xs">[ PRODUCT ]</div>;
 
 // After
-import { mode, formatLabel } from "@/design-system";
+import { mode, formatLabel } from '@/design-system';
 
-<div className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>{formatLabel("PRODUCT")}</div>;
+<div className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
+  {formatLabel('PRODUCT')}
+</div>;
 ```

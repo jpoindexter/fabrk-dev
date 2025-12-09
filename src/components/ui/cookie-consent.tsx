@@ -25,14 +25,14 @@
  * ```
  */
 
-"use client";
+'use client';
 
-import * as React from "react";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { Button } from "./button";
-import { Card } from "./card";
-import { Switch } from "./switch";
+import * as React from 'react';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { Button } from './button';
+import { Card } from './card';
+import { Switch } from './switch';
 import {
   Dialog,
   DialogContent,
@@ -40,8 +40,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogFooter,
-} from "./dialog";
-import { Cookie, Shield, BarChart3, Target } from "lucide-react";
+} from './dialog';
+import { Cookie, Shield, BarChart3, Target } from 'lucide-react';
 
 export interface CookiePreferences {
   necessary: boolean; // Always true
@@ -58,15 +58,15 @@ export interface CookieConsentProps {
   cookiePolicyUrl?: string;
 }
 
-const COOKIE_NAME = "fabrk_cookie_consent";
-const STORAGE_KEY = "fabrk_cookie_preferences";
+const COOKIE_NAME = 'fabrk_cookie_consent';
+const STORAGE_KEY = 'fabrk_cookie_preferences';
 
 export function CookieConsent({
   className,
   onAccept,
   onReject,
-  privacyPolicyUrl = "/privacy",
-  cookiePolicyUrl = "/cookies",
+  privacyPolicyUrl = '/privacy',
+  cookiePolicyUrl = '/cookies',
 }: CookieConsentProps) {
   const [isVisible, setIsVisible] = React.useState(false);
   const [showCustomize, setShowCustomize] = React.useState(false);
@@ -92,9 +92,9 @@ export function CookieConsent({
   React.useEffect(() => {
     // Check Do Not Track setting
     const dnt =
-      navigator.doNotTrack === "1" ||
-      (window as unknown as { doNotTrack?: string }).doNotTrack === "1" ||
-      (navigator as unknown as { msDoNotTrack?: string }).msDoNotTrack === "1";
+      navigator.doNotTrack === '1' ||
+      (window as unknown as { doNotTrack?: string }).doNotTrack === '1' ||
+      (navigator as unknown as { msDoNotTrack?: string }).msDoNotTrack === '1';
 
     if (dnt) {
       // Respect DNT - auto-reject all non-essential
@@ -157,26 +157,45 @@ export function CookieConsent({
     <>
       {/* Main Banner */}
       <div
-        className={cn("fixed inset-x-0 bottom-0 z-50 p-4 sm:p-6", className)}
+        className={cn('fixed inset-x-0 bottom-0 z-50 p-4 sm:p-6', className)}
         role="dialog"
         aria-live="polite"
         aria-label="Cookie consent banner"
       >
-        <Card className={cn("border-primary bg-card mx-auto max-w-4xl border-2", mode.radius)}>
+        <Card
+          className={cn(
+            'border-primary bg-card mx-auto max-w-4xl border-2',
+            mode.radius
+          )}
+        >
           <div className="flex flex-col gap-4 p-4 sm:flex-row sm:items-start sm:justify-between sm:p-6">
             {/* Content */}
             <div className="flex flex-1 gap-3">
               <Cookie className="text-primary mt-1 h-5 w-5 flex-shrink-0" />
               <div className="space-y-2">
-                <h3 className={cn("text-sm font-semibold", mode.font)}>[ COOKIE_NOTICE ]</h3>
-                <p className={cn("text-muted-foreground text-xs leading-relaxed", mode.font)}>
-                  We use cookies to enhance your experience, analyze site traffic, and personalize
-                  content. By clicking "Accept All", you consent to our use of cookies.{" "}
-                  <a href={privacyPolicyUrl} className="text-primary hover:underline">
+                <h3 className={cn('text-sm font-semibold', mode.font)}>
+                  [ COOKIE_NOTICE ]
+                </h3>
+                <p
+                  className={cn(
+                    'text-muted-foreground text-xs leading-relaxed',
+                    mode.font
+                  )}
+                >
+                  We use cookies to enhance your experience, analyze site
+                  traffic, and personalize content. By clicking "Accept All",
+                  you consent to our use of cookies.{' '}
+                  <a
+                    href={privacyPolicyUrl}
+                    className="text-primary hover:underline"
+                  >
                     Privacy Policy
-                  </a>{" "}
-                  •{" "}
-                  <a href={cookiePolicyUrl} className="text-primary hover:underline">
+                  </a>{' '}
+                  •{' '}
+                  <a
+                    href={cookiePolicyUrl}
+                    className="text-primary hover:underline"
+                  >
                     Cookie Policy
                   </a>
                 </p>
@@ -189,24 +208,24 @@ export function CookieConsent({
                 size="sm"
                 variant="ghost"
                 onClick={() => setShowCustomize(true)}
-                className={cn("text-xs", mode.radius, mode.font)}
+                className={cn('text-xs', mode.radius, mode.font)}
               >
-                {"> "}CUSTOMIZE
+                {'> '}CUSTOMIZE
               </Button>
               <Button
                 size="sm"
                 variant="outline"
                 onClick={handleRejectAll}
-                className={cn("text-xs", mode.radius, mode.font)}
+                className={cn('text-xs', mode.radius, mode.font)}
               >
-                {"> "}REJECT_ALL
+                {'> '}REJECT_ALL
               </Button>
               <Button
                 size="sm"
                 onClick={handleAcceptAll}
-                className={cn("text-xs", mode.radius, mode.font)}
+                className={cn('text-xs', mode.radius, mode.font)}
               >
-                {"> "}ACCEPT_ALL
+                {'> '}ACCEPT_ALL
               </Button>
             </div>
           </div>
@@ -215,12 +234,14 @@ export function CookieConsent({
 
       {/* Customize Dialog */}
       <Dialog open={showCustomize} onOpenChange={setShowCustomize}>
-        <DialogContent className={cn("max-w-2xl", mode.radius)}>
+        <DialogContent className={cn('max-w-2xl', mode.radius)}>
           <DialogHeader>
-            <DialogTitle className={cn(mode.font)}>[ COOKIE_PREFERENCES ]</DialogTitle>
+            <DialogTitle className={cn(mode.font)}>
+              [ COOKIE_PREFERENCES ]
+            </DialogTitle>
             <DialogDescription>
-              Manage your cookie preferences. You can enable or disable different types of cookies
-              below.
+              Manage your cookie preferences. You can enable or disable
+              different types of cookies below.
             </DialogDescription>
           </DialogHeader>
 
@@ -230,14 +251,20 @@ export function CookieConsent({
               <div className="flex gap-3">
                 <Shield className="text-primary mt-1 h-5 w-5 flex-shrink-0" />
                 <div className="space-y-1">
-                  <p className={cn("text-sm font-medium", mode.font)}>[NECESSARY]</p>
-                  <p className={cn("text-muted-foreground text-xs", mode.font)}>
-                    Essential cookies required for the website to function. These cannot be
-                    disabled.
+                  <p className={cn('text-sm font-medium', mode.font)}>
+                    [NECESSARY]
+                  </p>
+                  <p className={cn('text-muted-foreground text-xs', mode.font)}>
+                    Essential cookies required for the website to function.
+                    These cannot be disabled.
                   </p>
                 </div>
               </div>
-              <Switch checked disabled aria-label="Necessary cookies (always enabled)" />
+              <Switch
+                checked
+                disabled
+                aria-label="Necessary cookies (always enabled)"
+              />
             </div>
 
             {/* Analytics Cookies */}
@@ -245,10 +272,12 @@ export function CookieConsent({
               <div className="flex gap-3">
                 <BarChart3 className="text-primary mt-1 h-5 w-5 flex-shrink-0" />
                 <div className="space-y-1">
-                  <p className={cn("text-sm font-medium", mode.font)}>[ANALYTICS]</p>
-                  <p className={cn("text-muted-foreground text-xs", mode.font)}>
-                    Help us understand how visitors interact with our website to improve user
-                    experience.
+                  <p className={cn('text-sm font-medium', mode.font)}>
+                    [ANALYTICS]
+                  </p>
+                  <p className={cn('text-muted-foreground text-xs', mode.font)}>
+                    Help us understand how visitors interact with our website to
+                    improve user experience.
                   </p>
                 </div>
               </div>
@@ -266,10 +295,12 @@ export function CookieConsent({
               <div className="flex gap-3">
                 <Target className="text-primary mt-1 h-5 w-5 flex-shrink-0" />
                 <div className="space-y-1">
-                  <p className={cn("text-sm font-medium", mode.font)}>[MARKETING]</p>
-                  <p className={cn("text-muted-foreground text-xs", mode.font)}>
-                    Used to track visitors across websites to display relevant ads and measure
-                    campaign effectiveness.
+                  <p className={cn('text-sm font-medium', mode.font)}>
+                    [MARKETING]
+                  </p>
+                  <p className={cn('text-muted-foreground text-xs', mode.font)}>
+                    Used to track visitors across websites to display relevant
+                    ads and measure campaign effectiveness.
                   </p>
                 </div>
               </div>
@@ -287,10 +318,12 @@ export function CookieConsent({
               <div className="flex gap-3">
                 <Cookie className="text-primary mt-1 h-5 w-5 flex-shrink-0" />
                 <div className="space-y-1">
-                  <p className={cn("text-sm font-medium", mode.font)}>[PREFERENCES]</p>
-                  <p className={cn("text-muted-foreground text-xs", mode.font)}>
-                    Remember your settings and preferences (theme, language, region) for a
-                    personalized experience.
+                  <p className={cn('text-sm font-medium', mode.font)}>
+                    [PREFERENCES]
+                  </p>
+                  <p className={cn('text-muted-foreground text-xs', mode.font)}>
+                    Remember your settings and preferences (theme, language,
+                    region) for a personalized experience.
                   </p>
                 </div>
               </div>
@@ -308,15 +341,15 @@ export function CookieConsent({
             <Button
               variant="outline"
               onClick={handleRejectAll}
-              className={cn("w-full sm:w-auto", mode.radius, mode.font)}
+              className={cn('w-full sm:w-auto', mode.radius, mode.font)}
             >
-              {"> "}REJECT_ALL
+              {'> '}REJECT_ALL
             </Button>
             <Button
               onClick={handleSaveCustom}
-              className={cn("w-full sm:w-auto", mode.radius, mode.font)}
+              className={cn('w-full sm:w-auto', mode.radius, mode.font)}
             >
-              {"> "}SAVE_PREFERENCES
+              {'> '}SAVE_PREFERENCES
             </Button>
           </DialogFooter>
         </DialogContent>

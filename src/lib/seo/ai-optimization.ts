@@ -24,63 +24,63 @@ export interface AIBotConfig {
  */
 export const AI_CRAWLERS: AIBotConfig[] = [
   {
-    name: "GPTBot",
-    userAgent: "GPTBot",
+    name: 'GPTBot',
+    userAgent: 'GPTBot',
     purpose: "OpenAI's web crawler for ChatGPT training",
     allowCrawling: true,
   },
   {
-    name: "ChatGPT-User",
-    userAgent: "ChatGPT-User",
-    purpose: "ChatGPT browsing mode",
+    name: 'ChatGPT-User',
+    userAgent: 'ChatGPT-User',
+    purpose: 'ChatGPT browsing mode',
     allowCrawling: true,
   },
   {
-    name: "Google-Extended",
-    userAgent: "Google-Extended",
+    name: 'Google-Extended',
+    userAgent: 'Google-Extended',
     purpose: "Google's AI training (Bard/Gemini)",
     allowCrawling: true,
   },
   {
-    name: "Anthropic-AI",
-    userAgent: "anthropic-ai",
+    name: 'Anthropic-AI',
+    userAgent: 'anthropic-ai',
     purpose: "Anthropic's Claude AI crawler",
     allowCrawling: true,
   },
   {
-    name: "Claude-Web",
-    userAgent: "Claude-Web",
-    purpose: "Claude browsing capabilities",
+    name: 'Claude-Web',
+    userAgent: 'Claude-Web',
+    purpose: 'Claude browsing capabilities',
     allowCrawling: true,
   },
   {
-    name: "PerplexityBot",
-    userAgent: "PerplexityBot",
-    purpose: "Perplexity AI search engine",
+    name: 'PerplexityBot',
+    userAgent: 'PerplexityBot',
+    purpose: 'Perplexity AI search engine',
     allowCrawling: true,
   },
   {
-    name: "Diffbot",
-    userAgent: "Diffbot",
-    purpose: "AI-powered web data extraction",
+    name: 'Diffbot',
+    userAgent: 'Diffbot',
+    purpose: 'AI-powered web data extraction',
     allowCrawling: true,
   },
   {
-    name: "FacebookBot",
-    userAgent: "FacebookBot",
-    purpose: "Meta AI training",
+    name: 'FacebookBot',
+    userAgent: 'FacebookBot',
+    purpose: 'Meta AI training',
     allowCrawling: false, // More restrictive by default
   },
   {
-    name: "Bytespider",
-    userAgent: "Bytespider",
-    purpose: "ByteDance (TikTok) AI crawler",
+    name: 'Bytespider',
+    userAgent: 'Bytespider',
+    purpose: 'ByteDance (TikTok) AI crawler',
     allowCrawling: false, // More restrictive by default
   },
   {
-    name: "CCBot",
-    userAgent: "CCBot",
-    purpose: "Common Crawl (used by many AI companies)",
+    name: 'CCBot',
+    userAgent: 'CCBot',
+    purpose: 'Common Crawl (used by many AI companies)',
     allowCrawling: true,
   },
 ];
@@ -100,21 +100,21 @@ export function generateAIRobotRules(allowedBots: string[] = []): string {
     rules.push(`User-agent: ${bot.userAgent}`);
 
     if (bot.allowCrawling) {
-      rules.push("Allow: /");
-      rules.push("Disallow: /api/");
-      rules.push("Disallow: /dashboard/");
-      rules.push("Disallow: /admin/");
+      rules.push('Allow: /');
+      rules.push('Disallow: /api/');
+      rules.push('Disallow: /dashboard/');
+      rules.push('Disallow: /admin/');
       if (bot.crawlDelay) {
         rules.push(`Crawl-delay: ${bot.crawlDelay}`);
       }
     } else {
-      rules.push("Disallow: /");
+      rules.push('Disallow: /');
     }
 
-    rules.push("");
+    rules.push('');
   });
 
-  return rules.join("\n");
+  return rules.join('\n');
 }
 
 /**
@@ -122,7 +122,9 @@ export function generateAIRobotRules(allowedBots: string[] = []): string {
  */
 export function isAICrawler(userAgent: string): boolean {
   const lowerUA = userAgent.toLowerCase();
-  return AI_CRAWLERS.some((bot) => lowerUA.includes(bot.userAgent.toLowerCase()));
+  return AI_CRAWLERS.some((bot) =>
+    lowerUA.includes(bot.userAgent.toLowerCase())
+  );
 }
 
 /**
@@ -131,7 +133,8 @@ export function isAICrawler(userAgent: string): boolean {
 export function getAICrawlerInfo(userAgent: string): AIBotConfig | null {
   const lowerUA = userAgent.toLowerCase();
   return (
-    AI_CRAWLERS.find((bot) => lowerUA.includes(bot.userAgent.toLowerCase())) || null
+    AI_CRAWLERS.find((bot) => lowerUA.includes(bot.userAgent.toLowerCase())) ||
+    null
   );
 }
 
@@ -196,30 +199,30 @@ export function generateAIMetadata(data: {
   description: string;
   keywords: string[];
   category?: string;
-  expertise?: "beginner" | "intermediate" | "advanced";
+  expertise?: 'beginner' | 'intermediate' | 'advanced';
   readingTime?: number;
 }) {
   return {
     // Standard meta
     title: data.title,
     description: data.description,
-    keywords: data.keywords.join(", "),
+    keywords: data.keywords.join(', '),
 
     // AI-specific meta
-    "ai:topic": data.category,
-    "ai:expertise_level": data.expertise,
-    "ai:reading_time": data.readingTime,
-    "ai:content_type": "article",
+    'ai:topic': data.category,
+    'ai:expertise_level': data.expertise,
+    'ai:reading_time': data.readingTime,
+    'ai:content_type': 'article',
 
     // OpenGraph for AI context
-    "og:type": "article",
-    "og:title": data.title,
-    "og:description": data.description,
+    'og:type': 'article',
+    'og:title': data.title,
+    'og:description': data.description,
 
     // Twitter for AI context
-    "twitter:card": "summary_large_image",
-    "twitter:title": data.title,
-    "twitter:description": data.description,
+    'twitter:card': 'summary_large_image',
+    'twitter:title': data.title,
+    'twitter:description': data.description,
   };
 }
 
@@ -227,12 +230,14 @@ export function generateAIMetadata(data: {
  * Structure content for "People Also Ask" optimization (AEO)
  * Formats Q&A pairs for maximum visibility
  */
-export function formatPeopleAlsoAsk(questions: Array<{ q: string; a: string }>) {
+export function formatPeopleAlsoAsk(
+  questions: Array<{ q: string; a: string }>
+) {
   return questions.map((item) => ({
-    "@type": "Question",
+    '@type': 'Question',
     name: item.q,
     acceptedAnswer: {
-      "@type": "Answer",
+      '@type': 'Answer',
       text: item.a,
     },
   }));
@@ -242,15 +247,17 @@ export function formatPeopleAlsoAsk(questions: Array<{ q: string; a: string }>) 
  * Generate entity markup for AI understanding
  * Helps AI understand key entities in your content
  */
-export function generateEntityMarkup(entities: Array<{
-  name: string;
-  type: "Person" | "Organization" | "Product" | "Place" | "Event";
-  description?: string;
-  url?: string;
-}>) {
+export function generateEntityMarkup(
+  entities: Array<{
+    name: string;
+    type: 'Person' | 'Organization' | 'Product' | 'Place' | 'Event';
+    description?: string;
+    url?: string;
+  }>
+) {
   return entities.map((entity) => ({
-    "@context": "https://schema.org",
-    "@type": entity.type,
+    '@context': 'https://schema.org',
+    '@type': entity.type,
     name: entity.name,
     description: entity.description,
     url: entity.url,
@@ -271,7 +278,7 @@ export function optimizeForAIOverview(content: {
   return {
     // Direct answer format (critical for AI Overview)
     mainEntity: {
-      "@type": "Thing",
+      '@type': 'Thing',
       name: content.topic,
       description: content.definition,
     },
@@ -310,43 +317,43 @@ export function calculateAICitationScore(content: {
   if (content.hasStructuredData) {
     score += 20;
   } else {
-    recommendations.push("Add JSON-LD structured data");
+    recommendations.push('Add JSON-LD structured data');
   }
 
   if (content.hasClearDefinitions) {
     score += 20;
   } else {
-    recommendations.push("Include clear definitions of key terms");
+    recommendations.push('Include clear definitions of key terms');
   }
 
   if (content.hasStatistics) {
     score += 15;
   } else {
-    recommendations.push("Add statistics and data points");
+    recommendations.push('Add statistics and data points');
   }
 
   if (content.hasSourceAttribution) {
     score += 15;
   } else {
-    recommendations.push("Cite sources and references");
+    recommendations.push('Cite sources and references');
   }
 
   if (content.wordCount >= 300 && content.wordCount <= 2000) {
     score += 10;
   } else {
-    recommendations.push("Target 300-2000 words for optimal AI understanding");
+    recommendations.push('Target 300-2000 words for optimal AI understanding');
   }
 
   if (content.hasHeadings) {
     score += 10;
   } else {
-    recommendations.push("Use clear heading hierarchy");
+    recommendations.push('Use clear heading hierarchy');
   }
 
   if (content.hasLists) {
     score += 10;
   } else {
-    recommendations.push("Use lists for better AI parsing");
+    recommendations.push('Use lists for better AI parsing');
   }
 
   return {

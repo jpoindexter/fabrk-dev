@@ -32,7 +32,7 @@ Badge (standalone inline element, NOT a card)
 The canonical card component for the design system.
 
 ```tsx
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 
 <Card>
   <CardHeader
@@ -87,7 +87,7 @@ import { Card, CardHeader, CardContent } from "@/components/ui/card";
 Inline badge element for section headers and labels. **This is NOT a card.**
 
 ```tsx
-import { Badge } from "@/components/ui/card";
+import { Badge } from '@/components/ui/card';
 
 <Badge code="0x00" label="SYSTEM_INIT" meta="SAAS_BOILERPLATE_v2.0" />;
 ```
@@ -169,35 +169,35 @@ import { Badge } from "@/components/ui/card";
 
 ```tsx
 // Standard card with border
-className = "border-border bg-card border";
+className = 'border-border bg-card border';
 ```
 
 ### outline
 
 ```tsx
 // Outline only, no background
-className = "border-border border bg-transparent";
+className = 'border-border border bg-transparent';
 ```
 
 ### ghost
 
 ```tsx
 // No border, subtle background on hover
-className = "bg-transparent hover:bg-muted/50";
+className = 'bg-transparent hover:bg-muted/50';
 ```
 
 ### accent
 
 ```tsx
 // Accent background
-className = "border-border bg-accent/30 border";
+className = 'border-border bg-accent/30 border';
 ```
 
 ### featured
 
 ```tsx
 // Primary border for highlighted cards
-className = "border-primary bg-card border";
+className = 'border-primary bg-card border';
 ```
 
 ---
@@ -207,31 +207,31 @@ className = "border-primary bg-card border";
 ### neutral (default)
 
 ```tsx
-borderColor: "border-border";
+borderColor: 'border-border';
 ```
 
 ### primary
 
 ```tsx
-borderColor: "border-primary";
+borderColor: 'border-primary';
 ```
 
 ### success
 
 ```tsx
-borderColor: "border-success";
+borderColor: 'border-success';
 ```
 
 ### warning
 
 ```tsx
-borderColor: "border-warning";
+borderColor: 'border-warning';
 ```
 
 ### danger
 
 ```tsx
-borderColor: "border-destructive";
+borderColor: 'border-destructive';
 ```
 
 ---
@@ -245,8 +245,8 @@ borderColor: "border-destructive";
   {items.map((item, index) => (
     <Card key={item.id} interactive>
       <CardHeader
-        code={`0x${index.toString(16).toUpperCase().padStart(2, "0")}`}
-        title={item.title.toUpperCase().replace(/ /g, "_")}
+        code={`0x${index.toString(16).toUpperCase().padStart(2, '0')}`}
+        title={item.title.toUpperCase().replace(/ /g, '_')}
         icon={<item.icon className="size-4" />}
       />
       <CardContent withDesc>{item.description}</CardContent>
@@ -259,13 +259,17 @@ borderColor: "border-destructive";
 
 ```tsx
 <Card>
-  <CardHeader code="0x00" title="INCLUDED_FEATURES" meta={`${features.length} items`} />
+  <CardHeader
+    code="0x00"
+    title="INCLUDED_FEATURES"
+    meta={`${features.length} items`}
+  />
   <CardContent>
     <ul className="space-y-2">
       {features.map((feature, i) => (
         <li key={i} className="flex items-start gap-3 text-xs">
           <span className="text-primary flex-shrink-0">
-            {i === features.length - 1 ? "└─" : "├─"}
+            {i === features.length - 1 ? '└─' : '├─'}
           </span>
           <span className="text-foreground">{feature}</span>
         </li>
@@ -279,10 +283,16 @@ borderColor: "border-destructive";
 
 ```tsx
 <Card>
-  <CardHeader code="0x50" title="METRIC_NAME" icon={<TrendingUp className="size-4" />} />
+  <CardHeader
+    code="0x50"
+    title="METRIC_NAME"
+    icon={<TrendingUp className="size-4" />}
+  />
   <CardContent>
     <div className="text-foreground mb-2 text-3xl font-semibold">85%</div>
-    <div className="text-foreground mb-3 text-xs font-semibold">TEST_COVERAGE</div>
+    <div className="text-foreground mb-3 text-xs font-semibold">
+      TEST_COVERAGE
+    </div>
     <div className="text-xs">
       <span className="text-muted-foreground">DESC: </span>
       <span className="text-foreground">Core components covered</span>
@@ -302,7 +312,7 @@ borderColor: "border-destructive";
   <p className="text-muted-foreground mb-4 text-sm">{description}</p>
   <div className="flex flex-wrap gap-4 text-sm">
     <span>
-      <span className="text-muted-foreground">Label:</span>{" "}
+      <span className="text-muted-foreground">Label:</span>{' '}
       <span className="text-primary">VALUE</span>
     </span>
   </div>

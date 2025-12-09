@@ -274,7 +274,7 @@ After recent fixes:
 
 ```tsx
 // features/background-jobs/page.tsx
-import { BestPracticesSection } from "./components/best-practices-section";
+import { BestPracticesSection } from './components/best-practices-section';
 
 <BestPracticesSection />;
 ```

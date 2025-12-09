@@ -8,9 +8,9 @@
  * ```
  */
 
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 import {
   LineChart,
   Line,
@@ -22,15 +22,15 @@ import {
   Tooltip,
   ResponsiveContainer,
   Legend,
-} from "recharts";
-import { DollarSign, TrendingUp } from "lucide-react";
+} from 'recharts';
+import { DollarSign, TrendingUp } from 'lucide-react';
 
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
 
-import { mode } from "@/design-system";
+import { mode } from '@/design-system';
 export interface RevenueDataPoint {
   period: string;
   mrr: number;
@@ -38,7 +38,7 @@ export interface RevenueDataPoint {
   growth?: number;
 }
 
-type Period = "week" | "month" | "quarter" | "year";
+type Period = 'week' | 'month' | 'quarter' | 'year';
 
 interface RevenueChartProps {
   data: RevenueDataPoint[];
@@ -49,18 +49,19 @@ interface RevenueChartProps {
 
 export function RevenueChart({
   data,
-  initialPeriod = "month",
+  initialPeriod = 'month',
   showArr = true,
   className,
 }: RevenueChartProps) {
-  const [selectedPeriod, setSelectedPeriod] = React.useState<Period>(initialPeriod);
-  const [chartType, setChartType] = React.useState<"line" | "area">("area");
+  const [selectedPeriod, setSelectedPeriod] =
+    React.useState<Period>(initialPeriod);
+  const [chartType, setChartType] = React.useState<'line' | 'area'>('area');
 
   const periods: { label: string; value: Period }[] = [
-    { label: "Week", value: "week" },
-    { label: "Month", value: "month" },
-    { label: "Quarter", value: "quarter" },
-    { label: "Year", value: "year" },
+    { label: 'Week', value: 'week' },
+    { label: 'Month', value: 'month' },
+    { label: 'Quarter', value: 'quarter' },
+    { label: 'Year', value: 'year' },
   ];
 
   const calculateTotalRevenue = () => {
@@ -81,9 +82,9 @@ export function RevenueChart({
   const latestARR = latestMRR * 12;
 
   const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(value);
@@ -106,20 +107,22 @@ export function RevenueChart({
       ({ active, payload }: any) => {
         if (active && payload && payload.length) {
           return (
-            <div className={cn("border-border bg-card border p-4", mode.radius)}>
+            <div
+              className={cn('border-border bg-card border p-4', mode.radius)}
+            >
               <p className="text-foreground mb-2 text-sm font-semibold">
                 {payload[0].payload.period}
               </p>
               <div className="space-y-1">
                 <p className="text-muted-foreground text-xs">
-                  MRR:{" "}
+                  MRR:{' '}
                   <span className="text-primary font-semibold">
                     {formatCurrency(payload[0].value)}
                   </span>
                 </p>
                 {showArr && payload[1] && (
                   <p className="text-muted-foreground text-xs">
-                    ARR:{" "}
+                    ARR:{' '}
                     <span className="text-accent font-semibold">
                       {formatCurrency(payload[1].value)}
                     </span>
@@ -135,7 +138,7 @@ export function RevenueChart({
   );
 
   return (
-    <Card className={cn("overflow-hidden", className)}>
+    <Card className={cn('overflow-hidden', className)}>
       <CardHeader
         code="0x01"
         title="REVENUE_ANALYTICS"
@@ -151,13 +154,24 @@ export function RevenueChart({
       <CardContent padding="md" className="space-y-6">
         {/* Key Metrics */}
         <div className="grid grid-cols-2 gap-4">
-          <div className={cn("border-border bg-card border p-4", mode.radius)}>
-            <p className="text-muted-foreground mb-1 text-xs font-medium">Current MRR</p>
-            <p className="text-foreground text-2xl font-bold">{formatCompactCurrency(latestMRR)}</p>
+          <div className={cn('border-border bg-card border p-4', mode.radius)}>
+            <p className="text-muted-foreground mb-1 text-xs font-medium">
+              Current MRR
+            </p>
+            <p className="text-foreground text-2xl font-bold">
+              {formatCompactCurrency(latestMRR)}
+            </p>
           </div>
           {showArr && (
-            <div className={cn("border-border bg-accent/50 border p-4", mode.radius)}>
-              <p className="text-muted-foreground mb-1 text-xs font-medium">Projected ARR</p>
+            <div
+              className={cn(
+                'border-border bg-accent/50 border p-4',
+                mode.radius
+              )}
+            >
+              <p className="text-muted-foreground mb-1 text-xs font-medium">
+                Projected ARR
+              </p>
               <p className="text-foreground text-2xl font-bold">
                 {formatCompactCurrency(latestARR)}
               </p>
@@ -171,7 +185,9 @@ export function RevenueChart({
             {periods.map((period) => (
               <Button
                 key={period.value}
-                variant={selectedPeriod === period.value ? "default" : "outline"}
+                variant={
+                  selectedPeriod === period.value ? 'default' : 'outline'
+                }
                 size="sm"
                 onClick={() => setSelectedPeriod(period.value)}
               >
@@ -181,16 +197,16 @@ export function RevenueChart({
           </div>
           <div className="flex gap-2">
             <Button
-              variant={chartType === "area" ? "default" : "outline"}
+              variant={chartType === 'area' ? 'default' : 'outline'}
               size="sm"
-              onClick={() => setChartType("area")}
+              onClick={() => setChartType('area')}
             >
               Area
             </Button>
             <Button
-              variant={chartType === "line" ? "default" : "outline"}
+              variant={chartType === 'line' ? 'default' : 'outline'}
               size="sm"
-              onClick={() => setChartType("line")}
+              onClick={() => setChartType('line')}
             >
               Line
             </Button>
@@ -198,19 +214,38 @@ export function RevenueChart({
         </div>
 
         {/* Chart */}
-        <div className={cn("border-border bg-card border p-4", mode.radius)}>
+        <div className={cn('border-border bg-card border p-4', mode.radius)}>
           <ResponsiveContainer width="100%" height={300}>
-            {chartType === "area" ? (
-              <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+            {chartType === 'area' ? (
+              <AreaChart
+                data={data}
+                margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+              >
                 <defs>
                   <linearGradient id="colorMrr" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.3} />
-                    <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0} />
+                    <stop
+                      offset="5%"
+                      stopColor="hsl(var(--primary))"
+                      stopOpacity={0.3}
+                    />
+                    <stop
+                      offset="95%"
+                      stopColor="hsl(var(--primary))"
+                      stopOpacity={0}
+                    />
                   </linearGradient>
                   {showArr && (
                     <linearGradient id="colorArr" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="hsl(var(--accent))" stopOpacity={0.3} />
-                      <stop offset="95%" stopColor="hsl(var(--accent))" stopOpacity={0} />
+                      <stop
+                        offset="5%"
+                        stopColor="hsl(var(--accent))"
+                        stopOpacity={0.3}
+                      />
+                      <stop
+                        offset="95%"
+                        stopColor="hsl(var(--accent))"
+                        stopOpacity={0}
+                      />
                     </linearGradient>
                   )}
                 </defs>
@@ -218,11 +253,11 @@ export function RevenueChart({
                 <XAxis
                   dataKey="period"
                   className="text-xs"
-                  tick={{ fill: "hsl(var(--muted-foreground))" }}
+                  tick={{ fill: 'hsl(var(--muted-foreground))' }}
                 />
                 <YAxis
                   className="text-xs"
-                  tick={{ fill: "hsl(var(--muted-foreground))" }}
+                  tick={{ fill: 'hsl(var(--muted-foreground))' }}
                   tickFormatter={formatCompactCurrency}
                 />
                 <Tooltip content={CustomTooltip} />
@@ -249,16 +284,19 @@ export function RevenueChart({
                 )}
               </AreaChart>
             ) : (
-              <LineChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+              <LineChart
+                data={data}
+                margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+              >
                 <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
                 <XAxis
                   dataKey="period"
                   className="text-xs"
-                  tick={{ fill: "hsl(var(--muted-foreground))" }}
+                  tick={{ fill: 'hsl(var(--muted-foreground))' }}
                 />
                 <YAxis
                   className="text-xs"
-                  tick={{ fill: "hsl(var(--muted-foreground))" }}
+                  tick={{ fill: 'hsl(var(--muted-foreground))' }}
                   tickFormatter={formatCompactCurrency}
                 />
                 <Tooltip content={CustomTooltip} />
@@ -268,7 +306,7 @@ export function RevenueChart({
                   dataKey="mrr"
                   stroke="hsl(var(--primary))"
                   strokeWidth={2}
-                  dot={{ fill: "hsl(var(--primary))", r: 4 }}
+                  dot={{ fill: 'hsl(var(--primary))', r: 4 }}
                   activeDot={{ r: 6 }}
                   name="MRR"
                 />
@@ -278,7 +316,7 @@ export function RevenueChart({
                     dataKey="arr"
                     stroke="hsl(var(--accent))"
                     strokeWidth={2}
-                    dot={{ fill: "hsl(var(--accent))", r: 4 }}
+                    dot={{ fill: 'hsl(var(--accent))', r: 4 }}
                     activeDot={{ r: 6 }}
                     name="ARR"
                   />

@@ -159,7 +159,7 @@ All typography components use the standard Tailwind/DS font scale:
 The Strong component intentionally does NOT use `mode.font`:
 
 ```tsx
-<strong ref={ref} className={cn("font-semibold", className)} {...props} />
+<strong ref={ref} className={cn('font-semibold', className)} {...props} />
 ```
 
 **Rationale:**

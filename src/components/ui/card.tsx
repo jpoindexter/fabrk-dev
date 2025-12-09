@@ -30,17 +30,17 @@
  * ```
  */
 
-import * as React from "react";
+import * as React from 'react';
 
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 /**
  * Card - ONE canonical card component
  * One shell, content is composition. Variants control tone, size, and interactivity.
  */
-export type CardTone = "neutral" | "primary" | "success" | "warning" | "danger";
-export type CardSize = "auto" | "full";
+export type CardTone = 'neutral' | 'primary' | 'success' | 'warning' | 'danger';
+export type CardSize = 'auto' | 'full';
 
 export type CardProps = React.HTMLAttributes<HTMLDivElement> & {
   /** Color tone for border */
@@ -50,30 +50,30 @@ export type CardProps = React.HTMLAttributes<HTMLDivElement> & {
   /** Enable hover/focus states for interactive cards */
   interactive?: boolean;
   /** Semantic HTML element */
-  as?: "div" | "article" | "section";
+  as?: 'div' | 'article' | 'section';
 };
 
 const toneStyles: Record<CardTone, string> = {
-  neutral: "border-border",
-  primary: "border-primary",
-  success: "border-success",
-  warning: "border-warning",
-  danger: "border-destructive",
+  neutral: 'border-border',
+  primary: 'border-primary',
+  success: 'border-success',
+  warning: 'border-warning',
+  danger: 'border-destructive',
 };
 
 const sizeStyles: Record<CardSize, string> = {
-  auto: "", // Natural height
-  full: "h-full", // Equal height for grids
+  auto: '', // Natural height
+  full: 'h-full', // Equal height for grids
 };
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
   (
     {
       className,
-      tone = "neutral",
-      size = "full",
+      tone = 'neutral',
+      size = 'full',
       interactive = false,
-      as: Component = "div",
+      as: Component = 'div',
       ...props
     },
     ref
@@ -83,7 +83,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       data-slot="card"
       className={cn(
         // Base styles - ONE card shell
-        "bg-card flex flex-col border",
+        'bg-card flex flex-col border',
         mode.radius,
 
         // Tone (border color)
@@ -93,7 +93,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
         sizeStyles[size],
 
         // Interactive states
-        interactive && "group hover:border-primary/50 transition-colors",
+        interactive && 'group hover:border-primary/50 transition-colors',
 
         className
       )}
@@ -101,7 +101,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
     />
   )
 );
-Card.displayName = "Card";
+Card.displayName = 'Card';
 
 /**
  * CardHeader - Header with terminal pattern [ [0xXX] TITLE ]
@@ -120,55 +120,59 @@ export type CardHeaderProps = {
 };
 
 const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
-  ({ code = "0x00", title, icon, meta, className }, ref) => (
+  ({ code = '0x00', title, icon, meta, className }, ref) => (
     <div
       ref={ref}
       data-slot="card-header"
       className={cn(
-        "border-border flex items-center justify-between border-b px-4 py-2",
-        "last:border-b-0", // Remove bottom border when CardHeader is last child (no CardContent)
+        'border-border flex items-center justify-between border-b px-4 py-2',
+        'last:border-b-0', // Remove bottom border when CardHeader is last child (no CardContent)
         className
       )}
     >
-      <span className={cn("text-muted-foreground text-xs", mode.font)}>
+      <span className={cn('text-muted-foreground text-xs', mode.font)}>
         [ [{code}] {title} ]
       </span>
       {(icon || meta) && (
         <span className="flex items-center gap-2">
-          {meta && <span className={cn("text-muted-foreground text-xs", mode.font)}>{meta}</span>}
+          {meta && (
+            <span className={cn('text-muted-foreground text-xs', mode.font)}>
+              {meta}
+            </span>
+          )}
           {icon}
         </span>
       )}
     </div>
   )
 );
-CardHeader.displayName = "CardHeader";
+CardHeader.displayName = 'CardHeader';
 
 /**
  * CardContent - Content area with configurable padding
  */
 export type CardContentProps = React.HTMLAttributes<HTMLDivElement> & {
   /** Padding size */
-  padding?: "sm" | "md" | "lg";
+  padding?: 'sm' | 'md' | 'lg';
 };
 
 const paddingStyles = {
-  sm: "p-2",
-  md: "p-4",
-  lg: "p-6",
+  sm: 'p-2',
+  md: 'p-4',
+  lg: 'p-6',
 };
 
 const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
-  ({ className, padding = "md", ...props }, ref) => (
+  ({ className, padding = 'md', ...props }, ref) => (
     <div
       ref={ref}
       data-slot="card-content"
-      className={cn("flex-1", paddingStyles[padding], className)}
+      className={cn('flex-1', paddingStyles[padding], className)}
       {...props}
     />
   )
 );
-CardContent.displayName = "CardContent";
+CardContent.displayName = 'CardContent';
 
 /**
  * CardFooter - Footer area for actions
@@ -180,12 +184,15 @@ const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
     <div
       ref={ref}
       data-slot="card-footer"
-      className={cn("border-border flex items-center gap-2 border-t px-4 py-2", className)}
+      className={cn(
+        'border-border flex items-center gap-2 border-t px-4 py-2',
+        className
+      )}
       {...props}
     />
   )
 );
-CardFooter.displayName = "CardFooter";
+CardFooter.displayName = 'CardFooter';
 
 /**
  * Stat - Key-value pair with label and highlighted value
@@ -205,23 +212,23 @@ export type StatProps = React.HTMLAttributes<HTMLSpanElement> & {
   /** Value text (primary color) */
   value: string | number;
   /** Size variant */
-  size?: "sm" | "md";
+  size?: 'sm' | 'md';
 };
 
 const Stat = React.forwardRef<HTMLSpanElement, StatProps>(
-  ({ label, value, size = "md", className, ...props }, ref) => (
+  ({ label, value, size = 'md', className, ...props }, ref) => (
     <span
       ref={ref}
       data-slot="stat"
-      className={cn(size === "sm" ? "text-xs" : "text-sm", className)}
+      className={cn(size === 'sm' ? 'text-xs' : 'text-sm', className)}
       {...props}
     >
-      <span className={cn("text-muted-foreground", mode.font)}>{label}:</span>{" "}
-      <span className={cn("text-primary", mode.font)}>{value}</span>
+      <span className={cn('text-muted-foreground', mode.font)}>{label}:</span>{' '}
+      <span className={cn('text-primary', mode.font)}>{value}</span>
     </span>
   )
 );
-Stat.displayName = "Stat";
+Stat.displayName = 'Stat';
 
 /**
  * StatGroup - Container for multiple Stat components
@@ -233,12 +240,12 @@ const StatGroup = React.forwardRef<HTMLDivElement, StatGroupProps>(
     <div
       ref={ref}
       data-slot="stat-group"
-      className={cn("flex flex-wrap gap-4", className)}
+      className={cn('flex flex-wrap gap-4', className)}
       {...props}
     />
   )
 );
-StatGroup.displayName = "StatGroup";
+StatGroup.displayName = 'StatGroup';
 
 /**
  * Bracketed label with brackets
@@ -262,14 +269,14 @@ const StyledLabel = React.forwardRef<HTMLDivElement, StyledLabelProps>(
     <div
       ref={ref}
       data-slot="styled-label"
-      className={cn("text-muted-foreground text-xs", mode.font, className)}
+      className={cn('text-muted-foreground text-xs', mode.font, className)}
       {...props}
     >
-      [{children}]{showColon ? ":" : ""}
+      [{children}]{showColon ? ':' : ''}
     </div>
   )
 );
-StyledLabel.displayName = "StyledLabel";
+StyledLabel.displayName = 'StyledLabel';
 
 /**
  * Feature list item with > prefix
@@ -284,22 +291,22 @@ StyledLabel.displayName = "StyledLabel";
 export type FeatureItemProps = React.HTMLAttributes<HTMLDivElement> & {
   children: React.ReactNode;
   /** Icon to use before text. Defaults to ">" */
-  icon?: "arrow" | "check" | "dot";
+  icon?: 'arrow' | 'check' | 'dot';
 };
 
 const FeatureItem = React.forwardRef<HTMLDivElement, FeatureItemProps>(
-  ({ children, icon = "arrow", className, ...props }, ref) => {
+  ({ children, icon = 'arrow', className, ...props }, ref) => {
     const iconMap = {
-      arrow: ">",
-      check: "✓",
-      dot: "•",
+      arrow: '>',
+      check: '✓',
+      dot: '•',
     };
 
     return (
       <div
         ref={ref}
         data-slot="feature-item"
-        className={cn("text-xs", mode.font, className)}
+        className={cn('text-xs', mode.font, className)}
         {...props}
       >
         <span className="text-success">{iconMap[icon]}</span> {children}
@@ -307,7 +314,7 @@ const FeatureItem = React.forwardRef<HTMLDivElement, FeatureItemProps>(
     );
   }
 );
-FeatureItem.displayName = "FeatureItem";
+FeatureItem.displayName = 'FeatureItem';
 
 /**
  * Feature list container
@@ -328,14 +335,14 @@ const FeatureList = React.forwardRef<HTMLDivElement, FeatureListProps>(
     <div
       ref={ref}
       data-slot="feature-list"
-      className={cn("space-y-2 text-xs", mode.font, className)}
+      className={cn('space-y-2 text-xs', mode.font, className)}
       {...props}
     >
       {children}
     </div>
   )
 );
-FeatureList.displayName = "FeatureList";
+FeatureList.displayName = 'FeatureList';
 
 /**
  * Note/info text
@@ -354,18 +361,18 @@ export type InfoNoteProps = React.HTMLAttributes<HTMLDivElement> & {
 };
 
 const InfoNote = React.forwardRef<HTMLDivElement, InfoNoteProps>(
-  ({ children, label = "NOTE", className, ...props }, ref) => (
+  ({ children, label = 'NOTE', className, ...props }, ref) => (
     <div
       ref={ref}
       data-slot="info-note"
-      className={cn("text-muted-foreground mt-4 text-xs", mode.font, className)}
+      className={cn('text-muted-foreground mt-4 text-xs', mode.font, className)}
       {...props}
     >
       [{label}]: {children}
     </div>
   )
 );
-InfoNote.displayName = "InfoNote";
+InfoNote.displayName = 'InfoNote';
 
 /**
  * Badge - Inline badge with terminal pattern [ [0xXX] LABEL ] META
@@ -391,20 +398,24 @@ export type BadgeProps = React.HTMLAttributes<HTMLDivElement> & {
 };
 
 const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
-  ({ code = "0x00", label, meta, className, ...props }, ref) => (
+  ({ code = '0x00', label, meta, className, ...props }, ref) => (
     <div
       ref={ref}
       data-slot="badge"
-      className={cn("border-border bg-card inline-block border px-2 py-1", mode.radius, className)}
+      className={cn(
+        'border-border bg-card inline-block border px-2 py-1',
+        mode.radius,
+        className
+      )}
       {...props}
     >
-      <span className={cn("text-muted-foreground text-xs", mode.font)}>
-        [ [{code}] {label} ]{meta ? ` ${meta}` : ""}
+      <span className={cn('text-muted-foreground text-xs', mode.font)}>
+        [ [{code}] {label} ]{meta ? ` ${meta}` : ''}
       </span>
     </div>
   )
 );
-Badge.displayName = "Badge";
+Badge.displayName = 'Badge';
 
 /**
  * Page badge
@@ -423,20 +434,24 @@ export type PageBadgeProps = React.HTMLAttributes<HTMLDivElement> & {
 };
 
 const PageBadge = React.forwardRef<HTMLDivElement, PageBadgeProps>(
-  ({ children, prefix = "TEMPLATE", className, ...props }, ref) => (
+  ({ children, prefix = 'TEMPLATE', className, ...props }, ref) => (
     <div
       ref={ref}
       data-slot="page-badge"
-      className={cn("border-border inline-block border px-4 py-1", mode.radius, className)}
+      className={cn(
+        'border-border inline-block border px-4 py-1',
+        mode.radius,
+        className
+      )}
       {...props}
     >
-      <span className={cn("text-muted-foreground text-xs", mode.font)}>
+      <span className={cn('text-muted-foreground text-xs', mode.font)}>
         [{prefix}]: {children}
       </span>
     </div>
   )
 );
-PageBadge.displayName = "PageBadge";
+PageBadge.displayName = 'PageBadge';
 
 /**
  * Template page header component
@@ -462,23 +477,40 @@ export type TemplatePageHeaderProps = React.HTMLAttributes<HTMLDivElement> & {
   badgePrefix?: string;
 };
 
-const TemplatePageHeader = React.forwardRef<HTMLDivElement, TemplatePageHeaderProps>(
-  ({ badge, title, description, badgePrefix = "TEMPLATE", className, ...props }, ref) => (
+const TemplatePageHeader = React.forwardRef<
+  HTMLDivElement,
+  TemplatePageHeaderProps
+>(
+  (
+    {
+      badge,
+      title,
+      description,
+      badgePrefix = 'TEMPLATE',
+      className,
+      ...props
+    },
+    ref
+  ) => (
     <div
       ref={ref}
       data-slot="template-page-header"
-      className={cn("space-y-2", className)}
+      className={cn('space-y-2', className)}
       {...props}
     >
       <PageBadge prefix={badgePrefix}>{badge}</PageBadge>
-      <h1 className={cn("text-4xl font-semibold tracking-tight", mode.font)}>{title}</h1>
+      <h1 className={cn('text-4xl font-semibold tracking-tight', mode.font)}>
+        {title}
+      </h1>
       {description && (
-        <p className={cn("text-muted-foreground text-sm", mode.font)}>{description}</p>
+        <p className={cn('text-muted-foreground text-sm', mode.font)}>
+          {description}
+        </p>
       )}
     </div>
   )
 );
-TemplatePageHeader.displayName = "TemplatePageHeader";
+TemplatePageHeader.displayName = 'TemplatePageHeader';
 
 /**
  * Features card with header and feature list
@@ -503,17 +535,17 @@ export type FeaturesCardProps = React.HTMLAttributes<HTMLDivElement> & {
   /** Optional note text at bottom */
   note?: string;
   /** Feature icon type */
-  featureIcon?: "arrow" | "check" | "dot";
+  featureIcon?: 'arrow' | 'check' | 'dot';
 };
 
 const FeaturesCard = React.forwardRef<HTMLDivElement, FeaturesCardProps>(
   (
     {
-      title = "TEMPLATE_FEATURES",
-      code = "0x00",
+      title = 'TEMPLATE_FEATURES',
+      code = '0x00',
       features,
       note,
-      featureIcon = "arrow",
+      featureIcon = 'arrow',
       className,
       ...props
     },
@@ -535,7 +567,7 @@ const FeaturesCard = React.forwardRef<HTMLDivElement, FeaturesCardProps>(
     </Card>
   )
 );
-FeaturesCard.displayName = "FeaturesCard";
+FeaturesCard.displayName = 'FeaturesCard';
 
 // Export all components
 export {

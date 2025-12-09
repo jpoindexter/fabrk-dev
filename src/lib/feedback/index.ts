@@ -18,34 +18,70 @@ export interface Feedback {
   tags?: string[];
 }
 
-export type FeedbackType = "bug" | "feature_request" | "improvement" | "question" | "praise" | "complaint";
+export type FeedbackType =
+  | 'bug'
+  | 'feature_request'
+  | 'improvement'
+  | 'question'
+  | 'praise'
+  | 'complaint';
 
 export type FeedbackCategory =
-  | "ui_ux"
-  | "performance"
-  | "functionality"
-  | "documentation"
-  | "billing"
-  | "support"
-  | "other";
+  | 'ui_ux'
+  | 'performance'
+  | 'functionality'
+  | 'documentation'
+  | 'billing'
+  | 'support'
+  | 'other';
 
-export type FeedbackStatus = "new" | "acknowledged" | "in_progress" | "resolved" | "closed";
+export type FeedbackStatus =
+  | 'new'
+  | 'acknowledged'
+  | 'in_progress'
+  | 'resolved'
+  | 'closed';
 
 /**
  * Analyze feedback sentiment (simple heuristic)
  */
-export function analyzeSentiment(message: string): "positive" | "neutral" | "negative" {
-  const positiveWords = ["great", "excellent", "love", "awesome", "perfect", "amazing", "helpful", "fast"];
-  const negativeWords = ["bad", "terrible", "hate", "slow", "broken", "bug", "issue", "problem", "frustrated"];
+export function analyzeSentiment(
+  message: string
+): 'positive' | 'neutral' | 'negative' {
+  const positiveWords = [
+    'great',
+    'excellent',
+    'love',
+    'awesome',
+    'perfect',
+    'amazing',
+    'helpful',
+    'fast',
+  ];
+  const negativeWords = [
+    'bad',
+    'terrible',
+    'hate',
+    'slow',
+    'broken',
+    'bug',
+    'issue',
+    'problem',
+    'frustrated',
+  ];
 
   const lowerMessage = message.toLowerCase();
 
-  const positiveCount = positiveWords.filter((word) => lowerMessage.includes(word)).length;
-  const negativeCount = negativeWords.filter((word) => lowerMessage.includes(word)).length;
+  const positiveCount = positiveWords.filter((word) =>
+    lowerMessage.includes(word)
+  ).length;
+  const negativeCount = negativeWords.filter((word) =>
+    lowerMessage.includes(word)
+  ).length;
 
-  if (positiveCount > negativeCount) return "positive";
-  if (negativeCount > positiveCount) return "negative";
-  return "neutral";
+  if (positiveCount > negativeCount) return 'positive';
+  if (negativeCount > positiveCount) return 'negative';
+  return 'neutral';
 }
 
 /**
@@ -55,25 +91,27 @@ export function categorizeFeedback(message: string): FeedbackCategory {
   const lowerMessage = message.toLowerCase();
 
   if (lowerMessage.match(/(slow|lag|performance|speed|loading)/)) {
-    return "performance";
+    return 'performance';
   }
   if (lowerMessage.match(/(ui|ux|design|layout|button|color|theme)/)) {
-    return "ui_ux";
+    return 'ui_ux';
   }
-  if (lowerMessage.match(/(billing|payment|charge|subscription|refund|price)/)) {
-    return "billing";
+  if (
+    lowerMessage.match(/(billing|payment|charge|subscription|refund|price)/)
+  ) {
+    return 'billing';
   }
   if (lowerMessage.match(/(doc|documentation|guide|tutorial|help)/)) {
-    return "documentation";
+    return 'documentation';
   }
   if (lowerMessage.match(/(support|contact|email|response|reply)/)) {
-    return "support";
+    return 'support';
   }
   if (lowerMessage.match(/(feature|function|work|integrate|export)/)) {
-    return "functionality";
+    return 'functionality';
   }
 
-  return "other";
+  return 'other';
 }
 
 /**
@@ -83,14 +121,14 @@ export function extractTags(message: string): string[] {
   const tags: string[] = [];
 
   const patterns: Record<string, RegExp[]> = {
-    "dark-mode": [/dark mode/i, /dark theme/i],
-    "mobile-app": [/mobile app/i, /ios app/i, /android app/i],
-    "api": [/\bapi\b/i, /integration/i],
-    "export": [/export/i, /download/i, /csv/i, /pdf/i],
-    "notifications": [/notification/i, /alert/i, /email notification/i],
-    "collaboration": [/team/i, /collaborate/i, /share/i],
-    "automation": [/automate/i, /automatic/i, /schedule/i],
-    "analytics": [/analytics/i, /report/i, /dashboard/i],
+    'dark-mode': [/dark mode/i, /dark theme/i],
+    'mobile-app': [/mobile app/i, /ios app/i, /android app/i],
+    api: [/\bapi\b/i, /integration/i],
+    export: [/export/i, /download/i, /csv/i, /pdf/i],
+    notifications: [/notification/i, /alert/i, /email notification/i],
+    collaboration: [/team/i, /collaborate/i, /share/i],
+    automation: [/automate/i, /automatic/i, /schedule/i],
+    analytics: [/analytics/i, /report/i, /dashboard/i],
   };
 
   Object.entries(patterns).forEach(([tag, regexes]) => {
@@ -118,21 +156,21 @@ function calculatePriorityScore(feedback: Feedback): number {
   let score = 0;
 
   // Type priority
-  if (feedback.type === "bug") score += 10;
-  if (feedback.type === "complaint") score += 8;
-  if (feedback.type === "feature_request") score += 5;
+  if (feedback.type === 'bug') score += 10;
+  if (feedback.type === 'complaint') score += 8;
+  if (feedback.type === 'feature_request') score += 5;
 
   // Status priority
-  if (feedback.status === "new") score += 5;
+  if (feedback.status === 'new') score += 5;
 
   // Category priority
-  if (feedback.category === "billing") score += 8;
-  if (feedback.category === "performance") score += 7;
+  if (feedback.category === 'billing') score += 8;
+  if (feedback.category === 'performance') score += 7;
 
   // Sentiment penalty (negative feedback needs attention)
   if (feedback.message) {
     const sentiment = analyzeSentiment(feedback.message);
-    if (sentiment === "negative") score += 6;
+    if (sentiment === 'negative') score += 6;
   }
 
   // Rating-based priority
@@ -231,7 +269,7 @@ export function getFeedbackStats(feedback: Feedback[]): {
 export function generateFeedbackReport(feedback: Feedback[]): string {
   const stats = getFeedbackStats(feedback);
 
-  let report = "# Feedback Report\n\n";
+  let report = '# Feedback Report\n\n';
 
   report += `## Summary\n`;
   report += `- Total Feedback: ${stats.total}\n`;
@@ -255,4 +293,4 @@ export function generateFeedbackReport(feedback: Feedback[]): string {
 }
 
 // Export all from NPS module
-export * from "./nps";
+export * from './nps';

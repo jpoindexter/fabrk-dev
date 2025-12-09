@@ -1,12 +1,16 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { Button } from "@/components/ui/button";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Settings, Info } from "lucide-react";
-import { formatLabel } from "@/design-system";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { Button } from '@/components/ui/button';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Settings, Info } from 'lucide-react';
+import { formatLabel } from '@/design-system';
 
 export default function PopoverPage() {
   return (
@@ -25,7 +29,9 @@ export default function PopoverPage() {
             <PopoverContent>
               <div className="space-y-2">
                 <h4 className="leading-none font-semibold">Dimensions</h4>
-                <p className="text-muted-foreground text-sm">Set the dimensions for the layer.</p>
+                <p className="text-muted-foreground text-sm">
+                  Set the dimensions for the layer.
+                </p>
               </div>
             </PopoverContent>
           </Popover>
@@ -46,8 +52,8 @@ export default function PopoverPage() {
       }}
       variants={[
         {
-          title: "With Form",
-          description: "Popover containing a form with inputs.",
+          title: 'With Form',
+          description: 'Popover containing a form with inputs.',
           preview: (
             <Popover>
               <PopoverTrigger asChild>
@@ -60,16 +66,26 @@ export default function PopoverPage() {
                 <div className="grid gap-4">
                   <div className="space-y-2">
                     <h4 className="leading-none font-semibold">Settings</h4>
-                    <p className="text-muted-foreground text-sm">Configure your preferences.</p>
+                    <p className="text-muted-foreground text-sm">
+                      Configure your preferences.
+                    </p>
                   </div>
                   <div className="grid gap-2">
                     <div className="grid grid-cols-3 items-center gap-4">
-                      <Label htmlFor="width">{formatLabel("Width")}</Label>
-                      <Input id="width" defaultValue="100%" className="col-span-2 h-8" />
+                      <Label htmlFor="width">{formatLabel('Width')}</Label>
+                      <Input
+                        id="width"
+                        defaultValue="100%"
+                        className="col-span-2 h-8"
+                      />
                     </div>
                     <div className="grid grid-cols-3 items-center gap-4">
-                      <Label htmlFor="height">{formatLabel("Height")}</Label>
-                      <Input id="height" defaultValue="25px" className="col-span-2 h-8" />
+                      <Label htmlFor="height">{formatLabel('Height')}</Label>
+                      <Input
+                        id="height"
+                        defaultValue="25px"
+                        className="col-span-2 h-8"
+                      />
                     </div>
                   </div>
                 </div>
@@ -97,8 +113,8 @@ export default function PopoverPage() {
 </Popover>`,
         },
         {
-          title: "Aligned Start",
-          description: "Popover aligned to the start of the trigger.",
+          title: 'Aligned Start',
+          description: 'Popover aligned to the start of the trigger.',
           preview: (
             <Popover>
               <PopoverTrigger asChild>
@@ -127,8 +143,8 @@ export default function PopoverPage() {
 </Popover>`,
         },
         {
-          title: "Aligned End",
-          description: "Popover aligned to the end of the trigger.",
+          title: 'Aligned End',
+          description: 'Popover aligned to the end of the trigger.',
           preview: (
             <Popover>
               <PopoverTrigger asChild>
@@ -157,12 +173,16 @@ export default function PopoverPage() {
 </Popover>`,
         },
         {
-          title: "Icon Trigger",
-          description: "Popover triggered by an icon button.",
+          title: 'Icon Trigger',
+          description: 'Popover triggered by an icon button.',
           preview: (
             <Popover>
               <PopoverTrigger asChild>
-                <Button variant="ghost" size="icon" aria-label="Show more information">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  aria-label="Show more information"
+                >
                   <Info className="h-4 w-4" />
                 </Button>
               </PopoverTrigger>
@@ -191,8 +211,8 @@ export default function PopoverPage() {
 </Popover>`,
         },
         {
-          title: "Custom Width",
-          description: "Popover with custom width using className.",
+          title: 'Custom Width',
+          description: 'Popover with custom width using className.',
           preview: (
             <Popover>
               <PopoverTrigger asChild>
@@ -202,8 +222,8 @@ export default function PopoverPage() {
                 <div className="space-y-2">
                   <h4 className="font-semibold">Custom Width</h4>
                   <p className="text-muted-foreground text-sm">
-                    This popover has a custom width of 384px (w-96). You can adjust the width using
-                    Tailwind classes.
+                    This popover has a custom width of 384px (w-96). You can
+                    adjust the width using Tailwind classes.
                   </p>
                 </div>
               </PopoverContent>
@@ -224,53 +244,55 @@ export default function PopoverPage() {
       ]}
       props={[
         {
-          name: "open",
-          type: "boolean",
-          default: "undefined",
-          description: "Control the open state of the popover.",
+          name: 'open',
+          type: 'boolean',
+          default: 'undefined',
+          description: 'Control the open state of the popover.',
         },
         {
-          name: "onOpenChange",
-          type: "(open: boolean) => void",
-          default: "undefined",
-          description: "Event handler called when the open state changes.",
+          name: 'onOpenChange',
+          type: '(open: boolean) => void',
+          default: 'undefined',
+          description: 'Event handler called when the open state changes.',
         },
         {
-          name: "defaultOpen",
-          type: "boolean",
-          default: "false",
-          description: "The initial open state in uncontrolled mode.",
+          name: 'defaultOpen',
+          type: 'boolean',
+          default: 'false',
+          description: 'The initial open state in uncontrolled mode.',
         },
         {
-          name: "modal",
-          type: "boolean",
-          default: "false",
-          description: "Whether the popover is modal (blocks interaction with page).",
+          name: 'modal',
+          type: 'boolean',
+          default: 'false',
+          description:
+            'Whether the popover is modal (blocks interaction with page).',
         },
         {
-          name: "align",
+          name: 'align',
           type: '"start" | "center" | "end"',
           default: '"center"',
-          description: "The preferred alignment of the popover with the trigger.",
+          description:
+            'The preferred alignment of the popover with the trigger.',
         },
         {
-          name: "sideOffset",
-          type: "number",
-          default: "8",
-          description: "The distance in pixels from the trigger.",
+          name: 'sideOffset',
+          type: 'number',
+          default: '8',
+          description: 'The distance in pixels from the trigger.',
         },
       ]}
       accessibility={[
-        "Implements ARIA popover pattern with proper roles",
-        "Escape key closes the popover",
-        "Click outside closes the popover (non-modal mode)",
-        "Focus management when popover opens",
-        "Keyboard navigation support",
-        "Automatically positions to stay in viewport",
-        "Handles collision detection with viewport edges",
+        'Implements ARIA popover pattern with proper roles',
+        'Escape key closes the popover',
+        'Click outside closes the popover (non-modal mode)',
+        'Focus management when popover opens',
+        'Keyboard navigation support',
+        'Automatically positions to stay in viewport',
+        'Handles collision detection with viewport edges',
       ]}
-      previous={{ title: "Sheet", href: "/docs/components/sheet" }}
-      next={{ title: "Tooltip", href: "/docs/components/tooltip" }}
+      previous={{ title: 'Sheet', href: '/docs/components/sheet' }}
+      next={{ title: 'Tooltip', href: '/docs/components/tooltip' }}
     />
   );
 }

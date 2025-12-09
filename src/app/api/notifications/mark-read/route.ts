@@ -3,12 +3,12 @@
  * POST - Mark one or all notifications as read
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
-import { logger } from "@/lib/logger";
-import { withCsrfProtection } from "@/lib/security/csrf";
-import { z } from "zod";
+import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@/lib/auth';
+import { prisma } from '@/lib/prisma';
+import { logger } from '@/lib/logger';
+import { withCsrfProtection } from '@/lib/security/csrf';
+import { z } from 'zod';
 
 const markReadSchema = z.object({
   notificationId: z.string().optional(),
@@ -19,7 +19,7 @@ async function markReadHandler(req: NextRequest) {
   try {
     const session = await auth();
     if (!session?.user?.id) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     const body = await req.json();
@@ -37,12 +37,12 @@ async function markReadHandler(req: NextRequest) {
         },
       });
 
-      return NextResponse.json({ success: true, marked: "all" });
+      return NextResponse.json({ success: true, marked: 'all' });
     }
 
     if (!notificationId) {
       return NextResponse.json(
-        { error: "Missing notificationId" },
+        { error: 'Missing notificationId' },
         { status: 400 }
       );
     }
@@ -58,7 +58,7 @@ async function markReadHandler(req: NextRequest) {
 
     if (!notification) {
       return NextResponse.json(
-        { error: "Notification not found" },
+        { error: 'Notification not found' },
         { status: 404 }
       );
     }
@@ -72,14 +72,14 @@ async function markReadHandler(req: NextRequest) {
   } catch (error: unknown) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: "Invalid input", details: error.issues },
+        { error: 'Invalid input', details: error.issues },
         { status: 400 }
       );
     }
 
-    logger.error("Failed to mark notification as read:", error);
+    logger.error('Failed to mark notification as read:', error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: 'Internal server error' },
       { status: 500 }
     );
   }

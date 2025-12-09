@@ -107,7 +107,11 @@ These cards already follow the terminal card pattern and need no migration:
 
 ```tsx
 <TerminalCard>
-  <TerminalCardHeader code="0x00" title="TITLE" icon={<Icon className="size-4" />} />
+  <TerminalCardHeader
+    code="0x00"
+    title="TITLE"
+    icon={<Icon className="size-4" />}
+  />
   <TerminalCardContent>
     <div className="text-xs">
       <span className="text-muted-foreground">DESC: </span>
@@ -121,7 +125,11 @@ These cards already follow the terminal card pattern and need no migration:
 
 ```tsx
 <StyledCard>
-  <StyledCardHeader code="0x00" title="TITLE" icon={<Icon className="size-4" />} />
+  <StyledCardHeader
+    code="0x00"
+    title="TITLE"
+    icon={<Icon className="size-4" />}
+  />
   <div className="p-4">
     <div className="text-xs">
       <span className="text-muted-foreground">DESC: </span>
@@ -169,15 +177,15 @@ All grid cards should use this structure:
   {items.map((item, index) => (
     <TerminalCard key={item.id} interactive>
       <TerminalCardHeader
-        code={`0x${index.toString(16).toUpperCase().padStart(2, "0")}`}
-        title={item.title.toUpperCase().replace(/ /g, "_").slice(0, 12)}
+        code={`0x${index.toString(16).toUpperCase().padStart(2, '0')}`}
+        title={item.title.toUpperCase().replace(/ /g, '_').slice(0, 12)}
         icon={
           <item.icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
         }
       />
       <TerminalCardContent>
         <div className="text-foreground mb-3 text-xs font-semibold">
-          {item.title.toUpperCase().replace(/ /g, "_")}
+          {item.title.toUpperCase().replace(/ /g, '_')}
         </div>
         <div className="text-xs">
           <span className="text-muted-foreground">DESC: </span>
@@ -203,7 +211,7 @@ Hero cards use Style A (inline header with dashes) and do NOT use TerminalCard:
   <p className="text-muted-foreground mb-4 text-sm">{description}</p>
   <div className="flex flex-wrap gap-4 text-sm">
     <span>
-      <span className="text-muted-foreground">Label:</span>{" "}
+      <span className="text-muted-foreground">Label:</span>{' '}
       <span className="text-primary">VALUE</span>
     </span>
   </div>

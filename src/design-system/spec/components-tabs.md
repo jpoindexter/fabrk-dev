@@ -15,7 +15,7 @@
 ### Import
 
 ```tsx
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 ```
 
 ### Basic Usage
@@ -65,7 +65,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 ```tsx
 <TabsList
   className={cn(
-    "bg-muted text-foreground inline-flex h-10 items-center justify-center border p-2",
+    'bg-muted text-foreground inline-flex h-10 items-center justify-center border p-2',
     mode.radius
   )}
 />
@@ -76,7 +76,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 ```tsx
 <TabsTrigger
   className={cn(
-    "text-muted-foreground hover:text-foreground data-[state=active]:bg-background data-[state=active]:text-foreground inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-medium",
+    'text-muted-foreground hover:text-foreground data-[state=active]:bg-background data-[state=active]:text-foreground inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-medium',
     mode.radius,
     mode.font
   )}
@@ -150,7 +150,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 ### Controlled Tabs
 
 ```tsx
-const [activeTab, setActiveTab] = useState("tab1");
+const [activeTab, setActiveTab] = useState('tab1');
 
 <Tabs value={activeTab} onValueChange={setActiveTab}>
   <TabsList>

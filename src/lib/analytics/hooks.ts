@@ -3,12 +3,12 @@
  * Client-side hooks for tracking user interactions
  */
 
-"use client";
+'use client';
 
-import { useEffect, useCallback } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
-import { trackEvent, trackPageView } from "./tracking";
-import type { AnalyticsEvent } from "./tracking";
+import { useEffect, useCallback } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { trackEvent, trackPageView } from './tracking';
+import type { AnalyticsEvent } from './tracking';
 
 /**
  * Track page views automatically on route change
@@ -19,7 +19,8 @@ export function usePageTracking() {
 
   useEffect(() => {
     if (pathname) {
-      const url = pathname + (searchParams?.toString() ? `?${searchParams}` : "");
+      const url =
+        pathname + (searchParams?.toString() ? `?${searchParams}` : '');
       trackPageView(url, document.title);
     }
   }, [pathname, searchParams]);
@@ -34,7 +35,7 @@ export function useTrackClick(
   additionalProps?: Record<string, unknown>
 ) {
   return useCallback(() => {
-    trackEvent("button_clicked", {
+    trackEvent('button_clicked', {
       button: buttonName,
       location,
       ...additionalProps,
@@ -48,7 +49,7 @@ export function useTrackClick(
 export function useTrackForm(formName: string) {
   const trackSubmit = useCallback(
     (success: boolean, errorMessage?: string) => {
-      trackEvent("form_submitted", {
+      trackEvent('form_submitted', {
         form: formName,
         success,
         ...(errorMessage && { error: errorMessage }),
@@ -66,7 +67,7 @@ export function useTrackForm(formName: string) {
 export function useTrackFeature(featureName: string) {
   return useCallback(
     (context?: string) => {
-      trackEvent("feature_used", {
+      trackEvent('feature_used', {
         feature: featureName,
         context,
       });
@@ -79,14 +80,17 @@ export function useTrackFeature(featureName: string) {
  * Track errors
  */
 export function useTrackError() {
-  return useCallback((error: Error | string, severity: "low" | "medium" | "high" = "medium") => {
-    const errorMessage = error instanceof Error ? error.message : error;
-    trackEvent("error_occurred", {
-      error: errorMessage,
-      page: window.location.pathname,
-      severity,
-    });
-  }, []);
+  return useCallback(
+    (error: Error | string, severity: 'low' | 'medium' | 'high' = 'medium') => {
+      const errorMessage = error instanceof Error ? error.message : error;
+      trackEvent('error_occurred', {
+        error: errorMessage,
+        page: window.location.pathname,
+        severity,
+      });
+    },
+    []
+  );
 }
 
 /**
@@ -94,7 +98,7 @@ export function useTrackError() {
  */
 export function useTrackSearch() {
   return useCallback((query: string, resultsCount: number) => {
-    trackEvent("search_performed", {
+    trackEvent('search_performed', {
       query,
       results: resultsCount,
     });
@@ -106,14 +110,14 @@ export function useTrackSearch() {
  */
 export function useTrackVideo(videoName: string) {
   const trackPlay = useCallback(() => {
-    trackEvent("video_played", {
+    trackEvent('video_played', {
       video: videoName,
     });
   }, [videoName]);
 
   const trackComplete = useCallback(
     (duration: number) => {
-      trackEvent("video_played", {
+      trackEvent('video_played', {
         video: videoName,
         duration,
       });
@@ -129,7 +133,7 @@ export function useTrackVideo(videoName: string) {
  */
 export function useTrackDownload() {
   return useCallback((fileName: string, fileType: string) => {
-    trackEvent("file_downloaded", {
+    trackEvent('file_downloaded', {
       file: fileName,
       type: fileType,
     });
@@ -140,7 +144,10 @@ export function useTrackDownload() {
  * Generic event tracker
  */
 export function useTrackEvent() {
-  return useCallback(<T extends AnalyticsEvent>(event: T["name"], props?: T["props"]) => {
-    trackEvent(event, props);
-  }, []);
+  return useCallback(
+    <T extends AnalyticsEvent>(event: T['name'], props?: T['props']) => {
+      trackEvent(event, props);
+    },
+    []
+  );
 }

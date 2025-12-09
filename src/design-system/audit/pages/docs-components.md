@@ -37,12 +37,12 @@
 ### Component Code Badges
 
 ```tsx
-code = "[UI.01]"; // Button
-code = "[UI.02]"; // Input
-code = "[UI.10]"; // Card
-code = "[UI.11]"; // Badge
-code = "[UI.20]"; // Dialog
-code = "[UI.25]"; // Table
+code = '[UI.01]'; // Button
+code = '[UI.02]'; // Input
+code = '[UI.10]'; // Card
+code = '[UI.11]'; // Badge
+code = '[UI.20]'; // Dialog
+code = '[UI.25]'; // Table
 ```
 
 - **Format**: `[UI.XX]` where XX is sequential
@@ -51,9 +51,9 @@ code = "[UI.25]"; // Table
 ### Component Titles
 
 ```tsx
-title = "Button";
-title = "Input";
-title = "Badge";
+title = 'Button';
+title = 'Input';
+title = 'Badge';
 ```
 
 - **Format**: Title case (not uppercase)
@@ -62,8 +62,8 @@ title = "Badge";
 ### Descriptions
 
 ```tsx
-description = "Displays a button or a component that looks like a button.";
-description = "A basic text input field for forms and data entry.";
+description = 'Displays a button or a component that looks like a button.';
+description = 'A basic text input field for forms and data entry.';
 ```
 
 - **Style**: Plain English, descriptive
@@ -95,7 +95,7 @@ code: `<Input placeholder="Type here..." />`;
 
 ```tsx
 <div className="grid gap-2">
-  <Label htmlFor="email">{formatLabel("Email")}</Label>
+  <Label htmlFor="email">{formatLabel('Email')}</Label>
   <Input id="email" type="email" placeholder="m@example.com" />
 </div>
 ```
@@ -324,7 +324,7 @@ All sampled pages correctly use `ComponentShowcaseTemplate`:
 <div className="grid gap-4 py-4">
   <div className="grid grid-cols-4 items-center gap-4">
     <Label htmlFor="name" className="text-right">
-      {formatLabel("Name")}
+      {formatLabel('Name')}
     </Label>
     <Input id="name" defaultValue="..." className="col-span-3" />
   </div>
@@ -362,7 +362,7 @@ All sampled pages correctly use `ComponentShowcaseTemplate`:
 **Input page (line 32)**:
 
 ```tsx
-<Label htmlFor="email">{formatLabel("Email")}</Label>
+<Label htmlFor="email">{formatLabel('Email')}</Label>
 ```
 
 - ✅ Uses `formatLabel` utility from design system

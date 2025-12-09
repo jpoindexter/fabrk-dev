@@ -4,19 +4,24 @@
  * Production-ready
  */
 
-"use client";
+'use client';
 
-import { useState } from "react";
-import { BookOpen } from "lucide-react";
-import { TemplatePageHeader, Card, CardHeader, CardContent } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { CodeBlock } from "@/components/ui/code-block";
-import { DocsSidebar } from "./components/docs-sidebar";
-import { DocsContent } from "./components/docs-content";
-import { TableOfContents } from "./components/table-of-contents";
-import { docContent } from "./components/docs-data";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { useState } from 'react';
+import { BookOpen } from 'lucide-react';
+import {
+  TemplatePageHeader,
+  Card,
+  CardHeader,
+  CardContent,
+} from '@/components/ui/card';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { CodeBlock } from '@/components/ui/code-block';
+import { DocsSidebar } from './components/docs-sidebar';
+import { DocsContent } from './components/docs-content';
+import { TableOfContents } from './components/table-of-contents';
+import { docContent } from './components/docs-data';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 const templateCode = `"use client";
 
@@ -86,7 +91,7 @@ export default function DocumentationLayout() {
 }`;
 
 function DocsLayoutPreview() {
-  const [activeDoc, setActiveDoc] = useState("quick-start");
+  const [activeDoc, setActiveDoc] = useState('quick-start');
   const currentDoc = docContent[activeDoc as keyof typeof docContent];
 
   return (
@@ -124,14 +129,14 @@ export default function DocumentationLayoutTemplate() {
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
-                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  'h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0',
                   mode.radius
                 )}
               >
                 <TabsTrigger
                   value="preview"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -141,7 +146,7 @@ export default function DocumentationLayoutTemplate() {
                 <TabsTrigger
                   value="code"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -165,7 +170,11 @@ export default function DocumentationLayoutTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+                <CodeBlock
+                  code={templateCode}
+                  language="tsx"
+                  maxHeight="600px"
+                />
               </div>
             </Card>
           </TabsContent>
@@ -175,14 +184,16 @@ export default function DocumentationLayoutTemplate() {
         <Card>
           <CardHeader code="0x02" title="FILE_STRUCTURE" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-1 text-xs")}>
+            <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>
               <div className="space-y-1 pl-4">
                 <div>
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">docs/</span>
                   <span className="text-foreground">layout.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Copy template here</span>
+                  <span className="text-muted-foreground ml-4">
+                    ← Copy template here
+                  </span>
                 </div>
               </div>
             </div>
@@ -193,28 +204,34 @@ export default function DocumentationLayoutTemplate() {
         <Card>
           <CardHeader code="0x03" title="FEATURES" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-2 text-xs")}>
+            <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> Three-column layout (sidebar, content,
-                TOC)
+                <span className="text-success">&gt;</span> Three-column layout
+                (sidebar, content, TOC)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Hierarchical navigation
+                <span className="text-success">&gt;</span> Hierarchical
+                navigation
               </div>
               <div>
-                <span className="text-success">&gt;</span> Active link highlighting
+                <span className="text-success">&gt;</span> Active link
+                highlighting
               </div>
               <div>
-                <span className="text-success">&gt;</span> Table of contents with auto-scroll
+                <span className="text-success">&gt;</span> Table of contents
+                with auto-scroll
               </div>
               <div>
-                <span className="text-success">&gt;</span> Markdown-friendly content area
+                <span className="text-success">&gt;</span> Markdown-friendly
+                content area
               </div>
               <div>
-                <span className="text-success">&gt;</span> Responsive collapsible sidebars
+                <span className="text-success">&gt;</span> Responsive
+                collapsible sidebars
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant
+                (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

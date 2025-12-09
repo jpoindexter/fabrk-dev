@@ -3,11 +3,11 @@
  * Recent Invoices Card - Displays recent payment history
  */
 
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { CheckCircle2, XCircle, Clock, Download } from "lucide-react";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { CheckCircle2, XCircle, Clock, Download } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 interface Payment {
   id: string;
@@ -42,14 +42,14 @@ export function RecentInvoicesCard({
             variant="ghost"
             size="sm"
             onClick={onViewAll}
-            className={cn(mode.radius, mode.font, "h-6 text-xs")}
+            className={cn(mode.radius, mode.font, 'h-6 text-xs')}
           >
             &gt; VIEW_ALL
           </Button>
         }
       />
       <CardContent padding="md">
-        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+        <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
           [RECENT_INVOICES]: LIMIT=3
         </div>
 
@@ -61,31 +61,33 @@ export function RecentInvoicesCard({
                 key={payment.id}
                 className={cn(
                   mode.font,
-                  "border-border flex items-center justify-between border p-4 text-xs"
+                  'border-border flex items-center justify-between border p-4 text-xs'
                 )}
               >
                 <div className="flex items-center gap-4">
-                  {payment.status === "succeeded" ? (
+                  {payment.status === 'succeeded' ? (
                     <CheckCircle2 className="text-success size-4" />
-                  ) : payment.status === "failed" ? (
+                  ) : payment.status === 'failed' ? (
                     <XCircle className="text-destructive size-4" />
                   ) : (
                     <Clock className="text-warning size-4" />
                   )}
                   <div>
                     <div>{payment.description}</div>
-                    <div className="text-muted-foreground">{formatDate(payment.date)}</div>
+                    <div className="text-muted-foreground">
+                      {formatDate(payment.date)}
+                    </div>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
                   <span>{formatCurrency(payment.amount)}</span>
                   <span
                     className={`border px-2 py-0.5 ${status.color} ${
-                      payment.status === "succeeded"
-                        ? "border-success/50"
-                        : payment.status === "failed"
-                          ? "border-destructive/50"
-                          : "border-warning/50"
+                      payment.status === 'succeeded'
+                        ? 'border-success/50'
+                        : payment.status === 'failed'
+                          ? 'border-destructive/50'
+                          : 'border-warning/50'
                     }`}
                   >
                     {status.text}

@@ -19,7 +19,7 @@ export {
   type AnalyticsEvent,
   type AnalyticsProvider as AnalyticsProviderType,
   type UserProperties,
-} from "./tracking";
+} from './tracking';
 
 // React hooks
 export {
@@ -32,7 +32,7 @@ export {
   useTrackVideo,
   useTrackDownload,
   useTrackEvent,
-} from "./hooks";
+} from './hooks';
 
 // Provider component
-export { AnalyticsProvider } from "./analytics-provider";
+export { AnalyticsProvider } from './analytics-provider';

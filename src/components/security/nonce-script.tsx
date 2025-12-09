@@ -17,7 +17,7 @@
  * - Compatible with strict CSP policies
  */
 
-import { getNonce } from "@/lib/security/csp-nonce";
+import { getNonce } from '@/lib/security/csp-nonce';
 
 export interface NonceScriptProps {
   children: string;
@@ -35,7 +35,7 @@ export interface NonceScriptProps {
  */
 export async function NonceScript({
   children,
-  type = "text/javascript",
+  type = 'text/javascript',
   id,
   async,
   defer,

@@ -1,7 +1,7 @@
 export function QueryingLogsSection() {
   return {
-    title: "Querying Logs",
-    description: "API endpoint to search and filter audit logs",
+    title: 'Querying Logs',
+    description: 'API endpoint to search and filter audit logs',
     code: `// src/app/api/admin/audit-logs/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -65,6 +65,6 @@ export async function GET(request: NextRequest) {
     },
   });
 }`,
-    language: "typescript" as const,
+    language: 'typescript' as const,
   };
 }

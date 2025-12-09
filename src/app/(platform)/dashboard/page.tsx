@@ -3,16 +3,16 @@
  * Overview with stats, activity, and quick actions
  */
 
-"use client";
+'use client';
 
-import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
-import { DashboardHeader } from "./components/dashboard-header";
-import { StatsCards } from "./components/stats-cards";
-import { RecentActivity } from "./components/recent-activity";
-import { QuickActions } from "./components/quick-actions";
-import { AccountStatus } from "./components/account-status";
-import type { DashboardStats, ActivityItem } from "./components/types";
+import { useSession } from 'next-auth/react';
+import { useEffect, useState } from 'react';
+import { DashboardHeader } from './components/dashboard-header';
+import { StatsCards } from './components/stats-cards';
+import { RecentActivity } from './components/recent-activity';
+import { QuickActions } from './components/quick-actions';
+import { AccountStatus } from './components/account-status';
+import type { DashboardStats, ActivityItem } from './components/types';
 
 export default function DashboardPage() {
   const { data: session } = useSession();
@@ -39,38 +39,38 @@ export default function DashboardPage() {
 
         setActivities([
           {
-            id: "1",
-            type: "login",
-            description: "Logged in from new device",
+            id: '1',
+            type: 'login',
+            description: 'Logged in from new device',
             timestamp: new Date(Date.now() - 1000 * 60 * 5),
           },
           {
-            id: "2",
-            type: "security",
-            description: "Two-factor authentication enabled",
+            id: '2',
+            type: 'security',
+            description: 'Two-factor authentication enabled',
             timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2),
           },
           {
-            id: "3",
-            type: "upload",
-            description: "Uploaded 3 files",
+            id: '3',
+            type: 'upload',
+            description: 'Uploaded 3 files',
             timestamp: new Date(Date.now() - 1000 * 60 * 60 * 5),
           },
           {
-            id: "4",
-            type: "payment",
-            description: "Payment received: $99.00",
+            id: '4',
+            type: 'payment',
+            description: 'Payment received: $99.00',
             timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24),
           },
           {
-            id: "5",
-            type: "setting",
-            description: "Updated profile information",
+            id: '5',
+            type: 'setting',
+            description: 'Updated profile information',
             timestamp: new Date(Date.now() - 1000 * 60 * 60 * 48),
           },
         ]);
       } catch (error: unknown) {
-        console.error("Failed to fetch dashboard data:", error);
+        console.error('Failed to fetch dashboard data:', error);
       } finally {
         setLoading(false);
       }
@@ -81,12 +81,13 @@ export default function DashboardPage() {
 
   const userInitials =
     session?.user?.name
-      ?.split(" ")
+      ?.split(' ')
       .map((n) => n[0])
-      .join("")
-      .toUpperCase() || "U";
+      .join('')
+      .toUpperCase() || 'U';
 
-  const isAdmin = session?.user?.role === "ADMIN" || session?.user?.role === "SUPER_ADMIN";
+  const isAdmin =
+    session?.user?.role === 'ADMIN' || session?.user?.role === 'SUPER_ADMIN';
 
   return (
     <div className="space-y-8">
@@ -103,7 +104,10 @@ export default function DashboardPage() {
         <QuickActions isAdmin={isAdmin} />
       </div>
 
-      <AccountStatus mfaEnabled={session?.user?.mfaEnabled} userTier={session?.user?.tier} />
+      <AccountStatus
+        mfaEnabled={session?.user?.mfaEnabled}
+        userTier={session?.user?.tier}
+      />
     </div>
   );
 }

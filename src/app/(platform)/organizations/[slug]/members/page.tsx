@@ -3,25 +3,31 @@
  * View and manage organization members with role-based access control
  */
 
-"use client";
+'use client';
 
-import * as React from "react";
-import { useRouter, useParams } from "next/navigation";
-import { Loader2, Users } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { Table, TableBody, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { toast } from "sonner";
-import { MembersPageHeader } from "./components/members-page-header";
-import { MemberTableRow } from "./components/member-table-row";
-import { RolePermissionsCard } from "./components/role-permissions-card";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import * as React from 'react';
+import { useRouter, useParams } from 'next/navigation';
+import { Loader2, Users } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import {
+  Table,
+  TableBody,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { toast } from 'sonner';
+import { MembersPageHeader } from './components/members-page-header';
+import { MemberTableRow } from './components/member-table-row';
+import { RolePermissionsCard } from './components/role-permissions-card';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 interface Member {
   id: string;
   userId: string;
-  role: "OWNER" | "ADMIN" | "MEMBER" | "GUEST";
+  role: 'OWNER' | 'ADMIN' | 'MEMBER' | 'GUEST';
   joinedAt: string;
   user: {
     id: string;
@@ -42,7 +48,9 @@ export default function OrganizationMembersPage() {
   const router = useRouter();
   const params = useParams();
   const [loading, setLoading] = React.useState(true);
-  const [organization, setOrganization] = React.useState<Organization | null>(null);
+  const [organization, setOrganization] = React.useState<Organization | null>(
+    null
+  );
   const [members, setMembers] = React.useState<Member[]>([]);
 
   React.useEffect(() => {
@@ -50,7 +58,7 @@ export default function OrganizationMembersPage() {
       try {
         // Fetch organization
         const orgResponse = await fetch(`/api/organizations/${params.slug}`);
-        if (!orgResponse.ok) throw new Error("Failed to fetch organization");
+        if (!orgResponse.ok) throw new Error('Failed to fetch organization');
         const orgData = await orgResponse.json();
         setOrganization(orgData.organization);
 
@@ -58,12 +66,12 @@ export default function OrganizationMembersPage() {
         const membersResponse = await fetch(
           `/api/organizations/${orgData.organization.id}/members`
         );
-        if (!membersResponse.ok) throw new Error("Failed to fetch members");
+        if (!membersResponse.ok) throw new Error('Failed to fetch members');
         const membersData = await membersResponse.json();
         setMembers(membersData.members);
       } catch (error: unknown) {
-        console.error("Failed to fetch data:", error);
-        toast.error("Failed to load organization members");
+        console.error('Failed to fetch data:', error);
+        toast.error('Failed to load organization members');
       } finally {
         setLoading(false);
       }
@@ -78,19 +86,23 @@ export default function OrganizationMembersPage() {
     if (!organization) return;
 
     try {
-      const response = await fetch(`/api/organizations/${organization.id}/members/${memberId}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `/api/organizations/${organization.id}/members/${memberId}`,
+        {
+          method: 'DELETE',
+        }
+      );
 
       if (!response.ok) {
         const error = await response.json();
-        throw new Error(error.error || "Failed to remove member");
+        throw new Error(error.error || 'Failed to remove member');
       }
 
       setMembers((prev) => prev.filter((m) => m.id !== memberId));
-      toast.success("Member removed successfully");
+      toast.success('Member removed successfully');
     } catch (error: unknown) {
-      const errorMessage = error instanceof Error ? error.message : "Failed to remove member";
+      const errorMessage =
+        error instanceof Error ? error.message : 'Failed to remove member';
       toast.error(errorMessage);
     }
   };
@@ -99,23 +111,29 @@ export default function OrganizationMembersPage() {
     if (!organization) return;
 
     try {
-      const response = await fetch(`/api/organizations/${organization.id}/members/${memberId}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ role: newRole }),
-      });
+      const response = await fetch(
+        `/api/organizations/${organization.id}/members/${memberId}`,
+        {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ role: newRole }),
+        }
+      );
 
       if (!response.ok) {
         const error = await response.json();
-        throw new Error(error.error || "Failed to update role");
+        throw new Error(error.error || 'Failed to update role');
       }
 
       setMembers((prev) =>
-        prev.map((m) => (m.id === memberId ? { ...m, role: newRole as Member["role"] } : m))
+        prev.map((m) =>
+          m.id === memberId ? { ...m, role: newRole as Member['role'] } : m
+        )
       );
-      toast.success("Member role updated successfully");
+      toast.success('Member role updated successfully');
     } catch (error: unknown) {
-      const errorMessage = error instanceof Error ? error.message : "Failed to update role";
+      const errorMessage =
+        error instanceof Error ? error.message : 'Failed to update role';
       toast.error(errorMessage);
     }
   };
@@ -131,11 +149,15 @@ export default function OrganizationMembersPage() {
   if (!organization) {
     return (
       <Card tone="danger">
-        <CardHeader code="0x00" title="ERROR" icon={<Loader2 className="h-4 w-4" />} />
+        <CardHeader
+          code="0x00"
+          title="ERROR"
+          icon={<Loader2 className="h-4 w-4" />}
+        />
         <CardContent padding="lg">
           <div className="text-center">
             <h3 className="text-lg font-semibold">Organization not found</h3>
-            <Button onClick={() => router.push("/dashboard")} className="mt-4">
+            <Button onClick={() => router.push('/dashboard')} className="mt-4">
               &gt; BACK_TO_DASHBOARD
             </Button>
           </div>
@@ -144,7 +166,7 @@ export default function OrganizationMembersPage() {
     );
   }
 
-  const isOwnerOrAdmin = ["OWNER", "ADMIN"].includes(organization.role);
+  const isOwnerOrAdmin = ['OWNER', 'ADMIN'].includes(organization.role);
 
   return (
     <div className="mx-auto max-w-6xl space-y-6">

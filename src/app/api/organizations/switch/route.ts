@@ -3,15 +3,15 @@
  * POST - Switch user's active organization
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@/lib/auth";
-import { withCsrfProtection } from "@/lib/security/csrf";
-import { isOrganizationMember } from "@/lib/teams/organizations";
-import { logger } from "@/lib/logger";
-import { z } from "zod";
+import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@/lib/auth';
+import { withCsrfProtection } from '@/lib/security/csrf';
+import { isOrganizationMember } from '@/lib/teams/organizations';
+import { logger } from '@/lib/logger';
+import { z } from 'zod';
 
 const switchOrgSchema = z.object({
-  organizationId: z.string().min(1, "Organization ID is required"),
+  organizationId: z.string().min(1, 'Organization ID is required'),
 });
 
 export const POST = withCsrfProtection(async (req: NextRequest) => {
@@ -19,21 +19,21 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     const session = await auth();
 
     if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     const body = await req.json();
     const { organizationId } = switchOrgSchema.parse(body);
 
     // Verify user is a member of this organization
-    const isMember = await isOrganizationMember(organizationId, session.user.id);
+    const isMember = await isOrganizationMember(
+      organizationId,
+      session.user.id
+    );
 
     if (!isMember) {
       return NextResponse.json(
-        { error: "You are not a member of this organization" },
+        { error: 'You are not a member of this organization' },
         { status: 403 }
       );
     }
@@ -51,14 +51,14 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
   } catch (error: unknown) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: "Invalid input", details: error.issues },
+        { error: 'Invalid input', details: error.issues },
         { status: 400 }
       );
     }
 
-    logger.error("Failed to switch organization:", error);
+    logger.error('Failed to switch organization:', error);
     return NextResponse.json(
-      { error: "Failed to switch organization" },
+      { error: 'Failed to switch organization' },
       { status: 500 }
     );
   }

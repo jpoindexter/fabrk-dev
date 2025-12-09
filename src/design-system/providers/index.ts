@@ -8,7 +8,7 @@ export {
   useOptionalThemeContext,
   ThemeScript,
   default as ThemeProviderDefault,
-} from "./ThemeProvider";
+} from './ThemeProvider';
 
 export type {
   ThemeContextValue,
@@ -16,4 +16,4 @@ export type {
   ThemeScriptProps,
   VisualModeName,
   ColorThemeName,
-} from "./ThemeProvider";
+} from './ThemeProvider';

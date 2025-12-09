@@ -8,21 +8,26 @@
  * ```
  */
 
-"use client";
+'use client';
 
-import * as React from "react";
-import { Check, X, Crown, Zap } from "lucide-react";
+import * as React from 'react';
+import { Check, X, Crown, Zap } from 'lucide-react';
 
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardFooter,
+} from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
-import { mode } from "@/design-system";
+import { mode } from '@/design-system';
 export interface PricingPlan {
   id: string;
   name: string;
-  price: number | "Custom";
-  interval?: "month" | "year";
+  price: number | 'Custom';
+  interval?: 'month' | 'year';
   description: string;
   popular?: boolean;
   cta: string;
@@ -59,7 +64,7 @@ export function PricingComparison({
   };
 
   const renderFeatureValue = (value: boolean | string | number) => {
-    if (typeof value === "boolean") {
+    if (typeof value === 'boolean') {
       return value ? (
         <Check className="text-primary h-5 w-5" />
       ) : (
@@ -70,13 +75,13 @@ export function PricingComparison({
   };
 
   return (
-    <div className={cn("space-y-8", className)}>
+    <div className={cn('space-y-8', className)}>
       {/* Plan Cards */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {plans.map((plan, index) => (
           <Card
             key={plan.id}
-            tone={plan.popular ? "primary" : "neutral"}
+            tone={plan.popular ? 'primary' : 'neutral'}
             interactive
             className="relative overflow-hidden"
           >
@@ -91,24 +96,32 @@ export function PricingComparison({
               title={plan.name.toUpperCase()}
               icon={
                 <>
-                  {plan.name === "Enterprise" && <Crown className="h-4 w-4" />}
+                  {plan.name === 'Enterprise' && <Crown className="h-4 w-4" />}
                   {plan.popular && <Zap className="h-4 w-4" />}
                 </>
               }
             />
 
             <CardContent padding="md" className="space-y-4">
-              <p className="text-muted-foreground text-sm">{plan.description}</p>
+              <p className="text-muted-foreground text-sm">
+                {plan.description}
+              </p>
 
               <div className="space-y-1">
-                {plan.price === "Custom" ? (
-                  <div className="text-foreground text-3xl font-bold">Custom</div>
+                {plan.price === 'Custom' ? (
+                  <div className="text-foreground text-3xl font-bold">
+                    Custom
+                  </div>
                 ) : (
                   <>
                     <div className="flex items-baseline gap-1">
-                      <span className="text-foreground text-3xl font-bold">${plan.price}</span>
+                      <span className="text-foreground text-3xl font-bold">
+                        ${plan.price}
+                      </span>
                       {plan.interval && (
-                        <span className="text-muted-foreground text-sm">/{plan.interval}</span>
+                        <span className="text-muted-foreground text-sm">
+                          /{plan.interval}
+                        </span>
                       )}
                     </div>
                   </>
@@ -118,7 +131,7 @@ export function PricingComparison({
 
             <CardFooter>
               <Button
-                variant={plan.popular ? "default" : "outline"}
+                variant={plan.popular ? 'default' : 'outline'}
                 className="w-full"
                 onClick={plan.onSelect}
               >
@@ -136,11 +149,18 @@ export function PricingComparison({
             <thead>
               <tr className="border-border bg-muted rounded-none border-b">
                 <th className="rounded-none p-4 text-left">
-                  <span className="text-foreground text-sm font-semibold">Features</span>
+                  <span className="text-foreground text-sm font-semibold">
+                    Features
+                  </span>
                 </th>
                 {plans.map((plan) => (
-                  <th key={plan.id} className="min-w-[120px] rounded-none p-4 text-center">
-                    <span className="text-foreground text-sm font-semibold">{plan.name}</span>
+                  <th
+                    key={plan.id}
+                    className="min-w-[120px] rounded-none p-4 text-center"
+                  >
+                    <span className="text-foreground text-sm font-semibold">
+                      {plan.name}
+                    </span>
                   </th>
                 ))}
               </tr>
@@ -149,31 +169,35 @@ export function PricingComparison({
               {showCategories ? (
                 <>
                   {categories.map((category, _categoryIndex) => (
-                    <React.Fragment key={category || "uncategorized"}>
+                    <React.Fragment key={category || 'uncategorized'}>
                       {/* Category Header */}
                       <tr className="border-border border-t">
                         <td colSpan={plans.length + 1} className="p-4">
                           <span className="text-foreground text-xs font-semibold tracking-wide uppercase">
-                            {category || "Other Features"}
+                            {category || 'Other Features'}
                           </span>
                         </td>
                       </tr>
                       {/* Category Features */}
-                      {getFeaturesByCategory(category).map((feature, featureIndex) => (
-                        <tr
-                          key={`${category}-${featureIndex}`}
-                          className="border-border hover:bg-muted/50 border-t transition-colors"
-                        >
-                          <td className="p-4">
-                            <span className="text-foreground text-sm">{feature.name}</span>
-                          </td>
-                          {plans.map((plan) => (
-                            <td key={plan.id} className="p-4 text-center">
-                              {renderFeatureValue(feature.plans[plan.id])}
+                      {getFeaturesByCategory(category).map(
+                        (feature, featureIndex) => (
+                          <tr
+                            key={`${category}-${featureIndex}`}
+                            className="border-border hover:bg-muted/50 border-t transition-colors"
+                          >
+                            <td className="p-4">
+                              <span className="text-foreground text-sm">
+                                {feature.name}
+                              </span>
                             </td>
-                          ))}
-                        </tr>
-                      ))}
+                            {plans.map((plan) => (
+                              <td key={plan.id} className="p-4 text-center">
+                                {renderFeatureValue(feature.plans[plan.id])}
+                              </td>
+                            ))}
+                          </tr>
+                        )
+                      )}
                     </React.Fragment>
                   ))}
                 </>
@@ -185,7 +209,9 @@ export function PricingComparison({
                       className="border-border hover:bg-primary/5 border-t transition-colors"
                     >
                       <td className="p-4">
-                        <span className="text-foreground text-sm">{feature.name}</span>
+                        <span className="text-foreground text-sm">
+                          {feature.name}
+                        </span>
                       </td>
                       {plans.map((plan) => (
                         <td key={plan.id} className="p-4 text-center">
@@ -202,8 +228,15 @@ export function PricingComparison({
       </div>
 
       {/* Bottom CTA */}
-      <div className={cn("border-border bg-card border p-6 text-center", mode.radius)}>
-        <h3 className="text-foreground mb-2 text-xl font-bold">Need help choosing?</h3>
+      <div
+        className={cn(
+          'border-border bg-card border p-6 text-center',
+          mode.radius
+        )}
+      >
+        <h3 className="text-foreground mb-2 text-xl font-bold">
+          Need help choosing?
+        </h3>
         <p className="text-muted-foreground mb-4 text-sm">
           Contact our team for personalized recommendations
         </p>

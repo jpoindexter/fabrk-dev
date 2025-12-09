@@ -1,11 +1,11 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import type { Metadata } from "next";
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "404: Page Not Found",
+  title: '404: Page Not Found',
   description: "The page you're looking for doesn't exist or has been moved.",
-  robots: "noindex, nofollow",
+  robots: 'noindex, nofollow',
 };
 
 export default function NotFound() {
@@ -14,7 +14,9 @@ export default function NotFound() {
       <div className="mx-auto max-w-2xl text-center">
         {/* Terminal Header */}
         <div className="border-foreground/20 bg-foreground/5 mb-6 inline-block border-2 px-4 py-1">
-          <span className="text-foreground/60 text-xs tracking-wider">[ [0x404] ERROR_PAGE ]</span>
+          <span className="text-foreground/60 text-xs tracking-wider">
+            [ [0x404] ERROR_PAGE ]
+          </span>
         </div>
 
         {/* 404 Display */}
@@ -35,7 +37,9 @@ export default function NotFound() {
         <p className="text-foreground/80 mb-8">
           The requested resource could not be located on this server.
           <br />
-          <span className="text-foreground/60">Path may have been moved or deleted.</span>
+          <span className="text-foreground/60">
+            Path may have been moved or deleted.
+          </span>
         </p>
 
         {/* Action Buttons */}
@@ -66,7 +70,10 @@ export default function NotFound() {
             >
               &gt; PRICING
             </Link>
-            <Link href="/#faq" className="text-foreground/70 hover:text-primary transition-colors">
+            <Link
+              href="/#faq"
+              className="text-foreground/70 hover:text-primary transition-colors"
+            >
               &gt; FAQ
             </Link>
           </div>

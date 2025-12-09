@@ -5,21 +5,25 @@
  * Includes credit tracking for authenticated users
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import { generateObject, generateText } from "ai";
-import { z } from "zod";
-import { getModel, isAIConfigured, getConfiguredProvider } from "@/lib/ai/provider";
+import { NextRequest, NextResponse } from 'next/server';
+import { generateObject, generateText } from 'ai';
+import { z } from 'zod';
+import {
+  getModel,
+  isAIConfigured,
+  getConfiguredProvider,
+} from '@/lib/ai/provider';
 import {
   generatedFormSchema,
   FORM_GENERATOR_SYSTEM_PROMPT,
   type GeneratedForm,
-} from "@/lib/ai/schemas";
-import { auth } from "@/lib/auth";
-import { hasCredits, deductCredits, CREDIT_COSTS } from "@/lib/credits";
+} from '@/lib/ai/schemas';
+import { auth } from '@/lib/auth';
+import { hasCredits, deductCredits, CREDIT_COSTS } from '@/lib/credits';
 
 // Request schema
 const requestSchema = z.object({
-  prompt: z.string().min(10, "Prompt must be at least 10 characters"),
+  prompt: z.string().min(10, 'Prompt must be at least 10 characters'),
 });
 
 // Example JSON for the prompt (helps Ollama understand the format)
@@ -55,9 +59,9 @@ export async function POST(request: NextRequest) {
     if (!isAIConfigured()) {
       return NextResponse.json(
         {
-          error: "AI not configured",
+          error: 'AI not configured',
           message:
-            "Set OLLAMA_ENABLED=true, OPENAI_API_KEY, or GOOGLE_AI_API_KEY in your environment",
+            'Set OLLAMA_ENABLED=true, OPENAI_API_KEY, or GOOGLE_AI_API_KEY in your environment',
         },
         { status: 503 }
       );
@@ -70,8 +74,8 @@ export async function POST(request: NextRequest) {
       if (!hasEnoughCredits) {
         return NextResponse.json(
           {
-            error: "Insufficient credits",
-            code: "INSUFFICIENT_CREDITS",
+            error: 'Insufficient credits',
+            code: 'INSUFFICIENT_CREDITS',
             message: `This operation requires ${creditCost} credits. Please upgrade your plan or wait for your monthly refill.`,
           },
           { status: 402 }
@@ -85,7 +89,7 @@ export async function POST(request: NextRequest) {
 
     if (!result.success) {
       return NextResponse.json(
-        { error: "Invalid request", details: result.error.flatten() },
+        { error: 'Invalid request', details: result.error.flatten() },
         { status: 400 }
       );
     }
@@ -96,7 +100,7 @@ export async function POST(request: NextRequest) {
     let formSchema: GeneratedForm;
 
     // Use structured output for OpenAI/Google, text parsing for Ollama
-    if (provider === "ollama") {
+    if (provider === 'ollama') {
       // Ollama doesn't support structured outputs well, use text generation with JSON parsing
       const { text } = await generateText({
         model: getModel(),
@@ -119,12 +123,12 @@ Respond with ONLY the JSON object, nothing else.`,
       try {
         // Clean up the response (remove markdown code blocks if present)
         let cleanedText = text.trim();
-        if (cleanedText.startsWith("```json")) {
+        if (cleanedText.startsWith('```json')) {
           cleanedText = cleanedText.slice(7);
-        } else if (cleanedText.startsWith("```")) {
+        } else if (cleanedText.startsWith('```')) {
           cleanedText = cleanedText.slice(3);
         }
-        if (cleanedText.endsWith("```")) {
+        if (cleanedText.endsWith('```')) {
           cleanedText = cleanedText.slice(0, -3);
         }
         cleanedText = cleanedText.trim();
@@ -133,11 +137,12 @@ Respond with ONLY the JSON object, nothing else.`,
         const validated = generatedFormSchema.safeParse(parsed);
 
         if (!validated.success) {
-          console.error("Validation error:", validated.error);
+          console.error('Validation error:', validated.error);
           return NextResponse.json(
             {
-              error: "Invalid form structure",
-              message: "The AI generated an invalid form structure. Please try again.",
+              error: 'Invalid form structure',
+              message:
+                'The AI generated an invalid form structure. Please try again.',
               details: validated.error.flatten(),
             },
             { status: 422 }
@@ -146,11 +151,12 @@ Respond with ONLY the JSON object, nothing else.`,
 
         formSchema = validated.data;
       } catch (parseError) {
-        console.error("JSON parse error:", parseError, "Text:", text);
+        console.error('JSON parse error:', parseError, 'Text:', text);
         return NextResponse.json(
           {
-            error: "Failed to parse AI response",
-            message: "The AI did not return valid JSON. Please try again with a simpler prompt.",
+            error: 'Failed to parse AI response',
+            message:
+              'The AI did not return valid JSON. Please try again with a simpler prompt.',
           },
           { status: 422 }
         );
@@ -169,8 +175,8 @@ Respond with ONLY the JSON object, nothing else.`,
     // Deduct credits for authenticated users after successful generation
     if (userId) {
       await deductCredits(userId, creditCost, {
-        description: "Form generation",
-        endpoint: "/api/ai/generate-form",
+        description: 'Form generation',
+        endpoint: '/api/ai/generate-form',
         metadata: { prompt: prompt.slice(0, 100) }, // Store first 100 chars of prompt
       });
     }
@@ -181,21 +187,25 @@ Respond with ONLY the JSON object, nothing else.`,
       creditsUsed: userId ? creditCost : 0,
     });
   } catch (error) {
-    console.error("Form generation error:", error);
+    console.error('Form generation error:', error);
 
     // Handle specific AI errors
     if (error instanceof Error) {
-      if (error.message.includes("API key")) {
+      if (error.message.includes('API key')) {
         return NextResponse.json(
-          { error: "AI configuration error", message: error.message },
+          { error: 'AI configuration error', message: error.message },
           { status: 503 }
         );
       }
-      if (error.message.includes("ECONNREFUSED") || error.message.includes("fetch failed")) {
+      if (
+        error.message.includes('ECONNREFUSED') ||
+        error.message.includes('fetch failed')
+      ) {
         return NextResponse.json(
           {
-            error: "AI service unavailable",
-            message: "Could not connect to AI service. Make sure Ollama is running: ollama serve",
+            error: 'AI service unavailable',
+            message:
+              'Could not connect to AI service. Make sure Ollama is running: ollama serve',
           },
           { status: 503 }
         );
@@ -203,7 +213,10 @@ Respond with ONLY the JSON object, nothing else.`,
     }
 
     return NextResponse.json(
-      { error: "Failed to generate form", message: "An unexpected error occurred" },
+      {
+        error: 'Failed to generate form',
+        message: 'An unexpected error occurred',
+      },
       { status: 500 }
     );
   }

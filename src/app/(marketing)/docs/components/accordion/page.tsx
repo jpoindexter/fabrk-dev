@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
+import { ComponentShowcaseTemplate } from '@/components/docs';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from '@/components/ui/accordion';
 
 export default function AccordionPage() {
   return (
@@ -43,8 +43,8 @@ export default function AccordionPage() {
       }}
       variants={[
         {
-          title: "Single",
-          description: "Only one item can be opened at a time.",
+          title: 'Single',
+          description: 'Only one item can be opened at a time.',
           preview: (
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="item-1">
@@ -92,8 +92,8 @@ export default function AccordionPage() {
 </Accordion>`,
         },
         {
-          title: "Multiple",
-          description: "Multiple items can be opened simultaneously.",
+          title: 'Multiple',
+          description: 'Multiple items can be opened simultaneously.',
           preview: (
             <Accordion type="multiple" className="w-full">
               <AccordionItem value="item-1">
@@ -138,8 +138,8 @@ export default function AccordionPage() {
 </Accordion>`,
         },
         {
-          title: "Default Open",
-          description: "Accordion with a default expanded item.",
+          title: 'Default Open',
+          description: 'Accordion with a default expanded item.',
           preview: (
             <Accordion
               type="single"
@@ -191,13 +191,13 @@ export default function AccordionPage() {
 </Accordion>`,
         },
         {
-          title: "Controlled",
-          description: "Programmatically control which item is open.",
+          title: 'Controlled',
+          description: 'Programmatically control which item is open.',
           preview: (
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="item-1">
                 <AccordionTrigger>
-                  <span className="font-mono text-xs text-muted-foreground">
+                  <span className="text-muted-foreground font-mono text-xs">
                     [STATE]: CONTROLLED
                   </span>
                 </AccordionTrigger>
@@ -224,54 +224,53 @@ export default function AccordionPage() {
       ]}
       props={[
         {
-          name: "type",
+          name: 'type',
           type: '"single" | "multiple"',
           default: '"single"',
           description:
-            "Determines whether one or multiple items can be opened.",
+            'Determines whether one or multiple items can be opened.',
         },
         {
-          name: "collapsible",
-          type: "boolean",
-          default: "false",
-          description:
-            "Allow closing the open item (only for type='single').",
+          name: 'collapsible',
+          type: 'boolean',
+          default: 'false',
+          description: "Allow closing the open item (only for type='single').",
         },
         {
-          name: "defaultValue",
-          type: "string | string[]",
-          default: "undefined",
-          description: "The default open item(s).",
+          name: 'defaultValue',
+          type: 'string | string[]',
+          default: 'undefined',
+          description: 'The default open item(s).',
         },
         {
-          name: "value",
-          type: "string | string[]",
-          default: "undefined",
-          description: "Controlled state for open item(s).",
+          name: 'value',
+          type: 'string | string[]',
+          default: 'undefined',
+          description: 'Controlled state for open item(s).',
         },
         {
-          name: "onValueChange",
-          type: "(value: string | string[]) => void",
-          default: "undefined",
-          description: "Callback when open item(s) change.",
+          name: 'onValueChange',
+          type: '(value: string | string[]) => void',
+          default: 'undefined',
+          description: 'Callback when open item(s) change.',
         },
         {
-          name: "disabled",
-          type: "boolean",
-          default: "false",
-          description: "Disable all accordion items.",
+          name: 'disabled',
+          type: 'boolean',
+          default: 'false',
+          description: 'Disable all accordion items.',
         },
       ]}
       accessibility={[
-        "Built on Radix UI Accordion with full ARIA support",
-        "Keyboard navigation: Tab to focus trigger, Space/Enter to toggle",
-        "Arrow keys navigate between triggers",
-        "Properly implements aria-expanded and aria-controls",
-        "Screen reader announces state changes (expanded/collapsed)",
-        "Focus management returns focus after closing",
+        'Built on Radix UI Accordion with full ARIA support',
+        'Keyboard navigation: Tab to focus trigger, Space/Enter to toggle',
+        'Arrow keys navigate between triggers',
+        'Properly implements aria-expanded and aria-controls',
+        'Screen reader announces state changes (expanded/collapsed)',
+        'Focus management returns focus after closing',
       ]}
-      previous={{ title: "Overview", href: "/docs/components/overview" }}
-      next={{ title: "Alert", href: "/docs/components/alert" }}
+      previous={{ title: 'Overview', href: '/docs/components/overview' }}
+      next={{ title: 'Alert', href: '/docs/components/alert' }}
     />
   );
 }

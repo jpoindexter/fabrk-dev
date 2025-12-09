@@ -1,10 +1,11 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
-import { TestTube, Play, Accessibility, Workflow } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
+import { TestTube, Play, Accessibility, Workflow } from 'lucide-react';
 
 export const metadata = {
-  title: "Testing Guide - Fabrk Docs",
-  description: "Test your Fabrk app with Vitest and Playwright. 130+ tests included for unit, E2E, and accessibility testing.",
+  title: 'Testing Guide - Fabrk Docs',
+  description:
+    'Test your Fabrk app with Vitest and Playwright. 130+ tests included for unit, E2E, and accessibility testing.',
 };
 
 export default function TestingGuidePage() {
@@ -16,35 +17,51 @@ export default function TestingGuidePage() {
       description="Comprehensive testing with Vitest for unit tests and Playwright for E2E tests."
       overview="130+ tests included. Vitest for unit tests, Playwright for E2E, axe-core for accessibility, and Storybook for visual tests."
       features={[
-        { icon: TestTube, title: "Vitest", description: "Fast unit testing with JSX." },
-        { icon: Play, title: "Playwright", description: "Cross-browser E2E tests." },
-        { icon: Accessibility, title: "a11y Tests", description: "Accessibility with axe-core." },
-        { icon: Workflow, title: "CI Integration", description: "GitHub Actions workflow." },
+        {
+          icon: TestTube,
+          title: 'Vitest',
+          description: 'Fast unit testing with JSX.',
+        },
+        {
+          icon: Play,
+          title: 'Playwright',
+          description: 'Cross-browser E2E tests.',
+        },
+        {
+          icon: Accessibility,
+          title: 'a11y Tests',
+          description: 'Accessibility with axe-core.',
+        },
+        {
+          icon: Workflow,
+          title: 'CI Integration',
+          description: 'GitHub Actions workflow.',
+        },
       ]}
       setup={[
         {
-          title: "Run Unit Tests",
-          description: "Execute all Vitest unit tests",
+          title: 'Run Unit Tests',
+          description: 'Execute all Vitest unit tests',
           code: `npm test`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Run E2E Tests",
-          description: "Execute Playwright tests",
+          title: 'Run E2E Tests',
+          description: 'Execute Playwright tests',
           code: `npm run test:e2e`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Run All Tests",
-          description: "Execute both unit and E2E tests",
+          title: 'Run All Tests',
+          description: 'Execute both unit and E2E tests',
           code: `npm run test:all`,
-          language: "bash",
+          language: 'bash',
         },
       ]}
       usage={[
         {
-          title: "Running Tests",
-          description: "Available test commands",
+          title: 'Running Tests',
+          description: 'Available test commands',
           code: `# Unit tests (Vitest)
 npm test                 # Run all unit tests
 npm run test:watch       # Watch mode
@@ -61,11 +78,11 @@ npm run test:a11y        # Run accessibility tests
 
 # All tests
 npm run test:all         # Run Vitest + Playwright`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Writing Unit Tests",
-          description: "Test components, hooks, and utilities",
+          title: 'Writing Unit Tests',
+          description: 'Test components, hooks, and utilities',
           code: `// tests/unit/components/button.test.tsx
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
@@ -90,11 +107,11 @@ describe("Button", () => {
     expect(screen.getByRole("button")).toBeDisabled();
   });
 });`,
-          language: "tsx",
+          language: 'tsx',
         },
         {
-          title: "Testing Custom Hooks",
-          description: "Example hook test with timer mocking",
+          title: 'Testing Custom Hooks',
+          description: 'Example hook test with timer mocking',
           code: `// tests/unit/hooks/use-debounce.test.ts
 import { renderHook, act } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
@@ -125,11 +142,11 @@ describe("useDebounce", () => {
     expect(result.current).toBe("updated");
   });
 });`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Playwright E2E Tests",
-          description: "Test complete user flows",
+          title: 'Playwright E2E Tests',
+          description: 'Test complete user flows',
           code: `// tests/e2e/auth.spec.ts
 import { test, expect } from "@playwright/test";
 
@@ -157,11 +174,11 @@ test.describe("Authentication", () => {
     await expect(page).toHaveURL("/dashboard");
   });
 });`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Accessibility Testing",
-          description: "Test for a11y violations",
+          title: 'Accessibility Testing',
+          description: 'Test for a11y violations',
           code: `// tests/accessibility/home.spec.ts
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
@@ -175,11 +192,11 @@ test.describe("Accessibility", () => {
     expect(results.violations).toEqual([]);
   });
 });`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "CI Integration",
-          description: "GitHub Actions workflow for automated testing",
+          title: 'CI Integration',
+          description: 'GitHub Actions workflow for automated testing',
           code: `# .github/workflows/test.yml
 name: Tests
 
@@ -209,11 +226,11 @@ jobs:
 
       - name: Run E2E tests
         run: npm run test:e2e`,
-          language: "yaml",
+          language: 'yaml',
         },
       ]}
-      previous={{ title: "Theming", href: "/docs/extras/theming" }}
-      next={{ title: "Launch Checklist", href: "/docs/launch/checklist" }}
+      previous={{ title: 'Theming', href: '/docs/extras/theming' }}
+      next={{ title: 'Launch Checklist', href: '/docs/launch/checklist' }}
     >
       {/* Test Coverage */}
       <DocsSection title="Test Coverage">
@@ -232,12 +249,29 @@ jobs:
       <DocsSection title="Testing Best Practices">
         <DocsCard title="BEST_PRACTICES">
           <div className="space-y-1">
-            <div>├─ <strong>Test behavior, not implementation</strong> - Focus on user experience</div>
-            <div>├─ <strong>Use data-testid sparingly</strong> - Prefer semantic queries</div>
-            <div>├─ <strong>Mock external services</strong> - Don't hit real APIs in unit tests</div>
-            <div>├─ <strong>Keep tests isolated</strong> - Each test should be independent</div>
-            <div>├─ <strong>Use meaningful assertions</strong> - Test what matters</div>
-            <div>└─ <strong>Write tests that fail first</strong> - TDD when appropriate</div>
+            <div>
+              ├─ <strong>Test behavior, not implementation</strong> - Focus on
+              user experience
+            </div>
+            <div>
+              ├─ <strong>Use data-testid sparingly</strong> - Prefer semantic
+              queries
+            </div>
+            <div>
+              ├─ <strong>Mock external services</strong> - Don't hit real APIs
+              in unit tests
+            </div>
+            <div>
+              ├─ <strong>Keep tests isolated</strong> - Each test should be
+              independent
+            </div>
+            <div>
+              ├─ <strong>Use meaningful assertions</strong> - Test what matters
+            </div>
+            <div>
+              └─ <strong>Write tests that fail first</strong> - TDD when
+              appropriate
+            </div>
           </div>
         </DocsCard>
       </DocsSection>

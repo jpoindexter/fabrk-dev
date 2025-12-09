@@ -1,65 +1,79 @@
-"use client";
+'use client';
 
-import { Card, CardHeader, CardContent, Badge } from "@/components/ui/card";
-import { Users, Lock, Shield, Webhook, Key, Radio, Server, BarChart } from "lucide-react";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+import { Card, CardHeader, CardContent, Badge } from '@/components/ui/card';
+import {
+  Users,
+  Lock,
+  Shield,
+  Webhook,
+  Key,
+  Radio,
+  Server,
+  BarChart,
+} from 'lucide-react';
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 export function EnterpriseFeaturesSection() {
   const enterpriseFeatures = [
     {
-      icon: "users",
-      title: "Multi-Tenancy + RBAC",
+      icon: 'users',
+      title: 'Multi-Tenancy + RBAC',
       description:
-        "Full organization support with role-based access control. Owner, Admin, Member, and Guest roles with granular permissions. Built-in invitation system.",
+        'Full organization support with role-based access control. Owner, Admin, Member, and Guest roles with granular permissions. Built-in invitation system.',
     },
     {
-      icon: "webhook",
-      title: "Webhooks System",
+      icon: 'webhook',
+      title: 'Webhooks System',
       description:
-        "Production-grade webhooks with 22 event types, HMAC-SHA256 signatures, automatic retry with exponential backoff, and delivery tracking.",
+        'Production-grade webhooks with 22 event types, HMAC-SHA256 signatures, automatic retry with exponential backoff, and delivery tracking.',
     },
     {
-      icon: "key",
-      title: "Secure API Keys",
+      icon: 'key',
+      title: 'Secure API Keys',
       description:
-        "256-bit cryptographically secure API keys with SHA-256 hashing, permission levels (read/write/admin), and timing-safe comparison.",
+        '256-bit cryptographically secure API keys with SHA-256 hashing, permission levels (read/write/admin), and timing-safe comparison.',
     },
     {
-      icon: "radio",
-      title: "Real-Time Features",
+      icon: 'radio',
+      title: 'Real-Time Features',
       description:
-        "Pusher integration for live notifications, activity feeds, and presence tracking. WebSocket connections managed automatically.",
+        'Pusher integration for live notifications, activity feeds, and presence tracking. WebSocket connections managed automatically.',
     },
     {
-      icon: "shield",
-      title: "2FA/MFA Security",
+      icon: 'shield',
+      title: '2FA/MFA Security',
       description:
-        "TOTP-based two-factor authentication with QR code generation, backup codes, and session versioning for instant security invalidation.",
+        'TOTP-based two-factor authentication with QR code generation, backup codes, and session versioning for instant security invalidation.',
     },
     {
-      icon: "server",
-      title: "Background Job Queue",
+      icon: 'server',
+      title: 'Background Job Queue',
       description:
-        "Database-backed job queue (no Redis needed) with automatic retry logic, cron job support, and email queue worker for bulk sending.",
+        'Database-backed job queue (no Redis needed) with automatic retry logic, cron job support, and email queue worker for bulk sending.',
     },
     {
-      icon: "barchart",
-      title: "Analytics & Audit Logs",
+      icon: 'barchart',
+      title: 'Analytics & Audit Logs',
       description:
-        "PostHog integration for analytics, feature flags, and session replay. Immutable audit logs for compliance with 18+ action types.",
+        'PostHog integration for analytics, feature flags, and session replay. Immutable audit logs for compliance with 18+ action types.',
     },
     {
-      icon: "lock",
-      title: "Admin Dashboard",
+      icon: 'lock',
+      title: 'Admin Dashboard',
       description:
-        "Complete admin interface with user impersonation, revenue stats, activity charts, feature flag management, and webhook monitoring.",
+        'Complete admin interface with user impersonation, revenue stats, activity charts, feature flag management, and webhook monitoring.',
     },
   ];
 
   return (
-    <section className={cn("border-border bg-background border-t px-6 py-24", mode.font)}>
+    <section
+      className={cn(
+        'border-border bg-background border-t px-6 py-24',
+        mode.font
+      )}
+    >
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <motion.div
@@ -89,8 +103,9 @@ export function EnterpriseFeaturesSection() {
             viewport={{ once: true }}
           >
             <p className="text-muted-foreground mx-auto max-w-2xl text-sm">
-              &gt; Production-ready enterprise features that would cost $10,000+ to build yourself.
-              All included, fully tested, and ready to deploy.
+              &gt; Production-ready enterprise features that would cost $10,000+
+              to build yourself. All included, fully tested, and ready to
+              deploy.
             </p>
           </motion.div>
         </div>
@@ -98,21 +113,21 @@ export function EnterpriseFeaturesSection() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {enterpriseFeatures.map((feature, index) => {
             const IconEl =
-              feature.icon === "users"
+              feature.icon === 'users'
                 ? Users
-                : feature.icon === "lock"
+                : feature.icon === 'lock'
                   ? Lock
-                  : feature.icon === "shield"
+                  : feature.icon === 'shield'
                     ? Shield
-                    : feature.icon === "webhook"
+                    : feature.icon === 'webhook'
                       ? Webhook
-                      : feature.icon === "key"
+                      : feature.icon === 'key'
                         ? Key
-                        : feature.icon === "radio"
+                        : feature.icon === 'radio'
                           ? Radio
-                          : feature.icon === "server"
+                          : feature.icon === 'server'
                             ? Server
-                            : feature.icon === "barchart"
+                            : feature.icon === 'barchart'
                               ? BarChart
                               : null;
 
@@ -121,7 +136,7 @@ export function EnterpriseFeaturesSection() {
                 key={feature.title}
                 initial={{ opacity: 0, y: 20, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-50px" }}
+                viewport={{ once: true, margin: '-50px' }}
                 transition={{
                   duration: 0.5,
                   delay: index * 0.08,
@@ -138,9 +153,9 @@ export function EnterpriseFeaturesSection() {
                     code={`0x${(index + 40).toString(16).toUpperCase()}`}
                     title={feature.title
                       .toUpperCase()
-                      .replace(/ /g, "_")
-                      .replace(/\+/g, "_")
-                      .replace(/\//g, "_")
+                      .replace(/ /g, '_')
+                      .replace(/\+/g, '_')
+                      .replace(/\//g, '_')
                       .slice(0, 12)}
                     icon={
                       IconEl && (
@@ -150,11 +165,16 @@ export function EnterpriseFeaturesSection() {
                   />
                   <CardContent className="p-4">
                     <div className="text-foreground mb-3 text-xs font-semibold">
-                      {feature.title.toUpperCase().replace(/ /g, "_").replace(/\+/g, "_AND_")}
+                      {feature.title
+                        .toUpperCase()
+                        .replace(/ /g, '_')
+                        .replace(/\+/g, '_AND_')}
                     </div>
                     <div className="text-xs">
                       <span className="text-muted-foreground">DESC: </span>
-                      <span className="text-foreground">{feature.description}</span>
+                      <span className="text-foreground">
+                        {feature.description}
+                      </span>
                     </div>
                   </CardContent>
                 </Card>
@@ -173,12 +193,12 @@ export function EnterpriseFeaturesSection() {
           <Card className="mt-12 text-center">
             <CardContent className="p-8">
               <p className="text-sm font-semibold">
-                <span className="text-primary">$200,000+</span> worth of enterprise features,
-                included out-of-the-box
+                <span className="text-primary">$200,000+</span> worth of
+                enterprise features, included out-of-the-box
               </p>
               <span className="text-muted-foreground mt-2 block text-xs">
-                These features would take 6-12 months to build yourself. We've done the hard work so
-                you can focus on your product.
+                These features would take 6-12 months to build yourself. We've
+                done the hard work so you can focus on your product.
               </span>
             </CardContent>
           </Card>

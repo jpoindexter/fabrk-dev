@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { toast } from "sonner";
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Loader2 } from 'lucide-react';
+import { toast } from 'sonner';
 
 // Extend Window interface for dataLayer
 declare global {
@@ -23,7 +23,7 @@ interface PolarCheckoutButtonProps {
 export function PolarCheckoutButton({
   customerEmail,
   className,
-  children = "> GET_FABRK - $199",
+  children = '> GET_FABRK - $199',
   discountId,
 }: PolarCheckoutButtonProps) {
   const [isLoading, setIsLoading] = useState(false);
@@ -34,13 +34,13 @@ export function PolarCheckoutButton({
     // Track begin_checkout event in GTM
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
-      event: "begin_checkout",
+      event: 'begin_checkout',
       ecommerce: {
-        currency: "USD",
+        currency: 'USD',
         value: 149,
         items: [
           {
-            item_name: "Fabrk Boilerplate",
+            item_name: 'Fabrk Boilerplate',
             price: 149,
             quantity: 1,
           },
@@ -49,10 +49,10 @@ export function PolarCheckoutButton({
     });
 
     try {
-      const response = await fetch("/api/polar/checkout", {
-        method: "POST",
+      const response = await fetch('/api/polar/checkout', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           customerEmail,
@@ -66,14 +66,16 @@ export function PolarCheckoutButton({
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.details || "Failed to create checkout");
+        throw new Error(data.details || 'Failed to create checkout');
       }
 
       // Redirect to Polar.sh checkout
       window.location.href = data.checkoutUrl;
     } catch (error) {
-      console.error("Checkout error:", error);
-      toast.error(error instanceof Error ? error.message : "Failed to start checkout");
+      console.error('Checkout error:', error);
+      toast.error(
+        error instanceof Error ? error.message : 'Failed to start checkout'
+      );
       setIsLoading(false);
     }
   };

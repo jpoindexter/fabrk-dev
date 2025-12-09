@@ -1,7 +1,7 @@
 export function LogRetentionSection() {
   return {
-    title: "Log Retention",
-    description: "Set up automatic cleanup of old logs",
+    title: 'Log Retention',
+    description: 'Set up automatic cleanup of old logs',
     code: `// scripts/cleanup-audit-logs.ts
 
 import { prisma } from "@/lib/db";
@@ -36,6 +36,6 @@ cleanupAuditLogs()
 
 // Run as cron job:
 // 0 0 * * * npx ts-node scripts/cleanup-audit-logs.ts`,
-    language: "typescript" as const,
+    language: 'typescript' as const,
   };
 }

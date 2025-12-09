@@ -153,7 +153,7 @@ setStats({
 });
 
 // GOOD - Real API call
-const response = await fetch("/api/dashboard/stats");
+const response = await fetch('/api/dashboard/stats');
 const data = await response.json();
 setStats(data);
 ```

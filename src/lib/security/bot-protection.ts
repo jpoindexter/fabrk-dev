@@ -10,10 +10,10 @@
  * - Rate limiting integration
  */
 
-import { NextRequest } from "next/server";
-import { logger } from "@/lib/logger";
+import { NextRequest } from 'next/server';
+import { logger } from '@/lib/logger';
 
-export type BotType = "good" | "bad" | "unknown";
+export type BotType = 'good' | 'bad' | 'unknown';
 
 export interface BotDetectionResult {
   isBot: boolean;
@@ -28,87 +28,87 @@ export interface BotDetectionResult {
  */
 const GOOD_BOTS = [
   // Search engines
-  "Googlebot",
-  "Bingbot",
-  "DuckDuckBot",
-  "Baiduspider",
-  "YandexBot",
-  "Slurp", // Yahoo
-  "facebookexternalhit",
+  'Googlebot',
+  'Bingbot',
+  'DuckDuckBot',
+  'Baiduspider',
+  'YandexBot',
+  'Slurp', // Yahoo
+  'facebookexternalhit',
 
   // AI crawlers
-  "GPTBot",
-  "ChatGPT-User",
-  "Google-Extended",
-  "anthropic-ai",
-  "Claude-Web",
-  "PerplexityBot",
-  "CCBot",
+  'GPTBot',
+  'ChatGPT-User',
+  'Google-Extended',
+  'anthropic-ai',
+  'Claude-Web',
+  'PerplexityBot',
+  'CCBot',
 
   // Monitoring
-  "UptimeRobot",
-  "Pingdom",
-  "StatusCake",
+  'UptimeRobot',
+  'Pingdom',
+  'StatusCake',
 
   // SEO tools
-  "AhrefsBot",
-  "SemrushBot",
-  "DotBot", // Moz
+  'AhrefsBot',
+  'SemrushBot',
+  'DotBot', // Moz
 ];
 
 /**
  * Known bad bots (scrapers, spam bots)
  */
 const BAD_BOTS = [
-  "SemrushBot", // Can be aggressive
-  "AhrefsBot", // Can be aggressive
-  "MJ12bot", // Majestic
-  "SeznamBot",
-  "linkdexbot",
-  "DotBot",
-  "AspiegelBot",
-  "BLEXBot",
-  "DataForSeoBot",
-  "Barkrowler",
-  "SeekportBot",
+  'SemrushBot', // Can be aggressive
+  'AhrefsBot', // Can be aggressive
+  'MJ12bot', // Majestic
+  'SeznamBot',
+  'linkdexbot',
+  'DotBot',
+  'AspiegelBot',
+  'BLEXBot',
+  'DataForSeoBot',
+  'Barkrowler',
+  'SeekportBot',
 
   // Scrapers
-  "HTTrack",
-  "WebCopier",
-  "WebZIP",
-  "wget",
-  "curl",
-  "python-requests",
-  "scrapy",
+  'HTTrack',
+  'WebCopier',
+  'WebZIP',
+  'wget',
+  'curl',
+  'python-requests',
+  'scrapy',
 
   // Spam
-  "EmailCollector",
-  "EmailSiphon",
-  "EmailWolf",
+  'EmailCollector',
+  'EmailSiphon',
+  'EmailWolf',
 ];
 
 /**
  * Detect if request is from a bot
  */
 export function detectBot(req: NextRequest): BotDetectionResult {
-  const userAgent = req.headers.get("user-agent") || "";
+  const userAgent = req.headers.get('user-agent') || '';
   const reasons: string[] = [];
   let confidence = 0;
   let botName: string | undefined;
-  let botType: BotType = "unknown";
+  let botType: BotType = 'unknown';
 
   // Check for empty user agent
   if (!userAgent) {
-    reasons.push("Empty user agent");
+    reasons.push('Empty user agent');
     confidence += 50;
-    return { isBot: true, botType: "bad", confidence, reasons };
+    return { isBot: true, botType: 'bad', confidence, reasons };
   }
 
   // Check good bots first
   for (const bot of GOOD_BOTS) {
     if (userAgent.includes(bot)) {
       botName = bot;
-      botType = "good";
+      botType = 'good';
       confidence = 95;
       reasons.push(`Identified as ${bot}`);
       return { isBot: true, botType, botName, confidence, reasons };
@@ -119,7 +119,7 @@ export function detectBot(req: NextRequest): BotDetectionResult {
   for (const bot of BAD_BOTS) {
     if (userAgent.toLowerCase().includes(bot.toLowerCase())) {
       botName = bot;
-      botType = "bad";
+      botType = 'bad';
       confidence = 90;
       reasons.push(`Identified as ${bot}`);
       return { isBot: true, botType, botName, confidence, reasons };
@@ -143,35 +143,35 @@ export function detectBot(req: NextRequest): BotDetectionResult {
     if (pattern.test(userAgent)) {
       reasons.push(`Matches bot pattern: ${pattern}`);
       confidence += 30;
-      botType = "unknown";
+      botType = 'unknown';
     }
   }
 
   // Check for suspicious characteristics
   if (userAgent.length < 20) {
-    reasons.push("Suspiciously short user agent");
+    reasons.push('Suspiciously short user agent');
     confidence += 20;
   }
 
   if (!/Mozilla|Chrome|Safari|Firefox|Edge|Opera/.test(userAgent)) {
-    reasons.push("No common browser signature");
+    reasons.push('No common browser signature');
     confidence += 25;
   }
 
   // Check for missing common headers (bots often don't send these)
-  if (!req.headers.get("accept-language")) {
-    reasons.push("Missing Accept-Language header");
+  if (!req.headers.get('accept-language')) {
+    reasons.push('Missing Accept-Language header');
     confidence += 15;
   }
 
-  if (!req.headers.get("accept")) {
-    reasons.push("Missing Accept header");
+  if (!req.headers.get('accept')) {
+    reasons.push('Missing Accept header');
     confidence += 15;
   }
 
   const isBot = confidence >= 50;
-  if (isBot && botType === "unknown") {
-    botType = confidence >= 70 ? "bad" : "unknown";
+  if (isBot && botType === 'unknown') {
+    botType = confidence >= 70 ? 'bad' : 'unknown';
   }
 
   return {
@@ -188,10 +188,10 @@ export function detectBot(req: NextRequest): BotDetectionResult {
  */
 export function shouldAllowBot(detection: BotDetectionResult): boolean {
   // Always allow good bots
-  if (detection.botType === "good") return true;
+  if (detection.botType === 'good') return true;
 
   // Block bad bots
-  if (detection.botType === "bad") return false;
+  if (detection.botType === 'bad') return false;
 
   // For unknown, use confidence threshold
   return detection.confidence < 70;
@@ -201,9 +201,11 @@ export function shouldAllowBot(detection: BotDetectionResult): boolean {
  * Honeypot field verification
  * Add hidden fields to forms - bots will fill them, humans won't
  */
-export function verifyHoneypot(honeypotValue: string | null | undefined): boolean {
+export function verifyHoneypot(
+  honeypotValue: string | null | undefined
+): boolean {
   // Honeypot should be empty
-  return !honeypotValue || honeypotValue.trim() === "";
+  return !honeypotValue || honeypotValue.trim() === '';
 }
 
 /**
@@ -249,18 +251,20 @@ export interface CaptchaVerification {
 /**
  * Verify hCaptcha response
  */
-export async function verifyHCaptcha(token: string): Promise<CaptchaVerification> {
+export async function verifyHCaptcha(
+  token: string
+): Promise<CaptchaVerification> {
   const secret = process.env.HCAPTCHA_SECRET_KEY;
 
   if (!secret) {
-    logger.error("[Bot Protection] hCaptcha secret not configured");
-    return { success: false, errorCodes: ["missing-secret"] };
+    logger.error('[Bot Protection] hCaptcha secret not configured');
+    return { success: false, errorCodes: ['missing-secret'] };
   }
 
   try {
-    const response = await fetch("https://hcaptcha.com/siteverify", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    const response = await fetch('https://hcaptcha.com/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: `response=${token}&secret=${secret}`,
     });
 
@@ -270,11 +274,11 @@ export async function verifyHCaptcha(token: string): Promise<CaptchaVerification
       success: data.success,
       challengeTs: data.challenge_ts,
       hostname: data.hostname,
-      errorCodes: data["error-codes"],
+      errorCodes: data['error-codes'],
     };
   } catch (error: unknown) {
-    logger.error("[Bot Protection] hCaptcha verification error", error);
-    return { success: false, errorCodes: ["verification-failed"] };
+    logger.error('[Bot Protection] hCaptcha verification error', error);
+    return { success: false, errorCodes: ['verification-failed'] };
   }
 }
 
@@ -288,16 +292,19 @@ export async function verifyRecaptcha(
   const secret = process.env.RECAPTCHA_SECRET_KEY;
 
   if (!secret) {
-    logger.error("[Bot Protection] reCAPTCHA secret not configured");
-    return { success: false, errorCodes: ["missing-secret"] };
+    logger.error('[Bot Protection] reCAPTCHA secret not configured');
+    return { success: false, errorCodes: ['missing-secret'] };
   }
 
   try {
-    const response = await fetch("https://www.google.com/recaptcha/api/siteverify", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `secret=${secret}&response=${token}`,
-    });
+    const response = await fetch(
+      'https://www.google.com/recaptcha/api/siteverify',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `secret=${secret}&response=${token}`,
+      }
+    );
 
     const data = await response.json();
 
@@ -306,31 +313,36 @@ export async function verifyRecaptcha(
       score: data.score,
       challengeTs: data.challenge_ts,
       hostname: data.hostname,
-      errorCodes: data["error-codes"],
+      errorCodes: data['error-codes'],
     };
   } catch (error: unknown) {
-    logger.error("[Bot Protection] reCAPTCHA verification error", error);
-    return { success: false, errorCodes: ["verification-failed"] };
+    logger.error('[Bot Protection] reCAPTCHA verification error', error);
+    return { success: false, errorCodes: ['verification-failed'] };
   }
 }
 
 /**
  * Verify Cloudflare Turnstile response
  */
-export async function verifyTurnstile(token: string): Promise<CaptchaVerification> {
+export async function verifyTurnstile(
+  token: string
+): Promise<CaptchaVerification> {
   const secret = process.env.TURNSTILE_SECRET_KEY;
 
   if (!secret) {
-    logger.error("[Bot Protection] Turnstile secret not configured");
-    return { success: false, errorCodes: ["missing-secret"] };
+    logger.error('[Bot Protection] Turnstile secret not configured');
+    return { success: false, errorCodes: ['missing-secret'] };
   }
 
   try {
-    const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ secret, response: token }),
-    });
+    const response = await fetch(
+      'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ secret, response: token }),
+      }
+    );
 
     const data = await response.json();
 
@@ -338,11 +350,11 @@ export async function verifyTurnstile(token: string): Promise<CaptchaVerificatio
       success: data.success,
       challengeTs: data.challenge_ts,
       hostname: data.hostname,
-      errorCodes: data["error-codes"],
+      errorCodes: data['error-codes'],
     };
   } catch (error: unknown) {
-    logger.error("[Bot Protection] Turnstile verification error", error);
-    return { success: false, errorCodes: ["verification-failed"] };
+    logger.error('[Bot Protection] Turnstile verification error', error);
+    return { success: false, errorCodes: ['verification-failed'] };
   }
 }
 
@@ -351,16 +363,16 @@ export async function verifyTurnstile(token: string): Promise<CaptchaVerificatio
  * Returns a simple hash based on browser properties
  */
 export function generateDeviceFingerprint(): string {
-  if (typeof window === "undefined") return "";
+  if (typeof window === 'undefined') return '';
 
   const components = [
     navigator.userAgent,
     navigator.language,
     screen.colorDepth,
-    screen.width + "x" + screen.height,
+    screen.width + 'x' + screen.height,
     new Date().getTimezoneOffset(),
     navigator.hardwareConcurrency || 0,
   ];
 
-  return btoa(components.join("|"));
+  return btoa(components.join('|'));
 }

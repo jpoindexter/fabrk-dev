@@ -2,19 +2,24 @@
  * Sign In Template - Terminal console style
  * Industry-standard Preview/Code tabbed interface
  */
-"use client";
+'use client';
 
-import Link from "next/link";
-import { Github, Lock } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent, TemplatePageHeader } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { CodeBlock } from "@/components/ui/code-block";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import Link from 'next/link';
+import { Github, Lock } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  TemplatePageHeader,
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { CodeBlock } from '@/components/ui/code-block';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 // eslint-disable-next-line design-system/no-hardcoded-colors -- Template code contains Google brand colors for user reference
 const templateCode = `"use client";
@@ -161,7 +166,11 @@ function SignInPreview() {
           <div className="border-border bg-card mx-auto mb-2 flex h-10 w-10 items-center justify-center border">
             <Lock className="text-primary h-5 w-5" />
           </div>
-          <h1 className={cn(mode.font, "text-2xl font-semibold tracking-tight")}>Welcome back</h1>
+          <h1
+            className={cn(mode.font, 'text-2xl font-semibold tracking-tight')}
+          >
+            Welcome back
+          </h1>
           <p className="text-muted-foreground text-sm">
             Enter your email to sign in to your account
           </p>
@@ -171,7 +180,7 @@ function SignInPreview() {
         <div className="grid gap-6">
           <form className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email" className={cn(mode.font, "text-xs")}>
+              <Label htmlFor="email" className={cn(mode.font, 'text-xs')}>
                 [EMAIL]:
               </Label>
               <Input
@@ -181,12 +190,12 @@ function SignInPreview() {
                 autoCapitalize="none"
                 autoComplete="email"
                 autoCorrect="off"
-                className={cn(mode.radius, mode.font, "text-xs")}
+                className={cn(mode.radius, mode.font, 'text-xs')}
               />
             </div>
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <Label htmlFor="password" className={cn(mode.font, "text-xs")}>
+                <Label htmlFor="password" className={cn(mode.font, 'text-xs')}>
                   [PASSWORD]:
                 </Label>
                 <Link
@@ -201,7 +210,7 @@ function SignInPreview() {
                 type="password"
                 placeholder="••••••••"
                 autoComplete="current-password"
-                className={cn(mode.radius, mode.font, "text-xs")}
+                className={cn(mode.radius, mode.font, 'text-xs')}
               />
             </div>
 
@@ -209,13 +218,19 @@ function SignInPreview() {
               <Checkbox id="remember" className={cn(mode.radius)} />
               <Label
                 htmlFor="remember"
-                className={cn(mode.font, "text-muted-foreground text-xs font-normal")}
+                className={cn(
+                  mode.font,
+                  'text-muted-foreground text-xs font-normal'
+                )}
               >
                 Remember me for 30 days
               </Label>
             </div>
 
-            <Button className={cn(mode.radius, mode.font, "w-full text-xs")} type="submit">
+            <Button
+              className={cn(mode.radius, mode.font, 'w-full text-xs')}
+              type="submit"
+            >
               &gt; SIGN_IN
             </Button>
           </form>
@@ -225,16 +240,24 @@ function SignInPreview() {
               <span className="border-border w-full border-t" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background text-muted-foreground px-2">Or continue with</span>
+              <span className="bg-background text-muted-foreground px-2">
+                Or continue with
+              </span>
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <Button variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
+            <Button
+              variant="outline"
+              className={cn(mode.radius, mode.font, 'text-xs')}
+            >
               <Github className="mr-2 h-4 w-4" />
               GitHub
             </Button>
-            <Button variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
+            <Button
+              variant="outline"
+              className={cn(mode.radius, mode.font, 'text-xs')}
+            >
               {/* eslint-disable design-system/no-hardcoded-colors -- Google brand colors are intentional */}
               <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
                 <path
@@ -261,7 +284,7 @@ function SignInPreview() {
         </div>
 
         <p className="text-muted-foreground px-8 text-center text-sm">
-          Don&apos;t have an account?{" "}
+          Don&apos;t have an account?{' '}
           <Link
             href="/templates/authentication/sign-up"
             className="hover:text-primary underline underline-offset-4"
@@ -293,14 +316,14 @@ export default function SignInTemplate() {
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
-                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  'h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0',
                   mode.radius
                 )}
               >
                 <TabsTrigger
                   value="preview"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -310,7 +333,7 @@ export default function SignInTemplate() {
                 <TabsTrigger
                   value="code"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -334,7 +357,11 @@ export default function SignInTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+                <CodeBlock
+                  code={templateCode}
+                  language="tsx"
+                  maxHeight="600px"
+                />
               </div>
             </Card>
           </TabsContent>
@@ -344,14 +371,16 @@ export default function SignInTemplate() {
         <Card>
           <CardHeader code="0x02" title="FILE_STRUCTURE" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-1 text-xs")}>
+            <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>
               <div className="space-y-1 pl-4">
                 <div>
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">(auth)/</span>
                   <span className="text-foreground">sign-in/page.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Copy template here</span>
+                  <span className="text-muted-foreground ml-4">
+                    ← Copy template here
+                  </span>
                 </div>
               </div>
             </div>
@@ -362,12 +391,14 @@ export default function SignInTemplate() {
         <Card>
           <CardHeader code="0x03" title="FEATURES" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-2 text-xs")}>
+            <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> Email/password authentication form
+                <span className="text-success">&gt;</span> Email/password
+                authentication form
               </div>
               <div>
-                <span className="text-success">&gt;</span> Social auth (GitHub, Google)
+                <span className="text-success">&gt;</span> Social auth (GitHub,
+                Google)
               </div>
               <div>
                 <span className="text-success">&gt;</span> Remember me checkbox
@@ -379,10 +410,12 @@ export default function SignInTemplate() {
                 <span className="text-success">&gt;</span> Sign up redirect
               </div>
               <div>
-                <span className="text-success">&gt;</span> Responsive mobile-first design
+                <span className="text-success">&gt;</span> Responsive
+                mobile-first design
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant
+                (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

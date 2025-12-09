@@ -91,7 +91,8 @@ Account settings hub with tabbed interface for managing:
 
    ```tsx
    // BAD - rounded corners instead of rounded-none
-   className = "data-[state=active]:bg-background flex flex-col items-center gap-2 px-4 py-4";
+   className =
+     'data-[state=active]:bg-background flex flex-col items-center gap-2 px-4 py-4';
    ```
 
    - **Impact**: Tabs have soft corners, breaks terminal aesthetic
@@ -105,7 +106,7 @@ Account settings hub with tabbed interface for managing:
 3. **Hardcoded Transitions** (Line 77)
 
    ```tsx
-   "hover:bg-primary hover:text-primary-foreground transition-colors";
+   'hover:bg-primary hover:text-primary-foreground transition-colors';
    ```
 
    - Transitions should be standardized across design system
@@ -153,9 +154,9 @@ Account settings hub with tabbed interface for managing:
   key={tab.value}
   value={tab.value}
   className={cn(
-    "rounded-none font-mono", // FIXED: Added terminal styles
-    "data-[state=active]:bg-background flex flex-col items-center gap-2 px-4 py-4",
-    "hover:bg-primary hover:text-primary-foreground transition-colors"
+    'rounded-none font-mono', // FIXED: Added terminal styles
+    'data-[state=active]:bg-background flex flex-col items-center gap-2 px-4 py-4',
+    'hover:bg-primary hover:text-primary-foreground transition-colors'
   )}
 >
   <Icon className="h-4 w-4" />

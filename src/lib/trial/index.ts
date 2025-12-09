@@ -3,7 +3,7 @@
  * Helper functions for managing user trial periods
  */
 
-import { prisma } from "@/lib/prisma";
+import { prisma } from '@/lib/prisma';
 
 export interface TrialStatus {
   isInTrial: boolean;
@@ -51,10 +51,13 @@ export async function getTrialStatus(userId: string): Promise<TrialStatus> {
 
   // Calculate days remaining
   const msRemaining = trialEndsAt.getTime() - now.getTime();
-  const daysRemaining = Math.max(0, Math.ceil(msRemaining / (1000 * 60 * 60 * 24)));
+  const daysRemaining = Math.max(
+    0,
+    Math.ceil(msRemaining / (1000 * 60 * 60 * 24))
+  );
 
   return {
-    isInTrial: !isExpired && user.tier === "trial",
+    isInTrial: !isExpired && user.tier === 'trial',
     isExpired,
     daysRemaining,
     trialEndsAt,
@@ -74,12 +77,12 @@ export async function hasAccess(userId: string): Promise<boolean> {
   if (!user) return false;
 
   // Paid users always have access
-  if (user.subscriptionTier && user.tier !== "free" && user.tier !== "trial") {
+  if (user.subscriptionTier && user.tier !== 'free' && user.tier !== 'trial') {
     return true;
   }
 
   // Trial users have access if trial hasn't expired
-  if (user.tier === "trial" && user.trialEndsAt) {
+  if (user.tier === 'trial' && user.trialEndsAt) {
     return user.trialEndsAt > new Date();
   }
 
@@ -90,9 +93,9 @@ export async function hasAccess(userId: string): Promise<boolean> {
  * Format trial end date for display
  */
 export function formatTrialEndDate(date: Date): string {
-  return date.toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
+  return date.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
   });
 }

@@ -1,7 +1,7 @@
 export function SecurityAlertsSection() {
   return {
-    title: "Security Alerts",
-    description: "Send alerts for critical events",
+    title: 'Security Alerts',
+    description: 'Send alerts for critical events',
     code: `// src/lib/audit.ts
 
 import { sendEmail } from "@/lib/email";
@@ -46,6 +46,6 @@ async function sendSecurityAlert(log: AuditLog) {
     });
   }
 }`,
-    language: "typescript" as const,
+    language: 'typescript' as const,
   };
 }

@@ -58,86 +58,278 @@
   ],
   "componentList": [
     { "name": "Accordion", "path": "ui/accordion.tsx", "category": "molecule" },
-    { "name": "ActivityTimeline", "path": "ui/activity-timeline.tsx", "category": "molecule" },
+    {
+      "name": "ActivityTimeline",
+      "path": "ui/activity-timeline.tsx",
+      "category": "molecule"
+    },
     { "name": "Alert", "path": "ui/alert.tsx", "category": "molecule" },
-    { "name": "AlertDialog", "path": "ui/alert-dialog.tsx", "category": "organism" },
-    { "name": "AspectRatio", "path": "ui/aspect-ratio.tsx", "category": "primitive" },
-    { "name": "Autocomplete", "path": "ui/autocomplete.tsx", "category": "molecule" },
+    {
+      "name": "AlertDialog",
+      "path": "ui/alert-dialog.tsx",
+      "category": "organism"
+    },
+    {
+      "name": "AspectRatio",
+      "path": "ui/aspect-ratio.tsx",
+      "category": "primitive"
+    },
+    {
+      "name": "Autocomplete",
+      "path": "ui/autocomplete.tsx",
+      "category": "molecule"
+    },
     { "name": "Avatar", "path": "ui/avatar.tsx", "category": "atom" },
-    { "name": "AvatarGroup", "path": "ui/avatar-group.tsx", "category": "molecule" },
+    {
+      "name": "AvatarGroup",
+      "path": "ui/avatar-group.tsx",
+      "category": "molecule"
+    },
     { "name": "Badge", "path": "ui/badge.tsx", "category": "atom" },
     { "name": "Banner", "path": "ui/banner.tsx", "category": "molecule" },
-    { "name": "Breadcrumb", "path": "ui/breadcrumb.tsx", "category": "molecule" },
+    {
+      "name": "Breadcrumb",
+      "path": "ui/breadcrumb.tsx",
+      "category": "molecule"
+    },
     { "name": "Button", "path": "ui/button.tsx", "category": "atom" },
     { "name": "Calendar", "path": "ui/calendar.tsx", "category": "molecule" },
     { "name": "Card", "path": "ui/card.tsx", "category": "molecule" },
     { "name": "Checkbox", "path": "ui/checkbox.tsx", "category": "atom" },
-    { "name": "CodeBlock", "path": "ui/code-block.tsx", "category": "molecule" },
-    { "name": "CodeGenerator", "path": "ui/code-generator.tsx", "category": "organism" },
-    { "name": "Collapsible", "path": "ui/collapsible.tsx", "category": "molecule" },
-    { "name": "ColorPicker", "path": "ui/color-picker.tsx", "category": "molecule" },
+    {
+      "name": "CodeBlock",
+      "path": "ui/code-block.tsx",
+      "category": "molecule"
+    },
+    {
+      "name": "CodeGenerator",
+      "path": "ui/code-generator.tsx",
+      "category": "organism"
+    },
+    {
+      "name": "Collapsible",
+      "path": "ui/collapsible.tsx",
+      "category": "molecule"
+    },
+    {
+      "name": "ColorPicker",
+      "path": "ui/color-picker.tsx",
+      "category": "molecule"
+    },
     { "name": "Combobox", "path": "ui/combobox.tsx", "category": "molecule" },
     { "name": "Command", "path": "ui/command.tsx", "category": "organism" },
-    { "name": "Container", "path": "ui/container.tsx", "category": "primitive" },
-    { "name": "ContextMenu", "path": "ui/context-menu.tsx", "category": "organism" },
+    {
+      "name": "Container",
+      "path": "ui/container.tsx",
+      "category": "primitive"
+    },
+    {
+      "name": "ContextMenu",
+      "path": "ui/context-menu.tsx",
+      "category": "organism"
+    },
     { "name": "CopyButton", "path": "ui/copy-button.tsx", "category": "atom" },
     { "name": "Cropper", "path": "ui/cropper.tsx", "category": "organism" },
-    { "name": "CropperControls", "path": "ui/cropper-controls.tsx", "category": "molecule" },
-    { "name": "DataTable", "path": "ui/data-table/data-table.tsx", "category": "organism" },
-    { "name": "DataTableHeader", "path": "ui/data-table-header.tsx", "category": "molecule" },
-    { "name": "DatePicker", "path": "ui/date-picker.tsx", "category": "molecule" },
+    {
+      "name": "CropperControls",
+      "path": "ui/cropper-controls.tsx",
+      "category": "molecule"
+    },
+    {
+      "name": "DataTable",
+      "path": "ui/data-table/data-table.tsx",
+      "category": "organism"
+    },
+    {
+      "name": "DataTableHeader",
+      "path": "ui/data-table-header.tsx",
+      "category": "molecule"
+    },
+    {
+      "name": "DatePicker",
+      "path": "ui/date-picker.tsx",
+      "category": "molecule"
+    },
     { "name": "Dialog", "path": "ui/dialog.tsx", "category": "organism" },
-    { "name": "DonutChart", "path": "ui/donut-chart.tsx", "category": "molecule" },
-    { "name": "DropdownMenu", "path": "ui/dropdown-menu.tsx", "category": "organism" },
-    { "name": "EmptyState", "path": "ui/empty-state.tsx", "category": "molecule" },
+    {
+      "name": "DonutChart",
+      "path": "ui/donut-chart.tsx",
+      "category": "molecule"
+    },
+    {
+      "name": "DropdownMenu",
+      "path": "ui/dropdown-menu.tsx",
+      "category": "organism"
+    },
+    {
+      "name": "EmptyState",
+      "path": "ui/empty-state.tsx",
+      "category": "molecule"
+    },
     { "name": "Field", "path": "ui/field.tsx", "category": "molecule" },
-    { "name": "FileUpload", "path": "ui/file-upload.tsx", "category": "organism" },
+    {
+      "name": "FileUpload",
+      "path": "ui/file-upload.tsx",
+      "category": "organism"
+    },
     { "name": "Form", "path": "ui/form.tsx", "category": "organism" },
     { "name": "FormError", "path": "ui/form-error.tsx", "category": "atom" },
-    { "name": "FunnelChart", "path": "ui/funnel-chart.tsx", "category": "molecule" },
+    {
+      "name": "FunnelChart",
+      "path": "ui/funnel-chart.tsx",
+      "category": "molecule"
+    },
     { "name": "Gauge", "path": "ui/gauge.tsx", "category": "molecule" },
     { "name": "Grid", "path": "ui/grid.tsx", "category": "primitive" },
     { "name": "Heatmap", "path": "ui/heatmap.tsx", "category": "molecule" },
-    { "name": "HoverCard", "path": "ui/hover-card.tsx", "category": "molecule" },
-    { "name": "ImageDropzone", "path": "ui/image-dropzone.tsx", "category": "molecule" },
-    { "name": "ImageUploader", "path": "ui/image-uploader.tsx", "category": "organism" },
+    {
+      "name": "HoverCard",
+      "path": "ui/hover-card.tsx",
+      "category": "molecule"
+    },
+    {
+      "name": "ImageDropzone",
+      "path": "ui/image-dropzone.tsx",
+      "category": "molecule"
+    },
+    {
+      "name": "ImageUploader",
+      "path": "ui/image-uploader.tsx",
+      "category": "organism"
+    },
     { "name": "Input", "path": "ui/input.tsx", "category": "atom" },
-    { "name": "InputGroup", "path": "ui/input-group.tsx", "category": "molecule" },
-    { "name": "InputNumber", "path": "ui/input-number.tsx", "category": "atom" },
+    {
+      "name": "InputGroup",
+      "path": "ui/input-group.tsx",
+      "category": "molecule"
+    },
+    {
+      "name": "InputNumber",
+      "path": "ui/input-number.tsx",
+      "category": "atom"
+    },
     { "name": "InputOTP", "path": "ui/input-otp.tsx", "category": "molecule" },
-    { "name": "InputPassword", "path": "ui/input-password.tsx", "category": "atom" },
-    { "name": "InputSearch", "path": "ui/input-search.tsx", "category": "atom" },
-    { "name": "InviteForm", "path": "ui/invite-form.tsx", "category": "organism" },
+    {
+      "name": "InputPassword",
+      "path": "ui/input-password.tsx",
+      "category": "atom"
+    },
+    {
+      "name": "InputSearch",
+      "path": "ui/input-search.tsx",
+      "category": "atom"
+    },
+    {
+      "name": "InviteForm",
+      "path": "ui/invite-form.tsx",
+      "category": "organism"
+    },
     { "name": "KpiCard", "path": "ui/kpi-card.tsx", "category": "molecule" },
     { "name": "Label", "path": "ui/label.tsx", "category": "atom" },
     { "name": "Lazy", "path": "ui/lazy.tsx", "category": "primitive" },
     { "name": "Lightbox", "path": "ui/lightbox.tsx", "category": "organism" },
     { "name": "Loading", "path": "ui/loading.tsx", "category": "atom" },
-    { "name": "MarkdownEditor", "path": "ui/markdown-editor.tsx", "category": "organism" },
-    { "name": "MarkdownViewer", "path": "ui/markdown-viewer.tsx", "category": "molecule" },
-    { "name": "MemberCard", "path": "ui/member-card.tsx", "category": "molecule" },
+    {
+      "name": "MarkdownEditor",
+      "path": "ui/markdown-editor.tsx",
+      "category": "organism"
+    },
+    {
+      "name": "MarkdownViewer",
+      "path": "ui/markdown-viewer.tsx",
+      "category": "molecule"
+    },
+    {
+      "name": "MemberCard",
+      "path": "ui/member-card.tsx",
+      "category": "molecule"
+    },
     { "name": "Menubar", "path": "ui/menubar.tsx", "category": "organism" },
-    { "name": "MultiSelect", "path": "ui/multi-select.tsx", "category": "molecule" },
-    { "name": "MultiStepForm", "path": "ui/multi-step-form.tsx", "category": "organism" },
-    { "name": "NavigationMenu", "path": "ui/navigation-menu.tsx", "category": "organism" },
-    { "name": "NotificationBadge", "path": "ui/notification-badge.tsx", "category": "atom" },
-    { "name": "NotificationCenter", "path": "ui/notification-center.tsx", "category": "organism" },
-    { "name": "NotificationList", "path": "ui/notification-list.tsx", "category": "molecule" },
-    { "name": "PageWrapper", "path": "ui/page-wrapper.tsx", "category": "template-piece" },
-    { "name": "Pagination", "path": "ui/pagination.tsx", "category": "molecule" },
-    { "name": "PasswordStrength", "path": "ui/password-strength.tsx", "category": "molecule" },
+    {
+      "name": "MultiSelect",
+      "path": "ui/multi-select.tsx",
+      "category": "molecule"
+    },
+    {
+      "name": "MultiStepForm",
+      "path": "ui/multi-step-form.tsx",
+      "category": "organism"
+    },
+    {
+      "name": "NavigationMenu",
+      "path": "ui/navigation-menu.tsx",
+      "category": "organism"
+    },
+    {
+      "name": "NotificationBadge",
+      "path": "ui/notification-badge.tsx",
+      "category": "atom"
+    },
+    {
+      "name": "NotificationCenter",
+      "path": "ui/notification-center.tsx",
+      "category": "organism"
+    },
+    {
+      "name": "NotificationList",
+      "path": "ui/notification-list.tsx",
+      "category": "molecule"
+    },
+    {
+      "name": "PageWrapper",
+      "path": "ui/page-wrapper.tsx",
+      "category": "template-piece"
+    },
+    {
+      "name": "Pagination",
+      "path": "ui/pagination.tsx",
+      "category": "molecule"
+    },
+    {
+      "name": "PasswordStrength",
+      "path": "ui/password-strength.tsx",
+      "category": "molecule"
+    },
     { "name": "PieChart", "path": "ui/pie-chart.tsx", "category": "molecule" },
     { "name": "Popover", "path": "ui/popover.tsx", "category": "molecule" },
     { "name": "Progress", "path": "ui/progress.tsx", "category": "atom" },
-    { "name": "PromptBuilder", "path": "ui/prompt-builder.tsx", "category": "organism" },
-    { "name": "RadioGroup", "path": "ui/radio-group.tsx", "category": "molecule" },
+    {
+      "name": "PromptBuilder",
+      "path": "ui/prompt-builder.tsx",
+      "category": "organism"
+    },
+    {
+      "name": "RadioGroup",
+      "path": "ui/radio-group.tsx",
+      "category": "molecule"
+    },
     { "name": "Rating", "path": "ui/rating.tsx", "category": "atom" },
-    { "name": "RichTextEditor", "path": "ui/rich-text-editor.tsx", "category": "organism" },
-    { "name": "RoleSelector", "path": "ui/role-selector.tsx", "category": "molecule" },
-    { "name": "ScrollArea", "path": "ui/scroll-area.tsx", "category": "primitive" },
-    { "name": "Section", "path": "ui/section.tsx", "category": "template-piece" },
+    {
+      "name": "RichTextEditor",
+      "path": "ui/rich-text-editor.tsx",
+      "category": "organism"
+    },
+    {
+      "name": "RoleSelector",
+      "path": "ui/role-selector.tsx",
+      "category": "molecule"
+    },
+    {
+      "name": "ScrollArea",
+      "path": "ui/scroll-area.tsx",
+      "category": "primitive"
+    },
+    {
+      "name": "Section",
+      "path": "ui/section.tsx",
+      "category": "template-piece"
+    },
     { "name": "Select", "path": "ui/select.tsx", "category": "atom" },
-    { "name": "Separator", "path": "ui/separator.tsx", "category": "primitive" },
+    {
+      "name": "Separator",
+      "path": "ui/separator.tsx",
+      "category": "primitive"
+    },
     { "name": "Sheet", "path": "ui/sheet.tsx", "category": "organism" },
     { "name": "Sidebar", "path": "ui/sidebar.tsx", "category": "organism" },
     { "name": "SimpleIcon", "path": "ui/simple-icon.tsx", "category": "atom" },
@@ -146,13 +338,25 @@
     { "name": "Sparkline", "path": "ui/sparkline.tsx", "category": "molecule" },
     { "name": "Stack", "path": "ui/stack.tsx", "category": "primitive" },
     { "name": "StatCard", "path": "ui/stat-card.tsx", "category": "molecule" },
-    { "name": "StatusIndicator", "path": "ui/status-indicator.tsx", "category": "atom" },
-    { "name": "StyledTabs", "path": "ui/styled-tabs.tsx", "category": "molecule" },
+    {
+      "name": "StatusIndicator",
+      "path": "ui/status-indicator.tsx",
+      "category": "atom"
+    },
+    {
+      "name": "StyledTabs",
+      "path": "ui/styled-tabs.tsx",
+      "category": "molecule"
+    },
     { "name": "Switch", "path": "ui/switch.tsx", "category": "atom" },
     { "name": "Table", "path": "ui/table.tsx", "category": "molecule" },
     { "name": "Tabs", "path": "ui/tabs.tsx", "category": "molecule" },
     { "name": "Textarea", "path": "ui/textarea.tsx", "category": "atom" },
-    { "name": "TimePicker", "path": "ui/time-picker.tsx", "category": "molecule" },
+    {
+      "name": "TimePicker",
+      "path": "ui/time-picker.tsx",
+      "category": "molecule"
+    },
     { "name": "Toast", "path": "ui/toast.tsx", "category": "molecule" },
     { "name": "Toaster", "path": "ui/toaster.tsx", "category": "molecule" },
     { "name": "Tooltip", "path": "ui/tooltip.tsx", "category": "molecule" },

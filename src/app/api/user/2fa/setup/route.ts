@@ -6,19 +6,23 @@
  * Returns the secret and QR code URI along with backup codes
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@/lib/auth";
+import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@/lib/auth';
 import {
   generateTOTPSecret,
   generateTOTPUri,
   generateBackupCodes,
   hashBackupCode,
-} from "@/lib/auth/mfa";
-import { prisma } from "@/lib/prisma";
-import { AuditLog } from "@/lib/security/audit-log";
-import { withCsrfProtection } from "@/lib/security/csrf";
-import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
-import { logger } from "@/lib/logger";
+} from '@/lib/auth/mfa';
+import { prisma } from '@/lib/prisma';
+import { AuditLog } from '@/lib/security/audit-log';
+import { withCsrfProtection } from '@/lib/security/csrf';
+import {
+  checkRateLimitAuto,
+  getClientIdentifier,
+  RateLimiters,
+} from '@/lib/security/rate-limit';
+import { logger } from '@/lib/logger';
 
 export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
@@ -28,13 +32,15 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
 
     if (!rateLimit.success) {
       return NextResponse.json(
-        { error: "Too many 2FA setup attempts. Please try again later." },
+        { error: 'Too many 2FA setup attempts. Please try again later.' },
         {
           status: 429,
           headers: {
-            "X-RateLimit-Limit": rateLimit.limit.toString(),
-            "X-RateLimit-Remaining": rateLimit.remaining.toString(),
-            "Retry-After": Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
+            'X-RateLimit-Limit': rateLimit.limit.toString(),
+            'X-RateLimit-Remaining': rateLimit.remaining.toString(),
+            'Retry-After': Math.ceil(
+              (rateLimit.reset - Date.now()) / 1000
+            ).toString(),
           },
         }
       );
@@ -43,7 +49,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     const session = await auth();
 
     if (!session?.user?.id || !session?.user?.email) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     // Check if user already has an unverified MFA device
@@ -82,10 +88,10 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     await prisma.mFADevice.create({
       data: {
         userId: session.user.id,
-        type: "totp",
+        type: 'totp',
         secret,
         verified: false,
-        name: "Authenticator App",
+        name: 'Authenticator App',
       },
     });
 
@@ -104,10 +110,11 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
       secret,
       qrCodeUri,
       backupCodes,
-      message: "2FA setup initiated. Please verify with your authenticator app.",
+      message:
+        '2FA setup initiated. Please verify with your authenticator app.',
     });
   } catch (error: unknown) {
-    logger.error("[2FA Setup] Error:", error);
-    return NextResponse.json({ error: "Failed to setup 2FA" }, { status: 500 });
+    logger.error('[2FA Setup] Error:', error);
+    return NextResponse.json({ error: 'Failed to setup 2FA' }, { status: 500 });
   }
 });

@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { Button } from "@/components/ui/button";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { useState, useEffect } from 'react';
+import { useSession } from 'next-auth/react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { Button } from '@/components/ui/button';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import {
   Form,
   FormControl,
@@ -17,16 +17,16 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { useToast } from "@/hooks/use-toast";
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { useToast } from '@/hooks/use-toast';
 
 const profileFormSchema = z.object({
   name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
+    message: 'Name must be at least 2 characters.',
   }),
   email: z.string().email({
-    message: "Please enter a valid email address.",
+    message: 'Please enter a valid email address.',
   }),
 });
 
@@ -40,8 +40,8 @@ export function ProfileForm() {
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
     defaultValues: {
-      name: "",
-      email: "",
+      name: '',
+      email: '',
     },
   });
 
@@ -49,8 +49,8 @@ export function ProfileForm() {
   useEffect(() => {
     if (session?.user) {
       form.reset({
-        name: session.user.name || "",
-        email: session.user.email || "",
+        name: session.user.name || '',
+        email: session.user.email || '',
       });
     }
   }, [session, form]);
@@ -59,10 +59,10 @@ export function ProfileForm() {
     setIsLoading(true);
 
     try {
-      const response = await fetch("/api/user/profile", {
-        method: "PATCH",
+      const response = await fetch('/api/user/profile', {
+        method: 'PATCH',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
       });
@@ -70,14 +70,16 @@ export function ProfileForm() {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || "Failed to update profile");
+        throw new Error(result.error || 'Failed to update profile');
       }
 
-      success("Profile updated", "Your profile has been updated successfully.");
+      success('Profile updated', 'Your profile has been updated successfully.');
     } catch (err: unknown) {
       error(
-        "Error",
-        err instanceof Error ? err.message : "Failed to update profile. Please try again."
+        'Error',
+        err instanceof Error
+          ? err.message
+          : 'Failed to update profile. Please try again.'
       );
     } finally {
       setIsLoading(false);
@@ -99,7 +101,9 @@ export function ProfileForm() {
                   <FormControl>
                     <Input placeholder="Your name" {...field} />
                   </FormControl>
-                  <FormDescription>This is your public display name.</FormDescription>
+                  <FormDescription>
+                    This is your public display name.
+                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -111,15 +115,21 @@ export function ProfileForm() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="your.email@example.com" {...field} />
+                    <Input
+                      type="email"
+                      placeholder="your.email@example.com"
+                      {...field}
+                    />
                   </FormControl>
-                  <FormDescription>Your email address for account notifications.</FormDescription>
+                  <FormDescription>
+                    Your email address for account notifications.
+                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
             />
             <Button type="submit" disabled={isLoading}>
-              {isLoading ? "> SAVING..." : "> SAVE_CHANGES"}
+              {isLoading ? '> SAVING...' : '> SAVE_CHANGES'}
             </Button>
           </form>
         </Form>

@@ -24,9 +24,9 @@ Documentation page explaining Fabrk's 20 built-in color themes and how to custom
 
 ```tsx
 const themes = [
-  { id: "light", name: "Light", preview: "#ffffff" },
-  { id: "dark", name: "Dark", preview: "#1d232a" },
-  { id: "ocean", name: "Ocean", preview: "#0ea5e9" },
+  { id: 'light', name: 'Light', preview: '#ffffff' },
+  { id: 'dark', name: 'Dark', preview: '#1d232a' },
+  { id: 'ocean', name: 'Ocean', preview: '#0ea5e9' },
   // ...and 9 more theme previews
 ];
 ```

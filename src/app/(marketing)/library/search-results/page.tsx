@@ -4,20 +4,25 @@
  * Production-ready
  */
 
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Search } from "lucide-react";
-import { TemplatePageHeader, Card, CardHeader, CardContent } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { CodeBlock } from "@/components/ui/code-block";
-import { SearchBar } from "./components/search-bar";
-import { FiltersSidebar } from "./components/filters-sidebar";
-import { ResultsHeader } from "./components/results-header";
-import { ResultsGrid } from "./components/results-grid";
-import { Pagination } from "./components/pagination";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { useState } from 'react';
+import { Search } from 'lucide-react';
+import {
+  TemplatePageHeader,
+  Card,
+  CardHeader,
+  CardContent,
+} from '@/components/ui/card';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { CodeBlock } from '@/components/ui/code-block';
+import { SearchBar } from './components/search-bar';
+import { FiltersSidebar } from './components/filters-sidebar';
+import { ResultsHeader } from './components/results-header';
+import { ResultsGrid } from './components/results-grid';
+import { Pagination } from './components/pagination';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 const templateCode = `"use client";
 
@@ -80,64 +85,68 @@ export default function SearchResults() {
 
 const mockResults = [
   {
-    id: "1",
-    title: "Button Component",
-    description: "Primary, secondary, outline, and ghost button variants with loading states.",
-    category: "UI Components",
-    tags: ["button", "interactive", "form"],
+    id: '1',
+    title: 'Button Component',
+    description:
+      'Primary, secondary, outline, and ghost button variants with loading states.',
+    category: 'UI Components',
+    tags: ['button', 'interactive', 'form'],
     rating: 4.9,
-    updated: "2 days ago",
+    updated: '2 days ago',
   },
   {
-    id: "2",
-    title: "Data Table",
-    description: "Sortable, filterable data table with pagination and row selection.",
-    category: "UI Components",
-    tags: ["table", "data", "sorting"],
+    id: '2',
+    title: 'Data Table',
+    description:
+      'Sortable, filterable data table with pagination and row selection.',
+    category: 'UI Components',
+    tags: ['table', 'data', 'sorting'],
     rating: 4.8,
-    updated: "1 week ago",
+    updated: '1 week ago',
   },
   {
-    id: "3",
-    title: "Authentication Flow",
-    description: "Complete auth flow with login, signup, password reset, and OAuth.",
-    category: "Templates",
-    tags: ["auth", "login", "security"],
+    id: '3',
+    title: 'Authentication Flow',
+    description:
+      'Complete auth flow with login, signup, password reset, and OAuth.',
+    category: 'Templates',
+    tags: ['auth', 'login', 'security'],
     rating: 4.7,
-    updated: "3 days ago",
+    updated: '3 days ago',
   },
   {
-    id: "4",
-    title: "Dashboard Layout",
-    description: "Responsive dashboard layout with sidebar, header, and content areas.",
-    category: "Templates",
-    tags: ["dashboard", "layout", "responsive"],
+    id: '4',
+    title: 'Dashboard Layout',
+    description:
+      'Responsive dashboard layout with sidebar, header, and content areas.',
+    category: 'Templates',
+    tags: ['dashboard', 'layout', 'responsive'],
     rating: 4.9,
-    updated: "5 days ago",
+    updated: '5 days ago',
   },
 ];
 
 const filterCategories = [
-  { id: "all", label: "All Categories", count: 24 },
-  { id: "ui-components", label: "UI Components", count: 15 },
-  { id: "templates", label: "Templates", count: 6 },
-  { id: "hooks", label: "Hooks", count: 3 },
+  { id: 'all', label: 'All Categories', count: 24 },
+  { id: 'ui-components', label: 'UI Components', count: 15 },
+  { id: 'templates', label: 'Templates', count: 6 },
+  { id: 'hooks', label: 'Hooks', count: 3 },
 ];
 
 const filterTags = [
-  { id: "button", label: "button" },
-  { id: "form", label: "form" },
-  { id: "table", label: "table" },
-  { id: "auth", label: "auth" },
-  { id: "layout", label: "layout" },
-  { id: "responsive", label: "responsive" },
+  { id: 'button', label: 'button' },
+  { id: 'form', label: 'form' },
+  { id: 'table', label: 'table' },
+  { id: 'auth', label: 'auth' },
+  { id: 'layout', label: 'layout' },
+  { id: 'responsive', label: 'responsive' },
 ];
 
 function SearchResultsPreview() {
-  const [searchQuery, setSearchQuery] = useState("components");
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  const [sortBy, setSortBy] = useState("relevance");
-  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState('components');
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [sortBy, setSortBy] = useState('relevance');
+  const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -148,7 +157,7 @@ function SearchResultsPreview() {
   };
 
   const clearFilters = () => {
-    setSelectedCategory("all");
+    setSelectedCategory('all');
     setSelectedTags([]);
   };
 
@@ -187,7 +196,11 @@ function SearchResultsPreview() {
 
             <ResultsGrid results={mockResults} viewMode={viewMode} />
 
-            <Pagination currentPage={currentPage} totalPages={5} onPageChange={setCurrentPage} />
+            <Pagination
+              currentPage={currentPage}
+              totalPages={5}
+              onPageChange={setCurrentPage}
+            />
           </div>
         </div>
       </div>
@@ -214,14 +227,14 @@ export default function SearchResultsTemplate() {
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
-                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  'h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0',
                   mode.radius
                 )}
               >
                 <TabsTrigger
                   value="preview"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -231,7 +244,7 @@ export default function SearchResultsTemplate() {
                 <TabsTrigger
                   value="code"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -255,7 +268,11 @@ export default function SearchResultsTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+                <CodeBlock
+                  code={templateCode}
+                  language="tsx"
+                  maxHeight="600px"
+                />
               </div>
             </Card>
           </TabsContent>
@@ -265,14 +282,16 @@ export default function SearchResultsTemplate() {
         <Card>
           <CardHeader code="0x02" title="FILE_STRUCTURE" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-1 text-xs")}>
+            <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>
               <div className="space-y-1 pl-4">
                 <div>
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">search/</span>
                   <span className="text-foreground">page.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Copy template here</span>
+                  <span className="text-muted-foreground ml-4">
+                    ← Copy template here
+                  </span>
                 </div>
               </div>
             </div>
@@ -283,15 +302,18 @@ export default function SearchResultsTemplate() {
         <Card>
           <CardHeader code="0x03" title="FEATURES" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-2 text-xs")}>
+            <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> Search input with real-time filtering
+                <span className="text-success">&gt;</span> Search input with
+                real-time filtering
               </div>
               <div>
-                <span className="text-success">&gt;</span> Category and tag filters
+                <span className="text-success">&gt;</span> Category and tag
+                filters
               </div>
               <div>
-                <span className="text-success">&gt;</span> Sorting options (relevance, date, rating)
+                <span className="text-success">&gt;</span> Sorting options
+                (relevance, date, rating)
               </div>
               <div>
                 <span className="text-success">&gt;</span> Grid/list view toggle
@@ -303,7 +325,8 @@ export default function SearchResultsTemplate() {
                 <span className="text-success">&gt;</span> Responsive sidebar
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant
+                (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

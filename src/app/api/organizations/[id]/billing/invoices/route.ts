@@ -3,37 +3,31 @@
  * GET - Fetch organization's Stripe invoices
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@/lib/auth";
-import { isOrganizationMember } from "@/lib/teams/organizations";
-import { prisma } from "@/lib/prisma";
-import { stripe } from "@/lib/stripe";
-import { logger } from "@/lib/logger";
+import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@/lib/auth';
+import { isOrganizationMember } from '@/lib/teams/organizations';
+import { prisma } from '@/lib/prisma';
+import { stripe } from '@/lib/stripe';
+import { logger } from '@/lib/logger';
 
 interface RouteContext {
   params: Promise<{ id: string }>;
 }
 
-export async function GET(
-  req: NextRequest,
-  context: RouteContext
-) {
+export async function GET(req: NextRequest, context: RouteContext) {
   try {
     const { id } = await context.params;
     const session = await auth();
 
     if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     // Verify user is a member
     const isMember = await isOrganizationMember(id, session.user.id);
     if (!isMember) {
       return NextResponse.json(
-        { error: "You are not a member of this organization" },
+        { error: 'You are not a member of this organization' },
         { status: 403 }
       );
     }
@@ -45,10 +39,7 @@ export async function GET(
     });
 
     if (!organization?.customerId) {
-      return NextResponse.json(
-        { invoices: [] },
-        { status: 200 }
-      );
+      return NextResponse.json({ invoices: [] }, { status: 200 });
     }
 
     // Fetch invoices from Stripe
@@ -67,9 +58,9 @@ export async function GET(
       })),
     });
   } catch (error: unknown) {
-    logger.error("Failed to fetch invoices:", error);
+    logger.error('Failed to fetch invoices:', error);
     return NextResponse.json(
-      { error: "Failed to fetch invoices" },
+      { error: 'Failed to fetch invoices' },
       { status: 500 }
     );
   }

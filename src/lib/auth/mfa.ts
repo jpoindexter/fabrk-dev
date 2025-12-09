@@ -10,9 +10,9 @@
  * - Recovery flows
  */
 
-import * as crypto from "crypto";
-import { prisma } from "@/lib/prisma";
-import { AuditLog } from "@/lib/security/audit-log";
+import * as crypto from 'crypto';
+import { prisma } from '@/lib/prisma';
+import { AuditLog } from '@/lib/security/audit-log';
 
 /**
  * TOTP Implementation
@@ -28,10 +28,10 @@ const TOTP_DIGITS = 6;
  */
 export function generateTOTPSecret(): string {
   // Base32 alphabet
-  const base32 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
+  const base32 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
   const bytes = crypto.randomBytes(20);
 
-  let secret = "";
+  let secret = '';
   for (let i = 0; i < bytes.length; i++) {
     secret += base32[bytes[i] % 32];
   }
@@ -48,7 +48,7 @@ export function generateTOTP(secret: string, timeStep?: number): string {
   counter.writeBigInt64BE(BigInt(time));
 
   const key = base32Decode(secret);
-  const hmac = crypto.createHmac("sha1", key);
+  const hmac = crypto.createHmac('sha1', key);
   hmac.update(counter);
   const hash = hmac.digest();
 
@@ -60,7 +60,7 @@ export function generateTOTP(secret: string, timeStep?: number): string {
     (hash[offset + 3] & 0xff);
 
   const otp = binary % Math.pow(10, TOTP_DIGITS);
-  return otp.toString().padStart(TOTP_DIGITS, "0");
+  return otp.toString().padStart(TOTP_DIGITS, '0');
 }
 
 /**
@@ -86,7 +86,7 @@ export function verifyTOTP(token: string, secret: string): boolean {
 export function generateTOTPUri(
   secret: string,
   accountName: string,
-  issuer: string = "Fabrk"
+  issuer: string = 'Fabrk'
 ): string {
   const encodedIssuer = encodeURIComponent(issuer);
   const encodedAccount = encodeURIComponent(accountName);
@@ -98,8 +98,8 @@ export function generateTOTPUri(
  * Base32 decode helper
  */
 function base32Decode(secret: string): Buffer {
-  const base32 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
-  const cleanSecret = secret.toUpperCase().replace(/=+$/, "");
+  const base32 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+  const cleanSecret = secret.toUpperCase().replace(/=+$/, '');
 
   let bits = 0;
   let value = 0;
@@ -131,17 +131,19 @@ const BACKUP_CODE_LENGTH = 8;
 /**
  * Generate backup codes
  */
-export function generateBackupCodes(count: number = BACKUP_CODE_COUNT): string[] {
+export function generateBackupCodes(
+  count: number = BACKUP_CODE_COUNT
+): string[] {
   const codes: string[] = [];
 
   for (let i = 0; i < count; i++) {
     const code = crypto
       .randomBytes(BACKUP_CODE_LENGTH / 2)
-      .toString("hex")
+      .toString('hex')
       .toUpperCase();
 
     // Format: XXXX-XXXX
-    const formatted = code.match(/.{1,4}/g)?.join("-") || code;
+    const formatted = code.match(/.{1,4}/g)?.join('-') || code;
     codes.push(formatted);
   }
 
@@ -152,7 +154,7 @@ export function generateBackupCodes(count: number = BACKUP_CODE_COUNT): string[]
  * Hash backup code for storage
  */
 export function hashBackupCode(code: string): string {
-  return crypto.createHash("sha256").update(code).digest("hex");
+  return crypto.createHash('sha256').update(code).digest('hex');
 }
 
 /**
@@ -160,10 +162,7 @@ export function hashBackupCode(code: string): string {
  */
 export function verifyBackupCode(code: string, hash: string): boolean {
   const codeHash = hashBackupCode(code);
-  return crypto.timingSafeEqual(
-    Buffer.from(codeHash),
-    Buffer.from(hash)
-  );
+  return crypto.timingSafeEqual(Buffer.from(codeHash), Buffer.from(hash));
 }
 
 /**
@@ -195,10 +194,10 @@ export async function enableMFA(
   await prisma.mFADevice.create({
     data: {
       userId,
-      type: "totp",
+      type: 'totp',
       secret,
       verified: false,
-      name: deviceName || "Authenticator App",
+      name: deviceName || 'Authenticator App',
     },
   });
 
@@ -389,7 +388,7 @@ export async function getMFADevices(userId: string) {
       lastUsed: true,
       createdAt: true,
     },
-    orderBy: { createdAt: "desc" },
+    orderBy: { createdAt: 'desc' },
   });
 }
 

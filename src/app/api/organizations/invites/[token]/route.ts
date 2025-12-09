@@ -3,18 +3,15 @@
  * GET - Fetch invitation details by token
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
-import { logger } from "@/lib/logger";
+import { NextRequest, NextResponse } from 'next/server';
+import { prisma } from '@/lib/prisma';
+import { logger } from '@/lib/logger';
 
 interface RouteContext {
   params: Promise<{ token: string }>;
 }
 
-export async function GET(
-  req: NextRequest,
-  context: RouteContext
-) {
+export async function GET(req: NextRequest, context: RouteContext) {
   try {
     const { token } = await context.params;
 
@@ -35,7 +32,7 @@ export async function GET(
 
     if (!invite) {
       return NextResponse.json(
-        { error: "Invitation not found" },
+        { error: 'Invitation not found' },
         { status: 404 }
       );
     }
@@ -43,7 +40,7 @@ export async function GET(
     // Check if already accepted
     if (invite.acceptedAt) {
       return NextResponse.json(
-        { error: "This invitation has already been accepted" },
+        { error: 'This invitation has already been accepted' },
         { status: 410 }
       );
     }
@@ -51,7 +48,7 @@ export async function GET(
     // Check if expired
     if (new Date(invite.expiresAt) < new Date()) {
       return NextResponse.json(
-        { error: "This invitation has expired" },
+        { error: 'This invitation has expired' },
         { status: 410 }
       );
     }
@@ -72,13 +69,13 @@ export async function GET(
         role: invite.role,
         expiresAt: invite.expiresAt.toISOString(),
         organization: invite.organization,
-        inviter: inviter || { name: null, email: "Unknown" },
+        inviter: inviter || { name: null, email: 'Unknown' },
       },
     });
   } catch (error: unknown) {
-    logger.error("Failed to fetch invitation:", error);
+    logger.error('Failed to fetch invitation:', error);
     return NextResponse.json(
-      { error: "Failed to fetch invitation" },
+      { error: 'Failed to fetch invitation' },
       { status: 500 }
     );
   }

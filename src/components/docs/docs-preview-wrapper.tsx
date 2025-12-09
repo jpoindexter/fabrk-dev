@@ -3,15 +3,18 @@
  * Overrides rounded corners, adds monospace fonts, and applies terminal aesthetic
  */
 
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 interface DocsPreviewWrapperProps {
   children: React.ReactNode;
   className?: string;
 }
 
-export function DocsPreviewWrapper({ children, className }: DocsPreviewWrapperProps) {
-  return <div className={cn("terminal-preview", className)}>{children}</div>;
+export function DocsPreviewWrapper({
+  children,
+  className,
+}: DocsPreviewWrapperProps) {
+  return <div className={cn('terminal-preview', className)}>{children}</div>;
 }

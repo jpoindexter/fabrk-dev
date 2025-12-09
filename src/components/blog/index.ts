@@ -3,4 +3,4 @@
  * Reusable components for blog functionality
  */
 
-export { MdxReference } from "./mdx-reference";
+export { MdxReference } from './mdx-reference';

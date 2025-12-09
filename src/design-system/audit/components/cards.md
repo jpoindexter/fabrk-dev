@@ -387,7 +387,11 @@ Template Documentation
 <FeaturesCard
   code="0x02"
   title="AUTH_FEATURES"
-  features={["NextAuth v5 integration", "JWT sessions (30-day)", "Social login (Google, GitHub)"]}
+  features={[
+    'NextAuth v5 integration',
+    'JWT sessions (30-day)',
+    'Social login (Google, GitHub)',
+  ]}
   note="Configure in src/lib/auth.ts"
   featureIcon="check"
 />
@@ -432,7 +436,7 @@ Template Documentation
 **Pattern:**
 
 ```tsx
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 
 <Card>
   <CardHeader>
@@ -542,9 +546,9 @@ import { TemplatePageHeader, FeaturesCard, CodeOutput } from "@/components/ui/ca
 
    ```tsx
    const iconMap = {
-     arrow: ">",
-     check: "✓",
-     dot: "•",
+     arrow: '>',
+     check: '✓',
+     dot: '•',
    };
    ```
 
@@ -554,8 +558,9 @@ import { TemplatePageHeader, FeaturesCard, CodeOutput } from "@/components/ui/ca
    - Status: Acceptable for terminal aesthetic
 
 5. **CodeOutput border opacity:**
+
    ```tsx
-   "border-border/50"; // 50% opacity on header border
+   'border-border/50'; // 50% opacity on header border
    ```
 
    - Only component using border opacity

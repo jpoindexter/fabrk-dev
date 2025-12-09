@@ -3,13 +3,13 @@
  * Configure callback URLs in your OAuth provider dashboard (e.g., Google Cloud Console).
  * Session settings and redirect paths can be customized in the callbacks section below.
  */
-import { prisma } from "@/lib/prisma";
-import { PrismaAdapter } from "@auth/prisma-adapter";
-import { compare } from "bcryptjs";
-import type { NextAuthConfig } from "next-auth";
-import NextAuth from "next-auth";
-import Credentials from "next-auth/providers/credentials";
-import Google from "next-auth/providers/google";
+import { prisma } from '@/lib/prisma';
+import { PrismaAdapter } from '@auth/prisma-adapter';
+import { compare } from 'bcryptjs';
+import type { NextAuthConfig } from 'next-auth';
+import NextAuth from 'next-auth';
+import Credentials from 'next-auth/providers/credentials';
+import Google from 'next-auth/providers/google';
 
 /**
  * NextAuth configuration
@@ -17,7 +17,10 @@ import Google from "next-auth/providers/google";
  */
 
 // Session version cache to avoid N+1 queries
-const sessionVersionCache = new Map<string, { version: number; timestamp: number }>();
+const sessionVersionCache = new Map<
+  string,
+  { version: number; timestamp: number }
+>();
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 const MAX_CACHE_SIZE = 1000;
 
@@ -33,8 +36,11 @@ function getCachedSessionVersion(userId: string): number | null {
 
 function setCachedSessionVersion(userId: string, version: number) {
   if (sessionVersionCache.size >= MAX_CACHE_SIZE) {
-    const entriesToDelete = Array.from(sessionVersionCache.keys()).slice(0, 100);
-    entriesToDelete.forEach(key => sessionVersionCache.delete(key));
+    const entriesToDelete = Array.from(sessionVersionCache.keys()).slice(
+      0,
+      100
+    );
+    entriesToDelete.forEach((key) => sessionVersionCache.delete(key));
   }
   sessionVersionCache.set(userId, { version, timestamp: Date.now() });
 }
@@ -45,7 +51,7 @@ async function hashTokenWebCrypto(token: string): Promise<string> {
   const data = encoder.encode(token);
   const hashBuffer = await crypto.subtle.digest('SHA-256', data);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
 }
 
 export const authConfig: NextAuthConfig = {
@@ -57,11 +63,11 @@ export const authConfig: NextAuthConfig = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
     Credentials({
-      name: "credentials",
+      name: 'credentials',
       credentials: {
-        email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" },
-        magicToken: { label: "Magic Token", type: "text" },
+        email: { label: 'Email', type: 'email' },
+        password: { label: 'Password', type: 'password' },
+        magicToken: { label: 'Magic Token', type: 'text' },
       },
       async authorize(credentials) {
         if (!credentials?.email) {
@@ -81,7 +87,9 @@ export const authConfig: NextAuthConfig = {
         // Magic link authentication
         if (credentials.magicToken) {
           // Hash the incoming token to match stored hash (security: tokens are hashed in DB)
-          const hashedToken = await hashTokenWebCrypto(credentials.magicToken as string);
+          const hashedToken = await hashTokenWebCrypto(
+            credentials.magicToken as string
+          );
 
           const magicToken = await prisma.verificationToken.findFirst({
             where: {
@@ -113,7 +121,10 @@ export const authConfig: NextAuthConfig = {
           return null;
         }
 
-        const isPasswordValid = await compare(credentials.password as string, user.password);
+        const isPasswordValid = await compare(
+          credentials.password as string,
+          user.password
+        );
 
         if (!isPasswordValid) {
           return null;
@@ -129,7 +140,7 @@ export const authConfig: NextAuthConfig = {
     }),
   ],
   session: {
-    strategy: "jwt",
+    strategy: 'jwt',
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
   callbacks: {
@@ -195,7 +206,7 @@ export const authConfig: NextAuthConfig = {
       return session;
     },
   },
-  debug: process.env.NODE_ENV === "development",
+  debug: process.env.NODE_ENV === 'development',
 };
 
 export const { handlers, signIn, signOut, auth } = NextAuth(authConfig);

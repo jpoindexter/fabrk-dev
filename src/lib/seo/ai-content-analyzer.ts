@@ -14,11 +14,11 @@ import {
   scoreContent,
   calculateReadabilityScore,
   type ContentAnalysis,
-} from "./content-optimization";
+} from './content-optimization';
 
 export interface ComprehensiveScore {
   overall: number;
-  grade: "A+" | "A" | "B" | "C" | "D" | "F";
+  grade: 'A+' | 'A' | 'B' | 'C' | 'D' | 'F';
   scores: {
     seo: number;
     aeo: number;
@@ -28,7 +28,7 @@ export interface ComprehensiveScore {
   strengths: string[];
   improvements: string[];
   actionItems: Array<{
-    priority: "high" | "medium" | "low";
+    priority: 'high' | 'medium' | 'low';
     task: string;
     impact: string;
   }>;
@@ -64,7 +64,10 @@ export function analyzeContentComprehensive(
   };
 
   const overall = Math.round(
-    scores.seo * 0.3 + scores.aeo * 0.3 + scores.geo * 0.25 + scores.readability * 0.15
+    scores.seo * 0.3 +
+      scores.aeo * 0.3 +
+      scores.geo * 0.25 +
+      scores.readability * 0.15
   );
 
   const grade = getGrade(overall);
@@ -89,7 +92,10 @@ export function analyzeContentComprehensive(
 /**
  * Calculate SEO score (0-100)
  */
-function calculateSEOScore(analysis: ContentAnalysis, keywords: string[]): number {
+function calculateSEOScore(
+  analysis: ContentAnalysis,
+  keywords: string[]
+): number {
   let score = 0;
 
   // Word count (20 points)
@@ -171,13 +177,13 @@ function calculateGEOScore(content: string, analysis: ContentAnalysis): number {
 /**
  * Convert score to letter grade
  */
-function getGrade(score: number): "A+" | "A" | "B" | "C" | "D" | "F" {
-  if (score >= 95) return "A+";
-  if (score >= 85) return "A";
-  if (score >= 75) return "B";
-  if (score >= 65) return "C";
-  if (score >= 55) return "D";
-  return "F";
+function getGrade(score: number): 'A+' | 'A' | 'B' | 'C' | 'D' | 'F' {
+  if (score >= 95) return 'A+';
+  if (score >= 85) return 'A';
+  if (score >= 75) return 'B';
+  if (score >= 65) return 'C';
+  if (score >= 55) return 'D';
+  return 'F';
 }
 
 /**
@@ -190,23 +196,23 @@ function identifyStrengths(
   const strengths: string[] = [];
 
   if (scores.readability >= 70) {
-    strengths.push("Excellent readability - easy to understand");
+    strengths.push('Excellent readability - easy to understand');
   }
 
   if (analysis.hasQuestions && analysis.hasList) {
-    strengths.push("Perfect for featured snippets (questions + lists)");
+    strengths.push('Perfect for featured snippets (questions + lists)');
   }
 
   if (analysis.headingStructure.length >= 5) {
-    strengths.push("Great heading structure for SEO");
+    strengths.push('Great heading structure for SEO');
   }
 
   if (analysis.wordCount >= 1000) {
-    strengths.push("Comprehensive content length");
+    strengths.push('Comprehensive content length');
   }
 
   if (scores.geo >= 70) {
-    strengths.push("High AI citation potential");
+    strengths.push('High AI citation potential');
   }
 
   return strengths;
@@ -233,27 +239,29 @@ function identifyImprovements(
   }
 
   if (!analysis.hasQuestions) {
-    improvements.push('Add question-based headings for "People Also Ask" optimization');
+    improvements.push(
+      'Add question-based headings for "People Also Ask" optimization'
+    );
   }
 
   if (!analysis.hasList) {
-    improvements.push("Add lists or bullet points for better AEO");
+    improvements.push('Add lists or bullet points for better AEO');
   }
 
   if (analysis.headingStructure.length < 3) {
-    improvements.push("Add more headings (H2, H3) for better structure");
+    improvements.push('Add more headings (H2, H3) for better structure');
   }
 
   if (scores.readability < options.targetReadability) {
-    improvements.push("Simplify sentences to improve readability");
+    improvements.push('Simplify sentences to improve readability');
   }
 
   if (scores.geo < 70) {
-    improvements.push("Add clear definitions and statistics for AI citation");
+    improvements.push('Add clear definitions and statistics for AI citation');
   }
 
   if (!analysis.hasTable) {
-    improvements.push("Consider adding tables for data presentation");
+    improvements.push('Consider adding tables for data presentation');
   }
 
   return improvements;
@@ -264,62 +272,68 @@ function identifyImprovements(
  */
 function generateActionItems(
   improvements: string[]
-): Array<{ priority: "high" | "medium" | "low"; task: string; impact: string }> {
+): Array<{
+  priority: 'high' | 'medium' | 'low';
+  task: string;
+  impact: string;
+}> {
   const actionItems: Array<{
-    priority: "high" | "medium" | "low";
+    priority: 'high' | 'medium' | 'low';
     task: string;
     impact: string;
   }> = [];
 
   improvements.forEach((improvement) => {
-    if (improvement.includes("word count")) {
+    if (improvement.includes('word count')) {
       actionItems.push({
-        priority: "high",
+        priority: 'high',
         task: improvement,
-        impact: "Improves SEO and content depth",
+        impact: 'Improves SEO and content depth',
       });
-    } else if (improvement.includes("question")) {
+    } else if (improvement.includes('question')) {
       actionItems.push({
-        priority: "high",
+        priority: 'high',
         task: improvement,
-        impact: "Critical for featured snippets",
+        impact: 'Critical for featured snippets',
       });
-    } else if (improvement.includes("headings")) {
+    } else if (improvement.includes('headings')) {
       actionItems.push({
-        priority: "high",
+        priority: 'high',
         task: improvement,
-        impact: "Essential for SEO and readability",
+        impact: 'Essential for SEO and readability',
       });
-    } else if (improvement.includes("list")) {
+    } else if (improvement.includes('list')) {
       actionItems.push({
-        priority: "medium",
+        priority: 'medium',
         task: improvement,
-        impact: "Improves AEO performance",
+        impact: 'Improves AEO performance',
       });
-    } else if (improvement.includes("readability")) {
+    } else if (improvement.includes('readability')) {
       actionItems.push({
-        priority: "medium",
+        priority: 'medium',
         task: improvement,
-        impact: "Better user experience and engagement",
+        impact: 'Better user experience and engagement',
       });
-    } else if (improvement.includes("AI citation")) {
+    } else if (improvement.includes('AI citation')) {
       actionItems.push({
-        priority: "medium",
+        priority: 'medium',
         task: improvement,
-        impact: "Increases GEO visibility",
+        impact: 'Increases GEO visibility',
       });
     } else {
       actionItems.push({
-        priority: "low",
+        priority: 'low',
         task: improvement,
-        impact: "Nice to have for completeness",
+        impact: 'Nice to have for completeness',
       });
     }
   });
 
   // Sort by priority
   const priorityOrder = { high: 1, medium: 2, low: 3 };
-  return actionItems.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
+  return actionItems.sort(
+    (a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]
+  );
 }
 
 /**
@@ -356,7 +370,9 @@ export function generateSEOReport(analysis: ComprehensiveScore): string {
   if (analysis.actionItems.length > 0) {
     report += `### 🎯 Action Items\n\n`;
 
-    const highPriority = analysis.actionItems.filter((item) => item.priority === "high");
+    const highPriority = analysis.actionItems.filter(
+      (item) => item.priority === 'high'
+    );
     if (highPriority.length > 0) {
       report += `#### High Priority\n`;
       highPriority.forEach((item, index) => {
@@ -364,7 +380,9 @@ export function generateSEOReport(analysis: ComprehensiveScore): string {
       });
     }
 
-    const mediumPriority = analysis.actionItems.filter((item) => item.priority === "medium");
+    const mediumPriority = analysis.actionItems.filter(
+      (item) => item.priority === 'medium'
+    );
     if (mediumPriority.length > 0) {
       report += `#### Medium Priority\n`;
       mediumPriority.forEach((item, index) => {
@@ -372,7 +390,9 @@ export function generateSEOReport(analysis: ComprehensiveScore): string {
       });
     }
 
-    const lowPriority = analysis.actionItems.filter((item) => item.priority === "low");
+    const lowPriority = analysis.actionItems.filter(
+      (item) => item.priority === 'low'
+    );
     if (lowPriority.length > 0) {
       report += `#### Low Priority\n`;
       lowPriority.forEach((item, index) => {

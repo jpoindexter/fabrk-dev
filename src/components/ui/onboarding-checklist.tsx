@@ -27,17 +27,17 @@
  * ```
  */
 
-"use client";
+'use client';
 
-import * as React from "react";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { Card } from "./card";
-import { Button } from "./button";
-import { Checkbox } from "./checkbox";
-import { Progress } from "./progress";
-import { ChevronDown, ChevronUp, X, Sparkles } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import * as React from 'react';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { Card } from './card';
+import { Button } from './button';
+import { Checkbox } from './checkbox';
+import { Progress } from './progress';
+import { ChevronDown, ChevronUp, X, Sparkles } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export interface OnboardingTask {
   id: string;
@@ -66,7 +66,9 @@ export function OnboardingChecklist({
   showCelebration = true,
 }: OnboardingChecklistProps) {
   const [isMinimized, setIsMinimized] = React.useState(false);
-  const [expandedTaskId, setExpandedTaskId] = React.useState<string | null>(null);
+  const [expandedTaskId, setExpandedTaskId] = React.useState<string | null>(
+    null
+  );
   const [showConfetti, setShowConfetti] = React.useState(false);
 
   const completedCount = tasks.filter((t) => t.completed).length;
@@ -91,7 +93,13 @@ export function OnboardingChecklist({
 
   if (isMinimized) {
     return (
-      <Card className={cn("flex items-center justify-between gap-4 p-4", mode.radius, className)}>
+      <Card
+        className={cn(
+          'flex items-center justify-between gap-4 p-4',
+          mode.radius,
+          className
+        )}
+      >
         <div className="flex items-center gap-3">
           <Button
             size="sm"
@@ -102,8 +110,10 @@ export function OnboardingChecklist({
             <ChevronDown className="h-4 w-4" />
           </Button>
           <div>
-            <p className={cn("text-sm font-medium", mode.font)}>[ ONBOARDING_PROGRESS ]</p>
-            <p className={cn("text-muted-foreground text-xs", mode.font)}>
+            <p className={cn('text-sm font-medium', mode.font)}>
+              [ ONBOARDING_PROGRESS ]
+            </p>
+            <p className={cn('text-muted-foreground text-xs', mode.font)}>
               {completedCount}/{totalCount} tasks completed
             </p>
           </div>
@@ -113,7 +123,12 @@ export function OnboardingChecklist({
             <Progress value={progress} className="h-2" />
           </div>
           {onDismiss && (
-            <Button size="sm" variant="ghost" onClick={onDismiss} aria-label="Dismiss">
+            <Button
+              size="sm"
+              variant="ghost"
+              onClick={onDismiss}
+              aria-label="Dismiss"
+            >
               <X className="h-4 w-4" />
             </Button>
           )}
@@ -123,7 +138,7 @@ export function OnboardingChecklist({
   }
 
   return (
-    <Card className={cn("relative overflow-hidden", mode.radius, className)}>
+    <Card className={cn('relative overflow-hidden', mode.radius, className)}>
       {/* Confetti Animation */}
       <AnimatePresence>
         {showConfetti && (
@@ -150,10 +165,14 @@ export function OnboardingChecklist({
       <div className="border-border flex items-center justify-between border-b p-4">
         <div className="flex-1">
           <div className="flex items-center gap-2">
-            <h3 className={cn("text-sm font-semibold", mode.font)}>[ GETTING_STARTED ]</h3>
-            {isComplete && <span className="text-success text-xs">✓ COMPLETE</span>}
+            <h3 className={cn('text-sm font-semibold', mode.font)}>
+              [ GETTING_STARTED ]
+            </h3>
+            {isComplete && (
+              <span className="text-success text-xs">✓ COMPLETE</span>
+            )}
           </div>
-          <p className={cn("text-muted-foreground mt-1 text-xs", mode.font)}>
+          <p className={cn('text-muted-foreground mt-1 text-xs', mode.font)}>
             {completedCount}/{totalCount} tasks completed
           </p>
         </div>
@@ -168,7 +187,12 @@ export function OnboardingChecklist({
             <ChevronUp className="h-4 w-4" />
           </Button>
           {onDismiss && (
-            <Button size="sm" variant="ghost" onClick={onDismiss} aria-label="Dismiss">
+            <Button
+              size="sm"
+              variant="ghost"
+              onClick={onDismiss}
+              aria-label="Dismiss"
+            >
               <X className="h-4 w-4" />
             </Button>
           )}
@@ -178,7 +202,12 @@ export function OnboardingChecklist({
       {/* Progress Bar */}
       <div className="border-border border-b p-4">
         <Progress value={progress} className="h-2" />
-        <p className={cn("text-muted-foreground mt-2 text-right text-xs", mode.font)}>
+        <p
+          className={cn(
+            'text-muted-foreground mt-2 text-right text-xs',
+            mode.font
+          )}
+        >
           {Math.round(progress)}% complete
         </p>
       </div>
@@ -191,7 +220,9 @@ export function OnboardingChecklist({
               <Checkbox
                 id={`task-${task.id}`}
                 checked={task.completed}
-                onCheckedChange={(checked) => handleTaskToggle(task.id, checked as boolean)}
+                onCheckedChange={(checked) =>
+                  handleTaskToggle(task.id, checked as boolean)
+                }
                 className="mt-0.5"
               />
 
@@ -199,12 +230,13 @@ export function OnboardingChecklist({
                 <label
                   htmlFor={`task-${task.id}`}
                   className={cn(
-                    "cursor-pointer text-sm",
+                    'cursor-pointer text-sm',
                     mode.font,
-                    task.completed && "text-muted-foreground line-through opacity-60"
+                    task.completed &&
+                      'text-muted-foreground line-through opacity-60'
                   )}
                 >
-                  [{String(index + 1).padStart(2, "0")}]: {task.title}
+                  [{String(index + 1).padStart(2, '0')}]: {task.title}
                 </label>
 
                 {task.description && (
@@ -212,8 +244,12 @@ export function OnboardingChecklist({
                     <Button
                       size="sm"
                       variant="ghost"
-                      onClick={() => setExpandedTaskId(expandedTaskId === task.id ? null : task.id)}
-                      className={cn("h-auto p-0 text-xs", mode.font)}
+                      onClick={() =>
+                        setExpandedTaskId(
+                          expandedTaskId === task.id ? null : task.id
+                        )
+                      }
+                      className={cn('h-auto p-0 text-xs', mode.font)}
                     >
                       {expandedTaskId === task.id ? (
                         <>
@@ -232,13 +268,18 @@ export function OnboardingChecklist({
                       {expandedTaskId === task.id && (
                         <motion.div
                           initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
+                          animate={{ height: 'auto', opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.2 }}
                           className="overflow-hidden"
                         >
                           <div className="bg-muted border-border space-y-2 border p-3">
-                            <p className={cn("text-muted-foreground text-xs", mode.font)}>
+                            <p
+                              className={cn(
+                                'text-muted-foreground text-xs',
+                                mode.font
+                              )}
+                            >
                               {task.description}
                             </p>
 
@@ -246,11 +287,11 @@ export function OnboardingChecklist({
                               <a
                                 href={task.link.href}
                                 className={cn(
-                                  "text-primary inline-block text-xs hover:underline",
+                                  'text-primary inline-block text-xs hover:underline',
                                   mode.font
                                 )}
                               >
-                                {"> "}
+                                {'> '}
                                 {task.link.text}
                               </a>
                             )}
@@ -269,7 +310,7 @@ export function OnboardingChecklist({
       {/* Completion Message */}
       {isComplete && (
         <div className="bg-success/10 border-success border-t p-4">
-          <p className={cn("text-success text-sm", mode.font)}>
+          <p className={cn('text-success text-sm', mode.font)}>
             🎉 [SETUP_COMPLETE]: You're all set! Start building amazing things.
           </p>
         </div>

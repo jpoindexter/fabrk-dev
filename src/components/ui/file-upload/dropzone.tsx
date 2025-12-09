@@ -3,11 +3,11 @@
  * Dropzone - File drag-and-drop zone
  */
 
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import * as React from "react";
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import * as React from 'react';
 
 export interface DropzoneProps {
   onFilesDropped?: (files: File[]) => void;
@@ -51,7 +51,7 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
     };
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
-      if (e.key === "Enter" || e.key === " ") {
+      if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         handleClick();
       }
@@ -71,9 +71,9 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
           onKeyDown={handleKeyDown}
           aria-label="Upload files"
           className={cn(
-            "border-border cursor-pointer border-2 border-dashed p-8 text-center transition-colors",
+            'border-border cursor-pointer border-2 border-dashed p-8 text-center transition-colors',
             mode.radius,
-            isDragOver && "border-primary bg-primary/5",
+            isDragOver && 'border-primary bg-primary/5',
             className
           )}
         >
@@ -90,4 +90,4 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
     );
   }
 );
-Dropzone.displayName = "Dropzone";
+Dropzone.displayName = 'Dropzone';

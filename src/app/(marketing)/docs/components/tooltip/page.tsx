@@ -1,9 +1,14 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { Button } from "@/components/ui/button";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { Plus, Trash2, Edit, Save, Settings } from "lucide-react";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { Button } from '@/components/ui/button';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
+import { Plus, Trash2, Edit, Save, Settings } from 'lucide-react';
 
 export default function TooltipPage() {
   return (
@@ -39,13 +44,17 @@ export default function TooltipPage() {
       }}
       variants={[
         {
-          title: "Icon Button",
-          description: "Tooltip on an icon button for accessibility.",
+          title: 'Icon Button',
+          description: 'Tooltip on an icon button for accessibility.',
           preview: (
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button variant="outline" size="icon" aria-label="Add new item">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    aria-label="Add new item"
+                  >
                     <Plus className="h-4 w-4" />
                   </Button>
                 </TooltipTrigger>
@@ -69,13 +78,17 @@ export default function TooltipPage() {
 </TooltipProvider>`,
         },
         {
-          title: "Destructive Action",
-          description: "Tooltip explaining a destructive action.",
+          title: 'Destructive Action',
+          description: 'Tooltip explaining a destructive action.',
           preview: (
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button variant="destructive" size="icon" aria-label="Delete permanently">
+                  <Button
+                    variant="destructive"
+                    size="icon"
+                    aria-label="Delete permanently"
+                  >
                     <Trash2 className="h-4 w-4" />
                   </Button>
                 </TooltipTrigger>
@@ -99,8 +112,8 @@ export default function TooltipPage() {
 </TooltipProvider>`,
         },
         {
-          title: "With Keyboard Shortcut",
-          description: "Tooltip showing keyboard shortcut hint.",
+          title: 'With Keyboard Shortcut',
+          description: 'Tooltip showing keyboard shortcut hint.',
           preview: (
             <TooltipProvider>
               <Tooltip>
@@ -111,7 +124,10 @@ export default function TooltipPage() {
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>
-                    Save <kbd className="bg-muted border-border ml-1 border px-1 text-xs">⌘S</kbd>
+                    Save{' '}
+                    <kbd className="bg-muted border-border ml-1 border px-1 text-xs">
+                      ⌘S
+                    </kbd>
                   </p>
                 </TooltipContent>
               </Tooltip>
@@ -133,8 +149,8 @@ export default function TooltipPage() {
 </TooltipProvider>`,
         },
         {
-          title: "Multiple Tooltips",
-          description: "Multiple tooltips using a single provider.",
+          title: 'Multiple Tooltips',
+          description: 'Multiple tooltips using a single provider.',
           preview: (
             <TooltipProvider>
               <div className="flex gap-2">
@@ -197,8 +213,8 @@ export default function TooltipPage() {
 </TooltipProvider>`,
         },
         {
-          title: "Custom Delay",
-          description: "Tooltip with custom delay before showing.",
+          title: 'Custom Delay',
+          description: 'Tooltip with custom delay before showing.',
           preview: (
             <TooltipProvider delayDuration={300}>
               <Tooltip>
@@ -225,56 +241,56 @@ export default function TooltipPage() {
       ]}
       props={[
         {
-          name: "delayDuration",
-          type: "number",
-          default: "700",
+          name: 'delayDuration',
+          type: 'number',
+          default: '700',
           description:
-            "The duration from when the mouse enters a tooltip trigger until the tooltip opens (in ms). Set on TooltipProvider.",
+            'The duration from when the mouse enters a tooltip trigger until the tooltip opens (in ms). Set on TooltipProvider.',
         },
         {
-          name: "skipDelayDuration",
-          type: "number",
-          default: "300",
+          name: 'skipDelayDuration',
+          type: 'number',
+          default: '300',
           description:
-            "How long a user has to enter another trigger without delay after closing a tooltip (in ms). Set on TooltipProvider.",
+            'How long a user has to enter another trigger without delay after closing a tooltip (in ms). Set on TooltipProvider.',
         },
         {
-          name: "open",
-          type: "boolean",
-          default: "undefined",
-          description: "Control the open state of the tooltip.",
+          name: 'open',
+          type: 'boolean',
+          default: 'undefined',
+          description: 'Control the open state of the tooltip.',
         },
         {
-          name: "onOpenChange",
-          type: "(open: boolean) => void",
-          default: "undefined",
-          description: "Event handler called when the open state changes.",
+          name: 'onOpenChange',
+          type: '(open: boolean) => void',
+          default: 'undefined',
+          description: 'Event handler called when the open state changes.',
         },
         {
-          name: "defaultOpen",
-          type: "boolean",
-          default: "false",
-          description: "The initial open state in uncontrolled mode.",
+          name: 'defaultOpen',
+          type: 'boolean',
+          default: 'false',
+          description: 'The initial open state in uncontrolled mode.',
         },
         {
-          name: "sideOffset",
-          type: "number",
-          default: "4",
-          description: "The distance in pixels from the trigger.",
+          name: 'sideOffset',
+          type: 'number',
+          default: '4',
+          description: 'The distance in pixels from the trigger.',
         },
       ]}
       accessibility={[
         "Implements ARIA tooltip pattern with role='tooltip'",
-        "TooltipTrigger has aria-describedby pointing to the tooltip content",
-        "Tooltip appears on hover and keyboard focus",
-        "Escape key dismisses the tooltip",
-        "Automatically positions to stay in viewport",
-        "Essential for icon-only buttons to provide accessible labels",
-        "Respects prefers-reduced-motion for animations",
-        "Should not contain interactive content (use Popover instead)",
+        'TooltipTrigger has aria-describedby pointing to the tooltip content',
+        'Tooltip appears on hover and keyboard focus',
+        'Escape key dismisses the tooltip',
+        'Automatically positions to stay in viewport',
+        'Essential for icon-only buttons to provide accessible labels',
+        'Respects prefers-reduced-motion for animations',
+        'Should not contain interactive content (use Popover instead)',
       ]}
-      previous={{ title: "Popover", href: "/docs/components/popover" }}
-      next={{ title: "Dialog", href: "/docs/components/dialog" }}
+      previous={{ title: 'Popover', href: '/docs/components/popover' }}
+      next={{ title: 'Dialog', href: '/docs/components/dialog' }}
     />
   );
 }

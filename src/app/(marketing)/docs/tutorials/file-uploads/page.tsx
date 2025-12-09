@@ -1,10 +1,11 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsLinkCard } from "@/components/docs";
-import { Upload, Image, Shield, FileCheck } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsLinkCard } from '@/components/docs';
+import { Upload, Image, Shield, FileCheck } from 'lucide-react';
 
 export const metadata = {
-  title: "File Uploads - Fabrk Docs",
-  description: "Implement file uploads with drag-and-drop. Validation, progress indicators, and cloud storage integration.",
+  title: 'File Uploads - Fabrk Docs',
+  description:
+    'Implement file uploads with drag-and-drop. Validation, progress indicators, and cloud storage integration.',
 };
 
 export default function FileUploadsTutorialPage() {
@@ -16,21 +17,38 @@ export default function FileUploadsTutorialPage() {
       description="Implement secure file uploads with dropzone components, validation, and cloud storage integration."
       overview="Drag-and-drop file upload components with image preview, file validation (size, type, count), progress indicators, error handling, multiple file support, and cloud storage integration."
       features={[
-        { icon: Upload, title: "Drag & Drop", description: "Dropzone components for easy uploads." },
-        { icon: Image, title: "Image Preview", description: "Preview images before upload." },
-        { icon: Shield, title: "Validation", description: "File size, type, and count limits." },
-        { icon: FileCheck, title: "Progress", description: "Track upload progress in real-time." },
+        {
+          icon: Upload,
+          title: 'Drag & Drop',
+          description: 'Dropzone components for easy uploads.',
+        },
+        {
+          icon: Image,
+          title: 'Image Preview',
+          description: 'Preview images before upload.',
+        },
+        {
+          icon: Shield,
+          title: 'Validation',
+          description: 'File size, type, and count limits.',
+        },
+        {
+          icon: FileCheck,
+          title: 'Progress',
+          description: 'Track upload progress in real-time.',
+        },
       ]}
       setup={[
         {
-          title: "Install Dependencies",
-          description: "Install the required packages for uploads and S3/R2 storage",
+          title: 'Install Dependencies',
+          description:
+            'Install the required packages for uploads and S3/R2 storage',
           code: `npm install react-dropzone @aws-sdk/client-s3`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Configure Environment Variables",
-          description: "Add cloud storage credentials to your .env.local",
+          title: 'Configure Environment Variables',
+          description: 'Add cloud storage credentials to your .env.local',
           code: `# For AWS S3
 AWS_REGION="us-east-1"
 AWS_ACCESS_KEY_ID="your-access-key"
@@ -45,13 +63,14 @@ AWS_ACCESS_KEY_ID="your-r2-access-key"
 AWS_SECRET_ACCESS_KEY="your-r2-secret-key"
 S3_BUCKET="your-bucket-name"
 S3_PUBLIC_URL="https://pub-xxx.r2.dev"`,
-          language: "bash",
+          language: 'bash',
         },
       ]}
       usage={[
         {
-          title: "Upload API Route",
-          description: "Create an API route to handle file uploads with validation",
+          title: 'Upload API Route',
+          description:
+            'Create an API route to handle file uploads with validation',
           code: `// src/app/api/upload/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -154,11 +173,12 @@ export async function POST(request: NextRequest) {
     );
   }
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Client-Side Upload Handler",
-          description: "Handle the upload in your component with progress tracking",
+          title: 'Client-Side Upload Handler',
+          description:
+            'Handle the upload in your component with progress tracking',
           code: `"use client";
 
 import { useState } from "react";
@@ -257,11 +277,12 @@ export function FileUploadForm() {
     </div>
   );
 }`,
-          language: "tsx",
+          language: 'tsx',
         },
         {
-          title: "Validation Options",
-          description: "Common validation configurations for different use cases",
+          title: 'Validation Options',
+          description:
+            'Common validation configurations for different use cases',
           code: `// Profile Avatar
 <Dropzone
   maxFiles={1}
@@ -290,11 +311,14 @@ export function FileUploadForm() {
     "image/*": [".png", ".jpg", ".jpeg", ".gif", ".webp"],
   }}
 />`,
-          language: "tsx",
+          language: 'tsx',
         },
       ]}
-      previous={{ title: "API Routes", href: "/docs/tutorials/api-routes" }}
-      next={{ title: "Protected Pages", href: "/docs/tutorials/protected-pages" }}
+      previous={{ title: 'API Routes', href: '/docs/tutorials/api-routes' }}
+      next={{
+        title: 'Protected Pages',
+        href: '/docs/tutorials/protected-pages',
+      }}
     >
       {/* Next Steps */}
       <DocsSection title="Next Steps">

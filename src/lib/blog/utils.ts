@@ -10,10 +10,10 @@ export function generateSlug(title: string): string {
   return title
     .toLowerCase()
     .trim()
-    .replace(/[^\w\s-]/g, "") // Remove special characters
-    .replace(/\s+/g, "-") // Replace spaces with hyphens
-    .replace(/-+/g, "-") // Replace multiple hyphens with single
-    .replace(/^-|-$/g, ""); // Remove leading/trailing hyphens
+    .replace(/[^\w\s-]/g, '') // Remove special characters
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/-+/g, '-') // Replace multiple hyphens with single
+    .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
 }
 
 /**
@@ -21,10 +21,10 @@ export function generateSlug(title: string): string {
  */
 export function formatDate(date: Date | string): string {
   const d = new Date(date);
-  return d.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+  return d.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
   });
 }
 
@@ -32,8 +32,8 @@ export function formatDate(date: Date | string): string {
  * Format read time for display
  */
 export function formatReadTime(minutes: number): string {
-  if (minutes < 1) return "< 1 min read";
-  if (minutes === 1) return "1 min read";
+  if (minutes < 1) return '< 1 min read';
+  if (minutes === 1) return '1 min read';
   return `${minutes} min read`;
 }
 
@@ -45,14 +45,14 @@ export function generateExcerpt(content: string, maxLength = 160): string {
   let text = content;
   const htmlTagPattern = /<[^>]*>/g;
   while (htmlTagPattern.test(text)) {
-    text = text.replace(htmlTagPattern, "");
+    text = text.replace(htmlTagPattern, '');
   }
 
   // Also decode common HTML entities
   text = text
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&')
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'");
 
@@ -60,9 +60,11 @@ export function generateExcerpt(content: string, maxLength = 160): string {
 
   // Find the last space before maxLength
   const truncated = text.substring(0, maxLength);
-  const lastSpace = truncated.lastIndexOf(" ");
+  const lastSpace = truncated.lastIndexOf(' ');
 
-  return lastSpace > 0 ? truncated.substring(0, lastSpace) + "..." : truncated + "...";
+  return lastSpace > 0
+    ? truncated.substring(0, lastSpace) + '...'
+    : truncated + '...';
 }
 
 /**

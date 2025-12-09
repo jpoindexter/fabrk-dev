@@ -1,28 +1,28 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 
 // Simplified Testimonials Demo - EXAMPLE_PLACEHOLDER data
 function TestimonialsDemo() {
   const testimonials = [
     {
-      quote: "[EXAMPLE] Your customer quote here with specific results.",
-      author: "CUSTOMER_NAME",
-      role: "Role, Company",
-      initials: "CN",
+      quote: '[EXAMPLE] Your customer quote here with specific results.',
+      author: 'CUSTOMER_NAME',
+      role: 'Role, Company',
+      initials: 'CN',
     },
     {
-      quote: "[EXAMPLE] Another testimonial highlighting benefits.",
-      author: "CUSTOMER_NAME",
-      role: "Role, Company",
-      initials: "CN",
+      quote: '[EXAMPLE] Another testimonial highlighting benefits.',
+      author: 'CUSTOMER_NAME',
+      role: 'Role, Company',
+      initials: 'CN',
     },
     {
-      quote: "[EXAMPLE] Include metrics when possible.",
-      author: "CUSTOMER_NAME",
-      role: "Role, Company",
-      initials: "CN",
+      quote: '[EXAMPLE] Include metrics when possible.',
+      author: 'CUSTOMER_NAME',
+      role: 'Role, Company',
+      initials: 'CN',
     },
   ];
 
@@ -31,7 +31,9 @@ function TestimonialsDemo() {
       <div className="mb-6 text-center">
         <span className="text-muted-foreground text-xs">[0x40]</span>
         <h2 className="mt-2 text-xl font-semibold">LOVED_BY_DEVELOPERS</h2>
-        <p className="text-muted-foreground mt-1 text-xs">&gt; Early access customer feedback</p>
+        <p className="text-muted-foreground mt-1 text-xs">
+          &gt; Early access customer feedback
+        </p>
       </div>
       <div className="grid gap-4 md:grid-cols-3">
         {testimonials.map((t, i) => (
@@ -39,8 +41,12 @@ function TestimonialsDemo() {
             key={i}
             className="border-border bg-card hover:border-primary/50 border p-4 transition-all"
           >
-            <div className="text-muted-foreground mb-2 text-xs">[0x0{i + 1}]</div>
-            <p className="text-muted-foreground mb-4 text-xs">&quot;{t.quote}&quot;</p>
+            <div className="text-muted-foreground mb-2 text-xs">
+              [0x0{i + 1}]
+            </div>
+            <p className="text-muted-foreground mb-4 text-xs">
+              &quot;{t.quote}&quot;
+            </p>
             <div className="flex items-center gap-4">
               <Avatar className="h-8 w-8">
                 <AvatarFallback className="bg-primary/10 text-primary text-xs">
@@ -49,7 +55,9 @@ function TestimonialsDemo() {
               </Avatar>
               <div>
                 <span className="block text-xs font-semibold">{t.author}</span>
-                <span className="text-muted-foreground block text-xs">{t.role}</span>
+                <span className="text-muted-foreground block text-xs">
+                  {t.role}
+                </span>
               </div>
             </div>
           </div>
@@ -65,15 +73,20 @@ function TestimonialCardDemo() {
     <div className="w-full max-w-md font-mono">
       <div className="text-muted-foreground mb-2 text-xs">[0x01]</div>
       <p className="text-muted-foreground mb-6 text-sm">
-        &quot;[EXAMPLE] Your customer quote here. Include specific results or metrics.&quot;
+        &quot;[EXAMPLE] Your customer quote here. Include specific results or
+        metrics.&quot;
       </p>
       <div className="flex items-center gap-4">
         <Avatar className="h-10 w-10">
-          <AvatarFallback className="bg-primary/10 text-primary">CN</AvatarFallback>
+          <AvatarFallback className="bg-primary/10 text-primary">
+            CN
+          </AvatarFallback>
         </Avatar>
         <div>
           <span className="block text-sm font-semibold">CUSTOMER_NAME</span>
-          <span className="text-muted-foreground block text-xs">Role @ Company</span>
+          <span className="text-muted-foreground block text-xs">
+            Role @ Company
+          </span>
         </div>
       </div>
     </div>
@@ -104,8 +117,8 @@ export default function LandingPage() {
       }}
       variants={[
         {
-          title: "Single Testimonial Card",
-          description: "Individual testimonial with avatar",
+          title: 'Single Testimonial Card',
+          description: 'Individual testimonial with avatar',
           preview: <TestimonialCardDemo />,
           code: `<Card className="p-6">
   <p className="text-muted-foreground mb-4">
@@ -123,13 +136,16 @@ export default function LandingPage() {
 </Card>`,
         },
         {
-          title: "Avatar Group",
-          description: "Stacked avatars for social proof",
+          title: 'Avatar Group',
+          description: 'Stacked avatars for social proof',
           preview: (
             <div className="flex items-center gap-4">
               <div className="flex -space-x-2">
-                {["SC", "MJ", "ER", "DK"].map((initials, i) => (
-                  <Avatar key={i} className="border-background h-8 w-8 border-2">
+                {['SC', 'MJ', 'ER', 'DK'].map((initials, i) => (
+                  <Avatar
+                    key={i}
+                    className="border-background h-8 w-8 border-2"
+                  >
                     <AvatarFallback className="bg-primary/10 text-primary text-xs">
                       {initials}
                     </AvatarFallback>
@@ -162,25 +178,25 @@ export default function LandingPage() {
       ]}
       props={[
         {
-          name: "testimonials",
-          type: "{ quote: string; author: string; role: string; avatar?: string }[]",
-          description: "Array of testimonials to display",
+          name: 'testimonials',
+          type: '{ quote: string; author: string; role: string; avatar?: string }[]',
+          description: 'Array of testimonials to display',
         },
         {
-          name: "columns",
-          type: "2 | 3",
-          description: "Number of columns in the grid",
-          default: "3",
+          name: 'columns',
+          type: '2 | 3',
+          description: 'Number of columns in the grid',
+          default: '3',
         },
       ]}
       accessibility={[
-        "Quotes are properly attributed with cite elements",
-        "Avatar images have alt text fallbacks",
-        "Cards are not focusable unless interactive",
-        "Color contrast meets WCAG AA standards",
+        'Quotes are properly attributed with cite elements',
+        'Avatar images have alt text fallbacks',
+        'Cards are not focusable unless interactive',
+        'Color contrast meets WCAG AA standards',
       ]}
-      previous={{ title: "Pricing", href: "/docs/components/pricing" }}
-      next={{ title: "FAQ", href: "/docs/components/faq" }}
+      previous={{ title: 'Pricing', href: '/docs/components/pricing' }}
+      next={{ title: 'FAQ', href: '/docs/components/faq' }}
     />
   );
 }

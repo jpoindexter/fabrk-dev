@@ -19,7 +19,7 @@ Comprehensive environment variable validation system that runs on application st
 Validation runs automatically when the app starts (imported in `/src/app/layout.tsx`):
 
 ```typescript
-import "@/lib/env";
+import '@/lib/env';
 ```
 
 ### Manual Validation
@@ -61,27 +61,33 @@ if (features.pusher) {
 ### Required Variables (Always Validated)
 
 **Database:**
+
 - `DATABASE_URL` - Must be a valid PostgreSQL URL (postgres:// or postgresql://)
 
 **Authentication:**
+
 - `NEXTAUTH_URL` - Must be a valid URL
 - `NEXTAUTH_SECRET` - Must be at least 32 characters
 
 **Payment (Stripe):**
+
 - `STRIPE_SECRET_KEY` - Must start with `sk_`
 - `STRIPE_WEBHOOK_SECRET` - Must start with `whsec_`
 - `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` - Must start with `pk_`
 
 **Email:**
+
 - `RESEND_API_KEY` - Must start with `re_`
 - `EMAIL_FROM` - Must be a valid email address (if provided)
 
 ### Optional Variables (Validated When Present)
 
 **Google OAuth:**
+
 - Both `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` must be set together
 
 **Pusher Real-Time:**
+
 - All four variables must be set together:
   - `PUSHER_APP_ID`
   - `PUSHER_SECRET`
@@ -89,21 +95,25 @@ if (features.pusher) {
   - `NEXT_PUBLIC_PUSHER_CLUSTER`
 
 **Algolia Search:**
+
 - Both variables must be set together:
   - `NEXT_PUBLIC_ALGOLIA_APP_ID`
   - `NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY`
 
 **Sanity CMS:**
+
 - Both variables must be set together:
   - `NEXT_PUBLIC_SANITY_PROJECT_ID`
   - `NEXT_PUBLIC_SANITY_DATASET`
 
 **Redis Cache:**
+
 - Both variables must be set together:
   - `UPSTASH_REDIS_REST_URL` (must be valid HTTPS URL)
   - `UPSTASH_REDIS_REST_TOKEN`
 
 **S3 File Storage:**
+
 - All three variables must be set together:
   - `S3_ACCESS_KEY_ID`
   - `S3_SECRET_ACCESS_KEY`
@@ -111,24 +121,29 @@ if (features.pusher) {
   - `S3_ENDPOINT` (optional, must be valid URL if provided)
 
 **AI APIs:**
+
 - `OPENAI_API_KEY` - Must start with `sk-`
 - `ANTHROPIC_API_KEY` - Must start with `sk-ant-`
 
 **Analytics:**
+
 - `NEXT_PUBLIC_POSTHOG_KEY` - Must start with `phc_`
 - `NEXT_PUBLIC_POSTHOG_HOST` - Must be valid URL
 
 **Error Tracking:**
+
 - `NEXT_PUBLIC_SENTRY_DSN` - Must be valid URL
 
 ## Development vs Production
 
 ### Development Mode
+
 - Shows warnings for non-critical issues
 - Only throws for critical configuration errors (Database, Auth, Payment, Email)
 - Logs feature summary showing enabled/disabled optional features
 
 ### Production Mode
+
 - Throws immediately for any validation error
 - Fails fast to prevent runtime issues
 
@@ -141,12 +156,12 @@ import { features, getFeatureSummary } from '@/lib/env';
 
 // Boolean flags for each feature
 console.log(features.googleOAuth); // true/false
-console.log(features.pusher);      // true/false
-console.log(features.algolia);     // true/false
+console.log(features.pusher); // true/false
+console.log(features.algolia); // true/false
 
 // Get detailed summary
 const summary = getFeatureSummary();
-console.log('Enabled:', summary.enabled);   // ['Google OAuth', 'Pusher', ...]
+console.log('Enabled:', summary.enabled); // ['Google OAuth', 'Pusher', ...]
 console.log('Disabled:', summary.disabled); // ['Algolia', 'Sanity', ...]
 ```
 
@@ -191,10 +206,12 @@ Setup Instructions:
 ## Integration Points
 
 The validation is imported in:
+
 - `/src/app/layout.tsx` - Root layout (runs on all routes)
 - `/src/app/[locale]/layout.tsx` - Locale layout (runs on i18n routes)
 
 This ensures validation happens early in the application lifecycle, both during:
+
 - Build time (Next.js build process)
 - Runtime (server startup)
 

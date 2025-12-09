@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
+import { ComponentShowcaseTemplate } from '@/components/docs';
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -9,15 +9,15 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
   BreadcrumbEllipsis,
-} from "@/components/ui/breadcrumb";
+} from '@/components/ui/breadcrumb';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Slash } from "lucide-react";
-import Link from "next/link";
+} from '@/components/ui/dropdown-menu';
+import { Slash } from 'lucide-react';
+import Link from 'next/link';
 
 export default function BreadcrumbDocsPage() {
   return (
@@ -70,8 +70,8 @@ export default function BreadcrumbDocsPage() {
       }}
       variants={[
         {
-          title: "Custom Separator",
-          description: "Use custom separators between breadcrumb items",
+          title: 'Custom Separator',
+          description: 'Use custom separators between breadcrumb items',
           code: `import { Slash } from "lucide-react";
 
 <Breadcrumb>
@@ -116,8 +116,8 @@ export default function BreadcrumbDocsPage() {
           ),
         },
         {
-          title: "With Ellipsis",
-          description: "Collapse middle items with an ellipsis for long paths",
+          title: 'With Ellipsis',
+          description: 'Collapse middle items with an ellipsis for long paths',
           code: `import { BreadcrumbEllipsis } from "@/components/ui/breadcrumb";
 
 <Breadcrumb>
@@ -151,7 +151,9 @@ export default function BreadcrumbDocsPage() {
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                  <BreadcrumbLink href="/docs/components">Components</BreadcrumbLink>
+                  <BreadcrumbLink href="/docs/components">
+                    Components
+                  </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
@@ -162,8 +164,8 @@ export default function BreadcrumbDocsPage() {
           ),
         },
         {
-          title: "With Dropdown",
-          description: "Use a dropdown menu for collapsed items",
+          title: 'With Dropdown',
+          description: 'Use a dropdown menu for collapsed items',
           code: `import {
   DropdownMenu,
   DropdownMenuContent,
@@ -235,8 +237,9 @@ export default function BreadcrumbDocsPage() {
           ),
         },
         {
-          title: "With Next.js Link",
-          description: "Use asChild prop to integrate with Next.js Link component",
+          title: 'With Next.js Link',
+          description:
+            'Use asChild prop to integrate with Next.js Link component',
           code: `import Link from "next/link";
 
 <Breadcrumb>
@@ -283,15 +286,17 @@ export default function BreadcrumbDocsPage() {
       ]}
       props={[
         {
-          name: "separator",
-          type: "React.ReactNode",
-          description: "Custom separator to use between breadcrumb items on the Breadcrumb root",
+          name: 'separator',
+          type: 'React.ReactNode',
+          description:
+            'Custom separator to use between breadcrumb items on the Breadcrumb root',
         },
         {
-          name: "asChild",
-          type: "boolean",
-          description: "For BreadcrumbLink - when true, merges props into the child element (useful for Next.js Link)",
-          default: "false",
+          name: 'asChild',
+          type: 'boolean',
+          description:
+            'For BreadcrumbLink - when true, merges props into the child element (useful for Next.js Link)',
+          default: 'false',
         },
       ]}
       accessibility={[
@@ -299,15 +304,15 @@ export default function BreadcrumbDocsPage() {
         "Current page is marked with aria-current='page'",
         "BreadcrumbPage uses role='link' with aria-disabled='true'",
         "Separators are hidden from screen readers with aria-hidden='true'",
-        "Provides clear navigation hierarchy for screen reader users",
+        'Provides clear navigation hierarchy for screen reader users',
       ]}
       previous={{
-        title: "Dropdown Menu",
-        href: "/docs/components/dropdown-menu",
+        title: 'Dropdown Menu',
+        href: '/docs/components/dropdown-menu',
       }}
       next={{
-        title: "Pagination",
-        href: "/docs/components/pagination",
+        title: 'Pagination',
+        href: '/docs/components/pagination',
       }}
     />
   );

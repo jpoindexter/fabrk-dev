@@ -24,11 +24,11 @@
  * ```
  */
 
-import * as React from "react";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { TrendingUp, TrendingDown, Calendar } from "lucide-react";
+import * as React from 'react';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { TrendingUp, TrendingDown, Calendar } from 'lucide-react';
 
 // =============================================================================
 // TYPES
@@ -44,7 +44,7 @@ export interface DashboardStat {
     /** Percentage or absolute change value */
     value: number;
     /** Direction of change */
-    direction: "up" | "down";
+    direction: 'up' | 'down';
   };
   /** Optional icon to display */
   icon?: React.ReactNode;
@@ -56,7 +56,7 @@ export interface DashboardAction {
   /** Click handler */
   onClick: () => void;
   /** Button variant */
-  variant?: "primary" | "secondary";
+  variant?: 'primary' | 'secondary';
 }
 
 export interface DashboardPageTemplateProps {
@@ -101,37 +101,43 @@ function StatCard({ stat }: StatCardProps) {
   const { label, value, change, icon } = stat;
 
   return (
-    <div className={cn("border-border bg-card space-y-2 border p-4", mode.radius)}>
+    <div
+      className={cn('border-border bg-card space-y-2 border p-4', mode.radius)}
+    >
       {/* Header with label and icon */}
       <div className="flex items-center justify-between">
-        <span className={cn("text-muted-foreground text-xs", mode.font)}>
-          [{label.toUpperCase().replace(/ /g, "_")}]:
+        <span className={cn('text-muted-foreground text-xs', mode.font)}>
+          [{label.toUpperCase().replace(/ /g, '_')}]:
         </span>
         {icon && <span className="text-muted-foreground">{icon}</span>}
       </div>
 
       {/* Value */}
-      <div className={cn("text-2xl font-semibold tracking-tight", mode.font)}>{value}</div>
+      <div className={cn('text-2xl font-semibold tracking-tight', mode.font)}>
+        {value}
+      </div>
 
       {/* Change indicator */}
       {change && (
         <div className="flex items-center gap-1">
-          {change.direction === "up" ? (
+          {change.direction === 'up' ? (
             <TrendingUp className="text-success h-4 w-4" />
           ) : (
             <TrendingDown className="text-destructive h-4 w-4" />
           )}
           <span
             className={cn(
-              "text-xs",
+              'text-xs',
               mode.font,
-              change.direction === "up" ? "text-success" : "text-destructive"
+              change.direction === 'up' ? 'text-success' : 'text-destructive'
             )}
           >
-            {change.direction === "up" ? "+" : "-"}
+            {change.direction === 'up' ? '+' : '-'}
             {Math.abs(change.value)}%
           </span>
-          <span className={cn("text-muted-foreground text-xs", mode.font)}>from last period</span>
+          <span className={cn('text-muted-foreground text-xs', mode.font)}>
+            from last period
+          </span>
         </div>
       )}
     </div>
@@ -165,13 +171,19 @@ export function DashboardPageTemplate({
   className,
 }: DashboardPageTemplateProps) {
   return (
-    <div className={cn("mx-auto max-w-6xl space-y-6", className)}>
+    <div className={cn('mx-auto max-w-6xl space-y-6', className)}>
       {/* Header */}
       <div className="flex items-start justify-between">
         <div className="space-y-1">
-          <h1 className={cn("text-4xl font-semibold tracking-tight", mode.font)}>{title}</h1>
+          <h1
+            className={cn('text-4xl font-semibold tracking-tight', mode.font)}
+          >
+            {title}
+          </h1>
           {description && (
-            <p className={cn("text-muted-foreground text-sm", mode.font)}>{description}</p>
+            <p className={cn('text-muted-foreground text-sm', mode.font)}>
+              {description}
+            </p>
           )}
         </div>
 
@@ -180,10 +192,10 @@ export function DashboardPageTemplate({
           {actions?.map((action, index) => (
             <Button
               key={index}
-              variant={action.variant === "secondary" ? "outline" : "default"}
+              variant={action.variant === 'secondary' ? 'outline' : 'default'}
               onClick={action.onClick}
             >
-              &gt; {action.label.toUpperCase().replace(/ /g, "_")}
+              &gt; {action.label.toUpperCase().replace(/ /g, '_')}
             </Button>
           ))}
         </div>

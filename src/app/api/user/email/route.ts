@@ -3,15 +3,19 @@
  * PATCH /api/user/email
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
-import { sendVerificationEmail } from "@/lib/email";
-import { withCsrfProtection } from "@/lib/security/csrf";
-import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
-import { z } from "zod";
-import crypto from "crypto";
-import { logger } from "@/lib/logger";
+import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@/lib/auth';
+import { prisma } from '@/lib/prisma';
+import { sendVerificationEmail } from '@/lib/email';
+import { withCsrfProtection } from '@/lib/security/csrf';
+import {
+  checkRateLimitAuto,
+  getClientIdentifier,
+  RateLimiters,
+} from '@/lib/security/rate-limit';
+import { z } from 'zod';
+import crypto from 'crypto';
+import { logger } from '@/lib/logger';
 
 const emailSchema = z.object({
   newEmail: z.string().email(),
@@ -25,13 +29,15 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
 
     if (!rateLimit.success) {
       return NextResponse.json(
-        { error: "Too many email change attempts. Please try again later." },
+        { error: 'Too many email change attempts. Please try again later.' },
         {
           status: 429,
           headers: {
-            "X-RateLimit-Limit": rateLimit.limit.toString(),
-            "X-RateLimit-Remaining": rateLimit.remaining.toString(),
-            "Retry-After": Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
+            'X-RateLimit-Limit': rateLimit.limit.toString(),
+            'X-RateLimit-Remaining': rateLimit.remaining.toString(),
+            'Retry-After': Math.ceil(
+              (rateLimit.reset - Date.now()) / 1000
+            ).toString(),
           },
         }
       );
@@ -40,7 +46,7 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
     const session = await auth();
 
     if (!session?.user?.id) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     const body = await req.json();
@@ -52,16 +58,19 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
     });
 
     if (existingUser) {
-      return NextResponse.json({ error: "Email is already in use" }, { status: 400 });
+      return NextResponse.json(
+        { error: 'Email is already in use' },
+        { status: 400 }
+      );
     }
 
     // Generate verification token (this is sent in the email)
-    const token = crypto.randomBytes(32).toString("hex");
+    const token = crypto.randomBytes(32).toString('hex');
     const expiresAt = new Date();
     expiresAt.setHours(expiresAt.getHours() + 24); // 24-hour expiry
 
     // Hash token before storing (security: tokens are hashed in DB)
-    const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
+    const hashedToken = crypto.createHash('sha256').update(token).digest('hex');
 
     // Update email and create verification token
     await prisma.$transaction([
@@ -86,17 +95,21 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
 
     return NextResponse.json({
       success: true,
-      message: "Email updated successfully. Please verify your new email address.",
+      message:
+        'Email updated successfully. Please verify your new email address.',
     });
   } catch (error: unknown) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: "Invalid email address", details: error.issues },
+        { error: 'Invalid email address', details: error.issues },
         { status: 400 }
       );
     }
 
-    logger.error("[Email Change] Error:", error);
-    return NextResponse.json({ error: "Failed to change email" }, { status: 500 });
+    logger.error('[Email Change] Error:', error);
+    return NextResponse.json(
+      { error: 'Failed to change email' },
+      { status: 500 }
+    );
   }
 });

@@ -3,20 +3,20 @@
  * Terminal-styled article with MDX support
  */
 
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
-import Link from "next/link";
-import Image from "next/image";
-import { MDXRemote } from "next-mdx-remote/rsc";
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import Image from 'next/image';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 import {
   getPostBySlug,
   incrementViewCount,
   formatDate,
   formatReadTime,
   mdxComponents,
-} from "@/lib/blog";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+} from '@/lib/blog';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPostBySlug(slug);
 
   if (!post) {
-    return { title: "Post Not Found" };
+    return { title: 'Post Not Found' };
   }
 
   return {
@@ -36,9 +36,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: post.seoTitle || post.title,
       description: post.seoDescription || post.excerpt || undefined,
-      type: "article",
+      type: 'article',
       publishedTime: post.publishedAt?.toISOString(),
-      authors: [post.author.name || "Fabrk"],
+      authors: [post.author.name || 'Fabrk'],
       images: post.featuredImage ? [post.featuredImage] : undefined,
     },
   };
@@ -60,7 +60,10 @@ export default async function BlogPostPage({ params }: Props) {
       <article className="container mx-auto max-w-4xl px-4 py-12">
         {/* Breadcrumb */}
         <div className="mb-8">
-          <Link href="/blog" className="text-muted-foreground hover:text-primary font-mono text-xs">
+          <Link
+            href="/blog"
+            className="text-muted-foreground hover:text-primary font-mono text-xs"
+          >
             &lt;- BACK_TO_BLOG
           </Link>
         </div>
@@ -68,7 +71,9 @@ export default async function BlogPostPage({ params }: Props) {
         {/* Header */}
         <header className="border-border bg-card mb-8 border">
           <div className="border-border border-b px-6 py-2">
-            <span className="text-muted-foreground font-mono text-xs">[ ARTICLE ]</span>
+            <span className="text-muted-foreground font-mono text-xs">
+              [ ARTICLE ]
+            </span>
           </div>
           <div className="p-6">
             {/* Category */}
@@ -92,13 +97,13 @@ export default async function BlogPostPage({ params }: Props) {
                 {post.author.image && (
                   <Image
                     src={post.author.image}
-                    alt={`${post.author.name || "Author"} avatar`}
+                    alt={`${post.author.name || 'Author'} avatar`}
                     width={24}
                     height={24}
-                    className={cn("h-6 w-6", mode.radius)}
+                    className={cn('h-6 w-6', mode.radius)}
                   />
                 )}
-                <span>{post.author.name || "Anonymous"}</span>
+                <span>{post.author.name || 'Anonymous'}</span>
               </div>
               <span>|</span>
               <span>{formatDate(post.publishedAt || post.createdAt)}</span>
@@ -131,7 +136,10 @@ export default async function BlogPostPage({ params }: Props) {
 
         {/* Footer */}
         <div className="border-border bg-card mt-8 flex items-center justify-between border p-4">
-          <Link href="/blog" className="text-muted-foreground hover:text-primary font-mono text-xs">
+          <Link
+            href="/blog"
+            className="text-muted-foreground hover:text-primary font-mono text-xs"
+          >
             &lt;- ALL_POSTS
           </Link>
           <div className="text-muted-foreground font-mono text-xs">

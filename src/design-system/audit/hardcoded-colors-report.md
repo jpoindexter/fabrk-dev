@@ -41,10 +41,10 @@ const [themeColors, setThemeColors] = useState<{
   chart: string[];
   muted: string;
   border: string;
-}>({ chart: [], muted: "#888", border: "#444" });
+}>({ chart: [], muted: '#888', border: '#444' });
 
 // Fallback colors for initial render
-const fallbackColors = ["#6366f1", "#8b5cf6", "#22c55e", "#eab308", "#ef4444"];
+const fallbackColors = ['#6366f1', '#8b5cf6', '#22c55e', '#eab308', '#ef4444'];
 ```
 
 **Reason:** These fallbacks are necessary for:
@@ -86,21 +86,21 @@ const fallbackColors = ["#6366f1", "#8b5cf6", "#22c55e", "#eab308", "#ef4444"];
 
 ```tsx
 const DEFAULT_COLORS = [
-  "#D0021B",
-  "#F5A623",
-  "#F8E71C",
-  "#8B572A",
-  "#7ED321",
-  "#417505",
-  "#BD10E0",
-  "#9013FE",
-  "#4A90D9",
-  "#50E3C2",
-  "#B8E986",
-  "#000000",
-  "#4A4A4A",
-  "#9B9B9B",
-  "#FFFFFF",
+  '#D0021B',
+  '#F5A623',
+  '#F8E71C',
+  '#8B572A',
+  '#7ED321',
+  '#417505',
+  '#BD10E0',
+  '#9013FE',
+  '#4A90D9',
+  '#50E3C2',
+  '#B8E986',
+  '#000000',
+  '#4A4A4A',
+  '#9B9B9B',
+  '#FFFFFF',
 ];
 ```
 
@@ -118,14 +118,14 @@ const DEFAULT_COLORS = [
 
 ```tsx
 const DEFAULT_COLORS = [
-  "hsl(var(--primary))", // ✅ Uses CSS variable
-  "hsl(var(--accent))", // ✅ Uses CSS variable
-  "hsl(var(--secondary))", // ✅ Uses CSS variable
-  "oklch(70% 0.15 240)", // ⚠️ Hardcoded fallback
-  "oklch(70% 0.15 160)", // ⚠️ Hardcoded fallback
-  "oklch(70% 0.15 60)", // ⚠️ Hardcoded fallback
-  "oklch(70% 0.20 340)", // ⚠️ Hardcoded fallback
-  "oklch(60% 0.20 25)", // ⚠️ Hardcoded fallback
+  'hsl(var(--primary))', // ✅ Uses CSS variable
+  'hsl(var(--accent))', // ✅ Uses CSS variable
+  'hsl(var(--secondary))', // ✅ Uses CSS variable
+  'oklch(70% 0.15 240)', // ⚠️ Hardcoded fallback
+  'oklch(70% 0.15 160)', // ⚠️ Hardcoded fallback
+  'oklch(70% 0.15 60)', // ⚠️ Hardcoded fallback
+  'oklch(70% 0.20 340)', // ⚠️ Hardcoded fallback
+  'oklch(60% 0.20 25)', // ⚠️ Hardcoded fallback
 ];
 ```
 

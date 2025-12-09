@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
+import { ComponentShowcaseTemplate } from '@/components/docs';
 import {
   Command,
   CommandDialog,
@@ -11,8 +11,8 @@ import {
   CommandItem,
   CommandSeparator,
   CommandShortcut,
-} from "@/components/ui/command";
-import { useState } from "react";
+} from '@/components/ui/command';
+import { useState } from 'react';
 import {
   Calculator,
   Calendar,
@@ -20,7 +20,7 @@ import {
   Settings,
   Smile,
   User,
-} from "lucide-react";
+} from 'lucide-react';
 
 export default function CommandPage() {
   const [open, setOpen] = useState(false);
@@ -44,7 +44,7 @@ export default function CommandPage() {
 } from "@/components/ui/command"`}
       mainPreview={{
         preview: (
-          <Command className="border border-border max-w-md">
+          <Command className="border-border max-w-md border">
             <CommandInput placeholder="Type a command or search..." />
             <CommandList>
               <CommandEmpty>No results found.</CommandEmpty>
@@ -124,20 +124,21 @@ export default function CommandPage() {
       }}
       variants={[
         {
-          title: "Command Dialog",
-          description: "Command menu as a modal dialog triggered by keyboard shortcut.",
+          title: 'Command Dialog',
+          description:
+            'Command menu as a modal dialog triggered by keyboard shortcut.',
           preview: (
             <div>
-              <p className="text-sm text-muted-foreground mb-4">
-                Press{" "}
-                <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-xs font-medium text-muted-foreground opacity-100">
+              <p className="text-muted-foreground mb-4 text-sm">
+                Press{' '}
+                <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-xs font-medium opacity-100 select-none">
                   <span className="text-xs">⌘</span>K
-                </kbd>{" "}
+                </kbd>{' '}
                 or click the button to open
               </p>
               <button
                 onClick={() => setOpen(true)}
-                className="inline-flex items-center justify-center text-sm font-medium font-mono border border-border bg-background hover:bg-primary hover:text-primary-foreground h-10 px-4 py-2"
+                className="border-border bg-background hover:bg-primary hover:text-primary-foreground inline-flex h-10 items-center justify-center border px-4 py-2 font-mono text-sm font-medium"
               >
                 Open Command Menu
               </button>
@@ -198,10 +199,10 @@ return (
 );`,
         },
         {
-          title: "With Multiple Groups",
-          description: "Command menu with multiple organized groups.",
+          title: 'With Multiple Groups',
+          description: 'Command menu with multiple organized groups.',
           preview: (
-            <Command className="border border-border max-w-md">
+            <Command className="border-border max-w-md border">
               <CommandInput placeholder="Search..." />
               <CommandList>
                 <CommandEmpty>No results found.</CommandEmpty>
@@ -276,10 +277,10 @@ return (
 </Command>`,
         },
         {
-          title: "Simple Search",
-          description: "Minimal command menu for basic search functionality.",
+          title: 'Simple Search',
+          description: 'Minimal command menu for basic search functionality.',
           preview: (
-            <Command className="border border-border max-w-md">
+            <Command className="border-border max-w-md border">
               <CommandInput placeholder="Search files..." />
               <CommandList>
                 <CommandEmpty>No files found.</CommandEmpty>
@@ -308,36 +309,36 @@ return (
       ]}
       props={[
         {
-          name: "label",
-          type: "string",
-          description: "Accessible label for the command menu.",
+          name: 'label',
+          type: 'string',
+          description: 'Accessible label for the command menu.',
         },
         {
-          name: "shouldFilter",
-          type: "boolean",
-          default: "true",
-          description: "Whether to filter items based on search input.",
+          name: 'shouldFilter',
+          type: 'boolean',
+          default: 'true',
+          description: 'Whether to filter items based on search input.',
         },
         {
-          name: "filter",
-          type: "(value: string, search: string) => number",
-          description: "Custom filter function for items.",
+          name: 'filter',
+          type: '(value: string, search: string) => number',
+          description: 'Custom filter function for items.',
         },
         {
-          name: "value",
-          type: "string",
-          description: "The controlled selected value.",
+          name: 'value',
+          type: 'string',
+          description: 'The controlled selected value.',
         },
         {
-          name: "onValueChange",
-          type: "(value: string) => void",
-          description: "Callback when selected value changes.",
+          name: 'onValueChange',
+          type: '(value: string) => void',
+          description: 'Callback when selected value changes.',
         },
       ]}
       usageExamples={[
         {
-          title: "Keyboard Shortcut Setup",
-          description: "Add a keyboard shortcut to open the command dialog.",
+          title: 'Keyboard Shortcut Setup',
+          description: 'Add a keyboard shortcut to open the command dialog.',
           code: `import { useEffect, useState } from "react";
 import { CommandDialog } from "@/components/ui/command";
 
@@ -361,15 +362,15 @@ export function CommandMenu() {
         },
       ]}
       accessibility={[
-        "Full keyboard navigation with arrow keys",
-        "Type-ahead search for quick item selection",
-        "Escape key closes the command menu",
-        "Proper ARIA labels and roles for screen readers",
-        "Focus trap when used as a dialog",
-        "Search results announced to screen readers",
+        'Full keyboard navigation with arrow keys',
+        'Type-ahead search for quick item selection',
+        'Escape key closes the command menu',
+        'Proper ARIA labels and roles for screen readers',
+        'Focus trap when used as a dialog',
+        'Search results announced to screen readers',
       ]}
-      previous={{ title: "Sidebar", href: "/docs/components/sidebar" }}
-      next={{ title: "Toast", href: "/docs/components/toast" }}
+      previous={{ title: 'Sidebar', href: '/docs/components/sidebar' }}
+      next={{ title: 'Toast', href: '/docs/components/toast' }}
     />
   );
 }

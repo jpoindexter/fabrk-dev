@@ -3,29 +3,29 @@
  * All Stripe logic in one file
  */
 
-import { prisma } from "@/lib/prisma";
-import Stripe from "stripe";
-import crypto from "crypto";
-import { logger } from "@/lib/logger";
-import { env } from "@/lib/env";
+import { prisma } from '@/lib/prisma';
+import Stripe from 'stripe';
+import crypto from 'crypto';
+import { logger } from '@/lib/logger';
+import { env } from '@/lib/env';
 
 // Initialize Stripe - throw error if STRIPE_SECRET_KEY is not set
 // Allow builds without Stripe key when SKIP_ENV_VALIDATION is set
-const STRIPE_KEY = env.server.STRIPE_SECRET_KEY || "";
+const STRIPE_KEY = env.server.STRIPE_SECRET_KEY || '';
 
 if (
   !STRIPE_KEY &&
-  process.env.SKIP_ENV_VALIDATION !== "true" &&
-  process.env.NODE_ENV === "production"
+  process.env.SKIP_ENV_VALIDATION !== 'true' &&
+  process.env.NODE_ENV === 'production'
 ) {
   throw new Error(
-    "STRIPE_SECRET_KEY environment variable is required in production. " +
-      "Please set it in your .env.local file or environment configuration."
+    'STRIPE_SECRET_KEY environment variable is required in production. ' +
+      'Please set it in your .env.local file or environment configuration.'
   );
 }
 
-export const stripe = new Stripe(STRIPE_KEY || "sk_test_placeholder", {
-  apiVersion: "2025-11-17.clover",
+export const stripe = new Stripe(STRIPE_KEY || 'sk_test_placeholder', {
+  apiVersion: '2025-11-17.clover',
   typescript: true,
 });
 
@@ -81,9 +81,12 @@ export async function getOrCreateCustomer(
  * const key = generateIdempotencyKey("user123", "price_abc")
  * // Returns: "checkout_user123_price_abc_1699123456789_a1b2c3d4"
  */
-export function generateIdempotencyKey(userId: string, priceId: string): string {
+export function generateIdempotencyKey(
+  userId: string,
+  priceId: string
+): string {
   const timestamp = Date.now();
-  const random = crypto.randomBytes(8).toString("hex");
+  const random = crypto.randomBytes(8).toString('hex');
   return `checkout_${userId}_${priceId}_${timestamp}_${random}`;
 }
 
@@ -106,11 +109,11 @@ export function generateIdempotencyKey(userId: string, priceId: string): string 
 export async function getExistingCheckout(key: string): Promise<string | null> {
   const record = await prisma.checkoutSession.findFirst({
     where: {
-      userId: key.split("_")[1], // Extract userId from key
+      userId: key.split('_')[1], // Extract userId from key
       expiresAt: { gt: new Date() },
     },
     select: { sessionId: true },
-    orderBy: { createdAt: "desc" },
+    orderBy: { createdAt: 'desc' },
   });
 
   return record?.sessionId || null;
@@ -225,7 +228,7 @@ export async function createCheckoutSession(
   const existingSession = await getExistingCheckout(idempotencyKey);
   if (existingSession) {
     const session = await stripe.checkout.sessions.retrieve(existingSession);
-    return session.url || "";
+    return session.url || '';
   }
 
   // Get or create Stripe customer
@@ -235,7 +238,7 @@ export async function createCheckoutSession(
   const session = await stripe.checkout.sessions.create({
     customer: customerId,
     line_items: [{ price: priceId, quantity: 1 }],
-    mode: "payment", // one-time payment (use "subscription" for recurring)
+    mode: 'payment', // one-time payment (use "subscription" for recurring)
     success_url: `${env.client.NEXT_PUBLIC_APP_URL}/dashboard?success=true`,
     cancel_url: `${env.client.NEXT_PUBLIC_APP_URL}/pricing`,
     allow_promotion_codes: true,
@@ -245,7 +248,7 @@ export async function createCheckoutSession(
   // Store session for idempotency
   await storeCheckoutSession(idempotencyKey, userId, session.id, priceId);
 
-  return session.url || "";
+  return session.url || '';
 }
 
 // ===========================
@@ -263,15 +266,17 @@ export async function createCheckoutSession(
  *   await handleCheckoutCompleted(event.data.object)
  * }
  */
-export async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
+export async function handleCheckoutCompleted(
+  session: Stripe.Checkout.Session
+) {
   const userId = session.metadata?.userId;
   if (!userId) {
-    logger.error("No userId in session metadata");
+    logger.error('No userId in session metadata');
     return;
   }
 
   // Update user tier based on price
-  const priceId = session.metadata?.priceId || "";
+  const priceId = session.metadata?.priceId || '';
   const tier = getTierFromPrice(priceId);
 
   await prisma.user.update({
@@ -285,20 +290,21 @@ export async function handleCheckoutCompleted(session: Stripe.Checkout.Session) 
       userId,
       stripeId: session.payment_intent as string,
       amount: session.amount_total || 0,
-      status: "succeeded", // Simple string status
+      status: 'succeeded', // Simple string status
       productId: priceId,
     },
   });
 
-  logger.info("✓ Checkout completed for user:", userId);
+  logger.info('✓ Checkout completed for user:', userId);
 }
 
 // Helper: Map price ID to tier
 function getTierFromPrice(priceId: string): string {
   // Get from config.js or env vars
-  if (priceId === env.client.NEXT_PUBLIC_STRIPE_PRICE_STARTER) return "starter";
-  if (priceId === env.client.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL) return "pro";
-  return "free";
+  if (priceId === env.client.NEXT_PUBLIC_STRIPE_PRICE_STARTER) return 'starter';
+  if (priceId === env.client.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL)
+    return 'pro';
+  return 'free';
 }
 // Test comment
 // Test ESLint hook

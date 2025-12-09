@@ -4,13 +4,13 @@
  * Production-ready ✓
  */
 
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { TestTube, Terminal, BookOpen } from "lucide-react";
-import { Badge, Card, CardHeader, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+import { motion } from 'framer-motion';
+import { TestTube, Terminal, BookOpen } from 'lucide-react';
+import { Badge, Card, CardHeader, CardContent } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 export function QualitySection() {
   return (
@@ -26,11 +26,17 @@ export function QualitySection() {
           <div className="mb-4">
             <Badge code="0x20" label="PRODUCTION_QUALITY" />
           </div>
-          <h2 className={cn("mb-4 text-2xl font-semibold tracking-tight", mode.font)}>
+          <h2
+            className={cn(
+              'mb-4 text-2xl font-semibold tracking-tight',
+              mode.font
+            )}
+          >
             PRODUCTION_QUALITY
           </h2>
-          <p className={cn("text-muted-foreground text-xs", mode.font)}>
-            Not just boilerplate. Enterprise-grade code with comprehensive testing.
+          <p className={cn('text-muted-foreground text-xs', mode.font)}>
+            Not just boilerplate. Enterprise-grade code with comprehensive
+            testing.
           </p>
         </motion.div>
 
@@ -38,21 +44,21 @@ export function QualitySection() {
           {[
             {
               icon: TestTube,
-              id: "0x21",
-              title: "40+_TESTS",
-              desc: "Vitest unit tests and Playwright E2E tests. Every critical flow tested.",
+              id: '0x21',
+              title: '40+_TESTS',
+              desc: 'Vitest unit tests and Playwright E2E tests. Every critical flow tested.',
             },
             {
               icon: Terminal,
-              id: "0x22",
-              title: "TYPESCRIPT_STRICT",
-              desc: "100% TypeScript with strict mode. No any types. Full type safety.",
+              id: '0x22',
+              title: 'TYPESCRIPT_STRICT',
+              desc: '100% TypeScript with strict mode. No any types. Full type safety.',
             },
             {
               icon: BookOpen,
-              id: "0x23",
-              title: "400KB_DOCS",
-              desc: "24 comprehensive guides covering every feature. No guesswork.",
+              id: '0x23',
+              title: '400KB_DOCS',
+              desc: '24 comprehensive guides covering every feature. No guesswork.',
             },
           ].map((item, index) => {
             const Icon = item.icon;
@@ -74,10 +80,15 @@ export function QualitySection() {
                     }
                   />
                   <CardContent padding="md" className="flex-1">
-                    <div className={cn("text-foreground mb-3 text-xs font-semibold", mode.font)}>
+                    <div
+                      className={cn(
+                        'text-foreground mb-3 text-xs font-semibold',
+                        mode.font
+                      )}
+                    >
                       {item.title}
                     </div>
-                    <div className={cn("text-xs", mode.font)}>
+                    <div className={cn('text-xs', mode.font)}>
                       <span className="text-muted-foreground">DESC: </span>
                       <span className="text-foreground">{item.desc}</span>
                     </div>

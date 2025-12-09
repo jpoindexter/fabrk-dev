@@ -1,49 +1,60 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { WebhookLog } from "@/components/ui/webhook-log";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { WebhookLog } from '@/components/ui/webhook-log';
 
 const mockLogs = [
   {
-    id: "log_1",
-    endpoint: "https://api.example.com/webhooks/events",
-    method: "POST" as const,
-    status: "success" as const,
+    id: 'log_1',
+    endpoint: 'https://api.example.com/webhooks/events',
+    method: 'POST' as const,
+    status: 'success' as const,
     statusCode: 200,
     requestPayload: JSON.stringify(
-      { event: "user.created", data: { userId: "123", email: "user@example.com" } },
+      {
+        event: 'user.created',
+        data: { userId: '123', email: 'user@example.com' },
+      },
       null,
       2
     ),
-    responsePayload: JSON.stringify({ status: "received", id: "evt_123" }, null, 2),
+    responsePayload: JSON.stringify(
+      { status: 'received', id: 'evt_123' },
+      null,
+      2
+    ),
     error: null,
-    timestamp: new Date("2025-12-09T10:30:00"),
+    timestamp: new Date('2025-12-09T10:30:00'),
     duration: 342,
     retryCount: 0,
   },
   {
-    id: "log_2",
-    endpoint: "https://api.example.com/webhooks/failed",
-    method: "POST" as const,
-    status: "failed" as const,
+    id: 'log_2',
+    endpoint: 'https://api.example.com/webhooks/failed',
+    method: 'POST' as const,
+    status: 'failed' as const,
     statusCode: 500,
-    requestPayload: JSON.stringify({ event: "payment.completed", amount: 4999 }, null, 2),
+    requestPayload: JSON.stringify(
+      { event: 'payment.completed', amount: 4999 },
+      null,
+      2
+    ),
     responsePayload: null,
-    error: "Connection timeout after 5000ms",
-    timestamp: new Date("2025-12-09T09:15:00"),
+    error: 'Connection timeout after 5000ms',
+    timestamp: new Date('2025-12-09T09:15:00'),
     duration: 5000,
     retryCount: 2,
   },
   {
-    id: "log_3",
-    endpoint: "https://api.example.com/webhooks/pending",
-    method: "POST" as const,
-    status: "retrying" as const,
+    id: 'log_3',
+    endpoint: 'https://api.example.com/webhooks/pending',
+    method: 'POST' as const,
+    status: 'retrying' as const,
     statusCode: null,
-    requestPayload: JSON.stringify({ event: "subscription.renewed" }, null, 2),
+    requestPayload: JSON.stringify({ event: 'subscription.renewed' }, null, 2),
     responsePayload: null,
-    error: "Request failed with status code 503",
-    timestamp: new Date("2025-12-09T08:00:00"),
+    error: 'Request failed with status code 503',
+    timestamp: new Date('2025-12-09T08:00:00'),
     duration: null,
     retryCount: 1,
   },
@@ -87,58 +98,62 @@ export default function WebhookLogPage() {
       }}
       props={[
         {
-          name: "className",
-          type: "string",
-          default: "undefined",
-          description: "Additional CSS classes for the container.",
+          name: 'className',
+          type: 'string',
+          default: 'undefined',
+          description: 'Additional CSS classes for the container.',
         },
         {
-          name: "userId",
-          type: "string",
-          default: "undefined",
-          description: "The ID of the user viewing webhook logs.",
+          name: 'userId',
+          type: 'string',
+          default: 'undefined',
+          description: 'The ID of the user viewing webhook logs.',
         },
         {
-          name: "onRetry",
-          type: "(logId: string) => Promise<void>",
-          default: "undefined",
-          description: "Callback to retry a failed webhook delivery.",
+          name: 'onRetry',
+          type: '(logId: string) => Promise<void>',
+          default: 'undefined',
+          description: 'Callback to retry a failed webhook delivery.',
         },
         {
-          name: "onRefresh",
-          type: "() => Promise<void>",
-          default: "undefined",
-          description: "Callback to refresh webhook logs from the server.",
+          name: 'onRefresh',
+          type: '() => Promise<void>',
+          default: 'undefined',
+          description: 'Callback to refresh webhook logs from the server.',
         },
         {
-          name: "initialLogs",
-          type: "WebhookLogEntry[]",
-          default: "[]",
-          description: "Initial array of webhook log entries.",
+          name: 'initialLogs',
+          type: 'WebhookLogEntry[]',
+          default: '[]',
+          description: 'Initial array of webhook log entries.',
         },
         {
-          name: "realtimeUpdates",
-          type: "boolean",
-          default: "false",
-          description: "Enable automatic polling for new webhook logs.",
+          name: 'realtimeUpdates',
+          type: 'boolean',
+          default: 'false',
+          description: 'Enable automatic polling for new webhook logs.',
         },
         {
-          name: "pollInterval",
-          type: "number",
-          default: "5000",
-          description: "Polling interval in milliseconds (when realtimeUpdates is true).",
+          name: 'pollInterval',
+          type: 'number',
+          default: '5000',
+          description:
+            'Polling interval in milliseconds (when realtimeUpdates is true).',
         },
       ]}
       accessibility={[
-        "Status badges use color AND text for accessibility",
-        "Search input with placeholder and clear labeling",
-        "Filter dropdown with keyboard navigation",
-        "Retry buttons disabled during operation with loading state",
-        "Sheet dialog for detailed view with focus management",
-        "All code blocks have proper syntax highlighting",
+        'Status badges use color AND text for accessibility',
+        'Search input with placeholder and clear labeling',
+        'Filter dropdown with keyboard navigation',
+        'Retry buttons disabled during operation with loading state',
+        'Sheet dialog for detailed view with focus management',
+        'All code blocks have proper syntax highlighting',
       ]}
-      previous={{ title: "Onboarding Checklist", href: "/docs/components/onboarding-checklist" }}
-      next={{ title: "Select", href: "/docs/components/select" }}
+      previous={{
+        title: 'Onboarding Checklist',
+        href: '/docs/components/onboarding-checklist',
+      }}
+      next={{ title: 'Select', href: '/docs/components/select' }}
     />
   );
 }

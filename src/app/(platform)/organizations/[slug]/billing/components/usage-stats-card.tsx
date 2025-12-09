@@ -3,10 +3,10 @@
  * Displays resource consumption metrics with progress bars
  */
 
-import { Activity } from "lucide-react";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import type { Usage } from "./types";
+import { Activity } from 'lucide-react';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Progress } from '@/components/ui/progress';
+import type { Usage } from './types';
 
 interface UsageStatsCardProps {
   usage: Usage;
@@ -15,7 +15,11 @@ interface UsageStatsCardProps {
 export function UsageStatsCard({ usage }: UsageStatsCardProps) {
   return (
     <Card>
-      <CardHeader code="0x01" title="USAGE_THIS_MONTH" icon={<Activity className="h-4 w-4" />} />
+      <CardHeader
+        code="0x01"
+        title="USAGE_THIS_MONTH"
+        icon={<Activity className="h-4 w-4" />}
+      />
       <CardContent padding="lg">
         <div className="space-y-6">
           <div>
@@ -25,7 +29,10 @@ export function UsageStatsCard({ usage }: UsageStatsCardProps) {
                 {usage.users.current} / {usage.users.limit}
               </span>
             </div>
-            <Progress value={(usage.users.current / usage.users.limit) * 100} className="h-2" />
+            <Progress
+              value={(usage.users.current / usage.users.limit) * 100}
+              className="h-2"
+            />
           </div>
 
           <div>
@@ -35,14 +42,18 @@ export function UsageStatsCard({ usage }: UsageStatsCardProps) {
                 {usage.storage.current} GB / {usage.storage.limit} GB
               </span>
             </div>
-            <Progress value={(usage.storage.current / usage.storage.limit) * 100} className="h-2" />
+            <Progress
+              value={(usage.storage.current / usage.storage.limit) * 100}
+              className="h-2"
+            />
           </div>
 
           <div>
             <div className="mb-2 flex items-center justify-between">
               <span className="text-sm font-medium">API Calls</span>
               <span className="text-muted-foreground text-sm">
-                {usage.apiCalls.current.toLocaleString()} / {usage.apiCalls.limit.toLocaleString()}
+                {usage.apiCalls.current.toLocaleString()} /{' '}
+                {usage.apiCalls.limit.toLocaleString()}
               </span>
             </div>
             <Progress

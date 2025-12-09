@@ -23,7 +23,7 @@ export {
   generateWebSiteSchema,
   generateVideoSchema,
   generateCourseSchema,
-} from "./structured-data";
+} from './structured-data';
 
 // Content Optimization
 export {
@@ -38,7 +38,7 @@ export {
   generateVoiceSearchSuggestions,
   formatForAICitation,
   extractKeyFacts,
-} from "./content-optimization";
+} from './content-optimization';
 
 // AI Optimization (GEO + AIEO)
 export {
@@ -56,11 +56,11 @@ export {
   type AIBotConfig,
   type CitableContent,
   type CrawlerLog,
-} from "./ai-optimization";
+} from './ai-optimization';
 
 // AI Content Analyzer
 export {
   analyzeContentComprehensive,
   generateSEOReport,
   type ComprehensiveScore,
-} from "./ai-content-analyzer";
+} from './ai-content-analyzer';

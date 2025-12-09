@@ -2,21 +2,26 @@
  * Billing Dashboard Template - Terminal console style
  * Industry-standard Preview/Code tabbed interface
  */
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Card, CardHeader, CardContent, TemplatePageHeader } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { CodeBlock } from "@/components/ui/code-block";
-import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
-import { CurrentPlanCard } from "./components/current-plan-card";
-import { UsageMetricsCard } from "./components/usage-metrics-card";
-import { PaymentMethodsCard } from "./components/payment-methods-card";
-import { RecentInvoicesCard } from "./components/recent-invoices-card";
-import { PlanCards } from "./components/plan-cards";
-import { BillingHistoryTable } from "./components/billing-history-table";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { useState } from 'react';
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  TemplatePageHeader,
+} from '@/components/ui/card';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { CodeBlock } from '@/components/ui/code-block';
+import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
+import { CurrentPlanCard } from './components/current-plan-card';
+import { UsageMetricsCard } from './components/usage-metrics-card';
+import { PaymentMethodsCard } from './components/payment-methods-card';
+import { RecentInvoicesCard } from './components/recent-invoices-card';
+import { PlanCards } from './components/plan-cards';
+import { BillingHistoryTable } from './components/billing-history-table';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 const templateCode = `"use client";
 
@@ -115,79 +120,79 @@ export default function BillingDashboard() {
 
 // Mock data
 const subscription = {
-  plan: "Professional",
-  status: "active",
+  plan: 'Professional',
+  status: 'active',
   price: 29,
-  billingCycle: "monthly",
-  nextBillingDate: "2024-12-15",
-  startDate: "2024-01-15",
+  billingCycle: 'monthly',
+  nextBillingDate: '2024-12-15',
+  startDate: '2024-01-15',
   features: [
-    "Unlimited projects",
-    "10 team members",
-    "Priority support",
-    "Advanced analytics",
-    "Custom integrations",
+    'Unlimited projects',
+    '10 team members',
+    'Priority support',
+    'Advanced analytics',
+    'Custom integrations',
   ],
 };
 
 const usage = {
   users: { current: 7, limit: 10, percentage: 70 },
   projects: { current: 23, limit: -1, percentage: 0 },
-  storage: { current: 45, limit: 100, percentage: 45, unit: "GB" },
+  storage: { current: 45, limit: 100, percentage: 45, unit: 'GB' },
   apiCalls: { current: 12500, limit: 50000, percentage: 25 },
 };
 
 const payments = [
   {
-    id: "inv_001",
-    date: "2024-11-01",
+    id: 'inv_001',
+    date: '2024-11-01',
     amount: 2900,
-    status: "succeeded",
-    description: "Professional Plan - November 2024",
+    status: 'succeeded',
+    description: 'Professional Plan - November 2024',
   },
   {
-    id: "inv_002",
-    date: "2024-10-01",
+    id: 'inv_002',
+    date: '2024-10-01',
     amount: 2900,
-    status: "succeeded",
-    description: "Professional Plan - October 2024",
+    status: 'succeeded',
+    description: 'Professional Plan - October 2024',
   },
   {
-    id: "inv_003",
-    date: "2024-09-01",
+    id: 'inv_003',
+    date: '2024-09-01',
     amount: 2900,
-    status: "succeeded",
-    description: "Professional Plan - September 2024",
+    status: 'succeeded',
+    description: 'Professional Plan - September 2024',
   },
   {
-    id: "inv_004",
-    date: "2024-08-01",
+    id: 'inv_004',
+    date: '2024-08-01',
     amount: 2900,
-    status: "failed",
-    description: "Professional Plan - August 2024",
+    status: 'failed',
+    description: 'Professional Plan - August 2024',
   },
   {
-    id: "inv_005",
-    date: "2024-07-01",
+    id: 'inv_005',
+    date: '2024-07-01',
     amount: 2900,
-    status: "succeeded",
-    description: "Professional Plan - July 2024",
+    status: 'succeeded',
+    description: 'Professional Plan - July 2024',
   },
 ];
 
 const paymentMethods = [
   {
-    id: "pm_001",
-    brand: "VISA",
-    last4: "4242",
+    id: 'pm_001',
+    brand: 'VISA',
+    last4: '4242',
     expMonth: 12,
     expYear: 2025,
     isDefault: true,
   },
   {
-    id: "pm_002",
-    brand: "MASTERCARD",
-    last4: "5555",
+    id: 'pm_002',
+    brand: 'MASTERCARD',
+    last4: '5555',
     expMonth: 6,
     expYear: 2026,
     isDefault: false,
@@ -196,63 +201,68 @@ const paymentMethods = [
 
 const plans = [
   {
-    name: "FREE",
+    name: 'FREE',
     price: 0,
-    features: ["1 project", "3 team members", "Basic support"],
+    features: ['1 project', '3 team members', 'Basic support'],
     current: false,
   },
   {
-    name: "PROFESSIONAL",
+    name: 'PROFESSIONAL',
     price: 29,
-    features: ["Unlimited projects", "10 team members", "Priority support", "Advanced analytics"],
+    features: [
+      'Unlimited projects',
+      '10 team members',
+      'Priority support',
+      'Advanced analytics',
+    ],
     current: true,
   },
   {
-    name: "ENTERPRISE",
+    name: 'ENTERPRISE',
     price: 99,
     features: [
-      "Unlimited everything",
-      "Unlimited team",
-      "Dedicated support",
-      "Custom integrations",
-      "SLA guarantee",
+      'Unlimited everything',
+      'Unlimited team',
+      'Dedicated support',
+      'Custom integrations',
+      'SLA guarantee',
     ],
     current: false,
   },
 ];
 
 const tabs = [
-  { id: "overview", label: "OVERVIEW" },
-  { id: "plans", label: "PLANS" },
-  { id: "history", label: "HISTORY" },
+  { id: 'overview', label: 'OVERVIEW' },
+  { id: 'plans', label: 'PLANS' },
+  { id: 'history', label: 'HISTORY' },
 ];
 
 function BillingPreview() {
-  const [activeTab, setActiveTab] = useState("overview");
+  const [activeTab, setActiveTab] = useState('overview');
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
     }).format(amount / 100);
   };
 
   const formatDate = (dateStr: string) => {
-    return new Intl.DateTimeFormat("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
+    return new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
     }).format(new Date(dateStr));
   };
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case "succeeded":
-        return { text: "PAID", color: "text-success" };
-      case "failed":
-        return { text: "FAILED", color: "text-destructive" };
+      case 'succeeded':
+        return { text: 'PAID', color: 'text-success' };
+      case 'failed':
+        return { text: 'FAILED', color: 'text-destructive' };
       default:
-        return { text: "PENDING", color: "text-warning" };
+        return { text: 'PENDING', color: 'text-warning' };
     }
   };
 
@@ -270,7 +280,10 @@ function BillingPreview() {
           {/* Overview Tab */}
           <StyledTabsContent value="overview">
             <div className="space-y-6">
-              <CurrentPlanCard subscription={subscription} formatDate={formatDate} />
+              <CurrentPlanCard
+                subscription={subscription}
+                formatDate={formatDate}
+              />
 
               {/* Usage Stats and Payment Methods Grid */}
               <div className="grid gap-6 md:grid-cols-2">
@@ -283,7 +296,7 @@ function BillingPreview() {
                 formatDate={formatDate}
                 formatCurrency={formatCurrency}
                 getStatusText={getStatusText}
-                onViewAll={() => setActiveTab("history")}
+                onViewAll={() => setActiveTab('history')}
               />
             </div>
           </StyledTabsContent>
@@ -327,14 +340,14 @@ export default function BillingDashboardTemplate() {
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
-                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  'h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0',
                   mode.radius
                 )}
               >
                 <TabsTrigger
                   value="preview"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -344,7 +357,7 @@ export default function BillingDashboardTemplate() {
                 <TabsTrigger
                   value="code"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -368,7 +381,11 @@ export default function BillingDashboardTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+                <CodeBlock
+                  code={templateCode}
+                  language="tsx"
+                  maxHeight="600px"
+                />
               </div>
             </Card>
           </TabsContent>
@@ -378,29 +395,41 @@ export default function BillingDashboardTemplate() {
         <Card>
           <CardHeader code="0x02" title="FILE_STRUCTURE" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-1 text-xs")}>
+            <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>
               <div className="space-y-1 pl-4">
                 <div>
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">(dashboard)/</span>
                   <span className="text-foreground">billing/page.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Copy template here</span>
+                  <span className="text-muted-foreground ml-4">
+                    ← Copy template here
+                  </span>
                 </div>
                 <div>
                   <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">(dashboard)/billing/components/</span>
+                  <span className="text-muted-foreground">
+                    (dashboard)/billing/components/
+                  </span>
                   <span className="text-foreground">current-plan-card.tsx</span>
                 </div>
                 <div>
                   <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">(dashboard)/billing/components/</span>
-                  <span className="text-foreground">usage-metrics-card.tsx</span>
+                  <span className="text-muted-foreground">
+                    (dashboard)/billing/components/
+                  </span>
+                  <span className="text-foreground">
+                    usage-metrics-card.tsx
+                  </span>
                 </div>
                 <div>
                   <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">(dashboard)/billing/components/</span>
-                  <span className="text-foreground">payment-methods-card.tsx</span>
+                  <span className="text-muted-foreground">
+                    (dashboard)/billing/components/
+                  </span>
+                  <span className="text-foreground">
+                    payment-methods-card.tsx
+                  </span>
                 </div>
               </div>
             </div>
@@ -411,32 +440,37 @@ export default function BillingDashboardTemplate() {
         <Card>
           <CardHeader code="0x03" title="FEATURES" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-2 text-xs")}>
+            <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> Current plan overview with next billing
-                date
+                <span className="text-success">&gt;</span> Current plan overview
+                with next billing date
               </div>
               <div>
-                <span className="text-success">&gt;</span> Usage metrics (users, projects, storage,
-                API calls)
+                <span className="text-success">&gt;</span> Usage metrics (users,
+                projects, storage, API calls)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Payment methods management
+                <span className="text-success">&gt;</span> Payment methods
+                management
               </div>
               <div>
-                <span className="text-success">&gt;</span> Recent invoices with status
+                <span className="text-success">&gt;</span> Recent invoices with
+                status
               </div>
               <div>
                 <span className="text-success">&gt;</span> Plan comparison cards
               </div>
               <div>
-                <span className="text-success">&gt;</span> Full billing history table
+                <span className="text-success">&gt;</span> Full billing history
+                table
               </div>
               <div>
-                <span className="text-success">&gt;</span> Responsive mobile-first design
+                <span className="text-success">&gt;</span> Responsive
+                mobile-first design
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant
+                (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

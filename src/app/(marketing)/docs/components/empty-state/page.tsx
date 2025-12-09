@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { EmptyState } from "@/components/ui/empty-state";
-import { Inbox, FolderOpen, Users, Search, FileX } from "lucide-react";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { EmptyState } from '@/components/ui/empty-state';
+import { Inbox, FolderOpen, Users, Search, FileX } from 'lucide-react';
 
 export default function EmptyStatePage() {
   return (
@@ -27,16 +27,16 @@ export default function EmptyStatePage() {
       }}
       variants={[
         {
-          title: "With Action Button",
-          description: "Empty state with a call-to-action",
+          title: 'With Action Button',
+          description: 'Empty state with a call-to-action',
           preview: (
             <EmptyState
               icon={FolderOpen}
               title="No projects found"
               description="Get started by creating your first project."
               action={{
-                label: "Create Project",
-                onClick: () => alert("Creating project..."),
+                label: 'Create Project',
+                onClick: () => alert('Creating project...'),
               }}
             />
           ),
@@ -51,16 +51,16 @@ export default function EmptyStatePage() {
 />`,
         },
         {
-          title: "Search Results Empty",
-          description: "Empty state for no search results",
+          title: 'Search Results Empty',
+          description: 'Empty state for no search results',
           preview: (
             <EmptyState
               icon={Search}
               title="No results found"
               description="Try adjusting your search terms or filters."
               action={{
-                label: "Clear Filters",
-                onClick: () => alert("Clearing filters..."),
+                label: 'Clear Filters',
+                onClick: () => alert('Clearing filters...'),
               }}
             />
           ),
@@ -75,16 +75,16 @@ export default function EmptyStatePage() {
 />`,
         },
         {
-          title: "No Team Members",
-          description: "Empty state for team management",
+          title: 'No Team Members',
+          description: 'Empty state for team management',
           preview: (
             <EmptyState
               icon={Users}
               title="No team members"
               description="Invite team members to collaborate on this project."
               action={{
-                label: "Invite Members",
-                onClick: () => alert("Opening invite dialog..."),
+                label: 'Invite Members',
+                onClick: () => alert('Opening invite dialog...'),
               }}
             />
           ),
@@ -99,16 +99,16 @@ export default function EmptyStatePage() {
 />`,
         },
         {
-          title: "Error State",
-          description: "Empty state for errors or failed loads",
+          title: 'Error State',
+          description: 'Empty state for errors or failed loads',
           preview: (
             <EmptyState
               icon={FileX}
               title="Failed to load data"
               description="Something went wrong. Please try again later."
               action={{
-                label: "Retry",
-                onClick: () => alert("Retrying..."),
+                label: 'Retry',
+                onClick: () => alert('Retrying...'),
               }}
             />
           ),
@@ -123,8 +123,8 @@ export default function EmptyStatePage() {
 />`,
         },
         {
-          title: "Without Icon",
-          description: "Minimal empty state with text only",
+          title: 'Without Icon',
+          description: 'Minimal empty state with text only',
           preview: (
             <EmptyState
               title="Nothing here yet"
@@ -139,43 +139,46 @@ export default function EmptyStatePage() {
       ]}
       props={[
         {
-          name: "icon",
-          type: "LucideIcon",
-          description: "Lucide icon component to display",
+          name: 'icon',
+          type: 'LucideIcon',
+          description: 'Lucide icon component to display',
         },
         {
-          name: "title",
-          type: "string",
+          name: 'title',
+          type: 'string',
           required: true,
-          description: "Primary heading text",
+          description: 'Primary heading text',
         },
         {
-          name: "description",
-          type: "string",
-          description: "Supporting descriptive text",
+          name: 'description',
+          type: 'string',
+          description: 'Supporting descriptive text',
         },
         {
-          name: "action",
-          type: "{ label: string; onClick: () => void }",
-          description: "Optional action button configuration",
+          name: 'action',
+          type: '{ label: string; onClick: () => void }',
+          description: 'Optional action button configuration',
         },
         {
-          name: "className",
-          type: "string",
-          description: "Additional CSS classes",
+          name: 'className',
+          type: 'string',
+          description: 'Additional CSS classes',
         },
       ]}
       accessibility={[
-        "Uses semantic heading (h3) for title",
-        "Icon is wrapped in muted background container for visual hierarchy",
-        "Icon size (h-12 w-12) is large enough to be easily recognizable",
-        "Text color contrast meets WCAG AA standards",
-        "Description has max-width (max-w-sm) for optimal reading length",
-        "Action button uses the Button component with full accessibility support",
-        "Flexbox centering works across different container sizes",
+        'Uses semantic heading (h3) for title',
+        'Icon is wrapped in muted background container for visual hierarchy',
+        'Icon size (h-12 w-12) is large enough to be easily recognizable',
+        'Text color contrast meets WCAG AA standards',
+        'Description has max-width (max-w-sm) for optimal reading length',
+        'Action button uses the Button component with full accessibility support',
+        'Flexbox centering works across different container sizes',
       ]}
-      previous={{ title: "Data Table Header", href: "/docs/components/data-table-header" }}
-      next={{ title: "Filters Bar", href: "/docs/components/filters-bar" }}
+      previous={{
+        title: 'Data Table Header',
+        href: '/docs/components/data-table-header',
+      }}
+      next={{ title: 'Filters Bar', href: '/docs/components/filters-bar' }}
     />
   );
 }

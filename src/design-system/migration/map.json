@@ -63,7 +63,12 @@
         "filePath": "src/components/ui/input.tsx",
         "name": "Input",
         "currentIssues": [],
-        "targetTokens": ["radius-input", "font-body", "border-default", "bg-surface"],
+        "targetTokens": [
+          "radius-input",
+          "font-body",
+          "border-default",
+          "bg-surface"
+        ],
         "priority": 1,
         "phase": "B.3",
         "notes": "Base input component"
@@ -150,7 +155,12 @@
         "filePath": "src/components/ui/card.tsx",
         "name": "Card",
         "currentIssues": ["file-too-large"],
-        "targetTokens": ["radius-card", "shadow-card", "bg-surface", "border-default"],
+        "targetTokens": [
+          "radius-card",
+          "shadow-card",
+          "bg-surface",
+          "border-default"
+        ],
         "priority": 1,
         "phase": "B.8",
         "notes": "544 lines, 16 sub-components - consider splitting"
@@ -178,7 +188,12 @@
         "filePath": "src/components/ui/tabs.tsx",
         "name": "Tabs",
         "currentIssues": [],
-        "targetTokens": ["font-body", "text-primary", "text-muted", "border-accent"],
+        "targetTokens": [
+          "font-body",
+          "text-primary",
+          "text-muted",
+          "border-accent"
+        ],
         "priority": 2,
         "phase": "B.10",
         "notes": "Navigation component"
@@ -445,7 +460,10 @@
         "filePath": "src/app/(dashboard)/examples/admin/page.tsx",
         "name": "ExamplesAdmin",
         "archetype": "Dashboard",
-        "currentIssues": ["title-size-inconsistent", "template-literal-conditional"],
+        "currentIssues": [
+          "title-size-inconsistent",
+          "template-literal-conditional"
+        ],
         "targetTemplate": "DashboardPageTemplate",
         "targetTokens": ["font-body", "text-4xl"],
         "priority": 3,
@@ -455,7 +473,10 @@
         "filePath": "src/app/(dashboard)/examples/analytics/page.tsx",
         "name": "ExamplesAnalytics",
         "archetype": "Dashboard",
-        "currentIssues": ["title-size-inconsistent", "template-literal-conditional"],
+        "currentIssues": [
+          "title-size-inconsistent",
+          "template-literal-conditional"
+        ],
         "targetTemplate": "DashboardPageTemplate",
         "targetTokens": ["font-body", "text-4xl"],
         "priority": 3,
@@ -465,7 +486,10 @@
         "filePath": "src/app/(dashboard)/examples/user-profile/page.tsx",
         "name": "ExamplesUserProfile",
         "archetype": "Detail",
-        "currentIssues": ["title-size-inconsistent", "template-literal-conditional"],
+        "currentIssues": [
+          "title-size-inconsistent",
+          "template-literal-conditional"
+        ],
         "targetTemplate": "DetailPageTemplate",
         "targetTokens": ["font-body", "text-4xl"],
         "priority": 3,

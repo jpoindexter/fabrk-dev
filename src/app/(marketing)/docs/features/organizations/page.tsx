@@ -1,12 +1,12 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
-import { CodeBlock } from "@/components/ui/code-block";
-import { Users, CreditCard, LayoutDashboard, Shield } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard } from '@/components/docs';
+import { CodeBlock } from '@/components/ui/code-block';
+import { Users, CreditCard, LayoutDashboard, Shield } from 'lucide-react';
 
 export const metadata = {
-  title: "Organizations & Teams - Fabrk Docs",
+  title: 'Organizations & Teams - Fabrk Docs',
   description:
-    "Multi-tenant SaaS with organizations, team members, roles, and invitations. Full RBAC system included.",
+    'Multi-tenant SaaS with organizations, team members, roles, and invitations. Full RBAC system included.',
 };
 
 export default function OrganizationsPage() {
@@ -20,33 +20,33 @@ export default function OrganizationsPage() {
       features={[
         {
           icon: Users,
-          title: "Team Workspaces",
+          title: 'Team Workspaces',
           description:
             "Each organization has its own workspace with projects, files, or data. Members see only their organization's content.",
         },
         {
           icon: CreditCard,
-          title: "Per-Seat Billing",
+          title: 'Per-Seat Billing',
           description:
-            "Charge based on organization member count. Track seats in Stripe metadata and update on member changes.",
+            'Charge based on organization member count. Track seats in Stripe metadata and update on member changes.',
         },
         {
           icon: LayoutDashboard,
-          title: "Admin Dashboard",
+          title: 'Admin Dashboard',
           description:
-            "Give admins a dashboard to manage members, view activity, and configure organization settings.",
+            'Give admins a dashboard to manage members, view activity, and configure organization settings.',
         },
         {
           icon: Shield,
-          title: "SSO/SAML Integration",
+          title: 'SSO/SAML Integration',
           description:
-            "Enterprise organizations can configure their own identity provider. Members auto-join on first SSO login.",
+            'Enterprise organizations can configure their own identity provider. Members auto-join on first SSO login.',
         },
       ]}
       usage={[
         {
-          title: "Create Organization",
-          description: "API endpoint to create a new organization",
+          title: 'Create Organization',
+          description: 'API endpoint to create a new organization',
           code: `// src/app/api/v1/organizations/route.ts
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
@@ -99,11 +99,11 @@ export async function POST(request: Request) {
 
   return NextResponse.json(organization, { status: 201 });
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Invite Members",
-          description: "Send team invitations",
+          title: 'Invite Members',
+          description: 'Send team invitations',
           code: `// src/app/api/v1/organizations/invite/route.ts
 import { nanoid } from "nanoid";
 import { sendInviteEmail } from "@/lib/email";
@@ -157,11 +157,11 @@ export async function POST(request: Request) {
 
   return NextResponse.json({ success: true, invite });
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Permission Check Middleware",
-          description: "Reusable permission checking",
+          title: 'Permission Check Middleware',
+          description: 'Reusable permission checking',
           code: `// src/lib/permissions.ts
 import { prisma } from "@/lib/db";
 
@@ -196,17 +196,18 @@ export async function checkPermission(
 
   return rolePermissions[membership.role]?.includes(permission) ?? false;
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
       ]}
-      previous={{ title: "Emails", href: "/docs/features/emails" }}
-      next={{ title: "Webhooks", href: "/docs/features/webhooks" }}
+      previous={{ title: 'Emails', href: '/docs/features/emails' }}
+      next={{ title: 'Webhooks', href: '/docs/features/webhooks' }}
     >
       {/* Database Schema Section */}
       <DocsSection title="Database Schema">
         <DocsCard title="DATABASE_SCHEMA">
           <p className="mb-6">
-            Core models in <code className="bg-muted px-1">prisma/schema.prisma</code>:
+            Core models in{' '}
+            <code className="bg-muted px-1">prisma/schema.prisma</code>:
           </p>
           <CodeBlock
             language="prisma"
@@ -340,14 +341,27 @@ model OrganizationInvite {
             <li>├─ Always check permissions before any organization action</li>
             <li>├─ Use database transactions for multi-step operations</li>
             <li>
-              ├─ Scope all queries by <code className="bg-muted px-1">organizationId</code>
+              ├─ Scope all queries by{' '}
+              <code className="bg-muted px-1">organizationId</code>
             </li>
-            <li>├─ Send email notifications for important events (invite, role change)</li>
+            <li>
+              ├─ Send email notifications for important events (invite, role
+              change)
+            </li>
             <li>├─ Allow users to belong to multiple organizations</li>
             <li>├─ Implement organization switching in the UI</li>
-            <li>├─ Log audit trail for compliance (member changes, permission changes)</li>
-            <li>├─ Handle organization deletion carefully (soft delete recommended)</li>
-            <li>└─ Prevent owners from removing themselves without transferring ownership</li>
+            <li>
+              ├─ Log audit trail for compliance (member changes, permission
+              changes)
+            </li>
+            <li>
+              ├─ Handle organization deletion carefully (soft delete
+              recommended)
+            </li>
+            <li>
+              └─ Prevent owners from removing themselves without transferring
+              ownership
+            </li>
           </ul>
         </DocsCard>
       </DocsSection>

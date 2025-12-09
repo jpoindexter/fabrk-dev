@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { redirect } from 'next/navigation';
 
 export default function SecuritySettingsPage() {
-  redirect("/library/security-privacy");
+  redirect('/library/security-privacy');
 }

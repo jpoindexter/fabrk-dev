@@ -12,13 +12,13 @@
  * - Edge runtime compatible (uses Web Crypto API)
  */
 
-import { headers } from "next/headers";
+import { headers } from 'next/headers';
 
 /**
  * Custom header name for storing nonce
  * Prefixed with x- to indicate custom header
  */
-const NONCE_HEADER = "x-nonce";
+const NONCE_HEADER = 'x-nonce';
 
 /**
  * Generate a cryptographically secure nonce
@@ -32,9 +32,9 @@ export function generateNonce(): string {
   // Use Web Crypto API for edge runtime compatibility
   const bytes = new Uint8Array(16);
   crypto.getRandomValues(bytes);
-  
+
   // Convert to base64
-  return Buffer.from(bytes).toString("base64");
+  return Buffer.from(bytes).toString('base64');
 }
 
 /**
@@ -47,7 +47,7 @@ export function generateNonce(): string {
  */
 export async function getNonce(): Promise<string> {
   const headersList = await headers();
-  return headersList.get(NONCE_HEADER) || "";
+  return headersList.get(NONCE_HEADER) || '';
 }
 
 /**

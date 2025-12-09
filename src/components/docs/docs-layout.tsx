@@ -2,13 +2,13 @@
  * DocsLayout - Shared layout for docs and templates pages
  * Fixes background stacking: no bg on parent, bg on content areas
  */
-"use client";
+'use client';
 
-import { useRef } from "react";
-import { SiteNavigation } from "@/components/navigation";
-import { Footer } from "@/components/shared/footer";
-import { DocsSidebar, NavSection } from "@/components/docs/docs-sidebar";
-import { DocsToc } from "@/components/docs/docs-toc";
+import { useRef } from 'react';
+import { SiteNavigation } from '@/components/navigation';
+import { Footer } from '@/components/shared/footer';
+import { DocsSidebar, NavSection } from '@/components/docs/docs-sidebar';
+import { DocsToc } from '@/components/docs/docs-toc';
 
 interface DocsLayoutProps {
   children: React.ReactNode;
@@ -44,7 +44,9 @@ export function DocsLayout({
           {fullWidth ? (
             children
           ) : (
-            <div className="mx-auto max-w-3xl px-6 py-8 lg:px-8">{children}</div>
+            <div className="mx-auto max-w-3xl px-6 py-8 lg:px-8">
+              {children}
+            </div>
           )}
         </main>
 

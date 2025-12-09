@@ -1,6 +1,6 @@
-import { PrismaClient } from "@/generated/prisma/client";
-import { PrismaPg } from "@prisma/adapter-pg";
-import { Pool } from "pg";
+import { PrismaClient } from '@/generated/prisma/client';
+import { PrismaPg } from '@prisma/adapter-pg';
+import { Pool } from 'pg';
 
 /**
  * Prisma client singleton
@@ -21,7 +21,7 @@ function createPrismaClient(): PrismaClient {
   // Prisma 7 requires an adapter - use a dummy pool that will fail at runtime
   // if DATABASE_URL is not set. This allows the app to build without a DB.
   const pool = new Pool({
-    connectionString: connectionString || "postgresql://localhost:5432/dummy",
+    connectionString: connectionString || 'postgresql://localhost:5432/dummy',
   });
   const adapter = new PrismaPg(pool);
 
@@ -30,4 +30,4 @@ function createPrismaClient(): PrismaClient {
 
 export const prisma = globalForPrisma.prisma ?? createPrismaClient();
 
-if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;

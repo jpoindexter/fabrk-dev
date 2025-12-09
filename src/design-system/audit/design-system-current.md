@@ -291,15 +291,15 @@ design-system/index.ts
 
 ```typescript
 export const mode: ModeConfig = {
-  radius: "rounded-none", // Hardcoded
-  font: "font-mono", // Hardcoded
-  shadow: "",
-  buttonPrefix: "> ",
-  labelFormat: "brackets",
-  cardHeader: "bracketed",
-  textTransform: "uppercase",
-  inputStyle: "rounded-none font-mono border-border",
-  borderWidth: "border",
+  radius: 'rounded-none', // Hardcoded
+  font: 'font-mono', // Hardcoded
+  shadow: '',
+  buttonPrefix: '> ',
+  labelFormat: 'brackets',
+  cardHeader: 'bracketed',
+  textTransform: 'uppercase',
+  inputStyle: 'rounded-none font-mono border-border',
+  borderWidth: 'border',
 };
 ```
 

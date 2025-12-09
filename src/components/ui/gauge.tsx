@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { cn } from "@/lib/utils";
+import * as React from 'react';
+import { cn } from '@/lib/utils';
 
 interface GaugeProps {
   value: number;
@@ -33,8 +33,8 @@ export function Gauge({
   thickness = 20,
   startAngle = -135,
   endAngle = 135,
-  color = "hsl(var(--primary))",
-  backgroundColor = "hsl(var(--muted))",
+  color = 'hsl(var(--primary))',
+  backgroundColor = 'hsl(var(--muted))',
   showValue = true,
   showMinMax = false,
   label,
@@ -50,7 +50,12 @@ export function Gauge({
   const angleRange = endAngle - startAngle;
   const currentAngle = startAngle + (angleRange * percentage) / 100;
 
-  const getArcPath = (radius: number, startAngle: number, endAngle: number, thickness: number) => {
+  const getArcPath = (
+    radius: number,
+    startAngle: number,
+    endAngle: number,
+    thickness: number
+  ) => {
     const innerRadius = radius - thickness / 2;
     const outerRadius = radius + thickness / 2;
 
@@ -100,7 +105,7 @@ export function Gauge({
   };
 
   return (
-    <div className={cn("flex flex-col items-center gap-2", className)}>
+    <div className={cn('flex flex-col items-center gap-2', className)}>
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
         {/* Background arc */}
         <path
@@ -112,10 +117,14 @@ export function Gauge({
         {/* Segments or single value arc */}
         {segments ? (
           segments.map((segment, index) => {
-            const prevValue = segments.slice(0, index).reduce((sum, s) => sum + s.value, 0);
-            const segmentStart = startAngle + (angleRange * prevValue) / (max - min);
+            const prevValue = segments
+              .slice(0, index)
+              .reduce((sum, s) => sum + s.value, 0);
+            const segmentStart =
+              startAngle + (angleRange * prevValue) / (max - min);
             const segmentEnd =
-              startAngle + (angleRange * (prevValue + segment.value)) / (max - min);
+              startAngle +
+              (angleRange * (prevValue + segment.value)) / (max - min);
 
             return (
               <path
@@ -184,7 +193,9 @@ export function Gauge({
             {normalizedValue.toFixed(0)}
             {unit && <span className="text-lg">{unit}</span>}
           </p>
-          {label && <p className="text-muted-foreground mt-1 text-xs">{label}</p>}
+          {label && (
+            <p className="text-muted-foreground mt-1 text-xs">{label}</p>
+          )}
         </div>
       )}
     </div>
@@ -208,10 +219,10 @@ export function ScoreGauge({
 }: ScoreGaugeProps) {
   const getColor = (score: number, max: number) => {
     const percentage = (score / max) * 100;
-    if (percentage >= 80) return "oklch(70% 0.15 160)"; // Green
-    if (percentage >= 60) return "oklch(70% 0.15 60)"; // Yellow
-    if (percentage >= 40) return "oklch(70% 0.15 30)"; // Orange
-    return "oklch(60% 0.20 25)"; // Red
+    if (percentage >= 80) return 'oklch(70% 0.15 160)'; // Green
+    if (percentage >= 60) return 'oklch(70% 0.15 60)'; // Yellow
+    if (percentage >= 40) return 'oklch(70% 0.15 30)'; // Orange
+    return 'oklch(60% 0.20 25)'; // Red
   };
 
   return (

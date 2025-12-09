@@ -12,7 +12,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+} from '@/components/ui/alert-dialog';
 
 interface RevokeDialogProps {
   open: boolean;
@@ -20,15 +20,19 @@ interface RevokeDialogProps {
   onConfirm: () => void;
 }
 
-export function RevokeDialog({ open, onOpenChange, onConfirm }: RevokeDialogProps) {
+export function RevokeDialog({
+  open,
+  onOpenChange,
+  onConfirm,
+}: RevokeDialogProps) {
   return (
     <AlertDialog open={open} onOpenChange={onOpenChange}>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Revoke API Key?</AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone. This will permanently revoke the API key and immediately
-            stop all API requests using this key.
+            This action cannot be undone. This will permanently revoke the API
+            key and immediately stop all API requests using this key.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

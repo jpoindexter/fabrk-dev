@@ -2,21 +2,26 @@
  * Settings Page Template - Terminal console style
  * Industry-standard Preview/Code tabbed interface
  */
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Settings, User, Lock, CreditCard } from "lucide-react";
-import { Card, CardHeader, CardContent, TemplatePageHeader } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { CodeBlock } from "@/components/ui/code-block";
-import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
-import { SettingsHeader } from "./components/settings-header";
-import { GeneralTab } from "./components/general-tab";
-import { AccountTab } from "./components/account-tab";
-import { PrivacyTab } from "./components/privacy-tab";
-import { BillingTab } from "./components/billing-tab";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { useState } from 'react';
+import { Settings, User, Lock, CreditCard } from 'lucide-react';
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  TemplatePageHeader,
+} from '@/components/ui/card';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { CodeBlock } from '@/components/ui/code-block';
+import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
+import { SettingsHeader } from './components/settings-header';
+import { GeneralTab } from './components/general-tab';
+import { AccountTab } from './components/account-tab';
+import { PrivacyTab } from './components/privacy-tab';
+import { BillingTab } from './components/billing-tab';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 const templateCode = `"use client";
 
@@ -74,14 +79,14 @@ export default function SettingsPage() {
 }`;
 
 const tabs = [
-  { id: "general", label: "GENERAL", icon: Settings },
-  { id: "account", label: "ACCOUNT", icon: User },
-  { id: "privacy", label: "PRIVACY", icon: Lock },
-  { id: "billing", label: "BILLING", icon: CreditCard },
+  { id: 'general', label: 'GENERAL', icon: Settings },
+  { id: 'account', label: 'ACCOUNT', icon: User },
+  { id: 'privacy', label: 'PRIVACY', icon: Lock },
+  { id: 'billing', label: 'BILLING', icon: CreditCard },
 ];
 
 function SettingsPreview() {
-  const [activeTab, setActiveTab] = useState("general");
+  const [activeTab, setActiveTab] = useState('general');
 
   return (
     <div className="bg-background/50 min-h-[600px] p-4 sm:p-8">
@@ -138,14 +143,14 @@ export default function SettingsPageTemplate() {
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
-                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  'h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0',
                   mode.radius
                 )}
               >
                 <TabsTrigger
                   value="preview"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -155,7 +160,7 @@ export default function SettingsPageTemplate() {
                 <TabsTrigger
                   value="code"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -179,7 +184,11 @@ export default function SettingsPageTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+                <CodeBlock
+                  code={templateCode}
+                  language="tsx"
+                  maxHeight="600px"
+                />
               </div>
             </Card>
           </TabsContent>
@@ -189,38 +198,50 @@ export default function SettingsPageTemplate() {
         <Card>
           <CardHeader code="0x02" title="FILE_STRUCTURE" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-1 text-xs")}>
+            <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>
               <div className="space-y-1 pl-4">
                 <div>
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">(dashboard)/</span>
                   <span className="text-foreground">settings/page.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Copy template here</span>
+                  <span className="text-muted-foreground ml-4">
+                    ← Copy template here
+                  </span>
                 </div>
                 <div>
                   <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">(dashboard)/settings/components/</span>
+                  <span className="text-muted-foreground">
+                    (dashboard)/settings/components/
+                  </span>
                   <span className="text-foreground">settings-header.tsx</span>
                 </div>
                 <div>
                   <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">(dashboard)/settings/components/</span>
+                  <span className="text-muted-foreground">
+                    (dashboard)/settings/components/
+                  </span>
                   <span className="text-foreground">general-tab.tsx</span>
                 </div>
                 <div>
                   <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">(dashboard)/settings/components/</span>
+                  <span className="text-muted-foreground">
+                    (dashboard)/settings/components/
+                  </span>
                   <span className="text-foreground">account-tab.tsx</span>
                 </div>
                 <div>
                   <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">(dashboard)/settings/components/</span>
+                  <span className="text-muted-foreground">
+                    (dashboard)/settings/components/
+                  </span>
                   <span className="text-foreground">privacy-tab.tsx</span>
                 </div>
                 <div>
                   <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">(dashboard)/settings/components/</span>
+                  <span className="text-muted-foreground">
+                    (dashboard)/settings/components/
+                  </span>
                   <span className="text-foreground">billing-tab.tsx</span>
                 </div>
               </div>
@@ -232,35 +253,38 @@ export default function SettingsPageTemplate() {
         <Card>
           <CardHeader code="0x03" title="FEATURES" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-2 text-xs")}>
+            <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> 4-tab navigation (General, Account,
-                Privacy, Billing)
+                <span className="text-success">&gt;</span> 4-tab navigation
+                (General, Account, Privacy, Billing)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Appearance settings (theme, font size,
-                layout)
+                <span className="text-success">&gt;</span> Appearance settings
+                (theme, font size, layout)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Notification preferences (email, push,
-                in-app)
+                <span className="text-success">&gt;</span> Notification
+                preferences (email, push, in-app)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Privacy controls (data sharing, cookies,
-                analytics)
+                <span className="text-success">&gt;</span> Privacy controls
+                (data sharing, cookies, analytics)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Language & region settings
+                <span className="text-success">&gt;</span> Language & region
+                settings
               </div>
               <div>
-                <span className="text-success">&gt;</span> Account security (password, 2FA,
-                sessions)
+                <span className="text-success">&gt;</span> Account security
+                (password, 2FA, sessions)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Responsive mobile-first design
+                <span className="text-success">&gt;</span> Responsive
+                mobile-first design
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant
+                (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

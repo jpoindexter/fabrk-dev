@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
 /**
  * Contact Page
  * Contact form for sales, support, and general inquiries - Terminal Console Style
  */
 
-import { PageHeader } from "./components/page-header";
-import { ContactForm } from "./components/contact-form";
-import { ContactSidebar } from "./components/contact-sidebar";
-import { FaqSection } from "./components/faq-section";
+import { PageHeader } from './components/page-header';
+import { ContactForm } from './components/contact-form';
+import { ContactSidebar } from './components/contact-sidebar';
+import { FaqSection } from './components/faq-section';
 
 function ContactContent() {
   return (

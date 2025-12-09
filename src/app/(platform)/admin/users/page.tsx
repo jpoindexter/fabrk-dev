@@ -3,16 +3,16 @@
  * View and manage all users with full admin controls
  */
 
-import { Suspense } from "react";
-import { prisma } from "@/lib/prisma";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { UserManagementTable } from "@/components/admin/user-management-table";
-import { Users } from "lucide-react";
+import { Suspense } from 'react';
+import { prisma } from '@/lib/prisma';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { UserManagementTable } from '@/components/admin/user-management-table';
+import { Users } from 'lucide-react';
 
 async function getUsers() {
   const users = await prisma.user.findMany({
     orderBy: {
-      createdAt: "desc",
+      createdAt: 'desc',
     },
     take: 100,
     include: {
@@ -38,7 +38,9 @@ export default function AdminUsersPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-4xl font-semibold tracking-tight">Users</h1>
-          <p className="text-muted-foreground">Manage and monitor all user accounts</p>
+          <p className="text-muted-foreground">
+            Manage and monitor all user accounts
+          </p>
         </div>
       </div>
 

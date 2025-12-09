@@ -3,9 +3,9 @@
  * Standardized error handling for API routes
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import { ZodError } from "zod";
-import { logger } from "@/lib/logger";
+import { NextRequest, NextResponse } from 'next/server';
+import { ZodError } from 'zod';
+import { logger } from '@/lib/logger';
 
 // Custom error classes
 export class ApiError extends Error {
@@ -15,43 +15,43 @@ export class ApiError extends Error {
     public code?: string
   ) {
     super(message);
-    this.name = "ApiError";
+    this.name = 'ApiError';
   }
 }
 
 export class ValidationError extends ApiError {
-  constructor(message: string = "Validation failed") {
-    super(message, 400, "VALIDATION_ERROR");
+  constructor(message: string = 'Validation failed') {
+    super(message, 400, 'VALIDATION_ERROR');
   }
 }
 
 export class NotFoundError extends ApiError {
-  constructor(message: string = "Resource not found") {
-    super(message, 404, "NOT_FOUND");
+  constructor(message: string = 'Resource not found') {
+    super(message, 404, 'NOT_FOUND');
   }
 }
 
 export class UnauthorizedError extends ApiError {
-  constructor(message: string = "Unauthorized") {
-    super(message, 401, "UNAUTHORIZED");
+  constructor(message: string = 'Unauthorized') {
+    super(message, 401, 'UNAUTHORIZED');
   }
 }
 
 export class ForbiddenError extends ApiError {
-  constructor(message: string = "Forbidden") {
-    super(message, 403, "FORBIDDEN");
+  constructor(message: string = 'Forbidden') {
+    super(message, 403, 'FORBIDDEN');
   }
 }
 
 export class ConflictError extends ApiError {
-  constructor(message: string = "Resource conflict") {
-    super(message, 409, "CONFLICT");
+  constructor(message: string = 'Resource conflict') {
+    super(message, 409, 'CONFLICT');
   }
 }
 
 export class RateLimitError extends ApiError {
-  constructor(message: string = "Too many requests") {
-    super(message, 429, "RATE_LIMIT_EXCEEDED");
+  constructor(message: string = 'Too many requests') {
+    super(message, 429, 'RATE_LIMIT_EXCEEDED');
   }
 }
 
@@ -72,10 +72,10 @@ function formatErrorResponse(error: Error): ErrorResponse {
   // Handle Zod validation errors
   if (error instanceof ZodError) {
     return {
-      error: "Validation failed",
-      code: "VALIDATION_ERROR",
+      error: 'Validation failed',
+      code: 'VALIDATION_ERROR',
       details: error.issues.map((e) => ({
-        field: e.path.join("."),
+        field: e.path.join('.'),
         message: e.message,
       })),
       timestamp,
@@ -92,18 +92,18 @@ function formatErrorResponse(error: Error): ErrorResponse {
   }
 
   // Handle generic errors (don't expose internal details in production)
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.NODE_ENV === 'production') {
     return {
-      error: "Internal server error",
-      code: "INTERNAL_ERROR",
+      error: 'Internal server error',
+      code: 'INTERNAL_ERROR',
       timestamp,
     };
   }
 
   // In development, include error details
   return {
-    error: error.message || "Internal server error",
-    code: "INTERNAL_ERROR",
+    error: error.message || 'Internal server error',
+    code: 'INTERNAL_ERROR',
     details: error.stack,
     timestamp,
   };
@@ -120,7 +120,7 @@ export function withErrorHandler<T extends unknown[]>(
       return await handler(req, ...args);
     } catch (error: unknown) {
       // Log error
-      logger.error("API Error:", error);
+      logger.error('API Error:', error);
 
       // Format error response
       const errorResponse = formatErrorResponse(error as Error);
@@ -142,7 +142,7 @@ export function withErrorHandler<T extends unknown[]>(
  * Async error handler for use in try-catch blocks
  */
 export function handleError(error: unknown): NextResponse {
-  logger.error("API Error:", error);
+  logger.error('API Error:', error);
 
   const errorResponse = formatErrorResponse(error as Error);
 

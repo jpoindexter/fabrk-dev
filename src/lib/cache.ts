@@ -15,7 +15,7 @@ class SimpleCache {
 
   constructor() {
     // Clean up expired entries every 60 seconds
-    if (typeof window === "undefined") {
+    if (typeof window === 'undefined') {
       this.cleanupInterval = setInterval(() => {
         this.cleanup();
       }, 60000);
@@ -46,7 +46,7 @@ class SimpleCache {
    * Set a value in cache with TTL in seconds
    */
   async set<T>(key: string, value: T, ttlSeconds: number): Promise<void> {
-    const expiresAt = Date.now() + (ttlSeconds * 1000);
+    const expiresAt = Date.now() + ttlSeconds * 1000;
     this.store.set(key, { value, expiresAt });
   }
 
@@ -91,8 +91,8 @@ class SimpleCache {
 export const cache = new SimpleCache();
 
 // Clean up on process exit
-if (typeof window === "undefined") {
-  process.on("beforeExit", () => {
+if (typeof window === 'undefined') {
+  process.on('beforeExit', () => {
     cache.destroy();
   });
 }

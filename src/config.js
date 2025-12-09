@@ -35,11 +35,21 @@ const config = {
   // APP INFORMATION
   // ============================================================================
   app: {
-    name: "Fabrk Boilerplate",
-    description: "Production-ready SaaS boilerplate with authentication, payments, and dashboard",
-    url: env?.client?.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
-    author: env?.client?.NEXT_PUBLIC_AUTHOR_NAME || process.env.NEXT_PUBLIC_AUTHOR_NAME || "Fabrk Team",
-    supportEmail: env?.client?.NEXT_PUBLIC_SUPPORT_EMAIL || process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@fabrek.dev",
+    name: 'Fabrk Boilerplate',
+    description:
+      'Production-ready SaaS boilerplate with authentication, payments, and dashboard',
+    url:
+      env?.client?.NEXT_PUBLIC_APP_URL ||
+      process.env.NEXT_PUBLIC_APP_URL ||
+      'http://localhost:3000',
+    author:
+      env?.client?.NEXT_PUBLIC_AUTHOR_NAME ||
+      process.env.NEXT_PUBLIC_AUTHOR_NAME ||
+      'Fabrk Team',
+    supportEmail:
+      env?.client?.NEXT_PUBLIC_SUPPORT_EMAIL ||
+      process.env.NEXT_PUBLIC_SUPPORT_EMAIL ||
+      'support@fabrek.dev',
   },
 
   // ============================================================================
@@ -50,9 +60,12 @@ const config = {
     sessionMaxAge: 30 * 24 * 60 * 60, // 30 days
     providers: {
       google: {
-        enabled: !!(env?.server?.GOOGLE_CLIENT_ID || process.env.GOOGLE_CLIENT_ID),
+        enabled: !!(
+          env?.server?.GOOGLE_CLIENT_ID || process.env.GOOGLE_CLIENT_ID
+        ),
         clientId: env?.server?.GOOGLE_CLIENT_ID || process.env.GOOGLE_CLIENT_ID,
-        clientSecret: env?.server?.GOOGLE_CLIENT_SECRET || process.env.GOOGLE_CLIENT_SECRET,
+        clientSecret:
+          env?.server?.GOOGLE_CLIENT_SECRET || process.env.GOOGLE_CLIENT_SECRET,
       },
       credentials: {
         enabled: true, // Email/password auth
@@ -65,15 +78,21 @@ const config = {
   // CRITICAL: Price IDs must be set in production (no fallbacks)
   // ============================================================================
   stripe: {
-    publishableKey: env?.client?.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
+    publishableKey:
+      env?.client?.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ||
+      process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
     secretKey: env?.server?.STRIPE_SECRET_KEY || process.env.STRIPE_SECRET_KEY,
-    webhookSecret: env?.server?.STRIPE_WEBHOOK_SECRET || process.env.STRIPE_WEBHOOK_SECRET,
+    webhookSecret:
+      env?.server?.STRIPE_WEBHOOK_SECRET || process.env.STRIPE_WEBHOOK_SECRET,
 
     // Stripe Lookup Keys (one-time purchase model)
     // Using lookup keys allows price updates in Stripe dashboard without code changes
     // OR use Price ID directly: price_1ABC123xyz...
     prices: {
-      fabrk: env?.client?.NEXT_PUBLIC_STRIPE_PRICE_FABRK || process.env.NEXT_PUBLIC_STRIPE_PRICE_FABRK || "", // Set to Price ID from Stripe
+      fabrk:
+        env?.client?.NEXT_PUBLIC_STRIPE_PRICE_FABRK ||
+        process.env.NEXT_PUBLIC_STRIPE_PRICE_FABRK ||
+        '', // Set to Price ID from Stripe
     },
 
     // Promotion codes and coupons
@@ -81,34 +100,46 @@ const config = {
       // Phase 2: Limited coupon (after time-based launch discount expires)
       earlyAdopter: {
         enabled: true,
-        code: "EARLY500", // Display code for customers
-        promotionCodeId: env?.server?.STRIPE_COUPON_EARLY_ADOPTER || process.env.STRIPE_COUPON_EARLY_ADOPTER || "promo_1SVGK4P7kSSEYWlXBq1LtaNM", // Stripe Promotion Code ID
-        couponId: env?.server?.STRIPE_COUPON_EARLY_ADOPTER || process.env.STRIPE_COUPON_EARLY_ADOPTER || "early_adopter_100off",
+        code: 'EARLY500', // Display code for customers
+        promotionCodeId:
+          env?.server?.STRIPE_COUPON_EARLY_ADOPTER ||
+          process.env.STRIPE_COUPON_EARLY_ADOPTER ||
+          'promo_1SVGK4P7kSSEYWlXBq1LtaNM', // Stripe Promotion Code ID
+        couponId:
+          env?.server?.STRIPE_COUPON_EARLY_ADOPTER ||
+          process.env.STRIPE_COUPON_EARLY_ADOPTER ||
+          'early_adopter_100off',
         discountAmount: 100,
         originalPrice: 299,
         discountedPrice: 199, // After $100 off
         maxRedemptions: 500,
-        description: "$100 off for first 500 early adopters",
+        description: '$100 off for first 500 early adopters',
         expiresAt: null, // No expiration (limited by count)
         active: true,
       },
     },
 
     // Product reference
-    productId: "prod_TSAZlUUKJKVYPv", // Fabrk product ID from Stripe
+    productId: 'prod_TSAZlUUKJKVYPv', // Fabrk product ID from Stripe
   },
 
   // ============================================================================
   // EMAIL CONFIGURATION (Resend)
   // ============================================================================
   email: {
-    provider: "resend", // or "sendgrid", "ses", etc.
+    provider: 'resend', // or "sendgrid", "ses", etc.
     apiKey: env?.server?.RESEND_API_KEY || process.env.RESEND_API_KEY,
     from: {
-      name: "Fabrk Boilerplate",
-      email: env?.server?.EMAIL_FROM || process.env.EMAIL_FROM || "support@fabrek.dev",
+      name: 'Fabrk Boilerplate',
+      email:
+        env?.server?.EMAIL_FROM ||
+        process.env.EMAIL_FROM ||
+        'support@fabrek.dev',
     },
-    replyTo: env?.server?.EMAIL_REPLY_TO || process.env.EMAIL_REPLY_TO || "support@fabrek.dev",
+    replyTo:
+      env?.server?.EMAIL_REPLY_TO ||
+      process.env.EMAIL_REPLY_TO ||
+      'support@fabrek.dev',
   },
 
   // ============================================================================
@@ -118,7 +149,8 @@ const config = {
   database: {
     url: env?.server?.DATABASE_URL || process.env.DATABASE_URL,
     // For connection pooling (recommended for serverless)
-    directUrl: env?.server?.DATABASE_URL_DIRECT || process.env.DATABASE_URL_DIRECT,
+    directUrl:
+      env?.server?.DATABASE_URL_DIRECT || process.env.DATABASE_URL_DIRECT,
   },
 
   // ============================================================================
@@ -128,7 +160,9 @@ const config = {
     // Authentication features
     emailVerification: true,
     passwordReset: true,
-    googleAuth: !!(env?.server?.GOOGLE_CLIENT_ID || process.env.GOOGLE_CLIENT_ID),
+    googleAuth: !!(
+      env?.server?.GOOGLE_CLIENT_ID || process.env.GOOGLE_CLIENT_ID
+    ),
 
     // Payment features
     subscriptions: true, // Enable subscriptions for trial period support
@@ -149,24 +183,41 @@ const config = {
     changelog: false,
 
     // Search features
-    algoliaSearch: !!((env?.client?.NEXT_PUBLIC_ALGOLIA_APP_ID || process.env.NEXT_PUBLIC_ALGOLIA_APP_ID) &&
-      (env?.client?.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY || process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY)),
+    algoliaSearch: !!(
+      (env?.client?.NEXT_PUBLIC_ALGOLIA_APP_ID ||
+        process.env.NEXT_PUBLIC_ALGOLIA_APP_ID) &&
+      (env?.client?.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY ||
+        process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY)
+    ),
     commandPalette: true, // ⌘K keyboard shortcut
 
     // CMS features
-    sanityCMS: !!((env?.client?.NEXT_PUBLIC_SANITY_PROJECT_ID || process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) &&
-      (env?.client?.NEXT_PUBLIC_SANITY_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET)),
+    sanityCMS: !!(
+      (env?.client?.NEXT_PUBLIC_SANITY_PROJECT_ID ||
+        process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) &&
+      (env?.client?.NEXT_PUBLIC_SANITY_DATASET ||
+        process.env.NEXT_PUBLIC_SANITY_DATASET)
+    ),
   },
 
   // ============================================================================
   // SEARCH CONFIGURATION (Algolia)
   // ============================================================================
   search: {
-    enabled: !!((env?.client?.NEXT_PUBLIC_ALGOLIA_APP_ID || process.env.NEXT_PUBLIC_ALGOLIA_APP_ID) &&
-      (env?.client?.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY || process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY)),
-    appId: env?.client?.NEXT_PUBLIC_ALGOLIA_APP_ID || process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
-    searchApiKey: env?.client?.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY || process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY,
-    adminApiKey: env?.server?.ALGOLIA_ADMIN_API_KEY || process.env.ALGOLIA_ADMIN_API_KEY, // Server-side only
+    enabled: !!(
+      (env?.client?.NEXT_PUBLIC_ALGOLIA_APP_ID ||
+        process.env.NEXT_PUBLIC_ALGOLIA_APP_ID) &&
+      (env?.client?.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY ||
+        process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY)
+    ),
+    appId:
+      env?.client?.NEXT_PUBLIC_ALGOLIA_APP_ID ||
+      process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
+    searchApiKey:
+      env?.client?.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY ||
+      process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY,
+    adminApiKey:
+      env?.server?.ALGOLIA_ADMIN_API_KEY || process.env.ALGOLIA_ADMIN_API_KEY, // Server-side only
     indices: {
       pages: 'pages',
       components: 'components',
@@ -179,10 +230,18 @@ const config = {
   // CMS CONFIGURATION (Sanity)
   // ============================================================================
   cms: {
-    enabled: !!((env?.client?.NEXT_PUBLIC_SANITY_PROJECT_ID || process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) &&
-      (env?.client?.NEXT_PUBLIC_SANITY_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET)),
-    projectId: env?.client?.NEXT_PUBLIC_SANITY_PROJECT_ID || process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-    dataset: env?.client?.NEXT_PUBLIC_SANITY_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET,
+    enabled: !!(
+      (env?.client?.NEXT_PUBLIC_SANITY_PROJECT_ID ||
+        process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) &&
+      (env?.client?.NEXT_PUBLIC_SANITY_DATASET ||
+        process.env.NEXT_PUBLIC_SANITY_DATASET)
+    ),
+    projectId:
+      env?.client?.NEXT_PUBLIC_SANITY_PROJECT_ID ||
+      process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+    dataset:
+      env?.client?.NEXT_PUBLIC_SANITY_DATASET ||
+      process.env.NEXT_PUBLIC_SANITY_DATASET,
     apiToken: env?.server?.SANITY_API_TOKEN || process.env.SANITY_API_TOKEN, // Server-side only
     studio: {
       basePath: '/studio', // Studio accessible at /studio
@@ -193,24 +252,26 @@ const config = {
   // PRODUCT INFORMATION
   // ============================================================================
   product: {
-    name: "Fabrk - SaaS Boilerplate",
-    description: "Launch your SaaS product in days, not months. Fabrk is a complete, production-ready Next.js 15 foundation built with 87 premium components, comprehensive testing (130+ tests), and full feature parity for modern SaaS applications.",
-    shortDescription: "Premium SaaS boilerplate with 87 production-ready components, authentication, Stripe payments, and everything needed to launch immediately.",
+    name: 'Fabrk - SaaS Boilerplate',
+    description:
+      'Launch your SaaS product in days, not months. Fabrk is a complete, production-ready Next.js 15 foundation built with 87 premium components, comprehensive testing (130+ tests), and full feature parity for modern SaaS applications.',
+    shortDescription:
+      'Premium SaaS boilerplate with 87 production-ready components, authentication, Stripe payments, and everything needed to launch immediately.',
     features: [
-      "Authentication (NextAuth v5 with Google OAuth & email/password)",
-      "Payment Processing (Stripe one-time & subscription billing)",
-      "Dashboard & Multi-Tenancy (Organization management with RBAC)",
-      "Database (PostgreSQL with Prisma ORM)",
-      "Email System (Resend templates + queue system)",
-      "6 Switchable Color Themes",
-      "Real-Time Features (Pusher notifications & activity feeds)",
-      "Webhook System (22 event types with retry logic)",
-      "Comprehensive Documentation (400KB+ guides)",
-      "Full Test Suite (Vitest + Playwright E2E)",
-      "Storybook Component Library (95% coverage)",
-      "TypeScript-First Development",
-      "TypeScript Strict Mode throughout",
-      "WCAG 2.1 AA Accessibility compliance",
+      'Authentication (NextAuth v5 with Google OAuth & email/password)',
+      'Payment Processing (Stripe one-time & subscription billing)',
+      'Dashboard & Multi-Tenancy (Organization management with RBAC)',
+      'Database (PostgreSQL with Prisma ORM)',
+      'Email System (Resend templates + queue system)',
+      '6 Switchable Color Themes',
+      'Real-Time Features (Pusher notifications & activity feeds)',
+      'Webhook System (22 event types with retry logic)',
+      'Comprehensive Documentation (400KB+ guides)',
+      'Full Test Suite (Vitest + Playwright E2E)',
+      'Storybook Component Library (95% coverage)',
+      'TypeScript-First Development',
+      'TypeScript Strict Mode throughout',
+      'WCAG 2.1 AA Accessibility compliance',
     ],
   },
 
@@ -222,52 +283,52 @@ const config = {
     fabrk: {
       current: 199, // One-time price for Fabrk boilerplate
       original: 299, // Original price before launch discount (expires 02/01/2026)
-      currency: "USD",
+      currency: 'USD',
       display: {
-        current: "$199",
-        original: "$299",
+        current: '$199',
+        original: '$299',
       },
-      billingModel: "one-time",
+      billingModel: 'one-time',
       launchDiscount: true,
-      discountExpiresAt: "2026-02-01",
+      discountExpiresAt: '2026-02-01',
     },
     // Competitor pricing (for comparison tables)
     competitors: {
       diy: {
-        name: "DIY",
+        name: 'DIY',
         price: 0,
-        display: "$0",
+        display: '$0',
       },
       shipfast: {
-        name: "ShipFast",
+        name: 'ShipFast',
         price: 199,
-        display: "$199",
+        display: '$199',
       },
       supastarter: {
-        name: "Supastarter",
+        name: 'Supastarter',
         price: 349,
-        display: "$349",
+        display: '$349',
       },
     },
     // Example SaaS tier pricing (for customer's product demos)
     exampleTiers: {
       starter: {
-        name: "Starter",
+        name: 'Starter',
         price: 29,
-        display: "$29",
-        period: "/month",
+        display: '$29',
+        period: '/month',
       },
       professional: {
-        name: "Professional",
+        name: 'Professional',
         price: 99,
-        display: "$99",
-        period: "/month",
+        display: '$99',
+        period: '/month',
       },
       enterprise: {
-        name: "Enterprise",
+        name: 'Enterprise',
         price: 299,
-        display: "$299",
-        period: "/month",
+        display: '$299',
+        period: '/month',
       },
     },
   },
@@ -307,9 +368,9 @@ const config = {
   // DEVELOPMENT SETTINGS
   // ============================================================================
   dev: {
-    enableDebugLogs: process.env.NODE_ENV === "development",
+    enableDebugLogs: process.env.NODE_ENV === 'development',
     mockStripe: false, // Set to true to test without real Stripe
-    mockEmails: process.env.NODE_ENV === "development", // Log emails instead of sending
+    mockEmails: process.env.NODE_ENV === 'development', // Log emails instead of sending
   },
 };
 

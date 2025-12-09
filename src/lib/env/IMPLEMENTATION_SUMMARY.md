@@ -52,31 +52,36 @@ A comprehensive environment variable validation system has been implemented that
 - **Feature Categories:** 15
 - **Test Cases:** 18 (all passing ✅)
 - **Lines of Validation Code:** ~500
-- **API Key Prefixes Validated:** 7 (sk_, pk_, whsec_, re_, phc_, sk-ant-, etc.)
+- **API Key Prefixes Validated:** 7 (sk*, pk*, whsec*, re*, phc\_, sk-ant-, etc.)
 
 ## Validated Variables Breakdown
 
 ### Required Variables (8)
 
 **Database (1):**
+
 - `DATABASE_URL` - PostgreSQL connection URL
 
 **Authentication (2):**
+
 - `NEXTAUTH_URL` - Application URL
 - `NEXTAUTH_SECRET` - 32+ character secret
 
 **Payment (3):**
-- `STRIPE_SECRET_KEY` - Server-side Stripe key (sk_*)
-- `STRIPE_WEBHOOK_SECRET` - Webhook signing secret (whsec_*)
-- `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` - Client-side key (pk_*)
+
+- `STRIPE_SECRET_KEY` - Server-side Stripe key (sk\_\*)
+- `STRIPE_WEBHOOK_SECRET` - Webhook signing secret (whsec\_\*)
+- `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` - Client-side key (pk\_\*)
 
 **Email (2):**
-- `RESEND_API_KEY` - Resend API key (re_*)
+
+- `RESEND_API_KEY` - Resend API key (re\_\*)
 - `EMAIL_FROM` - From email address (validated format)
 
 ### Optional Variables (44)
 
 Grouped into 14 optional feature categories:
+
 - OAuth (Google): 2 variables
 - Real-Time (Pusher): 4 variables
 - Search (Algolia): 3 variables
@@ -137,6 +142,7 @@ Grouped into 14 optional feature categories:
 ### Error Categorization
 
 Errors are grouped by 15 categories for easy diagnosis:
+
 1. Database
 2. Authentication
 3. Payment
@@ -156,12 +162,14 @@ Errors are grouped by 15 categories for easy diagnosis:
 ### Development vs Production Modes
 
 **Development Mode:**
+
 - Only throws for critical errors (Database, Auth, Payment, Email)
 - Shows warnings for optional features
 - Displays feature summary (enabled/disabled features)
 - Helps developers understand configuration
 
 **Production Mode:**
+
 - Throws immediately for ANY validation error
 - Fails fast to prevent runtime issues
 - No feature summary
@@ -170,6 +178,7 @@ Errors are grouped by 15 categories for easy diagnosis:
 ## Example Error Messages
 
 ### Missing Required Variables
+
 ```
 [Database]
   ✗ DATABASE_URL
@@ -181,6 +190,7 @@ Errors are grouped by 15 categories for easy diagnosis:
 ```
 
 ### Invalid Format
+
 ```
 [Payment]
   ✗ STRIPE_SECRET_KEY
@@ -192,6 +202,7 @@ Errors are grouped by 15 categories for easy diagnosis:
 ```
 
 ### Incomplete Optional Features
+
 ```
 ⚠️  Environment Variable Warnings:
 
@@ -202,12 +213,14 @@ Errors are grouped by 15 categories for easy diagnosis:
 ## Usage Examples
 
 ### Automatic Validation
+
 ```typescript
 // Validation runs automatically when app starts
-import "@/lib/env";
+import '@/lib/env';
 ```
 
 ### Type-Safe Access
+
 ```typescript
 import { env, features } from '@/lib/env';
 
@@ -222,6 +235,7 @@ if (features.pusher) {
 ```
 
 ### Manual Validation
+
 ```typescript
 import { validateEnv, validateEnvOrThrow } from '@/lib/env';
 
@@ -306,6 +320,7 @@ The validation is integrated at the application root level:
 ## Future Enhancements
 
 Possible improvements:
+
 1. Add validation for custom regex patterns
 2. Support for .env.schema file
 3. Auto-generate TypeScript types from .env.example
@@ -320,6 +335,7 @@ Possible improvements:
 ## Maintenance
 
 To add new environment variables:
+
 1. Add to `.env.example` with documentation
 2. Add validation in `validation.ts` (required or optional section)
 3. Export in `index.ts` (env object and features object)

@@ -5,13 +5,13 @@
  * Production ready ✓
  */
 
-"use client";
+'use client';
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { CheckCircle, Download, RefreshCw, XCircle } from "lucide-react";
-import { AccessCardProps } from "./purchase-status-types";
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { CheckCircle, Download, RefreshCw, XCircle } from 'lucide-react';
+import { AccessCardProps } from './purchase-status-types';
 export function AccessCard({
   hasAccess,
   onGenerateDownload,
@@ -20,7 +20,11 @@ export function AccessCard({
   if (!hasAccess) {
     return (
       <Card tone="danger">
-        <CardHeader code="0x01" title="NO_ACCESS" icon={<XCircle className="h-4 w-4" />} />
+        <CardHeader
+          code="0x01"
+          title="NO_ACCESS"
+          icon={<XCircle className="h-4 w-4" />}
+        />
         <CardContent padding="md">
           <p className="text-muted-foreground dark:text-muted-foreground mb-4 text-sm">
             [STATUS]: Purchase required to access Fabrk boilerplate
@@ -49,7 +53,8 @@ export function AccessCard({
             COMPLETE_PACKAGE
           </Badge>
           <p className="text-muted-foreground dark:text-muted-foreground text-sm">
-            [STATUS]: Lifetime access to all Fabrk components, templates, and updates
+            [STATUS]: Lifetime access to all Fabrk components, templates, and
+            updates
           </p>
         </div>
         <Button

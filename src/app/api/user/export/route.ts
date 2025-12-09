@@ -4,11 +4,15 @@
  * GDPR-compliant data export
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
-import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
-import { logger } from "@/lib/logger";
+import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@/lib/auth';
+import { prisma } from '@/lib/prisma';
+import {
+  checkRateLimitAuto,
+  getClientIdentifier,
+  RateLimiters,
+} from '@/lib/security/rate-limit';
+import { logger } from '@/lib/logger';
 
 export async function GET(req: NextRequest) {
   try {
@@ -18,13 +22,15 @@ export async function GET(req: NextRequest) {
 
     if (!rateLimit.success) {
       return NextResponse.json(
-        { error: "Too many export requests. Please try again later." },
+        { error: 'Too many export requests. Please try again later.' },
         {
           status: 429,
           headers: {
-            "X-RateLimit-Limit": rateLimit.limit.toString(),
-            "X-RateLimit-Remaining": rateLimit.remaining.toString(),
-            "Retry-After": Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
+            'X-RateLimit-Limit': rateLimit.limit.toString(),
+            'X-RateLimit-Remaining': rateLimit.remaining.toString(),
+            'Retry-After': Math.ceil(
+              (rateLimit.reset - Date.now()) / 1000
+            ).toString(),
           },
         }
       );
@@ -33,7 +39,7 @@ export async function GET(req: NextRequest) {
     const session = await auth();
 
     if (!session?.user?.id) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     // Gather all user data
@@ -55,7 +61,7 @@ export async function GET(req: NextRequest) {
     });
 
     if (!user) {
-      return NextResponse.json({ error: "User not found" }, { status: 404 });
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
 
     // Remove sensitive data
@@ -109,12 +115,15 @@ export async function GET(req: NextRequest) {
     // Return as JSON download
     return new NextResponse(JSON.stringify(exportData, null, 2), {
       headers: {
-        "Content-Type": "application/json",
-        "Content-Disposition": `attachment; filename="user-data-${user.id}.json"`,
+        'Content-Type': 'application/json',
+        'Content-Disposition': `attachment; filename="user-data-${user.id}.json"`,
       },
     });
   } catch (error: unknown) {
-    logger.error("[Data Export] Error:", error);
-    return NextResponse.json({ error: "Failed to export data" }, { status: 500 });
+    logger.error('[Data Export] Error:', error);
+    return NextResponse.json(
+      { error: 'Failed to export data' },
+      { status: 500 }
+    );
   }
 }

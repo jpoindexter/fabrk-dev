@@ -8,15 +8,15 @@
  * - SEO-friendly markup
  */
 
-"use client";
+'use client';
 
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { generateFAQSchema } from "@/lib/seo/structured-data";
-import { ClientSchemaScript } from "@/components/security/client-schema-script";
+import { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { generateFAQSchema } from '@/lib/seo/structured-data';
+import { ClientSchemaScript } from '@/components/security/client-schema-script';
 
-import { mode } from "@/design-system";
+import { mode } from '@/design-system';
 export interface FAQ {
   question: string;
   answer: string;
@@ -41,7 +41,12 @@ interface FAQSectionProps {
  *   ]}
  * />
  */
-export function FAQSection({ faqs, title, description, className }: FAQSectionProps) {
+export function FAQSection({
+  faqs,
+  title,
+  description,
+  className,
+}: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const schema = generateFAQSchema(faqs);
@@ -50,23 +55,34 @@ export function FAQSection({ faqs, title, description, className }: FAQSectionPr
     <>
       <ClientSchemaScript schema={schema} />
 
-      <section className={cn("mx-auto max-w-3xl", className)}>
-        {title && <h2 className="text-foreground mb-2 text-4xl font-semibold">{title}</h2>}
-        {description && <p className="text-muted-foreground mb-8 text-lg">{description}</p>}
+      <section className={cn('mx-auto max-w-3xl', className)}>
+        {title && (
+          <h2 className="text-foreground mb-2 text-4xl font-semibold">
+            {title}
+          </h2>
+        )}
+        {description && (
+          <p className="text-muted-foreground mb-8 text-lg">{description}</p>
+        )}
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div key={index} className={cn("border-border bg-card border", mode.radius)}>
+            <div
+              key={index}
+              className={cn('border-border bg-card border', mode.radius)}
+            >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="flex w-full items-center justify-between p-6 text-left"
                 aria-expanded={openIndex === index}
               >
-                <h3 className="text-foreground pr-4 text-lg font-semibold">{faq.question}</h3>
+                <h3 className="text-foreground pr-4 text-lg font-semibold">
+                  {faq.question}
+                </h3>
                 <ChevronDown
                   className={cn(
-                    "text-muted-foreground h-5 w-5 flex-shrink-0 transition-transform",
-                    openIndex === index && "rotate-180"
+                    'text-muted-foreground h-5 w-5 flex-shrink-0 transition-transform',
+                    openIndex === index && 'rotate-180'
                   )}
                 />
               </button>

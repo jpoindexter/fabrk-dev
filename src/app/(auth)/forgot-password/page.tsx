@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { ArrowLeft, ShieldQuestion } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import Link from 'next/link';
+import { ArrowLeft, ShieldQuestion } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export default function ForgotPasswordPage() {
   return (
@@ -16,16 +16,19 @@ export default function ForgotPasswordPage() {
         <div className="border-border bg-card mx-auto mb-2 flex h-10 w-10 items-center justify-center border">
           <ShieldQuestion className="text-primary h-5 w-5" />
         </div>
-        <h1 className={cn(mode.font, "text-2xl font-semibold tracking-tight")}>Reset password</h1>
+        <h1 className={cn(mode.font, 'text-2xl font-semibold tracking-tight')}>
+          Reset password
+        </h1>
         <p className="text-muted-foreground text-sm">
-          Enter your email address and we'll send you a link to reset your password.
+          Enter your email address and we'll send you a link to reset your
+          password.
         </p>
       </div>
 
       {/* Reset Form */}
       <form className="space-y-4">
         <div className="space-y-2">
-          <Label htmlFor="email" className={cn(mode.font, "text-xs")}>
+          <Label htmlFor="email" className={cn(mode.font, 'text-xs')}>
             [EMAIL]:
           </Label>
           <Input
@@ -36,11 +39,14 @@ export default function ForgotPasswordPage() {
             autoComplete="email"
             autoCorrect="off"
             required
-            className={cn(mode.radius, mode.font, "text-xs")}
+            className={cn(mode.radius, mode.font, 'text-xs')}
           />
         </div>
 
-        <Button className={cn(mode.radius, mode.font, "w-full text-xs")} type="submit">
+        <Button
+          className={cn(mode.radius, mode.font, 'w-full text-xs')}
+          type="submit"
+        >
           &gt; SEND_RESET_LINK
         </Button>
       </form>

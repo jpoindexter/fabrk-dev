@@ -2,11 +2,11 @@
  * Email preview component with iframe and template details
  */
 
-import { TabsContent } from "@/components/ui/tabs";
-import type { EmailTemplate } from "./email-template-data";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { TabsContent } from '@/components/ui/tabs';
+import type { EmailTemplate } from './email-template-data';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 // Inject custom scrollbar styling into email HTML
 function injectScrollbarStyles(html: string, primaryColor: string): string {
@@ -37,7 +37,7 @@ function injectScrollbarStyles(html: string, primaryColor: string): string {
       }
     </style>
   `;
-  return html.replace("</head>", `${scrollbarStyles}</head>`);
+  return html.replace('</head>', `${scrollbarStyles}</head>`);
 }
 
 interface EmailPreviewProps {
@@ -57,24 +57,31 @@ export function EmailPreview({ template, primaryColor }: EmailPreviewProps) {
           <div className="mb-6 flex items-center justify-between">
             <div>
               <div className="mb-1 flex items-center gap-2">
-                <h2 className={cn(mode.font, "text-lg font-semibold")}>{template.name}</h2>
+                <h2 className={cn(mode.font, 'text-lg font-semibold')}>
+                  {template.name}
+                </h2>
                 <span
                   className={cn(
                     mode.font,
-                    "border-border text-muted-foreground border px-2 py-0.5 text-xs"
+                    'border-border text-muted-foreground border px-2 py-0.5 text-xs'
                   )}
                 >
                   {template.category}
                 </span>
               </div>
-              <p className={cn(mode.font, "text-muted-foreground text-sm")}>
+              <p className={cn(mode.font, 'text-muted-foreground text-sm')}>
                 {template.description}
               </p>
             </div>
           </div>
 
           {/* Email Preview */}
-          <div className={cn(mode.radius, "border-border bg-muted mb-6 border p-8")}>
+          <div
+            className={cn(
+              mode.radius,
+              'border-border bg-muted mb-6 border p-8'
+            )}
+          >
             <iframe
               srcDoc={injectScrollbarStyles(template.preview, primaryColor)}
               title={template.name}
@@ -86,14 +93,19 @@ export function EmailPreview({ template, primaryColor }: EmailPreviewProps) {
           <div
             className={cn(
               mode.font,
-              "border-border grid gap-6 border-t pt-6 text-xs md:grid-cols-2"
+              'border-border grid gap-6 border-t pt-6 text-xs md:grid-cols-2'
             )}
           >
             <div>
-              <div className="text-muted-foreground mb-2">[TRIGGER_EVENTS]:</div>
+              <div className="text-muted-foreground mb-2">
+                [TRIGGER_EVENTS]:
+              </div>
               <div className="flex flex-wrap gap-2">
                 {template.triggers.map((trigger, idx) => (
-                  <span key={idx} className="border-border bg-muted/30 border px-2 py-1">
+                  <span
+                    key={idx}
+                    className="border-border bg-muted/30 border px-2 py-1"
+                  >
                     &gt; {trigger}
                   </span>
                 ))}

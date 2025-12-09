@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
 /**
  * Impersonation Banner
  * Shown at the top of the page when admin is impersonating a user
  */
 
-import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { AlertTriangle, X } from "lucide-react";
+import { useEffect, useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { AlertTriangle, X } from 'lucide-react';
 
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 interface ImpersonationStatus {
   isImpersonating: boolean;
   originalUser?: {
@@ -35,7 +35,7 @@ export function ImpersonationBanner() {
 
   async function checkImpersonationStatus() {
     try {
-      const res = await fetch("/api/admin/users/impersonate");
+      const res = await fetch('/api/admin/users/impersonate');
       const data = await res.json();
       setStatus(data);
     } catch {
@@ -46,17 +46,17 @@ export function ImpersonationBanner() {
   async function exitImpersonation() {
     setLoading(true);
     try {
-      const res = await fetch("/api/admin/users/impersonate", {
-        method: "DELETE",
+      const res = await fetch('/api/admin/users/impersonate', {
+        method: 'DELETE',
       });
       const data = await res.json();
 
       if (data.success) {
         // Reload to restore admin context
-        window.location.href = data.redirect || "/admin/users";
+        window.location.href = data.redirect || '/admin/users';
       }
     } catch (error) {
-      console.error("Failed to exit impersonation:", error);
+      console.error('Failed to exit impersonation:', error);
     } finally {
       setLoading(false);
     }
@@ -71,9 +71,12 @@ export function ImpersonationBanner() {
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center gap-4">
           <AlertTriangle className="text-warning h-5 w-5" />
-          <span className={cn("text-foreground text-sm", mode.font)}>
-            <span className="text-warning">[IMPERSONATION_MODE]</span> Viewing as:{" "}
-            <strong>{status.targetUser?.name || status.targetUser?.email || "User"}</strong>
+          <span className={cn('text-foreground text-sm', mode.font)}>
+            <span className="text-warning">[IMPERSONATION_MODE]</span> Viewing
+            as:{' '}
+            <strong>
+              {status.targetUser?.name || status.targetUser?.email || 'User'}
+            </strong>
           </span>
         </div>
         <Button
@@ -84,7 +87,7 @@ export function ImpersonationBanner() {
           className="border-warning text-warning hover:bg-warning hover:text-warning-foreground"
         >
           {loading ? (
-            "> EXITING..."
+            '> EXITING...'
           ) : (
             <>
               <X className="mr-1 h-4 w-4" />

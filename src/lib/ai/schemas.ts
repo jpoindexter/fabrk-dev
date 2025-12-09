@@ -3,44 +3,44 @@
  * Zod schemas for structured AI outputs
  */
 
-import { z } from "zod";
+import { z } from 'zod';
 
 // Field types supported by the form generator
 export const fieldTypeSchema = z.enum([
-  "text",
-  "email",
-  "password",
-  "number",
-  "tel",
-  "url",
-  "textarea",
-  "select",
-  "checkbox",
-  "radio",
-  "date",
-  "time",
-  "datetime",
-  "file",
+  'text',
+  'email',
+  'password',
+  'number',
+  'tel',
+  'url',
+  'textarea',
+  'select',
+  'checkbox',
+  'radio',
+  'date',
+  'time',
+  'datetime',
+  'file',
 ]);
 
 export type FieldType = z.infer<typeof fieldTypeSchema>;
 
 // Individual form field schema
 export const formFieldSchema = z.object({
-  name: z.string().describe("Field name (camelCase, e.g., firstName)"),
-  label: z.string().describe("Human-readable label"),
-  type: fieldTypeSchema.describe("Input type"),
-  placeholder: z.string().optional().describe("Placeholder text"),
-  required: z.boolean().default(true).describe("Is this field required?"),
+  name: z.string().describe('Field name (camelCase, e.g., firstName)'),
+  label: z.string().describe('Human-readable label'),
+  type: fieldTypeSchema.describe('Input type'),
+  placeholder: z.string().optional().describe('Placeholder text'),
+  required: z.boolean().default(true).describe('Is this field required?'),
   validation: z
     .object({
-      min: z.number().optional().describe("Minimum value/length"),
-      max: z.number().optional().describe("Maximum value/length"),
-      pattern: z.string().optional().describe("Regex pattern"),
-      message: z.string().optional().describe("Custom error message"),
+      min: z.number().optional().describe('Minimum value/length'),
+      max: z.number().optional().describe('Maximum value/length'),
+      pattern: z.string().optional().describe('Regex pattern'),
+      message: z.string().optional().describe('Custom error message'),
     })
     .optional()
-    .describe("Validation rules"),
+    .describe('Validation rules'),
   options: z
     .array(
       z
@@ -55,7 +55,7 @@ export const formFieldSchema = z.object({
         }))
     )
     .optional()
-    .describe("Options for select/radio fields"),
+    .describe('Options for select/radio fields'),
   defaultValue: z.union([z.string(), z.number(), z.boolean()]).optional(),
 });
 
@@ -63,10 +63,10 @@ export type FormField = z.infer<typeof formFieldSchema>;
 
 // Complete form schema
 export const generatedFormSchema = z.object({
-  name: z.string().describe("Form name (PascalCase, e.g., ContactForm)"),
-  description: z.string().describe("Brief description of the form purpose"),
-  fields: z.array(formFieldSchema).min(1).describe("Form fields"),
-  submitLabel: z.string().default("Submit").describe("Submit button text"),
+  name: z.string().describe('Form name (PascalCase, e.g., ContactForm)'),
+  description: z.string().describe('Brief description of the form purpose'),
+  fields: z.array(formFieldSchema).min(1).describe('Form fields'),
+  submitLabel: z.string().default('Submit').describe('Submit button text'),
 });
 
 export type GeneratedForm = z.infer<typeof generatedFormSchema>;

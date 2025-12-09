@@ -4,9 +4,9 @@
  * Production-ready
  */
 
-"use client";
+'use client';
 
-import { useState, useCallback } from "react";
+import { useState, useCallback } from 'react';
 import {
   ColumnFiltersState,
   SortingState,
@@ -16,21 +16,26 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-} from "@tanstack/react-table";
-import { UserPlus, Download } from "lucide-react";
+} from '@tanstack/react-table';
+import { UserPlus, Download } from 'lucide-react';
 
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent, TemplatePageHeader } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { CodeBlock } from "@/components/ui/code-block";
-import { columns } from "./components/user-table-columns";
-import { mockUsers } from "./components/types";
-import { StatsCards } from "./components/stats-cards";
-import { TableToolbar } from "./components/table-toolbar";
-import { DataTable } from "./components/data-table";
-import { PaginationControls } from "./components/pagination-controls";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  TemplatePageHeader,
+} from '@/components/ui/card';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { CodeBlock } from '@/components/ui/code-block';
+import { columns } from './components/user-table-columns';
+import { mockUsers } from './components/types';
+import { StatsCards } from './components/stats-cards';
+import { TableToolbar } from './components/table-toolbar';
+import { DataTable } from './components/data-table';
+import { PaginationControls } from './components/pagination-controls';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 const templateCode = `"use client";
 
@@ -162,7 +167,15 @@ function UserManagementPreview() {
   });
 
   const exportToCSV = useCallback(() => {
-    const headers = ["Name", "Email", "Role", "Status", "Plan", "Created", "Last Login"];
+    const headers = [
+      'Name',
+      'Email',
+      'Role',
+      'Status',
+      'Plan',
+      'Created',
+      'Last Login',
+    ];
     const csvData = mockUsers.map((user) => [
       user.name,
       user.email,
@@ -173,13 +186,16 @@ function UserManagementPreview() {
       user.lastLogin,
     ]);
 
-    const csv = [headers.join(","), ...csvData.map((row) => row.join(","))].join("\n");
+    const csv = [
+      headers.join(','),
+      ...csvData.map((row) => row.join(',')),
+    ].join('\n');
 
-    const blob = new Blob([csv], { type: "text/csv" });
+    const blob = new Blob([csv], { type: 'text/csv' });
     const url = window.URL.createObjectURL(blob);
-    const a = document.createElement("a");
+    const a = document.createElement('a');
     a.href = url;
-    a.download = `users-${new Date().toISOString().split("T")[0]}.csv`;
+    a.download = `users-${new Date().toISOString().split('T')[0]}.csv`;
     a.click();
   }, []);
 
@@ -188,8 +204,10 @@ function UserManagementPreview() {
       <div className="space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <h1 className={cn(mode.font, "text-2xl font-semibold")}>User Management</h1>
-          <Button className={cn(mode.radius, mode.font, "text-xs")}>
+          <h1 className={cn(mode.font, 'text-2xl font-semibold')}>
+            User Management
+          </h1>
+          <Button className={cn(mode.radius, mode.font, 'text-xs')}>
             <UserPlus className="mr-2 h-4 w-4" />
             &gt; ADD_USER
           </Button>
@@ -204,7 +222,7 @@ function UserManagementPreview() {
 
           <div className="p-4">
             <div className="mb-4 flex items-center justify-between">
-              <div className={cn(mode.font, "text-muted-foreground text-xs")}>
+              <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
                 [ALL_USERS]: COUNT={mockUsers.length} | FILTERED=
                 {table.getFilteredRowModel().rows.length}
               </div>
@@ -212,7 +230,7 @@ function UserManagementPreview() {
                 onClick={exportToCSV}
                 variant="outline"
                 size="sm"
-                className={cn(mode.radius, mode.font, "h-7 text-xs")}
+                className={cn(mode.radius, mode.font, 'h-7 text-xs')}
               >
                 <Download className="mr-2 h-3 w-3" />
                 &gt; EXPORT_CSV
@@ -253,14 +271,14 @@ export default function UserManagementTemplate() {
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
-                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  'h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0',
                   mode.radius
                 )}
               >
                 <TabsTrigger
                   value="preview"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -270,7 +288,7 @@ export default function UserManagementTemplate() {
                 <TabsTrigger
                   value="code"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -294,7 +312,11 @@ export default function UserManagementTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+                <CodeBlock
+                  code={templateCode}
+                  language="tsx"
+                  maxHeight="600px"
+                />
               </div>
             </Card>
           </TabsContent>
@@ -304,14 +326,16 @@ export default function UserManagementTemplate() {
         <Card>
           <CardHeader code="0x02" title="FILE_STRUCTURE" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-1 text-xs")}>
+            <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>
               <div className="space-y-1 pl-4">
                 <div>
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">admin/users/</span>
                   <span className="text-foreground">page.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Copy template here</span>
+                  <span className="text-muted-foreground ml-4">
+                    ← Copy template here
+                  </span>
                 </div>
               </div>
             </div>
@@ -322,27 +346,33 @@ export default function UserManagementTemplate() {
         <Card>
           <CardHeader code="0x03" title="FEATURES" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-2 text-xs")}>
+            <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> TanStack Table integration
+                <span className="text-success">&gt;</span> TanStack Table
+                integration
               </div>
               <div>
-                <span className="text-success">&gt;</span> Sorting, filtering, pagination
+                <span className="text-success">&gt;</span> Sorting, filtering,
+                pagination
               </div>
               <div>
-                <span className="text-success">&gt;</span> CSV export functionality
+                <span className="text-success">&gt;</span> CSV export
+                functionality
               </div>
               <div>
                 <span className="text-success">&gt;</span> User stats dashboard
               </div>
               <div>
-                <span className="text-success">&gt;</span> Role-based status badges
+                <span className="text-success">&gt;</span> Role-based status
+                badges
               </div>
               <div>
-                <span className="text-success">&gt;</span> Responsive table layout
+                <span className="text-success">&gt;</span> Responsive table
+                layout
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant
+                (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

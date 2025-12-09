@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { Button } from "@/components/ui/button";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { Button } from '@/components/ui/button';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -12,7 +12,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+} from '@/components/ui/alert-dialog';
 
 export default function AlertDialogPage() {
   return (
@@ -42,8 +42,8 @@ export default function AlertDialogPage() {
               <AlertDialogHeader>
                 <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                 <AlertDialogDescription>
-                  This action cannot be undone. This will permanently delete your account and
-                  remove your data from our servers.
+                  This action cannot be undone. This will permanently delete
+                  your account and remove your data from our servers.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
@@ -73,8 +73,9 @@ export default function AlertDialogPage() {
       }}
       variants={[
         {
-          title: "Delete Confirmation",
-          description: "Alert dialog for confirming destructive delete actions.",
+          title: 'Delete Confirmation',
+          description:
+            'Alert dialog for confirming destructive delete actions.',
           preview: (
             <AlertDialog>
               <AlertDialogTrigger asChild>
@@ -84,7 +85,8 @@ export default function AlertDialogPage() {
                 <AlertDialogHeader>
                   <AlertDialogTitle>Delete this item?</AlertDialogTitle>
                   <AlertDialogDescription>
-                    This will permanently delete this item. This action cannot be undone.
+                    This will permanently delete this item. This action cannot
+                    be undone.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
@@ -117,8 +119,8 @@ export default function AlertDialogPage() {
 </AlertDialog>`,
         },
         {
-          title: "Confirmation Only",
-          description: "Alert dialog with only a confirmation action.",
+          title: 'Confirmation Only',
+          description: 'Alert dialog with only a confirmation action.',
           preview: (
             <AlertDialog>
               <AlertDialogTrigger asChild>
@@ -128,8 +130,8 @@ export default function AlertDialogPage() {
                 <AlertDialogHeader>
                   <AlertDialogTitle>Notice</AlertDialogTitle>
                   <AlertDialogDescription>
-                    Your changes have been saved successfully. You can continue working on your
-                    project.
+                    Your changes have been saved successfully. You can continue
+                    working on your project.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
@@ -156,8 +158,8 @@ export default function AlertDialogPage() {
 </AlertDialog>`,
         },
         {
-          title: "Warning",
-          description: "Alert dialog warning about potential issues.",
+          title: 'Warning',
+          description: 'Alert dialog warning about potential issues.',
           preview: (
             <AlertDialog>
               <AlertDialogTrigger asChild>
@@ -167,7 +169,8 @@ export default function AlertDialogPage() {
                 <AlertDialogHeader>
                   <AlertDialogTitle>Warning</AlertDialogTitle>
                   <AlertDialogDescription>
-                    This action may affect other users. Are you sure you want to continue?
+                    This action may affect other users. Are you sure you want to
+                    continue?
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
@@ -196,8 +199,8 @@ export default function AlertDialogPage() {
 </AlertDialog>`,
         },
         {
-          title: "Controlled State",
-          description: "Alert dialog with controlled open state.",
+          title: 'Controlled State',
+          description: 'Alert dialog with controlled open state.',
           preview: (
             <AlertDialog>
               <AlertDialogTrigger asChild>
@@ -207,7 +210,8 @@ export default function AlertDialogPage() {
                 <AlertDialogHeader>
                   <AlertDialogTitle>Controlled State</AlertDialogTitle>
                   <AlertDialogDescription>
-                    This alert dialog can be controlled with open and onOpenChange props.
+                    This alert dialog can be controlled with open and
+                    onOpenChange props.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
@@ -235,8 +239,8 @@ export default function AlertDialogPage() {
 </AlertDialog>`,
         },
         {
-          title: "Custom Actions",
-          description: "Alert dialog with custom styled action buttons.",
+          title: 'Custom Actions',
+          description: 'Alert dialog with custom styled action buttons.',
           preview: (
             <AlertDialog>
               <AlertDialogTrigger asChild>
@@ -251,7 +255,9 @@ export default function AlertDialogPage() {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                   <AlertDialogCancel>&gt; NOT_NOW</AlertDialogCancel>
-                  <AlertDialogAction className="bg-primary">&gt; SUBSCRIBE</AlertDialogAction>
+                  <AlertDialogAction className="bg-primary">
+                    &gt; SUBSCRIBE
+                  </AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>
@@ -277,36 +283,36 @@ export default function AlertDialogPage() {
       ]}
       props={[
         {
-          name: "open",
-          type: "boolean",
-          default: "undefined",
-          description: "Control the open state of the alert dialog.",
+          name: 'open',
+          type: 'boolean',
+          default: 'undefined',
+          description: 'Control the open state of the alert dialog.',
         },
         {
-          name: "onOpenChange",
-          type: "(open: boolean) => void",
-          default: "undefined",
-          description: "Event handler called when the open state changes.",
+          name: 'onOpenChange',
+          type: '(open: boolean) => void',
+          default: 'undefined',
+          description: 'Event handler called when the open state changes.',
         },
         {
-          name: "defaultOpen",
-          type: "boolean",
-          default: "false",
-          description: "The initial open state in uncontrolled mode.",
+          name: 'defaultOpen',
+          type: 'boolean',
+          default: 'false',
+          description: 'The initial open state in uncontrolled mode.',
         },
       ]}
       accessibility={[
         "Implements ARIA alertdialog pattern with role='alertdialog'",
-        "AlertDialogTitle provides accessible name via aria-labelledby",
-        "AlertDialogDescription provides description via aria-describedby",
-        "Focus is trapped within the dialog when open",
-        "Escape key closes the dialog",
-        "Focus returns to trigger element when closed",
-        "AlertDialogAction and AlertDialogCancel have clear semantic meaning",
-        "Keyboard navigation between action buttons with Tab/Shift+Tab",
+        'AlertDialogTitle provides accessible name via aria-labelledby',
+        'AlertDialogDescription provides description via aria-describedby',
+        'Focus is trapped within the dialog when open',
+        'Escape key closes the dialog',
+        'Focus returns to trigger element when closed',
+        'AlertDialogAction and AlertDialogCancel have clear semantic meaning',
+        'Keyboard navigation between action buttons with Tab/Shift+Tab',
       ]}
-      previous={{ title: "Dialog", href: "/docs/components/dialog" }}
-      next={{ title: "Sheet", href: "/docs/components/sheet" }}
+      previous={{ title: 'Dialog', href: '/docs/components/dialog' }}
+      next={{ title: 'Sheet', href: '/docs/components/sheet' }}
     />
   );
 }

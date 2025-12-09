@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
-import { formatLabel } from "@/design-system";
-import { useState } from "react";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Label } from '@/components/ui/label';
+import { formatLabel } from '@/design-system';
+import { useState } from 'react';
 
 export default function RadioGroupPage() {
-  const [value1, setValue1] = useState("option1");
-  const [value2, setValue2] = useState("sm");
-  const [value3, setValue3] = useState("card");
+  const [value1, setValue1] = useState('option1');
+  const [value2, setValue2] = useState('sm');
+  const [value3, setValue3] = useState('card');
 
   return (
     <ComponentShowcaseTemplate
@@ -24,19 +24,19 @@ export default function RadioGroupPage() {
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="option1" id="r1" />
               <Label htmlFor="r1" className="font-mono text-sm">
-                {formatLabel("Default Option")}
+                {formatLabel('Default Option')}
               </Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="option2" id="r2" />
               <Label htmlFor="r2" className="font-mono text-sm">
-                {formatLabel("Alternative Option")}
+                {formatLabel('Alternative Option')}
               </Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="option3" id="r3" />
               <Label htmlFor="r3" className="font-mono text-sm">
-                {formatLabel("Another Option")}
+                {formatLabel('Another Option')}
               </Label>
             </div>
           </RadioGroup>
@@ -54,8 +54,8 @@ export default function RadioGroupPage() {
       }}
       variants={[
         {
-          title: "Horizontal Layout",
-          description: "Radio group with horizontal arrangement",
+          title: 'Horizontal Layout',
+          description: 'Radio group with horizontal arrangement',
           preview: (
             <RadioGroup
               value={value2}
@@ -65,19 +65,19 @@ export default function RadioGroupPage() {
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="sm" id="h1" />
                 <Label htmlFor="h1" className="font-mono text-xs">
-                  {formatLabel("Small")}
+                  {formatLabel('Small')}
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="md" id="h2" />
                 <Label htmlFor="h2" className="font-mono text-xs">
-                  {formatLabel("Medium")}
+                  {formatLabel('Medium')}
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="lg" id="h3" />
                 <Label htmlFor="h3" className="font-mono text-xs">
-                  {formatLabel("Large")}
+                  {formatLabel('Large')}
                 </Label>
               </div>
             </RadioGroup>
@@ -95,15 +95,18 @@ export default function RadioGroupPage() {
 </RadioGroup>`,
         },
         {
-          title: "With Descriptions",
-          description: "Radio group with option descriptions",
+          title: 'With Descriptions',
+          description: 'Radio group with option descriptions',
           preview: (
             <RadioGroup value={value3} onValueChange={setValue3}>
               <div className="flex items-start space-x-2">
                 <RadioGroupItem value="card" id="d1" className="mt-1" />
                 <div className="space-y-1">
-                  <Label htmlFor="d1" className="font-mono text-sm font-semibold">
-                    {formatLabel("Card Payment")}
+                  <Label
+                    htmlFor="d1"
+                    className="font-mono text-sm font-semibold"
+                  >
+                    {formatLabel('Card Payment')}
                   </Label>
                   <p className="text-muted-foreground font-mono text-xs">
                     Pay with credit or debit card
@@ -113,8 +116,11 @@ export default function RadioGroupPage() {
               <div className="flex items-start space-x-2">
                 <RadioGroupItem value="bank" id="d2" className="mt-1" />
                 <div className="space-y-1">
-                  <Label htmlFor="d2" className="font-mono text-sm font-semibold">
-                    {formatLabel("Bank Transfer")}
+                  <Label
+                    htmlFor="d2"
+                    className="font-mono text-sm font-semibold"
+                  >
+                    {formatLabel('Bank Transfer')}
                   </Label>
                   <p className="text-muted-foreground font-mono text-xs">
                     Direct bank account transfer
@@ -124,8 +130,11 @@ export default function RadioGroupPage() {
               <div className="flex items-start space-x-2">
                 <RadioGroupItem value="crypto" id="d3" className="mt-1" />
                 <div className="space-y-1">
-                  <Label htmlFor="d3" className="font-mono text-sm font-semibold">
-                    {formatLabel("Cryptocurrency")}
+                  <Label
+                    htmlFor="d3"
+                    className="font-mono text-sm font-semibold"
+                  >
+                    {formatLabel('Cryptocurrency')}
                   </Label>
                   <p className="text-muted-foreground font-mono text-xs">
                     Pay with Bitcoin or Ethereum
@@ -148,26 +157,32 @@ export default function RadioGroupPage() {
 </RadioGroup>`,
         },
         {
-          title: "Disabled Options",
-          description: "Radio group with some disabled options",
+          title: 'Disabled Options',
+          description: 'Radio group with some disabled options',
           preview: (
             <RadioGroup defaultValue="enabled">
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="enabled" id="e1" />
                 <Label htmlFor="e1" className="font-mono text-sm">
-                  {formatLabel("Enabled Option")}
+                  {formatLabel('Enabled Option')}
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="disabled1" id="e2" disabled />
-                <Label htmlFor="e2" className="text-muted-foreground font-mono text-sm">
-                  {formatLabel("Disabled Option")}
+                <Label
+                  htmlFor="e2"
+                  className="text-muted-foreground font-mono text-sm"
+                >
+                  {formatLabel('Disabled Option')}
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="disabled2" id="e3" disabled />
-                <Label htmlFor="e3" className="text-muted-foreground font-mono text-sm">
-                  {formatLabel("Also Disabled")}
+                <Label
+                  htmlFor="e3"
+                  className="text-muted-foreground font-mono text-sm"
+                >
+                  {formatLabel('Also Disabled')}
                 </Label>
               </div>
             </RadioGroup>
@@ -184,11 +199,13 @@ export default function RadioGroupPage() {
 </RadioGroup>`,
         },
         {
-          title: "Terminal Style",
-          description: "Radio group with terminal-themed styling",
+          title: 'Terminal Style',
+          description: 'Radio group with terminal-themed styling',
           preview: (
             <div className="space-y-2">
-              <div className="text-muted-foreground font-mono text-xs">[SELECT_OPTION]:</div>
+              <div className="text-muted-foreground font-mono text-xs">
+                [SELECT_OPTION]:
+              </div>
               <RadioGroup defaultValue="option1">
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="option1" id="t1" />
@@ -229,59 +246,59 @@ export default function RadioGroupPage() {
       ]}
       props={[
         {
-          name: "value",
-          type: "string",
-          default: "undefined",
-          description: "The controlled value of the selected radio item",
+          name: 'value',
+          type: 'string',
+          default: 'undefined',
+          description: 'The controlled value of the selected radio item',
         },
         {
-          name: "defaultValue",
-          type: "string",
-          default: "undefined",
-          description: "The default value for uncontrolled usage",
+          name: 'defaultValue',
+          type: 'string',
+          default: 'undefined',
+          description: 'The default value for uncontrolled usage',
         },
         {
-          name: "onValueChange",
-          type: "(value: string) => void",
-          default: "undefined",
-          description: "Callback fired when the selected value changes",
+          name: 'onValueChange',
+          type: '(value: string) => void',
+          default: 'undefined',
+          description: 'Callback fired when the selected value changes',
         },
         {
-          name: "disabled",
-          type: "boolean",
-          default: "false",
-          description: "Disable all radio items in the group",
+          name: 'disabled',
+          type: 'boolean',
+          default: 'false',
+          description: 'Disable all radio items in the group',
         },
         {
-          name: "required",
-          type: "boolean",
-          default: "false",
-          description: "Mark the radio group as required",
+          name: 'required',
+          type: 'boolean',
+          default: 'false',
+          description: 'Mark the radio group as required',
         },
         {
-          name: "name",
-          type: "string",
-          default: "undefined",
-          description: "Name attribute for form submission",
+          name: 'name',
+          type: 'string',
+          default: 'undefined',
+          description: 'Name attribute for form submission',
         },
         {
-          name: "className",
-          type: "string",
-          default: "undefined",
-          description: "Additional CSS classes for the container",
+          name: 'className',
+          type: 'string',
+          default: 'undefined',
+          description: 'Additional CSS classes for the container',
         },
       ]}
       accessibility={[
-        "Uses Radix UI Radio Group primitive for full accessibility",
-        "Supports keyboard navigation with arrow keys",
-        "Space key toggles selection of focused item",
+        'Uses Radix UI Radio Group primitive for full accessibility',
+        'Supports keyboard navigation with arrow keys',
+        'Space key toggles selection of focused item',
         "Proper ARIA attributes (role='radiogroup', aria-checked)",
-        "Label association via htmlFor ensures clickable labels",
-        "Focus visible styles for keyboard navigation",
-        "Disabled state properly communicated to assistive tech",
+        'Label association via htmlFor ensures clickable labels',
+        'Focus visible styles for keyboard navigation',
+        'Disabled state properly communicated to assistive tech',
       ]}
-      previous={{ title: "Progress", href: "/docs/components/progress" }}
-      next={{ title: "Rating", href: "/docs/components/rating" }}
+      previous={{ title: 'Progress', href: '/docs/components/progress' }}
+      next={{ title: 'Rating', href: '/docs/components/rating' }}
     />
   );
 }

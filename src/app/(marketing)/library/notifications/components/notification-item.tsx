@@ -1,12 +1,12 @@
-import { type Notification } from "./notification-types"; // Correct import path
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { Check, Trash2 } from "lucide-react"; // Import Lucide icons used directly in NotificationItem
-import Link from "next/link";
-import { useMemo } from "react";
-import { getTypeIcon, getTypeColor } from "./notification-types"; // Import getTypeIcon and getTypeColor
-import { mode } from "@/design-system";
+import { type Notification } from './notification-types'; // Correct import path
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { Check, Trash2 } from 'lucide-react'; // Import Lucide icons used directly in NotificationItem
+import Link from 'next/link';
+import { useMemo } from 'react';
+import { getTypeIcon, getTypeColor } from './notification-types'; // Import getTypeIcon and getTypeColor
+import { mode } from '@/design-system';
 
 interface NotificationItemProps {
   notification: Notification;
@@ -14,7 +14,11 @@ interface NotificationItemProps {
   onDelete: (id: string) => void;
 }
 
-export function NotificationItem({ notification, onMarkAsRead, onDelete }: NotificationItemProps) {
+export function NotificationItem({
+  notification,
+  onMarkAsRead,
+  onDelete,
+}: NotificationItemProps) {
   // Use useMemo to ensure Icon and colorClass are stable across renders
   const { Icon, colorClass } = useMemo(
     () => ({
@@ -28,8 +32,8 @@ export function NotificationItem({ notification, onMarkAsRead, onDelete }: Notif
     <div
       className={cn(
         mode.radius,
-        "border-border bg-card relative flex w-full items-start gap-4 border p-4 transition-colors",
-        !notification.read && "bg-primary/5 hover:bg-primary/10"
+        'border-border bg-card relative flex w-full items-start gap-4 border p-4 transition-colors',
+        !notification.read && 'bg-primary/5 hover:bg-primary/10'
       )}
     >
       {/* Icon */}
@@ -44,18 +48,27 @@ export function NotificationItem({ notification, onMarkAsRead, onDelete }: Notif
         <div className="flex items-center justify-between">
           <Badge
             variant="outline"
-            className={cn(mode.radius, mode.font, "border-border px-2 py-0.5 text-xs uppercase")}
+            className={cn(
+              mode.radius,
+              mode.font,
+              'border-border px-2 py-0.5 text-xs uppercase'
+            )}
           >
-            {notification.type.replace(/_/g, " ")}
+            {notification.type.replace(/_/g, ' ')}
           </Badge>
-          <span className={cn(mode.font, "text-muted-foreground text-xs")}>
+          <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
             {notification.timestamp}
           </span>
         </div>
-        <h4 className={cn(mode.font, "text-foreground mt-2 text-sm font-semibold")}>
+        <h4
+          className={cn(
+            mode.font,
+            'text-foreground mt-2 text-sm font-semibold'
+          )}
+        >
           {notification.title}
         </h4>
-        <p className={cn(mode.font, "text-muted-foreground mt-1 text-xs")}>
+        <p className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
           {notification.message}
         </p>
 
@@ -64,7 +77,11 @@ export function NotificationItem({ notification, onMarkAsRead, onDelete }: Notif
             variant="link"
             size="sm"
             asChild
-            className={cn(mode.radius, mode.font, "mt-2 px-0 text-xs font-semibold")}
+            className={cn(
+              mode.radius,
+              mode.font,
+              'mt-2 px-0 text-xs font-semibold'
+            )}
           >
             <Link href={notification.actionUrl}>VIEW_DETAILS</Link>
           </Button>
@@ -76,7 +93,7 @@ export function NotificationItem({ notification, onMarkAsRead, onDelete }: Notif
             <Button
               variant="outline"
               size="sm"
-              className={cn(mode.radius, mode.font, "text-xs")}
+              className={cn(mode.radius, mode.font, 'text-xs')}
               onClick={() => onMarkAsRead(notification.id)}
             >
               <Check className="mr-2 size-3" /> Mark as Read
@@ -85,7 +102,7 @@ export function NotificationItem({ notification, onMarkAsRead, onDelete }: Notif
           <Button
             variant="destructive"
             size="sm"
-            className={cn(mode.radius, mode.font, "text-xs")}
+            className={cn(mode.radius, mode.font, 'text-xs')}
             onClick={() => onDelete(notification.id)}
           >
             <Trash2 className="mr-2 size-3" /> Delete
@@ -95,7 +112,12 @@ export function NotificationItem({ notification, onMarkAsRead, onDelete }: Notif
 
       {/* Read indicator */}
       {!notification.read && (
-        <span className={cn(mode.radius, "bg-primary absolute top-2 right-2 size-2")} />
+        <span
+          className={cn(
+            mode.radius,
+            'bg-primary absolute top-2 right-2 size-2'
+          )}
+        />
       )}
     </div>
   );

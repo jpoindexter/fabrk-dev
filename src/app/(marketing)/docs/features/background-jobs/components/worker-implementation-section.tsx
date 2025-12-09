@@ -1,7 +1,7 @@
 export function WorkerImplementationSection() {
   return {
-    title: "Worker Implementation",
-    description: "Create workers to process jobs",
+    title: 'Worker Implementation',
+    description: 'Create workers to process jobs',
     code: `// scripts/worker.ts
 import { getNextJob, completeJob, failJob } from "@/lib/jobs/queue";
 
@@ -72,6 +72,6 @@ function sleep(ms: number) {
 
 // Start worker
 processJobs(process.env.QUEUE || "default");`,
-    language: "typescript",
+    language: 'typescript',
   };
 }

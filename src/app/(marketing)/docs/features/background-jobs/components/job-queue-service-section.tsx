@@ -1,7 +1,7 @@
 export function JobQueueServiceSection() {
   return {
-    title: "Job Queue Service",
-    description: "Core service for managing job queues",
+    title: 'Job Queue Service',
+    description: 'Core service for managing job queues',
     code: `// src/lib/jobs/queue.ts
 import { prisma } from "@/lib/db";
 
@@ -115,6 +115,6 @@ export async function failJob(
     },
   });
 }`,
-    language: "typescript",
+    language: 'typescript',
   };
 }

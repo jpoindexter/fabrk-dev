@@ -57,7 +57,7 @@ View and manage organization members with role-based access control.
 interface Member {
   id: string;
   userId: string;
-  role: "OWNER" | "ADMIN" | "MEMBER" | "GUEST";
+  role: 'OWNER' | 'ADMIN' | 'MEMBER' | 'GUEST';
   joinedAt: string;
   user: {
     id: string;

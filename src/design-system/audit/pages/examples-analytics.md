@@ -87,7 +87,7 @@ Demo analytics dashboard with mock data showing stats, activity, and placeholder
 
 ```typescript
 const mockAnalytics = {
-  stats: [{ label, value, change, trend: "up" | "down", icon: LucideIcon }],
+  stats: [{ label, value, change, trend: 'up' | 'down', icon: LucideIcon }],
   recentActivity: [{ action, user, time }],
   topPages: [{ path, views, change }],
 };
@@ -106,7 +106,7 @@ Each stat card:
 ## Change Indicator Logic
 
 ```typescript
-const isPositive = stat.trend === "up";
+const isPositive = stat.trend === 'up';
 // Color: isPositive ? text-success : text-destructive
 // Icon: isPositive ? ArrowUpRight : ArrowDownRight
 ```

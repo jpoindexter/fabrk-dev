@@ -3,7 +3,7 @@
  * Notifications header section
  */
 
-import { TemplatePageHeader } from "@/components/ui/card";
+import { TemplatePageHeader } from '@/components/ui/card';
 
 export function NotificationsHeader() {
   return (

@@ -1,10 +1,11 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
-import { Webhook, Shield, RefreshCw, FileText } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard } from '@/components/docs';
+import { Webhook, Shield, RefreshCw, FileText } from 'lucide-react';
 
 export const metadata = {
-  title: "Webhooks System - Fabrk Documentation",
-  description: "Learn how to use the production-grade webhooks system with 22 event types, HMAC verification, and automatic retries.",
+  title: 'Webhooks System - Fabrk Documentation',
+  description:
+    'Learn how to use the production-grade webhooks system with 22 event types, HMAC verification, and automatic retries.',
 };
 
 export default function WebhooksPage() {
@@ -16,15 +17,31 @@ export default function WebhooksPage() {
       description="Production-grade webhook system with 22 event types, HMAC-SHA256 signature verification, and automatic retry with exponential backoff."
       overview="The webhooks system allows your application to send HTTP callbacks to external services when specific events occur. This is essential for integrating with third-party services, triggering external workflows, and keeping systems in sync."
       features={[
-        { icon: Webhook, title: "22 Event Types", description: "User, payment, organization, and system events" },
-        { icon: Shield, title: "HMAC-SHA256 Verification", description: "Secure signature verification for all deliveries" },
-        { icon: RefreshCw, title: "Automatic Retries", description: "Exponential backoff with configurable retry limits" },
-        { icon: FileText, title: "Delivery Tracking", description: "Full history of webhook deliveries and responses" },
+        {
+          icon: Webhook,
+          title: '22 Event Types',
+          description: 'User, payment, organization, and system events',
+        },
+        {
+          icon: Shield,
+          title: 'HMAC-SHA256 Verification',
+          description: 'Secure signature verification for all deliveries',
+        },
+        {
+          icon: RefreshCw,
+          title: 'Automatic Retries',
+          description: 'Exponential backoff with configurable retry limits',
+        },
+        {
+          icon: FileText,
+          title: 'Delivery Tracking',
+          description: 'Full history of webhook deliveries and responses',
+        },
       ]}
       usage={[
         {
-          title: "Creating Webhooks",
-          description: "Register a webhook endpoint to receive events",
+          title: 'Creating Webhooks',
+          description: 'Register a webhook endpoint to receive events',
           code: `// API Route: POST /api/v1/webhooks
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
@@ -59,11 +76,11 @@ export async function POST(req: Request) {
     secret: webhook.secret, // Show once on creation
   });
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Sending Webhooks",
-          description: "Trigger webhook deliveries from your application",
+          title: 'Sending Webhooks',
+          description: 'Trigger webhook deliveries from your application',
           code: `// src/lib/webhooks/server.ts
 import crypto from "crypto";
 import { prisma } from "@/lib/db";
@@ -128,11 +145,11 @@ await sendWebhook("user.created", {
   email: user.email,
   name: user.name,
 });`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Verifying Webhooks (Receiver Side)",
-          description: "When receiving webhooks, always verify the signature",
+          title: 'Verifying Webhooks (Receiver Side)',
+          description: 'When receiving webhooks, always verify the signature',
           code: `// In your webhook receiver endpoint
 import crypto from "crypto";
 
@@ -165,11 +182,12 @@ export async function POST(req: Request) {
 
   return Response.json({ received: true });
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Retry Logic",
-          description: "Failed webhooks are automatically retried with exponential backoff",
+          title: 'Retry Logic',
+          description:
+            'Failed webhooks are automatically retried with exponential backoff',
           code: `// Retry configuration
 const RETRY_CONFIG = {
   maxRetries: 5,
@@ -208,11 +226,14 @@ async function queueWebhookRetry(
     attempt: attempt + 1,
   }, { delay: delay * 1000 });
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
       ]}
-      previous={{ title: "Organizations", href: "/docs/features/organizations" }}
-      next={{ title: "Magic Links", href: "/docs/features/magic-links" }}
+      previous={{
+        title: 'Organizations',
+        href: '/docs/features/organizations',
+      }}
+      next={{ title: 'Magic Links', href: '/docs/features/magic-links' }}
     >
       {/* Event Types Section */}
       <DocsSection title="Event Types">
@@ -220,10 +241,10 @@ async function queueWebhookRetry(
           <p className="mb-4">
             Available webhook event types organized by category:
           </p>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid gap-6 md:grid-cols-2">
             <div>
               User Events
-              <ul className="space-y-1 mt-2">
+              <ul className="mt-2 space-y-1">
                 <li>• user.created</li>
                 <li>• user.updated</li>
                 <li>• user.deleted</li>
@@ -232,7 +253,7 @@ async function queueWebhookRetry(
             </div>
             <div>
               Payment Events
-              <ul className="space-y-1 mt-2">
+              <ul className="mt-2 space-y-1">
                 <li>• payment.completed</li>
                 <li>• payment.failed</li>
                 <li>• subscription.created</li>
@@ -241,7 +262,7 @@ async function queueWebhookRetry(
             </div>
             <div>
               Organization Events
-              <ul className="space-y-1 mt-2">
+              <ul className="mt-2 space-y-1">
                 <li>• organization.created</li>
                 <li>• organization.updated</li>
                 <li>• member.invited</li>
@@ -251,7 +272,7 @@ async function queueWebhookRetry(
             </div>
             <div>
               System Events
-              <ul className="space-y-1 mt-2">
+              <ul className="mt-2 space-y-1">
                 <li>• webhook.test</li>
                 <li>• api_key.created</li>
                 <li>• api_key.revoked</li>
@@ -265,12 +286,30 @@ async function queueWebhookRetry(
       <DocsSection title="Security Best Practices">
         <DocsCard title="SECURITY_BEST_PRACTICES">
           <ul className="space-y-1">
-            <li>├─ <strong>Always verify signatures:</strong> Use HMAC-SHA256 with timing-safe comparison</li>
-            <li>├─ <strong>Use HTTPS only:</strong> Never send webhooks to HTTP endpoints</li>
-            <li>├─ <strong>Rotate secrets:</strong> Allow users to regenerate webhook secrets</li>
-            <li>├─ <strong>Validate payloads:</strong> Sanitize and validate all webhook payloads</li>
-            <li>├─ <strong>Set timeouts:</strong> Use short timeouts (5-10s) for webhook deliveries</li>
-            <li>└─ <strong>Log everything:</strong> Track all deliveries for debugging and audit</li>
+            <li>
+              ├─ <strong>Always verify signatures:</strong> Use HMAC-SHA256 with
+              timing-safe comparison
+            </li>
+            <li>
+              ├─ <strong>Use HTTPS only:</strong> Never send webhooks to HTTP
+              endpoints
+            </li>
+            <li>
+              ├─ <strong>Rotate secrets:</strong> Allow users to regenerate
+              webhook secrets
+            </li>
+            <li>
+              ├─ <strong>Validate payloads:</strong> Sanitize and validate all
+              webhook payloads
+            </li>
+            <li>
+              ├─ <strong>Set timeouts:</strong> Use short timeouts (5-10s) for
+              webhook deliveries
+            </li>
+            <li>
+              └─ <strong>Log everything:</strong> Track all deliveries for
+              debugging and audit
+            </li>
           </ul>
         </DocsCard>
       </DocsSection>

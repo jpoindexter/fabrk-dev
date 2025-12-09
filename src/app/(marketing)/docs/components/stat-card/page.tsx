@@ -1,8 +1,15 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { StatCard } from "@/components/ui/stat-card";
-import { DollarSign, Users, Activity, CreditCard, TrendingUp, ShoppingCart } from "lucide-react";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { StatCard } from '@/components/ui/stat-card';
+import {
+  DollarSign,
+  Users,
+  Activity,
+  CreditCard,
+  TrendingUp,
+  ShoppingCart,
+} from 'lucide-react';
 
 export default function StatCardPage() {
   return (
@@ -33,8 +40,8 @@ export default function StatCardPage() {
       }}
       variants={[
         {
-          title: "Trend Variants",
-          description: "Different trend directions (up, down, neutral)",
+          title: 'Trend Variants',
+          description: 'Different trend directions (up, down, neutral)',
           preview: (
             <div className="grid gap-4 md:grid-cols-3">
               <StatCard
@@ -89,8 +96,8 @@ export default function StatCardPage() {
 />`,
         },
         {
-          title: "Without Icons",
-          description: "Minimal stat cards with text only",
+          title: 'Without Icons',
+          description: 'Minimal stat cards with text only',
           preview: (
             <div className="grid gap-4 md:grid-cols-2">
               <StatCard
@@ -125,8 +132,8 @@ export default function StatCardPage() {
 />`,
         },
         {
-          title: "Without Change",
-          description: "Stat cards without trend information",
+          title: 'Without Change',
+          description: 'Stat cards without trend information',
           preview: (
             <div className="grid gap-4 md:grid-cols-3">
               <StatCard
@@ -158,8 +165,8 @@ export default function StatCardPage() {
 />`,
         },
         {
-          title: "Dashboard Grid",
-          description: "Full dashboard layout with multiple metrics",
+          title: 'Dashboard Grid',
+          description: 'Full dashboard layout with multiple metrics',
           preview: (
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               <StatCard
@@ -219,54 +226,54 @@ export default function StatCardPage() {
       ]}
       props={[
         {
-          name: "title",
-          type: "string",
+          name: 'title',
+          type: 'string',
           required: true,
-          description: "Card title/label",
+          description: 'Card title/label',
         },
         {
-          name: "value",
-          type: "string | number",
+          name: 'value',
+          type: 'string | number',
           required: true,
-          description: "Primary metric value",
+          description: 'Primary metric value',
         },
         {
-          name: "change",
-          type: "number",
-          description: "Percentage change value",
+          name: 'change',
+          type: 'number',
+          description: 'Percentage change value',
         },
         {
-          name: "trend",
+          name: 'trend',
           type: '"up" | "down" | "neutral"',
-          description: "Trend direction indicator",
+          description: 'Trend direction indicator',
         },
         {
-          name: "subtitle",
-          type: "string",
-          description: "Additional context text",
+          name: 'subtitle',
+          type: 'string',
+          description: 'Additional context text',
         },
         {
-          name: "icon",
-          type: "React.ReactNode",
-          description: "Icon to display (typically Lucide icon)",
+          name: 'icon',
+          type: 'React.ReactNode',
+          description: 'Icon to display (typically Lucide icon)',
         },
         {
-          name: "className",
-          type: "string",
-          description: "Additional CSS classes",
+          name: 'className',
+          type: 'string',
+          description: 'Additional CSS classes',
         },
       ]}
       accessibility={[
-        "Uses Card component with semantic structure",
-        "Title uses medium weight (font-medium) for clear hierarchy",
-        "Value uses large semibold text (text-2xl font-semibold) for prominence",
-        "Trend colors follow semantic conventions (green=up, red=down, gray=neutral)",
-        "Icons are decorative - meaning is also conveyed through text",
-        "Change percentage includes directional arrow icon for visual clarity",
-        "All color combinations meet WCAG AA contrast requirements",
+        'Uses Card component with semantic structure',
+        'Title uses medium weight (font-medium) for clear hierarchy',
+        'Value uses large semibold text (text-2xl font-semibold) for prominence',
+        'Trend colors follow semantic conventions (green=up, red=down, gray=neutral)',
+        'Icons are decorative - meaning is also conveyed through text',
+        'Change percentage includes directional arrow icon for visual clarity',
+        'All color combinations meet WCAG AA contrast requirements',
       ]}
-      previous={{ title: "Empty State", href: "/docs/components/empty-state" }}
-      next={{ title: "Sparkline", href: "/docs/components/sparkline" }}
+      previous={{ title: 'Empty State', href: '/docs/components/empty-state' }}
+      next={{ title: 'Sparkline', href: '/docs/components/sparkline' }}
     />
   );
 }

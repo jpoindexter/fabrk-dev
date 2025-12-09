@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { PieChart, PieChartDataItem } from "./pie-chart";
-import { cn } from "@/lib/utils";
+import * as React from 'react';
+import { PieChart, PieChartDataItem } from './pie-chart';
+import { cn } from '@/lib/utils';
 
 interface DonutChartProps {
   data: PieChartDataItem[];
@@ -32,7 +32,7 @@ export function DonutChart({
   const _total = data.reduce((sum, item) => sum + item.value, 0);
 
   return (
-    <div className={cn("relative", className)}>
+    <div className={cn('relative', className)}>
       <PieChart
         data={data}
         size={size}
@@ -89,10 +89,16 @@ export function MetricDonutChart({
       onSegmentClick={onSegmentClick}
       centerContent={
         <div className="px-4 text-center">
-          <p className="mb-1 text-3xl leading-none font-semibold">{metric.value}</p>
-          <p className="text-muted-foreground text-xs font-medium">{metric.label}</p>
+          <p className="mb-1 text-3xl leading-none font-semibold">
+            {metric.value}
+          </p>
+          <p className="text-muted-foreground text-xs font-medium">
+            {metric.label}
+          </p>
           {metric.sublabel && (
-            <p className="text-muted-foreground mt-0.5 text-xs">{metric.sublabel}</p>
+            <p className="text-muted-foreground mt-0.5 text-xs">
+              {metric.sublabel}
+            </p>
           )}
         </div>
       }
@@ -120,15 +126,15 @@ export function ProgressDonutChart({
   thickness = 30,
   label,
   showPercentage = true,
-  color = "hsl(var(--primary))",
-  backgroundColor = "hsl(var(--muted))",
+  color = 'hsl(var(--primary))',
+  backgroundColor = 'hsl(var(--muted))',
   className,
 }: ProgressDonutChartProps) {
   const percentage = Math.min((value / max) * 100, 100);
 
   const data: PieChartDataItem[] = [
-    { label: "Progress", value: percentage, color },
-    { label: "Remaining", value: 100 - percentage, color: backgroundColor },
+    { label: 'Progress', value: percentage, color },
+    { label: 'Remaining', value: 100 - percentage, color: backgroundColor },
   ];
 
   return (
@@ -140,9 +146,13 @@ export function ProgressDonutChart({
       centerContent={
         <div className="px-4 text-center">
           {showPercentage && (
-            <p className="mb-1 text-3xl leading-none font-semibold">{percentage.toFixed(0)}%</p>
+            <p className="mb-1 text-3xl leading-none font-semibold">
+              {percentage.toFixed(0)}%
+            </p>
           )}
-          {label && <p className="text-muted-foreground text-xs font-medium">{label}</p>}
+          {label && (
+            <p className="text-muted-foreground text-xs font-medium">{label}</p>
+          )}
         </div>
       }
       className={className}

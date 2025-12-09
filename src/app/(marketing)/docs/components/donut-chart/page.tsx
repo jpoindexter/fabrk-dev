@@ -1,29 +1,33 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { DonutChart, MetricDonutChart, ProgressDonutChart } from "@/components/ui/donut-chart";
-import { useState } from "react";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import {
+  DonutChart,
+  MetricDonutChart,
+  ProgressDonutChart,
+} from '@/components/ui/donut-chart';
+import { useState } from 'react';
 
 export default function DonutChartPage() {
   const [selectedSegment, setSelectedSegment] = useState<string | null>(null);
 
   const categoryData = [
-    { label: "Design", value: 35, color: "oklch(70% 0.15 295)" },
-    { label: "Development", value: 45, color: "oklch(70% 0.15 220)" },
-    { label: "Marketing", value: 20, color: "oklch(70% 0.15 160)" },
+    { label: 'Design', value: 35, color: 'oklch(70% 0.15 295)' },
+    { label: 'Development', value: 45, color: 'oklch(70% 0.15 220)' },
+    { label: 'Marketing', value: 20, color: 'oklch(70% 0.15 160)' },
   ];
 
   const revenueData = [
-    { label: "Product Sales", value: 125000, color: "oklch(70% 0.15 295)" },
-    { label: "Services", value: 75000, color: "oklch(70% 0.15 220)" },
-    { label: "Subscriptions", value: 50000, color: "oklch(70% 0.15 160)" },
+    { label: 'Product Sales', value: 125000, color: 'oklch(70% 0.15 295)' },
+    { label: 'Services', value: 75000, color: 'oklch(70% 0.15 220)' },
+    { label: 'Subscriptions', value: 50000, color: 'oklch(70% 0.15 160)' },
   ];
 
   const trafficData = [
-    { label: "Organic", value: 4200, color: "oklch(70% 0.15 160)" },
-    { label: "Direct", value: 3100, color: "oklch(70% 0.15 220)" },
-    { label: "Referral", value: 2300, color: "oklch(70% 0.15 295)" },
-    { label: "Social", value: 1400, color: "oklch(70% 0.15 60)" },
+    { label: 'Organic', value: 4200, color: 'oklch(70% 0.15 160)' },
+    { label: 'Direct', value: 3100, color: 'oklch(70% 0.15 220)' },
+    { label: 'Referral', value: 2300, color: 'oklch(70% 0.15 295)' },
+    { label: 'Social', value: 1400, color: 'oklch(70% 0.15 60)' },
   ];
 
   return (
@@ -54,17 +58,17 @@ export default function DonutChartPage() {
       }}
       variants={[
         {
-          title: "With Center Metric",
-          description: "Donut chart displaying a metric in the center",
+          title: 'With Center Metric',
+          description: 'Donut chart displaying a metric in the center',
           preview: (
             <MetricDonutChart
               data={revenueData}
               size={320}
               thickness={60}
               metric={{
-                value: "$250K",
-                label: "Total Revenue",
-                sublabel: "Q4 2024",
+                value: '$250K',
+                label: 'Total Revenue',
+                sublabel: 'Q4 2024',
               }}
               showLegend={true}
             />
@@ -82,10 +86,10 @@ export default function DonutChartPage() {
 />`,
         },
         {
-          title: "Progress Donut",
-          description: "Simple progress indicator as a donut chart",
+          title: 'Progress Donut',
+          description: 'Simple progress indicator as a donut chart',
           preview: (
-            <div className="flex gap-8 flex-wrap justify-center">
+            <div className="flex flex-wrap justify-center gap-8">
               <ProgressDonutChart
                 value={75}
                 size={200}
@@ -122,8 +126,8 @@ export default function DonutChartPage() {
 />`,
         },
         {
-          title: "Interactive Segments",
-          description: "Clickable segments with selection feedback",
+          title: 'Interactive Segments',
+          description: 'Clickable segments with selection feedback',
           preview: (
             <div className="flex flex-col items-center gap-4">
               <DonutChart
@@ -136,7 +140,7 @@ export default function DonutChartPage() {
                 }}
               />
               {selectedSegment && (
-                <div className="text-sm text-muted-foreground">
+                <div className="text-muted-foreground text-sm">
                   Selected: {selectedSegment}
                 </div>
               )}
@@ -153,17 +157,17 @@ export default function DonutChartPage() {
 />`,
         },
         {
-          title: "Traffic Sources",
-          description: "Multi-segment chart with 4+ categories",
+          title: 'Traffic Sources',
+          description: 'Multi-segment chart with 4+ categories',
           preview: (
             <MetricDonutChart
               data={trafficData}
               size={320}
               thickness={60}
               metric={{
-                value: "11K",
-                label: "Total Visits",
-                sublabel: "Last 30 days",
+                value: '11K',
+                label: 'Total Visits',
+                sublabel: 'Last 30 days',
               }}
               showLegend={true}
             />
@@ -186,8 +190,8 @@ export default function DonutChartPage() {
 />`,
         },
         {
-          title: "Without Legend",
-          description: "Compact donut chart with labels and percentages",
+          title: 'Without Legend',
+          description: 'Compact donut chart with labels and percentages',
           preview: (
             <DonutChart
               data={categoryData}
@@ -208,16 +212,16 @@ export default function DonutChartPage() {
 />`,
         },
         {
-          title: "Thin Ring Style",
-          description: "Donut chart with thin ring thickness",
+          title: 'Thin Ring Style',
+          description: 'Donut chart with thin ring thickness',
           preview: (
             <MetricDonutChart
               data={categoryData}
               size={280}
               thickness={30}
               metric={{
-                value: "100%",
-                label: "Project Time",
+                value: '100%',
+                label: 'Project Time',
               }}
               showLegend={true}
             />
@@ -236,68 +240,68 @@ export default function DonutChartPage() {
       ]}
       props={[
         {
-          name: "data",
-          type: "PieChartDataItem[]",
+          name: 'data',
+          type: 'PieChartDataItem[]',
           required: true,
-          description: "Array of data segments with label, value, and color",
+          description: 'Array of data segments with label, value, and color',
         },
         {
-          name: "size",
-          type: "number",
-          default: "300",
-          description: "Chart diameter in pixels",
+          name: 'size',
+          type: 'number',
+          default: '300',
+          description: 'Chart diameter in pixels',
         },
         {
-          name: "thickness",
-          type: "number",
-          default: "60",
-          description: "Ring thickness in pixels",
+          name: 'thickness',
+          type: 'number',
+          default: '60',
+          description: 'Ring thickness in pixels',
         },
         {
-          name: "showLabels",
-          type: "boolean",
-          default: "false",
-          description: "Show labels on chart segments",
+          name: 'showLabels',
+          type: 'boolean',
+          default: 'false',
+          description: 'Show labels on chart segments',
         },
         {
-          name: "showPercentages",
-          type: "boolean",
-          default: "true",
-          description: "Show percentage values",
+          name: 'showPercentages',
+          type: 'boolean',
+          default: 'true',
+          description: 'Show percentage values',
         },
         {
-          name: "showLegend",
-          type: "boolean",
-          default: "true",
-          description: "Display legend below chart",
+          name: 'showLegend',
+          type: 'boolean',
+          default: 'true',
+          description: 'Display legend below chart',
         },
         {
-          name: "centerContent",
-          type: "React.ReactNode",
-          description: "Content to display in center of donut",
+          name: 'centerContent',
+          type: 'React.ReactNode',
+          description: 'Content to display in center of donut',
         },
         {
-          name: "onSegmentClick",
-          type: "(item: PieChartDataItem, index: number) => void",
-          description: "Callback when segment is clicked",
+          name: 'onSegmentClick',
+          type: '(item: PieChartDataItem, index: number) => void',
+          description: 'Callback when segment is clicked',
         },
         {
-          name: "className",
-          type: "string",
-          description: "Additional CSS classes",
+          name: 'className',
+          type: 'string',
+          description: 'Additional CSS classes',
         },
       ]}
       accessibility={[
-        "Built on top of PieChart component with donut-specific features",
-        "Segments are interactive and respond to clicks when onSegmentClick is provided",
-        "Legend provides accessible alternative to reading chart visually",
-        "Center content is positioned absolutely and excludes pointer events to allow segment clicks",
-        "MetricDonutChart variant includes semantic text hierarchy for metrics",
-        "ProgressDonutChart provides simple 2-segment progress visualization",
-        "All text elements meet WCAG AA contrast requirements",
+        'Built on top of PieChart component with donut-specific features',
+        'Segments are interactive and respond to clicks when onSegmentClick is provided',
+        'Legend provides accessible alternative to reading chart visually',
+        'Center content is positioned absolutely and excludes pointer events to allow segment clicks',
+        'MetricDonutChart variant includes semantic text hierarchy for metrics',
+        'ProgressDonutChart provides simple 2-segment progress visualization',
+        'All text elements meet WCAG AA contrast requirements',
       ]}
-      previous={{ title: "Gauge", href: "/docs/components/gauge" }}
-      next={{ title: "Copy Button", href: "/docs/components/copy-button" }}
+      previous={{ title: 'Gauge', href: '/docs/components/gauge' }}
+      next={{ title: 'Copy Button', href: '/docs/components/copy-button' }}
     />
   );
 }

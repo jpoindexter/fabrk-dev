@@ -4,13 +4,13 @@
  * Production-ready ✓
  */
 
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { COMPONENT_STATS } from "./feature-data";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+import { motion } from 'framer-motion';
+import { COMPONENT_STATS } from './feature-data';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 export function StatsSection() {
   return (
@@ -19,7 +19,10 @@ export function StatsSection() {
         <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6">
           {COMPONENT_STATS.map((stat, index) => {
             const Icon = stat.icon;
-            const hexId = (index + 2).toString(16).toUpperCase().padStart(2, "0");
+            const hexId = (index + 2)
+              .toString(16)
+              .toUpperCase()
+              .padStart(2, '0');
             return (
               <motion.div
                 key={stat.label}
@@ -38,12 +41,19 @@ export function StatsSection() {
                     }
                   />
                   <CardContent padding="md" className="flex-1">
-                    <div className={cn("text-foreground mb-2 text-2xl font-semibold", mode.font)}>
+                    <div
+                      className={cn(
+                        'text-foreground mb-2 text-2xl font-semibold',
+                        mode.font
+                      )}
+                    >
                       {stat.value}
                     </div>
-                    <div className={cn("text-xs", mode.font)}>
+                    <div className={cn('text-xs', mode.font)}>
                       <span className="text-muted-foreground">DESC: </span>
-                      <span className="text-foreground">{stat.description}</span>
+                      <span className="text-foreground">
+                        {stat.description}
+                      </span>
                     </div>
                   </CardContent>
                 </Card>

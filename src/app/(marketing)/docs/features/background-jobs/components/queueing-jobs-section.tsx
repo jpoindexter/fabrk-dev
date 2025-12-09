@@ -1,7 +1,7 @@
 export function QueueingJobsSection() {
   return {
-    title: "Queueing Jobs",
-    description: "Queue jobs from your API routes",
+    title: 'Queueing Jobs',
+    description: 'Queue jobs from your API routes',
     code: `// In API routes
 import { enqueueJob } from "@/lib/jobs/queue";
 
@@ -54,6 +54,6 @@ await enqueueJob(
     maxAttempts: 5,
   }
 );`,
-    language: "typescript",
+    language: 'typescript',
   };
 }

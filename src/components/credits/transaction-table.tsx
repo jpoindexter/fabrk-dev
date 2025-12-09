@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
 /**
  * Transaction Table Component
  * Displays credit transaction history
  */
 
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { ArrowDown, ArrowUp, RefreshCw, Gift, Undo2 } from "lucide-react";
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { ArrowDown, ArrowUp, RefreshCw, Gift, Undo2 } from 'lucide-react';
 
 interface Transaction {
   id: string;
@@ -25,15 +25,15 @@ interface TransactionTableProps {
 
 function getTypeIcon(type: string) {
   switch (type) {
-    case "USAGE":
+    case 'USAGE':
       return <ArrowDown className="text-destructive h-3 w-3" />;
-    case "SUBSCRIPTION_REFILL":
+    case 'SUBSCRIPTION_REFILL':
       return <RefreshCw className="text-success h-3 w-3" />;
-    case "PURCHASE":
+    case 'PURCHASE':
       return <ArrowUp className="text-success h-3 w-3" />;
-    case "BONUS":
+    case 'BONUS':
       return <Gift className="text-primary h-3 w-3" />;
-    case "REFUND":
+    case 'REFUND':
       return <Undo2 className="text-warning h-3 w-3" />;
     default:
       return null;
@@ -42,30 +42,39 @@ function getTypeIcon(type: string) {
 
 function formatDate(dateStr: string) {
   const date = new Date(dateStr);
-  return date.toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
+  return date.toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
   });
 }
 
-export function TransactionTable({ transactions, className }: TransactionTableProps) {
+export function TransactionTable({
+  transactions,
+  className,
+}: TransactionTableProps) {
   if (transactions.length === 0) {
     return (
-      <div className={cn("text-muted-foreground py-8 text-center text-sm", mode.font, className)}>
+      <div
+        className={cn(
+          'text-muted-foreground py-8 text-center text-sm',
+          mode.font,
+          className
+        )}
+      >
         No transactions yet
       </div>
     );
   }
 
   return (
-    <div className={cn("space-y-2", mode.font, className)}>
+    <div className={cn('space-y-2', mode.font, className)}>
       {transactions.map((tx) => (
         <div
           key={tx.id}
           className={cn(
-            "border-border flex items-center justify-between border-b py-2 last:border-0",
+            'border-border flex items-center justify-between border-b py-2 last:border-0',
             mode.font
           )}
         >
@@ -73,24 +82,28 @@ export function TransactionTable({ transactions, className }: TransactionTablePr
             {getTypeIcon(tx.type)}
             <div>
               <div className="text-xs font-medium">
-                {tx.description || tx.type.replace("_", " ")}
+                {tx.description || tx.type.replace('_', ' ')}
               </div>
               {tx.endpoint && (
-                <div className="text-muted-foreground text-[10px]">{tx.endpoint}</div>
+                <div className="text-muted-foreground text-[10px]">
+                  {tx.endpoint}
+                </div>
               )}
             </div>
           </div>
           <div className="text-right">
             <div
               className={cn(
-                "text-xs font-semibold",
-                tx.amount < 0 ? "text-destructive" : "text-success"
+                'text-xs font-semibold',
+                tx.amount < 0 ? 'text-destructive' : 'text-success'
               )}
             >
-              {tx.amount > 0 ? "+" : ""}
+              {tx.amount > 0 ? '+' : ''}
               {tx.amount}
             </div>
-            <div className="text-muted-foreground text-[10px]">{formatDate(tx.createdAt)}</div>
+            <div className="text-muted-foreground text-[10px]">
+              {formatDate(tx.createdAt)}
+            </div>
           </div>
         </div>
       ))}

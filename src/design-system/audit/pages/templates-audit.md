@@ -37,8 +37,8 @@ Audited **30 template pages** across 7 categories. Overall, the templates demons
 **Pattern:** All templates import design system utilities
 
 ```tsx
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 ```
 
 **Compliance:** ✅ 100% (30/30 templates)
@@ -48,7 +48,11 @@ import { cn } from "@/lib/utils";
 **Pattern:** Consistent use of `TemplatePageHeader` component
 
 ```tsx
-<TemplatePageHeader badge="TEMPLATE_NAME" title="Display Name" description="Description text" />
+<TemplatePageHeader
+  badge="TEMPLATE_NAME"
+  title="Display Name"
+  description="Description text"
+/>
 ```
 
 **Compliance:** ✅ 97% (29/30 templates)
@@ -61,7 +65,9 @@ import { cn } from "@/lib/utils";
 
 ```tsx
 <div className="border-border inline-block border px-4 py-1">
-  <span className={cn(mode.font, "text-muted-foreground text-xs")}>[CATEGORY]: TEMPLATE_NAME</span>
+  <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
+    [CATEGORY]: TEMPLATE_NAME
+  </span>
 </div>
 ```
 
@@ -351,7 +357,7 @@ border - primary;
 
 ```tsx
 // ✅ CORRECT - Standard pattern
-<Input className={cn(mode.radius, mode.font, "text-xs")} placeholder="..." />
+<Input className={cn(mode.radius, mode.font, 'text-xs')} placeholder="..." />
 ```
 
 **Compliance:** ✅ 100%

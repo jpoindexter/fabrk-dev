@@ -24,9 +24,9 @@
  * ```
  */
 
-"use client";
+'use client';
 
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 export interface ClientSchemaScriptProps {
   schema: object | object[];
@@ -46,8 +46,8 @@ export function ClientSchemaScript({ schema, id }: ClientSchemaScriptProps) {
     const scripts: HTMLScriptElement[] = [];
 
     schemaArray.forEach((item, index) => {
-      const script = document.createElement("script");
-      script.type = "application/ld+json";
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
       script.text = JSON.stringify(item);
       if (id) {
         script.id = `${id}-${index}`;

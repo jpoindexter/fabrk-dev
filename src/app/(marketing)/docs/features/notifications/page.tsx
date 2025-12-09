@@ -1,10 +1,11 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
-import { Bell, Database, Zap, CheckCircle } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard } from '@/components/docs';
+import { Bell, Database, Zap, CheckCircle } from 'lucide-react';
 
 export const metadata = {
-  title: "Notifications System - Fabrk Documentation",
-  description: "Learn how to implement real-time notifications with persistence, bell icon, and read/unread states.",
+  title: 'Notifications System - Fabrk Documentation',
+  description:
+    'Learn how to implement real-time notifications with persistence, bell icon, and read/unread states.',
 };
 
 export default function NotificationsPage() {
@@ -16,15 +17,35 @@ export default function NotificationsPage() {
       description="Real-time notifications with database persistence, bell icon badge, and read/unread state management."
       overview="The notifications system combines real-time delivery via Pusher with database persistence for a complete notification experience. Users receive instant notifications with a visual bell icon indicator and can manage their notification history."
       features={[
-        { icon: Zap, title: "Real-time Delivery", description: "Instant push notifications via Pusher - users see updates immediately." },
-        { icon: Database, title: "Persistence", description: "All notifications stored in database for history and retrieval." },
-        { icon: Bell, title: "Bell Icon Badge", description: "Visual unread count indicator that updates in real-time." },
-        { icon: CheckCircle, title: "Read/Unread States", description: "Mark individual or all notifications as read with one click." },
+        {
+          icon: Zap,
+          title: 'Real-time Delivery',
+          description:
+            'Instant push notifications via Pusher - users see updates immediately.',
+        },
+        {
+          icon: Database,
+          title: 'Persistence',
+          description:
+            'All notifications stored in database for history and retrieval.',
+        },
+        {
+          icon: Bell,
+          title: 'Bell Icon Badge',
+          description:
+            'Visual unread count indicator that updates in real-time.',
+        },
+        {
+          icon: CheckCircle,
+          title: 'Read/Unread States',
+          description:
+            'Mark individual or all notifications as read with one click.',
+        },
       ]}
       usage={[
         {
-          title: "Database Schema",
-          description: "Notification model in Prisma schema",
+          title: 'Database Schema',
+          description: 'Notification model in Prisma schema',
           code: `// prisma/schema.prisma
 model Notification {
   id        String   @id @default(cuid())
@@ -44,11 +65,11 @@ model Notification {
   @@index([userId, read])
   @@index([userId, createdAt])
 }`,
-          language: "prisma",
+          language: 'prisma',
         },
         {
-          title: "Creating Notifications",
-          description: "Send notifications from anywhere in your application",
+          title: 'Creating Notifications',
+          description: 'Send notifications from anywhere in your application',
           code: `// src/lib/notifications.ts
 import { prisma } from "@/lib/db";
 import { pusherServer } from "@/lib/pusher/server";
@@ -105,11 +126,12 @@ await createNotification({
   title: "New team member",
   body: "John Doe joined your organization",
 });`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Bell Icon Component",
-          description: "The notification bell with real-time updates and dropdown",
+          title: 'Bell Icon Component',
+          description:
+            'The notification bell with real-time updates and dropdown',
           code: `"use client";
 
 import { useState, useEffect } from "react";
@@ -184,11 +206,11 @@ export function NotificationBell({ userId }: { userId: string }) {
     </DropdownMenu>
   );
 }`,
-          language: "tsx",
+          language: 'tsx',
         },
         {
-          title: "API Routes",
-          description: "Notification management endpoints",
+          title: 'API Routes',
+          description: 'Notification management endpoints',
           code: `// GET /api/v1/notifications
 export async function GET(req: Request) {
   const session = await auth();
@@ -241,22 +263,40 @@ export async function POST(req: Request) {
 
   return Response.json({ success: true });
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
       ]}
-      previous={{ title: "Trial", href: "/docs/features/trial" }}
-      next={{ title: "Realtime", href: "/docs/features/realtime" }}
+      previous={{ title: 'Trial', href: '/docs/features/trial' }}
+      next={{ title: 'Realtime', href: '/docs/features/realtime' }}
     >
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
         <DocsCard title="BEST_PRACTICES">
           <ul className="space-y-1">
-            <li>├─ <strong>Be selective:</strong> Only notify for important, actionable events</li>
-            <li>├─ <strong>Clear titles:</strong> Make notifications scannable at a glance</li>
-            <li>├─ <strong>Include links:</strong> Let users take action directly from the notification</li>
-            <li>├─ <strong>Cleanup old notifications:</strong> Archive or delete notifications older than 30 days</li>
-            <li>├─ <strong>Allow preferences:</strong> Let users control which notifications they receive</li>
-            <li>└─ <strong>Test thoroughly:</strong> Ensure real-time and persistence work together</li>
+            <li>
+              ├─ <strong>Be selective:</strong> Only notify for important,
+              actionable events
+            </li>
+            <li>
+              ├─ <strong>Clear titles:</strong> Make notifications scannable at
+              a glance
+            </li>
+            <li>
+              ├─ <strong>Include links:</strong> Let users take action directly
+              from the notification
+            </li>
+            <li>
+              ├─ <strong>Cleanup old notifications:</strong> Archive or delete
+              notifications older than 30 days
+            </li>
+            <li>
+              ├─ <strong>Allow preferences:</strong> Let users control which
+              notifications they receive
+            </li>
+            <li>
+              └─ <strong>Test thoroughly:</strong> Ensure real-time and
+              persistence work together
+            </li>
           </ul>
         </DocsCard>
       </DocsSection>

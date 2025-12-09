@@ -13,15 +13,15 @@
  * ```
  */
 
-"use client";
+'use client';
 
-import * as React from "react";
-import { TrendingDown, TrendingUp, Minus } from "lucide-react";
+import * as React from 'react';
+import { TrendingDown, TrendingUp, Minus } from 'lucide-react';
 
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
-import { mode } from "@/design-system";
+import { mode } from '@/design-system';
 interface AdminMetricsCardProps {
   code?: string;
   title: string;
@@ -30,28 +30,28 @@ interface AdminMetricsCardProps {
   changeLabel?: string;
   icon?: React.ReactNode;
   iconClassName?: string;
-  variant?: "default" | "primary" | "success" | "warning" | "danger";
+  variant?: 'default' | 'primary' | 'success' | 'warning' | 'danger';
   loading?: boolean;
   className?: string;
 }
 
 const toneMap = {
-  default: "neutral" as const,
-  primary: "primary" as const,
-  success: "success" as const,
-  warning: "warning" as const,
-  danger: "danger" as const,
+  default: 'neutral' as const,
+  primary: 'primary' as const,
+  success: 'success' as const,
+  warning: 'warning' as const,
+  danger: 'danger' as const,
 };
 
 export function AdminMetricsCard({
-  code = "0x00",
+  code = '0x00',
   title,
   value,
   change,
-  changeLabel = "vs last period",
+  changeLabel = 'vs last period',
   icon,
   iconClassName: _iconClassName,
-  variant = "default",
+  variant = 'default',
   loading = false,
   className,
 }: AdminMetricsCardProps) {
@@ -73,24 +73,27 @@ export function AdminMetricsCard({
         ) : (
           <>
             <div className="text-foreground text-3xl font-bold">
-              {typeof value === "number" ? value.toLocaleString() : value}
+              {typeof value === 'number' ? value.toLocaleString() : value}
             </div>
 
             {change !== undefined && (
               <div className="mt-2 flex items-center gap-2">
                 <div
                   className={cn(
-                    "border-border flex items-center gap-1 px-2 py-0.5 text-xs font-semibold",
+                    'border-border flex items-center gap-1 px-2 py-0.5 text-xs font-semibold',
                     mode.radius,
-                    isPositive && "border-primary bg-primary/10 text-primary",
-                    isNegative && "border-destructive bg-destructive/10 text-destructive",
-                    isNeutral && "border-border bg-muted text-muted-foreground"
+                    isPositive && 'border-primary bg-primary/10 text-primary',
+                    isNegative &&
+                      'border-destructive bg-destructive/10 text-destructive',
+                    isNeutral && 'border-border bg-muted text-muted-foreground'
                   )}
                 >
                   <TrendIcon className="h-3 w-3" />
                   {Math.abs(change).toFixed(1)}%
                 </div>
-                <span className="text-muted-foreground text-xs">{changeLabel}</span>
+                <span className="text-muted-foreground text-xs">
+                  {changeLabel}
+                </span>
               </div>
             )}
           </>

@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { useEffect, useRef } from "react";
-import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { Card, CardHeader, CardContent, Badge } from "@/components/ui/card";
+import { useEffect, useRef } from 'react';
+import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { Card, CardHeader, CardContent, Badge } from '@/components/ui/card';
 
 // Animated counter component
 function AnimatedCounter({
   value,
-  suffix = "",
-  prefix = "",
+  suffix = '',
+  prefix = '',
   decimals = 0,
   duration = 2,
 }: {
@@ -22,8 +22,11 @@ function AnimatedCounter({
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const motionValue = useMotionValue(0);
-  const springValue = useSpring(motionValue, { duration: duration * 1000, bounce: 0 });
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const springValue = useSpring(motionValue, {
+    duration: duration * 1000,
+    bounce: 0,
+  });
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   useEffect(() => {
     if (isInView) {
@@ -32,10 +35,12 @@ function AnimatedCounter({
   }, [isInView, motionValue, value]);
 
   useEffect(() => {
-    const unsubscribe = springValue.on("change", (latest) => {
+    const unsubscribe = springValue.on('change', (latest) => {
       if (ref.current) {
         const formatted =
-          decimals > 0 ? latest.toFixed(decimals) : Math.floor(latest).toLocaleString();
+          decimals > 0
+            ? latest.toFixed(decimals)
+            : Math.floor(latest).toLocaleString();
         ref.current.textContent = `${prefix}${formatted}${suffix}`;
       }
     });
@@ -53,32 +58,32 @@ export function StatsSection() {
   const stats = [
     {
       value: 500,
-      suffix: "+",
-      label: "Developers",
-      description: "Using Fabrk to ship faster",
-      color: "bg-primary text-primary-foreground",
+      suffix: '+',
+      label: 'Developers',
+      description: 'Using Fabrk to ship faster',
+      color: 'bg-primary text-primary-foreground',
     },
     {
       value: 1000,
-      suffix: "+",
-      label: "Projects Shipped",
-      description: "Built with Fabrk boilerplate",
-      color: "bg-accent text-accent-foreground",
+      suffix: '+',
+      label: 'Projects Shipped',
+      description: 'Built with Fabrk boilerplate',
+      color: 'bg-accent text-accent-foreground',
     },
     {
       value: 4.9,
-      suffix: "/5",
+      suffix: '/5',
       decimals: 1,
-      label: "Average Rating",
-      description: "From satisfied customers",
-      color: "bg-secondary text-secondary-foreground",
+      label: 'Average Rating',
+      description: 'From satisfied customers',
+      color: 'bg-secondary text-secondary-foreground',
     },
     {
       value: 40,
-      suffix: "hrs",
-      label: "Time Saved",
-      description: "Per project on average",
-      color: "bg-primary text-primary-foreground",
+      suffix: 'hrs',
+      label: 'Time Saved',
+      description: 'Per project on average',
+      color: 'bg-primary text-primary-foreground',
     },
   ];
 
@@ -93,7 +98,7 @@ export function StatsSection() {
             viewport={{ once: true }}
           >
             <Badge code="0x30" label="METRICS" className="mb-4" />
-            <h2 className={cn("mb-4 text-2xl font-semibold", mode.font)}>
+            <h2 className={cn('mb-4 text-2xl font-semibold', mode.font)}>
               TRUSTED BY DEVELOPERS WORLDWIDE
             </h2>
           </motion.div>
@@ -103,8 +108,9 @@ export function StatsSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <p className={cn("text-muted-foreground text-sm", mode.font)}>
-              &gt; Join hundreds of developers shipping production-ready SaaS apps
+            <p className={cn('text-muted-foreground text-sm', mode.font)}>
+              &gt; Join hundreds of developers shipping production-ready SaaS
+              apps
             </p>
           </motion.div>
           <motion.div
@@ -113,7 +119,12 @@ export function StatsSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <span className={cn("text-muted-foreground mt-2 block text-xs", mode.font)}>
+            <span
+              className={cn(
+                'text-muted-foreground mt-2 block text-xs',
+                mode.font
+              )}
+            >
               *Projected estimates based on early access users
             </span>
           </motion.div>
@@ -125,7 +136,7 @@ export function StatsSection() {
               key={index}
               initial={{ opacity: 0, y: 20, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: '-50px' }}
               transition={{
                 duration: 0.5,
                 delay: index * 0.08,
@@ -139,17 +150,22 @@ export function StatsSection() {
             >
               <Card>
                 <CardHeader
-                  title={`[ [0x${(index + 31).toString(16).toUpperCase()}] ${stat.label.toUpperCase().replace(/ /g, "_")} ]`}
+                  title={`[ [0x${(index + 31).toString(16).toUpperCase()}] ${stat.label.toUpperCase().replace(/ /g, '_')} ]`}
                 />
                 <CardContent>
-                  <div className={cn("text-foreground mb-2 text-3xl font-semibold", mode.font)}>
+                  <div
+                    className={cn(
+                      'text-foreground mb-2 text-3xl font-semibold',
+                      mode.font
+                    )}
+                  >
                     <AnimatedCounter
                       value={stat.value}
                       suffix={stat.suffix}
                       decimals={stat.decimals || 0}
                     />
                   </div>
-                  <div className={cn("text-xs", mode.font)}>
+                  <div className={cn('text-xs', mode.font)}>
                     <span className="text-muted-foreground">DESC: </span>
                     <span className="text-foreground">{stat.description}</span>
                   </div>

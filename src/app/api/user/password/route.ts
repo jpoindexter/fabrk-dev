@@ -3,14 +3,18 @@
  * PATCH /api/user/password
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
-import { withCsrfProtection } from "@/lib/security/csrf";
-import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
-import { hash, compare } from "bcryptjs";
-import { z } from "zod";
-import { logger } from "@/lib/logger";
+import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@/lib/auth';
+import { prisma } from '@/lib/prisma';
+import { withCsrfProtection } from '@/lib/security/csrf';
+import {
+  checkRateLimitAuto,
+  getClientIdentifier,
+  RateLimiters,
+} from '@/lib/security/rate-limit';
+import { hash, compare } from 'bcryptjs';
+import { z } from 'zod';
+import { logger } from '@/lib/logger';
 
 const passwordSchema = z.object({
   currentPassword: z.string().min(8),
@@ -25,13 +29,15 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
 
     if (!rateLimit.success) {
       return NextResponse.json(
-        { error: "Too many password change attempts. Please try again later." },
+        { error: 'Too many password change attempts. Please try again later.' },
         {
           status: 429,
           headers: {
-            "X-RateLimit-Limit": rateLimit.limit.toString(),
-            "X-RateLimit-Remaining": rateLimit.remaining.toString(),
-            "Retry-After": Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
+            'X-RateLimit-Limit': rateLimit.limit.toString(),
+            'X-RateLimit-Remaining': rateLimit.remaining.toString(),
+            'Retry-After': Math.ceil(
+              (rateLimit.reset - Date.now()) / 1000
+            ).toString(),
           },
         }
       );
@@ -40,7 +46,7 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
     const session = await auth();
 
     if (!session?.user?.id || !session?.user?.email) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     const body = await req.json();
@@ -54,7 +60,7 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
 
     if (!user?.password) {
       return NextResponse.json(
-        { error: "Password not set. Use OAuth sign in instead." },
+        { error: 'Password not set. Use OAuth sign in instead.' },
         { status: 400 }
       );
     }
@@ -63,7 +69,10 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
     const isValid = await compare(validatedData.currentPassword, user.password);
 
     if (!isValid) {
-      return NextResponse.json({ error: "Current password is incorrect" }, { status: 400 });
+      return NextResponse.json(
+        { error: 'Current password is incorrect' },
+        { status: 400 }
+      );
     }
 
     // Hash new password
@@ -84,14 +93,20 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
     return NextResponse.json({
       success: true,
       message:
-        "Password updated successfully. All other sessions have been logged out for security.",
+        'Password updated successfully. All other sessions have been logged out for security.',
     });
   } catch (error: unknown) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json({ error: "Invalid input", details: error.issues }, { status: 400 });
+      return NextResponse.json(
+        { error: 'Invalid input', details: error.issues },
+        { status: 400 }
+      );
     }
 
-    logger.error("[Password Change] Error:", error);
-    return NextResponse.json({ error: "Failed to change password" }, { status: 500 });
+    logger.error('[Password Change] Error:', error);
+    return NextResponse.json(
+      { error: 'Failed to change password' },
+      { status: 500 }
+    );
   }
 });

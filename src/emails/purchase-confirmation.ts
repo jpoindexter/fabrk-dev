@@ -115,7 +115,7 @@ export function generatePurchaseConfirmationHTML({
                 </a>
               </div>
               `
-                  : ""
+                  : ''
               }
 
               <!-- Support -->

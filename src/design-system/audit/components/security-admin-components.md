@@ -1038,7 +1038,7 @@ describe('UserDataTable', () => {
 
 ```typescript
 // Suggested E2E scenarios
-test("Admin can impersonate user", async ({ page }) => {
+test('Admin can impersonate user', async ({ page }) => {
   // Navigate to admin users
   // Click impersonate on user
   // Enter reason
@@ -1048,7 +1048,7 @@ test("Admin can impersonate user", async ({ page }) => {
   // Verify return to admin panel
 });
 
-test("User can enable 2FA", async ({ page }) => {
+test('User can enable 2FA', async ({ page }) => {
   // Navigate to security settings
   // Click enable 2FA
   // Scan QR code (or copy secret)

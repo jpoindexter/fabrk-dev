@@ -16,7 +16,7 @@ export interface DashboardStats {
 
 export interface ActivityItem {
   id: string;
-  type: "login" | "upload" | "payment" | "setting" | "security";
+  type: 'login' | 'upload' | 'payment' | 'setting' | 'security';
   description: string;
   timestamp: Date;
 }

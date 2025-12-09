@@ -5,4 +5,4 @@
  * This file exists for backwards compatibility and can be removed once all imports are updated.
  */
 
-export * from "./email/index";
+export * from './email/index';

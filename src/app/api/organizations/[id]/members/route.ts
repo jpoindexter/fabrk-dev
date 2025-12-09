@@ -3,30 +3,24 @@
  * GET - List all members of an organization
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@/lib/auth";
-import { isOrganizationMember } from "@/lib/teams/organizations";
-import { prisma } from "@/lib/prisma";
-import { logger } from "@/lib/logger";
+import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@/lib/auth';
+import { isOrganizationMember } from '@/lib/teams/organizations';
+import { prisma } from '@/lib/prisma';
+import { logger } from '@/lib/logger';
 
 // Route context interface for Next.js 15+ async params
 interface RouteContext {
   params: Promise<{ id: string }>;
 }
 
-export async function GET(
-  req: NextRequest,
-  context: RouteContext
-) {
+export async function GET(req: NextRequest, context: RouteContext) {
   try {
     const { id } = await context.params;
     const session = await auth();
 
     if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     // Verify user is a member of this organization
@@ -34,7 +28,7 @@ export async function GET(
 
     if (!isMember) {
       return NextResponse.json(
-        { error: "You are not a member of this organization" },
+        { error: 'You are not a member of this organization' },
         { status: 403 }
       );
     }
@@ -53,8 +47,8 @@ export async function GET(
         },
       },
       orderBy: [
-        { role: "asc" }, // OWNER first
-        { joinedAt: "asc" },
+        { role: 'asc' }, // OWNER first
+        { joinedAt: 'asc' },
       ],
     });
 
@@ -68,9 +62,9 @@ export async function GET(
       })),
     });
   } catch (error: unknown) {
-    logger.error("Failed to fetch members:", error);
+    logger.error('Failed to fetch members:', error);
     return NextResponse.json(
-      { error: "Failed to fetch members" },
+      { error: 'Failed to fetch members' },
       { status: 500 }
     );
   }

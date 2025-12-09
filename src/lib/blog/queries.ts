@@ -3,8 +3,8 @@
  * CRUD operations for blog posts and categories
  */
 
-import { prisma } from "@/lib/prisma";
-import type { BlogPost, BlogCategory, Prisma } from "@/generated/prisma/client";
+import { prisma } from '@/lib/prisma';
+import type { BlogPost, BlogCategory, Prisma } from '@/generated/prisma/client';
 
 export type BlogPostWithAuthor = BlogPost & {
   author: { name: string | null; email: string; image: string | null };
@@ -34,7 +34,7 @@ export async function getPublishedPosts(options?: {
       author: { select: { name: true, email: true, image: true } },
       category: true,
     },
-    orderBy: { publishedAt: "desc" },
+    orderBy: { publishedAt: 'desc' },
     take: options?.limit,
     skip: options?.offset,
   });
@@ -62,7 +62,9 @@ export async function getPostBySlug(
 /**
  * Get a single post by ID (for admin)
  */
-export async function getPostById(id: string): Promise<BlogPostWithAuthor | null> {
+export async function getPostById(
+  id: string
+): Promise<BlogPostWithAuthor | null> {
   return prisma.blogPost.findUnique({
     where: { id },
     include: {
@@ -86,7 +88,7 @@ export async function getAllPosts(options?: {
       author: { select: { name: true, email: true, image: true } },
       category: true,
     },
-    orderBy: { createdAt: "desc" },
+    orderBy: { createdAt: 'desc' },
     take: options?.limit,
     skip: options?.offset,
   });
@@ -178,10 +180,12 @@ export async function incrementViewCount(id: string): Promise<void> {
 /**
  * Get all categories
  */
-export async function getCategories(): Promise<(BlogCategory & { _count: { posts: number } })[]> {
+export async function getCategories(): Promise<
+  (BlogCategory & { _count: { posts: number } })[]
+> {
   return prisma.blogCategory.findMany({
     include: { _count: { select: { posts: true } } },
-    orderBy: { name: "asc" },
+    orderBy: { name: 'asc' },
   });
 }
 

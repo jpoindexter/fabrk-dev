@@ -14,16 +14,16 @@
  * ```
  */
 
-"use client";
+'use client';
 
-import * as React from "react";
-import { TrendingDown } from "lucide-react";
+import * as React from 'react';
+import { TrendingDown } from 'lucide-react';
 
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
 
-import { mode } from "@/design-system";
+import { mode } from '@/design-system';
 export interface FunnelStage {
   name: string;
   value: number;
@@ -38,48 +38,60 @@ interface FunnelVisualizerProps {
 }
 
 const DEFAULT_COLORS = [
-  "hsl(var(--primary))",
-  "oklch(var(--chart-6))",
-  "oklch(var(--chart-7))",
-  "oklch(var(--chart-8))",
-  "oklch(var(--chart-9))",
+  'hsl(var(--primary))',
+  'oklch(var(--chart-6))',
+  'oklch(var(--chart-7))',
+  'oklch(var(--chart-8))',
+  'oklch(var(--chart-9))',
 ];
 
 export function FunnelVisualizer({
   stages,
-  title = "Conversion Funnel",
+  title = 'Conversion Funnel',
   description,
   className,
 }: FunnelVisualizerProps) {
   const maxValue = Math.max(...stages.map((s) => s.value));
 
-  const calculateConversionRate = (currentValue: number, previousValue: number | null) => {
+  const calculateConversionRate = (
+    currentValue: number,
+    previousValue: number | null
+  ) => {
     if (!previousValue) return 100;
     return ((currentValue / previousValue) * 100).toFixed(1);
   };
 
-  const calculateDropOff = (currentValue: number, previousValue: number | null) => {
+  const calculateDropOff = (
+    currentValue: number,
+    previousValue: number | null
+  ) => {
     if (!previousValue) return 0;
     return (((previousValue - currentValue) / previousValue) * 100).toFixed(1);
   };
 
   return (
-    <Card className={cn("overflow-hidden", className)}>
+    <Card className={cn('overflow-hidden', className)}>
       <CardHeader
         code="0x02"
-        title={title.toUpperCase().replace(/ /g, "_")}
+        title={title.toUpperCase().replace(/ /g, '_')}
         icon={<TrendingDown className="h-4 w-4" />}
         meta={`${stages.length} Stages`}
       />
 
       <CardContent padding="md" className="space-y-6">
-        {description && <p className="text-muted-foreground text-sm">{description}</p>}
+        {description && (
+          <p className="text-muted-foreground text-sm">{description}</p>
+        )}
         {stages.map((stage, index) => {
           const previousValue = index > 0 ? stages[index - 1].value : null;
-          const conversionRate = calculateConversionRate(stage.value, previousValue);
+          const conversionRate = calculateConversionRate(
+            stage.value,
+            previousValue
+          );
           const dropOff = calculateDropOff(stage.value, previousValue);
           const widthPercentage = (stage.value / maxValue) * 100;
-          const color = stage.color || DEFAULT_COLORS[index % DEFAULT_COLORS.length];
+          const color =
+            stage.color || DEFAULT_COLORS[index % DEFAULT_COLORS.length];
 
           return (
             <div key={index} className="space-y-2">
@@ -88,10 +100,15 @@ export function FunnelVisualizer({
                 <div className="flex items-center gap-2">
                   <div className="flex items-center gap-2">
                     <div
-                      className={cn("border-border h-3 w-3 border", mode.radius)}
+                      className={cn(
+                        'border-border h-3 w-3 border',
+                        mode.radius
+                      )}
                       style={{ backgroundColor: color }}
                     />
-                    <span className="text-foreground text-sm font-semibold">{stage.name}</span>
+                    <span className="text-foreground text-sm font-semibold">
+                      {stage.name}
+                    </span>
                   </div>
                   {index > 0 && (
                     <Badge variant="secondary" className="text-xs font-medium">
@@ -108,7 +125,7 @@ export function FunnelVisualizer({
               <div className="relative">
                 <div
                   className={cn(
-                    "border-border h-12 border transition-all duration-500 ease-out",
+                    'border-border h-12 border transition-all duration-500 ease-out',
                     mode.radius
                   )}
                   style={{
@@ -124,7 +141,8 @@ export function FunnelVisualizer({
                 <div className="text-muted-foreground flex items-center gap-2 pl-2 text-xs">
                   <TrendingDown className="text-destructive h-3 w-3" />
                   <span>
-                    {(previousValue - stage.value).toLocaleString()} drop-off ({dropOff}%)
+                    {(previousValue - stage.value).toLocaleString()} drop-off (
+                    {dropOff}%)
                   </span>
                 </div>
               )}
@@ -134,10 +152,21 @@ export function FunnelVisualizer({
 
         {/* Overall Conversion */}
         <div className="border-border border-t pt-4">
-          <div className={cn("bg-accent/50 flex items-center justify-between p-4", mode.radius)}>
-            <span className="text-foreground text-sm font-medium">Overall Conversion Rate</span>
+          <div
+            className={cn(
+              'bg-accent/50 flex items-center justify-between p-4',
+              mode.radius
+            )}
+          >
+            <span className="text-foreground text-sm font-medium">
+              Overall Conversion Rate
+            </span>
             <span className="text-primary text-2xl font-bold">
-              {((stages[stages.length - 1].value / stages[0].value) * 100).toFixed(2)}%
+              {(
+                (stages[stages.length - 1].value / stages[0].value) *
+                100
+              ).toFixed(2)}
+              %
             </span>
           </div>
         </div>

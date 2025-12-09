@@ -3,13 +3,17 @@
  * Payment processing with Lemon Squeezy
  */
 
-export { initLemonSqueezy, verifyLemonSqueezyConnection, getStoreId } from "./client";
+export {
+  initLemonSqueezy,
+  verifyLemonSqueezyConnection,
+  getStoreId,
+} from './client';
 export {
   createLemonSqueezyCheckout,
   getVariantIdForTier,
   type CheckoutOptions,
   type CheckoutResult,
-} from "./checkout";
+} from './checkout';
 export {
   verifyWebhookSignature,
   handleOrderCreated,
@@ -18,4 +22,4 @@ export {
   handleOrderRefunded,
   type LemonSqueezyEventType,
   type LemonSqueezyWebhookPayload,
-} from "./webhooks";
+} from './webhooks';

@@ -4,9 +4,9 @@
  * Production-ready ✓
  */
 
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 import {
   Lock,
   CreditCard,
@@ -19,107 +19,107 @@ import {
   CheckCircle,
   Palette,
   Mail,
-} from "lucide-react";
-import { Card, CardHeader, CardContent, Stat } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+} from 'lucide-react';
+import { Card, CardHeader, CardContent, Stat } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 const FEATURES = [
   {
-    id: "auth",
+    id: 'auth',
     icon: Lock,
-    module: "AUTH",
-    status: "SECURE",
-    title: "Authentication",
-    description: "Offer a wide range of built-in authentication options.",
+    module: 'AUTH',
+    status: 'SECURE',
+    title: 'Authentication',
+    description: 'Offer a wide range of built-in authentication options.',
   },
   {
-    id: "billing",
+    id: 'billing',
     icon: CreditCard,
-    module: "BILLING",
-    status: "ACTIVE",
-    title: "Billing & Payments",
-    description: "Let users manage their billing and subscription plan.",
+    module: 'BILLING',
+    status: 'ACTIVE',
+    title: 'Billing & Payments',
+    description: 'Let users manage their billing and subscription plan.',
   },
   {
-    id: "database",
+    id: 'database',
     icon: Database,
-    module: "DATABASE",
-    status: "READY",
-    title: "Database",
-    description: "Use either the Prisma or Drizzle ORM starter kit.",
+    module: 'DATABASE',
+    status: 'READY',
+    title: 'Database',
+    description: 'Use either the Prisma or Drizzle ORM starter kit.',
   },
   {
-    id: "multitenancy",
+    id: 'multitenancy',
     icon: Users,
-    module: "MULTI TENANT",
-    status: "ENABLED",
-    title: "Multi-Tenancy",
-    description: "Invite, join and switch between multiple organizations.",
+    module: 'MULTI TENANT',
+    status: 'ENABLED',
+    title: 'Multi-Tenancy',
+    description: 'Invite, join and switch between multiple organizations.',
   },
   {
-    id: "marketing",
+    id: 'marketing',
     icon: FileText,
-    module: "PAGES",
-    status: "LIVE",
-    title: "Marketing Pages",
-    description: "Show your product and convert users with a landing page.",
+    module: 'PAGES',
+    status: 'LIVE',
+    title: 'Marketing Pages',
+    description: 'Show your product and convert users with a landing page.',
   },
   {
-    id: "email",
+    id: 'email',
     icon: Mail,
-    module: "EMAIL",
-    status: "SENDING",
-    title: "Mailer & Templates",
-    description: "Send good looking emails to your customers.",
+    module: 'EMAIL',
+    status: 'SENDING',
+    title: 'Mailer & Templates',
+    description: 'Send good looking emails to your customers.',
   },
   {
-    id: "docs",
+    id: 'docs',
     icon: FileText,
-    module: "DOCS",
-    status: "COMPLETE",
-    title: "Documentation",
-    description: "Help your users get started with your product docs.",
+    module: 'DOCS',
+    status: 'COMPLETE',
+    title: 'Documentation',
+    description: 'Help your users get started with your product docs.',
   },
   {
-    id: "mobile",
+    id: 'mobile',
     icon: Smartphone,
-    module: "MOBILE",
-    status: "RESPONSIVE",
-    title: "Mobile Friendly",
-    description: "Support mobile devices with minimum coding effort.",
+    module: 'MOBILE',
+    status: 'RESPONSIVE',
+    title: 'Mobile Friendly',
+    description: 'Support mobile devices with minimum coding effort.',
   },
   {
-    id: "analytics",
+    id: 'analytics',
     icon: BarChart3,
-    module: "STATS",
-    status: "TRACKING",
-    title: "Analytics",
-    description: "Tag events and track your users and their behavior.",
+    module: 'STATS',
+    status: 'TRACKING',
+    title: 'Analytics',
+    description: 'Tag events and track your users and their behavior.',
   },
   {
-    id: "monitoring",
+    id: 'monitoring',
     icon: Activity,
-    module: "MONITOR",
-    status: "WATCHING",
-    title: "Monitoring",
-    description: "Track application errors and events of your SaaS app.",
+    module: 'MONITOR',
+    status: 'WATCHING',
+    title: 'Monitoring',
+    description: 'Track application errors and events of your SaaS app.',
   },
   {
-    id: "quality",
+    id: 'quality',
     icon: CheckCircle,
-    module: "QUALITY",
-    status: "STRICT",
-    title: "High code quality",
-    description: "Fully-typed with strict TypeScript and ESLint rules.",
+    module: 'QUALITY',
+    status: 'STRICT',
+    title: 'High code quality',
+    description: 'Fully-typed with strict TypeScript and ESLint rules.',
   },
   {
-    id: "design",
+    id: 'design',
     icon: Palette,
-    module: "DESIGN",
-    status: "SCALABLE",
-    title: "Shadcn UI",
-    description: "Build faster with Shadcn UI, Tailwind CSS and Lucide icons.",
+    module: 'DESIGN',
+    status: 'SCALABLE',
+    title: 'Shadcn UI',
+    description: 'Build faster with Shadcn UI, Tailwind CSS and Lucide icons.',
   },
 ];
 
@@ -144,7 +144,7 @@ function FeatureCard({
     <motion.div
       initial={{ opacity: 0, y: 20, scale: 0.95 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: '-50px' }}
       transition={{
         duration: 0.5,
         delay: index * 0.08,
@@ -158,12 +158,12 @@ function FeatureCard({
     >
       <Card interactive className="h-full">
         <CardHeader
-          code={`0x${(index + 17).toString(16).toUpperCase().padStart(2, "0")}`}
+          code={`0x${(index + 17).toString(16).toUpperCase().padStart(2, '0')}`}
           title={module}
           icon={
             <motion.div
               whileHover={{ rotate: 12, scale: 1.1 }}
-              transition={{ type: "spring", stiffness: 400 }}
+              transition={{ type: 'spring', stiffness: 400 }}
             >
               <Icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
             </motion.div>
@@ -176,7 +176,7 @@ function FeatureCard({
           </div>
 
           {/* Description */}
-          <div className={cn("text-xs", mode.font)}>
+          <div className={cn('text-xs', mode.font)}>
             <span className="text-muted-foreground">DESC: </span>
             <span className="text-foreground">{description}</span>
           </div>
@@ -199,14 +199,26 @@ export function FeaturesShowcase() {
           className="mb-12"
         >
           <Card className="mb-4 inline-block">
-            <CardHeader code="0x10" title="STACK CONFIG" meta="FIB[89,144,233] MODULES" />
+            <CardHeader
+              code="0x10"
+              title="STACK CONFIG"
+              meta="FIB[89,144,233] MODULES"
+            />
           </Card>
-          <h2 className={cn("mb-4 text-2xl font-semibold tracking-tight", mode.font)}>
+          <h2
+            className={cn(
+              'mb-4 text-2xl font-semibold tracking-tight',
+              mode.font
+            )}
+          >
             SOLID FOUNDATION
           </h2>
-          <p className={cn("text-muted-foreground max-w-2xl text-sm", mode.font)}>
-            Everything you need to build a production-ready SaaS. Authentication, payments,
-            multi-tenancy, and more—all pre-configured and ready to customize.
+          <p
+            className={cn('text-muted-foreground max-w-2xl text-sm', mode.font)}
+          >
+            Everything you need to build a production-ready SaaS.
+            Authentication, payments, multi-tenancy, and more—all pre-configured
+            and ready to customize.
           </p>
         </motion.div>
 

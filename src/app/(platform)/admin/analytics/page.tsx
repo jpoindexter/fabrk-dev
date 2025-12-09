@@ -3,12 +3,18 @@
  * View application analytics and user behavior
  */
 
-import { Suspense } from "react";
-import { prisma } from "@/lib/prisma";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { TrendingUp, Users, DollarSign, Activity, BarChart3 } from "lucide-react";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { Suspense } from 'react';
+import { prisma } from '@/lib/prisma';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import {
+  TrendingUp,
+  Users,
+  DollarSign,
+  Activity,
+  BarChart3,
+} from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 async function getAnalytics() {
   const now = new Date();
@@ -30,19 +36,19 @@ async function getAnalytics() {
     prisma.user.count({ where: { createdAt: { gte: sevenDaysAgo } } }),
     prisma.payment.aggregate({
       _sum: { amount: true },
-      where: { status: "succeeded" },
+      where: { status: 'succeeded' },
     }),
     prisma.payment.aggregate({
       _sum: { amount: true },
-      where: { status: "succeeded", createdAt: { gte: thirtyDaysAgo } },
+      where: { status: 'succeeded', createdAt: { gte: thirtyDaysAgo } },
     }),
     prisma.payment.aggregate({
       _sum: { amount: true },
-      where: { status: "succeeded", createdAt: { gte: sevenDaysAgo } },
+      where: { status: 'succeeded', createdAt: { gte: sevenDaysAgo } },
     }),
-    prisma.payment.count({ where: { status: "succeeded" } }),
+    prisma.payment.count({ where: { status: 'succeeded' } }),
     prisma.payment.count({
-      where: { status: "succeeded", createdAt: { gte: thirtyDaysAgo } },
+      where: { status: 'succeeded', createdAt: { gte: thirtyDaysAgo } },
     }),
   ]);
 
@@ -50,13 +56,13 @@ async function getAnalytics() {
   const userGrowth = await prisma.user.findMany({
     where: { createdAt: { gte: thirtyDaysAgo } },
     select: { createdAt: true },
-    orderBy: { createdAt: "asc" },
+    orderBy: { createdAt: 'asc' },
   });
 
   // Group by day
   const growthByDay: Record<string, number> = {};
   userGrowth.forEach((user) => {
-    const day = user.createdAt.toISOString().split("T")[0];
+    const day = user.createdAt.toISOString().split('T')[0];
     growthByDay[day] = (growthByDay[day] || 0) + 1;
   });
 
@@ -77,22 +83,34 @@ async function AnalyticsDashboard() {
   const analytics = await getAnalytics();
 
   const avgRevenuePerUser =
-    analytics.totalUsers > 0 ? analytics.totalRevenue / analytics.totalUsers / 100 : 0;
+    analytics.totalUsers > 0
+      ? analytics.totalRevenue / analytics.totalUsers / 100
+      : 0;
 
   return (
     <div className="space-y-6">
       {/* Key Metrics */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card tone="primary">
-          <CardHeader code="0x01" title="TOTAL_USERS" icon={<Users className="h-4 w-4" />} />
+          <CardHeader
+            code="0x01"
+            title="TOTAL_USERS"
+            icon={<Users className="h-4 w-4" />}
+          />
           <CardContent>
             <div className="text-2xl font-semibold">{analytics.totalUsers}</div>
-            <p className="text-muted-foreground text-xs">+{analytics.usersLast7Days} this week</p>
+            <p className="text-muted-foreground text-xs">
+              +{analytics.usersLast7Days} this week
+            </p>
           </CardContent>
         </Card>
 
         <Card tone="success">
-          <CardHeader code="0x02" title="TOTAL_REVENUE" icon={<DollarSign className="h-4 w-4" />} />
+          <CardHeader
+            code="0x02"
+            title="TOTAL_REVENUE"
+            icon={<DollarSign className="h-4 w-4" />}
+          />
           <CardContent>
             <div className="text-2xl font-semibold">
               ${(analytics.totalRevenue / 100).toFixed(2)}
@@ -110,15 +128,25 @@ async function AnalyticsDashboard() {
             icon={<TrendingUp className="h-4 w-4" />}
           />
           <CardContent>
-            <div className="text-2xl font-semibold">${avgRevenuePerUser.toFixed(2)}</div>
-            <p className="text-muted-foreground text-xs">Lifetime value per user</p>
+            <div className="text-2xl font-semibold">
+              ${avgRevenuePerUser.toFixed(2)}
+            </div>
+            <p className="text-muted-foreground text-xs">
+              Lifetime value per user
+            </p>
           </CardContent>
         </Card>
 
         <Card tone="neutral">
-          <CardHeader code="0x04" title="TOTAL_PAYMENTS" icon={<Activity className="h-4 w-4" />} />
+          <CardHeader
+            code="0x04"
+            title="TOTAL_PAYMENTS"
+            icon={<Activity className="h-4 w-4" />}
+          />
           <CardContent>
-            <div className="text-2xl font-semibold">{analytics.totalPayments}</div>
+            <div className="text-2xl font-semibold">
+              {analytics.totalPayments}
+            </div>
             <p className="text-muted-foreground text-xs">
               {analytics.paymentsLast30Days} in last 30 days
             </p>
@@ -145,7 +173,10 @@ async function AnalyticsDashboard() {
                   <div className="flex items-center gap-2">
                     <div className="flex gap-0.5">
                       {Array.from({ length: count }, (_, i) => (
-                        <div key={i} className={cn("bg-primary h-4 w-2", mode.radius)} />
+                        <div
+                          key={i}
+                          className={cn('bg-primary h-4 w-2', mode.radius)}
+                        />
                       ))}
                     </div>
                     <span className="text-sm font-semibold">{count}</span>
@@ -168,7 +199,9 @@ async function AnalyticsDashboard() {
           <CardContent className="space-y-4">
             <div className="flex items-center justify-between">
               <span className="text-sm">New Users</span>
-              <span className="text-2xl font-semibold">{analytics.usersLast7Days}</span>
+              <span className="text-2xl font-semibold">
+                {analytics.usersLast7Days}
+              </span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-sm">Revenue</span>
@@ -189,7 +222,9 @@ async function AnalyticsDashboard() {
           <CardContent className="space-y-4">
             <div className="flex items-center justify-between">
               <span className="text-sm">New Users</span>
-              <span className="text-2xl font-semibold">{analytics.usersLast30Days}</span>
+              <span className="text-2xl font-semibold">
+                {analytics.usersLast30Days}
+              </span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-sm">Revenue</span>
@@ -199,7 +234,9 @@ async function AnalyticsDashboard() {
             </div>
             <div className="flex items-center justify-between">
               <span className="text-sm">Payments</span>
-              <span className="text-2xl font-semibold">{analytics.paymentsLast30Days}</span>
+              <span className="text-2xl font-semibold">
+                {analytics.paymentsLast30Days}
+              </span>
             </div>
           </CardContent>
         </Card>
@@ -213,7 +250,9 @@ export default function AdminAnalyticsPage() {
     <div className="space-y-6">
       <div>
         <h1 className="text-4xl font-semibold tracking-tight">Analytics</h1>
-        <p className="text-muted-foreground">Track user growth, revenue, and engagement</p>
+        <p className="text-muted-foreground">
+          Track user growth, revenue, and engagement
+        </p>
       </div>
 
       <Suspense

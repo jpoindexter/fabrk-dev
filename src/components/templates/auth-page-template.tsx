@@ -22,16 +22,16 @@
  * ```
  */
 
-import * as React from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { InputPassword } from "@/components/ui/input-password";
-import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { Github, Lock } from "lucide-react";
+import * as React from 'react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { InputPassword } from '@/components/ui/input-password';
+import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { Github, Lock } from 'lucide-react';
 
 // =============================================================================
 // TYPES
@@ -43,7 +43,7 @@ export interface AuthField {
   /** Label text (will be formatted as [LABEL]:) */
   label: string;
   /** Input type */
-  type: "text" | "email" | "password";
+  type: 'text' | 'email' | 'password';
   /** Placeholder text */
   placeholder?: string;
   /** Whether field is required */
@@ -85,7 +85,7 @@ export interface AuthPageTemplateProps {
   /** Form action URL or server action */
   action?: string | ((formData: FormData) => void);
   /** Form submission method */
-  method?: "get" | "post";
+  method?: 'get' | 'post';
   /** Loading state */
   loading?: boolean;
   /** Error message to display */
@@ -139,10 +139,10 @@ export function AuthPageTemplate({
   socialAuth = false,
   rememberMe = false,
   forgotPasswordLink = false,
-  forgotPasswordHref = "/auth/forgot-password",
+  forgotPasswordHref = '/auth/forgot-password',
   alternateLink,
   action,
-  method = "post",
+  method = 'post',
   loading = false,
   error,
   icon,
@@ -151,11 +151,14 @@ export function AuthPageTemplate({
 }: AuthPageTemplateProps) {
   return (
     <div
-      className={cn("flex min-h-screen flex-col items-center justify-center p-4 sm:p-8", className)}
+      className={cn(
+        'flex min-h-screen flex-col items-center justify-center p-4 sm:p-8',
+        className
+      )}
     >
       <div
         className={cn(
-          "border-border bg-background w-full max-w-[400px] space-y-6 border p-6",
+          'border-border bg-background w-full max-w-[400px] space-y-6 border p-6',
           mode.radius
         )}
       >
@@ -164,7 +167,7 @@ export function AuthPageTemplate({
           {/* Icon */}
           <div
             className={cn(
-              "border-border bg-card mx-auto mb-2 flex h-10 w-10 items-center justify-center border",
+              'border-border bg-card mx-auto mb-2 flex h-10 w-10 items-center justify-center border',
               mode.radius
             )}
           >
@@ -172,17 +175,23 @@ export function AuthPageTemplate({
           </div>
 
           {/* Title */}
-          <h1 className={cn("text-2xl font-semibold tracking-tight", mode.font)}>{title}</h1>
+          <h1
+            className={cn('text-2xl font-semibold tracking-tight', mode.font)}
+          >
+            {title}
+          </h1>
 
           {/* Description */}
-          <p className={cn("text-muted-foreground text-sm", mode.font)}>{description}</p>
+          <p className={cn('text-muted-foreground text-sm', mode.font)}>
+            {description}
+          </p>
         </div>
 
         {/* Error Message */}
         {error && (
           <div
             className={cn(
-              "border-destructive bg-destructive/10 text-destructive border p-3 text-xs",
+              'border-destructive bg-destructive/10 text-destructive border p-3 text-xs',
               mode.radius,
               mode.font
             )}
@@ -196,27 +205,35 @@ export function AuthPageTemplate({
           {fields.map((field, index) => (
             <div key={field.name} className="space-y-2">
               <div className="flex items-center justify-between">
-                <Label htmlFor={field.name} className={cn("text-xs", mode.font)}>
+                <Label
+                  htmlFor={field.name}
+                  className={cn('text-xs', mode.font)}
+                >
                   [{field.label}]:
                 </Label>
                 {/* Show forgot password link on password field if enabled */}
-                {forgotPasswordLink && field.type === "password" && index === fields.length - 1 && (
-                  <Link
-                    href={forgotPasswordHref}
-                    className={cn("text-primary text-xs hover:underline", mode.font)}
-                  >
-                    Forgot password?
-                  </Link>
-                )}
+                {forgotPasswordLink &&
+                  field.type === 'password' &&
+                  index === fields.length - 1 && (
+                    <Link
+                      href={forgotPasswordHref}
+                      className={cn(
+                        'text-primary text-xs hover:underline',
+                        mode.font
+                      )}
+                    >
+                      Forgot password?
+                    </Link>
+                  )}
               </div>
 
-              {field.type === "password" ? (
+              {field.type === 'password' ? (
                 <InputPassword
                   id={field.name}
                   name={field.name}
                   placeholder={field.placeholder}
                   required={field.required}
-                  autoComplete={field.autoComplete || "current-password"}
+                  autoComplete={field.autoComplete || 'current-password'}
                   disabled={loading}
                 />
               ) : (
@@ -241,7 +258,10 @@ export function AuthPageTemplate({
               <Checkbox id="remember" name="remember" disabled={loading} />
               <Label
                 htmlFor="remember"
-                className={cn("text-muted-foreground text-xs font-normal", mode.font)}
+                className={cn(
+                  'text-muted-foreground text-xs font-normal',
+                  mode.font
+                )}
               >
                 Remember me for 30 days
               </Label>
@@ -249,8 +269,13 @@ export function AuthPageTemplate({
           )}
 
           {/* Submit Button */}
-          <Button type="submit" className="w-full" disabled={loading} loading={loading}>
-            &gt; {submitLabel.toUpperCase().replace(/ /g, "_")}
+          <Button
+            type="submit"
+            className="w-full"
+            disabled={loading}
+            loading={loading}
+          >
+            &gt; {submitLabel.toUpperCase().replace(/ /g, '_')}
           </Button>
         </form>
 
@@ -263,7 +288,12 @@ export function AuthPageTemplate({
                 <span className="border-border w-full border-t" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className={cn("bg-background text-muted-foreground px-2", mode.font)}>
+                <span
+                  className={cn(
+                    'bg-background text-muted-foreground px-2',
+                    mode.font
+                  )}
+                >
                   Or continue with
                 </span>
               </div>
@@ -288,8 +318,13 @@ export function AuthPageTemplate({
 
         {/* Alternate Link */}
         {alternateLink && (
-          <p className={cn("text-muted-foreground text-center text-sm", mode.font)}>
-            {alternateLink.label}{" "}
+          <p
+            className={cn(
+              'text-muted-foreground text-center text-sm',
+              mode.font
+            )}
+          >
+            {alternateLink.label}{' '}
             <Link
               href={alternateLink.href}
               className="hover:text-primary underline underline-offset-4"

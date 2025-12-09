@@ -16,9 +16,9 @@
 ### Common Structure
 
 ```tsx
-"use client";
-import { motion } from "framer-motion";
-import Link from "next/link";
+'use client';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export default function LegalPage() {
   return (
@@ -265,7 +265,9 @@ transition={{ duration: 0.5/0.6, delay: 0/0.1/0.2 }}
   viewport={{ once: true }}
   className="border-border bg-card mt-12 border p-6"
 >
-  <span className="text-muted-foreground mb-4 block text-xs">[ RELATED_DOCUMENTS ]</span>
+  <span className="text-muted-foreground mb-4 block text-xs">
+    [ RELATED_DOCUMENTS ]
+  </span>
   <div className="flex flex-wrap gap-4 text-xs">
     <Link href="/terms" className="text-primary hover:underline">
       &gt; TERMS_OF_SERVICE
@@ -335,7 +337,7 @@ Uses ALL CAPS for legal emphasis.
 **Special intro:**
 
 ```tsx
-className = "mb-12 border border-destructive/30 bg-destructive/5 p-6";
+className = 'mb-12 border border-destructive/30 bg-destructive/5 p-6';
 ```
 
 **Section count:** 10 sections (0x10 to 0xA0)

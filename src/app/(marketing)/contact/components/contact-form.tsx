@@ -3,23 +3,23 @@
  * Main contact form with terminal styling
  */
 
-import { useState } from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import { useState } from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { Send, CheckCircle2 } from "lucide-react";
+} from '@/components/ui/select';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Send, CheckCircle2 } from 'lucide-react';
 
 // Extend Window interface for dataLayer
 declare global {
@@ -37,48 +37,53 @@ interface FormData {
 
 export function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
   });
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [status, setStatus] = useState<
+    'idle' | 'loading' | 'success' | 'error'
+  >('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus("loading");
-    setErrorMessage("");
+    setStatus('loading');
+    setErrorMessage('');
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Failed to send message");
+        throw new Error(data.error || 'Failed to send message');
       }
 
       // Track contact form submission in GTM
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
-        event: "contact_form_submit",
+        event: 'contact_form_submit',
         form_subject: formData.subject,
       });
 
-      setStatus("success");
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      setStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
 
       // Reset success message after 5 seconds
-      setTimeout(() => setStatus("idle"), 5000);
+      setTimeout(() => setStatus('idle'), 5000);
     } catch (error: unknown) {
-      setStatus("error");
-      const message = error instanceof Error ? error.message : "Failed to send message";
-      setErrorMessage(`${message}. Please try again or email us directly at support@fabrek.dev`);
+      setStatus('error');
+      const message =
+        error instanceof Error ? error.message : 'Failed to send message';
+      setErrorMessage(
+        `${message}. Please try again or email us directly at support@fabrek.dev`
+      );
     }
   };
 
@@ -92,7 +97,8 @@ export function ContactForm() {
         <CardHeader code="0x01" title="MESSAGE_COMPOSER" />
         <CardContent padding="lg">
           <p className="text-muted-foreground mb-6 text-xs">
-            &gt; Fill out the form below and we'll get back to you as soon as possible.
+            &gt; Fill out the form below and we'll get back to you as soon as
+            possible.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -105,7 +111,9 @@ export function ContactForm() {
                 id="name"
                 className="rounded-none text-sm"
                 value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
                 placeholder="> Enter your name..."
                 required
               />
@@ -121,7 +129,9 @@ export function ContactForm() {
                 type="email"
                 className="rounded-none text-sm"
                 value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
                 placeholder="> Enter your email..."
                 required
               />
@@ -134,7 +144,9 @@ export function ContactForm() {
               </Label>
               <Select
                 value={formData.subject}
-                onValueChange={(value) => setFormData({ ...formData, subject: value })}
+                onValueChange={(value) =>
+                  setFormData({ ...formData, subject: value })
+                }
                 required
               >
                 <SelectTrigger className="rounded-none text-sm">
@@ -146,7 +158,9 @@ export function ContactForm() {
                   <SelectItem value="billing">BILLING_QUESTION</SelectItem>
                   <SelectItem value="feature">FEATURE_REQUEST</SelectItem>
                   <SelectItem value="bug">BUG_REPORT</SelectItem>
-                  <SelectItem value="partnership">PARTNERSHIP_OPPORTUNITY</SelectItem>
+                  <SelectItem value="partnership">
+                    PARTNERSHIP_OPPORTUNITY
+                  </SelectItem>
                   <SelectItem value="success-story">SUCCESS_STORY</SelectItem>
                   <SelectItem value="other">OTHER</SelectItem>
                 </SelectContent>
@@ -162,7 +176,9 @@ export function ContactForm() {
                 id="message"
                 className="rounded-none text-sm"
                 value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, message: e.target.value })
+                }
                 placeholder="> Tell us more about your inquiry..."
                 rows={6}
                 required
@@ -173,19 +189,29 @@ export function ContactForm() {
             </div>
 
             {/* Success Message */}
-            {status === "success" && (
-              <Alert className="bg-success/10 border-success/20 rounded-none" aria-live="polite">
+            {status === 'success' && (
+              <Alert
+                className="bg-success/10 border-success/20 rounded-none"
+                aria-live="polite"
+              >
                 <CheckCircle2 className="text-success size-4" />
                 <AlertDescription className="text-success text-xs">
-                  [OK] MESSAGE_SENT - We've received your message and will respond within 24 hours.
+                  [OK] MESSAGE_SENT - We've received your message and will
+                  respond within 24 hours.
                 </AlertDescription>
               </Alert>
             )}
 
             {/* Error Message */}
-            {status === "error" && (
-              <Alert variant="destructive" className="rounded-none" aria-live="polite">
-                <AlertDescription className="text-xs">[ERROR] {errorMessage}</AlertDescription>
+            {status === 'error' && (
+              <Alert
+                variant="destructive"
+                className="rounded-none"
+                aria-live="polite"
+              >
+                <AlertDescription className="text-xs">
+                  [ERROR] {errorMessage}
+                </AlertDescription>
               </Alert>
             )}
 
@@ -194,10 +220,10 @@ export function ContactForm() {
               type="submit"
               size="lg"
               className="w-full rounded-none text-xs"
-              disabled={status === "loading"}
+              disabled={status === 'loading'}
             >
-              {status === "loading" ? (
-                "> SENDING..."
+              {status === 'loading' ? (
+                '> SENDING...'
               ) : (
                 <>
                   <Send className="mr-2 size-4" />
@@ -207,7 +233,7 @@ export function ContactForm() {
             </Button>
 
             <p className="text-muted-foreground text-center text-xs">
-              By submitting this form, you agree to our{" "}
+              By submitting this form, you agree to our{' '}
               <Link href="/privacy" className="text-primary hover:underline">
                 PRIVACY_POLICY
               </Link>

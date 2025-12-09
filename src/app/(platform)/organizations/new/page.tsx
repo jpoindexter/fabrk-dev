@@ -3,32 +3,35 @@
  * 3-step wizard for creating a new organization
  */
 
-"use client";
+'use client';
 
-import * as React from "react";
-import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
-import { toast } from "sonner";
-import { ProgressSteps } from "./components/progress-steps";
-import { OrganizationDetailsStep } from "./components/organization-details-step";
-import { InviteMembersStep } from "./components/invite-members-step";
-import { SuccessStep } from "./components/success-step";
+import * as React from 'react';
+import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import * as z from 'zod';
+import { toast } from 'sonner';
+import { ProgressSteps } from './components/progress-steps';
+import { OrganizationDetailsStep } from './components/organization-details-step';
+import { InviteMembersStep } from './components/invite-members-step';
+import { SuccessStep } from './components/success-step';
 
 const organizationSchema = z.object({
-  name: z.string().min(2, "Organization name must be at least 2 characters"),
+  name: z.string().min(2, 'Organization name must be at least 2 characters'),
   description: z.string().optional(),
   slug: z
     .string()
-    .min(2, "Slug must be at least 2 characters")
-    .regex(/^[a-z0-9-]+$/, "Slug can only contain lowercase letters, numbers, and hyphens"),
+    .min(2, 'Slug must be at least 2 characters')
+    .regex(
+      /^[a-z0-9-]+$/,
+      'Slug can only contain lowercase letters, numbers, and hyphens'
+    ),
 });
 
 const inviteSchema = z.object({
   emails: z.string(),
-  role: z.enum(["OWNER", "ADMIN", "MEMBER", "GUEST"]),
+  role: z.enum(['OWNER', 'ADMIN', 'MEMBER', 'GUEST']),
 });
 
 type OrganizationFormData = z.infer<typeof organizationSchema>;
@@ -44,29 +47,29 @@ export default function CreateOrganizationPage() {
   const orgForm = useForm<OrganizationFormData>({
     resolver: zodResolver(organizationSchema),
     defaultValues: {
-      name: "",
-      description: "",
-      slug: "",
+      name: '',
+      description: '',
+      slug: '',
     },
   });
 
   const inviteForm = useForm<InviteFormData>({
     resolver: zodResolver(inviteSchema),
     defaultValues: {
-      emails: "",
-      role: "MEMBER",
+      emails: '',
+      role: 'MEMBER',
     },
   });
 
   // Auto-generate slug from name
   React.useEffect(() => {
     const subscription = orgForm.watch((value, { name }) => {
-      if (name === "name" && value.name) {
+      if (name === 'name' && value.name) {
         const slug = value.name
           .toLowerCase()
-          .replace(/[^a-z0-9]+/g, "-")
-          .replace(/^-|-$/g, "");
-        orgForm.setValue("slug", slug);
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-|-$/g, '');
+        orgForm.setValue('slug', slug);
       }
     });
     return () => subscription.unsubscribe();
@@ -75,9 +78,9 @@ export default function CreateOrganizationPage() {
   const onCreateOrganization = async (data: OrganizationFormData) => {
     setLoading(true);
     try {
-      const response = await fetch("/api/organizations/create", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const response = await fetch('/api/organizations/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...data,
           ownerId: session?.user?.id,
@@ -86,15 +89,18 @@ export default function CreateOrganizationPage() {
 
       if (!response.ok) {
         const error = await response.json();
-        throw new Error(error.error || "Failed to create organization");
+        throw new Error(error.error || 'Failed to create organization');
       }
 
       const result = await response.json();
       setCreatedOrgId(result.organization.id);
-      toast.success("Organization created successfully!");
+      toast.success('Organization created successfully!');
       setStep(2);
     } catch (error: unknown) {
-      const errorMessage = error instanceof Error ? error.message : "Failed to create organization";
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : 'Failed to create organization';
       toast.error(errorMessage);
     } finally {
       setLoading(false);
@@ -104,7 +110,7 @@ export default function CreateOrganizationPage() {
   const onSendInvites = async (data: InviteFormData) => {
     if (!data.emails || !createdOrgId) {
       // Skip invites
-      router.push("/dashboard");
+      router.push('/dashboard');
       return;
     }
 
@@ -116,9 +122,9 @@ export default function CreateOrganizationPage() {
         .filter((e) => e);
 
       const promises = emailList.map((email) =>
-        fetch("/api/organizations/invite", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
+        fetch('/api/organizations/invite', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             organizationId: createdOrgId,
             email,
@@ -130,9 +136,9 @@ export default function CreateOrganizationPage() {
 
       await Promise.all(promises);
       toast.success(`Sent ${emailList.length} invitation(s)!`);
-      router.push("/dashboard");
+      router.push('/dashboard');
     } catch {
-      toast.error("Failed to send some invitations");
+      toast.error('Failed to send some invitations');
     } finally {
       setLoading(false);
     }
@@ -159,11 +165,13 @@ export default function CreateOrganizationPage() {
           onSubmit={onSendInvites}
           loading={loading}
           onBack={() => setStep(1)}
-          onSkip={() => router.push("/dashboard")}
+          onSkip={() => router.push('/dashboard')}
         />
       )}
 
-      {step === 3 && <SuccessStep onComplete={() => router.push("/dashboard")} />}
+      {step === 3 && (
+        <SuccessStep onComplete={() => router.push('/dashboard')} />
+      )}
     </div>
   );
 }

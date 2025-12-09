@@ -1,12 +1,19 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard, DocsCallout } from "@/components/docs";
-import Link from "next/link";
-import { Coins, Activity, TrendingDown, Calendar, Zap, Shield } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard, DocsCallout } from '@/components/docs';
+import Link from 'next/link';
+import {
+  Coins,
+  Activity,
+  TrendingDown,
+  Calendar,
+  Zap,
+  Shield,
+} from 'lucide-react';
 
 export const metadata = {
-  title: "AI Credits System - Fabrk Docs",
+  title: 'AI Credits System - Fabrk Docs',
   description:
-    "Token-based billing for AI features. Track usage, manage balances, and implement tiered pricing for AI operations.",
+    'Token-based billing for AI features. Track usage, manage balances, and implement tiered pricing for AI operations.',
 };
 
 export default function AICreditsPage() {
@@ -20,48 +27,53 @@ export default function AICreditsPage() {
       features={[
         {
           icon: Coins,
-          title: "Credit Balance",
+          title: 'Credit Balance',
           description:
-            "Track user credits in real-time. Automatic balance updates after each AI operation.",
+            'Track user credits in real-time. Automatic balance updates after each AI operation.',
         },
         {
           icon: Activity,
-          title: "Usage Tracking",
-          description: "Full transaction history with daily/monthly analytics and usage charts.",
+          title: 'Usage Tracking',
+          description:
+            'Full transaction history with daily/monthly analytics and usage charts.',
         },
         {
           icon: TrendingDown,
-          title: "Cost Per Feature",
+          title: 'Cost Per Feature',
           description:
-            "Different credit costs for different AI operations. Form gen: 10, Chat: 1, Code: 20.",
+            'Different credit costs for different AI operations. Form gen: 10, Chat: 1, Code: 20.',
         },
         {
           icon: Calendar,
-          title: "Monthly Refills",
-          description: "Automatic monthly credit refresh based on subscription tier.",
+          title: 'Monthly Refills',
+          description:
+            'Automatic monthly credit refresh based on subscription tier.',
         },
         {
           icon: Zap,
-          title: "Tiered Allowances",
-          description: "Free: 100, Starter: 1,000, Pro: 10,000, Enterprise: Unlimited.",
+          title: 'Tiered Allowances',
+          description:
+            'Free: 100, Starter: 1,000, Pro: 10,000, Enterprise: Unlimited.',
         },
         {
           icon: Shield,
-          title: "Insufficient Credit Handling",
-          description: "Graceful 402 errors when credits run out. User-friendly messaging.",
+          title: 'Insufficient Credit Handling',
+          description:
+            'Graceful 402 errors when credits run out. User-friendly messaging.',
         },
       ]}
       setup={[
         {
-          title: "Run Database Migration",
+          title: 'Run Database Migration',
           description:
-            "The schema includes CreditBalance and CreditTransaction models. Push the schema to your database.",
+            'The schema includes CreditBalance and CreditTransaction models. Push the schema to your database.',
           code: `npx prisma db push`,
-          language: "bash",
+          language: 'bash',
         },
         {
-          title: "Configure Credit Costs",
-          description: "Adjust credit costs per AI feature in src/lib/credits/pricing.ts",
+          title: 'Configure Credit Costs',
+          description:
+            'Adjust credit costs per AI feature in src/lib/credits/pricing.ts',
           code: `// src/lib/credits/pricing.ts
 export const CREDIT_COSTS = {
   FORM_GENERATION: 10,
@@ -69,11 +81,11 @@ export const CREDIT_COSTS = {
   CODE_GENERATION: 20,
   IMAGE_GENERATION: 50,
 } as const;`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Configure Tier Allowances",
-          description: "Set monthly credit allowances per subscription tier",
+          title: 'Configure Tier Allowances',
+          description: 'Set monthly credit allowances per subscription tier',
           code: `// src/lib/credits/pricing.ts
 export const TIER_ALLOWANCES = {
   free: 100,
@@ -81,13 +93,14 @@ export const TIER_ALLOWANCES = {
   pro: 10000,
   enterprise: Infinity,
 } as const;`,
-          language: "typescript",
+          language: 'typescript',
         },
       ]}
       usage={[
         {
-          title: "Check Credits Before AI Call",
-          description: "Always verify the user has enough credits before calling the AI",
+          title: 'Check Credits Before AI Call',
+          description:
+            'Always verify the user has enough credits before calling the AI',
           code: `import { hasCredits, CREDIT_COSTS } from "@/lib/credits";
 
 const creditCost = CREDIT_COSTS.FORM_GENERATION;
@@ -99,11 +112,11 @@ if (!hasEnoughCredits) {
     { status: 402 }
   );
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Deduct Credits After Success",
-          description: "Only deduct credits after the AI operation succeeds",
+          title: 'Deduct Credits After Success',
+          description: 'Only deduct credits after the AI operation succeeds',
           code: `import { deductCredits, CREDIT_COSTS } from "@/lib/credits";
 
 // After successful AI operation...
@@ -112,10 +125,10 @@ await deductCredits(userId, CREDIT_COSTS.FORM_GENERATION, {
   endpoint: "/api/ai/generate-form",
   metadata: { prompt: prompt.slice(0, 100) },
 });`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Get Current Balance",
+          title: 'Get Current Balance',
           description: "Fetch the user's current credit balance",
           code: `import { getBalance, getOrCreateBalance } from "@/lib/credits";
 
@@ -125,11 +138,11 @@ const balance = await getBalance(userId);
 // Or get full balance object (creates if doesn't exist)
 const balanceRecord = await getOrCreateBalance(userId);
 // balanceRecord.balance, balanceRecord.monthlyAllowance`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Add Credits (Purchase/Bonus)",
-          description: "Add credits from purchases, referrals, or bonuses",
+          title: 'Add Credits (Purchase/Bonus)',
+          description: 'Add credits from purchases, referrals, or bonuses',
           code: `import { addCredits } from "@/lib/credits";
 import { CreditTransactionType } from "@/generated/prisma/client";
 
@@ -148,61 +161,61 @@ await addCredits(
   CreditTransactionType.BONUS,
   "Referral bonus"
 );`,
-          language: "typescript",
+          language: 'typescript',
         },
       ]}
       configuration={[
         {
-          name: "FORM_GENERATION",
-          type: "number",
-          default: "10",
-          description: "Credits per form generation",
+          name: 'FORM_GENERATION',
+          type: 'number',
+          default: '10',
+          description: 'Credits per form generation',
         },
         {
-          name: "CHAT_MESSAGE",
-          type: "number",
-          default: "1",
-          description: "Credits per chat message",
+          name: 'CHAT_MESSAGE',
+          type: 'number',
+          default: '1',
+          description: 'Credits per chat message',
         },
         {
-          name: "CODE_GENERATION",
-          type: "number",
-          default: "20",
-          description: "Credits per code generation",
+          name: 'CODE_GENERATION',
+          type: 'number',
+          default: '20',
+          description: 'Credits per code generation',
         },
         {
-          name: "IMAGE_GENERATION",
-          type: "number",
-          default: "50",
-          description: "Credits per image generation",
+          name: 'IMAGE_GENERATION',
+          type: 'number',
+          default: '50',
+          description: 'Credits per image generation',
         },
       ]}
       troubleshooting={[
         {
-          problem: "402 Insufficient Credits Error",
+          problem: '402 Insufficient Credits Error',
           solution:
-            "User has run out of credits. Direct them to the /usage page to see their balance, or upgrade their plan for more credits.",
+            'User has run out of credits. Direct them to the /usage page to see their balance, or upgrade their plan for more credits.',
         },
         {
-          problem: "Balance not updating after purchase",
+          problem: 'Balance not updating after purchase',
           solution:
             "Ensure you're calling addCredits() with CreditTransactionType.PURCHASE after successful payment webhook.",
         },
         {
-          problem: "Credits not refilling monthly",
+          problem: 'Credits not refilling monthly',
           solution:
-            "The refillCreditsIfEligible() function checks lastRefill date. Call it on user login or via a cron job.",
+            'The refillCreditsIfEligible() function checks lastRefill date. Call it on user login or via a cron job.',
         },
       ]}
-      previous={{ title: "Payments", href: "/docs/features/payments" }}
-      next={{ title: "Google OAuth", href: "/docs/features/google-oauth" }}
+      previous={{ title: 'Payments', href: '/docs/features/payments' }}
+      next={{ title: 'Google OAuth', href: '/docs/features/google-oauth' }}
     >
       {/* Database Schema */}
       <DocsSection title="Database Schema">
         <DocsCard title="PRISMA_SCHEMA">
           <p className="mb-6">
-            The credit system uses two Prisma models: CreditBalance (one per user) and
-            CreditTransaction (history of all credit changes).
+            The credit system uses two Prisma models: CreditBalance (one per
+            user) and CreditTransaction (history of all credit changes).
           </p>
           <pre className="bg-muted overflow-x-auto p-4 text-xs">
             {`model CreditBalance {
@@ -243,13 +256,18 @@ enum CreditTransactionType {
         <DocsCard title="AVAILABLE_ENDPOINTS">
           <div className="space-y-4">
             <div className="border-border border-b pb-4">
-              <code className="bg-muted px-2 py-1">GET /api/credits/balance</code>
+              <code className="bg-muted px-2 py-1">
+                GET /api/credits/balance
+              </code>
               <p className="text-muted-foreground mt-2">
-                Returns current balance, monthly allowance, and tier for the authenticated user.
+                Returns current balance, monthly allowance, and tier for the
+                authenticated user.
               </p>
             </div>
             <div>
-              <code className="bg-muted px-2 py-1">GET /api/credits/history</code>
+              <code className="bg-muted px-2 py-1">
+                GET /api/credits/history
+              </code>
               <p className="text-muted-foreground mt-2">
                 Returns transaction history with optional type and date filters.
               </p>
@@ -261,8 +279,9 @@ enum CreditTransactionType {
       {/* Usage Dashboard */}
       <DocsSection title="Usage Dashboard">
         <DocsCallout variant="info" title="Built-in Dashboard">
-          The /usage page is pre-built with balance display, usage charts, and transaction history.
-          Users can see their credit consumption at a glance.
+          The /usage page is pre-built with balance display, usage charts, and
+          transaction history. Users can see their credit consumption at a
+          glance.
         </DocsCallout>
         <DocsCard title="DASHBOARD_FEATURES">
           <ul className="space-y-2">
@@ -279,7 +298,8 @@ enum CreditTransactionType {
       <DocsSection title="Full Integration Example">
         <DocsCard title="AI_ROUTE_PATTERN">
           <p className="mb-6">
-            Here&apos;s the complete pattern for integrating credits into an AI route:
+            Here&apos;s the complete pattern for integrating credits into an AI
+            route:
           </p>
           <pre className="bg-muted overflow-x-auto p-4 text-xs">
             {`// src/app/api/ai/your-feature/route.ts
@@ -329,7 +349,9 @@ export async function POST(request: Request) {
               className="hover:border-primary/50 h-full transition-all"
             >
               Stripe Payments
-              <p className="mb-6">Sell credit packs or subscriptions with different allowances.</p>
+              <p className="mb-6">
+                Sell credit packs or subscriptions with different allowances.
+              </p>
             </DocsCard>
           </Link>
           <Link href="/docs/features/analytics">
@@ -338,7 +360,9 @@ export async function POST(request: Request) {
               className="hover:border-primary/50 h-full transition-all"
             >
               Analytics
-              <p className="mb-6">Track which AI features users consume most.</p>
+              <p className="mb-6">
+                Track which AI features users consume most.
+              </p>
             </DocsCard>
           </Link>
         </div>

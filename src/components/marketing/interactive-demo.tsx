@@ -4,19 +4,19 @@
  * Production-ready ✓
  */
 
-"use client";
+'use client';
 
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 
 const DEMO_ROUTES = [
-  { id: "team", label: "Team Dashboard", path: "/library/team-dashboard" },
-  { id: "analytics", label: "Analytics", path: "/library/analytics-dashboard" },
-  { id: "users", label: "Data Table", path: "/library/user-management" },
-  { id: "settings", label: "Settings", path: "/library/settings-page" },
+  { id: 'team', label: 'Team Dashboard', path: '/library/team-dashboard' },
+  { id: 'analytics', label: 'Analytics', path: '/library/analytics-dashboard' },
+  { id: 'users', label: 'Data Table', path: '/library/user-management' },
+  { id: 'settings', label: 'Settings', path: '/library/settings-page' },
 ];
 
 export function InteractiveDemo() {
@@ -31,25 +31,27 @@ export function InteractiveDemo() {
           className="space-y-8"
         >
           {/* Header */}
-          <div className={cn("text-center", mode.font)}>
+          <div className={cn('text-center', mode.font)}>
             <span className="text-muted-foreground text-xs">[0x00]</span>
             <h2 className="mb-4 text-2xl font-semibold tracking-tight">
               LIVE_DEMO_EXPLORE_TEMPLATES
             </h2>
             <p className="text-muted-foreground mx-auto max-w-2xl text-sm">
-              &gt; See production-ready dashboards, data tables, and settings pages. Click tabs to
-              explore.
+              &gt; See production-ready dashboards, data tables, and settings
+              pages. Click tabs to explore.
             </p>
           </div>
 
           {/* Tabbed Demo */}
           <Tabs defaultValue="team" className="space-y-6">
-            <TabsList className={cn("grid w-full grid-cols-4 gap-2", mode.radius)}>
+            <TabsList
+              className={cn('grid w-full grid-cols-4 gap-2', mode.radius)}
+            >
               {DEMO_ROUTES.map((route) => (
                 <TabsTrigger
                   key={route.id}
                   value={route.id}
-                  className={cn("text-sm sm:text-base", mode.radius)}
+                  className={cn('text-sm sm:text-base', mode.radius)}
                 >
                   {route.label}
                 </TabsTrigger>
@@ -80,10 +82,12 @@ export function InteractiveDemo() {
                 <CardHeader title="INFO" />
                 <CardContent>
                   <p className="text-foreground text-xs">
-                    <span className="text-primary font-semibold">[FULLY_INTERACTIVE]</span> All
-                    dashboards and tables are fully functional. Sort columns, filter data, toggle
-                    settings, and explore the full UX. These are the exact templates included in
-                    Fabrk.
+                    <span className="text-primary font-semibold">
+                      [FULLY_INTERACTIVE]
+                    </span>{' '}
+                    All dashboards and tables are fully functional. Sort
+                    columns, filter data, toggle settings, and explore the full
+                    UX. These are the exact templates included in Fabrk.
                   </p>
                 </CardContent>
               </Card>

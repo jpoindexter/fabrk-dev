@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 /**
  * ✅ FABRK COMPONENT
@@ -10,15 +10,17 @@
  * ```
  */
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { isSharpMode } from "@/design-system";
-import { cn } from "@/lib/utils";
-import { ChevronDown, ChevronUp } from "lucide-react";
-import * as React from "react";
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { isSharpMode } from '@/design-system';
+import { cn } from '@/lib/utils';
+import { ChevronDown, ChevronUp } from 'lucide-react';
+import * as React from 'react';
 
-export interface InputNumberProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type" | "onChange" | "value"> {
+export interface InputNumberProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  'type' | 'onChange' | 'value'
+> {
   value?: number;
   defaultValue?: number;
   onValueChange?: (value: number | undefined) => void;
@@ -46,9 +48,9 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
     },
     ref
   ) => {
-    const [uncontrolledValue, setUncontrolledValue] = React.useState<number | undefined>(
-      defaultValue
-    );
+    const [uncontrolledValue, setUncontrolledValue] = React.useState<
+      number | undefined
+    >(defaultValue);
     const value = controlledValue ?? uncontrolledValue;
 
     const updateValue = (newValue: number | undefined) => {
@@ -80,7 +82,7 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const inputValue = e.target.value;
 
-      if (inputValue === "") {
+      if (inputValue === '') {
         updateValue(undefined);
         return;
       }
@@ -102,28 +104,31 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
     };
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-      if (e.key === "ArrowUp") {
+      if (e.key === 'ArrowUp') {
         e.preventDefault();
         increment();
-      } else if (e.key === "ArrowDown") {
+      } else if (e.key === 'ArrowDown') {
         e.preventDefault();
         decrement();
       }
     };
 
     return (
-      <div data-slot="input-number" className={cn("relative inline-flex", className)}>
+      <div
+        data-slot="input-number"
+        className={cn('relative inline-flex', className)}
+      >
         <Input
           ref={ref}
           type="number"
-          value={value ?? ""}
+          value={value ?? ''}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
           min={min}
           max={max}
           step={step}
           disabled={disabled}
-          className={cn(showControls && "pr-8", className)}
+          className={cn(showControls && 'pr-8', className)}
           role="spinbutton"
           aria-valuemin={min}
           aria-valuemax={max}
@@ -136,9 +141,12 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
               type="button"
               variant="ghost"
               size="icon"
-              className={cn("h-4 w-6 p-0", isSharpMode() && "rounded-b-none")}
+              className={cn('h-4 w-6 p-0', isSharpMode() && 'rounded-b-none')}
               onClick={increment}
-              disabled={disabled || (max !== undefined && value !== undefined && value >= max)}
+              disabled={
+                disabled ||
+                (max !== undefined && value !== undefined && value >= max)
+              }
               tabIndex={-1}
               aria-label="Increment value"
             >
@@ -148,9 +156,12 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
               type="button"
               variant="ghost"
               size="icon"
-              className={cn("h-4 w-6 p-0", isSharpMode() && "rounded-t-none")}
+              className={cn('h-4 w-6 p-0', isSharpMode() && 'rounded-t-none')}
               onClick={decrement}
-              disabled={disabled || (min !== undefined && value !== undefined && value <= min)}
+              disabled={
+                disabled ||
+                (min !== undefined && value !== undefined && value <= min)
+              }
               tabIndex={-1}
               aria-label="Decrement value"
             >
@@ -162,6 +173,6 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
     );
   }
 );
-InputNumber.displayName = "InputNumber";
+InputNumber.displayName = 'InputNumber';
 
 export { InputNumber };

@@ -12,69 +12,69 @@
  * - In-memory fallback for development without database
  */
 
-import { logger } from "@/lib/logger";
-import { prisma } from "@/lib/prisma";
+import { logger } from '@/lib/logger';
+import { prisma } from '@/lib/prisma';
 
 export type AuditEventType =
   // Authentication events
-  | "auth.login"
-  | "auth.logout"
-  | "auth.register"
-  | "auth.password_reset"
-  | "auth.email_verified"
-  | "auth.failed_login"
-  | "auth.suspicious_login"
-  | "auth.mfa_enabled"
-  | "auth.mfa_disabled"
-  | "auth.mfa_verified"
-  | "auth.mfa_success"
-  | "auth.mfa_failed"
-  | "auth.backup_code_used"
-  | "auth.backup_codes_regenerated"
+  | 'auth.login'
+  | 'auth.logout'
+  | 'auth.register'
+  | 'auth.password_reset'
+  | 'auth.email_verified'
+  | 'auth.failed_login'
+  | 'auth.suspicious_login'
+  | 'auth.mfa_enabled'
+  | 'auth.mfa_disabled'
+  | 'auth.mfa_verified'
+  | 'auth.mfa_success'
+  | 'auth.mfa_failed'
+  | 'auth.backup_code_used'
+  | 'auth.backup_codes_regenerated'
 
   // Authorization events
-  | "authz.role_changed"
-  | "authz.permission_granted"
-  | "authz.permission_denied"
-  | "authz.access_denied"
+  | 'authz.role_changed'
+  | 'authz.permission_granted'
+  | 'authz.permission_denied'
+  | 'authz.access_denied'
 
   // Data access events
-  | "data.read"
-  | "data.create"
-  | "data.update"
-  | "data.delete"
-  | "data.export"
+  | 'data.read'
+  | 'data.create'
+  | 'data.update'
+  | 'data.delete'
+  | 'data.export'
 
   // Payment events
-  | "payment.initiated"
-  | "payment.completed"
-  | "payment.failed"
-  | "payment.refunded"
+  | 'payment.initiated'
+  | 'payment.completed'
+  | 'payment.failed'
+  | 'payment.refunded'
 
   // Admin events
-  | "admin.user_deleted"
-  | "admin.user_suspended"
-  | "admin.config_changed"
-  | "admin.feature_flag_changed"
+  | 'admin.user_deleted'
+  | 'admin.user_suspended'
+  | 'admin.config_changed'
+  | 'admin.feature_flag_changed'
 
   // Security events
-  | "security.rate_limit_exceeded"
-  | "security.bot_detected"
-  | "security.suspicious_activity"
-  | "security.xss_attempt"
-  | "security.sql_injection_attempt"
-  | "security.csrf_detected"
+  | 'security.rate_limit_exceeded'
+  | 'security.bot_detected'
+  | 'security.suspicious_activity'
+  | 'security.xss_attempt'
+  | 'security.sql_injection_attempt'
+  | 'security.csrf_detected'
 
   // GDPR events
-  | "gdpr.data_exported"
-  | "gdpr.data_deleted"
-  | "gdpr.consent_given"
-  | "gdpr.consent_revoked"
+  | 'gdpr.data_exported'
+  | 'gdpr.data_deleted'
+  | 'gdpr.consent_given'
+  | 'gdpr.consent_revoked'
 
   // System events
-  | "system.error"
-  | "system.config_changed"
-  | "system.backup_completed";
+  | 'system.error'
+  | 'system.config_changed'
+  | 'system.backup_completed';
 
 export interface AuditLogEntry {
   id: string;
@@ -86,9 +86,9 @@ export interface AuditLogEntry {
   userAgent?: string;
   resource?: string; // What was accessed
   action: string; // What action was performed
-  result: "success" | "failure" | "error";
+  result: 'success' | 'failure' | 'error';
   metadata?: Record<string, unknown>;
-  severity: "low" | "medium" | "high" | "critical";
+  severity: 'low' | 'medium' | 'high' | 'critical';
   hash?: string; // For tamper detection
 }
 
@@ -111,7 +111,9 @@ async function isDatabaseAvailable(): Promise<boolean> {
 /**
  * Generate hash for audit log entry (tamper detection)
  */
-async function generateEntryHash(entry: Omit<AuditLogEntry, "hash">): Promise<string> {
+async function generateEntryHash(
+  entry: Omit<AuditLogEntry, 'hash'>
+): Promise<string> {
   const data = JSON.stringify({
     id: entry.id,
     timestamp: entry.timestamp.toISOString(),
@@ -122,23 +124,25 @@ async function generateEntryHash(entry: Omit<AuditLogEntry, "hash">): Promise<st
   });
 
   // In Node.js environment
-  if (typeof window === "undefined") {
-    const crypto = require("crypto");
-    return crypto.createHash("sha256").update(data).digest("hex");
+  if (typeof window === 'undefined') {
+    const crypto = require('crypto');
+    return crypto.createHash('sha256').update(data).digest('hex');
   }
 
   // In browser environment
   const encoder = new TextEncoder();
   const dataBuffer = encoder.encode(data);
-  const hashBuffer = await crypto.subtle.digest("SHA-256", dataBuffer);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', dataBuffer);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+  return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
 }
 
 /**
  * Log audit event - persists to database in production
  */
-export async function logAuditEvent(event: Omit<AuditLogEntry, "id" | "timestamp" | "hash">): Promise<void> {
+export async function logAuditEvent(
+  event: Omit<AuditLogEntry, 'id' | 'timestamp' | 'hash'>
+): Promise<void> {
   const entry: AuditLogEntry = {
     id: crypto.randomUUID(),
     timestamp: new Date(),
@@ -149,8 +153,8 @@ export async function logAuditEvent(event: Omit<AuditLogEntry, "id" | "timestamp
   entry.hash = await generateEntryHash(entry);
 
   // Log critical events immediately to console
-  if (entry.severity === "critical" || entry.severity === "high") {
-    logger.error("[Audit Log - CRITICAL]", {
+  if (entry.severity === 'critical' || entry.severity === 'high') {
+    logger.error('[Audit Log - CRITICAL]', {
       eventType: entry.eventType,
       userId: entry.userId,
       action: entry.action,
@@ -183,7 +187,7 @@ export async function logAuditEvent(event: Omit<AuditLogEntry, "id" | "timestamp
       });
       return;
     } catch (error) {
-      logger.error("Failed to persist audit log to database:", error);
+      logger.error('Failed to persist audit log to database:', error);
       // Fall through to memory storage
     }
   }
@@ -197,10 +201,10 @@ export async function logAuditEvent(event: Omit<AuditLogEntry, "id" | "timestamp
   }
 
   // Warn in production if falling back to memory
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.NODE_ENV === 'production') {
     logger.warn(
-      "⚠️ Audit log stored in memory (not persisted). " +
-      "Ensure database is configured and userId is provided for production audit logging."
+      '⚠️ Audit log stored in memory (not persisted). ' +
+        'Ensure database is configured and userId is provided for production audit logging.'
     );
   }
 }
@@ -212,220 +216,234 @@ export const AuditLog = {
   // Authentication
   login: (userId: string, email: string, ip?: string) =>
     logAuditEvent({
-      eventType: "auth.login",
+      eventType: 'auth.login',
       userId,
       userEmail: email,
       ipAddress: ip,
-      action: "User logged in",
-      result: "success",
-      severity: "low",
+      action: 'User logged in',
+      result: 'success',
+      severity: 'low',
     }),
 
   failedLogin: (email: string, ip?: string) =>
     logAuditEvent({
-      eventType: "auth.failed_login",
+      eventType: 'auth.failed_login',
       userEmail: email,
       ipAddress: ip,
-      action: "Failed login attempt",
-      result: "failure",
-      severity: "medium",
+      action: 'Failed login attempt',
+      result: 'failure',
+      severity: 'medium',
     }),
 
-  suspiciousLogin: (userId: string, email: string, reason: string, ip?: string) =>
+  suspiciousLogin: (
+    userId: string,
+    email: string,
+    reason: string,
+    ip?: string
+  ) =>
     logAuditEvent({
-      eventType: "auth.suspicious_login",
+      eventType: 'auth.suspicious_login',
       userId,
       userEmail: email,
       ipAddress: ip,
-      action: "Suspicious login detected",
-      result: "success",
-      severity: "high",
+      action: 'Suspicious login detected',
+      result: 'success',
+      severity: 'high',
       metadata: { reason },
     }),
 
   // Data access
   dataExport: (userId: string, email: string, dataType: string) =>
     logAuditEvent({
-      eventType: "data.export",
+      eventType: 'data.export',
       userId,
       userEmail: email,
       resource: dataType,
-      action: "Data exported",
-      result: "success",
-      severity: "medium",
+      action: 'Data exported',
+      result: 'success',
+      severity: 'medium',
     }),
 
   dataDelete: (userId: string, email: string, resource: string) =>
     logAuditEvent({
-      eventType: "data.delete",
+      eventType: 'data.delete',
       userId,
       userEmail: email,
       resource,
-      action: "Data deleted",
-      result: "success",
-      severity: "high",
+      action: 'Data deleted',
+      result: 'success',
+      severity: 'high',
     }),
 
   // Security events
   rateLimitExceeded: (ip: string, endpoint: string) =>
     logAuditEvent({
-      eventType: "security.rate_limit_exceeded",
+      eventType: 'security.rate_limit_exceeded',
       ipAddress: ip,
       resource: endpoint,
-      action: "Rate limit exceeded",
-      result: "failure",
-      severity: "medium",
+      action: 'Rate limit exceeded',
+      result: 'failure',
+      severity: 'medium',
     }),
 
   botDetected: (ip: string, userAgent: string, botType: string) =>
     logAuditEvent({
-      eventType: "security.bot_detected",
+      eventType: 'security.bot_detected',
       ipAddress: ip,
       userAgent,
-      action: "Bot detected",
-      result: "success",
-      severity: "low",
+      action: 'Bot detected',
+      result: 'success',
+      severity: 'low',
       metadata: { botType },
     }),
 
   xssAttempt: (userId: string | undefined, ip: string, payload: string) =>
     logAuditEvent({
-      eventType: "security.xss_attempt",
+      eventType: 'security.xss_attempt',
       userId,
       ipAddress: ip,
-      action: "XSS attack attempt detected",
-      result: "failure",
-      severity: "critical",
+      action: 'XSS attack attempt detected',
+      result: 'failure',
+      severity: 'critical',
       metadata: { payload: payload.substring(0, 200) }, // Truncate
     }),
 
-  sqlInjectionAttempt: (userId: string | undefined, ip: string, query: string) =>
+  sqlInjectionAttempt: (
+    userId: string | undefined,
+    ip: string,
+    query: string
+  ) =>
     logAuditEvent({
-      eventType: "security.sql_injection_attempt",
+      eventType: 'security.sql_injection_attempt',
       userId,
       ipAddress: ip,
-      action: "SQL injection attempt detected",
-      result: "failure",
-      severity: "critical",
+      action: 'SQL injection attempt detected',
+      result: 'failure',
+      severity: 'critical',
       metadata: { query: query.substring(0, 200) }, // Truncate
     }),
 
   // GDPR
   gdprDataExported: (userId: string, email: string) =>
     logAuditEvent({
-      eventType: "gdpr.data_exported",
+      eventType: 'gdpr.data_exported',
       userId,
       userEmail: email,
-      action: "GDPR data export requested",
-      result: "success",
-      severity: "medium",
+      action: 'GDPR data export requested',
+      result: 'success',
+      severity: 'medium',
     }),
 
   gdprDataDeleted: (userId: string, email: string) =>
     logAuditEvent({
-      eventType: "gdpr.data_deleted",
+      eventType: 'gdpr.data_deleted',
       userId,
       userEmail: email,
-      action: "GDPR data deletion requested",
-      result: "success",
-      severity: "high",
+      action: 'GDPR data deletion requested',
+      result: 'success',
+      severity: 'high',
     }),
 
   // Admin events
   userDeleted: (adminId: string, targetUserId: string, targetEmail: string) =>
     logAuditEvent({
-      eventType: "admin.user_deleted",
+      eventType: 'admin.user_deleted',
       userId: adminId,
-      resource: "user",
+      resource: 'user',
       action: `Admin deleted user ${targetEmail}`,
-      result: "success",
-      severity: "high",
+      result: 'success',
+      severity: 'high',
       metadata: { targetUserId, targetEmail, resourceId: targetUserId },
     }),
 
-  configChanged: (adminId: string, configKey: string, oldValue: unknown, newValue: unknown) =>
+  configChanged: (
+    adminId: string,
+    configKey: string,
+    oldValue: unknown,
+    newValue: unknown
+  ) =>
     logAuditEvent({
-      eventType: "admin.config_changed",
+      eventType: 'admin.config_changed',
       userId: adminId,
-      resource: "config",
+      resource: 'config',
       action: `Config changed: ${configKey}`,
-      result: "success",
-      severity: "medium",
+      result: 'success',
+      severity: 'medium',
       metadata: { oldValue, newValue, resourceId: configKey },
     }),
 
   // MFA events
   mfaEnabled: (userId: string, email: string) =>
     logAuditEvent({
-      eventType: "auth.mfa_enabled",
+      eventType: 'auth.mfa_enabled',
       userId,
       userEmail: email,
-      action: "MFA enabled",
-      result: "success",
-      severity: "medium",
+      action: 'MFA enabled',
+      result: 'success',
+      severity: 'medium',
     }),
 
   mfaDisabled: (userId: string, email: string) =>
     logAuditEvent({
-      eventType: "auth.mfa_disabled",
+      eventType: 'auth.mfa_disabled',
       userId,
       userEmail: email,
-      action: "MFA disabled",
-      result: "success",
-      severity: "high",
+      action: 'MFA disabled',
+      result: 'success',
+      severity: 'high',
     }),
 
   mfaVerified: (userId: string, email: string) =>
     logAuditEvent({
-      eventType: "auth.mfa_verified",
+      eventType: 'auth.mfa_verified',
       userId,
       userEmail: email,
-      action: "MFA device verified",
-      result: "success",
-      severity: "low",
+      action: 'MFA device verified',
+      result: 'success',
+      severity: 'low',
     }),
 
   mfaSuccess: (userId: string, email: string, ip?: string) =>
     logAuditEvent({
-      eventType: "auth.mfa_success",
+      eventType: 'auth.mfa_success',
       userId,
       userEmail: email,
       ipAddress: ip,
-      action: "MFA verification successful",
-      result: "success",
-      severity: "low",
+      action: 'MFA verification successful',
+      result: 'success',
+      severity: 'low',
     }),
 
   mfaFailed: (userId: string, email: string, ip?: string) =>
     logAuditEvent({
-      eventType: "auth.mfa_failed",
+      eventType: 'auth.mfa_failed',
       userId,
       userEmail: email,
       ipAddress: ip,
-      action: "MFA verification failed",
-      result: "failure",
-      severity: "medium",
+      action: 'MFA verification failed',
+      result: 'failure',
+      severity: 'medium',
     }),
 
   backupCodeUsed: (userId: string, email: string, ip?: string) =>
     logAuditEvent({
-      eventType: "auth.backup_code_used",
+      eventType: 'auth.backup_code_used',
       userId,
       userEmail: email,
       ipAddress: ip,
-      action: "Backup code used for login",
-      result: "success",
-      severity: "medium",
+      action: 'Backup code used for login',
+      result: 'success',
+      severity: 'medium',
     }),
 
   backupCodesRegenerated: (userId: string, email: string) =>
     logAuditEvent({
-      eventType: "auth.backup_codes_regenerated",
+      eventType: 'auth.backup_codes_regenerated',
       userId,
       userEmail: email,
-      action: "Backup codes regenerated",
-      result: "success",
-      severity: "medium",
+      action: 'Backup codes regenerated',
+      result: 'success',
+      severity: 'medium',
     }),
 };
 
@@ -437,7 +455,7 @@ export async function queryAuditLogs(filters: {
   eventType?: AuditEventType;
   startDate?: Date;
   endDate?: Date;
-  severity?: AuditLogEntry["severity"];
+  severity?: AuditLogEntry['severity'];
   limit?: number;
 }): Promise<AuditLogEntry[]> {
   const dbAvailable = await isDatabaseAvailable();
@@ -451,7 +469,7 @@ export async function queryAuditLogs(filters: {
           ...(filters.startDate && { createdAt: { gte: filters.startDate } }),
           ...(filters.endDate && { createdAt: { lte: filters.endDate } }),
         },
-        orderBy: { createdAt: "desc" },
+        orderBy: { createdAt: 'desc' },
         take: filters.limit || 100,
       });
 
@@ -468,14 +486,17 @@ export async function queryAuditLogs(filters: {
           userAgent: metadata?.userAgent as string | undefined,
           resource: log.resource || undefined,
           action: (metadata?.originalAction as string) || log.action,
-          result: (metadata?.result as "success" | "failure" | "error") || "success",
-          severity: (metadata?.severity as "low" | "medium" | "high" | "critical") || "low",
+          result:
+            (metadata?.result as 'success' | 'failure' | 'error') || 'success',
+          severity:
+            (metadata?.severity as 'low' | 'medium' | 'high' | 'critical') ||
+            'low',
           metadata: metadata || undefined,
           hash: metadata?.hash as string | undefined,
         };
       });
     } catch (error) {
-      logger.error("Failed to query audit logs from database:", error);
+      logger.error('Failed to query audit logs from database:', error);
       // Fall through to memory logs
     }
   }
@@ -533,7 +554,7 @@ export async function getSecuritySummary(since: Date): Promise<{
   });
 
   const criticalEvents = logs.filter(
-    (log) => log.severity === "critical" || log.severity === "high"
+    (log) => log.severity === 'critical' || log.severity === 'high'
   );
 
   return {
@@ -547,7 +568,9 @@ export async function getSecuritySummary(since: Date): Promise<{
 /**
  * Export audit logs to JSON
  */
-export async function exportAuditLogs(filters?: Parameters<typeof queryAuditLogs>[0]): Promise<string> {
+export async function exportAuditLogs(
+  filters?: Parameters<typeof queryAuditLogs>[0]
+): Promise<string> {
   const logs = await queryAuditLogs(filters || {});
   return JSON.stringify(logs, null, 2);
 }
@@ -555,7 +578,9 @@ export async function exportAuditLogs(filters?: Parameters<typeof queryAuditLogs
 /**
  * Verify log integrity (check for tampering)
  */
-export async function verifyLogIntegrity(entry: AuditLogEntry): Promise<boolean> {
+export async function verifyLogIntegrity(
+  entry: AuditLogEntry
+): Promise<boolean> {
   const { hash, ...entryWithoutHash } = entry;
   if (!hash) return false;
   const expectedHash = await generateEntryHash(entryWithoutHash);
@@ -566,14 +591,14 @@ export async function verifyLogIntegrity(entry: AuditLogEntry): Promise<boolean>
  * Get audit logging status for health checks
  */
 export async function getAuditLoggingStatus(): Promise<{
-  mode: "database" | "memory";
+  mode: 'database' | 'memory';
   healthy: boolean;
   memoryLogCount: number;
 }> {
   const dbAvailable = await isDatabaseAvailable();
 
   return {
-    mode: dbAvailable ? "database" : "memory",
+    mode: dbAvailable ? 'database' : 'memory',
     healthy: dbAvailable,
     memoryLogCount: memoryLogs.length,
   };

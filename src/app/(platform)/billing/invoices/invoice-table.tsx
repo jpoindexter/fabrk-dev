@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
 import {
   Table,
   TableBody,
@@ -9,12 +9,12 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
-import { Download, Loader2 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+} from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
+import { Download, Loader2 } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 interface Payment {
   id: string;
@@ -35,21 +35,30 @@ export function InvoiceTable({ payments }: InvoiceTableProps) {
 
   const getStatusBadge = (status: string) => {
     switch (status) {
-      case "succeeded":
+      case 'succeeded':
         return (
-          <Badge variant="default" className="w-24 justify-center font-semibold">
+          <Badge
+            variant="default"
+            className="w-24 justify-center font-semibold"
+          >
             Paid
           </Badge>
         );
-      case "failed":
+      case 'failed':
         return (
-          <Badge variant="outline" className="w-24 justify-center font-semibold">
+          <Badge
+            variant="outline"
+            className="w-24 justify-center font-semibold"
+          >
             Failed
           </Badge>
         );
       default:
         return (
-          <Badge variant="secondary" className="w-24 justify-center font-semibold">
+          <Badge
+            variant="secondary"
+            className="w-24 justify-center font-semibold"
+          >
             Pending
           </Badge>
         );
@@ -57,17 +66,17 @@ export function InvoiceTable({ payments }: InvoiceTableProps) {
   };
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
     }).format(amount / 100);
   };
 
   const formatDate = (date: Date) => {
-    return new Intl.DateTimeFormat("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
+    return new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
     }).format(new Date(date));
   };
 
@@ -105,19 +114,22 @@ export function InvoiceTable({ payments }: InvoiceTableProps) {
 
       if (!response.ok) {
         const data = await response.json();
-        throw new Error(data.error || "Failed to retrieve invoice");
+        throw new Error(data.error || 'Failed to retrieve invoice');
       }
 
       const { url } = await response.json();
 
       // Open Stripe's hosted invoice in new window
       // User can view and download the PDF from there
-      window.open(url, "_blank", "noopener,noreferrer");
+      window.open(url, '_blank', 'noopener,noreferrer');
 
-      success("Invoice opened", "The invoice has been opened in a new window");
+      success('Invoice opened', 'The invoice has been opened in a new window');
     } catch (err: unknown) {
-      console.error("Invoice download error:", err);
-      error("Download failed", err instanceof Error ? err.message : "Failed to download invoice");
+      console.error('Invoice download error:', err);
+      error(
+        'Download failed',
+        err instanceof Error ? err.message : 'Failed to download invoice'
+      );
     } finally {
       setDownloadingId(null);
     }
@@ -137,19 +149,25 @@ export function InvoiceTable({ payments }: InvoiceTableProps) {
       <TableBody>
         {payments.map((payment) => (
           <TableRow key={payment.id}>
-            <TableCell className="font-medium">{formatDate(payment.createdAt)}</TableCell>
+            <TableCell className="font-medium">
+              {formatDate(payment.createdAt)}
+            </TableCell>
             <TableCell>
               <div>
-                <p className="font-medium">{payment.productId || "One-time purchase"}</p>
+                <p className="font-medium">
+                  {payment.productId || 'One-time purchase'}
+                </p>
                 <p className="text-muted-foreground text-xs">
                   Invoice #{payment.stripeId?.slice(-8)}
                 </p>
               </div>
             </TableCell>
-            <TableCell className={mode.font}>{formatCurrency(payment.amount)}</TableCell>
+            <TableCell className={mode.font}>
+              {formatCurrency(payment.amount)}
+            </TableCell>
             <TableCell>{getStatusBadge(payment.status)}</TableCell>
             <TableCell className="text-right">
-              {payment.status === "succeeded" && (
+              {payment.status === 'succeeded' && (
                 <Button
                   variant="ghost"
                   size="sm"
@@ -161,7 +179,7 @@ export function InvoiceTable({ payments }: InvoiceTableProps) {
                   ) : (
                     <Download className="mr-2 h-4 w-4" />
                   )}
-                  {downloadingId === payment.id ? "Opening..." : "Download"}
+                  {downloadingId === payment.id ? 'Opening...' : 'Download'}
                 </Button>
               )}
             </TableCell>

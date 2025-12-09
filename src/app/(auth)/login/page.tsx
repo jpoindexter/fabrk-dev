@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Github, Lock } from "lucide-react";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Github, Lock } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export default function LoginPage() {
   return (
@@ -17,14 +17,18 @@ export default function LoginPage() {
         <div className="border-border bg-card mx-auto mb-2 flex h-10 w-10 items-center justify-center border">
           <Lock className="text-primary h-5 w-5" />
         </div>
-        <h1 className={cn(mode.font, "text-2xl font-semibold tracking-tight")}>Welcome back</h1>
-        <p className="text-muted-foreground text-sm">Enter your email to sign in to your account</p>
+        <h1 className={cn(mode.font, 'text-2xl font-semibold tracking-tight')}>
+          Welcome back
+        </h1>
+        <p className="text-muted-foreground text-sm">
+          Enter your email to sign in to your account
+        </p>
       </div>
 
       {/* Login Form */}
       <form className="space-y-4">
         <div className="space-y-2">
-          <Label htmlFor="email" className={cn(mode.font, "text-xs")}>
+          <Label htmlFor="email" className={cn(mode.font, 'text-xs')}>
             [EMAIL]:
           </Label>
           <Input
@@ -34,15 +38,18 @@ export default function LoginPage() {
             autoCapitalize="none"
             autoComplete="email"
             autoCorrect="off"
-            className={cn(mode.radius, mode.font, "text-xs")}
+            className={cn(mode.radius, mode.font, 'text-xs')}
           />
         </div>
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <Label htmlFor="password" className={cn(mode.font, "text-xs")}>
+            <Label htmlFor="password" className={cn(mode.font, 'text-xs')}>
               [PASSWORD]:
             </Label>
-            <Link href="/forgot-password" className="text-primary text-xs hover:underline">
+            <Link
+              href="/forgot-password"
+              className="text-primary text-xs hover:underline"
+            >
               Forgot password?
             </Link>
           </div>
@@ -51,7 +58,7 @@ export default function LoginPage() {
             type="password"
             placeholder="••••••••"
             autoComplete="current-password"
-            className={cn(mode.radius, mode.font, "text-xs")}
+            className={cn(mode.radius, mode.font, 'text-xs')}
           />
         </div>
 
@@ -59,13 +66,19 @@ export default function LoginPage() {
           <Checkbox id="remember" className={cn(mode.radius)} />
           <Label
             htmlFor="remember"
-            className={cn(mode.font, "text-muted-foreground text-xs font-normal")}
+            className={cn(
+              mode.font,
+              'text-muted-foreground text-xs font-normal'
+            )}
           >
             Remember me for 30 days
           </Label>
         </div>
 
-        <Button className={cn(mode.radius, mode.font, "w-full text-xs")} type="submit">
+        <Button
+          className={cn(mode.radius, mode.font, 'w-full text-xs')}
+          type="submit"
+        >
           &gt; SIGN_IN
         </Button>
       </form>
@@ -76,17 +89,25 @@ export default function LoginPage() {
           <span className="border-border w-full border-t" />
         </div>
         <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-background text-muted-foreground px-2">Or continue with</span>
+          <span className="bg-background text-muted-foreground px-2">
+            Or continue with
+          </span>
         </div>
       </div>
 
       {/* Social Auth */}
       <div className="grid grid-cols-2 gap-4">
-        <Button variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
+        <Button
+          variant="outline"
+          className={cn(mode.radius, mode.font, 'text-xs')}
+        >
           <Github className="mr-2 h-4 w-4" />
           GitHub
         </Button>
-        <Button variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
+        <Button
+          variant="outline"
+          className={cn(mode.radius, mode.font, 'text-xs')}
+        >
           {/* eslint-disable design-system/no-hardcoded-colors -- Google brand colors are intentional */}
           <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
             <path
@@ -113,8 +134,11 @@ export default function LoginPage() {
 
       {/* Footer */}
       <p className="text-muted-foreground text-center text-sm">
-        Don&apos;t have an account?{" "}
-        <Link href="/register" className="hover:text-primary underline underline-offset-4">
+        Don&apos;t have an account?{' '}
+        <Link
+          href="/register"
+          className="hover:text-primary underline underline-offset-4"
+        >
           Sign up
         </Link>
       </p>

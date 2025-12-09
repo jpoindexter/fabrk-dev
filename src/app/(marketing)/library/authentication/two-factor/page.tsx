@@ -2,17 +2,26 @@
  * Two-Factor Auth Template - Terminal console style
  * Industry-standard Preview/Code tabbed interface
  */
-"use client";
+'use client';
 
-import Link from "next/link";
-import { ShieldCheck, ArrowLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent, TemplatePageHeader } from "@/components/ui/card";
-import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { CodeBlock } from "@/components/ui/code-block";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import Link from 'next/link';
+import { ShieldCheck, ArrowLeft } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  TemplatePageHeader,
+} from '@/components/ui/card';
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from '@/components/ui/input-otp';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { CodeBlock } from '@/components/ui/code-block';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 const templateCode = `"use client";
 
@@ -94,12 +103,14 @@ function TwoFactorPreview() {
           <div className="border-border bg-card mx-auto mb-2 flex h-10 w-10 items-center justify-center border">
             <ShieldCheck className="text-primary h-5 w-5" />
           </div>
-          <h1 className={cn(mode.font, "text-2xl font-semibold tracking-tight")}>
+          <h1
+            className={cn(mode.font, 'text-2xl font-semibold tracking-tight')}
+          >
             Two-factor authentication
           </h1>
           <p className="text-muted-foreground text-sm">
-            We sent a verification code to your email. Enter the code from the email in the field
-            below.
+            We sent a verification code to your email. Enter the code from the
+            email in the field below.
           </p>
         </div>
 
@@ -119,14 +130,17 @@ function TwoFactorPreview() {
               </InputOTP>
             </div>
 
-            <Button className={cn(mode.radius, mode.font, "w-full text-xs")} type="submit">
+            <Button
+              className={cn(mode.radius, mode.font, 'w-full text-xs')}
+              type="submit"
+            >
               &gt; VERIFY
             </Button>
           </form>
 
           <div className="text-center text-sm">
             <p className="text-muted-foreground">
-              Didn&apos;t receive the code?{" "}
+              Didn&apos;t receive the code?{' '}
               <Button variant="link" className="text-primary h-auto p-0">
                 Resend
               </Button>
@@ -167,14 +181,14 @@ export default function TwoFactorTemplate() {
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
-                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  'h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0',
                   mode.radius
                 )}
               >
                 <TabsTrigger
                   value="preview"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -184,7 +198,7 @@ export default function TwoFactorTemplate() {
                 <TabsTrigger
                   value="code"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -208,7 +222,11 @@ export default function TwoFactorTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+                <CodeBlock
+                  code={templateCode}
+                  language="tsx"
+                  maxHeight="600px"
+                />
               </div>
             </Card>
           </TabsContent>
@@ -218,14 +236,16 @@ export default function TwoFactorTemplate() {
         <Card>
           <CardHeader code="0x02" title="FILE_STRUCTURE" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-1 text-xs")}>
+            <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>
               <div className="space-y-1 pl-4">
                 <div>
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">(auth)/</span>
                   <span className="text-foreground">two-factor/page.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Copy template here</span>
+                  <span className="text-muted-foreground ml-4">
+                    ← Copy template here
+                  </span>
                 </div>
               </div>
             </div>
@@ -236,21 +256,26 @@ export default function TwoFactorTemplate() {
         <Card>
           <CardHeader code="0x03" title="FEATURES" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-2 text-xs")}>
+            <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> OTP input with 6-digit slots
+                <span className="text-success">&gt;</span> OTP input with
+                6-digit slots
               </div>
               <div>
-                <span className="text-success">&gt;</span> Auto-focus and keyboard navigation
+                <span className="text-success">&gt;</span> Auto-focus and
+                keyboard navigation
               </div>
               <div>
-                <span className="text-success">&gt;</span> Resend code functionality
+                <span className="text-success">&gt;</span> Resend code
+                functionality
               </div>
               <div>
-                <span className="text-success">&gt;</span> Back to login navigation
+                <span className="text-success">&gt;</span> Back to login
+                navigation
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant
+                (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

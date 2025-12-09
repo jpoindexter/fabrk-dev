@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import {
   Form,
   FormControl,
@@ -13,11 +13,11 @@ import {
   FormField,
   FormItem,
   FormLabel,
-} from "@/components/ui/form";
-import { Switch } from "@/components/ui/switch";
-import { useToast } from "@/hooks/use-toast";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+} from '@/components/ui/form';
+import { Switch } from '@/components/ui/switch';
+import { useToast } from '@/hooks/use-toast';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 const notificationsFormSchema = z.object({
   marketingEmails: z.boolean(),
@@ -46,10 +46,10 @@ export function NotificationsForm() {
     setIsLoading(true);
 
     try {
-      const response = await fetch("/api/user/settings", {
-        method: "PATCH",
+      const response = await fetch('/api/user/settings', {
+        method: 'PATCH',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ notifications: data }),
       });
@@ -57,19 +57,21 @@ export function NotificationsForm() {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || "Failed to update notification settings");
+        throw new Error(
+          result.error || 'Failed to update notification settings'
+        );
       }
 
       toast({
-        title: "Settings saved",
-        description: "Your notification preferences have been updated.",
+        title: 'Settings saved',
+        description: 'Your notification preferences have been updated.',
       });
     } catch (err: unknown) {
       error(
-        "Error",
+        'Error',
         err instanceof Error
           ? err.message
-          : "Failed to update notification settings. Please try again."
+          : 'Failed to update notification settings. Please try again.'
       );
     } finally {
       setIsLoading(false);
@@ -88,9 +90,12 @@ export function NotificationsForm() {
               render={({ field }) => (
                 <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className={cn(mode.font, "text-xs")}>[SECURITY_ALERTS]:</FormLabel>
-                    <FormDescription className={cn(mode.font, "text-xs")}>
-                      Receive alerts for suspicious activity and security events.
+                    <FormLabel className={cn(mode.font, 'text-xs')}>
+                      [SECURITY_ALERTS]:
+                    </FormLabel>
+                    <FormDescription className={cn(mode.font, 'text-xs')}>
+                      Receive alerts for suspicious activity and security
+                      events.
                     </FormDescription>
                   </div>
                   <FormControl>
@@ -114,8 +119,10 @@ export function NotificationsForm() {
               render={({ field }) => (
                 <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className={cn(mode.font, "text-xs")}>[PRODUCT_UPDATES]:</FormLabel>
-                    <FormDescription className={cn(mode.font, "text-xs")}>
+                    <FormLabel className={cn(mode.font, 'text-xs')}>
+                      [PRODUCT_UPDATES]:
+                    </FormLabel>
+                    <FormDescription className={cn(mode.font, 'text-xs')}>
                       Get notified about new features and improvements.
                     </FormDescription>
                   </div>
@@ -140,8 +147,10 @@ export function NotificationsForm() {
               render={({ field }) => (
                 <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className={cn(mode.font, "text-xs")}>[MARKETING_EMAILS]:</FormLabel>
-                    <FormDescription className={cn(mode.font, "text-xs")}>
+                    <FormLabel className={cn(mode.font, 'text-xs')}>
+                      [MARKETING_EMAILS]:
+                    </FormLabel>
+                    <FormDescription className={cn(mode.font, 'text-xs')}>
                       Receive promotional emails and special offers.
                     </FormDescription>
                   </div>
@@ -166,8 +175,10 @@ export function NotificationsForm() {
               render={({ field }) => (
                 <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className={cn(mode.font, "text-xs")}>[WEEKLY_SUMMARY]:</FormLabel>
-                    <FormDescription className={cn(mode.font, "text-xs")}>
+                    <FormLabel className={cn(mode.font, 'text-xs')}>
+                      [WEEKLY_SUMMARY]:
+                    </FormLabel>
+                    <FormDescription className={cn(mode.font, 'text-xs')}>
                       Get a weekly digest of your account activity.
                     </FormDescription>
                   </div>
@@ -189,9 +200,9 @@ export function NotificationsForm() {
             <Button
               type="submit"
               disabled={isLoading}
-              className={cn(mode.radius, mode.font, "text-xs")}
+              className={cn(mode.radius, mode.font, 'text-xs')}
             >
-              {isLoading ? "> SAVING..." : "> SAVE_CHANGES"}
+              {isLoading ? '> SAVING...' : '> SAVE_CHANGES'}
             </Button>
           </form>
         </Form>

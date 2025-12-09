@@ -87,14 +87,14 @@ className={cn(
 
 ```tsx
 // Base styles in badgeVariants
-"uppercase"; // Always uppercase, not conditional
+'uppercase'; // Always uppercase, not conditional
 ```
 
 **Comparison to Button:**
 
 ```tsx
 // Button component (conditional)
-mode.textTransform === "uppercase" && "uppercase";
+mode.textTransform === 'uppercase' && 'uppercase';
 ```
 
 **Inconsistency:** Badge always uppercase, Button conditionally uppercase based on mode.
@@ -157,7 +157,7 @@ Automatic icon sizing via CSS:
 **Base Styles:**
 
 ```tsx
-"inline-flex items-center justify-center border w-fit whitespace-nowrap shrink-0";
+'inline-flex items-center justify-center border w-fit whitespace-nowrap shrink-0';
 ```
 
 **Key Properties:**
@@ -255,10 +255,10 @@ Automatic icon sizing via CSS:
 
 ```tsx
 // Badge (hardcoded uppercase)
-"uppercase";
+'uppercase';
 
 // Button (conditional uppercase)
-mode.textTransform === "uppercase" && "uppercase";
+mode.textTransform === 'uppercase' && 'uppercase';
 ```
 
 **Impact:**
@@ -275,13 +275,13 @@ cn(
   badgeVariants({ variant, size }),
   mode.radius,
   mode.font,
-  mode.textTransform === "uppercase" && "uppercase",
+  mode.textTransform === 'uppercase' && 'uppercase',
   className
 );
 
 // Option 2: Add to mode.textTransform class directly
 // In design-system/index.ts:
-textTransform: isTerminal ? "uppercase" : "normal-case";
+textTransform: isTerminal ? 'uppercase' : 'normal-case';
 
 // Then in Badge:
 cn(

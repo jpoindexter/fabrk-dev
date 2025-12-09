@@ -3,13 +3,13 @@
  * Pagination controls for user data table.
  */
 
-"use client";
+'use client';
 
-import { Table } from "@tanstack/react-table";
-import { Button } from "@/components/ui/button";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
-import { UserData } from "./user-table-columns";
+import { Table } from '@tanstack/react-table';
+import { Button } from '@/components/ui/button';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
+import { UserData } from './user-table-columns';
 
 interface UserTablePaginationProps {
   table: Table<UserData>;
@@ -20,10 +20,11 @@ export function UserTablePagination({ table }: UserTablePaginationProps) {
 
   return (
     <div className="flex items-center justify-between">
-      <div className={cn("text-muted-foreground text-sm", mode.font)}>
+      <div className={cn('text-muted-foreground text-sm', mode.font)}>
         {selectedRows.length > 0 && (
           <span>
-            {selectedRows.length} of {table.getFilteredRowModel().rows.length} row(s) selected
+            {selectedRows.length} of {table.getFilteredRowModel().rows.length}{' '}
+            row(s) selected
           </span>
         )}
       </div>
@@ -36,8 +37,9 @@ export function UserTablePagination({ table }: UserTablePaginationProps) {
         >
           Previous
         </Button>
-        <div className={cn("text-muted-foreground text-sm", mode.font)}>
-          Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
+        <div className={cn('text-muted-foreground text-sm', mode.font)}>
+          Page {table.getState().pagination.pageIndex + 1} of{' '}
+          {table.getPageCount()}
         </div>
         <Button
           variant="outline"

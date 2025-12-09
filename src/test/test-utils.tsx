@@ -3,28 +3,28 @@
  * Helper functions for testing
  */
 
-import { render, RenderOptions } from "@testing-library/react";
-import { ReactElement, ReactNode } from "react";
-import { SessionProvider } from "next-auth/react";
-import { vi, expect } from "vitest";
+import { render, RenderOptions } from '@testing-library/react';
+import { ReactElement, ReactNode } from 'react';
+import { SessionProvider } from 'next-auth/react';
+import { vi, expect } from 'vitest';
 
 // Mock session data
 export const mockSession = {
   user: {
-    id: "test-user-id",
-    name: "Test User",
-    email: "test@example.com",
-    role: "USER",
+    id: 'test-user-id',
+    name: 'Test User',
+    email: 'test@example.com',
+    role: 'USER',
   },
   expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
 };
 
 export const mockAdminSession = {
   user: {
-    id: "admin-user-id",
-    name: "Admin User",
-    email: "admin@example.com",
-    role: "ADMIN",
+    id: 'admin-user-id',
+    name: 'Admin User',
+    email: 'admin@example.com',
+    role: 'ADMIN',
   },
   expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
 };
@@ -40,7 +40,7 @@ function Providers({ children, session }: ProvidersProps) {
   return <SessionProvider session={session}>{children}</SessionProvider>;
 }
 
-interface CustomRenderOptions extends Omit<RenderOptions, "wrapper"> {
+interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   session?: any;
 }
@@ -64,7 +64,7 @@ export function renderWithProviders(
 export function mockApiResponse(data: any, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
-    headers: { "Content-Type": "application/json" },
+    headers: { 'Content-Type': 'application/json' },
   });
 }
 
@@ -138,13 +138,13 @@ export function createMockStripe() {
 // Create test user
 export function createTestUser(overrides = {}) {
   return {
-    id: "test-user-id",
-    name: "Test User",
-    email: "test@example.com",
+    id: 'test-user-id',
+    name: 'Test User',
+    email: 'test@example.com',
     emailVerified: new Date(),
     image: null,
-    role: "USER",
-    tier: "FREE",
+    role: 'USER',
+    tier: 'FREE',
     customerId: null,
     verifyToken: null,
     resetToken: null,
@@ -158,12 +158,12 @@ export function createTestUser(overrides = {}) {
 // Create test payment
 export function createTestPayment(overrides = {}) {
   return {
-    id: "test-payment-id",
-    stripeId: "pi_test_123",
-    userId: "test-user-id",
+    id: 'test-payment-id',
+    stripeId: 'pi_test_123',
+    userId: 'test-user-id',
     amount: 9900,
-    status: "succeeded",
-    productId: "price_test_123",
+    status: 'succeeded',
+    productId: 'price_test_123',
     createdAt: new Date(),
     ...overrides,
   };
@@ -193,4 +193,4 @@ export function expectErrorResponse(
 }
 
 // Re-export everything from @testing-library/react
-export * from "@testing-library/react";
+export * from '@testing-library/react';

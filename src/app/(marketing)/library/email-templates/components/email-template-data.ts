@@ -2,9 +2,9 @@
  * Email template data and configuration
  */
 
-import { Mail, Key, Shield, CreditCard, Bell } from "lucide-react";
-import { generateWelcomeEmailHTML } from "@/emails/welcome-html";
-import { generateVerifyEmailHTML } from "@/emails/verify-email";
+import { Mail, Key, Shield, CreditCard, Bell } from 'lucide-react';
+import { generateWelcomeEmailHTML } from '@/emails/welcome-html';
+import { generateVerifyEmailHTML } from '@/emails/verify-email';
 
 export interface EmailTemplate {
   id: string;
@@ -19,40 +19,40 @@ export interface EmailTemplate {
 
 export const emailTemplates: EmailTemplate[] = [
   {
-    id: "welcome",
-    name: "Welcome Email",
-    description: "Sent after successful purchase with license key",
+    id: 'welcome',
+    name: 'Welcome Email',
+    description: 'Sent after successful purchase with license key',
     icon: Mail,
-    category: "ONBOARDING",
-    triggers: ["Purchase completed", "Account created"],
-    variables: ["name", "licenseKey", "downloadUrl"],
+    category: 'ONBOARDING',
+    triggers: ['Purchase completed', 'Account created'],
+    variables: ['name', 'licenseKey', 'downloadUrl'],
     preview: generateWelcomeEmailHTML({
-      name: "John Doe",
-      licenseKey: "FABRK-2024-ABC123DEF456",
-      downloadUrl: "https://fabrk.ai/download/abc123",
+      name: 'John Doe',
+      licenseKey: 'FABRK-2024-ABC123DEF456',
+      downloadUrl: 'https://fabrk.ai/download/abc123',
     }),
   },
   {
-    id: "verify",
-    name: "Email Verification",
-    description: "Confirm email address for new accounts",
+    id: 'verify',
+    name: 'Email Verification',
+    description: 'Confirm email address for new accounts',
     icon: Shield,
-    category: "AUTH",
-    triggers: ["User registration"],
-    variables: ["name", "verificationUrl"],
+    category: 'AUTH',
+    triggers: ['User registration'],
+    variables: ['name', 'verificationUrl'],
     preview: generateVerifyEmailHTML({
-      name: "John Doe",
-      verificationUrl: "https://fabrk.ai/verify?token=abc123",
+      name: 'John Doe',
+      verificationUrl: 'https://fabrk.ai/verify?token=abc123',
     }),
   },
   {
-    id: "reset",
-    name: "Password Reset",
-    description: "Secure password reset link",
+    id: 'reset',
+    name: 'Password Reset',
+    description: 'Secure password reset link',
     icon: Key,
-    category: "AUTH",
-    triggers: ["Forgot password request"],
-    variables: ["name", "resetUrl", "ipAddress"],
+    category: 'AUTH',
+    triggers: ['Forgot password request'],
+    variables: ['name', 'resetUrl', 'ipAddress'],
     preview: `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,13 +103,13 @@ export const emailTemplates: EmailTemplate[] = [
 </html>`,
   },
   {
-    id: "purchase",
-    name: "Purchase Confirmation",
-    description: "Order receipt and next steps",
+    id: 'purchase',
+    name: 'Purchase Confirmation',
+    description: 'Order receipt and next steps',
     icon: CreditCard,
-    category: "BILLING",
-    triggers: ["Payment succeeded"],
-    variables: ["name", "amount", "orderId", "date"],
+    category: 'BILLING',
+    triggers: ['Payment succeeded'],
+    variables: ['name', 'amount', 'orderId', 'date'],
     preview: `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -171,13 +171,13 @@ export const emailTemplates: EmailTemplate[] = [
 </html>`,
   },
   {
-    id: "subscription",
-    name: "Subscription Update",
-    description: "Plan changes, renewals, and cancellations",
+    id: 'subscription',
+    name: 'Subscription Update',
+    description: 'Plan changes, renewals, and cancellations',
     icon: Bell,
-    category: "BILLING",
-    triggers: ["Subscription updated", "Payment renewed"],
-    variables: ["name", "plan", "status", "nextBillingDate"],
+    category: 'BILLING',
+    triggers: ['Subscription updated', 'Payment renewed'],
+    variables: ['name', 'plan', 'status', 'nextBillingDate'],
     preview: `<!DOCTYPE html>
 <html lang="en">
 <head>

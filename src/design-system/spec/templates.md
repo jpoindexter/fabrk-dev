@@ -337,7 +337,7 @@ interface AuthPageTemplateProps {
   fields: Array<{
     name: string;
     label: string;
-    type: "text" | "email" | "password";
+    type: 'text' | 'email' | 'password';
     placeholder?: string;
     required?: boolean;
   }>;
@@ -402,7 +402,7 @@ interface DashboardPageTemplateProps {
   stats?: Array<{
     label: string;
     value: string | number;
-    change?: { value: number; direction: "up" | "down" };
+    change?: { value: number; direction: 'up' | 'down' };
     icon?: React.ReactNode;
   }>;
 
@@ -413,7 +413,7 @@ interface DashboardPageTemplateProps {
   actions?: Array<{
     label: string;
     onClick: () => void;
-    variant?: "primary" | "secondary";
+    variant?: 'primary' | 'secondary';
   }>;
 
   dateRange?: boolean;
@@ -552,7 +552,7 @@ interface DetailPageTemplateProps {
   actions?: Array<{
     label: string;
     onClick: () => void;
-    variant?: "primary" | "secondary" | "destructive";
+    variant?: 'primary' | 'secondary' | 'destructive';
   }>;
 
   // Content

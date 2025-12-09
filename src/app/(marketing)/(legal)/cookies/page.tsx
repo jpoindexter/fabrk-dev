@@ -3,19 +3,26 @@
  * How we use cookies and similar tracking technologies - Terminal Console Style
  */
 
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { Card, CardHeader, CardContent, Badge } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Cookie, Settings, Shield, Globe, RefreshCw, HelpCircle } from "lucide-react";
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { Card, CardHeader, CardContent, Badge } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import {
+  Cookie,
+  Settings,
+  Shield,
+  Globe,
+  RefreshCw,
+  HelpCircle,
+} from 'lucide-react';
 
 export default function CookiesPage() {
   return (
-    <main className={cn("container mx-auto max-w-4xl px-6 py-16", mode.font)}>
+    <main className={cn('container mx-auto max-w-4xl px-6 py-16', mode.font)}>
       {/* Header */}
       <div className="mb-12 text-center">
         <motion.div
@@ -31,8 +38,15 @@ export default function CookiesPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <h1 className={cn("text-muted-foreground mb-2 text-sm", mode.font)}>FABRK_LEGAL:</h1>
-          <h2 className={cn("mb-4 text-4xl font-semibold tracking-tight", mode.font)}>
+          <h1 className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>
+            FABRK_LEGAL:
+          </h1>
+          <h2
+            className={cn(
+              'mb-4 text-4xl font-semibold tracking-tight',
+              mode.font
+            )}
+          >
             COOKIE_POLICY
           </h2>
         </motion.div>
@@ -41,7 +55,7 @@ export default function CookiesPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <span className={cn("text-muted-foreground text-xs", mode.font)}>
+          <span className={cn('text-muted-foreground text-xs', mode.font)}>
             [LAST_UPDATED]: November 26, 2025
           </span>
         </motion.div>
@@ -55,11 +69,15 @@ export default function CookiesPage() {
         className="mb-12"
       >
         <Card size="auto">
-          <CardHeader code="0x01" title="OVERVIEW" icon={<Cookie className="size-4" />} />
+          <CardHeader
+            code="0x01"
+            title="OVERVIEW"
+            icon={<Cookie className="size-4" />}
+          />
           <CardContent padding="md">
-            <p className={cn("text-muted-foreground text-xs", mode.font)}>
-              This Cookie Policy explains how Fabrk uses cookies and similar technologies to
-              recognize you when you visit our website.
+            <p className={cn('text-muted-foreground text-xs', mode.font)}>
+              This Cookie Policy explains how Fabrk uses cookies and similar
+              technologies to recognize you when you visit our website.
             </p>
           </CardContent>
         </Card>
@@ -68,29 +86,42 @@ export default function CookiesPage() {
       <div className="space-y-6">
         {/* Section 1 */}
         <Card size="auto">
-          <CardHeader code="0x10" title="WHAT_ARE_COOKIES" icon={<Cookie className="size-4" />} />
+          <CardHeader
+            code="0x10"
+            title="WHAT_ARE_COOKIES"
+            icon={<Cookie className="size-4" />}
+          />
           <CardContent padding="md">
-            <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
-              Cookies are small text files placed on your device when you visit a website. They are
-              widely used to make websites work efficiently and provide information to website
-              owners.
+            <p className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
+              Cookies are small text files placed on your device when you visit
+              a website. They are widely used to make websites work efficiently
+              and provide information to website owners.
             </p>
 
-            <h3 className={cn("mb-2 text-xs font-semibold", mode.font)}>[1.1] COOKIE_TYPES</h3>
-            <ul className={cn("text-muted-foreground space-y-1 pl-4 text-xs", mode.font)}>
+            <h3 className={cn('mb-2 text-xs font-semibold', mode.font)}>
+              [1.1] COOKIE_TYPES
+            </h3>
+            <ul
+              className={cn(
+                'text-muted-foreground space-y-1 pl-4 text-xs',
+                mode.font
+              )}
+            >
               <li>
-                ├─ <span className="text-foreground">SESSION:</span> Temporary, expire when browser
-                closes
+                ├─ <span className="text-foreground">SESSION:</span> Temporary,
+                expire when browser closes
               </li>
               <li>
-                ├─ <span className="text-foreground">PERSISTENT:</span> Remain until expiry or
-                deletion
+                ├─ <span className="text-foreground">PERSISTENT:</span> Remain
+                until expiry or deletion
               </li>
               <li>
-                ├─ <span className="text-foreground">FIRST_PARTY:</span> Set by Fabrk directly
+                ├─ <span className="text-foreground">FIRST_PARTY:</span> Set by
+                Fabrk directly
               </li>
               <li>
-                └─ <span className="text-foreground">THIRD_PARTY:</span> Set by external services
+                └─ <span className="text-foreground">THIRD_PARTY:</span> Set by
+                external services
               </li>
             </ul>
           </CardContent>
@@ -98,39 +129,59 @@ export default function CookiesPage() {
 
         {/* Section 2 */}
         <Card size="auto">
-          <CardHeader code="0x20" title="COOKIES_WE_USE" icon={<Shield className="size-4" />} />
+          <CardHeader
+            code="0x20"
+            title="COOKIES_WE_USE"
+            icon={<Shield className="size-4" />}
+          />
           <CardContent padding="md">
             <div className="space-y-6">
               {/* Essential Cookies */}
               <div>
-                <h3 className={cn("mb-4 text-xs font-semibold", mode.font)}>
+                <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>
                   [2.1] ESSENTIAL_COOKIES (REQUIRED)
                 </h3>
-                <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
-                  These cookies are necessary for the website to function and cannot be disabled.
+                <p
+                  className={cn(
+                    'text-muted-foreground mb-4 text-xs',
+                    mode.font
+                  )}
+                >
+                  These cookies are necessary for the website to function and
+                  cannot be disabled.
                 </p>
                 <div
                   className={cn(
-                    "border-border bg-background overflow-x-auto border p-4",
+                    'border-border bg-background overflow-x-auto border p-4',
                     mode.radius
                   )}
                 >
-                  <table className={cn("w-full text-xs", mode.font)}>
+                  <table className={cn('w-full text-xs', mode.font)}>
                     <thead>
                       <tr className="border-border border-b">
-                        <th className="text-muted-foreground py-2 pr-4 text-left">COOKIE_NAME</th>
-                        <th className="text-muted-foreground py-2 pr-4 text-left">PURPOSE</th>
-                        <th className="text-muted-foreground py-2 text-left">DURATION</th>
+                        <th className="text-muted-foreground py-2 pr-4 text-left">
+                          COOKIE_NAME
+                        </th>
+                        <th className="text-muted-foreground py-2 pr-4 text-left">
+                          PURPOSE
+                        </th>
+                        <th className="text-muted-foreground py-2 text-left">
+                          DURATION
+                        </th>
                       </tr>
                     </thead>
                     <tbody className="text-muted-foreground">
                       <tr className="border-border/50 border-b">
-                        <td className="text-foreground py-2 pr-4">next-auth.session-token</td>
+                        <td className="text-foreground py-2 pr-4">
+                          next-auth.session-token
+                        </td>
                         <td className="py-2 pr-4">User authentication</td>
                         <td className="py-2">30 days</td>
                       </tr>
                       <tr className="border-border/50 border-b">
-                        <td className="text-foreground py-2 pr-4">next-auth.csrf-token</td>
+                        <td className="text-foreground py-2 pr-4">
+                          next-auth.csrf-token
+                        </td>
                         <td className="py-2 pr-4">CSRF protection</td>
                         <td className="py-2">Session</td>
                       </tr>
@@ -148,34 +199,50 @@ export default function CookiesPage() {
 
               {/* Functional Cookies */}
               <div>
-                <h3 className={cn("mb-4 text-xs font-semibold", mode.font)}>
+                <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>
                   [2.2] FUNCTIONAL_COOKIES (OPTIONAL)
                 </h3>
-                <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
-                  These cookies enable enhanced functionality and personalization.
+                <p
+                  className={cn(
+                    'text-muted-foreground mb-4 text-xs',
+                    mode.font
+                  )}
+                >
+                  These cookies enable enhanced functionality and
+                  personalization.
                 </p>
                 <div
                   className={cn(
-                    "border-border bg-background overflow-x-auto border p-4",
+                    'border-border bg-background overflow-x-auto border p-4',
                     mode.radius
                   )}
                 >
-                  <table className={cn("w-full text-xs", mode.font)}>
+                  <table className={cn('w-full text-xs', mode.font)}>
                     <thead>
                       <tr className="border-border border-b">
-                        <th className="text-muted-foreground py-2 pr-4 text-left">COOKIE_NAME</th>
-                        <th className="text-muted-foreground py-2 pr-4 text-left">PURPOSE</th>
-                        <th className="text-muted-foreground py-2 text-left">DURATION</th>
+                        <th className="text-muted-foreground py-2 pr-4 text-left">
+                          COOKIE_NAME
+                        </th>
+                        <th className="text-muted-foreground py-2 pr-4 text-left">
+                          PURPOSE
+                        </th>
+                        <th className="text-muted-foreground py-2 text-left">
+                          DURATION
+                        </th>
                       </tr>
                     </thead>
                     <tbody className="text-muted-foreground">
                       <tr className="border-border/50 border-b">
                         <td className="text-foreground py-2 pr-4">theme</td>
-                        <td className="py-2 pr-4">Light/dark mode preference</td>
+                        <td className="py-2 pr-4">
+                          Light/dark mode preference
+                        </td>
                         <td className="py-2">1 year</td>
                       </tr>
                       <tr className="border-border/50 border-b">
-                        <td className="text-foreground py-2 pr-4">color-scheme</td>
+                        <td className="text-foreground py-2 pr-4">
+                          color-scheme
+                        </td>
                         <td className="py-2 pr-4">Color scheme preference</td>
                         <td className="py-2">1 year</td>
                       </tr>
@@ -191,35 +258,54 @@ export default function CookiesPage() {
 
               {/* Analytics Cookies */}
               <div>
-                <h3 className={cn("mb-4 text-xs font-semibold", mode.font)}>
+                <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>
                   [2.3] ANALYTICS_COOKIES (OPTIONAL)
                 </h3>
-                <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
+                <p
+                  className={cn(
+                    'text-muted-foreground mb-4 text-xs',
+                    mode.font
+                  )}
+                >
                   These cookies help us understand how visitors use our website.
                 </p>
                 <div
                   className={cn(
-                    "border-border bg-background overflow-x-auto border p-4",
+                    'border-border bg-background overflow-x-auto border p-4',
                     mode.radius
                   )}
                 >
-                  <table className={cn("w-full text-xs", mode.font)}>
+                  <table className={cn('w-full text-xs', mode.font)}>
                     <thead>
                       <tr className="border-border border-b">
-                        <th className="text-muted-foreground py-2 pr-4 text-left">SERVICE</th>
-                        <th className="text-muted-foreground py-2 pr-4 text-left">PURPOSE</th>
-                        <th className="text-muted-foreground py-2 text-left">DURATION</th>
+                        <th className="text-muted-foreground py-2 pr-4 text-left">
+                          SERVICE
+                        </th>
+                        <th className="text-muted-foreground py-2 pr-4 text-left">
+                          PURPOSE
+                        </th>
+                        <th className="text-muted-foreground py-2 text-left">
+                          DURATION
+                        </th>
                       </tr>
                     </thead>
                     <tbody className="text-muted-foreground">
                       <tr className="border-border/50 border-b">
-                        <td className="text-foreground py-2 pr-4">Vercel Analytics</td>
-                        <td className="py-2 pr-4">Page views, performance (anonymized)</td>
+                        <td className="text-foreground py-2 pr-4">
+                          Vercel Analytics
+                        </td>
+                        <td className="py-2 pr-4">
+                          Page views, performance (anonymized)
+                        </td>
                         <td className="py-2">Session</td>
                       </tr>
                       <tr>
-                        <td className="text-foreground py-2 pr-4">Custom Analytics</td>
-                        <td className="py-2 pr-4">Feature usage (anonymized)</td>
+                        <td className="text-foreground py-2 pr-4">
+                          Custom Analytics
+                        </td>
+                        <td className="py-2 pr-4">
+                          Feature usage (anonymized)
+                        </td>
                         <td className="py-2">90 days</td>
                       </tr>
                     </tbody>
@@ -229,24 +315,35 @@ export default function CookiesPage() {
 
               {/* Third-Party Cookies */}
               <div>
-                <h3 className={cn("mb-4 text-xs font-semibold", mode.font)}>
+                <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>
                   [2.4] THIRD_PARTY_COOKIES
                 </h3>
-                <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
+                <p
+                  className={cn(
+                    'text-muted-foreground mb-4 text-xs',
+                    mode.font
+                  )}
+                >
                   External services may set their own cookies:
                 </p>
                 <div
                   className={cn(
-                    "border-border bg-background overflow-x-auto border p-4",
+                    'border-border bg-background overflow-x-auto border p-4',
                     mode.radius
                   )}
                 >
-                  <table className={cn("w-full text-xs", mode.font)}>
+                  <table className={cn('w-full text-xs', mode.font)}>
                     <thead>
                       <tr className="border-border border-b">
-                        <th className="text-muted-foreground py-2 pr-4 text-left">SERVICE</th>
-                        <th className="text-muted-foreground py-2 pr-4 text-left">PURPOSE</th>
-                        <th className="text-muted-foreground py-2 text-left">POLICY</th>
+                        <th className="text-muted-foreground py-2 pr-4 text-left">
+                          SERVICE
+                        </th>
+                        <th className="text-muted-foreground py-2 pr-4 text-left">
+                          PURPOSE
+                        </th>
+                        <th className="text-muted-foreground py-2 text-left">
+                          POLICY
+                        </th>
                       </tr>
                     </thead>
                     <tbody className="text-muted-foreground">
@@ -265,7 +362,9 @@ export default function CookiesPage() {
                         </td>
                       </tr>
                       <tr>
-                        <td className="text-foreground py-2 pr-4">Google OAuth</td>
+                        <td className="text-foreground py-2 pr-4">
+                          Google OAuth
+                        </td>
                         <td className="py-2 pr-4">Authentication</td>
                         <td className="py-2">
                           <a
@@ -288,56 +387,78 @@ export default function CookiesPage() {
 
         {/* Section 3 */}
         <Card size="auto">
-          <CardHeader code="0x30" title="MANAGE_COOKIES" icon={<Settings className="size-4" />} />
+          <CardHeader
+            code="0x30"
+            title="MANAGE_COOKIES"
+            icon={<Settings className="size-4" />}
+          />
           <CardContent padding="md">
             <div className="space-y-4">
               <div>
-                <h3 className={cn("mb-2 text-xs font-semibold", mode.font)}>
+                <h3 className={cn('mb-2 text-xs font-semibold', mode.font)}>
                   [3.1] BROWSER_SETTINGS
                 </h3>
-                <p className={cn("text-muted-foreground mb-2 text-xs", mode.font)}>
+                <p
+                  className={cn(
+                    'text-muted-foreground mb-2 text-xs',
+                    mode.font
+                  )}
+                >
                   Most browsers allow you to control cookies:
                 </p>
-                <ul className={cn("text-muted-foreground space-y-1 pl-4 text-xs", mode.font)}>
+                <ul
+                  className={cn(
+                    'text-muted-foreground space-y-1 pl-4 text-xs',
+                    mode.font
+                  )}
+                >
                   <li>├─ View and delete cookies individually</li>
                   <li>├─ Block third-party cookies</li>
                   <li>├─ Block cookies from specific websites</li>
                   <li>└─ Delete all cookies on browser close</li>
                 </ul>
-                <p className={cn("text-warning mt-2 text-xs", mode.font)}>
-                  [WARNING]: Blocking essential cookies prevents login and core features.
+                <p className={cn('text-warning mt-2 text-xs', mode.font)}>
+                  [WARNING]: Blocking essential cookies prevents login and core
+                  features.
                 </p>
               </div>
 
               <div>
-                <h3 className={cn("mb-2 text-xs font-semibold", mode.font)}>
+                <h3 className={cn('mb-2 text-xs font-semibold', mode.font)}>
                   [3.2] BROWSER_INSTRUCTIONS
                 </h3>
-                <ul className={cn("text-muted-foreground space-y-1 pl-4 text-xs", mode.font)}>
+                <ul
+                  className={cn(
+                    'text-muted-foreground space-y-1 pl-4 text-xs',
+                    mode.font
+                  )}
+                >
                   <li>
-                    ├─ <span className="text-foreground">CHROME:</span> Settings → Privacy → Cookies
+                    ├─ <span className="text-foreground">CHROME:</span> Settings
+                    → Privacy → Cookies
                   </li>
                   <li>
-                    ├─ <span className="text-foreground">FIREFOX:</span> Settings → Privacy →
-                    Cookies
+                    ├─ <span className="text-foreground">FIREFOX:</span>{' '}
+                    Settings → Privacy → Cookies
                   </li>
                   <li>
-                    ├─ <span className="text-foreground">SAFARI:</span> Preferences → Privacy →
-                    Manage Data
+                    ├─ <span className="text-foreground">SAFARI:</span>{' '}
+                    Preferences → Privacy → Manage Data
                   </li>
                   <li>
-                    └─ <span className="text-foreground">EDGE:</span> Settings → Cookies and
-                    permissions
+                    └─ <span className="text-foreground">EDGE:</span> Settings →
+                    Cookies and permissions
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h3 className={cn("mb-2 text-xs font-semibold", mode.font)}>
+                <h3 className={cn('mb-2 text-xs font-semibold', mode.font)}>
                   [3.3] OPT_OUT_ANALYTICS
                 </h3>
-                <p className={cn("text-muted-foreground text-xs", mode.font)}>
-                  Opt-out via account settings or by enabling "Do Not Track" in your browser.
+                <p className={cn('text-muted-foreground text-xs', mode.font)}>
+                  Opt-out via account settings or by enabling "Do Not Track" in
+                  your browser.
                 </p>
               </div>
             </div>
@@ -346,23 +467,32 @@ export default function CookiesPage() {
 
         {/* Section 4 */}
         <Card size="auto">
-          <CardHeader code="0x40" title="OTHER_TRACKING" icon={<Globe className="size-4" />} />
+          <CardHeader
+            code="0x40"
+            title="OTHER_TRACKING"
+            icon={<Globe className="size-4" />}
+          />
           <CardContent padding="md">
-            <p className={cn("text-muted-foreground mb-2 text-xs", mode.font)}>
+            <p className={cn('text-muted-foreground mb-2 text-xs', mode.font)}>
               In addition to cookies, we may use:
             </p>
-            <ul className={cn("text-muted-foreground space-y-1 pl-4 text-xs", mode.font)}>
+            <ul
+              className={cn(
+                'text-muted-foreground space-y-1 pl-4 text-xs',
+                mode.font
+              )}
+            >
               <li>
-                ├─ <span className="text-foreground">LOCAL_STORAGE:</span> Store preferences and app
-                state
+                ├─ <span className="text-foreground">LOCAL_STORAGE:</span> Store
+                preferences and app state
               </li>
               <li>
-                ├─ <span className="text-foreground">SESSION_STORAGE:</span> Temporary storage
-                (cleared on tab close)
+                ├─ <span className="text-foreground">SESSION_STORAGE:</span>{' '}
+                Temporary storage (cleared on tab close)
               </li>
               <li>
-                └─ <span className="text-foreground">WEB_BEACONS:</span> Small images for email
-                tracking
+                └─ <span className="text-foreground">WEB_BEACONS:</span> Small
+                images for email tracking
               </li>
             </ul>
           </CardContent>
@@ -370,28 +500,42 @@ export default function CookiesPage() {
 
         {/* Section 5 */}
         <Card size="auto">
-          <CardHeader code="0x50" title="POLICY_UPDATES" icon={<RefreshCw className="size-4" />} />
+          <CardHeader
+            code="0x50"
+            title="POLICY_UPDATES"
+            icon={<RefreshCw className="size-4" />}
+          />
           <CardContent padding="md">
-            <p className={cn("text-muted-foreground text-xs", mode.font)}>
-              We may update this Cookie Policy. Changes will be posted with an updated "Last
-              Updated" date.
+            <p className={cn('text-muted-foreground text-xs', mode.font)}>
+              We may update this Cookie Policy. Changes will be posted with an
+              updated "Last Updated" date.
             </p>
           </CardContent>
         </Card>
 
         {/* Section 6 */}
         <Card size="auto">
-          <CardHeader code="0x60" title="QUESTIONS" icon={<HelpCircle className="size-4" />} />
+          <CardHeader
+            code="0x60"
+            title="QUESTIONS"
+            icon={<HelpCircle className="size-4" />}
+          />
           <CardContent padding="md">
-            <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
+            <p className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
               Questions about cookies?
             </p>
-            <ul className={cn("text-muted-foreground space-y-1 pl-4 text-xs", mode.font)}>
+            <ul
+              className={cn(
+                'text-muted-foreground space-y-1 pl-4 text-xs',
+                mode.font
+              )}
+            >
               <li>
-                ├─ <span className="text-foreground">EMAIL:</span> support@fabrek.dev
+                ├─ <span className="text-foreground">EMAIL:</span>{' '}
+                support@fabrek.dev
               </li>
               <li>
-                └─ <span className="text-foreground">FORM:</span>{" "}
+                └─ <span className="text-foreground">FORM:</span>{' '}
                 <Link href="/contact" className="text-primary hover:underline">
                   /contact
                 </Link>
@@ -416,15 +560,15 @@ export default function CookiesPage() {
             icon={<Settings className="size-4" />}
           />
           <CardContent padding="md">
-            <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
-              You&apos;ll see a cookie consent banner on first visit. Click below to update your
-              preferences.
+            <p className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
+              You&apos;ll see a cookie consent banner on first visit. Click
+              below to update your preferences.
             </p>
             <Button
               variant="link"
               size="sm"
               onClick={() => {
-                window.dispatchEvent(new CustomEvent("open-cookie-settings"));
+                window.dispatchEvent(new CustomEvent('open-cookie-settings'));
               }}
               className="h-auto p-0 text-xs"
             >
@@ -445,7 +589,7 @@ export default function CookiesPage() {
         <Card size="auto">
           <CardHeader code="0x80" title="RELATED_DOCUMENTS" />
           <CardContent padding="md">
-            <div className={cn("flex flex-wrap gap-4 text-xs", mode.font)}>
+            <div className={cn('flex flex-wrap gap-4 text-xs', mode.font)}>
               <Link href="/terms" className="text-primary hover:underline">
                 &gt; TERMS_OF_SERVICE
               </Link>

@@ -3,7 +3,7 @@
  * Simple utility for generating unique license keys
  */
 
-import crypto from "crypto";
+import crypto from 'crypto';
 
 /**
  * Generate a unique license key
@@ -26,12 +26,12 @@ export async function generateUniqueLicenseKey(): Promise<string> {
 export function generateLicenseKey(): string {
   const segments = 5;
   const segmentLength = 4;
-  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // Removed ambiguous characters
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // Removed ambiguous characters
 
   const key: string[] = [];
 
   for (let i = 0; i < segments; i++) {
-    let segment = "";
+    let segment = '';
     for (let j = 0; j < segmentLength; j++) {
       // Use cryptographically secure random number generation
       const randomIndex = crypto.randomInt(0, chars.length);
@@ -40,7 +40,7 @@ export function generateLicenseKey(): string {
     key.push(segment);
   }
 
-  return key.join("-");
+  return key.join('-');
 }
 
 /**
@@ -48,6 +48,7 @@ export function generateLicenseKey(): string {
  */
 export function validateLicenseKeyFormat(key: string): boolean {
   // Format: XXXX-XXXX-XXXX-XXXX-XXXX
-  const pattern = /^[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}(-\d+)?$/;
+  const pattern =
+    /^[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}(-\d+)?$/;
   return pattern.test(key);
 }

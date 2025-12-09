@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { Button } from "@/components/ui/button";
+import * as React from 'react';
+import { ChevronDown, ChevronRight, Menu, X } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { Button } from '@/components/ui/button';
 
 export interface SidebarItem {
   id: string;
@@ -23,9 +23,16 @@ interface SidebarProps {
   onItemClick?: (item: SidebarItem) => void;
 }
 
-export function Sidebar({ items, defaultCollapsed = false, className, onItemClick }: SidebarProps) {
+export function Sidebar({
+  items,
+  defaultCollapsed = false,
+  className,
+  onItemClick,
+}: SidebarProps) {
   const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed);
-  const [expandedItems, setExpandedItems] = React.useState<Set<string>>(new Set());
+  const [expandedItems, setExpandedItems] = React.useState<Set<string>>(
+    new Set()
+  );
 
   const toggleExpanded = (id: string) => {
     setExpandedItems((prev) => {
@@ -57,12 +64,12 @@ export function Sidebar({ items, defaultCollapsed = false, className, onItemClic
         <button
           onClick={() => handleItemClick(item)}
           className={cn(
-            "flex w-full items-center gap-2 px-4 py-2 text-left text-xs transition-all",
+            'flex w-full items-center gap-2 px-4 py-2 text-left text-xs transition-all',
             mode.radius,
             mode.font,
-            "hover:bg-primary hover:text-primary-foreground",
-            "focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none",
-            depth > 0 && "ml-4"
+            'hover:bg-primary hover:text-primary-foreground',
+            'focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none',
+            depth > 0 && 'ml-4'
           )}
           style={{ paddingLeft: `${(depth + 1) * 16}px` }}
         >
@@ -73,7 +80,7 @@ export function Sidebar({ items, defaultCollapsed = false, className, onItemClic
               {item.badge && (
                 <span
                   className={cn(
-                    "bg-primary text-primary-foreground flex h-5 w-5 items-center justify-center text-xs font-semibold",
+                    'bg-primary text-primary-foreground flex h-5 w-5 items-center justify-center text-xs font-semibold',
                     mode.radius
                   )}
                 >
@@ -104,8 +111,8 @@ export function Sidebar({ items, defaultCollapsed = false, className, onItemClic
   return (
     <aside
       className={cn(
-        "bg-card flex flex-col border-r transition-all duration-300",
-        isCollapsed ? "w-16" : "w-64",
+        'bg-card flex flex-col border-r transition-all duration-300',
+        isCollapsed ? 'w-16' : 'w-64',
         className
       )}
     >
@@ -116,12 +123,18 @@ export function Sidebar({ items, defaultCollapsed = false, className, onItemClic
           size="icon"
           onClick={() => setIsCollapsed(!isCollapsed)}
           className="ml-auto"
-          aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+          aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
         >
-          {isCollapsed ? <Menu className="h-5 w-5" /> : <X className="h-5 w-5" />}
+          {isCollapsed ? (
+            <Menu className="h-5 w-5" />
+          ) : (
+            <X className="h-5 w-5" />
+          )}
         </Button>
       </div>
-      <nav className="flex-1 space-y-1 p-2">{items.map((item) => renderItem(item))}</nav>
+      <nav className="flex-1 space-y-1 p-2">
+        {items.map((item) => renderItem(item))}
+      </nav>
     </aside>
   );
 }

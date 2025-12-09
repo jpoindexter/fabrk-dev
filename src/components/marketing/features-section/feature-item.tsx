@@ -3,8 +3,8 @@
  * Single feature with icon, title and description
  */
 
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 interface FeatureItemProps {
   icon: React.ComponentType<{ className?: string }>;
@@ -12,15 +12,25 @@ interface FeatureItemProps {
   description: string;
 }
 
-export function FeatureItem({ icon: Icon, title, description }: FeatureItemProps) {
+export function FeatureItem({
+  icon: Icon,
+  title,
+  description,
+}: FeatureItemProps) {
   return (
     <div className="flex gap-4">
       <div className="flex-shrink-0">
         <Icon className="text-primary size-4" />
       </div>
       <div>
-        <span className={cn(mode.font, "text-foreground text-xs font-semibold")}>├─ {title}</span>
-        <span className={cn(mode.font, "text-muted-foreground ml-2 text-xs")}>{description}</span>
+        <span
+          className={cn(mode.font, 'text-foreground text-xs font-semibold')}
+        >
+          ├─ {title}
+        </span>
+        <span className={cn(mode.font, 'text-muted-foreground ml-2 text-xs')}>
+          {description}
+        </span>
       </div>
     </div>
   );

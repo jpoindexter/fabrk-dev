@@ -73,7 +73,7 @@ const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
 // User growth grouping by day
 const growthByDay: Record<string, number> = {};
 userGrowth.forEach((user) => {
-  const day = user.createdAt.toISOString().split("T")[0];
+  const day = user.createdAt.toISOString().split('T')[0];
   growthByDay[day] = (growthByDay[day] || 0) + 1;
 });
 ```

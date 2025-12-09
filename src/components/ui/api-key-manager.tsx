@@ -22,15 +22,15 @@
  * ```
  */
 
-"use client";
+'use client';
 
-import * as React from "react";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { Button } from "./button";
-import { Input } from "./input";
-import { Card } from "./card";
-import { Badge } from "./badge";
+import * as React from 'react';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { Button } from './button';
+import { Input } from './input';
+import { Card } from './card';
+import { Badge } from './badge';
 import {
   Dialog,
   DialogContent,
@@ -39,7 +39,7 @@ import {
   DialogTitle,
   DialogTrigger,
   DialogFooter,
-} from "./dialog";
+} from './dialog';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -49,14 +49,14 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "./alert-dialog";
+} from './alert-dialog';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "./dropdown-menu";
-import { Copy, Check, MoreVertical, Plus, Trash2, Search } from "lucide-react";
+} from './dropdown-menu';
+import { Copy, Check, MoreVertical, Plus, Trash2, Search } from 'lucide-react';
 
 export interface ApiKey {
   id: string;
@@ -83,10 +83,10 @@ export function ApiKeyManager({
 }: ApiKeyManagerProps) {
   const [keys, setKeys] = React.useState<ApiKey[]>(initialKeys);
   const [isGenerating, setIsGenerating] = React.useState(false);
-  const [newKeyName, setNewKeyName] = React.useState("");
+  const [newKeyName, setNewKeyName] = React.useState('');
   const [copiedId, setCopiedId] = React.useState<string | null>(null);
   const [revokeId, setRevokeId] = React.useState<string | null>(null);
-  const [searchQuery, setSearchQuery] = React.useState("");
+  const [searchQuery, setSearchQuery] = React.useState('');
   const [generatedKey, setGeneratedKey] = React.useState<ApiKey | null>(null);
 
   const handleGenerate = async () => {
@@ -106,9 +106,9 @@ export function ApiKeyManager({
 
       setKeys([newKey, ...keys]);
       setGeneratedKey(newKey);
-      setNewKeyName("");
+      setNewKeyName('');
     } catch (error) {
-      console.error("Failed to generate API key:", error);
+      console.error('Failed to generate API key:', error);
     } finally {
       setIsGenerating(false);
     }
@@ -122,7 +122,7 @@ export function ApiKeyManager({
       setKeys(keys.filter((k) => k.id !== id));
       setRevokeId(null);
     } catch (error) {
-      console.error("Failed to revoke API key:", error);
+      console.error('Failed to revoke API key:', error);
     }
   };
 
@@ -134,7 +134,7 @@ export function ApiKeyManager({
 
   const maskKey = (key: string) => {
     if (key.length <= 8) return key;
-    return `${key.slice(0, 4)}${"•".repeat(20)}${key.slice(-4)}`;
+    return `${key.slice(0, 4)}${'•'.repeat(20)}${key.slice(-4)}`;
   };
 
   const filteredKeys = keys.filter((key) =>
@@ -142,11 +142,13 @@ export function ApiKeyManager({
   );
 
   return (
-    <div className={cn("space-y-4", className)}>
+    <div className={cn('space-y-4', className)}>
       {/* Header with Generate Button */}
       <div className="flex items-center justify-between gap-4">
         <div className="flex-1">
-          <h3 className={cn("text-sm font-semibold", mode.font)}>[ API_KEYS ]</h3>
+          <h3 className={cn('text-sm font-semibold', mode.font)}>
+            [ API_KEYS ]
+          </h3>
           <p className="text-muted-foreground mt-1 text-xs">
             Manage API keys for programmatic access
           </p>
@@ -156,27 +158,30 @@ export function ApiKeyManager({
           <DialogTrigger asChild>
             <Button size="sm" className={cn(mode.radius, mode.font)}>
               <Plus className="h-4 w-4" />
-              {"> "}GENERATE_KEY
+              {'> '}GENERATE_KEY
             </Button>
           </DialogTrigger>
           <DialogContent className={cn(mode.radius)}>
             <DialogHeader>
-              <DialogTitle className={cn(mode.font)}>[ GENERATE_API_KEY ]</DialogTitle>
+              <DialogTitle className={cn(mode.font)}>
+                [ GENERATE_API_KEY ]
+              </DialogTitle>
               <DialogDescription>
-                Create a new API key for programmatic access. Give it a descriptive name.
+                Create a new API key for programmatic access. Give it a
+                descriptive name.
               </DialogDescription>
             </DialogHeader>
 
             <div className="space-y-4 py-4">
               <div className="space-y-2">
-                <label className={cn("text-xs", mode.font)}>[KEY_NAME]:</label>
+                <label className={cn('text-xs', mode.font)}>[KEY_NAME]:</label>
                 <Input
                   placeholder="Production API Key"
                   value={newKeyName}
                   onChange={(e) => setNewKeyName(e.target.value)}
                   className={cn(mode.radius, mode.font)}
                   onKeyDown={(e) => {
-                    if (e.key === "Enter" && !isGenerating) {
+                    if (e.key === 'Enter' && !isGenerating) {
                       handleGenerate();
                     }
                   }}
@@ -185,13 +190,19 @@ export function ApiKeyManager({
 
               {generatedKey && (
                 <div className="bg-muted border-border space-y-2 border p-4">
-                  <p className={cn("text-muted-foreground text-xs", mode.font)}>[KEY_GENERATED]:</p>
+                  <p className={cn('text-muted-foreground text-xs', mode.font)}>
+                    [KEY_GENERATED]:
+                  </p>
                   <div className="bg-background border-border flex items-center gap-2 border p-2">
-                    <code className={cn("flex-1 text-xs", mode.font)}>{generatedKey.key}</code>
+                    <code className={cn('flex-1 text-xs', mode.font)}>
+                      {generatedKey.key}
+                    </code>
                     <Button
                       size="sm"
                       variant="ghost"
-                      onClick={() => handleCopy(generatedKey.key, generatedKey.id)}
+                      onClick={() =>
+                        handleCopy(generatedKey.key, generatedKey.id)
+                      }
                     >
                       {copiedId === generatedKey.id ? (
                         <Check className="h-4 w-4" />
@@ -213,7 +224,7 @@ export function ApiKeyManager({
                 disabled={!newKeyName.trim() || isGenerating}
                 className={cn(mode.radius, mode.font)}
               >
-                {isGenerating ? "> GENERATING..." : "> GENERATE"}
+                {isGenerating ? '> GENERATING...' : '> GENERATE'}
               </Button>
             </DialogFooter>
           </DialogContent>
@@ -228,7 +239,7 @@ export function ApiKeyManager({
             placeholder="Search keys..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className={cn("pl-10", mode.radius, mode.font)}
+            className={cn('pl-10', mode.radius, mode.font)}
           />
         </div>
       )}
@@ -236,29 +247,39 @@ export function ApiKeyManager({
       {/* Keys List */}
       <div className="space-y-2">
         {filteredKeys.length === 0 ? (
-          <Card className={cn("border-dashed p-8 text-center", mode.radius)}>
-            <p className={cn("text-muted-foreground text-sm", mode.font)}>
+          <Card className={cn('border-dashed p-8 text-center', mode.radius)}>
+            <p className={cn('text-muted-foreground text-sm', mode.font)}>
               {searchQuery
                 ? `[NO_KEYS_FOUND]: "${searchQuery}"`
-                : "[NO_API_KEYS]: Generate your first key to get started."}
+                : '[NO_API_KEYS]: Generate your first key to get started.'}
             </p>
           </Card>
         ) : (
           filteredKeys.map((key) => (
             <Card
               key={key.id}
-              className={cn("flex items-center justify-between gap-4 p-4", mode.radius)}
+              className={cn(
+                'flex items-center justify-between gap-4 p-4',
+                mode.radius
+              )}
             >
               <div className="min-w-0 flex-1 space-y-1">
                 <div className="flex items-center gap-2">
-                  <p className={cn("text-sm font-medium", mode.font)}>{key.name}</p>
-                  <Badge variant="outline" className={cn("text-xs", mode.font)}>
+                  <p className={cn('text-sm font-medium', mode.font)}>
+                    {key.name}
+                  </p>
+                  <Badge variant="outline" className={cn('text-xs', mode.font)}>
                     {key.id}
                   </Badge>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <code className={cn("text-muted-foreground flex-1 truncate text-xs", mode.font)}>
+                  <code
+                    className={cn(
+                      'text-muted-foreground flex-1 truncate text-xs',
+                      mode.font
+                    )}
+                  >
                     {maskKey(key.key)}
                   </code>
                   <Button
@@ -275,11 +296,11 @@ export function ApiKeyManager({
                   </Button>
                 </div>
 
-                <p className={cn("text-muted-foreground text-xs", mode.font)}>
+                <p className={cn('text-muted-foreground text-xs', mode.font)}>
                   [CREATED]: {new Date(key.createdAt).toLocaleDateString()}
                   {key.lastUsed && (
                     <>
-                      {" • "}
+                      {' • '}
                       [LAST_USED]: {new Date(key.lastUsed).toLocaleDateString()}
                     </>
                   )}
@@ -292,13 +313,16 @@ export function ApiKeyManager({
                     <MoreVertical className="h-4 w-4" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className={cn(mode.radius, mode.font)}>
+                <DropdownMenuContent
+                  align="end"
+                  className={cn(mode.radius, mode.font)}
+                >
                   <DropdownMenuItem
                     onClick={() => setRevokeId(key.id)}
                     className="text-destructive focus:text-destructive"
                   >
                     <Trash2 className="mr-2 h-4 w-4" />
-                    {"> "}REVOKE
+                    {'> '}REVOKE
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -308,24 +332,33 @@ export function ApiKeyManager({
       </div>
 
       {/* Revoke Confirmation Dialog */}
-      <AlertDialog open={!!revokeId} onOpenChange={(open) => !open && setRevokeId(null)}>
+      <AlertDialog
+        open={!!revokeId}
+        onOpenChange={(open) => !open && setRevokeId(null)}
+      >
         <AlertDialogContent className={cn(mode.radius)}>
           <AlertDialogHeader>
-            <AlertDialogTitle className={cn(mode.font)}>[ CONFIRM_REVOCATION ]</AlertDialogTitle>
+            <AlertDialogTitle className={cn(mode.font)}>
+              [ CONFIRM_REVOCATION ]
+            </AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently revoke the API key and any
-              applications using it will lose access.
+              This action cannot be undone. This will permanently revoke the API
+              key and any applications using it will lose access.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel className={cn(mode.radius, mode.font)}>
-              {"> "}CANCEL
+              {'> '}CANCEL
             </AlertDialogCancel>
             <AlertDialogAction
               onClick={() => revokeId && handleRevoke(revokeId)}
-              className={cn("bg-destructive hover:bg-destructive/90", mode.radius, mode.font)}
+              className={cn(
+                'bg-destructive hover:bg-destructive/90',
+                mode.radius,
+                mode.font
+              )}
             >
-              {"> "}REVOKE
+              {'> '}REVOKE
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

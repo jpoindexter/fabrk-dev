@@ -210,12 +210,16 @@ All templates follow correct import patterns:
 
 ```tsx
 // CORRECT - Found in all templates
-import { TerminalCard, TerminalCardHeader, TerminalCardContent } from "@/components/ui/card";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import {
+  TerminalCard,
+  TerminalCardHeader,
+  TerminalCardContent,
+} from '@/components/ui/card';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 // NOT FOUND (good - would indicate old pattern)
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 ```
 
 ---

@@ -1,10 +1,11 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
-import { Key, Shield, Clock, Lock } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsCard } from '@/components/docs';
+import { Key, Shield, Clock, Lock } from 'lucide-react';
 
 export const metadata = {
-  title: "API Keys - Fabrk Documentation",
-  description: "Learn how to implement secure API key generation, hashing, and rate limiting for your API.",
+  title: 'API Keys - Fabrk Documentation',
+  description:
+    'Learn how to implement secure API key generation, hashing, and rate limiting for your API.',
 };
 
 export default function ApiKeysPage() {
@@ -16,15 +17,34 @@ export default function ApiKeysPage() {
       description="Secure API key generation with SHA-256 hashing, timing-safe comparison, and rate limiting."
       overview="The API keys system provides secure programmatic access to your application's API. Keys are generated with cryptographic randomness, stored as hashes, and validated using timing-safe comparison to prevent timing attacks."
       features={[
-        { icon: Key, title: "256-bit Keys", description: "Cryptographically secure random generation for maximum security." },
-        { icon: Shield, title: "SHA-256 Hashing", description: "Only hashes stored in database - raw keys never persisted." },
-        { icon: Lock, title: "Timing-safe Validation", description: "Prevents timing attacks with constant-time comparison." },
-        { icon: Clock, title: "Rate Limiting", description: "Protect against abuse with configurable rate limits per tier." },
+        {
+          icon: Key,
+          title: '256-bit Keys',
+          description:
+            'Cryptographically secure random generation for maximum security.',
+        },
+        {
+          icon: Shield,
+          title: 'SHA-256 Hashing',
+          description:
+            'Only hashes stored in database - raw keys never persisted.',
+        },
+        {
+          icon: Lock,
+          title: 'Timing-safe Validation',
+          description: 'Prevents timing attacks with constant-time comparison.',
+        },
+        {
+          icon: Clock,
+          title: 'Rate Limiting',
+          description:
+            'Protect against abuse with configurable rate limits per tier.',
+        },
       ]}
       usage={[
         {
-          title: "Database Schema",
-          description: "API key model in Prisma schema",
+          title: 'Database Schema',
+          description: 'API key model in Prisma schema',
           code: `// prisma/schema.prisma
 model ApiKey {
   id          String    @id @default(cuid())
@@ -46,11 +66,11 @@ model ApiKey {
   @@index([keyHash])
   @@index([userId])
 }`,
-          language: "prisma",
+          language: 'prisma',
         },
         {
-          title: "Key Generation",
-          description: "Securely generate and hash API keys",
+          title: 'Key Generation',
+          description: 'Securely generate and hash API keys',
           code: `// src/lib/api-keys.ts
 import crypto from "crypto";
 import { prisma } from "@/lib/db";
@@ -108,11 +128,11 @@ export const API_SCOPES = [
   "manage:billing",
   "admin",
 ] as const;`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Key Validation",
-          description: "Validate API keys with timing-safe comparison",
+          title: 'Key Validation',
+          description: 'Validate API keys with timing-safe comparison',
           code: `// src/lib/api-keys.ts
 import crypto from "crypto";
 
@@ -188,11 +208,11 @@ export async function withApiKey(
 
   return { user: result.user, scopes: result.scopes };
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Using API Keys in Routes",
-          description: "Protect your API routes with API key authentication",
+          title: 'Using API Keys in Routes',
+          description: 'Protect your API routes with API key authentication',
           code: `// src/app/api/v1/data/route.ts
 import { withApiKey } from "@/lib/api-keys";
 
@@ -237,11 +257,11 @@ export async function POST(req: Request) {
 
   return Response.json({ data });
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Rate Limiting",
-          description: "Implement rate limiting per API key",
+          title: 'Rate Limiting',
+          description: 'Implement rate limiting per API key',
           code: `// src/lib/rate-limit.ts
 import { Redis } from "@upstash/redis";
 
@@ -311,24 +331,47 @@ export async function GET(req: Request) {
 
   // Process request...
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
       ]}
-      previous={{ title: "MFA", href: "/docs/features/mfa" }}
-      next={{ title: "SEO", href: "/docs/features/seo" }}
+      previous={{ title: 'MFA', href: '/docs/features/mfa' }}
+      next={{ title: 'SEO', href: '/docs/features/seo' }}
     >
       {/* Security Best Practices Section */}
       <DocsSection title="Security Best Practices">
         <DocsCard title="SECURITY_BEST_PRACTICES">
           <ul className="space-y-1">
-            <li>├─ <strong>Never log full keys:</strong> Only log the prefix for debugging</li>
-            <li>├─ <strong>Show key once:</strong> Display the full key only at creation time</li>
-            <li>├─ <strong>Use HTTPS only:</strong> Never transmit keys over HTTP</li>
-            <li>├─ <strong>Implement expiration:</strong> Set reasonable expiration dates</li>
-            <li>├─ <strong>Allow revocation:</strong> Users should be able to revoke keys instantly</li>
-            <li>├─ <strong>Track usage:</strong> Log last used timestamps and access patterns</li>
-            <li>├─ <strong>Scope permissions:</strong> Follow principle of least privilege</li>
-            <li>└─ <strong>Rate limit aggressively:</strong> Protect against brute force and abuse</li>
+            <li>
+              ├─ <strong>Never log full keys:</strong> Only log the prefix for
+              debugging
+            </li>
+            <li>
+              ├─ <strong>Show key once:</strong> Display the full key only at
+              creation time
+            </li>
+            <li>
+              ├─ <strong>Use HTTPS only:</strong> Never transmit keys over HTTP
+            </li>
+            <li>
+              ├─ <strong>Implement expiration:</strong> Set reasonable
+              expiration dates
+            </li>
+            <li>
+              ├─ <strong>Allow revocation:</strong> Users should be able to
+              revoke keys instantly
+            </li>
+            <li>
+              ├─ <strong>Track usage:</strong> Log last used timestamps and
+              access patterns
+            </li>
+            <li>
+              ├─ <strong>Scope permissions:</strong> Follow principle of least
+              privilege
+            </li>
+            <li>
+              └─ <strong>Rate limit aggressively:</strong> Protect against brute
+              force and abuse
+            </li>
           </ul>
         </DocsCard>
       </DocsSection>

@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { redirect } from 'next/navigation';
 
 export default function ComponentsIndexPage() {
-  redirect("/docs/components/overview");
+  redirect('/docs/components/overview');
 }

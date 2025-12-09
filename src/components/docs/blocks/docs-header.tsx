@@ -3,7 +3,7 @@
  * Terminal-style badge + title + description
  */
 
-import { docsTypography } from "../typography";
+import { docsTypography } from '../typography';
 
 interface DocsHeaderProps {
   /** Terminal code badge e.g. "[0x40]" */
@@ -16,13 +16,18 @@ interface DocsHeaderProps {
   description: string;
 }
 
-export function DocsHeader({ code, category, title, description }: DocsHeaderProps) {
+export function DocsHeader({
+  code,
+  category,
+  title,
+  description,
+}: DocsHeaderProps) {
   return (
     <div>
       {/* Terminal-style badge */}
-      <div className="inline-block border border-border bg-card px-4 py-1">
+      <div className="border-border bg-card inline-block border px-4 py-1">
         <span className={docsTypography.badge}>
-          [ {code} <span className="uppercase">{category}</span> ]{" "}
+          [ {code} <span className="uppercase">{category}</span> ]{' '}
           <span className="uppercase">{title}</span>
         </span>
       </div>
@@ -31,9 +36,7 @@ export function DocsHeader({ code, category, title, description }: DocsHeaderPro
       <h1 className={`mt-4 uppercase ${docsTypography.h1}`}>{title}</h1>
 
       {/* Description */}
-      <p className={`mt-2 ${docsTypography.body}`}>
-        &gt; {description}
-      </p>
+      <p className={`mt-2 ${docsTypography.body}`}>&gt; {description}</p>
     </div>
   );
 }

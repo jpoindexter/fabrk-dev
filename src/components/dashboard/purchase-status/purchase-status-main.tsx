@@ -5,31 +5,36 @@
  * Production ready ✓
  */
 
-"use client";
+'use client';
 
-import { logger } from "@/lib/logger";
-import { useState } from "react";
-import { AccessCard } from "./access-card";
-import { LicenseCard } from "./license-card";
-import { PurchaseStatusProps } from "./purchase-status-types";
-import { ResourcesCard } from "./resources-card";
+import { logger } from '@/lib/logger';
+import { useState } from 'react';
+import { AccessCard } from './access-card';
+import { LicenseCard } from './license-card';
+import { PurchaseStatusProps } from './purchase-status-types';
+import { ResourcesCard } from './resources-card';
 
-export function PurchaseStatus({ user, purchase, className = "" }: PurchaseStatusProps) {
+export function PurchaseStatus({
+  user,
+  purchase,
+  className = '',
+}: PurchaseStatusProps) {
   const [isGeneratingDownload, setIsGeneratingDownload] = useState(false);
   const [_downloadUrl, setDownloadUrl] = useState<string | null>(null);
   const [copiedLicense, setCopiedLicense] = useState(false);
 
-  const hasAccess = user.tier === "complete" || purchase?.status === "completed";
+  const hasAccess =
+    user.tier === 'complete' || purchase?.status === 'completed';
   const licenseKey = purchase?.licenseKey || user.licenseKey;
 
   const handleGenerateDownload = async () => {
     setIsGeneratingDownload(true);
 
     try {
-      const response = await fetch("/api/download", {
-        method: "POST",
+      const response = await fetch('/api/download', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       });
 
@@ -37,12 +42,12 @@ export function PurchaseStatus({ user, purchase, className = "" }: PurchaseStatu
 
       if (data.success) {
         setDownloadUrl(data.downloadUrl);
-        window.open(data.downloadUrl, "_blank");
+        window.open(data.downloadUrl, '_blank');
       } else {
-        logger.error("Download generation failed:", data.error);
+        logger.error('Download generation failed:', data.error);
       }
     } catch (error: unknown) {
-      logger.error("Download generation error:", error);
+      logger.error('Download generation error:', error);
     } finally {
       setIsGeneratingDownload(false);
     }

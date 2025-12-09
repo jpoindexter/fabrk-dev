@@ -3,7 +3,7 @@
  * Matches the landing page card aesthetic with [ [0xXX] TITLE ] format
  */
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 interface DocsCardProps {
   /** Card content */
@@ -19,19 +19,19 @@ interface DocsCardProps {
 export function DocsCard({ children, className, code, title }: DocsCardProps) {
   const hasHeader = code || title;
   // Strip [0x and ] if present since we add them in the template
-  const hexCode = code?.replace(/^\[0x/, '').replace(/\]$/, '') || "00";
-  const headerTitle = title?.toUpperCase().replace(/\s+/g, '_') || "INFO";
+  const hexCode = code?.replace(/^\[0x/, '').replace(/\]$/, '') || '00';
+  const headerTitle = title?.toUpperCase().replace(/\s+/g, '_') || 'INFO';
 
   return (
-    <div className={cn("border border-border bg-card", className)}>
+    <div className={cn('border-border bg-card border', className)}>
       {hasHeader && (
-        <div className="border-b border-border px-4 py-2">
-          <span className="font-mono text-xs text-muted-foreground">
+        <div className="border-border border-b px-4 py-2">
+          <span className="text-muted-foreground font-mono text-xs">
             [ [0x{hexCode}] {headerTitle} ]
           </span>
         </div>
       )}
-      <div className="p-4 font-mono text-xs text-muted-foreground">
+      <div className="text-muted-foreground p-4 font-mono text-xs">
         {children}
       </div>
     </div>

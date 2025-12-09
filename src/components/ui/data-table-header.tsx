@@ -23,16 +23,19 @@
  * @performance Optimized sorting interactions
  */
 
-"use client";
+'use client';
 
-import { Column } from "@tanstack/react-table";
-import { ArrowDown, ArrowUp, ArrowUpDown } from "lucide-react";
-import * as React from "react";
+import { Column } from '@tanstack/react-table';
+import { ArrowDown, ArrowUp, ArrowUpDown } from 'lucide-react';
+import * as React from 'react';
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
-interface DataTableColumnHeaderProps<TData, TValue> extends React.HTMLAttributes<HTMLDivElement> {
+interface DataTableColumnHeaderProps<
+  TData,
+  TValue,
+> extends React.HTMLAttributes<HTMLDivElement> {
   column: Column<TData, TValue>;
   title: string;
 }
@@ -48,7 +51,11 @@ function DataTableColumnHeaderInner<TData = unknown, TValue = unknown>(
 ) {
   if (!column.getCanSort()) {
     return (
-      <div data-slot="data-table-column-header" ref={ref} className={cn(className, "")}>
+      <div
+        data-slot="data-table-column-header"
+        ref={ref}
+        className={cn(className, '')}
+      >
         {title}
       </div>
     );
@@ -57,20 +64,20 @@ function DataTableColumnHeaderInner<TData = unknown, TValue = unknown>(
   const isSorted = column.getIsSorted();
 
   return (
-    <div ref={ref} className={cn("flex items-center space-x-2", className, "")}>
+    <div ref={ref} className={cn('flex items-center space-x-2', className, '')}>
       <Button
         variant="ghost"
         size="sm"
         className="focus-visible:ring-ring data-[state=open]:bg-accent dark:bg-accent -ml-4 h-8 focus-visible:ring-2 focus-visible:outline-none"
-        onClick={() => column.toggleSorting(isSorted === "asc")}
-        aria-label={`Sort by ${title} ${isSorted === "asc" ? "descending" : isSorted === "desc" ? "ascending" : ""}`}
+        onClick={() => column.toggleSorting(isSorted === 'asc')}
+        aria-label={`Sort by ${title} ${isSorted === 'asc' ? 'descending' : isSorted === 'desc' ? 'ascending' : ''}`}
       >
         <span>{title}</span>
-        {isSorted === "desc" ? (
+        {isSorted === 'desc' ? (
           <ArrowDown
             className={`"h-4 w-4" focus-visible:ring-ring ml-2 focus-visible:ring-2 focus-visible:outline-none`}
           />
-        ) : isSorted === "asc" ? (
+        ) : isSorted === 'asc' ? (
           <ArrowUp
             className={`"h-4 w-4" focus-visible:ring-ring ml-2 focus-visible:ring-2 focus-visible:outline-none`}
           />
@@ -84,12 +91,14 @@ function DataTableColumnHeaderInner<TData = unknown, TValue = unknown>(
   );
 }
 
-export const DataTableColumnHeader = React.forwardRef(DataTableColumnHeaderInner) as <
-  TData,
-  TValue,
->(
-  props: DataTableColumnHeaderProps<TData, TValue> & { ref?: React.ForwardedRef<HTMLDivElement> }
+export const DataTableColumnHeader = React.forwardRef(
+  DataTableColumnHeaderInner
+) as <TData, TValue>(
+  props: DataTableColumnHeaderProps<TData, TValue> & {
+    ref?: React.ForwardedRef<HTMLDivElement>;
+  }
 ) => ReturnType<typeof DataTableColumnHeaderInner>;
 
-(DataTableColumnHeader as React.ForwardRefExoticComponent<unknown>).displayName =
-  "DataTableColumnHeader";
+(
+  DataTableColumnHeader as React.ForwardRefExoticComponent<unknown>
+).displayName = 'DataTableColumnHeader';

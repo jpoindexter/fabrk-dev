@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { AlertTriangle, Home } from "lucide-react";
-import { logger } from "@/lib/logger";
+import { useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { AlertTriangle, Home } from 'lucide-react';
+import { logger } from '@/lib/logger';
 
 /**
  * Global Error Handler
@@ -19,7 +19,7 @@ export default function GlobalError({
 }) {
   useEffect(() => {
     // Log error to error tracking service
-    logger.error("Global application error", error);
+    logger.error('Global application error', error);
 
     // Send to error tracking service
     // To enable Sentry:
@@ -45,12 +45,12 @@ export default function GlobalError({
               Critical Application Error
             </h1>
             <p className="text-muted-foreground mb-8 text-lg">
-              We apologize, but a critical error has occurred. Our team has been notified and is
-              working to resolve the issue.
+              We apologize, but a critical error has occurred. Our team has been
+              notified and is working to resolve the issue.
             </p>
 
             {/* Error Details (Development Only) */}
-            {process.env.NODE_ENV === "development" && (
+            {process.env.NODE_ENV === 'development' && (
               <div className="border-destructive/40 bg-destructive/10 mb-8 rounded-none border p-4 text-left">
                 <p className="text-destructive mb-2 text-sm font-semibold">
                   Error Details (Development Only):
@@ -59,7 +59,9 @@ export default function GlobalError({
                   {error.message}
                 </p>
                 {error.digest && (
-                  <p className="text-destructive mt-2 text-xs">Error ID: {error.digest}</p>
+                  <p className="text-destructive mt-2 text-xs">
+                    Error ID: {error.digest}
+                  </p>
                 )}
                 {error.stack && (
                   <details className="mt-4">
@@ -80,7 +82,7 @@ export default function GlobalError({
                 &gt; TRY_AGAIN
               </Button>
               <Button
-                onClick={() => (window.location.href = "/")}
+                onClick={() => (window.location.href = '/')}
                 variant="outline"
                 className="h-12 border px-8"
               >
@@ -101,7 +103,9 @@ export default function GlobalError({
                 support@fabrek.dev
               </a>
               {error.digest && (
-                <p className="text-muted-foreground mt-2 text-xs">Error ID: {error.digest}</p>
+                <p className="text-muted-foreground mt-2 text-xs">
+                  Error ID: {error.digest}
+                </p>
               )}
             </div>
           </div>

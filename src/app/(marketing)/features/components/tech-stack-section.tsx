@@ -4,13 +4,13 @@
  * Production-ready ✓
  */
 
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { TECH_STACK } from "./feature-data";
-import { Badge, Card, CardHeader, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
+import { motion } from 'framer-motion';
+import { TECH_STACK } from './feature-data';
+import { Badge, Card, CardHeader, CardContent } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 export function TechStackSection() {
   return (
@@ -26,11 +26,17 @@ export function TechStackSection() {
           <div className="mb-4">
             <Badge code="0x10" label="TECH_STACK" />
           </div>
-          <h2 className={cn("mb-4 text-2xl font-semibold tracking-tight", mode.font)}>
+          <h2
+            className={cn(
+              'mb-4 text-2xl font-semibold tracking-tight',
+              mode.font
+            )}
+          >
             TECH_STACK
           </h2>
-          <p className={cn("text-muted-foreground text-xs", mode.font)}>
-            Built with the latest technologies. No legacy code, no outdated dependencies.
+          <p className={cn('text-muted-foreground text-xs', mode.font)}>
+            Built with the latest technologies. No legacy code, no outdated
+            dependencies.
           </p>
         </motion.div>
 
@@ -56,12 +62,22 @@ export function TechStackSection() {
                     }
                   />
                   <CardContent padding="md" className="flex-1">
-                    <div className={cn("text-foreground mb-3 text-xs font-semibold", mode.font)}>
-                      {tech.name.toUpperCase().replace(/ /g, "_").replace(/\./g, "")}
+                    <div
+                      className={cn(
+                        'text-foreground mb-3 text-xs font-semibold',
+                        mode.font
+                      )}
+                    >
+                      {tech.name
+                        .toUpperCase()
+                        .replace(/ /g, '_')
+                        .replace(/\./g, '')}
                     </div>
-                    <div className={cn("text-xs", mode.font)}>
+                    <div className={cn('text-xs', mode.font)}>
                       <span className="text-muted-foreground">DESC: </span>
-                      <span className="text-foreground">{tech.description}</span>
+                      <span className="text-foreground">
+                        {tech.description}
+                      </span>
                     </div>
                   </CardContent>
                 </Card>

@@ -3,14 +3,14 @@
  * Used by: /docs/tutorials/* (guide-style content)
  */
 
-import { DocsHeader } from "../blocks/docs-header";
-import { DocsSection } from "../blocks/docs-section";
-import { DocsCard } from "../blocks/docs-card";
-import { DocsStepList } from "../blocks/docs-step-list";
-import { DocsCallout } from "../blocks/docs-callout";
-import { DocsNavFooter } from "../blocks/docs-nav-footer";
-import { CodeBlock } from "@/components/ui/code-block";
-import { docsSpacing } from "../spacing";
+import { DocsHeader } from '../blocks/docs-header';
+import { DocsSection } from '../blocks/docs-section';
+import { DocsCard } from '../blocks/docs-card';
+import { DocsStepList } from '../blocks/docs-step-list';
+import { DocsCallout } from '../blocks/docs-callout';
+import { DocsNavFooter } from '../blocks/docs-nav-footer';
+import { CodeBlock } from '@/components/ui/code-block';
+import { docsSpacing } from '../spacing';
 
 interface Prerequisite {
   title: string;
@@ -40,7 +40,7 @@ interface TutorialTemplateProps {
   /** Tutorial description */
   description: string;
   /** Difficulty level */
-  difficulty?: "beginner" | "intermediate" | "advanced";
+  difficulty?: 'beginner' | 'intermediate' | 'advanced';
   /** Estimated time to complete */
   timeEstimate?: string;
   /** What you'll learn */
@@ -68,23 +68,23 @@ interface TutorialTemplateProps {
 }
 
 const difficultyColors = {
-  beginner: "text-success",
-  intermediate: "text-warning",
-  advanced: "text-destructive",
+  beginner: 'text-success',
+  intermediate: 'text-warning',
+  advanced: 'text-destructive',
 };
 
 export function TutorialTemplate({
   code,
-  category = "Tutorial",
+  category = 'Tutorial',
   title,
   description,
-  difficulty = "beginner",
+  difficulty = 'beginner',
   timeEstimate,
   learningObjectives,
   prerequisites,
   steps,
   resultCode,
-  resultLanguage = "typescript",
+  resultLanguage = 'typescript',
   resultDescription,
   nextSteps,
   warning,
@@ -115,7 +115,9 @@ export function TutorialTemplate({
           {difficulty && (
             <div className="flex items-center gap-2">
               <span className="text-muted-foreground">Difficulty:</span>
-              <span className={`font-mono text-sm uppercase ${difficultyColors[difficulty]}`}>
+              <span
+                className={`font-mono text-sm uppercase ${difficultyColors[difficulty]}`}
+              >
                 {difficulty}
               </span>
             </div>
@@ -151,11 +153,9 @@ export function TutorialTemplate({
             <ul className="space-y-2">
               {prerequisites.map((prereq, index) => (
                 <li key={index}>
-                  <span className="text-primary">├─</span>{" "}
+                  <span className="text-primary">├─</span>{' '}
                   <span className="text-foreground">{prereq.title}</span>
-                  {prereq.description && (
-                    <span> - {prereq.description}</span>
-                  )}
+                  {prereq.description && <span> - {prereq.description}</span>}
                 </li>
               ))}
             </ul>
@@ -172,9 +172,7 @@ export function TutorialTemplate({
       {resultCode && (
         <DocsSection title="Final Result">
           <DocsCard title="OUTPUT">
-            {resultDescription && (
-              <p className="mb-4">{resultDescription}</p>
-            )}
+            {resultDescription && <p className="mb-4">{resultDescription}</p>}
             <CodeBlock code={resultCode} language={resultLanguage} />
           </DocsCard>
         </DocsSection>

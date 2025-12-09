@@ -239,14 +239,14 @@ Two components demonstrate **perfect** design system integration and should be u
 **CORRECT** (all exemplar components):
 
 ```tsx
-import { mode } from "@/design-system";
+import { mode } from '@/design-system';
 
 <Component
   className={cn(
-    "base-styles",
+    'base-styles',
     mode.radius, // rounded-none in terminal mode
     mode.font, // font-mono in terminal mode
-    mode.textTransform === "uppercase" && "uppercase",
+    mode.textTransform === 'uppercase' && 'uppercase',
     className
   )}
 />;

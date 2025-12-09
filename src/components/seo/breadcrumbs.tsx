@@ -3,10 +3,10 @@
  * SEO and AEO optimized with JSON-LD schema
  */
 
-import Link from "next/link";
-import { ChevronRight, Home } from "lucide-react";
-import { generateBreadcrumbSchema } from "@/lib/seo/structured-data";
-import { SchemaScript } from "./schema-script";
+import Link from 'next/link';
+import { ChevronRight, Home } from 'lucide-react';
+import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
+import { SchemaScript } from './schema-script';
 
 export interface BreadcrumbItem {
   name: string;
@@ -31,9 +31,7 @@ interface BreadcrumbsProps {
  * />
  */
 export function Breadcrumbs({ items, showHome = true }: BreadcrumbsProps) {
-  const allItems = showHome
-    ? [{ name: "Home", url: "/" }, ...items]
-    : items;
+  const allItems = showHome ? [{ name: 'Home', url: '/' }, ...items] : items;
 
   const schema = generateBreadcrumbSchema(allItems);
 
@@ -41,18 +39,24 @@ export function Breadcrumbs({ items, showHome = true }: BreadcrumbsProps) {
     <>
       <SchemaScript schema={schema} />
 
-      <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
+      <nav
+        aria-label="Breadcrumb"
+        className="flex items-center space-x-2 text-sm"
+      >
         {allItems.map((item, index) => {
           const isLast = index === allItems.length - 1;
 
           return (
             <div key={item.url} className="flex items-center">
               {index > 0 && (
-                <ChevronRight className="mx-2 h-4 w-4 text-muted-foreground" />
+                <ChevronRight className="text-muted-foreground mx-2 h-4 w-4" />
               )}
 
               {isLast ? (
-                <span className="font-medium text-foreground" aria-current="page">
+                <span
+                  className="text-foreground font-medium"
+                  aria-current="page"
+                >
                   {item.name}
                 </span>
               ) : (

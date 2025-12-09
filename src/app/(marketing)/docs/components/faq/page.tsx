@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 // Simplified FAQ Demo
 function FAQDemo() {
@@ -11,16 +11,16 @@ function FAQDemo() {
 
   const faqs = [
     {
-      q: "What is included in the boilerplate?",
-      a: "Auth, payments, email, database, and 100+ UI components.",
+      q: 'What is included in the boilerplate?',
+      a: 'Auth, payments, email, database, and 100+ UI components.',
     },
     {
-      q: "Do I need to pay for updates?",
-      a: "No, all updates are included with your one-time purchase.",
+      q: 'Do I need to pay for updates?',
+      a: 'No, all updates are included with your one-time purchase.',
     },
     {
-      q: "Can I use this for client projects?",
-      a: "Yes, unlimited personal and client projects with a single license.",
+      q: 'Can I use this for client projects?',
+      a: 'Yes, unlimited personal and client projects with a single license.',
     },
   ];
 
@@ -30,7 +30,9 @@ function FAQDemo() {
         <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 font-mono text-xs">
           [ [0x50] KNOWLEDGE_BASE ] FAQ
         </span>
-        <h2 className="mt-4 font-mono text-xl font-semibold">FREQUENTLY_ASKED_QUESTIONS</h2>
+        <h2 className="mt-4 font-mono text-xl font-semibold">
+          FREQUENTLY_ASKED_QUESTIONS
+        </h2>
       </div>
       <div className="space-y-2">
         {faqs.map((faq, i) => (
@@ -45,12 +47,17 @@ function FAQDemo() {
                 <span className="ml-2">{faq.q}</span>
               </span>
               <ChevronDown
-                className={cn("h-4 w-4 transition-transform", openIndex === i && "rotate-180")}
+                className={cn(
+                  'h-4 w-4 transition-transform',
+                  openIndex === i && 'rotate-180'
+                )}
               />
             </button>
             {openIndex === i && (
               <div className="border-border bg-muted/30 border-t p-4">
-                <span className="text-muted-foreground font-mono text-xs">└─ [RESPONSE]: </span>
+                <span className="text-muted-foreground font-mono text-xs">
+                  └─ [RESPONSE]:{' '}
+                </span>
                 <span className="font-mono text-xs">{faq.a}</span>
               </div>
             )}
@@ -63,22 +70,24 @@ function FAQDemo() {
 
 // Category Tabs Demo
 function FAQCategoriesDemo() {
-  const [active, setActive] = useState("general");
-  const categories = ["GENERAL", "TECHNICAL", "PAYMENT", "LICENSE"];
+  const [active, setActive] = useState('general');
+  const categories = ['GENERAL', 'TECHNICAL', 'PAYMENT', 'LICENSE'];
 
   return (
     <div className="border-border bg-background w-full border p-4">
-      <div className="text-muted-foreground mb-4 font-mono text-xs">[ CATEGORIES ]</div>
+      <div className="text-muted-foreground mb-4 font-mono text-xs">
+        [ CATEGORIES ]
+      </div>
       <div className="flex flex-wrap gap-2">
         {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => setActive(cat.toLowerCase())}
             className={cn(
-              "border px-4 py-2 font-mono text-xs transition-colors",
+              'border px-4 py-2 font-mono text-xs transition-colors',
               active === cat.toLowerCase()
-                ? "border-primary bg-primary text-primary-foreground"
-                : "border-border bg-card text-muted-foreground hover:border-primary/50"
+                ? 'border-primary bg-primary text-primary-foreground'
+                : 'border-border bg-card text-muted-foreground hover:border-primary/50'
             )}
           >
             &gt; {cat}
@@ -114,8 +123,8 @@ export default function LandingPage() {
       }}
       variants={[
         {
-          title: "Category Tabs",
-          description: "Filter FAQs by category",
+          title: 'Category Tabs',
+          description: 'Filter FAQs by category',
           preview: <FAQCategoriesDemo />,
           code: `const [activeCategory, setActiveCategory] = useState("general");
 const categories = ["GENERAL", "TECHNICAL", "PAYMENT", "LICENSE"];
@@ -138,15 +147,17 @@ const categories = ["GENERAL", "TECHNICAL", "PAYMENT", "LICENSE"];
 </div>`,
         },
         {
-          title: "Single FAQ Item",
-          description: "Individual expandable question",
+          title: 'Single FAQ Item',
+          description: 'Individual expandable question',
           preview: (
             <div className="border-border bg-card w-full max-w-lg border">
               <button className="flex w-full items-center justify-between p-4 text-left">
                 <span className="font-mono text-sm">
                   <span className="text-primary">├─</span>
                   <span className="text-muted-foreground ml-2">[QUERY]:</span>
-                  <span className="ml-2">What payment methods do you accept?</span>
+                  <span className="ml-2">
+                    What payment methods do you accept?
+                  </span>
                 </span>
                 <ChevronDown className="h-4 w-4" />
               </button>
@@ -164,31 +175,34 @@ const categories = ["GENERAL", "TECHNICAL", "PAYMENT", "LICENSE"];
       ]}
       props={[
         {
-          name: "faqs",
-          type: "{ question: string; answer: string; category?: string }[]",
-          description: "Array of FAQ items",
+          name: 'faqs',
+          type: '{ question: string; answer: string; category?: string }[]',
+          description: 'Array of FAQ items',
         },
         {
-          name: "showCategories",
-          type: "boolean",
-          description: "Show category filter tabs",
-          default: "true",
+          name: 'showCategories',
+          type: 'boolean',
+          description: 'Show category filter tabs',
+          default: 'true',
         },
         {
-          name: "defaultOpen",
-          type: "number",
-          description: "Index of initially open item",
-          default: "undefined",
+          name: 'defaultOpen',
+          type: 'number',
+          description: 'Index of initially open item',
+          default: 'undefined',
         },
       ]}
       accessibility={[
-        "Accordion uses proper ARIA expanded states",
-        "Keyboard navigation with Enter/Space to toggle",
-        "Focus visible indicators on interactive elements",
-        "Screen readers announce open/closed states",
+        'Accordion uses proper ARIA expanded states',
+        'Keyboard navigation with Enter/Space to toggle',
+        'Focus visible indicators on interactive elements',
+        'Screen readers announce open/closed states',
       ]}
-      previous={{ title: "Testimonials", href: "/docs/components/testimonials" }}
-      next={{ title: "Footer", href: "/docs/components/footer" }}
+      previous={{
+        title: 'Testimonials',
+        href: '/docs/components/testimonials',
+      }}
+      next={{ title: 'Footer', href: '/docs/components/footer' }}
     />
   );
 }

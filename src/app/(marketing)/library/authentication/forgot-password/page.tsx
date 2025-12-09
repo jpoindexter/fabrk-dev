@@ -2,18 +2,23 @@
  * Forgot Password Template - Terminal console style
  * Industry-standard Preview/Code tabbed interface
  */
-"use client";
+'use client';
 
-import Link from "next/link";
-import { ArrowLeft, ShieldQuestion } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent, TemplatePageHeader } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { CodeBlock } from "@/components/ui/code-block";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import Link from 'next/link';
+import { ArrowLeft, ShieldQuestion } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  TemplatePageHeader,
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { CodeBlock } from '@/components/ui/code-block';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 const templateCode = `"use client";
 
@@ -89,9 +94,14 @@ function ForgotPasswordPreview() {
           <div className="border-border bg-card mx-auto mb-2 flex h-10 w-10 items-center justify-center border">
             <ShieldQuestion className="text-primary h-5 w-5" />
           </div>
-          <h1 className={cn(mode.font, "text-2xl font-semibold tracking-tight")}>Reset password</h1>
+          <h1
+            className={cn(mode.font, 'text-2xl font-semibold tracking-tight')}
+          >
+            Reset password
+          </h1>
           <p className="text-muted-foreground text-sm">
-            Enter your email address and we&apos;ll send you a link to reset your password.
+            Enter your email address and we&apos;ll send you a link to reset
+            your password.
           </p>
         </div>
 
@@ -99,7 +109,7 @@ function ForgotPasswordPreview() {
         <div className="grid gap-6">
           <form className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email" className={cn(mode.font, "text-xs")}>
+              <Label htmlFor="email" className={cn(mode.font, 'text-xs')}>
                 [EMAIL]:
               </Label>
               <Input
@@ -110,11 +120,14 @@ function ForgotPasswordPreview() {
                 autoComplete="email"
                 autoCorrect="off"
                 required
-                className={cn(mode.radius, mode.font, "text-xs")}
+                className={cn(mode.radius, mode.font, 'text-xs')}
               />
             </div>
 
-            <Button className={cn(mode.radius, mode.font, "w-full text-xs")} type="submit">
+            <Button
+              className={cn(mode.radius, mode.font, 'w-full text-xs')}
+              type="submit"
+            >
               &gt; SEND_RESET_LINK
             </Button>
           </form>
@@ -153,14 +166,14 @@ export default function ForgotPasswordTemplate() {
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
-                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  'h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0',
                   mode.radius
                 )}
               >
                 <TabsTrigger
                   value="preview"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -170,7 +183,7 @@ export default function ForgotPasswordTemplate() {
                 <TabsTrigger
                   value="code"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -194,7 +207,11 @@ export default function ForgotPasswordTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+                <CodeBlock
+                  code={templateCode}
+                  language="tsx"
+                  maxHeight="600px"
+                />
               </div>
             </Card>
           </TabsContent>
@@ -204,14 +221,18 @@ export default function ForgotPasswordTemplate() {
         <Card>
           <CardHeader code="0x02" title="FILE_STRUCTURE" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-1 text-xs")}>
+            <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>
               <div className="space-y-1 pl-4">
                 <div>
                   <span className="text-primary">app/</span>
                   <span className="text-muted-foreground">(auth)/</span>
-                  <span className="text-foreground">forgot-password/page.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Copy template here</span>
+                  <span className="text-foreground">
+                    forgot-password/page.tsx
+                  </span>
+                  <span className="text-muted-foreground ml-4">
+                    ← Copy template here
+                  </span>
                 </div>
               </div>
             </div>
@@ -222,21 +243,26 @@ export default function ForgotPasswordTemplate() {
         <Card>
           <CardHeader code="0x03" title="FEATURES" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-2 text-xs")}>
+            <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> Clean, focused recovery form
+                <span className="text-success">&gt;</span> Clean, focused
+                recovery form
               </div>
               <div>
-                <span className="text-success">&gt;</span> Clear user instructions
+                <span className="text-success">&gt;</span> Clear user
+                instructions
               </div>
               <div>
-                <span className="text-success">&gt;</span> Email validation pre-configured
+                <span className="text-success">&gt;</span> Email validation
+                pre-configured
               </div>
               <div>
-                <span className="text-success">&gt;</span> Back to login navigation
+                <span className="text-success">&gt;</span> Back to login
+                navigation
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant
+                (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

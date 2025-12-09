@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { ComponentShowcaseTemplate } from "@/components/docs";
-import { Gauge, ScoreGauge } from "@/components/ui/gauge";
+import { ComponentShowcaseTemplate } from '@/components/docs';
+import { Gauge, ScoreGauge } from '@/components/ui/gauge';
 
 export default function GaugePage() {
   return (
@@ -11,13 +11,7 @@ export default function GaugePage() {
       description="A circular gauge component for displaying metrics, scores, and progress with a rotating needle indicator."
       importCode={`import { Gauge, ScoreGauge } from "@/components/ui/gauge";`}
       mainPreview={{
-        preview: (
-          <Gauge
-            value={75}
-            label="Performance"
-            showValue={true}
-          />
-        ),
+        preview: <Gauge value={75} label="Performance" showValue={true} />,
         code: `<Gauge
   value={75}
   label="Performance"
@@ -26,10 +20,10 @@ export default function GaugePage() {
       }}
       variants={[
         {
-          title: "Custom Range",
-          description: "Gauge with custom min and max values",
+          title: 'Custom Range',
+          description: 'Gauge with custom min and max values',
           preview: (
-            <div className="flex gap-8 flex-wrap justify-center">
+            <div className="flex flex-wrap justify-center gap-8">
               <Gauge
                 value={3500}
                 min={0}
@@ -68,8 +62,8 @@ export default function GaugePage() {
 />`,
         },
         {
-          title: "With Min/Max Labels",
-          description: "Display min and max values on the gauge",
+          title: 'With Min/Max Labels',
+          description: 'Display min and max values on the gauge',
           preview: (
             <Gauge
               value={65}
@@ -94,10 +88,10 @@ export default function GaugePage() {
 />`,
         },
         {
-          title: "Custom Appearance",
-          description: "Gauges with different sizes, angles, and colors",
+          title: 'Custom Appearance',
+          description: 'Gauges with different sizes, angles, and colors',
           preview: (
-            <div className="flex gap-8 flex-wrap justify-center">
+            <div className="flex flex-wrap justify-center gap-8">
               <Gauge
                 value={80}
                 size={150}
@@ -132,22 +126,17 @@ export default function GaugePage() {
 />`,
         },
         {
-          title: "Score Gauge",
-          description: "Color-coded gauge for scores with automatic thresholds",
+          title: 'Score Gauge',
+          description: 'Color-coded gauge for scores with automatic thresholds',
           preview: (
-            <div className="flex gap-8 flex-wrap justify-center">
+            <div className="flex flex-wrap justify-center gap-8">
               <ScoreGauge
                 score={92}
                 maxScore={100}
                 label="Excellent"
                 size={180}
               />
-              <ScoreGauge
-                score={68}
-                maxScore={100}
-                label="Good"
-                size={180}
-              />
+              <ScoreGauge score={68} maxScore={100} label="Good" size={180} />
               <ScoreGauge
                 score={35}
                 maxScore={100}
@@ -176,8 +165,8 @@ export default function GaugePage() {
 />`,
         },
         {
-          title: "Segmented Gauge",
-          description: "Gauge with multiple colored segments",
+          title: 'Segmented Gauge',
+          description: 'Gauge with multiple colored segments',
           preview: (
             <Gauge
               value={75}
@@ -187,9 +176,9 @@ export default function GaugePage() {
               showValue={true}
               showMinMax={true}
               segments={[
-                { value: 30, color: "oklch(60% 0.20 25)", label: "Poor" },
-                { value: 30, color: "oklch(70% 0.15 60)", label: "Fair" },
-                { value: 40, color: "oklch(70% 0.15 160)", label: "Good" },
+                { value: 30, color: 'oklch(60% 0.20 25)', label: 'Poor' },
+                { value: 30, color: 'oklch(70% 0.15 60)', label: 'Fair' },
+                { value: 40, color: 'oklch(70% 0.15 160)', label: 'Good' },
               ]}
             />
           ),
@@ -210,103 +199,103 @@ export default function GaugePage() {
       ]}
       props={[
         {
-          name: "value",
-          type: "number",
+          name: 'value',
+          type: 'number',
           required: true,
-          description: "Current value to display",
+          description: 'Current value to display',
         },
         {
-          name: "min",
-          type: "number",
-          default: "0",
-          description: "Minimum value",
+          name: 'min',
+          type: 'number',
+          default: '0',
+          description: 'Minimum value',
         },
         {
-          name: "max",
-          type: "number",
-          default: "100",
-          description: "Maximum value",
+          name: 'max',
+          type: 'number',
+          default: '100',
+          description: 'Maximum value',
         },
         {
-          name: "size",
-          type: "number",
-          default: "200",
-          description: "Gauge diameter in pixels",
+          name: 'size',
+          type: 'number',
+          default: '200',
+          description: 'Gauge diameter in pixels',
         },
         {
-          name: "thickness",
-          type: "number",
-          default: "20",
-          description: "Arc thickness in pixels",
+          name: 'thickness',
+          type: 'number',
+          default: '20',
+          description: 'Arc thickness in pixels',
         },
         {
-          name: "startAngle",
-          type: "number",
-          default: "-135",
-          description: "Starting angle in degrees",
+          name: 'startAngle',
+          type: 'number',
+          default: '-135',
+          description: 'Starting angle in degrees',
         },
         {
-          name: "endAngle",
-          type: "number",
-          default: "135",
-          description: "Ending angle in degrees",
+          name: 'endAngle',
+          type: 'number',
+          default: '135',
+          description: 'Ending angle in degrees',
         },
         {
-          name: "color",
-          type: "string",
+          name: 'color',
+          type: 'string',
           default: '"hsl(var(--primary))"',
-          description: "Arc color",
+          description: 'Arc color',
         },
         {
-          name: "backgroundColor",
-          type: "string",
+          name: 'backgroundColor',
+          type: 'string',
           default: '"hsl(var(--muted))"',
-          description: "Background arc color",
+          description: 'Background arc color',
         },
         {
-          name: "showValue",
-          type: "boolean",
-          default: "true",
-          description: "Display value below gauge",
+          name: 'showValue',
+          type: 'boolean',
+          default: 'true',
+          description: 'Display value below gauge',
         },
         {
-          name: "showMinMax",
-          type: "boolean",
-          default: "false",
-          description: "Display min/max labels on gauge",
+          name: 'showMinMax',
+          type: 'boolean',
+          default: 'false',
+          description: 'Display min/max labels on gauge',
         },
         {
-          name: "label",
-          type: "string",
-          description: "Label text below value",
+          name: 'label',
+          type: 'string',
+          description: 'Label text below value',
         },
         {
-          name: "unit",
-          type: "string",
-          description: "Unit suffix for value",
+          name: 'unit',
+          type: 'string',
+          description: 'Unit suffix for value',
         },
         {
-          name: "segments",
-          type: "Array<{ value: number; color: string; label?: string }>",
-          description: "Colored segments for gauge arc",
+          name: 'segments',
+          type: 'Array<{ value: number; color: string; label?: string }>',
+          description: 'Colored segments for gauge arc',
         },
         {
-          name: "className",
-          type: "string",
-          description: "Additional CSS classes",
+          name: 'className',
+          type: 'string',
+          description: 'Additional CSS classes',
         },
       ]}
       accessibility={[
-        "Values are automatically clamped between min and max",
-        "Text elements use semantic SVG text tags",
-        "Label and value have clear visual hierarchy",
-        "Needle animation uses CSS transitions for smooth updates",
-        "ScoreGauge automatically selects colors based on performance thresholds",
-        "Min/max labels are positioned for clear readability",
-        "All text meets WCAG AA contrast requirements",
+        'Values are automatically clamped between min and max',
+        'Text elements use semantic SVG text tags',
+        'Label and value have clear visual hierarchy',
+        'Needle animation uses CSS transitions for smooth updates',
+        'ScoreGauge automatically selects colors based on performance thresholds',
+        'Min/max labels are positioned for clear readability',
+        'All text meets WCAG AA contrast requirements',
       ]}
-      previous={{ title: "Sparkline", href: "/docs/components/sparkline" }}
-      next={{ title: "Donut Chart", href: "/docs/components/donut-chart" }}
+      previous={{ title: 'Sparkline', href: '/docs/components/sparkline' }}
+      next={{ title: 'Donut Chart', href: '/docs/components/donut-chart' }}
     />
   );
 }

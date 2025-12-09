@@ -3,8 +3,8 @@
  * Post-purchase welcome emails
  */
 
-import { logger } from "@/lib/logger";
-import { resend, FROM_EMAIL, APP_NAME, APP_URL } from "./email-core";
+import { logger } from '@/lib/logger';
+import { resend, FROM_EMAIL, APP_NAME, APP_URL } from './email-core';
 
 /**
  * Send welcome email after purchase
@@ -15,9 +15,13 @@ import { resend, FROM_EMAIL, APP_NAME, APP_URL } from "./email-core";
  * @example
  * await sendWelcomeEmail("user@example.com", "John Doe", "abc123")
  */
-export async function sendWelcomeEmail(to: string, name: string, licenseKey?: string) {
+export async function sendWelcomeEmail(
+  to: string,
+  name: string,
+  licenseKey?: string
+) {
   if (!resend) {
-    logger.debug("📧 [DEV] Welcome email to:", to);
+    logger.debug('📧 [DEV] Welcome email to:', to);
     return { success: true };
   }
 
@@ -29,14 +33,14 @@ export async function sendWelcomeEmail(to: string, name: string, licenseKey?: st
       html: `
         <h1>Welcome ${name}!</h1>
         <p>Thanks for your purchase. We're excited to have you on board!</p>
-        ${licenseKey ? `<p><strong>Your License Key:</strong> ${licenseKey}</p>` : ""}
+        ${licenseKey ? `<p><strong>Your License Key:</strong> ${licenseKey}</p>` : ''}
         <p>Get started: <a href="${APP_URL}/dashboard">${APP_URL}/dashboard</a></p>
         <p>Questions? Just reply to this email.</p>
       `,
     });
     return { success: true };
   } catch (error: unknown) {
-    logger.error("Failed to send welcome email:", error);
+    logger.error('Failed to send welcome email:', error);
     return { success: false, error };
   }
 }

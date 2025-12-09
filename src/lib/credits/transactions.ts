@@ -3,8 +3,8 @@
  * Query and analyze credit usage
  */
 
-import { prisma } from "@/lib/prisma";
-import { getOrCreateBalance } from "./balance";
+import { prisma } from '@/lib/prisma';
+import { getOrCreateBalance } from './balance';
 
 export interface TransactionFilters {
   type?: string;
@@ -17,7 +17,10 @@ export interface TransactionFilters {
 /**
  * Get transaction history for a user
  */
-export async function getTransactionHistory(userId: string, filters: TransactionFilters = {}) {
+export async function getTransactionHistory(
+  userId: string,
+  filters: TransactionFilters = {}
+) {
   const balance = await getOrCreateBalance(userId);
 
   const where: Record<string, unknown> = { balanceId: balance.id };
@@ -38,7 +41,7 @@ export async function getTransactionHistory(userId: string, filters: Transaction
 
   const transactions = await prisma.creditTransaction.findMany({
     where,
-    orderBy: { createdAt: "desc" },
+    orderBy: { createdAt: 'desc' },
     take: filters.limit || 50,
     skip: filters.offset || 0,
   });
@@ -57,16 +60,16 @@ export async function getUsageStats(userId: string, days: number = 30) {
   const transactions = await prisma.creditTransaction.findMany({
     where: {
       balanceId: balance.id,
-      type: "USAGE",
+      type: 'USAGE',
       createdAt: { gte: startDate },
     },
-    orderBy: { createdAt: "asc" },
+    orderBy: { createdAt: 'asc' },
   });
 
   // Group by day
   const dailyUsage: Record<string, number> = {};
   transactions.forEach((tx: { createdAt: Date; amount: number }) => {
-    const day = tx.createdAt.toISOString().split("T")[0];
+    const day = tx.createdAt.toISOString().split('T')[0];
     dailyUsage[day] = (dailyUsage[day] || 0) + Math.abs(tx.amount);
   });
 
@@ -75,7 +78,7 @@ export async function getUsageStats(userId: string, days: number = 30) {
   for (let i = days - 1; i >= 0; i--) {
     const date = new Date();
     date.setDate(date.getDate() - i);
-    const dateStr = date.toISOString().split("T")[0];
+    const dateStr = date.toISOString().split('T')[0];
     result.push({
       date: dateStr,
       credits: dailyUsage[dateStr] || 0,
@@ -88,7 +91,10 @@ export async function getUsageStats(userId: string, days: number = 30) {
 /**
  * Get total usage for a period
  */
-export async function getTotalUsage(userId: string, days: number = 30): Promise<number> {
+export async function getTotalUsage(
+  userId: string,
+  days: number = 30
+): Promise<number> {
   const stats = await getUsageStats(userId, days);
   return stats.reduce((sum, day) => sum + day.credits, 0);
 }

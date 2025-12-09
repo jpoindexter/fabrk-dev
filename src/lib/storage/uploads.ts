@@ -24,11 +24,11 @@
  * npm install @aws-sdk/client-s3 @aws-sdk/s3-request-presigner
  */
 
-import { prisma } from "@/lib/prisma";
-import * as crypto from "crypto";
-import * as fs from "fs/promises";
-import * as path from "path";
-import { logger } from "@/lib/logger";
+import { prisma } from '@/lib/prisma';
+import * as crypto from 'crypto';
+import * as fs from 'fs/promises';
+import * as path from 'path';
+import { logger } from '@/lib/logger';
 
 // AWS SDK imports are optional (loaded dynamically)
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -43,7 +43,7 @@ let DeleteObjectCommand: any;
 let getSignedUrl: any;
 
 // Storage provider type
-type StorageProvider = "r2" | "s3" | "local";
+type StorageProvider = 'r2' | 's3' | 'local';
 
 // Detect which provider to use based on env vars
 function detectStorageProvider(): StorageProvider {
@@ -53,7 +53,7 @@ function detectStorageProvider(): StorageProvider {
     process.env.CLOUDFLARE_R2_SECRET_ACCESS_KEY &&
     process.env.CLOUDFLARE_R2_BUCKET
   ) {
-    return "r2";
+    return 'r2';
   }
 
   // Priority 2: AWS S3
@@ -62,18 +62,18 @@ function detectStorageProvider(): StorageProvider {
     process.env.AWS_S3_SECRET_ACCESS_KEY &&
     process.env.AWS_S3_BUCKET
   ) {
-    return "s3";
+    return 's3';
   }
 
   // Fallback: Local storage
-  return "local";
+  return 'local';
 }
 
 const STORAGE_PROVIDER = detectStorageProvider();
 
 // Initialize S3 client based on provider
 async function initializeS3Client() {
-  if (STORAGE_PROVIDER === "local") return null;
+  if (STORAGE_PROVIDER === 'local') return null;
 
   try {
     // Dynamic require to avoid TypeScript errors when SDK not installed
@@ -87,9 +87,9 @@ async function initializeS3Client() {
     DeleteObjectCommand = s3.DeleteObjectCommand;
     getSignedUrl = presigner.getSignedUrl;
 
-    if (STORAGE_PROVIDER === "r2") {
+    if (STORAGE_PROVIDER === 'r2') {
       return new S3Client({
-        region: "auto",
+        region: 'auto',
         endpoint: process.env.CLOUDFLARE_R2_ENDPOINT,
         credentials: {
           accessKeyId: process.env.CLOUDFLARE_R2_ACCESS_KEY_ID!,
@@ -100,14 +100,16 @@ async function initializeS3Client() {
 
     // AWS S3
     return new S3Client({
-      region: process.env.AWS_S3_REGION || "us-east-1",
+      region: process.env.AWS_S3_REGION || 'us-east-1',
       credentials: {
         accessKeyId: process.env.AWS_S3_ACCESS_KEY_ID!,
         secretAccessKey: process.env.AWS_S3_SECRET_ACCESS_KEY!,
       },
     });
   } catch {
-    logger.warn("AWS SDK not installed. Cloud uploads will fall back to local storage.");
+    logger.warn(
+      'AWS SDK not installed. Cloud uploads will fall back to local storage.'
+    );
     return null;
   }
 }
@@ -124,29 +126,29 @@ async function getS3Client() {
 
 // Get bucket name based on provider
 function getBucketName(): string {
-  if (STORAGE_PROVIDER === "r2") {
-    return process.env.CLOUDFLARE_R2_BUCKET || "uploads";
+  if (STORAGE_PROVIDER === 'r2') {
+    return process.env.CLOUDFLARE_R2_BUCKET || 'uploads';
   }
-  if (STORAGE_PROVIDER === "s3") {
-    return process.env.AWS_S3_BUCKET || "uploads";
+  if (STORAGE_PROVIDER === 's3') {
+    return process.env.AWS_S3_BUCKET || 'uploads';
   }
-  return "uploads";
+  return 'uploads';
 }
 
 // Get public URL for a file
 function getPublicUrl(key: string): string {
-  if (STORAGE_PROVIDER === "r2" && process.env.CLOUDFLARE_R2_PUBLIC_URL) {
+  if (STORAGE_PROVIDER === 'r2' && process.env.CLOUDFLARE_R2_PUBLIC_URL) {
     return `${process.env.CLOUDFLARE_R2_PUBLIC_URL}/${key}`;
   }
-  if (STORAGE_PROVIDER === "s3") {
-    return `https://${getBucketName()}.s3.${process.env.AWS_S3_REGION || "us-east-1"}.amazonaws.com/${key}`;
+  if (STORAGE_PROVIDER === 's3') {
+    return `https://${getBucketName()}.s3.${process.env.AWS_S3_REGION || 'us-east-1'}.amazonaws.com/${key}`;
   }
   // Local storage
   return `/uploads/${key}`;
 }
 
 const BUCKET_NAME = getBucketName();
-const LOCAL_UPLOAD_DIR = path.join(process.cwd(), "public", "uploads");
+const LOCAL_UPLOAD_DIR = path.join(process.cwd(), 'public', 'uploads');
 
 /**
  * Get the current storage provider being used
@@ -159,7 +161,7 @@ export function getStorageProvider(): StorageProvider {
  * Check if cloud storage is configured
  */
 export function isCloudStorageConfigured(): boolean {
-  return STORAGE_PROVIDER !== "local";
+  return STORAGE_PROVIDER !== 'local';
 }
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB default
 
@@ -169,7 +171,7 @@ export interface UploadOptions {
   file: File | Buffer;
   filename?: string;
   mimeType?: string;
-  visibility?: "private" | "public";
+  visibility?: 'private' | 'public';
   metadata?: Record<string, string>;
 }
 
@@ -199,7 +201,7 @@ export function validateFile(
     if (!options.allowedTypes.includes(file.type)) {
       return {
         valid: false,
-        error: `File type not allowed. Allowed: ${options.allowedTypes.join(", ")}`,
+        error: `File type not allowed. Allowed: ${options.allowedTypes.join(', ')}`,
       };
     }
   }
@@ -223,7 +225,11 @@ async function uploadToLocalStorage(
   const filePath = path.join(LOCAL_UPLOAD_DIR, key);
   await fs.writeFile(filePath, buffer);
 
-  logger.info("File uploaded to local storage", { key, size: buffer.length, mimeType });
+  logger.info('File uploaded to local storage', {
+    key,
+    size: buffer.length,
+    mimeType,
+  });
 
   return getPublicUrl(key);
 }
@@ -235,13 +241,15 @@ async function uploadToCloud(
   buffer: Buffer,
   key: string,
   mimeType: string,
-  visibility: "private" | "public",
+  visibility: 'private' | 'public',
   metadata?: Record<string, string>
 ): Promise<string> {
   const s3Client = await getS3Client();
 
   if (!s3Client) {
-    throw new Error("Cloud storage not configured. Falling back to local storage.");
+    throw new Error(
+      'Cloud storage not configured. Falling back to local storage.'
+    );
   }
 
   await s3Client.send(
@@ -251,7 +259,9 @@ async function uploadToCloud(
       Body: buffer,
       ContentType: mimeType,
       Metadata: metadata,
-      ...(visibility === "public" && STORAGE_PROVIDER === "s3" ? { ACL: "public-read" } : {}),
+      ...(visibility === 'public' && STORAGE_PROVIDER === 's3'
+        ? { ACL: 'public-read' }
+        : {}),
     })
   );
 
@@ -262,14 +272,18 @@ async function uploadToCloud(
   });
 
   // Generate URL
-  if (visibility === "public") {
+  if (visibility === 'public') {
     return getPublicUrl(key);
   }
 
   // Generate signed URL for private files
-  return await getSignedUrl(s3Client, new GetObjectCommand({ Bucket: BUCKET_NAME, Key: key }), {
-    expiresIn: 3600,
-  });
+  return await getSignedUrl(
+    s3Client,
+    new GetObjectCommand({ Bucket: BUCKET_NAME, Key: key }),
+    {
+      expiresIn: 3600,
+    }
+  );
 }
 
 /**
@@ -288,31 +302,43 @@ export async function uploadFile(options: UploadOptions): Promise<{
   }
 
   // Generate unique filename
-  const ext = options.filename?.split(".").pop() || "";
-  const randomName = crypto.randomBytes(16).toString("hex");
+  const ext = options.filename?.split('.').pop() || '';
+  const randomName = crypto.randomBytes(16).toString('hex');
   const filename = `${randomName}.${ext}`;
   const key = `${options.userId}/${filename}`;
 
   // Get file buffer
   const buffer =
-    options.file instanceof File ? Buffer.from(await options.file.arrayBuffer()) : options.file;
+    options.file instanceof File
+      ? Buffer.from(await options.file.arrayBuffer())
+      : options.file;
 
   const mimeType =
     options.mimeType ||
-    (options.file instanceof File ? options.file.type : "application/octet-stream");
-  const visibility = options.visibility || "private";
+    (options.file instanceof File
+      ? options.file.type
+      : 'application/octet-stream');
+  const visibility = options.visibility || 'private';
 
   let url: string;
   let actualProvider = STORAGE_PROVIDER;
 
   // Try cloud storage first, fall back to local
-  if (STORAGE_PROVIDER !== "local") {
+  if (STORAGE_PROVIDER !== 'local') {
     try {
-      url = await uploadToCloud(buffer, key, mimeType, visibility, options.metadata);
+      url = await uploadToCloud(
+        buffer,
+        key,
+        mimeType,
+        visibility,
+        options.metadata
+      );
     } catch (error: unknown) {
-      logger.warn("Cloud upload failed, falling back to local storage", { error });
+      logger.warn('Cloud upload failed, falling back to local storage', {
+        error,
+      });
       url = await uploadToLocalStorage(buffer, key, mimeType);
-      actualProvider = "local";
+      actualProvider = 'local';
     }
   } else {
     url = await uploadToLocalStorage(buffer, key, mimeType);
@@ -329,7 +355,7 @@ export async function uploadFile(options: UploadOptions): Promise<{
       size: buffer.length,
       url,
       key,
-      bucket: actualProvider === "local" ? "local" : BUCKET_NAME,
+      bucket: actualProvider === 'local' ? 'local' : BUCKET_NAME,
       metadata: options.metadata,
       visibility,
     },
@@ -357,7 +383,7 @@ export async function getSignedFileUrl(
   });
 
   if (!upload) {
-    throw new Error("File not found");
+    throw new Error('File not found');
   }
 
   // Check permissions
@@ -371,21 +397,21 @@ export async function getSignedFileUrl(
     });
 
     if (!member) {
-      throw new Error("Access denied");
+      throw new Error('Access denied');
     }
   } else if (upload.userId !== userId) {
-    throw new Error("Access denied");
+    throw new Error('Access denied');
   }
 
   // Local files don't need signed URLs
-  if (upload.bucket === "local") {
+  if (upload.bucket === 'local') {
     return upload.url;
   }
 
   // Get S3 client
   const s3Client = await getS3Client();
   if (!s3Client) {
-    throw new Error("Cloud storage not available");
+    throw new Error('Cloud storage not available');
   }
 
   // Generate signed URL
@@ -404,30 +430,33 @@ export async function getSignedFileUrl(
 /**
  * Delete file
  */
-export async function deleteFile(fileId: string, userId: string): Promise<void> {
+export async function deleteFile(
+  fileId: string,
+  userId: string
+): Promise<void> {
   // Get upload record
   const upload = await prisma.upload.findUnique({
     where: { id: fileId },
   });
 
   if (!upload) {
-    throw new Error("File not found");
+    throw new Error('File not found');
   }
 
   // Check permissions
   if (upload.userId !== userId) {
-    throw new Error("Access denied");
+    throw new Error('Access denied');
   }
 
   // Delete from storage
-  if (upload.bucket === "local") {
+  if (upload.bucket === 'local') {
     // Delete local file
     const filePath = path.join(LOCAL_UPLOAD_DIR, upload.key);
     try {
       await fs.unlink(filePath);
-      logger.info("Deleted local file", { key: upload.key });
+      logger.info('Deleted local file', { key: upload.key });
     } catch (error: unknown) {
-      logger.warn("Failed to delete local file", { key: upload.key, error });
+      logger.warn('Failed to delete local file', { key: upload.key, error });
     }
   } else {
     // Delete from cloud storage
@@ -439,7 +468,10 @@ export async function deleteFile(fileId: string, userId: string): Promise<void> 
           Key: upload.key,
         })
       );
-      logger.info("Deleted cloud file", { bucket: upload.bucket, key: upload.key });
+      logger.info('Deleted cloud file', {
+        bucket: upload.bucket,
+        key: upload.key,
+      });
     }
   }
 
@@ -455,7 +487,7 @@ export async function deleteFile(fileId: string, userId: string): Promise<void> 
 export async function getUserUploads(userId: string, limit: number = 50) {
   return await prisma.upload.findMany({
     where: { userId },
-    orderBy: { createdAt: "desc" },
+    orderBy: { createdAt: 'desc' },
     take: limit,
   });
 }
@@ -463,10 +495,13 @@ export async function getUserUploads(userId: string, limit: number = 50) {
 /**
  * Get organization uploads
  */
-export async function getOrganizationUploads(organizationId: string, limit: number = 50) {
+export async function getOrganizationUploads(
+  organizationId: string,
+  limit: number = 50
+) {
   return await prisma.upload.findMany({
     where: { organizationId },
-    orderBy: { createdAt: "desc" },
+    orderBy: { createdAt: 'desc' },
     take: limit,
   });
 }
@@ -499,18 +534,18 @@ export async function optimizeImage(
     width?: number;
     height?: number;
     quality?: number;
-    format?: "jpeg" | "png" | "webp";
+    format?: 'jpeg' | 'png' | 'webp';
   } = {}
 ): Promise<Buffer> {
   try {
-    const sharp = (await import("sharp")).default;
+    const sharp = (await import('sharp')).default;
 
     let image = sharp(buffer);
 
     // Resize
     if (options.width || options.height) {
       image = image.resize(options.width, options.height, {
-        fit: "inside",
+        fit: 'inside',
         withoutEnlargement: true,
       });
     }

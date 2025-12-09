@@ -10,33 +10,33 @@ import terminalTheme, {
   formatCardHeader as formatTerminalCardHeader,
   formatStatusText as formatTerminalStatusText,
   terminalClasses,
-} from "./terminal";
+} from './terminal';
 
 import modernTheme, {
   formatButtonText as formatModernButtonText,
   formatLabelText as formatModernLabelText,
   formatCardHeader as formatModernCardHeader,
   modernClasses,
-} from "./modern";
+} from './modern';
 
 import softTheme, {
   formatButtonText as formatSoftButtonText,
   formatLabelText as formatSoftLabelText,
   formatCardHeader as formatSoftCardHeader,
   softClasses,
-} from "./soft";
+} from './soft';
 
-import type { SemanticTokens } from "../tokens/semantic";
+import type { SemanticTokens } from '../tokens/semantic';
 
 // =============================================================================
 // THEME NAMES
 // =============================================================================
 
-export type ThemeName = "terminal" | "modern" | "soft";
+export type ThemeName = 'terminal' | 'modern' | 'soft';
 
-export const THEME_NAMES: ThemeName[] = ["terminal", "modern", "soft"];
+export const THEME_NAMES: ThemeName[] = ['terminal', 'modern', 'soft'];
 
-export const DEFAULT_THEME: ThemeName = "terminal";
+export const DEFAULT_THEME: ThemeName = 'terminal';
 
 // =============================================================================
 // THEME REGISTRY
@@ -62,7 +62,7 @@ export const themeClasses = {
  * Current active theme name.
  * This is used by the `mode` export for backwards compatibility.
  */
-export const CURRENT_THEME: ThemeName = "terminal";
+export const CURRENT_THEME: ThemeName = 'terminal';
 
 /**
  * Get the active theme tokens
@@ -129,5 +129,9 @@ export {
   formatTerminalCardHeader,
   formatTerminalStatusText,
 };
-export { formatModernButtonText, formatModernLabelText, formatModernCardHeader };
+export {
+  formatModernButtonText,
+  formatModernLabelText,
+  formatModernCardHeader,
+};
 export { formatSoftButtonText, formatSoftLabelText, formatSoftCardHeader };

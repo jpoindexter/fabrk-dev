@@ -25,26 +25,38 @@
  * ```
  */
 
-"use client";
+'use client';
 
-import * as React from "react";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { Card } from "./card";
-import { Badge } from "./badge";
-import { Button } from "./button";
-import { Input } from "./input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./select";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "./sheet";
-import { CodeBlock } from "./code-block";
-import { Search, RefreshCw, ExternalLink, Clock } from "lucide-react";
+import * as React from 'react';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import { Card } from './card';
+import { Badge } from './badge';
+import { Button } from './button';
+import { Input } from './input';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from './select';
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+} from './sheet';
+import { CodeBlock } from './code-block';
+import { Search, RefreshCw, ExternalLink, Clock } from 'lucide-react';
 
-export type WebhookStatus = "success" | "failed" | "pending" | "retrying";
+export type WebhookStatus = 'success' | 'failed' | 'pending' | 'retrying';
 
 export interface WebhookLogEntry {
   id: string;
   endpoint: string;
-  method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
+  method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
   status: WebhookStatus;
   statusCode: number | null;
   requestPayload: string;
@@ -75,10 +87,15 @@ export function WebhookLog({
   pollInterval = 5000,
 }: WebhookLogProps) {
   const [logs] = React.useState<WebhookLogEntry[]>(initialLogs);
-  const [filteredLogs, setFilteredLogs] = React.useState<WebhookLogEntry[]>(initialLogs);
-  const [searchQuery, setSearchQuery] = React.useState("");
-  const [statusFilter, setStatusFilter] = React.useState<WebhookStatus | "all">("all");
-  const [selectedLog, setSelectedLog] = React.useState<WebhookLogEntry | null>(null);
+  const [filteredLogs, setFilteredLogs] =
+    React.useState<WebhookLogEntry[]>(initialLogs);
+  const [searchQuery, setSearchQuery] = React.useState('');
+  const [statusFilter, setStatusFilter] = React.useState<WebhookStatus | 'all'>(
+    'all'
+  );
+  const [selectedLog, setSelectedLog] = React.useState<WebhookLogEntry | null>(
+    null
+  );
   const [isRetrying, setIsRetrying] = React.useState<string | null>(null);
   const [isRefreshing, setIsRefreshing] = React.useState(false);
 
@@ -87,7 +104,7 @@ export function WebhookLog({
     let filtered = logs;
 
     // Filter by status
-    if (statusFilter !== "all") {
+    if (statusFilter !== 'all') {
       filtered = filtered.filter((log) => log.status === statusFilter);
     }
 
@@ -125,7 +142,7 @@ export function WebhookLog({
         await onRefresh();
       }
     } catch (error) {
-      console.error("Failed to retry webhook:", error);
+      console.error('Failed to retry webhook:', error);
     } finally {
       setIsRetrying(null);
     }
@@ -144,40 +161,42 @@ export function WebhookLog({
 
   const getStatusBadgeVariant = (status: WebhookStatus) => {
     switch (status) {
-      case "success":
-        return "default"; // Will use success color via className
-      case "failed":
-        return "destructive";
-      case "pending":
-        return "secondary";
-      case "retrying":
-        return "outline";
+      case 'success':
+        return 'default'; // Will use success color via className
+      case 'failed':
+        return 'destructive';
+      case 'pending':
+        return 'secondary';
+      case 'retrying':
+        return 'outline';
       default:
-        return "outline";
+        return 'outline';
     }
   };
 
   const getStatusIcon = (status: WebhookStatus) => {
     switch (status) {
-      case "success":
-        return "✓";
-      case "failed":
-        return "✕";
-      case "pending":
-        return "⏳";
-      case "retrying":
-        return "↻";
+      case 'success':
+        return '✓';
+      case 'failed':
+        return '✕';
+      case 'pending':
+        return '⏳';
+      case 'retrying':
+        return '↻';
       default:
-        return "";
+        return '';
     }
   };
 
   return (
-    <div className={cn("space-y-4", className)}>
+    <div className={cn('space-y-4', className)}>
       {/* Header with Filters */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h3 className={cn("text-sm font-semibold", mode.font)}>[ WEBHOOK_LOGS ]</h3>
+          <h3 className={cn('text-sm font-semibold', mode.font)}>
+            [ WEBHOOK_LOGS ]
+          </h3>
           <p className="text-muted-foreground mt-1 text-xs">
             Track webhook delivery status and debug failures
           </p>
@@ -190,8 +209,10 @@ export function WebhookLog({
           disabled={isRefreshing}
           className={cn(mode.radius, mode.font)}
         >
-          <RefreshCw className={cn("h-4 w-4", isRefreshing && "animate-spin")} />
-          {"> "}REFRESH
+          <RefreshCw
+            className={cn('h-4 w-4', isRefreshing && 'animate-spin')}
+          />
+          {'> '}REFRESH
         </Button>
       </div>
 
@@ -203,15 +224,19 @@ export function WebhookLog({
             placeholder="Search by endpoint or error..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className={cn("pl-10", mode.radius, mode.font)}
+            className={cn('pl-10', mode.radius, mode.font)}
           />
         </div>
 
         <Select
           value={statusFilter}
-          onValueChange={(value) => setStatusFilter(value as WebhookStatus | "all")}
+          onValueChange={(value) =>
+            setStatusFilter(value as WebhookStatus | 'all')
+          }
         >
-          <SelectTrigger className={cn("w-full sm:w-[180px]", mode.radius, mode.font)}>
+          <SelectTrigger
+            className={cn('w-full sm:w-[180px]', mode.radius, mode.font)}
+          >
             <SelectValue placeholder="Filter by status" />
           </SelectTrigger>
           <SelectContent className={cn(mode.radius)}>
@@ -238,10 +263,10 @@ export function WebhookLog({
       <Card className={cn(mode.radius)}>
         {filteredLogs.length === 0 ? (
           <div className="p-8 text-center">
-            <p className={cn("text-muted-foreground text-sm", mode.font)}>
-              {searchQuery || statusFilter !== "all"
-                ? "[NO_LOGS_FOUND]: Try adjusting filters"
-                : "[NO_WEBHOOK_LOGS]: Webhook events will appear here"}
+            <p className={cn('text-muted-foreground text-sm', mode.font)}>
+              {searchQuery || statusFilter !== 'all'
+                ? '[NO_LOGS_FOUND]: Try adjusting filters'
+                : '[NO_WEBHOOK_LOGS]: Webhook events will appear here'}
             </p>
           </div>
         ) : (
@@ -255,16 +280,17 @@ export function WebhookLog({
                     <Badge
                       variant={getStatusBadgeVariant(log.status)}
                       className={cn(
-                        "w-20 justify-center",
+                        'w-20 justify-center',
                         mode.font,
-                        log.status === "success" && "bg-success/20 text-success border-success"
+                        log.status === 'success' &&
+                          'bg-success/20 text-success border-success'
                       )}
                     >
                       {getStatusIcon(log.status)} {log.status.toUpperCase()}
                     </Badge>
                     <span
                       className={cn(
-                        "text-muted-foreground border-border rounded border px-2 py-1 text-xs",
+                        'text-muted-foreground border-border rounded border px-2 py-1 text-xs',
                         mode.font
                       )}
                     >
@@ -276,10 +302,12 @@ export function WebhookLog({
                   <div className="min-w-0 flex-1 space-y-2">
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0 flex-1">
-                        <p className={cn("text-sm font-medium", mode.font)}>{log.endpoint}</p>
+                        <p className={cn('text-sm font-medium', mode.font)}>
+                          {log.endpoint}
+                        </p>
                         <div
                           className={cn(
-                            "text-muted-foreground mt-1 flex flex-wrap items-center gap-2 text-xs",
+                            'text-muted-foreground mt-1 flex flex-wrap items-center gap-2 text-xs',
                             mode.font
                           )}
                         >
@@ -288,19 +316,23 @@ export function WebhookLog({
                             {new Date(log.timestamp).toLocaleString()}
                           </span>
                           {log.duration && <span>• {log.duration}ms</span>}
-                          {log.statusCode && <span>• Status: {log.statusCode}</span>}
-                          {log.retryCount > 0 && <span>• Retries: {log.retryCount}</span>}
+                          {log.statusCode && (
+                            <span>• Status: {log.statusCode}</span>
+                          )}
+                          {log.retryCount > 0 && (
+                            <span>• Retries: {log.retryCount}</span>
+                          )}
                         </div>
                       </div>
 
                       <div className="flex gap-2">
-                        {log.status === "failed" && onRetry && (
+                        {log.status === 'failed' && onRetry && (
                           <Button
                             size="sm"
                             variant="outline"
                             onClick={() => handleRetry(log.id)}
                             disabled={isRetrying === log.id}
-                            className={cn("text-xs", mode.radius, mode.font)}
+                            className={cn('text-xs', mode.radius, mode.font)}
                           >
                             {isRetrying === log.id ? (
                               <RefreshCw className="h-3 w-3 animate-spin" />
@@ -314,7 +346,7 @@ export function WebhookLog({
                           size="sm"
                           variant="ghost"
                           onClick={() => setSelectedLog(log)}
-                          className={cn("text-xs", mode.radius, mode.font)}
+                          className={cn('text-xs', mode.radius, mode.font)}
                         >
                           <ExternalLink className="h-3 w-3" />
                           VIEW
@@ -324,7 +356,9 @@ export function WebhookLog({
 
                     {log.error && (
                       <div className="bg-destructive/10 border-destructive rounded border p-2">
-                        <p className={cn("text-destructive text-xs", mode.font)}>
+                        <p
+                          className={cn('text-destructive text-xs', mode.font)}
+                        >
                           [ERROR]: {log.error}
                         </p>
                       </div>
@@ -338,12 +372,19 @@ export function WebhookLog({
       </Card>
 
       {/* Details Sheet */}
-      <Sheet open={!!selectedLog} onOpenChange={(open) => !open && setSelectedLog(null)}>
-        <SheetContent className={cn("w-full overflow-y-auto sm:max-w-2xl", mode.radius)}>
+      <Sheet
+        open={!!selectedLog}
+        onOpenChange={(open) => !open && setSelectedLog(null)}
+      >
+        <SheetContent
+          className={cn('w-full overflow-y-auto sm:max-w-2xl', mode.radius)}
+        >
           {selectedLog && (
             <>
               <SheetHeader>
-                <SheetTitle className={cn(mode.font)}>[ WEBHOOK_DETAILS ]</SheetTitle>
+                <SheetTitle className={cn(mode.font)}>
+                  [ WEBHOOK_DETAILS ]
+                </SheetTitle>
                 <SheetDescription>
                   Full request and response payloads for debugging
                 </SheetDescription>
@@ -352,30 +393,50 @@ export function WebhookLog({
               <div className="mt-6 space-y-6">
                 {/* Metadata */}
                 <div className="space-y-2">
-                  <p className={cn("text-xs font-semibold", mode.font)}>[METADATA]:</p>
+                  <p className={cn('text-xs font-semibold', mode.font)}>
+                    [METADATA]:
+                  </p>
                   <div className="bg-muted border-border space-y-1 border p-3">
                     <div className="flex justify-between text-xs">
-                      <span className={cn("text-muted-foreground", mode.font)}>[ID]:</span>
+                      <span className={cn('text-muted-foreground', mode.font)}>
+                        [ID]:
+                      </span>
                       <span className={cn(mode.font)}>{selectedLog.id}</span>
                     </div>
                     <div className="flex justify-between text-xs">
-                      <span className={cn("text-muted-foreground", mode.font)}>[ENDPOINT]:</span>
-                      <span className={cn(mode.font)}>{selectedLog.endpoint}</span>
+                      <span className={cn('text-muted-foreground', mode.font)}>
+                        [ENDPOINT]:
+                      </span>
+                      <span className={cn(mode.font)}>
+                        {selectedLog.endpoint}
+                      </span>
                     </div>
                     <div className="flex justify-between text-xs">
-                      <span className={cn("text-muted-foreground", mode.font)}>[METHOD]:</span>
-                      <span className={cn(mode.font)}>{selectedLog.method}</span>
+                      <span className={cn('text-muted-foreground', mode.font)}>
+                        [METHOD]:
+                      </span>
+                      <span className={cn(mode.font)}>
+                        {selectedLog.method}
+                      </span>
                     </div>
                     <div className="flex justify-between text-xs">
-                      <span className={cn("text-muted-foreground", mode.font)}>[TIMESTAMP]:</span>
+                      <span className={cn('text-muted-foreground', mode.font)}>
+                        [TIMESTAMP]:
+                      </span>
                       <span className={cn(mode.font)}>
                         {new Date(selectedLog.timestamp).toISOString()}
                       </span>
                     </div>
                     {selectedLog.duration && (
                       <div className="flex justify-between text-xs">
-                        <span className={cn("text-muted-foreground", mode.font)}>[DURATION]:</span>
-                        <span className={cn(mode.font)}>{selectedLog.duration}ms</span>
+                        <span
+                          className={cn('text-muted-foreground', mode.font)}
+                        >
+                          [DURATION]:
+                        </span>
+                        <span className={cn(mode.font)}>
+                          {selectedLog.duration}ms
+                        </span>
                       </div>
                     )}
                   </div>
@@ -383,14 +444,22 @@ export function WebhookLog({
 
                 {/* Request Payload */}
                 <div className="space-y-2">
-                  <p className={cn("text-xs font-semibold", mode.font)}>[REQUEST_PAYLOAD]:</p>
-                  <CodeBlock code={selectedLog.requestPayload} language="json" maxHeight="300px" />
+                  <p className={cn('text-xs font-semibold', mode.font)}>
+                    [REQUEST_PAYLOAD]:
+                  </p>
+                  <CodeBlock
+                    code={selectedLog.requestPayload}
+                    language="json"
+                    maxHeight="300px"
+                  />
                 </div>
 
                 {/* Response Payload */}
                 {selectedLog.responsePayload && (
                   <div className="space-y-2">
-                    <p className={cn("text-xs font-semibold", mode.font)}>[RESPONSE_PAYLOAD]:</p>
+                    <p className={cn('text-xs font-semibold', mode.font)}>
+                      [RESPONSE_PAYLOAD]:
+                    </p>
                     <CodeBlock
                       code={selectedLog.responsePayload}
                       language="json"
@@ -402,9 +471,11 @@ export function WebhookLog({
                 {/* Error */}
                 {selectedLog.error && (
                   <div className="space-y-2">
-                    <p className={cn("text-xs font-semibold", mode.font)}>[ERROR]:</p>
+                    <p className={cn('text-xs font-semibold', mode.font)}>
+                      [ERROR]:
+                    </p>
                     <div className="bg-destructive/10 border-destructive border p-3">
-                      <p className={cn("text-destructive text-xs", mode.font)}>
+                      <p className={cn('text-destructive text-xs', mode.font)}>
                         {selectedLog.error}
                       </p>
                     </div>

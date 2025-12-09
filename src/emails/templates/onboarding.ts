@@ -17,9 +17,9 @@ interface EmailData {
 export function welcomeOnboardingEmail(data: EmailData): string {
   const {
     name,
-    productName = "Fabrk",
-    companyName = "Fabrk",
-    supportEmail = "support@fabrek.dev",
+    productName = 'Fabrk',
+    companyName = 'Fabrk',
+    supportEmail = 'support@fabrek.dev',
   } = data;
 
   return `
@@ -143,7 +143,7 @@ export function welcomeOnboardingEmail(data: EmailData): string {
  * Day 3: Getting Started Tips
  */
 export function gettingStartedEmail(data: EmailData): string {
-  const { name, productName = "Fabrk", companyName = "Fabrk" } = data;
+  const { name, productName = 'Fabrk', companyName = 'Fabrk' } = data;
 
   return `
 <!DOCTYPE html>
@@ -270,7 +270,7 @@ export function paymentSuccessEmail(
     invoiceUrl?: string;
   }
 ): string {
-  const { name, plan, amount, invoiceUrl, companyName = "Fabrk" } = data;
+  const { name, plan, amount, invoiceUrl, companyName = 'Fabrk' } = data;
 
   return `
 <!DOCTYPE html>
@@ -355,7 +355,7 @@ export function paymentSuccessEmail(
                 </tr>
               </table>
               `
-                  : ""
+                  : ''
               }
 
               <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4a5568;">

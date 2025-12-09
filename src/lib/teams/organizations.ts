@@ -10,10 +10,10 @@
  * - Member management
  */
 
-import { prisma } from "@/lib/prisma";
+import { prisma } from '@/lib/prisma';
 
 // Re-export types
-export type { OrgRole } from "./types";
+export type { OrgRole } from './types';
 
 // Re-export member management functions
 export {
@@ -21,14 +21,14 @@ export {
   removeMember,
   updateMemberRole,
   transferOwnership,
-} from "./members";
+} from './members';
 
 // Re-export invitation functions
 export {
   isOrganizationMember,
   inviteToOrganization,
   acceptInvite,
-} from "./invites";
+} from './invites';
 
 /**
  * Creates a new organization with an initial owner member
@@ -67,7 +67,7 @@ export async function createOrganization(data: {
   });
 
   if (existing) {
-    throw new Error("Organization slug already taken");
+    throw new Error('Organization slug already taken');
   }
 
   // Create organization
@@ -76,11 +76,11 @@ export async function createOrganization(data: {
       name: data.name,
       slug: data.slug,
       description: data.description,
-      plan: "FREE",
+      plan: 'FREE',
       members: {
         create: {
           userId: data.ownerId,
-          role: "OWNER",
+          role: 'OWNER',
         },
       },
     },
@@ -155,7 +155,7 @@ export async function getUserOrganizations(userId: string) {
         },
       },
     },
-    orderBy: { joinedAt: "desc" },
+    orderBy: { joinedAt: 'desc' },
   });
 
   return memberships.map((m) => ({
@@ -184,13 +184,13 @@ export async function deleteOrganization(
   userId: string
 ): Promise<void> {
   // Import hasOrganizationRole to avoid circular dependency
-  const { hasOrganizationRole } = await import("./members");
+  const { hasOrganizationRole } = await import('./members');
 
   // Verify user is owner
-  const isOwner = await hasOrganizationRole(userId, organizationId, "OWNER");
+  const isOwner = await hasOrganizationRole(userId, organizationId, 'OWNER');
 
   if (!isOwner) {
-    throw new Error("Only owner can delete organization");
+    throw new Error('Only owner can delete organization');
   }
 
   // Delete organization (cascade will delete members)
@@ -245,16 +245,16 @@ export async function updateOrganizationSettings(
   settings: Record<string, unknown>
 ): Promise<void> {
   // Import hasOrganizationRole to avoid circular dependency
-  const { hasOrganizationRole } = await import("./members");
+  const { hasOrganizationRole } = await import('./members');
 
   // Verify user has permission
   const hasPermission = await hasOrganizationRole(userId, organizationId, [
-    "OWNER",
-    "ADMIN",
+    'OWNER',
+    'ADMIN',
   ]);
 
   if (!hasPermission) {
-    throw new Error("Insufficient permissions");
+    throw new Error('Insufficient permissions');
   }
 
   await prisma.organization.update({

@@ -18,35 +18,41 @@
  */
 export const MAGIC_BYTES: Record<string, number[]> = {
   // Images
-  "image/png": [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a],
-  "image/jpeg": [0xff, 0xd8, 0xff],
-  "image/gif": [0x47, 0x49, 0x46, 0x38], // GIF8
-  "image/webp": [0x52, 0x49, 0x46, 0x46], // RIFF (WebP container)
-  "image/bmp": [0x42, 0x4d], // BM
-  "image/tiff": [0x49, 0x49, 0x2a, 0x00], // II*\0 (little-endian)
-  "image/svg+xml": [0x3c, 0x73, 0x76, 0x67], // <svg
+  'image/png': [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a],
+  'image/jpeg': [0xff, 0xd8, 0xff],
+  'image/gif': [0x47, 0x49, 0x46, 0x38], // GIF8
+  'image/webp': [0x52, 0x49, 0x46, 0x46], // RIFF (WebP container)
+  'image/bmp': [0x42, 0x4d], // BM
+  'image/tiff': [0x49, 0x49, 0x2a, 0x00], // II*\0 (little-endian)
+  'image/svg+xml': [0x3c, 0x73, 0x76, 0x67], // <svg
 
   // Documents
-  "application/pdf": [0x25, 0x50, 0x44, 0x46], // %PDF
-  "application/zip": [0x50, 0x4b, 0x03, 0x04], // PK..
-  "application/x-rar-compressed": [0x52, 0x61, 0x72, 0x21], // Rar!
-  "application/x-7z-compressed": [0x37, 0x7a, 0xbc, 0xaf], // 7z
+  'application/pdf': [0x25, 0x50, 0x44, 0x46], // %PDF
+  'application/zip': [0x50, 0x4b, 0x03, 0x04], // PK..
+  'application/x-rar-compressed': [0x52, 0x61, 0x72, 0x21], // Rar!
+  'application/x-7z-compressed': [0x37, 0x7a, 0xbc, 0xaf], // 7z
 
   // Office Documents (DOCX, XLSX, PPTX are ZIP-based)
-  "application/vnd.openxmlformats-officedocument.wordprocessingml.document": [0x50, 0x4b, 0x03, 0x04],
-  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": [0x50, 0x4b, 0x03, 0x04],
-  "application/vnd.openxmlformats-officedocument.presentationml.presentation": [0x50, 0x4b, 0x03, 0x04],
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document': [
+    0x50, 0x4b, 0x03, 0x04,
+  ],
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': [
+    0x50, 0x4b, 0x03, 0x04,
+  ],
+  'application/vnd.openxmlformats-officedocument.presentationml.presentation': [
+    0x50, 0x4b, 0x03, 0x04,
+  ],
 
   // Text
-  "text/plain": [], // No magic bytes for plain text
+  'text/plain': [], // No magic bytes for plain text
 
   // Audio
-  "audio/mpeg": [0x49, 0x44, 0x33], // ID3 (MP3)
-  "audio/wav": [0x52, 0x49, 0x46, 0x46], // RIFF
+  'audio/mpeg': [0x49, 0x44, 0x33], // ID3 (MP3)
+  'audio/wav': [0x52, 0x49, 0x46, 0x46], // RIFF
 
   // Video
-  "video/mp4": [0x00, 0x00, 0x00, 0x18, 0x66, 0x74, 0x79, 0x70], // ....ftyp
-  "video/webm": [0x1a, 0x45, 0xdf, 0xa3], // WebM
+  'video/mp4': [0x00, 0x00, 0x00, 0x18, 0x66, 0x74, 0x79, 0x70], // ....ftyp
+  'video/webm': [0x1a, 0x45, 0xdf, 0xa3], // WebM
 };
 
 /**
@@ -74,39 +80,45 @@ export interface FileTypeConfig {
 
 export const FILE_TYPE_CONFIGS: Record<string, FileTypeConfig> = {
   image: {
-    mimeTypes: ["image/jpeg", "image/png", "image/gif", "image/webp", "image/bmp"],
-    extensions: ["jpg", "jpeg", "png", "gif", "webp", "bmp"],
+    mimeTypes: [
+      'image/jpeg',
+      'image/png',
+      'image/gif',
+      'image/webp',
+      'image/bmp',
+    ],
+    extensions: ['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp'],
     maxSize: 10 * 1024 * 1024, // 10MB
-    description: "Image files",
+    description: 'Image files',
   },
   avatar: {
-    mimeTypes: ["image/jpeg", "image/png", "image/webp"],
-    extensions: ["jpg", "jpeg", "png", "webp"],
+    mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
+    extensions: ['jpg', 'jpeg', 'png', 'webp'],
     maxSize: 5 * 1024 * 1024, // 5MB
-    description: "Avatar images",
+    description: 'Avatar images',
   },
   document: {
     mimeTypes: [
-      "application/pdf",
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      "text/plain",
+      'application/pdf',
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      'text/plain',
     ],
-    extensions: ["pdf", "docx", "xlsx", "txt"],
+    extensions: ['pdf', 'docx', 'xlsx', 'txt'],
     maxSize: 25 * 1024 * 1024, // 25MB
-    description: "Document files",
+    description: 'Document files',
   },
   video: {
-    mimeTypes: ["video/mp4", "video/webm"],
-    extensions: ["mp4", "webm"],
+    mimeTypes: ['video/mp4', 'video/webm'],
+    extensions: ['mp4', 'webm'],
     maxSize: 100 * 1024 * 1024, // 100MB
-    description: "Video files",
+    description: 'Video files',
   },
   audio: {
-    mimeTypes: ["audio/mpeg", "audio/wav"],
-    extensions: ["mp3", "wav"],
+    mimeTypes: ['audio/mpeg', 'audio/wav'],
+    extensions: ['mp3', 'wav'],
     maxSize: 50 * 1024 * 1024, // 50MB
-    description: "Audio files",
+    description: 'Audio files',
   },
 };
 
@@ -148,7 +160,10 @@ function matchesMagicBytes(buffer: Buffer, magicBytes: number[]): boolean {
 /**
  * Validate file type using magic bytes
  */
-export function validateFileType(buffer: Buffer, mimeType: string): ValidationResult {
+export function validateFileType(
+  buffer: Buffer,
+  mimeType: string
+): ValidationResult {
   const magicBytes = MAGIC_BYTES[mimeType];
 
   if (!magicBytes) {
@@ -176,7 +191,9 @@ export function detectExecutable(buffer: Buffer): boolean {
     return false;
   }
 
-  return EXECUTABLE_SIGNATURES.some((signature) => matchesMagicBytes(buffer, signature));
+  return EXECUTABLE_SIGNATURES.some((signature) =>
+    matchesMagicBytes(buffer, signature)
+  );
 }
 
 /**
@@ -184,38 +201,39 @@ export function detectExecutable(buffer: Buffer): boolean {
  */
 export function sanitizeFilename(filename: string): string {
   // Remove any path components
-  filename = filename.replace(/^.*[\\\/]/, "");
+  filename = filename.replace(/^.*[\\\/]/, '');
 
   // Remove null bytes
-  filename = filename.replace(/\0/g, "");
+  filename = filename.replace(/\0/g, '');
 
   // Remove path traversal patterns
-  filename = filename.replace(/\.\./g, "");
-  filename = filename.replace(/[\\\/]/g, "");
+  filename = filename.replace(/\.\./g, '');
+  filename = filename.replace(/[\\\/]/g, '');
 
   // Remove potentially dangerous characters
-  filename = filename.replace(/[<>:"|?*]/g, "");
+  filename = filename.replace(/[<>:"|?*]/g, '');
 
   // Replace spaces and special characters with underscores
-  filename = filename.replace(/[^\w\s.-]/g, "_");
+  filename = filename.replace(/[^\w\s.-]/g, '_');
 
   // Collapse multiple dots
-  filename = filename.replace(/\.{2,}/g, ".");
+  filename = filename.replace(/\.{2,}/g, '.');
 
   // Trim dots and spaces from start/end
-  filename = filename.replace(/^[.\s]+|[.\s]+$/g, "");
+  filename = filename.replace(/^[.\s]+|[.\s]+$/g, '');
 
   // Limit length (filesystem limits)
   const maxLength = 255;
   if (filename.length > maxLength) {
-    const ext = filename.split(".").pop() || "";
-    const nameWithoutExt = filename.substring(0, filename.lastIndexOf("."));
-    filename = nameWithoutExt.substring(0, maxLength - ext.length - 1) + "." + ext;
+    const ext = filename.split('.').pop() || '';
+    const nameWithoutExt = filename.substring(0, filename.lastIndexOf('.'));
+    filename =
+      nameWithoutExt.substring(0, maxLength - ext.length - 1) + '.' + ext;
   }
 
   // Ensure filename is not empty
   if (!filename || filename.length === 0) {
-    filename = "file";
+    filename = 'file';
   }
 
   return filename;
@@ -224,14 +242,18 @@ export function sanitizeFilename(filename: string): string {
 /**
  * Validate file extension against allowed types
  */
-function validateExtension(filename: string, allowedExtensions: string[]): ValidationResult {
-  const parts = filename.toLowerCase().split(".");
+function validateExtension(
+  filename: string,
+  allowedExtensions: string[]
+): ValidationResult {
+  const parts = filename.toLowerCase().split('.');
 
   // Check for double extensions (e.g., file.php.jpg)
   if (parts.length > 2) {
     return {
       valid: false,
-      error: "File cannot have multiple extensions. This may indicate a file type obfuscation attempt.",
+      error:
+        'File cannot have multiple extensions. This may indicate a file type obfuscation attempt.',
     };
   }
 
@@ -240,14 +262,14 @@ function validateExtension(filename: string, allowedExtensions: string[]): Valid
   if (!ext) {
     return {
       valid: false,
-      error: "File must have an extension",
+      error: 'File must have an extension',
     };
   }
 
   if (!allowedExtensions.includes(ext)) {
     return {
       valid: false,
-      error: `File extension .${ext} not allowed. Allowed: ${allowedExtensions.join(", ")}`,
+      error: `File extension .${ext} not allowed. Allowed: ${allowedExtensions.join(', ')}`,
     };
   }
 
@@ -269,7 +291,7 @@ function validateFileSize(size: number, maxSize: number): ValidationResult {
   if (size === 0) {
     return {
       valid: false,
-      error: "File is empty",
+      error: 'File is empty',
     };
   }
 
@@ -279,16 +301,27 @@ function validateFileSize(size: number, maxSize: number): ValidationResult {
 /**
  * Detect potential malicious patterns in file content
  */
-function detectMaliciousPatterns(buffer: Buffer, mimeType: string): ValidationResult {
+function detectMaliciousPatterns(
+  buffer: Buffer,
+  mimeType: string
+): ValidationResult {
   // For text-based files, check for malicious scripts
-  if (mimeType.startsWith("text/") || mimeType.includes("xml") || mimeType.includes("svg")) {
-    const content = buffer.toString("utf-8", 0, Math.min(buffer.length, 1024 * 10)); // Check first 10KB
+  if (
+    mimeType.startsWith('text/') ||
+    mimeType.includes('xml') ||
+    mimeType.includes('svg')
+  ) {
+    const content = buffer.toString(
+      'utf-8',
+      0,
+      Math.min(buffer.length, 1024 * 10)
+    ); // Check first 10KB
 
     // Check for script tags
     if (/<script[^>]*>/i.test(content)) {
       return {
         valid: false,
-        error: "File contains potentially malicious script tags",
+        error: 'File contains potentially malicious script tags',
       };
     }
 
@@ -296,7 +329,7 @@ function detectMaliciousPatterns(buffer: Buffer, mimeType: string): ValidationRe
     if (/on\w+\s*=/i.test(content)) {
       return {
         valid: false,
-        error: "File contains potentially malicious event handlers",
+        error: 'File contains potentially malicious event handlers',
       };
     }
 
@@ -304,7 +337,7 @@ function detectMaliciousPatterns(buffer: Buffer, mimeType: string): ValidationRe
     if (/javascript:/i.test(content)) {
       return {
         valid: false,
-        error: "File contains potentially malicious JavaScript protocol",
+        error: 'File contains potentially malicious JavaScript protocol',
       };
     }
   }
@@ -349,28 +382,31 @@ export async function validateUpload(
   if (detectExecutable(buffer)) {
     return {
       valid: false,
-      error: "Executable files are not allowed for security reasons",
+      error: 'Executable files are not allowed for security reasons',
     };
   }
 
   // 3. Validate file size
-  const maxSize = config.maxSize || config.allowedTypes?.maxSize || 10 * 1024 * 1024;
+  const maxSize =
+    config.maxSize || config.allowedTypes?.maxSize || 10 * 1024 * 1024;
   const sizeValidation = validateFileSize(size, maxSize);
   if (!sizeValidation.valid) {
     return sizeValidation;
   }
 
   // 4. Validate MIME type
-  const allowedMimeTypes = config.allowedMimeTypes || config.allowedTypes?.mimeTypes || [];
+  const allowedMimeTypes =
+    config.allowedMimeTypes || config.allowedTypes?.mimeTypes || [];
   if (allowedMimeTypes.length > 0 && !allowedMimeTypes.includes(mimeType)) {
     return {
       valid: false,
-      error: `MIME type ${mimeType} not allowed. Allowed: ${allowedMimeTypes.join(", ")}`,
+      error: `MIME type ${mimeType} not allowed. Allowed: ${allowedMimeTypes.join(', ')}`,
     };
   }
 
   // 5. Validate extension
-  const allowedExtensions = config.allowedExtensions || config.allowedTypes?.extensions || [];
+  const allowedExtensions =
+    config.allowedExtensions || config.allowedTypes?.extensions || [];
   if (allowedExtensions.length > 0) {
     const extValidation = validateExtension(filename, allowedExtensions);
     if (!extValidation.valid) {
@@ -407,7 +443,10 @@ export async function validateUpload(
  * Validate multiple files
  */
 export async function validateMultipleUploads(
-  files: (File | { buffer: Buffer; name: string; type: string; size: number })[],
+  files: (
+    | File
+    | { buffer: Buffer; name: string; type: string; size: number }
+  )[],
   config: {
     allowedTypes?: FileTypeConfig;
     maxSize?: number;
@@ -463,14 +502,14 @@ export async function validateImageDimensions(
   }
 ): Promise<ValidationResult> {
   try {
-    const sharpModule = await import("sharp");
+    const sharpModule = await import('sharp');
     const sharp = sharpModule.default || sharpModule;
     const metadata = await sharp(buffer).metadata();
 
     if (!metadata.width || !metadata.height) {
       return {
         valid: false,
-        error: "Could not determine image dimensions",
+        error: 'Could not determine image dimensions',
       };
     }
 
@@ -506,7 +545,7 @@ export async function validateImageDimensions(
   } catch {
     return {
       valid: false,
-      error: "Failed to validate image dimensions",
+      error: 'Failed to validate image dimensions',
     };
   }
 }

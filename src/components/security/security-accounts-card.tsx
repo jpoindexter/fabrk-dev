@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
 /**
  * Connected Accounts Card
  * Part of SecuritySettings split
  */
 
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import { Link2, Trash2 } from "lucide-react";
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
+import { Link2, Trash2 } from 'lucide-react';
 
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 interface ConnectedAccount {
   provider: string;
   accountId: string;
@@ -35,7 +35,7 @@ export function SecurityAccountsCard({
         code="0x01"
         title="CONNECTED_ACCOUNTS"
         icon={<Link2 className="h-4 w-4" />}
-        meta={`${connectedAccounts.length} ${connectedAccounts.length === 1 ? "account" : "accounts"}`}
+        meta={`${connectedAccounts.length} ${connectedAccounts.length === 1 ? 'account' : 'accounts'}`}
       />
       <CardContent className="space-y-4">
         <p className="text-muted-foreground mb-4 font-mono text-xs">
@@ -43,7 +43,8 @@ export function SecurityAccountsCard({
         </p>
         {connectedAccounts.length === 0 ? (
           <p className="text-muted-foreground font-mono text-xs">
-            No connected accounts. You can link Google or GitHub for faster sign-in.
+            No connected accounts. You can link Google or GitHub for faster
+            sign-in.
           </p>
         ) : (
           <div className="space-y-4">
@@ -51,7 +52,7 @@ export function SecurityAccountsCard({
               <div
                 key={i}
                 className={cn(
-                  "border-border flex items-center justify-between border p-4",
+                  'border-border flex items-center justify-between border p-4',
                   mode.radius
                 )}
               >
@@ -59,7 +60,9 @@ export function SecurityAccountsCard({
                   <Badge variant="outline" className="font-mono capitalize">
                     {account.provider}
                   </Badge>
-                  <span className="text-muted-foreground font-mono text-xs">Connected</span>
+                  <span className="text-muted-foreground font-mono text-xs">
+                    Connected
+                  </span>
                 </div>
                 <Button
                   variant="ghost"
@@ -69,8 +72,8 @@ export function SecurityAccountsCard({
                 >
                   <Trash2 className="mr-2 h-4 w-4" />
                   {disconnectingProvider === account.provider
-                    ? "> DISCONNECTING..."
-                    : "> DISCONNECT"}
+                    ? '> DISCONNECTING...'
+                    : '> DISCONNECT'}
                 </Button>
               </div>
             ))}

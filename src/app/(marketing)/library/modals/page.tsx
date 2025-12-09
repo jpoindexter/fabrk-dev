@@ -2,12 +2,17 @@
  * Modal Patterns Template - Terminal console style
  * Industry-standard Preview/Code tabbed interface
  */
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent, TemplatePageHeader } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { CodeBlock } from "@/components/ui/code-block";
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  TemplatePageHeader,
+} from '@/components/ui/card';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { CodeBlock } from '@/components/ui/code-block';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -18,10 +23,10 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import { AlertTriangle, Trash2 } from "lucide-react";
-import { mode } from "@/design-system";
-import { cn } from "@/lib/utils";
+} from '@/components/ui/alert-dialog';
+import { AlertTriangle, Trash2 } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 const templateCode = `"use client";
 
@@ -91,33 +96,40 @@ function ModalsPreview() {
     <div className="bg-background/50 flex min-h-[600px] items-center justify-center p-8">
       <AlertDialog>
         <AlertDialogTrigger asChild>
-          <Button variant="destructive" className={cn(mode.radius, mode.font, "text-xs")}>
+          <Button
+            variant="destructive"
+            className={cn(mode.radius, mode.font, 'text-xs')}
+          >
             <Trash2 className="mr-1 h-3 w-3" />
             &gt; DELETE_ITEM
           </Button>
         </AlertDialogTrigger>
-        <AlertDialogContent className={cn(mode.radius, "border-border")}>
+        <AlertDialogContent className={cn(mode.radius, 'border-border')}>
           <AlertDialogHeader>
             <div className="mb-2 flex items-center gap-2">
               <div className="border-destructive bg-destructive/10 border p-2">
                 <AlertTriangle className="text-destructive h-5 w-5" />
               </div>
             </div>
-            <AlertDialogTitle className={cn(mode.font)}>[CONFIRM_DELETE]</AlertDialogTitle>
-            <AlertDialogDescription className={cn(mode.font, "text-sm")}>
-              This action cannot be undone. This will permanently delete the item and remove all
-              associated data from our servers.
+            <AlertDialogTitle className={cn(mode.font)}>
+              [CONFIRM_DELETE]
+            </AlertDialogTitle>
+            <AlertDialogDescription className={cn(mode.font, 'text-sm')}>
+              This action cannot be undone. This will permanently delete the
+              item and remove all associated data from our servers.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel className={cn(mode.radius, mode.font, "text-xs")}>
+            <AlertDialogCancel
+              className={cn(mode.radius, mode.font, 'text-xs')}
+            >
               &gt; CANCEL
             </AlertDialogCancel>
             <AlertDialogAction
               className={cn(
                 mode.radius,
                 mode.font,
-                "bg-destructive text-destructive-foreground hover:bg-destructive/90 text-xs"
+                'bg-destructive text-destructive-foreground hover:bg-destructive/90 text-xs'
               )}
             >
               &gt; DELETE
@@ -148,14 +160,14 @@ export default function ModalsTemplate() {
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
-                  "h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0",
+                  'h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0',
                   mode.radius
                 )}
               >
                 <TabsTrigger
                   value="preview"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -165,7 +177,7 @@ export default function ModalsTemplate() {
                 <TabsTrigger
                   value="code"
                   className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
                     mode.radius,
                     mode.font
                   )}
@@ -189,7 +201,11 @@ export default function ModalsTemplate() {
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+                <CodeBlock
+                  code={templateCode}
+                  language="tsx"
+                  maxHeight="600px"
+                />
               </div>
             </Card>
           </TabsContent>
@@ -199,7 +215,7 @@ export default function ModalsTemplate() {
         <Card>
           <CardHeader code="0x02" title="MODAL_TYPES" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-4 text-xs")}>
+            <div className={cn(mode.font, 'space-y-4 text-xs')}>
               <div className="space-y-2">
                 <div className="font-semibold">[ALERT_DIALOG]</div>
                 <div className="text-muted-foreground">
@@ -220,7 +236,9 @@ export default function ModalsTemplate() {
               </div>
               <div className="space-y-2">
                 <div className="font-semibold">[POPOVER]</div>
-                <div className="text-muted-foreground">Contextual menus, dropdowns, tooltips</div>
+                <div className="text-muted-foreground">
+                  Contextual menus, dropdowns, tooltips
+                </div>
               </div>
             </div>
           </CardContent>
@@ -230,27 +248,33 @@ export default function ModalsTemplate() {
         <Card>
           <CardHeader code="0x03" title="FEATURES" />
           <CardContent padding="md">
-            <div className={cn(mode.font, "space-y-2 text-xs")}>
+            <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>
-                <span className="text-success">&gt;</span> AlertDialog for destructive actions
+                <span className="text-success">&gt;</span> AlertDialog for
+                destructive actions
               </div>
               <div>
-                <span className="text-success">&gt;</span> Dialog for forms and content
+                <span className="text-success">&gt;</span> Dialog for forms and
+                content
               </div>
               <div>
                 <span className="text-success">&gt;</span> Sheet for side panels
               </div>
               <div>
-                <span className="text-success">&gt;</span> Popover for contextual menus
+                <span className="text-success">&gt;</span> Popover for
+                contextual menus
               </div>
               <div>
-                <span className="text-success">&gt;</span> Keyboard navigation (ESC to close)
+                <span className="text-success">&gt;</span> Keyboard navigation
+                (ESC to close)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Focus trap and accessibility
+                <span className="text-success">&gt;</span> Focus trap and
+                accessibility
               </div>
               <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
+                <span className="text-success">&gt;</span> DS-compliant
+                (mode.font, mode.radius)
               </div>
             </div>
           </CardContent>

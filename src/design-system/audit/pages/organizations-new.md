@@ -46,17 +46,17 @@
 
 ```typescript
 const organizationSchema = z.object({
-  name: z.string().min(2, "..."),
+  name: z.string().min(2, '...'),
   description: z.string().optional(),
   slug: z
     .string()
-    .min(2, "...")
-    .regex(/^[a-z0-9-]+$/, "..."),
+    .min(2, '...')
+    .regex(/^[a-z0-9-]+$/, '...'),
 });
 
 const inviteSchema = z.object({
   emails: z.string(),
-  role: z.enum(["OWNER", "ADMIN", "MEMBER", "GUEST"]),
+  role: z.enum(['OWNER', 'ADMIN', 'MEMBER', 'GUEST']),
 });
 ```
 
@@ -77,8 +77,8 @@ Uses form.watch() to generate slug from name:
 ```typescript
 const slug = value.name
   .toLowerCase()
-  .replace(/[^a-z0-9]+/g, "-")
-  .replace(/^-|-$/g, "");
+  .replace(/[^a-z0-9]+/g, '-')
+  .replace(/^-|-$/g, '');
 ```
 
 ## Step Flow

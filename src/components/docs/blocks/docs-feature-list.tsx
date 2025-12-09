@@ -3,7 +3,7 @@
  * Matches the home page FeaturesShowcase design
  */
 
-import { LucideIcon } from "lucide-react";
+import { LucideIcon } from 'lucide-react';
 
 interface Feature {
   icon: LucideIcon;
@@ -24,32 +24,45 @@ interface DocsFeatureListProps {
   startIndex?: number;
 }
 
-export function DocsFeatureList({ features, columns = 3, startIndex = 1 }: DocsFeatureListProps) {
-  const gridCols = columns === 2
-    ? "md:grid-cols-2"
-    : columns === 4
-      ? "sm:grid-cols-2 lg:grid-cols-4"
-      : "md:grid-cols-2 lg:grid-cols-3";
+export function DocsFeatureList({
+  features,
+  columns = 3,
+  startIndex = 1,
+}: DocsFeatureListProps) {
+  const gridCols =
+    columns === 2
+      ? 'md:grid-cols-2'
+      : columns === 4
+        ? 'sm:grid-cols-2 lg:grid-cols-4'
+        : 'md:grid-cols-2 lg:grid-cols-3';
 
   return (
     <div className={`grid gap-4 ${gridCols}`}>
       {features.map((feature, index) => {
         const Icon = feature.icon;
-        const hexCode = (startIndex + index).toString(16).toUpperCase().padStart(2, '0');
-        const moduleCode = feature.module || feature.title.toUpperCase().replace(/[\s-]+/g, '_').slice(0, 12);
-        const status = feature.status || "READY";
+        const hexCode = (startIndex + index)
+          .toString(16)
+          .toUpperCase()
+          .padStart(2, '0');
+        const moduleCode =
+          feature.module ||
+          feature.title
+            .toUpperCase()
+            .replace(/[\s-]+/g, '_')
+            .slice(0, 12);
+        const status = feature.status || 'READY';
 
         return (
           <div
             key={index}
-            className="group border border-border bg-card transition-colors hover:border-primary/50"
+            className="group border-border bg-card hover:border-primary/50 border transition-colors"
           >
             {/* Module Header */}
-            <div className="flex items-center justify-between border-b border-border px-4 py-2">
-              <span className="font-mono text-xs text-muted-foreground">
+            <div className="border-border flex items-center justify-between border-b px-4 py-2">
+              <span className="text-muted-foreground font-mono text-xs">
                 [ [0x{hexCode}] {moduleCode} ]
               </span>
-              <Icon className="size-4 text-muted-foreground transition-colors group-hover:text-primary" />
+              <Icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
             </div>
 
             {/* Content */}

@@ -3,14 +3,14 @@
  * Hero Section - Terminal console [SYSTEM_INIT] style
  * Production-ready ✓
  */
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { PolarCheckoutButton } from "@/components/polar/checkout-button";
-import { motion, useInView } from "framer-motion";
-import { SimpleIcon } from "@/components/ui/simple-icon";
+import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { PolarCheckoutButton } from '@/components/polar/checkout-button';
+import { motion, useInView } from 'framer-motion';
+import { SimpleIcon } from '@/components/ui/simple-icon';
 import {
   siNextdotjs,
   siReact,
@@ -19,10 +19,17 @@ import {
   siTypescript,
   siStripe,
   siResend,
-} from "simple-icons";
-import { cn } from "@/lib/utils";
-import { mode } from "@/design-system";
-import { Card, CardHeader, CardContent, Stat, StatGroup, Badge } from "@/components/ui/card";
+} from 'simple-icons';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  Stat,
+  StatGroup,
+  Badge,
+} from '@/components/ui/card';
 
 // Typewriter effect component
 function TypeWriter({
@@ -36,7 +43,7 @@ function TypeWriter({
   speed?: number;
   showCursor?: boolean;
 }) {
-  const [displayText, setDisplayText] = useState("");
+  const [displayText, setDisplayText] = useState('');
   const [started, setStarted] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true });
@@ -84,13 +91,13 @@ function TypeWriter({
 }
 
 const techStack = [
-  { name: "NEXT.JS", path: siNextdotjs.path },
-  { name: "REACT", path: siReact.path },
-  { name: "TYPESCRIPT", path: siTypescript.path },
-  { name: "TAILWIND", path: siTailwindcss.path },
-  { name: "PRISMA", path: siPrisma.path },
-  { name: "STRIPE", path: siStripe.path },
-  { name: "RESEND", path: siResend.path },
+  { name: 'NEXT.JS', path: siNextdotjs.path },
+  { name: 'REACT', path: siReact.path },
+  { name: 'TYPESCRIPT', path: siTypescript.path },
+  { name: 'TAILWIND', path: siTailwindcss.path },
+  { name: 'PRISMA', path: siPrisma.path },
+  { name: 'STRIPE', path: siStripe.path },
+  { name: 'RESEND', path: siResend.path },
 ];
 
 // Terminal content showing git clone flow
@@ -114,10 +121,10 @@ function HeroCodeDemo() {
   }, [isInView]);
 
   return (
-    <div ref={ref} className={cn("p-6 text-xs", mode.font)}>
+    <div ref={ref} className={cn('p-6 text-xs', mode.font)}>
       {/* git clone */}
       <div className="text-muted-foreground">
-        <span className="text-success">~</span>{" "}
+        <span className="text-success">~</span>{' '}
         <TypeWriter
           text="git clone https://github.com/you/fabrk my-saas"
           delay={0.3}
@@ -131,7 +138,8 @@ function HeroCodeDemo() {
         animate={{ opacity: step >= 1 ? 1 : 0 }}
         className="text-muted-foreground mt-1"
       >
-        Cloning into &apos;my-saas&apos;... <span className="text-success">done</span>
+        Cloning into &apos;my-saas&apos;...{' '}
+        <span className="text-success">done</span>
       </motion.div>
 
       {/* cd && npm install */}
@@ -140,7 +148,7 @@ function HeroCodeDemo() {
         animate={{ opacity: step >= 2 ? 1 : 0 }}
         className="text-muted-foreground mt-4"
       >
-        <span className="text-success">~</span>{" "}
+        <span className="text-success">~</span>{' '}
         <span className="text-foreground">cd my-saas && npm install</span>
       </motion.div>
 
@@ -162,7 +170,7 @@ function HeroCodeDemo() {
         animate={{ opacity: step >= 3 ? 1 : 0 }}
         className="text-muted-foreground mt-1"
       >
-        added <span className="text-foreground">847</span> packages in{" "}
+        added <span className="text-foreground">847</span> packages in{' '}
         <span className="text-foreground">12s</span>
       </motion.div>
 
@@ -172,7 +180,7 @@ function HeroCodeDemo() {
         animate={{ opacity: step >= 4 ? 1 : 0 }}
         className="text-muted-foreground mt-4"
       >
-        <span className="text-success">~/my-saas</span>{" "}
+        <span className="text-success">~/my-saas</span>{' '}
         <span className="text-foreground">npm run dev</span>
       </motion.div>
 
@@ -194,7 +202,7 @@ function HeroCodeDemo() {
         animate={{ opacity: step >= 5 ? 1 : 0 }}
         className="text-muted-foreground mt-4"
       >
-        <span className="text-success">~/my-saas</span>{" "}
+        <span className="text-success">~/my-saas</span>{' '}
         <motion.span
           className="text-primary inline-block"
           animate={{ opacity: [1, 0, 1] }}
@@ -221,7 +229,11 @@ export function HeroSection() {
               transition={{ duration: 0.6 }}
               className="mb-6"
             >
-              <Badge code="0x00" label="SYSTEM INIT" meta="SAAS_BOILERPLATE_v2.0" />
+              <Badge
+                code="0x00"
+                label="SYSTEM INIT"
+                meta="SAAS_BOILERPLATE_v2.0"
+              />
             </motion.div>
 
             {/* Headline */}
@@ -230,8 +242,17 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h1 className={cn("text-muted-foreground mb-2 text-sm", mode.font)}>[FABRK INIT]</h1>
-              <h2 className={cn("mb-6 text-4xl font-semibold tracking-tight", mode.font)}>
+              <h1
+                className={cn('text-muted-foreground mb-2 text-sm', mode.font)}
+              >
+                [FABRK INIT]
+              </h1>
+              <h2
+                className={cn(
+                  'mb-6 text-4xl font-semibold tracking-tight',
+                  mode.font
+                )}
+              >
                 BUILDING YOUR SAAS
                 <br />
                 <span className="text-primary">JUST GOT UNFAIRLY EASY.</span>
@@ -248,9 +269,15 @@ export function HeroSection() {
               <Card size="auto">
                 <CardHeader code="0x01" title="STATUS" />
                 <CardContent>
-                  <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
-                    Why spend valuable time tackling auth, billing, emails, organizations, invites
-                    and onboarding? Focus on your business and skip the noise.
+                  <p
+                    className={cn(
+                      'text-muted-foreground mb-4 text-sm',
+                      mode.font
+                    )}
+                  >
+                    Why spend valuable time tackling auth, billing, emails,
+                    organizations, invites and onboarding? Focus on your
+                    business and skip the noise.
                   </p>
                   <StatGroup>
                     <Stat label="Speed" value="OPTIMIZED" />
@@ -267,10 +294,16 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mb-8 flex flex-col gap-4 sm:flex-row"
             >
-              <PolarCheckoutButton className={cn("text-xs", mode.radius, mode.font)}>
+              <PolarCheckoutButton
+                className={cn('text-xs', mode.radius, mode.font)}
+              >
                 &gt; GET FABRK
               </PolarCheckoutButton>
-              <Button variant="outline" asChild className={cn("text-xs", mode.radius, mode.font)}>
+              <Button
+                variant="outline"
+                asChild
+                className={cn('text-xs', mode.radius, mode.font)}
+              >
                 <Link href="/docs/components/overview">&gt; VIEW LIBRARY</Link>
               </Button>
             </motion.div>
@@ -281,19 +314,28 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <Badge code="0x02" label="POWERED BY" meta="FIB[1,1,2,3,5,8,13]" className="mb-4" />
+              <Badge
+                code="0x02"
+                label="POWERED BY"
+                meta="FIB[1,1,2,3,5,8,13]"
+                className="mb-4"
+              />
               <div className="flex flex-wrap gap-4">
                 {techStack.map((tech) => (
                   <div
                     key={tech.name}
                     className={cn(
-                      "border-border bg-card inline-flex items-center gap-2 border px-3 py-1.5",
+                      'border-border bg-card inline-flex items-center gap-2 border px-3 py-1.5',
                       mode.radius
                     )}
                   >
                     <SimpleIcon path={tech.path} className="size-3.5" />
-                    <span className={cn("text-xs", mode.font)}>{tech.name}</span>
-                    <span className={cn("text-success text-xs", mode.font)}>[OK]</span>
+                    <span className={cn('text-xs', mode.font)}>
+                      {tech.name}
+                    </span>
+                    <span className={cn('text-success text-xs', mode.font)}>
+                      [OK]
+                    </span>
                   </div>
                 ))}
               </div>
@@ -310,7 +352,7 @@ export function HeroSection() {
             {/* Terminal Window Frame */}
             <motion.div
               whileHover={{ scale: 1.01 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              transition={{ type: 'spring', stiffness: 300 }}
             >
               <Card size="auto">
                 <CardHeader code="0x03" title="terminal — ~/projects" />

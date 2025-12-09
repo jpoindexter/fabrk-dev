@@ -1,10 +1,11 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsLinkCard } from "@/components/docs";
-import { Bot, Clock, Shield, Fingerprint } from "lucide-react";
+import { FeatureGuideTemplate } from '@/components/docs';
+import { DocsSection, DocsLinkCard } from '@/components/docs';
+import { Bot, Clock, Shield, Fingerprint } from 'lucide-react';
 
 export const metadata = {
-  title: "Bot Protection - Fabrk Docs",
-  description: "Block malicious bots and scrapers. Honeypot fields, CAPTCHA integration, and user-agent filtering.",
+  title: 'Bot Protection - Fabrk Docs',
+  description:
+    'Block malicious bots and scrapers. Honeypot fields, CAPTCHA integration, and user-agent filtering.',
 };
 
 export default function BotProtectionPage() {
@@ -16,15 +17,32 @@ export default function BotProtectionPage() {
       description="Detect and block automated bot traffic with multiple protection strategies."
       overview="Bot protection prevents automated attacks on your forms and APIs. Use honeypot fields, timing validation, user-agent analysis, and CAPTCHA to block bots while keeping the experience smooth for real users."
       features={[
-        { icon: Bot, title: "Honeypot Fields", description: "Invisible fields that bots fill but humans don't." },
-        { icon: Clock, title: "Time Validation", description: "Reject submissions that are too fast or too slow." },
-        { icon: Fingerprint, title: "User-Agent Analysis", description: "Detect suspicious user agents and patterns." },
-        { icon: Shield, title: "CAPTCHA Integration", description: "Optional Cloudflare Turnstile for strong protection." },
+        {
+          icon: Bot,
+          title: 'Honeypot Fields',
+          description: "Invisible fields that bots fill but humans don't.",
+        },
+        {
+          icon: Clock,
+          title: 'Time Validation',
+          description: 'Reject submissions that are too fast or too slow.',
+        },
+        {
+          icon: Fingerprint,
+          title: 'User-Agent Analysis',
+          description: 'Detect suspicious user agents and patterns.',
+        },
+        {
+          icon: Shield,
+          title: 'CAPTCHA Integration',
+          description: 'Optional Cloudflare Turnstile for strong protection.',
+        },
       ]}
       usage={[
         {
-          title: "Honeypot Fields",
-          description: "Add invisible fields that bots will fill but humans won't",
+          title: 'Honeypot Fields',
+          description:
+            "Add invisible fields that bots will fill but humans won't",
           code: `// Client-side form component
 "use client";
 
@@ -83,11 +101,12 @@ export async function POST(request: NextRequest) {
 
   // ...
 }`,
-          language: "tsx",
+          language: 'tsx',
         },
         {
-          title: "Time-based Validation",
-          description: "Reject submissions that are too fast (bots) or too slow (stale tokens)",
+          title: 'Time-based Validation',
+          description:
+            'Reject submissions that are too fast (bots) or too slow (stale tokens)',
           code: `// Client-side: Add timestamp to form
 "use client";
 
@@ -143,11 +162,11 @@ export async function POST(request: NextRequest) {
 
   // Process legitimate submission
 }`,
-          language: "tsx",
+          language: 'tsx',
         },
         {
-          title: "User-Agent Analysis",
-          description: "Detect suspicious user agents",
+          title: 'User-Agent Analysis',
+          description: 'Detect suspicious user agents',
           code: `// src/lib/bot-detection.ts
 
 const BOT_PATTERNS = [
@@ -220,11 +239,11 @@ export async function POST(request: NextRequest) {
 
   // Continue processing
 }`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Middleware Protection",
-          description: "Add bot detection at the edge",
+          title: 'Middleware Protection',
+          description: 'Add bot detection at the edge',
           code: `// src/middleware.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -281,11 +300,11 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: ["/api/:path*"],
 };`,
-          language: "typescript",
+          language: 'typescript',
         },
         {
-          title: "Cloudflare Turnstile CAPTCHA",
-          description: "Add Cloudflare Turnstile for strong bot protection",
+          title: 'Cloudflare Turnstile CAPTCHA',
+          description: 'Add Cloudflare Turnstile for strong bot protection',
           code: `// npm install @marsidev/react-turnstile
 
 "use client";
@@ -348,23 +367,26 @@ export async function POST(request: NextRequest) {
 
   // Process submission
 }`,
-          language: "tsx",
+          language: 'tsx',
         },
       ]}
       setup={[
         {
-          title: "Environment Variables",
-          description: "Configure Cloudflare Turnstile (optional)",
+          title: 'Environment Variables',
+          description: 'Configure Cloudflare Turnstile (optional)',
           code: `# .env.local
 
 # Cloudflare Turnstile (optional)
 NEXT_PUBLIC_TURNSTILE_SITE_KEY="your-site-key"
 TURNSTILE_SECRET_KEY="your-secret-key"`,
-          language: "bash",
+          language: 'bash',
         },
       ]}
-      previous={{ title: "Schema Validation", href: "/docs/security/validation" }}
-      next={{ title: "Rate Limiting", href: "/docs/security/rate-limiting" }}
+      previous={{
+        title: 'Schema Validation',
+        href: '/docs/security/validation',
+      }}
+      next={{ title: 'Rate Limiting', href: '/docs/security/rate-limiting' }}
     >
       {/* Next Steps Section */}
       <DocsSection title="Next Steps">

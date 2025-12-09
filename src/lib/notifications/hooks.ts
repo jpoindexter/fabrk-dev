@@ -3,9 +3,9 @@
  * React hooks for working with notifications
  */
 
-"use client";
+'use client';
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from 'react';
 import {
   getNotifications,
   getUnreadCount,
@@ -19,15 +19,14 @@ import {
   toast,
   type Notification,
   type ToastNotification,
-} from "./notification-manager";
+} from './notification-manager';
 
 /**
  * Hook to access notifications
  */
 export function useNotifications() {
-  const [notifications, setNotifications] = useState<Notification[]>(
-    getNotifications()
-  );
+  const [notifications, setNotifications] =
+    useState<Notification[]>(getNotifications());
   const [unreadCount, setUnreadCount] = useState(getUnreadCount());
 
   useEffect(() => {

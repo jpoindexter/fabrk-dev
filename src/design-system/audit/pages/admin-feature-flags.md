@@ -68,8 +68,8 @@ const [flags, setFlags] = useState<FeatureFlag[]>([]);
 const [loading, setLoading] = useState(true);
 const [showCreateForm, setShowCreateForm] = useState(false);
 const [newFlag, setNewFlag] = useState({
-  name: "",
-  description: "",
+  name: '',
+  description: '',
   enabled: false,
   rolloutPercentage: 0,
 });

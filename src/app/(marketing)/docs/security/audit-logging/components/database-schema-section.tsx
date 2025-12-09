@@ -1,7 +1,7 @@
 export function DatabaseSchemaSection() {
   return {
-    title: "Database Schema",
-    description: "The AuditLog model in Prisma",
+    title: 'Database Schema',
+    description: 'The AuditLog model in Prisma',
     code: `// prisma/schema.prisma
 
 model AuditLog {
@@ -36,6 +36,6 @@ model AuditLog {
   @@index([category])
   @@index([createdAt])
 }`,
-    language: "prisma" as const,
+    language: 'prisma' as const,
   };
 }

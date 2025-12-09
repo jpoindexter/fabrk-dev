@@ -7,9 +7,9 @@
  *
  * 🟢 You can import this file directly.
  */
-import type * as runtime from "@prisma/client/runtime/client";
-import type * as $Enums from "../enums";
-import type * as Prisma from "../internal/prismaNamespace";
+import type * as runtime from '@prisma/client/runtime/client';
+import type * as $Enums from '../enums';
+import type * as Prisma from '../internal/prismaNamespace';
 
 /**
  * Model WebhookDelivery
@@ -145,7 +145,8 @@ export type WebhookDeliveryCountAggregateInputType = {
 };
 
 export type WebhookDeliveryAggregateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which WebhookDelivery to aggregate.
@@ -209,8 +210,10 @@ export type WebhookDeliveryAggregateArgs<
   _max?: WebhookDeliveryMaxAggregateInputType;
 };
 
-export type GetWebhookDeliveryAggregateType<T extends WebhookDeliveryAggregateArgs> = {
-  [P in keyof T & keyof AggregateWebhookDelivery]: P extends "_count" | "count"
+export type GetWebhookDeliveryAggregateType<
+  T extends WebhookDeliveryAggregateArgs,
+> = {
+  [P in keyof T & keyof AggregateWebhookDelivery]: P extends '_count' | 'count'
     ? T[P] extends true
       ? number
       : Prisma.GetScalarType<T[P], AggregateWebhookDelivery[P]>
@@ -218,13 +221,16 @@ export type GetWebhookDeliveryAggregateType<T extends WebhookDeliveryAggregateAr
 };
 
 export type WebhookDeliveryGroupByArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.WebhookDeliveryWhereInput;
   orderBy?:
     | Prisma.WebhookDeliveryOrderByWithAggregationInput
     | Prisma.WebhookDeliveryOrderByWithAggregationInput[];
-  by: Prisma.WebhookDeliveryScalarFieldEnum[] | Prisma.WebhookDeliveryScalarFieldEnum;
+  by:
+    | Prisma.WebhookDeliveryScalarFieldEnum[]
+    | Prisma.WebhookDeliveryScalarFieldEnum;
   having?: Prisma.WebhookDeliveryScalarWhereWithAggregatesInput;
   take?: number;
   skip?: number;
@@ -256,36 +262,45 @@ export type WebhookDeliveryGroupByOutputType = {
   _max: WebhookDeliveryMaxAggregateOutputType | null;
 };
 
-type GetWebhookDeliveryGroupByPayload<T extends WebhookDeliveryGroupByArgs> = Prisma.PrismaPromise<
-  Array<
-    Prisma.PickEnumerable<WebhookDeliveryGroupByOutputType, T["by"]> & {
-      [P in keyof T & keyof WebhookDeliveryGroupByOutputType]: P extends "_count"
-        ? T[P] extends boolean
-          ? number
-          : Prisma.GetScalarType<T[P], WebhookDeliveryGroupByOutputType[P]>
-        : Prisma.GetScalarType<T[P], WebhookDeliveryGroupByOutputType[P]>;
-    }
-  >
->;
+type GetWebhookDeliveryGroupByPayload<T extends WebhookDeliveryGroupByArgs> =
+  Prisma.PrismaPromise<
+    Array<
+      Prisma.PickEnumerable<WebhookDeliveryGroupByOutputType, T['by']> & {
+        [P in keyof T &
+          keyof WebhookDeliveryGroupByOutputType]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
+            : Prisma.GetScalarType<T[P], WebhookDeliveryGroupByOutputType[P]>
+          : Prisma.GetScalarType<T[P], WebhookDeliveryGroupByOutputType[P]>;
+      }
+    >
+  >;
 
 export type WebhookDeliveryWhereInput = {
   AND?: Prisma.WebhookDeliveryWhereInput | Prisma.WebhookDeliveryWhereInput[];
   OR?: Prisma.WebhookDeliveryWhereInput[];
   NOT?: Prisma.WebhookDeliveryWhereInput | Prisma.WebhookDeliveryWhereInput[];
-  id?: Prisma.StringFilter<"WebhookDelivery"> | string;
-  webhookId?: Prisma.StringFilter<"WebhookDelivery"> | string;
-  event?: Prisma.StringFilter<"WebhookDelivery"> | string;
-  method?: Prisma.StringFilter<"WebhookDelivery"> | string;
-  payload?: Prisma.JsonFilter<"WebhookDelivery">;
-  status?: Prisma.StringFilter<"WebhookDelivery"> | string;
-  statusCode?: Prisma.IntNullableFilter<"WebhookDelivery"> | number | null;
-  response?: Prisma.StringNullableFilter<"WebhookDelivery"> | string | null;
-  error?: Prisma.StringNullableFilter<"WebhookDelivery"> | string | null;
-  duration?: Prisma.IntNullableFilter<"WebhookDelivery"> | number | null;
-  attempts?: Prisma.IntFilter<"WebhookDelivery"> | number;
-  nextRetryAt?: Prisma.DateTimeNullableFilter<"WebhookDelivery"> | Date | string | null;
-  createdAt?: Prisma.DateTimeFilter<"WebhookDelivery"> | Date | string;
-  webhook?: Prisma.XOR<Prisma.WebhookScalarRelationFilter, Prisma.WebhookWhereInput>;
+  id?: Prisma.StringFilter<'WebhookDelivery'> | string;
+  webhookId?: Prisma.StringFilter<'WebhookDelivery'> | string;
+  event?: Prisma.StringFilter<'WebhookDelivery'> | string;
+  method?: Prisma.StringFilter<'WebhookDelivery'> | string;
+  payload?: Prisma.JsonFilter<'WebhookDelivery'>;
+  status?: Prisma.StringFilter<'WebhookDelivery'> | string;
+  statusCode?: Prisma.IntNullableFilter<'WebhookDelivery'> | number | null;
+  response?: Prisma.StringNullableFilter<'WebhookDelivery'> | string | null;
+  error?: Prisma.StringNullableFilter<'WebhookDelivery'> | string | null;
+  duration?: Prisma.IntNullableFilter<'WebhookDelivery'> | number | null;
+  attempts?: Prisma.IntFilter<'WebhookDelivery'> | number;
+  nextRetryAt?:
+    | Prisma.DateTimeNullableFilter<'WebhookDelivery'>
+    | Date
+    | string
+    | null;
+  createdAt?: Prisma.DateTimeFilter<'WebhookDelivery'> | Date | string;
+  webhook?: Prisma.XOR<
+    Prisma.WebhookScalarRelationFilter,
+    Prisma.WebhookWhereInput
+  >;
 };
 
 export type WebhookDeliveryOrderByWithRelationInput = {
@@ -311,21 +326,28 @@ export type WebhookDeliveryWhereUniqueInput = Prisma.AtLeast<
     AND?: Prisma.WebhookDeliveryWhereInput | Prisma.WebhookDeliveryWhereInput[];
     OR?: Prisma.WebhookDeliveryWhereInput[];
     NOT?: Prisma.WebhookDeliveryWhereInput | Prisma.WebhookDeliveryWhereInput[];
-    webhookId?: Prisma.StringFilter<"WebhookDelivery"> | string;
-    event?: Prisma.StringFilter<"WebhookDelivery"> | string;
-    method?: Prisma.StringFilter<"WebhookDelivery"> | string;
-    payload?: Prisma.JsonFilter<"WebhookDelivery">;
-    status?: Prisma.StringFilter<"WebhookDelivery"> | string;
-    statusCode?: Prisma.IntNullableFilter<"WebhookDelivery"> | number | null;
-    response?: Prisma.StringNullableFilter<"WebhookDelivery"> | string | null;
-    error?: Prisma.StringNullableFilter<"WebhookDelivery"> | string | null;
-    duration?: Prisma.IntNullableFilter<"WebhookDelivery"> | number | null;
-    attempts?: Prisma.IntFilter<"WebhookDelivery"> | number;
-    nextRetryAt?: Prisma.DateTimeNullableFilter<"WebhookDelivery"> | Date | string | null;
-    createdAt?: Prisma.DateTimeFilter<"WebhookDelivery"> | Date | string;
-    webhook?: Prisma.XOR<Prisma.WebhookScalarRelationFilter, Prisma.WebhookWhereInput>;
+    webhookId?: Prisma.StringFilter<'WebhookDelivery'> | string;
+    event?: Prisma.StringFilter<'WebhookDelivery'> | string;
+    method?: Prisma.StringFilter<'WebhookDelivery'> | string;
+    payload?: Prisma.JsonFilter<'WebhookDelivery'>;
+    status?: Prisma.StringFilter<'WebhookDelivery'> | string;
+    statusCode?: Prisma.IntNullableFilter<'WebhookDelivery'> | number | null;
+    response?: Prisma.StringNullableFilter<'WebhookDelivery'> | string | null;
+    error?: Prisma.StringNullableFilter<'WebhookDelivery'> | string | null;
+    duration?: Prisma.IntNullableFilter<'WebhookDelivery'> | number | null;
+    attempts?: Prisma.IntFilter<'WebhookDelivery'> | number;
+    nextRetryAt?:
+      | Prisma.DateTimeNullableFilter<'WebhookDelivery'>
+      | Date
+      | string
+      | null;
+    createdAt?: Prisma.DateTimeFilter<'WebhookDelivery'> | Date | string;
+    webhook?: Prisma.XOR<
+      Prisma.WebhookScalarRelationFilter,
+      Prisma.WebhookWhereInput
+    >;
   },
-  "id"
+  'id'
 >;
 
 export type WebhookDeliveryOrderByWithAggregationInput = {
@@ -357,23 +379,38 @@ export type WebhookDeliveryScalarWhereWithAggregatesInput = {
   NOT?:
     | Prisma.WebhookDeliveryScalarWhereWithAggregatesInput
     | Prisma.WebhookDeliveryScalarWhereWithAggregatesInput[];
-  id?: Prisma.StringWithAggregatesFilter<"WebhookDelivery"> | string;
-  webhookId?: Prisma.StringWithAggregatesFilter<"WebhookDelivery"> | string;
-  event?: Prisma.StringWithAggregatesFilter<"WebhookDelivery"> | string;
-  method?: Prisma.StringWithAggregatesFilter<"WebhookDelivery"> | string;
-  payload?: Prisma.JsonWithAggregatesFilter<"WebhookDelivery">;
-  status?: Prisma.StringWithAggregatesFilter<"WebhookDelivery"> | string;
-  statusCode?: Prisma.IntNullableWithAggregatesFilter<"WebhookDelivery"> | number | null;
-  response?: Prisma.StringNullableWithAggregatesFilter<"WebhookDelivery"> | string | null;
-  error?: Prisma.StringNullableWithAggregatesFilter<"WebhookDelivery"> | string | null;
-  duration?: Prisma.IntNullableWithAggregatesFilter<"WebhookDelivery"> | number | null;
-  attempts?: Prisma.IntWithAggregatesFilter<"WebhookDelivery"> | number;
+  id?: Prisma.StringWithAggregatesFilter<'WebhookDelivery'> | string;
+  webhookId?: Prisma.StringWithAggregatesFilter<'WebhookDelivery'> | string;
+  event?: Prisma.StringWithAggregatesFilter<'WebhookDelivery'> | string;
+  method?: Prisma.StringWithAggregatesFilter<'WebhookDelivery'> | string;
+  payload?: Prisma.JsonWithAggregatesFilter<'WebhookDelivery'>;
+  status?: Prisma.StringWithAggregatesFilter<'WebhookDelivery'> | string;
+  statusCode?:
+    | Prisma.IntNullableWithAggregatesFilter<'WebhookDelivery'>
+    | number
+    | null;
+  response?:
+    | Prisma.StringNullableWithAggregatesFilter<'WebhookDelivery'>
+    | string
+    | null;
+  error?:
+    | Prisma.StringNullableWithAggregatesFilter<'WebhookDelivery'>
+    | string
+    | null;
+  duration?:
+    | Prisma.IntNullableWithAggregatesFilter<'WebhookDelivery'>
+    | number
+    | null;
+  attempts?: Prisma.IntWithAggregatesFilter<'WebhookDelivery'> | number;
   nextRetryAt?:
-    | Prisma.DateTimeNullableWithAggregatesFilter<"WebhookDelivery">
+    | Prisma.DateTimeNullableWithAggregatesFilter<'WebhookDelivery'>
     | Date
     | string
     | null;
-  createdAt?: Prisma.DateTimeWithAggregatesFilter<"WebhookDelivery"> | Date | string;
+  createdAt?:
+    | Prisma.DateTimeWithAggregatesFilter<'WebhookDelivery'>
+    | Date
+    | string;
 };
 
 export type WebhookDeliveryCreateInput = {
@@ -419,7 +456,11 @@ export type WebhookDeliveryUpdateInput = {
   error?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   attempts?: Prisma.IntFieldUpdateOperationsInput | number;
-  nextRetryAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  nextRetryAt?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   webhook?: Prisma.WebhookUpdateOneRequiredWithoutDeliveriesNestedInput;
 };
@@ -436,7 +477,11 @@ export type WebhookDeliveryUncheckedUpdateInput = {
   error?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   attempts?: Prisma.IntFieldUpdateOperationsInput | number;
-  nextRetryAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  nextRetryAt?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -467,7 +512,11 @@ export type WebhookDeliveryUpdateManyMutationInput = {
   error?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   attempts?: Prisma.IntFieldUpdateOperationsInput | number;
-  nextRetryAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  nextRetryAt?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -483,7 +532,11 @@ export type WebhookDeliveryUncheckedUpdateManyInput = {
   error?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   attempts?: Prisma.IntFieldUpdateOperationsInput | number;
-  nextRetryAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  nextRetryAt?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -567,7 +620,9 @@ export type WebhookDeliveryCreateNestedManyWithoutWebhookInput = {
     | Prisma.WebhookDeliveryCreateOrConnectWithoutWebhookInput
     | Prisma.WebhookDeliveryCreateOrConnectWithoutWebhookInput[];
   createMany?: Prisma.WebhookDeliveryCreateManyWebhookInputEnvelope;
-  connect?: Prisma.WebhookDeliveryWhereUniqueInput | Prisma.WebhookDeliveryWhereUniqueInput[];
+  connect?:
+    | Prisma.WebhookDeliveryWhereUniqueInput
+    | Prisma.WebhookDeliveryWhereUniqueInput[];
 };
 
 export type WebhookDeliveryUncheckedCreateNestedManyWithoutWebhookInput = {
@@ -582,7 +637,9 @@ export type WebhookDeliveryUncheckedCreateNestedManyWithoutWebhookInput = {
     | Prisma.WebhookDeliveryCreateOrConnectWithoutWebhookInput
     | Prisma.WebhookDeliveryCreateOrConnectWithoutWebhookInput[];
   createMany?: Prisma.WebhookDeliveryCreateManyWebhookInputEnvelope;
-  connect?: Prisma.WebhookDeliveryWhereUniqueInput | Prisma.WebhookDeliveryWhereUniqueInput[];
+  connect?:
+    | Prisma.WebhookDeliveryWhereUniqueInput
+    | Prisma.WebhookDeliveryWhereUniqueInput[];
 };
 
 export type WebhookDeliveryUpdateManyWithoutWebhookNestedInput = {
@@ -600,17 +657,27 @@ export type WebhookDeliveryUpdateManyWithoutWebhookNestedInput = {
     | Prisma.WebhookDeliveryUpsertWithWhereUniqueWithoutWebhookInput
     | Prisma.WebhookDeliveryUpsertWithWhereUniqueWithoutWebhookInput[];
   createMany?: Prisma.WebhookDeliveryCreateManyWebhookInputEnvelope;
-  set?: Prisma.WebhookDeliveryWhereUniqueInput | Prisma.WebhookDeliveryWhereUniqueInput[];
-  disconnect?: Prisma.WebhookDeliveryWhereUniqueInput | Prisma.WebhookDeliveryWhereUniqueInput[];
-  delete?: Prisma.WebhookDeliveryWhereUniqueInput | Prisma.WebhookDeliveryWhereUniqueInput[];
-  connect?: Prisma.WebhookDeliveryWhereUniqueInput | Prisma.WebhookDeliveryWhereUniqueInput[];
+  set?:
+    | Prisma.WebhookDeliveryWhereUniqueInput
+    | Prisma.WebhookDeliveryWhereUniqueInput[];
+  disconnect?:
+    | Prisma.WebhookDeliveryWhereUniqueInput
+    | Prisma.WebhookDeliveryWhereUniqueInput[];
+  delete?:
+    | Prisma.WebhookDeliveryWhereUniqueInput
+    | Prisma.WebhookDeliveryWhereUniqueInput[];
+  connect?:
+    | Prisma.WebhookDeliveryWhereUniqueInput
+    | Prisma.WebhookDeliveryWhereUniqueInput[];
   update?:
     | Prisma.WebhookDeliveryUpdateWithWhereUniqueWithoutWebhookInput
     | Prisma.WebhookDeliveryUpdateWithWhereUniqueWithoutWebhookInput[];
   updateMany?:
     | Prisma.WebhookDeliveryUpdateManyWithWhereWithoutWebhookInput
     | Prisma.WebhookDeliveryUpdateManyWithWhereWithoutWebhookInput[];
-  deleteMany?: Prisma.WebhookDeliveryScalarWhereInput | Prisma.WebhookDeliveryScalarWhereInput[];
+  deleteMany?:
+    | Prisma.WebhookDeliveryScalarWhereInput
+    | Prisma.WebhookDeliveryScalarWhereInput[];
 };
 
 export type WebhookDeliveryUncheckedUpdateManyWithoutWebhookNestedInput = {
@@ -628,17 +695,27 @@ export type WebhookDeliveryUncheckedUpdateManyWithoutWebhookNestedInput = {
     | Prisma.WebhookDeliveryUpsertWithWhereUniqueWithoutWebhookInput
     | Prisma.WebhookDeliveryUpsertWithWhereUniqueWithoutWebhookInput[];
   createMany?: Prisma.WebhookDeliveryCreateManyWebhookInputEnvelope;
-  set?: Prisma.WebhookDeliveryWhereUniqueInput | Prisma.WebhookDeliveryWhereUniqueInput[];
-  disconnect?: Prisma.WebhookDeliveryWhereUniqueInput | Prisma.WebhookDeliveryWhereUniqueInput[];
-  delete?: Prisma.WebhookDeliveryWhereUniqueInput | Prisma.WebhookDeliveryWhereUniqueInput[];
-  connect?: Prisma.WebhookDeliveryWhereUniqueInput | Prisma.WebhookDeliveryWhereUniqueInput[];
+  set?:
+    | Prisma.WebhookDeliveryWhereUniqueInput
+    | Prisma.WebhookDeliveryWhereUniqueInput[];
+  disconnect?:
+    | Prisma.WebhookDeliveryWhereUniqueInput
+    | Prisma.WebhookDeliveryWhereUniqueInput[];
+  delete?:
+    | Prisma.WebhookDeliveryWhereUniqueInput
+    | Prisma.WebhookDeliveryWhereUniqueInput[];
+  connect?:
+    | Prisma.WebhookDeliveryWhereUniqueInput
+    | Prisma.WebhookDeliveryWhereUniqueInput[];
   update?:
     | Prisma.WebhookDeliveryUpdateWithWhereUniqueWithoutWebhookInput
     | Prisma.WebhookDeliveryUpdateWithWhereUniqueWithoutWebhookInput[];
   updateMany?:
     | Prisma.WebhookDeliveryUpdateManyWithWhereWithoutWebhookInput
     | Prisma.WebhookDeliveryUpdateManyWithWhereWithoutWebhookInput[];
-  deleteMany?: Prisma.WebhookDeliveryScalarWhereInput | Prisma.WebhookDeliveryScalarWhereInput[];
+  deleteMany?:
+    | Prisma.WebhookDeliveryScalarWhereInput
+    | Prisma.WebhookDeliveryScalarWhereInput[];
 };
 
 export type WebhookDeliveryCreateWithoutWebhookInput = {
@@ -715,22 +792,30 @@ export type WebhookDeliveryUpdateManyWithWhereWithoutWebhookInput = {
 };
 
 export type WebhookDeliveryScalarWhereInput = {
-  AND?: Prisma.WebhookDeliveryScalarWhereInput | Prisma.WebhookDeliveryScalarWhereInput[];
+  AND?:
+    | Prisma.WebhookDeliveryScalarWhereInput
+    | Prisma.WebhookDeliveryScalarWhereInput[];
   OR?: Prisma.WebhookDeliveryScalarWhereInput[];
-  NOT?: Prisma.WebhookDeliveryScalarWhereInput | Prisma.WebhookDeliveryScalarWhereInput[];
-  id?: Prisma.StringFilter<"WebhookDelivery"> | string;
-  webhookId?: Prisma.StringFilter<"WebhookDelivery"> | string;
-  event?: Prisma.StringFilter<"WebhookDelivery"> | string;
-  method?: Prisma.StringFilter<"WebhookDelivery"> | string;
-  payload?: Prisma.JsonFilter<"WebhookDelivery">;
-  status?: Prisma.StringFilter<"WebhookDelivery"> | string;
-  statusCode?: Prisma.IntNullableFilter<"WebhookDelivery"> | number | null;
-  response?: Prisma.StringNullableFilter<"WebhookDelivery"> | string | null;
-  error?: Prisma.StringNullableFilter<"WebhookDelivery"> | string | null;
-  duration?: Prisma.IntNullableFilter<"WebhookDelivery"> | number | null;
-  attempts?: Prisma.IntFilter<"WebhookDelivery"> | number;
-  nextRetryAt?: Prisma.DateTimeNullableFilter<"WebhookDelivery"> | Date | string | null;
-  createdAt?: Prisma.DateTimeFilter<"WebhookDelivery"> | Date | string;
+  NOT?:
+    | Prisma.WebhookDeliveryScalarWhereInput
+    | Prisma.WebhookDeliveryScalarWhereInput[];
+  id?: Prisma.StringFilter<'WebhookDelivery'> | string;
+  webhookId?: Prisma.StringFilter<'WebhookDelivery'> | string;
+  event?: Prisma.StringFilter<'WebhookDelivery'> | string;
+  method?: Prisma.StringFilter<'WebhookDelivery'> | string;
+  payload?: Prisma.JsonFilter<'WebhookDelivery'>;
+  status?: Prisma.StringFilter<'WebhookDelivery'> | string;
+  statusCode?: Prisma.IntNullableFilter<'WebhookDelivery'> | number | null;
+  response?: Prisma.StringNullableFilter<'WebhookDelivery'> | string | null;
+  error?: Prisma.StringNullableFilter<'WebhookDelivery'> | string | null;
+  duration?: Prisma.IntNullableFilter<'WebhookDelivery'> | number | null;
+  attempts?: Prisma.IntFilter<'WebhookDelivery'> | number;
+  nextRetryAt?:
+    | Prisma.DateTimeNullableFilter<'WebhookDelivery'>
+    | Date
+    | string
+    | null;
+  createdAt?: Prisma.DateTimeFilter<'WebhookDelivery'> | Date | string;
 };
 
 export type WebhookDeliveryCreateManyWebhookInput = {
@@ -759,7 +844,11 @@ export type WebhookDeliveryUpdateWithoutWebhookInput = {
   error?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   attempts?: Prisma.IntFieldUpdateOperationsInput | number;
-  nextRetryAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  nextRetryAt?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -774,7 +863,11 @@ export type WebhookDeliveryUncheckedUpdateWithoutWebhookInput = {
   error?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   attempts?: Prisma.IntFieldUpdateOperationsInput | number;
-  nextRetryAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  nextRetryAt?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
@@ -789,12 +882,17 @@ export type WebhookDeliveryUncheckedUpdateManyWithoutWebhookInput = {
   error?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   attempts?: Prisma.IntFieldUpdateOperationsInput | number;
-  nextRetryAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  nextRetryAt?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type WebhookDeliverySelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -812,11 +910,12 @@ export type WebhookDeliverySelect<
     createdAt?: boolean;
     webhook?: boolean | Prisma.WebhookDefaultArgs<ExtArgs>;
   },
-  ExtArgs["result"]["webhookDelivery"]
+  ExtArgs['result']['webhookDelivery']
 >;
 
 export type WebhookDeliverySelectCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -834,11 +933,12 @@ export type WebhookDeliverySelectCreateManyAndReturn<
     createdAt?: boolean;
     webhook?: boolean | Prisma.WebhookDefaultArgs<ExtArgs>;
   },
-  ExtArgs["result"]["webhookDelivery"]
+  ExtArgs['result']['webhookDelivery']
 >;
 
 export type WebhookDeliverySelectUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
@@ -856,7 +956,7 @@ export type WebhookDeliverySelectUpdateManyAndReturn<
     createdAt?: boolean;
     webhook?: boolean | Prisma.WebhookDefaultArgs<ExtArgs>;
   },
-  ExtArgs["result"]["webhookDelivery"]
+  ExtArgs['result']['webhookDelivery']
 >;
 
 export type WebhookDeliverySelectScalar = {
@@ -876,43 +976,48 @@ export type WebhookDeliverySelectScalar = {
 };
 
 export type WebhookDeliveryOmit<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
-  | "id"
-  | "webhookId"
-  | "event"
-  | "method"
-  | "payload"
-  | "status"
-  | "statusCode"
-  | "response"
-  | "error"
-  | "duration"
-  | "attempts"
-  | "nextRetryAt"
-  | "createdAt",
-  ExtArgs["result"]["webhookDelivery"]
+  | 'id'
+  | 'webhookId'
+  | 'event'
+  | 'method'
+  | 'payload'
+  | 'status'
+  | 'statusCode'
+  | 'response'
+  | 'error'
+  | 'duration'
+  | 'attempts'
+  | 'nextRetryAt'
+  | 'createdAt',
+  ExtArgs['result']['webhookDelivery']
 >;
 export type WebhookDeliveryInclude<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   webhook?: boolean | Prisma.WebhookDefaultArgs<ExtArgs>;
 };
 export type WebhookDeliveryIncludeCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   webhook?: boolean | Prisma.WebhookDefaultArgs<ExtArgs>;
 };
 export type WebhookDeliveryIncludeUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   webhook?: boolean | Prisma.WebhookDefaultArgs<ExtArgs>;
 };
 
 export type $WebhookDeliveryPayload<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
-  name: "WebhookDelivery";
+  name: 'WebhookDelivery';
   objects: {
     webhook: Prisma.$WebhookPayload<ExtArgs>;
   };
@@ -932,7 +1037,7 @@ export type $WebhookDeliveryPayload<
       nextRetryAt: Date | null;
       createdAt: Date;
     },
-    ExtArgs["result"]["webhookDelivery"]
+    ExtArgs['result']['webhookDelivery']
   >;
   composites: {};
 };
@@ -942,18 +1047,23 @@ export type WebhookDeliveryGetPayload<
 > = runtime.Types.Result.GetResult<Prisma.$WebhookDeliveryPayload, S>;
 
 export type WebhookDeliveryCountArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
-> = Omit<WebhookDeliveryFindManyArgs, "select" | "include" | "distinct" | "omit"> & {
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = Omit<
+  WebhookDeliveryFindManyArgs,
+  'select' | 'include' | 'distinct' | 'omit'
+> & {
   select?: WebhookDeliveryCountAggregateInputType | true;
 };
 
 export interface WebhookDeliveryDelegate<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > {
   [K: symbol]: {
-    types: Prisma.TypeMap<ExtArgs>["model"]["WebhookDelivery"];
-    meta: { name: "WebhookDelivery" };
+    types: Prisma.TypeMap<ExtArgs>['model']['WebhookDelivery'];
+    meta: { name: 'WebhookDelivery' };
   };
   /**
    * Find zero or one WebhookDelivery that matches the filter.
@@ -972,7 +1082,7 @@ export interface WebhookDeliveryDelegate<
     runtime.Types.Result.GetResult<
       Prisma.$WebhookDeliveryPayload<ExtArgs>,
       T,
-      "findUnique",
+      'findUnique',
       GlobalOmitOptions
     > | null,
     null,
@@ -998,7 +1108,7 @@ export interface WebhookDeliveryDelegate<
     runtime.Types.Result.GetResult<
       Prisma.$WebhookDeliveryPayload<ExtArgs>,
       T,
-      "findUniqueOrThrow",
+      'findUniqueOrThrow',
       GlobalOmitOptions
     >,
     never,
@@ -1025,7 +1135,7 @@ export interface WebhookDeliveryDelegate<
     runtime.Types.Result.GetResult<
       Prisma.$WebhookDeliveryPayload<ExtArgs>,
       T,
-      "findFirst",
+      'findFirst',
       GlobalOmitOptions
     > | null,
     null,
@@ -1053,7 +1163,7 @@ export interface WebhookDeliveryDelegate<
     runtime.Types.Result.GetResult<
       Prisma.$WebhookDeliveryPayload<ExtArgs>,
       T,
-      "findFirstOrThrow",
+      'findFirstOrThrow',
       GlobalOmitOptions
     >,
     never,
@@ -1083,7 +1193,7 @@ export interface WebhookDeliveryDelegate<
     runtime.Types.Result.GetResult<
       Prisma.$WebhookDeliveryPayload<ExtArgs>,
       T,
-      "findMany",
+      'findMany',
       GlobalOmitOptions
     >
   >;
@@ -1106,7 +1216,7 @@ export interface WebhookDeliveryDelegate<
     runtime.Types.Result.GetResult<
       Prisma.$WebhookDeliveryPayload<ExtArgs>,
       T,
-      "create",
+      'create',
       GlobalOmitOptions
     >,
     never,
@@ -1153,12 +1263,15 @@ export interface WebhookDeliveryDelegate<
    *
    */
   createManyAndReturn<T extends WebhookDeliveryCreateManyAndReturnArgs>(
-    args?: Prisma.SelectSubset<T, WebhookDeliveryCreateManyAndReturnArgs<ExtArgs>>
+    args?: Prisma.SelectSubset<
+      T,
+      WebhookDeliveryCreateManyAndReturnArgs<ExtArgs>
+    >
   ): Prisma.PrismaPromise<
     runtime.Types.Result.GetResult<
       Prisma.$WebhookDeliveryPayload<ExtArgs>,
       T,
-      "createManyAndReturn",
+      'createManyAndReturn',
       GlobalOmitOptions
     >
   >;
@@ -1181,7 +1294,7 @@ export interface WebhookDeliveryDelegate<
     runtime.Types.Result.GetResult<
       Prisma.$WebhookDeliveryPayload<ExtArgs>,
       T,
-      "delete",
+      'delete',
       GlobalOmitOptions
     >,
     never,
@@ -1210,7 +1323,7 @@ export interface WebhookDeliveryDelegate<
     runtime.Types.Result.GetResult<
       Prisma.$WebhookDeliveryPayload<ExtArgs>,
       T,
-      "update",
+      'update',
       GlobalOmitOptions
     >,
     never,
@@ -1284,12 +1397,15 @@ export interface WebhookDeliveryDelegate<
    *
    */
   updateManyAndReturn<T extends WebhookDeliveryUpdateManyAndReturnArgs>(
-    args: Prisma.SelectSubset<T, WebhookDeliveryUpdateManyAndReturnArgs<ExtArgs>>
+    args: Prisma.SelectSubset<
+      T,
+      WebhookDeliveryUpdateManyAndReturnArgs<ExtArgs>
+    >
   ): Prisma.PrismaPromise<
     runtime.Types.Result.GetResult<
       Prisma.$WebhookDeliveryPayload<ExtArgs>,
       T,
-      "updateManyAndReturn",
+      'updateManyAndReturn',
       GlobalOmitOptions
     >
   >;
@@ -1317,7 +1433,7 @@ export interface WebhookDeliveryDelegate<
     runtime.Types.Result.GetResult<
       Prisma.$WebhookDeliveryPayload<ExtArgs>,
       T,
-      "upsert",
+      'upsert',
       GlobalOmitOptions
     >,
     never,
@@ -1341,10 +1457,13 @@ export interface WebhookDeliveryDelegate<
   count<T extends WebhookDeliveryCountArgs>(
     args?: Prisma.Subset<T, WebhookDeliveryCountArgs>
   ): Prisma.PrismaPromise<
-    T extends runtime.Types.Utils.Record<"select", any>
-      ? T["select"] extends true
+    T extends runtime.Types.Utils.Record<'select', any>
+      ? T['select'] extends true
         ? number
-        : Prisma.GetScalarType<T["select"], WebhookDeliveryCountAggregateOutputType>
+        : Prisma.GetScalarType<
+            T['select'],
+            WebhookDeliveryCountAggregateOutputType
+          >
       : number
   >;
 
@@ -1397,20 +1516,20 @@ export interface WebhookDeliveryDelegate<
   groupBy<
     T extends WebhookDeliveryGroupByArgs,
     HasSelectOrTake extends Prisma.Or<
-      Prisma.Extends<"skip", Prisma.Keys<T>>,
-      Prisma.Extends<"take", Prisma.Keys<T>>
+      Prisma.Extends<'skip', Prisma.Keys<T>>,
+      Prisma.Extends<'take', Prisma.Keys<T>>
     >,
     OrderByArg extends Prisma.True extends HasSelectOrTake
-      ? { orderBy: WebhookDeliveryGroupByArgs["orderBy"] }
-      : { orderBy?: WebhookDeliveryGroupByArgs["orderBy"] },
+      ? { orderBy: WebhookDeliveryGroupByArgs['orderBy'] }
+      : { orderBy?: WebhookDeliveryGroupByArgs['orderBy'] },
     OrderFields extends Prisma.ExcludeUnderscoreKeys<
-      Prisma.Keys<Prisma.MaybeTupleToUnion<T["orderBy"]>>
+      Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>
     >,
-    ByFields extends Prisma.MaybeTupleToUnion<T["by"]>,
+    ByFields extends Prisma.MaybeTupleToUnion<T['by']>,
     ByValid extends Prisma.Has<ByFields, OrderFields>,
-    HavingFields extends Prisma.GetHavingFields<T["having"]>,
+    HavingFields extends Prisma.GetHavingFields<T['having']>,
     HavingValid extends Prisma.Has<ByFields, HavingFields>,
-    ByEmpty extends T["by"] extends never[] ? Prisma.True : Prisma.False,
+    ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False,
     InputErrors extends ByEmpty extends Prisma.True
       ? `Error: "by" must not be empty.`
       : HavingValid extends Prisma.False
@@ -1419,10 +1538,15 @@ export interface WebhookDeliveryDelegate<
               ? never
               : P extends string
                 ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                : [Error, "Field ", P, ` in "having" needs to be provided in "by"`];
+                : [
+                    Error,
+                    'Field ',
+                    P,
+                    ` in "having" needs to be provided in "by"`,
+                  ];
           }[HavingFields]
-        : "take" extends Prisma.Keys<T>
-          ? "orderBy" extends Prisma.Keys<T>
+        : 'take' extends Prisma.Keys<T>
+          ? 'orderBy' extends Prisma.Keys<T>
             ? ByValid extends Prisma.True
               ? {}
               : {
@@ -1431,8 +1555,8 @@ export interface WebhookDeliveryDelegate<
                     : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                 }[OrderFields]
             : 'Error: If you provide "take", you also need to provide "orderBy"'
-          : "skip" extends Prisma.Keys<T>
-            ? "orderBy" extends Prisma.Keys<T>
+          : 'skip' extends Prisma.Keys<T>
+            ? 'orderBy' extends Prisma.Keys<T>
               ? ByValid extends Prisma.True
                 ? {}
                 : {
@@ -1449,7 +1573,8 @@ export interface WebhookDeliveryDelegate<
                     : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                 }[OrderFields],
   >(
-    args: Prisma.SubsetIntersection<T, WebhookDeliveryGroupByArgs, OrderByArg> & InputErrors
+    args: Prisma.SubsetIntersection<T, WebhookDeliveryGroupByArgs, OrderByArg> &
+      InputErrors
   ): {} extends InputErrors
     ? GetWebhookDeliveryGroupByPayload<T>
     : Prisma.PrismaPromise<InputErrors>;
@@ -1468,17 +1593,18 @@ export interface WebhookDeliveryDelegate<
 export interface Prisma__WebhookDeliveryClient<
   T,
   Null = never,
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
-  readonly [Symbol.toStringTag]: "PrismaPromise";
+  readonly [Symbol.toStringTag]: 'PrismaPromise';
   webhook<T extends Prisma.WebhookDefaultArgs<ExtArgs> = {}>(
     args?: Prisma.Subset<T, Prisma.WebhookDefaultArgs<ExtArgs>>
   ): Prisma.Prisma__WebhookClient<
     | runtime.Types.Result.GetResult<
         Prisma.$WebhookPayload<ExtArgs>,
         T,
-        "findUniqueOrThrow",
+        'findUniqueOrThrow',
         GlobalOmitOptions
       >
     | Null,
@@ -1493,8 +1619,14 @@ export interface Prisma__WebhookDeliveryClient<
    * @returns A Promise for the completion of which ever callback is executed.
    */
   then<TResult1 = T, TResult2 = never>(
-    onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
-    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
+    onfulfilled?:
+      | ((value: T) => TResult1 | PromiseLike<TResult1>)
+      | undefined
+      | null,
+    onrejected?:
+      | ((reason: any) => TResult2 | PromiseLike<TResult2>)
+      | undefined
+      | null
   ): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
   /**
    * Attaches a callback for only the rejection of the Promise.
@@ -1502,7 +1634,10 @@ export interface Prisma__WebhookDeliveryClient<
    * @returns A Promise for the completion of the callback.
    */
   catch<TResult = never>(
-    onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
+    onrejected?:
+      | ((reason: any) => TResult | PromiseLike<TResult>)
+      | undefined
+      | null
   ): runtime.Types.Utils.JsPromise<T | TResult>;
   /**
    * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
@@ -1510,26 +1645,28 @@ export interface Prisma__WebhookDeliveryClient<
    * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
    * @returns A Promise for the completion of the callback.
    */
-  finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+  finally(
+    onfinally?: (() => void) | undefined | null
+  ): runtime.Types.Utils.JsPromise<T>;
 }
 
 /**
  * Fields of the WebhookDelivery model
  */
 export interface WebhookDeliveryFieldRefs {
-  readonly id: Prisma.FieldRef<"WebhookDelivery", "String">;
-  readonly webhookId: Prisma.FieldRef<"WebhookDelivery", "String">;
-  readonly event: Prisma.FieldRef<"WebhookDelivery", "String">;
-  readonly method: Prisma.FieldRef<"WebhookDelivery", "String">;
-  readonly payload: Prisma.FieldRef<"WebhookDelivery", "Json">;
-  readonly status: Prisma.FieldRef<"WebhookDelivery", "String">;
-  readonly statusCode: Prisma.FieldRef<"WebhookDelivery", "Int">;
-  readonly response: Prisma.FieldRef<"WebhookDelivery", "String">;
-  readonly error: Prisma.FieldRef<"WebhookDelivery", "String">;
-  readonly duration: Prisma.FieldRef<"WebhookDelivery", "Int">;
-  readonly attempts: Prisma.FieldRef<"WebhookDelivery", "Int">;
-  readonly nextRetryAt: Prisma.FieldRef<"WebhookDelivery", "DateTime">;
-  readonly createdAt: Prisma.FieldRef<"WebhookDelivery", "DateTime">;
+  readonly id: Prisma.FieldRef<'WebhookDelivery', 'String'>;
+  readonly webhookId: Prisma.FieldRef<'WebhookDelivery', 'String'>;
+  readonly event: Prisma.FieldRef<'WebhookDelivery', 'String'>;
+  readonly method: Prisma.FieldRef<'WebhookDelivery', 'String'>;
+  readonly payload: Prisma.FieldRef<'WebhookDelivery', 'Json'>;
+  readonly status: Prisma.FieldRef<'WebhookDelivery', 'String'>;
+  readonly statusCode: Prisma.FieldRef<'WebhookDelivery', 'Int'>;
+  readonly response: Prisma.FieldRef<'WebhookDelivery', 'String'>;
+  readonly error: Prisma.FieldRef<'WebhookDelivery', 'String'>;
+  readonly duration: Prisma.FieldRef<'WebhookDelivery', 'Int'>;
+  readonly attempts: Prisma.FieldRef<'WebhookDelivery', 'Int'>;
+  readonly nextRetryAt: Prisma.FieldRef<'WebhookDelivery', 'DateTime'>;
+  readonly createdAt: Prisma.FieldRef<'WebhookDelivery', 'DateTime'>;
 }
 
 // Custom InputTypes
@@ -1537,7 +1674,8 @@ export interface WebhookDeliveryFieldRefs {
  * WebhookDelivery findUnique
  */
 export type WebhookDeliveryFindUniqueArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookDelivery
@@ -1561,7 +1699,8 @@ export type WebhookDeliveryFindUniqueArgs<
  * WebhookDelivery findUniqueOrThrow
  */
 export type WebhookDeliveryFindUniqueOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookDelivery
@@ -1585,7 +1724,8 @@ export type WebhookDeliveryFindUniqueOrThrowArgs<
  * WebhookDelivery findFirst
  */
 export type WebhookDeliveryFindFirstArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookDelivery
@@ -1634,14 +1774,17 @@ export type WebhookDeliveryFindFirstArgs<
    *
    * Filter by unique combinations of WebhookDeliveries.
    */
-  distinct?: Prisma.WebhookDeliveryScalarFieldEnum | Prisma.WebhookDeliveryScalarFieldEnum[];
+  distinct?:
+    | Prisma.WebhookDeliveryScalarFieldEnum
+    | Prisma.WebhookDeliveryScalarFieldEnum[];
 };
 
 /**
  * WebhookDelivery findFirstOrThrow
  */
 export type WebhookDeliveryFindFirstOrThrowArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookDelivery
@@ -1690,14 +1833,17 @@ export type WebhookDeliveryFindFirstOrThrowArgs<
    *
    * Filter by unique combinations of WebhookDeliveries.
    */
-  distinct?: Prisma.WebhookDeliveryScalarFieldEnum | Prisma.WebhookDeliveryScalarFieldEnum[];
+  distinct?:
+    | Prisma.WebhookDeliveryScalarFieldEnum
+    | Prisma.WebhookDeliveryScalarFieldEnum[];
 };
 
 /**
  * WebhookDelivery findMany
  */
 export type WebhookDeliveryFindManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookDelivery
@@ -1741,14 +1887,17 @@ export type WebhookDeliveryFindManyArgs<
    * Skip the first `n` WebhookDeliveries.
    */
   skip?: number;
-  distinct?: Prisma.WebhookDeliveryScalarFieldEnum | Prisma.WebhookDeliveryScalarFieldEnum[];
+  distinct?:
+    | Prisma.WebhookDeliveryScalarFieldEnum
+    | Prisma.WebhookDeliveryScalarFieldEnum[];
 };
 
 /**
  * WebhookDelivery create
  */
 export type WebhookDeliveryCreateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookDelivery
@@ -1765,19 +1914,25 @@ export type WebhookDeliveryCreateArgs<
   /**
    * The data needed to create a WebhookDelivery.
    */
-  data: Prisma.XOR<Prisma.WebhookDeliveryCreateInput, Prisma.WebhookDeliveryUncheckedCreateInput>;
+  data: Prisma.XOR<
+    Prisma.WebhookDeliveryCreateInput,
+    Prisma.WebhookDeliveryUncheckedCreateInput
+  >;
 };
 
 /**
  * WebhookDelivery createMany
  */
 export type WebhookDeliveryCreateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to create many WebhookDeliveries.
    */
-  data: Prisma.WebhookDeliveryCreateManyInput | Prisma.WebhookDeliveryCreateManyInput[];
+  data:
+    | Prisma.WebhookDeliveryCreateManyInput
+    | Prisma.WebhookDeliveryCreateManyInput[];
   skipDuplicates?: boolean;
 };
 
@@ -1785,7 +1940,8 @@ export type WebhookDeliveryCreateManyArgs<
  * WebhookDelivery createManyAndReturn
  */
 export type WebhookDeliveryCreateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookDelivery
@@ -1798,7 +1954,9 @@ export type WebhookDeliveryCreateManyAndReturnArgs<
   /**
    * The data used to create many WebhookDeliveries.
    */
-  data: Prisma.WebhookDeliveryCreateManyInput | Prisma.WebhookDeliveryCreateManyInput[];
+  data:
+    | Prisma.WebhookDeliveryCreateManyInput
+    | Prisma.WebhookDeliveryCreateManyInput[];
   skipDuplicates?: boolean;
   /**
    * Choose, which related nodes to fetch as well
@@ -1810,7 +1968,8 @@ export type WebhookDeliveryCreateManyAndReturnArgs<
  * WebhookDelivery update
  */
 export type WebhookDeliveryUpdateArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookDelivery
@@ -1827,7 +1986,10 @@ export type WebhookDeliveryUpdateArgs<
   /**
    * The data needed to update a WebhookDelivery.
    */
-  data: Prisma.XOR<Prisma.WebhookDeliveryUpdateInput, Prisma.WebhookDeliveryUncheckedUpdateInput>;
+  data: Prisma.XOR<
+    Prisma.WebhookDeliveryUpdateInput,
+    Prisma.WebhookDeliveryUncheckedUpdateInput
+  >;
   /**
    * Choose, which WebhookDelivery to update.
    */
@@ -1838,7 +2000,8 @@ export type WebhookDeliveryUpdateArgs<
  * WebhookDelivery updateMany
  */
 export type WebhookDeliveryUpdateManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * The data used to update WebhookDeliveries.
@@ -1861,7 +2024,8 @@ export type WebhookDeliveryUpdateManyArgs<
  * WebhookDelivery updateManyAndReturn
  */
 export type WebhookDeliveryUpdateManyAndReturnArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookDelivery
@@ -1896,7 +2060,8 @@ export type WebhookDeliveryUpdateManyAndReturnArgs<
  * WebhookDelivery upsert
  */
 export type WebhookDeliveryUpsertArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookDelivery
@@ -1917,18 +2082,25 @@ export type WebhookDeliveryUpsertArgs<
   /**
    * In case the WebhookDelivery found by the `where` argument doesn't exist, create a new WebhookDelivery with this data.
    */
-  create: Prisma.XOR<Prisma.WebhookDeliveryCreateInput, Prisma.WebhookDeliveryUncheckedCreateInput>;
+  create: Prisma.XOR<
+    Prisma.WebhookDeliveryCreateInput,
+    Prisma.WebhookDeliveryUncheckedCreateInput
+  >;
   /**
    * In case the WebhookDelivery was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<Prisma.WebhookDeliveryUpdateInput, Prisma.WebhookDeliveryUncheckedUpdateInput>;
+  update: Prisma.XOR<
+    Prisma.WebhookDeliveryUpdateInput,
+    Prisma.WebhookDeliveryUncheckedUpdateInput
+  >;
 };
 
 /**
  * WebhookDelivery delete
  */
 export type WebhookDeliveryDeleteArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookDelivery
@@ -1952,7 +2124,8 @@ export type WebhookDeliveryDeleteArgs<
  * WebhookDelivery deleteMany
  */
 export type WebhookDeliveryDeleteManyArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Filter which WebhookDeliveries to delete
@@ -1968,7 +2141,8 @@ export type WebhookDeliveryDeleteManyArgs<
  * WebhookDelivery without action
  */
 export type WebhookDeliveryDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
    * Select specific fields to fetch from the WebhookDelivery

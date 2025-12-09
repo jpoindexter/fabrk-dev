@@ -10,7 +10,7 @@
  * with a clear error message.
  */
 
-import { z } from "zod";
+import { z } from 'zod';
 
 /**
  * Utility to create an optional string that becomes required in production
@@ -20,7 +20,7 @@ const requiredInProduction = (fieldName: string) => {
     .string()
     .optional()
     .superRefine((val, ctx) => {
-      if (process.env.NODE_ENV === "production" && !val) {
+      if (process.env.NODE_ENV === 'production' && !val) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
           message: `${fieldName} is required in production`,
@@ -51,47 +51,52 @@ const serverSchema = z.object({
   // ============================================================================
   // NODE ENVIRONMENT
   // ============================================================================
-  NODE_ENV: z.enum(["development", "production", "test"]).default("development"),
+  NODE_ENV: z
+    .enum(['development', 'production', 'test'])
+    .default('development'),
 
   // ============================================================================
   // DATABASE - Required in production, optional in development
   // ============================================================================
-  DATABASE_URL: requiredInProduction("DATABASE_URL").refine((val) => {
+  DATABASE_URL: requiredInProduction('DATABASE_URL').refine((val) => {
     // In production, validate it's a proper PostgreSQL URL
-    if (process.env.NODE_ENV === "production" && val) {
-      return val.startsWith("postgresql://") || val.startsWith("postgres://");
+    if (process.env.NODE_ENV === 'production' && val) {
+      return val.startsWith('postgresql://') || val.startsWith('postgres://');
     }
     return true;
-  }, "DATABASE_URL must be a valid PostgreSQL connection string"),
+  }, 'DATABASE_URL must be a valid PostgreSQL connection string'),
 
   DATABASE_URL_DIRECT: z.string().optional(),
 
   // ============================================================================
   // AUTHENTICATION - NextAuth v5 (CRITICAL)
   // ============================================================================
-  NEXTAUTH_SECRET: requiredInProduction("NEXTAUTH_SECRET").refine((val) => {
+  NEXTAUTH_SECRET: requiredInProduction('NEXTAUTH_SECRET').refine((val) => {
     // In production, validate minimum length
-    if (process.env.NODE_ENV === "production" && val) {
+    if (process.env.NODE_ENV === 'production' && val) {
       return val.length >= 32;
     }
     return true;
-  }, "NEXTAUTH_SECRET must be at least 32 characters for security in production"),
+  }, 'NEXTAUTH_SECRET must be at least 32 characters for security in production'),
 
-  NEXTAUTH_URL: requiredInProduction("NEXTAUTH_URL").refine((val) => {
+  NEXTAUTH_URL: requiredInProduction('NEXTAUTH_URL').refine((val) => {
     // In production, must be HTTPS (if set)
-    if (process.env.NODE_ENV === "production" && val) {
+    if (process.env.NODE_ENV === 'production' && val) {
       // Allow localhost for local production builds/testing
-      if (val.includes("localhost") || val.includes("127.0.0.1")) {
+      if (val.includes('localhost') || val.includes('127.0.0.1')) {
         return true;
       }
-      return val.startsWith("https://");
+      return val.startsWith('https://');
     }
     return true;
-  }, "NEXTAUTH_URL must use HTTPS in production"),
+  }, 'NEXTAUTH_URL must use HTTPS in production'),
 
   // Google OAuth - Required if enabled
   GOOGLE_CLIENT_ID: z.string().optional(),
-  GOOGLE_CLIENT_SECRET: conditionalRequired(!!process.env.GOOGLE_CLIENT_ID, "GOOGLE_CLIENT_SECRET"),
+  GOOGLE_CLIENT_SECRET: conditionalRequired(
+    !!process.env.GOOGLE_CLIENT_ID,
+    'GOOGLE_CLIENT_SECRET'
+  ),
 
   // ============================================================================
   // STRIPE PAYMENTS - Required if subscriptions/payments enabled
@@ -102,21 +107,21 @@ const serverSchema = z.object({
     .refine((val) => {
       // If provided, must start with sk_test_ or sk_live_
       if (val) {
-        return val.startsWith("sk_test_") || val.startsWith("sk_live_");
+        return val.startsWith('sk_test_') || val.startsWith('sk_live_');
       }
       return true;
-    }, "STRIPE_SECRET_KEY must be a valid Stripe secret key"),
+    }, 'STRIPE_SECRET_KEY must be a valid Stripe secret key'),
 
   STRIPE_WEBHOOK_SECRET: conditionalRequired(
     !!process.env.STRIPE_SECRET_KEY,
-    "STRIPE_WEBHOOK_SECRET"
+    'STRIPE_WEBHOOK_SECRET'
   ).refine((val) => {
     // If provided, must start with whsec_
     if (val) {
-      return val.startsWith("whsec_");
+      return val.startsWith('whsec_');
     }
     return true;
-  }, "STRIPE_WEBHOOK_SECRET must be a valid Stripe webhook secret"),
+  }, 'STRIPE_WEBHOOK_SECRET must be a valid Stripe webhook secret'),
 
   STRIPE_COUPON_EARLY_ADOPTER: z.string().optional(),
 
@@ -126,11 +131,11 @@ const serverSchema = z.object({
   LEMONSQUEEZY_API_KEY: z.string().optional(),
   LEMONSQUEEZY_STORE_ID: conditionalRequired(
     !!process.env.LEMONSQUEEZY_API_KEY,
-    "LEMONSQUEEZY_STORE_ID"
+    'LEMONSQUEEZY_STORE_ID'
   ),
   LEMONSQUEEZY_WEBHOOK_SECRET: conditionalRequired(
     !!process.env.LEMONSQUEEZY_API_KEY,
-    "LEMONSQUEEZY_WEBHOOK_SECRET"
+    'LEMONSQUEEZY_WEBHOOK_SECRET'
   ),
 
   // ============================================================================
@@ -142,10 +147,10 @@ const serverSchema = z.object({
     .refine((val) => {
       // If provided, must start with re_
       if (val) {
-        return val.startsWith("re_");
+        return val.startsWith('re_');
       }
       return true;
-    }, "RESEND_API_KEY must be a valid Resend API key"),
+    }, 'RESEND_API_KEY must be a valid Resend API key'),
 
   EMAIL_FROM: z.string().email().optional(),
   EMAIL_REPLY_TO: z.string().email().optional(),
@@ -160,14 +165,17 @@ const serverSchema = z.object({
   // PUSHER REAL-TIME (Optional)
   // ============================================================================
   PUSHER_APP_ID: z.string().optional(),
-  PUSHER_SECRET: conditionalRequired(!!process.env.PUSHER_APP_ID, "PUSHER_SECRET"),
+  PUSHER_SECRET: conditionalRequired(
+    !!process.env.PUSHER_APP_ID,
+    'PUSHER_SECRET'
+  ),
 
   // ============================================================================
   // ALGOLIA SEARCH (Optional)
   // ============================================================================
   ALGOLIA_ADMIN_API_KEY: conditionalRequired(
     !!process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
-    "ALGOLIA_ADMIN_API_KEY"
+    'ALGOLIA_ADMIN_API_KEY'
   ),
 
   // ============================================================================
@@ -184,9 +192,9 @@ const serverSchema = z.object({
     .optional()
     .refine((val) => {
       // Warn in production if not set
-      if (process.env.NODE_ENV === "production" && !val) {
+      if (process.env.NODE_ENV === 'production' && !val) {
         console.warn(
-          "⚠️  UPSTASH_REDIS_REST_URL not set. Rate limiting will use in-memory cache (not recommended for production)"
+          '⚠️  UPSTASH_REDIS_REST_URL not set. Rate limiting will use in-memory cache (not recommended for production)'
         );
       }
       return true;
@@ -194,15 +202,21 @@ const serverSchema = z.object({
 
   UPSTASH_REDIS_REST_TOKEN: conditionalRequired(
     !!process.env.UPSTASH_REDIS_REST_URL,
-    "UPSTASH_REDIS_REST_TOKEN"
+    'UPSTASH_REDIS_REST_TOKEN'
   ),
 
   // ============================================================================
   // FILE STORAGE - S3 Compatible (Optional)
   // ============================================================================
   S3_ENDPOINT: z.string().url().optional(),
-  S3_ACCESS_KEY_ID: conditionalRequired(!!process.env.S3_BUCKET_NAME, "S3_ACCESS_KEY_ID"),
-  S3_SECRET_ACCESS_KEY: conditionalRequired(!!process.env.S3_BUCKET_NAME, "S3_SECRET_ACCESS_KEY"),
+  S3_ACCESS_KEY_ID: conditionalRequired(
+    !!process.env.S3_BUCKET_NAME,
+    'S3_ACCESS_KEY_ID'
+  ),
+  S3_SECRET_ACCESS_KEY: conditionalRequired(
+    !!process.env.S3_BUCKET_NAME,
+    'S3_SECRET_ACCESS_KEY'
+  ),
   S3_BUCKET_NAME: z.string().optional(),
   AWS_REGION: z.string().optional(),
 
@@ -220,10 +234,10 @@ const serverSchema = z.object({
     .optional()
     .refine((val) => {
       if (val) {
-        return val.startsWith("sk-");
+        return val.startsWith('sk-');
       }
       return true;
-    }, "OPENAI_API_KEY must be a valid OpenAI API key"),
+    }, 'OPENAI_API_KEY must be a valid OpenAI API key'),
 
   GOOGLE_AI_API_KEY: z.string().optional(),
 
@@ -232,10 +246,10 @@ const serverSchema = z.object({
     .optional()
     .refine((val) => {
       if (val) {
-        return val.startsWith("sk-ant-");
+        return val.startsWith('sk-ant-');
       }
       return true;
-    }, "ANTHROPIC_API_KEY must be a valid Anthropic API key"),
+    }, 'ANTHROPIC_API_KEY must be a valid Anthropic API key'),
 
   // ============================================================================
   // GITHUB REPOSITORY ACCESS - For distribution to customers
@@ -246,30 +260,30 @@ const serverSchema = z.object({
     .refine((val) => {
       // If provided, should be a valid GitHub personal access token (ghp_*)
       if (val) {
-        return val.startsWith("ghp_") || val.startsWith("github_pat_");
+        return val.startsWith('ghp_') || val.startsWith('github_pat_');
       }
       return true;
-    }, "GITHUB_ACCESS_TOKEN must be a valid GitHub personal access token"),
+    }, 'GITHUB_ACCESS_TOKEN must be a valid GitHub personal access token'),
   GITHUB_REPO_OWNER: conditionalRequired(
     !!process.env.GITHUB_ACCESS_TOKEN,
-    "GITHUB_REPO_OWNER"
+    'GITHUB_REPO_OWNER'
   ).refine((val) => {
     // GitHub usernames/org names: alphanumeric and hyphens only
     if (val) {
       return /^[a-zA-Z0-9-]+$/.test(val);
     }
     return true;
-  }, "GITHUB_REPO_OWNER must contain only alphanumeric characters and hyphens"),
+  }, 'GITHUB_REPO_OWNER must contain only alphanumeric characters and hyphens'),
   GITHUB_REPO_NAME: conditionalRequired(
     !!process.env.GITHUB_ACCESS_TOKEN,
-    "GITHUB_REPO_NAME"
+    'GITHUB_REPO_NAME'
   ).refine((val) => {
     // GitHub repo names: alphanumeric, hyphens, underscores, and dots
     if (val) {
       return /^[a-zA-Z0-9._-]+$/.test(val);
     }
     return true;
-  }, "GITHUB_REPO_NAME must contain only alphanumeric characters, hyphens, underscores, and dots"),
+  }, 'GITHUB_REPO_NAME must contain only alphanumeric characters, hyphens, underscores, and dots'),
 
   // ============================================================================
   // MONITORING - Sentry (Optional)
@@ -312,15 +326,18 @@ const clientSchema = z.object({
   // ============================================================================
   NEXT_PUBLIC_APP_URL: z
     .string()
-    .url("NEXT_PUBLIC_APP_URL must be a valid URL")
-    .default("http://localhost:3000"),
+    .url('NEXT_PUBLIC_APP_URL must be a valid URL')
+    .default('http://localhost:3000'),
 
-  NEXT_PUBLIC_API_URL: z.string().url("NEXT_PUBLIC_API_URL must be a valid URL").optional(),
+  NEXT_PUBLIC_API_URL: z
+    .string()
+    .url('NEXT_PUBLIC_API_URL must be a valid URL')
+    .optional(),
 
   // ============================================================================
   // APP METADATA
   // ============================================================================
-  NEXT_PUBLIC_APP_VERSION: z.string().optional().default("1.0.0"),
+  NEXT_PUBLIC_APP_VERSION: z.string().optional().default('1.0.0'),
   NEXT_PUBLIC_AUTHOR_NAME: z.string().optional(),
   NEXT_PUBLIC_SUPPORT_EMAIL: z.string().email().optional(),
 
@@ -328,9 +345,9 @@ const clientSchema = z.object({
   // DESIGN SYSTEM THEME
   // ============================================================================
   NEXT_PUBLIC_DEFAULT_VISUAL_THEME: z
-    .enum(["terminal", "modern", "minimal", "linear"])
+    .enum(['terminal', 'modern', 'minimal', 'linear'])
     .optional()
-    .default("modern"),
+    .default('modern'),
 
   // ============================================================================
   // STRIPE PUBLIC KEY
@@ -341,44 +358,44 @@ const clientSchema = z.object({
     .refine((val) => {
       // If provided, must start with pk_test_ or pk_live_
       if (val) {
-        return val.startsWith("pk_test_") || val.startsWith("pk_live_");
+        return val.startsWith('pk_test_') || val.startsWith('pk_live_');
       }
       return true;
-    }, "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY must be a valid Stripe publishable key"),
+    }, 'NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY must be a valid Stripe publishable key'),
 
   // ============================================================================
   // STRIPE PRICE IDs - CRITICAL: Required if Stripe is enabled
   // ============================================================================
   NEXT_PUBLIC_STRIPE_PRICE_STARTER: conditionalRequired(
-    !!process.env.STRIPE_SECRET_KEY && process.env.NODE_ENV === "production",
-    "NEXT_PUBLIC_STRIPE_PRICE_STARTER"
+    !!process.env.STRIPE_SECRET_KEY && process.env.NODE_ENV === 'production',
+    'NEXT_PUBLIC_STRIPE_PRICE_STARTER'
   ).refine((val) => {
     // Must be a price ID, not a product ID
-    if (val && val !== "price_starter") {
-      return val.startsWith("price_");
+    if (val && val !== 'price_starter') {
+      return val.startsWith('price_');
     }
     return true;
   }, 'NEXT_PUBLIC_STRIPE_PRICE_STARTER must be a valid Stripe Price ID (starts with "price_"), not a Product ID'),
 
   NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL: conditionalRequired(
-    !!process.env.STRIPE_SECRET_KEY && process.env.NODE_ENV === "production",
-    "NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL"
+    !!process.env.STRIPE_SECRET_KEY && process.env.NODE_ENV === 'production',
+    'NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL'
   ).refine((val) => {
-    if (val && val !== "price_professional") {
-      return val.startsWith("price_");
+    if (val && val !== 'price_professional') {
+      return val.startsWith('price_');
     }
     return true;
-  }, "NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL must be a valid Stripe Price ID"),
+  }, 'NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL must be a valid Stripe Price ID'),
 
   NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE: conditionalRequired(
-    !!process.env.STRIPE_SECRET_KEY && process.env.NODE_ENV === "production",
-    "NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE"
+    !!process.env.STRIPE_SECRET_KEY && process.env.NODE_ENV === 'production',
+    'NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE'
   ).refine((val) => {
-    if (val && val !== "price_enterprise") {
-      return val.startsWith("price_");
+    if (val && val !== 'price_enterprise') {
+      return val.startsWith('price_');
     }
     return true;
-  }, "NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE must be a valid Stripe Price ID"),
+  }, 'NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE must be a valid Stripe Price ID'),
 
   NEXT_PUBLIC_STRIPE_PRICE_FABRK: z.string().optional(),
 
@@ -395,11 +412,11 @@ const clientSchema = z.object({
   // ============================================================================
   NEXT_PUBLIC_PUSHER_KEY: conditionalRequired(
     !!process.env.PUSHER_APP_ID,
-    "NEXT_PUBLIC_PUSHER_KEY"
+    'NEXT_PUBLIC_PUSHER_KEY'
   ),
   NEXT_PUBLIC_PUSHER_CLUSTER: conditionalRequired(
     !!process.env.PUSHER_APP_ID,
-    "NEXT_PUBLIC_PUSHER_CLUSTER"
+    'NEXT_PUBLIC_PUSHER_CLUSTER'
   ),
 
   // ============================================================================
@@ -408,7 +425,7 @@ const clientSchema = z.object({
   NEXT_PUBLIC_ALGOLIA_APP_ID: z.string().optional(),
   NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY: conditionalRequired(
     !!process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
-    "NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY"
+    'NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY'
   ),
 
   // ============================================================================
@@ -417,7 +434,7 @@ const clientSchema = z.object({
   NEXT_PUBLIC_SANITY_PROJECT_ID: z.string().optional(),
   NEXT_PUBLIC_SANITY_DATASET: conditionalRequired(
     !!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-    "NEXT_PUBLIC_SANITY_DATASET"
+    'NEXT_PUBLIC_SANITY_DATASET'
   ),
 
   // ============================================================================
@@ -429,7 +446,11 @@ const clientSchema = z.object({
   // POSTHOG ANALYTICS
   // ============================================================================
   NEXT_PUBLIC_POSTHOG_KEY: z.string().optional(),
-  NEXT_PUBLIC_POSTHOG_HOST: z.string().url().optional().default("https://app.posthog.com"),
+  NEXT_PUBLIC_POSTHOG_HOST: z
+    .string()
+    .url()
+    .optional()
+    .default('https://app.posthog.com'),
 
   // ============================================================================
   // GOOGLE ANALYTICS
@@ -449,8 +470,10 @@ const clientSchema = z.object({
  */
 const parseEnv = () => {
   // Allow skipping validation (useful for initial builds or CI)
-  if (process.env.SKIP_ENV_VALIDATION === "true") {
-    console.log("⚠️  Skipping environment variable validation (SKIP_ENV_VALIDATION=true)");
+  if (process.env.SKIP_ENV_VALIDATION === 'true') {
+    console.log(
+      '⚠️  Skipping environment variable validation (SKIP_ENV_VALIDATION=true)'
+    );
     return {
       server: process.env as any,
       client: process.env as any,
@@ -462,9 +485,11 @@ const parseEnv = () => {
 
   if (!serverEnv.success) {
     // Use console.error for startup errors (before logger is fully initialized)
-    console.error("❌ Invalid server environment variables:");
+    console.error('❌ Invalid server environment variables:');
     console.error(JSON.stringify(serverEnv.error.format(), null, 2));
-    throw new Error("Invalid server environment variables. See error details above.");
+    throw new Error(
+      'Invalid server environment variables. See error details above.'
+    );
   }
 
   // Parse client-side env vars
@@ -472,9 +497,11 @@ const parseEnv = () => {
 
   if (!clientEnv.success) {
     // Use console.error for startup errors (before logger is fully initialized)
-    console.error("❌ Invalid client environment variables:");
+    console.error('❌ Invalid client environment variables:');
     console.error(JSON.stringify(clientEnv.error.format(), null, 2));
-    throw new Error("Invalid client environment variables. See error details above.");
+    throw new Error(
+      'Invalid client environment variables. See error details above.'
+    );
   }
 
   return {
@@ -498,17 +525,17 @@ export type ClientEnv = z.infer<typeof clientSchema>;
 /**
  * Helper to check if we're in production
  */
-export const isProduction = env.server.NODE_ENV === "production";
+export const isProduction = env.server.NODE_ENV === 'production';
 
 /**
  * Helper to check if we're in development
  */
-export const isDevelopment = env.server.NODE_ENV === "development";
+export const isDevelopment = env.server.NODE_ENV === 'development';
 
 /**
  * Helper to check if we're in test mode
  */
-export const isTest = env.server.NODE_ENV === "test";
+export const isTest = env.server.NODE_ENV === 'test';
 
 /**
  * Startup validation check
@@ -516,31 +543,33 @@ export const isTest = env.server.NODE_ENV === "test";
  * Note: Using console for startup logs (before logger is fully initialized)
  */
 if (isProduction) {
-  console.log("✅ Environment variables validated successfully for PRODUCTION");
+  console.log('✅ Environment variables validated successfully for PRODUCTION');
 
   // Additional production checks
   const warnings: string[] = [];
 
   if (!env.server.DATABASE_URL) {
-    warnings.push("DATABASE_URL is not set");
+    warnings.push('DATABASE_URL is not set');
   }
 
   if (!env.server.STRIPE_SECRET_KEY) {
-    warnings.push("STRIPE_SECRET_KEY is not set (payments will not work)");
+    warnings.push('STRIPE_SECRET_KEY is not set (payments will not work)');
   }
 
   if (!env.server.RESEND_API_KEY) {
-    warnings.push("RESEND_API_KEY is not set (emails will not be sent)");
+    warnings.push('RESEND_API_KEY is not set (emails will not be sent)');
   }
 
   if (!env.server.UPSTASH_REDIS_REST_URL) {
-    warnings.push("UPSTASH_REDIS_REST_URL is not set (rate limiting will use in-memory cache)");
+    warnings.push(
+      'UPSTASH_REDIS_REST_URL is not set (rate limiting will use in-memory cache)'
+    );
   }
 
   if (warnings.length > 0) {
-    console.warn("\n⚠️  Production Environment Warnings:");
+    console.warn('\n⚠️  Production Environment Warnings:');
     warnings.forEach((warning) => console.warn(`   - ${warning}`));
-    console.warn("");
+    console.warn('');
   }
 } else {
   console.log(
