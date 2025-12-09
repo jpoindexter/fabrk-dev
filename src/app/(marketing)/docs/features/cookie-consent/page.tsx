@@ -153,7 +153,7 @@ dataLayer.push({
         },
         {
           title: 'Add/Remove Cookie Categories',
-          description: 'Edit the categories in src/components/cookie-consent-tabs.tsx',
+          description: 'Edit the categories in src/components/cookie-consent/tabs.tsx',
           code: `// In DetailsTabContent function
 const categories: CookieCategory[] = [
   {
@@ -177,7 +177,7 @@ const categories: CookieCategory[] = [
         {
           title: 'Change Consent Duration',
           description:
-            'By default, consent is valid for 1 year. Edit in src/components/cookie-consent.tsx',
+            'By default, consent is valid for 1 year. Edit in src/components/cookie-consent/index.tsx',
           code: `// In getInitialPreferences function
 const daysSinceConsent = Math.floor(
   (Date.now() - new Date(consentDate).getTime()) / (1000 * 60 * 60 * 24)

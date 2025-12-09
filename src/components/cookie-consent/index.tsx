@@ -8,8 +8,8 @@
 
 import { Cookie, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import { AboutTabContent, ConsentTabContent, DetailsTabContent } from './cookie-consent-tabs';
-import type { CookiePreferences } from './cookie-consent-types';
+import { AboutTabContent, ConsentTabContent, DetailsTabContent } from './tabs';
+import type { CookiePreferences } from './types';
 import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
 
 import { mode } from '@/design-system';

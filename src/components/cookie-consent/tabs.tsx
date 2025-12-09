@@ -7,7 +7,7 @@ import type {
   ConsentTabContentProps,
   CookieCategory,
   DetailsTabContentProps,
-} from './cookie-consent-types';
+} from './types';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
