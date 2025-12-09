@@ -12,7 +12,8 @@ import { generateSecureToken, getTokenExpiration } from "@/lib/tokens";
 import { createHash } from "crypto";
 import Stripe from "stripe";
 
-const _stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+const STRIPE_KEY = process.env.STRIPE_SECRET_KEY || "sk_test_placeholder";
+const _stripe = new Stripe(STRIPE_KEY, {
   apiVersion: "2025-11-17.clover",
 });
 

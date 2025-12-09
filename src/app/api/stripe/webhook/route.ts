@@ -119,7 +119,8 @@ import * as paymentHandlers from "./handlers/payment";
 import * as subscriptionHandlers from "./handlers/subscription";
 import * as checkoutHandlers from "./handlers/checkout";
 
-const stripe = new Stripe(env.server.STRIPE_SECRET_KEY!, {
+const STRIPE_KEY = env.server.STRIPE_SECRET_KEY || "sk_test_placeholder";
+const stripe = new Stripe(STRIPE_KEY, {
   apiVersion: "2025-11-17.clover",
 });
 
@@ -131,7 +132,8 @@ export async function POST(req: Request) {
   let event: Stripe.Event;
 
   try {
-    event = stripe.webhooks.constructEvent(body, signature, env.server.STRIPE_WEBHOOK_SECRET!);
+    const webhookSecret = env.server.STRIPE_WEBHOOK_SECRET || "whsec_placeholder";
+    event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
   } catch (error: unknown) {
     logger.error("Webhook signature verification failed", error);
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });

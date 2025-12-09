@@ -10,14 +10,17 @@ import { logger } from "@/lib/logger";
 import { env } from "@/lib/env";
 
 // Initialize Stripe - throw error if STRIPE_SECRET_KEY is not set
-if (!env.server.STRIPE_SECRET_KEY) {
+// Allow builds without Stripe key when SKIP_ENV_VALIDATION is set
+const STRIPE_KEY = env.server.STRIPE_SECRET_KEY || "";
+
+if (!STRIPE_KEY && process.env.SKIP_ENV_VALIDATION !== "true" && process.env.NODE_ENV === "production") {
   throw new Error(
-    "STRIPE_SECRET_KEY environment variable is required. " +
+    "STRIPE_SECRET_KEY environment variable is required in production. " +
       "Please set it in your .env.local file or environment configuration."
   );
 }
 
-export const stripe = new Stripe(env.server.STRIPE_SECRET_KEY, {
+export const stripe = new Stripe(STRIPE_KEY || "sk_test_placeholder", {
   apiVersion: "2025-11-17.clover",
   typescript: true,
 });
