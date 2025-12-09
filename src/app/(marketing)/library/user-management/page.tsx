@@ -6,7 +6,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import {
   ColumnFiltersState,
   SortingState,
@@ -161,7 +161,7 @@ function UserManagementPreview() {
     },
   });
 
-  const exportToCSV = () => {
+  const exportToCSV = useCallback(() => {
     const headers = ["Name", "Email", "Role", "Status", "Plan", "Created", "Last Login"];
     const csvData = mockUsers.map((user) => [
       user.name,
@@ -181,7 +181,7 @@ function UserManagementPreview() {
     a.href = url;
     a.download = `users-${new Date().toISOString().split("T")[0]}.csv`;
     a.click();
-  };
+  }, []);
 
   return (
     <div className="bg-background/50 min-h-[600px] p-4 sm:p-8">

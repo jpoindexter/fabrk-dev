@@ -220,14 +220,6 @@ function LandingVariationsPreview() {
     label: v.name.toUpperCase().replace(" ", "_"),
   }));
 
-  const tabDescriptions = heroVariations.reduce(
-    (acc, v) => {
-      acc[v.id] = v.description;
-      return acc;
-    },
-    {} as Record<string, string>
-  );
-
   return (
     <div className="bg-background/50 min-h-[800px] p-4 sm:p-8">
       <div className="mx-auto max-w-6xl">
@@ -238,7 +230,6 @@ function LandingVariationsPreview() {
           tabs={tabs}
           value={activeVariation}
           onValueChange={setActiveVariation}
-          description={(tab) => tabDescriptions[tab]}
         >
           {/* Centered Hero */}
           <StyledTabsContent value="centered">

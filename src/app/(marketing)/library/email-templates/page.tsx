@@ -12,7 +12,6 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { CodeBlock } from "@/components/ui/code-block";
 import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import { emailTemplates } from "./components/email-template-data";
-import { EmailStats } from "./components/email-stats";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 import DOMPurify from "isomorphic-dompurify";
@@ -73,9 +72,6 @@ function EmailTemplatesPreview() {
   return (
     <div className="bg-background/50 min-h-[600px] p-4 sm:p-8">
       <div className="space-y-6">
-        {/* Stats */}
-        <EmailStats />
-
         {/* Email Tabs */}
         <StyledTabs
           code="0x00"

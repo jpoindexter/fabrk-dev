@@ -23,7 +23,7 @@ export function PlanCards({ plans }: PlanCardsProps) {
   return (
     <>
       {/* Alert */}
-      <div className={cn(mode.font, "border-warning bg-warning/10 border p-4 text-xs")}>
+      <div className={cn(mode.font, "border-warning bg-warning/10 mb-6 border p-4 text-xs")}>
         <span className="text-warning-foreground font-semibold">[WARNING]:</span>{" "}
         <span className="text-foreground">
           Changing your plan will take effect at the next billing cycle
@@ -31,7 +31,7 @@ export function PlanCards({ plans }: PlanCardsProps) {
       </div>
 
       {/* Plan Cards */}
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="mb-6 grid gap-6 md:grid-cols-3">
         {plans.map((plan, idx) => (
           <Card
             key={plan.name}

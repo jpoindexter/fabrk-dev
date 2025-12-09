@@ -155,7 +155,7 @@ export default function BlogPage() {
   return (
     <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
       {/* Featured Post */}
-      {featuredPost && activeCategory === "all" && (
+      {featuredPost && (
         <div className="border border-border">
           <div className="border-b border-border px-4 py-2">
             <span className="font-mono text-xs text-muted-foreground">
@@ -341,7 +341,7 @@ function BlogPreview() {
     <div className="bg-background/50 min-h-[800px] p-4 sm:p-8">
       <div className="mx-auto max-w-6xl space-y-6">
         {/* Featured Post */}
-        {featuredPost && activeCategory === "all" && (
+        {featuredPost && (
           <div className="border-border bg-card border">
             <div className="border-border border-b px-4 py-2">
               <span className={cn(mode.font, "text-muted-foreground text-xs")}>
