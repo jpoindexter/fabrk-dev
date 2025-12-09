@@ -9,425 +9,221 @@
 ░░░░░       ░░░░░   ░░░░░ ░░░░░░░░░░░  ░░░░░   ░░░░░ ░░░░░   ░░░░
 ```
 
-# Fabrk
+# Fabrk - Development Repository
 
 > Terminal-first SaaS boilerplate. Ship fast. Look sharp.
 
-234 production-ready components. 28 copy-paste templates. 20 color themes. TypeScript strict. $299.
+**⚠️ This is the private development repository. The customer-facing boilerplate is at: https://github.com/Theft-SUDO/fabrk-official**
 
 [![Next.js 15](https://img.shields.io/badge/Next.js-15-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
-[![License](https://img.shields.io/badge/License-Commercial-green)](./LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./docs/CONTRIBUTING.md)
 [![CI](https://github.com/jpoindexter/fabrk_plate/actions/workflows/ci.yml/badge.svg)](https://github.com/jpoindexter/fabrk_plate/actions/workflows/ci.yml)
-[![Deploy](https://github.com/jpoindexter/fabrk_plate/actions/workflows/deploy.yml/badge.svg)](https://github.com/jpoindexter/fabrk_plate/actions/workflows/deploy.yml)
-[![E2E Tests](https://github.com/jpoindexter/fabrk_plate/actions/workflows/e2e-tests.yml/badge.svg)](https://github.com/jpoindexter/fabrk_plate/actions/workflows/e2e-tests.yml)
 
 ---
 
-## 🎨 **NEW: Interactive Showcases** ⭐
+## 📁 Dual Repository Architecture
 
-**See everything before you build:**
+This project uses a **two-repo model** to separate the product (boilerplate) from the private development environment:
 
-- **[/demo](http://localhost:3000/demo)** - Complete feature overview - What's Included
-- **[/components](http://localhost:3000/components)** - All 234 production-ready UI components with variants
-- **[/library](http://localhost:3000/library)** - 28 copy-paste ready page templates ⭐ NEW
-- **[/variations](http://localhost:3000/variations)** - 3 hero styles + 2 pricing layouts
-- **[/examples/admin](http://localhost:3000/examples/admin)** - Admin dashboard with data table
-- **[/examples/analytics](http://localhost:3000/examples/analytics)** - Analytics dashboard
+| Repo | Purpose | URL |
+|------|---------|-----|
+| **fabrk_plate** (this repo) | Development + Marketing | Private |
+| **fabrk-official** | Customer-facing boilerplate | https://github.com/Theft-SUDO/fabrk-official |
 
-**Preview everything interactively before purchasing!**
+### What's Private (Stays Here)
+- ✗ Your marketing site (`src/app/(marketing)/*`)
+- ✗ Marketing components (`src/components/landing/`, `marketing/`, `home/`)
+- ✗ Internal scripts and tools (`.internal/`, `.claude/`, `.dev-plans/`)
+- ✗ Development plans and audit files
+- ✗ Private environment variables (`.env.local`)
 
----
-
-## What is Fabrk?
-
-Fabrk is a **premium enterprise-grade Next.js 15 SaaS boilerplate** built for professional developers and agencies. Terminal-first design. Clean code. Ship fast.
-
-**164 Production-Ready Components** - Complete UI library with everything you need
-**13 Unique AI/Code + Image Tools** - code-block, code-generator, prompt-builder, markdown-editor, markdown-viewer, rich-text-editor, copy-button, cropper, image-dropzone, image-uploader, lightbox, color-picker, input-color
-**28 Copy-Paste Templates** - Analytics, team management, billing, security
-**20 Color Themes** - Purple, Ocean Blue, Forest Green, Sunset Orange, Hot Pink, Ruby Red
-**Storybook Integration** - 95% Storybook story coverage (234+ components with stories)
-**Complete Testing Suite** - Comprehensive test suite with 72 test files covering UI components, accessibility, and E2E flows
-
-**Enterprise Features:**
-
-✅ **Authentication** - NextAuth v5 (Credentials + Google OAuth)
-✅ **Payments** - Stripe (one-time payments + subscriptions)
-✅ **AI Credits** - Token-based billing for AI features with usage tracking
-✅ **Database** - PostgreSQL + Prisma ORM
-✅ **Email** - Resend with React Email templates
-✅ **UI Components** - 234+ production-ready components with a cohesive design system + Storybook
-✅ **Admin Dashboard** - User management, analytics, monitoring
-✅ **TypeScript** - Strict mode, zero `any` types
-✅ **Documentation** - 400KB comprehensive guides
-✅ **Testing** - Complete test suite with Vitest + Playwright + Storybook
-
-**Professional-grade code. Launch-ready. $299.**
+### What's Public (Syncs to Official)
+- ✓ Core boilerplate (`src/app/(platform)/`, `src/app/(auth)/`)
+- ✓ API routes (`src/app/api/*`)
+- ✓ UI components (`src/components/ui/`, `dashboard/`)
+- ✓ Documentation (`src/app/docs/*`, `src/app/library/*`)
+- ✓ Database schema (`prisma/`)
+- ✓ Templates and examples
+- ✓ Configuration files
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start (Development)
 
 ```bash
-# 1. Clone and install
-git clone https://github.com/yourusername/fabrk.git
-cd fabrk
+# Clone and install
+git clone https://github.com/jpoindexter/fabrk_plate.git
+cd fabrk_plate
 npm install
 
-# 2. Set up environment
+# Set up environment
 cp .env.example .env.local
 # Edit .env.local with your credentials
 
-# 3. Set up database
+# Set up database
 npm run db:push
 npm run db:seed  # Optional: Add test data
 
-# 4. Start development
+# Start development
 npm run dev
 ```
 
 Visit **http://localhost:3000** 🎉
 
-**Detailed setup:** See [docs/01-getting-started/QUICK-START.md](./docs/01-getting-started/QUICK-START.md)
-
-**What's new:** See [CHANGELOG.md](./CHANGELOG.md) for v1.0.0 release notes (security fixes, performance improvements, environment validation)
-
 ---
 
-## 📁 Repository Structure
+## 🔄 Syncing to Official Repo
 
-### Core Directories
-
-- **`/src`** - Application source code
-- **`/docs`** - Comprehensive documentation (400KB+)
-- **`/tests`** - Vitest + Playwright tests
-- **`/prisma`** - Database schema
-- **`/scripts`** - Utility scripts
-- **`/public`** - Static assets
-
-### Organization
-
-- **`/assets`** - Images, logos, release archives
-- **`.agent-workspace`** - Agent configs (gitignored)
-- **`.dev-plans`** - Development plans (gitignored)
-- **`.integrations`** - Third-party integration docs
-- **`.archive`** - Preserved old code (gitignored)
-- **`/Boilerplate`** - Reference boilerplates (gitignored)
-
----
-
-## 📦 What's Included
-
-### Core Features
-
-- **Next.js 15** - App Router, Server Components, React 19
-- **Authentication** - NextAuth v5 with email/password + OAuth
-- **Payments** - Stripe Checkout + Webhooks
-- **AI Credits** - Token billing system for AI features with usage dashboard
-- **Database** - PostgreSQL with Prisma ORM
-- **Email** - Transactional emails via Resend
-- **TypeScript** - Strict mode for type safety
-- **ESLint** - Code quality enforcement
-
-### 164 Production-Ready Components
-
-**Landing Page (9 components):**
-- 3 Hero variations (Centered, Split, Video)
-- Features section
-- 2 Pricing layouts (Cards, Comparison Table)
-- FAQ accordion
-- Tech stack showcase
-- Comparison table
-- Navigation + Footer
-
-**Dashboard (8 components):**
-- Account settings
-- Billing management
-- Profile editing
-- Usage limits tracker
-- Stats cards
-- License card
-- Admin panel
-- Data tables (TanStack Table)
-
-**UI Primitives (25 components):**
-- Button, Card, Input, Dialog, Dropdown, Select, Tabs, Accordion, Toast, Label, Textarea, Badge, Alert, Avatar, Checkbox, Radio, Switch, Slider, Progress, Separator, Sheet, Skeleton, Table, Tooltip, Command
-
-**AI & Code Tools (7 components):**
-- Code block, Code generator, Prompt builder, Markdown editor, Markdown viewer, Rich text editor, Copy button
-
-**Image Tools (6 components):**
-- Image cropper, Image dropzone, Image uploader, Lightbox, Color picker, Input color
-
-**Auth & Account (9 components):**
-- Login/register forms
-- Email verification
-- Password reset
-- Profile settings
-- Security settings
-- Session management
-- API keys management
-
-**Settings (6 components):**
-- Appearance (theme toggle)
-- Notifications
-- Privacy controls
-- Data export
-- Danger zone
-
-**Charts (3 components):**
-- Area chart
-- Bar chart
-- Line chart
-
-### 28 Copy-Paste Ready Templates ⭐ NEW
-
-Production-ready page templates for common SaaS use cases. Each template is fully functional, responsive, and built with the same components and design system.
-
-**Dashboards (3 templates):**
-- **Analytics Dashboard** - Metrics, charts, data tables, traffic analysis
-- **Team Dashboard** - Multi-tenancy, RBAC, member management, activity feed
-- **Chart Library** - Recharts showcase (line, area, bar, pie charts)
-
-**Admin Panels (1 template):**
-- **User Management** - TanStack Table with sorting, filtering, pagination, bulk actions
-
-**Account Pages (3 templates):**
-- **Settings Page** - 4-tab interface (General, Account, Privacy, Billing)
-- **Billing Dashboard** - Subscriptions, usage tracking, payment history
-- **Security & Privacy** - 2FA, OAuth, sessions, audit log, GDPR compliance
-
-**Marketing (2 templates):**
-- **Email Templates** - Interactive showcase of 5 transactional emails
-- **Documentation Layout** - 3-column docs site with markdown parsing
-
-**View all templates:** [/library](http://localhost:3000/library) | [Template README](./src/app/library/README.md)
-
-**Email Templates (5):**
-- Welcome email
-- Email verification
-- Password reset
-- Purchase confirmation
-- Subscription update
-
-**Error Pages (3):**
-- 404 Not Found
-- 500 Server Error
-- Maintenance Mode
-
-**Legal Pages (3):**
-- Terms of Service (GDPR compliant)
-- Privacy Policy
-- Refund Policy
-
-### 400KB Comprehensive Documentation (24 guides)
-
-**Getting Started:**
-- Quick Start (8KB)
-- Component Showcase (11KB)
-- Quick Reference (7KB)
-- API Reference (19KB)
-
-**Launch & Marketing:**
-- Launch Timeline (16KB)
-- Social Media Templates (15KB)
-- Product Hunt Guide (14KB)
-- SEO Optimization (12KB)
-- Marketing Strategy (18KB)
-
-**Operations:**
-- Analytics Setup (15KB)
-- Post-Launch Monitoring (18KB)
-- Customer Onboarding (19KB)
-- Troubleshooting (18KB)
-
-**Optimization & Growth:**
-- Performance Optimization (20KB)
-- Conversion Optimization (23KB)
-- Growth Tactics (21KB)
-
-**Security & Reliability:**
-- Security Best Practices (21KB)
-- Security Overview (8KB)
-- Backup & Recovery (16KB)
-
-**Development:**
-- Deployment Guide (12KB)
-- Alternative Deployments (22KB)
-- Component Best Practices (16KB)
-- Testing Guide (19KB)
-- Architecture Overview (19KB)
-
-**Project Info:**
-- Changelog (10KB)
-- Contributing Guide (12KB)
-- Documentation Index (18KB)
-
-### Automation & CI/CD
-
-- **GitHub Actions** - CI pipeline with linting, type checking, testing, and building
-- **Lighthouse CI** - Automated performance audits on every PR
-- **Database Backups** - Daily automated backups with S3 support
-- **Dependabot** - Automated dependency updates
-- **Database Seeding** - Test data for development
-- **Setup Scripts** - One-command local setup
-- **Health Checks** - Environment validation
-
----
-
-## 🎯 Why Fabrk?
-
-### vs Building from Scratch
-
-| Task | DIY | Fabrk |
-|------|-----|-------|
-| Setup Next.js + TypeScript | 4 hours | ✅ Done |
-| Database + Prisma | 8 hours | ✅ Done |
-| Authentication | 40 hours | ✅ Done |
-| Payment integration | 24 hours | ✅ Done |
-| Email system | 16 hours | ✅ Done |
-| UI components | 40 hours | ✅ Done |
-| Landing pages | 16 hours | ✅ Done |
-| Testing + bugs | 40 hours | ✅ Done |
-| Documentation | 16 hours | ✅ Done |
-| CI/CD setup | 12 hours | ✅ Done |
-| **Total** | **216 hours** | **1-3 days** |
-
-**Time saved:** 213 hours
-**Money saved:** $10,650 (at $50/hour)
-**Investment:** $299
-**ROI:** 3,463%
-
-### What's Included
-
-| Feature | Details |
-|---------|---------|
-| **Components** | 234 production-ready |
-| **Templates** | 28 copy-paste ready |
-| **Themes** | 6 color schemes |
-| **Test Coverage** | 85+ tests (Vitest + Playwright) |
-| **Storybook** | 95% coverage |
-| **Unique Tools** | 13 AI/Code + Image tools |
-| **Framework** | Next.js 15 |
-| **Database** | PostgreSQL + Prisma |
-| **TypeScript** | Strict mode |
-| **Documentation** | 400KB+ guides |
-| **CI/CD** | GitHub Actions |
-
----
-
-## 🛠️ Tech Stack
-
-| Category | Technology |
-|----------|-----------|
-| **Framework** | Next.js 15 (App Router) |
-| **Language** | TypeScript 5 (strict mode) |
-| **Database** | PostgreSQL + Prisma ORM |
-| **Auth** | NextAuth v5 |
-| **Payments** | Stripe |
-| **Email** | Resend |
-| **UI** | Radix UI + Tailwind CSS |
-| **Styling** | Tailwind CSS + next-themes |
-| **Forms** | React Hook Form + Zod |
-| **Tables** | TanStack Table v8 |
-| **Charts** | Recharts |
-| **Icons** | Lucide React |
-| **Testing** | Vitest + Playwright |
-| **CI/CD** | GitHub Actions |
-| **Deployment** | Vercel (recommended) |
-
----
-
-## 📊 Project Stats
-
-- **Files:** 156 clean, organized files
-- **Components:** 234 production-ready
-- **Unique Tools:** 13 AI/Code + Image tools
-- **Test Coverage:** 85+ unit tests with Vitest + Playwright E2E
-- **Storybook:** 95% coverage with interactive stories
-- **Templates:** 28 copy-paste ready page layouts
-- **Themes:** 6 color schemes with instant switching
-- **Documentation:** 24 guides, 400KB, ~12,000 lines
-- **TypeScript:** 100% strict mode
-- **GitHub Actions:** 4 workflows (CI, Lighthouse, Backup, Dependabot)
-- **License:** Commercial use allowed
-
----
-
-## 🚢 Deployment
-
-### Vercel (Recommended)
+After making changes to the boilerplate:
 
 ```bash
-# Deploy to Vercel
-vercel
+# Sync boilerplate to customer repo
+./scripts/sync-to-official.sh
 
-# Or use one-click deploy:
-# https://vercel.com/new/clone?repository-url=https://github.com/yourusername/fabrk
+# Then push official repo
+cd ../fabrk-official
+git add -A && git commit -m "Sync updates from dev"
+git push
 ```
 
-### Other Platforms
+**What gets synced:**
+- Core app, auth, and API routes
+- UI components (excluding marketing)
+- Documentation and templates
+- Database schema and configs
+- **Test files excluded automatically**
 
-Fabrk works on all major platforms:
-- Railway
-- Fly.io
-- Render
-- DigitalOcean App Platform
-- AWS Amplify
-- Self-hosted (VPS + Docker)
-
-See [docs/ALTERNATIVE-DEPLOYMENTS.md](./docs/ALTERNATIVE-DEPLOYMENTS.md) for step-by-step guides.
+See `scripts/sync-to-official.sh` for the complete whitelist.
 
 ---
 
-## 💰 Pricing
+## 🔒 Security Setup (Official Repo)
 
-**One-time payment:** $299
+The official repo has enterprise-grade security configured:
 
-**What you get:**
-- ✅ Complete source code (234 components, 28 templates, 20 themes)
-- ✅ Storybook integration (95% story coverage)
-- ✅ Complete testing suite (Vitest unit tests + Playwright E2E)
-- ✅ Lifetime updates (v1.x)
-- ✅ Unlimited projects (personal + commercial)
-- ✅ 400KB documentation (24 guides)
-- ✅ Discord community access
-- ✅ Email support (<24hr response)
-- ✅ 30-day money-back guarantee
+### Automated Security (Active)
+- ✅ **CodeQL Analysis** - Scans on every push/PR
+- ✅ **CI Pipeline** - TypeScript, linting, build checks
+- ✅ **Dependabot** - Auto-creates PRs for dependency updates
+- ✅ **Secret Scanning** - Blocks credential leaks
+- ✅ **Branch Protection** - Requires PR reviews to merge
 
-**Why $299?**
-- **234 production-ready components** - everything you need to ship
-- **13 unique AI/Code + Image tools** for modern SaaS features
-- **Complete testing suite** with Vitest + Playwright
-- **95% Storybook coverage** for component development
-- **20 color themes** with instant switching
-- **Clean, organized codebase** - 156 files, no bloat
+### Manual Setup Required
+**⚠️ IMPORTANT**: Complete these GitHub settings for full protection:
+
+1. **Enable Security Features** (Settings → Code security and analysis)
+   - Enable Dependabot alerts/updates
+   - Enable Secret scanning + push protection
+   - Enable Code scanning
+
+2. **Configure Branch Protection** (Settings → Branches)
+   - Require PR reviews (1 approval minimum)
+   - Require CodeQL + build checks to pass
+   - Block force pushes
+   - Restrict push access
+
+**Full checklist:** `.internal/GITHUB_SECURITY_CHECKLIST.md`
+
+---
+
+## 🛠️ Commands
+
+```bash
+# Development
+npm run dev              # Start dev server (auto-kills port 3000)
+npm run build            # Production build
+npm run type-check       # TypeScript validation
+
+# Code Quality
+npm run lint             # ESLint + hex color scan
+npm run scan:hex         # Detect hardcoded colors
+npm run format           # Prettier formatting
+
+# Database
+npm run db:push          # Push schema changes
+npm run db:studio        # Open Prisma Studio
+npm run db:seed          # Seed test data
+npm run db:reset         # Reset and reseed
+
+# Testing
+npm test                 # Vitest unit tests
+npm run test:e2e         # Playwright E2E tests
+
+# Sync
+./scripts/sync-to-official.sh  # Sync to customer repo
+```
+
+---
+
+## 📋 Pre-Commit Hooks
+
+Git commits automatically run these checks via **Husky + lint-staged**:
+
+| Check | Blocks Commit? |
+|-------|----------------|
+| TypeScript (`tsc --noEmit`) | ✅ |
+| ESLint + auto-fix | ✅ |
+| Prettier formatting | ✅ |
+| Hardcoded colors (`bg-white`, etc.) | ✅ |
+| `console.log` statements | ✅ |
+| Direct `process.env` access | ✅ |
+
+**Bypass (emergency):** `git commit --no-verify`
+
+---
+
+## 🎨 Design System
+
+Fabrk uses a **terminal-first design system** with strict rules:
+
+### Core Principles
+1. **Sharp edges** - `rounded-none` on all elements
+2. **Monospace** - `font-mono` for UI text
+3. **Design tokens only** - No hardcoded colors
+4. **8-point grid** - Consistent spacing
+
+### Design Tokens
+```tsx
+import { mode } from "@/design-system";
+
+// Use mode tokens in className
+<Button className={cn(mode.radius, mode.font, "w-full text-xs")}>
+  > SUBMIT
+</Button>
+```
+
+### Allowed Colors
+```tsx
+// GOOD
+bg-background, bg-card, bg-primary, text-foreground, border-border
+
+// BAD (will fail pre-commit)
+bg-white, bg-gray-500, text-black, #hexvalues
+```
+
+**Full guide:** `DESIGN_SYSTEM.md`
 
 ---
 
 ## 📚 Documentation
 
-**Browse all documentation:** [docs/README.md](./docs/README.md)
+All docs are in `CLAUDE.md` for AI assistance. Key sections:
 
-**Quick links:**
-- [Getting Started](./docs/QUICK-START.md) - Setup in 1 hour
-- [Component Showcase](./docs/COMPONENT-SHOWCASE.md) - All 234 components
-- [API Reference](./docs/API-REFERENCE.md) - Complete API docs
-- [Deployment Guide](./docs/DEPLOYMENT.md) - Deploy to production
-- [Troubleshooting](./docs/TROUBLESHOOTING.md) - Fix common issues
-- [Testing Guide](./docs/TESTING-GUIDE.md) - Set up tests
-- [Growth Tactics](./docs/GROWTH-TACTICS.md) - $0 to $10k MRR
+- **Quick Reference** - Commands and common patterns
+- **Architecture** - Three-layer design (UI → API → Service)
+- **Design System** - Terminal aesthetic rules
+- **Dual Repo Workflow** - How to sync between repos
+- **Pre-Commit Hooks** - What's automatically checked
+- **Troubleshooting** - Common issues and fixes
+
+**For users:** Customer-facing docs are in `src/app/docs/*` and sync to official repo.
 
 ---
 
 ## 🧪 Testing
 
-Testing infrastructure is ready to go:
-
 ```bash
-# Unit/integration tests (Vitest)
+# Unit/integration tests
 npm test
 
 # E2E tests (Playwright)
@@ -440,155 +236,96 @@ npm run type-check
 npm run lint
 ```
 
-See [docs/TESTING-GUIDE.md](./docs/TESTING-GUIDE.md) for complete setup guide.
-
 ---
 
-## 🤖 Automation
-
-Included GitHub Actions workflows:
-
-- **CI Pipeline** - Lint, type check, test, and build on every push/PR
-- **Lighthouse Audits** - Performance monitoring with score enforcement
-- **Database Backups** - Daily automated backups to S3
-- **Dependabot** - Weekly dependency updates with intelligent grouping
-
----
-
-## 🎨 File Structure
+## 📁 Project Structure
 
 ```
-fabrk/
-├── .github/
-│   ├── workflows/           # CI/CD pipelines
-│   ├── dependabot.yml      # Dependency updates
-│   └── ISSUE_TEMPLATE/     # Issue templates
-├── docs/                   # 400KB documentation
-├── prisma/
-│   ├── schema.prisma       # Database schema (7 models)
-│   └── seed.ts             # Database seeding
-├── scripts/
-│   ├── setup-local.sh      # Automated local setup
-│   └── health-check.sh     # Environment validation
+fabrk_plate/ (dev repo)
+├── .internal/               # Private scripts and tools
+│   ├── scripts/
+│   │   ├── sync-to-official.sh          # Sync script
+│   │   ├── customer-library-layout.tsx  # Boilerplate layouts
+│   │   └── utilities/                   # Dev utilities
+│   └── GITHUB_SECURITY_CHECKLIST.md     # Security setup
+├── scripts/                 # Public utility scripts
+│   └── sync-to-official.sh  # Main sync script
 ├── src/
 │   ├── app/
-│   │   ├── (auth)/         # Auth pages
-│   │   ├── (dashboard)/    # Protected pages
-│   │   ├── (legal)/        # Legal pages
-│   │   ├── api/            # API routes
-│   │   ├── variations/     # Component variations
-│   │   └── page.tsx        # Landing page
+│   │   ├── (platform)/      # ✓ Syncs to official
+│   │   ├── (auth)/          # ✓ Syncs to official
+│   │   ├── (marketing)/     # ✗ Private (your landing)
+│   │   ├── api/             # ✓ Syncs to official
+│   │   ├── docs/            # ✓ Syncs to official
+│   │   ├── library/         # ✓ Syncs to official
+│   │   └── page.tsx         # ✗ Private (replaced with boilerplate)
 │   ├── components/
-│   │   ├── ui/             # 25 Radix UI components
-│   │   ├── landing/        # Landing sections
-│   │   ├── dashboard/      # Dashboard components
-│   │   └── settings/       # Settings pages
-│   ├── emails/             # 5 email templates
-│   ├── lib/                # Utilities (auth, db, polar, email)
-│   └── config.js           # Central configuration
-└── public/                 # Static assets
+│   │   ├── ui/              # ✓ Syncs to official
+│   │   ├── dashboard/       # ✓ Syncs to official
+│   │   ├── landing/         # ✗ Private (your marketing)
+│   │   ├── marketing/       # ✗ Private
+│   │   └── home/            # ✗ Private
+│   ├── lib/                 # ✓ Syncs to official
+│   └── config.js            # ✓ Syncs to official
+├── prisma/                  # ✓ Syncs to official
+├── public/                  # ✓ Syncs to official
+├── CLAUDE.md                # ✓ Syncs to official
+└── README.md                # ✗ Private (this file)
 ```
 
-**161 essential files.** Clean, organized, and easy to navigate.
+---
+
+## 🔄 Adding New Features
+
+### For Boilerplate (Will Sync)
+1. Make changes in boilerplate directories
+2. Commit to dev repo
+3. Run `./scripts/sync-to-official.sh`
+4. Push official repo
+
+### For Marketing (Stays Private)
+1. Add files to `src/app/(marketing)/`, `src/components/landing/`, etc.
+2. Commit to dev repo
+3. No sync needed - stays private
+
+### Adding New Exclusions
+If you add new private files, update the sync script:
+
+```bash
+# Edit scripts/sync-to-official.sh
+rsync -a --exclude='your-new-private-folder/' ...
+```
 
 ---
 
 ## 🛟 Support
 
-**Need help?**
+**Internal Issues:**
+- Check `.internal/GITHUB_SECURITY_CHECKLIST.md` for security setup
+- See `CLAUDE.md` for development guidance
+- Review `DESIGN_SYSTEM.md` for styling rules
 
-- 📖 **Documentation:** [docs/](./docs/)
-- 📧 **Email:** support@fabrek.dev (<24hr response)
-- 🐛 **Bug reports:** [GitHub Issues](https://github.com/yourusername/fabrk/issues)
-
----
-
-## 🎉 Success Stories
-
-**Want to be featured here?**
-
-We're looking for Fabrk customers who want to share their experience.
-
-Tell us your story: success@fabrek.dev
-
----
-
-## 🗺️ Roadmap
-
-### v1.1 (Next 60 days)
-- [ ] Command palette component
-- [ ] Calendar/date picker
-- [ ] Rich text editor
-- [ ] File upload component
-- [ ] Video tutorial series
-
-### v1.2 (Next 90 days)
-- [ ] Admin dashboard enhancements
-- [ ] Team/organization support
-- [ ] Role-based access control (RBAC)
-- [ ] i18n (internationalization)
-
-### v2.0 (6 months)
-- [ ] Advanced analytics dashboard
-- [ ] A/B testing framework
-- [ ] Email marketing integration
-- [ ] Mobile app (React Native)
-
-**Vote on features:** [GitHub Discussions](https://github.com/yourusername/fabrk/discussions)
+**Customer Support:**
+- Email: support@fabrek.dev
+- Issues: https://github.com/Theft-SUDO/fabrk-official/issues
 
 ---
 
 ## 📝 License
 
-**Commercial License** - Use on unlimited projects, no attribution required.
-
-**You can:**
-- ✅ Use for personal and commercial projects
-- ✅ Use for client work (agencies)
-- ✅ Modify and extend the code
-- ✅ Sell products built with Fabrk
-
-**You cannot:**
-- ❌ Resell/redistribute Fabrk as a boilerplate
-- ❌ Create competing boilerplate products
-- ❌ Share your license with others
-
-See [LICENSE](./LICENSE) for full terms.
+**Commercial License** - See `LICENSE.md` for full terms.
 
 ---
 
-## 🤝 Contributing
+## 🚢 Deployment
 
-We welcome contributions! See [CONTRIBUTING.md](./docs/CONTRIBUTING.md) for guidelines.
+The official repo deploys to production. This dev repo is for development only.
 
-**Ways to contribute:**
-- Report bugs via GitHub issues
-- Suggest features
-- Submit pull requests
-- Improve documentation
-- Share your success story
-
----
-
-## ⭐ Star this repo!
-
-If you find Fabrk helpful, give it a star on GitHub!
-
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/fabrk?style=social)](https://github.com/yourusername/fabrk/stargazers)
-
----
-
-## 🙏 Acknowledgments
-
-Fabrk builds on amazing open-source projects:
-- [Next.js](https://nextjs.org/) by Vercel
-- [Prisma](https://www.prisma.io/) by Prisma
-- [Radix UI](https://www.radix-ui.com/) by WorkOS
-- [Tailwind CSS](https://tailwindcss.com/) by Tailwind Labs
-- [Stripe](https://stripe.com/) for payments
-- [Resend](https://resend.com/) for email
-
-**Thank you to all contributors and supporters! 🙌**
+**Official repo deployment:**
+```bash
+cd ../fabrk-official
+vercel
+```
 
 ---
 
@@ -598,10 +335,4 @@ Fabrk builds on amazing open-source projects:
 
 ---
 
-**Ready to ship?** Get Fabrk for **$299** → [fabrk.dev](https://fabrk.dev)
-
----
-
 **© 2025 THEFT BV. All rights reserved.**
-
-See [LICENSE.md](./LICENSE.md) for complete license terms.
