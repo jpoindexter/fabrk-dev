@@ -135,12 +135,12 @@ export function AuditLog({
   };
 
   const getActionIcon = (action: AuditAction) => {
-    if (action.startsWith("user.")) return <User className="h-4 w-4" />;
-    if (action.startsWith("settings.")) return <Settings className="h-4 w-4" />;
-    if (action.startsWith("api_key.")) return <Key className="h-4 w-4" />;
-    if (action.startsWith("security.")) return <Shield className="h-4 w-4" />;
-    if (action.startsWith("data.")) return <Database className="h-4 w-4" />;
-    return <Settings className="h-4 w-4" />;
+    if (action.startsWith("user.")) return <User className="h-3 w-3" />;
+    if (action.startsWith("settings.")) return <Settings className="h-3 w-3" />;
+    if (action.startsWith("api_key.")) return <Key className="h-3 w-3" />;
+    if (action.startsWith("security.")) return <Shield className="h-3 w-3" />;
+    if (action.startsWith("data.")) return <Database className="h-3 w-3" />;
+    return <Settings className="h-3 w-3" />;
   };
 
   const getActionBadgeVariant = (action: AuditAction) => {
@@ -283,7 +283,7 @@ export function AuditLog({
                           <p className={cn("text-sm font-medium", mode.font)}>{log.userName}</p>
                           <Badge
                             variant={getActionBadgeVariant(log.action)}
-                            className={cn("gap-1", mode.font)}
+                            className={cn("gap-1 px-2 py-0.5 text-xs", mode.font)}
                           >
                             {getActionIcon(log.action)}
                             {getActionLabel(log.action)}
