@@ -21,6 +21,7 @@ import { mode } from '@/design-system';
 const themes = [
   { id: 'light', name: 'Light', preview: '#ffffff' },
   { id: 'dark', name: 'Dark', preview: '#1d232a' },
+  { id: 'amber', name: 'Amber Terminal', preview: '#ffb000' },
   { id: 'cupcake', name: 'Cupcake', preview: '#65c3c8' },
   { id: 'bumblebee', name: 'Bumblebee', preview: '#e0a82e' },
   { id: 'emerald', name: 'Emerald', preview: '#66cc8a' },

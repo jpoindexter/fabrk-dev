@@ -1233,6 +1233,61 @@
   --status-away: 65% 0.18 44;
 }
 
+/* Amber - Classic CRT terminal - Authentic retro computing aesthetic */
+[data-theme='amber'] {
+  --background: 8% 0.01 40;
+  /* Very dark, almost black with slight warmth */
+  --foreground: 75% 0.19 40;
+  /* Bright amber/orange - #FFB000 */
+  --card: 10% 0.01 40;
+  /* Slightly lighter than background */
+  --card-foreground: 75% 0.19 40;
+  /* Bright amber */
+  --popover: 10% 0.01 40;
+  --popover-foreground: 75% 0.19 40;
+  --primary: 75% 0.19 40;
+  /* Bright amber primary */
+  --primary-foreground: 8% 0.01 40;
+  /* Dark background on amber */
+  --secondary: 65% 0.16 40;
+  /* Dimmer amber */
+  --secondary-foreground: 8% 0.01 40;
+  --accent: 80% 0.22 40;
+  /* Very bright amber accent */
+  --accent-foreground: 8% 0.01 40;
+  --muted: 15% 0.02 40;
+  /* Dark muted amber */
+  --muted-foreground: 55% 0.14 40;
+  /* Medium amber for muted text */
+  --destructive: 60% 0.2 25;
+  /* Reddish amber for errors */
+  --destructive-foreground: 95% 0.05 40;
+  --success: 70% 0.16 120;
+  /* Green-amber for success */
+  --success-foreground: 8% 0.01 40;
+  --warning: 75% 0.19 60;
+  /* Yellow-amber for warnings */
+  --warning-foreground: 8% 0.01 40;
+  --info: 75% 0.19 40;
+  /* Same as primary */
+  --info-foreground: 8% 0.01 40;
+  --border: 25% 0.08 40;
+  /* Subtle amber border */
+  --input: 25% 0.08 40;
+  --ring: 75% 0.19 40;
+  /* Bright amber focus ring */
+  --chart-1: 75% 0.19 40;
+  --chart-2: 70% 0.17 35;
+  --chart-3: 65% 0.15 45;
+  --chart-4: 60% 0.14 30;
+  --chart-5: 70% 0.16 50;
+  --chart-6: 65% 0.15 35;
+  --chart-7: 72% 0.18 42;
+  --chart-8: 68% 0.16 38;
+  --chart-9: 62% 0.14 40;
+  --status-away: 75% 0.19 60;
+}
+
 /* Rich text editor placeholder */
 [contenteditable]:empty:before {
   content: attr(data-placeholder);
