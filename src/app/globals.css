@@ -33,32 +33,76 @@
 }
 
 @layer base {
-  html {
-    font-size: 16px;
+  /* ============================================
+     VISUAL MODES (THEMES)
+     ============================================ */
+
+  /* Modern Theme (Vercel Geist-inspired) */
+  [data-visual-mode="modern"] {
+    --radius: 0.375rem; /* 6px */
+    --font-sans: var(--font-geist-sans), "Inter", sans-serif;
+    --font-mono: var(--font-geist-mono), monospace;
+
+    /* Colors from modern.ts */
+    --background: 0% 0 0; /* #ffffff (OKLCH: 100% 0 0 -> hex #ffffff) */
+    --foreground: 0% 0 0; /* #000000 */
+
+    /* We need to use hex-to-oklch values or just use the CSS variables defined in tailwind.config 
+       if the tailwind config maps them. 
+       However, since globals.css defines the base variables, we should redefine them here 
+       but we need them in OKLCH format if we want to stick to the system.
+       
+       Let's try to stick to the design token system which maps semantic names.
+       Actually, the cleanest way is to just override the base variables with the 
+       modern theme's specific values if they differ significantly from the default "Light" theme.
+       
+       The "Light" theme in this file is already very close to Vercel's white/black.
+       The main difference is the radius and font.
+    */
+
+    --background: 100% 0 0;
+    --foreground: 0% 0 0;
+    --card: 100% 0 0;
+    --card-foreground: 0% 0 0;
+    --popover: 100% 0 0;
+    --popover-foreground: 0% 0 0;
+    --primary: 0% 0 0; /* #000000 */
+    --primary-foreground: 100% 0 0; /* #ffffff */
+
+    /* Vercel Blue for accents if needed, but standard Modern is B&W */
+    --accent: 96% 0 0;
+    --accent-foreground: 0% 0 0;
+
+    --border: 90% 0 0; /* #eaeaea approx */
+    --input: 90% 0 0;
+    --ring: 0% 0 0;
   }
 
-  * {
-    border-color: oklch(var(--border));
+  /* Terminal Theme (Default) - Sharp edges */
+  [data-visual-mode="terminal"] {
+    --radius: 0;
+    --font-sans: var(--font-jetbrains-mono), monospace;
+    /* Force mono everywhere in terminal mode */
   }
 
-  body {
-    background-color: oklch(var(--background));
-    color: oklch(var(--foreground));
-  }
+  /* ============================================
+     TERMINAL MODE OVERRIDES
+     Only apply these when data-visual-mode="terminal"
+     ============================================ */
 
-  /* Dark overlay for alert dialogs - terminal style */
-  [data-slot="alert-dialog-overlay"] {
+  /* Dark overlay for alert dialogs */
+  [data-visual-mode="terminal"] [data-slot="alert-dialog-overlay"] {
     background-color: rgba(0, 0, 0, 0.8) !important;
   }
 
   /* Sonner toast terminal styling */
-  [data-sonner-toast] {
+  [data-visual-mode="terminal"] [data-sonner-toast] {
     border-radius: 0 !important;
     font-family: var(--font-mono) !important;
     font-size: 0.75rem !important;
   }
 
-  [data-sonner-toast] [data-content] {
+  [data-visual-mode="terminal"] [data-sonner-toast] [data-content] {
     font-family: var(--font-mono) !important;
   }
 
@@ -74,7 +118,7 @@
      ============================================ */
 
   /* Reset all react-day-picker CSS custom properties */
-  [data-slot="calendar"] {
+  [data-visual-mode="terminal"] [data-slot="calendar"] {
     --rdp-accent-color: oklch(var(--primary)) !important;
     --rdp-accent-background-color: oklch(var(--primary)) !important;
     --rdp-day_button-border-radius: 0 !important;
@@ -93,55 +137,61 @@
   }
 
   /* Terminal aesthetic: Sharp corners on ALL elements */
-  [data-slot="calendar"] * {
+  [data-visual-mode="terminal"] [data-slot="calendar"] * {
     border-radius: 0 !important;
   }
 
   /* Selected day - use primary color */
-  [data-slot="calendar"] .rdp-selected .rdp-day_button,
-  [data-slot="calendar"] .rdp-day_button[aria-selected="true"],
-  [data-slot="calendar"] [aria-selected="true"] > .rdp-day_button {
+  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-selected .rdp-day_button,
+  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-day_button[aria-selected="true"],
+  [data-visual-mode="terminal"] [data-slot="calendar"] [aria-selected="true"] > .rdp-day_button {
     background-color: oklch(var(--primary)) !important;
     color: oklch(var(--primary-foreground)) !important;
   }
 
   /* Today - use muted background */
-  [data-slot="calendar"] .rdp-today .rdp-day_button,
-  [data-slot="calendar"] .rdp-day_button[data-today="true"] {
+  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-today .rdp-day_button,
+  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-day_button[data-today="true"] {
     background-color: oklch(var(--muted)) !important;
     color: oklch(var(--foreground)) !important;
     font-weight: 600 !important;
   }
 
   /* Today that is also selected - primary takes precedence */
-  [data-slot="calendar"] .rdp-today.rdp-selected .rdp-day_button,
-  [data-slot="calendar"] .rdp-today [aria-selected="true"] > .rdp-day_button {
+  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-today.rdp-selected .rdp-day_button,
+  [data-visual-mode="terminal"]
+    [data-slot="calendar"]
+    .rdp-today
+    [aria-selected="true"]
+    > .rdp-day_button {
     background-color: oklch(var(--primary)) !important;
     color: oklch(var(--primary-foreground)) !important;
   }
 
   /* Range selection - middle days */
-  [data-slot="calendar"] .rdp-range_middle .rdp-day_button,
-  [data-slot="calendar"] .rdp-day_button.rdp-range_middle {
+  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-range_middle .rdp-day_button,
+  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-day_button.rdp-range_middle {
     background-color: oklch(var(--muted)) !important;
     color: oklch(var(--foreground)) !important;
   }
 
   /* Range start and end */
-  [data-slot="calendar"] .rdp-range_start .rdp-day_button,
-  [data-slot="calendar"] .rdp-range_end .rdp-day_button {
+  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-range_start .rdp-day_button,
+  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-range_end .rdp-day_button {
     background-color: oklch(var(--primary)) !important;
     color: oklch(var(--primary-foreground)) !important;
   }
 
   /* Day button hover */
-  [data-slot="calendar"] .rdp-day_button:hover:not([aria-selected="true"]) {
+  [data-visual-mode="terminal"]
+    [data-slot="calendar"]
+    .rdp-day_button:hover:not([aria-selected="true"]) {
     background-color: oklch(var(--muted)) !important;
     color: oklch(var(--foreground)) !important;
   }
 
   /* Weekday headers - terminal style */
-  [data-slot="calendar"] .rdp-weekday {
+  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-weekday {
     color: oklch(var(--muted-foreground)) !important;
     font-family: var(--font-mono) !important;
     font-size: 0.75rem !important;
@@ -149,8 +199,8 @@
   }
 
   /* Caption/month label - terminal style */
-  [data-slot="calendar"] .rdp-caption_label,
-  [data-slot="calendar"] .rdp-month_caption {
+  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-caption_label,
+  [data-visual-mode="terminal"] [data-slot="calendar"] .rdp-month_caption {
     font-family: var(--font-mono) !important;
     font-size: 0.875rem !important;
     font-weight: 600 !important;

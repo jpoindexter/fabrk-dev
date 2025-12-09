@@ -325,6 +325,14 @@ const clientSchema = z.object({
   NEXT_PUBLIC_SUPPORT_EMAIL: z.string().email().optional(),
 
   // ============================================================================
+  // DESIGN SYSTEM THEME
+  // ============================================================================
+  NEXT_PUBLIC_DEFAULT_VISUAL_THEME: z
+    .enum(["terminal", "modern", "minimal", "linear"])
+    .optional()
+    .default("modern"),
+
+  // ============================================================================
   // STRIPE PUBLIC KEY
   // ============================================================================
   NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z

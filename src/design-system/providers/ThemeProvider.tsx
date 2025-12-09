@@ -51,7 +51,7 @@ export function ThemeProvider({
   children,
   defaultTheme = DEFAULT_THEME,
   defaultColorTheme = "light",
-  defaultVisualMode = "terminal",
+  defaultVisualMode = "modern",
   storageKey,
   storageKeyPrefix = "design-system",
   persist = true,

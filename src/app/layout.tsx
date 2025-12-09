@@ -18,6 +18,7 @@ import localFont from "next/font/local";
 import { generateOrganizationSchema, generateProductSchema } from "@/lib/metadata";
 import { TerminalBackground } from "@/components/shared/terminal-background";
 import { ThemeScript } from "@/design-system/providers";
+import { env } from "@/lib/env";
 import "./globals.css";
 
 const jetbrainsMono = localFont({
@@ -132,21 +133,21 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const defaultVisualTheme = env.client.NEXT_PUBLIC_DEFAULT_VISUAL_THEME;
+
   return (
     <html
       lang="en"
-      data-theme="light"
-      data-visual-mode="terminal"
       suppressHydrationWarning
+      data-theme="light"
+      data-visual-mode={defaultVisualTheme}
       className={`${GeistSans.variable} ${jetbrainsMono.variable}`}
     >
       <head>
-        <meta name="theme-color" content="oklch(var(--primary))" />
-        {/* Design System: Prevent theme flash during SSR */}
         <ThemeScript
-          storageKeyPrefix="fabrk"
           defaultColorTheme="light"
-          defaultVisualMode="terminal"
+          defaultVisualMode={defaultVisualTheme}
+          storageKeyPrefix="fabrk-theme"
         />
         {/* Google Consent Mode v2 - Must load BEFORE GTM */}
         <script

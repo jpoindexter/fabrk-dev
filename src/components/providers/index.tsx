@@ -6,6 +6,7 @@ import { Toaster } from "sonner";
 import { ThemeProvider } from "@/design-system/providers";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
+import { env } from "@/lib/env";
 
 /**
  * Client-side providers
@@ -33,15 +34,17 @@ interface ProvidersProps {
 export function Providers({
   children,
   defaultColorTheme = "light",
-  defaultVisualMode = "terminal",
+  defaultVisualMode,
 }: ProvidersProps) {
+  // Read from environment variable, fallback to prop
+  const visualTheme = defaultVisualMode || env.client.NEXT_PUBLIC_DEFAULT_VISUAL_THEME;
+
   return (
     <SessionProvider>
       <ThemeProvider
         defaultColorTheme={defaultColorTheme}
-        defaultVisualMode={defaultVisualMode}
-        storageKeyPrefix="fabrk"
-        persist={true}
+        defaultVisualMode={visualTheme}
+        storageKeyPrefix="fabrk-theme"
       >
         {children}
         <Toaster
