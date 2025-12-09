@@ -1,17 +1,55 @@
-# Fabrk Boilerplate - Windsurf IDE Rules
+# Fabrk Boilerplate - Cursor IDE Rules (Development Version)
 
-**Note:** Customer-facing version. For development instructions with sync workflow, see `.internal/.windsurfrules-dev`.
+**Note:** This is the DEVELOPMENT version with sync workflow. Customer-facing version is in root: `.cursorrules`.
 
 ## Primary Instructions
-Read CLAUDE.md in the project root for comprehensive AI agent instructions.
+Read `.internal/CLAUDE-DEV.md` for comprehensive development instructions including dual-repo workflow.
+
+## Dual Repo Architecture
+
+### Quick Reference
+| Repo | Purpose |
+|------|---------|
+| fabrk_plate (this repo) | Development + Marketing |
+| fabrk-official | Customer-facing boilerplate |
+
+### What Syncs to Official
+- Core boilerplate: `src/app/(platform)/*`, `(auth)/*`, `api/*`
+- UI components: `src/components/ui/*`, `dashboard/*`, `shared/*`
+- Documentation: `src/app/docs/*`, `library/*`
+- Libraries: `src/lib/*` (test files excluded automatically)
+- Configs, prisma, public assets
+
+### What Stays Private
+- Marketing: `src/app/(marketing)/*`, `src/app/page.tsx`
+- Marketing components: `src/components/landing/*`, `marketing/*`, `home/*`
+- Internal tools: `.internal/*`, `.claude/*`
+- This file
+
+### Sync Workflow
+```bash
+# After boilerplate changes:
+./scripts/sync-to-official.sh
+
+# Then push official repo:
+cd ../fabrk-official
+git add -A && git commit -m "Sync updates"
+git push
+```
+
+---
 
 ## Quick Reference
 
 ### File Structure
-- src/app/ - Next.js App Router (pages, API routes, layouts)
-- src/components/ - React components organized by feature
-- src/lib/ - Utilities, services, and configurations
-- prisma/ - Database schema
+- src/app/(platform)/ - Core boilerplate pages → SYNCS
+- src/app/(auth)/ - Auth pages → SYNCS
+- src/app/(marketing)/ - Your landing pages → PRIVATE
+- src/app/api/ - API routes → SYNCS
+- src/components/ui/ - Base components → SYNCS
+- src/components/landing/ - Marketing components → PRIVATE
+- src/lib/ - Utilities → SYNCS (tests excluded)
+- prisma/ - Database → SYNCS
 
 ### Code Style
 - TypeScript strict mode
@@ -95,6 +133,7 @@ import { mode } from "@/design-system";
 - npm test - Run Vitest unit tests
 - npm run test:e2e - Run Playwright E2E tests
 - Tests in *.test.ts or *.test.tsx files
+- **Tests are excluded from sync automatically**
 
 ### Common Commands
 - npm run dev - Start development server (auto-kills port 3000)
@@ -102,6 +141,7 @@ import { mode } from "@/design-system";
 - npm run lint - ESLint + hex color scan
 - npm run type-check - TypeScript validation
 - npm run scan:hex - Detect hardcoded colors
+- ./scripts/sync-to-official.sh - Sync to customer repo
 
 ### Pre-Commit Hooks
 Git commits automatically check:
@@ -110,3 +150,19 @@ Git commits automatically check:
 - Prettier formatting
 - No hardcoded colors
 - No console.log statements
+
+### Adding New Features
+
+**For Boilerplate (Will Sync):**
+1. Add files to boilerplate directories
+2. Commit to dev repo
+3. Run `./scripts/sync-to-official.sh`
+4. Push official repo
+
+**For Marketing (Stays Private):**
+1. Add files to `src/app/(marketing)/` or `src/components/landing/`
+2. Commit to dev repo
+3. No sync needed
+
+**If you add new private files outside marketing directories:**
+Edit `scripts/sync-to-official.sh` to exclude them.

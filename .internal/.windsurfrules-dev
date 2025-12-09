@@ -97,6 +97,17 @@ export async function GET() {
 }
 ```
 
+### Environment Variables
+```ts
+import { env } from "@/lib/env";
+
+// ✓ GOOD
+const key = env.server.DATABASE_URL;
+
+// ✗ BAD
+const key = process.env.DATABASE_URL;
+```
+
 ### Design System (Terminal Aesthetic)
 - **No rounded corners**: Use `rounded-none` everywhere
 - **Monospace font**: Use `font-mono` for all UI text
