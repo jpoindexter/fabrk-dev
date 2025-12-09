@@ -121,9 +121,9 @@ function EmptyState({ emptyState, createAction }: EmptyStateProps) {
       )}
     >
       <div className="text-muted-foreground mb-4">{icon}</div>
-      <h3 className={cn('mb-2 text-lg font-semibold', mode.font)}>
+      <h2 className={cn('mb-2 text-2xl font-semibold tracking-tight', mode.font)}>
         [{title.toUpperCase().replace(/ /g, '_')}]
-      </h3>
+      </h2>
       <p className={cn('text-muted-foreground mb-6 max-w-sm text-center text-sm', mode.font)}>
         {description}
       </p>
