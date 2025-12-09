@@ -174,26 +174,7 @@ test.describe('Alert & Banner States', () => {
     }
   });
 
-  test('banner - dismissible state', async ({ page }) => {
-    await page.goto('/docs/components/banner');
-    await page.waitForLoadState('domcontentloaded');
-    await page.waitForTimeout(1000);
-
-    const banner = page.locator('[role="banner"], .banner').first();
-    if (await banner.count() > 0) {
-      await expect(banner).toHaveScreenshot('banner-visible.png', {
-        maxDiffPixels: 50,
-      });
-
-      // Try to dismiss
-      const dismissButton = banner.locator('button');
-      if (await dismissButton.count() > 0) {
-        await dismissButton.click();
-        await page.waitForTimeout(300);
-        // Banner should be gone or animating out
-      }
-    }
-  });
+  // Banner component archived - test removed
 });
 
 // ============================================================================
@@ -296,59 +277,14 @@ test.describe('Badge & Status States', () => {
     }
   });
 
-  test('status indicator colors', async ({ page }) => {
-    await page.goto('/docs/components/status-indicator');
-    await page.waitForLoadState('domcontentloaded');
-    await page.waitForTimeout(1000);
-
-    // Inject CSS to pause animations
-    await page.addStyleTag({ content: '*, *::before, *::after { animation-play-state: paused !important; }' });
-
-    const statuses = ['online', 'offline', 'busy', 'away'];
-
-    for (const status of statuses) {
-      const indicator = page.locator(`[data-status="${status}"], .status-${status}`).first();
-      if (await indicator.count() > 0) {
-        await indicator.scrollIntoViewIfNeeded();
-        await expect(indicator).toHaveScreenshot(`status-${status}.png`, {
-          maxDiffPixels: 20,
-        });
-      }
-    }
-  });
+  // Status indicator component archived - test removed
 });
 
 // ============================================================================
 // PASSWORD STRENGTH INDICATOR
 // ============================================================================
 
-test.describe('Password Strength States', () => {
-  test('password strength - weak to strong', async ({ page }) => {
-    await page.goto('/docs/components/password-strength');
-    await page.waitForLoadState('networkidle');
-
-    const passwordInput = page.locator('input[type="password"]').first();
-    if (await passwordInput.count() === 0) return;
-
-    // Test weak password
-    await passwordInput.fill('123');
-    await page.waitForTimeout(200);
-    await expect(page.locator('[data-slot="password-strength"]').first()).toHaveScreenshot('password-weak.png', {
-      maxDiffPixels: 50,
-    });
-
-    // Test medium password
-    await passwordInput.fill('Password1');
-    await page.waitForTimeout(200);
-
-    // Test strong password
-    await passwordInput.fill('P@ssw0rd!Strong123');
-    await page.waitForTimeout(200);
-    await expect(page.locator('[data-slot="password-strength"]').first()).toHaveScreenshot('password-strong.png', {
-      maxDiffPixels: 50,
-    });
-  });
-});
+// Password Strength component archived - test suite removed
 
 // ============================================================================
 // EMPTY STATES

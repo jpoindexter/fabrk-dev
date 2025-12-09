@@ -10,12 +10,12 @@ Update these in `src/lib/metadata.ts` and individual page files:
 
 ```typescript
 export const metadata: Metadata = {
-  title: "Fabrk - Ship SaaS in Days, Not Months | 87 Components",
-  description: "Production-ready Next.js 15 SaaS boilerplate with 234 components, authentication, payments, and complete documentation. Launch in 2 weeks instead of 2 months. $299 one-time.",
+  title: "Fabrk - Ship SaaS in Days, Not Months | 64 Components",
+  description: "Production-ready Next.js 15 SaaS boilerplate with 64 components (60 production-ready + 4 business logic), authentication, payments, and complete documentation. Launch in 2 weeks instead of 2 months. $399 one-time.",
   keywords: ["SaaS boilerplate", "Next.js template", "TypeScript", "Stripe", "NextAuth"],
   og: {
     title: "Fabrk - The Complete SaaS Boilerplate",
-    description: "234 production-ready components + auth + payments. Ship SaaS faster.",
+    description: "64 production-ready components + auth + payments. 2x ShipFast components at premium value.",
     image: "https://fabrk.dev/og-image.png",
     url: "https://fabrk.dev",
   },
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 ```typescript
 export const metadata: Metadata = {
   title: "Features - Fabrk SaaS Boilerplate",
-  description: "234 production-ready components, NextAuth v5, Stripe integration, PostgreSQL + Prisma, Resend emails, real-time with Pusher, multi-tenancy, and more.",
+  description: "64 production-ready components (60 core + 4 business logic), NextAuth v5, Stripe integration, PostgreSQL + Prisma, Resend emails, real-time with Pusher, multi-tenancy, and more.",
 };
 ```
 
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
 
 ```typescript
 export const metadata: Metadata = {
-  title: "Pricing - Fabrk SaaS Boilerplate | $299 One-Time",
-  description: "One-time payment of $299. Includes source code, lifetime updates, unlimited projects, and email support.",
+  title: "Pricing - Fabrk SaaS Boilerplate | $399 One-Time",
+  description: "One-time payment of $399. Includes 64 production-ready components, source code, lifetime updates, unlimited projects, and email support.",
 };
 ```
 
@@ -44,8 +44,8 @@ export const metadata: Metadata = {
 
 ```typescript
 export const metadata: Metadata = {
-  title: "Components - 87 Production-Ready UI Components",
-  description: "Explore all 234 production-ready components with Storybook integration, TypeScript, and accessibility features. 95% Storybook coverage.",
+  title: "Components - 64 Production-Ready UI Components",
+  description: "Explore all 64 production-ready components (60 core + 4 business logic) with Storybook integration, TypeScript, and accessibility features. Optimized for production use.",
 };
 ```
 
@@ -76,7 +76,7 @@ export const softwareApplicationSchema = {
   applicationCategory: "DeveloperApplication",
   offers: {
     "@type": "Offer",
-    price: "299",
+    price: "399",
     priceCurrency: "USD",
   },
   aggregateRating: {
