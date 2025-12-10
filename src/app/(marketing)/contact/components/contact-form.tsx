@@ -174,7 +174,7 @@ export function ContactForm() {
               <Alert className="bg-success/10 border-success/20 rounded-none" aria-live="polite">
                 <CheckCircle2 className="text-success size-4" />
                 <AlertDescription className="text-success text-xs">
-                  [OK] MESSAGE_SENT - We've received your message and will respond within 24 hours.
+                  [OK] MESSAGE SENT - We've received your message and will respond within 24 hours.
                 </AlertDescription>
               </Alert>
             )}

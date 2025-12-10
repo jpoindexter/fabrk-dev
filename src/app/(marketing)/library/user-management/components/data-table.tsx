@@ -70,7 +70,7 @@ export function DataTable({ table }: DataTableProps) {
         ) : (
           <div className="px-4 py-8 text-center">
             <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-              [NO_RESULTS]: Query returned 0 users
+              [NO RESULTS]: Query returned 0 users
             </span>
           </div>
         )}

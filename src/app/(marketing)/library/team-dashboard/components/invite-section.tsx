@@ -37,7 +37,7 @@ export function InviteSection() {
       <CardHeader code="0x00" title="INVITE MEMBER" />
       <CardContent>
         <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-          [INVITE_TEAM_MEMBER]:
+          [INVITE TEAM MEMBER]:
         </div>
         <div className="flex gap-4">
           <Input

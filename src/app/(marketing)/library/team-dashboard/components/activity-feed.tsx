@@ -36,7 +36,7 @@ export function ActivityFeed({ activities }: ActivityFeedProps) {
                   <span className="text-foreground">{activity.user}</span>{' '}
                   <span className="text-muted-foreground">
                     {activity.type === 'member_added' && 'ADDED'}
-                    {activity.type === 'role_changed' && 'CHANGED_ROLE'}
+                    {activity.type === 'role_changed' && 'CHANGED ROLE'}
                     {activity.type === 'invitation_sent' && 'INVITED'}
                     {activity.type === 'member_removed' && 'REMOVED'}
                   </span>{' '}

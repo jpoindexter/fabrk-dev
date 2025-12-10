@@ -32,7 +32,7 @@ export function PendingInvitations({ invitations }: PendingInvitationsProps) {
       <CardHeader code="0x02" title="PENDING INVITES" />
       <CardContent>
         <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-          [PENDING_INVITATIONS]: COUNT={invitations.length}
+          [PENDING INVITATIONS]: COUNT={invitations.length}
         </div>
         <div className="space-y-2">
           {invitations.map((invitation) => (

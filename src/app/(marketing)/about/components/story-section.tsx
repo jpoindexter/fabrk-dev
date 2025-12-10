@@ -33,7 +33,7 @@ export function StorySection() {
               <h2
                 className={cn('mb-4 text-2xl font-semibold tracking-tight lg:text-4xl', mode.font)}
               >
-                THE_STORY_BEHIND_FABRK
+                THE STORY BEHIND FABRK
               </h2>
             </motion.div>
             <motion.div

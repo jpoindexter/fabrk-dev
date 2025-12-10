@@ -27,7 +27,7 @@ export function BadgesSection({ badges }: BadgesSectionProps) {
       <CardHeader code="0x01" title="BADGES" />
       <CardContent padding="md">
         <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-          [ACHIEVEMENTS]: {badges.length} BADGES_EARNED
+          [ACHIEVEMENTS]: {badges.length} BADGES EARNED
         </div>
         <div className="flex flex-wrap gap-4">
           {badges.map((badge) => {

@@ -23,7 +23,7 @@ export function StepWelcome() {
       </div>
       <div className="border-border border p-4 text-left">
         <div className={cn(mode.font, 'text-muted-foreground mb-2 text-xs')}>
-          [WHAT_YOULL_SET_UP]:
+          [WHAT YOULL SET UP]:
         </div>
         <div className={cn(mode.font, 'space-y-2 text-xs')}>
           <div>

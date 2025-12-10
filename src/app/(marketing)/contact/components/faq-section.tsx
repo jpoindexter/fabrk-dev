@@ -59,7 +59,7 @@ export function FaqSection() {
                   mode.font
                 )}
               >
-                [Q] DO_YOU_OFFER_REFUNDS?
+                [Q] DO YOU OFFER REFUNDS?
               </AccordionTrigger>
               <AccordionContent className={cn('text-muted-foreground px-6 text-xs', mode.font)}>
                 [A] No, all sales are final. Due to the nature of digital products, we do not offer
@@ -88,7 +88,7 @@ export function FaqSection() {
                   mode.font
                 )}
               >
-                [Q] IS_TECHNICAL SUPPORT_INCLUDED?
+                [Q] IS TECHNICAL SUPPORT INCLUDED?
               </AccordionTrigger>
               <AccordionContent className={cn('text-muted-foreground px-6 text-xs', mode.font)}>
                 [A] Yes, we provide email support for all license holders. Response time is
@@ -113,7 +113,7 @@ export function FaqSection() {
                   mode.font
                 )}
               >
-                [Q] CAN_I_USE_FABRK_FOR_CLIENT_PROJECTS?
+                [Q] CAN I USE FABRK FOR CLIENT PROJECTS?
               </AccordionTrigger>
               <AccordionContent className={cn('text-muted-foreground px-6 text-xs', mode.font)}>
                 [A] Absolutely! Your license allows you to create unlimited projects for yourself or
@@ -138,7 +138,7 @@ export function FaqSection() {
                   mode.font
                 )}
               >
-                [Q] DO_I_GET_LIFETIME UPDATES?
+                [Q] DO I GET LIFETIME UPDATES?
               </AccordionTrigger>
               <AccordionContent className={cn('text-muted-foreground px-6 text-xs', mode.font)}>
                 [A] Yes, all future updates and improvements are included at no additional cost.

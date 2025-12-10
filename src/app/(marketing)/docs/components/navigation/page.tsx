@@ -15,7 +15,7 @@ function NavigationDemo() {
         <Link href="#" className="flex items-center gap-2 font-mono">
           <span className="text-primary text-xs">&gt;</span>
           <span className="text-sm font-semibold">FABRK</span>
-          <span className="text-muted-foreground text-xs">_CONSOLE</span>
+          <span className="text-muted-foreground text-xs">CONSOLE</span>
         </Link>
 
         <div className="flex-1" />

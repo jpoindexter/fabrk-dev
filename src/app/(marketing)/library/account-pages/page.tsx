@@ -140,7 +140,7 @@ export default function AccountPagesPage() {
         <div className="space-y-4">
           <div className="border-border inline-block border px-4 py-1">
             <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-              [CATEGORY]: ACCOUNT_PAGES
+              [CATEGORY]: ACCOUNT PAGES
             </span>
           </div>
           <div className="flex items-center gap-4">

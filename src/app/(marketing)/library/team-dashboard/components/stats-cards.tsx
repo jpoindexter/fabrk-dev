@@ -40,7 +40,7 @@ export function StatsCards({
         <div className={cn(mode.font, 'text-muted-foreground mt-2 text-xs')}>
           STATUS:{' '}
           <span className="text-success">
-            {organization.memberLimit - membersCount}_SEATS_AVAILABLE
+            {organization.memberLimit - membersCount} SEATS AVAILABLE
           </span>
         </div>
       </div>

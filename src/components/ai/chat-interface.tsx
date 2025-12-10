@@ -60,7 +60,7 @@ export function ChatInterface({
         {/* Terminal Header */}
         <div className="border-border bg-muted/50 border-b px-4 py-2">
           <span className={cn('text-muted-foreground text-xs', mode.font)}>
-            [ [0x00] PROMPT_INPUT ]
+            [ [0x00] PROMPT INPUT ]
           </span>
         </div>
 

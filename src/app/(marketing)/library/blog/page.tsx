@@ -159,7 +159,7 @@ export default function BlogPage() {
         <div className="border border-border">
           <div className="border-b border-border px-4 py-2">
             <span className="font-mono text-xs text-muted-foreground">
-              [ [0x00] FEATURED_POST ]
+              [ [0x00] FEATURED POST ]
             </span>
           </div>
           <div className="p-6">
@@ -345,7 +345,7 @@ function BlogPreview() {
           <div className="border-border bg-card border">
             <div className="border-border border-b px-4 py-2">
               <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                [ [0x00] FEATURED_POST ]
+                [ [0x00] FEATURED POST ]
               </span>
             </div>
             <div className="p-6">

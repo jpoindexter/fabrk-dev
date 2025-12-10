@@ -62,7 +62,7 @@ export function AccountTab() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="jobtitle" className={cn(mode.radius, mode.font, 'text-xs')}>
-                  [JOB_TITLE]:
+                  [JOB TITLE]:
                 </Label>
                 <Input
                   id="jobtitle"

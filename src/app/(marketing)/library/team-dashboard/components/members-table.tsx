@@ -81,7 +81,7 @@ export function MembersTable({ members }: MembersTableProps) {
                 <th className="text-muted-foreground rounded-none px-4 py-2 text-left">[MEMBER]</th>
                 <th className="text-muted-foreground rounded-none px-4 py-2 text-left">[ROLE]</th>
                 <th className="text-muted-foreground rounded-none px-4 py-2 text-left">
-                  [LAST_ACTIVE]
+                  [LAST ACTIVE]
                 </th>
                 <th className="text-muted-foreground rounded-none px-4 py-2 text-left">
                   [ACTIONS]
@@ -182,7 +182,7 @@ export function MembersTable({ members }: MembersTableProps) {
                                 </AlertDialogTrigger>
                                 <AlertDialogContent>
                                   <AlertDialogTitle className={cn(mode.font)}>
-                                    [CONFIRM_REMOVAL]
+                                    [CONFIRM REMOVAL]
                                   </AlertDialogTitle>
                                   <AlertDialogDescription className={cn(mode.font, 'text-xs')}>
                                     WARNING: This action will remove the member from the team. They

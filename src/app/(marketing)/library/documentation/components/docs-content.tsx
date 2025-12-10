@@ -170,7 +170,7 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
             className={cn(mode.radius, mode.font, 'text-xs')}
             aria-label="Go to next page: Environment Setup"
           >
-            NEXT: ENVIRONMENT_SETUP &gt;
+            NEXT: ENVIRONMENT SETUP &gt;
           </Button>
         </nav>
 

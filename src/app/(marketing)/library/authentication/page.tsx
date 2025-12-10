@@ -118,7 +118,7 @@ export default function AuthenticationPage() {
           <CardHeader code="0x00" title="AUTH FEATURES" />
           <CardContent padding="lg">
             <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-              [AUTH_TEMPLATES]:
+              [AUTH TEMPLATES]:
             </div>
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>

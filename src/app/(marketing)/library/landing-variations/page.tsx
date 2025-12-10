@@ -159,7 +159,7 @@ export default function LandingPage() {
 
           <div className="border border-border bg-muted/30 flex aspect-video items-center justify-center">
             <span className={cn(mode.font, "text-xs text-muted-foreground")}>
-              [PRODUCT_SCREENSHOT]
+              [PRODUCT SCREENSHOT]
             </span>
           </div>
         </div>
@@ -236,7 +236,7 @@ function LandingVariationsPreview() {
             <div className="border-border bg-card border">
               <div className="border-border border-b px-4 py-2">
                 <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                  [ [0x01] HERO_CENTERED ]
+                  [ [0x01] HERO CENTERED ]
                 </span>
               </div>
               <div className="p-6">
@@ -301,7 +301,7 @@ function LandingVariationsPreview() {
             <div className="border-border bg-card border">
               <div className="border-border border-b px-4 py-2">
                 <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                  [ [0x02] HERO_SPLIT ]
+                  [ [0x02] HERO SPLIT ]
                 </span>
               </div>
               <div className="p-6">
@@ -352,7 +352,7 @@ function LandingVariationsPreview() {
 
                     <div className="border-border bg-muted/30 flex aspect-video items-center justify-center border">
                       <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                        [PRODUCT_SCREENSHOT]
+                        [PRODUCT SCREENSHOT]
                       </span>
                     </div>
                   </div>
@@ -366,7 +366,7 @@ function LandingVariationsPreview() {
             <div className="border-border bg-card border">
               <div className="border-border border-b px-4 py-2">
                 <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                  [ [0x03] HERO_MINIMAL ]
+                  [ [0x03] HERO MINIMAL ]
                 </span>
               </div>
               <div className="p-6">

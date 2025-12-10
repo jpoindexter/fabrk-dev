@@ -96,7 +96,7 @@ export default function PricingPage() {
       <div className="border border-border">
         <div className="border-b border-border px-4 py-2">
           <span className="font-mono text-xs text-muted-foreground">
-            [ [0x00] PRICING_HEADER ]
+            [ [0x00] PRICING HEADER ]
           </span>
         </div>
         <div className="p-6 text-center space-y-4">

@@ -35,7 +35,7 @@ const reasons: Reason[] = [
   },
   {
     id: '0x12',
-    title: 'MODERN_TECH STACK',
+    title: 'MODERN TECH STACK',
     icon: Layers,
     description:
       "Built on Next.js 15, TypeScript, Prisma, NextAuth v5, and Stripe. The tools you're already using or want to learn.",
@@ -65,7 +65,7 @@ export function WhyChooseSection() {
               <h2
                 className={cn('mb-4 text-2xl font-semibold tracking-tight lg:text-4xl', mode.font)}
               >
-                WHY_CHOOSE_FABRK
+                WHY CHOOSE FABRK
               </h2>
             </motion.div>
             <motion.div

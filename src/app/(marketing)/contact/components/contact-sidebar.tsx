@@ -26,7 +26,7 @@ export function ContactSidebar() {
           />
           <CardContent padding="md">
             <h3 className={cn('text-foreground mb-2 text-xs font-semibold', mode.font)}>
-              EMAIL_US
+              EMAIL US
             </h3>
             <div className={cn('text-xs', mode.font)}>
               <span className="text-muted-foreground">DESC: </span>
@@ -56,7 +56,7 @@ export function ContactSidebar() {
           />
           <CardContent padding="md">
             <h3 className={cn('text-foreground mb-2 text-xs font-semibold', mode.font)}>
-              RESPONSE_TIME
+              RESPONSE TIME
             </h3>
             <div className={cn('text-xs', mode.font)}>
               <span className="text-muted-foreground">DESC: </span>

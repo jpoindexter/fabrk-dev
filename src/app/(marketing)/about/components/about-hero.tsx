@@ -30,7 +30,7 @@ export function AboutHero() {
         >
           <p className={cn('text-muted-foreground mb-2 text-xs', mode.font)}>[FABRK ABOUT]:</p>
           <h1 className={cn('mb-8 text-4xl font-semibold tracking-tight lg:text-5xl', mode.font)}>
-            BUILT_BY_DEVELOPERS
+            BUILT BY DEVELOPERS
             <br />
             <span className="text-primary">FOR DEVELOPERS</span>
           </h1>

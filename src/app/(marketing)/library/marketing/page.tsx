@@ -261,7 +261,7 @@ export default function MarketingPage() {
           <CardHeader code="0x02" title="MARKETING FEATURES" />
           <CardContent padding="lg">
             <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-              [MARKETING_TEMPLATES]:
+              [MARKETING TEMPLATES]:
             </div>
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>

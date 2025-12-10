@@ -305,7 +305,7 @@ function ChartLibraryPreview() {
                   </div>
                 </div>
                 <span className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}>
-                  MULTI_LINE
+                  MULTI LINE
                 </span>
               </div>
               <ResponsiveContainer width="100%" height={400}>
@@ -362,7 +362,7 @@ function ChartLibraryPreview() {
                   </div>
                 </div>
                 <span className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}>
-                  SOLID_FILL
+                  SOLID FILL
                 </span>
               </div>
               <ResponsiveContainer width="100%" height={400}>
@@ -411,7 +411,7 @@ function ChartLibraryPreview() {
                   </div>
                 </div>
                 <span className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}>
-                  HORIZONTAL_BARS
+                  HORIZONTAL BARS
                 </span>
               </div>
               <ResponsiveContainer width="100%" height={400}>
@@ -455,7 +455,7 @@ function ChartLibraryPreview() {
                   </div>
                 </div>
                 <span className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}>
-                  DONUT_CHART
+                  DONUT CHART
                 </span>
               </div>
               <div className="flex items-center justify-center gap-12">

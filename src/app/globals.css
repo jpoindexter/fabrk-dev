@@ -403,6 +403,25 @@
   --input: 42% 0.2 0;
   --ring: 88% 0.3 0;
 
+  /* Status colors - all monochrome red */
+  --success: 75% 0.28 0;
+  --success-foreground: 5% 0.01 0;
+  --warning: 80% 0.26 0;
+  --warning-foreground: 5% 0.01 0;
+  --info: 70% 0.24 0;
+  --info-foreground: 5% 0.01 0;
+
+  /* Chart colors - all monochrome red */
+  --chart-1: 75% 0.28 0;
+  --chart-2: 65% 0.24 0;
+  --chart-3: 80% 0.26 0;
+  --chart-4: 70% 0.22 0;
+  --chart-5: 60% 0.2 0;
+  --chart-6: 85% 0.3 0;
+  --chart-7: 55% 0.18 0;
+  --chart-8: 72% 0.25 0;
+  --chart-9: 68% 0.23 0;
+
   /* Semantic mappings */
   --color-bg-canvas: var(--background);
   --color-bg-surface: var(--card);
@@ -430,6 +449,25 @@
   --border: 45% 0.16 200;
   --input: 45% 0.16 200;
   --ring: 85% 0.24 200;
+
+  /* Status colors - all monochrome blue */
+  --success: 75% 0.22 200;
+  --success-foreground: 4% 0.01 200;
+  --warning: 78% 0.2 200;
+  --warning-foreground: 4% 0.01 200;
+  --info: 70% 0.2 200;
+  --info-foreground: 4% 0.01 200;
+
+  /* Chart colors - all monochrome blue */
+  --chart-1: 75% 0.22 200;
+  --chart-2: 65% 0.18 200;
+  --chart-3: 80% 0.24 200;
+  --chart-4: 70% 0.2 200;
+  --chart-5: 60% 0.16 200;
+  --chart-6: 85% 0.24 200;
+  --chart-7: 55% 0.14 200;
+  --chart-8: 72% 0.21 200;
+  --chart-9: 68% 0.19 200;
 
   --color-bg-canvas: var(--background);
   --color-bg-surface: var(--card);
@@ -461,6 +499,25 @@
   --color-bg-canvas: var(--background);
   --color-bg-surface: var(--card);
   --color-text-primary: var(--foreground);
+
+  /* Status colors - all monochrome green */
+  --success: 75% 0.28 145;
+  --success-foreground: 5% 0.01 145;
+  --warning: 80% 0.26 145;
+  --warning-foreground: 5% 0.01 145;
+  --info: 70% 0.24 145;
+  --info-foreground: 5% 0.01 145;
+
+  /* Chart colors - all monochrome green */
+  --chart-1: 75% 0.28 145;
+  --chart-2: 65% 0.24 145;
+  --chart-3: 80% 0.26 145;
+  --chart-4: 70% 0.22 145;
+  --chart-5: 60% 0.2 145;
+  --chart-6: 85% 0.3 145;
+  --chart-7: 55% 0.18 145;
+  --chart-8: 72% 0.25 145;
+  --chart-9: 68% 0.23 145;
 }
 
 /* Amber Theme - Monochrome Amber CRT (hue 50) */
@@ -488,6 +545,25 @@
   --color-bg-canvas: var(--background);
   --color-bg-surface: var(--card);
   --color-text-primary: var(--foreground);
+
+  /* Status colors - all monochrome amber */
+  --success: 75% 0.22 50;
+  --success-foreground: 5% 0.01 50;
+  --warning: 82% 0.28 50;
+  --warning-foreground: 5% 0.01 50;
+  --info: 70% 0.2 50;
+  --info-foreground: 5% 0.01 50;
+
+  /* Chart colors - all monochrome amber */
+  --chart-1: 75% 0.22 50;
+  --chart-2: 65% 0.18 50;
+  --chart-3: 82% 0.28 50;
+  --chart-4: 70% 0.2 50;
+  --chart-5: 60% 0.16 50;
+  --chart-6: 88% 0.25 50;
+  --chart-7: 55% 0.14 50;
+  --chart-8: 72% 0.21 50;
+  --chart-9: 68% 0.19 50;
 }
 
 /* Purple Theme - Monochrome Purple CRT (hue 300) */
@@ -515,6 +591,25 @@
   --color-bg-canvas: var(--background);
   --color-bg-surface: var(--card);
   --color-text-primary: var(--foreground);
+
+  /* Status colors - all monochrome purple */
+  --success: 70% 0.2 300;
+  --success-foreground: 5% 0.01 300;
+  --warning: 75% 0.22 300;
+  --warning-foreground: 5% 0.01 300;
+  --info: 65% 0.18 300;
+  --info-foreground: 5% 0.01 300;
+
+  /* Chart colors - all monochrome purple */
+  --chart-1: 70% 0.2 300;
+  --chart-2: 60% 0.16 300;
+  --chart-3: 75% 0.22 300;
+  --chart-4: 65% 0.18 300;
+  --chart-5: 55% 0.14 300;
+  --chart-6: 85% 0.25 300;
+  --chart-7: 50% 0.12 300;
+  --chart-8: 72% 0.21 300;
+  --chart-9: 68% 0.19 300;
 }
 
 /* ============================================

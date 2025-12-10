@@ -33,7 +33,7 @@ export function BillingTab() {
               </div>
               <div className="text-right">
                 <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                  [BILLING_CYCLE]:
+                  [BILLING CYCLE]:
                 </div>
                 <div className="text-xl font-semibold">$29/month</div>
               </div>

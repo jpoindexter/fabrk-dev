@@ -52,7 +52,7 @@ export function SecurityScore({ user }: SecurityScoreProps) {
           <span
             className={cn(mode.font, 'border-warning/50 text-warning border px-2 py-0.5 text-xs')}
           >
-            MEDIUM_RISK
+            MEDIUM RISK
           </span>
         </div>
         <div className={cn(mode.font, 'space-y-2 text-xs')}>
@@ -75,7 +75,7 @@ export function SecurityScore({ user }: SecurityScoreProps) {
           <div className="flex items-center gap-2">
             <CheckCircle2 className="text-success h-4 w-4" />
             <span>
-              PASSWORD_CHANGED: {daysSincePasswordChange}_DAYS_AGO (recommended: every 90 days)
+              PASSWORD CHANGED: {daysSincePasswordChange} DAYS AGO (recommended: every 90 days)
             </span>
           </div>
         </div>

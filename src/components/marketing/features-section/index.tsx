@@ -62,7 +62,7 @@ export function FeaturesSection() {
             className="mb-4"
           />
           <h2 className={cn(mode.font, 'mb-4 text-4xl font-semibold tracking-tight')}>
-            BUILT_FOR_SERIOUS_SAAS_PRODUCTS
+            BUILT FOR SERIOUS SAAS PRODUCTS
           </h2>
           <p className={cn(mode.font, 'text-muted-foreground max-w-2xl text-sm')}>
             Includes many foundational and advanced components that cover a wide range of use-cases

@@ -41,7 +41,7 @@ interface TemplateCategoryPageProps {
   templates: Template[];
   /** Features to display in the bottom card */
   features: string[];
-  /** Feature card title (e.g., "[DASHBOARD_TEMPLATES]:") */
+  /** Feature card title (e.g., "[DASHBOARD TEMPLATES]:") */
   featureCardTitle: string;
 }
 

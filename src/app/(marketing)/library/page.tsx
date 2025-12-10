@@ -79,7 +79,7 @@ export default function TemplatesPage() {
       <section className="space-y-4">
         <div className="border-border inline-block border px-4 py-1">
           <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-            [LIBRARY]: BROWSE_BLUEPRINTS
+            [LIBRARY]: BROWSE BLUEPRINTS
           </span>
         </div>
         <h1 className={cn(mode.font, 'text-4xl font-semibold')}>Component Library</h1>

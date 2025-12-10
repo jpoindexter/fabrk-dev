@@ -48,7 +48,7 @@ export default function ErrorPage() {
       icon: AlertTriangle,
       terminal: [
         "$ process.run --component=App",
-        "STATUS: EXCEPTION_CAUGHT",
+        "STATUS: EXCEPTION CAUGHT",
         "TYPE: RuntimeError",
         "",
         "ERROR: Unexpected application error",
@@ -105,7 +105,7 @@ export default function ErrorPage() {
         "",
         "SCHEDULED: 2024-11-12T14:00:00Z",
         "ESTIMATED_END: 2024-11-12T14:30:00Z",
-        "STATUS: IN_PROGRESS",
+        "STATUS: IN PROGRESS",
       ],
       actions: ["REFRESH", "STATUS PAGE"],
     },

@@ -118,7 +118,7 @@ export default function DashboardsPage() {
           <CardHeader code="0x00" title="DASHBOARD FEATURES" />
           <CardContent padding="lg">
             <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-              [DASHBOARD_TEMPLATES]:
+              [DASHBOARD TEMPLATES]:
             </div>
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>

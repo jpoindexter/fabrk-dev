@@ -36,7 +36,7 @@ export function StepComplete({ formData }: StepCompleteProps) {
 
       <div className="border-border border p-4 text-left">
         <div className={cn(mode.font, 'text-muted-foreground mb-2 text-xs')}>
-          [ACCOUNT_SUMMARY]:
+          [ACCOUNT SUMMARY]:
         </div>
         <div className={cn(mode.font, 'space-y-2 text-xs')}>
           <div>

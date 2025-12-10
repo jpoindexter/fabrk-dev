@@ -195,7 +195,7 @@ export function DocsNav() {
         >
           <span className="text-primary text-xs">&gt;</span>
           <span className="text-sm font-semibold tracking-tight">FABRK</span>
-          <span className="text-muted-foreground hidden text-xs sm:inline">_DOCS</span>
+          <span className="text-muted-foreground hidden text-xs sm:inline">DOCS</span>
         </Link>
 
         {/* Breadcrumbs - Center */}

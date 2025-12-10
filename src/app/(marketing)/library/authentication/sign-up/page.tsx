@@ -50,7 +50,7 @@ export default function SignUpPage() {
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="first-name" className={cn(mode.font, "text-xs")}>
-                [FIRST_NAME]:
+                [FIRST NAME]:
               </Label>
               <Input
                 id="first-name"
@@ -61,7 +61,7 @@ export default function SignUpPage() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="last-name" className={cn(mode.font, "text-xs")}>
-                [LAST_NAME]:
+                [LAST NAME]:
               </Label>
               <Input
                 id="last-name"
@@ -177,7 +177,7 @@ function SignUpPreview() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="first-name" className={cn(mode.font, 'text-xs')}>
-                  [FIRST_NAME]:
+                  [FIRST NAME]:
                 </Label>
                 <Input
                   id="first-name"
@@ -188,7 +188,7 @@ function SignUpPreview() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="last-name" className={cn(mode.font, 'text-xs')}>
-                  [LAST_NAME]:
+                  [LAST NAME]:
                 </Label>
                 <Input
                   id="last-name"

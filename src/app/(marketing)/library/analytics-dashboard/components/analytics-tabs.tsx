@@ -60,7 +60,7 @@ export function AnalyticsTabs({
       <StyledTabsContent value="overview">
         <div className="border-border bg-card border p-4">
           <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-            [TOP PAGES]: SORTED_BY=VIEWS
+            [TOP PAGES]: SORTED BY=VIEWS
           </div>
 
           {/* Terminal Table */}
@@ -120,7 +120,7 @@ export function AnalyticsTabs({
             {/* Device Breakdown */}
             <div className="border-border border p-4">
               <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-                [DEVICE_BREAKDOWN]:
+                [DEVICE BREAKDOWN]:
               </div>
               <div className="space-y-4">
                 {deviceBreakdown.map((device, i) => (
@@ -142,7 +142,7 @@ export function AnalyticsTabs({
       <StyledTabsContent value="reports">
         <div className="border-border bg-card border p-4">
           <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-            [AVAILABLE_REPORTS]:
+            [AVAILABLE REPORTS]:
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {[
