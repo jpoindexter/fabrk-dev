@@ -21,6 +21,7 @@ import { ThemeScript } from '@/design-system/providers';
 import { env } from '@/lib/env';
 import './globals.css';
 import './typography.css';
+import '@/lib/dev-validation';
 
 const jetbrainsMono = localFont({
   src: [

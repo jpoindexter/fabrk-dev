@@ -169,7 +169,7 @@ function FeatureCard({
             </motion.div>
           }
         />
-        <CardContent>
+        <CardContent padding="sm">
           {/* Status */}
           <div className="mb-4">
             <Stat label="STATUS" value={status} size="sm" />
