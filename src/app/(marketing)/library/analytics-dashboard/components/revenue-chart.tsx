@@ -49,7 +49,7 @@ export function RevenueChart({ data }: RevenueChartProps) {
           </div>
 
           {/* Chart area */}
-          <div className="border-border flex h-[200px] items-end justify-between gap-2 border-b border-l">
+          <div className="border-border flex h-[200px] items-end justify-between gap-2 border">
             {data.map((dataPoint, i) => (
               <div key={i} className="flex h-full flex-1 items-end justify-center">
                 <div
