@@ -69,19 +69,20 @@ export function VisualThemeDropdown() {
     const envTheme = env.client.NEXT_PUBLIC_VISUAL_THEME;
     if (envTheme && visualThemes.some((t) => t.id === envTheme)) {
       setCurrentTheme(envTheme);
-      document.documentElement.setAttribute('data-visual-theme', envTheme);
+      document.documentElement.setAttribute('data-visual-mode', envTheme);
       return;
     }
 
-    // Otherwise check localStorage
-    const saved = localStorage.getItem('visual-theme') as VisualTheme;
+    // Otherwise check localStorage (use existing key for compatibility)
+    const saved = localStorage.getItem('fabrk-theme-visual-mode') as VisualTheme;
     if (saved && visualThemes.some((t) => t.id === saved)) {
       setCurrentTheme(saved);
-      document.documentElement.setAttribute('data-visual-theme', saved);
+      document.documentElement.setAttribute('data-visual-mode', saved);
     } else {
       // Default to terminal
-      setCurrentTheme('terminal');
-      document.documentElement.setAttribute('data-visual-theme', 'terminal');
+      const defaultTheme = env.client.NEXT_PUBLIC_DEFAULT_VISUAL_THEME || 'terminal';
+      setCurrentTheme(defaultTheme as VisualTheme);
+      document.documentElement.setAttribute('data-visual-mode', defaultTheme);
     }
   }, []);
 
@@ -93,8 +94,8 @@ export function VisualThemeDropdown() {
     }
 
     setCurrentTheme(themeId);
-    localStorage.setItem('visual-theme', themeId);
-    document.documentElement.setAttribute('data-visual-theme', themeId);
+    localStorage.setItem('fabrk-theme-visual-mode', themeId);
+    document.documentElement.setAttribute('data-visual-mode', themeId);
 
     // Force reload to apply theme changes
     // This is necessary because CSS utility classes need to be regenerated
