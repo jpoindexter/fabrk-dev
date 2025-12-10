@@ -327,10 +327,7 @@ const clientSchema = z.object({
   // ============================================================================
   // DESIGN SYSTEM THEME
   // ============================================================================
-  NEXT_PUBLIC_DEFAULT_VISUAL_THEME: z
-    .enum(['terminal', 'modern', 'minimal', 'linear'])
-    .optional()
-    .default('modern'),
+  NEXT_PUBLIC_VISUAL_THEME: z.enum(['terminal', 'modern', 'soft']).optional(),
 
   // ============================================================================
   // STRIPE PUBLIC KEY

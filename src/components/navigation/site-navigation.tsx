@@ -12,6 +12,7 @@ import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from '@/components/ui/sheet';
 import { ThemeDropdown } from '@/components/theme/theme-dropdown';
+import { VisualThemeDropdown } from '@/components/theme/visual-theme-dropdown';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -116,6 +117,7 @@ export function SiteNavigation() {
           {/* Theme + CTA Buttons */}
           <div className="flex items-center gap-2">
             <ThemeDropdown />
+            <VisualThemeDropdown />
             <Button variant="outline" asChild className={cn(mode.radius, mode.font, 'text-xs')}>
               <Link href="/library">&gt; VIEW_LIBRARY</Link>
             </Button>
