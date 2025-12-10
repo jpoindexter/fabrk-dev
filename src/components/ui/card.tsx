@@ -165,7 +165,7 @@ const paddingStyles = {
 };
 
 const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
-  ({ className, padding = 'sm', ...props }, ref) => (
+  ({ className, padding = 'md', ...props }, ref) => (
     <div
       ref={ref}
       data-slot="card-content"
