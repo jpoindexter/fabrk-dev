@@ -2,6 +2,7 @@
  * Table toolbar with search, filters, and bulk actions
  */
 
+import { useMemo } from 'react';
 import { Table } from '@tanstack/react-table';
 import { Search, ChevronDown, UserCog, UserX, Trash2 } from 'lucide-react';
 
@@ -22,7 +23,8 @@ interface TableToolbarProps {
 }
 
 export function TableToolbar({ table }: TableToolbarProps) {
-  const selectedCount = table.getFilteredSelectedRowModel().rows.length;
+  // Use useMemo to prevent state updates during render
+  const selectedCount = useMemo(() => table.getFilteredSelectedRowModel().rows.length, [table]);
 
   return (
     <div className="mb-4 flex items-center justify-between gap-4">
