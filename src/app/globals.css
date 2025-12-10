@@ -252,7 +252,7 @@
   --success-foreground: 100% 0 0;
 
   --warning: var(--color-status-warning);
-  --warning-foreground: 0% 0 0; /* Black text on orange is better? Audit said black on solid */
+  --warning-foreground: 100% 0 0; /* White text for WCAG AA compliance (4.5:1+) */
 
   --info: var(--color-status-info);
   --info-foreground: 100% 0 0;
@@ -389,7 +389,7 @@
   --card-foreground: 82% 0.3 0;
   --popover: 10% 0.03 0;
   --popover-foreground: 82% 0.3 0;
-  --primary: 45% 0.25 0;
+  --primary: 40% 0.25 0; /* Decreased from 45% for WCAG AA (4.5:1+) */
   --primary-foreground: 95% 0.01 0;
   --secondary: 70% 0.26 0;
   --secondary-foreground: 5% 0.01 0;
@@ -436,7 +436,7 @@
   --card-foreground: 80% 0.22 200;
   --popover: 10% 0.03 200;
   --popover-foreground: 80% 0.22 200;
-  --primary: 45% 0.2 200;
+  --primary: 40% 0.2 200; /* Decreased from 45% for WCAG AA (4.5:1+) */
   --primary-foreground: 95% 0.01 200;
   --secondary: 70% 0.2 200;
   --secondary-foreground: 4% 0.01 200;
@@ -482,7 +482,7 @@
   --card-foreground: 85% 0.3 145;
   --popover: 10% 0.03 145;
   --popover-foreground: 85% 0.3 145;
-  --primary: 45% 0.25 145;
+  --primary: 40% 0.25 145; /* Decreased from 45% for WCAG AA (4.5:1+) */
   --primary-foreground: 95% 0.01 145;
   --secondary: 70% 0.25 145;
   --secondary-foreground: 5% 0.01 145;
@@ -528,7 +528,7 @@
   --card-foreground: 88% 0.25 50;
   --popover: 12% 0.03 50;
   --popover-foreground: 88% 0.25 50;
-  --primary: 45% 0.2 50;
+  --primary: 40% 0.2 50; /* Decreased from 45% for WCAG AA (4.5:1+) */
   --primary-foreground: 95% 0.01 50;
   --secondary: 75% 0.22 50;
   --secondary-foreground: 5% 0.01 50;
