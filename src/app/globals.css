@@ -280,7 +280,33 @@
 
 /* Light Theme (Maps to Root/Default) */
 [data-theme='light'] {
-  /* Inherits everything from :root */
+  /* Inherits everything from :root - explicitly map for consistency */
+
+  /* Semantic mappings (same as :root) */
+  --color-bg-canvas: var(--background);
+  --color-bg-surface: var(--card);
+  --color-bg-elevated: var(--popover);
+  --color-bg-sunken: var(--muted);
+
+  --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-text-tertiary: var(--secondary-foreground);
+  --color-text-inverse: var(--primary-foreground);
+  --color-text-disabled: var(--muted-foreground);
+
+  --color-border-default: var(--border);
+  --color-border-muted: var(--input);
+  --color-border-strong: var(--ring);
+  --color-border-focus: var(--ring);
+
+  --color-status-success: var(--success);
+  --color-status-success-bg: var(--success);
+  --color-status-warning: var(--warning);
+  --color-status-warning-bg: var(--warning);
+  --color-status-error: var(--destructive);
+  --color-status-error-bg: var(--destructive);
+  --color-status-info: var(--info);
+  --color-status-info-bg: var(--info);
 }
 
 /* Dark Theme (Monokai Night) - WCAG AAA */
@@ -425,7 +451,28 @@
   /* Semantic mappings */
   --color-bg-canvas: var(--background);
   --color-bg-surface: var(--card);
+  --color-bg-elevated: var(--popover);
+  --color-bg-sunken: var(--muted);
+
   --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-text-tertiary: var(--secondary-foreground);
+  --color-text-inverse: var(--primary-foreground);
+  --color-text-disabled: var(--muted-foreground);
+
+  --color-border-default: var(--border);
+  --color-border-muted: var(--input);
+  --color-border-strong: var(--ring);
+  --color-border-focus: var(--ring);
+
+  --color-status-success: var(--success);
+  --color-status-success-bg: var(--success);
+  --color-status-warning: var(--warning);
+  --color-status-warning-bg: var(--warning);
+  --color-status-error: var(--destructive);
+  --color-status-error-bg: var(--destructive);
+  --color-status-info: var(--info);
+  --color-status-info-bg: var(--info);
 }
 
 /* Blue Theme - Monochrome Blue CRT (hue 200) */
@@ -469,9 +516,31 @@
   --chart-8: 72% 0.21 200;
   --chart-9: 68% 0.19 200;
 
+  /* Semantic mappings */
   --color-bg-canvas: var(--background);
   --color-bg-surface: var(--card);
+  --color-bg-elevated: var(--popover);
+  --color-bg-sunken: var(--muted);
+
   --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-text-tertiary: var(--secondary-foreground);
+  --color-text-inverse: var(--primary-foreground);
+  --color-text-disabled: var(--muted-foreground);
+
+  --color-border-default: var(--border);
+  --color-border-muted: var(--input);
+  --color-border-strong: var(--ring);
+  --color-border-focus: var(--ring);
+
+  --color-status-success: var(--success);
+  --color-status-success-bg: var(--success);
+  --color-status-warning: var(--warning);
+  --color-status-warning-bg: var(--warning);
+  --color-status-error: var(--destructive);
+  --color-status-error-bg: var(--destructive);
+  --color-status-info: var(--info);
+  --color-status-info-bg: var(--info);
 }
 
 /* Green Theme - Monochrome Green CRT (hue 145) */
@@ -496,9 +565,31 @@
   --input: 40% 0.18 145;
   --ring: 90% 0.3 145;
 
+  /* Semantic mappings */
   --color-bg-canvas: var(--background);
   --color-bg-surface: var(--card);
+  --color-bg-elevated: var(--popover);
+  --color-bg-sunken: var(--muted);
+
   --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-text-tertiary: var(--secondary-foreground);
+  --color-text-inverse: var(--primary-foreground);
+  --color-text-disabled: var(--muted-foreground);
+
+  --color-border-default: var(--border);
+  --color-border-muted: var(--input);
+  --color-border-strong: var(--ring);
+  --color-border-focus: var(--ring);
+
+  --color-status-success: var(--success);
+  --color-status-success-bg: var(--success);
+  --color-status-warning: var(--warning);
+  --color-status-warning-bg: var(--warning);
+  --color-status-error: var(--destructive);
+  --color-status-error-bg: var(--destructive);
+  --color-status-info: var(--info);
+  --color-status-info-bg: var(--info);
 
   /* Status colors - all monochrome green */
   --success: 75% 0.28 145;
@@ -542,9 +633,31 @@
   --input: 40% 0.15 50;
   --ring: 90% 0.28 50;
 
+  /* Semantic mappings */
   --color-bg-canvas: var(--background);
   --color-bg-surface: var(--card);
+  --color-bg-elevated: var(--popover);
+  --color-bg-sunken: var(--muted);
+
   --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-text-tertiary: var(--secondary-foreground);
+  --color-text-inverse: var(--primary-foreground);
+  --color-text-disabled: var(--muted-foreground);
+
+  --color-border-default: var(--border);
+  --color-border-muted: var(--input);
+  --color-border-strong: var(--ring);
+  --color-border-focus: var(--ring);
+
+  --color-status-success: var(--success);
+  --color-status-success-bg: var(--success);
+  --color-status-warning: var(--warning);
+  --color-status-warning-bg: var(--warning);
+  --color-status-error: var(--destructive);
+  --color-status-error-bg: var(--destructive);
+  --color-status-info: var(--info);
+  --color-status-info-bg: var(--info);
 
   /* Status colors - all monochrome amber */
   --success: 75% 0.22 50;
