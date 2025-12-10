@@ -154,9 +154,9 @@ function FeatureCard({
         y: -4,
         transition: { duration: 0.2 },
       }}
-      className="group"
+      className="group h-full"
     >
-      <Card interactive size="auto">
+      <Card interactive className="h-full">
         <CardHeader
           code={`0x${(index + 17).toString(16).toUpperCase().padStart(2, '0')}`}
           title={module}
