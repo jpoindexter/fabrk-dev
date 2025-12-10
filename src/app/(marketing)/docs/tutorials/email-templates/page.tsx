@@ -117,6 +117,7 @@ await queueWelcomeEmail({
 });`,
           language: 'typescript',
         },
+        /* eslint-disable design-system/no-hardcoded-colors -- Email HTML requires inline styles with specific colors (CSS variables not supported in email clients) */
         {
           title: 'Creating Custom Templates',
           description: 'Create HTML template functions in src/emails/',
@@ -172,6 +173,7 @@ export function generateInvoiceEmailHTML({
 }`,
           language: 'typescript',
         },
+        /* eslint-enable design-system/no-hardcoded-colors */
         {
           title: 'Organization Invites',
           description: 'Send beautiful organization invitation emails',

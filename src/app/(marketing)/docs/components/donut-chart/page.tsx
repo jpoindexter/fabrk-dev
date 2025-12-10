@@ -7,6 +7,7 @@ import { useState } from 'react';
 export default function DonutChartPage() {
   const [selectedSegment, setSelectedSegment] = useState<string | null>(null);
 
+  /* eslint-disable design-system/no-hardcoded-colors -- Chart data requires specific colors for data visualization */
   const categoryData = [
     { label: 'Design', value: 35, color: 'oklch(70% 0.15 295)' },
     { label: 'Development', value: 45, color: 'oklch(70% 0.15 220)' },
@@ -26,6 +27,7 @@ export default function DonutChartPage() {
     { label: 'Social', value: 1400, color: 'oklch(70% 0.15 60)' },
   ];
 
+  /* eslint-disable design-system/no-hardcoded-colors -- Chart examples require specific colors for demonstrations */
   return (
     <ComponentShowcaseTemplate
       code="[UI.30]"
@@ -139,7 +141,7 @@ export default function DonutChartPage() {
   thickness={50}
   showLegend={true}
   onSegmentClick={(item, index) => {
-    console.log('Clicked:', item.label);
+    setSelectedSegment(item.label);
   }}
 />`,
         },
@@ -291,4 +293,5 @@ export default function DonutChartPage() {
       next={{ title: 'Copy Button', href: '/docs/components/copy-button' }}
     />
   );
+  /* eslint-enable design-system/no-hardcoded-colors */
 }

@@ -4,6 +4,7 @@ import { ComponentShowcaseTemplate } from '@/components/docs';
 import { Heatmap, HeatmapDataItem } from '@/components/ui/heatmap';
 
 export default function HeatmapPage() {
+  /* eslint-disable design-system/no-hardcoded-colors -- Chart examples require specific colors for demonstrations */
   // Sample data for weekly activity
   const weeklyData: HeatmapDataItem[] = [
     { x: 'Mon', y: 'Week 1', value: 12 },
@@ -136,7 +137,7 @@ export default function HeatmapPage() {
           code: `<Heatmap
   data={data}
   onCellClick={(item) => {
-    console.log(\`\${item.y} × \${item.x}: \${item.value}\`);
+    alert(\`\${item.y} × \${item.x}: \${item.value}\`);
   }}
 />`,
         },
@@ -201,4 +202,5 @@ export default function HeatmapPage() {
       next={{ title: 'KPI Card', href: '/docs/components/kpi-card' }}
     />
   );
+  /* eslint-enable design-system/no-hardcoded-colors */
 }

@@ -6,84 +6,6 @@ import { Copy, Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 
-/* eslint-disable design-system/no-hardcoded-colors -- Prism theme requires hex colors, cannot use design tokens */
-// Custom amber terminal theme - monochromatic amber/orange
-const amberTheme: PrismTheme = {
-  plain: {
-    color: '#FFB000',
-    backgroundColor: '#0f0a05',
-  },
-  styles: [
-    {
-      types: ['comment', 'prolog', 'doctype', 'cdata'],
-      style: {
-        color: '#996600',
-        fontStyle: 'italic',
-      },
-    },
-    {
-      types: ['namespace'],
-      style: {
-        opacity: 0.7,
-      },
-    },
-    {
-      types: ['string', 'attr-value'],
-      style: {
-        color: '#FFCC66',
-      },
-    },
-    {
-      types: ['punctuation', 'operator'],
-      style: {
-        color: '#CC8800',
-      },
-    },
-    {
-      types: [
-        'entity',
-        'url',
-        'symbol',
-        'number',
-        'boolean',
-        'variable',
-        'constant',
-        'property',
-        'regex',
-        'inserted',
-      ],
-      style: {
-        color: '#FFB000',
-      },
-    },
-    {
-      types: ['atrule', 'keyword', 'attr-name', 'selector'],
-      style: {
-        color: '#FF9500',
-      },
-    },
-    {
-      types: ['function', 'deleted', 'tag'],
-      style: {
-        color: '#FFAA00',
-      },
-    },
-    {
-      types: ['function-variable'],
-      style: {
-        color: '#FFB000',
-      },
-    },
-    {
-      types: ['tag', 'selector', 'keyword'],
-      style: {
-        color: '#FF9500',
-      },
-    },
-  ],
-};
-/* eslint-enable design-system/no-hardcoded-colors */
-
 interface CodeBlockProps {
   code: string;
   language?: string;
@@ -106,7 +28,8 @@ export function CodeBlock({
   useEffect(() => {
     const updateTheme = () => {
       const theme = document.documentElement.getAttribute('data-theme');
-      setCurrentTheme(theme === 'amber' ? amberTheme : themes.nightOwl);
+      // Use nightOwl theme for both light and dark modes
+      setCurrentTheme(themes.nightOwl);
     };
 
     // Initial theme detection

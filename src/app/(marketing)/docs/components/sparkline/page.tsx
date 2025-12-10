@@ -4,6 +4,7 @@ import { ComponentShowcaseTemplate } from '@/components/docs';
 import { Sparkline, SparklineCard, SparklineGroup } from '@/components/ui/sparkline';
 
 export default function SparklinePage() {
+  /* eslint-disable design-system/no-hardcoded-colors -- Chart examples require specific colors for demonstrations */
   const sampleData = [4, 8, 5, 10, 7, 12, 8, 15, 11, 14];
   const revenueData = [120, 140, 130, 170, 150, 190, 160, 200, 180, 220];
   const usersData = [45, 52, 48, 60, 55, 70, 65, 75, 72, 80];
@@ -278,4 +279,5 @@ export default function SparklinePage() {
       next={{ title: 'Gauge', href: '/docs/components/gauge' }}
     />
   );
+  /* eslint-enable design-system/no-hardcoded-colors */
 }

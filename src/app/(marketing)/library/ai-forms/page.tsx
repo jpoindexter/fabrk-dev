@@ -57,7 +57,7 @@ const templateCode = `"use client";
 
 import { useState } from "react";
 import { Sparkles, AlertCircle } from "lucide-react";
-import { ChatInterface, FormPreview, CodeViewer } from "@/components/ai";
+import { ChatInterface, CodeViewer } from "@/components/ai";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";

@@ -4,6 +4,7 @@ import { ComponentShowcaseTemplate } from '@/components/docs';
 import { Gauge, ScoreGauge } from '@/components/ui/gauge';
 
 export default function GaugePage() {
+  /* eslint-disable design-system/no-hardcoded-colors -- Chart examples require specific colors for demonstrations */
   return (
     <ComponentShowcaseTemplate
       code="[UI.29]"
@@ -275,4 +276,5 @@ export default function GaugePage() {
       next={{ title: 'Donut Chart', href: '/docs/components/donut-chart' }}
     />
   );
+  /* eslint-enable design-system/no-hardcoded-colors */
 }
