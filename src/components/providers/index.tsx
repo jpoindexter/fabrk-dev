@@ -16,8 +16,8 @@ import { env } from '@/lib/env';
  * 2. ThemeProvider - Design system theme/visual mode management
  *
  * Theme System:
- * - Color themes: 20 DaisyUI themes (light, dark, dracula, etc.)
- * - Visual modes: terminal, modern, minimal, linear
+ * - Color themes: Light and Dark
+ * - Visual modes: Terminal (sharp, monospace) and Modern (rounded, sans-serif)
  * - Persisted to localStorage with SSR flash prevention
  *
  * PostHog analytics initialized via instrumentation-client.ts (Next.js 15+)
@@ -28,7 +28,7 @@ interface ProvidersProps {
   /** Default color theme (defaults to "light") */
   defaultColorTheme?: 'light' | 'dark';
   /** Default visual mode (defaults to "terminal") */
-  defaultVisualMode?: 'terminal' | 'modern' | 'minimal' | 'linear';
+  defaultVisualMode?: 'terminal' | 'modern';
 }
 
 export function Providers({

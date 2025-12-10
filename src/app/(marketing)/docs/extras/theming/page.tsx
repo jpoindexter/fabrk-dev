@@ -111,7 +111,7 @@ export function MyNavbar() {
           description: 'Always use semantic color classes',
           code: `// ✅ GOOD - Theme-aware colors
 <button className="bg-primary text-primary-foreground">
-  Matches active theme (light, synthwave, dracula, etc.)
+  Matches active theme (light or dark)
 </button>
 
 <div className="border-primary ring-primary">
