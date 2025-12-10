@@ -21,10 +21,10 @@ export function TerminalBackground() {
       </svg>
 
       {/* Corner brackets - subtle viewport indicators */}
-      <div className="border-foreground/[0.03] absolute top-20 left-6 h-8 w-8 border-t border-l" />
-      <div className="border-foreground/[0.03] absolute top-20 right-6 h-8 w-8 border-t border-r" />
-      <div className="border-foreground/[0.03] absolute bottom-6 left-6 h-8 w-8 border-b border-l" />
-      <div className="border-foreground/[0.03] absolute right-6 bottom-6 h-8 w-8 border-r border-b" />
+      <div className="border-foreground/[0.015] absolute top-20 left-6 h-6 w-6 border-t border-l" />
+      <div className="border-foreground/[0.015] absolute top-20 right-6 h-6 w-6 border-t border-r" />
+      <div className="border-foreground/[0.015] absolute bottom-6 left-6 h-6 w-6 border-b border-l" />
+      <div className="border-foreground/[0.015] absolute right-6 bottom-6 h-6 w-6 border-r border-b" />
     </div>
   );
 }
