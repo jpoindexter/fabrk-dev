@@ -1,6 +1,6 @@
 /**
  * ✅ FABRK COMPONENT
- * DaisyUI theme picker dropdown for navbar with 20+ themes
+ * Color theme picker dropdown for navbar (Light/Dark only)
  * Production-ready ✓
  */
 
@@ -18,28 +18,11 @@ import {
 import { cn } from '@/lib/utils';
 
 import { mode } from '@/design-system';
+
+// Color themes - light and dark modes
 const themes = [
   { id: 'light', name: 'Light', preview: '#ffffff' },
   { id: 'dark', name: 'Dark', preview: '#1d232a' },
-  { id: 'amber', name: 'Amber Terminal', preview: '#ffb000' },
-  { id: 'cupcake', name: 'Cupcake', preview: '#65c3c8' },
-  { id: 'bumblebee', name: 'Bumblebee', preview: '#e0a82e' },
-  { id: 'emerald', name: 'Emerald', preview: '#66cc8a' },
-  { id: 'corporate', name: 'Corporate', preview: '#4b6bfb' },
-  { id: 'synthwave', name: 'Synthwave', preview: '#e779c1' },
-  { id: 'retro', name: 'Retro', preview: '#ef9995' },
-  { id: 'cyberpunk', name: 'Cyberpunk', preview: '#ff7598' },
-  { id: 'valentine', name: 'Valentine', preview: '#e96d7b' },
-  { id: 'halloween', name: 'Halloween', preview: '#ff7700' },
-  { id: 'forest', name: 'Forest', preview: '#1eb854' },
-  { id: 'aqua', name: 'Aqua', preview: '#09ecf3' },
-  { id: 'lofi', name: 'Lo-Fi', preview: '#0d0d0d' },
-  { id: 'pastel', name: 'Pastel', preview: '#d1c1d7' },
-  { id: 'fantasy', name: 'Fantasy', preview: '#6e0b75' },
-  { id: 'luxury', name: 'Luxury', preview: '#ffffff' },
-  { id: 'dracula', name: 'Dracula', preview: '#ff79c6' },
-  { id: 'autumn', name: 'Autumn', preview: '#8c0327' },
-  { id: 'business', name: 'Business', preview: '#1c4e80' },
 ] as const;
 
 export type ColorTheme = (typeof themes)[number]['id'];
