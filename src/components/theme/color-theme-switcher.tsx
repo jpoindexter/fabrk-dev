@@ -1,6 +1,6 @@
 /**
  * ✅ FABRK COMPONENT
- * DaisyUI theme switcher with 20+ color options
+ * Color theme switcher - Light and Dark modes
  * Production-ready ✓
  */
 
@@ -11,45 +11,28 @@ import { Button } from '@/components/ui/button';
 
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
+
 const themes = [
   { id: 'light', name: 'Light', preview: '#ffffff' },
   { id: 'dark', name: 'Dark', preview: '#1d232a' },
-  { id: 'cupcake', name: 'Cupcake', preview: '#65c3c8' },
-  { id: 'bumblebee', name: 'Bumblebee', preview: '#e0a82e' },
-  { id: 'emerald', name: 'Emerald', preview: '#66cc8a' },
-  { id: 'corporate', name: 'Corporate', preview: '#4b6bfb' },
-  { id: 'synthwave', name: 'Synthwave', preview: '#e779c1' },
-  { id: 'retro', name: 'Retro', preview: '#ef9995' },
-  { id: 'cyberpunk', name: 'Cyberpunk', preview: '#ff7598' },
-  { id: 'valentine', name: 'Valentine', preview: '#e96d7b' },
-  { id: 'halloween', name: 'Halloween', preview: '#ff7700' },
-  { id: 'forest', name: 'Forest', preview: '#1eb854' },
-  { id: 'aqua', name: 'Aqua', preview: '#09ecf3' },
-  { id: 'lofi', name: 'Lo-Fi', preview: '#0d0d0d' },
-  { id: 'pastel', name: 'Pastel', preview: '#d1c1d7' },
-  { id: 'fantasy', name: 'Fantasy', preview: '#6e0b75' },
-  { id: 'luxury', name: 'Luxury', preview: '#ffffff' },
-  { id: 'dracula', name: 'Dracula', preview: '#ff79c6' },
-  { id: 'autumn', name: 'Autumn', preview: '#8c0327' },
-  { id: 'business', name: 'Business', preview: '#1c4e80' },
 ] as const;
 
-export type DaisyUITheme = (typeof themes)[number]['id'];
+export type ColorTheme = (typeof themes)[number]['id'];
 
 export function ColorThemeSwitcher() {
-  const [currentTheme, setCurrentTheme] = useState<DaisyUITheme>('light');
+  const [currentTheme, setCurrentTheme] = useState<ColorTheme>('light');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: Hydration pattern for SSR compatibility
     setMounted(true);
     // Load saved theme from localStorage
-    const saved = (localStorage.getItem('theme') as DaisyUITheme) || 'light';
+    const saved = (localStorage.getItem('theme') as ColorTheme) || 'light';
     setCurrentTheme(saved);
     document.documentElement.setAttribute('data-theme', saved);
   }, []);
 
-  const handleChange = (themeId: DaisyUITheme) => {
+  const handleChange = (themeId: ColorTheme) => {
     setCurrentTheme(themeId);
     localStorage.setItem('theme', themeId);
     document.documentElement.setAttribute('data-theme', themeId);
@@ -85,7 +68,7 @@ export function ColorThemeSwitcher() {
 }
 
 // Helper to get current theme (for server components)
-export function getDaisyUITheme(): DaisyUITheme {
+export function getColorTheme(): ColorTheme {
   if (typeof window === 'undefined') return 'light';
-  return (localStorage.getItem('theme') as DaisyUITheme) || 'light';
+  return (localStorage.getItem('theme') as ColorTheme) || 'light';
 }

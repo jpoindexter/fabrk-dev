@@ -6,7 +6,7 @@ import { Palette, Sun, Moon, Sparkles } from 'lucide-react';
 export const metadata = {
   title: 'Theming & Colors - Fabrk Docs',
   description:
-    'Customize your Fabrk app with 20 built-in color themes. Switch themes instantly or create your own brand colors.',
+    'Customize your Fabrk app with light and dark color themes plus Terminal and Modern visual styles.',
 };
 
 export default function ThemingPage() {
@@ -15,13 +15,13 @@ export default function ThemingPage() {
       code="[0xB0]"
       category="Extras"
       title="Theming_And_Customization"
-      description="Choose from 20 professionally-designed color themes or create your own."
-      overview="20 color themes inspired by DaisyUI. Light/dark mode with next-themes, persistent localStorage, no theme flash, and Tailwind v4 native."
+      description="Light/Dark color themes + Terminal/Modern visual styles."
+      overview="Dual theme system: Color themes (light/dark) and Visual themes (Terminal/Modern). Persistent localStorage, no theme flash, and Tailwind v4 native."
       features={[
         {
           icon: Palette,
-          title: '20 Themes',
-          description: 'DaisyUI-inspired palettes.',
+          title: '2 Color Themes',
+          description: 'Light and Dark palettes.',
         },
         {
           icon: Sun,
@@ -41,14 +41,16 @@ export default function ThemingPage() {
       ]}
       usage={[
         {
-          title: 'Theme Switcher Component',
-          description: 'Compact dropdown for navbar',
+          title: 'Theme Switcher Components',
+          description: 'Compact dropdowns for navbar',
           code: `import { ThemeDropdown } from "@/components/theme/theme-dropdown";
+import { VisualThemeDropdown } from "@/components/theme/visual-theme-dropdown";
 
 export function MyNavbar() {
   return (
     <nav>
-      <ThemeDropdown /> {/* Dropdown with all 20 DaisyUI themes */}
+      <ThemeDropdown /> {/* Light/Dark color switcher */}
+      <VisualThemeDropdown /> {/* Terminal/Modern visual switcher */}
     </nav>
   );
 }`,
@@ -56,44 +58,51 @@ export function MyNavbar() {
         },
         {
           title: 'How It Works',
-          description: 'Themes applied via data-theme attribute',
-          code: `<!-- Themes work via data-theme attribute (DaisyUI pattern) -->
-<html data-theme="light">
-  <!-- data-theme="light" sets the color palette -->
-  <!-- Options: light, dark, cupcake, synthwave, dracula, etc. -->
+          description: 'Dual theme system via data attributes',
+          code: `<!-- Color theme via data-theme (light/dark) -->
+<html data-theme="light" data-visual-mode="terminal">
+  <!-- data-theme="light" sets colors (light or dark) -->
+  <!-- data-visual-mode="terminal" sets visual style -->
 </html>
 
-<!-- Theme is auto-loaded before React hydration (no flash) -->
+<!-- Themes auto-loaded before React hydration (no flash) -->
 <script>
   const theme = localStorage.getItem('theme') || 'light';
+  const visualMode = localStorage.getItem('fabrk-theme-visual-mode') || 'terminal';
   document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-visual-mode', visualMode);
 </script>`,
           language: 'html',
         },
         {
           title: 'CSS Implementation',
           description: 'Each theme defines CSS variables in globals.css',
-          code: `/* Light (default) */
+          code: `/* Light theme (default colors) */
 [data-theme="light"] {
-  --primary: 259 94% 51%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 240 5% 96%;
+  --background: 99% 0 0;  /* Off-white */
+  --foreground: 0% 0 0;   /* Pure black */
+  --primary: 0% 0 0;      /* Black */
+  --accent: 55% 0.21 250; /* Vercel blue */
   /* ...more variables */
 }
 
-/* Synthwave (dark neon theme) */
-[data-theme="synthwave"] {
-  --primary: 321 70% 69%;
-  --primary-foreground: 0 0% 100%;
-  --background: 259 20% 15%;
+/* Dark theme */
+[data-theme="dark"] {
+  --background: 0% 0 0;    /* Pure black */
+  --foreground: 100% 0 0;  /* Pure white */
+  --primary: 100% 0 0;     /* White */
+  --accent: 55% 0.21 250;  /* Vercel blue */
   /* ...more variables */
 }
 
-/* Dracula (dark purple theme) */
-[data-theme="dracula"] {
-  --primary: 326 100% 74%;
-  --background: 231 15% 18%;
-  /* ...more variables */
+/* Terminal visual style (sharp edges, monospace) */
+[data-visual-mode="terminal"] * {
+  border-radius: 0 !important;
+}
+
+/* Modern visual style (rounded, sans-serif) */
+[data-visual-mode="modern"] * {
+  border-radius: 0.5rem !important;
 }`,
           language: 'css',
         },
@@ -116,25 +125,24 @@ export function MyNavbar() {
           language: 'tsx',
         },
         {
-          title: 'Adding Custom Themes',
-          description: 'Add your own DaisyUI-style themes',
-          code: `/* Step 1: Add CSS in globals.css */
-[data-theme="ocean"] {
-  --primary: 199 89% 48%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 199 19% 90%;
-  --background: 0 0% 100%;
-  --foreground: 199 10% 10%;
-  /* Add all required CSS variables */
+          title: 'Customizing Themes',
+          description: 'Modify light/dark themes in globals.css',
+          code: `/* Customize existing themes in globals.css */
+[data-theme="light"] {
+  --background: 99% 0 0;
+  --foreground: 0% 0 0;
+  --primary: 0% 0 0;
+  --accent: 55% 0.21 250;  /* Vercel blue - customize to your brand */
+  /* ...modify other variables */
 }
 
-/* Step 2: Add to theme dropdown */
-const themes = [
-  { id: "light", name: "Light", preview: "#ffffff" },
-  { id: "dark", name: "Dark", preview: "#1d232a" },
-  // ...existing DaisyUI themes...
-  { id: "ocean", name: "Ocean", preview: "#0ea5e9" }, // Your custom theme
-];`,
+[data-theme="dark"] {
+  --background: 0% 0 0;
+  --foreground: 100% 0 0;
+  --primary: 100% 0 0;
+  --accent: 65% 0.21 250;  /* Brighter for dark mode */
+  /* ...modify other variables */
+}`,
           language: 'css',
         },
       ]}
@@ -142,42 +150,27 @@ const themes = [
       next={{ title: 'Launch Checklist', href: '/docs/launch/checklist' }}
     >
       {/* Theme System */}
-      <DocsSection title="Theme System">
+      <DocsSection title="Dual Theme System">
         <DocsCard title="THEME_SYSTEM">
           <div className="space-y-1">
-            <div>├─ 20 Color Themes: Inspired by DaisyUI&apos;s theme system</div>
-            <div>├─ Light/Dark Mode: Automatic dark mode with next-themes</div>
-            <div>├─ Persistent: Theme choice saved to localStorage</div>
+            <div>├─ Color Themes: Light and Dark color palettes</div>
+            <div>
+              ├─ Visual Themes: Terminal (sharp, monospace) and Modern (rounded, sans-serif)
+            </div>
+            <div>├─ Persistent: Both choices saved to localStorage</div>
             <div>├─ No Flash: Pre-hydration loading prevents theme flash</div>
             <div>└─ Tailwind v4 Native: Works seamlessly with Tailwind CSS v4</div>
           </div>
         </DocsCard>
       </DocsSection>
 
-      {/* Available Themes */}
-      <DocsSection title="Available Color Themes">
-        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Color Themes */}
+      <DocsSection title="Color Themes">
+        <div className="grid gap-2 sm:grid-cols-2">
+          {/* eslint-disable design-system/no-hardcoded-colors, design-system/no-inline-styles -- Theme color examples */}
           {[
-            { name: 'Light', desc: 'Default', color: '#ffffff' },
-            { name: 'Dark', desc: 'Default dark', color: '#1d232a' },
-            { name: 'Cupcake', desc: 'Soft pastel', color: '#65c3c8' },
-            { name: 'Bumblebee', desc: 'Yellow gold', color: '#e0a82e' },
-            { name: 'Emerald', desc: 'Green fresh', color: '#66cc8a' },
-            { name: 'Corporate', desc: 'Business blue', color: '#4b6bfb' },
-            { name: 'Synthwave', desc: 'Neon retro', color: '#e779c1' },
-            { name: 'Retro', desc: 'Vintage warm', color: '#ef9995' },
-            { name: 'Cyberpunk', desc: 'Futuristic', color: '#ff7598' },
-            { name: 'Valentine', desc: 'Romantic pink', color: '#e96d7b' },
-            { name: 'Halloween', desc: 'Spooky orange', color: '#ff7700' },
-            { name: 'Forest', desc: 'Nature green', color: '#1eb854' },
-            { name: 'Aqua', desc: 'Ocean cyan', color: '#09ecf3' },
-            { name: 'Lo-Fi', desc: 'Minimal dark', color: '#0d0d0d' },
-            { name: 'Pastel', desc: 'Soft colors', color: '#d1c1d7' },
-            { name: 'Fantasy', desc: 'Magic purple', color: '#6e0b75' },
-            { name: 'Luxury', desc: 'Elegant gold', color: '#ffffff' },
-            { name: 'Dracula', desc: 'Dark purple', color: '#ff79c6' },
-            { name: 'Autumn', desc: 'Fall warmth', color: '#8c0327' },
-            { name: 'Business', desc: 'Professional', color: '#1c4e80' },
+            { name: 'Light', desc: 'Clean white background', color: '#ffffff' },
+            { name: 'Dark', desc: 'Pure black background', color: '#1d232a' },
           ].map((theme) => (
             <Card key={theme.name} interactive className="hover:border-primary/50 transition-all">
               <CardContent padding="sm" className="p-4">
@@ -186,6 +179,31 @@ const themes = [
                     className="border-border h-6 w-6 rounded-none border-2"
                     style={{ backgroundColor: theme.color }}
                   />
+                  <div>
+                    <div className="font-mono text-xs">{theme.name}</div>
+                    <div className="text-muted-foreground font-mono text-xs">{theme.desc}</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+          {/* eslint-enable design-system/no-hardcoded-colors, design-system/no-inline-styles */}
+        </div>
+      </DocsSection>
+
+      {/* Visual Themes */}
+      <DocsSection title="Visual Themes">
+        <div className="grid gap-2 sm:grid-cols-2">
+          {[
+            { name: 'Terminal', desc: 'Sharp edges, monospace font', icon: '[]' },
+            { name: 'Modern', desc: 'Rounded edges, sans-serif font', icon: '()' },
+          ].map((theme) => (
+            <Card key={theme.name} interactive className="hover:border-primary/50 transition-all">
+              <CardContent padding="sm" className="p-4">
+                <div className="flex items-center gap-2">
+                  <div className="border-border flex h-6 w-6 items-center justify-center rounded-none border-2">
+                    <span className="font-mono text-xs">{theme.icon}</span>
+                  </div>
                   <div>
                     <div className="font-mono text-xs">{theme.name}</div>
                     <div className="text-muted-foreground font-mono text-xs">{theme.desc}</div>
