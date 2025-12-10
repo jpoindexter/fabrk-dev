@@ -196,6 +196,42 @@ const purpleTheme: PrismTheme = {
     { types: ['italic'], style: { fontStyle: 'italic' } },
   ],
 };
+
+const lightTheme: PrismTheme = {
+  plain: {
+    color: '#000000', // Black text
+    backgroundColor: '#ffffff', // White background
+  },
+  styles: [
+    {
+      types: ['comment', 'prolog', 'doctype', 'cdata'],
+      style: { color: '#6a737d', fontStyle: 'italic' }, // Gray comments
+    },
+    { types: ['namespace'], style: { opacity: 0.7 } },
+    { types: ['string', 'attr-value'], style: { color: '#032f62' } }, // Dark blue strings
+    { types: ['punctuation', 'operator'], style: { color: '#393a34' } }, // Dark gray
+    {
+      types: [
+        'entity',
+        'url',
+        'symbol',
+        'number',
+        'boolean',
+        'variable',
+        'constant',
+        'property',
+        'regex',
+        'inserted',
+      ],
+      style: { color: '#005cc5' }, // Blue
+    },
+    { types: ['atrule', 'keyword', 'attr-name'], style: { color: '#d73a49' } }, // Red keywords
+    { types: ['function', 'deleted', 'tag'], style: { color: '#6f42c1' } }, // Purple functions
+    { types: ['selector'], style: { color: '#22863a' } }, // Green selectors
+    { types: ['important', 'function', 'bold'], style: { fontWeight: 'bold' } },
+    { types: ['italic'], style: { fontStyle: 'italic' } },
+  ],
+};
 /* eslint-enable design-system/no-hardcoded-colors */
 
 export function CodeBlock({
@@ -211,8 +247,12 @@ export function CodeBlock({
   useEffect(() => {
     const updateTheme = () => {
       const theme = document.documentElement.getAttribute('data-theme');
-      // Use custom themes for CRT modes
-      if (theme === 'amber') {
+      // Use custom themes for each color theme
+      if (theme === 'light') {
+        setCurrentTheme(lightTheme);
+      } else if (theme === 'dark') {
+        setCurrentTheme(themes.nightOwl);
+      } else if (theme === 'amber') {
         setCurrentTheme(amberTheme);
       } else if (theme === 'green') {
         setCurrentTheme(greenTheme);
@@ -223,7 +263,7 @@ export function CodeBlock({
       } else if (theme === 'purple') {
         setCurrentTheme(purpleTheme);
       } else {
-        setCurrentTheme(themes.nightOwl);
+        setCurrentTheme(lightTheme); // Default to light theme
       }
     };
 
