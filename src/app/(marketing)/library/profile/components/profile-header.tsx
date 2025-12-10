@@ -91,7 +91,7 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
               key={key}
               className={`border-border border px-4 py-2 text-center ${index > 0 ? 'border-l-0' : ''}`}
             >
-              <div className="text-xl font-semibold">{value}</div>
+              <div className="text-foreground text-xl font-semibold">{value}</div>
               <div className={cn(mode.font, 'text-muted-foreground text-xs uppercase')}>{key}</div>
             </div>
           ))}

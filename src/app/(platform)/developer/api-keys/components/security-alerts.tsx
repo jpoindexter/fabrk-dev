@@ -43,7 +43,8 @@ export function SecurityAlerts({
             <div className="flex items-center gap-2">
               <code
                 className={cn(
-                  'bg-background border-border flex-1 rounded border p-2 text-sm break-all',
+                  'bg-background border-border flex-1 border p-2 text-sm break-all',
+                  mode.radius,
                   mode.font
                 )}
               >

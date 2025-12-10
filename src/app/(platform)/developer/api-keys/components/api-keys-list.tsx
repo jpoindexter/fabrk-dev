@@ -146,7 +146,8 @@ export function ApiKeysList({
             <div className="flex items-center gap-2">
               <code
                 className={cn(
-                  'bg-muted border-border flex-1 rounded border p-2 text-sm',
+                  'bg-muted border-border flex-1 border p-2 text-sm',
+                  mode.radius,
                   mode.font
                 )}
               >

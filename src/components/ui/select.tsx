@@ -45,8 +45,8 @@ const SelectTrigger = React.forwardRef<
     data-slot="select-trigger"
     className={cn(
       // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile, h-8 on desktop
-      // Radius and font from Visual Mode System
-      'bg-background ring-offset-background placeholder:text-muted-foreground focus:ring-primary flex h-[48px] w-full items-center justify-between border px-4 text-xs transition-colors focus:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 sm:h-8 [&>span]:line-clamp-1',
+      // Radius and font from Visual Mode System - explicit text-foreground for dark mode
+      'bg-background text-foreground ring-offset-background placeholder:text-muted-foreground focus:ring-primary flex h-[48px] w-full items-center justify-between border px-4 text-xs transition-colors focus:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 sm:h-8 [&>span]:line-clamp-1',
       mode.radius,
       mode.font,
       className

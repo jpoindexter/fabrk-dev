@@ -22,7 +22,14 @@ import {
 } from 'simple-icons';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
-import { Card, CardHeader, CardContent, Stat, StatGroup, Badge } from '@/components/ui/card';
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  Stat,
+  StatGroup,
+  Badge as CardBadge,
+} from '@/components/ui/card';
 
 // Typewriter effect component
 function TypeWriter({
@@ -114,7 +121,7 @@ function HeroCodeDemo() {
   }, [isInView]);
 
   return (
-    <div ref={ref} className={cn('p-6 text-xs', mode.font)}>
+    <div ref={ref} className="text-code-m p-6">
       {/* git clone */}
       <div className="text-muted-foreground">
         <span className="text-success">~</span>{' '}
@@ -221,7 +228,7 @@ export function HeroSection() {
               transition={{ duration: 0.6 }}
               className="mb-6"
             >
-              <Badge code="0x00" label="SYSTEM INIT" meta="SAAS_BOILERPLATE_v2.0" />
+              <CardBadge code="0x00" label="SYSTEM INIT" meta="SAAS_BOILERPLATE_v2.0" />
             </motion.div>
 
             {/* Headline */}
@@ -230,8 +237,8 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h1 className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>[FABRK INIT]</h1>
-              <h2 className={cn('mb-6 text-4xl font-semibold tracking-tight', mode.font)}>
+              <h1 className="text-muted-foreground text-body-m mb-2">[FABRK INIT]</h1>
+              <h2 className="text-display mb-6">
                 BUILDING YOUR SAAS
                 <br />
                 <span className="text-primary">JUST GOT UNFAIRLY EASY.</span>
@@ -248,7 +255,7 @@ export function HeroSection() {
               <Card size="auto">
                 <CardHeader code="0x01" title="STATUS" />
                 <CardContent>
-                  <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
+                  <p className="text-muted-foreground text-body-m mb-4">
                     Why spend valuable time tackling auth, billing, emails, organizations, invites
                     and onboarding? Focus on your business and skip the noise.
                   </p>
@@ -274,30 +281,6 @@ export function HeroSection() {
                 <Link href="/docs/components/overview">&gt; VIEW LIBRARY</Link>
               </Button>
             </motion.div>
-
-            {/* Tech Stack */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <Badge code="0x02" label="POWERED BY" meta="FIB[1,1,2,3,5,8,13]" className="mb-4" />
-              <div className="flex flex-wrap gap-4">
-                {techStack.map((tech) => (
-                  <div
-                    key={tech.name}
-                    className={cn(
-                      'border-border bg-card inline-flex items-center gap-2 border px-3 py-1.5',
-                      mode.radius
-                    )}
-                  >
-                    <SimpleIcon path={tech.path} className="size-3.5" />
-                    <span className={cn('text-xs', mode.font)}>{tech.name}</span>
-                    <span className={cn('text-success text-xs', mode.font)}>[OK]</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
           </div>
 
           {/* Right Column - Dashboard Preview / Discount */}
@@ -320,6 +303,28 @@ export function HeroSection() {
             </motion.div>
           </motion.div>
         </div>
+
+        {/* Tech Stack - Below Hero */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-16"
+        >
+          <CardBadge code="0x02" label="POWERED BY" meta="FIB[1,1,2,3,5,8,13]" className="mb-6" />
+          <div className="flex flex-wrap gap-2">
+            {techStack.map((tech) => (
+              <div
+                key={tech.name}
+                className="border-border bg-card flex items-center gap-2 border px-2 py-1"
+              >
+                <SimpleIcon path={tech.path} className="size-3.5" />
+                <span className={cn('text-xs', mode.font)}>{tech.name}</span>
+                <span className={cn('text-success text-xs', mode.font)}>[OK]</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

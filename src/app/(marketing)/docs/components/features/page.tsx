@@ -52,18 +52,22 @@ function TechStackDemo() {
     { name: 'TYPESCRIPT', status: 'OK' },
     { name: 'TAILWIND', status: 'OK' },
     { name: 'PRISMA', status: 'OK' },
+    { name: 'STRIPE', status: 'OK' },
+    { name: 'RESEND', status: 'OK' },
   ];
 
   return (
-    <div className="border-border bg-background w-full border p-6">
-      <div className="text-muted-foreground mb-4 font-mono text-xs">
-        [ TECH_STACK ] DEPENDENCIES
+    <div className="border-border bg-card w-full border">
+      <div className="border-border border-b px-4 py-2">
+        <span className="text-muted-foreground font-mono text-xs">
+          [ [0x70] TECH_STACK ] DEPENDENCIES
+        </span>
       </div>
-      <div className="flex flex-wrap gap-4">
+      <div className="flex flex-wrap gap-2 p-4">
         {tech.map((t) => (
           <div
             key={t.name}
-            className="border-border bg-card flex items-center gap-2 border px-4 py-2"
+            className="border-border bg-background flex items-center gap-2 border px-2 py-1"
           >
             <span className="font-mono text-xs">{t.name}</span>
             <span className="text-success font-mono text-xs">[{t.status}]</span>

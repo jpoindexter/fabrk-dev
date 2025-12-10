@@ -104,6 +104,31 @@
     font-family: var(--font-sans) !important;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1) !important;
   }
+
+  /* Terminal mode - Enhanced font rendering for clean monospace */
+  html[data-visual-mode='terminal'] body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    letter-spacing: 0.01em;
+  }
+
+  /* CRT Monochrome Effects - Single color like real CRT monitors */
+  html[data-visual-mode='terminal'][data-theme='amber'] {
+    filter: grayscale(100%) sepia(100%) hue-rotate(20deg) saturate(300%);
+  }
+
+  html[data-visual-mode='terminal'][data-theme='green'] {
+    filter: grayscale(100%) sepia(100%) hue-rotate(80deg) saturate(400%);
+  }
+
+  html[data-visual-mode='terminal'][data-theme='blue'] {
+    filter: grayscale(100%) sepia(100%) hue-rotate(180deg) saturate(300%);
+  }
+
+  html[data-visual-mode='terminal'][data-theme='red'] {
+    filter: grayscale(100%) sepia(100%) hue-rotate(0deg) saturate(400%);
+  }
 }
 
 @theme {
@@ -112,6 +137,9 @@
   --font-mono:
     var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     'Liberation Mono', 'Courier New', monospace;
+
+  /* Pixelbasel pixel font for Terminal mode */
+  --font-terminal: var(--font-pixelbasel), 'Pixelbasel', monospace;
 
   /* Border radius */
   --radius: 0.5rem;

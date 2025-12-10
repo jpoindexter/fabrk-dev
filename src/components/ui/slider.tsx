@@ -16,7 +16,10 @@ const Slider = React.forwardRef<
     {...props}
   >
     <SliderPrimitive.Track
-      className={cn('bg-secondary relative h-2 w-full grow overflow-hidden border', mode.radius)}
+      className={cn(
+        'bg-secondary border-border relative h-2 w-full grow overflow-hidden border',
+        mode.radius
+      )}
     >
       <SliderPrimitive.Range className="bg-primary absolute h-full" />
     </SliderPrimitive.Track>

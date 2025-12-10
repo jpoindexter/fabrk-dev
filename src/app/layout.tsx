@@ -49,6 +49,14 @@ const jetbrainsMono = localFont({
   display: 'swap',
 });
 
+// Pixelbasel - Premium pixel font for Terminal mode
+const pixelbasel = localFont({
+  src: '../../public/fonts/pixelbasel/Pixelbasel.ttf',
+  weight: '400',
+  variable: '--font-pixelbasel',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://fabrk.dev'),
   title: {
@@ -142,7 +150,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
       data-theme="light"
       data-visual-mode={defaultVisualTheme}
-      className={`${GeistSans.variable} ${jetbrainsMono.variable}`}
+      className={`${GeistSans.variable} ${jetbrainsMono.variable} ${pixelbasel.variable}`}
     >
       <head>
         <ThemeScript

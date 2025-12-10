@@ -243,17 +243,17 @@ export default function ThemeShowcasePage() {
                 This is an error alert message.
               </AlertDescription>
             </Alert>
-            <Alert className={cn(mode.radius, 'border-yellow-500 bg-yellow-500/10')}>
-              <AlertTriangle className="h-4 w-4 text-yellow-500" />
-              <AlertTitle className={cn(mode.font, 'text-yellow-500')}>WARNING</AlertTitle>
-              <AlertDescription className={cn(mode.font, 'text-yellow-500/90')}>
+            <Alert variant="warning" className={mode.radius}>
+              <AlertTriangle className="h-4 w-4" />
+              <AlertTitle className={mode.font}>WARNING</AlertTitle>
+              <AlertDescription className={mode.font}>
                 This is a warning alert message.
               </AlertDescription>
             </Alert>
-            <Alert className={cn(mode.radius, 'border-green-500 bg-green-500/10')}>
-              <CheckCircle2 className="h-4 w-4 text-green-500" />
-              <AlertTitle className={cn(mode.font, 'text-green-500')}>SUCCESS</AlertTitle>
-              <AlertDescription className={cn(mode.font, 'text-green-500/90')}>
+            <Alert variant="success" className={mode.radius}>
+              <CheckCircle2 className="h-4 w-4" />
+              <AlertTitle className={mode.font}>SUCCESS</AlertTitle>
+              <AlertDescription className={mode.font}>
                 This is a success alert message.
               </AlertDescription>
             </Alert>

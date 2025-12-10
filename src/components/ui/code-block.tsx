@@ -24,12 +24,172 @@ export function CodeBlock({
   const [copied, setCopied] = useState(false);
   const [currentTheme, setCurrentTheme] = useState<PrismTheme>(themes.nightOwl);
 
+  // Custom Amber CRT theme for code syntax highlighting
+  /* eslint-disable design-system/no-hardcoded-colors -- Syntax highlighter theme colors are intentional */
+  const amberTheme: PrismTheme = {
+    plain: {
+      color: '#ffbb00', // Bright amber
+      backgroundColor: '#0d0a00', // Deep black
+    },
+    styles: [
+      {
+        types: ['comment', 'prolog', 'doctype', 'cdata'],
+        style: { color: '#aa8800', opacity: 0.7 },
+      },
+      { types: ['namespace'], style: { opacity: 0.7 } },
+      { types: ['string', 'attr-value'], style: { color: '#ffcc33' } }, // Bright yellow-amber
+      { types: ['punctuation', 'operator'], style: { color: '#ff9900' } }, // Orange-amber
+      {
+        types: [
+          'entity',
+          'url',
+          'symbol',
+          'number',
+          'boolean',
+          'variable',
+          'constant',
+          'property',
+          'regex',
+          'inserted',
+        ],
+        style: { color: '#ffaa00' },
+      },
+      { types: ['atrule', 'keyword', 'attr-name'], style: { color: '#ff8800' } }, // Bright orange
+      { types: ['function', 'deleted', 'tag'], style: { color: '#ffdd44' } }, // Very bright amber
+      { types: ['selector'], style: { color: '#ffbb00' } },
+      { types: ['important', 'function', 'bold'], style: { fontWeight: 'bold' } },
+      { types: ['italic'], style: { fontStyle: 'italic' } },
+    ],
+  };
+  /* eslint-enable design-system/no-hardcoded-colors */
+
+  // Custom Red CRT theme for code syntax highlighting
+  /* eslint-disable design-system/no-hardcoded-colors -- Syntax highlighter theme colors are intentional */
+  const redTheme: PrismTheme = {
+    plain: {
+      color: '#ff5544', // Bright red
+      backgroundColor: '#140000', // Deep black with red tint
+    },
+    styles: [
+      {
+        types: ['comment', 'prolog', 'doctype', 'cdata'],
+        style: { color: '#882211', opacity: 0.7 },
+      },
+      { types: ['namespace'], style: { opacity: 0.7 } },
+      { types: ['string', 'attr-value'], style: { color: '#ff7766' } }, // Bright orange-red
+      { types: ['punctuation', 'operator'], style: { color: '#cc3322' } }, // Medium red
+      {
+        types: [
+          'entity',
+          'url',
+          'symbol',
+          'number',
+          'boolean',
+          'variable',
+          'constant',
+          'property',
+          'regex',
+          'inserted',
+        ],
+        style: { color: '#dd4433' },
+      },
+      { types: ['atrule', 'keyword', 'attr-name'], style: { color: '#ff6655' } }, // Bright red
+      { types: ['function', 'deleted', 'tag'], style: { color: '#ff8866' } }, // Bright orange-red
+      { types: ['selector'], style: { color: '#ff5544' } },
+      { types: ['important', 'function', 'bold'], style: { fontWeight: 'bold' } },
+      { types: ['italic'], style: { fontStyle: 'italic' } },
+    ],
+  };
+
+  const blueTheme: PrismTheme = {
+    plain: {
+      color: '#55ccff', // Bright light cyan
+      backgroundColor: '#000a14', // Deep black with blue tint
+    },
+    styles: [
+      {
+        types: ['comment', 'prolog', 'doctype', 'cdata'],
+        style: { color: '#3388bb', opacity: 0.7 },
+      },
+      { types: ['namespace'], style: { opacity: 0.7 } },
+      { types: ['string', 'attr-value'], style: { color: '#66ddff' } }, // Bright light blue
+      { types: ['punctuation', 'operator'], style: { color: '#44aadd' } }, // Medium sky blue
+      {
+        types: [
+          'entity',
+          'url',
+          'symbol',
+          'number',
+          'boolean',
+          'variable',
+          'constant',
+          'property',
+          'regex',
+          'inserted',
+        ],
+        style: { color: '#44bbee' },
+      },
+      { types: ['atrule', 'keyword', 'attr-name'], style: { color: '#55ccff' } }, // Bright sky blue
+      { types: ['function', 'deleted', 'tag'], style: { color: '#77eeff' } }, // Very bright light cyan
+      { types: ['selector'], style: { color: '#55ccff' } },
+      { types: ['important', 'function', 'bold'], style: { fontWeight: 'bold' } },
+      { types: ['italic'], style: { fontStyle: 'italic' } },
+    ],
+  };
+
+  const greenTheme: PrismTheme = {
+    plain: {
+      color: '#33ff66', // Bright phosphor green
+      backgroundColor: '#001a0a', // Deep black with green tint
+    },
+    styles: [
+      {
+        types: ['comment', 'prolog', 'doctype', 'cdata'],
+        style: { color: '#00aa44', opacity: 0.7 },
+      },
+      { types: ['namespace'], style: { opacity: 0.7 } },
+      { types: ['string', 'attr-value'], style: { color: '#44ff77' } }, // Bright lime green
+      { types: ['punctuation', 'operator'], style: { color: '#22dd55' } }, // Medium green
+      {
+        types: [
+          'entity',
+          'url',
+          'symbol',
+          'number',
+          'boolean',
+          'variable',
+          'constant',
+          'property',
+          'regex',
+          'inserted',
+        ],
+        style: { color: '#00cc44' },
+      },
+      { types: ['atrule', 'keyword', 'attr-name'], style: { color: '#00ff55' } }, // Bright green
+      { types: ['function', 'deleted', 'tag'], style: { color: '#66ff88' } }, // Very bright green
+      { types: ['selector'], style: { color: '#33ff66' } },
+      { types: ['important', 'function', 'bold'], style: { fontWeight: 'bold' } },
+      { types: ['italic'], style: { fontStyle: 'italic' } },
+    ],
+  };
+  /* eslint-enable design-system/no-hardcoded-colors */
+
   // Detect current theme and update syntax highlighting
   useEffect(() => {
     const updateTheme = () => {
       const theme = document.documentElement.getAttribute('data-theme');
-      // Use nightOwl theme for both light and dark modes
-      setCurrentTheme(themes.nightOwl);
+      // Use custom themes for CRT modes
+      if (theme === 'amber') {
+        setCurrentTheme(amberTheme);
+      } else if (theme === 'green') {
+        setCurrentTheme(greenTheme);
+      } else if (theme === 'blue') {
+        setCurrentTheme(blueTheme);
+      } else if (theme === 'red') {
+        setCurrentTheme(redTheme);
+      } else {
+        setCurrentTheme(themes.nightOwl);
+      }
     };
 
     // Initial theme detection
@@ -43,7 +203,7 @@ export function CodeBlock({
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [amberTheme, greenTheme, blueTheme, redTheme]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(code.trim());
@@ -60,10 +220,9 @@ export function CodeBlock({
       role="region"
       aria-label={`Code example in ${language}`}
     >
-      {/* Copy button - icon only, white for dark nightOwl theme */}
       <button
         onClick={handleCopy}
-        className="absolute top-3 right-3 z-10 text-white/70 transition-colors hover:text-white" // intentional
+        className="text-foreground/70 hover:text-foreground absolute top-3 right-3 z-10 transition-colors"
         aria-label={copied ? 'Code copied' : 'Copy code to clipboard'}
       >
         {copied ? (
@@ -89,11 +248,8 @@ export function CodeBlock({
             >
               {tokens.map((line, i) => (
                 <div key={i} {...getLineProps({ line })} className="flex whitespace-pre-wrap">
-                  {/* Line number */}
                   {showLineNumbers && (
-                    <span className="mr-4 inline-block w-8 flex-shrink-0 text-right text-white/60 select-none">
-                      {' '}
-                      {/* intentional */}
+                    <span className="text-muted-foreground mr-4 inline-block w-8 flex-shrink-0 text-right select-none">
                       {i + 1}
                     </span>
                   )}

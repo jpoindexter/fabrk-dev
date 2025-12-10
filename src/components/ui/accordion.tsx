@@ -30,7 +30,7 @@ const AccordionTrigger = React.forwardRef<
       ref={ref}
       data-slot="accordion-trigger"
       className={cn(
-        'flex flex-1 items-center justify-between py-4 text-xs font-semibold transition-colors hover:underline [&[data-state=open]>svg]:rotate-180',
+        'text-foreground flex flex-1 items-center justify-between py-4 text-xs font-semibold transition-colors hover:underline [&[data-state=open]>svg]:rotate-180',
         mode.font,
         className
       )}
@@ -52,7 +52,7 @@ const AccordionContent = React.forwardRef<
     ref={ref}
     data-slot="accordion-content"
     className={cn(
-      'data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-xs transition-all',
+      'text-foreground data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-xs transition-all',
       mode.font
     )}
     suppressHydrationWarning
