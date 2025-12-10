@@ -47,14 +47,29 @@ export default function EnvironmentVariablesPage() {
         },
         {
           title: 'Generate Secret',
-          description: 'Create a secure NEXTAUTH_SECRET',
-          code: `openssl rand -base64 32`,
+          description: 'Create a secure NEXTAUTH_SECRET for encrypting authentication cookies',
+          code: `openssl rand -base64 32
+
+# Expected output:
+# dGhpc2lzYXJhbmRvbWJhc2U2NGVuY29kZWRzdHJpbmc=
+#
+# Copy this entire output and paste it as NEXTAUTH_SECRET in your .env.local
+# This encrypts user session cookies - keep it secret and never commit it to git`,
           language: 'bash',
         },
         {
           title: 'Configure Database',
-          description: 'Set your PostgreSQL connection string',
-          code: `DATABASE_URL="postgresql://user:password@host:5432/database"`,
+          description: 'Set your actual PostgreSQL connection string from your database provider',
+          code: `# Replace with YOUR actual connection string from your database provider
+
+# Supabase (pooler recommended for serverless):
+DATABASE_URL="postgresql://postgres.abcdefghij:[YOUR_PASSWORD]@aws-0-us-west-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+
+# Neon (pooler with SSL):
+DATABASE_URL="postgresql://user:password@ep-cool-name-123456-pooler.us-east-2.aws.neon.tech/dbname?sslmode=require"
+
+# Railway (direct connection):
+DATABASE_URL="postgresql://postgres:password@containers-us-west-123.railway.app:5432/railway"`,
           language: 'bash',
         },
         {
@@ -68,14 +83,15 @@ export default function EnvironmentVariablesPage() {
           description: 'These must be set for the app to run',
           code: `# .env.local
 
-# Database - PostgreSQL connection string
-DATABASE_URL="postgresql://user:password@host:5432/database"
+# Database - Replace with YOUR actual PostgreSQL connection string
+# Get this from your database provider's dashboard (Supabase, Neon, or Railway)
+DATABASE_URL="postgresql://postgres.abcdefghij:[YOUR_PASSWORD]@aws-0-us-west-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
 
 # NextAuth - Authentication
-NEXTAUTH_URL="http://localhost:3000"  # Your app URL
-NEXTAUTH_SECRET="your-32-character-secret-here"
+NEXTAUTH_URL="http://localhost:3000"  # Your app URL (use your production domain for prod)
+NEXTAUTH_SECRET="your-32-character-secret-here"  # Generate with: openssl rand -base64 32
 
-# App URL (used for links in emails, etc.)
+# App URL (used for links in emails, redirects, etc.)
 NEXT_PUBLIC_APP_URL="http://localhost:3000"`,
           language: 'bash',
         },
@@ -112,25 +128,34 @@ EMAIL_FROM="noreply@your-domain.com"
         },
         {
           title: 'Stripe Payments',
-          description: 'Configure payment processing',
-          code: `# Stripe API Keys
-STRIPE_SECRET_KEY="sk_test_..."           # Server-side
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."  # Client-side
+          description: 'Configure payment processing with Stripe',
+          code: `# Stripe API Keys (get from https://dashboard.stripe.com/test/apikeys)
+STRIPE_SECRET_KEY="sk_test_..."           # Server-side only (never expose to browser)
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."  # Client-side safe (can be in browser)
 
-# Stripe Webhook Secret
-STRIPE WEBHOOK SECRET="whsec_..."
+# Stripe Webhook Secret (get from stripe listen command or Stripe Dashboard)
+STRIPE_WEBHOOK_SECRET="whsec_..."
 
-# Price IDs (create in Stripe Dashboard)
-NEXT_PUBLIC_STRIPE_PRICE_STARTER="price_..."
-NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL="price_..."
-NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE="price_..."
+# Product Lookup Key (NOT a price ID)
+# Create in Stripe Dashboard: Products → Your Product → Pricing → Lookup key field
+# Lookup keys let you change prices in Stripe without updating code
+NEXT_PUBLIC_STRIPE_PRICE_FABRK="fabrk_purchase"  # This is a lookup key, not price_1234567890
+
+# Optional: Promotion code for early adopters ($100 off)
+STRIPE_COUPON_EARLY_ADOPTER="promo_1SVGK4P7kSSEYWlXBq1LtaNM"  # Promotion Code ID from Stripe Dashboard
 
 # Development vs Production:
-# - Test mode: sk_test_..., pk_test_...
-# - Live mode: sk_live_..., pk_live_...
+# Development (test mode):
+#   - sk_test_... and pk_test_...
+#   - Test with card 4242 4242 4242 4242
+#
+# Production (live mode):
+#   - sk_live_... and pk_live_...
+#   - Real credit cards, real money
 
-# Test webhook locally:
-# stripe listen --forward-to localhost:3000/api/webhooks/stripe`,
+# Test webhooks locally:
+# Install Stripe CLI: brew install stripe/stripe-cli/stripe
+# Then run: stripe listen --forward-to localhost:3000/api/webhooks/stripe`,
           language: 'bash',
         },
         {
@@ -167,6 +192,7 @@ const clientSchema = z.object({
 });
 
 // Validates at startup - fails loudly if invalid
+/* eslint-disable no-process-env -- This is showing users HOW to set up env.ts */
 export const env = {
   server: serverSchema.parse(process.env),
   client: clientSchema.parse({
@@ -175,6 +201,7 @@ export const env = {
       process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
   }),
 };
+/* eslint-enable no-process-env */
 
 // Usage in code:
 import { env } from "@/lib/env";
@@ -227,7 +254,7 @@ EMAIL_FROM="dev@your-domain.com"
 
 # Payments
 STRIPE_SECRET_KEY="sk_test_..."
-STRIPE WEBHOOK SECRET="whsec_test_..."
+STRIPE_WEBHOOK_SECRET="whsec_test_..."
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."
 NEXT_PUBLIC_STRIPE_PRICE_STARTER="price_..."
 NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL="price_..."

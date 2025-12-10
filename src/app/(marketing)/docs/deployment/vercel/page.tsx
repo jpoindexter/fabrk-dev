@@ -48,15 +48,35 @@ export default function DeployVercelPage() {
           description: 'Go to vercel.com/new and import your repository',
         },
         {
-          title: 'Configure Environment',
-          description: 'Add required environment variables',
-          code: `# Core (Required)
-DATABASE_URL="postgresql://..."
-NEXTAUTH_URL="https://your-domain.vercel.app"
-NEXTAUTH_SECRET="your-32-character-secret"
+          title: 'Generate Auth Secret',
+          description: 'Create a secure NEXTAUTH_SECRET before configuring Vercel',
+          code: `openssl rand -base64 32
 
-# Generate NEXTAUTH_SECRET with:
-openssl rand -base64 32`,
+# Expected output:
+# dGhpc2lzYXJhbmRvbWJhc2U2NGVuY29kZWRzdHJpbmc=
+#
+# Copy this output - you'll add it to Vercel in the next step`,
+          language: 'bash',
+        },
+        {
+          title: 'Configure Environment',
+          description: 'Add environment variables in Vercel Dashboard',
+          code: `# In Vercel Dashboard:
+# 1. Go to your project → Settings → Environment Variables
+#
+# 2. For EACH variable below, click "Add New"
+#
+# 3. IMPORTANT: Select the correct environment:
+#    - Production: Live site with real payments (sk_live_ keys)
+#    - Preview: PR previews with test payments (sk_test_ keys)
+#    - Development: Local dev (usually use .env.local instead)
+#
+# Recommendation: Start by adding to "Production" only
+
+# Core (Required for Production)
+DATABASE_URL="postgresql://..."  # Your production database URL
+NEXTAUTH_URL="https://your-domain.vercel.app"  # Your Vercel deployment URL
+NEXTAUTH_SECRET="paste-output-from-previous-step"  # The secret you just generated`,
           language: 'bash',
         },
         {
@@ -85,23 +105,31 @@ vercel
         {
           title: 'Required Environment Variables',
           description: 'Add in Vercel Dashboard → Settings → Environment Variables',
-          code: `# Core (Required)
-DATABASE_URL="postgresql://..."
-NEXTAUTH_URL="https://your-domain.vercel.app"
-NEXTAUTH_SECRET="your-32-character-secret"
+          code: `# IMPORTANT: Select "Production" environment when adding these variables
+# (You can add "Preview" environment variables later for testing)
 
-# Email (Required for auth)
-RESEND_API_KEY="re_..."
+# Core (Required)
+DATABASE_URL="postgresql://..."  # Get from Supabase/Neon/Railway
+NEXTAUTH_URL="https://your-domain.vercel.app"  # Your Vercel URL
+NEXTAUTH_SECRET="paste-secret-from-openssl-command"  # From earlier step
 
-# Stripe (Required for payments)
-STRIPE_SECRET_KEY="sk_live_..."
-STRIPE WEBHOOK SECRET="whsec_..."
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_live_..."
+# Email (Required if using email features)
+RESEND_API_KEY="re_..."  # Get from https://resend.com
+EMAIL_FROM="noreply@your-domain.com"  # Must be from verified domain
+
+# Stripe (Required if accepting payments - USE LIVE KEYS FOR PRODUCTION)
+STRIPE_SECRET_KEY="sk_live_..."  # LIVE key from https://dashboard.stripe.com/apikeys
+STRIPE_WEBHOOK_SECRET="whsec_..."  # From Stripe webhook endpoint setup
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_live_..."  # LIVE publishable key
+NEXT_PUBLIC_STRIPE_PRICE_FABRK="fabrk_purchase"  # Lookup key (NOT price_1234)
 
 # Optional
-GOOGLE_CLIENT_ID="..."
+GOOGLE_CLIENT_ID="..."  # For Google OAuth login
 GOOGLE_CLIENT_SECRET="..."
-NEXT_PUBLIC_APP_URL="https://your-domain.com"`,
+NEXT_PUBLIC_APP_URL="https://your-domain.com"  # Your custom domain
+
+# WARNING: Production uses LIVE Stripe keys (sk_live_/pk_live_)
+# Preview environment should use TEST keys (sk_test_/pk_test_)`,
           language: 'bash',
         },
         {
@@ -150,38 +178,79 @@ Value: cname.vercel-dns.com
           language: 'bash',
         },
         {
-          title: 'Stripe Webhook Setup',
-          description: 'Configure production webhooks',
-          code: `# 1. Go to Stripe Dashboard → Webhooks
-# 2. Click "Add endpoint"
-# 3. Enter URL: https://your-domain.com/api/webhooks/stripe
-# 4. Select events:
-#    - checkout.session.completed
-#    - customer.subscription.created
-#    - customer.subscription.updated
-#    - customer.subscription.deleted
-#    - invoice.paid
-#    - invoice.payment_failed
-# 5. Copy the webhook signing secret
-# 6. Add it as STRIPE WEBHOOK SECRET in Vercel`,
+          title: 'Stripe Webhook Setup (Production)',
+          description: 'Step-by-step webhook configuration in Stripe Dashboard',
+          code: `# Step 1: Open Stripe Dashboard
+# Go to https://dashboard.stripe.com
+# Make sure you're in LIVE mode (toggle in top left should say "Live")
+
+# Step 2: Navigate to Webhooks
+# Click "Developers" in top navigation
+# Click "Webhooks" in the sidebar
+# Click "+ Add endpoint" button
+
+# Step 3: Enter your webhook URL
+# Endpoint URL: https://your-domain.vercel.app/api/webhooks/stripe
+# (Replace your-domain.vercel.app with your actual Vercel URL)
+
+# Step 4: Select events to listen for
+# Click "Select events"
+# Search for and select these events:
+#   ✓ checkout.session.completed
+#   ✓ customer.subscription.created
+#   ✓ customer.subscription.updated
+#   ✓ customer.subscription.deleted
+#   ✓ invoice.paid
+#   ✓ invoice.payment_failed
+
+# Step 5: Click "Add endpoint"
+
+# Step 6: Copy the webhook signing secret
+# After creating, click on your new webhook endpoint
+# Find "Signing secret" section
+# Click "Reveal" and copy the value (starts with whsec_)
+
+# Step 7: Add to Vercel
+# In Vercel: Settings → Environment Variables
+# Name: STRIPE_WEBHOOK_SECRET
+# Value: whsec_... (paste the signing secret)
+# Environment: Production
+# Click "Save"
+
+# Step 8: Redeploy
+# Go to Deployments tab → Click "..." on latest deployment → "Redeploy"
+# This ensures the new STRIPE_WEBHOOK_SECRET is loaded`,
           language: 'bash',
         },
         {
           title: 'Preview Deployments',
-          description: 'Every PR gets a unique preview URL',
-          code: `# Preview URL format
-https://your-project-git-branch-name-your-team.vercel.app
+          description: 'Every pull request gets a unique preview URL for testing',
+          code: `# What are preview deployments?
+# When you create a pull request on GitHub, Vercel automatically:
+# 1. Builds your code
+# 2. Deploys to a temporary URL
+# 3. Adds a comment to the PR with the preview link
 
-# Example
-https://fabrk-git-feature-auth-acme.vercel.app
+# Preview URL format:
+# https://your-project-git-branch-name-your-team.vercel.app
 
-# Configure preview environment variables
-# Vercel Dashboard → Settings → Environment Variables
-# Select "Preview" checkbox
+# Example:
+# https://fabrk-git-feature-auth-acme.vercel.app
 
-# Use test Stripe keys for previews
-STRIPE_SECRET_KEY="sk_test_..."
-STRIPE WEBHOOK SECRET="whsec_test_..."`,
+# Configure preview environment variables:
+# 1. Go to Vercel Dashboard → Settings → Environment Variables
+# 2. Click "Add New"
+# 3. IMPORTANT: Select "Preview" environment (NOT Production)
+
+# Use TEST Stripe keys for previews (never use live keys):
+STRIPE_SECRET_KEY="sk_test_..."  # Test mode only
+STRIPE_WEBHOOK_SECRET="whsec_test_..."  # From local stripe listen
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."
+
+# Why separate keys?
+# - Preview deployments are for testing - you don't want real charges
+# - Use test credit cards (4242 4242 4242 4242) in preview
+# - Production uses live keys for real payments`,
           language: 'bash',
         },
       ]}

@@ -45,25 +45,43 @@ export default function DatabaseSetupPage() {
         },
         {
           title: 'Get Connection String',
-          description: 'Copy the PostgreSQL connection URL',
-          code: `# Supabase connection (with pooler for serverless)
-DATABASE_URL="postgresql://postgres.[PROJECT]:[PASSWORD]@aws-0-[REGION].pooler.supabase.com:6543/postgres?pgbouncer=true"`,
+          description: 'Copy YOUR actual PostgreSQL connection URL from the provider',
+          code: `# Go to your database provider's dashboard and copy the connection string
+# Replace the example below with YOUR actual connection string
+
+# Supabase (pooler URL recommended for serverless apps like Vercel):
+DATABASE_URL="postgresql://postgres.abcdefghij:[YOUR_PASSWORD]@aws-0-us-west-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+
+# Neon (pooler URL with SSL):
+DATABASE_URL="postgresql://user:password@ep-cool-name-123456-pooler.us-east-2.aws.neon.tech/dbname?sslmode=require"
+
+# Railway (direct connection - Railway uses traditional servers):
+DATABASE_URL="postgresql://postgres:password@containers-us-west-123.railway.app:5432/railway"`,
           language: 'bash',
         },
         {
           title: 'Initialize Database',
-          description: 'Push schema and optionally seed data',
-          code: `# Push schema to database
+          description: 'Create all database tables in your PostgreSQL database',
+          code: `# Push schema to database (creates tables)
 npm run db:push
 
-# Or create a migration
+# Expected output:
+# Prisma schema loaded from prisma/schema.prisma
+# Datasource "db": PostgreSQL database
+#
+# Your database is now in sync with your Prisma schema. Done in 2.34s
+#
+# What this means: Prisma created tables like User, Account, Session, Payment
+
+# Alternative: Create a migration (for production)
 npm run db:migrate -- --name init
 
-# Seed with test data (optional)
+# Seed with test data (optional - adds sample users)
 npm run db:seed
 
-# Open Prisma Studio to view data
-npm run db:studio`,
+# Open Prisma Studio to view your data in a GUI
+npm run db:studio
+# Opens http://localhost:5555 in your browser`,
           language: 'bash',
         },
       ]}
@@ -113,26 +131,57 @@ DATABASE_URL="postgresql://postgres:[password]@[host].railway.app:5432/railway"`
           language: 'bash',
         },
         {
-          title: 'Connection Pooling',
-          description: 'Essential for serverless deployments',
-          code: `# Why pooling matters:
-# - Serverless functions create new connections per request
-# - PostgreSQL has connection limits (~100 by default)
-# - Without pooling, you'll hit limits under load
+          title: 'Connection Pooling Decision Tree',
+          description: 'When to use pooler URL vs direct URL',
+          code: `# DECISION TREE: Which database URL should I use?
 
-# Supabase - Use Supavisor (built-in pooler)
-DATABASE_URL="postgresql://...pooler.supabase.com:6543/postgres?pgbouncer=true"
+# Question 1: Where is your app running?
+# ├─ Serverless (Vercel, AWS Lambda, Cloudflare Workers)
+# │  └─ Use POOLER URL (required to avoid connection limits)
+# └─ Traditional server (DigitalOcean, Heroku, Railway container)
+#    └─ Use DIRECT URL (pooler optional but still helpful)
 
-# Neon - Use their pooler endpoint
-DATABASE_URL="postgresql://...endpoint-pooler.neon.tech/dbname"
+# Question 2: What are you doing?
+# ├─ Running the app (production traffic)
+# │  └─ Use POOLER URL in DATABASE_URL
+# └─ Running database migrations (prisma migrate deploy)
+#    └─ Use DIRECT URL (pooler doesn't support migrations)
 
-# Prisma configuration for pooling
+# WHY POOLING MATTERS:
+# - Serverless creates a NEW database connection for EVERY request
+# - PostgreSQL has a connection limit (usually 100-200 connections)
+# - Without pooling, 100 simultaneous requests = 100 connections = LIMIT REACHED
+# - With pooling, 1000 simultaneous requests share ~10 connections = NO PROBLEM
+
+# SUPABASE SETUP:
+# Pooler URL (for your app - use this in .env.local and Vercel):
+DATABASE_URL="postgresql://postgres.abcdefghij:[PASSWORD]@aws-0-us-west-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+
+# Direct URL (for migrations only - add to .env.local):
+DATABASE_URL_DIRECT="postgresql://postgres:[PASSWORD]@db.abcdefghij.supabase.co:5432/postgres"
+
+# NEON SETUP:
+# Pooler URL (for your app):
+DATABASE_URL="postgresql://user:password@ep-name-123456-pooler.us-east-2.aws.neon.tech/dbname?sslmode=require"
+
+# Direct URL (for migrations):
+DATABASE_URL_DIRECT="postgresql://user:password@ep-name-123456.us-east-2.aws.neon.tech/dbname?sslmode=require"
+
+# RAILWAY SETUP:
+# Railway provides traditional server, so direct connection is fine:
+DATABASE_URL="postgresql://postgres:password@containers-us-west-123.railway.app:5432/railway"
+
+# PRISMA SCHEMA CONFIGURATION:
+# If using Supabase or Neon, add directUrl to prisma/schema.prisma:
+
 // prisma/schema.prisma
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")  // For Supabase pooling
-}`,
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")        // Pooler URL (for app)
+  directUrl = env("DATABASE_URL_DIRECT") // Direct URL (for migrations)
+}
+
+# Then in .env.local, set BOTH variables`,
           language: 'bash',
         },
         {

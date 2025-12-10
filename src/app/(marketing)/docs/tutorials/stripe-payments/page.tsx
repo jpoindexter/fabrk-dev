@@ -45,14 +45,34 @@ export default function StripePaymentsTutorialPage() {
           code: `# Get from https://dashboard.stripe.com/test/apikeys
 STRIPE_SECRET_KEY="sk_test_..."
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."
-STRIPE WEBHOOK SECRET="whsec_..."`,
+STRIPE_WEBHOOK_SECRET="whsec_..."  # Get from stripe listen command (see step 2)`,
           language: 'bash',
         },
         {
-          title: 'Create a Product',
-          description: 'Go to Stripe Dashboard → Products → Add product. Copy the Price ID.',
-          code: `# .env.local
-NEXT_PUBLIC_STRIPE_PRICE_FABRK="price_your_price_id"`,
+          title: 'Create a Product with Lookup Key',
+          description: 'Set up your product in Stripe Dashboard with a lookup key',
+          code: `# Step 1: Go to https://dashboard.stripe.com/products
+# Step 2: Click "+ Add product"
+# Step 3: Fill in product details:
+#   - Name: Fabrk Purchase
+#   - Description: One-time access to Fabrk boilerplate
+#   - Price: $299 (or your chosen amount)
+#   - Billing: One-time
+#
+# Step 4: IMPORTANT - Add lookup key:
+#   - Scroll to "Pricing" section
+#   - Click "Advanced pricing options"
+#   - Find "Lookup key" field
+#   - Enter: fabrk_purchase
+#   - Click "Save product"
+#
+# Step 5: Add to .env.local (use lookup key, NOT price ID):
+NEXT_PUBLIC_STRIPE_PRICE_FABRK="fabrk_purchase"  # This is a lookup key
+
+# Why lookup keys?
+# - Lookup keys let you change prices in Stripe without changing code
+# - You can update $299 to $399 in Stripe Dashboard
+# - Your code keeps working without any changes`,
           language: 'bash',
         },
       ]}
@@ -76,6 +96,7 @@ export function CheckoutButton() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          /* eslint-disable-next-line no-process-env -- Accessing client-side NEXT_PUBLIC env var */
           priceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_FABRK,
         }),
       });
@@ -85,7 +106,7 @@ export function CheckoutButton() {
       if (url) {
         window.location.href = url;
       }
-    } catch (_) {
+    } catch (error) {
       console.error("Checkout error:", error);
     } finally {
       setLoading(false);
@@ -102,15 +123,26 @@ export function CheckoutButton() {
         },
         {
           title: 'Set Up Webhooks (Local)',
-          description: 'Forward webhooks to localhost for development',
-          code: `# Install Stripe CLI
+          description: 'Forward Stripe webhooks to your local development server',
+          code: `# Step 1: Install Stripe CLI (one-time setup)
 brew install stripe/stripe-cli/stripe
 
-# Login
+# Step 2: Login to Stripe
 stripe login
+# Opens browser to authenticate
 
-# Forward webhooks
-stripe listen --forward-to localhost:3000/api/webhooks/stripe`,
+# Step 3: Forward webhooks to localhost
+stripe listen --forward-to localhost:3000/api/webhooks/stripe
+
+# Expected output:
+# > Ready! Your webhook signing secret is whsec_abc123def456...
+# > (this is your local STRIPE_WEBHOOK_SECRET)
+#
+# Copy the webhook secret (starts with whsec_) and add to .env.local:
+# STRIPE_WEBHOOK_SECRET="whsec_abc123def456..."
+#
+# Leave this terminal window open while developing
+# You'll see webhook events appear here in real-time`,
           language: 'bash',
         },
         {
@@ -128,6 +160,7 @@ stripe: {
     earlyAdopter: {
       enabled: true,
       code: "EARLY500",
+      /* eslint-disable-next-line no-process-env -- Showing coupon config example */
       promotionCodeId: process.env.STRIPE_COUPON_EARLY_ADOPTER,
       discountAmount: 100,
       // ...

@@ -169,6 +169,7 @@ await resend.emails.send({
           title: 'Batch Sending',
           description: 'Send to multiple recipients',
           code: `import { Resend } from "resend";
+import { env } from "@/lib/env";
 
 const resend = new Resend(env.server.RESEND_API_KEY);
 

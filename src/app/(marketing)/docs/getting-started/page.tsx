@@ -52,20 +52,45 @@ export default function GettingStartedPage() {
         {
           title: 'Check Your System',
           description: 'Ensure Node.js v18.17+ is installed',
-          code: `node --version`,
+          code: `node --version
+
+# Expected output:
+# v20.11.0
+# (or v18.17.0 or higher)
+#
+# What this means: Shows which version of Node.js you have installed
+# If you see 'command not found', install Node.js from nodejs.org`,
           language: 'bash',
         },
         {
           title: 'Download Fabrk',
-          description: 'Clone the repository',
-          code: `git clone https://github.com/your-username/fabrk.git my-saas
-cd my-saas`,
+          description: 'Clone your purchased repository to your computer',
+          code: `# Replace YOUR-USERNAME with your actual GitHub username
+git clone https://github.com/YOUR-USERNAME/fabrk.git my-saas
+cd my-saas
+
+# Expected output:
+# Cloning into 'my-saas'...
+# remote: Enumerating objects: 234, done.
+# remote: Counting objects: 100% (234/234), done.
+# Receiving objects: 100% (234/234), 4.56 MiB | 2.12 MiB/s, done.
+#
+# What this means: Git is downloading all project files to a folder called 'my-saas'`,
           language: 'bash',
         },
         {
           title: 'Install Dependencies',
-          description: 'Download all required libraries (1-2 min)',
-          code: `npm install`,
+          description: 'Download all required libraries (takes 1-2 minutes)',
+          code: `npm install
+
+# Expected output:
+# added 342 packages, and audited 343 packages in 45s
+# 89 packages are looking for funding
+#   run \`npm fund\` for details
+# found 0 vulnerabilities
+#
+# What this means: npm downloaded all the code libraries your app needs
+# This only needs to run once, unless you add new libraries later`,
           language: 'bash',
         },
         {
@@ -76,57 +101,137 @@ cd my-saas`,
         },
         {
           title: 'Setup Database',
-          description: 'Add PostgreSQL connection string to .env.local',
-          code: `DATABASE_URL="postgresql://username:password@host:5432/database"`,
+          description: 'Add your actual PostgreSQL connection string to .env.local',
+          code: `# Choose a database provider (see step 8 for recommendations)
+# Then copy YOUR actual connection string from the provider's dashboard
+
+# Supabase example (pooler URL recommended for serverless):
+DATABASE_URL="postgresql://postgres.abcdefghij:[YOUR_PASSWORD]@aws-0-us-west-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+
+# Neon example (pooler URL with SSL):
+DATABASE_URL="postgresql://user:password@ep-cool-name-123456-pooler.us-east-2.aws.neon.tech/dbname?sslmode=require"
+
+# Railway example (direct connection):
+DATABASE_URL="postgresql://postgres:password@containers-us-west-123.railway.app:5432/railway"
+
+# Replace the example above with YOUR actual connection string from your database provider`,
+          language: 'bash',
+        },
+        {
+          title: 'Generate Secret Key',
+          description: 'Create a secure random string for authentication (minimum 32 characters)',
+          code: `openssl rand -base64 32
+
+# Expected output:
+# dGhpc2lzYXJhbmRvbWJhc2U2NGVuY29kZWRzdHJpbmc=
+#
+# What this means: This creates a cryptographically secure random string
+# Copy this ENTIRE output - you'll paste it as NEXTAUTH_SECRET in the next step`,
           language: 'bash',
         },
         {
           title: 'Configure Settings',
-          description: 'Add required environment variables',
-          code: `DATABASE_URL="postgresql://..."
-NEXTAUTH_URL="http://localhost:3000"
-NEXTAUTH_SECRET="paste-your-secret-here"`,
+          description: 'Add required environment variables to .env.local',
+          code: `# Open .env.local and add these three required variables:
+
+DATABASE_URL="postgresql://..."  # Your actual database URL from step 5
+NEXTAUTH_URL="http://localhost:3000"  # Your app URL (localhost for development)
+NEXTAUTH_SECRET="paste-output-from-previous-step-here"  # The random string you just generated
+
+# NEXTAUTH_SECRET is used to encrypt session cookies
+# Never share this value or commit it to git`,
           language: 'bash',
         },
         {
           title: 'Initialize Database',
-          description: 'Create the database tables',
-          code: `npm run db:push`,
+          description: 'Create all the database tables your app needs',
+          code: `npm run db:push
+
+# Expected output:
+# Prisma schema loaded from prisma/schema.prisma
+# Datasource "db": PostgreSQL database
+#
+# Your database is now in sync with your Prisma schema. Done in 2.34s
+#
+# What this means: Prisma just created tables like User, Account, Session in your database
+# Your database is now ready to store user accounts and data`,
           language: 'bash',
         },
         {
           title: 'Start Your App',
-          description: 'Launch the development server',
-          code: `npm run dev`,
+          description: 'Launch the development server and open your app in a browser',
+          code: `npm run dev
+
+# Expected output:
+#   ▲ Next.js 15.1.3
+#   - Local:        http://localhost:3000
+#   - Environments: .env.local
+#
+#  ✓ Starting...
+#  ✓ Ready in 2.3s
+#
+# What this means: Your app is now running!
+# Open http://localhost:3000 in your web browser to see it
+# Press Ctrl+C to stop the server when you're done`,
           language: 'bash',
         },
       ]}
       usage={[
         {
           title: 'Quick Start (5 min)',
-          description: "Already know Next.js? Here's the fastest path",
-          code: `# Clone, install, configure
-git clone https://github.com/your-username/fabrk.git my-saas
+          description: "Already familiar with Next.js? Here's the fastest path to get running",
+          code: `# Clone, install, configure (replace YOUR-USERNAME with your GitHub username)
+git clone https://github.com/YOUR-USERNAME/fabrk.git my-saas
 cd my-saas && npm install
 cp .env.example .env.local
 
-# Add your DATABASE_URL to .env.local, then:
-npm run db:push && npm run dev`,
+# Generate NEXTAUTH_SECRET
+openssl rand -base64 32
+
+# Add these to .env.local:
+# - DATABASE_URL (get from Supabase/Neon/Railway)
+# - NEXTAUTH_SECRET (paste output from openssl command above)
+# - NEXTAUTH_URL="http://localhost:3000"
+
+# Then initialize database and start
+npm run db:push && npm run dev
+
+# Open http://localhost:3000 in your browser`,
           language: 'bash',
         },
         {
           title: 'Generate Secret',
-          description: 'Create a secure NEXTAUTH_SECRET',
-          code: `openssl rand -base64 32`,
+          description: 'Create a secure NEXTAUTH_SECRET for encrypting sessions',
+          code: `openssl rand -base64 32
+
+# Expected output:
+# dGhpc2lzYXJhbmRvbWJhc2U2NGVuY29kZWRzdHJpbmc=
+#
+# Copy this entire string and add it to .env.local as:
+# NEXTAUTH_SECRET="paste-the-output-here"`,
           language: 'bash',
         },
         {
           title: 'Database Providers',
-          description: 'Easiest options for PostgreSQL',
-          code: `# Free tier options:
-# - Neon (neon.tech) - Serverless
-# - Supabase (supabase.com) - Extra features
-# - Railway (railway.app) - Pay-as-you-go`,
+          description: 'Choose a PostgreSQL database provider',
+          code: `# Recommended: Supabase (supabase.com)
+# - Free tier: 500 MB database, 1 GB file storage
+# - Built-in connection pooling (important for serverless)
+# - Extra features: Auth, Storage, Realtime
+# - Best for: Most projects
+
+# Alternative: Neon (neon.tech)
+# - Free tier: 0.5 GB storage
+# - Serverless with instant branching
+# - Great connection pooling
+# - Best for: Developers who want database branches for testing
+
+# Alternative: Railway (railway.app)
+# - No free tier, but $5/month gets you started
+# - Traditional PostgreSQL instance
+# - Best for: Those who prefer simple pricing
+
+# Not recommended: PlanetScale (MySQL, not PostgreSQL)`,
           language: 'bash',
         },
       ]}

@@ -128,7 +128,7 @@ npm run type-check`,
             <div className="space-y-1">
               <div>├─ Add endpoint: /api/stripe/webhook</div>
               <div>├─ Select events: checkout.session.completed, etc.</div>
-              <div>└─ Copy Signing Secret to STRIPE WEBHOOK SECRET</div>
+              <div>└─ Copy Signing Secret to STRIPE_WEBHOOK_SECRET</div>
             </div>
           </DocsCard>
         </div>

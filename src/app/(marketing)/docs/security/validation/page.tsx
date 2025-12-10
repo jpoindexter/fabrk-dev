@@ -284,7 +284,7 @@ const envSchema = z.object({
 
   // Conditional (required in production)
   STRIPE_SECRET_KEY: z.string().startsWith("sk_").optional(),
-  STRIPE WEBHOOK SECRET: z.string().startsWith("whsec_").optional(),
+  STRIPE_WEBHOOK_SECRET: z.string().startsWith("whsec_").optional(),
 });
 
 // Validate at build/startup time

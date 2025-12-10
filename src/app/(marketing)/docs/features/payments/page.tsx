@@ -69,30 +69,54 @@ export default function PaymentsPage() {
         {
           title: 'Add Keys to App',
           description: 'Add these to your .env.local file',
-          code: `# Stripe API Keys (test mode)
-STRIPE_SECRET_KEY="sk_test_your_secret_key"
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_your_publishable_key"
+          code: `# Stripe API Keys (test mode - get from https://dashboard.stripe.com/test/apikeys)
+STRIPE_SECRET_KEY="sk_test_your_secret_key"  # Server-side only, NEVER expose to browser
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_your_publishable_key"  # Client-side safe
 
-# Price IDs from your Stripe products
-NEXT_PUBLIC_STRIPE_PRICE_STARTER="price_your_starter_price"
-NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL="price_your_pro_price"
-NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE="price_your_enterprise_price"`,
+# Product Lookup Key (NOT a price ID)
+# Create in Stripe Dashboard: Products → Your Product → Pricing → Lookup key field
+# Lookup keys let you change prices in Stripe without updating code
+NEXT_PUBLIC_STRIPE_PRICE_FABRK="fabrk_purchase"  # This is a lookup key, not price_1234567890
+
+# Optional: Promotion code ID for discounts (if using early adopter offer)
+STRIPE_COUPON_EARLY_ADOPTER="promo_1SVGK4P7kSSEYWlXBq1LtaNM"
+
+# Why lookup keys instead of price IDs?
+# - Price IDs (price_1234...) are hardcoded - changing price requires code update
+# - Lookup keys (fabrk_purchase) are flexible - change price in Stripe Dashboard anytime`,
           language: 'bash',
         },
         {
           title: 'Setup Webhooks',
           description:
-            'Install the Stripe CLI to test webhooks locally. This gives you a webhook secret starting with whsec_.',
-          code: `# Install Stripe CLI (macOS)
+            'Install the Stripe CLI to test webhooks locally. Webhooks notify your app when payments succeed or fail.',
+          code: `# Step 1: Install Stripe CLI (one-time setup)
+# macOS:
 brew install stripe/stripe-cli/stripe
 
-# Login to Stripe
-stripe login
+# Windows:
+# Download from https://github.com/stripe/stripe-cli/releases
 
-# Forward webhooks to your local app
-npm run stripe:listen`,
+# Linux:
+# See https://stripe.com/docs/stripe-cli#install
+
+# Step 2: Login to Stripe
+stripe login
+# Opens browser window to authenticate
+
+# Step 3: Forward webhooks to your local app
+stripe listen --forward-to localhost:3000/api/webhooks/stripe
+
+# Expected output:
+# > Ready! Your webhook signing secret is whsec_abc123def456...
+#
+# Step 4: Copy the webhook secret (starts with whsec_)
+# Add it to .env.local:
+STRIPE_WEBHOOK_SECRET="whsec_abc123def456..."
+
+# Leave this terminal window OPEN while developing
+# You'll see webhook events appear here when you test payments`,
           language: 'bash',
-          tip: 'Add STRIPE WEBHOOK SECRET="whsec_your_webhook_secret" to your .env.local',
         },
       ]}
       usage={[
