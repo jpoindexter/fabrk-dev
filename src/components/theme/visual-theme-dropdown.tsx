@@ -43,16 +43,6 @@ const visualThemes = [
       shadow: 'shadow-sm',
     },
   },
-  {
-    id: 'soft',
-    name: 'Soft',
-    description: 'Fully rounded, gentle',
-    config: {
-      radius: 'rounded-full',
-      font: 'font-sans',
-      shadow: 'shadow-md',
-    },
-  },
 ] as const;
 
 export type VisualTheme = (typeof visualThemes)[number]['id'];

@@ -179,33 +179,6 @@
     font-family: var(--font-sans) !important;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1) !important;
   }
-
-  /* ============================================
-     SOFT THEME STYLING
-     Fully rounded, sans-serif, medium shadows
-     ============================================ */
-
-  /* Soft theme: fully rounded corners */
-  [data-visual-mode='soft'] * {
-    border-radius: 9999px !important;
-  }
-
-  /* Soft theme: sans-serif font */
-  [data-visual-mode='soft'] {
-    font-family: var(--font-sans) !important;
-  }
-
-  /* Soft theme: alert dialogs */
-  [data-visual-mode='soft'] [data-slot='alert-dialog-overlay'] {
-    background-color: rgba(0, 0, 0, 0.4) !important;
-  }
-
-  /* Soft theme: toast styling */
-  [data-visual-mode='soft'] [data-sonner-toast] {
-    border-radius: 9999px !important;
-    font-family: var(--font-sans) !important;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1) !important;
-  }
 }
 
 @theme {
