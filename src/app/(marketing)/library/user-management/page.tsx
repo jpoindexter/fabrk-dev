@@ -136,10 +136,10 @@ export default function UserManagement() {
 }`;
 
 function UserManagementPreview() {
-  const [sorting, setSorting] = useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
-  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
-  const [rowSelection, setRowSelection] = useState({});
+  const [sorting, setSorting] = useState<SortingState>(() => []);
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(() => []);
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>(() => ({}));
+  const [rowSelection, setRowSelection] = useState(() => ({}));
 
   // eslint-disable-next-line react-hooks/incompatible-library -- TanStack Table API design is incompatible with React Compiler but works correctly
   const table = useReactTable({
