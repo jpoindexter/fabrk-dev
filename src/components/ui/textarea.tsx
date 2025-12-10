@@ -36,7 +36,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       <textarea
         data-slot="textarea"
         className={cn(
-          'bg-background placeholder:text-muted-foreground focus-visible:ring-primary flex min-h-20 w-full border px-4 py-2 text-xs font-normal transition-colors focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+          'bg-background text-foreground placeholder:text-muted-foreground focus-visible:ring-primary flex min-h-20 w-full border px-4 py-2 text-xs font-normal transition-colors focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-[var(--state-disabled-opacity)]',
           mode.radius,
           mode.font,
           error && 'border-destructive focus-visible:ring-destructive',

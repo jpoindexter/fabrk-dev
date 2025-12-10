@@ -41,7 +41,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           disabled={disabled || loading}
           className={cn(
             // Base styles - radius and font from Visual Mode System
-            'bg-background flex h-8 w-full border px-4 py-2 text-xs font-normal transition-colors',
+            'bg-background text-foreground flex h-8 w-full border px-4 py-2 text-xs font-normal transition-colors',
             mode.radius,
             mode.font,
 
@@ -56,7 +56,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             'placeholder:text-muted-foreground placeholder:font-normal',
 
             // Disabled state
-            'disabled:cursor-not-allowed disabled:opacity-50',
+            'disabled:cursor-not-allowed disabled:opacity-[var(--state-disabled-opacity)]',
 
             // Loading state - Add padding for spinner
             loading && 'pr-10',
