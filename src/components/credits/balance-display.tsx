@@ -47,7 +47,7 @@ export function BalanceDisplay({ className, compact = false }: BalanceDisplayPro
     return (
       <div className={cn('flex items-center gap-2', mode.font, className)}>
         <Coins className="h-4 w-4" />
-        <span className="text-muted-foreground text-xs">...</span>
+        <span className={cn('text-xs', mode.color.text.muted)}>...</span>
       </div>
     );
   }
@@ -78,17 +78,21 @@ export function BalanceDisplay({ className, compact = false }: BalanceDisplayPro
           {data.balance} / {data.monthlyAllowance}
         </span>
       </div>
-      <div className={cn('bg-muted h-1.5 w-full', mode.radius)}>
+      <div className={cn('h-1.5 w-full', mode.color.bg.muted, mode.radius)}>
         <div
           className={cn(
             'h-full transition-all',
             mode.radius,
-            percentage > 50 ? 'bg-primary' : percentage > 20 ? 'bg-warning' : 'bg-destructive'
+            percentage > 50
+              ? mode.color.bg.accent
+              : percentage > 20
+                ? mode.color.bg.warning
+                : mode.color.bg.danger
           )}
           style={{ width: `${Math.min(percentage, 100)}%` }}
         />
       </div>
-      <div className="text-muted-foreground text-xs uppercase">{data.tier} tier</div>
+      <div className={cn('text-xs uppercase', mode.color.text.muted)}>{data.tier} tier</div>
     </div>
   );
 }

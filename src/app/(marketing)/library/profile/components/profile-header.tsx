@@ -44,9 +44,17 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
         <div className="flex flex-col gap-6 md:flex-row">
           {/* Avatar Section */}
           <div className="flex-shrink-0">
-            <Avatar className={cn(mode.radius, 'border-border h-32 w-32 border-2 shadow-none')}>
+            <Avatar
+              className={cn(
+                mode.radius,
+                'h-32 w-32 border-2 shadow-none',
+                mode.color.border.default
+              )}
+            >
               <AvatarImage src={user.avatar || undefined} />
-              <AvatarFallback className={cn(mode.radius, mode.font, 'bg-muted text-2xl')}>
+              <AvatarFallback
+                className={cn(mode.radius, mode.font, 'text-2xl', mode.color.bg.muted)}
+              >
                 {user.name
                   .split(' ')
                   .map((n) => n[0])
@@ -59,7 +67,13 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
           <div className="flex flex-1 flex-col gap-4">
             {/* Name + Buttons row */}
             <div className="flex items-center justify-between gap-4">
-              <h2 className={cn(mode.font, 'text-2xl font-semibold tracking-tight')}>
+              <h2
+                className={cn(
+                  mode.font,
+                  'text-2xl font-semibold tracking-tight',
+                  mode.color.text.primary
+                )}
+              >
                 {user.name}
               </h2>
               <div className="flex gap-2">
@@ -74,25 +88,31 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
             </div>
 
             {/* Location */}
-            <div className={cn(mode.font, 'text-muted-foreground flex items-center gap-1 text-sm')}>
+            <div
+              className={cn(mode.font, 'flex items-center gap-1 text-sm', mode.color.text.muted)}
+            >
               <MapPin className="h-3 w-3" />
               {user.location}
             </div>
 
             {/* Bio */}
-            <p className={cn(mode.font, 'text-muted-foreground text-sm')}>{user.bio}</p>
+            <p className={cn(mode.font, 'text-sm', mode.color.text.muted)}>{user.bio}</p>
           </div>
         </div>
 
         {/* Stats - bottom row in boxes */}
-        <div className="border-border mt-6 flex border-t pt-6">
+        <div className={cn('mt-6 flex border-t pt-6', mode.color.border.default)}>
           {Object.entries(user.stats).map(([key, value], index) => (
             <div
               key={key}
-              className={`border-border border px-4 py-2 text-center ${index > 0 ? 'border-l-0' : ''}`}
+              className={cn(
+                'border px-4 py-2 text-center',
+                mode.color.border.default,
+                index > 0 && 'border-l-0'
+              )}
             >
-              <div className="text-foreground text-xl font-semibold">{value}</div>
-              <div className={cn(mode.font, 'text-muted-foreground text-xs uppercase')}>{key}</div>
+              <div className={cn('text-xl font-semibold', mode.color.text.primary)}>{value}</div>
+              <div className={cn(mode.font, 'text-xs uppercase', mode.color.text.muted)}>{key}</div>
             </div>
           ))}
         </div>

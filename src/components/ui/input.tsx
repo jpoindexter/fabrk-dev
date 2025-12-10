@@ -40,31 +40,41 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           disabled={disabled || loading}
           className={cn(
-            // Base styles - radius and font from Visual Mode System
-            'bg-background text-foreground flex h-8 w-full border px-4 py-2 text-xs font-normal transition-colors',
+            // Base styles - uses mode tokens for consistent theming
+            'flex h-8 w-full border transition-colors',
+            mode.color.bg.base,
+            mode.color.text.primary,
+            mode.color.border.default,
+            mode.spacing.input,
+            mode.typography.input,
             mode.radius,
             mode.font,
 
-            // Vercel focus state - thin ring
-            'focus-visible:ring-primary focus-visible:ring-2 focus-visible:outline-none',
+            // Focus state - uses mode state tokens
+            'focus-visible:outline-none',
+            mode.state.focus.ring,
 
-            // File input styles - font from Visual Mode System
-            'file:text-foreground file:border-0 file:bg-transparent file:text-xs file:font-normal',
+            // File input styles - uses mode tokens
+            'file:border-0 file:bg-transparent',
+            mode.color.text.primary.replace('text-', 'file:text-'),
+            mode.typography.input.replace('text-', 'file:text-'),
             mode.font.replace('font-', 'file:font-'),
 
             // Placeholder styles
-            'placeholder:text-muted-foreground placeholder:font-normal',
+            mode.color.text.muted.replace('text-', 'placeholder:text-'),
+            'placeholder:font-normal',
 
-            // Disabled state
-            'disabled:cursor-not-allowed disabled:opacity-[var(--state-disabled-opacity)]',
+            // Disabled state - uses mode state tokens
+            mode.state.disabled.cursor,
+            mode.state.disabled.opacity,
 
             // Loading state - Add padding for spinner
             loading && 'pr-10',
 
-            // Error state - Red border
-            error && 'border-destructive focus-visible:ring-destructive',
+            // Error state - uses mode danger tokens
+            error && cn(mode.color.border.danger, 'focus-visible:ring-destructive'),
 
-            // Success state - Green ring
+            // Success state - uses mode success tokens
             success && 'focus-visible:ring-success',
 
             className
@@ -76,7 +86,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         />
         {loading && (
           <div className="absolute top-1/2 right-3 -translate-y-1/2">
-            <Loader2 className="text-muted-foreground size-4 animate-spin" />
+            <Loader2 className={cn('size-4 animate-spin', mode.color.text.muted)} />
             {loadingText && (
               <span id="input-loading" className="sr-only">
                 {loadingText}

@@ -73,7 +73,7 @@ export function FunnelVisualizer({
       />
 
       <CardContent padding="md" className="space-y-6">
-        {description && <p className="text-muted-foreground text-sm">{description}</p>}
+        {description && <p className={cn('text-sm', mode.color.text.muted)}>{description}</p>}
         {stages.map((stage, index) => {
           const previousValue = index > 0 ? stages[index - 1].value : null;
           const conversionRate = calculateConversionRate(stage.value, previousValue);
@@ -88,10 +88,12 @@ export function FunnelVisualizer({
                 <div className="flex items-center gap-2">
                   <div className="flex items-center gap-2">
                     <div
-                      className={cn('border-border h-3 w-3 border', mode.radius)}
+                      className={cn('h-3 w-3 border', mode.color.border.default, mode.radius)}
                       style={{ backgroundColor: color }}
                     />
-                    <span className="text-foreground text-sm font-semibold">{stage.name}</span>
+                    <span className={cn('text-sm font-semibold', mode.color.text.primary)}>
+                      {stage.name}
+                    </span>
                   </div>
                   {index > 0 && (
                     <Badge variant="secondary" className="text-xs font-medium">
@@ -99,7 +101,7 @@ export function FunnelVisualizer({
                     </Badge>
                   )}
                 </div>
-                <span className="text-foreground text-lg font-bold">
+                <span className={cn('text-lg font-bold', mode.color.text.primary)}>
                   {stage.value.toLocaleString()}
                 </span>
               </div>
@@ -108,7 +110,8 @@ export function FunnelVisualizer({
               <div className="relative">
                 <div
                   className={cn(
-                    'border-border h-12 border transition-all duration-500 ease-out',
+                    'h-12 border transition-all duration-500 ease-out',
+                    mode.color.border.default,
                     mode.radius
                   )}
                   style={{
@@ -121,8 +124,8 @@ export function FunnelVisualizer({
 
               {/* Drop-off indicator */}
               {index > 0 && previousValue && (
-                <div className="text-muted-foreground flex items-center gap-2 pl-2 text-xs">
-                  <TrendingDown className="text-destructive h-3 w-3" />
+                <div className={cn('flex items-center gap-2 pl-2 text-xs', mode.color.text.muted)}>
+                  <TrendingDown className={cn('h-3 w-3', mode.color.text.danger)} />
                   <span>
                     {(previousValue - stage.value).toLocaleString()} drop-off ({dropOff}%)
                   </span>
@@ -133,10 +136,12 @@ export function FunnelVisualizer({
         })}
 
         {/* Overall Conversion */}
-        <div className="border-border border-t pt-4">
+        <div className={cn('border-t pt-4', mode.color.border.default)}>
           <div className={cn('bg-accent/50 flex items-center justify-between p-4', mode.radius)}>
-            <span className="text-foreground text-sm font-medium">Overall Conversion Rate</span>
-            <span className="text-primary text-2xl font-bold">
+            <span className={cn('text-sm font-medium', mode.color.text.primary)}>
+              Overall Conversion Rate
+            </span>
+            <span className={cn('text-2xl font-bold', mode.color.text.accent)}>
               {((stages[stages.length - 1].value / stages[0].value) * 100).toFixed(2)}%
             </span>
           </div>

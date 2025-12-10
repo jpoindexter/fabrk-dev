@@ -163,17 +163,8 @@
   --color-chart-4: oklch(var(--chart-4));
   --color-chart-5: oklch(var(--chart-5));
 
-  /* New Semantic Tokens */
-  --color-bg-canvas: oklch(var(--color-bg-canvas));
-  --color-bg-surface: oklch(var(--color-bg-surface));
-  --color-bg-elevated: oklch(var(--color-bg-elevated));
-  --color-bg-sunken: oklch(var(--color-bg-sunken));
-
-  --color-text-primary: oklch(var(--color-text-primary));
-  --color-text-secondary: oklch(var(--color-text-secondary));
-  --color-text-tertiary: oklch(var(--color-text-tertiary));
-  --color-text-inverse: oklch(var(--color-text-inverse));
-  --color-text-disabled: oklch(var(--color-text-disabled));
+  /* New Semantic Tokens - These are already OKLCH values, no wrapper needed */
+  /* The raw values are defined in :root and theme-specific blocks */
 }
 
 /* ============================================
@@ -223,14 +214,14 @@
   /* LEGACY MAPPING (Tailwind Compatibility)*/
   /* -------------------------------------- */
 
-  --background: var(--color-bg-canvas);
-  --foreground: var(--color-text-primary);
+  --background: 99% 0 0;
+  --foreground: 0% 0 0;
 
-  --card: var(--color-bg-surface);
-  --card-foreground: var(--color-text-primary);
+  --card: 100% 0 0;
+  --card-foreground: 0% 0 0;
 
-  --popover: var(--color-bg-elevated);
-  --popover-foreground: var(--color-text-primary);
+  --popover: 100% 0 0;
+  --popover-foreground: 0% 0 0;
 
   --primary: 0% 0 0; /* Black */
   --primary-foreground: 100% 0 0; /* White */
@@ -238,23 +229,23 @@
   --secondary: 96% 0 0;
   --secondary-foreground: 0% 0 0;
 
-  --muted: var(--color-bg-sunken);
-  --muted-foreground: var(--color-text-secondary);
+  --muted: 97% 0 0;
+  --muted-foreground: 35% 0 0;
 
   --accent: 96% 0 0;
   --accent-foreground: 0% 0 0;
 
-  --destructive: var(--color-status-error);
+  --destructive: 45% 0.22 15;
   --destructive-foreground: 100% 0 0;
 
   /* FIXED: Now using AAA compliant colors */
-  --success: var(--color-status-success);
+  --success: 35% 0.18 145;
   --success-foreground: 100% 0 0;
 
-  --warning: var(--color-status-warning);
+  --warning: 40% 0.18 80;
   --warning-foreground: 100% 0 0; /* White text for WCAG AA compliance (4.5:1+) */
 
-  --info: var(--color-status-info);
+  --info: 35% 0.18 230;
   --info-foreground: 100% 0 0;
 
   --border: var(--color-border-default);
@@ -278,35 +269,65 @@
    THEME DEFINITIONS
    ============================================ */
 
-/* Light Theme (Maps to Root/Default) */
+/* Light Theme (GitHub Style) - WCAG AAA */
 [data-theme='light'] {
-  /* Inherits everything from :root - explicitly map for consistency */
+  /* Inherits from :root by default, but explicitly set all values to avoid circular refs */
 
-  /* Semantic mappings (same as :root) */
-  --color-bg-canvas: var(--background);
-  --color-bg-surface: var(--card);
-  --color-bg-elevated: var(--popover);
-  --color-bg-sunken: var(--muted);
+  /* Surface Hierarchy */
+  --color-bg-canvas: 99% 0 0; /* #FAFAFA */
+  --color-bg-surface: 100% 0 0; /* #FFFFFF */
+  --color-bg-elevated: 100% 0 0; /* #FFFFFF */
+  --color-bg-sunken: 97% 0 0; /* #F5F5F5 */
 
-  --color-text-primary: var(--foreground);
-  --color-text-secondary: var(--muted-foreground);
-  --color-text-tertiary: var(--secondary-foreground);
-  --color-text-inverse: var(--primary-foreground);
-  --color-text-disabled: var(--muted-foreground);
+  /* Text Hierarchy (WCAG AAA) */
+  --color-text-primary: 0% 0 0; /* #000000 */
+  --color-text-secondary: 35% 0 0; /* #595959 */
+  --color-text-tertiary: 50% 0 0; /* #808080 */
+  --color-text-inverse: 100% 0 0; /* #FFFFFF */
+  --color-text-disabled: 68% 0 0; /* #ADADAD */
 
-  --color-border-default: var(--border);
-  --color-border-muted: var(--input);
-  --color-border-strong: var(--ring);
-  --color-border-focus: var(--ring);
+  /* Border Hierarchy */
+  --color-border-default: 93% 0 0; /* #EAEAEA */
+  --color-border-muted: 97% 0 0; /* #F5F5F5 */
+  --color-border-strong: 70% 0 0; /* #B3B3B3 */
+  --color-border-focus: 0% 0 0; /* #000000 */
 
-  --color-status-success: var(--success);
-  --color-status-success-bg: var(--success);
-  --color-status-warning: var(--warning);
-  --color-status-warning-bg: var(--warning);
-  --color-status-error: var(--destructive);
-  --color-status-error-bg: var(--destructive);
-  --color-status-info: var(--info);
-  --color-status-info-bg: var(--info);
+  /* Status Colors (WCAG AAA Compliant) */
+  --color-status-success: 35% 0.18 145; /* Dark green (7.2:1) */
+  --color-status-success-bg: 95% 0.05 145; /* Light green bg */
+  --color-status-warning: 40% 0.18 80; /* Dark orange (7.8:1) */
+  --color-status-warning-bg: 95% 0.05 80; /* Light orange bg */
+  --color-status-error: 45% 0.22 15; /* Dark red (7.5:1) */
+  --color-status-error-bg: 95% 0.05 15; /* Light red bg */
+  --color-status-info: 35% 0.18 230; /* Dark blue (7.1:1) */
+  --color-status-info-bg: 95% 0.05 230; /* Light blue bg */
+
+  /* Legacy Tailwind mappings */
+  --background: 99% 0 0;
+  --foreground: 0% 0 0;
+  --card: 100% 0 0;
+  --card-foreground: 0% 0 0;
+  --popover: 100% 0 0;
+  --popover-foreground: 0% 0 0;
+  --primary: 0% 0 0;
+  --primary-foreground: 100% 0 0;
+  --secondary: 96% 0 0;
+  --secondary-foreground: 0% 0 0;
+  --muted: 97% 0 0;
+  --muted-foreground: 35% 0 0;
+  --accent: 96% 0 0;
+  --accent-foreground: 0% 0 0;
+  --destructive: 45% 0.22 15;
+  --destructive-foreground: 100% 0 0;
+  --success: 35% 0.18 145;
+  --success-foreground: 100% 0 0;
+  --warning: 40% 0.18 80;
+  --warning-foreground: 100% 0 0;
+  --info: 35% 0.18 230;
+  --info-foreground: 100% 0 0;
+  --border: 93% 0 0;
+  --input: 93% 0 0;
+  --ring: 0% 0 0;
 }
 
 /* Dark Theme (Monokai Night) - WCAG AAA */
@@ -353,14 +374,14 @@
   /* -------------------------------------- */
   /* LEGACY MAPPING                         */
   /* -------------------------------------- */
-  --background: var(--color-bg-canvas);
-  --foreground: var(--color-text-primary);
+  --background: 13% 0.01 0;
+  --foreground: 97% 0 0;
 
-  --card: var(--color-bg-surface);
-  --card-foreground: var(--color-text-primary);
+  --card: 18% 0.01 0;
+  --card-foreground: 97% 0 0;
 
-  --popover: var(--color-bg-elevated);
-  --popover-foreground: var(--color-text-primary);
+  --popover: 20% 0.01 0;
+  --popover-foreground: 97% 0 0;
 
   --primary: 97% 0 0; /* Monokai White */
   --primary-foreground: 13% 0.01 0;
@@ -368,22 +389,22 @@
   --secondary: 55% 0.02 0;
   --secondary-foreground: 97% 0 0;
 
-  --muted: var(--color-bg-sunken);
-  --muted-foreground: var(--color-text-secondary);
+  --muted: 10% 0.01 0;
+  --muted-foreground: 70% 0 0;
 
   --accent: 70% 0.22 235; /* Monokai Blue */
   --accent-foreground: 13% 0.01 0;
 
-  --destructive: var(--color-status-error);
+  --destructive: 71% 0.28 343;
   --destructive-foreground: 13% 0.01 0;
 
-  --success: var(--color-status-success);
+  --success: 76% 0.26 122;
   --success-foreground: 13% 0.01 0;
 
-  --warning: var(--color-status-warning);
+  --warning: 82% 0.2 80;
   --warning-foreground: 13% 0.01 0;
 
-  --info: var(--color-status-info);
+  --info: 78% 0.26 275;
   --info-foreground: 13% 0.01 0;
 
   --border: var(--color-border-default);

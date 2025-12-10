@@ -44,17 +44,17 @@ export const FormError = React.forwardRef<HTMLDivElement, FormErrorProps>(
         )}
       >
         <div className="flex gap-3">
-          <AlertCircle className="text-destructive mt-0.5 size-4 shrink-0" />
+          <AlertCircle className={cn('mt-0.5 size-4 shrink-0', mode.color.text.danger)} />
           <div className="flex-1 space-y-2">
             {/* What went wrong */}
-            <p className="text-destructive text-xs font-medium">{what}</p>
+            <p className={cn('text-xs font-medium', mode.color.text.danger)}>{what}</p>
 
             {/* Why it happened */}
-            {why && <p className="text-muted-foreground text-xs">{why}</p>}
+            {why && <p className={cn('text-xs', mode.color.text.muted)}>{why}</p>}
 
             {/* How to fix it */}
             {how && (
-              <p className="text-foreground text-xs">
+              <p className={cn('text-xs', mode.color.text.primary)}>
                 <span className="font-semibold">How to fix:</span> {how}
               </p>
             )}

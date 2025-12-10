@@ -32,7 +32,10 @@ export function PricingSection() {
   ];
 
   return (
-    <section id="pricing" className="border-border scroll-mt-16 border-t px-6 py-20 lg:py-24">
+    <section
+      id="pricing"
+      className={cn('scroll-mt-16 border-t px-6 py-20 lg:py-24', mode.color.border.default)}
+    >
       <div className="mx-auto max-w-7xl">
         {/* Two Column Layout */}
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
@@ -51,15 +54,17 @@ export function PricingSection() {
                 {/* Price Display - Clean inline layout */}
                 <div className="mb-4">
                   <div className="flex items-baseline gap-2">
-                    <span className={cn('text-muted-foreground text-sm line-through', mode.font)}>
+                    <span className={cn('text-sm line-through', mode.color.text.muted, mode.font)}>
                       {config.pricing.fabrk.display.original}
                     </span>
-                    <span className={cn('text-muted-foreground text-xs', mode.font)}>→</span>
-                    <span className={cn('text-foreground text-2xl font-semibold', mode.font)}>
+                    <span className={cn('text-xs', mode.color.text.muted, mode.font)}>→</span>
+                    <span
+                      className={cn('text-2xl font-semibold', mode.color.text.primary, mode.font)}
+                    >
                       {config.pricing.fabrk.display.current}
                     </span>
                   </div>
-                  <div className={cn('text-muted-foreground mt-1 text-xs', mode.font)}>
+                  <div className={cn('mt-1 text-xs', mode.color.text.muted, mode.font)}>
                     ONE TIME PAYMENT
                   </div>
                 </div>
@@ -69,7 +74,7 @@ export function PricingSection() {
 
                 {/* Features List */}
                 <div className="mt-4 mb-4">
-                  <div className={cn('text-muted-foreground mb-3 text-xs', mode.font)}>
+                  <div className={cn('mb-3 text-xs', mode.color.text.muted, mode.font)}>
                     [INCLUDES]:
                   </div>
                   <FeatureList>
@@ -93,7 +98,7 @@ export function PricingSection() {
                 </PolarCheckoutButton>
 
                 {/* Trust line */}
-                <div className={cn('text-muted-foreground mt-3 text-center text-xs', mode.font)}>
+                <div className={cn('mt-3 text-center text-xs', mode.color.text.muted, mode.font)}>
                   Secure checkout via Polar │ All sales final
                 </div>
               </CardContent>
@@ -115,15 +120,17 @@ export function PricingSection() {
               className="mb-4 self-start"
             />
 
-            <h2 className={cn('text-primary mb-2 text-sm', mode.font)}>[FABRK STARTER]</h2>
+            <h2 className={cn('mb-2 text-sm', mode.color.text.accent, mode.font)}>
+              [FABRK STARTER]
+            </h2>
             <h3 className={cn('mb-6 text-4xl font-semibold tracking-tight', mode.font)}>
               ONE-TIME PURCHASE.
               <br />
-              <span className="text-muted-foreground">UNLIMITED PROJECTS.</span>
+              <span className={mode.color.text.muted}>UNLIMITED PROJECTS.</span>
             </h3>
 
-            <div className="border-border mb-6 border-l-2 pl-4">
-              <p className={cn('text-muted-foreground text-sm', mode.font)}>
+            <div className={cn('mb-6 border-l-2 pl-4', mode.color.border.default)}>
+              <p className={cn('text-sm', mode.color.text.muted, mode.font)}>
                 Upon purchase, you can use the starter kits for personal and commercial projects
                 with no restrictions on the number of developers or projects.
               </p>

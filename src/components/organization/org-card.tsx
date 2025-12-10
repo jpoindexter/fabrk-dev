@@ -46,11 +46,17 @@ export interface OrgCardProps {
   className?: string;
 }
 
-const planColors = {
-  Free: 'bg-muted text-muted-foreground',
-  Starter: 'bg-primary/10 text-primary border-primary/20',
-  Pro: 'bg-accent text-accent-foreground',
-  Enterprise: 'bg-gradient-to-r from-primary to-accent text-primary-foreground',
+const getPlanColors = (plan: 'Free' | 'Starter' | 'Pro' | 'Enterprise') => {
+  switch (plan) {
+    case 'Free':
+      return cn(mode.color.bg.muted, mode.color.text.muted);
+    case 'Starter':
+      return cn('bg-primary/10 border-primary/20', mode.color.text.accent);
+    case 'Pro':
+      return cn(mode.color.bg.accent, mode.color.text.inverse);
+    case 'Enterprise':
+      return cn('bg-gradient-to-r from-primary to-accent', mode.color.text.inverse);
+  }
 };
 
 export function OrgCard({
@@ -85,22 +91,25 @@ export function OrgCard({
         {isActive && (
           <div
             className={cn(
-              'bg-primary absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center',
+              'absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center',
+              mode.color.bg.accent,
               mode.radius
             )}
           >
-            <CheckCircle2 className="text-primary-foreground h-4 w-4" />
+            <CheckCircle2 className={cn('h-4 w-4', mode.color.text.inverse)} />
           </div>
         )}
 
         <div className="flex items-start justify-between gap-4">
           {/* Left side - Logo & Info */}
           <div className="flex min-w-0 flex-1 items-start gap-4">
-            <Avatar className={cn('border-border h-12 w-12 border', mode.radius)}>
+            <Avatar className={cn('h-12 w-12 border', mode.color.border.default, mode.radius)}>
               {logo ? (
                 <AvatarImage src={logo} alt={name} />
               ) : (
-                <AvatarFallback className="bg-primary text-primary-foreground text-lg font-bold">
+                <AvatarFallback
+                  className={cn('text-lg font-bold', mode.color.bg.accent, mode.color.text.inverse)}
+                >
                   {initials}
                 </AvatarFallback>
               )}
@@ -108,9 +117,14 @@ export function OrgCard({
 
             <div className="min-w-0 flex-1 space-y-2">
               <div className="space-y-1">
-                <h3 className="text-foreground truncate text-lg font-semibold">{name}</h3>
+                <h3 className={cn('truncate text-lg font-semibold', mode.color.text.primary)}>
+                  {name}
+                </h3>
                 <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className={cn('text-xs font-medium', planColors[plan])}>
+                  <Badge
+                    variant="outline"
+                    className={cn('text-xs font-medium', getPlanColors(plan))}
+                  >
                     {plan}
                   </Badge>
                   {role === 'Owner' && (
@@ -122,7 +136,7 @@ export function OrgCard({
                 </div>
               </div>
 
-              <div className="text-muted-foreground flex items-center gap-2 text-sm">
+              <div className={cn('flex items-center gap-2 text-sm', mode.color.text.muted)}>
                 <Users className="h-4 w-4" />
                 <span>
                   {memberCount} member{memberCount !== 1 ? 's' : ''}
@@ -156,7 +170,7 @@ export function OrgCard({
               {onLeave && role !== 'Owner' && (
                 <DropdownMenuItem
                   onClick={onLeave}
-                  className="text-destructive focus:text-destructive"
+                  className={cn(mode.color.text.danger, `focus:${mode.color.text.danger}`)}
                 >
                   <LogOut className="mr-2 h-4 w-4" />
                   Leave org

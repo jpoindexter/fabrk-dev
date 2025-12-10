@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 interface SeparatorProps extends React.ComponentProps<'div'> {
   orientation?: 'horizontal' | 'vertical';
@@ -20,7 +21,8 @@ export function Separator({
       role={decorative ? 'none' : 'separator'}
       {...(!decorative && { 'aria-orientation': orientation })}
       className={cn(
-        'bg-border shrink-0',
+        'shrink-0',
+        mode.color.bg.muted,
         orientation === 'horizontal' ? 'h-[1px] w-full' : 'h-full w-[1px]',
         className
       )}

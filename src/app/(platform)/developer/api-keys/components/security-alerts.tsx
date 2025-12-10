@@ -33,17 +33,23 @@ export function SecurityAlerts({
 
       {/* New Key Created Modal */}
       {createdKey && (
-        <Alert className="bg-success/10 border-success/20 mb-6">
-          <CheckCircle2 className="text-success h-4 w-4" />
+        <Alert
+          className={cn('mb-6', `${mode.color.bg.success}/10`, `${mode.color.border.success}/20`)}
+        >
+          <CheckCircle2 className={cn('h-4 w-4', mode.color.text.success)} />
           <AlertDescription>
-            <p className="text-success mb-2 font-semibold">API Key Created Successfully!</p>
-            <p className="mb-4 text-sm">
+            <p className={cn('mb-2 font-semibold', mode.color.text.success)}>
+              API Key Created Successfully!
+            </p>
+            <p className={cn('mb-4 text-sm', mode.color.text.primary)}>
               Make sure to copy your API key now. You won't be able to see it again!
             </p>
             <div className="flex items-center gap-2">
               <code
                 className={cn(
-                  'bg-background border-border flex-1 border p-2 text-sm break-all',
+                  'flex-1 border p-2 text-sm break-all',
+                  mode.color.bg.base,
+                  mode.color.border.default,
                   mode.radius,
                   mode.font
                 )}

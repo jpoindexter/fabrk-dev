@@ -131,6 +131,7 @@ export interface ModeConfig {
       warning: string;
       info: string;
       muted: string;
+      secondary: string;
     };
     text: {
       primary: string;
@@ -148,6 +149,8 @@ export interface ModeConfig {
       focus: string;
       accent: string;
       danger: string;
+      success: string;
+      warning: string;
     };
   };
 
@@ -177,6 +180,9 @@ export interface ModeConfig {
       h2: string;
       h3: string;
     };
+    caption: string;
+    input: string;
+    label: string;
   };
 
   state: {
@@ -221,6 +227,7 @@ export const mode: ModeConfig = {
       warning: 'bg-warning',
       info: 'bg-info',
       muted: 'bg-muted',
+      secondary: 'bg-secondary',
     },
     text: {
       primary: 'text-foreground',
@@ -238,6 +245,8 @@ export const mode: ModeConfig = {
       focus: 'border-ring',
       accent: 'border-primary',
       danger: 'border-destructive',
+      success: 'border-success',
+      warning: 'border-warning',
     },
   },
 
@@ -269,6 +278,9 @@ export const mode: ModeConfig = {
       h2: 'text-3xl font-bold',
       h3: 'text-2xl font-semibold',
     },
+    caption: 'text-xs text-muted-foreground',
+    input: 'text-sm',
+    label: 'text-sm font-medium',
   },
 
   // State tokens

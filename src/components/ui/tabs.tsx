@@ -21,7 +21,10 @@ function TabsList({ className, ...props }: React.ComponentProps<typeof TabsPrimi
     <TabsPrimitive.List
       data-slot="tabs-list"
       className={cn(
-        'bg-background text-foreground inline-flex h-10 items-center justify-start gap-0 border-b p-0',
+        'inline-flex h-10 items-center justify-start gap-0 border-b p-0',
+        mode.color.bg.base,
+        mode.color.text.primary,
+        mode.color.border.default,
         mode.radius,
         mode.font,
         className
@@ -37,7 +40,12 @@ function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPr
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
       className={cn(
-        'focus-visible:ring-primary text-muted-foreground hover:text-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-medium whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+        'inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-medium whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+        mode.color.text.muted,
+        `hover:${mode.color.text.primary}`,
+        `data-[state=active]:${mode.color.bg.accent}`,
+        `data-[state=active]:${mode.color.text.inverse}`,
+        mode.state.focus.ring,
         mode.radius,
         mode.font,
         className
@@ -53,7 +61,8 @@ function TabsContent({ className, ...props }: React.ComponentProps<typeof TabsPr
     <TabsPrimitive.Content
       data-slot="tabs-content"
       className={cn(
-        'focus-visible:ring-primary mt-4 focus-visible:ring-2 focus-visible:outline-none',
+        'mt-4 focus-visible:ring-2 focus-visible:outline-none',
+        mode.state.focus.ring,
         className
       )}
       suppressHydrationWarning

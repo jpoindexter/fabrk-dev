@@ -45,7 +45,10 @@ import { CreditsPreview } from './preview-credits';
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="border-border scroll-mt-16 border-t px-6 py-20 lg:py-24">
+    <section
+      id="features"
+      className={cn('scroll-mt-16 border-t px-6 py-20 lg:py-24', mode.color.border.default)}
+    >
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <motion.div
@@ -64,7 +67,7 @@ export function FeaturesSection() {
           <h2 className={cn(mode.font, 'mb-4 text-4xl font-semibold tracking-tight')}>
             BUILT FOR SERIOUS SAAS PRODUCTS
           </h2>
-          <p className={cn(mode.font, 'text-muted-foreground max-w-2xl text-sm')}>
+          <p className={cn(mode.font, mode.color.text.muted, 'max-w-2xl text-sm')}>
             Includes many foundational and advanced components that cover a wide range of use-cases
             without sacrificing flexibility and design.
           </p>

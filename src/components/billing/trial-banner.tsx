@@ -10,6 +10,8 @@ import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Clock, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 interface TrialBannerProps {
   trialEndsAt: string | null;
@@ -41,13 +43,13 @@ export function TrialBanner({ trialEndsAt, tier }: TrialBannerProps) {
 
   if (isExpired) {
     return (
-      <Alert className="border-destructive bg-destructive/10">
-        <Clock className="text-destructive h-4 w-4" />
+      <Alert className={cn('bg-destructive/10 border', mode.color.border.danger)}>
+        <Clock className={cn('h-4 w-4', mode.color.text.danger)} />
         <AlertDescription className="flex items-center justify-between">
-          <span className="text-destructive font-medium">
+          <span className={cn('font-medium', mode.color.text.danger)}>
             Your free trial has ended. Upgrade now to continue using all features.
           </span>
-          <Button asChild size="sm" className="ml-4">
+          <Button asChild size="sm" className={cn('ml-4', mode.radius, mode.font)}>
             <Link href="/pricing">
               &gt; UPGRADE NOW
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -62,10 +64,24 @@ export function TrialBanner({ trialEndsAt, tier }: TrialBannerProps) {
   const isUrgent = daysRemaining <= 3;
 
   return (
-    <Alert className={isUrgent ? 'border-warning bg-warning/10' : 'border-primary bg-primary/10'}>
-      <Clock className={`h-4 w-4 ${isUrgent ? 'text-warning' : 'text-primary'}`} />
+    <Alert
+      className={cn(
+        'border',
+        isUrgent
+          ? `${mode.color.border.warning} bg-warning/10`
+          : `${mode.color.border.accent} bg-primary/10`
+      )}
+    >
+      <Clock
+        className={cn('h-4 w-4', isUrgent ? mode.color.text.warning : mode.color.text.accent)}
+      />
       <AlertDescription className="flex items-center justify-between">
-        <span className={isUrgent ? 'text-warning font-medium' : 'text-primary'}>
+        <span
+          className={cn(
+            isUrgent ? 'font-medium' : '',
+            isUrgent ? mode.color.text.warning : mode.color.text.accent
+          )}
+        >
           {daysRemaining === 1
             ? 'Your free trial ends tomorrow!'
             : `${daysRemaining} days remaining in your free trial.`}
@@ -74,7 +90,7 @@ export function TrialBanner({ trialEndsAt, tier }: TrialBannerProps) {
           asChild
           variant={isUrgent ? 'default' : 'outline'}
           size="sm"
-          className="ml-4 font-mono text-xs"
+          className={cn('ml-4 text-xs', mode.font, mode.radius)}
         >
           <Link href="/pricing">
             {isUrgent ? '> UPGRADE NOW' : '> VIEW PLANS'}

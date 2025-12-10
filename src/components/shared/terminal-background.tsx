@@ -4,6 +4,8 @@
  */
 'use client';
 
+import { mode } from '@/design-system';
+
 export function TerminalBackground() {
   return (
     <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
@@ -17,14 +19,27 @@ export function TerminalBackground() {
             <circle cx="1" cy="1" r="1" fill="currentColor" />
           </pattern>
         </defs>
-        <rect width="100%" height="100%" fill="url(#dot-grid)" className="text-foreground" />
+        <rect
+          width="100%"
+          height="100%"
+          fill="url(#dot-grid)"
+          className={mode.color.text.primary}
+        />
       </svg>
 
       {/* Corner brackets - subtle viewport indicators */}
-      <div className="border-foreground/[0.015] absolute top-20 left-6 h-6 w-6 border-t border-l" />
-      <div className="border-foreground/[0.015] absolute top-20 right-6 h-6 w-6 border-t border-r" />
-      <div className="border-foreground/[0.015] absolute bottom-6 left-6 h-6 w-6 border-b border-l" />
-      <div className="border-foreground/[0.015] absolute right-6 bottom-6 h-6 w-6 border-r border-b" />
+      <div
+        className={`absolute top-20 left-6 h-6 w-6 border-t border-l ${mode.color.text.primary}/[0.015]`}
+      />
+      <div
+        className={`absolute top-20 right-6 h-6 w-6 border-t border-r ${mode.color.text.primary}/[0.015]`}
+      />
+      <div
+        className={`absolute bottom-6 left-6 h-6 w-6 border-b border-l ${mode.color.text.primary}/[0.015]`}
+      />
+      <div
+        className={`absolute right-6 bottom-6 h-6 w-6 border-r border-b ${mode.color.text.primary}/[0.015]`}
+      />
     </div>
   );
 }

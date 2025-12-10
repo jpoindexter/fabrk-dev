@@ -80,13 +80,15 @@ export default function ThemeShowcasePage() {
   }
 
   return (
-    <div className="bg-background min-h-screen p-8">
+    <div className={cn('min-h-screen p-8', mode.color.bg.base)}>
       <div className="container mx-auto max-w-7xl space-y-8">
         {/* Header with Controls */}
         <div className="flex items-start justify-between gap-4">
           <div className="space-y-2">
-            <h1 className="text-foreground font-mono text-4xl font-bold">[THEME_SHOWCASE]</h1>
-            <p className="text-muted-foreground font-mono text-sm">
+            <h1 className={cn('font-mono text-4xl font-bold', mode.color.text.primary)}>
+              [THEME_SHOWCASE]
+            </h1>
+            <p className={cn('font-mono text-sm', mode.color.text.muted)}>
               Complete design system component library for theme testing
             </p>
           </div>

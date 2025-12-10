@@ -27,12 +27,13 @@ const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
         data-slot="label"
         ref={ref}
         className={cn(
-          // Sharp mode typography - explicit text-foreground for dark mode compatibility
-          'text-foreground text-xs font-semibold',
+          // Uses mode tokens for consistent theming
+          mode.color.text.primary,
+          mode.typography.label,
           mode.font,
           'peer-disabled:cursor-not-allowed peer-disabled:opacity-50',
           'transition-colors duration-200',
-          error && 'text-destructive',
+          error && mode.color.text.danger,
           className
         )}
         {...props}
@@ -40,7 +41,7 @@ const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
         {children}
         {/* UX Heuristic #5: Error Prevention - Show required indicator */}
         {required && (
-          <span className="text-destructive ml-1" aria-label="required">
+          <span className={cn(mode.color.text.danger, 'ml-1')} aria-label="required">
             *
           </span>
         )}

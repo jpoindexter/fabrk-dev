@@ -69,7 +69,7 @@ export function ApiKeysList({
   if (loading) {
     return (
       <div className="flex justify-center py-12">
-        <Loader2 className="text-muted-foreground h-8 w-8 animate-spin" />
+        <Loader2 className={cn('h-8 w-8 animate-spin', mode.color.text.muted)} />
       </div>
     );
   }
@@ -78,10 +78,10 @@ export function ApiKeysList({
     return (
       <Card>
         <CardContent className="space-y-4 pt-6 text-center">
-          <Key className="text-muted-foreground mx-auto h-12 w-12" />
+          <Key className={cn('mx-auto h-12 w-12', mode.color.text.muted)} />
           <div>
-            <h3 className="mb-1 font-semibold">No API keys yet</h3>
-            <p className="text-muted-foreground mb-4 text-sm">
+            <h3 className={cn('mb-1 font-semibold', mode.color.text.primary)}>No API keys yet</h3>
+            <p className={cn('mb-4 text-sm', mode.color.text.muted)}>
               Create an API key to start making programmatic requests
             </p>
           </div>
@@ -114,11 +114,11 @@ export function ApiKeysList({
                       </Badge>
                     ))}
                   </div>
-                  <p className="text-muted-foreground text-sm">
+                  <p className={cn('text-sm', mode.color.text.muted)}>
                     Created {formatDate(apiKey.createdAt)} by{' '}
                     {apiKey.user.name || apiKey.user.email}
                   </p>
-                  <p className="text-muted-foreground text-sm">
+                  <p className={cn('text-sm', mode.color.text.muted)}>
                     Last used {formatDate(apiKey.lastUsedAt)}
                   </p>
                 </div>
@@ -146,7 +146,9 @@ export function ApiKeysList({
             <div className="flex items-center gap-2">
               <code
                 className={cn(
-                  'bg-muted border-border flex-1 border p-2 text-sm',
+                  'flex-1 border p-2 text-sm',
+                  mode.color.bg.muted,
+                  mode.color.border.default,
                   mode.radius,
                   mode.font
                 )}

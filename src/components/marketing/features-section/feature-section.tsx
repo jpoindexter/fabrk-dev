@@ -28,7 +28,7 @@ export function FeatureSectionLayout({
   children,
 }: FeatureSectionLayoutProps) {
   return (
-    <div className="border-border border-t pt-16 lg:pt-20">
+    <div className={cn('border-t pt-16 lg:pt-20', mode.color.border.default)}>
       <div
         className={`grid gap-8 lg:grid-cols-2 lg:gap-12 ${reversed ? 'lg:[&>*:first-child]:order-2' : ''}`}
       >
@@ -47,9 +47,9 @@ export function FeatureSectionLayout({
           <h3 className={cn(mode.font, 'mb-4 text-2xl font-semibold')}>{title}</h3>
 
           {/* Description */}
-          <div className="border-border mb-6 border-l-2 pl-4">
-            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>│ [DESC]: </span>
-            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>{description}</span>
+          <div className={cn('mb-6 border-l-2 pl-4', mode.color.border.default)}>
+            <span className={cn(mode.font, mode.color.text.muted, 'text-xs')}>│ [DESC]: </span>
+            <span className={cn(mode.font, mode.color.text.muted, 'text-xs')}>{description}</span>
           </div>
 
           {/* Feature List */}

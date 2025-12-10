@@ -45,8 +45,16 @@ const SelectTrigger = React.forwardRef<
     data-slot="select-trigger"
     className={cn(
       // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile, h-8 on desktop
-      // Radius and font from Visual Mode System - explicit text-foreground for dark mode
-      'bg-background text-foreground ring-offset-background placeholder:text-muted-foreground focus:ring-primary flex h-[48px] w-full items-center justify-between border px-4 text-xs transition-colors focus:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 sm:h-8 [&>span]:line-clamp-1',
+      // Uses mode tokens for consistent theming
+      'flex h-[48px] w-full items-center justify-between border px-4 transition-colors focus-visible:outline-none sm:h-8 [&>span]:line-clamp-1',
+      mode.color.bg.base,
+      mode.color.text.primary,
+      mode.color.text.muted.replace('text-', 'placeholder:text-'),
+      mode.color.border.default,
+      mode.typography.input,
+      mode.state.focus.ring,
+      mode.state.disabled.cursor,
+      mode.state.disabled.opacity,
       mode.radius,
       mode.font,
       className
@@ -114,8 +122,11 @@ const SelectContent = React.forwardRef<
       ref={ref}
       data-slot="select-content"
       className={cn(
-        // Radius from Visual Mode System
-        'bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 relative z-50 max-h-96 min-w-32 overflow-hidden border',
+        // Uses mode tokens for consistent theming
+        'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 relative z-50 max-h-96 min-w-32 overflow-hidden border',
+        mode.color.bg.elevated,
+        mode.color.text.primary,
+        mode.color.border.default,
         mode.radius,
         position === 'popper' &&
           'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1',
@@ -182,10 +193,15 @@ const SelectItem = React.forwardRef<
     data-slot="select-item"
     className={cn(
       // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile
-      // Radius and font from Visual Mode System
-      'hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground relative flex h-[48px] w-full cursor-default items-center pr-2 pl-8 text-xs select-none focus-visible:outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 sm:h-auto sm:py-2',
+      // Uses mode tokens for consistent theming
+      'relative flex h-[48px] w-full cursor-default items-center pr-2 pl-8 select-none focus-visible:outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 sm:h-auto sm:py-2',
+      mode.typography.input,
       mode.radius,
       mode.font,
+      cn(
+        `hover:${mode.color.bg.accent} hover:${mode.color.text.inverse}`,
+        `focus:${mode.color.bg.accent} focus:${mode.color.text.inverse}`
+      ),
       className
     )}
     {...props}
@@ -209,7 +225,7 @@ const SelectLabel = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Label
     ref={ref}
-    className={cn('py-2 pr-2 pl-8 text-xs font-medium', mode.font, className)}
+    className={cn('py-2 pr-2 pl-8 font-medium', mode.typography.caption, mode.font, className)}
     {...props}
   />
 ));

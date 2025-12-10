@@ -54,11 +54,11 @@ export type CardProps = React.HTMLAttributes<HTMLDivElement> & {
 };
 
 const toneStyles: Record<CardTone, string> = {
-  neutral: 'border-border',
-  primary: 'border-primary',
+  neutral: mode.color.border.default,
+  primary: mode.color.border.accent,
   success: 'border-success',
   warning: 'border-warning',
-  danger: 'border-destructive',
+  danger: mode.color.border.danger,
 };
 
 const sizeStyles: Record<CardSize, string> = {
@@ -83,7 +83,8 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       data-slot="card"
       className={cn(
         // Base styles - ONE card shell + CRT scanlines in Terminal mode
-        'bg-card crt-scanlines flex flex-col border',
+        'crt-scanlines flex flex-col border',
+        mode.color.bg.surface,
         mode.radius,
 
         // Tone (border color)
@@ -93,7 +94,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
         sizeStyles[size],
 
         // Interactive states
-        interactive && 'group hover:border-primary/50 transition-colors',
+        interactive && cn('group transition-colors', 'hover:border-primary/50'),
 
         className
       )}
@@ -125,17 +126,22 @@ const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
       ref={ref}
       data-slot="card-header"
       className={cn(
-        'border-border flex items-center justify-between border-b px-4 py-2',
+        'flex items-center justify-between border-b px-4 py-2',
+        mode.color.border.default,
         'last:border-b-0', // Remove bottom border when CardHeader is last child (no CardContent)
         className
       )}
     >
-      <span className={cn('text-muted-foreground text-xs', mode.font)}>
+      <span className={cn(mode.color.text.muted, mode.typography.caption, mode.font)}>
         [ [{code}] {title} ]
       </span>
       {(icon || meta) && (
         <span className="flex items-center gap-2">
-          {meta && <span className={cn('text-muted-foreground text-xs', mode.font)}>{meta}</span>}
+          {meta && (
+            <span className={cn(mode.color.text.muted, mode.typography.caption, mode.font)}>
+              {meta}
+            </span>
+          )}
           {icon}
         </span>
       )}
@@ -180,7 +186,11 @@ const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
     <div
       ref={ref}
       data-slot="card-footer"
-      className={cn('border-border flex items-center gap-2 border-t px-4 py-2', className)}
+      className={cn(
+        'flex items-center gap-2 border-t px-4 py-2',
+        mode.color.border.default,
+        className
+      )}
       {...props}
     />
   )
@@ -216,8 +226,8 @@ const Stat = React.forwardRef<HTMLSpanElement, StatProps>(
       className={cn(size === 'sm' ? 'text-xs' : 'text-sm', className)}
       {...props}
     >
-      <span className={cn('text-muted-foreground', mode.font)}>{label}:</span>{' '}
-      <span className={cn('text-primary', mode.font)}>{value}</span>
+      <span className={cn(mode.color.text.muted, mode.font)}>{label}:</span>{' '}
+      <span className={cn(mode.color.text.accent, mode.font)}>{value}</span>
     </span>
   )
 );
@@ -262,7 +272,7 @@ const StyledLabel = React.forwardRef<HTMLDivElement, StyledLabelProps>(
     <div
       ref={ref}
       data-slot="styled-label"
-      className={cn('text-muted-foreground text-xs', mode.font, className)}
+      className={cn(mode.color.text.muted, mode.typography.caption, mode.font, className)}
       {...props}
     >
       [{children}]{showColon ? ':' : ''}
@@ -299,10 +309,10 @@ const FeatureItem = React.forwardRef<HTMLDivElement, FeatureItemProps>(
       <div
         ref={ref}
         data-slot="feature-item"
-        className={cn('text-xs', mode.font, className)}
+        className={cn(mode.typography.caption, mode.font, className)}
         {...props}
       >
-        <span className="text-success">{iconMap[icon]}</span> {children}
+        <span className={mode.color.text.success}>{iconMap[icon]}</span> {children}
       </div>
     );
   }
@@ -328,7 +338,7 @@ const FeatureList = React.forwardRef<HTMLDivElement, FeatureListProps>(
     <div
       ref={ref}
       data-slot="feature-list"
-      className={cn('space-y-2 text-xs', mode.font, className)}
+      className={cn('space-y-2', mode.typography.caption, mode.font, className)}
       {...props}
     >
       {children}
@@ -358,7 +368,7 @@ const InfoNote = React.forwardRef<HTMLDivElement, InfoNoteProps>(
     <div
       ref={ref}
       data-slot="info-note"
-      className={cn('text-muted-foreground mt-4 text-xs', mode.font, className)}
+      className={cn(mode.color.text.muted, 'mt-4', mode.typography.caption, mode.font, className)}
       {...props}
     >
       [{label}]: {children}
@@ -395,10 +405,16 @@ const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
     <div
       ref={ref}
       data-slot="badge"
-      className={cn('border-border bg-card inline-block border px-2 py-1', mode.radius, className)}
+      className={cn(
+        'inline-block border px-2 py-1',
+        mode.color.border.default,
+        mode.color.bg.surface,
+        mode.radius,
+        className
+      )}
       {...props}
     >
-      <span className={cn('text-muted-foreground text-xs', mode.font)}>
+      <span className={cn(mode.color.text.muted, mode.typography.caption, mode.font)}>
         [ [{code}] {label} ]{meta ? ` ${meta}` : ''}
       </span>
     </div>
@@ -427,10 +443,15 @@ const PageBadge = React.forwardRef<HTMLDivElement, PageBadgeProps>(
     <div
       ref={ref}
       data-slot="page-badge"
-      className={cn('border-border inline-block border px-4 py-1', mode.radius, className)}
+      className={cn(
+        'inline-block border px-4 py-1',
+        mode.color.border.default,
+        mode.radius,
+        className
+      )}
       {...props}
     >
-      <span className={cn('text-muted-foreground text-xs', mode.font)}>
+      <span className={cn(mode.color.text.muted, mode.typography.caption, mode.font)}>
         [{prefix}]: {children}
       </span>
     </div>
@@ -473,7 +494,9 @@ const TemplatePageHeader = React.forwardRef<HTMLDivElement, TemplatePageHeaderPr
       <PageBadge prefix={badgePrefix}>{badge}</PageBadge>
       <h1 className={cn('text-4xl font-semibold tracking-tight', mode.font)}>{title}</h1>
       {description && (
-        <p className={cn('text-muted-foreground text-sm', mode.font)}>{description}</p>
+        <p className={cn(mode.color.text.muted, mode.typography.body.sm, mode.font)}>
+          {description}
+        </p>
       )}
     </div>
   )

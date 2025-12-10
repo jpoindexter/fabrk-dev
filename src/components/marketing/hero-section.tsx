@@ -81,7 +81,7 @@ function TypeWriter({
         <motion.span
           animate={{ opacity: [1, 0, 1] }}
           transition={{ duration: 0.8, repeat: Infinity }}
-          className="text-primary"
+          className={mode.color.text.accent}
         >
           █
         </motion.span>
@@ -123,8 +123,8 @@ function HeroCodeDemo() {
   return (
     <div ref={ref} className="text-code-m p-6">
       {/* git clone */}
-      <div className="text-muted-foreground">
-        <span className="text-success">~</span>{' '}
+      <div className={mode.color.text.muted}>
+        <span className={mode.color.text.success}>~</span>{' '}
         <TypeWriter
           text="git clone https://github.com/you/fabrk my-saas"
           delay={0.3}
@@ -136,25 +136,25 @@ function HeroCodeDemo() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: step >= 1 ? 1 : 0 }}
-        className="text-muted-foreground mt-1"
+        className={cn('mt-1', mode.color.text.muted)}
       >
-        Cloning into &apos;my-saas&apos;... <span className="text-success">done</span>
+        Cloning into &apos;my-saas&apos;... <span className={mode.color.text.success}>done</span>
       </motion.div>
 
       {/* cd && npm install */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: step >= 2 ? 1 : 0 }}
-        className="text-muted-foreground mt-4"
+        className={cn('mt-4', mode.color.text.muted)}
       >
-        <span className="text-success">~</span>{' '}
-        <span className="text-foreground">cd my-saas && npm install</span>
+        <span className={mode.color.text.success}>~</span>{' '}
+        <span className={mode.color.text.primary}>cd my-saas && npm install</span>
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: step >= 2 && step < 3 ? 1 : 0 }}
-        className="text-muted-foreground mt-1"
+        className={cn('mt-1', mode.color.text.muted)}
       >
         <motion.span
           animate={{ opacity: [1, 0.3, 1] }}
@@ -167,20 +167,20 @@ function HeroCodeDemo() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: step >= 3 ? 1 : 0 }}
-        className="text-muted-foreground mt-1"
+        className={cn('mt-1', mode.color.text.muted)}
       >
-        added <span className="text-foreground">847</span> packages in{' '}
-        <span className="text-foreground">12s</span>
+        added <span className={mode.color.text.primary}>847</span> packages in{' '}
+        <span className={mode.color.text.primary}>12s</span>
       </motion.div>
 
       {/* npm run dev */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: step >= 4 ? 1 : 0 }}
-        className="text-muted-foreground mt-4"
+        className={cn('mt-4', mode.color.text.muted)}
       >
-        <span className="text-success">~/my-saas</span>{' '}
-        <span className="text-foreground">npm run dev</span>
+        <span className={mode.color.text.success}>~/my-saas</span>{' '}
+        <span className={mode.color.text.primary}>npm run dev</span>
       </motion.div>
 
       {/* Server ready */}
@@ -189,9 +189,9 @@ function HeroCodeDemo() {
         animate={{ opacity: step >= 5 ? 1 : 0 }}
         className="border-success/30 bg-success/10 mt-4 border p-4"
       >
-        <div className="text-success">▲ Ready</div>
-        <div className="text-muted-foreground mt-1">
-          Local: <span className="text-primary">http://localhost:3000</span>
+        <div className={mode.color.text.success}>▲ Ready</div>
+        <div className={cn('mt-1', mode.color.text.muted)}>
+          Local: <span className={mode.color.text.accent}>http://localhost:3000</span>
         </div>
       </motion.div>
 
@@ -199,11 +199,11 @@ function HeroCodeDemo() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: step >= 5 ? 1 : 0 }}
-        className="text-muted-foreground mt-4"
+        className={cn('mt-4', mode.color.text.muted)}
       >
-        <span className="text-success">~/my-saas</span>{' '}
+        <span className={mode.color.text.success}>~/my-saas</span>{' '}
         <motion.span
-          className="text-primary inline-block"
+          className={cn(mode.color.text.accent, 'inline-block')}
           animate={{ opacity: [1, 0, 1] }}
           transition={{ duration: 1, repeat: Infinity }}
         >
@@ -237,11 +237,11 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h1 className="text-muted-foreground text-body-m mb-2">[FABRK INIT]</h1>
+              <h1 className={cn('text-body-m mb-2', mode.color.text.muted)}>[FABRK INIT]</h1>
               <h2 className="text-display mb-6">
                 BUILDING YOUR SAAS
                 <br />
-                <span className="text-primary">JUST GOT UNFAIRLY EASY.</span>
+                <span className={mode.color.text.accent}>JUST GOT UNFAIRLY EASY.</span>
               </h2>
             </motion.div>
 
@@ -255,7 +255,7 @@ export function HeroSection() {
               <Card size="auto">
                 <CardHeader code="0x01" title="STATUS" />
                 <CardContent>
-                  <p className="text-muted-foreground text-body-m mb-4">
+                  <p className={cn('text-body-m mb-4', mode.color.text.muted)}>
                     Why spend valuable time tackling auth, billing, emails, organizations, invites
                     and onboarding? Focus on your business and skip the noise.
                   </p>
@@ -316,11 +316,15 @@ export function HeroSection() {
             {techStack.map((tech) => (
               <div
                 key={tech.name}
-                className="border-border bg-card flex items-center gap-2 border px-2 py-1"
+                className={cn(
+                  'flex items-center gap-2 border px-2 py-1',
+                  mode.color.border.default,
+                  mode.color.bg.surface
+                )}
               >
                 <SimpleIcon path={tech.path} className="size-3.5" />
                 <span className={cn('text-xs', mode.font)}>{tech.name}</span>
-                <span className={cn('text-success text-xs', mode.font)}>[OK]</span>
+                <span className={cn('text-xs', mode.color.text.success, mode.font)}>[OK]</span>
               </div>
             ))}
           </div>

@@ -38,14 +38,20 @@ export function UsageChart({ data, className }: UsageChartProps) {
                 className={cn(
                   'min-h-[2px] w-full transition-all',
                   mode.radius,
-                  day.credits > 0 ? 'bg-primary' : 'bg-muted'
+                  day.credits > 0 ? mode.color.bg.accent : mode.color.bg.muted
                 )}
                 style={{ height: `${Math.max(height, 2)}%` }}
               />
-              <span className="text-muted-foreground mt-1 text-[10px]">{dayLabel}</span>
+              <span className={cn('mt-1 text-[10px]', mode.color.text.muted)}>{dayLabel}</span>
 
               {/* Tooltip on hover */}
-              <div className="bg-popover border-border absolute -top-8 left-1/2 hidden -translate-x-1/2 border px-2 py-1 text-xs group-hover:block">
+              <div
+                className={cn(
+                  'absolute -top-8 left-1/2 hidden -translate-x-1/2 border px-2 py-1 text-xs group-hover:block',
+                  mode.color.bg.elevated,
+                  mode.color.border.default
+                )}
+              >
                 {day.credits}
               </div>
             </div>
@@ -53,7 +59,7 @@ export function UsageChart({ data, className }: UsageChartProps) {
         })}
       </div>
 
-      <div className="text-muted-foreground flex justify-between text-xs">
+      <div className={cn('flex justify-between text-xs', mode.color.text.muted)}>
         <span>14 days ago</span>
         <span>Today</span>
       </div>

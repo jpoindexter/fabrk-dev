@@ -64,47 +64,47 @@ interface TeamActivityFeedProps {
 
 const activityConfig: Record<
   ActivityType,
-  { icon: React.ElementType; color: string; bgColor: string }
+  { icon: React.ElementType; colorClass: string; bgColorClass: string }
 > = {
   created: {
     icon: FileText,
-    color: 'text-primary',
-    bgColor: 'bg-primary/10',
+    colorClass: mode.color.text.accent,
+    bgColorClass: 'bg-primary/10',
   },
   updated: {
     icon: Edit,
-    color: 'text-accent',
-    bgColor: 'bg-accent/10',
+    colorClass: mode.color.text.accent,
+    bgColorClass: 'bg-accent/10',
   },
   deleted: {
     icon: Trash2,
-    color: 'text-destructive',
-    bgColor: 'bg-destructive/10',
+    colorClass: mode.color.text.danger,
+    bgColorClass: 'bg-destructive/10',
   },
   commented: {
     icon: MessageSquare,
-    color: 'text-primary',
-    bgColor: 'bg-primary/10',
+    colorClass: mode.color.text.accent,
+    bgColorClass: 'bg-primary/10',
   },
   uploaded: {
     icon: Upload,
-    color: 'text-accent',
-    bgColor: 'bg-accent/10',
+    colorClass: mode.color.text.accent,
+    bgColorClass: 'bg-accent/10',
   },
   invited: {
     icon: UserPlus,
-    color: 'text-primary',
-    bgColor: 'bg-primary/10',
+    colorClass: mode.color.text.accent,
+    bgColorClass: 'bg-primary/10',
   },
   completed: {
     icon: CheckCircle2,
-    color: 'text-primary',
-    bgColor: 'bg-primary/10',
+    colorClass: mode.color.text.accent,
+    bgColorClass: 'bg-primary/10',
   },
   configured: {
     icon: Settings,
-    color: 'text-muted-foreground',
-    bgColor: 'bg-muted',
+    colorClass: mode.color.text.muted,
+    bgColorClass: mode.color.bg.muted,
   },
 };
 
@@ -140,14 +140,21 @@ export function TeamActivityFeed({
         <ScrollArea className="h-full" style={{ maxHeight }}>
           <div className="space-y-0 p-6 pt-0">
             {activities.length === 0 ? (
-              <div className="text-muted-foreground flex flex-col items-center justify-center py-12">
+              <div
+                className={cn(
+                  'flex flex-col items-center justify-center py-12',
+                  mode.color.text.muted
+                )}
+              >
                 <Activity className="mb-2 h-8 w-8" />
                 <p className="text-sm">No recent activity</p>
               </div>
             ) : (
               <div className="relative space-y-4">
                 {/* Timeline line */}
-                <div className="bg-border absolute top-0 bottom-0 left-[19px] w-0.5" />
+                <div
+                  className={cn('absolute top-0 bottom-0 left-[19px] w-0.5', mode.color.bg.muted)}
+                />
 
                 {activities.map((activity, _index) => {
                   const config = activityConfig[activity.type];
@@ -157,19 +164,26 @@ export function TeamActivityFeed({
                     <div key={activity.id} className="group relative flex gap-4">
                       {/* Avatar with icon badge */}
                       <div className="relative flex-shrink-0">
-                        <Avatar className="border-border h-10 w-10 border">
-                          <AvatarFallback className="bg-primary text-primary-foreground text-xs font-semibold">
+                        <Avatar className={cn('h-10 w-10 border', mode.color.border.default)}>
+                          <AvatarFallback
+                            className={cn(
+                              'text-xs font-semibold',
+                              mode.color.bg.accent,
+                              mode.color.text.inverse
+                            )}
+                          >
                             {getInitials(activity.user.name)}
                           </AvatarFallback>
                         </Avatar>
                         <div
                           className={cn(
-                            'border-border absolute -right-1 -bottom-1 flex h-5 w-5 items-center justify-center border',
+                            'absolute -right-1 -bottom-1 flex h-5 w-5 items-center justify-center border',
+                            mode.color.border.default,
                             mode.radius,
-                            config.bgColor
+                            config.bgColorClass
                           )}
                         >
-                          <Icon className={cn('h-3 w-3', config.color)} />
+                          <Icon className={cn('h-3 w-3', config.colorClass)} />
                         </div>
                       </div>
 
@@ -177,11 +191,11 @@ export function TeamActivityFeed({
                       <div className="min-w-0 flex-1 space-y-1 pt-1">
                         <div className="flex items-start justify-between gap-2">
                           <div className="min-w-0 flex-1">
-                            <p className="text-foreground text-sm">
+                            <p className={cn('text-sm', mode.color.text.primary)}>
                               <span className="font-semibold">{activity.user.name}</span>{' '}
-                              <span className="text-muted-foreground">{activity.action}</span>
+                              <span className={mode.color.text.muted}>{activity.action}</span>
                               {activity.target && (
-                                <span className="text-foreground font-medium">
+                                <span className={cn('font-medium', mode.color.text.primary)}>
                                   {' '}
                                   {activity.target}
                                 </span>
@@ -189,7 +203,7 @@ export function TeamActivityFeed({
                             </p>
                           </div>
                           {showTimestamp && (
-                            <time className="text-muted-foreground flex-shrink-0 text-xs">
+                            <time className={cn('flex-shrink-0 text-xs', mode.color.text.muted)}>
                               {formatTimestamp(activity.timestamp)}
                             </time>
                           )}

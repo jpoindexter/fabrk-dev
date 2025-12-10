@@ -7,6 +7,8 @@ import Link from 'next/link';
 import { ChevronRight, Home } from 'lucide-react';
 import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 import { SchemaScript } from './schema-script';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export interface BreadcrumbItem {
   name: string;
@@ -45,16 +47,16 @@ export function Breadcrumbs({ items, showHome = true }: BreadcrumbsProps) {
 
           return (
             <div key={item.url} className="flex items-center">
-              {index > 0 && <ChevronRight className="text-muted-foreground mx-2 h-4 w-4" />}
+              {index > 0 && <ChevronRight className={cn('mx-2 h-4 w-4', mode.color.text.muted)} />}
 
               {isLast ? (
-                <span className="text-foreground font-medium" aria-current="page">
+                <span className={cn('font-medium', mode.color.text.primary)} aria-current="page">
                   {item.name}
                 </span>
               ) : (
                 <Link
                   href={item.url}
-                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  className={cn('transition-colors', mode.color.text.muted, mode.state.hover.text)}
                 >
                   {index === 0 && showHome ? <Home className="h-4 w-4" /> : item.name}
                 </Link>

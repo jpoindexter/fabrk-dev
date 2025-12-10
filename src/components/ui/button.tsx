@@ -43,39 +43,74 @@ import { mode } from '@/design-system';
  * - px-8 (32px) → Extra large
  */
 const buttonVariants = cva(
-  // Base styles - focus ring from design tokens, disabled state uses design system opacity
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap text-label transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-[var(--state-disabled-opacity)] [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+  // Base styles - uses mode tokens for consistent theming
+  cn(
+    'inline-flex items-center justify-center gap-2 whitespace-nowrap transition-colors',
+    'focus-visible:outline-none',
+    mode.state.focus.ring,
+    mode.state.disabled.opacity,
+    mode.state.disabled.cursor,
+    mode.typography.button,
+    '[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0'
+  ),
   {
     variants: {
       variant: {
-        // Primary - solid background + CRT effects (scanlines + glow in Terminal mode)
-        default: 'bg-primary text-primary-foreground hover:bg-primary/90 crt-scanlines crt-glow',
-        // Destructive - danger/delete actions + CRT scanlines
-        destructive:
-          'bg-destructive text-destructive-foreground hover:bg-destructive/90 crt-scanlines',
-        // Outline - bordered, transparent background (no CRT effects)
-        outline: 'border border-border bg-background hover:bg-muted hover:border-primary/50',
-        // Secondary - muted background + CRT scanlines
-        secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80 crt-scanlines',
-        // Ghost - no background, subtle hover (no CRT effects)
-        ghost: 'text-foreground hover:bg-foreground/10 hover:text-foreground',
-        // Link - text only with underline (no CRT effects)
-        link: 'text-primary underline-offset-4 hover:underline',
-        // CTA variants - larger padding for marketing sections + CRT effects
-        primaryCta:
-          'bg-primary text-primary-foreground hover:bg-primary/90 text-xs px-6 py-4 crt-scanlines crt-glow',
-        secondaryCta:
-          'bg-secondary text-secondary-foreground hover:bg-secondary/80 text-xs px-6 py-4 crt-scanlines',
-        ghostOnDark:
-          'border border-foreground/30 bg-transparent text-foreground hover:bg-foreground/10 text-xs px-6 py-4 crt-scanlines',
+        // Primary - uses mode color tokens
+        default: cn(
+          mode.color.bg.accent,
+          mode.color.text.inverse,
+          mode.state.hover.bg,
+          'crt-scanlines crt-glow'
+        ),
+        // Destructive - uses mode danger tokens
+        destructive: cn(
+          mode.color.bg.danger,
+          mode.color.text.inverse,
+          'hover:bg-destructive/90 crt-scanlines'
+        ),
+        // Outline - uses mode border and background tokens
+        outline: cn(
+          mode.color.border.default,
+          mode.color.bg.base,
+          'border hover:bg-muted',
+          mode.color.border.accent,
+          'hover:border-primary/50'
+        ),
+        // Secondary - uses mode secondary tokens
+        secondary: cn('bg-secondary text-secondary-foreground hover:bg-secondary/80 crt-scanlines'),
+        // Ghost - uses mode text tokens
+        ghost: cn(mode.color.text.primary, 'hover:bg-foreground/10'),
+        // Link - uses mode accent text
+        link: cn(mode.color.text.accent, 'underline-offset-4 hover:underline'),
+        // CTA variants - larger padding for marketing + mode tokens
+        primaryCta: cn(
+          mode.color.bg.accent,
+          mode.color.text.inverse,
+          mode.state.hover.bg,
+          mode.spacing.button.lg,
+          'crt-scanlines crt-glow'
+        ),
+        secondaryCta: cn(
+          'bg-secondary text-secondary-foreground hover:bg-secondary/80',
+          mode.spacing.button.lg,
+          'crt-scanlines'
+        ),
+        ghostOnDark: cn(
+          'border border-foreground/30 bg-transparent',
+          mode.color.text.primary,
+          'hover:bg-foreground/10',
+          mode.spacing.button.lg,
+          'crt-scanlines'
+        ),
       },
       size: {
         // WCAG 2.1 AA: min-h-[44px] ensures adequate touch target on mobile
-        // Heights follow 8-point grid: h-8 (32px), h-9 (36px), h-10 (40px), h-12 (48px)
-        default: 'min-h-[44px] px-4 py-2 sm:min-h-0 sm:h-8',
-        sm: 'min-h-[44px] min-w-[44px] px-2 text-xs sm:min-h-0 sm:min-w-0 sm:h-8',
-        lg: 'min-h-[44px] px-6 sm:min-h-0 sm:h-10',
-        xl: 'min-h-[44px] px-8 text-lg sm:min-h-0 sm:h-12',
+        // Uses mode spacing tokens for consistent sizing
+        default: cn('min-h-[44px] sm:min-h-0 sm:h-8', mode.spacing.button.md),
+        sm: cn('min-h-[44px] min-w-[44px] sm:min-h-0 sm:min-w-0 sm:h-8', mode.spacing.button.sm),
+        lg: cn('min-h-[44px] sm:min-h-0 sm:h-10', mode.spacing.button.lg),
+        xl: cn('min-h-[44px] text-lg sm:min-h-0 sm:h-12', 'px-8'),
         icon: 'min-h-[44px] min-w-[44px] sm:min-h-0 sm:min-w-0 sm:h-10 sm:w-10',
       },
     },

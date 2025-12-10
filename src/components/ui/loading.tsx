@@ -42,7 +42,7 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
         {...props}
       >
         <svg
-          className={cn('text-primary animate-spin', sizeClasses[size])}
+          className={cn('animate-spin', mode.color.text.accent, sizeClasses[size])}
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -89,7 +89,9 @@ export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
         data-slot="skeleton"
         ref={ref}
         className={cn(
-          'bg-card border-border h-full w-full animate-pulse border',
+          'h-full w-full animate-pulse border',
+          mode.color.bg.elevated,
+          mode.color.border.default,
           mode.radius,
           variantClasses[variant],
           className
@@ -117,7 +119,7 @@ export const LoadingContainer = React.forwardRef<HTMLDivElement, LoadingContaine
         {...props}
       >
         <Spinner size="lg" />
-        {children && <p className={cn('text-muted-foreground text-xs', mode.font)}>{children}</p>}
+        {children && <p className={cn('text-xs', mode.color.text.muted, mode.font)}>{children}</p>}
       </div>
     );
   }

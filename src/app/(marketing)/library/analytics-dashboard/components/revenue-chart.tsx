@@ -29,7 +29,7 @@ export function RevenueChart({ data }: RevenueChartProps) {
     <Card className="lg:col-span-4">
       <CardHeader code="0x00" title="REVENUE CHART" />
       <CardContent>
-        <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
+        <div className={cn(mode.font, 'mb-4 text-xs', mode.color.text.muted)}>
           [REVENUE OVERVIEW]: PERIOD=6_MONTHS
         </div>
 
@@ -39,7 +39,8 @@ export function RevenueChart({ data }: RevenueChartProps) {
           <div
             className={cn(
               mode.font,
-              'text-muted-foreground absolute top-0 bottom-6 left-0 flex flex-col justify-between text-xs'
+              'absolute top-0 bottom-6 left-0 flex flex-col justify-between text-xs',
+              mode.color.text.muted
             )}
           >
             <span>$60k</span>
@@ -49,11 +50,20 @@ export function RevenueChart({ data }: RevenueChartProps) {
           </div>
 
           {/* Chart area */}
-          <div className="border-border flex h-[200px] items-end justify-between gap-2 border">
+          <div
+            className={cn(
+              'flex h-[200px] items-end justify-between gap-2 border',
+              mode.color.border.default
+            )}
+          >
             {data.map((dataPoint, i) => (
               <div key={i} className="flex h-full flex-1 items-end justify-center">
                 <div
-                  className="bg-primary hover:bg-primary/80 w-full max-w-12 transition-colors"
+                  className={cn(
+                    'w-full max-w-12 transition-colors',
+                    mode.color.bg.accent,
+                    mode.state.hover.bg
+                  )}
                   style={{
                     height: `${dataPoint.height}%`,
                   }}
@@ -67,7 +77,7 @@ export function RevenueChart({ data }: RevenueChartProps) {
             {data.map((dataPoint, i) => (
               <div
                 key={i}
-                className={cn(mode.font, 'text-muted-foreground flex-1 text-center text-xs')}
+                className={cn(mode.font, 'flex-1 text-center text-xs', mode.color.text.muted)}
               >
                 {dataPoint.month}
               </div>
@@ -79,20 +89,21 @@ export function RevenueChart({ data }: RevenueChartProps) {
         <div
           className={cn(
             mode.font,
-            'border-border mt-4 grid grid-cols-3 gap-4 border-t pt-4 text-xs'
+            'mt-4 grid grid-cols-3 gap-4 border-t pt-4 text-xs',
+            mode.color.border.default
           )}
         >
           <div>
-            <span className="text-muted-foreground">[AVG]:</span>{' '}
-            <span className="text-foreground">${avgRevenue.toLocaleString()}</span>
+            <span className={mode.color.text.muted}>[AVG]:</span>{' '}
+            <span className={mode.color.text.primary}>${avgRevenue.toLocaleString()}</span>
           </div>
           <div>
-            <span className="text-muted-foreground">[MAX]:</span>{' '}
-            <span className="text-foreground">${maxRevenue.toLocaleString()}</span>
+            <span className={mode.color.text.muted}>[MAX]:</span>{' '}
+            <span className={mode.color.text.primary}>${maxRevenue.toLocaleString()}</span>
           </div>
           <div>
-            <span className="text-muted-foreground">[GROWTH]:</span>{' '}
-            <span className="text-success">+{growthRate}%</span>
+            <span className={mode.color.text.muted}>[GROWTH]:</span>{' '}
+            <span className={mode.color.text.success}>+{growthRate}%</span>
           </div>
         </div>
       </CardContent>

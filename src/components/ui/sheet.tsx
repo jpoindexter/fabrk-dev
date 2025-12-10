@@ -18,7 +18,8 @@ const SheetOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Overlay
     className={cn(
-      'bg-background/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 backdrop-blur-sm',
+      'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 backdrop-blur-sm',
+      'bg-background/80',
       className
     )}
     {...props}
@@ -28,7 +29,11 @@ const SheetOverlay = React.forwardRef<
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName;
 
 const sheetVariants = cva(
-  'fixed z-50 gap-4 bg-background p-6 transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500 border border-border',
+  cn(
+    'fixed z-50 gap-4 p-6 transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500 border',
+    mode.color.bg.base,
+    mode.color.border.default
+  ),
   {
     variants: {
       side: {
@@ -66,7 +71,9 @@ const SheetContent = React.forwardRef<
       {children}
       <SheetPrimitive.Close
         className={cn(
-          'focus-visible:ring-primary data-[state=open]:bg-secondary absolute top-4 right-4 opacity-70 transition-opacity hover:opacity-100 focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed',
+          'absolute top-4 right-4 opacity-70 transition-opacity hover:opacity-100 focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed',
+          `data-[state=open]:${mode.color.bg.muted}`,
+          mode.state.focus.ring,
           mode.radius
         )}
       >
@@ -98,7 +105,7 @@ const SheetTitle = React.forwardRef<
   <SheetPrimitive.Title
     ref={ref}
     data-slot="sheet-title"
-    className={cn('text-foreground text-lg font-semibold', mode.font, className)}
+    className={cn('text-lg font-semibold', mode.color.text.primary, mode.font, className)}
     {...props}
   />
 ));
@@ -111,7 +118,7 @@ const SheetDescription = React.forwardRef<
   <SheetPrimitive.Description
     ref={ref}
     data-slot="sheet-description"
-    className={cn('text-muted-foreground text-xs', mode.font, className)}
+    className={cn('text-xs', mode.color.text.muted, mode.font, className)}
     {...props}
   />
 ));

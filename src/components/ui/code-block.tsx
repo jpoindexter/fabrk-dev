@@ -297,7 +297,11 @@ export function CodeBlock({
     >
       <button
         onClick={handleCopy}
-        className="text-foreground/70 hover:text-foreground absolute top-3 right-3 z-10 transition-colors"
+        className={cn(
+          'absolute top-3 right-3 z-10 transition-colors',
+          mode.color.text.muted,
+          'hover:opacity-100'
+        )}
         aria-label={copied ? 'Code copied' : 'Copy code to clipboard'}
       >
         {copied ? (
@@ -306,7 +310,7 @@ export function CodeBlock({
           <Copy className="h-4 w-4" aria-hidden="true" />
         )}
       </button>
-      <div className={cn('bg-card w-full min-w-0 overflow-hidden', mode.radius)}>
+      <div className={cn('w-full min-w-0 overflow-hidden', mode.color.bg.elevated, mode.radius)}>
         <Highlight theme={currentTheme} code={code.trim()} language={language}>
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre
@@ -324,18 +328,25 @@ export function CodeBlock({
               {tokens.map((line, i) => (
                 <div key={i} {...getLineProps({ line })} className="flex whitespace-pre-wrap">
                   {showLineNumbers && (
-                    <span className="text-muted-foreground mr-4 inline-block w-8 flex-shrink-0 text-right select-none">
+                    <span
+                      className={cn(
+                        'mr-4 inline-block w-8 flex-shrink-0 text-right select-none',
+                        mode.color.text.muted
+                      )}
+                    >
                       {i + 1}
                     </span>
                   )}
                   <span className="flex-1">
                     {/* Add $ prompt for shell commands */}
-                    {isShell && i === 0 && <span className="text-primary mr-2 select-none">$</span>}
+                    {isShell && i === 0 && (
+                      <span className={cn('mr-2 select-none', mode.color.text.accent)}>$</span>
+                    )}
                     {isShell &&
                       i > 0 &&
                       tokens[i].length > 0 &&
                       tokens[i][0].content.trim() !== '' && (
-                        <span className="text-primary mr-2 select-none">$</span>
+                        <span className={cn('mr-2 select-none', mode.color.text.accent)}>$</span>
                       )}
                     {line.map((token, key) => (
                       <span key={key} {...getTokenProps({ token })} />

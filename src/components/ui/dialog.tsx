@@ -37,7 +37,8 @@ const DialogOverlay = React.forwardRef<
   <DialogPrimitive.Overlay
     ref={ref}
     className={cn(
-      'bg-background/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 backdrop-blur-sm',
+      'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 backdrop-blur-sm',
+      'bg-background/80',
       className
     )}
     {...props}
@@ -55,8 +56,10 @@ const DialogContent = React.forwardRef<
       ref={ref}
       data-slot="dialog-content"
       className={cn(
-        // Radius from Visual Mode System
-        'bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] fixed top-1/2 left-1/2 z-50 grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 border p-6 duration-150',
+        'fixed top-1/2 left-1/2 z-50 grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 border p-6 duration-150',
+        'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]',
+        mode.color.bg.base,
+        mode.color.border.default,
         mode.radius,
         className
       )}
@@ -65,7 +68,9 @@ const DialogContent = React.forwardRef<
       {children}
       <DialogPrimitive.Close
         className={cn(
-          'focus-visible:ring-primary data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 opacity-70 transition-opacity hover:opacity-100 focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed',
+          'absolute top-4 right-4 opacity-70 transition-opacity hover:opacity-100 focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed',
+          mode.state.focus.ring,
+          `data-[state=open]:${mode.color.bg.accent} data-[state=open]:${mode.color.text.muted}`,
           mode.radius
         )}
       >
@@ -100,7 +105,8 @@ const DialogTitle = React.forwardRef<
     data-slot="dialog-title"
     ref={ref}
     className={cn(
-      'text-foreground text-lg leading-none font-semibold tracking-tight',
+      'text-lg leading-none font-semibold tracking-tight',
+      mode.color.text.primary,
       mode.font,
       className
     )}
@@ -116,7 +122,7 @@ const DialogDescription = React.forwardRef<
   <DialogPrimitive.Description
     data-slot="dialog-description"
     ref={ref}
-    className={cn('text-muted-foreground text-xs', mode.font, className)}
+    className={cn(mode.color.text.muted, mode.typography.caption, mode.font, className)}
     {...props}
   />
 ));

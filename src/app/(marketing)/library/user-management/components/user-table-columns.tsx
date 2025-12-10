@@ -27,7 +27,7 @@ export const columns: ColumnDef<UserType>[] = [
         checked={table.getIsAllPageRowsSelected()}
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all"
-        className="border-border"
+        className={mode.color.border.default}
       />
     ),
     cell: ({ row }) => (
@@ -35,7 +35,7 @@ export const columns: ColumnDef<UserType>[] = [
         checked={row.getIsSelected()}
         onCheckedChange={(value) => row.toggleSelected(!!value)}
         aria-label="Select row"
-        className="border-border"
+        className={mode.color.border.default}
       />
     ),
     enableSorting: false,
@@ -49,7 +49,9 @@ export const columns: ColumnDef<UserType>[] = [
         <div
           className={cn(
             mode.font,
-            'border-border bg-muted flex h-8 w-8 items-center justify-center border text-xs'
+            'flex h-8 w-8 flex-shrink-0 items-center justify-center border text-xs',
+            mode.color.border.default,
+            mode.color.bg.muted
           )}
         >
           {row
@@ -58,7 +60,16 @@ export const columns: ColumnDef<UserType>[] = [
             .map((n) => n[0])
             .join('')}
         </div>
-        <span className={cn(mode.radius, mode.font, 'text-xs')}>{row.getValue('name')}</span>
+        <span
+          className={cn(
+            mode.radius,
+            mode.font,
+            'max-w-[200px] truncate text-xs',
+            mode.color.text.primary
+          )}
+        >
+          {row.getValue('name')}
+        </span>
       </div>
     ),
   },
@@ -66,7 +77,7 @@ export const columns: ColumnDef<UserType>[] = [
     accessorKey: 'email',
     header: ({ column }) => <DataTableColumnHeader column={column} title="Email" />,
     cell: ({ row }) => (
-      <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
+      <span className={cn(mode.font, 'max-w-[250px] truncate text-xs', mode.color.text.muted)}>
         {row.getValue('email')}
       </span>
     ),
@@ -76,19 +87,24 @@ export const columns: ColumnDef<UserType>[] = [
     header: ({ column }) => <DataTableColumnHeader column={column} title="Role" />,
     cell: ({ row }) => {
       const role = row.getValue<string>('role');
-      const roleColors: Record<string, string> = {
-        ADMIN: 'text-primary border-primary/50',
-        USER: 'text-foreground border-border',
-        GUEST: 'text-muted-foreground border-border',
-      };
       const RoleIcon = role === 'ADMIN' ? Shield : role === 'USER' ? User : Users;
+      const getRoleClasses = () => {
+        if (role === 'ADMIN') return cn(mode.color.text.accent, mode.color.border.accent);
+        if (role === 'USER') return cn(mode.color.text.primary, mode.color.border.default);
+        return cn(mode.color.text.muted, mode.color.border.default);
+      };
       return (
-        <span
-          className={`inline-flex items-center gap-1 border px-2 py-0.5 font-mono text-xs ${roleColors[role]}`}
-        >
-          <RoleIcon className="h-3 w-3" />
-          {role}
-        </span>
+        <div className="flex pl-2">
+          <span
+            className={cn(
+              'inline-flex items-center gap-1 border px-2 py-0.5 font-mono text-xs',
+              getRoleClasses()
+            )}
+          >
+            <RoleIcon className="h-3 w-3" />
+            {role}
+          </span>
+        </div>
       );
     },
   },
@@ -97,15 +113,15 @@ export const columns: ColumnDef<UserType>[] = [
     header: ({ column }) => <DataTableColumnHeader column={column} title="Status" />,
     cell: ({ row }) => {
       const status = row.getValue<string>('status');
-      const statusColors: Record<string, string> = {
-        active: 'text-success',
-        inactive: 'text-muted-foreground',
-        suspended: 'text-destructive',
+      const getStatusColor = () => {
+        if (status === 'active') return mode.color.text.success;
+        if (status === 'suspended') return mode.color.text.danger;
+        return mode.color.text.muted;
       };
       return (
         <span className={cn(mode.radius, mode.font, 'text-xs')}>
-          <span className="text-muted-foreground">STATUS:</span>{' '}
-          <span className={statusColors[status]}>{status.toUpperCase()}</span>
+          <span className={mode.color.text.muted}>STATUS:</span>{' '}
+          <span className={getStatusColor()}>{status.toUpperCase()}</span>
         </span>
       );
     },
@@ -115,13 +131,13 @@ export const columns: ColumnDef<UserType>[] = [
     header: ({ column }) => <DataTableColumnHeader column={column} title="Plan" />,
     cell: ({ row }) => {
       const plan = row.getValue<string>('plan');
-      const planColors: Record<string, string> = {
-        Enterprise: 'text-primary border-primary/50',
-        Pro: 'text-warning border-warning/50',
-        Free: 'text-muted-foreground border-border',
+      const getPlanClasses = () => {
+        if (plan === 'Enterprise') return cn(mode.color.text.accent, mode.color.border.accent);
+        if (plan === 'Pro') return cn(mode.color.text.warning, 'border-warning/50');
+        return cn(mode.color.text.muted, mode.color.border.default);
       };
       return (
-        <span className={`border px-2 py-0.5 font-mono text-xs ${planColors[plan]}`}>
+        <span className={cn('border px-2 py-0.5 font-mono text-xs', getPlanClasses())}>
           {plan.toUpperCase()}
         </span>
       );
@@ -131,7 +147,7 @@ export const columns: ColumnDef<UserType>[] = [
     accessorKey: 'createdAt',
     header: ({ column }) => <DataTableColumnHeader column={column} title="Created" />,
     cell: ({ row }) => (
-      <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
+      <span className={cn(mode.font, 'text-xs', mode.color.text.muted)}>
         {new Date(row.getValue('createdAt')).toLocaleDateString()}
       </span>
     ),
@@ -140,7 +156,7 @@ export const columns: ColumnDef<UserType>[] = [
     accessorKey: 'lastLogin',
     header: ({ column }) => <DataTableColumnHeader column={column} title="Last Login" />,
     cell: ({ row }) => (
-      <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
+      <span className={cn(mode.font, 'text-xs', mode.color.text.muted)}>
         {row.getValue('lastLogin')}
       </span>
     ),
@@ -154,16 +170,22 @@ export const columns: ColumnDef<UserType>[] = [
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <button className="border-border hover:bg-muted flex h-8 w-8 items-center justify-center border">
+            <button
+              className={cn(
+                'flex h-8 w-8 items-center justify-center border',
+                mode.color.border.default,
+                mode.state.hover.bg
+              )}
+            >
               <span className="sr-only">Open menu</span>
               <MoreHorizontal className="h-4 w-4" />
             </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align="end"
-            className={cn(mode.radius, mode.font, 'border-border border text-xs')}
+            className={cn(mode.radius, mode.font, 'border text-xs', mode.color.border.default)}
           >
-            <DropdownMenuLabel className="text-muted-foreground">[ACTIONS]</DropdownMenuLabel>
+            <DropdownMenuLabel className={mode.color.text.muted}>[ACTIONS]</DropdownMenuLabel>
             <DropdownMenuItem onClick={() => navigator.clipboard.writeText(user.id)}>
               &gt; COPY ID
             </DropdownMenuItem>
@@ -176,7 +198,7 @@ export const columns: ColumnDef<UserType>[] = [
               <UserX className="mr-2 h-3 w-3" />
               &gt; SUSPEND
             </DropdownMenuItem>
-            <DropdownMenuItem className="text-destructive">
+            <DropdownMenuItem className={mode.color.text.danger}>
               <Trash2 className="mr-2 h-3 w-3" />
               &gt; DELETE
             </DropdownMenuItem>

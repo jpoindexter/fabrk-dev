@@ -91,7 +91,7 @@ function Calendar({
           // Grid
           month_grid: 'w-full border-collapse',
           weekdays: 'flex',
-          weekday: cn('text-muted-foreground w-9 text-xs font-semibold text-center', mode.font),
+          weekday: cn('w-9 text-xs font-semibold text-center', mode.color.text.muted, mode.font),
           week: 'flex w-full mt-2',
 
           // Day cells
@@ -100,23 +100,26 @@ function Calendar({
             'h-9 w-9 p-0 text-xs font-normal',
             mode.radius,
             mode.font,
-            'hover:bg-muted hover:text-foreground',
+            `hover:${mode.color.bg.muted} hover:${mode.color.text.primary}`,
             'focus-visible:outline-2 focus-visible:outline-ring',
             'disabled:pointer-events-none disabled:opacity-50'
           ),
 
           // States
-          selected:
-            'bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground',
-          today: 'bg-muted text-foreground font-semibold',
-          outside: 'text-muted-foreground opacity-50',
-          disabled: 'text-muted-foreground opacity-50',
+          selected: cn(
+            mode.color.bg.accent,
+            mode.color.text.inverse,
+            `hover:${mode.color.bg.accent} hover:${mode.color.text.inverse}`
+          ),
+          today: cn(mode.color.bg.muted, mode.color.text.primary, 'font-semibold'),
+          outside: cn(mode.color.text.muted, 'opacity-50'),
+          disabled: cn(mode.color.text.muted, 'opacity-50'),
           hidden: 'invisible',
 
           // Range selection
-          range_middle: 'bg-muted text-foreground',
-          range_start: cn('bg-primary text-primary-foreground', mode.radius),
-          range_end: cn('bg-primary text-primary-foreground', mode.radius),
+          range_middle: cn(mode.color.bg.muted, mode.color.text.primary),
+          range_start: cn(mode.color.bg.accent, mode.color.text.inverse, mode.radius),
+          range_end: cn(mode.color.bg.accent, mode.color.text.inverse, mode.radius),
 
           ...classNames,
         }}
@@ -126,7 +129,7 @@ function Calendar({
         {...props}
       />
       {(showTodayButton || showClearButton) && (
-        <div className="border-border flex gap-2 border-t p-4">
+        <div className={cn('flex gap-2 border-t p-4', mode.color.border.default)}>
           {showTodayButton && (
             <Button
               variant="outline"

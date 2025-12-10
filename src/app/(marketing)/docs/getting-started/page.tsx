@@ -1,6 +1,8 @@
 import { FeatureGuideTemplate } from '@/components/docs';
 import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
 import { Rocket, User, CreditCard, Mail, Database, Shield, Coins } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 export const metadata = {
   title: 'Getting Started - Fabrk Docs',
@@ -281,22 +283,30 @@ npm run db:push && npm run dev
         <DocsCard code="30" title="COMMON ERRORS">
           <div className="space-y-4">
             <div>
-              <p className="text-foreground mb-1 font-semibold">[ERROR]: PORT 3000 IN USE</p>
+              <p className={cn('mb-1 font-semibold', mode.color.text.primary)}>
+                [ERROR]: PORT 3000 IN USE
+              </p>
               <p>
-                Run on different port: <code className="bg-muted px-1">npm run dev -- -p 3001</code>
+                Run on different port:{' '}
+                <code className={cn('px-1', mode.color.bg.muted)}>npm run dev -- -p 3001</code>
               </p>
             </div>
             <div>
-              <p className="text-foreground mb-1 font-semibold">[ERROR]: CANNOT CONNECT DATABASE</p>
+              <p className={cn('mb-1 font-semibold', mode.color.text.primary)}>
+                [ERROR]: CANNOT CONNECT DATABASE
+              </p>
               <p>
                 Check DATABASE_URL in .env.local, ensure no extra spaces, database is running, IP
                 allowed
               </p>
             </div>
             <div>
-              <p className="text-foreground mb-1 font-semibold">[ERROR]: NEXTAUTH SECRET MISSING</p>
+              <p className={cn('mb-1 font-semibold', mode.color.text.primary)}>
+                [ERROR]: NEXTAUTH SECRET MISSING
+              </p>
               <p>
-                Generate with: <code className="bg-muted px-1">openssl rand -base64 32</code>
+                Generate with:{' '}
+                <code className={cn('px-1', mode.color.bg.muted)}>openssl rand -base64 32</code>
               </p>
             </div>
           </div>

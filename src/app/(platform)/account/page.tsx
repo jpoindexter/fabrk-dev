@@ -60,8 +60,12 @@ export default function AccountPage() {
   return (
     <div className="container mx-auto max-w-6xl px-6 py-8">
       <div className="mb-8">
-        <h1 className="text-4xl font-semibold tracking-tight">Account Settings</h1>
-        <p className="text-muted-foreground mt-2">Manage your account settings and preferences</p>
+        <h1 className={cn('text-4xl font-semibold tracking-tight', mode.color.text.primary)}>
+          Account Settings
+        </h1>
+        <p className={cn('mt-2', mode.color.text.muted)}>
+          Manage your account settings and preferences
+        </p>
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
@@ -73,8 +77,9 @@ export default function AccountPage() {
                 key={tab.value}
                 value={tab.value}
                 className={cn(
-                  'data-[state=active]:bg-background flex flex-col items-center gap-2 px-4 py-4',
-                  'hover:bg-primary hover:text-primary-foreground transition-colors'
+                  'flex flex-col items-center gap-2 px-4 py-4 transition-colors',
+                  `data-[state=active]:${mode.color.bg.base}`,
+                  `hover:${mode.color.bg.accent} hover:${mode.color.text.inverse}`
                 )}
               >
                 <Icon className="h-4 w-4" />
@@ -168,7 +173,8 @@ export default function AccountPage() {
                       key={tab.value}
                       onClick={() => setActiveTab(tab.value)}
                       className={cn(
-                        'text-foreground flex w-full items-start gap-6 p-6 text-left transition-colors',
+                        'flex w-full items-start gap-6 p-6 text-left transition-colors',
+                        mode.color.text.primary,
                         mode.radius,
                         'hover:bg-primary hover:text-primary-foreground',
                         activeTab === tab.value && 'bg-primary text-primary-foreground'
@@ -177,7 +183,7 @@ export default function AccountPage() {
                       <Icon className="mt-0.5 size-5" />
                       <div className="space-y-0.5">
                         <p className="text-sm font-medium">{tab.label}</p>
-                        <p className="text-muted-foreground text-xs">{tab.description}</p>
+                        <p className={cn('text-xs', mode.color.text.muted)}>{tab.description}</p>
                       </div>
                     </Button>
                   );
@@ -189,37 +195,41 @@ export default function AccountPage() {
               <CardHeader code="0xF1" title="ACCOUNT STATUS" />
               <CardContent className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground text-sm">Plan</span>
-                  <span className="text-sm font-medium">Pro</span>
+                  <span className={cn('text-sm', mode.color.text.muted)}>Plan</span>
+                  <span className={cn('text-sm font-medium', mode.color.text.primary)}>Pro</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground text-sm">Status</span>
-                  <span className="text-primary text-sm font-medium">Active</span>
+                  <span className={cn('text-sm', mode.color.text.muted)}>Status</span>
+                  <span className={cn('text-sm font-medium', mode.color.text.accent)}>Active</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground text-sm">Member Since</span>
-                  <span className="text-sm font-medium">Jan 2024</span>
+                  <span className={cn('text-sm', mode.color.text.muted)}>Member Since</span>
+                  <span className={cn('text-sm font-medium', mode.color.text.primary)}>
+                    Jan 2024
+                  </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground text-sm">Storage Used</span>
-                  <span className="text-sm font-medium">2.4 GB / 10 GB</span>
+                  <span className={cn('text-sm', mode.color.text.muted)}>Storage Used</span>
+                  <span className={cn('text-sm font-medium', mode.color.text.primary)}>
+                    2.4 GB / 10 GB
+                  </span>
                 </div>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader code="0xF2" title="NEED HELP" />
-              <CardContent className="text-muted-foreground space-y-2 text-sm">
+              <CardContent className={cn('space-y-2 text-sm', mode.color.text.muted)}>
                 <p>
                   Visit our{' '}
-                  <Link href="/docs" className="text-primary hover:underline">
+                  <Link href="/docs" className={cn('hover:underline', mode.color.text.accent)}>
                     documentation
                   </Link>{' '}
                   for detailed guides.
                 </p>
                 <p>
                   Contact{' '}
-                  <a href="/contact" className="text-primary hover:underline">
+                  <a href="/contact" className={cn('hover:underline', mode.color.text.accent)}>
                     support
                   </a>{' '}
                   for assistance.

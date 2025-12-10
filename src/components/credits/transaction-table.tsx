@@ -26,15 +26,15 @@ interface TransactionTableProps {
 function getTypeIcon(type: string) {
   switch (type) {
     case 'USAGE':
-      return <ArrowDown className="text-destructive h-3 w-3" />;
+      return <ArrowDown className={cn('h-3 w-3', mode.color.text.danger)} />;
     case 'SUBSCRIPTION_REFILL':
-      return <RefreshCw className="text-success h-3 w-3" />;
+      return <RefreshCw className={cn('h-3 w-3', mode.color.text.success)} />;
     case 'PURCHASE':
-      return <ArrowUp className="text-success h-3 w-3" />;
+      return <ArrowUp className={cn('h-3 w-3', mode.color.text.success)} />;
     case 'BONUS':
-      return <Gift className="text-primary h-3 w-3" />;
+      return <Gift className={cn('h-3 w-3', mode.color.text.accent)} />;
     case 'REFUND':
-      return <Undo2 className="text-warning h-3 w-3" />;
+      return <Undo2 className={cn('h-3 w-3', mode.color.text.warning)} />;
     default:
       return null;
   }
@@ -53,7 +53,7 @@ function formatDate(dateStr: string) {
 export function TransactionTable({ transactions, className }: TransactionTableProps) {
   if (transactions.length === 0) {
     return (
-      <div className={cn('text-muted-foreground py-8 text-center text-sm', mode.font, className)}>
+      <div className={cn('py-8 text-center text-sm', mode.color.text.muted, mode.font, className)}>
         No transactions yet
       </div>
     );
@@ -65,7 +65,8 @@ export function TransactionTable({ transactions, className }: TransactionTablePr
         <div
           key={tx.id}
           className={cn(
-            'border-border flex items-center justify-between border-b py-2 last:border-0',
+            'flex items-center justify-between border-b py-2 last:border-0',
+            mode.color.border.default,
             mode.font
           )}
         >
@@ -76,7 +77,7 @@ export function TransactionTable({ transactions, className }: TransactionTablePr
                 {tx.description || tx.type.replace('_', ' ')}
               </div>
               {tx.endpoint && (
-                <div className="text-muted-foreground text-[10px]">{tx.endpoint}</div>
+                <div className={cn('text-[10px]', mode.color.text.muted)}>{tx.endpoint}</div>
               )}
             </div>
           </div>
@@ -84,13 +85,15 @@ export function TransactionTable({ transactions, className }: TransactionTablePr
             <div
               className={cn(
                 'text-xs font-semibold',
-                tx.amount < 0 ? 'text-destructive' : 'text-success'
+                tx.amount < 0 ? mode.color.text.danger : mode.color.text.success
               )}
             >
               {tx.amount > 0 ? '+' : ''}
               {tx.amount}
             </div>
-            <div className="text-muted-foreground text-[10px]">{formatDate(tx.createdAt)}</div>
+            <div className={cn('text-[10px]', mode.color.text.muted)}>
+              {formatDate(tx.createdAt)}
+            </div>
           </div>
         </div>
       ))}

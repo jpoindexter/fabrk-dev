@@ -21,13 +21,22 @@ export function EmptyState({ icon: Icon, title, description, action, className }
   return (
     <div className={cn('flex flex-col items-center justify-center p-8 text-center', className)}>
       {Icon && (
-        <div className={cn('bg-muted mb-4 border p-4', mode.radius)}>
-          <Icon className="text-muted-foreground size-12" />
+        <div
+          className={cn(
+            'mb-4 border p-4',
+            mode.color.bg.muted,
+            mode.color.border.default,
+            mode.radius
+          )}
+        >
+          <Icon className={cn('size-12', mode.color.text.muted)} />
         </div>
       )}
-      <h3 className={cn('text-foreground mb-2 text-sm font-semibold', mode.font)}>{title}</h3>
+      <h3 className={cn('mb-2 text-sm font-semibold', mode.color.text.primary, mode.font)}>
+        {title}
+      </h3>
       {description && (
-        <p className={cn('text-muted-foreground mb-4 max-w-sm text-xs', mode.font)}>
+        <p className={cn('mb-4 max-w-sm text-xs', mode.color.text.muted, mode.font)}>
           {description}
         </p>
       )}

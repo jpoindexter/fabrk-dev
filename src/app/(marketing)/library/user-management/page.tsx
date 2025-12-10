@@ -187,11 +187,13 @@ function UserManagementPreview() {
   const filteredRowCount = useMemo(() => table.getFilteredRowModel().rows.length, [table]);
 
   return (
-    <div className="bg-background/50 min-h-[600px] p-4 sm:p-8">
+    <div className={cn('min-h-[600px] p-4 sm:p-8', mode.color.bg.base + '/50')}>
       <div className="space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <h1 className={cn(mode.font, 'text-2xl font-semibold')}>User Management</h1>
+          <h1 className={cn(mode.font, 'text-2xl font-semibold', mode.color.text.primary)}>
+            User Management
+          </h1>
           <Button className={cn(mode.radius, mode.font, 'text-xs')}>
             <UserPlus className="mr-2 h-4 w-4" />
             &gt; ADD USER
@@ -207,7 +209,7 @@ function UserManagementPreview() {
 
           <div className="p-4">
             <div className="mb-4 flex items-center justify-between">
-              <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
+              <div className={cn(mode.font, 'text-xs', mode.color.text.muted)}>
                 [ALL USERS]: COUNT={mockUsers.length} | FILTERED={filteredRowCount}
               </div>
               <Button
@@ -262,7 +264,13 @@ export default function UserManagementTemplate() {
                 <TabsTrigger
                   value="preview"
                   className={cn(
-                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
+                    'flex items-center gap-2 border-r px-4 py-2 text-xs',
+                    mode.color.border.default,
+                    `data-[state=active]:${mode.color.bg.accent}`,
+                    `data-[state=active]:${mode.color.text.inverse}`,
+                    `data-[state=inactive]:${mode.color.text.muted}`,
+                    `data-[state=inactive]:hover:${mode.color.bg.muted}`,
+                    `data-[state=inactive]:hover:${mode.color.text.primary}`,
                     mode.radius,
                     mode.font
                   )}
@@ -272,7 +280,13 @@ export default function UserManagementTemplate() {
                 <TabsTrigger
                   value="code"
                   className={cn(
-                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
+                    'flex items-center gap-2 border-r px-4 py-2 text-xs',
+                    mode.color.border.default,
+                    `data-[state=active]:${mode.color.bg.accent}`,
+                    `data-[state=active]:${mode.color.text.inverse}`,
+                    `data-[state=inactive]:${mode.color.text.muted}`,
+                    `data-[state=inactive]:hover:${mode.color.bg.muted}`,
+                    `data-[state=inactive]:hover:${mode.color.text.primary}`,
                     mode.radius,
                     mode.font
                   )}
@@ -307,13 +321,13 @@ export default function UserManagementTemplate() {
           <CardHeader code="0x02" title="FILE STRUCTURE" />
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-1 text-xs')}>
-              <div className="text-muted-foreground">[FILES]:</div>
+              <div className={mode.color.text.muted}>[FILES]:</div>
               <div className="space-y-1 pl-4">
                 <div>
-                  <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">admin/users/</span>
-                  <span className="text-foreground">page.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Copy template here</span>
+                  <span className={mode.color.text.accent}>app/</span>
+                  <span className={mode.color.text.muted}>admin/users/</span>
+                  <span className={mode.color.text.primary}>page.tsx</span>
+                  <span className={cn('ml-4', mode.color.text.muted)}>← Copy template here</span>
                 </div>
               </div>
             </div>

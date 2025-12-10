@@ -23,7 +23,10 @@ const DropdownMenuSubTrigger = React.forwardRef<
     ref={ref}
     className={cn(
       // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile
-      'hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground data-[state=open]:bg-primary data-[state=open]:text-primary-foreground flex h-[48px] cursor-default items-center px-2 text-xs transition-colors select-none focus-visible:outline-none sm:h-auto sm:py-2',
+      'flex h-[48px] cursor-default items-center px-2 text-xs transition-colors select-none focus-visible:outline-none sm:h-auto sm:py-2',
+      `hover:${mode.color.bg.accent} hover:${mode.color.text.inverse}`,
+      `focus:${mode.color.bg.accent} focus:${mode.color.text.inverse}`,
+      `data-[state=open]:${mode.color.bg.accent} data-[state=open]:${mode.color.text.inverse}`,
       mode.radius,
       mode.font,
       inset && 'pl-8',
@@ -44,7 +47,10 @@ const DropdownMenuSubContent = React.forwardRef<
   <DropdownMenuPrimitive.SubContent
     ref={ref}
     className={cn(
-      'bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] overflow-hidden border p-2',
+      'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] overflow-hidden border p-2',
+      mode.color.bg.elevated,
+      mode.color.text.primary,
+      mode.color.border.default,
       mode.radius,
       mode.font,
       className
@@ -105,8 +111,11 @@ const DropdownMenuContent = React.forwardRef<
       data-slot="dropdown-menu-content"
       sideOffset={sideOffset}
       className={cn(
-        'bg-popover text-popover-foreground z-50 min-w-[8rem] overflow-hidden border p-2',
+        'z-50 min-w-[8rem] overflow-hidden border p-2',
         'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
+        mode.color.bg.elevated,
+        mode.color.text.primary,
+        mode.color.border.default,
         mode.radius,
         mode.font,
         className
@@ -162,7 +171,9 @@ const DropdownMenuItem = React.forwardRef<
     data-slot="dropdown-menu-item"
     className={cn(
       // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile (accounts for subpixel rendering)
-      'hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground relative flex h-[48px] cursor-default items-center px-2 text-xs transition-colors select-none focus-visible:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-2',
+      'relative flex h-[48px] cursor-default items-center px-2 text-xs transition-colors select-none focus-visible:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-2',
+      `hover:${mode.color.bg.accent} hover:${mode.color.text.inverse}`,
+      `focus:${mode.color.bg.accent} focus:${mode.color.text.inverse}`,
       mode.radius,
       mode.font,
       inset && 'pl-8',
@@ -181,7 +192,9 @@ const DropdownMenuCheckboxItem = React.forwardRef<
     ref={ref}
     className={cn(
       // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile
-      'hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground relative flex h-[48px] cursor-default items-center pr-2 pl-8 text-xs transition-colors select-none focus-visible:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-2',
+      'relative flex h-[48px] cursor-default items-center pr-2 pl-8 text-xs transition-colors select-none focus-visible:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-2',
+      `hover:${mode.color.bg.accent} hover:${mode.color.text.inverse}`,
+      `focus:${mode.color.bg.accent} focus:${mode.color.text.inverse}`,
       mode.radius,
       mode.font,
       className
@@ -207,7 +220,9 @@ const DropdownMenuRadioItem = React.forwardRef<
     ref={ref}
     className={cn(
       // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile
-      'hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground relative flex h-[48px] cursor-default items-center pr-2 pl-8 text-xs transition-colors select-none focus-visible:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-2',
+      'relative flex h-[48px] cursor-default items-center pr-2 pl-8 text-xs transition-colors select-none focus-visible:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-2',
+      `hover:${mode.color.bg.accent} hover:${mode.color.text.inverse}`,
+      `focus:${mode.color.bg.accent} focus:${mode.color.text.inverse}`,
       mode.radius,
       mode.font,
       className
@@ -244,7 +259,7 @@ const DropdownMenuSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DropdownMenuPrimitive.Separator
     ref={ref}
-    className={cn('bg-border -mx-1 my-1 h-px', className)}
+    className={cn('-mx-1 my-1 h-px', mode.color.bg.muted, className)}
     {...props}
   />
 ));
@@ -253,7 +268,7 @@ DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName;
 const DropdownMenuShortcut = ({ className, ...props }: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
     <span
-      className={cn('text-muted-foreground ml-auto text-xs tracking-widest', mode.font, className)}
+      className={cn('ml-auto text-xs tracking-widest', mode.color.text.muted, mode.font, className)}
       {...props}
     />
   );

@@ -186,16 +186,22 @@ export function DocsNav() {
   const isRoot = pathname === '/docs';
 
   return (
-    <nav className="border-border bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
+    <nav
+      className={cn(
+        'sticky top-0 z-50 w-full border-b backdrop-blur',
+        mode.color.border.default,
+        'bg-background/95 supports-[backdrop-filter]:bg-background/60'
+      )}
+    >
       <div className="flex h-16 w-full items-center justify-between gap-4 px-4 sm:px-6">
         {/* Logo/Home Link - Terminal Style */}
         <Link
           href="/"
           className="flex items-center gap-2 font-mono transition-opacity hover:opacity-80"
         >
-          <span className="text-primary text-xs">&gt;</span>
+          <span className={cn('text-xs', mode.color.text.accent)}>&gt;</span>
           <span className="text-sm font-semibold tracking-tight">FABRK</span>
-          <span className="text-muted-foreground hidden text-xs sm:inline">DOCS</span>
+          <span className={cn('hidden text-xs sm:inline', mode.color.text.muted)}>DOCS</span>
         </Link>
 
         {/* Breadcrumbs - Center */}
@@ -205,7 +211,7 @@ export function DocsNav() {
               {/* Root docs level */}
               {isRoot && (
                 <BreadcrumbItem>
-                  <BreadcrumbPage className="text-foreground">DOCS</BreadcrumbPage>
+                  <BreadcrumbPage className={mode.color.text.primary}>DOCS</BreadcrumbPage>
                 </BreadcrumbItem>
               )}
 
@@ -214,7 +220,10 @@ export function DocsNav() {
                 <>
                   <BreadcrumbItem>
                     <BreadcrumbLink asChild>
-                      <Link href="/docs" className="text-muted-foreground hover:text-foreground">
+                      <Link
+                        href="/docs"
+                        className={cn(mode.color.text.muted, `hover:${mode.color.text.primary}`)}
+                      >
                         DOCS
                       </Link>
                     </BreadcrumbLink>
@@ -224,7 +233,7 @@ export function DocsNav() {
                     <BreadcrumbLink asChild>
                       <Link
                         href={section.href}
-                        className="text-muted-foreground hover:text-foreground"
+                        className={cn(mode.color.text.muted, `hover:${mode.color.text.primary}`)}
                       >
                         {toDisplayCase(section.title)}
                       </Link>
@@ -232,7 +241,7 @@ export function DocsNav() {
                   </BreadcrumbItem>
                   <BreadcrumbSeparator>/</BreadcrumbSeparator>
                   <BreadcrumbItem>
-                    <BreadcrumbPage className="text-foreground">
+                    <BreadcrumbPage className={mode.color.text.primary}>
                       {toDisplayCase(page.title)}
                     </BreadcrumbPage>
                   </BreadcrumbItem>
@@ -244,14 +253,17 @@ export function DocsNav() {
                 <>
                   <BreadcrumbItem>
                     <BreadcrumbLink asChild>
-                      <Link href="/docs" className="text-muted-foreground hover:text-foreground">
+                      <Link
+                        href="/docs"
+                        className={cn(mode.color.text.muted, `hover:${mode.color.text.primary}`)}
+                      >
                         DOCS
                       </Link>
                     </BreadcrumbLink>
                   </BreadcrumbItem>
                   <BreadcrumbSeparator>/</BreadcrumbSeparator>
                   <BreadcrumbItem>
-                    <BreadcrumbPage className="text-foreground">
+                    <BreadcrumbPage className={mode.color.text.primary}>
                       {toDisplayCase(pathname.split('/').pop() || '')}
                     </BreadcrumbPage>
                   </BreadcrumbItem>

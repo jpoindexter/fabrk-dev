@@ -4,7 +4,7 @@ import { mode } from '@/design-system';
 
 const Table = React.forwardRef<HTMLTableElement, React.HTMLAttributes<HTMLTableElement>>(
   ({ className, ...props }, ref) => (
-    <div className="border-border relative w-full overflow-auto border">
+    <div className={cn('relative w-full overflow-auto border', mode.color.border.default)}>
       <table
         ref={ref}
         className={cn('w-full caption-bottom text-xs', mode.font, className)}
@@ -37,7 +37,12 @@ const TableFooter = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <tfoot
     ref={ref}
-    className={cn('bg-muted/50 border-t font-semibold [&>tr]:last:border-b-0', className)}
+    className={cn(
+      'border-t font-semibold [&>tr]:last:border-b-0',
+      mode.color.bg.muted,
+      mode.color.border.default,
+      className
+    )}
     {...props}
   />
 ));
@@ -48,7 +53,10 @@ const TableRow = React.forwardRef<HTMLTableRowElement, React.HTMLAttributes<HTML
     <tr
       ref={ref}
       className={cn(
-        'border-border hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors',
+        'border-b transition-colors',
+        `hover:${mode.color.bg.muted}`,
+        `data-[state=selected]:${mode.color.bg.muted}`,
+        mode.color.border.default,
         className
       )}
       {...props}
@@ -65,7 +73,9 @@ const TableHead = React.forwardRef<
     ref={ref}
     scope={scope}
     className={cn(
-      'bg-muted text-muted-foreground h-12 rounded-none px-4 text-left align-middle text-xs font-semibold [&:has([role=checkbox])]:pr-0',
+      'h-12 rounded-none px-4 text-left align-middle text-xs font-semibold [&:has([role=checkbox])]:pr-0',
+      mode.color.bg.muted,
+      mode.color.text.muted,
       mode.font,
       className
     )}
@@ -92,7 +102,7 @@ const TableCaption = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <caption
     ref={ref}
-    className={cn('text-muted-foreground mt-4 text-xs', mode.font, className)}
+    className={cn('mt-4 text-xs', mode.color.text.muted, mode.font, className)}
     {...props}
   />
 ));
