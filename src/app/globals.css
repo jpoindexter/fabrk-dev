@@ -5,15 +5,19 @@
  */
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@import '../styles/crt-effects.css';
 
 @plugin '@tailwindcss/typography';
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
 
 @keyframes bar-grow {
   0% {
     transform: scaleY(0);
     transform-origin: bottom;
   }
-
   100% {
     transform: scaleY(1);
     transform-origin: bottom;
@@ -25,7 +29,6 @@
     opacity: 0;
     transform: translateY(10px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -37,12 +40,10 @@
      TERMINAL THEME STYLING
      ============================================ */
 
-  /* Dark overlay for alert dialogs */
   [data-visual-mode='terminal'] [data-slot='alert-dialog-overlay'] {
     background-color: rgba(0, 0, 0, 0.8) !important;
   }
 
-  /* Sonner toast terminal styling */
   [data-visual-mode='terminal'] [data-sonner-toast] {
     border-radius: 0 !important;
     font-family: var(--font-mono) !important;
@@ -53,7 +54,6 @@
     font-family: var(--font-mono) !important;
   }
 
-  /* Theme-aware text selection */
   ::selection {
     background-color: oklch(var(--primary));
     color: oklch(var(--primary-foreground));
@@ -61,10 +61,7 @@
 
   /* ============================================
      REACT-DAY-PICKER OVERRIDES
-     Terminal aesthetic - sharp corners, design tokens
      ============================================ */
-
-  /* Reset all react-day-picker CSS custom properties */
   [data-visual-mode='terminal'] [data-slot='calendar'] {
     --rdp-accent-color: oklch(var(--primary)) !important;
     --rdp-accent-background-color: oklch(var(--primary)) !important;
@@ -83,97 +80,25 @@
     --rdp-range_middle-background: oklch(var(--muted)) !important;
   }
 
-  /* Terminal aesthetic: Sharp corners on ALL elements */
   [data-visual-mode='terminal'] [data-slot='calendar'] * {
     border-radius: 0 !important;
   }
 
-  /* Selected day - use primary color */
-  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-selected .rdp-day_button,
-  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-day_button[aria-selected='true'],
-  [data-visual-mode='terminal'] [data-slot='calendar'] [aria-selected='true'] > .rdp-day_button {
-    background-color: oklch(var(--primary)) !important;
-    color: oklch(var(--primary-foreground)) !important;
-  }
-
-  /* Today - use muted background */
-  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-today .rdp-day_button,
-  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-day_button[data-today='true'] {
-    background-color: oklch(var(--muted)) !important;
-    color: oklch(var(--foreground)) !important;
-    font-weight: 600 !important;
-  }
-
-  /* Today that is also selected - primary takes precedence */
-  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-today.rdp-selected .rdp-day_button,
-  [data-visual-mode='terminal']
-    [data-slot='calendar']
-    .rdp-today
-    [aria-selected='true']
-    > .rdp-day_button {
-    background-color: oklch(var(--primary)) !important;
-    color: oklch(var(--primary-foreground)) !important;
-  }
-
-  /* Range selection - middle days */
-  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-range_middle .rdp-day_button,
-  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-day_button.rdp-range_middle {
-    background-color: oklch(var(--muted)) !important;
-    color: oklch(var(--foreground)) !important;
-  }
-
-  /* Range start and end */
-  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-range_start .rdp-day_button,
-  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-range_end .rdp-day_button {
-    background-color: oklch(var(--primary)) !important;
-    color: oklch(var(--primary-foreground)) !important;
-  }
-
-  /* Day button hover */
-  [data-visual-mode='terminal']
-    [data-slot='calendar']
-    .rdp-day_button:hover:not([aria-selected='true']) {
-    background-color: oklch(var(--muted)) !important;
-    color: oklch(var(--foreground)) !important;
-  }
-
-  /* Weekday headers - terminal style */
-  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-weekday {
-    color: oklch(var(--muted-foreground)) !important;
-    font-family: var(--font-mono) !important;
-    font-size: 0.75rem !important;
-    font-weight: 600 !important;
-  }
-
-  /* Caption/month label - terminal style */
-  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-caption_label,
-  [data-visual-mode='terminal'] [data-slot='calendar'] .rdp-month_caption {
-    font-family: var(--font-mono) !important;
-    font-size: 0.875rem !important;
-    font-weight: 600 !important;
-  }
-
   /* ============================================
      MODERN THEME STYLING
-     Rounded edges, sans-serif, subtle shadows
      ============================================ */
-
-  /* Modern theme: rounded corners */
   [data-visual-mode='modern'] * {
     border-radius: 0.5rem !important;
   }
 
-  /* Modern theme: sans-serif font */
   [data-visual-mode='modern'] {
     font-family: var(--font-sans) !important;
   }
 
-  /* Modern theme: alert dialogs */
   [data-visual-mode='modern'] [data-slot='alert-dialog-overlay'] {
     background-color: rgba(0, 0, 0, 0.5) !important;
   }
 
-  /* Modern theme: toast styling */
   [data-visual-mode='modern'] [data-sonner-toast] {
     border-radius: 0.5rem !important;
     font-family: var(--font-sans) !important;
@@ -191,7 +116,7 @@
   /* Border radius */
   --radius: 0.5rem;
 
-  /* Color mappings for Tailwind v4 - using OKLCH for DaisyUI compatibility */
+  /* Color mappings for Tailwind v4 */
   --color-background: oklch(var(--background));
   --color-foreground: oklch(var(--foreground));
   --color-card: oklch(var(--card));
@@ -217,40 +142,113 @@
   --color-border: oklch(var(--border));
   --color-input: oklch(var(--input));
   --color-ring: oklch(var(--ring));
+
+  /* Chart colors */
   --color-chart-1: oklch(var(--chart-1));
   --color-chart-2: oklch(var(--chart-2));
   --color-chart-3: oklch(var(--chart-3));
   --color-chart-4: oklch(var(--chart-4));
   --color-chart-5: oklch(var(--chart-5));
+
+  /* New Semantic Tokens */
+  --color-bg-canvas: oklch(var(--color-bg-canvas));
+  --color-bg-surface: oklch(var(--color-bg-surface));
+  --color-bg-elevated: oklch(var(--color-bg-elevated));
+  --color-bg-sunken: oklch(var(--color-bg-sunken));
+
+  --color-text-primary: oklch(var(--color-text-primary));
+  --color-text-secondary: oklch(var(--color-text-secondary));
+  --color-text-tertiary: oklch(var(--color-text-tertiary));
+  --color-text-inverse: oklch(var(--color-text-inverse));
+  --color-text-disabled: oklch(var(--color-text-disabled));
 }
 
+/* ============================================
+   ROOT VARIABLES (Default: Light Theme)
+   ============================================ */
 :root {
-  /* Black Theme - Light Mode - OKLCH format: lightness% chroma hue */
-  --background: 100% 0 0;
-  --foreground: 0% 0 0;
-  --card: 100% 0 0;
-  --card-foreground: 0% 0 0;
-  --popover: 100% 0 0;
-  --popover-foreground: 0% 0 0;
-  --primary: 0% 0 0;
-  --primary-foreground: 100% 0 0;
+  /* -------------------------------------- */
+  /* NEW SEMANTIC ARCHITECTURE (Base)       */
+  /* -------------------------------------- */
+
+  /* Surface Hierarchy */
+  --color-bg-canvas: 99% 0 0; /* #FAFAFA */
+  --color-bg-surface: 100% 0 0; /* #FFFFFF */
+  --color-bg-elevated: 100% 0 0; /* #FFFFFF */
+  --color-bg-sunken: 97% 0 0; /* #F5F5F5 */
+
+  /* Text Hierarchy (WCAG AAA) */
+  --color-text-primary: 0% 0 0; /* #000000 */
+  --color-text-secondary: 35% 0 0; /* #595959 */
+  --color-text-tertiary: 50% 0 0; /* #808080 */
+  --color-text-inverse: 100% 0 0; /* #FFFFFF */
+  --color-text-disabled: 68% 0 0; /* #ADADAD */
+
+  /* Border Hierarchy */
+  --color-border-default: 93% 0 0; /* #EAEAEA */
+  --color-border-muted: 97% 0 0; /* #F5F5F5 */
+  --color-border-strong: 70% 0 0; /* #B3B3B3 */
+  --color-border-focus: 0% 0 0; /* #000000 */
+
+  /* Status Colors (WCAG AAA Compliant) */
+  --color-status-success: 35% 0.18 145; /* Dark green (7.2:1) */
+  --color-status-success-bg: 95% 0.05 145; /* Light green bg */
+  --color-status-warning: 40% 0.18 80; /* Dark orange (7.8:1) */
+  --color-status-warning-bg: 95% 0.05 80; /* Light orange bg */
+  --color-status-error: 45% 0.22 15; /* Dark red (7.5:1) */
+  --color-status-error-bg: 95% 0.05 15; /* Light red bg */
+  --color-status-info: 35% 0.18 230; /* Dark blue (7.1:1) */
+  --color-status-info-bg: 95% 0.05 230; /* Light blue bg */
+
+  /* State Layers */
+  --state-hover-opacity: 0.08;
+  --state-active-opacity: 0.12;
+  --state-focus-opacity: 0.12;
+  --state-disabled-opacity: 0.38;
+
+  /* -------------------------------------- */
+  /* LEGACY MAPPING (Tailwind Compatibility)*/
+  /* -------------------------------------- */
+
+  --background: var(--color-bg-canvas);
+  --foreground: var(--color-text-primary);
+
+  --card: var(--color-bg-surface);
+  --card-foreground: var(--color-text-primary);
+
+  --popover: var(--color-bg-elevated);
+  --popover-foreground: var(--color-text-primary);
+
+  --primary: 0% 0 0; /* Black */
+  --primary-foreground: 100% 0 0; /* White */
+
   --secondary: 96% 0 0;
   --secondary-foreground: 0% 0 0;
-  --muted: 96% 0 0;
-  --muted-foreground: 40% 0 0;
+
+  --muted: var(--color-bg-sunken);
+  --muted-foreground: var(--color-text-secondary);
+
   --accent: 96% 0 0;
   --accent-foreground: 0% 0 0;
-  --destructive: 45% 0.22 13.428;
+
+  --destructive: var(--color-status-error);
   --destructive-foreground: 100% 0 0;
-  --success: 45% 0.15 163.223;
+
+  /* FIXED: Now using AAA compliant colors */
+  --success: var(--color-status-success);
   --success-foreground: 100% 0 0;
-  --warning: 82% 0.189 84.429;
-  --warning-foreground: 0% 0 0;
-  --info: 74% 0.16 232.661;
+
+  --warning: var(--color-status-warning);
+  --warning-foreground: 0% 0 0; /* Black text on orange is better? Audit said black on solid */
+
+  --info: var(--color-status-info);
   --info-foreground: 100% 0 0;
-  --border: 90% 0 0;
-  --input: 90% 0 0;
+
+  --border: var(--color-border-default);
+  --input: var(--color-border-default);
   --ring: 0% 0 0;
+
+  /* Chart Colors */
   --chart-1: 65% 0.15 25;
   --chart-2: 60% 0.12 175;
   --chart-3: 45% 0.08 220;
@@ -264,268 +262,96 @@
 }
 
 /* ============================================
-   COLOR THEMES
-   Professional light and dark themes
+   THEME DEFINITIONS
    ============================================ */
 
-/* Light - WCAG AAA Compliant (7:1 minimum contrast) */
+/* Light Theme (Maps to Root/Default) */
 [data-theme='light'] {
-  /* ============================================
-     LEGACY TOKENS (Keep for backward compatibility)
-     ============================================ */
-  --background: 99% 0 0;
-  /* Off-white #FAFAFA - Page background */
-  --foreground: 0% 0 0;
-  /* Pure black #000000 - Primary text (21:1 contrast) */
-  --card: 100% 0 0;
-  /* Pure white #FFFFFF - Card background */
-  --card-foreground: 0% 0 0;
-  /* Pure black - Card text */
-  --popover: 100% 0 0;
-  /* Popover background */
-  --popover-foreground: 0% 0 0;
-  /* Popover text */
-  --primary: 0% 0 0;
-  /* Pure black #000000 - Primary brand (21:1) */
-  --primary-foreground: 100% 0 0;
-  /* Pure white #FFFFFF - Text on primary */
-  --secondary: 12% 0 0;
-  /* Very dark gray #1F1F1F (15.6:1) */
-  --secondary-foreground: 100% 0 0;
-  /* White for contrast */
-  --accent: 40% 0.21 250;
-  /* Dark blue #0051CC (7.7:1 contrast) - FIXED from 55% */
-  --accent-foreground: 100% 0 0;
-  /* White on blue */
-  --muted: 97% 0 0;
-  /* Very light gray #F5F5F5 - Muted backgrounds */
-  --muted-foreground: 45% 0 0;
-  /* Medium gray #666666 (4.6:1 contrast) */
-  --destructive: 45% 0.22 13.428;
-  /* Dark red (7.5:1 contrast) */
-  --destructive-foreground: 100% 0 0;
-  /* White on red */
-  --success: 35% 0.18 145;
-  /* Dark green (7.2:1 contrast) - FIXED from 55% */
-  --success-foreground: 100% 0 0;
-  /* White on green */
-  --warning: 40% 0.18 80;
-  /* Dark orange (7.8:1 contrast) - FIXED from 75% */
-  --warning-foreground: 100% 0 0;
-  /* White on orange - FIXED from black */
-  --info: 35% 0.18 230;
-  /* Dark blue (7.1:1 contrast) - FIXED from 60% */
-  --info-foreground: 100% 0 0;
-  /* White on blue */
-  --border: 93% 0 0;
-  /* Light gray border #EAEAEA */
-  --input: 93% 0 0;
-  /* Same as border */
-  --ring: 0% 0 0;
-  /* Black ring for focus */
-
-  /* ============================================
-     NEW SEMANTIC TOKENS (Industry Standard)
-     ============================================ */
-
-  /* Surface Hierarchy */
-  --color-bg-canvas: 99% 0 0;
-  /* Page background */
-  --color-bg-surface: 100% 0 0;
-  /* Cards, panels */
-  --color-bg-elevated: 100% 0 0;
-  /* Modals, dropdowns */
-  --color-bg-sunken: 97% 0 0;
-  /* Wells, insets */
-
-  /* Text Hierarchy (WCAG AAA) */
-  --color-text-primary: 0% 0 0;
-  /* Body text (21:1) */
-  --color-text-secondary: 35% 0 0;
-  /* Supporting (7.5:1) */
-  --color-text-tertiary: 50% 0 0;
-  /* De-emphasized (4.6:1) */
-  --color-text-inverse: 100% 0 0;
-  /* On dark backgrounds */
-  --color-text-disabled: 68% 0 0;
-  /* Disabled (3:1) */
-
-  /* Border Hierarchy */
-  --color-border-default: 93% 0 0;
-  /* Standard borders */
-  --color-border-muted: 97% 0 0;
-  /* Subtle dividers */
-  --color-border-strong: 70% 0 0;
-  /* Emphasis */
-  --color-border-focus: 0% 0 0;
-  /* Focus outlines */
-
-  /* Status Colors (WCAG AAA) */
-  --color-status-success: 35% 0.18 145;
-  /* Dark green (7.2:1) */
-  --color-status-success-bg: 95% 0.05 145;
-  /* Light green bg */
-  --color-status-warning: 40% 0.18 80;
-  /* Dark orange (7.8:1) */
-  --color-status-warning-bg: 95% 0.05 80;
-  /* Light orange bg */
-  --color-status-error: 45% 0.22 15;
-  /* Dark red (7.5:1) */
-  --color-status-error-bg: 95% 0.05 15;
-  /* Light red bg */
-  --color-status-info: 35% 0.18 230;
-  /* Dark blue (7.1:1) */
-  --color-status-info-bg: 95% 0.05 230;
-  /* Light blue bg */
-
-  /* State Layers (Opacity-based) */
-  --state-hover-opacity: 0.08;
-  --state-active-opacity: 0.12;
-  --state-focus-opacity: 0.12;
-  --state-disabled-opacity: 0.38;
-
-  /* Elevation (Material Design 3) */
-  --shadow-1: 0 1px 2px 0 oklch(0% 0 0 / 0.05);
-  --shadow-2: 0 4px 6px -1px oklch(0% 0 0 / 0.1);
-  --shadow-3: 0 10px 15px -3px oklch(0% 0 0 / 0.1);
-  --shadow-4: 0 20px 25px -5px oklch(0% 0 0 / 0.1);
-
-  /* Chart Colors (Keep existing) */
-  --chart-1: 49% 0.3 275;
-  --chart-2: 55% 0.25 342;
-  --chart-3: 76% 0.18 183;
-  --chart-4: 65% 0.15 120;
-  --chart-5: 70% 0.18 45;
-  --chart-6: 60% 0.22 295;
-  --chart-7: 68% 0.2 25;
-  --chart-8: 72% 0.15 200;
-  --chart-9: 58% 0.12 160;
-  --status-away: 75% 0.15 60;
+  /* Inherits everything from :root */
 }
 
-/* Dark - WCAG AAA Compliant (7:1 minimum contrast) */
+/* Dark Theme (Monokai Night) - WCAG AAA */
 [data-theme='dark'] {
-  /* ============================================
-     LEGACY TOKENS (Keep for backward compatibility)
-     ============================================ */
-  --background: 0% 0 0;
-  /* Pure black #000000 - Page background */
-  --foreground: 100% 0 0;
-  /* Pure white #FFFFFF - Primary text (21:1 contrast) */
-  --card: 10% 0 0;
-  /* Very dark gray #1A1A1A - Card background */
-  --card-foreground: 100% 0 0;
-  /* Pure white - Card text */
-  --popover: 15% 0 0;
-  /* Elevated background */
-  --popover-foreground: 100% 0 0;
-  /* Popover text */
-  --primary: 100% 0 0;
-  /* Pure white #FFFFFF - Primary brand (21:1) */
-  --primary-foreground: 0% 0 0;
-  /* Pure black #000000 - Text on primary */
-  --secondary: 90% 0 0;
-  /* Light gray (15.6:1) */
-  --secondary-foreground: 0% 0 0;
-  /* Black for contrast */
-  --accent: 70% 0.21 250;
-  /* Bright blue #5A9FFF (12:1 contrast) - FIXED from 55% */
-  --accent-foreground: 0% 0 0;
-  /* Black on bright blue */
-  --muted: 12% 0 0;
-  /* Dark gray #1A1A1A - Muted backgrounds */
-  --muted-foreground: 60% 0 0;
-  /* Light gray #999999 (5.1:1 contrast) */
-  --destructive: 70% 0.22 15;
-  /* Light red (10.5:1 contrast) - FIXED from 55% */
-  --destructive-foreground: 0% 0 0;
-  /* Black on red */
-  --success: 70% 0.18 145;
-  /* Light green (11:1 contrast) - FIXED from 65% */
-  --success-foreground: 0% 0 0;
-  /* Black on green - FIXED */
-  --warning: 75% 0.18 80;
-  /* Light orange (13:1 contrast) - Keep */
-  --warning-foreground: 0% 0 0;
-  /* Black on orange - FIXED */
-  --info: 75% 0.18 230;
-  /* Light blue (13.5:1 contrast) - FIXED from 70% */
-  --info-foreground: 0% 0 0;
-  /* Black on blue - FIXED */
-  --border: 22% 0 0;
-  /* Dark gray border #383838 (3:1 contrast) - Keep */
-  --input: 22% 0 0;
-  /* Same as border */
-  --ring: 100% 0 0;
-  /* White ring for focus */
-
-  /* ============================================
-     NEW SEMANTIC TOKENS (Industry Standard)
-     ============================================ */
+  /* -------------------------------------- */
+  /* NEW SEMANTIC ARCHITECTURE (Dark)       */
+  /* -------------------------------------- */
 
   /* Surface Hierarchy */
-  --color-bg-canvas: 0% 0 0;
-  /* Page background */
-  --color-bg-surface: 10% 0 0;
-  /* Cards, panels */
-  --color-bg-elevated: 15% 0 0;
-  /* Modals, dropdowns */
-  --color-bg-sunken: 5% 0 0;
-  /* Wells, insets */
+  --color-bg-canvas: 13% 0.01 0; /* #1f1f1f */
+  --color-bg-surface: 18% 0.01 0; /* #2d2d2d */
+  --color-bg-elevated: 20% 0.01 0; /* #333333 */
+  --color-bg-sunken: 10% 0.01 0; /* #1a1a1a */
 
-  /* Text Hierarchy (WCAG AAA) */
-  --color-text-primary: 100% 0 0;
-  /* Body text (21:1) */
-  --color-text-secondary: 70% 0 0;
-  /* Supporting (9.2:1) */
-  --color-text-tertiary: 55% 0 0;
-  /* De-emphasized (5.4:1) */
-  --color-text-inverse: 0% 0 0;
-  /* On light backgrounds */
-  --color-text-disabled: 40% 0 0;
-  /* Disabled (3.4:1) */
+  /* Text Hierarchy */
+  --color-text-primary: 97% 0 0; /* #f8f8f8 */
+  --color-text-secondary: 70% 0 0; /* #b3b3b3 */
+  --color-text-tertiary: 55% 0 0; /* #8c8c8c */
+  --color-text-inverse: 13% 0.01 0; /* #1f1f1f */
+  --color-text-disabled: 40% 0 0; /* #666666 */
 
   /* Border Hierarchy */
-  --color-border-default: 22% 0 0;
-  /* Standard borders */
-  --color-border-muted: 12% 0 0;
-  /* Subtle dividers */
-  --color-border-strong: 35% 0 0;
-  /* Emphasis */
-  --color-border-focus: 100% 0 0;
-  /* Focus outlines */
+  --color-border-default: 35% 0.01 0; /* #595959 */
+  --color-border-muted: 25% 0.01 0; /* #404040 */
+  --color-border-strong: 50% 0 0; /* #808080 */
+  --color-border-focus: 100% 0 0; /* #ffffff */
 
-  /* Status Colors (WCAG AAA) */
-  --color-status-success: 70% 0.18 145;
-  /* Light green (11:1) */
+  /* Status Colors */
+  --color-status-success: 76% 0.26 122; /* #a6e22e (Monokai Green) */
   --color-status-success-bg: 15% 0.05 145;
-  /* Dark green bg */
-  --color-status-warning: 75% 0.18 80;
-  /* Light orange (13:1) */
+  --color-status-warning: 82% 0.2 80; /* #e6db74 (Monokai Yellow) */
   --color-status-warning-bg: 15% 0.05 80;
-  /* Dark orange bg */
-  --color-status-error: 70% 0.22 15;
-  /* Light red (10.5:1) */
-  --color-status-error-bg: 15% 0.05 15;
-  /* Dark red bg */
-  --color-status-info: 75% 0.18 230;
-  /* Light blue (13.5:1) */
-  --color-status-info-bg: 15% 0.05 230;
-  /* Dark blue bg */
+  --color-status-error: 71% 0.28 343; /* #f92672 (Monokai Pink) */
+  --color-status-error-bg: 15% 0.05 343;
+  --color-status-info: 78% 0.26 275; /* #ae81ff (Monokai Purple) */
+  --color-status-info-bg: 15% 0.05 275;
 
-  /* State Layers (Opacity-based) */
+  /* State Layers */
   --state-hover-opacity: 0.08;
   --state-active-opacity: 0.12;
   --state-focus-opacity: 0.12;
   --state-disabled-opacity: 0.38;
 
-  /* Elevation (Material Design 3) */
-  --shadow-1: 0 1px 2px 0 oklch(0% 0 0 / 0.3);
-  --shadow-2: 0 4px 6px -1px oklch(0% 0 0 / 0.5);
-  --shadow-3: 0 10px 15px -3px oklch(0% 0 0 / 0.5);
-  --shadow-4: 0 20px 25px -5px oklch(0% 0 0 / 0.5);
+  /* -------------------------------------- */
+  /* LEGACY MAPPING                         */
+  /* -------------------------------------- */
+  --background: var(--color-bg-canvas);
+  --foreground: var(--color-text-primary);
 
-  /* Chart Colors (Keep existing) */
+  --card: var(--color-bg-surface);
+  --card-foreground: var(--color-text-primary);
+
+  --popover: var(--color-bg-elevated);
+  --popover-foreground: var(--color-text-primary);
+
+  --primary: 97% 0 0; /* Monokai White */
+  --primary-foreground: 13% 0.01 0;
+
+  --secondary: 55% 0.02 0;
+  --secondary-foreground: 97% 0 0;
+
+  --muted: var(--color-bg-sunken);
+  --muted-foreground: var(--color-text-secondary);
+
+  --accent: 70% 0.22 235; /* Monokai Blue */
+  --accent-foreground: 13% 0.01 0;
+
+  --destructive: var(--color-status-error);
+  --destructive-foreground: 13% 0.01 0;
+
+  --success: var(--color-status-success);
+  --success-foreground: 13% 0.01 0;
+
+  --warning: var(--color-status-warning);
+  --warning-foreground: 13% 0.01 0;
+
+  --info: var(--color-status-info);
+  --info-foreground: 13% 0.01 0;
+
+  --border: var(--color-border-default);
+  --input: var(--color-border-default);
+  --ring: 71% 0.28 343; /* Monokai Pink */
+
+  /* Chart Colors */
   --chart-1: 78% 0.15 211;
   --chart-2: 74% 0.17 318;
   --chart-3: 79% 0.17 183;
@@ -538,240 +364,197 @@
   --status-away: 80% 0.15 60;
 }
 
-/* Rich text editor placeholder */
-[contenteditable]:empty:before {
-  content: attr(data-placeholder);
-  color: oklch(var(--muted-foreground));
-  pointer-events: none;
-  user-select: none;
+/* ============================================
+   ADDITIONAL THEMES
+   ============================================ */
+
+/* Red Theme */
+[data-theme='red'] {
+  --background: 5% 0.02 25;
+  --foreground: 82% 0.3 25;
+  --card: 8% 0.04 25;
+  --card-foreground: 82% 0.3 25;
+  --popover: 10% 0.04 25;
+  --popover-foreground: 82% 0.3 25;
+  --primary: 45% 0.22 25;
+  --primary-foreground: 95% 0.02 25;
+  --secondary: 70% 0.26 25;
+  --secondary-foreground: 5% 0.02 25;
+  --muted: 18% 0.06 25;
+  --muted-foreground: 70% 0.24 25;
+  --accent: 88% 0.32 30;
+  --accent-foreground: 5% 0.02 25;
+  --destructive: 85% 0.3 20;
+  --destructive-foreground: 5% 0.02 25;
+  --border: 42% 0.2 25;
+  --input: 42% 0.2 25;
+  --ring: 88% 0.32 30;
+
+  /* Semantic mappings */
+  --color-bg-canvas: var(--background);
+  --color-bg-surface: var(--card);
+  --color-text-primary: var(--foreground);
+}
+
+/* Blue Theme */
+[data-theme='blue'] {
+  --background: 4% 0.02 220;
+  --foreground: 80% 0.22 200;
+  --card: 8% 0.04 220;
+  --card-foreground: 80% 0.22 200;
+  --popover: 10% 0.04 220;
+  --popover-foreground: 80% 0.22 200;
+  --primary: 45% 0.18 200;
+  --primary-foreground: 95% 0.02 220;
+  --secondary: 70% 0.2 200;
+  --secondary-foreground: 4% 0.02 220;
+  --muted: 18% 0.06 220;
+  --muted-foreground: 70% 0.18 200;
+  --accent: 85% 0.24 195;
+  --accent-foreground: 4% 0.02 220;
+  --destructive: 75% 0.22 210;
+  --destructive-foreground: 4% 0.02 220;
+  --border: 45% 0.16 200;
+  --input: 45% 0.16 200;
+  --ring: 85% 0.24 195;
+
+  --color-bg-canvas: var(--background);
+  --color-bg-surface: var(--card);
+  --color-text-primary: var(--foreground);
+}
+
+/* Green Theme */
+[data-theme='green'] {
+  --background: 5% 0.02 140;
+  --foreground: 85% 0.3 145;
+  --card: 8% 0.04 140;
+  --card-foreground: 85% 0.3 145;
+  --popover: 10% 0.04 140;
+  --popover-foreground: 85% 0.3 145;
+  --primary: 45% 0.22 145;
+  --primary-foreground: 95% 0.02 140;
+  --secondary: 70% 0.25 145;
+  --secondary-foreground: 5% 0.02 140;
+  --muted: 18% 0.06 140;
+  --muted-foreground: 70% 0.22 145;
+  --accent: 90% 0.32 150;
+  --accent-foreground: 5% 0.02 140;
+  --destructive: 80% 0.28 130;
+  --destructive-foreground: 5% 0.02 140;
+  --border: 40% 0.18 145;
+  --input: 40% 0.18 145;
+  --ring: 90% 0.32 150;
+
+  --color-bg-canvas: var(--background);
+  --color-bg-surface: var(--card);
+  --color-text-primary: var(--foreground);
+}
+
+/* Amber Theme */
+[data-theme='amber'] {
+  --background: 5% 0.02 40;
+  --foreground: 88% 0.25 50;
+  --card: 10% 0.04 42;
+  --card-foreground: 88% 0.25 50;
+  --popover: 12% 0.04 42;
+  --popover-foreground: 88% 0.25 50;
+  --primary: 45% 0.18 50;
+  --primary-foreground: 95% 0.02 40;
+  --secondary: 75% 0.22 50;
+  --secondary-foreground: 5% 0.02 40;
+  --muted: 18% 0.06 42;
+  --muted-foreground: 75% 0.2 52;
+  --accent: 90% 0.28 50;
+  --accent-foreground: 5% 0.02 40;
+  --destructive: 82% 0.28 30;
+  --destructive-foreground: 5% 0.02 40;
+  --border: 40% 0.15 45;
+  --input: 40% 0.15 45;
+  --ring: 90% 0.28 50;
+
+  --color-bg-canvas: var(--background);
+  --color-bg-surface: var(--card);
+  --color-text-primary: var(--foreground);
 }
 
 /* ============================================
-   CUSTOM SCROLLBAR STYLING
-   Theme-aware scrollbars
+   CRT GLOW EFFECTS
    ============================================ */
 
-/* Firefox */
+[data-theme='red'] {
+  text-shadow:
+    0 0 1px oklch(82% 0.3 25 / 0.5),
+    0 0 3px oklch(82% 0.3 25 / 0.2);
+}
+[data-theme='blue'] {
+  text-shadow:
+    0 0 1px oklch(80% 0.22 200 / 0.5),
+    0 0 3px oklch(80% 0.22 200 / 0.2);
+}
+[data-theme='green'] {
+  text-shadow:
+    0 0 1px oklch(85% 0.3 145 / 0.5),
+    0 0 3px oklch(85% 0.3 145 / 0.2);
+}
+[data-theme='amber'] {
+  text-shadow:
+    0 0 1px oklch(88% 0.25 50 / 0.5),
+    0 0 3px oklch(88% 0.25 50 / 0.2);
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+/* Scrollbars */
 * {
   scrollbar-width: thin;
   scrollbar-color: oklch(var(--border)) transparent;
 }
-
 *:hover {
   scrollbar-color: oklch(var(--primary) / 0.5) transparent;
 }
-
-/* Webkit browsers (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
-
 ::-webkit-scrollbar-track {
   background: transparent;
 }
-
 ::-webkit-scrollbar-thumb {
   background: oklch(var(--border));
   border-radius: 4px;
   transition: background 0.2s;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: oklch(var(--primary) / 0.5);
 }
 
-/* Scrollbar for specific elements */
-.scrollbar-thin::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-.scrollbar-track-transparent::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.scrollbar-thumb-border::-webkit-scrollbar-thumb {
-  background: oklch(var(--border));
-  border-radius: 3px;
-}
-
-.scrollbar-thumb-border:hover::-webkit-scrollbar-thumb {
-  background: oklch(var(--primary) / 0.5);
-}
-
-/* Gradient shift animation for hero video */
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.animate-gradient-shift {
-  background-size: 200% 200%;
-  animation: gradient-shift 15s ease infinite;
-}
-
-/* ============================================
-   TERMINAL CONSOLE STYLING
-   Retro terminal/console UI aesthetic
-   ============================================ */
-
-/* Terminal text utilities */
+/* Terminal Utilities */
 .terminal-label {
   font-family: var(--font-jetbrains-mono), monospace;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
-
-.terminal-bracket {
-  color: oklch(var(--muted-foreground));
+.terminal-header {
+  @apply border-border flex items-center gap-2 border-b px-4 py-2;
+}
+.terminal-header-title {
+  @apply text-muted-foreground font-mono text-xs;
 }
 
-.terminal-bracket::before {
-  content: '[';
-}
-
-.terminal-bracket::after {
-  content: ']';
-}
-
-/* Terminal command prefix */
-.terminal-cmd::before {
-  content: '> ';
-  color: oklch(var(--primary));
-}
-
-/* Terminal status badge */
-.terminal-status {
-  font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 0.75rem;
-  padding: 0.125rem 0.5rem;
-  border: 1px solid oklch(var(--border));
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.terminal-status-ok {
-  color: oklch(var(--success));
-  border-color: oklch(var(--success) / 0.3);
-}
-
-/* Terminal border box */
-.terminal-box {
-  border: 1px solid oklch(var(--border));
-  position: relative;
-}
-
-.terminal-box::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: 1rem;
-  right: 1rem;
-  height: 1px;
-  background: oklch(var(--border));
-}
-
-/* Terminal grid lines */
-.terminal-grid {
-  background-image:
-    linear-gradient(oklch(var(--border) / 0.3) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(var(--border) / 0.3) 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-
-/* Blinking cursor animation */
-@keyframes terminal-blink {
-  0%,
-  50% {
-    opacity: 1;
-  }
-
-  51%,
-  100% {
-    opacity: 0;
-  }
-}
-
-.terminal-cursor::after {
-  content: '█';
-  animation: terminal-blink 1s step-end infinite;
-  color: oklch(var(--primary));
-}
-
-/* Terminal scanline effect (subtle) */
-.terminal-scanlines::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    oklch(var(--foreground) / 0.02) 2px,
-    oklch(var(--foreground) / 0.02) 4px
-  );
-  pointer-events: none;
-}
-
-/* ============================================
-   TYPOGRAPHY DESIGN SYSTEM
-   Industry-standard spacing and visual hierarchy
-   Based on 8-point grid system
-   ============================================ */
-
-/* Typography utility classes */
+/* Typography Utilities */
 .heading-section {
   @apply text-primary font-mono text-lg font-semibold;
 }
-
 .heading-subsection {
   @apply text-foreground font-mono text-base font-semibold;
 }
-
 .body-text {
   @apply text-muted-foreground font-mono text-sm leading-relaxed;
 }
 
-/* Docs-specific heading styles with proper spacing */
-.docs-h2 {
-  @apply text-primary mt-8 mb-4 font-mono text-lg font-semibold;
-}
-
-.docs-h3 {
-  @apply text-foreground mb-2 font-mono text-base font-semibold;
-}
-
-.docs-body {
-  @apply text-muted-foreground font-mono text-sm leading-relaxed;
-}
-
-/* Section spacing utilities (8-point grid) */
-.section-spacing {
-  @apply space-y-4; /* 16px between heading and content */
-}
-
-.section-spacing-lg {
-  @apply space-y-16; /* 64px between major sections */
-}
-
-/* ============================================
-   ACCESSIBILITY UTILITIES (WCAG 2.1 AA)
-   ============================================ */
-
-/* Screen Reader Only - Hide visually but keep accessible */
+/* Accessibility */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -783,20 +566,6 @@
   white-space: nowrap;
   border-width: 0;
 }
-
-/* Not Screen Reader Only - reverse sr-only */
-.not-sr-only {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-}
-
-/* Skip Link - visible on focus for keyboard navigation */
 .skip-link {
   position: absolute;
   top: -100%;
@@ -813,211 +582,8 @@
   border: 1px solid oklch(var(--border));
   transition: top 0.2s ease;
 }
-
 .skip-link:focus {
   top: 0.5rem;
   outline: 2px solid oklch(var(--ring));
   outline-offset: 2px;
-}
-
-/* Reduced Motion Support - disable animations for users who prefer */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* High Contrast Mode Support */
-@media (prefers-contrast: more) {
-  :root {
-    --border: 0% 0 0;
-    --ring: 0% 0 0;
-  }
-
-  * {
-    border-color: oklch(0% 0 0) !important;
-  }
-
-  .skip-link,
-  button,
-  a {
-    outline-width: 3px !important;
-  }
-}
-
-/* Focus Visible - enhanced focus indicators */
-.focus-visible-enhanced:focus-visible {
-  outline: 2px solid oklch(var(--ring));
-  outline-offset: 2px;
-  box-shadow: 0 0 0 4px oklch(var(--ring) / 0.2);
-}
-
-/* ============================================
-   TERMINAL PREVIEW OVERRIDES
-   Force terminal style (rounded-none) on all UI components
-   within docs/marketing site previews
-   ============================================ */
-
-.terminal-preview,
-.terminal-preview * {
-  border-radius: 0 !important;
-}
-
-/* Specific component overrides for terminal preview */
-.terminal-preview button,
-.terminal-preview [data-slot='button'],
-.terminal-preview input,
-.terminal-preview [data-slot='input'],
-.terminal-preview textarea,
-.terminal-preview select,
-.terminal-preview [data-slot='select-trigger'],
-.terminal-preview [data-slot='select-content'],
-.terminal-preview [data-slot='card'],
-.terminal-preview [data-slot='dialog-content'],
-.terminal-preview [data-slot='alert-dialog-content'],
-.terminal-preview [data-slot='popover-content'],
-.terminal-preview [data-slot='dropdown-menu-content'],
-.terminal-preview [data-slot='tooltip-content'],
-.terminal-preview [data-slot='sheet-content'],
-.terminal-preview [data-slot='command'],
-.terminal-preview [data-slot='tabs-list'],
-.terminal-preview [data-slot='tabs-trigger'],
-.terminal-preview [data-slot='badge'],
-.terminal-preview [data-slot='avatar'],
-.terminal-preview [data-slot='avatar-fallback'],
-.terminal-preview [data-slot='skeleton'],
-.terminal-preview [data-slot='switch'],
-.terminal-preview [data-slot='checkbox'],
-.terminal-preview [data-slot='radio'],
-.terminal-preview [data-slot='slider-thumb'],
-.terminal-preview [data-slot='progress'],
-.terminal-preview [data-slot='alert'],
-.terminal-preview [data-slot='calendar'],
-.terminal-preview [data-slot='dropzone'],
-.terminal-preview [data-slot='file-upload'],
-.terminal-preview [role='combobox'],
-.terminal-preview [role='listbox'],
-.terminal-preview [role='option'],
-.terminal-preview [role='menuitem'],
-.terminal-preview [role='dialog'],
-.terminal-preview [role='alertdialog'],
-.terminal-preview kbd {
-  border-radius: 0 !important;
-}
-
-/* Override any inline border-radius styles */
-.terminal-preview [style*='border-radius'] {
-  border-radius: 0 !important;
-}
-
-/* Ensure monospace font in terminal previews */
-.terminal-preview {
-  font-family: var(--font-mono);
-}
-
-/* Input/textarea styling for terminal previews - match contact page */
-.terminal-preview input,
-.terminal-preview textarea,
-.terminal-preview [data-slot='input'] input,
-.terminal-preview [data-slot='select-trigger'] {
-  background-color: oklch(var(--card)) !important;
-  border: 1px solid oklch(var(--border)) !important;
-}
-
-/* Ensure dropzone has proper background */
-.terminal-preview [data-slot='dropzone'] {
-  background-color: oklch(var(--card)) !important;
-}
-
-/* ============================================
-   DOCS SITE GLOBAL DIALOG OVERRIDES
-   Dialogs/sheets render in portals outside .terminal-preview
-   so we need to target them globally on docs pages
-   ============================================ */
-
-/* Target dialogs on docs pages - they render in portals */
-body:has(.terminal-preview) [data-slot='dialog-content'],
-body:has(.terminal-preview) [data-slot='alert-dialog-content'],
-body:has(.terminal-preview) [data-slot='sheet-content'],
-body:has(.terminal-preview) [data-slot='popover-content'],
-body:has(.terminal-preview) [data-slot='dropdown-menu-content'],
-body:has(.terminal-preview) [data-slot='select-content'],
-body:has(.terminal-preview) [data-slot='tooltip-content'],
-body:has(.terminal-preview) [data-slot='command'],
-body:has(.terminal-preview) [role='dialog'],
-body:has(.terminal-preview) [role='alertdialog'] {
-  border-radius: 0 !important;
-}
-
-/* Also target all children within these portaled elements */
-body:has(.terminal-preview) [data-slot='dialog-content'] *,
-body:has(.terminal-preview) [data-slot='alert-dialog-content'] *,
-body:has(.terminal-preview) [data-slot='sheet-content'] *,
-body:has(.terminal-preview) [data-slot='popover-content'] *,
-body:has(.terminal-preview) [data-slot='dropdown-menu-content'] *,
-body:has(.terminal-preview) [data-slot='select-content'] *,
-body:has(.terminal-preview) [role='dialog'] *,
-body:has(.terminal-preview) [role='alertdialog'] * {
-  border-radius: 0 !important;
-}
-
-/* Terminal font styling for dialogs on docs pages */
-body:has(.terminal-preview) [data-slot='dialog-content'],
-body:has(.terminal-preview) [data-slot='alert-dialog-content'],
-body:has(.terminal-preview) [data-slot='sheet-content'],
-body:has(.terminal-preview) [role='dialog'],
-body:has(.terminal-preview) [role='alertdialog'] {
-  font-family: var(--font-mono) !important;
-}
-
-/* Dialog title - terminal style */
-body:has(.terminal-preview) [data-slot='dialog-title'],
-body:has(.terminal-preview) [data-slot='alert-dialog-title'] {
-  font-family: var(--font-mono) !important;
-  font-size: 0.875rem !important;
-  font-weight: 600 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.025em !important;
-}
-
-/* Dialog description - terminal style */
-body:has(.terminal-preview) [data-slot='dialog-description'],
-body:has(.terminal-preview) [data-slot='alert-dialog-description'] {
-  font-family: var(--font-mono) !important;
-  font-size: 0.75rem !important;
-  color: oklch(var(--muted-foreground)) !important;
-}
-
-/* Dialog inputs - terminal style */
-body:has(.terminal-preview) [data-slot='dialog-content'] input,
-body:has(.terminal-preview) [data-slot='dialog-content'] textarea,
-body:has(.terminal-preview) [data-slot='alert-dialog-content'] input,
-body:has(.terminal-preview) [data-slot='alert-dialog-content'] textarea {
-  background-color: oklch(var(--card)) !important;
-  border: 1px solid oklch(var(--border)) !important;
-  font-family: var(--font-mono) !important;
-  font-size: 0.75rem !important;
-}
-
-/* ============================================
-   TERMINAL UTILITIES
-   Centralized control for terminal aesthetic elements
-   ============================================ */
-
-@layer utilities {
-  /* Terminal window header - simple bracket style
-   * Pattern: [ title ]
-   */
-  .terminal-header {
-    @apply border-border flex items-center gap-2 border-b px-4 py-2;
-  }
-
-  .terminal-header-title {
-    @apply text-muted-foreground font-mono text-xs;
-  }
 }

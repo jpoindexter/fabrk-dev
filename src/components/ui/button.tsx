@@ -44,28 +44,30 @@ import { mode } from '@/design-system';
  */
 const buttonVariants = cva(
   // Base styles - focus ring from design tokens, disabled state uses design system opacity
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-[var(--state-disabled-opacity)] [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap text-label transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-[var(--state-disabled-opacity)] [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
   {
     variants: {
       variant: {
-        // Primary - solid background
-        default: 'bg-primary text-primary-foreground hover:bg-primary/90',
-        // Destructive - danger/delete actions
-        destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
-        // Outline - bordered, transparent background
+        // Primary - solid background + CRT effects (scanlines + glow in Terminal mode)
+        default: 'bg-primary text-primary-foreground hover:bg-primary/90 crt-scanlines crt-glow',
+        // Destructive - danger/delete actions + CRT scanlines
+        destructive:
+          'bg-destructive text-destructive-foreground hover:bg-destructive/90 crt-scanlines',
+        // Outline - bordered, transparent background (no CRT effects)
         outline: 'border border-border bg-background hover:bg-muted hover:border-primary/50',
-        // Secondary - muted background
-        secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        // Ghost - no background, subtle hover
+        // Secondary - muted background + CRT scanlines
+        secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80 crt-scanlines',
+        // Ghost - no background, subtle hover (no CRT effects)
         ghost: 'text-foreground hover:bg-foreground/10 hover:text-foreground',
-        // Link - text only with underline
+        // Link - text only with underline (no CRT effects)
         link: 'text-primary underline-offset-4 hover:underline',
-        // CTA variants - larger padding for marketing sections (terminal aesthetic: text-xs)
-        primaryCta: 'bg-primary text-primary-foreground hover:bg-primary/90 text-xs px-6 py-4',
+        // CTA variants - larger padding for marketing sections + CRT effects
+        primaryCta:
+          'bg-primary text-primary-foreground hover:bg-primary/90 text-xs px-6 py-4 crt-scanlines crt-glow',
         secondaryCta:
-          'bg-secondary text-secondary-foreground hover:bg-secondary/80 text-xs px-6 py-4',
+          'bg-secondary text-secondary-foreground hover:bg-secondary/80 text-xs px-6 py-4 crt-scanlines',
         ghostOnDark:
-          'border border-foreground/30 bg-transparent text-foreground hover:bg-foreground/10 text-xs px-6 py-4',
+          'border border-foreground/30 bg-transparent text-foreground hover:bg-foreground/10 text-xs px-6 py-4 crt-scanlines',
       },
       size: {
         // WCAG 2.1 AA: min-h-[44px] ensures adequate touch target on mobile
@@ -116,7 +118,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(
           buttonVariants({ variant, size }),
           mode.radius,
-          mode.font,
           mode.textTransform === 'uppercase' && 'uppercase',
           className
         )}

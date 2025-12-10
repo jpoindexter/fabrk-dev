@@ -82,8 +82,8 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       ref={ref}
       data-slot="card"
       className={cn(
-        // Base styles - ONE card shell
-        'bg-card flex flex-col border',
+        // Base styles - ONE card shell + CRT scanlines in Terminal mode
+        'bg-card crt-scanlines flex flex-col border',
         mode.radius,
 
         // Tone (border color)

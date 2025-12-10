@@ -91,7 +91,7 @@ function Alert({
     <div
       data-slot="alert"
       role="alert"
-      className={cn(alertVariants({ variant }), mode.radius, mode.font, className)}
+      className={cn(alertVariants({ variant }), mode.radius, mode.font, 'crt-scanlines', className)}
       {...props}
     />
   );

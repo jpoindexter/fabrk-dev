@@ -211,7 +211,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
       </head>
-      <body className="font-mono antialiased" suppressHydrationWarning>
+      <body
+        className="bg-background text-foreground font-mono antialiased"
+        data-visual-mode="terminal"
+        suppressHydrationWarning
+      >
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe

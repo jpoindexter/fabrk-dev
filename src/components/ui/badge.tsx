@@ -87,6 +87,7 @@ function Badge({
         mode.radius,
         mode.font,
         mode.textTransform === 'uppercase' && 'uppercase',
+        'crt-scanlines',
         className
       )}
       {...props}
