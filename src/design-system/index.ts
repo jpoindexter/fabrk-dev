@@ -118,6 +118,80 @@ export interface ModeConfig {
   textTransform: 'uppercase' | 'normal';
   inputStyle: string;
   borderWidth: string;
+
+  // NEW - Extended token system
+  color: {
+    bg: {
+      base: string;
+      surface: string;
+      elevated: string;
+      accent: string;
+      danger: string;
+      success: string;
+      warning: string;
+      info: string;
+      muted: string;
+    };
+    text: {
+      primary: string;
+      secondary: string;
+      muted: string;
+      inverse: string;
+      accent: string;
+      danger: string;
+      success: string;
+      warning: string;
+      info: string;
+    };
+    border: {
+      default: string;
+      focus: string;
+      accent: string;
+      danger: string;
+    };
+  };
+
+  spacing: {
+    button: {
+      sm: string;
+      md: string;
+      lg: string;
+    };
+    input: string;
+    card: string;
+    badge: {
+      sm: string;
+      md: string;
+    };
+  };
+
+  typography: {
+    button: string;
+    body: {
+      xs: string;
+      sm: string;
+      md: string;
+    };
+    heading: {
+      h1: string;
+      h2: string;
+      h3: string;
+    };
+  };
+
+  state: {
+    hover: {
+      bg: string;
+      text: string;
+    };
+    focus: {
+      ring: string;
+    };
+    disabled: {
+      opacity: string;
+      cursor: string;
+    };
+  };
 }
 
 /**
@@ -127,13 +201,90 @@ export interface ModeConfig {
 export const mode: ModeConfig = {
   radius: terminalClasses.radius,
   font: terminalClasses.font,
-  shadow: '',
+  shadow: 'shadow-sm',
   buttonPrefix: '> ',
   labelFormat: 'brackets',
   cardHeader: 'bracketed',
   textTransform: 'uppercase',
   inputStyle: terminalClasses.input,
   borderWidth: 'border',
+
+  // Color tokens - map to Tailwind classes
+  color: {
+    bg: {
+      base: 'bg-background',
+      surface: 'bg-card',
+      elevated: 'bg-popover',
+      accent: 'bg-primary',
+      danger: 'bg-destructive',
+      success: 'bg-success',
+      warning: 'bg-warning',
+      info: 'bg-info',
+      muted: 'bg-muted',
+    },
+    text: {
+      primary: 'text-foreground',
+      secondary: 'text-card-foreground',
+      muted: 'text-muted-foreground',
+      inverse: 'text-primary-foreground',
+      accent: 'text-primary',
+      danger: 'text-destructive',
+      success: 'text-success',
+      warning: 'text-warning',
+      info: 'text-info',
+    },
+    border: {
+      default: 'border-border',
+      focus: 'border-ring',
+      accent: 'border-primary',
+      danger: 'border-destructive',
+    },
+  },
+
+  // Spacing tokens - 8-point grid
+  spacing: {
+    button: {
+      sm: 'px-2 py-1',
+      md: 'px-4 py-2',
+      lg: 'px-6 py-3',
+    },
+    input: 'px-4 py-2',
+    card: 'p-4',
+    badge: {
+      sm: 'px-2 py-0.5',
+      md: 'px-2 py-1',
+    },
+  },
+
+  // Typography tokens
+  typography: {
+    button: 'text-xs font-medium',
+    body: {
+      xs: 'text-xs',
+      sm: 'text-sm',
+      md: 'text-base',
+    },
+    heading: {
+      h1: 'text-4xl font-bold',
+      h2: 'text-3xl font-bold',
+      h3: 'text-2xl font-semibold',
+    },
+  },
+
+  // State tokens
+  state: {
+    hover: {
+      bg: 'hover:bg-primary/90',
+      text: 'hover:text-foreground',
+    },
+    focus: {
+      ring: 'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+    },
+    disabled: {
+      opacity: 'disabled:opacity-[var(--state-disabled-opacity)]',
+      cursor: 'disabled:cursor-not-allowed',
+    },
+  },
 };
 
 /**
