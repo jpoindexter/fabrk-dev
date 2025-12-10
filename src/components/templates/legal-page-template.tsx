@@ -118,7 +118,7 @@ export function LegalPageTemplate({
           {/* Badge */}
           <div className={cn('border-border inline-block border px-4 py-1', mode.radius)}>
             <span className={cn('text-muted-foreground text-xs', mode.font)}>
-              [LEGAL]: {title.toUpperCase().replace(/ /g, '_')}
+              [LEGAL]: {title.toUpperCase()}
             </span>
           </div>
 

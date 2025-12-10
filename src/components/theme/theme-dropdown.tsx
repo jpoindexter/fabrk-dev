@@ -29,6 +29,7 @@ const themes = [
   { id: 'green', name: 'Green CRT', preview: '#33ff66' },
   { id: 'blue', name: 'Blue CRT', preview: '#55ccff' },
   { id: 'red', name: 'Red CRT', preview: '#ff6655' },
+  { id: 'purple', name: 'Purple CRT', preview: '#bb88ff' },
 ] as const;
 
 export type ColorTheme = (typeof themes)[number]['id'];

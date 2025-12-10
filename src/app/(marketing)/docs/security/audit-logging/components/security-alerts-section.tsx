@@ -9,7 +9,7 @@ import { sendEmail } from "@/lib/email";
 const ALERT_ACTIONS = [
   "user.password_reset",
   "admin.user_impersonated",
-  "api_key.created",
+  "api key.created",
 ];
 
 export async function createAuditLog(input: AuditLogInput) {

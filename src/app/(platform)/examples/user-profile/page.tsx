@@ -100,7 +100,7 @@ export default async function UserProfilePage() {
         <div className="space-y-6 lg:col-span-1">
           {/* Profile Info */}
           <Card>
-            <CardHeader code="0x00" title="PROFILE_INFO" />
+            <CardHeader code="0x00" title="PROFILE INFO" />
             <CardContent>
               <div className="flex flex-col items-center text-center">
                 {/* Avatar */}
@@ -170,7 +170,7 @@ export default async function UserProfilePage() {
 
           {/* Contact Info */}
           <Card>
-            <CardHeader code="0x01" title="CONTACT_INFO" />
+            <CardHeader code="0x01" title="CONTACT INFO" />
             <CardContent>
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
@@ -204,7 +204,7 @@ export default async function UserProfilePage() {
 
           {/* Social Links */}
           <Card>
-            <CardHeader code="0x02" title="SOCIAL_LINKS" />
+            <CardHeader code="0x02" title="SOCIAL LINKS" />
             <CardContent>
               <div className="space-y-4">
                 <a
@@ -249,7 +249,7 @@ export default async function UserProfilePage() {
         <div className="space-y-6 lg:col-span-2">
           {/* Recent Projects */}
           <Card>
-            <CardHeader code="0x03" title="RECENT_PROJECTS" />
+            <CardHeader code="0x03" title="RECENT PROJECTS" />
             <CardContent>
               <div className="mb-4 flex justify-end">
                 <Button size="sm" variant="outline">
@@ -306,7 +306,7 @@ export default async function UserProfilePage() {
 
           {/* Recent Activity */}
           <Card>
-            <CardHeader code="0x04" title="RECENT_ACTIVITY" />
+            <CardHeader code="0x04" title="RECENT ACTIVITY" />
             <CardContent>
               <div className="space-y-4">
                 {mockUserProfile.activity.map((activity, index) => (

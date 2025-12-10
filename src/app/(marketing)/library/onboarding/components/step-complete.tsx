@@ -50,13 +50,13 @@ export function StepComplete({ formData }: StepCompleteProps) {
             {formData.workspaceName || 'Not set'}
           </div>
           <div>
-            <span className="text-muted-foreground">TEAM_SIZE:</span>{' '}
+            <span className="text-muted-foreground">TEAM SIZE:</span>{' '}
             {formData.teamSize || 'Not set'}
           </div>
         </div>
       </div>
 
-      <Button className={cn(mode.radius, mode.font, 'text-xs')}>&gt; GO_TO_DASHBOARD</Button>
+      <Button className={cn(mode.radius, mode.font, 'text-xs')}>&gt; GO TO DASHBOARD</Button>
     </div>
   );
 }

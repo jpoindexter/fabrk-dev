@@ -41,7 +41,7 @@ export default function ForgotPasswordPage() {
         </div>
 
         <Button className={cn(mode.radius, mode.font, 'w-full text-xs')} type="submit">
-          &gt; SEND_RESET_LINK
+          &gt; SEND RESET LINK
         </Button>
       </form>
 

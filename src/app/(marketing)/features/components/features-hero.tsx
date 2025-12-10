@@ -25,7 +25,7 @@ export function FeaturesHero() {
             transition={{ duration: 0.5 }}
             className="mb-6"
           >
-            <Badge code="0x00" label="FEATURES" meta="COMPLETE_SAAS_TOOLKIT" />
+            <Badge code="0x00" label="FEATURES" meta="COMPLETE SAAS TOOLKIT" />
           </motion.div>
 
           <motion.div
@@ -33,10 +33,10 @@ export function FeaturesHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h1 className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>FABRK_FEATURES:</h1>
+            <h1 className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>FABRK FEATURES:</h1>
             <h2 className={cn('mb-6 text-4xl font-semibold tracking-tight', mode.font)}>
-              EVERY_FEATURE_YOU_NEED
-              <br className="hidden sm:block" /> <span className="text-primary">ALREADY_BUILT</span>
+              EVERY FEATURE YOU NEED
+              <br className="hidden sm:block" /> <span className="text-primary">ALREADY BUILT</span>
             </h2>
           </motion.div>
 
@@ -57,11 +57,11 @@ export function FeaturesHero() {
                 <div className={cn('flex flex-wrap gap-4 text-xs', mode.font)}>
                   <span>
                     <span className="text-muted-foreground">Features:</span>{' '}
-                    <span className="text-primary">9_CATEGORIES</span>
+                    <span className="text-primary">9 CATEGORIES</span>
                   </span>
                   <span>
                     <span className="text-muted-foreground">Status:</span>{' '}
-                    <span className="text-primary">PRODUCTION_READY</span>
+                    <span className="text-primary">PRODUCTION READY</span>
                   </span>
                 </div>
               </CardContent>
@@ -76,12 +76,12 @@ export function FeaturesHero() {
           >
             <Button asChild size="lg" className="text-xs">
               <Link href="/#pricing">
-                &gt; GET_FABRK
+                &gt; GET FABRK
                 <ArrowRight className="ml-2 size-4" />
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="text-xs">
-              <Link href="/docs">&gt; VIEW_DOCUMENTATION</Link>
+              <Link href="/docs">&gt; VIEW DOCUMENTATION</Link>
             </Button>
           </motion.div>
         </div>

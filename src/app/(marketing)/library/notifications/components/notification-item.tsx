@@ -66,7 +66,7 @@ export function NotificationItem({ notification, onMarkAsRead, onDelete }: Notif
             asChild
             className={cn(mode.radius, mode.font, 'mt-2 px-0 text-xs font-semibold')}
           >
-            <Link href={notification.actionUrl}>VIEW_DETAILS</Link>
+            <Link href={notification.actionUrl}>VIEW DETAILS</Link>
           </Button>
         )}
 

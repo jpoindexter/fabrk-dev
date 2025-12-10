@@ -13,7 +13,7 @@ export default function AnalyticsPage() {
     <FeatureGuideTemplate
       code="[0x70]"
       category="Features"
-      title="Analytics_With_PostHog"
+      title="Analytics With PostHog"
       description="Product analytics, session recordings, and feature flags with PostHog integration."
       overview="Fabrk integrates PostHog for comprehensive product analytics. Track user behavior, analyze conversion funnels, record sessions, and manage feature flags all in one platform."
       features={[
@@ -260,7 +260,7 @@ export async function POST(req: Request) {
     >
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
-        <DocsCard title="BEST_PRACTICES">
+        <DocsCard title="BEST PRACTICES">
           <ul className="space-y-1">
             <li>
               ├─ <strong>Use consistent naming:</strong> Follow a convention like{' '}

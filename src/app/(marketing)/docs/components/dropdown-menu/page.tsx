@@ -52,7 +52,7 @@ import { Button } from "@/components/ui/button";
 
 <DropdownMenu>
   <DropdownMenuTrigger asChild>
-    <Button variant="outline">&gt; OPEN_MENU</Button>
+    <Button variant="outline">&gt; OPEN MENU</Button>
   </DropdownMenuTrigger>
   <DropdownMenuContent align="end" className="w-56">
     <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -75,7 +75,7 @@ import { Button } from "@/components/ui/button";
         preview: (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline">&gt; OPEN_MENU</Button>
+              <Button variant="outline">&gt; OPEN MENU</Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56">
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -106,7 +106,7 @@ const [showActivityBar, setShowActivityBar] = useState(false);
 
 <DropdownMenu>
   <DropdownMenuTrigger asChild>
-    <Button variant="outline">&gt; VIEW_OPTIONS</Button>
+    <Button variant="outline">&gt; VIEW OPTIONS</Button>
   </DropdownMenuTrigger>
   <DropdownMenuContent className="w-56">
     <DropdownMenuLabel>Appearance</DropdownMenuLabel>
@@ -128,7 +128,7 @@ const [showActivityBar, setShowActivityBar] = useState(false);
           preview: (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline">&gt; VIEW_OPTIONS</Button>
+                <Button variant="outline">&gt; VIEW OPTIONS</Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-56">
                 <DropdownMenuLabel>Appearance</DropdownMenuLabel>
@@ -270,7 +270,7 @@ const [showActivityBar, setShowActivityBar] = useState(false);
           description: 'Display keyboard shortcuts alongside menu items',
           code: `<DropdownMenu>
   <DropdownMenuTrigger asChild>
-    <Button variant="outline">&gt; KEYBOARD_SHORTCUTS</Button>
+    <Button variant="outline">&gt; KEYBOARD SHORTCUTS</Button>
   </DropdownMenuTrigger>
   <DropdownMenuContent className="w-56">
     <DropdownMenuLabel>Commands</DropdownMenuLabel>
@@ -295,7 +295,7 @@ const [showActivityBar, setShowActivityBar] = useState(false);
           preview: (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline">&gt; KEYBOARD_SHORTCUTS</Button>
+                <Button variant="outline">&gt; KEYBOARD SHORTCUTS</Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-56">
                 <DropdownMenuLabel>Commands</DropdownMenuLabel>

@@ -137,7 +137,7 @@ export function BillingSummaryCard({
         <div className="flex items-start justify-between">
           {/* Left: Plan Info */}
           <div>
-            <p className={cn('text-muted-foreground mb-1 text-xs', mode.font)}>[CURRENT_PLAN]:</p>
+            <p className={cn('text-muted-foreground mb-1 text-xs', mode.font)}>[CURRENT PLAN]:</p>
             <p className={cn('text-foreground text-2xl font-bold', mode.font)}>{plan.name}</p>
             <p className={cn('text-muted-foreground text-xs', mode.font)}>
               {formatPrice(plan.price, plan.interval)}
@@ -226,7 +226,7 @@ export function BillingSummaryCard({
       <div className="flex flex-wrap items-center gap-2 p-4">
         {showUpgrade && onUpgrade && (
           <Button onClick={onUpgrade} size="sm" className={cn(mode.radius, mode.font)}>
-            &gt; UPGRADE_PLAN
+            &gt; UPGRADE PLAN
           </Button>
         )}
         {onManageBilling && (
@@ -237,7 +237,7 @@ export function BillingSummaryCard({
             className={cn(mode.radius, mode.font)}
           >
             <Calendar className="mr-1 h-3 w-3" />
-            MANAGE_BILLING
+            MANAGE BILLING
           </Button>
         )}
         {onCancel && status === 'active' && (
@@ -419,7 +419,7 @@ export function PlanSelector({
               className={cn('w-full', mode.radius, mode.font)}
               disabled={isCurrent}
             >
-              {isCurrent ? 'CURRENT_PLAN' : isSelected ? 'SELECTED' : '> SELECT'}
+              {isCurrent ? 'CURRENT PLAN' : isSelected ? 'SELECTED' : '> SELECT'}
             </Button>
           </div>
         );

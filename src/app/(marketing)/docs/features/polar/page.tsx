@@ -292,7 +292,7 @@ export async function getProduct() {
 
       {/* Dev Mode */}
       <DocsSection title="Development Mode">
-        <DocsCard title="MOCK_CHECKOUT">
+        <DocsCard title="MOCK CHECKOUT">
           <p className="mb-6">
             When <code className="bg-muted px-1">POLAR_ACCESS_TOKEN</code> is not set, the checkout
             API returns a mock response that redirects to your success page. This lets you test the
@@ -310,7 +310,7 @@ export async function getProduct() {
 
       {/* Discount Strategies */}
       <DocsSection title="Discount Strategies">
-        <DocsCard title="LAUNCH_DISCOUNTS">
+        <DocsCard title="LAUNCH DISCOUNTS">
           <div className="space-y-4">
             <div className="border-border border-b pb-4">
               Usage-Limited Discounts
@@ -336,7 +336,7 @@ export async function getProduct() {
 
       {/* Files Reference */}
       <DocsSection title="File Reference">
-        <DocsCard title="PROJECT_FILES">
+        <DocsCard title="PROJECT FILES">
           <div className="space-y-2">
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">src/lib/polar.ts</code>
@@ -363,7 +363,7 @@ export async function getProduct() {
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/lemonsqueezy">
             <DocsCard
-              title="LEMON_SQUEEZY"
+              title="LEMON SQUEEZY"
               className="hover:border-primary/50 h-full transition-all"
             >
               Lemon Squeezy
@@ -372,7 +372,7 @@ export async function getProduct() {
           </Link>
           <Link href="/docs/features/payments">
             <DocsCard
-              title="STRIPE_PAYMENTS"
+              title="STRIPE PAYMENTS"
               className="hover:border-primary/50 h-full transition-all"
             >
               Stripe Setup

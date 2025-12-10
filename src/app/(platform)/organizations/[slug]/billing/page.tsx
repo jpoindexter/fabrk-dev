@@ -116,7 +116,7 @@ export default function OrganizationBillingPage() {
           <div className="text-center">
             <h3 className="text-lg font-semibold">Organization not found</h3>
             <Button onClick={() => router.push('/dashboard')} className="mt-4">
-              &gt; BACK_TO_DASHBOARD
+              &gt; BACK TO DASHBOARD
             </Button>
           </div>
         </CardContent>

@@ -69,7 +69,7 @@ export function DataExport() {
 
   return (
     <Card tone="neutral">
-      <CardHeader code="0x02" title="EXPORT_DATA" />
+      <CardHeader code="0x02" title="EXPORT DATA" />
       <CardContent className="space-y-6">
         <div className="space-y-4">
           <Label htmlFor="format-select" className={cn(mode.font, 'text-xs')}>
@@ -97,7 +97,7 @@ export function DataExport() {
         </div>
 
         <div className="space-y-4 border-t pt-4">
-          <Label className={cn(mode.font, 'text-xs')}>[DATA_TO_INCLUDE]:</Label>
+          <Label className={cn(mode.font, 'text-xs')}>[DATA TO INCLUDE]:</Label>
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Checkbox
@@ -170,7 +170,7 @@ export function DataExport() {
           disabled={isLoading || !Object.values(options).some((v) => v)}
           className={cn('w-full', mode.radius, mode.font, 'text-xs')}
         >
-          {isLoading ? '> EXPORTING...' : '> DOWNLOAD_DATA'}
+          {isLoading ? '> EXPORTING...' : '> DOWNLOAD DATA'}
         </Button>
 
         <p className={cn(mode.font, 'text-muted-foreground pt-2 text-xs')}>

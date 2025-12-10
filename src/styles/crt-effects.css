@@ -64,10 +64,10 @@ html[data-visual-mode='terminal'] body::before {
   pointer-events: none;
   z-index: 9999;
 
-  /* Default (light theme): neutral scan lines - stronger effect */
+  /* Neutral black scan lines - darker at 25% opacity */
   background-image:
-    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.04));
+    linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.06));
 
   /* 2px horizontal scan lines + 3px vertical RGB shift */
   background-size:

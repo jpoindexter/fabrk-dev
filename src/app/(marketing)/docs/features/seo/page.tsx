@@ -13,7 +13,7 @@ export default function SEOPage() {
     <FeatureGuideTemplate
       code="[0x80]"
       category="Features"
-      title="SEO_Metadata"
+      title="SEO Metadata"
       description="Comprehensive SEO configuration including meta tags, OpenGraph, Twitter cards, and structured data for optimal search engine visibility."
       overview="Fabrk includes a complete SEO system built on Next.js 15's metadata API. The system provides automatic meta tag generation from centralized configuration, OpenGraph and Twitter card support for social sharing, JSON-LD structured data for rich search results, dynamic sitemap and robots.txt generation, and canonical URL management."
       features={[
@@ -191,7 +191,7 @@ export default async function sitemap() {
       {/* Common Use Cases Section */}
       <DocsSection title="Common Use Cases">
         <div className="grid gap-4">
-          <DocsCard title="LANDING_PAGE_SEO">
+          <DocsCard title="LANDING PAGE SEO">
             Landing Page SEO
             <p className="mb-6">
               Configure meta tags for your homepage with compelling title and description that
@@ -199,7 +199,7 @@ export default async function sitemap() {
             </p>
           </DocsCard>
 
-          <DocsCard title="BLOG_POST_SEO">
+          <DocsCard title="BLOG POST SEO">
             Blog Post Optimization
             <p className="mb-6">
               Use dynamic metadata generation to automatically pull title, description, and featured
@@ -207,7 +207,7 @@ export default async function sitemap() {
             </p>
           </DocsCard>
 
-          <DocsCard title="PRODUCT_PAGES">
+          <DocsCard title="PRODUCT PAGES">
             Product Pages
             <p className="mb-6">
               Add Product schema structured data for e-commerce features, including price,
@@ -215,7 +215,7 @@ export default async function sitemap() {
             </p>
           </DocsCard>
 
-          <DocsCard title="LOCALIZED_CONTENT">
+          <DocsCard title="LOCALIZED CONTENT">
             Localized Content
             <p className="mb-6">
               Use hreflang tags and locale-specific metadata for international SEO. Fabrk's i18n
@@ -227,7 +227,7 @@ export default async function sitemap() {
 
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
-        <DocsCard title="SEO_BEST_PRACTICES">
+        <DocsCard title="SEO BEST PRACTICES">
           <ul className="space-y-1">
             <li>├─ Keep titles under 60 characters for full display in search results</li>
             <li>├─ Write descriptions between 120-160 characters</li>

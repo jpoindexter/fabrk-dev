@@ -132,7 +132,7 @@ export default function NotificationCenterPage() {
           description: 'Different notification types with appropriate icons',
           preview: (
             <div className="w-full max-w-md space-y-4">
-              <div className="text-muted-foreground font-mono text-xs">[NOTIFICATION_TYPES]</div>
+              <div className="text-muted-foreground font-mono text-xs">[NOTIFICATION TYPES]</div>
               <div className="space-y-2">
                 {[
                   {
@@ -185,7 +185,7 @@ const notification: Notification = {
           description: 'Notifications can include actionable buttons',
           preview: (
             <div className="w-full max-w-md space-y-2">
-              <div className="text-muted-foreground font-mono text-xs">[ACTION_EXAMPLE]</div>
+              <div className="text-muted-foreground font-mono text-xs">[ACTION EXAMPLE]</div>
               <div className="space-y-2">
                 <div className="text-sm font-semibold">Storage almost full</div>
                 <p className="text-muted-foreground text-sm">
@@ -216,7 +216,7 @@ const notification: Notification = {
           description: 'Automatically groups notifications by Today, Yesterday, This Week, Older',
           preview: (
             <div className="w-full max-w-md space-y-4">
-              <div className="text-muted-foreground font-mono text-xs">[DATE_GROUPS]</div>
+              <div className="text-muted-foreground font-mono text-xs">[DATE GROUPS]</div>
               {['Today', 'Yesterday', 'This Week', 'Older'].map((group) => (
                 <div key={group} className="space-y-2">
                   <div className="bg-muted rounded-none px-4 py-2">
@@ -258,7 +258,7 @@ const notification: Notification = {
           description: 'Automatically mark notifications as read when clicked',
           preview: (
             <div className="w-full max-w-md space-y-2">
-              <div className="text-muted-foreground font-mono text-xs">[AUTO_READ_ENABLED]</div>
+              <div className="text-muted-foreground font-mono text-xs">[AUTO READ ENABLED]</div>
               <p className="text-muted-foreground text-sm">
                 Click any notification to automatically mark it as read
               </p>
@@ -275,7 +275,7 @@ const notification: Notification = {
           description: 'Control the maximum height of the notification list',
           preview: (
             <div className="w-full max-w-md space-y-2">
-              <div className="text-muted-foreground font-mono text-xs">[MAX_HEIGHT]: 400px</div>
+              <div className="text-muted-foreground font-mono text-xs">[MAX HEIGHT]: 400px</div>
               <p className="text-muted-foreground text-sm">
                 List scrolls when content exceeds max height
               </p>

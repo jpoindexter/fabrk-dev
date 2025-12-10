@@ -24,10 +24,10 @@ export function TechStackSection() {
           className="mb-12 text-center"
         >
           <div className="mb-4">
-            <Badge code="0x10" label="TECH_STACK" />
+            <Badge code="0x10" label="TECH STACK" />
           </div>
           <h2 className={cn('mb-4 text-2xl font-semibold tracking-tight', mode.font)}>
-            TECH_STACK
+            TECH STACK
           </h2>
           <p className={cn('text-muted-foreground text-xs', mode.font)}>
             Built with the latest technologies. No legacy code, no outdated dependencies.
@@ -57,7 +57,7 @@ export function TechStackSection() {
                   />
                   <CardContent padding="md" className="flex-1">
                     <div className={cn('text-foreground mb-3 text-xs font-semibold', mode.font)}>
-                      {tech.name.toUpperCase().replace(/ /g, '_').replace(/\./g, '')}
+                      {tech.name.toUpperCase().replace(/\./g, '')}
                     </div>
                     <div className={cn('text-xs', mode.font)}>
                       <span className="text-muted-foreground">DESC: </span>

@@ -39,7 +39,7 @@ export function CurrentPlanCard({
     <Card>
       <CardHeader
         code="0x00"
-        title="CURRENT_PLAN"
+        title="CURRENT PLAN"
         icon={<CreditCard className="text-muted-foreground size-4" />}
         meta={subscription && getStatusBadge(subscription.status)}
       />
@@ -57,12 +57,12 @@ export function CurrentPlanCard({
                 <div className="flex gap-2">
                   <Button variant="outline" onClick={onUpgrade}>
                     <TrendingUp className="mr-2 h-4 w-4" />
-                    &gt; UPGRADE_PLAN
+                    &gt; UPGRADE PLAN
                   </Button>
                   <Button onClick={onManageBilling} disabled={loadingPortal}>
                     {loadingPortal && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                     <ExternalLink className="mr-2 h-4 w-4" />
-                    &gt; MANAGE_BILLING
+                    &gt; MANAGE BILLING
                   </Button>
                 </div>
               )}
@@ -124,7 +124,7 @@ export function CurrentPlanCard({
             {isOwnerOrAdmin && (
               <Button onClick={onUpgrade} className="mt-4">
                 <TrendingUp className="mr-2 h-4 w-4" />
-                &gt; VIEW_PLANS
+                &gt; VIEW PLANS
               </Button>
             )}
           </div>

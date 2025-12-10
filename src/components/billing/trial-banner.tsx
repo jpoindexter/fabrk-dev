@@ -49,7 +49,7 @@ export function TrialBanner({ trialEndsAt, tier }: TrialBannerProps) {
           </span>
           <Button asChild size="sm" className="ml-4">
             <Link href="/pricing">
-              &gt; UPGRADE_NOW
+              &gt; UPGRADE NOW
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
@@ -77,7 +77,7 @@ export function TrialBanner({ trialEndsAt, tier }: TrialBannerProps) {
           className="ml-4 font-mono text-xs"
         >
           <Link href="/pricing">
-            {isUrgent ? '> UPGRADE_NOW' : '> VIEW_PLANS'}
+            {isUrgent ? '> UPGRADE NOW' : '> VIEW PLANS'}
             <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>

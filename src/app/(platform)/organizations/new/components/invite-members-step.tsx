@@ -52,7 +52,7 @@ export function InviteMembersStep({
     <Card>
       <CardHeader
         code="0x01"
-        title="INVITE_TEAM_MEMBERS"
+        title="INVITE_TEAM MEMBERS"
         icon={<Mail className="h-4 w-4" />}
         meta="OPTIONAL"
       />
@@ -121,7 +121,7 @@ export function InviteMembersStep({
             />
 
             <div className="border-border bg-muted rounded-none border p-4">
-              <h4 className="mb-2 font-mono text-xs font-semibold">[ROLE_PERMISSIONS]:</h4>
+              <h4 className="mb-2 font-mono text-xs font-semibold">[ROLE PERMISSIONS]:</h4>
               <ul className="text-muted-foreground space-y-1 text-sm">
                 <li>
                   • <strong>OWNER</strong>: Full control (assigned to creator)
@@ -145,11 +145,11 @@ export function InviteMembersStep({
               </Button>
               <div className="flex gap-2">
                 <Button type="button" variant="ghost" onClick={onSkip}>
-                  &gt; SKIP_FOR_NOW
+                  &gt; SKIP FOR NOW
                 </Button>
                 <Button type="submit" disabled={loading}>
                   {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                  &gt; SEND_INVITATIONS
+                  &gt; SEND INVITATIONS
                   <Check className="ml-2 h-4 w-4" />
                 </Button>
               </div>

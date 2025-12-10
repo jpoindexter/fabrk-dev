@@ -31,7 +31,7 @@ interface FormDialogProps {
 export function FormDialog({ open, onOpenChange }: FormDialogProps) {
   return (
     <Card>
-      <CardHeader code="0x00" title="FORM_DIALOG" />
+      <CardHeader code="0x00" title="FORM DIALOG" />
       <div className="p-6">
         <div className="mb-4">
           <h3 className={cn(mode.font, 'mb-1 font-semibold')}>Form Dialog</h3>
@@ -44,19 +44,19 @@ export function FormDialog({ open, onOpenChange }: FormDialogProps) {
           <DialogTrigger asChild>
             <Button className={cn(mode.radius, mode.font, 'text-xs')}>
               <Plus className="mr-1 h-3 w-3" />
-              &gt; CREATE_PROJECT
+              &gt; CREATE PROJECT
             </Button>
           </DialogTrigger>
           <DialogContent className={cn(mode.radius, 'border-border')}>
             <DialogHeader>
-              <DialogTitle className={cn(mode.font)}>[NEW_PROJECT]</DialogTitle>
+              <DialogTitle className={cn(mode.font)}>[NEW PROJECT]</DialogTitle>
               <DialogDescription className={cn(mode.font, 'text-sm')}>
                 Create a new project to organize your work.
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-4 py-4">
               <div className="space-y-2">
-                <Label className={cn(mode.font, 'text-xs')}>[PROJECT_NAME]:</Label>
+                <Label className={cn(mode.font, 'text-xs')}>[PROJECT NAME]:</Label>
                 <Input
                   placeholder="my-awesome-project"
                   className={cn(mode.radius, mode.font, 'text-sm')}
@@ -90,7 +90,7 @@ export function FormDialog({ open, onOpenChange }: FormDialogProps) {
         </Dialog>
 
         <div className={cn(mode.font, 'text-muted-foreground mt-4 text-xs')}>
-          [USE_CASE]: Create, edit, quick forms, settings
+          [USE CASE]: Create, edit, quick forms, settings
         </div>
       </div>
     </Card>

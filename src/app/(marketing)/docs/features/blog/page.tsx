@@ -13,7 +13,7 @@ export default function BlogPage() {
     <FeatureGuideTemplate
       code="[0x80]"
       category="Features"
-      title="Blog_System"
+      title="Blog System"
       description="Database-driven blog with full admin control and SEO optimization."
       overview="The blog system stores posts in your database using Prisma, giving you full control over content. No external CMS needed - manage everything from your admin dashboard. Features include categories, featured posts, view tracking, SEO metadata, and automatic read time calculation."
       features={[
@@ -315,7 +315,7 @@ export function formatDate(date: Date | string): string {
           Blog posts support MDX - write Markdown with embedded React components. Create rich,
           interactive content without leaving your editor.
         </DocsCallout>
-        <DocsCard title="AVAILABLE_COMPONENTS">
+        <DocsCard title="AVAILABLE COMPONENTS">
           <div className="space-y-4">
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
@@ -405,7 +405,7 @@ export function formatDate(date: Date | string): string {
 
       {/* SEO Configuration */}
       <DocsSection title="SEO Configuration">
-        <DocsCard title="SEO_METADATA">
+        <DocsCard title="SEO METADATA">
           <p className="mb-4">Each blog post can have custom SEO metadata:</p>
           <div className="space-y-2">
             <div className="border-border flex justify-between border-b pb-2">
@@ -434,14 +434,14 @@ export function formatDate(date: Date | string): string {
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/seo">
-            <DocsCard title="SEO_SETUP" className="hover:border-primary/50 h-full transition-all">
+            <DocsCard title="SEO SETUP" className="hover:border-primary/50 h-full transition-all">
               SEO Configuration
               <p className="mb-6">Learn how to optimize your blog posts for search engines.</p>
             </DocsCard>
           </Link>
           <Link href="/docs/tutorials/file-uploads">
             <DocsCard
-              title="FILE_UPLOADS"
+              title="FILE UPLOADS"
               className="hover:border-primary/50 h-full transition-all"
             >
               File Uploads

@@ -118,12 +118,12 @@ export function MdxReference() {
       <DialogTrigger asChild>
         <Button variant="outline" size="sm" className="gap-2">
           <HelpCircle className="h-4 w-4" />
-          <span className="font-mono text-xs">MDX_REFERENCE</span>
+          <span className="font-mono text-xs">MDX REFERENCE</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="max-h-[80vh] max-w-3xl overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="font-mono">[ MDX_COMPONENTS ]</DialogTitle>
+          <DialogTitle className="font-mono">[ MDX COMPONENTS ]</DialogTitle>
         </DialogHeader>
 
         <div className="space-y-4">
@@ -199,7 +199,7 @@ export function MdxReference() {
 
           {/* Basic Markdown */}
           <div className="border-border border-t pt-4">
-            <h3 className="mb-3 font-mono text-sm font-semibold">BASIC_MARKDOWN</h3>
+            <h3 className="mb-3 font-mono text-sm font-semibold">BASIC MARKDOWN</h3>
             <div className="text-muted-foreground grid gap-2 font-mono text-xs">
               <div className="border-border flex justify-between border-b pb-1">
                 <span>**bold**</span>

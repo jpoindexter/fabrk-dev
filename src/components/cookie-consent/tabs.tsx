@@ -81,13 +81,13 @@ export function ConsentTabContent({
 
       <div className="flex flex-col gap-4 sm:flex-row">
         <Button onClick={acceptAll} className={cn('flex-1', mode.font)}>
-          &gt; ACCEPT_ALL
+          &gt; ACCEPT ALL
         </Button>
         <Button onClick={acceptSelected} variant="outline" className={cn('flex-1', mode.font)}>
-          &gt; ACCEPT_SELECTED
+          &gt; ACCEPT SELECTED
         </Button>
         <Button onClick={rejectAll} variant="outline" className={cn('flex-1', mode.font)}>
-          &gt; REJECT_ALL
+          &gt; REJECT ALL
         </Button>
       </div>
     </div>
@@ -174,7 +174,7 @@ export function DetailsTabContent({ preferences, setPreferences }: DetailsTabCon
           <div className="flex items-center justify-between">
             <div>
               <h4 className={cn('text-foreground text-sm leading-tight font-semibold', mode.font)}>
-                [{category.name.toUpperCase().replace(/ /g, '_')}]
+                [{category.name.toUpperCase()}]
               </h4>
               <p className={cn('text-muted-foreground text-xs leading-relaxed', mode.font)}>
                 {category.description}
@@ -219,7 +219,7 @@ export function AboutTabContent({}: AboutTabContentProps) {
     <div className="space-y-6">
       <div className="space-y-4">
         <div>
-          <h4 className={cn('mb-2 text-sm font-semibold', mode.font)}>WHAT_ARE_COOKIES</h4>
+          <h4 className={cn('mb-2 text-sm font-semibold', mode.font)}>WHAT ARE COOKIES</h4>
           <p className={cn('text-muted-foreground text-xs', mode.font)}>
             Cookies are small text files that are placed on your device when you visit a website.
             They help the website remember information about your visit, which can make your next
@@ -228,7 +228,7 @@ export function AboutTabContent({}: AboutTabContentProps) {
         </div>
 
         <div>
-          <h4 className={cn('mb-2 text-sm font-semibold', mode.font)}>HOW_WE_USE_COOKIES</h4>
+          <h4 className={cn('mb-2 text-sm font-semibold', mode.font)}>HOW WE USE COOKIES</h4>
           <p className={cn('text-muted-foreground text-xs', mode.font)}>
             We use different types of cookies for various purposes, including improving your
             browsing experience, analyzing site traffic, and serving personalized content or ads.
@@ -236,7 +236,7 @@ export function AboutTabContent({}: AboutTabContentProps) {
         </div>
 
         <div>
-          <h4 className={cn('mb-2 text-sm font-semibold', mode.font)}>YOUR_RIGHTS</h4>
+          <h4 className={cn('mb-2 text-sm font-semibold', mode.font)}>YOUR RIGHTS</h4>
           <p className={cn('text-muted-foreground text-xs', mode.font)}>
             Under GDPR and other privacy regulations, you have the right to:
           </p>
@@ -256,14 +256,14 @@ export function AboutTabContent({}: AboutTabContentProps) {
         </div>
 
         <div className="bg-primary/10 !rounded-none border p-4">
-          <h4 className={cn('text-primary text-sm font-semibold', mode.font)}>GDPR_COMPLIANT</h4>
+          <h4 className={cn('text-primary text-sm font-semibold', mode.font)}>GDPR COMPLIANT</h4>
           <p className={cn('text-primary/80 mt-1 text-xs', mode.font)}>
             Our cookie policy and consent management comply with GDPR requirements.
           </p>
         </div>
 
         <div>
-          <h4 className={cn('mb-2 text-sm font-semibold', mode.font)}>CONTACT_US</h4>
+          <h4 className={cn('mb-2 text-sm font-semibold', mode.font)}>CONTACT US</h4>
           <p className={cn('text-muted-foreground text-xs', mode.font)}>
             If you have questions about our use of cookies or your privacy rights, please contact us
             at support@fabrek.dev

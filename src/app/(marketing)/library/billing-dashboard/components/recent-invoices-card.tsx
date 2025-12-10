@@ -36,7 +36,7 @@ export function RecentInvoicesCard({
     <Card tone="neutral">
       <CardHeader
         code="0x00"
-        title="RECENT_INVOICES"
+        title="RECENT INVOICES"
         meta={
           <Button
             variant="ghost"
@@ -44,13 +44,13 @@ export function RecentInvoicesCard({
             onClick={onViewAll}
             className={cn(mode.radius, mode.font, 'h-6 text-xs')}
           >
-            &gt; VIEW_ALL
+            &gt; VIEW ALL
           </Button>
         }
       />
       <CardContent padding="md">
         <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-          [RECENT_INVOICES]: LIMIT=3
+          [RECENT INVOICES]: LIMIT=3
         </div>
 
         <div className="space-y-2">

@@ -321,7 +321,7 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
               disabled={actionLoading}
             >
-              {actionLoading ? '> DELETING...' : '> DELETE_USER'}
+              {actionLoading ? '> DELETING...' : '> DELETE USER'}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

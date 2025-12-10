@@ -21,7 +21,7 @@ export default function BackgroundJobsPage() {
     <FeatureGuideTemplate
       code="[0x60]"
       category="Features"
-      title="Background_Jobs"
+      title="Background Jobs"
       description="Process time-consuming tasks asynchronously with job queues, workers, and the email worker system."
       overview="Background jobs allow you to offload time-consuming tasks from your API routes to dedicated workers. This improves response times and provides better reliability with automatic retries and error handling."
       features={[

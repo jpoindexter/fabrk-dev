@@ -13,7 +13,7 @@ export default function MagicLinksPage() {
     <FeatureGuideTemplate
       code="[0x20]"
       category="Features"
-      title="Magic_Link_Auth"
+      title="Magic Link Auth"
       description="Passwordless authentication via email magic links for frictionless sign-in."
       overview="Magic links provide passwordless authentication by sending a unique, time-limited link to the user's email. Features include one-click sign-in from email, no password to remember or manage, automatic email verification, time-limited tokens (24 hours default), and single-use links for security."
       features={[
@@ -228,7 +228,7 @@ export function MagicLinkForm() {
 
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
-        <DocsCard title="BEST_PRACTICES">
+        <DocsCard title="BEST PRACTICES">
           <ul className="space-y-1">
             <li>├─ Show clear confirmation after sending the link</li>
             <li>├─ Include a resend option after 60 seconds</li>

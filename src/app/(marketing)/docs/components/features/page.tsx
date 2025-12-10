@@ -24,7 +24,7 @@ function FeaturesDemo() {
         <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 font-mono text-xs">
           [ [0x20] FEATURES ] CORE_MODULES
         </span>
-        <h2 className="mt-4 font-mono text-xl font-semibold">WHAT&apos;S_INCLUDED</h2>
+        <h2 className="mt-4 font-mono text-xl font-semibold">WHATWHAT&apos;S_INCLUDEDapos;S INCLUDED</h2>
       </div>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {features.map((feature) => (
@@ -60,7 +60,7 @@ function TechStackDemo() {
     <div className="border-border bg-card w-full border">
       <div className="border-border border-b px-4 py-2">
         <span className="text-muted-foreground font-mono text-xs">
-          [ [0x70] TECH_STACK ] DEPENDENCIES
+          [ [0x70] TECH STACK ] DEPENDENCIES
         </span>
       </div>
       <div className="flex flex-wrap gap-2 p-4">

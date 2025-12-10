@@ -13,7 +13,7 @@ export default function DatabaseSetupPage() {
     <FeatureGuideTemplate
       code="[0x10]"
       category="Deployment"
-      title="Database_Setup"
+      title="Database Setup"
       description="Set up a production PostgreSQL database with Prisma ORM."
       overview="5 database providers supported: Supabase (recommended), Neon, Railway, PlanetScale, and AWS RDS. All use Prisma ORM with connection pooling."
       features={[

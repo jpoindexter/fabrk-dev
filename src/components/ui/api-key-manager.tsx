@@ -146,7 +146,7 @@ export function ApiKeyManager({
       {/* Header with Generate Button */}
       <div className="flex items-center justify-between gap-4">
         <div className="flex-1">
-          <h3 className={cn('text-sm font-semibold tracking-tight', mode.font)}>[ API_KEYS ]</h3>
+          <h3 className={cn('text-sm font-semibold tracking-tight', mode.font)}>[ API KEYS ]</h3>
           <p className="text-muted-foreground mt-1 text-xs">
             Manage API keys for programmatic access
           </p>
@@ -156,12 +156,12 @@ export function ApiKeyManager({
           <DialogTrigger asChild>
             <Button size="sm" className={cn(mode.radius, mode.font)}>
               <Plus className="h-4 w-4" />
-              {'> '}GENERATE_KEY
+              {'> '}GENERATE KEY
             </Button>
           </DialogTrigger>
           <DialogContent className={cn(mode.radius)}>
             <DialogHeader>
-              <DialogTitle className={cn(mode.font)}>[ GENERATE_API_KEY ]</DialogTitle>
+              <DialogTitle className={cn(mode.font)}>[ GENERATE API KEY ]</DialogTitle>
               <DialogDescription>
                 Create a new API key for programmatic access. Give it a descriptive name.
               </DialogDescription>
@@ -169,7 +169,7 @@ export function ApiKeyManager({
 
             <div className="space-y-4 py-4">
               <div className="space-y-2">
-                <label className={cn('text-xs', mode.font)}>[KEY_NAME]:</label>
+                <label className={cn('text-xs', mode.font)}>[KEY NAME]:</label>
                 <Input
                   placeholder="Production API Key"
                   value={newKeyName}
@@ -185,7 +185,7 @@ export function ApiKeyManager({
 
               {generatedKey && (
                 <div className="bg-muted border-border space-y-2 border p-4">
-                  <p className={cn('text-muted-foreground text-xs', mode.font)}>[KEY_GENERATED]:</p>
+                  <p className={cn('text-muted-foreground text-xs', mode.font)}>[KEY GENERATED]:</p>
                   <div className="bg-background border-border flex items-center gap-2 border p-2">
                     <code className={cn('flex-1 text-xs', mode.font)}>{generatedKey.key}</code>
                     <Button
@@ -240,7 +240,7 @@ export function ApiKeyManager({
             <p className={cn('text-muted-foreground text-sm', mode.font)}>
               {searchQuery
                 ? `[NO_KEYS_FOUND]: "${searchQuery}"`
-                : '[NO_API_KEYS]: Generate your first key to get started.'}
+                : '[NO_API KEYS]: Generate your first key to get started.'}
             </p>
           </Card>
         ) : (
@@ -311,7 +311,7 @@ export function ApiKeyManager({
       <AlertDialog open={!!revokeId} onOpenChange={(open) => !open && setRevokeId(null)}>
         <AlertDialogContent className={cn(mode.radius)}>
           <AlertDialogHeader>
-            <AlertDialogTitle className={cn(mode.font)}>[ CONFIRM_REVOCATION ]</AlertDialogTitle>
+            <AlertDialogTitle className={cn(mode.font)}>[ CONFIRM REVOCATION ]</AlertDialogTitle>
             <AlertDialogDescription>
               This action cannot be undone. This will permanently revoke the API key and any
               applications using it will lose access.

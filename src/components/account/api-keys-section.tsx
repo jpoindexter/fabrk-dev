@@ -113,11 +113,11 @@ export function ApiKeysSection() {
     <Card tone="neutral">
       <CardHeader
         code="0x09"
-        title="API_KEYS"
+        title="API KEYS"
         meta={
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
-              <Button>&gt; GENERATE_NEW_KEY</Button>
+              <Button>&gt; GENERATE NEW KEY</Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
@@ -150,7 +150,7 @@ export function ApiKeysSection() {
                   &gt; CANCEL
                 </Button>
                 <Button onClick={handleGenerateKey} disabled={isGenerating}>
-                  {isGenerating ? '&gt; GENERATING...' : '&gt; GENERATE_KEY'}
+                  {isGenerating ? '&gt; GENERATING...' : '&gt; GENERATE KEY'}
                 </Button>
               </DialogFooter>
             </DialogContent>

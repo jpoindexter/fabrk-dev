@@ -87,13 +87,13 @@ export default function UserManagement() {
         </h1>
         <Button className={cn(mode.radius, mode.font, "text-xs")}>
           <UserPlus className="mr-2 h-4 w-4" />
-          &gt; ADD_USER
+          &gt; ADD USER
         </Button>
       </div>
 
       {/* Main Table Card */}
       <Card>
-        <CardHeader code="0x00" title="USERS_DATABASE" />
+        <CardHeader code="0x00" title="USERS DATABASE" />
         <div className="p-4">
           {/* Search and filters */}
           <Input
@@ -194,7 +194,7 @@ function UserManagementPreview() {
           <h1 className={cn(mode.font, 'text-2xl font-semibold')}>User Management</h1>
           <Button className={cn(mode.radius, mode.font, 'text-xs')}>
             <UserPlus className="mr-2 h-4 w-4" />
-            &gt; ADD_USER
+            &gt; ADD USER
           </Button>
         </div>
 
@@ -203,12 +203,12 @@ function UserManagementPreview() {
 
         {/* Main Table Card */}
         <Card>
-          <CardHeader code="0x00" title="USERS_DATABASE" />
+          <CardHeader code="0x00" title="USERS DATABASE" />
 
           <div className="p-4">
             <div className="mb-4 flex items-center justify-between">
               <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                [ALL_USERS]: COUNT={mockUsers.length} | FILTERED={filteredRowCount}
+                [ALL USERS]: COUNT={mockUsers.length} | FILTERED={filteredRowCount}
               </div>
               <Button
                 onClick={exportToCSV}
@@ -217,7 +217,7 @@ function UserManagementPreview() {
                 className={cn(mode.radius, mode.font, 'h-7 text-xs')}
               >
                 <Download className="mr-2 h-3 w-3" />
-                &gt; EXPORT_CSV
+                &gt; EXPORT CSV
               </Button>
             </div>
 
@@ -242,7 +242,7 @@ export default function UserManagementTemplate() {
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
         {/* Header */}
         <TemplatePageHeader
-          badge="USER_MANAGEMENT"
+          badge="USER MANAGEMENT"
           title="User Management"
           description="Manage users, roles, and permissions with TanStack Table"
         />
@@ -251,7 +251,7 @@ export default function UserManagementTemplate() {
         <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
           {/* Tab Navigation Card */}
           <Card>
-            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
@@ -286,7 +286,7 @@ export default function UserManagementTemplate() {
           {/* Preview Tab Content */}
           <TabsContent value="preview" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <CardHeader code="0x01" title="LIVE PREVIEW" />
               <UserManagementPreview />
             </Card>
           </TabsContent>
@@ -294,7 +294,7 @@ export default function UserManagementTemplate() {
           {/* Code Tab Content */}
           <TabsContent value="code" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <CardHeader code="0x01" title="SOURCE CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
@@ -304,7 +304,7 @@ export default function UserManagementTemplate() {
 
         {/* File Structure */}
         <Card>
-          <CardHeader code="0x02" title="FILE_STRUCTURE" />
+          <CardHeader code="0x02" title="FILE STRUCTURE" />
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>

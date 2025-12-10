@@ -102,7 +102,7 @@ export function TemplateShowcase({
                 ) : (
                   <>
                     <Copy className="mr-1 h-3 w-3" />
-                    &gt; COPY_CODE
+                    &gt; COPY CODE
                   </>
                 )}
               </Button>
@@ -116,7 +116,7 @@ export function TemplateShowcase({
               >
                 <a href={sourceUrl} target="_blank" rel="noopener noreferrer">
                   <Code className="mr-1 h-3 w-3" />
-                  &gt; VIEW_SOURCE
+                  &gt; VIEW SOURCE
                   <ExternalLink className="ml-1 h-3 w-3" />
                 </a>
               </Button>
@@ -132,7 +132,7 @@ export function TemplateShowcase({
           <CardHeader code="0x00" title="features.md" />
           <CardContent>
             <div className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
-              [TEMPLATE_FEATURES]:
+              [TEMPLATE FEATURES]:
             </div>
             <div className="grid gap-x-8 gap-y-1.5 md:grid-cols-2 lg:grid-cols-3">
               <FeatureList>

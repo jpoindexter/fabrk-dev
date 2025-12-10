@@ -120,7 +120,7 @@ export default function FormErrorPage() {
             <div className="space-y-4 p-4 font-mono text-sm">
               <div className="border-border flex items-center border-b pb-2">
                 <span className="text-muted-foreground text-xs">
-                  [ ERROR_FORMULA ] error-formula.md
+                  [ ERROR FORMULA ] error-formula.md
                 </span>
               </div>
               <div className="space-y-4 text-xs">

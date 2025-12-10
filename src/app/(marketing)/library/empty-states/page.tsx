@@ -46,7 +46,7 @@ export default function EmptyStatePage() {
             <div className="space-y-0.5 text-xs">
               <div className="text-success">$ query --table=items</div>
               <div>RESULT: 0 rows returned</div>
-              <div>STATUS: empty_dataset</div>
+              <div>STATUS: empty dataset</div>
             </div>
           </CardContent>
         </Card>
@@ -55,7 +55,7 @@ export default function EmptyStatePage() {
         <div className="mt-4 flex items-center justify-center">
           <Button className={cn(mode.radius, mode.font, "text-xs")}>
             <Plus className="mr-1 h-3 w-3" />
-            &gt; ADD_FIRST_ITEM
+            &gt; ADD FIRST ITEM
           </Button>
         </div>
       </div>
@@ -87,7 +87,7 @@ function EmptyStatesPreview() {
             <div className="space-y-0.5 text-xs">
               <div className="text-success">$ query --table=items</div>
               <div>RESULT: 0 rows returned</div>
-              <div>STATUS: empty_dataset</div>
+              <div>STATUS: empty dataset</div>
             </div>
           </CardContent>
         </Card>
@@ -96,7 +96,7 @@ function EmptyStatesPreview() {
         <div className="mt-4 flex items-center justify-center">
           <Button className={cn(mode.radius, mode.font, 'text-xs')}>
             <Plus className="mr-1 h-3 w-3" />
-            &gt; ADD_FIRST_ITEM
+            &gt; ADD FIRST ITEM
           </Button>
         </div>
       </div>
@@ -110,7 +110,7 @@ export default function EmptyStatesTemplate() {
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
         {/* Header */}
         <TemplatePageHeader
-          badge="EMPTY_STATES"
+          badge="EMPTY STATES"
           title="Empty States"
           description="Helpful empty state patterns for various scenarios"
         />
@@ -119,7 +119,7 @@ export default function EmptyStatesTemplate() {
         <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
           {/* Tab Navigation Card */}
           <Card>
-            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
@@ -154,7 +154,7 @@ export default function EmptyStatesTemplate() {
           {/* Preview Tab Content */}
           <TabsContent value="preview" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <CardHeader code="0x01" title="LIVE PREVIEW" />
               <EmptyStatesPreview />
             </Card>
           </TabsContent>
@@ -162,7 +162,7 @@ export default function EmptyStatesTemplate() {
           {/* Code Tab Content */}
           <TabsContent value="code" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <CardHeader code="0x01" title="SOURCE CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
@@ -172,29 +172,29 @@ export default function EmptyStatesTemplate() {
 
         {/* Use Cases Reference */}
         <Card>
-          <CardHeader code="0x02" title="USE_CASES" />
+          <CardHeader code="0x02" title="USE CASES" />
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-4 text-xs')}>
               <div className="space-y-2">
-                <div className="font-semibold">[NO_DATA]</div>
+                <div className="font-semibold">[NO DATA]</div>
                 <div className="text-muted-foreground">
                   Tables, lists, dashboards with zero items
                 </div>
               </div>
               <div className="space-y-2">
-                <div className="font-semibold">[FIRST_TIME_USER]</div>
+                <div className="font-semibold">[FIRST TIME USER]</div>
                 <div className="text-muted-foreground">
                   New accounts, fresh workspaces, onboarding
                 </div>
               </div>
               <div className="space-y-2">
-                <div className="font-semibold">[SEARCH_NO_RESULTS]</div>
+                <div className="font-semibold">[SEARCH NO RESULTS]</div>
                 <div className="text-muted-foreground">
                   Search, filters, queries with no matches
                 </div>
               </div>
               <div className="space-y-2">
-                <div className="font-semibold">[ERROR_STATE]</div>
+                <div className="font-semibold">[ERROR STATE]</div>
                 <div className="text-muted-foreground">API failures, network errors, timeouts</div>
               </div>
             </div>

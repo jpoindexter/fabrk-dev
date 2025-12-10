@@ -10,7 +10,7 @@ export function EmailStats() {
     <div className="grid gap-6 md:grid-cols-4">
       <div className="border-border bg-card border p-4">
         <div className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}>
-          [TOTAL_TEMPLATES]:
+          [TOTAL TEMPLATES]:
         </div>
         <div className="text-4xl font-semibold">5</div>
       </div>
@@ -19,7 +19,7 @@ export function EmailStats() {
         <div className="text-4xl font-semibold">3</div>
       </div>
       <div className="border-border bg-card border p-4">
-        <div className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}>[EMAIL_PROVIDER]:</div>
+        <div className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}>[EMAIL PROVIDER]:</div>
         <div className="text-4xl font-semibold">Resend</div>
       </div>
       <div className="border-border bg-card border p-4">

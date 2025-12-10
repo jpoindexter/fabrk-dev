@@ -13,7 +13,7 @@ export default function SchemaValidationPage() {
     <FeatureGuideTemplate
       code="[0x80]"
       category="Security"
-      title="Schema_Validation"
+      title="Schema Validation"
       description="Validate all inputs with Zod schemas for type-safe, secure data handling."
       overview="Schema validation ensures all data entering your application is properly validated and typed. Zod provides runtime validation with automatic TypeScript type inference."
       features={[
@@ -284,7 +284,7 @@ const envSchema = z.object({
 
   // Conditional (required in production)
   STRIPE_SECRET_KEY: z.string().startsWith("sk_").optional(),
-  STRIPE_WEBHOOK_SECRET: z.string().startsWith("whsec_").optional(),
+  STRIPE WEBHOOK SECRET: z.string().startsWith("whsec_").optional(),
 });
 
 // Validate at build/startup time

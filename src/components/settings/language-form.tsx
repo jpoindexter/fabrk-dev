@@ -86,7 +86,7 @@ export function LanguageForm() {
               name="language"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className={cn(mode.font, 'text-xs')}>[INTERFACE_LANGUAGE]:</FormLabel>
+                  <FormLabel className={cn(mode.font, 'text-xs')}>[INTERFACE LANGUAGE]:</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger className={mode.radius}>
@@ -181,7 +181,7 @@ export function LanguageForm() {
               disabled={isLoading}
               className={cn(mode.radius, mode.font, 'text-xs')}
             >
-              {isLoading ? '> SAVING...' : '> SAVE_CHANGES'}
+              {isLoading ? '> SAVING...' : '> SAVE CHANGES'}
             </Button>
           </form>
         </Form>

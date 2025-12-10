@@ -10,7 +10,7 @@ function FooterDemo() {
     <footer className="border-border bg-background w-full border">
       {/* Tech Stack Bar */}
       <div className="border-border border-b p-4">
-        <div className="text-muted-foreground mb-2 font-mono text-xs">[ TECH_STACK ]</div>
+        <div className="text-muted-foreground mb-2 font-mono text-xs">[ TECH STACK ]</div>
         <div className="flex flex-wrap gap-2">
           {['NEXT.JS', 'REACT', 'TYPESCRIPT', 'TAILWIND'].map((tech) => (
             <span key={tech} className="border-border bg-card border px-2 py-1 font-mono text-xs">
@@ -25,7 +25,7 @@ function FooterDemo() {
         {/* Logo & Status */}
         <div>
           <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 font-mono text-xs">
-            [ SYSTEM_INFO ]
+            [ SYSTEM INFO ]
           </span>
           <Link href="#" className="mt-4 flex items-center gap-2 font-mono">
             <span className="text-primary">&gt;</span>

@@ -20,7 +20,7 @@ export function DocsCard({ children, className, code, title }: DocsCardProps) {
   const hasHeader = code || title;
   // Strip [0x and ] if present since we add them in the template
   const hexCode = code?.replace(/^\[0x/, '').replace(/\]$/, '') || '00';
-  const headerTitle = title?.toUpperCase().replace(/\s+/g, '_') || 'INFO';
+  const headerTitle = title?.toUpperCase() || 'INFO';
 
   return (
     <div className={cn('border-border bg-card border', className)}>

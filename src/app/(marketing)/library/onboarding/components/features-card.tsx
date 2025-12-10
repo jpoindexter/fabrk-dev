@@ -10,10 +10,10 @@ import { cn } from '@/lib/utils';
 export function FeaturesCard() {
   return (
     <Card>
-      <CardHeader code="0x00" title="TEMPLATE_FEATURES" />
+      <CardHeader code="0x00" title="TEMPLATE FEATURES" />
       <CardContent>
         <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-          [TEMPLATE_FEATURES]:
+          [TEMPLATE FEATURES]:
         </div>
         <div className={cn(mode.font, 'space-y-2 text-xs')}>
           <div>

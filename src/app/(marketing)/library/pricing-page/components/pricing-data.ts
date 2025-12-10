@@ -37,7 +37,7 @@ export const plans = [
       'Custom domains',
       'Up to 5 team members',
     ],
-    cta: 'START_PRO_TRIAL',
+    cta: 'START PRO TRIAL',
     ctaVariant: 'default' as const,
   },
   {
@@ -57,7 +57,7 @@ export const plans = [
       'Unlimited team members',
       'SSO/SAML',
     ],
-    cta: 'CONTACT_SALES',
+    cta: 'CONTACT SALES',
     ctaVariant: 'outline' as const,
   },
 ];

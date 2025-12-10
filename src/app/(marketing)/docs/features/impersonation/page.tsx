@@ -13,7 +13,7 @@ export default function ImpersonationPage() {
     <FeatureGuideTemplate
       code="[0x81]"
       category="Features"
-      title="User_Impersonation"
+      title="User Impersonation"
       description="View the application as any user for debugging and customer support."
       overview="User impersonation allows admins to temporarily view the application as any user without knowing their password. Essential for debugging user-reported issues, verifying permissions, and providing customer support. All impersonation sessions are logged to the audit trail for compliance."
       features={[
@@ -216,7 +216,7 @@ export function ImpersonationBanner() {
           onClick={handleExit}
           className="rounded-none font-mono text-xs"
         >
-          &gt; EXIT_IMPERSONATION
+          &gt; EXIT IMPERSONATION
         </Button>
       </div>
     </div>
@@ -282,7 +282,7 @@ export function ImpersonateButton({ userId, userName }: ImpersonateButtonProps) 
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="font-mono">IMPERSONATE_USER</DialogTitle>
+          <DialogTitle className="font-mono">IMPERSONATE USER</DialogTitle>
           <DialogDescription>
             You are about to view the application as {userName}. This action will be logged.
           </DialogDescription>
@@ -300,7 +300,7 @@ export function ImpersonateButton({ userId, userName }: ImpersonateButtonProps) 
             onClick={handleImpersonate}
             disabled={!reason.trim() || loading}
           >
-            {loading ? "Starting..." : "> START_IMPERSONATION"}
+            {loading ? "Starting..." : "> START IMPERSONATION"}
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -323,7 +323,7 @@ export function ImpersonateButton({ userId, userName }: ImpersonateButtonProps) 
           Always require a reason, log all activity, and consider implementing additional controls
           like IP restrictions or approval workflows for sensitive environments.
         </DocsCallout>
-        <DocsCard title="SECURITY_BEST_PRACTICES">
+        <DocsCard title="SECURITY BEST PRACTICES">
           <ul className="space-y-1">
             <li>
               ├─ <strong>Admin only:</strong> Restrict to ADMIN role exclusively
@@ -356,7 +356,7 @@ export function ImpersonateButton({ userId, userName }: ImpersonateButtonProps) 
 
       {/* Use Cases */}
       <DocsSection title="Use Cases">
-        <DocsCard title="WHEN_TO_USE">
+        <DocsCard title="WHEN TO USE">
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="space-y-2">
               Good Use Cases
@@ -382,7 +382,7 @@ export function ImpersonateButton({ userId, userName }: ImpersonateButtonProps) 
 
       {/* Audit Trail */}
       <DocsSection title="Audit Trail">
-        <DocsCard title="LOGGED_EVENTS">
+        <DocsCard title="LOGGED EVENTS">
           <p className="mb-4">All impersonation activity is logged to the audit trail:</p>
           <div className="space-y-2">
             <div className="border-border flex justify-between border-b pb-2">
@@ -403,7 +403,7 @@ export function ImpersonateButton({ userId, userName }: ImpersonateButtonProps) 
 
       {/* Integration */}
       <DocsSection title="Integration">
-        <DocsCard title="ADD_TO_DASHBOARD">
+        <DocsCard title="ADD TO DASHBOARD">
           <p className="mb-4">Add the impersonation banner to your dashboard layout:</p>
           <pre className="bg-muted overflow-x-auto p-4">
             <code>{`// src/app/(dashboard)/layout.tsx
@@ -426,7 +426,7 @@ export default function DashboardLayout({ children }) {
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/security/audit-logging">
             <DocsCard
-              title="AUDIT_LOGGING"
+              title="AUDIT LOGGING"
               className="hover:border-primary/50 h-full transition-all"
             >
               Audit Logging

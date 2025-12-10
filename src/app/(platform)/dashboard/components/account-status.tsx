@@ -19,7 +19,7 @@ interface AccountStatusProps {
 export function AccountStatus({ mfaEnabled, userTier }: AccountStatusProps) {
   return (
     <Card>
-      <CardHeader code="0x00" title="ACCOUNT_STATUS" />
+      <CardHeader code="0x00" title="ACCOUNT STATUS" />
       <CardContent>
         <p className="text-muted-foreground mb-4 font-mono text-xs">
           Current account information and status

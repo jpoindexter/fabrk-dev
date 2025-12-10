@@ -15,7 +15,7 @@ interface UsageStatsCardProps {
 export function UsageStatsCard({ usage }: UsageStatsCardProps) {
   return (
     <Card>
-      <CardHeader code="0x01" title="USAGE_THIS_MONTH" icon={<Activity className="h-4 w-4" />} />
+      <CardHeader code="0x01" title="USAGE THIS MONTH" icon={<Activity className="h-4 w-4" />} />
       <CardContent padding="lg">
         <div className="space-y-6">
           <div>

@@ -13,7 +13,7 @@ export default function EnvironmentVariablesPage() {
     <FeatureGuideTemplate
       code="[0x10]"
       category="Deployment"
-      title="Environment_Variables"
+      title="Environment Variables"
       description="Complete guide to configuring all environment variables for development and production."
       overview="All variables validated at startup with Zod. Client-side variables use NEXT_PUBLIC_ prefix. Different values for dev/preview/production."
       features={[
@@ -118,7 +118,7 @@ STRIPE_SECRET_KEY="sk_test_..."           # Server-side
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."  # Client-side
 
 # Stripe Webhook Secret
-STRIPE_WEBHOOK_SECRET="whsec_..."
+STRIPE WEBHOOK SECRET="whsec_..."
 
 # Price IDs (create in Stripe Dashboard)
 NEXT_PUBLIC_STRIPE_PRICE_STARTER="price_..."
@@ -227,7 +227,7 @@ EMAIL_FROM="dev@your-domain.com"
 
 # Payments
 STRIPE_SECRET_KEY="sk_test_..."
-STRIPE_WEBHOOK_SECRET="whsec_test_..."
+STRIPE WEBHOOK SECRET="whsec_test_..."
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."
 NEXT_PUBLIC_STRIPE_PRICE_STARTER="price_..."
 NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL="price_..."
@@ -243,7 +243,7 @@ NEXT_PUBLIC_POSTHOG_HOST="https://app.posthog.com"`,
     >
       {/* Key Points */}
       <DocsSection title="Key Points">
-        <DocsCard title="KEY_POINTS">
+        <DocsCard title="KEY POINTS">
           <div className="space-y-1">
             <div>├─ All variables are validated at startup with Zod</div>
             <div>├─ Client-side variables must start with NEXT_PUBLIC_</div>

@@ -36,16 +36,16 @@ export default function TermsPage() {
           transition={{ duration: 0.5 }}
           className="mb-6"
         >
-          <Badge code="0x00" label="LEGAL" meta="TERMS_OF_SERVICE" />
+          <Badge code="0x00" label="LEGAL" meta="TERMS OF SERVICE" />
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <h1 className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>FABRK_LEGAL:</h1>
+          <h1 className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>FABRK LEGAL:</h1>
           <h2 className={cn('mb-4 text-4xl font-semibold tracking-tight', mode.font)}>
-            TERMS_OF_SERVICE
+            TERMS OF SERVICE
           </h2>
         </motion.div>
         <motion.div
@@ -81,7 +81,7 @@ export default function TermsPage() {
       <div className="space-y-6">
         {/* Section 1 */}
         <Card size="auto">
-          <CardHeader code="0x10" title="AGREEMENT_TO_TERMS" icon={<Scale className="size-4" />} />
+          <CardHeader code="0x10" title="AGREEMENT TO TERMS" icon={<Scale className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
               By accessing, purchasing, or using Fabrk (&quot;Service&quot;, &quot;Product&quot;,
@@ -101,7 +101,7 @@ export default function TermsPage() {
         <Card size="auto">
           <CardHeader
             code="0x20"
-            title="DESCRIPTION_OF_SERVICE"
+            title="DESCRIPTION OF SERVICE"
             icon={<FileText className="size-4" />}
           />
           <CardContent padding="md">
@@ -188,12 +188,12 @@ export default function TermsPage() {
 
         {/* Section 3 */}
         <Card size="auto">
-          <CardHeader code="0x30" title="USER_ACCOUNTS" icon={<Users className="size-4" />} />
+          <CardHeader code="0x30" title="USER ACCOUNTS" icon={<Users className="size-4" />} />
           <CardContent padding="md">
             <div className="space-y-6">
               <div>
                 <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
-                  [3.1] ACCOUNT_SECURITY
+                  [3.1] ACCOUNT SECURITY
                 </h3>
                 <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
                   <li>├─ Provide accurate, current information during registration</li>
@@ -228,7 +228,7 @@ export default function TermsPage() {
 
         {/* Section 4 */}
         <Card size="auto">
-          <CardHeader code="0x40" title="PAYMENT_TERMS" icon={<CreditCard className="size-4" />} />
+          <CardHeader code="0x40" title="PAYMENT TERMS" icon={<CreditCard className="size-4" />} />
           <CardContent padding="md">
             <div className="space-y-6">
               <div>
@@ -242,7 +242,7 @@ export default function TermsPage() {
 
               <div>
                 <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
-                  [4.2] PAYMENT_PROCESSING
+                  [4.2] PAYMENT PROCESSING
                 </h3>
                 <p className={cn('text-muted-foreground text-sm', mode.font)}>
                   Payments processed via Polar and/or Stripe. By completing purchase, you authorize
@@ -253,7 +253,7 @@ export default function TermsPage() {
 
               <div>
                 <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
-                  [4.3] NO_REFUNDS_POLICY
+                  [4.3] NO REFUNDS POLICY
                 </h3>
                 <div
                   className={cn(
@@ -276,7 +276,7 @@ export default function TermsPage() {
         <Card size="auto">
           <CardHeader
             code="0x50"
-            title="INTELLECTUAL_PROPERTY"
+            title="INTELLECTUAL PROPERTY"
             icon={<Shield className="size-4" />}
           />
           <CardContent padding="md">
@@ -312,7 +312,7 @@ export default function TermsPage() {
 
         {/* Section 6 */}
         <Card size="auto">
-          <CardHeader code="0x60" title="PROHIBITED_USES" icon={<Ban className="size-4" />} />
+          <CardHeader code="0x60" title="PROHIBITED USES" icon={<Ban className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>
               You agree NOT to use Fabrk to:
@@ -351,7 +351,7 @@ export default function TermsPage() {
         <Card size="auto">
           <CardHeader
             code="0x70"
-            title="DISCLAIMERS_LIABILITY"
+            title="DISCLAIMERS LIABILITY"
             icon={<AlertTriangle className="size-4" />}
           />
           <CardContent padding="md">
@@ -391,7 +391,7 @@ export default function TermsPage() {
         <Card size="auto">
           <CardHeader
             code="0x80"
-            title="UPDATES_VERSIONING"
+            title="UPDATES VERSIONING"
             icon={<RefreshCw className="size-4" />}
           />
           <CardContent padding="md">
@@ -420,7 +420,7 @@ export default function TermsPage() {
 
         {/* Section 10 */}
         <Card size="auto">
-          <CardHeader code="0xA0" title="GOVERNING_LAW" icon={<Globe className="size-4" />} />
+          <CardHeader code="0xA0" title="GOVERNING LAW" icon={<Globe className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>
               These Terms are governed by the laws of the Netherlands. Disputes shall be resolved in
@@ -434,7 +434,7 @@ export default function TermsPage() {
 
         {/* Section 11 */}
         <Card size="auto">
-          <CardHeader code="0xB0" title="TERMS_CHANGES" icon={<Bell className="size-4" />} />
+          <CardHeader code="0xB0" title="TERMS CHANGES" icon={<Bell className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground text-sm', mode.font)}>
               We may modify these Terms at any time. Material changes will be communicated with 30
@@ -445,7 +445,7 @@ export default function TermsPage() {
 
         {/* Section 12 */}
         <Card size="auto">
-          <CardHeader code="0xC0" title="CONTACT_INFO" icon={<Mail className="size-4" />} />
+          <CardHeader code="0xC0" title="CONTACT INFO" icon={<Mail className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
               Questions about these Terms?
@@ -476,19 +476,19 @@ export default function TermsPage() {
         <Card size="auto">
           <CardHeader
             code="0xD0"
-            title="RELATED_DOCUMENTS"
+            title="RELATED DOCUMENTS"
             icon={<FileText className="size-4" />}
           />
           <CardContent padding="md">
             <div className={cn('flex flex-wrap gap-4 text-xs', mode.font)}>
               <Link href="/privacy" className="text-primary hover:underline">
-                &gt; PRIVACY_POLICY
+                &gt; PRIVACY POLICY
               </Link>
               <Link href="/cookies" className="text-primary hover:underline">
-                &gt; COOKIE_POLICY
+                &gt; COOKIE POLICY
               </Link>
               <Link href="/refund" className="text-primary hover:underline">
-                &gt; REFUND_POLICY
+                &gt; REFUND POLICY
               </Link>
             </div>
           </CardContent>

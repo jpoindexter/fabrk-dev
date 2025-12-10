@@ -51,7 +51,7 @@ export function AnalyticsTabs({
   return (
     <StyledTabs
       code="0x00"
-      title="ANALYTICS_TABS"
+      title="ANALYTICS TABS"
       tabs={tabs}
       value={activeTab}
       onValueChange={onTabChange}
@@ -60,7 +60,7 @@ export function AnalyticsTabs({
       <StyledTabsContent value="overview">
         <div className="border-border bg-card border p-4">
           <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-            [TOP_PAGES]: SORTED_BY=VIEWS
+            [TOP PAGES]: SORTED_BY=VIEWS
           </div>
 
           {/* Terminal Table */}
@@ -102,7 +102,7 @@ export function AnalyticsTabs({
             {/* Traffic Sources */}
             <div className="border-border border p-4">
               <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-                [TRAFFIC_SOURCES]:
+                [TRAFFIC SOURCES]:
               </div>
               <div className="space-y-4">
                 {trafficSources.map((source, i) => (
@@ -146,13 +146,13 @@ export function AnalyticsTabs({
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {[
-              { name: 'MONTHLY_SUMMARY', desc: 'Overview of all metrics' },
-              { name: 'USER_BEHAVIOR', desc: 'Detailed user journey analysis' },
+              { name: 'MONTHLY SUMMARY', desc: 'Overview of all metrics' },
+              { name: 'USER BEHAVIOR', desc: 'Detailed user journey analysis' },
               {
-                name: 'REVENUE_REPORT',
+                name: 'REVENUE REPORT',
                 desc: 'Financial performance breakdown',
               },
-              { name: 'CUSTOM_REPORT', desc: 'Build your own report' },
+              { name: 'CUSTOM REPORT', desc: 'Build your own report' },
             ].map((report, i) => (
               <div key={i} className="border-border border p-4">
                 <div className="mb-4 flex items-start justify-between">

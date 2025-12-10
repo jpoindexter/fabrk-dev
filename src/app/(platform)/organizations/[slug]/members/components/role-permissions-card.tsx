@@ -12,7 +12,7 @@ import { Badge } from '@/components/ui/badge';
 export function RolePermissionsCard() {
   return (
     <Card>
-      <CardHeader code="0x02" title="ROLE_PERMISSIONS" icon={<Info className="h-4 w-4" />} />
+      <CardHeader code="0x02" title="ROLE PERMISSIONS" icon={<Info className="h-4 w-4" />} />
       <CardContent padding="lg">
         <div className="grid gap-4 md:grid-cols-2">
           <div className="border-border bg-card rounded-none border p-4">

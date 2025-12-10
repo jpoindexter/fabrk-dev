@@ -140,7 +140,7 @@ export default function PaymentMethodsPage() {
         <Link href="/billing">
           <Button variant="ghost" size="sm" className="mb-4">
             <ArrowLeft className="mr-2 h-4 w-4" />
-            &gt; BACK_TO_BILLING
+            &gt; BACK TO BILLING
           </Button>
         </Link>
         <div className="flex items-center justify-between">
@@ -152,7 +152,7 @@ export default function PaymentMethodsPage() {
           </div>
           <Button onClick={handleAddPaymentMethod} disabled={isLoading}>
             <Plus className="mr-2 h-4 w-4" />
-            &gt; ADD_PAYMENT_METHOD
+            &gt; ADD PAYMENT METHOD
           </Button>
         </div>
       </div>
@@ -179,7 +179,7 @@ export default function PaymentMethodsPage() {
                 </p>
                 <Button onClick={handleAddPaymentMethod}>
                   <Plus className="mr-2 h-4 w-4" />
-                  &gt; ADD_PAYMENT_METHOD
+                  &gt; ADD PAYMENT METHOD
                 </Button>
               </div>
             </CardContent>
@@ -219,7 +219,7 @@ export default function PaymentMethodsPage() {
                         size="sm"
                         onClick={() => handleSetDefault(method.id)}
                       >
-                        &gt; SET_AS_DEFAULT
+                        &gt; SET AS DEFAULT
                       </Button>
                     )}
                     <Button
@@ -244,7 +244,7 @@ export default function PaymentMethodsPage() {
       {/* Information Cards */}
       <div className="mt-8 grid gap-6 md:grid-cols-2">
         <Card>
-          <CardHeader code="0xF0" title="SECURE_PROCESSING" icon={<Shield className="h-4 w-4" />} />
+          <CardHeader code="0xF0" title="SECURE PROCESSING" icon={<Shield className="h-4 w-4" />} />
           <CardContent className="text-muted-foreground text-sm">
             All payments are processed securely through Stripe. Your payment information is
             encrypted and we never have access to your full card details.
@@ -254,7 +254,7 @@ export default function PaymentMethodsPage() {
         <Card>
           <CardHeader
             code="0xF1"
-            title="AUTOMATIC_BILLING"
+            title="AUTOMATIC BILLING"
             icon={<CreditCard className="h-4 w-4" />}
           />
           <CardContent className="text-muted-foreground text-sm">
@@ -280,7 +280,7 @@ export default function PaymentMethodsPage() {
               onClick={confirmDelete}
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
             >
-              &gt; REMOVE_PAYMENT_METHOD
+              &gt; REMOVE PAYMENT METHOD
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

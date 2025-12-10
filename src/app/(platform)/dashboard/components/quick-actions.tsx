@@ -17,7 +17,7 @@ interface QuickActionsProps {
 export function QuickActions({ isAdmin }: QuickActionsProps) {
   return (
     <Card className="col-span-3">
-      <CardHeader code="0x00" title="QUICK_ACTIONS" meta="Common tasks and shortcuts" />
+      <CardHeader code="0x00" title="QUICK ACTIONS" meta="Common tasks and shortcuts" />
       <CardContent className="space-y-2">
         <Link href="/profile">
           <Button variant="outline" className="w-full justify-start">

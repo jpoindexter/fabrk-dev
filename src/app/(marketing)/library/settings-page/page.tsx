@@ -47,7 +47,7 @@ export default function SettingsPage() {
       {/* Tabs Container */}
       <StyledTabs
         code="0x00"
-        title="SETTINGS_NAVIGATION"
+        title="SETTINGS NAVIGATION"
         tabs={tabs}
         value={activeTab}
         onValueChange={setActiveTab}
@@ -92,7 +92,7 @@ function SettingsPreview() {
         {/* Tabs Container */}
         <StyledTabs
           code="0x00"
-          title="SETTINGS_NAVIGATION"
+          title="SETTINGS NAVIGATION"
           tabs={tabs}
           value={activeTab}
           onValueChange={setActiveTab}
@@ -125,7 +125,7 @@ export default function SettingsPageTemplate() {
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
         {/* Header */}
         <TemplatePageHeader
-          badge="SETTINGS_PAGE"
+          badge="SETTINGS PAGE"
           title="Settings Page"
           description="Multi-tab settings interface with general, account, privacy, and billing sections"
         />
@@ -134,7 +134,7 @@ export default function SettingsPageTemplate() {
         <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
           {/* Tab Navigation Card */}
           <Card>
-            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
@@ -169,7 +169,7 @@ export default function SettingsPageTemplate() {
           {/* Preview Tab Content */}
           <TabsContent value="preview" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <CardHeader code="0x01" title="LIVE PREVIEW" />
               <SettingsPreview />
             </Card>
           </TabsContent>
@@ -177,7 +177,7 @@ export default function SettingsPageTemplate() {
           {/* Code Tab Content */}
           <TabsContent value="code" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <CardHeader code="0x01" title="SOURCE CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
@@ -187,7 +187,7 @@ export default function SettingsPageTemplate() {
 
         {/* File Structure */}
         <Card>
-          <CardHeader code="0x02" title="FILE_STRUCTURE" />
+          <CardHeader code="0x02" title="FILE STRUCTURE" />
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>

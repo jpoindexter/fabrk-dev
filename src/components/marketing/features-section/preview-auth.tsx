@@ -56,7 +56,7 @@ export function AuthPreview() {
 
   return (
     <Card ref={ref} className="w-full max-w-sm">
-      <PreviewHeader title="auth_module.exe" animated />
+      <PreviewHeader title="auth module.exe" animated />
 
       <CardContent padding="lg">
         <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>[AUTH_FORM]:</div>

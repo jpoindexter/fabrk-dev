@@ -169,7 +169,7 @@ export function Security2FASetupDialog({
                 className="flex-1"
               >
                 {isVerifying && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                {isVerifying ? '> VERIFYING...' : '> VERIFY_AND_ENABLE'}
+                {isVerifying ? '> VERIFYING...' : '> VERIFY AND ENABLE'}
               </Button>
             </DialogFooter>
           </div>

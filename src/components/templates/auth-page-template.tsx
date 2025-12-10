@@ -13,7 +13,7 @@
  *     { name: "email", label: "EMAIL", type: "email", placeholder: "name@example.com" },
  *     { name: "password", label: "PASSWORD", type: "password", placeholder: "••••••••" },
  *   ]}
- *   submitLabel="SIGN_IN"
+ *   submitLabel="SIGN IN"
  *   socialAuth
  *   rememberMe
  *   forgotPasswordLink
@@ -250,7 +250,7 @@ export function AuthPageTemplate({
 
           {/* Submit Button */}
           <Button type="submit" className="w-full" disabled={loading} loading={loading}>
-            &gt; {submitLabel.toUpperCase().replace(/ /g, '_')}
+            &gt; {submitLabel.toUpperCase()}
           </Button>
         </form>
 

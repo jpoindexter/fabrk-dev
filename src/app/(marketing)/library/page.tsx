@@ -32,7 +32,7 @@ const categories = [
   },
   {
     id: 'admin',
-    module: 'ADMIN_PANELS',
+    module: 'ADMIN PANELS',
     name: 'Admin Panels',
     description: 'User management and administrative interfaces',
     icon: Settings,
@@ -42,7 +42,7 @@ const categories = [
   },
   {
     id: 'account',
-    module: 'ACCOUNT_PAGES',
+    module: 'ACCOUNT PAGES',
     name: 'Account Pages',
     description: 'Settings, billing, security, and user profile pages',
     icon: Users,
@@ -134,7 +134,7 @@ export default function TemplatesPage() {
                       'text-primary group-hover:text-primary/80 text-xs transition-colors'
                     )}
                   >
-                    &gt; BROWSE_TEMPLATES
+                    &gt; BROWSE TEMPLATES
                   </span>
                   <span
                     className={cn(

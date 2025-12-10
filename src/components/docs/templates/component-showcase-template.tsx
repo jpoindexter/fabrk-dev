@@ -167,7 +167,7 @@ export function ComponentShowcaseTemplate({
         <DocsSection title="Usage">
           <div className={docsSpacing.sectionItems}>
             {usageExamples.map((example, index) => (
-              <DocsCard key={index} title={example.title.toUpperCase().replace(/\s+/g, '_')}>
+              <DocsCard key={index} title={example.title.toUpperCase()}>
                 {example.description && (
                   <p className={docsTypography.body}>{example.description}</p>
                 )}

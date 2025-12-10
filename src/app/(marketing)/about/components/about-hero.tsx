@@ -20,7 +20,7 @@ export function AboutHero() {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <Badge code="0x00" label="ABOUT" meta="FABRK_ORIGIN_STORY" />
+          <Badge code="0x00" label="ABOUT" meta="FABRK ORIGIN STORY" />
         </motion.div>
 
         <motion.div
@@ -28,11 +28,11 @@ export function AboutHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <p className={cn('text-muted-foreground mb-2 text-xs', mode.font)}>[FABRK_ABOUT]:</p>
+          <p className={cn('text-muted-foreground mb-2 text-xs', mode.font)}>[FABRK ABOUT]:</p>
           <h1 className={cn('mb-8 text-4xl font-semibold tracking-tight lg:text-5xl', mode.font)}>
             BUILT_BY_DEVELOPERS
             <br />
-            <span className="text-primary">FOR_DEVELOPERS</span>
+            <span className="text-primary">FOR DEVELOPERS</span>
           </h1>
         </motion.div>
 
@@ -43,7 +43,7 @@ export function AboutHero() {
           className="mx-auto max-w-2xl text-left"
         >
           <Card size="auto">
-            <CardHeader code="0x01" title="MISSION_STATEMENT" />
+            <CardHeader code="0x01" title="MISSION STATEMENT" />
             <CardContent padding="md">
               <p className={cn('text-muted-foreground text-sm', mode.font)}>
                 We're on a mission to eliminate the repetitive work that slows down every SaaS

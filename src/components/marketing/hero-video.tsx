@@ -108,7 +108,7 @@ export function HeroVideo({
               asChild
             >
               <Link href={ctaPrimary.href}>
-                &gt; {ctaPrimary.text.toUpperCase().replace(/ /g, '_')}
+                &gt; {ctaPrimary.text.toUpperCase()}
               </Link>
             </Button>
             <Button
@@ -121,7 +121,7 @@ export function HeroVideo({
               asChild
             >
               <Link href={ctaSecondary.href}>
-                &gt; VIEW_{ctaSecondary.text.toUpperCase().replace(/ /g, '_')}
+                &gt; VIEW {ctaSecondary.text.toUpperCase()}
               </Link>
             </Button>
           </div>
@@ -136,7 +136,7 @@ export function HeroVideo({
                   'border-foreground/30 bg-foreground/10 text-foreground border-2 px-4 py-1 text-xs backdrop-blur-sm'
                 )}
               >
-                [{badge.toUpperCase().replace(/ /g, '_')}]
+                [{badge.toUpperCase()}]
               </span>
             ))}
           </div>

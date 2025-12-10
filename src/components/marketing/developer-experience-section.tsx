@@ -142,7 +142,7 @@ export function DeveloperExperienceSection() {
                   />
                   <CardContent className="p-4">
                     <div className="text-foreground mb-3 text-xs font-semibold">
-                      {feature.title.toUpperCase().replace(/ /g, '_')}
+                      {feature.title.toUpperCase()}
                     </div>
                     <div className="text-xs">
                       <span className="text-muted-foreground">DESC: </span>

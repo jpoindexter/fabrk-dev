@@ -33,7 +33,7 @@ export function OrganizationPreview() {
 
   return (
     <Card ref={ref} className="w-full max-w-md">
-      <PreviewHeader title="org_manager.exe" />
+      <PreviewHeader title="org manager.exe" />
 
       <CardContent padding="lg">
         <div className="mb-4 flex items-center justify-between">
@@ -61,7 +61,7 @@ export function OrganizationPreview() {
             <div className="flex items-center gap-4">
               <Building2 className="text-muted-foreground size-4" />
               <div>
-                <span className={cn(mode.font, 'block text-xs')}>ACME_INC</span>
+                <span className={cn(mode.font, 'block text-xs')}>ACME INC</span>
                 <span className={cn(mode.font, 'text-muted-foreground text-xs')}>12 members</span>
               </div>
             </div>
@@ -81,7 +81,7 @@ export function OrganizationPreview() {
             <div className="flex items-center gap-4">
               <Building2 className="text-muted-foreground size-4" />
               <div>
-                <span className={cn(mode.font, 'block text-xs')}>STARTUP_CO</span>
+                <span className={cn(mode.font, 'block text-xs')}>STARTUP CO</span>
                 <span className={cn(mode.font, 'text-muted-foreground text-xs')}>5 members</span>
               </div>
             </div>

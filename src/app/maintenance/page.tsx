@@ -60,14 +60,14 @@ export default function MaintenancePage() {
               rel="noopener noreferrer"
               className={cn('text-primary text-xs font-semibold hover:underline', mode.font)}
             >
-              STATUS_PAGE
+              STATUS PAGE
             </a>
           </div>
         </div>
 
         {/* What We're Doing */}
         <Card size="auto" className="text-left">
-          <CardHeader code="0x00" title="CURRENT_TASKS" icon={<Wrench className="size-4" />} />
+          <CardHeader code="0x00" title="CURRENT TASKS" icon={<Wrench className="size-4" />} />
           <CardContent padding="md">
             <ul className={cn('text-muted-foreground space-y-2 text-xs', mode.font)}>
               <li className="flex items-start gap-3">

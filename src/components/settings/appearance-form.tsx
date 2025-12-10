@@ -156,7 +156,7 @@ export function AppearanceForm() {
               disabled={isLoading}
               className={cn(mode.radius, mode.font, 'text-xs')}
             >
-              {isLoading ? '> SAVING...' : '> SAVE_CHANGES'}
+              {isLoading ? '> SAVING...' : '> SAVE CHANGES'}
             </Button>
           </form>
         </Form>

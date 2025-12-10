@@ -113,7 +113,7 @@ export default function AIFormsPage() {
 
       {/* Input Section */}
       <Card>
-        <CardHeader code="0x00" title="FORM_PROMPT" />
+        <CardHeader code="0x00" title="FORM PROMPT" />
         <CardContent padding="lg">
           <p className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
             &gt; Describe the form you want to create. Be specific about fields,
@@ -212,7 +212,7 @@ function AIFormGeneratorPreview() {
 
         {/* Input Section */}
         <Card>
-          <CardHeader code="0x00" title="FORM_PROMPT" />
+          <CardHeader code="0x00" title="FORM PROMPT" />
           <CardContent padding="lg">
             <p className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
               &gt; Describe the form you want to create. Be specific about fields, validation, and
@@ -285,7 +285,7 @@ function AIFormGeneratorPreview() {
         <Tabs defaultValue="preview" className="w-full">
           {/* Tab Navigation Card */}
           <Card>
-            <CardHeader code="0x01" title="GENERATED_OUTPUT" />
+            <CardHeader code="0x01" title="GENERATED OUTPUT" />
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
@@ -330,7 +330,7 @@ function AIFormGeneratorPreview() {
           {/* Preview Tab Content */}
           <TabsContent value="preview" className="mt-6">
             <Card>
-              <CardHeader code="0x02" title="FORM_PREVIEW" />
+              <CardHeader code="0x02" title="FORM PREVIEW" />
               <div className="p-6">
                 <div className="mb-4">
                   <h3 className={cn('text-lg font-semibold', mode.font)}>{demoForm.name}</h3>
@@ -375,7 +375,7 @@ function AIFormGeneratorPreview() {
           {/* Schema Tab Content */}
           <TabsContent value="schema" className="mt-6">
             <Card>
-              <CardHeader code="0x02" title="ZOD_SCHEMA" />
+              <CardHeader code="0x02" title="ZOD SCHEMA" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock
                   code={generateZodCode(demoForm)}
@@ -389,7 +389,7 @@ function AIFormGeneratorPreview() {
           {/* Component Tab Content */}
           <TabsContent value="component" className="mt-6">
             <Card>
-              <CardHeader code="0x02" title="REACT_COMPONENT" />
+              <CardHeader code="0x02" title="REACT COMPONENT" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock
                   code={generateComponentCode(demoForm)}
@@ -411,7 +411,7 @@ export default function AIFormGeneratorTemplate() {
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
         {/* Header */}
         <TemplatePageHeader
-          badge="AI_FORM_GENERATOR"
+          badge="AI FORM GENERATOR"
           title="AI Form Generator"
           description="Generate React Hook Form + Zod code from natural language prompts"
         />
@@ -420,7 +420,7 @@ export default function AIFormGeneratorTemplate() {
         <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
           {/* Tab Navigation Card */}
           <Card>
-            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
@@ -455,7 +455,7 @@ export default function AIFormGeneratorTemplate() {
           {/* Preview Tab Content */}
           <TabsContent value="preview" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <CardHeader code="0x01" title="LIVE PREVIEW" />
               <AIFormGeneratorPreview />
             </Card>
           </TabsContent>
@@ -463,7 +463,7 @@ export default function AIFormGeneratorTemplate() {
           {/* Code Tab Content */}
           <TabsContent value="code" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <CardHeader code="0x01" title="SOURCE CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
@@ -473,7 +473,7 @@ export default function AIFormGeneratorTemplate() {
 
         {/* File Structure */}
         <Card>
-          <CardHeader code="0x02" title="FILE_STRUCTURE" />
+          <CardHeader code="0x02" title="FILE STRUCTURE" />
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>

@@ -26,7 +26,7 @@ export function PopoverExample() {
           <PopoverTrigger asChild>
             <Button variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
               <Info className="mr-1 h-3 w-3" />
-              &gt; MORE_INFO
+              &gt; MORE INFO
             </Button>
           </PopoverTrigger>
           <PopoverContent className={cn(mode.radius, 'border-border w-80')}>
@@ -38,7 +38,7 @@ export function PopoverExample() {
               </div>
               <div className="flex items-center gap-2">
                 <Button size="sm" className={cn(mode.radius, mode.font, 'h-7 text-xs')}>
-                  &gt; LEARN_MORE
+                  &gt; LEARN MORE
                 </Button>
                 <Button
                   variant="ghost"
@@ -53,7 +53,7 @@ export function PopoverExample() {
         </Popover>
 
         <div className={cn(mode.font, 'text-muted-foreground mt-4 text-xs')}>
-          [USE_CASE]: Tooltips, quick actions, filter dropdowns
+          [USE CASE]: Tooltips, quick actions, filter dropdowns
         </div>
       </div>
     </Card>

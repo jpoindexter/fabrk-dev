@@ -21,7 +21,7 @@ export default function AuditLoggingPage() {
     <FeatureGuideTemplate
       code="[0x80]"
       category="Security"
-      title="Audit_Logging"
+      title="Audit Logging"
       description="Track security-relevant events and user actions for compliance and debugging."
       overview="Audit logging creates an immutable record of security-relevant events. Track logins, payments, admin actions, and more for compliance requirements and security investigations."
       features={[

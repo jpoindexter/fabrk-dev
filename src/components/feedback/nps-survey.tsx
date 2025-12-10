@@ -78,7 +78,7 @@ export function NPSSurvey({ onSubmit, onDismiss }: NPSSurveyProps) {
 
         <div className="flex gap-4">
           <Button onClick={handleSubmit} className={cn('flex-1', mode.font, 'text-xs')}>
-            &gt; SUBMIT_FEEDBACK
+            &gt; SUBMIT FEEDBACK
           </Button>
           <Button
             onClick={() => onDismiss?.()}

@@ -25,10 +25,10 @@ interface PaymentMethodsCardProps {
 export function PaymentMethodsCard({ paymentMethods }: PaymentMethodsCardProps) {
   return (
     <Card tone="neutral">
-      <CardHeader code="0x00" title="PAYMENT_METHODS" icon={<CreditCard className="size-4" />} />
+      <CardHeader code="0x00" title="PAYMENT METHODS" icon={<CreditCard className="size-4" />} />
       <CardContent padding="md">
         <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-          [PAYMENT_METHODS]:
+          [PAYMENT METHODS]:
         </div>
 
         <div className="space-y-4">
@@ -70,7 +70,7 @@ export function PaymentMethodsCard({ paymentMethods }: PaymentMethodsCardProps) 
           className={cn(mode.radius, mode.font, 'mt-4 w-full text-xs')}
         >
           <Plus className="mr-2 size-3" />
-          &gt; ADD_PAYMENT_METHOD
+          &gt; ADD PAYMENT METHOD
         </Button>
       </CardContent>
     </Card>

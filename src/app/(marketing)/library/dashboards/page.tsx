@@ -42,7 +42,7 @@ export default function DashboardsPage() {
                 {/* Card Header */}
                 <div className="border-border flex items-center justify-between border-b px-4 py-2">
                   <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                    [TEMPLATE]: {template.id.toUpperCase().replace(/-/g, '_')}
+                    [TEMPLATE]: {template.id.toUpperCase()}
                   </span>
                   <template.icon className="text-muted-foreground size-4" />
                 </div>
@@ -96,7 +96,7 @@ export default function DashboardsPage() {
                         'text-primary group-hover:text-primary/80 text-xs transition-colors'
                       )}
                     >
-                      &gt; VIEW_TEMPLATE
+                      &gt; VIEW TEMPLATE
                     </span>
                     <span
                       className={cn(
@@ -115,7 +115,7 @@ export default function DashboardsPage() {
 
         {/* Template Features Card */}
         <Card>
-          <CardHeader code="0x00" title="DASHBOARD_FEATURES" />
+          <CardHeader code="0x00" title="DASHBOARD FEATURES" />
           <CardContent padding="lg">
             <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
               [DASHBOARD_TEMPLATES]:

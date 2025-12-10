@@ -82,7 +82,7 @@ export function CreateKeyForm({
             &gt; CREATING...
           </>
         ) : (
-          '&gt; CREATE_API_KEY'
+          '&gt; CREATE API KEY'
         )}
       </Button>
     </div>

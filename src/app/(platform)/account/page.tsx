@@ -90,7 +90,7 @@ export default function AccountPage() {
               <Card>
                 <CardHeader
                   code="0x00"
-                  title="PROFILE_INFORMATION"
+                  title="PROFILE INFORMATION"
                   icon={<User className="h-4 w-4" />}
                   meta="Update your personal details and profile picture"
                 />
@@ -104,7 +104,7 @@ export default function AccountPage() {
               <Card>
                 <CardHeader
                   code="0x01"
-                  title="SECURITY_SETTINGS"
+                  title="SECURITY SETTINGS"
                   icon={<Shield className="h-4 w-4" />}
                   meta="Manage your password and security preferences"
                 />
@@ -118,7 +118,7 @@ export default function AccountPage() {
               <Card>
                 <CardHeader
                   code="0x02"
-                  title="BILLING_AND_SUBSCRIPTION"
+                  title="BILLING AND SUBSCRIPTION"
                   icon={<CreditCard className="h-4 w-4" />}
                   meta="Manage your subscription plan and payment methods"
                 />
@@ -132,7 +132,7 @@ export default function AccountPage() {
               <Card>
                 <CardHeader
                   code="0x03"
-                  title="API_KEYS"
+                  title="API KEYS"
                   icon={<Key className="h-4 w-4" />}
                   meta="Create and manage API keys for programmatic access"
                 />
@@ -146,7 +146,7 @@ export default function AccountPage() {
               <Card>
                 <CardHeader
                   code="0x04"
-                  title="ACTIVE_SESSIONS"
+                  title="ACTIVE SESSIONS"
                   icon={<Monitor className="h-4 w-4" />}
                   meta="View and manage your active sessions across devices"
                 />
@@ -159,7 +159,7 @@ export default function AccountPage() {
 
           <div className="space-y-4">
             <Card>
-              <CardHeader code="0xF0" title="QUICK_ACTIONS" />
+              <CardHeader code="0xF0" title="QUICK ACTIONS" />
               <CardContent className="space-y-2">
                 {tabs.map((tab) => {
                   const Icon = tab.icon;
@@ -186,7 +186,7 @@ export default function AccountPage() {
             </Card>
 
             <Card>
-              <CardHeader code="0xF1" title="ACCOUNT_STATUS" />
+              <CardHeader code="0xF1" title="ACCOUNT STATUS" />
               <CardContent className="space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-muted-foreground text-sm">Plan</span>
@@ -208,7 +208,7 @@ export default function AccountPage() {
             </Card>
 
             <Card>
-              <CardHeader code="0xF2" title="NEED_HELP" />
+              <CardHeader code="0xF2" title="NEED HELP" />
               <CardContent className="text-muted-foreground space-y-2 text-sm">
                 <p>
                   Visit our{' '}

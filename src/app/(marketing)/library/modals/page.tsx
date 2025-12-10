@@ -48,7 +48,7 @@ export default function ModalPage() {
         <AlertDialogTrigger asChild>
           <Button variant="destructive" className={cn(mode.radius, mode.font, "text-xs")}>
             <Trash2 className="mr-1 h-3 w-3" />
-            &gt; DELETE_ITEM
+            &gt; DELETE ITEM
           </Button>
         </AlertDialogTrigger>
         <AlertDialogContent className={cn(mode.radius, "border-border")}>
@@ -59,7 +59,7 @@ export default function ModalPage() {
               </div>
             </div>
             <AlertDialogTitle className={cn(mode.font)}>
-              [CONFIRM_DELETE]
+              [CONFIRM DELETE]
             </AlertDialogTitle>
             <AlertDialogDescription className={cn(mode.font, "text-sm")}>
               This action cannot be undone. This will permanently delete the item
@@ -93,7 +93,7 @@ function ModalsPreview() {
         <AlertDialogTrigger asChild>
           <Button variant="destructive" className={cn(mode.radius, mode.font, 'text-xs')}>
             <Trash2 className="mr-1 h-3 w-3" />
-            &gt; DELETE_ITEM
+            &gt; DELETE ITEM
           </Button>
         </AlertDialogTrigger>
         <AlertDialogContent className={cn(mode.radius, 'border-border')}>
@@ -103,7 +103,7 @@ function ModalsPreview() {
                 <AlertTriangle className="text-destructive h-5 w-5" />
               </div>
             </div>
-            <AlertDialogTitle className={cn(mode.font)}>[CONFIRM_DELETE]</AlertDialogTitle>
+            <AlertDialogTitle className={cn(mode.font)}>[CONFIRM DELETE]</AlertDialogTitle>
             <AlertDialogDescription className={cn(mode.font, 'text-sm')}>
               This action cannot be undone. This will permanently delete the item and remove all
               associated data from our servers.
@@ -135,7 +135,7 @@ export default function ModalsTemplate() {
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
         {/* Header */}
         <TemplatePageHeader
-          badge="MODAL_PATTERNS"
+          badge="MODAL PATTERNS"
           title="Modal Patterns"
           description="Dialog, alert, sheet, and popover patterns for common interactions"
         />
@@ -144,7 +144,7 @@ export default function ModalsTemplate() {
         <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
           {/* Tab Navigation Card */}
           <Card>
-            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
@@ -179,7 +179,7 @@ export default function ModalsTemplate() {
           {/* Preview Tab Content */}
           <TabsContent value="preview" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <CardHeader code="0x01" title="LIVE PREVIEW" />
               <ModalsPreview />
             </Card>
           </TabsContent>
@@ -187,7 +187,7 @@ export default function ModalsTemplate() {
           {/* Code Tab Content */}
           <TabsContent value="code" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <CardHeader code="0x01" title="SOURCE CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
@@ -197,11 +197,11 @@ export default function ModalsTemplate() {
 
         {/* Pattern Comparison */}
         <Card>
-          <CardHeader code="0x02" title="MODAL_TYPES" />
+          <CardHeader code="0x02" title="MODAL TYPES" />
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-4 text-xs')}>
               <div className="space-y-2">
-                <div className="font-semibold">[ALERT_DIALOG]</div>
+                <div className="font-semibold">[ALERT DIALOG]</div>
                 <div className="text-muted-foreground">
                   Destructive confirmations (delete, logout, reset)
                 </div>

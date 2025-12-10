@@ -56,8 +56,8 @@ export type AuditAction =
   | 'user.updated'
   | 'user.deleted'
   | 'settings.updated'
-  | 'api_key.created'
-  | 'api_key.revoked'
+  | 'api key.created'
+  | 'api key.revoked'
   | 'data.exported'
   | 'data.deleted'
   | 'role.changed'
@@ -171,7 +171,7 @@ export function AuditLog({
       {/* Header with Export */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h3 className={cn('text-sm font-semibold tracking-tight', mode.font)}>[ AUDIT_LOG ]</h3>
+          <h3 className={cn('text-sm font-semibold tracking-tight', mode.font)}>[ AUDIT LOG ]</h3>
           <p className="text-muted-foreground mt-1 text-xs">
             Track all user actions for security and compliance
           </p>
@@ -185,7 +185,7 @@ export function AuditLog({
           className={cn(mode.radius, mode.font)}
         >
           <Download className="h-4 w-4" />
-          {isExporting ? '> EXPORTING...' : '> EXPORT_CSV'}
+          {isExporting ? '> EXPORTING...' : '> EXPORT CSV'}
         </Button>
       </div>
 
@@ -227,14 +227,14 @@ export function AuditLog({
             <SelectItem value="settings.updated" className={cn(mode.font)}>
               [SETTINGS_UPDATED]
             </SelectItem>
-            <SelectItem value="api_key.created" className={cn(mode.font)}>
+            <SelectItem value="api key.created" className={cn(mode.font)}>
               [API_KEY_CREATED]
             </SelectItem>
-            <SelectItem value="api_key.revoked" className={cn(mode.font)}>
+            <SelectItem value="api key.revoked" className={cn(mode.font)}>
               [API_KEY_REVOKED]
             </SelectItem>
             <SelectItem value="data.exported" className={cn(mode.font)}>
-              [DATA_EXPORTED]
+              [DATA EXPORTED]
             </SelectItem>
             <SelectItem value="data.deleted" className={cn(mode.font)}>
               [DATA_DELETED]
@@ -253,7 +253,7 @@ export function AuditLog({
             <p className={cn('text-muted-foreground text-sm', mode.font)}>
               {searchQuery || actionFilter !== 'all'
                 ? '[NO_LOGS_FOUND]: Try adjusting filters'
-                : '[NO_AUDIT_LOGS]: User actions will appear here'}
+                : '[NO_AUDIT LOGS]: User actions will appear here'}
             </p>
           </div>
         ) : (
@@ -332,7 +332,7 @@ export function AuditLog({
           {selectedLog && (
             <>
               <SheetHeader>
-                <SheetTitle className={cn(mode.font)}>[ AUDIT_LOG_DETAILS ]</SheetTitle>
+                <SheetTitle className={cn(mode.font)}>[ AUDIT LOG DETAILS ]</SheetTitle>
                 <SheetDescription>Complete information about this action</SheetDescription>
               </SheetHeader>
 
@@ -387,11 +387,11 @@ export function AuditLog({
                   <p className={cn('text-xs font-semibold', mode.font)}>[SECURITY]:</p>
                   <div className="bg-muted border-border space-y-1 border p-3">
                     <div className="flex justify-between text-xs">
-                      <span className={cn('text-muted-foreground', mode.font)}>[IP_ADDRESS]:</span>
+                      <span className={cn('text-muted-foreground', mode.font)}>[IP ADDRESS]:</span>
                       <span className={cn(mode.font)}>{selectedLog.ipAddress}</span>
                     </div>
                     <div className="flex flex-col gap-1 text-xs">
-                      <span className={cn('text-muted-foreground', mode.font)}>[USER_AGENT]:</span>
+                      <span className={cn('text-muted-foreground', mode.font)}>[USER AGENT]:</span>
                       <span className={cn('text-muted-foreground break-all', mode.font)}>
                         {selectedLog.userAgent}
                       </span>

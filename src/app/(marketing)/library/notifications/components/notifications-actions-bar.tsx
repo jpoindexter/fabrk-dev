@@ -35,7 +35,7 @@ export function NotificationsActionsBar({
           className={cn(mode.radius, mode.font, 'h-7 text-xs')}
         >
           <CheckCheck className="mr-1 h-3 w-3" />
-          &gt; MARK_ALL_READ
+          &gt; MARK ALL READ
         </Button>
         <Button
           variant="outline"
@@ -45,7 +45,7 @@ export function NotificationsActionsBar({
           className={cn(mode.radius, mode.font, 'h-7 text-xs')}
         >
           <Archive className="mr-1 h-3 w-3" />
-          &gt; CLEAR_ALL
+          &gt; CLEAR ALL
         </Button>
         <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, 'h-7 text-xs')}>
           <Settings className="mr-1 h-3 w-3" />

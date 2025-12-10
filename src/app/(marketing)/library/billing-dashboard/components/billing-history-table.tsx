@@ -33,12 +33,12 @@ export function BillingHistoryTable({
   return (
     <>
       <Card tone="neutral">
-        <CardHeader code="0x00" title="BILLING_HISTORY" />
+        <CardHeader code="0x00" title="BILLING HISTORY" />
 
         <CardContent padding="md">
           <div className="mb-4 flex items-center justify-between">
             <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-              [BILLING_HISTORY]: COUNT={payments.length}
+              [BILLING HISTORY]: COUNT={payments.length}
             </div>
             <Button
               variant="outline"
@@ -46,7 +46,7 @@ export function BillingHistoryTable({
               className={cn(mode.radius, mode.font, 'h-7 text-xs')}
             >
               <Download className="mr-2 size-3" />
-              &gt; EXPORT_ALL
+              &gt; EXPORT ALL
             </Button>
           </div>
 

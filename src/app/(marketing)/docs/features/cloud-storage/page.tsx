@@ -13,7 +13,7 @@ export default function CloudStoragePage() {
     <FeatureGuideTemplate
       code="[0x50]"
       category="Features"
-      title="Cloud_Storage"
+      title="Cloud Storage"
       description="Upload and store files securely with automatic provider detection."
       overview="Cloud storage lets you save files (images, documents, videos) on remote servers instead of your own. This is essential when users need to upload profile pictures, documents, or any other files. Think of it like Google Drive or Dropbox for your app - files are stored securely in the cloud and can be accessed from anywhere."
       features={[
@@ -228,7 +228,7 @@ export function FileUploader() {
     >
       {/* Provider Priority Section */}
       <DocsSection title="Provider Priority">
-        <DocsCard title="PROVIDER_PRIORITY">
+        <DocsCard title="PROVIDER PRIORITY">
           <p className="mb-4">
             Fabrk automatically detects which storage provider you have configured and uses it. This
             means you can start with local storage during development and switch to cloud in
@@ -269,7 +269,7 @@ export function FileUploader() {
       {/* Provider Comparison Section */}
       <DocsSection title="Choosing a Provider">
         <div className="grid gap-4 sm:grid-cols-3">
-          <DocsCard title="CLOUDFLARE_R2">
+          <DocsCard title="CLOUDFLARE R2">
             <p className="mb-2">Recommended</p>
             <ul className="space-y-1">
               <li>• No egress fees (huge savings)</li>
@@ -278,7 +278,7 @@ export function FileUploader() {
               <li>• Generous free tier</li>
             </ul>
           </DocsCard>
-          <DocsCard title="AWS_S3">
+          <DocsCard title="AWS S3">
             <p className="mb-2">Industry Standard</p>
             <ul className="space-y-1">
               <li>• Most mature platform</li>
@@ -287,7 +287,7 @@ export function FileUploader() {
               <li>• Egress fees apply</li>
             </ul>
           </DocsCard>
-          <DocsCard title="LOCAL_STORAGE">
+          <DocsCard title="LOCAL STORAGE">
             <p className="mb-2">Development Only</p>
             <ul className="space-y-1">
               <li>• No setup required</li>

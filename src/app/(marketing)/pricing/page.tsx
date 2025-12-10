@@ -19,7 +19,7 @@ export default function PricingPage() {
     <>
       <MarketingPageHeader
         code="0x00"
-        badge="COMMERCIAL_LICENSE"
+        badge="COMMERCIAL LICENSE"
         title="Simple Transparent Pricing"
         description="One time payment. Lifetime updates. No subscriptions."
       />

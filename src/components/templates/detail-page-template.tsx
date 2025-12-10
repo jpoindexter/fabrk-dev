@@ -157,7 +157,7 @@ function MetadataSidebar({ items }: MetadataSidebarProps) {
         {items.map((item, index) => (
           <div key={index} className="space-y-1">
             <span className={cn('text-muted-foreground text-xs', mode.font)}>
-              [{item.label.toUpperCase().replace(/ /g, '_')}]:
+              [{item.label.toUpperCase()}]:
             </span>
             <div className={cn('text-sm', mode.font)}>{item.value}</div>
           </div>
@@ -192,7 +192,7 @@ function TabNavigation({ tabs, activeTab, onTabChange }: TabsProps) {
               : 'text-muted-foreground hover:text-foreground border-transparent'
           )}
         >
-          [ [{String(index).padStart(2, '0')}] {tab.label.toUpperCase().replace(/ /g, '_')} ]
+          [ [{String(index).padStart(2, '0')}] {tab.label.toUpperCase()} ]
         </button>
       ))}
     </div>
@@ -240,7 +240,7 @@ export function DetailPageTemplate({
                 }
                 onClick={action.onClick}
               >
-                &gt; {action.label.toUpperCase().replace(/ /g, '_')}
+                &gt; {action.label.toUpperCase()}
               </Button>
             ))}
           </div>

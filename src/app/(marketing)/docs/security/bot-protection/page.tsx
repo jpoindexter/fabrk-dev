@@ -13,7 +13,7 @@ export default function BotProtectionPage() {
     <FeatureGuideTemplate
       code="[0x80]"
       category="Security"
-      title="Bot_Protection"
+      title="Bot Protection"
       description="Detect and block automated bot traffic with multiple protection strategies."
       overview="Bot protection prevents automated attacks on your forms and APIs. Use honeypot fields, timing validation, user-agent analysis, and CAPTCHA to block bots while keeping the experience smooth for real users."
       features={[

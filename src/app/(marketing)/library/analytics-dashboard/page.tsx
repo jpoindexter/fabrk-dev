@@ -60,7 +60,7 @@ export default function AnalyticsDashboard() {
         </div>
         <Button className={cn(mode.radius, mode.font, "text-xs")}>
           <Download className="mr-2 h-4 w-4" />
-          &gt; EXPORT_DATA
+          &gt; EXPORT DATA
         </Button>
       </div>
 
@@ -101,7 +101,7 @@ function AnalyticsDashboardPreview() {
           </div>
           <Button className={cn(mode.radius, mode.font, 'text-xs')}>
             <Download className="mr-2 h-4 w-4" />
-            &gt; EXPORT_DATA
+            &gt; EXPORT DATA
           </Button>
         </div>
 
@@ -133,7 +133,7 @@ export default function AnalyticsDashboardTemplate() {
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
         {/* Header */}
         <TemplatePageHeader
-          badge="ANALYTICS_DASHBOARD"
+          badge="ANALYTICS DASHBOARD"
           title="Analytics Dashboard"
           description="Track revenue, users, conversions, and growth metrics"
         />
@@ -142,7 +142,7 @@ export default function AnalyticsDashboardTemplate() {
         <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
           {/* Tab Navigation Card */}
           <Card>
-            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
@@ -177,7 +177,7 @@ export default function AnalyticsDashboardTemplate() {
           {/* Preview Tab Content */}
           <TabsContent value="preview" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <CardHeader code="0x01" title="LIVE PREVIEW" />
               <AnalyticsDashboardPreview />
             </Card>
           </TabsContent>
@@ -185,7 +185,7 @@ export default function AnalyticsDashboardTemplate() {
           {/* Code Tab Content */}
           <TabsContent value="code" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <CardHeader code="0x01" title="SOURCE CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
@@ -195,7 +195,7 @@ export default function AnalyticsDashboardTemplate() {
 
         {/* File Structure */}
         <Card>
-          <CardHeader code="0x02" title="FILE_STRUCTURE" />
+          <CardHeader code="0x02" title="FILE STRUCTURE" />
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>

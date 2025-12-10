@@ -43,9 +43,9 @@ export function OrganizationDetailsStep({
     <Card>
       <CardHeader
         code="0x00"
-        title="CREATE_ORGANIZATION"
+        title="CREATE ORGANIZATION"
         icon={<Building2 className="h-4 w-4" />}
-        meta="STEP_1"
+        meta="STEP 1"
       />
       <CardContent padding="lg">
         <Form {...form}>

@@ -50,7 +50,7 @@ export function EmailPreview({ template, primaryColor }: EmailPreviewProps) {
     <TabsContent value={template.id} className="mt-6">
       <Card>
         {/* Tab Header */}
-        <CardHeader code="0x00" title="EMAIL_PREVIEW" />
+        <CardHeader code="0x00" title="EMAIL PREVIEW" />
 
         {/* Content Area */}
         <CardContent padding="lg">
@@ -90,7 +90,7 @@ export function EmailPreview({ template, primaryColor }: EmailPreviewProps) {
             )}
           >
             <div>
-              <div className="text-muted-foreground mb-2">[TRIGGER_EVENTS]:</div>
+              <div className="text-muted-foreground mb-2">[TRIGGER EVENTS]:</div>
               <div className="flex flex-wrap gap-2">
                 {template.triggers.map((trigger, idx) => (
                   <span key={idx} className="border-border bg-muted/30 border px-2 py-1">

@@ -63,7 +63,7 @@ export function BillingPreview() {
 
   return (
     <Card ref={ref} className="w-full max-w-md">
-      <PreviewHeader title="billing_portal.exe" animated />
+      <PreviewHeader title="billing portal.exe" animated />
 
       <CardContent padding="lg">
         <motion.div

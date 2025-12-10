@@ -245,7 +245,7 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
           <AlertDescription>
             Your email is not verified. Please check your inbox for the verification link.
             <Button variant="link" className="ml-2 h-auto p-0">
-              &gt; RESEND_VERIFICATION_EMAIL
+              &gt; RESEND VERIFICATION EMAIL
             </Button>
           </AlertDescription>
         </Alert>

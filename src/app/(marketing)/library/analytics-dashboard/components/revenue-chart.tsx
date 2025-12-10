@@ -27,10 +27,10 @@ export function RevenueChart({ data }: RevenueChartProps) {
 
   return (
     <Card className="lg:col-span-4">
-      <CardHeader code="0x00" title="REVENUE_CHART" />
+      <CardHeader code="0x00" title="REVENUE CHART" />
       <CardContent>
         <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-          [REVENUE_OVERVIEW]: PERIOD=6_MONTHS
+          [REVENUE OVERVIEW]: PERIOD=6_MONTHS
         </div>
 
         {/* Bar Chart */}

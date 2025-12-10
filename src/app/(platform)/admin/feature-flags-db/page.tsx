@@ -158,13 +158,13 @@ export default function FeatureFlagsDbPage() {
         </div>
         <Button onClick={() => setShowCreateForm(!showCreateForm)}>
           <Plus className="mr-2 h-4 w-4" />
-          &gt; NEW_FLAG
+          &gt; NEW FLAG
         </Button>
       </div>
 
       {showCreateForm && (
         <Card tone="primary">
-          <CardHeader code="0x00" title="CREATE_FEATURE_FLAG" icon={<Plus className="h-4 w-4" />} />
+          <CardHeader code="0x00" title="CREATE FEATURE FLAG" icon={<Plus className="h-4 w-4" />} />
           <CardContent className="space-y-4">
             <div>
               <Label>{formatLabel('Flag Name')}</Label>
@@ -277,7 +277,7 @@ export default function FeatureFlagsDbPage() {
               onClick={confirmDelete}
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
             >
-              &gt; DELETE_FLAG
+              &gt; DELETE FLAG
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

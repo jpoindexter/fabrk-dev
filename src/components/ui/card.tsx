@@ -246,8 +246,8 @@ StatGroup.displayName = 'StatGroup';
  *
  * @example
  * ```tsx
- * <StyledLabel>TEMPLATE_FEATURES</StyledLabel>
- * // Renders: [TEMPLATE_FEATURES]:
+ * <StyledLabel>TEMPLATE FEATURES</StyledLabel>
+ * // Renders: [TEMPLATE FEATURES]:
  * ```
  */
 export type StyledLabelProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -375,10 +375,10 @@ InfoNote.displayName = 'InfoNote';
  * @example
  * ```tsx
  * // Section header badge
- * <Badge code="0x00" label="SYSTEM_INIT" meta="SAAS_BOILERPLATE_v2.0" />
+ * <Badge code="0x00" label="SYSTEM INIT" meta="SAAS BOILERPLATE v2.0" />
  *
  * // Simple badge without meta
- * <Badge code="0x50" label="DEV_EXPERIENCE" />
+ * <Badge code="0x50" label="DEV EXPERIENCE" />
  * ```
  */
 export type BadgeProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -412,8 +412,8 @@ Badge.displayName = 'Badge';
  *
  * @example
  * ```tsx
- * <PageBadge>SIGN_IN</PageBadge>
- * // Renders: [TEMPLATE]: SIGN_IN
+ * <PageBadge>SIGN IN</PageBadge>
+ * // Renders: [TEMPLATE]: SIGN IN
  * ```
  */
 export type PageBadgeProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -445,7 +445,7 @@ PageBadge.displayName = 'PageBadge';
  * @example
  * ```tsx
  * <TemplatePageHeader
- *   badge="SIGN_IN"
+ *   badge="SIGN IN"
  *   title="Sign In"
  *   description="Login page with social auth options"
  * />
@@ -487,7 +487,7 @@ TemplatePageHeader.displayName = 'TemplatePageHeader';
  * @example
  * ```tsx
  * <FeaturesCard
- *   title="TEMPLATE_FEATURES"
+ *   title="TEMPLATE FEATURES"
  *   features={["Feature 1", "Feature 2"]}
  *   note="Connect to your API for real data."
  * />
@@ -509,7 +509,7 @@ export type FeaturesCardProps = React.HTMLAttributes<HTMLDivElement> & {
 const FeaturesCard = React.forwardRef<HTMLDivElement, FeaturesCardProps>(
   (
     {
-      title = 'TEMPLATE_FEATURES',
+      title = 'TEMPLATE FEATURES',
       code = '0x00',
       features,
       note,

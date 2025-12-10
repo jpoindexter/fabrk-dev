@@ -54,7 +54,7 @@ function AccountPagesPreview() {
                 {/* Card Header */}
                 <div className="border-border flex items-center justify-between border-b px-4 py-2">
                   <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                    [TEMPLATE]: {template.id.toUpperCase().replace(/-/g, '_')}
+                    [TEMPLATE]: {template.id.toUpperCase()}
                   </span>
                   <template.icon className="text-muted-foreground size-4" />
                 </div>
@@ -108,7 +108,7 @@ function AccountPagesPreview() {
                         'text-primary group-hover:text-primary/80 text-xs transition-colors'
                       )}
                     >
-                      &gt; VIEW_TEMPLATE
+                      &gt; VIEW TEMPLATE
                     </span>
                     <span
                       className={cn(
@@ -156,7 +156,7 @@ export default function AccountPagesPage() {
         <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
           {/* Tab Navigation Card */}
           <Card>
-            <CardHeader code="0x00" title="CATEGORY_OVERVIEW" />
+            <CardHeader code="0x00" title="CATEGORY OVERVIEW" />
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
@@ -191,7 +191,7 @@ export default function AccountPagesPage() {
           {/* Preview Tab Content */}
           <TabsContent value="preview" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="TEMPLATES_OVERVIEW" />
+              <CardHeader code="0x01" title="TEMPLATES OVERVIEW" />
               <AccountPagesPreview />
             </Card>
           </TabsContent>
@@ -199,7 +199,7 @@ export default function AccountPagesPage() {
           {/* Code Tab Content */}
           <TabsContent value="code" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="CATEGORY_INFO" />
+              <CardHeader code="0x01" title="CATEGORY INFO" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
@@ -209,10 +209,10 @@ export default function AccountPagesPage() {
 
         {/* Template Features Card */}
         <Card>
-          <CardHeader code="0x02" title="ACCOUNT_PAGE_FEATURES" />
+          <CardHeader code="0x02" title="ACCOUNT PAGE FEATURES" />
           <CardContent padding="lg">
             <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-              [ACCOUNT_PAGE_TEMPLATES]:
+              [ACCOUNT PAGE TEMPLATES]:
             </div>
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div>

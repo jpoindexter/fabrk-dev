@@ -13,8 +13,8 @@ export default function ButtonPage() {
       description="Displays a button or a component that looks like a button."
       importCode={`import { Button } from "@/components/ui/button"`}
       mainPreview={{
-        preview: <Button>&gt; CLICK_ME</Button>,
-        code: `<Button>> CLICK_ME</Button>`,
+        preview: <Button>&gt; CLICK ME</Button>,
+        code: `<Button>> CLICK ME</Button>`,
       }}
       variants={[
         {
@@ -58,11 +58,11 @@ export default function ButtonPage() {
           description: 'Button with an icon for enhanced context.',
           preview: (
             <Button>
-              <Mail className="mr-2 h-4 w-4" /> &gt; LOGIN_WITH_EMAIL
+              <Mail className="mr-2 h-4 w-4" /> &gt; LOGIN WITH EMAIL
             </Button>
           ),
           code: `<Button>
-  <Mail className="mr-2 h-4 w-4" /> > LOGIN_WITH_EMAIL
+  <Mail className="mr-2 h-4 w-4" /> > LOGIN WITH EMAIL
 </Button>`,
         },
         {
@@ -104,19 +104,19 @@ export default function ButtonPage() {
         {
           title: 'Extra Large',
           description: 'An extra large button for CTAs.',
-          preview: <Button size="xl">&gt; EXTRA_LARGE</Button>,
-          code: `<Button size="xl">> EXTRA_LARGE</Button>`,
+          preview: <Button size="xl">&gt; EXTRA LARGE</Button>,
+          code: `<Button size="xl">> EXTRA LARGE</Button>`,
         },
         {
           title: 'Primary CTA',
           description: 'High-emphasis call-to-action button.',
           preview: (
             <Button variant="primaryCta">
-              &gt; GET_STARTED <ArrowRight className="ml-2 h-4 w-4" />
+              &gt; GET STARTED <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           ),
           code: `<Button variant="primaryCta">
-  > GET_STARTED <ArrowRight className="ml-2 h-4 w-4" />
+  > GET STARTED <ArrowRight className="ml-2 h-4 w-4" />
 </Button>`,
         },
       ]}

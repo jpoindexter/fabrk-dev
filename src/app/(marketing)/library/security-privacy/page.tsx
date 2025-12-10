@@ -52,7 +52,7 @@ export default function SecurityPrivacy() {
 
       {/* Security Score */}
       <Card>
-        <CardHeader code="0x00" title="SECURITY_SCORE" />
+        <CardHeader code="0x00" title="SECURITY SCORE" />
         <CardContent padding="lg">
           <div className="flex items-center gap-4">
             <div className="flex h-16 w-16 items-center justify-center border border-primary bg-primary/10">
@@ -70,7 +70,7 @@ export default function SecurityPrivacy() {
 
       {/* Security Settings */}
       <Card>
-        <CardHeader code="0x01" title="SECURITY_SETTINGS" />
+        <CardHeader code="0x01" title="SECURITY SETTINGS" />
         <CardContent padding="lg">
           <div className="space-y-4">
             <div className="flex items-center justify-between">
@@ -168,7 +168,7 @@ const privacySettings = {
 const tabs = [
   { id: 'security', label: 'SECURITY', icon: Shield },
   { id: 'privacy', label: 'PRIVACY', icon: Lock },
-  { id: 'audit', label: 'AUDIT_LOG', icon: Activity },
+  { id: 'audit', label: 'AUDIT LOG', icon: Activity },
   { id: 'compliance', label: 'COMPLIANCE', icon: FileText },
 ];
 
@@ -193,7 +193,7 @@ function SecurityPrivacyPreview() {
   };
 
   const handleRequestAccess = () => {
-    toast.success('[ACCESS_REPORT]: Request submitted. You will receive a report within 30 days.');
+    toast.success('[ACCESS REPORT]: Request submitted. You will receive a report within 30 days.');
   };
 
   const handleViewPolicy = (type: 'privacy' | 'terms') => {
@@ -214,7 +214,7 @@ function SecurityPrivacyPreview() {
           <h1 className={cn(mode.font, 'text-2xl font-semibold')}>Security & Privacy</h1>
           <Button className={cn(mode.radius, mode.font, 'text-xs')}>
             <Settings className="mr-2 h-4 w-4" />
-            &gt; VIEW_AUDIT_LOG
+            &gt; VIEW AUDIT LOG
           </Button>
         </div>
 
@@ -224,7 +224,7 @@ function SecurityPrivacyPreview() {
         {/* Tab Navigation */}
         <StyledTabs
           code="0x00"
-          title="SECURITY_NAVIGATION"
+          title="SECURITY NAVIGATION"
           tabs={tabs}
           value={activeTab}
           onValueChange={setActiveTab}
@@ -268,7 +268,7 @@ export default function SecurityPrivacyTemplate() {
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
         {/* Header */}
         <TemplatePageHeader
-          badge="SECURITY_PRIVACY"
+          badge="SECURITY PRIVACY"
           title="Security & Privacy"
           description="Manage your account security, privacy settings, and data controls"
         />
@@ -277,7 +277,7 @@ export default function SecurityPrivacyTemplate() {
         <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
           {/* Tab Navigation Card */}
           <Card>
-            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
@@ -312,7 +312,7 @@ export default function SecurityPrivacyTemplate() {
           {/* Preview Tab Content */}
           <TabsContent value="preview" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <CardHeader code="0x01" title="LIVE PREVIEW" />
               <SecurityPrivacyPreview />
             </Card>
           </TabsContent>
@@ -320,7 +320,7 @@ export default function SecurityPrivacyTemplate() {
           {/* Code Tab Content */}
           <TabsContent value="code" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <CardHeader code="0x01" title="SOURCE CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
@@ -330,7 +330,7 @@ export default function SecurityPrivacyTemplate() {
 
         {/* File Structure */}
         <Card>
-          <CardHeader code="0x02" title="FILE_STRUCTURE" />
+          <CardHeader code="0x02" title="FILE STRUCTURE" />
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>

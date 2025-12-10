@@ -3,7 +3,7 @@ import { DocsSection, DocsCard } from '@/components/docs';
 export function BestPracticesSection() {
   return (
     <DocsSection title="Best Practices">
-      <DocsCard title="BEST_PRACTICES">
+      <DocsCard title="BEST PRACTICES">
         <ul className="space-y-1">
           <li>
             ├─ <strong>Keep payloads small:</strong> Store IDs and fetch data in the worker

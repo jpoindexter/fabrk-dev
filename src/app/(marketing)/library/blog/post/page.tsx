@@ -215,7 +215,7 @@ export default function BlogPostPage() {
 
         {/* Featured Image Placeholder */}
         <div className="border border-border bg-muted/30 mb-12 flex aspect-video items-center justify-center">
-          <span className="font-mono text-sm text-muted-foreground">[FEATURED_IMAGE]</span>
+          <span className="font-mono text-sm text-muted-foreground">[FEATURED IMAGE]</span>
         </div>
 
         {/* Article Content */}
@@ -338,7 +338,7 @@ function BlogPostPreview() {
 
         {/* Featured Image Placeholder */}
         <div className="border-border bg-muted/30 mb-12 flex aspect-video items-center justify-center border">
-          <span className={cn(mode.font, 'text-muted-foreground text-sm')}>[FEATURED_IMAGE]</span>
+          <span className={cn(mode.font, 'text-muted-foreground text-sm')}>[FEATURED IMAGE]</span>
         </div>
 
         {/* Article Content */}
@@ -411,14 +411,14 @@ export default function BlogPostTemplate() {
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
         {/* Template Badge */}
         <div className="mb-8">
-          <PageBadge>BLOG_POST</PageBadge>
+          <PageBadge>BLOG POST</PageBadge>
         </div>
 
         {/* Preview/Code Tabs */}
         <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
           {/* Tab Navigation Card */}
           <Card>
-            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
@@ -453,7 +453,7 @@ export default function BlogPostTemplate() {
           {/* Preview Tab Content */}
           <TabsContent value="preview" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <CardHeader code="0x01" title="LIVE PREVIEW" />
               <BlogPostPreview />
             </Card>
           </TabsContent>
@@ -461,7 +461,7 @@ export default function BlogPostTemplate() {
           {/* Code Tab Content */}
           <TabsContent value="code" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <CardHeader code="0x01" title="SOURCE CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
@@ -471,7 +471,7 @@ export default function BlogPostTemplate() {
 
         {/* File Structure */}
         <Card>
-          <CardHeader code="0x02" title="FILE_STRUCTURE" />
+          <CardHeader code="0x02" title="FILE STRUCTURE" />
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>
@@ -490,7 +490,7 @@ export default function BlogPostTemplate() {
 
         {/* Features Note */}
         <Card>
-          <CardHeader code="0x03" title="TEMPLATE_FEATURES" />
+          <CardHeader code="0x03" title="TEMPLATE FEATURES" />
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div>

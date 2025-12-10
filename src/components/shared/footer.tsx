@@ -1,6 +1,6 @@
 /**
  * ✅ FABRK COMPONENT
- * Footer - Terminal console [SYSTEM_INFO] style
+ * Footer - Terminal console [SYSTEM INFO] style
  * Production-ready ✓
  */
 import Link from 'next/link';
@@ -35,7 +35,7 @@ export function Footer() {
       <div className="border-border border-b px-4 py-6 sm:px-6">
         <div>
           <div className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
-            [ [0x70] TECH_STACK ] FIB[1,1,2,3,5,8,13] DEPS
+            [ [0x70] TECH STACK ] FIB[1,1,2,3,5,8,13] DEPS
           </div>
           <div className="flex flex-wrap items-center gap-4">
             {techStack.map((tech) => (
@@ -58,7 +58,7 @@ export function Footer() {
           <div className="grid gap-8 lg:grid-cols-[1fr_auto]">
             {/* Left: Logo + Tagline */}
             <div>
-              <Badge code="0x71" label="SYSTEM_INFO" className="mb-4" />
+              <Badge code="0x71" label="SYSTEM INFO" className="mb-4" />
               <Link
                 href="/"
                 className={cn(
@@ -77,7 +77,7 @@ export function Footer() {
 
             {/* Right: Nav Links in Terminal Box */}
             <Card>
-              <CardHeader title="nav_links.exe │ PID:1024" code="0x72" />
+              <CardHeader title="nav links.exe │ PID:1024" code="0x72" />
               <CardContent>
                 <div className="divide-border grid grid-cols-3 divide-x">
                   {/* Product */}

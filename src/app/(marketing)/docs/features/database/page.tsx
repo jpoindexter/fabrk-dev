@@ -13,7 +13,7 @@ export default function DatabasePage() {
     <FeatureGuideTemplate
       code="[0x10]"
       category="Features"
-      title="Database_Prisma"
+      title="Database Prisma"
       description="Type-safe database access with Prisma ORM, including models, queries, migrations, and best practices for PostgreSQL."
       overview="Fabrk uses Prisma ORM with PostgreSQL for type-safe database operations. The system includes pre-built models for users, organizations, payments, and more. It provides type-safe queries with full TypeScript support, migration management for schema changes, seeding scripts for development data, and connection pooling for production."
       setup={[
@@ -132,7 +132,7 @@ const result = await prisma.$transaction(async (tx) => {
   // Log the change
   await tx.auditLog.create({
     data: {
-      action: "OWNERSHIP_TRANSFERRED",
+      action: "OWNERSHIP TRANSFERRED",
       organizationId: orgId,
       userId: session.user.id,
     },
@@ -167,7 +167,7 @@ return { data, nextCursor, hasNextPage };`,
     >
       {/* Core Models Section */}
       <DocsSection title="Core Models">
-        <DocsCard title="CORE_MODELS">
+        <DocsCard title="CORE MODELS">
           <p className="mb-6">
             Fabrk includes these pre-built models in{' '}
             <code className="bg-muted px-1">prisma/schema.prisma</code>:
@@ -259,14 +259,14 @@ npx prisma migrate status`}
       {/* Common Use Cases Section */}
       <DocsSection title="Common Use Cases">
         <div className="space-y-4">
-          <DocsCard title="USER_UPDATES">
+          <DocsCard title="USER UPDATES">
             <p className="mb-6">
               Update user data with validation. Use <code className="bg-muted px-1">select</code> to
               return only needed fields and avoid exposing sensitive data like passwords.
             </p>
           </DocsCard>
 
-          <DocsCard title="SOFT_DELETES">
+          <DocsCard title="SOFT DELETES">
             <p className="mb-6">
               Add <code className="bg-muted px-1">deletedAt DateTime?</code> field to models and
               filter with{' '}
@@ -277,7 +277,7 @@ npx prisma migrate status`}
             </p>
           </DocsCard>
 
-          <DocsCard title="FULL_TEXT_SEARCH">
+          <DocsCard title="FULL TEXT SEARCH">
             <p className="mb-6">
               Use Prisma&apos;s full-text search with PostgreSQL:{' '}
               <code className="bg-muted px-1">
@@ -301,7 +301,7 @@ npx prisma migrate status`}
 
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
-        <DocsCard title="BEST_PRACTICES">
+        <DocsCard title="BEST PRACTICES">
           <ul className="space-y-1">
             <li>
               ├─ Always use the singleton client from{' '}

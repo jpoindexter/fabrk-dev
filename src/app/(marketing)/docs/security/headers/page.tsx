@@ -13,7 +13,7 @@ export default function SecurityHeadersPage() {
     <FeatureGuideTemplate
       code="[0x80]"
       category="Security"
-      title="Security_Headers"
+      title="Security Headers"
       description="Configure HTTP security headers including HSTS, CSP, X-Frame-Options, and more."
       overview="Security headers protect your application from common web vulnerabilities like XSS, clickjacking, and man-in-the-middle attacks. Fabrk includes production-ready defaults you can customize."
       features={[

@@ -345,7 +345,7 @@ export function WebhookLog({
           {selectedLog && (
             <>
               <SheetHeader>
-                <SheetTitle className={cn(mode.font)}>[ WEBHOOK_DETAILS ]</SheetTitle>
+                <SheetTitle className={cn(mode.font)}>[ WEBHOOK DETAILS ]</SheetTitle>
                 <SheetDescription>
                   Full request and response payloads for debugging
                 </SheetDescription>
@@ -385,14 +385,14 @@ export function WebhookLog({
 
                 {/* Request Payload */}
                 <div className="space-y-2">
-                  <p className={cn('text-xs font-semibold', mode.font)}>[REQUEST_PAYLOAD]:</p>
+                  <p className={cn('text-xs font-semibold', mode.font)}>[REQUEST PAYLOAD]:</p>
                   <CodeBlock code={selectedLog.requestPayload} language="json" maxHeight="300px" />
                 </div>
 
                 {/* Response Payload */}
                 {selectedLog.responsePayload && (
                   <div className="space-y-2">
-                    <p className={cn('text-xs font-semibold', mode.font)}>[RESPONSE_PAYLOAD]:</p>
+                    <p className={cn('text-xs font-semibold', mode.font)}>[RESPONSE PAYLOAD]:</p>
                     <CodeBlock
                       code={selectedLog.responsePayload}
                       language="json"

@@ -27,26 +27,26 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
     <div className="space-y-6">
       {/* Profile Privacy */}
       <Card tone="neutral">
-        <CardHeader code="0x02" title="PROFILE_PRIVACY" icon={<User className="h-4 w-4" />} />
+        <CardHeader code="0x02" title="PROFILE PRIVACY" icon={<User className="h-4 w-4" />} />
         <CardContent padding="md">
           <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-            [PROFILE_ACTIVITY]:
+            [PROFILE ACTIVITY]:
           </div>
           <div className={cn(mode.font, 'space-y-4 text-xs')}>
             {[
               {
                 key: 'profileVisibility' as const,
-                label: 'PROFILE_VISIBILITY',
+                label: 'PROFILE VISIBILITY',
                 desc: 'Allow your profile to be visible to other users',
               },
               {
                 key: 'activityTracking' as const,
-                label: 'ACTIVITY_TRACKING',
+                label: 'ACTIVITY TRACKING',
                 desc: 'Track my activity to improve experience',
               },
               {
                 key: 'searchIndexing' as const,
-                label: 'SEARCH_INDEXING',
+                label: 'SEARCH INDEXING',
                 desc: 'Allow search engines to index your profile',
               },
             ].map((setting) => (
@@ -77,7 +77,7 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
         <CardHeader code="0x03" title="COOKIES" icon={<Cookie className="h-4 w-4" />} />
         <CardContent padding="md">
           <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-            [COOKIE_PREFERENCES]:
+            [COOKIE PREFERENCES]:
           </div>
           <div className={cn(mode.font, 'space-y-4 text-xs')}>
             {[

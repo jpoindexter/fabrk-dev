@@ -138,7 +138,7 @@ export function RevenueChart({
     <Card className={cn('overflow-hidden', className)}>
       <CardHeader
         code="0x01"
-        title="REVENUE_ANALYTICS"
+        title="REVENUE ANALYTICS"
         icon={<DollarSign className="h-4 w-4" />}
         meta={
           <Badge variant="default" className="font-medium">

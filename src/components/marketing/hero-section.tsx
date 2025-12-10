@@ -1,6 +1,6 @@
 /**
  * ✅ FABRK COMPONENT
- * Hero Section - Terminal console [SYSTEM_INIT] style
+ * Hero Section - Terminal console [SYSTEM INIT] style
  * Production-ready ✓
  */
 'use client';
@@ -228,7 +228,7 @@ export function HeroSection() {
               transition={{ duration: 0.6 }}
               className="mb-6"
             >
-              <CardBadge code="0x00" label="SYSTEM INIT" meta="SAAS_BOILERPLATE_v2.0" />
+              <CardBadge code="0x00" label="SYSTEM INIT" meta="SAAS BOILERPLATE v2.0" />
             </motion.div>
 
             {/* Headline */}

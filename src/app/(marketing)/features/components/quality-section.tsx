@@ -24,10 +24,10 @@ export function QualitySection() {
           className="mb-12 text-center"
         >
           <div className="mb-4">
-            <Badge code="0x20" label="PRODUCTION_QUALITY" />
+            <Badge code="0x20" label="PRODUCTION QUALITY" />
           </div>
           <h2 className={cn('mb-4 text-2xl font-semibold tracking-tight', mode.font)}>
-            PRODUCTION_QUALITY
+            PRODUCTION QUALITY
           </h2>
           <p className={cn('text-muted-foreground text-xs', mode.font)}>
             Not just boilerplate. Enterprise-grade code with comprehensive testing.
@@ -39,19 +39,19 @@ export function QualitySection() {
             {
               icon: TestTube,
               id: '0x21',
-              title: '40+_TESTS',
+              title: '40+ TESTS',
               desc: 'Vitest unit tests and Playwright E2E tests. Every critical flow tested.',
             },
             {
               icon: Terminal,
               id: '0x22',
-              title: 'TYPESCRIPT_STRICT',
+              title: 'TYPESCRIPT STRICT',
               desc: '100% TypeScript with strict mode. No any types. Full type safety.',
             },
             {
               icon: BookOpen,
               id: '0x23',
-              title: '400KB_DOCS',
+              title: '400KB DOCS',
               desc: '24 comprehensive guides covering every feature. No guesswork.',
             },
           ].map((item, index) => {

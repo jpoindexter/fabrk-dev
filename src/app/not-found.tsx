@@ -14,7 +14,7 @@ export default function NotFound() {
       <div className="mx-auto max-w-2xl text-center">
         {/* Terminal Header */}
         <div className="border-foreground/20 bg-foreground/5 mb-6 inline-block border-2 px-4 py-1">
-          <span className="text-foreground/60 text-xs tracking-wider">[ [0x404] ERROR_PAGE ]</span>
+          <span className="text-foreground/60 text-xs tracking-wider">[ [0x404] ERROR PAGE ]</span>
         </div>
 
         {/* 404 Display */}
@@ -43,7 +43,7 @@ export default function NotFound() {
           <Button asChild className="h-12 px-8 tracking-wider uppercase">
             <Link href="/">
               <span className="mr-2 text-lg">▸</span>
-              RETURN_HOME
+              RETURN HOME
             </Link>
           </Button>
         </div>

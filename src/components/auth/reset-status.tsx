@@ -25,7 +25,7 @@ export function TokenExpired() {
       <p className="m-4">This password reset link has expired or is invalid.</p>
       <Link href="/forgot-password">
         <Button className="focus-visible:ring-ring m-4 focus-visible:ring-2 focus-visible:outline-none">
-          &gt; REQUEST_NEW_LINK
+          &gt; REQUEST NEW LINK
         </Button>
       </Link>
     </div>
@@ -59,7 +59,7 @@ export function ResetSuccess() {
       <p className="dark:text-muted-foreground m-4 text-xs">Redirecting to sign in...</p>
       <Link href="/sign-in">
         <Button className="focus-visible:ring-ring m-4 focus-visible:ring-2 focus-visible:outline-none">
-          &gt; GO_TO_SIGN_IN
+          &gt; GO TO SIGN IN
         </Button>
       </Link>
     </div>

@@ -138,8 +138,8 @@ export function EnterpriseFeaturesSection() {
                     code={`0x${(index + 40).toString(16).toUpperCase()}`}
                     title={feature.title
                       .toUpperCase()
-                      .replace(/ /g, '_')
-                      .replace(/\+/g, '_')
+                      
+                      
                       .replace(/\//g, '_')
                       .slice(0, 12)}
                     icon={
@@ -150,7 +150,7 @@ export function EnterpriseFeaturesSection() {
                   />
                   <CardContent className="p-4">
                     <div className="text-foreground mb-3 text-xs font-semibold">
-                      {feature.title.toUpperCase().replace(/ /g, '_').replace(/\+/g, '_AND_')}
+                      {feature.title.toUpperCase()}
                     </div>
                     <div className="text-xs">
                       <span className="text-muted-foreground">DESC: </span>

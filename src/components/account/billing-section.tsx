@@ -74,12 +74,12 @@ export function BillingSection() {
 
   return (
     <Card tone="neutral">
-      <CardHeader code="0x05" title="BILLING_AND_SUBSCRIPTION" />
+      <CardHeader code="0x05" title="BILLING AND SUBSCRIPTION" />
       <CardContent className="space-y-4">
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className={cn('text-sm font-medium', mode.font)}>{formatLabel('CURRENT_PLAN')}</p>
+              <p className={cn('text-sm font-medium', mode.font)}>{formatLabel('CURRENT PLAN')}</p>
               <p className={cn('text-2xl font-semibold', mode.font)}>{billingInfo.plan}</p>
             </div>
             <Badge variant={getStatusBadgeVariant(billingInfo.status)}>
@@ -104,7 +104,7 @@ export function BillingSection() {
 
           <div className="space-y-2">
             <Button onClick={handleManageBilling} disabled={isLoading} className="w-full">
-              {isLoading ? '> LOADING...' : '> MANAGE_BILLING'}
+              {isLoading ? '> LOADING...' : '> MANAGE BILLING'}
             </Button>
             <p className="text-muted-foreground text-center text-xs">
               You'll be redirected to Stripe's secure portal to manage your subscription, payment

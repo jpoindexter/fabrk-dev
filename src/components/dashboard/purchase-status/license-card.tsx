@@ -19,7 +19,7 @@ export function LicenseCard({ licenseKey, onCopyLicense, copiedLicense }: Licens
 
   return (
     <Card tone="neutral">
-      <CardHeader code="0x02" title="LICENSE_KEY" icon={<Key className="h-4 w-4" />} />
+      <CardHeader code="0x02" title="LICENSE KEY" icon={<Key className="h-4 w-4" />} />
       <CardContent padding="md">
         <div className="space-y-4">
           <div className={cn('bg-muted dark:bg-muted p-6 text-sm', mode.font, mode.radius)}>
@@ -31,11 +31,11 @@ export function LicenseCard({ licenseKey, onCopyLicense, copiedLicense }: Licens
             className="focus-visible:ring-ring w-full focus-visible:ring-2 focus-visible:outline-none"
           >
             {copiedLicense ? (
-              <>&gt; COPIED_TO_CLIPBOARD</>
+              <>&gt; COPIED TO CLIPBOARD</>
             ) : (
               <>
                 <Copy className="mr-2 h-4 w-4" />
-                &gt; COPY_LICENSE_KEY
+                &gt; COPY LICENSE KEY
               </>
             )}
           </Button>

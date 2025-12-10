@@ -13,7 +13,7 @@ export default function GettingStartedPage() {
     <FeatureGuideTemplate
       code="[0x00]"
       category="Docs"
-      title="Getting_Started"
+      title="Getting Started"
       description="Everything you need to launch your SaaS, from first download to first customer."
       overview="Fabrk is a ready-to-use foundation for building software businesses. Includes user accounts, payments, email, database, security, and landing page - all working on day one."
       features={[
@@ -152,7 +152,7 @@ npm run db:push && npm run dev`,
       {/* Who is this for */}
       <DocsSection title="Who Is This For?">
         <div className="grid gap-6 sm:grid-cols-2">
-          <DocsCard code="20" title="GREAT_FIT">
+          <DocsCard code="20" title="GREAT FIT">
             <div className="space-y-1">
               <div>├─ Developers building their first SaaS</div>
               <div>├─ Founders who can code</div>
@@ -173,23 +173,23 @@ npm run db:push && npm run dev`,
 
       {/* Troubleshooting */}
       <DocsSection title="Troubleshooting">
-        <DocsCard code="30" title="COMMON_ERRORS">
+        <DocsCard code="30" title="COMMON ERRORS">
           <div className="space-y-4">
             <div>
-              <p className="text-foreground mb-1 font-semibold">[ERROR]: PORT_3000_IN_USE</p>
+              <p className="text-foreground mb-1 font-semibold">[ERROR]: PORT 3000 IN USE</p>
               <p>
                 Run on different port: <code className="bg-muted px-1">npm run dev -- -p 3001</code>
               </p>
             </div>
             <div>
-              <p className="text-foreground mb-1 font-semibold">[ERROR]: CANNOT_CONNECT_DATABASE</p>
+              <p className="text-foreground mb-1 font-semibold">[ERROR]: CANNOT CONNECT DATABASE</p>
               <p>
                 Check DATABASE_URL in .env.local, ensure no extra spaces, database is running, IP
                 allowed
               </p>
             </div>
             <div>
-              <p className="text-foreground mb-1 font-semibold">[ERROR]: NEXTAUTH_SECRET_MISSING</p>
+              <p className="text-foreground mb-1 font-semibold">[ERROR]: NEXTAUTH SECRET MISSING</p>
               <p>
                 Generate with: <code className="bg-muted px-1">openssl rand -base64 32</code>
               </p>

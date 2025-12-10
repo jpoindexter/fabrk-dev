@@ -99,7 +99,7 @@ export function QualitySection() {
                     <div className="mb-4">
                       <div className="text-foreground text-4xl font-semibold">{item.metric}</div>
                       <h3 className="mt-1 text-lg font-semibold">
-                        {item.label.toUpperCase().replace(/ /g, '_')}
+                        {item.label.toUpperCase()}
                       </h3>
                     </div>
                     <span className="text-muted-foreground block text-xs">{item.description}</span>
@@ -124,7 +124,7 @@ export function QualitySection() {
                   <CheckCircle2 className="text-primary h-8 w-8" />
                 </div>
                 <div>
-                  <h3 className="mb-2 text-lg font-semibold">QUALITY_GUARANTEE</h3>
+                  <h3 className="mb-2 text-lg font-semibold">QUALITY GUARANTEE</h3>
                   <p className="text-muted-foreground text-sm">
                     Unlike other boilerplates that ship untested code, every Fabrk component is
                     rigorously tested, documented in Storybook, and validated by CI/CD pipelines.

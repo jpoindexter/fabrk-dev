@@ -38,7 +38,7 @@ export function PlanCards({ plans }: PlanCardsProps) {
             tone={plan.current ? 'primary' : 'neutral'}
             className="flex flex-col"
           >
-            <CardHeader code={`0x0${idx}`} title={`${plan.name.toUpperCase()}_PLAN`} />
+            <CardHeader code={`0x0${idx}`} title={`${plan.name.toUpperCase()} PLAN`} />
             <CardContent padding="md" className="flex flex-1 flex-col">
               <div className="mb-4 flex items-center justify-between">
                 <div className={cn(mode.font, 'text-muted-foreground text-xs')}>[{plan.name}]:</div>
@@ -78,7 +78,7 @@ export function PlanCards({ plans }: PlanCardsProps) {
                 variant={plan.current ? 'outline' : 'default'}
                 disabled={plan.current}
               >
-                {plan.current ? 'CURRENT_PLAN' : `> SELECT_${plan.name}`}
+                {plan.current ? 'CURRENT PLAN' : `> SELECT ${plan.name}`}
               </Button>
             </CardContent>
           </Card>
@@ -88,7 +88,7 @@ export function PlanCards({ plans }: PlanCardsProps) {
       {/* Custom Plan */}
       <Card tone="neutral">
         <CardContent padding="md">
-          <div className={cn(mode.font, 'text-muted-foreground mb-2 text-xs')}>[CUSTOM_PLAN]:</div>
+          <div className={cn(mode.font, 'text-muted-foreground mb-2 text-xs')}>[CUSTOM PLAN]:</div>
           <div className="flex items-center justify-between">
             <div>
               <div className={cn(mode.font, 'text-sm')}>Need a custom plan?</div>
@@ -97,7 +97,7 @@ export function PlanCards({ plans }: PlanCardsProps) {
               </div>
             </div>
             <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, 'text-xs')}>
-              &gt; CONTACT_SALES
+              &gt; CONTACT SALES
             </Button>
           </div>
         </CardContent>

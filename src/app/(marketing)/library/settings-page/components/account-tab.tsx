@@ -22,14 +22,14 @@ export function AccountTab() {
         <div className="p-4">
           <SectionHeader
             icon={User}
-            title="PROFILE_INFORMATION"
+            title="PROFILE INFORMATION"
             description="Update your personal details and profile settings"
           />
           <div className="space-y-4">
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="fullname" className={cn(mode.radius, mode.font, 'text-xs')}>
-                  [FULL_NAME]:
+                  [FULL NAME]:
                 </Label>
                 <Input
                   id="fullname"
@@ -87,7 +87,7 @@ export function AccountTab() {
               <Button variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
                 &gt; CANCEL
               </Button>
-              <Button className={cn(mode.radius, mode.font, 'text-xs')}>&gt; SAVE_CHANGES</Button>
+              <Button className={cn(mode.radius, mode.font, 'text-xs')}>&gt; SAVE CHANGES</Button>
             </div>
           </div>
         </div>
@@ -98,7 +98,7 @@ export function AccountTab() {
         <div className="p-4">
           <SectionHeader
             icon={Shield}
-            title="ACCOUNT_SECURITY"
+            title="ACCOUNT SECURITY"
             description="Manage password and authentication methods"
           />
           <div className="space-y-4">
@@ -123,7 +123,7 @@ export function AccountTab() {
               )}
             >
               <div>
-                <div>[TWO_FACTOR_AUTH]:</div>
+                <div>[TWO FACTOR AUTH]:</div>
                 <div className="text-muted-foreground">Add an extra layer of security</div>
               </div>
               <Button variant="outline" className={cn(mode.radius, mode.font, 'w-24 text-xs')}>
@@ -137,7 +137,7 @@ export function AccountTab() {
               )}
             >
               <div>
-                <div>[ACTIVE_SESSIONS]:</div>
+                <div>[ACTIVE SESSIONS]:</div>
                 <div className="text-muted-foreground">Manage devices and sessions</div>
               </div>
               <Button variant="outline" className={cn(mode.radius, mode.font, 'w-24 text-xs')}>

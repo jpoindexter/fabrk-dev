@@ -145,7 +145,7 @@ export default function AuditLogPage() {
       <Card tone="neutral">
         <CardHeader
           code="0x01"
-          title="SECURITY_EVENTS"
+          title="SECURITY EVENTS"
           meta="Immutable logs"
           icon={<Shield className="h-4 w-4" />}
         />

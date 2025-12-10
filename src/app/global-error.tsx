@@ -77,7 +77,7 @@ export default function GlobalError({
             {/* Action Buttons */}
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Button onClick={reset} className="h-12 px-8">
-                &gt; TRY_AGAIN
+                &gt; TRY AGAIN
               </Button>
               <Button
                 onClick={() => (window.location.href = '/')}
@@ -85,7 +85,7 @@ export default function GlobalError({
                 className="h-12 border px-8"
               >
                 <Home className="mr-2 h-4 w-4" />
-                &gt; BACK_TO_HOME
+                &gt; BACK TO HOME
               </Button>
             </div>
 

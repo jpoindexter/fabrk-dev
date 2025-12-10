@@ -21,28 +21,28 @@ interface Reason {
 const reasons: Reason[] = [
   {
     id: '0x10',
-    title: 'SAVE_WEEKS_OF_DEVELOPMENT',
+    title: 'SAVE WEEKS OF DEVELOPMENT',
     icon: Clock,
     description:
       'What normally takes 2-4 weeks to build from scratch is ready in minutes. Focus on your unique features, not boilerplate.',
   },
   {
     id: '0x11',
-    title: 'PRODUCTION_GRADE_SECURITY',
+    title: 'PRODUCTION GRADE SECURITY',
     icon: Shield,
     description:
       'Security headers, rate limiting, token hashing, CSRF protection—all the security best practices implemented and tested.',
   },
   {
     id: '0x12',
-    title: 'MODERN_TECH_STACK',
+    title: 'MODERN_TECH STACK',
     icon: Layers,
     description:
       "Built on Next.js 15, TypeScript, Prisma, NextAuth v5, and Stripe. The tools you're already using or want to learn.",
   },
   {
     id: '0x13',
-    title: 'LIFETIME_UPDATES',
+    title: 'LIFETIME UPDATES',
     icon: Gift,
     description:
       'One-time payment, lifetime access to all updates. No subscriptions, no hidden fees.',
@@ -61,7 +61,7 @@ export function WhyChooseSection() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <Badge code="0x05" label="WHY_FABRK" className="mb-4" />
+              <Badge code="0x05" label="WHY FABRK" className="mb-4" />
               <h2
                 className={cn('mb-4 text-2xl font-semibold tracking-tight lg:text-4xl', mode.font)}
               >

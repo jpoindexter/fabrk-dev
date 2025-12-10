@@ -105,7 +105,7 @@ function StatCard({ stat }: StatCardProps) {
       {/* Header with label and icon */}
       <div className="flex items-center justify-between">
         <span className={cn('text-muted-foreground text-xs', mode.font)}>
-          [{label.toUpperCase().replace(/ /g, '_')}]:
+          [{label.toUpperCase()}]:
         </span>
         {icon && <span className="text-muted-foreground">{icon}</span>}
       </div>
@@ -183,7 +183,7 @@ export function DashboardPageTemplate({
               variant={action.variant === 'secondary' ? 'outline' : 'default'}
               onClick={action.onClick}
             >
-              &gt; {action.label.toUpperCase().replace(/ /g, '_')}
+              &gt; {action.label.toUpperCase()}
             </Button>
           ))}
         </div>

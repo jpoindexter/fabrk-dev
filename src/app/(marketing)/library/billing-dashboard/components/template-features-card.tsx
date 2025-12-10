@@ -13,7 +13,7 @@ export function TemplateFeaturesCard() {
       <CardHeader code="0x00" title="FEATURES" />
       <CardContent padding="md">
         <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-          [TEMPLATE_FEATURES]:
+          [TEMPLATE FEATURES]:
         </div>
         <div className={cn(mode.font, 'space-y-2 text-xs')}>
           <div>

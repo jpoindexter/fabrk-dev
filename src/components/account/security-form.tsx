@@ -93,7 +93,7 @@ export function SecurityForm() {
 
   return (
     <Card tone="neutral">
-      <CardHeader code="0x07" title="SECURITY_SETTINGS" />
+      <CardHeader code="0x07" title="SECURITY SETTINGS" />
       <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -138,7 +138,7 @@ export function SecurityForm() {
               )}
             />
             <Button type="submit" disabled={isLoading}>
-              {isLoading ? '> UPDATING...' : '> UPDATE_PASSWORD'}
+              {isLoading ? '> UPDATING...' : '> UPDATE PASSWORD'}
             </Button>
           </form>
         </Form>

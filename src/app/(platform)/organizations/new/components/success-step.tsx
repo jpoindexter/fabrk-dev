@@ -26,7 +26,7 @@ export function SuccessStep({ onComplete }: SuccessStepProps) {
             Your organization has been created and invitations sent.
           </p>
           <Button onClick={onComplete} className="mt-6">
-            &gt; GO_TO_DASHBOARD
+            &gt; GO TO DASHBOARD
           </Button>
         </div>
       </CardContent>

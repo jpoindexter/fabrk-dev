@@ -79,11 +79,11 @@ export function Navigation() {
           <div className="flex items-center gap-2">
             <ThemeDropdown />
             <Button variant="outline" asChild className={cn('text-xs', mode.radius, mode.font)}>
-              <Link href="/demo">&gt; VIEW_DEMO</Link>
+              <Link href="/demo">&gt; VIEW DEMO</Link>
             </Button>
             <Button asChild className={cn('text-xs', mode.radius, mode.font)}>
               <Link href="#pricing" className="scroll-smooth">
-                &gt; GET_STARTED
+                &gt; GET STARTED
               </Link>
             </Button>
           </div>
@@ -111,7 +111,7 @@ export function Navigation() {
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="border-border mb-6 border-b pb-4">
                 <span className={cn('text-muted-foreground text-xs', mode.font)}>
-                  [SYSTEM_MENU]
+                  [SYSTEM MENU]
                 </span>
               </div>
               <nav className="flex flex-col space-y-4">
@@ -148,12 +148,12 @@ export function Navigation() {
                       className={cn('w-full text-xs', mode.radius, mode.font)}
                       asChild
                     >
-                      <Link href="/demo">&gt; VIEW_DEMO</Link>
+                      <Link href="/demo">&gt; VIEW DEMO</Link>
                     </Button>
                   </SheetClose>
                   <SheetClose asChild>
                     <Button className={cn('mt-4 w-full text-xs', mode.radius, mode.font)} asChild>
-                      <Link href="#pricing">&gt; GET_STARTED</Link>
+                      <Link href="#pricing">&gt; GET STARTED</Link>
                     </Button>
                   </SheetClose>
                 </div>

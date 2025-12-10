@@ -109,7 +109,7 @@ export const terminalTheme: SemanticTokens = {
  * Example: "Save Changes" → "> SAVE_CHANGES"
  */
 export function formatButtonText(text: string): string {
-  return `> ${text.toUpperCase().replace(/ /g, '_')}`;
+  return `> ${text.toUpperCase()}`;
 }
 
 /**

@@ -13,7 +13,7 @@ export default function ProtectedPagesTutorialPage() {
     <FeatureGuideTemplate
       code="[0x50]"
       category="Tutorials"
-      title="Protected_Pages"
+      title="Protected Pages"
       description="Create pages that require authentication to access."
       overview="Middleware-based route protection with automatic redirects, role-based access control, and conditional UI rendering based on authentication state."
       features={[
@@ -165,7 +165,7 @@ export function NavBar() {
     >
       {/* Protected Routes */}
       <DocsSection title="Auto-Protected Routes">
-        <DocsCard title="PROTECTED_ROUTES">
+        <DocsCard title="PROTECTED ROUTES">
           <p className="mb-4">
             Fabrk protects these routes via middleware. Unauthenticated users are automatically
             redirected to the home page:
@@ -189,7 +189,7 @@ export function NavBar() {
 
       {/* User Roles */}
       <DocsSection title="Available Roles">
-        <DocsCard title="USER_ROLES">
+        <DocsCard title="USER ROLES">
           <div className="space-y-1">
             <div>
               ├─ <code className="bg-muted px-1">USER</code> - Default role for all users
@@ -198,7 +198,7 @@ export function NavBar() {
               ├─ <code className="bg-muted px-1">ADMIN</code> - Administrative access
             </div>
             <div>
-              └─ <code className="bg-muted px-1">SUPER_ADMIN</code> - Full system access
+              └─ <code className="bg-muted px-1">SUPER ADMIN</code> - Full system access
             </div>
           </div>
         </DocsCard>

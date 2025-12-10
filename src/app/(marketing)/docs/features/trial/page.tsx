@@ -13,7 +13,7 @@ export default function TrialPage() {
     <FeatureGuideTemplate
       code="[0x30]"
       category="Features"
-      title="Free_Trial_System"
+      title="Free Trial System"
       description="Let users try your product before they buy with time-limited trials."
       overview="A free trial lets potential customers use your product for a limited time before paying. It's like test-driving a car before buying it. When the trial period ends, users either pay to continue or lose access to premium features. Fabrk's trial system integrates with Stripe so the conversion to paid happens automatically."
       features={[
@@ -163,25 +163,25 @@ const subscription = await stripe.subscriptions.create({
       {/* How Trials Work Section */}
       <DocsSection title="How Fabrk Trials Work">
         <div className="space-y-4">
-          <DocsCard title="STEP_01">
+          <DocsCard title="STEP 01">
             <p className="mb-4">
               User clicks &quot;Start Free Trial&quot; on your pricing page. They create an account
               (no credit card required by default) and immediately get access to premium features.
             </p>
           </DocsCard>
-          <DocsCard title="STEP_02">
+          <DocsCard title="STEP 02">
             <p className="mb-4">
               While on trial, users see a banner showing how many days are left. This creates gentle
               urgency without being annoying.
             </p>
           </DocsCard>
-          <DocsCard title="STEP_03">
+          <DocsCard title="STEP 03">
             <p className="mb-4">
               When trial is almost over (last 3 days), the banner becomes more prominent. Users are
               prompted to subscribe before losing access.
             </p>
           </DocsCard>
-          <DocsCard title="STEP_04">
+          <DocsCard title="STEP 04">
             <p className="mb-4">
               When trial ends, users can no longer access premium features. They see a message
               encouraging them to subscribe. If you require credit card upfront, Stripe
@@ -193,7 +193,7 @@ const subscription = await stripe.subscriptions.create({
 
       {/* Banner States Section */}
       <DocsSection title="Trial Banner States">
-        <DocsCard title="BANNER_STATES">
+        <DocsCard title="BANNER STATES">
           <div className="space-y-4">
             <div className="border-border bg-card flex items-center gap-4 border p-4">
               <div className="bg-success h-3 w-3 rounded-none"></div>
@@ -229,7 +229,7 @@ const subscription = await stripe.subscriptions.create({
 
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
-        <DocsCard title="BEST_PRACTICES">
+        <DocsCard title="BEST PRACTICES">
           <ul className="space-y-4">
             <li className="flex items-start gap-2">
               <span className="text-primary font-semibold">1.</span>

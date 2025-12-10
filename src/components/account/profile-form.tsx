@@ -86,7 +86,7 @@ export function ProfileForm() {
 
   return (
     <Card tone="neutral">
-      <CardHeader code="0x08" title="PROFILE_INFORMATION" />
+      <CardHeader code="0x08" title="PROFILE INFORMATION" />
       <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -119,7 +119,7 @@ export function ProfileForm() {
               )}
             />
             <Button type="submit" disabled={isLoading}>
-              {isLoading ? '> SAVING...' : '> SAVE_CHANGES'}
+              {isLoading ? '> SAVING...' : '> SAVE CHANGES'}
             </Button>
           </form>
         </Form>

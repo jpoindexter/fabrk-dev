@@ -30,10 +30,10 @@ interface UsageMetricsCardProps {
 export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
   return (
     <Card tone="neutral">
-      <CardHeader code="0x00" title="USAGE_METRICS" />
+      <CardHeader code="0x00" title="USAGE METRICS" />
       <CardContent padding="md">
         <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-          [USAGE_THIS_MONTH]:
+          [USAGE THIS MONTH]:
         </div>
 
         <div className="space-y-4">
@@ -41,7 +41,7 @@ export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
             <div className={cn(mode.font, 'flex items-center justify-between text-xs')}>
               <span className="flex items-center gap-2">
                 <Users className="size-3" />
-                [TEAM_MEMBERS]:
+                [TEAM MEMBERS]:
               </span>
               <span>
                 {usage.users.current} / {usage.users.limit}
@@ -69,7 +69,7 @@ export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
             <div className={cn(mode.font, 'flex items-center justify-between text-xs')}>
               <span className="flex items-center gap-2">
                 <Zap className="size-3" />
-                [API_CALLS]:
+                [API CALLS]:
               </span>
               <span>
                 {usage.apiCalls.current.toLocaleString()} / {usage.apiCalls.limit.toLocaleString()}

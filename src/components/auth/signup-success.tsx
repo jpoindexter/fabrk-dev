@@ -30,7 +30,7 @@ export function SignupSuccessMessage({ email }: { email: string }) {
       <p className="m-4">We&apos;ve sent a verification email to {email}</p>
       <p className="m-4 text-xs">Please click the link in the email to verify your account.</p>
       <Button className="focus-visible:ring-ring m-4 focus-visible:ring-2 focus-visible:outline-none">
-        &gt; RESEND_VERIFICATION_EMAIL
+        &gt; RESEND VERIFICATION EMAIL
       </Button>
     </div>
   );

@@ -13,7 +13,7 @@ export default function WebhooksTutorialPage() {
     <FeatureGuideTemplate
       code="[0x50]"
       category="Tutorials"
-      title="Webhooks_Setup"
+      title="Webhooks Setup"
       description="Build a production-grade webhook system with 22 event types, HMAC-SHA256 verification, and automatic retries."
       overview="22 webhook event types across 5 categories, HMAC-SHA256 signature verification, automatic retry with exponential backoff, delivery tracking and status monitoring, per-organization webhook management."
       features={[
@@ -43,12 +43,12 @@ export default function WebhooksTutorialPage() {
           title: 'Triggering Webhooks',
           description: 'Use src/lib/webhooks/server.ts to trigger events',
           code: `import { triggerWebhook } from "@/lib/webhooks/server";
-import { WEBHOOK_EVENTS } from "@/lib/webhooks/events";
+import { WEBHOOK EVENTS } from "@/lib/webhooks/events";
 
 // Trigger when a member is added
 await triggerWebhook(
   organizationId,
-  WEBHOOK_EVENTS.ORG_MEMBER_ADDED,
+  WEBHOOK EVENTS.ORG_MEMBER_ADDED,
   {
     memberId: "mem_123",
     userId: "user_456",
@@ -135,7 +135,7 @@ curl -X POST http://localhost:3000/api/test-webhook \\
       </DocsSection>
 
       <DocsSection title="Retry Schedule">
-        <DocsCard title="RETRY_SCHEDULE">
+        <DocsCard title="RETRY SCHEDULE">
           <div className="space-y-1">
             <div>
               ├─ <strong>Attempt 1:</strong> Immediate

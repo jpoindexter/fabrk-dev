@@ -23,7 +23,7 @@ const values: Value[] = [
   {
     id: '0x01',
     icon: Rocket,
-    module: 'SHIP_FAST',
+    module: 'SHIP FAST',
     status: 'RAPID',
     description:
       'Time is your most valuable resource. Our boilerplate is designed to get you from idea to launch in record time.',
@@ -31,7 +31,7 @@ const values: Value[] = [
   {
     id: '0x02',
     icon: Code,
-    module: 'CLEAN_CODE',
+    module: 'CLEAN CODE',
     status: 'PRISTINE',
     description:
       'We write code the way you would write it yourself. No over-engineering, no unnecessary abstractions.',
@@ -47,7 +47,7 @@ const values: Value[] = [
   {
     id: '0x04',
     icon: Users,
-    module: 'DEV_EXPERIENCE',
+    module: 'DEV EXPERIENCE',
     status: 'REFINED',
     description:
       "We're developers too. We've built Fabrk to eliminate pain points with great docs and thoughtful defaults.",
@@ -55,7 +55,7 @@ const values: Value[] = [
   {
     id: '0x05',
     icon: Heart,
-    module: 'NO_LOCK_IN',
+    module: 'NO LOCK IN',
     status: 'OPEN',
     description: 'You own the code. No proprietary frameworks, no vendor lock-in. Deploy anywhere.',
   },
@@ -80,9 +80,9 @@ export function ValuesSection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Badge code="0x03" label="CORE_VALUES" className="mb-4" />
+            <Badge code="0x03" label="CORE VALUES" className="mb-4" />
             <h2 className={cn('mb-4 text-2xl font-semibold tracking-tight lg:text-4xl', mode.font)}>
-              CORE_VALUES
+              CORE VALUES
             </h2>
           </motion.div>
           <motion.div

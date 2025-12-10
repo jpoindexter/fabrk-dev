@@ -86,12 +86,12 @@ export default function LandingPage() {
 
           <div className="flex items-center justify-center gap-4">
             <Button className={cn(mode.radius, mode.font, "text-xs")}>
-              &gt; GET_STARTED
+              &gt; GET STARTED
               <ArrowRight className="ml-1 h-3 w-3" />
             </Button>
             <Button variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
               <Play className="mr-1 h-3 w-3" />
-              &gt; WATCH_DEMO
+              &gt; WATCH DEMO
             </Button>
           </div>
 
@@ -148,7 +148,7 @@ export default function LandingPage() {
 
             <div className="flex items-center gap-4">
               <Button className={cn(mode.radius, mode.font, "text-xs")}>
-                &gt; START_BUILDING
+                &gt; START BUILDING
                 <ChevronRight className="ml-1 h-3 w-3" />
               </Button>
               <Button variant="link" className={cn(mode.font, "text-primary text-xs")}>
@@ -185,7 +185,7 @@ export default function LandingPage() {
               className={cn(mode.radius, mode.font, "text-sm")}
             />
             <Button className={cn(mode.radius, mode.font, "text-xs whitespace-nowrap")}>
-              &gt; GET_ACCESS
+              &gt; GET ACCESS
             </Button>
           </div>
 
@@ -217,7 +217,7 @@ function LandingVariationsPreview() {
 
   const tabs = heroVariations.map((v) => ({
     id: v.id,
-    label: v.name.toUpperCase().replace(' ', '_'),
+    label: v.name.toUpperCase(),
   }));
 
   return (
@@ -226,7 +226,7 @@ function LandingVariationsPreview() {
         {/* Variation Selector */}
         <StyledTabs
           code="0x00"
-          title="VARIATION_SELECTOR"
+          title="VARIATION SELECTOR"
           tabs={tabs}
           value={activeVariation}
           onValueChange={setActiveVariation}
@@ -262,12 +262,12 @@ function LandingVariationsPreview() {
 
                     <div className="flex items-center justify-center gap-4">
                       <Button className={cn(mode.radius, mode.font, 'text-xs')}>
-                        &gt; GET_STARTED
+                        &gt; GET STARTED
                         <ArrowRight className="ml-1 h-3 w-3" />
                       </Button>
                       <Button variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
                         <Play className="mr-1 h-3 w-3" />
-                        &gt; WATCH_DEMO
+                        &gt; WATCH DEMO
                       </Button>
                     </div>
 
@@ -341,7 +341,7 @@ function LandingVariationsPreview() {
 
                       <div className="flex items-center gap-4">
                         <Button className={cn(mode.radius, mode.font, 'text-xs')}>
-                          &gt; START_BUILDING
+                          &gt; START BUILDING
                           <ChevronRight className="ml-1 h-3 w-3" />
                         </Button>
                         <Button variant="link" className={cn(mode.font, 'text-primary text-xs')}>
@@ -394,7 +394,7 @@ function LandingVariationsPreview() {
                         className={cn(mode.radius, mode.font, 'text-sm')}
                       />
                       <Button className={cn(mode.radius, mode.font, 'text-xs whitespace-nowrap')}>
-                        &gt; GET_ACCESS
+                        &gt; GET ACCESS
                       </Button>
                     </div>
 
@@ -437,7 +437,7 @@ export default function LandingVariationsTemplate() {
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
         {/* Header */}
         <TemplatePageHeader
-          badge="LANDING_VARIATIONS"
+          badge="LANDING VARIATIONS"
           title="Landing Page Variations"
           description="Three hero section variations for different use cases"
         />
@@ -446,7 +446,7 @@ export default function LandingVariationsTemplate() {
         <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
           {/* Tab Navigation Card */}
           <Card>
-            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
@@ -481,7 +481,7 @@ export default function LandingVariationsTemplate() {
           {/* Preview Tab Content */}
           <TabsContent value="preview" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <CardHeader code="0x01" title="LIVE PREVIEW" />
               <LandingVariationsPreview />
             </Card>
           </TabsContent>
@@ -489,7 +489,7 @@ export default function LandingVariationsTemplate() {
           {/* Code Tab Content */}
           <TabsContent value="code" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <CardHeader code="0x01" title="SOURCE CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
@@ -499,7 +499,7 @@ export default function LandingVariationsTemplate() {
 
         {/* File Structure */}
         <Card>
-          <CardHeader code="0x02" title="FILE_STRUCTURE" />
+          <CardHeader code="0x02" title="FILE STRUCTURE" />
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>
@@ -516,7 +516,7 @@ export default function LandingVariationsTemplate() {
 
         {/* Features Card */}
         <FeaturesCard
-          title="TEMPLATE_FEATURES"
+          title="TEMPLATE FEATURES"
           code="0x07"
           features={[
             '3 hero variations (centered, split, minimal)',

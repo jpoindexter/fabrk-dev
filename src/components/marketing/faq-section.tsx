@@ -198,7 +198,7 @@ export function FAQSection() {
             className="mb-4"
           />
           <h2 className={cn('mb-4 text-4xl font-semibold tracking-tight', mode.font)}>
-            FREQUENTLY_ASKED_QUESTIONS
+            FREQUENTLY ASKED QUESTIONS
           </h2>
         </motion.div>
 

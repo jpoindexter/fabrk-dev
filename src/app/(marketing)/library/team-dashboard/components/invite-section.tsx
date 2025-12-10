@@ -34,7 +34,7 @@ export function InviteSection() {
 
   return (
     <Card size="auto">
-      <CardHeader code="0x00" title="INVITE_MEMBER" />
+      <CardHeader code="0x00" title="INVITE MEMBER" />
       <CardContent>
         <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
           [INVITE_TEAM_MEMBER]:
@@ -86,7 +86,7 @@ export function InviteSection() {
           </Select>
           <Button onClick={handleInvite} className={cn(mode.radius, mode.font, 'text-xs')}>
             <Send className="mr-2 h-4 w-4" />
-            &gt; SEND_INVITE
+            &gt; SEND INVITE
           </Button>
         </div>
       </CardContent>

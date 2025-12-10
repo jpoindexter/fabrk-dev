@@ -13,7 +13,7 @@ export default function ApiRoutesTutorialPage() {
     <FeatureGuideTemplate
       code="[0x50]"
       category="Tutorials"
-      title="API_Routes"
+      title="API Routes"
       description="Create API endpoints with Next.js App Router and learn Fabrk's patterns."
       overview="Fabrk uses Next.js 15 App Router for API routes. All routes are in src/app/api/."
       features={[
@@ -175,7 +175,7 @@ export async function POST(request: Request) {
     >
       {/* HTTP Status Codes */}
       <DocsSection title="HTTP Status Codes">
-        <DocsCard title="HTTP_STATUS_CODES">
+        <DocsCard title="HTTP STATUS CODES">
           <div className="space-y-1">
             <div>
               ├─ <code className="bg-muted px-1 font-mono text-xs">200</code> - Success

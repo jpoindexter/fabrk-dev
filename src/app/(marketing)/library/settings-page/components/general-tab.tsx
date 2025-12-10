@@ -32,7 +32,7 @@ export function GeneralTab() {
         <div className="p-4">
           <SectionHeader
             icon={Settings}
-            title="QUICK_ACTIONS"
+            title="QUICK ACTIONS"
             description="Frequently used settings and shortcuts"
           />
           <div className="grid gap-6 md:grid-cols-2">
@@ -41,28 +41,28 @@ export function GeneralTab() {
               className={cn(mode.radius, mode.font, 'justify-start text-xs')}
             >
               <Shield className="mr-2 h-4 w-4" />
-              &gt; SECURITY_SETTINGS
+              &gt; SECURITY SETTINGS
             </Button>
             <Button
               variant="outline"
               className={cn(mode.radius, mode.font, 'justify-start text-xs')}
             >
               <CreditCard className="mr-2 h-4 w-4" />
-              &gt; BILLING_SETTINGS
+              &gt; BILLING SETTINGS
             </Button>
             <Button
               variant="outline"
               className={cn(mode.radius, mode.font, 'justify-start text-xs')}
             >
               <Bell className="mr-2 h-4 w-4" />
-              &gt; NOTIFICATION_PREFS
+              &gt; NOTIFICATION PREFS
             </Button>
             <Button
               variant="outline"
               className={cn(mode.radius, mode.font, 'justify-start text-xs')}
             >
               <Download className="mr-2 h-4 w-4" />
-              &gt; EXPORT_MY_DATA
+              &gt; EXPORT MY DATA
             </Button>
           </div>
         </div>

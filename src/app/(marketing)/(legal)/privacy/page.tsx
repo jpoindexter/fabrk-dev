@@ -36,16 +36,16 @@ export default function PrivacyPage() {
           transition={{ duration: 0.5 }}
           className="mb-6"
         >
-          <Badge code="0x00" label="LEGAL" meta="PRIVACY_POLICY" />
+          <Badge code="0x00" label="LEGAL" meta="PRIVACY POLICY" />
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <h1 className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>FABRK_LEGAL:</h1>
+          <h1 className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>FABRK LEGAL:</h1>
           <h2 className={cn('mb-4 text-4xl font-semibold tracking-tight', mode.font)}>
-            PRIVACY_POLICY
+            PRIVACY POLICY
           </h2>
         </motion.div>
         <motion.div
@@ -82,7 +82,7 @@ export default function PrivacyPage() {
         <Card size="auto">
           <CardHeader
             code="0x10"
-            title="INFORMATION_WE_COLLECT"
+            title="INFORMATION WE COLLECT"
             icon={<Database className="size-4" />}
           />
           <CardContent padding="md">
@@ -96,15 +96,15 @@ export default function PrivacyPage() {
                 </p>
                 <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
                   <li>
-                    ├─ <span className="text-foreground">ACCOUNT_INFO:</span> Name, email address,
+                    ├─ <span className="text-foreground">ACCOUNT INFO:</span> Name, email address,
                     password (hashed)
                   </li>
                   <li>
-                    ├─ <span className="text-foreground">PAYMENT_INFO:</span> Processed by Stripe
+                    ├─ <span className="text-foreground">PAYMENT INFO:</span> Processed by Stripe
                     (we don't store full card details)
                   </li>
                   <li>
-                    ├─ <span className="text-foreground">PROFILE_DATA:</span> Optional profile
+                    ├─ <span className="text-foreground">PROFILE DATA:</span> Optional profile
                     picture, bio, preferences
                   </li>
                   <li>
@@ -112,7 +112,7 @@ export default function PrivacyPage() {
                     feedback, email correspondence
                   </li>
                   <li>
-                    └─ <span className="text-foreground">GITHUB_USERNAME:</span> Required for
+                    └─ <span className="text-foreground">GITHUB USERNAME:</span> Required for
                     granting repository access
                   </li>
                 </ul>
@@ -127,15 +127,15 @@ export default function PrivacyPage() {
                 </p>
                 <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
                   <li>
-                    ├─ <span className="text-foreground">USAGE_DATA:</span> Pages visited, features
+                    ├─ <span className="text-foreground">USAGE DATA:</span> Pages visited, features
                     used, time spent
                   </li>
                   <li>
-                    ├─ <span className="text-foreground">DEVICE_INFO:</span> Browser type, OS,
+                    ├─ <span className="text-foreground">DEVICE INFO:</span> Browser type, OS,
                     device model
                   </li>
                   <li>
-                    ├─ <span className="text-foreground">LOG_DATA:</span> IP address, access times,
+                    ├─ <span className="text-foreground">LOG DATA:</span> IP address, access times,
                     error logs
                   </li>
                   <li>
@@ -166,7 +166,7 @@ export default function PrivacyPage() {
         <Card size="auto">
           <CardHeader
             code="0x20"
-            title="HOW_WE_USE_YOUR_INFO"
+            title="HOW WE USE YOUR INFO"
             icon={<Scale className="size-4" />}
           />
           <CardContent padding="md">
@@ -175,11 +175,11 @@ export default function PrivacyPage() {
             </p>
             <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
               <li>
-                ├─ <span className="text-foreground">SERVICE_PROVISION:</span> Account creation,
+                ├─ <span className="text-foreground">SERVICE PROVISION:</span> Account creation,
                 authentication, service delivery
               </li>
               <li>
-                ├─ <span className="text-foreground">PAYMENT_PROCESSING:</span> Billing, invoices,
+                ├─ <span className="text-foreground">PAYMENT PROCESSING:</span> Billing, invoices,
                 subscription management
               </li>
               <li>
@@ -195,7 +195,7 @@ export default function PrivacyPage() {
                 prevention, system security
               </li>
               <li>
-                └─ <span className="text-foreground">LEGAL_COMPLIANCE:</span> Meeting legal
+                └─ <span className="text-foreground">LEGAL COMPLIANCE:</span> Meeting legal
                 obligations, enforcing terms
               </li>
             </ul>
@@ -204,7 +204,7 @@ export default function PrivacyPage() {
 
         {/* Section 3 */}
         <Card size="auto">
-          <CardHeader code="0x30" title="LEGAL_BASIS_GDPR" icon={<Scale className="size-4" />} />
+          <CardHeader code="0x30" title="LEGAL BASIS GDPR" icon={<Scale className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
               Under GDPR, we process your data based on:
@@ -234,7 +234,7 @@ export default function PrivacyPage() {
         <Card size="auto">
           <CardHeader
             code="0x40"
-            title="DATA_SHARING_DISCLOSURE"
+            title="DATA SHARING_DISCLOSURE"
             icon={<Share2 className="size-4" />}
           />
           <CardContent padding="md">
@@ -297,7 +297,7 @@ export default function PrivacyPage() {
 
         {/* Section 5 */}
         <Card size="auto">
-          <CardHeader code="0x50" title="DATA_SECURITY" icon={<Lock className="size-4" />} />
+          <CardHeader code="0x50" title="DATA SECURITY" icon={<Lock className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
               We implement industry-standard security measures:
@@ -333,7 +333,7 @@ export default function PrivacyPage() {
 
         {/* Section 6 */}
         <Card size="auto">
-          <CardHeader code="0x60" title="DATA_RETENTION" icon={<Clock className="size-4" />} />
+          <CardHeader code="0x60" title="DATA RETENTION" icon={<Clock className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
               We retain your data for:
@@ -361,14 +361,14 @@ export default function PrivacyPage() {
         <Card size="auto">
           <CardHeader
             code="0x70"
-            title="YOUR_PRIVACY_RIGHTS"
+            title="YOUR PRIVACY RIGHTS"
             icon={<UserCheck className="size-4" />}
           />
           <CardContent padding="md">
             <div className="space-y-6">
               <div>
                 <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
-                  [7.1] GDPR_RIGHTS (EU_USERS)
+                  [7.1] GDPR RIGHTS (EU_USERS)
                 </h3>
                 <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
                   <li>
@@ -452,7 +452,7 @@ export default function PrivacyPage() {
         <Card size="auto">
           <CardHeader
             code="0x80"
-            title="COOKIES_AND_TRACKING"
+            title="COOKIES AND TRACKING"
             icon={<Cookie className="size-4" />}
           />
           <CardContent padding="md">
@@ -476,7 +476,7 @@ export default function PrivacyPage() {
             <p className={cn('text-muted-foreground mt-4 text-sm', mode.font)}>
               See our{' '}
               <Link href="/cookies" className="text-primary hover:underline">
-                COOKIE_POLICY
+                COOKIE POLICY
               </Link>{' '}
               for details.
             </p>
@@ -485,7 +485,7 @@ export default function PrivacyPage() {
 
         {/* Section 9 */}
         <Card size="auto">
-          <CardHeader code="0x90" title="CHILDRENS_PRIVACY" icon={<Baby className="size-4" />} />
+          <CardHeader code="0x90" title="CHILDRENS PRIVACY" icon={<Baby className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground text-sm', mode.font)}>
               Fabrk is not intended for users under 18. We do not knowingly collect data from
@@ -498,7 +498,7 @@ export default function PrivacyPage() {
         <Card size="auto">
           <CardHeader
             code="0xA0"
-            title="INTERNATIONAL_DATA_TRANSFERS"
+            title="INTERNATIONAL DATA TRANSFERS"
             icon={<Globe className="size-4" />}
           />
           <CardContent padding="md">
@@ -516,7 +516,7 @@ export default function PrivacyPage() {
 
         {/* Section 11 */}
         <Card size="auto">
-          <CardHeader code="0xB0" title="POLICY_CHANGES" icon={<RefreshCw className="size-4" />} />
+          <CardHeader code="0xB0" title="POLICY CHANGES" icon={<RefreshCw className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground text-sm', mode.font)}>
               We may update this policy periodically. We'll notify you of significant changes via
@@ -527,7 +527,7 @@ export default function PrivacyPage() {
 
         {/* Section 12 */}
         <Card size="auto">
-          <CardHeader code="0xC0" title="CONTACT_US" icon={<Mail className="size-4" />} />
+          <CardHeader code="0xC0" title="CONTACT US" icon={<Mail className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
               Privacy questions or concerns?
@@ -561,19 +561,19 @@ export default function PrivacyPage() {
         <Card size="auto">
           <CardHeader
             code="0xD0"
-            title="RELATED_DOCUMENTS"
+            title="RELATED DOCUMENTS"
             icon={<FileText className="size-4" />}
           />
           <CardContent padding="md">
             <div className={cn('flex flex-wrap gap-4 text-xs', mode.font)}>
               <Link href="/terms" className="text-primary hover:underline">
-                &gt; TERMS_OF_SERVICE
+                &gt; TERMS OF SERVICE
               </Link>
               <Link href="/cookies" className="text-primary hover:underline">
-                &gt; COOKIE_POLICY
+                &gt; COOKIE POLICY
               </Link>
               <Link href="/refund" className="text-primary hover:underline">
-                &gt; REFUND_POLICY
+                &gt; REFUND POLICY
               </Link>
             </div>
           </CardContent>

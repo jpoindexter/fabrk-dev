@@ -99,7 +99,7 @@ export default function ProfilePage() {
       <Card>
         <CardHeader
           code="0x00"
-          title="PROFILE_PICTURE"
+          title="PROFILE PICTURE"
           icon={<Camera className="h-4 w-4" />}
           meta="Update your profile picture and personal details"
         />
@@ -187,14 +187,14 @@ export default function ProfilePage() {
       <Card>
         <CardHeader
           code="0x01"
-          title="PROFILE_DETAILS"
+          title="PROFILE DETAILS"
           icon={<User className="h-4 w-4" />}
           meta="Update your bio and social links"
         />
         <CardContent className="space-y-4">
           {!isEditing && (
             <div className="flex justify-end">
-              <Button onClick={() => setIsEditing(true)}>&gt; EDIT_PROFILE</Button>
+              <Button onClick={() => setIsEditing(true)}>&gt; EDIT PROFILE</Button>
             </div>
           )}
           <div className="space-y-2">
@@ -267,7 +267,7 @@ export default function ProfilePage() {
                 &gt; CANCEL
               </Button>
               <Button onClick={handleSave} disabled={isSaving}>
-                {isSaving ? '&gt; SAVING...' : '&gt; SAVE_CHANGES'}
+                {isSaving ? '&gt; SAVING...' : '&gt; SAVE CHANGES'}
               </Button>
             </div>
           )}

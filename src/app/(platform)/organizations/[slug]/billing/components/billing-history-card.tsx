@@ -30,7 +30,7 @@ export function BillingHistoryCard({ invoices }: BillingHistoryCardProps) {
     <Card>
       <CardHeader
         code="0x02"
-        title="BILLING_HISTORY"
+        title="BILLING HISTORY"
         icon={<Receipt className="h-4 w-4" />}
         meta={`${invoices.length} INVOICES`}
       />

@@ -105,7 +105,7 @@ export function TutorialTemplate({
       )}
 
       {/* Tutorial Meta */}
-      <DocsCard code={code} title="TUTORIAL_INFO">
+      <DocsCard code={code} title="TUTORIAL INFO">
         <div className="flex flex-wrap gap-6">
           {difficulty && (
             <div className="flex items-center gap-2">

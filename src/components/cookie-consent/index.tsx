@@ -226,7 +226,7 @@ export function CookieConsent() {
             aria-label="Cookie Settings"
           >
             <Cookie className="size-5" />
-            <span className="text-xs">&gt; COOKIE_SETTINGS</span>
+            <span className="text-xs">&gt; COOKIE SETTINGS</span>
           </button>
           <button
             onClick={() => setShowButton(false)}
@@ -268,7 +268,7 @@ export function CookieConsent() {
               {/* Tabs */}
               <StyledTabs
                 code="00"
-                title="COOKIE_PREFERENCES"
+                title="COOKIE PREFERENCES"
                 tabs={[
                   { id: 'consent', label: 'CONSENT' },
                   { id: 'details', label: 'DETAILS' },

@@ -1,6 +1,6 @@
 /**
  * ✅ FABRK COMPONENT
- * Feature Deep-Dives - Terminal console [DEEP_DIVE] style
+ * Feature Deep-Dives - Terminal console [DEEP DIVE] style
  * Production-ready ✓
  *
  * @deprecated Import from "@/components/marketing/features-section" directory instead

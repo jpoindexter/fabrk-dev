@@ -94,7 +94,7 @@ export default function ThemeShowcasePage() {
           <div className="flex gap-4">
             {/* Theme Controls */}
             <Card className={cn(mode.radius, 'w-80')}>
-              <CardHeader code="0x00" title="THEME_CONTROLS" />
+              <CardHeader code="0x00" title="THEME CONTROLS" />
               <CardContent className="space-y-4">
                 <div className="space-y-2">
                   <Label className={mode.font}>[COLOR_THEME]</Label>
@@ -118,7 +118,7 @@ export default function ThemeShowcasePage() {
 
             {/* CRT Effect Switcher */}
             <Card className={cn(mode.radius, 'w-64')}>
-              <CardHeader code="0xFF" title="CRT_EFFECTS" />
+              <CardHeader code="0xFF" title="CRT EFFECTS" />
               <CardContent className="space-y-2">
                 <Label className={mode.font}>[EFFECT_TYPE]</Label>
                 <Select value={crtEffect} onValueChange={handleCRTChange}>
@@ -141,7 +141,7 @@ export default function ThemeShowcasePage() {
 
         {/* Color Tokens */}
         <Card className={mode.radius}>
-          <CardHeader code="0x01" title="COLOR_TOKENS" />
+          <CardHeader code="0x01" title="COLOR TOKENS" />
           <CardContent className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <div className="space-y-2">
               <div className="bg-background border-border h-20 border" />
@@ -262,7 +262,7 @@ export default function ThemeShowcasePage() {
 
         {/* Form Elements */}
         <Card className={mode.radius}>
-          <CardHeader code="0x05" title="FORM_ELEMENTS" />
+          <CardHeader code="0x05" title="FORM ELEMENTS" />
           <CardContent className="space-y-6">
             {/* Text Input */}
             <div className="space-y-2">
@@ -500,7 +500,7 @@ export default function ThemeShowcasePage() {
 
         {/* Text Colors */}
         <Card className={mode.radius}>
-          <CardHeader code="0x10" title="TEXT_COLORS" />
+          <CardHeader code="0x10" title="TEXT COLORS" />
           <CardContent className="space-y-2">
             <p className="text-foreground font-mono text-sm">text-foreground</p>
             <p className="text-muted-foreground font-mono text-sm">text-muted-foreground</p>
@@ -513,7 +513,7 @@ export default function ThemeShowcasePage() {
 
         {/* Background Colors */}
         <Card className={mode.radius}>
-          <CardHeader code="0x11" title="BACKGROUND_COLORS" />
+          <CardHeader code="0x11" title="BACKGROUND COLORS" />
           <CardContent className="grid gap-4 md:grid-cols-2">
             <div className="bg-primary space-y-2 p-4">
               <p className="text-primary-foreground font-mono text-sm">

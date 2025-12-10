@@ -58,7 +58,7 @@ export function CreditsPreview() {
 
   return (
     <Card ref={ref} className="w-full max-w-md">
-      <PreviewHeader title="usage_dashboard.exe" animated />
+      <PreviewHeader title="usage dashboard.exe" animated />
 
       <CardContent padding="lg">
         <motion.div
@@ -104,7 +104,7 @@ export function CreditsPreview() {
           className={cn(mode.radius, 'border-border bg-background border p-4')}
         >
           <div className={cn(mode.font, 'mb-3 flex justify-between text-xs')}>
-            <span className="text-muted-foreground">WEEKLY_USAGE</span>
+            <span className="text-muted-foreground">WEEKLY USAGE</span>
             <span>
               <CreditCounter value={153} delay={0.8} /> used
             </span>

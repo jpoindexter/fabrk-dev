@@ -37,7 +37,7 @@ export function ComparisonTable({ features }: ComparisonTableProps) {
 
       <CardContent padding="md">
         <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-          [FEATURE_COMPARISON]:
+          [FEATURE COMPARISON]:
         </div>
 
         <div className="border-border overflow-x-auto border">

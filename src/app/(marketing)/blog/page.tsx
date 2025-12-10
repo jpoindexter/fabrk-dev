@@ -39,7 +39,7 @@ export default async function BlogPage({
           </div>
           <div className="p-6">
             <h1 className="text-foreground mb-2 font-mono text-4xl font-semibold">
-              &gt; LATEST_POSTS
+              &gt; LATEST POSTS
             </h1>
             <p className="text-muted-foreground font-mono text-sm">
               Articles, tutorials, and updates
@@ -124,7 +124,7 @@ export default async function BlogPage({
         {/* All Posts */}
         {regularPosts.length > 0 ? (
           <div>
-            <h2 className="text-muted-foreground mb-4 font-mono text-xs">[ ALL_POSTS ]</h2>
+            <h2 className="text-muted-foreground mb-4 font-mono text-xs">[ ALL POSTS ]</h2>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {regularPosts.map((post) => (
                 <Link

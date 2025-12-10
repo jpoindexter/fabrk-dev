@@ -19,9 +19,9 @@ import { Button } from '@/components/ui/button';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
-// Convert to TERMINAL_CASE
+// Convert to TERMINAL CASE (with spaces)
 function toDisplayCase(str: string): string {
-  return str.toUpperCase().replace(/[\s-]+/g, '_');
+  return str.toUpperCase();
 }
 
 // Navigation structure for breadcrumb lookup

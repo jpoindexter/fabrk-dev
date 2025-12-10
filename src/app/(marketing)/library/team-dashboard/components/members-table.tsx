@@ -67,10 +67,10 @@ export function MembersTable({ members }: MembersTableProps) {
 
   return (
     <Card size="auto">
-      <CardHeader code="0x05" title="TEAM_MEMBERS" icon={<Users className="h-4 w-4" />} />
+      <CardHeader code="0x05" title="TEAM MEMBERS" icon={<Users className="h-4 w-4" />} />
       <CardContent>
         <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-          [TEAM_MEMBERS]: COUNT={members.length}
+          [TEAM MEMBERS]: COUNT={members.length}
         </div>
         <div className="border-border overflow-x-auto border">
           <table className="w-full">
@@ -150,17 +150,17 @@ export function MembersTable({ members }: MembersTableProps) {
                               <DropdownMenuItem
                                 onClick={() => handleRoleChange(member.id, 'admin')}
                               >
-                                &gt; SET_ROLE: ADMIN
+                                &gt; SET ROLE: ADMIN
                               </DropdownMenuItem>
                               <DropdownMenuItem
                                 onClick={() => handleRoleChange(member.id, 'member')}
                               >
-                                &gt; SET_ROLE: MEMBER
+                                &gt; SET ROLE: MEMBER
                               </DropdownMenuItem>
                               <DropdownMenuItem
                                 onClick={() => handleRoleChange(member.id, 'guest')}
                               >
-                                &gt; SET_ROLE: GUEST
+                                &gt; SET ROLE: GUEST
                               </DropdownMenuItem>
                               <DropdownMenuSeparator />
                               <AlertDialog
@@ -177,7 +177,7 @@ export function MembersTable({ members }: MembersTableProps) {
                                     className="text-destructive"
                                   >
                                     <Trash2 className="mr-2 h-4 w-4" />
-                                    &gt; REMOVE_MEMBER
+                                    &gt; REMOVE MEMBER
                                   </DropdownMenuItem>
                                 </AlertDialogTrigger>
                                 <AlertDialogContent>
@@ -199,7 +199,7 @@ export function MembersTable({ members }: MembersTableProps) {
                                         'bg-destructive text-destructive-foreground hover:bg-destructive/90 text-xs'
                                       )}
                                     >
-                                      &gt; CONFIRM_REMOVE
+                                      &gt; CONFIRM REMOVE
                                     </AlertDialogAction>
                                   </div>
                                 </AlertDialogContent>
@@ -207,7 +207,7 @@ export function MembersTable({ members }: MembersTableProps) {
                             </>
                           )}
                           {member.role === 'owner' && (
-                            <DropdownMenuItem disabled>[LOCKED]: OWNER_ROLE</DropdownMenuItem>
+                            <DropdownMenuItem disabled>[LOCKED]: OWNER ROLE</DropdownMenuItem>
                           )}
                         </DropdownMenuContent>
                       </DropdownMenu>

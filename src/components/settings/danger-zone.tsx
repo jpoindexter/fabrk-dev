@@ -68,10 +68,10 @@ export function DangerZone() {
 
   return (
     <Card tone="danger">
-      <CardHeader code="0xFF" title="DANGER_ZONE" />
+      <CardHeader code="0xFF" title="DANGER ZONE" />
       <CardContent className="space-y-6">
         <div className="border-t pt-4">
-          <h3 className={cn(mode.font, 'mb-2 text-xs tracking-tight')}>[EXPORT_YOUR_DATA]:</h3>
+          <h3 className={cn(mode.font, 'mb-2 text-xs tracking-tight')}>[EXPORT YOUR DATA]:</h3>
           <p className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
             Download a copy of your account data in JSON format.
           </p>
@@ -81,13 +81,13 @@ export function DangerZone() {
             disabled={isLoading}
             className={cn(mode.radius, mode.font, 'text-xs')}
           >
-            &gt; EXPORT_DATA
+            &gt; EXPORT DATA
           </Button>
         </div>
 
         <div className="border-t pt-4">
           <h3 className={cn(mode.font, 'text-destructive mb-2 text-xs tracking-tight')}>
-            [DELETE_ACCOUNT]:
+            [DELETE ACCOUNT]:
           </h3>
           <p className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
             Permanently delete your account and all associated data. This action cannot be undone.
@@ -98,7 +98,7 @@ export function DangerZone() {
             disabled={isLoading}
             className={cn(mode.radius, mode.font, 'text-xs')}
           >
-            &gt; DELETE_ACCOUNT
+            &gt; DELETE ACCOUNT
           </Button>
         </div>
       </CardContent>
@@ -106,7 +106,7 @@ export function DangerZone() {
       <AlertDialog open={exportDialogOpen} onOpenChange={setExportDialogOpen}>
         <AlertDialogContent className={cn(mode.radius, 'border-border border')}>
           <AlertDialogHeader>
-            <AlertDialogTitle className={cn(mode.font, 'text-sm')}>[EXPORT_DATA]:</AlertDialogTitle>
+            <AlertDialogTitle className={cn(mode.font, 'text-sm')}>[EXPORT DATA]:</AlertDialogTitle>
             <AlertDialogDescription className={cn(mode.font, 'text-xs')}>
               You will receive a download of all your account data in JSON format. This includes
               your profile, settings, and activity history.
@@ -131,7 +131,7 @@ export function DangerZone() {
         <AlertDialogContent className={cn('max-w-md', mode.radius, 'border-destructive border')}>
           <AlertDialogHeader>
             <AlertDialogTitle className={cn(mode.font, 'text-destructive text-sm')}>
-              [DELETE_ACCOUNT]:
+              [DELETE ACCOUNT]:
             </AlertDialogTitle>
             <AlertDialogDescription className={cn(mode.font, 'text-xs')}>
               This action cannot be undone. Your account and all data will be permanently deleted.
@@ -165,7 +165,7 @@ export function DangerZone() {
                 'bg-destructive text-destructive-foreground hover:bg-destructive/90 text-xs'
               )}
             >
-              {isLoading ? '> DELETING...' : '> DELETE_ACCOUNT'}
+              {isLoading ? '> DELETING...' : '> DELETE ACCOUNT'}
             </AlertDialogAction>
           </div>
         </AlertDialogContent>

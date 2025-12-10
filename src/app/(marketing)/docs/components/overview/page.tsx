@@ -185,7 +185,7 @@ export default function ComponentsOverviewPage() {
     <FeatureGuideTemplate
       code="[0x60]"
       category="Components"
-      title="UI_Components_Library"
+      title="UI Components Library"
       description="100+ production-ready components built with Radix UI and Tailwind CSS."
       overview={`${totalComponents}+ components across ${componentCategories.length} categories. All fully typed with TypeScript. Built on Radix UI primitives for accessibility.`}
       features={[

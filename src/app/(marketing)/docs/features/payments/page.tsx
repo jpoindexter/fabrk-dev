@@ -14,7 +14,7 @@ export default function PaymentsPage() {
     <FeatureGuideTemplate
       code="[0x30]"
       category="Features"
-      title="Stripe_Payments"
+      title="Stripe Payments"
       description="Accept payments and manage subscriptions with Stripe."
       overview="When someone buys your product, Fabrk uses Stripe to handle everything securely. Customer clicks Buy, enters payment info on Stripe's checkout page (you never see their card number), Stripe charges the card and notifies your app via webhook, then your app grants access. The key benefit: You never handle sensitive credit card data. Stripe is PCI compliant and handles all the security complexity."
       features={[
@@ -92,7 +92,7 @@ stripe login
 # Forward webhooks to your local app
 npm run stripe:listen`,
           language: 'bash',
-          tip: 'Add STRIPE_WEBHOOK_SECRET="whsec_your_webhook_secret" to your .env.local',
+          tip: 'Add STRIPE WEBHOOK SECRET="whsec_your_webhook_secret" to your .env.local',
         },
       ]}
       usage={[
@@ -172,7 +172,7 @@ export function ManageBillingButton() {
     >
       {/* Why Stripe Section */}
       <DocsSection title="Why Stripe">
-        <DocsCard title="WHY_STRIPE">
+        <DocsCard title="WHY STRIPE">
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="space-y-2">
               For You
@@ -204,7 +204,7 @@ export function ManageBillingButton() {
           Without webhooks, you&apos;d have to constantly ask Stripe &quot;did anyone pay yet?&quot;
           - which is inefficient and slow. With webhooks, Stripe tells you instantly.
         </DocsCallout>
-        <DocsCard title="WEBHOOK_EVENTS">
+        <DocsCard title="WEBHOOK EVENTS">
           <p className="mb-6">
             Common webhook events: <code className="bg-muted px-1">checkout.session.completed</code>{' '}
             (someone paid),
@@ -218,7 +218,7 @@ export function ManageBillingButton() {
 
       {/* Testing Payments */}
       <DocsSection title="Testing Payments">
-        <DocsCard title="TEST_CARDS">
+        <DocsCard title="TEST CARDS">
           <p className="mb-6">
             Always test payments before going live. Stripe provides test card numbers that simulate
             different scenarios without charging real money.
@@ -306,7 +306,7 @@ export function ManageBillingButton() {
 
       {/* Going Live Checklist */}
       <DocsSection title="Going Live Checklist">
-        <DocsCard title="GOING_LIVE">
+        <DocsCard title="GOING LIVE">
           <p className="mb-4">Before accepting real payments:</p>
           <ul className="space-y-2">
             <li className="flex items-center gap-2">
@@ -341,14 +341,14 @@ export function ManageBillingButton() {
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/trial">
-            <DocsCard title="FREE_TRIALS" className="hover:border-primary/50 h-full transition-all">
+            <DocsCard title="FREE TRIALS" className="hover:border-primary/50 h-full transition-all">
               Free Trials
               <p className="mb-6">Let users try your product before paying with trial periods.</p>
             </DocsCard>
           </Link>
           <Link href="/docs/features/emails">
             <DocsCard
-              title="TRANSACTIONAL_EMAILS"
+              title="TRANSACTIONAL EMAILS"
               className="hover:border-primary/50 h-full transition-all"
             >
               <p className="mb-6">Send purchase confirmations and invoices to customers.</p>

@@ -142,7 +142,7 @@ export function FeatureGuideTemplate({
         <DocsSection title="Usage">
           <div className={docsSpacing.sectionItems}>
             {usage.map((example, index) => (
-              <DocsCard key={index} title={example.title.toUpperCase().replace(/\s+/g, '_')}>
+              <DocsCard key={index} title={example.title.toUpperCase()}>
                 {example.description && <p className="mb-6">{example.description}</p>}
                 <CodeBlock code={example.code} language={example.language || 'typescript'} />
               </DocsCard>
@@ -154,7 +154,7 @@ export function FeatureGuideTemplate({
       {/* Configuration */}
       {configuration && configuration.length > 0 && (
         <DocsSection title="Configuration">
-          <DocsCard title="CONFIG_OPTIONS">
+          <DocsCard title="CONFIG OPTIONS">
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
@@ -198,7 +198,7 @@ export function FeatureGuideTemplate({
         <DocsSection title="Troubleshooting">
           <div className={docsSpacing.sectionItems}>
             {troubleshooting.map((item, index) => (
-              <DocsCard key={index} title={`ERROR_${(index + 1).toString().padStart(2, '0')}`}>
+              <DocsCard key={index} title={`ERROR ${(index + 1).toString().padStart(2, '0')}`}>
                 <p className="text-foreground mb-2 font-semibold">{item.problem}</p>
                 <p>{item.solution}</p>
               </DocsCard>

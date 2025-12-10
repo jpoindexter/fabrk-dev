@@ -115,7 +115,7 @@ function MarketingPreview() {
                 {/* Card Header */}
                 <div className="border-border flex items-center justify-between border-b px-4 py-2">
                   <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                    [TEMPLATE]: {template.id.toUpperCase().replace(/-/g, '_')}
+                    [TEMPLATE]: {template.id.toUpperCase()}
                   </span>
                   <template.icon className="text-muted-foreground size-4" />
                 </div>
@@ -169,7 +169,7 @@ function MarketingPreview() {
                         'text-primary group-hover:text-primary/80 text-xs transition-colors'
                       )}
                     >
-                      &gt; VIEW_TEMPLATE
+                      &gt; VIEW TEMPLATE
                     </span>
                     <span
                       className={cn(
@@ -205,7 +205,7 @@ export default function MarketingPage() {
         <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
           {/* Tab Navigation Card */}
           <Card>
-            <CardHeader code="0x00" title="CATEGORY_OVERVIEW" />
+            <CardHeader code="0x00" title="CATEGORY OVERVIEW" />
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
@@ -240,7 +240,7 @@ export default function MarketingPage() {
           {/* Preview Tab Content */}
           <TabsContent value="preview" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="TEMPLATES_BROWSER" />
+              <CardHeader code="0x01" title="TEMPLATES BROWSER" />
               <MarketingPreview />
             </Card>
           </TabsContent>
@@ -248,7 +248,7 @@ export default function MarketingPage() {
           {/* Code Tab Content */}
           <TabsContent value="code" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="USAGE_GUIDE" />
+              <CardHeader code="0x01" title="USAGE GUIDE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
@@ -258,7 +258,7 @@ export default function MarketingPage() {
 
         {/* Template Features Card */}
         <Card>
-          <CardHeader code="0x02" title="MARKETING_FEATURES" />
+          <CardHeader code="0x02" title="MARKETING FEATURES" />
           <CardContent padding="lg">
             <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
               [MARKETING_TEMPLATES]:

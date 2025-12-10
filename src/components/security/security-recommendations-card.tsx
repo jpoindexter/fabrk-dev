@@ -25,7 +25,7 @@ export function SecurityRecommendationsCard({
     <Card tone={warningCount > 0 ? 'warning' : 'success'}>
       <CardHeader
         code="0x05"
-        title="SECURITY_RECOMMENDATIONS"
+        title="SECURITY RECOMMENDATIONS"
         icon={<Shield className="h-4 w-4" />}
         meta={
           warningCount > 0

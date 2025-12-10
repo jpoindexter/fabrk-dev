@@ -55,12 +55,12 @@ export function AboutCTA() {
         >
           <Button size="lg" className="text-xs" asChild>
             <Link href="/#pricing">
-              &gt; GET_FABRK - {config.pricing.fabrk.display.current}
+              &gt; GET FABRK - {config.pricing.fabrk.display.current}
               <ArrowRight className="ml-2 size-4" />
             </Link>
           </Button>
           <Button variant="outline" size="lg" className="text-xs" asChild>
-            <Link href="/features">&gt; VIEW_ALL_FEATURES</Link>
+            <Link href="/features">&gt; VIEW ALL FEATURES</Link>
           </Button>
         </motion.div>
 
@@ -71,9 +71,9 @@ export function AboutCTA() {
           viewport={{ once: true }}
           className={cn('text-muted-foreground flex justify-center gap-4 text-xs', mode.font)}
         >
-          <span className="text-success">■ INSTANT_ACCESS</span>
-          <span className="text-success">■ LIFETIME_UPDATES</span>
-          <span className="text-success">■ 30_DAY_GUARANTEE</span>
+          <span className="text-success">■ INSTANT ACCESS</span>
+          <span className="text-success">■ LIFETIME UPDATES</span>
+          <span className="text-success">■ 30 DAY GUARANTEE</span>
         </motion.div>
       </div>
     </section>

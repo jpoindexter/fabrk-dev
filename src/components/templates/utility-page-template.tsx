@@ -97,13 +97,13 @@ export function UtilityPageTemplate({
         {/* Error Code Badge */}
         <div className={cn('border-border inline-block border px-4 py-1', mode.radius)}>
           <span className={cn('text-muted-foreground text-xs', mode.font)}>
-            [ERROR_CODE]: {code.toUpperCase()}
+            [ERROR CODE]: {code.toUpperCase()}
           </span>
         </div>
 
         {/* Title */}
         <h1 className={cn('text-4xl font-bold tracking-tight', mode.font)}>
-          {title.toUpperCase().replace(/ /g, '_')}
+          {title.toUpperCase()}
         </h1>
 
         {/* Description */}
@@ -114,14 +114,14 @@ export function UtilityPageTemplate({
           {primaryAction && (
             <Button asChild>
               <Link href={primaryAction.href}>
-                &gt; {primaryAction.label.toUpperCase().replace(/ /g, '_')}
+                &gt; {primaryAction.label.toUpperCase()}
               </Link>
             </Button>
           )}
           {secondaryAction && (
             <Button variant="outline" asChild>
               <Link href={secondaryAction.href}>
-                &gt; {secondaryAction.label.toUpperCase().replace(/ /g, '_')}
+                &gt; {secondaryAction.label.toUpperCase()}
               </Link>
             </Button>
           )}

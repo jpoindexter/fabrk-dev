@@ -14,7 +14,7 @@ export default function LemonSqueezyPage() {
     <FeatureGuideTemplate
       code="[0x31]"
       category="Features"
-      title="Lemon_Squeezy"
+      title="Lemon Squeezy"
       description="Accept global payments with automatic tax handling and merchant of record."
       overview="Lemon Squeezy is a merchant of record (MoR) that handles sales tax, VAT, and payment processing globally. Unlike Stripe where you're the merchant, Lemon Squeezy is the seller on your behalf - they handle all tax compliance, refunds, and chargebacks. Perfect for selling to customers worldwide without tax headaches."
       features={[
@@ -250,7 +250,7 @@ export async function POST(req: Request) {
 
       {/* Webhook Events */}
       <DocsSection title="Webhook Events">
-        <DocsCard title="WEBHOOK_EVENTS">
+        <DocsCard title="WEBHOOK EVENTS">
           <div className="space-y-2">
             <div className="border-border flex justify-between border-b pb-2">
               <code className="bg-muted px-1">order_created</code>
@@ -315,14 +315,14 @@ export async function POST(req: Request) {
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/trial">
-            <DocsCard title="FREE_TRIALS" className="hover:border-primary/50 h-full transition-all">
+            <DocsCard title="FREE TRIALS" className="hover:border-primary/50 h-full transition-all">
               Free Trials
               <p className="mb-6">Let users try your product before paying with trial periods.</p>
             </DocsCard>
           </Link>
           <Link href="/docs/features/payments">
             <DocsCard
-              title="STRIPE_PAYMENTS"
+              title="STRIPE PAYMENTS"
               className="hover:border-primary/50 h-full transition-all"
             >
               Stripe Setup

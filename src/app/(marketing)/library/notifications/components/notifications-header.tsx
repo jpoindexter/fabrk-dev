@@ -8,7 +8,7 @@ import { TemplatePageHeader } from '@/components/ui/card';
 export function NotificationsHeader() {
   return (
     <TemplatePageHeader
-      badge="NOTIFICATIONS_CENTER"
+      badge="NOTIFICATIONS CENTER"
       title="Notifications Center"
       description="Manage your notifications with filtering, actions, and real-time updates"
     />

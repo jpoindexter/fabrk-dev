@@ -12,7 +12,7 @@ export default function CSRFProtectionPage() {
     <FeatureGuideTemplate
       code="[0x80]"
       category="Security"
-      title="CSRF_Protection"
+      title="CSRF Protection"
       description="Protect your forms and API endpoints from cross-site request forgery attacks."
       overview="CSRF protection prevents attackers from tricking users into performing unwanted actions on your site. NextAuth v5 automatically protects all authentication routes with CSRF tokens."
       features={[

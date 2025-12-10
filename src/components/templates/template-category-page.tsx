@@ -83,7 +83,7 @@ export function TemplateCategoryPage({
                 <Card interactive size="full">
                   <CardHeader
                     code="0x00"
-                    title={template.id.toUpperCase().replace(/-/g, '_')}
+                    title={template.id.toUpperCase()}
                     icon={<template.icon className="text-muted-foreground size-4" />}
                   />
 
@@ -144,7 +144,7 @@ export function TemplateCategoryPage({
                           mode.font
                         )}
                       >
-                        &gt; VIEW_TEMPLATE
+                        &gt; VIEW TEMPLATE
                       </span>
                       <span
                         className={cn(

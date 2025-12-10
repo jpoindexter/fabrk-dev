@@ -29,7 +29,7 @@ export function StepPreferences({
 
       <div className="space-y-4">
         <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-          [NOTIFICATION_SETTINGS]:
+          [NOTIFICATION SETTINGS]:
         </div>
 
         <div className="space-y-4">

@@ -16,7 +16,7 @@ export function ApiDocumentation({ organizationId }: ApiDocumentationProps) {
   return (
     <div className="mt-8 grid gap-6 md:grid-cols-2">
       <Card>
-        <CardHeader code="0xF0" title="GETTING_STARTED" icon={<Code className="h-4 w-4" />} />
+        <CardHeader code="0xF0" title="GETTING STARTED" icon={<Code className="h-4 w-4" />} />
         <CardContent className="text-muted-foreground space-y-2 text-sm">
           <p>Include your API key in the Authorization header:</p>
           <code
@@ -42,7 +42,7 @@ export function ApiDocumentation({ organizationId }: ApiDocumentationProps) {
       <Card>
         <CardHeader
           code="0xF1"
-          title="SECURITY_BEST_PRACTICES"
+          title="SECURITY_BEST PRACTICES"
           icon={<AlertTriangle className="h-4 w-4" />}
         />
         <CardContent className="text-muted-foreground text-sm">

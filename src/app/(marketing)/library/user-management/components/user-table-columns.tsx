@@ -165,7 +165,7 @@ export const columns: ColumnDef<UserType>[] = [
           >
             <DropdownMenuLabel className="text-muted-foreground">[ACTIONS]</DropdownMenuLabel>
             <DropdownMenuItem onClick={() => navigator.clipboard.writeText(user.id)}>
-              &gt; COPY_ID
+              &gt; COPY ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>

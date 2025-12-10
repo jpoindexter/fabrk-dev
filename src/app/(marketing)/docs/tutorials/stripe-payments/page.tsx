@@ -13,7 +13,7 @@ export default function StripePaymentsTutorialPage() {
     <FeatureGuideTemplate
       code="[0x30]"
       category="Tutorials"
-      title="Stripe_Payments"
+      title="Stripe Payments"
       description="Set up one-time payments and subscriptions with Stripe."
       overview="This guide walks you through setting up Stripe payments including checkout, webhooks, and promotion codes."
       features={[
@@ -45,7 +45,7 @@ export default function StripePaymentsTutorialPage() {
           code: `# Get from https://dashboard.stripe.com/test/apikeys
 STRIPE_SECRET_KEY="sk_test_..."
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."
-STRIPE_WEBHOOK_SECRET="whsec_..."`,
+STRIPE WEBHOOK SECRET="whsec_..."`,
           language: 'bash',
         },
         {
@@ -145,7 +145,7 @@ stripe: {
     >
       {/* Webhook Events */}
       <DocsSection title="Webhook Events">
-        <DocsCard title="WEBHOOK_EVENTS">
+        <DocsCard title="WEBHOOK EVENTS">
           <p className="mb-4">
             The webhook handler is at{' '}
             <code className="bg-muted px-1">src/app/api/webhooks/stripe/route.ts</code>. Key events
@@ -177,7 +177,7 @@ stripe: {
 
       {/* Test Cards */}
       <DocsSection title="Test Cards">
-        <DocsCard title="TEST_CARDS">
+        <DocsCard title="TEST CARDS">
           <p className="mb-4">Use these test cards in development:</p>
           <div className="space-y-1">
             <div>

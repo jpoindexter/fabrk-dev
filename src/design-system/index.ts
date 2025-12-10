@@ -151,7 +151,7 @@ export function formatLabel(label: string): string {
  */
 export function formatButtonText(text: string): string {
   if (mode.textTransform === 'uppercase') {
-    return `${mode.buttonPrefix}${text.toUpperCase().replace(/ /g, '_')}`;
+    return `${mode.buttonPrefix}${text.toUpperCase()}`;
   }
   return `${mode.buttonPrefix}${text}`;
 }

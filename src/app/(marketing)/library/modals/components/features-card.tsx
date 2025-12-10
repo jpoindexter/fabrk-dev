@@ -16,9 +16,9 @@ import {
 export function FeaturesCard() {
   return (
     <Card>
-      <CardHeader code="0x00" title="TEMPLATE_FEATURES" />
+      <CardHeader code="0x00" title="TEMPLATE FEATURES" />
       <CardContent>
-        <StyledLabel className="mb-4">TEMPLATE_FEATURES</StyledLabel>
+        <StyledLabel className="mb-4">TEMPLATE FEATURES</StyledLabel>
         <FeatureList>
           <FeatureItem>Confirmation dialog for destructive actions</FeatureItem>
           <FeatureItem>Form dialog with inputs and validation</FeatureItem>

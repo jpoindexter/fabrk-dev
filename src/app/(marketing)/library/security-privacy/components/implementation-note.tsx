@@ -13,7 +13,7 @@ export function ImplementationNote() {
       <CardHeader code="0x01" title="FEATURES" icon={<FileCode className="h-4 w-4" />} />
       <CardContent padding="md">
         <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-          [TEMPLATE_FEATURES]:
+          [TEMPLATE FEATURES]:
         </div>
         <div className={cn(mode.font, 'space-y-2 text-xs')}>
           <div>

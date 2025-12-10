@@ -71,7 +71,7 @@ export const FormError = React.forwardRef<HTMLDivElement, FormErrorProps>(
                 {helpLink && (
                   <Button size="sm" variant="ghost" asChild className="h-7 text-xs">
                     <a href={helpLink} target="_blank" rel="noopener noreferrer">
-                      &gt; LEARN_MORE
+                      &gt; LEARN MORE
                     </a>
                   </Button>
                 )}

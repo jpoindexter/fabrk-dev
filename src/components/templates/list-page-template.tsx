@@ -122,7 +122,7 @@ function EmptyState({ emptyState, createAction }: EmptyStateProps) {
     >
       <div className="text-muted-foreground mb-4">{icon}</div>
       <h2 className={cn('mb-2 text-2xl font-semibold tracking-tight', mode.font)}>
-        [{title.toUpperCase().replace(/ /g, '_')}]
+        [{title.toUpperCase()}]
       </h2>
       <p className={cn('text-muted-foreground mb-6 max-w-sm text-center text-sm', mode.font)}>
         {description}
@@ -130,7 +130,7 @@ function EmptyState({ emptyState, createAction }: EmptyStateProps) {
       {action && (
         <Button onClick={action.onClick}>
           <Plus className="mr-2 h-4 w-4" />
-          &gt; {action.label.toUpperCase().replace(/ /g, '_')}
+          &gt; {action.label.toUpperCase()}
         </Button>
       )}
     </div>
@@ -187,7 +187,7 @@ export function ListPageTemplate<TData, TValue = unknown>({
         {createAction && (
           <Button onClick={createAction.onClick}>
             <Plus className="mr-2 h-4 w-4" />
-            &gt; {createAction.label.toUpperCase().replace(/ /g, '_')}
+            &gt; {createAction.label.toUpperCase()}
           </Button>
         )}
       </div>

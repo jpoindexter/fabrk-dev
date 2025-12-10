@@ -33,7 +33,7 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
           <div>
             <div className="mb-2 flex items-center gap-2">
               <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                [CURRENT_PLAN]:
+                [CURRENT PLAN]:
               </span>
               <span
                 className={cn(
@@ -57,7 +57,7 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
               <span className="text-muted-foreground text-lg font-normal">/mo</span>
             </div>
             <div className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
-              [NEXT_BILLING]: {formatDate(subscription.nextBillingDate)}
+              [NEXT BILLING]: {formatDate(subscription.nextBillingDate)}
             </div>
           </div>
         </div>
@@ -76,10 +76,10 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
 
         <div className="border-border mt-4 flex gap-2 border-t pt-4">
           <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, 'text-xs')}>
-            &gt; MANAGE_SUBSCRIPTION
+            &gt; MANAGE SUBSCRIPTION
           </Button>
           <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, 'text-xs')}>
-            &gt; UPGRADE_TO_ENTERPRISE
+            &gt; UPGRADE TO ENTERPRISE
           </Button>
         </div>
       </CardContent>

@@ -40,7 +40,7 @@ export function RolePermissions() {
       <CardHeader code="0x04" title="PERMISSIONS" icon={<Shield className="h-4 w-4" />} />
       <CardContent>
         <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-          [ROLE_PERMISSIONS]:
+          [ROLE PERMISSIONS]:
         </div>
         <div className={cn(mode.font, 'space-y-4 text-xs')}>
           {rolePermissions.map((item) => {

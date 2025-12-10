@@ -21,9 +21,9 @@ export function MissionSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <Badge code="0x02" label="OUR_MISSION" className="mb-4" />
+            <Badge code="0x02" label="OUR MISSION" className="mb-4" />
             <h2 className={cn('text-2xl font-semibold tracking-tight lg:text-4xl', mode.font)}>
-              OUR_MISSION
+              OUR MISSION
             </h2>
           </motion.div>
 

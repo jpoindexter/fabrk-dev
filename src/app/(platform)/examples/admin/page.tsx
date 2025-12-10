@@ -200,7 +200,7 @@ export default function AdminPage() {
           <p className="text-muted-foreground">Manage users, roles, and permissions</p>
         </div>
         <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
-          &gt; ADD_USER
+          &gt; ADD USER
         </Button>
       </div>
 

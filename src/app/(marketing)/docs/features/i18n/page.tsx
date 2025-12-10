@@ -13,7 +13,7 @@ export default function I18nPage() {
     <FeatureGuideTemplate
       code="[0x82]"
       category="Features"
-      title="i18n_Internationalization"
+      title="i18n Internationalization"
       description="Multi-language support for global audiences using next-intl."
       overview="Fabrk includes full internationalization support using next-intl. Ship your SaaS to users worldwide with translations for English, Spanish, French, German, Portuguese, and Japanese out of the box. Add more languages easily by creating new message files."
       features={[
@@ -256,7 +256,7 @@ export const localeFlags: Record<Locale, string> = {
     >
       {/* Included Languages */}
       <DocsSection title="Included Languages">
-        <DocsCard title="SUPPORTED_LOCALES">
+        <DocsCard title="SUPPORTED LOCALES">
           <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
             <div className="flex items-center gap-2">
               <span className="text-2xl">🇺🇸</span>
@@ -405,7 +405,7 @@ export const localeFlags: Record<Locale, string> = {
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/seo">
             <DocsCard
-              title="SEO_LOCALIZATION"
+              title="SEO LOCALIZATION"
               className="hover:border-primary/50 h-full transition-all"
             >
               SEO for Multiple Languages
@@ -414,7 +414,7 @@ export const localeFlags: Record<Locale, string> = {
           </Link>
           <Link href="/docs/features/lemonsqueezy">
             <DocsCard
-              title="GLOBAL_PAYMENTS"
+              title="GLOBAL PAYMENTS"
               className="hover:border-primary/50 h-full transition-all"
             >
               Global Payments

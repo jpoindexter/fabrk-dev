@@ -235,7 +235,7 @@ export function AnalyticsChart({
       {(title || description) && (
         <CardHeader
           code="0x03"
-          title={title ? title.toUpperCase().replace(/ /g, '_') : 'ANALYTICS'}
+          title={title ? title.toUpperCase() : 'ANALYTICS'}
           icon={<BarChart3 className="h-4 w-4" />}
         />
       )}

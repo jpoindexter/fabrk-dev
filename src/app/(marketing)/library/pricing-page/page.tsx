@@ -43,7 +43,7 @@ const plans = [
       "1GB storage",
       "Community access",
     ],
-    cta: "GET_STARTED",
+    cta: "GET STARTED",
     ctaVariant: "outline",
   },
   {
@@ -62,7 +62,7 @@ const plans = [
       "Custom domains",
       "Up to 5 team members",
     ],
-    cta: "START_PRO_TRIAL",
+    cta: "START PRO TRIAL",
     ctaVariant: "default",
   },
   {
@@ -82,7 +82,7 @@ const plans = [
       "Unlimited team members",
       "SSO/SAML",
     ],
-    cta: "CONTACT_SALES",
+    cta: "CONTACT SALES",
     ctaVariant: "outline",
   },
 ];
@@ -171,7 +171,7 @@ export default function PricingPage() {
       <div className="border border-border">
         <div className="border-b border-border px-4 py-2">
           <span className="font-mono text-xs text-muted-foreground">
-            [ [0x02] FEATURE_COMPARISON ]
+            [ [0x02] FEATURE COMPARISON ]
           </span>
         </div>
         <div className="overflow-x-auto">
@@ -201,7 +201,7 @@ export default function PricingPage() {
       <div className="border border-border">
         <div className="border-b border-border px-4 py-2">
           <span className="font-mono text-xs text-muted-foreground">
-            [ [0x03] FREQUENTLY_ASKED_QUESTIONS ]
+            [ [0x03] FREQUENTLY ASKED QUESTIONS ]
           </span>
         </div>
         <div className="p-6 space-y-4">
@@ -241,7 +241,7 @@ export default function PricingPageTemplate() {
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
         {/* Header */}
         <TemplatePageHeader
-          badge="PRICING_PAGE"
+          badge="PRICING PAGE"
           title="Pricing Page"
           description="Complete pricing page with plans, comparison table, and FAQs"
         />
@@ -250,7 +250,7 @@ export default function PricingPageTemplate() {
         <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
           {/* Tab Navigation Card */}
           <Card>
-            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
@@ -285,7 +285,7 @@ export default function PricingPageTemplate() {
           {/* Preview Tab Content */}
           <TabsContent value="preview" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <CardHeader code="0x01" title="LIVE PREVIEW" />
               <PricingPagePreview />
             </Card>
           </TabsContent>
@@ -293,7 +293,7 @@ export default function PricingPageTemplate() {
           {/* Code Tab Content */}
           <TabsContent value="code" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <CardHeader code="0x01" title="SOURCE CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>

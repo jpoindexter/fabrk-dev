@@ -15,7 +15,7 @@ interface EmailTabNavigationProps {
 export function EmailTabNavigation({ templates }: EmailTabNavigationProps) {
   return (
     <Card>
-      <CardHeader code="0x00" title="EMAIL_TABS" />
+      <CardHeader code="0x00" title="EMAIL TABS" />
       <TabsList
         className={cn(
           'h-auto w-full justify-start overflow-x-auto border-0 bg-transparent p-0',
@@ -34,7 +34,7 @@ export function EmailTabNavigation({ templates }: EmailTabNavigationProps) {
                 mode.font
               )}
             >
-              <Icon className="h-3 w-3" />[{template.name.toUpperCase().replace(/ /g, '_')}]
+              <Icon className="h-3 w-3" />[{template.name.toUpperCase()}]
             </TabsTrigger>
           );
         })}

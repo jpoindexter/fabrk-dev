@@ -165,7 +165,7 @@ export default function BlogPage() {
           <div className="p-6">
             <div className="grid gap-6 md:grid-cols-2">
               <div className="border border-border bg-muted/30 flex aspect-video items-center justify-center">
-                <span className="font-mono text-xs text-muted-foreground">[FEATURED_IMAGE]</span>
+                <span className="font-mono text-xs text-muted-foreground">[FEATURED IMAGE]</span>
               </div>
               <div className="flex flex-col justify-center space-y-4">
                 <div className="flex items-center gap-2">
@@ -196,7 +196,7 @@ export default function BlogPage() {
                 </div>
                 <Button asChild className={cn(mode.radius, mode.font, "w-fit text-xs")}>
                   <Link href="/blog/post-1">
-                    &gt; READ_ARTICLE <ArrowRight className="ml-1 h-3 w-3" />
+                    &gt; READ ARTICLE <ArrowRight className="ml-1 h-3 w-3" />
                   </Link>
                 </Button>
               </div>
@@ -352,7 +352,7 @@ function BlogPreview() {
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="border-border bg-muted/30 flex aspect-video items-center justify-center border">
                   <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                    [FEATURED_IMAGE]
+                    [FEATURED IMAGE]
                   </span>
                 </div>
                 <div className="flex flex-col justify-center space-y-4">
@@ -402,7 +402,7 @@ function BlogPreview() {
                   </div>
                   <Button asChild className={cn(mode.radius, mode.font, 'w-fit text-xs')}>
                     <Link href="/templates/blog/post">
-                      &gt; READ_ARTICLE <ArrowRight className="ml-1 h-3 w-3" />
+                      &gt; READ ARTICLE <ArrowRight className="ml-1 h-3 w-3" />
                     </Link>
                   </Button>
                 </div>
@@ -564,7 +564,7 @@ export default function BlogTemplate() {
         <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
           {/* Tab Navigation Card */}
           <Card>
-            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
@@ -599,7 +599,7 @@ export default function BlogTemplate() {
           {/* Preview Tab Content */}
           <TabsContent value="preview" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <CardHeader code="0x01" title="LIVE PREVIEW" />
               <BlogPreview />
             </Card>
           </TabsContent>
@@ -607,7 +607,7 @@ export default function BlogTemplate() {
           {/* Code Tab Content */}
           <TabsContent value="code" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <CardHeader code="0x01" title="SOURCE CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
@@ -617,7 +617,7 @@ export default function BlogTemplate() {
 
         {/* File Structure */}
         <Card>
-          <CardHeader code="0x02" title="FILE_STRUCTURE" />
+          <CardHeader code="0x02" title="FILE STRUCTURE" />
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>
@@ -635,7 +635,7 @@ export default function BlogTemplate() {
 
         {/* Features Card */}
         <FeaturesCard
-          title="TEMPLATE_FEATURES"
+          title="TEMPLATE FEATURES"
           code="0x0B"
           features={[
             'Featured post hero section',

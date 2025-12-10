@@ -13,7 +13,7 @@ export default function QuickStartPage() {
     <FeatureGuideTemplate
       code="[0x00]"
       category="Tutorials"
-      title="Quick_Start"
+      title="Quick Start"
       description="Assemble a production-ready landing page and core features in minutes."
       overview="This guide assumes you have completed the Getting Started setup and have your local development server running."
       features={[

@@ -22,7 +22,7 @@ export default function CheckboxPage() {
         ),
         code: `<div className="flex items-center gap-2">
   <Checkbox id="terms" />
-  <Label htmlFor="terms">[ACCEPT_TERMS_AND_CONDITIONS]:</Label>
+  <Label htmlFor="terms">[ACCEPT TERMS AND CONDITIONS]:</Label>
 </div>`,
       }}
       variants={[
@@ -49,7 +49,7 @@ export default function CheckboxPage() {
           ),
           code: `<div className="flex items-center gap-2">
   <Checkbox id="newsletter" />
-  <Label htmlFor="newsletter">[SUBSCRIBE_TO_NEWSLETTER]:</Label>
+  <Label htmlFor="newsletter">[SUBSCRIBE TO NEWSLETTER]:</Label>
 </div>`,
         },
         {
@@ -86,15 +86,15 @@ export default function CheckboxPage() {
           code: `<div className="grid gap-2">
   <div className="flex items-center gap-2">
     <Checkbox id="option1" defaultChecked />
-    <Label htmlFor="option1">[OPTION_1]:</Label>
+    <Label htmlFor="option1">[OPTION 1]:</Label>
   </div>
   <div className="flex items-center gap-2">
     <Checkbox id="option2" />
-    <Label htmlFor="option2">[OPTION_2]:</Label>
+    <Label htmlFor="option2">[OPTION 2]:</Label>
   </div>
   <div className="flex items-center gap-2">
     <Checkbox id="option3" />
-    <Label htmlFor="option3">[OPTION_3]:</Label>
+    <Label htmlFor="option3">[OPTION 3]:</Label>
   </div>
 </div>`,
         },

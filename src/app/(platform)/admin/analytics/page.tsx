@@ -84,7 +84,7 @@ async function AnalyticsDashboard() {
       {/* Key Metrics */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card tone="primary">
-          <CardHeader code="0x01" title="TOTAL_USERS" icon={<Users className="h-4 w-4" />} />
+          <CardHeader code="0x01" title="TOTAL USERS" icon={<Users className="h-4 w-4" />} />
           <CardContent>
             <div className="text-2xl font-semibold">{analytics.totalUsers}</div>
             <p className="text-muted-foreground text-xs">+{analytics.usersLast7Days} this week</p>
@@ -92,7 +92,7 @@ async function AnalyticsDashboard() {
         </Card>
 
         <Card tone="success">
-          <CardHeader code="0x02" title="TOTAL_REVENUE" icon={<DollarSign className="h-4 w-4" />} />
+          <CardHeader code="0x02" title="TOTAL REVENUE" icon={<DollarSign className="h-4 w-4" />} />
           <CardContent>
             <div className="text-2xl font-semibold">
               ${(analytics.totalRevenue / 100).toFixed(2)}
@@ -106,7 +106,7 @@ async function AnalyticsDashboard() {
         <Card tone="primary">
           <CardHeader
             code="0x03"
-            title="AVG_REVENUE_USER"
+            title="AVG REVENUE USER"
             icon={<TrendingUp className="h-4 w-4" />}
           />
           <CardContent>
@@ -116,7 +116,7 @@ async function AnalyticsDashboard() {
         </Card>
 
         <Card tone="neutral">
-          <CardHeader code="0x04" title="TOTAL_PAYMENTS" icon={<Activity className="h-4 w-4" />} />
+          <CardHeader code="0x04" title="TOTAL PAYMENTS" icon={<Activity className="h-4 w-4" />} />
           <CardContent>
             <div className="text-2xl font-semibold">{analytics.totalPayments}</div>
             <p className="text-muted-foreground text-xs">
@@ -130,7 +130,7 @@ async function AnalyticsDashboard() {
       <Card tone="primary">
         <CardHeader
           code="0x05"
-          title="USER_GROWTH"
+          title="USER GROWTH"
           meta="Last 30 days"
           icon={<BarChart3 className="h-4 w-4" />}
         />
@@ -161,7 +161,7 @@ async function AnalyticsDashboard() {
         <Card tone="success">
           <CardHeader
             code="0x06"
-            title="LAST_7_DAYS"
+            title="LAST 7 DAYS"
             meta="Recent activity"
             icon={<Activity className="h-4 w-4" />}
           />
@@ -182,7 +182,7 @@ async function AnalyticsDashboard() {
         <Card tone="primary">
           <CardHeader
             code="0x07"
-            title="LAST_30_DAYS"
+            title="LAST 30 DAYS"
             meta="Monthly summary"
             icon={<TrendingUp className="h-4 w-4" />}
           />

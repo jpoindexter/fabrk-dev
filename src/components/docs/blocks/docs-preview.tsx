@@ -31,7 +31,7 @@ export function DocsPreview({
   hexCode = '00',
   className,
 }: DocsPreviewProps) {
-  const headerTitle = title.toUpperCase().replace(/\s+/g, '_');
+  const headerTitle = title.toUpperCase();
 
   return (
     <div className={cn('border-border bg-card border', className)}>

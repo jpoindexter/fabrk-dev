@@ -18,14 +18,14 @@ export function StatsCards({ users }: StatsCardsProps) {
   return (
     <div className="grid gap-6 md:grid-cols-4">
       <div className="border-border bg-card border p-4">
-        <div className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}>[TOTAL_USERS]:</div>
+        <div className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}>[TOTAL USERS]:</div>
         <div className="text-4xl font-semibold">{users.length}</div>
         <div className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
           STATUS: <span className="text-success">INDEXED</span>
         </div>
       </div>
       <div className="border-border bg-card border p-4">
-        <div className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}>[ACTIVE_USERS]:</div>
+        <div className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}>[ACTIVE USERS]:</div>
         <div className="text-4xl font-semibold">{activeCount}</div>
         <div className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
           RATE:{' '}

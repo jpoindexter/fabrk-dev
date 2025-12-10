@@ -15,7 +15,7 @@ export default function CardPage() {
       mainPreview={{
         preview: (
           <Card className="w-[350px]">
-            <CardHeader code="0x00" title="CARD_TITLE" meta="Card description" />
+            <CardHeader code="0x00" title="CARD TITLE" meta="Card description" />
             <CardContent>
               <p className="text-sm">
                 This is the card content area where you can place any content.
@@ -27,7 +27,7 @@ export default function CardPage() {
           </Card>
         ),
         code: `<Card className="w-[350px]">
-  <CardHeader code="0x00" title="CARD_TITLE" meta="Card description" />
+  <CardHeader code="0x00" title="CARD TITLE" meta="Card description" />
   <CardContent>
     <p className="text-sm">This is the card content area where you can place any content.</p>
   </CardContent>
@@ -80,7 +80,7 @@ export default function CardPage() {
           description: 'Card with action buttons in footer',
           preview: (
             <Card className="w-[350px]">
-              <CardHeader code="0x02" title="CONFIRM_ACTION" meta="Are you sure?" />
+              <CardHeader code="0x02" title="CONFIRM ACTION" meta="Are you sure?" />
               <CardFooter>
                 <Button variant="outline">&gt; CANCEL</Button>
                 <Button>&gt; CONFIRM</Button>
@@ -88,7 +88,7 @@ export default function CardPage() {
             </Card>
           ),
           code: `<Card className="w-[350px]">
-  <CardHeader code="0x02" title="CONFIRM_ACTION" meta="Are you sure?" />
+  <CardHeader code="0x02" title="CONFIRM ACTION" meta="Are you sure?" />
   <CardFooter>
     <Button variant="outline">&gt; CANCEL</Button>
     <Button>&gt; CONFIRM</Button>
@@ -100,14 +100,14 @@ export default function CardPage() {
           description: 'Card with hover effects for clickable content',
           preview: (
             <Card className="w-[350px]" interactive>
-              <CardHeader code="0x03" title="INTERACTIVE_CARD" meta="Click or hover" />
+              <CardHeader code="0x03" title="INTERACTIVE CARD" meta="Click or hover" />
               <CardContent>
                 <p className="text-sm">This card has hover effects with the interactive prop.</p>
               </CardContent>
             </Card>
           ),
           code: `<Card className="w-[350px]" interactive>
-  <CardHeader code="0x03" title="INTERACTIVE_CARD" meta="Click or hover" />
+  <CardHeader code="0x03" title="INTERACTIVE CARD" meta="Click or hover" />
   <CardContent>
     <p className="text-sm">This card has hover effects with the interactive prop.</p>
   </CardContent>
@@ -119,19 +119,19 @@ export default function CardPage() {
           preview: (
             <div className="grid gap-4">
               <Card tone="primary" className="w-[350px]">
-                <CardHeader code="0x04" title="PRIMARY_TONE" />
+                <CardHeader code="0x04" title="PRIMARY TONE" />
                 <CardContent>
                   <p className="text-sm">Card with primary border tone.</p>
                 </CardContent>
               </Card>
               <Card tone="success" className="w-[350px]">
-                <CardHeader code="0x05" title="SUCCESS_TONE" />
+                <CardHeader code="0x05" title="SUCCESS TONE" />
                 <CardContent>
                   <p className="text-sm">Card with success border tone.</p>
                 </CardContent>
               </Card>
               <Card tone="warning" className="w-[350px]">
-                <CardHeader code="0x06" title="WARNING_TONE" />
+                <CardHeader code="0x06" title="WARNING TONE" />
                 <CardContent>
                   <p className="text-sm">Card with warning border tone.</p>
                 </CardContent>
@@ -139,14 +139,14 @@ export default function CardPage() {
             </div>
           ),
           code: `<Card tone="primary">
-  <CardHeader code="0x04" title="PRIMARY_TONE" />
+  <CardHeader code="0x04" title="PRIMARY TONE" />
   <CardContent>
     <p className="text-sm">Card with primary border tone.</p>
   </CardContent>
 </Card>
 
 <Card tone="success">
-  <CardHeader code="0x05" title="SUCCESS_TONE" />
+  <CardHeader code="0x05" title="SUCCESS TONE" />
   <CardContent>
     <p className="text-sm">Card with success border tone.</p>
   </CardContent>
@@ -158,13 +158,13 @@ export default function CardPage() {
           preview: (
             <div className="grid grid-cols-2 gap-4">
               <Card>
-                <CardHeader code="0x07" title="CARD_1" />
+                <CardHeader code="0x07" title="CARD 1" />
                 <CardContent>
                   <p className="text-sm">First card in grid</p>
                 </CardContent>
               </Card>
               <Card>
-                <CardHeader code="0x08" title="CARD_2" />
+                <CardHeader code="0x08" title="CARD 2" />
                 <CardContent>
                   <p className="text-sm">Second card in grid</p>
                 </CardContent>
@@ -173,13 +173,13 @@ export default function CardPage() {
           ),
           code: `<div className="grid grid-cols-2 gap-4">
   <Card>
-    <CardHeader code="0x07" title="CARD_1" />
+    <CardHeader code="0x07" title="CARD 1" />
     <CardContent>
       <p className="text-sm">First card in grid</p>
     </CardContent>
   </Card>
   <Card>
-    <CardHeader code="0x08" title="CARD_2" />
+    <CardHeader code="0x08" title="CARD 2" />
     <CardContent>
       <p className="text-sm">Second card in grid</p>
     </CardContent>
@@ -192,7 +192,7 @@ export default function CardPage() {
           preview: (
             <div className="grid grid-cols-3 gap-4">
               <Card>
-                <CardHeader code="0x09" title="TOTAL_USERS" meta="1,234" />
+                <CardHeader code="0x09" title="TOTAL USERS" meta="1,234" />
                 <CardContent>
                   <p className="text-muted-foreground text-xs">+12% from last month</p>
                 </CardContent>
@@ -213,7 +213,7 @@ export default function CardPage() {
           ),
           code: `<div className="grid grid-cols-3 gap-4">
   <Card>
-    <CardHeader code="0x09" title="TOTAL_USERS" meta="1,234" />
+    <CardHeader code="0x09" title="TOTAL USERS" meta="1,234" />
     <CardContent>
       <p className="text-xs text-muted-foreground">+12% from last month</p>
     </CardContent>

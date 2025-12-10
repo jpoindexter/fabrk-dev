@@ -102,7 +102,7 @@ export function OnboardingChecklist({
             <ChevronDown className="h-4 w-4" />
           </Button>
           <div>
-            <p className={cn('text-sm font-medium', mode.font)}>[ ONBOARDING_PROGRESS ]</p>
+            <p className={cn('text-sm font-medium', mode.font)}>[ ONBOARDING PROGRESS ]</p>
             <p className={cn('text-muted-foreground text-xs', mode.font)}>
               {completedCount}/{totalCount} tasks completed
             </p>
@@ -151,7 +151,7 @@ export function OnboardingChecklist({
         <div className="flex-1">
           <div className="flex items-center gap-2">
             <h3 className={cn('text-sm font-semibold tracking-tight', mode.font)}>
-              [ GETTING_STARTED ]
+              [ GETTING STARTED ]
             </h3>
             {isComplete && <span className="text-success text-xs">✓ COMPLETE</span>}
           </div>

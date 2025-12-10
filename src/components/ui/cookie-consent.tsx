@@ -201,14 +201,14 @@ export function CookieConsent({
                 onClick={handleRejectAll}
                 className={cn('text-xs', mode.radius, mode.font)}
               >
-                {'> '}REJECT_ALL
+                {'> '}REJECT ALL
               </Button>
               <Button
                 size="sm"
                 onClick={handleAcceptAll}
                 className={cn('text-xs', mode.radius, mode.font)}
               >
-                {'> '}ACCEPT_ALL
+                {'> '}ACCEPT ALL
               </Button>
             </div>
           </div>
@@ -219,7 +219,7 @@ export function CookieConsent({
       <Dialog open={showCustomize} onOpenChange={setShowCustomize}>
         <DialogContent className={cn('max-w-2xl', mode.radius)}>
           <DialogHeader>
-            <DialogTitle className={cn(mode.font)}>[ COOKIE_PREFERENCES ]</DialogTitle>
+            <DialogTitle className={cn(mode.font)}>[ COOKIE PREFERENCES ]</DialogTitle>
             <DialogDescription>
               Manage your cookie preferences. You can enable or disable different types of cookies
               below.
@@ -312,13 +312,13 @@ export function CookieConsent({
               onClick={handleRejectAll}
               className={cn('w-full sm:w-auto', mode.radius, mode.font)}
             >
-              {'> '}REJECT_ALL
+              {'> '}REJECT ALL
             </Button>
             <Button
               onClick={handleSaveCustom}
               className={cn('w-full sm:w-auto', mode.radius, mode.font)}
             >
-              {'> '}SAVE_PREFERENCES
+              {'> '}SAVE PREFERENCES
             </Button>
           </DialogFooter>
         </DialogContent>

@@ -97,7 +97,7 @@ export function ApiKeyGenerator({
     <Card className={cn('overflow-hidden', className)}>
       <CardHeader
         code="0x00"
-        title="API_Key"
+        title="API Key"
         icon={<Key className="h-4 w-4" />}
         meta={
           apiKey ? (
@@ -241,7 +241,7 @@ export function ApiKeyGenerator({
               {onGenerate && (
                 <Button onClick={onGenerate} disabled={isGenerating}>
                   <Key className="mr-2 h-4 w-4" />
-                  {isGenerating ? '> GENERATING...' : '> GENERATE_API_KEY'}
+                  {isGenerating ? '> GENERATING...' : '> GENERATE API KEY'}
                 </Button>
               )}
             </div>

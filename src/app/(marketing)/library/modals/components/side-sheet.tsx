@@ -28,7 +28,7 @@ interface SideSheetProps {
 export function SideSheet({ open, onOpenChange }: SideSheetProps) {
   return (
     <Card>
-      <CardHeader code="0x00" title="SIDE_SHEET" />
+      <CardHeader code="0x00" title="SIDE SHEET" />
       <div className="p-6">
         <div className="mb-4">
           <h3 className={cn(mode.font, 'mb-1 font-semibold')}>Side Sheet</h3>
@@ -41,7 +41,7 @@ export function SideSheet({ open, onOpenChange }: SideSheetProps) {
           <SheetTrigger asChild>
             <Button variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
               <Menu className="mr-1 h-3 w-3" />
-              &gt; OPEN_DRAWER
+              &gt; OPEN DRAWER
             </Button>
           </SheetTrigger>
           <SheetContent className={cn(mode.radius, 'border-border')}>
@@ -106,14 +106,14 @@ export function SideSheet({ open, onOpenChange }: SideSheetProps) {
                 onClick={() => onOpenChange(false)}
                 className={cn(mode.radius, mode.font, 'text-xs')}
               >
-                &gt; SAVE_CHANGES
+                &gt; SAVE CHANGES
               </Button>
             </SheetFooter>
           </SheetContent>
         </Sheet>
 
         <div className={cn(mode.font, 'text-muted-foreground mt-4 text-xs')}>
-          [USE_CASE]: Settings, detail views, mobile navigation
+          [USE CASE]: Settings, detail views, mobile navigation
         </div>
       </div>
     </Card>

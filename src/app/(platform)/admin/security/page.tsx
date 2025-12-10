@@ -137,7 +137,7 @@ export default function AdminSecurityPage() {
           <Card tone="neutral">
             <CardHeader
               code="0x01"
-              title="TOTAL_EVENTS"
+              title="TOTAL EVENTS"
               meta="7d"
               icon={<Info className="h-4 w-4" />}
             />
@@ -174,7 +174,7 @@ export default function AdminSecurityPage() {
         <div className="border-border flex items-center justify-between border-b px-4 py-2">
           <CardHeader
             code="0x05"
-            title="RECENT_SECURITY_EVENTS"
+            title="RECENT SECURITY EVENTS"
             meta="Last 50 events"
             icon={<Shield className="h-4 w-4" />}
             className="border-0 p-0"

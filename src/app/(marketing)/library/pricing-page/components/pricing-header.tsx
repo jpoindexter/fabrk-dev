@@ -17,7 +17,7 @@ export function PricingHeader({ isYearly, onToggleBilling }: PricingHeaderProps)
   return (
     <div className="space-y-4">
       <TemplatePageHeader
-        badge="PRICING_PAGE"
+        badge="PRICING PAGE"
         title="Simple, Transparent Pricing"
         description="Choose the plan that fits your needs. All plans include a 14-day free trial."
       />

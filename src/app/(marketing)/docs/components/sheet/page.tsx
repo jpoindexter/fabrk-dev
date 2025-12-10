@@ -34,7 +34,7 @@ export default function SheetPage() {
         preview: (
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="outline">&gt; OPEN_SHEET</Button>
+              <Button variant="outline">&gt; OPEN SHEET</Button>
             </SheetTrigger>
             <SheetContent>
               <SheetHeader>
@@ -48,7 +48,7 @@ export default function SheetPage() {
         ),
         code: `<Sheet>
   <SheetTrigger asChild>
-    <Button variant="outline">&gt; OPEN_SHEET</Button>
+    <Button variant="outline">&gt; OPEN SHEET</Button>
   </SheetTrigger>
   <SheetContent>
     <SheetHeader>
@@ -67,7 +67,7 @@ export default function SheetPage() {
           preview: (
             <Sheet>
               <SheetTrigger asChild>
-                <Button>&gt; FROM_RIGHT</Button>
+                <Button>&gt; FROM RIGHT</Button>
               </SheetTrigger>
               <SheetContent side="right">
                 <SheetHeader>
@@ -81,7 +81,7 @@ export default function SheetPage() {
           ),
           code: `<Sheet>
   <SheetTrigger asChild>
-    <Button>&gt; FROM_RIGHT</Button>
+    <Button>&gt; FROM RIGHT</Button>
   </SheetTrigger>
   <SheetContent side="right">
     <SheetHeader>
@@ -96,7 +96,7 @@ export default function SheetPage() {
           preview: (
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="secondary">&gt; FROM_LEFT</Button>
+                <Button variant="secondary">&gt; FROM LEFT</Button>
               </SheetTrigger>
               <SheetContent side="left">
                 <SheetHeader>
@@ -110,7 +110,7 @@ export default function SheetPage() {
           ),
           code: `<Sheet>
   <SheetTrigger asChild>
-    <Button variant="secondary">&gt; FROM_LEFT</Button>
+    <Button variant="secondary">&gt; FROM LEFT</Button>
   </SheetTrigger>
   <SheetContent side="left">
     <SheetHeader>
@@ -125,7 +125,7 @@ export default function SheetPage() {
           preview: (
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="outline">&gt; FROM_TOP</Button>
+                <Button variant="outline">&gt; FROM TOP</Button>
               </SheetTrigger>
               <SheetContent side="top">
                 <SheetHeader>
@@ -139,7 +139,7 @@ export default function SheetPage() {
           ),
           code: `<Sheet>
   <SheetTrigger asChild>
-    <Button variant="outline">&gt; FROM_TOP</Button>
+    <Button variant="outline">&gt; FROM TOP</Button>
   </SheetTrigger>
   <SheetContent side="top">
     <SheetHeader>
@@ -154,7 +154,7 @@ export default function SheetPage() {
           preview: (
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost">&gt; FROM_BOTTOM</Button>
+                <Button variant="ghost">&gt; FROM BOTTOM</Button>
               </SheetTrigger>
               <SheetContent side="bottom">
                 <SheetHeader>
@@ -168,7 +168,7 @@ export default function SheetPage() {
           ),
           code: `<Sheet>
   <SheetTrigger asChild>
-    <Button variant="ghost">&gt; FROM_BOTTOM</Button>
+    <Button variant="ghost">&gt; FROM BOTTOM</Button>
   </SheetTrigger>
   <SheetContent side="bottom">
     <SheetHeader>
@@ -183,7 +183,7 @@ export default function SheetPage() {
           preview: (
             <Sheet>
               <SheetTrigger asChild>
-                <Button>&gt; EDIT_SETTINGS</Button>
+                <Button>&gt; EDIT SETTINGS</Button>
               </SheetTrigger>
               <SheetContent>
                 <SheetHeader>
@@ -207,14 +207,14 @@ export default function SheetPage() {
                   </div>
                 </div>
                 <SheetFooter>
-                  <Button type="submit">&gt; SAVE_CHANGES</Button>
+                  <Button type="submit">&gt; SAVE CHANGES</Button>
                 </SheetFooter>
               </SheetContent>
             </Sheet>
           ),
           code: `<Sheet>
   <SheetTrigger asChild>
-    <Button>&gt; EDIT_SETTINGS</Button>
+    <Button>&gt; EDIT SETTINGS</Button>
   </SheetTrigger>
   <SheetContent>
     <SheetHeader>
@@ -232,7 +232,7 @@ export default function SheetPage() {
       </div>
     </div>
     <SheetFooter>
-      <Button type="submit">&gt; SAVE_CHANGES</Button>
+      <Button type="submit">&gt; SAVE CHANGES</Button>
     </SheetFooter>
   </SheetContent>
 </Sheet>`,

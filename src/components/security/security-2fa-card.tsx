@@ -31,7 +31,7 @@ export function Security2FACard({
 }: Security2FACardProps) {
   return (
     <Card tone={twoFactorEnabled ? 'success' : 'warning'}>
-      <CardHeader code="0x02" title="TWO_FACTOR_AUTH" icon={<Smartphone className="h-4 w-4" />} />
+      <CardHeader code="0x02" title="TWO FACTOR AUTH" icon={<Smartphone className="h-4 w-4" />} />
       <CardContent className="space-y-4">
         <div className="flex items-center justify-between">
           <p className="text-muted-foreground font-mono text-xs">
@@ -62,17 +62,17 @@ export function Security2FACard({
             </div>
             <div className="flex gap-4">
               <Button variant="outline" onClick={onViewBackupCodes}>
-                &gt; VIEW_BACKUP_CODES
+                &gt; VIEW BACKUP CODES
               </Button>
               <Button variant="destructive" onClick={onDisable2FA} disabled={isDisabling2FA}>
-                {isDisabling2FA ? '> DISABLING...' : '> DISABLE_2FA'}
+                {isDisabling2FA ? '> DISABLING...' : '> DISABLE 2FA'}
               </Button>
             </div>
           </div>
         ) : (
           <Button onClick={onEnable2FA} disabled={isEnabling2FA}>
             <Shield className="mr-2 h-4 w-4" />
-            {isEnabling2FA ? '> SETTING_UP...' : '> ENABLE_2FA'}
+            {isEnabling2FA ? '> SETTING UP...' : '> ENABLE 2FA'}
           </Button>
         )}
       </CardContent>

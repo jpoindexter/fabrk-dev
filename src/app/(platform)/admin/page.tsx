@@ -83,7 +83,7 @@ async function AdminStats() {
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
       <Card tone="primary">
-        <CardHeader code="0x01" title="TOTAL_USERS" icon={<Users className="h-4 w-4" />} />
+        <CardHeader code="0x01" title="TOTAL USERS" icon={<Users className="h-4 w-4" />} />
         <CardContent>
           <div className="text-2xl font-semibold">{stats.totalUsers}</div>
           <p className="text-muted-foreground text-xs">+{stats.recentUsers} in last 7 days</p>
@@ -99,7 +99,7 @@ async function AdminStats() {
       </Card>
 
       <Card tone="success">
-        <CardHeader code="0x03" title="ACTIVE_USERS" icon={<Activity className="h-4 w-4" />} />
+        <CardHeader code="0x03" title="ACTIVE USERS" icon={<Activity className="h-4 w-4" />} />
         <CardContent>
           <div className="text-2xl font-semibold">{stats.activeUsers}</div>
           <p className="text-muted-foreground text-xs">With active sessions</p>
@@ -115,7 +115,7 @@ async function AdminStats() {
       </Card>
 
       <Card tone="success">
-        <CardHeader code="0x05" title="TOTAL_REVENUE" icon={<CreditCard className="h-4 w-4" />} />
+        <CardHeader code="0x05" title="TOTAL REVENUE" icon={<CreditCard className="h-4 w-4" />} />
         <CardContent>
           <div className="text-2xl font-semibold">${(stats.totalRevenue / 100).toFixed(2)}</div>
           <p className="text-muted-foreground text-xs">{stats.totalPayments} payments</p>
@@ -154,7 +154,7 @@ export default function AdminPage() {
         <Card tone="neutral">
           <CardHeader
             code="0x06"
-            title="QUICK_ACTIONS"
+            title="QUICK ACTIONS"
             meta="Common tasks"
             icon={<Zap className="h-4 w-4" />}
           />
@@ -189,7 +189,7 @@ export default function AdminPage() {
         <Card tone="success">
           <CardHeader
             code="0x07"
-            title="SYSTEM_HEALTH"
+            title="SYSTEM HEALTH"
             meta="Status & Performance"
             icon={<Activity className="h-4 w-4" />}
           />

@@ -34,10 +34,10 @@ function NavigationDemo() {
           </Link>
           <div className="bg-border h-4 w-px" />
           <Button variant="outline" size="sm" className="font-mono text-xs">
-            &gt; VIEW_DEMO
+            &gt; VIEW DEMO
           </Button>
           <Button size="sm" className="font-mono text-xs">
-            &gt; GET_STARTED
+            &gt; GET STARTED
           </Button>
         </div>
 
@@ -101,7 +101,7 @@ export default function LandingPage() {
           description: 'Sheet-based mobile navigation',
           preview: (
             <div className="border-border bg-card w-full border p-4">
-              <div className="text-muted-foreground mb-4 font-mono text-xs">[SYSTEM_MENU]</div>
+              <div className="text-muted-foreground mb-4 font-mono text-xs">[SYSTEM MENU]</div>
               <div className="flex flex-col gap-4">
                 <span className="text-muted-foreground font-mono text-xs">[NAVIGATE]:</span>
                 <Link href="#" className="text-foreground hover:text-primary font-mono text-sm">
@@ -117,7 +117,7 @@ export default function LandingPage() {
                   &gt; FAQ
                 </Link>
                 <div className="border-border border-t pt-4">
-                  <Button className="w-full font-mono text-xs">&gt; GET_STARTED</Button>
+                  <Button className="w-full font-mono text-xs">&gt; GET STARTED</Button>
                 </div>
               </div>
             </div>

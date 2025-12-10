@@ -22,7 +22,7 @@ export default function SwitchPage() {
         ),
         code: `<div className="flex items-center gap-2">
   <Switch id="notifications" />
-  <Label htmlFor="notifications">[ENABLE_NOTIFICATIONS]:</Label>
+  <Label htmlFor="notifications">[ENABLE NOTIFICATIONS]:</Label>
 </div>`,
       }}
       variants={[
@@ -49,7 +49,7 @@ export default function SwitchPage() {
           ),
           code: `<div className="flex items-center gap-2">
   <Switch id="dark-mode" />
-  <Label htmlFor="dark-mode">[DARK_MODE]:</Label>
+  <Label htmlFor="dark-mode">[DARK MODE]:</Label>
 </div>`,
         },
         {
@@ -85,15 +85,15 @@ export default function SwitchPage() {
           ),
           code: `<div className="grid gap-4">
   <div className="flex items-center justify-between">
-    <Label htmlFor="emails">[EMAIL_NOTIFICATIONS]:</Label>
+    <Label htmlFor="emails">[EMAIL NOTIFICATIONS]:</Label>
     <Switch id="emails" defaultChecked />
   </div>
   <div className="flex items-center justify-between">
-    <Label htmlFor="push">[PUSH_NOTIFICATIONS]:</Label>
+    <Label htmlFor="push">[PUSH NOTIFICATIONS]:</Label>
     <Switch id="push" />
   </div>
   <div className="flex items-center justify-between">
-    <Label htmlFor="sms">[SMS_NOTIFICATIONS]:</Label>
+    <Label htmlFor="sms">[SMS NOTIFICATIONS]:</Label>
     <Switch id="sms" disabled />
   </div>
 </div>`,

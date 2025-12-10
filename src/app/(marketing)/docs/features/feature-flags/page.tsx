@@ -13,7 +13,7 @@ export default function FeatureFlagsPage() {
     <FeatureGuideTemplate
       code="[0x70]"
       category="Features"
-      title="Feature_Flags"
+      title="Feature Flags"
       description="Control feature visibility with toggles, percentage rollouts, and user targeting for safe deployments."
       overview="Feature flags allow you to control feature visibility without deploying new code. Use them for gradual rollouts, A/B testing, user targeting, and kill switches."
       features={[
@@ -351,7 +351,7 @@ export async function POST(
     >
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
-        <DocsCard title="BEST_PRACTICES">
+        <DocsCard title="BEST PRACTICES">
           <ul className="space-y-1">
             <li>
               ├─ <strong>Use descriptive keys:</strong>{' '}

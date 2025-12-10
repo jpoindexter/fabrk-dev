@@ -279,11 +279,11 @@ export default function NotificationBadgePage() {
           description: 'Fine-tune badge position with custom offset',
           preview: (
             <NotificationBadge count={5} offset={{ x: 5, y: -5 }}>
-              <Button variant="outline">&gt; CUSTOM_POSITION</Button>
+              <Button variant="outline">&gt; CUSTOM POSITION</Button>
             </NotificationBadge>
           ),
           code: `<NotificationBadge count={5} offset={{ x: 5, y: -5 }}>
-  <Button variant="outline">&gt; CUSTOM_POSITION</Button>
+  <Button variant="outline">&gt; CUSTOM POSITION</Button>
 </NotificationBadge>`,
         },
       ]}

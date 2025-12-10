@@ -13,7 +13,7 @@ export default function EmailsPage() {
     <FeatureGuideTemplate
       code="[0x40]"
       category="Features"
-      title="Email_With_Resend"
+      title="Email With Resend"
       description="Production-ready email system with React Email templates, queue-based sending, and beautiful transactional emails."
       overview="Fabrk uses Resend for email delivery with lightweight HTML templates. The system supports lightweight HTML templates for maximum performance, dual-mode sending (immediate for auth emails, queued for bulk), pre-built templates for common emails, zero-dependency template system, and automatic retry and error handling."
       features={[
@@ -189,7 +189,7 @@ await resend.batch.send(emails);`,
     >
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
-        <DocsCard title="BEST_PRACTICES">
+        <DocsCard title="BEST PRACTICES">
           <ul className="space-y-1">
             <li>├─ Use direct send for auth emails, queue for everything else</li>
             <li>├─ Always include unsubscribe links for marketing emails</li>

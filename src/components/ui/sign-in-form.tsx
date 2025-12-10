@@ -194,7 +194,7 @@ export function SignInForm({
               SIGNING_IN...
             </>
           ) : (
-            '&gt; SIGN_IN'
+            '&gt; SIGN IN'
           )}
         </Button>
       </form>
@@ -413,7 +413,7 @@ export function SignUpForm({
               CREATING_ACCOUNT...
             </>
           ) : (
-            '&gt; CREATE_ACCOUNT'
+            '&gt; CREATE ACCOUNT'
           )}
         </Button>
       </form>

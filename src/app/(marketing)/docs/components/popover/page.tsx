@@ -20,7 +20,7 @@ export default function PopoverPage() {
         preview: (
           <Popover>
             <PopoverTrigger asChild>
-              <Button variant="outline">&gt; OPEN_POPOVER</Button>
+              <Button variant="outline">&gt; OPEN POPOVER</Button>
             </PopoverTrigger>
             <PopoverContent>
               <div className="space-y-2">
@@ -32,7 +32,7 @@ export default function PopoverPage() {
         ),
         code: `<Popover>
   <PopoverTrigger asChild>
-    <Button variant="outline">&gt; OPEN_POPOVER</Button>
+    <Button variant="outline">&gt; OPEN POPOVER</Button>
   </PopoverTrigger>
   <PopoverContent>
     <div className="space-y-2">
@@ -102,7 +102,7 @@ export default function PopoverPage() {
           preview: (
             <Popover>
               <PopoverTrigger asChild>
-                <Button variant="outline">&gt; ALIGN_START</Button>
+                <Button variant="outline">&gt; ALIGN START</Button>
               </PopoverTrigger>
               <PopoverContent align="start">
                 <div className="space-y-2">
@@ -116,7 +116,7 @@ export default function PopoverPage() {
           ),
           code: `<Popover>
   <PopoverTrigger asChild>
-    <Button variant="outline">&gt; ALIGN_START</Button>
+    <Button variant="outline">&gt; ALIGN START</Button>
   </PopoverTrigger>
   <PopoverContent align="start">
     <div className="space-y-2">
@@ -132,7 +132,7 @@ export default function PopoverPage() {
           preview: (
             <Popover>
               <PopoverTrigger asChild>
-                <Button variant="secondary">&gt; ALIGN_END</Button>
+                <Button variant="secondary">&gt; ALIGN END</Button>
               </PopoverTrigger>
               <PopoverContent align="end">
                 <div className="space-y-2">
@@ -146,7 +146,7 @@ export default function PopoverPage() {
           ),
           code: `<Popover>
   <PopoverTrigger asChild>
-    <Button variant="secondary">&gt; ALIGN_END</Button>
+    <Button variant="secondary">&gt; ALIGN END</Button>
   </PopoverTrigger>
   <PopoverContent align="end">
     <div className="space-y-2">
@@ -196,7 +196,7 @@ export default function PopoverPage() {
           preview: (
             <Popover>
               <PopoverTrigger asChild>
-                <Button variant="outline">&gt; WIDE_POPOVER</Button>
+                <Button variant="outline">&gt; WIDE POPOVER</Button>
               </PopoverTrigger>
               <PopoverContent className="w-96">
                 <div className="space-y-2">
@@ -211,7 +211,7 @@ export default function PopoverPage() {
           ),
           code: `<Popover>
   <PopoverTrigger asChild>
-    <Button variant="outline">&gt; WIDE_POPOVER</Button>
+    <Button variant="outline">&gt; WIDE POPOVER</Button>
   </PopoverTrigger>
   <PopoverContent className="w-96">
     <div className="space-y-2">

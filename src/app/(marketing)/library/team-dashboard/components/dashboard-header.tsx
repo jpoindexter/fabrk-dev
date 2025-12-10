@@ -13,13 +13,13 @@ export function DashboardHeader() {
   return (
     <div className="flex items-center justify-between">
       <TemplatePageHeader
-        badge="TEAM_DASHBOARD"
+        badge="TEAM DASHBOARD"
         title="Team Dashboard"
         description="Manage team members, roles, and permissions"
       />
       <Button className={cn(mode.radius, mode.font, 'text-xs')}>
         <Settings className="mr-2 h-4 w-4" />
-        &gt; ORG_SETTINGS
+        &gt; ORG SETTINGS
       </Button>
     </div>
   );

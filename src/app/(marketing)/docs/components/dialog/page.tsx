@@ -35,7 +35,7 @@ export default function DialogPage() {
         preview: (
           <Dialog>
             <DialogTrigger asChild>
-              <Button variant="outline">&gt; OPEN_DIALOG</Button>
+              <Button variant="outline">&gt; OPEN DIALOG</Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
@@ -49,7 +49,7 @@ export default function DialogPage() {
         ),
         code: `<Dialog>
   <DialogTrigger asChild>
-    <Button variant="outline">&gt; OPEN_DIALOG</Button>
+    <Button variant="outline">&gt; OPEN DIALOG</Button>
   </DialogTrigger>
   <DialogContent>
     <DialogHeader>
@@ -68,7 +68,7 @@ export default function DialogPage() {
           preview: (
             <Dialog>
               <DialogTrigger asChild>
-                <Button>&gt; EDIT_PROFILE</Button>
+                <Button>&gt; EDIT PROFILE</Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
@@ -92,14 +92,14 @@ export default function DialogPage() {
                   </div>
                 </div>
                 <DialogFooter>
-                  <Button type="submit">&gt; SAVE_CHANGES</Button>
+                  <Button type="submit">&gt; SAVE CHANGES</Button>
                 </DialogFooter>
               </DialogContent>
             </Dialog>
           ),
           code: `<Dialog>
   <DialogTrigger asChild>
-    <Button>&gt; EDIT_PROFILE</Button>
+    <Button>&gt; EDIT PROFILE</Button>
   </DialogTrigger>
   <DialogContent>
     <DialogHeader>
@@ -123,7 +123,7 @@ export default function DialogPage() {
       </div>
     </div>
     <DialogFooter>
-      <Button type="submit">&gt; SAVE_CHANGES</Button>
+      <Button type="submit">&gt; SAVE CHANGES</Button>
     </DialogFooter>
   </DialogContent>
 </Dialog>`,
@@ -134,7 +134,7 @@ export default function DialogPage() {
           preview: (
             <Dialog>
               <DialogTrigger asChild>
-                <Button variant="destructive">&gt; DELETE_ACCOUNT</Button>
+                <Button variant="destructive">&gt; DELETE ACCOUNT</Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
@@ -146,14 +146,14 @@ export default function DialogPage() {
                 </DialogHeader>
                 <DialogFooter>
                   <Button variant="outline">&gt; CANCEL</Button>
-                  <Button variant="destructive">&gt; DELETE_ACCOUNT</Button>
+                  <Button variant="destructive">&gt; DELETE ACCOUNT</Button>
                 </DialogFooter>
               </DialogContent>
             </Dialog>
           ),
           code: `<Dialog>
   <DialogTrigger asChild>
-    <Button variant="destructive">&gt; DELETE_ACCOUNT</Button>
+    <Button variant="destructive">&gt; DELETE ACCOUNT</Button>
   </DialogTrigger>
   <DialogContent>
     <DialogHeader>
@@ -164,7 +164,7 @@ export default function DialogPage() {
     </DialogHeader>
     <DialogFooter>
       <Button variant="outline">&gt; CANCEL</Button>
-      <Button variant="destructive">&gt; DELETE_ACCOUNT</Button>
+      <Button variant="destructive">&gt; DELETE ACCOUNT</Button>
     </DialogFooter>
   </DialogContent>
 </Dialog>`,
@@ -175,7 +175,7 @@ export default function DialogPage() {
           preview: (
             <Dialog>
               <DialogTrigger asChild>
-                <Button variant="outline">&gt; WIDE_DIALOG</Button>
+                <Button variant="outline">&gt; WIDE DIALOG</Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[600px]">
                 <DialogHeader>
@@ -189,7 +189,7 @@ export default function DialogPage() {
           ),
           code: `<Dialog>
   <DialogTrigger asChild>
-    <Button variant="outline">&gt; WIDE_DIALOG</Button>
+    <Button variant="outline">&gt; WIDE DIALOG</Button>
   </DialogTrigger>
   <DialogContent className="sm:max-w-[600px]">
     <DialogHeader>
@@ -207,7 +207,7 @@ export default function DialogPage() {
           preview: (
             <Dialog>
               <DialogTrigger asChild>
-                <Button variant="secondary">&gt; CONTROLLED_DIALOG</Button>
+                <Button variant="secondary">&gt; CONTROLLED DIALOG</Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
@@ -239,7 +239,7 @@ export default function DialogPage() {
           preview: (
             <Dialog>
               <DialogTrigger asChild>
-                <Button variant="ghost">&gt; SIMPLE_DIALOG</Button>
+                <Button variant="ghost">&gt; SIMPLE DIALOG</Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
@@ -255,7 +255,7 @@ export default function DialogPage() {
           ),
           code: `<Dialog>
   <DialogTrigger asChild>
-    <Button variant="ghost">&gt; SIMPLE_DIALOG</Button>
+    <Button variant="ghost">&gt; SIMPLE DIALOG</Button>
   </DialogTrigger>
   <DialogContent>
     <DialogHeader>

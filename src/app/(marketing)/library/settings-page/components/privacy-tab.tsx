@@ -43,7 +43,7 @@ export function PrivacyTab() {
         <div className="p-4">
           <SectionHeader
             icon={Download}
-            title="DATA_EXPORT"
+            title="DATA EXPORT"
             description="Download a copy of your data"
           />
           <DataExportSection />

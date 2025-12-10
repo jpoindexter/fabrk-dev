@@ -11,13 +11,13 @@ function HeroDemo() {
         {/* Left Column */}
         <div>
           <span className="border-border bg-card mb-4 inline-block border px-4 py-1">
-            [ [0x00] SYSTEM_INIT ] SAAS_BOILERPLATE_v2.0
+            [ [0x00] SYSTEM INIT ] SAAS BOILERPLATE v2.0
           </span>
-          <h1 className="mb-2">FABRK_INIT:</h1>
+          <h1 className="mb-2">FABRK INIT:</h1>
           <h2 className="mb-4 font-mono text-xl font-semibold">
             BUILDING_YOUR_SAAS
             <br />
-            <span className="text-primary">JUST_GOT_UNFAIRLY_EASY.</span>
+            <span className="text-primary">JUST GOT UNFAIRLY EASY.</span>
           </h2>
           <div className="border-border bg-card mb-6 border p-4">
             <div className="mb-2">[ [0x01] STATUS ]</div>
@@ -34,9 +34,9 @@ function HeroDemo() {
             </div>
           </div>
           <div className="flex gap-4">
-            <Button className="font-mono text-xs">&gt; GET_FABRK</Button>
+            <Button className="font-mono text-xs">&gt; GET FABRK</Button>
             <Button variant="outline" className="font-mono text-xs">
-              &gt; VIEW_DEMO
+              &gt; VIEW DEMO
             </Button>
           </div>
         </div>
@@ -82,7 +82,7 @@ function HeroSplitDemo() {
           <p className="mb-6">
             Production-ready Next.js boilerplate with auth, payments, and more.
           </p>
-          <Button className="font-mono text-xs">&gt; GET_STARTED</Button>
+          <Button className="font-mono text-xs">&gt; GET STARTED</Button>
         </div>
         <div className="border-border bg-muted/30 border-t p-6 lg:border-t-0 lg:border-l">
           <div>
@@ -125,7 +125,7 @@ export default function LandingPage() {
 <HeroSplit
   title="Ship faster with Fabrk"
   description="Production-ready Next.js boilerplate"
-  cta={{ label: "> GET_STARTED", href: "#pricing" }}
+  cta={{ label: "> GET STARTED", href: "#pricing" }}
 />`,
         },
         {

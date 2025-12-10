@@ -12,7 +12,7 @@ function PricingDemo() {
       price: '$0',
       period: '/month',
       features: ['5 Projects', 'Basic Support', '1GB Storage'],
-      cta: 'GET_STARTED',
+      cta: 'GET STARTED',
       popular: false,
     },
     {
@@ -20,7 +20,7 @@ function PricingDemo() {
       price: '$29',
       period: '/month',
       features: ['Unlimited Projects', 'Priority Support', '100GB Storage', 'API Access'],
-      cta: 'UPGRADE_NOW',
+      cta: 'UPGRADE NOW',
       popular: true,
     },
     {
@@ -28,7 +28,7 @@ function PricingDemo() {
       price: 'Custom',
       period: '',
       features: ['Custom Solutions', '24/7 Support', 'Unlimited Storage', 'SLA'],
-      cta: 'CONTACT_SALES',
+      cta: 'CONTACT SALES',
       popular: false,
     },
   ];
@@ -37,9 +37,9 @@ function PricingDemo() {
     <section className="border-border bg-background w-full border p-6">
       <div className="mb-6 text-center">
         <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 font-mono text-xs">
-          [ [0x30] PRICING ] SELECT_PLAN
+          [ [0x30] PRICING ] SELECT PLAN
         </span>
-        <h2 className="mt-4 font-mono text-xl font-semibold">CHOOSE_YOUR_PLAN</h2>
+        <h2 className="mt-4 font-mono text-xl font-semibold">CHOOSE YOUR PLAN</h2>
       </div>
       <div className="grid gap-4 md:grid-cols-3">
         {plans.map((plan) => (
@@ -110,7 +110,7 @@ function PricingCardDemo() {
           Unlimited projects
         </li>
       </ul>
-      <Button className="w-full font-mono text-xs">&gt; GET_ACCESS</Button>
+      <Button className="w-full font-mono text-xs">&gt; GET ACCESS</Button>
     </div>
   );
 }
@@ -152,7 +152,7 @@ export default function LandingPage() {
       <li><Check /> Full source code</li>
       <li><Check /> Lifetime updates</li>
     </ul>
-    <Button className="w-full">&gt; GET_ACCESS</Button>
+    <Button className="w-full">&gt; GET ACCESS</Button>
   </CardContent>
 </Card>`,
         },

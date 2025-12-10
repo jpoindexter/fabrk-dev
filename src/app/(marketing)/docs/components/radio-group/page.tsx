@@ -44,11 +44,11 @@ export default function RadioGroupPage() {
         code: `<RadioGroup value={value} onValueChange={setValue}>
   <div className="flex items-center space-x-2">
     <RadioGroupItem value="option1" id="r1" />
-    <Label htmlFor="r1">[DEFAULT_OPTION]:</Label>
+    <Label htmlFor="r1">[DEFAULT OPTION]:</Label>
   </div>
   <div className="flex items-center space-x-2">
     <RadioGroupItem value="option2" id="r2" />
-    <Label htmlFor="r2">[ALTERNATIVE_OPTION]:</Label>
+    <Label htmlFor="r2">[ALTERNATIVE OPTION]:</Label>
   </div>
 </RadioGroup>`,
       }}
@@ -138,7 +138,7 @@ export default function RadioGroupPage() {
   <div className="flex items-start space-x-2">
     <RadioGroupItem value="card" id="d1" className="mt-1" />
     <div className="space-y-1">
-      <Label htmlFor="d1">[CARD_PAYMENT]:</Label>
+      <Label htmlFor="d1">[CARD PAYMENT]:</Label>
       <p className="text-sm text-muted-foreground">
         Pay with credit or debit card
       </p>
@@ -175,11 +175,11 @@ export default function RadioGroupPage() {
           code: `<RadioGroup defaultValue="enabled">
   <div className="flex items-center space-x-2">
     <RadioGroupItem value="enabled" id="e1" />
-    <Label htmlFor="e1">[ENABLED_OPTION]:</Label>
+    <Label htmlFor="e1">[ENABLED OPTION]:</Label>
   </div>
   <div className="flex items-center space-x-2">
     <RadioGroupItem value="disabled" id="e2" disabled />
-    <Label htmlFor="e2">[DISABLED_OPTION]:</Label>
+    <Label htmlFor="e2">[DISABLED OPTION]:</Label>
   </div>
 </RadioGroup>`,
         },
@@ -188,24 +188,24 @@ export default function RadioGroupPage() {
           description: 'Radio group with terminal-themed styling',
           preview: (
             <div className="space-y-2">
-              <div className="text-muted-foreground font-mono text-xs">[SELECT_OPTION]:</div>
+              <div className="text-muted-foreground font-mono text-xs">[SELECT OPTION]:</div>
               <RadioGroup defaultValue="option1">
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="option1" id="t1" />
                   <Label htmlFor="t1" className="font-mono text-xs">
-                    &gt; INITIALIZE_PROJECT
+                    &gt; INITIALIZE PROJECT
                   </Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="option2" id="t2" />
                   <Label htmlFor="t2" className="font-mono text-xs">
-                    &gt; RUN_DIAGNOSTICS
+                    &gt; RUN DIAGNOSTICS
                   </Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="option3" id="t3" />
                   <Label htmlFor="t3" className="font-mono text-xs">
-                    &gt; DEPLOY_BUILD
+                    &gt; DEPLOY BUILD
                   </Label>
                 </div>
               </RadioGroup>
@@ -213,13 +213,13 @@ export default function RadioGroupPage() {
           ),
           code: `<div className="space-y-2">
   <div className="font-mono text-xs text-muted-foreground">
-    [SELECT_OPTION]:
+    [SELECT OPTION]:
   </div>
   <RadioGroup defaultValue="option1">
     <div className="flex items-center space-x-2">
       <RadioGroupItem value="option1" id="t1" />
       <Label htmlFor="t1" className="font-mono text-xs">
-        &gt; INITIALIZE_PROJECT
+        &gt; INITIALIZE PROJECT
       </Label>
     </div>
     {/* More items... */}

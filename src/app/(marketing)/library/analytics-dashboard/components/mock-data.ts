@@ -12,7 +12,7 @@ import type { PageData, TrafficSource, DeviceData } from './analytics-tabs';
 export const metrics: MetricData[] = [
   {
     id: 'revenue',
-    title: 'TOTAL_REVENUE',
+    title: 'TOTAL REVENUE',
     value: '$45,231.89',
     change: '+20.1%',
     trend: 'up',
@@ -21,7 +21,7 @@ export const metrics: MetricData[] = [
   },
   {
     id: 'users',
-    title: 'ACTIVE_USERS',
+    title: 'ACTIVE USERS',
     value: '2,350',
     change: '+15.3%',
     trend: 'up',
@@ -39,7 +39,7 @@ export const metrics: MetricData[] = [
   },
   {
     id: 'growth',
-    title: 'GROWTH_RATE',
+    title: 'GROWTH RATE',
     value: '+28%',
     change: '+8.2%',
     trend: 'up',

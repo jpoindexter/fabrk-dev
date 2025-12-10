@@ -13,7 +13,7 @@ export default function EmailTemplatesTutorialPage() {
     <FeatureGuideTemplate
       code="[0x40]"
       category="Tutorials"
-      title="Email_Templates"
+      title="Email Templates"
       description="Create and send beautiful transactional emails with Resend and lightweight HTML templates."
       overview="Resend API integration for reliable email delivery, lightweight HTML templates for maximum performance, direct sending for immediate emails (auth), queue system for background sending (notifications), and pre-built templates (welcome, verification, reset)."
       features={[
@@ -200,7 +200,7 @@ await sendOrganizationInvite("newmember@example.com", {
     >
       {/* Email Types */}
       <DocsSection title="Email Types">
-        <DocsCard title="EMAIL_TYPES">
+        <DocsCard title="EMAIL TYPES">
           <p className="mb-4">The queue system supports these email types for categorization:</p>
           <div className="space-y-1">
             <div>
@@ -224,7 +224,7 @@ await sendOrganizationInvite("newmember@example.com", {
 
       {/* Best Practices */}
       <DocsSection title="Best Practices">
-        <DocsCard title="BEST_PRACTICES">
+        <DocsCard title="BEST PRACTICES">
           <div className="space-y-1">
             <div>
               ├─ <strong>Use direct sending</strong> for time-sensitive emails (auth, password

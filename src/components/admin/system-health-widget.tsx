@@ -92,7 +92,7 @@ export function SystemHealthWidget({
       <div className="border-border flex items-center justify-between border-b px-4 py-2">
         <CardHeader
           code={code}
-          title="SYSTEM_HEALTH"
+          title="SYSTEM HEALTH"
           meta={`Updated: ${lastUpdated.toLocaleTimeString()}`}
           icon={<Activity className="h-4 w-4" />}
           className="border-0 p-0"

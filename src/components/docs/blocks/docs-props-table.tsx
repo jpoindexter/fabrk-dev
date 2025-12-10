@@ -32,7 +32,7 @@ export function DocsPropsTable({ props }: DocsPropsTableProps) {
     <div className={cn('border-border bg-card overflow-hidden border', mode.radius)}>
       {/* Terminal Header */}
       <div className="border-border bg-card border-b px-4 py-2">
-        <span className="text-muted-foreground font-mono text-xs">[ [0x00] API_REFERENCE ]</span>
+        <span className="text-muted-foreground font-mono text-xs">[ [0x00] API REFERENCE ]</span>
       </div>
       <Table>
         <TableHeader>

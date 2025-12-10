@@ -23,7 +23,7 @@ import { cn } from '@/lib/utils';
 export function ConfirmationDialog() {
   return (
     <Card>
-      <CardHeader code="0x00" title="CONFIRMATION_DIALOG" />
+      <CardHeader code="0x00" title="CONFIRMATION DIALOG" />
       <div className="p-6">
         <div className="mb-4">
           <h3 className={cn(mode.font, 'mb-1 font-semibold')}>Confirmation Dialog</h3>
@@ -36,7 +36,7 @@ export function ConfirmationDialog() {
           <AlertDialogTrigger asChild>
             <Button variant="destructive" className={cn(mode.radius, mode.font, 'text-xs')}>
               <Trash2 className="mr-1 h-3 w-3" />
-              &gt; DELETE_ITEM
+              &gt; DELETE ITEM
             </Button>
           </AlertDialogTrigger>
           <AlertDialogContent className={cn(mode.radius, 'border-border')}>
@@ -46,7 +46,7 @@ export function ConfirmationDialog() {
                   <AlertTriangle className="text-destructive h-5 w-5" />
                 </div>
               </div>
-              <AlertDialogTitle className={cn(mode.font)}>[CONFIRM_DELETE]</AlertDialogTitle>
+              <AlertDialogTitle className={cn(mode.font)}>[CONFIRM DELETE]</AlertDialogTitle>
               <AlertDialogDescription className={cn(mode.font, 'text-sm')}>
                 This action cannot be undone. This will permanently delete the item and remove all
                 associated data from our servers.
@@ -70,7 +70,7 @@ export function ConfirmationDialog() {
         </AlertDialog>
 
         <div className={cn(mode.font, 'text-muted-foreground mt-4 text-xs')}>
-          [USE_CASE]: Delete, logout, reset, irreversible actions
+          [USE CASE]: Delete, logout, reset, irreversible actions
         </div>
       </div>
     </Card>

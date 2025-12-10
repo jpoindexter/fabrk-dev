@@ -48,7 +48,7 @@ export default function WelcomeEmail() {
       {/* CTA */}
       <div className="mb-6">
         <Button className={cn(mode.radius, mode.font, "w-full text-xs")}>
-          &gt; GET_STARTED
+          &gt; GET STARTED
         </Button>
       </div>
 
@@ -62,7 +62,7 @@ export default function WelcomeEmail() {
 
 const tabs = emailTemplates.map((template) => ({
   id: template.id,
-  label: template.name.toUpperCase().replace(/ /g, '_'),
+  label: template.name.toUpperCase(),
   icon: template.icon,
 }));
 
@@ -75,7 +75,7 @@ function EmailTemplatesPreview() {
         {/* Email Tabs */}
         <StyledTabs
           code="0x00"
-          title="EMAIL_TABS"
+          title="EMAIL TABS"
           tabs={tabs}
           value={activeTab}
           onValueChange={setActiveTab}
@@ -122,7 +122,7 @@ function EmailTemplatesPreview() {
                     )}
                   >
                     <div>
-                      <div className="text-muted-foreground mb-2">[TRIGGER_EVENTS]:</div>
+                      <div className="text-muted-foreground mb-2">[TRIGGER EVENTS]:</div>
                       <div className="flex flex-wrap gap-2">
                         {template.triggers.map((trigger, idx) => (
                           <span key={idx} className="border-border bg-muted/30 border px-2 py-1">
@@ -162,7 +162,7 @@ export default function EmailTemplatesShowcase() {
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
         {/* Header */}
         <TemplatePageHeader
-          badge="EMAIL_TEMPLATES"
+          badge="EMAIL TEMPLATES"
           title="Email Templates"
           description="5 production-ready transactional email templates with HTML and text versions"
         />
@@ -171,7 +171,7 @@ export default function EmailTemplatesShowcase() {
         <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
           {/* Tab Navigation Card */}
           <Card>
-            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
@@ -206,7 +206,7 @@ export default function EmailTemplatesShowcase() {
           {/* Preview Tab Content */}
           <TabsContent value="preview" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <CardHeader code="0x01" title="LIVE PREVIEW" />
               <EmailTemplatesPreview />
             </Card>
           </TabsContent>
@@ -214,7 +214,7 @@ export default function EmailTemplatesShowcase() {
           {/* Code Tab Content */}
           <TabsContent value="code" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <CardHeader code="0x01" title="SOURCE CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
@@ -224,7 +224,7 @@ export default function EmailTemplatesShowcase() {
 
         {/* File Structure */}
         <Card>
-          <CardHeader code="0x02" title="FILE_STRUCTURE" />
+          <CardHeader code="0x02" title="FILE STRUCTURE" />
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>

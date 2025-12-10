@@ -109,7 +109,7 @@ export default function SignUpPage() {
           </div>
 
           <Button className={cn(mode.radius, mode.font, "w-full text-xs")} type="submit">
-            &gt; CREATE_ACCOUNT
+            &gt; CREATE ACCOUNT
           </Button>
         </form>
 
@@ -253,7 +253,7 @@ function SignUpPreview() {
             </div>
 
             <Button className={cn(mode.radius, mode.font, 'w-full text-xs')} type="submit">
-              &gt; CREATE_ACCOUNT
+              &gt; CREATE ACCOUNT
             </Button>
           </form>
 
@@ -317,7 +317,7 @@ export default function SignUpTemplate() {
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
         {/* Header */}
         <TemplatePageHeader
-          badge="SIGN_UP"
+          badge="SIGN UP"
           title="Sign Up"
           description="Registration page with form validation and social providers"
         />
@@ -326,7 +326,7 @@ export default function SignUpTemplate() {
         <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
           {/* Tab Navigation Card */}
           <Card>
-            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
@@ -361,7 +361,7 @@ export default function SignUpTemplate() {
           {/* Preview Tab Content */}
           <TabsContent value="preview" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <CardHeader code="0x01" title="LIVE PREVIEW" />
               <SignUpPreview />
             </Card>
           </TabsContent>
@@ -369,7 +369,7 @@ export default function SignUpTemplate() {
           {/* Code Tab Content */}
           <TabsContent value="code" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <CardHeader code="0x01" title="SOURCE CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
@@ -379,7 +379,7 @@ export default function SignUpTemplate() {
 
         {/* File Structure */}
         <Card>
-          <CardHeader code="0x02" title="FILE_STRUCTURE" />
+          <CardHeader code="0x02" title="FILE STRUCTURE" />
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>

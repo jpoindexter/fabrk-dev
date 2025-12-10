@@ -56,7 +56,7 @@ export default function ErrorPage() {
         "LOGGED: true",
         "TIMESTAMP: 2024-11-12T14:23:45Z",
       ],
-      actions: ["TRY_AGAIN", "GO_HOME"],
+      actions: ["TRY AGAIN", "GO HOME"],
     },
     "404": {
       code: "404",
@@ -73,7 +73,7 @@ export default function ErrorPage() {
         "PATH: /unknown-page",
         "TIMESTAMP: 2024-11-12T14:23:45Z",
       ],
-      actions: ["GO_HOME", "GO_BACK"],
+      actions: ["GO HOME", "GO BACK"],
     },
     "500": {
       code: "500",
@@ -90,7 +90,7 @@ export default function ErrorPage() {
         "TRACE: DatabaseConnectionError",
         "TIMESTAMP: 2024-11-12T14:23:45Z",
       ],
-      actions: ["TRY_AGAIN", "GO_HOME"],
+      actions: ["TRY AGAIN", "GO HOME"],
     },
     "503": {
       code: "503",
@@ -107,7 +107,7 @@ export default function ErrorPage() {
         "ESTIMATED_END: 2024-11-12T14:30:00Z",
         "STATUS: IN_PROGRESS",
       ],
-      actions: ["REFRESH", "STATUS_PAGE"],
+      actions: ["REFRESH", "STATUS PAGE"],
     },
   };
 
@@ -180,25 +180,25 @@ export default function ErrorPage() {
 
         {/* Actions */}
         <div className="flex items-center justify-center gap-4">
-          {error.actions.includes("GO_HOME") && (
+          {error.actions.includes("GO HOME") && (
             <Button className={cn(mode.radius, mode.font, "text-xs")}>
               <Home className="mr-1 h-3 w-3" />
-              &gt; GO_HOME
+              &gt; GO HOME
             </Button>
           )}
-          {error.actions.includes("GO_BACK") && (
+          {error.actions.includes("GO BACK") && (
             <Button
               variant="outline"
               className={cn(mode.radius, mode.font, "text-xs")}
             >
               <ArrowLeft className="mr-1 h-3 w-3" />
-              &gt; GO_BACK
+              &gt; GO BACK
             </Button>
           )}
-          {error.actions.includes("TRY_AGAIN") && (
+          {error.actions.includes("TRY AGAIN") && (
             <Button className={cn(mode.radius, mode.font, "text-xs")}>
               <RefreshCw className="mr-1 h-3 w-3" />
-              &gt; TRY_AGAIN
+              &gt; TRY AGAIN
             </Button>
           )}
           {error.actions.includes("REFRESH") && (
@@ -207,20 +207,20 @@ export default function ErrorPage() {
               &gt; REFRESH
             </Button>
           )}
-          {error.actions.includes("STATUS_PAGE") && (
+          {error.actions.includes("STATUS PAGE") && (
             <Button
               variant="outline"
               className={cn(mode.radius, mode.font, "text-xs")}
             >
               <AlertTriangle className="mr-1 h-3 w-3" />
-              &gt; STATUS_PAGE
+              &gt; STATUS PAGE
             </Button>
           )}
         </div>
 
         {/* Request ID */}
         <div className={cn(mode.font, "text-muted-foreground text-xs")}>
-          [REQUEST_ID]: req_abc123def456
+          [REQUEST ID]: req_abc123def456
         </div>
       </div>
     </div>
@@ -297,17 +297,17 @@ function ErrorPagesPreview() {
         <div className="flex items-center justify-center gap-4">
           <Button className={cn(mode.radius, mode.font, 'text-xs')}>
             <Home className="mr-1 h-3 w-3" />
-            &gt; GO_HOME
+            &gt; GO HOME
           </Button>
           <Button variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
             <ArrowLeft className="mr-1 h-3 w-3" />
-            &gt; GO_BACK
+            &gt; GO BACK
           </Button>
         </div>
 
         {/* Request ID */}
         <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-          [REQUEST_ID]: req_abc123def456
+          [REQUEST ID]: req_abc123def456
         </div>
       </div>
     </div>
@@ -320,7 +320,7 @@ export default function ErrorPagesTemplate() {
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
         {/* Header */}
         <TemplatePageHeader
-          badge="ERROR_PAGES"
+          badge="ERROR PAGES"
           title="Error Pages"
           description="Terminal-styled error pages for generic errors, 404, 500, and maintenance states"
         />
@@ -329,7 +329,7 @@ export default function ErrorPagesTemplate() {
         <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
           {/* Tab Navigation Card */}
           <Card>
-            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
@@ -364,7 +364,7 @@ export default function ErrorPagesTemplate() {
           {/* Preview Tab Content */}
           <TabsContent value="preview" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <CardHeader code="0x01" title="LIVE PREVIEW" />
               <ErrorPagesPreview />
             </Card>
           </TabsContent>
@@ -372,7 +372,7 @@ export default function ErrorPagesTemplate() {
           {/* Code Tab Content */}
           <TabsContent value="code" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <CardHeader code="0x01" title="SOURCE CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
@@ -382,7 +382,7 @@ export default function ErrorPagesTemplate() {
 
         {/* File Structure */}
         <Card>
-          <CardHeader code="0x02" title="FILE_STRUCTURE" />
+          <CardHeader code="0x02" title="FILE STRUCTURE" />
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>

@@ -53,12 +53,12 @@ export default function Error({
             )}
           >
             <p className={cn('text-destructive mb-2 text-xs font-semibold', mode.font)}>
-              [ERROR_DETAILS]:
+              [ERROR DETAILS]:
             </p>
             <p className={cn('text-destructive text-xs break-words', mode.font)}>{error.message}</p>
             {error.digest && (
               <p className={cn('text-destructive mt-2 text-xs', mode.font)}>
-                [ERROR_ID]: {error.digest}
+                [ERROR ID]: {error.digest}
               </p>
             )}
           </div>
@@ -68,12 +68,12 @@ export default function Error({
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Button onClick={reset} size="lg" className="text-xs">
             <RefreshCw className="mr-2 size-4" />
-            &gt; TRY_AGAIN
+            &gt; TRY AGAIN
           </Button>
           <Button asChild variant="outline" size="lg" className="text-xs">
             <Link href="/">
               <Home className="mr-2 size-4" />
-              &gt; BACK_TO_HOME
+              &gt; BACK TO HOME
             </Link>
           </Button>
         </div>
@@ -91,7 +91,7 @@ export default function Error({
           </a>
           {error.digest && (
             <p className={cn('text-muted-foreground mt-2 text-xs', mode.font)}>
-              [ERROR_ID]: {error.digest}
+              [ERROR ID]: {error.digest}
             </p>
           )}
         </div>

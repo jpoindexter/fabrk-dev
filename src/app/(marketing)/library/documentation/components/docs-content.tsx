@@ -72,7 +72,7 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
               aria-label="Edit this page on GitHub"
             >
               <ExternalLink className="mr-2 h-3 w-3" aria-hidden="true" />
-              &gt; EDIT_ON_GITHUB
+              &gt; EDIT ON GITHUB
             </Button>
           </div>
         </header>
@@ -92,7 +92,7 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
                   )}
                   id={section.content.toLowerCase().replace(/\s+/g, '-')}
                 >
-                  [{section.content.toUpperCase().replace(/ /g, '_')}]:
+                  [{section.content.toUpperCase()}]:
                 </h2>
               );
             }
@@ -176,9 +176,9 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
 
         {/* Help Section */}
         <Card tone="neutral" className="mt-12">
-          <CardHeader code="0x00" title="NEED_HELP" />
+          <CardHeader code="0x00" title="NEED HELP" />
           <CardContent padding="md">
-            <div className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}>[NEED_HELP]:</div>
+            <div className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}>[NEED HELP]:</div>
             <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
               Can't find what you're looking for?
             </div>
@@ -189,7 +189,7 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
                 aria-label="Ask question on GitHub Discussions"
               >
                 <ExternalLink className="mr-2 h-3 w-3" aria-hidden="true" />
-                &gt; ASK_ON_GITHUB_DISCUSSIONS
+                &gt; ASK ON GITHUB DISCUSSIONS
               </Button>
               <Button
                 variant="outline"
@@ -197,7 +197,7 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
                 aria-label="Report an issue on GitHub"
               >
                 <ExternalLink className="mr-2 h-3 w-3" aria-hidden="true" />
-                &gt; REPORT_AN_ISSUE
+                &gt; REPORT AN ISSUE
               </Button>
               <Button
                 variant="outline"
@@ -205,7 +205,7 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
                 aria-label="Contact support team"
               >
                 <ExternalLink className="mr-2 h-3 w-3" aria-hidden="true" />
-                &gt; CONTACT_SUPPORT
+                &gt; CONTACT SUPPORT
               </Button>
             </div>
           </CardContent>

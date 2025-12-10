@@ -67,7 +67,7 @@ export function FunnelVisualizer({
     <Card className={cn('overflow-hidden', className)}>
       <CardHeader
         code="0x02"
-        title={title.toUpperCase().replace(/ /g, '_')}
+        title={title.toUpperCase()}
         icon={<TrendingDown className="h-4 w-4" />}
         meta={`${stages.length} Stages`}
       />

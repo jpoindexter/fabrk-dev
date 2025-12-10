@@ -83,7 +83,7 @@ export function ImpersonateButton({
       </DialogTrigger>
       <DialogContent className="border-border bg-card border">
         <DialogHeader>
-          <DialogTitle className={cn('text-foreground', mode.font)}>[IMPERSONATE_USER]</DialogTitle>
+          <DialogTitle className={cn('text-foreground', mode.font)}>[IMPERSONATE USER]</DialogTitle>
           <DialogDescription className={cn('text-muted-foreground text-sm', mode.font)}>
             You will view the dashboard as{' '}
             <strong className="text-foreground">{userName || userEmail}</strong>. This action will
@@ -124,7 +124,7 @@ export function ImpersonateButton({
             disabled={loading}
             className={cn('text-xs', mode.font)}
           >
-            {loading ? '> STARTING...' : '> START_IMPERSONATION'}
+            {loading ? '> STARTING...' : '> START IMPERSONATION'}
           </Button>
         </DialogFooter>
       </DialogContent>

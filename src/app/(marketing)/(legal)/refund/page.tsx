@@ -36,16 +36,16 @@ export default function RefundPage() {
           transition={{ duration: 0.5 }}
           className="mb-6"
         >
-          <Badge code="0x00" label="LEGAL" meta="REFUND_POLICY" />
+          <Badge code="0x00" label="LEGAL" meta="REFUND POLICY" />
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <h1 className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>FABRK_LEGAL:</h1>
+          <h1 className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>FABRK LEGAL:</h1>
           <h2 className={cn('mb-4 text-4xl font-semibold tracking-tight', mode.font)}>
-            REFUND_POLICY
+            REFUND POLICY
           </h2>
         </motion.div>
         <motion.div
@@ -81,7 +81,7 @@ export default function RefundPage() {
       <div className="space-y-6">
         {/* Section 1 */}
         <Card size="auto">
-          <CardHeader code="0x10" title="NO_REFUNDS_POLICY" icon={<Ban className="size-4" />} />
+          <CardHeader code="0x10" title="NO REFUNDS POLICY" icon={<Ban className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
               Once you gain access to the Fabrk source code and download the files, no refunds are
@@ -97,7 +97,7 @@ export default function RefundPage() {
 
         {/* Section 2 */}
         <Card size="auto">
-          <CardHeader code="0x20" title="WHY_NO_REFUNDS" icon={<FileText className="size-4" />} />
+          <CardHeader code="0x20" title="WHY NO REFUNDS" icon={<FileText className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
               Unlike physical products, digital products provide immediate value upon download:
@@ -118,7 +118,7 @@ export default function RefundPage() {
         <Card size="auto">
           <CardHeader
             code="0x30"
-            title="BEFORE_YOU_PURCHASE"
+            title="BEFORE YOU PURCHASE"
             icon={<ShoppingBag className="size-4" />}
           />
           <CardContent padding="md">
@@ -129,13 +129,13 @@ export default function RefundPage() {
               <li>
                 ├─ Review the{' '}
                 <Link href="/features" className="text-primary hover:underline">
-                  &gt; VIEW_FEATURES
+                  &gt; VIEW FEATURES
                 </Link>
               </li>
               <li>
                 ├─ Browse the{' '}
                 <Link href="/docs" className="text-primary hover:underline">
-                  &gt; VIEW_DOCS
+                  &gt; VIEW DOCS
                 </Link>
               </li>
               <li>├─ Check tech stack and integrations</li>
@@ -155,7 +155,7 @@ export default function RefundPage() {
 
         {/* Section 4 */}
         <Card size="auto">
-          <CardHeader code="0x40" title="WHAT_YOU_GET" icon={<Package className="size-4" />} />
+          <CardHeader code="0x40" title="WHAT YOU GET" icon={<Package className="size-4" />} />
           <CardContent padding="md">
             <div className="space-y-6">
               <div>
@@ -188,7 +188,7 @@ export default function RefundPage() {
         <Card size="auto">
           <CardHeader
             code="0x50"
-            title="TECHNICAL_SUPPORT"
+            title="TECHNICAL SUPPORT"
             icon={<HeadphonesIcon className="size-4" />}
           />
           <CardContent padding="md">
@@ -253,7 +253,7 @@ export default function RefundPage() {
 
         {/* Section 7 */}
         <Card size="auto">
-          <CardHeader code="0x70" title="EU_CONSUMER_RIGHTS" icon={<Scale className="size-4" />} />
+          <CardHeader code="0x70" title="EU CONSUMER RIGHTS" icon={<Scale className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
               EU consumers have a 14-day withdrawal right under the Consumer Rights Directive
@@ -300,7 +300,7 @@ export default function RefundPage() {
 
         {/* Section 9 - Governing Law */}
         <Card size="auto">
-          <CardHeader code="0x90" title="GOVERNING_LAW" icon={<Scale className="size-4" />} />
+          <CardHeader code="0x90" title="GOVERNING LAW" icon={<Scale className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
               This refund policy is governed by the laws of the Netherlands. Fabrk is operated by a
@@ -322,7 +322,7 @@ export default function RefundPage() {
 
         {/* Section 10 - Dispute Resolution */}
         <Card size="auto">
-          <CardHeader code="0xA0" title="DISPUTE_RESOLUTION" icon={<Gavel className="size-4" />} />
+          <CardHeader code="0xA0" title="DISPUTE RESOLUTION" icon={<Gavel className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
               We encourage resolving disputes informally first. Contact support@fabrek.dev before
@@ -380,7 +380,7 @@ export default function RefundPage() {
 
         {/* Section 12 - Policy Updates */}
         <Card size="auto">
-          <CardHeader code="0xC0" title="POLICY_UPDATES" icon={<RefreshCw className="size-4" />} />
+          <CardHeader code="0xC0" title="POLICY UPDATES" icon={<RefreshCw className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground text-sm', mode.font)}>
               We may modify this policy at any time. Your purchase is governed by the policy in
@@ -429,19 +429,19 @@ export default function RefundPage() {
         <Card size="auto">
           <CardHeader
             code="0xE0"
-            title="RELATED_DOCUMENTS"
+            title="RELATED DOCUMENTS"
             icon={<FileText className="size-4" />}
           />
           <CardContent padding="md">
             <div className={cn('flex flex-wrap gap-4 text-xs', mode.font)}>
               <Link href="/terms" className="text-primary hover:underline">
-                &gt; VIEW_TERMS
+                &gt; VIEW TERMS
               </Link>
               <Link href="/privacy" className="text-primary hover:underline">
-                &gt; VIEW_PRIVACY
+                &gt; VIEW PRIVACY
               </Link>
               <Link href="/cookies" className="text-primary hover:underline">
-                &gt; VIEW_COOKIES
+                &gt; VIEW COOKIES
               </Link>
             </div>
           </CardContent>

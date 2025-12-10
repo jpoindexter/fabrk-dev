@@ -13,7 +13,7 @@ export default function GoogleOAuthPage() {
     <FeatureGuideTemplate
       code="[0x20]"
       category="Features"
-      title="Google_OAuth_Setup"
+      title="Google OAuth Setup"
       description="Enable one-click Google sign-in for your users with OAuth 2.0 integration."
       overview="Fabrk supports Google OAuth through NextAuth v5 with one-click sign-in with Google accounts, automatic account linking for existing email users, profile photo and name sync from Google, conditional enabling based on environment variables, and secure token handling with JWT sessions."
       features={[
@@ -214,7 +214,7 @@ export function LoginForm() {
     >
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
-        <DocsCard title="BEST_PRACTICES">
+        <DocsCard title="BEST PRACTICES">
           <ul className="space-y-1">
             <li>├─ Always offer email/password as an alternative to OAuth</li>
             <li>├─ Handle account linking for users who sign up with email first</li>

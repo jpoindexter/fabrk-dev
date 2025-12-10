@@ -136,7 +136,7 @@ export default async function AnalyticsPage() {
             <Card key={stat.label}>
               <CardHeader
                 code={`0x${index.toString(16).padStart(2, '0')}`}
-                title={stat.label.toUpperCase().replace(/ /g, '_')}
+                title={stat.label.toUpperCase()}
                 icon={<Icon className="h-4 w-4" />}
               />
               <CardContent>
@@ -164,7 +164,7 @@ export default async function AnalyticsPage() {
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Recent Activity */}
         <Card>
-          <CardHeader code="0x10" title="RECENT_ACTIVITY" />
+          <CardHeader code="0x10" title="RECENT ACTIVITY" />
           <CardContent>
             <div className="mb-4 flex justify-end">
               <button className="text-primary text-sm font-semibold hover:underline">
@@ -193,7 +193,7 @@ export default async function AnalyticsPage() {
 
         {/* Top Pages */}
         <Card>
-          <CardHeader code="0x11" title="TOP_PAGES" />
+          <CardHeader code="0x11" title="TOP PAGES" />
           <CardContent>
             <div className="mb-4 flex justify-end">
               <button className="text-primary text-sm font-semibold hover:underline">
@@ -231,7 +231,7 @@ export default async function AnalyticsPage() {
       <Card>
         <CardHeader
           code="0x20"
-          title="REVENUE_OVER_TIME"
+          title="REVENUE OVER TIME"
           icon={<TrendingUp className="h-4 w-4" />}
           meta="Monthly recurring revenue trend"
         />

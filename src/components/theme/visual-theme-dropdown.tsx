@@ -118,7 +118,7 @@ export function VisualThemeDropdown() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className={cn('w-56', mode.radius)}>
-        <DropdownMenuLabel className={mode.font}>[VISUAL_THEME]</DropdownMenuLabel>
+        <DropdownMenuLabel className={mode.font}>[VISUAL THEME]</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {visualThemes.map((theme) => (
           <DropdownMenuItem

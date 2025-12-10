@@ -19,7 +19,7 @@ export function SecurityPasswordCard() {
         <p className="text-muted-foreground mb-4 font-mono text-xs">
           Change your password regularly to keep your account secure
         </p>
-        <Button variant="outline">&gt; CHANGE_PASSWORD</Button>
+        <Button variant="outline">&gt; CHANGE PASSWORD</Button>
       </CardContent>
     </Card>
   );

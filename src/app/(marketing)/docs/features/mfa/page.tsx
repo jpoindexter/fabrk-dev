@@ -13,7 +13,7 @@ export default function MFAPage() {
     <FeatureGuideTemplate
       code="[0x20]"
       category="Features"
-      title="Multi_Factor_Authentication"
+      title="Multi Factor Authentication"
       description="Add an extra layer of security with authenticator apps and backup codes."
       overview="Two-factor authentication (2FA) adds an extra step to logging in. After entering your password, you also need to provide a code from your phone. Even if someone steals your password, they can't access your account without your phone. Think of it like a bank vault with two locks - you need both keys to get in."
       features={[
@@ -134,7 +134,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
     >
       {/* Why Offer 2FA Section */}
       <DocsSection title="Why Offer 2FA">
-        <DocsCard title="WHY_2FA">
+        <DocsCard title="WHY 2FA">
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="space-y-2">
               Security Benefits
@@ -161,7 +161,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
       {/* How 2FA Works Section */}
       <DocsSection title="How 2FA Works">
         <div className="space-y-4">
-          <DocsCard title="SETUP_2FA">
+          <DocsCard title="SETUP 2FA">
             Setting Up 2FA
             <ol className="list-inside list-decimal space-y-1">
               <li>User goes to Settings → Security</li>
@@ -173,7 +173,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
             </ol>
           </DocsCard>
 
-          <DocsCard title="LOGIN_WITH_2FA">
+          <DocsCard title="LOGIN WITH 2FA">
             Logging In With 2FA
             <ol className="list-inside list-decimal space-y-1">
               <li>User enters email and password as normal</li>
@@ -183,7 +183,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
             </ol>
           </DocsCard>
 
-          <DocsCard title="BACKUP_CODES">
+          <DocsCard title="BACKUP CODES">
             Lost Phone? Use Backup Code
             <ol className="list-inside list-decimal space-y-1">
               <li>On the verification screen, click &quot;Use backup code&quot;</li>
@@ -197,7 +197,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
 
       {/* About Backup Codes Section */}
       <DocsSection title="About Backup Codes">
-        <DocsCard title="BACKUP_INFO" className="bg-muted/50">
+        <DocsCard title="BACKUP INFO" className="bg-muted/50">
           <p className="mb-4">
             Backup codes are essential for account recovery. They let users log in even if they lose
             access to their authenticator app (lost phone, new device, etc.).
@@ -299,7 +299,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
             <div className="text-muted-foreground border-t p-4 text-sm">
               <p className="mb-6">
                 TOTP secrets are encrypted before storage using your{' '}
-                <code className="bg-muted px-1 font-mono">NEXTAUTH_SECRET</code>. Backup codes are
+                <code className="bg-muted px-1 font-mono">NEXTAUTH SECRET</code>. Backup codes are
                 hashed with SHA-256. Even if your database is compromised, attackers can&apos;t use
                 the raw values.
               </p>
@@ -314,13 +314,13 @@ export async function deleteAccount(userId: string, mfaCode: string) {
           The current implementation covers TOTP (authenticator apps). Future versions may include:
         </p>
         <div className="grid gap-4 sm:grid-cols-2">
-          <DocsCard title="SMS_VERIFICATION">
+          <DocsCard title="SMS VERIFICATION">
             SMS Verification
             <p className="mb-6">
               Text message codes as an alternative (requires Twilio integration).
             </p>
           </DocsCard>
-          <DocsCard title="WEBAUTHN_PASSKEYS">
+          <DocsCard title="WEBAUTHN PASSKEYS">
             WebAuthn/Passkeys
             <p className="mb-6">
               Hardware security keys and biometric authentication (Touch ID, Face ID).

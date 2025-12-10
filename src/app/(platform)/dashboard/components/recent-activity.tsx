@@ -52,7 +52,7 @@ function formatTimestamp(date: Date) {
 export function RecentActivity({ activities }: RecentActivityProps) {
   return (
     <Card className="col-span-4">
-      <CardHeader code="0x00" title="RECENT_ACTIVITY" />
+      <CardHeader code="0x00" title="RECENT ACTIVITY" />
       <CardContent>
         <p className="text-muted-foreground mb-4 font-mono text-xs">
           Your recent account activity and actions

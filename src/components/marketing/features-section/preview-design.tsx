@@ -52,7 +52,7 @@ export function DesignSystemPreview() {
 
   return (
     <Card ref={ref} className="w-full max-w-md">
-      <PreviewHeader title="design_system.exe" animated />
+      <PreviewHeader title="design system.exe" animated />
 
       <CardContent padding="lg">
         <motion.div
@@ -60,7 +60,7 @@ export function DesignSystemPreview() {
           animate={isInView ? { opacity: 1 } : {}}
           className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}
         >
-          [DESIGN_SYSTEM]:
+          [DESIGN SYSTEM]:
         </motion.div>
 
         <div className="space-y-4">

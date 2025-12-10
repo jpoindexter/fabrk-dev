@@ -36,7 +36,7 @@ interface StatCardProps {
 }
 
 function StatCard({ title, icon: Icon, value, change, loading, customContent }: StatCardProps) {
-  const terminalTitle = title.toUpperCase().replace(/ /g, '_');
+  const terminalTitle = title.toUpperCase();
   return (
     <Card>
       <CardHeader code="0x00" title={terminalTitle} icon={<Icon className="h-4 w-4" />} />

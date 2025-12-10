@@ -26,17 +26,17 @@ const navLinks = [
 
 // Logo suffix based on section
 const sectionSuffix: Record<string, string> = {
-  docs: '_DOCS',
-  demo: '_DEMO',
-  library: '_LIBRARY',
-  about: '_ABOUT',
-  features: '_FEATURES',
-  pricing: '_PRICING',
-  contact: '_CONTACT',
-  terms: '_LEGAL',
-  privacy: '_LEGAL',
-  cookies: '_LEGAL',
-  refund: '_LEGAL',
+  docs: 'DOCS',
+  demo: 'DEMO',
+  library: 'LIBRARY',
+  about: 'ABOUT',
+  features: 'FEATURES',
+  pricing: 'PRICING',
+  contact: 'CONTACT',
+  terms: 'LEGAL',
+  privacy: 'LEGAL',
+  cookies: 'LEGAL',
+  refund: 'LEGAL',
 };
 
 export function SiteNavigation() {
@@ -45,7 +45,7 @@ export function SiteNavigation() {
 
   // Determine suffix for logo based on current section
   const currentSection = pathname.split('/').filter(Boolean)[0] || '';
-  const suffix = sectionSuffix[currentSection] || '_CONSOLE';
+  const suffix = sectionSuffix[currentSection] || 'CONSOLE';
 
   return (
     <nav className="border-border bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
@@ -119,10 +119,10 @@ export function SiteNavigation() {
             <ThemeDropdown />
             <VisualThemeDropdown />
             <Button variant="outline" asChild className={cn(mode.radius, mode.font, 'text-xs')}>
-              <Link href="/library">&gt; VIEW_LIBRARY</Link>
+              <Link href="/library">&gt; VIEW LIBRARY</Link>
             </Button>
             <Button asChild className={cn(mode.radius, mode.font, 'text-xs')}>
-              <Link href="/#pricing">&gt; GET_STARTED</Link>
+              <Link href="/#pricing">&gt; GET STARTED</Link>
             </Button>
           </div>
         </motion.div>
@@ -149,7 +149,7 @@ export function SiteNavigation() {
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="border-border mb-6 border-b pb-4">
                 <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                  [SYSTEM_MENU]
+                  [SYSTEM MENU]
                 </span>
               </div>
               <nav className="flex flex-col space-y-4">
@@ -197,12 +197,12 @@ export function SiteNavigation() {
                   </span>
                   <SheetClose asChild>
                     <Button asChild size="sm" className={cn(mode.radius, mode.font)}>
-                      <Link href="/library">&gt; VIEW_LIBRARY</Link>
+                      <Link href="/library">&gt; VIEW LIBRARY</Link>
                     </Button>
                   </SheetClose>
                   <SheetClose asChild>
                     <Button className={cn(mode.radius, mode.font, 'mt-4 w-full text-xs')} asChild>
-                      <Link href="/#pricing">&gt; GET_STARTED</Link>
+                      <Link href="/#pricing">&gt; GET STARTED</Link>
                     </Button>
                   </SheetClose>
                 </div>

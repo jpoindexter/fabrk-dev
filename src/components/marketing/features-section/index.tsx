@@ -1,6 +1,6 @@
 /**
  * ✅ FABRK COMPONENT
- * Feature Deep-Dives - Terminal console [DEEP_DIVE] style
+ * Feature Deep-Dives - Terminal console [DEEP DIVE] style
  * Production-ready ✓
  *
  * Split into subcomponents:
@@ -57,8 +57,8 @@ export function FeaturesSection() {
         >
           <Badge
             code="0x30"
-            label="DEEP_DIVE"
-            meta="FEATURE_ANALYSIS │ FIB[377,610]"
+            label="DEEP DIVE"
+            meta="FEATURE ANALYSIS │ FIB[377,610]"
             className="mb-4"
           />
           <h2 className={cn(mode.font, 'mb-4 text-4xl font-semibold tracking-tight')}>
@@ -100,7 +100,7 @@ export function FeaturesSection() {
 
           {/* Multi-Tenancy */}
           <FeatureSectionLayout
-            spec="MULTI_TENANCY"
+            spec="MULTI TENANCY"
             title="Multi-Tenancy"
             description="Built-in support for organizations including member management, invitations and roles."
             reversed
@@ -127,7 +127,7 @@ export function FeaturesSection() {
 
           {/* Billing & Payments */}
           <FeatureSectionLayout
-            spec="BILLING_PAYMENTS"
+            spec="BILLING PAYMENTS"
             title="Billing & Payments"
             description="Securely accept payments on your site and start selling to customers in no time."
             features={[
@@ -153,7 +153,7 @@ export function FeaturesSection() {
 
           {/* AI Credits */}
           <FeatureSectionLayout
-            spec="AI_CREDITS"
+            spec="AI CREDITS"
             title="AI Credits System"
             description="Token-based billing for AI features. Track usage, manage allowances, and monetize AI capabilities."
             reversed
@@ -180,7 +180,7 @@ export function FeaturesSection() {
 
           {/* Design System */}
           <FeatureSectionLayout
-            spec="DESIGN_SYSTEM"
+            spec="DESIGN SYSTEM"
             title="Design System"
             description="Foundational and advanced components covering wide range of use-cases without sacrificing flexibility."
             features={[

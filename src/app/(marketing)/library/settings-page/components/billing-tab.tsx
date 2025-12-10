@@ -20,14 +20,14 @@ export function BillingTab() {
         <div className="p-4">
           <SectionHeader
             icon={CreditCard}
-            title="SUBSCRIPTION_BILLING"
+            title="SUBSCRIPTION BILLING"
             description="Manage your subscription plan and payment methods"
           />
           <div className="border-border mb-4 border p-4">
             <div className="mb-4 flex items-center justify-between">
               <div>
                 <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                  [CURRENT_PLAN]:
+                  [CURRENT PLAN]:
                 </div>
                 <div className="text-2xl font-semibold">Pro</div>
               </div>
@@ -40,16 +40,16 @@ export function BillingTab() {
             </div>
             <div className="flex gap-4">
               <Button variant="outline" className={cn(mode.radius, mode.font, 'flex-1 text-xs')}>
-                &gt; CHANGE_PLAN
+                &gt; CHANGE PLAN
               </Button>
               <Button variant="outline" className={cn(mode.radius, mode.font, 'flex-1 text-xs')}>
-                &gt; VIEW_INVOICES
+                &gt; VIEW INVOICES
               </Button>
             </div>
           </div>
           <div>
             <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-              [PAYMENT_METHODS]:
+              [PAYMENT METHODS]:
             </div>
             <div
               className={cn(
@@ -60,7 +60,7 @@ export function BillingTab() {
               No payment methods added yet. Use Stripe Customer Portal to manage payment methods.
             </div>
             <Button variant="outline" className={cn(mode.radius, mode.font, 'mt-4 w-full text-xs')}>
-              &gt; ADD_PAYMENT_METHOD
+              &gt; ADD PAYMENT METHOD
             </Button>
           </div>
         </div>
@@ -71,7 +71,7 @@ export function BillingTab() {
         <div className="p-4">
           <SectionHeader
             icon={AlertTriangle}
-            title="DANGER_ZONE"
+            title="DANGER ZONE"
             description="Irreversible and destructive actions"
             iconBgClass="bg-destructive/10"
           />

@@ -23,7 +23,7 @@ function CookieConsentDemo() {
       <div className="space-y-4 p-4">
         <div className="flex items-center gap-2">
           <Cookie className="text-primary h-4 w-4" />
-          <span className="font-mono text-xs font-semibold">[COOKIE_PREFERENCES]</span>
+          <span className="font-mono text-xs font-semibold">[COOKIE PREFERENCES]</span>
         </div>
 
         <p className="text-muted-foreground font-mono text-xs">
@@ -65,10 +65,10 @@ function CookieConsentDemo() {
 
         <div className="flex gap-2">
           <button className="border-border bg-background hover:border-primary flex-1 border px-4 py-2 font-mono text-xs">
-            &gt; REJECT_ALL
+            &gt; REJECT ALL
           </button>
           <button className="border-primary bg-primary text-primary-foreground flex-1 border px-4 py-2 font-mono text-xs">
-            &gt; ACCEPT_ALL
+            &gt; ACCEPT ALL
           </button>
         </div>
       </div>
@@ -81,7 +81,7 @@ export default function CookieConsentPage() {
     <FeatureGuideTemplate
       code="[0x80]"
       category="Features"
-      title="Cookie_Consent_GDPR"
+      title="Cookie Consent GDPR"
       description="GDPR-compliant cookie banner with Google Consent Mode v2 integration."
       overview="If your app has users in Europe, you're legally required to ask permission before tracking them with cookies. This component handles that for you. Think of it like asking guests if they want coffee before pouring - some want it (marketing cookies), some don't (privacy-focused users). This lets them choose."
       features={[
@@ -207,7 +207,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
       {/* How It Works Section */}
       <DocsSection title="How It Works">
         <div className="space-y-4">
-          <DocsCard title="STEP_01">
+          <DocsCard title="STEP 01">
             <div className="mb-2 flex items-center gap-4">
               <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono font-semibold">
                 1
@@ -219,7 +219,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               non-essential cookies are blocked until they make a choice.
             </p>
           </DocsCard>
-          <DocsCard title="STEP_02">
+          <DocsCard title="STEP 02">
             <div className="mb-2 flex items-center gap-4">
               <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono font-semibold">
                 2
@@ -231,7 +231,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               (see exactly which cookies), and About (their privacy rights).
             </p>
           </DocsCard>
-          <DocsCard title="STEP_03">
+          <DocsCard title="STEP 03">
             <div className="mb-2 flex items-center gap-4">
               <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono font-semibold">
                 3
@@ -243,7 +243,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               automatically, enabling/disabling analytics and ads accordingly.
             </p>
           </DocsCard>
-          <DocsCard title="STEP_04">
+          <DocsCard title="STEP 04">
             <div className="mb-2 flex items-center gap-4">
               <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-mono font-semibold">
                 4
@@ -260,7 +260,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
 
       {/* Cookie Categories Section */}
       <DocsSection title="Cookie Categories">
-        <DocsCard title="COOKIE_CATEGORIES">
+        <DocsCard title="COOKIE CATEGORIES">
           <div className="space-y-4">
             <div className="bg-muted/50 flex items-start gap-4 p-4">
               <div className="bg-success mt-1 h-3 w-3 rounded-none"></div>
@@ -365,7 +365,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
 
       {/* Testing Section */}
       <DocsSection title="Testing">
-        <DocsCard title="TESTING_GUIDE">
+        <DocsCard title="TESTING GUIDE">
           Manual Testing
           <ol className="list-inside list-decimal space-y-2">
             <li>Open your app in a private/incognito window</li>

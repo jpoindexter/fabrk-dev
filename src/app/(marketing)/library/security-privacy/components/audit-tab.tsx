@@ -27,7 +27,7 @@ export function AuditTab({ auditLog }: AuditTabProps) {
       <CardContent padding="md">
         <div className="mb-4 flex items-center justify-between">
           <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-            [SECURITY_AUDIT_LOG]: COUNT={auditLog.length}
+            [SECURITY AUDIT LOG]: COUNT={auditLog.length}
           </div>
           <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, 'h-7 text-xs')}>
             <Download className="mr-2 h-3 w-3" />
@@ -45,7 +45,7 @@ export function AuditTab({ auditLog }: AuditTabProps) {
           >
             <span className="text-muted-foreground">[ACTION]</span>
             <span className="text-muted-foreground">[TIMESTAMP]</span>
-            <span className="text-muted-foreground">[IP_ADDRESS]</span>
+            <span className="text-muted-foreground">[IP ADDRESS]</span>
             <span className="text-muted-foreground">[STATUS]</span>
           </div>
           <div className="divide-border divide-y">

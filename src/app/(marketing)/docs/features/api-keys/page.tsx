@@ -13,7 +13,7 @@ export default function ApiKeysPage() {
     <FeatureGuideTemplate
       code="[0x70]"
       category="Features"
-      title="API_Keys"
+      title="API Keys"
       description="Secure API key generation with SHA-256 hashing, timing-safe comparison, and rate limiting."
       overview="The API keys system provides secure programmatic access to your application's API. Keys are generated with cryptographic randomness, stored as hashes, and validated using timing-safe comparison to prevent timing attacks."
       features={[
@@ -336,7 +336,7 @@ export async function GET(req: Request) {
     >
       {/* Security Best Practices Section */}
       <DocsSection title="Security Best Practices">
-        <DocsCard title="SECURITY_BEST_PRACTICES">
+        <DocsCard title="SECURITY BEST PRACTICES">
           <ul className="space-y-1">
             <li>
               ├─ <strong>Never log full keys:</strong> Only log the prefix for debugging

@@ -12,7 +12,7 @@ export default function RealtimePage() {
     <FeatureGuideTemplate
       code="[0x50]"
       category="Features"
-      title="Realtime_With_Pusher"
+      title="Realtime With Pusher"
       description="Build real-time features like notifications, presence tracking, and activity feeds using Pusher Channels."
       overview="Fabrk integrates Pusher Channels to provide real-time communication between your server and clients. This enables instant updates for notifications, live activity feeds, and presence tracking to show who's online in your organization."
       features={[
@@ -199,7 +199,7 @@ export function OnlineMembers({ orgId }: { orgId: string }) {
     >
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
-        <DocsCard title="BEST_PRACTICES">
+        <DocsCard title="BEST PRACTICES">
           <ul className="space-y-1">
             <li>
               ├─ Use private channels (<code className="bg-muted px-1">private-</code>) for

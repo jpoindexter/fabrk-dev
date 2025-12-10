@@ -66,7 +66,7 @@ export default function LoginPage() {
         </div>
 
         <Button className={cn(mode.radius, mode.font, 'w-full text-xs')} type="submit">
-          &gt; SIGN_IN
+          &gt; SIGN IN
         </Button>
       </form>
 

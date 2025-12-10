@@ -45,7 +45,7 @@ export function DocsStepList({ steps, variant = 'card' }: DocsStepListProps) {
     <div className={docsSpacing.stepList}>
       {steps.map((step, index) => {
         const hexCode = (index + 1).toString(16).toUpperCase().padStart(2, '0');
-        const titleSlug = step.title.toUpperCase().replace(/\s+/g, '_');
+        const titleSlug = step.title.toUpperCase();
         return (
           <div key={index} className="border-border bg-card border">
             {/* Terminal header */}

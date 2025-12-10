@@ -13,7 +13,7 @@ export default function FileUploadsTutorialPage() {
     <FeatureGuideTemplate
       code="[0x50]"
       category="Tutorials"
-      title="File_Uploads"
+      title="File Uploads"
       description="Implement secure file uploads with dropzone components, validation, and cloud storage integration."
       overview="Drag-and-drop file upload components with image preview, file validation (size, type, count), progress indicators, error handling, multiple file support, and cloud storage integration."
       features={[

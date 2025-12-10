@@ -13,7 +13,7 @@ export default function RateLimitingPage() {
     <FeatureGuideTemplate
       code="[0x80]"
       category="Security"
-      title="Rate_Limiting"
+      title="Rate Limiting"
       description="Protect your API endpoints from abuse with configurable rate limiting middleware."
       overview="Rate limiting prevents abuse by limiting how many requests a user or IP can make in a given time period. This protects against DDoS attacks, brute force attempts, and API abuse."
       features={[

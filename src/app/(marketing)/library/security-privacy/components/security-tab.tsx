@@ -36,7 +36,7 @@ export function SecurityTab({
     <div className="space-y-6">
       {/* 2FA Section */}
       <Card tone="neutral">
-        <CardHeader code="0x06" title="TWO_FACTOR" icon={<Smartphone className="h-4 w-4" />} />
+        <CardHeader code="0x06" title="TWO FACTOR" icon={<Smartphone className="h-4 w-4" />} />
         <CardContent padding="md">
           <div className="mb-4 flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -45,7 +45,7 @@ export function SecurityTab({
               </div>
               <div>
                 <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                  [TWO_FACTOR_AUTH]:
+                  [TWO FACTOR AUTH]:
                 </div>
                 <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
                   Add an extra layer of security with TOTP
@@ -68,7 +68,7 @@ export function SecurityTab({
           </p>
           <Button onClick={onEnable2FA} className={cn(mode.radius, mode.font, 'text-xs')}>
             <Smartphone className="mr-2 h-4 w-4" />
-            &gt; {twoFactorEnabled ? 'MANAGE_2FA' : 'ENABLE_2FA'}
+            &gt; {twoFactorEnabled ? 'MANAGE 2FA' : 'ENABLE 2FA'}
           </Button>
         </CardContent>
       </Card>
@@ -83,7 +83,7 @@ export function SecurityTab({
             </div>
             <div>
               <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                [ACTIVE_SESSIONS]: COUNT={activeSessions.length}
+                [ACTIVE SESSIONS]: COUNT={activeSessions.length}
               </div>
             </div>
           </div>
@@ -128,7 +128,7 @@ export function SecurityTab({
               className={cn(mode.radius, mode.font, 'text-xs')}
             >
               <LogOut className="mr-2 h-3 w-3" />
-              &gt; SIGN_OUT_ALL_OTHER_DEVICES
+              &gt; SIGN OUT ALL OTHER DEVICES
             </Button>
           </div>
         </CardContent>
@@ -151,7 +151,7 @@ export function SecurityTab({
               </div>
             </div>
             <Button variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
-              &gt; CHANGE_PASSWORD
+              &gt; CHANGE PASSWORD
             </Button>
           </div>
         </CardContent>

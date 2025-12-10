@@ -27,7 +27,7 @@ export function DocsLinkCard({
   code = '00',
   className,
 }: DocsLinkCardProps) {
-  const headerTitle = title.toUpperCase().replace(/\s+/g, '_');
+  const headerTitle = title.toUpperCase();
 
   return (
     <Link href={href} className={cn('group block', className)}>

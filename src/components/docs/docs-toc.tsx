@@ -87,7 +87,7 @@ export function DocsToc({ mainRef, className }: DocsTocProps) {
       aria-label="Table of contents"
     >
       <div className="p-4">
-        <div className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>[ON_THIS_PAGE]:</div>
+        <div className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>[ON THIS PAGE]:</div>
         {tocHeadings.length > 0 ? (
           <nav>
             <ul className={cn('space-y-1 text-xs', mode.font)}>

@@ -92,7 +92,7 @@ export default function AdminMonitoringPage() {
           <Card tone="neutral">
             <CardHeader
               code="0x01"
-              title="TOTAL_ERRORS"
+              title="TOTAL ERRORS"
               meta="24h"
               icon={<AlertTriangle className="h-4 w-4" />}
             />
@@ -129,7 +129,7 @@ export default function AdminMonitoringPage() {
         <Card tone="primary">
           <CardHeader
             code="0x05"
-            title="PERFORMANCE_METRICS"
+            title="PERFORMANCE METRICS"
             meta="24h averages"
             icon={<TrendingUp className="h-4 w-4" />}
           />
@@ -157,7 +157,7 @@ export default function AdminMonitoringPage() {
         <Card tone="danger">
           <CardHeader
             code="0x06"
-            title="MOST_FREQUENT_ERRORS"
+            title="MOST FREQUENT ERRORS"
             meta="By occurrence"
             icon={<AlertTriangle className="h-4 w-4" />}
           />
@@ -209,7 +209,7 @@ export default function AdminMonitoringPage() {
         <Card tone="warning">
           <CardHeader
             code="0x07"
-            title="RECENT_ERRORS"
+            title="RECENT ERRORS"
             meta="Last 20 events"
             icon={<Activity className="h-4 w-4" />}
           />

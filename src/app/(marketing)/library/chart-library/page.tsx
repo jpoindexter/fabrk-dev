@@ -140,10 +140,10 @@ export default function ChartLibrary() {
   const [activeTab, setActiveTab] = useState("line");
 
   const tabs = [
-    { id: "line", label: "LINE_CHART" },
-    { id: "area", label: "AREA_CHART" },
-    { id: "bar", label: "BAR_CHART" },
-    { id: "pie", label: "PIE_CHART" },
+    { id: "line", label: "LINE CHART" },
+    { id: "area", label: "AREA CHART" },
+    { id: "bar", label: "BAR CHART" },
+    { id: "pie", label: "PIE CHART" },
   ];
 
   return (
@@ -160,7 +160,7 @@ export default function ChartLibrary() {
         </div>
         <Button className={cn(mode.radius, mode.font, "text-xs")}>
           <Download className="mr-2 h-4 w-4" />
-          &gt; VIEW_DOCS
+          &gt; VIEW DOCS
         </Button>
       </div>
 
@@ -168,7 +168,7 @@ export default function ChartLibrary() {
       <div className="grid gap-6 md:grid-cols-4">
         <div className="border-border bg-card border p-4">
           <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>
-            [TOTAL_REVENUE]:
+            [TOTAL REVENUE]:
           </div>
           <div className="text-4xl font-semibold">$91.9K</div>
           <div className={cn(mode.font, "text-success mt-1 flex items-center gap-1 text-xs")}>
@@ -182,7 +182,7 @@ export default function ChartLibrary() {
       {/* Chart Tabs - Terminal Style */}
       <StyledTabs
         code="0x00"
-        title="CHART_NAVIGATION"
+        title="CHART NAVIGATION"
         tabs={tabs}
         value={activeTab}
         onValueChange={setActiveTab}
@@ -217,10 +217,10 @@ function ChartLibraryPreview() {
   const [activeTab, setActiveTab] = useState('line');
 
   const tabs = [
-    { id: 'line', label: 'LINE_CHART' },
-    { id: 'area', label: 'AREA_CHART' },
-    { id: 'bar', label: 'BAR_CHART' },
-    { id: 'pie', label: 'PIE_CHART' },
+    { id: 'line', label: 'LINE CHART' },
+    { id: 'area', label: 'AREA CHART' },
+    { id: 'bar', label: 'BAR CHART' },
+    { id: 'pie', label: 'PIE CHART' },
   ];
 
   return (
@@ -236,7 +236,7 @@ function ChartLibraryPreview() {
           </div>
           <Button className={cn(mode.radius, mode.font, 'text-xs')}>
             <Download className="mr-2 h-4 w-4" />
-            &gt; VIEW_DOCS
+            &gt; VIEW DOCS
           </Button>
         </div>
 
@@ -244,7 +244,7 @@ function ChartLibraryPreview() {
         <div className="grid gap-6 md:grid-cols-4">
           <div className="border-border bg-card border p-4">
             <div className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}>
-              [TOTAL_REVENUE]:
+              [TOTAL REVENUE]:
             </div>
             <div className="text-4xl font-semibold">$91.9K</div>
             <div className={cn(mode.font, 'text-success mt-1 flex items-center gap-1 text-xs')}>
@@ -254,7 +254,7 @@ function ChartLibraryPreview() {
           </div>
           <div className="border-border bg-card border p-4">
             <div className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}>
-              [ACTIVE_USERS]:
+              [ACTIVE USERS]:
             </div>
             <div className="text-4xl font-semibold">12.5K</div>
             <div className={cn(mode.font, 'text-success mt-1 flex items-center gap-1 text-xs')}>
@@ -264,7 +264,7 @@ function ChartLibraryPreview() {
           </div>
           <div className="border-border bg-card border p-4">
             <div className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}>
-              [CONVERSION_RATE]:
+              [CONVERSION RATE]:
             </div>
             <div className="text-4xl font-semibold">4.5%</div>
             <div className={cn(mode.font, 'text-success mt-1 flex items-center gap-1 text-xs')}>
@@ -274,7 +274,7 @@ function ChartLibraryPreview() {
           </div>
           <div className="border-border bg-card border p-4">
             <div className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}>
-              [AVG_ORDER_VALUE]:
+              [AVG ORDER VALUE]:
             </div>
             <div className="text-4xl font-semibold">$89</div>
             <div className={cn(mode.font, 'text-destructive mt-1 flex items-center gap-1 text-xs')}>
@@ -287,7 +287,7 @@ function ChartLibraryPreview() {
         {/* Chart Tabs - Terminal Style */}
         <StyledTabs
           code="0x00"
-          title="CHART_NAVIGATION"
+          title="CHART NAVIGATION"
           tabs={tabs}
           value={activeTab}
           onValueChange={setActiveTab}
@@ -298,7 +298,7 @@ function ChartLibraryPreview() {
               <div className="mb-4 flex items-center justify-between">
                 <div>
                   <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                    [REVENUE_OVERVIEW]:
+                    [REVENUE OVERVIEW]:
                   </div>
                   <div className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
                     Monthly revenue, expenses, and profit (2024)
@@ -355,7 +355,7 @@ function ChartLibraryPreview() {
               <div className="mb-4 flex items-center justify-between">
                 <div>
                   <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                    [USER_GROWTH]:
+                    [USER GROWTH]:
                   </div>
                   <div className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
                     Total active users over time
@@ -404,7 +404,7 @@ function ChartLibraryPreview() {
               <div className="mb-4 flex items-center justify-between">
                 <div>
                   <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                    [CONVERSION_FUNNEL]:
+                    [CONVERSION FUNNEL]:
                   </div>
                   <div className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
                     User journey from visitor to retained customer
@@ -448,7 +448,7 @@ function ChartLibraryPreview() {
               <div className="mb-4 flex items-center justify-between">
                 <div>
                   <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                    [TRAFFIC_SOURCES]:
+                    [TRAFFIC SOURCES]:
                   </div>
                   <div className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
                     Distribution of website visitors by source
@@ -521,7 +521,7 @@ export default function ChartLibraryTemplate() {
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
         {/* Header */}
         <TemplatePageHeader
-          badge="CHART_LIBRARY"
+          badge="CHART LIBRARY"
           title="Chart Library"
           description="Recharts visualization components for data-driven dashboards"
         />
@@ -530,7 +530,7 @@ export default function ChartLibraryTemplate() {
         <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
           {/* Tab Navigation Card */}
           <Card>
-            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
@@ -565,7 +565,7 @@ export default function ChartLibraryTemplate() {
           {/* Preview Tab Content */}
           <TabsContent value="preview" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <CardHeader code="0x01" title="LIVE PREVIEW" />
               <ChartLibraryPreview />
             </Card>
           </TabsContent>
@@ -573,7 +573,7 @@ export default function ChartLibraryTemplate() {
           {/* Code Tab Content */}
           <TabsContent value="code" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <CardHeader code="0x01" title="SOURCE CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
@@ -583,7 +583,7 @@ export default function ChartLibraryTemplate() {
 
         {/* File Structure */}
         <Card>
-          <CardHeader code="0x02" title="FILE_STRUCTURE" />
+          <CardHeader code="0x02" title="FILE STRUCTURE" />
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>
@@ -643,7 +643,7 @@ export default function ChartLibraryTemplate() {
 
         {/* Implementation Note */}
         <Card>
-          <CardHeader code="0x04" title="IMPLEMENTATION_NOTE" />
+          <CardHeader code="0x04" title="IMPLEMENTATION NOTE" />
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-2 text-xs')}>
               <div className="text-muted-foreground">[USAGE]:</div>

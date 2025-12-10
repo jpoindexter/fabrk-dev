@@ -89,7 +89,7 @@ export function ContactForm() {
       transition={{ duration: 0.6, delay: 0.1 }}
     >
       <Card size="auto">
-        <CardHeader code="0x01" title="MESSAGE_COMPOSER" />
+        <CardHeader code="0x01" title="MESSAGE COMPOSER" />
         <CardContent padding="lg">
           <p className="text-muted-foreground mb-6 text-xs">
             &gt; Fill out the form below and we'll get back to you as soon as possible.
@@ -139,13 +139,13 @@ export function ContactForm() {
                   <SelectValue placeholder="> Select a subject..." />
                 </SelectTrigger>
                 <SelectContent className="rounded-none">
-                  <SelectItem value="sales">SALES_INQUIRY</SelectItem>
-                  <SelectItem value="support">TECHNICAL_SUPPORT</SelectItem>
-                  <SelectItem value="billing">BILLING_QUESTION</SelectItem>
-                  <SelectItem value="feature">FEATURE_REQUEST</SelectItem>
-                  <SelectItem value="bug">BUG_REPORT</SelectItem>
-                  <SelectItem value="partnership">PARTNERSHIP_OPPORTUNITY</SelectItem>
-                  <SelectItem value="success-story">SUCCESS_STORY</SelectItem>
+                  <SelectItem value="sales">SALES INQUIRY</SelectItem>
+                  <SelectItem value="support">TECHNICAL SUPPORT</SelectItem>
+                  <SelectItem value="billing">BILLING QUESTION</SelectItem>
+                  <SelectItem value="feature">FEATURE REQUEST</SelectItem>
+                  <SelectItem value="bug">BUG REPORT</SelectItem>
+                  <SelectItem value="partnership">PARTNERSHIP OPPORTUNITY</SelectItem>
+                  <SelectItem value="success-story">SUCCESS STORY</SelectItem>
                   <SelectItem value="other">OTHER</SelectItem>
                 </SelectContent>
               </Select>
@@ -193,7 +193,7 @@ export function ContactForm() {
               ) : (
                 <>
                   <Send className="mr-2 size-4" />
-                  &gt; SEND_MESSAGE
+                  &gt; SEND MESSAGE
                 </>
               )}
             </Button>
@@ -201,7 +201,7 @@ export function ContactForm() {
             <p className="text-muted-foreground text-center text-xs">
               By submitting this form, you agree to our{' '}
               <Link href="/privacy" className="text-primary hover:underline">
-                PRIVACY_POLICY
+                PRIVACY POLICY
               </Link>
             </p>
           </form>

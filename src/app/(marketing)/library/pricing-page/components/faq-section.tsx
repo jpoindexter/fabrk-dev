@@ -30,7 +30,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
 
       <CardContent padding="md">
         <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-          [FREQUENTLY_ASKED_QUESTIONS]:
+          [FREQUENTLY ASKED QUESTIONS]:
         </div>
 
         <Accordion type="single" collapsible className="space-y-2">

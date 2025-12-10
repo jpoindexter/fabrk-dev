@@ -26,10 +26,10 @@ export function FeaturesCTA() {
           className="text-center"
         >
           <div className="mb-4">
-            <Badge code="0x30" label="READY_TO_SHIP" />
+            <Badge code="0x30" label="READY TO SHIP" />
           </div>
           <h2 className={cn('mb-4 text-4xl font-semibold tracking-tight', mode.font)}>
-            READY_TO_SHIP?
+            READY TO SHIP?
           </h2>
           <p className={cn('text-muted-foreground mx-auto mb-8 max-w-xl text-xs', mode.font)}>
             Get Fabrk and launch your SaaS in days, not months. All features included, fully tested,
@@ -38,12 +38,12 @@ export function FeaturesCTA() {
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button asChild size="lg" className="text-xs">
               <Link href="/#pricing">
-                &gt; GET_STARTED
+                &gt; GET STARTED
                 <ArrowRight className="ml-2 size-4" />
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="text-xs">
-              <Link href="/library">&gt; VIEW_LIBRARY</Link>
+              <Link href="/library">&gt; VIEW LIBRARY</Link>
             </Button>
           </div>
         </motion.div>

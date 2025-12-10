@@ -12,13 +12,13 @@ export function PatternComparison() {
     <Card>
       <CardHeader code="0x01" title="COMPARISON" />
       <CardContent>
-        <StyledLabel className="mb-4">WHEN_TO_USE</StyledLabel>
+        <StyledLabel className="mb-4">WHEN TO USE</StyledLabel>
         <div className="border-border overflow-x-auto border">
           <table className={cn(mode.font, 'w-full text-xs')}>
             <thead>
               <tr className="border-border bg-muted/30 border-b">
                 <th className="text-muted-foreground px-4 py-2 text-left">[PATTERN]</th>
-                <th className="text-muted-foreground px-4 py-2 text-left">USE_CASE</th>
+                <th className="text-muted-foreground px-4 py-2 text-left">USE CASE</th>
                 <th className="text-muted-foreground px-4 py-2 text-left">BLOCKING</th>
               </tr>
             </thead>

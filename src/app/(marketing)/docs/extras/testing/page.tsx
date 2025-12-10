@@ -13,7 +13,7 @@ export default function TestingGuidePage() {
     <FeatureGuideTemplate
       code="[0xB0]"
       category="Extras"
-      title="Testing_Guide"
+      title="Testing Guide"
       description="Comprehensive testing with Vitest for unit tests and Playwright for E2E tests."
       overview="130+ tests included. Vitest for unit tests, Playwright for E2E, axe-core for accessibility, and Storybook for visual tests."
       features={[
@@ -247,7 +247,7 @@ jobs:
 
       {/* Best Practices */}
       <DocsSection title="Testing Best Practices">
-        <DocsCard title="BEST_PRACTICES">
+        <DocsCard title="BEST PRACTICES">
           <div className="space-y-1">
             <div>
               ├─ <strong>Test behavior, not implementation</strong> - Focus on user experience

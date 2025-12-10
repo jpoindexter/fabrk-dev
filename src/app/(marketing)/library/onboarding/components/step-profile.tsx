@@ -42,7 +42,7 @@ export function StepProfile({ fullName, role, onFullNameChange, onRoleChange }: 
 
       <div className="space-y-4">
         <div className="space-y-2">
-          <Label className={cn(mode.font, 'text-xs')}>[FULL_NAME]:</Label>
+          <Label className={cn(mode.font, 'text-xs')}>[FULL NAME]:</Label>
           <Input
             placeholder="John Doe"
             value={fullName}
@@ -52,7 +52,7 @@ export function StepProfile({ fullName, role, onFullNameChange, onRoleChange }: 
         </div>
 
         <div className="space-y-2">
-          <Label className={cn(mode.font, 'text-xs')}>[YOUR_ROLE]:</Label>
+          <Label className={cn(mode.font, 'text-xs')}>[YOUR ROLE]:</Label>
           <Select value={role} onValueChange={onRoleChange}>
             <SelectTrigger className={cn(mode.radius, mode.font, 'text-sm')}>
               <SelectValue placeholder="Select your role" />

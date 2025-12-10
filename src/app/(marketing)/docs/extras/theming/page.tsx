@@ -14,7 +14,7 @@ export default function ThemingPage() {
     <FeatureGuideTemplate
       code="[0xB0]"
       category="Extras"
-      title="Theming_And_Customization"
+      title="Theming And Customization"
       description="Light/Dark color themes + Terminal/Modern visual styles."
       overview="Dual theme system: Color themes (light/dark) and Visual themes (Terminal/Modern). Persistent localStorage, no theme flash, and Tailwind v4 native."
       features={[
@@ -151,7 +151,7 @@ export function MyNavbar() {
     >
       {/* Theme System */}
       <DocsSection title="Dual Theme System">
-        <DocsCard title="THEME_SYSTEM">
+        <DocsCard title="THEME SYSTEM">
           <div className="space-y-1">
             <div>├─ Color Themes: Light and Dark color palettes</div>
             <div>
@@ -217,7 +217,7 @@ export function MyNavbar() {
 
       {/* Best Practices */}
       <DocsSection title="Best Practices">
-        <DocsCard title="BEST_PRACTICES">
+        <DocsCard title="BEST PRACTICES">
           <div className="space-y-1">
             <div>├─ Use semantic colors: bg-primary instead of bg-purple-500</div>
             <div>├─ Test across themes: Verify UI works in light and dark variants</div>

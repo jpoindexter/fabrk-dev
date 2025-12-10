@@ -116,7 +116,7 @@ export function PrivacyForm() {
               render={({ field }) => (
                 <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className={cn(mode.font, 'text-xs')}>[ACTIVITY_TRACKING]:</FormLabel>
+                    <FormLabel className={cn(mode.font, 'text-xs')}>[ACTIVITY TRACKING]:</FormLabel>
                     <FormDescription className={cn(mode.font, 'text-xs')}>
                       Allow us to track your activity to improve your experience.
                     </FormDescription>
@@ -142,7 +142,7 @@ export function PrivacyForm() {
               render={({ field }) => (
                 <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className={cn(mode.font, 'text-xs')}>[ANALYTICS_SHARING]:</FormLabel>
+                    <FormLabel className={cn(mode.font, 'text-xs')}>[ANALYTICS SHARING]:</FormLabel>
                     <FormDescription className={cn(mode.font, 'text-xs')}>
                       Share anonymous usage data to help us improve the product.
                     </FormDescription>
@@ -168,7 +168,7 @@ export function PrivacyForm() {
               render={({ field }) => (
                 <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className={cn(mode.font, 'text-xs')}>[SEARCH_INDEXING]:</FormLabel>
+                    <FormLabel className={cn(mode.font, 'text-xs')}>[SEARCH INDEXING]:</FormLabel>
                     <FormDescription className={cn(mode.font, 'text-xs')}>
                       Allow search engines to index your profile.
                     </FormDescription>
@@ -194,7 +194,7 @@ export function PrivacyForm() {
               render={({ field }) => (
                 <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className={cn(mode.font, 'text-xs')}>[DATA_RETENTION]:</FormLabel>
+                    <FormLabel className={cn(mode.font, 'text-xs')}>[DATA RETENTION]:</FormLabel>
                     <FormDescription className={cn(mode.font, 'text-xs')}>
                       Keep my account data if I delete my account.
                     </FormDescription>
@@ -219,7 +219,7 @@ export function PrivacyForm() {
               disabled={isLoading}
               className={cn(mode.radius, mode.font, 'text-xs')}
             >
-              {isLoading ? '> SAVING...' : '> SAVE_CHANGES'}
+              {isLoading ? '> SAVING...' : '> SAVE CHANGES'}
             </Button>
           </form>
         </Form>

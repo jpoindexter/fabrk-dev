@@ -77,7 +77,7 @@ export function SessionsSection() {
 
   return (
     <Card tone="neutral">
-      <CardHeader code="0x06" title="ACTIVE_SESSIONS" />
+      <CardHeader code="0x06" title="ACTIVE SESSIONS" />
       <CardContent>
         <div className="space-y-4">
           {sessions.length === 0 ? (

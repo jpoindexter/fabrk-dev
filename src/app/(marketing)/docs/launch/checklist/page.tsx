@@ -13,7 +13,7 @@ export default function LaunchChecklistPage() {
     <FeatureGuideTemplate
       code="[0xA0]"
       category="Launch"
-      title="Launch_Checklist"
+      title="Launch Checklist"
       description="A comprehensive guide to ensuring your Fabrk application is production-ready."
       overview="5-phase launch process: pre-launch verification, Stripe setup, marketing assets, launch day execution, and post-launch monitoring."
       features={[
@@ -94,7 +94,7 @@ npm run type-check`,
       {/* Phase 1: Pre-Launch */}
       <DocsSection title="Phase 1: Pre-Launch Verification">
         <div className="grid gap-4 sm:grid-cols-2">
-          <DocsCard title="CODE_QUALITY">
+          <DocsCard title="CODE QUALITY">
             <div className="space-y-1">
               <div>├─ Resolve all TODO/FIXME comments</div>
               <div>├─ Replace placeholders in src/config.js</div>
@@ -104,7 +104,7 @@ npm run type-check`,
               <div>└─ Verify npm run build succeeds</div>
             </div>
           </DocsCard>
-          <DocsCard title="LEGAL_BUSINESS">
+          <DocsCard title="LEGAL BUSINESS">
             <div className="space-y-1">
               <div>├─ Prices match Stripe dashboard</div>
               <div>├─ Support email is active</div>
@@ -117,18 +117,18 @@ npm run type-check`,
       {/* Phase 2: Stripe */}
       <DocsSection title="Phase 2: Stripe & Payments Setup">
         <div className="grid gap-4 sm:grid-cols-2">
-          <DocsCard title="PRODUCT_CONFIG">
+          <DocsCard title="PRODUCT CONFIG">
             <div className="space-y-1">
               <div>├─ Create products in Stripe (Test & Prod)</div>
               <div>├─ Copy Price IDs to .env</div>
               <div>└─ Create coupons if needed (e.g., EARLYBIRD)</div>
             </div>
           </DocsCard>
-          <DocsCard title="WEBHOOK_CONFIG">
+          <DocsCard title="WEBHOOK CONFIG">
             <div className="space-y-1">
               <div>├─ Add endpoint: /api/stripe/webhook</div>
               <div>├─ Select events: checkout.session.completed, etc.</div>
-              <div>└─ Copy Signing Secret to STRIPE_WEBHOOK_SECRET</div>
+              <div>└─ Copy Signing Secret to STRIPE WEBHOOK SECRET</div>
             </div>
           </DocsCard>
         </div>
@@ -153,7 +153,7 @@ npm run type-check`,
 
       {/* Phase 4: Launch Day */}
       <DocsSection title="Phase 4: Launch Day Execution">
-        <DocsCard title="LAUNCH_DAY">
+        <DocsCard title="LAUNCH DAY">
           <div className="space-y-1">
             <div>
               ├─ <strong>Distribution:</strong> Verify GitHub invite system or app deployment
@@ -170,7 +170,7 @@ npm run type-check`,
 
       {/* Phase 5: Post-Launch */}
       <DocsSection title="Phase 5: Post-Launch Monitoring">
-        <DocsCard title="POST_LAUNCH">
+        <DocsCard title="POST LAUNCH">
           <div className="space-y-1">
             <div>
               ├─ <strong>Support:</strong> Monitor support email for 48 hours

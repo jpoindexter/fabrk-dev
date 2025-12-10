@@ -76,7 +76,7 @@ export function InteractiveDemo() {
                 <CardHeader title="INFO" />
                 <CardContent>
                   <p className="text-foreground text-xs">
-                    <span className="text-primary font-semibold">[FULLY_INTERACTIVE]</span> All
+                    <span className="text-primary font-semibold">[FULLY INTERACTIVE]</span> All
                     dashboards and tables are fully functional. Sort columns, filter data, toggle
                     settings, and explore the full UX. These are the exact templates included in
                     Fabrk.

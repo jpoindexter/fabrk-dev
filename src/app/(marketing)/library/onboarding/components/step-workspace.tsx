@@ -58,7 +58,7 @@ export function StepWorkspace({
 
       <div className="space-y-4">
         <div className="space-y-2">
-          <Label className={cn(mode.font, 'text-xs')}>[WORKSPACE_NAME]:</Label>
+          <Label className={cn(mode.font, 'text-xs')}>[WORKSPACE NAME]:</Label>
           <Input
             placeholder="Acme Inc"
             value={workspaceName}
@@ -68,7 +68,7 @@ export function StepWorkspace({
         </div>
 
         <div className="space-y-2">
-          <Label className={cn(mode.font, 'text-xs')}>[TEAM_SIZE]:</Label>
+          <Label className={cn(mode.font, 'text-xs')}>[TEAM SIZE]:</Label>
           <Select value={teamSize} onValueChange={onTeamSizeChange}>
             <SelectTrigger className={cn(mode.radius, mode.font, 'text-sm')}>
               <SelectValue placeholder="Select team size" />
@@ -88,7 +88,7 @@ export function StepWorkspace({
         </div>
 
         <div className="space-y-2">
-          <Label className={cn(mode.font, 'text-xs')}>[PRIMARY_USE_CASE]:</Label>
+          <Label className={cn(mode.font, 'text-xs')}>[PRIMARY USE CASE]:</Label>
           <div className="space-y-2">
             {useCases.map((useCase) => (
               <div key={useCase.id} className="flex items-center space-x-2">

@@ -13,7 +13,7 @@ export function ImplementationNote() {
     <CodeWindow filename="features.md">
       <div className="p-4">
         <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-          [TEMPLATE_FEATURES]:
+          [TEMPLATE FEATURES]:
         </div>
         <div className={cn(mode.font, 'space-y-2 text-xs')}>
           <div>

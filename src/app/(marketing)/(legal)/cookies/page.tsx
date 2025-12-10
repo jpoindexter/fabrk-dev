@@ -24,16 +24,16 @@ export default function CookiesPage() {
           transition={{ duration: 0.5 }}
           className="mb-6"
         >
-          <Badge code="0x00" label="LEGAL" meta="COOKIE_POLICY" />
+          <Badge code="0x00" label="LEGAL" meta="COOKIE POLICY" />
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <h1 className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>FABRK_LEGAL:</h1>
+          <h1 className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>FABRK LEGAL:</h1>
           <h2 className={cn('mb-4 text-4xl font-semibold tracking-tight', mode.font)}>
-            COOKIE_POLICY
+            COOKIE POLICY
           </h2>
         </motion.div>
         <motion.div
@@ -68,7 +68,7 @@ export default function CookiesPage() {
       <div className="space-y-6">
         {/* Section 1 */}
         <Card size="auto">
-          <CardHeader code="0x10" title="WHAT_ARE_COOKIES" icon={<Cookie className="size-4" />} />
+          <CardHeader code="0x10" title="WHAT ARE COOKIES" icon={<Cookie className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
               Cookies are small text files placed on your device when you visit a website. They are
@@ -98,7 +98,7 @@ export default function CookiesPage() {
 
         {/* Section 2 */}
         <Card size="auto">
-          <CardHeader code="0x20" title="COOKIES_WE_USE" icon={<Shield className="size-4" />} />
+          <CardHeader code="0x20" title="COOKIES WE USE" icon={<Shield className="size-4" />} />
           <CardContent padding="md">
             <div className="space-y-6">
               {/* Essential Cookies */}
@@ -118,7 +118,7 @@ export default function CookiesPage() {
                   <table className={cn('w-full text-xs', mode.font)}>
                     <thead>
                       <tr className="border-border border-b">
-                        <th className="text-muted-foreground py-2 pr-4 text-left">COOKIE_NAME</th>
+                        <th className="text-muted-foreground py-2 pr-4 text-left">COOKIE NAME</th>
                         <th className="text-muted-foreground py-2 pr-4 text-left">PURPOSE</th>
                         <th className="text-muted-foreground py-2 text-left">DURATION</th>
                       </tr>
@@ -163,7 +163,7 @@ export default function CookiesPage() {
                   <table className={cn('w-full text-xs', mode.font)}>
                     <thead>
                       <tr className="border-border border-b">
-                        <th className="text-muted-foreground py-2 pr-4 text-left">COOKIE_NAME</th>
+                        <th className="text-muted-foreground py-2 pr-4 text-left">COOKIE NAME</th>
                         <th className="text-muted-foreground py-2 pr-4 text-left">PURPOSE</th>
                         <th className="text-muted-foreground py-2 text-left">DURATION</th>
                       </tr>
@@ -288,7 +288,7 @@ export default function CookiesPage() {
 
         {/* Section 3 */}
         <Card size="auto">
-          <CardHeader code="0x30" title="MANAGE_COOKIES" icon={<Settings className="size-4" />} />
+          <CardHeader code="0x30" title="MANAGE COOKIES" icon={<Settings className="size-4" />} />
           <CardContent padding="md">
             <div className="space-y-4">
               <div>
@@ -346,14 +346,14 @@ export default function CookiesPage() {
 
         {/* Section 4 */}
         <Card size="auto">
-          <CardHeader code="0x40" title="OTHER_TRACKING" icon={<Globe className="size-4" />} />
+          <CardHeader code="0x40" title="OTHER TRACKING" icon={<Globe className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground mb-2 text-xs', mode.font)}>
               In addition to cookies, we may use:
             </p>
             <ul className={cn('text-muted-foreground space-y-1 pl-4 text-xs', mode.font)}>
               <li>
-                ├─ <span className="text-foreground">LOCAL_STORAGE:</span> Store preferences and app
+                ├─ <span className="text-foreground">LOCAL STORAGE:</span> Store preferences and app
                 state
               </li>
               <li>
@@ -370,7 +370,7 @@ export default function CookiesPage() {
 
         {/* Section 5 */}
         <Card size="auto">
-          <CardHeader code="0x50" title="POLICY_UPDATES" icon={<RefreshCw className="size-4" />} />
+          <CardHeader code="0x50" title="POLICY UPDATES" icon={<RefreshCw className="size-4" />} />
           <CardContent padding="md">
             <p className={cn('text-muted-foreground text-xs', mode.font)}>
               We may update this Cookie Policy. Changes will be posted with an updated "Last
@@ -412,7 +412,7 @@ export default function CookiesPage() {
         <Card size="auto" tone="primary">
           <CardHeader
             code="0x70"
-            title="MANAGE_PREFERENCES"
+            title="MANAGE PREFERENCES"
             icon={<Settings className="size-4" />}
           />
           <CardContent padding="md">
@@ -428,7 +428,7 @@ export default function CookiesPage() {
               }}
               className="h-auto p-0 text-xs"
             >
-              &gt; OPEN_COOKIE_SETTINGS
+              &gt; OPEN COOKIE SETTINGS
             </Button>
           </CardContent>
         </Card>
@@ -443,17 +443,17 @@ export default function CookiesPage() {
         className="mt-8"
       >
         <Card size="auto">
-          <CardHeader code="0x80" title="RELATED_DOCUMENTS" />
+          <CardHeader code="0x80" title="RELATED DOCUMENTS" />
           <CardContent padding="md">
             <div className={cn('flex flex-wrap gap-4 text-xs', mode.font)}>
               <Link href="/terms" className="text-primary hover:underline">
-                &gt; TERMS_OF_SERVICE
+                &gt; TERMS OF SERVICE
               </Link>
               <Link href="/privacy" className="text-primary hover:underline">
-                &gt; PRIVACY_POLICY
+                &gt; PRIVACY POLICY
               </Link>
               <Link href="/refund" className="text-primary hover:underline">
-                &gt; REFUND_POLICY
+                &gt; REFUND POLICY
               </Link>
             </div>
           </CardContent>

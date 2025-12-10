@@ -72,7 +72,7 @@ export function ImpersonationBanner() {
         <div className="flex items-center gap-4">
           <AlertTriangle className="text-warning h-5 w-5" />
           <span className={cn('text-foreground text-sm', mode.font)}>
-            <span className="text-warning">[IMPERSONATION_MODE]</span> Viewing as:{' '}
+            <span className="text-warning">[IMPERSONATION MODE]</span> Viewing as:{' '}
             <strong>{status.targetUser?.name || status.targetUser?.email || 'User'}</strong>
           </span>
         </div>
@@ -88,7 +88,7 @@ export function ImpersonationBanner() {
           ) : (
             <>
               <X className="mr-1 h-4 w-4" />
-              &gt; EXIT_IMPERSONATION
+              &gt; EXIT IMPERSONATION
             </>
           )}
         </Button>

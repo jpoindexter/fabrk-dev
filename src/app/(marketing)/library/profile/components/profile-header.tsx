@@ -39,7 +39,7 @@ interface ProfileHeaderProps {
 export function ProfileHeader({ user }: ProfileHeaderProps) {
   return (
     <Card tone="neutral">
-      <CardHeader code="0x02" title="USER_PROFILE" />
+      <CardHeader code="0x02" title="USER PROFILE" />
       <CardContent padding="lg">
         <div className="flex flex-col gap-6 md:flex-row">
           {/* Avatar Section */}
@@ -65,10 +65,10 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
               <div className="flex gap-2">
                 <Button className={cn(mode.radius, mode.font, 'text-xs')}>
                   <Edit className="mr-1 h-3 w-3" />
-                  &gt; EDIT_PROFILE
+                  &gt; EDIT PROFILE
                 </Button>
                 <Button variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
-                  &gt; PUBLIC_VIEW
+                  &gt; PUBLIC VIEW
                 </Button>
               </div>
             </div>

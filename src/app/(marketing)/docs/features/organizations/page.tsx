@@ -14,7 +14,7 @@ export default function OrganizationsPage() {
     <FeatureGuideTemplate
       code="[0x50]"
       category="Features"
-      title="Organizations_And_Teams"
+      title="Organizations And Teams"
       description="Multi-tenancy support with role-based access control (RBAC), team invitations, and organization management."
       overview="Fabrk includes a complete multi-tenancy system for B2B SaaS applications with organization creation and management, role-based access control (Owner, Admin, Member, Guest), email-based team invitations, organization-scoped data isolation, member management and role changes, and organization settings and branding."
       features={[
@@ -204,7 +204,7 @@ export async function checkPermission(
     >
       {/* Database Schema Section */}
       <DocsSection title="Database Schema">
-        <DocsCard title="DATABASE_SCHEMA">
+        <DocsCard title="DATABASE SCHEMA">
           <p className="mb-6">
             Core models in <code className="bg-muted px-1">prisma/schema.prisma</code>:
           </p>
@@ -265,7 +265,7 @@ model OrganizationInvite {
 
       {/* Role Permissions Section */}
       <DocsSection title="Role Permissions">
-        <DocsCard title="ROLE_PERMISSIONS">
+        <DocsCard title="ROLE PERMISSIONS">
           <div className="overflow-x-auto">
             <table className="w-full font-mono text-xs">
               <thead>
@@ -335,7 +335,7 @@ model OrganizationInvite {
 
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
-        <DocsCard title="BEST_PRACTICES">
+        <DocsCard title="BEST PRACTICES">
           <ul className="space-y-1">
             <li>├─ Always check permissions before any organization action</li>
             <li>├─ Use database transactions for multi-step operations</li>

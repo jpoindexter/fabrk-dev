@@ -11,8 +11,8 @@
  *   code="0x00"
  *   title="NAVIGATION"
  *   tabs={[
- *     { id: "tab1", label: "FIRST_TAB" },
- *     { id: "tab2", label: "SECOND_TAB", icon: Settings },
+ *     { id: "tab1", label: "FIRST TAB" },
+ *     { id: "tab2", label: "SECOND TAB", icon: Settings },
  *   ]}
  *   value={activeTab}
  *   onValueChange={setActiveTab}

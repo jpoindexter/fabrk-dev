@@ -96,7 +96,7 @@ export function ApiKeysList({
         <Card key={apiKey.id}>
           <CardHeader
             code={`0x${index.toString(16).padStart(2, '0')}`}
-            title={apiKey.name.toUpperCase().replace(/ /g, '_')}
+            title={apiKey.name.toUpperCase()}
             icon={<Key className="h-4 w-4" />}
           />
           <CardContent>

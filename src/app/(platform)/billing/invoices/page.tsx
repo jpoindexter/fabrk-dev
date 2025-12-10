@@ -97,7 +97,7 @@ export default async function InvoicesPage() {
         <Card>
           <CardHeader
             code="0x00"
-            title="PAYMENT_HISTORY"
+            title="PAYMENT HISTORY"
             meta={`${payments.length} transaction${payments.length !== 1 ? 's' : ''}`}
           />
           <CardContent>
@@ -139,7 +139,7 @@ export default async function InvoicesPage() {
       {/* Information Cards */}
       <div className="mt-8 grid gap-6 md:grid-cols-2">
         <Card>
-          <CardHeader code="0xF0" title="INVOICE_DETAILS" icon={<FileText className="h-4 w-4" />} />
+          <CardHeader code="0xF0" title="INVOICE DETAILS" icon={<FileText className="h-4 w-4" />} />
           <CardContent className="text-muted-foreground space-y-2 text-sm">
             <p>Each invoice includes:</p>
             <ul className="ml-2 list-inside list-disc space-y-1">
@@ -154,7 +154,7 @@ export default async function InvoicesPage() {
         <Card>
           <CardHeader
             code="0xF1"
-            title="EMAIL_RECEIPTS"
+            title="EMAIL RECEIPTS"
             icon={<CheckCircle2 className="h-4 w-4" />}
           />
           <CardContent className="text-muted-foreground text-sm">

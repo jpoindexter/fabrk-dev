@@ -43,14 +43,14 @@ export function ComplianceTab({
     <div className="space-y-6">
       {/* GDPR Rights */}
       <Card tone="neutral">
-        <CardHeader code="0x04" title="GDPR_RIGHTS" icon={<Globe className="h-4 w-4" />} />
+        <CardHeader code="0x04" title="GDPR RIGHTS" icon={<Globe className="h-4 w-4" />} />
         <CardContent padding="md">
           <div className="mb-4 flex items-center gap-4">
             <div className="border-border bg-primary/10 flex h-10 w-10 items-center justify-center border">
               <Globe className="text-primary h-5 w-5" />
             </div>
             <div>
-              <div className={cn(mode.font, 'text-muted-foreground text-xs')}>[GDPR_RIGHTS]:</div>
+              <div className={cn(mode.font, 'text-muted-foreground text-xs')}>[GDPR RIGHTS]:</div>
               <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
                 Exercise your data protection rights
               </div>
@@ -63,7 +63,7 @@ export function ComplianceTab({
               onClick={onExportData}
             >
               <Download className="mr-2 h-4 w-4" />
-              &gt; DOWNLOAD_MY_DATA (GDPR Export)
+              &gt; DOWNLOAD MY DATA (GDPR Export)
             </Button>
             <Button
               variant="outline"
@@ -71,7 +71,7 @@ export function ComplianceTab({
               onClick={onRequestAccess}
             >
               <Eye className="mr-2 h-4 w-4" />
-              &gt; REQUEST_DATA_ACCESS_REPORT
+              &gt; REQUEST DATA ACCESS REPORT
             </Button>
             <Button
               variant="outline"
@@ -79,7 +79,7 @@ export function ComplianceTab({
               onClick={() => onViewPolicy('privacy')}
             >
               <FileText className="mr-2 h-4 w-4" />
-              &gt; VIEW_PRIVACY_POLICY
+              &gt; VIEW PRIVACY POLICY
             </Button>
             <Button
               variant="outline"
@@ -87,7 +87,7 @@ export function ComplianceTab({
               onClick={() => onViewPolicy('terms')}
             >
               <FileText className="mr-2 h-4 w-4" />
-              &gt; VIEW_TERMS_OF_SERVICE
+              &gt; VIEW TERMS OF SERVICE
             </Button>
           </div>
         </CardContent>
@@ -95,14 +95,14 @@ export function ComplianceTab({
 
       {/* Danger Zone */}
       <Card tone="danger">
-        <CardHeader code="0x05" title="DANGER_ZONE" icon={<UserX className="h-4 w-4" />} />
+        <CardHeader code="0x05" title="DANGER ZONE" icon={<UserX className="h-4 w-4" />} />
         <CardContent padding="md">
           <div className="mb-4 flex items-center gap-4">
             <div className="border-border bg-destructive/10 flex h-10 w-10 items-center justify-center border">
               <UserX className="text-destructive h-5 w-5" />
             </div>
             <div>
-              <div className={cn(mode.font, 'text-muted-foreground text-xs')}>[DANGER_ZONE]:</div>
+              <div className={cn(mode.font, 'text-muted-foreground text-xs')}>[DANGER ZONE]:</div>
               <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
                 Irreversible actions - proceed with caution
               </div>
@@ -124,13 +124,13 @@ export function ComplianceTab({
                   className={cn(mode.radius, mode.font, 'text-xs')}
                 >
                   <Trash2 className="mr-2 h-3 w-3" />
-                  &gt; DELETE_MY_ACCOUNT
+                  &gt; DELETE MY ACCOUNT
                 </Button>
               </AlertDialogTrigger>
             </div>
             <AlertDialogContent className={cn(mode.radius, 'border-destructive border')}>
               <AlertDialogTitle className={cn(mode.font, 'text-destructive text-sm')}>
-                [DELETE_ACCOUNT]:
+                [DELETE ACCOUNT]:
               </AlertDialogTitle>
               <AlertDialogDescription className={cn(mode.font, 'text-xs')}>
                 Are you sure you want to delete your account? This action cannot be undone. All your
@@ -148,7 +148,7 @@ export function ComplianceTab({
                     'bg-destructive text-destructive-foreground hover:bg-destructive/90 text-xs'
                   )}
                 >
-                  &gt; DELETE_ACCOUNT
+                  &gt; DELETE ACCOUNT
                 </AlertDialogAction>
               </div>
             </AlertDialogContent>

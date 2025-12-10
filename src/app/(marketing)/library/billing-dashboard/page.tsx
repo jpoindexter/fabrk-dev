@@ -69,20 +69,20 @@ export default function BillingDashboard() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <TemplatePageHeader
-          badge="BILLING_DASHBOARD"
+          badge="BILLING DASHBOARD"
           title="Billing & Subscription"
           description="Manage your subscription, payments, and billing information"
         />
         <Button className={cn(mode.radius, mode.font, "text-xs")}>
           <ArrowUpRight className="mr-2 size-4" />
-          &gt; UPGRADE_PLAN
+          &gt; UPGRADE PLAN
         </Button>
       </div>
 
       {/* Terminal Tab Navigation */}
       <StyledTabs
         code="0x00"
-        title="BILLING_NAVIGATION"
+        title="BILLING NAVIGATION"
         tabs={tabs}
         value={activeTab}
         onValueChange={setActiveTab}
@@ -262,7 +262,7 @@ function BillingPreview() {
         {/* Terminal Tab Navigation */}
         <StyledTabs
           code="0x00"
-          title="BILLING_NAVIGATION"
+          title="BILLING NAVIGATION"
           tabs={tabs}
           value={activeTab}
           onValueChange={setActiveTab}
@@ -314,7 +314,7 @@ export default function BillingDashboardTemplate() {
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
         {/* Header */}
         <TemplatePageHeader
-          badge="BILLING_DASHBOARD"
+          badge="BILLING DASHBOARD"
           title="Billing & Subscription"
           description="Manage your subscription, payments, and billing information"
         />
@@ -323,7 +323,7 @@ export default function BillingDashboardTemplate() {
         <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
           {/* Tab Navigation Card */}
           <Card>
-            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
@@ -358,7 +358,7 @@ export default function BillingDashboardTemplate() {
           {/* Preview Tab Content */}
           <TabsContent value="preview" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <CardHeader code="0x01" title="LIVE PREVIEW" />
               <BillingPreview />
             </Card>
           </TabsContent>
@@ -366,7 +366,7 @@ export default function BillingDashboardTemplate() {
           {/* Code Tab Content */}
           <TabsContent value="code" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <CardHeader code="0x01" title="SOURCE CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
@@ -376,7 +376,7 @@ export default function BillingDashboardTemplate() {
 
         {/* File Structure */}
         <Card>
-          <CardHeader code="0x02" title="FILE_STRUCTURE" />
+          <CardHeader code="0x02" title="FILE STRUCTURE" />
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>

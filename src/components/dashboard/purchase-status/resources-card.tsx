@@ -17,7 +17,7 @@ export function ResourcesCard({ hasAccess }: ResourcesCardProps) {
     <Card tone="neutral">
       <CardHeader
         code="0x03"
-        title="RESOURCES_AND_SUPPORT"
+        title="RESOURCES AND SUPPORT"
         icon={<Package className="h-4 w-4" />}
       />
       <CardContent padding="md" className="space-y-4">
@@ -29,7 +29,7 @@ export function ResourcesCard({ hasAccess }: ResourcesCardProps) {
         >
           <a href="https://github.com/fabrk/boilerplate" target="_blank" rel="noopener noreferrer">
             <Github className="mr-2 h-4 w-4" />
-            &gt; GITHUB_REPOSITORY
+            &gt; GITHUB REPOSITORY
             {hasAccess && <ExternalLink className="ml-auto h-4 w-4" />}
           </a>
         </Button>

@@ -13,7 +13,7 @@ export default function NotificationsPage() {
     <FeatureGuideTemplate
       code="[0x40]"
       category="Features"
-      title="Notifications_System"
+      title="Notifications System"
       description="Real-time notifications with database persistence, bell icon badge, and read/unread state management."
       overview="The notifications system combines real-time delivery via Pusher with database persistence for a complete notification experience. Users receive instant notifications with a visual bell icon indicator and can manage their notification history."
       features={[
@@ -266,7 +266,7 @@ export async function POST(req: Request) {
     >
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
-        <DocsCard title="BEST_PRACTICES">
+        <DocsCard title="BEST PRACTICES">
           <ul className="space-y-1">
             <li>
               ├─ <strong>Be selective:</strong> Only notify for important, actionable events

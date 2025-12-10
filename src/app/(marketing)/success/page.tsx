@@ -69,7 +69,7 @@ function SuccessContent() {
             >
               <CheckCircle className="text-primary-foreground size-12" />
             </div>
-            <h1 className={cn('text-4xl font-semibold', mode.font)}>PURCHASE_SUCCESSFUL</h1>
+            <h1 className={cn('text-4xl font-semibold', mode.font)}>PURCHASE SUCCESSFUL</h1>
             <p className={cn('text-muted-foreground text-sm', mode.font)}>
               Thank you for your purchase. Your payment has been processed successfully.
             </p>
@@ -77,7 +77,7 @@ function SuccessContent() {
 
           {/* Check your email banner */}
           <Card>
-            <CardHeader code="0x01" title="CHECK_YOUR_EMAIL" icon={<Mail className="size-4" />} />
+            <CardHeader code="0x01" title="CHECK YOUR EMAIL" icon={<Mail className="size-4" />} />
             <CardContent padding="md">
               <p className={cn('text-muted-foreground text-xs', mode.font)}>
                 We've sent you a confirmation email with a magic link to instantly access your
@@ -88,7 +88,7 @@ function SuccessContent() {
 
           {/* What's in the email */}
           <Card>
-            <CardHeader code="0x02" title="EMAIL_CONTENTS" icon={<Package className="size-4" />} />
+            <CardHeader code="0x02" title="EMAIL CONTENTS" icon={<Package className="size-4" />} />
             <CardContent padding="md">
               <ul className={cn('text-muted-foreground space-y-4 text-xs', mode.font)}>
                 <li className="flex items-start gap-4">
@@ -101,7 +101,7 @@ function SuccessContent() {
                     1
                   </span>
                   <span>
-                    <strong className="text-foreground">GITHUB_REPOSITORY_ACCESS</strong> - You've
+                    <strong className="text-foreground">GITHUB REPOSITORY ACCESS</strong> - You've
                     been invited to the private Fabrk repository
                   </span>
                 </li>
@@ -115,7 +115,7 @@ function SuccessContent() {
                     2
                   </span>
                   <span>
-                    <strong className="text-foreground">MAGIC_LINK</strong> - Click to instantly
+                    <strong className="text-foreground">MAGIC LINK</strong> - Click to instantly
                     access your dashboard (valid for 7 days)
                   </span>
                 </li>
@@ -129,7 +129,7 @@ function SuccessContent() {
                     3
                   </span>
                   <span>
-                    <strong className="text-foreground">GETTING_STARTED_GUIDE</strong> - Next steps
+                    <strong className="text-foreground">GETTING STARTED GUIDE</strong> - Next steps
                     to clone and use your boilerplate
                   </span>
                 </li>
@@ -141,7 +141,7 @@ function SuccessContent() {
           <Card>
             <CardHeader
               code="0x03"
-              title="ACCESS_YOUR_REPOSITORY"
+              title="ACCESS YOUR REPOSITORY"
               icon={<Download className="size-4" />}
             />
             <CardContent padding="md">
@@ -158,13 +158,13 @@ function SuccessContent() {
                       rel="noopener noreferrer"
                     >
                       <Download className="mr-2 size-4" />
-                      &gt; CHECK_GITHUB
+                      &gt; CHECK GITHUB
                     </a>
                   </Button>
                   <Button asChild variant="outline" size="lg" className="w-full text-xs">
                     <a href="/docs/getting-started" target="_blank" rel="noopener noreferrer">
                       <FileDown className="mr-2 size-4" />
-                      &gt; VIEW_DOCS
+                      &gt; VIEW DOCS
                     </a>
                   </Button>
                 </div>
@@ -179,7 +179,7 @@ function SuccessContent() {
             </p>
             {!isResending ? (
               <Button onClick={handleResendEmail} variant="link" size="sm" className="text-xs">
-                &gt; CLICK_TO_RESEND
+                &gt; CLICK TO RESEND
               </Button>
             ) : (
               <div
@@ -194,7 +194,7 @@ function SuccessContent() {
                     mode.radius
                   )}
                 />
-                <span>SENDING_EMAIL...</span>
+                <span>SENDING EMAIL...</span>
               </div>
             )}
           </div>
@@ -202,7 +202,7 @@ function SuccessContent() {
           {/* Alternative action */}
           <div className="flex flex-col gap-4 sm:flex-row">
             <Button asChild variant="outline" size="lg" className="flex-1 text-xs">
-              <Link href="/">&gt; RETURN_HOME</Link>
+              <Link href="/">&gt; RETURN HOME</Link>
             </Button>
           </div>
 
@@ -211,7 +211,7 @@ function SuccessContent() {
             <p className={cn('text-muted-foreground text-xs', mode.font)}>
               [HELP]:{' '}
               <Link href="/support" className="text-primary hover:underline">
-                CONTACT_SUPPORT
+                CONTACT SUPPORT
               </Link>
             </p>
           </div>

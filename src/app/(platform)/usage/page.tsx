@@ -124,7 +124,7 @@ async function UsageDashboard({ userId }: { userId: string }) {
       {/* Key Metrics */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card tone="primary">
-          <CardHeader code="0x01" title="CURRENT_BALANCE" icon={<Coins className="h-4 w-4" />} />
+          <CardHeader code="0x01" title="CURRENT BALANCE" icon={<Coins className="h-4 w-4" />} />
           <CardContent>
             <div className="text-2xl font-semibold">{data.balance}</div>
             <p className="text-muted-foreground text-xs">
@@ -150,7 +150,7 @@ async function UsageDashboard({ userId }: { userId: string }) {
         </Card>
 
         <Card tone="primary">
-          <CardHeader code="0x04" title="NEXT_REFILL" icon={<Calendar className="h-4 w-4" />} />
+          <CardHeader code="0x04" title="NEXT REFILL" icon={<Calendar className="h-4 w-4" />} />
           <CardContent>
             <div className="text-2xl font-semibold">{data.daysUntilRefill}</div>
             <p className="text-muted-foreground text-xs">days until credit refresh</p>
@@ -160,7 +160,7 @@ async function UsageDashboard({ userId }: { userId: string }) {
 
       {/* Balance Progress Bar */}
       <Card tone="primary">
-        <CardHeader code="0x05" title="BALANCE_STATUS" />
+        <CardHeader code="0x05" title="BALANCE STATUS" />
         <CardContent>
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
@@ -185,7 +185,7 @@ async function UsageDashboard({ userId }: { userId: string }) {
 
       {/* Usage Chart */}
       <Card tone="primary">
-        <CardHeader code="0x06" title="USAGE_HISTORY" meta="Last 14 days" />
+        <CardHeader code="0x06" title="USAGE HISTORY" meta="Last 14 days" />
         <CardContent>
           <UsageChart data={data.usageStats} />
         </CardContent>
@@ -193,7 +193,7 @@ async function UsageDashboard({ userId }: { userId: string }) {
 
       {/* Transaction History */}
       <Card tone="neutral">
-        <CardHeader code="0x07" title="RECENT_TRANSACTIONS" meta="Last 20" />
+        <CardHeader code="0x07" title="RECENT TRANSACTIONS" meta="Last 20" />
         <CardContent>
           <TransactionTable transactions={data.transactions} />
         </CardContent>

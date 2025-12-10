@@ -24,7 +24,7 @@ export function PaginationControls({ table }: PaginationControlsProps) {
   return (
     <div className={cn(mode.font, 'mt-4 flex items-center justify-between text-xs')}>
       <div className="flex items-center gap-2">
-        <span className="text-muted-foreground">ROWS_PER_PAGE:</span>
+        <span className="text-muted-foreground">ROWS PER PAGE:</span>
         <Select
           value={`${table.getState().pagination.pageSize}`}
           onValueChange={(value) => {

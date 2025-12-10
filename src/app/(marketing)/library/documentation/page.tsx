@@ -65,7 +65,7 @@ export default function DocumentationLayout() {
       {/* Main Content */}
       <main className="flex-1 p-6">
         <Card>
-          <CardHeader code="0x01" title={activeDoc.toUpperCase().replace(/-/g, "_")} />
+          <CardHeader code="0x01" title={activeDoc.toUpperCase()} />
           <CardContent padding="lg">
             {/* Documentation content */}
           </CardContent>
@@ -75,7 +75,7 @@ export default function DocumentationLayout() {
       {/* Table of Contents */}
       <aside className="w-64 border-l border-border">
         <Card className="border-0 border-l">
-          <CardHeader code="0x02" title="ON_THIS_PAGE" />
+          <CardHeader code="0x02" title="ON THIS PAGE" />
           <div className="p-4">
             {/* TOC links */}
           </div>
@@ -111,7 +111,7 @@ export default function DocumentationLayoutTemplate() {
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
         {/* Header */}
         <TemplatePageHeader
-          badge="DOCUMENTATION_LAYOUT"
+          badge="DOCUMENTATION LAYOUT"
           title="Documentation Layout"
           description="Three-column documentation layout with sidebar navigation and table of contents"
         />
@@ -120,7 +120,7 @@ export default function DocumentationLayoutTemplate() {
         <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
           {/* Tab Navigation Card */}
           <Card>
-            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
@@ -155,7 +155,7 @@ export default function DocumentationLayoutTemplate() {
           {/* Preview Tab Content */}
           <TabsContent value="preview" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <CardHeader code="0x01" title="LIVE PREVIEW" />
               <DocsLayoutPreview />
             </Card>
           </TabsContent>
@@ -163,7 +163,7 @@ export default function DocumentationLayoutTemplate() {
           {/* Code Tab Content */}
           <TabsContent value="code" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <CardHeader code="0x01" title="SOURCE CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
@@ -173,7 +173,7 @@ export default function DocumentationLayoutTemplate() {
 
         {/* File Structure */}
         <Card>
-          <CardHeader code="0x02" title="FILE_STRUCTURE" />
+          <CardHeader code="0x02" title="FILE STRUCTURE" />
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>

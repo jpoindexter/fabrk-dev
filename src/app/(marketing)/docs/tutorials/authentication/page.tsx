@@ -13,7 +13,7 @@ export default function AuthenticationTutorialPage() {
     <FeatureGuideTemplate
       code="[0x20]"
       category="Tutorials"
-      title="User_Authentication"
+      title="User Authentication"
       description="Let users create accounts, log in, and securely access your app."
       overview="Complete authentication system with email/password, Google OAuth, email verification, password reset, two-factor auth, and protected routes. Session-based auth with 30-day expiry."
       features={[
@@ -175,7 +175,7 @@ export default async function PrivatePage() {
 
       {/* Auth Flow */}
       <DocsSection title="How It Works">
-        <DocsCard title="SIGNUP_FLOW">
+        <DocsCard title="SIGNUP FLOW">
           <div className="space-y-1">
             <div>├─ User enters email and password on the signup form</div>
             <div>├─ Password is encrypted (never stored as plain text)</div>
@@ -184,7 +184,7 @@ export default async function PrivatePage() {
             <div>└─ User clicks the verification link to confirm their email</div>
           </div>
         </DocsCard>
-        <DocsCard title="LOGIN_FLOW">
+        <DocsCard title="LOGIN FLOW">
           <div className="space-y-1">
             <div>├─ User enters email and password</div>
             <div>├─ System checks if the password matches</div>
@@ -197,7 +197,7 @@ export default async function PrivatePage() {
 
       {/* Google OAuth Setup */}
       <DocsSection title="Add Google Login">
-        <DocsCard title="GOOGLE_OAUTH">
+        <DocsCard title="GOOGLE OAUTH">
           <p className="mb-4">
             Let users sign in with their Google account. This is convenient for users and often
             increases signup rates.
@@ -240,7 +240,7 @@ export default async function PrivatePage() {
 
       {/* Protected Routes */}
       <DocsSection title="Protected Routes">
-        <DocsCard title="PROTECTED_ROUTES">
+        <DocsCard title="PROTECTED ROUTES">
           <p className="mb-4">Fabrk automatically protects these routes:</p>
           <div className="space-y-1">
             <div>

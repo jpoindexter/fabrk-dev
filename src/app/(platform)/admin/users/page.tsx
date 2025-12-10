@@ -45,7 +45,7 @@ export default function AdminUsersPage() {
       <Card>
         <CardHeader
           code="0x00"
-          title="ALL_USERS"
+          title="ALL USERS"
           icon={<Users className="h-4 w-4" />}
           meta="View and manage all registered users with full admin controls (showing last 100)"
         />

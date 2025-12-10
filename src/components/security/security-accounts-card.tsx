@@ -33,7 +33,7 @@ export function SecurityAccountsCard({
     <Card tone="neutral">
       <CardHeader
         code="0x01"
-        title="CONNECTED_ACCOUNTS"
+        title="CONNECTED ACCOUNTS"
         icon={<Link2 className="h-4 w-4" />}
         meta={`${connectedAccounts.length} ${connectedAccounts.length === 1 ? 'account' : 'accounts'}`}
       />
@@ -81,10 +81,10 @@ export function SecurityAccountsCard({
 
         <div className="flex gap-4">
           <Button variant="outline" size="sm">
-            &gt; CONNECT_GOOGLE
+            &gt; CONNECT GOOGLE
           </Button>
           <Button variant="outline" size="sm">
-            &gt; CONNECT_GITHUB
+            &gt; CONNECT GITHUB
           </Button>
         </div>
       </CardContent>

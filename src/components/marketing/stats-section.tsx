@@ -142,7 +142,7 @@ export function StatsSection() {
             >
               <Card>
                 <CardHeader
-                  title={`[ [0x${(index + 31).toString(16).toUpperCase()}] ${stat.label.toUpperCase().replace(/ /g, '_')} ]`}
+                  title={`[ [0x${(index + 31).toString(16).toUpperCase()}] ${stat.label.toUpperCase()} ]`}
                 />
                 <CardContent>
                   <div className={cn('text-foreground mb-2 text-3xl font-semibold', mode.font)}>

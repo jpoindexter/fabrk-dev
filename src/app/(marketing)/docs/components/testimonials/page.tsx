@@ -30,7 +30,7 @@ function TestimonialsDemo() {
     <section className="w-full font-mono">
       <div className="mb-6 text-center">
         <span className="text-muted-foreground text-xs">[0x40]</span>
-        <h2 className="mt-2 text-xl font-semibold">LOVED_BY_DEVELOPERS</h2>
+        <h2 className="mt-2 text-xl font-semibold">LOVED BY DEVELOPERS</h2>
         <p className="text-muted-foreground mt-1 text-xs">&gt; Early access customer feedback</p>
       </div>
       <div className="grid gap-4 md:grid-cols-3">
@@ -72,7 +72,7 @@ function TestimonialCardDemo() {
           <AvatarFallback className="bg-primary/10 text-primary">CN</AvatarFallback>
         </Avatar>
         <div>
-          <span className="block text-sm font-semibold">CUSTOMER_NAME</span>
+          <span className="block text-sm font-semibold">CUSTOMER NAME</span>
           <span className="text-muted-foreground block text-xs">Role @ Company</span>
         </div>
       </div>

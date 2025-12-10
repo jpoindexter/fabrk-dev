@@ -29,7 +29,7 @@ export function PendingInvitations({ invitations }: PendingInvitationsProps) {
 
   return (
     <Card size="auto">
-      <CardHeader code="0x02" title="PENDING_INVITES" />
+      <CardHeader code="0x02" title="PENDING INVITES" />
       <CardContent>
         <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
           [PENDING_INVITATIONS]: COUNT={invitations.length}
@@ -43,7 +43,7 @@ export function PendingInvitations({ invitations }: PendingInvitationsProps) {
               <div className={cn(mode.font, 'text-xs')}>
                 <span className="text-muted-foreground">EMAIL: </span>
                 <span className="font-semibold">{invitation.email}</span>
-                <span className="text-muted-foreground ml-4">SENT_BY: </span>
+                <span className="text-muted-foreground ml-4">SENT BY: </span>
                 <span>{invitation.sentBy}</span>
                 <span className="text-muted-foreground ml-4">DATE: </span>
                 <span>{new Date(invitation.sentAt).toLocaleDateString()}</span>

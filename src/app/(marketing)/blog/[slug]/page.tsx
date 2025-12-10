@@ -132,7 +132,7 @@ export default async function BlogPostPage({ params }: Props) {
         {/* Footer */}
         <div className="border-border bg-card mt-8 flex items-center justify-between border p-4">
           <Link href="/blog" className="text-muted-foreground hover:text-primary font-mono text-xs">
-            &lt;- ALL_POSTS
+            &lt;- ALL POSTS
           </Link>
           <div className="text-muted-foreground font-mono text-xs">
             Published: {formatDate(post.publishedAt || post.createdAt)}

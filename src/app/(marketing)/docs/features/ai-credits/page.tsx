@@ -14,7 +14,7 @@ export default function AICreditsPage() {
     <FeatureGuideTemplate
       code="[0x50]"
       category="Features"
-      title="AI_Credits"
+      title="AI Credits"
       description="Token-based billing system for AI features."
       overview="The AI Credits system lets you monetize AI features with a token-based model. Users get a monthly credit allowance based on their subscription tier. Each AI operation (form generation, chat, code generation) costs a set number of credits. The system tracks usage, handles refills, and blocks operations when credits run out - all automatically."
       features={[
@@ -95,7 +95,7 @@ const creditCost = CREDIT_COSTS.FORM_GENERATION;
 const hasEnoughCredits = await hasCredits(userId, creditCost);
 if (!hasEnoughCredits) {
   return NextResponse.json(
-    { error: "Insufficient credits", code: "INSUFFICIENT_CREDITS" },
+    { error: "Insufficient credits", code: "INSUFFICIENT CREDITS" },
     { status: 402 }
   );
 }`,
@@ -153,25 +153,25 @@ await addCredits(
       ]}
       configuration={[
         {
-          name: 'FORM_GENERATION',
+          name: 'FORM GENERATION',
           type: 'number',
           default: '10',
           description: 'Credits per form generation',
         },
         {
-          name: 'CHAT_MESSAGE',
+          name: 'CHAT MESSAGE',
           type: 'number',
           default: '1',
           description: 'Credits per chat message',
         },
         {
-          name: 'CODE_GENERATION',
+          name: 'CODE GENERATION',
           type: 'number',
           default: '20',
           description: 'Credits per code generation',
         },
         {
-          name: 'IMAGE_GENERATION',
+          name: 'IMAGE GENERATION',
           type: 'number',
           default: '50',
           description: 'Credits per image generation',
@@ -199,7 +199,7 @@ await addCredits(
     >
       {/* Database Schema */}
       <DocsSection title="Database Schema">
-        <DocsCard title="PRISMA_SCHEMA">
+        <DocsCard title="PRISMA SCHEMA">
           <p className="mb-6">
             The credit system uses two Prisma models: CreditBalance (one per user) and
             CreditTransaction (history of all credit changes).
@@ -240,7 +240,7 @@ enum CreditTransactionType {
 
       {/* API Routes */}
       <DocsSection title="API Routes">
-        <DocsCard title="AVAILABLE_ENDPOINTS">
+        <DocsCard title="AVAILABLE ENDPOINTS">
           <div className="space-y-4">
             <div className="border-border border-b pb-4">
               <code className="bg-muted px-2 py-1">GET /api/credits/balance</code>
@@ -264,7 +264,7 @@ enum CreditTransactionType {
           The /usage page is pre-built with balance display, usage charts, and transaction history.
           Users can see their credit consumption at a glance.
         </DocsCallout>
-        <DocsCard title="DASHBOARD_FEATURES">
+        <DocsCard title="DASHBOARD FEATURES">
           <ul className="space-y-2">
             <li>Current balance with progress bar</li>
             <li>30-day usage chart showing daily consumption</li>
@@ -277,7 +277,7 @@ enum CreditTransactionType {
 
       {/* Integration Example */}
       <DocsSection title="Full Integration Example">
-        <DocsCard title="AI_ROUTE_PATTERN">
+        <DocsCard title="AI ROUTE PATTERN">
           <p className="mb-6">
             Here&apos;s the complete pattern for integrating credits into an AI route:
           </p>
@@ -297,7 +297,7 @@ export async function POST(request: Request) {
     const hasEnough = await hasCredits(userId, creditCost);
     if (!hasEnough) {
       return NextResponse.json(
-        { error: "Insufficient credits", code: "INSUFFICIENT_CREDITS" },
+        { error: "Insufficient credits", code: "INSUFFICIENT CREDITS" },
         { status: 402 }
       );
     }
@@ -325,7 +325,7 @@ export async function POST(request: Request) {
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/payments">
             <DocsCard
-              title="STRIPE_INTEGRATION"
+              title="STRIPE INTEGRATION"
               className="hover:border-primary/50 h-full transition-all"
             >
               Stripe Payments
@@ -334,7 +334,7 @@ export async function POST(request: Request) {
           </Link>
           <Link href="/docs/features/analytics">
             <DocsCard
-              title="USAGE_ANALYTICS"
+              title="USAGE ANALYTICS"
               className="hover:border-primary/50 h-full transition-all"
             >
               Analytics

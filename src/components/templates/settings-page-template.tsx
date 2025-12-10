@@ -190,7 +190,7 @@ export function SettingsPageTemplate({
             )}
             {onSave && (
               <Button onClick={onSave} disabled={saving} loading={saving}>
-                &gt; {saveLabel.toUpperCase().replace(/ /g, '_')}
+                &gt; {saveLabel.toUpperCase()}
               </Button>
             )}
           </div>
@@ -263,7 +263,7 @@ export function SettingsSectionCard({
             isDanger ? 'text-destructive' : 'text-muted-foreground'
           )}
         >
-          [ {isDanger ? '[!]' : '[0x00]'} {title.toUpperCase().replace(/ /g, '_')} ]
+          [ {isDanger ? '[!]' : '[0x00]'} {title.toUpperCase()} ]
         </span>
       </div>
 

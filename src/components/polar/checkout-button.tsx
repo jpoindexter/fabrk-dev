@@ -23,7 +23,7 @@ interface PolarCheckoutButtonProps {
 export function PolarCheckoutButton({
   customerEmail,
   className,
-  children = '> GET_FABRK - $199',
+  children = '> GET FABRK - $199',
   discountId,
 }: PolarCheckoutButtonProps) {
   const [isLoading, setIsLoading] = useState(false);

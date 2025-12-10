@@ -38,7 +38,7 @@ export default function AdminPanel() {
       {/* Stats Grid */}
       <div className="grid gap-4 md:grid-cols-3">
         <Card>
-          <CardHeader code="0x00" title="TOTAL_USERS" />
+          <CardHeader code="0x00" title="TOTAL USERS" />
           <CardContent padding="lg">
             <div className={cn(mode.font, "text-3xl font-semibold")}>1,234</div>
             <p className={cn(mode.font, "text-muted-foreground text-xs")}>
@@ -48,7 +48,7 @@ export default function AdminPanel() {
         </Card>
 
         <Card>
-          <CardHeader code="0x01" title="ACTIVE_SESSIONS" />
+          <CardHeader code="0x01" title="ACTIVE SESSIONS" />
           <CardContent padding="lg">
             <div className={cn(mode.font, "text-3xl font-semibold")}>856</div>
             <p className={cn(mode.font, "text-muted-foreground text-xs")}>
@@ -58,7 +58,7 @@ export default function AdminPanel() {
         </Card>
 
         <Card>
-          <CardHeader code="0x02" title="API_REQUESTS" />
+          <CardHeader code="0x02" title="API REQUESTS" />
           <CardContent padding="lg">
             <div className={cn(mode.font, "text-3xl font-semibold")}>45.2K</div>
             <p className={cn(mode.font, "text-muted-foreground text-xs")}>
@@ -71,14 +71,14 @@ export default function AdminPanel() {
       {/* Management Sections */}
       <div className="grid gap-4 md:grid-cols-2">
         <Card>
-          <CardHeader code="0x03" title="USER_MANAGEMENT" />
+          <CardHeader code="0x03" title="USER MANAGEMENT" />
           <CardContent padding="lg">
             <p className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
               Manage users, roles, and permissions
             </p>
             <Button className={cn(mode.radius, mode.font, "text-xs")}>
               <Users className="mr-2 h-4 w-4" />
-              &gt; MANAGE_USERS
+              &gt; MANAGE USERS
             </Button>
           </CardContent>
         </Card>
@@ -91,7 +91,7 @@ export default function AdminPanel() {
             </p>
             <Button className={cn(mode.radius, mode.font, "text-xs")}>
               <Webhook className="mr-2 h-4 w-4" />
-              &gt; MANAGE_WEBHOOKS
+              &gt; MANAGE WEBHOOKS
             </Button>
           </CardContent>
         </Card>
@@ -111,7 +111,7 @@ function AdminPanelsPreview() {
         <div className="space-y-4">
           <div className="border-border inline-block border px-4 py-1">
             <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-              [CATEGORY]: ADMIN_PANELS
+              [CATEGORY]: ADMIN PANELS
             </span>
           </div>
           <div className="flex items-center gap-4">
@@ -131,7 +131,7 @@ function AdminPanelsPreview() {
                 {/* Card Header */}
                 <div className="border-border flex items-center justify-between border-b px-4 py-2">
                   <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                    [TEMPLATE]: {template.id.toUpperCase().replace(/-/g, '_')}
+                    [TEMPLATE]: {template.id.toUpperCase()}
                   </span>
                   <template.icon className="text-muted-foreground size-4" />
                 </div>
@@ -185,7 +185,7 @@ function AdminPanelsPreview() {
                         'text-primary group-hover:text-primary/80 text-xs transition-colors'
                       )}
                     >
-                      &gt; VIEW_TEMPLATE
+                      &gt; VIEW TEMPLATE
                     </span>
                     <span
                       className={cn(
@@ -212,7 +212,7 @@ export default function AdminPanelsPage() {
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
         {/* Header */}
         <TemplatePageHeader
-          badge="ADMIN_PANELS"
+          badge="ADMIN PANELS"
           title="Admin Panels"
           description="Backend admin interfaces for user management, webhooks, and system monitoring"
         />
@@ -221,7 +221,7 @@ export default function AdminPanelsPage() {
         <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
           {/* Tab Navigation Card */}
           <Card>
-            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
+            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
               <TabsList
                 className={cn(
@@ -256,7 +256,7 @@ export default function AdminPanelsPage() {
           {/* Preview Tab Content */}
           <TabsContent value="preview" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE_PREVIEW" />
+              <CardHeader code="0x01" title="LIVE PREVIEW" />
               <AdminPanelsPreview />
             </Card>
           </TabsContent>
@@ -264,7 +264,7 @@ export default function AdminPanelsPage() {
           {/* Code Tab Content */}
           <TabsContent value="code" className="mt-6 w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE_CODE" />
+              <CardHeader code="0x01" title="SOURCE CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
@@ -274,7 +274,7 @@ export default function AdminPanelsPage() {
 
         {/* File Structure */}
         <Card>
-          <CardHeader code="0x02" title="FILE_STRUCTURE" />
+          <CardHeader code="0x02" title="FILE STRUCTURE" />
           <CardContent padding="md">
             <div className={cn(mode.font, 'space-y-1 text-xs')}>
               <div className="text-muted-foreground">[FILES]:</div>

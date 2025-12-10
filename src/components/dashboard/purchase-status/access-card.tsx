@@ -20,7 +20,7 @@ export function AccessCard({
   if (!hasAccess) {
     return (
       <Card tone="danger">
-        <CardHeader code="0x01" title="NO_ACCESS" icon={<XCircle className="h-4 w-4" />} />
+        <CardHeader code="0x01" title="NO ACCESS" icon={<XCircle className="h-4 w-4" />} />
         <CardContent padding="md">
           <p className="text-muted-foreground dark:text-muted-foreground mb-4 text-sm">
             [STATUS]: Purchase required to access Fabrk boilerplate
@@ -29,7 +29,7 @@ export function AccessCard({
             className="focus-visible:ring-ring w-full focus-visible:ring-2 focus-visible:outline-none"
             asChild
           >
-            <a href="/pricing">&gt; VIEW_PRICING</a>
+            <a href="/pricing">&gt; VIEW PRICING</a>
           </Button>
         </CardContent>
       </Card>
@@ -38,7 +38,7 @@ export function AccessCard({
 
   return (
     <Card tone="success">
-      <CardHeader code="0x01" title="ACCESS_GRANTED" icon={<CheckCircle className="h-4 w-4" />} />
+      <CardHeader code="0x01" title="ACCESS GRANTED" icon={<CheckCircle className="h-4 w-4" />} />
       <CardContent padding="md" className="space-y-4">
         <div>
           <Badge variant="secondary" className="mb-2">
@@ -56,12 +56,12 @@ export function AccessCard({
           {isGeneratingDownload ? (
             <>
               <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
-              &gt; GENERATING_DOWNLOAD_LINK...
+              &gt; GENERATING DOWNLOAD LINK...
             </>
           ) : (
             <>
               <Download className="mr-2 h-4 w-4" />
-              &gt; DOWNLOAD_FABRK
+              &gt; DOWNLOAD FABRK
             </>
           )}
         </Button>

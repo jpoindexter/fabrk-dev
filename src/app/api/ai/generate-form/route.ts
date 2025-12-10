@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json(
           {
             error: 'Insufficient credits',
-            code: 'INSUFFICIENT_CREDITS',
+            code: 'INSUFFICIENT CREDITS',
             message: `This operation requires ${creditCost} credits. Please upgrade your plan or wait for your monthly refill.`,
           },
           { status: 402 }

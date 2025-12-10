@@ -102,7 +102,7 @@ export function TestimonialsSection() {
                   <div className="text-xs">
                     <span className="text-muted-foreground">AUTHOR: </span>
                     <span className="text-foreground font-semibold">
-                      {testimonial.author.toUpperCase().replace(/ /g, '_')}
+                      {testimonial.author.toUpperCase()}
                     </span>
                     <span className="text-muted-foreground"> | {testimonial.role}</span>
                   </div>

@@ -28,7 +28,7 @@ export function SecurityScore({ user }: SecurityScoreProps) {
 
   return (
     <Card tone="primary">
-      <CardHeader code="0x00" title="SECURITY_SCORE" icon={<Shield className="h-4 w-4" />} />
+      <CardHeader code="0x00" title="SECURITY SCORE" icon={<Shield className="h-4 w-4" />} />
       <CardContent padding="md">
         <div className="mb-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
@@ -42,7 +42,7 @@ export function SecurityScore({ user }: SecurityScoreProps) {
             </div>
             <div>
               <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                [SECURITY_SCORE]:
+                [SECURITY SCORE]:
               </div>
               <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
                 Good security posture, but improvements recommended
@@ -62,7 +62,7 @@ export function SecurityScore({ user }: SecurityScoreProps) {
             ) : (
               <XCircle className="text-destructive h-4 w-4" />
             )}
-            <span>EMAIL_VERIFIED: {user.emailVerified ? 'TRUE' : 'FALSE'}</span>
+            <span>EMAIL VERIFIED: {user.emailVerified ? 'TRUE' : 'FALSE'}</span>
           </div>
           <div className="flex items-center gap-2">
             {user.twoFactorEnabled ? (
@@ -70,7 +70,7 @@ export function SecurityScore({ user }: SecurityScoreProps) {
             ) : (
               <XCircle className="text-destructive h-4 w-4" />
             )}
-            <span>TWO_FACTOR_AUTH: {user.twoFactorEnabled ? 'TRUE' : 'FALSE'}</span>
+            <span>TWO FACTOR AUTH: {user.twoFactorEnabled ? 'TRUE' : 'FALSE'}</span>
           </div>
           <div className="flex items-center gap-2">
             <CheckCircle2 className="text-success h-4 w-4" />

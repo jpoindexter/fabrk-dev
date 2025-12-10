@@ -13,7 +13,7 @@ export default function DeployVercelPage() {
     <FeatureGuideTemplate
       code="[0x90]"
       category="Deployment"
-      title="Deploy_To_Vercel"
+      title="Deploy To Vercel"
       description="Deploy your Fabrk application to Vercel with automatic SSL, CDN, and edge functions."
       overview="Complete Vercel deployment with automatic HTTPS, global CDN, preview deployments for PRs, and environment variable management."
       features={[
@@ -95,7 +95,7 @@ RESEND_API_KEY="re_..."
 
 # Stripe (Required for payments)
 STRIPE_SECRET_KEY="sk_live_..."
-STRIPE_WEBHOOK_SECRET="whsec_..."
+STRIPE WEBHOOK SECRET="whsec_..."
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_live_..."
 
 # Optional
@@ -163,7 +163,7 @@ Value: cname.vercel-dns.com
 #    - invoice.paid
 #    - invoice.payment_failed
 # 5. Copy the webhook signing secret
-# 6. Add it as STRIPE_WEBHOOK_SECRET in Vercel`,
+# 6. Add it as STRIPE WEBHOOK SECRET in Vercel`,
           language: 'bash',
         },
         {
@@ -181,7 +181,7 @@ https://fabrk-git-feature-auth-acme.vercel.app
 
 # Use test Stripe keys for previews
 STRIPE_SECRET_KEY="sk_test_..."
-STRIPE_WEBHOOK_SECRET="whsec_test_..."`,
+STRIPE WEBHOOK SECRET="whsec_test_..."`,
           language: 'bash',
         },
       ]}

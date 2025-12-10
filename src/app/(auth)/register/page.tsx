@@ -54,7 +54,7 @@ export default function RegisterPage() {
         </div>
 
         <Button className={cn(mode.radius, mode.font, 'w-full text-xs')} type="submit">
-          &gt; CREATE_ACCOUNT
+          &gt; CREATE ACCOUNT
         </Button>
       </form>
 

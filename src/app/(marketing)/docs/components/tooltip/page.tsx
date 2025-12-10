@@ -18,7 +18,7 @@ export default function TooltipPage() {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button variant="outline">&gt; HOVER_ME</Button>
+                <Button variant="outline">&gt; HOVER ME</Button>
               </TooltipTrigger>
               <TooltipContent>
                 <p>Add to library</p>
@@ -29,7 +29,7 @@ export default function TooltipPage() {
         code: `<TooltipProvider>
   <Tooltip>
     <TooltipTrigger asChild>
-      <Button variant="outline">&gt; HOVER_ME</Button>
+      <Button variant="outline">&gt; HOVER ME</Button>
     </TooltipTrigger>
     <TooltipContent>
       <p>Add to library</p>
@@ -203,7 +203,7 @@ export default function TooltipPage() {
             <TooltipProvider delayDuration={300}>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button variant="secondary">&gt; DELAYED_TOOLTIP</Button>
+                  <Button variant="secondary">&gt; DELAYED TOOLTIP</Button>
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>This tooltip has a 300ms delay</p>
@@ -214,7 +214,7 @@ export default function TooltipPage() {
           code: `<TooltipProvider delayDuration={300}>
   <Tooltip>
     <TooltipTrigger asChild>
-      <Button variant="secondary">&gt; DELAYED_TOOLTIP</Button>
+      <Button variant="secondary">&gt; DELAYED TOOLTIP</Button>
     </TooltipTrigger>
     <TooltipContent>
       <p>This tooltip has a 300ms delay</p>

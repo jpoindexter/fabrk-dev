@@ -66,7 +66,7 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
     >
       {/* Architecture Diagram */}
       <DocsSection title="High-Level Overview">
-        <DocsCard title="SYSTEM_DIAGRAM">
+        <DocsCard title="SYSTEM DIAGRAM">
           <div className="text-muted-foreground space-y-4 font-mono text-xs">
             {/* Client Layer */}
             <div className="border-border bg-muted border p-4 text-center">
@@ -149,7 +149,7 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
       {/* Core Components */}
       <DocsSection title="Core Components">
         <div className="grid gap-4 sm:grid-cols-2">
-          <DocsCard title="AUTH_SECURITY">
+          <DocsCard title="AUTH SECURITY">
             <p className="mb-4">
               Built on NextAuth.js v5. Sessions are stateless (JWT) by default for edge
               compatibility, but can be database-persisted for strict session management.
@@ -161,7 +161,7 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
             </div>
           </DocsCard>
 
-          <DocsCard title="DATABASE_LAYER">
+          <DocsCard title="DATABASE LAYER">
             <p className="mb-4">
               Prisma ORM provides a type-safe interface to PostgreSQL. We use a &quot;Service
               Layer&quot; pattern to abstract database logic from UI components.
@@ -177,7 +177,7 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
 
       {/* Data Flow */}
       <DocsSection title="Data Flow & Patterns">
-        <DocsCard title="DATA_FLOW">
+        <DocsCard title="DATA FLOW">
           <p className="mb-4">
             We strictly follow unidirectional data flow. Server Actions are used for mutations,
             while React Server Components (RSC) handle data fetching.

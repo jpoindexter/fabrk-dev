@@ -34,7 +34,7 @@ export function FaqSection() {
           [ [0x04] FAQ ]
         </span>
         <h2 className={cn('mb-2 text-2xl font-semibold tracking-tight', mode.font)}>
-          FREQUENTLY_ASKED_QUESTIONS
+          FREQUENTLY ASKED QUESTIONS
         </h2>
         <p className={cn('text-muted-foreground text-xs', mode.font)}>
           Everything you need to know
@@ -65,7 +65,7 @@ export function FaqSection() {
                 [A] No, all sales are final. Due to the nature of digital products, we do not offer
                 refunds once you have access to the code. Please review our{' '}
                 <Link href="/refund" className="text-primary hover:underline">
-                  REFUND_POLICY
+                  REFUND POLICY
                 </Link>{' '}
                 for more details.
               </AccordionContent>
@@ -88,7 +88,7 @@ export function FaqSection() {
                   mode.font
                 )}
               >
-                [Q] IS_TECHNICAL_SUPPORT_INCLUDED?
+                [Q] IS_TECHNICAL SUPPORT_INCLUDED?
               </AccordionTrigger>
               <AccordionContent className={cn('text-muted-foreground px-6 text-xs', mode.font)}>
                 [A] Yes, we provide email support for all license holders. Response time is
@@ -138,7 +138,7 @@ export function FaqSection() {
                   mode.font
                 )}
               >
-                [Q] DO_I_GET_LIFETIME_UPDATES?
+                [Q] DO_I_GET_LIFETIME UPDATES?
               </AccordionTrigger>
               <AccordionContent className={cn('text-muted-foreground px-6 text-xs', mode.font)}>
                 [A] Yes, all future updates and improvements are included at no additional cost.

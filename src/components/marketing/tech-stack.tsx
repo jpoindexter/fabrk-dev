@@ -65,7 +65,7 @@ export function TechStack() {
                     className="text-foreground group-hover:text-primary h-8 w-8 transition-colors"
                   />
                   <span className="text-foreground text-xs font-medium">
-                    {tech.name.toUpperCase().replace(/ /g, '_').replace(/\./g, '')}
+                    {tech.name.toUpperCase().replace(/\./g, '')}
                   </span>
                 </CardContent>
               </Card>

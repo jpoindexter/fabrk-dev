@@ -39,7 +39,7 @@ export function FeatureCategoryCard({ category, index }: FeatureCategoryCardProp
           <div className="inline-flex items-center gap-4">
             <Badge
               code={`0x${hexIndex}`}
-              label={category.stats.label.toUpperCase().replace(/ /g, '_')}
+              label={category.stats.label.toUpperCase()}
               meta={category.stats.value}
             />
           </div>
@@ -47,7 +47,7 @@ export function FeatureCategoryCard({ category, index }: FeatureCategoryCardProp
           <div>
             <span className={cn('text-muted-foreground text-xs', mode.font)}>[0x{hexIndex}]</span>
             <h2 className={cn('text-2xl font-semibold tracking-tight', mode.font)}>
-              {category.title.toUpperCase().replace(/ /g, '_').replace(/&/g, 'AND')}
+              {category.title.toUpperCase()}
             </h2>
             <span className={cn('text-primary text-xs font-medium', mode.font)}>
               &gt; {category.tagline}
@@ -62,7 +62,7 @@ export function FeatureCategoryCard({ category, index }: FeatureCategoryCardProp
           <Card size="auto">
             <CardHeader
               code={`0x${hexIndex}`}
-              title="INCLUDED_FEATURES"
+              title="INCLUDED FEATURES"
               meta={`${category.features.length} items`}
             />
             <CardContent padding="lg">

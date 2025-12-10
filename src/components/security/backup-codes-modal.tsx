@@ -186,7 +186,7 @@ export function BackupCodesModal({ open, onOpenChange, onRegenerate }: BackupCod
             <div className="flex gap-2">
               <Button variant="outline" onClick={handleCopyAll} className="flex-1">
                 <Copy className="mr-2 h-4 w-4" />
-                &gt; COPY_ALL
+                &gt; COPY ALL
               </Button>
               <Button variant="outline" onClick={handleDownload} className="flex-1">
                 <Download className="mr-2 h-4 w-4" />

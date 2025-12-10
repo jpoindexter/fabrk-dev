@@ -181,7 +181,7 @@ export default function OrganizationSettingsPage() {
             <AlertTriangle className="text-destructive mx-auto h-12 w-12" />
             <h3 className="mt-4 text-lg font-semibold">Organization not found</h3>
             <Button onClick={() => router.push('/dashboard')} className="mt-4">
-              &gt; BACK_TO_DASHBOARD
+              &gt; BACK TO DASHBOARD
             </Button>
           </div>
         </CardContent>
@@ -199,7 +199,7 @@ export default function OrganizationSettingsPage() {
           <SettingsIcon className="text-primary-foreground h-6 w-6" />
         </div>
         <div>
-          <h1 className="font-mono text-4xl font-semibold">ORGANIZATION_SETTINGS</h1>
+          <h1 className="font-mono text-4xl font-semibold">ORGANIZATION SETTINGS</h1>
           <p className="text-muted-foreground">
             Manage your organization's information and preferences
           </p>
@@ -210,7 +210,7 @@ export default function OrganizationSettingsPage() {
       <Card>
         <CardHeader
           code="0x01"
-          title="GENERAL_INFORMATION"
+          title="GENERAL INFORMATION"
           icon={<SettingsIcon className="h-4 w-4" />}
         />
         <CardContent padding="lg">
@@ -306,7 +306,7 @@ export default function OrganizationSettingsPage() {
                   <Button type="submit" disabled={saving}>
                     {saving && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                     <Save className="mr-2 h-4 w-4" />
-                    &gt; SAVE_CHANGES
+                    &gt; SAVE CHANGES
                   </Button>
                 </div>
               )}
@@ -320,13 +320,13 @@ export default function OrganizationSettingsPage() {
         <Card tone="danger">
           <CardHeader
             code="0x02"
-            title="DANGER_ZONE"
+            title="DANGER ZONE"
             icon={<AlertTriangle className="h-4 w-4" />}
           />
           <CardContent padding="lg">
             <div className="border-destructive bg-destructive/10 flex items-start justify-between rounded-none border p-4">
               <div className="flex-1">
-                <h4 className="font-mono text-xs font-semibold">[DELETE_ORGANIZATION]:</h4>
+                <h4 className="font-mono text-xs font-semibold">[DELETE ORGANIZATION]:</h4>
                 <p className="text-muted-foreground mt-1 text-sm">
                   Permanently delete this organization and all associated data. This action cannot
                   be undone.
@@ -359,7 +359,7 @@ export default function OrganizationSettingsPage() {
                       className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
                     >
                       {deleting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                      &gt; DELETE_ORGANIZATION
+                      &gt; DELETE ORGANIZATION
                     </AlertDialogAction>
                   </AlertDialogFooter>
                 </AlertDialogContent>

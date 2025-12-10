@@ -110,7 +110,7 @@ export function StickyCTABar({
             <div className="flex items-center gap-2">
               <Button asChild size="sm" className={cn(mode.radius, mode.font, 'text-xs')}>
                 <Link href={ctaHref}>
-                  &gt; {ctaText.toUpperCase().replace(/ /g, '_')}
+                  &gt; {ctaText.toUpperCase()}
                   <ArrowRight className="ml-2 h-3 w-3" />
                 </Link>
               </Button>

@@ -13,7 +13,7 @@ export default function WebhooksPage() {
     <FeatureGuideTemplate
       code="[0x70]"
       category="Features"
-      title="Webhooks_System"
+      title="Webhooks System"
       description="Production-grade webhook system with 22 event types, HMAC-SHA256 signature verification, and automatic retry with exponential backoff."
       overview="The webhooks system allows your application to send HTTP callbacks to external services when specific events occur. This is essential for integrating with third-party services, triggering external workflows, and keeping systems in sync."
       features={[
@@ -236,7 +236,7 @@ async function queueWebhookRetry(
     >
       {/* Event Types Section */}
       <DocsSection title="Event Types">
-        <DocsCard title="EVENT_TYPES">
+        <DocsCard title="EVENT TYPES">
           <p className="mb-4">Available webhook event types organized by category:</p>
           <div className="grid gap-6 md:grid-cols-2">
             <div>
@@ -245,7 +245,7 @@ async function queueWebhookRetry(
                 <li>• user.created</li>
                 <li>• user.updated</li>
                 <li>• user.deleted</li>
-                <li>• user.email_verified</li>
+                <li>• user.email verified</li>
               </ul>
             </div>
             <div>
@@ -271,8 +271,8 @@ async function queueWebhookRetry(
               System Events
               <ul className="mt-2 space-y-1">
                 <li>• webhook.test</li>
-                <li>• api_key.created</li>
-                <li>• api_key.revoked</li>
+                <li>• api key.created</li>
+                <li>• api key.revoked</li>
               </ul>
             </div>
           </div>
@@ -281,7 +281,7 @@ async function queueWebhookRetry(
 
       {/* Security Best Practices Section */}
       <DocsSection title="Security Best Practices">
-        <DocsCard title="SECURITY_BEST_PRACTICES">
+        <DocsCard title="SECURITY BEST PRACTICES">
           <ul className="space-y-1">
             <li>
               ├─ <strong>Always verify signatures:</strong> Use HMAC-SHA256 with timing-safe

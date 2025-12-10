@@ -138,7 +138,7 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
           </div>
 
           <Button type="submit" className={cn('w-full', mode.font, 'text-xs')}>
-            &gt; SUBMIT_FEEDBACK
+            &gt; SUBMIT FEEDBACK
           </Button>
         </form>
       )}
