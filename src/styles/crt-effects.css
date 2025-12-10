@@ -38,6 +38,13 @@
   background-repeat: repeat, repeat;
 }
 
+/* Light theme (GitHub): toned down for subtlety */
+[data-theme='light'] .crt-scanlines::before {
+  background-image:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.08) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+}
+
 /* Dark mode: adjust opacity for visibility */
 .dark .crt-scanlines::before {
   background-image:
@@ -76,7 +83,12 @@ html[data-visual-mode='terminal'] body::before {
   background-repeat: repeat, repeat;
 }
 
-/* No theme-specific colors - neutral CRT works for all themes */
+/* Light theme (GitHub): lighter full-page scan lines */
+html[data-visual-mode='terminal'][data-theme='light'] body::before {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.06) 50%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.02));
+}
 
 /* ============================================
    3. DIAGONAL STRIPE PATTERN
