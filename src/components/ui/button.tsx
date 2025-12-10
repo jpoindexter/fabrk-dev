@@ -31,6 +31,11 @@ import { mode } from '@/design-system';
  * - bg-secondary, text-secondary-foreground → Secondary action
  * - bg-background, text-foreground → Ghost/outline
  *
+ * State tokens:
+ * - --state-disabled-opacity: 0.38 → WCAG-compliant disabled state
+ * - --state-hover-opacity: 0.08 → Hover overlay
+ * - --state-active-opacity: 0.12 → Active/pressed overlay
+ *
  * Spacing (8-point grid):
  * - px-4 (16px), py-2 (8px) → Default
  * - px-2 (8px) → Small
@@ -38,8 +43,8 @@ import { mode } from '@/design-system';
  * - px-8 (32px) → Extra large
  */
 const buttonVariants = cva(
-  // Base styles - focus ring from design tokens
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+  // Base styles - focus ring from design tokens, disabled state uses design system opacity
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-[var(--state-disabled-opacity)] [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
   {
     variants: {
       variant: {

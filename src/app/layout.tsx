@@ -20,6 +20,7 @@ import { TerminalBackground } from '@/components/shared/terminal-background';
 import { ThemeScript } from '@/design-system/providers';
 import { env } from '@/lib/env';
 import './globals.css';
+import './typography.css';
 
 const jetbrainsMono = localFont({
   src: [
