@@ -30,6 +30,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { ThemeDropdown } from '@/components/theme/theme-dropdown';
+import { VisualThemeDropdown } from '@/components/theme/visual-theme-dropdown';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 import {
@@ -43,19 +45,6 @@ import {
   FileText,
 } from 'lucide-react';
 
-const themes = [
-  { id: 'light', name: 'Light' },
-  { id: 'dark', name: 'Dark' },
-  { id: 'neon', name: 'Neon' },
-  { id: 'pastel', name: 'Pastel' },
-  { id: 'purple', name: 'Purple' },
-  { id: 'cereal', name: 'Cereal' },
-  { id: 'preview', name: 'Preview' },
-  { id: 'amber', name: 'Amber Terminal' },
-  { id: 'cyberpunk', name: 'Cyberpunk' },
-  { id: 'retro', name: 'Retro' },
-] as const;
-
 const crtEffects = [
   { id: 'none', name: 'None' },
   { id: 'noise', name: 'Noise' },
@@ -65,30 +54,20 @@ const crtEffects = [
   { id: 'authentic', name: 'Authentic CRT' },
 ] as const;
 
-type ThemeId = (typeof themes)[number]['id'];
 type CRTEffect = (typeof crtEffects)[number]['id'];
 
 export default function ThemeShowcasePage() {
-  const [currentTheme, setCurrentTheme] = useState<ThemeId>('dark');
   const [crtEffect, setCrtEffect] = useState<CRTEffect>('noise');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: Hydration pattern for SSR compatibility
     setMounted(true);
-    const saved = (localStorage.getItem('theme') as ThemeId) || 'dark';
-    setCurrentTheme(saved);
 
     const savedCRT = (localStorage.getItem('crt-effect') as CRTEffect) || 'noise';
     setCrtEffect(savedCRT);
     document.body.setAttribute('data-crt-effect', savedCRT);
   }, []);
-
-  const handleThemeChange = (themeId: ThemeId) => {
-    setCurrentTheme(themeId);
-    localStorage.setItem('theme', themeId);
-    document.documentElement.setAttribute('data-theme', themeId);
-  };
 
   const handleCRTChange = (effect: CRTEffect) => {
     setCrtEffect(effect);
@@ -113,26 +92,27 @@ export default function ThemeShowcasePage() {
           </div>
 
           <div className="flex gap-4">
-            {/* Theme Switcher */}
-            <Card className={cn(mode.radius, 'w-64')}>
-              <CardHeader code="0x00" title="THEME_SWITCHER" />
-              <CardContent className="space-y-2">
-                <Label className={mode.font}>[CURRENT_THEME]</Label>
-                <Select value={currentTheme} onValueChange={handleThemeChange}>
-                  <SelectTrigger className={cn(mode.radius, mode.font)}>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent className={mode.radius}>
-                    {themes.map((theme) => (
-                      <SelectItem key={theme.id} value={theme.id} className={mode.font}>
-                        {theme.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <p className="text-muted-foreground font-mono text-xs">
-                  Switch themes to test colors
-                </p>
+            {/* Theme Controls */}
+            <Card className={cn(mode.radius, 'w-80')}>
+              <CardHeader code="0x00" title="THEME_CONTROLS" />
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <Label className={mode.font}>[COLOR_THEME]</Label>
+                  <ThemeDropdown />
+                  <p className="text-muted-foreground font-mono text-xs">
+                    Switch between light and dark color schemes
+                  </p>
+                </div>
+
+                <Separator />
+
+                <div className="space-y-2">
+                  <Label className={mode.font}>[VISUAL_THEME]</Label>
+                  <VisualThemeDropdown />
+                  <p className="text-muted-foreground font-mono text-xs">
+                    Switch between Terminal and Modern visual styles
+                  </p>
+                </div>
               </CardContent>
             </Card>
 
