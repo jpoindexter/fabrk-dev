@@ -51,6 +51,7 @@
     "audit:staged": "node .internal/scripts/utilities/pre-commit-audit.mjs",
     "audit:design": "node .internal/scripts/utilities/design-system-audit.mjs",
     "audit:design:json": "node .internal/scripts/utilities/design-system-audit.mjs --json",
+    "validate:themes": "tsx scripts/validate-themes.ts",
     "prepare": "npx husky install"
   },
   "lint-staged": {
