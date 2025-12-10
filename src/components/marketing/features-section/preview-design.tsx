@@ -54,7 +54,7 @@ export function DesignSystemPreview() {
     <Card ref={ref} className="w-full max-w-md">
       <PreviewHeader title="design system.exe" animated />
 
-      <CardContent padding="lg">
+      <CardContent>
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}

@@ -35,7 +35,7 @@ export function OrganizationPreview() {
     <Card ref={ref} className="w-full max-w-md">
       <PreviewHeader title="org manager.exe" />
 
-      <CardContent padding="lg">
+      <CardContent>
         <div className="mb-4 flex items-center justify-between">
           <span className={cn(mode.font, 'text-muted-foreground text-xs')}>[ORGANIZATIONS]:</span>
           <button

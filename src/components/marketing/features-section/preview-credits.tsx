@@ -60,7 +60,7 @@ export function CreditsPreview() {
     <Card ref={ref} className="w-full max-w-md">
       <PreviewHeader title="usage dashboard.exe" animated />
 
-      <CardContent padding="lg">
+      <CardContent>
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
