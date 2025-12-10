@@ -12,9 +12,16 @@ import { Button } from '@/components/ui/button';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
+// Minimal theme set - GitHub light + CRT phosphor themes
 const themes = [
-  { id: 'light', name: 'Light', preview: '#ffffff' },
-  { id: 'dark', name: 'Dark', preview: '#1d232a' },
+  // Light theme
+  { id: 'light', name: 'GitHub', preview: '#f4f4f4' },
+  { id: 'dark', name: 'Monokai Night', preview: '#1f1f1f' },
+  // CRT phosphor themes
+  { id: 'amber', name: 'Amber CRT', preview: '#ffb000' },
+  { id: 'green', name: 'Green CRT', preview: '#33ff66' },
+  { id: 'blue', name: 'Blue CRT', preview: '#55ccff' },
+  { id: 'red', name: 'Red CRT', preview: '#ff6655' },
 ] as const;
 
 export type ColorTheme = (typeof themes)[number]['id'];
