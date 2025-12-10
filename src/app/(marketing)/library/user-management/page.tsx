@@ -6,7 +6,7 @@
 
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import {
   ColumnFiltersState,
   SortingState,
@@ -183,6 +183,9 @@ function UserManagementPreview() {
     a.click();
   }, []);
 
+  // Use useMemo to prevent state updates during render
+  const filteredRowCount = useMemo(() => table.getFilteredRowModel().rows.length, [table]);
+
   return (
     <div className="bg-background/50 min-h-[600px] p-4 sm:p-8">
       <div className="space-y-6">
@@ -205,8 +208,7 @@ function UserManagementPreview() {
           <div className="p-4">
             <div className="mb-4 flex items-center justify-between">
               <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                [ALL_USERS]: COUNT={mockUsers.length} | FILTERED=
-                {table.getFilteredRowModel().rows.length}
+                [ALL_USERS]: COUNT={mockUsers.length} | FILTERED={filteredRowCount}
               </div>
               <Button
                 onClick={exportToCSV}
