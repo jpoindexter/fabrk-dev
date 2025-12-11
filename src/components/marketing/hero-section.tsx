@@ -144,12 +144,12 @@ export function HeroSection() {
             {/* Urgency Card - Top */}
             <Card className="border-accent border-2">
               <CardHeader code="0x03" title="LAUNCH PRICING" />
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-3 py-4">
                 <div className="flex items-baseline gap-3">
-                  <span className={cn('text-4xl font-bold', mode.font, mode.color.text.accent)}>
+                  <span className={cn('text-3xl font-bold', mode.font, mode.color.text.accent)}>
                     $399
                   </span>
-                  <span className={cn('text-xl line-through', mode.color.text.muted)}>$499</span>
+                  <span className={cn('text-lg line-through', mode.color.text.muted)}>$499</span>
                   <span
                     className={cn(
                       'bg-accent text-accent-foreground ml-auto rounded-none px-2 py-1 text-xs font-bold',
@@ -164,7 +164,7 @@ export function HeroSection() {
                   <br />
                   Price increases to $499 on Dec 31, 2025
                 </div>
-                <StatGroup className="mt-4">
+                <StatGroup className="mt-2">
                   <Stat label="Time Saved" value="400+ HRS" size="sm" />
                   <Stat label="Value" value="$36K+" size="sm" />
                 </StatGroup>
