@@ -120,13 +120,13 @@ export function HeroSection() {
             <Card>
               <CardHeader code="0x01" title="KEY_SELLING_POINTS.TXT" />
               <CardContent className="space-y-2 py-3">
-                <p className={cn('text-sm font-bold', mode.font, mode.color.text.accent)}>
+                <p className={cn('text-sm', mode.font, mode.color.text.accent)}>
                   60+ PRODUCTION COMPONENTS
                 </p>
-                <p className={cn('text-sm font-bold', mode.font, mode.color.text.accent)}>
+                <p className={cn('text-sm', mode.font, mode.color.text.accent)}>
                   26 FULL-FEATURED TEMPLATES
                 </p>
-                <p className={cn('text-sm font-bold', mode.font, mode.color.text.accent)}>
+                <p className={cn('text-sm', mode.font, mode.color.text.accent)}>
                   AUTHENTICATION, BILLING, DASHBOARDS — ALL DONE
                 </p>
               </CardContent>
