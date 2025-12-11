@@ -1,6 +1,6 @@
 /**
  * Hero Playground - Full shadcn-style interactive demo
- * 4-column vertical stacked layout
+ * 4-column vertical stacked layout with REAL component examples
  */
 'use client';
 
@@ -11,336 +11,286 @@ import { Input } from '@/components/ui/input';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Label } from '@/components/ui/label';
-import { Users, Search, Download } from 'lucide-react';
+import { Checkbox } from '@/components/ui/checkbox';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Switch } from '@/components/ui/switch';
+import { Slider } from '@/components/ui/slider';
+import { Progress } from '@/components/ui/progress';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import {
+  Mail,
+  Search,
+  Download,
+  ArrowRight,
+  User,
+  Calendar,
+  DollarSign,
+  Settings,
+  AlertCircle,
+  CheckCircle2,
+} from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
-// Component Examples Grid - 4 vertical columns with stacked components (shadcn style)
+// Component Examples Grid - 4 vertical columns with REAL components from /docs/components
 function ComponentsGrid() {
+  const [sliderValue, setSliderValue] = useState([50]);
+  const [progress] = useState(60);
+
   return (
     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {/* COLUMN 1 - Payment Form */}
-      <div className="space-y-6">
-        <Card>
-          <CardHeader code="0x01" title="PAYMENT_METHOD" />
-          <CardContent className="space-y-4">
-            <p className={cn('text-xs', mode.color.text.muted)}>
-              All transactions are secure and encrypted
-            </p>
+      {/* COLUMN 1 - Buttons & Actions */}
+      <div className="space-y-4">
+        <div>
+          <h3 className={cn('mb-3 text-xs font-semibold', mode.font, mode.color.text.muted)}>
+            [BUTTONS]
+          </h3>
+          <div className="space-y-2">
+            <Button className="w-full">&gt; PRIMARY</Button>
+            <Button variant="outline" className="w-full">
+              &gt; SECONDARY
+            </Button>
+            <Button variant="ghost" className="w-full">
+              &gt; GHOST
+            </Button>
+            <Button variant="destructive" className="w-full">
+              &gt; DELETE
+            </Button>
+            <Button variant="link" className="w-full">
+              &gt; LINK
+            </Button>
+            <Button className="w-full">
+              <Mail className="mr-2 h-4 w-4" /> &gt; WITH ICON
+            </Button>
+            <Button size="sm" className="w-full">
+              &gt; SMALL
+            </Button>
+            <Button size="lg" className="w-full">
+              &gt; LARGE
+            </Button>
+          </div>
+        </div>
 
-            <div className="space-y-2">
-              <Label className={cn(mode.font, 'text-xs')}>NAME_ON_CARD</Label>
-              <Input placeholder="John Doe" className={cn(mode.radius, mode.font, 'text-xs')} />
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="col-span-2 space-y-2">
-                <Label className={cn(mode.font, 'text-xs')}>CARD_NUMBER</Label>
-                <Input
-                  placeholder="1234 5678 9012 3456"
-                  className={cn(mode.radius, mode.font, 'text-xs')}
-                />
-              </div>
-              <div className="space-y-2">
-                <Label className={cn(mode.font, 'text-xs')}>MONTH</Label>
-                <Input placeholder="MM" className={cn(mode.radius, mode.font, 'text-xs')} />
-              </div>
-              <div className="space-y-2">
-                <Label className={cn(mode.font, 'text-xs')}>YEAR</Label>
-                <Input placeholder="YYYY" className={cn(mode.radius, mode.font, 'text-xs')} />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <Label className={cn(mode.font, 'text-xs')}>CVV</Label>
-              <Input placeholder="123" className={cn(mode.radius, mode.font, 'text-xs')} />
-            </div>
-
-            <div className="flex items-center gap-2">
-              <input type="checkbox" id="billing" className="h-4 w-4" />
-              <label htmlFor="billing" className={cn('text-xs', mode.font)}>
-                Same as shipping address
-              </label>
-            </div>
-
-            <div className="flex gap-2">
-              <Button className={cn('flex-1 text-xs', mode.radius, mode.font)}>&gt; SUBMIT</Button>
-              <Button variant="outline" className={cn('flex-1 text-xs', mode.radius, mode.font)}>
-                &gt; CANCEL
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+        <div>
+          <h3 className={cn('mb-3 text-xs font-semibold', mode.font, mode.color.text.muted)}>
+            [BADGES]
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            <Badge>DEFAULT</Badge>
+            <Badge variant="secondary">SECONDARY</Badge>
+            <Badge variant="outline">OUTLINE</Badge>
+            <Badge variant="destructive">ERROR</Badge>
+            <Badge>
+              <CheckCircle2 className="mr-1 h-3 w-3" /> SUCCESS
+            </Badge>
+          </div>
+        </div>
       </div>
 
-      {/* COLUMN 2 - Mixed Components */}
-      <div className="space-y-6">
-        <Card>
-          <CardHeader code="0x02" title="TEAM_MEMBERS" />
-          <CardContent className="space-y-4 text-center">
-            <div className="flex justify-center gap-2">
-              <div className="bg-muted flex h-10 w-10 items-center justify-center rounded-full">
-                <Users className="h-5 w-5" />
-              </div>
+      {/* COLUMN 2 - Inputs & Forms */}
+      <div className="space-y-4">
+        <div>
+          <h3 className={cn('mb-3 text-xs font-semibold', mode.font, mode.color.text.muted)}>
+            [INPUTS]
+          </h3>
+          <div className="space-y-3">
+            <div>
+              <Label className="mb-1.5 text-xs">Email</Label>
+              <Input type="email" placeholder="email@example.com" />
             </div>
             <div>
-              <div className={cn('font-semibold', mode.font)}>No Team Members</div>
-              <p className={cn('text-xs', mode.color.text.muted)}>
-                Invite your team to collaborate on this project.
-              </p>
+              <Label className="mb-1.5 text-xs">Password</Label>
+              <Input type="password" placeholder="••••••••" />
             </div>
-            <Button className={cn('w-full text-xs', mode.radius, mode.font)}>
-              &gt; INVITE_MEMBERS
-            </Button>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader code="0x03" title="STATUS_BADGES" />
-          <CardContent className="flex flex-wrap gap-2">
-            <Badge className={cn(mode.radius, mode.font, 'text-xs')}>SYNCING</Badge>
-            <Badge variant="secondary" className={cn(mode.radius, mode.font, 'text-xs')}>
-              UPDATING
-            </Badge>
-            <Badge variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
-              LOADING
-            </Badge>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader code="0x04" title="PRICE_RANGE" />
-          <CardContent className="space-y-3">
-            <p className={cn('text-xs', mode.color.text.muted)}>
-              Set your budget range ($200 - 800).
-            </p>
-            <input type="range" className="w-full" />
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader code="0x05" title="SEARCH" />
-          <CardContent className="space-y-3">
             <div className="relative">
               <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
-              <Input
-                placeholder="Search..."
-                className={cn('pl-9 text-xs', mode.radius, mode.font)}
-              />
+              <Input placeholder="Search..." className="pl-9" />
             </div>
-            <span className={cn('text-xs', mode.color.text.muted)}>12 results</span>
-          </CardContent>
-        </Card>
+            <div className="relative">
+              <User className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
+              <Input placeholder="Username" className="pl-9" />
+            </div>
+          </div>
+        </div>
 
-        <Card>
-          <CardHeader code="0x06" title="URL_INPUT" />
-          <CardContent>
-            <Input
-              placeholder="https:// example.com"
-              className={cn(mode.radius, mode.font, 'text-xs')}
-            />
-          </CardContent>
-        </Card>
+        <div>
+          <h3 className={cn('mb-3 text-xs font-semibold', mode.font, mode.color.text.muted)}>
+            [SELECT]
+          </h3>
+          <Select>
+            <SelectTrigger>
+              <SelectValue placeholder="Select option" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="option1">Option 1</SelectItem>
+              <SelectItem value="option2">Option 2</SelectItem>
+              <SelectItem value="option3">Option 3</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
       </div>
 
-      {/* COLUMN 3 - Auth & Settings */}
-      <div className="space-y-6">
-        <Card>
-          <CardHeader code="0x07" title="TWO_FACTOR_AUTH" />
-          <CardContent className="space-y-3">
-            <p className={cn('text-xs', mode.color.text.muted)}>
-              Verify via email or phone number.
-            </p>
-            <Button className={cn('w-full text-xs', mode.radius, mode.font)}>&gt; ENABLE</Button>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader code="0x08" title="PROFILE_STATUS" />
-          <CardContent className="space-y-3">
-            <div className="flex items-center justify-between">
-              <span className={cn('text-xs', mode.font)}>Your profile has been verified.</span>
-              <span className={cn('text-xs', mode.color.text.success)}>&gt;</span>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader code="0x09" title="COMPUTE_ENV" />
-          <CardContent className="space-y-3">
-            <p className={cn('text-xs', mode.color.text.muted)}>
-              Select the compute environment for your cluster.
-            </p>
-            <div className="space-y-2">
-              <div className="border-border rounded-none border p-3">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className={cn('text-xs font-semibold', mode.font)}>Kubernetes</div>
-                    <div className={cn('text-xs', mode.color.text.muted)}>
-                      Run GPU workloads on a K8s configured cluster.
-                    </div>
-                  </div>
-                  <div className="bg-primary h-2 w-2 rounded-full" />
-                </div>
-              </div>
-              <div className="border-border rounded-none border p-3">
-                <div className={cn('text-xs font-semibold', mode.font)}>Virtual Machine</div>
-                <div className={cn('text-xs', mode.color.text.muted)}>
-                  Access a VM configured cluster. (Coming soon)
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader code="0x0A" title="GPU_COUNT" />
-          <CardContent className="space-y-2">
-            <div className="flex items-center justify-between">
-              <span className={cn('text-xs', mode.font)}>Number of GPUs</span>
-              <div className="flex items-center gap-2">
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className={cn(mode.radius, mode.font, 'h-6 w-6 p-0')}
-                >
-                  -
-                </Button>
-                <span className={cn('text-xs', mode.font)}>8</span>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className={cn(mode.radius, mode.font, 'h-6 w-6 p-0')}
-                >
-                  +
-                </Button>
-              </div>
-            </div>
-            <p className={cn('text-xs', mode.color.text.muted)}>You can add more later.</p>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* COLUMN 4 - Actions & Feedback */}
-      <div className="space-y-6">
-        <Card>
-          <CardHeader code="0x0B" title="CONTEXT_MENU" />
-          <CardContent className="space-y-2">
-            <Button
-              size="sm"
-              variant="ghost"
-              className={cn('w-full justify-start text-xs', mode.radius, mode.font)}
-            >
-              <Download className="mr-2 h-3 w-3" />
-              Add context
-            </Button>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader code="0x0C" title="NAVIGATION" />
-          <CardContent className="flex gap-2">
-            <Button size="sm" variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
-              Archive
-            </Button>
-            <Button size="sm" variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
-              Report
-            </Button>
-            <Button size="sm" variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
-              Snooze
-            </Button>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader code="0x0D" title="AGREEMENT" />
-          <CardContent>
-            <div className="flex items-center gap-2">
-              <input type="checkbox" id="terms" className="h-4 w-4" />
-              <label htmlFor="terms" className={cn('text-xs', mode.font)}>
-                I agree to the terms and conditions
+      {/* COLUMN 3 - Toggles & Sliders */}
+      <div className="space-y-4">
+        <div>
+          <h3 className={cn('mb-3 text-xs font-semibold', mode.font, mode.color.text.muted)}>
+            [CHECKBOXES]
+          </h3>
+          <div className="space-y-3">
+            <div className="flex items-center space-x-2">
+              <Checkbox id="check1" defaultChecked />
+              <label htmlFor="check1" className={cn('text-sm', mode.font)}>
+                Accept terms and conditions
               </label>
             </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader code="0x0E" title="PAGINATION" />
-          <CardContent className="flex items-center justify-between">
-            <Button
-              size="sm"
-              variant="outline"
-              className={cn(mode.radius, mode.font, 'h-8 w-8 p-0')}
-            >
-              &lt;
-            </Button>
-            <div className="flex gap-1">
-              <Button size="sm" className={cn(mode.radius, mode.font, 'h-8 w-8 p-0')}>
-                1
-              </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                className={cn(mode.radius, mode.font, 'h-8 w-8 p-0')}
-              >
-                2
-              </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                className={cn(mode.radius, mode.font, 'h-8 w-8 p-0')}
-              >
-                3
-              </Button>
+            <div className="flex items-center space-x-2">
+              <Checkbox id="check2" />
+              <label htmlFor="check2" className={cn('text-sm', mode.font)}>
+                Subscribe to newsletter
+              </label>
             </div>
-            <Button
-              size="sm"
-              variant="outline"
-              className={cn(mode.radius, mode.font, 'h-8 w-8 p-0')}
-            >
-              &gt;
-            </Button>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader code="0x0F" title="SURVEY" />
-          <CardContent className="space-y-3">
-            <p className={cn('text-xs', mode.font)}>How did you hear about us?</p>
-            <div className="space-y-2">
-              <Button
-                size="sm"
-                variant="outline"
-                className={cn('w-full justify-start text-xs', mode.radius, mode.font)}
-              >
-                Social Media
-              </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                className={cn('w-full justify-start text-xs', mode.radius, mode.font)}
-              >
-                Search Engine
-              </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                className={cn('w-full justify-start text-xs', mode.radius, mode.font)}
-              >
-                Referral
-              </Button>
+            <div className="flex items-center space-x-2">
+              <Checkbox id="check3" disabled />
+              <label htmlFor="check3" className={cn('text-sm', mode.font)}>
+                Disabled option
+              </label>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
-        <Card>
-          <CardHeader code="0x10" title="LOADING" />
-          <CardContent className="py-8 text-center">
-            <div className={cn('text-xs', mode.color.text.muted, mode.font)}>
-              Processing your request...
+        <div>
+          <h3 className={cn('mb-3 text-xs font-semibold', mode.font, mode.color.text.muted)}>
+            [RADIO]
+          </h3>
+          <RadioGroup defaultValue="option-1">
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="option-1" id="option-1" />
+              <Label htmlFor="option-1" className="text-sm">
+                Option 1
+              </Label>
             </div>
-          </CardContent>
-        </Card>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="option-2" id="option-2" />
+              <Label htmlFor="option-2" className="text-sm">
+                Option 2
+              </Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="option-3" id="option-3" />
+              <Label htmlFor="option-3" className="text-sm">
+                Option 3
+              </Label>
+            </div>
+          </RadioGroup>
+        </div>
+
+        <div>
+          <h3 className={cn('mb-3 text-xs font-semibold', mode.font, mode.color.text.muted)}>
+            [SWITCHES]
+          </h3>
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <Label htmlFor="switch1" className="text-sm">
+                Enable notifications
+              </Label>
+              <Switch id="switch1" defaultChecked />
+            </div>
+            <div className="flex items-center justify-between">
+              <Label htmlFor="switch2" className="text-sm">
+                Dark mode
+              </Label>
+              <Switch id="switch2" />
+            </div>
+            <div className="flex items-center justify-between">
+              <Label htmlFor="switch3" className="text-sm">
+                Disabled
+              </Label>
+              <Switch id="switch3" disabled />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* COLUMN 4 - Sliders & Progress */}
+      <div className="space-y-4">
+        <div>
+          <h3 className={cn('mb-3 text-xs font-semibold', mode.font, mode.color.text.muted)}>
+            [SLIDER]
+          </h3>
+          <div className="space-y-4">
+            <div>
+              <div className="mb-2 flex justify-between text-xs">
+                <span>Volume</span>
+                <span className={mode.color.text.muted}>{sliderValue[0]}%</span>
+              </div>
+              <Slider value={sliderValue} onValueChange={setSliderValue} max={100} step={1} />
+            </div>
+            <div>
+              <div className="mb-2 flex justify-between text-xs">
+                <span>Price Range</span>
+                <span className={mode.color.text.muted}>$200 - $800</span>
+              </div>
+              <Slider defaultValue={[500]} max={1000} step={10} />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 className={cn('mb-3 text-xs font-semibold', mode.font, mode.color.text.muted)}>
+            [PROGRESS]
+          </h3>
+          <div className="space-y-4">
+            <div>
+              <div className="mb-2 flex justify-between text-xs">
+                <span>Uploading...</span>
+                <span className={mode.color.text.muted}>{progress}%</span>
+              </div>
+              <Progress value={progress} />
+            </div>
+            <div>
+              <div className="mb-2 flex justify-between text-xs">
+                <span>Processing</span>
+                <span className={mode.color.text.muted}>75%</span>
+              </div>
+              <Progress value={75} />
+            </div>
+            <div>
+              <div className="mb-2 flex justify-between text-xs">
+                <span>Complete</span>
+                <span className={mode.color.text.success}>100%</span>
+              </div>
+              <Progress value={100} />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 className={cn('mb-3 text-xs font-semibold', mode.font, mode.color.text.muted)}>
+            [ALERTS]
+          </h3>
+          <div className="space-y-3">
+            <div className="border-primary/50 bg-primary/10 flex items-start gap-2 rounded-none border p-3">
+              <AlertCircle className="text-primary mt-0.5 h-4 w-4" />
+              <div className="space-y-1">
+                <p className={cn('text-xs font-semibold', mode.font)}>Info</p>
+                <p className={cn('text-xs', mode.color.text.muted)}>This is an info message</p>
+              </div>
+            </div>
+            <div className="border-destructive/50 bg-destructive/10 flex items-start gap-2 rounded-none border p-3">
+              <AlertCircle className="text-destructive mt-0.5 h-4 w-4" />
+              <div className="space-y-1">
+                <p className={cn('text-xs font-semibold', mode.font)}>Error</p>
+                <p className={cn('text-xs', mode.color.text.muted)}>Something went wrong</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
