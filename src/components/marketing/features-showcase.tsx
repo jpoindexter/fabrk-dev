@@ -20,8 +20,8 @@ export function FeaturesShowcase() {
         <SectionHeader
           badge="WHAT_MAKES_FABRK_DIFFERENT"
           code="0x10"
-          title="NOT YOUR AVERAGE BOILERPLATE"
-          description="Most boilerplates give you Auth + Billing. We give you terminal aesthetics, 31 interactive demos, AI monetization, and payment flexibility. These are the features no one else has."
+          title="SHIP YOUR AI SAAS BEFORE YOUR RUNWAY ENDS"
+          description="AI credit system: done. Multi-provider billing: done. Production components: done. 400+ hours of work you don't have to do. Launch this weekend, not next quarter."
           align="center"
         />
 
@@ -57,8 +57,8 @@ export function FeaturesShowcase() {
             <CardHeader code="0x14" title="TOTAL VALUE" />
             <CardContent>
               <StatGroup>
-                <Stat label="Time Saved" value="150+ HOURS" />
-                <Stat label="Cost Saved" value="$30K+" />
+                <Stat label="Time Saved" value="400+ HOURS" />
+                <Stat label="Cost Saved" value="$36K+" />
                 <Stat label="Unique Features" value="3 PILLARS" />
                 <Stat label="Your Investment" value={PRICING.display.current} />
               </StatGroup>
