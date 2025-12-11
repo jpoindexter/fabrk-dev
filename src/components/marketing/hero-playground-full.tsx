@@ -333,7 +333,7 @@ function BrowserFrame({ children }: { children: React.ReactNode }) {
   return (
     <div className="border-border bg-card overflow-hidden border">
       {/* Browser Chrome */}
-      <div className="border-border bg-muted/50 flex items-center gap-3 border-b px-4 py-3">
+      <div className="border-border bg-muted/50 flex items-center gap-3 border-b px-3 py-2">
         {/* Window Controls */}
         <div className="flex gap-2">
           <div className="bg-destructive/60 h-3 w-3 rounded-full" />
@@ -355,9 +355,9 @@ function BrowserFrame({ children }: { children: React.ReactNode }) {
         </div>
 
         {/* Address Bar */}
-        <div className="border-border bg-background flex flex-1 items-center gap-2 border px-4 py-2">
-          <Lock className="text-success h-4 w-4" />
-          <span className="text-foreground flex-1 text-sm">https://app.fabrk.dev/dashboard</span>
+        <div className="border-border bg-background flex flex-1 items-center gap-2 border px-3 py-1.5">
+          <Lock className="text-success h-3.5 w-3.5" />
+          <span className="text-foreground flex-1 text-xs">https://app.fabrk.dev/dashboard</span>
         </div>
 
         {/* Menu Button */}
