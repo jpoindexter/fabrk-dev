@@ -38,7 +38,7 @@ export const FAQ_QUESTIONS = [
     id: 'tech-stack',
     question: 'What technologies are included?',
     answer:
-      'Next.js 15 (App Router), React 19, TypeScript, NextAuth v5, Polar.sh, Prisma, PostgreSQL, Tailwind CSS 4, Radix UI, Framer Motion, and more. Full stack ready.',
+      'Next.js 15 (App Router), React 19, TypeScript, NextAuth v5, Stripe/Lemon Squeezy/Polar.sh, Prisma, PostgreSQL, Tailwind CSS 4, Radix UI, Framer Motion, and more. Full stack ready.',
   },
   {
     id: 'customization',

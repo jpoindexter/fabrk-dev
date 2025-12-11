@@ -10,7 +10,6 @@ import { StatsSection } from '@/components/marketing/stats-section';
 import { UseCasesSection } from '@/components/marketing/use-cases-section';
 import { HowItWorksSection } from '@/components/marketing/how-it-works-section';
 import { FeaturesSection } from '@/components/marketing/features-section';
-import { ComparisonSection } from '@/components/marketing/comparison-section';
 import { PricingSection } from '@/components/marketing/pricing-section';
 import { SocialProofSection } from '@/components/marketing/social-proof-section';
 import { FAQSection } from '@/components/marketing/faq-section';
@@ -38,9 +37,6 @@ export default function HomePage() {
 
       {/* Detailed Features Deep-Dive */}
       <FeaturesSection />
-
-      {/* Feature Comparison Table */}
-      <ComparisonSection />
 
       {/* Pricing */}
       <PricingSection />

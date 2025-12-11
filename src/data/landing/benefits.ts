@@ -27,7 +27,7 @@ export const CORE_BENEFITS = [
     title: 'Billing & Payments',
     benefit: 'Start monetizing day one with production-ready payments',
     description:
-      'Polar.sh integration with subscription management, one-time payments, and webhook handling. Customer portal, invoice generation, and payment history included.',
+      'Stripe, Lemon Squeezy, and Polar.sh integrations with subscription management, one-time payments, and webhook handling. Customer portal, invoice generation, and payment history included.',
     timeSaved: '40 HOURS',
     costSaved: '$8K',
     features: ['Subscriptions', 'One-Time Payments', 'Webhooks', 'Customer Portal', 'Invoices'],

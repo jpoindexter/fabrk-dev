@@ -44,12 +44,12 @@ export const COMPARISON_FEATURES = [
     saasboldkit: true,
   },
   {
-    id: 'polar',
-    name: 'Polar.sh Billing',
-    fabrk: true,
-    shipfast: false,
-    magicui: false,
-    saasboldkit: false,
+    id: 'payment-providers',
+    name: 'Payment Providers',
+    fabrk: 'Stripe, Lemon Squeezy, Polar',
+    shipfast: 'Stripe only',
+    magicui: 'Stripe only',
+    saasboldkit: 'Stripe only',
   },
   {
     id: 'multitenancy',

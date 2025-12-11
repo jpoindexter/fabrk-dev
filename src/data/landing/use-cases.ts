@@ -11,7 +11,7 @@ export const USE_CASES = [
     icon: User,
     painPoint: 'You waste months building auth and billing from scratch.',
     solution: 'Ship your MVP in days with production-ready infrastructure.',
-    features: ['NextAuth v5', 'Polar.sh billing', 'Email templates', 'Admin dashboard'],
+    features: ['NextAuth v5', 'Stripe + Lemon Squeezy', 'Email templates', 'Admin dashboard'],
   },
   {
     id: 'dev-teams',
