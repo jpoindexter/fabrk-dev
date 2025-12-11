@@ -35,26 +35,26 @@ const codeSnippets = [
 export function HeroBackground() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      {/* eslint-disable design-system/no-hardcoded-colors, design-system/no-inline-styles -- Radial gradients using accent color for dot pattern and depth effect, not expressible in Tailwind */}
+      {/* eslint-disable design-system/no-inline-styles -- Radial gradients using theme accent color for dot pattern and depth effect, not expressible in Tailwind */}
 
-      {/* Dot grid with gradient - brighter and more visible */}
+      {/* Dot grid with gradient - brighter and more visible - uses theme accent */}
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: `radial-gradient(circle, oklch(70% 0.3 310 / 0.4) 1px, transparent 1px)`,
+          backgroundImage: `radial-gradient(circle, oklch(var(--accent) / 0.4) 1px, transparent 1px)`,
           backgroundSize: '24px 24px',
         }}
       />
 
-      {/* Gradient overlay for depth */}
+      {/* Gradient overlay for depth - uses theme accent */}
       <div
         className="absolute inset-0"
         style={{
-          background: `radial-gradient(ellipse 80% 50% at 50% 40%, oklch(70% 0.3 310 / 0.15), transparent)`,
+          background: `radial-gradient(ellipse 80% 50% at 50% 40%, oklch(var(--accent) / 0.15), transparent)`,
         }}
       />
 
-      {/* eslint-enable design-system/no-hardcoded-colors, design-system/no-inline-styles */}
+      {/* eslint-enable design-system/no-inline-styles */}
 
       {/* Floating code snippets */}
       <div className="relative h-full w-full opacity-20">

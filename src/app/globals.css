@@ -874,27 +874,32 @@
    GRADIENT TEXT UTILITIES
    ============================================ */
 
-/* Purple gradient effect for hero headlines */
+/* Gradient effect for hero headlines - uses theme accent color */
 .text-gradient-purple {
-  background: linear-gradient(135deg, oklch(85% 0.35 310), oklch(70% 0.3 310), oklch(60% 0.25 320));
+  background: linear-gradient(
+    135deg,
+    oklch(from var(--accent) calc(l + 0.15) c h),
+    oklch(var(--accent)),
+    oklch(from var(--accent) calc(l - 0.1) c h)
+  );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Text glow effect for accent elements */
+/* Text glow effect for accent elements - uses theme accent color */
 .text-glow-purple {
   text-shadow:
-    0 0 20px oklch(70% 0.3 310 / 0.5),
-    0 0 40px oklch(70% 0.3 310 / 0.3),
-    0 0 60px oklch(70% 0.3 310 / 0.2);
+    0 0 20px oklch(var(--accent) / 0.5),
+    0 0 40px oklch(var(--accent) / 0.3),
+    0 0 60px oklch(var(--accent) / 0.2);
 }
 
-/* Button glow effect */
+/* Button glow effect - uses theme accent color */
 .button-glow-purple {
   box-shadow:
-    0 0 20px oklch(70% 0.3 310 / 0.4),
-    0 0 40px oklch(70% 0.3 310 / 0.2);
+    0 0 20px oklch(var(--accent) / 0.4),
+    0 0 40px oklch(var(--accent) / 0.2);
 }
 
 /* Animate gradient on hover */
