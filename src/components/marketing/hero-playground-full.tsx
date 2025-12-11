@@ -38,259 +38,344 @@ import {
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
-// Component Examples Grid - 4 vertical columns with REAL components from /docs/components
+// Component Examples Grid - 4 vertical columns with USEFUL interactive components
 function ComponentsGrid() {
-  const [sliderValue, setSliderValue] = useState([50]);
-  const [progress] = useState(60);
+  const [priceRange, setPriceRange] = useState([400]);
+  const [gpuCount, setGpuCount] = useState(8);
+  const [tintingEnabled, setTintingEnabled] = useState(true);
+  const [selectedSource, setSelectedSource] = useState('social-media');
 
   return (
     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {/* COLUMN 1 - Buttons & Actions */}
+      {/* COLUMN 1 - Payment & Forms */}
       <div className="space-y-4">
-        <div>
-          <h3 className={cn('mb-3 text-xs font-semibold', mode.font, mode.color.text.muted)}>
-            [BUTTONS]
-          </h3>
-          <div className="space-y-2">
-            <Button className="w-full">&gt; PRIMARY</Button>
-            <Button variant="outline" className="w-full">
-              &gt; SECONDARY
-            </Button>
-            <Button variant="ghost" className="w-full">
-              &gt; GHOST
-            </Button>
-            <Button variant="destructive" className="w-full">
-              &gt; DELETE
-            </Button>
-            <Button variant="link" className="w-full">
-              &gt; LINK
-            </Button>
-            <Button className="w-full">
-              <Mail className="mr-2 h-4 w-4" /> &gt; WITH ICON
-            </Button>
-            <Button size="sm" className="w-full">
-              &gt; SMALL
-            </Button>
-            <Button size="lg" className="w-full">
-              &gt; LARGE
-            </Button>
-          </div>
-        </div>
+        <Card>
+          <div className="p-4">
+            <h3 className="mb-1 text-sm font-semibold">Payment Method</h3>
+            <p className={cn('mb-4 text-xs', mode.color.text.muted)}>
+              All transactions are secure and encrypted
+            </p>
 
-        <div>
-          <h3 className={cn('mb-3 text-xs font-semibold', mode.font, mode.color.text.muted)}>
-            [BADGES]
-          </h3>
-          <div className="flex flex-wrap gap-2">
-            <Badge>DEFAULT</Badge>
-            <Badge variant="secondary">SECONDARY</Badge>
-            <Badge variant="outline">OUTLINE</Badge>
-            <Badge variant="destructive">ERROR</Badge>
-            <Badge>
-              <CheckCircle2 className="mr-1 h-3 w-3" /> SUCCESS
-            </Badge>
+            <div className="space-y-3">
+              <div>
+                <Label className="mb-1.5 text-xs">Name on Card</Label>
+                <Input placeholder="John Doe" className="text-xs" />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <Label className="mb-1.5 text-xs">Card Number</Label>
+                  <Input placeholder="1234 5678 9012" className="text-xs" />
+                </div>
+                <div>
+                  <Label className="mb-1.5 text-xs">CVV</Label>
+                  <Input placeholder="123" className="text-xs" />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <Label className="mb-1.5 text-xs">Month</Label>
+                  <Select>
+                    <SelectTrigger className="text-xs">
+                      <SelectValue placeholder="MM" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="01">01</SelectItem>
+                      <SelectItem value="02">02</SelectItem>
+                      <SelectItem value="12">12</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label className="mb-1.5 text-xs">Year</Label>
+                  <Select>
+                    <SelectTrigger className="text-xs">
+                      <SelectValue placeholder="YYYY" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="2025">2025</SelectItem>
+                      <SelectItem value="2026">2026</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-2">
+                <Checkbox id="same-address" defaultChecked />
+                <label htmlFor="same-address" className={cn('text-xs', mode.font)}>
+                  Same as shipping address
+                </label>
+              </div>
+
+              <div className="flex gap-2 pt-2">
+                <Button className="flex-1 text-xs">&gt; SUBMIT</Button>
+                <Button variant="outline" className="flex-1 text-xs">
+                  &gt; CANCEL
+                </Button>
+              </div>
+            </div>
           </div>
-        </div>
+        </Card>
       </div>
 
-      {/* COLUMN 2 - Inputs & Forms */}
+      {/* COLUMN 2 - Team & Status */}
       <div className="space-y-4">
-        <div>
-          <h3 className={cn('mb-3 text-xs font-semibold', mode.font, mode.color.text.muted)}>
-            [INPUTS]
-          </h3>
-          <div className="space-y-3">
-            <div>
-              <Label className="mb-1.5 text-xs">Email</Label>
-              <Input type="email" placeholder="email@example.com" />
+        <Card>
+          <div className="p-4 text-center">
+            <div className="mb-3 flex justify-center">
+              <div className="flex -space-x-2">
+                {[User, User, User].map((Icon, i) => (
+                  <div
+                    key={i}
+                    className={cn(
+                      'flex h-10 w-10 items-center justify-center rounded-full border-2',
+                      mode.color.border.default,
+                      mode.color.bg.muted
+                    )}
+                  >
+                    <Icon className="h-5 w-5" />
+                  </div>
+                ))}
+              </div>
             </div>
-            <div>
-              <Label className="mb-1.5 text-xs">Password</Label>
-              <Input type="password" placeholder="••••••••" />
-            </div>
+            <h3 className="mb-1 text-sm font-semibold">No Team Members</h3>
+            <p className={cn('mb-3 text-xs', mode.color.text.muted)}>
+              Invite your team to collaborate on this project.
+            </p>
+            <Button className="w-full text-xs">
+              <User className="mr-2 h-4 w-4" />
+              &gt; INVITE MEMBERS
+            </Button>
+          </div>
+        </Card>
+
+        <div className="flex gap-2">
+          <Badge className="flex-1 justify-center">
+            <Download className="mr-1 h-3 w-3" />
+            SYNCING
+          </Badge>
+          <Badge variant="outline" className="flex-1 justify-center">
+            UPDATING
+          </Badge>
+        </div>
+
+        <Card>
+          <div className="p-4">
             <div className="relative">
               <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
-              <Input placeholder="Search..." className="pl-9" />
-            </div>
-            <div className="relative">
-              <User className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
-              <Input placeholder="Username" className="pl-9" />
+              <Input placeholder="Search..." className="pl-9 text-xs" />
+              <span
+                className={cn(
+                  'absolute top-1/2 right-3 -translate-y-1/2 text-xs',
+                  mode.color.text.muted
+                )}
+              >
+                12 results
+              </span>
             </div>
           </div>
-        </div>
+        </Card>
 
-        <div>
-          <h3 className={cn('mb-3 text-xs font-semibold', mode.font, mode.color.text.muted)}>
-            [SELECT]
-          </h3>
-          <Select>
-            <SelectTrigger>
-              <SelectValue placeholder="Select option" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="option1">Option 1</SelectItem>
-              <SelectItem value="option2">Option 2</SelectItem>
-              <SelectItem value="option3">Option 3</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
+        <Card>
+          <div className="p-4">
+            <h3 className="mb-3 text-xs font-semibold">Two-factor authentication</h3>
+            <div className="mb-3 flex items-center justify-between">
+              <p className={cn('text-xs', mode.color.text.muted)}>
+                Verify via email or phone number.
+              </p>
+              <Button size="sm" className="text-xs">
+                &gt; ENABLE
+              </Button>
+            </div>
+            <div className="border-t pt-3">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="text-success h-4 w-4" />
+                <span className="text-xs">Your profile has been verified.</span>
+                <ArrowRight className="ml-auto h-3 w-3" />
+              </div>
+            </div>
+          </div>
+        </Card>
       </div>
 
-      {/* COLUMN 3 - Toggles & Sliders */}
+      {/* COLUMN 3 - Settings & Controls */}
       <div className="space-y-4">
-        <div>
-          <h3 className={cn('mb-3 text-xs font-semibold', mode.font, mode.color.text.muted)}>
-            [CHECKBOXES]
-          </h3>
-          <div className="space-y-3">
-            <div className="flex items-center space-x-2">
-              <Checkbox id="check1" defaultChecked />
-              <label htmlFor="check1" className={cn('text-sm', mode.font)}>
-                Accept terms and conditions
-              </label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Checkbox id="check2" />
-              <label htmlFor="check2" className={cn('text-sm', mode.font)}>
-                Subscribe to newsletter
-              </label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Checkbox id="check3" disabled />
-              <label htmlFor="check3" className={cn('text-sm', mode.font)}>
-                Disabled option
-              </label>
+        <Card>
+          <div className="p-4">
+            <h3 className="mb-1 text-sm font-semibold">Compute Environment</h3>
+            <p className={cn('mb-3 text-xs', mode.color.text.muted)}>
+              Select the compute environment for your cluster.
+            </p>
+
+            <RadioGroup defaultValue="kubernetes">
+              <div className="mb-3 space-y-1 rounded-none border p-3">
+                <div className="flex items-center justify-between">
+                  <Label htmlFor="kubernetes" className="text-xs font-semibold">
+                    Kubernetes
+                  </Label>
+                  <RadioGroupItem value="kubernetes" id="kubernetes" />
+                </div>
+                <p className={cn('text-xs', mode.color.text.muted)}>
+                  Run GPU workloads on a K8s configured cluster. This is the default.
+                </p>
+              </div>
+
+              <div className="space-y-1 rounded-none border p-3">
+                <div className="flex items-center justify-between">
+                  <Label htmlFor="vm" className="text-xs font-semibold">
+                    Virtual Machine
+                  </Label>
+                  <RadioGroupItem value="vm" id="vm" />
+                </div>
+                <p className={cn('text-xs', mode.color.text.muted)}>
+                  Access a VM configured cluster to run workloads. (Coming soon)
+                </p>
+              </div>
+            </RadioGroup>
+          </div>
+        </Card>
+
+        <Card>
+          <div className="p-4">
+            <div className="mb-2 flex items-center justify-between">
+              <div>
+                <h3 className="text-xs font-semibold">Number of GPUs</h3>
+                <p className={cn('text-xs', mode.color.text.muted)}>You can add more later.</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => setGpuCount(Math.max(1, gpuCount - 1))}
+                  className="h-8 w-8 p-0"
+                >
+                  -
+                </Button>
+                <span className="w-8 text-center text-sm font-semibold">{gpuCount}</span>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => setGpuCount(gpuCount + 1)}
+                  className="h-8 w-8 p-0"
+                >
+                  +
+                </Button>
+              </div>
             </div>
           </div>
-        </div>
+        </Card>
 
-        <div>
-          <h3 className={cn('mb-3 text-xs font-semibold', mode.font, mode.color.text.muted)}>
-            [RADIO]
-          </h3>
-          <RadioGroup defaultValue="option-1">
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="option-1" id="option-1" />
-              <Label htmlFor="option-1" className="text-sm">
-                Option 1
-              </Label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="option-2" id="option-2" />
-              <Label htmlFor="option-2" className="text-sm">
-                Option 2
-              </Label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="option-3" id="option-3" />
-              <Label htmlFor="option-3" className="text-sm">
-                Option 3
-              </Label>
-            </div>
-          </RadioGroup>
-        </div>
-
-        <div>
-          <h3 className={cn('mb-3 text-xs font-semibold', mode.font, mode.color.text.muted)}>
-            [SWITCHES]
-          </h3>
-          <div className="space-y-3">
+        <Card>
+          <div className="p-4">
             <div className="flex items-center justify-between">
-              <Label htmlFor="switch1" className="text-sm">
-                Enable notifications
-              </Label>
-              <Switch id="switch1" defaultChecked />
-            </div>
-            <div className="flex items-center justify-between">
-              <Label htmlFor="switch2" className="text-sm">
-                Dark mode
-              </Label>
-              <Switch id="switch2" />
-            </div>
-            <div className="flex items-center justify-between">
-              <Label htmlFor="switch3" className="text-sm">
-                Disabled
-              </Label>
-              <Switch id="switch3" disabled />
+              <div>
+                <h3 className="text-xs font-semibold">Wallpaper Tinting</h3>
+                <p className={cn('text-xs', mode.color.text.muted)}>
+                  Allow the wallpaper to be tinted.
+                </p>
+              </div>
+              <Switch checked={tintingEnabled} onCheckedChange={setTintingEnabled} />
             </div>
           </div>
-        </div>
+        </Card>
       </div>
 
-      {/* COLUMN 4 - Sliders & Progress */}
+      {/* COLUMN 4 - Actions & Surveys */}
       <div className="space-y-4">
-        <div>
-          <h3 className={cn('mb-3 text-xs font-semibold', mode.font, mode.color.text.muted)}>
-            [SLIDER]
-          </h3>
-          <div className="space-y-4">
-            <div>
-              <div className="mb-2 flex justify-between text-xs">
-                <span>Volume</span>
-                <span className={mode.color.text.muted}>{sliderValue[0]}%</span>
-              </div>
-              <Slider value={sliderValue} onValueChange={setSliderValue} max={100} step={1} />
-            </div>
-            <div>
-              <div className="mb-2 flex justify-between text-xs">
-                <span>Price Range</span>
-                <span className={mode.color.text.muted}>$200 - $800</span>
-              </div>
-              <Slider defaultValue={[500]} max={1000} step={10} />
-            </div>
+        <Card>
+          <div className="p-4">
+            <h3 className="mb-3 text-xs font-semibold">Price Range</h3>
+            <p className={cn('mb-3 text-xs', mode.color.text.muted)}>
+              Set your budget range (${priceRange[0]} - $800).
+            </p>
+            <Slider
+              value={priceRange}
+              onValueChange={setPriceRange}
+              max={800}
+              min={200}
+              step={10}
+            />
           </div>
-        </div>
+        </Card>
 
-        <div>
-          <h3 className={cn('mb-3 text-xs font-semibold', mode.font, mode.color.text.muted)}>
-            [PROGRESS]
-          </h3>
-          <div className="space-y-4">
-            <div>
-              <div className="mb-2 flex justify-between text-xs">
-                <span>Uploading...</span>
-                <span className={mode.color.text.muted}>{progress}%</span>
-              </div>
-              <Progress value={progress} />
+        <Card>
+          <div className="p-4">
+            <div className="mb-3 flex gap-1">
+              <Button size="sm" variant="outline" className="text-xs">
+                <Download className="mr-1 h-3 w-3" />
+                ARCHIVE
+              </Button>
+              <Button size="sm" variant="outline" className="text-xs">
+                REPORT
+              </Button>
+              <Button size="sm" variant="outline" className="text-xs">
+                SNOOZE
+              </Button>
             </div>
-            <div>
-              <div className="mb-2 flex justify-between text-xs">
-                <span>Processing</span>
-                <span className={mode.color.text.muted}>75%</span>
-              </div>
-              <Progress value={75} />
-            </div>
-            <div>
-              <div className="mb-2 flex justify-between text-xs">
-                <span>Complete</span>
-                <span className={mode.color.text.success}>100%</span>
-              </div>
-              <Progress value={100} />
+            <div className="rounded-none border p-3">
+              <Checkbox id="terms" defaultChecked />
+              <label htmlFor="terms" className={cn('ml-2 text-xs', mode.font)}>
+                I agree to the terms and conditions
+              </label>
             </div>
           </div>
-        </div>
+        </Card>
 
-        <div>
-          <h3 className={cn('mb-3 text-xs font-semibold', mode.font, mode.color.text.muted)}>
-            [ALERTS]
-          </h3>
-          <div className="space-y-3">
-            <div className="border-primary/50 bg-primary/10 flex items-start gap-2 rounded-none border p-3">
-              <AlertCircle className="text-primary mt-0.5 h-4 w-4" />
-              <div className="space-y-1">
-                <p className={cn('text-xs font-semibold', mode.font)}>Info</p>
-                <p className={cn('text-xs', mode.color.text.muted)}>This is an info message</p>
-              </div>
-            </div>
-            <div className="border-destructive/50 bg-destructive/10 flex items-start gap-2 rounded-none border p-3">
-              <AlertCircle className="text-destructive mt-0.5 h-4 w-4" />
-              <div className="space-y-1">
-                <p className={cn('text-xs font-semibold', mode.font)}>Error</p>
-                <p className={cn('text-xs', mode.color.text.muted)}>Something went wrong</p>
-              </div>
+        <Card>
+          <div className="p-4">
+            <h3 className="mb-2 text-xs font-semibold">How did you hear about us?</h3>
+            <p className={cn('mb-3 text-xs', mode.color.text.muted)}>
+              Select the option that best describes how you found us.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              <Badge
+                variant={selectedSource === 'social-media' ? 'default' : 'outline'}
+                className="cursor-pointer"
+                onClick={() => setSelectedSource('social-media')}
+              >
+                {selectedSource === 'social-media' && <CheckCircle2 className="mr-1 h-3 w-3" />}
+                SOCIAL MEDIA
+              </Badge>
+              <Badge
+                variant={selectedSource === 'search' ? 'default' : 'outline'}
+                className="cursor-pointer"
+                onClick={() => setSelectedSource('search')}
+              >
+                SEARCH ENGINE
+              </Badge>
+              <Badge
+                variant={selectedSource === 'referral' ? 'default' : 'outline'}
+                className="cursor-pointer"
+                onClick={() => setSelectedSource('referral')}
+              >
+                REFERRAL
+              </Badge>
+              <Badge
+                variant={selectedSource === 'other' ? 'default' : 'outline'}
+                className="cursor-pointer"
+                onClick={() => setSelectedSource('other')}
+              >
+                OTHER
+              </Badge>
             </div>
           </div>
-        </div>
+        </Card>
+
+        <Card>
+          <div className="p-4 text-center">
+            <div className="mb-3 flex justify-center">
+              <Download className="h-8 w-8 animate-spin" />
+            </div>
+            <h3 className="mb-1 text-sm font-semibold">Processing your request</h3>
+            <p className={cn('mb-3 text-xs', mode.color.text.muted)}>
+              Please wait while we process your request. Do not refresh the page.
+            </p>
+            <Button variant="outline" size="sm" className="text-xs">
+              &gt; CANCEL
+            </Button>
+          </div>
+        </Card>
       </div>
     </div>
   );
