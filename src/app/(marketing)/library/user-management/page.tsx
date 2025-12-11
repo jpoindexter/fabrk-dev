@@ -183,8 +183,8 @@ function UserManagementPreview() {
     a.click();
   }, []);
 
-  // Use useMemo to prevent state updates during render
-  const filteredRowCount = useMemo(() => table.getFilteredRowModel().rows.length, [table]);
+  // Compute filtered row count inline - fast enough not to need memoization
+  const filteredRowCount = table.getFilteredRowModel().rows.length;
 
   return (
     <div className={cn('min-h-[600px] p-4 sm:p-8', mode.color.bg.base + '/50')}>

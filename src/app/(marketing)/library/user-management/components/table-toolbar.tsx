@@ -2,7 +2,6 @@
  * Table toolbar with search, filters, and bulk actions
  */
 
-import { useMemo } from 'react';
 import { Table } from '@tanstack/react-table';
 import { Search, ChevronDown, UserCog, UserX, Trash2 } from 'lucide-react';
 
@@ -23,8 +22,8 @@ interface TableToolbarProps {
 }
 
 export function TableToolbar({ table }: TableToolbarProps) {
-  // Use useMemo to prevent state updates during render
-  const selectedCount = useMemo(() => table.getFilteredSelectedRowModel().rows.length, [table]);
+  const selectedCount = table.getFilteredSelectedRowModel().rows.length;
+  const hiddenColumns = table.getAllColumns().filter((column) => column.getCanHide());
 
   return (
     <div className="mb-4 flex items-center justify-between gap-4">
@@ -48,21 +47,18 @@ export function TableToolbar({ table }: TableToolbarProps) {
             align="end"
             className={cn(mode.radius, mode.font, 'border-border border text-xs')}
           >
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
-                return (
-                  <DropdownMenuCheckboxItem
-                    key={column.id}
-                    className={cn(mode.radius, 'focus:bg-primary focus:text-primary-foreground')}
-                    checked={column.getIsVisible()}
-                    onCheckedChange={(value) => column.toggleVisibility(!!value)}
-                  >
-                    {column.id.toUpperCase()}
-                  </DropdownMenuCheckboxItem>
-                );
-              })}
+            {hiddenColumns.map((column) => {
+              return (
+                <DropdownMenuCheckboxItem
+                  key={column.id}
+                  className={cn(mode.radius, 'focus:bg-primary focus:text-primary-foreground')}
+                  checked={column.getIsVisible()}
+                  onCheckedChange={(value) => column.toggleVisibility(!!value)}
+                >
+                  {column.id.toUpperCase()}
+                </DropdownMenuCheckboxItem>
+              );
+            })}
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
