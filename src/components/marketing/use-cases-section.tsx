@@ -12,7 +12,7 @@ import { USE_CASES } from '@/data/landing';
  */
 export function UseCasesSection() {
   return (
-    <section className="border-border border-t py-16 lg:py-24">
+    <section className="border-border border-t py-20 lg:py-24">
       <Container>
         <SectionHeader
           badge="WHO IT'S FOR"

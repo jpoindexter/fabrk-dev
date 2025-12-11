@@ -39,7 +39,7 @@ const STEPS = [
  */
 export function HowItWorksSection() {
   return (
-    <section className="border-border border-t py-16 lg:py-24">
+    <section className="border-border border-t py-20 lg:py-24">
       <Container>
         <SectionHeader
           badge="PROCESS"
@@ -49,7 +49,7 @@ export function HowItWorksSection() {
           align="center"
         />
 
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-3">
           {STEPS.map((step, index) => {
             const Icon = step.icon;
             return (

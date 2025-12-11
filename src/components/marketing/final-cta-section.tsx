@@ -16,7 +16,7 @@ import { cn } from '@/lib/utils';
  */
 export function FinalCTASection() {
   return (
-    <section className="border-border border-t py-20 lg:py-32">
+    <section className="border-border border-t py-20 lg:py-28">
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-2">
           {/* Left Column - Messaging */}

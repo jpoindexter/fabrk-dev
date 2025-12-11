@@ -12,7 +12,7 @@ import { STATS } from '@/data/landing';
  */
 export function StatsSection() {
   return (
-    <section className="border-border border-t py-16 lg:py-24">
+    <section className="border-border border-t py-20 lg:py-24">
       <Container>
         <SectionHeader
           badge="TRUST INDICATORS"

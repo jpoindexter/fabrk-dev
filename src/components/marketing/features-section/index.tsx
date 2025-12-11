@@ -17,6 +17,7 @@
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
+import { Container } from '@/components/ui/container';
 import { Badge } from '@/components/ui/card';
 import {
   Mail,
@@ -47,9 +48,9 @@ export function FeaturesSection() {
   return (
     <section
       id="features"
-      className={cn('scroll-mt-16 border-t px-6 py-20 lg:py-24', mode.color.border.default)}
+      className={cn('scroll-mt-16 border-t py-20 lg:py-24', mode.color.border.default)}
     >
-      <div className="mx-auto max-w-7xl">
+      <Container size="2xl">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -207,7 +208,7 @@ export function FeaturesSection() {
             <DesignSystemPreview />
           </FeatureSectionLayout>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

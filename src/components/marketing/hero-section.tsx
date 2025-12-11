@@ -7,6 +7,7 @@
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { Container } from '@/components/ui/container';
 import { PolarCheckoutButton } from '@/components/polar/checkout-button';
 import { motion } from 'framer-motion';
 import { SimpleIcon } from '@/components/ui/simple-icon';
@@ -44,8 +45,8 @@ const techStack = [
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden px-6 py-20 lg:py-24">
-      <div className="mx-auto max-w-7xl">
+    <section className="relative overflow-hidden py-20 lg:py-24">
+      <Container size="2xl">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left Column - Terminal Content */}
           <div className="flex flex-col justify-center">
@@ -178,7 +179,7 @@ export function HeroSection() {
             ))}
           </div>
         </motion.div>
-      </div>
+      </Container>
     </section>
   );
 }

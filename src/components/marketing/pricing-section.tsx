@@ -8,6 +8,7 @@
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
+import { Container } from '@/components/ui/container';
 import { Card, CardContent, InfoNote, Badge } from '@/components/ui/card';
 import { PricingCard } from '@/components/landing/pricing-card';
 
@@ -15,9 +16,9 @@ export function PricingSection() {
   return (
     <section
       id="pricing"
-      className={cn('scroll-mt-16 border-t px-6 py-20 lg:py-24', mode.color.border.default)}
+      className={cn('scroll-mt-16 border-t py-20 lg:py-24', mode.color.border.default)}
     >
-      <div className="mx-auto max-w-7xl">
+      <Container size="2xl">
         {/* Two Column Layout */}
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left Column - Pricing Card */}
@@ -72,7 +73,7 @@ export function PricingSection() {
             </Card>
           </motion.div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }
