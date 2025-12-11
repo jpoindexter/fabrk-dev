@@ -206,23 +206,8 @@ function UserManagementPreview() {
           <CardHeader code="0x00" title="USERS DATABASE" />
 
           <div className="p-4">
-            <div className="mb-4 flex items-center justify-between">
-              <div className={cn(mode.font, 'text-xs', mode.color.text.muted)}>
-                [ALL USERS]: COUNT={mockUsers.length} | FILTERED={filteredRowCount}
-              </div>
-              <Button
-                onClick={exportToCSV}
-                variant="outline"
-                size="sm"
-                className={cn(mode.radius, mode.font, 'h-7 text-xs')}
-              >
-                <Download className="mr-2 h-3 w-3" />
-                &gt; EXPORT CSV
-              </Button>
-            </div>
-
             {/* Toolbar */}
-            <TableToolbar table={table} />
+            <TableToolbar table={table} onExportCSV={exportToCSV} />
 
             {/* Terminal Table */}
             <DataTable table={table} />
