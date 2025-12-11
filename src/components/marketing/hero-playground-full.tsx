@@ -1068,7 +1068,7 @@ export function HeroPlaygroundFull() {
 
   return (
     <section className="border-border bg-muted/20 border-t py-16">
-      <div className="container mx-auto max-w-[1800px] px-6">
+      <div className="container mx-auto max-w-[1800px] px-12 lg:px-24">
         {/* Header with tabs and theme indicator */}
         <div className="mb-8 flex items-center justify-between">
           <div className="flex gap-1">
