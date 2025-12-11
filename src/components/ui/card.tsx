@@ -122,29 +122,28 @@ export type CardHeaderProps = {
 
 const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
   ({ code = '0x00', title, icon, meta, className }, ref) => (
-    <div
-      ref={ref}
-      data-slot="card-header"
-      className={cn(
-        'flex items-center justify-between border-b px-4 py-2',
-        mode.color.border.default,
-        'last:border-b-0', // Remove bottom border when CardHeader is last child (no CardContent)
-        className
-      )}
-    >
-      <span className={cn(mode.color.text.muted, mode.typography.caption, mode.font)}>
-        [ [{code}] {title} ]
-      </span>
-      {(icon || meta) && (
-        <span className="flex items-center gap-2">
-          {meta && (
-            <span className={cn(mode.color.text.muted, mode.typography.caption, mode.font)}>
-              {meta}
-            </span>
-          )}
-          {icon}
+    <div ref={ref} data-slot="card-header" className={cn('px-4 py-2', className)}>
+      <div
+        className={cn(
+          'flex items-center justify-between border-b pb-2',
+          mode.color.border.default,
+          'last:border-b-0' // Remove bottom border when CardHeader is last child (no CardContent)
+        )}
+      >
+        <span className={cn(mode.color.text.muted, mode.typography.caption, mode.font)}>
+          [ [{code}] {title} ]
         </span>
-      )}
+        {(icon || meta) && (
+          <span className="flex items-center gap-2">
+            {meta && (
+              <span className={cn(mode.color.text.muted, mode.typography.caption, mode.font)}>
+                {meta}
+              </span>
+            )}
+            {icon}
+          </span>
+        )}
+      </div>
     </div>
   )
 );
@@ -183,16 +182,12 @@ export type CardFooterProps = React.HTMLAttributes<HTMLDivElement>;
 
 const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
   ({ className, ...props }, ref) => (
-    <div
-      ref={ref}
-      data-slot="card-footer"
-      className={cn(
-        'flex items-center gap-2 border-t px-4 py-2',
-        mode.color.border.default,
-        className
-      )}
-      {...props}
-    />
+    <div ref={ref} data-slot="card-footer" className={cn('px-4 py-2', className)}>
+      <div
+        className={cn('flex items-center gap-2 border-t pt-2', mode.color.border.default)}
+        {...props}
+      />
+    </div>
   )
 );
 CardFooter.displayName = 'CardFooter';
