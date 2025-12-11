@@ -87,10 +87,13 @@
   /* ============================================
      MODERN THEME STYLING
      ============================================ */
+  /* Modern mode - Rounded corners + Geist Sans font */
   [data-visual-mode='modern'] * {
     border-radius: 0.5rem !important;
+    font-family: var(--font-sans) !important;
   }
 
+  [data-visual-mode='modern'] body,
   [data-visual-mode='modern'] {
     font-family: var(--font-sans) !important;
   }
@@ -103,6 +106,30 @@
     border-radius: 0.5rem !important;
     font-family: var(--font-sans) !important;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1) !important;
+  }
+
+  /* ============================================
+     SOFT THEME STYLING
+     ============================================ */
+  /* Soft mode - Extra rounded corners + Geist Sans font */
+  [data-visual-mode='soft'] * {
+    border-radius: 0.75rem !important;
+    font-family: var(--font-sans) !important;
+  }
+
+  [data-visual-mode='soft'] body,
+  [data-visual-mode='soft'] {
+    font-family: var(--font-sans) !important;
+  }
+
+  [data-visual-mode='soft'] [data-slot='alert-dialog-overlay'] {
+    background-color: rgba(0, 0, 0, 0.4) !important;
+  }
+
+  [data-visual-mode='soft'] [data-sonner-toast] {
+    border-radius: 0.75rem !important;
+    font-family: var(--font-sans) !important;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1) !important;
   }
 
   /* Terminal mode - Enhanced font rendering for clean monospace */
