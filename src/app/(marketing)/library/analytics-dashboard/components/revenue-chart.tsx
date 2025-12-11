@@ -2,7 +2,9 @@
  * ✅ FABRK COMPONENT
  * Revenue Chart - Terminal-style bar chart
  */
+'use client';
 
+import { useState } from 'react';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
@@ -18,6 +20,8 @@ interface RevenueChartProps {
 }
 
 export function RevenueChart({ data }: RevenueChartProps) {
+  const [hoveredBar, setHoveredBar] = useState<number | null>(null);
+
   const avgRevenue = Math.round(data.reduce((sum, d) => sum + d.revenue, 0) / data.length);
   const maxRevenue = Math.max(...data.map((d) => d.revenue));
   const growthRate = (
@@ -52,22 +56,37 @@ export function RevenueChart({ data }: RevenueChartProps) {
           {/* Chart area */}
           <div
             className={cn(
-              'flex h-[200px] items-end justify-between gap-2 border',
+              'relative flex h-[200px] items-end justify-between gap-2 border',
               mode.color.border.default
             )}
           >
             {data.map((dataPoint, i) => (
-              <div key={i} className="flex h-full flex-1 items-end justify-center">
+              <div key={i} className="relative flex h-full flex-1 items-end justify-center">
                 <div
                   className={cn(
-                    'w-full max-w-12 transition-colors',
+                    'w-full max-w-12 cursor-pointer transition-colors',
                     mode.color.bg.accent,
                     mode.state.hover.bg
                   )}
                   style={{
                     height: `${dataPoint.height}%`,
                   }}
+                  onMouseEnter={() => setHoveredBar(i)}
+                  onMouseLeave={() => setHoveredBar(null)}
                 />
+                {hoveredBar === i && (
+                  <div
+                    className={cn(
+                      'border-border bg-card absolute bottom-full mb-2 border px-2 py-1 text-xs whitespace-nowrap',
+                      mode.font
+                    )}
+                  >
+                    <div className={mode.color.text.muted}>{dataPoint.month}</div>
+                    <div className={cn('font-semibold', mode.color.text.accent)}>
+                      ${dataPoint.revenue.toLocaleString()}
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
           </div>
