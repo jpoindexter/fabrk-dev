@@ -5,7 +5,7 @@
  */
 
 import { HeroSection } from '@/components/marketing/hero-section';
-import { HeroPlayground } from '@/components/marketing/hero-playground';
+import { HeroPlaygroundFull } from '@/components/marketing/hero-playground-full';
 import { FeaturesShowcase } from '@/components/marketing/features-showcase';
 import { StatsSection } from '@/components/marketing/stats-section';
 import { TimeSavingsSection } from '@/components/marketing/time-savings-section';
@@ -24,8 +24,8 @@ export default function HomePage() {
       {/* Hero - Updated with verified social proof */}
       <HeroSection />
 
-      {/* Interactive Playground - Show terminal UI in action (like shadcn) */}
-      <HeroPlayground />
+      {/* Interactive Playground - Full shadcn-style with 5 tabs */}
+      <HeroPlaygroundFull />
 
       {/* What Makes Fabrk Different - Unique features (Terminal UI, 31 Demos, AI Credits, 3 Providers) */}
       <FeaturesShowcase />
