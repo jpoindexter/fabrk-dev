@@ -30,7 +30,7 @@ export const TESTIMONIALS = [
   },
   {
     id: 'maria-garcia',
-    quote: '234 components that actually work. No more fighting with shadcn compatibility issues.',
+    quote: '60+ components that actually work. No more fighting with shadcn compatibility issues.',
     author: 'Maria Garcia',
     role: 'Full-Stack Developer',
     avatar: '/avatars/maria-garcia.jpg',
@@ -46,7 +46,7 @@ export const TESTIMONIALS = [
   },
   {
     id: 'sarah-wilson',
-    quote: 'The accessibility is top-notch. WCAG AAA compliance out of the box is rare.',
+    quote: 'The accessibility is top-notch. WCAG 2.1 AA compliance out of the box is solid.',
     author: 'Sarah Wilson',
     role: 'Agency Owner',
     avatar: '/avatars/sarah-wilson.jpg',

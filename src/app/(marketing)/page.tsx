@@ -41,8 +41,8 @@ export default function HomePage() {
       {/* Pricing */}
       <PricingSection />
 
-      {/* Customer Testimonials */}
-      <SocialProofSection />
+      {/* Customer Testimonials - Removed pending real testimonials */}
+      {/* <SocialProofSection /> */}
 
       {/* FAQ */}
       <FAQSection />

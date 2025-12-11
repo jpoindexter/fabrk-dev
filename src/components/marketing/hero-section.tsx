@@ -105,8 +105,8 @@ export function HeroSection() {
               className="mb-8"
             >
               <p className={cn('text-body-s', mode.color.text.muted)}>
-                <span className={mode.color.text.success}>[ACTIVE]</span> Join hundreds of
-                developers shipping faster
+                <span className={mode.color.text.success}>[VERIFIED]</span> Used to build 50+
+                production SaaS apps
               </p>
             </motion.div>
 
@@ -128,7 +128,7 @@ export function HeroSection() {
                 asChild
                 className={cn('text-xs', mode.radius, mode.font)}
               >
-                <Link href="/docs/components/overview">View Live Demo</Link>
+                <Link href="/library">Explore 31 Interactive Demos</Link>
               </Button>
             </motion.div>
           </div>
