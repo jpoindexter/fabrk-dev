@@ -25,8 +25,8 @@ export function FeaturesShowcase() {
           align="center"
         />
 
-        {/* 4-Column Benefits Grid */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {/* 3-Column Benefits Grid (reduced from 4 for better spacing) */}
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {CORE_BENEFITS.map((benefit, index) => (
             <BenefitCard
               key={benefit.id}
@@ -54,12 +54,12 @@ export function FeaturesShowcase() {
           className="mt-12"
         >
           <Card>
-            <CardHeader code="0x14" title="UNIQUE VALUE" />
+            <CardHeader code="0x14" title="TOTAL VALUE" />
             <CardContent>
               <StatGroup>
-                <Stat label="Time Saved" value="70+ HOURS" />
-                <Stat label="Cost Saved" value="$14K+" />
-                <Stat label="Unique Features" value="4 MAJOR" />
+                <Stat label="Time Saved" value="150+ HOURS" />
+                <Stat label="Cost Saved" value="$30K+" />
+                <Stat label="Unique Features" value="3 PILLARS" />
                 <Stat label="Your Investment" value={PRICING.display.current} />
               </StatGroup>
             </CardContent>
