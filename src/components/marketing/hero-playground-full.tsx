@@ -296,6 +296,225 @@ function ComponentsGrid() {
   );
 }
 
+// Dashboard preview - simplified version without all subcomponents
+function DashboardPreview() {
+  return (
+    <div className="space-y-4">
+      {/* Metric Cards Row */}
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {[
+          { label: 'REVENUE', value: '$45,231', change: '+20.1%' },
+          { label: 'USERS', value: '2,350', change: '+12.5%' },
+          { label: 'CONVERSIONS', value: '45.2%', change: '+5.3%' },
+          { label: 'GROWTH', value: '+12%', change: '+2.1%' },
+        ].map((metric, i) => (
+          <Card key={i}>
+            <div className="p-4">
+              <div className={cn('mb-2 text-xs', mode.color.text.muted)}>[{metric.label}]</div>
+              <div className="text-2xl font-bold">{metric.value}</div>
+              <div className={cn('text-xs', mode.color.text.success)}>{metric.change}</div>
+            </div>
+          </Card>
+        ))}
+      </div>
+
+      {/* Charts placeholder */}
+      <div className="grid gap-4 lg:grid-cols-2">
+        <Card>
+          <CardHeader code="0x01" title="REVENUE OVERVIEW" />
+          <div className="flex h-[200px] items-center justify-center p-4">
+            <div className={cn('text-xs', mode.color.text.muted)}>[CHART DATA]</div>
+          </div>
+        </Card>
+        <Card>
+          <CardHeader code="0x02" title="RECENT ACTIVITY" />
+          <div className="space-y-2 p-4">
+            {['New user signup', 'Payment received', 'Project created'].map((activity, i) => (
+              <div key={i} className="flex items-center justify-between text-xs">
+                <span>{activity}</span>
+                <span className={mode.color.text.muted}>{i + 1}h ago</span>
+              </div>
+            ))}
+          </div>
+        </Card>
+      </div>
+    </div>
+  );
+}
+
+// Table preview - simplified version
+function TablePreview() {
+  const users = [
+    { name: 'Alex Chen', email: 'alex@example.com', role: 'Admin', status: 'Active' },
+    { name: 'Jordan Lee', email: 'jordan@example.com', role: 'User', status: 'Active' },
+    { name: 'Sam Wilson', email: 'sam@example.com', role: 'User', status: 'Inactive' },
+  ];
+
+  return (
+    <Card>
+      <CardHeader code="0x00" title="USERS DATABASE" />
+      <div className="p-4">
+        <div className="mb-4">
+          <Input placeholder="Search users..." className={cn(mode.radius, mode.font, 'text-xs')} />
+        </div>
+        <div className="space-y-1">
+          {users.map((user, i) => (
+            <div
+              key={i}
+              className={cn(
+                'flex items-center justify-between border-b p-2 text-xs',
+                mode.color.border.default
+              )}
+            >
+              <div className="flex-1">
+                <div className="font-semibold">{user.name}</div>
+                <div className={mode.color.text.muted}>{user.email}</div>
+              </div>
+              <div className="flex items-center gap-4">
+                <span>{user.role}</span>
+                <Badge variant={user.status === 'Active' ? 'default' : 'secondary'}>
+                  {user.status}
+                </Badge>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Card>
+  );
+}
+
+// Profile preview - simplified version
+function ProfilePreview() {
+  return (
+    <div className="space-y-4">
+      <Card>
+        <CardHeader code="0x00" title="PROFILE INFO" />
+        <div className="p-4">
+          <div className="mb-4 flex items-center gap-4">
+            <div
+              className={cn(
+                'flex h-16 w-16 items-center justify-center rounded-full',
+                mode.color.bg.accent
+              )}
+            >
+              <User className="h-8 w-8" />
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold">Alex Chen</h3>
+              <p className={cn('text-xs', mode.color.text.muted)}>@alexchen</p>
+            </div>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-4">
+            {[
+              { label: 'PROJECTS', value: '12' },
+              { label: 'CONTRIBUTIONS', value: '847' },
+              { label: 'FOLLOWERS', value: '234' },
+              { label: 'FOLLOWING', value: '89' },
+            ].map((stat, i) => (
+              <div key={i} className="text-center">
+                <div className="text-xl font-bold">{stat.value}</div>
+                <div className={cn('text-xs', mode.color.text.muted)}>{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Card>
+
+      <Card>
+        <CardHeader code="0x01" title="RECENT ACTIVITY" />
+        <div className="space-y-2 p-4 text-xs">
+          <div className="flex items-center gap-2">
+            <DollarSign className="h-4 w-4" />
+            <span>Pushed 3 commits to fabrk/dashboard</span>
+            <span className={mode.color.text.muted}>2h ago</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Calendar className="h-4 w-4" />
+            <span>Commented on issue #142</span>
+            <span className={mode.color.text.muted}>5h ago</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Settings className="h-4 w-4" />
+            <span>Updated profile settings</span>
+            <span className={mode.color.text.muted}>1d ago</span>
+          </div>
+        </div>
+      </Card>
+    </div>
+  );
+}
+
+// Billing preview - simplified version
+function BillingPreview() {
+  return (
+    <div className="space-y-4">
+      <Card>
+        <CardHeader code="0x00" title="CURRENT PLAN" />
+        <div className="p-4">
+          <div className="mb-4 flex items-center justify-between">
+            <div>
+              <h3 className="text-lg font-semibold">PROFESSIONAL</h3>
+              <p className={cn('text-xs', mode.color.text.muted)}>$29/month</p>
+            </div>
+            <Badge>ACTIVE</Badge>
+          </div>
+          <div className="space-y-2 text-xs">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="h-4 w-4" />
+              <span>Unlimited projects</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="h-4 w-4" />
+              <span>10 team members</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="h-4 w-4" />
+              <span>Priority support</span>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      <div className="grid gap-4 sm:grid-cols-2">
+        <Card>
+          <CardHeader code="0x01" title="USAGE METRICS" />
+          <div className="space-y-3 p-4">
+            {[
+              { label: 'Users', value: 7, max: 10 },
+              { label: 'Storage', value: 45, max: 100 },
+              { label: 'API Calls', value: 12500, max: 50000 },
+            ].map((metric, i) => (
+              <div key={i} className="space-y-1">
+                <div className="flex justify-between text-xs">
+                  <span>{metric.label}</span>
+                  <span className={mode.color.text.muted}>
+                    {metric.value}/{metric.max}
+                  </span>
+                </div>
+                <Progress value={(metric.value / metric.max) * 100} />
+              </div>
+            ))}
+          </div>
+        </Card>
+
+        <Card>
+          <CardHeader code="0x02" title="RECENT INVOICES" />
+          <div className="space-y-2 p-4 text-xs">
+            {['Nov 2024', 'Oct 2024', 'Sep 2024'].map((month, i) => (
+              <div key={i} className="flex items-center justify-between">
+                <span>{month}</span>
+                <span>$29.00</span>
+                <Badge variant="outline">PAID</Badge>
+              </div>
+            ))}
+          </div>
+        </Card>
+      </div>
+    </div>
+  );
+}
+
 export function HeroPlaygroundFull() {
   const [activeTab, setActiveTab] = useState('components');
 
@@ -347,50 +566,10 @@ export function HeroPlaygroundFull() {
         {/* Tab Content */}
         <div>
           {activeTab === 'components' && <ComponentsGrid />}
-          {activeTab === 'dashboard' && (
-            <div
-              className={cn(
-                'flex h-[600px] items-center justify-center',
-                mode.font,
-                mode.color.text.muted
-              )}
-            >
-              [LOADING DASHBOARD...]
-            </div>
-          )}
-          {activeTab === 'table' && (
-            <div
-              className={cn(
-                'flex h-[600px] items-center justify-center',
-                mode.font,
-                mode.color.text.muted
-              )}
-            >
-              [LOADING TABLE...]
-            </div>
-          )}
-          {activeTab === 'profile' && (
-            <div
-              className={cn(
-                'flex h-[600px] items-center justify-center',
-                mode.font,
-                mode.color.text.muted
-              )}
-            >
-              [LOADING PROFILE...]
-            </div>
-          )}
-          {activeTab === 'billing' && (
-            <div
-              className={cn(
-                'flex h-[600px] items-center justify-center',
-                mode.font,
-                mode.color.text.muted
-              )}
-            >
-              [LOADING BILLING...]
-            </div>
-          )}
+          {activeTab === 'dashboard' && <DashboardPreview />}
+          {activeTab === 'table' && <TablePreview />}
+          {activeTab === 'profile' && <ProfilePreview />}
+          {activeTab === 'billing' && <BillingPreview />}
         </div>
       </Container>
     </section>
