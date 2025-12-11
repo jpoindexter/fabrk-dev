@@ -70,9 +70,7 @@ export function HeroSection() {
               <h2 className="mb-4 text-6xl leading-[0.95] font-black tracking-tight lg:text-7xl">
                 <span className="text-foreground">BUILDING YOUR SAAS</span>
                 <br />
-                <span className="text-gradient-purple text-glow-purple">
-                  JUST GOT UNFAIRLY EASY
-                </span>
+                <span className={mode.color.text.accent}>JUST GOT UNFAIRLY EASY</span>
               </h2>
               <p className={cn('mb-6 text-sm leading-relaxed lg:text-base', mode.color.text.muted)}>
                 60+ production components. 26 full-featured templates. Terminal-first design that
@@ -109,7 +107,7 @@ export function HeroSection() {
             >
               <PolarCheckoutButton
                 className={cn(
-                  'button-glow-purple bg-accent text-accent-foreground px-8 py-4 text-sm transition-all hover:scale-105',
+                  'bg-accent text-accent-foreground px-8 py-4 text-sm transition-all hover:scale-105',
                   mode.radius,
                   mode.font
                 )}
