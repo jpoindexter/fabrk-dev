@@ -45,7 +45,7 @@ const techStack = [
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden py-20 lg:py-24">
+    <section className="relative overflow-hidden py-32 lg:py-40">
       <Container size="2xl">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left Column - Terminal Content */}
@@ -67,7 +67,7 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <h1 className={cn('text-body-m mb-2', mode.color.text.muted)}>[FABRK INIT]</h1>
-              <h2 className="text-foreground mb-4 text-6xl leading-tight font-bold lg:text-7xl">
+              <h2 className="text-foreground mb-4 text-6xl leading-none font-bold lg:text-8xl">
                 BUILDING YOUR SAAS
                 <br />
                 <span className={mode.color.text.accent}>JUST GOT UNFAIRLY EASY</span>
@@ -119,7 +119,11 @@ export function HeroSection() {
               className="mb-8 flex flex-col gap-4 sm:flex-row"
             >
               <PolarCheckoutButton
-                className={cn('text-xs sm:text-sm', mode.radius, mode.font, 'px-6 py-3')}
+                className={cn(
+                  'bg-accent text-accent-foreground px-8 py-4 text-sm',
+                  mode.radius,
+                  mode.font
+                )}
               >
                 &gt; {PRICING.cta.label} — {PRICING.display.current}
               </PolarCheckoutButton>

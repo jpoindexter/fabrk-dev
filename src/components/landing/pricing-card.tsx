@@ -33,16 +33,22 @@ export function PricingCard({
       <CardContent padding="md">
         {/* Price Display */}
         <div className="mb-4">
-          <div className="flex items-baseline gap-2">
-            <span className={cn('text-sm line-through', mode.color.text.muted, mode.font)}>
+          <div className="flex items-baseline gap-3">
+            <span className={cn('text-base line-through', mode.color.text.muted, mode.font)}>
               {PRICING.display.original}
             </span>
-            <span className={cn('text-xs', mode.color.text.muted, mode.font)}>→</span>
-            <span className={cn('text-2xl font-semibold', mode.color.text.primary, mode.font)}>
+            <span className={cn('text-sm', mode.color.text.muted, mode.font)}>→</span>
+            <span
+              className={cn(
+                'text-6xl leading-none font-bold lg:text-8xl',
+                mode.color.text.primary,
+                mode.font
+              )}
+            >
               {PRICING.display.current}
             </span>
           </div>
-          <div className={cn('mt-1 text-xs', mode.color.text.muted, mode.font)}>
+          <div className={cn('mt-3 text-sm', mode.color.text.muted, mode.font)}>
             ONE TIME PAYMENT
           </div>
         </div>
@@ -71,7 +77,13 @@ export function PricingCard({
         )}
 
         {/* CTA Button */}
-        <PolarCheckoutButton className={cn('w-full text-xs sm:text-sm', mode.radius, mode.font)}>
+        <PolarCheckoutButton
+          className={cn(
+            'bg-accent text-accent-foreground w-full px-8 py-4 text-sm',
+            mode.radius,
+            mode.font
+          )}
+        >
           {PRICING.cta.label} — {PRICING.display.current}
         </PolarCheckoutButton>
 
