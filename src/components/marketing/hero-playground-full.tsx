@@ -112,6 +112,15 @@ import { ProfileHeader } from '@/app/(marketing)/library/profile/components/prof
 import { BadgesSection } from '@/app/(marketing)/library/profile/components/badges-section';
 import { ProfileTabs } from '@/app/(marketing)/library/profile/components/profile-tabs';
 
+// Billing Dashboard components
+import { CurrentPlanCard } from '@/app/(marketing)/library/billing-dashboard/components/current-plan-card';
+import { UsageMetricsCard } from '@/app/(marketing)/library/billing-dashboard/components/usage-metrics-card';
+import { PaymentMethodsCard } from '@/app/(marketing)/library/billing-dashboard/components/payment-methods-card';
+import { RecentInvoicesCard } from '@/app/(marketing)/library/billing-dashboard/components/recent-invoices-card';
+import { PlanCards } from '@/app/(marketing)/library/billing-dashboard/components/plan-cards';
+import { BillingHistoryTable } from '@/app/(marketing)/library/billing-dashboard/components/billing-history-table';
+import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
+
 // Profile mock data
 const mockProfileUser = {
   name: 'Alex Chen',
@@ -201,6 +210,120 @@ const mockProfileBadges = [
   { id: '2', name: 'Top Contributor', icon: TrendingUp, color: 'success' },
   { id: '3', name: 'Bug Hunter', icon: Activity, color: 'warning' },
   { id: '4', name: 'Team Player', icon: Award, color: 'primary' },
+];
+
+// Billing Dashboard mock data
+const mockBillingSubscription = {
+  plan: 'Professional',
+  status: 'active',
+  price: 29,
+  billingCycle: 'monthly',
+  nextBillingDate: '2024-12-15',
+  startDate: '2024-01-15',
+  features: [
+    'Unlimited projects',
+    '10 team members',
+    'Priority support',
+    'Advanced analytics',
+    'Custom integrations',
+  ],
+};
+
+const mockBillingUsage = {
+  users: { current: 8, limit: 10, percentage: 80 },
+  projects: { current: 24, limit: -1, percentage: 0 },
+  storage: { current: 45, limit: 100, percentage: 45, unit: 'GB' },
+  apiCalls: { current: 12500, limit: 50000, percentage: 25 },
+};
+
+const mockBillingPaymentMethods = [
+  {
+    id: 'pm_001',
+    brand: 'VISA',
+    last4: '4242',
+    expMonth: 12,
+    expYear: 2025,
+    isDefault: true,
+  },
+  {
+    id: 'pm_002',
+    brand: 'MASTERCARD',
+    last4: '5555',
+    expMonth: 6,
+    expYear: 2026,
+    isDefault: false,
+  },
+];
+
+const mockBillingPayments = [
+  {
+    id: 'inv_001',
+    date: '2024-11-01',
+    amount: 2900,
+    status: 'succeeded',
+    description: 'Professional Plan - November 2024',
+  },
+  {
+    id: 'inv_002',
+    date: '2024-10-01',
+    amount: 2900,
+    status: 'succeeded',
+    description: 'Professional Plan - October 2024',
+  },
+  {
+    id: 'inv_003',
+    date: '2024-09-01',
+    amount: 2900,
+    status: 'succeeded',
+    description: 'Professional Plan - September 2024',
+  },
+  {
+    id: 'inv_004',
+    date: '2024-08-01',
+    amount: 2900,
+    status: 'failed',
+    description: 'Professional Plan - August 2024',
+  },
+  {
+    id: 'inv_005',
+    date: '2024-07-01',
+    amount: 2900,
+    status: 'succeeded',
+    description: 'Professional Plan - July 2024',
+  },
+];
+
+const mockBillingPlans = [
+  {
+    name: 'FREE',
+    price: 0,
+    features: ['1 project', '3 team members', 'Basic support'],
+    current: false,
+  },
+  {
+    name: 'PROFESSIONAL',
+    price: 29,
+    features: ['Unlimited projects', '10 team members', 'Priority support', 'Advanced analytics'],
+    current: true,
+  },
+  {
+    name: 'ENTERPRISE',
+    price: 99,
+    features: [
+      'Unlimited everything',
+      'Unlimited team',
+      'Dedicated support',
+      'Custom integrations',
+      'SLA guarantee',
+    ],
+    current: false,
+  },
+];
+
+const mockBillingTabs = [
+  { id: 'overview', label: 'OVERVIEW' },
+  { id: 'plans', label: 'PLANS' },
+  { id: 'history', label: 'HISTORY' },
 ];
 
 // Browser Frame Component
@@ -855,72 +978,78 @@ function ProfilePreview() {
 
 // Billing preview - simplified version
 function BillingPreview() {
+  const [activeTab, setActiveTab] = useState('overview');
+
+  // Helper functions
+  const formatDate = (dateStr: string) => {
+    return new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    }).format(new Date(dateStr));
+  };
+
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }).format(amount / 100);
+  };
+
+  const getStatusText = (status: string) => {
+    switch (status) {
+      case 'succeeded':
+        return { text: 'PAID', color: 'text-success' };
+      case 'failed':
+        return { text: 'FAILED', color: 'text-destructive' };
+      default:
+        return { text: 'PENDING', color: 'text-warning' };
+    }
+  };
+
   return (
     <BrowserFrame>
       <LeftNavigation activeSection="dashboard" />
       <div className="flex-1 overflow-auto p-8">
-        <div className="space-y-4">
-          <Card>
-            <CardHeader code="0x00" title="CURRENT PLAN" />
-            <div className="p-4">
-              <div className="mb-4 flex items-center justify-between">
-                <div>
-                  <h3 className="text-lg font-semibold">PROFESSIONAL</h3>
-                  <p className={cn('text-xs', mode.color.text.muted)}>$29/month</p>
-                </div>
-                <Badge>ACTIVE</Badge>
-              </div>
-              <div className="space-y-2 text-xs">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4" />
-                  <span>Unlimited projects</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4" />
-                  <span>10 team members</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4" />
-                  <span>Priority support</span>
-                </div>
-              </div>
-            </div>
-          </Card>
+        <div className="container mx-auto max-w-7xl space-y-6">
+          <div className="[&_>*>*:first-child]:hidden">
+            <StyledTabs tabs={mockBillingTabs} value={activeTab} onValueChange={setActiveTab}>
+              {/* Overview Tab */}
+              <StyledTabsContent value="overview">
+                <div className="space-y-6">
+                  <CurrentPlanCard subscription={mockBillingSubscription} formatDate={formatDate} />
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            <Card>
-              <CardHeader code="0x01" title="USAGE METRICS" />
-              <div className="space-y-3 p-4">
-                {[
-                  { label: 'Users', value: 7, max: 10 },
-                  { label: 'Storage', value: 45, max: 100 },
-                  { label: 'API Calls', value: 12500, max: 50000 },
-                ].map((metric, i) => (
-                  <div key={i} className="space-y-1">
-                    <div className="flex justify-between text-xs">
-                      <span>{metric.label}</span>
-                      <span className={mode.color.text.muted}>
-                        {metric.value}/{metric.max}
-                      </span>
-                    </div>
-                    <Progress value={(metric.value / metric.max) * 100} />
+                  {/* Usage Stats and Payment Methods Grid */}
+                  <div className="grid gap-6 md:grid-cols-2">
+                    <UsageMetricsCard usage={mockBillingUsage} />
+                    <PaymentMethodsCard paymentMethods={mockBillingPaymentMethods} />
                   </div>
-                ))}
-              </div>
-            </Card>
 
-            <Card>
-              <CardHeader code="0x02" title="RECENT INVOICES" />
-              <div className="space-y-2 p-4 text-xs">
-                {['Nov 2024', 'Oct 2024', 'Sep 2024'].map((month, i) => (
-                  <div key={i} className="flex items-center justify-between">
-                    <span>{month}</span>
-                    <span>$29.00</span>
-                    <Badge variant="outline">PAID</Badge>
-                  </div>
-                ))}
-              </div>
-            </Card>
+                  <RecentInvoicesCard
+                    payments={mockBillingPayments}
+                    formatDate={formatDate}
+                    formatCurrency={formatCurrency}
+                    getStatusText={getStatusText}
+                    onViewAll={() => setActiveTab('history')}
+                  />
+                </div>
+              </StyledTabsContent>
+
+              {/* Plans Tab */}
+              <StyledTabsContent value="plans">
+                <PlanCards plans={mockBillingPlans} />
+              </StyledTabsContent>
+
+              {/* History Tab */}
+              <StyledTabsContent value="history">
+                <BillingHistoryTable
+                  payments={mockBillingPayments}
+                  formatDate={formatDate}
+                  formatCurrency={formatCurrency}
+                  getStatusText={getStatusText}
+                />
+              </StyledTabsContent>
+            </StyledTabs>
           </div>
         </div>
       </div>
