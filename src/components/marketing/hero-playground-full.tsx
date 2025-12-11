@@ -46,7 +46,7 @@ function ComponentsGrid() {
   const [selectedSource, setSelectedSource] = useState('social-media');
 
   return (
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {/* COLUMN 1 - Payment & Forms */}
       <div className="space-y-4">
         <Card>
