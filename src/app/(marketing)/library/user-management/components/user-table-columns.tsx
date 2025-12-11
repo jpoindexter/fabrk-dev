@@ -40,10 +40,12 @@ export const columns: ColumnDef<UserType>[] = [
     ),
     enableSorting: false,
     enableHiding: false,
+    size: 50,
   },
   {
     accessorKey: 'name',
     header: ({ column }) => <DataTableColumnHeader column={column} title="Name" />,
+    size: 250,
     cell: ({ row }) => (
       <div className="flex items-center gap-4">
         <div
@@ -76,6 +78,7 @@ export const columns: ColumnDef<UserType>[] = [
   {
     accessorKey: 'email',
     header: ({ column }) => <DataTableColumnHeader column={column} title="Email" />,
+    size: 280,
     cell: ({ row }) => (
       <span className={cn(mode.font, 'max-w-[250px] truncate text-xs', mode.color.text.muted)}>
         {row.getValue('email')}
@@ -85,6 +88,7 @@ export const columns: ColumnDef<UserType>[] = [
   {
     accessorKey: 'role',
     header: ({ column }) => <DataTableColumnHeader column={column} title="Role" />,
+    size: 140,
     cell: ({ row }) => {
       const role = row.getValue<string>('role');
       const RoleIcon = role === 'ADMIN' ? Shield : role === 'USER' ? User : Users;
@@ -111,6 +115,7 @@ export const columns: ColumnDef<UserType>[] = [
   {
     accessorKey: 'status',
     header: ({ column }) => <DataTableColumnHeader column={column} title="Status" />,
+    size: 180,
     cell: ({ row }) => {
       const status = row.getValue<string>('status');
       const getStatusColor = () => {
@@ -129,6 +134,7 @@ export const columns: ColumnDef<UserType>[] = [
   {
     accessorKey: 'createdAt',
     header: ({ column }) => <DataTableColumnHeader column={column} title="Created" />,
+    size: 120,
     cell: ({ row }) => (
       <span className={cn(mode.font, 'text-xs', mode.color.text.muted)}>
         {new Date(row.getValue('createdAt')).toLocaleDateString()}
@@ -138,6 +144,7 @@ export const columns: ColumnDef<UserType>[] = [
   {
     accessorKey: 'lastLogin',
     header: ({ column }) => <DataTableColumnHeader column={column} title="Last Login" />,
+    size: 120,
     cell: ({ row }) => (
       <span className={cn(mode.font, 'text-xs', mode.color.text.muted)}>
         {row.getValue('lastLogin')}
@@ -147,6 +154,7 @@ export const columns: ColumnDef<UserType>[] = [
   {
     id: 'actions',
     enableHiding: false,
+    size: 60,
     cell: ({ row }) => {
       const user = row.original;
 
