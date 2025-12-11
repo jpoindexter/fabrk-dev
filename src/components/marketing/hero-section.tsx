@@ -72,7 +72,7 @@ export function HeroSection() {
                 <span className={mode.color.text.accent}>48 HOURS, NOT 6 MONTHS</span>
               </h2>
               <p className={cn('text-body-m mb-6', mode.color.text.muted)}>
-                Production-ready Next.js boilerplate with auth, billing, multi-tenancy, and 234
+                Production-ready Next.js boilerplate with auth, billing, multi-tenancy, and 60+
                 components. Stop rebuilding the same infrastructure. Start with Fabrk.
               </p>
             </motion.div>
@@ -88,7 +88,7 @@ export function HeroSection() {
                 <CardHeader code="0x01" title="METRICS" />
                 <CardContent>
                   <StatGroup>
-                    <Stat label="Components" value="234" />
+                    <Stat label="Components" value="60+" />
                     <Stat label="Setup Time" value="< 5 MIN" />
                     <Stat label="Time Saved" value="100+ HRS" />
                   </StatGroup>

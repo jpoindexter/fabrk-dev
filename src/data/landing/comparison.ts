@@ -6,7 +6,7 @@ export const COMPARISON_FEATURES = [
   {
     id: 'components',
     name: 'Components',
-    fabrk: '234',
+    fabrk: '60+',
     shipfast: '~40',
     magicui: '~150',
     saasboldkit: '~60',

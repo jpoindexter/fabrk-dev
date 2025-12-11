@@ -14,7 +14,7 @@ export const STATS = [
   {
     id: 'components',
     label: 'COMPONENTS',
-    value: '234',
+    value: '60+',
     icon: Box,
   },
   {

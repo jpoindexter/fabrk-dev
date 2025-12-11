@@ -18,7 +18,7 @@ interface BenefitCardProps {
   description: string;
   timeSaved: string;
   costSaved: string;
-  features: string[];
+  features: readonly string[];
   index: number;
 }
 
