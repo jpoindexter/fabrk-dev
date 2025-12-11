@@ -101,14 +101,9 @@ export function PricingSection() {
                   &gt; BUY NOW — {config.pricing.fabrk.display.current}
                 </PolarCheckoutButton>
 
-                {/* Guarantee */}
-                <div className={cn('mt-3 text-center text-xs', mode.color.text.success, mode.font)}>
-                  ✓ 30-Day Money-Back Guarantee
-                </div>
-
                 {/* Trust line */}
-                <div className={cn('mt-2 text-center text-xs', mode.color.text.muted, mode.font)}>
-                  Secure checkout via Polar
+                <div className={cn('mt-3 text-center text-xs', mode.color.text.muted, mode.font)}>
+                  Secure checkout via Polar │ All sales final
                 </div>
               </CardContent>
             </Card>
