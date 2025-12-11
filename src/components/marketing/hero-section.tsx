@@ -238,14 +238,18 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <h1 className={cn('text-body-m mb-2', mode.color.text.muted)}>[FABRK INIT]</h1>
-              <h2 className="text-display mb-6">
-                BUILDING YOUR SAAS
+              <h2 className="text-display mb-4">
+                SHIP YOUR SAAS IN
                 <br />
-                <span className={mode.color.text.accent}>JUST GOT UNFAIRLY EASY.</span>
+                <span className={mode.color.text.accent}>48 HOURS, NOT 6 MONTHS</span>
               </h2>
+              <p className={cn('text-body-m mb-6', mode.color.text.muted)}>
+                Production-ready Next.js boilerplate with auth, billing, multi-tenancy, and 234
+                components. Stop rebuilding the same infrastructure. Start with Fabrk.
+              </p>
             </motion.div>
 
-            {/* Status Block */}
+            {/* 3-Stat Strip */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -253,32 +257,49 @@ export function HeroSection() {
               className="mb-8"
             >
               <Card size="auto">
-                <CardHeader code="0x01" title="STATUS" />
+                <CardHeader code="0x01" title="METRICS" />
                 <CardContent>
-                  <p className={cn('text-body-m mb-4', mode.color.text.muted)}>
-                    Why spend valuable time tackling auth, billing, emails, organizations, invites
-                    and onboarding? Focus on your business and skip the noise.
-                  </p>
                   <StatGroup>
-                    <Stat label="Speed" value="OPTIMIZED" />
-                    <Stat label="Integration" value="SEAMLESS" />
+                    <Stat label="Components" value="234" />
+                    <Stat label="Setup Time" value="< 5 MIN" />
+                    <Stat label="Saved" value="$50K" />
                   </StatGroup>
                 </CardContent>
               </Card>
             </motion.div>
 
-            {/* CTAs */}
+            {/* Social Proof */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="mb-8"
+            >
+              <p className={cn('text-body-s', mode.color.text.muted)}>
+                <span className={mode.color.text.success}>[ACTIVE]</span> Join hundreds of
+                developers shipping faster
+              </p>
+            </motion.div>
+
+            {/* CTAs - Primary Dominant */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mb-8 flex flex-col gap-4 sm:flex-row"
             >
-              <PolarCheckoutButton className={cn('text-xs', mode.radius, mode.font)}>
-                &gt; GET FABRK
+              <PolarCheckoutButton
+                className={cn('text-xs sm:text-sm', mode.radius, mode.font, 'px-6 py-3')}
+              >
+                &gt; BUY FABRK — $199
               </PolarCheckoutButton>
-              <Button variant="outline" asChild className={cn('text-xs', mode.radius, mode.font)}>
-                <Link href="/docs/components/overview">&gt; VIEW LIBRARY</Link>
+              <Button
+                variant="outline"
+                size="sm"
+                asChild
+                className={cn('text-xs', mode.radius, mode.font)}
+              >
+                <Link href="/docs/components/overview">View Live Demo</Link>
               </Button>
             </motion.div>
           </div>
