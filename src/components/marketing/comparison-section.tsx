@@ -59,34 +59,60 @@ function AnimatedCounter({
 export function ComparisonSection() {
   const features = [
     {
-      name: 'Authentication (Email + OAuth)',
-      hours: 20,
-      fabrk: 'Ready in minutes',
+      name: 'Price',
+      scratch: '$0 (but $50K+ dev time)',
+      shipfast: '$169',
+      nextbase: '$399',
+      fabrk: '$199',
     },
     {
-      name: 'Stripe Payments Integration',
-      hours: 15,
-      fabrk: 'Pre-configured',
-    },
-    {
-      name: 'Database Schema + ORM',
-      hours: 10,
-      fabrk: 'Integrated',
+      name: 'Components',
+      scratch: '0 (build everything)',
+      shipfast: '~50',
+      nextbase: '~100',
+      fabrk: '234',
     },
     {
       name: 'Multi-Tenancy',
-      hours: 25,
-      fabrk: 'Built-in',
+      scratch: '25+ hours',
+      shipfast: '✗',
+      nextbase: '✓',
+      fabrk: '✓',
+    },
+    {
+      name: 'Auth (Social + Magic Links)',
+      scratch: '20+ hours',
+      shipfast: '✓',
+      nextbase: '✓',
+      fabrk: '✓',
+    },
+    {
+      name: 'Payments Integration',
+      scratch: '15+ hours',
+      shipfast: '✓',
+      nextbase: '✓',
+      fabrk: '✓',
+    },
+    {
+      name: 'WCAG 2.1 AA Accessible',
+      scratch: '30+ hours',
+      shipfast: '✗',
+      nextbase: '✗',
+      fabrk: '✓',
     },
     {
       name: 'Design System',
-      hours: 30,
-      fabrk: 'Included',
+      scratch: '30+ hours',
+      shipfast: 'Basic',
+      nextbase: 'Advanced',
+      fabrk: 'Terminal-first',
     },
     {
-      name: 'Advanced Features',
-      hours: 40,
-      fabrk: 'Ready components',
+      name: 'Time to Ship',
+      scratch: '3-6 months',
+      shipfast: '1-2 weeks',
+      nextbase: '1-2 weeks',
+      fabrk: '48 hours',
     },
   ];
 
@@ -99,19 +125,20 @@ export function ComparisonSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mb-12"
+          className="mb-12 text-center"
         >
           <Badge
             code="0x50"
-            label="BUILD VS FABRK"
-            meta="TIME TO MARKET │ FIB[21,34,55,89]"
+            label="COMPETITIVE ANALYSIS"
+            meta="MARKET COMPARISON │ FIB[21,34,55,89]"
             className="mb-4"
           />
           <h2 className={cn(mode.font, 'mb-4 text-4xl font-semibold tracking-tight')}>
-            WHY BUILD FROM SCRATCH?
+            HOW FABRK COMPARES
           </h2>
-          <p className={cn(mode.font, 'text-muted-foreground max-w-2xl text-sm')}>
-            See how much time and effort Fabrk saves you compared to manual setup.
+          <p className={cn(mode.font, 'text-muted-foreground mx-auto max-w-2xl text-sm')}>
+            More components, better accessibility, and faster shipping than competitors—at half the
+            price of premium alternatives.
           </p>
         </motion.div>
 
@@ -125,47 +152,42 @@ export function ComparisonSection() {
           <Card size="auto">
             <CardHeader code="0x51" title="COMPARISON TABLE" />
             <CardContent padding="sm">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>FEATURE</TableHead>
-                    <TableHead className="text-destructive text-center">MANUAL SETUP</TableHead>
-                    <TableHead className="text-success text-center">FABRK</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {features.map((feature, index) => (
-                    <TableRow key={index}>
-                      <TableCell className="text-foreground">{feature.name}</TableCell>
-                      <TableCell className="text-center">
-                        <span className="text-destructive">✗</span>
-                        <span className="text-muted-foreground ml-2">
-                          <AnimatedCounter
-                            value={feature.hours}
-                            suffix="+ hours"
-                            duration={1 + index * 0.2}
-                          />
-                        </span>
-                      </TableCell>
-                      <TableCell className="text-center">
-                        <span className="text-success">✓</span>
-                        <span className="text-foreground ml-2">{feature.fabrk}</span>
-                      </TableCell>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>FEATURE</TableHead>
+                      <TableHead className="text-muted-foreground text-center">
+                        FROM SCRATCH
+                      </TableHead>
+                      <TableHead className="text-muted-foreground text-center">SHIPFAST</TableHead>
+                      <TableHead className="text-muted-foreground text-center">NEXTBASE</TableHead>
+                      <TableHead className="text-success text-center">FABRK</TableHead>
                     </TableRow>
-                  ))}
-                </TableBody>
-                <TableFooter>
-                  <TableRow>
-                    <TableCell className="font-semibold">TOTAL</TableCell>
-                    <TableCell className="text-destructive text-center font-semibold">
-                      <AnimatedCounter value={140} suffix="+ hours" duration={2.5} />
-                    </TableCell>
-                    <TableCell className="text-success text-center font-semibold">
-                      Ready to Ship
-                    </TableCell>
-                  </TableRow>
-                </TableFooter>
-              </Table>
+                  </TableHeader>
+                  <TableBody>
+                    {features.map((feature, index) => (
+                      <TableRow key={index}>
+                        <TableCell className="text-foreground font-medium">
+                          {feature.name}
+                        </TableCell>
+                        <TableCell className="text-muted-foreground text-center text-xs">
+                          {feature.scratch}
+                        </TableCell>
+                        <TableCell className="text-muted-foreground text-center text-xs">
+                          {feature.shipfast}
+                        </TableCell>
+                        <TableCell className="text-muted-foreground text-center text-xs">
+                          {feature.nextbase}
+                        </TableCell>
+                        <TableCell className="text-success text-center font-semibold">
+                          {feature.fabrk}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
             </CardContent>
           </Card>
         </motion.div>
@@ -181,7 +203,8 @@ export function ComparisonSection() {
           <Card size="auto">
             <CardContent padding="sm">
               <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                [NOTE]: Start building your unique features on day one. Skip boilerplate.
+                [NOTE]: Fabrk offers 4x more components than Shipfast, better accessibility than
+                both competitors, and ships in 48 hours—all at 50% the cost of Nextbase.
               </span>
             </CardContent>
           </Card>
