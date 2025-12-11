@@ -73,6 +73,8 @@ import {
   Home,
   ChevronRight,
   Users,
+  User,
+  CreditCard,
   X,
   RotateCw,
   Lock,
@@ -375,17 +377,11 @@ function LeftNavigation({ activeSection }: { activeSection: string }) {
     {
       title: 'Main',
       items: [
-        { id: 'dashboard', label: 'Dashboard', icon: Activity },
-        { id: 'analytics', label: 'Analytics', icon: TrendingUp },
-        { id: 'users', label: 'Users', icon: Users },
-      ],
-    },
-    {
-      title: 'Components',
-      items: [
-        { id: 'forms', label: 'Forms', icon: FileText },
-        { id: 'tables', label: 'Tables', icon: Activity },
-        { id: 'cards', label: 'Cards', icon: Activity },
+        { id: 'components', label: 'Components', icon: Activity },
+        { id: 'dashboard', label: 'Dashboard', icon: Home },
+        { id: 'table', label: 'Table', icon: Users },
+        { id: 'profile', label: 'Profile', icon: User },
+        { id: 'billing', label: 'Billing', icon: CreditCard },
       ],
     },
   ];
@@ -830,7 +826,7 @@ function DashboardPreview() {
 
   return (
     <BrowserFrame>
-      <LeftNavigation activeSection="analytics" />
+      <LeftNavigation activeSection="dashboard" />
       <div className="flex-1 overflow-auto p-8">
         <div className="space-y-6">
           {/* Header */}
@@ -921,7 +917,7 @@ function TablePreview() {
 
   return (
     <BrowserFrame>
-      <LeftNavigation activeSection="users" />
+      <LeftNavigation activeSection="table" />
       <div className="flex-1 overflow-auto p-8">
         <div className="space-y-6">
           {/* Header */}
@@ -959,7 +955,7 @@ function TablePreview() {
 function ProfilePreview() {
   return (
     <BrowserFrame>
-      <LeftNavigation activeSection="dashboard" />
+      <LeftNavigation activeSection="profile" />
       <div className="flex-1 overflow-auto p-8">
         <div className="container mx-auto max-w-7xl space-y-6 [&_>*>*:first-child]:hidden">
           {/* Profile Header */}
@@ -1009,7 +1005,7 @@ function BillingPreview() {
 
   return (
     <BrowserFrame>
-      <LeftNavigation activeSection="dashboard" />
+      <LeftNavigation activeSection="billing" />
       <div className="flex-1 overflow-auto p-8">
         <div className="container mx-auto max-w-7xl space-y-6">
           <StyledTabs tabs={mockBillingTabs} value={activeTab} onValueChange={setActiveTab}>
