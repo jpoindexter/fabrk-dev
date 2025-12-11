@@ -41,7 +41,7 @@ export function QualitySection() {
   ];
 
   return (
-    <section className="border-border bg-background border-t px-6 py-24 font-mono">
+    <section className="border-border bg-background border-t px-6 py-24 font-mono lg:py-32">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <motion.div
@@ -59,8 +59,8 @@ export function QualitySection() {
             viewport={{ once: true }}
           >
             <span className="text-muted-foreground text-xs">[0x00]</span>
-            <h2 className="mb-4 text-2xl font-semibold tracking-tight">
-              BUILT_TO_LAST_TESTED_TO_SHIP
+            <h2 className="mb-4 text-4xl leading-tight font-semibold tracking-tight lg:text-5xl">
+              BUILT TO LAST, TESTED TO SHIP
             </h2>
           </motion.div>
           <motion.div
@@ -69,7 +69,7 @@ export function QualitySection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <p className="text-muted-foreground mx-auto max-w-2xl text-sm">
+            <p className="text-muted-foreground mx-auto max-w-2xl text-base leading-relaxed">
               &gt; Every component is battle-tested with comprehensive coverage. No cutting corners,
               no technical debt. Production-ready from day one.
             </p>
@@ -91,18 +91,18 @@ export function QualitySection() {
                   <CardContent className="p-8">
                     <div className="bg-primary/10 mb-4 inline-flex items-center justify-center p-4">
                       {item.iconComponent === 'testTube' ? (
-                        <TestTube2 className="text-primary h-6 w-6" />
+                        <TestTube2 className="text-primary h-12 w-12" />
                       ) : (
-                        <SimpleIcon path={item.icon!} className="text-primary h-6 w-6" />
+                        <SimpleIcon path={item.icon!} className="text-primary h-12 w-12" />
                       )}
                     </div>
                     <div className="mb-4">
-                      <div className="text-foreground text-4xl font-semibold">{item.metric}</div>
-                      <h3 className="mt-1 text-lg font-semibold">
-                        {item.label.toUpperCase()}
-                      </h3>
+                      <div className="text-foreground text-5xl font-bold">{item.metric}</div>
+                      <h3 className="mt-1 text-lg font-semibold">{item.label.toUpperCase()}</h3>
                     </div>
-                    <span className="text-muted-foreground block text-xs">{item.description}</span>
+                    <span className="text-muted-foreground block text-sm leading-relaxed">
+                      {item.description}
+                    </span>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -121,11 +121,13 @@ export function QualitySection() {
             <CardContent className="p-8">
               <div className="flex items-start gap-4">
                 <div className="shrink-0">
-                  <CheckCircle2 className="text-primary h-8 w-8" />
+                  <CheckCircle2 className="text-primary h-16 w-16" />
                 </div>
                 <div>
-                  <h3 className="mb-2 text-lg font-semibold">QUALITY GUARANTEE</h3>
-                  <p className="text-muted-foreground text-sm">
+                  <h3 className="mb-2 text-xl leading-snug font-semibold lg:text-2xl">
+                    QUALITY GUARANTEE
+                  </h3>
+                  <p className="text-muted-foreground text-base leading-relaxed">
                     Unlike other boilerplates that ship untested code, every Fabrk component is
                     rigorously tested, documented in Storybook, and validated by CI/CD pipelines.
                     You're not inheriting technical debt—you're getting production-grade

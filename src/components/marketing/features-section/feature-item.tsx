@@ -16,13 +16,21 @@ export function FeatureItem({ icon: Icon, title, description }: FeatureItemProps
   return (
     <div className="flex gap-4">
       <div className="flex-shrink-0">
-        <Icon className={cn('size-4', mode.color.text.accent)} />
+        <Icon className={cn('size-8', mode.color.text.accent)} />
       </div>
       <div>
-        <span className={cn(mode.font, mode.color.text.primary, 'text-xs font-semibold')}>
+        <span
+          className={cn(
+            mode.font,
+            mode.color.text.primary,
+            'text-lg leading-snug font-semibold lg:text-xl'
+          )}
+        >
           ├─ {title}
         </span>
-        <span className={cn(mode.font, mode.color.text.muted, 'ml-2 text-xs')}>{description}</span>
+        <span className={cn(mode.font, mode.color.text.muted, 'ml-2 text-base leading-relaxed')}>
+          {description}
+        </span>
       </div>
     </div>
   );

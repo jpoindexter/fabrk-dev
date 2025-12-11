@@ -33,11 +33,18 @@ export function SectionHeader({
         [{code}] {badge}
       </Badge>
 
-      <h2 className={cn('mb-6 text-4xl font-bold tracking-tight lg:text-5xl', mode.font)}>
+      <h2
+        className={cn(
+          'mb-6 text-4xl leading-tight font-semibold tracking-tight lg:text-5xl',
+          mode.font
+        )}
+      >
         {title}
       </h2>
 
-      <p className={cn('text-base lg:text-lg', mode.color.text.muted)}>{description}</p>
+      <p className={cn('text-base leading-relaxed lg:text-lg', mode.color.text.muted)}>
+        {description}
+      </p>
     </div>
   );
 }

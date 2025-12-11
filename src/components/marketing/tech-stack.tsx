@@ -25,7 +25,7 @@ export function TechStack() {
   ];
 
   return (
-    <section className="border-border bg-background border-t px-6 py-24 font-mono">
+    <section className="border-border bg-background border-t px-6 py-20 font-mono lg:py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 text-center">
           <motion.div
@@ -35,7 +35,9 @@ export function TechStack() {
             viewport={{ once: true }}
           >
             <Badge code="0x20" label="TECH STACK" className="mb-4" />
-            <h2 className="text-2xl font-semibold tracking-tight">A MODERN STACK YOU CAN TRUST</h2>
+            <h2 className="text-4xl leading-tight font-semibold tracking-tight lg:text-5xl">
+              A MODERN STACK YOU CAN TRUST
+            </h2>
           </motion.div>
         </div>
 
@@ -62,7 +64,7 @@ export function TechStack() {
                 <CardContent className="flex flex-col items-center justify-center gap-3 p-4">
                   <SimpleIcon
                     path={tech.path}
-                    className="text-foreground group-hover:text-primary h-8 w-8 transition-colors"
+                    className="text-foreground group-hover:text-primary size-6 transition-colors"
                   />
                   <span className="text-foreground text-xs font-medium">
                     {tech.name.toUpperCase().replace(/\./g, '')}

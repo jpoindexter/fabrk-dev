@@ -37,7 +37,7 @@ export function TestimonialsSection() {
   ];
 
   return (
-    <section className={cn(mode.font, 'border-border bg-background border-t px-6 py-24')}>
+    <section className={cn(mode.font, 'border-border bg-background border-t px-6 py-20 lg:py-24')}>
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <motion.div
@@ -47,7 +47,9 @@ export function TestimonialsSection() {
             viewport={{ once: true }}
           >
             <span className="text-muted-foreground text-xs">[0x00]</span>
-            <h2 className="mb-4 text-2xl font-semibold tracking-tight">LOVED BY DEVELOPERS</h2>
+            <h2 className="mb-4 text-4xl leading-tight font-semibold tracking-tight lg:text-5xl">
+              LOVED BY DEVELOPERS
+            </h2>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -55,7 +57,9 @@ export function TestimonialsSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <p className="text-muted-foreground text-sm">&gt; Early access customer feedback</p>
+            <p className="text-muted-foreground text-base leading-relaxed">
+              &gt; Early access customer feedback
+            </p>
           </motion.div>
         </div>
 
@@ -95,11 +99,11 @@ export function TestimonialsSection() {
                   }
                 />
                 <CardContent>
-                  <div className="mb-4 text-xs">
+                  <div className="mb-4 text-sm leading-relaxed">
                     <span className="text-muted-foreground">QUOTE: </span>
                     <span className="text-foreground">"{testimonial.quote}"</span>
                   </div>
-                  <div className="text-xs">
+                  <div className="text-sm">
                     <span className="text-muted-foreground">AUTHOR: </span>
                     <span className="text-foreground font-semibold">
                       {testimonial.author.toUpperCase()}
