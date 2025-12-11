@@ -13,7 +13,13 @@ export const PRICING = {
   },
   discount: {
     percentage: 20,
-    endsAt: new Date('2026-02-01T23:59:59Z'), // Launch discount expires
+    endsAt: new Date('2025-12-31T23:59:59Z'), // Launch pricing expires Dec 31
+    label: 'LAUNCH PRICING - LIMITED AVAILABILITY',
+  },
+  urgency: {
+    licensesLeft: 50,
+    priceIncrease: '$499',
+    message: 'Price increases to $499 after launch period',
   },
   features: [
     '60+ PRODUCTION-READY COMPONENTS',
