@@ -41,81 +41,75 @@ export function HeroSection() {
     <section className="relative flex min-h-[85vh] items-center overflow-hidden py-16 lg:min-h-[90vh] lg:py-20">
       <Container size="2xl">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-          {/* Left Column - Terminal Content */}
-          <div className="flex flex-col justify-center">
-            {/* System Init Label */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="mb-6"
-            >
-              <CardBadge code="0x00" label="SYSTEM INIT" meta="SAAS BOILERPLATE v2.0" />
-            </motion.div>
+          {/* Left Column - Terminal Window */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col justify-center"
+          >
+            {/* Terminal Window Container */}
+            <div className={cn('bg-background border', mode.color.border.default)}>
+              {/* Window Header with badge */}
+              <div className={cn('border-b px-4 py-3', mode.color.border.default)}>
+                <CardBadge code="0x00" label="SYSTEM INIT" meta="SAAS BOILERPLATE v2.0" />
+              </div>
 
-            {/* Headline */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              <h1 className={cn('mb-2 text-xs', mode.color.text.muted, mode.font)}>[FABRK INIT]</h1>
-              <h2 className="mb-4 text-6xl leading-[0.95] font-black tracking-tight lg:text-7xl">
-                <span className="text-foreground">BUILD IN</span>
-                <br />
-                <span className={mode.color.text.accent}>MINUTES</span>
-              </h2>
-              <p className={cn('mb-6 text-sm leading-relaxed lg:text-base', mode.color.text.muted)}>
-                Ship your product this weekend not next quarter.
-              </p>
-            </motion.div>
+              {/* Window Content */}
+              <div className="p-8 lg:p-12">
+                {/* Headline */}
+                <h1 className={cn('mb-2 text-xs', mode.color.text.muted, mode.font)}>
+                  [FABRK INIT]
+                </h1>
+                <h2 className="mb-4 text-6xl leading-[0.95] font-black tracking-tight lg:text-7xl">
+                  <span className="text-foreground">BUILD IN</span>
+                  <br />
+                  <span className={mode.color.text.accent}>MINUTES</span>
+                </h2>
+                <p
+                  className={cn('mb-6 text-sm leading-relaxed lg:text-base', mode.color.text.muted)}
+                >
+                  Ship your product this weekend not next quarter.
+                </p>
 
-            {/* Quick stats inline */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="mb-8 flex flex-wrap gap-4"
-            >
-              <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
-                <span className={mode.color.text.accent}>60+</span> Components
-              </span>
-              <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
-              <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
-                <span className={mode.color.text.accent}>{'< 5 MIN'}</span> Setup
-              </span>
-              <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
-              <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
-                <span className={mode.color.text.accent}>400+ HRS</span> Saved
-              </span>
-            </motion.div>
+                {/* Quick stats inline */}
+                <div className="mb-8 flex flex-wrap gap-4">
+                  <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
+                    <span className={mode.color.text.accent}>60+</span> Components
+                  </span>
+                  <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
+                  <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
+                    <span className={mode.color.text.accent}>{'< 5 MIN'}</span> Setup
+                  </span>
+                  <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
+                  <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
+                    <span className={mode.color.text.accent}>400+ HRS</span> Saved
+                  </span>
+                </div>
 
-            {/* CTAs - Primary Dominant */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col gap-3 sm:flex-row"
-            >
-              <PolarCheckoutButton
-                className={cn(
-                  'bg-accent text-accent-foreground px-8 py-4 text-sm transition-all hover:scale-105',
-                  mode.radius,
-                  mode.font
-                )}
-              >
-                &gt; {PRICING.cta.label} — {PRICING.display.current}
-              </PolarCheckoutButton>
-              <Button
-                variant="outline"
-                size="sm"
-                asChild
-                className={cn('text-xs', mode.radius, mode.font)}
-              >
-                <Link href="/library">Explore 31 Interactive Demos</Link>
-              </Button>
-            </motion.div>
-          </div>
+                {/* CTAs - Primary Dominant */}
+                <div className="flex flex-col gap-3 sm:flex-row">
+                  <PolarCheckoutButton
+                    className={cn(
+                      'bg-accent text-accent-foreground px-8 py-4 text-sm transition-all hover:scale-105',
+                      mode.radius,
+                      mode.font
+                    )}
+                  >
+                    &gt; {PRICING.cta.label} — {PRICING.display.current}
+                  </PolarCheckoutButton>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    asChild
+                    className={cn('text-xs', mode.radius, mode.font)}
+                  >
+                    <Link href="/library">Explore 31 Interactive Demos</Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
           {/* Right Column - Visual Proof */}
           <motion.div
