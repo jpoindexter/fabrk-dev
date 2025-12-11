@@ -1012,45 +1012,47 @@ function BillingPreview() {
       <LeftNavigation activeSection="dashboard" />
       <div className="flex-1 overflow-auto p-8">
         <div className="container mx-auto max-w-7xl space-y-6">
-          <div className="[&_>*>*:first-child]:hidden">
-            <StyledTabs tabs={mockBillingTabs} value={activeTab} onValueChange={setActiveTab}>
-              {/* Overview Tab */}
-              <StyledTabsContent value="overview">
-                <div className="space-y-6">
-                  <CurrentPlanCard subscription={mockBillingSubscription} formatDate={formatDate} />
+          <StyledTabs tabs={mockBillingTabs} value={activeTab} onValueChange={setActiveTab}>
+            {/* Overview Tab */}
+            <StyledTabsContent value="overview">
+              <div className="space-y-6 [&_>*>*:first-child]:hidden [&_>*>*>*>*:first-child]:hidden">
+                <CurrentPlanCard subscription={mockBillingSubscription} formatDate={formatDate} />
 
-                  {/* Usage Stats and Payment Methods Grid */}
-                  <div className="grid gap-6 md:grid-cols-2">
-                    <UsageMetricsCard usage={mockBillingUsage} />
-                    <PaymentMethodsCard paymentMethods={mockBillingPaymentMethods} />
-                  </div>
-
-                  <RecentInvoicesCard
-                    payments={mockBillingPayments}
-                    formatDate={formatDate}
-                    formatCurrency={formatCurrency}
-                    getStatusText={getStatusText}
-                    onViewAll={() => setActiveTab('history')}
-                  />
+                {/* Usage Stats and Payment Methods Grid */}
+                <div className="grid gap-6 md:grid-cols-2">
+                  <UsageMetricsCard usage={mockBillingUsage} />
+                  <PaymentMethodsCard paymentMethods={mockBillingPaymentMethods} />
                 </div>
-              </StyledTabsContent>
 
-              {/* Plans Tab */}
-              <StyledTabsContent value="plans">
+                <RecentInvoicesCard
+                  payments={mockBillingPayments}
+                  formatDate={formatDate}
+                  formatCurrency={formatCurrency}
+                  getStatusText={getStatusText}
+                  onViewAll={() => setActiveTab('history')}
+                />
+              </div>
+            </StyledTabsContent>
+
+            {/* Plans Tab */}
+            <StyledTabsContent value="plans">
+              <div className="[&_>*>*:first-child]:hidden">
                 <PlanCards plans={mockBillingPlans} />
-              </StyledTabsContent>
+              </div>
+            </StyledTabsContent>
 
-              {/* History Tab */}
-              <StyledTabsContent value="history">
+            {/* History Tab */}
+            <StyledTabsContent value="history">
+              <div className="[&_>*>*:first-child]:hidden">
                 <BillingHistoryTable
                   payments={mockBillingPayments}
                   formatDate={formatDate}
                   formatCurrency={formatCurrency}
                   getStatusText={getStatusText}
                 />
-              </StyledTabsContent>
-            </StyledTabs>
-          </div>
+              </div>
+            </StyledTabsContent>
+          </StyledTabs>
         </div>
       </div>
     </BrowserFrame>
