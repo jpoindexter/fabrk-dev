@@ -251,7 +251,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-28 lg:mt-36"
+          className="mt-44 lg:mt-52"
         >
           <CardBadge code="0x02" label="POWERED BY" meta="FIB[1,1,2,3,5,8,13]" className="mb-6" />
           <div className="flex flex-wrap gap-2">
