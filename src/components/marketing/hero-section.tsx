@@ -38,7 +38,7 @@ const techStack = [
 
 export function HeroSection() {
   return (
-    <section className="relative flex min-h-[85vh] items-center overflow-hidden pt-4 pb-16 lg:min-h-[90vh] lg:pt-6 lg:pb-20">
+    <section className="relative flex min-h-[85vh] items-center overflow-hidden pt-16 pb-16 lg:min-h-[90vh] lg:pt-20 lg:pb-20">
       <Container size="2xl">
         <div className="relative">
           {/* Main Hero Window - Wider, behind */}
@@ -46,21 +46,43 @@ export function HeroSection() {
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="relative z-0 max-w-4xl"
+            className="relative isolate z-0 max-w-2xl"
           >
-            <Card>
+            <Card size="auto">
               <CardHeader code="0x00" title="SYSTEM INIT" meta="SAAS BOILERPLATE v2.0" />
-              <CardContent className="space-y-6 p-8 pb-16 lg:p-12 lg:pb-24">
+              <CardContent className="space-y-4 px-6 pt-2 pb-12 lg:px-8 lg:pt-3 lg:pb-16">
                 {/* Headline */}
                 <div className="max-w-2xl">
                   <h1 className={cn('mb-2 text-xs', mode.color.text.muted, mode.font)}>
                     [FABRK INIT]
                   </h1>
-                  <h2 className="mb-4 text-6xl leading-[0.95] font-black tracking-tight lg:text-7xl">
-                    <span className="text-foreground">BUILD IN</span>
-                    <br />
-                    <span className={mode.color.text.accent}>MINUTES</span>
-                  </h2>
+                  <pre
+                    className={cn(
+                      'mb-4 text-[8px] leading-none lg:text-[10px]',
+                      mode.color.text.accent,
+                      mode.font
+                    )}
+                  >
+                    {` ███████████  █████  █████ █████ █████       ██████████      █████ ██████   █████
+░░███░░░░░███░░███  ░░███ ░░███ ░░███       ░░███░░░░███    ░░███ ░░██████ ░░███
+ ░███    ░███ ░███   ░███  ░███  ░███        ░███   ░░███    ░░███  ░███░███ ░███
+ ░██████████  ░███   ░███  ░███  ░███        ░███    ░███    ░███  ░███░░███░███
+ ░███░░░░░███ ░███   ░███  ░███  ░███        ░███    ░███    ░███  ░███ ░░██████
+ ░███    ░███ ░███   ░███  ░███  ░███      █ ░███    ███     ░███  ░███  ░░█████
+ ███████████  ░░████████   █████ ███████████ ██████████      █████ █████  ░░█████
+░░░░░░░░░░░    ░░░░░░░░   ░░░░░ ░░░░░░░░░░░ ░░░░░░░░░░      ░░░░░ ░░░░░    ░░░░░
+
+
+
+ ██████   ██████ █████ ██████   █████ █████  █████ ███████████ ██████████  █████████
+░░██████ ██████ ░░███ ░░██████ ░░███ ░░███  ░░███ ░█░░░███░░░█░░███░░░░░█ ███░░░░░███
+ ░███░█████░███  ░███  ░███░███ ░███  ░███   ░███ ░   ░███  ░  ░███  █ ░ ░███    ░░░
+ ░███░░███ ░███  ░███  ░███░░███░███  ░███   ░███     ░███     ░██████   ░░█████████
+ ░███ ░░░  ░███  ░███  ░███ ░░██████  ░███   ░███     ░███     ░███░░█    ░░░░░░░░███
+ ░███      ░███  ░███  ░███  ░░█████  ░███   ░███     ░███     ░███ ░   █ ███    ░███
+ █████     █████ █████ █████  ░░█████ ░░████████      █████    ██████████░░█████████
+░░░░░     ░░░░░ ░░░░░ ░░░░░    ░░░░░   ░░░░░░░░      ░░░░░    ░░░░░░░░░░  ░░░░░░░░░`}
+                  </pre>
                   <p
                     className={cn(
                       'mb-0 text-sm leading-relaxed lg:text-base',
@@ -115,14 +137,14 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="absolute -bottom-8 -left-8 z-[5] w-full max-w-md lg:-bottom-12 lg:-left-12"
+            className="absolute -bottom-20 -left-8 z-10 w-full max-w-md lg:-bottom-24 lg:-left-12"
           >
-            <Card>
+            <Card size="auto">
               <CardHeader code="0x01" title="KEY_SELLING_POINTS.TXT" />
               <CardContent className="space-y-2 py-3">
                 <p
                   className={cn(
-                    'border-accent border-l-2 pl-3 text-sm',
+                    'border-accent border-l-2 pl-3 text-xs',
                     mode.font,
                     mode.color.text.accent
                   )}
@@ -131,7 +153,7 @@ export function HeroSection() {
                 </p>
                 <p
                   className={cn(
-                    'border-accent border-l-2 pl-3 text-sm',
+                    'border-accent border-l-2 pl-3 text-xs',
                     mode.font,
                     mode.color.text.accent
                   )}
@@ -140,7 +162,7 @@ export function HeroSection() {
                 </p>
                 <p
                   className={cn(
-                    'border-accent border-l-2 pl-3 text-sm',
+                    'border-accent border-l-2 pl-3 text-xs',
                     mode.font,
                     mode.color.text.accent
                   )}
@@ -156,10 +178,10 @@ export function HeroSection() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="absolute top-16 right-0 z-10 flex w-full max-w-md flex-col gap-4 lg:top-24 lg:right-0"
+            className="absolute top-8 right-0 isolate z-10 flex w-full max-w-md flex-col gap-8 lg:top-12 lg:right-4"
           >
             {/* Urgency Card - Top */}
-            <Card size="auto" className="border-accent border-2">
+            <Card size="auto" className="border-accent border-2 lg:-mr-8">
               <CardHeader code="0x03" title="LAUNCH PRICING" />
               <CardContent className="space-y-2 py-3">
                 <div className="flex items-baseline gap-3">
@@ -195,7 +217,9 @@ export function HeroSection() {
             </Card>
 
             {/* Live Dashboard Preview - Show, don't tell */}
-            <HeroDashboardPreview />
+            <div className="mt-4 lg:mt-8 lg:ml-8">
+              <HeroDashboardPreview />
+            </div>
           </motion.div>
         </div>
 
@@ -204,7 +228,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-16"
+          className="mt-24 lg:mt-32"
         >
           <CardBadge code="0x02" label="POWERED BY" meta="FIB[1,1,2,3,5,8,13]" className="mb-6" />
           <div className="flex flex-wrap gap-2">

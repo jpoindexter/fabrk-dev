@@ -15,45 +15,32 @@
    ============================================ */
 
 .crt-scanlines {
-  position: relative;
-}
-
-.crt-scanlines::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 50;
-  border-radius: inherit;
-
-  /* Two gradients layered: horizontal lines + RGB chromatic aberration */
+  /* Apply scanlines directly to background to avoid z-index/stacking context issues */
   background-image:
     linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
     linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-
-  /* Key sizing: 100% width x 2px height for scan lines, 3px x 100% for RGB shift */
   background-size:
     100% 2px,
     3px 100%;
   background-repeat: repeat, repeat;
+  /* Blend with the underlying background-color (e.g., bg-card) */
+  background-blend-mode: overlay;
 }
 
-/* Light theme (GitHub): CRT effect DISABLED */
-[data-theme='light'] .crt-scanlines::before {
-  display: none;
+/* Light theme (GitHub): CRT effect ENABLED but subtle */
+[data-theme='light'] .crt-scanlines {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  background-blend-mode: multiply;
 }
 
 /* Dark mode: adjust opacity for visibility */
-.dark .crt-scanlines::before {
+.dark .crt-scanlines {
   background-image:
     linear-gradient(rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.08) 50%),
     linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
-}
-
-/* Content should be above scan lines */
-.crt-scanlines > * {
-  position: relative;
-  z-index: 2;
+  background-blend-mode: overlay;
 }
 
 /* ============================================
@@ -79,10 +66,42 @@ html[data-visual-mode='terminal'] body::before {
     100% 2px,
     3px 100%;
   background-repeat: repeat, repeat;
+
+  /* CRT flicker effect - slowed down */
+  animation: flicker 8s linear infinite;
+}
+
+/* Rolling scanline - classic CRT effect */
+html[data-visual-mode='terminal'] body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  pointer-events: none;
+  z-index: 99998;
+
+  /* Bright scanline that rolls down */
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 45%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.03) 55%,
+    transparent 100%
+  );
+
+  /* Slow continuous roll */
+  animation: roll-scanline 10s linear infinite;
 }
 
 /* Light theme (GitHub): full-page CRT effect DISABLED */
 html[data-visual-mode='terminal'][data-theme='light'] body::before {
+  display: none;
+}
+
+html[data-visual-mode='terminal'][data-theme='light'] body::after {
   display: none;
 }
 
@@ -139,7 +158,10 @@ html[data-visual-mode='terminal'][data-theme='light'] body::before {
    Hide all CRT effects when in Modern mode
    ============================================ */
 
-html[data-visual-mode='modern'] .crt-scanlines::before,
+html[data-visual-mode='modern'] .crt-scanlines {
+  background-image: none;
+}
+
 html[data-visual-mode='modern'] .crt-glow::after {
   display: none;
 }
@@ -153,7 +175,7 @@ html[data-visual-mode='modern'] body::before {
    Use will-change for animated elements only
    ============================================ */
 
-.crt-scanlines::before {
+.crt-scanlines {
   /* Static effect, no will-change needed */
 }
 
