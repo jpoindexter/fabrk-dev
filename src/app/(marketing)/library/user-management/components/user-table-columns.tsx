@@ -97,7 +97,7 @@ export const columns: ColumnDef<UserType>[] = [
         <div className="flex pl-2">
           <span
             className={cn(
-              'inline-flex items-center gap-1 border px-2 py-0.5 font-mono text-xs',
+              'inline-flex w-20 items-center justify-center gap-1 border px-2 py-0.5 font-mono text-xs',
               getRoleClasses()
             )}
           >
@@ -122,23 +122,6 @@ export const columns: ColumnDef<UserType>[] = [
         <span className={cn(mode.radius, mode.font, 'text-xs')}>
           <span className={mode.color.text.muted}>STATUS:</span>{' '}
           <span className={getStatusColor()}>{status.toUpperCase()}</span>
-        </span>
-      );
-    },
-  },
-  {
-    accessorKey: 'plan',
-    header: ({ column }) => <DataTableColumnHeader column={column} title="Plan" />,
-    cell: ({ row }) => {
-      const plan = row.getValue<string>('plan');
-      const getPlanClasses = () => {
-        if (plan === 'Enterprise') return cn(mode.color.text.accent, mode.color.border.accent);
-        if (plan === 'Pro') return cn(mode.color.text.warning, 'border-warning/50');
-        return cn(mode.color.text.muted, mode.color.border.default);
-      };
-      return (
-        <span className={cn('border px-2 py-0.5 font-mono text-xs', getPlanClasses())}>
-          {plan.toUpperCase()}
         </span>
       );
     },
