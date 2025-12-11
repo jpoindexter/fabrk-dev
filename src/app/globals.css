@@ -189,9 +189,9 @@
   --color-text-disabled: 68% 0 0; /* #ADADAD */
 
   /* Border Hierarchy */
-  --color-border-default: 93% 0 0; /* #EAEAEA */
+  --color-border-default: 88% 0 0; /* #E0E0E0 - More visible */
   --color-border-muted: 97% 0 0; /* #F5F5F5 */
-  --color-border-strong: 70% 0 0; /* #B3B3B3 */
+  --color-border-strong: 75% 0 0; /* #C0C0C0 - Emphasis */
   --color-border-focus: 0% 0 0; /* #000000 */
 
   /* Status Colors (WCAG AAA Compliant) */
@@ -234,6 +234,14 @@
 
   --accent: 70% 0.3 310; /* Purple/magenta for CTAs */
   --accent-foreground: 100% 0 0; /* White text on purple */
+
+  /* Secondary accent for variety/hierarchy */
+  --accent-secondary: 60% 0.25 45; /* Orange - warmth */
+  --accent-secondary-foreground: 100% 0 0; /* White text */
+
+  /* Accent surface backgrounds (15% opacity) */
+  --accent-surface: 70% 0.3 310 / 0.15; /* Purple with 15% opacity */
+  --accent-secondary-surface: 60% 0.25 45 / 0.12; /* Orange with 12% opacity */
 
   --destructive: 45% 0.22 15;
   --destructive-foreground: 100% 0 0;
@@ -287,9 +295,9 @@
   --color-text-disabled: 68% 0 0; /* #ADADAD */
 
   /* Border Hierarchy */
-  --color-border-default: 93% 0 0; /* #EAEAEA */
+  --color-border-default: 88% 0 0; /* #E0E0E0 - More visible */
   --color-border-muted: 97% 0 0; /* #F5F5F5 */
-  --color-border-strong: 70% 0 0; /* #B3B3B3 */
+  --color-border-strong: 75% 0 0; /* #C0C0C0 - Emphasis */
   --color-border-focus: 0% 0 0; /* #000000 */
 
   /* Status Colors (WCAG AAA Compliant) */
@@ -350,9 +358,9 @@
   --color-text-disabled: 40% 0 0; /* #666666 */
 
   /* Border Hierarchy */
-  --color-border-default: 35% 0.01 0; /* #595959 */
+  --color-border-default: 40% 0.01 0; /* #666666 - More visible for dark mode */
   --color-border-muted: 25% 0.01 0; /* #404040 */
-  --color-border-strong: 50% 0 0; /* #808080 */
+  --color-border-strong: 60% 0 0; /* #999999 - Emphasis */
   --color-border-focus: 100% 0 0; /* #ffffff */
 
   /* Status Colors */
