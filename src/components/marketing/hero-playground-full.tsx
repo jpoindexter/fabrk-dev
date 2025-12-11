@@ -4,7 +4,7 @@
  */
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import {
   ColumnFiltersState,
   SortingState,
@@ -56,6 +56,7 @@ import {
   Download,
   ArrowRight,
   User,
+  UserPlus,
   Calendar,
   DollarSign,
   Settings,
@@ -103,6 +104,8 @@ import { columns } from '@/app/(marketing)/library/user-management/components/us
 import { mockUsers } from '@/app/(marketing)/library/user-management/components/types';
 import { DataTable as UserDataTable } from '@/app/(marketing)/library/user-management/components/data-table';
 import { PaginationControls } from '@/app/(marketing)/library/user-management/components/pagination-controls';
+import { StatsCards } from '@/app/(marketing)/library/user-management/components/stats-cards';
+import { TableToolbar } from '@/app/(marketing)/library/user-management/components/table-toolbar';
 
 // Browser Frame Component
 function BrowserFrame({ children }: { children: React.ReactNode }) {
@@ -675,6 +678,28 @@ function TablePreview() {
     },
   });
 
+  const exportToCSV = useCallback(() => {
+    const headers = ['Name', 'Email', 'Role', 'Status', 'Plan', 'Created', 'Last Login'];
+    const csvData = mockUsers.map((user) => [
+      user.name,
+      user.email,
+      user.role,
+      user.status,
+      user.plan,
+      user.createdAt,
+      user.lastLogin,
+    ]);
+
+    const csv = [headers.join(','), ...csvData.map((row) => row.join(','))].join('\n');
+
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `users-${new Date().toISOString().split('T')[0]}.csv`;
+    a.click();
+  }, []);
+
   // Memoize filtered row count to prevent state updates during render
   const filteredRowCount = useMemo(() => table.getFilteredRowModel().rows.length, [table]);
 
@@ -687,24 +712,38 @@ function TablePreview() {
           <div className="flex items-center justify-between">
             <h1 className={cn(mode.font, 'text-2xl font-semibold')}>User Management</h1>
             <Button className={cn(mode.radius, mode.font, 'text-xs')}>
-              <User className="mr-2 h-4 w-4" />
+              <UserPlus className="mr-2 h-4 w-4" />
               &gt; ADD USER
             </Button>
           </div>
 
+          {/* Stats Cards */}
+          <StatsCards users={mockUsers} />
+
           {/* Main Table Card */}
           <Card>
             <CardHeader code="0x00" title="USERS DATABASE" />
-            <div className="p-4">
-              {/* Search */}
-              <Input
-                placeholder="Search users..."
-                value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
-                onChange={(e) => table.getColumn('name')?.setFilterValue(e.target.value)}
-                className={cn(mode.radius, mode.font, 'mb-4 max-w-sm text-xs')}
-              />
 
-              {/* Table */}
+            <div className="p-4">
+              <div className="mb-4 flex items-center justify-between">
+                <div className={cn(mode.font, 'text-xs', mode.color.text.muted)}>
+                  [ALL USERS]: COUNT={mockUsers.length} | FILTERED={filteredRowCount}
+                </div>
+                <Button
+                  onClick={exportToCSV}
+                  variant="outline"
+                  size="sm"
+                  className={cn(mode.radius, mode.font, 'h-7 text-xs')}
+                >
+                  <Download className="mr-2 h-3 w-3" />
+                  &gt; EXPORT CSV
+                </Button>
+              </div>
+
+              {/* Toolbar */}
+              <TableToolbar table={table} />
+
+              {/* Terminal Table */}
               <UserDataTable table={table} />
 
               {/* Pagination */}
