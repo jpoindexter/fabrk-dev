@@ -89,11 +89,7 @@ export function QualitySection() {
               >
                 <Card className="hover:border-primary/50 transition-all">
                   <CardContent className="p-8">
-                    {/* eslint-disable-next-line design-system/no-inline-styles -- Using new CSS variable --accent-surface not yet in Tailwind config */}
-                    <div
-                      className="mb-4 inline-flex items-center justify-center p-4"
-                      style={{ backgroundColor: 'oklch(var(--accent-surface))' }}
-                    >
+                    <div className="bg-accent-surface mb-4 inline-flex items-center justify-center p-4">
                       {item.iconComponent === 'testTube' ? (
                         <TestTube2 className="text-primary h-12 w-12" />
                       ) : (

@@ -60,9 +60,11 @@ const allowPatterns = [
   // Intentional hex colors: Design system audit files contain color analysis
   /src\/design-system\/audit\//,
   /src\/design-system\/violations\//,
+  // Intentional hex colors: Code block component uses hardcoded colors for syntax highlighting themes
+  /src\/components\/ui\/code-block\.tsx$/,
 ];
 
-const hexPattern = /#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})(?![0-9a-fA-F])(?=[$\s'"),.;:}\]>/]|$)/g;
+const hexPattern = /#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})(?![0-9a-fA-F])(?=[$\s'"),.;}\]>/]|$)/g;
 
 const files = execSync("git ls-files", { encoding: "utf8" })
   .trim()

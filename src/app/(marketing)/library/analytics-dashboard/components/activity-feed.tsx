@@ -40,7 +40,7 @@ export function ActivityFeed({ activities }: ActivityFeedProps) {
                 <div className="text-foreground">{activity.user}</div>
                 <span className="text-muted-foreground">{activity.action}</span>
               </div>
-              <div className="border-border text-muted-foreground mt-0.5 flex w-[90px] max-w-[90px] min-w-[90px] shrink-0 grow-0 basis-[90px] items-center justify-start border px-2 py-0.5 text-left text-[10px]">
+              <div className="border-border text-muted-foreground mt-0.5 flex w-[90px] max-w-[90px] min-w-[90px] shrink-0 grow-0 basis-[90px] items-center justify-center border px-2 py-0.5 text-left text-[10px]">
                 {activity.type}
               </div>
               <span className="text-muted-foreground mt-0.5 shrink-0">{activity.time}</span>
