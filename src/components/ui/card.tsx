@@ -220,27 +220,14 @@ export type StatProps = React.HTMLAttributes<HTMLSpanElement> & {
 
 const Stat = React.forwardRef<HTMLSpanElement, StatProps>(
   ({ label, value, size = 'md', className, ...props }, ref) => (
-    <span ref={ref} data-slot="stat" className={cn('flex flex-col gap-1', className)} {...props}>
-      <span
-        className={cn(
-          mode.color.text.accent,
-          mode.font,
-          size === 'sm' ? 'text-3xl' : 'text-4xl lg:text-5xl',
-          'leading-none font-black'
-        )}
-      >
-        {value}
-      </span>
-      <span
-        className={cn(
-          mode.color.text.muted,
-          mode.font,
-          size === 'sm' ? 'text-xs' : 'text-sm',
-          'tracking-wide uppercase'
-        )}
-      >
-        {label}
-      </span>
+    <span
+      ref={ref}
+      data-slot="stat"
+      className={cn(size === 'sm' ? 'text-xs' : 'text-sm', className)}
+      {...props}
+    >
+      <span className={cn(mode.color.text.muted, mode.font)}>{label}:</span>{' '}
+      <span className={cn(mode.color.text.accent, mode.font)}>{value}</span>
     </span>
   )
 );
