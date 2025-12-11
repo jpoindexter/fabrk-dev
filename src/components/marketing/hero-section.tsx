@@ -137,7 +137,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="absolute -bottom-16 -left-24 z-10 w-full max-w-md lg:-bottom-20 lg:-left-32"
+            className="absolute -bottom-28 -left-24 z-10 w-full max-w-md lg:-bottom-32 lg:-left-32"
           >
             <Card size="auto">
               <CardHeader code="0x01" title="KEY_SELLING_POINTS.TXT" />
