@@ -4,7 +4,17 @@
  */
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
+import {
+  ColumnFiltersState,
+  SortingState,
+  VisibilityState,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
+} from '@tanstack/react-table';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
@@ -87,6 +97,12 @@ import {
   trafficSources,
   deviceBreakdown,
 } from '@/app/(marketing)/library/analytics-dashboard/components/mock-data';
+
+// User Management components
+import { columns } from '@/app/(marketing)/library/user-management/components/user-table-columns';
+import { mockUsers } from '@/app/(marketing)/library/user-management/components/types';
+import { DataTable as UserDataTable } from '@/app/(marketing)/library/user-management/components/data-table';
+import { PaginationControls } from '@/app/(marketing)/library/user-management/components/pagination-controls';
 
 // Browser Frame Component
 function BrowserFrame({ children }: { children: React.ReactNode }) {
@@ -632,51 +648,70 @@ function DashboardPreview() {
   );
 }
 
-// Table preview - simplified version
+// Table preview - full user management with TanStack Table
 function TablePreview() {
-  const users = [
-    { name: 'Alex Chen', email: 'alex@example.com', role: 'Admin', status: 'Active' },
-    { name: 'Jordan Lee', email: 'jordan@example.com', role: 'User', status: 'Active' },
-    { name: 'Sam Wilson', email: 'sam@example.com', role: 'User', status: 'Inactive' },
-  ];
+  const [sorting, setSorting] = useState<SortingState>(() => []);
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(() => []);
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>(() => ({}));
+  const [rowSelection, setRowSelection] = useState(() => ({}));
+
+  // eslint-disable-next-line react-hooks/incompatible-library -- TanStack Table API design is incompatible with React Compiler but works correctly
+  const table = useReactTable({
+    data: mockUsers,
+    columns,
+    onSortingChange: setSorting,
+    onColumnFiltersChange: setColumnFilters,
+    getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    onColumnVisibilityChange: setColumnVisibility,
+    onRowSelectionChange: setRowSelection,
+    state: {
+      sorting,
+      columnFilters,
+      columnVisibility,
+      rowSelection,
+    },
+  });
+
+  // Memoize filtered row count to prevent state updates during render
+  const filteredRowCount = useMemo(() => table.getFilteredRowModel().rows.length, [table]);
 
   return (
     <BrowserFrame>
       <LeftNavigation activeSection="users" />
       <div className="flex-1 overflow-auto p-8">
-        <Card>
-          <CardHeader code="0x00" title="USERS DATABASE" />
-          <div className="p-4">
-            <div className="mb-4">
+        <div className="space-y-6">
+          {/* Header */}
+          <div className="flex items-center justify-between">
+            <h1 className={cn(mode.font, 'text-2xl font-semibold')}>User Management</h1>
+            <Button className={cn(mode.radius, mode.font, 'text-xs')}>
+              <User className="mr-2 h-4 w-4" />
+              &gt; ADD USER
+            </Button>
+          </div>
+
+          {/* Main Table Card */}
+          <Card>
+            <CardHeader code="0x00" title="USERS DATABASE" />
+            <div className="p-4">
+              {/* Search */}
               <Input
                 placeholder="Search users..."
-                className={cn(mode.radius, mode.font, 'text-xs')}
+                value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
+                onChange={(e) => table.getColumn('name')?.setFilterValue(e.target.value)}
+                className={cn(mode.radius, mode.font, 'mb-4 max-w-sm text-xs')}
               />
+
+              {/* Table */}
+              <UserDataTable table={table} />
+
+              {/* Pagination */}
+              <PaginationControls table={table} />
             </div>
-            <div className="space-y-1">
-              {users.map((user, i) => (
-                <div
-                  key={i}
-                  className={cn(
-                    'flex items-center justify-between border-b p-2 text-xs',
-                    mode.color.border.default
-                  )}
-                >
-                  <div className="flex-1">
-                    <div className="font-semibold">{user.name}</div>
-                    <div className={mode.color.text.muted}>{user.email}</div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <span>{user.role}</span>
-                    <Badge variant={user.status === 'Active' ? 'default' : 'secondary'}>
-                      {user.status}
-                    </Badge>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Card>
+          </Card>
+        </div>
       </div>
     </BrowserFrame>
   );
