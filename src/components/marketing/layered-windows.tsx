@@ -52,16 +52,16 @@ function ProgressBar({ progress, label }: { progress: number; label: string }) {
 
 export function LayeredWindows() {
   return (
-    <div className="relative h-[550px] w-full">
-      {/* Window 4 - Far Back (Terminal Code) */}
+    <div className="relative h-[500px] w-full">
+      {/* Window 1 - Far Left/Back (Terminal Code) */}
       <motion.div
-        initial={{ opacity: 0, x: 60, y: 100 }}
-        animate={{ opacity: 0.7, x: 60, y: 100 }}
+        initial={{ opacity: 0, x: -50, y: 0 }}
+        animate={{ opacity: 0.8, x: 0, y: 20 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="absolute"
+        className="absolute left-0"
         style={{ zIndex: 1 }}
       >
-        <div className={cn('w-72 border', mode.color.border.default, mode.color.bg.surface)}>
+        <div className={cn('w-64 border', mode.color.border.default, mode.color.bg.surface)}>
           <WindowChrome title="terminal" />
           <div className="space-y-1 p-3">
             <div className={cn('text-xs', mode.font, mode.color.text.muted)}>
@@ -77,12 +77,12 @@ export function LayeredWindows() {
         </div>
       </motion.div>
 
-      {/* Window 3 - Back (Pricing Data) */}
+      {/* Window 2 - Middle Left (Pricing Data) */}
       <motion.div
-        initial={{ opacity: 0, x: 40, y: 60 }}
-        animate={{ opacity: 1, x: 40, y: 60 }}
+        initial={{ opacity: 0, x: 0, y: 0 }}
+        animate={{ opacity: 1, x: 80, y: 60 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="absolute"
+        className="absolute left-0"
         style={{ zIndex: 2 }}
       >
         <Card className="w-64">
@@ -101,15 +101,15 @@ export function LayeredWindows() {
         </Card>
       </motion.div>
 
-      {/* Window 2 - Middle (Progress Bars) */}
+      {/* Window 3 - Middle Right (Progress Bars) */}
       <motion.div
-        initial={{ opacity: 0, x: 20, y: 30 }}
-        animate={{ opacity: 1, x: 20, y: 30 }}
+        initial={{ opacity: 0, x: 50, y: 0 }}
+        animate={{ opacity: 1, x: 160, y: 120 }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="absolute"
+        className="absolute left-0"
         style={{ zIndex: 3 }}
       >
-        <Card className="w-80">
+        <Card className="w-72">
           <CardHeader code="0x02" title="SETUP_PROGRESS" />
           <CardContent className="space-y-3 py-4">
             <ProgressBar progress={100} label="Authentication" />
@@ -119,12 +119,12 @@ export function LayeredWindows() {
         </Card>
       </motion.div>
 
-      {/* Window 1 - Front (Main Pricing) */}
+      {/* Window 4 - Far Right/Front (Main Pricing) */}
       <motion.div
-        initial={{ opacity: 0, x: 0, y: 0 }}
-        animate={{ opacity: 1, x: 0, y: 0 }}
+        initial={{ opacity: 0, x: 100, y: 0 }}
+        animate={{ opacity: 1, x: 240, y: 180 }}
         transition={{ duration: 0.6, delay: 0.5 }}
-        className="absolute"
+        className="absolute left-0"
         style={{ zIndex: 4 }}
       >
         <Card className="border-accent w-80 border-2">
