@@ -232,8 +232,8 @@
   --muted: 97% 0 0;
   --muted-foreground: 35% 0 0;
 
-  --accent: 96% 0 0;
-  --accent-foreground: 0% 0 0;
+  --accent: 70% 0.3 310; /* Purple/magenta for CTAs */
+  --accent-foreground: 100% 0 0; /* White text on purple */
 
   --destructive: 45% 0.22 15;
   --destructive-foreground: 100% 0 0;
@@ -315,8 +315,8 @@
   --secondary-foreground: 0% 0 0;
   --muted: 97% 0 0;
   --muted-foreground: 35% 0 0;
-  --accent: 96% 0 0;
-  --accent-foreground: 0% 0 0;
+  --accent: 70% 0.3 310; /* Purple/magenta for CTAs */
+  --accent-foreground: 100% 0 0; /* White text on purple */
   --destructive: 45% 0.22 15;
   --destructive-foreground: 100% 0 0;
   --success: 35% 0.18 145;

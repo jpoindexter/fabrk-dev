@@ -28,16 +28,16 @@ export function SectionHeader({
   const containerClass = align === 'center' ? 'mx-auto' : '';
 
   return (
-    <div className={cn('mb-12 max-w-3xl', containerClass, alignClass)}>
-      <Badge variant="outline" className="mb-4">
+    <div className={cn('mb-16 max-w-3xl', containerClass, alignClass)}>
+      <Badge variant="outline" className="mb-6">
         [{code}] {badge}
       </Badge>
 
-      <h2 className={cn('mb-4 text-4xl font-bold tracking-tight lg:text-5xl', mode.font)}>
+      <h2 className={cn('mb-6 text-4xl font-bold tracking-tight lg:text-5xl', mode.font)}>
         {title}
       </h2>
 
-      <p className={cn('text-sm', mode.color.text.muted)}>{description}</p>
+      <p className={cn('text-base lg:text-lg', mode.color.text.muted)}>{description}</p>
     </div>
   );
 }

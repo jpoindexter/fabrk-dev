@@ -221,7 +221,7 @@ export const mode: ModeConfig = {
       base: 'bg-background',
       surface: 'bg-card',
       elevated: 'bg-popover',
-      accent: 'bg-primary',
+      accent: 'bg-accent', // Purple accent for CTAs
       danger: 'bg-destructive',
       success: 'bg-success',
       warning: 'bg-warning',
@@ -233,8 +233,8 @@ export const mode: ModeConfig = {
       primary: 'text-foreground',
       secondary: 'text-card-foreground',
       muted: 'text-muted-foreground',
-      inverse: 'text-primary-foreground',
-      accent: 'text-primary',
+      inverse: 'text-accent-foreground', // White text for purple buttons
+      accent: 'text-accent', // Purple text for links/emphasis
       danger: 'text-destructive',
       success: 'text-success',
       warning: 'text-warning',
