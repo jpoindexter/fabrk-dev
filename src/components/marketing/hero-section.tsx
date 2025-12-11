@@ -133,24 +133,76 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Right Column - Dashboard Preview / Discount */}
+          {/* Right Column - Visual Proof */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col justify-center"
+            className="flex flex-col gap-6"
           >
-            {/* Terminal Window Frame */}
-            <motion.div
-              whileHover={{ scale: 1.01 }}
-              transition={{ type: 'spring', stiffness: 300 }}
-            >
-              <Card size="auto">
-                <CardHeader code="0x03" title="terminal — ~/projects" />
-                {/* Terminal Content */}
-                <HeroCodeDemo />
-              </Card>
-            </motion.div>
+            {/* Urgency Card - Top */}
+            <Card className="border-accent border-2">
+              <CardHeader code="0x03" title="LAUNCH PRICING" />
+              <CardContent className="space-y-4">
+                <div className="flex items-baseline gap-3">
+                  <span className={cn('text-4xl font-bold', mode.font, mode.color.text.accent)}>
+                    $399
+                  </span>
+                  <span className={cn('text-xl line-through', mode.color.text.muted)}>$499</span>
+                  <span
+                    className={cn(
+                      'bg-accent text-accent-foreground ml-auto rounded-none px-2 py-1 text-xs font-bold',
+                      mode.font
+                    )}
+                  >
+                    20% OFF
+                  </span>
+                </div>
+                <div className={cn('text-xs', mode.color.text.muted, mode.font)}>
+                  <span className={mode.color.text.warning}>⚠ 50 LICENSES LEFT</span>
+                  <br />
+                  Price increases to $499 on Dec 31, 2025
+                </div>
+                <StatGroup className="mt-4">
+                  <Stat label="Time Saved" value="215 HRS" size="sm" />
+                  <Stat label="Value" value="$51K+" size="sm" />
+                </StatGroup>
+              </CardContent>
+            </Card>
+
+            {/* Terminal UI Showcase - Bottom */}
+            <Card>
+              <CardHeader code="0x04" title="TERMINAL AESTHETIC PREVIEW" />
+              <CardContent className={cn('space-y-2 text-xs', mode.font)}>
+                <div className="border-accent flex items-center gap-2 border-l-2 pl-3">
+                  <span className={mode.color.text.success}>✓</span>
+                  <span className={mode.color.text.muted}>60+ Terminal Components</span>
+                </div>
+                <div className="border-accent flex items-center gap-2 border-l-2 pl-3">
+                  <span className={mode.color.text.success}>✓</span>
+                  <span className={mode.color.text.muted}>18 Theme Variants</span>
+                </div>
+                <div className="border-accent flex items-center gap-2 border-l-2 pl-3">
+                  <span className={mode.color.text.success}>✓</span>
+                  <span className={mode.color.text.muted}>31 Interactive Demos</span>
+                </div>
+                <div className="border-accent flex items-center gap-2 border-l-2 pl-3">
+                  <span className={mode.color.text.success}>✓</span>
+                  <span className={mode.color.text.muted}>WCAG 2.1 AA Compliant</span>
+                </div>
+                <div className="border-border mt-4 border-t pt-3">
+                  <Link
+                    href="/library"
+                    className={cn(
+                      'flex items-center gap-2 text-xs hover:underline',
+                      mode.color.text.accent
+                    )}
+                  >
+                    <span>&gt; VIEW_LIVE_DEMOS</span>
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
           </motion.div>
         </div>
 
