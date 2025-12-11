@@ -6,9 +6,12 @@
  */
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { Card, CardHeader, CardContent, Stat, StatGroup } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
+import { ArrowRight } from 'lucide-react';
 
 interface BenefitCardProps {
   icon: React.ComponentType<{ className?: string }>;
@@ -20,6 +23,8 @@ interface BenefitCardProps {
   costSaved: string;
   features: readonly string[];
   index: number;
+  ctaLabel?: string;
+  ctaHref?: string;
 }
 
 export function BenefitCard({
@@ -32,6 +37,8 @@ export function BenefitCard({
   costSaved,
   features,
   index,
+  ctaLabel,
+  ctaHref,
 }: BenefitCardProps) {
   return (
     <motion.div
@@ -83,6 +90,23 @@ export function BenefitCard({
               ))}
             </ul>
           </div>
+
+          {/* CTA Button */}
+          {ctaLabel && ctaHref && (
+            <div className="mt-6">
+              <Button
+                variant="outline"
+                size="sm"
+                asChild
+                className={cn('w-full text-xs', mode.radius, mode.font)}
+              >
+                <Link href={ctaHref} className="flex items-center justify-center gap-2">
+                  {ctaLabel}
+                  <ArrowRight className="h-3 w-3" />
+                </Link>
+              </Button>
+            </div>
+          )}
         </CardContent>
       </Card>
     </motion.div>

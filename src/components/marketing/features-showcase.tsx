@@ -18,15 +18,15 @@ export function FeaturesShowcase() {
     <section className="border-border border-t py-20 lg:py-24">
       <Container>
         <SectionHeader
-          badge="CORE FEATURES"
+          badge="WHAT_MAKES_FABRK_DIFFERENT"
           code="0x10"
-          title="WHAT YOU GET"
-          description="Stop rebuilding the same features. Get 100+ hours of development work done in 5 minutes. Everything you need to ship a production SaaS, not just components."
+          title="NOT YOUR AVERAGE BOILERPLATE"
+          description="Most boilerplates give you Auth + Billing. We give you terminal aesthetics, 31 interactive demos, AI monetization, and payment flexibility. These are the features no one else has."
           align="center"
         />
 
-        {/* 3-Column Benefits Grid */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {/* 4-Column Benefits Grid */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {CORE_BENEFITS.map((benefit, index) => (
             <BenefitCard
               key={benefit.id}
@@ -39,6 +39,8 @@ export function FeaturesShowcase() {
               costSaved={benefit.costSaved}
               features={benefit.features}
               index={index}
+              ctaLabel={benefit.ctaLabel}
+              ctaHref={benefit.ctaHref}
             />
           ))}
         </div>
@@ -52,11 +54,12 @@ export function FeaturesShowcase() {
           className="mt-12"
         >
           <Card>
-            <CardHeader code="0x14" title="TOTAL VALUE" />
+            <CardHeader code="0x14" title="UNIQUE VALUE" />
             <CardContent>
               <StatGroup>
-                <Stat label="Total Time Saved" value="120+ HOURS" />
-                <Stat label="Total Cost Saved" value="$24K+" />
+                <Stat label="Time Saved" value="70+ HOURS" />
+                <Stat label="Cost Saved" value="$14K+" />
+                <Stat label="Unique Features" value="4 MAJOR" />
                 <Stat label="Your Investment" value={PRICING.display.current} />
               </StatGroup>
             </CardContent>
