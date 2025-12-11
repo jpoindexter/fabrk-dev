@@ -395,7 +395,7 @@ export function HeroPlaygroundFull() {
         </div>
 
         {/* Tab Content */}
-        <div className="border-border bg-background min-h-[600px] rounded-none border p-6">
+        <div className="min-h-[600px]">
           {activeTab === 'components' && <ComponentsGrid />}
           {activeTab === 'dashboard' && (
             <div
