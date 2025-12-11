@@ -72,14 +72,12 @@ export function HeroSection() {
                 [SYSTEM READY]
               </h1>
               <h2 className="mb-4 text-7xl leading-[0.9] font-black tracking-tight lg:text-8xl">
-                <span className="text-foreground">BUILD</span>
+                <span className="text-foreground">BUILD IN</span>
                 <br />
-                <span className={mode.color.text.accent}>PRODUCTION</span>
-                <br />
-                <span className="text-foreground">SAAS</span>
+                <span className={mode.color.text.accent}>MINUTES</span>
               </h2>
               <p className={cn('text-base leading-relaxed', mode.color.text.muted)}>
-                60+ components. Full-stack. Ship this weekend.
+                Ship your product this weekend not next quarter.
               </p>
             </motion.div>
 
