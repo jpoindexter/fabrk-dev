@@ -282,24 +282,6 @@ function ComponentsGrid() {
             </div>
           </div>
         </Card>
-
-        {/* Team Members - Dark background */}
-        <div className="bg-primary text-primary-foreground p-4">
-          <h3 className="mb-3 text-xs font-semibold">[TEAM: 2 ONLINE]</h3>
-          <div className="space-y-2">
-            {['Alice Johnson', 'Bob Smith'].map((name, i) => (
-              <div key={i} className="flex items-center gap-2">
-                <div className="bg-primary-foreground/20 flex h-8 w-8 items-center justify-center rounded-full">
-                  <User className="h-4 w-4" />
-                </div>
-                <div className="text-xs">
-                  <p className="font-medium">{name}</p>
-                  <p className="opacity-70">Developer</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
 
       {/* COLUMN 2 - Dropdown, Skeletons, Progress, Breadcrumbs, Badges, Empty State, Activity */}
@@ -394,27 +376,6 @@ function ComponentsGrid() {
           <h3 className="mb-1 text-xs font-semibold">[NO DATA]</h3>
           <p className="text-muted-foreground text-xs">No items found</p>
         </div>
-
-        {/* Recent Activity */}
-        <Card>
-          <div className="p-4">
-            <h3 className="mb-3 text-xs font-semibold">[RECENT ACTIVITY]</h3>
-            <div className="space-y-2">
-              {[
-                { icon: CheckCircle2, text: 'Task completed', time: '2m ago' },
-                { icon: AlertCircle, text: 'Alert triggered', time: '5m ago' },
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-2">
-                  <item.icon className="text-muted-foreground h-4 w-4" />
-                  <div className="flex-1 text-xs">
-                    <p>{item.text}</p>
-                    <p className="text-muted-foreground">{item.time}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Card>
       </div>
 
       {/* COLUMN 3 - Radio Groups, Switches, Mini Table, Filter Chips, Date/Time */}
