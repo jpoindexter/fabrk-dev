@@ -18,7 +18,6 @@ import localFont from 'next/font/local';
 import { generateOrganizationSchema, generateProductSchema } from '@/lib/metadata';
 import { TerminalBackground } from '@/components/shared/terminal-background';
 import { ThemeScript } from '@/design-system/providers';
-import { env } from '@/lib/env';
 import './globals.css';
 import './typography.css';
 import '@/lib/dev-validation';
@@ -143,22 +142,15 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const defaultVisualTheme = env.client.NEXT_PUBLIC_DEFAULT_VISUAL_THEME;
-
   return (
     <html
       lang="en"
       suppressHydrationWarning
       data-theme="light"
-      data-visual-mode={defaultVisualTheme}
       className={`${GeistSans.variable} ${jetbrainsMono.variable} ${pixelbasel.variable}`}
     >
       <head>
-        <ThemeScript
-          defaultColorTheme="light"
-          defaultVisualMode={defaultVisualTheme}
-          storageKeyPrefix="fabrk-theme"
-        />
+        <ThemeScript defaultColorTheme="light" storageKeyPrefix="fabrk-theme" />
         {/* Google Consent Mode v2 - Must load BEFORE GTM */}
         <script
           dangerouslySetInnerHTML={{
@@ -222,7 +214,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </head>
       <body
         className="bg-background text-foreground font-mono antialiased"
-        data-visual-mode="terminal"
         suppressHydrationWarning
       >
         {/* Google Tag Manager (noscript) */}

@@ -159,20 +159,20 @@
 
 @layer base {
   /* ============================================
-     TERMINAL THEME STYLING
+     TERMINAL THEME STYLING (Default and Only Mode)
      ============================================ */
 
-  [data-visual-mode='terminal'] [data-slot='alert-dialog-overlay'] {
+  [data-slot='alert-dialog-overlay'] {
     background-color: rgba(0, 0, 0, 0.8) !important;
   }
 
-  [data-visual-mode='terminal'] [data-sonner-toast] {
+  [data-sonner-toast] {
     border-radius: 0 !important;
     font-family: var(--font-mono) !important;
     font-size: 0.75rem !important;
   }
 
-  [data-visual-mode='terminal'] [data-sonner-toast] [data-content] {
+  [data-sonner-toast] [data-content] {
     font-family: var(--font-mono) !important;
   }
 
@@ -184,7 +184,7 @@
   /* ============================================
      REACT-DAY-PICKER OVERRIDES
      ============================================ */
-  [data-visual-mode='terminal'] [data-slot='calendar'] {
+  [data-slot='calendar'] {
     --rdp-accent-color: oklch(var(--primary)) !important;
     --rdp-accent-background-color: oklch(var(--primary)) !important;
     --rdp-day_button-border-radius: 0 !important;
@@ -202,103 +202,17 @@
     --rdp-range_middle-background: oklch(var(--muted)) !important;
   }
 
-  [data-visual-mode='terminal'] [data-slot='calendar'] * {
+  [data-slot='calendar'] * {
     border-radius: 0 !important;
   }
 
-  /* ============================================
-     MODERN THEME STYLING
-     ============================================ */
-  /* Modern mode - Geist Sans font (applied to all) */
-  [data-visual-mode='modern'] * {
-    font-family: var(--font-sans) !important;
-  }
-
-  /* Modern mode - Rounded corners (applied only to components, not separators) */
-  [data-visual-mode='modern'] button,
-  [data-visual-mode='modern'] input,
-  [data-visual-mode='modern'] select,
-  [data-visual-mode='modern'] textarea,
-  [data-visual-mode='modern'] [data-slot='card'],
-  [data-visual-mode='modern'] [data-slot='badge'],
-  [data-visual-mode='modern'] [data-slot='dialog'],
-  [data-visual-mode='modern'] [data-slot='dropdown'],
-  [data-visual-mode='modern'] [data-slot='popover'],
-  [data-visual-mode='modern'] [data-slot='toast'],
-  [data-visual-mode='modern'] [role='dialog'],
-  [data-visual-mode='modern'] [role='menu'],
-  [data-visual-mode='modern'] [role='listbox'],
-  [data-visual-mode='modern'] img,
-  [data-visual-mode='modern'] video {
-    border-radius: 0.5rem !important;
-  }
-
-  [data-visual-mode='modern'] body,
-  [data-visual-mode='modern'] {
-    font-family: var(--font-sans) !important;
-  }
-
-  [data-visual-mode='modern'] [data-slot='alert-dialog-overlay'] {
-    background-color: rgba(0, 0, 0, 0.5) !important;
-  }
-
-  [data-visual-mode='modern'] [data-sonner-toast] {
-    border-radius: 0.5rem !important;
-    font-family: var(--font-sans) !important;
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1) !important;
-  }
-
-  /* ============================================
-     SOFT THEME STYLING
-     ============================================ */
-  /* Soft mode - Geist Sans font (applied to all) */
-  [data-visual-mode='soft'] * {
-    font-family: var(--font-sans) !important;
-  }
-
-  /* Soft mode - Extra rounded corners (applied only to components, not separators) */
-  [data-visual-mode='soft'] button,
-  [data-visual-mode='soft'] input,
-  [data-visual-mode='soft'] select,
-  [data-visual-mode='soft'] textarea,
-  [data-visual-mode='soft'] [data-slot='card'],
-  [data-visual-mode='soft'] [data-slot='badge'],
-  [data-visual-mode='soft'] [data-slot='dialog'],
-  [data-visual-mode='soft'] [data-slot='dropdown'],
-  [data-visual-mode='soft'] [data-slot='popover'],
-  [data-visual-mode='soft'] [data-slot='toast'],
-  [data-visual-mode='soft'] [role='dialog'],
-  [data-visual-mode='soft'] [role='menu'],
-  [data-visual-mode='soft'] [role='listbox'],
-  [data-visual-mode='soft'] img,
-  [data-visual-mode='soft'] video {
-    border-radius: 0.75rem !important;
-  }
-
-  [data-visual-mode='soft'] body,
-  [data-visual-mode='soft'] {
-    font-family: var(--font-sans) !important;
-  }
-
-  [data-visual-mode='soft'] [data-slot='alert-dialog-overlay'] {
-    background-color: rgba(0, 0, 0, 0.4) !important;
-  }
-
-  [data-visual-mode='soft'] [data-sonner-toast] {
-    border-radius: 0.75rem !important;
-    font-family: var(--font-sans) !important;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1) !important;
-  }
-
   /* Terminal mode - Enhanced font rendering for clean monospace */
-  html[data-visual-mode='terminal'] body {
+  html body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     letter-spacing: 0.01em;
   }
-
-  /* CRT themes use monochromatic color palettes defined in theme sections below */
 }
 
 @theme {

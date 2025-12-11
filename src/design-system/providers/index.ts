@@ -14,6 +14,5 @@ export type {
   ThemeContextValue,
   ThemeProviderProps,
   ThemeScriptProps,
-  VisualModeName,
   ColorThemeName,
 } from './ThemeProvider';

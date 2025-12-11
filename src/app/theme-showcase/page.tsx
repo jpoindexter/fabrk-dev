@@ -31,7 +31,6 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { ThemeDropdown } from '@/components/theme/theme-dropdown';
-import { VisualThemeDropdown } from '@/components/theme/visual-theme-dropdown';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 import {
@@ -103,16 +102,6 @@ export default function ThemeShowcasePage() {
                   <ThemeDropdown />
                   <p className="text-muted-foreground font-mono text-xs">
                     Switch between light and dark color schemes
-                  </p>
-                </div>
-
-                <Separator />
-
-                <div className="space-y-2">
-                  <Label className={mode.font}>[VISUAL_THEME]</Label>
-                  <VisualThemeDropdown />
-                  <p className="text-muted-foreground font-mono text-xs">
-                    Switch between Terminal and Modern visual styles
                   </p>
                 </div>
               </CardContent>
