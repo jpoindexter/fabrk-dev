@@ -37,6 +37,20 @@ import {
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
+// Analytics Dashboard components
+import { MetricCards } from '@/app/(marketing)/library/analytics-dashboard/components/metric-cards';
+import { RevenueChart } from '@/app/(marketing)/library/analytics-dashboard/components/revenue-chart';
+import { ActivityFeed } from '@/app/(marketing)/library/analytics-dashboard/components/activity-feed';
+import { AnalyticsTabs } from '@/app/(marketing)/library/analytics-dashboard/components/analytics-tabs';
+import {
+  metrics,
+  revenueData,
+  activityData,
+  pageData,
+  trafficSources,
+  deviceBreakdown,
+} from '@/app/(marketing)/library/analytics-dashboard/components/mock-data';
+
 // Component Examples Grid - 4 vertical columns with USEFUL interactive components
 function ComponentsGrid() {
   const [priceRange, setPriceRange] = useState([400]);
@@ -380,48 +394,43 @@ function ComponentsGrid() {
   );
 }
 
-// Dashboard preview - simplified version without all subcomponents
+// Dashboard preview - using actual analytics dashboard
 function DashboardPreview() {
+  const [activeTab, setActiveTab] = useState('overview');
+
   return (
-    <div className="space-y-4">
-      {/* Metric Cards Row */}
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {[
-          { label: 'REVENUE', value: '$45,231', change: '+20.1%' },
-          { label: 'USERS', value: '2,350', change: '+12.5%' },
-          { label: 'CONVERSIONS', value: '45.2%', change: '+5.3%' },
-          { label: 'GROWTH', value: '+12%', change: '+2.1%' },
-        ].map((metric, i) => (
-          <Card key={i}>
-            <div className="p-4">
-              <div className={cn('mb-2 text-xs', mode.color.text.muted)}>[{metric.label}]</div>
-              <div className="text-2xl font-bold">{metric.value}</div>
-              <div className={cn('text-xs', mode.color.text.success)}>{metric.change}</div>
-            </div>
-          </Card>
-        ))}
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className={cn(mode.font, 'text-2xl font-semibold')}>Analytics Dashboard</h1>
+          <p className="text-muted-foreground text-sm">
+            Track revenue, users, conversions, and growth metrics
+          </p>
+        </div>
+        <Button className={cn(mode.radius, mode.font, 'text-xs')}>
+          <Download className="mr-2 h-4 w-4" />
+          &gt; EXPORT DATA
+        </Button>
       </div>
 
-      {/* Charts placeholder */}
-      <div className="grid gap-4 lg:grid-cols-2">
-        <Card>
-          <CardHeader code="0x01" title="REVENUE OVERVIEW" />
-          <div className="flex h-[200px] items-center justify-center p-4">
-            <div className={cn('text-xs', mode.color.text.muted)}>[CHART DATA]</div>
-          </div>
-        </Card>
-        <Card>
-          <CardHeader code="0x02" title="RECENT ACTIVITY" />
-          <div className="space-y-2 p-4">
-            {['New user signup', 'Payment received', 'Project created'].map((activity, i) => (
-              <div key={i} className="flex items-center justify-between text-xs">
-                <span>{activity}</span>
-                <span className={mode.color.text.muted}>{i + 1}h ago</span>
-              </div>
-            ))}
-          </div>
-        </Card>
+      {/* Metric Cards */}
+      <MetricCards metrics={metrics} />
+
+      {/* Charts Section */}
+      <div className="grid gap-4 lg:grid-cols-7">
+        <RevenueChart data={revenueData} />
+        <ActivityFeed activities={activityData} />
       </div>
+
+      {/* Tabs Section */}
+      <AnalyticsTabs
+        activeTab={activeTab}
+        onTabChange={setActiveTab}
+        pageData={pageData}
+        trafficSources={trafficSources}
+        deviceBreakdown={deviceBreakdown}
+      />
     </div>
   );
 }
