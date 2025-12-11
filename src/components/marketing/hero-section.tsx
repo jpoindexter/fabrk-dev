@@ -67,7 +67,7 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <h1 className={cn('text-body-m mb-2', mode.color.text.muted)}>[FABRK INIT]</h1>
-              <h2 className="mb-4 text-6xl leading-tight font-bold lg:text-7xl">
+              <h2 className="text-foreground mb-4 text-6xl leading-tight font-bold lg:text-7xl">
                 BUILDING YOUR SAAS
                 <br />
                 <span className={mode.color.text.accent}>JUST GOT UNFAIRLY EASY</span>
