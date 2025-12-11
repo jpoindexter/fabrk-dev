@@ -97,7 +97,10 @@
   [data-visual-mode='modern'] [data-slot='card-header'],
   [data-visual-mode='modern'] [data-slot='card-footer'],
   [data-visual-mode='modern'] hr,
-  [data-visual-mode='modern'] [role='separator'] {
+  [data-visual-mode='modern'] [role='separator'],
+  [data-visual-mode='modern'] [class*='border-t'],
+  [data-visual-mode='modern'] [class*='border-b'],
+  [data-visual-mode='modern'] [class*='border-y'] {
     border-radius: 0 !important;
   }
 
@@ -129,7 +132,10 @@
   [data-visual-mode='soft'] [data-slot='card-header'],
   [data-visual-mode='soft'] [data-slot='card-footer'],
   [data-visual-mode='soft'] hr,
-  [data-visual-mode='soft'] [role='separator'] {
+  [data-visual-mode='soft'] [role='separator'],
+  [data-visual-mode='soft'] [class*='border-t'],
+  [data-visual-mode='soft'] [class*='border-b'],
+  [data-visual-mode='soft'] [class*='border-y'] {
     border-radius: 0 !important;
   }
 
