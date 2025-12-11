@@ -838,7 +838,7 @@ function ProfilePreview() {
     <BrowserFrame>
       <LeftNavigation activeSection="dashboard" />
       <div className="flex-1 overflow-auto p-8">
-        <div className="container mx-auto max-w-7xl space-y-6">
+        <div className="container mx-auto max-w-7xl space-y-6 [&_>*>*:first-child]:hidden">
           {/* Profile Header */}
           <ProfileHeader user={mockProfileUser} />
 
