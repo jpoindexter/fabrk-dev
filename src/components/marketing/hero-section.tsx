@@ -170,17 +170,17 @@ export function HeroSection() {
               </CardContent>
             </Card>
 
-            {/* Terminal UI Showcase - Bottom */}
+            {/* What's Included - Bottom */}
             <Card>
-              <CardHeader code="0x04" title="TERMINAL AESTHETIC PREVIEW" />
+              <CardHeader code="0x04" title="WHAT YOU GET" />
               <CardContent className={cn('space-y-2 text-xs', mode.font)}>
                 <div className="border-accent flex items-center gap-2 border-l-2 pl-3">
                   <span className={mode.color.text.success}>✓</span>
-                  <span className={mode.color.text.muted}>60+ Terminal Components</span>
+                  <span className={mode.color.text.muted}>60+ Production Components</span>
                 </div>
                 <div className="border-accent flex items-center gap-2 border-l-2 pl-3">
                   <span className={mode.color.text.success}>✓</span>
-                  <span className={mode.color.text.muted}>18 Theme Variants</span>
+                  <span className={mode.color.text.muted}>Auth, Billing, Multi-Tenancy</span>
                 </div>
                 <div className="border-accent flex items-center gap-2 border-l-2 pl-3">
                   <span className={mode.color.text.success}>✓</span>
@@ -188,7 +188,7 @@ export function HeroSection() {
                 </div>
                 <div className="border-accent flex items-center gap-2 border-l-2 pl-3">
                   <span className={mode.color.text.success}>✓</span>
-                  <span className={mode.color.text.muted}>WCAG 2.1 AA Compliant</span>
+                  <span className={mode.color.text.muted}>Deploy in 5 Minutes</span>
                 </div>
                 <div className="border-border mt-4 border-t pt-3">
                   <Link
@@ -198,7 +198,7 @@ export function HeroSection() {
                       mode.color.text.accent
                     )}
                   >
-                    <span>&gt; VIEW_LIVE_DEMOS</span>
+                    <span>&gt; EXPLORE_LIBRARY</span>
                   </Link>
                 </div>
               </CardContent>
