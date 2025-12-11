@@ -19,20 +19,24 @@ export function DataTable({ table }: DataTableProps) {
       <div className="border-border bg-muted/50 border-b">
         {table.getHeaderGroups().map((headerGroup) => (
           <div key={headerGroup.id} className="flex items-center px-4 py-3">
-            {headerGroup.headers.map((header) => (
-              <div
-                key={header.id}
-                className="flex-1 font-medium"
-                style={{
-                  width: header.id === 'select' ? 40 : header.id === 'actions' ? 60 : undefined,
-                  flex: header.id === 'select' || header.id === 'actions' ? '0 0 auto' : 1,
-                }}
-              >
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(header.column.columnDef.header, header.getContext())}
-              </div>
-            ))}
+            {headerGroup.headers.map((header) => {
+              const size = header.column.columnDef.size;
+              return (
+                <div
+                  key={header.id}
+                  className="font-medium"
+                  style={{
+                    width: size ? `${size}px` : 'auto',
+                    minWidth: size ? `${size}px` : 'auto',
+                    flex: size ? '0 0 auto' : '1 1 0%',
+                  }}
+                >
+                  {header.isPlaceholder
+                    ? null
+                    : flexRender(header.column.columnDef.header, header.getContext())}
+                </div>
+              );
+            })}
           </div>
         ))}
       </div>
@@ -49,24 +53,21 @@ export function DataTable({ table }: DataTableProps) {
                 row.getIsSelected() && 'bg-primary/10 hover:bg-primary/15'
               )}
             >
-              {row.getVisibleCells().map((cell) => (
-                <div
-                  key={cell.id}
-                  className="flex-1"
-                  style={{
-                    width:
-                      cell.column.id === 'select'
-                        ? 40
-                        : cell.column.id === 'actions'
-                          ? 60
-                          : undefined,
-                    flex:
-                      cell.column.id === 'select' || cell.column.id === 'actions' ? '0 0 auto' : 1,
-                  }}
-                >
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </div>
-              ))}
+              {row.getVisibleCells().map((cell) => {
+                const size = cell.column.columnDef.size;
+                return (
+                  <div
+                    key={cell.id}
+                    style={{
+                      width: size ? `${size}px` : 'auto',
+                      minWidth: size ? `${size}px` : 'auto',
+                      flex: size ? '0 0 auto' : '1 1 0%',
+                    }}
+                  >
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </div>
+                );
+              })}
             </div>
           ))
         ) : (
