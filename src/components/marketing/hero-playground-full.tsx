@@ -68,6 +68,8 @@ import {
   Users,
   Filter,
   X,
+  RotateCw,
+  Lock,
 } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
@@ -108,13 +110,13 @@ function BrowserFrame({ children }: { children: React.ReactNode }) {
             <ChevronRight className="text-muted-foreground h-4 w-4" />
           </button>
           <button className="hover:bg-muted rounded-none p-1" aria-label="Refresh">
-            <Activity className="text-muted-foreground h-4 w-4" />
+            <RotateCw className="text-muted-foreground h-4 w-4" />
           </button>
         </div>
 
         {/* Address Bar */}
         <div className="border-border bg-background flex flex-1 items-center gap-2 border px-4 py-2">
-          <Activity className="text-success h-4 w-4" />
+          <Lock className="text-success h-4 w-4" />
           <span className="text-foreground flex-1 text-sm">https://app.fabrk.dev/dashboard</span>
         </div>
 
