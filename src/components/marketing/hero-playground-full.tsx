@@ -721,10 +721,7 @@ function TablePreview() {
           {/* Main Table Card */}
           <Card>
             <div className="p-4">
-              <div className="mb-4 flex items-center justify-between">
-                <div className={cn(mode.font, 'text-xs', mode.color.text.muted)}>
-                  [ALL USERS]: COUNT={mockUsers.length} | FILTERED={filteredRowCount}
-                </div>
+              <div className="mb-4 flex items-center justify-end">
                 <Button
                   onClick={exportToCSV}
                   variant="outline"
