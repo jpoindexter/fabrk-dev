@@ -52,39 +52,33 @@ export function AnalyticsTabs({
     <StyledTabs tabs={tabs} value={activeTab} onValueChange={onTabChange}>
       {/* Overview Tab */}
       <StyledTabsContent value="overview">
-        <div className="border-border bg-card border p-4">
-          <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-            [TOP PAGES]: SORTED BY=VIEWS
+        {/* Terminal Table */}
+        <div className="border-border border">
+          <div
+            className={cn(
+              mode.font,
+              'border-border bg-muted/30 grid grid-cols-4 border-b px-4 py-2 text-xs'
+            )}
+          >
+            <span className="text-muted-foreground">[PAGE]</span>
+            <span className="text-muted-foreground">[VIEWS]</span>
+            <span className="text-muted-foreground">[BOUNCE]</span>
+            <span className="text-muted-foreground">[CONVERSION]</span>
           </div>
-
-          {/* Terminal Table */}
-          <div className="border-border border">
-            <div
-              className={cn(
-                mode.font,
-                'border-border bg-muted/30 grid grid-cols-4 border-b px-4 py-2 text-xs'
-              )}
-            >
-              <span className="text-muted-foreground">[PAGE]</span>
-              <span className="text-muted-foreground">[VIEWS]</span>
-              <span className="text-muted-foreground">[BOUNCE]</span>
-              <span className="text-muted-foreground">[CONVERSION]</span>
-            </div>
-            <div className="divide-border divide-y">
-              {pageData.map((row, i) => (
-                <div
-                  key={i}
-                  className={cn(mode.font, 'hover:bg-muted/30 grid grid-cols-4 px-4 py-4 text-xs')}
-                >
-                  <span className="text-foreground">{row.page}</span>
-                  <span className="text-muted-foreground">{row.views}</span>
-                  <span className="text-muted-foreground">{row.bounce}</span>
-                  <span className="border-border w-fit border px-2 py-0.5 text-center">
-                    {row.conversion}
-                  </span>
-                </div>
-              ))}
-            </div>
+          <div className="divide-border divide-y">
+            {pageData.map((row, i) => (
+              <div
+                key={i}
+                className={cn(mode.font, 'hover:bg-muted/30 grid grid-cols-4 px-4 py-4 text-xs')}
+              >
+                <span className="text-foreground">{row.page}</span>
+                <span className="text-muted-foreground">{row.views}</span>
+                <span className="text-muted-foreground">{row.bounce}</span>
+                <span className="border-border w-fit border px-2 py-0.5 text-center">
+                  {row.conversion}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </StyledTabsContent>
