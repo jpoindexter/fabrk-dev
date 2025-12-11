@@ -40,19 +40,19 @@ export function HeroSection() {
   return (
     <section className="relative flex min-h-[85vh] items-center overflow-hidden py-16 lg:min-h-[90vh] lg:py-20">
       <Container size="2xl">
-        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-          {/* Left Column - Terminal Window */}
+        <div className="relative">
+          {/* Main Hero Window - Wider, behind */}
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col justify-center"
+            className="relative z-0"
           >
             <Card>
               <CardHeader code="0x00" title="SYSTEM INIT" meta="SAAS BOILERPLATE v2.0" />
-              <CardContent className="space-y-6 p-8 lg:p-12">
+              <CardContent className="space-y-6 p-8 pb-16 lg:p-12 lg:pb-24">
                 {/* Headline */}
-                <div>
+                <div className="max-w-2xl">
                   <h1 className={cn('mb-2 text-xs', mode.color.text.muted, mode.font)}>
                     [FABRK INIT]
                   </h1>
@@ -110,12 +110,12 @@ export function HeroSection() {
             </Card>
           </motion.div>
 
-          {/* Right Column - Visual Proof */}
+          {/* Right Column - Visual Proof (Overlays on top) */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col gap-4"
+            className="absolute top-0 right-0 z-10 flex w-full max-w-md flex-col gap-4 lg:right-0"
           >
             {/* Urgency Card - Top */}
             <Card size="auto" className="border-accent border-2">
