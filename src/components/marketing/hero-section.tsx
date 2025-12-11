@@ -178,7 +178,7 @@ export function HeroSection() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="absolute top-8 right-0 isolate z-10 flex w-full max-w-md flex-col gap-8 lg:top-12 lg:right-4"
+            className="absolute top-8 -right-12 isolate z-10 flex w-full max-w-md flex-col gap-8 lg:top-12 lg:-right-16"
           >
             {/* Urgency Card - Top */}
             <Card size="auto" className="border-accent border-2 lg:-mr-8">
