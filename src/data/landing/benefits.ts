@@ -31,7 +31,7 @@ export const CORE_BENEFITS = [
   {
     id: 'component-library',
     icon: Box,
-    module: 'COMPONENT_LIBRARY',
+    module: 'DEMO_LIBRARY',
     code: '0x11',
     title: '31 Interactive Demos',
     benefit: 'Try before you buy - explore every component live',
@@ -52,7 +52,7 @@ export const CORE_BENEFITS = [
   {
     id: 'ai-credits',
     icon: Sparkles,
-    module: 'AI_MONETIZATION',
+    module: 'AI_CREDITS',
     code: '0x12',
     title: 'AI Credits & Usage Tracking',
     benefit: 'Monetize AI features with built-in credit system',
@@ -73,7 +73,7 @@ export const CORE_BENEFITS = [
   {
     id: 'payment-flexibility',
     icon: CreditCard,
-    module: 'PAYMENT_FLEXIBILITY',
+    module: 'PAYMENTS',
     code: '0x13',
     title: '3 Payment Providers',
     benefit: 'Switch payment providers without rewriting code',
