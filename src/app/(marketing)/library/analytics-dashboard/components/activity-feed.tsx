@@ -29,7 +29,7 @@ export function ActivityFeed({ activities }: ActivityFeedProps) {
 
         <div className="space-y-4">
           {activities.map((activity, i) => (
-            <div key={i} className={cn(mode.font, 'flex items-center gap-4 text-xs')}>
+            <div key={i} className={cn(mode.font, 'flex items-start gap-4 text-xs')}>
               <div className="border-border bg-muted flex h-8 w-8 items-center justify-center border">
                 {activity.user
                   .split(' ')
@@ -40,10 +40,10 @@ export function ActivityFeed({ activities }: ActivityFeedProps) {
                 <div className="text-foreground">{activity.user}</div>
                 <span className="text-muted-foreground">{activity.action}</span>
               </div>
-              <span className="border-border text-muted-foreground inline-flex w-[90px] items-center justify-start border px-2 py-0.5 text-left text-[10px]">
+              <span className="border-border text-muted-foreground mt-0.5 inline-flex w-[90px] items-center justify-start border px-2 py-0.5 text-left text-[10px]">
                 {activity.type}
               </span>
-              <span className="text-muted-foreground shrink-0">{activity.time}</span>
+              <span className="text-muted-foreground mt-0.5 shrink-0">{activity.time}</span>
             </div>
           ))}
         </div>
