@@ -256,7 +256,7 @@ const StatGroup = React.forwardRef<HTMLDivElement, StatGroupProps>(
     <div
       ref={ref}
       data-slot="stat-group"
-      className={cn('flex flex-wrap gap-8 lg:gap-12', className)}
+      className={cn('flex flex-wrap gap-4', className)}
       {...props}
     />
   )

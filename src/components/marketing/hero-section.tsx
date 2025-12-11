@@ -112,7 +112,7 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.25 }}
               className="mb-10"
             >
-              <p className={cn('text-lg font-semibold', mode.color.text.muted)}>
+              <p className={cn('text-body-s', mode.color.text.muted)}>
                 <span className={mode.color.text.success}>[VERIFIED]</span> Used to build 50+
                 production SaaS apps
               </p>
