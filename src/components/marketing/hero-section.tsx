@@ -128,10 +128,52 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Right Column - Terminal Dashboard */}
-          <div className="flex items-center justify-center">
+          {/* Right Column - Visual Proof */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-col gap-4"
+          >
+            {/* Urgency Card - Top */}
+            <Card size="auto" className="border-accent border-2">
+              <CardHeader code="0x03" title="LAUNCH_PRICING" />
+              <CardContent className="space-y-2 py-3">
+                <div className="flex items-baseline gap-3">
+                  <span className={cn('text-3xl font-bold', mode.font, mode.color.text.accent)}>
+                    $399
+                  </span>
+                  <span className={cn('text-base line-through', mode.color.text.muted)}>$499</span>
+                  <span
+                    className={cn(
+                      'bg-accent text-accent-foreground ml-auto rounded-none px-2 py-1 text-xs font-bold',
+                      mode.font
+                    )}
+                  >
+                    20% OFF
+                  </span>
+                </div>
+                <div className={cn('text-xs', mode.color.text.muted, mode.font)}>
+                  <span className={mode.color.text.warning}>⚠ 50 LICENSES LEFT</span>
+                  <span className="mx-2">•</span>
+                  Price increases to $499 on Dec 31, 2025
+                </div>
+                <div className="mt-2 flex gap-4 text-xs">
+                  <div>
+                    <span className={cn(mode.color.text.muted, mode.font)}>Time Saved: </span>
+                    <span className={cn(mode.color.text.accent, mode.font)}>400+ HRS</span>
+                  </div>
+                  <div>
+                    <span className={cn(mode.color.text.muted, mode.font)}>Value: </span>
+                    <span className={cn(mode.color.text.accent, mode.font)}>$36K+</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Live Dashboard Preview - Show, don't tell */}
             <HeroDashboardPreview />
-          </div>
+          </motion.div>
         </div>
 
         {/* Tech Stack - Below Hero */}
