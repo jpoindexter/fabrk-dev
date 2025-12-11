@@ -8,7 +8,7 @@
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
-import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Card, CardHeader, CardContent, Badge as CardBadge } from '@/components/ui/card';
 import { PolarCheckoutButton } from '@/components/polar/checkout-button';
 
 // MacOS-style window traffic lights
