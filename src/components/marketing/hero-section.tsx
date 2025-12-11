@@ -50,7 +50,7 @@ export function HeroSection() {
           >
             <Card size="auto">
               <CardHeader code="0x00" title="SYSTEM INIT" meta="SAAS BOILERPLATE v2.0" />
-              <CardContent className="space-y-4 px-6 pt-2 pb-12 lg:px-8 lg:pt-3 lg:pb-16">
+              <CardContent className="space-y-4 p-6">
                 {/* Headline */}
                 <div className="max-w-2xl">
                   <h1 className={cn('mb-2 text-xs', mode.color.text.muted, mode.font)}>
