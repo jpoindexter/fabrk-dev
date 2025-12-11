@@ -78,6 +78,8 @@ export function RevenueChart({ data }: RevenueChartProps) {
                       '--height': `${dataPoint.height}%`,
                     } as CSSProperties
                   }
+                  role="button" // Add role for accessibility as it's an interactive element
+                  tabIndex={0} // Make it focusable
                   onMouseEnter={() => setHoveredBar(i)}
                   onMouseLeave={() => setHoveredBar(null)}
                   onMouseMove={handleMouseMove}
