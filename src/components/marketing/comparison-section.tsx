@@ -143,7 +143,7 @@ function renderValue(value: boolean | string, highlight: boolean) {
         className={cn('size-5', highlight ? mode.color.text.success : mode.color.text.muted)}
       />
     ) : (
-      <X className={cn('size-5', mode.color.text.destructive)} />
+      <X className={cn('size-5', mode.color.text.danger)} />
     );
   }
 

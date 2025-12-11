@@ -11,7 +11,7 @@ interface UseCaseCardProps {
   persona: string;
   painPoint: string;
   solution: string;
-  features: string[];
+  features: readonly string[];
   index: number;
 }
 

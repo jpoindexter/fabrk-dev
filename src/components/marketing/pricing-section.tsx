@@ -5,34 +5,13 @@
  */
 'use client';
 
-import config from '@/config/app';
 import { motion } from 'framer-motion';
-import { DiscountCounter } from '@/components/polar/discount-counter';
-import { PolarCheckoutButton } from '@/components/polar/checkout-button';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  FeatureItem,
-  FeatureList,
-  InfoNote,
-  Badge,
-} from '@/components/ui/card';
+import { Card, CardContent, InfoNote, Badge } from '@/components/ui/card';
+import { PricingCard } from '@/components/landing/pricing-card';
 
 export function PricingSection() {
-  const features = [
-    '60+ PRODUCTION-READY COMPONENTS',
-    'AUTH, BILLING & MULTI-TENANCY',
-    'LIFETIME UPDATES (NO SUBSCRIPTION)',
-    'UNLIMITED PROJECTS & CLIENTS',
-    'COMMERCIAL LICENSE INCLUDED',
-    'SAVE 100+ HOURS OF DEVELOPMENT',
-    'PREMIUM SUPPORT & DOCUMENTATION',
-    'WCAG 2.1 AA ACCESSIBLE',
-  ];
-
   return (
     <section
       id="pricing"
@@ -49,64 +28,7 @@ export function PricingSection() {
             transition={{ duration: 0.6 }}
             className="flex flex-col items-center justify-center"
           >
-            {/* Terminal Card */}
-            <Card size="auto" className="w-full max-w-sm">
-              <CardHeader code="0x41" title="PRICING CONFIG" />
-              <CardContent padding="md">
-                {/* Price Display - Clean inline layout */}
-                <div className="mb-4">
-                  <div className="flex items-baseline gap-2">
-                    <span className={cn('text-sm line-through', mode.color.text.muted, mode.font)}>
-                      {config.pricing.fabrk.display.original}
-                    </span>
-                    <span className={cn('text-xs', mode.color.text.muted, mode.font)}>→</span>
-                    <span
-                      className={cn('text-2xl font-semibold', mode.color.text.primary, mode.font)}
-                    >
-                      {config.pricing.fabrk.display.current}
-                    </span>
-                  </div>
-                  <div className={cn('mt-1 text-xs', mode.color.text.muted, mode.font)}>
-                    ONE TIME PAYMENT
-                  </div>
-                </div>
-
-                {/* Discount Counter */}
-                <DiscountCounter />
-
-                {/* Features List */}
-                <div className="mt-4 mb-4">
-                  <div className={cn('mb-3 text-xs', mode.color.text.muted, mode.font)}>
-                    [INCLUDES]:
-                  </div>
-                  <FeatureList>
-                    {features.map((feature, idx) => (
-                      <motion.div
-                        key={feature}
-                        initial={{ opacity: 0, x: -8 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3, delay: 0.2 + idx * 0.05 }}
-                        viewport={{ once: true }}
-                      >
-                        <FeatureItem>{feature}</FeatureItem>
-                      </motion.div>
-                    ))}
-                  </FeatureList>
-                </div>
-
-                {/* CTA Button */}
-                <PolarCheckoutButton
-                  className={cn('w-full text-xs sm:text-sm', mode.radius, mode.font)}
-                >
-                  &gt; BUY NOW — {config.pricing.fabrk.display.current}
-                </PolarCheckoutButton>
-
-                {/* Trust line */}
-                <div className={cn('mt-3 text-center text-xs', mode.color.text.muted, mode.font)}>
-                  Secure checkout via Polar │ All sales final
-                </div>
-              </CardContent>
-            </Card>
+            <PricingCard variant="full" showFeatures={true} showDiscountCounter={true} />
           </motion.div>
 
           {/* Right Column - Description */}

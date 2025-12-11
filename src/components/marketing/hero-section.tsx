@@ -5,11 +5,10 @@
  */
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { PolarCheckoutButton } from '@/components/polar/checkout-button';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { SimpleIcon } from '@/components/ui/simple-icon';
 import {
   siNextdotjs,
@@ -30,65 +29,8 @@ import {
   StatGroup,
   Badge as CardBadge,
 } from '@/components/ui/card';
-
-// Typewriter effect component
-function TypeWriter({
-  text,
-  delay = 0,
-  speed = 30,
-  showCursor = false,
-}: {
-  text: string;
-  delay?: number;
-  speed?: number;
-  showCursor?: boolean;
-}) {
-  const [displayText, setDisplayText] = useState('');
-  const [started, setStarted] = useState(false);
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true });
-
-  useEffect(() => {
-    if (!isInView) return;
-
-    const startTimer = setTimeout(() => {
-      setStarted(true);
-    }, delay * 1000);
-
-    return () => clearTimeout(startTimer);
-  }, [isInView, delay]);
-
-  useEffect(() => {
-    if (!started) return;
-
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index <= text.length) {
-        setDisplayText(text.slice(0, index));
-        index++;
-      } else {
-        clearInterval(timer);
-      }
-    }, speed);
-
-    return () => clearInterval(timer);
-  }, [started, text, speed]);
-
-  return (
-    <span ref={ref}>
-      {displayText}
-      {showCursor && displayText.length < text.length && (
-        <motion.span
-          animate={{ opacity: [1, 0, 1] }}
-          transition={{ duration: 0.8, repeat: Infinity }}
-          className={mode.color.text.accent}
-        >
-          █
-        </motion.span>
-      )}
-    </span>
-  );
-}
+import { HeroCodeDemo } from './hero-code-demo';
+import { PRICING } from '@/data/landing';
 
 const techStack = [
   { name: 'NEXT.JS', path: siNextdotjs.path },
@@ -99,120 +41,6 @@ const techStack = [
   { name: 'STRIPE', path: siStripe.path },
   { name: 'RESEND', path: siResend.path },
 ];
-
-// Terminal content showing git clone flow
-function HeroCodeDemo() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true });
-  const [step, setStep] = useState(0);
-
-  useEffect(() => {
-    if (!isInView) return;
-
-    const timers = [
-      setTimeout(() => setStep(1), 2000), // Clone done
-      setTimeout(() => setStep(2), 3200), // cd done, show npm install
-      setTimeout(() => setStep(3), 5500), // npm install done
-      setTimeout(() => setStep(4), 6500), // show npm run dev
-      setTimeout(() => setStep(5), 8000), // server ready
-    ];
-
-    return () => timers.forEach(clearTimeout);
-  }, [isInView]);
-
-  return (
-    <div ref={ref} className="text-code-m p-6">
-      {/* git clone */}
-      <div className={mode.color.text.muted}>
-        <span className={mode.color.text.success}>~</span>{' '}
-        <TypeWriter
-          text="git clone https://github.com/you/fabrk my-saas"
-          delay={0.3}
-          speed={30}
-          showCursor
-        />
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: step >= 1 ? 1 : 0 }}
-        className={cn('mt-1', mode.color.text.muted)}
-      >
-        Cloning into &apos;my-saas&apos;... <span className={mode.color.text.success}>done</span>
-      </motion.div>
-
-      {/* cd && npm install */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: step >= 2 ? 1 : 0 }}
-        className={cn('mt-4', mode.color.text.muted)}
-      >
-        <span className={mode.color.text.success}>~</span>{' '}
-        <span className={mode.color.text.primary}>cd my-saas && npm install</span>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: step >= 2 && step < 3 ? 1 : 0 }}
-        className={cn('mt-1', mode.color.text.muted)}
-      >
-        <motion.span
-          animate={{ opacity: [1, 0.3, 1] }}
-          transition={{ duration: 0.5, repeat: Infinity }}
-        >
-          ⠋ Installing dependencies...
-        </motion.span>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: step >= 3 ? 1 : 0 }}
-        className={cn('mt-1', mode.color.text.muted)}
-      >
-        added <span className={mode.color.text.primary}>847</span> packages in{' '}
-        <span className={mode.color.text.primary}>12s</span>
-      </motion.div>
-
-      {/* npm run dev */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: step >= 4 ? 1 : 0 }}
-        className={cn('mt-4', mode.color.text.muted)}
-      >
-        <span className={mode.color.text.success}>~/my-saas</span>{' '}
-        <span className={mode.color.text.primary}>npm run dev</span>
-      </motion.div>
-
-      {/* Server ready */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: step >= 5 ? 1 : 0 }}
-        className="border-success/30 bg-success/10 mt-4 border p-4"
-      >
-        <div className={mode.color.text.success}>▲ Ready</div>
-        <div className={cn('mt-1', mode.color.text.muted)}>
-          Local: <span className={mode.color.text.accent}>http://localhost:3000</span>
-        </div>
-      </motion.div>
-
-      {/* Blinking cursor */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: step >= 5 ? 1 : 0 }}
-        className={cn('mt-4', mode.color.text.muted)}
-      >
-        <span className={mode.color.text.success}>~/my-saas</span>{' '}
-        <motion.span
-          className={cn(mode.color.text.accent, 'inline-block')}
-          animate={{ opacity: [1, 0, 1] }}
-          transition={{ duration: 1, repeat: Infinity }}
-        >
-          █
-        </motion.span>
-      </motion.div>
-    </div>
-  );
-}
 
 export function HeroSection() {
   return (
@@ -244,7 +72,7 @@ export function HeroSection() {
                 <span className={mode.color.text.accent}>48 HOURS, NOT 6 MONTHS</span>
               </h2>
               <p className={cn('text-body-m mb-6', mode.color.text.muted)}>
-                Production-ready Next.js boilerplate with auth, billing, multi-tenancy, and 60+
+                Production-ready Next.js boilerplate with auth, billing, multi-tenancy, and 234
                 components. Stop rebuilding the same infrastructure. Start with Fabrk.
               </p>
             </motion.div>
@@ -260,7 +88,7 @@ export function HeroSection() {
                 <CardHeader code="0x01" title="METRICS" />
                 <CardContent>
                   <StatGroup>
-                    <Stat label="Components" value="60+" />
+                    <Stat label="Components" value="234" />
                     <Stat label="Setup Time" value="< 5 MIN" />
                     <Stat label="Time Saved" value="100+ HRS" />
                   </StatGroup>
@@ -291,7 +119,7 @@ export function HeroSection() {
               <PolarCheckoutButton
                 className={cn('text-xs sm:text-sm', mode.radius, mode.font, 'px-6 py-3')}
               >
-                &gt; BUY FABRK — $199
+                &gt; {PRICING.cta.label} — {PRICING.display.current}
               </PolarCheckoutButton>
               <Button
                 variant="outline"
