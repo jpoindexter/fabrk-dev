@@ -40,93 +40,9 @@ export function HeroSection() {
   return (
     <section className="relative flex min-h-[85vh] items-center overflow-hidden py-16 lg:min-h-[90vh] lg:py-20">
       <Container size="2xl">
-        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-          {/* Left Column - Terminal Content */}
-          <div className="flex flex-col justify-center">
-            {/* System Init Label */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="mb-4"
-            >
-              <CardBadge code="0x00" label="SYSTEM INIT" meta="SAAS BOILERPLATE v2.0" />
-            </motion.div>
-
-            {/* Headline Block - Tighter grouping */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="mb-8"
-            >
-              <h1 className={cn('mb-3 text-xs', mode.color.text.muted, mode.font)}>
-                [SYSTEM READY]
-              </h1>
-              <h2 className="mb-4 text-7xl leading-[0.9] font-black tracking-tight lg:text-8xl">
-                <span className="text-foreground">BUILD IN</span>
-                <br />
-                <span className={mode.color.text.accent}>MINUTES</span>
-              </h2>
-              <p className={cn('text-base leading-relaxed', mode.color.text.muted)}>
-                Ship your product this weekend not next quarter.
-              </p>
-            </motion.div>
-
-            {/* Stats + CTAs Block - Combined visual group */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="space-y-6"
-            >
-              {/* Quick stats with accent border */}
-              <div className={cn('border-accent flex flex-wrap gap-4 border-l-2 pl-4')}>
-                <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
-                  <span className={mode.color.text.accent}>60+</span> Components
-                </span>
-                <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
-                <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
-                  <span className={mode.color.text.accent}>{'< 5 MIN'}</span> Setup
-                </span>
-                <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
-                <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
-                  <span className={mode.color.text.accent}>400+ HRS</span> Saved
-                </span>
-              </div>
-
-              {/* CTAs - Primary Dominant */}
-              <div className="flex flex-col gap-3 sm:flex-row">
-                <PolarCheckoutButton
-                  className={cn(
-                    'bg-accent text-accent-foreground px-8 py-4 text-sm transition-all hover:scale-105',
-                    mode.radius,
-                    mode.font
-                  )}
-                >
-                  &gt; {PRICING.cta.label} — {PRICING.display.current}
-                </PolarCheckoutButton>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  asChild
-                  className={cn('text-xs', mode.radius, mode.font)}
-                >
-                  <Link href="/library">Explore 31 Interactive Demos</Link>
-                </Button>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Right Column - Layered Windows */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex items-center justify-center"
-          >
-            <LayeredWindows />
-          </motion.div>
+        {/* Single column with layered windows */}
+        <div className="relative">
+          <LayeredWindows />
         </div>
 
         {/* Tech Stack - Below Hero */}

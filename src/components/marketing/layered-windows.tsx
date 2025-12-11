@@ -6,9 +6,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
-import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Card, CardHeader, CardContent, Badge as CardBadge } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { PolarCheckoutButton } from '@/components/polar/checkout-button';
+import { PRICING } from '@/data/landing';
 
 // MacOS-style window traffic lights
 function WindowChrome({ title }: { title: string }) {
@@ -52,37 +56,79 @@ function ProgressBar({ progress, label }: { progress: number; label: string }) {
 
 export function LayeredWindows() {
   return (
-    <div className="relative h-[500px] w-full">
-      {/* Window 1 - Far Left/Back (Terminal Code) */}
+    <div className="relative min-h-[600px] w-full">
+      {/* Main Window - Contains Hero Content */}
       <motion.div
-        initial={{ opacity: 0, x: -50, y: 0 }}
-        animate={{ opacity: 0.8, x: 0, y: 20 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="absolute left-0"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="relative"
         style={{ zIndex: 1 }}
       >
-        <div className={cn('w-64 border', mode.color.border.default, mode.color.bg.surface)}>
-          <WindowChrome title="terminal" />
-          <div className="space-y-1 p-3">
-            <div className={cn('text-xs', mode.font, mode.color.text.muted)}>
-              $ npm create fabrk@latest
+        <div className={cn('w-full border', mode.color.border.default, mode.color.bg.surface)}>
+          <WindowChrome title="fabrk.sh — terminal-first saas boilerplate" />
+          <div className="p-8 lg:p-12">
+            {/* System Init Label */}
+            <div className="mb-6">
+              <CardBadge code="0x00" label="SYSTEM INIT" meta="SAAS BOILERPLATE v2.0" />
             </div>
-            <div className={cn('text-xs', mode.font, mode.color.text.success)}>
-              ✓ Installing dependencies...
+
+            {/* Headline */}
+            <h1 className={cn('mb-3 text-xs', mode.color.text.muted, mode.font)}>[SYSTEM READY]</h1>
+            <h2 className="mb-6 text-7xl leading-[0.9] font-black tracking-tight lg:text-8xl">
+              <span className="text-foreground">BUILD IN</span>
+              <br />
+              <span className={mode.color.text.accent}>MINUTES</span>
+            </h2>
+            <p className={cn('mb-8 max-w-xl text-base leading-relaxed', mode.color.text.muted)}>
+              Ship your product this weekend not next quarter.
+            </p>
+
+            {/* Stats */}
+            <div className={cn('border-accent mb-8 flex flex-wrap gap-4 border-l-2 pl-4')}>
+              <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
+                <span className={mode.color.text.accent}>60+</span> Components
+              </span>
+              <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
+              <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
+                <span className={mode.color.text.accent}>{'< 5 MIN'}</span> Setup
+              </span>
+              <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
+              <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
+                <span className={mode.color.text.accent}>400+ HRS</span> Saved
+              </span>
             </div>
-            <div className={cn('text-xs', mode.font, mode.color.text.success)}>
-              ✓ Configuring database...
+
+            {/* CTAs */}
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <PolarCheckoutButton
+                className={cn(
+                  'bg-accent text-accent-foreground px-8 py-4 text-sm transition-all hover:scale-105',
+                  mode.radius,
+                  mode.font
+                )}
+              >
+                &gt; {PRICING.cta.label} — {PRICING.display.current}
+              </PolarCheckoutButton>
+              <Button
+                variant="outline"
+                size="sm"
+                asChild
+                className={cn('text-xs', mode.radius, mode.font)}
+              >
+                <Link href="/library">Explore 31 Interactive Demos</Link>
+              </Button>
             </div>
           </div>
         </div>
       </motion.div>
 
-      {/* Window 2 - Middle Left (Pricing Data) */}
+      {/* Small Window 1 - Value Metrics (overlays right side of main window) */}
       <motion.div
-        initial={{ opacity: 0, x: 0, y: 0 }}
-        animate={{ opacity: 1, x: 80, y: 60 }}
+        initial={{ opacity: 0, x: 50, y: 0 }}
+        animate={{ opacity: 1, x: 0, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="absolute left-0"
+        className="absolute top-32 right-20"
         style={{ zIndex: 2 }}
       >
         <Card className="w-64">
@@ -101,12 +147,12 @@ export function LayeredWindows() {
         </Card>
       </motion.div>
 
-      {/* Window 3 - Middle Right (Progress Bars) */}
+      {/* Small Window 2 - Progress Bars */}
       <motion.div
         initial={{ opacity: 0, x: 50, y: 0 }}
-        animate={{ opacity: 1, x: 160, y: 120 }}
+        animate={{ opacity: 1, x: 0, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="absolute left-0"
+        className="absolute top-80 right-40"
         style={{ zIndex: 3 }}
       >
         <Card className="w-72">
@@ -119,12 +165,12 @@ export function LayeredWindows() {
         </Card>
       </motion.div>
 
-      {/* Window 4 - Far Right/Front (Main Pricing) */}
+      {/* Small Window 3 - Main Pricing */}
       <motion.div
-        initial={{ opacity: 0, x: 100, y: 0 }}
-        animate={{ opacity: 1, x: 240, y: 180 }}
+        initial={{ opacity: 0, x: 50, y: 0 }}
+        animate={{ opacity: 1, x: 0, y: 0 }}
         transition={{ duration: 0.6, delay: 0.5 }}
-        className="absolute left-0"
+        className="absolute right-10 bottom-20"
         style={{ zIndex: 4 }}
       >
         <Card className="border-accent w-80 border-2">
