@@ -7,7 +7,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Lock, CreditCard, Users } from 'lucide-react';
+import { Lock, CreditCard, Users, Sparkles } from 'lucide-react';
 import { Card, CardHeader, CardContent, Stat, StatGroup } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
@@ -51,6 +51,25 @@ const CORE_BENEFITS = [
     timeSaved: '80 HOURS',
     costSaved: '$15K',
     features: ['Organizations', 'Team Invites', 'Role Permissions', 'Team Switching', 'Audit Logs'],
+  },
+  {
+    id: 'ai',
+    icon: Sparkles,
+    module: 'AI FEATURES',
+    code: '0x13',
+    title: 'AI-Powered Generation',
+    benefit: 'Ship AI features without building infrastructure from scratch',
+    description:
+      'Credit-based AI system with multi-provider support (OpenAI, Google, Ollama). Pre-built UI components, streaming responses, and usage tracking. Generate forms, dashboards, and content with AI.',
+    timeSaved: '50 HOURS',
+    costSaved: '$10K',
+    features: [
+      'Credit System',
+      'Multi-Provider (OpenAI, Google, Ollama)',
+      'Streaming UI',
+      'Usage Tracking',
+      'Pre-built Components',
+    ],
   },
 ];
 
@@ -153,8 +172,8 @@ export function FeaturesShowcase() {
           </p>
         </motion.div>
 
-        {/* 3-Column Benefits Grid */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        {/* 4-Column Benefits Grid */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {CORE_BENEFITS.map((benefit, index) => (
             <BenefitCard
               key={benefit.id}
@@ -180,12 +199,12 @@ export function FeaturesShowcase() {
           className="mt-12"
         >
           <Card>
-            <CardHeader code="0x13" title="TOTAL VALUE" />
+            <CardHeader code="0x14" title="TOTAL VALUE" />
             <CardContent>
               <StatGroup>
-                <Stat label="Total Time Saved" value="180+ HOURS" />
-                <Stat label="Total Cost Saved" value="$35K+" />
-                <Stat label="Your Investment" value="$199" />
+                <Stat label="Total Time Saved" value="230+ HOURS" />
+                <Stat label="Total Cost Saved" value="$45K+" />
+                <Stat label="Your Investment" value="$399" />
               </StatGroup>
             </CardContent>
           </Card>

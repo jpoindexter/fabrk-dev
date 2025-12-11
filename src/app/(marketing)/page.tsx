@@ -8,7 +8,6 @@ import { HeroSection } from '@/components/marketing/hero-section';
 import { FeaturesShowcase } from '@/components/marketing/features-showcase';
 import { FeaturesSection } from '@/components/marketing/features-section';
 import { PricingSection } from '@/components/marketing/pricing-section';
-import { ComparisonSection } from '@/components/marketing/comparison-section';
 import { FAQSection } from '@/components/marketing/faq-section';
 import { StickyCTABar } from '@/components/marketing/sticky-cta-bar';
 import { ExitIntentPopup } from '@/components/marketing/exit-intent-popup';
@@ -25,9 +24,6 @@ export default function HomePage() {
       </section>
       <section id="features">
         <FeaturesSection />
-      </section>
-      <section id="comparison">
-        <ComparisonSection />
       </section>
       <section id="faq">
         <FAQSection />
