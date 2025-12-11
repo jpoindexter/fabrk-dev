@@ -843,8 +843,10 @@ function DashboardPreview() {
             </Button>
           </div>
 
-          {/* Metric Cards */}
-          <MetricCards metrics={metrics} />
+          {/* Metric Cards - Reduced font sizes for playground */}
+          <div className="[&_.text-3xl]:text-xl! [&_.text-sm]:text-xs! [&_h3]:text-xs!">
+            <MetricCards metrics={metrics} />
+          </div>
 
           {/* Charts Section - Hide CardHeaders */}
           <div className="grid gap-4 lg:grid-cols-7 [&_>*>*:first-child]:hidden">
