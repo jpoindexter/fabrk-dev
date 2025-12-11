@@ -37,14 +37,12 @@ export function ActivityFeed({ activities }: ActivityFeedProps) {
                   .join('')}
               </div>
               <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-2">
-                  <span className="text-foreground truncate">{activity.user}</span>
-                  <span className="border-border text-muted-foreground inline-flex min-w-[70px] items-center justify-center border px-1 py-0.5 text-center text-[10px]">
-                    {activity.type}
-                  </span>
-                </div>
+                <div className="text-foreground">{activity.user}</div>
                 <span className="text-muted-foreground">{activity.action}</span>
               </div>
+              <span className="border-border text-muted-foreground inline-flex min-w-[70px] items-center justify-center border px-1 py-0.5 text-center text-[10px]">
+                {activity.type}
+              </span>
               <span className="text-muted-foreground shrink-0">{activity.time}</span>
             </div>
           ))}
