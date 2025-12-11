@@ -66,13 +66,20 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h1 className={cn('text-body-m mb-2', mode.color.text.muted)}>[FABRK INIT]</h1>
-              <h2 className="text-foreground mb-4 text-6xl leading-none font-bold lg:text-8xl">
+              <h1
+                className={cn(
+                  'mb-3 text-lg font-bold tracking-wider uppercase',
+                  mode.color.text.accent
+                )}
+              >
+                [FABRK INIT]
+              </h1>
+              <h2 className="text-foreground mb-6 text-7xl leading-none font-black tracking-tight lg:text-9xl">
                 BUILDING YOUR SAAS
                 <br />
                 <span className={mode.color.text.accent}>JUST GOT UNFAIRLY EASY</span>
               </h2>
-              <p className={cn('text-body-m mb-6', mode.color.text.muted)}>
+              <p className={cn('mb-8 text-xl leading-relaxed lg:text-2xl', mode.color.text.muted)}>
                 60+ production components. 26 full-featured templates. Terminal-first design that
                 stands out. Authentication, billing, dashboards — all done. Ship your SaaS this
                 weekend, not next quarter.
@@ -84,11 +91,11 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mb-8"
+              className="mb-10"
             >
-              <Card size="auto">
+              <Card size="auto" className="border-accent/20 bg-accent/5 border-2">
                 <CardHeader code="0x01" title="METRICS" />
-                <CardContent>
+                <CardContent className="py-6">
                   <StatGroup>
                     <Stat label="Components" value="60+" />
                     <Stat label="Setup Time" value="< 5 MIN" />
@@ -103,9 +110,9 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.25 }}
-              className="mb-8"
+              className="mb-10"
             >
-              <p className={cn('text-body-s', mode.color.text.muted)}>
+              <p className={cn('text-lg font-semibold', mode.color.text.muted)}>
                 <span className={mode.color.text.success}>[VERIFIED]</span> Used to build 50+
                 production SaaS apps
               </p>
