@@ -4,7 +4,7 @@
  */
 'use client';
 
-import { useState } from 'react';
+import { useState, type CSSProperties, type MouseEvent } from 'react';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
@@ -30,7 +30,7 @@ export function RevenueChart({ data }: RevenueChartProps) {
     100
   ).toFixed(1);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = (e: MouseEvent) => {
     setMousePos({ x: e.clientX, y: e.clientY });
   };
 
@@ -69,13 +69,15 @@ export function RevenueChart({ data }: RevenueChartProps) {
               <div key={i} className="relative flex h-full flex-1 items-end justify-center">
                 <div
                   className={cn(
-                    'w-full max-w-12 cursor-pointer transition-colors',
+                    'h-[var(--height)] w-full max-w-12 cursor-pointer transition-colors',
                     mode.color.bg.accent,
                     mode.state.hover.bg
                   )}
-                  style={{
-                    height: `${dataPoint.height}%`,
-                  }}
+                  style={
+                    {
+                      '--height': `${dataPoint.height}%`,
+                    } as CSSProperties
+                  }
                   onMouseEnter={() => setHoveredBar(i)}
                   onMouseLeave={() => setHoveredBar(null)}
                   onMouseMove={handleMouseMove}
@@ -85,13 +87,15 @@ export function RevenueChart({ data }: RevenueChartProps) {
             {hoveredBar !== null && (
               <div
                 className={cn(
-                  'border-border bg-card pointer-events-none fixed z-50 border px-2 py-1 text-xs whitespace-nowrap',
+                  'border-border bg-card pointer-events-none fixed top-[var(--y)] left-[var(--x)] z-50 border px-2 py-1 text-xs whitespace-nowrap',
                   mode.font
                 )}
-                style={{
-                  left: `${mousePos.x + 10}px`,
-                  top: `${mousePos.y + 10}px`,
-                }}
+                style={
+                  {
+                    '--x': `${mousePos.x + 10}px`,
+                    '--y': `${mousePos.y + 10}px`,
+                  } as CSSProperties
+                }
               >
                 <div className={mode.color.text.muted}>{data[hoveredBar].month}</div>
                 <div className={cn('font-semibold', mode.color.text.accent)}>
