@@ -62,7 +62,7 @@ export function BenefitCard({
             </motion.div>
           }
         />
-        <CardContent>
+        <CardContent className="flex h-full flex-col">
           {/* Benefit Statement */}
           <h3 className={cn('mb-4 text-sm font-semibold', mode.font, mode.color.text.primary)}>
             {benefit}
@@ -80,7 +80,7 @@ export function BenefitCard({
           </div>
 
           {/* Features List */}
-          <div className={cn('text-xs', mode.color.text.muted)}>
+          <div className={cn('mb-4 flex-grow text-xs', mode.color.text.muted)}>
             <span className="mb-2 block font-semibold">[INCLUDES]:</span>
             <ul className="space-y-1">
               {features.map((feature) => (
@@ -91,9 +91,9 @@ export function BenefitCard({
             </ul>
           </div>
 
-          {/* CTA Button */}
+          {/* CTA Button - Pushed to bottom */}
           {ctaLabel && ctaHref && (
-            <div className="mt-6">
+            <div className="mt-auto">
               <Button
                 variant="outline"
                 size="sm"
