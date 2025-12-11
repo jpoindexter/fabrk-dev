@@ -96,8 +96,8 @@ html[data-visual-mode='terminal'] body::after {
   -webkit-backdrop-filter: blur(0.5px) brightness(1.1);
   backdrop-filter: blur(0.5px) brightness(1.1);
 
-  /* Slow continuous roll */
-  animation: roll-scanline 25s linear infinite;
+  /* Slow continuous roll - authentic CRT speed */
+  animation: roll-scanline 45s linear infinite;
 }
 
 /* Light theme (GitHub): full-page CRT effect DISABLED */
