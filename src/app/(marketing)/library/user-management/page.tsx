@@ -203,8 +203,6 @@ function UserManagementPreview() {
 
         {/* Main Table Card */}
         <Card>
-          <CardHeader code="0x00" title="USERS DATABASE" />
-
           <div className="p-4">
             <div className="mb-4 flex items-center justify-between">
               <div className={cn(mode.font, 'text-xs', mode.color.text.muted)}>
