@@ -93,6 +93,14 @@
     font-family: var(--font-sans) !important;
   }
 
+  /* Keep separators straight (no rounded corners) */
+  [data-visual-mode='modern'] [data-slot='card-header'],
+  [data-visual-mode='modern'] [data-slot='card-footer'],
+  [data-visual-mode='modern'] hr,
+  [data-visual-mode='modern'] [role='separator'] {
+    border-radius: 0 !important;
+  }
+
   [data-visual-mode='modern'] body,
   [data-visual-mode='modern'] {
     font-family: var(--font-sans) !important;
@@ -115,6 +123,14 @@
   [data-visual-mode='soft'] * {
     border-radius: 0.75rem !important;
     font-family: var(--font-sans) !important;
+  }
+
+  /* Keep separators straight (no rounded corners) */
+  [data-visual-mode='soft'] [data-slot='card-header'],
+  [data-visual-mode='soft'] [data-slot='card-footer'],
+  [data-visual-mode='soft'] hr,
+  [data-visual-mode='soft'] [role='separator'] {
+    border-radius: 0 !important;
   }
 
   [data-visual-mode='soft'] body,
