@@ -33,7 +33,7 @@ const containerVariants = cva('mx-auto w-full', {
   },
   defaultVariants: {
     size: '2xl',
-    padding: 'md',
+    padding: 'xl',
   },
 });
 
