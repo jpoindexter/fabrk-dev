@@ -131,7 +131,6 @@ const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
         'last:border-b-0', // Remove bottom border when CardHeader is last child (no CardContent)
         className
       )}
-      style={{ borderRadius: 0 }}
     >
       <span className={cn(mode.color.text.muted, mode.typography.caption, mode.font)}>
         [ [{code}] {title} ]
@@ -192,7 +191,6 @@ const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
         mode.color.border.default,
         className
       )}
-      style={{ borderRadius: 0 }}
       {...props}
     />
   )

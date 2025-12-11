@@ -87,18 +87,28 @@
   /* ============================================
      MODERN THEME STYLING
      ============================================ */
-  /* Modern mode - Rounded corners + Geist Sans font */
+  /* Modern mode - Geist Sans font (applied to all) */
   [data-visual-mode='modern'] * {
-    border-radius: 0.5rem !important;
     font-family: var(--font-sans) !important;
   }
 
-  /* Keep separators straight (no rounded corners) */
-  [data-visual-mode='modern'] [data-slot='card-header'],
-  [data-visual-mode='modern'] [data-slot='card-footer'],
-  [data-visual-mode='modern'] hr,
-  [data-visual-mode='modern'] [role='separator'] {
-    border-radius: 0 !important;
+  /* Modern mode - Rounded corners (applied only to components, not separators) */
+  [data-visual-mode='modern'] button,
+  [data-visual-mode='modern'] input,
+  [data-visual-mode='modern'] select,
+  [data-visual-mode='modern'] textarea,
+  [data-visual-mode='modern'] [data-slot='card'],
+  [data-visual-mode='modern'] [data-slot='badge'],
+  [data-visual-mode='modern'] [data-slot='dialog'],
+  [data-visual-mode='modern'] [data-slot='dropdown'],
+  [data-visual-mode='modern'] [data-slot='popover'],
+  [data-visual-mode='modern'] [data-slot='toast'],
+  [data-visual-mode='modern'] [role='dialog'],
+  [data-visual-mode='modern'] [role='menu'],
+  [data-visual-mode='modern'] [role='listbox'],
+  [data-visual-mode='modern'] img,
+  [data-visual-mode='modern'] video {
+    border-radius: 0.5rem !important;
   }
 
   [data-visual-mode='modern'] body,
@@ -119,18 +129,28 @@
   /* ============================================
      SOFT THEME STYLING
      ============================================ */
-  /* Soft mode - Extra rounded corners + Geist Sans font */
+  /* Soft mode - Geist Sans font (applied to all) */
   [data-visual-mode='soft'] * {
-    border-radius: 0.75rem !important;
     font-family: var(--font-sans) !important;
   }
 
-  /* Keep separators straight (no rounded corners) */
-  [data-visual-mode='soft'] [data-slot='card-header'],
-  [data-visual-mode='soft'] [data-slot='card-footer'],
-  [data-visual-mode='soft'] hr,
-  [data-visual-mode='soft'] [role='separator'] {
-    border-radius: 0 !important;
+  /* Soft mode - Extra rounded corners (applied only to components, not separators) */
+  [data-visual-mode='soft'] button,
+  [data-visual-mode='soft'] input,
+  [data-visual-mode='soft'] select,
+  [data-visual-mode='soft'] textarea,
+  [data-visual-mode='soft'] [data-slot='card'],
+  [data-visual-mode='soft'] [data-slot='badge'],
+  [data-visual-mode='soft'] [data-slot='dialog'],
+  [data-visual-mode='soft'] [data-slot='dropdown'],
+  [data-visual-mode='soft'] [data-slot='popover'],
+  [data-visual-mode='soft'] [data-slot='toast'],
+  [data-visual-mode='soft'] [role='dialog'],
+  [data-visual-mode='soft'] [role='menu'],
+  [data-visual-mode='soft'] [role='listbox'],
+  [data-visual-mode='soft'] img,
+  [data-visual-mode='soft'] video {
+    border-radius: 0.75rem !important;
   }
 
   [data-visual-mode='soft'] body,
