@@ -631,20 +631,22 @@ function DashboardPreview() {
           {/* Metric Cards */}
           <MetricCards metrics={metrics} />
 
-          {/* Charts Section */}
-          <div className="grid gap-4 lg:grid-cols-7">
+          {/* Charts Section - Hide CardHeaders */}
+          <div className="grid gap-4 lg:grid-cols-7 [&_>*>*:first-child]:hidden">
             <RevenueChart data={revenueData} />
             <ActivityFeed activities={activityData} />
           </div>
 
-          {/* Tabs Section */}
-          <AnalyticsTabs
-            activeTab={activeTab}
-            onTabChange={setActiveTab}
-            pageData={pageData}
-            trafficSources={trafficSources}
-            deviceBreakdown={deviceBreakdown}
-          />
+          {/* Tabs Section - Hide CardHeader */}
+          <div className="[&_>*>*:first-child]:hidden">
+            <AnalyticsTabs
+              activeTab={activeTab}
+              onTabChange={setActiveTab}
+              pageData={pageData}
+              trafficSources={trafficSources}
+              deviceBreakdown={deviceBreakdown}
+            />
+          </div>
         </div>
       </div>
     </BrowserFrame>
