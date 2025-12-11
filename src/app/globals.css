@@ -869,3 +869,46 @@
   outline: 2px solid oklch(var(--ring));
   outline-offset: 2px;
 }
+
+/* ============================================
+   GRADIENT TEXT UTILITIES
+   ============================================ */
+
+/* Purple gradient effect for hero headlines */
+.text-gradient-purple {
+  background: linear-gradient(135deg, oklch(85% 0.35 310), oklch(70% 0.3 310), oklch(60% 0.25 320));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Text glow effect for accent elements */
+.text-glow-purple {
+  text-shadow:
+    0 0 20px oklch(70% 0.3 310 / 0.5),
+    0 0 40px oklch(70% 0.3 310 / 0.3),
+    0 0 60px oklch(70% 0.3 310 / 0.2);
+}
+
+/* Button glow effect */
+.button-glow-purple {
+  box-shadow:
+    0 0 20px oklch(70% 0.3 310 / 0.4),
+    0 0 40px oklch(70% 0.3 310 / 0.2);
+}
+
+/* Animate gradient on hover */
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.text-gradient-animated {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}

@@ -31,6 +31,7 @@ import {
   Badge as CardBadge,
 } from '@/components/ui/card';
 import { HeroDashboardPreview } from './hero-dashboard-preview';
+import { HeroBackground } from './hero-background';
 import { PRICING } from '@/data/landing';
 
 const techStack = [
@@ -45,9 +46,12 @@ const techStack = [
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden py-32 lg:py-40">
+    <section className="relative flex min-h-[85vh] items-center overflow-hidden py-16 lg:min-h-[90vh] lg:py-20">
+      {/* Animated background code snippets */}
+      <HeroBackground />
+
       <Container size="2xl">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Left Column - Terminal Content */}
           <div className="flex flex-col justify-center">
             {/* System Init Label */}
@@ -66,49 +70,38 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h1 className={cn('text-body-m mb-2', mode.color.text.muted)}>[FABRK INIT]</h1>
-              <h2 className="text-foreground mb-4 text-5xl leading-none font-bold lg:text-7xl">
-                BUILDING YOUR SAAS
+              <h1 className={cn('mb-2 text-xs', mode.color.text.muted, mode.font)}>[FABRK INIT]</h1>
+              <h2 className="mb-4 text-6xl leading-[0.95] font-black tracking-tight lg:text-7xl">
+                <span className="text-foreground">BUILDING YOUR SAAS</span>
                 <br />
-                <span className={mode.color.text.accent}>JUST GOT UNFAIRLY EASY</span>
+                <span className="text-gradient-purple text-glow-purple">
+                  JUST GOT UNFAIRLY EASY
+                </span>
               </h2>
-              <p className={cn('text-body-m mb-6', mode.color.text.muted)}>
+              <p className={cn('mb-6 text-sm leading-relaxed lg:text-base', mode.color.text.muted)}>
                 60+ production components. 26 full-featured templates. Terminal-first design that
-                stands out. Authentication, billing, dashboards — all done. Ship your SaaS this
-                weekend, not next quarter.
+                stands out. Ship your SaaS this weekend, not next quarter.
               </p>
             </motion.div>
 
-            {/* 3-Stat Strip */}
+            {/* Quick stats inline */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mb-10"
+              className="mb-8 flex flex-wrap gap-4"
             >
-              <Card size="auto">
-                <CardHeader code="0x01" title="METRICS" />
-                <CardContent>
-                  <StatGroup>
-                    <Stat label="Components" value="60+" />
-                    <Stat label="Setup Time" value="< 5 MIN" />
-                    <Stat label="Time Saved" value="400+ HRS" />
-                  </StatGroup>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Social Proof */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.25 }}
-              className="mb-10"
-            >
-              <p className={cn('text-body-s', mode.color.text.muted)}>
-                <span className={mode.color.text.success}>[VERIFIED]</span> Used to build 50+
-                production SaaS apps
-              </p>
+              <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
+                <span className={mode.color.text.accent}>60+</span> Components
+              </span>
+              <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
+              <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
+                <span className={mode.color.text.accent}>{'< 5 MIN'}</span> Setup
+              </span>
+              <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
+              <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
+                <span className={mode.color.text.accent}>400+ HRS</span> Saved
+              </span>
             </motion.div>
 
             {/* CTAs - Primary Dominant */}
@@ -116,11 +109,11 @@ export function HeroSection() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mb-8 flex flex-col gap-4 sm:flex-row"
+              className="flex flex-col gap-3 sm:flex-row"
             >
               <PolarCheckoutButton
                 className={cn(
-                  'bg-accent text-accent-foreground px-8 py-4 text-sm',
+                  'button-glow-purple bg-accent text-accent-foreground px-8 py-4 text-sm transition-all hover:scale-105',
                   mode.radius,
                   mode.font
                 )}
@@ -143,17 +136,17 @@ export function HeroSection() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col gap-6"
+            className="flex flex-col gap-4"
           >
             {/* Urgency Card - Top */}
             <Card size="auto" className="border-accent border-2">
               <CardHeader code="0x03" title="LAUNCH PRICING" />
-              <CardContent className="space-y-3 py-4">
+              <CardContent className="space-y-2 py-3">
                 <div className="flex items-baseline gap-3">
                   <span className={cn('text-3xl font-bold', mode.font, mode.color.text.accent)}>
                     $399
                   </span>
-                  <span className={cn('text-lg line-through', mode.color.text.muted)}>$499</span>
+                  <span className={cn('text-base line-through', mode.color.text.muted)}>$499</span>
                   <span
                     className={cn(
                       'bg-accent text-accent-foreground ml-auto rounded-none px-2 py-1 text-xs font-bold',
@@ -165,13 +158,19 @@ export function HeroSection() {
                 </div>
                 <div className={cn('text-xs', mode.color.text.muted, mode.font)}>
                   <span className={mode.color.text.warning}>⚠ 50 LICENSES LEFT</span>
-                  <br />
+                  <span className="mx-2">•</span>
                   Price increases to $499 on Dec 31, 2025
                 </div>
-                <StatGroup className="mt-2">
-                  <Stat label="Time Saved" value="400+ HRS" size="sm" />
-                  <Stat label="Value" value="$36K+" size="sm" />
-                </StatGroup>
+                <div className="mt-2 flex gap-4 text-xs">
+                  <div>
+                    <span className={cn(mode.color.text.muted, mode.font)}>Time Saved: </span>
+                    <span className={cn(mode.color.text.accent, mode.font)}>400+ HRS</span>
+                  </div>
+                  <div>
+                    <span className={cn(mode.color.text.muted, mode.font)}>Value: </span>
+                    <span className={cn(mode.color.text.accent, mode.font)}>$36K+</span>
+                  </div>
+                </div>
               </CardContent>
             </Card>
 
