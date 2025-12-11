@@ -28,7 +28,7 @@ const containerVariants = cva('mx-auto w-full', {
       sm: 'px-6 sm:px-6',
       md: 'px-6 sm:px-6 md:px-8',
       lg: 'px-6 sm:px-6 lg:px-8',
-      xl: 'px-6 sm:px-8 lg:px-12',
+      xl: 'px-8 sm:px-12 lg:px-16 xl:px-20',
     },
   },
   defaultVariants: {
