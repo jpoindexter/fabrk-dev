@@ -71,8 +71,8 @@ html[data-visual-mode='terminal'] body::before {
   animation: flicker 8s linear infinite;
 }
 
-/* Rolling scanline - classic CRT effect */
-html[data-visual-mode='terminal'] body::after {
+/* Rolling scanline - classic CRT effect (DISABLED) */
+/* html[data-visual-mode='terminal'] body::after {
   content: '';
   position: fixed;
   top: 0;
@@ -82,7 +82,6 @@ html[data-visual-mode='terminal'] body::after {
   pointer-events: none;
   z-index: 99998;
 
-  /* Bright scanline that rolls down */
   background: linear-gradient(
     to bottom,
     transparent 0%,
@@ -92,20 +91,14 @@ html[data-visual-mode='terminal'] body::after {
     transparent 100%
   );
 
-  /* Distortion effect - blurs content behind as it passes */
   -webkit-backdrop-filter: blur(0.5px) brightness(1.1);
   backdrop-filter: blur(0.5px) brightness(1.1);
 
-  /* Slow continuous roll - authentic CRT speed */
   animation: roll-scanline 45s linear infinite;
-}
+} */
 
 /* Light theme (GitHub): full-page CRT effect DISABLED */
 html[data-visual-mode='terminal'][data-theme='light'] body::before {
-  display: none;
-}
-
-html[data-visual-mode='terminal'][data-theme='light'] body::after {
   display: none;
 }
 
