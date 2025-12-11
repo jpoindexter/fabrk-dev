@@ -21,6 +21,7 @@ interface RevenueChartProps {
 
 export function RevenueChart({ data }: RevenueChartProps) {
   const [hoveredBar, setHoveredBar] = useState<number | null>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const avgRevenue = Math.round(data.reduce((sum, d) => sum + d.revenue, 0) / data.length);
   const maxRevenue = Math.max(...data.map((d) => d.revenue));
@@ -28,6 +29,10 @@ export function RevenueChart({ data }: RevenueChartProps) {
     ((data[data.length - 1].revenue - data[0].revenue) / data[0].revenue) *
     100
   ).toFixed(1);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    setMousePos({ x: e.clientX, y: e.clientY });
+  };
 
   return (
     <Card className="lg:col-span-4">
@@ -73,22 +78,27 @@ export function RevenueChart({ data }: RevenueChartProps) {
                   }}
                   onMouseEnter={() => setHoveredBar(i)}
                   onMouseLeave={() => setHoveredBar(null)}
+                  onMouseMove={handleMouseMove}
                 />
-                {hoveredBar === i && (
-                  <div
-                    className={cn(
-                      'border-border bg-card absolute bottom-full mb-2 border px-2 py-1 text-xs whitespace-nowrap',
-                      mode.font
-                    )}
-                  >
-                    <div className={mode.color.text.muted}>{dataPoint.month}</div>
-                    <div className={cn('font-semibold', mode.color.text.accent)}>
-                      ${dataPoint.revenue.toLocaleString()}
-                    </div>
-                  </div>
-                )}
               </div>
             ))}
+            {hoveredBar !== null && (
+              <div
+                className={cn(
+                  'border-border bg-card pointer-events-none fixed z-50 border px-2 py-1 text-xs whitespace-nowrap',
+                  mode.font
+                )}
+                style={{
+                  left: `${mousePos.x + 10}px`,
+                  top: `${mousePos.y + 10}px`,
+                }}
+              >
+                <div className={mode.color.text.muted}>{data[hoveredBar].month}</div>
+                <div className={cn('font-semibold', mode.color.text.accent)}>
+                  ${data[hoveredBar].revenue.toLocaleString()}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* X-axis labels */}
