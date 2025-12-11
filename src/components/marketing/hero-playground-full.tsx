@@ -95,14 +95,14 @@ function ComponentsGrid() {
     <div className="grid items-start gap-6 py-8 sm:grid-cols-2 lg:grid-cols-4">
       {/* COLUMN 1 - Alerts, Tabs, Accordion, File Upload, Search */}
       <div className="space-y-4">
-        {/* Alerts */}
-        <Alert>
+        {/* Alerts - NO CARD, direct background */}
+        <Alert className="border-l-primary border-l-4">
           <Info className="h-4 w-4" />
           <AlertTitle className="text-xs font-semibold">[INFO]</AlertTitle>
           <AlertDescription className="text-xs">New features available in v2.0</AlertDescription>
         </Alert>
 
-        <Alert variant="destructive">
+        <Alert variant="destructive" className="border-l-destructive border-l-4">
           <AlertTriangle className="h-4 w-4" />
           <AlertTitle className="text-xs font-semibold">[ERROR]</AlertTitle>
           <AlertDescription className="text-xs">Failed to connect to server</AlertDescription>
@@ -136,17 +136,12 @@ function ComponentsGrid() {
           </div>
         </Card>
 
-        {/* File Upload */}
-        <Card>
-          <div className="p-4">
-            <h3 className="mb-2 text-xs font-semibold">[FILE UPLOAD]</h3>
-            <div className="flex flex-col items-center justify-center rounded-none border-2 border-dashed p-6">
-              <Upload className="text-muted-foreground mb-2 h-8 w-8" />
-              <p className="mb-1 text-xs font-medium">Drop files here</p>
-              <p className="text-muted-foreground text-xs">or click to browse</p>
-            </div>
-          </div>
-        </Card>
+        {/* File Upload - NO CARD, just border */}
+        <div className="border-border bg-muted/20 flex flex-col items-center justify-center border-2 border-dashed p-8">
+          <Upload className="text-muted-foreground mb-3 h-12 w-12" />
+          <p className="mb-1 text-xs font-semibold">[DROP FILES HERE]</p>
+          <p className="text-muted-foreground text-xs">or click to browse</p>
+        </div>
 
         {/* Accordion */}
         <Card>
@@ -186,25 +181,23 @@ function ComponentsGrid() {
           </div>
         </Card>
 
-        {/* Team Members */}
-        <Card>
-          <div className="p-4">
-            <h3 className="mb-3 text-xs font-semibold">[TEAM MEMBERS]</h3>
-            <div className="space-y-2">
-              {['Alice Johnson', 'Bob Smith'].map((name, i) => (
-                <div key={i} className="flex items-center gap-2">
-                  <div className="bg-muted flex h-8 w-8 items-center justify-center rounded-full">
-                    <User className="h-4 w-4" />
-                  </div>
-                  <div className="text-xs">
-                    <p className="font-medium">{name}</p>
-                    <p className="text-muted-foreground">Developer</p>
-                  </div>
+        {/* Team Members - Dark background */}
+        <div className="bg-primary text-primary-foreground p-4">
+          <h3 className="mb-3 text-xs font-semibold">[TEAM: 2 ONLINE]</h3>
+          <div className="space-y-2">
+            {['Alice Johnson', 'Bob Smith'].map((name, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <div className="bg-primary-foreground/20 flex h-8 w-8 items-center justify-center rounded-full">
+                  <User className="h-4 w-4" />
                 </div>
-              ))}
-            </div>
+                <div className="text-xs">
+                  <p className="font-medium">{name}</p>
+                  <p className="opacity-70">Developer</p>
+                </div>
+              </div>
+            ))}
           </div>
-        </Card>
+        </div>
       </div>
 
       {/* COLUMN 2 - Dropdown, Skeletons, Progress, Breadcrumbs, Badges, Empty State, Activity */}
@@ -242,17 +235,13 @@ function ComponentsGrid() {
           </div>
         </Card>
 
-        {/* Loading Skeletons */}
-        <Card>
-          <div className="p-4">
-            <h3 className="mb-3 text-xs font-semibold">[LOADING STATE]</h3>
-            <div className="space-y-2">
-              <Skeleton className="h-4 w-full" />
-              <Skeleton className="h-4 w-3/4" />
-              <Skeleton className="h-8 w-full" />
-            </div>
-          </div>
-        </Card>
+        {/* Loading Skeletons - Tighter spacing */}
+        <div className="border-border space-y-3 border p-4">
+          <h3 className="text-xs font-semibold">[LOADING...]</h3>
+          <Skeleton className="h-4 w-full" />
+          <Skeleton className="h-4 w-3/4" />
+          <Skeleton className="h-10 w-full" />
+        </div>
 
         {/* Progress Bars */}
         <Card>
@@ -277,44 +266,32 @@ function ComponentsGrid() {
           </div>
         </Card>
 
-        {/* Breadcrumbs */}
-        <Card>
-          <div className="p-4">
-            <div className="flex items-center gap-1 text-xs">
-              <Home className="h-3 w-3" />
-              <ChevronRight className="text-muted-foreground h-3 w-3" />
-              <span className="text-muted-foreground">Projects</span>
-              <ChevronRight className="text-muted-foreground h-3 w-3" />
-              <span className="font-medium">Dashboard</span>
-            </div>
-          </div>
-        </Card>
+        {/* Breadcrumbs - Inline, no card */}
+        <div className="border-l-primary bg-muted/20 flex items-center gap-1 border-l-2 p-3 text-xs">
+          <Home className="h-3 w-3" />
+          <ChevronRight className="text-muted-foreground h-3 w-3" />
+          <span className="text-muted-foreground">Projects</span>
+          <ChevronRight className="text-muted-foreground h-3 w-3" />
+          <span className="font-medium">Dashboard</span>
+        </div>
 
-        {/* Badge Variations */}
-        <Card>
-          <div className="p-4">
-            <h3 className="mb-3 text-xs font-semibold">[BADGES]</h3>
-            <div className="flex flex-wrap gap-2">
-              <Badge>DEFAULT</Badge>
-              <Badge variant="secondary">SECONDARY</Badge>
-              <Badge variant="outline">OUTLINE</Badge>
-              <Badge variant="destructive">ERROR</Badge>
-            </div>
+        {/* Badge Variations - Compact, no card */}
+        <div className="border-border bg-muted/30 space-y-2 border p-3">
+          <h3 className="text-xs font-semibold">[BADGES]</h3>
+          <div className="flex flex-wrap gap-2">
+            <Badge>DEFAULT</Badge>
+            <Badge variant="secondary">SECONDARY</Badge>
+            <Badge variant="outline">OUTLINE</Badge>
+            <Badge variant="destructive">ERROR</Badge>
           </div>
-        </Card>
+        </div>
 
-        {/* Empty State */}
-        <Card>
-          <div className="p-6 text-center">
-            <div className="mb-2 flex justify-center">
-              <div className="bg-muted rounded-none p-3">
-                <FileText className="text-muted-foreground h-6 w-6" />
-              </div>
-            </div>
-            <h3 className="mb-1 text-xs font-semibold">[NO DATA]</h3>
-            <p className="text-muted-foreground text-xs">No items found. Create your first item.</p>
-          </div>
-        </Card>
+        {/* Empty State - Minimal, no card */}
+        <div className="border-border border border-dashed p-8 text-center">
+          <FileText className="text-muted-foreground mx-auto mb-2 h-8 w-8" />
+          <h3 className="mb-1 text-xs font-semibold">[NO DATA]</h3>
+          <p className="text-muted-foreground text-xs">No items found</p>
+        </div>
 
         {/* Recent Activity */}
         <Card>
@@ -340,118 +317,105 @@ function ComponentsGrid() {
 
       {/* COLUMN 3 - Radio Groups, Switches, Mini Table, Filter Chips, Date/Time */}
       <div className="space-y-4">
-        {/* Radio Group */}
-        <Card>
-          <div className="p-4">
-            <h3 className="mb-3 text-xs font-semibold">[RADIO GROUP]</h3>
-            <RadioGroup defaultValue="option-1">
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="option-1" id="option-1" />
-                <Label htmlFor="option-1" className="text-xs">
-                  Option 1
-                </Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="option-2" id="option-2" />
-                <Label htmlFor="option-2" className="text-xs">
-                  Option 2
-                </Label>
-              </div>
-            </RadioGroup>
-          </div>
-        </Card>
+        {/* Radio Group - Border only, no card */}
+        <div className="border-primary/30 bg-primary/5 border-2 p-4">
+          <h3 className="text-primary mb-3 text-xs font-semibold">[RADIO GROUP]</h3>
+          <RadioGroup defaultValue="option-1">
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="option-1" id="option-1" />
+              <Label htmlFor="option-1" className="text-xs">
+                Option 1
+              </Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="option-2" id="option-2" />
+              <Label htmlFor="option-2" className="text-xs">
+                Option 2
+              </Label>
+            </div>
+          </RadioGroup>
+        </div>
 
-        {/* Switches */}
-        <Card>
-          <div className="p-4">
-            <h3 className="mb-3 text-xs font-semibold">[SWITCHES]</h3>
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <Label className="text-xs">Enable notifications</Label>
-                <Switch checked={switchEnabled} onCheckedChange={setSwitchEnabled} />
-              </div>
-              <div className="flex items-center justify-between">
-                <Label className="text-xs">Dark mode</Label>
-                <Switch defaultChecked />
-              </div>
+        {/* Switches - Gradient background */}
+        <div className="from-secondary/20 to-secondary/5 bg-gradient-to-br p-4">
+          <h3 className="mb-3 text-xs font-semibold">[SWITCHES]</h3>
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <Label className="text-xs">Enable notifications</Label>
+              <Switch checked={switchEnabled} onCheckedChange={setSwitchEnabled} />
+            </div>
+            <div className="flex items-center justify-between">
+              <Label className="text-xs">Dark mode</Label>
+              <Switch defaultChecked />
             </div>
           </div>
-        </Card>
+        </div>
 
-        {/* Mini Data Table */}
-        <Card>
-          <div className="p-4">
-            <h3 className="mb-3 text-xs font-semibold">[DATA TABLE]</h3>
-            <div className="space-y-2">
-              {[
-                { metric: 'Users', value: '1,234', change: '+12%' },
-                { metric: 'Revenue', value: '$45.2K', change: '+8%' },
-              ].map((row, i) => (
-                <div key={i} className="flex items-center justify-between text-xs">
-                  <span>{row.metric}</span>
-                  <div className="flex items-center gap-2">
-                    <span className="font-medium">{row.value}</span>
-                    <span className="text-success">{row.change}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+        {/* Mini Data Table - Dense with separators */}
+        <div className="divide-border border-border bg-card divide-y border">
+          <div className="bg-muted/50 p-3">
+            <h3 className="text-xs font-semibold">[DATA TABLE]</h3>
           </div>
-        </Card>
-
-        {/* Filter Chips */}
-        <Card>
-          <div className="p-4">
-            <h3 className="mb-3 text-xs font-semibold">[ACTIVE FILTERS]</h3>
-            <div className="flex flex-wrap gap-2">
-              {['Status: Active', 'Role: Admin'].map((filter, i) => (
-                <Badge key={i} variant="secondary" className="gap-1">
-                  {filter}
-                  <X className="h-3 w-3 cursor-pointer" />
-                </Badge>
-              ))}
-            </div>
-          </div>
-        </Card>
-
-        {/* Date & Time */}
-        <Card>
-          <div className="p-4">
-            <h3 className="mb-3 text-xs font-semibold">[TIMESTAMPS]</h3>
-            <div className="space-y-2 text-xs">
-              <div className="flex items-center gap-2">
-                <Clock className="text-muted-foreground h-4 w-4" />
-                <span>Last updated: 2 min ago</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Calendar className="text-muted-foreground h-4 w-4" />
-                <span>Created: Dec 11, 2025</span>
-              </div>
-            </div>
-          </div>
-        </Card>
-
-        {/* Statistics */}
-        <Card>
-          <div className="p-4">
-            <h3 className="mb-3 text-xs font-semibold">[STATS]</h3>
-            <div className="space-y-3">
-              <div>
-                <div className="flex justify-between text-xs">
-                  <span className="text-muted-foreground">Total</span>
-                  <span className="font-semibold">$12,450</span>
+          <div className="space-y-0">
+            {[
+              { metric: 'Users', value: '1,234', change: '+12%' },
+              { metric: 'Revenue', value: '$45.2K', change: '+8%' },
+            ].map((row, i) => (
+              <div
+                key={i}
+                className="border-border flex items-center justify-between border-b p-3 text-xs last:border-b-0"
+              >
+                <span>{row.metric}</span>
+                <div className="flex items-center gap-2">
+                  <span className="font-medium">{row.value}</span>
+                  <span className="text-success">{row.change}</span>
                 </div>
               </div>
-              <Separator />
-              <div>
-                <div className="flex justify-between text-xs">
-                  <span className="text-muted-foreground">Change</span>
-                  <span className="text-success font-semibold">+15.3%</span>
-                </div>
-              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Filter Chips - Minimal with bottom border */}
+        <div className="border-b-muted bg-background border-b-4 p-3">
+          <h3 className="mb-3 text-xs font-semibold">[ACTIVE FILTERS]</h3>
+          <div className="flex flex-wrap gap-2">
+            {['Status: Active', 'Role: Admin'].map((filter, i) => (
+              <Badge key={i} variant="secondary" className="gap-1">
+                {filter}
+                <X className="h-3 w-3 cursor-pointer" />
+              </Badge>
+            ))}
+          </div>
+        </div>
+
+        {/* Date & Time - Outline style */}
+        <div className="border-muted-foreground/30 border-2 border-dashed p-4">
+          <h3 className="text-muted-foreground mb-3 text-xs font-semibold">[TIMESTAMPS]</h3>
+          <div className="space-y-2 text-xs">
+            <div className="flex items-center gap-2">
+              <Clock className="text-muted-foreground h-4 w-4" />
+              <span>Last updated: 2 min ago</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Calendar className="text-muted-foreground h-4 w-4" />
+              <span>Created: Dec 11, 2025</span>
             </div>
           </div>
-        </Card>
+        </div>
+
+        {/* Statistics - Accent background with border */}
+        <div className="border-success/50 bg-success/10 space-y-3 border-2 p-4">
+          <h3 className="text-success text-xs font-semibold">[REVENUE UP]</h3>
+          <div className="flex justify-between text-xs">
+            <span>Total</span>
+            <span className="text-lg font-bold">$12,450</span>
+          </div>
+          <Separator />
+          <div className="flex justify-between text-xs">
+            <span>Change</span>
+            <span className="text-success text-lg font-bold">+15.3%</span>
+          </div>
+        </div>
       </div>
 
       {/* COLUMN 4 - Slider, Checkboxes, Select, Input Variants, Button Groups */}
@@ -539,26 +503,21 @@ function ComponentsGrid() {
           </div>
         </Card>
 
-        {/* Action Buttons */}
-        <Card>
-          <div className="p-4">
-            <h3 className="mb-3 text-xs font-semibold">[ACTIONS]</h3>
-            <div className="space-y-2">
-              <Button className="w-full text-xs">
-                <Download className="mr-2 h-4 w-4" />
-                &gt; DOWNLOAD
-              </Button>
-              <Button variant="outline" className="w-full text-xs">
-                <Settings className="mr-2 h-4 w-4" />
-                &gt; SETTINGS
-              </Button>
-              <Button variant="destructive" className="w-full text-xs">
-                <Trash2 className="mr-2 h-4 w-4" />
-                &gt; DELETE
-              </Button>
-            </div>
-          </div>
-        </Card>
+        {/* Action Buttons - Full width, no card */}
+        <div className="space-y-2">
+          <Button className="w-full text-xs">
+            <Download className="mr-2 h-4 w-4" />
+            &gt; DOWNLOAD
+          </Button>
+          <Button variant="outline" className="w-full text-xs">
+            <Settings className="mr-2 h-4 w-4" />
+            &gt; SETTINGS
+          </Button>
+          <Button variant="destructive" className="w-full text-xs">
+            <Trash2 className="mr-2 h-4 w-4" />
+            &gt; DELETE
+          </Button>
+        </div>
       </div>
     </div>
   );
