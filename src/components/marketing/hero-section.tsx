@@ -178,39 +178,62 @@ export function HeroSection() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="absolute top-8 -right-12 isolate z-10 flex w-full max-w-md flex-col gap-8 lg:top-12 lg:-right-16"
+            className="absolute top-8 -right-12 isolate z-10 flex w-full max-w-sm flex-col gap-8 lg:top-12 lg:-right-16"
           >
             {/* Urgency Card - Top */}
             <Card size="auto" className="border-accent border-2 lg:-mr-8">
-              <CardHeader code="0x03" title="LAUNCH PRICING" />
-              <CardContent className="space-y-2 py-3">
-                <div className="flex items-baseline gap-3">
-                  <span className={cn('text-3xl font-bold', mode.font, mode.color.text.accent)}>
-                    $399
-                  </span>
-                  <span className={cn('text-base line-through', mode.color.text.muted)}>$499</span>
-                  <span
+              <CardHeader code="0x03" title="LAUNCH_OFFER.SH" />
+              <CardContent className="space-y-4 p-4">
+                {/* Price - Big and Bold */}
+                <div className="flex items-start justify-between">
+                  <div>
+                    <div className="flex items-baseline gap-2">
+                      <span
+                        className={cn('text-4xl font-black', mode.font, mode.color.text.accent)}
+                      >
+                        $399
+                      </span>
+                      <span className={cn('text-lg line-through', mode.color.text.muted)}>
+                        $499
+                      </span>
+                    </div>
+                    <div className={cn('mt-1 text-xs', mode.color.text.muted, mode.font)}>
+                      ONE-TIME PAYMENT
+                    </div>
+                  </div>
+                  <div
                     className={cn(
-                      'bg-accent text-accent-foreground ml-auto rounded-none px-2 py-1 text-xs font-bold',
+                      'bg-accent text-accent-foreground border-accent animate-pulse border-2 px-3 py-1.5 text-sm font-black',
                       mode.font
                     )}
                   >
-                    20% OFF
-                  </span>
+                    -20%
+                  </div>
                 </div>
-                <div className={cn('text-xs', mode.color.text.muted, mode.font)}>
-                  <span className={mode.color.text.warning}>⚠ 50 LICENSES LEFT</span>
-                  <span className="mx-2">•</span>
-                  Price increases to $499 on Dec 31, 2025
+
+                {/* Urgency */}
+                <div className="border-accent space-y-1 border-l-2 pl-3">
+                  <div className={cn('text-xs font-bold', mode.color.text.warning, mode.font)}>
+                    ⚠ ONLY 50 LICENSES LEFT
+                  </div>
+                  <div className={cn('text-xs', mode.color.text.muted, mode.font)}>
+                    Price → $499 on Dec 31, 2025
+                  </div>
                 </div>
-                <div className="mt-2 flex gap-4 text-xs">
+
+                {/* ROI Stats */}
+                <div className="border-accent grid grid-cols-2 gap-2 border-t pt-3">
                   <div>
-                    <span className={cn(mode.color.text.muted, mode.font)}>Time Saved: </span>
-                    <span className={cn(mode.color.text.accent, mode.font)}>400+ HRS</span>
+                    <div className={cn('text-xs', mode.color.text.muted, mode.font)}>SAVES</div>
+                    <div className={cn('text-lg font-bold', mode.font, mode.color.text.success)}>
+                      400+ HRS
+                    </div>
                   </div>
                   <div>
-                    <span className={cn(mode.color.text.muted, mode.font)}>Value: </span>
-                    <span className={cn(mode.color.text.accent, mode.font)}>$36K+</span>
+                    <div className={cn('text-xs', mode.color.text.muted, mode.font)}>VALUE</div>
+                    <div className={cn('text-lg font-bold', mode.font, mode.color.text.success)}>
+                      $36K+
+                    </div>
                   </div>
                 </div>
               </CardContent>
