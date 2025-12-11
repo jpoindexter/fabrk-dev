@@ -31,7 +31,6 @@ import {
   Badge as CardBadge,
 } from '@/components/ui/card';
 import { HeroDashboardPreview } from './hero-dashboard-preview';
-import { HeroBackground } from './hero-background';
 import { PRICING } from '@/data/landing';
 
 const techStack = [
@@ -47,9 +46,6 @@ const techStack = [
 export function HeroSection() {
   return (
     <section className="relative flex min-h-[85vh] items-center overflow-hidden py-16 lg:min-h-[90vh] lg:py-20">
-      {/* Animated background code snippets */}
-      <HeroBackground />
-
       <Container size="2xl">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Left Column - Terminal Content */}
