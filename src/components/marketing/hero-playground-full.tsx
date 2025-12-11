@@ -18,7 +18,7 @@ import { cn } from '@/lib/utils';
 // Component Examples Grid - 4 vertical columns with stacked components (shadcn style)
 function ComponentsGrid() {
   return (
-    <div className="grid gap-6 lg:grid-cols-4">
+    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {/* COLUMN 1 - Payment Form */}
       <div className="space-y-6">
         <Card>
