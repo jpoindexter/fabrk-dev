@@ -39,10 +39,10 @@ export interface StyledTab {
 }
 
 export interface StyledTabsProps {
-  /** Header code (e.g., "0x00") */
-  code: string;
-  /** Header title (e.g., "NAVIGATION") */
-  title: string;
+  /** Header code (e.g., "0x00") - optional */
+  code?: string;
+  /** Header title (e.g., "NAVIGATION") - optional */
+  title?: string;
   /** Array of tab definitions */
   tabs: StyledTab[];
   /** Currently active tab id */
@@ -72,7 +72,7 @@ export function StyledTabs({
   return (
     <Tabs value={value} onValueChange={onValueChange} className={className}>
       <Card tone="neutral">
-        <CardHeader code={code} title={title} />
+        {code && title && <CardHeader code={code} title={title} />}
         <TabsList
           className={cn('h-auto w-full justify-start border-0 bg-transparent p-0', mode.radius)}
         >
