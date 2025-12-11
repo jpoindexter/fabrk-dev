@@ -47,13 +47,14 @@ export const columns: ColumnDef<UserType>[] = [
     header: ({ column }) => <DataTableColumnHeader column={column} title="Name" />,
     size: 250,
     cell: ({ row }) => (
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3">
         <div
           className={cn(
             mode.font,
-            'flex h-8 w-8 flex-shrink-0 items-center justify-center border text-xs',
+            'flex h-8 w-8 flex-shrink-0 items-center justify-center border text-xs font-medium',
             mode.color.border.default,
-            mode.color.bg.muted
+            mode.color.bg.accent,
+            mode.color.text.accent
           )}
         >
           {row
@@ -66,7 +67,7 @@ export const columns: ColumnDef<UserType>[] = [
           className={cn(
             mode.radius,
             mode.font,
-            'max-w-[200px] truncate text-xs',
+            'max-w-[200px] truncate text-xs font-medium',
             mode.color.text.primary
           )}
         >
@@ -98,14 +99,14 @@ export const columns: ColumnDef<UserType>[] = [
         return cn(mode.color.text.muted, mode.color.border.default);
       };
       return (
-        <div className="flex pl-2">
+        <div className="flex">
           <span
             className={cn(
-              'inline-flex w-20 items-center justify-center gap-1 border px-2 py-0.5 font-mono text-xs',
+              'inline-flex w-24 items-center justify-center gap-1.5 border px-3 py-1 font-mono text-xs',
               getRoleClasses()
             )}
           >
-            <RoleIcon className="h-3 w-3" />
+            <RoleIcon className="h-3.5 w-3.5" />
             {role}
           </span>
         </div>
@@ -124,9 +125,8 @@ export const columns: ColumnDef<UserType>[] = [
         return mode.color.text.muted;
       };
       return (
-        <span className={cn(mode.radius, mode.font, 'text-xs')}>
-          <span className={mode.color.text.muted}>STATUS:</span>{' '}
-          <span className={getStatusColor()}>{status.toUpperCase()}</span>
+        <span className={cn(mode.radius, mode.font, 'text-xs font-medium', getStatusColor())}>
+          {status.toUpperCase()}
         </span>
       );
     },
@@ -137,7 +137,11 @@ export const columns: ColumnDef<UserType>[] = [
     size: 120,
     cell: ({ row }) => (
       <span className={cn(mode.font, 'text-xs', mode.color.text.muted)}>
-        {new Date(row.getValue('createdAt')).toLocaleDateString()}
+        {new Date(row.getValue('createdAt')).toLocaleDateString('en-US', {
+          month: 'numeric',
+          day: 'numeric',
+          year: 'numeric',
+        })}
       </span>
     ),
   },
@@ -145,11 +149,19 @@ export const columns: ColumnDef<UserType>[] = [
     accessorKey: 'lastLogin',
     header: ({ column }) => <DataTableColumnHeader column={column} title="Last Login" />,
     size: 120,
-    cell: ({ row }) => (
-      <span className={cn(mode.font, 'text-xs', mode.color.text.muted)}>
-        {row.getValue('lastLogin')}
-      </span>
-    ),
+    cell: ({ row }) => {
+      const lastLogin = row.getValue<string>('lastLogin');
+      const date = new Date(lastLogin);
+      return (
+        <span className={cn(mode.font, 'text-xs', mode.color.text.muted)}>
+          {date.toLocaleDateString('en-US', {
+            month: 'numeric',
+            day: 'numeric',
+            year: 'numeric',
+          })}
+        </span>
+      );
+    },
   },
   {
     id: 'actions',

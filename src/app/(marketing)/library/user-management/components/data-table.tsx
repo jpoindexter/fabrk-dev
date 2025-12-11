@@ -16,13 +16,13 @@ export function DataTable({ table }: DataTableProps) {
   return (
     <div className="border-border border">
       {/* Table Header */}
-      <div className="border-border bg-muted/30 border-b">
+      <div className="border-border bg-muted/50 border-b">
         {table.getHeaderGroups().map((headerGroup) => (
-          <div key={headerGroup.id} className="flex items-center px-4 py-2">
+          <div key={headerGroup.id} className="flex items-center px-4 py-3">
             {headerGroup.headers.map((header) => (
               <div
                 key={header.id}
-                className="flex-1"
+                className="flex-1 font-medium"
                 style={{
                   width: header.id === 'select' ? 40 : header.id === 'actions' ? 60 : undefined,
                   flex: header.id === 'select' || header.id === 'actions' ? '0 0 auto' : 1,
@@ -40,12 +40,14 @@ export function DataTable({ table }: DataTableProps) {
       {/* Table Body */}
       <div className="divide-border divide-y">
         {table.getRowModel().rows?.length ? (
-          table.getRowModel().rows.map((row) => (
+          table.getRowModel().rows.map((row, index) => (
             <div
               key={row.id}
-              className={`hover:bg-muted/30 flex items-center px-4 py-4 ${
-                row.getIsSelected() ? 'bg-primary/5' : ''
-              }`}
+              className={cn(
+                'hover:bg-muted/40 flex items-center px-4 py-4 transition-colors',
+                index % 2 === 0 ? 'bg-background' : 'bg-muted/20',
+                row.getIsSelected() && 'bg-primary/10 hover:bg-primary/15'
+              )}
             >
               {row.getVisibleCells().map((cell) => (
                 <div
