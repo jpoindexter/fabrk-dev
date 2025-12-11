@@ -38,7 +38,7 @@ const techStack = [
 
 export function HeroSection() {
   return (
-    <section className="relative flex min-h-[85vh] items-center overflow-hidden py-16 lg:min-h-[90vh] lg:py-20">
+    <section className="relative flex min-h-[85vh] items-center overflow-hidden pt-8 pb-16 lg:min-h-[90vh] lg:pt-12 lg:pb-20">
       <Container size="2xl">
         <div className="relative">
           {/* Main Hero Window - Wider, behind */}
