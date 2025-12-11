@@ -1,184 +1,131 @@
 /**
  * ✅ FABRK COMPONENT
- * Stack Config - Terminal console [MODULE] cards grid
+ * Core Benefits - 3 major value propositions
  * Production-ready ✓
  */
 
 'use client';
 
 import { motion } from 'framer-motion';
-import {
-  Lock,
-  CreditCard,
-  Database,
-  Users,
-  FileText,
-  Smartphone,
-  BarChart3,
-  Activity,
-  CheckCircle,
-  Palette,
-  Mail,
-} from 'lucide-react';
-import { Card, CardHeader, CardContent, Stat } from '@/components/ui/card';
+import { Lock, CreditCard, Users } from 'lucide-react';
+import { Card, CardHeader, CardContent, Stat, StatGroup } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 
-const FEATURES = [
+const CORE_BENEFITS = [
   {
     id: 'auth',
     icon: Lock,
-    module: 'AUTH',
-    status: 'SECURE',
-    title: 'Authentication',
-    description: 'Offer a wide range of built-in authentication options.',
+    module: 'AUTH & SECURITY',
+    code: '0x10',
+    title: 'Authentication & Security',
+    benefit: 'Launch with enterprise-grade auth in minutes, not months',
+    description:
+      'NextAuth v5 with Google, GitHub, email magic links, and JWT sessions. Role-based access control, password reset flows, and email verification built-in.',
+    timeSaved: '40 HOURS',
+    costSaved: '$8K',
+    features: ['Social OAuth', 'Magic Links', 'RBAC', 'Password Reset', 'Email Verification'],
   },
   {
     id: 'billing',
     icon: CreditCard,
-    module: 'BILLING',
-    status: 'ACTIVE',
+    module: 'BILLING & PAYMENTS',
+    code: '0x11',
     title: 'Billing & Payments',
-    description: 'Let users manage their billing and subscription plan.',
-  },
-  {
-    id: 'database',
-    icon: Database,
-    module: 'DATABASE',
-    status: 'READY',
-    title: 'Database',
-    description: 'Use either the Prisma or Drizzle ORM starter kit.',
+    benefit: 'Start monetizing day one with production-ready payments',
+    description:
+      'Polar.sh integration with subscription management, one-time payments, and webhook handling. Customer portal, invoice generation, and payment history included.',
+    timeSaved: '60 HOURS',
+    costSaved: '$12K',
+    features: ['Subscriptions', 'One-Time Payments', 'Webhooks', 'Customer Portal', 'Invoices'],
   },
   {
     id: 'multitenancy',
     icon: Users,
-    module: 'MULTI TENANT',
-    status: 'ENABLED',
-    title: 'Multi-Tenancy',
-    description: 'Invite, join and switch between multiple organizations.',
-  },
-  {
-    id: 'marketing',
-    icon: FileText,
-    module: 'PAGES',
-    status: 'LIVE',
-    title: 'Marketing Pages',
-    description: 'Show your product and convert users with a landing page.',
-  },
-  {
-    id: 'email',
-    icon: Mail,
-    module: 'EMAIL',
-    status: 'SENDING',
-    title: 'Mailer & Templates',
-    description: 'Send good looking emails to your customers.',
-  },
-  {
-    id: 'docs',
-    icon: FileText,
-    module: 'DOCS',
-    status: 'COMPLETE',
-    title: 'Documentation',
-    description: 'Help your users get started with your product docs.',
-  },
-  {
-    id: 'mobile',
-    icon: Smartphone,
-    module: 'MOBILE',
-    status: 'RESPONSIVE',
-    title: 'Mobile Friendly',
-    description: 'Support mobile devices with minimum coding effort.',
-  },
-  {
-    id: 'analytics',
-    icon: BarChart3,
-    module: 'STATS',
-    status: 'TRACKING',
-    title: 'Analytics',
-    description: 'Tag events and track your users and their behavior.',
-  },
-  {
-    id: 'monitoring',
-    icon: Activity,
-    module: 'MONITOR',
-    status: 'WATCHING',
-    title: 'Monitoring',
-    description: 'Track application errors and events of your SaaS app.',
-  },
-  {
-    id: 'quality',
-    icon: CheckCircle,
-    module: 'QUALITY',
-    status: 'STRICT',
-    title: 'High code quality',
-    description: 'Fully-typed with strict TypeScript and ESLint rules.',
-  },
-  {
-    id: 'design',
-    icon: Palette,
-    module: 'DESIGN',
-    status: 'SCALABLE',
-    title: 'Shadcn UI',
-    description: 'Build faster with Shadcn UI, Tailwind CSS and Lucide icons.',
+    module: 'MULTI-TENANCY',
+    code: '0x12',
+    title: 'Multi-Tenancy & Teams',
+    benefit: 'Scale to enterprise with B2B team features out of the box',
+    description:
+      'Organization management with invites, role permissions, and team switching. Member management, audit logs, and organization-level billing ready to go.',
+    timeSaved: '80 HOURS',
+    costSaved: '$15K',
+    features: ['Organizations', 'Team Invites', 'Role Permissions', 'Team Switching', 'Audit Logs'],
   },
 ];
 
-interface FeatureCardProps {
+interface BenefitCardProps {
   icon: React.ComponentType<{ className?: string }>;
   module: string;
-  status: string;
-  title: string;
+  code: string;
+  benefit: string;
   description: string;
+  timeSaved: string;
+  costSaved: string;
+  features: string[];
   index: number;
 }
 
-function FeatureCard({
+function BenefitCard({
   icon: Icon,
   module,
-  status,
-  title: _title,
+  code,
+  benefit,
   description,
+  timeSaved,
+  costSaved,
+  features,
   index,
-}: FeatureCardProps) {
+}: BenefitCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20, scale: 0.95 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: '-50px' }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-100px' }}
       transition={{
-        duration: 0.5,
-        delay: index * 0.08,
+        duration: 0.6,
+        delay: index * 0.15,
         ease: [0.21, 0.47, 0.32, 0.98],
       }}
-      whileHover={{
-        y: -4,
-        transition: { duration: 0.2 },
-      }}
-      className="group h-full"
+      className="h-full"
     >
-      <Card interactive className="h-full">
+      <Card className="h-full">
         <CardHeader
-          code={`0x${(index + 17).toString(16).toUpperCase().padStart(2, '0')}`}
+          code={code}
           title={module}
           icon={
-            <motion.div
-              whileHover={{ rotate: 12, scale: 1.1 }}
-              transition={{ type: 'spring', stiffness: 400 }}
-            >
-              <Icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
+            <motion.div whileHover={{ scale: 1.1 }} transition={{ type: 'spring', stiffness: 400 }}>
+              <Icon className={cn('size-5', mode.color.text.accent)} />
             </motion.div>
           }
         />
         <CardContent>
-          {/* Status */}
-          <div className="mb-4">
-            <Stat label="STATUS" value={status} size="sm" />
-          </div>
+          {/* Benefit Statement */}
+          <h3 className={cn('mb-4 text-sm font-semibold', mode.font, mode.color.text.primary)}>
+            {benefit}
+          </h3>
 
           {/* Description */}
-          <div className={cn('text-xs', mode.font)}>
-            <span className="text-muted-foreground">DESC: </span>
-            <span className="text-foreground">{description}</span>
+          <p className={cn('mb-4 text-xs leading-relaxed', mode.color.text.muted)}>{description}</p>
+
+          {/* Time/Cost Savings */}
+          <div className="mb-4">
+            <StatGroup>
+              <Stat label="Time Saved" value={timeSaved} size="sm" />
+              <Stat label="Cost Saved" value={costSaved} size="sm" />
+            </StatGroup>
+          </div>
+
+          {/* Features List */}
+          <div className={cn('text-xs', mode.color.text.muted)}>
+            <span className="mb-2 block font-semibold">[INCLUDES]:</span>
+            <ul className="space-y-1">
+              {features.map((feature) => (
+                <li key={feature}>
+                  <span className={mode.color.text.success}>✓</span> {feature}
+                </li>
+              ))}
+            </ul>
           </div>
         </CardContent>
       </Card>
@@ -196,34 +143,53 @@ export function FeaturesShowcase() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-12"
+          className="mb-16 text-center"
         >
-          <Card className="mb-4 inline-block">
-            <CardHeader code="0x10" title="STACK CONFIG" meta="FIB[89,144,233] MODULES" />
-          </Card>
-          <h2 className={cn('mb-4 text-2xl font-semibold tracking-tight', mode.font)}>
-            SOLID FOUNDATION
-          </h2>
-          <p className={cn('text-muted-foreground max-w-2xl text-sm', mode.font)}>
-            Everything you need to build a production-ready SaaS. Authentication, payments,
-            multi-tenancy, and more—all pre-configured and ready to customize.
+          <h2 className={cn('mb-4 text-3xl font-bold tracking-tight', mode.font)}>WHAT YOU GET</h2>
+          <p className={cn('text-muted-foreground mx-auto max-w-2xl text-sm', mode.font)}>
+            Stop rebuilding the same features. Get 180+ hours of development work done in 5 minutes.
+            <br />
+            Save $35K+ in development costs with production-ready infrastructure.
           </p>
         </motion.div>
 
-        {/* 4x3 Features Grid */}
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {FEATURES.map((feature, index) => (
-            <FeatureCard
-              key={feature.id}
-              icon={feature.icon}
-              module={feature.module}
-              status={feature.status}
-              title={feature.title}
-              description={feature.description}
+        {/* 3-Column Benefits Grid */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {CORE_BENEFITS.map((benefit, index) => (
+            <BenefitCard
+              key={benefit.id}
+              icon={benefit.icon}
+              module={benefit.module}
+              code={benefit.code}
+              benefit={benefit.benefit}
+              description={benefit.description}
+              timeSaved={benefit.timeSaved}
+              costSaved={benefit.costSaved}
+              features={benefit.features}
               index={index}
             />
           ))}
         </div>
+
+        {/* Total Savings Summary */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-12"
+        >
+          <Card>
+            <CardHeader code="0x13" title="TOTAL VALUE" />
+            <CardContent>
+              <StatGroup>
+                <Stat label="Total Time Saved" value="180+ HOURS" />
+                <Stat label="Total Cost Saved" value="$35K+" />
+                <Stat label="Your Investment" value="$199" />
+              </StatGroup>
+            </CardContent>
+          </Card>
+        </motion.div>
       </div>
     </section>
   );
