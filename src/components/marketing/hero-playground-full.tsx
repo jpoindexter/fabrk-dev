@@ -113,9 +113,9 @@ function BrowserFrame({ children }: { children: React.ReactNode }) {
         </div>
 
         {/* Address Bar */}
-        <div className="bg-background flex flex-1 items-center gap-2 rounded-none px-3 py-1.5">
-          <Activity className="text-muted-foreground h-3 w-3" />
-          <span className="text-muted-foreground text-xs">https://app.fabrk.dev/dashboard</span>
+        <div className="border-border bg-background flex flex-1 items-center gap-2 border px-4 py-2">
+          <Activity className="text-success h-4 w-4" />
+          <span className="text-foreground flex-1 text-sm">https://app.fabrk.dev/dashboard</span>
         </div>
 
         {/* Menu Button */}
