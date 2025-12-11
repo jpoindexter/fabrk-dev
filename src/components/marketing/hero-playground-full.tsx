@@ -1,3 +1,4 @@
+/* eslint-disable design-system/no-hardcoded-colors */
 /**
  * Hero Playground - Full shadcn-style interactive demo
  * 4-column vertical stacked layout with REAL component examples
@@ -17,7 +18,7 @@ import {
 } from '@tanstack/react-table';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Card, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -51,16 +52,11 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import {
-  Mail,
   Search,
   Download,
-  ArrowRight,
-  User,
   UserPlus,
   Calendar,
-  DollarSign,
   Settings,
-  AlertCircle,
   CheckCircle2,
   Info,
   AlertTriangle,
@@ -77,10 +73,14 @@ import {
   Home,
   ChevronRight,
   Users,
-  Filter,
   X,
   RotateCw,
   Lock,
+  Star,
+  GitBranch,
+  MessageSquare,
+  Award,
+  Zap,
 } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
@@ -106,6 +106,102 @@ import { DataTable as UserDataTable } from '@/app/(marketing)/library/user-manag
 import { PaginationControls } from '@/app/(marketing)/library/user-management/components/pagination-controls';
 import { StatsCards } from '@/app/(marketing)/library/user-management/components/stats-cards';
 import { TableToolbar } from '@/app/(marketing)/library/user-management/components/table-toolbar';
+
+// Profile components
+import { ProfileHeader } from '@/app/(marketing)/library/profile/components/profile-header';
+import { BadgesSection } from '@/app/(marketing)/library/profile/components/badges-section';
+import { ProfileTabs } from '@/app/(marketing)/library/profile/components/profile-tabs';
+
+// Profile mock data
+const mockProfileUser = {
+  name: 'Alex Chen',
+  username: 'alexchen',
+  email: 'alex@fabrek.dev',
+  avatar: null,
+  bio: 'Full-stack developer passionate about building great user experiences. Open source contributor.',
+  location: 'San Francisco, CA',
+  website: 'https://alexchen.dev',
+  joinDate: 'January 2024',
+  role: 'Pro Member',
+  stats: {
+    projects: 12,
+    contributions: 847,
+    followers: 234,
+    following: 89,
+  },
+};
+
+const mockProfileActivity = [
+  {
+    id: '1',
+    type: 'commit',
+    title: 'Pushed 3 commits to fabrk/dashboard',
+    timestamp: '2 hours ago',
+    icon: GitBranch,
+  },
+  {
+    id: '2',
+    type: 'comment',
+    title: 'Commented on issue #142: "Add dark mode support"',
+    timestamp: '5 hours ago',
+    icon: MessageSquare,
+  },
+  {
+    id: '3',
+    type: 'star',
+    title: 'Starred repository fabrk/ui-components',
+    timestamp: '1 day ago',
+    icon: Star,
+  },
+  {
+    id: '4',
+    type: 'commit',
+    title: 'Merged PR #89 into main',
+    timestamp: '2 days ago',
+    icon: GitBranch,
+  },
+  {
+    id: '5',
+    type: 'achievement',
+    title: 'Earned badge: "100 Contributions"',
+    timestamp: '3 days ago',
+    icon: Award,
+  },
+];
+
+const mockProfileProjects = [
+  {
+    id: '1',
+    name: 'dashboard-v2',
+    description: 'Next.js dashboard with analytics',
+    stars: 45,
+    language: 'TypeScript',
+    updated: '2 hours ago',
+  },
+  {
+    id: '2',
+    name: 'api-gateway',
+    description: 'Microservices API gateway',
+    stars: 128,
+    language: 'Go',
+    updated: '1 day ago',
+  },
+  {
+    id: '3',
+    name: 'mobile-app',
+    description: 'React Native mobile application',
+    stars: 67,
+    language: 'TypeScript',
+    updated: '3 days ago',
+  },
+];
+
+const mockProfileBadges = [
+  { id: '1', name: 'Early Adopter', icon: Zap, color: 'primary' },
+  { id: '2', name: 'Top Contributor', icon: TrendingUp, color: 'success' },
+  { id: '3', name: 'Bug Hunter', icon: Activity, color: 'warning' },
+  { id: '4', name: 'Team Player', icon: Award, color: 'primary' },
+];
 
 // Browser Frame Component
 function BrowserFrame({ children }: { children: React.ReactNode }) {
@@ -700,9 +796,6 @@ function TablePreview() {
     a.click();
   }, []);
 
-  // Memoize filtered row count to prevent state updates during render
-  const filteredRowCount = useMemo(() => table.getFilteredRowModel().rows.length, [table]);
-
   return (
     <BrowserFrame>
       <LeftNavigation activeSection="users" />
@@ -739,66 +832,21 @@ function TablePreview() {
   );
 }
 
-// Profile preview - simplified version
+// Profile preview - using actual profile components
 function ProfilePreview() {
   return (
     <BrowserFrame>
       <LeftNavigation activeSection="dashboard" />
       <div className="flex-1 overflow-auto p-8">
-        <div className="space-y-4">
-          <Card>
-            <CardHeader code="0x00" title="PROFILE INFO" />
-            <div className="p-4">
-              <div className="mb-4 flex items-center gap-4">
-                <div
-                  className={cn(
-                    'flex h-16 w-16 items-center justify-center rounded-full',
-                    mode.color.bg.accent
-                  )}
-                >
-                  <User className="h-8 w-8" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold">Alex Chen</h3>
-                  <p className={cn('text-xs', mode.color.text.muted)}>@alexchen</p>
-                </div>
-              </div>
-              <div className="grid gap-4 sm:grid-cols-4">
-                {[
-                  { label: 'PROJECTS', value: '12' },
-                  { label: 'CONTRIBUTIONS', value: '847' },
-                  { label: 'FOLLOWERS', value: '234' },
-                  { label: 'FOLLOWING', value: '89' },
-                ].map((stat, i) => (
-                  <div key={i} className="text-center">
-                    <div className="text-xl font-bold">{stat.value}</div>
-                    <div className={cn('text-xs', mode.color.text.muted)}>{stat.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Card>
+        <div className="container mx-auto max-w-7xl space-y-6">
+          {/* Profile Header */}
+          <ProfileHeader user={mockProfileUser} />
 
-          <Card>
-            <CardHeader code="0x01" title="RECENT ACTIVITY" />
-            <div className="space-y-2 p-4 text-xs">
-              <div className="flex items-center gap-2">
-                <DollarSign className="h-4 w-4" />
-                <span>Pushed 3 commits to fabrk/dashboard</span>
-                <span className={mode.color.text.muted}>2h ago</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
-                <span>Commented on issue #142</span>
-                <span className={mode.color.text.muted}>5h ago</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Settings className="h-4 w-4" />
-                <span>Updated profile settings</span>
-                <span className={mode.color.text.muted}>1d ago</span>
-              </div>
-            </div>
-          </Card>
+          {/* Badges Section */}
+          <BadgesSection badges={mockProfileBadges} />
+
+          {/* Profile Tabs */}
+          <ProfileTabs activity={mockProfileActivity} projects={mockProfileProjects} />
         </div>
       </div>
     </BrowserFrame>
