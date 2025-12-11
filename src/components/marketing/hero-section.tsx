@@ -31,6 +31,7 @@ import {
   Badge as CardBadge,
 } from '@/components/ui/card';
 import { HeroDashboardPreview } from './hero-dashboard-preview';
+import { LayeredWindows } from './layered-windows';
 import { PRICING } from '@/data/landing';
 
 const techStack = [
@@ -66,15 +67,18 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h1 className={cn('mb-2 text-xs', mode.color.text.muted, mode.font)}>[FABRK INIT]</h1>
-              <h2 className="mb-4 text-6xl leading-[0.95] font-black tracking-tight lg:text-7xl">
-                <span className="text-foreground">BUILDING YOUR SAAS</span>
+              <h1 className={cn('mb-6 text-xs', mode.color.text.muted, mode.font)}>
+                [SYSTEM READY]
+              </h1>
+              <h2 className="mb-6 text-7xl leading-[0.9] font-black tracking-tight lg:text-8xl">
+                <span className="text-foreground">BUILD</span>
                 <br />
-                <span className={mode.color.text.accent}>JUST GOT UNFAIRLY EASY</span>
+                <span className={mode.color.text.accent}>PRODUCTION</span>
+                <br />
+                <span className="text-foreground">SAAS</span>
               </h2>
-              <p className={cn('mb-6 text-sm leading-relaxed lg:text-base', mode.color.text.muted)}>
-                60+ production components. 26 full-featured templates. Terminal-first design that
-                stands out. Ship your SaaS this weekend, not next quarter.
+              <p className={cn('mb-8 text-base leading-relaxed', mode.color.text.muted)}>
+                60+ components. Full-stack. Ship this weekend.
               </p>
             </motion.div>
 
@@ -125,52 +129,10 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Right Column - Visual Proof */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col gap-4"
-          >
-            {/* Urgency Card - Top */}
-            <Card size="auto" className="border-accent border-2">
-              <CardHeader code="0x03" title="LAUNCH PRICING" />
-              <CardContent className="space-y-2 py-3">
-                <div className="flex items-baseline gap-3">
-                  <span className={cn('text-3xl font-bold', mode.font, mode.color.text.accent)}>
-                    $399
-                  </span>
-                  <span className={cn('text-base line-through', mode.color.text.muted)}>$499</span>
-                  <span
-                    className={cn(
-                      'bg-accent text-accent-foreground ml-auto rounded-none px-2 py-1 text-xs font-bold',
-                      mode.font
-                    )}
-                  >
-                    20% OFF
-                  </span>
-                </div>
-                <div className={cn('text-xs', mode.color.text.muted, mode.font)}>
-                  <span className={mode.color.text.warning}>⚠ 50 LICENSES LEFT</span>
-                  <span className="mx-2">•</span>
-                  Price increases to $499 on Dec 31, 2025
-                </div>
-                <div className="mt-2 flex gap-4 text-xs">
-                  <div>
-                    <span className={cn(mode.color.text.muted, mode.font)}>Time Saved: </span>
-                    <span className={cn(mode.color.text.accent, mode.font)}>400+ HRS</span>
-                  </div>
-                  <div>
-                    <span className={cn(mode.color.text.muted, mode.font)}>Value: </span>
-                    <span className={cn(mode.color.text.accent, mode.font)}>$36K+</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Live Dashboard Preview - Show, don't tell */}
-            <HeroDashboardPreview />
-          </motion.div>
+          {/* Right Column - Layered Windows (Windows 95 style) */}
+          <div className="flex items-center justify-center">
+            <LayeredWindows />
+          </div>
         </div>
 
         {/* Tech Stack - Below Hero */}

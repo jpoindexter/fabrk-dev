@@ -155,60 +155,55 @@ export function CookieConsent({
 
   return (
     <>
-      {/* Main Banner */}
+      {/* Compact Terminal-Style Banner - Bottom Right */}
       <div
-        className={cn('fixed inset-x-0 bottom-0 z-50 p-4 sm:p-6', className)}
+        className={cn('fixed right-4 bottom-4 z-50 w-80', className)}
         role="dialog"
         aria-live="polite"
         aria-label="Cookie consent banner"
       >
-        <Card className={cn('border-primary bg-card mx-auto max-w-4xl border-2', mode.radius)}>
-          <div className="flex flex-col gap-4 p-4 sm:flex-row sm:items-start sm:justify-between sm:p-6">
-            {/* Content */}
-            <div className="flex flex-1 gap-3">
-              <Cookie className="text-primary mt-1 h-5 w-5 flex-shrink-0" />
-              <div className="space-y-2">
-                <h3 className={cn('text-sm font-semibold tracking-tight', mode.font)}>
-                  [ COOKIE_NOTICE ]
-                </h3>
-                <p className={cn('text-muted-foreground text-xs leading-relaxed', mode.font)}>
-                  We use cookies to enhance your experience, analyze site traffic, and personalize
-                  content. By clicking "Accept All", you consent to our use of cookies.{' '}
-                  <a href={privacyPolicyUrl} className="text-primary hover:underline">
-                    Privacy Policy
-                  </a>{' '}
-                  •{' '}
-                  <a href={cookiePolicyUrl} className="text-primary hover:underline">
-                    Cookie Policy
-                  </a>
-                </p>
-              </div>
-            </div>
+        <Card className={cn('border-accent bg-card border', mode.radius)}>
+          {/* Terminal Header */}
+          <div
+            className={cn('border-border flex items-center justify-between border-b px-3 py-1.5')}
+          >
+            <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
+              [0x09] COOKIE_POLICY
+            </span>
+            <button
+              onClick={handleRejectAll}
+              className={cn('text-xs hover:opacity-70', mode.color.text.muted)}
+              aria-label="Dismiss"
+            >
+              ✕
+            </button>
+          </div>
 
-            {/* Actions */}
-            <div className="flex flex-wrap items-center gap-2">
+          {/* Content */}
+          <div className="space-y-3 p-3">
+            <p className={cn('text-xs leading-relaxed', mode.font, mode.color.text.muted)}>
+              &gt; We use cookies for analytics.{' '}
+              <a href={privacyPolicyUrl} className={cn('underline', mode.color.text.accent)}>
+                Privacy
+              </a>
+            </p>
+
+            {/* Actions - Inline */}
+            <div className="flex gap-2">
               <Button
                 size="sm"
-                variant="ghost"
-                onClick={() => setShowCustomize(true)}
-                className={cn('text-xs', mode.radius, mode.font)}
+                onClick={handleAcceptAll}
+                className={cn('flex-1 text-xs', mode.radius, mode.font)}
               >
-                {'> '}CUSTOMIZE
+                &gt; ACCEPT
               </Button>
               <Button
                 size="sm"
                 variant="outline"
-                onClick={handleRejectAll}
+                onClick={() => setShowCustomize(true)}
                 className={cn('text-xs', mode.radius, mode.font)}
               >
-                {'> '}REJECT ALL
-              </Button>
-              <Button
-                size="sm"
-                onClick={handleAcceptAll}
-                className={cn('text-xs', mode.radius, mode.font)}
-              >
-                {'> '}ACCEPT ALL
+                CONFIG
               </Button>
             </div>
           </div>
