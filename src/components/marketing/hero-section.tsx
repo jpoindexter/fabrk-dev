@@ -110,6 +110,29 @@ export function HeroSection() {
             </Card>
           </motion.div>
 
+          {/* Bottom Left - Key Selling Points (In front of hero) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="absolute bottom-8 left-8 z-[5] w-full max-w-lg lg:bottom-12 lg:left-12"
+          >
+            <Card>
+              <CardHeader code="0x01" title="KEY_SELLING_POINTS.TXT" />
+              <CardContent className="space-y-2 py-4">
+                <p className={cn('text-sm font-bold', mode.font, mode.color.text.accent)}>
+                  60+ PRODUCTION COMPONENTS
+                </p>
+                <p className={cn('text-sm font-bold', mode.font, mode.color.text.accent)}>
+                  26 FULL-FEATURED TEMPLATES
+                </p>
+                <p className={cn('text-sm font-bold', mode.font, mode.color.text.accent)}>
+                  AUTHENTICATION, BILLING, DASHBOARDS — ALL DONE
+                </p>
+              </CardContent>
+            </Card>
+          </motion.div>
+
           {/* Right Column - Visual Proof (Overlays on top) */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
