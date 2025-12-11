@@ -162,15 +162,13 @@ function UserManagementPreview() {
   });
 
   const exportToCSV = useCallback(() => {
-    const headers = ['Name', 'Email', 'Role', 'Status', 'Plan', 'Created', 'Last Login'];
+    const headers = ['Name', 'Email', 'Role', 'Status', 'Plan'];
     const csvData = mockUsers.map((user) => [
       user.name,
       user.email,
       user.role,
       user.status,
       user.plan,
-      user.createdAt,
-      user.lastLogin,
     ]);
 
     const csv = [headers.join(','), ...csvData.map((row) => row.join(','))].join('\n');

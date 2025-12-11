@@ -132,38 +132,6 @@ export const columns: ColumnDef<UserType>[] = [
     },
   },
   {
-    accessorKey: 'createdAt',
-    header: ({ column }) => <DataTableColumnHeader column={column} title="Created" />,
-    size: 120,
-    cell: ({ row }) => (
-      <span className={cn(mode.font, 'text-xs', mode.color.text.muted)}>
-        {new Date(row.getValue('createdAt')).toLocaleDateString('en-US', {
-          month: 'numeric',
-          day: 'numeric',
-          year: 'numeric',
-        })}
-      </span>
-    ),
-  },
-  {
-    accessorKey: 'lastLogin',
-    header: ({ column }) => <DataTableColumnHeader column={column} title="Last Login" />,
-    size: 120,
-    cell: ({ row }) => {
-      const lastLogin = row.getValue<string>('lastLogin');
-      const date = new Date(lastLogin);
-      return (
-        <span className={cn(mode.font, 'text-xs', mode.color.text.muted)}>
-          {date.toLocaleDateString('en-US', {
-            month: 'numeric',
-            day: 'numeric',
-            year: 'numeric',
-          })}
-        </span>
-      );
-    },
-  },
-  {
     id: 'actions',
     enableHiding: false,
     size: 60,
