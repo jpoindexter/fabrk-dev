@@ -30,7 +30,7 @@ import {
   StatGroup,
   Badge as CardBadge,
 } from '@/components/ui/card';
-import { HeroCodeDemo } from './hero-code-demo';
+import { HeroDashboardPreview } from './hero-dashboard-preview';
 import { PRICING } from '@/data/landing';
 
 const techStack = [
@@ -170,39 +170,8 @@ export function HeroSection() {
               </CardContent>
             </Card>
 
-            {/* What's Included - Bottom */}
-            <Card>
-              <CardHeader code="0x04" title="WHAT YOU GET" />
-              <CardContent className={cn('space-y-2 text-xs', mode.font)}>
-                <div className="border-accent flex items-center gap-2 border-l-2 pl-3">
-                  <span className={mode.color.text.success}>✓</span>
-                  <span className={mode.color.text.muted}>60+ Production Components</span>
-                </div>
-                <div className="border-accent flex items-center gap-2 border-l-2 pl-3">
-                  <span className={mode.color.text.success}>✓</span>
-                  <span className={mode.color.text.muted}>Auth, Billing, Multi-Tenancy</span>
-                </div>
-                <div className="border-accent flex items-center gap-2 border-l-2 pl-3">
-                  <span className={mode.color.text.success}>✓</span>
-                  <span className={mode.color.text.muted}>31 Interactive Demos</span>
-                </div>
-                <div className="border-accent flex items-center gap-2 border-l-2 pl-3">
-                  <span className={mode.color.text.success}>✓</span>
-                  <span className={mode.color.text.muted}>Deploy in 5 Minutes</span>
-                </div>
-                <div className="border-border mt-4 border-t pt-3">
-                  <Link
-                    href="/library"
-                    className={cn(
-                      'flex items-center gap-2 text-xs hover:underline',
-                      mode.color.text.accent
-                    )}
-                  >
-                    <span>&gt; EXPLORE_LIBRARY</span>
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
+            {/* Live Dashboard Preview - Show, don't tell */}
+            <HeroDashboardPreview />
           </motion.div>
         </div>
 
