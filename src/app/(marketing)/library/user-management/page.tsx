@@ -204,20 +204,8 @@ function UserManagementPreview() {
         {/* Main Table Card */}
         <Card>
           <div className="p-4">
-            <div className="mb-4 flex items-center justify-end">
-              <Button
-                onClick={exportToCSV}
-                variant="outline"
-                size="sm"
-                className={cn(mode.radius, mode.font, 'h-7 text-xs')}
-              >
-                <Download className="mr-2 h-3 w-3" />
-                &gt; EXPORT CSV
-              </Button>
-            </div>
-
             {/* Toolbar */}
-            <TableToolbar table={table} />
+            <TableToolbar table={table} onExportCSV={exportToCSV} />
 
             {/* Terminal Table */}
             <DataTable table={table} />

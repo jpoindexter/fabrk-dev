@@ -3,7 +3,7 @@
  */
 
 import { Table } from '@tanstack/react-table';
-import { Search, ChevronDown, UserCog, UserX, Trash2 } from 'lucide-react';
+import { Search, ChevronDown, UserCog, UserX, Trash2, Download } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -19,9 +19,10 @@ import { cn } from '@/lib/utils';
 
 interface TableToolbarProps {
   table: Table<User>;
+  onExportCSV?: () => void;
 }
 
-export function TableToolbar({ table }: TableToolbarProps) {
+export function TableToolbar({ table, onExportCSV }: TableToolbarProps) {
   const selectedCount = table.getFilteredSelectedRowModel().rows.length;
   const hiddenColumns = table.getAllColumns().filter((column) => column.getCanHide());
 
@@ -63,30 +64,54 @@ export function TableToolbar({ table }: TableToolbarProps) {
         </DropdownMenu>
       </div>
 
-      {/* Bulk Actions */}
-      {selectedCount > 0 && (
-        <div className="flex items-center gap-2">
-          <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-            SELECTED: {selectedCount}
-          </span>
-          <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, 'h-7 text-xs')}>
-            <UserCog className="mr-1 h-3 w-3" />
-            &gt; ROLE
-          </Button>
-          <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, 'h-7 text-xs')}>
-            <UserX className="mr-1 h-3 w-3" />
-            &gt; SUSPEND
-          </Button>
+      {/* Right Side Actions */}
+      <div className="flex items-center gap-2">
+        {/* Bulk Actions */}
+        {selectedCount > 0 && (
+          <>
+            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
+              SELECTED: {selectedCount}
+            </span>
+            <Button
+              variant="outline"
+              size="sm"
+              className={cn(mode.radius, mode.font, 'h-7 text-xs')}
+            >
+              <UserCog className="mr-1 h-3 w-3" />
+              &gt; ROLE
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className={cn(mode.radius, mode.font, 'h-7 text-xs')}
+            >
+              <UserX className="mr-1 h-3 w-3" />
+              &gt; SUSPEND
+            </Button>
+            <Button
+              variant="destructive"
+              size="sm"
+              className={cn(mode.radius, mode.font, 'h-7 text-xs')}
+            >
+              <Trash2 className="mr-1 h-3 w-3" />
+              &gt; DELETE
+            </Button>
+          </>
+        )}
+
+        {/* Export CSV */}
+        {onExportCSV && (
           <Button
-            variant="destructive"
+            onClick={onExportCSV}
+            variant="outline"
             size="sm"
             className={cn(mode.radius, mode.font, 'h-7 text-xs')}
           >
-            <Trash2 className="mr-1 h-3 w-3" />
-            &gt; DELETE
+            <Download className="mr-2 h-3 w-3" />
+            &gt; EXPORT CSV
           </Button>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
