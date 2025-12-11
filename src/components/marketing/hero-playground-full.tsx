@@ -5,7 +5,6 @@
 'use client';
 
 import { useState } from 'react';
-import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
@@ -613,7 +612,7 @@ export function HeroPlaygroundFull() {
 
   return (
     <section className="border-border bg-muted/20 border-t py-16">
-      <Container size="2xl">
+      <div className="container mx-auto max-w-[1800px] px-6">
         {/* Header with tabs and theme indicator */}
         <div className="mb-8 flex items-center justify-between">
           <div className="flex gap-1">
@@ -656,7 +655,7 @@ export function HeroPlaygroundFull() {
           {activeTab === 'profile' && <ProfilePreview />}
           {activeTab === 'billing' && <BillingPreview />}
         </div>
-      </Container>
+      </div>
     </section>
   );
 }
