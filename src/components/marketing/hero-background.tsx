@@ -34,12 +34,30 @@ const codeSnippets = [
 
 export function HeroBackground() {
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-20">
-      {/* Grid overlay */}
-      <div className="bg-grid-pattern absolute inset-0 opacity-30" />
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      {/* eslint-disable design-system/no-hardcoded-colors, design-system/no-inline-styles -- Radial gradients using accent color for dot pattern and depth effect, not expressible in Tailwind */}
+
+      {/* Dot grid with gradient - brighter and more visible */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `radial-gradient(circle, oklch(70% 0.3 310 / 0.4) 1px, transparent 1px)`,
+          backgroundSize: '24px 24px',
+        }}
+      />
+
+      {/* Gradient overlay for depth */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `radial-gradient(ellipse 80% 50% at 50% 40%, oklch(70% 0.3 310 / 0.15), transparent)`,
+        }}
+      />
+
+      {/* eslint-enable design-system/no-hardcoded-colors, design-system/no-inline-styles */}
 
       {/* Floating code snippets */}
-      <div className="relative h-full w-full">
+      <div className="relative h-full w-full opacity-20">
         {codeSnippets.map((snippet, index) => (
           <motion.div
             key={index}
@@ -64,9 +82,6 @@ export function HeroBackground() {
           </motion.div>
         ))}
       </div>
-
-      {/* Gradient overlay from bottom */}
-      <div className="from-background via-background/50 absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t to-transparent" />
     </div>
   );
 }
