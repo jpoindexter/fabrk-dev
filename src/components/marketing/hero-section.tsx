@@ -56,82 +56,81 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="mb-6"
+              className="mb-4"
             >
               <CardBadge code="0x00" label="SYSTEM INIT" meta="SAAS BOILERPLATE v2.0" />
             </motion.div>
 
-            {/* Headline */}
+            {/* Headline Block - Tighter grouping */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
+              className="mb-8"
             >
-              <h1 className={cn('mb-6 text-xs', mode.color.text.muted, mode.font)}>
+              <h1 className={cn('mb-3 text-xs', mode.color.text.muted, mode.font)}>
                 [SYSTEM READY]
               </h1>
-              <h2 className="mb-6 text-7xl leading-[0.9] font-black tracking-tight lg:text-8xl">
+              <h2 className="mb-4 text-7xl leading-[0.9] font-black tracking-tight lg:text-8xl">
                 <span className="text-foreground">BUILD</span>
                 <br />
                 <span className={mode.color.text.accent}>PRODUCTION</span>
                 <br />
                 <span className="text-foreground">SAAS</span>
               </h2>
-              <p className={cn('mb-8 text-base leading-relaxed', mode.color.text.muted)}>
+              <p className={cn('text-base leading-relaxed', mode.color.text.muted)}>
                 60+ components. Full-stack. Ship this weekend.
               </p>
             </motion.div>
 
-            {/* Quick stats inline */}
+            {/* Stats + CTAs Block - Combined visual group */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mb-8 flex flex-wrap gap-4"
+              className="space-y-6"
             >
-              <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
-                <span className={mode.color.text.accent}>60+</span> Components
-              </span>
-              <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
-              <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
-                <span className={mode.color.text.accent}>{'< 5 MIN'}</span> Setup
-              </span>
-              <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
-              <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
-                <span className={mode.color.text.accent}>400+ HRS</span> Saved
-              </span>
-            </motion.div>
+              {/* Quick stats with accent border */}
+              <div className={cn('border-accent flex flex-wrap gap-4 border-l-2 pl-4')}>
+                <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
+                  <span className={mode.color.text.accent}>60+</span> Components
+                </span>
+                <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
+                <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
+                  <span className={mode.color.text.accent}>{'< 5 MIN'}</span> Setup
+                </span>
+                <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
+                <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
+                  <span className={mode.color.text.accent}>400+ HRS</span> Saved
+                </span>
+              </div>
 
-            {/* CTAs - Primary Dominant */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col gap-3 sm:flex-row"
-            >
-              <PolarCheckoutButton
-                className={cn(
-                  'bg-accent text-accent-foreground px-8 py-4 text-sm transition-all hover:scale-105',
-                  mode.radius,
-                  mode.font
-                )}
-              >
-                &gt; {PRICING.cta.label} — {PRICING.display.current}
-              </PolarCheckoutButton>
-              <Button
-                variant="outline"
-                size="sm"
-                asChild
-                className={cn('text-xs', mode.radius, mode.font)}
-              >
-                <Link href="/library">Explore 31 Interactive Demos</Link>
-              </Button>
+              {/* CTAs - Primary Dominant */}
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <PolarCheckoutButton
+                  className={cn(
+                    'bg-accent text-accent-foreground px-8 py-4 text-sm transition-all hover:scale-105',
+                    mode.radius,
+                    mode.font
+                  )}
+                >
+                  &gt; {PRICING.cta.label} — {PRICING.display.current}
+                </PolarCheckoutButton>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  asChild
+                  className={cn('text-xs', mode.radius, mode.font)}
+                >
+                  <Link href="/library">Explore 31 Interactive Demos</Link>
+                </Button>
+              </div>
             </motion.div>
           </div>
 
-          {/* Right Column - Layered Windows (Windows 95 style) */}
+          {/* Right Column - Terminal Dashboard */}
           <div className="flex items-center justify-center">
-            <LayeredWindows />
+            <HeroDashboardPreview />
           </div>
         </div>
 
