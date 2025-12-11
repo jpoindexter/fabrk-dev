@@ -3,7 +3,7 @@
  * Activity Feed - Recent user activity log
  */
 
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -21,7 +21,8 @@ interface ActivityFeedProps {
 export function ActivityFeed({ activities }: ActivityFeedProps) {
   return (
     <Card className="lg:col-span-3">
-      <CardContent className="pt-6">
+      <CardHeader code="0x01" title="ACTIVITY LOG" />
+      <CardContent>
         <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
           [RECENT ACTIVITY]: COUNT={activities.length}
         </div>

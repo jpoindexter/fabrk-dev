@@ -49,7 +49,13 @@ export function AnalyticsTabs({
   ];
 
   return (
-    <StyledTabs tabs={tabs} value={activeTab} onValueChange={onTabChange}>
+    <StyledTabs
+      code="0x00"
+      title="ANALYTICS TABS"
+      tabs={tabs}
+      value={activeTab}
+      onValueChange={onTabChange}
+    >
       {/* Overview Tab */}
       <StyledTabsContent value="overview">
         {/* Terminal Table */}
