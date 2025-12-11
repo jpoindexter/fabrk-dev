@@ -240,7 +240,7 @@ export function HeroSection() {
             </Card>
 
             {/* Live Dashboard Preview - Show, don't tell */}
-            <div className="mt-4 -ml-12 lg:mt-8 lg:-ml-16">
+            <div className="mt-4 -ml-16 lg:mt-8 lg:-ml-24">
               <HeroDashboardPreview />
             </div>
           </motion.div>
