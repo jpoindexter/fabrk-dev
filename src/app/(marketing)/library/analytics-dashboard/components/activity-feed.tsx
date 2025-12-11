@@ -39,7 +39,7 @@ export function ActivityFeed({ activities }: ActivityFeedProps) {
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2">
                   <span className="text-foreground truncate">{activity.user}</span>
-                  <span className="border-border text-muted-foreground border px-1.5 py-0.5">
+                  <span className="border-border text-muted-foreground inline-flex min-w-[70px] items-center justify-center border px-1 py-0.5 text-center text-[10px]">
                     {activity.type}
                   </span>
                 </div>
