@@ -38,11 +38,9 @@
   background-repeat: repeat, repeat;
 }
 
-/* Light theme (GitHub): toned down for subtlety */
+/* Light theme (GitHub): CRT effect DISABLED */
 [data-theme='light'] .crt-scanlines::before {
-  background-image:
-    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.08) 50%),
-    linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+  display: none;
 }
 
 /* Dark mode: adjust opacity for visibility */
@@ -83,11 +81,9 @@ html[data-visual-mode='terminal'] body::before {
   background-repeat: repeat, repeat;
 }
 
-/* Light theme (GitHub): lighter full-page scan lines */
+/* Light theme (GitHub): full-page CRT effect DISABLED */
 html[data-visual-mode='terminal'][data-theme='light'] body::before {
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.06) 50%),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.02));
+  display: none;
 }
 
 /* ============================================
