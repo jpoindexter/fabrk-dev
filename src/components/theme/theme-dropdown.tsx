@@ -19,10 +19,10 @@ import { cn } from '@/lib/utils';
 
 import { mode } from '@/design-system';
 
-// Minimal theme set - GitHub light + CRT phosphor themes
+// Minimal theme set - Ayu light + CRT phosphor themes
 const themes = [
   // Light theme
-  { id: 'light', name: 'GitHub', preview: '#f4f4f4' },
+  { id: 'light', name: 'Light Mode', preview: '#f8f9fa' },
   { id: 'dark', name: 'Monokai Night', preview: '#1f1f1f' },
   // CRT phosphor themes
   { id: 'amber', name: 'Amber CRT', preview: '#ffb000' },

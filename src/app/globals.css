@@ -277,65 +277,65 @@
    THEME DEFINITIONS
    ============================================ */
 
-/* Light Theme (GitHub Style) - WCAG AAA */
+/* Light Mode (Ayu Light) - WCAG AAA */
 [data-theme='light'] {
-  /* Inherits from :root by default, but explicitly set all values to avoid circular refs */
+  /* Ayu Light color palette - warm, readable light theme */
 
   /* Surface Hierarchy */
-  --color-bg-canvas: 99% 0 0; /* #FAFAFA */
-  --color-bg-surface: 100% 0 0; /* #FFFFFF */
+  --color-bg-canvas: 98% 0.005 240; /* #f8f9fa - Ayu background */
+  --color-bg-surface: 100% 0 0; /* #FFFFFF - Pure white for cards */
   --color-bg-elevated: 100% 0 0; /* #FFFFFF */
-  --color-bg-sunken: 97% 0 0; /* #F5F5F5 */
+  --color-bg-sunken: 95% 0.005 240; /* Slightly darker than canvas */
 
-  /* Text Hierarchy (WCAG AAA) */
-  --color-text-primary: 0% 0 0; /* #000000 */
-  --color-text-secondary: 35% 0 0; /* #595959 */
-  --color-text-tertiary: 50% 0 0; /* #808080 */
+  /* Text Hierarchy (WCAG AAA) - Ayu gray tones */
+  --color-text-primary: 40% 0.01 240; /* #5c6166 - Ayu text */
+  --color-text-secondary: 50% 0.01 240; /* Lighter gray */
+  --color-text-tertiary: 60% 0.01 240; /* Even lighter */
   --color-text-inverse: 100% 0 0; /* #FFFFFF */
-  --color-text-disabled: 68% 0 0; /* #ADADAD */
+  --color-text-disabled: 68% 0.01 240; /* #ADADAD */
 
-  /* Border Hierarchy */
-  --color-border-default: 88% 0 0; /* #E0E0E0 - More visible */
-  --color-border-muted: 97% 0 0; /* #F5F5F5 */
-  --color-border-strong: 75% 0 0; /* #C0C0C0 - Emphasis */
-  --color-border-focus: 0% 0 0; /* #000000 */
+  /* Border Hierarchy - Subtle Ayu style */
+  --color-border-default: 88% 0.005 240; /* #E0E0E0 - Soft borders */
+  --color-border-muted: 95% 0.005 240; /* Very subtle */
+  --color-border-strong: 75% 0.01 240; /* Emphasis */
+  --color-border-focus: 60% 0.15 220; /* Ayu blue for focus */
 
-  /* Status Colors (WCAG AAA Compliant) */
-  --color-status-success: 35% 0.18 145; /* Dark green (7.2:1) */
-  --color-status-success-bg: 95% 0.05 145; /* Light green bg */
-  --color-status-warning: 40% 0.18 80; /* Dark orange (7.8:1) */
-  --color-status-warning-bg: 95% 0.05 80; /* Light orange bg */
-  --color-status-error: 45% 0.22 15; /* Dark red (7.5:1) */
+  /* Status Colors (WCAG AAA Compliant) - Ayu palette */
+  --color-status-success: 45% 0.15 140; /* #86b300 - Ayu green */
+  --color-status-success-bg: 95% 0.05 140; /* Light green bg */
+  --color-status-warning: 55% 0.18 65; /* #f2ae49 - Ayu orange */
+  --color-status-warning-bg: 95% 0.05 65; /* Light orange bg */
+  --color-status-error: 55% 0.18 15; /* #f07171 - Ayu red */
   --color-status-error-bg: 95% 0.05 15; /* Light red bg */
-  --color-status-info: 35% 0.18 230; /* Dark blue (7.1:1) */
-  --color-status-info-bg: 95% 0.05 230; /* Light blue bg */
+  --color-status-info: 55% 0.15 220; /* #3199e1 - Ayu blue */
+  --color-status-info-bg: 95% 0.05 220; /* Light blue bg */
 
   /* Legacy Tailwind mappings */
-  --background: 99% 0 0;
-  --foreground: 0% 0 0;
+  --background: 98% 0.005 240;
+  --foreground: 40% 0.01 240;
   --card: 100% 0 0;
-  --card-foreground: 0% 0 0;
+  --card-foreground: 40% 0.01 240;
   --popover: 100% 0 0;
-  --popover-foreground: 0% 0 0;
-  --primary: 0% 0 0;
+  --popover-foreground: 40% 0.01 240;
+  --primary: 40% 0.01 240;
   --primary-foreground: 100% 0 0;
-  --secondary: 96% 0 0;
-  --secondary-foreground: 0% 0 0;
-  --muted: 97% 0 0;
-  --muted-foreground: 35% 0 0;
-  --accent: 70% 0.3 310; /* Purple/magenta for CTAs */
-  --accent-foreground: 100% 0 0; /* White text on purple */
-  --destructive: 45% 0.22 15;
+  --secondary: 95% 0.005 240;
+  --secondary-foreground: 40% 0.01 240;
+  --muted: 95% 0.005 240;
+  --muted-foreground: 50% 0.01 240;
+  --accent: 55% 0.15 220; /* #3199e1 - Ayu blue accent */
+  --accent-foreground: 100% 0 0; /* White text on blue */
+  --destructive: 55% 0.18 15;
   --destructive-foreground: 100% 0 0;
-  --success: 35% 0.18 145;
+  --success: 45% 0.15 140;
   --success-foreground: 100% 0 0;
-  --warning: 40% 0.18 80;
+  --warning: 55% 0.18 65;
   --warning-foreground: 100% 0 0;
-  --info: 35% 0.18 230;
+  --info: 55% 0.15 220;
   --info-foreground: 100% 0 0;
-  --border: 93% 0 0;
-  --input: 93% 0 0;
-  --ring: 0% 0 0;
+  --border: 88% 0.005 240;
+  --input: 88% 0.005 240;
+  --ring: 55% 0.15 220;
 }
 
 /* Dark Theme (Monokai Night) - WCAG AAA */
