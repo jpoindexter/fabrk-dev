@@ -844,7 +844,7 @@ function DashboardPreview() {
           </div>
 
           {/* Metric Cards - Reduced font sizes for playground */}
-          <div className="[&_.text-3xl]:text-xl! [&_.text-sm]:text-xs! [&_h3]:text-xs!">
+          <div className="[&_.text-4xl]:text-xl! [&_.text-xs]:text-[10px]!">
             <MetricCards metrics={metrics} />
           </div>
 
