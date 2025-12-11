@@ -1,48 +1,94 @@
 /**
- * Benefits Data - Core value propositions
- * Moved from features-showcase.tsx for data layer
+ * Benefits Data - Unique value propositions
+ * Focus on differentiators, not commodity features
+ * Commodity features (Auth/Billing/Multi-tenancy) moved to included-features.ts
  */
 
-import { Lock, CreditCard, Users } from 'lucide-react';
+import { Terminal, Box, Sparkles, CreditCard } from 'lucide-react';
 
 export const CORE_BENEFITS = [
   {
-    id: 'auth',
-    icon: Lock,
-    module: 'AUTH & SECURITY',
+    id: 'terminal-ui',
+    icon: Terminal,
+    module: 'TERMINAL_UI',
     code: '0x10',
-    title: 'Authentication & Security',
-    benefit: 'Launch with enterprise-grade auth in minutes, not months',
+    title: 'Command-Line Aesthetic',
+    benefit: 'The only boilerplate with terminal-native design',
     description:
-      'NextAuth v5 with Google, GitHub, email magic links, and JWT sessions. Role-based access control, password reset flows, and email verification built-in.',
-    timeSaved: '30 HOURS',
-    costSaved: '$6K',
-    features: ['Social OAuth', 'Magic Links', 'RBAC', 'Password Reset', 'Email Verification'],
+      'Monospace fonts, sharp edges, console-inspired components. 18 theme variants (6 colors × 3 styles). 58-file design system with automated pattern enforcement. No other boilerplate looks like this.',
+    timeSaved: 'N/A',
+    costSaved: 'UNIQUE',
+    features: [
+      '58 Design System Audit Files',
+      'Automated Pattern Enforcement',
+      '18 Theme Variants',
+      'WCAG 2.1 AA Compliant',
+      'Terminal Card Components',
+    ],
+    ctaLabel: 'Explore Design System',
+    ctaHref: '/docs/design-system',
   },
   {
-    id: 'billing',
-    icon: CreditCard,
-    module: 'BILLING & PAYMENTS',
+    id: 'component-library',
+    icon: Box,
+    module: 'COMPONENT_LIBRARY',
     code: '0x11',
-    title: 'Billing & Payments',
-    benefit: 'Start monetizing day one with production-ready payments',
+    title: '31 Interactive Demos',
+    benefit: 'Try before you buy - explore every component live',
     description:
-      'Stripe, Lemon Squeezy, and Polar.sh integrations with subscription management, one-time payments, and webhook handling. Customer portal, invoice generation, and payment history included.',
-    timeSaved: '40 HOURS',
-    costSaved: '$8K',
-    features: ['Subscriptions', 'One-Time Payments', 'Webhooks', 'Customer Portal', 'Invoices'],
+      "Dashboards, auth flows, admin panels, billing pages, marketing templates. See exactly what you're getting with live, interactive previews at /library. No login required.",
+    timeSaved: '0 HRS',
+    costSaved: 'RISK-FREE',
+    features: [
+      'Live Component Previews',
+      'Copy-Paste Code',
+      '26 Categories',
+      'No Login Required',
+      'Full Documentation',
+    ],
+    ctaLabel: 'Browse Library',
+    ctaHref: '/library',
   },
   {
-    id: 'multitenancy',
-    icon: Users,
-    module: 'MULTI-TENANCY',
+    id: 'ai-credits',
+    icon: Sparkles,
+    module: 'AI_MONETIZATION',
     code: '0x12',
-    title: 'Multi-Tenancy & Teams',
-    benefit: 'Scale to enterprise with B2B team features out of the box',
+    title: 'AI Credits & Usage Tracking',
+    benefit: 'Monetize AI features with built-in credit system',
     description:
-      'Organization management with invites, role permissions, and team switching. Member management, audit logs, and organization-level billing ready to go.',
-    timeSaved: '50 HOURS',
-    costSaved: '$10K',
-    features: ['Organizations', 'Team Invites', 'Role Permissions', 'Team Switching', 'Audit Logs'],
+      'Token metering, usage tracking, tier allowances, and AI gateway integration. Most boilerplates ignore AI monetization - we built it in. Future-proof your SaaS.',
+    timeSaved: '40 HRS',
+    costSaved: '$8K',
+    features: [
+      'Token Metering System',
+      'Usage Dashboard',
+      'Tier Allowances',
+      'AI Gateway Integration',
+      'Rate Limiting',
+    ],
+    ctaLabel: 'View AI Features',
+    ctaHref: '/docs/features/ai-credits',
+  },
+  {
+    id: 'payment-flexibility',
+    icon: CreditCard,
+    module: 'PAYMENT_FLEXIBILITY',
+    code: '0x13',
+    title: '3 Payment Providers',
+    benefit: 'Switch payment providers without rewriting code',
+    description:
+      'Most boilerplates lock you into Stripe. We support Stripe, Lemon Squeezy, and Polar.sh with unified webhooks, customer portals, and subscription management. Choose what works for your market.',
+    timeSaved: '30 HRS',
+    costSaved: '$6K',
+    features: [
+      '3 Payment Providers',
+      'Unified Webhook Handlers',
+      'Customer Portal',
+      'Subscription Management',
+      'One-Time Payments',
+    ],
+    ctaLabel: 'See Payment Integration',
+    ctaHref: '/docs/features/billing',
   },
 ] as const;

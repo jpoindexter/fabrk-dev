@@ -7,11 +7,11 @@
 import { HeroSection } from '@/components/marketing/hero-section';
 import { FeaturesShowcase } from '@/components/marketing/features-showcase';
 import { StatsSection } from '@/components/marketing/stats-section';
+import { TimeSavingsSection } from '@/components/marketing/time-savings-section';
 import { UseCasesSection } from '@/components/marketing/use-cases-section';
-import { HowItWorksSection } from '@/components/marketing/how-it-works-section';
-import { FeaturesSection } from '@/components/marketing/features-section';
+import { ValueBreakdownSection } from '@/components/marketing/value-breakdown-section';
 import { PricingSection } from '@/components/marketing/pricing-section';
-import { SocialProofSection } from '@/components/marketing/social-proof-section';
+import { WhatsIncludedSection } from '@/components/marketing/whats-included-section';
 import { FAQSection } from '@/components/marketing/faq-section';
 import { FinalCTASection } from '@/components/marketing/final-cta-section';
 import { StickyCTABar } from '@/components/marketing/sticky-cta-bar';
@@ -20,29 +20,29 @@ import { ExitIntentPopup } from '@/components/marketing/exit-intent-popup';
 export default function HomePage() {
   return (
     <>
-      {/* Hero */}
+      {/* Hero - Updated with verified social proof */}
       <HeroSection />
 
-      {/* Core Benefits - Auth, Billing, Multi-tenancy */}
+      {/* What Makes Fabrk Different - Unique features (Terminal UI, 31 Demos, AI Credits, 3 Providers) */}
       <FeaturesShowcase />
 
-      {/* Trust Indicators */}
+      {/* Trust Indicators - Updated with verifiable stats */}
       <StatsSection />
 
-      {/* Target Personas */}
+      {/* Time Savings Breakdown - NEW: Shows where 215 hours come from */}
+      <TimeSavingsSection />
+
+      {/* Target Personas - Who Fabrk is for */}
       <UseCasesSection />
 
-      {/* How to Get Started */}
-      <HowItWorksSection />
+      {/* Value Breakdown - NEW: Receipt showing $51K+ value for $399 */}
+      <ValueBreakdownSection />
 
-      {/* Detailed Features Deep-Dive */}
-      <FeaturesSection />
-
-      {/* Pricing */}
+      {/* Pricing - With urgency (Dec 31 deadline, 50 licenses left) */}
       <PricingSection />
 
-      {/* Customer Testimonials - Removed pending real testimonials */}
-      {/* <SocialProofSection /> */}
+      {/* What's Included - NEW: Auth/Billing/Multi-tenancy checklist */}
+      <WhatsIncludedSection />
 
       {/* FAQ */}
       <FAQSection />
