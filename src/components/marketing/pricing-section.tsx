@@ -23,12 +23,14 @@ import {
 
 export function PricingSection() {
   const features = [
-    'ALL STARTER KITS',
-    'ALL FEATURES',
-    'LIFETIME ACCESS UPDATES',
-    'UNLIMITED PROJECTS',
-    'PERSONAL COMMERCIAL USAGE',
-    'SAVES 200 HOURS',
+    '234 PRODUCTION-READY COMPONENTS',
+    'AUTH, BILLING & MULTI-TENANCY',
+    'LIFETIME UPDATES (NO SUBSCRIPTION)',
+    'UNLIMITED PROJECTS & CLIENTS',
+    'COMMERCIAL LICENSE INCLUDED',
+    'SAVE 180+ HOURS OF DEVELOPMENT',
+    'PREMIUM SUPPORT & DOCUMENTATION',
+    'WCAG 2.1 AA ACCESSIBLE',
   ];
 
   return (
@@ -93,13 +95,20 @@ export function PricingSection() {
                 </div>
 
                 {/* CTA Button */}
-                <PolarCheckoutButton className={cn('w-full text-xs', mode.radius, mode.font)}>
-                  &gt; GET LIFETIME ACCESS
+                <PolarCheckoutButton
+                  className={cn('w-full text-xs sm:text-sm', mode.radius, mode.font)}
+                >
+                  &gt; BUY NOW — {config.pricing.fabrk.display.current}
                 </PolarCheckoutButton>
 
+                {/* Guarantee */}
+                <div className={cn('mt-3 text-center text-xs', mode.color.text.success, mode.font)}>
+                  ✓ 30-Day Money-Back Guarantee
+                </div>
+
                 {/* Trust line */}
-                <div className={cn('mt-3 text-center text-xs', mode.color.text.muted, mode.font)}>
-                  Secure checkout via Polar │ All sales final
+                <div className={cn('mt-2 text-center text-xs', mode.color.text.muted, mode.font)}>
+                  Secure checkout via Polar
                 </div>
               </CardContent>
             </Card>

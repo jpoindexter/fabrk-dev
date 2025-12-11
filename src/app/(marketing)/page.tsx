@@ -20,11 +20,11 @@ export default function HomePage() {
       <section id="features-showcase">
         <FeaturesShowcase />
       </section>
-      <section id="features">
-        <FeaturesSection />
-      </section>
       <section id="pricing">
         <PricingSection />
+      </section>
+      <section id="features">
+        <FeaturesSection />
       </section>
       <section id="comparison">
         <ComparisonSection />
