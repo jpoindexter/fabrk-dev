@@ -48,32 +48,31 @@ export function HeroSection() {
             transition={{ duration: 0.6 }}
             className="flex flex-col justify-center"
           >
-            {/* Terminal Window Container */}
-            <div className={cn('bg-background border', mode.color.border.default)}>
-              {/* Window Header with badge */}
-              <div className={cn('border-b px-4 py-3', mode.color.border.default)}>
-                <CardBadge code="0x00" label="SYSTEM INIT" meta="SAAS BOILERPLATE v2.0" />
-              </div>
-
-              {/* Window Content */}
-              <div className="p-8 lg:p-12">
+            <Card>
+              <CardHeader code="0x00" title="SYSTEM INIT" meta="SAAS BOILERPLATE v2.0" />
+              <CardContent className="space-y-6 p-8 lg:p-12">
                 {/* Headline */}
-                <h1 className={cn('mb-2 text-xs', mode.color.text.muted, mode.font)}>
-                  [FABRK INIT]
-                </h1>
-                <h2 className="mb-4 text-6xl leading-[0.95] font-black tracking-tight lg:text-7xl">
-                  <span className="text-foreground">BUILD IN</span>
-                  <br />
-                  <span className={mode.color.text.accent}>MINUTES</span>
-                </h2>
-                <p
-                  className={cn('mb-6 text-sm leading-relaxed lg:text-base', mode.color.text.muted)}
-                >
-                  Ship your product this weekend not next quarter.
-                </p>
+                <div>
+                  <h1 className={cn('mb-2 text-xs', mode.color.text.muted, mode.font)}>
+                    [FABRK INIT]
+                  </h1>
+                  <h2 className="mb-4 text-6xl leading-[0.95] font-black tracking-tight lg:text-7xl">
+                    <span className="text-foreground">BUILD IN</span>
+                    <br />
+                    <span className={mode.color.text.accent}>MINUTES</span>
+                  </h2>
+                  <p
+                    className={cn(
+                      'mb-0 text-sm leading-relaxed lg:text-base',
+                      mode.color.text.muted
+                    )}
+                  >
+                    Ship your product this weekend not next quarter.
+                  </p>
+                </div>
 
                 {/* Quick stats inline */}
-                <div className="mb-8 flex flex-wrap gap-4">
+                <div className="flex flex-wrap gap-4">
                   <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
                     <span className={mode.color.text.accent}>60+</span> Components
                   </span>
@@ -107,8 +106,8 @@ export function HeroSection() {
                     <Link href="/library">Explore 31 Interactive Demos</Link>
                   </Button>
                 </div>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           </motion.div>
 
           {/* Right Column - Visual Proof */}
