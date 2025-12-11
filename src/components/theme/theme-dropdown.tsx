@@ -19,12 +19,8 @@ import { cn } from '@/lib/utils';
 
 import { mode } from '@/design-system';
 
-// Minimal theme set - Ayu light + CRT phosphor themes
+// CRT phosphor themes only
 const themes = [
-  // Light theme
-  { id: 'light', name: 'Light Mode', preview: '#f8f9fa' },
-  { id: 'dark', name: 'Monokai Night', preview: '#1f1f1f' },
-  // CRT phosphor themes
   { id: 'amber', name: 'Amber CRT', preview: '#ffb000' },
   { id: 'green', name: 'Green CRT', preview: '#33ff66' },
   { id: 'blue', name: 'Blue CRT', preview: '#55ccff' },
@@ -35,7 +31,7 @@ const themes = [
 export type ColorTheme = (typeof themes)[number]['id'];
 
 export function ThemeDropdown() {
-  const [currentTheme, setCurrentTheme] = useState<ColorTheme>('light');
+  const [currentTheme, setCurrentTheme] = useState<ColorTheme>('green');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -49,8 +45,8 @@ export function ThemeDropdown() {
     // Clear old next-themes localStorage keys
     localStorage.removeItem('theme-mode'); // Old key if it exists
 
-    // Set DaisyUI theme (force light as default if no valid theme)
-    const saved = (localStorage.getItem('theme') as ColorTheme) || 'light';
+    // Set DaisyUI theme (force green as default if no valid theme)
+    const saved = (localStorage.getItem('theme') as ColorTheme) || 'green';
     setCurrentTheme(saved);
     document.documentElement.setAttribute('data-theme', saved);
 
@@ -78,7 +74,7 @@ export function ThemeDropdown() {
     );
   }
 
-  const currentThemeName = themes.find((t) => t.id === currentTheme)?.name || 'Light';
+  const currentThemeName = themes.find((t) => t.id === currentTheme)?.name || 'Green CRT';
 
   return (
     <DropdownMenu>
