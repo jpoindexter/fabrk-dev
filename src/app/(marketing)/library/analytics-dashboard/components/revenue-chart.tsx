@@ -61,7 +61,7 @@ export function RevenueChart({ data }: RevenueChartProps) {
           {/* Chart area */}
           <div
             className={cn(
-              'relative flex h-[200px] items-end justify-between gap-2 border',
+              'relative flex h-52 items-end justify-between gap-2 border',
               mode.color.border.default
             )}
           >
@@ -69,7 +69,7 @@ export function RevenueChart({ data }: RevenueChartProps) {
               <div key={i} className="relative flex h-full flex-1 items-end justify-center">
                 <div
                   className={cn(
-                    'h-[var(--height)] w-full max-w-12 cursor-pointer transition-colors',
+                    'h-(--height) w-full max-w-12 cursor-pointer transition-colors',
                     mode.color.bg.accent,
                     mode.state.hover.bg
                   )}
@@ -87,7 +87,7 @@ export function RevenueChart({ data }: RevenueChartProps) {
             {hoveredBar !== null && (
               <div
                 className={cn(
-                  'border-border bg-card pointer-events-none fixed top-[var(--y)] left-[var(--x)] z-50 border px-2 py-1 text-xs whitespace-nowrap',
+                  'border-border bg-card pointer-events-none fixed top-(--y) left-(--x) z-50 border px-2 py-1 text-xs whitespace-nowrap',
                   mode.font
                 )}
                 style={

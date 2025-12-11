@@ -634,7 +634,7 @@ function ComponentsGrid() {
         </div>
 
         {/* Switches - Gradient background */}
-        <div className="from-secondary/20 to-secondary/5 bg-gradient-to-br p-4">
+        <div className="from-secondary/20 to-secondary/5 bg-linear-to-br p-4">
           <h3 className="mb-3 text-xs font-semibold">[SWITCHES]</h3>
           <div className="space-y-3">
             <div className="flex items-center justify-between">

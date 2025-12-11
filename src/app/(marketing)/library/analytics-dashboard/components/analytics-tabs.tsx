@@ -80,7 +80,7 @@ export function AnalyticsTabs({
                 <span className="text-foreground">{row.page}</span>
                 <span className="text-muted-foreground">{row.views}</span>
                 <span className="text-muted-foreground">{row.bounce}</span>
-                <span className="border-border block w-[70px] border px-2 py-0.5 text-center">
+                <span className="border-border block w-20 border px-2 py-0.5 text-center">
                   {row.conversion}
                 </span>
               </div>
