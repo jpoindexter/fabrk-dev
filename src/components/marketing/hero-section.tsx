@@ -46,7 +46,7 @@ export function HeroSection() {
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="relative isolate z-0 mt-8 ml-12 max-w-2xl lg:mt-12 lg:ml-16"
+            className="relative isolate z-0 ml-12 max-w-2xl lg:ml-16"
           >
             <Card size="auto">
               <CardHeader code="0x00" title="SYSTEM INIT" meta="SAAS BOILERPLATE v2.0" />
