@@ -46,11 +46,11 @@ export function HeroSection() {
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="relative isolate z-0 max-w-xl"
+            className="relative isolate z-0 max-w-2xl"
           >
             <Card size="auto">
               <CardHeader code="0x00" title="SYSTEM INIT" meta="SAAS BOILERPLATE v2.0" />
-              <CardContent className="space-y-4 p-6">
+              <CardContent className="space-y-4 p-8">
                 {/* Headline */}
                 <div className="max-w-2xl">
                   <h1 className={cn('mb-2 text-xs', mode.color.text.muted, mode.font)}>
