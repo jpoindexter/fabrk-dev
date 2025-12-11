@@ -194,447 +194,434 @@ function ComponentsGrid() {
   const [switchEnabled, setSwitchEnabled] = useState(true);
 
   return (
-    <BrowserFrame>
-      <LeftNavigation activeSection="dashboard" />
-      <div className="flex-1 overflow-auto p-8">
-        <div className="mb-6">
-          <h2 className="mb-2 text-xl font-semibold">Dashboard</h2>
-          <p className="text-muted-foreground text-sm">Component showcase with 25+ examples</p>
+    <div className="grid items-start gap-6 py-8 sm:grid-cols-2 lg:grid-cols-4">
+      {/* COLUMN 1 - Alerts, Tabs, Accordion, File Upload, Search */}
+      <div className="space-y-4">
+        {/* Alerts - NO CARD, direct background */}
+        <Alert className="border-l-primary border-l-4">
+          <Info className="h-4 w-4" />
+          <AlertTitle className="text-xs font-semibold">[INFO]</AlertTitle>
+          <AlertDescription className="text-xs">New features available in v2.0</AlertDescription>
+        </Alert>
+
+        <Alert variant="destructive" className="border-l-destructive border-l-4">
+          <AlertTriangle className="h-4 w-4" />
+          <AlertTitle className="text-xs font-semibold">[ERROR]</AlertTitle>
+          <AlertDescription className="text-xs">Failed to connect to server</AlertDescription>
+        </Alert>
+
+        {/* Tabs */}
+        <Card>
+          <div className="p-4">
+            <Tabs defaultValue="overview" className="w-full">
+              <TabsList className="grid w-full grid-cols-3">
+                <TabsTrigger value="overview" className="text-xs">
+                  OVERVIEW
+                </TabsTrigger>
+                <TabsTrigger value="analytics" className="text-xs">
+                  ANALYTICS
+                </TabsTrigger>
+                <TabsTrigger value="reports" className="text-xs">
+                  REPORTS
+                </TabsTrigger>
+              </TabsList>
+              <TabsContent value="overview" className="mt-3 text-xs">
+                <p>Performance metrics and key insights.</p>
+              </TabsContent>
+              <TabsContent value="analytics" className="mt-3 text-xs">
+                <p>Detailed analytics data and trends.</p>
+              </TabsContent>
+              <TabsContent value="reports" className="mt-3 text-xs">
+                <p>Generated reports and exports.</p>
+              </TabsContent>
+            </Tabs>
+          </div>
+        </Card>
+
+        {/* File Upload - NO CARD, just border */}
+        <div className="border-border bg-muted/20 flex flex-col items-center justify-center border-2 border-dashed p-8">
+          <Upload className="text-muted-foreground mb-3 h-12 w-12" />
+          <p className="mb-1 text-xs font-semibold">[DROP FILES HERE]</p>
+          <p className="text-muted-foreground text-xs">or click to browse</p>
         </div>
-        <div className="grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {/* COLUMN 1 - Alerts, Tabs, Accordion, File Upload, Search */}
-          <div className="space-y-4">
-            {/* Alerts - NO CARD, direct background */}
-            <Alert className="border-l-primary border-l-4">
-              <Info className="h-4 w-4" />
-              <AlertTitle className="text-xs font-semibold">[INFO]</AlertTitle>
-              <AlertDescription className="text-xs">
-                New features available in v2.0
-              </AlertDescription>
-            </Alert>
 
-            <Alert variant="destructive" className="border-l-destructive border-l-4">
-              <AlertTriangle className="h-4 w-4" />
-              <AlertTitle className="text-xs font-semibold">[ERROR]</AlertTitle>
-              <AlertDescription className="text-xs">Failed to connect to server</AlertDescription>
-            </Alert>
-
-            {/* Tabs */}
-            <Card>
-              <div className="p-4">
-                <Tabs defaultValue="overview" className="w-full">
-                  <TabsList className="grid w-full grid-cols-3">
-                    <TabsTrigger value="overview" className="text-xs">
-                      OVERVIEW
-                    </TabsTrigger>
-                    <TabsTrigger value="analytics" className="text-xs">
-                      ANALYTICS
-                    </TabsTrigger>
-                    <TabsTrigger value="reports" className="text-xs">
-                      REPORTS
-                    </TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="overview" className="mt-3 text-xs">
-                    <p>Performance metrics and key insights.</p>
-                  </TabsContent>
-                  <TabsContent value="analytics" className="mt-3 text-xs">
-                    <p>Detailed analytics data and trends.</p>
-                  </TabsContent>
-                  <TabsContent value="reports" className="mt-3 text-xs">
-                    <p>Generated reports and exports.</p>
-                  </TabsContent>
-                </Tabs>
-              </div>
-            </Card>
-
-            {/* File Upload - NO CARD, just border */}
-            <div className="border-border bg-muted/20 flex flex-col items-center justify-center border-2 border-dashed p-8">
-              <Upload className="text-muted-foreground mb-3 h-12 w-12" />
-              <p className="mb-1 text-xs font-semibold">[DROP FILES HERE]</p>
-              <p className="text-muted-foreground text-xs">or click to browse</p>
-            </div>
-
-            {/* Accordion */}
-            <Card>
-              <div className="p-4">
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger className="text-xs">Getting Started</AccordionTrigger>
-                    <AccordionContent className="text-xs">
-                      Quick start guide for new users.
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-2">
-                    <AccordionTrigger className="text-xs">API Reference</AccordionTrigger>
-                    <AccordionContent className="text-xs">
-                      Complete API documentation.
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </div>
-            </Card>
-
-            {/* Search with Results */}
-            <Card>
-              <div className="p-4">
-                <div className="relative mb-3">
-                  <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
-                  <Input placeholder="Search..." className="pl-9 text-xs" />
-                </div>
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-xs">
-                    <FileText className="text-muted-foreground h-4 w-4" />
-                    <span>Documentation.pdf</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs">
-                    <FileText className="text-muted-foreground h-4 w-4" />
-                    <span>API-Guide.md</span>
-                  </div>
-                </div>
-              </div>
-            </Card>
-
-            {/* Team Members - Dark background */}
-            <div className="bg-primary text-primary-foreground p-4">
-              <h3 className="mb-3 text-xs font-semibold">[TEAM: 2 ONLINE]</h3>
-              <div className="space-y-2">
-                {['Alice Johnson', 'Bob Smith'].map((name, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <div className="bg-primary-foreground/20 flex h-8 w-8 items-center justify-center rounded-full">
-                      <User className="h-4 w-4" />
-                    </div>
-                    <div className="text-xs">
-                      <p className="font-medium">{name}</p>
-                      <p className="opacity-70">Developer</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+        {/* Accordion */}
+        <Card>
+          <div className="p-4">
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="text-xs">Getting Started</AccordionTrigger>
+                <AccordionContent className="text-xs">
+                  Quick start guide for new users.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-2">
+                <AccordionTrigger className="text-xs">API Reference</AccordionTrigger>
+                <AccordionContent className="text-xs">Complete API documentation.</AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
+        </Card>
 
-          {/* COLUMN 2 - Dropdown, Skeletons, Progress, Breadcrumbs, Badges, Empty State, Activity */}
-          <div className="space-y-4">
-            {/* Dropdown Menu */}
-            <Card>
-              <div className="p-4">
-                <h3 className="mb-3 text-xs font-semibold">[DROPDOWN MENU]</h3>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant="outline" className="w-full text-xs">
-                      <MoreHorizontal className="mr-2 h-4 w-4" />
-                      &gt; ACTIONS
-                      <ChevronDown className="ml-auto h-4 w-4" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="w-56">
-                    <DropdownMenuLabel className="text-xs">Actions</DropdownMenuLabel>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem className="text-xs">
-                      <Edit className="mr-2 h-3 w-3" />
-                      Edit
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="text-xs">
-                      <Copy className="mr-2 h-3 w-3" />
-                      Duplicate
-                    </DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem className="text-destructive text-xs">
-                      <Trash2 className="mr-2 h-3 w-3" />
-                      Delete
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </div>
-            </Card>
-
-            {/* Loading Skeletons - Tighter spacing */}
-            <div className="border-border space-y-3 border p-4">
-              <h3 className="text-xs font-semibold">[LOADING...]</h3>
-              <Skeleton className="h-4 w-full" />
-              <Skeleton className="h-4 w-3/4" />
-              <Skeleton className="h-10 w-full" />
+        {/* Search with Results */}
+        <Card>
+          <div className="p-4">
+            <div className="relative mb-3">
+              <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
+              <Input placeholder="Search..." className="pl-9 text-xs" />
             </div>
-
-            {/* Progress Bars */}
-            <Card>
-              <div className="p-4">
-                <h3 className="mb-3 text-xs font-semibold">[PROGRESS]</h3>
-                <div className="space-y-3">
-                  <div>
-                    <div className="mb-1 flex justify-between text-xs">
-                      <span>Upload Progress</span>
-                      <span className="text-muted-foreground">75%</span>
-                    </div>
-                    <Progress value={75} />
-                  </div>
-                  <div>
-                    <div className="mb-1 flex justify-between text-xs">
-                      <span>Storage Used</span>
-                      <span className="text-muted-foreground">45%</span>
-                    </div>
-                    <Progress value={45} />
-                  </div>
-                </div>
-              </div>
-            </Card>
-
-            {/* Breadcrumbs - Inline, no card */}
-            <div className="border-l-primary bg-muted/20 flex items-center gap-1 border-l-2 p-3 text-xs">
-              <Home className="h-3 w-3" />
-              <ChevronRight className="text-muted-foreground h-3 w-3" />
-              <span className="text-muted-foreground">Projects</span>
-              <ChevronRight className="text-muted-foreground h-3 w-3" />
-              <span className="font-medium">Dashboard</span>
-            </div>
-
-            {/* Badge Variations - Compact, no card */}
-            <div className="border-border bg-muted/30 space-y-2 border p-3">
-              <h3 className="text-xs font-semibold">[BADGES]</h3>
-              <div className="flex flex-wrap gap-2">
-                <Badge>DEFAULT</Badge>
-                <Badge variant="secondary">SECONDARY</Badge>
-                <Badge variant="outline">OUTLINE</Badge>
-                <Badge variant="destructive">ERROR</Badge>
-              </div>
-            </div>
-
-            {/* Empty State - Minimal, no card */}
-            <div className="border-border border border-dashed p-8 text-center">
-              <FileText className="text-muted-foreground mx-auto mb-2 h-8 w-8" />
-              <h3 className="mb-1 text-xs font-semibold">[NO DATA]</h3>
-              <p className="text-muted-foreground text-xs">No items found</p>
-            </div>
-
-            {/* Recent Activity */}
-            <Card>
-              <div className="p-4">
-                <h3 className="mb-3 text-xs font-semibold">[RECENT ACTIVITY]</h3>
-                <div className="space-y-2">
-                  {[
-                    { icon: CheckCircle2, text: 'Task completed', time: '2m ago' },
-                    { icon: AlertCircle, text: 'Alert triggered', time: '5m ago' },
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-start gap-2">
-                      <item.icon className="text-muted-foreground h-4 w-4" />
-                      <div className="flex-1 text-xs">
-                        <p>{item.text}</p>
-                        <p className="text-muted-foreground">{item.time}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </Card>
-          </div>
-
-          {/* COLUMN 3 - Radio Groups, Switches, Mini Table, Filter Chips, Date/Time */}
-          <div className="space-y-4">
-            {/* Radio Group - Border only, no card */}
-            <div className="border-primary/30 bg-primary/5 border-2 p-4">
-              <h3 className="text-primary mb-3 text-xs font-semibold">[RADIO GROUP]</h3>
-              <RadioGroup defaultValue="option-1">
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="option-1" id="option-1" />
-                  <Label htmlFor="option-1" className="text-xs">
-                    Option 1
-                  </Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="option-2" id="option-2" />
-                  <Label htmlFor="option-2" className="text-xs">
-                    Option 2
-                  </Label>
-                </div>
-              </RadioGroup>
-            </div>
-
-            {/* Switches - Gradient background */}
-            <div className="from-secondary/20 to-secondary/5 bg-gradient-to-br p-4">
-              <h3 className="mb-3 text-xs font-semibold">[SWITCHES]</h3>
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <Label className="text-xs">Enable notifications</Label>
-                  <Switch checked={switchEnabled} onCheckedChange={setSwitchEnabled} />
-                </div>
-                <div className="flex items-center justify-between">
-                  <Label className="text-xs">Dark mode</Label>
-                  <Switch defaultChecked />
-                </div>
-              </div>
-            </div>
-
-            {/* Mini Data Table - Dense with separators */}
-            <div className="divide-border border-border bg-card divide-y border">
-              <div className="bg-muted/50 p-3">
-                <h3 className="text-xs font-semibold">[DATA TABLE]</h3>
-              </div>
-              <div className="space-y-0">
-                {[
-                  { metric: 'Users', value: '1,234', change: '+12%' },
-                  { metric: 'Revenue', value: '$45.2K', change: '+8%' },
-                ].map((row, i) => (
-                  <div
-                    key={i}
-                    className="border-border flex items-center justify-between border-b p-3 text-xs last:border-b-0"
-                  >
-                    <span>{row.metric}</span>
-                    <div className="flex items-center gap-2">
-                      <span className="font-medium">{row.value}</span>
-                      <span className="text-success">{row.change}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Filter Chips - Minimal with bottom border */}
-            <div className="border-b-muted bg-background border-b-4 p-3">
-              <h3 className="mb-3 text-xs font-semibold">[ACTIVE FILTERS]</h3>
-              <div className="flex flex-wrap gap-2">
-                {['Status: Active', 'Role: Admin'].map((filter, i) => (
-                  <Badge key={i} variant="secondary" className="gap-1">
-                    {filter}
-                    <X className="h-3 w-3 cursor-pointer" />
-                  </Badge>
-                ))}
-              </div>
-            </div>
-
-            {/* Date & Time - Outline style */}
-            <div className="border-muted-foreground/30 border-2 border-dashed p-4">
-              <h3 className="text-muted-foreground mb-3 text-xs font-semibold">[TIMESTAMPS]</h3>
-              <div className="space-y-2 text-xs">
-                <div className="flex items-center gap-2">
-                  <Clock className="text-muted-foreground h-4 w-4" />
-                  <span>Last updated: 2 min ago</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Calendar className="text-muted-foreground h-4 w-4" />
-                  <span>Created: Dec 11, 2025</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Statistics - Accent background with border */}
-            <div className="border-success/50 bg-success/10 space-y-3 border-2 p-4">
-              <h3 className="text-success text-xs font-semibold">[REVENUE UP]</h3>
-              <div className="flex justify-between text-xs">
-                <span>Total</span>
-                <span className="text-lg font-bold">$12,450</span>
-              </div>
-              <Separator />
-              <div className="flex justify-between text-xs">
-                <span>Change</span>
-                <span className="text-success text-lg font-bold">+15.3%</span>
-              </div>
-            </div>
-          </div>
-
-          {/* COLUMN 4 - Slider, Checkboxes, Select, Input Variants, Button Groups */}
-          <div className="space-y-4">
-            {/* Slider */}
-            <Card>
-              <div className="p-4">
-                <h3 className="mb-3 text-xs font-semibold">[SLIDER]</h3>
-                <p className={cn('mb-3 text-xs', mode.color.text.muted)}>Value: ${priceRange[0]}</p>
-                <Slider
-                  value={priceRange}
-                  onValueChange={setPriceRange}
-                  max={800}
-                  min={200}
-                  step={10}
-                />
-              </div>
-            </Card>
-
-            {/* Checkboxes */}
-            <Card>
-              <div className="p-4">
-                <h3 className="mb-3 text-xs font-semibold">[CHECKBOXES]</h3>
-                <div className="space-y-2">
-                  <div className="flex items-center space-x-2">
-                    <Checkbox id="check-1" defaultChecked />
-                    <label htmlFor="check-1" className="text-xs">
-                      Marketing emails
-                    </label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox id="check-2" />
-                    <label htmlFor="check-2" className="text-xs">
-                      Product updates
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </Card>
-
-            {/* Select Menu */}
-            <Card>
-              <div className="p-4">
-                <h3 className="mb-3 text-xs font-semibold">[SELECT MENU]</h3>
-                <Select defaultValue="option-1">
-                  <SelectTrigger className="text-xs">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="option-1">Option 1</SelectItem>
-                    <SelectItem value="option-2">Option 2</SelectItem>
-                    <SelectItem value="option-3">Option 3</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </Card>
-
-            {/* Input Variants */}
-            <Card>
-              <div className="p-4">
-                <h3 className="mb-3 text-xs font-semibold">[INPUT TYPES]</h3>
-                <div className="space-y-2">
-                  <Input type="email" placeholder="Email" className="text-xs" />
-                  <Input type="password" placeholder="Password" className="text-xs" />
-                  <Input type="number" placeholder="Amount" className="text-xs" />
-                </div>
-              </div>
-            </Card>
-
-            {/* Button Groups */}
-            <Card>
-              <div className="p-4">
-                <h3 className="mb-3 text-xs font-semibold">[BUTTON GROUP]</h3>
-                <div className="flex gap-2">
-                  <Button size="sm" variant="outline" className="flex-1 text-xs">
-                    &gt; LEFT
-                  </Button>
-                  <Button size="sm" variant="outline" className="flex-1 text-xs">
-                    &gt; CENTER
-                  </Button>
-                  <Button size="sm" variant="outline" className="flex-1 text-xs">
-                    &gt; RIGHT
-                  </Button>
-                </div>
-              </div>
-            </Card>
-
-            {/* Action Buttons - Full width, no card */}
             <div className="space-y-2">
-              <Button className="w-full text-xs">
-                <Download className="mr-2 h-4 w-4" />
-                &gt; DOWNLOAD
-              </Button>
-              <Button variant="outline" className="w-full text-xs">
-                <Settings className="mr-2 h-4 w-4" />
-                &gt; SETTINGS
-              </Button>
-              <Button variant="destructive" className="w-full text-xs">
-                <Trash2 className="mr-2 h-4 w-4" />
-                &gt; DELETE
-              </Button>
+              <div className="flex items-center gap-2 text-xs">
+                <FileText className="text-muted-foreground h-4 w-4" />
+                <span>Documentation.pdf</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs">
+                <FileText className="text-muted-foreground h-4 w-4" />
+                <span>API-Guide.md</span>
+              </div>
             </div>
+          </div>
+        </Card>
+
+        {/* Team Members - Dark background */}
+        <div className="bg-primary text-primary-foreground p-4">
+          <h3 className="mb-3 text-xs font-semibold">[TEAM: 2 ONLINE]</h3>
+          <div className="space-y-2">
+            {['Alice Johnson', 'Bob Smith'].map((name, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <div className="bg-primary-foreground/20 flex h-8 w-8 items-center justify-center rounded-full">
+                  <User className="h-4 w-4" />
+                </div>
+                <div className="text-xs">
+                  <p className="font-medium">{name}</p>
+                  <p className="opacity-70">Developer</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-    </BrowserFrame>
+
+      {/* COLUMN 2 - Dropdown, Skeletons, Progress, Breadcrumbs, Badges, Empty State, Activity */}
+      <div className="space-y-4">
+        {/* Dropdown Menu */}
+        <Card>
+          <div className="p-4">
+            <h3 className="mb-3 text-xs font-semibold">[DROPDOWN MENU]</h3>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" className="w-full text-xs">
+                  <MoreHorizontal className="mr-2 h-4 w-4" />
+                  &gt; ACTIONS
+                  <ChevronDown className="ml-auto h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuLabel className="text-xs">Actions</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem className="text-xs">
+                  <Edit className="mr-2 h-3 w-3" />
+                  Edit
+                </DropdownMenuItem>
+                <DropdownMenuItem className="text-xs">
+                  <Copy className="mr-2 h-3 w-3" />
+                  Duplicate
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem className="text-destructive text-xs">
+                  <Trash2 className="mr-2 h-3 w-3" />
+                  Delete
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+        </Card>
+
+        {/* Loading Skeletons - Tighter spacing */}
+        <div className="border-border space-y-3 border p-4">
+          <h3 className="text-xs font-semibold">[LOADING...]</h3>
+          <Skeleton className="h-4 w-full" />
+          <Skeleton className="h-4 w-3/4" />
+          <Skeleton className="h-10 w-full" />
+        </div>
+
+        {/* Progress Bars */}
+        <Card>
+          <div className="p-4">
+            <h3 className="mb-3 text-xs font-semibold">[PROGRESS]</h3>
+            <div className="space-y-3">
+              <div>
+                <div className="mb-1 flex justify-between text-xs">
+                  <span>Upload Progress</span>
+                  <span className="text-muted-foreground">75%</span>
+                </div>
+                <Progress value={75} />
+              </div>
+              <div>
+                <div className="mb-1 flex justify-between text-xs">
+                  <span>Storage Used</span>
+                  <span className="text-muted-foreground">45%</span>
+                </div>
+                <Progress value={45} />
+              </div>
+            </div>
+          </div>
+        </Card>
+
+        {/* Breadcrumbs - Inline, no card */}
+        <div className="border-l-primary bg-muted/20 flex items-center gap-1 border-l-2 p-3 text-xs">
+          <Home className="h-3 w-3" />
+          <ChevronRight className="text-muted-foreground h-3 w-3" />
+          <span className="text-muted-foreground">Projects</span>
+          <ChevronRight className="text-muted-foreground h-3 w-3" />
+          <span className="font-medium">Dashboard</span>
+        </div>
+
+        {/* Badge Variations - Compact, no card */}
+        <div className="border-border bg-muted/30 space-y-2 border p-3">
+          <h3 className="text-xs font-semibold">[BADGES]</h3>
+          <div className="flex flex-wrap gap-2">
+            <Badge>DEFAULT</Badge>
+            <Badge variant="secondary">SECONDARY</Badge>
+            <Badge variant="outline">OUTLINE</Badge>
+            <Badge variant="destructive">ERROR</Badge>
+          </div>
+        </div>
+
+        {/* Empty State - Minimal, no card */}
+        <div className="border-border border border-dashed p-8 text-center">
+          <FileText className="text-muted-foreground mx-auto mb-2 h-8 w-8" />
+          <h3 className="mb-1 text-xs font-semibold">[NO DATA]</h3>
+          <p className="text-muted-foreground text-xs">No items found</p>
+        </div>
+
+        {/* Recent Activity */}
+        <Card>
+          <div className="p-4">
+            <h3 className="mb-3 text-xs font-semibold">[RECENT ACTIVITY]</h3>
+            <div className="space-y-2">
+              {[
+                { icon: CheckCircle2, text: 'Task completed', time: '2m ago' },
+                { icon: AlertCircle, text: 'Alert triggered', time: '5m ago' },
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-2">
+                  <item.icon className="text-muted-foreground h-4 w-4" />
+                  <div className="flex-1 text-xs">
+                    <p>{item.text}</p>
+                    <p className="text-muted-foreground">{item.time}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Card>
+      </div>
+
+      {/* COLUMN 3 - Radio Groups, Switches, Mini Table, Filter Chips, Date/Time */}
+      <div className="space-y-4">
+        {/* Radio Group - Border only, no card */}
+        <div className="border-primary/30 bg-primary/5 border-2 p-4">
+          <h3 className="text-primary mb-3 text-xs font-semibold">[RADIO GROUP]</h3>
+          <RadioGroup defaultValue="option-1">
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="option-1" id="option-1" />
+              <Label htmlFor="option-1" className="text-xs">
+                Option 1
+              </Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="option-2" id="option-2" />
+              <Label htmlFor="option-2" className="text-xs">
+                Option 2
+              </Label>
+            </div>
+          </RadioGroup>
+        </div>
+
+        {/* Switches - Gradient background */}
+        <div className="from-secondary/20 to-secondary/5 bg-gradient-to-br p-4">
+          <h3 className="mb-3 text-xs font-semibold">[SWITCHES]</h3>
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <Label className="text-xs">Enable notifications</Label>
+              <Switch checked={switchEnabled} onCheckedChange={setSwitchEnabled} />
+            </div>
+            <div className="flex items-center justify-between">
+              <Label className="text-xs">Dark mode</Label>
+              <Switch defaultChecked />
+            </div>
+          </div>
+        </div>
+
+        {/* Mini Data Table - Dense with separators */}
+        <div className="divide-border border-border bg-card divide-y border">
+          <div className="bg-muted/50 p-3">
+            <h3 className="text-xs font-semibold">[DATA TABLE]</h3>
+          </div>
+          <div className="space-y-0">
+            {[
+              { metric: 'Users', value: '1,234', change: '+12%' },
+              { metric: 'Revenue', value: '$45.2K', change: '+8%' },
+            ].map((row, i) => (
+              <div
+                key={i}
+                className="border-border flex items-center justify-between border-b p-3 text-xs last:border-b-0"
+              >
+                <span>{row.metric}</span>
+                <div className="flex items-center gap-2">
+                  <span className="font-medium">{row.value}</span>
+                  <span className="text-success">{row.change}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Filter Chips - Minimal with bottom border */}
+        <div className="border-b-muted bg-background border-b-4 p-3">
+          <h3 className="mb-3 text-xs font-semibold">[ACTIVE FILTERS]</h3>
+          <div className="flex flex-wrap gap-2">
+            {['Status: Active', 'Role: Admin'].map((filter, i) => (
+              <Badge key={i} variant="secondary" className="gap-1">
+                {filter}
+                <X className="h-3 w-3 cursor-pointer" />
+              </Badge>
+            ))}
+          </div>
+        </div>
+
+        {/* Date & Time - Outline style */}
+        <div className="border-muted-foreground/30 border-2 border-dashed p-4">
+          <h3 className="text-muted-foreground mb-3 text-xs font-semibold">[TIMESTAMPS]</h3>
+          <div className="space-y-2 text-xs">
+            <div className="flex items-center gap-2">
+              <Clock className="text-muted-foreground h-4 w-4" />
+              <span>Last updated: 2 min ago</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Calendar className="text-muted-foreground h-4 w-4" />
+              <span>Created: Dec 11, 2025</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Statistics - Accent background with border */}
+        <div className="border-success/50 bg-success/10 space-y-3 border-2 p-4">
+          <h3 className="text-success text-xs font-semibold">[REVENUE UP]</h3>
+          <div className="flex justify-between text-xs">
+            <span>Total</span>
+            <span className="text-lg font-bold">$12,450</span>
+          </div>
+          <Separator />
+          <div className="flex justify-between text-xs">
+            <span>Change</span>
+            <span className="text-success text-lg font-bold">+15.3%</span>
+          </div>
+        </div>
+      </div>
+
+      {/* COLUMN 4 - Slider, Checkboxes, Select, Input Variants, Button Groups */}
+      <div className="space-y-4">
+        {/* Slider */}
+        <Card>
+          <div className="p-4">
+            <h3 className="mb-3 text-xs font-semibold">[SLIDER]</h3>
+            <p className={cn('mb-3 text-xs', mode.color.text.muted)}>Value: ${priceRange[0]}</p>
+            <Slider
+              value={priceRange}
+              onValueChange={setPriceRange}
+              max={800}
+              min={200}
+              step={10}
+            />
+          </div>
+        </Card>
+
+        {/* Checkboxes */}
+        <Card>
+          <div className="p-4">
+            <h3 className="mb-3 text-xs font-semibold">[CHECKBOXES]</h3>
+            <div className="space-y-2">
+              <div className="flex items-center space-x-2">
+                <Checkbox id="check-1" defaultChecked />
+                <label htmlFor="check-1" className="text-xs">
+                  Marketing emails
+                </label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Checkbox id="check-2" />
+                <label htmlFor="check-2" className="text-xs">
+                  Product updates
+                </label>
+              </div>
+            </div>
+          </div>
+        </Card>
+
+        {/* Select Menu */}
+        <Card>
+          <div className="p-4">
+            <h3 className="mb-3 text-xs font-semibold">[SELECT MENU]</h3>
+            <Select defaultValue="option-1">
+              <SelectTrigger className="text-xs">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="option-1">Option 1</SelectItem>
+                <SelectItem value="option-2">Option 2</SelectItem>
+                <SelectItem value="option-3">Option 3</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </Card>
+
+        {/* Input Variants */}
+        <Card>
+          <div className="p-4">
+            <h3 className="mb-3 text-xs font-semibold">[INPUT TYPES]</h3>
+            <div className="space-y-2">
+              <Input type="email" placeholder="Email" className="text-xs" />
+              <Input type="password" placeholder="Password" className="text-xs" />
+              <Input type="number" placeholder="Amount" className="text-xs" />
+            </div>
+          </div>
+        </Card>
+
+        {/* Button Groups */}
+        <Card>
+          <div className="p-4">
+            <h3 className="mb-3 text-xs font-semibold">[BUTTON GROUP]</h3>
+            <div className="flex gap-2">
+              <Button size="sm" variant="outline" className="flex-1 text-xs">
+                &gt; LEFT
+              </Button>
+              <Button size="sm" variant="outline" className="flex-1 text-xs">
+                &gt; CENTER
+              </Button>
+              <Button size="sm" variant="outline" className="flex-1 text-xs">
+                &gt; RIGHT
+              </Button>
+            </div>
+          </div>
+        </Card>
+
+        {/* Action Buttons - Full width, no card */}
+        <div className="space-y-2">
+          <Button className="w-full text-xs">
+            <Download className="mr-2 h-4 w-4" />
+            &gt; DOWNLOAD
+          </Button>
+          <Button variant="outline" className="w-full text-xs">
+            <Settings className="mr-2 h-4 w-4" />
+            &gt; SETTINGS
+          </Button>
+          <Button variant="destructive" className="w-full text-xs">
+            <Trash2 className="mr-2 h-4 w-4" />
+            &gt; DELETE
+          </Button>
+        </div>
+      </div>
+    </div>
   );
 }
 
