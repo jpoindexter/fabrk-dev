@@ -1,18 +1,15 @@
 /**
  * ✅ FABRK COMPONENT
- * Layered Windows - MacOS-style overlapping terminal windows with depth
+ * Layered Windows - Recreating reference design
  * Production-ready ✓
  */
 'use client';
 
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
-import { Card, CardHeader, CardContent, Badge as CardBadge } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { PolarCheckoutButton } from '@/components/polar/checkout-button';
-import { PRICING } from '@/data/landing';
 
 // MacOS-style window traffic lights
 function WindowChrome({ title }: { title: string }) {
@@ -34,21 +31,25 @@ function WindowChrome({ title }: { title: string }) {
   );
 }
 
-// Loading progress bar component
-function ProgressBar({ progress, label }: { progress: number; label: string }) {
+// Animated installation progress bar
+function InstallProgressBar() {
   return (
-    <div className="space-y-1">
-      <div className="flex justify-between text-xs">
-        <span className={cn(mode.font, mode.color.text.muted)}>{label}</span>
-        <span className={cn(mode.font, mode.color.text.accent)}>{progress}%</span>
-      </div>
-      <div className={cn('h-1.5 w-full border', mode.color.border.default, mode.color.bg.surface)}>
+    <div className="w-full">
+      <div className={cn('relative h-8 w-full border', mode.color.border.default)}>
         <motion.div
           initial={{ width: 0 }}
-          animate={{ width: `${progress}%` }}
-          transition={{ duration: 1.5, ease: 'easeInOut' }}
-          className={cn('h-full', 'bg-accent')}
+          animate={{ width: '52.3%' }}
+          transition={{ duration: 2, ease: 'easeOut' }}
+          className="bg-accent h-full"
         />
+        <span
+          className={cn(
+            'absolute inset-0 flex items-center justify-center text-sm font-bold',
+            mode.font
+          )}
+        >
+          INSTALL 52.3%
+        </span>
       </div>
     </div>
   );
@@ -56,83 +57,93 @@ function ProgressBar({ progress, label }: { progress: number; label: string }) {
 
 export function LayeredWindows() {
   return (
-    <div className="relative min-h-[600px] w-full">
-      {/* Background - Large Window with Hero Content (z-index: 1) - DRAGGABLE */}
+    <div className="relative min-h-[700px] w-full">
+      {/* Main Browser Window */}
       <motion.div
         drag
         dragMomentum={false}
         dragElastic={0.1}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6 }}
-        className="relative w-full cursor-move"
+        className="relative cursor-move"
         style={{ zIndex: 1 }}
       >
-        <div className={cn('border', mode.color.border.default, mode.color.bg.surface)}>
-          <WindowChrome title="fabrk.sh — terminal-first saas boilerplate" />
-          <div className="grid grid-cols-1 gap-8 p-8 lg:grid-cols-2 lg:p-12">
-            <div>
-              {/* System Init Label */}
-              <div className="mb-6">
-                <CardBadge code="0x00" label="SYSTEM INIT" meta="SAAS BOILERPLATE v2.0" />
-              </div>
+        <div className={cn('relative min-h-[700px] border bg-black/95', mode.color.border.default)}>
+          <WindowChrome title="localhost:3000 — FABRK Terminal Boilerplate" />
 
-              {/* Headline */}
-              <h1 className={cn('mb-3 text-xs', mode.color.text.muted, mode.font)}>
-                [SYSTEM READY]
-              </h1>
-              <h2 className="mb-6 text-6xl leading-[0.9] font-black tracking-tight lg:text-7xl">
-                <span className="text-foreground">BUILD IN</span>
-                <br />
-                <span className={mode.color.text.accent}>MINUTES</span>
-              </h2>
-              <p className={cn('mb-8 text-sm leading-relaxed', mode.color.text.muted)}>
-                Ship your product this weekend not next quarter.
-              </p>
-
-              {/* Stats */}
-              <div className={cn('border-accent mb-8 flex flex-wrap gap-3 border-l-2 pl-4')}>
-                <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
-                  <span className={mode.color.text.accent}>60+</span> Components
-                </span>
-                <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
-                <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
-                  <span className={mode.color.text.accent}>{'< 5 MIN'}</span> Setup
-                </span>
-                <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
-                <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
-                  <span className={mode.color.text.accent}>400+ HRS</span> Saved
-                </span>
-              </div>
-
-              {/* CTAs */}
-              <div className="flex flex-col gap-3">
-                <PolarCheckoutButton
-                  className={cn(
-                    'bg-accent text-accent-foreground w-full px-8 py-4 text-sm transition-all hover:scale-105',
-                    mode.radius,
-                    mode.font
-                  )}
+          {/* Main Content Area */}
+          <div className="relative p-8 lg:p-12">
+            {/* Left Side - Large Headline */}
+            <div className="relative z-10 max-w-md">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <p className={cn('mb-4 text-xs', mode.font, mode.color.text.muted)}>[SAAS BUILD]</p>
+                {/* eslint-disable design-system/no-inline-styles, design-system/no-hardcoded-colors -- Gradient text effect matches reference design */}
+                <h1
+                  className="mb-6 text-[80px] leading-[0.85] font-black tracking-tight"
+                  style={{
+                    background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
                 >
-                  &gt; {PRICING.cta.label} — {PRICING.display.current}
-                </PolarCheckoutButton>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  asChild
-                  className={cn('w-full text-xs', mode.radius, mode.font)}
-                >
-                  <Link href="/library">Explore 31 Interactive Demos</Link>
-                </Button>
-              </div>
+                  BUILDIN
+                  <br />
+                  YOUR
+                </h1>
+                {/* eslint-enable design-system/no-inline-styles, design-system/no-hardcoded-colors */}
+                <p className={cn('mb-6 text-sm', mode.color.text.muted)}>
+                  60+ production components. Authentication,
+                  <br />
+                  billing, dashboards — all done. Ship your
+                  <br />
+                  SaaS this weekend, not next quarter.
+                </p>
+              </motion.div>
             </div>
-            <div>{/* Right side spacer - windows will overlay here */}</div>
+
+            {/* Background Code Snippets */}
+            <div className="absolute top-32 left-8 opacity-30">
+              <pre className={cn('text-xs', mode.font, mode.color.text.muted)}>
+                {`import { auth } from '@/lib/auth'
+export default function Page() {
+  return <Dashboard />
+}`}
+              </pre>
+            </div>
           </div>
+
+          {/* Bottom Progress Bar */}
+          <div className="absolute right-0 bottom-0 left-0 p-4">
+            <InstallProgressBar />
+          </div>
+
+          {/* Bottom Right CTA */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="absolute right-6 bottom-6"
+          >
+            <PolarCheckoutButton
+              className={cn(
+                'bg-accent text-accent-foreground px-6 py-3 text-xs font-bold',
+                mode.radius,
+                mode.font
+              )}
+            >
+              &lt; WRITE A TWEET
+            </PolarCheckoutButton>
+          </motion.div>
         </div>
       </motion.div>
 
-      {/* Draggable Small Windows - Overlay on right side (z-index: 2-4) */}
-      {/* Small Window 1 - Value Metrics */}
+      {/* Small Draggable Window 1 - Pricing Breakdown */}
       <motion.div
         drag
         dragMomentum={false}
@@ -143,78 +154,100 @@ export function LayeredWindows() {
         className="absolute cursor-move"
         style={{ zIndex: 2 }}
       >
-        <Card className="w-64">
-          <CardHeader code="0x03" title="VALUE_METRICS" />
-          <CardContent className="space-y-2 py-3">
-            <div className={cn('text-xs', mode.font, mode.color.text.muted)}>
-              &gt; Components: <span className={mode.color.text.accent}>60+</span>
+        <Card className="w-72">
+          <CardHeader code="0x01" title="PRICING_BREAKDOWN" />
+          <CardContent className="space-y-3 py-4">
+            <div className="flex items-baseline justify-between gap-3">
+              <span className={cn('text-4xl font-bold', mode.font, mode.color.text.accent)}>
+                $399
+              </span>
+              <span className={cn('text-xs', mode.color.text.muted)}>YOUR_PRICE</span>
             </div>
-            <div className={cn('text-xs', mode.font, mode.color.text.muted)}>
-              &gt; Time Saved: <span className={mode.color.text.accent}>400+ HRS</span>
-            </div>
-            <div className={cn('text-xs', mode.font, mode.color.text.muted)}>
-              &gt; Value: <span className={mode.color.text.success}>$36,000</span>
+            <div className="space-y-2 text-xs">
+              <div className="flex justify-between">
+                <span className={mode.color.text.muted}>60+ HRS • Components</span>
+                <span className={mode.color.text.muted}>$15K</span>
+              </div>
+              <div className="flex justify-between">
+                <span className={mode.color.text.muted}>Auth (NextAuth v5)</span>
+                <span className={mode.color.text.muted}>$6K</span>
+              </div>
+              <div className="flex justify-between">
+                <span className={mode.color.text.muted}>Payment (3 providers)</span>
+                <span className={mode.color.text.muted}>$8K</span>
+              </div>
+              <div className="flex justify-between">
+                <span className={mode.color.text.muted}>Multi-Tenancy</span>
+                <span className={mode.color.text.muted}>$10K</span>
+              </div>
+              <div className="flex justify-between">
+                <span className={mode.color.text.muted}>AI Credits System</span>
+                <span className={mode.color.text.muted}>$4K</span>
+              </div>
+              <div className={cn('border-t pt-2', mode.color.border.default)}>
+                <div className="flex justify-between font-bold">
+                  <span>TOTAL_VALUE</span>
+                  <span className={mode.color.text.accent}>$51K</span>
+                </div>
+              </div>
             </div>
           </CardContent>
         </Card>
       </motion.div>
 
-      {/* Small Window 2 - Progress Bars */}
+      {/* Small Draggable Window 2 - Code Snippet */}
       <motion.div
         drag
         dragMomentum={false}
         dragElastic={0.1}
-        initial={{ opacity: 0, x: 680, y: 150 }}
-        animate={{ opacity: 1, x: 680, y: 150 }}
+        initial={{ opacity: 0, x: 500, y: 300 }}
+        animate={{ opacity: 1, x: 500, y: 300 }}
         transition={{ duration: 0.6, delay: 0.4 }}
         className="absolute cursor-move"
         style={{ zIndex: 3 }}
       >
-        <Card className="w-72">
-          <CardHeader code="0x02" title="SETUP_PROGRESS" />
-          <CardContent className="space-y-3 py-4">
-            <ProgressBar progress={100} label="Authentication" />
-            <ProgressBar progress={85} label="Database Schema" />
-            <ProgressBar progress={60} label="Email Templates" />
-          </CardContent>
-        </Card>
+        <div className={cn('w-80 border', mode.color.border.default, mode.color.bg.surface)}>
+          <WindowChrome title="terminal" />
+          <div className="p-4">
+            <pre className={cn('text-xs', mode.font, mode.color.text.muted)}>
+              {`$ npm create fabrk@latest
+✓ Installing dependencies...
+✓ Setting up database...
+✓ Configuring auth...
+> Ready in 4.2s`}
+            </pre>
+          </div>
+        </div>
       </motion.div>
 
-      {/* Small Window 3 - Main Pricing */}
+      {/* Small Draggable Window 3 - Stats */}
       <motion.div
         drag
         dragMomentum={false}
         dragElastic={0.1}
-        initial={{ opacity: 0, x: 750, y: 300 }}
-        animate={{ opacity: 1, x: 750, y: 300 }}
+        initial={{ opacity: 0, x: 700, y: 200 }}
+        animate={{ opacity: 1, x: 700, y: 200 }}
         transition={{ duration: 0.6, delay: 0.5 }}
         className="absolute cursor-move"
         style={{ zIndex: 4 }}
       >
-        <Card className="border-accent w-80 border-2">
-          <CardHeader code="0x01" title="LAUNCH_PRICING" />
-          <CardContent className="space-y-3 py-4">
-            <div className="flex items-baseline gap-3">
-              <span className={cn('text-4xl font-bold', mode.font, mode.color.text.accent)}>
-                $399
-              </span>
-              <span className={cn('text-lg line-through', mode.color.text.muted)}>$499</span>
-              <span
-                className={cn(
-                  'bg-accent text-accent-foreground ml-auto px-2 py-1 text-xs font-bold',
-                  mode.radius,
-                  mode.font
-                )}
-              >
-                20% OFF
-              </span>
+        <Card className="w-64">
+          <CardHeader code="0x03" title="LAUNCH_METRICS" />
+          <CardContent className="space-y-2 py-3">
+            <div className={cn('text-xs', mode.font)}>
+              <div className="flex justify-between">
+                <span className={mode.color.text.muted}>Setup Time:</span>
+                <span className={mode.color.text.accent}>&lt; 5 MIN</span>
+              </div>
+              <div className="flex justify-between">
+                <span className={mode.color.text.muted}>Components:</span>
+                <span className={mode.color.text.accent}>60+</span>
+              </div>
+              <div className="flex justify-between">
+                <span className={mode.color.text.muted}>Time Saved:</span>
+                <span className={mode.color.text.success}>400+ HRS</span>
+              </div>
             </div>
-            <div className={cn('text-xs', mode.color.text.muted, mode.font)}>
-              <span className={mode.color.text.warning}>⚠ 50 LICENSES LEFT</span>
-              <span className="mx-2">•</span>
-              <span>Price increases Dec 31</span>
-            </div>
-            <ProgressBar progress={75} label="Launch Discount Remaining" />
           </CardContent>
         </Card>
       </motion.div>
