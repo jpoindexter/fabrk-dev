@@ -7,7 +7,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Lock, CreditCard, Users, Sparkles } from 'lucide-react';
+import { Lock, CreditCard, Users } from 'lucide-react';
 import { Card, CardHeader, CardContent, Stat, StatGroup } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
@@ -22,8 +22,8 @@ const CORE_BENEFITS = [
     benefit: 'Launch with enterprise-grade auth in minutes, not months',
     description:
       'NextAuth v5 with Google, GitHub, email magic links, and JWT sessions. Role-based access control, password reset flows, and email verification built-in.',
-    timeSaved: '40 HOURS',
-    costSaved: '$8K',
+    timeSaved: '30 HOURS',
+    costSaved: '$6K',
     features: ['Social OAuth', 'Magic Links', 'RBAC', 'Password Reset', 'Email Verification'],
   },
   {
@@ -35,8 +35,8 @@ const CORE_BENEFITS = [
     benefit: 'Start monetizing day one with production-ready payments',
     description:
       'Polar.sh integration with subscription management, one-time payments, and webhook handling. Customer portal, invoice generation, and payment history included.',
-    timeSaved: '60 HOURS',
-    costSaved: '$12K',
+    timeSaved: '40 HOURS',
+    costSaved: '$8K',
     features: ['Subscriptions', 'One-Time Payments', 'Webhooks', 'Customer Portal', 'Invoices'],
   },
   {
@@ -48,28 +48,9 @@ const CORE_BENEFITS = [
     benefit: 'Scale to enterprise with B2B team features out of the box',
     description:
       'Organization management with invites, role permissions, and team switching. Member management, audit logs, and organization-level billing ready to go.',
-    timeSaved: '80 HOURS',
-    costSaved: '$15K',
-    features: ['Organizations', 'Team Invites', 'Role Permissions', 'Team Switching', 'Audit Logs'],
-  },
-  {
-    id: 'ai',
-    icon: Sparkles,
-    module: 'AI FEATURES',
-    code: '0x13',
-    title: 'AI-Powered Generation',
-    benefit: 'Ship AI features without building infrastructure from scratch',
-    description:
-      'Credit-based AI system with multi-provider support (OpenAI, Google, Ollama). Pre-built UI components, streaming responses, and usage tracking. Generate forms, dashboards, and content with AI.',
     timeSaved: '50 HOURS',
     costSaved: '$10K',
-    features: [
-      'Credit System',
-      'Multi-Provider (OpenAI, Google, Ollama)',
-      'Streaming UI',
-      'Usage Tracking',
-      'Pre-built Components',
-    ],
+    features: ['Organizations', 'Team Invites', 'Role Permissions', 'Team Switching', 'Audit Logs'],
   },
 ];
 
@@ -166,14 +147,14 @@ export function FeaturesShowcase() {
         >
           <h2 className={cn('mb-4 text-3xl font-bold tracking-tight', mode.font)}>WHAT YOU GET</h2>
           <p className={cn('text-muted-foreground mx-auto max-w-2xl text-sm', mode.font)}>
-            Stop rebuilding the same features. Get 180+ hours of development work done in 5 minutes.
+            Stop rebuilding the same features. Get 100+ hours of development work done in 5 minutes.
             <br />
-            Save $35K+ in development costs with production-ready infrastructure.
+            Everything you need to ship a production SaaS, not just components.
           </p>
         </motion.div>
 
-        {/* 4-Column Benefits Grid */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {/* 3-Column Benefits Grid */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {CORE_BENEFITS.map((benefit, index) => (
             <BenefitCard
               key={benefit.id}
@@ -202,8 +183,8 @@ export function FeaturesShowcase() {
             <CardHeader code="0x14" title="TOTAL VALUE" />
             <CardContent>
               <StatGroup>
-                <Stat label="Total Time Saved" value="230+ HOURS" />
-                <Stat label="Total Cost Saved" value="$45K+" />
+                <Stat label="Total Time Saved" value="120+ HOURS" />
+                <Stat label="Total Cost Saved" value="$24K+" />
                 <Stat label="Your Investment" value="$399" />
               </StatGroup>
             </CardContent>
