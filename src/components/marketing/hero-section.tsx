@@ -132,38 +132,6 @@ export function HeroSection() {
             </Card>
           </motion.div>
 
-          {/* Bottom Left - Key Selling Points (In front of hero) */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="absolute -bottom-28 -left-16 z-10 w-full max-w-xs lg:-bottom-32 lg:-left-24"
-          >
-            <Card size="auto">
-              <CardHeader code="0x01" title="KEY_SELLING_POINTS.TXT" />
-              <CardContent className="space-y-2 py-3">
-                <p
-                  className={cn(
-                    'border-accent border-l-2 pl-3 text-xs',
-                    mode.font,
-                    mode.color.text.accent
-                  )}
-                >
-                  60+ Production components
-                </p>
-                <p
-                  className={cn(
-                    'border-accent border-l-2 pl-3 text-xs',
-                    mode.font,
-                    mode.color.text.accent
-                  )}
-                >
-                  26 Full-featured templates
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
-
           {/* Right Column - Visual Proof (Overlays on top) */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
