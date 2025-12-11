@@ -115,11 +115,11 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="absolute -bottom-12 -left-8 z-[5] w-full max-w-lg lg:-bottom-16 lg:-left-12"
+            className="absolute -bottom-12 -left-8 z-[5] w-full max-w-md lg:-bottom-16 lg:-left-12"
           >
             <Card>
               <CardHeader code="0x01" title="KEY_SELLING_POINTS.TXT" />
-              <CardContent className="space-y-2 py-4">
+              <CardContent className="space-y-2 py-3">
                 <p className={cn('text-sm font-bold', mode.font, mode.color.text.accent)}>
                   60+ PRODUCTION COMPONENTS
                 </p>
