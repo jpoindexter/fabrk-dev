@@ -33,7 +33,7 @@ export function SectionHeader({
         [{code}] {badge}
       </Badge>
 
-      <h2 className={cn('mb-4 text-3xl font-bold tracking-tight lg:text-4xl', mode.font)}>
+      <h2 className={cn('mb-4 text-4xl font-bold tracking-tight lg:text-5xl', mode.font)}>
         {title}
       </h2>
 

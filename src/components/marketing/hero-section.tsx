@@ -67,14 +67,15 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <h1 className={cn('text-body-m mb-2', mode.color.text.muted)}>[FABRK INIT]</h1>
-              <h2 className="text-display mb-4">
-                SHIP YOUR SAAS IN
+              <h2 className="mb-4 text-6xl leading-tight font-bold lg:text-7xl">
+                BUILDING YOUR SAAS
                 <br />
-                <span className={mode.color.text.accent}>48 HOURS, NOT 6 MONTHS</span>
+                <span className={mode.color.text.accent}>JUST GOT UNFAIRLY EASY</span>
               </h2>
               <p className={cn('text-body-m mb-6', mode.color.text.muted)}>
-                Production-ready Next.js boilerplate with auth, billing, multi-tenancy, and 60+
-                components. Stop rebuilding the same infrastructure. Start with Fabrk.
+                60+ production components. 26 full-featured templates. Terminal-first design that
+                stands out. Authentication, billing, dashboards — all done. Ship your SaaS this
+                weekend, not next quarter.
               </p>
             </motion.div>
 
@@ -91,7 +92,7 @@ export function HeroSection() {
                   <StatGroup>
                     <Stat label="Components" value="60+" />
                     <Stat label="Setup Time" value="< 5 MIN" />
-                    <Stat label="Time Saved" value="100+ HRS" />
+                    <Stat label="Time Saved" value="400+ HRS" />
                   </StatGroup>
                 </CardContent>
               </Card>
@@ -164,8 +165,8 @@ export function HeroSection() {
                   Price increases to $499 on Dec 31, 2025
                 </div>
                 <StatGroup className="mt-4">
-                  <Stat label="Time Saved" value="215 HRS" size="sm" />
-                  <Stat label="Value" value="$51K+" size="sm" />
+                  <Stat label="Time Saved" value="400+ HRS" size="sm" />
+                  <Stat label="Value" value="$36K+" size="sm" />
                 </StatGroup>
               </CardContent>
             </Card>
