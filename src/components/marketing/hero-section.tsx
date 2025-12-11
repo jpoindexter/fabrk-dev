@@ -160,15 +160,6 @@ export function HeroSection() {
                 >
                   26 Full-featured templates
                 </p>
-                <p
-                  className={cn(
-                    'border-accent border-l-2 pl-3 text-xs',
-                    mode.font,
-                    mode.color.text.accent
-                  )}
-                >
-                  Authentication, billing, dashboards — all done
-                </p>
               </CardContent>
             </Card>
           </motion.div>
