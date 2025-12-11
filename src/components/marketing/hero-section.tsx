@@ -142,7 +142,7 @@ export function HeroSection() {
             className="flex flex-col gap-6"
           >
             {/* Urgency Card - Top */}
-            <Card className="border-accent border-2">
+            <Card size="auto" className="border-accent border-2">
               <CardHeader code="0x03" title="LAUNCH PRICING" />
               <CardContent className="space-y-3 py-4">
                 <div className="flex items-baseline gap-3">
