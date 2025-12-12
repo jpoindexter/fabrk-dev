@@ -7,6 +7,7 @@
 import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
+import { LibraryNavigation } from '@/components/library';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -218,6 +219,13 @@ export default function TeamDashboardTemplate() {
   return (
     <div className="w-full overflow-x-hidden">
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
+        {/* Navigation */}
+        <LibraryNavigation
+          templateName="Team Dashboard"
+          category="Dashboards"
+          categoryHref="/library/dashboards"
+        />
+
         {/* Header */}
         <TemplatePageHeader
           badge="TEAM DASHBOARD"

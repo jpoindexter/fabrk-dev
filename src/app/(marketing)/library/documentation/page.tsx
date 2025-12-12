@@ -7,10 +7,10 @@
 'use client';
 
 import { useState } from 'react';
-import { BookOpen } from 'lucide-react';
 import { TemplatePageHeader, Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
+import { LibraryNavigation } from '@/components/library';
 import { DocsSidebar } from './components/docs-sidebar';
 import { DocsContent } from './components/docs-content';
 import { TableOfContents } from './components/table-of-contents';
@@ -109,6 +109,13 @@ export default function DocumentationLayoutTemplate() {
   return (
     <div className="w-full overflow-x-hidden">
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
+        {/* Navigation */}
+        <LibraryNavigation
+          templateName="Documentation Layout"
+          category="Marketing"
+          categoryHref="/library/marketing"
+        />
+
         {/* Header */}
         <TemplatePageHeader
           badge="DOCUMENTATION LAYOUT"

@@ -14,6 +14,7 @@ import { TemplatePageHeader, Card, CardHeader, CardContent } from '@/components/
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
+import { LibraryNavigation } from '@/components/library';
 import { SecurityScore } from './components/security-score';
 import { SecurityTab } from './components/security-tab';
 import { PrivacyTab } from './components/privacy-tab';
@@ -266,6 +267,13 @@ export default function SecurityPrivacyTemplate() {
   return (
     <div className="w-full overflow-x-hidden">
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
+        {/* Navigation */}
+        <LibraryNavigation
+          templateName="Security & Privacy"
+          category="Account Pages"
+          categoryHref="/library/account-pages"
+        />
+
         {/* Header */}
         <TemplatePageHeader
           badge="SECURITY PRIVACY"

@@ -7,10 +7,10 @@
 'use client';
 
 import { useState } from 'react';
-import { Search } from 'lucide-react';
 import { TemplatePageHeader, Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
+import { LibraryNavigation } from '@/components/library';
 import { SearchBar } from './components/search-bar';
 import { FiltersSidebar } from './components/filters-sidebar';
 import { ResultsHeader } from './components/results-header';
@@ -199,6 +199,9 @@ export default function SearchResultsTemplate() {
   return (
     <div className="w-full overflow-x-hidden">
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
+        {/* Navigation */}
+        <LibraryNavigation templateName="Search Results" />
+
         {/* Header */}
         <TemplatePageHeader
           badge="SEARCH RESULTS"

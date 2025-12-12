@@ -6,7 +6,7 @@
 
 'use client';
 
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback } from 'react';
 import {
   ColumnFiltersState,
   SortingState,
@@ -17,12 +17,13 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-import { UserPlus, Download } from 'lucide-react';
+import { UserPlus } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
+import { LibraryNavigation } from '@/components/library';
 import { columns } from './components/user-table-columns';
 import { mockUsers } from './components/types';
 import { StatsCards } from './components/stats-cards';
@@ -181,9 +182,6 @@ function UserManagementPreview() {
     a.click();
   }, []);
 
-  // Memoize filtered row count to prevent state updates during render
-  const filteredRowCount = useMemo(() => table.getFilteredRowModel().rows.length, [table]);
-
   return (
     <div className={cn('min-h-[600px] p-4 sm:p-8', mode.color.bg.base + '/50')}>
       <div className="space-y-6">
@@ -225,6 +223,13 @@ export default function UserManagementTemplate() {
   return (
     <div className="w-full overflow-x-hidden">
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
+        {/* Navigation */}
+        <LibraryNavigation
+          templateName="User Management"
+          category="Admin Panels"
+          categoryHref="/library/admin-panels"
+        />
+
         {/* Header */}
         <TemplatePageHeader
           badge="USER MANAGEMENT"

@@ -19,6 +19,7 @@ import {
   Search,
   Layers,
   Layout,
+  Sparkles,
 } from 'lucide-react';
 
 export interface Template {
@@ -30,6 +31,12 @@ export interface Template {
   badge?: string;
   href: string;
   features: string[];
+  // Enhanced metadata for 10/10 excellence
+  complexity?: 'Beginner' | 'Intermediate' | 'Advanced';
+  setupTime?: string; // e.g., "5 minutes", "30 minutes"
+  dependencies?: string[]; // e.g., ["NextAuth", "Prisma", "Zod"]
+  lastUpdated?: string; // ISO date string
+  tags?: string[]; // For advanced search
 }
 
 export const templates: Template[] = [
@@ -258,6 +265,28 @@ export const templates: Template[] = [
     icon: Layers,
     href: '/library/modals',
     features: ['Confirmation dialog', 'Form modal', 'Side sheet', 'Popover'],
+  },
+  {
+    id: 'ai-forms',
+    name: 'AI Form Generator',
+    description: 'Generate React Hook Form + Zod schemas from natural language prompts',
+    category: 'patterns',
+    icon: Sparkles,
+    badge: 'AI Powered',
+    href: '/library/ai-forms',
+    features: [
+      'Natural language input',
+      'Live form preview',
+      'Zod schema generation',
+      'React Hook Form code',
+      'Copy-paste ready',
+      'Multi-provider AI',
+    ],
+    complexity: 'Advanced',
+    setupTime: '15 minutes',
+    dependencies: ['OpenAI/Google/Ollama', 'React Hook Form', 'Zod'],
+    lastUpdated: '2024-12-12',
+    tags: ['ai', 'forms', 'code-generation', 'zod', 'validation'],
   },
 ];
 

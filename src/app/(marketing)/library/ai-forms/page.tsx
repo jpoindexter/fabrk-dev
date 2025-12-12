@@ -5,7 +5,7 @@
 'use client';
 
 import { Sparkles, Send } from 'lucide-react';
-import { FormPreview, generateZodCode, generateComponentCode } from '@/components/ai';
+import { generateZodCode, generateComponentCode } from '@/components/ai';
 import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -14,6 +14,7 @@ import { CodeBlock } from '@/components/ui/code-block';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 import type { GeneratedForm } from '@/lib/ai/schemas';
+import { LibraryNavigation } from '@/components/library';
 
 // Static demo form data - shows what AI would generate
 const demoForm: GeneratedForm = {
@@ -409,6 +410,13 @@ export default function AIFormGeneratorTemplate() {
   return (
     <div className="w-full overflow-x-hidden">
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
+        {/* Navigation */}
+        <LibraryNavigation
+          templateName="AI Form Generator"
+          category="Patterns"
+          categoryHref="/library/patterns"
+        />
+
         {/* Header */}
         <TemplatePageHeader
           badge="AI FORM GENERATOR"

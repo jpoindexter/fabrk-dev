@@ -20,6 +20,7 @@ import {
 } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
+import { LibraryNavigation } from '@/components/library';
 import {
   ArrowRight,
   Play,
@@ -435,6 +436,13 @@ export default function LandingVariationsTemplate() {
   return (
     <div className="w-full overflow-x-hidden">
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
+        {/* Navigation */}
+        <LibraryNavigation
+          templateName="Landing Variations"
+          category="Marketing"
+          categoryHref="/library/marketing"
+        />
+
         {/* Header */}
         <TemplatePageHeader
           badge="LANDING VARIATIONS"

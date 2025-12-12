@@ -11,6 +11,7 @@ import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/
 import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
+import { LibraryNavigation } from '@/components/library';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -152,6 +153,13 @@ export default function TwoFactorTemplate() {
   return (
     <div className="w-full overflow-x-hidden">
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
+        {/* Navigation */}
+        <LibraryNavigation
+          templateName="Two-Factor Auth"
+          category="Authentication"
+          categoryHref="/library/authentication"
+        />
+
         {/* Header */}
         <TemplatePageHeader
           badge="TWO FACTOR"
