@@ -180,7 +180,7 @@ export function CookieConsent({
           </div>
 
           {/* Content */}
-          <div className="space-y-3 p-3">
+          <div className="space-y-3 px-4 py-2">
             <p className={cn('text-xs leading-relaxed', mode.font, mode.color.text.muted)}>
               &gt; We use cookies for analytics.{' '}
               <a href={privacyPolicyUrl} className={cn('underline', mode.color.text.accent)}>

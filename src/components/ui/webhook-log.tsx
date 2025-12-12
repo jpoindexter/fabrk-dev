@@ -325,7 +325,7 @@ export function WebhookLog({
                     </div>
 
                     {log.error && (
-                      <div className="bg-destructive/10 border-destructive rounded border p-2">
+                      <div className="bg-destructive/10 border-destructive rounded border px-4 py-2">
                         <p className={cn('text-destructive text-xs', mode.font)}>
                           [ERROR]: {log.error}
                         </p>
@@ -355,7 +355,7 @@ export function WebhookLog({
                 {/* Metadata */}
                 <div className="space-y-2">
                   <p className={cn('text-xs font-semibold', mode.font)}>[METADATA]:</p>
-                  <div className="bg-muted border-border space-y-1 border p-3">
+                  <div className="bg-muted border-border space-y-1 border px-4 py-2">
                     <div className="flex justify-between text-xs">
                       <span className={cn('text-muted-foreground', mode.font)}>[ID]:</span>
                       <span className={cn(mode.font)}>{selectedLog.id}</span>

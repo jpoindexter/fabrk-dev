@@ -133,7 +133,7 @@ export function LineChart({
       ({ active, payload, label }: any) => {
         if (active && payload && payload.length) {
           return (
-            <div className={cn('border-border bg-card border p-3', mode.radius)}>
+            <div className={cn('border-border bg-card border px-4 py-2', mode.radius)}>
               <p className={cn('text-foreground mb-2 text-xs font-semibold', mode.font)}>
                 {xAxisFormatter ? xAxisFormatter(label) : label}
               </p>
@@ -237,7 +237,7 @@ export function LineChartCard({
   return (
     <div className={cn('border-border bg-card border', mode.radius, cardClassName)}>
       {/* Terminal Header */}
-      <div className="border-border flex items-center justify-between border-b px-4 py-3">
+      <div className="border-border flex items-center justify-between border-b px-4 py-2">
         <div className="flex items-center gap-3">
           {icon}
           <div>

@@ -114,7 +114,7 @@ export function SignInForm({
       {error && (
         <div
           className={cn(
-            'border-destructive bg-destructive/10 text-destructive border p-3 text-xs',
+            'border-destructive bg-destructive/10 text-destructive border px-4 py-2 text-xs',
             mode.radius,
             mode.font
           )}
@@ -322,7 +322,7 @@ export function SignUpForm({
       {error && (
         <div
           className={cn(
-            'border-destructive bg-destructive/10 text-destructive border p-3 text-xs',
+            'border-destructive bg-destructive/10 text-destructive border px-4 py-2 text-xs',
             mode.radius,
             mode.font
           )}

@@ -359,7 +359,7 @@ export function AuditLog({
                 {/* Action Details */}
                 <div className="space-y-2">
                   <p className={cn('text-xs font-semibold', mode.font)}>[ACTION]:</p>
-                  <div className="bg-muted border-border space-y-1 border p-3">
+                  <div className="bg-muted border-border space-y-1 border px-4 py-2">
                     <div className="flex justify-between text-xs">
                       <span className={cn('text-muted-foreground', mode.font)}>[TYPE]:</span>
                       <Badge
@@ -385,7 +385,7 @@ export function AuditLog({
                 {/* Security Info */}
                 <div className="space-y-2">
                   <p className={cn('text-xs font-semibold', mode.font)}>[SECURITY]:</p>
-                  <div className="bg-muted border-border space-y-1 border p-3">
+                  <div className="bg-muted border-border space-y-1 border px-4 py-2">
                     <div className="flex justify-between text-xs">
                       <span className={cn('text-muted-foreground', mode.font)}>[IP ADDRESS]:</span>
                       <span className={cn(mode.font)}>{selectedLog.ipAddress}</span>
@@ -403,7 +403,7 @@ export function AuditLog({
                 {Object.keys(selectedLog.metadata).length > 0 && (
                   <div className="space-y-2">
                     <p className={cn('text-xs font-semibold', mode.font)}>[METADATA]:</p>
-                    <div className="bg-muted border-border space-y-1 border p-3">
+                    <div className="bg-muted border-border space-y-1 border px-4 py-2">
                       {Object.entries(selectedLog.metadata).map(([key, value]) => (
                         <div key={key} className="flex justify-between text-xs">
                           <span className={cn('text-muted-foreground', mode.font)}>
