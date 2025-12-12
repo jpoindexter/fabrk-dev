@@ -20,6 +20,11 @@ The design system achieved full launch readiness with:
 
 ## Archive Structure
 
+### old-specs/ - Historical Design Specifications
+Early design system specifications superseded by current documentation:
+- `DESIGN_SYSTEM_COMPLETE.md` (14K) - Intermediate completion milestone
+- `VISUAL_DESIGN_SPEC.md` (30K) - Original visual design specification
+
 ### 2025-12-11/ - Initial Audits
 Early design system audits and assessments:
 - `AUDIT_REPORT.md` (3.9K) - General audit report
