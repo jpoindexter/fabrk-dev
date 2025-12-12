@@ -1,6 +1,6 @@
 /* 💡 STYLING TIP: Customize theme colors below in the :root section.
  * Colors use OKLCH format (lightness% chroma hue) for better color accuracy.
- * Light and dark themes available.
+ * Terminal CRT themes: Amber, Green, Blue, Red, Purple.
  * Toggle themes via the ThemeDropdown component.
  */
 @import 'tailwindcss';
@@ -269,109 +269,51 @@
 }
 
 /* ============================================
-   ROOT VARIABLES (Default: Light Theme)
+   ROOT VARIABLES (Default: Green CRT)
    ============================================ */
 :root {
-  /* -------------------------------------- */
-  /* NEW SEMANTIC ARCHITECTURE (Base)       */
-  /* -------------------------------------- */
+  /* Default Theme: Green CRT Terminal */
+  --background: 5% 0.01 140;
+  --foreground: 82% 0.3 140;
+  --card: 8% 0.02 140;
+  --card-foreground: 82% 0.3 140;
+  --popover: 10% 0.03 140;
+  --popover-foreground: 82% 0.3 140;
+  --primary: 40% 0.25 140;
+  --primary-foreground: 95% 0.01 140;
+  --secondary: 70% 0.26 140;
+  --secondary-foreground: 5% 0.01 140;
+  --muted: 18% 0.05 140;
+  --muted-foreground: 70% 0.24 140;
+  --accent: 88% 0.3 140;
+  --accent-foreground: 5% 0.01 140;
+  --destructive: 85% 0.3 140;
+  --destructive-foreground: 5% 0.01 140;
+  --border: 42% 0.2 140;
 
-  /* Surface Hierarchy */
-  --color-bg-canvas: 99% 0 0; /* #FAFAFA */
-  --color-bg-surface: 100% 0 0; /* #FFFFFF */
-  --color-bg-elevated: 100% 0 0; /* #FFFFFF */
-  --color-bg-sunken: 97% 0 0; /* #F5F5F5 */
+  --success: 70% 0.26 140;
+  --success-foreground: 5% 0.01 140;
 
-  /* Text Hierarchy (WCAG AAA) */
-  --color-text-primary: 0% 0 0; /* #000000 */
-  --color-text-secondary: 35% 0 0; /* #595959 */
-  --color-text-tertiary: 50% 0 0; /* #808080 */
-  --color-text-inverse: 100% 0 0; /* #FFFFFF */
-  --color-text-disabled: 68% 0 0; /* #ADADAD */
+  --warning: 70% 0.26 60;
+  --warning-foreground: 5% 0.01 140;
 
-  /* Border Hierarchy */
-  --color-border-default: 88% 0 0; /* #E0E0E0 - More visible */
-  --color-border-muted: 97% 0 0; /* #F5F5F5 */
-  --color-border-strong: 75% 0 0; /* #C0C0C0 - Emphasis */
-  --color-border-focus: 0% 0 0; /* #000000 */
+  --info: 70% 0.26 200;
+  --info-foreground: 5% 0.01 140;
 
-  /* Status Colors (WCAG AAA Compliant) */
-  --color-status-success: 35% 0.18 145; /* Dark green (7.2:1) */
-  --color-status-success-bg: 95% 0.05 145; /* Light green bg */
-  --color-status-warning: 40% 0.18 80; /* Dark orange (7.8:1) */
-  --color-status-warning-bg: 95% 0.05 80; /* Light orange bg */
-  --color-status-error: 45% 0.22 15; /* Dark red (7.5:1) */
-  --color-status-error-bg: 95% 0.05 15; /* Light red bg */
-  --color-status-info: 35% 0.18 230; /* Dark blue (7.1:1) */
-  --color-status-info-bg: 95% 0.05 230; /* Light blue bg */
-
-  /* State Layers */
-  --state-hover-opacity: 0.08;
-  --state-active-opacity: 0.12;
-  --state-focus-opacity: 0.12;
-  --state-disabled-opacity: 0.38;
-
-  /* -------------------------------------- */
-  /* LEGACY MAPPING (Tailwind Compatibility)*/
-  /* -------------------------------------- */
-
-  --background: 99% 0 0;
-  --foreground: 0% 0 0;
-
-  --card: 100% 0 0;
-  --card-foreground: 0% 0 0;
-
-  --popover: 100% 0 0;
-  --popover-foreground: 0% 0 0;
-
-  --primary: 0% 0 0; /* Black */
-  --primary-foreground: 100% 0 0; /* White */
-
-  --secondary: 96% 0 0;
-  --secondary-foreground: 0% 0 0;
-
-  --muted: 97% 0 0;
-  --muted-foreground: 35% 0 0;
-
-  --accent: 70% 0.3 310; /* Purple/magenta for CTAs */
-  --accent-foreground: 100% 0 0; /* White text on purple */
-
-  /* Secondary accent for variety/hierarchy */
-  --accent-secondary: 60% 0.25 45; /* Orange - warmth */
-  --accent-secondary-foreground: 100% 0 0; /* White text */
-
-  /* Accent surface backgrounds (15% opacity) */
-  --accent-surface: 70% 0.3 310 / 0.15; /* Purple with 15% opacity */
-  --accent-secondary-surface: 60% 0.25 45 / 0.12; /* Orange with 12% opacity */
-
-  --destructive: 45% 0.22 15;
-  --destructive-foreground: 100% 0 0;
-
-  /* FIXED: Now using AAA compliant colors */
-  --success: 35% 0.18 145;
-  --success-foreground: 100% 0 0;
-
-  --warning: 40% 0.18 80;
-  --warning-foreground: 100% 0 0; /* White text for WCAG AA compliance (4.5:1+) */
-
-  --info: 35% 0.18 230;
-  --info-foreground: 100% 0 0;
-
-  --border: var(--color-border-default);
-  --input: var(--color-border-default);
-  --ring: 0% 0 0;
+  --input: 42% 0.2 140;
+  --ring: 42% 0.2 140;
 
   /* Chart Colors */
-  --chart-1: 65% 0.15 25;
-  --chart-2: 60% 0.12 175;
-  --chart-3: 45% 0.08 220;
-  --chart-4: 75% 0.15 85;
-  --chart-5: 70% 0.18 45;
-  --chart-6: 65% 0.22 295;
-  --chart-7: 70% 0.2 340;
-  --chart-8: 70% 0.15 60;
-  --chart-9: 65% 0.15 160;
-  --status-away: 75% 0.15 60;
+  --chart-1: 65% 0.28 140;
+  --chart-2: 60% 0.24 140;
+  --chart-3: 55% 0.2 140;
+  --chart-4: 75% 0.3 140;
+  --chart-5: 70% 0.26 140;
+  --chart-6: 65% 0.28 140;
+  --chart-7: 70% 0.26 140;
+  --chart-8: 70% 0.26 140;
+  --chart-9: 65% 0.28 140;
+  --status-away: 75% 0.26 60;
 }
 
 /* ============================================

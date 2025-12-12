@@ -191,10 +191,46 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
       previous={{ title: 'SEO', href: '/docs/features/seo' }}
       next={{ title: 'Trial', href: '/docs/features/trial' }}
     >
+      {/* Component Variants */}
+      <DocsSection title="Component Variants">
+        <DocsCard title="TWO VERSIONS AVAILABLE">
+          <div className="space-y-4">
+            <div>
+              <p className="mb-2 font-mono font-semibold">1. Full Version (Floating Button)</p>
+              <p className="text-muted-foreground mb-2 text-sm">
+                Bottom-right floating button that opens a comprehensive modal with tabs. Best for
+                main app layout.
+              </p>
+              <div className="bg-muted/50 p-4">
+                <code className="font-mono text-xs">
+                  {`import { CookieConsent } from "@/components/cookie-consent";
+
+<CookieConsent />`}
+                </code>
+              </div>
+            </div>
+            <div>
+              <p className="mb-2 font-mono font-semibold">2. Minimal Banner (Top Bar)</p>
+              <p className="text-muted-foreground mb-2 text-sm">
+                Compact top-center banner with cookie icon and close button. Best for marketing
+                pages. Currently used in marketing layout.
+              </p>
+              <div className="bg-muted/50 p-4">
+                <code className="font-mono text-xs">
+                  {`import { MinimalCookieBanner } from "@/components/cookie-consent/minimal-banner";
+
+<MinimalCookieBanner />`}
+                </code>
+              </div>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+
       {/* Component Preview */}
       <DocsSection title="Preview">
         <DocsPreview
-          title="Cookie Consent"
+          title="Cookie Consent (Full Version)"
           description="Interactive cookie preference modal"
           preview={<CookieConsentDemo />}
           code={`import { CookieConsent } from "@/components/cookie-consent";

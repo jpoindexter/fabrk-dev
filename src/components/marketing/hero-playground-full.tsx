@@ -83,9 +83,11 @@ import {
   MessageSquare,
   Award,
   Zap,
+  CircleHelp,
 } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 // Analytics Dashboard components
 import { MetricCards } from '@/app/(marketing)/library/analytics-dashboard/components/metric-cards';
@@ -386,8 +388,16 @@ function LeftNavigation({ activeSection }: { activeSection: string }) {
     },
   ];
 
+  const utilities = [
+    { id: 'settings', label: 'Settings', icon: Settings },
+    { id: 'help', label: 'Get Help', icon: CircleHelp },
+    { id: 'search', label: 'Search', icon: Search },
+  ];
+
+  const showUtilities = activeSection === 'dashboard';
+
   return (
-    <div className="border-border bg-muted/20 w-64 border-r p-4">
+    <div className="border-border bg-muted/20 flex w-64 flex-col border-r p-4">
       <div className="mb-6">
         <div className="flex items-center gap-2 text-sm font-semibold">
           <Activity className="h-4 w-4" />
@@ -418,6 +428,41 @@ function LeftNavigation({ activeSection }: { activeSection: string }) {
           </div>
         </div>
       ))}
+
+      {showUtilities && (
+        <div className="mt-auto space-y-4">
+          <div className="space-y-1">
+            {utilities.map((item) => (
+              <button
+                key={item.id}
+                className={cn(
+                  'text-muted-foreground hover:bg-muted hover:text-foreground flex w-full items-center gap-2 rounded-none px-3 py-2 text-xs transition-colors',
+                  mode.font
+                )}
+              >
+                <item.icon className="h-4 w-4" />
+                {item.label}
+              </button>
+            ))}
+          </div>
+
+          <Separator className="my-2" />
+
+          <div className="flex items-center gap-3 px-1">
+            <div className={cn(mode.font, 'flex-1 text-left')}>
+              <div className="text-xs font-semibold">Jordan Lee</div>
+              <div className="text-muted-foreground text-[11px]">jordan.lee@example.com</div>
+            </div>
+            <button
+              type="button"
+              className="text-muted-foreground hover:text-foreground"
+              aria-label="Open profile actions"
+            >
+              <MoreHorizontal className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
