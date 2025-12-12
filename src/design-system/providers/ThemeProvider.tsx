@@ -18,13 +18,11 @@ export type ColorThemeName =
   | 'light-green'
   | 'light-amber'
   | 'gameboy'
-  | 'apple2'
   | 'c64'
   | 'gbpocket'
   | 'vic20'
   | 'atari'
   | 'spectrum'
-  | 'ibmpc'
   | 'bw';
 
 const ALL_THEMES = [
@@ -36,13 +34,11 @@ const ALL_THEMES = [
   'light-green',
   'light-amber',
   'gameboy',
-  'apple2',
   'c64',
   'gbpocket',
   'vic20',
   'atari',
   'spectrum',
-  'ibmpc',
   'bw',
 ];
 
@@ -196,13 +192,11 @@ export function ThemeScript({
           'light-green',
           'light-amber',
           'gameboy',
-          'apple2',
           'c64',
           'gbpocket',
           'vic20',
           'atari',
           'spectrum',
-          'ibmpc',
           'bw',
         ];
         if (validThemes.includes(colorTheme)) {

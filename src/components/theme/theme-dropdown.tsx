@@ -31,10 +31,8 @@ const themeGroups = {
     { id: 'red', name: 'Red CRT', preview: '#ff6655' },
   ],
   'Retro Computer': [
-    { id: 'apple2', name: 'Apple II', preview: '#000000' },
     { id: 'atari', name: 'Atari 800', preview: '#305070' },
     { id: 'c64', name: 'C64 Blue', preview: '#352879' },
-    { id: 'ibmpc', name: 'IBM PC', preview: '#000000' },
     { id: 'spectrum', name: 'ZX Spectrum', preview: '#ffffff' },
     { id: 'vic20', name: 'VIC-20', preview: '#e0ffff' },
   ],
@@ -98,19 +96,9 @@ export function ThemeDropdown() {
     }
     // 2. Retro Computer / CRT Themes
     else if (
-      [
-        'amber',
-        'green',
-        'blue',
-        'red',
-        'purple',
-        'apple2',
-        'c64',
-        'vic20',
-        'atari',
-        'spectrum',
-        'ibmpc',
-      ].includes(themeId)
+      ['amber', 'green', 'blue', 'red', 'purple', 'c64', 'vic20', 'atari', 'spectrum'].includes(
+        themeId
+      )
     ) {
       effect = 'crt';
     }
