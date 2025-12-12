@@ -29,23 +29,6 @@
   background-blend-mode: overlay;
 }
 
-/* Subtle scanlines (lighter, less chromatic aberration) */
-.effect-scanlines-subtle body::before {
-  content: '' !important;
-  position: fixed !important;
-  inset: 0 !important;
-  pointer-events: none !important;
-  z-index: 9999 !important;
-  background-image:
-    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
-    linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02)) !important;
-  background-size:
-    100% 2px,
-    3px 100% !important;
-  background-repeat: repeat, repeat !important;
-  background-blend-mode: overlay !important;
-}
-
 /* ============================================
    TEXT GLOW EFFECTS
    CRT phosphor glow on text
@@ -57,14 +40,6 @@
   text-shadow:
     0 0 2px color-mix(in srgb, currentColor, transparent 65%),
     0 0 4px color-mix(in srgb, currentColor, transparent 85%) !important;
-}
-
-/* Strong glow - more pronounced */
-.effect-glow-strong body {
-  text-shadow:
-    0 0 3px color-mix(in srgb, currentColor, transparent 50%),
-    0 0 6px color-mix(in srgb, currentColor, transparent 70%),
-    0 0 9px color-mix(in srgb, currentColor, transparent 90%) !important;
 }
 
 /* ============================================
@@ -148,7 +123,6 @@
   html.effect-vintage::after,
   html.effect-scanlines::before,
   html.effect-glow::before,
-  html.effect-glow-strong::before,
   html.effect-fast-flicker::before,
   .effect-color-shift body,
   html.effect-retro-crt::before,
@@ -164,14 +138,12 @@
    ============================================ */
 
 .effect-scanlines body::before,
-.effect-scanlines-subtle body::before,
 .effect-vintage body::before,
 .effect-vintage body::after,
 html.effect-vintage::before,
 html.effect-vintage::after,
 html.effect-scanlines::before,
 html.effect-glow::before,
-html.effect-glow-strong::before,
 html.effect-fast-flicker::before,
 .effect-screen-door body::before,
 html.effect-retro-crt::before,
@@ -324,8 +296,7 @@ html.effect-retro-crt::before,
 /* Screen flicker effect - dark overlay with sudden flickers */
 html.effect-vintage::before,
 html.effect-scanlines::before,
-html.effect-glow::before,
-html.effect-glow-strong::before {
+html.effect-glow::before {
   content: '' !important;
   position: fixed !important;
   inset: 0 !important;

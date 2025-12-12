@@ -23,9 +23,7 @@ import { mode } from '@/design-system';
 const effects = [
   { id: 'none', name: 'No Effects', description: 'Clean display' },
   { id: 'scanlines', name: 'Scanlines', description: 'Horizontal CRT lines' },
-  { id: 'scanlines-subtle', name: 'Scanlines Subtle', description: 'Light scanlines' },
   { id: 'glow', name: 'CRT Glow', description: 'Phosphor glow' },
-  { id: 'glow-strong', name: 'Strong Glow', description: 'Bright phosphor' },
   { id: 'vintage', name: 'Vintage CRT', description: 'Full CRT effect' },
   { id: 'fast-flicker', name: 'Fast Flicker', description: 'Rapid video flicker' },
   { id: 'screen-door', name: 'Screen Door', description: 'Pixel grid pattern' },
