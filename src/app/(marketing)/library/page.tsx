@@ -6,7 +6,7 @@
  */
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { Search, Package, Layers, Code, Star, Clock, Sparkles } from 'lucide-react';
 import { mode } from '@/design-system';
@@ -14,6 +14,7 @@ import { cn } from '@/lib/utils';
 import { InputSearch } from '@/components/ui/input-search';
 import { Badge } from '@/components/ui/badge';
 import { templates, categories } from './library-data';
+import { filterTemplates } from '@/lib/search';
 
 // Featured template IDs (manually curated)
 const FEATURED_IDS = [
@@ -32,28 +33,12 @@ export default function LibraryIndexPage() {
   // Get featured templates
   const featuredTemplates = templates.filter((t) => FEATURED_IDS.includes(t.id));
 
-  // Filter templates based on search and category
-  const filteredTemplates = useMemo(() => {
-    let filtered = templates;
-
-    // Filter by category
-    if (selectedCategory !== 'all') {
-      filtered = filtered.filter((t) => t.category === selectedCategory);
-    }
-
-    // Filter by search query
-    if (searchQuery) {
-      const query = searchQuery.toLowerCase();
-      filtered = filtered.filter(
-        (t) =>
-          t.name.toLowerCase().includes(query) ||
-          t.description.toLowerCase().includes(query) ||
-          t.features.some((f) => f.toLowerCase().includes(query))
-      );
-    }
-
-    return filtered;
-  }, [searchQuery, selectedCategory]);
+  // Filter templates with advanced fuzzy search (Fuse.js)
+  // React Compiler handles memoization automatically
+  const filteredTemplates = filterTemplates(templates, {
+    searchQuery: searchQuery,
+    category: selectedCategory,
+  });
 
   // Calculate stats
   const stats = {
