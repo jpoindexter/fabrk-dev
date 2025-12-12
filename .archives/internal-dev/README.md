@@ -20,6 +20,28 @@ This file contains outdated information that conflicts with the current official
 - Design system: DaisyUI 20 themes → Terminal-only design (14 CRT variants)
 - Tech stack references that no longer match current state
 
+### GEMINI-DEV.md (6.3K)
+
+Development version of configuration for Gemini AI assistant.
+
+**Contents:**
+- Gemini-specific instructions
+- Development workflows
+- Integration patterns
+
+**Why Archived:**
+Gemini-specific documentation no longer needed. All AI assistant instructions are unified in CLAUDE.md.
+
+### CLAUDE-DOCS-OLD.md (31K)
+
+Old copy of CLAUDE.md found in `docs/` directory with title "WARP.md".
+
+**Key Outdated Information:**
+- References Next.js 15 (now Next.js 16)
+- Mentions "25+ primitives" (now 77 components)
+- Different tech stack references
+- Different project structure
+
 ### GITHUB_SECURITY_CHECKLIST.md
 
 Security checklist for GitHub repository configuration and best practices.

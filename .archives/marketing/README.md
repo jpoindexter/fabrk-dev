@@ -20,6 +20,19 @@ Comprehensive marketing homepage audit with honest metrics implementation.
 - Call-to-action effectiveness
 - Honest vs. inflated numbers
 
+### MARKETING_ROLLOUT_PLAN.md (15K)
+
+Marketing rollout and launch strategy planning document.
+
+**Contents:**
+- Launch timeline and phases
+- Marketing channels and tactics
+- Content strategy
+- Community building
+- Growth metrics and KPIs
+
+**Status:** Planning document - execution ongoing
+
 ---
 
 **Current Marketing Documentation:**
