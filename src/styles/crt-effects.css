@@ -181,31 +181,46 @@
 
 @keyframes flicker {
   0% {
-    opacity: 0.98;
+    opacity: 0.03;
   }
-  2% {
-    opacity: 1;
+  5% {
+    opacity: 0;
   }
-  4% {
-    opacity: 0.98;
+  10% {
+    opacity: 0.04;
   }
-  8% {
-    opacity: 1;
+  15% {
+    opacity: 0;
   }
-  70% {
-    opacity: 0.99;
+  20% {
+    opacity: 0.02;
+  }
+  40% {
+    opacity: 0.01;
+  }
+  60% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0.03;
   }
   100% {
-    opacity: 1;
+    opacity: 0;
   }
 }
 
-/* Screen flicker effect - subtle brightness variation */
-[data-monitor-effect='vintage'] html,
-[data-monitor-effect='scanlines'] html,
-[data-monitor-effect='glow'] html,
-[data-monitor-effect='glow-strong'] html {
-  animation: flicker 0.15s infinite;
+/* Screen flicker effect - dark overlay that pulses */
+[data-monitor-effect='vintage'] html::before,
+[data-monitor-effect='scanlines'] html::before,
+[data-monitor-effect='glow'] html::before,
+[data-monitor-effect='glow-strong'] html::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9996;
+  background: rgba(0, 0, 0, 1);
+  animation: flicker 4s infinite;
 }
 
 /* Rolling scanline - classic CRT effect (vintage mode only) */
