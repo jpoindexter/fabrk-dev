@@ -1361,66 +1361,66 @@
 }
 
 /* ============================================
-   Paper Theme - Warm paper texture (hue 35, warmer than newspaper)
-   Softer than newspaper, like quality writing paper
+   Paper Theme - Notebook paper aesthetic (hue 210, blue ruling lines)
+   White paper with blue accents like lined notebook paper
    ============================================ */
 
 [data-theme='paper'] {
-  /* Base colors - Warm paper (35 = peachy/tan) */
-  --background: 94% 0.04 35; /* Warm paper */
-  --foreground: 12% 0.03 35; /* Soft black */
-  --card: 96% 0.03 35;
-  --card-foreground: 12% 0.03 35;
-  --popover: 96% 0.03 35;
-  --popover-foreground: 12% 0.03 35;
+  /* Base colors - White notebook paper (210 = blue, minimal saturation) */
+  --background: 98% 0.01 210; /* White paper */
+  --foreground: 10% 0.02 210; /* Dark ink */
+  --card: 100% 0.01 210;
+  --card-foreground: 10% 0.02 210;
+  --popover: 100% 0.01 210;
+  --popover-foreground: 10% 0.02 210;
 
-  /* Primary - Warm dark ink */
-  --primary: 15% 0.04 35;
-  --primary-foreground: 94% 0.04 35;
+  /* Primary - Blue ruling lines (notebook paper blue) */
+  --primary: 55% 0.15 210;
+  --primary-foreground: 98% 0.01 210;
 
-  /* Secondary - Slightly tinted paper */
-  --secondary: 88% 0.04 35;
-  --secondary-foreground: 15% 0.04 35;
+  /* Secondary - Light blue tint */
+  --secondary: 92% 0.05 210;
+  --secondary-foreground: 10% 0.02 210;
 
-  /* Muted - Light warm paper */
-  --muted: 90% 0.03 35;
-  --muted-foreground: 38% 0.03 35;
+  /* Muted - Very light blue-gray */
+  --muted: 94% 0.03 210;
+  --muted-foreground: 40% 0.08 210;
 
-  /* Accent - Medium warm tone */
-  --accent: 82% 0.05 35;
-  --accent-foreground: 15% 0.04 35;
+  /* Accent - Brighter blue (like pen ink) */
+  --accent: 60% 0.18 210;
+  --accent-foreground: 10% 0.02 210;
 
-  /* Destructive - Darker warm tone */
-  --destructive: 22% 0.05 0;
-  --destructive-foreground: 94% 0.04 35;
+  /* Destructive - Red margin line */
+  --destructive: 45% 0.2 0;
+  --destructive-foreground: 98% 0.01 210;
 
-  /* Borders - Warm gray */
-  --border: 62% 0.03 35;
-  --input: 62% 0.03 35;
+  /* Borders - Blue ruling lines */
+  --border: 55% 0.15 210;
+  --input: 55% 0.15 210;
 
-  /* Ring - Warm dark ink */
-  --ring: 15% 0.04 35;
+  /* Ring - Blue focus indicator */
+  --ring: 55% 0.15 210;
 
-  /* Chart colors - Warm paper tones */
-  --chart-1: 25% 0.04 35;
-  --chart-2: 35% 0.04 35;
-  --chart-3: 45% 0.04 35;
-  --chart-4: 55% 0.04 35;
-  --chart-5: 65% 0.04 35;
+  /* Chart colors - Blue spectrum like pen colors */
+  --chart-1: 45% 0.15 210;
+  --chart-2: 50% 0.15 210;
+  --chart-3: 55% 0.15 210;
+  --chart-4: 60% 0.15 210;
+  --chart-5: 65% 0.15 210;
 
   /* Terminal radius */
   --radius: 0rem;
 
-  /* Syntax highlighting - Warm ink on paper */
-  --code-bg: #f7f4f0;
-  --code-foreground: #2a2520;
-  --code-comment: #7a756f;
-  --code-string: #4a453f;
-  --code-punctuation: #5a554f;
-  --code-number: #3a352f;
-  --code-keyword: #2a251f;
-  --code-function: #4a453f;
-  --code-selector: #3a352f;
+  /* Syntax highlighting - Blue ink on white paper */
+  --code-bg: #fafbfc;
+  --code-foreground: #1a2530;
+  --code-comment: #6a7580;
+  --code-string: #3a4550;
+  --code-punctuation: #4a5560;
+  --code-number: #2a3540;
+  --code-keyword: #1a2530;
+  --code-function: #3a4550;
+  --code-selector: #2a3540;
 }
 
 /* ============================================
