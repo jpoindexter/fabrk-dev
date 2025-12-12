@@ -9,7 +9,7 @@
    Classic CRT horizontal scan lines
    ============================================ */
 
-/* Regular scanlines */
+/* Regular scanlines - Mistral-style with chromatic aberration */
 [data-monitor-effect='scanlines'] body::before,
 [data-monitor-effect='vintage'] body::before {
   content: '';
@@ -17,21 +17,31 @@
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-  background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
-  background-size: 100% 4px;
-  background-repeat: repeat;
+  background-image:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size:
+    100% 2px,
+    3px 100%;
+  background-repeat: repeat, repeat;
+  background-blend-mode: overlay;
 }
 
-/* Subtle scanlines (lighter) */
+/* Subtle scanlines (lighter, less chromatic aberration) */
 [data-monitor-effect='scanlines-subtle'] body::before {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-  background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%);
-  background-size: 100% 4px;
-  background-repeat: repeat;
+  background-image:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+  background-size:
+    100% 2px,
+    3px 100%;
+  background-repeat: repeat, repeat;
+  background-blend-mode: overlay;
 }
 
 /* ============================================
@@ -151,4 +161,44 @@
   will-change: opacity;
   transform: translateZ(0);
   backface-visibility: hidden;
+}
+
+/* ============================================
+   ANIMATIONS
+   Rolling scanline for vintage CRT effect
+   ============================================ */
+
+@keyframes roll-scanline {
+  0% {
+    top: -100px;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+/* Rolling scanline - classic CRT effect (vintage mode only) */
+[data-monitor-effect='vintage'] html::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  pointer-events: none;
+  z-index: 9997;
+
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 45%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.03) 55%,
+    transparent 100%
+  );
+
+  -webkit-backdrop-filter: blur(0.5px) brightness(1.1);
+  backdrop-filter: blur(0.5px) brightness(1.1);
+
+  animation: roll-scanline 8s linear infinite;
 }
