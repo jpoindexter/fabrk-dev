@@ -119,6 +119,9 @@ export function SiteNavigation() {
             <Button variant="outline" asChild className={cn(mode.radius, mode.font, 'text-xs')}>
               <Link href="/library">&gt; VIEW LIBRARY</Link>
             </Button>
+            <Button asChild className={cn(mode.radius, mode.font, 'text-xs')}>
+              <Link href="/#pricing">&gt; GET STARTED</Link>
+            </Button>
           </div>
         </motion.div>
 
@@ -195,10 +198,20 @@ export function SiteNavigation() {
                       <Link href="/library">&gt; VIEW LIBRARY</Link>
                     </Button>
                   </SheetClose>
+                  <SheetClose asChild>
+                    <Button className={cn(mode.radius, mode.font, 'mt-4 w-full text-xs')} asChild>
+                      <Link href="/#pricing">&gt; GET STARTED</Link>
+                    </Button>
+                  </SheetClose>
                 </div>
               </nav>
             </SheetContent>
           </Sheet>
+
+          {/* Mobile CTA Button */}
+          <Button asChild className={cn(mode.radius, mode.font, 'text-xs md:hidden')}>
+            <Link href="/#pricing">&gt; START</Link>
+          </Button>
         </motion.div>
       </div>
     </nav>
