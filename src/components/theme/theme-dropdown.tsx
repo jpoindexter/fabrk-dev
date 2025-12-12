@@ -40,8 +40,6 @@ const themes = [
   { id: 'light-amber', name: 'Light Amber', preview: '#cc8800' },
   // Paper themes
   { id: 'bw', name: 'Black & White', preview: '#ffffff' },
-  { id: 'newspaper', name: 'Newspaper', preview: '#faf8f5' },
-  { id: 'paper', name: 'Paper', preview: '#f7f4f0' },
 ] as const;
 
 export type ColorTheme = (typeof themes)[number]['id'];
@@ -107,7 +105,7 @@ export function ThemeDropdown() {
       effect = 'crt';
     }
     // 3. Paper / Clean Themes
-    else if (['bw', 'newspaper', 'paper', 'light-green', 'light-amber'].includes(themeId)) {
+    else if (['bw', 'light-green', 'light-amber'].includes(themeId)) {
       effect = 'none';
     }
 

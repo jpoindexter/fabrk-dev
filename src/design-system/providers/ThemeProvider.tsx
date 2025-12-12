@@ -25,9 +25,7 @@ export type ColorThemeName =
   | 'atari'
   | 'spectrum'
   | 'ibmpc'
-  | 'bw'
-  | 'newspaper'
-  | 'paper';
+  | 'bw';
 
 const ALL_THEMES = [
   'amber',
@@ -46,9 +44,9 @@ const ALL_THEMES = [
   'spectrum',
   'ibmpc',
   'bw',
-  'newspaper',
-  'paper',
 ];
+
+// =============================================================================
 
 export interface ThemeContextValue {
   theme: ThemeName;
@@ -206,8 +204,6 @@ export function ThemeScript({
           'spectrum',
           'ibmpc',
           'bw',
-          'newspaper',
-          'paper',
         ];
         if (validThemes.includes(colorTheme)) {
           document.documentElement.setAttribute('data-theme', colorTheme);
