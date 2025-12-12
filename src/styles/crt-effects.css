@@ -1,7 +1,9 @@
 /**
  * CRT Monitor Effects
- * Toggleable display effects via data-monitor-effect attribute
- * Options: none, scanlines, scanlines-subtle, glow, glow-strong, vintage
+ * Multi-select toggleable display effects via CSS classes
+ * Options: none, scanlines, scanlines-subtle, glow, glow-strong, vintage,
+ *          fast-flicker, screen-door, color-shift, retro-crt
+ * Usage: Multiple effects can be combined (e.g., .effect-scanlines + .effect-glow)
  */
 
 /* ============================================
@@ -10,15 +12,15 @@
    ============================================ */
 
 /* Regular scanlines - Mistral-style with chromatic aberration */
-[data-monitor-effect='scanlines'] body::before,
-[data-monitor-effect='vintage'] body::before {
+.effect-scanlines body::before,
+.effect-vintage body::before {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 9999;
   background-image:
-    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%),
     linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
   background-size:
     100% 2px,
@@ -28,20 +30,20 @@
 }
 
 /* Subtle scanlines (lighter, less chromatic aberration) */
-[data-monitor-effect='scanlines-subtle'] body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
+.effect-scanlines-subtle body::before {
+  content: '' !important;
+  position: fixed !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  z-index: 9999 !important;
   background-image:
     linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
-    linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+    linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02)) !important;
   background-size:
     100% 2px,
-    3px 100%;
-  background-repeat: repeat, repeat;
-  background-blend-mode: overlay;
+    3px 100% !important;
+  background-repeat: repeat, repeat !important;
+  background-blend-mode: overlay !important;
 }
 
 /* ============================================
@@ -50,19 +52,19 @@
    ============================================ */
 
 /* Regular glow - subtle */
-[data-monitor-effect='glow'] body,
-[data-monitor-effect='vintage'] body {
+.effect-glow body,
+.effect-vintage body {
   text-shadow:
-    0 0 2px currentColor,
-    0 0 4px currentColor;
+    0 0 2px color-mix(in srgb, currentColor, transparent 65%),
+    0 0 4px color-mix(in srgb, currentColor, transparent 85%) !important;
 }
 
 /* Strong glow - more pronounced */
-[data-monitor-effect='glow-strong'] body {
+.effect-glow-strong body {
   text-shadow:
-    0 0 3px currentColor,
-    0 0 6px currentColor,
-    0 0 9px currentColor;
+    0 0 3px color-mix(in srgb, currentColor, transparent 50%),
+    0 0 6px color-mix(in srgb, currentColor, transparent 70%),
+    0 0 9px color-mix(in srgb, currentColor, transparent 90%) !important;
 }
 
 /* ============================================
@@ -71,19 +73,19 @@
    ============================================ */
 
 /* Vignette effect (darkened corners) */
-[data-monitor-effect='vintage'] body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9998;
+.effect-vintage body::after {
+  content: '' !important;
+  position: fixed !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  z-index: 9998 !important;
   background: radial-gradient(
     ellipse at center,
     transparent 0%,
     transparent 60%,
-    rgba(0, 0, 0, 0.1) 85%,
-    rgba(0, 0, 0, 0.3) 100%
-  );
+    rgba(0, 0, 0, 0.05) 85%,
+    rgba(0, 0, 0, 0.15) 100%
+  ) !important;
 }
 
 /* ============================================
@@ -141,17 +143,18 @@
    ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
-  [data-monitor-effect] html,
-  [data-monitor-effect] html::before,
-  [data-monitor-effect] html::after,
-  [data-monitor-effect] body,
-  [data-monitor-effect] body::before,
-  [data-monitor-effect] body::after {
-    animation: none !important;
-  }
-
+  /* Disable all CRT effect animations for reduced motion */
+  html.effect-vintage::before,
+  html.effect-vintage::after,
+  html.effect-scanlines::before,
+  html.effect-glow::before,
+  html.effect-glow-strong::before,
+  html.effect-fast-flicker::before,
+  .effect-color-shift body,
+  html.effect-retro-crt::before,
+  .effect-retro-crt body,
   .crt-glow::after {
-    animation: none;
+    animation: none !important;
   }
 }
 
@@ -160,8 +163,19 @@
    Use GPU acceleration for fixed overlays
    ============================================ */
 
-[data-monitor-effect] body::before,
-[data-monitor-effect] body::after {
+.effect-scanlines body::before,
+.effect-scanlines-subtle body::before,
+.effect-vintage body::before,
+.effect-vintage body::after,
+html.effect-vintage::before,
+html.effect-vintage::after,
+html.effect-scanlines::before,
+html.effect-glow::before,
+html.effect-glow-strong::before,
+html.effect-fast-flicker::before,
+.effect-screen-door body::before,
+html.effect-retro-crt::before,
+.effect-retro-crt body::before {
   will-change: opacity;
   transform: translateZ(0);
   backface-visibility: hidden;
@@ -172,16 +186,16 @@
    Rolling scanline for vintage CRT effect
    ============================================ */
 
-@keyframes roll-scanline {
+@keyframes crt-roll-scanline {
   0% {
-    top: -100px;
+    transform: translateY(-100%);
   }
   100% {
-    top: 100%;
+    transform: translateY(100vh);
   }
 }
 
-@keyframes flicker {
+@keyframes crt-overlay-flicker {
   0%,
   19.999%,
   22%,
@@ -198,139 +212,139 @@
   63.999%,
   65%,
   69.999% {
-    opacity: 0.6;
+    opacity: 0.15;
   }
 }
 
 @keyframes fast-flicker {
   0% {
-    opacity: 0.27861;
+    opacity: 0.027;
   }
   5% {
-    opacity: 0.34769;
+    opacity: 0.034;
   }
   10% {
-    opacity: 0.23604;
+    opacity: 0.023;
   }
   15% {
-    opacity: 0.90626;
+    opacity: 0.09;
   }
   20% {
-    opacity: 0.18128;
+    opacity: 0.018;
   }
   25% {
-    opacity: 0.83891;
+    opacity: 0.083;
   }
   30% {
-    opacity: 0.65583;
+    opacity: 0.065;
   }
   35% {
-    opacity: 0.67807;
+    opacity: 0.067;
   }
   40% {
-    opacity: 0.26559;
+    opacity: 0.026;
   }
   45% {
-    opacity: 0.84693;
+    opacity: 0.084;
   }
   50% {
-    opacity: 0.96019;
+    opacity: 0.096;
   }
   55% {
-    opacity: 0.08594;
+    opacity: 0.008;
   }
   60% {
-    opacity: 0.20313;
+    opacity: 0.02;
   }
   65% {
-    opacity: 0.71988;
+    opacity: 0.071;
   }
   70% {
-    opacity: 0.53455;
+    opacity: 0.053;
   }
   75% {
-    opacity: 0.37288;
+    opacity: 0.037;
   }
   80% {
-    opacity: 0.71428;
+    opacity: 0.071;
   }
   85% {
-    opacity: 0.70419;
+    opacity: 0.07;
   }
   90% {
-    opacity: 0.7003;
+    opacity: 0.07;
   }
   95% {
-    opacity: 0.36108;
+    opacity: 0.036;
   }
   100% {
-    opacity: 0.24387;
+    opacity: 0.024;
   }
 }
 
 @keyframes color-shift {
   0% {
     text-shadow:
-      0.4389924193300864px 0 1px rgba(0, 30, 255, 0.5),
-      -0.4389924193300864px 0 1px rgba(255, 0, 80, 0.3),
+      0.4389924193300864px 0 1px rgba(0, 30, 255, 0.15),
+      -0.4389924193300864px 0 1px rgba(255, 0, 80, 0.1),
       0 0 3px;
   }
   20% {
     text-shadow:
-      -0.94px 0 1px rgba(0, 30, 255, 0.5),
-      0.94px 0 1px rgba(255, 0, 80, 0.3),
+      -0.94px 0 1px rgba(0, 30, 255, 0.15),
+      0.94px 0 1px rgba(255, 0, 80, 0.1),
       0 0 3px;
   }
   40% {
     text-shadow:
-      0.62px 0 1px rgba(0, 30, 255, 0.5),
-      -0.62px 0 1px rgba(255, 0, 80, 0.3),
+      0.62px 0 1px rgba(0, 30, 255, 0.15),
+      -0.62px 0 1px rgba(255, 0, 80, 0.1),
       0 0 3px;
   }
   60% {
     text-shadow:
-      -0.78px 0 1px rgba(0, 30, 255, 0.5),
-      0.78px 0 1px rgba(255, 0, 80, 0.3),
+      -0.78px 0 1px rgba(0, 30, 255, 0.15),
+      0.78px 0 1px rgba(255, 0, 80, 0.1),
       0 0 3px;
   }
   80% {
     text-shadow:
-      0.31px 0 1px rgba(0, 30, 255, 0.5),
-      -0.31px 0 1px rgba(255, 0, 80, 0.3),
+      0.31px 0 1px rgba(0, 30, 255, 0.15),
+      -0.31px 0 1px rgba(255, 0, 80, 0.1),
       0 0 3px;
   }
   100% {
     text-shadow:
-      0.4389924193300864px 0 1px rgba(0, 30, 255, 0.5),
-      -0.4389924193300864px 0 1px rgba(255, 0, 80, 0.3),
+      0.4389924193300864px 0 1px rgba(0, 30, 255, 0.15),
+      -0.4389924193300864px 0 1px rgba(255, 0, 80, 0.1),
       0 0 3px;
   }
 }
 
 /* Screen flicker effect - dark overlay with sudden flickers */
-[data-monitor-effect='vintage'] html::before,
-[data-monitor-effect='scanlines'] html::before,
-[data-monitor-effect='glow'] html::before,
-[data-monitor-effect='glow-strong'] html::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9996;
-  background: rgba(0, 0, 0, 1);
-  animation: flicker 8s linear infinite;
+html.effect-vintage::before,
+html.effect-scanlines::before,
+html.effect-glow::before,
+html.effect-glow-strong::before {
+  content: '' !important;
+  position: fixed !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  z-index: 9996 !important;
+  background: rgba(0, 0, 0, 1) !important;
+  animation: crt-overlay-flicker 8s linear infinite !important;
 }
 
 /* Rolling scanline - classic CRT effect (vintage mode only) */
-[data-monitor-effect='vintage'] html::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  pointer-events: none;
-  z-index: 9997;
+html.effect-vintage::after {
+  content: '' !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100px !important;
+  pointer-events: none !important;
+  z-index: 9997 !important;
 
   background: linear-gradient(
     to bottom,
@@ -339,12 +353,12 @@
     rgba(255, 255, 255, 0.1) 50%,
     rgba(255, 255, 255, 0.03) 55%,
     transparent 100%
-  );
+  ) !important;
 
-  -webkit-backdrop-filter: blur(0.5px) brightness(1.1);
-  backdrop-filter: blur(0.5px) brightness(1.1);
+  -webkit-backdrop-filter: blur(0.5px) brightness(1.1) !important;
+  backdrop-filter: blur(0.5px) brightness(1.1) !important;
 
-  animation: roll-scanline 8s linear infinite;
+  animation: crt-roll-scanline 8s linear infinite !important;
 }
 
 /* ============================================
@@ -352,23 +366,23 @@
    ============================================ */
 
 /* Fast Flicker - Rapid 0.15s video-style flicker */
-[data-monitor-effect='fast-flicker'] html::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9996;
-  background: rgba(0, 0, 0, 1);
-  animation: fast-flicker 0.15s infinite;
+html.effect-fast-flicker::before {
+  content: '' !important;
+  position: fixed !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  z-index: 9996 !important;
+  background: rgba(0, 0, 0, 1) !important;
+  animation: fast-flicker 0.15s infinite !important;
 }
 
 /* Screen Door - Pixel grid pattern effect */
-[data-monitor-effect='screen-door'] body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
+.effect-screen-door body::before {
+  content: '' !important;
+  position: fixed !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  z-index: 9999 !important;
   background-image:
     repeating-linear-gradient(
       0deg,
@@ -383,32 +397,32 @@
       transparent 2px,
       rgba(0, 0, 0, 0.3) 2px,
       rgba(0, 0, 0, 0.3) 3px
-    );
-  background-size: 3px 3px;
+    ) !important;
+  background-size: 3px 3px !important;
 }
 
 /* Color Shift - Animated chromatic aberration on text */
-[data-monitor-effect='color-shift'] body {
-  animation: color-shift 1s infinite;
+.effect-color-shift body {
+  animation: color-shift 1s infinite !important;
 }
 
 /* Retro CRT - All modern effects combined */
-[data-monitor-effect='retro-crt'] html::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9996;
-  background: rgba(0, 0, 0, 1);
-  animation: fast-flicker 0.15s infinite;
+html.effect-retro-crt::before {
+  content: '' !important;
+  position: fixed !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  z-index: 9996 !important;
+  background: rgba(0, 0, 0, 1) !important;
+  animation: fast-flicker 0.15s infinite !important;
 }
 
-[data-monitor-effect='retro-crt'] body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
+.effect-retro-crt body::before {
+  content: '' !important;
+  position: fixed !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  z-index: 9999 !important;
   background-image:
     repeating-linear-gradient(
       0deg,
@@ -423,10 +437,10 @@
       transparent 2px,
       rgba(0, 0, 0, 0.3) 2px,
       rgba(0, 0, 0, 0.3) 3px
-    );
-  background-size: 3px 3px;
+    ) !important;
+  background-size: 3px 3px !important;
 }
 
-[data-monitor-effect='retro-crt'] body {
-  animation: color-shift 1s infinite;
+.effect-retro-crt body {
+  animation: color-shift 1s infinite !important;
 }

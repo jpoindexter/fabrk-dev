@@ -36,23 +36,49 @@ const effects = [
 export type MonitorEffect = (typeof effects)[number]['id'];
 
 export function MonitorEffectsDropdown() {
-  const [currentEffect, setCurrentEffect] = useState<MonitorEffect>('none');
+  const [selectedEffects, setSelectedEffects] = useState<Set<MonitorEffect>>(new Set());
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: Hydration pattern for SSR compatibility
     setMounted(true);
 
-    // Load saved effect (default to 'none' - clean display)
-    const saved = (localStorage.getItem('monitor-effect') as MonitorEffect) || 'none';
-    setCurrentEffect(saved);
-    document.documentElement.setAttribute('data-monitor-effect', saved);
+    // Load saved effects (default to empty set - no effects)
+    const saved = localStorage.getItem('monitor-effects');
+    const effectsArray: MonitorEffect[] = saved ? JSON.parse(saved) : [];
+    const effectsSet = new Set(effectsArray);
+    setSelectedEffects(effectsSet);
+
+    // Apply all selected effects as CSS classes
+    effectsArray.forEach((effect) => {
+      document.documentElement.classList.add(`effect-${effect}`);
+    });
   }, []);
 
-  const handleChange = (effectId: MonitorEffect) => {
-    setCurrentEffect(effectId);
-    localStorage.setItem('monitor-effect', effectId);
-    document.documentElement.setAttribute('data-monitor-effect', effectId);
+  const toggleEffect = (effectId: MonitorEffect) => {
+    const newEffects = new Set(selectedEffects);
+
+    if (effectId === 'none') {
+      // Clear all effects
+      newEffects.clear();
+      // Remove all effect classes
+      effects.forEach((e) => {
+        document.documentElement.classList.remove(`effect-${e.id}`);
+      });
+    } else {
+      if (newEffects.has(effectId)) {
+        newEffects.delete(effectId);
+        document.documentElement.classList.remove(`effect-${effectId}`);
+      } else {
+        newEffects.add(effectId);
+        newEffects.delete('none'); // Remove 'none' if other effects are selected
+        document.documentElement.classList.add(`effect-${effectId}`);
+        document.documentElement.classList.remove('effect-none');
+      }
+    }
+
+    setSelectedEffects(newEffects);
+    localStorage.setItem('monitor-effects', JSON.stringify(Array.from(newEffects)));
   };
 
   if (!mounted) {
@@ -69,7 +95,9 @@ export function MonitorEffectsDropdown() {
     );
   }
 
-  const currentEffectName = effects.find((e) => e.id === currentEffect)?.name || 'No Effects';
+  const activeCount = selectedEffects.size;
+  const label =
+    activeCount === 0 ? 'No Effects' : `${activeCount} Effect${activeCount > 1 ? 's' : ''}`;
 
   return (
     <DropdownMenu modal={false}>
@@ -78,25 +106,28 @@ export function MonitorEffectsDropdown() {
           variant="ghost"
           size="sm"
           className={cn('gap-2', mode.radius)}
-          aria-label={`Change monitor effect, current: ${currentEffectName}`}
+          aria-label={`Monitor effects: ${label}`}
         >
           <Monitor className="h-4 w-4" />
-          <span className="hidden sm:inline">{currentEffectName}</span>
+          <span className="hidden sm:inline">{label}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className={cn('w-56', mode.radius)}>
+        <div className="border-border mb-2 border-b px-2 py-1.5">
+          <span className="text-muted-foreground font-mono text-xs">[MULTI-SELECT]</span>
+        </div>
         {effects.map((effect) => (
           <DropdownMenuItem
             key={effect.id}
-            onClick={() => handleChange(effect.id)}
-            className={cn(
-              'flex flex-col items-start',
-              currentEffect === effect.id && 'bg-primary text-primary-foreground'
-            )}
+            onClick={(e) => {
+              e.preventDefault();
+              toggleEffect(effect.id);
+            }}
+            className="flex cursor-pointer flex-col items-start"
           >
             <div className="flex w-full items-center justify-between">
               <span className="font-semibold">{effect.name}</span>
-              {currentEffect === effect.id && <span className="text-xs">✓</span>}
+              {selectedEffects.has(effect.id) && <span className="text-xs">✓</span>}
             </div>
             <span className="text-xs opacity-70">{effect.description}</span>
           </DropdownMenuItem>
