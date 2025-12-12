@@ -33,11 +33,23 @@ Build iteration reports from `.internal/build-reports/`:
 - SaaS transformation reports
 
 ### planning/ - Planning & Audit Plans
-Strategic planning documents:
-- Excellence plans
-- Claude audit planning
-- Selective audit plans
-- SaaS pages audit plans
+Strategic planning documents, AI context, and audit plans:
+- Excellence plans (25K)
+- Project analysis & overview (21K)
+- AI context files (.ai-context.md 29K, .plan.md 5.5K)
+- Prompt patterns documentation (19K)
+- Audit planning documents
+- WCAG contrast fix plan (19K)
+- Quick reference guides (9.7K)
+
+### internal-dev/ - Internal Development Docs
+Development-specific documentation:
+- **CLAUDE-DEV.md** - Dev version with outdated info (234 components, DaisyUI)
+- **GITHUB_SECURITY_CHECKLIST.md** - Security configuration checklist
+
+### metrics/ - Baseline Metrics
+Historical baseline metrics and benchmarks:
+- **BASELINE_METRICS.md** - Initial design system metrics before 100% transformation
 
 ### marketing/ - Marketing Audits
 Marketing homepage audits:
@@ -76,9 +88,11 @@ Historical AI assistant configuration:
 | **Design System** | 30+ | ~400K | Dec 10-12, 2025 |
 | **Internal Reports** | 20+ | ~300K | Early-Mid Dev |
 | **Build Reports** | 8+ | ~100K | Mid-Late Dev |
-| **Planning** | 4 | ~30K | Early Dev |
+| **Planning** | 13 | ~130K | Early Dev |
+| **Internal Dev** | 2 | ~15K | Development |
+| **Metrics** | 1 | ~3.5K | Baseline |
 | **Other** | 8 | ~100K | Various |
-| **TOTAL** | **70+** | **~930K** | Project Lifecycle |
+| **TOTAL** | **80+** | **~1.05MB** | Project Lifecycle |
 
 ---
 
