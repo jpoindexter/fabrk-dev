@@ -5,8 +5,7 @@ import Link from 'next/link';
 
 export const metadata = {
   title: 'UI Components Overview - Fabrk Docs',
-  description:
-    'Complete list of 100+ production-ready UI components included in Fabrk boilerplate.',
+  description: 'Complete list of 80+ production-ready UI components included in Fabrk boilerplate.',
 };
 
 const componentCategories = [
@@ -15,13 +14,9 @@ const componentCategories = [
     hex: '0x61',
     components: [
       { name: 'accordion', description: 'Collapsible content panels' },
-      { name: 'autocomplete', description: 'Search input with suggestions' },
       { name: 'calendar', description: 'Date selection calendar' },
       { name: 'checkbox', description: 'Checkbox toggle' },
-      { name: 'color-picker', description: 'Color selection with preview' },
-      { name: 'combobox', description: 'Searchable select' },
       { name: 'date-picker', description: 'Date, range, time selection' },
-      { name: 'field', description: 'Form field wrapper' },
       { name: 'form', description: 'Form with validation' },
       { name: 'form-error', description: 'Error message component' },
       { name: 'input', description: 'Basic text input field' },
@@ -31,36 +26,24 @@ const componentCategories = [
       { name: 'input-password', description: 'Password input with toggle' },
       { name: 'input-search', description: 'Search input with icon' },
       { name: 'label', description: 'Form label component' },
-      { name: 'multi-select', description: 'Multiple selection dropdown' },
-      { name: 'multi-step-form', description: 'Multi-step form wizard' },
-      { name: 'password-strength', description: 'Password strength indicator' },
       { name: 'radio-group', description: 'Radio button group' },
-      { name: 'rating', description: 'Star rating component' },
-      { name: 'rich-text-editor', description: 'WYSIWYG editor' },
       { name: 'select', description: 'Dropdown select' },
       { name: 'slider', description: 'Range slider' },
       { name: 'switch', description: 'Toggle switch' },
       { name: 'textarea', description: 'Multi-line text input' },
-      { name: 'time-picker', description: 'Time selection' },
     ],
   },
   {
     name: 'Buttons Actions',
     hex: '0x63',
-    components: [
-      { name: 'button', description: 'Primary action button' },
-      { name: 'copy-button', description: 'Copy to clipboard' },
-    ],
+    components: [{ name: 'button', description: 'Primary action button' }],
   },
   {
     name: 'Data Display',
     hex: '0x64',
     components: [
-      { name: 'activity-timeline', description: 'Timeline of activities' },
       { name: 'avatar', description: 'User avatar' },
-      { name: 'avatar-group', description: 'Group of avatars' },
       { name: 'badge', description: 'Status badge/tag' },
-      { name: 'banner', description: 'Announcement banner' },
       { name: 'card', description: 'Content container card' },
       { name: 'code-block', description: 'Syntax highlighted code' },
       { name: 'data-table-header', description: 'Table header with sorting' },
@@ -69,22 +52,24 @@ const componentCategories = [
       { name: 'member-card', description: 'Team member card' },
       { name: 'skeleton', description: 'Loading skeleton' },
       { name: 'stat-card', description: 'Statistics card' },
-      { name: 'status-indicator', description: 'Status dot indicator' },
       { name: 'table', description: 'Data table' },
-      { name: 'typography', description: 'Typography components' },
     ],
   },
   {
     name: 'Charts Analytics',
     hex: '0x65',
     components: [
+      { name: 'area-chart', description: 'Area chart visualization' },
+      { name: 'bar-chart', description: 'Bar chart visualization' },
       { name: 'donut-chart', description: 'Donut/ring chart' },
       { name: 'funnel-chart', description: 'Funnel visualization' },
       { name: 'gauge', description: 'Gauge/meter chart' },
       { name: 'heatmap', description: 'Heatmap visualization' },
+      { name: 'line-chart', description: 'Line chart visualization' },
       { name: 'pie-chart', description: 'Pie chart' },
       { name: 'progress', description: 'Progress bar' },
       { name: 'sparkline', description: 'Inline trend chart' },
+      { name: 'usage-meter', description: 'Usage meter display' },
     ],
   },
   {
@@ -92,9 +77,8 @@ const componentCategories = [
     hex: '0x66',
     components: [
       { name: 'alert-dialog', description: 'Confirmation dialog' },
-      { name: 'context-menu', description: 'Right-click menu' },
+      { name: 'command', description: 'Command palette' },
       { name: 'dialog', description: 'Modal dialog' },
-      { name: 'hover-card', description: 'Card on hover' },
       { name: 'popover', description: 'Popover content' },
       { name: 'sheet', description: 'Side panel/drawer' },
       { name: 'tooltip', description: 'Tooltip hover' },
@@ -105,10 +89,8 @@ const componentCategories = [
     hex: '0x67',
     components: [
       { name: 'breadcrumb', description: 'Breadcrumb navigation' },
-      { name: 'command', description: 'Command palette' },
       { name: 'dropdown-menu', description: 'Dropdown menu' },
-      { name: 'menubar', description: 'Horizontal menu bar' },
-      { name: 'navigation-menu', description: 'Main navigation menu' },
+      { name: 'navigation', description: 'Main navigation component' },
       { name: 'pagination', description: 'Page pagination' },
       { name: 'sidebar', description: 'Sidebar navigation' },
       { name: 'tabs', description: 'Tab navigation' },
@@ -118,15 +100,9 @@ const componentCategories = [
     name: 'Layout Structure',
     hex: '0x6A',
     components: [
-      { name: 'aspect-ratio', description: 'Maintain aspect ratios' },
-      { name: 'collapsible', description: 'Expandable content' },
       { name: 'container', description: 'Responsive container' },
-      { name: 'grid', description: 'CSS grid layout' },
-      { name: 'page-wrapper', description: 'Page layout wrapper' },
       { name: 'scroll-area', description: 'Custom scrollable area' },
-      { name: 'section', description: 'Page section wrapper' },
       { name: 'separator', description: 'Visual separator' },
-      { name: 'stack', description: 'Vertical/horizontal stack' },
     ],
   },
   {
@@ -143,28 +119,16 @@ const componentCategories = [
     ],
   },
   {
-    name: 'Media Upload',
-    hex: '0x69',
-    components: [
-      { name: 'cropper', description: 'Image cropper' },
-      { name: 'cropper-controls', description: 'Cropper zoom/rotate' },
-      { name: 'file-upload', description: 'File upload input' },
-      { name: 'image-dropzone', description: 'Drag-drop image upload' },
-      { name: 'image-uploader', description: 'Image uploader' },
-      { name: 'lightbox', description: 'Full-screen viewer' },
-    ],
-  },
-  {
-    name: 'Specialized',
+    name: 'SaaS Specific',
     hex: '0x6C',
     components: [
-      { name: 'code-generator', description: 'AI code generation' },
-      { name: 'invite-form', description: 'Team invitation form' },
-      { name: 'markdown-editor', description: 'Markdown editor' },
-      { name: 'markdown-viewer', description: 'Markdown renderer' },
-      { name: 'prompt-builder', description: 'AI prompt builder' },
-      { name: 'role-selector', description: 'Role selection' },
-      { name: 'simple-icon', description: 'Brand icons' },
+      { name: 'api-key-manager', description: 'API key management' },
+      { name: 'audit-log', description: 'Audit log viewer' },
+      { name: 'billing-summary-card', description: 'Billing summary display' },
+      { name: 'onboarding-checklist', description: 'User onboarding checklist' },
+      { name: 'plan-selector', description: 'Pricing plan selector' },
+      { name: 'sign-up-form', description: 'User registration form' },
+      { name: 'webhook-log', description: 'Webhook event log' },
     ],
   },
   {
@@ -174,6 +138,18 @@ const componentCategories = [
       { name: 'balance-display', description: 'Credit balance indicator' },
       { name: 'credit-usage-chart', description: 'Daily usage bar chart' },
       { name: 'credit-transaction-table', description: 'Transaction history' },
+    ],
+  },
+  {
+    name: 'Landing Page Sections',
+    hex: '0x6E',
+    components: [
+      { name: 'faq', description: 'FAQ section component' },
+      { name: 'features', description: 'Features showcase section' },
+      { name: 'footer', description: 'Landing page footer' },
+      { name: 'hero', description: 'Hero section component' },
+      { name: 'pricing', description: 'Pricing section component' },
+      { name: 'testimonials', description: 'Testimonials section' },
     ],
   },
 ];
@@ -186,12 +162,12 @@ export default function ComponentsOverviewPage() {
       code="[0x60]"
       category="Components"
       title="UI Components Library"
-      description="100+ production-ready components built with Radix UI and Tailwind CSS."
-      overview={`${totalComponents}+ components across ${componentCategories.length} categories. All fully typed with TypeScript. Built on Radix UI primitives for accessibility.`}
+      description="80+ production-ready components built with Radix UI and Tailwind CSS."
+      overview={`${totalComponents} components across ${componentCategories.length} categories. All fully typed with TypeScript. Built on Radix UI primitives for accessibility.`}
       features={[
         {
           icon: Component,
-          title: `${totalComponents}+`,
+          title: `${totalComponents}`,
           description: 'Production-ready components.',
         },
         {
