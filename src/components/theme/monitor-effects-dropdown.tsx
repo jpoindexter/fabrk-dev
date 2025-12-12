@@ -70,7 +70,7 @@ export function MonitorEffectsDropdown() {
     // User can still manually change theme afterwards
     switch (effectId) {
       case 'lcd':
-        setColorTheme('gameboy'); // Authentic green dot matrix
+        setColorTheme('gbpocket'); // Authentic green dot matrix
         break;
       case 'crt':
         setColorTheme('green'); // Classic green phosphor
