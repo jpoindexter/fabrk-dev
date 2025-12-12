@@ -1,6 +1,6 @@
 'use client';
 
-import { ComponentShowcaseTemplate } from '@/components/docs';
+import { ComponentShowcaseTemplate, DocsSection, DocsCard } from '@/components/docs';
 import { Button } from '@/components/ui/button';
 import {
   AlertDialog,
@@ -307,6 +307,79 @@ export default function AlertDialogPage() {
       ]}
       previous={{ title: 'Dialog', href: '/docs/components/dialog' }}
       next={{ title: 'Sheet', href: '/docs/components/sheet' }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCard title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Alert Dialog when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Simple yes/no decision required (delete, confirm, proceed)
+                </li>
+                <li className="text-sm">
+                  • Destructive actions needing explicit confirmation (delete account, remove data)
+                </li>
+                <li className="text-sm">
+                  • Critical warnings that must be acknowledged before proceeding
+                </li>
+                <li className="text-sm">
+                  • Single action with clear consequences (logout, discard changes)
+                </li>
+                <li className="text-sm">
+                  • Blocking user from proceeding without decision (terms acceptance)
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Complex forms with multiple inputs (use Dialog instead)
+                </li>
+                <li className="text-sm">
+                  • Temporary action feedback (use Toast for success/error messages)
+                </li>
+                <li className="text-sm">
+                  • Persistent warnings that shouldn&apos;t block page (use Alert inline)
+                </li>
+                <li className="text-sm">
+                  • Multiple actions or options needed (use Dialog for flexibility)
+                </li>
+                <li className="text-sm">
+                  • Non-critical information that can be dismissed (use Toast or Alert)
+                </li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">Best Practices:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">
+                  • Always provide both Cancel and Action buttons (gives user clear choice)
+                </li>
+                <li className="text-sm">
+                  • Use destructive styling for dangerous actions (red action button)
+                </li>
+                <li className="text-sm">
+                  • Keep title short and clear: &quot;Delete file?&quot; not &quot;Are you sure you
+                  want to delete this file?&quot;
+                </li>
+                <li className="text-sm">
+                  • Description explains consequences: &quot;This action cannot be undone&quot;
+                </li>
+                <li className="text-sm">
+                  • Action button text matches the action: &quot;Delete&quot;, &quot;Remove&quot;,
+                  &quot;Confirm&quot;
+                </li>
+                <li className="text-sm">
+                  • AlertDialog for single decision, Dialog for complex forms/workflows
+                </li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }

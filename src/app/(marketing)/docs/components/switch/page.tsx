@@ -1,6 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
+import { DocsSection, DocsCard } from '@/components/docs';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { formatLabel } from '@/design-system';
@@ -137,6 +138,63 @@ export default function SwitchPage() {
       ]}
       previous={{ title: 'Checkbox', href: '/docs/components/checkbox' }}
       next={{ title: 'Card', href: '/docs/components/card' }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCard title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Switch when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Toggling a setting that takes effect immediately (dark mode, notifications)
+                </li>
+                <li className="text-sm">
+                  • Binary on/off state with instant feedback (enable feature, activate API)
+                </li>
+                <li className="text-sm">
+                  • User controls system behavior in real-time (auto-save, live preview)
+                </li>
+                <li className="text-sm">• Settings page with multiple independent toggles</li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Change requires explicit save/submit action (use Checkbox + Button)
+                </li>
+                <li className="text-sm">
+                  • Selecting from multiple mutually exclusive options (use Radio Group)
+                </li>
+                <li className="text-sm">
+                  • User needs to opt-in to legal terms (use Checkbox for explicit agreement)
+                </li>
+                <li className="text-sm">
+                  • Immediate toggle could cause data loss (use Checkbox + confirmation)
+                </li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">Switch vs Checkbox:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">
+                  • <strong>Switch</strong>: Instant action (toggle WiFi, enable notifications)
+                </li>
+                <li className="text-sm">
+                  • <strong>Checkbox</strong>: Submit action (terms agreement, filter selection)
+                </li>
+                <li className="text-sm">
+                  • <strong>Switch</strong>: Physical device metaphor (on/off switch)
+                </li>
+                <li className="text-sm">
+                  • <strong>Checkbox</strong>: Form input metaphor (check a box)
+                </li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }

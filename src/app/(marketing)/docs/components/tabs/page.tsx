@@ -1,6 +1,6 @@
 'use client';
 
-import { ComponentShowcaseTemplate } from '@/components/docs';
+import { ComponentShowcaseTemplate, DocsSection, DocsCard } from '@/components/docs';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 
@@ -8,8 +8,10 @@ export default function TabsPage() {
   return (
     <ComponentShowcaseTemplate
       code="[UI.17]"
+      category="Navigation"
       title="Tabs"
       description="A set of layered sections of content—known as tab panels—that are displayed one at a time."
+      importCode={`import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"`}
       mainPreview={{
         code: `import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
@@ -274,6 +276,75 @@ export default function TabsPage() {
         title: 'Dropdown Menu',
         href: '/docs/components/dropdown-menu',
       }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCard title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Tabs when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Organizing related content into 2-7 logical sections (settings, profile,
+                  billing)
+                </li>
+                <li className="text-sm">
+                  • Same-level information that users may want to compare or switch between
+                </li>
+                <li className="text-sm">
+                  • Space-saving layout for dense content (dashboard views, documentation)
+                </li>
+                <li className="text-sm">
+                  • Content should stay on the same page without navigation
+                </li>
+                <li className="text-sm">
+                  • Users frequently switch between sections during a single session
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Step-by-step process where order matters (use multi-step form)
+                </li>
+                <li className="text-sm">
+                  • Navigating to different pages (use Navigation component or links)
+                </li>
+                <li className="text-sm">• Only one section of content (just show it directly)</li>
+                <li className="text-sm">
+                  • More than 7 tabs (consider accordion, sidebar, or different organization)
+                </li>
+                <li className="text-sm">
+                  • Content needs to be visible simultaneously (use sections with headings)
+                </li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">Best Practices:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">
+                  • Ideal range: 2-7 tabs (fewer = just show content; more = different UI pattern)
+                </li>
+                <li className="text-sm">
+                  • Clear, concise labels (1-2 words: &quot;Overview&quot;, &quot;Settings&quot;,
+                  &quot;Billing&quot;)
+                </li>
+                <li className="text-sm">• Always set a default active tab with defaultValue</li>
+                <li className="text-sm">
+                  • Use horizontal orientation by default; vertical for sidebar-style layouts
+                </li>
+                <li className="text-sm">
+                  • Disable tabs that are temporarily unavailable (don&apos;t hide them)
+                </li>
+                <li className="text-sm">
+                  • Order tabs by importance or logical flow (left to right)
+                </li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }

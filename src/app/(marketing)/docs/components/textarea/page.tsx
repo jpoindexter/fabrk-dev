@@ -1,6 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
+import { DocsSection, DocsCard } from '@/components/docs';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { formatLabel } from '@/design-system';
@@ -90,6 +91,60 @@ export default function TextareaPage() {
         href: '/docs/components/input-password',
       }}
       next={{ title: 'Select', href: '/docs/components/select' }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCard title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Textarea when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • User needs to enter multi-line text (comments, descriptions, messages)
+                </li>
+                <li className="text-sm">
+                  • Text input exceeds one sentence (feedback, bio, notes)
+                </li>
+                <li className="text-sm">
+                  • Content should be visible while typing (no scrolling needed)
+                </li>
+                <li className="text-sm">
+                  • You need a specific number of visible rows (e.g., 4-6 lines for comments)
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">• Single-line input expected (use Input instead)</li>
+                <li className="text-sm">
+                  • Structured data entry (use Input with proper type attribute)
+                </li>
+                <li className="text-sm">
+                  • Rich text formatting needed (use rich text editor like Tiptap)
+                </li>
+                <li className="text-sm">
+                  • Code input needed (use code editor component with syntax highlighting)
+                </li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">Best Practices:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">
+                  • Set appropriate rows prop (4-6 for comments, 8-10 for longer content)
+                </li>
+                <li className="text-sm">• Provide clear placeholder text with example format</li>
+                <li className="text-sm">• Consider character counter for limited-length fields</li>
+                <li className="text-sm">• Use error state to show validation issues inline</li>
+                <li className="text-sm">
+                  • Allow resize for longer content unless fixed height required
+                </li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }

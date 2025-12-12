@@ -1,6 +1,6 @@
 'use client';
 
-import { ComponentShowcaseTemplate } from '@/components/docs';
+import { ComponentShowcaseTemplate, DocsSection, DocsCard } from '@/components/docs';
 import {
   Pagination,
   PaginationContent,
@@ -17,8 +17,17 @@ export default function PaginationPage() {
   return (
     <ComponentShowcaseTemplate
       code="[UI.21]"
+      category="Navigation"
       title="Pagination"
       description="Navigation for paginated content with numbered pages and next/previous controls."
+      importCode={`import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"`}
       mainPreview={{
         code: `import {
   Pagination,
@@ -325,6 +334,76 @@ export default function PaginationPage() {
         title: 'Components',
         href: '/docs/components',
       }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCard title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Pagination when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Large data sets with 50+ items (search results, product catalogs, user lists)
+                </li>
+                <li className="text-sm">
+                  • User needs to browse through multiple pages of content systematically
+                </li>
+                <li className="text-sm">
+                  • Table or grid with many rows that would cause excessive scrolling
+                </li>
+                <li className="text-sm">
+                  • Performance benefits from loading data in chunks (API pagination)
+                </li>
+                <li className="text-sm">
+                  • User needs to reference specific page numbers or bookmark pages
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Less than 50 items total (just show all or use &quot;Load More&quot; button)
+                </li>
+                <li className="text-sm">
+                  • Infinite scroll is more appropriate (social media feeds, timelines)
+                </li>
+                <li className="text-sm">
+                  • Real-time data that constantly updates (use live updating list instead)
+                </li>
+                <li className="text-sm">• Single page of content (no pagination needed)</li>
+                <li className="text-sm">
+                  • User experience benefits from continuous scrolling over page breaks
+                </li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">Best Practices:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">
+                  • Show total item count (&quot;Showing 1-20 of 150 results&quot;)
+                </li>
+                <li className="text-sm">
+                  • Previous/Next buttons always visible (disable when on first/last page)
+                </li>
+                <li className="text-sm">
+                  • Use ellipsis (...) for long page ranges, showing 5-7 visible page numbers
+                </li>
+                <li className="text-sm">
+                  • Consider mobile-friendly compact version (just Prev/Next + current page)
+                </li>
+                <li className="text-sm">• Highlight current page clearly with isActive prop</li>
+                <li className="text-sm">
+                  • Preserve filters/search when navigating between pages (URL query params)
+                </li>
+                <li className="text-sm">
+                  • Add First/Last buttons for very long lists (100+ pages)
+                </li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }

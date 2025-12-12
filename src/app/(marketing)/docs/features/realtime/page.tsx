@@ -197,6 +197,18 @@ export function OnlineMembers({ orgId }: { orgId: string }) {
         href: '/docs/features/background-jobs',
       }}
     >
+      {/* Prerequisites */}
+      <DocsSection title="Prerequisites">
+        <DocsCard title="BEFORE YOU START">
+          <ul className="space-y-2">
+            <li className="font-mono text-xs">├─ Completed Getting Started guide</li>
+            <li className="font-mono text-xs">├─ Database configured and running</li>
+            <li className="font-mono text-xs">├─ Environment variables set up (.env.local)</li>
+            <li className="font-mono text-xs">└─ Pusher account or WebSocket server</li>
+          </ul>
+        </DocsCard>
+      </DocsSection>
+
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
         <DocsCard title="BEST PRACTICES">

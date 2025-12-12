@@ -1,6 +1,6 @@
 'use client';
 
-import { ComponentShowcaseTemplate } from '@/components/docs';
+import { ComponentShowcaseTemplate, DocsSection, DocsCard } from '@/components/docs';
 import {
   Table,
   TableBody,
@@ -16,6 +16,7 @@ export default function TablePage() {
   return (
     <ComponentShowcaseTemplate
       code="[UI.25]"
+      category="Data Display"
       title="Table"
       description="A semantic table component with header, body, footer, and caption support for displaying structured data."
       importCode={`import {
@@ -261,6 +262,81 @@ export default function TablePage() {
       ]}
       previous={{ title: 'Tooltip', href: '/docs/components/tooltip' }}
       next={{ title: 'Empty State', href: '/docs/components/empty-state' }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCard title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Table when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Displaying structured data with multiple columns (invoices, orders, user lists)
+                </li>
+                <li className="text-sm">
+                  • User needs to compare values across rows or scan columns vertically
+                </li>
+                <li className="text-sm">
+                  • Data has clear column headers and consistent row structure
+                </li>
+                <li className="text-sm">
+                  • Sorting, filtering, or pagination would improve data browsing
+                </li>
+                <li className="text-sm">
+                  • 10+ rows of data that benefit from tabular organization
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Small amounts of data (1-5 items, use Card or List instead)
+                </li>
+                <li className="text-sm">
+                  • Data doesn&apos;t have consistent columns (use Card grid or List)
+                </li>
+                <li className="text-sm">
+                  • Content is primarily text paragraphs or narrative (use typography)
+                </li>
+                <li className="text-sm">
+                  • Mobile-first design with narrow viewport (tables scroll poorly, consider Card
+                  layout)
+                </li>
+                <li className="text-sm">
+                  • Complex nested data (use Tree view or collapsible structure)
+                </li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">Best Practices:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">
+                  • Use TableCaption to describe table content for screen readers
+                </li>
+                <li className="text-sm">
+                  • Right-align numeric columns (amounts, quantities) with
+                  className=&quot;text-right&quot;
+                </li>
+                <li className="text-sm">
+                  • Use font-medium on first column for hierarchy (IDs, names)
+                </li>
+                <li className="text-sm">• Add TableFooter for totals or summary rows</li>
+                <li className="text-sm">
+                  • Use data-state=&quot;selected&quot; for highlighting active rows
+                </li>
+                <li className="text-sm">
+                  • Wrap in responsive container for horizontal scroll on mobile
+                </li>
+                <li className="text-sm">• Limit visible rows and add pagination for 50+ items</li>
+                <li className="text-sm">
+                  • Use consistent column widths (w-[100px] for narrow columns)
+                </li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }

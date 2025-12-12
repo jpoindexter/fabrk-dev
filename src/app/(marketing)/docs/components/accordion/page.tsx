@@ -1,6 +1,6 @@
 'use client';
 
-import { ComponentShowcaseTemplate } from '@/components/docs';
+import { ComponentShowcaseTemplate, DocsSection, DocsCard } from '@/components/docs';
 import {
   Accordion,
   AccordionContent,
@@ -12,7 +12,7 @@ export default function AccordionPage() {
   return (
     <ComponentShowcaseTemplate
       code="[UI.53]"
-      category="Components"
+      category="Layout"
       title="Accordion"
       description="A vertically stacked set of interactive headings that each reveal a section of content."
       importCode={`import {
@@ -258,6 +258,82 @@ export default function AccordionPage() {
       ]}
       previous={{ title: 'Overview', href: '/docs/components/overview' }}
       next={{ title: 'Alert', href: '/docs/components/alert' }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCard title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Accordion when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Displaying long content that benefits from progressive disclosure (FAQs, docs
+                  sections)
+                </li>
+                <li className="text-sm">
+                  • Saving vertical space while keeping all content accessible
+                </li>
+                <li className="text-sm">
+                  • User doesn&apos;t need to see all content simultaneously
+                </li>
+                <li className="text-sm">
+                  • Content has clear section headers (3+ sections recommended)
+                </li>
+                <li className="text-sm">
+                  • Grouping related information that users can explore selectively
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • All content needs to be visible for comparison (use Tabs or full display)
+                </li>
+                <li className="text-sm">
+                  • Only 1-2 items (unnecessary interaction overhead, just show content)
+                </li>
+                <li className="text-sm">
+                  • Linear reading flow is critical (use traditional sections)
+                </li>
+                <li className="text-sm">
+                  • Navigation is the primary purpose (use Navigation component or Tabs)
+                </li>
+                <li className="text-sm">
+                  • Mobile space-saving is the only reason (consider Card collapse instead)
+                </li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">Best Practices:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">
+                  • Use type=&quot;single&quot; for mutual exclusivity (only one open at a time)
+                </li>
+                <li className="text-sm">
+                  • Use type=&quot;multiple&quot; when users need to compare content across items
+                </li>
+                <li className="text-sm">
+                  • Add collapsible prop to allow closing the active item in single mode
+                </li>
+                <li className="text-sm">
+                  • Set defaultValue for most important/frequently accessed item
+                </li>
+                <li className="text-sm">
+                  • Keep trigger text concise (1-5 words, clear question or topic)
+                </li>
+                <li className="text-sm">• Use value and onValueChange for programmatic control</li>
+                <li className="text-sm">
+                  • Limit to 5-10 items maximum (longer lists reduce scannability)
+                </li>
+                <li className="text-sm">
+                  • Content should be substantial enough to justify hiding (3+ lines)
+                </li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }

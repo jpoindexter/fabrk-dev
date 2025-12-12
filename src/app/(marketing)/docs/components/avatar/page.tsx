@@ -1,12 +1,13 @@
 'use client';
 
-import { ComponentShowcaseTemplate } from '@/components/docs';
+import { ComponentShowcaseTemplate, DocsSection, DocsCard } from '@/components/docs';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 export default function AvatarPage() {
   return (
     <ComponentShowcaseTemplate
       code="[UI.12]"
+      category="Display"
       title="Avatar"
       description="A user profile image component with automatic fallback support for when images fail to load."
       importCode={`import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";`}
@@ -221,6 +222,73 @@ export default function AvatarPage() {
       ]}
       previous={{ title: 'Badge', href: '/docs/components/badge' }}
       next={{ title: 'Skeleton', href: '/docs/components/skeleton' }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCard title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Avatar when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Representing users or people (profile picture, comment author, team member)
+                </li>
+                <li className="text-sm">
+                  • Showing visual identity in lists (user lists, search results, mentions)
+                </li>
+                <li className="text-sm">• Displaying current user in navigation or header</li>
+                <li className="text-sm">• Avatar groups showing collaborators or participants</li>
+                <li className="text-sm">
+                  • Status indicators needed (online/offline, available/busy)
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Showing generic icons or illustrations (use icon components instead)
+                </li>
+                <li className="text-sm">
+                  • Product images or thumbnails (use Next.js Image component)
+                </li>
+                <li className="text-sm">
+                  • Organization logos or brand images (use dedicated Logo/Brand component)
+                </li>
+                <li className="text-sm">
+                  • Decorative images without representing a person (use Image)
+                </li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">Best Practices:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">
+                  • Always provide AvatarFallback with 1-2 initials (JD, AC, not John Doe)
+                </li>
+                <li className="text-sm">
+                  • Use consistent sizing throughout your app (h-8 w-8 for small, h-10 w-10 for
+                  default)
+                </li>
+                <li className="text-sm">
+                  • Add border-2 border-background for overlapping avatar groups
+                </li>
+                <li className="text-sm">
+                  • Status indicators: absolute positioned dot at bottom-right with appropriate
+                  color
+                </li>
+                <li className="text-sm">
+                  • Scale fallback text with avatar size (text-xs for small, text-lg for large)
+                </li>
+                <li className="text-sm">
+                  • Provide meaningful alt text (&quot;John Doe&apos;s avatar&quot; not just
+                  &quot;avatar&quot;)
+                </li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }

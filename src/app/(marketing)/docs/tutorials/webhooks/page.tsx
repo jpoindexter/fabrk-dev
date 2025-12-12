@@ -159,6 +159,103 @@ curl -X POST http://localhost:3000/api/test-webhook \\
         </DocsCard>
       </DocsSection>
 
+      {/* Troubleshooting */}
+      <DocsSection title="Troubleshooting">
+        <DocsCard title="COMMON ERRORS">
+          <div className="space-y-4">
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: Signature verification failed (401 Unauthorized)
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Verify WEBHOOK_SECRET matches between sender and receiver
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`# Generate a shared secret
+openssl rand -hex 32
+
+# Add to both sender and receiver .env.local
+WEBHOOK_SECRET="your-generated-secret"
+
+# Sender uses it to sign, receiver uses it to verify`}
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: Webhook endpoint not receiving events
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Test webhook URL is accessible
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`# For local testing, expose with ngrok
+ngrok http 3000
+
+# Use the ngrok URL in webhook configuration
+https://abc123.ngrok.io/api/webhooks/your-endpoint
+
+# Verify endpoint responds
+curl https://abc123.ngrok.io/api/webhooks/your-endpoint`}
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: Duplicate events being processed
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Implement idempotency check using delivery ID
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`// Store processed delivery IDs
+const deliveryId = request.headers.get("X-Webhook-Delivery-ID");
+
+// Check if already processed
+const existing = await prisma.webhookDelivery.findUnique({
+  where: { deliveryId }
+});
+
+if (existing) {
+  return new Response("Already processed", { status: 200 });
+}`}
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: Webhook timing out (504 Gateway Timeout)
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Process webhook asynchronously, respond immediately
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`// Don't process synchronously
+export async function POST(request: Request) {
+  // Validate signature first
+  const isValid = verifySignature(request);
+  if (!isValid) return new Response("Invalid", { status: 401 });
+
+  // Queue for background processing
+  await queueWebhookProcessing(request.body);
+
+  // Respond immediately
+  return new Response("OK", { status: 200 });
+}`}
+                </code>
+              </div>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <DocsLinkCard

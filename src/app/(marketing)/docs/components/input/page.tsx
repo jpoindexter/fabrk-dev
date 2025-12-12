@@ -1,6 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
+import { DocsSection, DocsCard } from '@/components/docs';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { formatLabel } from '@/design-system';
@@ -117,6 +118,61 @@ export default function InputPage() {
         title: 'Input Password',
         href: '/docs/components/input-password',
       }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCard title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Input when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Collecting single-line text data (name, email, search)
+                </li>
+                <li className="text-sm">• User needs to enter short, freeform text</li>
+                <li className="text-sm">
+                  • You need real-time validation feedback (error/success states)
+                </li>
+                <li className="text-sm">• Loading indicator needed during async validation</li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">• Multi-line text needed (use Textarea instead)</li>
+                <li className="text-sm">
+                  • Password entry (use Input Password for show/hide functionality)
+                </li>
+                <li className="text-sm">
+                  • Selecting from predefined options (use Select or Radio Group)
+                </li>
+                <li className="text-sm">
+                  • Numeric input with increment/decrement (use Input Number)
+                </li>
+                <li className="text-sm">• Date selection (use Date Picker for calendar UI)</li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">State Usage:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">
+                  • <strong>error</strong>: Show validation errors immediately after blur or submit
+                </li>
+                <li className="text-sm">
+                  • <strong>success</strong>: Confirm valid input (email verified, username
+                  available)
+                </li>
+                <li className="text-sm">
+                  • <strong>loading</strong>: Async validation in progress (checking availability)
+                </li>
+                <li className="text-sm">
+                  • <strong>disabled</strong>: Field not editable in current context
+                </li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }

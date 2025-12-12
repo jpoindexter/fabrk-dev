@@ -204,6 +204,100 @@ export function NavBar() {
         </DocsCard>
       </DocsSection>
 
+      {/* Troubleshooting */}
+      <DocsSection title="Troubleshooting">
+        <DocsCard title="COMMON ERRORS">
+          <div className="space-y-4">
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: Infinite redirect loop
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Check middleware.ts protected route configuration
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`// Ensure login page is NOT in protected routes
+const isOnAuth = pathnameWithoutLocale.startsWith('/auth');
+
+// Don't protect auth routes
+if (isOnAuth) {
+  return NextResponse.next();
+}`}
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: Page not redirecting to login
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Verify auth() is imported and middleware is configured
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`// In your protected page
+import { auth } from "@/lib/auth";
+
+export default async function Page() {
+  const session = await auth();
+  if (!session) {
+    redirect("/"); // Manual redirect if needed
+  }
+}`}
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: Session is undefined in Server Component
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Ensure page is Server Component (no &quot;use
+                client&quot;)
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`// Server Component (correct)
+import { auth } from "@/lib/auth";
+
+export default async function Page() {
+  const session = await auth(); // Works
+}
+
+// Client Component (wrong for auth())
+"use client";
+import { auth } from "@/lib/auth"; // Error!
+// Use useSession() hook instead`}
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: User can access admin page without admin role
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Add role check in page component
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`const session = await auth();
+
+// Middleware only checks if logged in
+// Page must check specific role
+if (session?.user?.role !== 'ADMIN') {
+  redirect('/dashboard');
+}`}
+                </code>
+              </div>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+
       {/* Next Steps */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">

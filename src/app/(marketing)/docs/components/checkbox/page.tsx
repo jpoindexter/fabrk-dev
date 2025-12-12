@@ -1,6 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
+import { DocsSection, DocsCard } from '@/components/docs';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { formatLabel } from '@/design-system';
@@ -136,6 +137,55 @@ export default function CheckboxPage() {
       ]}
       previous={{ title: 'Select', href: '/docs/components/select' }}
       next={{ title: 'Switch', href: '/docs/components/switch' }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCard title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Checkbox when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Multiple options can be selected independently (e.g., filter list, preferences)
+                </li>
+                <li className="text-sm">• Binary choice with clear on/off states (accept terms)</li>
+                <li className="text-sm">
+                  • List of non-exclusive options (select multiple features)
+                </li>
+                <li className="text-sm">
+                  • User needs to opt-in to something explicitly (newsletter, notifications)
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Only one option can be selected at a time (use Radio Group)
+                </li>
+                <li className="text-sm">
+                  • Toggling a setting on/off with immediate effect (use Switch)
+                </li>
+                <li className="text-sm">• Selecting from a large list (use Select or Combobox)</li>
+                <li className="text-sm">• Action triggers immediately (use Button or Toggle)</li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">Best Practices:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">• Always pair with a Label for clickable text area</li>
+                <li className="text-sm">• Group related checkboxes together visually</li>
+                <li className="text-sm">
+                  • Use indeterminate state for &quot;select all&quot; when some children selected
+                </li>
+                <li className="text-sm">
+                  • For required checkboxes (terms), use required prop + validation
+                </li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }

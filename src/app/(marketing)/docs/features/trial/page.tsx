@@ -160,6 +160,18 @@ const subscription = await stripe.subscriptions.create({
       }}
       next={{ title: 'Notifications', href: '/docs/features/notifications' }}
     >
+      {/* Prerequisites */}
+      <DocsSection title="Prerequisites">
+        <DocsCard title="BEFORE YOU START">
+          <ul className="space-y-2">
+            <li className="font-mono text-xs">├─ Completed Getting Started guide</li>
+            <li className="font-mono text-xs">├─ Database configured and running</li>
+            <li className="font-mono text-xs">├─ Environment variables set up (.env.local)</li>
+            <li className="font-mono text-xs">└─ Payment provider configured (Stripe or Polar)</li>
+          </ul>
+        </DocsCard>
+      </DocsSection>
+
       {/* How Trials Work Section */}
       <DocsSection title="How Fabrk Trials Work">
         <div className="space-y-4">

@@ -1,6 +1,6 @@
 'use client';
 
-import { ComponentShowcaseTemplate } from '@/components/docs';
+import { ComponentShowcaseTemplate, DocsSection, DocsCard } from '@/components/docs';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -11,7 +11,7 @@ export default function LabelPage() {
   return (
     <ComponentShowcaseTemplate
       code="[UI.44]"
-      category="Components"
+      category="Forms"
       title="Label"
       description="Accessible label component for form inputs with required indicator and error state support."
       importCode={`import { Label } from "@/components/ui/label"`}
@@ -211,6 +211,75 @@ tracking-normal      // Letter spacing`,
         href: '/docs/components/input-search',
       }}
       next={{ title: 'Loading', href: '/docs/components/loading' }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCard title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Label when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Every form input needs accessible text association (Input, Checkbox, Switch)
+                </li>
+                <li className="text-sm">
+                  • Indicating required fields with asterisk (*) for error prevention
+                </li>
+                <li className="text-sm">
+                  • Showing error states on invalid form fields (red text)
+                </li>
+                <li className="text-sm">
+                  • Connecting clickable labels to form controls (click label focuses input)
+                </li>
+                <li className="text-sm">• Following accessibility best practices (WCAG 3.3.2)</li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Input has no visible label (use aria-label on input instead)
+                </li>
+                <li className="text-sm">
+                  • Decorative text that doesn&apos;t describe the input (use plain span)
+                </li>
+                <li className="text-sm">
+                  • Button text (buttons are self-labeling, no label needed)
+                </li>
+                <li className="text-sm">
+                  • Section headings or group labels (use heading tags instead)
+                </li>
+                <li className="text-sm">• Non-form elements (tables, lists, etc.)</li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">Best Practices:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">• Always use htmlFor to associate label with input ID</li>
+                <li className="text-sm">
+                  • Add required prop to show asterisk (*) for mandatory fields
+                </li>
+                <li className="text-sm">
+                  • Use error prop to highlight invalid fields with red text
+                </li>
+                <li className="text-sm">
+                  • Wrap text with formatLabel() for terminal aesthetic (brackets)
+                </li>
+                <li className="text-sm">
+                  • Position labels above inputs for forms (vertical layout)
+                </li>
+                <li className="text-sm">
+                  • Place labels inline for checkboxes and switches (horizontal)
+                </li>
+                <li className="text-sm">• Keep label text concise (1-3 words) and descriptive</li>
+                <li className="text-sm">
+                  • Use peer-disabled styles to reduce opacity when input is disabled
+                </li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }

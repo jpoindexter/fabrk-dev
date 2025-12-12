@@ -1,6 +1,6 @@
 'use client';
 
-import { ComponentShowcaseTemplate } from '@/components/docs';
+import { ComponentShowcaseTemplate, DocsSection, DocsCard } from '@/components/docs';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 
@@ -8,6 +8,7 @@ export default function SkeletonPage() {
   return (
     <ComponentShowcaseTemplate
       code="[UI.13]"
+      category="Display"
       title="Skeleton"
       description="A loading placeholder component that displays an animated pulse effect while content is being fetched or processed."
       importCode={`import { Skeleton } from "@/components/ui/skeleton";`}
@@ -201,6 +202,76 @@ export default function SkeletonPage() {
       ]}
       previous={{ title: 'Avatar', href: '/docs/components/avatar' }}
       next={{ title: 'Form Components', href: '/docs/components' }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCard title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Skeleton when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Loading data from API or database (user lists, product grids, content pages)
+                </li>
+                <li className="text-sm">
+                  • Placeholder for content being fetched (prevents blank screen during load)
+                </li>
+                <li className="text-sm">
+                  • Lazy-loaded images or components (show skeleton until loaded)
+                </li>
+                <li className="text-sm">
+                  • Progressive page rendering (show skeleton, then replace with real content)
+                </li>
+                <li className="text-sm">
+                  • Layout needs to match final content shape (prevents layout shift)
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">• Content loads instantly (no need for placeholder)</li>
+                <li className="text-sm">
+                  • Indeterminate loading with unknown duration (use Loading component instead)
+                </li>
+                <li className="text-sm">
+                  • Small inline elements (use shimmer effect or simple loading text)
+                </li>
+                <li className="text-sm">
+                  • Background operations user doesn&apos;t wait for (use Toast when complete)
+                </li>
+                <li className="text-sm">• Static placeholders that never load content</li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">Best Practices:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">
+                  • Match skeleton layout to actual content (same height, width, structure)
+                </li>
+                <li className="text-sm">
+                  • Use appropriate shapes: rounded-none for terminal style, w-12 h-12 for avatars
+                </li>
+                <li className="text-sm">
+                  • Vary widths for text lines (w-[250px], w-[200px], w-[150px] for natural look)
+                </li>
+                <li className="text-sm">
+                  • Group skeleton items to match final layout (lists, cards, grids)
+                </li>
+                <li className="text-sm">
+                  • Add aria-busy=&quot;true&quot; to parent containers for screen readers
+                </li>
+                <li className="text-sm">
+                  • Replace skeleton with real content smoothly (avoid jarring transitions)
+                </li>
+                <li className="text-sm">
+                  • Show multiple skeleton items for lists (3-5 items typical)
+                </li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }

@@ -215,6 +215,18 @@ export async function POST(req: Request) {
       previous={{ title: 'Stripe Payments', href: '/docs/features/payments' }}
       next={{ title: 'Free Trials', href: '/docs/features/trial' }}
     >
+      {/* Prerequisites */}
+      <DocsSection title="Prerequisites">
+        <DocsCard title="BEFORE YOU START">
+          <ul className="space-y-2">
+            <li className="font-mono text-xs">├─ Completed Getting Started guide</li>
+            <li className="font-mono text-xs">├─ Database configured and running</li>
+            <li className="font-mono text-xs">├─ Environment variables set up (.env.local)</li>
+            <li className="font-mono text-xs">└─ Lemon Squeezy account with API key</li>
+          </ul>
+        </DocsCard>
+      </DocsSection>
+
       {/* Why Lemon Squeezy Section */}
       <DocsSection title="Stripe vs Lemon Squeezy">
         <DocsCard title="COMPARISON">

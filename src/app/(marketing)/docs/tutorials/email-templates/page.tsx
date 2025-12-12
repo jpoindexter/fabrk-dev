@@ -252,6 +252,90 @@ await sendOrganizationInvite("newmember@example.com", {
         </DocsCard>
       </DocsSection>
 
+      {/* Troubleshooting */}
+      <DocsSection title="Troubleshooting">
+        <DocsCard title="COMMON ERRORS">
+          <div className="space-y-4">
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: RESEND_API_KEY invalid
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Verify API key from Resend dashboard
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`# Get new API key from: https://resend.com/api-keys
+# Add to .env.local
+RESEND_API_KEY="re_xxxxxxxxxxxx"
+
+# Make sure it starts with "re_"`}
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: Email not sending (403 Forbidden)
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Verify your domain in Resend dashboard
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`# Steps:
+1. Go to https://resend.com/domains
+2. Click "Add Domain"
+3. Add your domain (e.g., yourdomain.com)
+4. Add the DNS records shown
+5. Wait for verification (usually < 5 minutes)
+
+# Development: Use onboarding@resend.dev (no verification needed)`}
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: Template not rendering (blank email)
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Check React Email component syntax
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`// Ensure function returns string
+export function generateEmailHTML(): string {
+  return \`<!DOCTYPE html>...\`;
+}
+
+// Not a React component - plain HTML template function`}
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: Emails queued but not sending
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Check email queue table and processing
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`# View queued emails
+npm run db:studio
+# Check EmailQueue table
+
+# Manually process queue (if cron not set up)
+# Create /api/process-email-queue endpoint and call it`}
+                </code>
+              </div>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+
       {/* Next Steps */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">

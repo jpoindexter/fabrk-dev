@@ -191,52 +191,88 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
       previous={{ title: 'SEO', href: '/docs/features/seo' }}
       next={{ title: 'Trial', href: '/docs/features/trial' }}
     >
-      {/* Component Variants */}
-      <DocsSection title="Component Variants">
-        <DocsCard title="TWO VERSIONS AVAILABLE">
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2 font-mono font-semibold">1. Full Version (Floating Button)</p>
-              <p className="text-muted-foreground mb-2 text-sm">
-                Bottom-right floating button that opens a comprehensive modal with tabs. Best for
-                main app layout.
-              </p>
-              <div className="bg-muted/50 p-4">
-                <code className="font-mono text-xs">
-                  {`import { CookieConsent } from "@/components/cookie-consent";
-
-<CookieConsent />`}
-                </code>
-              </div>
-            </div>
-            <div>
-              <p className="mb-2 font-mono font-semibold">2. Minimal Banner (Top Bar)</p>
-              <p className="text-muted-foreground mb-2 text-sm">
-                Compact top-center banner with cookie icon and close button. Best for marketing
-                pages. Currently used in marketing layout.
-              </p>
-              <div className="bg-muted/50 p-4">
-                <code className="font-mono text-xs">
-                  {`import { MinimalCookieBanner } from "@/components/cookie-consent/minimal-banner";
-
-<MinimalCookieBanner />`}
-                </code>
-              </div>
-            </div>
-          </div>
+      {/* Prerequisites */}
+      <DocsSection title="Prerequisites">
+        <DocsCard title="BEFORE YOU START">
+          <ul className="space-y-2">
+            <li className="font-mono text-xs">├─ Next.js project set up and running</li>
+            <li className="font-mono text-xs">├─ Components installed (included in Fabrk)</li>
+            <li className="font-mono text-xs">
+              ├─ Optional: Google Tag Manager account for analytics integration
+            </li>
+            <li className="font-mono text-xs">└─ No additional dependencies required</li>
+          </ul>
         </DocsCard>
       </DocsSection>
 
-      {/* Component Preview */}
-      <DocsSection title="Preview">
+      {/* Component Variants */}
+      <DocsSection title="Component Variants">
+        {/* Full Version */}
+        <DocsCard title="FULL VERSION (COOKIE ICON)">
+          <p className="text-muted-foreground mb-4 text-sm">
+            Banner with cookie icon and text. Opens comprehensive modal with tabs when clicked. Best
+            for main app layout.
+          </p>
+          <div className="bg-muted/50 mb-4 p-4">
+            <code className="font-mono text-xs">
+              {`import { CookieConsent } from "@/components/cookie-consent";
+
+// Default bannerVariant is "full"
+<CookieConsent />
+
+// Or explicitly:
+<CookieConsent bannerVariant="full" />`}
+            </code>
+          </div>
+        </DocsCard>
+
         <DocsPreview
-          title="Cookie Consent (Full Version)"
-          description="Interactive cookie preference modal"
+          title="Full Version Preview"
+          description="Interactive cookie preference modal (same modal for both variants)"
           preview={<CookieConsentDemo />}
           code={`import { CookieConsent } from "@/components/cookie-consent";
 
 // Already included in layout.tsx
 <CookieConsent />`}
+        />
+
+        {/* Minimal Banner */}
+        <DocsCard title="MINIMAL VERSION (TERMINAL TEXT)">
+          <p className="text-muted-foreground mb-4 text-sm">
+            Compact terminal-styled banner. Opens the same modal as full version when clicked. Best
+            for marketing pages. Currently used in marketing layout.
+          </p>
+          <div className="bg-muted/50 mb-4 p-4">
+            <code className="font-mono text-xs">
+              {`import { CookieConsent } from "@/components/cookie-consent";
+
+// Use minimal banner style
+<CookieConsent bannerVariant="minimal" />`}
+            </code>
+          </div>
+        </DocsCard>
+
+        <DocsPreview
+          title="Minimal Banner Preview"
+          description="Compact terminal-styled banner (as seen on this page)"
+          preview={
+            <div className="border-border bg-card relative h-48 w-full border">
+              <div className="absolute right-6 bottom-6 z-[60]">
+                <div className="bg-card border-accent flex items-center gap-2 border-2 px-3 py-2">
+                  <span className="text-accent font-mono text-xs whitespace-nowrap">
+                    [ (0xB7) COOKIE_SETTINGS.CFG ]
+                  </span>
+                  <button className="text-accent" aria-label="Dismiss">
+                    <span className="font-mono text-sm">✕</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          }
+          code={`import { CookieConsent } from "@/components/cookie-consent";
+
+// In marketing layout:
+<CookieConsent bannerVariant="minimal" />`}
         />
       </DocsSection>
 

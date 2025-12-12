@@ -1,6 +1,6 @@
 'use client';
 
-import { ComponentShowcaseTemplate } from '@/components/docs';
+import { ComponentShowcaseTemplate, DocsSection, DocsCard } from '@/components/docs';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Plus, Trash2, Edit, Save, Settings } from 'lucide-react';
@@ -275,6 +275,72 @@ export default function TooltipPage() {
       ]}
       previous={{ title: 'Popover', href: '/docs/components/popover' }}
       next={{ title: 'Dialog', href: '/docs/components/dialog' }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCard title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Tooltip when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Icon-only buttons need accessible labels (edit, delete, settings icons)
+                </li>
+                <li className="text-sm">
+                  • Abbreviations or truncated text need full context (hover to see full name)
+                </li>
+                <li className="text-sm">
+                  • Providing additional context on hover (why is this disabled?)
+                </li>
+                <li className="text-sm">• Showing keyboard shortcuts (Save: ⌘S)</li>
+                <li className="text-sm">• Short supplemental information (1-2 sentences max)</li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Information is critical to task completion (show it directly in UI)
+                </li>
+                <li className="text-sm">
+                  • Content needs to be interactive or clickable (use Popover instead)
+                </li>
+                <li className="text-sm">
+                  • Text is longer than 2-3 sentences (use Popover or Dialog)
+                </li>
+                <li className="text-sm">
+                  • Primary mobile experience (touch devices don&apos;t have hover)
+                </li>
+                <li className="text-sm">
+                  • User needs to copy text from tooltip (use Popover for selectable text)
+                </li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">Tooltip vs Popover:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">
+                  • <strong>Tooltip</strong>: Non-interactive, hover/focus, short text (1-2 lines)
+                </li>
+                <li className="text-sm">
+                  • <strong>Popover</strong>: Interactive, click to open, complex content with
+                  links/buttons
+                </li>
+                <li className="text-sm">
+                  • <strong>Tooltip</strong>: Auto-dismisses on mouse leave, ESC key
+                </li>
+                <li className="text-sm">
+                  • <strong>Popover</strong>: Stays open until user closes it
+                </li>
+                <li className="text-sm">
+                  • Always wrap multiple tooltips in single TooltipProvider for performance
+                </li>
+                <li className="text-sm">• Keep delay short (300-700ms) for responsive feel</li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }

@@ -12,7 +12,6 @@ import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { Providers } from '@/components/providers';
 import { PostHogPageView } from '@/components/analytics/posthog-pageview';
-import { CookieConsent } from '@/components/cookie-consent';
 import { GeistSans } from 'geist/font/sans';
 import localFont from 'next/font/local';
 import { generateOrganizationSchema, generateProductSchema } from '@/lib/metadata';
@@ -255,7 +254,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <Suspense>{children}</Suspense>
             </main>
           </div>
-          <CookieConsent />
         </Providers>
       </body>
     </html>

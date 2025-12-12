@@ -1,6 +1,6 @@
 'use client';
 
-import { ComponentShowcaseTemplate } from '@/components/docs';
+import { ComponentShowcaseTemplate, DocsSection, DocsCard } from '@/components/docs';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -305,6 +305,74 @@ export default function DialogPage() {
       ]}
       previous={{ title: 'Tooltip', href: '/docs/components/tooltip' }}
       next={{ title: 'Alert Dialog', href: '/docs/components/alert-dialog' }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCard title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Dialog when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Complex forms requiring multiple inputs (edit profile, create project)
+                </li>
+                <li className="text-sm">
+                  • Multi-step workflows that need focused attention (onboarding, setup wizard)
+                </li>
+                <li className="text-sm">
+                  • Important information requiring user interaction before proceeding
+                </li>
+                <li className="text-sm">
+                  • Content preview or detailed view (image gallery, document viewer)
+                </li>
+                <li className="text-sm">
+                  • User must respond or complete action before returning to page
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Quick feedback needed (use Toast for temporary notifications)
+                </li>
+                <li className="text-sm">
+                  • Simple yes/no confirmation (use Alert Dialog for single decision)
+                </li>
+                <li className="text-sm">
+                  • Persistent warnings that shouldn&apos;t block page (use Alert inline)
+                </li>
+                <li className="text-sm">• Non-blocking information (use Popover or Tooltip)</li>
+                <li className="text-sm">
+                  • Navigation to different page (use proper routing instead)
+                </li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">Dialog vs Alert Dialog:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">
+                  • <strong>Dialog</strong>: Complex forms, multiple inputs, flexible content
+                </li>
+                <li className="text-sm">
+                  • <strong>Alert Dialog</strong>: Single decision, confirm/cancel, destructive
+                  actions
+                </li>
+                <li className="text-sm">
+                  • <strong>Dialog</strong>: Edit profile (name, email, bio, avatar)
+                </li>
+                <li className="text-sm">
+                  • <strong>Alert Dialog</strong>: &quot;Delete this file?&quot; (just
+                  confirm/cancel)
+                </li>
+                <li className="text-sm">
+                  • Use controlled state (open/onOpenChange) for programmatic control
+                </li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }

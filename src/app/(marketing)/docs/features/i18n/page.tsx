@@ -254,6 +254,18 @@ export const localeFlags: Record<Locale, string> = {
       previous={{ title: 'Blog', href: '/docs/features/blog' }}
       next={{ title: 'SEO', href: '/docs/features/seo' }}
     >
+      {/* Prerequisites */}
+      <DocsSection title="Prerequisites">
+        <DocsCard title="BEFORE YOU START">
+          <ul className="space-y-2">
+            <li className="font-mono text-xs">├─ Completed Getting Started guide</li>
+            <li className="font-mono text-xs">├─ Database configured and running</li>
+            <li className="font-mono text-xs">├─ Environment variables set up (.env.local)</li>
+            <li className="font-mono text-xs">└─ Translation files prepared (JSON format)</li>
+          </ul>
+        </DocsCard>
+      </DocsSection>
+
       {/* Included Languages */}
       <DocsSection title="Included Languages">
         <DocsCard title="SUPPORTED LOCALES">

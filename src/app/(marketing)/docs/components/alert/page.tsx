@@ -1,6 +1,6 @@
 'use client';
 
-import { ComponentShowcaseTemplate } from '@/components/docs';
+import { ComponentShowcaseTemplate, DocsSection, DocsCard } from '@/components/docs';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import { AlertCircle, CheckCircle2, Info, XCircle } from 'lucide-react';
 
@@ -138,6 +138,67 @@ export default function AlertPage() {
       ]}
       previous={{ title: 'Avatar', href: '/docs/components/avatar' }}
       next={{ title: 'Progress', href: '/docs/components/progress' }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCard title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Alert when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Displaying persistent, important information (errors, warnings, tips)
+                </li>
+                <li className="text-sm">• User needs to be aware of system state changes</li>
+                <li className="text-sm">
+                  • Information stays visible until user dismisses or takes action
+                </li>
+                <li className="text-sm">
+                  • Context-specific messages within a page section (form validation summary)
+                </li>
+                <li className="text-sm">
+                  • Important announcements that don&apos;t require immediate action
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">• Temporary feedback for actions (use Toast instead)</li>
+                <li className="text-sm">
+                  • User must confirm before proceeding (use Alert Dialog)
+                </li>
+                <li className="text-sm">
+                  • Field-level validation errors (use Form Error component)
+                </li>
+                <li className="text-sm">
+                  • Full-page blocking messages (use Dialog or dedicated error page)
+                </li>
+                <li className="text-sm">
+                  • Time-sensitive information that auto-dismisses (use Toast)
+                </li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">Variant Selection:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">
+                  • <strong>default</strong>: General information, tips, updates
+                </li>
+                <li className="text-sm">
+                  • <strong>destructive</strong>: Errors, critical warnings, failed operations
+                </li>
+                <li className="text-sm">
+                  • <strong>success</strong>: Successful operations, confirmations
+                </li>
+                <li className="text-sm">
+                  • Always include an icon matching the variant for quick recognition
+                </li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }

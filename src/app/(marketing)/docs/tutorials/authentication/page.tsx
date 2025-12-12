@@ -287,6 +287,87 @@ export default async function PrivatePage() {
         </DocsCard>
       </DocsSection>
 
+      {/* Troubleshooting */}
+      <DocsSection title="Troubleshooting">
+        <DocsCard title="COMMON ERRORS">
+          <div className="space-y-4">
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: NEXTAUTH_SECRET missing
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Generate a secure secret key
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`# Run in terminal
+openssl rand -base64 32
+
+# Add to .env.local
+NEXTAUTH_SECRET="output-from-command-above"`}
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: Callback URL mismatch
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Verify NEXTAUTH_URL matches your deployed URL
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`# Development
+NEXTAUTH_URL="http://localhost:3000"
+
+# Production (in Vercel environment variables)
+NEXTAUTH_URL="https://yourdomain.com"`}
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: Session not persisting
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Check DATABASE_URL is correct and database is accessible
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`# Test database connection
+npm run db:studio
+
+# Reset database if needed
+npm run db:reset`}
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: Google OAuth fails with redirect_uri_mismatch
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Add correct redirect URI in Google Cloud Console
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`# Development
+http://localhost:3000/api/auth/callback/google
+
+# Production
+https://yourdomain.com/api/auth/callback/google
+
+# Add both in: Google Cloud Console > Credentials > OAuth 2.0 Client`}
+                </code>
+              </div>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+
       {/* Next Steps */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">

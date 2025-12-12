@@ -247,6 +247,18 @@ export async function getProduct() {
       previous={{ title: 'Stripe Payments', href: '/docs/features/payments' }}
       next={{ title: 'Lemon Squeezy', href: '/docs/features/lemonsqueezy' }}
     >
+      {/* Prerequisites */}
+      <DocsSection title="Prerequisites">
+        <DocsCard title="BEFORE YOU START">
+          <ul className="space-y-2">
+            <li className="font-mono text-xs">├─ Completed Getting Started guide</li>
+            <li className="font-mono text-xs">├─ Database configured and running</li>
+            <li className="font-mono text-xs">├─ Environment variables set up (.env.local)</li>
+            <li className="font-mono text-xs">└─ Polar.sh account with access token</li>
+          </ul>
+        </DocsCard>
+      </DocsSection>
+
       {/* Polar vs Stripe vs Lemon Squeezy */}
       <DocsSection title="Payment Provider Comparison">
         <DocsCard title="COMPARISON">

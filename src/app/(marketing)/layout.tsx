@@ -6,12 +6,12 @@
 
 import { SiteNavigation } from '@/components/navigation';
 import { Footer } from '@/components/shared/footer';
-import { MinimalCookieBanner } from '@/components/cookie-consent/minimal-banner';
+import { CookieConsent } from '@/components/cookie-consent';
 
 export default function MarketingLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <MinimalCookieBanner />
+      <CookieConsent bannerVariant="minimal" />
       <SiteNavigation />
       <main>{children}</main>
       <Footer />

@@ -1,6 +1,6 @@
 'use client';
 
-import { ComponentShowcaseTemplate } from '@/components/docs';
+import { ComponentShowcaseTemplate, DocsSection, DocsCard } from '@/components/docs';
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
@@ -18,7 +18,7 @@ export default function SheetPage() {
   return (
     <ComponentShowcaseTemplate
       code="[UI.22]"
-      category="Components"
+      category="Overlay"
       title="Sheet"
       description="Extends the Dialog component to display content that slides in from the edge of the screen."
       importCode={`import {
@@ -279,6 +279,76 @@ export default function SheetPage() {
         href: '/docs/components/alert-dialog',
       }}
       next={{ title: 'Popover', href: '/docs/components/popover' }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCard title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Sheet when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Secondary navigation or sidebar that should overlay content (mobile menus,
+                  filters)
+                </li>
+                <li className="text-sm">
+                  • Forms or settings that are contextual to the page (edit profile, preferences)
+                </li>
+                <li className="text-sm">
+                  • Task panel or detailed information without leaving the page
+                </li>
+                <li className="text-sm">
+                  • Content needs to slide in from edge of screen (more directional than Dialog)
+                </li>
+                <li className="text-sm">• Shopping cart, notification panel, or activity feed</li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">• Simple confirmation or alert (use Alert Dialog)</li>
+                <li className="text-sm">
+                  • Critical action requiring focus (use Dialog centered on screen)
+                </li>
+                <li className="text-sm">
+                  • Content is better as a full page (navigation to new route)
+                </li>
+                <li className="text-sm">
+                  • Mobile-only navigation menu (consider responsive Navbar instead)
+                </li>
+                <li className="text-sm">
+                  • Complex multi-step wizard (use Dialog or dedicated page)
+                </li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">Best Practices:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">
+                  • Use side=&quot;right&quot; for most forms and contextual content (default)
+                </li>
+                <li className="text-sm">
+                  • Use side=&quot;left&quot; for navigation menus (follows drawer pattern)
+                </li>
+                <li className="text-sm">
+                  • Use side=&quot;bottom&quot; for mobile-friendly action sheets
+                </li>
+                <li className="text-sm">
+                  • Always include SheetTitle and SheetDescription for accessibility
+                </li>
+                <li className="text-sm">• Add SheetFooter with actions (Save, Cancel) for forms</li>
+                <li className="text-sm">
+                  • Control state with open and onOpenChange for programmatic control
+                </li>
+                <li className="text-sm">
+                  • Keep content focused - sheet is not a full page replacement
+                </li>
+                <li className="text-sm">• Use SheetTrigger with asChild to avoid nested buttons</li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }

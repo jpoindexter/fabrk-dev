@@ -1,6 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
+import { DocsSection, DocsCard } from '@/components/docs';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { formatLabel } from '@/design-system';
@@ -282,6 +283,62 @@ export default function RadioGroupPage() {
       ]}
       previous={{ title: 'Progress', href: '/docs/components/progress' }}
       next={{ title: 'Rating', href: '/docs/components/rating' }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCard title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Radio Group when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">• User must select exactly one option from 2-7 choices</li>
+                <li className="text-sm">
+                  • All options should be visible at once (no dropdown needed)
+                </li>
+                <li className="text-sm">
+                  • Options are mutually exclusive (selecting one deselects others)
+                </li>
+                <li className="text-sm">
+                  • User needs to compare options before selecting (payment methods, plans)
+                </li>
+                <li className="text-sm">• Each option needs a description or additional context</li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">• More than 7 options (use Select for longer lists)</li>
+                <li className="text-sm">• Multiple selections allowed (use Checkbox group)</li>
+                <li className="text-sm">
+                  • Binary on/off toggle with immediate effect (use Switch)
+                </li>
+                <li className="text-sm">
+                  • Space constrained and options familiar (use Select instead)
+                </li>
+                <li className="text-sm">
+                  • No default selection needed and all options optional (consider Checkbox)
+                </li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">Best Practices:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">• Always set a default value for better UX</li>
+                <li className="text-sm">• Keep option labels short and scannable (1-4 words)</li>
+                <li className="text-sm">
+                  • Use descriptions for complex options (payment methods, pricing tiers)
+                </li>
+                <li className="text-sm">
+                  • Order options logically (most common first, or price low-to-high)
+                </li>
+                <li className="text-sm">
+                  • Show 2-7 options; fewer than 2 = use Switch; more than 7 = use Select
+                </li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }

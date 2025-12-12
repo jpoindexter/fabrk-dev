@@ -1,5 +1,5 @@
 import { FeatureGuideTemplate } from '@/components/docs';
-import { DocsSection, DocsLinkCard } from '@/components/docs';
+import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
 import { Rocket, Layout, Settings, Upload } from 'lucide-react';
 
 export const metadata = {
@@ -100,6 +100,74 @@ git push origin main`,
       previous={{ title: 'Getting Started', href: '/docs/getting-started' }}
       next={{ title: 'Authentication', href: '/docs/tutorials/authentication' }}
     >
+      {/* Troubleshooting */}
+      <DocsSection title="Troubleshooting">
+        <DocsCard title="COMMON ERRORS">
+          <div className="space-y-4">
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: Port 3000 already in use
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Run on different port or kill existing process
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`# Option 1: Run on different port
+npm run dev -- -p 3001
+
+# Option 2: Kill existing process (Mac/Linux)
+lsof -ti:3000 | xargs kill -9
+
+# Option 3: Use built-in kill script
+npm run kill`}
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: Cannot find module &apos;xyz&apos;
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Install dependencies
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`# Delete node_modules and reinstall
+rm -rf node_modules package-lock.json
+npm install
+
+# Or just reinstall
+npm install`}
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: Prisma Client is not configured
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Generate Prisma Client and push schema
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`# Generate Prisma Client
+npx prisma generate
+
+# Push database schema
+npm run db:push
+
+# Restart dev server
+npm run dev`}
+                </code>
+              </div>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <DocsLinkCard

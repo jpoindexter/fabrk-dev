@@ -1,5 +1,5 @@
 import { FeatureGuideTemplate } from '@/components/docs';
-import { DocsSection, DocsLinkCard } from '@/components/docs';
+import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
 import { Upload, Image, Shield, FileCheck } from 'lucide-react';
 
 export const metadata = {
@@ -316,6 +316,95 @@ export function FileUploadForm() {
         href: '/docs/tutorials/protected-pages',
       }}
     >
+      {/* Troubleshooting */}
+      <DocsSection title="Troubleshooting">
+        <DocsCard title="COMMON ERRORS">
+          <div className="space-y-4">
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: File too large (413 Payload Too Large)
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Adjust maxSize in dropzone config and API validation
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`// Client (react-dropzone)
+maxSize: 10 * 1024 * 1024  // 10MB
+
+// API route validation
+const MAX_SIZE = 10 * 1024 * 1024;
+if (file.size > MAX_SIZE) {
+  return NextResponse.json({ error: "File too large" }, { status: 400 });
+}`}
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: Invalid file type rejected
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Verify accept prop matches server-side validation
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`// Client and server must match
+// Client
+accept={{ "image/*": [".png", ".jpg"] }}
+
+// Server
+const ALLOWED_TYPES = ["image/png", "image/jpeg"];
+if (!ALLOWED_TYPES.includes(file.type)) { /* reject */ }`}
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: Upload fails silently (no error message)
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Check S3/R2 credentials and bucket configuration
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`# Verify credentials in .env.local
+AWS_ACCESS_KEY_ID="..."
+AWS_SECRET_ACCESS_KEY="..."
+S3_BUCKET="your-bucket"
+
+# Test bucket access
+# Check bucket is public or has correct CORS policy`}
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: CORS error when uploading to S3
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Add CORS policy to your S3/R2 bucket
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`// S3 Bucket CORS Configuration
+[
+  {
+    "AllowedOrigins": ["http://localhost:3000", "https://yourdomain.com"],
+    "AllowedMethods": ["GET", "POST", "PUT"],
+    "AllowedHeaders": ["*"]
+  }
+]`}
+                </code>
+              </div>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+
       {/* Next Steps */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">

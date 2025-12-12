@@ -1,13 +1,13 @@
 'use client';
 
-import { ComponentShowcaseTemplate } from '@/components/docs';
+import { ComponentShowcaseTemplate, DocsSection, DocsCard } from '@/components/docs';
 import { Separator } from '@/components/ui/separator';
 
 export default function SeparatorPage() {
   return (
     <ComponentShowcaseTemplate
       code="[UI.78]"
-      category="Components"
+      category="Layout"
       title="Separator"
       description="Visually or semantically separates content."
       importCode={`import { Separator } from "@/components/ui/separator"`}
@@ -190,6 +190,83 @@ export default function SeparatorPage() {
       ]}
       previous={{ title: 'Select', href: '/docs/components/select' }}
       next={{ title: 'Sheet', href: '/docs/components/sheet' }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCard title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Separator when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Dividing distinct content sections within a page or component
+                </li>
+                <li className="text-sm">
+                  • Separating list items visually (menu items, settings options)
+                </li>
+                <li className="text-sm">
+                  • Creating vertical dividers between inline content (toolbar buttons, breadcrumbs)
+                </li>
+                <li className="text-sm">
+                  • Adding visual rhythm to content without semantic section breaks
+                </li>
+                <li className="text-sm">
+                  • Form sections need visual grouping (use with decorative prop)
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Marking semantic document structure (use HTML section, article tags)
+                </li>
+                <li className="text-sm">
+                  • Creating visual spacing alone (use margin/padding instead)
+                </li>
+                <li className="text-sm">
+                  • Separating major page regions (use Card borders or layout containers)
+                </li>
+                <li className="text-sm">
+                  • Navigation dividers (use proper nav semantics with aria-label)
+                </li>
+                <li className="text-sm">
+                  • Every single content break (overuse reduces visual impact)
+                </li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">Best Practices:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">
+                  • Default to decorative=true for purely visual separators
+                </li>
+                <li className="text-sm">
+                  • Use decorative=false only when screen readers need section announcement
+                </li>
+                <li className="text-sm">
+                  • Horizontal separators: use in vertical layouts with space-y classes
+                </li>
+                <li className="text-sm">
+                  • Vertical separators: use in flex layouts with flex items-center gap-4
+                </li>
+                <li className="text-sm">
+                  • Customize color with bg-primary or other design tokens (not hardcoded)
+                </li>
+                <li className="text-sm">
+                  • Increase height (h-[2px]) for stronger visual separation
+                </li>
+                <li className="text-sm">
+                  • Combine with text using absolute positioning for &quot;OR&quot; dividers
+                </li>
+                <li className="text-sm">
+                  • Use sparingly - too many separators create visual clutter
+                </li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }

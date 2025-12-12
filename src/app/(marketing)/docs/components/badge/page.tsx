@@ -1,6 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
+import { DocsSection, DocsCard } from '@/components/docs';
 import { Badge } from '@/components/ui/badge';
 import { Check, X, AlertCircle, Info } from 'lucide-react';
 
@@ -206,6 +207,64 @@ export default function BadgePage() {
       ]}
       previous={{ title: 'Card', href: '/docs/components/card' }}
       next={{ title: 'Avatar', href: '/docs/components/avatar' }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCard title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Badge when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Displaying status or state (active, pending, completed)
+                </li>
+                <li className="text-sm">• Labeling content with categories or tags</li>
+                <li className="text-sm">• Highlighting important metadata (new, beta, pro)</li>
+                <li className="text-sm">• Showing counts or quantities inline with text</li>
+                <li className="text-sm">
+                  • Compact visual indicators without full button emphasis
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">• Triggering actions (use Button instead)</li>
+                <li className="text-sm">• Long text content (badges should be 1-2 words max)</li>
+                <li className="text-sm">
+                  • Notification indicators (use Notification Badge for count bubbles)
+                </li>
+                <li className="text-sm">
+                  • Important alerts (use Alert component for critical messages)
+                </li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">Variant Selection:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">
+                  • <strong>default</strong>: Primary status or emphasis
+                </li>
+                <li className="text-sm">
+                  • <strong>secondary</strong>: Muted or neutral status
+                </li>
+                <li className="text-sm">
+                  • <strong>accent</strong>: Highlighted or important information
+                </li>
+                <li className="text-sm">
+                  • <strong>destructive</strong>: Error states, warnings, negative status
+                </li>
+                <li className="text-sm">
+                  • <strong>neutral</strong>: Subtle background, low emphasis
+                </li>
+                <li className="text-sm">
+                  • <strong>outline</strong>: Minimal style, transparent background
+                </li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }

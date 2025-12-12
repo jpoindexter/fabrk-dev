@@ -226,6 +226,92 @@ stripe: {
         </DocsCard>
       </DocsSection>
 
+      {/* Troubleshooting */}
+      <DocsSection title="Troubleshooting">
+        <DocsCard title="COMMON ERRORS">
+          <div className="space-y-4">
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: No such price or lookup key
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Verify lookup key exists in Stripe Dashboard
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`# Steps to fix:
+1. Go to https://dashboard.stripe.com/products
+2. Click on your product
+3. Scroll to "Pricing" section
+4. Click "Advanced pricing options"
+5. Add lookup key: fabrk_purchase
+6. Save product
+
+# Verify in .env.local
+NEXT_PUBLIC_STRIPE_PRICE_FABRK="fabrk_purchase"`}
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: Webhook signature verification failed
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Ensure STRIPE_WEBHOOK_SECRET matches stripe listen output
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`# Run stripe listen and copy the webhook secret
+stripe listen --forward-to localhost:3000/api/webhooks/stripe
+
+# Output shows: whsec_abc123...
+# Add to .env.local (must match exactly)
+STRIPE_WEBHOOK_SECRET="whsec_abc123..."`}
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: Payment succeeded but webhook not triggered
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Verify stripe listen is running
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`# Make sure stripe listen is running in a separate terminal
+stripe listen --forward-to localhost:3000/api/webhooks/stripe
+
+# Should show: "Ready! Your webhook signing secret is..."
+# Leave this terminal open while testing`}
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: Checkout redirects to 404
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Check success_url and cancel_url configuration
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`// In checkout API route
+success_url: \`\${process.env.NEXT_PUBLIC_APP_URL}/success?session_id={CHECKOUT_SESSION_ID}\`,
+cancel_url: \`\${process.env.NEXT_PUBLIC_APP_URL}/pricing\`,
+
+// Verify NEXT_PUBLIC_APP_URL in .env.local
+NEXT_PUBLIC_APP_URL="http://localhost:3000"`}
+                </code>
+              </div>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+
       {/* Next Steps */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">

@@ -1,6 +1,6 @@
 'use client';
 
-import { ComponentShowcaseTemplate } from '@/components/docs';
+import { ComponentShowcaseTemplate, DocsSection, DocsCard } from '@/components/docs';
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -37,8 +37,17 @@ export default function DropdownMenuPage() {
   return (
     <ComponentShowcaseTemplate
       code="[UI.18]"
+      category="Navigation"
       title="Dropdown Menu"
       description="Displays a menu to the user—such as a set of actions or functions—triggered by a button."
+      importCode={`import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu"`}
       mainPreview={{
         code: `import {
   DropdownMenu,
@@ -378,6 +387,75 @@ const [showActivityBar, setShowActivityBar] = useState(false);
         title: 'Breadcrumb',
         href: '/docs/components/breadcrumb',
       }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCard title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Dropdown Menu when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Actions menu with 3-7 related items (edit, delete, duplicate, share)
+                </li>
+                <li className="text-sm">• User profile menu (account, settings, logout)</li>
+                <li className="text-sm">
+                  • Context menu triggered by click (more options, kebab menu)
+                </li>
+                <li className="text-sm">
+                  • Settings or view preferences (checkboxes, radio groups)
+                </li>
+                <li className="text-sm">
+                  • Quick actions attached to specific UI elements (row actions, card actions)
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Primary site navigation (use Navigation component or header nav)
+                </li>
+                <li className="text-sm">• Less than 3 items (use individual Buttons instead)</li>
+                <li className="text-sm">
+                  • Complex forms or inputs needed (use Dialog or Popover)
+                </li>
+                <li className="text-sm">
+                  • Content should always be visible (use Tabs or sections)
+                </li>
+                <li className="text-sm">
+                  • More than 10 items (consider categorizing with separators or use Select)
+                </li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">Best Practices:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">• Group related actions with DropdownMenuSeparator</li>
+                <li className="text-sm">
+                  • Place destructive actions (delete, remove) at the bottom after separator
+                </li>
+                <li className="text-sm">
+                  • Use DropdownMenuLabel for section headers (&quot;Account&quot;,
+                  &quot;Settings&quot;)
+                </li>
+                <li className="text-sm">
+                  • Add icons to menu items for quick recognition (edit icon, delete icon)
+                </li>
+                <li className="text-sm">
+                  • Show keyboard shortcuts with DropdownMenuShortcut (⌘K, ⌘S)
+                </li>
+                <li className="text-sm">
+                  • Use DropdownMenuCheckboxItem for toggleable options (show/hide features)
+                </li>
+                <li className="text-sm">
+                  • Keep menu width consistent (w-56 is standard, adjust with className)
+                </li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }

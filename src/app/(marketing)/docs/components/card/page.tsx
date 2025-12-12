@@ -1,6 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
+import { DocsSection, DocsCard as DocsCardComponent } from '@/components/docs';
 import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Settings } from 'lucide-react';
@@ -278,6 +279,56 @@ export default function CardPage() {
       ]}
       previous={{ title: 'Switch', href: '/docs/components/switch' }}
       next={{ title: 'Badge', href: '/docs/components/badge' }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCardComponent title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Card when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">• Grouping related content into a contained unit</li>
+                <li className="text-sm">• Displaying summary information (stats, KPIs, metrics)</li>
+                <li className="text-sm">
+                  • Creating scannable layouts with multiple information blocks
+                </li>
+                <li className="text-sm">• Interactive content that responds to clicks or hovers</li>
+                <li className="text-sm">• Terminal-style headers needed for consistent branding</li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">• Simple text grouping (use div or semantic elements)</li>
+                <li className="text-sm">• Navigation items (use Navigation or Dropdown Menu)</li>
+                <li className="text-sm">• Critical alerts (use Alert or Alert Dialog)</li>
+                <li className="text-sm">• Temporary messages (use Toast notifications)</li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">Composition Guide:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">
+                  • <strong>CardHeader</strong>: Always use with code + title for terminal aesthetic
+                </li>
+                <li className="text-sm">
+                  • <strong>CardContent</strong>: Main content area (required for most cards)
+                </li>
+                <li className="text-sm">
+                  • <strong>CardFooter</strong>: Actions or metadata (optional)
+                </li>
+                <li className="text-sm">
+                  • <strong>tone prop</strong>: Use primary/success/warning/danger for visual
+                  hierarchy
+                </li>
+                <li className="text-sm">
+                  • <strong>interactive prop</strong>: Enable for clickable cards
+                </li>
+              </ul>
+            </div>
+          </div>
+        </DocsCardComponent>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }

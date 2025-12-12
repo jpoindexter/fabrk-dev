@@ -1,6 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
+import { DocsSection, DocsCard } from '@/components/docs';
 import { Button } from '@/components/ui/button';
 import { Mail, ArrowRight, Download } from 'lucide-react';
 
@@ -167,6 +168,66 @@ export default function ButtonPage() {
       ]}
       previous={{ title: 'Overview', href: '/docs/components/overview' }}
       next={{ title: 'Input', href: '/docs/components/input' }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCard title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Button when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Triggering actions (submit form, open modal, delete item)
+                </li>
+                <li className="text-sm">• Primary navigation requires visual emphasis</li>
+                <li className="text-sm">• You need loading states for async operations</li>
+                <li className="text-sm">
+                  • Action requires user confirmation (destructive variant)
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Navigating to another page (use Link with variant=&quot;link&quot; or Next.js
+                  Link)
+                </li>
+                <li className="text-sm">• Toggling state (use Switch or Checkbox instead)</li>
+                <li className="text-sm">
+                  • Selecting from multiple options (use Radio Group or Select)
+                </li>
+                <li className="text-sm">
+                  • Icon-only actions need more context (add aria-label or use Tooltip)
+                </li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">Variant Selection Guide:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">
+                  • <strong>default</strong>: Primary actions (save, submit, confirm)
+                </li>
+                <li className="text-sm">
+                  • <strong>secondary</strong>: Less important actions (cancel, back)
+                </li>
+                <li className="text-sm">
+                  • <strong>destructive</strong>: Dangerous actions (delete, remove, reset)
+                </li>
+                <li className="text-sm">
+                  • <strong>outline</strong>: Secondary with more emphasis than ghost
+                </li>
+                <li className="text-sm">
+                  • <strong>ghost</strong>: Minimal emphasis (close, dismiss, tertiary actions)
+                </li>
+                <li className="text-sm">
+                  • <strong>link</strong>: Styled as text, use sparingly for inline actions
+                </li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }

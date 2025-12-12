@@ -207,6 +207,83 @@ export async function POST(request: Request) {
           </div>
         </DocsCard>
       </DocsSection>
+
+      {/* Troubleshooting */}
+      <DocsSection title="Troubleshooting">
+        <DocsCard title="COMMON ERRORS">
+          <div className="space-y-4">
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: CORS error in browser console
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Add CORS headers in middleware or API route
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`// In route.ts
+const headers = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+};
+return NextResponse.json({ data }, { headers });`}
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: 405 Method Not Allowed
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Verify export name matches HTTP method
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`// Must be named GET, POST, PUT, DELETE (uppercase)
+export async function GET() { }  // Correct
+export async function get() { }  // Wrong - won't work`}
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: Request timeout
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Optimize database queries and add timeouts
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`// Add index to frequent query fields in schema.prisma
+model User {
+  email String @unique // Indexed automatically
+  name  String @db.Index // Add index for searches
+}`}
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+                [ERROR]: Cannot read properties of undefined
+              </p>
+              <p className="mb-2 text-sm">
+                <strong>Solution:</strong> Always validate request data with Zod
+              </p>
+              <div className="border-border bg-card rounded-none border p-3">
+                <code className="font-mono text-xs">
+                  {`// Always validate before accessing
+const body = await request.json();
+const validated = schema.parse(body); // Throws if invalid
+const value = validated.field; // Safe to access`}
+                </code>
+              </div>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
     </FeatureGuideTemplate>
   );
 }

@@ -349,6 +349,18 @@ export async function POST(
       previous={{ title: 'Analytics', href: '/docs/features/analytics' }}
       next={{ title: 'Cloud Storage', href: '/docs/features/cloud-storage' }}
     >
+      {/* Prerequisites */}
+      <DocsSection title="Prerequisites">
+        <DocsCard title="BEFORE YOU START">
+          <ul className="space-y-2">
+            <li className="font-mono text-xs">├─ Completed Getting Started guide</li>
+            <li className="font-mono text-xs">├─ Database configured and running</li>
+            <li className="font-mono text-xs">├─ Environment variables set up (.env.local)</li>
+            <li className="font-mono text-xs">└─ No additional requirements</li>
+          </ul>
+        </DocsCard>
+      </DocsSection>
+
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
         <DocsCard title="BEST PRACTICES">

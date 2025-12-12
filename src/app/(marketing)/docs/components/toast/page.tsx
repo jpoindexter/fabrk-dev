@@ -1,6 +1,6 @@
 'use client';
 
-import { ComponentShowcaseTemplate } from '@/components/docs';
+import { ComponentShowcaseTemplate, DocsSection, DocsCard } from '@/components/docs';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 
@@ -284,6 +284,70 @@ async function handleSubmit() {
       ]}
       previous={{ title: 'Command', href: '/docs/components/command' }}
       next={{ title: 'Cropper', href: '/docs/components/cropper' }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCard title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Toast when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Providing temporary feedback for user actions (saved, deleted, copied)
+                </li>
+                <li className="text-sm">
+                  • Non-critical notifications that don&apos;t require user decision
+                </li>
+                <li className="text-sm">• Auto-dismiss is appropriate (3-5 seconds typical)</li>
+                <li className="text-sm">
+                  • Quick status updates (upload progress, background tasks)
+                </li>
+                <li className="text-sm">• Undo actions with action button (delete with undo)</li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Information must persist until user acknowledges (use Alert)
+                </li>
+                <li className="text-sm">
+                  • User must make a decision (use Dialog or Alert Dialog)
+                </li>
+                <li className="text-sm">
+                  • Critical errors requiring attention (use Alert with destructive variant)
+                </li>
+                <li className="text-sm">
+                  • Complex information with multiple paragraphs (use Dialog)
+                </li>
+                <li className="text-sm">
+                  • Form validation errors (show inline with error states)
+                </li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">Toast vs Alert:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">
+                  • <strong>Toast</strong>: Temporary (auto-dismiss), action feedback, non-blocking
+                </li>
+                <li className="text-sm">
+                  • <strong>Alert</strong>: Persistent (user dismisses), important info, inline in
+                  page
+                </li>
+                <li className="text-sm">
+                  • <strong>Toast</strong>: &quot;Item saved&quot;, &quot;Copied to clipboard&quot;,
+                  &quot;File uploaded&quot;
+                </li>
+                <li className="text-sm">
+                  • <strong>Alert</strong>: &quot;Your session will expire in 10 minutes&quot;,
+                  &quot;Email verification required&quot;
+                </li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }

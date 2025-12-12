@@ -92,7 +92,12 @@ interface ConsentState {
   preferences: CookiePreferences;
 }
 
-export function CookieConsent() {
+export interface CookieConsentProps {
+  variant?: 'full' | 'modal-only';
+  bannerVariant?: 'full' | 'minimal';
+}
+
+export function CookieConsent({ variant = 'full', bannerVariant = 'full' }: CookieConsentProps) {
   // Use ref to track if we've done initial hydration
   const hasHydrated = useRef(false);
 
@@ -125,11 +130,15 @@ export function CookieConsent() {
     hasHydrated.current = true;
 
     const { preferences: savedPrefs, showButton: shouldShowButton } = getInitialPreferences();
+    const hasSavedConsent = !shouldShowButton;
     // eslint-disable-next-line react-hooks/set-state-in-effect -- Required for hydration-safe localStorage sync; server renders default, client updates from storage
-    setConsentState({ showButton: shouldShowButton, preferences: savedPrefs });
+    setConsentState({
+      showButton: variant === 'full' ? shouldShowButton : false,
+      preferences: savedPrefs,
+    });
 
-    // Update Google consent with loaded preferences
-    if (!shouldShowButton) {
+    // Update Google consent only if consent already exists
+    if (hasSavedConsent) {
       updateGoogleConsent(savedPrefs);
     }
   }, []);
@@ -205,51 +214,93 @@ export function CookieConsent() {
     }
   }, [showModal]);
 
-  if (!showButton && !showModal) return null;
+  if ((variant === 'modal-only' || !showButton) && !showModal) return null;
 
   return (
     <>
       {/* Floating Cookie Button */}
-      {showButton && !showModal && (
-        <div
-          className={cn(
-            'bg-background text-foreground animate-in slide-in-from-bottom-5 fixed right-6 bottom-6 z-50 flex items-center border transition-all duration-300',
-            mode.radius
+      {variant === 'full' && showButton && !showModal && (
+        <>
+          {bannerVariant === 'full' ? (
+            // Full banner with cookie icon
+            <div
+              className={cn(
+                'bg-background text-foreground animate-in slide-in-from-bottom-5 fixed right-6 bottom-6 z-50 flex items-center border transition-all duration-300',
+                mode.radius
+              )}
+              style={{ transform: 'translate3d(0, 0, 0)' }}
+            >
+              <button
+                onClick={openModal}
+                className={cn(
+                  'hover:bg-muted flex items-center gap-2 px-4 py-3 transition-colors',
+                  mode.font
+                )}
+                aria-label="Cookie Settings"
+              >
+                <Cookie className="size-5" />
+                <span className="text-xs">&gt; COOKIE SETTINGS</span>
+              </button>
+              <button
+                onClick={() => setShowButton(false)}
+                className="border-border hover:bg-muted border-l px-3 py-3 transition-colors"
+                aria-label="Dismiss cookie notice"
+              >
+                <X className="size-4" />
+              </button>
+            </div>
+          ) : (
+            // Minimal banner with terminal text
+            <div
+              className={cn(
+                'fixed right-6 bottom-6 z-[60]',
+                'animate-in slide-in-from-bottom-5 duration-300'
+              )}
+              style={{ transform: 'translate3d(0, 0, 0)' }}
+              role="dialog"
+              aria-live="polite"
+              aria-label="Cookie consent banner"
+            >
+              <div
+                className={cn(
+                  'bg-card border-accent flex items-center gap-2 border-2 px-3 py-2',
+                  mode.radius
+                )}
+              >
+                <button
+                  onClick={openModal}
+                  className={cn(
+                    'text-accent hover:text-accent/80 text-xs whitespace-nowrap transition-colors',
+                    mode.font
+                  )}
+                >
+                  [ (0xB7) COOKIE_SETTINGS.CFG ]
+                </button>
+                <button
+                  onClick={() => setShowButton(false)}
+                  className={cn('text-accent hover:text-accent/80 transition-opacity', mode.font)}
+                  aria-label="Dismiss and reject all"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
           )}
-        >
-          <button
-            onClick={openModal}
-            className={cn(
-              'hover:bg-muted flex items-center gap-2 px-4 py-3 transition-colors',
-              mode.font
-            )}
-            aria-label="Cookie Settings"
-          >
-            <Cookie className="size-5" />
-            <span className="text-xs">&gt; COOKIE SETTINGS</span>
-          </button>
-          <button
-            onClick={() => setShowButton(false)}
-            className="border-border hover:bg-muted border-l px-3 py-3 transition-colors"
-            aria-label="Dismiss cookie notice"
-          >
-            <X className="size-4" />
-          </button>
-        </div>
+        </>
       )}
 
       {/* Cookie Modal */}
       {showModal && (
         <div className="fixed inset-0 z-[100] overflow-y-auto">
           <div
-            className="bg-background/80 fixed inset-0 backdrop-blur-sm"
+            className="bg-background/80 fixed inset-0 z-0 backdrop-blur-sm"
             onClick={closeModal}
             onKeyDown={(e) => e.key === 'Escape' && closeModal()}
             role="button"
             tabIndex={0}
             aria-label="Close modal"
           />
-          <div className="flex min-h-full items-center justify-center p-4">
+          <div className="relative z-10 flex min-h-full items-center justify-center p-4">
             <div
               className={cn(
                 'bg-background relative w-full max-w-2xl transition-all duration-300',

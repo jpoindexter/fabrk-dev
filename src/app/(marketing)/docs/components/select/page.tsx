@@ -1,6 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
+import { DocsSection, DocsCard } from '@/components/docs';
 import {
   Select,
   SelectContent,
@@ -213,6 +214,60 @@ export default function SelectPage() {
       ]}
       previous={{ title: 'Textarea', href: '/docs/components/textarea' }}
       next={{ title: 'Checkbox', href: '/docs/components/checkbox' }}
-    />
+    >
+      {/* When to Use */}
+      <DocsSection title="When to Use">
+        <DocsCard title="USAGE GUIDANCE">
+          <div className="space-y-6">
+            <div>
+              <p className="text-success mb-3 text-sm font-semibold">✓ Use Select when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">
+                  • Choosing one option from a list of 5+ items (country, timezone, category)
+                </li>
+                <li className="text-sm">
+                  • Options are mutually exclusive (only one can be selected)
+                </li>
+                <li className="text-sm">• Space is limited and you need a compact dropdown</li>
+                <li className="text-sm">
+                  • Users are familiar with the options (don&apos;t need to see all at once)
+                </li>
+                <li className="text-sm">
+                  • Grouping related options with labels (time zones by region)
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <ul className="space-y-2">
+                <li className="text-sm">• Less than 5 options (use Radio Group for visibility)</li>
+                <li className="text-sm">
+                  • Multiple selections needed (use Checkbox group or multi-select)
+                </li>
+                <li className="text-sm">• Options need search/filter (use Combobox with search)</li>
+                <li className="text-sm">• Binary choice (use Switch or two Radio buttons)</li>
+                <li className="text-sm">
+                  • Users need to see all options immediately (use visible list)
+                </li>
+              </ul>
+            </div>
+            <div className="border-border border-t pt-4">
+              <p className="mb-2 text-sm font-semibold">Best Practices:</p>
+              <ul className="space-y-1">
+                <li className="text-sm">• Use SelectGroup + SelectLabel to organize long lists</li>
+                <li className="text-sm">
+                  • Provide clear placeholder text (e.g., &quot;Select country...&quot;)
+                </li>
+                <li className="text-sm">• Set appropriate width based on longest option</li>
+                <li className="text-sm">• Disable unavailable options rather than hiding them</li>
+                <li className="text-sm">
+                  • Order options logically (alphabetically, by popularity, or by region)
+                </li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+    </ComponentShowcaseTemplate>
   );
 }
