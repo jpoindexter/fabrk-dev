@@ -23,7 +23,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
-import { LibraryNavigation } from '@/components/library';
+import { LibraryNavigation, RelatedTemplates } from '@/components/library';
 import { columns } from './components/user-table-columns';
 import { mockUsers } from './components/types';
 import { StatsCards } from './components/stats-cards';
@@ -351,6 +351,9 @@ export default function UserManagementTemplate() {
             </div>
           </CardContent>
         </Card>
+
+        {/* Related Templates */}
+        <RelatedTemplates currentTemplateId="user-management" limit={3} />
       </div>
     </div>
   );

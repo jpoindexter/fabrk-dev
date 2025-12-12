@@ -4,3 +4,4 @@
  */
 
 export { LibraryNavigation, BackToLibraryButton } from './library-navigation';
+export { RelatedTemplates } from './related-templates';

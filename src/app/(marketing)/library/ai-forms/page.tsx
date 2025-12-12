@@ -14,7 +14,7 @@ import { CodeBlock } from '@/components/ui/code-block';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 import type { GeneratedForm } from '@/lib/ai/schemas';
-import { LibraryNavigation } from '@/components/library';
+import { LibraryNavigation, RelatedTemplates } from '@/components/library';
 
 // Static demo form data - shows what AI would generate
 const demoForm: GeneratedForm = {
@@ -557,6 +557,9 @@ export default function AIFormGeneratorTemplate() {
             </div>
           </CardContent>
         </Card>
+
+        {/* Related Templates */}
+        <RelatedTemplates currentTemplateId="ai-forms" limit={3} />
       </div>
     </div>
   );

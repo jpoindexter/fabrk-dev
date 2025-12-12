@@ -12,7 +12,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
-import { LibraryNavigation } from '@/components/library';
+import { LibraryNavigation, RelatedTemplates } from '@/components/library';
 
 // Components
 import { MetricCards } from './components/metric-cards';
@@ -274,6 +274,9 @@ export default function AnalyticsDashboardTemplate() {
             </div>
           </CardContent>
         </Card>
+
+        {/* Related Templates */}
+        <RelatedTemplates currentTemplateId="analytics-dashboard" limit={3} />
       </div>
     </div>
   );
