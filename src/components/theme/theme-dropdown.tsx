@@ -81,14 +81,44 @@ export function ThemeDropdown() {
     localStorage.setItem('theme', themeId);
     document.documentElement.setAttribute('data-theme', themeId);
 
-    // Smart Link: Auto-switch monitor effect for Game Boy themes
-    if (themeId === 'gameboy' || themeId === 'gbpocket') {
-      const effect = 'lcd';
+    // Smart Link: Auto-switch monitor effect based on theme type
+    let effect = '';
+
+    // 1. LCD Handheld Themes
+    if (['gameboy', 'gbpocket'].includes(themeId)) {
+      effect = 'lcd';
+    }
+    // 2. Retro Computer / CRT Themes
+    else if (
+      [
+        'amber',
+        'green',
+        'blue',
+        'red',
+        'purple',
+        'apple2',
+        'c64',
+        'vic20',
+        'atari',
+        'spectrum',
+        'ibmpc',
+      ].includes(themeId)
+    ) {
+      effect = 'crt';
+    }
+    // 3. Paper / Clean Themes
+    else if (['bw', 'newspaper', 'paper', 'light-green', 'light-amber'].includes(themeId)) {
+      effect = 'none';
+    }
+
+    if (effect) {
       // Remove all potential effect classes
-      ['effect-crt', 'effect-lcd', 'effect-vhs'].forEach((c) =>
+      ['effect-crt', 'effect-lcd', 'effect-vhs', 'effect-none'].forEach((c) =>
         document.documentElement.classList.remove(c)
       );
-      document.documentElement.classList.add(`effect-${effect}`);
+      if (effect !== 'none') {
+        document.documentElement.classList.add(`effect-${effect}`);
+      }
       localStorage.setItem('monitor-preset', effect);
 
       // Dispatch storage event to sync other components if they listen
