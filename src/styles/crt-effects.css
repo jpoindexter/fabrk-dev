@@ -1,90 +1,103 @@
 /**
- * CRT Terminal Effects
- * Inspired by Mistral.ai Devstral 2 (https://mistral.ai/news/devstral-2-vibe-cli)
- * Clean scan lines + subtle grid texture for Terminal mode only
+ * CRT Monitor Effects
+ * Toggleable display effects via data-monitor-effect attribute
+ * Options: none, scanlines, scanlines-subtle, glow, glow-strong, vintage
  */
 
 /* ============================================
-   1. MISTRAL-STYLE CRT SCAN LINES
-   Applied to: Buttons, Cards, Progress Bars, Badges, Alerts
-   NOT applied to: Inputs, Textareas, Body text
-
-   Two-layer effect:
-   - Horizontal scan lines (2px pattern)
-   - RGB chromatic aberration (subtle color split)
+   SCANLINES EFFECT
+   Classic CRT horizontal scan lines
    ============================================ */
 
-.crt-scanlines {
-  /* DISABLED - Scanlines removed for readability */
-  /* User request: No gradients, solid colors only */
-}
-
-/* All CRT themes use the same scan line effect */
-
-/* ============================================
-   2. FULL-PAGE CRT OVERLAY (All CRT Themes)
-   Applied to: body element for all CRT themes
-   Creates Mistral-style scan lines + chromatic aberration across entire page
-   ============================================ */
-
-body::before {
-  /* DISABLED - Body overlay removed for clean appearance */
-  /* User request: No gradients or scanline effects */
-  content: none;
-}
-
-/* Rolling scanline - classic CRT effect (DISABLED) */
-/* html[data-visual-mode='terminal'] body::after {
+/* Regular scanlines */
+[data-monitor-effect='scanlines'] body::before,
+[data-monitor-effect='vintage'] body::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100px;
+  inset: 0;
   pointer-events: none;
-  z-index: 99998;
+  z-index: 9999;
+  background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
+  background-size: 100% 4px;
+  background-repeat: repeat;
+}
 
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(255, 255, 255, 0.03) 45%,
-    rgba(255, 255, 255, 0.1) 50%,
-    rgba(255, 255, 255, 0.03) 55%,
-    transparent 100%
-  );
-
-  -webkit-backdrop-filter: blur(0.5px) brightness(1.1);
-  backdrop-filter: blur(0.5px) brightness(1.1);
-
-  animation: roll-scanline 45s linear infinite;
-} */
-
-/* No longer needed - all themes are CRT */
+/* Subtle scanlines (lighter) */
+[data-monitor-effect='scanlines-subtle'] body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%);
+  background-size: 100% 4px;
+  background-repeat: repeat;
+}
 
 /* ============================================
-   3. DIAGONAL STRIPE PATTERN
-   Applied to: Secondary/muted elements (optional accent)
-   Used for "Tie" sections in charts, secondary badges
+   TEXT GLOW EFFECTS
+   CRT phosphor glow on text
    ============================================ */
 
-.crt-stripes {
-  background-image: repeating-linear-gradient(
-    45deg,
-    transparent 0px,
-    transparent 10px,
-    rgba(255, 255, 255, 0.05) 10px,
-    rgba(255, 255, 255, 0.05) 20px
+/* Regular glow - subtle */
+[data-monitor-effect='glow'] body,
+[data-monitor-effect='vintage'] body {
+  text-shadow:
+    0 0 2px currentColor,
+    0 0 4px currentColor;
+}
+
+/* Strong glow - more pronounced */
+[data-monitor-effect='glow-strong'] body {
+  text-shadow:
+    0 0 3px currentColor,
+    0 0 6px currentColor,
+    0 0 9px currentColor;
+}
+
+/* ============================================
+   VINTAGE CRT - Full effect combination
+   Includes: scanlines + glow + vignette
+   ============================================ */
+
+/* Vignette effect (darkened corners) */
+[data-monitor-effect='vintage'] body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 60%,
+    rgba(0, 0, 0, 0.1) 85%,
+    rgba(0, 0, 0, 0.3) 100%
   );
 }
 
-/* Stripes work the same across all CRT themes */
-
 /* ============================================
-   4. CRT GLOW EFFECT
-   Applied to: Primary buttons, accent elements
-   Creates subtle halo effect like CRT phosphor glow
+   UTILITY CLASSES
+   Optional CRT effects for specific elements
    ============================================ */
 
+/* Scanlines utility class (for cards, panels, etc.) */
+.crt-scanlines {
+  position: relative;
+}
+
+.crt-scanlines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%);
+  background-size: 100% 2px;
+  background-repeat: repeat;
+  z-index: 1;
+}
+
+/* Glow utility class */
 .crt-glow {
   position: relative;
 }
@@ -101,28 +114,41 @@ body::before {
   pointer-events: none;
 }
 
-/* ============================================
-   5. CONDITIONAL APPLICATION
-   All themes now use CRT effects
-   ============================================ */
-
-/* ============================================
-   6. PERFORMANCE OPTIMIZATIONS
-   Use will-change for animated elements only
-   ============================================ */
-
-.crt-scanlines {
-  /* Static effect, no will-change needed */
+/* Stripes utility class (diagonal pattern) */
+.crt-stripes {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0px,
+    transparent 10px,
+    rgba(255, 255, 255, 0.05) 10px,
+    rgba(255, 255, 255, 0.05) 20px
+  );
 }
 
 /* ============================================
-   7. ACCESSIBILITY
+   ACCESSIBILITY
    Respect prefers-reduced-motion
    ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
-  .crt-glow::after {
-    /* Keep glow but remove blur animation if any */
+  [data-monitor-effect] body::before,
+  [data-monitor-effect] body::after {
     animation: none;
   }
+
+  .crt-glow::after {
+    animation: none;
+  }
+}
+
+/* ============================================
+   PERFORMANCE
+   Use GPU acceleration for fixed overlays
+   ============================================ */
+
+[data-monitor-effect] body::before,
+[data-monitor-effect] body::after {
+  will-change: opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }

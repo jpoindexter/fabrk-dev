@@ -12,6 +12,7 @@ import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from '@/components/ui/sheet';
 import { ThemeDropdown } from '@/components/theme/theme-dropdown';
+import { MonitorEffectsDropdown } from '@/components/theme/monitor-effects-dropdown';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -113,9 +114,10 @@ export function SiteNavigation() {
           {/* Separator */}
           <div className="bg-border h-6 w-px" />
 
-          {/* Theme + CTA Buttons */}
+          {/* Theme + Monitor Effects + CTA Buttons */}
           <div className="flex items-center gap-2">
             <ThemeDropdown />
+            <MonitorEffectsDropdown />
             <Button variant="outline" asChild className={cn(mode.radius, mode.font, 'text-xs')}>
               <Link href="/library">&gt; VIEW LIBRARY</Link>
             </Button>
@@ -183,10 +185,11 @@ export function SiteNavigation() {
                 })}
                 <div className="border-border border-t pt-6">
                   <span className={cn(mode.font, 'text-muted-foreground mb-4 block text-xs')}>
-                    [THEME]:
+                    [DISPLAY]:
                   </span>
-                  <div className="mb-4 flex items-center gap-2">
+                  <div className="mb-4 flex flex-col gap-2">
                     <ThemeDropdown />
+                    <MonitorEffectsDropdown />
                   </div>
                 </div>
                 <div className="border-border border-t pt-6">
