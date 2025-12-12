@@ -1,164 +1,182 @@
 /**
- * CRT Monitor Effects
- * Multi-select toggleable display effects via CSS classes
- * Options: none, scanlines, scanlines-subtle, glow, glow-strong, vintage,
- *          fast-flicker, screen-door, color-shift, retro-crt
- * Usage: Multiple effects can be combined (e.g., .effect-scanlines + .effect-glow)
+ * FABRK RETRO DISPLAY ENGINE
+ * Consolidates multiple atomic effects into 3 distinct, high-fidelity presets.
+ * 
+ * PRESETS:
+ * 1. .effect-crt  -> 80s/90s Monitor (Scanlines + Glow + Rolling Line + Flicker)
+ * 2. .effect-lcd  -> Game Boy/Handheld (Pixel Grid + Hard Edges + No Glow)
+ * 3. .effect-vhs  -> Damaged Tape (Chromatic Aberration + Noise + Tracking Issues)
  */
 
 /* ============================================
-   SCANLINES EFFECT
-   Classic CRT horizontal scan lines
+   SHARED UTILITIES
    ============================================ */
 
-/* Regular scanlines - Mistral-style with chromatic aberration */
-.effect-scanlines body::before,
-.effect-vintage body::before {
+/* GPU Acceleration for all overlays */
+.effect-crt::before,
+.effect-crt::after,
+.effect-crt body::before,
+.effect-crt body::after,
+.effect-lcd::before,
+.effect-lcd::after,
+.effect-lcd body::before,
+.effect-lcd body::after,
+.effect-vhs::before,
+.effect-vhs::after,
+.effect-vhs body::before {
+  pointer-events: none;
+  user-select: none;
+  will-change: opacity, transform;
+  transform: translateZ(0);
+}
+
+/* ============================================
+   1. CRT MONITOR (The "Authentic" Look)
+   Components: Scanlines, Phosphor Glow, Vignette, Rolling Bar, Power Flicker
+   ============================================ */
+
+/* A. Scanlines & Vignette (Body Overlay) */
+.effect-crt body::before {
   content: '';
   position: fixed;
   inset: 0;
-  pointer-events: none;
-  z-index: 9999;
+  z-index: 9998;
+
+  /* Scanlines: 2px lines, low opacity */
   background-image:
     linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%),
-    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
   background-size:
     100% 2px,
     3px 100%;
-  background-repeat: repeat, repeat;
+  background-repeat: repeat;
   background-blend-mode: overlay;
 }
 
-/* ============================================
-   TEXT GLOW EFFECTS
-   CRT phosphor glow on text
-   ============================================ */
-
-/* Regular glow - subtle */
-.effect-glow body,
-.effect-vintage body {
-  text-shadow:
-    0 0 2px color-mix(in srgb, currentColor, transparent 65%),
-    0 0 4px color-mix(in srgb, currentColor, transparent 85%) !important;
-}
-
-/* ============================================
-   VINTAGE CRT - Full effect combination
-   Includes: scanlines + glow + vignette
-   ============================================ */
-
-/* Vignette effect (darkened corners) */
-.effect-vintage body::after {
-  content: '' !important;
-  position: fixed !important;
-  inset: 0 !important;
-  pointer-events: none !important;
-  z-index: 9998 !important;
-  background: radial-gradient(
-    ellipse at center,
-    transparent 0%,
-    transparent 60%,
-    rgba(0, 0, 0, 0.05) 85%,
-    rgba(0, 0, 0, 0.15) 100%
-  ) !important;
-}
-
-/* ============================================
-   UTILITY CLASSES
-   Optional CRT effects for specific elements
-   ============================================ */
-
-/* Scanlines utility class (for cards, panels, etc.) */
-.crt-scanlines {
-  position: relative;
-}
-
-.crt-scanlines::before {
+/* B. Vignette (Dark Corners) */
+.effect-crt body::after {
   content: '';
-  position: absolute;
+  position: fixed;
   inset: 0;
-  pointer-events: none;
-  background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%);
-  background-size: 100% 2px;
-  background-repeat: repeat;
-  z-index: 1;
+  z-index: 9998;
+  background: radial-gradient(circle at center, transparent 60%, rgba(0, 0, 0, 0.2) 100%);
 }
 
-/* Glow utility class */
-.crt-glow {
-  position: relative;
+/* C. Phosphor Glow (Text Bloom) */
+.effect-crt body {
+  text-shadow:
+    0 0 2px color-mix(in srgb, currentColor, transparent 70%),
+    0 0 6px color-mix(in srgb, currentColor, transparent 90%);
 }
 
-.crt-glow::after {
+/* D. Power Flicker (Subtle Brightness Dip) */
+html.effect-crt::before {
   content: '';
-  position: absolute;
-  inset: -1px;
-  background: inherit;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 1);
+  animation: crt-flicker 0.15s infinite; /* Uses fast-flicker logic but tuned down */
+  opacity: 0.02; /* Very subtle base state */
+}
+
+/* E. Rolling Scanline (The "Refresh" Bar) */
+html.effect-crt::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 15px; /* Thinner line */
+  z-index: 9999;
+
+  /* Lighter, blurrier gradient */
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 100%
+  );
+
+  /* Strong blur to make it look like a magnetic wave */
   filter: blur(4px);
-  opacity: 0.15;
-  z-index: -1;
-  border-radius: inherit;
+
+  animation: crt-roll 8s linear infinite;
+}
+
+/* ============================================
+   2. LCD HANDHELD (The "Game Boy" Look)
+   Components: Pixel Grid, No Glow, Sharpness, Inner Shadow
+   ============================================ */
+
+/* A. Pixel Grid (Screen Door) */
+.effect-lcd body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  /* 3px Dot Matrix Pattern */
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.15) 2px,
+      rgba(0, 0, 0, 0.15) 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.15) 2px,
+      rgba(0, 0, 0, 0.15) 3px
+    );
+  background-size: 3px 3px;
+}
+
+/* B. No Glow (Flat LCD look) */
+.effect-lcd body {
+  text-shadow: none !important;
+}
+
+/* C. Recessed Screen Shadow */
+.effect-lcd body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
   pointer-events: none;
 }
 
-/* Stripes utility class (diagonal pattern) */
-.crt-stripes {
-  background-image: repeating-linear-gradient(
-    45deg,
-    transparent 0px,
-    transparent 10px,
-    rgba(255, 255, 255, 0.05) 10px,
-    rgba(255, 255, 255, 0.05) 20px
-  );
-}
-
 /* ============================================
-   ACCESSIBILITY
-   Respect prefers-reduced-motion
+   3. VHS GLITCH (The "Broken" Look)
+   Components: Color Shift, Noise, Tracking Error
    ============================================ */
 
-@media (prefers-reduced-motion: reduce) {
-  /* Disable all CRT effect animations for reduced motion */
-  html.effect-vintage::before,
-  html.effect-vintage::after,
-  html.effect-scanlines::before,
-  html.effect-glow::before,
-  html.effect-fast-flicker::before,
-  .effect-color-shift body,
-  html.effect-retro-crt::before,
-  .effect-retro-crt body,
-  .crt-glow::after {
-    animation: none !important;
-  }
+/* A. Chromatic Aberration (Color Shift) */
+.effect-vhs body {
+  animation: vhs-shift 2s infinite;
 }
 
-/* ============================================
-   PERFORMANCE
-   Use GPU acceleration for fixed overlays
-   ============================================ */
-
-.effect-scanlines body::before,
-.effect-vintage body::before,
-.effect-vintage body::after,
-html.effect-vintage::before,
-html.effect-vintage::after,
-html.effect-scanlines::before,
-html.effect-glow::before,
-html.effect-fast-flicker::before,
-.effect-screen-door body::before,
-html.effect-retro-crt::before,
-.effect-retro-crt body::before {
-  will-change: opacity;
-  transform: translateZ(0);
-  backface-visibility: hidden;
+/* B. Tracking Noise (Scanlines) */
+.effect-vhs body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+  background-size: 100% 4px; /* Thicker, coarser lines */
+  background-repeat: repeat;
 }
 
 /* ============================================
    ANIMATIONS
-   Rolling scanline for vintage CRT effect
    ============================================ */
 
-@keyframes crt-roll-scanline {
+/* Optimized Rolling Bar (Uses Transform) */
+@keyframes crt-roll {
   0% {
     transform: translateY(-100%);
   }
@@ -167,251 +185,65 @@ html.effect-retro-crt::before,
   }
 }
 
-@keyframes crt-overlay-flicker {
-  0%,
-  19.999%,
-  22%,
-  62.999%,
-  64%,
-  64.999%,
-  70%,
-  100% {
-    opacity: 0;
-  }
-  20%,
-  21.999%,
-  63%,
-  63.999%,
-  65%,
-  69.999% {
-    opacity: 0.15;
-  }
-}
-
-@keyframes fast-flicker {
+/* Realistic Power Flicker (Randomized) */
+@keyframes crt-flicker {
   0% {
-    opacity: 0.027;
+    opacity: 0.02;
   }
   5% {
-    opacity: 0.034;
+    opacity: 0.05;
   }
   10% {
-    opacity: 0.023;
+    opacity: 0.02;
   }
   15% {
-    opacity: 0.09;
+    opacity: 0.06;
   }
   20% {
-    opacity: 0.018;
-  }
-  25% {
-    opacity: 0.083;
-  }
-  30% {
-    opacity: 0.065;
-  }
-  35% {
-    opacity: 0.067;
-  }
-  40% {
-    opacity: 0.026;
-  }
-  45% {
-    opacity: 0.084;
+    opacity: 0.02;
   }
   50% {
-    opacity: 0.096;
+    opacity: 0.02;
   }
   55% {
-    opacity: 0.008;
+    opacity: 0.05;
   }
   60% {
     opacity: 0.02;
   }
-  65% {
-    opacity: 0.071;
-  }
-  70% {
-    opacity: 0.053;
-  }
-  75% {
-    opacity: 0.037;
-  }
-  80% {
-    opacity: 0.071;
-  }
-  85% {
-    opacity: 0.07;
-  }
-  90% {
-    opacity: 0.07;
-  }
-  95% {
-    opacity: 0.036;
-  }
   100% {
-    opacity: 0.024;
+    opacity: 0.02;
   }
 }
 
-@keyframes color-shift {
+/* Chromatic Aberration Shift */
+@keyframes vhs-shift {
   0% {
     text-shadow:
-      0.4389924193300864px 0 1px rgba(0, 30, 255, 0.15),
-      -0.4389924193300864px 0 1px rgba(255, 0, 80, 0.1),
-      0 0 3px;
+      1px 0 rgba(255, 0, 0, 0.2),
+      -1px 0 rgba(0, 0, 255, 0.2);
+  }
+  10% {
+    text-shadow:
+      -1px 0 rgba(255, 0, 0, 0.2),
+      1px 0 rgba(0, 0, 255, 0.2);
   }
   20% {
-    text-shadow:
-      -0.94px 0 1px rgba(0, 30, 255, 0.15),
-      0.94px 0 1px rgba(255, 0, 80, 0.1),
-      0 0 3px;
-  }
-  40% {
-    text-shadow:
-      0.62px 0 1px rgba(0, 30, 255, 0.15),
-      -0.62px 0 1px rgba(255, 0, 80, 0.1),
-      0 0 3px;
-  }
-  60% {
-    text-shadow:
-      -0.78px 0 1px rgba(0, 30, 255, 0.15),
-      0.78px 0 1px rgba(255, 0, 80, 0.1),
-      0 0 3px;
-  }
-  80% {
-    text-shadow:
-      0.31px 0 1px rgba(0, 30, 255, 0.15),
-      -0.31px 0 1px rgba(255, 0, 80, 0.1),
-      0 0 3px;
+    text-shadow: 0 0 0;
   }
   100% {
-    text-shadow:
-      0.4389924193300864px 0 1px rgba(0, 30, 255, 0.15),
-      -0.4389924193300864px 0 1px rgba(255, 0, 80, 0.1),
-      0 0 3px;
+    text-shadow: 0 0 0;
   }
-}
-
-/* Screen flicker effect - dark overlay with sudden flickers */
-html.effect-vintage::before,
-html.effect-scanlines::before,
-html.effect-glow::before {
-  content: '' !important;
-  position: fixed !important;
-  inset: 0 !important;
-  pointer-events: none !important;
-  z-index: 9996 !important;
-  background: rgba(0, 0, 0, 1) !important;
-  animation: crt-overlay-flicker 8s linear infinite !important;
-}
-
-/* Rolling scanline - classic CRT effect (vintage mode only) */
-html.effect-vintage::after {
-  content: '' !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100px !important;
-  pointer-events: none !important;
-  z-index: 9997 !important;
-
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(255, 255, 255, 0.03) 45%,
-    rgba(255, 255, 255, 0.1) 50%,
-    rgba(255, 255, 255, 0.03) 55%,
-    transparent 100%
-  ) !important;
-
-  -webkit-backdrop-filter: blur(0.5px) brightness(1.1) !important;
-  backdrop-filter: blur(0.5px) brightness(1.1) !important;
-
-  animation: crt-roll-scanline 8s linear infinite !important;
 }
 
 /* ============================================
-   NEW CRT EFFECTS (from aleclownes.com article)
+   ACCESSIBILITY
    ============================================ */
 
-/* Fast Flicker - Rapid 0.15s video-style flicker */
-html.effect-fast-flicker::before {
-  content: '' !important;
-  position: fixed !important;
-  inset: 0 !important;
-  pointer-events: none !important;
-  z-index: 9996 !important;
-  background: rgba(0, 0, 0, 1) !important;
-  animation: fast-flicker 0.15s infinite !important;
-}
-
-/* Screen Door - Pixel grid pattern effect */
-.effect-screen-door body::before {
-  content: '' !important;
-  position: fixed !important;
-  inset: 0 !important;
-  pointer-events: none !important;
-  z-index: 9999 !important;
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0, 0, 0, 0.3) 2px,
-      rgba(0, 0, 0, 0.3) 3px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 2px,
-      rgba(0, 0, 0, 0.3) 2px,
-      rgba(0, 0, 0, 0.3) 3px
-    ) !important;
-  background-size: 3px 3px !important;
-}
-
-/* Color Shift - Animated chromatic aberration on text */
-.effect-color-shift body {
-  animation: color-shift 1s infinite !important;
-}
-
-/* Retro CRT - All modern effects combined */
-html.effect-retro-crt::before {
-  content: '' !important;
-  position: fixed !important;
-  inset: 0 !important;
-  pointer-events: none !important;
-  z-index: 9996 !important;
-  background: rgba(0, 0, 0, 1) !important;
-  animation: fast-flicker 0.15s infinite !important;
-}
-
-.effect-retro-crt body::before {
-  content: '' !important;
-  position: fixed !important;
-  inset: 0 !important;
-  pointer-events: none !important;
-  z-index: 9999 !important;
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0, 0, 0, 0.3) 2px,
-      rgba(0, 0, 0, 0.3) 3px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 2px,
-      rgba(0, 0, 0, 0.3) 2px,
-      rgba(0, 0, 0, 0.3) 3px
-    ) !important;
-  background-size: 3px 3px !important;
-}
-
-.effect-retro-crt body {
-  animation: color-shift 1s infinite !important;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation: none !important;
+  }
 }
