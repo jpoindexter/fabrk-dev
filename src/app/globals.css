@@ -1268,11 +1268,11 @@
   --destructive: 25% 0 0;
   --destructive-foreground: 100% 0 0;
 
-  /* Borders - Medium gray */
-  --border: 70% 0 0;
-  --input: 70% 0 0;
+  /* Borders - Pure black for true B&W aesthetic */
+  --border: 0% 0 0;
+  --input: 0% 0 0;
 
-  /* Ring - Focus indicator (dark gray) */
+  /* Ring - Focus indicator (pure black) */
   --ring: 0% 0 0;
 
   /* Chart colors - Grayscale only */
@@ -1285,8 +1285,8 @@
   /* Terminal radius */
   --radius: 0rem;
 
-  /* Syntax highlighting - Grayscale */
-  --code-bg: #f5f5f5;
+  /* Syntax highlighting - Pure B&W */
+  --code-bg: #ffffff;
   --code-foreground: #000000;
   --code-comment: #6a6a6a;
   --code-string: #2a2a2a;
