@@ -99,7 +99,7 @@ export default function AIFormsPage() {
     <div className="container mx-auto max-w-7xl space-y-8 px-6 py-12">
       {/* Header */}
       <div className="space-y-4">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <div className={cn("bg-primary/10 p-2", mode.radius)}>
             <Sparkles className="text-primary size-6" />
           </div>
@@ -142,7 +142,7 @@ export default function AIFormsPage() {
                   onClick={() => handleSubmit(example)}
                   disabled={isLoading}
                   className={cn(
-                    "border-border bg-muted/50 hover:bg-muted border px-3 py-1 text-xs transition-colors disabled:opacity-50",
+                    "border-border bg-muted/50 hover:bg-muted border px-4 py-1 text-xs transition-colors disabled:opacity-50",
                     mode.radius,
                     mode.font
                   )}
@@ -199,7 +199,7 @@ function AIFormGeneratorPreview() {
     <div className="bg-background/50 p-4 sm:p-8">
       <div className="container mx-auto max-w-7xl space-y-6">
         {/* Header */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <div className={cn('bg-primary/10 p-2', mode.radius)}>
             <Sparkles className="text-primary size-6" />
           </div>
@@ -269,7 +269,7 @@ function AIFormGeneratorPreview() {
                     key={example}
                     disabled
                     className={cn(
-                      'border-border bg-muted/50 cursor-default border px-3 py-1 text-xs opacity-70',
+                      'border-border bg-muted/50 cursor-default border px-4 py-1 text-xs opacity-70',
                       mode.radius,
                       mode.font
                     )}
@@ -357,7 +357,7 @@ function AIFormGeneratorPreview() {
                           type={field.type}
                           placeholder={field.placeholder}
                           className={cn(
-                            'border-border bg-background w-full border px-3 py-2 text-sm',
+                            'border-border bg-background w-full border px-4 py-2 text-sm',
                             mode.radius,
                             mode.font
                           )}

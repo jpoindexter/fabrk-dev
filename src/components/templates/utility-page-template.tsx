@@ -110,19 +110,15 @@ export function UtilityPageTemplate({
         <p className={cn('text-muted-foreground max-w-md text-sm', mode.font)}>{description}</p>
 
         {/* Actions */}
-        <div className="flex flex-col gap-3 sm:flex-row">
+        <div className="flex flex-col gap-4 sm:flex-row">
           {primaryAction && (
             <Button asChild>
-              <Link href={primaryAction.href}>
-                &gt; {primaryAction.label.toUpperCase()}
-              </Link>
+              <Link href={primaryAction.href}>&gt; {primaryAction.label.toUpperCase()}</Link>
             </Button>
           )}
           {secondaryAction && (
             <Button variant="outline" asChild>
-              <Link href={secondaryAction.href}>
-                &gt; {secondaryAction.label.toUpperCase()}
-              </Link>
+              <Link href={secondaryAction.href}>&gt; {secondaryAction.label.toUpperCase()}</Link>
             </Button>
           )}
         </div>

@@ -90,7 +90,7 @@ export function TestimonialsSection() {
                       <AvatarFallback
                         className={cn(
                           mode.radius,
-                          'bg-primary/10 text-primary text-[10px] font-medium'
+                          'bg-primary/10 text-primary text-xs font-medium'
                         )}
                       >
                         {testimonial.initials}

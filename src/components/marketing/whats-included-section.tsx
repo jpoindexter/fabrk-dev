@@ -34,9 +34,9 @@ export function WhatsIncludedSection() {
                 </span>
               </div>
               <CardContent className="p-6">
-                <ul className="space-y-3">
+                <ul className="space-y-4">
                   {features.map((feature, index) => (
-                    <li key={index} className="flex items-start gap-3">
+                    <li key={index} className="flex items-start gap-4">
                       <Check className="text-success mt-0.5 h-4 w-4 shrink-0" />
                       <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
                         {feature}

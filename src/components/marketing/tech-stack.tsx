@@ -61,7 +61,7 @@ export function TechStack() {
             >
               <Card className="hover:border-primary/50 transition-colors">
                 <CardHeader code={tech.id} title="" />
-                <CardContent className="flex flex-col items-center justify-center gap-3 p-4">
+                <CardContent className="flex flex-col items-center justify-center gap-4 p-4">
                   <SimpleIcon
                     path={tech.path}
                     className="text-foreground group-hover:text-primary size-6 transition-colors"

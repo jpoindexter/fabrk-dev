@@ -106,7 +106,7 @@ function SidebarNav({ sections, activeSection, onSectionChange }: SidebarNavProp
             key={section.id}
             onClick={() => onSectionChange?.(section.id)}
             className={cn(
-              'flex w-full items-center gap-2 px-3 py-2 text-left text-sm transition-colors',
+              'flex w-full items-center gap-2 px-4 py-2 text-left text-sm transition-colors',
               mode.font,
               mode.radius,
               activeSection === section.id
@@ -130,7 +130,7 @@ function SidebarNav({ sections, activeSection, onSectionChange }: SidebarNavProp
                 key={section.id}
                 onClick={() => onSectionChange?.(section.id)}
                 className={cn(
-                  'flex w-full items-center gap-2 px-3 py-2 text-left text-sm transition-colors',
+                  'flex w-full items-center gap-2 px-4 py-2 text-left text-sm transition-colors',
                   mode.font,
                   mode.radius,
                   activeSection === section.id

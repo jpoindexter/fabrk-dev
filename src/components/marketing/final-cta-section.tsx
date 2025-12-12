@@ -36,7 +36,7 @@ export function FinalCTASection() {
             >
               <span
                 className={cn(
-                  'border-border bg-card inline-flex items-center gap-2 border px-3 py-1.5',
+                  'border-border bg-card inline-flex items-center gap-2 border px-4 py-1.5',
                   mode.radius,
                   mode.font
                 )}
@@ -78,7 +78,7 @@ export function FinalCTASection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mb-8 space-y-3"
+              className="mb-8 space-y-4"
             >
               {[
                 'Ship your MVP in days, not months',
@@ -86,7 +86,7 @@ export function FinalCTASection() {
                 'Save 100+ hours of development time',
                 'Lifetime updates, no subscription',
               ].map((benefit, index) => (
-                <li key={index} className="flex items-start gap-3">
+                <li key={index} className="flex items-start gap-4">
                   <ArrowRight className={cn('mt-0.5 size-4 shrink-0', mode.color.text.accent)} />
                   <span className={cn('text-sm', mode.font, mode.color.text.primary)}>
                     {benefit}

@@ -340,7 +340,7 @@ export function AuditLog({
                 {/* User Info */}
                 <div className="space-y-2">
                   <p className={cn('text-xs font-semibold', mode.font)}>[USER]:</p>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-4">
                     <Avatar className="border-border h-12 w-12 border-2">
                       <AvatarImage src={selectedLog.userAvatar} alt={selectedLog.userName} />
                       <AvatarFallback className={cn('text-sm', mode.font)}>

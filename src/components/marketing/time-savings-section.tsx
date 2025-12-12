@@ -38,7 +38,7 @@ export function TimeSavingsSection() {
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between gap-6">
                     <div className="flex-1">
-                      <div className="mb-2 flex items-center gap-3">
+                      <div className="mb-2 flex items-center gap-4">
                         <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
                           [0x{index.toString().padStart(2, '0')}]
                         </span>

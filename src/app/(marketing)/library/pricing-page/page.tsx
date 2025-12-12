@@ -155,7 +155,7 @@ export default function PricingPage() {
                 &gt; {plan.cta}
               </Button>
 
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {plan.features.map((feature) => (
                   <div key={feature} className="flex items-start gap-2">
                     <Check className="text-success h-4 w-4 mt-0.5" />

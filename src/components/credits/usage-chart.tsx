@@ -42,7 +42,7 @@ export function UsageChart({ data, className }: UsageChartProps) {
                 )}
                 style={{ height: `${Math.max(height, 2)}%` }}
               />
-              <span className={cn('mt-1 text-[10px]', mode.color.text.muted)}>{dayLabel}</span>
+              <span className={cn('mt-1 text-xs', mode.color.text.muted)}>{dayLabel}</span>
 
               {/* Tooltip on hover */}
               <div

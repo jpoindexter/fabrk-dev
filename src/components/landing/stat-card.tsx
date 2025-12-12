@@ -29,7 +29,7 @@ export function StatCard({ icon: Icon, value, label, index }: StatCardProps) {
         ease: [0.21, 0.47, 0.32, 0.98],
       }}
       className={cn(
-        'group border-border bg-card hover:bg-muted/50 relative flex flex-col items-center gap-3 border p-6 text-center transition-colors',
+        'group border-border bg-card hover:bg-muted/50 relative flex flex-col items-center gap-4 border p-6 text-center transition-colors',
         mode.radius
       )}
     >

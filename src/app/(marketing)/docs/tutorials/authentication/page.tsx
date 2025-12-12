@@ -298,7 +298,7 @@ export default async function PrivatePage() {
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Generate a secure secret key
               </p>
-              <div className="border-border bg-card rounded-none border p-3">
+              <div className="border-border bg-card rounded-none border p-4">
                 <code className="font-mono text-xs">
                   {`# Run in terminal
 openssl rand -base64 32
@@ -316,7 +316,7 @@ NEXTAUTH_SECRET="output-from-command-above"`}
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Verify NEXTAUTH_URL matches your deployed URL
               </p>
-              <div className="border-border bg-card rounded-none border p-3">
+              <div className="border-border bg-card rounded-none border p-4">
                 <code className="font-mono text-xs">
                   {`# Development
 NEXTAUTH_URL="http://localhost:3000"
@@ -334,7 +334,7 @@ NEXTAUTH_URL="https://yourdomain.com"`}
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Check DATABASE_URL is correct and database is accessible
               </p>
-              <div className="border-border bg-card rounded-none border p-3">
+              <div className="border-border bg-card rounded-none border p-4">
                 <code className="font-mono text-xs">
                   {`# Test database connection
 npm run db:studio
@@ -352,7 +352,7 @@ npm run db:reset`}
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Add correct redirect URI in Google Cloud Console
               </p>
-              <div className="border-border bg-card rounded-none border p-3">
+              <div className="border-border bg-card rounded-none border p-4">
                 <code className="font-mono text-xs">
                   {`# Development
 http://localhost:3000/api/auth/callback/google

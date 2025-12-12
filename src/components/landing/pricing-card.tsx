@@ -33,7 +33,7 @@ export function PricingCard({
       <CardContent padding="md">
         {/* Price Display */}
         <div className="mb-4">
-          <div className="flex items-baseline gap-3">
+          <div className="flex items-baseline gap-4">
             <span className={cn('text-base line-through', mode.color.text.muted, mode.font)}>
               {PRICING.display.original}
             </span>

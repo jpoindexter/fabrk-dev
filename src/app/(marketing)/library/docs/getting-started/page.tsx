@@ -28,7 +28,7 @@ export default function GettingStartedPage() {
         </div>
 
         <div className="flex items-start gap-4">
-          <div className={cn('bg-primary/10 p-3', mode.radius)}>
+          <div className={cn('bg-primary/10 p-4', mode.radius)}>
             <Rocket className="text-primary h-6 w-6" />
           </div>
           <div className="space-y-2">
@@ -93,7 +93,7 @@ export default function GettingStartedPage() {
               Before starting, ensure you have the following set up:
             </p>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               <div className="border-border border-l-primary border-l-2 pl-4">
                 <p className="font-medium">✓ Next.js 15+ Project</p>
                 <p className="text-muted-foreground">
@@ -135,7 +135,7 @@ export default function GettingStartedPage() {
               to find components that match your needs.
             </p>
 
-            <div className="border-border space-y-3 border p-4">
+            <div className="border-border space-y-4 border p-4">
               <p className="text-muted-foreground font-medium">[NAVIGATION TIPS]:</p>
               <ul className="text-muted-foreground list-inside list-disc space-y-2 pl-2">
                 <li>
@@ -176,7 +176,7 @@ export default function GettingStartedPage() {
           <div className={cn(mode.font, 'space-y-4 text-xs')}>
             <p>Each template page has two tabs: [PREVIEW] and [CODE].</p>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               <div className="border-border border p-4">
                 <p className="text-primary mb-2 font-medium">[PREVIEW TAB]:</p>
                 <ul className="text-muted-foreground list-inside list-disc space-y-1 pl-2">
@@ -214,7 +214,7 @@ export default function GettingStartedPage() {
               block.
             </p>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               <div className="bg-muted/30 border-border border p-4">
                 <p className="text-primary mb-2 flex items-center gap-2 font-medium">
                   <Terminal className="h-4 w-4" />
@@ -267,7 +267,7 @@ components/
               />
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               <p className="font-medium">What to adjust after pasting:</p>
               <ul className="text-muted-foreground list-inside list-disc space-y-2 pl-2">
                 <li>
@@ -344,7 +344,7 @@ npm run lint`}
           <div className={cn(mode.font, 'space-y-4 text-xs')}>
             <p className="font-medium">You've successfully added your first template! Now:</p>
 
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               <Link
                 href="/library/docs/integration/nextauth"
                 className="border-border hover:border-primary group border p-4 transition-colors"
@@ -405,8 +405,8 @@ npm run lint`}
       <Card>
         <CardHeader code="0x08" title="QUICK REFERENCE" />
         <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-3 text-xs')}>
-            <div className="border-border border-l-primary grid gap-3 border-l-2 pl-4 sm:grid-cols-2">
+          <div className={cn(mode.font, 'space-y-4 text-xs')}>
+            <div className="border-border border-l-primary grid gap-4 border-l-2 pl-4 sm:grid-cols-2">
               <div>
                 <p className="font-medium">📚 Resources</p>
                 <ul className="text-muted-foreground mt-2 space-y-1">

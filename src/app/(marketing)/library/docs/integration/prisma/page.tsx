@@ -26,7 +26,7 @@ export default function PrismaIntegrationPage() {
         </div>
 
         <div className="flex items-start gap-4">
-          <div className={cn('bg-primary/10 p-3', mode.radius)}>
+          <div className={cn('bg-primary/10 p-4', mode.radius)}>
             <Database className="text-primary h-6 w-6" />
           </div>
           <div className="space-y-2">
@@ -43,7 +43,7 @@ export default function PrismaIntegrationPage() {
       <Card>
         <CardHeader code="0x00" title="OVERVIEW" />
         <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-3 text-xs')}>
+          <div className={cn(mode.font, 'space-y-4 text-xs')}>
             <p>
               Fabrk templates use mock data by default. This guide shows how to replace mocks with
               real database queries using Prisma.
@@ -204,7 +204,7 @@ export default async function AnalyticsPage() {
       <Card>
         <CardHeader code="0x05" title="TROUBLESHOOTING" />
         <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-3 text-xs')}>
+          <div className={cn(mode.font, 'space-y-4 text-xs')}>
             <div className="border-border border p-4">
               <p className="text-destructive mb-2 flex items-center gap-2 font-medium">
                 <AlertTriangle className="h-4 w-4" />
@@ -233,7 +233,7 @@ export default async function AnalyticsPage() {
       <Card>
         <CardHeader code="0x06" title="NEXT STEPS" />
         <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-3 text-xs')}>
+          <div className={cn(mode.font, 'space-y-4 text-xs')}>
             <ul className="text-muted-foreground list-inside list-disc space-y-2 pl-2">
               <li>
                 <Link

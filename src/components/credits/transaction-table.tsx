@@ -70,14 +70,14 @@ export function TransactionTable({ transactions, className }: TransactionTablePr
             mode.font
           )}
         >
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             {getTypeIcon(tx.type)}
             <div>
               <div className="text-xs font-medium">
                 {tx.description || tx.type.replace('_', ' ')}
               </div>
               {tx.endpoint && (
-                <div className={cn('text-[10px]', mode.color.text.muted)}>{tx.endpoint}</div>
+                <div className={cn('text-xs', mode.color.text.muted)}>{tx.endpoint}</div>
               )}
             </div>
           </div>
@@ -91,9 +91,7 @@ export function TransactionTable({ transactions, className }: TransactionTablePr
               {tx.amount > 0 ? '+' : ''}
               {tx.amount}
             </div>
-            <div className={cn('text-[10px]', mode.color.text.muted)}>
-              {formatDate(tx.createdAt)}
-            </div>
+            <div className={cn('text-xs', mode.color.text.muted)}>{formatDate(tx.createdAt)}</div>
           </div>
         </div>
       ))}

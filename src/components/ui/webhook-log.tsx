@@ -405,7 +405,7 @@ export function WebhookLog({
                 {selectedLog.error && (
                   <div className="space-y-2">
                     <p className={cn('text-xs font-semibold', mode.font)}>[ERROR]:</p>
-                    <div className="bg-destructive/10 border-destructive border p-3">
+                    <div className="bg-destructive/10 border-destructive border p-4">
                       <p className={cn('text-destructive text-xs', mode.font)}>
                         {selectedLog.error}
                       </p>

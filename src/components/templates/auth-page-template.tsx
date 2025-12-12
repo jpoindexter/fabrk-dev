@@ -182,7 +182,7 @@ export function AuthPageTemplate({
         {error && (
           <div
             className={cn(
-              'border-destructive bg-destructive/10 text-destructive border p-3 text-xs',
+              'border-destructive bg-destructive/10 text-destructive border p-4 text-xs',
               mode.radius,
               mode.font
             )}

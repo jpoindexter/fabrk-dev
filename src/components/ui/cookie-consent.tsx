@@ -164,9 +164,7 @@ export function CookieConsent({
       >
         <Card className={cn('border-accent bg-card border', mode.radius)}>
           {/* Terminal Header */}
-          <div
-            className={cn('border-border flex items-center justify-between border-b px-3 py-1.5')}
-          >
+          <div className={cn('border-border flex items-center justify-between border-b px-4 py-2')}>
             <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
               [0x09] COOKIE_POLICY
             </span>
@@ -180,7 +178,7 @@ export function CookieConsent({
           </div>
 
           {/* Content */}
-          <div className="space-y-3 px-4 py-2">
+          <div className="space-y-4 px-4 py-2">
             <p className={cn('text-xs leading-relaxed', mode.font, mode.color.text.muted)}>
               &gt; We use cookies for analytics.{' '}
               <a href={privacyPolicyUrl} className={cn('underline', mode.color.text.accent)}>
@@ -224,7 +222,7 @@ export function CookieConsent({
           <div className="space-y-4 py-4">
             {/* Necessary Cookies */}
             <div className="bg-muted border-border flex items-start justify-between gap-4 border p-4">
-              <div className="flex gap-3">
+              <div className="flex gap-4">
                 <Shield className="text-primary mt-1 h-5 w-5 flex-shrink-0" />
                 <div className="space-y-1">
                   <p className={cn('text-sm font-medium', mode.font)}>[NECESSARY]</p>
@@ -239,7 +237,7 @@ export function CookieConsent({
 
             {/* Analytics Cookies */}
             <div className="border-border flex items-start justify-between gap-4 border p-4">
-              <div className="flex gap-3">
+              <div className="flex gap-4">
                 <BarChart3 className="text-primary mt-1 h-5 w-5 flex-shrink-0" />
                 <div className="space-y-1">
                   <p className={cn('text-sm font-medium', mode.font)}>[ANALYTICS]</p>
@@ -260,7 +258,7 @@ export function CookieConsent({
 
             {/* Marketing Cookies */}
             <div className="border-border flex items-start justify-between gap-4 border p-4">
-              <div className="flex gap-3">
+              <div className="flex gap-4">
                 <Target className="text-primary mt-1 h-5 w-5 flex-shrink-0" />
                 <div className="space-y-1">
                   <p className={cn('text-sm font-medium', mode.font)}>[MARKETING]</p>
@@ -281,7 +279,7 @@ export function CookieConsent({
 
             {/* Preferences Cookies */}
             <div className="border-border flex items-start justify-between gap-4 border p-4">
-              <div className="flex gap-3">
+              <div className="flex gap-4">
                 <Cookie className="text-primary mt-1 h-5 w-5 flex-shrink-0" />
                 <div className="space-y-1">
                   <p className={cn('text-sm font-medium', mode.font)}>[PREFERENCES]</p>

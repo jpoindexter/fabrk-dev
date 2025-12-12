@@ -263,7 +263,7 @@ await sendOrganizationInvite("newmember@example.com", {
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Verify API key from Resend dashboard
               </p>
-              <div className="border-border bg-card rounded-none border p-3">
+              <div className="border-border bg-card rounded-none border p-4">
                 <code className="font-mono text-xs">
                   {`# Get new API key from: https://resend.com/api-keys
 # Add to .env.local
@@ -281,7 +281,7 @@ RESEND_API_KEY="re_xxxxxxxxxxxx"
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Verify your domain in Resend dashboard
               </p>
-              <div className="border-border bg-card rounded-none border p-3">
+              <div className="border-border bg-card rounded-none border p-4">
                 <code className="font-mono text-xs">
                   {`# Steps:
 1. Go to https://resend.com/domains
@@ -302,7 +302,7 @@ RESEND_API_KEY="re_xxxxxxxxxxxx"
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Check React Email component syntax
               </p>
-              <div className="border-border bg-card rounded-none border p-3">
+              <div className="border-border bg-card rounded-none border p-4">
                 <code className="font-mono text-xs">
                   {`// Ensure function returns string
 export function generateEmailHTML(): string {
@@ -321,7 +321,7 @@ export function generateEmailHTML(): string {
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Check email queue table and processing
               </p>
-              <div className="border-border bg-card rounded-none border p-3">
+              <div className="border-border bg-card rounded-none border p-4">
                 <code className="font-mono text-xs">
                   {`# View queued emails
 npm run db:studio

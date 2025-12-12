@@ -24,7 +24,7 @@ export default function PolarIntegrationPage() {
           </span>
         </div>
         <div className="flex items-start gap-4">
-          <div className={cn('bg-primary/10 p-3', mode.radius)}>
+          <div className={cn('bg-primary/10 p-4', mode.radius)}>
             <CreditCard className="text-primary h-6 w-6" />
           </div>
           <div className="space-y-2">
@@ -41,7 +41,7 @@ export default function PolarIntegrationPage() {
       <Card>
         <CardHeader code="0x00" title="OVERVIEW" />
         <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-3 text-xs')}>
+          <div className={cn(mode.font, 'space-y-4 text-xs')}>
             <p>
               Fabrk uses Polar.sh for subscription billing. Configure it to enable the Billing
               Dashboard and Pricing Page templates.
@@ -134,7 +134,7 @@ export async function POST(req: Request) {
       <Card>
         <CardHeader code="0x04" title="NEXT STEPS" />
         <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-3 text-xs')}>
+          <div className={cn(mode.font, 'space-y-4 text-xs')}>
             <ul className="text-muted-foreground list-inside list-disc space-y-2 pl-2">
               <li>
                 <Link

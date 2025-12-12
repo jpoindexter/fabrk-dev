@@ -27,7 +27,7 @@ export function ValueBreakdownSection() {
 
         <div className="mx-auto mt-12 max-w-2xl">
           <Card className="border-2">
-            <div className={cn('bg-muted/50 border-b px-6 py-3', mode.color.border.default)}>
+            <div className={cn('bg-muted/50 border-b px-6 py-4', mode.color.border.default)}>
               <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
                 [ RECEIPT_0x00 ]
               </span>

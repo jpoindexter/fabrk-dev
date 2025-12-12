@@ -93,7 +93,7 @@ export function HowItWorksSection() {
 
                     {/* Terminal Command */}
                     <div
-                      className={cn('border-border bg-muted/50 border p-3', mode.radius, mode.font)}
+                      className={cn('border-border bg-muted/50 border p-4', mode.radius, mode.font)}
                     >
                       <code className={cn('block overflow-x-auto text-xs', mode.color.text.accent)}>
                         $ {step.command}

@@ -298,7 +298,7 @@ export default function LibraryIndexPage() {
 
       {/* Category Filter Buttons */}
       <section className="space-y-4">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <h2 className={cn(mode.font, 'text-2xl font-semibold')}>
             {searchQuery
               ? `Search Results (${sortedTemplates.length})`
@@ -306,7 +306,7 @@ export default function LibraryIndexPage() {
                 ? 'All Templates'
                 : `${categories.find((c) => c.id === selectedCategory)?.name} (${sortedTemplates.length})`}
           </h2>
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-4">
             {/* Sort Options */}
             <div className="flex items-center gap-2">
               <span className={cn(mode.font, 'text-muted-foreground text-xs')}>[SORT BY]:</span>
@@ -322,7 +322,7 @@ export default function LibraryIndexPage() {
                     onClick={() => setSortBy(option.id)}
                     className={cn(
                       mode.font,
-                      'border-border px-3 py-1 text-xs transition-all',
+                      'border-border px-4 py-1 text-xs transition-all',
                       sortBy === option.id
                         ? 'bg-primary text-primary-foreground border'
                         : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground border'
@@ -559,7 +559,7 @@ export default function LibraryIndexPage() {
             href="/library/docs/getting-started"
             className={cn(
               mode.font,
-              'bg-primary text-primary-foreground hover:bg-primary/90 border-primary inline-flex items-center gap-2 border px-6 py-3 text-sm transition-colors'
+              'bg-primary text-primary-foreground hover:bg-primary/90 border-primary inline-flex items-center gap-2 border px-6 py-4 text-sm transition-colors'
             )}
           >
             &gt; GETTING STARTED GUIDE
@@ -568,7 +568,7 @@ export default function LibraryIndexPage() {
             href="/docs"
             className={cn(
               mode.font,
-              'border-border bg-card hover:bg-muted/50 inline-flex items-center gap-2 border px-6 py-3 text-sm transition-colors'
+              'border-border bg-card hover:bg-muted/50 inline-flex items-center gap-2 border px-6 py-4 text-sm transition-colors'
             )}
           >
             &gt; VIEW COMPONENTS ({stats.totalComponents})

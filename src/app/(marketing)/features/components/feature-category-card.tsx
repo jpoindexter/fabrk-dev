@@ -68,7 +68,7 @@ export function FeatureCategoryCard({ category, index }: FeatureCategoryCardProp
             <CardContent padding="lg">
               <ul className="space-y-2">
                 {category.features.map((feature, i) => (
-                  <li key={i} className={cn('flex items-start gap-3 text-xs', mode.font)}>
+                  <li key={i} className={cn('flex items-start gap-4 text-xs', mode.font)}>
                     <span className="text-primary flex-shrink-0">
                       {i === category.features.length - 1 ? '└─' : '├─'}
                     </span>

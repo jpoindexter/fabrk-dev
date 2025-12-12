@@ -233,7 +233,7 @@ export function CookieConsent({ variant = 'full', bannerVariant = 'full' }: Cook
               <button
                 onClick={openModal}
                 className={cn(
-                  'hover:bg-muted flex items-center gap-2 px-4 py-3 transition-colors',
+                  'hover:bg-muted flex items-center gap-2 px-4 py-4 transition-colors',
                   mode.font
                 )}
                 aria-label="Cookie Settings"
@@ -243,7 +243,7 @@ export function CookieConsent({ variant = 'full', bannerVariant = 'full' }: Cook
               </button>
               <button
                 onClick={() => setShowButton(false)}
-                className="border-border hover:bg-muted border-l px-3 py-3 transition-colors"
+                className="border-border hover:bg-muted border-l px-4 py-4 transition-colors"
                 aria-label="Dismiss cookie notice"
               >
                 <X className="size-4" />
@@ -263,7 +263,7 @@ export function CookieConsent({ variant = 'full', bannerVariant = 'full' }: Cook
             >
               <div
                 className={cn(
-                  'bg-card border-accent flex items-center gap-2 border-2 px-3 py-2',
+                  'bg-card border-accent flex items-center gap-2 border-2 px-4 py-2',
                   mode.radius
                 )}
               >

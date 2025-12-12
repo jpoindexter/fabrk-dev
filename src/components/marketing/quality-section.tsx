@@ -41,7 +41,7 @@ export function QualitySection() {
   ];
 
   return (
-    <section className="border-border bg-background border-t px-6 py-24 font-mono lg:py-32">
+    <section className="border-border bg-background border-t px-6 py-24 font-mono lg:py-42">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <motion.div

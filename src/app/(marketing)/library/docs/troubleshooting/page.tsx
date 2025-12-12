@@ -26,7 +26,7 @@ export default function TroubleshootingPage() {
         </div>
 
         <div className="flex items-start gap-4">
-          <div className={cn('bg-destructive/10 p-3', mode.radius)}>
+          <div className={cn('bg-destructive/10 p-4', mode.radius)}>
             <AlertTriangle className="text-destructive h-6 w-6" />
           </div>
           <div className="space-y-2">
@@ -314,7 +314,7 @@ function Component() {
       <Card>
         <CardHeader code="0x05" title="QUICK FIXES" />
         <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-3 text-xs')}>
+          <div className={cn(mode.font, 'space-y-4 text-xs')}>
             <div className="space-y-2">
               <p className="flex items-center gap-2 font-medium">
                 <CheckCircle className="text-success h-4 w-4" />
@@ -367,7 +367,7 @@ function Component() {
           <div className={cn(mode.font, 'space-y-4 text-xs')}>
             <p>If you're still experiencing issues:</p>
 
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               <div className="border-border border p-4">
                 <Terminal className="text-primary mb-2 h-5 w-5" />
                 <p className="mb-1 font-medium">Check Console</p>

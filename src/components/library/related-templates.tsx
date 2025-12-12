@@ -45,7 +45,7 @@ export function RelatedTemplates({ currentTemplateId, limit = 3 }: RelatedTempla
             <Link key={template.id} href={template.href} className="group">
               <div className="border-border bg-card hover:border-primary/50 h-full border transition-all">
                 {/* Card Header */}
-                <div className="border-border flex items-center justify-between border-b px-3 py-2">
+                <div className="border-border flex items-center justify-between border-b px-4 py-2">
                   <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
                     [{template.id.toUpperCase()}]
                   </span>
@@ -53,7 +53,7 @@ export function RelatedTemplates({ currentTemplateId, limit = 3 }: RelatedTempla
                 </div>
 
                 {/* Card Content */}
-                <div className="flex flex-col p-3">
+                <div className="flex flex-col p-4">
                   {/* Badge */}
                   {template.badge && (
                     <div className="border-primary/50 text-primary mb-2 w-fit border px-2 py-0.5">

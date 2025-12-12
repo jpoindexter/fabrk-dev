@@ -48,7 +48,7 @@ export function FeaturesSection() {
   return (
     <section
       id="features"
-      className={cn('scroll-mt-16 border-t py-24 lg:py-32', mode.color.border.default)}
+      className={cn('scroll-mt-16 border-t py-24 lg:py-42', mode.color.border.default)}
     >
       <Container size="2xl">
         {/* Header */}

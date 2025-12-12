@@ -1,6 +1,12 @@
 /**
  * Organization Email Functions
  * Team invitation emails
+ *
+ * NOTE: This file uses hardcoded hex colors in inline styles.
+ * Reason: Email clients (Gmail, Outlook, etc.) don't support CSS variables,
+ * Tailwind classes, or external stylesheets. Inline styles with hardcoded
+ * colors are the only reliable way to ensure consistent rendering across
+ * all email clients.
  */
 
 import { logger } from '@/lib/logger';

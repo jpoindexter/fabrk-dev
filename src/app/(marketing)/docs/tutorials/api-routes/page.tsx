@@ -219,7 +219,7 @@ export async function POST(request: Request) {
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Add CORS headers in middleware or API route
               </p>
-              <div className="border-border bg-card rounded-none border p-3">
+              <div className="border-border bg-card rounded-none border p-4">
                 <code className="font-mono text-xs">
                   {`// In route.ts
 const headers = {
@@ -238,7 +238,7 @@ return NextResponse.json({ data }, { headers });`}
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Verify export name matches HTTP method
               </p>
-              <div className="border-border bg-card rounded-none border p-3">
+              <div className="border-border bg-card rounded-none border p-4">
                 <code className="font-mono text-xs">
                   {`// Must be named GET, POST, PUT, DELETE (uppercase)
 export async function GET() { }  // Correct
@@ -254,7 +254,7 @@ export async function get() { }  // Wrong - won't work`}
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Optimize database queries and add timeouts
               </p>
-              <div className="border-border bg-card rounded-none border p-3">
+              <div className="border-border bg-card rounded-none border p-4">
                 <code className="font-mono text-xs">
                   {`// Add index to frequent query fields in schema.prisma
 model User {
@@ -272,7 +272,7 @@ model User {
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Always validate request data with Zod
               </p>
-              <div className="border-border bg-card rounded-none border p-3">
+              <div className="border-border bg-card rounded-none border p-4">
                 <code className="font-mono text-xs">
                   {`// Always validate before accessing
 const body = await request.json();

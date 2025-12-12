@@ -30,7 +30,7 @@ export default function CustomizationPage() {
         </div>
 
         <div className="flex items-start gap-4">
-          <div className={cn('bg-primary/10 p-3', mode.radius)}>
+          <div className={cn('bg-primary/10 p-4', mode.radius)}>
             <Palette className="text-primary h-6 w-6" />
           </div>
           <div className="space-y-2">
@@ -238,7 +238,7 @@ export const mode = {
           <div className={cn(mode.font, 'space-y-4 text-xs')}>
             <p>Customize individual template components:</p>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               <div className="border-border border-l-primary border-l-2 pl-4">
                 <p className="font-medium">Change button style:</p>
                 <CodeBlock
@@ -282,7 +282,7 @@ export const mode = {
           <div className={cn(mode.font, 'space-y-4 text-xs')}>
             <p>Extend templates with new functionality:</p>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               <div className="border-border border p-4">
                 <p className="text-primary mb-2 font-medium">1. Add Search to Tables:</p>
                 <CodeBlock
@@ -375,7 +375,7 @@ const filteredData = data.filter(item =>
       <Card>
         <CardHeader code="0x07" title="BEST PRACTICES" />
         <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-3 text-xs')}>
+          <div className={cn(mode.font, 'space-y-4 text-xs')}>
             <ul className="text-muted-foreground list-inside list-disc space-y-2 pl-2">
               <li>
                 <span className="font-medium">Use design tokens:</span> Always use CSS variables
@@ -406,7 +406,7 @@ const filteredData = data.filter(item =>
       <Card>
         <CardHeader code="0x08" title="NEXT STEPS" />
         <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-3 text-xs')}>
+          <div className={cn(mode.font, 'space-y-4 text-xs')}>
             <p>After customizing your templates:</p>
 
             <ul className="text-muted-foreground list-inside list-disc space-y-2 pl-2">

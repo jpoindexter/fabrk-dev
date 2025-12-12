@@ -64,7 +64,7 @@ export function MinimalCookieBanner() {
     >
       <div
         className={cn(
-          'bg-card border-accent flex items-center gap-2 border-2 px-3 py-2',
+          'bg-card border-accent flex items-center gap-2 border-2 px-4 py-2',
           mode.radius
         )}
       >

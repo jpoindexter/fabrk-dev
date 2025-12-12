@@ -47,7 +47,7 @@ export const columns: ColumnDef<UserType>[] = [
     header: ({ column }) => <DataTableColumnHeader column={column} title="Name" />,
     size: 250,
     cell: ({ row }) => (
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-4">
         <div
           className={cn(
             mode.font,
@@ -102,7 +102,7 @@ export const columns: ColumnDef<UserType>[] = [
         <div className="flex">
           <span
             className={cn(
-              'inline-flex w-24 items-center justify-center gap-1.5 border px-3 py-1 font-mono text-xs',
+              'inline-flex w-24 items-center justify-center gap-1.5 border px-4 py-1 font-mono text-xs',
               getRoleClasses()
             )}
           >

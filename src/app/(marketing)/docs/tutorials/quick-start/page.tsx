@@ -111,7 +111,7 @@ git push origin main`,
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Run on different port or kill existing process
               </p>
-              <div className="border-border bg-card rounded-none border p-3">
+              <div className="border-border bg-card rounded-none border p-4">
                 <code className="font-mono text-xs">
                   {`# Option 1: Run on different port
 npm run dev -- -p 3001
@@ -132,7 +132,7 @@ npm run kill`}
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Install dependencies
               </p>
-              <div className="border-border bg-card rounded-none border p-3">
+              <div className="border-border bg-card rounded-none border p-4">
                 <code className="font-mono text-xs">
                   {`# Delete node_modules and reinstall
 rm -rf node_modules package-lock.json
@@ -151,7 +151,7 @@ npm install`}
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Generate Prisma Client and push schema
               </p>
-              <div className="border-border bg-card rounded-none border p-3">
+              <div className="border-border bg-card rounded-none border p-4">
                 <code className="font-mono text-xs">
                   {`# Generate Prisma Client
 npx prisma generate

@@ -18,7 +18,7 @@ export function DataTable({ table }: DataTableProps) {
       {/* Table Header */}
       <div className="border-border bg-muted/50 border-b">
         {table.getHeaderGroups().map((headerGroup) => (
-          <div key={headerGroup.id} className="flex items-center px-4 py-3">
+          <div key={headerGroup.id} className="flex items-center px-4 py-4">
             {headerGroup.headers.map((header) => {
               const size = header.column.columnDef.size;
               return (

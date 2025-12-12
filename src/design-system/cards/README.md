@@ -101,7 +101,7 @@ import {
   <TerminalCardContent>
     <ul className="space-y-2">
       {features.map((feature, i, arr) => (
-        <li key={i} className="flex items-start gap-3 text-xs">
+        <li key={i} className="flex items-start gap-4 text-xs">
           <span className="text-primary">{i === arr.length - 1 ? '└─' : '├─'}</span>
           <span className="text-foreground">{feature}</span>
         </li>

@@ -258,7 +258,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
           preview={
             <div className="border-border bg-card relative h-48 w-full border">
               <div className="absolute right-6 bottom-6 z-[60]">
-                <div className="bg-card border-accent flex items-center gap-2 border-2 px-3 py-2">
+                <div className="bg-card border-accent flex items-center gap-2 border-2 px-4 py-2">
                   <span className="text-accent font-mono text-xs whitespace-nowrap">
                     [ (0xB7) COOKIE_SETTINGS.CFG ]
                   </span>

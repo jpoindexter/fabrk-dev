@@ -127,7 +127,7 @@ export function CreditsPreview() {
             {usageBars.map((bar, i) => (
               <span
                 key={i}
-                className={cn(mode.font, 'text-muted-foreground flex-1 text-center text-[10px]')}
+                className={cn(mode.font, 'text-muted-foreground flex-1 text-center text-xs')}
               >
                 {bar.day}
               </span>

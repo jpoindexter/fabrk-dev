@@ -70,17 +70,17 @@ export default function MaintenancePage() {
           <CardHeader code="0x00" title="CURRENT TASKS" icon={<Wrench className="size-4" />} />
           <CardContent padding="md">
             <ul className={cn('text-muted-foreground space-y-2 text-xs', mode.font)}>
-              <li className="flex items-start gap-3">
+              <li className="flex items-start gap-4">
                 <span className="text-primary flex-shrink-0">├─</span>
                 <span className="text-foreground">
                   Database optimization for faster performance
                 </span>
               </li>
-              <li className="flex items-start gap-3">
+              <li className="flex items-start gap-4">
                 <span className="text-primary flex-shrink-0">├─</span>
                 <span className="text-foreground">Security updates and patches</span>
               </li>
-              <li className="flex items-start gap-3">
+              <li className="flex items-start gap-4">
                 <span className="text-primary flex-shrink-0">└─</span>
                 <span className="text-foreground">New features deployment</span>
               </li>

@@ -122,7 +122,7 @@ export default function LibraryDocsPage() {
           </span>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h1 className={cn(mode.font, 'text-4xl font-semibold tracking-tight')}>
             Library Documentation
           </h1>
@@ -152,7 +152,7 @@ export default function LibraryDocsPage() {
       {/* Search Hint */}
       <Card>
         <CardContent padding="md">
-          <div className="flex items-start gap-3">
+          <div className="flex items-start gap-4">
             <Search className="text-primary mt-0.5 h-5 w-5" />
             <div className="space-y-1">
               <p className={cn(mode.font, 'text-sm font-medium')}>
@@ -193,7 +193,7 @@ export default function LibraryDocsPage() {
 
                   {/* Card Content */}
                   <CardContent padding="md">
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                       {/* Badge */}
                       {guide.badge && (
                         <Badge className={cn(mode.radius, mode.font, 'text-xs')}>
@@ -248,7 +248,7 @@ export default function LibraryDocsPage() {
                 components documentation for detailed API references.
               </p>
             </div>
-            <div className="flex gap-3">
+            <div className="flex gap-4">
               <Link
                 href="/library/docs/troubleshooting"
                 className={cn(

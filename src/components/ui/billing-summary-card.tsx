@@ -191,7 +191,7 @@ export function BillingSummaryCard({
           <p className={cn('text-muted-foreground mb-3 text-xs', mode.font)}>
             [USAGE_THIS_PERIOD]:
           </p>
-          <div className="space-y-3">
+          <div className="space-y-4">
             {usage.map((item, index) => {
               const percentage = getUsagePercentage(item.used, item.limit);
               return (

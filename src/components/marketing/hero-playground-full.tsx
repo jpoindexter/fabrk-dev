@@ -335,7 +335,7 @@ function BrowserFrame({ children }: { children: React.ReactNode }) {
   return (
     <div className="border-border bg-card overflow-hidden border">
       {/* Browser Chrome */}
-      <div className="border-border bg-muted/50 flex items-center gap-3 border-b px-3 py-2">
+      <div className="border-border bg-muted/50 flex items-center gap-4 border-b px-4 py-2">
         {/* Window Controls */}
         <div className="flex gap-2">
           <div className="bg-destructive/60 h-3 w-3 rounded-full" />
@@ -357,7 +357,7 @@ function BrowserFrame({ children }: { children: React.ReactNode }) {
         </div>
 
         {/* Address Bar */}
-        <div className="border-border bg-background flex flex-1 items-center gap-2 border px-3 py-1.5">
+        <div className="border-border bg-background flex flex-1 items-center gap-2 border px-4 py-1.5">
           <Lock className="text-success h-3.5 w-3.5" />
           <span className="text-foreground flex-1 text-xs">https://app.fabrk.dev/dashboard</span>
         </div>
@@ -415,7 +415,7 @@ function LeftNavigation({ activeSection }: { activeSection: string }) {
               <button
                 key={item.id}
                 className={cn(
-                  'flex w-full items-center gap-2 rounded-none px-3 py-2 text-xs transition-colors',
+                  'flex w-full items-center gap-2 rounded-none px-4 py-2 text-xs transition-colors',
                   activeSection === item.id
                     ? 'bg-primary text-primary-foreground'
                     : 'text-muted-foreground hover:bg-muted hover:text-foreground'
@@ -436,7 +436,7 @@ function LeftNavigation({ activeSection }: { activeSection: string }) {
               <button
                 key={item.id}
                 className={cn(
-                  'text-muted-foreground hover:bg-muted hover:text-foreground flex w-full items-center gap-2 rounded-none px-3 py-2 text-xs transition-colors',
+                  'text-muted-foreground hover:bg-muted hover:text-foreground flex w-full items-center gap-2 rounded-none px-4 py-2 text-xs transition-colors',
                   mode.font
                 )}
               >
@@ -448,10 +448,10 @@ function LeftNavigation({ activeSection }: { activeSection: string }) {
 
           <Separator className="my-2" />
 
-          <div className="flex items-center gap-3 px-1">
+          <div className="flex items-center gap-4 px-1">
             <div className={cn(mode.font, 'flex-1 text-left')}>
               <div className="text-xs font-semibold">Jordan Lee</div>
-              <div className="text-muted-foreground text-[11px]">jordan.lee@example.com</div>
+              <div className="text-muted-foreground text-xs">jordan.lee@example.com</div>
             </div>
             <button
               type="button"
@@ -599,7 +599,7 @@ function ComponentsGrid() {
         </Card>
 
         {/* Loading Skeletons - Tighter spacing */}
-        <div className="border-border space-y-3 border p-4">
+        <div className="border-border space-y-4 border p-4">
           <h3 className="text-xs font-semibold">[LOADING...]</h3>
           <Skeleton className="h-4 w-full" />
           <Skeleton className="h-4 w-3/4" />
@@ -610,7 +610,7 @@ function ComponentsGrid() {
         <Card>
           <div className="p-4">
             <h3 className="mb-3 text-xs font-semibold">[PROGRESS]</h3>
-            <div className="space-y-3">
+            <div className="space-y-4">
               <div>
                 <div className="mb-1 flex justify-between text-xs">
                   <span>Upload Progress</span>
@@ -630,7 +630,7 @@ function ComponentsGrid() {
         </Card>
 
         {/* Breadcrumbs - Inline, no card */}
-        <div className="border-l-primary bg-muted/20 flex items-center gap-1 border-l-2 p-3 text-xs">
+        <div className="border-l-primary bg-muted/20 flex items-center gap-1 border-l-2 p-4 text-xs">
           <Home className="h-3 w-3" />
           <ChevronRight className="text-muted-foreground h-3 w-3" />
           <span className="text-muted-foreground">Projects</span>
@@ -639,7 +639,7 @@ function ComponentsGrid() {
         </div>
 
         {/* Badge Variations - Compact, no card */}
-        <div className="border-border bg-muted/30 space-y-2 border p-3">
+        <div className="border-border bg-muted/30 space-y-2 border p-4">
           <h3 className="text-xs font-semibold">[BADGES]</h3>
           <div className="flex flex-wrap gap-2">
             <Badge>DEFAULT</Badge>
@@ -681,7 +681,7 @@ function ComponentsGrid() {
         {/* Switches - Terminal style with border */}
         <div className="border-border bg-card border p-4">
           <h3 className="mb-3 text-xs font-semibold">[SWITCHES]</h3>
-          <div className="space-y-3">
+          <div className="space-y-4">
             <div className="flex items-center justify-between">
               <Label className="text-xs">Enable notifications</Label>
               <Switch checked={switchEnabled} onCheckedChange={setSwitchEnabled} />
@@ -695,7 +695,7 @@ function ComponentsGrid() {
 
         {/* Mini Data Table - Dense with separators */}
         <div className="divide-border border-border bg-card divide-y border">
-          <div className="bg-muted/50 p-3">
+          <div className="bg-muted/50 p-4">
             <h3 className="text-xs font-semibold">[DATA TABLE]</h3>
           </div>
           <div className="space-y-0">
@@ -705,7 +705,7 @@ function ComponentsGrid() {
             ].map((row, i) => (
               <div
                 key={i}
-                className="border-border flex items-center justify-between border-b p-3 text-xs last:border-b-0"
+                className="border-border flex items-center justify-between border-b p-4 text-xs last:border-b-0"
               >
                 <span>{row.metric}</span>
                 <div className="flex items-center gap-2">
@@ -718,7 +718,7 @@ function ComponentsGrid() {
         </div>
 
         {/* Filter Chips - Terminal card style */}
-        <div className="border-border bg-card border p-3">
+        <div className="border-border bg-card border p-4">
           <h3 className="mb-3 text-xs font-semibold">[ACTIVE FILTERS]</h3>
           <div className="flex flex-wrap gap-2">
             {['Status: Active', 'Role: Admin'].map((filter, i) => (
@@ -746,7 +746,7 @@ function ComponentsGrid() {
         </div>
 
         {/* Statistics - Accent background with border */}
-        <div className="border-success/50 bg-success/10 space-y-3 border-2 p-4">
+        <div className="border-success/50 bg-success/10 space-y-4 border-2 p-4">
           <h3 className="text-success text-xs font-semibold">[REVENUE UP]</h3>
           <div className="flex justify-between text-xs">
             <span>Total</span>
@@ -889,7 +889,7 @@ function DashboardPreview() {
           </div>
 
           {/* Metric Cards - Reduced font sizes for playground */}
-          <div className="[&_.text-4xl]:text-xl! [&_.text-xs]:text-[10px]!">
+          <div className="[&_.text-4xl]:text-xl! [&_.text-xs]:text-xs!">
             <MetricCards metrics={metrics} />
           </div>
 

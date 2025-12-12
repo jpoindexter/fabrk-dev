@@ -50,13 +50,13 @@ function DashboardDemo() {
       <Card size="auto">
         <CardHeader code="0x10" title="RECENT TRANSACTIONS" />
         <CardContent className="p-4">
-          <div className="space-y-3">
+          <div className="space-y-4">
             {[
               'Payment received from user_4821',
               'New subscription started',
               'Invoice #1234 paid',
             ].map((item, i) => (
-              <div key={i} className="border-accent flex items-center gap-3 border-l-2 pl-3">
+              <div key={i} className="border-accent flex items-center gap-4 border-l-2 pl-3">
                 <Check className={cn('h-3 w-3', mode.color.text.success)} />
                 <span className={cn('text-xs', mode.font)}>{item}</span>
                 <span className={cn('ml-auto text-xs', mode.color.text.muted, mode.font)}>

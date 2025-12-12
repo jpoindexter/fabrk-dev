@@ -28,7 +28,7 @@ export default function NextAuthIntegrationPage() {
         </div>
 
         <div className="flex items-start gap-4">
-          <div className={cn('bg-primary/10 p-3', mode.radius)}>
+          <div className={cn('bg-primary/10 p-4', mode.radius)}>
             <Lock className="text-primary h-6 w-6" />
           </div>
           <div className="space-y-2">
@@ -59,7 +59,7 @@ export default function NextAuthIntegrationPage() {
       <Card>
         <CardHeader code="0x00" title="OVERVIEW" />
         <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-3 text-xs')}>
+          <div className={cn(mode.font, 'space-y-4 text-xs')}>
             <p>
               Fabrk uses <span className="font-medium">NextAuth v5</span> (Auth.js) for
               authentication. All templates assume authenticated users and need session data for
@@ -416,7 +416,7 @@ return <AdminPanel />;`}
       <Card>
         <CardHeader code="0x08" title="TROUBLESHOOTING" />
         <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-3 text-xs')}>
+          <div className={cn(mode.font, 'space-y-4 text-xs')}>
             <div className="border-border border p-4">
               <p className="text-destructive mb-2 flex items-center gap-2 font-medium">
                 <AlertTriangle className="h-4 w-4" />
@@ -467,7 +467,7 @@ return <AdminPanel />;`}
       <Card>
         <CardHeader code="0x09" title="NEXT STEPS" />
         <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-3 text-xs')}>
+          <div className={cn(mode.font, 'space-y-4 text-xs')}>
             <p>Now that authentication is integrated:</p>
 
             <ul className="text-muted-foreground list-inside list-disc space-y-2 pl-2">

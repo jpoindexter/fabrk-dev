@@ -92,7 +92,7 @@ export function OnboardingChecklist({
   if (isMinimized) {
     return (
       <Card className={cn('flex items-center justify-between gap-4 p-4', mode.radius, className)}>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <Button
             size="sm"
             variant="ghost"
@@ -189,7 +189,7 @@ export function OnboardingChecklist({
       <div className="divide-border divide-y">
         {tasks.map((task, index) => (
           <div key={task.id} className="p-4">
-            <div className="flex items-start gap-3">
+            <div className="flex items-start gap-4">
               <Checkbox
                 id={`task-${task.id}`}
                 checked={task.completed}

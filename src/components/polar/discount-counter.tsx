@@ -47,7 +47,7 @@ export function DiscountCounter() {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className={cn('bg-muted/50 flex items-center justify-between gap-3 px-3 py-2', mode.radius)}
+      className={cn('bg-muted/50 flex items-center justify-between gap-4 px-4 py-2', mode.radius)}
     >
       <span className={cn('text-muted-foreground text-xs', mode.font)}>
         {isAlmostGone ? '🔥' : '🎉'} {usage.remaining}/{usage.total} discounts left

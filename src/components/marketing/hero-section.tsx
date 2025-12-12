@@ -59,7 +59,7 @@ export function HeroSection() {
                   </h1>
                   <pre
                     className={cn(
-                      'mb-4 text-[8px] leading-none lg:text-[10px]',
+                      'mb-4 text-xs leading-none lg:text-xs',
                       mode.color.text.accent,
                       mode.font
                     )}
@@ -116,7 +116,7 @@ export function HeroSection() {
                 </div>
 
                 {/* CTAs - Primary Dominant */}
-                <div className="flex flex-col gap-3 sm:flex-row">
+                <div className="flex flex-col gap-4 sm:flex-row">
                   <PolarCheckoutButton
                     className={cn(
                       'bg-accent text-accent-foreground px-8 py-4 text-sm transition-all hover:scale-105',
@@ -169,7 +169,7 @@ export function HeroSection() {
                   </div>
                   <div
                     className={cn(
-                      'bg-accent text-accent-foreground border-accent animate-pulse border-2 px-3 py-1.5 text-sm font-black',
+                      'bg-accent text-accent-foreground border-accent animate-pulse border-2 px-4 py-1.5 text-sm font-black',
                       mode.font
                     )}
                   >

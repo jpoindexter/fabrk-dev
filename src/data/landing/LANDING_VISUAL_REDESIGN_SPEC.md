@@ -309,7 +309,7 @@ META TIER (Labels & Annotations)
 │   └─ Use: Badges, labels, terminal prompts
 │   └─ Example: "[0x00] SYSTEM_INIT", "[VERIFIED]"
 │
-└─ Tiny:        11px / 1.3 / 400 (Regular)    [text-[11px]]
+└─ Tiny:        11px / 1.3 / 400 (Regular)    [text-xs]
     └─ Use: Fine print, legal, timestamps
     └─ Example: "Price increases Dec 31, 2025"
 ```
@@ -365,8 +365,8 @@ META TIER (Labels & Annotations)
 
 ```
 SECTION SPACING (Between major sections)
-├─ Hero:           py-32 lg:py-40  (128-160px)  ← Maximum presence
-├─ Major Sections: py-24 lg:py-32  (96-128px)   ← Features, Pricing
+├─ Hero:           py-42 lg:py-40  (128-160px)  ← Maximum presence
+├─ Major Sections: py-24 lg:py-42  (96-128px)   ← Features, Pricing
 ├─ Minor Sections: py-16 lg:py-24  (64-96px)    ← Stats, FAQ
 └─ Compact:        py-12 lg:py-16  (48-64px)    ← Divider sections
 
@@ -381,7 +381,7 @@ ELEMENT SPACING (Between elements within section)
 ├─ Medium Gaps:    gap-8 lg:gap-12  (32-48px)   ← Related sections
 ├─ Standard Gaps:  gap-6 lg:gap-8   (24-32px)   ← Heading → content
 ├─ Small Gaps:     gap-4 lg:gap-6   (16-24px)   ← List items
-└─ Tight Gaps:     gap-2 lg:gap-3   (8-12px)    ← Icon + label
+└─ Tight Gaps:     gap-2 lg:gap-4   (8-12px)    ← Icon + label
 
 GRID GAPS (Between cards in grid)
 ├─ Feature Grid:   gap-12 lg:gap-16 (48-64px)   ← 3-column features
@@ -411,7 +411,7 @@ GRID GAPS (Between cards in grid)
 
 ```tsx
 // Hero section - DOMINANT PRESENCE
-<section className="py-32 lg:py-40">   {/* 128-160px */}
+<section className="py-42 lg:py-40">   {/* 128-160px */}
 
 // Feature cards grid - BREATHABLE
 <div className="grid gap-12 lg:gap-16"> {/* 48-64px gap */}
@@ -467,7 +467,7 @@ EVERY COMPONENT MUST HAVE:
     "border-accent border-2", // PURPLE BORDER (2px for emphasis)
     "text-accent",            // Purple text
     "text-sm lg:text-base",   // 14-16px
-    "px-6 py-3 lg:px-8 py-4", // Standard padding
+    "px-6 py-4 lg:px-8 py-4", // Standard padding
     "hover:bg-accent/10",     // Subtle fill on hover
     "transition-all duration-200"
   )}
@@ -539,7 +539,7 @@ EVERY COMPONENT MUST HAVE:
       <span className="text-2xl line-through text-muted-foreground">
         $499
       </span>
-      <span className="ml-auto bg-accent text-accent-foreground px-3 py-1.5 text-sm font-bold">
+      <span className="ml-auto bg-accent text-accent-foreground px-4 py-1.5 text-sm font-bold">
         20% OFF
       </span>
     </div>
@@ -557,7 +557,7 @@ EVERY COMPONENT MUST HAVE:
   mode.font,                  // font-mono
   "border border-border",     // Single pixel
   "bg-muted/50",              // Subtle background
-  "px-3 py-1.5",              // Compact padding
+  "px-4 py-1.5",              // Compact padding
   "text-xs font-medium",      // 12px, medium weight
   "text-muted-foreground",    // Gray text
   "uppercase",                // ALL CAPS
@@ -571,7 +571,7 @@ EVERY COMPONENT MUST HAVE:
   mode.font,                  // font-mono
   "bg-accent",                // PURPLE BACKGROUND
   "text-accent-foreground",   // White text
-  "px-3 py-1.5",              // Standard padding
+  "px-4 py-1.5",              // Standard padding
   "text-sm font-bold",        // 14px, bold
   "uppercase",                // ALL CAPS
 )}>
@@ -635,7 +635,7 @@ EVERY COMPONENT MUST HAVE:
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden py-32 lg:py-40"> {/* INCREASED from py-20/24 */}
+    <section className="relative overflow-hidden py-42 lg:py-40"> {/* INCREASED from py-20/24 */}
       <Container size="2xl">
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-20"> {/* INCREASED from gap-12/16 */}
 
@@ -779,7 +779,7 @@ export function HeroSection() {
                   "border-accent border-2", // PURPLE BORDER ← EMPHASIS
                   "text-accent",            // Purple text
                   "text-sm lg:text-base",
-                  "px-6 py-3 lg:px-8 lg:py-4",
+                  "px-6 py-4 lg:px-8 lg:py-4",
                   "hover:bg-accent/10"
                 )}
               >
@@ -818,7 +818,7 @@ export function HeroSection() {
                   </span>
                   <span className={cn(
                     "bg-accent text-accent-foreground",
-                    "ml-auto px-3 py-1.5",
+                    "ml-auto px-4 py-1.5",
                     "text-sm font-bold uppercase",
                     mode.radius,
                     mode.font
@@ -866,13 +866,13 @@ export function HeroSection() {
 
 | Element             | Before                 | After                        | Why                               |
 | ------------------- | ---------------------- | ---------------------------- | --------------------------------- |
-| **Section Padding** | py-20/24 (80-96px)     | py-32/40 (128-160px)         | Hero needs maximum presence       |
+| **Section Padding** | py-20/24 (80-96px)     | py-42/40 (128-160px)         | Hero needs maximum presence       |
 | **H1 Size**         | text-6xl/7xl (60-72px) | text-7xl/8xl (72-96px)       | Command attention immediately     |
 | **H1 Weight**       | font-bold (700)        | font-extrabold (800)         | Extra visual weight in monospace  |
 | **H2 Size**         | text-6xl/7xl (60-72px) | text-6xl/7xl (60-72px)       | Keep large, but purple for accent |
 | **Description**     | text-body-m (14-16px)  | text-lg/xl (18-20px)         | Better readability                |
 | **CTA Button BG**   | Outline only           | bg-accent (PURPLE)           | Maximum conversion impact         |
-| **CTA Size**        | text-xs/sm, px-6 py-3  | text-base/lg, px-8/10 py-4/5 | Dominant, hard to miss            |
+| **CTA Size**        | text-xs/sm, px-6 py-4  | text-base/lg, px-8/10 py-4/5 | Dominant, hard to miss            |
 | **Price Size**      | text-3xl (30px)        | text-5xl/6xl (48-60px)       | Anchor pricing moment             |
 | **Card Gaps**       | gap-12/16 (48-64px)    | gap-16/20 (64-80px)          | More breathing room               |
 
@@ -1089,7 +1089,7 @@ export function BenefitCard({
 
 export function FeaturesShowcase() {
   return (
-    <section className="border-t border-border py-24 lg:py-32"> {/* ← MORE PADDING */}
+    <section className="border-t border-border py-24 lg:py-42"> {/* ← MORE PADDING */}
       <Container>
         <SectionHeader
           badge="WHAT_MAKES_FABRK_DIFFERENT"
@@ -1234,7 +1234,7 @@ export function FeaturesShowcase() {
 
 export function PricingSection() {
   return (
-    <section className="border-t border-border py-24 lg:py-32">
+    <section className="border-t border-border py-24 lg:py-42">
       <Container size="lg"> {/* Narrower container for focus */}
 
         {/* Section Header */}
@@ -1340,7 +1340,7 @@ export function PricingSection() {
                 )}>
                   [INCLUDES]:
                 </h3>
-                <ul className="space-y-3">
+                <ul className="space-y-4">
                   {[
                     "60+ Production Components",
                     "26 Full Templates (Landing, Dashboard, Auth)",
@@ -1357,7 +1357,7 @@ export function PricingSection() {
                     <li
                       key={feature}
                       className={cn(
-                        "flex items-start gap-3",
+                        "flex items-start gap-4",
                         "text-base text-foreground",
                         mode.font
                       )}
@@ -1476,13 +1476,13 @@ export function PricingSection() {
    - [ ] Change H1 from `text-6xl lg:text-7xl` → `text-7xl lg:text-8xl`
    - [ ] Change H1 weight from `font-bold` → `font-extrabold`
    - [ ] Change description from `text-body-m` → `text-lg lg:text-xl`
-   - [ ] Change section padding from `py-20 lg:py-24` → `py-32 lg:py-40`
+   - [ ] Change section padding from `py-20 lg:py-24` → `py-42 lg:py-40`
    - [ ] Change primary CTA to purple background: Add `bg-accent text-accent-foreground`
    - [ ] Increase CTA text size: `text-base lg:text-lg`
    - [ ] Increase CTA padding: `px-8 py-4 lg:px-10 lg:py-5`
 
 2. **Features Showcase** (`src/components/marketing/features-showcase.tsx`)
-   - [ ] Change section padding from `py-20 lg:py-24` → `py-24 lg:py-32`
+   - [ ] Change section padding from `py-20 lg:py-24` → `py-24 lg:py-42`
    - [ ] Change card grid gap from `gap-8` → `gap-12 lg:gap-16`
    - [ ] Update SectionHeader title class: `text-4xl lg:text-5xl`
    - [ ] Update SectionHeader description class: `text-lg lg:text-xl`
@@ -1568,7 +1568,7 @@ export function PricingSection() {
 
 5. **Mobile Refinement**
    - [ ] Test all sections on mobile viewport
-   - [ ] Reduce spacing on mobile (py-32 → py-16)
+   - [ ] Reduce spacing on mobile (py-42 → py-16)
    - [ ] Ensure CTA buttons are full-width on mobile
    - [ ] Check touch target sizes (min 44x44px)
 
@@ -1639,7 +1639,7 @@ export function PricingSection() {
 ```
 - H1: 72-96px (text-7xl/8xl) [+33% size]
 - CTA: PURPLE BACKGROUND, 16-18px text [BOLD]
-- Spacing: py-32/40 (128-160px) [+60% space]
+- Spacing: py-42/40 (128-160px) [+60% space]
 - Description: 18-20px [+40% size]
 - Visual Impact: 9/10 (commanding)
 ```
@@ -1864,7 +1864,7 @@ After implementing this redesign, update the following:
    ```typescript
    export const space = {
      'section-hero': '160px', // py-40
-     'section-major': '128px', // py-32
+     'section-major': '128px', // py-42
      'section-standard': '96px', // py-24
      'section-compact': '64px', // py-16
      'card-lg': '40px', // p-10
@@ -1898,7 +1898,7 @@ After implementing this redesign, update the following:
          size: {
            lg: 'px-10 py-5 text-lg', // Hero CTA
            md: 'px-8 py-4 text-base', // Standard CTA
-           sm: 'px-6 py-3 text-sm', // Compact CTA
+           sm: 'px-6 py-4 text-sm', // Compact CTA
          },
        },
      }

@@ -16,7 +16,7 @@ export function PricingSection() {
   return (
     <section
       id="pricing"
-      className={cn('scroll-mt-16 border-t py-32 lg:py-40', mode.color.border.default)}
+      className={cn('scroll-mt-16 border-t py-42 lg:py-40', mode.color.border.default)}
     >
       <Container size="2xl">
         {/* Two Column Layout */}

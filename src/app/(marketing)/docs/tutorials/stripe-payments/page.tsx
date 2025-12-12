@@ -237,7 +237,7 @@ stripe: {
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Verify lookup key exists in Stripe Dashboard
               </p>
-              <div className="border-border bg-card rounded-none border p-3">
+              <div className="border-border bg-card rounded-none border p-4">
                 <code className="font-mono text-xs">
                   {`# Steps to fix:
 1. Go to https://dashboard.stripe.com/products
@@ -260,7 +260,7 @@ NEXT_PUBLIC_STRIPE_PRICE_FABRK="fabrk_purchase"`}
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Ensure STRIPE_WEBHOOK_SECRET matches stripe listen output
               </p>
-              <div className="border-border bg-card rounded-none border p-3">
+              <div className="border-border bg-card rounded-none border p-4">
                 <code className="font-mono text-xs">
                   {`# Run stripe listen and copy the webhook secret
 stripe listen --forward-to localhost:3000/api/webhooks/stripe
@@ -279,7 +279,7 @@ STRIPE_WEBHOOK_SECRET="whsec_abc123..."`}
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Verify stripe listen is running
               </p>
-              <div className="border-border bg-card rounded-none border p-3">
+              <div className="border-border bg-card rounded-none border p-4">
                 <code className="font-mono text-xs">
                   {`# Make sure stripe listen is running in a separate terminal
 stripe listen --forward-to localhost:3000/api/webhooks/stripe
@@ -297,7 +297,7 @@ stripe listen --forward-to localhost:3000/api/webhooks/stripe
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Check success_url and cancel_url configuration
               </p>
-              <div className="border-border bg-card rounded-none border p-3">
+              <div className="border-border bg-card rounded-none border p-4">
                 <code className="font-mono text-xs">
                   {`// In checkout API route
 success_url: \`\${process.env.NEXT_PUBLIC_APP_URL}/success?session_id={CHECKOUT_SESSION_ID}\`,

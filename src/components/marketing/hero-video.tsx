@@ -61,7 +61,7 @@ export function HeroVideo({
       </div>
 
       {/* Content Overlay */}
-      <div className="relative z-10 px-6 py-32 sm:py-40 lg:py-48">
+      <div className="relative z-10 px-6 py-42 sm:py-40 lg:py-48">
         <div className="mx-auto max-w-4xl text-center">
           {/* Early Access Badge */}
           <div className="mb-8">
@@ -107,9 +107,7 @@ export function HeroVideo({
               )}
               asChild
             >
-              <Link href={ctaPrimary.href}>
-                &gt; {ctaPrimary.text.toUpperCase()}
-              </Link>
+              <Link href={ctaPrimary.href}>&gt; {ctaPrimary.text.toUpperCase()}</Link>
             </Button>
             <Button
               size="lg"
@@ -120,9 +118,7 @@ export function HeroVideo({
               )}
               asChild
             >
-              <Link href={ctaSecondary.href}>
-                &gt; VIEW {ctaSecondary.text.toUpperCase()}
-              </Link>
+              <Link href={ctaSecondary.href}>&gt; VIEW {ctaSecondary.text.toUpperCase()}</Link>
             </Button>
           </div>
 

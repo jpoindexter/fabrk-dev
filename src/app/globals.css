@@ -576,7 +576,7 @@
   --card-foreground: 88% 0.25 50;
   --popover: 12% 0.03 50;
   --popover-foreground: 88% 0.25 50;
-  --primary: 40% 0.2 50; /* Decreased from 45% for WCAG AA (4.5:1+) */
+  --primary: 35% 0.2 50; /* Decreased to 35% for WCAG AA compliance (4.5:1+ contrast) */
   --primary-foreground: 95% 0.01 50;
   --secondary: 75% 0.22 50;
   --secondary-foreground: 5% 0.01 50;
@@ -635,6 +635,30 @@
   --chart-8: 72% 0.21 50;
   --chart-9: 68% 0.19 50;
 
+  /* Semantic mappings */
+  --color-bg-canvas: var(--background);
+  --color-bg-surface: var(--card);
+  --color-bg-elevated: var(--popover);
+  --color-bg-sunken: var(--muted);
+
+  --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-text-tertiary: var(--secondary-foreground);
+  --color-text-inverse: var(--primary-foreground);
+  --color-text-disabled: var(--muted-foreground);
+
+  --color-border-default: var(--border);
+  --color-border-muted: var(--input);
+  --color-border-strong: var(--ring);
+  --color-border-focus: var(--ring);
+
+  --color-status-success: var(--success);
+  --color-status-success-bg: var(--success);
+  --color-status-warning: var(--warning);
+  --color-status-warning-bg: var(--warning);
+  --color-status-error: var(--destructive);
+  --color-status-error-bg: var(--destructive);
+
   /* Code syntax highlighting (Prism) */
   --code-fg: oklch(81% 0.14 108);
   --code-bg: oklch(14% 0.02 113);
@@ -669,10 +693,6 @@
   --input: 50% 0.2 300; /* Increased from 30% for better visibility */
   --ring: 60% 0.2 300; /* Darkened from 70% */
 
-  --color-bg-canvas: var(--background);
-  --color-bg-surface: var(--card);
-  --color-text-primary: var(--foreground);
-
   /* Status colors - all monochrome purple */
   --success: 70% 0.2 300;
   --success-foreground: 5% 0.01 300;
@@ -691,6 +711,30 @@
   --chart-7: 50% 0.12 300;
   --chart-8: 72% 0.21 300;
   --chart-9: 68% 0.19 300;
+
+  /* Semantic mappings */
+  --color-bg-canvas: var(--background);
+  --color-bg-surface: var(--card);
+  --color-bg-elevated: var(--popover);
+  --color-bg-sunken: var(--muted);
+
+  --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-text-tertiary: var(--secondary-foreground);
+  --color-text-inverse: var(--primary-foreground);
+  --color-text-disabled: var(--muted-foreground);
+
+  --color-border-default: var(--border);
+  --color-border-muted: var(--input);
+  --color-border-strong: var(--ring);
+  --color-border-focus: var(--ring);
+
+  --color-status-success: var(--success);
+  --color-status-success-bg: var(--success);
+  --color-status-warning: var(--warning);
+  --color-status-warning-bg: var(--warning);
+  --color-status-error: var(--destructive);
+  --color-status-error-bg: var(--destructive);
 
   /* Code syntax highlighting (Prism) */
   --code-fg: oklch(76% 0.13 294);
@@ -722,8 +766,8 @@
   --accent-foreground: 98% 0.01 145;
   --destructive: 45% 0.28 145;
   --destructive-foreground: 98% 0.01 145;
-  --border: 75% 0.18 145;
-  --input: 75% 0.18 145;
+  --border: 50% 0.18 145; /* Darkened from 75% for WCAG 2.2 3:1 border contrast */
+  --input: 50% 0.18 145;
   --ring: 30% 0.3 145;
 
   /* Status colors - all monochrome green */
@@ -744,6 +788,30 @@
   --chart-7: 30% 0.18 145;
   --chart-8: 42% 0.25 145;
   --chart-9: 36% 0.23 145;
+
+  /* Semantic mappings */
+  --color-bg-canvas: var(--background);
+  --color-bg-surface: var(--card);
+  --color-bg-elevated: var(--popover);
+  --color-bg-sunken: var(--muted);
+
+  --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-text-tertiary: var(--secondary-foreground);
+  --color-text-inverse: var(--primary-foreground);
+  --color-text-disabled: var(--muted-foreground);
+
+  --color-border-default: var(--border);
+  --color-border-muted: var(--input);
+  --color-border-strong: var(--ring);
+  --color-border-focus: var(--ring);
+
+  --color-status-success: var(--success);
+  --color-status-success-bg: var(--success);
+  --color-status-warning: var(--warning);
+  --color-status-warning-bg: var(--warning);
+  --color-status-error: var(--destructive);
+  --color-status-error-bg: var(--destructive);
 
   /* Code syntax highlighting (Prism) */
   --code-fg: oklch(43% 0.07 135);
@@ -775,8 +843,8 @@
   --accent-foreground: 98% 0.01 50;
   --destructive: 40% 0.28 50;
   --destructive-foreground: 98% 0.01 50;
-  --border: 72% 0.15 50;
-  --input: 72% 0.15 50;
+  --border: 50% 0.15 50; /* Darkened from 72% for WCAG 2.2 3:1 border contrast */
+  --input: 50% 0.15 50;
   --ring: 32% 0.28 50;
 
   /* Status colors - all monochrome amber */
@@ -797,6 +865,30 @@
   --chart-7: 28% 0.14 50;
   --chart-8: 40% 0.21 50;
   --chart-9: 34% 0.19 50;
+
+  /* Semantic mappings */
+  --color-bg-canvas: var(--background);
+  --color-bg-surface: var(--card);
+  --color-bg-elevated: var(--popover);
+  --color-bg-sunken: var(--muted);
+
+  --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-text-tertiary: var(--secondary-foreground);
+  --color-text-inverse: var(--primary-foreground);
+  --color-text-disabled: var(--muted-foreground);
+
+  --color-border-default: var(--border);
+  --color-border-muted: var(--input);
+  --color-border-strong: var(--ring);
+  --color-border-focus: var(--ring);
+
+  --color-status-success: var(--success);
+  --color-status-success-bg: var(--success);
+  --color-status-warning: var(--warning);
+  --color-status-warning-bg: var(--warning);
+  --color-status-error: var(--destructive);
+  --color-status-error-bg: var(--destructive);
 
   /* Code syntax highlighting (Prism) */
   --code-fg: oklch(40% 0.07 106);
@@ -828,8 +920,8 @@
   --accent-foreground: 85% 0.18 85;
   --destructive: 30% 0.14 85;
   --destructive-foreground: 85% 0.18 85;
-  --border: 55% 0.14 85;
-  --input: 55% 0.14 85;
+  --border: 32% 0.14 85; /* Darkened from 55% for WCAG 2.2 3:1 border contrast */
+  --input: 32% 0.14 85;
   --ring: 20% 0.14 85;
 
   /* Status colors - Game Boy green spectrum */
@@ -851,6 +943,30 @@
   --chart-8: 38% 0.14 85;
   --chart-9: 42% 0.14 85;
 
+  /* Semantic mappings */
+  --color-bg-canvas: var(--background);
+  --color-bg-surface: var(--card);
+  --color-bg-elevated: var(--popover);
+  --color-bg-sunken: var(--muted);
+
+  --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-text-tertiary: var(--secondary-foreground);
+  --color-text-inverse: var(--primary-foreground);
+  --color-text-disabled: var(--muted-foreground);
+
+  --color-border-default: var(--border);
+  --color-border-muted: var(--input);
+  --color-border-strong: var(--ring);
+  --color-border-focus: var(--ring);
+
+  --color-status-success: var(--success);
+  --color-status-success-bg: var(--success);
+  --color-status-warning: var(--warning);
+  --color-status-warning-bg: var(--warning);
+  --color-status-error: var(--destructive);
+  --color-status-error-bg: var(--destructive);
+
   /* Code syntax highlighting - authentic Game Boy palette */
   --code-fg: oklch(29% 0.04 132);
   --code-bg: oklch(72% 0.13 120);
@@ -866,12 +982,12 @@
 /* C64 Theme - Commodore 64 blue (hue 280) */
 [data-theme='c64'] {
   --background: 25% 0.1 280; /* Dark Blue (#352879 approx) */
-  --foreground: 70% 0.15 280; /* Light Blue (#6c5eb5 approx) */
+  --foreground: 82% 0.15 280; /* Lightened from 70% for WCAG AA 4.5:1 text contrast */
   --card: 28% 0.1 280;
-  --card-foreground: 70% 0.15 280;
+  --card-foreground: 82% 0.15 280;
   --popover: 30% 0.1 280;
-  --popover-foreground: 70% 0.15 280;
-  --primary: 60% 0.2 280;
+  --popover-foreground: 82% 0.15 280;
+  --primary: 68% 0.2 280; /* Lightened from 60% for WCAG AA 4.5:1 primary contrast */
   --primary-foreground: 25% 0.1 280;
   --secondary: 40% 0.15 280;
   --secondary-foreground: 80% 0.1 280;
@@ -881,8 +997,8 @@
   --accent-foreground: 25% 0.1 280;
   --destructive: 60% 0.2 0;
   --destructive-foreground: 95% 0.05 0;
-  --border: 45% 0.1 280;
-  --input: 45% 0.1 280;
+  --border: 60% 0.1 280; /* Lightened from 45% for WCAG 2.2 3:1 border contrast */
+  --input: 60% 0.1 280;
   --ring: 75% 0.2 280;
 
   /* Status colors - blue spectrum */
@@ -903,6 +1019,30 @@
   --chart-7: 45% 0.12 280;
   --chart-8: 62% 0.19 280;
   --chart-9: 68% 0.21 280;
+
+  /* Semantic mappings */
+  --color-bg-canvas: var(--background);
+  --color-bg-surface: var(--card);
+  --color-bg-elevated: var(--popover);
+  --color-bg-sunken: var(--muted);
+
+  --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-text-tertiary: var(--secondary-foreground);
+  --color-text-inverse: var(--primary-foreground);
+  --color-text-disabled: var(--muted-foreground);
+
+  --color-border-default: var(--border);
+  --color-border-muted: var(--input);
+  --color-border-strong: var(--ring);
+  --color-border-focus: var(--ring);
+
+  --color-status-success: var(--success);
+  --color-status-success-bg: var(--success);
+  --color-status-warning: var(--warning);
+  --color-status-warning-bg: var(--warning);
+  --color-status-error: var(--destructive);
+  --color-status-error-bg: var(--destructive);
 
   /* Code syntax highlighting - C64 blue */
   --code-fg: oklch(76% 0.08 289);
@@ -934,8 +1074,8 @@
   --accent-foreground: 94% 0.01 0;
   --destructive: 25% 0.01 0;
   --destructive-foreground: 94% 0.01 0;
-  --border: 45% 0.01 0; /* Darkened from 68% for better visibility */
-  --input: 45% 0.01 0; /* Darkened from 68% for better visibility */
+  --border: 35% 0.01 0; /* Darkened from 45% for WCAG 2.2 3:1 border contrast */
+  --input: 35% 0.01 0;
   --ring: 18% 0.01 0;
 
   /* Status colors - grayscale */
@@ -956,6 +1096,30 @@
   --chart-7: 32% 0.01 0;
   --chart-8: 40% 0.01 0;
   --chart-9: 48% 0.01 0;
+
+  /* Semantic mappings */
+  --color-bg-canvas: var(--background);
+  --color-bg-surface: var(--card);
+  --color-bg-elevated: var(--popover);
+  --color-bg-sunken: var(--muted);
+
+  --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-text-tertiary: var(--secondary-foreground);
+  --color-text-inverse: var(--primary-foreground);
+  --color-text-disabled: var(--muted-foreground);
+
+  --color-border-default: var(--border);
+  --color-border-muted: var(--input);
+  --color-border-strong: var(--ring);
+  --color-border-focus: var(--ring);
+
+  --color-status-success: var(--success);
+  --color-status-success-bg: var(--success);
+  --color-status-warning: var(--warning);
+  --color-status-warning-bg: var(--warning);
+  --color-status-error: var(--destructive);
+  --color-status-error-bg: var(--destructive);
 
   /* Code syntax highlighting - grayscale */
   --code-fg: oklch(28% 0 261);
@@ -987,8 +1151,8 @@
   --accent-foreground: 90% 0.06 180;
   --destructive: 30% 0.1 180;
   --destructive-foreground: 90% 0.06 180;
-  --border: 60% 0.08 180;
-  --input: 60% 0.08 180;
+  --border: 38% 0.08 180; /* Darkened from 60% for WCAG 2.2 3:1 border contrast */
+  --input: 38% 0.08 180;
   --ring: 22% 0.12 180;
 
   /* Status colors - cyan spectrum */
@@ -1010,6 +1174,30 @@
   --chart-8: 38% 0.08 180;
   --chart-9: 42% 0.08 180;
 
+  /* Semantic mappings */
+  --color-bg-canvas: var(--background);
+  --color-bg-surface: var(--card);
+  --color-bg-elevated: var(--popover);
+  --color-bg-sunken: var(--muted);
+
+  --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-text-tertiary: var(--secondary-foreground);
+  --color-text-inverse: var(--primary-foreground);
+  --color-text-disabled: var(--muted-foreground);
+
+  --color-border-default: var(--border);
+  --color-border-muted: var(--input);
+  --color-border-strong: var(--ring);
+  --color-border-focus: var(--ring);
+
+  --color-status-success: var(--success);
+  --color-status-success-bg: var(--success);
+  --color-status-warning: var(--warning);
+  --color-status-warning-bg: var(--warning);
+  --color-status-error: var(--destructive);
+  --color-status-error-bg: var(--destructive);
+
   /* Code syntax highlighting - cyan */
   --code-fg: oklch(43% 0.03 247);
   --code-bg: oklch(93% 0.02 254);
@@ -1025,12 +1213,12 @@
 /* Atari 800 Theme - Authentic Blue background (Hue 220) */
 [data-theme='atari'] {
   --background: 35% 0.1 220; /* Atari Blue background */
-  --foreground: 90% 0.05 220; /* White/Light Blue text */
+  --foreground: 96% 0.05 220; /* Lightened from 90% for WCAG AA 4.5:1 text contrast */
   --card: 40% 0.1 220;
-  --card-foreground: 90% 0.05 220;
+  --card-foreground: 96% 0.05 220;
   --popover: 38% 0.1 220;
-  --popover-foreground: 90% 0.05 220;
-  --primary: 60% 0.2 220;
+  --popover-foreground: 96% 0.05 220;
+  --primary: 73% 0.2 220; /* Lightened from 60% for WCAG AA 4.5:1 primary contrast */
   --primary-foreground: 95% 0.05 220;
   --secondary: 30% 0.1 220;
   --secondary-foreground: 80% 0.1 220;
@@ -1040,8 +1228,8 @@
   --accent-foreground: 30% 0.1 220;
   --destructive: 60% 0.2 0;
   --destructive-foreground: 95% 0.05 0;
-  --border: 50% 0.1 220;
-  --input: 50% 0.1 220;
+  --border: 22% 0.1 220; /* Darkened from 50% for WCAG 2.2 3:1 border contrast */
+  --input: 22% 0.1 220;
   --ring: 70% 0.2 220;
 
   /* Status colors - blue spectrum */
@@ -1062,6 +1250,30 @@
   --chart-7: 50% 0.12 220;
   --chart-8: 68% 0.19 220;
   --chart-9: 72% 0.21 220;
+
+  /* Semantic mappings */
+  --color-bg-canvas: var(--background);
+  --color-bg-surface: var(--card);
+  --color-bg-elevated: var(--popover);
+  --color-bg-sunken: var(--muted);
+
+  --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-text-tertiary: var(--secondary-foreground);
+  --color-text-inverse: var(--primary-foreground);
+  --color-text-disabled: var(--muted-foreground);
+
+  --color-border-default: var(--border);
+  --color-border-muted: var(--input);
+  --color-border-strong: var(--ring);
+  --color-border-focus: var(--ring);
+
+  --color-status-success: var(--success);
+  --color-status-success-bg: var(--success);
+  --color-status-warning: var(--warning);
+  --color-status-warning-bg: var(--warning);
+  --color-status-error: var(--destructive);
+  --color-status-error-bg: var(--destructive);
 
   /* Code syntax highlighting - Atari Blue */
   --code-fg: oklch(90% 0.06 277);
@@ -1093,8 +1305,8 @@
   --accent-foreground: 96% 0.02 250;
   --destructive: 22% 0.1 250;
   --destructive-foreground: 96% 0.02 250;
-  --border: 68% 0.06 250;
-  --input: 68% 0.06 250;
+  --border: 47% 0.06 250; /* Darkened from 68% for WCAG 2.2 3:1 border contrast */
+  --input: 47% 0.06 250;
   --ring: 15% 0.12 250;
 
   /* Status colors - spectrum */
@@ -1115,6 +1327,30 @@
   --chart-7: 27% 0.1 250;
   --chart-8: 33% 0.08 250;
   --chart-9: 39% 0.08 250;
+
+  /* Semantic mappings */
+  --color-bg-canvas: var(--background);
+  --color-bg-surface: var(--card);
+  --color-bg-elevated: var(--popover);
+  --color-bg-sunken: var(--muted);
+
+  --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-text-tertiary: var(--secondary-foreground);
+  --color-text-inverse: var(--primary-foreground);
+  --color-text-disabled: var(--muted-foreground);
+
+  --color-border-default: var(--border);
+  --color-border-muted: var(--input);
+  --color-border-strong: var(--ring);
+  --color-border-focus: var(--ring);
+
+  --color-status-success: var(--success);
+  --color-status-success-bg: var(--success);
+  --color-status-warning: var(--warning);
+  --color-status-warning-bg: var(--warning);
+  --color-status-error: var(--destructive);
+  --color-status-error-bg: var(--destructive);
 
   /* Code syntax highlighting - bright spectrum */
   --code-fg: oklch(30% 0.09 288);
@@ -1169,16 +1405,48 @@
   /* Ring - Focus indicator (pure black) */
   --ring: 0% 0 0;
 
-  /* Chart colors - Grayscale only (Black/White patterns would be ideal, but fallback to black) */
-  --chart-1: 0% 0 0;
-  --chart-2: 0% 0 0;
-  --chart-3: 0% 0 0;
-  --chart-4: 0% 0 0;
-  --chart-5: 0% 0 0;
-  --chart-6: 0% 0 0;
-  --chart-7: 0% 0 0;
-  --chart-8: 0% 0 0;
-  --chart-9: 0% 0 0;
+  /* Status colors - Grayscale spectrum */
+  --success: 20% 0 0; /* Dark gray for success */
+  --success-foreground: 100% 0 0; /* White text */
+  --warning: 40% 0 0; /* Medium gray for warning */
+  --warning-foreground: 100% 0 0; /* White text */
+  --info: 60% 0 0; /* Light gray for info */
+  --info-foreground: 0% 0 0; /* Black text */
+
+  /* Chart colors - Grayscale spectrum (20%, 40%, 60%, 80%) */
+  --chart-1: 20% 0 0; /* Dark gray */
+  --chart-2: 40% 0 0; /* Medium-dark gray */
+  --chart-3: 60% 0 0; /* Medium-light gray */
+  --chart-4: 80% 0 0; /* Light gray */
+  --chart-5: 25% 0 0; /* Dark gray variant */
+  --chart-6: 35% 0 0; /* Medium-dark gray variant */
+  --chart-7: 50% 0 0; /* Medium gray */
+  --chart-8: 70% 0 0; /* Medium-light gray variant */
+  --chart-9: 90% 0 0; /* Very light gray */
+
+  /* Semantic mappings */
+  --color-bg-canvas: var(--background);
+  --color-bg-surface: var(--card);
+  --color-bg-elevated: var(--popover);
+  --color-bg-sunken: var(--muted);
+
+  --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-text-tertiary: var(--secondary-foreground);
+  --color-text-inverse: var(--primary-foreground);
+  --color-text-disabled: var(--muted-foreground);
+
+  --color-border-default: var(--border);
+  --color-border-muted: var(--input);
+  --color-border-strong: var(--ring);
+  --color-border-focus: var(--ring);
+
+  --color-status-success: var(--success);
+  --color-status-success-bg: var(--success);
+  --color-status-warning: var(--warning);
+  --color-status-warning-bg: var(--warning);
+  --color-status-error: var(--destructive);
+  --color-status-error-bg: var(--destructive);
 
   /* Terminal radius */
   --radius: 0rem;
