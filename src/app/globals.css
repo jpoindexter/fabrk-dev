@@ -1252,20 +1252,20 @@
   --primary: 0% 0 0;
   --primary-foreground: 100% 0 0;
 
-  /* Secondary - 90% lightness for subtle differentiation */
-  --secondary: 90% 0 0;
-  --secondary-foreground: 0% 0 0;
+  /* Secondary - Black background for contrast */
+  --secondary: 0% 0 0;
+  --secondary-foreground: 100% 0 0;
 
-  /* Muted - Mid-gray for less prominent elements */
-  --muted: 92% 0 0;
-  --muted-foreground: 35% 0 0;
+  /* Muted - White background, Black text */
+  --muted: 100% 0 0;
+  --muted-foreground: 0% 0 0;
 
-  /* Accent - Slightly darker than muted */
-  --accent: 85% 0 0;
-  --accent-foreground: 0% 0 0;
+  /* Accent - Black */
+  --accent: 0% 0 0;
+  --accent-foreground: 100% 0 0;
 
-  /* Destructive - Dark gray for errors (no color) */
-  --destructive: 25% 0 0;
+  /* Destructive - Black (differentiate via icon/text) */
+  --destructive: 0% 0 0;
   --destructive-foreground: 100% 0 0;
 
   /* Borders - Pure black for true B&W aesthetic */
@@ -1275,26 +1275,30 @@
   /* Ring - Focus indicator (pure black) */
   --ring: 0% 0 0;
 
-  /* Chart colors - Grayscale only */
-  --chart-1: 20% 0 0;
-  --chart-2: 35% 0 0;
-  --chart-3: 50% 0 0;
-  --chart-4: 65% 0 0;
-  --chart-5: 80% 0 0;
+  /* Chart colors - Grayscale only (Black/White patterns would be ideal, but fallback to black) */
+  --chart-1: 0% 0 0;
+  --chart-2: 0% 0 0;
+  --chart-3: 0% 0 0;
+  --chart-4: 0% 0 0;
+  --chart-5: 0% 0 0;
+  --chart-6: 0% 0 0;
+  --chart-7: 0% 0 0;
+  --chart-8: 0% 0 0;
+  --chart-9: 0% 0 0;
 
   /* Terminal radius */
   --radius: 0rem;
 
   /* Syntax highlighting - Pure B&W */
   --code-bg: #ffffff;
-  --code-foreground: #000000;
-  --code-comment: #6a6a6a;
-  --code-string: #2a2a2a;
-  --code-punctuation: #4a4a4a;
-  --code-number: #1a1a1a;
-  --code-keyword: #0a0a0a;
-  --code-function: #2a2a2a;
-  --code-selector: #1a1a1a;
+  --code-fg: #000000;
+  --code-comment: #000000;
+  --code-string: #000000;
+  --code-punctuation: #000000;
+  --code-number: #000000;
+  --code-keyword: #000000;
+  --code-function: #000000;
+  --code-selector: #000000;
 }
 
 /* ============================================
