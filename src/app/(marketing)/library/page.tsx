@@ -136,7 +136,7 @@ export default function LibraryIndexPage() {
         {/* Search Bar */}
         <div className="mx-auto max-w-2xl">
           <div className="relative">
-            <Search className="text-muted-foreground absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2" />
+            <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
             <InputSearch
               placeholder="Search templates, features, or categories..."
               value={searchQuery}
@@ -144,7 +144,7 @@ export default function LibraryIndexPage() {
               className={cn(
                 mode.radius,
                 mode.font,
-                'border-border focus-visible:border-primary h-14 border-2 pl-12 text-base'
+                'border-border focus-visible:border-primary h-10 border pl-10 text-xs'
               )}
             />
           </div>
