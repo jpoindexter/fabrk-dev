@@ -141,9 +141,11 @@
    ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
+  [data-monitor-effect] html,
+  [data-monitor-effect] html::after,
   [data-monitor-effect] body::before,
   [data-monitor-effect] body::after {
-    animation: none;
+    animation: none !important;
   }
 
   .crt-glow::after {
@@ -175,6 +177,35 @@
   100% {
     top: 100%;
   }
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.98;
+  }
+  2% {
+    opacity: 1;
+  }
+  4% {
+    opacity: 0.98;
+  }
+  8% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.99;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Screen flicker effect - subtle brightness variation */
+[data-monitor-effect='vintage'] html,
+[data-monitor-effect='scanlines'] html,
+[data-monitor-effect='glow'] html,
+[data-monitor-effect='glow-strong'] html {
+  animation: flicker 0.15s infinite;
 }
 
 /* Rolling scanline - classic CRT effect (vintage mode only) */
