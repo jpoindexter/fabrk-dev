@@ -142,7 +142,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   [data-monitor-effect] html,
+  [data-monitor-effect] html::before,
   [data-monitor-effect] html::after,
+  [data-monitor-effect] body,
   [data-monitor-effect] body::before,
   [data-monitor-effect] body::after {
     animation: none !important;
@@ -200,6 +202,111 @@
   }
 }
 
+@keyframes fast-flicker {
+  0% {
+    opacity: 0.27861;
+  }
+  5% {
+    opacity: 0.34769;
+  }
+  10% {
+    opacity: 0.23604;
+  }
+  15% {
+    opacity: 0.90626;
+  }
+  20% {
+    opacity: 0.18128;
+  }
+  25% {
+    opacity: 0.83891;
+  }
+  30% {
+    opacity: 0.65583;
+  }
+  35% {
+    opacity: 0.67807;
+  }
+  40% {
+    opacity: 0.26559;
+  }
+  45% {
+    opacity: 0.84693;
+  }
+  50% {
+    opacity: 0.96019;
+  }
+  55% {
+    opacity: 0.08594;
+  }
+  60% {
+    opacity: 0.20313;
+  }
+  65% {
+    opacity: 0.71988;
+  }
+  70% {
+    opacity: 0.53455;
+  }
+  75% {
+    opacity: 0.37288;
+  }
+  80% {
+    opacity: 0.71428;
+  }
+  85% {
+    opacity: 0.70419;
+  }
+  90% {
+    opacity: 0.7003;
+  }
+  95% {
+    opacity: 0.36108;
+  }
+  100% {
+    opacity: 0.24387;
+  }
+}
+
+@keyframes color-shift {
+  0% {
+    text-shadow:
+      0.4389924193300864px 0 1px rgba(0, 30, 255, 0.5),
+      -0.4389924193300864px 0 1px rgba(255, 0, 80, 0.3),
+      0 0 3px;
+  }
+  20% {
+    text-shadow:
+      -0.94px 0 1px rgba(0, 30, 255, 0.5),
+      0.94px 0 1px rgba(255, 0, 80, 0.3),
+      0 0 3px;
+  }
+  40% {
+    text-shadow:
+      0.62px 0 1px rgba(0, 30, 255, 0.5),
+      -0.62px 0 1px rgba(255, 0, 80, 0.3),
+      0 0 3px;
+  }
+  60% {
+    text-shadow:
+      -0.78px 0 1px rgba(0, 30, 255, 0.5),
+      0.78px 0 1px rgba(255, 0, 80, 0.3),
+      0 0 3px;
+  }
+  80% {
+    text-shadow:
+      0.31px 0 1px rgba(0, 30, 255, 0.5),
+      -0.31px 0 1px rgba(255, 0, 80, 0.3),
+      0 0 3px;
+  }
+  100% {
+    text-shadow:
+      0.4389924193300864px 0 1px rgba(0, 30, 255, 0.5),
+      -0.4389924193300864px 0 1px rgba(255, 0, 80, 0.3),
+      0 0 3px;
+  }
+}
+
 /* Screen flicker effect - dark overlay with sudden flickers */
 [data-monitor-effect='vintage'] html::before,
 [data-monitor-effect='scanlines'] html::before,
@@ -238,4 +345,88 @@
   backdrop-filter: blur(0.5px) brightness(1.1);
 
   animation: roll-scanline 8s linear infinite;
+}
+
+/* ============================================
+   NEW CRT EFFECTS (from aleclownes.com article)
+   ============================================ */
+
+/* Fast Flicker - Rapid 0.15s video-style flicker */
+[data-monitor-effect='fast-flicker'] html::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9996;
+  background: rgba(0, 0, 0, 1);
+  animation: fast-flicker 0.15s infinite;
+}
+
+/* Screen Door - Pixel grid pattern effect */
+[data-monitor-effect='screen-door'] body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.3) 2px,
+      rgba(0, 0, 0, 0.3) 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.3) 2px,
+      rgba(0, 0, 0, 0.3) 3px
+    );
+  background-size: 3px 3px;
+}
+
+/* Color Shift - Animated chromatic aberration on text */
+[data-monitor-effect='color-shift'] body {
+  animation: color-shift 1s infinite;
+}
+
+/* Retro CRT - All modern effects combined */
+[data-monitor-effect='retro-crt'] html::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9996;
+  background: rgba(0, 0, 0, 1);
+  animation: fast-flicker 0.15s infinite;
+}
+
+[data-monitor-effect='retro-crt'] body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.3) 2px,
+      rgba(0, 0, 0, 0.3) 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.3) 2px,
+      rgba(0, 0, 0, 0.3) 3px
+    );
+  background-size: 3px 3px;
+}
+
+[data-monitor-effect='retro-crt'] body {
+  animation: color-shift 1s infinite;
 }

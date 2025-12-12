@@ -27,6 +27,10 @@ const effects = [
   { id: 'glow', name: 'CRT Glow', description: 'Phosphor glow' },
   { id: 'glow-strong', name: 'Strong Glow', description: 'Bright phosphor' },
   { id: 'vintage', name: 'Vintage CRT', description: 'Full CRT effect' },
+  { id: 'fast-flicker', name: 'Fast Flicker', description: 'Rapid video flicker' },
+  { id: 'screen-door', name: 'Screen Door', description: 'Pixel grid pattern' },
+  { id: 'color-shift', name: 'Color Shift', description: 'RGB separation' },
+  { id: 'retro-crt', name: 'Retro CRT', description: 'All modern effects' },
 ] as const;
 
 export type MonitorEffect = (typeof effects)[number]['id'];
