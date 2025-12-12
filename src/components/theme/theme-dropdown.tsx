@@ -80,6 +80,20 @@ export function ThemeDropdown() {
     setCurrentTheme(themeId);
     localStorage.setItem('theme', themeId);
     document.documentElement.setAttribute('data-theme', themeId);
+
+    // Smart Link: Auto-switch monitor effect for Game Boy themes
+    if (themeId === 'gameboy' || themeId === 'gbpocket') {
+      const effect = 'lcd';
+      // Remove all potential effect classes
+      ['effect-crt', 'effect-lcd', 'effect-vhs'].forEach((c) =>
+        document.documentElement.classList.remove(c)
+      );
+      document.documentElement.classList.add(`effect-${effect}`);
+      localStorage.setItem('monitor-preset', effect);
+
+      // Dispatch storage event to sync other components if they listen
+      window.dispatchEvent(new Event('storage'));
+    }
   };
 
   if (!mounted) {
