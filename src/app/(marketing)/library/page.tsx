@@ -37,11 +37,14 @@ const FEATURED_IDS = [
   'onboarding',
 ];
 
+type SortOption = 'relevance' | 'name' | 'newest' | 'popular';
+
 export default function LibraryIndexPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [showFilters, setShowFilters] = useState(false);
   const [advancedFilters, setAdvancedFilters] = useState<FilterOptions>({});
+  const [sortBy, setSortBy] = useState<SortOption>('relevance');
 
   // Get featured templates
   const featuredTemplates = templates.filter((t) => FEATURED_IDS.includes(t.id));
@@ -67,6 +70,36 @@ export default function LibraryIndexPage() {
   const handleClearFilters = () => {
     setAdvancedFilters({});
   };
+
+  // Sort filtered templates
+  const sortedTemplates = [...filteredTemplates].sort((a, b) => {
+    switch (sortBy) {
+      case 'name':
+        return a.name.localeCompare(b.name);
+      case 'newest':
+        // Templates with lastUpdated field come first, sorted by date
+        if (a.lastUpdated && b.lastUpdated) {
+          return new Date(b.lastUpdated).getTime() - new Date(a.lastUpdated).getTime();
+        }
+        if (a.lastUpdated) return -1;
+        if (b.lastUpdated) return 1;
+        return 0;
+      case 'popular':
+        // Templates with 'Popular' badge come first, then 'Essential', then others
+        const popularityScore = (t: typeof a) => {
+          if (t.badge === 'Popular') return 3;
+          if (t.badge === 'Essential') return 2;
+          if (t.badge === 'New') return 1;
+          return 0;
+        };
+        return popularityScore(b) - popularityScore(a);
+      case 'relevance':
+      default:
+        // When searching, Fuse.js already sorted by relevance
+        // When browsing, maintain original order (manual curation)
+        return 0;
+    }
+  });
 
   // Calculate stats
   const stats = {
@@ -265,24 +298,52 @@ export default function LibraryIndexPage() {
 
       {/* Category Filter Buttons */}
       <section className="space-y-4">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <h2 className={cn(mode.font, 'text-2xl font-semibold')}>
             {searchQuery
-              ? `Search Results (${filteredTemplates.length})`
+              ? `Search Results (${sortedTemplates.length})`
               : selectedCategory === 'all'
                 ? 'All Templates'
-                : `${categories.find((c) => c.id === selectedCategory)?.name} (${filteredTemplates.length})`}
+                : `${categories.find((c) => c.id === selectedCategory)?.name} (${sortedTemplates.length})`}
           </h2>
-          <Link
-            href="/library/docs"
-            className={cn(
-              mode.font,
-              'text-primary hover:text-primary/80 flex items-center gap-2 text-sm transition-colors'
-            )}
-          >
-            <Clock className="h-4 w-4" />
-            &gt; HOW TO USE TEMPLATES
-          </Link>
+          <div className="flex flex-wrap items-center gap-3">
+            {/* Sort Options */}
+            <div className="flex items-center gap-2">
+              <span className={cn(mode.font, 'text-muted-foreground text-xs')}>[SORT BY]:</span>
+              <div className="flex gap-1">
+                {[
+                  { id: 'relevance' as const, label: 'RELEVANCE' },
+                  { id: 'popular' as const, label: 'POPULAR' },
+                  { id: 'newest' as const, label: 'NEWEST' },
+                  { id: 'name' as const, label: 'A-Z' },
+                ].map((option) => (
+                  <button
+                    key={option.id}
+                    onClick={() => setSortBy(option.id)}
+                    className={cn(
+                      mode.font,
+                      'border-border px-3 py-1 text-xs transition-all',
+                      sortBy === option.id
+                        ? 'bg-primary text-primary-foreground border'
+                        : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground border'
+                    )}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <Link
+              href="/library/docs"
+              className={cn(
+                mode.font,
+                'text-primary hover:text-primary/80 flex items-center gap-2 text-sm transition-colors'
+              )}
+            >
+              <Clock className="h-4 w-4" />
+              &gt; DOCS
+            </Link>
+          </div>
         </div>
 
         {/* Category Pills */}
@@ -347,30 +408,51 @@ export default function LibraryIndexPage() {
 
       {/* All Templates Grid */}
       <section className="space-y-6">
-        {filteredTemplates.length === 0 ? (
+        {sortedTemplates.length === 0 ? (
           // Empty State
           <div className="border-border bg-card flex min-h-[400px] flex-col items-center justify-center border p-12 text-center">
             <Search className="text-muted-foreground/50 mb-4 h-12 w-12" />
             <h3 className={cn(mode.font, 'mb-2 text-lg font-semibold')}>No templates found</h3>
             <p className={cn(mode.font, 'text-muted-foreground mb-4 text-sm')}>
-              Try adjusting your search or category filter
+              {searchQuery && activeFilterCount > 0
+                ? 'No templates match your search and filter criteria'
+                : searchQuery
+                  ? `No templates match "${searchQuery}"`
+                  : activeFilterCount > 0
+                    ? 'No templates match your selected filters'
+                    : 'Try adjusting your search or filters'}
             </p>
-            <button
-              onClick={() => {
-                setSearchQuery('');
-                setSelectedCategory('all');
-              }}
-              className={cn(
-                mode.font,
-                'bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 text-xs transition-colors'
+            <div className="flex gap-2">
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className={cn(
+                    mode.font,
+                    'border-border hover:bg-muted border px-4 py-2 text-xs transition-colors'
+                  )}
+                >
+                  &gt; CLEAR SEARCH
+                </button>
               )}
-            >
-              &gt; CLEAR FILTERS
-            </button>
+              {(activeFilterCount > 0 || selectedCategory !== 'all') && (
+                <button
+                  onClick={() => {
+                    setAdvancedFilters({});
+                    setSelectedCategory('all');
+                  }}
+                  className={cn(
+                    mode.font,
+                    'bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 text-xs transition-colors'
+                  )}
+                >
+                  &gt; CLEAR ALL FILTERS
+                </button>
+              )}
+            </div>
           </div>
         ) : (
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {filteredTemplates.map((template) => (
+            {sortedTemplates.map((template) => (
               <Link key={template.id} href={template.href}>
                 <div className="group border-border bg-card hover:border-primary/50 h-full border transition-all">
                   {/* Card Header */}
