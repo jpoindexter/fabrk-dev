@@ -148,7 +148,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${GeistSans.variable} ${jetbrainsMono.variable} ${pixelbasel.variable}`}
     >
       <head>
-        <ThemeScript defaultColorTheme="light" storageKeyPrefix="fabrk-theme" />
+        <ThemeScript defaultColorTheme="green" storageKeyPrefix="fabrk-theme" />
         {/* Google Consent Mode v2 - Must load BEFORE GTM */}
         <script
           dangerouslySetInnerHTML={{

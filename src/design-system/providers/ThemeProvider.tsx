@@ -8,7 +8,8 @@ import { DEFAULT_THEME, THEME_NAMES } from '../themes';
 // CONTEXT TYPES
 // =============================================================================
 
-export type ColorThemeName = 'light' | 'dark';
+// Color themes correspond to CRT phosphor palettes in globals.css
+export type ColorThemeName = 'amber' | 'green' | 'blue' | 'red' | 'purple';
 
 export interface ThemeContextValue {
   theme: ThemeName;
@@ -45,12 +46,13 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 export function ThemeProvider({
   children,
   defaultTheme = DEFAULT_THEME,
-  defaultColorTheme = 'light',
+  defaultColorTheme = 'green',
   storageKey,
   storageKeyPrefix = 'design-system',
   persist = true,
 }: ThemeProviderProps) {
-  const colorKey = storageKey || `${storageKeyPrefix}-color-theme`;
+  const colorKey = storageKey || 'theme';
+  const legacyColorKey = storageKey || `${storageKeyPrefix}-color-theme`;
 
   const [theme, setThemeState] = useState<ThemeName>(defaultTheme);
   const [colorTheme, setColorThemeState] = useState<ColorThemeName>(defaultColorTheme);
@@ -64,13 +66,13 @@ export function ThemeProvider({
       return;
     }
 
-    const storedColor = localStorage.getItem(colorKey);
-    if (storedColor && ['light', 'dark'].includes(storedColor)) {
+    const storedColor = localStorage.getItem(colorKey) || localStorage.getItem(legacyColorKey);
+    if (storedColor && ['amber', 'green', 'blue', 'red', 'purple'].includes(storedColor)) {
       setColorThemeState(storedColor as ColorThemeName);
     }
 
     setMounted(true);
-  }, [colorKey, persist]);
+  }, [colorKey, legacyColorKey, persist]);
 
   // Update localStorage and DOM when theme changes
   useEffect(() => {
@@ -90,7 +92,7 @@ export function ThemeProvider({
   };
 
   const setColorTheme = (newTheme: ColorThemeName) => {
-    if (['light', 'dark'].includes(newTheme)) {
+    if (['amber', 'green', 'blue', 'red', 'purple'].includes(newTheme)) {
       setColorThemeState(newTheme);
     }
   };
@@ -136,16 +138,22 @@ export function useOptionalThemeContext(): ThemeContextValue | null {
 export function ThemeScript({
   storageKey,
   storageKeyPrefix = 'design-system',
-  defaultColorTheme = 'light',
+  defaultColorTheme = 'green',
 }: ThemeScriptProps) {
-  const colorKey = storageKey || `${storageKeyPrefix}-color-theme`;
+  const colorKey = storageKey || 'theme';
+  const legacyColorKey = storageKey || `${storageKeyPrefix}-color-theme`;
 
   const script = `
     (function() {
       try {
-        var colorTheme = localStorage.getItem('${colorKey}') || '${defaultColorTheme}';
-        if (['light', 'dark'].includes(colorTheme)) {
+        var colorTheme =
+          localStorage.getItem('${colorKey}') ||
+          localStorage.getItem('${legacyColorKey}') ||
+          '${defaultColorTheme}';
+        if (['amber', 'green', 'blue', 'red', 'purple'].includes(colorTheme)) {
           document.documentElement.setAttribute('data-theme', colorTheme);
+        } else {
+          document.documentElement.setAttribute('data-theme', '${defaultColorTheme}');
         }
       } catch (e) {}
     })();

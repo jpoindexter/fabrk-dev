@@ -314,6 +314,17 @@
   --chart-8: 70% 0.26 140;
   --chart-9: 65% 0.28 140;
   --status-away: 75% 0.26 60;
+
+  /* Code syntax highlighting (Prism) */
+  --code-fg: #33ff66;
+  --code-bg: #001a0a;
+  --code-comment: #00aa44;
+  --code-string: #44ff77;
+  --code-punctuation: #22dd55;
+  --code-number: #00cc44;
+  --code-keyword: #00ff55;
+  --code-function: #66ff88;
+  --code-selector: #33ff66;
 }
 
 /* ============================================
@@ -386,6 +397,17 @@
   --color-status-error-bg: var(--destructive);
   --color-status-info: var(--info);
   --color-status-info-bg: var(--info);
+
+  /* Code syntax highlighting (Prism) */
+  --code-fg: #ff5544;
+  --code-bg: #140000;
+  --code-comment: #882211;
+  --code-string: #ff7766;
+  --code-punctuation: #cc3322;
+  --code-number: #dd4433;
+  --code-keyword: #ff6655;
+  --code-function: #ff8866;
+  --code-selector: #ff5544;
 }
 
 /* Blue Theme - Monochrome Blue CRT (hue 200) */
@@ -454,6 +476,17 @@
   --color-status-error-bg: var(--destructive);
   --color-status-info: var(--info);
   --color-status-info-bg: var(--info);
+
+  /* Code syntax highlighting (Prism) */
+  --code-fg: #55ccff;
+  --code-bg: #000a14;
+  --code-comment: #3388bb;
+  --code-string: #66ddff;
+  --code-punctuation: #44aadd;
+  --code-number: #44bbee;
+  --code-keyword: #55ccff;
+  --code-function: #77eeff;
+  --code-selector: #55ccff;
 }
 
 /* Green Theme - Monochrome Green CRT (hue 145) */
@@ -522,6 +555,17 @@
   --chart-7: 55% 0.18 145;
   --chart-8: 72% 0.25 145;
   --chart-9: 68% 0.23 145;
+
+  /* Code syntax highlighting (Prism) */
+  --code-fg: #33ff66;
+  --code-bg: #001a0a;
+  --code-comment: #00aa44;
+  --code-string: #44ff77;
+  --code-punctuation: #22dd55;
+  --code-number: #00cc44;
+  --code-keyword: #00ff55;
+  --code-function: #66ff88;
+  --code-selector: #33ff66;
 }
 
 /* Amber Theme - Monochrome Amber CRT (hue 50) */
@@ -590,6 +634,17 @@
   --chart-7: 55% 0.14 50;
   --chart-8: 72% 0.21 50;
   --chart-9: 68% 0.19 50;
+
+  /* Code syntax highlighting (Prism) */
+  --code-fg: #ffbb00;
+  --code-bg: #0d0a00;
+  --code-comment: #aa8800;
+  --code-string: #ffcc33;
+  --code-punctuation: #ff9900;
+  --code-number: #ffaa00;
+  --code-keyword: #ff8800;
+  --code-function: #ffdd44;
+  --code-selector: #ffbb00;
 }
 
 /* Purple Theme - Monochrome Purple CRT (hue 300) */
@@ -636,6 +691,17 @@
   --chart-7: 50% 0.12 300;
   --chart-8: 72% 0.21 300;
   --chart-9: 68% 0.19 300;
+
+  /* Code syntax highlighting (Prism) */
+  --code-fg: #bb88ff;
+  --code-bg: #0a001a;
+  --code-comment: #6644aa;
+  --code-string: #cc99ff;
+  --code-punctuation: #9966dd;
+  --code-number: #aa77ee;
+  --code-keyword: #cc88ff;
+  --code-function: #ddaaff;
+  --code-selector: #bb88ff;
 }
 
 /* ============================================

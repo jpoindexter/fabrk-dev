@@ -3,7 +3,7 @@
 import { ReactNode } from 'react';
 import { SessionProvider } from 'next-auth/react';
 import { Toaster } from 'sonner';
-import { ThemeProvider } from '@/design-system/providers';
+import { ThemeProvider, type ColorThemeName } from '@/design-system/providers';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -24,11 +24,11 @@ import { cn } from '@/lib/utils';
 
 interface ProvidersProps {
   children: ReactNode;
-  /** Default color theme (defaults to "light") */
-  defaultColorTheme?: 'light' | 'dark';
+  /** Default color theme (defaults to "green") */
+  defaultColorTheme?: ColorThemeName;
 }
 
-export function Providers({ children, defaultColorTheme = 'light' }: ProvidersProps) {
+export function Providers({ children, defaultColorTheme = 'green' }: ProvidersProps) {
   return (
     <SessionProvider>
       <ThemeProvider defaultColorTheme={defaultColorTheme} storageKeyPrefix="fabrk-theme">
