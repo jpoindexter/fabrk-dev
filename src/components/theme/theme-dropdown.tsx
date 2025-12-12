@@ -30,12 +30,12 @@ const themes = [
   // Retro light themes
   { id: 'gameboy', name: 'Game Boy', preview: '#9bbc0f' },
   { id: 'gbpocket', name: 'GB Pocket', preview: '#8a8a8a' },
-  { id: 'apple2', name: 'Apple II', preview: '#5fa35f' },
-  { id: 'c64', name: 'C64 Blue', preview: '#7fa7d7' },
-  { id: 'vic20', name: 'VIC-20', preview: '#6fbfbf' },
-  { id: 'atari', name: 'Atari 800', preview: '#d9a66a' },
-  { id: 'spectrum', name: 'ZX Spectrum', preview: '#5a5acf' },
-  { id: 'ibmpc', name: 'IBM PC', preview: '#7fb37f' },
+  { id: 'apple2', name: 'Apple II', preview: '#000000' }, // Black background
+  { id: 'c64', name: 'C64 Blue', preview: '#352879' }, // Dark Blue
+  { id: 'vic20', name: 'VIC-20', preview: '#e0ffff' }, // Light Cyan/White
+  { id: 'atari', name: 'Atari 800', preview: '#305070' }, // Atari Blue
+  { id: 'spectrum', name: 'ZX Spectrum', preview: '#ffffff' }, // White
+  { id: 'ibmpc', name: 'IBM PC', preview: '#000000' }, // Black background
   { id: 'light-green', name: 'Light Green', preview: '#00aa33' },
   { id: 'light-amber', name: 'Light Amber', preview: '#cc8800' },
   // Paper themes

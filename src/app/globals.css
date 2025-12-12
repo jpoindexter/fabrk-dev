@@ -1075,57 +1075,57 @@
   --code-selector: #1a5a5a;
 }
 
-/* Atari 800 Theme - Atari 8-bit tan/orange (hue 35) */
+/* Atari 800 Theme - Authentic Blue background (Hue 220) */
 [data-theme='atari'] {
-  --background: 90% 0.1 35; /* Warm tan background */
-  --foreground: 20% 0.14 35;
-  --card: 86% 0.08 35;
-  --card-foreground: 20% 0.14 35;
-  --popover: 82% 0.08 35;
-  --popover-foreground: 20% 0.14 35;
-  --primary: 28% 0.16 35;
-  --primary-foreground: 90% 0.1 35;
-  --secondary: 75% 0.12 35;
-  --secondary-foreground: 20% 0.14 35;
-  --muted: 84% 0.08 35;
-  --muted-foreground: 42% 0.12 35;
-  --accent: 25% 0.16 35;
-  --accent-foreground: 90% 0.1 35;
-  --destructive: 32% 0.14 35;
-  --destructive-foreground: 90% 0.1 35;
-  --border: 62% 0.12 35;
-  --input: 62% 0.12 35;
-  --ring: 25% 0.16 35;
+  --background: 35% 0.1 220; /* Atari Blue background */
+  --foreground: 90% 0.05 220; /* White/Light Blue text */
+  --card: 40% 0.1 220;
+  --card-foreground: 90% 0.05 220;
+  --popover: 38% 0.1 220;
+  --popover-foreground: 90% 0.05 220;
+  --primary: 60% 0.2 220;
+  --primary-foreground: 95% 0.05 220;
+  --secondary: 30% 0.1 220;
+  --secondary-foreground: 80% 0.1 220;
+  --muted: 25% 0.05 220;
+  --muted-foreground: 70% 0.1 220;
+  --accent: 70% 0.2 220;
+  --accent-foreground: 30% 0.1 220;
+  --destructive: 60% 0.2 0;
+  --destructive-foreground: 95% 0.05 0;
+  --border: 50% 0.1 220;
+  --input: 50% 0.1 220;
+  --ring: 70% 0.2 220;
 
-  /* Status colors - warm spectrum */
-  --success: 28% 0.16 35;
-  --success-foreground: 90% 0.1 35;
-  --warning: 33% 0.14 35;
-  --warning-foreground: 90% 0.1 35;
-  --info: 26% 0.14 35;
-  --info-foreground: 90% 0.1 35;
+  /* Status colors - blue spectrum */
+  --success: 70% 0.2 220;
+  --success-foreground: 30% 0.1 220;
+  --warning: 75% 0.18 220;
+  --warning-foreground: 30% 0.1 220;
+  --info: 65% 0.18 220;
+  --info-foreground: 30% 0.1 220;
 
-  /* Chart colors - warm spectrum */
-  --chart-1: 28% 0.16 35;
-  --chart-2: 32% 0.14 35;
-  --chart-3: 36% 0.14 35;
-  --chart-4: 40% 0.12 35;
-  --chart-5: 44% 0.12 35;
-  --chart-6: 25% 0.16 35;
-  --chart-7: 34% 0.14 35;
-  --chart-8: 38% 0.12 35;
-  --chart-9: 42% 0.12 35;
+  /* Chart colors - blue spectrum */
+  --chart-1: 70% 0.2 220;
+  --chart-2: 60% 0.18 220;
+  --chart-3: 75% 0.22 220;
+  --chart-4: 65% 0.16 220;
+  --chart-5: 55% 0.14 220;
+  --chart-6: 80% 0.24 220;
+  --chart-7: 50% 0.12 220;
+  --chart-8: 68% 0.19 220;
+  --chart-9: 72% 0.21 220;
 
-  /* Code syntax highlighting - warm tan */
-  --code-fg: #5a3a1a;
-  --code-bg: #f0e0d0;
-  --code-comment: #7a5a3a;
-  --code-string: #5a3a1a;
-  --code-punctuation: #6a4a2a;
-  --code-number: #5a3a1a;
-  --code-keyword: #5a3a1a;
-  --code-function: #6a4a2a;
-  --code-selector: #5a3a1a;
+  /* Code syntax highlighting - Atari Blue */
+  --code-fg: #bfdfff;
+  --code-bg: #305070;
+  --code-comment: #7090b0;
+  --code-string: #90c0e0;
+  --code-punctuation: #80a0c0;
+  --code-number: #ffffff;
+  --code-keyword: #bfdfff;
+  --code-function: #ffffff;
+  --code-selector: #bfdfff;
 }
 
 /* ZX Spectrum Theme - Sinclair ZX Spectrum bright (hue 250) */
