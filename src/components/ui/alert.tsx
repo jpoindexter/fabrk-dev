@@ -62,18 +62,14 @@ const alertVariants = cva(
   {
     variants: {
       variant: {
-        // Info - informational alert (blue)
-        default:
-          'bg-[oklch(var(--color-status-info-bg))] text-[oklch(var(--color-status-info))] border-[oklch(var(--color-status-info))]',
-        // Destructive - error alert (red)
-        destructive:
-          'bg-[oklch(var(--color-status-error-bg))] text-[oklch(var(--color-status-error))] border-[oklch(var(--color-status-error))]',
-        // Success - confirmation alert (green)
-        success:
-          'bg-[oklch(var(--color-status-success-bg))] text-[oklch(var(--color-status-success))] border-[oklch(var(--color-status-success))]',
-        // Warning - warning alert (orange)
-        warning:
-          'bg-[oklch(var(--color-status-warning-bg))] text-[oklch(var(--color-status-warning))] border-[oklch(var(--color-status-warning))]',
+        // Info - informational alert
+        default: `${mode.color.bg.infoMuted} ${mode.color.text.info} ${mode.color.border.accent}`,
+        // Destructive - error alert
+        destructive: `${mode.color.bg.dangerMuted} ${mode.color.text.danger} ${mode.color.border.danger}`,
+        // Success - confirmation alert
+        success: `${mode.color.bg.successMuted} ${mode.color.text.success} ${mode.color.border.success}`,
+        // Warning - warning alert
+        warning: `${mode.color.bg.warningMuted} ${mode.color.text.warning} ${mode.color.border.warning}`,
       },
     },
     defaultVariants: {

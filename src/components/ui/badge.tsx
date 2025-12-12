@@ -40,18 +40,17 @@ const badgeVariants = cva(
     variants: {
       variant: {
         // Primary - main action/status
-        default: 'bg-primary text-primary-foreground border-primary hover:bg-primary/90',
+        default: `${mode.color.bg.accent} ${mode.color.text.inverse} ${mode.color.border.accent} hover:${mode.color.bg.accentHover}`,
         // Secondary - muted status
-        secondary: 'bg-secondary text-secondary-foreground border-secondary hover:bg-secondary/90',
+        secondary: `${mode.color.bg.secondary} ${mode.color.text.secondary} ${mode.color.border.default} hover:${mode.color.bg.secondary}/90`,
         // Accent - highlighted status
-        accent: 'bg-accent text-accent-foreground border-accent hover:bg-accent/90',
+        accent: `${mode.color.bg.accent} ${mode.color.text.inverse} ${mode.color.border.accent} hover:${mode.color.bg.accentHover}`,
         // Destructive - error/warning
-        destructive:
-          'bg-destructive text-destructive-foreground border-destructive hover:bg-destructive/90',
+        destructive: `${mode.color.bg.danger} ${mode.color.text.dangerOnColor} ${mode.color.border.danger} hover:${mode.color.bg.danger}/90`,
         // Neutral - subtle/default
-        neutral: 'bg-background text-foreground border-foreground hover:bg-muted',
+        neutral: `${mode.color.bg.base} ${mode.color.text.primary} ${mode.color.border.default} hover:${mode.color.bg.muted}`,
         // Outline - bordered only
-        outline: 'bg-transparent border-foreground text-foreground hover:bg-foreground/10',
+        outline: `bg-transparent ${mode.color.border.default} ${mode.color.text.primary} hover:${mode.color.text.primary}/10`,
       },
       size: {
         // Compact sizing for consistent UI (matches tech stack pattern)

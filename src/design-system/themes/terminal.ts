@@ -37,9 +37,13 @@ export const terminalTheme: SemanticTokens = {
       accent: primitives.colors.primary[400],
       accentHover: primitives.colors.primary[300],
       danger: primitives.colors.red[400],
+      dangerOnColor: primitives.colors.gray[50], // Text on danger background
       success: primitives.colors.green[400],
+      successOnColor: primitives.colors.gray[50], // Text on success background
       warning: primitives.colors.amber[400],
+      warningOnColor: primitives.colors.gray[950], // Dark text on amber
       info: primitives.colors.blue[400],
+      infoOnColor: primitives.colors.gray[50], // Text on info background
     },
     border: {
       default: primitives.colors.gray[800],
@@ -48,7 +52,18 @@ export const terminalTheme: SemanticTokens = {
       accent: primitives.colors.primary[500],
       danger: primitives.colors.red[500],
       success: primitives.colors.green[500],
+      warning: primitives.colors.amber[500], // Warning border
       focus: primitives.colors.primary[400],
+    },
+    icon: {
+      primary: primitives.colors.gray[50],
+      secondary: primitives.colors.gray[300],
+      muted: primitives.colors.gray[500],
+      accent: primitives.colors.primary[400],
+      danger: primitives.colors.red[400],
+      success: primitives.colors.green[400],
+      warning: primitives.colors.amber[400],
+      info: primitives.colors.blue[400],
     },
   },
   radius: {
@@ -96,6 +111,113 @@ export const terminalTheme: SemanticTokens = {
     },
     page: {
       padding: primitives.space[6],
+    },
+  },
+  typography: {
+    display: {
+      fontSize: primitives.fontSize['5xl'],
+      fontWeight: primitives.fontWeight.bold,
+      lineHeight: primitives.lineHeight.tight,
+      letterSpacing: primitives.letterSpacing.tight,
+    },
+    h1: {
+      fontSize: primitives.fontSize['4xl'],
+      fontWeight: primitives.fontWeight.bold,
+      lineHeight: primitives.lineHeight.tight,
+      letterSpacing: primitives.letterSpacing.tight,
+    },
+    h2: {
+      fontSize: primitives.fontSize['3xl'],
+      fontWeight: primitives.fontWeight.bold,
+      lineHeight: primitives.lineHeight.snug,
+      letterSpacing: primitives.letterSpacing.tight,
+    },
+    h3: {
+      fontSize: primitives.fontSize['2xl'],
+      fontWeight: primitives.fontWeight.semibold,
+      lineHeight: primitives.lineHeight.snug,
+      letterSpacing: primitives.letterSpacing.normal,
+    },
+    h4: {
+      fontSize: primitives.fontSize.xl,
+      fontWeight: primitives.fontWeight.semibold,
+      lineHeight: primitives.lineHeight.normal,
+      letterSpacing: primitives.letterSpacing.normal,
+    },
+    h5: {
+      fontSize: primitives.fontSize.lg,
+      fontWeight: primitives.fontWeight.medium,
+      lineHeight: primitives.lineHeight.normal,
+      letterSpacing: primitives.letterSpacing.normal,
+    },
+    h6: {
+      fontSize: primitives.fontSize.base,
+      fontWeight: primitives.fontWeight.medium,
+      lineHeight: primitives.lineHeight.normal,
+      letterSpacing: primitives.letterSpacing.normal,
+    },
+    body: {
+      l: {
+        fontSize: primitives.fontSize.lg,
+        fontWeight: primitives.fontWeight.normal,
+        lineHeight: primitives.lineHeight.relaxed,
+        letterSpacing: primitives.letterSpacing.normal,
+      },
+      m: {
+        fontSize: primitives.fontSize.base,
+        fontWeight: primitives.fontWeight.normal,
+        lineHeight: primitives.lineHeight.relaxed,
+        letterSpacing: primitives.letterSpacing.normal,
+      },
+      s: {
+        fontSize: primitives.fontSize.sm,
+        fontWeight: primitives.fontWeight.normal,
+        lineHeight: primitives.lineHeight.relaxed,
+        letterSpacing: primitives.letterSpacing.normal,
+      },
+    },
+    label: {
+      fontSize: primitives.fontSize.sm,
+      fontWeight: primitives.fontWeight.medium,
+      lineHeight: primitives.lineHeight.normal,
+      letterSpacing: primitives.letterSpacing.wide,
+    },
+    caption: {
+      fontSize: primitives.fontSize.xs,
+      fontWeight: primitives.fontWeight.normal,
+      lineHeight: primitives.lineHeight.normal,
+      letterSpacing: primitives.letterSpacing.normal,
+    },
+    code: {
+      m: {
+        fontSize: primitives.fontSize.sm,
+        fontWeight: primitives.fontWeight.normal,
+        lineHeight: primitives.lineHeight.normal,
+        letterSpacing: primitives.letterSpacing.normal,
+      },
+      s: {
+        fontSize: primitives.fontSize.xs,
+        fontWeight: primitives.fontWeight.normal,
+        lineHeight: primitives.lineHeight.normal,
+        letterSpacing: primitives.letterSpacing.normal,
+      },
+    },
+  },
+  state: {
+    hover: {
+      bgOpacity: '0.08',
+      borderOpacity: '0.5',
+    },
+    active: {
+      bgOpacity: '0.12',
+      borderOpacity: '0.7',
+    },
+    focus: {
+      ringWidth: '2px',
+      ringOffset: '2px',
+    },
+    disabled: {
+      opacity: '0.38', // WCAG-compliant disabled opacity
     },
   },
 };

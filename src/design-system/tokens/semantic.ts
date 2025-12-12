@@ -37,9 +37,13 @@ export interface ColorTokens {
     accent: string;
     accentHover: string;
     danger: string;
+    dangerOnColor: string; // NEW: Text on danger background
     success: string;
+    successOnColor: string; // NEW: Text on success background
     warning: string;
+    warningOnColor: string; // NEW: Text on warning background
     info: string;
+    infoOnColor: string; // NEW: Text on info background
   };
   border: {
     default: string;
@@ -48,7 +52,19 @@ export interface ColorTokens {
     accent: string;
     danger: string;
     success: string;
+    warning: string; // NEW: Warning border
     focus: string;
+  };
+  icon: {
+    // NEW: Icon colors
+    primary: string;
+    secondary: string;
+    muted: string;
+    accent: string;
+    danger: string;
+    success: string;
+    warning: string;
+    info: string;
   };
 }
 
@@ -104,6 +120,54 @@ export interface SpacingTokens {
   };
 }
 
+// NEW: Typography text styles
+export interface TextStyle {
+  fontSize: string;
+  fontWeight: string;
+  lineHeight: string;
+  letterSpacing: string;
+}
+
+export interface TypographyTokens {
+  display: TextStyle; // Hero headlines
+  h1: TextStyle; // Page titles
+  h2: TextStyle; // Section titles
+  h3: TextStyle; // Subsection titles
+  h4: TextStyle; // Component titles
+  h5: TextStyle; // Minor headings
+  h6: TextStyle; // Smallest headings
+  body: {
+    l: TextStyle; // 18px body text
+    m: TextStyle; // 16px body text (default)
+    s: TextStyle; // 14px body text
+  };
+  label: TextStyle; // Form labels
+  caption: TextStyle; // Captions, metadata
+  code: {
+    m: TextStyle; // 14px code
+    s: TextStyle; // 12px code
+  };
+}
+
+// NEW: State tokens
+export interface StateTokens {
+  hover: {
+    bgOpacity: string; // 0.08 (8% overlay)
+    borderOpacity: string; // 0.5 (50% stronger)
+  };
+  active: {
+    bgOpacity: string; // 0.12 (12% overlay)
+    borderOpacity: string; // 0.7 (70% stronger)
+  };
+  focus: {
+    ringWidth: string; // 2px
+    ringOffset: string; // 2px
+  };
+  disabled: {
+    opacity: string; // 0.38 (WCAG-compliant)
+  };
+}
+
 // =============================================================================
 // SEMANTIC TOKEN INTERFACE
 // =============================================================================
@@ -115,6 +179,8 @@ export interface SemanticTokens {
   font: FontTokens;
   textTransform: TextTransformTokens;
   spacing: SpacingTokens;
+  typography: TypographyTokens; // NEW
+  state: StateTokens; // NEW
 }
 
 // =============================================================================
@@ -150,9 +216,13 @@ export const cssVariableNames = {
       accent: '--color-text-accent',
       accentHover: '--color-text-accent-hover',
       danger: '--color-text-danger',
+      dangerOnColor: '--color-text-danger-on-color',
       success: '--color-text-success',
+      successOnColor: '--color-text-success-on-color',
       warning: '--color-text-warning',
+      warningOnColor: '--color-text-warning-on-color',
       info: '--color-text-info',
+      infoOnColor: '--color-text-info-on-color',
     },
     border: {
       default: '--color-border-default',
@@ -161,7 +231,18 @@ export const cssVariableNames = {
       accent: '--color-border-accent',
       danger: '--color-border-danger',
       success: '--color-border-success',
+      warning: '--color-border-warning',
       focus: '--color-border-focus',
+    },
+    icon: {
+      primary: '--color-icon-primary',
+      secondary: '--color-icon-secondary',
+      muted: '--color-icon-muted',
+      accent: '--color-icon-accent',
+      danger: '--color-icon-danger',
+      success: '--color-icon-success',
+      warning: '--color-icon-warning',
+      info: '--color-icon-info',
     },
   },
   radius: {
@@ -183,6 +264,113 @@ export const cssVariableNames = {
     heading: '--font-heading',
     code: '--font-code',
     ui: '--font-ui',
+  },
+  typography: {
+    display: {
+      fontSize: '--typography-display-size',
+      fontWeight: '--typography-display-weight',
+      lineHeight: '--typography-display-leading',
+      letterSpacing: '--typography-display-tracking',
+    },
+    h1: {
+      fontSize: '--typography-h1-size',
+      fontWeight: '--typography-h1-weight',
+      lineHeight: '--typography-h1-leading',
+      letterSpacing: '--typography-h1-tracking',
+    },
+    h2: {
+      fontSize: '--typography-h2-size',
+      fontWeight: '--typography-h2-weight',
+      lineHeight: '--typography-h2-leading',
+      letterSpacing: '--typography-h2-tracking',
+    },
+    h3: {
+      fontSize: '--typography-h3-size',
+      fontWeight: '--typography-h3-weight',
+      lineHeight: '--typography-h3-leading',
+      letterSpacing: '--typography-h3-tracking',
+    },
+    h4: {
+      fontSize: '--typography-h4-size',
+      fontWeight: '--typography-h4-weight',
+      lineHeight: '--typography-h4-leading',
+      letterSpacing: '--typography-h4-tracking',
+    },
+    h5: {
+      fontSize: '--typography-h5-size',
+      fontWeight: '--typography-h5-weight',
+      lineHeight: '--typography-h5-leading',
+      letterSpacing: '--typography-h5-tracking',
+    },
+    h6: {
+      fontSize: '--typography-h6-size',
+      fontWeight: '--typography-h6-weight',
+      lineHeight: '--typography-h6-leading',
+      letterSpacing: '--typography-h6-tracking',
+    },
+    body: {
+      l: {
+        fontSize: '--typography-body-l-size',
+        fontWeight: '--typography-body-l-weight',
+        lineHeight: '--typography-body-l-leading',
+        letterSpacing: '--typography-body-l-tracking',
+      },
+      m: {
+        fontSize: '--typography-body-m-size',
+        fontWeight: '--typography-body-m-weight',
+        lineHeight: '--typography-body-m-leading',
+        letterSpacing: '--typography-body-m-tracking',
+      },
+      s: {
+        fontSize: '--typography-body-s-size',
+        fontWeight: '--typography-body-s-weight',
+        lineHeight: '--typography-body-s-leading',
+        letterSpacing: '--typography-body-s-tracking',
+      },
+    },
+    label: {
+      fontSize: '--typography-label-size',
+      fontWeight: '--typography-label-weight',
+      lineHeight: '--typography-label-leading',
+      letterSpacing: '--typography-label-tracking',
+    },
+    caption: {
+      fontSize: '--typography-caption-size',
+      fontWeight: '--typography-caption-weight',
+      lineHeight: '--typography-caption-leading',
+      letterSpacing: '--typography-caption-tracking',
+    },
+    code: {
+      m: {
+        fontSize: '--typography-code-m-size',
+        fontWeight: '--typography-code-m-weight',
+        lineHeight: '--typography-code-m-leading',
+        letterSpacing: '--typography-code-m-tracking',
+      },
+      s: {
+        fontSize: '--typography-code-s-size',
+        fontWeight: '--typography-code-s-weight',
+        lineHeight: '--typography-code-s-leading',
+        letterSpacing: '--typography-code-s-tracking',
+      },
+    },
+  },
+  state: {
+    hover: {
+      bgOpacity: '--state-hover-bg-opacity',
+      borderOpacity: '--state-hover-border-opacity',
+    },
+    active: {
+      bgOpacity: '--state-active-bg-opacity',
+      borderOpacity: '--state-active-border-opacity',
+    },
+    focus: {
+      ringWidth: '--state-focus-ring-width',
+      ringOffset: '--state-focus-ring-offset',
+    },
+    disabled: {
+      opacity: '--state-disabled-opacity',
+    },
   },
 } as const;
 

@@ -15,7 +15,7 @@
  * ├─────────────────────────────────────────────────────────────────┤
  * │  THEMES                                                         │
  * │  Map semantic tokens to primitive values                        │
- * │  Terminal, Modern, Soft                                         │
+ * │  Terminal (monospace, sharp, structured)                        │
  * ├─────────────────────────────────────────────────────────────────┤
  * │  PRIMITIVES                                                     │
  * │  Raw values (colors, sizes)                                     │
@@ -79,20 +79,10 @@ export {
   getActiveThemeUtils,
   terminalTheme,
   terminalClasses,
-  modernTheme,
-  modernClasses,
-  softTheme,
-  softClasses,
-  formatTerminalButtonText,
-  formatTerminalLabelText,
-  formatTerminalCardHeader,
-  formatTerminalStatusText,
-  formatModernButtonText,
-  formatModernLabelText,
-  formatModernCardHeader,
-  formatSoftButtonText,
-  formatSoftLabelText,
-  formatSoftCardHeader,
+  formatButtonText,
+  formatLabelText,
+  formatCardHeader,
+  formatStatusText,
 } from './themes';
 
 export type { ThemeName, ThemeUtils } from './themes';
@@ -103,7 +93,14 @@ export type { ThemeName, ThemeUtils } from './themes';
 // The following exports maintain compatibility with the 100+ components
 // that import from @/design-system using the old API.
 
-import { CURRENT_THEME, terminalClasses } from './themes';
+import {
+  CURRENT_THEME,
+  terminalClasses,
+  formatButtonText,
+  formatLabelText,
+  formatCardHeader,
+  formatStatusText,
+} from './themes';
 
 /**
  * Visual mode configuration interface (for backwards compatibility)
@@ -126,10 +123,15 @@ export interface ModeConfig {
       surface: string;
       elevated: string;
       accent: string;
+      accentHover: string;
       danger: string;
+      dangerMuted: string;
       success: string;
+      successMuted: string;
       warning: string;
+      warningMuted: string;
       info: string;
+      infoMuted: string;
       muted: string;
       secondary: string;
     };
@@ -140,9 +142,13 @@ export interface ModeConfig {
       inverse: string;
       accent: string;
       danger: string;
+      dangerOnColor: string;
       success: string;
+      successOnColor: string;
       warning: string;
+      warningOnColor: string;
       info: string;
+      infoOnColor: string;
     };
     border: {
       default: string;
@@ -151,6 +157,16 @@ export interface ModeConfig {
       danger: string;
       success: string;
       warning: string;
+    };
+    icon: {
+      primary: string;
+      secondary: string;
+      muted: string;
+      accent: string;
+      danger: string;
+      success: string;
+      warning: string;
+      info: string;
     };
   };
 
@@ -222,10 +238,15 @@ export const mode: ModeConfig = {
       surface: 'bg-card',
       elevated: 'bg-popover',
       accent: 'bg-accent', // Purple accent for CTAs
+      accentHover: 'bg-accent/90',
       danger: 'bg-destructive',
+      dangerMuted: 'bg-destructive/10',
       success: 'bg-success',
+      successMuted: 'bg-success/10',
       warning: 'bg-warning',
+      warningMuted: 'bg-warning/10',
       info: 'bg-info',
+      infoMuted: 'bg-info/10',
       muted: 'bg-muted',
       secondary: 'bg-secondary',
     },
@@ -236,9 +257,13 @@ export const mode: ModeConfig = {
       inverse: 'text-accent-foreground', // White text for purple buttons
       accent: 'text-accent', // Purple text for links/emphasis
       danger: 'text-destructive',
+      dangerOnColor: 'text-destructive-foreground',
       success: 'text-success',
+      successOnColor: 'text-success-foreground',
       warning: 'text-warning',
+      warningOnColor: 'text-warning-foreground',
       info: 'text-info',
+      infoOnColor: 'text-info-foreground',
     },
     border: {
       default: 'border-border',
@@ -247,6 +272,16 @@ export const mode: ModeConfig = {
       danger: 'border-destructive',
       success: 'border-success',
       warning: 'border-warning',
+    },
+    icon: {
+      primary: 'text-foreground',
+      secondary: 'text-card-foreground',
+      muted: 'text-muted-foreground',
+      accent: 'text-accent',
+      danger: 'text-destructive',
+      success: 'text-success',
+      warning: 'text-warning',
+      info: 'text-info',
     },
   },
 
@@ -299,36 +334,20 @@ export const mode: ModeConfig = {
   },
 };
 
-/**
- * Format a label according to current mode
- */
-export function formatLabel(label: string): string {
-  if (mode.labelFormat === 'brackets') {
-    return `[${label.toUpperCase()}]:`;
-  }
-  return label;
-}
+// =============================================================================
+// BACKWARDS COMPATIBILITY ALIASES
+// =============================================================================
+// These alias the terminal theme functions for backwards compatibility
 
 /**
- * Format button text according to current mode
+ * Format a label (alias for formatLabelText from terminal theme)
  */
-export function formatButtonText(text: string): string {
-  if (mode.textTransform === 'uppercase') {
-    return `${mode.buttonPrefix}${text.toUpperCase()}`;
-  }
-  return `${mode.buttonPrefix}${text}`;
-}
+export const formatLabel = formatLabelText;
 
 /**
- * Format card title according to current mode
+ * Format card title (alias for formatCardHeader from terminal theme)
  */
-export function formatCardTitle(title: string, code?: string): string {
-  if (mode.cardHeader === 'bracketed') {
-    const hexCode = code ? `[0x${code}] ` : '';
-    return `[ ${hexCode}${title.toUpperCase()} ]`;
-  }
-  return title;
-}
+export const formatCardTitle = formatCardHeader;
 
 /**
  * Check if current mode is sharp (terminal)
@@ -338,10 +357,10 @@ export function isSharpMode(): boolean {
 }
 
 /**
- * Check if current mode uses rounded corners
+ * Check if current mode uses rounded corners (always false - terminal only)
  */
 export function hasRoundedCorners(): boolean {
-  return CURRENT_THEME !== 'terminal';
+  return false;
 }
 
 // =============================================================================

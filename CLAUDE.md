@@ -33,7 +33,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Fabrk** is a Next.js 16 SaaS boilerplate with 77 UI components, terminal-inspired design, and full-stack features.
 
-**Tech Stack:** Next.js 16 (App Router, React 19) • TypeScript strict • NextAuth v5 • Multi-provider payments (Stripe, Polar, Lemonsqueezy) • Prisma + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 • Custom theme system (3 themes: Terminal, Modern, Soft)
+**Tech Stack:** Next.js 16 (App Router, React 19) • TypeScript strict • NextAuth v5 • Multi-provider payments (Stripe, Polar, Lemonsqueezy) • Prisma + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 • Terminal-only design system (5 CRT color variants: Red, Blue, Green, Amber, Purple)
 
 ---
 
@@ -204,7 +204,7 @@ src/
 │   ├── polar.ts           # Polar client
 │   └── lemonsqueezy/      # Lemonsqueezy client
 └── design-system/
-    └── themes/            # 3 custom themes (Terminal, Modern, Soft)
+    └── themes/            # Terminal theme (5 CRT color variants)
 ```
 
 ### Critical Files
@@ -667,7 +667,7 @@ When adding features: "Does this help ship faster?" If no, delete it.
 ### Design System
 - `docs/08-design/DESIGN_SYSTEM.md` - Complete design system specification
 - `src/app/globals.css` - CSS variables and utilities
-- `src/design-system/themes/` - 3 custom themes (Terminal, Modern, Soft)
+- `src/design-system/themes/` - Terminal theme (5 CRT color variants: Red, Blue, Green, Amber, Purple)
 - `/docs/components/overview` - Component documentation
 
 ### Audit Framework (58 files in `.claude/audit/`)

@@ -39,8 +39,8 @@ const toastVariants = cva(
   {
     variants: {
       variant: {
-        default: 'border bg-background text-foreground',
-        destructive: 'destructive border-destructive bg-destructive text-destructive-foreground',
+        default: `${mode.color.border.default} ${mode.color.bg.base} ${mode.color.text.primary}`,
+        destructive: `destructive ${mode.color.border.danger} ${mode.color.bg.danger} ${mode.color.text.dangerOnColor}`,
       },
     },
     defaultVariants: {
@@ -71,7 +71,16 @@ const ToastAction = React.forwardRef<
   <ToastPrimitives.Action
     ref={ref}
     className={cn(
-      'bg-background hover:bg-secondary focus-visible:ring-primary group-[.destructive]:border-muted/40 group-[.destructive]:hover:border-destructive/30 group-[.destructive]:hover:bg-destructive group-[.destructive]:hover:text-destructive-foreground group-[.destructive]:focus-visible:ring-destructive inline-flex h-8 shrink-0 items-center justify-center border px-4 text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+      'inline-flex h-8 shrink-0 items-center justify-center border px-4 text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none',
+      mode.color.bg.base,
+      `hover:${mode.color.bg.secondary}`,
+      mode.state.focus.ring,
+      `group-[.destructive]:${mode.color.border.danger}/40`,
+      `group-[.destructive]:hover:${mode.color.border.danger}/30`,
+      `group-[.destructive]:hover:${mode.color.bg.danger}`,
+      `group-[.destructive]:hover:${mode.color.text.dangerOnColor}`,
+      mode.state.disabled.cursor,
+      mode.state.disabled.opacity,
       mode.radius,
       className
     )}
@@ -87,7 +96,12 @@ const ToastClose = React.forwardRef<
   <ToastPrimitives.Close
     ref={ref}
     className={cn(
-      'text-foreground/50 hover:text-foreground focus-visible:ring-primary group-[.destructive]:text-destructive group-[.destructive]:hover:text-destructive group-[.destructive]:focus-visible:ring-destructive absolute top-2 right-2 p-2 opacity-0 transition-opacity group-hover:opacity-100 focus-visible:opacity-100 focus-visible:ring-2 focus-visible:outline-none',
+      'absolute top-2 right-2 p-2 opacity-0 transition-opacity group-hover:opacity-100 focus-visible:opacity-100 focus-visible:ring-2 focus-visible:outline-none',
+      `${mode.color.text.primary}/50`,
+      `hover:${mode.color.text.primary}`,
+      mode.state.focus.ring,
+      `group-[.destructive]:${mode.color.text.danger}`,
+      `group-[.destructive]:hover:${mode.color.text.danger}`,
       mode.radius,
       className
     )}
@@ -118,7 +132,7 @@ const ToastDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <ToastPrimitives.Description
     ref={ref}
-    className={cn('text-muted-foreground text-xs', mode.font, className)}
+    className={cn('text-xs', mode.color.text.muted, mode.font, className)}
     {...props}
   />
 ));
