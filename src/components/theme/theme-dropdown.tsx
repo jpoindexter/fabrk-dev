@@ -13,34 +13,44 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { cn } from '@/lib/utils';
 
 import { mode } from '@/design-system';
 
-// Terminal themes (dark CRT + retro light + paper themes)
-const themes = [
-  // Dark CRT themes
-  { id: 'amber', name: 'Amber CRT', preview: '#ffb000' },
-  { id: 'green', name: 'Green CRT', preview: '#33ff66' },
-  { id: 'blue', name: 'Blue CRT', preview: '#55ccff' },
-  { id: 'red', name: 'Red CRT', preview: '#ff6655' },
-  { id: 'purple', name: 'Purple CRT', preview: '#bb88ff' },
-  // Retro light themes
-  { id: 'gameboy', name: 'Game Boy', preview: '#9bbc0f' },
-  { id: 'gbpocket', name: 'GB Pocket', preview: '#8a8a8a' },
-  { id: 'apple2', name: 'Apple II', preview: '#000000' }, // Black background
-  { id: 'c64', name: 'C64 Blue', preview: '#352879' }, // Dark Blue
-  { id: 'vic20', name: 'VIC-20', preview: '#e0ffff' }, // Light Cyan/White
-  { id: 'atari', name: 'Atari 800', preview: '#305070' }, // Atari Blue
-  { id: 'spectrum', name: 'ZX Spectrum', preview: '#ffffff' }, // White
-  { id: 'ibmpc', name: 'IBM PC', preview: '#000000' }, // Black background
-  { id: 'light-green', name: 'Light Green', preview: '#00aa33' },
-  { id: 'light-amber', name: 'Light Amber', preview: '#cc8800' },
-  // Paper themes
-  { id: 'bw', name: 'Black & White', preview: '#ffffff' },
-] as const;
+// Grouped themes for organized dropdown
+const themeGroups = {
+  'Standard CRT': [
+    { id: 'amber', name: 'Amber CRT', preview: '#ffb000' },
+    { id: 'blue', name: 'Blue CRT', preview: '#55ccff' },
+    { id: 'green', name: 'Green CRT', preview: '#33ff66' },
+    { id: 'purple', name: 'Purple CRT', preview: '#bb88ff' },
+    { id: 'red', name: 'Red CRT', preview: '#ff6655' },
+  ],
+  'Retro Computer': [
+    { id: 'apple2', name: 'Apple II', preview: '#000000' },
+    { id: 'atari', name: 'Atari 800', preview: '#305070' },
+    { id: 'c64', name: 'C64 Blue', preview: '#352879' },
+    { id: 'ibmpc', name: 'IBM PC', preview: '#000000' },
+    { id: 'spectrum', name: 'ZX Spectrum', preview: '#ffffff' },
+    { id: 'vic20', name: 'VIC-20', preview: '#e0ffff' },
+  ],
+  Handheld: [
+    { id: 'gameboy', name: 'Game Boy', preview: '#9bbc0f' },
+    { id: 'gbpocket', name: 'GB Pocket', preview: '#8a8a8a' },
+  ],
+  'Light / Paper': [
+    { id: 'bw', name: 'Black & White', preview: '#ffffff' },
+    { id: 'light-amber', name: 'Light Amber', preview: '#cc8800' },
+    { id: 'light-green', name: 'Light Green', preview: '#00aa33' },
+  ],
+} as const;
+
+// Flattened list for type safety and easy lookup
+const themes = Object.values(themeGroups).flat();
 
 export type ColorTheme = (typeof themes)[number]['id'];
 
@@ -147,23 +157,31 @@ export function ThemeDropdown() {
           <span className="hidden sm:inline">{currentThemeName}</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className={cn('w-48', mode.radius)}>
-        {themes.map((theme) => (
-          <DropdownMenuItem
-            key={theme.id}
-            onClick={() => handleChange(theme.id)}
-            className={cn(
-              'font-semibold',
-              currentTheme === theme.id && 'bg-primary text-primary-foreground'
-            )}
-          >
-            <div
-              className={cn('mr-2 h-4 w-4 border', mode.radius)}
-              style={{ backgroundColor: theme.preview }}
-            />
-            {theme.name}
-            {currentTheme === theme.id && <span className="ml-auto text-xs">✓</span>}
-          </DropdownMenuItem>
+      <DropdownMenuContent align="end" className={cn('w-56', mode.radius)}>
+        {Object.entries(themeGroups).map(([groupName, groupThemes], index) => (
+          <div key={groupName}>
+            {index > 0 && <DropdownMenuSeparator />}
+            <DropdownMenuLabel className="text-muted-foreground text-xs tracking-wider uppercase">
+              {groupName}
+            </DropdownMenuLabel>
+            {groupThemes.map((theme) => (
+              <DropdownMenuItem
+                key={theme.id}
+                onClick={() => handleChange(theme.id)}
+                className={cn(
+                  'font-semibold',
+                  currentTheme === theme.id && 'bg-primary text-primary-foreground'
+                )}
+              >
+                <div
+                  className={cn('mr-2 h-4 w-4 border', mode.radius)}
+                  style={{ backgroundColor: theme.preview }}
+                />
+                {theme.name}
+                {currentTheme === theme.id && <span className="ml-auto text-xs">✓</span>}
+              </DropdownMenuItem>
+            ))}
+          </div>
         ))}
       </DropdownMenuContent>
     </DropdownMenu>
