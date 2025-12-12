@@ -25,6 +25,7 @@ import { mode } from '@/design-system';
 import { Card, CardHeader, CardContent, Badge as CardBadge } from '@/components/ui/card';
 import { HeroDashboardPreview } from './hero-dashboard-preview';
 import { PRICING } from '@/data/landing';
+import { TypeWriter } from '@/components/ui/typewriter';
 
 const techStack = [
   { name: 'NEXT.JS', path: siNextdotjs.path },
@@ -89,7 +90,13 @@ export function HeroSection() {
                       mode.color.text.muted
                     )}
                   >
-                    Ship your product this weekend not next quarter.
+                    <TypeWriter
+                      text="Ship your product this weekend not next quarter."
+                      delay={0.5}
+                      speed={40}
+                      showCursor
+                      cursorAtEnd
+                    />
                   </p>
                 </div>
 
@@ -125,7 +132,7 @@ export function HeroSection() {
                     asChild
                     className={cn('text-xs', mode.radius, mode.font)}
                   >
-                    <Link href="/library">Explore 31 Interactive Demos</Link>
+                    <Link href="/library">Explore Interactive Demos</Link>
                   </Button>
                 </div>
               </CardContent>

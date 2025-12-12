@@ -3,12 +3,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 interface TypeWriterProps {
   text: string;
   delay?: number;
   speed?: number;
   showCursor?: boolean;
+  cursorAtEnd?: boolean;
 }
 
 /**
@@ -16,7 +18,13 @@ interface TypeWriterProps {
  * Animated typewriter effect that triggers on scroll
  * Used for terminal-style text animations
  */
-export function TypeWriter({ text, delay = 0, speed = 30, showCursor = false }: TypeWriterProps) {
+export function TypeWriter({
+  text,
+  delay = 0,
+  speed = 30,
+  showCursor = false,
+  cursorAtEnd = false,
+}: TypeWriterProps) {
   const [displayText, setDisplayText] = useState('');
   const [started, setStarted] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
@@ -48,14 +56,16 @@ export function TypeWriter({ text, delay = 0, speed = 30, showCursor = false }: 
     return () => clearInterval(timer);
   }, [started, text, speed]);
 
+  const shouldShowCursor = showCursor && (cursorAtEnd || displayText.length < text.length);
+
   return (
     <span ref={ref}>
       {displayText}
-      {showCursor && displayText.length < text.length && (
+      {shouldShowCursor && (
         <motion.span
           animate={{ opacity: [1, 0, 1] }}
           transition={{ duration: 0.8, repeat: Infinity }}
-          className={mode.color.text.accent}
+          className={cn('inline-block w-[0.5em]', mode.color.text.accent)}
         >
           █
         </motion.span>
