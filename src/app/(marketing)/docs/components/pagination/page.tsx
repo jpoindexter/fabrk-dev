@@ -240,27 +240,27 @@ export default function PaginationPage() {
           code: `<Pagination>
   <PaginationContent>
     <PaginationItem>
-      <PaginationLink href="#" size="icon">
+      <PaginationLink href="#" size="icon" aria-label="Page 1">
         1
       </PaginationLink>
     </PaginationItem>
     <PaginationItem>
-      <PaginationLink href="#" size="icon" isActive>
+      <PaginationLink href="#" size="icon" isActive aria-label="Page 2, current page">
         2
       </PaginationLink>
     </PaginationItem>
     <PaginationItem>
-      <PaginationLink href="#" size="icon">
+      <PaginationLink href="#" size="icon" aria-label="Page 3">
         3
       </PaginationLink>
     </PaginationItem>
     <PaginationItem>
-      <PaginationLink href="#" size="icon">
+      <PaginationLink href="#" size="icon" aria-label="Page 4">
         4
       </PaginationLink>
     </PaginationItem>
     <PaginationItem>
-      <PaginationLink href="#" size="icon">
+      <PaginationLink href="#" size="icon" aria-label="Page 5">
         5
       </PaginationLink>
     </PaginationItem>
@@ -270,27 +270,27 @@ export default function PaginationPage() {
             <Pagination>
               <PaginationContent>
                 <PaginationItem>
-                  <PaginationLink href="#" size="icon">
+                  <PaginationLink href="#" size="icon" aria-label="Page 1">
                     1
                   </PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink href="#" size="icon" isActive>
+                  <PaginationLink href="#" size="icon" isActive aria-label="Page 2, current page">
                     2
                   </PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink href="#" size="icon">
+                  <PaginationLink href="#" size="icon" aria-label="Page 3">
                     3
                   </PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink href="#" size="icon">
+                  <PaginationLink href="#" size="icon" aria-label="Page 4">
                     4
                   </PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink href="#" size="icon">
+                  <PaginationLink href="#" size="icon" aria-label="Page 5">
                     5
                   </PaginationLink>
                 </PaginationItem>

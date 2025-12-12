@@ -163,7 +163,7 @@
      ============================================ */
 
   [data-slot='alert-dialog-overlay'] {
-    background-color: rgba(0, 0, 0, 0.8) !important;
+    background-color: oklch(from var(--background) 0% c h / 0.8) !important;
   }
 
   [data-sonner-toast] {
@@ -316,15 +316,15 @@
   --status-away: 75% 0.26 60;
 
   /* Code syntax highlighting (Prism) */
-  --code-fg: #33ff66;
-  --code-bg: #001a0a;
-  --code-comment: #00aa44;
-  --code-string: #44ff77;
-  --code-punctuation: #22dd55;
-  --code-number: #00cc44;
-  --code-keyword: #00ff55;
-  --code-function: #66ff88;
-  --code-selector: #33ff66;
+  --code-fg: oklch(84% 0.13 134);
+  --code-bg: oklch(19% 0.02 144);
+  --code-comment: oklch(62% 0.09 136);
+  --code-string: oklch(85% 0.11 136);
+  --code-punctuation: oklch(76% 0.12 134);
+  --code-number: oklch(71% 0.12 134);
+  --code-keyword: oklch(84% 0.14 133);
+  --code-function: oklch(86% 0.1 137);
+  --code-selector: oklch(84% 0.13 134);
 }
 
 /* ============================================
@@ -345,13 +345,13 @@
   --secondary-foreground: 5% 0.01 0;
   --muted: 18% 0.05 0;
   --muted-foreground: 70% 0.24 0;
-  --accent: 88% 0.3 0;
+  --accent: 60% 0.25 0; /* Darkened from 88% */
   --accent-foreground: 5% 0.01 0;
   --destructive: 85% 0.3 0;
   --destructive-foreground: 5% 0.01 0;
   --border: 42% 0.2 0;
   --input: 42% 0.2 0;
-  --ring: 88% 0.3 0;
+  --ring: 60% 0.25 0; /* Darkened from 88% */
 
   /* Status colors - all monochrome red */
   --success: 75% 0.28 0;
@@ -399,15 +399,15 @@
   --color-status-info-bg: var(--info);
 
   /* Code syntax highlighting (Prism) */
-  --code-fg: #ff5544;
-  --code-bg: #140000;
-  --code-comment: #882211;
-  --code-string: #ff7766;
-  --code-punctuation: #cc3322;
-  --code-number: #dd4433;
-  --code-keyword: #ff6655;
-  --code-function: #ff8866;
-  --code-selector: #ff5544;
+  --code-fg: oklch(67% 0.09 81);
+  --code-bg: oklch(12% 0.02 80);
+  --code-comment: oklch(41% 0.07 83);
+  --code-string: oklch(72% 0.07 81);
+  --code-punctuation: oklch(55% 0.09 82);
+  --code-number: oklch(60% 0.09 81);
+  --code-keyword: oklch(70% 0.08 80);
+  --code-function: oklch(74% 0.08 88);
+  --code-selector: oklch(67% 0.09 81);
 }
 
 /* Blue Theme - Monochrome Blue CRT (hue 200) */
@@ -424,13 +424,13 @@
   --secondary-foreground: 4% 0.01 200;
   --muted: 18% 0.05 200;
   --muted-foreground: 70% 0.18 200;
-  --accent: 85% 0.24 200;
+  --accent: 60% 0.2 200; /* Darkened from 85% */
   --accent-foreground: 4% 0.01 200;
   --destructive: 75% 0.22 200;
   --destructive-foreground: 4% 0.01 200;
   --border: 45% 0.16 200;
   --input: 45% 0.16 200;
-  --ring: 85% 0.24 200;
+  --ring: 60% 0.2 200; /* Darkened from 85% */
 
   /* Status colors - all monochrome blue */
   --success: 75% 0.22 200;
@@ -478,15 +478,15 @@
   --color-status-info-bg: var(--info);
 
   /* Code syntax highlighting (Prism) */
-  --code-fg: #55ccff;
-  --code-bg: #000a14;
-  --code-comment: #3388bb;
-  --code-string: #66ddff;
-  --code-punctuation: #44aadd;
-  --code-number: #44bbee;
-  --code-keyword: #55ccff;
-  --code-function: #77eeff;
-  --code-selector: #55ccff;
+  --code-fg: oklch(82% 0.1 274);
+  --code-bg: oklch(14% 0.02 278);
+  --code-comment: oklch(62% 0.09 278);
+  --code-string: oklch(86% 0.08 269);
+  --code-punctuation: oklch(72% 0.09 276);
+  --code-number: oklch(77% 0.09 274);
+  --code-keyword: oklch(82% 0.1 274);
+  --code-function: oklch(89% 0.06 261);
+  --code-selector: oklch(82% 0.1 274);
 }
 
 /* Green Theme - Monochrome Green CRT (hue 145) */
@@ -503,13 +503,13 @@
   --secondary-foreground: 5% 0.01 145;
   --muted: 18% 0.05 145;
   --muted-foreground: 70% 0.22 145;
-  --accent: 90% 0.3 145;
+  --accent: 60% 0.25 145; /* Darkened from 90% */
   --accent-foreground: 5% 0.01 145;
   --destructive: 80% 0.28 145;
   --destructive-foreground: 5% 0.01 145;
   --border: 40% 0.18 145;
   --input: 40% 0.18 145;
-  --ring: 90% 0.3 145;
+  --ring: 60% 0.25 145; /* Darkened from 90% */
 
   /* Semantic mappings */
   --color-bg-canvas: var(--background);
@@ -557,15 +557,15 @@
   --chart-9: 68% 0.23 145;
 
   /* Code syntax highlighting (Prism) */
-  --code-fg: #33ff66;
-  --code-bg: #001a0a;
-  --code-comment: #00aa44;
-  --code-string: #44ff77;
-  --code-punctuation: #22dd55;
-  --code-number: #00cc44;
-  --code-keyword: #00ff55;
-  --code-function: #66ff88;
-  --code-selector: #33ff66;
+  --code-fg: oklch(84% 0.13 134);
+  --code-bg: oklch(19% 0.02 144);
+  --code-comment: oklch(62% 0.09 136);
+  --code-string: oklch(85% 0.11 136);
+  --code-punctuation: oklch(76% 0.12 134);
+  --code-number: oklch(71% 0.12 134);
+  --code-keyword: oklch(84% 0.14 133);
+  --code-function: oklch(86% 0.1 137);
+  --code-selector: oklch(84% 0.13 134);
 }
 
 /* Amber Theme - Monochrome Amber CRT (hue 50) */
@@ -582,13 +582,13 @@
   --secondary-foreground: 5% 0.01 50;
   --muted: 18% 0.05 50;
   --muted-foreground: 75% 0.2 50;
-  --accent: 90% 0.28 50;
+  --accent: 60% 0.2 50; /* Darkened from 90% */
   --accent-foreground: 5% 0.01 50;
   --destructive: 82% 0.28 50;
   --destructive-foreground: 5% 0.01 50;
   --border: 40% 0.15 50;
   --input: 40% 0.15 50;
-  --ring: 90% 0.28 50;
+  --ring: 60% 0.2 50; /* Darkened from 90% */
 
   /* Semantic mappings */
   --color-bg-canvas: var(--background);
@@ -636,15 +636,15 @@
   --chart-9: 68% 0.19 50;
 
   /* Code syntax highlighting (Prism) */
-  --code-fg: #ffbb00;
-  --code-bg: #0d0a00;
-  --code-comment: #aa8800;
-  --code-string: #ffcc33;
-  --code-punctuation: #ff9900;
-  --code-number: #ffaa00;
-  --code-keyword: #ff8800;
-  --code-function: #ffdd44;
-  --code-selector: #ffbb00;
+  --code-fg: oklch(81% 0.14 108);
+  --code-bg: oklch(14% 0.02 113);
+  --code-comment: oklch(62% 0.11 110);
+  --code-string: oklch(84% 0.14 110);
+  --code-punctuation: oklch(75% 0.13 102);
+  --code-number: oklch(78% 0.13 105);
+  --code-keyword: oklch(73% 0.13 98);
+  --code-function: oklch(87% 0.14 112);
+  --code-selector: oklch(81% 0.14 108);
 }
 
 /* Purple Theme - Monochrome Purple CRT (hue 300) */
@@ -661,13 +661,13 @@
   --secondary-foreground: 5% 0.01 300;
   --muted: 12% 0.03 300;
   --muted-foreground: 60% 0.18 300;
-  --accent: 75% 0.22 300;
+  --accent: 60% 0.2 300; /* Darkened from 75% */
   --accent-foreground: 5% 0.01 300;
   --destructive: 82% 0.28 300;
   --destructive-foreground: 5% 0.01 300;
   --border: 50% 0.2 300; /* Increased from 30% for better visibility */
   --input: 50% 0.2 300; /* Increased from 30% for better visibility */
-  --ring: 70% 0.25 300;
+  --ring: 60% 0.2 300; /* Darkened from 70% */
 
   --color-bg-canvas: var(--background);
   --color-bg-surface: var(--card);
@@ -693,15 +693,15 @@
   --chart-9: 68% 0.19 300;
 
   /* Code syntax highlighting (Prism) */
-  --code-fg: #bb88ff;
-  --code-bg: #0a001a;
-  --code-comment: #6644aa;
-  --code-string: #cc99ff;
-  --code-punctuation: #9966dd;
-  --code-number: #aa77ee;
-  --code-keyword: #cc88ff;
-  --code-function: #ddaaff;
-  --code-selector: #bb88ff;
+  --code-fg: oklch(76% 0.13 294);
+  --code-bg: oklch(14% 0.05 294);
+  --code-comment: oklch(52% 0.12 293);
+  --code-string: oklch(80% 0.11 295);
+  --code-punctuation: oklch(66% 0.13 294);
+  --code-number: oklch(71% 0.13 294);
+  --code-keyword: oklch(78% 0.13 296);
+  --code-function: oklch(84% 0.09 296);
+  --code-selector: oklch(76% 0.13 294);
 }
 
 /* Light Green Theme - Terminal with light background (hue 145) */
@@ -746,15 +746,15 @@
   --chart-9: 36% 0.23 145;
 
   /* Code syntax highlighting (Prism) */
-  --code-fg: #006622;
-  --code-bg: #f0fff5;
-  --code-comment: #448855;
-  --code-string: #005511;
-  --code-punctuation: #337744;
-  --code-number: #228833;
-  --code-keyword: #007722;
-  --code-function: #004411;
-  --code-selector: #006622;
+  --code-fg: oklch(43% 0.07 135);
+  --code-bg: oklch(98% 0.01 225);
+  --code-comment: oklch(55% 0.05 140);
+  --code-string: oklch(37% 0.07 132);
+  --code-punctuation: oklch(50% 0.05 139);
+  --code-number: oklch(53% 0.08 134);
+  --code-keyword: oklch(48% 0.08 133);
+  --code-function: oklch(32% 0.05 134);
+  --code-selector: oklch(43% 0.07 135);
 }
 
 /* Light Amber Theme - Terminal with light background (hue 50) */
@@ -799,15 +799,15 @@
   --chart-9: 34% 0.19 50;
 
   /* Code syntax highlighting (Prism) */
-  --code-fg: #664400;
-  --code-bg: #fffbf0;
-  --code-comment: #886622;
-  --code-string: #553300;
-  --code-punctuation: #775511;
-  --code-number: #664400;
-  --code-keyword: #775500;
-  --code-function: #442200;
-  --code-selector: #664400;
+  --code-fg: oklch(40% 0.07 106);
+  --code-bg: oklch(98% 0.01 193);
+  --code-comment: oklch(52% 0.08 108);
+  --code-string: oklch(35% 0.06 103);
+  --code-punctuation: oklch(46% 0.07 107);
+  --code-number: oklch(40% 0.07 106);
+  --code-keyword: oklch(46% 0.08 107);
+  --code-function: oklch(29% 0.05 100);
+  --code-selector: oklch(40% 0.07 106);
 }
 
 /* Game Boy Theme - Authentic DMG-01 LCD green (hue 85) */
@@ -852,15 +852,15 @@
   --chart-9: 42% 0.14 85;
 
   /* Code syntax highlighting - authentic Game Boy palette */
-  --code-fg: #0f380f;
-  --code-bg: #9bbc0f;
-  --code-comment: #306230;
-  --code-string: #0f380f;
-  --code-punctuation: #1a4d1a;
-  --code-number: #0f380f;
-  --code-keyword: #0f380f;
-  --code-function: #1a4d1a;
-  --code-selector: #0f380f;
+  --code-fg: oklch(29% 0.04 132);
+  --code-bg: oklch(72% 0.13 120);
+  --code-comment: oklch(43% 0.05 133);
+  --code-string: oklch(29% 0.04 132);
+  --code-punctuation: oklch(36% 0.05 132);
+  --code-number: oklch(29% 0.04 132);
+  --code-keyword: oklch(29% 0.04 132);
+  --code-function: oklch(36% 0.05 132);
+  --code-selector: oklch(29% 0.04 132);
 }
 
 /* C64 Theme - Commodore 64 blue (hue 280) */
@@ -905,15 +905,15 @@
   --chart-9: 68% 0.21 280;
 
   /* Code syntax highlighting - C64 blue */
-  --code-fg: #a8a0e0;
-  --code-bg: #352879;
-  --code-comment: #7c70da;
-  --code-string: #8e80e0;
-  --code-punctuation: #9e90e0;
-  --code-number: #becefa;
-  --code-keyword: #a8a0e0;
-  --code-function: #becefa;
-  --code-selector: #a8a0e0;
+  --code-fg: oklch(76% 0.08 289);
+  --code-bg: oklch(38% 0.11 290);
+  --code-comment: oklch(65% 0.13 290);
+  --code-string: oklch(69% 0.12 290);
+  --code-punctuation: oklch(72% 0.1 290);
+  --code-number: oklch(87% 0.07 283);
+  --code-keyword: oklch(76% 0.08 289);
+  --code-function: oklch(87% 0.07 283);
+  --code-selector: oklch(76% 0.08 289);
 }
 
 /* Game Boy Pocket Theme - Silver/gray monochrome LCD */
@@ -958,15 +958,15 @@
   --chart-9: 48% 0.01 0;
 
   /* Code syntax highlighting - grayscale */
-  --code-fg: #2a2a2a;
-  --code-bg: #e8e8e8;
-  --code-comment: #5a5a5a;
-  --code-string: #2a2a2a;
-  --code-punctuation: #3a3a3a;
-  --code-number: #2a2a2a;
-  --code-keyword: #2a2a2a;
-  --code-function: #3a3a3a;
-  --code-selector: #2a2a2a;
+  --code-fg: oklch(28% 0 261);
+  --code-bg: oklch(93% 0.01 261);
+  --code-comment: oklch(47% 0.01 261);
+  --code-string: oklch(28% 0 261);
+  --code-punctuation: oklch(35% 0 261);
+  --code-number: oklch(28% 0 261);
+  --code-keyword: oklch(28% 0 261);
+  --code-function: oklch(35% 0 261);
+  --code-selector: oklch(28% 0 261);
 }
 
 /* VIC-20 Theme - Commodore VIC-20 cyan (hue 180) */
@@ -1011,15 +1011,15 @@
   --chart-9: 42% 0.08 180;
 
   /* Code syntax highlighting - cyan */
-  --code-fg: #1a5a5a;
-  --code-bg: #d0f0f0;
-  --code-comment: #3a7a7a;
-  --code-string: #1a5a5a;
-  --code-punctuation: #2a6a6a;
-  --code-number: #1a5a5a;
-  --code-keyword: #1a5a5a;
-  --code-function: #2a6a6a;
-  --code-selector: #1a5a5a;
+  --code-fg: oklch(43% 0.03 247);
+  --code-bg: oklch(93% 0.02 254);
+  --code-comment: oklch(54% 0.03 248);
+  --code-string: oklch(43% 0.03 247);
+  --code-punctuation: oklch(48% 0.03 248);
+  --code-number: oklch(43% 0.03 247);
+  --code-keyword: oklch(43% 0.03 247);
+  --code-function: oklch(48% 0.03 248);
+  --code-selector: oklch(43% 0.03 247);
 }
 
 /* Atari 800 Theme - Authentic Blue background (Hue 220) */
@@ -1064,15 +1064,15 @@
   --chart-9: 72% 0.21 220;
 
   /* Code syntax highlighting - Atari Blue */
-  --code-fg: #bfdfff;
-  --code-bg: #305070;
-  --code-comment: #7090b0;
-  --code-string: #90c0e0;
-  --code-punctuation: #80a0c0;
-  --code-number: #ffffff;
-  --code-keyword: #bfdfff;
-  --code-function: #ffffff;
-  --code-selector: #bfdfff;
+  --code-fg: oklch(90% 0.06 277);
+  --code-bg: oklch(44% 0.06 280);
+  --code-comment: oklch(65% 0.06 279);
+  --code-string: oklch(80% 0.06 275);
+  --code-punctuation: oklch(70% 0.06 278);
+  --code-number: oklch(100% 0.01 261);
+  --code-keyword: oklch(90% 0.06 277);
+  --code-function: oklch(100% 0.01 261);
+  --code-selector: oklch(90% 0.06 277);
 }
 
 /* ZX Spectrum Theme - Sinclair ZX Spectrum bright (hue 250) */
@@ -1117,15 +1117,15 @@
   --chart-9: 39% 0.08 250;
 
   /* Code syntax highlighting - bright spectrum */
-  --code-fg: #1a1a5a;
-  --code-bg: #f5f5ff;
-  --code-comment: #4a4a7a;
-  --code-string: #1a1a5a;
-  --code-punctuation: #2a2a6a;
-  --code-number: #1a1a5a;
-  --code-keyword: #1a1a5a;
-  --code-function: #2a2a6a;
-  --code-selector: #1a1a5a;
+  --code-fg: oklch(30% 0.09 288);
+  --code-bg: oklch(97% 0.02 275);
+  --code-comment: oklch(45% 0.07 288);
+  --code-string: oklch(30% 0.09 288);
+  --code-punctuation: oklch(36% 0.09 288);
+  --code-number: oklch(30% 0.09 288);
+  --code-keyword: oklch(30% 0.09 288);
+  --code-function: oklch(36% 0.09 288);
+  --code-selector: oklch(30% 0.09 288);
 }
 
 /* ============================================
@@ -1184,15 +1184,15 @@
   --radius: 0rem;
 
   /* Syntax highlighting - Pure B&W */
-  --code-bg: #ffffff;
-  --code-fg: #000000;
-  --code-comment: #000000;
-  --code-string: #000000;
-  --code-punctuation: #000000;
-  --code-number: #000000;
-  --code-keyword: #000000;
-  --code-function: #000000;
-  --code-selector: #000000;
+  --code-bg: oklch(100% 0.01 261);
+  --code-fg: oklch(0% 0 0);
+  --code-comment: oklch(0% 0 0);
+  --code-string: oklch(0% 0 0);
+  --code-punctuation: oklch(0% 0 0);
+  --code-number: oklch(0% 0 0);
+  --code-keyword: oklch(0% 0 0);
+  --code-function: oklch(0% 0 0);
+  --code-selector: oklch(0% 0 0);
 }
 
 /* ============================================

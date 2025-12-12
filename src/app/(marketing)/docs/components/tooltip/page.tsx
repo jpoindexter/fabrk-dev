@@ -58,7 +58,7 @@ export default function TooltipPage() {
           code: `<TooltipProvider>
   <Tooltip>
     <TooltipTrigger asChild>
-      <Button variant="outline" size="icon">
+      <Button variant="outline" size="icon" aria-label="Add new item">
         <Plus className="h-4 w-4" />
       </Button>
     </TooltipTrigger>
@@ -88,7 +88,7 @@ export default function TooltipPage() {
           code: `<TooltipProvider>
   <Tooltip>
     <TooltipTrigger asChild>
-      <Button variant="destructive" size="icon">
+      <Button variant="destructive" size="icon" aria-label="Delete permanently">
         <Trash2 className="h-4 w-4" />
       </Button>
     </TooltipTrigger>
@@ -175,7 +175,7 @@ export default function TooltipPage() {
   <div className="flex gap-2">
     <Tooltip>
       <TooltipTrigger asChild>
-        <Button variant="outline" size="icon">
+        <Button variant="outline" size="icon" aria-label="Edit">
           <Edit className="h-4 w-4" />
         </Button>
       </TooltipTrigger>
@@ -185,12 +185,22 @@ export default function TooltipPage() {
     </Tooltip>
     <Tooltip>
       <TooltipTrigger asChild>
-        <Button variant="outline" size="icon">
+        <Button variant="outline" size="icon" aria-label="Delete">
           <Trash2 className="h-4 w-4" />
         </Button>
       </TooltipTrigger>
       <TooltipContent>
         <p>Delete</p>
+      </TooltipContent>
+    </Tooltip>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button variant="outline" size="icon" aria-label="Settings">
+          <Settings className="h-4 w-4" />
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent>
+        <p>Settings</p>
       </TooltipContent>
     </Tooltip>
   </div>

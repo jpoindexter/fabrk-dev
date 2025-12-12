@@ -23,7 +23,7 @@ export default function NotificationBadgePage() {
           </NotificationBadge>
         ),
         code: `<NotificationBadge count={5}>
-  <Button variant="outline" size="icon">
+  <Button variant="outline" size="icon" aria-label="Notifications">
     <Bell className="h-5 w-5" />
   </Button>
 </NotificationBadge>`,
@@ -52,19 +52,19 @@ export default function NotificationBadgePage() {
             </div>
           ),
           code: `<NotificationBadge count={3}>
-  <Button variant="outline" size="icon">
+  <Button variant="outline" size="icon" aria-label="Mail">
     <Mail className="h-5 w-5" />
   </Button>
 </NotificationBadge>
 
 <NotificationBadge count={25}>
-  <Button variant="outline" size="icon">
+  <Button variant="outline" size="icon" aria-label="Shopping cart">
     <ShoppingCart className="h-5 w-5" />
   </Button>
 </NotificationBadge>
 
 <NotificationBadge count={150} max={99}>
-  <Button variant="outline" size="icon">
+  <Button variant="outline" size="icon" aria-label="Messages">
     <MessageSquare className="h-5 w-5" />
   </Button>
 </NotificationBadge>`,
@@ -97,25 +97,25 @@ export default function NotificationBadgePage() {
             </div>
           ),
           code: `<NotificationBadge count={3} variant="primary">
-  <Button variant="outline" size="icon">
+  <Button variant="outline" size="icon" aria-label="Primary notifications">
     <Bell className="h-5 w-5" />
   </Button>
 </NotificationBadge>
 
 <NotificationBadge count={5} variant="destructive">
-  <Button variant="outline" size="icon">
+  <Button variant="outline" size="icon" aria-label="Urgent notifications">
     <Bell className="h-5 w-5" />
   </Button>
 </NotificationBadge>
 
 <NotificationBadge count={2} variant="success">
-  <Button variant="outline" size="icon">
+  <Button variant="outline" size="icon" aria-label="Success notifications">
     <Bell className="h-5 w-5" />
   </Button>
 </NotificationBadge>
 
 <NotificationBadge count={7} variant="warning">
-  <Button variant="outline" size="icon">
+  <Button variant="outline" size="icon" aria-label="Warning notifications">
     <Bell className="h-5 w-5" />
   </Button>
 </NotificationBadge>`,
@@ -232,13 +232,13 @@ export default function NotificationBadgePage() {
             </div>
           ),
           code: `<NotificationBadge count={3} pulse>
-  <Button variant="outline" size="icon">
+  <Button variant="outline" size="icon" aria-label="Notifications with pulse">
     <Bell className="h-5 w-5" />
   </Button>
 </NotificationBadge>
 
 <NotificationBadge dot variant="destructive" pulse>
-  <Button variant="outline" size="icon">
+  <Button variant="outline" size="icon" aria-label="Mail with pulse">
     <Mail className="h-5 w-5" />
   </Button>
 </NotificationBadge>`,
@@ -262,14 +262,14 @@ export default function NotificationBadgePage() {
           ),
           code: `// Shows "0"
 <NotificationBadge count={0} showZero>
-  <Button variant="outline" size="icon">
+  <Button variant="outline" size="icon" aria-label="Notifications showing zero">
     <Bell className="h-5 w-5" />
   </Button>
 </NotificationBadge>
 
 // Hidden when count is 0
 <NotificationBadge count={0}>
-  <Button variant="outline" size="icon">
+  <Button variant="outline" size="icon" aria-label="Mail hidden when zero">
     <Mail className="h-5 w-5" />
   </Button>
 </NotificationBadge>`,
