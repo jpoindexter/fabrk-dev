@@ -17,6 +17,7 @@ import localFont from 'next/font/local';
 import { generateOrganizationSchema, generateProductSchema } from '@/lib/metadata';
 import { TerminalBackground } from '@/components/shared/terminal-background';
 import { ThemeScript } from '@/design-system/providers';
+import { MonitorEffectScript } from '@/components/theme/monitor-effect-script';
 import './globals.css';
 import './typography.css';
 import '@/lib/dev-validation';
@@ -149,6 +150,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <head>
         <ThemeScript defaultColorTheme="green" storageKeyPrefix="fabrk-theme" />
+        <MonitorEffectScript />
         {/* Google Consent Mode v2 - Must load BEFORE GTM */}
         <script
           dangerouslySetInnerHTML={{
