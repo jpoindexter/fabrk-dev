@@ -116,6 +116,9 @@ export function SiteNavigation() {
           {/* Theme + CTA Buttons */}
           <div className="flex items-center gap-2">
             <ThemeDropdown />
+            <Button variant="outline" asChild className={cn(mode.radius, mode.font, 'text-xs')}>
+              <Link href="/library">&gt; VIEW LIBRARY</Link>
+            </Button>
             <Button asChild className={cn(mode.radius, mode.font, 'text-xs')}>
               <Link href="/#pricing">&gt; GET STARTED</Link>
             </Button>
@@ -191,7 +194,12 @@ export function SiteNavigation() {
                     [ACTIONS]:
                   </span>
                   <SheetClose asChild>
-                    <Button className={cn(mode.radius, mode.font, 'w-full text-xs')} asChild>
+                    <Button asChild size="sm" className={cn(mode.radius, mode.font)}>
+                      <Link href="/library">&gt; VIEW LIBRARY</Link>
+                    </Button>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <Button className={cn(mode.radius, mode.font, 'mt-4 w-full text-xs')} asChild>
                       <Link href="/#pricing">&gt; GET STARTED</Link>
                     </Button>
                   </SheetClose>
