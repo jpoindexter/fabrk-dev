@@ -21,6 +21,10 @@ import {
   Layout,
   Sparkles,
   FormInput,
+  BookOpen,
+  Wrench,
+  Database,
+  Palette,
 } from 'lucide-react';
 
 export interface TemplateNavItem {
@@ -38,6 +42,39 @@ export interface TemplateNavSection {
 }
 
 export const templatesNavigation: TemplateNavSection[] = [
+  {
+    title: 'Getting Started',
+    id: 'getting-started',
+    href: '/library/docs',
+    icon: BookOpen,
+    items: [
+      {
+        title: 'Getting Started',
+        href: '/library/docs/getting-started',
+        icon: Rocket,
+      },
+      {
+        title: 'NextAuth Integration',
+        href: '/library/docs/integration/nextauth',
+        icon: Lock,
+      },
+      {
+        title: 'Prisma Integration',
+        href: '/library/docs/integration/prisma',
+        icon: Database,
+      },
+      {
+        title: 'Customization Guide',
+        href: '/library/docs/customization',
+        icon: Palette,
+      },
+      {
+        title: 'Troubleshooting',
+        href: '/library/docs/troubleshooting',
+        icon: Wrench,
+      },
+    ],
+  },
   {
     title: 'AI Tools',
     id: 'ai-tools',
