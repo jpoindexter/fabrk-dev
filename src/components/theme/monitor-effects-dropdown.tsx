@@ -51,14 +51,30 @@ export function MonitorEffectsDropdown() {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
 
-    // Load saved effect
-    const saved = localStorage.getItem('monitor-preset') as MonitorEffect;
-    if (saved && effects.some((e) => e.id === saved)) {
-      setActiveEffect(saved);
-      applyEffect(saved);
-    } else {
-      setActiveEffect('none');
-    }
+    const loadSavedEffect = () => {
+      const saved = localStorage.getItem('monitor-preset') as MonitorEffect;
+      if (saved && effects.some((e) => e.id === saved)) {
+        setActiveEffect(saved);
+        // Don't call applyEffect here if it's just syncing state,
+        // unless we want to enforce it. But applyEffect adds classes.
+        // If another component set the class, we just want to update UI.
+        // But if we are in a different tab/window, we need to apply.
+        // For same-window sync via custom event, the class is already set.
+        if (document.documentElement.classList.contains(`effect-${saved}`)) {
+          // Class already applied by other component
+        } else {
+          applyEffect(saved);
+        }
+      } else {
+        setActiveEffect('none');
+      }
+    };
+
+    loadSavedEffect();
+
+    // Listen for storage events (cross-tab) and custom local events
+    window.addEventListener('storage', loadSavedEffect);
+    return () => window.removeEventListener('storage', loadSavedEffect);
   }, []);
 
   const handleSelect = (effectId: MonitorEffect) => {
@@ -70,7 +86,7 @@ export function MonitorEffectsDropdown() {
     // User can still manually change theme afterwards
     switch (effectId) {
       case 'lcd':
-        setColorTheme('gameboy'); // Authentic green dot matrix
+        setColorTheme('gbpocket'); // Authentic green dot matrix
         break;
       case 'crt':
         setColorTheme('green'); // Classic green phosphor
