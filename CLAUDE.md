@@ -94,6 +94,38 @@ Follow these text casing rules for consistent terminal aesthetic:
 <h2>Building Your SaaS</h2>  {/* Title Case too soft for terminal */}
 ```
 
+### 6. NEVER modify base UI components without explicit permission
+
+**Protected Components** (DO NOT MODIFY unless explicitly told to):
+
+```
+src/components/ui/           # ALL Radix primitives
+├── button.tsx               # LOCKED
+├── card.tsx                 # LOCKED
+├── input.tsx                # LOCKED
+├── sheet.tsx                # LOCKED
+└── ... (all ui/ files)      # LOCKED
+
+src/components/marketing/
+└── navigation.tsx           # LOCKED - Marketing navigation
+
+src/components/navigation/
+└── site-navigation.tsx      # LOCKED - Docs navigation
+
+src/components/shared/       # ALL shared components
+├── logo.tsx                 # LOCKED
+├── footer.tsx               # LOCKED
+└── ...                      # LOCKED
+```
+
+**Safe to Modify** (without explicit permission):
+- `/src/app/` - All page files (docs, templates, routes)
+- Demo/preview components inside docs pages (e.g., `NavigationDemo` in `/src/app/(marketing)/docs/components/navigation/page.tsx`)
+- New components you create
+- Temporary test components
+
+**Why This Matters**: Base UI components are the foundation of the entire application. Modifying them affects EVERY page. Always ask before touching these files.
+
 ---
 
 ## Commands
