@@ -12,13 +12,19 @@ The design system achieved full launch readiness with:
 - 14 complete themes
 - 77/77 components using design tokens
 
-**Current Reports (in project root):**
-- `DESIGN_SYSTEM_AUDIT_2025-12-12.md` - Comprehensive 600+ line audit report
-- `DESIGN_SYSTEM_LAUNCH_STATUS.md` - Final launch readiness status
+**Final Audit Reports:**
+- See `2025-12-12-final/` directory for comprehensive launch audit and status reports
+- All design system documentation now in `docs/08-design/DESIGN_SYSTEM.md` and `CLAUDE.md`
 
 ---
 
 ## Archive Structure
+
+### 2025-12-12-final/ - Final Launch Audit ✅
+Comprehensive final audit reports confirming 100% launch readiness:
+- `DESIGN_SYSTEM_AUDIT_2025-12-12.md` (26K) - Complete final audit (600+ lines)
+- `DESIGN_SYSTEM_LAUNCH_STATUS.md` (6.5K) - Launch readiness status
+- `README.md` - Detailed documentation of achievements and metrics
 
 ### old-specs/ - Historical Design Specifications
 Early design system specifications superseded by current documentation:

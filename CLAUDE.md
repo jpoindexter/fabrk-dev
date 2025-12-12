@@ -634,7 +634,8 @@ background-color: oklch(from var(--background) 0% c h / 0.8);
 
 ### Launch Reports
 
-- `DESIGN_SYSTEM_AUDIT_2025-12-12.md` - Comprehensive 600+ line audit
+Comprehensive audit reports archived in `.archives/design-system/2025-12-12-final/`:
+- `DESIGN_SYSTEM_AUDIT_2025-12-12.md` - Complete final audit (600+ lines)
 - `DESIGN_SYSTEM_LAUNCH_STATUS.md` - Launch readiness summary
 
 ---
@@ -722,8 +723,7 @@ When adding features: "Does this help ship faster?" If no, delete it.
 - `docs/08-design/DESIGN_SYSTEM.md` - Complete design system specification
 - `src/app/globals.css` - CSS variables and utilities (100% OKLCH tokens)
 - `src/design-system/themes/` - Terminal theme (14 complete themes)
-- `DESIGN_SYSTEM_AUDIT_2025-12-12.md` - Comprehensive launch audit (600+ lines)
-- `DESIGN_SYSTEM_LAUNCH_STATUS.md` - Launch readiness report (100/100 score)
+- `.archives/design-system/2025-12-12-final/` - Launch audit reports (100/100 score)
 - `scripts/hex-to-oklch-converter.mjs` - Color conversion tool
 - `scripts/check-aria-labels.mjs` - Accessibility audit tool
 - `/docs/components/overview` - Component documentation
