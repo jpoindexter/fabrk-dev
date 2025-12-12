@@ -1,0 +1,334 @@
+{
+  "summary": {
+    "framework": "Next.js 15 (App Router)",
+    "packageManager": "npm",
+    "monorepo": false,
+    "packages": [],
+    "stylingSystems": [
+      "Tailwind CSS 3.4 utilities",
+      "Global CSS (src/app/globals.css)",
+      "Standalone plain CSS (src/styles/*.css)",
+      "Inline React styles",
+      "CSS custom properties for theming",
+      "class-variance-authority + tailwind-merge helpers"
+    ],
+    "uiLibraries": [
+      "Radix UI",
+      "Framer Motion",
+      "Lucide React",
+      "Sonner",
+      "Next Themes",
+      "TanStack Table"
+    ],
+    "tailwind": {
+      "present": true,
+      "darkMode": "class",
+      "plugins": [
+        "tailwindcss-animate",
+        "@tailwindcss/typography"
+      ],
+      "configPath": "tailwind.config.ts"
+    },
+    "tokenSources": [
+      "src/app/globals.css",
+      "tailwind.config.ts",
+      "src/lib/design-system/tokens.ts",
+      "src/styles/hero-code-block.css",
+      "src/styles/code-block.css"
+    ]
+  },
+  "inventories": {
+    "stylesheets": [
+      "src/app/globals.css",
+      "src/styles/hero-code-block.css",
+      "src/styles/code-block.css"
+    ],
+    "cssInJsFiles": [],
+    "inlineStyleLocations": [
+      "src/app/(dashboard)/dashboard/page.tsx:286",
+      "src/app/templates/analytics-dashboard/page.tsx:156",
+      "src/components/ui/progress.tsx:21",
+      "src/components/landing/hero-video.tsx:50",
+      "src/components/home/tech-stack-section.tsx:38",
+      "src/components/landing/hero-video.tsx:58"
+    ],
+    "components": [
+      {
+        "type": "Button",
+        "files": ["src/components/ui/button.tsx"],
+        "duplicates": 0,
+        "a11yStatus": "partial: exposes aria-busy but defaults to type=button not enforced"
+      },
+      {
+        "type": "Input",
+        "files": ["src/components/ui/input.tsx"],
+        "duplicates": 0,
+        "a11yStatus": "depends on parent label wiring; no described-by slots"
+      },
+      {
+        "type": "Textarea",
+        "files": ["src/components/ui/textarea.tsx"],
+        "duplicates": 0,
+        "a11yStatus": "same as Input; relies on caller"
+      },
+      {
+        "type": "Select",
+        "files": ["src/components/ui/select.tsx"],
+        "duplicates": 0,
+        "a11yStatus": "Radix handles focus but trigger lacks aria-describedby"
+      },
+      {
+        "type": "Checkbox",
+        "files": ["src/components/ui/checkbox.tsx"],
+        "duplicates": 0,
+        "a11yStatus": "Radix primitive but no label slot"
+      },
+      {
+        "type": "Switch",
+        "files": ["src/components/ui/switch.tsx"],
+        "duplicates": 0,
+        "a11yStatus": "needs aria-checked exposure via props"
+      },
+      {
+        "type": "Radio Group",
+        "files": ["src/components/ui/radio-group.tsx"],
+        "duplicates": 0,
+        "a11yStatus": "Radix-based; orientation hard-coded"
+      },
+      {
+        "type": "Dialog",
+        "files": ["src/components/ui/dialog.tsx", "src/components/ui/alert-dialog.tsx"],
+        "duplicates": 1,
+        "a11yStatus": "Relies on Radix focus trap; title/description components optional"
+      },
+      {
+        "type": "Drawer/Sheet",
+        "files": ["src/components/ui/sheet.tsx"],
+        "duplicates": 0,
+        "a11yStatus": "Radix dialog variant; aria labels delegated"
+      },
+      {
+        "type": "Dropdown Menu",
+        "files": ["src/components/ui/dropdown-menu.tsx"],
+        "duplicates": 0,
+        "a11yStatus": "Key bindings via Radix; trigger labeling manual"
+      },
+      {
+        "type": "Tabs",
+        "files": ["src/components/ui/tabs.tsx"],
+        "duplicates": 0,
+        "a11yStatus": "Orientation prop not surfaced"
+      },
+      {
+        "type": "Table",
+        "files": ["src/components/ui/table.tsx", "src/components/ui/data-table/data-table.tsx"],
+        "duplicates": 1,
+        "a11yStatus": "Data table uses TanStack without caption or scope"
+      },
+      {
+        "type": "Card",
+        "files": ["src/components/ui/card.tsx"],
+        "duplicates": 0,
+        "a11yStatus": "Div wrappers only; requires role per context"
+      },
+      {
+        "type": "Toast",
+        "files": ["src/components/ui/toast.tsx", "src/components/Toast.tsx"],
+        "duplicates": 1,
+        "a11yStatus": "Custom stack lacks aria-live while Radix stack exists"
+      },
+      {
+        "type": "Badge",
+        "files": ["src/components/ui/badge.tsx"],
+        "duplicates": 0,
+        "a11yStatus": "Span only; no aria attributes"
+      },
+      {
+        "type": "Avatar",
+        "files": ["src/components/ui/avatar.tsx"],
+        "duplicates": 0,
+        "a11yStatus": "Needs alt/text fallbacks"
+      },
+      {
+        "type": "Progress",
+        "files": ["src/components/ui/progress.tsx"],
+        "duplicates": 0,
+        "a11yStatus": "Inline transform; aria-valuenow optional"
+      },
+      {
+        "type": "Slider",
+        "files": ["src/components/ui/slider.tsx"],
+        "duplicates": 0,
+        "a11yStatus": "Radix slider; marks not exposed"
+      },
+      {
+        "type": "Separator",
+        "files": ["src/components/ui/separator.tsx"],
+        "duplicates": 0,
+        "a11yStatus": "orientation prop default only"
+      },
+      {
+        "type": "Label",
+        "files": ["src/components/ui/label.tsx"],
+        "duplicates": 0,
+        "a11yStatus": "Wraps Radix label"
+      },
+      {
+        "type": "Navigation",
+        "files": [
+          "src/components/navigation.tsx",
+          "src/components/landing/navigation.tsx",
+          "src/components/showcase/showcase-nav.tsx"
+        ],
+        "duplicates": 2,
+        "a11yStatus": "Landmarks missing; inconsistent aria-current"
+      },
+      {
+        "type": "Tooltip",
+        "files": [],
+        "duplicates": 0,
+        "a11yStatus": "missing primitive"
+      },
+      {
+        "type": "ScrollArea",
+        "files": [],
+        "duplicates": 0,
+        "a11yStatus": "missing primitive"
+      }
+    ]
+  },
+  "risks": [
+    {
+      "id": "R1",
+      "severity": "high",
+      "area": "Design tokens",
+      "summary": "CSS variables, tailwind config, and tokens.ts define separate palettes and spacing scales with no synchronization.",
+      "evidence": "Globals define --primary/--radius, tailwind extends colors, and src/lib/design-system/tokens.ts ships conflicting hex palette.",
+      "files": ["src/app/globals.css", "tailwind.config.ts", "src/lib/design-system/tokens.ts"],
+      "recommendation": "Adopt a single token map (see ui_token_map_proposal.json) and drive Tailwind + TS exports from it before introducing shadcn/ui."
+    },
+    {
+      "id": "R2",
+      "severity": "medium",
+      "area": "Color usage",
+      "summary": "Fallback pages embed hard-coded #007AFF/#666666 colors instead of tokens, so theme or brand swaps will miss them.",
+      "evidence": "Inline hex values at src/app/not-found.tsx:19 and src/app/error.tsx:34.",
+      "files": ["src/app/not-found.tsx", "src/app/error.tsx"],
+      "recommendation": "Replace literals with semantic classes (bg-primary, text-muted-foreground) once the token merge lands."
+    },
+    {
+      "id": "R3",
+      "severity": "medium",
+      "area": "Legacy CSS",
+      "summary": "Two standalone CSS files for hero/code blocks carry >20 !important rules but are never imported by the app, indicating dead or at-risk styles.",
+      "evidence": "src/styles/hero-code-block.css and src/styles/code-block.css are only referenced in docs, not in src/app/*.",
+      "files": ["src/styles/hero-code-block.css", "src/styles/code-block.css"],
+      "recommendation": "Convert the needed pieces into Tailwind utilities or delete to avoid confusion before migration."
+    },
+    {
+      "id": "R4",
+      "severity": "high",
+      "area": "Page architecture",
+      "summary": "Five marketing/dashboard routes exceed 330–520 lines, interleaving layout logic, Radix primitives, and mock data, making staged migration risky.",
+      "evidence": "wc -l shows src/app/whats-included/page.tsx (521 lines), features/page.tsx (453), components/page.tsx (447), (dashboard)/dashboard/page.tsx (433), templates/analytics-dashboard/page.tsx (372).",
+      "files": [
+        "src/app/whats-included/page.tsx",
+        "src/app/features/page.tsx",
+        "src/app/components/page.tsx",
+        "src/app/(dashboard)/dashboard/page.tsx",
+        "src/app/templates/analytics-dashboard/page.tsx"
+      ],
+      "recommendation": "Split each into smaller section components (hero, metrics, table, etc.) before swapping primitives so each PR stays JAR-sized."
+    },
+    {
+      "id": "R5",
+      "severity": "medium",
+      "area": "Notifications/utilities",
+      "summary": "Two toast systems (Radix + custom) and duplicate cn utilities coexist, so consumers import inconsistent APIs.",
+      "evidence": "Radix toast in src/components/ui/toast.tsx + toasters, while src/components/Toast.tsx and src/lib/utils.ts vs src/lib/design-system/utils.ts duplicate helpers.",
+      "files": [
+        "src/components/ui/toast.tsx",
+        "src/components/Toast.tsx",
+        "src/lib/utils.ts",
+        "src/lib/design-system/utils.ts"
+      ],
+      "recommendation": "Pick the shadcn/toast implementation, delete the custom container, and expose a single cn helper inside /lib."
+    },
+    {
+      "id": "R6",
+      "severity": "medium",
+      "area": "Inline styles & motion",
+      "summary": "Charts, progress bars, and hero media rely on inline style props and uncontrolled motion with no prefers-reduced-motion guard.",
+      "evidence": "Inline width/height styles at dashboard/page.tsx:286, templates/analytics-dashboard/page.tsx:156, hero-video.tsx:50, tech-stack-section.tsx:38.",
+      "files": [
+        "src/app/(dashboard)/dashboard/page.tsx",
+        "src/app/templates/analytics-dashboard/page.tsx",
+        "src/components/landing/hero-video.tsx",
+        "src/components/home/tech-stack-section.tsx"
+      ],
+      "recommendation": "Move sizing into Tailwind (utility classes or CSS variables) and wrap Framer Motion usage with useReducedMotion before migrating to shadcn/ui."
+    }
+  ],
+  "migrationPlan": [
+    {
+      "jarName": "JAR-01 Token Convergence",
+      "scope": [
+        "Author a single tokens.ts/json source of truth for color/spacing/radius",
+        "Generate tailwind.config.ts theme extensions from that source",
+        "Map CSS custom properties and document semantic names"
+      ],
+      "acceptanceCriteria": [
+        "globals.css reads from CSS variables emitted by the shared token map",
+        "No hard-coded hex values outside token definition files",
+        "Storybook/docs (if any) point to the same token ids"
+      ],
+      "estimatedEffort": "M",
+      "dependencies": []
+    },
+    {
+      "jarName": "JAR-02 Primitive Source of Truth",
+      "scope": [
+        "Adopt shadcn/ui generators for Button/Input/etc.",
+        "Remove duplicate cn utilities and custom Toast",
+        "Ensure Radix wrappers expose aria props and forward refs"
+      ],
+      "acceptanceCriteria": [
+        "All primitives live under src/components/ui and match shadcn/ui signatures",
+        "Only one toast system remains and it uses sonner/Radix consistently",
+        "ESLint/TS config enforces single cn export"
+      ],
+      "estimatedEffort": "M",
+      "dependencies": ["JAR-01 Token Convergence"]
+    },
+    {
+      "jarName": "JAR-03 Marketing Surface Lift",
+      "scope": [
+        "Break landing/home/variations pages into feature sections",
+        "Replace inline styles, hex colors, and motion defaults with tokenized Tailwind classes",
+        "Add prefers-reduced-motion handling to Framer Motion blocks"
+      ],
+      "acceptanceCriteria": [
+        "Each marketing route composes exported section components",
+        "No eslint-disable inline-style suppressions remain",
+        "Motion respects reduced-motion and tokens supply all palette references"
+      ],
+      "estimatedEffort": "L",
+      "dependencies": ["JAR-02 Primitive Source of Truth"]
+    },
+    {
+      "jarName": "JAR-04 Dashboard Modularization",
+      "scope": [
+        "Refactor dashboard/admin/templates pages into smaller feature modules",
+        "Move chart/progress math into hooks that emit Tailwind-friendly data attributes",
+        "Introduce data-table adapters to wrap TanStack with shadcn table primitives"
+      ],
+      "acceptanceCriteria": [
+        "No dashboard page exceeds 200 lines",
+        "Progress/metric visuals rely on CSS classes rather than inline styles",
+        "Tables expose captions, aria-sort, and consistent utility imports"
+      ],
+      "estimatedEffort": "L",
+      "dependencies": ["JAR-02 Primitive Source of Truth"]
+    }
+  ]
+}

@@ -26,10 +26,19 @@ Comprehensive final audit reports confirming 100% launch readiness:
 - `DESIGN_SYSTEM_LAUNCH_STATUS.md` (6.5K) - Launch readiness status
 - `README.md` - Detailed documentation of achievements and metrics
 
-### old-specs/ - Historical Design Specifications
-Early design system specifications superseded by current documentation:
-- `DESIGN_SYSTEM_COMPLETE.md` (14K) - Intermediate completion milestone
-- `VISUAL_DESIGN_SPEC.md` (30K) - Original visual design specification
+### docs-audit/ - Design System Documentation Audits
+Complete design system audit documentation from `docs/design-system/audit/`:
+- Audit summaries and findings (15K+ comprehensive reports)
+- Component value and market assessment (13K)
+- Theme compliance audits (7K)
+- Component inventory and analysis (13K)
+- Hardcoded colors reports and matrices
+- See directory README for complete file listing
+
+### 2025-12-12-intermediate/ - Mid-Day Assessments
+Interim audit reports from December 12:
+- `DESIGN_SYSTEM_AUDIT.md` (13K) - Design system progress check
+- `DOCS_AUDIT_REPORT.md` (15K) - Documentation audit
 
 ### 2025-12-11/ - Initial Audits
 Early design system audits and assessments:
@@ -38,10 +47,17 @@ Early design system audits and assessments:
 - `TYPOGRAPHY_AUDIT.md` (19K) - Typography system audit
 - `VISUAL_AUDIT.md` (23K) - Visual design audit
 
-### 2025-12-12-intermediate/ - Mid-Day Assessments
-Interim audit reports from December 12:
-- `DESIGN_SYSTEM_AUDIT.md` (13K) - Design system progress check
-- `DOCS_AUDIT_REPORT.md` (15K) - Documentation audit
+### 2025-12-10/ - Early Audits & Implementation Plans
+Early design system audits and comprehensive plans from December 10:
+- 3 comprehensive audits (77.3K total)
+- Design system diagnostic (6.3K)
+- 2 implementation plans (83K total)
+- See directory README for complete documentation
+
+### old-specs/ - Historical Design Specifications
+Early design system specifications superseded by current documentation:
+- `DESIGN_SYSTEM_COMPLETE.md` (14K) - Intermediate completion milestone
+- `VISUAL_DESIGN_SPEC.md` (30K) - Original visual design specification
 
 ---
 
@@ -49,6 +65,7 @@ Interim audit reports from December 12:
 
 | Date | Event |
 |------|-------|
+| Dec 10, 2025 | Early audits and implementation plans (6 files, 160.6K) |
 | Dec 11, 2025 | Initial audits conducted (4 reports) |
 | Dec 12, 2025 AM | Intermediate progress audits (2 reports) |
 | Dec 12, 2025 PM | Final comprehensive audit completed |
