@@ -77,7 +77,7 @@ export function ThemeDropdown() {
   const currentThemeName = themes.find((t) => t.id === currentTheme)?.name || 'Green CRT';
 
   return (
-    <DropdownMenu>
+    <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
