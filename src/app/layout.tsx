@@ -145,7 +145,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       suppressHydrationWarning
-      data-theme="light"
       className={`${GeistSans.variable} ${jetbrainsMono.variable} ${pixelbasel.variable}`}
     >
       <head>
