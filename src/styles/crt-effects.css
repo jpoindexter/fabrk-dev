@@ -27,29 +27,15 @@
   background-blend-mode: overlay;
 }
 
-/* Light theme (GitHub): CRT effect ENABLED but subtle */
-[data-theme='light'] .crt-scanlines {
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
-    linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-  background-blend-mode: multiply;
-}
-
-/* Dark mode: adjust opacity for visibility */
-.dark .crt-scanlines {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.08) 50%),
-    linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
-  background-blend-mode: overlay;
-}
+/* All CRT themes use the same scan line effect */
 
 /* ============================================
-   2. FULL-PAGE CRT OVERLAY (Terminal Mode Only)
-   Applied to: body element when in Terminal mode
+   2. FULL-PAGE CRT OVERLAY (All CRT Themes)
+   Applied to: body element for all CRT themes
    Creates Mistral-style scan lines + chromatic aberration across entire page
    ============================================ */
 
-html[data-visual-mode='terminal'] body::before {
+body::before {
   content: '';
   position: fixed;
   inset: 0;
@@ -97,10 +83,7 @@ html[data-visual-mode='terminal'] body::before {
   animation: roll-scanline 45s linear infinite;
 } */
 
-/* Light theme (GitHub): full-page CRT effect DISABLED */
-html[data-visual-mode='terminal'][data-theme='light'] body::before {
-  display: none;
-}
+/* No longer needed - all themes are CRT */
 
 /* ============================================
    3. DIAGONAL STRIPE PATTERN
@@ -118,15 +101,7 @@ html[data-visual-mode='terminal'][data-theme='light'] body::before {
   );
 }
 
-.dark .crt-stripes {
-  background-image: repeating-linear-gradient(
-    45deg,
-    transparent 0px,
-    transparent 10px,
-    rgba(255, 255, 255, 0.08) 10px,
-    rgba(255, 255, 255, 0.08) 20px
-  );
-}
+/* Stripes work the same across all CRT themes */
 
 /* ============================================
    4. CRT GLOW EFFECT
@@ -152,20 +127,8 @@ html[data-visual-mode='terminal'][data-theme='light'] body::before {
 
 /* ============================================
    5. CONDITIONAL APPLICATION
-   Hide all CRT effects when in Modern mode
+   All themes now use CRT effects
    ============================================ */
-
-html[data-visual-mode='modern'] .crt-scanlines {
-  background-image: none;
-}
-
-html[data-visual-mode='modern'] .crt-glow::after {
-  display: none;
-}
-
-html[data-visual-mode='modern'] body::before {
-  display: none;
-}
 
 /* ============================================
    6. PERFORMANCE OPTIMIZATIONS
