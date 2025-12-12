@@ -81,6 +81,11 @@ export function Navigation() {
             <Button variant="outline" asChild className={cn('text-xs', mode.radius, mode.font)}>
               <Link href="/demo">&gt; VIEW DEMO</Link>
             </Button>
+            <Button asChild className={cn('text-xs', mode.radius, mode.font)}>
+              <Link href="#pricing" className="scroll-smooth">
+                &gt; GET STARTED
+              </Link>
+            </Button>
           </div>
         </motion.div>
 
@@ -146,10 +151,22 @@ export function Navigation() {
                       <Link href="/demo">&gt; VIEW DEMO</Link>
                     </Button>
                   </SheetClose>
+                  <SheetClose asChild>
+                    <Button className={cn('mt-4 w-full text-xs', mode.radius, mode.font)} asChild>
+                      <Link href="#pricing">&gt; GET STARTED</Link>
+                    </Button>
+                  </SheetClose>
                 </div>
               </nav>
             </SheetContent>
           </Sheet>
+
+          {/* Mobile CTA Button */}
+          <Button asChild className={cn('text-xs md:hidden', mode.radius, mode.font)}>
+            <Link href="#pricing" className="scroll-smooth">
+              &gt; START
+            </Link>
+          </Button>
         </motion.div>
       </div>
     </nav>
