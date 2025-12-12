@@ -18,7 +18,7 @@ export function ValueBreakdownSection() {
     <section className="border-border border-t py-20 lg:py-24">
       <Container>
         <SectionHeader
-          badge="VALUE_BREAKDOWN"
+          badge="VALUE BREAKDOWN"
           code="0x35"
           title="WHAT YOU'RE ACTUALLY GETTING"
           description="Building all of this from scratch would cost $51,000+"

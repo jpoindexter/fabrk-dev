@@ -42,7 +42,7 @@ export function ApiDocumentation({ organizationId }: ApiDocumentationProps) {
       <Card>
         <CardHeader
           code="0xF1"
-          title="SECURITY_BEST PRACTICES"
+          title="SECURITY BEST PRACTICES"
           icon={<AlertTriangle className="h-4 w-4" />}
         />
         <CardContent className="text-muted-foreground text-sm">

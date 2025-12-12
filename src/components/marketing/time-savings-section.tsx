@@ -18,7 +18,7 @@ export function TimeSavingsSection() {
     <section className="border-border border-t py-20 lg:py-24">
       <Container>
         <SectionHeader
-          badge="TIME_SAVINGS_BREAKDOWN"
+          badge="TIME SAVINGS BREAKDOWN"
           code="0x25"
           title="WHERE THE 215 HOURS COME FROM"
           description="Every feature below represents days of development work we've already done for you"

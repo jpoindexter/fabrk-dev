@@ -52,7 +52,7 @@ export function InviteMembersStep({
     <Card>
       <CardHeader
         code="0x01"
-        title="INVITE_TEAM MEMBERS"
+        title="INVITE TEAM MEMBERS"
         icon={<Mail className="h-4 w-4" />}
         meta="OPTIONAL"
       />

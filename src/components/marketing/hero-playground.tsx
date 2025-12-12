@@ -48,7 +48,7 @@ function DashboardDemo() {
       </div>
 
       <Card size="auto">
-        <CardHeader code="0x10" title="RECENT_TRANSACTIONS" />
+        <CardHeader code="0x10" title="RECENT TRANSACTIONS" />
         <CardContent className="p-4">
           <div className="space-y-3">
             {[
@@ -76,7 +76,7 @@ function AuthDemo() {
   return (
     <div className="mx-auto max-w-md">
       <Card size="auto">
-        <CardHeader code="0x20" title="SIGN_IN" />
+        <CardHeader code="0x20" title="SIGN IN" />
         <CardContent className="space-y-4 p-6">
           <div className="space-y-2">
             <Label className={cn(mode.font, 'text-xs')}>EMAIL</Label>
@@ -94,7 +94,7 @@ function AuthDemo() {
               className={cn(mode.radius, mode.font, 'text-xs')}
             />
           </div>
-          <Button className={cn('w-full', mode.radius, mode.font, 'text-xs')}>&gt; SIGN_IN</Button>
+          <Button className={cn('w-full', mode.radius, mode.font, 'text-xs')}>&gt; SIGN IN</Button>
           <div className="flex items-center gap-2">
             <div className="bg-border h-px flex-1" />
             <span className={cn('text-xs', mode.color.text.muted, mode.font)}>OR</span>
@@ -114,10 +114,10 @@ function BillingDemo() {
   return (
     <div className="mx-auto max-w-md">
       <Card size="auto">
-        <CardHeader code="0x30" title="PAYMENT_METHOD" />
+        <CardHeader code="0x30" title="PAYMENT METHOD" />
         <CardContent className="space-y-4 p-6">
           <div className="space-y-2">
-            <Label className={cn(mode.font, 'text-xs')}>CARD_NUMBER</Label>
+            <Label className={cn(mode.font, 'text-xs')}>CARD NUMBER</Label>
             <div className="flex gap-2">
               <Input
                 placeholder="1234 5678 9012 3456"
@@ -145,7 +145,7 @@ function BillingDemo() {
             </label>
           </div>
           <Button className={cn('w-full', mode.radius, mode.font, 'text-xs')}>
-            &gt; ADD_PAYMENT_METHOD
+            &gt; ADD PAYMENT METHOD
           </Button>
         </CardContent>
       </Card>

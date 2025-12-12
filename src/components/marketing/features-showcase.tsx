@@ -18,7 +18,7 @@ export function FeaturesShowcase() {
     <section className="border-border border-t py-20 lg:py-24">
       <Container>
         <SectionHeader
-          badge="WHAT_MAKES_FABRK_DIFFERENT"
+          badge="WHAT MAKES FABRK DIFFERENT"
           code="0x10"
           title="SHIP YOUR AI SAAS BEFORE YOUR RUNWAY ENDS"
           description="AI credit system: done. Multi-provider billing: done. Production components: done. 400+ hours of work you don't have to do. Launch this weekend, not next quarter."

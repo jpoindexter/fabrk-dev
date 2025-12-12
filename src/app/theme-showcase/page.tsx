@@ -258,7 +258,7 @@ export default function ThemeShowcasePage() {
             {/* Text Input */}
             <div className="space-y-2">
               <Label htmlFor="text-input" className={mode.font}>
-                [TEXT_INPUT]
+                [TEXT INPUT]
               </Label>
               <Input
                 id="text-input"

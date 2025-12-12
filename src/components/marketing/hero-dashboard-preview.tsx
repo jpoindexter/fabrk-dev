@@ -17,7 +17,7 @@ const stats = [
 export function HeroDashboardPreview() {
   return (
     <Card size="auto">
-      <CardHeader code="0x04" title="SYSTEM_STATUS.LOG" />
+      <CardHeader code="0x04" title="SYSTEM STATUS.LOG" />
       <CardContent className="space-y-3 p-4">
         {stats.map((stat) => (
           <div key={stat.label} className="border-accent flex items-center border-l-2 pl-3">

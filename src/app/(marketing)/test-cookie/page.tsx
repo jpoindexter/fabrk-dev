@@ -23,7 +23,7 @@ export default function TestCookiePage() {
   return (
     <div className="container mx-auto max-w-2xl py-12">
       <Card>
-        <CardHeader code="0x00" title="COOKIE_BANNER_TEST" />
+        <CardHeader code="0x00" title="COOKIE BANNER TEST" />
         <CardContent className="space-y-4">
           <p className="text-muted-foreground font-mono text-sm">
             Use this page to test the cookie consent banner.

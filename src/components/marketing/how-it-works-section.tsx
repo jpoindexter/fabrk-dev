@@ -68,7 +68,7 @@ export function HowItWorksSection() {
                 <Card>
                   <CardHeader
                     code={`0x5${step.number}`}
-                    title={`STEP_${step.number}`}
+                    title={`STEP ${step.number}`}
                     icon={
                       <motion.div
                         whileHover={{ scale: 1.1, rotate: 5 }}

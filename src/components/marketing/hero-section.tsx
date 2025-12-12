@@ -141,7 +141,7 @@ export function HeroSection() {
           >
             {/* Urgency Card - Top */}
             <Card size="auto" className="border-accent border-2 lg:-mr-8">
-              <CardHeader code="0x03" title="LAUNCH_OFFER.SH" />
+              <CardHeader code="0x03" title="LAUNCH OFFER.SH" />
               <CardContent className="space-y-4 p-4">
                 {/* Price - Big and Bold */}
                 <div className="flex items-start justify-between">

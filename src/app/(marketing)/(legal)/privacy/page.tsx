@@ -234,7 +234,7 @@ export default function PrivacyPage() {
         <Card size="auto">
           <CardHeader
             code="0x40"
-            title="DATA SHARING_DISCLOSURE"
+            title="DATA SHARING DISCLOSURE"
             icon={<Share2 className="size-4" />}
           />
           <CardContent padding="md">
