@@ -33,9 +33,6 @@ function NavigationDemo() {
             DOCS
           </Link>
           <div className="bg-border h-4 w-px" />
-          <Button variant="outline" size="sm" className="font-mono text-xs">
-            &gt; VIEW DEMO
-          </Button>
           <Button size="sm" className="font-mono text-xs">
             &gt; GET STARTED
           </Button>
