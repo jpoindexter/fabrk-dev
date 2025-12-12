@@ -19,13 +19,29 @@ import { cn } from '@/lib/utils';
 
 import { mode } from '@/design-system';
 
-// CRT phosphor themes only
+// Terminal themes (dark CRT + retro light + paper themes)
 const themes = [
+  // Dark CRT themes
   { id: 'amber', name: 'Amber CRT', preview: '#ffb000' },
   { id: 'green', name: 'Green CRT', preview: '#33ff66' },
   { id: 'blue', name: 'Blue CRT', preview: '#55ccff' },
   { id: 'red', name: 'Red CRT', preview: '#ff6655' },
   { id: 'purple', name: 'Purple CRT', preview: '#bb88ff' },
+  // Retro light themes
+  { id: 'gameboy', name: 'Game Boy', preview: '#9bbc0f' },
+  { id: 'gbpocket', name: 'GB Pocket', preview: '#8a8a8a' },
+  { id: 'apple2', name: 'Apple II', preview: '#5fa35f' },
+  { id: 'c64', name: 'C64 Blue', preview: '#7fa7d7' },
+  { id: 'vic20', name: 'VIC-20', preview: '#6fbfbf' },
+  { id: 'atari', name: 'Atari 800', preview: '#d9a66a' },
+  { id: 'spectrum', name: 'ZX Spectrum', preview: '#5a5acf' },
+  { id: 'ibmpc', name: 'IBM PC', preview: '#7fb37f' },
+  { id: 'light-green', name: 'Light Green', preview: '#00aa33' },
+  { id: 'light-amber', name: 'Light Amber', preview: '#cc8800' },
+  // Paper themes
+  { id: 'bw', name: 'Black & White', preview: '#ffffff' },
+  { id: 'newspaper', name: 'Newspaper', preview: '#faf8f5' },
+  { id: 'paper', name: 'Paper', preview: '#f7f4f0' },
 ] as const;
 
 export type ColorTheme = (typeof themes)[number]['id'];

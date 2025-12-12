@@ -193,15 +193,13 @@ const SelectItem = React.forwardRef<
     data-slot="select-item"
     className={cn(
       // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile
-      // Uses mode tokens for consistent theming
+      // Uses mode tokens for consistent theming - subtle hover for better contrast
       'relative flex h-[48px] w-full cursor-default items-center pr-2 pl-8 select-none focus-visible:outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 sm:h-auto sm:py-2',
       mode.typography.input,
-      mode.radius,
+      'rounded-none', // Terminal aesthetic - sharp corners
       mode.font,
-      cn(
-        `hover:${mode.color.bg.accent} hover:${mode.color.text.inverse}`,
-        `focus:${mode.color.bg.accent} focus:${mode.color.text.inverse}`
-      ),
+      // Subtle muted background for hover/focus instead of dark accent
+      'hover:bg-muted/50 focus:bg-muted/50',
       className
     )}
     {...props}

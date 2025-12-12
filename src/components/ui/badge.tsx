@@ -41,8 +41,8 @@ const badgeVariants = cva(
       variant: {
         // Primary - main action/status
         default: `${mode.color.bg.accent} ${mode.color.text.inverse} ${mode.color.border.accent} hover:${mode.color.bg.accentHover}`,
-        // Secondary - muted status
-        secondary: `${mode.color.bg.secondary} ${mode.color.text.secondary} ${mode.color.border.default} hover:${mode.color.bg.secondary}/90`,
+        // Secondary - muted status (uses secondary-foreground for proper contrast)
+        secondary: 'bg-secondary text-secondary-foreground border-border hover:bg-secondary/90',
         // Accent - highlighted status
         accent: `${mode.color.bg.accent} ${mode.color.text.inverse} ${mode.color.border.accent} hover:${mode.color.bg.accentHover}`,
         // Destructive - error/warning

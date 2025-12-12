@@ -678,8 +678,8 @@ function ComponentsGrid() {
           </RadioGroup>
         </div>
 
-        {/* Switches - Gradient background */}
-        <div className="from-secondary/20 to-secondary/5 bg-linear-to-br p-4">
+        {/* Switches - Terminal style with border */}
+        <div className="border-border bg-card border p-4">
           <h3 className="mb-3 text-xs font-semibold">[SWITCHES]</h3>
           <div className="space-y-3">
             <div className="flex items-center justify-between">
@@ -717,8 +717,8 @@ function ComponentsGrid() {
           </div>
         </div>
 
-        {/* Filter Chips - Minimal with bottom border */}
-        <div className="border-b-muted bg-background border-b-4 p-3">
+        {/* Filter Chips - Terminal card style */}
+        <div className="border-border bg-card border p-3">
           <h3 className="mb-3 text-xs font-semibold">[ACTIVE FILTERS]</h3>
           <div className="flex flex-wrap gap-2">
             {['Status: Active', 'Role: Admin'].map((filter, i) => (

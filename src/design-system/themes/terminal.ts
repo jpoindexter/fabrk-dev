@@ -272,7 +272,7 @@ export const terminalClasses = {
   button: 'rounded-none font-mono uppercase',
   input: 'rounded-none font-mono border-border',
   card: 'rounded-none border border-border',
-  badge: 'rounded-sm font-mono text-xs uppercase',
+  badge: 'rounded-none font-mono text-xs uppercase', // Terminal aesthetic: sharp corners
 } as const;
 
 export default terminalTheme;

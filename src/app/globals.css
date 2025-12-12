@@ -665,8 +665,8 @@
   --accent-foreground: 5% 0.01 300;
   --destructive: 82% 0.28 300;
   --destructive-foreground: 5% 0.01 300;
-  --border: 30% 0.15 300;
-  --input: 30% 0.15 300;
+  --border: 50% 0.2 300; /* Increased from 30% for better visibility */
+  --input: 50% 0.2 300; /* Increased from 30% for better visibility */
   --ring: 70% 0.25 300;
 
   --color-bg-canvas: var(--background);
@@ -704,6 +704,725 @@
   --code-selector: #bb88ff;
 }
 
+/* Light Green Theme - Terminal with light background (hue 145) */
+[data-theme='light-green'] {
+  --background: 98% 0.01 145;
+  --foreground: 15% 0.3 145;
+  --card: 95% 0.02 145;
+  --card-foreground: 15% 0.3 145;
+  --popover: 92% 0.03 145;
+  --popover-foreground: 15% 0.3 145;
+  --primary: 35% 0.25 145;
+  --primary-foreground: 98% 0.01 145;
+  --secondary: 85% 0.25 145;
+  --secondary-foreground: 15% 0.01 145;
+  --muted: 90% 0.05 145;
+  --muted-foreground: 40% 0.22 145;
+  --accent: 30% 0.3 145;
+  --accent-foreground: 98% 0.01 145;
+  --destructive: 45% 0.28 145;
+  --destructive-foreground: 98% 0.01 145;
+  --border: 75% 0.18 145;
+  --input: 75% 0.18 145;
+  --ring: 30% 0.3 145;
+
+  /* Status colors - all monochrome green */
+  --success: 35% 0.28 145;
+  --success-foreground: 98% 0.01 145;
+  --warning: 40% 0.26 145;
+  --warning-foreground: 98% 0.01 145;
+  --info: 38% 0.24 145;
+  --info-foreground: 98% 0.01 145;
+
+  /* Chart colors - all monochrome green */
+  --chart-1: 40% 0.28 145;
+  --chart-2: 35% 0.24 145;
+  --chart-3: 45% 0.26 145;
+  --chart-4: 38% 0.22 145;
+  --chart-5: 32% 0.2 145;
+  --chart-6: 50% 0.3 145;
+  --chart-7: 30% 0.18 145;
+  --chart-8: 42% 0.25 145;
+  --chart-9: 36% 0.23 145;
+
+  /* Code syntax highlighting (Prism) */
+  --code-fg: #006622;
+  --code-bg: #f0fff5;
+  --code-comment: #448855;
+  --code-string: #005511;
+  --code-punctuation: #337744;
+  --code-number: #228833;
+  --code-keyword: #007722;
+  --code-function: #004411;
+  --code-selector: #006622;
+}
+
+/* Light Amber Theme - Terminal with light background (hue 50) */
+[data-theme='light-amber'] {
+  --background: 98% 0.01 50;
+  --foreground: 18% 0.25 50;
+  --card: 95% 0.02 50;
+  --card-foreground: 18% 0.25 50;
+  --popover: 92% 0.03 50;
+  --popover-foreground: 18% 0.25 50;
+  --primary: 35% 0.2 50;
+  --primary-foreground: 98% 0.01 50;
+  --secondary: 82% 0.22 50;
+  --secondary-foreground: 18% 0.01 50;
+  --muted: 90% 0.05 50;
+  --muted-foreground: 42% 0.2 50;
+  --accent: 32% 0.28 50;
+  --accent-foreground: 98% 0.01 50;
+  --destructive: 40% 0.28 50;
+  --destructive-foreground: 98% 0.01 50;
+  --border: 72% 0.15 50;
+  --input: 72% 0.15 50;
+  --ring: 32% 0.28 50;
+
+  /* Status colors - all monochrome amber */
+  --success: 35% 0.22 50;
+  --success-foreground: 98% 0.01 50;
+  --warning: 38% 0.28 50;
+  --warning-foreground: 98% 0.01 50;
+  --info: 36% 0.2 50;
+  --info-foreground: 98% 0.01 50;
+
+  /* Chart colors - all monochrome amber */
+  --chart-1: 38% 0.22 50;
+  --chart-2: 33% 0.18 50;
+  --chart-3: 42% 0.28 50;
+  --chart-4: 36% 0.2 50;
+  --chart-5: 30% 0.16 50;
+  --chart-6: 45% 0.25 50;
+  --chart-7: 28% 0.14 50;
+  --chart-8: 40% 0.21 50;
+  --chart-9: 34% 0.19 50;
+
+  /* Code syntax highlighting (Prism) */
+  --code-fg: #664400;
+  --code-bg: #fffbf0;
+  --code-comment: #886622;
+  --code-string: #553300;
+  --code-punctuation: #775511;
+  --code-number: #664400;
+  --code-keyword: #775500;
+  --code-function: #442200;
+  --code-selector: #664400;
+}
+
+/* Game Boy Theme - Authentic DMG-01 LCD green (hue 85) */
+[data-theme='gameboy'] {
+  --background: 85% 0.18 85; /* #9bbc0f iconic Game Boy green */
+  --foreground: 15% 0.12 85; /* #0f380f dark olive text */
+  --card: 80% 0.16 85;
+  --card-foreground: 15% 0.12 85;
+  --popover: 75% 0.14 85;
+  --popover-foreground: 15% 0.12 85;
+  --primary: 25% 0.14 85;
+  --primary-foreground: 85% 0.18 85;
+  --secondary: 65% 0.16 85;
+  --secondary-foreground: 15% 0.12 85;
+  --muted: 78% 0.15 85;
+  --muted-foreground: 35% 0.12 85;
+  --accent: 20% 0.14 85;
+  --accent-foreground: 85% 0.18 85;
+  --destructive: 30% 0.14 85;
+  --destructive-foreground: 85% 0.18 85;
+  --border: 55% 0.14 85;
+  --input: 55% 0.14 85;
+  --ring: 20% 0.14 85;
+
+  /* Status colors - Game Boy green spectrum */
+  --success: 25% 0.14 85;
+  --success-foreground: 85% 0.18 85;
+  --warning: 30% 0.14 85;
+  --warning-foreground: 85% 0.18 85;
+  --info: 22% 0.12 85;
+  --info-foreground: 85% 0.18 85;
+
+  /* Chart colors - olive green spectrum */
+  --chart-1: 25% 0.14 85;
+  --chart-2: 30% 0.14 85;
+  --chart-3: 35% 0.14 85;
+  --chart-4: 40% 0.14 85;
+  --chart-5: 45% 0.14 85;
+  --chart-6: 20% 0.12 85;
+  --chart-7: 32% 0.14 85;
+  --chart-8: 38% 0.14 85;
+  --chart-9: 42% 0.14 85;
+
+  /* Code syntax highlighting - authentic Game Boy palette */
+  --code-fg: #0f380f;
+  --code-bg: #9bbc0f;
+  --code-comment: #306230;
+  --code-string: #0f380f;
+  --code-punctuation: #1a4d1a;
+  --code-number: #0f380f;
+  --code-keyword: #0f380f;
+  --code-function: #1a4d1a;
+  --code-selector: #0f380f;
+}
+
+/* Apple II Theme - Classic green phosphor terminal (hue 145) */
+[data-theme='apple2'] {
+  --background: 92% 0.08 145; /* Soft green CRT glow */
+  --foreground: 18% 0.16 145;
+  --card: 88% 0.06 145;
+  --card-foreground: 18% 0.16 145;
+  --popover: 85% 0.06 145;
+  --popover-foreground: 18% 0.16 145;
+  --primary: 25% 0.16 145;
+  --primary-foreground: 92% 0.08 145;
+  --secondary: 75% 0.12 145;
+  --secondary-foreground: 18% 0.16 145;
+  --muted: 86% 0.06 145;
+  --muted-foreground: 38% 0.14 145;
+  --accent: 22% 0.16 145;
+  --accent-foreground: 92% 0.08 145;
+  --destructive: 28% 0.14 145;
+  --destructive-foreground: 92% 0.08 145;
+  --border: 65% 0.12 145;
+  --input: 65% 0.12 145;
+  --ring: 22% 0.16 145;
+
+  /* Status colors - green phosphor spectrum */
+  --success: 25% 0.16 145;
+  --success-foreground: 92% 0.08 145;
+  --warning: 30% 0.14 145;
+  --warning-foreground: 92% 0.08 145;
+  --info: 23% 0.14 145;
+  --info-foreground: 92% 0.08 145;
+
+  /* Chart colors - phosphor green */
+  --chart-1: 25% 0.16 145;
+  --chart-2: 30% 0.14 145;
+  --chart-3: 35% 0.14 145;
+  --chart-4: 40% 0.12 145;
+  --chart-5: 45% 0.12 145;
+  --chart-6: 22% 0.16 145;
+  --chart-7: 32% 0.14 145;
+  --chart-8: 38% 0.12 145;
+  --chart-9: 42% 0.12 145;
+
+  /* Code syntax highlighting - green phosphor */
+  --code-fg: #1a5c1a;
+  --code-bg: #d5eed5;
+  --code-comment: #3a7a3a;
+  --code-string: #1a5c1a;
+  --code-punctuation: #2a6a2a;
+  --code-number: #1a5c1a;
+  --code-keyword: #1a5c1a;
+  --code-function: #2a6a2a;
+  --code-selector: #1a5c1a;
+}
+
+/* C64 Theme - Commodore 64 light blue (hue 210) */
+[data-theme='c64'] {
+  --background: 88% 0.08 210; /* Light blue CRT */
+  --foreground: 20% 0.12 210;
+  --card: 84% 0.06 210;
+  --card-foreground: 20% 0.12 210;
+  --popover: 80% 0.06 210;
+  --popover-foreground: 20% 0.12 210;
+  --primary: 28% 0.14 210;
+  --primary-foreground: 88% 0.08 210;
+  --secondary: 72% 0.1 210;
+  --secondary-foreground: 20% 0.12 210;
+  --muted: 82% 0.06 210;
+  --muted-foreground: 42% 0.1 210;
+  --accent: 25% 0.14 210;
+  --accent-foreground: 88% 0.08 210;
+  --destructive: 32% 0.12 210;
+  --destructive-foreground: 88% 0.08 210;
+  --border: 62% 0.1 210;
+  --input: 62% 0.1 210;
+  --ring: 25% 0.14 210;
+
+  /* Status colors - blue spectrum */
+  --success: 28% 0.14 210;
+  --success-foreground: 88% 0.08 210;
+  --warning: 33% 0.12 210;
+  --warning-foreground: 88% 0.08 210;
+  --info: 26% 0.14 210;
+  --info-foreground: 88% 0.08 210;
+
+  /* Chart colors - blue spectrum */
+  --chart-1: 28% 0.14 210;
+  --chart-2: 32% 0.12 210;
+  --chart-3: 36% 0.12 210;
+  --chart-4: 40% 0.1 210;
+  --chart-5: 44% 0.1 210;
+  --chart-6: 25% 0.14 210;
+  --chart-7: 34% 0.12 210;
+  --chart-8: 38% 0.1 210;
+  --chart-9: 42% 0.1 210;
+
+  /* Code syntax highlighting - C64 blue */
+  --code-fg: #2a4a6a;
+  --code-bg: #d0e0f0;
+  --code-comment: #4a6a8a;
+  --code-string: #2a4a6a;
+  --code-punctuation: #3a5a7a;
+  --code-number: #2a4a6a;
+  --code-keyword: #2a4a6a;
+  --code-function: #3a5a7a;
+  --code-selector: #2a4a6a;
+}
+
+/* Game Boy Pocket Theme - Silver/gray monochrome LCD */
+[data-theme='gbpocket'] {
+  --background: 94% 0.01 0; /* Silver LCD background */
+  --foreground: 15% 0.01 0;
+  --card: 90% 0.01 0;
+  --card-foreground: 15% 0.01 0;
+  --popover: 86% 0.01 0;
+  --popover-foreground: 15% 0.01 0;
+  --primary: 20% 0.01 0;
+  --primary-foreground: 94% 0.01 0;
+  --secondary: 80% 0.01 0;
+  --secondary-foreground: 15% 0.01 0;
+  --muted: 88% 0.01 0;
+  --muted-foreground: 42% 0.01 0;
+  --accent: 18% 0.01 0;
+  --accent-foreground: 94% 0.01 0;
+  --destructive: 25% 0.01 0;
+  --destructive-foreground: 94% 0.01 0;
+  --border: 45% 0.01 0; /* Darkened from 68% for better visibility */
+  --input: 45% 0.01 0; /* Darkened from 68% for better visibility */
+  --ring: 18% 0.01 0;
+
+  /* Status colors - grayscale */
+  --success: 22% 0.01 0;
+  --success-foreground: 94% 0.01 0;
+  --warning: 28% 0.01 0;
+  --warning-foreground: 94% 0.01 0;
+  --info: 24% 0.01 0;
+  --info-foreground: 94% 0.01 0;
+
+  /* Chart colors - grayscale spectrum */
+  --chart-1: 20% 0.01 0;
+  --chart-2: 28% 0.01 0;
+  --chart-3: 36% 0.01 0;
+  --chart-4: 44% 0.01 0;
+  --chart-5: 52% 0.01 0;
+  --chart-6: 24% 0.01 0;
+  --chart-7: 32% 0.01 0;
+  --chart-8: 40% 0.01 0;
+  --chart-9: 48% 0.01 0;
+
+  /* Code syntax highlighting - grayscale */
+  --code-fg: #2a2a2a;
+  --code-bg: #e8e8e8;
+  --code-comment: #5a5a5a;
+  --code-string: #2a2a2a;
+  --code-punctuation: #3a3a3a;
+  --code-number: #2a2a2a;
+  --code-keyword: #2a2a2a;
+  --code-function: #3a3a3a;
+  --code-selector: #2a2a2a;
+}
+
+/* VIC-20 Theme - Commodore VIC-20 cyan (hue 180) */
+[data-theme='vic20'] {
+  --background: 90% 0.06 180; /* Light cyan background */
+  --foreground: 18% 0.1 180;
+  --card: 86% 0.05 180;
+  --card-foreground: 18% 0.1 180;
+  --popover: 82% 0.05 180;
+  --popover-foreground: 18% 0.1 180;
+  --primary: 25% 0.12 180;
+  --primary-foreground: 90% 0.06 180;
+  --secondary: 74% 0.08 180;
+  --secondary-foreground: 18% 0.1 180;
+  --muted: 84% 0.05 180;
+  --muted-foreground: 40% 0.08 180;
+  --accent: 22% 0.12 180;
+  --accent-foreground: 90% 0.06 180;
+  --destructive: 30% 0.1 180;
+  --destructive-foreground: 90% 0.06 180;
+  --border: 60% 0.08 180;
+  --input: 60% 0.08 180;
+  --ring: 22% 0.12 180;
+
+  /* Status colors - cyan spectrum */
+  --success: 25% 0.12 180;
+  --success-foreground: 90% 0.06 180;
+  --warning: 32% 0.1 180;
+  --warning-foreground: 90% 0.06 180;
+  --info: 26% 0.12 180;
+  --info-foreground: 90% 0.06 180;
+
+  /* Chart colors - cyan spectrum */
+  --chart-1: 25% 0.12 180;
+  --chart-2: 30% 0.1 180;
+  --chart-3: 35% 0.1 180;
+  --chart-4: 40% 0.08 180;
+  --chart-5: 45% 0.08 180;
+  --chart-6: 22% 0.12 180;
+  --chart-7: 32% 0.1 180;
+  --chart-8: 38% 0.08 180;
+  --chart-9: 42% 0.08 180;
+
+  /* Code syntax highlighting - cyan */
+  --code-fg: #1a5a5a;
+  --code-bg: #d0f0f0;
+  --code-comment: #3a7a7a;
+  --code-string: #1a5a5a;
+  --code-punctuation: #2a6a6a;
+  --code-number: #1a5a5a;
+  --code-keyword: #1a5a5a;
+  --code-function: #2a6a6a;
+  --code-selector: #1a5a5a;
+}
+
+/* Atari 800 Theme - Atari 8-bit tan/orange (hue 35) */
+[data-theme='atari'] {
+  --background: 90% 0.1 35; /* Warm tan background */
+  --foreground: 20% 0.14 35;
+  --card: 86% 0.08 35;
+  --card-foreground: 20% 0.14 35;
+  --popover: 82% 0.08 35;
+  --popover-foreground: 20% 0.14 35;
+  --primary: 28% 0.16 35;
+  --primary-foreground: 90% 0.1 35;
+  --secondary: 75% 0.12 35;
+  --secondary-foreground: 20% 0.14 35;
+  --muted: 84% 0.08 35;
+  --muted-foreground: 42% 0.12 35;
+  --accent: 25% 0.16 35;
+  --accent-foreground: 90% 0.1 35;
+  --destructive: 32% 0.14 35;
+  --destructive-foreground: 90% 0.1 35;
+  --border: 62% 0.12 35;
+  --input: 62% 0.12 35;
+  --ring: 25% 0.16 35;
+
+  /* Status colors - warm spectrum */
+  --success: 28% 0.16 35;
+  --success-foreground: 90% 0.1 35;
+  --warning: 33% 0.14 35;
+  --warning-foreground: 90% 0.1 35;
+  --info: 26% 0.14 35;
+  --info-foreground: 90% 0.1 35;
+
+  /* Chart colors - warm spectrum */
+  --chart-1: 28% 0.16 35;
+  --chart-2: 32% 0.14 35;
+  --chart-3: 36% 0.14 35;
+  --chart-4: 40% 0.12 35;
+  --chart-5: 44% 0.12 35;
+  --chart-6: 25% 0.16 35;
+  --chart-7: 34% 0.14 35;
+  --chart-8: 38% 0.12 35;
+  --chart-9: 42% 0.12 35;
+
+  /* Code syntax highlighting - warm tan */
+  --code-fg: #5a3a1a;
+  --code-bg: #f0e0d0;
+  --code-comment: #7a5a3a;
+  --code-string: #5a3a1a;
+  --code-punctuation: #6a4a2a;
+  --code-number: #5a3a1a;
+  --code-keyword: #5a3a1a;
+  --code-function: #6a4a2a;
+  --code-selector: #5a3a1a;
+}
+
+/* ZX Spectrum Theme - Sinclair ZX Spectrum bright (hue 250) */
+[data-theme='spectrum'] {
+  --background: 96% 0.02 250; /* Near-white with subtle blue */
+  --foreground: 10% 0.08 250;
+  --card: 92% 0.02 250;
+  --card-foreground: 10% 0.08 250;
+  --popover: 88% 0.02 250;
+  --popover-foreground: 10% 0.08 250;
+  --primary: 18% 0.12 250;
+  --primary-foreground: 96% 0.02 250;
+  --secondary: 82% 0.06 250;
+  --secondary-foreground: 10% 0.08 250;
+  --muted: 90% 0.02 250;
+  --muted-foreground: 38% 0.08 250;
+  --accent: 15% 0.12 250;
+  --accent-foreground: 96% 0.02 250;
+  --destructive: 22% 0.1 250;
+  --destructive-foreground: 96% 0.02 250;
+  --border: 68% 0.06 250;
+  --input: 68% 0.06 250;
+  --ring: 15% 0.12 250;
+
+  /* Status colors - spectrum */
+  --success: 20% 0.12 250;
+  --success-foreground: 96% 0.02 250;
+  --warning: 26% 0.1 250;
+  --warning-foreground: 96% 0.02 250;
+  --info: 18% 0.12 250;
+  --info-foreground: 96% 0.02 250;
+
+  /* Chart colors - spectrum */
+  --chart-1: 18% 0.12 250;
+  --chart-2: 24% 0.1 250;
+  --chart-3: 30% 0.1 250;
+  --chart-4: 36% 0.08 250;
+  --chart-5: 42% 0.08 250;
+  --chart-6: 20% 0.12 250;
+  --chart-7: 27% 0.1 250;
+  --chart-8: 33% 0.08 250;
+  --chart-9: 39% 0.08 250;
+
+  /* Code syntax highlighting - bright spectrum */
+  --code-fg: #1a1a5a;
+  --code-bg: #f5f5ff;
+  --code-comment: #4a4a7a;
+  --code-string: #1a1a5a;
+  --code-punctuation: #2a2a6a;
+  --code-number: #1a1a5a;
+  --code-keyword: #1a1a5a;
+  --code-function: #2a2a6a;
+  --code-selector: #1a1a5a;
+}
+
+/* IBM PC Theme - IBM PC monochrome green (hue 145) */
+[data-theme='ibmpc'] {
+  --background: 92% 0.04 145; /* Soft green glow */
+  --foreground: 12% 0.08 145;
+  --card: 88% 0.03 145;
+  --card-foreground: 12% 0.08 145;
+  --popover: 84% 0.03 145;
+  --popover-foreground: 12% 0.08 145;
+  --primary: 18% 0.1 145;
+  --primary-foreground: 92% 0.04 145;
+  --secondary: 76% 0.06 145;
+  --secondary-foreground: 12% 0.08 145;
+  --muted: 86% 0.03 145;
+  --muted-foreground: 38% 0.06 145;
+  --accent: 15% 0.1 145;
+  --accent-foreground: 92% 0.04 145;
+  --destructive: 22% 0.08 145;
+  --destructive-foreground: 92% 0.04 145;
+  --border: 64% 0.06 145;
+  --input: 64% 0.06 145;
+  --ring: 15% 0.1 145;
+
+  /* Status colors - green spectrum */
+  --success: 18% 0.1 145;
+  --success-foreground: 92% 0.04 145;
+  --warning: 24% 0.08 145;
+  --warning-foreground: 92% 0.04 145;
+  --info: 20% 0.08 145;
+  --info-foreground: 92% 0.04 145;
+
+  /* Chart colors - green spectrum */
+  --chart-1: 18% 0.1 145;
+  --chart-2: 24% 0.08 145;
+  --chart-3: 30% 0.08 145;
+  --chart-4: 36% 0.06 145;
+  --chart-5: 42% 0.06 145;
+  --chart-6: 20% 0.1 145;
+  --chart-7: 27% 0.08 145;
+  --chart-8: 33% 0.06 145;
+  --chart-9: 39% 0.06 145;
+
+  /* Code syntax highlighting - IBM green */
+  --code-fg: #1a4a1a;
+  --code-bg: #e8f4e8;
+  --code-comment: #3a6a3a;
+  --code-string: #1a4a1a;
+  --code-punctuation: #2a5a2a;
+  --code-number: #1a4a1a;
+  --code-keyword: #1a4a1a;
+  --code-function: #2a5a2a;
+  --code-selector: #1a4a1a;
+}
+
+/* ============================================
+   Black & White Theme - Pure grayscale (hue 0, zero saturation)
+   High contrast for accessibility and minimalist aesthetic
+   ============================================ */
+
+[data-theme='bw'] {
+  /* Base colors - Pure black & white (no saturation) */
+  --background: 100% 0 0; /* Pure white */
+  --foreground: 0% 0 0; /* Pure black */
+  --card: 100% 0 0;
+  --card-foreground: 0% 0 0;
+  --popover: 100% 0 0;
+  --popover-foreground: 0% 0 0;
+
+  /* Primary - Black (accent color is pure black) */
+  --primary: 0% 0 0;
+  --primary-foreground: 100% 0 0;
+
+  /* Secondary - 90% lightness for subtle differentiation */
+  --secondary: 90% 0 0;
+  --secondary-foreground: 0% 0 0;
+
+  /* Muted - Mid-gray for less prominent elements */
+  --muted: 92% 0 0;
+  --muted-foreground: 35% 0 0;
+
+  /* Accent - Slightly darker than muted */
+  --accent: 85% 0 0;
+  --accent-foreground: 0% 0 0;
+
+  /* Destructive - Dark gray for errors (no color) */
+  --destructive: 25% 0 0;
+  --destructive-foreground: 100% 0 0;
+
+  /* Borders - Medium gray */
+  --border: 70% 0 0;
+  --input: 70% 0 0;
+
+  /* Ring - Focus indicator (dark gray) */
+  --ring: 0% 0 0;
+
+  /* Chart colors - Grayscale only */
+  --chart-1: 20% 0 0;
+  --chart-2: 35% 0 0;
+  --chart-3: 50% 0 0;
+  --chart-4: 65% 0 0;
+  --chart-5: 80% 0 0;
+
+  /* Terminal radius */
+  --radius: 0rem;
+
+  /* Syntax highlighting - Grayscale */
+  --code-bg: #f5f5f5;
+  --code-foreground: #000000;
+  --code-comment: #6a6a6a;
+  --code-string: #2a2a2a;
+  --code-punctuation: #4a4a4a;
+  --code-number: #1a1a1a;
+  --code-keyword: #0a0a0a;
+  --code-function: #2a2a2a;
+  --code-selector: #1a1a1a;
+}
+
+/* ============================================
+   Newspaper Theme - Classic newsprint aesthetic (hue 40, warm paper)
+   Cream/off-white background with black text
+   ============================================ */
+
+[data-theme='newspaper'] {
+  /* Base colors - Warm newsprint (40 = yellowish/tan) */
+  --background: 96% 0.03 40; /* Cream/off-white paper */
+  --foreground: 8% 0.02 40; /* Near-black text */
+  --card: 98% 0.02 40;
+  --card-foreground: 8% 0.02 40;
+  --popover: 98% 0.02 40;
+  --popover-foreground: 8% 0.02 40;
+
+  /* Primary - Dark ink color */
+  --primary: 10% 0.03 40;
+  --primary-foreground: 96% 0.03 40;
+
+  /* Secondary - Slightly tinted paper */
+  --secondary: 90% 0.03 40;
+  --secondary-foreground: 10% 0.03 40;
+
+  /* Muted - Lighter newsprint */
+  --muted: 92% 0.02 40;
+  --muted-foreground: 35% 0.02 40;
+
+  /* Accent - Darker than muted, warmer */
+  --accent: 85% 0.04 40;
+  --accent-foreground: 10% 0.03 40;
+
+  /* Destructive - Ink-like dark */
+  --destructive: 20% 0.04 0;
+  --destructive-foreground: 96% 0.03 40;
+
+  /* Borders - Subtle gray-brown */
+  --border: 60% 0.02 40;
+  --input: 60% 0.02 40;
+
+  /* Ring - Dark ink */
+  --ring: 10% 0.03 40;
+
+  /* Chart colors - Newsprint ink tones */
+  --chart-1: 20% 0.03 40;
+  --chart-2: 30% 0.03 40;
+  --chart-3: 40% 0.03 40;
+  --chart-4: 50% 0.03 40;
+  --chart-5: 60% 0.03 40;
+
+  /* Terminal radius */
+  --radius: 0rem;
+
+  /* Syntax highlighting - Newsprint ink */
+  --code-bg: #faf8f5;
+  --code-foreground: #1a1a18;
+  --code-comment: #757570;
+  --code-string: #3a3a35;
+  --code-punctuation: #4a4a45;
+  --code-number: #2a2a25;
+  --code-keyword: #1a1a15;
+  --code-function: #3a3a35;
+  --code-selector: #2a2a25;
+}
+
+/* ============================================
+   Paper Theme - Warm paper texture (hue 35, warmer than newspaper)
+   Softer than newspaper, like quality writing paper
+   ============================================ */
+
+[data-theme='paper'] {
+  /* Base colors - Warm paper (35 = peachy/tan) */
+  --background: 94% 0.04 35; /* Warm paper */
+  --foreground: 12% 0.03 35; /* Soft black */
+  --card: 96% 0.03 35;
+  --card-foreground: 12% 0.03 35;
+  --popover: 96% 0.03 35;
+  --popover-foreground: 12% 0.03 35;
+
+  /* Primary - Warm dark ink */
+  --primary: 15% 0.04 35;
+  --primary-foreground: 94% 0.04 35;
+
+  /* Secondary - Slightly tinted paper */
+  --secondary: 88% 0.04 35;
+  --secondary-foreground: 15% 0.04 35;
+
+  /* Muted - Light warm paper */
+  --muted: 90% 0.03 35;
+  --muted-foreground: 38% 0.03 35;
+
+  /* Accent - Medium warm tone */
+  --accent: 82% 0.05 35;
+  --accent-foreground: 15% 0.04 35;
+
+  /* Destructive - Darker warm tone */
+  --destructive: 22% 0.05 0;
+  --destructive-foreground: 94% 0.04 35;
+
+  /* Borders - Warm gray */
+  --border: 62% 0.03 35;
+  --input: 62% 0.03 35;
+
+  /* Ring - Warm dark ink */
+  --ring: 15% 0.04 35;
+
+  /* Chart colors - Warm paper tones */
+  --chart-1: 25% 0.04 35;
+  --chart-2: 35% 0.04 35;
+  --chart-3: 45% 0.04 35;
+  --chart-4: 55% 0.04 35;
+  --chart-5: 65% 0.04 35;
+
+  /* Terminal radius */
+  --radius: 0rem;
+
+  /* Syntax highlighting - Warm ink on paper */
+  --code-bg: #f7f4f0;
+  --code-foreground: #2a2520;
+  --code-comment: #7a756f;
+  --code-string: #4a453f;
+  --code-punctuation: #5a554f;
+  --code-number: #3a352f;
+  --code-keyword: #2a251f;
+  --code-function: #4a453f;
+  --code-selector: #3a352f;
+}
+
 /* ============================================
    CRT GLOW EFFECTS - Apply to all text
    ============================================ */
@@ -732,6 +1451,56 @@
   text-shadow:
     0 0 2px oklch(70% 0.25 300 / 0.3),
     0 0 4px oklch(70% 0.25 300 / 0.15);
+}
+[data-theme='light-green'] body {
+  text-shadow:
+    0 0 1px oklch(15% 0.3 145 / 0.2),
+    0 0 2px oklch(15% 0.3 145 / 0.1);
+}
+[data-theme='light-amber'] body {
+  text-shadow:
+    0 0 1px oklch(18% 0.25 50 / 0.2),
+    0 0 2px oklch(18% 0.25 50 / 0.1);
+}
+[data-theme='gameboy'] body {
+  text-shadow:
+    0 0 1px oklch(15% 0.12 85 / 0.25),
+    0 0 3px oklch(15% 0.12 85 / 0.12);
+}
+[data-theme='apple2'] body {
+  text-shadow:
+    0 0 1px oklch(18% 0.16 145 / 0.2),
+    0 0 2px oklch(18% 0.16 145 / 0.1);
+}
+[data-theme='c64'] body {
+  text-shadow:
+    0 0 1px oklch(20% 0.12 210 / 0.2),
+    0 0 2px oklch(20% 0.12 210 / 0.1);
+}
+[data-theme='gbpocket'] body {
+  text-shadow:
+    0 0 1px oklch(15% 0.01 0 / 0.15),
+    0 0 2px oklch(15% 0.01 0 / 0.08);
+}
+[data-theme='vic20'] body {
+  text-shadow:
+    0 0 1px oklch(18% 0.1 180 / 0.2),
+    0 0 2px oklch(18% 0.1 180 / 0.1);
+}
+[data-theme='atari'] body {
+  text-shadow:
+    0 0 1px oklch(20% 0.14 35 / 0.2),
+    0 0 2px oklch(20% 0.14 35 / 0.1);
+}
+[data-theme='spectrum'] body {
+  text-shadow:
+    0 0 1px oklch(10% 0.08 250 / 0.15),
+    0 0 2px oklch(10% 0.08 250 / 0.08);
+}
+[data-theme='ibmpc'] body {
+  text-shadow:
+    0 0 1px oklch(12% 0.08 145 / 0.2),
+    0 0 2px oklch(12% 0.08 145 / 0.1);
 }
 
 /* ============================================
