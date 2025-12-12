@@ -9,7 +9,46 @@ import { DEFAULT_THEME, THEME_NAMES } from '../themes';
 // =============================================================================
 
 // Color themes correspond to CRT phosphor palettes in globals.css
-export type ColorThemeName = 'amber' | 'green' | 'blue' | 'red' | 'purple';
+export type ColorThemeName =
+  | 'amber'
+  | 'green'
+  | 'blue'
+  | 'red'
+  | 'purple'
+  | 'light-green'
+  | 'light-amber'
+  | 'gameboy'
+  | 'apple2'
+  | 'c64'
+  | 'gbpocket'
+  | 'vic20'
+  | 'atari'
+  | 'spectrum'
+  | 'ibmpc'
+  | 'bw'
+  | 'newspaper'
+  | 'paper';
+
+const ALL_THEMES = [
+  'amber',
+  'green',
+  'blue',
+  'red',
+  'purple',
+  'light-green',
+  'light-amber',
+  'gameboy',
+  'apple2',
+  'c64',
+  'gbpocket',
+  'vic20',
+  'atari',
+  'spectrum',
+  'ibmpc',
+  'bw',
+  'newspaper',
+  'paper',
+];
 
 export interface ThemeContextValue {
   theme: ThemeName;
@@ -67,7 +106,7 @@ export function ThemeProvider({
     }
 
     const storedColor = localStorage.getItem(colorKey) || localStorage.getItem(legacyColorKey);
-    if (storedColor && ['amber', 'green', 'blue', 'red', 'purple'].includes(storedColor)) {
+    if (storedColor && ALL_THEMES.includes(storedColor)) {
       setColorThemeState(storedColor as ColorThemeName);
     }
 
@@ -92,7 +131,7 @@ export function ThemeProvider({
   };
 
   const setColorTheme = (newTheme: ColorThemeName) => {
-    if (['amber', 'green', 'blue', 'red', 'purple'].includes(newTheme)) {
+    if (ALL_THEMES.includes(newTheme)) {
       setColorThemeState(newTheme);
     }
   };
@@ -150,7 +189,27 @@ export function ThemeScript({
           localStorage.getItem('${colorKey}') ||
           localStorage.getItem('${legacyColorKey}') ||
           '${defaultColorTheme}';
-        if (['amber', 'green', 'blue', 'red', 'purple'].includes(colorTheme)) {
+        var validThemes = [
+          'amber',
+          'green',
+          'blue',
+          'red',
+          'purple',
+          'light-green',
+          'light-amber',
+          'gameboy',
+          'apple2',
+          'c64',
+          'gbpocket',
+          'vic20',
+          'atari',
+          'spectrum',
+          'ibmpc',
+          'bw',
+          'newspaper',
+          'paper',
+        ];
+        if (validThemes.includes(colorTheme)) {
           document.documentElement.setAttribute('data-theme', colorTheme);
         } else {
           document.documentElement.setAttribute('data-theme', '${defaultColorTheme}');
