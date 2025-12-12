@@ -865,108 +865,108 @@
 
 /* Apple II Theme - Classic green phosphor terminal (hue 145) */
 [data-theme='apple2'] {
-  --background: 92% 0.08 145; /* Soft green CRT glow */
-  --foreground: 18% 0.16 145;
-  --card: 88% 0.06 145;
-  --card-foreground: 18% 0.16 145;
-  --popover: 85% 0.06 145;
-  --popover-foreground: 18% 0.16 145;
-  --primary: 25% 0.16 145;
-  --primary-foreground: 92% 0.08 145;
-  --secondary: 75% 0.12 145;
-  --secondary-foreground: 18% 0.16 145;
-  --muted: 86% 0.06 145;
-  --muted-foreground: 38% 0.14 145;
-  --accent: 22% 0.16 145;
-  --accent-foreground: 92% 0.08 145;
-  --destructive: 28% 0.14 145;
-  --destructive-foreground: 92% 0.08 145;
-  --border: 65% 0.12 145;
-  --input: 65% 0.12 145;
-  --ring: 22% 0.16 145;
+  --background: 5% 0.01 145; /* Black/Dark Green background */
+  --foreground: 85% 0.3 145; /* Bright Green text */
+  --card: 8% 0.02 145;
+  --card-foreground: 85% 0.3 145;
+  --popover: 10% 0.03 145;
+  --popover-foreground: 85% 0.3 145;
+  --primary: 40% 0.25 145;
+  --primary-foreground: 95% 0.01 145;
+  --secondary: 70% 0.25 145;
+  --secondary-foreground: 5% 0.01 145;
+  --muted: 18% 0.05 145;
+  --muted-foreground: 70% 0.22 145;
+  --accent: 90% 0.3 145;
+  --accent-foreground: 5% 0.01 145;
+  --destructive: 80% 0.28 145;
+  --destructive-foreground: 5% 0.01 145;
+  --border: 40% 0.18 145;
+  --input: 40% 0.18 145;
+  --ring: 90% 0.3 145;
 
   /* Status colors - green phosphor spectrum */
-  --success: 25% 0.16 145;
-  --success-foreground: 92% 0.08 145;
-  --warning: 30% 0.14 145;
-  --warning-foreground: 92% 0.08 145;
-  --info: 23% 0.14 145;
-  --info-foreground: 92% 0.08 145;
+  --success: 75% 0.28 145;
+  --success-foreground: 5% 0.01 145;
+  --warning: 80% 0.26 145;
+  --warning-foreground: 5% 0.01 145;
+  --info: 70% 0.24 145;
+  --info-foreground: 5% 0.01 145;
 
   /* Chart colors - phosphor green */
-  --chart-1: 25% 0.16 145;
-  --chart-2: 30% 0.14 145;
-  --chart-3: 35% 0.14 145;
-  --chart-4: 40% 0.12 145;
-  --chart-5: 45% 0.12 145;
-  --chart-6: 22% 0.16 145;
-  --chart-7: 32% 0.14 145;
-  --chart-8: 38% 0.12 145;
-  --chart-9: 42% 0.12 145;
+  --chart-1: 75% 0.28 145;
+  --chart-2: 65% 0.24 145;
+  --chart-3: 80% 0.26 145;
+  --chart-4: 70% 0.22 145;
+  --chart-5: 60% 0.2 145;
+  --chart-6: 85% 0.3 145;
+  --chart-7: 55% 0.18 145;
+  --chart-8: 72% 0.25 145;
+  --chart-9: 68% 0.23 145;
 
   /* Code syntax highlighting - green phosphor */
-  --code-fg: #1a5c1a;
-  --code-bg: #d5eed5;
-  --code-comment: #3a7a3a;
-  --code-string: #1a5c1a;
-  --code-punctuation: #2a6a2a;
-  --code-number: #1a5c1a;
-  --code-keyword: #1a5c1a;
-  --code-function: #2a6a2a;
-  --code-selector: #1a5c1a;
+  --code-fg: #33ff66;
+  --code-bg: #001a0a;
+  --code-comment: #00aa44;
+  --code-string: #44ff77;
+  --code-punctuation: #22dd55;
+  --code-number: #00cc44;
+  --code-keyword: #00ff55;
+  --code-function: #66ff88;
+  --code-selector: #33ff66;
 }
 
-/* C64 Theme - Commodore 64 light blue (hue 210) */
+/* C64 Theme - Commodore 64 blue (hue 280) */
 [data-theme='c64'] {
-  --background: 88% 0.08 210; /* Light blue CRT */
-  --foreground: 20% 0.12 210;
-  --card: 84% 0.06 210;
-  --card-foreground: 20% 0.12 210;
-  --popover: 80% 0.06 210;
-  --popover-foreground: 20% 0.12 210;
-  --primary: 28% 0.14 210;
-  --primary-foreground: 88% 0.08 210;
-  --secondary: 72% 0.1 210;
-  --secondary-foreground: 20% 0.12 210;
-  --muted: 82% 0.06 210;
-  --muted-foreground: 42% 0.1 210;
-  --accent: 25% 0.14 210;
-  --accent-foreground: 88% 0.08 210;
-  --destructive: 32% 0.12 210;
-  --destructive-foreground: 88% 0.08 210;
-  --border: 62% 0.1 210;
-  --input: 62% 0.1 210;
-  --ring: 25% 0.14 210;
+  --background: 25% 0.1 280; /* Dark Blue (#352879 approx) */
+  --foreground: 70% 0.15 280; /* Light Blue (#6c5eb5 approx) */
+  --card: 28% 0.1 280;
+  --card-foreground: 70% 0.15 280;
+  --popover: 30% 0.1 280;
+  --popover-foreground: 70% 0.15 280;
+  --primary: 60% 0.2 280;
+  --primary-foreground: 25% 0.1 280;
+  --secondary: 40% 0.15 280;
+  --secondary-foreground: 80% 0.1 280;
+  --muted: 35% 0.05 280;
+  --muted-foreground: 60% 0.1 280;
+  --accent: 75% 0.2 280;
+  --accent-foreground: 25% 0.1 280;
+  --destructive: 60% 0.2 0;
+  --destructive-foreground: 95% 0.05 0;
+  --border: 45% 0.1 280;
+  --input: 45% 0.1 280;
+  --ring: 75% 0.2 280;
 
   /* Status colors - blue spectrum */
-  --success: 28% 0.14 210;
-  --success-foreground: 88% 0.08 210;
-  --warning: 33% 0.12 210;
-  --warning-foreground: 88% 0.08 210;
-  --info: 26% 0.14 210;
-  --info-foreground: 88% 0.08 210;
+  --success: 65% 0.2 280;
+  --success-foreground: 25% 0.1 280;
+  --warning: 70% 0.18 280;
+  --warning-foreground: 25% 0.1 280;
+  --info: 60% 0.18 280;
+  --info-foreground: 25% 0.1 280;
 
   /* Chart colors - blue spectrum */
-  --chart-1: 28% 0.14 210;
-  --chart-2: 32% 0.12 210;
-  --chart-3: 36% 0.12 210;
-  --chart-4: 40% 0.1 210;
-  --chart-5: 44% 0.1 210;
-  --chart-6: 25% 0.14 210;
-  --chart-7: 34% 0.12 210;
-  --chart-8: 38% 0.1 210;
-  --chart-9: 42% 0.1 210;
+  --chart-1: 65% 0.2 280;
+  --chart-2: 55% 0.18 280;
+  --chart-3: 70% 0.22 280;
+  --chart-4: 60% 0.16 280;
+  --chart-5: 50% 0.14 280;
+  --chart-6: 75% 0.24 280;
+  --chart-7: 45% 0.12 280;
+  --chart-8: 62% 0.19 280;
+  --chart-9: 68% 0.21 280;
 
   /* Code syntax highlighting - C64 blue */
-  --code-fg: #2a4a6a;
-  --code-bg: #d0e0f0;
-  --code-comment: #4a6a8a;
-  --code-string: #2a4a6a;
-  --code-punctuation: #3a5a7a;
-  --code-number: #2a4a6a;
-  --code-keyword: #2a4a6a;
-  --code-function: #3a5a7a;
-  --code-selector: #2a4a6a;
+  --code-fg: #a8a0e0;
+  --code-bg: #352879;
+  --code-comment: #7c70da;
+  --code-string: #8e80e0;
+  --code-punctuation: #9e90e0;
+  --code-number: #becefa;
+  --code-keyword: #a8a0e0;
+  --code-function: #becefa;
+  --code-selector: #a8a0e0;
 }
 
 /* Game Boy Pocket Theme - Silver/gray monochrome LCD */
@@ -1183,55 +1183,55 @@
 
 /* IBM PC Theme - IBM PC monochrome green (hue 145) */
 [data-theme='ibmpc'] {
-  --background: 92% 0.04 145; /* Soft green glow */
-  --foreground: 12% 0.08 145;
-  --card: 88% 0.03 145;
-  --card-foreground: 12% 0.08 145;
-  --popover: 84% 0.03 145;
-  --popover-foreground: 12% 0.08 145;
-  --primary: 18% 0.1 145;
-  --primary-foreground: 92% 0.04 145;
-  --secondary: 76% 0.06 145;
-  --secondary-foreground: 12% 0.08 145;
-  --muted: 86% 0.03 145;
-  --muted-foreground: 38% 0.06 145;
-  --accent: 15% 0.1 145;
-  --accent-foreground: 92% 0.04 145;
-  --destructive: 22% 0.08 145;
-  --destructive-foreground: 92% 0.04 145;
-  --border: 64% 0.06 145;
-  --input: 64% 0.06 145;
-  --ring: 15% 0.1 145;
+  --background: 5% 0.01 145; /* Black/Dark Green background */
+  --foreground: 80% 0.3 145; /* Bright Green text */
+  --card: 8% 0.02 145;
+  --card-foreground: 80% 0.3 145;
+  --popover: 10% 0.03 145;
+  --popover-foreground: 80% 0.3 145;
+  --primary: 40% 0.25 145;
+  --primary-foreground: 95% 0.01 145;
+  --secondary: 70% 0.25 145;
+  --secondary-foreground: 5% 0.01 145;
+  --muted: 18% 0.05 145;
+  --muted-foreground: 70% 0.22 145;
+  --accent: 85% 0.3 145;
+  --accent-foreground: 5% 0.01 145;
+  --destructive: 80% 0.28 145;
+  --destructive-foreground: 5% 0.01 145;
+  --border: 40% 0.18 145;
+  --input: 40% 0.18 145;
+  --ring: 85% 0.3 145;
 
   /* Status colors - green spectrum */
-  --success: 18% 0.1 145;
-  --success-foreground: 92% 0.04 145;
-  --warning: 24% 0.08 145;
-  --warning-foreground: 92% 0.04 145;
-  --info: 20% 0.08 145;
-  --info-foreground: 92% 0.04 145;
+  --success: 75% 0.28 145;
+  --success-foreground: 5% 0.01 145;
+  --warning: 80% 0.26 145;
+  --warning-foreground: 5% 0.01 145;
+  --info: 70% 0.24 145;
+  --info-foreground: 5% 0.01 145;
 
   /* Chart colors - green spectrum */
-  --chart-1: 18% 0.1 145;
-  --chart-2: 24% 0.08 145;
-  --chart-3: 30% 0.08 145;
-  --chart-4: 36% 0.06 145;
-  --chart-5: 42% 0.06 145;
-  --chart-6: 20% 0.1 145;
-  --chart-7: 27% 0.08 145;
-  --chart-8: 33% 0.06 145;
-  --chart-9: 39% 0.06 145;
+  --chart-1: 75% 0.28 145;
+  --chart-2: 65% 0.24 145;
+  --chart-3: 80% 0.26 145;
+  --chart-4: 70% 0.22 145;
+  --chart-5: 60% 0.2 145;
+  --chart-6: 85% 0.3 145;
+  --chart-7: 55% 0.18 145;
+  --chart-8: 72% 0.25 145;
+  --chart-9: 68% 0.23 145;
 
   /* Code syntax highlighting - IBM green */
-  --code-fg: #1a4a1a;
-  --code-bg: #e8f4e8;
-  --code-comment: #3a6a3a;
-  --code-string: #1a4a1a;
-  --code-punctuation: #2a5a2a;
-  --code-number: #1a4a1a;
-  --code-keyword: #1a4a1a;
-  --code-function: #2a5a2a;
-  --code-selector: #1a4a1a;
+  --code-fg: #33ff66;
+  --code-bg: #001a0a;
+  --code-comment: #00aa44;
+  --code-string: #44ff77;
+  --code-punctuation: #22dd55;
+  --code-number: #00cc44;
+  --code-keyword: #00ff55;
+  --code-function: #66ff88;
+  --code-selector: #33ff66;
 }
 
 /* ============================================
