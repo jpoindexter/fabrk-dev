@@ -193,7 +193,7 @@ export const docsNavigation: NavSection[] = [
     title: '[07] COMPONENTS',
     items: [
       {
-        title: 'UI LIBRARY 100+',
+        title: 'UI LIBRARY 80',
         href: '/docs/components/overview',
         icon: Blocks,
       },
@@ -365,6 +365,11 @@ export const docsNavigation: NavSection[] = [
             href: '/docs/components/sparkline',
             icon: LineChart,
           },
+          {
+            title: 'USAGE METER',
+            href: '/docs/components/usage-meter',
+            icon: LineChart,
+          },
         ],
       },
       {
@@ -470,11 +475,7 @@ export const docsNavigation: NavSection[] = [
         ],
       },
       {
-        title: '[07.9] MEDIA',
-        items: [],
-      },
-      {
-        title: '[07.10] SPECIALIZED',
+        title: '[07.9] SAAS SPECIFIC',
         items: [
           {
             title: 'API KEY MANAGER',
@@ -517,24 +518,9 @@ export const docsNavigation: NavSection[] = [
             icon: CreditCard,
           },
           {
-            title: 'SIGN IN FORM',
-            href: '/docs/components/sign-in-form',
-            icon: Lock,
-          },
-          {
             title: 'SIGN UP FORM',
             href: '/docs/components/sign-up-form',
             icon: Users,
-          },
-          {
-            title: 'SIMPLE ICON',
-            href: '/docs/components/simple-icon',
-            icon: Blocks,
-          },
-          {
-            title: 'USAGE METER',
-            href: '/docs/components/usage-meter',
-            icon: BarChart3,
           },
           {
             title: 'WEBHOOK LOG',
