@@ -325,7 +325,7 @@ export const mode: ModeConfig = {
       text: 'hover:text-foreground',
     },
     focus: {
-      ring: 'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+      ring: 'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
     },
     disabled: {
       opacity: 'disabled:opacity-[var(--state-disabled-opacity)]',
