@@ -8,13 +8,24 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Search, Package, Layers, Code, Star, Clock, Sparkles } from 'lucide-react';
+import {
+  Search,
+  Package,
+  Layers,
+  Code,
+  Star,
+  Clock,
+  Sparkles,
+  SlidersHorizontal,
+} from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 import { InputSearch } from '@/components/ui/input-search';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { templates, categories } from './library-data';
 import { filterTemplates } from '@/lib/search';
+import { AdvancedFilters, type FilterOptions } from '@/components/library';
 
 // Featured template IDs (manually curated)
 const FEATURED_IDS = [
@@ -29,6 +40,8 @@ const FEATURED_IDS = [
 export default function LibraryIndexPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [showFilters, setShowFilters] = useState(false);
+  const [advancedFilters, setAdvancedFilters] = useState<FilterOptions>({});
 
   // Get featured templates
   const featuredTemplates = templates.filter((t) => FEATURED_IDS.includes(t.id));
@@ -38,7 +51,22 @@ export default function LibraryIndexPage() {
   const filteredTemplates = filterTemplates(templates, {
     searchQuery: searchQuery,
     category: selectedCategory,
+    complexity: advancedFilters.difficulty,
+    hasFeature: advancedFilters.feature,
+    setupTime: advancedFilters.setupTime,
+    hasDependencies: advancedFilters.hasDependencies,
   });
+
+  // Calculate active filter count
+  const activeFilterCount =
+    (advancedFilters.difficulty ? 1 : 0) +
+    (advancedFilters.setupTime ? 1 : 0) +
+    (advancedFilters.hasDependencies ? 1 : 0) +
+    (advancedFilters.feature ? 1 : 0);
+
+  const handleClearFilters = () => {
+    setAdvancedFilters({});
+  };
 
   // Calculate stats
   const stats = {
@@ -258,7 +286,7 @@ export default function LibraryIndexPage() {
         </div>
 
         {/* Category Pills */}
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <button
             onClick={() => setSelectedCategory('all')}
             className={cn(
@@ -292,7 +320,29 @@ export default function LibraryIndexPage() {
                 </button>
               );
             })}
+
+          {/* Advanced Filters Toggle */}
+          <Button
+            onClick={() => setShowFilters(!showFilters)}
+            variant={showFilters || activeFilterCount > 0 ? 'default' : 'outline'}
+            size="sm"
+            className={cn(mode.radius, mode.font, 'ml-auto text-xs')}
+          >
+            <SlidersHorizontal className="mr-2 h-3 w-3" />
+            &gt; ADVANCED FILTERS
+            {activeFilterCount > 0 && ` (${activeFilterCount})`}
+          </Button>
         </div>
+
+        {/* Advanced Filters Panel */}
+        {showFilters && (
+          <AdvancedFilters
+            filters={advancedFilters}
+            onFilterChange={setAdvancedFilters}
+            onClearFilters={handleClearFilters}
+            activeFilterCount={activeFilterCount}
+          />
+        )}
       </section>
 
       {/* All Templates Grid */}

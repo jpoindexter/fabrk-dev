@@ -51,6 +51,8 @@ export interface TemplateFilters {
   complexity?: 'Beginner' | 'Intermediate' | 'Advanced';
   hasFeature?: string;
   searchQuery?: string;
+  setupTime?: 'quick' | 'medium' | 'long';
+  hasDependencies?: boolean;
 }
 
 export function filterTemplates(templates: Template[], filters: TemplateFilters): Template[] {
@@ -77,6 +79,23 @@ export function filterTemplates(templates: Template[], filters: TemplateFilters)
     filtered = filtered.filter((t) =>
       t.features.some((f) => f.toLowerCase().includes(featureQuery))
     );
+  }
+
+  // Filter by setup time
+  if (filters.setupTime) {
+    filtered = filtered.filter((t) => {
+      if (!t.setupTime) return false;
+      const minutes = parseInt(t.setupTime);
+      if (filters.setupTime === 'quick') return minutes < 10;
+      if (filters.setupTime === 'medium') return minutes >= 10 && minutes <= 30;
+      if (filters.setupTime === 'long') return minutes > 30;
+      return false;
+    });
+  }
+
+  // Filter by dependencies
+  if (filters.hasDependencies) {
+    filtered = filtered.filter((t) => t.dependencies && t.dependencies.length > 0);
   }
 
   return filtered;
