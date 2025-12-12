@@ -21,17 +21,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 | Need | Do This |
 |------|---------|
-| Design system rules | See `DESIGN_SYSTEM.md` |
+| Design system rules | See `docs/08-design/DESIGN_SYSTEM.md` |
 | Pre-commit checks | Automatic via Husky (see below) |
-| Add memory | Type `# your instruction here` |
+| Check components count | 77 UI components in `src/components/ui/` |
+| Payment providers | Stripe, Polar, Lemonsqueezy (3 options) |
+| Config files | `src/config/index.ts` (not .js) |
 
 ---
 
 ## Project Overview
 
-**Fabrk** is a Next.js 15 SaaS boilerplate with 234 production-ready components, terminal-inspired design, and full-stack features.
+**Fabrk** is a Next.js 16 SaaS boilerplate with 77 UI components, terminal-inspired design, and full-stack features.
 
-**Tech Stack:** Next.js 15 (App Router, React 19) • TypeScript strict • NextAuth v5 • Polar.sh • Prisma + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 + DaisyUI (20 themes)
+**Tech Stack:** Next.js 16 (App Router, React 19) • TypeScript strict • NextAuth v5 • Multi-provider payments (Stripe, Polar, Lemonsqueezy) • Prisma + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 • Custom theme system (3 themes: Terminal, Modern, Soft)
 
 ---
 
@@ -99,12 +101,13 @@ Follow these text casing rules for consistent terminal aesthetic:
 **Protected Components** (DO NOT MODIFY unless explicitly told to):
 
 ```
-src/components/ui/           # ALL Radix primitives
+src/components/ui/           # 77 UI components - ALL LOCKED
 ├── button.tsx               # LOCKED
 ├── card.tsx                 # LOCKED
 ├── input.tsx                # LOCKED
 ├── sheet.tsx                # LOCKED
-└── ... (all ui/ files)      # LOCKED
+├── tabs.tsx                 # LOCKED
+├── ... (72 more files)      # LOCKED
 
 src/components/marketing/
 └── navigation.tsx           # LOCKED - Marketing navigation
@@ -170,37 +173,55 @@ Service Layer (src/lib/)
 ```
 src/
 ├── app/
-│   ├── templates/         # Copy-paste templates
-│   ├── docs/              # Documentation site
-│   └── api/               # API routes
+│   ├── (marketing)/       # Marketing pages & docs
+│   │   ├── library/       # Template showcase pages
+│   │   └── docs/          # Documentation site
+│   ├── (platform)/        # Dashboard/app pages
+│   ├── (auth)/            # Auth pages
+│   └── api/               # API routes (30+ endpoints)
+│       ├── stripe/        # Stripe integration
+│       ├── polar/         # Polar.sh integration
+│       └── lemonsqueezy/  # Lemonsqueezy integration
 ├── components/
-│   ├── ui/                # Radix primitives (LOCKED)
+│   ├── ui/                # Radix primitives (LOCKED - 77 components)
+│   ├── docs/              # Docs components & templates
+│   │   └── templates/     # Template components (NOT in app/templates/)
 │   ├── landing/           # Landing sections
 │   ├── dashboard/         # Dashboard components
-│   └── docs/              # Docs components & templates
+│   ├── marketing/         # Marketing navigation (LOCKED)
+│   ├── navigation/        # Site navigation (LOCKED)
+│   └── shared/            # Shared components (LOCKED)
+├── config/
+│   ├── index.ts           # Config exports
+│   ├── app.ts             # App configuration
+│   ├── stripe.ts          # Stripe config
+│   └── i18n.ts            # Internationalization
 ├── lib/
-│   ├── auth.ts            # NextAuth config
+│   ├── auth.ts            # NextAuth v5 config
 │   ├── db/                # Prisma client
-│   └── env.ts             # Environment validation
-├── config.js              # Central configuration
-└── globals.css            # Design system CSS
+│   ├── env.ts             # Environment validation
+│   ├── stripe.ts          # Stripe client
+│   ├── polar.ts           # Polar client
+│   └── lemonsqueezy/      # Lemonsqueezy client
+└── design-system/
+    └── themes/            # 3 custom themes (Terminal, Modern, Soft)
 ```
 
 ### Critical Files
 
-- **`src/config.js`** - Central configuration (update first when adding features)
+- **`src/config/index.ts`** - Central configuration exports (app.ts, stripe.ts, i18n.ts)
 - **`src/lib/env.ts`** - Environment validation with Zod
 - **`src/lib/auth.ts`** - NextAuth v5 with JWT sessions (30-day)
-- **`DESIGN_SYSTEM.md`** - Complete design system specification
+- **`docs/08-design/DESIGN_SYSTEM.md`** - Complete design system specification
 - **`.claude/audit/`** - 58 modular audit files (see Resources)
-- **`.husky/pre-commit`** - Git hook entry point
-- **`scripts/utilities/pre-commit-audit.mjs`** - Design system pattern checker
+- **`.husky/pre-commit`** - Git hook entry point (runs type-check + lint-staged)
+- **`.internal/scripts/utilities/pre-commit-audit.mjs`** - Design system pattern checker
 
 ---
 
 ## Design System Quick Reference
 
-> Full documentation: `DESIGN_SYSTEM.md`
+> Full documentation: `docs/08-design/DESIGN_SYSTEM.md`
 
 ### Terminal Aesthetic
 
@@ -383,7 +404,8 @@ export default function ButtonPage() {
 
 ## Template Pages Pattern
 
-All template pages in `src/app/templates/` use a Preview/Code tabbed interface:
+Template showcase pages in `src/app/(marketing)/library/[category]/` use a Preview/Code tabbed interface.
+Template components live in `src/components/docs/templates/`.
 
 ```tsx
 "use client";
@@ -515,12 +537,29 @@ try {
 
 ---
 
-## Payment Flow (Polar.sh)
+## Payment Flow (Multi-Provider)
 
+**Fabrk supports 3 payment processors:**
+
+### Stripe
+1. Create checkout session via `/api/stripe/checkout`
+2. User pays on Stripe hosted checkout
+3. Webhook triggers at `/api/webhooks/stripe`
+4. Payment record created, welcome email queued
+
+### Polar.sh
 1. Create checkout session via `/api/polar/checkout`
 2. User pays on Polar hosted checkout
 3. Webhook triggers at `/api/webhooks/polar`
-4. Payment record created, welcome email queued
+4. Payment record created
+
+### Lemonsqueezy
+1. Create checkout session via `/api/lemonsqueezy/checkout`
+2. User pays on Lemonsqueezy hosted checkout
+3. Webhook triggers at `/api/webhooks/lemonsqueezy`
+4. Payment record created
+
+**Configuration:** Set payment provider in `src/config/stripe.ts` (or equivalent)
 
 ---
 
@@ -626,8 +665,9 @@ When adding features: "Does this help ship faster?" If no, delete it.
 ## Resources
 
 ### Design System
-- `DESIGN_SYSTEM.md` - Complete design system specification
+- `docs/08-design/DESIGN_SYSTEM.md` - Complete design system specification
 - `src/app/globals.css` - CSS variables and utilities
+- `src/design-system/themes/` - 3 custom themes (Terminal, Modern, Soft)
 - `/docs/components/overview` - Component documentation
 
 ### Audit Framework (58 files in `.claude/audit/`)
