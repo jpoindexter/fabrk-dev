@@ -5,7 +5,7 @@
  */
 
 export const VALUE_ITEMS = [
-  { item: '60+ Production Components', value: '$15,000' },
+  { item: '75+ Production Components', value: '$15,000' },
   { item: 'Authentication System (NextAuth v5)', value: '$6,000' },
   { item: 'Payment Processing (3 providers)', value: '$8,000' },
   { item: 'Multi-Tenancy Architecture', value: '$10,000' },

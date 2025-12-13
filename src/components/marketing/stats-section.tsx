@@ -7,7 +7,7 @@ import { STATS } from '@/data/landing';
 
 /**
  * Stats Section
- * Shows trust indicators - users, components, time saved, satisfaction
+ * Shows product metrics - components, themes, routes, TypeScript coverage
  * Grid layout with animated stat cards
  */
 export function StatsSection() {
@@ -15,10 +15,10 @@ export function StatsSection() {
     <section className="border-border border-t py-20 lg:py-24">
       <Container>
         <SectionHeader
-          badge="TRUST INDICATORS"
+          badge="PRODUCT METRICS"
           code="0x20"
-          title="BATTLE-TESTED BY BUILDERS"
-          description="Real developers shipping real products. These numbers represent actual time saved and projects launched."
+          title="BUILT FOR PRODUCTION"
+          description="Every component, theme, and feature is production-ready. No placeholders, no TODOs, just ship."
           align="center"
         />
 

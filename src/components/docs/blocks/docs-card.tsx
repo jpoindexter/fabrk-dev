@@ -1,26 +1,43 @@
 /**
  * DocsCard - Terminal-style card wrapper for documentation content
  * Matches the landing page card aesthetic with [ [0xXX] TITLE ] format
+ * Auto-generates hex code from title if none provided
  */
 
 import { cn } from '@/lib/utils';
+
+// Generate deterministic hex code from string (consistent but varied)
+function generateHexFromTitle(title: string): string {
+  let hash = 0;
+  for (let i = 0; i < title.length; i++) {
+    hash = (hash << 5) - hash + title.charCodeAt(i);
+    hash |= 0; // Convert to 32-bit integer
+  }
+  return Math.abs(hash % 256)
+    .toString(16)
+    .toUpperCase()
+    .padStart(2, '0');
+}
 
 interface DocsCardProps {
   /** Card content */
   children: React.ReactNode;
   /** Optional className for custom styling */
   className?: string;
-  /** Hex code like "01", "0A" - will be formatted as 0x01, 0x0A */
+  /** Hex code like "01", "0A" - will be formatted as 0x01, 0x0A. Auto-generates from title if not provided. */
   code?: string;
   /** Terminal header title */
   title?: string;
 }
 
 export function DocsCard({ children, className, code, title }: DocsCardProps) {
-  const hasHeader = code || title;
-  // Strip [0x and ] if present since we add them in the template
-  const hexCode = code?.replace(/^\[0x/, '').replace(/\]$/, '') || '00';
+  const hasHeader = code !== undefined || title;
   const headerTitle = title?.toUpperCase() || 'INFO';
+
+  // Generate hex code from title if not provided
+  const hexCode = code
+    ? code.replace(/^\[0x/, '').replace(/\]$/, '')
+    : generateHexFromTitle(headerTitle);
 
   return (
     <div className={cn('border-border bg-card border', className)}>

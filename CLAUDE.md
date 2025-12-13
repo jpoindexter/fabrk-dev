@@ -31,7 +31,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Fabrk** is a Next.js 16 SaaS boilerplate with 77 UI components, terminal-inspired design, and full-stack features.
 
-**Tech Stack:** Next.js 16 (App Router, React 19) • TypeScript strict • NextAuth v5 • Multi-provider payments (Stripe, Polar, Lemonsqueezy) • Prisma + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 • Terminal-only design system (14 themes: 5 CRT phosphor, 2 light modes, 6 retro computer, 1 B&W)
+**Tech Stack:** Next.js 16 (App Router, React 19) • TypeScript strict • NextAuth v5 • Multi-provider payments (Stripe, Polar, Lemonsqueezy) • Prisma + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 • Terminal-only design system (12 themes: 5 CRT phosphor, 4 retro computer, 2 handheld, 1 B&W)
 
 ---
 
@@ -595,7 +595,7 @@ The design system achieved **100% launch readiness** on December 12, 2025 with c
 | **Accessibility** | 100% WCAG 2.2 AA compliant |
 | **Spacing Grid** | 100% 8-point grid compliance |
 | **Typography** | 100% scale compliance |
-| **Theme Coverage** | 14 complete themes |
+| **Theme Coverage** | 12 complete themes |
 | **Component Compliance** | 77/77 components use tokens |
 
 ### Compliance Fixes Completed
@@ -752,7 +752,7 @@ When adding features: "Does this help ship faster?" If no, delete it.
 ### Design System
 - `docs/08-design/DESIGN_SYSTEM.md` - Complete design system specification
 - `src/app/globals.css` - CSS variables and utilities (100% OKLCH tokens)
-- `src/design-system/themes/` - Terminal theme (14 complete themes)
+- `src/design-system/themes/` - Terminal theme (12 complete themes)
 - `.archives/design-system/2025-12-12-final/` - Launch audit reports (100/100 score)
 - `scripts/hex-to-oklch-converter.mjs` - Color conversion tool
 - `scripts/check-aria-labels.mjs` - Accessibility audit tool

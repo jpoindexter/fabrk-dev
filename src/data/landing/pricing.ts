@@ -22,7 +22,7 @@ export const PRICING = {
     message: 'Price increases to $499 after launch period',
   },
   features: [
-    '60+ PRODUCTION-READY COMPONENTS',
+    '75+ PRODUCTION-READY COMPONENTS',
     'AUTH, BILLING & MULTI-TENANCY',
     'LIFETIME UPDATES (NO SUBSCRIPTION)',
     'UNLIMITED PROJECTS & CLIENTS',

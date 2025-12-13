@@ -1,6 +1,7 @@
 /**
  * Testimonials Data - Customer quotes for Social Proof section
- * TODO: Replace with real testimonials from beta users
+ * Note: These are example testimonials for demonstration purposes.
+ * Replace with real customer feedback when available.
  */
 
 export const TESTIMONIALS = [
@@ -30,7 +31,7 @@ export const TESTIMONIALS = [
   },
   {
     id: 'maria-garcia',
-    quote: '60+ components that actually work. No more fighting with shadcn compatibility issues.',
+    quote: '75+ components that actually work. No more fighting with shadcn compatibility issues.',
     author: 'Maria Garcia',
     role: 'Full-Stack Developer',
     avatar: '/avatars/maria-garcia.jpg',

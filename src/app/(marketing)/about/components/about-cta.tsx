@@ -40,7 +40,7 @@ export function AboutCTA() {
           <Card size="auto">
             <CardContent padding="md">
               <p className={cn('text-muted-foreground text-sm', mode.font)}>
-                Join 500+ developers who are shipping faster with Fabrk.
+                Start shipping faster with 70+ production-ready components.
               </p>
             </CardContent>
           </Card>

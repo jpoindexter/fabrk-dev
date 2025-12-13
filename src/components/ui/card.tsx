@@ -106,9 +106,10 @@ Card.displayName = 'Card';
 
 /**
  * CardHeader - Header with terminal pattern [ [0xXX] TITLE ]
+ * Auto-generates hex code from title if not provided
  */
 export type CardHeaderProps = {
-  /** Hex code displayed in brackets (e.g., "0x00", "0x01") */
+  /** Hex code displayed in brackets (e.g., "0x00", "0x01"). Auto-generates from title if not provided. */
   code?: string;
   /** Title displayed after the hex code in UPPERCASE_SNAKE_CASE */
   title: string;
@@ -120,33 +121,52 @@ export type CardHeaderProps = {
   className?: string;
 };
 
+// Generate deterministic hex code from string (consistent but varied)
+function generateHexFromTitle(title: string): string {
+  let hash = 0;
+  for (let i = 0; i < title.length; i++) {
+    hash = (hash << 5) - hash + title.charCodeAt(i);
+    hash |= 0; // Convert to 32-bit integer
+  }
+  return (
+    '0x' +
+    Math.abs(hash % 256)
+      .toString(16)
+      .toUpperCase()
+      .padStart(2, '0')
+  );
+}
+
 const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
-  ({ code = '0x00', title, icon, meta, className }, ref) => (
-    <div
-      ref={ref}
-      data-slot="card-header"
-      className={cn(
-        'flex items-center justify-between border-b px-4 py-2',
-        mode.color.border.default,
-        'last:border-b-0', // Remove bottom border when CardHeader is last child (no CardContent)
-        className
-      )}
-    >
-      <span className={cn(mode.color.text.muted, mode.typography.caption, mode.font)}>
-        [ [{code}] {title} ]
-      </span>
-      {(icon || meta) && (
-        <span className="flex items-center gap-2">
-          {meta && (
-            <span className={cn(mode.color.text.muted, mode.typography.caption, mode.font)}>
-              {meta}
-            </span>
-          )}
-          {icon}
+  ({ code, title, icon, meta, className }, ref) => {
+    const hexCode = code ?? generateHexFromTitle(title);
+    return (
+      <div
+        ref={ref}
+        data-slot="card-header"
+        className={cn(
+          'flex items-center justify-between border-b px-4 py-2',
+          mode.color.border.default,
+          'last:border-b-0', // Remove bottom border when CardHeader is last child (no CardContent)
+          className
+        )}
+      >
+        <span className={cn(mode.color.text.muted, mode.typography.caption, mode.font)}>
+          [ [{hexCode}] {title} ]
         </span>
-      )}
-    </div>
-  )
+        {(icon || meta) && (
+          <span className="flex items-center gap-2">
+            {meta && (
+              <span className={cn(mode.color.text.muted, mode.typography.caption, mode.font)}>
+                {meta}
+              </span>
+            )}
+            {icon}
+          </span>
+        )}
+      </div>
+    );
+  }
 );
 CardHeader.displayName = 'CardHeader';
 

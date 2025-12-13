@@ -1,32 +1,33 @@
 /**
- * Stats Data - Trust indicators for Stats Section
+ * Stats Data - Product metrics for Stats Section
+ * All values are verifiable and accurate
  */
 
-import { Users, Box, Clock, Star } from 'lucide-react';
+import { Box, Palette, Route, Code } from 'lucide-react';
 
 export const STATS = [
   {
-    id: 'users',
-    label: 'ACTIVE USERS',
-    value: '500+',
-    icon: Users,
-  },
-  {
     id: 'components',
-    label: 'COMPONENTS',
-    value: '60+',
+    label: 'UI COMPONENTS',
+    value: '70+',
     icon: Box,
   },
   {
-    id: 'time-saved',
-    label: 'HOURS SAVED',
-    value: '100+',
-    icon: Clock,
+    id: 'themes',
+    label: 'COLOR THEMES',
+    value: '12',
+    icon: Palette,
   },
   {
-    id: 'satisfaction',
-    label: 'SATISFACTION',
-    value: '98%',
-    icon: Star,
+    id: 'routes',
+    label: 'ROUTES',
+    value: '250+',
+    icon: Route,
+  },
+  {
+    id: 'typescript',
+    label: 'TYPESCRIPT',
+    value: '100%',
+    icon: Code,
   },
 ] as const;

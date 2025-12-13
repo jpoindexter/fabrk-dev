@@ -58,7 +58,7 @@ export default function HomePage() {
       <StickyCTABar message="Launch your SaaS in days, not months" ctaText="Get Fabrk Now" />
       <ExitIntentPopup
         title="Wait! Before You Go..."
-        description="Get Fabrk and launch your SaaS 10x faster. 60+ components, authentication, payments, and more."
+        description="Get Fabrk and launch your SaaS 10x faster. 75+ components, authentication, payments, and more."
         ctaText="Get Fabrk Now"
       />
     </>

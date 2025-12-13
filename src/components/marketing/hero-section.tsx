@@ -103,7 +103,7 @@ export function HeroSection() {
                 {/* Quick stats inline */}
                 <div className="flex flex-wrap gap-4">
                   <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
-                    <span className={mode.color.text.accent}>60+</span> Components
+                    <span className={mode.color.text.accent}>75+</span> Components
                   </span>
                   <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
                   <span className={cn('text-xs', mode.font, mode.color.text.muted)}>

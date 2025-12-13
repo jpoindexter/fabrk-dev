@@ -9,7 +9,7 @@ import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
 const stats = [
-  { label: 'COMPONENTS', value: '60+', status: 'READY' },
+  { label: 'COMPONENTS', value: '75+', status: 'READY' },
   { label: 'TEMPLATES', value: '26', status: 'READY' },
   { label: 'SETUP_TIME', value: '< 5 MIN', status: 'FAST' },
 ];

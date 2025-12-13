@@ -8,7 +8,7 @@ export const FAQ_QUESTIONS = [
     id: 'what-is-fabrk',
     question: 'What is Fabrk?',
     answer:
-      "Fabrk is a production-ready Next.js 15 SaaS boilerplate with 60+ components, authentication, billing, multi-tenancy, and a unique terminal-inspired design system. It's designed to help you ship your SaaS in days, not months.",
+      "Fabrk is a production-ready Next.js 15 SaaS boilerplate with 75+ components, authentication, billing, multi-tenancy, and a unique terminal-inspired design system. It's designed to help you ship your SaaS in days, not months.",
   },
   {
     id: 'license',

@@ -82,7 +82,7 @@ export function FinalCTASection() {
             >
               {[
                 'Ship your MVP in days, not months',
-                '60+ production-ready components',
+                '75+ production-ready components',
                 'Save 100+ hours of development time',
                 'Lifetime updates, no subscription',
               ].map((benefit, index) => (
