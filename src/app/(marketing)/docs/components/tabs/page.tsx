@@ -152,6 +152,50 @@ export default function TabsPage() {
           ),
         },
         {
+          title: 'Tabs Inside Card',
+          description: 'Tabs as card header navigation with boxed grid style',
+          code: `<Card>
+  <CardHeader code="0x00" title="NAVIGATION" />
+  <Tabs defaultValue="overview" className="w-full">
+    <TabsList className="w-full">
+      <TabsTrigger value="overview">[OVERVIEW]</TabsTrigger>
+      <TabsTrigger value="settings">[SETTINGS]</TabsTrigger>
+      <TabsTrigger value="billing">[BILLING]</TabsTrigger>
+    </TabsList>
+    <TabsContent value="overview" className="p-4">
+      <p>Overview content goes here.</p>
+    </TabsContent>
+    <TabsContent value="settings" className="p-4">
+      <p>Settings content goes here.</p>
+    </TabsContent>
+    <TabsContent value="billing" className="p-4">
+      <p>Billing information goes here.</p>
+    </TabsContent>
+  </Tabs>
+</Card>`,
+          preview: (
+            <Card>
+              <CardHeader code="0x00" title="NAVIGATION" />
+              <Tabs defaultValue="overview" className="w-full">
+                <TabsList className="w-full">
+                  <TabsTrigger value="overview">[OVERVIEW]</TabsTrigger>
+                  <TabsTrigger value="settings">[SETTINGS]</TabsTrigger>
+                  <TabsTrigger value="billing">[BILLING]</TabsTrigger>
+                </TabsList>
+                <TabsContent value="overview" className="p-4">
+                  <p>Overview content goes here.</p>
+                </TabsContent>
+                <TabsContent value="settings" className="p-4">
+                  <p>Settings content goes here.</p>
+                </TabsContent>
+                <TabsContent value="billing" className="p-4">
+                  <p>Billing information goes here.</p>
+                </TabsContent>
+              </Tabs>
+            </Card>
+          ),
+        },
+        {
           title: 'Full Width',
           description: 'Tabs that span the full width of their container',
           code: `<Tabs defaultValue="tab1" className="w-full">
