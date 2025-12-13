@@ -21,15 +21,16 @@ interface PieChartProps {
   onSegmentClick?: (item: PieChartDataItem, index: number) => void;
 }
 
+// Theme-aware chart colors with varied lightness for monochromatic themes
 const DEFAULT_COLORS = [
-  'hsl(var(--primary))',
-  'hsl(var(--accent))',
-  'hsl(var(--secondary))',
-  'oklch(70% 0.15 240)',
-  'oklch(70% 0.15 160)',
-  'oklch(70% 0.15 60)',
-  'oklch(70% 0.20 340)',
-  'oklch(60% 0.20 25)',
+  'var(--color-chart-1)',
+  'var(--color-chart-2)',
+  'var(--color-chart-3)',
+  'var(--color-chart-4)',
+  'var(--color-chart-5)',
+  'var(--color-chart-6)',
+  'var(--color-chart-7)',
+  'var(--color-chart-8)',
 ];
 
 export function PieChart({
@@ -125,7 +126,7 @@ export function PieChart({
               <path
                 d={path}
                 fill={segment.color}
-                stroke="hsl(var(--background))"
+                stroke="var(--color-background)"
                 strokeWidth={2}
                 className={cn('cursor-pointer transition-all', isHovered && 'opacity-90')}
                 onMouseEnter={() => setHoveredIndex(index)}

@@ -263,6 +263,10 @@
   --color-chart-3: oklch(var(--chart-3));
   --color-chart-4: oklch(var(--chart-4));
   --color-chart-5: oklch(var(--chart-5));
+  --color-chart-6: oklch(var(--chart-6));
+  --color-chart-7: oklch(var(--chart-7));
+  --color-chart-8: oklch(var(--chart-8));
+  --color-chart-9: oklch(var(--chart-9));
 
   /* New Semantic Tokens - These are already OKLCH values, no wrapper needed */
   /* The raw values are defined in :root and theme-specific blocks */
@@ -1232,8 +1236,8 @@
   --secondary: 0% 0 0;
   --secondary-foreground: 100% 0 0;
 
-  /* Muted - White background, Black text */
-  --muted: 100% 0 0;
+  /* Muted - Light gray background for contrast, Black text */
+  --muted: 92% 0 0;
   --muted-foreground: 0% 0 0;
 
   /* Accent - Black */

@@ -2,6 +2,7 @@
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
 import { Heatmap, HeatmapDataItem } from '@/components/ui/heatmap';
+import { toast } from 'sonner';
 
 export default function HeatmapPage() {
   /* eslint-disable design-system/no-hardcoded-colors -- Chart examples require specific colors for demonstrations */
@@ -105,7 +106,7 @@ export default function HeatmapPage() {
             <Heatmap
               data={compactData}
               colorScale={[
-                'hsl(var(--muted))',
+                'var(--color-muted)',
                 'oklch(80% 0.15 160)',
                 'oklch(70% 0.20 160)',
                 'oklch(60% 0.25 160)',
@@ -116,7 +117,7 @@ export default function HeatmapPage() {
           code: `<Heatmap
   data={data}
   colorScale={[
-    "hsl(var(--muted))",
+    "var(--color-muted)",
     "oklch(80% 0.15 160)",
     "oklch(70% 0.20 160)",
     "oklch(60% 0.25 160)",
@@ -131,7 +132,7 @@ export default function HeatmapPage() {
             <Heatmap
               data={monthlyData}
               cellSize={45}
-              onCellClick={(item) => alert(`${item.y} × ${item.x}: ${item.value}`)}
+              onCellClick={(item) => toast.info(`${item.y} × ${item.x}: ${item.value}`)}
             />
           ),
           code: `<Heatmap

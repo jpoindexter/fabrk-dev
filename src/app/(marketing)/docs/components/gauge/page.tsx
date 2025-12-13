@@ -221,13 +221,13 @@ export default function GaugePage() {
         {
           name: 'color',
           type: 'string',
-          default: '"hsl(var(--primary))"',
+          default: '"var(--color-primary)"',
           description: 'Arc color',
         },
         {
           name: 'backgroundColor',
           type: 'string',
-          default: '"hsl(var(--muted))"',
+          default: '"var(--color-muted)"',
           description: 'Background arc color',
         },
         {

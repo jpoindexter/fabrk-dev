@@ -87,7 +87,7 @@ export function BillingPreview() {
             <span className={cn(mode.font, 'block text-xs')}>PLAN: PRO</span>
             <motion.span
               className={cn(mode.font, 'text-muted-foreground text-xs')}
-              whileHover={{ color: 'hsl(var(--primary))', x: 2 }}
+              whileHover={{ color: 'var(--color-primary)', x: 2 }}
             >
               &gt; change_plan
             </motion.span>

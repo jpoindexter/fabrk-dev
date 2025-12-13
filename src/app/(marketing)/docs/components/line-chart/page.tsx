@@ -31,12 +31,12 @@ export default function LineChartPage() {
                 {
                   dataKey: 'revenue',
                   name: 'Revenue',
-                  color: 'hsl(var(--primary))',
+                  color: 'var(--color-primary)',
                 },
                 {
                   dataKey: 'users',
                   name: 'Users',
-                  color: 'hsl(var(--accent))',
+                  color: 'var(--color-accent)',
                 },
               ]}
               height={300}
@@ -48,8 +48,8 @@ export default function LineChartPage() {
   data={data}
   xAxisKey="month"
   series={[
-    { dataKey: "revenue", name: "Revenue", color: "hsl(var(--primary))" },
-    { dataKey: "users", name: "Users", color: "hsl(var(--accent))" },
+    { dataKey: "revenue", name: "Revenue", color: "var(--color-primary)" },
+    { dataKey: "users", name: "Users", color: "var(--color-accent)" },
   ]}
   height={300}
   showLegend={true}

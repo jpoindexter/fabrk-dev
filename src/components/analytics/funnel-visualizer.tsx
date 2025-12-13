@@ -38,11 +38,11 @@ interface FunnelVisualizerProps {
 }
 
 const DEFAULT_COLORS = [
-  'hsl(var(--primary))',
-  'oklch(var(--chart-6))',
-  'oklch(var(--chart-7))',
-  'oklch(var(--chart-8))',
-  'oklch(var(--chart-9))',
+  'var(--color-primary)',
+  'var(--color-chart-6)',
+  'var(--color-chart-7)',
+  'var(--color-chart-8)',
+  'var(--color-chart-9)',
 ];
 
 export function FunnelVisualizer({

@@ -2,6 +2,7 @@
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
 import { FunnelChart } from '@/components/ui/funnel-chart';
+import { toast } from 'sonner';
 
 export default function FunnelChartPage() {
   const salesFunnel = [
@@ -92,14 +93,16 @@ export default function FunnelChartPage() {
               <FunnelChart
                 data={salesFunnel}
                 height={300}
-                onStageClick={(stage, _index) => alert(`Clicked: ${stage.label} (${stage.value})`)}
+                onStageClick={(stage, _index) =>
+                  toast.info(`Clicked: ${stage.label} (${stage.value})`)
+                }
               />
             </div>
           ),
           code: `<FunnelChart
   data={funnel}
   onStageClick={(stage, index) => {
-    console.log(\`Clicked: \${stage.label}\`);
+    // Handle stage click - show toast, navigate, etc.
   }}
 />`,
         },

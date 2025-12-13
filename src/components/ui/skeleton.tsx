@@ -7,7 +7,13 @@ const Skeleton = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
     return (
       <div
         ref={ref}
-        className={cn('animate-pulse', mode.color.bg.muted, mode.radius, className)}
+        className={cn(
+          'animate-pulse',
+          // Use border color with opacity for better contrast in both light and dark themes
+          'bg-border/50',
+          mode.radius,
+          className
+        )}
         {...props}
       />
     );

@@ -59,12 +59,12 @@ interface AnalyticsChartProps {
 }
 
 const DEFAULT_COLORS = [
-  'hsl(var(--primary))',
-  'hsl(var(--accent))',
-  'oklch(var(--chart-6))',
-  'oklch(var(--chart-7))',
-  'oklch(var(--chart-8))',
-  'oklch(var(--chart-9))',
+  'var(--color-primary)',
+  'var(--color-accent)',
+  'var(--color-chart-6)',
+  'var(--color-chart-7)',
+  'var(--color-chart-8)',
+  'var(--color-chart-9)',
 ];
 
 export function AnalyticsChart({
@@ -95,16 +95,16 @@ export function AnalyticsChart({
               <XAxis
                 dataKey={xKey}
                 className="text-muted-foreground text-xs"
-                tick={{ fill: 'hsl(var(--muted-foreground))' }}
+                tick={{ fill: 'var(--color-muted-foreground)' }}
               />
               <YAxis
                 className="text-muted-foreground text-xs"
-                tick={{ fill: 'hsl(var(--muted-foreground))' }}
+                tick={{ fill: 'var(--color-muted-foreground)' }}
               />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: 'hsl(var(--card))',
-                  border: '1px solid hsl(var(--border))',
+                  backgroundColor: 'var(--color-card)',
+                  border: '1px solid var(--color-border)',
                   borderRadius: 'var(--radius)',
                 }}
               />
@@ -132,16 +132,16 @@ export function AnalyticsChart({
               <XAxis
                 dataKey={xKey}
                 className="text-muted-foreground text-xs"
-                tick={{ fill: 'hsl(var(--muted-foreground))' }}
+                tick={{ fill: 'var(--color-muted-foreground)' }}
               />
               <YAxis
                 className="text-muted-foreground text-xs"
-                tick={{ fill: 'hsl(var(--muted-foreground))' }}
+                tick={{ fill: 'var(--color-muted-foreground)' }}
               />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: 'hsl(var(--card))',
-                  border: '1px solid hsl(var(--border))',
+                  backgroundColor: 'var(--color-card)',
+                  border: '1px solid var(--color-border)',
                   borderRadius: 'var(--radius)',
                 }}
               />
@@ -166,16 +166,16 @@ export function AnalyticsChart({
               <XAxis
                 dataKey={xKey}
                 className="text-muted-foreground text-xs"
-                tick={{ fill: 'hsl(var(--muted-foreground))' }}
+                tick={{ fill: 'var(--color-muted-foreground)' }}
               />
               <YAxis
                 className="text-muted-foreground text-xs"
-                tick={{ fill: 'hsl(var(--muted-foreground))' }}
+                tick={{ fill: 'var(--color-muted-foreground)' }}
               />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: 'hsl(var(--card))',
-                  border: '1px solid hsl(var(--border))',
+                  backgroundColor: 'var(--color-card)',
+                  border: '1px solid var(--color-border)',
                   borderRadius: 'var(--radius)',
                 }}
               />
@@ -206,7 +206,7 @@ export function AnalyticsChart({
                 labelLine={false}
                 label={({ name, percent }) => `${name} ${((percent || 0) * 100).toFixed(0)}%`}
                 outerRadius={80}
-                fill="hsl(var(--primary))"
+                fill="var(--color-primary)"
                 dataKey={yKeys[0]}
               >
                 {data.map((entry, index) => (
@@ -215,8 +215,8 @@ export function AnalyticsChart({
               </Pie>
               <Tooltip
                 contentStyle={{
-                  backgroundColor: 'hsl(var(--card))',
-                  border: '1px solid hsl(var(--border))',
+                  backgroundColor: 'var(--color-card)',
+                  border: '1px solid var(--color-border)',
                   borderRadius: 'var(--radius)',
                 }}
               />

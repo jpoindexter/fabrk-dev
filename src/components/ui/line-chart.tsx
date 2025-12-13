@@ -12,51 +12,21 @@ import {
   Legend,
 } from 'recharts';
 import { cn } from '@/lib/utils';
-import { mode, getChartColors } from '@/design-system';
+import { mode } from '@/design-system';
 
-// Hook to get computed CSS colors that update with theme changes
-function useThemeColors() {
-  /* eslint-disable design-system/no-hardcoded-colors -- Initial fallback values before theme loads */
-  const [colors, setColors] = React.useState<{
-    chart: string[];
-    muted: string;
-    border: string;
-  }>({ chart: [], muted: '#888', border: '#444' });
-  React.useEffect(() => {
-    const updateColors = () => {
-      const style = getComputedStyle(document.documentElement);
-      setColors({
-        chart: [
-          `oklch(${style.getPropertyValue('--primary').trim()})`,
-          `oklch(${style.getPropertyValue('--accent').trim()})`,
-          `oklch(${style.getPropertyValue('--success').trim()})`,
-          `oklch(${style.getPropertyValue('--warning').trim()})`,
-          `oklch(${style.getPropertyValue('--error').trim()})`,
-        ],
-        muted: `oklch(${style.getPropertyValue('--base-content').trim()} / 0.6)`,
-        border: `oklch(${style.getPropertyValue('--base-content').trim()} / 0.2)`,
-      });
-    };
-    /* eslint-enable design-system/no-hardcoded-colors */
-
-    updateColors();
-
-    // Watch for theme changes via data-theme attribute
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === 'data-theme') {
-          updateColors();
-        }
-      });
-    });
-
-    observer.observe(document.documentElement, { attributes: true });
-
-    return () => observer.disconnect();
-  }, []);
-
-  return colors;
-}
+// Theme colors using CSS custom properties directly
+const THEME_COLORS = {
+  chart: [
+    'var(--color-chart-1)',
+    'var(--color-chart-2)',
+    'var(--color-chart-3)',
+    'var(--color-chart-4)',
+    'var(--color-chart-5)',
+    'var(--color-chart-6)',
+  ],
+  muted: 'var(--color-muted-foreground)',
+  border: 'var(--color-border)',
+};
 
 export interface LineChartDataPoint {
   [key: string]: string | number;
@@ -122,10 +92,7 @@ export function LineChart({
   margin = { top: 10, right: 30, left: 0, bottom: 0 },
   className,
 }: LineChartProps) {
-  const theme = useThemeColors();
-
-  const fallbackColors = getChartColors(); // Centralized chart fallback colors
-  const colors = theme.chart.length > 0 ? theme.chart : fallbackColors;
+  const colors = THEME_COLORS.chart;
   // Memoize tooltip to prevent recreation on every render
   const CustomTooltip = React.useMemo(
     () =>
@@ -165,18 +132,20 @@ export function LineChart({
     <div className={cn('w-full', className)}>
       <ResponsiveContainer width="100%" height={height}>
         <RechartsLineChart data={data} margin={margin}>
-          {showGrid && <CartesianGrid strokeDasharray="3 3" stroke={theme.border} opacity={0.5} />}
+          {showGrid && (
+            <CartesianGrid strokeDasharray="3 3" stroke={THEME_COLORS.border} opacity={0.5} />
+          )}
           <XAxis
             dataKey={xAxisKey}
-            tick={{ fill: theme.muted, fontSize: 12 }}
-            tickLine={{ stroke: theme.border }}
-            axisLine={{ stroke: theme.border }}
+            tick={{ fill: THEME_COLORS.muted, fontSize: 12 }}
+            tickLine={{ stroke: THEME_COLORS.border }}
+            axisLine={{ stroke: THEME_COLORS.border }}
             tickFormatter={xAxisFormatter}
           />
           <YAxis
-            tick={{ fill: theme.muted, fontSize: 12 }}
-            tickLine={{ stroke: theme.border }}
-            axisLine={{ stroke: theme.border }}
+            tick={{ fill: THEME_COLORS.muted, fontSize: 12 }}
+            tickLine={{ stroke: THEME_COLORS.border }}
+            axisLine={{ stroke: THEME_COLORS.border }}
             tickFormatter={yAxisFormatter}
           />
           {showTooltip && <Tooltip content={CustomTooltip} />}

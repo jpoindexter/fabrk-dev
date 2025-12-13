@@ -83,7 +83,7 @@ export function CreditsPreview() {
             <span className={cn(mode.font, 'block text-xs')}>BALANCE</span>
             <motion.span
               className={cn(mode.font, 'text-muted-foreground text-xs')}
-              whileHover={{ color: 'hsl(var(--primary))', x: 2 }}
+              whileHover={{ color: 'var(--color-primary)', x: 2 }}
             >
               &gt; buy_credits
             </motion.span>

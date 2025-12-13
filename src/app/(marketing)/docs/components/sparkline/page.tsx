@@ -240,7 +240,7 @@ export default function SparklinePage() {
         {
           name: 'color',
           type: 'string',
-          default: '"hsl(var(--primary))"',
+          default: '"var(--color-primary)"',
           description: 'Color of the line',
         },
         {

@@ -204,13 +204,13 @@ export function RevenueChart({
               <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                 <defs>
                   <linearGradient id="colorMrr" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.3} />
-                    <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0} />
+                    <stop offset="5%" stopColor="var(--color-primary)" stopOpacity={0.3} />
+                    <stop offset="95%" stopColor="var(--color-primary)" stopOpacity={0} />
                   </linearGradient>
                   {showArr && (
                     <linearGradient id="colorArr" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="hsl(var(--accent))" stopOpacity={0.3} />
-                      <stop offset="95%" stopColor="hsl(var(--accent))" stopOpacity={0} />
+                      <stop offset="5%" stopColor="var(--color-accent)" stopOpacity={0.3} />
+                      <stop offset="95%" stopColor="var(--color-accent)" stopOpacity={0} />
                     </linearGradient>
                   )}
                 </defs>
@@ -218,11 +218,11 @@ export function RevenueChart({
                 <XAxis
                   dataKey="period"
                   className="text-xs"
-                  tick={{ fill: 'hsl(var(--muted-foreground))' }}
+                  tick={{ fill: 'var(--color-muted-foreground)' }}
                 />
                 <YAxis
                   className="text-xs"
-                  tick={{ fill: 'hsl(var(--muted-foreground))' }}
+                  tick={{ fill: 'var(--color-muted-foreground)' }}
                   tickFormatter={formatCompactCurrency}
                 />
                 <Tooltip content={CustomTooltip} />
@@ -230,7 +230,7 @@ export function RevenueChart({
                 <Area
                   type="monotone"
                   dataKey="mrr"
-                  stroke="hsl(var(--primary))"
+                  stroke="var(--color-primary)"
                   fillOpacity={1}
                   fill="url(#colorMrr)"
                   strokeWidth={2}
@@ -240,7 +240,7 @@ export function RevenueChart({
                   <Area
                     type="monotone"
                     dataKey="arr"
-                    stroke="hsl(var(--accent))"
+                    stroke="var(--color-accent)"
                     fillOpacity={1}
                     fill="url(#colorArr)"
                     strokeWidth={2}
@@ -254,11 +254,11 @@ export function RevenueChart({
                 <XAxis
                   dataKey="period"
                   className="text-xs"
-                  tick={{ fill: 'hsl(var(--muted-foreground))' }}
+                  tick={{ fill: 'var(--color-muted-foreground)' }}
                 />
                 <YAxis
                   className="text-xs"
-                  tick={{ fill: 'hsl(var(--muted-foreground))' }}
+                  tick={{ fill: 'var(--color-muted-foreground)' }}
                   tickFormatter={formatCompactCurrency}
                 />
                 <Tooltip content={CustomTooltip} />
@@ -266,9 +266,9 @@ export function RevenueChart({
                 <Line
                   type="monotone"
                   dataKey="mrr"
-                  stroke="hsl(var(--primary))"
+                  stroke="var(--color-primary)"
                   strokeWidth={2}
-                  dot={{ fill: 'hsl(var(--primary))', r: 4 }}
+                  dot={{ fill: 'var(--color-primary)', r: 4 }}
                   activeDot={{ r: 6 }}
                   name="MRR"
                 />
@@ -276,9 +276,9 @@ export function RevenueChart({
                   <Line
                     type="monotone"
                     dataKey="arr"
-                    stroke="hsl(var(--accent))"
+                    stroke="var(--color-accent)"
                     strokeWidth={2}
-                    dot={{ fill: 'hsl(var(--accent))', r: 4 }}
+                    dot={{ fill: 'var(--color-accent)', r: 4 }}
                     activeDot={{ r: 6 }}
                     name="ARR"
                   />

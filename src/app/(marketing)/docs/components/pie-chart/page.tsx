@@ -2,6 +2,7 @@
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
 import { PieChart, PieChartDataItem } from '@/components/ui/pie-chart';
+import { toast } from 'sonner';
 
 export default function PieChartPage() {
   const sampleData: PieChartDataItem[] = [
@@ -83,32 +84,30 @@ export default function PieChartPage() {
           code: `<PieChart data={data} size={200} />
 <PieChart data={data} size={250} innerRadius={70} />`,
         },
+        /* eslint-disable design-system/no-hardcoded-colors -- Demo showing custom OKLCH colors */
         {
           title: 'Custom Colors',
-          description: 'Override default color scheme',
+          description: 'Override default color scheme with direct OKLCH colors',
           preview: (
             <PieChart
               data={[
-                { label: 'Success', value: 40, color: 'hsl(var(--success))' },
-                { label: 'Warning', value: 30, color: 'hsl(var(--warning))' },
-                {
-                  label: 'Destructive',
-                  value: 20,
-                  color: 'hsl(var(--destructive))',
-                },
-                { label: 'Primary', value: 10, color: 'hsl(var(--primary))' },
+                { label: 'Success', value: 40, color: 'oklch(70% 0.2 145)' },
+                { label: 'Warning', value: 30, color: 'oklch(80% 0.18 85)' },
+                { label: 'Error', value: 20, color: 'oklch(60% 0.22 25)' },
+                { label: 'Info', value: 10, color: 'oklch(65% 0.18 240)' },
               ]}
             />
           ),
           code: `<PieChart
   data={[
-    { label: "Success", value: 40, color: "hsl(var(--success))" },
-    { label: "Warning", value: 30, color: "hsl(var(--warning))" },
-    { label: "Destructive", value: 20, color: "hsl(var(--destructive))" },
-    { label: "Primary", value: 10, color: "hsl(var(--primary))" },
+    { label: "Success", value: 40, color: "oklch(70% 0.2 145)" },  // Green
+    { label: "Warning", value: 30, color: "oklch(80% 0.18 85)" },  // Yellow
+    { label: "Error", value: 20, color: "oklch(60% 0.22 25)" },    // Red
+    { label: "Info", value: 10, color: "oklch(65% 0.18 240)" },    // Blue
   ]}
 />`,
         },
+        /* eslint-enable design-system/no-hardcoded-colors */
         {
           title: 'Interactive with Click Handler',
           description: 'Handle segment clicks for drill-down',
@@ -116,7 +115,7 @@ export default function PieChartPage() {
             <PieChart
               data={revenueData}
               onSegmentClick={(item, _index) =>
-                alert(
+                toast.info(
                   `${item.label}: ${item.value} (${((item.value / revenueData.reduce((sum, i) => sum + i.value, 0)) * 100).toFixed(1)}%)`
                 )
               }
@@ -125,7 +124,7 @@ export default function PieChartPage() {
           code: `<PieChart
   data={data}
   onSegmentClick={(item, index) => {
-    console.log(\`Clicked: \${item.label}\`);
+    // Handle segment click - show toast, navigate, etc.
   }}
 />`,
         },
