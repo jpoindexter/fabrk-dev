@@ -21,7 +21,7 @@ function TabsList({ className, ...props }: React.ComponentProps<typeof TabsPrimi
     <TabsPrimitive.List
       data-slot="tabs-list"
       className={cn(
-        'inline-flex h-auto items-center justify-start gap-0 p-0',
+        'border-border inline-flex h-auto items-center justify-start gap-1 border-b p-0',
         mode.color.bg.base,
         mode.color.text.primary,
         'rounded-none', // Force sharp corners for terminal aesthetic
@@ -40,14 +40,14 @@ function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPr
       data-slot="tabs-trigger"
       className={cn(
         'inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-medium whitespace-nowrap transition-all focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
-        // Boxed tabs with vertical dividers
-        'border-border border-r bg-transparent',
+        // Underline style - clean minimal look
+        'border-b-2 border-transparent bg-transparent',
         // Default state - muted text
         mode.color.text.muted,
         // Hover state
-        'hover:text-foreground hover:bg-muted/50',
-        // Active state - filled primary background with contrasting text
-        'data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:font-semibold',
+        'hover:text-foreground',
+        // Active state - primary underline
+        'data-[state=active]:border-primary data-[state=active]:text-foreground data-[state=active]:font-semibold',
         mode.state.focus.ring,
         'rounded-none', // Force sharp corners for terminal aesthetic
         mode.font,
