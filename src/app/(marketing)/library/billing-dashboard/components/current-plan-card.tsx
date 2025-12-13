@@ -29,15 +29,41 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
     <Card tone="primary">
       <CardHeader code="0x00" title="SUBSCRIPTION" icon={<Star className="size-4" />} />
       <CardContent padding="md">
-        <div className="text-4xl font-semibold">
-          ${subscription.price}
-          <span className="text-muted-foreground text-lg font-normal">/mo</span>
-        </div>
-        <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-          [NEXT BILLING]: {formatDate(subscription.nextBillingDate)}
+        <div className="flex items-start justify-between">
+          <div>
+            <div className="mb-2 flex items-center gap-2">
+              <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
+                [CURRENT PLAN]:
+              </span>
+              <span
+                className={cn(
+                  mode.font,
+                  'border-success/50 text-success border px-2 py-0.5 text-xs'
+                )}
+              >
+                ACTIVE
+              </span>
+            </div>
+            <div className="mb-2 flex items-center gap-4">
+              <span className="text-2xl font-semibold">{subscription.plan}</span>
+            </div>
+            <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
+              [STARTED]: {formatDate(subscription.startDate)}
+            </div>
+          </div>
+          <div className="text-right">
+            <div className="text-4xl font-semibold">
+              ${subscription.price}
+              <span className="text-muted-foreground text-lg font-normal">/mo</span>
+            </div>
+            <div className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
+              [NEXT BILLING]: {formatDate(subscription.nextBillingDate)}
+            </div>
+          </div>
         </div>
 
-        <div className="border-border mb-4 border-t pt-4">
+        <div className="border-border mt-4 border-t pt-4">
+          <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>[FEATURES]:</div>
           <div className="grid grid-cols-2 gap-2">
             {subscription.features.map((feature, idx) => (
               <div key={idx} className={cn(mode.font, 'flex items-center gap-2 text-xs')}>
@@ -48,7 +74,10 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
           </div>
         </div>
 
-        <div className="border-border border-t pt-4">
+        <div className="border-border mt-4 flex gap-2 border-t pt-4">
+          <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, 'text-xs')}>
+            &gt; MANAGE SUBSCRIPTION
+          </Button>
           <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, 'text-xs')}>
             &gt; UPGRADE TO ENTERPRISE
           </Button>
