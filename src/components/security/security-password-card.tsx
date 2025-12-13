@@ -9,8 +9,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Key } from 'lucide-react';
 
-import { mode } from '@/design-system';
-import { cn } from '@/lib/utils';
 export function SecurityPasswordCard() {
   return (
     <Card tone="neutral">

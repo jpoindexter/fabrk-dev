@@ -659,7 +659,7 @@ export default function ThemeGeneratorPage() {
             {previewEnabled && (
               <div
                 className={cn(
-                  'border-primary bg-primary/10 flex items-center gap-2 border p-3',
+                  'border-primary bg-primary/10 flex items-center gap-2 border p-4',
                   mode.radius
                 )}
               >
@@ -680,7 +680,7 @@ export default function ThemeGeneratorPage() {
               <div
                 key={name}
                 className={cn(
-                  'border-border flex items-center gap-3 border-b p-2 font-mono text-xs last:border-0',
+                  'border-border flex items-center gap-4 border-b p-2 font-mono text-xs last:border-0',
                   mode.font
                 )}
               >
@@ -709,7 +709,7 @@ export default function ThemeGeneratorPage() {
               {/* Sample Cards */}
               <Card className={cn(mode.radius)}>
                 <CardHeader code="0x01" title="SAMPLE_CARD" />
-                <CardContent className="space-y-3">
+                <CardContent className="space-y-4">
                   <Input placeholder="Sample input field" className={cn(mode.radius, mode.font)} />
                   <div className="flex gap-2">
                     <Button size="sm" className={cn(mode.radius, mode.font, 'text-xs')}>
@@ -733,16 +733,16 @@ export default function ThemeGeneratorPage() {
 
               <Card className={cn(mode.radius)}>
                 <CardHeader code="0x02" title="STATUS_BADGES" />
-                <CardContent className="space-y-3">
+                <CardContent className="space-y-4">
                   <div className="flex flex-wrap gap-2">
                     <Badge className="bg-success text-success-foreground">Success</Badge>
                     <Badge className="bg-warning text-warning-foreground">Warning</Badge>
                     <Badge className="bg-destructive text-destructive-foreground">Error</Badge>
                   </div>
-                  <div className="bg-muted text-muted-foreground p-3 text-xs">
+                  <div className="bg-muted text-muted-foreground p-4 text-xs">
                     Muted background with muted foreground text for less emphasis
                   </div>
-                  <div className="bg-accent text-accent-foreground p-3 text-xs">
+                  <div className="bg-accent text-accent-foreground p-4 text-xs">
                     Accent background highlighting important information
                   </div>
                 </CardContent>
@@ -754,7 +754,7 @@ export default function ThemeGeneratorPage() {
         {/* Generated CSS */}
         {generatedCSS && (
           <DocsCard title="GENERATED_CSS">
-            <div className="space-y-3">
+            <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <span className={cn('text-muted-foreground text-xs', mode.font)}>
                   [EXPORT_OPTIONS]:
@@ -815,7 +815,7 @@ export default function ThemeGeneratorPage() {
               </TabsTrigger>
             </TabsList>
 
-            <TabsContent value="css" className="space-y-3">
+            <TabsContent value="css" className="space-y-4">
               <p className="text-muted-foreground text-xs">
                 Add the generated CSS to your globals.css file:
               </p>
@@ -827,7 +827,7 @@ export default function ThemeGeneratorPage() {
               />
             </TabsContent>
 
-            <TabsContent value="js" className="space-y-3">
+            <TabsContent value="js" className="space-y-4">
               <p className="text-muted-foreground text-xs">
                 Apply the theme dynamically with JavaScript:
               </p>
@@ -849,7 +849,7 @@ if (savedTheme) {
               />
             </TabsContent>
 
-            <TabsContent value="react" className="space-y-3">
+            <TabsContent value="react" className="space-y-4">
               <p className="text-muted-foreground text-xs">React theme hook implementation:</p>
               <CodeBlock
                 key={`react-${themeId}-${themeName}`}

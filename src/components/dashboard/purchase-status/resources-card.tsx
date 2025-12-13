@@ -9,7 +9,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
-import { ExternalLink, Github, MessageSquare, Package } from 'lucide-react';
+import { ExternalLink, Github, Package } from 'lucide-react';
 import { ResourcesCardProps } from './purchase-status-types';
 
 export function ResourcesCard({ hasAccess }: ResourcesCardProps) {

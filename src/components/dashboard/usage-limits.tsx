@@ -85,7 +85,8 @@ export function UsageLimits({ user }: UsageLimitsProps) {
               </div>
               <Progress
                 value={percentage}
-                className={`h-2 ${isNearLimit ? 'bg-destructive' : ''}`}
+                size="sm"
+                barWidth={15}
               />
               {isNearLimit && (
                 <p className="text-destructive mt-2 text-xs">

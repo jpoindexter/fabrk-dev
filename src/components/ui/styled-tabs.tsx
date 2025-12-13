@@ -73,28 +73,13 @@ export function StyledTabs({
     <Tabs value={value} onValueChange={onValueChange} className={className}>
       <Card tone="neutral">
         {code && title && <CardHeader code={code} title={title} />}
-        <TabsList
-          className={cn('h-auto w-full justify-start gap-0 bg-transparent p-0', 'rounded-none')}
-        >
-          {tabs.map((tab, index) => {
+        <TabsList>
+          {tabs.map((tab) => {
             const Icon = tab.icon;
             return (
-              <TabsTrigger
-                key={tab.id}
-                value={tab.id}
-                className={cn(
-                  'border-border flex items-center gap-2 border-r bg-transparent px-4 py-2 text-xs',
-                  // Default state - muted text
-                  mode.color.text.muted,
-                  // Hover state
-                  'hover:text-foreground hover:bg-muted/50',
-                  // Active state - filled primary background with contrasting text
-                  'data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:font-semibold',
-                  'rounded-none', // Force sharp corners for terminal aesthetic
-                  mode.font
-                )}
-              >
-                {Icon && <Icon className="h-3 w-3" />}[{tab.label}]
+              <TabsTrigger key={tab.id} value={tab.id}>
+                {Icon && <Icon className="h-3 w-3" />}
+                {tab.label}
               </TabsTrigger>
             );
           })}

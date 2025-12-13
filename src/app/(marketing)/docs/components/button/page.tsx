@@ -174,7 +174,7 @@ export default function ButtonPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-3 text-sm font-semibold">✓ Use Button when:</p>
+              <p className="text-success mb-4 text-sm font-semibold">✓ Use Button when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">
                   • Triggering actions (submit form, open modal, delete item)
@@ -187,7 +187,7 @@ export default function ButtonPage() {
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">
                   • Navigating to another page (use Link with variant=&quot;link&quot; or Next.js

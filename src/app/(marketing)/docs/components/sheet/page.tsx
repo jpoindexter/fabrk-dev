@@ -285,7 +285,7 @@ export default function SheetPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-3 text-sm font-semibold">✓ Use Sheet when:</p>
+              <p className="text-success mb-4 text-sm font-semibold">✓ Use Sheet when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">
                   • Secondary navigation or sidebar that should overlay content (mobile menus,
@@ -304,7 +304,7 @@ export default function SheetPage() {
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">• Simple confirmation or alert (use Alert Dialog)</li>
                 <li className="text-sm">

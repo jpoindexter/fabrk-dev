@@ -106,7 +106,6 @@ import {
   formatButtonText,
   formatLabelText,
   formatCardHeader,
-  formatStatusText,
 } from './themes';
 
 /**

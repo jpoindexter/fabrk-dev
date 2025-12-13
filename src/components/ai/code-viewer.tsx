@@ -240,35 +240,10 @@ export function CodeViewer({ form, className }: CodeViewerProps) {
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex items-center justify-between">
-          <TabsList
-            className={cn(
-              'h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0',
-              mode.radius
-            )}
-          >
-            <TabsTrigger
-              value="schema"
-              className={cn(
-                'border-border bg-muted data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
-                mode.radius,
-                mode.font
-              )}
-            >
-              [SCHEMA]
-            </TabsTrigger>
-            <TabsTrigger
-              value="component"
-              className={cn(
-                'border-border bg-muted data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
-                mode.radius,
-                mode.font
-              )}
-            >
-              [COMPONENT]
-            </TabsTrigger>
-          </TabsList>
-        </div>
+        <TabsList>
+          <TabsTrigger value="schema">Schema</TabsTrigger>
+          <TabsTrigger value="component">Component</TabsTrigger>
+        </TabsList>
 
         {/* Schema Tab Content */}
         <TabsContent value="schema" className="mt-0 flex-1 overflow-hidden">

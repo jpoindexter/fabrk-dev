@@ -53,6 +53,9 @@
     "audit:design": "node .internal/scripts/utilities/design-system-audit.mjs",
     "audit:design:json": "node .internal/scripts/utilities/design-system-audit.mjs --json",
     "validate:themes": "node scripts/validate-themes.mjs",
+    "sync:changelog": "node scripts/sync-changelog.mjs",
+    "mcp:setup": "node scripts/mcp-setup.mjs",
+    "mcp:build": "cd mcp-servers/fabrk && npm run build",
     "prepare": "npx husky install"
   },
   "lint-staged": {

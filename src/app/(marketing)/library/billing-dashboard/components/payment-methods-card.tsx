@@ -4,7 +4,7 @@
  */
 
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { CreditCard, Plus } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';

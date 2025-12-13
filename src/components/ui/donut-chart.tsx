@@ -120,8 +120,8 @@ export function ProgressDonutChart({
   thickness = 30,
   label,
   showPercentage = true,
-  color = 'hsl(var(--primary))',
-  backgroundColor = 'hsl(var(--muted))',
+  color = 'var(--color-primary)',
+  backgroundColor = 'var(--color-muted)',
   className,
 }: ProgressDonutChartProps) {
   const percentage = Math.min((value / max) * 100, 100);

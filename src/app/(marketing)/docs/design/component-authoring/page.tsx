@@ -13,7 +13,7 @@ export default function ComponentAuthoringPage() {
   return (
     <div className="container mx-auto max-w-4xl space-y-8 px-6 py-8">
       <div className="space-y-4">
-        <div className="inline-block border border-border bg-muted px-3 py-1">
+        <div className="inline-block border border-border bg-muted px-4 py-1">
           <span className="font-mono text-xs text-muted-foreground">[0xC2] AUTHORING</span>
         </div>
         <h1 className="font-mono text-3xl font-bold">Component Authoring Guide</h1>
@@ -24,7 +24,7 @@ export default function ComponentAuthoringPage() {
       </div>
 
       <div className="rounded-none border border-warning/50 bg-warning/10 p-6">
-        <div className="flex items-start gap-3">
+        <div className="flex items-start gap-4">
           <AlertTriangle className="h-5 w-5 text-warning" />
           <div className="space-y-2">
             <p className="font-mono text-sm font-semibold">COMPREHENSIVE DOCUMENTATION AVAILABLE</p>
@@ -59,7 +59,7 @@ export default function ComponentAuthoringPage() {
         </DocsCard>
 
         <DocsCard title="QUICK REFERENCE PATTERN">
-          <pre className="overflow-x-auto bg-muted p-3 font-mono text-xs">
+          <pre className="overflow-x-auto bg-muted p-4 font-mono text-xs">
             {`import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
@@ -102,11 +102,13 @@ className="text-primary hover:bg-accent"`}
             </div>
             <div>
               <p className="font-semibold text-destructive">❌ DON&apos;T: Hardcode Colors</p>
+              {/* eslint-disable design-system/no-hardcoded-colors -- Documentation example showing incorrect patterns */}
               <pre className="mt-2 overflow-x-auto bg-muted p-2 font-mono text-xs">
                 {`className="bg-white text-black"
 className="bg-gray-100 border-gray-300"
 style={{ backgroundColor: "#ffffff" }}`}
               </pre>
+              {/* eslint-enable design-system/no-hardcoded-colors */}
             </div>
           </div>
         </DocsCard>
@@ -158,7 +160,7 @@ style={{ backgroundColor: "#ffffff" }}`}
 
       <DocsSection title="🔨 COMPONENT PATTERNS">
         <DocsCard title="BUTTON PATTERN">
-          <pre className="overflow-x-auto bg-muted p-3 font-mono text-xs">
+          <pre className="overflow-x-auto bg-muted p-4 font-mono text-xs">
             {`import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
@@ -188,7 +190,7 @@ const buttonVariants = cva(
         </DocsCard>
 
         <DocsCard title="CARD PATTERN">
-          <pre className="overflow-x-auto bg-muted p-3 font-mono text-xs">
+          <pre className="overflow-x-auto bg-muted p-4 font-mono text-xs">
             {`import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
@@ -210,7 +212,7 @@ export function MyCard({ className, ...props }) {
         </DocsCard>
 
         <DocsCard title="FORM INPUT PATTERN">
-          <pre className="overflow-x-auto bg-muted p-3 font-mono text-xs">
+          <pre className="overflow-x-auto bg-muted p-4 font-mono text-xs">
             {`export const MyInput = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, ...props }, ref) => {
     return (
@@ -240,7 +242,7 @@ export function MyCard({ className, ...props }) {
       <DocsSection title="♿ ACCESSIBILITY REQUIREMENTS">
         <DocsCard title="1. FOCUS VISIBLE STATES">
           <p>All interactive elements must have visible focus indicators:</p>
-          <pre className="mt-4 overflow-x-auto bg-muted p-3 font-mono text-xs">
+          <pre className="mt-4 overflow-x-auto bg-muted p-4 font-mono text-xs">
             {`// ✅ CORRECT
 <button
   className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
@@ -255,7 +257,7 @@ export function MyCard({ className, ...props }) {
 
         <DocsCard title="2. ARIA LABELS FOR ICON BUTTONS">
           <p>Icon-only buttons must have aria-label:</p>
-          <pre className="mt-4 overflow-x-auto bg-muted p-3 font-mono text-xs">
+          <pre className="mt-4 overflow-x-auto bg-muted p-4 font-mono text-xs">
             {`// ✅ CORRECT
 <Button size="icon" aria-label="Close dialog">
   <X className="h-4 w-4" />
@@ -300,7 +302,7 @@ export function MyCard({ className, ...props }) {
 
       <DocsSection title="🧪 TESTING YOUR COMPONENT">
         <DocsCard title="1. VISUAL TESTING">
-          <pre className="overflow-x-auto bg-muted p-3 font-mono text-xs">npm run dev</pre>
+          <pre className="overflow-x-auto bg-muted p-4 font-mono text-xs">npm run dev</pre>
           <p className="mt-2">
             <strong>Check:</strong>
           </p>
@@ -334,7 +336,7 @@ export function MyCard({ className, ...props }) {
         </DocsCard>
 
         <DocsCard title="3. ACCESSIBILITY AUDIT">
-          <pre className="overflow-x-auto bg-muted p-3 font-mono text-xs">
+          <pre className="overflow-x-auto bg-muted p-4 font-mono text-xs">
             {`# 1. Start dev server
 npm run dev
 

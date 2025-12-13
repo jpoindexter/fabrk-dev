@@ -212,7 +212,7 @@ export const mdxComponents: MDXComponents = {
     </h2>
   ),
   h3: ({ children }) => (
-    <h3 className="text-foreground mt-6 mb-3 font-mono text-xl font-semibold uppercase">
+    <h3 className="text-foreground mt-6 mb-4 font-mono text-xl font-semibold uppercase">
       {children}
     </h3>
   ),

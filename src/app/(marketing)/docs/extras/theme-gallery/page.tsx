@@ -1,6 +1,6 @@
 /**
  * Theme Gallery Page
- * Interactive showcase of all 14 themes
+ * Interactive showcase of all 12 themes
  */
 
 'use client';
@@ -32,13 +32,13 @@ export default function ThemeGalleryPage() {
       code="[0xB1]"
       category="Extras"
       title="Theme Gallery"
-      description="Explore all 14 terminal themes with live previews and instant switching."
-      overview="Interactive gallery showcasing all themes: 5 CRT phosphor, 2 light modes, 6 retro computer themes, and 1 minimal black & white. Click any theme to instantly preview it across the entire site."
+      description="Explore all 12 terminal themes with live previews and instant switching."
+      overview="Interactive gallery showcasing all themes: 5 CRT phosphor, 6 retro computer themes, and 1 minimal black & white. Click any theme to instantly preview it across the entire site."
       features={[
         {
           icon: Palette,
-          title: '14 Complete Themes',
-          description: 'CRT, Light, Retro, Minimal',
+          title: '12 Complete Themes',
+          description: 'CRT, Retro, Minimal',
         },
         {
           icon: Eye,
@@ -125,13 +125,6 @@ document.documentElement.setAttribute('data-theme', 'c64');
             </div>
           </DocsCard>
 
-          <DocsCard title="LIGHT MODES (2 THEMES)">
-            <div className="space-y-1 text-sm">
-              <div>├─ Light Green: Light background, green accents</div>
-              <div>└─ Light Amber: Light background, amber accents</div>
-            </div>
-          </DocsCard>
-
           <DocsCard title="RETRO COMPUTER (6 THEMES)">
             <div className="space-y-1 text-sm">
               <div>├─ Game Boy: DMG-01 iconic LCD green</div>
@@ -179,7 +172,7 @@ document.documentElement.setAttribute('data-theme', 'c64');
 
         <DocsCard title="ACCESSIBILITY COMPLIANCE">
           <div className="space-y-2 text-sm">
-            <p>All 14 themes pass WCAG 2.2 AA accessibility requirements:</p>
+            <p>All 12 themes pass WCAG 2.2 AA accessibility requirements:</p>
             <div className="space-y-1">
               <div>✓ Text contrast ≥4.5:1 (normal text)</div>
               <div>✓ Non-text contrast ≥3:1 (borders, controls)</div>

@@ -47,7 +47,7 @@ export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
                 {usage.users.current} / {usage.users.limit}
               </span>
             </div>
-            <Progress value={usage.users.percentage} className="h-2" />
+            <Progress value={usage.users.percentage} size="sm" barWidth={18} />
           </div>
 
           <div className="space-y-2">
@@ -62,7 +62,7 @@ export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
                 {usage.storage.unit}
               </span>
             </div>
-            <Progress value={usage.storage.percentage} className="h-2" />
+            <Progress value={usage.storage.percentage} size="sm" barWidth={18} />
           </div>
 
           <div className="space-y-2">
@@ -75,7 +75,7 @@ export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
                 {usage.apiCalls.current.toLocaleString()} / {usage.apiCalls.limit.toLocaleString()}
               </span>
             </div>
-            <Progress value={usage.apiCalls.percentage} className="h-2" />
+            <Progress value={usage.apiCalls.percentage} size="sm" barWidth={18} />
           </div>
         </div>
       </CardContent>

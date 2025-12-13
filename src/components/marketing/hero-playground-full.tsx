@@ -5,7 +5,7 @@
  */
 'use client';
 
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import {
   ColumnFiltersState,
   SortingState,
@@ -18,7 +18,7 @@ import {
 } from '@tanstack/react-table';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardHeader } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -57,7 +57,6 @@ import {
   UserPlus,
   Calendar,
   Settings,
-  CheckCircle2,
   Info,
   AlertTriangle,
   MoreHorizontal,
@@ -74,7 +73,6 @@ import {
   ChevronRight,
   Users,
   User,
-  CreditCard,
   X,
   RotateCw,
   Lock,
@@ -87,7 +85,6 @@ import {
 } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 // Analytics Dashboard components
 import { MetricCards } from '@/app/(marketing)/library/analytics-dashboard/components/metric-cards';
@@ -115,15 +112,6 @@ import { TableToolbar } from '@/app/(marketing)/library/user-management/componen
 import { ProfileHeader } from '@/app/(marketing)/library/profile/components/profile-header';
 import { BadgesSection } from '@/app/(marketing)/library/profile/components/badges-section';
 import { ProfileTabs } from '@/app/(marketing)/library/profile/components/profile-tabs';
-
-// Billing Dashboard components
-import { CurrentPlanCard } from '@/app/(marketing)/library/billing-dashboard/components/current-plan-card';
-import { UsageMetricsCard } from '@/app/(marketing)/library/billing-dashboard/components/usage-metrics-card';
-import { PaymentMethodsCard } from '@/app/(marketing)/library/billing-dashboard/components/payment-methods-card';
-import { RecentInvoicesCard } from '@/app/(marketing)/library/billing-dashboard/components/recent-invoices-card';
-import { PlanCards } from '@/app/(marketing)/library/billing-dashboard/components/plan-cards';
-import { BillingHistoryTable } from '@/app/(marketing)/library/billing-dashboard/components/billing-history-table';
-import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
 
 // Profile mock data
 const mockProfileUser = {
@@ -214,120 +202,6 @@ const mockProfileBadges = [
   { id: '2', name: 'Top Contributor', icon: TrendingUp, color: 'success' },
   { id: '3', name: 'Bug Hunter', icon: Activity, color: 'warning' },
   { id: '4', name: 'Team Player', icon: Award, color: 'primary' },
-];
-
-// Billing Dashboard mock data
-const mockBillingSubscription = {
-  plan: 'Professional',
-  status: 'active',
-  price: 29,
-  billingCycle: 'monthly',
-  nextBillingDate: '2024-12-15',
-  startDate: '2024-01-15',
-  features: [
-    'Unlimited projects',
-    '10 team members',
-    'Priority support',
-    'Advanced analytics',
-    'Custom integrations',
-  ],
-};
-
-const mockBillingUsage = {
-  users: { current: 8, limit: 10, percentage: 80 },
-  projects: { current: 24, limit: -1, percentage: 0 },
-  storage: { current: 45, limit: 100, percentage: 45, unit: 'GB' },
-  apiCalls: { current: 12500, limit: 50000, percentage: 25 },
-};
-
-const mockBillingPaymentMethods = [
-  {
-    id: 'pm_001',
-    brand: 'VISA',
-    last4: '4242',
-    expMonth: 12,
-    expYear: 2025,
-    isDefault: true,
-  },
-  {
-    id: 'pm_002',
-    brand: 'MASTERCARD',
-    last4: '5555',
-    expMonth: 6,
-    expYear: 2026,
-    isDefault: false,
-  },
-];
-
-const mockBillingPayments = [
-  {
-    id: 'inv_001',
-    date: '2024-11-01',
-    amount: 2900,
-    status: 'succeeded',
-    description: 'Professional Plan - November 2024',
-  },
-  {
-    id: 'inv_002',
-    date: '2024-10-01',
-    amount: 2900,
-    status: 'succeeded',
-    description: 'Professional Plan - October 2024',
-  },
-  {
-    id: 'inv_003',
-    date: '2024-09-01',
-    amount: 2900,
-    status: 'succeeded',
-    description: 'Professional Plan - September 2024',
-  },
-  {
-    id: 'inv_004',
-    date: '2024-08-01',
-    amount: 2900,
-    status: 'failed',
-    description: 'Professional Plan - August 2024',
-  },
-  {
-    id: 'inv_005',
-    date: '2024-07-01',
-    amount: 2900,
-    status: 'succeeded',
-    description: 'Professional Plan - July 2024',
-  },
-];
-
-const mockBillingPlans = [
-  {
-    name: 'FREE',
-    price: 0,
-    features: ['1 project', '3 team members', 'Basic support'],
-    current: false,
-  },
-  {
-    name: 'PROFESSIONAL',
-    price: 29,
-    features: ['Unlimited projects', '10 team members', 'Priority support', 'Advanced analytics'],
-    current: true,
-  },
-  {
-    name: 'ENTERPRISE',
-    price: 99,
-    features: [
-      'Unlimited everything',
-      'Unlimited team',
-      'Dedicated support',
-      'Custom integrations',
-      'SLA guarantee',
-    ],
-    current: false,
-  },
-];
-
-const mockBillingTabs = [
-  { id: 'overview', label: 'OVERVIEW' },
-  { id: 'plans', label: 'PLANS' },
-  { id: 'history', label: 'HISTORY' },
 ];
 
 // Browser Frame Component
@@ -492,24 +366,18 @@ function ComponentsGrid() {
         <Card>
           <div className="p-4">
             <Tabs defaultValue="overview" className="w-full">
-              <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="overview" className="text-xs">
-                  OVERVIEW
-                </TabsTrigger>
-                <TabsTrigger value="analytics" className="text-xs">
-                  ANALYTICS
-                </TabsTrigger>
-                <TabsTrigger value="reports" className="text-xs">
-                  REPORTS
-                </TabsTrigger>
+              <TabsList>
+                <TabsTrigger value="overview">Overview</TabsTrigger>
+                <TabsTrigger value="analytics">Analytics</TabsTrigger>
+                <TabsTrigger value="reports">Reports</TabsTrigger>
               </TabsList>
-              <TabsContent value="overview" className="mt-3 text-xs">
+              <TabsContent value="overview" className="mt-4 text-xs">
                 <p>Performance metrics and key insights.</p>
               </TabsContent>
-              <TabsContent value="analytics" className="mt-3 text-xs">
+              <TabsContent value="analytics" className="mt-4 text-xs">
                 <p>Detailed analytics data and trends.</p>
               </TabsContent>
-              <TabsContent value="reports" className="mt-3 text-xs">
+              <TabsContent value="reports" className="mt-4 text-xs">
                 <p>Generated reports and exports.</p>
               </TabsContent>
             </Tabs>
@@ -518,7 +386,7 @@ function ComponentsGrid() {
 
         {/* File Upload - NO CARD, just border */}
         <div className="border-border bg-muted/20 flex flex-col items-center justify-center border-2 border-dashed p-8">
-          <Upload className="text-muted-foreground mb-3 h-12 w-12" />
+          <Upload className="text-muted-foreground mb-4 h-12 w-12" />
           <p className="mb-1 text-xs font-semibold">[DROP FILES HERE]</p>
           <p className="text-muted-foreground text-xs">or click to browse</p>
         </div>
@@ -544,7 +412,7 @@ function ComponentsGrid() {
         {/* Search with Results */}
         <Card>
           <div className="p-4">
-            <div className="relative mb-3">
+            <div className="relative mb-4">
               <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
               <Input placeholder="Search..." className="pl-9 text-xs" />
             </div>
@@ -567,7 +435,7 @@ function ComponentsGrid() {
         {/* Dropdown Menu */}
         <Card>
           <div className="p-4">
-            <h3 className="mb-3 text-xs font-semibold">[DROPDOWN MENU]</h3>
+            <h3 className="mb-4 text-xs font-semibold">[DROPDOWN MENU]</h3>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" className="w-full text-xs">
@@ -608,7 +476,7 @@ function ComponentsGrid() {
         {/* Progress Bars */}
         <Card>
           <div className="p-4">
-            <h3 className="mb-3 text-xs font-semibold">[PROGRESS]</h3>
+            <h3 className="mb-4 text-xs font-semibold">[PROGRESS]</h3>
             <div className="space-y-4">
               <div>
                 <div className="mb-1 flex justify-between text-xs">
@@ -660,7 +528,7 @@ function ComponentsGrid() {
       <div className="space-y-4">
         {/* Radio Group - Border only, no card */}
         <div className="border-primary/30 bg-primary/5 border-2 p-4">
-          <h3 className="text-primary mb-3 text-xs font-semibold">[RADIO GROUP]</h3>
+          <h3 className="text-primary mb-4 text-xs font-semibold">[RADIO GROUP]</h3>
           <RadioGroup defaultValue="option-1">
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="option-1" id="option-1" />
@@ -679,7 +547,7 @@ function ComponentsGrid() {
 
         {/* Switches - Terminal style with border */}
         <div className="border-border bg-card border p-4">
-          <h3 className="mb-3 text-xs font-semibold">[SWITCHES]</h3>
+          <h3 className="mb-4 text-xs font-semibold">[SWITCHES]</h3>
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <Label className="text-xs">Enable notifications</Label>
@@ -718,7 +586,7 @@ function ComponentsGrid() {
 
         {/* Filter Chips - Terminal card style */}
         <div className="border-border bg-card border p-4">
-          <h3 className="mb-3 text-xs font-semibold">[ACTIVE FILTERS]</h3>
+          <h3 className="mb-4 text-xs font-semibold">[ACTIVE FILTERS]</h3>
           <div className="flex flex-wrap gap-2">
             {['Status: Active', 'Role: Admin'].map((filter, i) => (
               <Badge key={i} variant="secondary" className="gap-1">
@@ -731,7 +599,7 @@ function ComponentsGrid() {
 
         {/* Date & Time - Outline style */}
         <div className="border-muted-foreground/30 border-2 border-dashed p-4">
-          <h3 className="text-muted-foreground mb-3 text-xs font-semibold">[TIMESTAMPS]</h3>
+          <h3 className="text-muted-foreground mb-4 text-xs font-semibold">[TIMESTAMPS]</h3>
           <div className="space-y-2 text-xs">
             <div className="flex items-center gap-2">
               <Clock className="text-muted-foreground h-4 w-4" />
@@ -764,8 +632,8 @@ function ComponentsGrid() {
         {/* Slider */}
         <Card>
           <div className="p-4">
-            <h3 className="mb-3 text-xs font-semibold">[SLIDER]</h3>
-            <p className={cn('mb-3 text-xs', mode.color.text.muted)}>Value: ${priceRange[0]}</p>
+            <h3 className="mb-4 text-xs font-semibold">[SLIDER]</h3>
+            <p className={cn('mb-4 text-xs', mode.color.text.muted)}>Value: ${priceRange[0]}</p>
             <Slider
               value={priceRange}
               onValueChange={setPriceRange}
@@ -779,7 +647,7 @@ function ComponentsGrid() {
         {/* Checkboxes */}
         <Card>
           <div className="p-4">
-            <h3 className="mb-3 text-xs font-semibold">[CHECKBOXES]</h3>
+            <h3 className="mb-4 text-xs font-semibold">[CHECKBOXES]</h3>
             <div className="space-y-2">
               <div className="flex items-center space-x-2">
                 <Checkbox id="check-1" defaultChecked />
@@ -800,7 +668,7 @@ function ComponentsGrid() {
         {/* Select Menu */}
         <Card>
           <div className="p-4">
-            <h3 className="mb-3 text-xs font-semibold">[SELECT MENU]</h3>
+            <h3 className="mb-4 text-xs font-semibold">[SELECT MENU]</h3>
             <Select defaultValue="option-1">
               <SelectTrigger className="text-xs">
                 <SelectValue />
@@ -817,7 +685,7 @@ function ComponentsGrid() {
         {/* Input Variants */}
         <Card>
           <div className="p-4">
-            <h3 className="mb-3 text-xs font-semibold">[INPUT TYPES]</h3>
+            <h3 className="mb-4 text-xs font-semibold">[INPUT TYPES]</h3>
             <div className="space-y-2">
               <Input type="email" placeholder="Email" className="text-xs" />
               <Input type="password" placeholder="Password" className="text-xs" />
@@ -829,7 +697,7 @@ function ComponentsGrid() {
         {/* Button Groups */}
         <Card>
           <div className="p-4">
-            <h3 className="mb-3 text-xs font-semibold">[BUTTON GROUP]</h3>
+            <h3 className="mb-4 text-xs font-semibold">[BUTTON GROUP]</h3>
             <div className="flex gap-2">
               <Button size="sm" variant="outline" className="flex-1 text-xs">
                 &gt; LEFT
@@ -1012,83 +880,6 @@ function ProfilePreview() {
 
           {/* Profile Tabs */}
           <ProfileTabs activity={mockProfileActivity} projects={mockProfileProjects} />
-        </div>
-      </div>
-    </BrowserFrame>
-  );
-}
-
-// Billing preview - simplified version
-function BillingPreview() {
-  const [activeTab, setActiveTab] = useState('overview');
-
-  // Helper functions
-  const formatDate = (dateStr: string) => {
-    return new Intl.DateTimeFormat('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    }).format(new Date(dateStr));
-  };
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-    }).format(amount / 100);
-  };
-
-  const getStatusText = (status: string) => {
-    switch (status) {
-      case 'succeeded':
-        return { text: 'PAID', color: 'text-success' };
-      case 'failed':
-        return { text: 'FAILED', color: 'text-destructive' };
-      default:
-        return { text: 'PENDING', color: 'text-warning' };
-    }
-  };
-
-  return (
-    <BrowserFrame>
-      <LeftNavigation activeSection="billing" />
-      <div className="flex-1 overflow-auto p-8">
-        <div className="container mx-auto max-w-7xl space-y-6">
-          <StyledTabs tabs={mockBillingTabs} value={activeTab} onValueChange={setActiveTab}>
-            {/* Overview Tab */}
-            <StyledTabsContent value="overview">
-              <div className="mx-auto max-w-2xl space-y-6 [&_>*>*:first-child]:hidden">
-                <CurrentPlanCard subscription={mockBillingSubscription} formatDate={formatDate} />
-                <PaymentMethodsCard paymentMethods={mockBillingPaymentMethods} />
-                <RecentInvoicesCard
-                  payments={mockBillingPayments}
-                  formatDate={formatDate}
-                  formatCurrency={formatCurrency}
-                  getStatusText={getStatusText}
-                  onViewAll={() => setActiveTab('history')}
-                />
-              </div>
-            </StyledTabsContent>
-
-            {/* Plans Tab */}
-            <StyledTabsContent value="plans">
-              <div className="[&_>*>*:first-child]:hidden">
-                <PlanCards plans={mockBillingPlans} />
-              </div>
-            </StyledTabsContent>
-
-            {/* History Tab */}
-            <StyledTabsContent value="history">
-              <div className="[&_>*>*:first-child]:hidden">
-                <BillingHistoryTable
-                  payments={mockBillingPayments}
-                  formatDate={formatDate}
-                  formatCurrency={formatCurrency}
-                  getStatusText={getStatusText}
-                />
-              </div>
-            </StyledTabsContent>
-          </StyledTabs>
         </div>
       </div>
     </BrowserFrame>

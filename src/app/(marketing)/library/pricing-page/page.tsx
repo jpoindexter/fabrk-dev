@@ -17,8 +17,6 @@ import { Card, CardHeader, TemplatePageHeader } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { LibraryNavigation } from '@/components/library';
-import { mode } from '@/design-system';
-import { cn } from '@/lib/utils';
 
 const templateCode = `"use client";
 
@@ -260,31 +258,10 @@ export default function PricingPageTemplate() {
           <Card>
             <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
-              <TabsList
-                className={cn(
-                  'h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0',
-                  mode.radius
-                )}
-              >
-                <TabsTrigger
-                  value="preview"
-                  className={cn(
-                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
-                    mode.radius,
-                    mode.font
-                  )}
-                >
-                  [PREVIEW]
+              <TabsList>
+                <TabsTrigger value="preview">Preview
                 </TabsTrigger>
-                <TabsTrigger
-                  value="code"
-                  className={cn(
-                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
-                    mode.radius,
-                    mode.font
-                  )}
-                >
-                  [CODE]
+                <TabsTrigger value="code">Code
                 </TabsTrigger>
               </TabsList>
             </div>

@@ -62,6 +62,14 @@ const allowPatterns = [
   /src\/design-system\/violations\//,
   // Intentional hex colors: Code block component uses hardcoded colors for syntax highlighting themes
   /src\/components\/ui\/code-block\.tsx$/,
+  // Intentional hex colors: Theme generator requires preset hex colors for user-selectable color palette
+  /src\/app\/\(marketing\)\/docs\/extras\/theme-generator\/page\.tsx$/,
+  // Intentional hex colors: Component authoring docs show examples of incorrect patterns (documentation)
+  /src\/app\/\(marketing\)\/docs\/design\/component-authoring\/page\.tsx$/,
+  // Intentional hex colors: Auth API routes contain email templates requiring inline styles for email clients
+  /src\/app\/api\/auth\/forgot-password\/route\.ts$/,
+  /src\/app\/api\/auth\/register\/route\.ts$/,
+  /src\/app\/api\/auth\/send-verification-email\/route\.ts$/,
 ];
 
 const hexPattern = /#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})(?![0-9a-fA-F])(?=[$\s'"),.;}\]>/]|$)/g;

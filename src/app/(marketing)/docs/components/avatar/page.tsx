@@ -228,7 +228,7 @@ export default function AvatarPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-3 text-sm font-semibold">✓ Use Avatar when:</p>
+              <p className="text-success mb-4 text-sm font-semibold">✓ Use Avatar when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">
                   • Representing users or people (profile picture, comment author, team member)
@@ -244,7 +244,7 @@ export default function AvatarPage() {
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">
                   • Showing generic icons or illustrations (use icon components instead)

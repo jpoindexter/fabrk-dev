@@ -31,7 +31,7 @@ export function ProgressSection({ currentStep, steps, progress }: ProgressSectio
           {Math.round(progress)}%
         </span>
       </div>
-      <Progress value={progress} className="h-1" />
+      <Progress value={progress} size="sm" barWidth={25} />
 
       {/* Step Indicators */}
       <div className="mt-4 flex items-center justify-between">

@@ -197,7 +197,7 @@ export function ManageBillingButton() {
       {/* Security Warning for API Keys */}
       <DocsSection title="Security">
         <DocsCallout variant="danger" title="NEVER COMMIT SECRETS TO GIT">
-          <div className="space-y-3">
+          <div className="space-y-4">
             <p>
               <strong>CRITICAL:</strong> The STRIPE_SECRET_KEY and STRIPE_WEBHOOK_SECRET are highly
               sensitive. Leaking them gives attackers full access to your Stripe account.

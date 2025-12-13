@@ -4,8 +4,6 @@
  */
 'use client';
 
-import { mode } from '@/design-system';
-
 export function TerminalBackground() {
   return (
     <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">

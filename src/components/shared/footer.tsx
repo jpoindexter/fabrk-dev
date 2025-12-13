@@ -113,6 +113,15 @@ export function Footer() {
                       >
                         &gt; DOCS
                       </Link>
+                      <Link
+                        href="/changelog"
+                        className={cn(
+                          'text-muted-foreground hover:text-foreground text-xs transition-colors',
+                          mode.font
+                        )}
+                      >
+                        &gt; CHANGELOG
+                      </Link>
                     </nav>
                   </div>
 

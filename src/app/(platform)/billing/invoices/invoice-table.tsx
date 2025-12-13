@@ -14,7 +14,6 @@ import { Badge } from '@/components/ui/badge';
 import { Download, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { mode } from '@/design-system';
-import { cn } from '@/lib/utils';
 
 interface Payment {
   id: string;

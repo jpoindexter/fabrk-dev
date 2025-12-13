@@ -1,6 +1,6 @@
 'use client';
 
-import { DocsSidebar, NavSection } from '@/components/docs/docs-sidebar';
+import { DocsSidebar } from '@/components/docs/docs-sidebar';
 import { DocsToc } from '@/components/docs/docs-toc';
 import { useRef } from 'react';
 import { docsNavigation } from './docs-nav-data';

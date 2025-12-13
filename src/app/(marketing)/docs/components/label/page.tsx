@@ -217,7 +217,7 @@ tracking-normal      // Letter spacing`,
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-3 text-sm font-semibold">✓ Use Label when:</p>
+              <p className="text-success mb-4 text-sm font-semibold">✓ Use Label when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">
                   • Every form input needs accessible text association (Input, Checkbox, Switch)
@@ -235,7 +235,7 @@ tracking-normal      // Letter spacing`,
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">
                   • Input has no visible label (use aria-label on input instead)

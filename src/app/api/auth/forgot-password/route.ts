@@ -74,6 +74,7 @@ export async function POST(request: NextRequest) {
         type: 'RESET',
         to: user.email,
         subject: 'Reset your password',
+         
         html: `
           <div style="font-family: monospace; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #0a0a0a; color: #33ff66; border: 1px solid #33ff66;">
             <div style="border-bottom: 1px solid #33ff66; padding-bottom: 10px; margin-bottom: 20px;">

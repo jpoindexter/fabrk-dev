@@ -66,7 +66,7 @@ export function CookieConsent({
   onAccept,
   onReject,
   privacyPolicyUrl = '/privacy',
-  cookiePolicyUrl = '/cookies',
+  cookiePolicyUrl: _cookiePolicyUrl = '/cookies',
 }: CookieConsentProps) {
   const [isVisible, setIsVisible] = React.useState(false);
   const [showCustomize, setShowCustomize] = React.useState(false);

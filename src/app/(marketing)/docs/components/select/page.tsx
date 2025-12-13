@@ -220,7 +220,7 @@ export default function SelectPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-3 text-sm font-semibold">✓ Use Select when:</p>
+              <p className="text-success mb-4 text-sm font-semibold">✓ Use Select when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">
                   • Choosing one option from a list of 5+ items (country, timezone, category)
@@ -238,7 +238,7 @@ export default function SelectPage() {
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">• Less than 5 options (use Radio Group for visibility)</li>
                 <li className="text-sm">

@@ -8,7 +8,6 @@ import { ArrowRight } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 import { Card, CardHeader } from '@/components/ui/card';
-import type { Template } from '@/app/(marketing)/library/library-data';
 import { templates } from '@/app/(marketing)/library/library-data';
 import { getRelatedTemplates } from '@/lib/search';
 
@@ -74,7 +73,7 @@ export function RelatedTemplates({ currentTemplateId, limit = 3 }: RelatedTempla
                   </h3>
 
                   {/* Description */}
-                  <p className={cn(mode.font, 'text-muted-foreground mb-3 line-clamp-2 text-xs')}>
+                  <p className={cn(mode.font, 'text-muted-foreground mb-4 line-clamp-2 text-xs')}>
                     {template.description}
                   </p>
 
@@ -101,7 +100,7 @@ export function RelatedTemplates({ currentTemplateId, limit = 3 }: RelatedTempla
                   </div>
 
                   {/* Action */}
-                  <div className="border-border mt-3 flex items-center justify-between border-t pt-2">
+                  <div className="border-border mt-4 flex items-center justify-between border-t pt-2">
                     <span
                       className={cn(
                         mode.font,

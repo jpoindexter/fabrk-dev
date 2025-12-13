@@ -234,7 +234,7 @@ export default function SliderPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-3 text-sm font-semibold">✓ Use Slider when:</p>
+              <p className="text-success mb-4 text-sm font-semibold">✓ Use Slider when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">
                   • Numeric value selection across a continuous range (volume, brightness, price
@@ -255,7 +255,7 @@ export default function SliderPage() {
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">
                   • Precise numeric input required (use Input with type=&quot;number&quot;)

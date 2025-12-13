@@ -124,7 +124,7 @@ export default function InputPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-3 text-sm font-semibold">✓ Use Input when:</p>
+              <p className="text-success mb-4 text-sm font-semibold">✓ Use Input when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">
                   • Collecting single-line text data (name, email, search)
@@ -137,7 +137,7 @@ export default function InputPage() {
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">• Multi-line text needed (use Textarea instead)</li>
                 <li className="text-sm">

@@ -168,7 +168,7 @@ export function DocsSidebar({
     const newActiveIndex = findActiveSectionIndex(pathname, navigation);
     if (newActiveIndex >= 0) {
       // Expand parent section (use functional update to avoid dependency)
-      // eslint-disable-next-line react-hooks/set-state-in-effect
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Auto-expand section on route change
       setExpandedSections((prev) => {
         if (prev.has(newActiveIndex)) return prev;
         return new Set([...prev, newActiveIndex]);

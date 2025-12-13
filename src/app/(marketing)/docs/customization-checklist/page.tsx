@@ -12,7 +12,7 @@ export default function CustomizationChecklistPage() {
   return (
     <div className="container mx-auto max-w-4xl space-y-8 px-6 py-8">
       <div className="space-y-4">
-        <div className="inline-block border border-border bg-muted px-3 py-1">
+        <div className="inline-block border border-border bg-muted px-4 py-1">
           <span className="font-mono text-xs text-muted-foreground">[0xC0] CUSTOMIZATION</span>
         </div>
         <h1 className="font-mono text-3xl font-bold">Customization Checklist</h1>

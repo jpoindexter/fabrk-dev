@@ -105,7 +105,7 @@ export function AnalyticsTabs({
                       <span className="text-foreground">{source.source}</span>
                       <span className="text-muted-foreground">{source.percentage}%</span>
                     </div>
-                    <Progress value={source.percentage} className="h-2" />
+                    <Progress value={source.percentage} size="sm" barWidth={15} />
                   </div>
                 ))}
               </div>
@@ -123,7 +123,7 @@ export function AnalyticsTabs({
                       <span className="text-foreground">{device.device}</span>
                       <span className="text-muted-foreground">{device.percentage}%</span>
                     </div>
-                    <Progress value={device.percentage} className="h-2" />
+                    <Progress value={device.percentage} size="sm" barWidth={15} />
                   </div>
                 ))}
               </div>

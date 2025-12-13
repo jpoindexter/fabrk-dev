@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "fabrk": {
+      "command": "node",
+      "args": [
+        "./mcp-servers/fabrk/dist/index.js"
+      ]
+    }
+  }
+}

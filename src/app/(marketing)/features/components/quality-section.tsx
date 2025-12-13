@@ -74,7 +74,7 @@ export function QualitySection() {
                     }
                   />
                   <CardContent padding="md" className="flex-1">
-                    <div className={cn('text-foreground mb-3 text-xs font-semibold', mode.font)}>
+                    <div className={cn('text-foreground mb-4 text-xs font-semibold', mode.font)}>
                       {item.title}
                     </div>
                     <div className={cn('text-xs', mode.font)}>

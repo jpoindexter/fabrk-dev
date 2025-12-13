@@ -90,7 +90,7 @@ export function ThemeProvider({
   // Load from localStorage on mount
   useEffect(() => {
     if (!persist) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Hydration pattern for SSR compatibility
       setMounted(true);
       return;
     }

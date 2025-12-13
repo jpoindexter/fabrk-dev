@@ -173,7 +173,7 @@ const CompactMemberCard = React.forwardRef<HTMLDivElement, CompactMemberCardProp
   (
     {
       member,
-      showActions,
+      showActions: _showActions,
       hasActions,
       onEmail,
       onViewProfile,
@@ -268,7 +268,7 @@ const FullMemberCard = React.forwardRef<HTMLDivElement, FullMemberCardProps>(
   (
     {
       member,
-      showActions,
+      showActions: _showActions,
       hasActions,
       onEmail,
       onMessage,

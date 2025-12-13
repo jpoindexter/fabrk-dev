@@ -25,7 +25,7 @@ export function UsageStatsCard({ usage }: UsageStatsCardProps) {
                 {usage.users.current} / {usage.users.limit}
               </span>
             </div>
-            <Progress value={(usage.users.current / usage.users.limit) * 100} className="h-2" />
+            <Progress value={(usage.users.current / usage.users.limit) * 100} size="sm" barWidth={20} />
           </div>
 
           <div>
@@ -35,7 +35,7 @@ export function UsageStatsCard({ usage }: UsageStatsCardProps) {
                 {usage.storage.current} GB / {usage.storage.limit} GB
               </span>
             </div>
-            <Progress value={(usage.storage.current / usage.storage.limit) * 100} className="h-2" />
+            <Progress value={(usage.storage.current / usage.storage.limit) * 100} size="sm" barWidth={20} />
           </div>
 
           <div>
@@ -47,7 +47,8 @@ export function UsageStatsCard({ usage }: UsageStatsCardProps) {
             </div>
             <Progress
               value={(usage.apiCalls.current / usage.apiCalls.limit) * 100}
-              className="h-2"
+              size="sm"
+              barWidth={20}
             />
           </div>
         </div>

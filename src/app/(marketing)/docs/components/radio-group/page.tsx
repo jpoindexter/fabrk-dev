@@ -289,7 +289,7 @@ export default function RadioGroupPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-3 text-sm font-semibold">✓ Use Radio Group when:</p>
+              <p className="text-success mb-4 text-sm font-semibold">✓ Use Radio Group when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">• User must select exactly one option from 2-7 choices</li>
                 <li className="text-sm">
@@ -305,7 +305,7 @@ export default function RadioGroupPage() {
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">• More than 7 options (use Select for longer lists)</li>
                 <li className="text-sm">• Multiple selections allowed (use Checkbox group)</li>

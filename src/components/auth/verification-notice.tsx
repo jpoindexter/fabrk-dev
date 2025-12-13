@@ -36,7 +36,7 @@ export function VerificationNotice({ email }: VerificationNoticeProps) {
       } else {
         setMessage(`[ERROR]: ${data.error || 'Failed to send email'}`);
       }
-    } catch (error) {
+    } catch {
       setMessage('[ERROR]: Something went wrong. Please try again.');
     } finally {
       setLoading(false);
@@ -52,12 +52,12 @@ export function VerificationNotice({ email }: VerificationNoticeProps) {
       <AlertTitle className={cn('font-semibold', mode.font)}>
         [WARNING] EMAIL_NOT_VERIFIED
       </AlertTitle>
-      <AlertDescription className={cn('mt-2 space-y-3', mode.font)}>
+      <AlertDescription className={cn('mt-2 space-y-4', mode.font)}>
         <p className="text-xs">
           Please verify your email address: <strong>{email}</strong>
         </p>
         <p className="text-xs">Some features may be limited until verification is complete.</p>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <Button
             onClick={handleResend}
             disabled={loading}

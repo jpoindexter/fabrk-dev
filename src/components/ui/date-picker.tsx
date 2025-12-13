@@ -404,7 +404,7 @@ interface DatePickerFooterProps {
   onApply: () => void;
 }
 
-function DatePickerFooter({ mode, showTime, value, onClear, onApply }: DatePickerFooterProps) {
+function DatePickerFooter({ mode: _mode, showTime, value, onClear, onApply }: DatePickerFooterProps) {
   return (
     <div className="border-border flex gap-2 border-t p-4">
       <Button

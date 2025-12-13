@@ -250,7 +250,7 @@ export default function GettingStartedPage() {
             <p>Create the file structure shown in the template's [FILE STRUCTURE] section.</p>
 
             <div className="bg-muted/30 border-border border p-4">
-              <p className="text-primary mb-3 flex items-center gap-2 font-medium">
+              <p className="text-primary mb-4 flex items-center gap-2 font-medium">
                 <FolderTree className="h-4 w-4" />
                 [EXAMPLE FILE STRUCTURE]:
               </p>
@@ -325,7 +325,7 @@ npm run lint`}
                 </li>
                 <li>Styling broken? Ensure Tailwind CSS config includes all template paths</li>
               </ul>
-              <p className="text-muted-foreground mt-3">
+              <p className="text-muted-foreground mt-4">
                 See the{' '}
                 <Link href="/library/docs/troubleshooting" className="text-primary hover:underline">
                   Troubleshooting Guide

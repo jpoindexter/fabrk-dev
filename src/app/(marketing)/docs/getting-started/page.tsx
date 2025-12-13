@@ -1,6 +1,6 @@
 import { FeatureGuideTemplate } from '@/components/docs';
 import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
-import { Rocket, User, CreditCard, Mail, Database, Shield, Coins } from 'lucide-react';
+import { Rocket, User, CreditCard, Mail, Database, Shield } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 

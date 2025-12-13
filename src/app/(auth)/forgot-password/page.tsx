@@ -41,7 +41,7 @@ export default function ForgotPasswordPage() {
       } else {
         setError(data.error || 'Failed to send reset email');
       }
-    } catch (err) {
+    } catch {
       setError('Something went wrong. Please try again.');
     } finally {
       setLoading(false);
@@ -68,14 +68,14 @@ export default function ForgotPasswordPage() {
           </AlertDescription>
         </Alert>
 
-        <div className="space-y-3 text-center">
+        <div className="space-y-4 text-center">
           <p className="text-muted-foreground text-xs">
             The reset link will expire in 1 hour for security reasons.
           </p>
           <p className="text-muted-foreground text-xs">
             Didn't receive the email? Check your spam folder or try again.
           </p>
-          <div className="flex gap-3 pt-2">
+          <div className="flex gap-4 pt-2">
             <Button
               variant="outline"
               onClick={() => {

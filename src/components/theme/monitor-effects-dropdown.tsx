@@ -48,7 +48,7 @@ export function MonitorEffectsDropdown() {
   };
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Hydration pattern for SSR compatibility
     setMounted(true);
 
     const loadSavedEffect = () => {

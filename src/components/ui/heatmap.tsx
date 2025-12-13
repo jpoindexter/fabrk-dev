@@ -26,7 +26,7 @@ export function Heatmap({
   cellSize = 40,
   gap = 4,
   colorScale = [
-    'hsl(var(--muted))',
+    'var(--color-muted)',
     'oklch(80% 0.1 240)',
     'oklch(70% 0.15 240)',
     'oklch(60% 0.20 240)',

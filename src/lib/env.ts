@@ -444,8 +444,8 @@ const parseEnv = () => {
   if (process.env.SKIP_ENV_VALIDATION === 'true') {
     console.log('⚠️  Skipping environment variable validation (SKIP_ENV_VALIDATION=true)');
     return {
-      server: process.env as any,
-      client: process.env as any,
+      server: process.env as unknown as z.infer<typeof serverSchema>,
+      client: process.env as unknown as z.infer<typeof clientSchema>,
     };
   }
 

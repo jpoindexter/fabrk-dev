@@ -1,36 +1,72 @@
 /**
  * ✅ FABRK COMPONENT
- * - Component under 150 lines ✓
- * - No hardcoded styles ✓
- * - Design tokens only ✓
+ * Terminal-style ASCII loading components
  *
  * @example
  * ```tsx
- * <Spinner>Content</Spinner>
+ * <Spinner /> // ASCII spinner
+ * <Skeleton variant="text" /> // Terminal skeleton
  * ```
  */
+
+'use client';
 
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 import { Loader2 } from 'lucide-react';
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { Button, ButtonProps } from './button';
 
-// Spinner Component
+// ASCII Spinner frames
+const SPINNER_FRAMES = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'];
+const LINE_FRAMES = ['|', '/', '-', '\\'];
+const BLOCK_FRAMES = ['▖', '▘', '▝', '▗'];
 
 export type LoadingSpinnerProps = React.ComponentProps<'div'>;
 
 export interface SpinnerProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: 'sm' | 'md' | 'lg';
+  variant?: 'braille' | 'line' | 'block' | 'dots';
 }
 
 export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
-  ({ className, size = 'md', ...props }, ref) => {
+  ({ className, size = 'md', variant = 'braille', ...props }, ref) => {
+    const [frame, setFrame] = useState(0);
+
+    const frames = variant === 'line' ? LINE_FRAMES : variant === 'block' ? BLOCK_FRAMES : SPINNER_FRAMES;
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setFrame((prev) => (prev + 1) % frames.length);
+      }, 80);
+      return () => clearInterval(interval);
+    }, [frames.length]);
+
     const sizeClasses = {
-      sm: 'h-4 w-4',
-      md: 'h-8 w-8',
-      lg: 'h-12 w-12',
+      sm: 'text-sm',
+      md: 'text-xl',
+      lg: 'text-3xl',
     };
+
+    // Dots variant uses different animation
+    if (variant === 'dots') {
+      return (
+        <div
+          data-slot="spinner"
+          ref={ref}
+          role="status"
+          aria-label="Loading"
+          className={cn('flex items-center justify-center', mode.font, className)}
+          {...props}
+        >
+          <span className={cn(sizeClasses[size], mode.color.text.primary)}>
+            [<span className="inline-block w-12 text-center animate-pulse">...</span>]
+          </span>
+          <span className="sr-only">Loading...</span>
+        </div>
+      );
+    }
 
     return (
       <div
@@ -38,30 +74,12 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
         ref={ref}
         role="status"
         aria-label="Loading"
-        className={cn('flex items-center justify-center', className)}
+        className={cn('flex items-center justify-center', mode.font, className)}
         {...props}
       >
-        <svg
-          className={cn('animate-spin', mode.color.text.accent, sizeClasses[size])}
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <circle
-            className="opacity-25"
-            cx="12"
-            cy="12"
-            r="10"
-            stroke="currentColor"
-            strokeWidth="4"
-          />
-          <path
-            className="opacity-75"
-            fill="currentColor"
-            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-          />
-        </svg>
+        <span className={cn(sizeClasses[size], mode.color.text.primary)} aria-hidden="true">
+          {frames[frame]}
+        </span>
         <span className="sr-only">Loading...</span>
       </div>
     );

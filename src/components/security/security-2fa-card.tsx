@@ -9,8 +9,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Shield, Smartphone, CheckCircle2, XCircle } from 'lucide-react';
-import { mode } from '@/design-system';
-import { cn } from '@/lib/utils';
 
 interface Security2FACardProps {
   twoFactorEnabled: boolean;

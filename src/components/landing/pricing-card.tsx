@@ -48,7 +48,7 @@ export function PricingCard({
               {PRICING.display.current}
             </span>
           </div>
-          <div className={cn('mt-3 text-sm', mode.color.text.muted, mode.font)}>
+          <div className={cn('mt-4 text-sm', mode.color.text.muted, mode.font)}>
             ONE TIME PAYMENT
           </div>
         </div>
@@ -59,7 +59,7 @@ export function PricingCard({
         {/* Features List */}
         {showFeatures && (
           <div className="my-4">
-            <div className={cn('mb-3 text-xs', mode.color.text.muted, mode.font)}>[INCLUDES]:</div>
+            <div className={cn('mb-4 text-xs', mode.color.text.muted, mode.font)}>[INCLUDES]:</div>
             <FeatureList>
               {PRICING.features.map((feature, idx) => (
                 <motion.div
@@ -88,7 +88,7 @@ export function PricingCard({
         </PolarCheckoutButton>
 
         {/* Trust line */}
-        <div className={cn('mt-3 text-center text-xs', mode.color.text.muted, mode.font)}>
+        <div className={cn('mt-4 text-center text-xs', mode.color.text.muted, mode.font)}>
           {PRICING.trustLine}
         </div>
       </CardContent>

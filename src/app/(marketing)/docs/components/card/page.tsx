@@ -285,7 +285,7 @@ export default function CardPage() {
         <DocsCardComponent title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-3 text-sm font-semibold">✓ Use Card when:</p>
+              <p className="text-success mb-4 text-sm font-semibold">✓ Use Card when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">• Grouping related content into a contained unit</li>
                 <li className="text-sm">• Displaying summary information (stats, KPIs, metrics)</li>
@@ -297,7 +297,7 @@ export default function CardPage() {
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">• Simple text grouping (use div or semantic elements)</li>
                 <li className="text-sm">• Navigation items (use Navigation or Dropdown Menu)</li>

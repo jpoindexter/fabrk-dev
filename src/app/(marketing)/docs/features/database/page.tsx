@@ -168,7 +168,7 @@ return { data, nextCursor, hasNextPage };`,
       {/* Security Warning for Database URL */}
       <DocsSection title="Security">
         <DocsCallout variant="danger" title="PROTECT YOUR DATABASE CREDENTIALS">
-          <div className="space-y-3">
+          <div className="space-y-4">
             <p>
               <strong>CRITICAL:</strong> The DATABASE_URL contains your database password and grants
               full access to your data. Leaking it allows attackers to read, modify, or delete all

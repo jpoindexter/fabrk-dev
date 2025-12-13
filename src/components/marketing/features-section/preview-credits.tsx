@@ -103,7 +103,7 @@ export function CreditsPreview() {
           transition={{ delay: 0.4 }}
           className={cn(mode.radius, 'border-border bg-background border p-4')}
         >
-          <div className={cn(mode.font, 'mb-3 flex justify-between text-xs')}>
+          <div className={cn(mode.font, 'mb-4 flex justify-between text-xs')}>
             <span className="text-muted-foreground">WEEKLY USAGE</span>
             <span>
               <CreditCounter value={153} delay={0.8} /> used
@@ -111,7 +111,7 @@ export function CreditsPreview() {
           </div>
 
           {/* Mini Bar Chart */}
-          <div className="mb-3 flex h-16 items-end justify-between gap-1">
+          <div className="mb-4 flex h-16 items-end justify-between gap-1">
             {usageBars.map((bar, i) => (
               <motion.div
                 key={i}
@@ -139,7 +139,7 @@ export function CreditsPreview() {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 1.2 }}
-            className="border-border mt-3 border-t pt-3"
+            className="border-border mt-4 border-t pt-4"
           >
             <div className={cn(mode.font, 'flex justify-between text-xs')}>
               <span className="text-muted-foreground">Form generation</span>

@@ -25,20 +25,46 @@ export default function LoadingPage() {
       }}
       variants={[
         {
-          title: 'Spinner Sizes',
-          description: 'Spinner component in different sizes: small, medium, and large.',
+          title: 'Spinner Variants',
+          description: 'ASCII spinner styles: braille (default), line, block, and dots.',
           preview: (
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-8">
+              <div className="flex flex-col items-center gap-2">
+                <Spinner variant="braille" />
+                <span className="text-xs text-muted-foreground">braille</span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <Spinner variant="line" />
+                <span className="text-xs text-muted-foreground">line</span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <Spinner variant="block" />
+                <span className="text-xs text-muted-foreground">block</span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <Spinner variant="dots" />
+                <span className="text-xs text-muted-foreground">dots</span>
+              </div>
+            </div>
+          ),
+          code: `<Spinner variant="braille" /> {/* default */}
+<Spinner variant="line" />
+<Spinner variant="block" />
+<Spinner variant="dots" />`,
+        },
+        {
+          title: 'Spinner Sizes',
+          description: 'ASCII spinner in different sizes: small, medium, and large.',
+          preview: (
+            <div className="flex items-center gap-8">
               <Spinner size="sm" />
               <Spinner size="md" />
               <Spinner size="lg" />
             </div>
           ),
-          code: `<div className="flex items-center gap-4">
-  <Spinner size="sm" />
-  <Spinner size="md" />
-  <Spinner size="lg" />
-</div>`,
+          code: `<Spinner size="sm" />
+<Spinner size="md" />
+<Spinner size="lg" />`,
         },
         {
           title: 'Skeleton Text',

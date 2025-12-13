@@ -143,7 +143,7 @@ export default function CheckboxPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-3 text-sm font-semibold">✓ Use Checkbox when:</p>
+              <p className="text-success mb-4 text-sm font-semibold">✓ Use Checkbox when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">
                   • Multiple options can be selected independently (e.g., filter list, preferences)
@@ -158,7 +158,7 @@ export default function CheckboxPage() {
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">
                   • Only one option can be selected at a time (use Radio Group)

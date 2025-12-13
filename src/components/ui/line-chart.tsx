@@ -94,7 +94,7 @@ export function LineChart({
 }: LineChartProps) {
   const colors = THEME_COLORS.chart;
   // Memoize tooltip to prevent recreation on every render
-  const CustomTooltip = React.useMemo(
+  const CustomTooltipContent = React.useMemo(
     () =>
       // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Recharts TooltipContentProps is complex
       ({ active, payload, label }: any) => {
@@ -102,10 +102,11 @@ export function LineChart({
           return (
             <div className={cn('border-border bg-card border px-4 py-2', mode.radius)}>
               <p className={cn('text-foreground mb-2 text-xs font-semibold', mode.font)}>
-                {xAxisFormatter ? xAxisFormatter(label) : label}
+                {xAxisFormatter ? xAxisFormatter(String(label ?? '')) : label}
               </p>
               <div className="space-y-1">
                 {/* eslint-disable design-system/no-inline-styles -- Dynamic color from Recharts entry */}
+                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                 {payload.map((entry: any, index: number) => (
                   <p key={index} className={cn('text-muted-foreground text-xs', mode.font)}>
                     <span
@@ -148,7 +149,7 @@ export function LineChart({
             axisLine={{ stroke: THEME_COLORS.border }}
             tickFormatter={yAxisFormatter}
           />
-          {showTooltip && <Tooltip content={CustomTooltip} />}
+          {showTooltip && <Tooltip content={CustomTooltipContent} />}
           {showLegend && <Legend wrapperStyle={{ fontSize: 12 }} iconType="line" />}
           {series.map((s, index) => (
             <Line

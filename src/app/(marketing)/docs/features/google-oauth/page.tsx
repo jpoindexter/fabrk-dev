@@ -215,7 +215,7 @@ export function LoginForm() {
       {/* Security Warning for OAuth Secrets */}
       <DocsSection title="Security">
         <DocsCallout variant="danger" title="PROTECT YOUR OAUTH CLIENT SECRET">
-          <div className="space-y-3">
+          <div className="space-y-4">
             <p>
               <strong>CRITICAL:</strong> The GOOGLE_CLIENT_SECRET grants access to your OAuth
               application. Leaking it allows attackers to impersonate your app and access user data.

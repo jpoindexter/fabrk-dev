@@ -326,7 +326,7 @@ export default function TabsPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-3 text-sm font-semibold">✓ Use Tabs when:</p>
+              <p className="text-success mb-4 text-sm font-semibold">✓ Use Tabs when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">
                   • Organizing related content into 2-7 logical sections (settings, profile,
@@ -347,7 +347,7 @@ export default function TabsPage() {
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">
                   • Step-by-step process where order matters (use multi-step form)

@@ -50,7 +50,7 @@ export default function TroubleshootingPage() {
                 <AlertTriangle className="h-4 w-4" />
                 [ERROR]: Cannot find module '@/design-system'
               </p>
-              <p className="text-muted-foreground mb-3">
+              <p className="text-muted-foreground mb-4">
                 <span className="font-medium">Cause:</span> Design system module not set up or path
                 alias not configured.
               </p>
@@ -87,7 +87,7 @@ export const mode = {
                 <AlertTriangle className="h-4 w-4" />
                 [ERROR]: Module not found: Can't resolve '@/components/ui/...'
               </p>
-              <p className="text-muted-foreground mb-3">
+              <p className="text-muted-foreground mb-4">
                 <span className="font-medium">Cause:</span> Component not installed or wrong path.
               </p>
               <p className="text-primary mb-2 font-medium">[FIX]:</p>
@@ -119,7 +119,7 @@ export const mode = {
                 <AlertTriangle className="h-4 w-4" />
                 [ERROR]: Property 'mode' does not exist on type '{}'
               </p>
-              <p className="text-muted-foreground mb-3">
+              <p className="text-muted-foreground mb-4">
                 <span className="font-medium">Cause:</span> Design system types not exported
                 properly.
               </p>
@@ -144,7 +144,7 @@ npm run type-check`}
                 <AlertTriangle className="h-4 w-4" />
                 [ERROR]: Type 'Promise' is not assignable to type 'ReactNode'
               </p>
-              <p className="text-muted-foreground mb-3">
+              <p className="text-muted-foreground mb-4">
                 <span className="font-medium">Cause:</span> Next.js 15 async params not awaited.
               </p>
               <p className="text-primary mb-2 font-medium">[FIX]:</p>
@@ -174,7 +174,7 @@ export default async function Page({ params }) {
                 <AlertTriangle className="h-4 w-4" />
                 [ISSUE]: Tailwind classes not applying
               </p>
-              <p className="text-muted-foreground mb-3">
+              <p className="text-muted-foreground mb-4">
                 <span className="font-medium">Cause:</span> Template path not in Tailwind config
                 content array.
               </p>
@@ -201,7 +201,7 @@ npm run dev`}
                 <AlertTriangle className="h-4 w-4" />
                 [ISSUE]: Terminal aesthetic not working
               </p>
-              <p className="text-muted-foreground mb-3">
+              <p className="text-muted-foreground mb-4">
                 <span className="font-medium">Cause:</span> Missing font-mono on body tag or design
                 system not imported.
               </p>
@@ -234,7 +234,7 @@ import { mode } from "@/design-system";
                 <AlertTriangle className="h-4 w-4" />
                 [ERROR]: Hydration mismatch
               </p>
-              <p className="text-muted-foreground mb-3">
+              <p className="text-muted-foreground mb-4">
                 <span className="font-medium">Cause:</span> Server and client rendering differ
                 (common with date/time or random values).
               </p>
@@ -260,7 +260,7 @@ if (!mounted) return null;`}
                 <AlertTriangle className="h-4 w-4" />
                 [ERROR]: Too many re-renders
               </p>
-              <p className="text-muted-foreground mb-3">
+              <p className="text-muted-foreground mb-4">
                 <span className="font-medium">Cause:</span> State update in render function causing
                 infinite loop.
               </p>
@@ -296,7 +296,7 @@ function Component() {
                 <AlertTriangle className="h-4 w-4" />
                 [ISSUE]: Template loads slowly
               </p>
-              <p className="text-muted-foreground mb-3">
+              <p className="text-muted-foreground mb-4">
                 <span className="font-medium">Solutions:</span>
               </p>
               <ul className="text-muted-foreground list-inside list-disc space-y-1 pl-2">

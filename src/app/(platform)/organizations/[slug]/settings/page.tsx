@@ -37,8 +37,6 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import { toast } from 'sonner';
-import { mode } from '@/design-system';
-import { cn } from '@/lib/utils';
 
 const settingsSchema = z.object({
   name: z.string().min(2, 'Organization name must be at least 2 characters'),

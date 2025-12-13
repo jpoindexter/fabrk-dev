@@ -208,7 +208,7 @@ export default function SkeletonPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-3 text-sm font-semibold">✓ Use Skeleton when:</p>
+              <p className="text-success mb-4 text-sm font-semibold">✓ Use Skeleton when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">
                   • Loading data from API or database (user lists, product grids, content pages)
@@ -228,7 +228,7 @@ export default function SkeletonPage() {
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">• Content loads instantly (no need for placeholder)</li>
                 <li className="text-sm">

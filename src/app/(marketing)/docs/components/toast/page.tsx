@@ -290,7 +290,7 @@ async function handleSubmit() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-3 text-sm font-semibold">✓ Use Toast when:</p>
+              <p className="text-success mb-4 text-sm font-semibold">✓ Use Toast when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">
                   • Providing temporary feedback for user actions (saved, deleted, copied)
@@ -306,7 +306,7 @@ async function handleSubmit() {
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">
                   • Information must persist until user acknowledges (use Alert)

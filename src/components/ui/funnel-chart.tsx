@@ -86,7 +86,7 @@ export function FunnelChart({
                   <path
                     d={`M ${(width * (100 - percentage)) / 200} 0 L ${width - (width * (100 - percentage)) / 200} 0 L ${width - (width * (100 - (index < data.length - 1 ? (data[index + 1].value / maxValue) * 100 : percentage))) / 200} ${stageHeight} L ${(width * (100 - (index < data.length - 1 ? (data[index + 1].value / maxValue) * 100 : percentage))) / 200} ${stageHeight} Z`}
                     fill={color}
-                    stroke="hsl(var(--background))"
+                    stroke="var(--color-background)"
                     strokeWidth={2}
                     className="transition-all"
                   />
@@ -130,7 +130,7 @@ export function FunnelChart({
                   <path
                     d={`M 0 ${(height * (100 - percentage)) / 200} L ${stageWidth} ${(height * (100 - (index < data.length - 1 ? (data[index + 1].value / maxValue) * 100 : percentage))) / 200} L ${stageWidth} ${height - (height * (100 - (index < data.length - 1 ? (data[index + 1].value / maxValue) * 100 : percentage))) / 200} L 0 ${height - (height * (100 - percentage)) / 200} Z`}
                     fill={color}
-                    stroke="hsl(var(--background))"
+                    stroke="var(--color-background)"
                     strokeWidth={2}
                     className="transition-all"
                   />

@@ -62,6 +62,8 @@ const InputSearch = React.forwardRef<HTMLInputElement, InputSearchProps>(
             'placeholder:text-muted-foreground',
             'focus-visible:ring-primary focus-visible:ring-2 focus-visible:outline-none',
             'disabled:cursor-not-allowed disabled:opacity-50',
+            // Hide native search clear button (we have custom one)
+            '[&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden',
             (showClearButton || loading) && 'pr-10',
             className
           )}

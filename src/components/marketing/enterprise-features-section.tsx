@@ -149,7 +149,7 @@ export function EnterpriseFeaturesSection() {
                     }
                   />
                   <CardContent className="p-4">
-                    <div className="text-foreground mb-3 text-xs font-semibold">
+                    <div className="text-foreground mb-4 text-xs font-semibold">
                       {feature.title.toUpperCase()}
                     </div>
                     <div className="text-xs">

@@ -25,7 +25,7 @@ try {
   if (typeof window === 'undefined') {
     env = require('../lib/env').env;
   }
-} catch (_) {
+} catch {
   // Fallback to process.env if env.ts hasn't been loaded yet
   env = { server: process.env, client: process.env };
 }

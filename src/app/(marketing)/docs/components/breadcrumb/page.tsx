@@ -319,7 +319,7 @@ export default function BreadcrumbDocsPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-3 text-sm font-semibold">✓ Use Breadcrumb when:</p>
+              <p className="text-success mb-4 text-sm font-semibold">✓ Use Breadcrumb when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">
                   • Deep navigation hierarchy with 3+ levels (Home &gt; Products &gt; Category &gt;
@@ -340,7 +340,7 @@ export default function BreadcrumbDocsPage() {
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">• Flat site structure with less than 3 levels deep</li>
                 <li className="text-sm">

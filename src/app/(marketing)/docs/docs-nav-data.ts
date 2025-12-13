@@ -43,6 +43,8 @@ import {
   Paintbrush,
   Wrench,
   CheckSquare,
+  Monitor,
+  GalleryVerticalEnd,
 } from 'lucide-react';
 
 export const docsNavigation: NavSection[] = [
@@ -658,6 +660,21 @@ export const docsNavigation: NavSection[] = [
         title: '[09.15] COMPONENT AUTHORING',
         href: '/docs/design/component-authoring',
         icon: Wrench,
+      },
+      {
+        title: '[09.16] THEME GALLERY',
+        href: '/docs/extras/theme-gallery',
+        icon: GalleryVerticalEnd,
+      },
+      {
+        title: '[09.17] DISPLAY EFFECTS',
+        href: '/docs/extras/display-effects',
+        icon: Monitor,
+      },
+      {
+        title: '[09.18] MCP SERVER',
+        href: '/docs/features/mcp-server',
+        icon: Bot,
       },
     ],
   },

@@ -340,7 +340,7 @@ export default function PaginationPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-3 text-sm font-semibold">✓ Use Pagination when:</p>
+              <p className="text-success mb-4 text-sm font-semibold">✓ Use Pagination when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">
                   • Large data sets with 50+ items (search results, product catalogs, user lists)
@@ -360,7 +360,7 @@ export default function PaginationPage() {
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">
                   • Less than 50 items total (just show all or use &quot;Load More&quot; button)

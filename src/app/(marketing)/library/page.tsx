@@ -219,7 +219,7 @@ export default function LibraryIndexPage() {
                   <div className="flex h-[calc(100%-40px)] flex-col p-4">
                     {/* Badge */}
                     {template.badge && (
-                      <Badge className={cn(mode.radius, mode.font, 'mb-3 w-fit text-xs')}>
+                      <Badge className={cn(mode.radius, mode.font, 'mb-4 w-fit text-xs')}>
                         {template.badge}
                       </Badge>
                     )}
@@ -467,7 +467,7 @@ export default function LibraryIndexPage() {
                   <div className="flex h-[calc(100%-40px)] flex-col p-4">
                     {/* Status & Badge */}
                     <div
-                      className={cn(mode.font, 'mb-3 flex items-center justify-between text-xs')}
+                      className={cn(mode.font, 'mb-4 flex items-center justify-between text-xs')}
                     >
                       <div>
                         <span className="text-muted-foreground">STATUS: </span>
@@ -491,7 +491,7 @@ export default function LibraryIndexPage() {
                     </h3>
 
                     {/* Description */}
-                    <p className={cn(mode.font, 'text-muted-foreground mb-4 line-clamp-2 text-xs')}>
+                    <p className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
                       {template.description}
                     </p>
 

@@ -268,7 +268,7 @@ export default function TablePage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-3 text-sm font-semibold">✓ Use Table when:</p>
+              <p className="text-success mb-4 text-sm font-semibold">✓ Use Table when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">
                   • Displaying structured data with multiple columns (invoices, orders, user lists)
@@ -288,7 +288,7 @@ export default function TablePage() {
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-3 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
                 <li className="text-sm">
                   • Small amounts of data (1-5 items, use Card or List instead)

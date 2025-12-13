@@ -22,8 +22,8 @@ export function PasswordStrength({ password }: { password: string }) {
   };
 
   return (
-    <div className="m-4">
-      <Progress value={strength.score} className="m-4" />
+    <div className="space-y-1">
+      <Progress value={strength.score} size="sm" barWidth={15} />
       <div className="dark:text-muted-foreground text-xs">Password strength: {strength.label}</div>
     </div>
   );

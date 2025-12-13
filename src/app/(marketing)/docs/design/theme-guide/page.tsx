@@ -12,7 +12,7 @@ export default function ThemeGuidePage() {
   return (
     <div className="container mx-auto max-w-4xl space-y-8 px-6 py-8">
       <div className="space-y-4">
-        <div className="inline-block border border-border bg-muted px-3 py-1">
+        <div className="inline-block border border-border bg-muted px-4 py-1">
           <span className="font-mono text-xs text-muted-foreground">[0xD1] THEMES</span>
         </div>
         <h1 className="font-mono text-3xl font-bold">Theme Guide</h1>
@@ -22,7 +22,7 @@ export default function ThemeGuidePage() {
       </div>
 
       <div className="rounded-none border border-warning/50 bg-warning/10 p-6">
-        <div className="flex items-start gap-3">
+        <div className="flex items-start gap-4">
           <AlertTriangle className="h-5 w-5 text-warning" />
           <div className="space-y-2">
             <p className="font-mono text-sm font-semibold">COMPREHENSIVE DOCUMENTATION AVAILABLE</p>

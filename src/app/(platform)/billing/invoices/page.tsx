@@ -16,7 +16,6 @@ import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, FileText, CheckCircle2 } from 'lucide-react';
 import { InvoicesClient } from './invoices-client';
 import { mode } from '@/design-system';
-import { cn } from '@/lib/utils';
 
 export const metadata = {
   title: 'Invoices | Fabrk',

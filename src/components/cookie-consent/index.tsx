@@ -141,7 +141,7 @@ export function CookieConsent({ variant = 'full', bannerVariant = 'full' }: Cook
     if (hasSavedConsent) {
       updateGoogleConsent(savedPrefs);
     }
-  }, []);
+  }, [variant]);
 
   // Listen for custom event to open cookie settings
   useEffect(() => {

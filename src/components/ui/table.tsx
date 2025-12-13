@@ -4,7 +4,7 @@ import { mode } from '@/design-system';
 
 const Table = React.forwardRef<HTMLTableElement, React.HTMLAttributes<HTMLTableElement>>(
   ({ className, ...props }, ref) => (
-    <div className={cn('relative w-full overflow-auto border', mode.color.border.default)}>
+    <div className="relative w-full overflow-auto">
       <table
         ref={ref}
         className={cn('w-full caption-bottom text-xs', mode.font, className)}

@@ -18,7 +18,7 @@ interface FeatureCategoryCardProps {
 }
 
 export function FeatureCategoryCard({ category, index }: FeatureCategoryCardProps) {
-  const Icon = category.icon;
+  const _Icon = category.icon; // Reserved for future icon display
   const isEven = index % 2 === 0;
   const hexIndex = (index + 1).toString(16).toUpperCase().padStart(2, '0');
 

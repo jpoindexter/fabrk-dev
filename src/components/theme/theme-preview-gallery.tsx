@@ -1,6 +1,6 @@
 /**
  * Theme Preview Gallery
- * Interactive showcase of all 14 themes with live previews
+ * Interactive showcase of all 12 themes with live previews
  * Displays theme name, colors, and sample UI components
  */
 
@@ -8,6 +8,7 @@
 
 import { useState } from 'react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -18,7 +19,7 @@ import { mode } from '@/design-system';
 export interface ThemeData {
   id: string;
   name: string;
-  category: 'CRT' | 'Light' | 'Retro' | 'Minimal';
+  category: 'CRT' | 'Retro' | 'Minimal';
   description: string;
   primaryColor: string; // OKLCH value for preview
   backgroundColor: string; // OKLCH value for preview
@@ -65,24 +66,6 @@ const THEMES: ThemeData[] = [
     description: 'Retro purple phosphor',
     primaryColor: '55% 0.22 300',
     backgroundColor: '5% 0.01 300',
-  },
-
-  // Light Themes
-  {
-    id: 'light-green',
-    name: 'Light Green',
-    category: 'Light',
-    description: 'Light mode with green accents',
-    primaryColor: '35% 0.25 145',
-    backgroundColor: '98% 0.01 145',
-  },
-  {
-    id: 'light-amber',
-    name: 'Light Amber',
-    category: 'Light',
-    description: 'Light mode with amber accents',
-    primaryColor: '35% 0.2 50',
-    backgroundColor: '98% 0.01 50',
   },
 
   // Retro Computer Themes
@@ -162,7 +145,7 @@ export function ThemePreviewGallery({
 }: ThemePreviewGalleryProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
-  const categories = ['All', 'CRT', 'Light', 'Retro', 'Minimal'];
+  const categories = ['All', 'CRT', 'Retro', 'Minimal'];
 
   const filteredThemes =
     selectedCategory === 'All'
@@ -173,31 +156,27 @@ export function ThemePreviewGallery({
     <div className="w-full space-y-6">
       {/* Category Filters */}
       {showFilters && (
-        <div className="flex flex-wrap gap-2">
-          {categories.map((category) => (
-            <Button
-              key={category}
-              variant={selectedCategory === category ? 'default' : 'outline'}
-              size="sm"
-              onClick={() => setSelectedCategory(category)}
-              className={cn(mode.radius, mode.font, 'text-xs')}
-            >
-              {category === 'All' && <Palette className="mr-2 size-4" />}
-              {category === 'CRT' && <Monitor className="mr-2 size-4" />}
-              &gt; {category.toUpperCase()}
-            </Button>
-          ))}
-        </div>
+        <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
+          <TabsList>
+            {categories.map((category) => (
+              <TabsTrigger key={category} value={category}>
+                {category === 'All' && <Palette className="size-4" />}
+                {category === 'CRT' && <Monitor className="size-4" />}
+                {category}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </Tabs>
       )}
 
       {/* Theme Grid */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2">
         {filteredThemes.map((theme) => (
           <Card
             key={theme.id}
             interactive
             className={cn(
-              'relative overflow-hidden transition-all',
+              'relative flex flex-col overflow-hidden transition-all',
               currentTheme === theme.id &&
                 'border-primary ring-primary ring-offset-background ring-2 ring-offset-2'
             )}
@@ -212,7 +191,7 @@ export function ThemePreviewGallery({
               }
             />
 
-            <CardContent className="space-y-4">
+            <CardContent className="flex flex-1 flex-col space-y-4">
               {/* Color Swatches */}
               {/* eslint-disable design-system/no-inline-styles, design-system/no-hardcoded-colors -- Displays theme colors dynamically */}
               <div className="flex gap-2">
@@ -255,15 +234,17 @@ export function ThemePreviewGallery({
               </div>
 
               {/* Select Button */}
-              <Button
-                variant={currentTheme === theme.id ? 'default' : 'outline'}
-                size="sm"
-                className={cn('w-full', mode.radius, mode.font, 'text-xs')}
-                onClick={() => onThemeSelect?.(theme.id)}
-              >
-                {currentTheme === theme.id && <Check className="mr-2 size-4" />}
-                &gt; {currentTheme === theme.id ? 'ACTIVE' : 'SELECT'}
-              </Button>
+              <div className="mt-auto pt-2">
+                <Button
+                  variant={currentTheme === theme.id ? 'default' : 'outline'}
+                  size="sm"
+                  className={cn('w-full', mode.radius, mode.font, 'text-xs')}
+                  onClick={() => onThemeSelect?.(theme.id)}
+                >
+                  {currentTheme === theme.id && <Check className="mr-2 size-4" />}
+                  &gt; {currentTheme === theme.id ? 'ACTIVE' : 'SELECT'}
+                </Button>
+              </div>
             </CardContent>
           </Card>
         ))}

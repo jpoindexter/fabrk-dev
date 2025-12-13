@@ -13,7 +13,7 @@ import { Label } from '@/components/ui/label';
 import { Container } from '@/components/ui/container';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
-import { Users, DollarSign, TrendingUp, Activity, Check, CreditCard, Calendar } from 'lucide-react';
+import { Users, DollarSign, TrendingUp, Activity, Check, CreditCard } from 'lucide-react';
 
 // Dashboard Demo
 function DashboardDemo() {
@@ -161,25 +161,10 @@ export function HeroPlayground() {
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           {/* Tab Navigation */}
           <div className="mb-8 flex items-center justify-between">
-            <TabsList className={cn('bg-transparent', mode.radius)}>
-              <TabsTrigger
-                value="dashboard"
-                className={cn('text-xs', mode.radius, mode.font, 'data-[state=active]:bg-accent')}
-              >
-                DASHBOARD
-              </TabsTrigger>
-              <TabsTrigger
-                value="auth"
-                className={cn('text-xs', mode.radius, mode.font, 'data-[state=active]:bg-accent')}
-              >
-                AUTHENTICATION
-              </TabsTrigger>
-              <TabsTrigger
-                value="billing"
-                className={cn('text-xs', mode.radius, mode.font, 'data-[state=active]:bg-accent')}
-              >
-                BILLING
-              </TabsTrigger>
+            <TabsList>
+              <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
+              <TabsTrigger value="auth">Authentication</TabsTrigger>
+              <TabsTrigger value="billing">Billing</TabsTrigger>
             </TabsList>
 
             {/* Theme Badge */}

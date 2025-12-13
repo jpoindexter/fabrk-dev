@@ -13,7 +13,7 @@ export default function CustomizationGuidePage() {
   return (
     <div className="container mx-auto max-w-4xl space-y-8 px-6 py-8">
       <div className="space-y-4">
-        <div className="inline-block border border-border bg-muted px-3 py-1">
+        <div className="inline-block border border-border bg-muted px-4 py-1">
           <span className="font-mono text-xs text-muted-foreground">[0xC1] CUSTOMIZATION</span>
         </div>
         <h1 className="font-mono text-3xl font-bold">Customization Guide</h1>
@@ -24,7 +24,7 @@ export default function CustomizationGuidePage() {
       </div>
 
       <div className="rounded-none border border-warning/50 bg-warning/10 p-6">
-        <div className="flex items-start gap-3">
+        <div className="flex items-start gap-4">
           <AlertTriangle className="h-5 w-5 text-warning" />
           <div className="space-y-2">
             <p className="font-mono text-sm font-semibold">COMPREHENSIVE DOCUMENTATION AVAILABLE</p>
@@ -66,12 +66,14 @@ export default function CustomizationGuidePage() {
           <p className="mt-4">
             <strong>Example:</strong>
           </p>
-          <pre className="mt-2 overflow-x-auto bg-muted p-3 font-mono text-xs">
+          {/* eslint-disable design-system/no-hardcoded-colors -- Documentation example showing CSS variable syntax */}
+          <pre className="mt-2 overflow-x-auto bg-muted p-4 font-mono text-xs">
             {`:root {
   --primary: oklch(57% 0.21 276);           /* Your brand color */
   --primary-foreground: oklch(100% 0 0);    /* Text on brand color */
 }`}
           </pre>
+          {/* eslint-enable design-system/no-hardcoded-colors */}
         </DocsCard>
 
         <DocsCard title="SWITCH COLOR THEMES">
@@ -224,7 +226,7 @@ export default function CustomizationGuidePage() {
           <p>
             Import <code>mode</code> from design-system for consistent styling:
           </p>
-          <pre className="mt-4 overflow-x-auto bg-muted p-3 font-mono text-xs">
+          <pre className="mt-4 overflow-x-auto bg-muted p-4 font-mono text-xs">
             {`import { mode } from "@/design-system";
 
 <Button className={cn(mode.radius, mode.font, "w-full")}>
