@@ -40,7 +40,7 @@ const themeGroups = {
     { id: 'gameboy', name: 'Game Boy', preview: '#9bbc0f' },
     { id: 'gbpocket', name: 'GB Pocket', preview: '#8a8a8a' },
   ],
-  'Light / Paper': [{ id: 'bw', name: 'Black & White', preview: '#ffffff' }],
+  Light: [{ id: 'bw', name: 'Black & White', preview: '#ffffff' }],
 } as const;
 
 // Flattened list for type safety and easy lookup
@@ -98,7 +98,7 @@ export function ThemeDropdown() {
     ) {
       effect = 'crt';
     }
-    // 3. Paper / Clean Themes
+    // 3. Light Themes
     else if (['bw'].includes(themeId)) {
       effect = 'none';
     }
