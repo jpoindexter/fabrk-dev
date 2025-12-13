@@ -23,6 +23,7 @@ import { cn } from '@/lib/utils';
 import { InputSearch } from '@/components/ui/input-search';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { templates, categories } from './library-data';
 import { filterTemplates } from '@/lib/search';
 import { AdvancedFilters, type FilterOptions } from '@/components/library';
@@ -301,20 +302,28 @@ export default function LibraryIndexPage() {
         </section>
       )}
 
-      {/* Category Filter Buttons */}
-      <section className="space-y-4">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <h2 className={cn(mode.font, 'text-2xl font-semibold')}>
-            {searchQuery
-              ? `Search Results (${sortedTemplates.length})`
+      {/* Browse Templates - Terminal Card */}
+      <Card size="auto">
+        <CardHeader
+          code="0xBROWSE"
+          title={
+            searchQuery
+              ? `SEARCH_RESULTS`
               : selectedCategory === 'all'
-                ? 'All Templates'
-                : `${categories.find((c) => c.id === selectedCategory)?.name} (${sortedTemplates.length})`}
-          </h2>
-          <div className="flex flex-wrap items-center gap-4">
+                ? 'BROWSE_TEMPLATES'
+                : categories
+                    .find((c) => c.id === selectedCategory)
+                    ?.name.toUpperCase()
+                    .replace(/ /g, '_') || 'TEMPLATES'
+          }
+          meta={`${sortedTemplates.length} found`}
+        />
+        <CardContent padding="md">
+          {/* Toolbar Row */}
+          <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             {/* Sort Options */}
             <div className="flex items-center gap-2">
-              <span className={cn(mode.font, 'text-muted-foreground text-xs')}>[SORT BY]:</span>
+              <span className={cn(mode.font, 'text-muted-foreground text-xs')}>[SORT]:</span>
               <div className="flex gap-1">
                 {[
                   { id: 'relevance' as const, label: 'RELEVANCE' },
@@ -327,7 +336,7 @@ export default function LibraryIndexPage() {
                     onClick={() => setSortBy(option.id)}
                     className={cn(
                       mode.font,
-                      'border-border px-4 py-1 text-xs transition-all',
+                      'border-border px-3 py-1 text-xs transition-all',
                       sortBy === option.id
                         ? 'bg-primary text-primary-foreground border'
                         : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground border'
@@ -338,78 +347,84 @@ export default function LibraryIndexPage() {
                 ))}
               </div>
             </div>
-            <Link
-              href="/library/docs"
-              className={cn(
-                mode.font,
-                'text-primary hover:text-primary/80 flex items-center gap-2 text-sm transition-colors'
-              )}
-            >
-              <Clock className="h-4 w-4" />
-              &gt; DOCS
-            </Link>
+
+            {/* Right side actions */}
+            <div className="flex items-center gap-4">
+              <Button
+                onClick={() => setShowFilters(!showFilters)}
+                variant={showFilters || activeFilterCount > 0 ? 'default' : 'outline'}
+                size="sm"
+                className={cn(mode.radius, mode.font, 'text-xs')}
+              >
+                <SlidersHorizontal className="mr-2 h-3 w-3" />
+                FILTERS{activeFilterCount > 0 && ` (${activeFilterCount})`}
+              </Button>
+              <Link
+                href="/library/docs"
+                className={cn(
+                  mode.font,
+                  'text-primary hover:text-primary/80 flex items-center gap-2 text-xs transition-colors'
+                )}
+              >
+                <Clock className="h-3 w-3" />
+                DOCS
+              </Link>
+            </div>
           </div>
-        </div>
 
-        {/* Category Pills */}
-        <div className="flex flex-wrap items-center gap-2">
-          <button
-            onClick={() => setSelectedCategory('all')}
-            className={cn(
-              mode.font,
-              'border-border px-4 py-2 text-xs transition-all',
-              selectedCategory === 'all'
-                ? 'bg-primary text-primary-foreground border'
-                : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground border'
-            )}
-          >
-            ALL ({templates.length})
-          </button>
-          {categories
-            .filter((c) => c.id !== 'components')
-            .map((category) => {
-              const count = templates.filter((t) => t.category === category.id).length;
-              return (
-                <button
-                  key={category.id}
-                  onClick={() => setSelectedCategory(category.id)}
-                  className={cn(
-                    mode.font,
-                    'border-border flex items-center gap-2 px-4 py-2 text-xs transition-all',
-                    selectedCategory === category.id
-                      ? 'bg-primary text-primary-foreground border'
-                      : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground border'
-                  )}
-                >
-                  <category.icon className="h-3 w-3" />
-                  {category.name.toUpperCase()} ({count})
-                </button>
-              );
-            })}
+          {/* Category Filter Pills */}
+          <div className="border-border border-t pt-4">
+            <div className={cn(mode.font, 'text-muted-foreground mb-2 text-xs')}>[CATEGORY]:</div>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => setSelectedCategory('all')}
+                className={cn(
+                  mode.font,
+                  'border-border px-3 py-1.5 text-xs transition-all',
+                  selectedCategory === 'all'
+                    ? 'bg-primary text-primary-foreground border'
+                    : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground border'
+                )}
+              >
+                ALL ({templates.length})
+              </button>
+              {categories
+                .filter((c) => c.id !== 'components')
+                .map((category) => {
+                  const count = templates.filter((t) => t.category === category.id).length;
+                  return (
+                    <button
+                      key={category.id}
+                      onClick={() => setSelectedCategory(category.id)}
+                      className={cn(
+                        mode.font,
+                        'border-border flex items-center gap-1.5 px-3 py-1.5 text-xs transition-all',
+                        selectedCategory === category.id
+                          ? 'bg-primary text-primary-foreground border'
+                          : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground border'
+                      )}
+                    >
+                      <category.icon className="h-3 w-3" />
+                      {category.name.toUpperCase()} ({count})
+                    </button>
+                  );
+                })}
+            </div>
+          </div>
 
-          {/* Advanced Filters Toggle */}
-          <Button
-            onClick={() => setShowFilters(!showFilters)}
-            variant={showFilters || activeFilterCount > 0 ? 'default' : 'outline'}
-            size="sm"
-            className={cn(mode.radius, mode.font, 'ml-auto text-xs')}
-          >
-            <SlidersHorizontal className="mr-2 h-3 w-3" />
-            &gt; ADVANCED FILTERS
-            {activeFilterCount > 0 && ` (${activeFilterCount})`}
-          </Button>
-        </div>
-
-        {/* Advanced Filters Panel */}
-        {showFilters && (
-          <AdvancedFilters
-            filters={advancedFilters}
-            onFilterChange={setAdvancedFilters}
-            onClearFilters={handleClearFilters}
-            activeFilterCount={activeFilterCount}
-          />
-        )}
-      </section>
+          {/* Advanced Filters Panel */}
+          {showFilters && (
+            <div className="border-border mt-4 border-t pt-4">
+              <AdvancedFilters
+                filters={advancedFilters}
+                onFilterChange={setAdvancedFilters}
+                onClearFilters={handleClearFilters}
+                activeFilterCount={activeFilterCount}
+              />
+            </div>
+          )}
+        </CardContent>
+      </Card>
 
       {/* All Templates Grid */}
       <section className="space-y-6">
