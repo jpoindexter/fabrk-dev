@@ -91,18 +91,30 @@ interface ThemeColors {
   border: string;
   input: string;
   ring: string;
+  // Code syntax highlighting
+  codeFg: string;
+  codeBg: string;
+  codeComment: string;
+  codeKeyword: string;
+  codeString: string;
+  codeFunction: string;
+  codeVariable: string;
+  codeNumber: string;
+  codeOperator: string;
 }
 
 function generateThemeColors(
   primaryHex: string,
   isDark: boolean,
   chromaIntensity: number = 1,
-  contrastLevel: number = 1
+  contrastLevel: number = 1,
+  codeHighlightIntensity: number = 1
 ): ThemeColors {
   const primary = hexToOKLCH(primaryHex);
 
   // Adjust chroma based on intensity
   const adjustedChroma = primary.chroma * chromaIntensity;
+  const codeChroma = adjustedChroma * codeHighlightIntensity;
 
   // Calculate base lightness values with contrast adjustment
   const bgLightness = isDark
@@ -138,13 +150,28 @@ function generateThemeColors(
     border: `${isDark ? 25 : 85}% ${adjustedChroma * 0.15} ${primary.hue}`,
     input: `${isDark ? 25 : 85}% ${adjustedChroma * 0.15} ${primary.hue}`,
     ring: `${primary.lightness}% ${adjustedChroma} ${primary.hue}`,
+    // Code syntax highlighting
+    codeFg: `${isDark ? 84 : 30}% ${codeChroma * 0.13} ${(primary.hue + 180) % 360}`,
+    codeBg: `${isDark ? 19 : 98}% ${adjustedChroma * 0.02} ${primary.hue}`,
+    codeComment: `${isDark ? 62 : 50}% ${codeChroma * 0.09} ${(primary.hue + 180) % 360}`,
+    codeKeyword: `${isDark ? 75 : 45}% ${codeChroma * 0.15} ${(primary.hue - 30) % 360}`,
+    codeString: `${isDark ? 70 : 40}% ${codeChroma * 0.15} ${(primary.hue + 60) % 360}`,
+    codeFunction: `${isDark ? 78 : 42}% ${codeChroma * 0.16} ${(primary.hue + 30) % 360}`,
+    codeVariable: `${isDark ? 72 : 38}% ${codeChroma * 0.12} ${primary.hue}`,
+    codeNumber: `${isDark ? 76 : 44}% ${codeChroma * 0.14} ${(primary.hue + 90) % 360}`,
+    codeOperator: `${isDark ? 80 : 35}% ${codeChroma * 0.11} ${(primary.hue - 60) % 360}`,
   };
 }
 
 /**
  * Generate complete theme CSS
  */
-function generateThemeCSS(themeName: string, themeId: string, colors: ThemeColors): string {
+function generateThemeCSS(
+  themeName: string,
+  themeId: string,
+  colors: ThemeColors,
+  borderRadius: number = 0
+): string {
   return `/* ${themeName} Theme - Generated with Fabrk Theme Generator */
 [data-theme='${themeId}'] {
   /* Base colors */
@@ -199,8 +226,19 @@ function generateThemeCSS(themeName: string, themeId: string, colors: ThemeColor
   --chart-4: ${colors.success};
   --chart-5: ${colors.warning};
 
+  /* Code syntax highlighting */
+  --code-fg: ${colors.codeFg};
+  --code-bg: ${colors.codeBg};
+  --code-comment: ${colors.codeComment};
+  --code-keyword: ${colors.codeKeyword};
+  --code-string: ${colors.codeString};
+  --code-function: ${colors.codeFunction};
+  --code-variable: ${colors.codeVariable};
+  --code-number: ${colors.codeNumber};
+  --code-operator: ${colors.codeOperator};
+
   /* Radius */
-  --radius: 0rem;
+  --radius: ${borderRadius}rem;
 }`;
 }
 
@@ -230,6 +268,8 @@ export default function ThemeGeneratorPage() {
   const [isDark, setIsDark] = useState(true);
   const [chromaIntensity, setChromaIntensity] = useState(1);
   const [contrastLevel, setContrastLevel] = useState(1);
+  const [borderRadius, setBorderRadius] = useState(0);
+  const [codeHighlightIntensity, setCodeHighlightIntensity] = useState(1);
   const [copied, setCopied] = useState(false);
   const [previewEnabled, setPreviewEnabled] = useState(false);
 
@@ -244,13 +284,19 @@ export default function ThemeGeneratorPage() {
   };
 
   const themeColors = useMemo(() => {
-    return generateThemeColors(primaryColor, isDark, chromaIntensity, contrastLevel);
-  }, [primaryColor, isDark, chromaIntensity, contrastLevel]);
+    return generateThemeColors(
+      primaryColor,
+      isDark,
+      chromaIntensity,
+      contrastLevel,
+      codeHighlightIntensity
+    );
+  }, [primaryColor, isDark, chromaIntensity, contrastLevel, codeHighlightIntensity]);
 
   const generatedCSS = useMemo(() => {
     if (!themeName || !themeId) return '';
-    return generateThemeCSS(themeName, themeId, themeColors);
-  }, [themeName, themeId, themeColors]);
+    return generateThemeCSS(themeName, themeId, themeColors, borderRadius);
+  }, [themeName, themeId, themeColors, borderRadius]);
 
   // Apply preview theme
   useEffect(() => {
@@ -461,6 +507,48 @@ export default function ThemeGeneratorPage() {
               />
               <p className="text-muted-foreground text-xs">
                 Fine-tune text contrast for accessibility
+              </p>
+            </div>
+
+            {/* Border Radius */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <Label className={cn(mode.font, 'text-xs')}>[BORDER_RADIUS]:</Label>
+                <Badge variant="outline" className="font-mono text-xs">
+                  {borderRadius}rem
+                </Badge>
+              </div>
+              <Slider
+                value={[borderRadius]}
+                onValueChange={([value]) => setBorderRadius(value)}
+                min={0}
+                max={1}
+                step={0.125}
+                className="w-full"
+              />
+              <p className="text-muted-foreground text-xs">
+                Adjust corner roundness (0 = sharp terminal style)
+              </p>
+            </div>
+
+            {/* Code Highlight Intensity */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <Label className={cn(mode.font, 'text-xs')}>[CODE_HIGHLIGHT]:</Label>
+                <Badge variant="outline" className="font-mono text-xs">
+                  {Math.round(codeHighlightIntensity * 100)}%
+                </Badge>
+              </div>
+              <Slider
+                value={[codeHighlightIntensity]}
+                onValueChange={([value]) => setCodeHighlightIntensity(value)}
+                min={0.5}
+                max={1.5}
+                step={0.05}
+                className="w-full"
+              />
+              <p className="text-muted-foreground text-xs">
+                Control syntax highlighting color intensity
               </p>
             </div>
 
