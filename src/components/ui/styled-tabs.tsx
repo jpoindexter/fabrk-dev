@@ -74,10 +74,7 @@ export function StyledTabs({
       <Card tone="neutral">
         {code && title && <CardHeader code={code} title={title} />}
         <TabsList
-          className={cn(
-            'border-border h-auto w-full justify-start gap-0 border bg-transparent p-0',
-            'rounded-none'
-          )}
+          className={cn('h-auto w-full justify-start gap-0 bg-transparent p-0', 'rounded-none')}
         >
           {tabs.map((tab, index) => {
             const Icon = tab.icon;

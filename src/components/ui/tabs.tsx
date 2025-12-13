@@ -21,7 +21,7 @@ function TabsList({ className, ...props }: React.ComponentProps<typeof TabsPrimi
     <TabsPrimitive.List
       data-slot="tabs-list"
       className={cn(
-        'border-border inline-flex h-auto items-center justify-start gap-0 border p-0',
+        'inline-flex h-auto items-center justify-start gap-0 p-0',
         mode.color.bg.base,
         mode.color.text.primary,
         'rounded-none', // Force sharp corners for terminal aesthetic
