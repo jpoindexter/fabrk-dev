@@ -40,11 +40,7 @@ const themeGroups = {
     { id: 'gameboy', name: 'Game Boy', preview: '#9bbc0f' },
     { id: 'gbpocket', name: 'GB Pocket', preview: '#8a8a8a' },
   ],
-  'Light / Paper': [
-    { id: 'bw', name: 'Black & White', preview: '#ffffff' },
-    { id: 'light-amber', name: 'Light Amber', preview: '#cc8800' },
-    { id: 'light-green', name: 'Light Green', preview: '#00aa33' },
-  ],
+  'Light / Paper': [{ id: 'bw', name: 'Black & White', preview: '#ffffff' }],
 } as const;
 
 // Flattened list for type safety and easy lookup
@@ -103,7 +99,7 @@ export function ThemeDropdown() {
       effect = 'crt';
     }
     // 3. Paper / Clean Themes
-    else if (['bw', 'light-green', 'light-amber'].includes(themeId)) {
+    else if (['bw'].includes(themeId)) {
       effect = 'none';
     }
 
