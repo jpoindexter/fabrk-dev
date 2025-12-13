@@ -383,7 +383,6 @@ function LeftNavigation({ activeSection }: { activeSection: string }) {
         { id: 'dashboard', label: 'Dashboard', icon: Home },
         { id: 'table', label: 'Table', icon: Users },
         { id: 'profile', label: 'Profile', icon: User },
-        { id: 'billing', label: 'Billing', icon: CreditCard },
       ],
     },
   ];
@@ -1104,7 +1103,6 @@ export function HeroPlaygroundFull() {
     { id: 'dashboard', label: 'DASHBOARD' },
     { id: 'table', label: 'TABLE' },
     { id: 'profile', label: 'PROFILE' },
-    { id: 'billing', label: 'BILLING' },
   ];
 
   return (
@@ -1150,7 +1148,6 @@ export function HeroPlaygroundFull() {
           {activeTab === 'dashboard' && <DashboardPreview />}
           {activeTab === 'table' && <TablePreview />}
           {activeTab === 'profile' && <ProfilePreview />}
-          {activeTab === 'billing' && <BillingPreview />}
         </div>
       </div>
     </section>
