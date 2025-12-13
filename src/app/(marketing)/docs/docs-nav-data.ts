@@ -45,9 +45,13 @@ import {
   CheckSquare,
   Monitor,
   GalleryVerticalEnd,
+  Accessibility,
 } from 'lucide-react';
 
 export const docsNavigation: NavSection[] = [
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PHASE 1: GETTING STARTED - First steps for new users
+  // ═══════════════════════════════════════════════════════════════════════════
   {
     title: '[01] START',
     items: [
@@ -62,17 +66,21 @@ export const docsNavigation: NavSection[] = [
         icon: Rocket,
       },
       {
-        title: '[01.3] CUSTOMIZATION CHECKLIST',
-        href: '/docs/customization-checklist',
-        icon: CheckSquare,
-      },
-      {
-        title: '[01.4] ARCHITECTURE',
+        title: '[01.3] ARCHITECTURE',
         href: '/docs/architecture',
         icon: Blocks,
       },
+      {
+        title: '[01.4] CUSTOMIZATION CHECKLIST',
+        href: '/docs/customization-checklist',
+        icon: CheckSquare,
+      },
     ],
   },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PHASE 2: ENVIRONMENT SETUP - Configure your development environment
+  // ═══════════════════════════════════════════════════════════════════════════
   {
     title: '[02] SETUP',
     items: [
@@ -88,6 +96,10 @@ export const docsNavigation: NavSection[] = [
       },
     ],
   },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PHASE 3: AUTHENTICATION - User auth is foundational
+  // ═══════════════════════════════════════════════════════════════════════════
   {
     title: '[03] AUTHENTICATION',
     items: [
@@ -113,6 +125,10 @@ export const docsNavigation: NavSection[] = [
       },
     ],
   },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PHASE 4: PAYMENTS - Monetize your app
+  // ═══════════════════════════════════════════════════════════════════════════
   {
     title: '[04] PAYMENTS',
     items: [
@@ -143,6 +159,10 @@ export const docsNavigation: NavSection[] = [
       },
     ],
   },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PHASE 5: EMAILS - Communication with users
+  // ═══════════════════════════════════════════════════════════════════════════
   {
     title: '[05] EMAILS',
     items: [
@@ -163,6 +183,10 @@ export const docsNavigation: NavSection[] = [
       },
     ],
   },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PHASE 6: CORE FEATURES - Build out your app
+  // ═══════════════════════════════════════════════════════════════════════════
   {
     title: '[06] CORE FEATURES',
     items: [
@@ -198,11 +222,15 @@ export const docsNavigation: NavSection[] = [
       },
     ],
   },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PHASE 7: COMPONENTS - UI building blocks (89 components)
+  // ═══════════════════════════════════════════════════════════════════════════
   {
     title: '[07] COMPONENTS',
     items: [
       {
-        title: 'UI LIBRARY 80',
+        title: 'UI LIBRARY 89',
         href: '/docs/components/overview',
         icon: Blocks,
       },
@@ -211,83 +239,29 @@ export const docsNavigation: NavSection[] = [
       {
         title: '[07.1] FORM INPUTS',
         items: [
-          {
-            title: 'ACCORDION',
-            href: '/docs/components/accordion',
-            icon: FormInput,
-          },
-          {
-            title: 'CALENDAR',
-            href: '/docs/components/calendar',
-            icon: FormInput,
-          },
-          {
-            title: 'CHECKBOX',
-            href: '/docs/components/checkbox',
-            icon: FormInput,
-          },
-          {
-            title: 'DATE PICKER',
-            href: '/docs/components/date-picker',
-            icon: FormInput,
-          },
+          { title: 'ACCORDION', href: '/docs/components/accordion', icon: FormInput },
+          { title: 'CALENDAR', href: '/docs/components/calendar', icon: FormInput },
+          { title: 'CHECKBOX', href: '/docs/components/checkbox', icon: FormInput },
+          { title: 'DATE PICKER', href: '/docs/components/date-picker', icon: FormInput },
           { title: 'FORM', href: '/docs/components/form', icon: FormInput },
-          {
-            title: 'FORM ERROR',
-            href: '/docs/components/form-error',
-            icon: FormInput,
-          },
+          { title: 'FORM ERROR', href: '/docs/components/form-error', icon: FormInput },
           { title: 'INPUT', href: '/docs/components/input', icon: FormInput },
-          {
-            title: 'INPUT GROUP',
-            href: '/docs/components/input-group',
-            icon: FormInput,
-          },
-          {
-            title: 'INPUT NUMBER',
-            href: '/docs/components/input-number',
-            icon: FormInput,
-          },
-          {
-            title: 'INPUT OTP',
-            href: '/docs/components/input-otp',
-            icon: FormInput,
-          },
-          {
-            title: 'INPUT PASSWORD',
-            href: '/docs/components/input-password',
-            icon: FormInput,
-          },
-          {
-            title: 'INPUT SEARCH',
-            href: '/docs/components/input-search',
-            icon: FormInput,
-          },
+          { title: 'INPUT GROUP', href: '/docs/components/input-group', icon: FormInput },
+          { title: 'INPUT NUMBER', href: '/docs/components/input-number', icon: FormInput },
+          { title: 'INPUT OTP', href: '/docs/components/input-otp', icon: FormInput },
+          { title: 'INPUT PASSWORD', href: '/docs/components/input-password', icon: FormInput },
+          { title: 'INPUT SEARCH', href: '/docs/components/input-search', icon: FormInput },
           { title: 'LABEL', href: '/docs/components/label', icon: FormInput },
-          {
-            title: 'RADIO GROUP',
-            href: '/docs/components/radio-group',
-            icon: FormInput,
-          },
+          { title: 'RADIO GROUP', href: '/docs/components/radio-group', icon: FormInput },
           { title: 'SELECT', href: '/docs/components/select', icon: FormInput },
           { title: 'SLIDER', href: '/docs/components/slider', icon: FormInput },
           { title: 'SWITCH', href: '/docs/components/switch', icon: FormInput },
-          {
-            title: 'TEXTAREA',
-            href: '/docs/components/textarea',
-            icon: FormInput,
-          },
+          { title: 'TEXTAREA', href: '/docs/components/textarea', icon: FormInput },
         ],
       },
       {
-        title: '[07.2] BUTTONS ACTIONS',
-        items: [
-          {
-            title: 'BUTTON',
-            href: '/docs/components/button',
-            icon: MousePointer,
-          },
-        ],
+        title: '[07.2] BUTTONS',
+        items: [{ title: 'BUTTON', href: '/docs/components/button', icon: MousePointer }],
       },
       {
         title: '[07.3] DATA DISPLAY',
@@ -295,237 +269,89 @@ export const docsNavigation: NavSection[] = [
           { title: 'AVATAR', href: '/docs/components/avatar', icon: Table },
           { title: 'BADGE', href: '/docs/components/badge', icon: Table },
           { title: 'CARD', href: '/docs/components/card', icon: Table },
-          {
-            title: 'CODE BLOCK',
-            href: '/docs/components/code-block',
-            icon: Table,
-          },
-          {
-            title: 'DATA TABLE HEADER',
-            href: '/docs/components/data-table-header',
-            icon: Table,
-          },
-          {
-            title: 'EMPTY STATE',
-            href: '/docs/components/empty-state',
-            icon: Table,
-          },
+          { title: 'CODE BLOCK', href: '/docs/components/code-block', icon: Table },
+          { title: 'DATA TABLE HEADER', href: '/docs/components/data-table-header', icon: Table },
+          { title: 'EMPTY STATE', href: '/docs/components/empty-state', icon: Table },
           { title: 'KPI CARD', href: '/docs/components/kpi-card', icon: Table },
-          {
-            title: 'MEMBER CARD',
-            href: '/docs/components/member-card',
-            icon: Table,
-          },
-          {
-            title: 'SIMPLE ICON',
-            href: '/docs/components/simple-icon',
-            icon: Table,
-          },
+          { title: 'MEMBER CARD', href: '/docs/components/member-card', icon: Table },
+          { title: 'SIMPLE ICON', href: '/docs/components/simple-icon', icon: Table },
           { title: 'SKELETON', href: '/docs/components/skeleton', icon: Table },
-          {
-            title: 'STAT CARD',
-            href: '/docs/components/stat-card',
-            icon: Table,
-          },
+          { title: 'STAT CARD', href: '/docs/components/stat-card', icon: Table },
           { title: 'TABLE', href: '/docs/components/table', icon: Table },
-          {
-            title: 'TYPEWRITER',
-            href: '/docs/components/typewriter',
-            icon: Table,
-          },
+          { title: 'TYPEWRITER', href: '/docs/components/typewriter', icon: Table },
         ],
       },
       {
         title: '[07.4] CHARTS',
         items: [
-          {
-            title: 'AREA CHART',
-            href: '/docs/components/area-chart',
-            icon: LineChart,
-          },
-          {
-            title: 'BAR CHART',
-            href: '/docs/components/bar-chart',
-            icon: LineChart,
-          },
-          {
-            title: 'DONUT CHART',
-            href: '/docs/components/donut-chart',
-            icon: LineChart,
-          },
-          {
-            title: 'FUNNEL CHART',
-            href: '/docs/components/funnel-chart',
-            icon: LineChart,
-          },
+          { title: 'AREA CHART', href: '/docs/components/area-chart', icon: LineChart },
+          { title: 'BAR CHART', href: '/docs/components/bar-chart', icon: LineChart },
+          { title: 'DONUT CHART', href: '/docs/components/donut-chart', icon: LineChart },
+          { title: 'FUNNEL CHART', href: '/docs/components/funnel-chart', icon: LineChart },
           { title: 'GAUGE', href: '/docs/components/gauge', icon: LineChart },
-          {
-            title: 'HEATMAP',
-            href: '/docs/components/heatmap',
-            icon: LineChart,
-          },
-          {
-            title: 'LINE CHART',
-            href: '/docs/components/line-chart',
-            icon: LineChart,
-          },
-          {
-            title: 'PIE CHART',
-            href: '/docs/components/pie-chart',
-            icon: LineChart,
-          },
-          {
-            title: 'PROGRESS',
-            href: '/docs/components/progress',
-            icon: LineChart,
-          },
-          {
-            title: 'SPARKLINE',
-            href: '/docs/components/sparkline',
-            icon: LineChart,
-          },
-          {
-            title: 'USAGE METER',
-            href: '/docs/components/usage-meter',
-            icon: LineChart,
-          },
+          { title: 'HEATMAP', href: '/docs/components/heatmap', icon: LineChart },
+          { title: 'LINE CHART', href: '/docs/components/line-chart', icon: LineChart },
+          { title: 'PIE CHART', href: '/docs/components/pie-chart', icon: LineChart },
+          { title: 'PROGRESS', href: '/docs/components/progress', icon: LineChart },
+          { title: 'SPARKLINE', href: '/docs/components/sparkline', icon: LineChart },
+          { title: 'USAGE METER', href: '/docs/components/usage-meter', icon: LineChart },
         ],
       },
       {
         title: '[07.5] OVERLAYS',
         items: [
-          {
-            title: 'ALERT DIALOG',
-            href: '/docs/components/alert-dialog',
-            icon: MessageSquare,
-          },
-          {
-            title: 'DIALOG',
-            href: '/docs/components/dialog',
-            icon: MessageSquare,
-          },
-          {
-            title: 'POPOVER',
-            href: '/docs/components/popover',
-            icon: MessageSquare,
-          },
-          {
-            title: 'SHEET',
-            href: '/docs/components/sheet',
-            icon: MessageSquare,
-          },
-          {
-            title: 'TOOLTIP',
-            href: '/docs/components/tooltip',
-            icon: MessageSquare,
-          },
+          { title: 'ALERT DIALOG', href: '/docs/components/alert-dialog', icon: MessageSquare },
+          { title: 'DIALOG', href: '/docs/components/dialog', icon: MessageSquare },
+          { title: 'POPOVER', href: '/docs/components/popover', icon: MessageSquare },
+          { title: 'SHEET', href: '/docs/components/sheet', icon: MessageSquare },
+          { title: 'TOOLTIP', href: '/docs/components/tooltip', icon: MessageSquare },
         ],
       },
       {
         title: '[07.6] NAVIGATION',
         items: [
-          {
-            title: 'BREADCRUMB',
-            href: '/docs/components/breadcrumb',
-            icon: Layout,
-          },
+          { title: 'BREADCRUMB', href: '/docs/components/breadcrumb', icon: Layout },
           { title: 'COMMAND', href: '/docs/components/command', icon: Layout },
-          {
-            title: 'DROPDOWN MENU',
-            href: '/docs/components/dropdown-menu',
-            icon: Layout,
-          },
-          {
-            title: 'NAVIGATION',
-            href: '/docs/components/navigation',
-            icon: Layout,
-          },
-          {
-            title: 'PAGINATION',
-            href: '/docs/components/pagination',
-            icon: Layout,
-          },
+          { title: 'DROPDOWN MENU', href: '/docs/components/dropdown-menu', icon: Layout },
+          { title: 'NAVIGATION', href: '/docs/components/navigation', icon: Layout },
+          { title: 'PAGINATION', href: '/docs/components/pagination', icon: Layout },
           { title: 'SIDEBAR', href: '/docs/components/sidebar', icon: Layout },
-          {
-            title: 'STYLED TABS',
-            href: '/docs/components/styled-tabs',
-            icon: Layout,
-          },
+          { title: 'STYLED TABS', href: '/docs/components/styled-tabs', icon: Layout },
           { title: 'TABS', href: '/docs/components/tabs', icon: Layout },
         ],
       },
       {
         title: '[07.7] LAYOUT',
         items: [
-          {
-            title: 'CONTAINER',
-            href: '/docs/components/container',
-            icon: Blocks,
-          },
-          {
-            title: 'SCROLL AREA',
-            href: '/docs/components/scroll-area',
-            icon: Blocks,
-          },
-          {
-            title: 'SEPARATOR',
-            href: '/docs/components/separator',
-            icon: Blocks,
-          },
+          { title: 'CONTAINER', href: '/docs/components/container', icon: Blocks },
+          { title: 'SCROLL AREA', href: '/docs/components/scroll-area', icon: Blocks },
+          { title: 'SEPARATOR', href: '/docs/components/separator', icon: Blocks },
         ],
       },
       {
         title: '[07.8] FEEDBACK',
         items: [
           { title: 'ALERT', href: '/docs/components/alert', icon: Bell },
-          {
-            title: 'COOKIE CONSENT',
-            href: '/docs/components/cookie-consent',
-            icon: Bell,
-          },
+          { title: 'COOKIE CONSENT', href: '/docs/components/cookie-consent', icon: Bell },
           { title: 'LOADING', href: '/docs/components/loading', icon: Bell },
-          {
-            title: 'NOTIFICATION BADGE',
-            href: '/docs/components/notification-badge',
-            icon: Bell,
-          },
+          { title: 'NOTIFICATION BADGE', href: '/docs/components/notification-badge', icon: Bell },
           {
             title: 'NOTIFICATION CENTER',
             href: '/docs/components/notification-center',
             icon: Bell,
           },
-          {
-            title: 'NOTIFICATION LIST',
-            href: '/docs/components/notification-list',
-            icon: Bell,
-          },
-          {
-            title: 'TERMINAL SPINNER',
-            href: '/docs/components/terminal-spinner',
-            icon: Bell,
-          },
+          { title: 'NOTIFICATION LIST', href: '/docs/components/notification-list', icon: Bell },
+          { title: 'TERMINAL SPINNER', href: '/docs/components/terminal-spinner', icon: Bell },
           { title: 'TOAST', href: '/docs/components/toast', icon: Bell },
           { title: 'TOASTER', href: '/docs/components/toaster', icon: Bell },
         ],
       },
       {
-        title: '[07.9] SAAS SPECIFIC',
+        title: '[07.9] SAAS',
         items: [
-          {
-            title: 'API KEY MANAGER',
-            href: '/docs/components/api-key-manager',
-            icon: Key,
-          },
-          {
-            title: 'AUDIT LOG',
-            href: '/docs/components/audit-log',
-            icon: ScrollText,
-          },
-          {
-            title: 'BALANCE DISPLAY',
-            href: '/docs/components/balance-display',
-            icon: Coins,
-          },
+          { title: 'API KEY MANAGER', href: '/docs/components/api-key-manager', icon: Key },
+          { title: 'AUDIT LOG', href: '/docs/components/audit-log', icon: ScrollText },
+          { title: 'BALANCE DISPLAY', href: '/docs/components/balance-display', icon: Coins },
           {
             title: 'BILLING SUMMARY CARD',
             href: '/docs/components/billing-summary-card',
@@ -536,190 +362,202 @@ export const docsNavigation: NavSection[] = [
             href: '/docs/components/credit-transaction-table',
             icon: Coins,
           },
-          {
-            title: 'CREDIT USAGE CHART',
-            href: '/docs/components/credit-usage-chart',
-            icon: Coins,
-          },
+          { title: 'CREDIT USAGE CHART', href: '/docs/components/credit-usage-chart', icon: Coins },
           {
             title: 'ONBOARDING CHECKLIST',
             href: '/docs/components/onboarding-checklist',
             icon: Check,
           },
-          {
-            title: 'PLAN SELECTOR',
-            href: '/docs/components/plan-selector',
-            icon: CreditCard,
-          },
-          {
-            title: 'SIGN IN FORM',
-            href: '/docs/components/sign-in-form',
-            icon: Users,
-          },
-          {
-            title: 'SIGN UP FORM',
-            href: '/docs/components/sign-up-form',
-            icon: Users,
-          },
-          {
-            title: 'WEBHOOK LOG',
-            href: '/docs/components/webhook-log',
-            icon: Webhook,
-          },
+          { title: 'PLAN SELECTOR', href: '/docs/components/plan-selector', icon: CreditCard },
+          { title: 'SIGN IN FORM', href: '/docs/components/sign-in-form', icon: Users },
+          { title: 'SIGN UP FORM', href: '/docs/components/sign-up-form', icon: Users },
+          { title: 'WEBHOOK LOG', href: '/docs/components/webhook-log', icon: Webhook },
         ],
       },
       {
         title: '[07.L] LANDING',
         items: [
           { title: 'HERO', href: '/docs/components/hero', icon: Rocket },
-          {
-            title: 'FEATURES',
-            href: '/docs/components/features',
-            icon: Blocks,
-          },
-          {
-            title: 'PRICING',
-            href: '/docs/components/pricing',
-            icon: CreditCard,
-          },
-          {
-            title: 'TESTIMONIALS',
-            href: '/docs/components/testimonials',
-            icon: Users,
-          },
+          { title: 'FEATURES', href: '/docs/components/features', icon: Blocks },
+          { title: 'PRICING', href: '/docs/components/pricing', icon: CreditCard },
+          { title: 'TESTIMONIALS', href: '/docs/components/testimonials', icon: Users },
           { title: 'FAQ', href: '/docs/components/faq', icon: MessageSquare },
           { title: 'FOOTER', href: '/docs/components/footer', icon: Layout },
         ],
       },
     ],
   },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PHASE 8: DESIGN SYSTEM - Customize your brand & look
+  // ═══════════════════════════════════════════════════════════════════════════
   {
-    title: '[08] SECURITY',
+    title: '[08] DESIGN SYSTEM',
     items: [
       {
-        title: '[08.1] COOKIE CONSENT',
+        title: '[08.1] THEME GUIDE',
+        href: '/docs/design/theme-guide',
+        icon: Palette,
+      },
+      {
+        title: '[08.2] CUSTOMIZATION GUIDE',
+        href: '/docs/design/customization-guide',
+        icon: Paintbrush,
+      },
+      {
+        title: '[08.3] COMPONENT AUTHORING',
+        href: '/docs/design/component-authoring',
+        icon: Wrench,
+      },
+      {
+        title: '[08.4] ACCESSIBILITY',
+        href: '/docs/design/accessibility',
+        icon: Accessibility,
+      },
+      {
+        title: '[08.5] THEME GALLERY',
+        href: '/docs/extras/theme-gallery',
+        icon: GalleryVerticalEnd,
+      },
+      {
+        title: '[08.6] THEME GENERATOR',
+        href: '/docs/extras/theme-generator',
+        icon: Palette,
+      },
+      {
+        title: '[08.7] DISPLAY EFFECTS',
+        href: '/docs/extras/display-effects',
+        icon: Monitor,
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PHASE 9: SECURITY - Harden your application
+  // ═══════════════════════════════════════════════════════════════════════════
+  {
+    title: '[09] SECURITY',
+    items: [
+      {
+        title: '[09.1] COOKIE CONSENT',
         href: '/docs/features/cookie-consent',
         icon: Cookie,
       },
       {
-        title: '[08.2] RATE LIMITING',
+        title: '[09.2] RATE LIMITING',
         href: '/docs/security/rate-limiting',
         icon: AlertTriangle,
       },
       {
-        title: '[08.3] CSRF PROTECTION',
+        title: '[09.3] CSRF PROTECTION',
         href: '/docs/security/csrf',
         icon: Shield,
       },
       {
-        title: '[08.4] SECURITY HEADERS',
+        title: '[09.4] SECURITY HEADERS',
         href: '/docs/security/headers',
         icon: ShieldCheck,
       },
       {
-        title: '[08.5] VALIDATION',
+        title: '[09.5] VALIDATION',
         href: '/docs/security/validation',
         icon: ScrollText,
       },
       {
-        title: '[08.6] BOT PROTECTION',
+        title: '[09.6] BOT PROTECTION',
         href: '/docs/security/bot-protection',
         icon: Bot,
       },
       {
-        title: '[08.7] AUDIT LOGGING',
+        title: '[09.7] AUDIT LOGGING',
         href: '/docs/security/audit-logging',
         icon: ScrollText,
       },
     ],
   },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PHASE 10: ADVANCED - Power features for scaling
+  // ═══════════════════════════════════════════════════════════════════════════
   {
-    title: '[09] ADVANCED',
+    title: '[10] ADVANCED',
     items: [
       {
-        title: '[09.1] ORGANIZATIONS',
+        title: '[10.1] ORGANIZATIONS',
         href: '/docs/features/organizations',
         icon: Users,
       },
-      { title: '[09.2] REALTIME', href: '/docs/features/realtime', icon: Bell },
       {
-        title: '[09.3] BACKGROUND JOBS',
+        title: '[10.2] REALTIME',
+        href: '/docs/features/realtime',
+        icon: Bell,
+      },
+      {
+        title: '[10.3] BACKGROUND JOBS',
         href: '/docs/features/background-jobs',
         icon: Clock,
       },
       {
-        title: '[09.4] ANALYTICS',
+        title: '[10.4] ANALYTICS',
         href: '/docs/features/analytics',
         icon: BarChart3,
       },
-      { title: '[09.5] SEO', href: '/docs/features/seo', icon: Globe },
-      { title: '[09.6] API KEYS', href: '/docs/features/api-keys', icon: Key },
       {
-        title: '[09.7] FEATURE FLAGS',
+        title: '[10.5] SEO',
+        href: '/docs/features/seo',
+        icon: Globe,
+      },
+      {
+        title: '[10.6] API KEYS',
+        href: '/docs/features/api-keys',
+        icon: Key,
+      },
+      {
+        title: '[10.7] FEATURE FLAGS',
         href: '/docs/features/feature-flags',
         icon: Flag,
       },
       {
-        title: '[09.8] BLOG SYSTEM',
+        title: '[10.8] BLOG SYSTEM',
         href: '/docs/features/blog',
         icon: FileText,
       },
-      { title: '[09.9] I18N', href: '/docs/features/i18n', icon: Languages },
       {
-        title: '[09.10] USER IMPERSONATION',
+        title: '[10.9] I18N',
+        href: '/docs/features/i18n',
+        icon: Languages,
+      },
+      {
+        title: '[10.10] USER IMPERSONATION',
         href: '/docs/features/impersonation',
         icon: UserCog,
       },
-      { title: '[09.11] THEMING', href: '/docs/extras/theming', icon: Palette },
       {
-        title: '[09.12] THEME GENERATOR',
-        href: '/docs/extras/theme-generator',
-        icon: Palette,
-      },
-      {
-        title: '[09.13] THEME GUIDE',
-        href: '/docs/design/theme-guide',
-        icon: Palette,
-      },
-      {
-        title: '[09.14] CUSTOMIZATION GUIDE',
-        href: '/docs/design/customization-guide',
-        icon: Paintbrush,
-      },
-      {
-        title: '[09.15] COMPONENT AUTHORING',
-        href: '/docs/design/component-authoring',
-        icon: Wrench,
-      },
-      {
-        title: '[09.16] ACCESSIBILITY',
-        href: '/docs/design/accessibility',
-        icon: ShieldCheck,
-      },
-      {
-        title: '[09.17] THEME GALLERY',
-        href: '/docs/extras/theme-gallery',
-        icon: GalleryVerticalEnd,
-      },
-      {
-        title: '[09.18] DISPLAY EFFECTS',
-        href: '/docs/extras/display-effects',
-        icon: Monitor,
-      },
-      {
-        title: '[09.19] MCP SERVER',
+        title: '[10.11] MCP SERVER',
         href: '/docs/features/mcp-server',
         icon: Bot,
       },
     ],
   },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PHASE 11: DEPLOY - Ship to production
+  // ═══════════════════════════════════════════════════════════════════════════
   {
-    title: '[10] DEPLOY',
+    title: '[11] DEPLOY',
     items: [
-      { title: '[10.1] TESTING', href: '/docs/extras/testing', icon: TestTube },
-      { title: '[10.2] VERCEL', href: '/docs/deployment/vercel', icon: Cloud },
       {
-        title: '[10.3] LAUNCH CHECKLIST',
+        title: '[11.1] TESTING',
+        href: '/docs/extras/testing',
+        icon: TestTube,
+      },
+      {
+        title: '[11.2] VERCEL',
+        href: '/docs/deployment/vercel',
+        icon: Cloud,
+      },
+      {
+        title: '[11.3] LAUNCH CHECKLIST',
         href: '/docs/launch/checklist',
         icon: Rocket,
       },
