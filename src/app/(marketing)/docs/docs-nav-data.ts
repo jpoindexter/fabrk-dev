@@ -632,6 +632,11 @@ export const docsNavigation: NavSection[] = [
         icon: UserCog,
       },
       { title: '[09.11] THEMING', href: '/docs/extras/theming', icon: Palette },
+      {
+        title: '[09.12] THEME GENERATOR',
+        href: '/docs/extras/theme-generator',
+        icon: Palette,
+      },
     ],
   },
   {
