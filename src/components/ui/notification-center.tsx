@@ -37,7 +37,8 @@ export interface NotificationCenterProps {
   className?: string;
 }
 
-// Utility to get notification icon by type
+/* ----- Helper Functions ----- */
+
 const getNotificationIcon = (type: Notification['type']) => {
   const iconClass = 'h-5 w-5';
 
@@ -105,7 +106,8 @@ const groupNotificationsByDate = (
   return Object.fromEntries(Object.entries(groups).filter(([_, items]) => items.length > 0));
 };
 
-// Individual notification item component
+/* ----- Sub-Components ----- */
+
 interface NotificationItemProps {
   notification: Notification;
   onMarkAsRead?: (id: string) => void;
@@ -246,7 +248,104 @@ const NotificationItem = React.forwardRef<HTMLDivElement, NotificationItemProps>
 );
 NotificationItem.displayName = 'NotificationItem';
 
-// Main NotificationCenter component
+interface NotificationCenterHeaderProps {
+  unreadCount: number;
+  hasNotifications: boolean;
+  onMarkAllAsRead?: () => void;
+  onClearAll?: () => void;
+}
+
+function NotificationCenterHeader({
+  unreadCount,
+  hasNotifications,
+  onMarkAllAsRead,
+  onClearAll,
+}: NotificationCenterHeaderProps) {
+  return (
+    <div className="flex items-center justify-between border-b p-4">
+      <h3 className="text-lg font-semibold">Notifications</h3>
+      <div className="flex items-center gap-2">
+        {unreadCount > 0 && onMarkAllAsRead && (
+          <Button variant="ghost" size="sm" className="h-8 text-xs" onClick={onMarkAllAsRead}>
+            <Check className="mr-1 h-3 w-3" />
+            Mark all read
+          </Button>
+        )}
+        {hasNotifications && onClearAll && (
+          <Button
+            variant="ghost"
+            size="sm"
+            className="text-destructive hover:text-destructive h-8 text-xs"
+            onClick={onClearAll}
+          >
+            <X className="mr-1 h-3 w-3" />
+            Clear all
+          </Button>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function EmptyNotificationsState() {
+  return (
+    <div className="flex flex-col items-center justify-center px-4 py-12">
+      <div className={cn('bg-muted mb-4 flex h-16 w-16 items-center justify-center', mode.radius)}>
+        <Bell className="text-muted-foreground h-8 w-8" />
+      </div>
+      <p className="text-foreground mb-1 font-semibold">You're all caught up!</p>
+      <p className={cn('text-muted-foreground text-center text-xs', mode.font)}>
+        No new notifications at the moment
+      </p>
+    </div>
+  );
+}
+
+interface NotificationGroupsListProps {
+  groupedNotifications: Record<string, Notification[]>;
+  groupByDate: boolean;
+  maxHeight: number;
+  onMarkAsRead?: (id: string) => void;
+  onDelete?: (id: string) => void;
+  autoMarkAsRead?: boolean;
+}
+
+function NotificationGroupsList({
+  groupedNotifications,
+  groupByDate,
+  maxHeight,
+  onMarkAsRead,
+  onDelete,
+  autoMarkAsRead,
+}: NotificationGroupsListProps) {
+  return (
+    <ScrollArea className="h-full" style={{ maxHeight: `${maxHeight - 73}px` }}>
+      <div className="space-y-1 p-2">
+        {Object.entries(groupedNotifications).map(([group, items]) => (
+          <div key={group}>
+            {groupByDate && (
+              <div className={cn('bg-muted sticky top-0 z-10 mb-2 px-4 py-2', mode.radius)}>
+                <span className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+                  {group}
+                </span>
+              </div>
+            )}
+            {items.map((notification) => (
+              <NotificationItem
+                key={notification.id}
+                notification={notification}
+                onMarkAsRead={onMarkAsRead}
+                onDelete={onDelete}
+                autoMarkAsRead={autoMarkAsRead}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
+    </ScrollArea>
+  );
+}
+
 export const NotificationCenter = React.forwardRef<HTMLDivElement, NotificationCenterProps>(
   (
     {
@@ -303,71 +402,24 @@ export const NotificationCenter = React.forwardRef<HTMLDivElement, NotificationC
           className="w-full max-w-md p-0"
           style={{ maxHeight: `${maxHeight}px` }}
         >
-          {/* Header */}
-          <div className="flex items-center justify-between border-b p-4">
-            <h3 className="text-lg font-semibold">Notifications</h3>
-            <div className="flex items-center gap-2">
-              {unreadCount > 0 && onMarkAllAsRead && (
-                <Button variant="ghost" size="sm" className="h-8 text-xs" onClick={onMarkAllAsRead}>
-                  <Check className="mr-1 h-3 w-3" />
-                  Mark all read
-                </Button>
-              )}
-              {notifications.length > 0 && onClearAll && (
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="text-destructive hover:text-destructive h-8 text-xs"
-                  onClick={onClearAll}
-                >
-                  <X className="mr-1 h-3 w-3" />
-                  Clear all
-                </Button>
-              )}
-            </div>
-          </div>
+          <NotificationCenterHeader
+            unreadCount={unreadCount}
+            hasNotifications={notifications.length > 0}
+            onMarkAllAsRead={onMarkAllAsRead}
+            onClearAll={onClearAll}
+          />
 
-          {/* Notification list */}
           {notifications.length === 0 ? (
-            <div className="flex flex-col items-center justify-center px-4 py-12">
-              <div
-                className={cn(
-                  'bg-muted mb-4 flex h-16 w-16 items-center justify-center',
-                  mode.radius
-                )}
-              >
-                <Bell className="text-muted-foreground h-8 w-8" />
-              </div>
-              <p className="text-foreground mb-1 font-semibold">You're all caught up!</p>
-              <p className={cn('text-muted-foreground text-center text-xs', mode.font)}>
-                No new notifications at the moment
-              </p>
-            </div>
+            <EmptyNotificationsState />
           ) : (
-            <ScrollArea className="h-full" style={{ maxHeight: `${maxHeight - 73}px` }}>
-              <div className="space-y-1 p-2">
-                {Object.entries(groupedNotifications).map(([group, items]) => (
-                  <div key={group}>
-                    {groupByDate && (
-                      <div className={cn('bg-muted sticky top-0 z-10 mb-2 px-4 py-2', mode.radius)}>
-                        <span className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
-                          {group}
-                        </span>
-                      </div>
-                    )}
-                    {items.map((notification) => (
-                      <NotificationItem
-                        key={notification.id}
-                        notification={notification}
-                        onMarkAsRead={onMarkAsRead}
-                        onDelete={onDelete}
-                        autoMarkAsRead={autoMarkAsRead}
-                      />
-                    ))}
-                  </div>
-                ))}
-              </div>
-            </ScrollArea>
+            <NotificationGroupsList
+              groupedNotifications={groupedNotifications}
+              groupByDate={groupByDate}
+              maxHeight={maxHeight}
+              onMarkAsRead={onMarkAsRead}
+              onDelete={onDelete}
+              autoMarkAsRead={autoMarkAsRead}
+            />
           )}
         </DropdownMenuContent>
       </DropdownMenu>

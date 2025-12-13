@@ -39,6 +39,38 @@ export interface MemberCardProps {
   className?: string;
 }
 
+/* ----- Helper Functions ----- */
+
+const getStatusColor = (status?: 'online' | 'away' | 'offline') => {
+  switch (status) {
+    case 'online':
+      return 'bg-accent';
+    case 'away':
+      return 'bg-warning';
+    case 'offline':
+      return 'bg-muted';
+    default:
+      return 'bg-muted';
+  }
+};
+
+const getInitials = (name: string) => {
+  return name
+    .split(' ')
+    .map((n) => n[0])
+    .join('')
+    .toUpperCase()
+    .slice(0, 2);
+};
+
+const formatMemberSince = (date?: Date | string) => {
+  if (!date) return null;
+  const d = typeof date === 'string' ? new Date(date) : date;
+  return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+};
+
+/* ----- Skeleton Component ----- */
+
 const MemberCardSkeleton = ({ variant = 'card' }: { variant?: 'card' | 'compact' }) => {
   if (variant === 'compact') {
     return (
@@ -76,146 +108,178 @@ const MemberCardSkeleton = ({ variant = 'card' }: { variant?: 'card' | 'compact'
   );
 };
 
-const getStatusColor = (status?: 'online' | 'away' | 'offline') => {
-  switch (status) {
-    case 'online':
-      return 'bg-accent';
-    case 'away':
-      return 'bg-warning';
-    case 'offline':
-      return 'bg-muted';
-    default:
-      return 'bg-muted';
-  }
-};
+/* ----- Sub-Components ----- */
 
-const getInitials = (name: string) => {
-  return name
-    .split(' ')
-    .map((n) => n[0])
-    .join('')
-    .toUpperCase()
-    .slice(0, 2);
-};
+interface MemberActionsDropdownProps {
+  member: Member;
+  onViewProfile?: (member: Member) => void;
+  onEdit?: (member: Member) => void;
+  onRemove?: (member: Member) => void;
+  align?: 'start' | 'center' | 'end';
+}
 
-const formatMemberSince = (date?: Date | string) => {
-  if (!date) return null;
-  const d = typeof date === 'string' ? new Date(date) : date;
-  return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-};
+function MemberActionsDropdown({
+  member,
+  onViewProfile,
+  onEdit,
+  onRemove,
+  align = 'end',
+}: MemberActionsDropdownProps) {
+  return (
+    <DropdownMenuContent align={align}>
+      {onViewProfile && (
+        <>
+          <DropdownMenuItem onClick={() => onViewProfile(member)}>
+            <User className="mr-2 h-4 w-4" />
+            View Profile
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+        </>
+      )}
+      {onEdit && (
+        <DropdownMenuItem onClick={() => onEdit(member)}>
+          <Edit className="mr-2 h-4 w-4" />
+          Edit
+        </DropdownMenuItem>
+      )}
+      {onRemove && (
+        <>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem
+            onClick={() => onRemove(member)}
+            className="text-destructive focus:text-destructive"
+          >
+            <Trash2 className="mr-2 h-4 w-4" />
+            Remove
+          </DropdownMenuItem>
+        </>
+      )}
+    </DropdownMenuContent>
+  );
+}
 
-const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
+interface CompactMemberCardProps {
+  member: Member;
+  showActions: boolean;
+  hasActions: boolean;
+  onEmail?: (member: Member) => void;
+  onViewProfile?: (member: Member) => void;
+  onEdit?: (member: Member) => void;
+  onRemove?: (member: Member) => void;
+  className?: string;
+}
+
+const CompactMemberCard = React.forwardRef<HTMLDivElement, CompactMemberCardProps>(
   (
     {
       member,
-      variant = 'card',
-      showActions = true,
+      showActions,
+      hasActions,
       onEmail,
-      onMessage,
+      onViewProfile,
       onEdit,
       onRemove,
-      onViewProfile,
       className,
       ...props
     },
     ref
   ) => {
-    const hasActions = showActions && (onEdit || onRemove || onViewProfile);
-
-    if (variant === 'compact') {
-      return (
-        <div
-          ref={ref}
-          className={cn(
-            'bg-card flex items-center gap-4 border p-4 transition-all hover:opacity-90',
-            mode.radius,
-            className
-          )}
-          {...props}
-        >
-          <div className="relative">
-            <Avatar className="h-10 w-10">
-              <AvatarImage src={member.avatar} alt={member.name} />
-              <AvatarFallback>{getInitials(member.name)}</AvatarFallback>
-            </Avatar>
-            {member.status && (
-              <div
-                className={cn(
-                  'border-card absolute right-0 bottom-0 h-3 w-3 border',
-                  mode.radius,
-                  getStatusColor(member.status)
-                )}
-              />
-            )}
-          </div>
-
-          <div className="min-w-0 flex-1">
-            <div className="flex items-center gap-2">
-              <h4 className="text-foreground truncate text-sm font-semibold">{member.name}</h4>
-              {member.status === 'online' && (
-                <Badge variant="accent" className="px-2 py-0 text-xs">
-                  Online
-                </Badge>
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          'bg-card flex items-center gap-4 border p-4 transition-all hover:opacity-90',
+          mode.radius,
+          className
+        )}
+        {...props}
+      >
+        <div className="relative">
+          <Avatar className="h-10 w-10">
+            <AvatarImage src={member.avatar} alt={member.name} />
+            <AvatarFallback>{getInitials(member.name)}</AvatarFallback>
+          </Avatar>
+          {member.status && (
+            <div
+              className={cn(
+                'border-card absolute right-0 bottom-0 h-3 w-3 border',
+                mode.radius,
+                getStatusColor(member.status)
               )}
-            </div>
-            <p className="text-muted-foreground truncate text-xs">{member.role}</p>
-          </div>
-
-          <div className="flex items-center gap-1">
-            {onEmail && (
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => onEmail(member)}
-                className="shrink-0"
-              >
-                <Mail className="h-4 w-4" />
-              </Button>
-            )}
-
-            {hasActions && (
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="sm" className="shrink-0">
-                    <MoreVertical className="h-4 w-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  {onViewProfile && (
-                    <>
-                      <DropdownMenuItem onClick={() => onViewProfile(member)}>
-                        <User className="mr-2 h-4 w-4" />
-                        View Profile
-                      </DropdownMenuItem>
-                      <DropdownMenuSeparator />
-                    </>
-                  )}
-                  {onEdit && (
-                    <DropdownMenuItem onClick={() => onEdit(member)}>
-                      <Edit className="mr-2 h-4 w-4" />
-                      Edit
-                    </DropdownMenuItem>
-                  )}
-                  {onRemove && (
-                    <>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem
-                        onClick={() => onRemove(member)}
-                        className="text-destructive focus:text-destructive"
-                      >
-                        <Trash2 className="mr-2 h-4 w-4" />
-                        Remove
-                      </DropdownMenuItem>
-                    </>
-                  )}
-                </DropdownMenuContent>
-              </DropdownMenu>
-            )}
-          </div>
+            />
+          )}
         </div>
-      );
-    }
 
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center gap-2">
+            <h4 className="text-foreground truncate text-sm font-semibold">{member.name}</h4>
+            {member.status === 'online' && (
+              <Badge variant="accent" className="px-2 py-0 text-xs">
+                Online
+              </Badge>
+            )}
+          </div>
+          <p className="text-muted-foreground truncate text-xs">{member.role}</p>
+        </div>
+
+        <div className="flex items-center gap-1">
+          {onEmail && (
+            <Button variant="ghost" size="sm" onClick={() => onEmail(member)} className="shrink-0">
+              <Mail className="h-4 w-4" />
+            </Button>
+          )}
+
+          {hasActions && (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="sm" className="shrink-0">
+                  <MoreVertical className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <MemberActionsDropdown
+                member={member}
+                onViewProfile={onViewProfile}
+                onEdit={onEdit}
+                onRemove={onRemove}
+              />
+            </DropdownMenu>
+          )}
+        </div>
+      </div>
+    );
+  }
+);
+
+CompactMemberCard.displayName = 'CompactMemberCard';
+
+interface FullMemberCardProps {
+  member: Member;
+  showActions: boolean;
+  hasActions: boolean;
+  onEmail?: (member: Member) => void;
+  onMessage?: (member: Member) => void;
+  onViewProfile?: (member: Member) => void;
+  onEdit?: (member: Member) => void;
+  onRemove?: (member: Member) => void;
+  className?: string;
+}
+
+const FullMemberCard = React.forwardRef<HTMLDivElement, FullMemberCardProps>(
+  (
+    {
+      member,
+      showActions,
+      hasActions,
+      onEmail,
+      onMessage,
+      onViewProfile,
+      onEdit,
+      onRemove,
+      className,
+      ...props
+    },
+    ref
+  ) => {
     return (
       <div
         ref={ref}
@@ -298,35 +362,13 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
                     Actions
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="center">
-                  {onViewProfile && (
-                    <>
-                      <DropdownMenuItem onClick={() => onViewProfile(member)}>
-                        <User className="mr-2 h-4 w-4" />
-                        View Profile
-                      </DropdownMenuItem>
-                      <DropdownMenuSeparator />
-                    </>
-                  )}
-                  {onEdit && (
-                    <DropdownMenuItem onClick={() => onEdit(member)}>
-                      <Edit className="mr-2 h-4 w-4" />
-                      Edit
-                    </DropdownMenuItem>
-                  )}
-                  {onRemove && (
-                    <>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem
-                        onClick={() => onRemove(member)}
-                        className="text-destructive focus:text-destructive"
-                      >
-                        <Trash2 className="mr-2 h-4 w-4" />
-                        Remove
-                      </DropdownMenuItem>
-                    </>
-                  )}
-                </DropdownMenuContent>
+                <MemberActionsDropdown
+                  member={member}
+                  onViewProfile={onViewProfile}
+                  onEdit={onEdit}
+                  onRemove={onRemove}
+                  align="center"
+                />
               </DropdownMenu>
             )}
           </div>
@@ -338,39 +380,71 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
                   <MoreVertical className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                {onViewProfile && (
-                  <>
-                    <DropdownMenuItem onClick={() => onViewProfile(member)}>
-                      <User className="mr-2 h-4 w-4" />
-                      View Profile
-                    </DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                  </>
-                )}
-                {onEdit && (
-                  <DropdownMenuItem onClick={() => onEdit(member)}>
-                    <Edit className="mr-2 h-4 w-4" />
-                    Edit
-                  </DropdownMenuItem>
-                )}
-                {onRemove && (
-                  <>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem
-                      onClick={() => onRemove(member)}
-                      className="text-destructive focus:text-destructive"
-                    >
-                      <Trash2 className="mr-2 h-4 w-4" />
-                      Remove
-                    </DropdownMenuItem>
-                  </>
-                )}
-              </DropdownMenuContent>
+              <MemberActionsDropdown
+                member={member}
+                onViewProfile={onViewProfile}
+                onEdit={onEdit}
+                onRemove={onRemove}
+              />
             </DropdownMenu>
           )}
         </div>
       </div>
+    );
+  }
+);
+
+FullMemberCard.displayName = 'FullMemberCard';
+
+const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
+  (
+    {
+      member,
+      variant = 'card',
+      showActions = true,
+      onEmail,
+      onMessage,
+      onEdit,
+      onRemove,
+      onViewProfile,
+      className,
+      ...props
+    },
+    ref
+  ) => {
+    const hasActions = showActions && Boolean(onEdit || onRemove || onViewProfile);
+
+    if (variant === 'compact') {
+      return (
+        <CompactMemberCard
+          ref={ref}
+          member={member}
+          showActions={showActions}
+          hasActions={hasActions}
+          onEmail={onEmail}
+          onViewProfile={onViewProfile}
+          onEdit={onEdit}
+          onRemove={onRemove}
+          className={className}
+          {...props}
+        />
+      );
+    }
+
+    return (
+      <FullMemberCard
+        ref={ref}
+        member={member}
+        showActions={showActions}
+        hasActions={hasActions}
+        onEmail={onEmail}
+        onMessage={onMessage}
+        onViewProfile={onViewProfile}
+        onEdit={onEdit}
+        onRemove={onRemove}
+        className={className}
+        {...props}
+      />
     );
   }
 );

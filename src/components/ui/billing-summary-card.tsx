@@ -81,6 +81,193 @@ const statusConfig: Record<
   },
 };
 
+/* ----- Helper Functions ----- */
+
+const formatDate = (date: Date) => {
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(date);
+};
+
+const formatPrice = (price: number, interval: 'month' | 'year') => {
+  return `$${price}/${interval === 'month' ? 'mo' : 'yr'}`;
+};
+
+const getDaysRemaining = (endDate: Date) => {
+  const now = new Date();
+  const diff = endDate.getTime() - now.getTime();
+  return Math.ceil(diff / (1000 * 60 * 60 * 24));
+};
+
+const getUsagePercentage = (used: number, limit: number) => {
+  return Math.min(Math.round((used / limit) * 100), 100);
+};
+
+const getUsageColor = (percentage: number) => {
+  if (percentage >= 90) return 'bg-destructive';
+  if (percentage >= 75) return 'bg-warning';
+  return 'bg-primary';
+};
+
+/* ----- Sub-Components ----- */
+
+interface PlanDetailsSectionProps {
+  plan: BillingPlan;
+  status: BillingStatus;
+  statusInfo: (typeof statusConfig)[BillingStatus];
+  currentPeriodEnd?: Date;
+  trialEnd?: Date;
+}
+
+function PlanDetailsSection({
+  plan,
+  status,
+  statusInfo,
+  currentPeriodEnd,
+  trialEnd,
+}: PlanDetailsSectionProps) {
+  return (
+    <div className="border-border border-b p-4">
+      <div className="flex items-start justify-between">
+        <div>
+          <p className={cn('text-muted-foreground mb-1 text-xs', mode.font)}>[CURRENT PLAN]:</p>
+          <p className={cn('text-foreground text-2xl font-bold', mode.font)}>{plan.name}</p>
+          <p className={cn('text-muted-foreground text-xs', mode.font)}>
+            {formatPrice(plan.price, plan.interval)}
+          </p>
+          {status === 'trial' && trialEnd && (
+            <p className={cn('text-warning mt-2 text-xs', mode.font)}>
+              Trial ends in {getDaysRemaining(trialEnd)} days
+            </p>
+          )}
+          {status === 'active' && currentPeriodEnd && (
+            <p className={cn('text-muted-foreground mt-2 text-xs', mode.font)}>
+              Next billing: {formatDate(currentPeriodEnd)}
+            </p>
+          )}
+          {status === 'past_due' && (
+            <p className={cn('text-destructive mt-2 text-xs', mode.font)}>
+              Action required: Update payment method
+            </p>
+          )}
+        </div>
+        <Badge variant={statusInfo.variant} className="gap-1">
+          {statusInfo.icon}
+          {statusInfo.label}
+        </Badge>
+      </div>
+
+      {plan.features && plan.features.length > 0 && (
+        <div className="mt-4">
+          <p className={cn('text-muted-foreground mb-2 text-xs', mode.font)}>[INCLUDES]:</p>
+          <ul className="space-y-1">
+            {plan.features.map((feature, index) => (
+              <li
+                key={index}
+                className={cn('text-muted-foreground flex items-center gap-2 text-xs', mode.font)}
+              >
+                <Zap className="text-primary h-3 w-3" />
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
+
+interface UsageSectionProps {
+  usage: UsageItem[];
+}
+
+function UsageSection({ usage }: UsageSectionProps) {
+  if (usage.length === 0) return null;
+
+  return (
+    <div className="border-border border-b p-4">
+      <p className={cn('text-muted-foreground mb-3 text-xs', mode.font)}>[USAGE_THIS_PERIOD]:</p>
+      <div className="space-y-4">
+        {usage.map((item, index) => {
+          const percentage = getUsagePercentage(item.used, item.limit);
+          return (
+            <div key={index}>
+              <div className="mb-1 flex items-center justify-between text-xs">
+                <span className={cn('font-medium', mode.font)}>{item.name}</span>
+                <span className={cn('text-muted-foreground text-xs', mode.font)}>
+                  {item.used.toLocaleString()} / {item.limit.toLocaleString()}
+                  {item.unit && ` ${item.unit}`}
+                </span>
+              </div>
+              <div className={cn('bg-muted relative h-2 w-full overflow-hidden', mode.radius)}>
+                <div
+                  className={cn('h-full transition-all', getUsageColor(percentage))}
+                  style={{ width: `${percentage}%` }}
+                />
+              </div>
+              {percentage >= 90 && (
+                <p className={cn('text-destructive mt-1 text-xs', mode.font)}>
+                  <AlertTriangle className="mr-1 inline h-3 w-3" />
+                  Approaching limit
+                </p>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+interface ActionsSectionProps {
+  status: BillingStatus;
+  showUpgrade: boolean;
+  onUpgrade?: () => void;
+  onManageBilling?: () => void;
+  onCancel?: () => void;
+}
+
+function ActionsSection({
+  status,
+  showUpgrade,
+  onUpgrade,
+  onManageBilling,
+  onCancel,
+}: ActionsSectionProps) {
+  return (
+    <div className="flex flex-wrap items-center gap-2 p-4">
+      {showUpgrade && onUpgrade && (
+        <Button onClick={onUpgrade} size="sm" className={cn(mode.radius, mode.font)}>
+          &gt; UPGRADE PLAN
+        </Button>
+      )}
+      {onManageBilling && (
+        <Button
+          onClick={onManageBilling}
+          variant="outline"
+          size="sm"
+          className={cn(mode.radius, mode.font)}
+        >
+          <Calendar className="mr-1 h-3 w-3" />
+          MANAGE BILLING
+        </Button>
+      )}
+      {onCancel && status === 'active' && (
+        <Button
+          onClick={onCancel}
+          variant="ghost"
+          size="sm"
+          className={cn('text-destructive hover:text-destructive', mode.radius, mode.font)}
+        >
+          CANCEL
+        </Button>
+      )}
+    </div>
+  );
+}
+
 export function BillingSummaryCard({
   plan,
   status,
@@ -95,34 +282,6 @@ export function BillingSummaryCard({
 }: BillingSummaryCardProps) {
   const statusInfo = statusConfig[status];
 
-  const formatDate = (date: Date) => {
-    return new Intl.DateTimeFormat('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-    }).format(date);
-  };
-
-  const formatPrice = (price: number, interval: 'month' | 'year') => {
-    return `$${price}/${interval === 'month' ? 'mo' : 'yr'}`;
-  };
-
-  const getDaysRemaining = (endDate: Date) => {
-    const now = new Date();
-    const diff = endDate.getTime() - now.getTime();
-    return Math.ceil(diff / (1000 * 60 * 60 * 24));
-  };
-
-  const getUsagePercentage = (used: number, limit: number) => {
-    return Math.min(Math.round((used / limit) * 100), 100);
-  };
-
-  const getUsageColor = (percentage: number) => {
-    if (percentage >= 90) return 'bg-destructive';
-    if (percentage >= 75) return 'bg-warning';
-    return 'bg-primary';
-  };
-
   return (
     <div className={cn('border-border bg-card border', mode.radius, className)}>
       {/* Terminal Header */}
@@ -133,124 +292,25 @@ export function BillingSummaryCard({
       </div>
 
       {/* Plan Details */}
-      <div className="border-border border-b p-4">
-        <div className="flex items-start justify-between">
-          {/* Left: Plan Info */}
-          <div>
-            <p className={cn('text-muted-foreground mb-1 text-xs', mode.font)}>[CURRENT PLAN]:</p>
-            <p className={cn('text-foreground text-2xl font-bold', mode.font)}>{plan.name}</p>
-            <p className={cn('text-muted-foreground text-xs', mode.font)}>
-              {formatPrice(plan.price, plan.interval)}
-            </p>
-            {/* Billing/Trial Info - now under plan details */}
-            {status === 'trial' && trialEnd && (
-              <p className={cn('text-warning mt-2 text-xs', mode.font)}>
-                Trial ends in {getDaysRemaining(trialEnd)} days
-              </p>
-            )}
-            {status === 'active' && currentPeriodEnd && (
-              <p className={cn('text-muted-foreground mt-2 text-xs', mode.font)}>
-                Next billing: {formatDate(currentPeriodEnd)}
-              </p>
-            )}
-            {status === 'past_due' && (
-              <p className={cn('text-destructive mt-2 text-xs', mode.font)}>
-                Action required: Update payment method
-              </p>
-            )}
-          </div>
-          {/* Right: Status Badge only */}
-          <Badge variant={statusInfo.variant} className="gap-1">
-            {statusInfo.icon}
-            {statusInfo.label}
-          </Badge>
-        </div>
-
-        {/* Plan Features (optional) */}
-        {plan.features && plan.features.length > 0 && (
-          <div className="mt-4">
-            <p className={cn('text-muted-foreground mb-2 text-xs', mode.font)}>[INCLUDES]:</p>
-            <ul className="space-y-1">
-              {plan.features.map((feature, index) => (
-                <li
-                  key={index}
-                  className={cn('text-muted-foreground flex items-center gap-2 text-xs', mode.font)}
-                >
-                  <Zap className="text-primary h-3 w-3" />
-                  {feature}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
+      <PlanDetailsSection
+        plan={plan}
+        status={status}
+        statusInfo={statusInfo}
+        currentPeriodEnd={currentPeriodEnd}
+        trialEnd={trialEnd}
+      />
 
       {/* Usage Section */}
-      {usage.length > 0 && (
-        <div className="border-border border-b p-4">
-          <p className={cn('text-muted-foreground mb-3 text-xs', mode.font)}>
-            [USAGE_THIS_PERIOD]:
-          </p>
-          <div className="space-y-4">
-            {usage.map((item, index) => {
-              const percentage = getUsagePercentage(item.used, item.limit);
-              return (
-                <div key={index}>
-                  <div className="mb-1 flex items-center justify-between text-xs">
-                    <span className={cn('font-medium', mode.font)}>{item.name}</span>
-                    <span className={cn('text-muted-foreground text-xs', mode.font)}>
-                      {item.used.toLocaleString()} / {item.limit.toLocaleString()}
-                      {item.unit && ` ${item.unit}`}
-                    </span>
-                  </div>
-                  <div className={cn('bg-muted relative h-2 w-full overflow-hidden', mode.radius)}>
-                    <div
-                      className={cn('h-full transition-all', getUsageColor(percentage))}
-                      style={{ width: `${percentage}%` }}
-                    />
-                  </div>
-                  {percentage >= 90 && (
-                    <p className={cn('text-destructive mt-1 text-xs', mode.font)}>
-                      <AlertTriangle className="mr-1 inline h-3 w-3" />
-                      Approaching limit
-                    </p>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      )}
+      <UsageSection usage={usage} />
 
       {/* Actions */}
-      <div className="flex flex-wrap items-center gap-2 p-4">
-        {showUpgrade && onUpgrade && (
-          <Button onClick={onUpgrade} size="sm" className={cn(mode.radius, mode.font)}>
-            &gt; UPGRADE PLAN
-          </Button>
-        )}
-        {onManageBilling && (
-          <Button
-            onClick={onManageBilling}
-            variant="outline"
-            size="sm"
-            className={cn(mode.radius, mode.font)}
-          >
-            <Calendar className="mr-1 h-3 w-3" />
-            MANAGE BILLING
-          </Button>
-        )}
-        {onCancel && status === 'active' && (
-          <Button
-            onClick={onCancel}
-            variant="ghost"
-            size="sm"
-            className={cn('text-destructive hover:text-destructive', mode.radius, mode.font)}
-          >
-            CANCEL
-          </Button>
-        )}
-      </div>
+      <ActionsSection
+        status={status}
+        showUpgrade={showUpgrade}
+        onUpgrade={onUpgrade}
+        onManageBilling={onManageBilling}
+        onCancel={onCancel}
+      />
     </div>
   );
 }

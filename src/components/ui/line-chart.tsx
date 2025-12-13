@@ -12,7 +12,7 @@ import {
   Legend,
 } from 'recharts';
 import { cn } from '@/lib/utils';
-import { mode } from '@/design-system';
+import { mode, getChartColors } from '@/design-system';
 
 // Hook to get computed CSS colors that update with theme changes
 function useThemeColors() {
@@ -123,8 +123,8 @@ export function LineChart({
   className,
 }: LineChartProps) {
   const theme = useThemeColors();
-  /* eslint-disable-next-line design-system/no-hardcoded-colors -- Fallback colors before theme loads */
-  const fallbackColors = ['#6366f1', '#8b5cf6', '#22c55e', '#eab308', '#ef4444'];
+
+  const fallbackColors = getChartColors(); // Centralized chart fallback colors
   const colors = theme.chart.length > 0 ? theme.chart : fallbackColors;
   // Memoize tooltip to prevent recreation on every render
   const CustomTooltip = React.useMemo(

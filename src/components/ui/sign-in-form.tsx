@@ -78,6 +78,85 @@ const defaultSocialProviders: SocialProvider[] = [
   },
 ];
 
+/* ----- Shared Components ----- */
+
+interface ErrorMessageProps {
+  error: string;
+}
+
+function ErrorMessage({ error }: ErrorMessageProps) {
+  return (
+    <div
+      className={cn(
+        'border-destructive bg-destructive/10 text-destructive border px-4 py-2 text-xs',
+        mode.radius,
+        mode.font
+      )}
+    >
+      [ERROR]: {error}
+    </div>
+  );
+}
+
+interface SocialAuthDividerProps {
+  label?: string;
+}
+
+function SocialAuthDivider({ label = 'Or continue with' }: SocialAuthDividerProps) {
+  return (
+    <div className="relative">
+      <div className="absolute inset-0 flex items-center">
+        <span className="border-border w-full border-t" />
+      </div>
+      <div className="relative flex justify-center text-xs uppercase">
+        <span className={cn('bg-background text-muted-foreground px-2', mode.font)}>{label}</span>
+      </div>
+    </div>
+  );
+}
+
+interface SocialAuthButtonsProps {
+  providers: SocialProvider[];
+  isLoading: boolean;
+  loadingProvider: string | null;
+  onAuth: (provider: SocialProvider) => void | Promise<void>;
+}
+
+function SocialAuthButtons({
+  providers,
+  isLoading,
+  loadingProvider,
+  onAuth,
+}: SocialAuthButtonsProps) {
+  return (
+    <div
+      className={cn(
+        'grid gap-4',
+        providers.length === 1 && 'grid-cols-1',
+        providers.length === 2 && 'grid-cols-2',
+        providers.length >= 3 && 'grid-cols-2 sm:grid-cols-3'
+      )}
+    >
+      {providers.map((provider) => (
+        <Button
+          key={provider.id}
+          variant="outline"
+          type="button"
+          onClick={() => onAuth(provider)}
+          disabled={isLoading || loadingProvider !== null}
+        >
+          {loadingProvider === provider.id ? (
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          ) : (
+            <span className="mr-2">{provider.icon}</span>
+          )}
+          {provider.name}
+        </Button>
+      ))}
+    </div>
+  );
+}
+
 export function SignInForm({
   onSubmit,
   socialProviders = defaultSocialProviders,
@@ -111,17 +190,7 @@ export function SignInForm({
   return (
     <div className={cn('space-y-6', className)}>
       {/* Error Message */}
-      {error && (
-        <div
-          className={cn(
-            'border-destructive bg-destructive/10 text-destructive border px-4 py-2 text-xs',
-            mode.radius,
-            mode.font
-          )}
-        >
-          [ERROR]: {error}
-        </div>
-      )}
+      {error && <ErrorMessage error={error} />}
 
       {/* Email/Password Form */}
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -199,46 +268,16 @@ export function SignInForm({
         </Button>
       </form>
 
-      {/* Social Auth Divider */}
+      {/* Social Auth */}
       {socialProviders.length > 0 && (
         <>
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <span className="border-border w-full border-t" />
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className={cn('bg-background text-muted-foreground px-2', mode.font)}>
-                Or continue with
-              </span>
-            </div>
-          </div>
-
-          {/* Social Auth Buttons */}
-          <div
-            className={cn(
-              'grid gap-4',
-              socialProviders.length === 1 && 'grid-cols-1',
-              socialProviders.length === 2 && 'grid-cols-2',
-              socialProviders.length >= 3 && 'grid-cols-2 sm:grid-cols-3'
-            )}
-          >
-            {socialProviders.map((provider) => (
-              <Button
-                key={provider.id}
-                variant="outline"
-                type="button"
-                onClick={() => handleSocialAuth(provider)}
-                disabled={isLoading || loadingProvider !== null}
-              >
-                {loadingProvider === provider.id ? (
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                ) : (
-                  <span className="mr-2">{provider.icon}</span>
-                )}
-                {provider.name}
-              </Button>
-            ))}
-          </div>
+          <SocialAuthDivider />
+          <SocialAuthButtons
+            providers={socialProviders}
+            isLoading={isLoading}
+            loadingProvider={loadingProvider}
+            onAuth={handleSocialAuth}
+          />
         </>
       )}
 
@@ -319,17 +358,7 @@ export function SignUpForm({
   return (
     <div className={cn('space-y-6', className)}>
       {/* Error Message */}
-      {error && (
-        <div
-          className={cn(
-            'border-destructive bg-destructive/10 text-destructive border px-4 py-2 text-xs',
-            mode.radius,
-            mode.font
-          )}
-        >
-          [ERROR]: {error}
-        </div>
-      )}
+      {error && <ErrorMessage error={error} />}
 
       {/* Sign Up Form */}
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -418,46 +447,16 @@ export function SignUpForm({
         </Button>
       </form>
 
-      {/* Social Auth Divider */}
+      {/* Social Auth */}
       {socialProviders.length > 0 && (
         <>
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <span className="border-border w-full border-t" />
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className={cn('bg-background text-muted-foreground px-2', mode.font)}>
-                Or continue with
-              </span>
-            </div>
-          </div>
-
-          {/* Social Auth Buttons */}
-          <div
-            className={cn(
-              'grid gap-4',
-              socialProviders.length === 1 && 'grid-cols-1',
-              socialProviders.length === 2 && 'grid-cols-2',
-              socialProviders.length >= 3 && 'grid-cols-2 sm:grid-cols-3'
-            )}
-          >
-            {socialProviders.map((provider) => (
-              <Button
-                key={provider.id}
-                variant="outline"
-                type="button"
-                onClick={() => handleSocialAuth(provider)}
-                disabled={isLoading || loadingProvider !== null}
-              >
-                {loadingProvider === provider.id ? (
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                ) : (
-                  <span className="mr-2">{provider.icon}</span>
-                )}
-                {provider.name}
-              </Button>
-            ))}
-          </div>
+          <SocialAuthDivider />
+          <SocialAuthButtons
+            providers={socialProviders}
+            isLoading={isLoading}
+            loadingProvider={loadingProvider}
+            onAuth={handleSocialAuth}
+          />
         </>
       )}
 

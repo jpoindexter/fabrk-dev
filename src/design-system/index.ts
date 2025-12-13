@@ -63,6 +63,13 @@ export type {
 
 export { cssVariableNames } from './tokens/semantic';
 
+export {
+  CHART_FALLBACK_COLORS,
+  getChartColors,
+  getChartColor,
+  getChartColorVars,
+} from './tokens/chart-colors';
+
 // =============================================================================
 // THEME EXPORTS
 // =============================================================================

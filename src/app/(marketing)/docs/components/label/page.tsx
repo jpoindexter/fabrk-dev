@@ -133,11 +133,11 @@ export default function LabelPage() {
             </div>
           ),
           code: `// Label uses design system typography tokens
-// From componentTypography.label
+// From mode.typography.label
 
-text-[14px]          // Font size
+text-sm              // Font size (14px)
 font-semibold        // Font weight 600
-leading-[1.4]        // Line height
+leading-normal       // Line height
 tracking-normal      // Letter spacing`,
         },
         {
