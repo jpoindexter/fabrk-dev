@@ -2,7 +2,6 @@
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
 import { UsageChart } from '@/components/credits';
-import { AlertTriangle } from 'lucide-react';
 
 // Static mock data for previews (avoids hydration mismatch from Math.random)
 const normalData = [
@@ -137,93 +136,79 @@ const emptyData = [
 
 export default function CreditUsageChartPage() {
   return (
-    <>
-      <div className="border-warning/50 bg-warning/10 mb-6 rounded-none border p-6">
-        <div className="flex items-start gap-3">
-          <AlertTriangle className="text-warning h-5 w-5" />
-          <div className="space-y-2">
-            <p className="font-mono text-sm font-semibold">COMPONENT COMING SOON</p>
-            <p className="text-muted-foreground text-sm">
-              This component is planned for a future release. Documentation is provided as a
-              preview. The implementation shown below demonstrates the intended functionality.
-            </p>
+    <ComponentShowcaseTemplate
+      code="[UI.121]"
+      category="Credits"
+      title="Credit Usage Chart"
+      description="Bar chart visualization of daily AI credit consumption over the past 14 days. Includes hover tooltips showing exact values."
+      importCode={`import { UsageChart } from "@/components/credits"`}
+      mainPreview={{
+        preview: (
+          <div className="mx-auto max-w-lg p-4">
+            <UsageChart data={normalData} />
           </div>
-        </div>
-      </div>
-      <ComponentShowcaseTemplate
-        code="[UI.121]"
-        category="Credits"
-        title="Credit Usage Chart"
-        description="Bar chart visualization of daily AI credit consumption over the past 14 days. Includes hover tooltips showing exact values."
-        importCode={`import { UsageChart } from "@/components/credits"`}
-        mainPreview={{
+        ),
+        code: `<UsageChart data={usageStats} />`,
+      }}
+      variants={[
+        {
+          title: 'High Usage Spikes',
+          description: 'Chart handles outlier days with high consumption.',
           preview: (
             <div className="mx-auto max-w-lg p-4">
-              <UsageChart data={normalData} />
+              <UsageChart data={spikeData} />
             </div>
           ),
-          code: `<UsageChart data={usageStats} />`,
-        }}
-        variants={[
-          {
-            title: 'High Usage Spikes',
-            description: 'Chart handles outlier days with high consumption.',
-            preview: (
-              <div className="mx-auto max-w-lg p-4">
-                <UsageChart data={spikeData} />
-              </div>
-            ),
-            code: `// Bars scale relative to max value`,
-          },
-          {
-            title: 'Low Usage',
-            description: 'Minimal usage still shows visible bars.',
-            preview: (
-              <div className="mx-auto max-w-lg p-4">
-                <UsageChart data={lowData} />
-              </div>
-            ),
-            code: `// Minimum bar height ensures visibility`,
-          },
-          {
-            title: 'No Usage',
-            description: 'Days with zero usage show muted bars.',
-            preview: (
-              <div className="mx-auto max-w-lg p-4">
-                <UsageChart data={emptyData} />
-              </div>
-            ),
-            code: `// Zero-usage days shown as muted bars`,
-          },
-        ]}
-        props={[
-          {
-            name: 'data',
-            type: '{ date: string; credits: number }[]',
-            required: true,
-            description: 'Array of daily usage data with ISO date strings and credit counts.',
-          },
-          {
-            name: 'className',
-            type: 'string',
-            description: 'Additional CSS classes to apply.',
-          },
-        ]}
-        accessibility={[
-          'Hover tooltips show exact credit values',
-          'Color-coded bars (primary for usage, muted for zero)',
-          'Date labels on x-axis for orientation',
-          'Relative bar heights for visual comparison',
-        ]}
-        previous={{
-          title: 'Balance Display',
-          href: '/docs/components/balance-display',
-        }}
-        next={{
-          title: 'Credit Transaction Table',
-          href: '/docs/components/credit-transaction-table',
-        }}
-      />
-    </>
+          code: `// Bars scale relative to max value`,
+        },
+        {
+          title: 'Low Usage',
+          description: 'Minimal usage still shows visible bars.',
+          preview: (
+            <div className="mx-auto max-w-lg p-4">
+              <UsageChart data={lowData} />
+            </div>
+          ),
+          code: `// Minimum bar height ensures visibility`,
+        },
+        {
+          title: 'No Usage',
+          description: 'Days with zero usage show muted bars.',
+          preview: (
+            <div className="mx-auto max-w-lg p-4">
+              <UsageChart data={emptyData} />
+            </div>
+          ),
+          code: `// Zero-usage days shown as muted bars`,
+        },
+      ]}
+      props={[
+        {
+          name: 'data',
+          type: '{ date: string; credits: number }[]',
+          required: true,
+          description: 'Array of daily usage data with ISO date strings and credit counts.',
+        },
+        {
+          name: 'className',
+          type: 'string',
+          description: 'Additional CSS classes to apply.',
+        },
+      ]}
+      accessibility={[
+        'Hover tooltips show exact credit values',
+        'Color-coded bars (primary for usage, muted for zero)',
+        'Date labels on x-axis for orientation',
+        'Relative bar heights for visual comparison',
+      ]}
+      previous={{
+        title: 'Balance Display',
+        href: '/docs/components/balance-display',
+      }}
+      next={{
+        title: 'Credit Transaction Table',
+        href: '/docs/components/credit-transaction-table',
+      }}
+    />
   );
 }

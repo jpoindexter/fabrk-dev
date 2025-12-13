@@ -1,7 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import { Coins, AlertTriangle } from 'lucide-react';
+import { Coins } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 
@@ -56,102 +56,88 @@ function BalanceDisplayPreview({
 
 export default function BalanceDisplayPage() {
   return (
-    <>
-      <div className="border-warning/50 bg-warning/10 mb-6 rounded-none border p-6">
-        <div className="flex items-start gap-3">
-          <AlertTriangle className="text-warning h-5 w-5" />
-          <div className="space-y-2">
-            <p className="font-mono text-sm font-semibold">COMPONENT COMING SOON</p>
-            <p className="text-muted-foreground text-sm">
-              This component is planned for a future release. Documentation is provided as a
-              preview. The implementation shown below demonstrates the intended functionality.
-            </p>
+    <ComponentShowcaseTemplate
+      code="[UI.120]"
+      category="Credits"
+      title="Balance Display"
+      description="Shows the user's current AI credit balance with a progress bar indicating usage against monthly allowance. Color-coded to show remaining capacity."
+      importCode={`import { BalanceDisplay } from "@/components/credits"`}
+      mainPreview={{
+        preview: (
+          <div className="mx-auto max-w-xs space-y-4 p-4">
+            <BalanceDisplayPreview balance={750} monthlyAllowance={1000} tier="starter" />
           </div>
-        </div>
-      </div>
-      <ComponentShowcaseTemplate
-        code="[UI.120]"
-        category="Credits"
-        title="Balance Display"
-        description="Shows the user's current AI credit balance with a progress bar indicating usage against monthly allowance. Color-coded to show remaining capacity."
-        importCode={`import { BalanceDisplay } from "@/components/credits"`}
-        mainPreview={{
+        ),
+        code: `<BalanceDisplay />`,
+      }}
+      variants={[
+        {
+          title: 'Compact Mode',
+          description: 'Minimal display showing only the credit count.',
           preview: (
-            <div className="mx-auto max-w-xs space-y-4 p-4">
-              <BalanceDisplayPreview balance={750} monthlyAllowance={1000} tier="starter" />
+            <div className="mx-auto max-w-xs p-4">
+              <BalanceDisplayPreview balance={750} compact />
             </div>
           ),
-          code: `<BalanceDisplay />`,
-        }}
-        variants={[
-          {
-            title: 'Compact Mode',
-            description: 'Minimal display showing only the credit count.',
-            preview: (
-              <div className="mx-auto max-w-xs p-4">
-                <BalanceDisplayPreview balance={750} compact />
-              </div>
-            ),
-            code: `<BalanceDisplay compact />`,
-          },
-          {
-            title: 'Low Balance Warning',
-            description: 'Yellow warning color when below 50% capacity.',
-            preview: (
-              <div className="mx-auto max-w-xs p-4">
-                <BalanceDisplayPreview balance={350} monthlyAllowance={1000} tier="starter" />
-              </div>
-            ),
-            code: `// Automatically shows warning when balance < 50%`,
-          },
-          {
-            title: 'Critical Balance',
-            description: 'Red destructive color when below 20% capacity.',
-            preview: (
-              <div className="mx-auto max-w-xs p-4">
-                <BalanceDisplayPreview balance={150} monthlyAllowance={1000} tier="starter" />
-              </div>
-            ),
-            code: `// Automatically shows critical when balance < 20%`,
-          },
-          {
-            title: 'Different Tiers',
-            description: "Display adapts to show the user's subscription tier.",
-            preview: (
-              <div className="mx-auto max-w-xs space-y-4 p-4">
-                <BalanceDisplayPreview balance={80} monthlyAllowance={100} tier="free" />
-                <BalanceDisplayPreview balance={800} monthlyAllowance={1000} tier="starter" />
-                <BalanceDisplayPreview balance={8000} monthlyAllowance={10000} tier="pro" />
-              </div>
-            ),
-            code: `// Tier displayed automatically from user's subscription`,
-          },
-        ]}
-        props={[
-          {
-            name: 'className',
-            type: 'string',
-            description: 'Additional CSS classes to apply.',
-          },
-          {
-            name: 'compact',
-            type: 'boolean',
-            default: 'false',
-            description: 'Show minimal display with just the credit count.',
-          },
-        ]}
-        accessibility={[
-          'Progress bar indicates remaining credits visually',
-          'Color-coded states (green/yellow/red) for quick recognition',
-          'Numeric display provides exact values',
-          'Tier label indicates subscription level',
-        ]}
-        previous={{ title: 'Usage Meter', href: '/docs/components/usage-meter' }}
-        next={{
-          title: 'Credit Usage Chart',
-          href: '/docs/components/credit-usage-chart',
-        }}
-      />
-    </>
+          code: `<BalanceDisplay compact />`,
+        },
+        {
+          title: 'Low Balance Warning',
+          description: 'Yellow warning color when below 50% capacity.',
+          preview: (
+            <div className="mx-auto max-w-xs p-4">
+              <BalanceDisplayPreview balance={350} monthlyAllowance={1000} tier="starter" />
+            </div>
+          ),
+          code: `// Automatically shows warning when balance < 50%`,
+        },
+        {
+          title: 'Critical Balance',
+          description: 'Red destructive color when below 20% capacity.',
+          preview: (
+            <div className="mx-auto max-w-xs p-4">
+              <BalanceDisplayPreview balance={150} monthlyAllowance={1000} tier="starter" />
+            </div>
+          ),
+          code: `// Automatically shows critical when balance < 20%`,
+        },
+        {
+          title: 'Different Tiers',
+          description: "Display adapts to show the user's subscription tier.",
+          preview: (
+            <div className="mx-auto max-w-xs space-y-4 p-4">
+              <BalanceDisplayPreview balance={80} monthlyAllowance={100} tier="free" />
+              <BalanceDisplayPreview balance={800} monthlyAllowance={1000} tier="starter" />
+              <BalanceDisplayPreview balance={8000} monthlyAllowance={10000} tier="pro" />
+            </div>
+          ),
+          code: `// Tier displayed automatically from user's subscription`,
+        },
+      ]}
+      props={[
+        {
+          name: 'className',
+          type: 'string',
+          description: 'Additional CSS classes to apply.',
+        },
+        {
+          name: 'compact',
+          type: 'boolean',
+          default: 'false',
+          description: 'Show minimal display with just the credit count.',
+        },
+      ]}
+      accessibility={[
+        'Progress bar indicates remaining credits visually',
+        'Color-coded states (green/yellow/red) for quick recognition',
+        'Numeric display provides exact values',
+        'Tier label indicates subscription level',
+      ]}
+      previous={{ title: 'Usage Meter', href: '/docs/components/usage-meter' }}
+      next={{
+        title: 'Credit Usage Chart',
+        href: '/docs/components/credit-usage-chart',
+      }}
+    />
   );
 }
