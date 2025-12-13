@@ -36,7 +36,30 @@ const ALL_THEMES = [
   'atari',
   'spectrum',
   'bw',
+] as const;
+
+// Dark themes for system dark mode (all terminal themes are dark)
+const DARK_THEMES: ColorThemeName[] = [
+  'amber',
+  'green',
+  'blue',
+  'red',
+  'purple',
+  'gameboy',
+  'c64',
+  'gbpocket',
+  'vic20',
+  'atari',
+  'spectrum',
 ];
+
+// Light theme for system light mode
+const LIGHT_THEME: ColorThemeName = 'bw';
+
+// Get a random dark theme
+function getRandomDarkTheme(): ColorThemeName {
+  return DARK_THEMES[Math.floor(Math.random() * DARK_THEMES.length)];
+}
 
 // =============================================================================
 
@@ -87,7 +110,7 @@ export function ThemeProvider({
   const [colorTheme, setColorThemeState] = useState<ColorThemeName>(defaultColorTheme);
   const [mounted, setMounted] = useState(false);
 
-  // Load from localStorage on mount
+  // Load from localStorage on mount, or detect system preference
   useEffect(() => {
     if (!persist) {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- Hydration pattern for SSR compatibility
@@ -96,8 +119,16 @@ export function ThemeProvider({
     }
 
     const storedColor = localStorage.getItem(colorKey) || localStorage.getItem(legacyColorKey);
-    if (storedColor && ALL_THEMES.includes(storedColor)) {
+
+    if (storedColor && ALL_THEMES.includes(storedColor as ColorThemeName)) {
+      // User has a stored preference - use it
       setColorThemeState(storedColor as ColorThemeName);
+    } else {
+      // No stored preference - detect system preference
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const systemTheme = prefersDark ? getRandomDarkTheme() : LIGHT_THEME;
+      setColorThemeState(systemTheme);
+      // Don't persist system-detected theme until user explicitly changes it
     }
 
     setMounted(true);
@@ -175,10 +206,7 @@ export function ThemeScript({
   const script = `
     (function() {
       try {
-        var colorTheme =
-          localStorage.getItem('${colorKey}') ||
-          localStorage.getItem('${legacyColorKey}') ||
-          '${defaultColorTheme}';
+        var colorTheme = localStorage.getItem('${colorKey}') || localStorage.getItem('${legacyColorKey}');
         var validThemes = [
           'amber',
           'green',
@@ -193,12 +221,25 @@ export function ThemeScript({
           'spectrum',
           'bw',
         ];
-        if (validThemes.includes(colorTheme)) {
+        var darkThemes = ['amber', 'green', 'blue', 'red', 'purple', 'gameboy', 'c64', 'gbpocket', 'vic20', 'atari', 'spectrum'];
+
+        if (colorTheme && validThemes.includes(colorTheme)) {
           document.documentElement.setAttribute('data-theme', colorTheme);
         } else {
-          document.documentElement.setAttribute('data-theme', '${defaultColorTheme}');
+          // No stored preference - detect system preference
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (prefersDark) {
+            // Pick a random dark theme
+            var randomDark = darkThemes[Math.floor(Math.random() * darkThemes.length)];
+            document.documentElement.setAttribute('data-theme', randomDark);
+          } else {
+            // Light mode - use B&W theme
+            document.documentElement.setAttribute('data-theme', 'bw');
+          }
         }
-      } catch (e) {}
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', '${defaultColorTheme}');
+      }
     })();
   `;
 

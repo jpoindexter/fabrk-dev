@@ -20,6 +20,7 @@ import {
   BookOpen,
   Globe,
   Coins,
+  Bot,
 } from 'lucide-react';
 
 // Core feature categories with detailed information
@@ -46,21 +47,21 @@ export const FEATURE_CATEGORIES = [
   {
     id: 'payments',
     icon: CreditCard,
-    title: 'Stripe Payments',
+    title: 'Multi-Provider Payments',
     tagline: 'Monetize from day one',
     description:
-      'Full Stripe integration for one-time payments and subscriptions. Customer portal, invoicing, webhook handling, and idempotency built-in.',
+      'Full payment integration with Stripe, Polar, and Lemonsqueezy. One-time payments, subscriptions, customer portal, invoicing, webhook handling, and idempotency built-in.',
     features: [
-      'One-time purchases',
-      'Recurring subscriptions',
+      'Stripe integration (primary)',
+      'Polar.sh integration',
+      'Lemonsqueezy integration',
+      'One-time & recurring payments',
       'Customer billing portal',
-      'Invoice generation',
       'Webhook event handling',
       'Idempotent checkout sessions',
       'Payment history tracking',
-      'Refund management',
     ],
-    stats: { label: 'Payment types', value: '2' },
+    stats: { label: 'Payment providers', value: '3' },
   },
   {
     id: 'database',
@@ -195,6 +196,25 @@ export const FEATURE_CATEGORIES = [
     ],
     stats: { label: 'Transaction types', value: '5' },
   },
+  {
+    id: 'mcp-server',
+    icon: Bot,
+    title: 'MCP Server (AI Dev Tool)',
+    tagline: 'AI-assisted component generation',
+    description:
+      'Model Context Protocol server for AI coding assistants. Query component catalog, generate components with Fabrk styling, and validate code against design system rules.',
+    features: [
+      '70+ component catalog',
+      'AI-assisted scaffolding',
+      'Design system validation',
+      'Props & variants documentation',
+      'Accessibility guidelines',
+      'Claude Code integration',
+      'Cursor IDE support',
+      'Terminal aesthetic enforcement',
+    ],
+    stats: { label: 'Components', value: '70+' },
+  },
 ];
 
 // Component library stats
@@ -202,19 +222,19 @@ export const COMPONENT_STATS = [
   {
     icon: Layers,
     label: 'UI Components',
-    value: '100+',
+    value: '70+',
     description: 'Production-ready components',
   },
   {
     icon: Palette,
     label: 'Color Themes',
-    value: '20',
-    description: 'DaisyUI themes included',
+    value: '12',
+    description: 'Terminal themes included',
   },
   {
     icon: FileCode,
     label: 'Page Templates',
-    value: '20+',
+    value: '200+',
     description: 'Copy-paste ready pages',
   },
   {
@@ -226,7 +246,7 @@ export const COMPONENT_STATS = [
   {
     icon: BookOpen,
     label: 'Documentation',
-    value: '400KB',
+    value: '50+',
     description: 'Comprehensive guides',
   },
   { icon: Globe, label: 'Languages', value: '6', description: 'i18n ready' },
@@ -234,7 +254,7 @@ export const COMPONENT_STATS = [
 
 // Tech stack
 export const TECH_STACK = [
-  { name: 'Next.js 15', description: 'App Router, React 19', icon: Globe },
+  { name: 'Next.js 16', description: 'App Router, React 19', icon: Globe },
   { name: 'TypeScript', description: 'Strict mode, 100% typed', icon: Code },
   { name: 'Tailwind CSS 4', description: 'Latest with OKLCH', icon: Palette },
   { name: 'Prisma', description: 'Type-safe ORM', icon: Database },

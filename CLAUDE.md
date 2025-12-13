@@ -29,7 +29,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Fabrk** is a Next.js 16 SaaS boilerplate with 77 UI components, terminal-inspired design, and full-stack features.
+**Fabrk** is a Next.js 16 SaaS boilerplate with 70+ UI components, terminal-inspired design, and full-stack features.
 
 **Tech Stack:** Next.js 16 (App Router, React 19) • TypeScript strict • NextAuth v5 • Multi-provider payments (Stripe, Polar, Lemonsqueezy) • Prisma + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 • Terminal-only design system (12 themes: 5 CRT phosphor, 4 retro computer, 2 handheld, 1 B&W)
 
@@ -181,7 +181,7 @@ src/
 │       ├── polar/         # Polar.sh integration
 │       └── lemonsqueezy/  # Lemonsqueezy integration
 ├── components/
-│   ├── ui/                # Radix primitives (LOCKED - 77 components)
+│   ├── ui/                # Radix primitives (LOCKED - 70+ components)
 │   ├── docs/              # Docs components & templates
 │   │   └── templates/     # Template components (NOT in app/templates/)
 │   ├── landing/           # Landing sections
@@ -596,7 +596,7 @@ The design system achieved **100% launch readiness** on December 12, 2025 with c
 | **Spacing Grid** | 100% 8-point grid compliance |
 | **Typography** | 100% scale compliance |
 | **Theme Coverage** | 12 complete themes |
-| **Component Compliance** | 77/77 components use tokens |
+| **Component Compliance** | 100% components use tokens |
 
 ### Compliance Fixes Completed
 

@@ -76,10 +76,12 @@ async function initializeS3Client() {
   if (STORAGE_PROVIDER === 'local') return null;
 
   try {
-    // Dynamic require to avoid TypeScript errors when SDK not installed
-    // Using eval to bypass Turbopack/Webpack static analysis for optional dependencies
-    const s3 = eval('require("@aws-sdk/client-s3")');
-    const presigner = eval('require("@aws-sdk/s3-request-presigner")');
+    // Dynamic import for optional S3 SDK dependencies
+    // These packages are optional - install with: npm install @aws-sdk/client-s3 @aws-sdk/s3-request-presigner
+    // @ts-expect-error - AWS SDK is an optional dependency
+    const s3 = await import('@aws-sdk/client-s3');
+    // @ts-expect-error - AWS SDK is an optional dependency
+    const presigner = await import('@aws-sdk/s3-request-presigner');
 
     S3Client = s3.S3Client;
     PutObjectCommand = s3.PutObjectCommand;

@@ -5,4 +5,5 @@
 
 export * from './use-checkout';
 export * from './use-csrf-token';
+export * from './use-pusher';
 export * from './use-toast';

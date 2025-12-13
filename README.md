@@ -15,7 +15,7 @@
 
 **⚠️ This is the private development repository. The customer-facing boilerplate is at: https://github.com/Theft-SUDO/fabrk-official**
 
-[![Next.js 15](https://img.shields.io/badge/Next.js-15-black)](https://nextjs.org/)
+[![Next.js 16](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
 [![CI](https://github.com/jpoindexter/fabrk_plate/actions/workflows/ci.yml/badge.svg)](https://github.com/jpoindexter/fabrk_plate/actions/workflows/ci.yml)
 

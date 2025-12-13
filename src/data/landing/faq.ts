@@ -1,6 +1,6 @@
 /**
  * FAQ Data - Frequently asked questions
- * TODO: Extract from faq-section.tsx when refactoring
+ * Centralized FAQ data used by FAQSection component
  */
 
 export const FAQ_QUESTIONS = [

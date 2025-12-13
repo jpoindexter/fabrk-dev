@@ -21,7 +21,7 @@ export function FeaturesShowcase() {
           badge="WHAT MAKES FABRK DIFFERENT"
           code="0x10"
           title="SHIP YOUR AI SAAS BEFORE YOUR RUNWAY ENDS"
-          description="AI credit system: done. Multi-provider billing: done. Production components: done. 400+ hours of work you don't have to do. Launch this weekend, not next quarter."
+          description="AI credit system: done. Multi-provider billing: done. Production components: done. 215+ hours of work you don't have to do. Launch this weekend, not next quarter."
           align="center"
         />
 
@@ -57,8 +57,8 @@ export function FeaturesShowcase() {
             <CardHeader code="0x14" title="TOTAL VALUE" />
             <CardContent>
               <StatGroup>
-                <Stat label="Time Saved" value="400+ HOURS" />
-                <Stat label="Cost Saved" value="$36K+" />
+                <Stat label="Time Saved" value="215+ HOURS" />
+                <Stat label="Cost Saved" value="$32K+" />
                 <Stat label="Unique Features" value="3 PILLARS" />
                 <Stat label="Your Investment" value={PRICING.display.current} />
               </StatGroup>

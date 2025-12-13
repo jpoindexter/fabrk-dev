@@ -837,7 +837,7 @@ export function HeroSection() {
                 {/* Mini Stats */}
                 <StatGroup className="mt-4">
                   <Stat label="Time Saved" value="400+ HRS" size="sm" />
-                  <Stat label="Value" value="$36K+" size="sm" />
+                  <Stat label="Value" value="$32K+" size="sm" />
                 </StatGroup>
               </CardContent>
             </Card>
@@ -1096,7 +1096,7 @@ export function FeaturesShowcase() {
           code="0x10"
           title="SHIP YOUR AI SAAS BEFORE YOUR RUNWAY ENDS"
           titleClassName="text-4xl lg:text-5xl" {/* ← LARGER TITLE */}
-          description="AI credit system: done. Multi-provider billing: done. Production components: done. 400+ hours of work you don't have to do. Launch this weekend, not next quarter."
+          description="AI credit system: done. Multi-provider billing: done. Production components: done. 215+ hours of work you don't have to do. Launch this weekend, not next quarter."
           descriptionClassName="text-lg lg:text-xl" {/* ← LARGER DESC */}
           align="center"
         />
@@ -1127,13 +1127,13 @@ export function FeaturesShowcase() {
               <StatGroup className="grid-cols-2 lg:grid-cols-4">
                 <Stat
                   label="Time Saved"
-                  value="400+ HOURS"
+                  value="215+ HOURS"
                   size="lg"
                   valueClassName="text-accent" {/* Purple */}
                 />
                 <Stat
                   label="Cost Saved"
-                  value="$36K+"
+                  value="$32K+"
                   size="lg"
                   valueClassName="text-accent"
                 />
@@ -1410,7 +1410,7 @@ export function PricingSection() {
                   />
                   <Stat
                     label="Cost Saved"
-                    value="$36K+"
+                    value="$32K+"
                     size="sm"
                     valueClassName="text-accent"
                   />

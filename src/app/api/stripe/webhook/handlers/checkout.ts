@@ -94,12 +94,11 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
       },
     });
 
-    // Build magic link URL with plain token (sent via email)
-    // TODO: Add magic link to welcome email when email template supports it
-    void `${process.env.NEXT_PUBLIC_APP_URL}/magic-signin?token=${magicLinkToken}&email=${encodeURIComponent(customerEmail)}`;
+    // Build magic link URL with plain token for one-click sign-in
+    const magicLinkUrl = `${process.env.NEXT_PUBLIC_APP_URL}/magic-signin?token=${magicLinkToken}&email=${encodeURIComponent(customerEmail)}`;
 
-    // Send welcome email with license key
-    await sendWelcomeEmail(customerEmail, user.name || 'Customer', licenseKey);
+    // Send welcome email with license key and magic link for instant access
+    await sendWelcomeEmail(customerEmail, user.name || 'Customer', licenseKey, magicLinkUrl);
 
     logger.info('Purchase processed successfully', {
       userId: user.id,
