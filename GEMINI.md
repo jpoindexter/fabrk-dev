@@ -1,4 +1,4 @@
-# Fabrk Boilerplate - Windsurf IDE Rules
+# Fabrk Boilerplate - Google Gemini Rules
 
 ## Primary Instructions
 Read CLAUDE.md in the project root for comprehensive AI agent instructions.

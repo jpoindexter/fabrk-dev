@@ -1,7 +1,5 @@
 # Fabrk Boilerplate - Cursor IDE Rules
 
-**Note:** Customer-facing version. For development instructions with sync workflow, see `.internal/.cursorrules-dev`.
-
 ## Primary Instructions
 Read CLAUDE.md in the project root for comprehensive AI agent instructions.
 
