@@ -23,7 +23,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 |------|---------|
 | Design system rules | See `docs/08-design/DESIGN_SYSTEM.md` |
 | Pre-commit checks | Automatic via Husky (see below) |
-| Check components count | 77 UI components in `src/components/ui/` |
+| Check components count | 72 UI components in `src/components/ui/` |
 | Payment providers | Stripe, Polar, Lemonsqueezy (3 options) |
 | Config files | `src/config/index.ts` (not .js) |
 
@@ -31,9 +31,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Fabrk** is a Next.js 16 SaaS boilerplate with 77 UI components, terminal-inspired design, and full-stack features.
+**Fabrk** is a Next.js 16 SaaS boilerplate with 72 UI components, terminal-inspired design, and full-stack features.
 
-**Tech Stack:** Next.js 16 (App Router, React 19) • TypeScript strict • NextAuth v5 • Multi-provider payments (Stripe, Polar, Lemonsqueezy) • Prisma + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 • Terminal-only design system (14 themes: 5 CRT phosphor, 2 light modes, 6 retro computer, 1 B&W)
+**Tech Stack:** Next.js 16 (App Router, React 19) • TypeScript strict • NextAuth v5 • Multi-provider payments (Stripe, Polar, Lemonsqueezy) • Prisma + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 • Terminal-only design system (14 themes: 5 CRT phosphor, 3 light modes, 6 retro computer)
 
 ---
 
@@ -101,13 +101,13 @@ Follow these text casing rules for consistent terminal aesthetic:
 **Protected Components** (DO NOT MODIFY unless explicitly told to):
 
 ```
-src/components/ui/           # 77 UI components - ALL LOCKED
+src/components/ui/           # 72 UI components - ALL LOCKED
 ├── button.tsx               # LOCKED
 ├── card.tsx                 # LOCKED
 ├── input.tsx                # LOCKED
 ├── sheet.tsx                # LOCKED
 ├── tabs.tsx                 # LOCKED
-├── ... (72 more files)      # LOCKED
+├── ... (67 more files)      # LOCKED
 
 src/components/marketing/
 └── navigation.tsx           # LOCKED - Marketing navigation
@@ -183,7 +183,7 @@ src/
 │       ├── polar/         # Polar.sh integration
 │       └── lemonsqueezy/  # Lemonsqueezy integration
 ├── components/
-│   ├── ui/                # Radix primitives (LOCKED - 77 components)
+│   ├── ui/                # Radix primitives (LOCKED - 72 components)
 │   ├── docs/              # Docs components & templates
 │   │   └── templates/     # Template components (NOT in app/templates/)
 │   ├── landing/           # Landing sections
@@ -598,7 +598,7 @@ The design system achieved **100% launch readiness** on December 12, 2025 with c
 | **Spacing Grid** | 100% 8-point grid compliance |
 | **Typography** | 100% scale compliance |
 | **Theme Coverage** | 14 complete themes |
-| **Component Compliance** | 77/77 components use tokens |
+| **Component Compliance** | 72/72 components use tokens |
 
 ### Compliance Fixes Completed
 

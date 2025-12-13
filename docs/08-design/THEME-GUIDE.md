@@ -1,6 +1,6 @@
 # Theme Guide
 
-**Fabrk includes 12 retro-inspired color themes.** Each theme is designed for the terminal aesthetic with monospace typography, sharp corners, and CRT/LCD-inspired palettes.
+**Fabrk includes 14 retro-inspired color themes.** Each theme is designed for the terminal aesthetic with monospace typography, sharp corners, and CRT/LCD-inspired palettes.
 
 ---
 
@@ -335,6 +335,58 @@ These themes recreate the color palettes of legendary 1980s home computers.
 
 ---
 
+### 🍏 Apple II
+
+**ID:** `apple2`
+**Inspiration:** Apple II green-on-black terminal (1977)
+
+```css
+[data-theme='apple2']
+```
+
+**Color Palette:**
+- Primary: Apple II green phosphor
+- Background: Dark terminal black
+- Text: Bright green phosphor glow
+
+**Use Cases:**
+- Retro computing nostalgia
+- Classic Apple aesthetic
+- Terminal emulators
+- Vintage programming environments
+
+**Mood:** Classic, technical, Apple heritage
+
+**Note:** Authentic Apple II green phosphor simulation. Pairs well with `crt` monitor effect for maximum authenticity.
+
+---
+
+### 🖥️ IBM PC
+
+**ID:** `ibmpc`
+**Inspiration:** IBM PC CGA text mode (1981)
+
+```css
+[data-theme='ibmpc']
+```
+
+**Color Palette:**
+- Primary: CGA cyan/white
+- Background: CGA black
+- Text: CGA bright white
+
+**Use Cases:**
+- DOS-era computing
+- Vintage PC aesthetic
+- Retro business applications
+- Classic PC gaming interfaces
+
+**Mood:** Professional, vintage, PC heritage
+
+**Note:** Classic IBM PC CGA color palette. Pairs well with `crt` monitor effect for authentic DOS-era experience.
+
+---
+
 ## Theme Switching
 
 ### For End Users
@@ -342,7 +394,7 @@ These themes recreate the color palettes of legendary 1980s home computers.
 Users can switch themes via the theme dropdown in the navigation bar:
 
 1. Click the palette icon in top-right navigation
-2. Choose from 12 available themes
+2. Choose from 14 available themes
 3. Theme persists across sessions (saved in localStorage)
 
 ### For Developers
@@ -361,7 +413,7 @@ export function ThemeProvider({
 **Available options:**
 - `'amber'` | `'green'` | `'blue'` | `'red'` | `'purple'`
 - `'gameboy'` | `'c64'` | `'gbpocket'` | `'vic20'` | `'atari'` | `'spectrum'`
-- `'bw'`
+- `'bw'` | `'apple2'` | `'ibmpc'`
 
 ---
 
@@ -377,6 +429,7 @@ Some themes work better with specific monitor effects. See `/docs/06-features/MO
 | `gameboy`, `gbpocket` | `lcd` | Authentic LCD pixel grid |
 | `c64`, `vic20`, `atari`, `spectrum` | `crt` | CRT-era computers |
 | `bw` | `none` | Modern, clean aesthetic |
+| `apple2`, `ibmpc` | `crt` | Vintage computer terminals |
 
 **Auto-pairing:** The theme dropdown automatically switches monitor effects when you change themes. This can be customized in `/src/components/theme/theme-dropdown.tsx:86-117`.
 

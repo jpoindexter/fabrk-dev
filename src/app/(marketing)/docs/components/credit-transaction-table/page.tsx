@@ -2,6 +2,7 @@
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
 import { TransactionTable } from '@/components/credits';
+import { AlertTriangle } from 'lucide-react';
 
 // Static mock transaction data for previews (avoids hydration mismatch from Date.now)
 const mixedTransactions = [
@@ -106,87 +107,101 @@ const bonusTransactions = [
 
 export default function CreditTransactionTablePage() {
   return (
-    <ComponentShowcaseTemplate
-      code="[UI.122]"
-      category="Credits"
-      title="Credit Transaction Table"
-      description="Displays credit transaction history with type icons, amounts, descriptions, and timestamps. Supports all transaction types: usage, purchases, refills, bonuses, and refunds."
-      importCode={`import { TransactionTable } from "@/components/credits"`}
-      mainPreview={{
-        preview: (
-          <div className="mx-auto max-w-lg p-4">
-            <TransactionTable transactions={mixedTransactions} />
+    <>
+      <div className="border-warning/50 bg-warning/10 mb-6 rounded-none border p-6">
+        <div className="flex items-start gap-3">
+          <AlertTriangle className="text-warning h-5 w-5" />
+          <div className="space-y-2">
+            <p className="font-mono text-sm font-semibold">COMPONENT COMING SOON</p>
+            <p className="text-muted-foreground text-sm">
+              This component is planned for a future release. Documentation is provided as a
+              preview. The implementation shown below demonstrates the intended functionality.
+            </p>
           </div>
-        ),
-        code: `<TransactionTable transactions={transactions} />`,
-      }}
-      variants={[
-        {
-          title: 'Usage Transactions',
-          description: 'Shows credit deductions from AI operations.',
+        </div>
+      </div>
+      <ComponentShowcaseTemplate
+        code="[UI.122]"
+        category="Credits"
+        title="Credit Transaction Table"
+        description="Displays credit transaction history with type icons, amounts, descriptions, and timestamps. Supports all transaction types: usage, purchases, refills, bonuses, and refunds."
+        importCode={`import { TransactionTable } from "@/components/credits"`}
+        mainPreview={{
           preview: (
             <div className="mx-auto max-w-lg p-4">
-              <TransactionTable transactions={usageOnlyTransactions} />
+              <TransactionTable transactions={mixedTransactions} />
             </div>
           ),
-          code: `// Usage transactions show red arrows and negative amounts`,
-        },
-        {
-          title: 'Subscription Refills',
-          description: 'Monthly credit replenishments.',
-          preview: (
-            <div className="mx-auto max-w-lg p-4">
-              <TransactionTable transactions={refillTransactions} />
-            </div>
-          ),
-          code: `// Refills show refresh icon and green amounts`,
-        },
-        {
-          title: 'Bonuses & Refunds',
-          description: 'Special credit additions.',
-          preview: (
-            <div className="mx-auto max-w-lg p-4">
-              <TransactionTable transactions={bonusTransactions} />
-            </div>
-          ),
-          code: `// Bonuses and refunds show distinct icons`,
-        },
-        {
-          title: 'Empty State',
-          description: 'Message when no transactions exist.',
-          preview: (
-            <div className="mx-auto max-w-lg p-4">
-              <TransactionTable transactions={[]} />
-            </div>
-          ),
-          code: `<TransactionTable transactions={[]} />`,
-        },
-      ]}
-      props={[
-        {
-          name: 'transactions',
-          type: 'Transaction[]',
-          required: true,
-          description:
-            'Array of transaction objects with id, amount, type, description, endpoint, and createdAt.',
-        },
-        {
-          name: 'className',
-          type: 'string',
-          description: 'Additional CSS classes to apply.',
-        },
-      ]}
-      accessibility={[
-        'Color-coded amounts (red for deductions, green for additions)',
-        'Type-specific icons for quick recognition',
-        'Timestamps for chronological context',
-        'Endpoint display for debugging/transparency',
-      ]}
-      previous={{
-        title: 'Credit Usage Chart',
-        href: '/docs/components/credit-usage-chart',
-      }}
-      next={{ title: 'Overview', href: '/docs/components/overview' }}
-    />
+          code: `<TransactionTable transactions={transactions} />`,
+        }}
+        variants={[
+          {
+            title: 'Usage Transactions',
+            description: 'Shows credit deductions from AI operations.',
+            preview: (
+              <div className="mx-auto max-w-lg p-4">
+                <TransactionTable transactions={usageOnlyTransactions} />
+              </div>
+            ),
+            code: `// Usage transactions show red arrows and negative amounts`,
+          },
+          {
+            title: 'Subscription Refills',
+            description: 'Monthly credit replenishments.',
+            preview: (
+              <div className="mx-auto max-w-lg p-4">
+                <TransactionTable transactions={refillTransactions} />
+              </div>
+            ),
+            code: `// Refills show refresh icon and green amounts`,
+          },
+          {
+            title: 'Bonuses & Refunds',
+            description: 'Special credit additions.',
+            preview: (
+              <div className="mx-auto max-w-lg p-4">
+                <TransactionTable transactions={bonusTransactions} />
+              </div>
+            ),
+            code: `// Bonuses and refunds show distinct icons`,
+          },
+          {
+            title: 'Empty State',
+            description: 'Message when no transactions exist.',
+            preview: (
+              <div className="mx-auto max-w-lg p-4">
+                <TransactionTable transactions={[]} />
+              </div>
+            ),
+            code: `<TransactionTable transactions={[]} />`,
+          },
+        ]}
+        props={[
+          {
+            name: 'transactions',
+            type: 'Transaction[]',
+            required: true,
+            description:
+              'Array of transaction objects with id, amount, type, description, endpoint, and createdAt.',
+          },
+          {
+            name: 'className',
+            type: 'string',
+            description: 'Additional CSS classes to apply.',
+          },
+        ]}
+        accessibility={[
+          'Color-coded amounts (red for deductions, green for additions)',
+          'Type-specific icons for quick recognition',
+          'Timestamps for chronological context',
+          'Endpoint display for debugging/transparency',
+        ]}
+        previous={{
+          title: 'Credit Usage Chart',
+          href: '/docs/components/credit-usage-chart',
+        }}
+        next={{ title: 'Overview', href: '/docs/components/overview' }}
+      />
+    </>
   );
 }
