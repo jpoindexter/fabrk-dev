@@ -112,54 +112,79 @@ function generateThemeColors(
 ): ThemeColors {
   const primary = hexToOKLCH(primaryHex);
 
-  // Adjust chroma based on intensity
-  const adjustedChroma = primary.chroma * chromaIntensity;
-  const codeChroma = adjustedChroma * codeHighlightIntensity;
+  // Adjust chroma based on intensity, but ensure minimum visibility
+  const adjustedChroma = Math.max(0.05, primary.chroma * chromaIntensity);
+  const codeChroma = Math.max(0.08, adjustedChroma * codeHighlightIntensity);
 
-  // Calculate base lightness values with contrast adjustment
-  const bgLightness = isDark
-    ? Math.max(3, 5 * contrastLevel)
-    : Math.min(100, 98 - 2 * (contrastLevel - 1));
-  const fgLightness = isDark
-    ? Math.min(95, 85 + 10 * (contrastLevel - 1))
-    : Math.max(10, 15 - 5 * (contrastLevel - 1));
-  const mutedLightness = isDark ? 20 : 92;
-  const accentLightness = isDark ? 25 : 88;
+  // Calculate base lightness with ENFORCED MINIMUM CONTRAST
+  // WCAG AA requires 4.5:1 contrast ratio - in OKLCH this roughly means 60%+ lightness difference
+  const MIN_CONTRAST_DIFF = 65; // Minimum lightness difference for readability
+
+  let bgLightness: number;
+  let fgLightness: number;
+
+  if (isDark) {
+    // Dark mode: dark background, light text
+    bgLightness = Math.max(3, Math.min(12, 5 * contrastLevel)); // 3-12% (always dark)
+    fgLightness = Math.max(
+      bgLightness + MIN_CONTRAST_DIFF,
+      Math.min(95, 85 + 10 * (contrastLevel - 1))
+    ); // Always 65%+ lighter than bg
+  } else {
+    // Light mode: light background, dark text
+    bgLightness = Math.max(92, Math.min(99, 98 - 2 * (contrastLevel - 1))); // 92-99% (always light)
+    fgLightness = Math.min(
+      bgLightness - MIN_CONTRAST_DIFF,
+      Math.max(5, 15 - 5 * (contrastLevel - 1))
+    ); // Always 65%+ darker than bg
+  }
+
+  // Muted colors with enforced contrast
+  const mutedLightness = isDark ? 18 : 92;
+  const mutedFgLightness = isDark
+    ? Math.max(mutedLightness + 35, 55) // At least 35% lighter than muted bg
+    : Math.min(mutedLightness - 40, 52); // At least 40% darker than muted bg
+  const accentLightness = isDark ? 22 : 88;
+
+  // Border must be visible against background (at least 15% difference)
+  const borderLightness = isDark
+    ? Math.max(bgLightness + 18, 22) // Visible against dark bg
+    : Math.min(bgLightness - 12, 82); // Visible against light bg
 
   return {
-    background: `${bgLightness}% ${adjustedChroma * 0.1} ${primary.hue}`,
-    foreground: `${fgLightness}% ${adjustedChroma * 0.3} ${primary.hue}`,
-    card: `${isDark ? bgLightness + 3 : bgLightness - 2}% ${adjustedChroma * 0.1} ${primary.hue}`,
-    cardForeground: `${fgLightness}% ${adjustedChroma * 0.3} ${primary.hue}`,
-    popover: `${isDark ? bgLightness + 3 : bgLightness - 2}% ${adjustedChroma * 0.1} ${primary.hue}`,
-    popoverForeground: `${fgLightness}% ${adjustedChroma * 0.3} ${primary.hue}`,
-    primary: `${primary.lightness}% ${adjustedChroma} ${primary.hue}`,
-    primaryForeground: `${isDark ? 10 : 98}% ${adjustedChroma * 0.2} ${primary.hue}`,
-    secondary: `${mutedLightness + 5}% ${adjustedChroma * 0.5} ${primary.hue}`,
-    secondaryForeground: `${fgLightness}% ${adjustedChroma * 0.3} ${primary.hue}`,
-    muted: `${mutedLightness}% ${adjustedChroma * 0.2} ${primary.hue}`,
-    mutedForeground: `${isDark ? 60 : 45}% ${adjustedChroma * 0.2} ${primary.hue}`,
-    accent: `${accentLightness}% ${adjustedChroma * 0.4} ${primary.hue}`,
-    accentForeground: `${fgLightness}% ${adjustedChroma * 0.3} ${primary.hue}`,
-    destructive: `${isDark ? 45 : 50}% 0.25 10`,
-    destructiveForeground: `${isDark ? 10 : 98}% 0.05 10`,
-    success: `${isDark ? 50 : 45}% 0.2 140`,
-    successForeground: `${isDark ? 10 : 98}% 0.05 140`,
-    warning: `${isDark ? 55 : 50}% 0.2 70`,
-    warningForeground: `${isDark ? 10 : 98}% 0.05 70`,
-    border: `${isDark ? 25 : 85}% ${adjustedChroma * 0.15} ${primary.hue}`,
-    input: `${isDark ? 25 : 85}% ${adjustedChroma * 0.15} ${primary.hue}`,
-    ring: `${primary.lightness}% ${adjustedChroma} ${primary.hue}`,
-    // Code syntax highlighting
-    codeFg: `${isDark ? 84 : 30}% ${codeChroma * 0.13} ${(primary.hue + 180) % 360}`,
-    codeBg: `${isDark ? 19 : 98}% ${adjustedChroma * 0.02} ${primary.hue}`,
-    codeComment: `${isDark ? 62 : 50}% ${codeChroma * 0.09} ${(primary.hue + 180) % 360}`,
-    codeKeyword: `${isDark ? 75 : 45}% ${codeChroma * 0.15} ${(primary.hue - 30) % 360}`,
-    codeString: `${isDark ? 70 : 40}% ${codeChroma * 0.15} ${(primary.hue + 60) % 360}`,
-    codeFunction: `${isDark ? 78 : 42}% ${codeChroma * 0.16} ${(primary.hue + 30) % 360}`,
-    codeVariable: `${isDark ? 72 : 38}% ${codeChroma * 0.12} ${primary.hue}`,
-    codeNumber: `${isDark ? 76 : 44}% ${codeChroma * 0.14} ${(primary.hue + 90) % 360}`,
-    codeOperator: `${isDark ? 80 : 35}% ${codeChroma * 0.11} ${(primary.hue - 60) % 360}`,
+    background: `${bgLightness}% ${adjustedChroma * 0.08} ${primary.hue}`,
+    foreground: `${fgLightness}% ${adjustedChroma * 0.25} ${primary.hue}`,
+    card: `${isDark ? bgLightness + 2 : bgLightness - 1}% ${adjustedChroma * 0.08} ${primary.hue}`,
+    cardForeground: `${fgLightness}% ${adjustedChroma * 0.25} ${primary.hue}`,
+    popover: `${isDark ? bgLightness + 2 : bgLightness - 1}% ${adjustedChroma * 0.08} ${primary.hue}`,
+    popoverForeground: `${fgLightness}% ${adjustedChroma * 0.25} ${primary.hue}`,
+    primary: `${Math.max(35, Math.min(65, primary.lightness))}% ${adjustedChroma} ${primary.hue}`,
+    primaryForeground: `${isDark ? 8 : 98}% ${adjustedChroma * 0.15} ${primary.hue}`,
+    secondary: `${mutedLightness + 4}% ${adjustedChroma * 0.4} ${primary.hue}`,
+    secondaryForeground: `${fgLightness}% ${adjustedChroma * 0.25} ${primary.hue}`,
+    muted: `${mutedLightness}% ${adjustedChroma * 0.15} ${primary.hue}`,
+    mutedForeground: `${mutedFgLightness}% ${adjustedChroma * 0.18} ${primary.hue}`,
+    accent: `${accentLightness}% ${adjustedChroma * 0.35} ${primary.hue}`,
+    accentForeground: `${fgLightness}% ${adjustedChroma * 0.25} ${primary.hue}`,
+    destructive: `${isDark ? 48 : 52}% 0.22 12`,
+    destructiveForeground: `${isDark ? 8 : 98}% 0.04 12`,
+    success: `${isDark ? 52 : 42}% 0.18 145`,
+    successForeground: `${isDark ? 8 : 98}% 0.04 145`,
+    warning: `${isDark ? 58 : 48}% 0.18 75`,
+    warningForeground: `${isDark ? 8 : 98}% 0.04 75`,
+    border: `${borderLightness}% ${adjustedChroma * 0.12} ${primary.hue}`,
+    input: `${borderLightness}% ${adjustedChroma * 0.12} ${primary.hue}`,
+    ring: `${Math.max(35, Math.min(65, primary.lightness))}% ${adjustedChroma} ${primary.hue}`,
+    // Code syntax highlighting with enforced visibility
+    codeFg: `${isDark ? 85 : 25}% ${codeChroma * 0.12} ${(primary.hue + 180) % 360}`,
+    codeBg: `${isDark ? 16 : 98}% ${adjustedChroma * 0.02} ${primary.hue}`,
+    codeComment: `${isDark ? 58 : 48}% ${codeChroma * 0.08} ${(primary.hue + 180) % 360}`,
+    codeKeyword: `${isDark ? 72 : 42}% ${codeChroma * 0.14} ${(primary.hue + 330) % 360}`,
+    codeString: `${isDark ? 68 : 38}% ${codeChroma * 0.14} ${(primary.hue + 60) % 360}`,
+    codeFunction: `${isDark ? 75 : 40}% ${codeChroma * 0.15} ${(primary.hue + 30) % 360}`,
+    codeVariable: `${isDark ? 70 : 35}% ${codeChroma * 0.11} ${primary.hue}`,
+    codeNumber: `${isDark ? 74 : 42}% ${codeChroma * 0.13} ${(primary.hue + 90) % 360}`,
+    codeOperator: `${isDark ? 78 : 32}% ${codeChroma * 0.1} ${(primary.hue + 300) % 360}`,
   };
 }
 
@@ -305,13 +330,17 @@ export default function ThemeGeneratorPage() {
     const root = document.documentElement;
     const originalValues: Record<string, string> = {};
 
-    // Save original values and apply new theme
+    // Save original values and apply new theme colors
     Object.entries(themeColors).forEach(([key, value]) => {
       const cssVar = `--${key.replace(/([A-Z])/g, '-$1').toLowerCase()}`;
       originalValues[cssVar] = getComputedStyle(root).getPropertyValue(cssVar);
       // Set raw OKLCH values (design system wraps them in oklch() when used)
       root.style.setProperty(cssVar, value);
     });
+
+    // Apply border radius to preview
+    originalValues['--radius'] = getComputedStyle(root).getPropertyValue('--radius');
+    root.style.setProperty('--radius', `${borderRadius}rem`);
 
     return () => {
       // Restore original values on cleanup
@@ -323,7 +352,7 @@ export default function ThemeGeneratorPage() {
         }
       });
     };
-  }, [previewEnabled, themeColors]);
+  }, [previewEnabled, themeColors, borderRadius]);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(generatedCSS);
