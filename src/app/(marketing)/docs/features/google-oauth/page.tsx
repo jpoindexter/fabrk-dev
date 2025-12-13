@@ -1,5 +1,5 @@
 import { FeatureGuideTemplate } from '@/components/docs';
-import { DocsSection, DocsCard } from '@/components/docs';
+import { DocsSection, DocsCard, DocsCallout } from '@/components/docs';
 import { MousePointer, Link2, Image, Settings } from 'lucide-react';
 
 export const metadata = {
@@ -212,6 +212,40 @@ export function LoginForm() {
       previous={{ title: 'Payments', href: '/docs/features/payments' }}
       next={{ title: 'Emails', href: '/docs/features/emails' }}
     >
+      {/* Security Warning for OAuth Secrets */}
+      <DocsSection title="Security">
+        <DocsCallout variant="danger" title="PROTECT YOUR OAUTH CLIENT SECRET">
+          <div className="space-y-3">
+            <p>
+              <strong>CRITICAL:</strong> The GOOGLE_CLIENT_SECRET grants access to your OAuth
+              application. Leaking it allows attackers to impersonate your app and access user data.
+            </p>
+            <ul className="ml-4 list-disc space-y-2">
+              <li>
+                <strong>Never commit</strong> GOOGLE_CLIENT_SECRET to git. Always use .env.local (in
+                .gitignore) for local development.
+              </li>
+              <li>
+                <strong>Server-side only:</strong> CLIENT_SECRET must NEVER be exposed to the
+                browser. Only use in server components or API routes.
+              </li>
+              <li>
+                <strong>Secure storage:</strong> Use Vercel Environment Variables, Google Secret
+                Manager, or AWS Secrets Manager in production.
+              </li>
+              <li>
+                <strong>Rotate if exposed:</strong> Regenerate client secret in Google Cloud Console
+                → APIs & Services → Credentials if compromised.
+              </li>
+            </ul>
+            <p>
+              <strong>Safe to expose:</strong> GOOGLE_CLIENT_ID is public and safe for client-side
+              use. Only the CLIENT_SECRET must be protected.
+            </p>
+          </div>
+        </DocsCallout>
+      </DocsSection>
+
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
         <DocsCard title="BEST PRACTICES">

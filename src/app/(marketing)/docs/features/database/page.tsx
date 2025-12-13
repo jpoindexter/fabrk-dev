@@ -1,5 +1,5 @@
 import { FeatureGuideTemplate } from '@/components/docs';
-import { DocsSection, DocsCard } from '@/components/docs';
+import { DocsSection, DocsCard, DocsCallout } from '@/components/docs';
 import { CodeBlock } from '@/components/ui/code-block';
 
 export const metadata = {
@@ -165,6 +165,45 @@ return { data, nextCursor, hasNextPage };`,
       previous={{ title: 'Getting Started', href: '/docs/getting-started' }}
       next={{ title: 'Payments', href: '/docs/features/payments' }}
     >
+      {/* Security Warning for Database URL */}
+      <DocsSection title="Security">
+        <DocsCallout variant="danger" title="PROTECT YOUR DATABASE CREDENTIALS">
+          <div className="space-y-3">
+            <p>
+              <strong>CRITICAL:</strong> The DATABASE_URL contains your database password and grants
+              full access to your data. Leaking it allows attackers to read, modify, or delete all
+              data.
+            </p>
+            <ul className="ml-4 list-disc space-y-2">
+              <li>
+                <strong>Never commit</strong> DATABASE_URL to git. Always use .env.local (in
+                .gitignore) for local development.
+              </li>
+              <li>
+                <strong>Server-side only:</strong> DATABASE_URL must NEVER be exposed to the
+                browser. Only use in server components, API routes, or build-time scripts.
+              </li>
+              <li>
+                <strong>Secure storage:</strong> Use Vercel Environment Variables (encrypted), AWS
+                RDS IAM auth, or secret managers in production.
+              </li>
+              <li>
+                <strong>Connection pooling:</strong> Use connection pooling (Prisma Data Proxy,
+                PgBouncer) to prevent connection limit issues and improve security.
+              </li>
+              <li>
+                <strong>Rotate if exposed:</strong> Change database password immediately if
+                DATABASE_URL is compromised. Update in hosting provider and restart all services.
+              </li>
+            </ul>
+            <p>
+              <strong>Tip:</strong> Use separate databases for development, staging, and production.
+              Never connect to production from local dev environment.
+            </p>
+          </div>
+        </DocsCallout>
+      </DocsSection>
+
       {/* Core Models Section */}
       <DocsSection title="Core Models">
         <DocsCard title="CORE MODELS">
