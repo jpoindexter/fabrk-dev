@@ -75,7 +75,7 @@ export function StyledTabs({
         {code && title && <CardHeader code={code} title={title} />}
         <TabsList
           className={cn(
-            'h-auto w-full justify-start gap-1 border-0 bg-transparent p-0',
+            'border-border h-auto w-full justify-start gap-0 border-b bg-transparent p-0',
             'rounded-none'
           )}
         >
@@ -86,16 +86,15 @@ export function StyledTabs({
                 key={tab.id}
                 value={tab.id}
                 className={cn(
-                  'flex items-center gap-2 border-r px-4 py-2 text-xs',
-                  // Default state - muted text, no background
+                  'border-border flex items-center gap-2 border-r bg-transparent px-4 py-2 text-xs last:border-r-0',
+                  // Default state - muted text
                   mode.color.text.muted,
-                  'border-b-2 border-transparent bg-transparent',
-                  mode.color.border.default,
                   // Hover state
-                  `hover:${mode.color.text.primary}`,
-                  // Active state - border indicator + primary text (NO background)
-                  'data-[state=active]:border-primary data-[state=active]:text-foreground data-[state=active]:font-semibold',
-                  index === tabs.length - 1 && 'border-r-0',
+                  'hover:text-foreground',
+                  // Active state - primary text with thick bottom border
+                  'data-[state=active]:text-primary relative data-[state=active]:font-semibold',
+                  'after:absolute after:right-0 after:bottom-0 after:left-0 after:h-0.5 after:bg-transparent',
+                  'data-[state=active]:after:bg-primary',
                   'rounded-none', // Force sharp corners for terminal aesthetic
                   mode.font
                 )}
