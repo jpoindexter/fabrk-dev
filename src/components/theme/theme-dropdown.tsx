@@ -21,8 +21,6 @@ import { cn } from '@/lib/utils';
 
 import { mode } from '@/design-system';
 
-// Grouped themes for organized dropdown
-
 const themeGroups = {
   'Standard CRT': [
     { id: 'amber', name: 'Amber CRT', preview: '#ffb000' },
