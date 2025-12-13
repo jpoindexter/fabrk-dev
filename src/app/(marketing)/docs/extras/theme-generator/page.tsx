@@ -331,201 +331,202 @@ export default function ThemeGeneratorPage() {
       ]}
     >
       <div className="space-y-6">
-        {/* Controls Grid */}
-        <div className="grid gap-6 lg:grid-cols-2">
-          {/* Configuration Panel */}
-          <DocsCard title="THEME_CONFIGURATION">
-            <div className="space-y-6">
-              {/* Theme Name */}
-              <div className="space-y-2">
-                <Label htmlFor="theme-name" className={cn(mode.font, 'text-xs')}>
-                  [THEME_NAME]:
-                </Label>
+        {/* Configuration Panel */}
+        <DocsCard title="THEME_CONFIGURATION">
+          <div className="space-y-6">
+            {/* Theme Name */}
+            <div className="space-y-2">
+              <Label htmlFor="theme-name" className={cn(mode.font, 'text-xs')}>
+                [THEME_NAME]:
+              </Label>
+              <Input
+                id="theme-name"
+                placeholder="e.g., Neon Nights"
+                value={themeName}
+                onChange={(e) => handleNameChange(e.target.value)}
+                className={cn(mode.radius, mode.font)}
+              />
+            </div>
+
+            {/* Theme ID */}
+            <div className="space-y-2">
+              <Label htmlFor="theme-id" className={cn(mode.font, 'text-xs')}>
+                [THEME_ID]:
+              </Label>
+              <Input
+                id="theme-id"
+                placeholder="e.g., neon-nights"
+                value={themeId}
+                onChange={(e) => setThemeId(e.target.value)}
+                className={cn(mode.radius, mode.font)}
+              />
+            </div>
+
+            {/* Primary Color */}
+            <div className="space-y-2">
+              <Label htmlFor="primary-color" className={cn(mode.font, 'text-xs')}>
+                [PRIMARY_COLOR]:
+              </Label>
+              {/* eslint-disable design-system/no-hardcoded-colors, design-system/no-inline-styles -- Color inputs display user-selected hex values */}
+              <div className="flex gap-2">
                 <Input
-                  id="theme-name"
-                  placeholder="e.g., Neon Nights"
-                  value={themeName}
-                  onChange={(e) => handleNameChange(e.target.value)}
-                  className={cn(mode.radius, mode.font)}
+                  id="primary-color"
+                  type="text"
+                  placeholder="#6366f1"
+                  value={primaryColor}
+                  onChange={(e) => setPrimaryColor(e.target.value)}
+                  className={cn('flex-1', mode.radius, mode.font)}
+                />
+                <Input
+                  type="color"
+                  value={primaryColor}
+                  onChange={(e) => setPrimaryColor(e.target.value)}
+                  className={cn('h-10 w-20 cursor-pointer', mode.radius)}
                 />
               </div>
 
-              {/* Theme ID */}
-              <div className="space-y-2">
-                <Label htmlFor="theme-id" className={cn(mode.font, 'text-xs')}>
-                  [THEME_ID]:
-                </Label>
-                <Input
-                  id="theme-id"
-                  placeholder="e.g., neon-nights"
-                  value={themeId}
-                  onChange={(e) => setThemeId(e.target.value)}
-                  className={cn(mode.radius, mode.font)}
-                />
-              </div>
-
-              {/* Primary Color */}
-              <div className="space-y-2">
-                <Label htmlFor="primary-color" className={cn(mode.font, 'text-xs')}>
-                  [PRIMARY_COLOR]:
-                </Label>
-                {/* eslint-disable design-system/no-hardcoded-colors, design-system/no-inline-styles -- Color inputs display user-selected hex values */}
-                <div className="flex gap-2">
-                  <Input
-                    id="primary-color"
-                    type="text"
-                    placeholder="#6366f1"
-                    value={primaryColor}
-                    onChange={(e) => setPrimaryColor(e.target.value)}
-                    className={cn('flex-1', mode.radius, mode.font)}
+              {/* Color Presets */}
+              <div className="flex flex-wrap gap-2 pt-2">
+                {PRESET_COLORS.map((preset) => (
+                  <button
+                    key={preset.name}
+                    onClick={() => setPrimaryColor(preset.hex)}
+                    className={cn(
+                      'h-8 w-8 border-2 transition-all hover:scale-110',
+                      mode.radius,
+                      primaryColor.toLowerCase() === preset.hex.toLowerCase()
+                        ? 'border-primary ring-primary ring-2 ring-offset-2'
+                        : 'border-border'
+                    )}
+                    style={{ backgroundColor: preset.hex }}
+                    title={preset.name}
                   />
-                  <Input
-                    type="color"
-                    value={primaryColor}
-                    onChange={(e) => setPrimaryColor(e.target.value)}
-                    className={cn('h-10 w-20 cursor-pointer', mode.radius)}
-                  />
-                </div>
-
-                {/* Color Presets */}
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {PRESET_COLORS.map((preset) => (
-                    <button
-                      key={preset.name}
-                      onClick={() => setPrimaryColor(preset.hex)}
-                      className={cn(
-                        'h-8 w-8 border-2 transition-all hover:scale-110',
-                        mode.radius,
-                        primaryColor.toLowerCase() === preset.hex.toLowerCase()
-                          ? 'border-primary ring-primary ring-2 ring-offset-2'
-                          : 'border-border'
-                      )}
-                      style={{ backgroundColor: preset.hex }}
-                      title={preset.name}
-                    />
-                  ))}
-                </div>
-                {/* eslint-enable design-system/no-hardcoded-colors, design-system/no-inline-styles */}
+                ))}
               </div>
+              {/* eslint-enable design-system/no-hardcoded-colors, design-system/no-inline-styles */}
+            </div>
 
-              {/* Dark Mode */}
+            {/* Dark Mode */}
+            <div className="flex items-center justify-between">
+              <div className="space-y-0.5">
+                <Label htmlFor="dark-mode" className={cn(mode.font, 'text-xs')}>
+                  [DARK_MODE]:
+                </Label>
+                <p className="text-muted-foreground text-xs">
+                  {isDark ? 'Dark theme variant' : 'Light theme variant'}
+                </p>
+              </div>
+              <Switch
+                id="dark-mode"
+                checked={isDark}
+                onCheckedChange={setIsDark}
+                className={mode.radius}
+              />
+            </div>
+
+            {/* Chroma Intensity */}
+            <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <div className="space-y-0.5">
-                  <Label htmlFor="dark-mode" className={cn(mode.font, 'text-xs')}>
-                    [DARK_MODE]:
-                  </Label>
-                  <p className="text-muted-foreground text-xs">
-                    {isDark ? 'Dark theme variant' : 'Light theme variant'}
-                  </p>
-                </div>
-                <Switch
-                  id="dark-mode"
-                  checked={isDark}
-                  onCheckedChange={setIsDark}
-                  className={mode.radius}
-                />
+                <Label className={cn(mode.font, 'text-xs')}>[COLOR_INTENSITY]:</Label>
+                <Badge variant="outline" className="font-mono text-xs">
+                  {Math.round(chromaIntensity * 100)}%
+                </Badge>
               </div>
+              <Slider
+                value={[chromaIntensity]}
+                onValueChange={([value]) => setChromaIntensity(value)}
+                min={0.5}
+                max={1.5}
+                step={0.05}
+                className="w-full"
+              />
+              <p className="text-muted-foreground text-xs">Adjust color saturation and vibrancy</p>
+            </div>
 
-              {/* Chroma Intensity */}
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <Label className={cn(mode.font, 'text-xs')}>[COLOR_INTENSITY]:</Label>
-                  <Badge variant="outline" className="font-mono text-xs">
-                    {Math.round(chromaIntensity * 100)}%
-                  </Badge>
-                </div>
-                <Slider
-                  value={[chromaIntensity]}
-                  onValueChange={([value]) => setChromaIntensity(value)}
-                  min={0.5}
-                  max={1.5}
-                  step={0.05}
-                  className="w-full"
-                />
-                <p className="text-muted-foreground text-xs">
-                  Adjust color saturation and vibrancy
+            {/* Contrast Level */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <Label className={cn(mode.font, 'text-xs')}>[CONTRAST_LEVEL]:</Label>
+                <Badge variant="outline" className="font-mono text-xs">
+                  {Math.round(contrastLevel * 100)}%
+                </Badge>
+              </div>
+              <Slider
+                value={[contrastLevel]}
+                onValueChange={([value]) => setContrastLevel(value)}
+                min={0.7}
+                max={1.3}
+                step={0.05}
+                className="w-full"
+              />
+              <p className="text-muted-foreground text-xs">
+                Fine-tune text contrast for accessibility
+              </p>
+            </div>
+
+            {/* Actions */}
+            <div className="border-border flex gap-2 border-t pt-4">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleRandomize}
+                className={cn('flex-1', mode.radius, mode.font, 'h-8 text-xs')}
+              >
+                <RefreshCw className="mr-1 h-3 w-3" />
+                &gt; RANDOMIZE
+              </Button>
+              <Button
+                variant={previewEnabled ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => setPreviewEnabled(!previewEnabled)}
+                className={cn('flex-1', mode.radius, mode.font, 'h-8 text-xs')}
+              >
+                <Eye className="mr-1 h-3 w-3" />
+                &gt; {previewEnabled ? '[PREVIEWING]' : 'PREVIEW'}
+              </Button>
+            </div>
+
+            {previewEnabled && (
+              <div
+                className={cn(
+                  'border-primary bg-primary/10 flex items-center gap-2 border p-3',
+                  mode.radius
+                )}
+              >
+                <AlertCircle className="text-primary h-4 w-4" />
+                <p className="text-primary text-xs">
+                  Live preview active - changes apply to entire page
                 </p>
               </div>
+            )}
+          </div>
+        </DocsCard>
 
-              {/* Contrast Level */}
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <Label className={cn(mode.font, 'text-xs')}>[CONTRAST_LEVEL]:</Label>
-                  <Badge variant="outline" className="font-mono text-xs">
-                    {Math.round(contrastLevel * 100)}%
-                  </Badge>
-                </div>
-                <Slider
-                  value={[contrastLevel]}
-                  onValueChange={([value]) => setContrastLevel(value)}
-                  min={0.7}
-                  max={1.3}
-                  step={0.05}
-                  className="w-full"
-                />
-                <p className="text-muted-foreground text-xs">
-                  Fine-tune text contrast for accessibility
-                </p>
-              </div>
-
-              {/* Actions */}
-              <div className="flex gap-2 pt-2">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={handleRandomize}
-                  className={cn('flex-1', mode.radius, mode.font, 'text-xs')}
-                >
-                  <RefreshCw className="mr-1 h-3 w-3" />
-                  RANDOMIZE
-                </Button>
-                <Button
-                  variant={previewEnabled ? 'default' : 'outline'}
-                  size="sm"
-                  onClick={() => setPreviewEnabled(!previewEnabled)}
-                  className={cn('flex-1', mode.radius, mode.font, 'text-xs')}
-                >
-                  <Eye className="mr-1 h-3 w-3" />
-                  {previewEnabled ? 'PREVIEWING' : 'PREVIEW'}
-                </Button>
-              </div>
-
-              {previewEnabled && (
+        {/* Color Palette Preview */}
+        <DocsCard title="COLOR_PALETTE">
+          {/* eslint-disable design-system/no-inline-styles, design-system/no-hardcoded-colors -- Displays generated theme colors dynamically */}
+          <div className="space-y-1">
+            {Object.entries(themeColors).map(([name, value]) => (
+              <div
+                key={name}
+                className={cn(
+                  'border-border flex items-center gap-3 border-b p-2 font-mono text-xs last:border-0',
+                  mode.font
+                )}
+              >
                 <div
-                  className={cn(
-                    'border-primary bg-primary/10 flex items-center gap-2 border p-3',
-                    mode.radius
-                  )}
-                >
-                  <AlertCircle className="text-primary h-4 w-4" />
-                  <p className="text-primary text-xs">
-                    Live preview active - changes apply to entire page
-                  </p>
-                </div>
-              )}
-            </div>
-          </DocsCard>
-
-          {/* Color Palette Preview */}
-          <DocsCard title="COLOR_PALETTE">
-            {/* eslint-disable design-system/no-inline-styles, design-system/no-hardcoded-colors -- Displays generated theme colors dynamically */}
-            <div className="grid grid-cols-2 gap-3">
-              {Object.entries(themeColors).map(([name, value]) => (
-                <div key={name} className={cn('border p-3', mode.radius)}>
-                  <div
-                    className={cn('mb-2 h-12 w-full border', mode.radius)}
-                    style={{ backgroundColor: `oklch(${value})` }}
-                  />
-                  <p className={cn('text-xs font-medium uppercase', mode.font)}>
-                    {name.replace(/([A-Z])/g, '_$1').toUpperCase()}
-                  </p>
-                  <p className={cn('text-muted-foreground font-mono text-xs')}>oklch({value})</p>
-                </div>
-              ))}
-            </div>
-            {/* eslint-enable design-system/no-inline-styles, design-system/no-hardcoded-colors */}
-          </DocsCard>
-        </div>
+                  className={cn('border-border h-6 w-6 shrink-0 border', mode.radius)}
+                  style={{ backgroundColor: `oklch(${value})` }}
+                />
+                <span className="text-foreground w-48 uppercase">
+                  --{name.replace(/([A-Z])/g, '-$1').toLowerCase()}
+                </span>
+                <span className="text-muted-foreground flex-1">oklch({value})</span>
+              </div>
+            ))}
+          </div>
+          {/* eslint-enable design-system/no-inline-styles, design-system/no-hardcoded-colors */}
+        </DocsCard>
 
         {/* UI Component Preview */}
         <DocsCard title="COMPONENT_PREVIEW">
@@ -583,27 +584,27 @@ export default function ThemeGeneratorPage() {
         {/* Generated CSS */}
         {generatedCSS && (
           <DocsCard title="GENERATED_CSS">
-            <div className="space-y-4">
+            <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <p className="text-muted-foreground text-xs">
-                  Production-ready CSS theme with 25+ semantic color tokens
-                </p>
+                <span className={cn('text-muted-foreground text-xs', mode.font)}>
+                  [EXPORT_OPTIONS]:
+                </span>
                 <div className="flex gap-2">
                   <Button
                     size="sm"
                     variant="outline"
                     onClick={handleCopy}
-                    className={cn(mode.radius, mode.font, 'text-xs')}
+                    className={cn(mode.radius, mode.font, 'h-7 text-xs')}
                   >
                     {copied ? (
                       <>
                         <Check className="mr-1 h-3 w-3" />
-                        COPIED
+                        [COPIED]
                       </>
                     ) : (
                       <>
                         <Copy className="mr-1 h-3 w-3" />
-                        COPY
+                        &gt; COPY
                       </>
                     )}
                   </Button>
@@ -611,10 +612,10 @@ export default function ThemeGeneratorPage() {
                     size="sm"
                     variant="default"
                     onClick={handleDownload}
-                    className={cn(mode.radius, mode.font, 'text-xs')}
+                    className={cn(mode.radius, mode.font, 'h-7 text-xs')}
                   >
                     <Download className="mr-1 h-3 w-3" />
-                    DOWNLOAD
+                    &gt; DOWNLOAD
                   </Button>
                 </div>
               </div>
@@ -628,14 +629,14 @@ export default function ThemeGeneratorPage() {
         <DocsCard title="INTEGRATION_GUIDE">
           <Tabs defaultValue="css">
             <TabsList className={cn(mode.radius)}>
-              <TabsTrigger value="css" className={cn(mode.font)}>
-                CSS
+              <TabsTrigger value="css" className={cn(mode.font, 'text-xs')}>
+                [CSS]
               </TabsTrigger>
-              <TabsTrigger value="js" className={cn(mode.font)}>
-                JavaScript
+              <TabsTrigger value="js" className={cn(mode.font, 'text-xs')}>
+                [JAVASCRIPT]
               </TabsTrigger>
-              <TabsTrigger value="react" className={cn(mode.font)}>
-                React
+              <TabsTrigger value="react" className={cn(mode.font, 'text-xs')}>
+                [REACT]
               </TabsTrigger>
             </TabsList>
 
