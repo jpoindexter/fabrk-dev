@@ -20,6 +20,7 @@ import { ThemeScript } from '@/design-system/providers';
 import { MonitorEffectScript } from '@/components/theme/monitor-effect-script';
 import './globals.css';
 import './typography.css';
+import '@/styles/crt-effects.css';
 import '@/lib/dev-validation';
 
 const jetbrainsMono = localFont({
