@@ -91,10 +91,13 @@ export default function BillingDashboard() {
         {/* Overview Tab */}
         <StyledTabsContent value="overview">
           <div className="space-y-6">
-            <CurrentPlanCard subscription={subscription} />
+            {/* Two Column Layout */}
             <div className="grid gap-6 md:grid-cols-2">
               <UsageMetricsCard usage={usage} />
-              <PaymentMethodsCard />
+              <div className="space-y-6">
+                <CurrentPlanCard subscription={subscription} />
+                <PaymentMethodsCard />
+              </div>
             </div>
             <RecentInvoicesCard />
           </div>
@@ -271,12 +274,13 @@ function BillingPreview() {
           {/* Overview Tab */}
           <StyledTabsContent value="overview">
             <div className="space-y-6">
-              <CurrentPlanCard subscription={subscription} formatDate={formatDate} />
-
-              {/* Usage Stats and Payment Methods Grid */}
+              {/* Two Column Layout */}
               <div className="grid gap-6 md:grid-cols-2">
                 <UsageMetricsCard usage={usage} />
-                <PaymentMethodsCard paymentMethods={paymentMethods} />
+                <div className="space-y-6">
+                  <CurrentPlanCard subscription={subscription} formatDate={formatDate} />
+                  <PaymentMethodsCard paymentMethods={paymentMethods} />
+                </div>
               </div>
 
               <RecentInvoicesCard
