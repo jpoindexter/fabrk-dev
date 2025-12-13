@@ -41,7 +41,7 @@ function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPr
       className={cn(
         'inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-medium whitespace-nowrap transition-all focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
         // Boxed tabs with vertical dividers
-        'border-border border-r bg-transparent last:border-r-0',
+        'border-border border-r bg-transparent',
         // Default state - muted text
         mode.color.text.muted,
         // Hover state

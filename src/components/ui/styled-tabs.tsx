@@ -83,7 +83,7 @@ export function StyledTabs({
                 key={tab.id}
                 value={tab.id}
                 className={cn(
-                  'border-border flex items-center gap-2 border-r bg-transparent px-4 py-2 text-xs last:border-r-0',
+                  'border-border flex items-center gap-2 border-r bg-transparent px-4 py-2 text-xs',
                   // Default state - muted text
                   mode.color.text.muted,
                   // Hover state
