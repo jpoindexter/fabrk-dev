@@ -620,7 +620,12 @@ export default function ThemeGeneratorPage() {
                 </div>
               </div>
 
-              <CodeBlock code={generatedCSS} language="css" maxHeight="400px" />
+              <CodeBlock
+                key={`${chromaIntensity}-${contrastLevel}-${primaryColor}-${isDark}-${themeName}`}
+                code={generatedCSS}
+                language="css"
+                maxHeight="400px"
+              />
             </div>
           </DocsCard>
         )}
@@ -645,6 +650,7 @@ export default function ThemeGeneratorPage() {
                 Add the generated CSS to your globals.css file:
               </p>
               <CodeBlock
+                key={`css-${themeName}-${themeId}`}
                 code={`/* src/app/globals.css */\n${generatedCSS || '/* Generate a theme to see output */'}`}
                 language="css"
                 maxHeight="200px"
@@ -656,6 +662,7 @@ export default function ThemeGeneratorPage() {
                 Apply the theme dynamically with JavaScript:
               </p>
               <CodeBlock
+                key={`js-${themeId}`}
                 code={`// Apply theme
 document.documentElement.setAttribute('data-theme', '${themeId}');
 
@@ -675,6 +682,7 @@ if (savedTheme) {
             <TabsContent value="react" className="space-y-3">
               <p className="text-muted-foreground text-xs">React theme hook implementation:</p>
               <CodeBlock
+                key={`react-${themeId}-${themeName}`}
                 code={`// hooks/useTheme.ts
 import { useEffect, useState } from 'react';
 
