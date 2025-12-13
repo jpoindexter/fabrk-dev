@@ -25,12 +25,7 @@ interface PaymentMethodsCardProps {
 export function PaymentMethodsCard({ paymentMethods }: PaymentMethodsCardProps) {
   return (
     <Card tone="neutral">
-      <CardHeader code="0x00" title="PAYMENT METHODS" icon={<CreditCard className="size-4" />} />
       <CardContent padding="md">
-        <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-          [PAYMENT METHODS]:
-        </div>
-
         <div className="space-y-4">
           {paymentMethods.map((method) => (
             <div
