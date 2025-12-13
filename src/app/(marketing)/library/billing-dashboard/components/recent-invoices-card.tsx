@@ -49,10 +49,6 @@ export function RecentInvoicesCard({
         }
       />
       <CardContent padding="md">
-        <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-          [RECENT INVOICES]: LIMIT=3
-        </div>
-
         <div className="space-y-2">
           {payments.slice(0, 3).map((payment) => {
             const status = getStatusText(payment.status);
