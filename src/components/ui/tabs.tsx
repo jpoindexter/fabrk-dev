@@ -24,7 +24,7 @@ function TabsList({ className, ...props }: React.ComponentProps<typeof TabsPrimi
         'border-border inline-flex h-auto items-center justify-start gap-1 border-b p-0',
         mode.color.bg.base,
         mode.color.text.primary,
-        'rounded-none', // Force sharp corners for terminal aesthetic
+        mode.radius,
         mode.font,
         className
       )}
@@ -49,7 +49,7 @@ function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPr
         // Active state - primary underline
         'data-[state=active]:border-primary data-[state=active]:text-foreground data-[state=active]:font-semibold',
         mode.state.focus.ring,
-        'rounded-none', // Force sharp corners for terminal aesthetic
+        mode.radius,
         mode.font,
         className
       )}

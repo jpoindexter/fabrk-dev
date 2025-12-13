@@ -196,7 +196,7 @@ const SelectItem = React.forwardRef<
       // Uses mode tokens for consistent theming - subtle hover for better contrast
       'relative flex h-[48px] w-full cursor-default items-center pr-2 pl-8 select-none focus-visible:outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 sm:h-auto sm:py-2',
       mode.typography.input,
-      'rounded-none', // Terminal aesthetic - sharp corners
+      mode.radius,
       mode.font,
       // Subtle muted background for hover/focus instead of dark accent
       'hover:bg-muted/50 focus:bg-muted/50',
