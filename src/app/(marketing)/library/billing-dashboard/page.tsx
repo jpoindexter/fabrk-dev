@@ -333,32 +333,9 @@ export default function BillingDashboardTemplate() {
           <Card>
             <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
-              <TabsList
-                className={cn(
-                  'h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0',
-                  mode.radius
-                )}
-              >
-                <TabsTrigger
-                  value="preview"
-                  className={cn(
-                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
-                    mode.radius,
-                    mode.font
-                  )}
-                >
-                  [PREVIEW]
-                </TabsTrigger>
-                <TabsTrigger
-                  value="code"
-                  className={cn(
-                    'border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs',
-                    mode.radius,
-                    mode.font
-                  )}
-                >
-                  [CODE]
-                </TabsTrigger>
+              <TabsList>
+                <TabsTrigger value="preview">[PREVIEW]</TabsTrigger>
+                <TabsTrigger value="code">[CODE]</TabsTrigger>
               </TabsList>
             </div>
           </Card>
