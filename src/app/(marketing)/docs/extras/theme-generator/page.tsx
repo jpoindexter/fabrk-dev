@@ -101,6 +101,8 @@ interface ThemeColors {
   codeVariable: string;
   codeNumber: string;
   codeOperator: string;
+  codePunctuation: string;
+  codeSelector: string;
 }
 
 function generateThemeColors(
@@ -185,12 +187,15 @@ function generateThemeColors(
     codeVariable: `${isDark ? 70 : 35}% ${codeChroma * 0.11} ${primary.hue}`,
     codeNumber: `${isDark ? 74 : 42}% ${codeChroma * 0.13} ${(primary.hue + 90) % 360}`,
     codeOperator: `${isDark ? 78 : 32}% ${codeChroma * 0.1} ${(primary.hue + 300) % 360}`,
+    codePunctuation: `${isDark ? 72 : 40}% ${codeChroma * 0.1} ${(primary.hue + 15) % 360}`,
+    codeSelector: `${isDark ? 82 : 32}% ${codeChroma * 0.12} ${primary.hue}`,
   };
 }
 
 /**
  * Generate complete theme CSS
  */
+/* eslint-disable design-system/no-hardcoded-colors -- Theme generator outputs CSS with oklch() color values */
 function generateThemeCSS(
   themeName: string,
   themeId: string,
@@ -251,21 +256,24 @@ function generateThemeCSS(
   --chart-4: ${colors.success};
   --chart-5: ${colors.warning};
 
-  /* Code syntax highlighting */
-  --code-fg: ${colors.codeFg};
-  --code-bg: ${colors.codeBg};
-  --code-comment: ${colors.codeComment};
-  --code-keyword: ${colors.codeKeyword};
-  --code-string: ${colors.codeString};
-  --code-function: ${colors.codeFunction};
-  --code-variable: ${colors.codeVariable};
-  --code-number: ${colors.codeNumber};
-  --code-operator: ${colors.codeOperator};
+  /* Code syntax highlighting (wrapped in oklch for Prism compatibility) */
+  --code-fg: oklch(${colors.codeFg});
+  --code-bg: oklch(${colors.codeBg});
+  --code-comment: oklch(${colors.codeComment});
+  --code-keyword: oklch(${colors.codeKeyword});
+  --code-string: oklch(${colors.codeString});
+  --code-function: oklch(${colors.codeFunction});
+  --code-variable: oklch(${colors.codeVariable});
+  --code-number: oklch(${colors.codeNumber});
+  --code-operator: oklch(${colors.codeOperator});
+  --code-punctuation: oklch(${colors.codePunctuation});
+  --code-selector: oklch(${colors.codeSelector});
 
   /* Radius */
   --radius: ${borderRadius}rem;
 }`;
 }
+/* eslint-enable design-system/no-hardcoded-colors */
 
 // Preset color palettes
 /* eslint-disable design-system/no-hardcoded-colors -- Theme generator requires preset hex colors for user input */
@@ -330,12 +338,31 @@ export default function ThemeGeneratorPage() {
     const root = document.documentElement;
     const originalValues: Record<string, string> = {};
 
+    // Code syntax highlighting variables need oklch() wrapper
+    // (unlike other theme vars, these are stored pre-wrapped in globals.css)
+    const codeVarKeys = [
+      'codeFg',
+      'codeBg',
+      'codeComment',
+      'codeKeyword',
+      'codeString',
+      'codeFunction',
+      'codeVariable',
+      'codeNumber',
+      'codeOperator',
+      'codePunctuation',
+      'codeSelector',
+    ];
+
     // Save original values and apply new theme colors
     Object.entries(themeColors).forEach(([key, value]) => {
       const cssVar = `--${key.replace(/([A-Z])/g, '-$1').toLowerCase()}`;
       originalValues[cssVar] = getComputedStyle(root).getPropertyValue(cssVar);
-      // Set raw OKLCH values (design system wraps them in oklch() when used)
-      root.style.setProperty(cssVar, value);
+
+      // Code variables need oklch() wrapper, others are raw values
+      // eslint-disable-next-line design-system/no-hardcoded-colors -- Preview applies generated oklch values
+      const finalValue = codeVarKeys.includes(key) ? `oklch(${value})` : value;
+      root.style.setProperty(cssVar, finalValue);
     });
 
     // Apply border radius to preview via CSS variable
@@ -399,8 +426,11 @@ export default function ThemeGeneratorPage() {
     const randomPreset = PRESET_COLORS[Math.floor(Math.random() * PRESET_COLORS.length)];
     setPrimaryColor(randomPreset.hex);
     setIsDark(Math.random() > 0.5);
-    setChromaIntensity(0.7 + Math.random() * 0.6);
-    setContrastLevel(0.8 + Math.random() * 0.4);
+    // Randomize all sliders within their valid ranges
+    setChromaIntensity(0.5 + Math.random() * 1); // 0.5 to 1.5
+    setContrastLevel(0.7 + Math.random() * 0.6); // 0.7 to 1.3
+    setBorderRadius(Math.random() * 1); // 0 to 1rem
+    setCodeHighlightIntensity(0.5 + Math.random() * 1); // 0.5 to 1.5
   };
 
   return (
