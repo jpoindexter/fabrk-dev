@@ -21,7 +21,7 @@ function TabsList({ className, ...props }: React.ComponentProps<typeof TabsPrimi
     <TabsPrimitive.List
       data-slot="tabs-list"
       className={cn(
-        'inline-flex h-10 items-center justify-start gap-1 border-b p-0',
+        'inline-flex h-auto items-center justify-start gap-0 border-b p-0',
         mode.color.bg.base,
         mode.color.text.primary,
         mode.color.border.default,
@@ -40,14 +40,15 @@ function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPr
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
       className={cn(
-        'inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-medium whitespace-nowrap transition-all focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
-        // Default state - muted text, no background
+        'inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-medium whitespace-nowrap transition-all focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+        // Boxed style - full border on all sides
+        'border-border border bg-transparent',
+        // Default state - muted text
         mode.color.text.muted,
-        'border-b-2 border-transparent bg-transparent',
         // Hover state - darker text
         `hover:${mode.color.text.primary}`,
-        // Active state - border indicator + primary text (NO background for better contrast)
-        'data-[state=active]:border-primary data-[state=active]:text-foreground data-[state=active]:font-semibold',
+        // Active state - filled background + primary text
+        'data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:border-primary data-[state=active]:font-semibold',
         mode.state.focus.ring,
         'rounded-none', // Force sharp corners for terminal aesthetic
         mode.font,
