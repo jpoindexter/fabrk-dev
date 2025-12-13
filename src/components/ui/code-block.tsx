@@ -17,8 +17,8 @@ interface CodeBlockProps {
 
 const cssVarTheme: PrismTheme = {
   plain: {
-    color: 'var(--code-fg)',
-    backgroundColor: 'var(--code-bg)',
+    color: 'oklch(var(--code-fg, var(--foreground)))',
+    backgroundColor: 'oklch(var(--code-bg, var(--card)))',
   },
   styles: [
     {
@@ -89,7 +89,12 @@ export function CodeBlock({
           <Copy className="h-4 w-4" aria-hidden="true" />
         )}
       </button>
-      <div className={cn('w-full min-w-0 overflow-hidden', mode.color.bg.elevated, mode.radius)}>
+      {/* eslint-disable design-system/no-inline-styles -- Background must use CSS var fallback for theme preview */}
+      <div
+        className={cn('w-full min-w-0 overflow-hidden', mode.radius)}
+        style={{ backgroundColor: 'oklch(var(--code-bg, var(--card)))' }}
+      >
+        {/* eslint-enable design-system/no-inline-styles */}
         <Highlight theme={cssVarTheme} code={code.trim()} language={language}>
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre
