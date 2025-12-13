@@ -1,42 +1,22 @@
 /**
- * ✅ FABRK COMPONENT
- * Template Library Hub - Complete redesign for 10/10 excellence
- * Shows all 31 templates with search, filters, and categories
- * Production-ready ✓
+ * Template Library - Developer Reference Page
+ * Browse and discover templates to copy-paste into your project
  */
 'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
-import {
-  Search,
-  Package,
-  Layers,
-  Code,
-  Star,
-  Clock,
-  Sparkles,
-  SlidersHorizontal,
-} from 'lucide-react';
+import { Search, SlidersHorizontal, BookOpen, Sparkles } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 import { InputSearch } from '@/components/ui/input-search';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { templates, categories } from './library-data';
 import { filterTemplates } from '@/lib/search';
-import { AdvancedFilters, type FilterOptions } from '@/components/library';
+import { AdvancedFilters, TemplateCard, type FilterOptions } from '@/components/library';
 
-// Featured template IDs (manually curated)
-const FEATURED_IDS = [
-  'analytics-dashboard',
-  'sign-in',
-  'ai-forms',
-  'security-privacy',
-  'error-pages',
-  'onboarding',
-];
+const INITIAL_DISPLAY_COUNT = 9;
 
 type SortOption = 'relevance' | 'name' | 'newest' | 'popular';
 
@@ -46,14 +26,11 @@ export default function LibraryIndexPage() {
   const [showFilters, setShowFilters] = useState(false);
   const [advancedFilters, setAdvancedFilters] = useState<FilterOptions>({});
   const [sortBy, setSortBy] = useState<SortOption>('relevance');
+  const [displayCount, setDisplayCount] = useState(INITIAL_DISPLAY_COUNT);
 
-  // Get featured templates
-  const featuredTemplates = templates.filter((t) => FEATURED_IDS.includes(t.id));
-
-  // Filter templates with advanced fuzzy search (Fuse.js)
-  // React Compiler handles memoization automatically
+  // Filter templates with fuzzy search
   const filteredTemplates = filterTemplates(templates, {
-    searchQuery: searchQuery,
+    searchQuery,
     category: selectedCategory,
     complexity: advancedFilters.difficulty,
     hasFeature: advancedFilters.feature,
@@ -68,17 +45,12 @@ export default function LibraryIndexPage() {
     (advancedFilters.hasDependencies ? 1 : 0) +
     (advancedFilters.feature ? 1 : 0);
 
-  const handleClearFilters = () => {
-    setAdvancedFilters({});
-  };
-
-  // Sort filtered templates
+  // Sort templates
   const sortedTemplates = [...filteredTemplates].sort((a, b) => {
     switch (sortBy) {
       case 'name':
         return a.name.localeCompare(b.name);
       case 'newest':
-        // Templates with lastUpdated field come first, sorted by date
         if (a.lastUpdated && b.lastUpdated) {
           return new Date(b.lastUpdated).getTime() - new Date(a.lastUpdated).getTime();
         }
@@ -86,231 +58,88 @@ export default function LibraryIndexPage() {
         if (b.lastUpdated) return 1;
         return 0;
       case 'popular':
-        // Templates with 'Popular' badge come first, then 'Essential', then others
-        const popularityScore = (t: typeof a) => {
+        const score = (t: typeof a) => {
           if (t.badge === 'Popular') return 3;
           if (t.badge === 'Essential') return 2;
           if (t.badge === 'New') return 1;
           return 0;
         };
-        return popularityScore(b) - popularityScore(a);
-      case 'relevance':
+        return score(b) - score(a);
       default:
-        // When searching, Fuse.js already sorted by relevance
-        // When browsing, maintain original order (manual curation)
         return 0;
     }
   });
 
-  // Calculate stats
-  const stats = {
-    totalTemplates: templates.length,
-    totalComponents: 89, // UI components (updated from 80)
-    totalCategories: categories.filter((c) => c.id !== 'components').length,
-    totalCode: 10873, // Lines of code
+  // Paginated display
+  const displayedTemplates = sortedTemplates.slice(0, displayCount);
+  const hasMore = displayCount < sortedTemplates.length;
+
+  const handleClearFilters = () => {
+    setAdvancedFilters({});
+    setSelectedCategory('all');
+    setSearchQuery('');
+  };
+
+  const handleLoadMore = () => {
+    setDisplayCount((prev) => prev + INITIAL_DISPLAY_COUNT);
+  };
+
+  // Reset display count when filters change
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
+    setDisplayCount(INITIAL_DISPLAY_COUNT);
   };
 
   return (
-    <div className="container mx-auto max-w-7xl space-y-12 px-6 py-12">
-      {/* Hero Section */}
-      <section className="space-y-6 text-center">
-        <div className="border-border mx-auto inline-block border px-4 py-1">
-          <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-            [LIBRARY]: {stats.totalTemplates} PRODUCTION-READY TEMPLATES
-          </span>
+    <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
+      {/* Header - Compact, search-focused */}
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <div className="border-border mb-2 inline-block border px-3 py-1">
+            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
+              [LIBRARY]: {templates.length} TEMPLATES
+            </span>
+          </div>
+          <h1 className={cn(mode.font, 'text-2xl font-semibold')}>Template Library</h1>
         </div>
+        <Link
+          href="/library/docs"
+          className={cn(
+            mode.font,
+            'text-primary hover:text-primary/80 flex items-center gap-2 text-sm transition-colors'
+          )}
+        >
+          <BookOpen className="h-4 w-4" />
+          &gt; DOCS
+        </Link>
+      </div>
 
-        <div className="space-y-4">
-          <h1 className={cn(mode.font, 'text-5xl font-semibold tracking-tight')}>
-            Template Library
-          </h1>
-          <p className={cn(mode.font, 'text-muted-foreground mx-auto max-w-2xl text-lg')}>
-            Copy. Paste. Ship.
-          </p>
-          <p className={cn(mode.font, 'text-muted-foreground mx-auto max-w-3xl text-sm')}>
-            {stats.totalTemplates} production-ready templates, {stats.totalComponents} UI
-            components, and {stats.totalCode.toLocaleString()} lines of terminal-styled code. Ready
-            to paste into your Next.js 15 project.
-          </p>
-        </div>
+      {/* Search Bar - Prominent */}
+      <div className="relative">
+        <Search className="text-muted-foreground absolute top-1/2 left-4 h-4 w-4 -translate-y-1/2" />
+        <InputSearch
+          placeholder="Search templates by name, feature, or category..."
+          value={searchQuery}
+          onValueChange={(value) => {
+            setSearchQuery(value);
+            setDisplayCount(INITIAL_DISPLAY_COUNT);
+          }}
+          className={cn(
+            mode.radius,
+            mode.font,
+            'border-border focus-visible:border-primary h-12 border pl-11 text-sm'
+          )}
+        />
+      </div>
 
-        {/* Search Bar */}
-        <div className="mx-auto max-w-2xl">
-          <div className="relative">
-            <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
-            <InputSearch
-              placeholder="Search templates, features, or categories..."
-              value={searchQuery}
-              onValueChange={setSearchQuery}
-              className={cn(
-                mode.radius,
-                mode.font,
-                'border-border focus-visible:border-primary h-10 border pl-10 text-xs'
-              )}
-            />
-          </div>
-        </div>
-
-        {/* Quick Stats Bar - Terminal Status Readout */}
-        <div className="border-border bg-card border">
-          {/* Terminal Header */}
-          <div className="border-border flex items-center justify-between border-b px-4 py-2">
-            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-              [ [0xSTATS] SYSTEM_STATUS ]
-            </span>
-            <span className={cn(mode.font, 'text-success text-xs')}>● READY</span>
-          </div>
-          {/* Stats Row */}
-          <div className="flex flex-wrap items-center justify-center gap-x-1 gap-y-2 px-4 py-3 sm:justify-start">
-            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-              <Package className="mr-1 inline-block h-3 w-3" />
-              TEMPLATES:
-            </span>
-            <span className={cn(mode.font, 'text-primary text-xs font-semibold')}>
-              {stats.totalTemplates}
-            </span>
-            <span className={cn(mode.font, 'text-muted-foreground mx-2 text-xs')}>│</span>
-            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-              <Layers className="mr-1 inline-block h-3 w-3" />
-              COMPONENTS:
-            </span>
-            <span className={cn(mode.font, 'text-primary text-xs font-semibold')}>
-              {stats.totalComponents}
-            </span>
-            <span className={cn(mode.font, 'text-muted-foreground mx-2 text-xs')}>│</span>
-            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-              <Code className="mr-1 inline-block h-3 w-3" />
-              CATEGORIES:
-            </span>
-            <span className={cn(mode.font, 'text-primary text-xs font-semibold')}>
-              {stats.totalCategories}
-            </span>
-            <span className={cn(mode.font, 'text-muted-foreground mx-2 text-xs')}>│</span>
-            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-              <Star className="mr-1 inline-block h-3 w-3" />
-              LOC:
-            </span>
-            <span className={cn(mode.font, 'text-primary text-xs font-semibold')}>
-              {stats.totalCode.toLocaleString()}
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Templates */}
-      {!searchQuery && selectedCategory === 'all' && (
-        <section className="space-y-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <h2 className={cn(mode.font, 'text-2xl font-semibold')}>Featured Templates</h2>
-              <p className={cn(mode.font, 'text-muted-foreground text-sm')}>
-                Most popular and essential templates to get started
-              </p>
-            </div>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {featuredTemplates.map((template) => (
-              <Link key={template.id} href={template.href}>
-                <div className="group border-border bg-card hover:border-primary/50 h-full border transition-all">
-                  {/* Card Header */}
-                  <div className="border-border flex items-center justify-between border-b px-4 py-2">
-                    <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                      [FEATURED]
-                    </span>
-                    <template.icon className="text-primary size-4" />
-                  </div>
-
-                  {/* Card Content */}
-                  <div className="flex h-[calc(100%-40px)] flex-col p-4">
-                    {/* Badge */}
-                    {template.badge && (
-                      <Badge className={cn(mode.radius, mode.font, 'mb-4 w-fit text-xs')}>
-                        {template.badge}
-                      </Badge>
-                    )}
-
-                    {/* Title */}
-                    <h3
-                      className={cn(
-                        mode.font,
-                        'group-hover:text-primary mb-2 text-lg font-semibold transition-colors'
-                      )}
-                    >
-                      {template.name}
-                    </h3>
-
-                    {/* Description */}
-                    <p className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-                      {template.description}
-                    </p>
-
-                    {/* Features */}
-                    <div className="mt-auto">
-                      <div className={cn(mode.font, 'text-muted-foreground mb-2 text-xs')}>
-                        [KEY FEATURES]:
-                      </div>
-                      <div className="flex flex-wrap gap-1">
-                        {template.features.slice(0, 3).map((feature) => (
-                          <span
-                            key={feature}
-                            className={cn(
-                              mode.font,
-                              'border-border bg-muted/50 border px-2 py-0.5 text-xs'
-                            )}
-                          >
-                            {feature}
-                          </span>
-                        ))}
-                        {template.features.length > 3 && (
-                          <span
-                            className={cn(
-                              mode.font,
-                              'border-border bg-muted/50 border px-2 py-0.5 text-xs'
-                            )}
-                          >
-                            +{template.features.length - 3} more
-                          </span>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Action */}
-                    <div className="border-border mt-4 flex items-center justify-between border-t pt-3">
-                      <span
-                        className={cn(
-                          mode.font,
-                          'text-primary group-hover:text-primary/80 text-xs transition-colors'
-                        )}
-                      >
-                        &gt; VIEW TEMPLATE
-                      </span>
-                      <span
-                        className={cn(
-                          mode.font,
-                          'text-muted-foreground text-xs transition-transform group-hover:translate-x-1'
-                        )}
-                      >
-                        →
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* Browse Templates - Terminal Card */}
+      {/* Filter Toolbar */}
       <Card size="auto">
         <CardHeader
-          code="0xBROWSE"
           title={
             searchQuery
-              ? `SEARCH_RESULTS`
+              ? 'SEARCH_RESULTS'
               : selectedCategory === 'all'
-                ? 'BROWSE_TEMPLATES'
+                ? 'ALL_TEMPLATES'
                 : categories
                     .find((c) => c.id === selectedCategory)
                     ?.name.toUpperCase()
@@ -319,12 +148,12 @@ export default function LibraryIndexPage() {
           meta={`${sortedTemplates.length} found`}
         />
         <CardContent padding="md">
-          {/* Toolbar Row */}
+          {/* Sort + Actions Row */}
           <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             {/* Sort Options */}
             <div className="flex items-center gap-2">
               <span className={cn(mode.font, 'text-muted-foreground text-xs')}>[SORT]:</span>
-              <div className="flex gap-1">
+              <div className="flex gap-1" role="group" aria-label="Sort options">
                 {[
                   { id: 'relevance' as const, label: 'RELEVANCE' },
                   { id: 'popular' as const, label: 'POPULAR' },
@@ -334,9 +163,10 @@ export default function LibraryIndexPage() {
                   <button
                     key={option.id}
                     onClick={() => setSortBy(option.id)}
+                    aria-pressed={sortBy === option.id}
                     className={cn(
                       mode.font,
-                      'border-border px-3 py-1 text-xs transition-all',
+                      'border-border min-h-[44px] px-4 py-2 text-xs transition-all',
                       sortBy === option.id
                         ? 'bg-primary text-primary-foreground border'
                         : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground border'
@@ -348,39 +178,30 @@ export default function LibraryIndexPage() {
               </div>
             </div>
 
-            {/* Right side actions */}
-            <div className="flex items-center gap-4">
-              <Button
-                onClick={() => setShowFilters(!showFilters)}
-                variant={showFilters || activeFilterCount > 0 ? 'default' : 'outline'}
-                size="sm"
-                className={cn(mode.radius, mode.font, 'text-xs')}
-              >
-                <SlidersHorizontal className="mr-2 h-3 w-3" />
-                FILTERS{activeFilterCount > 0 && ` (${activeFilterCount})`}
-              </Button>
-              <Link
-                href="/library/docs"
-                className={cn(
-                  mode.font,
-                  'text-primary hover:text-primary/80 flex items-center gap-2 text-xs transition-colors'
-                )}
-              >
-                <Clock className="h-3 w-3" />
-                DOCS
-              </Link>
-            </div>
+            {/* Advanced Filters */}
+            <Button
+              onClick={() => setShowFilters(!showFilters)}
+              variant={showFilters || activeFilterCount > 0 ? 'default' : 'outline'}
+              size="default"
+              aria-pressed={showFilters}
+              aria-expanded={showFilters}
+              className={cn(mode.radius, mode.font, 'min-h-[44px] text-xs')}
+            >
+              <SlidersHorizontal className="mr-2 h-4 w-4" />
+              FILTERS{activeFilterCount > 0 && ` (${activeFilterCount})`}
+            </Button>
           </div>
 
-          {/* Category Filter Pills */}
+          {/* Category Pills */}
           <div className="border-border border-t pt-4">
-            <div className={cn(mode.font, 'text-muted-foreground mb-2 text-xs')}>[CATEGORY]:</div>
-            <div className="flex flex-wrap gap-2">
+            <div className={cn(mode.font, 'text-muted-foreground mb-3 text-xs')}>[CATEGORY]:</div>
+            <div className="flex flex-wrap gap-2" role="group" aria-label="Category filter">
               <button
-                onClick={() => setSelectedCategory('all')}
+                onClick={() => handleCategoryChange('all')}
+                aria-pressed={selectedCategory === 'all'}
                 className={cn(
                   mode.font,
-                  'border-border px-3 py-1.5 text-xs transition-all',
+                  'border-border min-h-[44px] px-4 py-2 text-xs transition-all',
                   selectedCategory === 'all'
                     ? 'bg-primary text-primary-foreground border'
                     : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground border'
@@ -392,19 +213,21 @@ export default function LibraryIndexPage() {
                 .filter((c) => c.id !== 'components')
                 .map((category) => {
                   const count = templates.filter((t) => t.category === category.id).length;
+                  const Icon = category.icon;
                   return (
                     <button
                       key={category.id}
-                      onClick={() => setSelectedCategory(category.id)}
+                      onClick={() => handleCategoryChange(category.id)}
+                      aria-pressed={selectedCategory === category.id}
                       className={cn(
                         mode.font,
-                        'border-border flex items-center gap-1.5 px-3 py-1.5 text-xs transition-all',
+                        'border-border flex min-h-[44px] items-center gap-2 px-4 py-2 text-xs transition-all',
                         selectedCategory === category.id
                           ? 'bg-primary text-primary-foreground border'
                           : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground border'
                       )}
                     >
-                      <category.icon className="h-3 w-3" />
+                      <Icon className="h-3 w-3" />
                       {category.name.toUpperCase()} ({count})
                     </button>
                   );
@@ -418,7 +241,7 @@ export default function LibraryIndexPage() {
               <AdvancedFilters
                 filters={advancedFilters}
                 onFilterChange={setAdvancedFilters}
-                onClearFilters={handleClearFilters}
+                onClearFilters={() => setAdvancedFilters({})}
                 activeFilterCount={activeFilterCount}
               />
             </div>
@@ -426,175 +249,107 @@ export default function LibraryIndexPage() {
         </CardContent>
       </Card>
 
-      {/* All Templates Grid */}
-      <section className="space-y-6">
-        {sortedTemplates.length === 0 ? (
-          // Empty State
-          <div className="border-border bg-card flex min-h-[400px] flex-col items-center justify-center border p-12 text-center">
-            <Search className="text-muted-foreground/50 mb-4 h-12 w-12" />
+      {/* Templates Grid */}
+      {sortedTemplates.length === 0 ? (
+        /* Empty State */
+        <Card size="auto">
+          <CardHeader title="NO_RESULTS" />
+          <CardContent className="flex min-h-[300px] flex-col items-center justify-center text-center">
+            <Search className="text-muted-foreground/30 mb-4 h-12 w-12" />
             <h3 className={cn(mode.font, 'mb-2 text-lg font-semibold')}>No templates found</h3>
-            <p className={cn(mode.font, 'text-muted-foreground mb-4 text-sm')}>
-              {searchQuery && activeFilterCount > 0
-                ? 'No templates match your search and filter criteria'
-                : searchQuery
-                  ? `No templates match "${searchQuery}"`
-                  : activeFilterCount > 0
-                    ? 'No templates match your selected filters'
-                    : 'Try adjusting your search or filters'}
+            <p className={cn(mode.font, 'text-muted-foreground mb-6 max-w-md text-sm')}>
+              {searchQuery
+                ? `No templates match "${searchQuery}"`
+                : 'No templates match your selected filters'}
             </p>
-            <div className="flex gap-2">
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery('')}
-                  className={cn(
-                    mode.font,
-                    'border-border hover:bg-muted border px-4 py-2 text-xs transition-colors'
-                  )}
-                >
-                  &gt; CLEAR SEARCH
-                </button>
-              )}
-              {(activeFilterCount > 0 || selectedCategory !== 'all') && (
-                <button
-                  onClick={() => {
-                    setAdvancedFilters({});
-                    setSelectedCategory('all');
-                  }}
-                  className={cn(
-                    mode.font,
-                    'bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 text-xs transition-colors'
-                  )}
-                >
-                  &gt; CLEAR ALL FILTERS
-                </button>
-              )}
+
+            {/* Suggestions */}
+            <div className="mb-6 space-y-2">
+              <p className={cn(mode.font, 'text-muted-foreground text-xs')}>[TRY]:</p>
+              <div className="flex flex-wrap justify-center gap-2">
+                {['Dashboard', 'Auth', 'Settings', 'Billing'].map((suggestion) => (
+                  <button
+                    key={suggestion}
+                    onClick={() => {
+                      setSearchQuery(suggestion.toLowerCase());
+                      setSelectedCategory('all');
+                      setAdvancedFilters({});
+                    }}
+                    className={cn(
+                      mode.font,
+                      'border-border hover:border-primary hover:text-primary min-h-[44px] border px-4 py-2 text-xs transition-colors'
+                    )}
+                  >
+                    {suggestion}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
-        ) : (
+
+            <Button
+              onClick={handleClearFilters}
+              variant="default"
+              className={cn(mode.radius, mode.font, 'min-h-[44px]')}
+            >
+              &gt; CLEAR ALL FILTERS
+            </Button>
+          </CardContent>
+        </Card>
+      ) : (
+        <>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {sortedTemplates.map((template) => (
-              <Link key={template.id} href={template.href}>
-                <div className="group border-border bg-card hover:border-primary/50 h-full border transition-all">
-                  {/* Card Header */}
-                  <div className="border-border flex items-center justify-between border-b px-4 py-2">
-                    <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                      [TEMPLATE]: {template.id.toUpperCase()}
-                    </span>
-                    <template.icon className="text-muted-foreground size-4" />
-                  </div>
-
-                  {/* Card Content */}
-                  <div className="flex h-[calc(100%-40px)] flex-col p-4">
-                    {/* Status & Badge */}
-                    <div
-                      className={cn(mode.font, 'mb-4 flex items-center justify-between text-xs')}
-                    >
-                      <div>
-                        <span className="text-muted-foreground">STATUS: </span>
-                        <span className="text-success">READY</span>
-                      </div>
-                      {template.badge && (
-                        <div className="border-primary/50 text-primary border px-2 py-0.5">
-                          {template.badge.toUpperCase()}
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Title */}
-                    <h3
-                      className={cn(
-                        mode.font,
-                        'group-hover:text-primary mb-2 text-base font-semibold transition-colors'
-                      )}
-                    >
-                      {template.name}
-                    </h3>
-
-                    {/* Description */}
-                    <p className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
-                      {template.description}
-                    </p>
-
-                    {/* Features */}
-                    <div className="mt-auto">
-                      <div className={cn(mode.font, 'text-muted-foreground mb-2 text-xs')}>
-                        [FEATURES]:
-                      </div>
-                      <div className="flex flex-wrap gap-1">
-                        {template.features.slice(0, 2).map((feature) => (
-                          <span
-                            key={feature}
-                            className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}
-                          >
-                            {feature}
-                          </span>
-                        ))}
-                        {template.features.length > 2 && (
-                          <span
-                            className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}
-                          >
-                            +{template.features.length - 2}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Action */}
-                    <div className="border-border mt-4 flex items-center justify-between border-t pt-3">
-                      <span
-                        className={cn(
-                          mode.font,
-                          'text-primary group-hover:text-primary/80 text-xs transition-colors'
-                        )}
-                      >
-                        &gt; VIEW TEMPLATE
-                      </span>
-                      <span
-                        className={cn(
-                          mode.font,
-                          'text-muted-foreground text-xs transition-transform group-hover:translate-x-1'
-                        )}
-                      >
-                        →
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </Link>
+            {displayedTemplates.map((template) => (
+              <TemplateCard
+                key={template.id}
+                id={template.id}
+                name={template.name}
+                description={template.description}
+                href={template.href}
+                icon={template.icon}
+                features={template.features}
+                badge={template.badge}
+                featured={template.badge === 'Popular' || template.badge === 'Essential'}
+              />
             ))}
           </div>
-        )}
-      </section>
 
-      {/* Bottom CTA */}
-      <section className="border-border bg-muted/30 space-y-4 border p-8 text-center">
-        <Sparkles className="text-primary mx-auto h-8 w-8" />
-        <h3 className={cn(mode.font, 'text-xl font-semibold')}>Need Help Getting Started?</h3>
-        <p className={cn(mode.font, 'text-muted-foreground mx-auto max-w-2xl text-sm')}>
-          Learn how to copy templates, integrate with NextAuth and Prisma, customize the design
-          system, and troubleshoot common issues.
-        </p>
-        <div className="flex items-center justify-center gap-4">
-          <Link
-            href="/library/docs/getting-started"
-            className={cn(
-              mode.font,
-              'bg-primary text-primary-foreground hover:bg-primary/90 border-primary inline-flex items-center gap-2 border px-6 py-4 text-sm transition-colors'
-            )}
-          >
-            &gt; GETTING STARTED GUIDE
-          </Link>
-          <Link
-            href="/docs"
-            className={cn(
-              mode.font,
-              'border-border bg-card hover:bg-muted/50 inline-flex items-center gap-2 border px-6 py-4 text-sm transition-colors'
-            )}
-          >
-            &gt; VIEW COMPONENTS ({stats.totalComponents})
-          </Link>
-        </div>
-      </section>
+          {/* Load More */}
+          {hasMore && (
+            <div className="flex justify-center pt-4">
+              <Button
+                onClick={handleLoadMore}
+                variant="outline"
+                size="lg"
+                className={cn(mode.radius, mode.font, 'min-h-[44px]')}
+              >
+                &gt; LOAD MORE ({sortedTemplates.length - displayCount} remaining)
+              </Button>
+            </div>
+          )}
+        </>
+      )}
+
+      {/* Help CTA - Simple, not bloated */}
+      <Card size="auto" className="mt-8">
+        <CardHeader title="NEED_HELP" icon={<Sparkles className="text-primary h-4 w-4" />} />
+        <CardContent className="flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-between sm:text-left">
+          <p className={cn(mode.font, 'text-muted-foreground text-sm')}>
+            Learn how to copy templates, customize components, and integrate with your stack.
+          </p>
+          <div className="flex gap-2">
+            <Link href="/library/docs/getting-started">
+              <Button variant="default" className={cn(mode.radius, mode.font, 'min-h-[44px]')}>
+                &gt; GET STARTED
+              </Button>
+            </Link>
+            <Link href="/docs">
+              <Button variant="outline" className={cn(mode.radius, mode.font, 'min-h-[44px]')}>
+                &gt; COMPONENTS
+              </Button>
+            </Link>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }
