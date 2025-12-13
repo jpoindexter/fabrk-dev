@@ -104,7 +104,7 @@ export default function LibraryIndexPage() {
   // Calculate stats
   const stats = {
     totalTemplates: templates.length,
-    totalComponents: 80, // From CLAUDE.md
+    totalComponents: 89, // UI components (updated from 80)
     totalCategories: categories.filter((c) => c.id !== 'components').length,
     totalCode: 10873, // Lines of code
   };
@@ -150,43 +150,48 @@ export default function LibraryIndexPage() {
           </div>
         </div>
 
-        {/* Quick Stats Bar */}
-        <div className="border-border bg-muted/50 flex items-center justify-center gap-8 border p-6">
-          <div className="text-center">
-            <div className={cn(mode.font, 'text-foreground text-3xl font-semibold')}>
+        {/* Quick Stats Bar - Terminal Status Readout */}
+        <div className="border-border bg-card border">
+          {/* Terminal Header */}
+          <div className="border-border flex items-center justify-between border-b px-4 py-2">
+            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
+              [ [0xSTATS] SYSTEM_STATUS ]
+            </span>
+            <span className={cn(mode.font, 'text-success text-xs')}>● READY</span>
+          </div>
+          {/* Stats Row */}
+          <div className="flex flex-wrap items-center justify-center gap-x-1 gap-y-2 px-4 py-3 sm:justify-start">
+            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
+              <Package className="mr-1 inline-block h-3 w-3" />
+              TEMPLATES:
+            </span>
+            <span className={cn(mode.font, 'text-primary text-xs font-semibold')}>
               {stats.totalTemplates}
-            </div>
-            <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-              <Package className="mx-auto mb-1 h-4 w-4" />
-              TEMPLATES
-            </div>
-          </div>
-          <div className="text-center">
-            <div className={cn(mode.font, 'text-foreground text-3xl font-semibold')}>
+            </span>
+            <span className={cn(mode.font, 'text-muted-foreground mx-2 text-xs')}>│</span>
+            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
+              <Layers className="mr-1 inline-block h-3 w-3" />
+              COMPONENTS:
+            </span>
+            <span className={cn(mode.font, 'text-primary text-xs font-semibold')}>
               {stats.totalComponents}
-            </div>
-            <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-              <Layers className="mx-auto mb-1 h-4 w-4" />
-              COMPONENTS
-            </div>
-          </div>
-          <div className="text-center">
-            <div className={cn(mode.font, 'text-foreground text-3xl font-semibold')}>
+            </span>
+            <span className={cn(mode.font, 'text-muted-foreground mx-2 text-xs')}>│</span>
+            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
+              <Code className="mr-1 inline-block h-3 w-3" />
+              CATEGORIES:
+            </span>
+            <span className={cn(mode.font, 'text-primary text-xs font-semibold')}>
               {stats.totalCategories}
-            </div>
-            <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-              <Code className="mx-auto mb-1 h-4 w-4" />
-              CATEGORIES
-            </div>
-          </div>
-          <div className="text-center">
-            <div className={cn(mode.font, 'text-foreground text-3xl font-semibold')}>
-              {(stats.totalCode / 1000).toFixed(1)}K
-            </div>
-            <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-              <Star className="mx-auto mb-1 h-4 w-4" />
-              LINES OF CODE
-            </div>
+            </span>
+            <span className={cn(mode.font, 'text-muted-foreground mx-2 text-xs')}>│</span>
+            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
+              <Star className="mr-1 inline-block h-3 w-3" />
+              LOC:
+            </span>
+            <span className={cn(mode.font, 'text-primary text-xs font-semibold')}>
+              {stats.totalCode.toLocaleString()}
+            </span>
           </div>
         </div>
       </section>
