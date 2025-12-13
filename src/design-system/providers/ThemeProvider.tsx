@@ -15,8 +15,6 @@ export type ColorThemeName =
   | 'blue'
   | 'red'
   | 'purple'
-  | 'light-green'
-  | 'light-amber'
   | 'gameboy'
   | 'c64'
   | 'gbpocket'
@@ -31,8 +29,6 @@ const ALL_THEMES = [
   'blue',
   'red',
   'purple',
-  'light-green',
-  'light-amber',
   'gameboy',
   'c64',
   'gbpocket',
@@ -189,8 +185,6 @@ export function ThemeScript({
           'blue',
           'red',
           'purple',
-          'light-green',
-          'light-amber',
           'gameboy',
           'c64',
           'gbpocket',

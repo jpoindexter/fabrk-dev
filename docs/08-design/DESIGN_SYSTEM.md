@@ -2,6 +2,14 @@
 
 Complete style guide documenting ALL design tokens, styles, and inconsistencies across the Fabrk codebase.
 
+## 📚 Related Documentation
+
+- **[Customization Guide](./CUSTOMIZATION-GUIDE.md)** - Change brand colors, create themes (15 min)
+- **[Theme Guide](./THEME-GUIDE.md)** - Explore all 12 retro terminal themes
+- **[Component Authoring](./COMPONENT-AUTHORING.md)** - Extend the design system safely
+- **[Customization Checklist](../CUSTOMIZATION-CHECKLIST.md)** - Pre-launch customization steps
+- **[Audit Reports](../../.archives/design-system/2025-12-12-final/)** - 100/100 design system audit (Dec 12, 2025)
+
 ---
 
 ## Design System Overview
@@ -285,8 +293,18 @@ All colors use **OKLCH** format: `lightness% chroma hue`
 | `border-foreground` | High contrast borders |
 
 ### Theme Support
-20 DaisyUI-inspired themes available via `[data-theme]`:
-`light`, `dark`, `cupcake`, `bumblebee`, `emerald`, `corporate`, `synthwave`, `retro`, `cyberpunk`, `valentine`, `halloween`, `forest`, `aqua`, `lofi`, `pastel`, `fantasy`, `luxury`, `dracula`, `autumn`, `business`
+12 retro terminal-inspired color themes available via `[data-theme]`:
+
+**CRT Phosphor Themes (5):**
+`green`, `amber`, `blue`, `red`, `purple`
+
+**Retro Computer Themes (6):**
+`gameboy`, `c64`, `gbpocket`, `vic20`, `atari`, `spectrum`
+
+**Light Theme (1):**
+`bw`
+
+See [Theme Guide](./THEME-GUIDE.md) for detailed descriptions, use cases, and color palettes.
 
 ---
 
