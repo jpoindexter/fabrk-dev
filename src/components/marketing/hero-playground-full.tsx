@@ -1058,13 +1058,11 @@ function BillingPreview() {
           <StyledTabs tabs={mockBillingTabs} value={activeTab} onValueChange={setActiveTab}>
             {/* Overview Tab */}
             <StyledTabsContent value="overview">
-              <div className="space-y-6">
+              <div className="space-y-6 [&_>*>*:first-child]:hidden [&_>*>*>*>*:first-child]:hidden">
                 {/* Two Column Layout */}
-                <div className="grid gap-6 md:grid-cols-2 [&_>*>*:first-child]:hidden">
-                  <div className="[&_>*:first-child]:hidden">
-                    <UsageMetricsCard usage={mockBillingUsage} />
-                  </div>
-                  <div className="space-y-6 [&_>*>*:first-child]:hidden">
+                <div className="grid gap-6 md:grid-cols-2">
+                  <UsageMetricsCard usage={mockBillingUsage} />
+                  <div className="space-y-6">
                     <CurrentPlanCard
                       subscription={mockBillingSubscription}
                       formatDate={formatDate}
@@ -1073,15 +1071,13 @@ function BillingPreview() {
                   </div>
                 </div>
 
-                <div className="[&_>*:first-child]:hidden">
-                  <RecentInvoicesCard
-                    payments={mockBillingPayments}
-                    formatDate={formatDate}
-                    formatCurrency={formatCurrency}
-                    getStatusText={getStatusText}
-                    onViewAll={() => setActiveTab('history')}
-                  />
-                </div>
+                <RecentInvoicesCard
+                  payments={mockBillingPayments}
+                  formatDate={formatDate}
+                  formatCurrency={formatCurrency}
+                  getStatusText={getStatusText}
+                  onViewAll={() => setActiveTab('history')}
+                />
               </div>
             </StyledTabsContent>
 
