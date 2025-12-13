@@ -228,9 +228,7 @@ interface LogEntryItemProps {
 function LogEntryItem({ log, isLast, onShowDetails }: LogEntryItemProps) {
   return (
     <div className="relative p-4">
-      {!isLast && (
-        <div className="border-border absolute top-[52px] left-[52px] h-full w-px border-l" />
-      )}
+      {!isLast && <div className="border-border absolute top-13 left-13 h-full w-px border-l" />}
 
       <div className="flex items-start gap-4">
         <Avatar className="border-border h-10 w-10 border-2">
