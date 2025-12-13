@@ -25,7 +25,6 @@ import {
   Table,
   LineChart,
   MessageSquare,
-  Image,
   Upload,
   Zap,
   Flag,
@@ -41,6 +40,9 @@ import {
   Languages,
   Coins,
   Check,
+  Paintbrush,
+  Wrench,
+  CheckSquare,
 } from 'lucide-react';
 
 export const docsNavigation: NavSection[] = [
@@ -58,7 +60,12 @@ export const docsNavigation: NavSection[] = [
         icon: Rocket,
       },
       {
-        title: '[01.3] ARCHITECTURE',
+        title: '[01.3] CUSTOMIZATION CHECKLIST',
+        href: '/docs/customization-checklist',
+        icon: CheckSquare,
+      },
+      {
+        title: '[01.4] ARCHITECTURE',
         href: '/docs/architecture',
         icon: Blocks,
       },
@@ -636,6 +643,21 @@ export const docsNavigation: NavSection[] = [
         title: '[09.12] THEME GENERATOR',
         href: '/docs/extras/theme-generator',
         icon: Palette,
+      },
+      {
+        title: '[09.13] THEME GUIDE',
+        href: '/docs/design/theme-guide',
+        icon: Palette,
+      },
+      {
+        title: '[09.14] CUSTOMIZATION GUIDE',
+        href: '/docs/design/customization-guide',
+        icon: Paintbrush,
+      },
+      {
+        title: '[09.15] COMPONENT AUTHORING',
+        href: '/docs/design/component-authoring',
+        icon: Wrench,
       },
     ],
   },
