@@ -114,7 +114,6 @@ function BillingDemo() {
   return (
     <div className="mx-auto max-w-md">
       <Card size="auto">
-        <CardHeader code="0x30" title="PAYMENT METHOD" />
         <CardContent className="space-y-4 p-6">
           <div className="space-y-2">
             <Label className={cn(mode.font, 'text-xs')}>CARD NUMBER</Label>
