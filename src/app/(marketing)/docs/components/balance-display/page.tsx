@@ -127,6 +127,58 @@ export default function BalanceDisplayPage() {
           description: 'Show minimal display with just the credit count.',
         },
       ]}
+      usageExamples={[
+        {
+          title: 'Dashboard Integration',
+          description:
+            'Add to user dashboard to show current credit balance. Automatically fetches from /api/credits/balance.',
+          code: `'use client';
+
+import { BalanceDisplay } from '@/components/credits';
+
+export default function DashboardPage() {
+  return (
+    <div className="space-y-6">
+      <h1>Dashboard</h1>
+
+      {/* Auto-fetches balance, tier, and allowance */}
+      <BalanceDisplay />
+
+      {/* Compact mode for sidebars/headers */}
+      <BalanceDisplay compact />
+    </div>
+  );
+}`,
+          language: 'tsx',
+        },
+        {
+          title: 'Required API Endpoint',
+          description: 'The component expects GET /api/credits/balance to return this format:',
+          code: `// GET /api/credits/balance response
+{
+  "balance": 750,
+  "monthlyAllowance": 1000,
+  "tier": "starter",
+  "lastRefill": "2024-12-01T00:00:00.000Z"
+}
+
+// Already implemented at:
+// src/app/api/credits/balance/route.ts`,
+          language: 'json',
+        },
+        {
+          title: 'Color States',
+          description: 'Progress bar automatically changes color based on remaining credits:',
+          code: `// Green (bg-primary): > 50% remaining
+// Yellow (bg-warning): 20-50% remaining
+// Red (bg-destructive): < 20% remaining
+
+// Example: 750/1000 = 75% = Green
+// Example: 350/1000 = 35% = Yellow
+// Example: 150/1000 = 15% = Red`,
+          language: 'typescript',
+        },
+      ]}
       accessibility={[
         'Progress bar indicates remaining credits visually',
         'Color-coded states (green/yellow/red) for quick recognition',

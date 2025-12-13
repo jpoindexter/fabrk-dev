@@ -195,6 +195,89 @@ export default function CreditUsageChartPage() {
           description: 'Additional CSS classes to apply.',
         },
       ]}
+      usageExamples={[
+        {
+          title: 'Dashboard Integration',
+          description: 'Fetch 14-day usage history from API and display as bar chart:',
+          code: `'use client';
+
+import { useEffect, useState } from 'react';
+import { UsageChart } from '@/components/credits';
+
+export function UsageDashboard() {
+  const [usageData, setUsageData] = useState([]);
+
+  useEffect(() => {
+    // Fetch usage stats from API
+    fetch('/api/credits/history?stats=true&days=14')
+      .then(r => r.json())
+      .then(data => setUsageData(data.stats));
+  }, []);
+
+  if (usageData.length === 0) {
+    return <div>Loading chart...</div>;
+  }
+
+  return (
+    <div className="space-y-4">
+      <h3>Credit Usage (Last 14 Days)</h3>
+      <UsageChart data={usageData} />
+    </div>
+  );
+}`,
+          language: 'tsx',
+        },
+        {
+          title: 'Data Format',
+          description: 'Expected data structure from GET /api/credits/history?stats=true:',
+          code: `// GET /api/credits/history?stats=true&days=14 response
+{
+  "stats": [
+    { "date": "2024-11-25", "credits": 15 },
+    { "date": "2024-11-26", "credits": 22 },
+    { "date": "2024-11-27", "credits": 8 },
+    ...  // 14 days total
+    { "date": "2024-12-08", "credits": 20 }
+  ],
+  "totalUsage": 245,
+  "transactions": [...]
+}
+
+// Component automatically:
+// - Shows last 14 days
+// - Scales bars relative to max value
+// - Shows tooltips on hover with exact counts
+// - Displays date labels (day of month)`,
+          language: 'json',
+        },
+        {
+          title: 'Static Data (No API)',
+          description: 'Use with hardcoded data for landing pages or demos:',
+          code: `import { UsageChart } from '@/components/credits';
+
+const demoData = [
+  { date: '2024-11-25', credits: 15 },
+  { date: '2024-11-26', credits: 22 },
+  { date: '2024-11-27', credits: 8 },
+  { date: '2024-11-28', credits: 31 },
+  { date: '2024-11-29', credits: 12 },
+  { date: '2024-11-30', credits: 25 },
+  { date: '2024-12-01', credits: 18 },
+  { date: '2024-12-02', credits: 5 },
+  { date: '2024-12-03', credits: 28 },
+  { date: '2024-12-04', credits: 14 },
+  { date: '2024-12-05', credits: 20 },
+  { date: '2024-12-06', credits: 9 },
+  { date: '2024-12-07', credits: 33 },
+  { date: '2024-12-08', credits: 16 },
+];
+
+export function DemoSection() {
+  return <UsageChart data={demoData} />;
+}`,
+          language: 'tsx',
+        },
+      ]}
       accessibility={[
         'Hover tooltips show exact credit values',
         'Color-coded bars (primary for usage, muted for zero)',

@@ -176,6 +176,126 @@ export default function CreditTransactionTablePage() {
           description: 'Additional CSS classes to apply.',
         },
       ]}
+      usageExamples={[
+        {
+          title: 'Dashboard Integration',
+          description: 'Fetch and display recent transaction history:',
+          code: `'use client';
+
+import { useEffect, useState } from 'react';
+import { TransactionTable } from '@/components/credits';
+
+export function TransactionHistory() {
+  const [transactions, setTransactions] = useState([]);
+
+  useEffect(() => {
+    // Fetch recent transactions
+    fetch('/api/credits/history?limit=20')
+      .then(r => r.json())
+      .then(data => setTransactions(data.transactions));
+  }, []);
+
+  return (
+    <div className="space-y-4">
+      <h3>Recent Transactions</h3>
+      <TransactionTable transactions={transactions} />
+    </div>
+  );
+}`,
+          language: 'tsx',
+        },
+        {
+          title: 'Transaction Type',
+          description: 'TypeScript interface for transaction objects:',
+          code: `interface Transaction {
+  id: string;
+  amount: number;          // Positive = added, Negative = deducted
+  type: CreditTransactionType;
+  description: string | null;
+  endpoint: string | null;  // API endpoint that triggered this
+  createdAt: string;        // ISO 8601 date string
+}
+
+enum CreditTransactionType {
+  USAGE,                 // Red down arrow (-)
+  PURCHASE,              // Green up arrow (+)
+  SUBSCRIPTION_REFILL,   // Green refresh icon (+)
+  BONUS,                 // Blue gift icon (+)
+  REFUND,                // Yellow undo icon (+)
+}`,
+          language: 'typescript',
+        },
+        {
+          title: 'API Response Format',
+          description: 'Expected format from GET /api/credits/history:',
+          code: `// GET /api/credits/history?limit=20 response
+{
+  "transactions": [
+    {
+      "id": "1",
+      "amount": -10,
+      "type": "USAGE",
+      "description": "Form generation",
+      "endpoint": "/api/ai/generate-form",
+      "createdAt": "2024-12-08T14:55:00.000Z"
+    },
+    {
+      "amount": 500,
+      "type": "PURCHASE",
+      "description": "Purchased 500 credit pack",
+      "endpoint": null,
+      "createdAt": "2024-12-08T13:00:00.000Z"
+    },
+    {
+      "amount": 1000,
+      "type": "SUBSCRIPTION_REFILL",
+      "description": "Monthly refill for starter tier",
+      "endpoint": null,
+      "createdAt": "2024-12-07T15:00:00.000Z"
+    }
+  ],
+  "stats": [...],  // If ?stats=true was passed
+  "totalUsage": 245
+}`,
+          language: 'json',
+        },
+        {
+          title: 'Filter by Type',
+          description: 'Show only specific transaction types:',
+          code: `'use client';
+
+import { useState, useEffect } from 'react';
+import { TransactionTable } from '@/components/credits';
+
+export function UsageOnlyHistory() {
+  const [transactions, setTransactions] = useState([]);
+
+  useEffect(() => {
+    // Only fetch USAGE transactions
+    fetch('/api/credits/history?type=USAGE&limit=50')
+      .then(r => r.json())
+      .then(data => setTransactions(data.transactions));
+  }, []);
+
+  return (
+    <div>
+      <h3>Usage History</h3>
+      <TransactionTable transactions={transactions} />
+    </div>
+  );
+}`,
+          language: 'tsx',
+        },
+        {
+          title: 'Empty State Handling',
+          description: 'Component shows "No transactions yet" when array is empty:',
+          code: `// Automatically handles empty state
+<TransactionTable transactions={[]} />
+
+// Renders: "No transactions yet" message`,
+          language: 'tsx',
+        },
+      ]}
       accessibility={[
         'Color-coded amounts (red for deductions, green for additions)',
         'Type-specific icons for quick recognition',

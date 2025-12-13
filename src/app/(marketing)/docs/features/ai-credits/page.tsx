@@ -320,6 +320,65 @@ export async function POST(request: Request) {
         </DocsCard>
       </DocsSection>
 
+      {/* UI Components */}
+      <DocsSection title="UI Components">
+        <DocsCallout variant="info" title="Pre-Built Components">
+          Five production-ready components for displaying credits, usage, and billing. All integrate
+          with the credit APIs automatically.
+        </DocsCallout>
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <Link href="/docs/components/balance-display">
+            <DocsCard
+              title="BALANCE DISPLAY"
+              className="hover:border-primary/50 h-full transition-all"
+            >
+              <p className="text-muted-foreground text-sm">
+                Shows current credit balance with color-coded progress bar. Auto-fetches from API.
+              </p>
+            </DocsCard>
+          </Link>
+
+          <Link href="/docs/components/usage-meter">
+            <DocsCard title="USAGE METER" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground text-sm">
+                Progress bar for resource usage. Show current vs limit with warnings at 75%/90%.
+              </p>
+            </DocsCard>
+          </Link>
+
+          <Link href="/docs/components/plan-selector">
+            <DocsCard
+              title="PLAN SELECTOR"
+              className="hover:border-primary/50 h-full transition-all"
+            >
+              <p className="text-muted-foreground text-sm">
+                Pricing cards for upgrade flows. Shows features, popular badge, and current plan.
+              </p>
+            </DocsCard>
+          </Link>
+
+          <Link href="/docs/components/credit-usage-chart">
+            <DocsCard title="USAGE CHART" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground text-sm">
+                14-day bar chart of daily credit consumption. Hover tooltips show exact values.
+              </p>
+            </DocsCard>
+          </Link>
+
+          <Link href="/docs/components/credit-transaction-table">
+            <DocsCard
+              title="TRANSACTION TABLE"
+              className="hover:border-primary/50 h-full transition-all"
+            >
+              <p className="text-muted-foreground text-sm">
+                Complete transaction history with type icons, amounts, and timestamps.
+              </p>
+            </DocsCard>
+          </Link>
+        </div>
+      </DocsSection>
+
       {/* Next Steps */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">

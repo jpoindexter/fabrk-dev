@@ -118,6 +118,96 @@ export default function UsageMeterPage() {
           description: 'Progress bar size.',
         },
       ]}
+      usageExamples={[
+        {
+          title: 'Billing Summary Card',
+          description:
+            'Show multiple resource usage meters in a billing summary. Client-side only, pass data as props.',
+          code: `import { UsageMeter } from '@/components/ui/billing-summary-card';
+
+export function BillingCard({ usage }: { usage: UsageData }) {
+  return (
+    <div className="space-y-4">
+      <h3>Resource Usage</h3>
+
+      {/* API calls meter */}
+      <UsageMeter
+        label="API Calls"
+        used={usage.apiCalls}
+        limit={10000}
+        showPercentage={true}
+      />
+
+      {/* Storage meter with unit */}
+      <UsageMeter
+        label="Storage"
+        used={usage.storage}
+        limit={5}
+        unit="GB"
+        size="md"
+      />
+
+      {/* Team members (no percentage) */}
+      <UsageMeter
+        label="Team Members"
+        used={usage.teamMembers}
+        limit={10}
+        showPercentage={false}
+      />
+    </div>
+  );
+}`,
+          language: 'tsx',
+        },
+        {
+          title: 'Color-Coded Warnings',
+          description: 'Automatically changes color at 75% and 90% thresholds:',
+          code: `// < 75%: Primary (blue/brand color)
+<UsageMeter label="Normal" used={500} limit={1000} />
+
+// 75-89%: Warning (yellow/amber)
+<UsageMeter label="High" used={800} limit={1000} />
+
+// ≥ 90%: Destructive (red)
+<UsageMeter label="Critical" used={950} limit={1000} />`,
+          language: 'tsx',
+        },
+        {
+          title: 'Dashboard Integration',
+          description: 'Fetch usage data from your API and display with meters:',
+          code: `'use client';
+
+import { useEffect, useState } from 'react';
+import { UsageMeter } from '@/components/ui/billing-summary-card';
+
+export function UsageDashboard() {
+  const [usage, setUsage] = useState(null);
+
+  useEffect(() => {
+    fetch('/api/usage').then(r => r.json()).then(setUsage);
+  }, []);
+
+  if (!usage) return <div>Loading...</div>;
+
+  return (
+    <div className="space-y-4">
+      <UsageMeter
+        label="API Calls"
+        used={usage.apiCalls}
+        limit={usage.apiLimit}
+      />
+      <UsageMeter
+        label="Storage"
+        used={usage.storageGB}
+        limit={usage.storageLimit}
+        unit="GB"
+      />
+    </div>
+  );
+}`,
+          language: 'tsx',
+        },
+      ]}
       accessibility={[
         'Progress value communicated via text',
         'Color-coded states with text fallback',

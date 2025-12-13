@@ -127,19 +127,125 @@ export default function PlanSelectorPage() {
       ]}
       usageExamples={[
         {
+          title: 'Upgrade Flow Integration',
+          description: 'Complete example showing plan selection with Stripe checkout:',
+          code: `'use client';
+
+import { useState } from 'react';
+import { PlanSelector } from '@/components/ui/billing-summary-card';
+import { useRouter } from 'next/navigation';
+
+const plans = [
+  {
+    id: 'starter',
+    name: 'Starter',
+    price: 9,
+    interval: 'month' as const,
+    description: 'For individuals',
+    features: ['1,000 credits/month', '5 projects', 'Email support'],
+  },
+  {
+    id: 'pro',
+    name: 'Pro',
+    price: 29,
+    interval: 'month' as const,
+    description: 'For growing teams',
+    features: ['10,000 credits/month', 'Unlimited projects', 'Priority support'],
+    popular: true,
+  },
+];
+
+export default function UpgradePage() {
+  const router = useRouter();
+  const [selectedPlan, setSelectedPlan] = useState('pro');
+  const [loading, setLoading] = useState(false);
+
+  const handleSelectPlan = async (planId: string) => {
+    setSelectedPlan(planId);
+    setLoading(true);
+
+    // Create Stripe checkout session
+    const res = await fetch('/api/stripe/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ priceId: planId }),
+    });
+
+    const { url } = await res.json();
+    router.push(url); // Redirect to Stripe
+  };
+
+  return (
+    <PlanSelector
+      plans={plans}
+      selectedPlanId={selectedPlan}
+      onSelectPlan={handleSelectPlan}
+    />
+  );
+}`,
+          language: 'tsx',
+        },
+        {
+          title: 'With Current Plan Indicator',
+          description: "Show which plan the user is currently on (disables that plan's button):",
+          code: `const plans = [
+  { id: 'free', name: 'Free', price: 0, interval: 'month',
+    features: ['100 credits/month'], current: true },
+  { id: 'starter', name: 'Starter', price: 9, interval: 'month',
+    features: ['1,000 credits/month'] },
+  { id: 'pro', name: 'Pro', price: 29, interval: 'month',
+    features: ['10,000 credits/month'], popular: true },
+];
+
+<PlanSelector plans={plans} onSelectPlan={handleUpgrade} />`,
+          language: 'tsx',
+        },
+        {
           title: 'PlanOption Interface',
-          description: 'Structure of a plan option.',
+          description: 'Complete TypeScript interface for plan data:',
           code: `interface PlanOption {
-  id: string;
-  name: string;
-  price: number;
+  id: string;              // Unique plan ID
+  name: string;            // Display name
+  price: number;           // Monthly price in dollars
   interval: "month" | "year";
-  description?: string;
-  features: string[];
-  popular?: boolean;   // Shows "POPULAR" badge
-  current?: boolean;   // Shows "CURRENT" badge, disables button
+  description?: string;    // Short description
+  features: string[];      // Feature list
+  popular?: boolean;       // Shows "POPULAR" badge
+  current?: boolean;       // Shows "CURRENT" badge, disables button
 }`,
           language: 'typescript',
+        },
+        {
+          title: 'Fetch Plans from API',
+          description: 'Load plans dynamically from your backend:',
+          code: `'use client';
+
+import { useEffect, useState } from 'react';
+import { PlanSelector } from '@/components/ui/billing-summary-card';
+
+export function PricingPage() {
+  const [plans, setPlans] = useState([]);
+  const [currentPlan, setCurrentPlan] = useState(null);
+
+  useEffect(() => {
+    // Fetch available plans
+    fetch('/api/billing/plans')
+      .then(r => r.json())
+      .then(data => {
+        setPlans(data.plans);
+        setCurrentPlan(data.currentPlanId);
+      });
+  }, []);
+
+  return (
+    <PlanSelector
+      plans={plans}
+      selectedPlanId={currentPlan}
+      onSelectPlan={(id) => handleUpgrade(id)}
+    />
+  );
+}`,
+          language: 'tsx',
         },
       ]}
       accessibility={[
