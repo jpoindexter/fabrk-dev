@@ -194,6 +194,40 @@ export function ManageBillingButton() {
       previous={{ title: 'Database', href: '/docs/features/database' }}
       next={{ title: 'Google OAuth', href: '/docs/features/google-oauth' }}
     >
+      {/* Security Warning for API Keys */}
+      <DocsSection title="Security">
+        <DocsCallout variant="danger" title="NEVER COMMIT SECRETS TO GIT">
+          <div className="space-y-3">
+            <p>
+              <strong>CRITICAL:</strong> The STRIPE_SECRET_KEY and STRIPE_WEBHOOK_SECRET are highly
+              sensitive. Leaking them gives attackers full access to your Stripe account.
+            </p>
+            <ul className="ml-4 list-disc space-y-2">
+              <li>
+                <strong>Never commit</strong> .env files to git. Always use .env.local (in
+                .gitignore) for local development.
+              </li>
+              <li>
+                <strong>Never expose</strong> STRIPE_SECRET_KEY to the browser. Only use it in
+                server-side code (API routes, server components).
+              </li>
+              <li>
+                <strong>Use secure storage</strong> in production: Vercel Environment Variables, AWS
+                Secrets Manager, or similar.
+              </li>
+              <li>
+                <strong>Rotate keys immediately</strong> if you suspect they've been exposed. Go to
+                Stripe Dashboard → Developers → API keys → Roll key.
+              </li>
+            </ul>
+            <p>
+              <strong>Safe variables:</strong> NEXT_PUBLIC_* variables are safe for client-side use.
+              These include pk_test_ (publishable keys) but NOT sk_test_ (secret keys).
+            </p>
+          </div>
+        </DocsCallout>
+      </DocsSection>
+
       {/* Why Stripe Section */}
       <DocsSection title="Why Stripe">
         <DocsCard title="WHY STRIPE">
