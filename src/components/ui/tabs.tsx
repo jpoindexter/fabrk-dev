@@ -21,7 +21,7 @@ function TabsList({ className, ...props }: React.ComponentProps<typeof TabsPrimi
     <TabsPrimitive.List
       data-slot="tabs-list"
       className={cn(
-        'inline-flex h-auto items-center justify-start gap-1 p-0',
+        'border-border inline-flex h-auto items-center justify-start gap-0 border p-0',
         mode.color.bg.base,
         mode.color.text.primary,
         'rounded-none', // Force sharp corners for terminal aesthetic
@@ -39,18 +39,15 @@ function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPr
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
       className={cn(
-        'relative inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-medium whitespace-nowrap transition-all focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
-        // Simple underline style - no borders, just spacing
-        'bg-transparent',
+        'inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-medium whitespace-nowrap transition-all focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+        // Boxed tabs with vertical dividers
+        'border-border border-r bg-transparent last:border-r-0',
         // Default state - muted text
         mode.color.text.muted,
-        // Hover state - darker text
-        'hover:text-foreground',
-        // Active state - primary text with bottom border indicator
-        'data-[state=active]:text-primary data-[state=active]:font-semibold',
-        // Active bottom border indicator
-        'after:absolute after:right-0 after:bottom-0 after:left-0 after:h-0.5 after:bg-transparent',
-        'data-[state=active]:after:bg-primary',
+        // Hover state
+        'hover:text-foreground hover:bg-muted/50',
+        // Active state - filled background
+        'data-[state=active]:bg-muted data-[state=active]:text-foreground data-[state=active]:font-semibold',
         mode.state.focus.ring,
         'rounded-none', // Force sharp corners for terminal aesthetic
         mode.font,
