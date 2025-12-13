@@ -316,6 +316,11 @@ export const docsNavigation: NavSection[] = [
             href: '/docs/components/member-card',
             icon: Table,
           },
+          {
+            title: 'SIMPLE ICON',
+            href: '/docs/components/simple-icon',
+            icon: Table,
+          },
           { title: 'SKELETON', href: '/docs/components/skeleton', icon: Table },
           {
             title: 'STAT CARD',
@@ -323,6 +328,11 @@ export const docsNavigation: NavSection[] = [
             icon: Table,
           },
           { title: 'TABLE', href: '/docs/components/table', icon: Table },
+          {
+            title: 'TYPEWRITER',
+            href: '/docs/components/typewriter',
+            icon: Table,
+          },
         ],
       },
       {
@@ -436,6 +446,11 @@ export const docsNavigation: NavSection[] = [
             icon: Layout,
           },
           { title: 'SIDEBAR', href: '/docs/components/sidebar', icon: Layout },
+          {
+            title: 'STYLED TABS',
+            href: '/docs/components/styled-tabs',
+            icon: Layout,
+          },
           { title: 'TABS', href: '/docs/components/tabs', icon: Layout },
         ],
       },
@@ -463,6 +478,11 @@ export const docsNavigation: NavSection[] = [
         title: '[07.8] FEEDBACK',
         items: [
           { title: 'ALERT', href: '/docs/components/alert', icon: Bell },
+          {
+            title: 'COOKIE CONSENT',
+            href: '/docs/components/cookie-consent',
+            icon: Bell,
+          },
           { title: 'LOADING', href: '/docs/components/loading', icon: Bell },
           {
             title: 'NOTIFICATION BADGE',
@@ -477,6 +497,11 @@ export const docsNavigation: NavSection[] = [
           {
             title: 'NOTIFICATION LIST',
             href: '/docs/components/notification-list',
+            icon: Bell,
+          },
+          {
+            title: 'TERMINAL SPINNER',
+            href: '/docs/components/terminal-spinner',
             icon: Bell,
           },
           { title: 'TOAST', href: '/docs/components/toast', icon: Bell },
@@ -525,6 +550,11 @@ export const docsNavigation: NavSection[] = [
             title: 'PLAN SELECTOR',
             href: '/docs/components/plan-selector',
             icon: CreditCard,
+          },
+          {
+            title: 'SIGN IN FORM',
+            href: '/docs/components/sign-in-form',
+            icon: Users,
           },
           {
             title: 'SIGN UP FORM',
@@ -662,17 +692,22 @@ export const docsNavigation: NavSection[] = [
         icon: Wrench,
       },
       {
-        title: '[09.16] THEME GALLERY',
+        title: '[09.16] ACCESSIBILITY',
+        href: '/docs/design/accessibility',
+        icon: ShieldCheck,
+      },
+      {
+        title: '[09.17] THEME GALLERY',
         href: '/docs/extras/theme-gallery',
         icon: GalleryVerticalEnd,
       },
       {
-        title: '[09.17] DISPLAY EFFECTS',
+        title: '[09.18] DISPLAY EFFECTS',
         href: '/docs/extras/display-effects',
         icon: Monitor,
       },
       {
-        title: '[09.18] MCP SERVER',
+        title: '[09.19] MCP SERVER',
         href: '/docs/features/mcp-server',
         icon: Bot,
       },
