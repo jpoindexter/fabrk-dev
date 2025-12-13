@@ -18,7 +18,6 @@ import {
 import { cn } from '@/lib/utils';
 
 import { mode } from '@/design-system';
-import { useThemeContext } from '@/design-system/providers';
 
 // Consolidated Retro Presets
 const effects = [
@@ -31,7 +30,6 @@ const effects = [
 export type MonitorEffect = (typeof effects)[number]['id'];
 
 export function MonitorEffectsDropdown() {
-  const { setColorTheme } = useThemeContext();
   const [activeEffect, setActiveEffect] = useState<MonitorEffect>('none');
   const [mounted, setMounted] = useState(false);
 
@@ -81,23 +79,7 @@ export function MonitorEffectsDropdown() {
     setActiveEffect(effectId);
     applyEffect(effectId);
     localStorage.setItem('monitor-preset', effectId);
-
-    // Auto-switch theme based on effect (Soft Link)
-    // User can still manually change theme afterwards
-    switch (effectId) {
-      case 'lcd':
-        setColorTheme('gbpocket'); // Authentic green dot matrix
-        break;
-      case 'crt':
-        setColorTheme('green'); // Classic green phosphor
-        break;
-      case 'vhs':
-        setColorTheme('blue'); // VCR OSD blue
-        break;
-      default:
-        // Don't change theme for 'Clean' or unknown
-        break;
-    }
+    // Theme selection is independent - don't override user's choice
   };
 
   if (!mounted) {

@@ -319,6 +319,32 @@
   --chart-9: 65% 0.28 140;
   --status-away: 75% 0.26 60;
 
+  /* Semantic mappings - Required for Theme Completeness Gate */
+  --color-bg-canvas: var(--background);
+  --color-bg-surface: var(--card);
+  --color-bg-elevated: var(--popover);
+  --color-bg-sunken: var(--muted);
+
+  --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-text-tertiary: var(--secondary-foreground);
+  --color-text-inverse: var(--primary-foreground);
+  --color-text-disabled: var(--muted-foreground);
+
+  --color-border-default: var(--border);
+  --color-border-muted: var(--input);
+  --color-border-strong: var(--ring);
+  --color-border-focus: var(--ring);
+
+  --color-status-success: var(--success);
+  --color-status-success-bg: var(--success);
+  --color-status-warning: var(--warning);
+  --color-status-warning-bg: var(--warning);
+  --color-status-error: var(--destructive);
+  --color-status-error-bg: var(--destructive);
+  --color-status-info: var(--info);
+  --color-status-info-bg: var(--info);
+
   /* Code syntax highlighting (Prism) */
   --code-fg: oklch(84% 0.13 134);
   --code-bg: oklch(19% 0.02 144);
