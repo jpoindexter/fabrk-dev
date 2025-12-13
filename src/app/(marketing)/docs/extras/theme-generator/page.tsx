@@ -338,9 +338,28 @@ export default function ThemeGeneratorPage() {
       root.style.setProperty(cssVar, value);
     });
 
-    // Apply border radius to preview
+    // Apply border radius to preview via CSS variable
     originalValues['--radius'] = getComputedStyle(root).getPropertyValue('--radius');
     root.style.setProperty('--radius', `${borderRadius}rem`);
+
+    // Inject style tag to override rounded-none classes when border radius > 0
+    // This is necessary because Tailwind's rounded-none class overrides CSS variables
+    let styleEl: HTMLStyleElement | null = null;
+    if (borderRadius > 0) {
+      styleEl = document.createElement('style');
+      styleEl.id = 'theme-generator-radius-override';
+      styleEl.textContent = `
+        /* Theme Generator Preview - Border Radius Override */
+        .rounded-none {
+          border-radius: ${borderRadius}rem !important;
+        }
+        /* Ensure inputs, buttons, cards all get the radius */
+        button, input, textarea, select, [role="button"] {
+          border-radius: ${borderRadius}rem !important;
+        }
+      `;
+      document.head.appendChild(styleEl);
+    }
 
     return () => {
       // Restore original values on cleanup
@@ -351,6 +370,10 @@ export default function ThemeGeneratorPage() {
           root.style.removeProperty(cssVar);
         }
       });
+      // Remove injected style tag
+      if (styleEl) {
+        styleEl.remove();
+      }
     };
   }, [previewEnabled, themeColors, borderRadius]);
 
