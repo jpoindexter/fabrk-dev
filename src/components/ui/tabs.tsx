@@ -46,8 +46,8 @@ function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPr
         mode.color.text.muted,
         // Hover state
         'hover:text-foreground hover:bg-muted/50',
-        // Active state - filled background
-        'data-[state=active]:bg-muted data-[state=active]:text-foreground data-[state=active]:font-semibold',
+        // Active state - filled primary background with contrasting text
+        'data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:font-semibold',
         mode.state.focus.ring,
         'rounded-none', // Force sharp corners for terminal aesthetic
         mode.font,
