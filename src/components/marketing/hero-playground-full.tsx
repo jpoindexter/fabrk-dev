@@ -1110,24 +1110,15 @@ export function HeroPlaygroundFull() {
       <div className="container mx-auto max-w-[1800px] px-12 lg:px-24">
         {/* Header with tabs and theme indicator */}
         <div className="mb-8 flex items-center justify-between">
-          <div className="flex gap-1">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={cn(
-                  'px-4 py-2 text-xs transition-colors',
-                  mode.radius,
-                  mode.font,
-                  activeTab === tab.id
-                    ? 'bg-accent text-accent-foreground'
-                    : 'text-muted-foreground hover:text-foreground'
-                )}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1">
+            <TabsList>
+              {tabs.map((tab) => (
+                <TabsTrigger key={tab.id} value={tab.id}>
+                  {tab.label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </Tabs>
 
           <div className={cn('flex items-center gap-2 text-xs', mode.font, mode.color.text.muted)}>
             <span>THEME:</span>
