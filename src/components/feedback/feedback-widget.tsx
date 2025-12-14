@@ -69,7 +69,7 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
   return (
     <div className={cn('border-border bg-card fixed right-6 bottom-6 w-96 border', mode.radius)}>
       <div className="border-border flex items-center justify-between border-b p-4">
-        <h3 className="text-foreground font-semibold">Send Feedback</h3>
+        <h3 className={cn('text-foreground font-semibold', mode.font)}>Send Feedback</h3>
         <button
           onClick={() => setIsOpen(false)}
           className="text-muted-foreground hover:text-foreground"
@@ -82,7 +82,7 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
       {submitted ? (
         <div className="p-6 text-center">
           <div className="mb-2 text-4xl">✅</div>
-          <h4 className="text-foreground mb-1 font-semibold">Thanks for your feedback!</h4>
+          <h4 className={cn('text-foreground mb-1 font-semibold', mode.font)}>Thanks for your feedback!</h4>
           <p className="text-muted-foreground text-sm">We appreciate your input.</p>
         </div>
       ) : (

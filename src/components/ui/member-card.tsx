@@ -212,7 +212,7 @@ const CompactMemberCard = React.forwardRef<HTMLDivElement, CompactMemberCardProp
 
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2">
-            <h4 className="text-foreground truncate text-sm font-semibold">{member.name}</h4>
+            <h4 className={cn('text-foreground truncate text-sm font-semibold', mode.font)}>{member.name}</h4>
             {member.status === 'online' && (
               <Badge variant="accent" className="px-2 py-0 text-xs">
                 Online
@@ -305,7 +305,7 @@ const FullMemberCard = React.forwardRef<HTMLDivElement, FullMemberCardProps>(
 
           <div className="w-full space-y-1 text-center">
             <div className="flex items-center justify-center gap-2">
-              <h3 className="text-foreground text-sm font-semibold">{member.name}</h3>
+              <h3 className={cn('text-foreground text-sm font-semibold', mode.font)}>{member.name}</h3>
               {member.status === 'online' && (
                 <Badge variant="accent" className="px-2 py-0.5 text-xs">
                   Online

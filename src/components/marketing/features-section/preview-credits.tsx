@@ -85,7 +85,7 @@ export function CreditsPreview() {
               className={cn(mode.font, 'text-muted-foreground text-xs')}
               whileHover={{ color: 'var(--color-primary)', x: 2 }}
             >
-              &gt; buy_credits
+              &gt; BUY CREDITS
             </motion.span>
           </div>
           <div className="text-right">

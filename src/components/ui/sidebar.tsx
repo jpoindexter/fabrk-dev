@@ -110,7 +110,7 @@ export function Sidebar({ items, defaultCollapsed = false, className, onItemClic
       )}
     >
       <div className="flex items-center justify-between border-b p-4">
-        {!isCollapsed && <h2 className="text-sm font-semibold">Navigation</h2>}
+        {!isCollapsed && <h2 className={cn('text-sm font-semibold', mode.font)}>Navigation</h2>}
         <Button
           variant="ghost"
           size="icon"

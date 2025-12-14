@@ -62,7 +62,7 @@ export function HowTo({
       <SchemaScript schema={schema} />
 
       <div className={className}>
-        <h2 className="text-foreground mb-2 text-4xl font-semibold">{title}</h2>
+        <h2 className={cn('text-foreground mb-2 text-4xl font-semibold', mode.font)}>{title}</h2>
         <p className="text-muted-foreground mb-8 text-sm">{description}</p>
 
         {(totalTime || estimatedCost) && (
@@ -93,7 +93,7 @@ export function HowTo({
               </div>
 
               <div className="flex-1">
-                <h3 className="text-foreground mb-2 text-sm font-semibold">{step.name}</h3>
+                <h3 className={cn('text-foreground mb-2 text-sm font-semibold', mode.font)}>{step.name}</h3>
                 <p className="text-muted-foreground">{step.text}</p>
 
                 {step.image && (

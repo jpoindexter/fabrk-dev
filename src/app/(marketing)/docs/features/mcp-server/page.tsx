@@ -139,7 +139,7 @@ export function PricingCard({ plan, price, features }) {
       </CardContent>
       <CardFooter>
         <Button className={cn(mode.radius, mode.font, 'w-full text-xs')}>
-          > GET_STARTED
+          > GET STARTED
         </Button>
       </CardFooter>
     </Card>

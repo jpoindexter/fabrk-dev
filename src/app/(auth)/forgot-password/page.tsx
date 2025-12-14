@@ -91,7 +91,7 @@ export default function ForgotPasswordPage() {
               variant="default"
               className={cn(mode.radius, mode.font, 'flex-1 text-xs')}
             >
-              <Link href="/login">&gt; BACK_TO_LOGIN</Link>
+              <Link href="/login">&gt; BACK TO LOGIN</Link>
             </Button>
           </div>
         </div>
@@ -146,7 +146,7 @@ export default function ForgotPasswordPage() {
           type="submit"
           disabled={loading}
         >
-          {loading ? '> SENDING...' : '> SEND_RESET_LINK'}
+          {loading ? '> SENDING...' : '> SEND RESET LINK'}
         </Button>
       </form>
 

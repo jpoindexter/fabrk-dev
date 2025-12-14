@@ -46,7 +46,7 @@ export function UsageLimits({ user }: UsageLimitsProps) {
       <div className="mb-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <AlertCircle className="text-primary focus-visible:ring-ring h-5 w-5 focus-visible:ring-2 focus-visible:outline-none" />
-          <h3 className="text-muted-foreground dark:text-muted-foreground font-semibold">
+          <h3 className={cn('text-muted-foreground dark:text-muted-foreground font-semibold', mode.font)}>
             Free Tier Usage Limits
           </h3>
         </div>

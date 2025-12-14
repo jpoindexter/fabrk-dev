@@ -32,7 +32,7 @@ export function TableToolbar({ table, onExportCSV }: TableToolbarProps) {
         <div className="relative max-w-sm flex-1">
           <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
           <Input
-            placeholder="search_users..."
+            placeholder="search users..."
             value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
             onChange={(event) => table.getColumn('name')?.setFilterValue(event.target.value)}
             className={cn(mode.radius, mode.font, 'pl-10 text-xs')}

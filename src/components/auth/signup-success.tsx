@@ -8,6 +8,8 @@
 
 import { Button } from '@/components/ui/button';
 import { CheckCircle } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export function SignupSuccessMessage({ email }: { email: string }) {
   const _successStyles = {
@@ -26,7 +28,7 @@ export function SignupSuccessMessage({ email }: { email: string }) {
   return (
     <div className="p-6 text-center">
       <CheckCircle className="text-primary dark:text-primary mx-auto h-16 w-16" />
-      <h2 className="m-4 text-xs font-semibold">Check your email</h2>
+      <h2 className={cn('m-4 text-xs font-semibold', mode.font)}>Check your email</h2>
       <p className="m-4">We&apos;ve sent a verification email to {email}</p>
       <p className="m-4 text-xs">Please click the link in the email to verify your account.</p>
       <Button className="focus-visible:ring-ring m-4 focus-visible:ring-2 focus-visible:outline-none">

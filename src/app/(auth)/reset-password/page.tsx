@@ -161,7 +161,7 @@ function ResetPasswordForm() {
           type="submit"
           disabled={loading}
         >
-          {loading ? '> RESETTING...' : '> RESET_PASSWORD'}
+          {loading ? '> RESETTING...' : '> RESET PASSWORD'}
         </Button>
       </form>
 

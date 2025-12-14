@@ -45,7 +45,7 @@ export function OrganizationPreview() {
               'border-primary text-primary hover:bg-primary hover:text-primary-foreground border px-2 py-1 text-xs transition-colors'
             )}
           >
-            + ADD_ORG
+            + ADD ORG
           </button>
         </div>
 

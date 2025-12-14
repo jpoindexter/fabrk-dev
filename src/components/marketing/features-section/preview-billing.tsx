@@ -89,7 +89,7 @@ export function BillingPreview() {
               className={cn(mode.font, 'text-muted-foreground text-xs')}
               whileHover={{ color: 'var(--color-primary)', x: 2 }}
             >
-              &gt; change_plan
+              &gt; CHANGE PLAN
             </motion.span>
           </div>
           <div className="text-right">
