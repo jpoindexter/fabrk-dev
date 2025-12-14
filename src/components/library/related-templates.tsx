@@ -3,6 +3,7 @@
  * Shows similar templates based on category and features
  * Uses the shared TemplateCard component for consistent styling
  */
+'use client';
 
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';

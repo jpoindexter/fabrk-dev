@@ -5,6 +5,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from '@/lib/security/rate-limit';
+import { createCheckoutSession, isPolarConfigured } from '@/lib/polar';
 import { logger } from '@/lib/logger';
 
 export async function POST(request: NextRequest) {
@@ -26,13 +27,40 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // DEVELOPMENT MODE: Always return mock checkout (Polar API disabled)
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
-  logger.info('[DEV MODE] Mock checkout created (Polar API disabled)');
-  return NextResponse.json({
-    checkoutUrl: `${baseUrl}/purchase/success?mock=true`,
-    checkoutId: 'mock-checkout-id',
-    _mock: true,
-    _dev: true,
-  });
+  // Check if Polar is configured
+  if (!isPolarConfigured()) {
+    logger.warn('Polar checkout attempted but POLAR_ACCESS_TOKEN not configured');
+    return NextResponse.json(
+      { error: 'Payment system not configured. Please contact support.' },
+      { status: 503 }
+    );
+  }
+
+  try {
+    const body = await request.json().catch(() => ({}));
+    const { email, discountId, metadata } = body;
+
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+    const successUrl = `${baseUrl}/purchase/success`;
+
+    const checkout = await createCheckoutSession({
+      customerEmail: email,
+      successUrl,
+      discountId,
+      metadata,
+    });
+
+    logger.info('Polar checkout session created', { checkoutId: checkout.id });
+
+    return NextResponse.json({
+      checkoutUrl: checkout.url,
+      checkoutId: checkout.id,
+    });
+  } catch (error) {
+    logger.error('Polar checkout error:', error);
+    return NextResponse.json(
+      { error: 'Failed to create checkout session. Please try again.' },
+      { status: 500 }
+    );
+  }
 }
