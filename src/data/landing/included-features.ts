@@ -20,8 +20,8 @@ export const INCLUDED_FEATURES = {
     'Git hooks for quality control',
   ],
   ui: [
-    '75+ production-ready UI components',
-    '18 theme variants (6 colors × 3 styles)',
+    '70+ production-ready UI components',
+    '12 terminal-inspired themes',
     'WCAG 2.1 AA accessibility compliance',
     'Fully responsive mobile design',
     'Dark mode support',

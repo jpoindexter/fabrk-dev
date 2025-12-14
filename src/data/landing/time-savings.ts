@@ -1,62 +1,52 @@
 /**
- * Time Savings Data - Breakdown showing where 215 hours come from
- * Used by: TimeSavingsSection
+ * Time Savings Data - Breakdown showing time saved (EXAMPLE)
+ * Used by: TimeSavingsSection component (boilerplate for buyers)
+ * Note: This is example data for demonstration purposes.
+ * Replace with your own time savings breakdown when customizing the boilerplate.
  */
 
 export const TIME_BREAKDOWN = [
   {
-    id: 'auth',
-    task: 'Authentication Setup',
+    id: 'example-1',
+    task: '[EXAMPLE] Feature Set 1',
     hours: 30,
-    activities: ['OAuth integration', 'Magic links', 'RBAC', 'Email verification', 'MFA/TOTP'],
+    activities: ['[EXAMPLE] Activity', '[EXAMPLE] Activity', '[EXAMPLE] Activity'],
   },
   {
-    id: 'payments',
-    task: 'Payment Integration',
+    id: 'example-2',
+    task: '[EXAMPLE] Feature Set 2',
     hours: 40,
-    activities: [
-      'Stripe setup',
-      'Webhooks',
-      'Customer portal',
-      'Invoice generation',
-      'Subscription management',
-    ],
+    activities: ['[EXAMPLE] Activity', '[EXAMPLE] Activity', '[EXAMPLE] Activity'],
   },
   {
-    id: 'multitenancy',
-    task: 'Multi-Tenancy Architecture',
+    id: 'example-3',
+    task: '[EXAMPLE] Feature Set 3',
     hours: 50,
-    activities: [
-      'Organizations',
-      'Team invites',
-      'Permissions',
-      'Team switching',
-      'Role management',
-    ],
+    activities: ['[EXAMPLE] Activity', '[EXAMPLE] Activity', '[EXAMPLE] Activity'],
   },
   {
-    id: 'ai-credits',
-    task: 'AI Credits System',
+    id: 'example-4',
+    task: '[EXAMPLE] Feature Set 4',
     hours: 25,
-    activities: ['Token metering', 'Usage tracking', 'Rate limiting', 'Tier allowances'],
+    activities: ['[EXAMPLE] Activity', '[EXAMPLE] Activity'],
   },
   {
-    id: 'design-system',
-    task: 'Design System',
+    id: 'example-5',
+    task: '[EXAMPLE] Feature Set 5',
     hours: 35,
-    activities: ['Component library', 'Theme system', 'Accessibility', 'Audit enforcement'],
+    activities: ['[EXAMPLE] Activity', '[EXAMPLE] Activity'],
   },
   {
-    id: 'email',
-    task: 'Email Templates',
+    id: 'example-6',
+    task: '[EXAMPLE] Feature Set 6',
     hours: 15,
-    activities: ['Transactional emails', 'Welcome series', 'Billing emails', 'Org invites'],
+    activities: ['[EXAMPLE] Activity', '[EXAMPLE] Activity'],
   },
   {
-    id: 'admin',
-    task: 'Admin Dashboard',
+    id: 'example-7',
+    task: '[EXAMPLE] Feature Set 7',
     hours: 20,
-    activities: ['User management', 'Analytics', 'Settings', 'Audit logs'],
+    activities: ['[EXAMPLE] Activity', '[EXAMPLE] Activity'],
   },
 ] as const;
 

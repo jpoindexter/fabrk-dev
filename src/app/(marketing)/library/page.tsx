@@ -137,21 +137,11 @@ export default function LibraryIndexPage() {
         <div>
           <div className="border-border mb-2 inline-block border px-3 py-1">
             <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-              [LIBRARY]: {templates.length} TEMPLATES
+              [LIBRARY]: 20+ TEMPLATES
             </span>
           </div>
           <h1 className={cn(mode.font, 'text-2xl font-semibold')}>Template Library</h1>
         </div>
-        <Link
-          href="/library/docs"
-          className={cn(
-            mode.font,
-            'text-primary hover:text-primary/80 flex items-center gap-2 text-sm transition-colors'
-          )}
-        >
-          <BookOpen className="h-4 w-4" />
-          &gt; DOCS
-        </Link>
       </div>
 
       {/* Search Bar - Prominent */}

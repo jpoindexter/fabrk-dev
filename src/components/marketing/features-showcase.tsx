@@ -57,10 +57,10 @@ export function FeaturesShowcase() {
             <CardHeader code="0x14" title="TOTAL VALUE" />
             <CardContent>
               <StatGroup>
-                <Stat label="Time Saved" value="215+ HOURS" />
-                <Stat label="Cost Saved" value="$32K+" />
-                <Stat label="Unique Features" value="3 PILLARS" />
-                <Stat label="Your Investment" value={PRICING.display.current} />
+                <Stat label="Components" value="70+" />
+                <Stat label="Themes" value="12" />
+                <Stat label="Providers" value="3" />
+                <Stat label="Launch Price" value={PRICING.display.launch} />
               </StatGroup>
             </CardContent>
           </Card>

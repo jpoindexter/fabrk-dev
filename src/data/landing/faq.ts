@@ -8,7 +8,7 @@ export const FAQ_QUESTIONS = [
     id: 'what-is-fabrk',
     question: 'What is Fabrk?',
     answer:
-      "Fabrk is a production-ready Next.js 15 SaaS boilerplate with 75+ components, authentication, billing, multi-tenancy, and a unique terminal-inspired design system. It's designed to help you ship your SaaS in days, not months.",
+      "Fabrk is a production-ready Next.js 16 SaaS boilerplate with 70+ components, authentication, billing, multi-tenancy, and a unique terminal-inspired design system. It's designed to help you ship your SaaS in days, not months.",
   },
   {
     id: 'license',
@@ -26,7 +26,7 @@ export const FAQ_QUESTIONS = [
     id: 'support',
     question: 'What kind of support do you provide?',
     answer:
-      'Premium support includes documentation, email support, and access to our Discord community. We help with setup, deployment, and customization questions.',
+      'Email support with 48-hour response time. Comprehensive documentation and setup guides included. We help with setup, deployment, and customization questions.',
   },
   {
     id: 'refunds',
@@ -38,13 +38,13 @@ export const FAQ_QUESTIONS = [
     id: 'tech-stack',
     question: 'What technologies are included?',
     answer:
-      'Next.js 15 (App Router), React 19, TypeScript, NextAuth v5, Stripe/Lemon Squeezy/Polar.sh, Prisma, PostgreSQL, Tailwind CSS 4, Radix UI, Framer Motion, and more. Full stack ready.',
+      'Next.js 16 (App Router), React 19, TypeScript, NextAuth v5, Stripe/Lemon Squeezy/Polar.sh, Prisma, PostgreSQL, Tailwind CSS 4, Radix UI, Framer Motion, and more. Full stack ready.',
   },
   {
     id: 'customization',
     question: 'Can I customize the design?',
     answer:
-      'Absolutely! Fabrk uses a centralized design system with theme switching (6 color themes × 3 visual styles = 18 combinations). All components are fully customizable.',
+      'Absolutely! Fabrk includes 12 terminal-inspired themes plus a theme generator for custom colors. All components are fully customizable with a centralized design system.',
   },
   {
     id: 'deployment',

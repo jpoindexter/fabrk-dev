@@ -8,9 +8,7 @@ import { HeroSection } from '@/components/marketing/hero-section';
 import { HeroPlaygroundFull } from '@/components/marketing/hero-playground-full';
 import { FeaturesShowcase } from '@/components/marketing/features-showcase';
 import { StatsSection } from '@/components/marketing/stats-section';
-import { TimeSavingsSection } from '@/components/marketing/time-savings-section';
 import { UseCasesSection } from '@/components/marketing/use-cases-section';
-import { ValueBreakdownSection } from '@/components/marketing/value-breakdown-section';
 import { PricingSection } from '@/components/marketing/pricing-section';
 import { WhatsIncludedSection } from '@/components/marketing/whats-included-section';
 import { FAQSection } from '@/components/marketing/faq-section';
@@ -33,16 +31,10 @@ export default function HomePage() {
       {/* Trust Indicators - Updated with verifiable stats */}
       <StatsSection />
 
-      {/* Time Savings Breakdown - NEW: Shows where 215 hours come from */}
-      <TimeSavingsSection />
-
       {/* Target Personas - Who Fabrk is for */}
       <UseCasesSection />
 
-      {/* Value Breakdown - NEW: Receipt showing $51K+ value for $399 */}
-      <ValueBreakdownSection />
-
-      {/* Pricing - With urgency (Dec 31 deadline, 50 licenses left) */}
+      {/* Pricing - Launch price ($199) for first 100 buyers */}
       <PricingSection />
 
       {/* What's Included - NEW: Auth/Billing/Multi-tenancy checklist */}
@@ -58,7 +50,7 @@ export default function HomePage() {
       <StickyCTABar message="Launch your SaaS in days, not months" ctaText="Get Fabrk Now" />
       <ExitIntentPopup
         title="Wait! Before You Go..."
-        description="Get Fabrk and launch your SaaS 10x faster. 75+ components, authentication, payments, and more."
+        description="Get Fabrk and launch your SaaS 10x faster. 70+ components, authentication, payments, and more."
         ctaText="Get Fabrk Now"
       />
     </>

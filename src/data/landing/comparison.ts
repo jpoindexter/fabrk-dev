@@ -6,7 +6,7 @@ export const COMPARISON_FEATURES = [
   {
     id: 'components',
     name: 'Components',
-    fabrk: '75+',
+    fabrk: '70+',
     shipfast: '~40',
     magicui: '~150',
     saasboldkit: '~60',
@@ -70,7 +70,7 @@ export const COMPARISON_FEATURES = [
   {
     id: 'price',
     name: 'Price',
-    fabrk: '$399',
+    fabrk: '$299',
     shipfast: '$169',
     magicui: '$199',
     saasboldkit: '$499',

@@ -897,12 +897,12 @@ export function HeroPlaygroundFull() {
   ];
 
   return (
-    <section className="border-border bg-muted/20 border-t py-16">
+    <section className="border-border border-t py-16">
       <div className="container mx-auto max-w-[1800px] px-12 lg:px-24">
-        {/* Header with tabs and theme indicator */}
-        <div className="mb-8 flex items-center justify-between">
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1">
-            <TabsList>
+        {/* Header with tabs */}
+        <div className="mb-8">
+          <Tabs value={activeTab} onValueChange={setActiveTab}>
+            <TabsList className="bg-transparent">
               {tabs.map((tab) => (
                 <TabsTrigger key={tab.id} value={tab.id}>
                   {tab.label}
@@ -910,18 +910,6 @@ export function HeroPlaygroundFull() {
               ))}
             </TabsList>
           </Tabs>
-
-          <div className={cn('flex items-center gap-2 text-xs', mode.font, mode.color.text.muted)}>
-            <span>THEME:</span>
-            <span className={mode.color.text.accent}>TERMINAL</span>
-            <span className={mode.color.text.muted}>
-              (18 variants at{' '}
-              <a href="/library" className="hover:underline">
-                /library
-              </a>
-              )
-            </span>
-          </div>
         </div>
 
         {/* Tab Content */}

@@ -253,16 +253,16 @@ const config = {
   pricing: {
     // Fabrk boilerplate pricing (one-time purchase)
     fabrk: {
-      current: 399, // One-time price for Fabrk boilerplate
-      original: 499, // Original price before launch discount (expires 02/01/2026)
+      current: 199, // Launch price (first 100 buyers)
+      original: 299, // Regular price after launch
       currency: 'USD',
       display: {
-        current: '$399',
-        original: '$499',
+        current: '$199',
+        original: '$299',
       },
       billingModel: 'one-time',
       launchDiscount: true,
-      discountExpiresAt: '2026-02-01',
+      discountLabel: 'First 100 buyers',
     },
     // Competitor pricing (for comparison tables)
     competitors: {

@@ -57,13 +57,13 @@ export const CORE_BENEFITS = [
     module: 'SHIP_FAST',
     code: '0x12',
     title: 'Production Quality',
-    benefit: '75+ components that actually work in production',
+    benefit: '70+ components that actually work in production',
     description:
       'Full dashboards: analytics, billing, user management, profile. TypeScript strict mode (no "any" soup). Git hooks BLOCK bad code before commit. 130+ tests with accessibility validation. Real error handling, loading states, edge cases.',
     timeSaved: '200+ HRS',
     costSaved: '$16K',
     features: [
-      '75+ Production Components',
+      '70+ Production Components',
       'TypeScript Strict (No "Any" Soup)',
       'Git Hooks Block Bad Code',
       '130+ Tests + A11y Validation',

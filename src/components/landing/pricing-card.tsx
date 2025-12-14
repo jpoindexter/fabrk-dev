@@ -35,7 +35,7 @@ export function PricingCard({
         <div className="mb-4">
           <div className="flex items-baseline gap-4">
             <span className={cn('text-base line-through', mode.color.text.muted, mode.font)}>
-              {PRICING.display.original}
+              {PRICING.display.regular}
             </span>
             <span className={cn('text-sm', mode.color.text.muted, mode.font)}>→</span>
             <span
@@ -45,7 +45,7 @@ export function PricingCard({
                 mode.font
               )}
             >
-              {PRICING.display.current}
+              {PRICING.display.launch}
             </span>
           </div>
           <div className={cn('mt-4 text-sm', mode.color.text.muted, mode.font)}>
@@ -84,7 +84,7 @@ export function PricingCard({
             mode.font
           )}
         >
-          {PRICING.cta.label} — {PRICING.display.current}
+          {PRICING.cta.label} — {PRICING.display.launch}
         </PolarCheckoutButton>
 
         {/* Trust line */}
