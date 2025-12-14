@@ -12,11 +12,27 @@ import { cn } from '@/lib/utils';
 import { InputSearch } from '@/components/ui/input-search';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+  PaginationEllipsis,
+} from '@/components/ui/pagination';
 import { templates, categories } from './library-data';
 import { filterTemplates } from '@/lib/search';
 import { AdvancedFilters, TemplateCard, type FilterOptions } from '@/components/library';
 
-const INITIAL_DISPLAY_COUNT = 9;
+const ITEMS_PER_PAGE = 9;
 
 type SortOption = 'relevance' | 'name' | 'newest' | 'popular';
 
@@ -26,7 +42,7 @@ export default function LibraryIndexPage() {
   const [showFilters, setShowFilters] = useState(false);
   const [advancedFilters, setAdvancedFilters] = useState<FilterOptions>({});
   const [sortBy, setSortBy] = useState<SortOption>('relevance');
-  const [displayCount, setDisplayCount] = useState(INITIAL_DISPLAY_COUNT);
+  const [currentPage, setCurrentPage] = useState(1);
 
   // Filter templates with fuzzy search
   const filteredTemplates = filterTemplates(templates, {
@@ -70,24 +86,48 @@ export default function LibraryIndexPage() {
     }
   });
 
-  // Paginated display
-  const displayedTemplates = sortedTemplates.slice(0, displayCount);
-  const hasMore = displayCount < sortedTemplates.length;
+  // Pagination
+  const totalPages = Math.ceil(sortedTemplates.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const displayedTemplates = sortedTemplates.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   const handleClearFilters = () => {
     setAdvancedFilters({});
     setSelectedCategory('all');
     setSearchQuery('');
+    setCurrentPage(1);
   };
 
-  const handleLoadMore = () => {
-    setDisplayCount((prev) => prev + INITIAL_DISPLAY_COUNT);
-  };
-
-  // Reset display count when filters change
+  // Reset page when filters change
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category);
-    setDisplayCount(INITIAL_DISPLAY_COUNT);
+    setCurrentPage(1);
+  };
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Generate page numbers to show
+  const getPageNumbers = () => {
+    const pages: (number | 'ellipsis')[] = [];
+    if (totalPages <= 5) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+    } else {
+      pages.push(1);
+      if (currentPage > 3) pages.push('ellipsis');
+      for (
+        let i = Math.max(2, currentPage - 1);
+        i <= Math.min(totalPages - 1, currentPage + 1);
+        i++
+      ) {
+        pages.push(i);
+      }
+      if (currentPage < totalPages - 2) pages.push('ellipsis');
+      pages.push(totalPages);
+    }
+    return pages;
   };
 
   return (
@@ -122,7 +162,7 @@ export default function LibraryIndexPage() {
           value={searchQuery}
           onValueChange={(value) => {
             setSearchQuery(value);
-            setDisplayCount(INITIAL_DISPLAY_COUNT);
+            setCurrentPage(1);
           }}
           className={cn(
             mode.radius,
@@ -148,90 +188,68 @@ export default function LibraryIndexPage() {
           meta={`${sortedTemplates.length} found`}
         />
         <CardContent padding="md">
-          {/* Sort + Actions Row */}
-          <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            {/* Sort Options */}
+          {/* Filter Row - Category dropdown left, Sort dropdown + Filters right */}
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            {/* Category Dropdown */}
             <div className="flex items-center gap-2">
-              <span className={cn(mode.font, 'text-muted-foreground text-xs')}>[SORT]:</span>
-              <div className="flex gap-1" role="group" aria-label="Sort options">
-                {[
-                  { id: 'relevance' as const, label: 'RELEVANCE' },
-                  { id: 'popular' as const, label: 'POPULAR' },
-                  { id: 'newest' as const, label: 'NEWEST' },
-                  { id: 'name' as const, label: 'A-Z' },
-                ].map((option) => (
-                  <button
-                    key={option.id}
-                    onClick={() => setSortBy(option.id)}
-                    aria-pressed={sortBy === option.id}
-                    className={cn(
-                      mode.font,
-                      'border-border min-h-[44px] px-4 py-2 text-xs transition-all',
-                      sortBy === option.id
-                        ? 'bg-primary text-primary-foreground border'
-                        : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground border'
-                    )}
-                  >
-                    {option.label}
-                  </button>
-                ))}
-              </div>
+              <span className={cn(mode.font, 'text-muted-foreground text-xs')}>CATEGORY:</span>
+              <Select value={selectedCategory} onValueChange={handleCategoryChange}>
+                <SelectTrigger className={cn(mode.radius, mode.font, 'w-[180px] text-xs')}>
+                  <SelectValue placeholder="Select category" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all" className="text-xs">
+                    ALL ({templates.length})
+                  </SelectItem>
+                  {categories
+                    .filter((c) => c.id !== 'components')
+                    .map((category) => {
+                      const count = templates.filter((t) => t.category === category.id).length;
+                      return (
+                        <SelectItem key={category.id} value={category.id} className="text-xs">
+                          {category.name.toUpperCase()} ({count})
+                        </SelectItem>
+                      );
+                    })}
+                </SelectContent>
+              </Select>
             </div>
 
-            {/* Advanced Filters */}
-            <Button
-              onClick={() => setShowFilters(!showFilters)}
-              variant={showFilters || activeFilterCount > 0 ? 'default' : 'outline'}
-              size="default"
-              aria-pressed={showFilters}
-              aria-expanded={showFilters}
-              className={cn(mode.radius, mode.font, 'min-h-[44px] text-xs')}
-            >
-              <SlidersHorizontal className="mr-2 h-4 w-4" />
-              FILTERS{activeFilterCount > 0 && ` (${activeFilterCount})`}
-            </Button>
-          </div>
+            {/* Sort Dropdown + Filters Button */}
+            <div className="flex items-center gap-2">
+              <span className={cn(mode.font, 'text-muted-foreground text-xs')}>SORT:</span>
+              <Select value={sortBy} onValueChange={(v) => setSortBy(v as SortOption)}>
+                <SelectTrigger className={cn(mode.radius, mode.font, 'w-[140px] text-xs')}>
+                  <SelectValue placeholder="Sort by" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="relevance" className="text-xs">
+                    RELEVANCE
+                  </SelectItem>
+                  <SelectItem value="popular" className="text-xs">
+                    POPULAR
+                  </SelectItem>
+                  <SelectItem value="newest" className="text-xs">
+                    NEWEST
+                  </SelectItem>
+                  <SelectItem value="name" className="text-xs">
+                    A-Z
+                  </SelectItem>
+                </SelectContent>
+              </Select>
 
-          {/* Category Pills */}
-          <div className="border-border border-t pt-4">
-            <div className={cn(mode.font, 'text-muted-foreground mb-3 text-xs')}>[CATEGORY]:</div>
-            <div className="flex flex-wrap gap-2" role="group" aria-label="Category filter">
-              <button
-                onClick={() => handleCategoryChange('all')}
-                aria-pressed={selectedCategory === 'all'}
-                className={cn(
-                  mode.font,
-                  'border-border min-h-[44px] px-4 py-2 text-xs transition-all',
-                  selectedCategory === 'all'
-                    ? 'bg-primary text-primary-foreground border'
-                    : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground border'
-                )}
+              {/* Advanced Filters */}
+              <Button
+                onClick={() => setShowFilters(!showFilters)}
+                variant={showFilters || activeFilterCount > 0 ? 'default' : 'outline'}
+                size="default"
+                aria-pressed={showFilters}
+                aria-expanded={showFilters}
+                className={cn(mode.radius, mode.font, 'min-h-[44px] text-xs')}
               >
-                ALL ({templates.length})
-              </button>
-              {categories
-                .filter((c) => c.id !== 'components')
-                .map((category) => {
-                  const count = templates.filter((t) => t.category === category.id).length;
-                  const Icon = category.icon;
-                  return (
-                    <button
-                      key={category.id}
-                      onClick={() => handleCategoryChange(category.id)}
-                      aria-pressed={selectedCategory === category.id}
-                      className={cn(
-                        mode.font,
-                        'border-border flex min-h-[44px] items-center gap-2 px-4 py-2 text-xs transition-all',
-                        selectedCategory === category.id
-                          ? 'bg-primary text-primary-foreground border'
-                          : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground border'
-                      )}
-                    >
-                      <Icon className="h-3 w-3" />
-                      {category.name.toUpperCase()} ({count})
-                    </button>
-                  );
-                })}
+                <SlidersHorizontal className="mr-2 h-4 w-4" />
+                FILTERS{activeFilterCount > 0 && ` (${activeFilterCount})`}
+              </Button>
             </div>
           </div>
 
@@ -313,18 +331,49 @@ export default function LibraryIndexPage() {
             ))}
           </div>
 
-          {/* Load More */}
-          {hasMore && (
-            <div className="flex justify-center pt-4">
-              <Button
-                onClick={handleLoadMore}
-                variant="outline"
-                size="lg"
-                className={cn(mode.radius, mode.font, 'min-h-[44px]')}
-              >
-                &gt; LOAD MORE ({sortedTemplates.length - displayCount} remaining)
-              </Button>
-            </div>
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <Pagination className="pt-6">
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationPrevious
+                    onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
+                    className={cn(
+                      currentPage === 1 && 'pointer-events-none opacity-50',
+                      'min-h-[44px]'
+                    )}
+                  />
+                </PaginationItem>
+
+                {getPageNumbers().map((page, idx) =>
+                  page === 'ellipsis' ? (
+                    <PaginationItem key={`ellipsis-${idx}`}>
+                      <PaginationEllipsis />
+                    </PaginationItem>
+                  ) : (
+                    <PaginationItem key={page}>
+                      <PaginationLink
+                        onClick={() => handlePageChange(page)}
+                        isActive={currentPage === page}
+                        className="min-h-[44px] min-w-[44px]"
+                      >
+                        {page}
+                      </PaginationLink>
+                    </PaginationItem>
+                  )
+                )}
+
+                <PaginationItem>
+                  <PaginationNext
+                    onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
+                    className={cn(
+                      currentPage === totalPages && 'pointer-events-none opacity-50',
+                      'min-h-[44px]'
+                    )}
+                  />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
           )}
         </>
       )}
