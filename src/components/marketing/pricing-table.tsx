@@ -176,9 +176,11 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                       <div className="flex flex-col items-start gap-2">
                         <div>
                           <h3
-                            className={`text-xl font-semibold ${
+                            className={cn(
+                              'text-xl font-semibold',
+                              mode.font,
                               plan.highlighted ? 'text-primary-foreground' : 'text-foreground'
-                            }`}
+                            )}
                           >
                             {plan.name}
                           </h3>

@@ -101,7 +101,7 @@ function AuthDemo() {
             <div className="bg-border h-px flex-1" />
           </div>
           <Button variant="outline" className={cn('w-full', mode.radius, mode.font, 'text-xs')}>
-            &gt; CONTINUE_WITH_GOOGLE
+            &gt; CONTINUE WITH GOOGLE
           </Button>
         </CardContent>
       </Card>

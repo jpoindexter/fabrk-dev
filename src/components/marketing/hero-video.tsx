@@ -90,7 +90,7 @@ export function HeroVideo({
           <p
             className={cn(
               mode.font,
-              'text-foreground/90 mx-auto mb-12 max-w-2xl text-lg leading-relaxed sm:text-xl'
+              'text-foreground/90 mx-auto mb-12 max-w-2xl text-sm leading-relaxed sm:text-base'
             )}
           >
             &gt; {subheadline}

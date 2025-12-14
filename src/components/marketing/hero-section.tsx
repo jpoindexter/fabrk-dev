@@ -185,7 +185,7 @@ export function HeroSection() {
                   <div className={cn('text-sm font-bold', mode.font, mode.color.text.muted)}>
                     FROM IDEA
                   </div>
-                  <div className={cn('text-lg font-bold', mode.font, mode.color.text.accent)}>
+                  <div className={cn('text-sm font-bold', mode.font, mode.color.text.accent)}>
                     │
                   </div>
                   <div className={cn('text-sm font-bold', mode.font, mode.color.text.success)}>
