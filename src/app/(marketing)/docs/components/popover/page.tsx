@@ -277,58 +277,58 @@ export default function PopoverPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-4 text-sm font-semibold">✓ Use Popover when:</p>
+              <p className="text-success mb-4 text-xs font-semibold">✓ Use Popover when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Interactive content needed (forms, inputs, buttons, links)
                 </li>
-                <li className="text-sm">• Quick settings or filters attached to trigger element</li>
-                <li className="text-sm">
+                <li className="text-xs">• Quick settings or filters attached to trigger element</li>
+                <li className="text-xs">
                   • Help content with formatting, links, or selectable text
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Rich formatting needed (headings, lists, multiple paragraphs)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Content should persist until user explicitly closes it
                 </li>
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-xs font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">• Simple hover text with no interaction (use Tooltip)</li>
-                <li className="text-sm">
+                <li className="text-xs">• Simple hover text with no interaction (use Tooltip)</li>
+                <li className="text-xs">
                   • Requires full modal with backdrop blocking page (use Dialog)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Primary navigation or menu actions (use Dropdown Menu)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Critical decisions or destructive actions (use Alert Dialog)
                 </li>
-                <li className="text-sm">• Large forms or multi-step workflows (use Dialog)</li>
+                <li className="text-xs">• Large forms or multi-step workflows (use Dialog)</li>
               </ul>
             </div>
             <div className="border-border border-t pt-4">
               <p className="mb-2 text-sm font-semibold">Popover vs Tooltip vs Dialog:</p>
               <ul className="space-y-1">
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>Popover</strong>: Interactive, click to open, rich content with
                   forms/links
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>Tooltip</strong>: Non-interactive, hover/focus, plain text (1-2 lines)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>Dialog</strong>: Modal overlay, complex workflows, blocks page
                   interaction
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Use align prop (start/center/end) to control positioning
                 </li>
-                <li className="text-sm">• Set modal=true to block page interaction when open</li>
-                <li className="text-sm">
+                <li className="text-xs">• Set modal=true to block page interaction when open</li>
+                <li className="text-xs">
                   • Keep content concise - if it needs scrolling, consider Dialog instead
                 </li>
               </ul>

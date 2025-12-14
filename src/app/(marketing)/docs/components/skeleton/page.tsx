@@ -208,63 +208,63 @@ export default function SkeletonPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-4 text-sm font-semibold">✓ Use Skeleton when:</p>
+              <p className="text-success mb-4 text-xs font-semibold">✓ Use Skeleton when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Loading data from API or database (user lists, product grids, content pages)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Placeholder for content being fetched (prevents blank screen during load)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Lazy-loaded images or components (show skeleton until loaded)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Progressive page rendering (show skeleton, then replace with real content)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Layout needs to match final content shape (prevents layout shift)
                 </li>
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-xs font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">• Content loads instantly (no need for placeholder)</li>
-                <li className="text-sm">
+                <li className="text-xs">• Content loads instantly (no need for placeholder)</li>
+                <li className="text-xs">
                   • Indeterminate loading with unknown duration (use Loading component instead)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Small inline elements (use shimmer effect or simple loading text)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Background operations user doesn&apos;t wait for (use Toast when complete)
                 </li>
-                <li className="text-sm">• Static placeholders that never load content</li>
+                <li className="text-xs">• Static placeholders that never load content</li>
               </ul>
             </div>
             <div className="border-border border-t pt-4">
               <p className="mb-2 text-sm font-semibold">Best Practices:</p>
               <ul className="space-y-1">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Match skeleton layout to actual content (same height, width, structure)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Use appropriate shapes: rounded-none for terminal style, w-12 h-12 for avatars
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Vary widths for text lines (w-[250px], w-[200px], w-[150px] for natural look)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Group skeleton items to match final layout (lists, cards, grids)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Add aria-busy=&quot;true&quot; to parent containers for screen readers
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Replace skeleton with real content smoothly (avoid jarring transitions)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Show multiple skeleton items for lists (3-5 items typical)
                 </li>
               </ul>

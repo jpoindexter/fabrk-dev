@@ -124,48 +124,48 @@ export default function InputPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-4 text-sm font-semibold">✓ Use Input when:</p>
+              <p className="text-success mb-4 text-xs font-semibold">✓ Use Input when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Collecting single-line text data (name, email, search)
                 </li>
-                <li className="text-sm">• User needs to enter short, freeform text</li>
-                <li className="text-sm">
+                <li className="text-xs">• User needs to enter short, freeform text</li>
+                <li className="text-xs">
                   • You need real-time validation feedback (error/success states)
                 </li>
-                <li className="text-sm">• Loading indicator needed during async validation</li>
+                <li className="text-xs">• Loading indicator needed during async validation</li>
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-xs font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">• Multi-line text needed (use Textarea instead)</li>
-                <li className="text-sm">
+                <li className="text-xs">• Multi-line text needed (use Textarea instead)</li>
+                <li className="text-xs">
                   • Password entry (use Input Password for show/hide functionality)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Selecting from predefined options (use Select or Radio Group)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Numeric input with increment/decrement (use Input Number)
                 </li>
-                <li className="text-sm">• Date selection (use Date Picker for calendar UI)</li>
+                <li className="text-xs">• Date selection (use Date Picker for calendar UI)</li>
               </ul>
             </div>
             <div className="border-border border-t pt-4">
               <p className="mb-2 text-sm font-semibold">State Usage:</p>
               <ul className="space-y-1">
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>error</strong>: Show validation errors immediately after blur or submit
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>success</strong>: Confirm valid input (email verified, username
                   available)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>loading</strong>: Async validation in progress (checking availability)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>disabled</strong>: Field not editable in current context
                 </li>
               </ul>

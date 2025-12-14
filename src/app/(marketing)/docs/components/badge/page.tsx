@@ -213,28 +213,28 @@ export default function BadgePage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-4 text-sm font-semibold">✓ Use Badge when:</p>
+              <p className="text-success mb-4 text-xs font-semibold">✓ Use Badge when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Displaying status or state (active, pending, completed)
                 </li>
-                <li className="text-sm">• Labeling content with categories or tags</li>
-                <li className="text-sm">• Highlighting important metadata (new, beta, pro)</li>
-                <li className="text-sm">• Showing counts or quantities inline with text</li>
-                <li className="text-sm">
+                <li className="text-xs">• Labeling content with categories or tags</li>
+                <li className="text-xs">• Highlighting important metadata (new, beta, pro)</li>
+                <li className="text-xs">• Showing counts or quantities inline with text</li>
+                <li className="text-xs">
                   • Compact visual indicators without full button emphasis
                 </li>
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-xs font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">• Triggering actions (use Button instead)</li>
-                <li className="text-sm">• Long text content (badges should be 1-2 words max)</li>
-                <li className="text-sm">
+                <li className="text-xs">• Triggering actions (use Button instead)</li>
+                <li className="text-xs">• Long text content (badges should be 1-2 words max)</li>
+                <li className="text-xs">
                   • Notification indicators (use Notification Badge for count bubbles)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Important alerts (use Alert component for critical messages)
                 </li>
               </ul>
@@ -242,22 +242,22 @@ export default function BadgePage() {
             <div className="border-border border-t pt-4">
               <p className="mb-2 text-sm font-semibold">Variant Selection:</p>
               <ul className="space-y-1">
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>default</strong>: Primary status or emphasis
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>secondary</strong>: Muted or neutral status
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>accent</strong>: Highlighted or important information
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>destructive</strong>: Error states, warnings, negative status
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>neutral</strong>: Subtle background, low emphasis
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>outline</strong>: Minimal style, transparent background
                 </li>
               </ul>

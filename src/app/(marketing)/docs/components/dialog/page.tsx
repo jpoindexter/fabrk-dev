@@ -311,39 +311,39 @@ export default function DialogPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-4 text-sm font-semibold">✓ Use Dialog when:</p>
+              <p className="text-success mb-4 text-xs font-semibold">✓ Use Dialog when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Complex forms requiring multiple inputs (edit profile, create project)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Multi-step workflows that need focused attention (onboarding, setup wizard)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Important information requiring user interaction before proceeding
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Content preview or detailed view (image gallery, document viewer)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • User must respond or complete action before returning to page
                 </li>
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-xs font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Quick feedback needed (use Toast for temporary notifications)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Simple yes/no confirmation (use Alert Dialog for single decision)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Persistent warnings that shouldn&apos;t block page (use Alert inline)
                 </li>
-                <li className="text-sm">• Non-blocking information (use Popover or Tooltip)</li>
-                <li className="text-sm">
+                <li className="text-xs">• Non-blocking information (use Popover or Tooltip)</li>
+                <li className="text-xs">
                   • Navigation to different page (use proper routing instead)
                 </li>
               </ul>
@@ -351,21 +351,21 @@ export default function DialogPage() {
             <div className="border-border border-t pt-4">
               <p className="mb-2 text-sm font-semibold">Dialog vs Alert Dialog:</p>
               <ul className="space-y-1">
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>Dialog</strong>: Complex forms, multiple inputs, flexible content
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>Alert Dialog</strong>: Single decision, confirm/cancel, destructive
                   actions
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>Dialog</strong>: Edit profile (name, email, bio, avatar)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>Alert Dialog</strong>: &quot;Delete this file?&quot; (just
                   confirm/cancel)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Use controlled state (open/onOpenChange) for programmatic control
                 </li>
               </ul>

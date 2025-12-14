@@ -217,62 +217,62 @@ tracking-normal      // Letter spacing`,
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-4 text-sm font-semibold">✓ Use Label when:</p>
+              <p className="text-success mb-4 text-xs font-semibold">✓ Use Label when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Every form input needs accessible text association (Input, Checkbox, Switch)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Indicating required fields with asterisk (*) for error prevention
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Showing error states on invalid form fields (red text)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Connecting clickable labels to form controls (click label focuses input)
                 </li>
-                <li className="text-sm">• Following accessibility best practices (WCAG 3.3.2)</li>
+                <li className="text-xs">• Following accessibility best practices (WCAG 3.3.2)</li>
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-xs font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Input has no visible label (use aria-label on input instead)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Decorative text that doesn&apos;t describe the input (use plain span)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Button text (buttons are self-labeling, no label needed)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Section headings or group labels (use heading tags instead)
                 </li>
-                <li className="text-sm">• Non-form elements (tables, lists, etc.)</li>
+                <li className="text-xs">• Non-form elements (tables, lists, etc.)</li>
               </ul>
             </div>
             <div className="border-border border-t pt-4">
               <p className="mb-2 text-sm font-semibold">Best Practices:</p>
               <ul className="space-y-1">
-                <li className="text-sm">• Always use htmlFor to associate label with input ID</li>
-                <li className="text-sm">
+                <li className="text-xs">• Always use htmlFor to associate label with input ID</li>
+                <li className="text-xs">
                   • Add required prop to show asterisk (*) for mandatory fields
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Use error prop to highlight invalid fields with red text
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Wrap text with formatLabel() for terminal aesthetic (brackets)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Position labels above inputs for forms (vertical layout)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Place labels inline for checkboxes and switches (horizontal)
                 </li>
-                <li className="text-sm">• Keep label text concise (1-3 words) and descriptive</li>
-                <li className="text-sm">
+                <li className="text-xs">• Keep label text concise (1-3 words) and descriptive</li>
+                <li className="text-xs">
                   • Use peer-disabled styles to reduce opacity when input is disabled
                 </li>
               </ul>

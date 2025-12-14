@@ -144,33 +144,33 @@ export default function SwitchPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-4 text-sm font-semibold">✓ Use Switch when:</p>
+              <p className="text-success mb-4 text-xs font-semibold">✓ Use Switch when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Toggling a setting that takes effect immediately (dark mode, notifications)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Binary on/off state with instant feedback (enable feature, activate API)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • User controls system behavior in real-time (auto-save, live preview)
                 </li>
-                <li className="text-sm">• Settings page with multiple independent toggles</li>
+                <li className="text-xs">• Settings page with multiple independent toggles</li>
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-xs font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Change requires explicit save/submit action (use Checkbox + Button)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Selecting from multiple mutually exclusive options (use Radio Group)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • User needs to opt-in to legal terms (use Checkbox for explicit agreement)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Immediate toggle could cause data loss (use Checkbox + confirmation)
                 </li>
               </ul>
@@ -178,16 +178,16 @@ export default function SwitchPage() {
             <div className="border-border border-t pt-4">
               <p className="mb-2 text-sm font-semibold">Switch vs Checkbox:</p>
               <ul className="space-y-1">
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>Switch</strong>: Instant action (toggle WiFi, enable notifications)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>Checkbox</strong>: Submit action (terms agreement, filter selection)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>Switch</strong>: Physical device metaphor (on/off switch)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>Checkbox</strong>: Form input metaphor (check a box)
                 </li>
               </ul>

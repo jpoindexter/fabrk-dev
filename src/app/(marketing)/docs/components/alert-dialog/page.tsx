@@ -313,41 +313,41 @@ export default function AlertDialogPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-4 text-sm font-semibold">✓ Use Alert Dialog when:</p>
+              <p className="text-success mb-4 text-xs font-semibold">✓ Use Alert Dialog when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Simple yes/no decision required (delete, confirm, proceed)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Destructive actions needing explicit confirmation (delete account, remove data)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Critical warnings that must be acknowledged before proceeding
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Single action with clear consequences (logout, discard changes)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Blocking user from proceeding without decision (terms acceptance)
                 </li>
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-xs font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Complex forms with multiple inputs (use Dialog instead)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Temporary action feedback (use Toast for success/error messages)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Persistent warnings that shouldn&apos;t block page (use Alert inline)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Multiple actions or options needed (use Dialog for flexibility)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Non-critical information that can be dismissed (use Toast or Alert)
                 </li>
               </ul>
@@ -355,24 +355,24 @@ export default function AlertDialogPage() {
             <div className="border-border border-t pt-4">
               <p className="mb-2 text-sm font-semibold">Best Practices:</p>
               <ul className="space-y-1">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Always provide both Cancel and Action buttons (gives user clear choice)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Use destructive styling for dangerous actions (red action button)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Keep title short and clear: &quot;Delete file?&quot; not &quot;Are you sure you
                   want to delete this file?&quot;
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Description explains consequences: &quot;This action cannot be undone&quot;
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Action button text matches the action: &quot;Delete&quot;, &quot;Remove&quot;,
                   &quot;Confirm&quot;
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • AlertDialog for single decision, Dialog for complex forms/workflows
                 </li>
               </ul>

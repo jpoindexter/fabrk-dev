@@ -285,38 +285,38 @@ export default function SheetPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-4 text-sm font-semibold">✓ Use Sheet when:</p>
+              <p className="text-success mb-4 text-xs font-semibold">✓ Use Sheet when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Secondary navigation or sidebar that should overlay content (mobile menus,
                   filters)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Forms or settings that are contextual to the page (edit profile, preferences)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Task panel or detailed information without leaving the page
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Content needs to slide in from edge of screen (more directional than Dialog)
                 </li>
-                <li className="text-sm">• Shopping cart, notification panel, or activity feed</li>
+                <li className="text-xs">• Shopping cart, notification panel, or activity feed</li>
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-xs font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">• Simple confirmation or alert (use Alert Dialog)</li>
-                <li className="text-sm">
+                <li className="text-xs">• Simple confirmation or alert (use Alert Dialog)</li>
+                <li className="text-xs">
                   • Critical action requiring focus (use Dialog centered on screen)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Content is better as a full page (navigation to new route)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Mobile-only navigation menu (consider responsive Navbar instead)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Complex multi-step wizard (use Dialog or dedicated page)
                 </li>
               </ul>
@@ -324,26 +324,26 @@ export default function SheetPage() {
             <div className="border-border border-t pt-4">
               <p className="mb-2 text-sm font-semibold">Best Practices:</p>
               <ul className="space-y-1">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Use side=&quot;right&quot; for most forms and contextual content (default)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Use side=&quot;left&quot; for navigation menus (follows drawer pattern)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Use side=&quot;bottom&quot; for mobile-friendly action sheets
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Always include SheetTitle and SheetDescription for accessibility
                 </li>
-                <li className="text-sm">• Add SheetFooter with actions (Save, Cancel) for forms</li>
-                <li className="text-sm">
+                <li className="text-xs">• Add SheetFooter with actions (Save, Cancel) for forms</li>
+                <li className="text-xs">
                   • Control state with open and onOpenChange for programmatic control
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Keep content focused - sheet is not a full page replacement
                 </li>
-                <li className="text-sm">• Use SheetTrigger with asChild to avoid nested buttons</li>
+                <li className="text-xs">• Use SheetTrigger with asChild to avoid nested buttons</li>
               </ul>
             </div>
           </div>

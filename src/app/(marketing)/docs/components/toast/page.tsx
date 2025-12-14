@@ -290,37 +290,37 @@ async function handleSubmit() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-4 text-sm font-semibold">✓ Use Toast when:</p>
+              <p className="text-success mb-4 text-xs font-semibold">✓ Use Toast when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Providing temporary feedback for user actions (saved, deleted, copied)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Non-critical notifications that don&apos;t require user decision
                 </li>
-                <li className="text-sm">• Auto-dismiss is appropriate (3-5 seconds typical)</li>
-                <li className="text-sm">
+                <li className="text-xs">• Auto-dismiss is appropriate (3-5 seconds typical)</li>
+                <li className="text-xs">
                   • Quick status updates (upload progress, background tasks)
                 </li>
-                <li className="text-sm">• Undo actions with action button (delete with undo)</li>
+                <li className="text-xs">• Undo actions with action button (delete with undo)</li>
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-xs font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Information must persist until user acknowledges (use Alert)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • User must make a decision (use Dialog or Alert Dialog)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Critical errors requiring attention (use Alert with destructive variant)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Complex information with multiple paragraphs (use Dialog)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Form validation errors (show inline with error states)
                 </li>
               </ul>
@@ -328,18 +328,18 @@ async function handleSubmit() {
             <div className="border-border border-t pt-4">
               <p className="mb-2 text-sm font-semibold">Toast vs Alert:</p>
               <ul className="space-y-1">
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>Toast</strong>: Temporary (auto-dismiss), action feedback, non-blocking
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>Alert</strong>: Persistent (user dismisses), important info, inline in
                   page
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>Toast</strong>: &quot;Item saved&quot;, &quot;Copied to clipboard&quot;,
                   &quot;File uploaded&quot;
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>Alert</strong>: &quot;Your session will expire in 10 minutes&quot;,
                   &quot;Email verification required&quot;
                 </li>

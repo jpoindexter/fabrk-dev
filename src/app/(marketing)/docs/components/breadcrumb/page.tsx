@@ -319,40 +319,40 @@ export default function BreadcrumbDocsPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-4 text-sm font-semibold">✓ Use Breadcrumb when:</p>
+              <p className="text-success mb-4 text-xs font-semibold">✓ Use Breadcrumb when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Deep navigation hierarchy with 3+ levels (Home &gt; Products &gt; Category &gt;
                   Item)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • User needs context of their current location within the site structure
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Secondary navigation aid complementing primary nav (not replacing it)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Content is logically nested (categories, folders, documentation sections)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • User may want to navigate back up the hierarchy without browser back button
                 </li>
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-xs font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">• Flat site structure with less than 3 levels deep</li>
-                <li className="text-sm">
+                <li className="text-xs">• Flat site structure with less than 3 levels deep</li>
+                <li className="text-xs">
                   • Primary navigation method (use Navigation component instead)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Only one level deep (use back button or skip breadcrumb)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Mobile with limited horizontal space (consider back button only)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Linear process or wizard (use multi-step form instead)
                 </li>
               </ul>
@@ -360,23 +360,23 @@ export default function BreadcrumbDocsPage() {
             <div className="border-border border-t pt-4">
               <p className="mb-2 text-sm font-semibold">Best Practices:</p>
               <ul className="space-y-1">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Keep labels short and scannable (1-2 words max per item)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Always show current page (non-clickable) as final item
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Limit visible items to 5-7; use ellipsis + dropdown for longer paths
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • First item is typically &quot;Home&quot; or root-level category
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Use BreadcrumbEllipsis for collapsed middle items, not start/end
                 </li>
-                <li className="text-sm">• Separators should be subtle (/, &gt;, or custom icon)</li>
-                <li className="text-sm">
+                <li className="text-xs">• Separators should be subtle (/, &gt;, or custom icon)</li>
+                <li className="text-xs">
                   • Consider hiding on mobile if space constrained (&lt; 768px)
                 </li>
               </ul>

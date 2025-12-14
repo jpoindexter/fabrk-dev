@@ -393,37 +393,37 @@ const [showActivityBar, setShowActivityBar] = useState(false);
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-4 text-sm font-semibold">✓ Use Dropdown Menu when:</p>
+              <p className="text-success mb-4 text-xs font-semibold">✓ Use Dropdown Menu when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Actions menu with 3-7 related items (edit, delete, duplicate, share)
                 </li>
-                <li className="text-sm">• User profile menu (account, settings, logout)</li>
-                <li className="text-sm">
+                <li className="text-xs">• User profile menu (account, settings, logout)</li>
+                <li className="text-xs">
                   • Context menu triggered by click (more options, kebab menu)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Settings or view preferences (checkboxes, radio groups)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Quick actions attached to specific UI elements (row actions, card actions)
                 </li>
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-xs font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Primary site navigation (use Navigation component or header nav)
                 </li>
-                <li className="text-sm">• Less than 3 items (use individual Buttons instead)</li>
-                <li className="text-sm">
+                <li className="text-xs">• Less than 3 items (use individual Buttons instead)</li>
+                <li className="text-xs">
                   • Complex forms or inputs needed (use Dialog or Popover)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Content should always be visible (use Tabs or sections)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • More than 10 items (consider categorizing with separators or use Select)
                 </li>
               </ul>
@@ -431,24 +431,24 @@ const [showActivityBar, setShowActivityBar] = useState(false);
             <div className="border-border border-t pt-4">
               <p className="mb-2 text-sm font-semibold">Best Practices:</p>
               <ul className="space-y-1">
-                <li className="text-sm">• Group related actions with DropdownMenuSeparator</li>
-                <li className="text-sm">
+                <li className="text-xs">• Group related actions with DropdownMenuSeparator</li>
+                <li className="text-xs">
                   • Place destructive actions (delete, remove) at the bottom after separator
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Use DropdownMenuLabel for section headers (&quot;Account&quot;,
                   &quot;Settings&quot;)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Add icons to menu items for quick recognition (edit icon, delete icon)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Show keyboard shortcuts with DropdownMenuShortcut (⌘K, ⌘S)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Use DropdownMenuCheckboxItem for toggleable options (show/hide features)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Keep menu width consistent (w-56 is standard, adjust with className)
                 </li>
               </ul>

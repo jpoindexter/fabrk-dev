@@ -289,33 +289,33 @@ export default function RadioGroupPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-4 text-sm font-semibold">✓ Use Radio Group when:</p>
+              <p className="text-success mb-4 text-xs font-semibold">✓ Use Radio Group when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">• User must select exactly one option from 2-7 choices</li>
-                <li className="text-sm">
+                <li className="text-xs">• User must select exactly one option from 2-7 choices</li>
+                <li className="text-xs">
                   • All options should be visible at once (no dropdown needed)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Options are mutually exclusive (selecting one deselects others)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • User needs to compare options before selecting (payment methods, plans)
                 </li>
-                <li className="text-sm">• Each option needs a description or additional context</li>
+                <li className="text-xs">• Each option needs a description or additional context</li>
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-xs font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">• More than 7 options (use Select for longer lists)</li>
-                <li className="text-sm">• Multiple selections allowed (use Checkbox group)</li>
-                <li className="text-sm">
+                <li className="text-xs">• More than 7 options (use Select for longer lists)</li>
+                <li className="text-xs">• Multiple selections allowed (use Checkbox group)</li>
+                <li className="text-xs">
                   • Binary on/off toggle with immediate effect (use Switch)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Space constrained and options familiar (use Select instead)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • No default selection needed and all options optional (consider Checkbox)
                 </li>
               </ul>
@@ -323,15 +323,15 @@ export default function RadioGroupPage() {
             <div className="border-border border-t pt-4">
               <p className="mb-2 text-sm font-semibold">Best Practices:</p>
               <ul className="space-y-1">
-                <li className="text-sm">• Always set a default value for better UX</li>
-                <li className="text-sm">• Keep option labels short and scannable (1-4 words)</li>
-                <li className="text-sm">
+                <li className="text-xs">• Always set a default value for better UX</li>
+                <li className="text-xs">• Keep option labels short and scannable (1-4 words)</li>
+                <li className="text-xs">
                   • Use descriptions for complex options (payment methods, pricing tiers)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Order options logically (most common first, or price low-to-high)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Show 2-7 options; fewer than 2 = use Switch; more than 7 = use Select
                 </li>
               </ul>

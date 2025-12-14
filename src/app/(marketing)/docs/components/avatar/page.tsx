@@ -228,34 +228,34 @@ export default function AvatarPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-4 text-sm font-semibold">✓ Use Avatar when:</p>
+              <p className="text-success mb-4 text-xs font-semibold">✓ Use Avatar when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Representing users or people (profile picture, comment author, team member)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Showing visual identity in lists (user lists, search results, mentions)
                 </li>
-                <li className="text-sm">• Displaying current user in navigation or header</li>
-                <li className="text-sm">• Avatar groups showing collaborators or participants</li>
-                <li className="text-sm">
+                <li className="text-xs">• Displaying current user in navigation or header</li>
+                <li className="text-xs">• Avatar groups showing collaborators or participants</li>
+                <li className="text-xs">
                   • Status indicators needed (online/offline, available/busy)
                 </li>
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-xs font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Showing generic icons or illustrations (use icon components instead)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Product images or thumbnails (use Next.js Image component)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Organization logos or brand images (use dedicated Logo/Brand component)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Decorative images without representing a person (use Image)
                 </li>
               </ul>
@@ -263,24 +263,24 @@ export default function AvatarPage() {
             <div className="border-border border-t pt-4">
               <p className="mb-2 text-sm font-semibold">Best Practices:</p>
               <ul className="space-y-1">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Always provide AvatarFallback with 1-2 initials (JD, AC, not John Doe)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Use consistent sizing throughout your app (h-8 w-8 for small, h-10 w-10 for
                   default)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Add border-2 border-background for overlapping avatar groups
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Status indicators: absolute positioned dot at bottom-right with appropriate
                   color
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Scale fallback text with avatar size (text-xs for small, text-lg for large)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Provide meaningful alt text (&quot;John Doe&apos;s avatar&quot; not just
                   &quot;avatar&quot;)
                 </li>

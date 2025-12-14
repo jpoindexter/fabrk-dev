@@ -234,42 +234,42 @@ export default function SliderPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-4 text-sm font-semibold">✓ Use Slider when:</p>
+              <p className="text-success mb-4 text-xs font-semibold">✓ Use Slider when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Numeric value selection across a continuous range (volume, brightness, price
                   filters)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Visual representation of value more important than precision input
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Range selection with two handles (min/max price, date range)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Adjusting settings that benefit from immediate visual feedback
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Values have meaningful min/max bounds (0-100%, -50 to 50)
                 </li>
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-xs font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Precise numeric input required (use Input with type=&quot;number&quot;)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Only a few discrete options (use Radio Group or Select)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Unlimited or very large ranges (use Input with validation)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • User needs to type exact value quickly (keyboard input faster)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Mobile users with accessibility needs (small touch targets)
                 </li>
               </ul>
@@ -277,28 +277,28 @@ export default function SliderPage() {
             <div className="border-border border-t pt-4">
               <p className="mb-2 text-sm font-semibold">Best Practices:</p>
               <ul className="space-y-1">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Always show current value alongside slider (Label with value display)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Use value prop with onValueChange for controlled state (not defaultValue)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Set meaningful min/max bounds (0-100 for percentages, custom for ranges)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Choose appropriate step values (1 for integers, 0.1 for decimals, 10 for coarse)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • For range sliders, pass array with two values: [min, max]
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Label sliders clearly with font-mono text-xs for terminal aesthetic
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Provide visual feedback during interaction (value updates in real-time)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Consider disabling slider when value cannot be changed (show disabled state)
                 </li>
               </ul>

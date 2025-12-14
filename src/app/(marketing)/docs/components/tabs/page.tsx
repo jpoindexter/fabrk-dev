@@ -326,40 +326,40 @@ export default function TabsPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-4 text-sm font-semibold">✓ Use Tabs when:</p>
+              <p className="text-success mb-4 text-xs font-semibold">✓ Use Tabs when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Organizing related content into 2-7 logical sections (settings, profile,
                   billing)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Same-level information that users may want to compare or switch between
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Space-saving layout for dense content (dashboard views, documentation)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Content should stay on the same page without navigation
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Users frequently switch between sections during a single session
                 </li>
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-xs font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Step-by-step process where order matters (use multi-step form)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Navigating to different pages (use Navigation component or links)
                 </li>
-                <li className="text-sm">• Only one section of content (just show it directly)</li>
-                <li className="text-sm">
+                <li className="text-xs">• Only one section of content (just show it directly)</li>
+                <li className="text-xs">
                   • More than 7 tabs (consider accordion, sidebar, or different organization)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Content needs to be visible simultaneously (use sections with headings)
                 </li>
               </ul>
@@ -367,21 +367,21 @@ export default function TabsPage() {
             <div className="border-border border-t pt-4">
               <p className="mb-2 text-sm font-semibold">Best Practices:</p>
               <ul className="space-y-1">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Ideal range: 2-7 tabs (fewer = just show content; more = different UI pattern)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Clear, concise labels (1-2 words: &quot;Overview&quot;, &quot;Settings&quot;,
                   &quot;Billing&quot;)
                 </li>
-                <li className="text-sm">• Always set a default active tab with defaultValue</li>
-                <li className="text-sm">
+                <li className="text-xs">• Always set a default active tab with defaultValue</li>
+                <li className="text-xs">
                   • Use horizontal orientation by default; vertical for sidebar-style layouts
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Disable tabs that are temporarily unavailable (don&apos;t hide them)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Order tabs by importance or logical flow (left to right)
                 </li>
               </ul>

@@ -144,11 +144,11 @@ export default function CookieConsentPage() {
       <DocsSection title="Features">
         <DocsCard title="GDPR COMPLIANCE">
           <ul className="space-y-2">
-            <li className="text-sm">• Granular consent via customize modal</li>
-            <li className="text-sm">• Persists choices in localStorage and cookie (365 days)</li>
-            <li className="text-sm">• Respects Do Not Track browser setting automatically</li>
-            <li className="text-sm">• Links to privacy and cookie policies</li>
-            <li className="text-sm">• Accept All / Reject All / Customize options</li>
+            <li className="text-xs">• Granular consent via customize modal</li>
+            <li className="text-xs">• Persists choices in localStorage and cookie (365 days)</li>
+            <li className="text-xs">• Respects Do Not Track browser setting automatically</li>
+            <li className="text-xs">• Links to privacy and cookie policies</li>
+            <li className="text-xs">• Accept All / Reject All / Customize options</li>
           </ul>
         </DocsCard>
       </DocsSection>

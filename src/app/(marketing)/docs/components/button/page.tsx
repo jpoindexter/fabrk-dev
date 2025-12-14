@@ -174,30 +174,30 @@ export default function ButtonPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-4 text-sm font-semibold">✓ Use Button when:</p>
+              <p className="text-success mb-4 text-xs font-semibold">✓ Use Button when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Triggering actions (submit form, open modal, delete item)
                 </li>
-                <li className="text-sm">• Primary navigation requires visual emphasis</li>
-                <li className="text-sm">• You need loading states for async operations</li>
-                <li className="text-sm">
+                <li className="text-xs">• Primary navigation requires visual emphasis</li>
+                <li className="text-xs">• You need loading states for async operations</li>
+                <li className="text-xs">
                   • Action requires user confirmation (destructive variant)
                 </li>
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-xs font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Navigating to another page (use Link with variant=&quot;link&quot; or Next.js
                   Link)
                 </li>
-                <li className="text-sm">• Toggling state (use Switch or Checkbox instead)</li>
-                <li className="text-sm">
+                <li className="text-xs">• Toggling state (use Switch or Checkbox instead)</li>
+                <li className="text-xs">
                   • Selecting from multiple options (use Radio Group or Select)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Icon-only actions need more context (add aria-label or use Tooltip)
                 </li>
               </ul>
@@ -205,22 +205,22 @@ export default function ButtonPage() {
             <div className="border-border border-t pt-4">
               <p className="mb-2 text-sm font-semibold">Variant Selection Guide:</p>
               <ul className="space-y-1">
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>default</strong>: Primary actions (save, submit, confirm)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>secondary</strong>: Less important actions (cancel, back)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>destructive</strong>: Dangerous actions (delete, remove, reset)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>outline</strong>: Secondary with more emphasis than ghost
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>ghost</strong>: Minimal emphasis (close, dismiss, tertiary actions)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>link</strong>: Styled as text, use sparingly for inline actions
                 </li>
               </ul>

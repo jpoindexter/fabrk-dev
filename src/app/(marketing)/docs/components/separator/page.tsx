@@ -196,41 +196,41 @@ export default function SeparatorPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-4 text-sm font-semibold">✓ Use Separator when:</p>
+              <p className="text-success mb-4 text-xs font-semibold">✓ Use Separator when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Dividing distinct content sections within a page or component
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Separating list items visually (menu items, settings options)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Creating vertical dividers between inline content (toolbar buttons, breadcrumbs)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Adding visual rhythm to content without semantic section breaks
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Form sections need visual grouping (use with decorative prop)
                 </li>
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-xs font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Marking semantic document structure (use HTML section, article tags)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Creating visual spacing alone (use margin/padding instead)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Separating major page regions (use Card borders or layout containers)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Navigation dividers (use proper nav semantics with aria-label)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Every single content break (overuse reduces visual impact)
                 </li>
               </ul>
@@ -238,28 +238,28 @@ export default function SeparatorPage() {
             <div className="border-border border-t pt-4">
               <p className="mb-2 text-sm font-semibold">Best Practices:</p>
               <ul className="space-y-1">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Default to decorative=true for purely visual separators
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Use decorative=false only when screen readers need section announcement
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Horizontal separators: use in vertical layouts with space-y classes
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Vertical separators: use in flex layouts with flex items-center gap-4
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Customize color with bg-primary or other design tokens (not hardcoded)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Increase height (h-[2px]) for stronger visual separation
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Combine with text using absolute positioning for &quot;OR&quot; dividers
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Use sparingly - too many separators create visual clutter
                 </li>
               </ul>

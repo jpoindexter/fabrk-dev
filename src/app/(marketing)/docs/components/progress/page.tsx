@@ -261,41 +261,41 @@ export default function ProgressPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-4 text-sm font-semibold">✓ Use Progress when:</p>
+              <p className="text-success mb-4 text-xs font-semibold">✓ Use Progress when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Task has known duration or measurable progress (file uploads, downloads)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Multi-step process where user is on step X of Y (3 of 5 steps)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Background operations that are visible to user (sync progress, export)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Long-running tasks where percentage completion is meaningful (0-100%)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • User needs reassurance that process is advancing (installation, processing)
                 </li>
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-xs font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Duration is unknown or indeterminate (use Loading component instead)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Operation completes instantly (just do it, no indicator needed)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Step-by-step wizard with discrete steps (use multi-step form)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Percentage doesn&apos;t make sense for the task (use Loading component)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Task is in background and user doesn&apos;t need to wait (show Toast when done)
                 </li>
               </ul>
@@ -303,22 +303,20 @@ export default function ProgressPage() {
             <div className="border-border border-t pt-4">
               <p className="mb-2 text-sm font-semibold">Best Practices:</p>
               <ul className="space-y-1">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Update value frequently for smooth animation (not just 0%, 50%, 100%)
                 </li>
-                <li className="text-sm">
-                  • Use showPercentage for clarity on longer operations
-                </li>
-                <li className="text-sm">
+                <li className="text-xs">• Use showPercentage for clarity on longer operations</li>
+                <li className="text-xs">
                   • Combine with label prop for context (&quot;Downloading file.pdf...&quot;)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Use ProgressWithInfo for downloads showing size, speed, and ETA
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Provide cancel option for long operations when possible
                 </li>
-                <li className="text-sm">• Start at 0%, not 1% (shows clear starting state)</li>
+                <li className="text-xs">• Start at 0%, not 1% (shows clear starting state)</li>
               </ul>
             </div>
           </div>

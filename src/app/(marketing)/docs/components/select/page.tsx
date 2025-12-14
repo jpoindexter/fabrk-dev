@@ -220,33 +220,33 @@ export default function SelectPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-4 text-sm font-semibold">✓ Use Select when:</p>
+              <p className="text-success mb-4 text-xs font-semibold">✓ Use Select when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Choosing one option from a list of 5+ items (country, timezone, category)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Options are mutually exclusive (only one can be selected)
                 </li>
-                <li className="text-sm">• Space is limited and you need a compact dropdown</li>
-                <li className="text-sm">
+                <li className="text-xs">• Space is limited and you need a compact dropdown</li>
+                <li className="text-xs">
                   • Users are familiar with the options (don&apos;t need to see all at once)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Grouping related options with labels (time zones by region)
                 </li>
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-xs font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">• Less than 5 options (use Radio Group for visibility)</li>
-                <li className="text-sm">
+                <li className="text-xs">• Less than 5 options (use Radio Group for visibility)</li>
+                <li className="text-xs">
                   • Multiple selections needed (use Checkbox group or multi-select)
                 </li>
-                <li className="text-sm">• Options need search/filter (use Combobox with search)</li>
-                <li className="text-sm">• Binary choice (use Switch or two Radio buttons)</li>
-                <li className="text-sm">
+                <li className="text-xs">• Options need search/filter (use Combobox with search)</li>
+                <li className="text-xs">• Binary choice (use Switch or two Radio buttons)</li>
+                <li className="text-xs">
                   • Users need to see all options immediately (use visible list)
                 </li>
               </ul>
@@ -254,13 +254,13 @@ export default function SelectPage() {
             <div className="border-border border-t pt-4">
               <p className="mb-2 text-sm font-semibold">Best Practices:</p>
               <ul className="space-y-1">
-                <li className="text-sm">• Use SelectGroup + SelectLabel to organize long lists</li>
-                <li className="text-sm">
+                <li className="text-xs">• Use SelectGroup + SelectLabel to organize long lists</li>
+                <li className="text-xs">
                   • Provide clear placeholder text (e.g., &quot;Select country...&quot;)
                 </li>
-                <li className="text-sm">• Set appropriate width based on longest option</li>
-                <li className="text-sm">• Disable unavailable options rather than hiding them</li>
-                <li className="text-sm">
+                <li className="text-xs">• Set appropriate width based on longest option</li>
+                <li className="text-xs">• Disable unavailable options rather than hiding them</li>
+                <li className="text-xs">
                   • Order options logically (alphabetically, by popularity, or by region)
                 </li>
               </ul>

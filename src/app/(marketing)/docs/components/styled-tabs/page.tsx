@@ -201,11 +201,11 @@ export default function StyledTabsPage() {
       <DocsSection title="Why Use StyledTabs?">
         <DocsCard title="BENEFITS">
           <ul className="space-y-2">
-            <li className="text-sm">• Enforces consistent terminal styling across templates</li>
-            <li className="text-sm">• Automatic card header with code/title pattern</li>
-            <li className="text-sm">• Built-in icon support with proper sizing</li>
-            <li className="text-sm">• Dynamic descriptions based on active tab</li>
-            <li className="text-sm">• Adapts to current visual mode (sharp/standard/minimal)</li>
+            <li className="text-xs">• Enforces consistent terminal styling across templates</li>
+            <li className="text-xs">• Automatic card header with code/title pattern</li>
+            <li className="text-xs">• Built-in icon support with proper sizing</li>
+            <li className="text-xs">• Dynamic descriptions based on active tab</li>
+            <li className="text-xs">• Adapts to current visual mode (sharp/standard/minimal)</li>
           </ul>
         </DocsCard>
       </DocsSection>

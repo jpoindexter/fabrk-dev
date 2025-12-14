@@ -340,39 +340,39 @@ export default function PaginationPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-4 text-sm font-semibold">✓ Use Pagination when:</p>
+              <p className="text-success mb-4 text-xs font-semibold">✓ Use Pagination when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Large data sets with 50+ items (search results, product catalogs, user lists)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • User needs to browse through multiple pages of content systematically
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Table or grid with many rows that would cause excessive scrolling
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Performance benefits from loading data in chunks (API pagination)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • User needs to reference specific page numbers or bookmark pages
                 </li>
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-xs font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Less than 50 items total (just show all or use &quot;Load More&quot; button)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Infinite scroll is more appropriate (social media feeds, timelines)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Real-time data that constantly updates (use live updating list instead)
                 </li>
-                <li className="text-sm">• Single page of content (no pagination needed)</li>
-                <li className="text-sm">
+                <li className="text-xs">• Single page of content (no pagination needed)</li>
+                <li className="text-xs">
                   • User experience benefits from continuous scrolling over page breaks
                 </li>
               </ul>
@@ -380,23 +380,23 @@ export default function PaginationPage() {
             <div className="border-border border-t pt-4">
               <p className="mb-2 text-sm font-semibold">Best Practices:</p>
               <ul className="space-y-1">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Show total item count (&quot;Showing 1-20 of 150 results&quot;)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Previous/Next buttons always visible (disable when on first/last page)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Use ellipsis (...) for long page ranges, showing 5-7 visible page numbers
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Consider mobile-friendly compact version (just Prev/Next + current page)
                 </li>
-                <li className="text-sm">• Highlight current page clearly with isActive prop</li>
-                <li className="text-sm">
+                <li className="text-xs">• Highlight current page clearly with isActive prop</li>
+                <li className="text-xs">
                   • Preserve filters/search when navigating between pages (URL query params)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Add First/Last buttons for very long lists (100+ pages)
                 </li>
               </ul>
