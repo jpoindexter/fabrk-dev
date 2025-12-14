@@ -70,7 +70,7 @@ Your License Key: FABRK-ABC-123-DEF-456
 🚀 Quick Start (5 minutes):
 
 1. Unzip the download
-2. Run `npm install`
+2. Run `npm install --legacy-peer-deps`
 3. Copy `.env.example` to `.env.local`
 4. Run `npm run dev`
 5. Open http://localhost:3000

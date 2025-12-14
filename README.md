@@ -54,7 +54,7 @@ This project uses a **two-repo model** to separate the product (boilerplate) fro
 # Clone and install
 git clone https://github.com/jpoindexter/fabrk_plate.git
 cd fabrk_plate
-npm install
+npm install --legacy-peer-deps
 
 # Set up environment
 cp .env.example .env.local

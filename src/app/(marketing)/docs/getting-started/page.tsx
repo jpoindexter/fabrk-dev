@@ -83,7 +83,7 @@ cd my-saas
         {
           title: 'Install Dependencies',
           description: 'Download all required libraries (takes 1-2 minutes)',
-          code: `npm install
+          code: `npm install --legacy-peer-deps
 
 # Expected output:
 # added 342 packages, and audited 343 packages in 45s

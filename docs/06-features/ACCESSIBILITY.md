@@ -299,6 +299,24 @@ All UI components must meet these minimum requirements:
 
 All interactive elements must be keyboard accessible. Users should be able to navigate the entire application using only the keyboard.
 
+### Quick Reference: Keyboard Shortcuts by Component
+
+| Component | Open/Activate | Navigate | Select | Close |
+|-----------|---------------|----------|--------|-------|
+| **Button** | `Enter` / `Space` | `Tab` | N/A | N/A |
+| **Link** | `Enter` | `Tab` | N/A | N/A |
+| **Dialog/Modal** | Trigger action | `Tab` cycle | `Enter` | `Esc` |
+| **Dropdown** | `Enter` / `Space` / `↓` | `↑` `↓` | `Enter` | `Esc` |
+| **Tabs** | N/A | `←` `→` | Auto-select | N/A |
+| **Accordion** | `Enter` / `Space` | `Tab` / `↑` `↓` | Toggle | N/A |
+| **Menu** | `Enter` / `Space` | `↑` `↓` | `Enter` | `Esc` |
+| **Combobox** | `Enter` / `↓` | `↑` `↓` | `Enter` | `Esc` |
+| **Checkbox** | `Space` | `Tab` | Toggle | N/A |
+| **Radio Group** | N/A | `↑` `↓` / `←` `→` | Auto-select | N/A |
+| **Slider** | N/A | `←` `→` / `↑` `↓` | N/A | N/A |
+| **Toast** | N/A | N/A | N/A | `Esc` / Auto |
+| **Tooltip** | Focus trigger | N/A | N/A | `Esc` / Blur |
+
 ### Standard Keyboard Shortcuts
 
 | Key | Action |

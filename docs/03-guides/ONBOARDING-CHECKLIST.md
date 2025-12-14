@@ -39,7 +39,7 @@ git clone https://github.com/jpoindexter/fabrk_plate.git
 cd fabrk_plate
 
 # Install dependencies
-npm install
+npm install --legacy-peer-deps
 
 # Verify installation
 npm run type-check  # Should pass with no errors

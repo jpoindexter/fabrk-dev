@@ -136,10 +136,10 @@ npm run kill`}
                 <code className="font-mono text-xs">
                   {`# Delete node_modules and reinstall
 rm -rf node_modules package-lock.json
-npm install
+npm install --legacy-peer-deps
 
 # Or just reinstall
-npm install`}
+npm install --legacy-peer-deps`}
                 </code>
               </div>
             </div>

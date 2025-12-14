@@ -58,7 +58,7 @@ rm -rf .next
 
 # Clear node_modules and reinstall
 rm -rf node_modules package-lock.json
-npm install
+npm install --legacy-peer-deps
 
 # Restart dev server
 npm run dev

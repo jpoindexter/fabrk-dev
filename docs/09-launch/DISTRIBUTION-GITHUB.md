@@ -155,7 +155,7 @@ Customer can immediately clone:
 ```bash
 git clone https://github.com/your-org/fabrk-boilerplate.git
 cd fabrk-boilerplate
-npm install
+npm install --legacy-peer-deps
 npm run dev
 ```
 

@@ -9,6 +9,110 @@ Complete style guide documenting ALL design tokens, styles, and inconsistencies 
 - **[Component Authoring](./COMPONENT-AUTHORING.md)** - Extend the design system safely
 - **[Customization Checklist](../CUSTOMIZATION-CHECKLIST.md)** - Pre-launch customization steps
 - **[Audit Reports](../../.archives/design-system/2025-12-12-final/)** - 100/100 design system audit (Dec 12, 2025)
+- **[Token Reference](./TOKEN-REFERENCE.md)** - Complete CSS token documentation (98 tokens)
+
+---
+
+## Token Architecture Flow
+
+How design tokens flow from CSS variables to Tailwind classes to components:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           globals.css                                        │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │  :root {                                                             │    │
+│  │    --background: 5% 0.01 140;       ← OKLCH (lightness% chroma hue) │    │
+│  │    --foreground: 82% 0.3 140;                                       │    │
+│  │    --primary: 65% 0.28 140;                                         │    │
+│  │    --border: 35% 0.18 140;                                          │    │
+│  │    ...98 total tokens                                               │    │
+│  │  }                                                                   │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                    │                                         │
+│                                    ▼                                         │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │  @theme {                                                            │    │
+│  │    --color-background: oklch(var(--background));   ← Tailwind v4    │    │
+│  │    --color-foreground: oklch(var(--foreground));     color mapping  │    │
+│  │    --color-primary: oklch(var(--primary));                          │    │
+│  │    ...                                                               │    │
+│  │  }                                                                   │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                    │                                         │
+└────────────────────────────────────┼─────────────────────────────────────────┘
+                                     │
+                                     ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        Tailwind Utility Classes                              │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │  bg-background  →  background-color: var(--color-background)        │    │
+│  │  text-foreground → color: var(--color-foreground)                   │    │
+│  │  border-primary → border-color: var(--color-primary)                │    │
+│  │  text-success  →  color: var(--color-success)                       │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                    │                                         │
+└────────────────────────────────────┼─────────────────────────────────────────┘
+                                     │
+                                     ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        design-system/index.ts                                │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │  export const mode = {                                               │    │
+│  │    radius: 'rounded-none',           ← Terminal aesthetic           │    │
+│  │    font: 'font-mono',                                               │    │
+│  │    color: {                                                          │    │
+│  │      bg: { surface: 'bg-card', elevated: 'bg-popover' },            │    │
+│  │      text: { muted: 'text-muted-foreground', accent: 'text-primary'}│    │
+│  │      border: { default: 'border-border', accent: 'border-primary' } │    │
+│  │    }                                                                 │    │
+│  │  }                                                                   │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                    │                                         │
+└────────────────────────────────────┼─────────────────────────────────────────┘
+                                     │
+                                     ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           Components                                         │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │  import { mode } from '@/design-system';                             │    │
+│  │                                                                      │    │
+│  │  <Card className={cn(                                                │    │
+│  │    mode.color.bg.surface,     // bg-card                            │    │
+│  │    mode.color.border.default, // border-border                      │    │
+│  │    mode.radius                // rounded-none                       │    │
+│  │  )}>                                                                 │    │
+│  │    <h1 className={mode.font}>TITLE</h1>                             │    │
+│  │  </Card>                                                             │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Theme Switching
+
+```
+┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
+│   [data-theme=   │     │   [data-theme=   │     │   [data-theme=   │
+│     'green']     │     │     'red']       │     │     'amber']     │
+│                  │     │                  │     │                  │
+│  --primary:      │     │  --primary:      │     │  --primary:      │
+│  65% 0.28 140    │     │  40% 0.25 0      │     │  65% 0.24 75     │
+│  (green)         │     │  (red)           │     │  (amber)         │
+└────────┬─────────┘     └────────┬─────────┘     └────────┬─────────┘
+         │                        │                        │
+         └────────────────────────┼────────────────────────┘
+                                  │
+                                  ▼
+                    ┌──────────────────────────┐
+                    │  Same Component Code:    │
+                    │  <Button className=      │
+                    │    "bg-primary">         │
+                    │                          │
+                    │  Renders different       │
+                    │  colors per theme!       │
+                    └──────────────────────────┘
+```
 
 ---
 
@@ -494,6 +598,115 @@ See [Theme Guide](./THEME-GUIDE.md) for detailed descriptions, use cases, and co
 | Dashboard | `border border-border bg-card rounded-lg` |
 | Hover effect | `transition-all hover:border-primary/50` |
 | CardContent | `p-4` or `p-6` |
+
+#### Card Component API
+
+The Card component (`src/components/ui/card.tsx`) exports 14 subcomponents:
+
+**Core Components:**
+
+| Component | Purpose | Example |
+|-----------|---------|---------|
+| `Card` | Container shell | `<Card tone="primary" interactive>...</Card>` |
+| `CardHeader` | Terminal header `[ [0xXX] TITLE ]` | `<CardHeader code="0x00" title="SYSTEM" />` |
+| `CardContent` | Content area with padding | `<CardContent padding="lg">...</CardContent>` |
+| `CardFooter` | Footer area for actions | `<CardFooter>...</CardFooter>` |
+
+**Card Props:**
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `tone` | `'neutral' \| 'primary' \| 'success' \| 'warning' \| 'danger'` | `'neutral'` | Border color tone |
+| `size` | `'auto' \| 'full'` | `'full'` | Height behavior |
+| `interactive` | `boolean` | `false` | Enable hover states |
+| `as` | `'div' \| 'article' \| 'section'` | `'div'` | Semantic HTML element |
+
+**CardHeader Props:**
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `code` | `string` | Auto-generated | Hex code (e.g., "0x00") |
+| `title` | `string` | Required | Header title |
+| `icon` | `ReactNode` | - | Right-side icon |
+| `meta` | `ReactNode` | - | Right-side metadata |
+
+**Stat Components:**
+
+| Component | Purpose | Example |
+|-----------|---------|---------|
+| `Stat` | Key-value pair | `<Stat label="Speed" value="OPTIMIZED" />` |
+| `StatGroup` | Container for Stats | `<StatGroup><Stat /><Stat /></StatGroup>` |
+
+```tsx
+// Usage
+<StatGroup>
+  <Stat label="Speed" value="OPTIMIZED" />
+  <Stat label="Integration" value="SEAMLESS" />
+</StatGroup>
+```
+
+**Badge Components:**
+
+| Component | Purpose | Example |
+|-----------|---------|---------|
+| `Badge` | Inline badge with hex code | `<Badge code="0x00" label="SYSTEM" meta="v2.0" />` |
+| `PageBadge` | Page-level badge | `<PageBadge prefix="TEMPLATE">SIGN IN</PageBadge>` |
+
+**Feature List Components:**
+
+| Component | Purpose | Example |
+|-----------|---------|---------|
+| `StyledLabel` | Bracketed label `[LABEL]:` | `<StyledLabel>FEATURES</StyledLabel>` |
+| `FeatureItem` | List item with prefix | `<FeatureItem icon="check">Feature</FeatureItem>` |
+| `FeatureList` | Container for FeatureItems | `<FeatureList>...</FeatureList>` |
+| `InfoNote` | Note text `[NOTE]:` | `<InfoNote>Connect to API.</InfoNote>` |
+
+**FeatureItem icons:** `'arrow'` (>), `'check'` (✓), `'dot'` (•)
+
+**Composite Components:**
+
+| Component | Purpose | Example |
+|-----------|---------|---------|
+| `TemplatePageHeader` | Page header with badge + title | `<TemplatePageHeader badge="SIGN IN" title="Sign In" />` |
+| `FeaturesCard` | Complete features card | `<FeaturesCard features={[...]} note="..." />` |
+
+```tsx
+// TemplatePageHeader
+<TemplatePageHeader
+  badge="SIGN IN"
+  title="Sign In"
+  description="Login page with social auth"
+/>
+
+// FeaturesCard
+<FeaturesCard
+  title="TEMPLATE FEATURES"
+  features={["Multi-step form", "Validation", "API integration"]}
+  note="Connect to your API for real data."
+  featureIcon="check"
+/>
+```
+
+**Import Pattern:**
+
+```tsx
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardFooter,
+  Stat,
+  StatGroup,
+  Badge,
+  StyledLabel,
+  FeatureItem,
+  FeatureList,
+  InfoNote,
+  PageBadge,
+  TemplatePageHeader,
+  FeaturesCard,
+} from '@/components/ui/card';
+```
 
 ### Buttons
 

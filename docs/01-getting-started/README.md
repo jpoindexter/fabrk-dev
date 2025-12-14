@@ -393,7 +393,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 # 1. Clone and install
 git clone https://github.com/yourusername/your-saas.git
 cd your-saas
-npm install
+npm install --legacy-peer-deps
 
 # 2. Follow quick start
 open docs/QUICK-START.md
