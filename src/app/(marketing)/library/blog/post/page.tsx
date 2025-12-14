@@ -9,9 +9,8 @@
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Card, CardHeader, CardContent, PageBadge } from '@/components/ui/card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
+import { TemplateShowcasePage } from '@/components/library';
 import { ArrowLeft, Calendar, Clock, Share2 } from 'lucide-react';
 import Link from 'next/link';
 import { mode } from '@/design-system';
@@ -407,88 +406,22 @@ function BlogPostPreview() {
 
 export default function BlogPostTemplate() {
   return (
-    <div className="w-full overflow-x-hidden">
-      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Template Badge */}
-        <div className="mb-8">
-          <PageBadge>BLOG POST</PageBadge>
-        </div>
-
-        {/* Preview/Code Tabs */}
-        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
-          {/* Tab Navigation Card */}
-          <Card>
-            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
-            <div className="flex items-center justify-between">
-              <TabsList>
-                <TabsTrigger value="preview">Preview</TabsTrigger>
-                <TabsTrigger value="code">Code</TabsTrigger>
-              </TabsList>
-            </div>
-          </Card>
-
-          {/* Preview Tab Content */}
-          <TabsContent value="preview" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE PREVIEW" />
-              <BlogPostPreview />
-            </Card>
-          </TabsContent>
-
-          {/* Code Tab Content */}
-          <TabsContent value="code" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE CODE" />
-              <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-              </div>
-            </Card>
-          </TabsContent>
-        </Tabs>
-
-        {/* File Structure */}
-        <Card>
-          <CardHeader code="0x02" title="FILE STRUCTURE" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-1 text-xs')}>
-              <div className="text-muted-foreground">[FILES]:</div>
-              <div className="space-y-1 pl-4">
-                <div>
-                  <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">blog/</span>
-                  <span className="text-muted-foreground">[slug]/</span>
-                  <span className="text-foreground">page.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Copy template here</span>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Features Note */}
-        <Card>
-          <CardHeader code="0x03" title="TEMPLATE FEATURES" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-1 text-xs')}>
-              <div>
-                <span className="text-success">&gt;</span> Clean, centered single-column layout
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Author + date + read time header
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Code blocks with copy functionality
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Tags and share actions
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Industry-standard Vercel/Next.js pattern
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
+    <TemplateShowcasePage
+      badge="BLOG POST"
+      title="Blog Post"
+      description="Individual blog post page with author, content, and share actions"
+      templateId="blog-post"
+      preview={<BlogPostPreview />}
+      code={templateCode}
+      fileStructure="app/blog/[slug]/page.tsx"
+      features={[
+        'Clean, centered single-column layout',
+        'Author + date + read time header',
+        'Code blocks with copy functionality',
+        'Tags and share actions',
+        'Industry-standard Vercel/Next.js pattern',
+        'DS-compliant (mode.font, mode.radius)',
+      ]}
+    />
   );
 }

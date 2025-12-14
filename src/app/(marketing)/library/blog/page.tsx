@@ -13,15 +13,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Calendar, Clock, ChevronLeft, ChevronRight, ArrowRight, User } from 'lucide-react';
 import { InputSearch } from '@/components/ui/input-search';
 import Link from 'next/link';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  TemplatePageHeader,
-  FeaturesCard,
-} from '@/components/ui/card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { CodeBlock } from '@/components/ui/code-block';
+import { TemplateShowcasePage } from '@/components/library';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -551,80 +543,24 @@ function BlogPreview() {
 
 export default function BlogTemplate() {
   return (
-    <div className="w-full overflow-x-hidden">
-      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Header */}
-        <TemplatePageHeader
-          badge="BLOG"
-          title="Blog"
-          description="Articles, tutorials, and updates from the team"
-        />
-
-        {/* Preview/Code Tabs */}
-        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
-          {/* Tab Navigation Card */}
-          <Card>
-            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
-            <div className="flex items-center justify-between">
-              <TabsList>
-                <TabsTrigger value="preview">Preview</TabsTrigger>
-                <TabsTrigger value="code">Code</TabsTrigger>
-              </TabsList>
-            </div>
-          </Card>
-
-          {/* Preview Tab Content */}
-          <TabsContent value="preview" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE PREVIEW" />
-              <BlogPreview />
-            </Card>
-          </TabsContent>
-
-          {/* Code Tab Content */}
-          <TabsContent value="code" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE CODE" />
-              <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-              </div>
-            </Card>
-          </TabsContent>
-        </Tabs>
-
-        {/* File Structure */}
-        <Card>
-          <CardHeader code="0x02" title="FILE STRUCTURE" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-1 text-xs')}>
-              <div className="text-muted-foreground">[FILES]:</div>
-              <div className="space-y-1 pl-4">
-                <div>
-                  <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">blog/</span>
-                  <span className="text-foreground">page.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Copy template here</span>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Features Card */}
-        <FeaturesCard
-          title="TEMPLATE FEATURES"
-          code="0x0B"
-          features={[
-            'Featured post hero section',
-            'Category filtering with counts',
-            'Responsive blog grid',
-            'Post cards with author, date, read time',
-            'Pagination controls',
-            'Terminal-styled card headers',
-          ]}
-          note="Connect to your CMS (MDX, Contentful, Sanity) for dynamic content."
-        />
-      </div>
-    </div>
+    <TemplateShowcasePage
+      badge="BLOG"
+      title="Blog"
+      description="Articles, tutorials, and updates from the team"
+      templateId="blog"
+      preview={<BlogPreview />}
+      code={templateCode}
+      fileStructure="app/blog/page.tsx"
+      features={[
+        'Featured post hero section',
+        'Category filtering with counts',
+        'Search functionality',
+        'Responsive blog grid',
+        'Post cards with author, date, read time',
+        'Pagination controls',
+        'Terminal-styled card headers',
+        'DS-compliant (mode.font, mode.radius)',
+      ]}
+    />
   );
 }

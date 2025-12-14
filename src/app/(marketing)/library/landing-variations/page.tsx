@@ -11,15 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  TemplatePageHeader,
-  FeaturesCard,
-} from '@/components/ui/card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { CodeBlock } from '@/components/ui/code-block';
+import { TemplateShowcasePage } from '@/components/library';
 import {
   ArrowRight,
   Play,
@@ -433,79 +425,23 @@ function LandingVariationsPreview() {
 
 export default function LandingVariationsTemplate() {
   return (
-    <div className="w-full overflow-x-hidden">
-      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Header */}
-        <TemplatePageHeader
-          badge="LANDING VARIATIONS"
-          title="Landing Page Variations"
-          description="Three hero section variations for different use cases"
-        />
-
-        {/* Preview/Code Tabs */}
-        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
-          {/* Tab Navigation Card */}
-          <Card>
-            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
-            <div className="flex items-center justify-between">
-              <TabsList>
-                <TabsTrigger value="preview">Preview</TabsTrigger>
-                <TabsTrigger value="code">Code</TabsTrigger>
-              </TabsList>
-            </div>
-          </Card>
-
-          {/* Preview Tab Content */}
-          <TabsContent value="preview" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE PREVIEW" />
-              <LandingVariationsPreview />
-            </Card>
-          </TabsContent>
-
-          {/* Code Tab Content */}
-          <TabsContent value="code" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE CODE" />
-              <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-              </div>
-            </Card>
-          </TabsContent>
-        </Tabs>
-
-        {/* File Structure */}
-        <Card>
-          <CardHeader code="0x02" title="FILE STRUCTURE" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-1 text-xs')}>
-              <div className="text-muted-foreground">[FILES]:</div>
-              <div className="space-y-1 pl-4">
-                <div>
-                  <span className="text-primary">app/</span>
-                  <span className="text-foreground">page.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Copy template here</span>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Features Card */}
-        <FeaturesCard
-          title="TEMPLATE FEATURES"
-          code="0x07"
-          features={[
-            '3 hero variations (centered, split, minimal)',
-            'Interactive variation switcher',
-            'Trust badges and social proof',
-            'Email capture form',
-            'Feature highlights',
-            'Responsive layouts',
-          ]}
-          note="Mix and match elements from each variation to create your perfect landing page."
-        />
-      </div>
-    </div>
+    <TemplateShowcasePage
+      badge="LANDING VARIATIONS"
+      title="Landing Page Variations"
+      description="Three hero section variations for different use cases"
+      templateId="landing-variations"
+      preview={<LandingVariationsPreview />}
+      code={templateCode}
+      fileStructure="app/page.tsx"
+      features={[
+        '3 hero variations (centered, split, minimal)',
+        'Interactive variation switcher',
+        'Trust badges and social proof',
+        'Email capture form',
+        'Feature highlights',
+        'Responsive layouts',
+        'DS-compliant (mode.font, mode.radius)',
+      ]}
+    />
   );
 }

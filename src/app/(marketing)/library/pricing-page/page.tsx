@@ -11,11 +11,8 @@ import { PricingHeader } from './components/pricing-header';
 import { PricingCards } from './components/pricing-cards';
 import { ComparisonTable } from './components/comparison-table';
 import { FAQSection } from './components/faq-section';
-import { FeaturesCard } from './components/features-card';
 import { plans, faqs, comparisonFeatures } from './components/pricing-data';
-import { Card, CardHeader, TemplatePageHeader } from '@/components/ui/card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { CodeBlock } from '@/components/ui/code-block';
+import { TemplateShowcasePage } from '@/components/library';
 
 const templateCode = `"use client";
 
@@ -235,50 +232,23 @@ function PricingPagePreview() {
 
 export default function PricingPageTemplate() {
   return (
-    <div className="w-full overflow-x-hidden">
-      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Header */}
-        <TemplatePageHeader
-          badge="PRICING PAGE"
-          title="Pricing Page"
-          description="Complete pricing page with plans, comparison table, and FAQs"
-        />
-
-        {/* Preview/Code Tabs */}
-        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
-          {/* Tab Navigation Card */}
-          <Card>
-            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
-            <div className="flex items-center justify-between">
-              <TabsList>
-                <TabsTrigger value="preview">Preview</TabsTrigger>
-                <TabsTrigger value="code">Code</TabsTrigger>
-              </TabsList>
-            </div>
-          </Card>
-
-          {/* Preview Tab Content */}
-          <TabsContent value="preview" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE PREVIEW" />
-              <PricingPagePreview />
-            </Card>
-          </TabsContent>
-
-          {/* Code Tab Content */}
-          <TabsContent value="code" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE CODE" />
-              <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-              </div>
-            </Card>
-          </TabsContent>
-        </Tabs>
-
-        {/* File Structure & Features */}
-        <FeaturesCard />
-      </div>
-    </div>
+    <TemplateShowcasePage
+      badge="PRICING PAGE"
+      title="Pricing Page"
+      description="Complete pricing page with plans, comparison table, and FAQs"
+      templateId="pricing-page"
+      preview={<PricingPagePreview />}
+      code={templateCode}
+      fileStructure="app/pricing/page.tsx"
+      features={[
+        '3 pricing tiers (Starter, Pro, Enterprise)',
+        'Monthly/yearly billing toggle with 17% discount',
+        'Feature comparison table',
+        'FAQ accordion section',
+        'Popular plan highlight badge',
+        'Responsive card layout',
+        'DS-compliant (mode.font, mode.radius)',
+      ]}
+    />
   );
 }

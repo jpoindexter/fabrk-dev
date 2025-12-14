@@ -7,10 +7,9 @@
 'use client';
 
 import { useState } from 'react';
-import { TemplatePageHeader, Card, CardHeader, CardContent } from '@/components/ui/card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { CodeBlock } from '@/components/ui/code-block';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
+import { TemplateShowcasePage } from '@/components/library';
 import { emailTemplates } from './components/email-template-data';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
@@ -158,96 +157,23 @@ function EmailTemplatesPreview() {
 
 export default function EmailTemplatesShowcase() {
   return (
-    <div className="w-full overflow-x-hidden">
-      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Header */}
-        <TemplatePageHeader
-          badge="EMAIL TEMPLATES"
-          title="Email Templates"
-          description="5 production-ready transactional email templates with HTML and text versions"
-        />
-
-        {/* Preview/Code Tabs */}
-        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
-          {/* Tab Navigation Card */}
-          <Card>
-            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
-            <div className="flex items-center justify-between">
-              <TabsList>
-                <TabsTrigger value="preview">Preview</TabsTrigger>
-                <TabsTrigger value="code">Code</TabsTrigger>
-              </TabsList>
-            </div>
-          </Card>
-
-          {/* Preview Tab Content */}
-          <TabsContent value="preview" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE PREVIEW" />
-              <EmailTemplatesPreview />
-            </Card>
-          </TabsContent>
-
-          {/* Code Tab Content */}
-          <TabsContent value="code" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE CODE" />
-              <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-              </div>
-            </Card>
-          </TabsContent>
-        </Tabs>
-
-        {/* File Structure */}
-        <Card>
-          <CardHeader code="0x02" title="FILE STRUCTURE" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-1 text-xs')}>
-              <div className="text-muted-foreground">[FILES]:</div>
-              <div className="space-y-1 pl-4">
-                <div>
-                  <span className="text-primary">lib/</span>
-                  <span className="text-muted-foreground">emails/</span>
-                  <span className="text-foreground">welcome.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Copy template here</span>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Features */}
-        <Card>
-          <CardHeader code="0x03" title="FEATURES" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-2 text-xs')}>
-              <div>
-                <span className="text-success">&gt;</span> 5 transactional email templates
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Welcome, password reset, invoice, alert,
-                verification
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Dynamic variable support
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Trigger event mapping
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Responsive email layouts
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Terminal-themed design
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
+    <TemplateShowcasePage
+      badge="EMAIL TEMPLATES"
+      title="Email Templates"
+      description="5 production-ready transactional email templates with HTML and text versions"
+      templateId="email-templates"
+      preview={<EmailTemplatesPreview />}
+      code={templateCode}
+      fileStructure="lib/emails/welcome.tsx"
+      features={[
+        '5 transactional email templates',
+        'Welcome, password reset, invoice, alert, verification',
+        'Dynamic variable support',
+        'Trigger event mapping',
+        'Responsive email layouts',
+        'Terminal-themed design',
+        'DS-compliant (mode.font, mode.radius)',
+      ]}
+    />
   );
 }

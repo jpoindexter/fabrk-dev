@@ -5,9 +5,8 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { CodeBlock } from '@/components/ui/code-block';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { TemplateShowcasePage } from '@/components/library';
 import { FileQuestion, Home, ArrowLeft } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
@@ -308,105 +307,27 @@ function ErrorPagesPreview() {
 
 export default function ErrorPagesTemplate() {
   return (
-    <div className="w-full overflow-x-hidden">
-      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Header */}
-        <TemplatePageHeader
-          badge="ERROR PAGES"
-          title="Error Pages"
-          description="Terminal-styled error pages for generic errors, 404, 500, and maintenance states"
-        />
-
-        {/* Preview/Code Tabs */}
-        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
-          {/* Tab Navigation Card */}
-          <Card>
-            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
-            <div className="flex items-center justify-between">
-              <TabsList>
-                <TabsTrigger value="preview">Preview</TabsTrigger>
-                <TabsTrigger value="code">Code</TabsTrigger>
-              </TabsList>
-            </div>
-          </Card>
-
-          {/* Preview Tab Content */}
-          <TabsContent value="preview" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE PREVIEW" />
-              <ErrorPagesPreview />
-            </Card>
-          </TabsContent>
-
-          {/* Code Tab Content */}
-          <TabsContent value="code" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE CODE" />
-              <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-              </div>
-            </Card>
-          </TabsContent>
-        </Tabs>
-
-        {/* File Structure */}
-        <Card>
-          <CardHeader code="0x02" title="FILE STRUCTURE" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-1 text-xs')}>
-              <div className="text-muted-foreground">[FILES]:</div>
-              <div className="space-y-1 pl-4">
-                <div>
-                  <span className="text-primary">app/</span>
-                  <span className="text-foreground">not-found.tsx</span>
-                  <span className="text-muted-foreground ml-4">← 404 errors</span>
-                </div>
-                <div>
-                  <span className="text-primary">app/</span>
-                  <span className="text-foreground">error.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Generic errors</span>
-                </div>
-                <div>
-                  <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">maintenance/</span>
-                  <span className="text-foreground">page.tsx</span>
-                  <span className="text-muted-foreground ml-4">← 503 maintenance</span>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Features */}
-        <Card>
-          <CardHeader code="0x03" title="FEATURES" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-2 text-xs')}>
-              <div>
-                <span className="text-success">&gt;</span> Generic error, 404, 500, 503 templates
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Terminal-style error output
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Contextual action buttons
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Request ID for debugging
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Color-coded severity (error vs warning)
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Maintenance mode with ETA
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
+    <TemplateShowcasePage
+      badge="ERROR PAGES"
+      title="Error Pages"
+      description="Terminal-styled error pages for generic errors, 404, 500, and maintenance states"
+      templateId="error-pages"
+      preview={<ErrorPagesPreview />}
+      code={templateCode}
+      fileStructure={[
+        { path: ['app/', 'not-found.tsx'], label: '← 404 errors' },
+        { path: ['app/', 'error.tsx'], label: '← Generic errors' },
+        { path: ['app/', 'maintenance/', 'page.tsx'], label: '← 503 maintenance' },
+      ]}
+      features={[
+        'Generic error, 404, 500, 503 templates',
+        'Terminal-style error output',
+        'Contextual action buttons',
+        'Request ID for debugging',
+        'Color-coded severity (error vs warning)',
+        'Maintenance mode with ETA',
+        'DS-compliant (mode.font, mode.radius)',
+      ]}
+    />
   );
 }

@@ -8,9 +8,8 @@
 
 import { useState } from 'react';
 import { User, Building2, Settings, CheckCircle2, Sparkles } from 'lucide-react';
-import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { CodeBlock } from '@/components/ui/code-block';
+import { Card, CardHeader } from '@/components/ui/card';
+import { TemplateShowcasePage } from '@/components/library';
 import { ProgressSection } from './components/progress-section';
 import { StepWelcome } from './components/step-welcome';
 import { StepProfile } from './components/step-profile';
@@ -18,8 +17,6 @@ import { StepWorkspace } from './components/step-workspace';
 import { StepPreferences } from './components/step-preferences';
 import { StepComplete } from './components/step-complete';
 import { NavigationControls } from './components/navigation-controls';
-import { mode } from '@/design-system';
-import { cn } from '@/lib/utils';
 
 const templateCode = `"use client";
 
@@ -215,95 +212,23 @@ function OnboardingPreview() {
 
 export default function OnboardingTemplate() {
   return (
-    <div className="w-full overflow-x-hidden">
-      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Header */}
-        <TemplatePageHeader
-          badge="ONBOARDING FLOW"
-          title="Onboarding Flow"
-          description="Multi-step wizard for new user onboarding with progress tracking"
-        />
-
-        {/* Preview/Code Tabs */}
-        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
-          {/* Tab Navigation Card */}
-          <Card>
-            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
-            <div className="flex items-center justify-between">
-              <TabsList>
-                <TabsTrigger value="preview">Preview</TabsTrigger>
-                <TabsTrigger value="code">Code</TabsTrigger>
-              </TabsList>
-            </div>
-          </Card>
-
-          {/* Preview Tab Content */}
-          <TabsContent value="preview" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE PREVIEW" />
-              <OnboardingPreview />
-            </Card>
-          </TabsContent>
-
-          {/* Code Tab Content */}
-          <TabsContent value="code" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE CODE" />
-              <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-              </div>
-            </Card>
-          </TabsContent>
-        </Tabs>
-
-        {/* File Structure */}
-        <Card>
-          <CardHeader code="0x02" title="FILE STRUCTURE" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-1 text-xs')}>
-              <div className="text-muted-foreground">[FILES]:</div>
-              <div className="space-y-1 pl-4">
-                <div>
-                  <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">onboarding/</span>
-                  <span className="text-foreground">page.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Copy template here</span>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Features */}
-        <Card>
-          <CardHeader code="0x03" title="FEATURES" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-2 text-xs')}>
-              <div>
-                <span className="text-success">&gt;</span> 5-step onboarding flow
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Progress tracking with visual indicators
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Form state management
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Navigation controls (back/next)
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Multi-select use case options
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Completion summary
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
+    <TemplateShowcasePage
+      badge="ONBOARDING FLOW"
+      title="Onboarding Flow"
+      description="Multi-step wizard for new user onboarding with progress tracking"
+      templateId="onboarding"
+      preview={<OnboardingPreview />}
+      code={templateCode}
+      fileStructure="app/onboarding/page.tsx"
+      features={[
+        '5-step onboarding flow',
+        'Progress tracking with visual indicators',
+        'Form state management',
+        'Navigation controls (back/next)',
+        'Multi-select use case options',
+        'Completion summary',
+        'DS-compliant (mode.font, mode.radius)',
+      ]}
+    />
   );
 }

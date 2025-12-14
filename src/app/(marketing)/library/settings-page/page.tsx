@@ -1,22 +1,17 @@
 /**
  * Settings Page Template - Terminal console style
- * Industry-standard Preview/Code tabbed interface
  */
 'use client';
 
 import { useState } from 'react';
 import { Settings, User, Lock, CreditCard } from 'lucide-react';
-import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { CodeBlock } from '@/components/ui/code-block';
 import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
+import { TemplateShowcasePage } from '@/components/library';
 import { SettingsHeader } from './components/settings-header';
 import { GeneralTab } from './components/general-tab';
 import { AccountTab } from './components/account-tab';
 import { PrivacyTab } from './components/privacy-tab';
 import { BillingTab } from './components/billing-tab';
-import { mode } from '@/design-system';
-import { cn } from '@/lib/utils';
 
 const templateCode = `"use client";
 
@@ -121,128 +116,31 @@ function SettingsPreview() {
 
 export default function SettingsPageTemplate() {
   return (
-    <div className="w-full overflow-x-hidden">
-      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Header */}
-        <TemplatePageHeader
-          badge="SETTINGS PAGE"
-          title="Settings Page"
-          description="Multi-tab settings interface with general, account, privacy, and billing sections"
-        />
-
-        {/* Preview/Code Tabs */}
-        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
-          {/* Tab Navigation Card */}
-          <Card>
-            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
-            <div className="flex items-center justify-between">
-              <TabsList>
-                <TabsTrigger value="preview">Preview</TabsTrigger>
-                <TabsTrigger value="code">Code</TabsTrigger>
-              </TabsList>
-            </div>
-          </Card>
-
-          {/* Preview Tab Content */}
-          <TabsContent value="preview" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE PREVIEW" />
-              <SettingsPreview />
-            </Card>
-          </TabsContent>
-
-          {/* Code Tab Content */}
-          <TabsContent value="code" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE CODE" />
-              <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-              </div>
-            </Card>
-          </TabsContent>
-        </Tabs>
-
-        {/* File Structure */}
-        <Card>
-          <CardHeader code="0x02" title="FILE STRUCTURE" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-1 text-xs')}>
-              <div className="text-muted-foreground">[FILES]:</div>
-              <div className="space-y-1 pl-4">
-                <div>
-                  <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">(dashboard)/</span>
-                  <span className="text-foreground">settings/page.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Copy template here</span>
-                </div>
-                <div>
-                  <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">(dashboard)/settings/components/</span>
-                  <span className="text-foreground">settings-header.tsx</span>
-                </div>
-                <div>
-                  <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">(dashboard)/settings/components/</span>
-                  <span className="text-foreground">general-tab.tsx</span>
-                </div>
-                <div>
-                  <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">(dashboard)/settings/components/</span>
-                  <span className="text-foreground">account-tab.tsx</span>
-                </div>
-                <div>
-                  <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">(dashboard)/settings/components/</span>
-                  <span className="text-foreground">privacy-tab.tsx</span>
-                </div>
-                <div>
-                  <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">(dashboard)/settings/components/</span>
-                  <span className="text-foreground">billing-tab.tsx</span>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Features */}
-        <Card>
-          <CardHeader code="0x03" title="FEATURES" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-2 text-xs')}>
-              <div>
-                <span className="text-success">&gt;</span> 4-tab navigation (General, Account,
-                Privacy, Billing)
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Appearance settings (theme, font size,
-                layout)
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Notification preferences (email, push,
-                in-app)
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Privacy controls (data sharing, cookies,
-                analytics)
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Language & region settings
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Account security (password, 2FA,
-                sessions)
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Responsive mobile-first design
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
+    <TemplateShowcasePage
+      badge="SETTINGS PAGE"
+      title="Settings Page"
+      description="Multi-tab settings interface with general, account, privacy, and billing sections"
+      templateId="settings-page"
+      preview={<SettingsPreview />}
+      code={templateCode}
+      fileStructure={[
+        { path: ['app/', '(dashboard)/', 'settings/page.tsx'], label: '← Copy template here' },
+        { path: ['app/', '(dashboard)/settings/components/', 'settings-header.tsx'] },
+        { path: ['app/', '(dashboard)/settings/components/', 'general-tab.tsx'] },
+        { path: ['app/', '(dashboard)/settings/components/', 'account-tab.tsx'] },
+        { path: ['app/', '(dashboard)/settings/components/', 'privacy-tab.tsx'] },
+        { path: ['app/', '(dashboard)/settings/components/', 'billing-tab.tsx'] },
+      ]}
+      features={[
+        '4-tab navigation (General, Account, Privacy, Billing)',
+        'Appearance settings (theme, font size, layout)',
+        'Notification preferences (email, push, in-app)',
+        'Privacy controls (data sharing, cookies, analytics)',
+        'Language & region settings',
+        'Account security (password, 2FA, sessions)',
+        'Responsive mobile-first design',
+        'DS-compliant (mode.font, mode.radius)',
+      ]}
+    />
   );
 }

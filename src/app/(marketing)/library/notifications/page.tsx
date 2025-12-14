@@ -7,9 +7,8 @@
 import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { CodeBlock } from '@/components/ui/code-block';
+import { Card, CardHeader } from '@/components/ui/card';
+import { TemplateShowcasePage } from '@/components/library';
 import { Bell, Check, AlertTriangle, Trash2 } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
@@ -302,108 +301,23 @@ function NotificationsPreview() {
 
 export default function NotificationsTemplate() {
   return (
-    <div className="w-full overflow-x-hidden">
-      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Header */}
-        <TemplatePageHeader
-          badge="NOTIFICATIONS"
-          title="Notifications Center"
-          description="Real-time notification system with read/unread states and actions"
-        />
-
-        {/* Preview/Code Tabs */}
-        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
-          {/* Tab Navigation Card */}
-          <Card>
-            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
-            <div className="flex items-center justify-between">
-              <TabsList>
-                <TabsTrigger value="preview">Preview</TabsTrigger>
-                <TabsTrigger value="code">Code</TabsTrigger>
-              </TabsList>
-            </div>
-          </Card>
-
-          {/* Preview Tab Content */}
-          <TabsContent value="preview" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE PREVIEW" />
-              <NotificationsPreview />
-            </Card>
-          </TabsContent>
-
-          {/* Code Tab Content */}
-          <TabsContent value="code" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE CODE" />
-              <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-              </div>
-            </Card>
-          </TabsContent>
-        </Tabs>
-
-        {/* Notification Types */}
-        <Card>
-          <CardHeader code="0x02" title="NOTIFICATION TYPES" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-4 text-xs')}>
-              <div className="space-y-2">
-                <div className="font-semibold">[INFO]</div>
-                <div className="text-muted-foreground">
-                  General updates, new features, announcements
-                </div>
-              </div>
-              <div className="space-y-2">
-                <div className="font-semibold">[SUCCESS]</div>
-                <div className="text-muted-foreground">Deployments, payments, completions</div>
-              </div>
-              <div className="space-y-2">
-                <div className="font-semibold">[WARNING]</div>
-                <div className="text-muted-foreground">
-                  Quota limits, expiring certificates, reminders
-                </div>
-              </div>
-              <div className="space-y-2">
-                <div className="font-semibold">[ERROR]</div>
-                <div className="text-muted-foreground">
-                  Build failures, API errors, critical issues
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Features */}
-        <Card>
-          <CardHeader code="0x03" title="FEATURES" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-2 text-xs')}>
-              <div>
-                <span className="text-success">&gt;</span> Real-time notification display
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Read/unread state management
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Type-based color coding
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Mark as read functionality
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Delete notifications
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Unread count badge
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
+    <TemplateShowcasePage
+      badge="NOTIFICATIONS"
+      title="Notifications Center"
+      description="Real-time notification system with read/unread states and actions"
+      templateId="notifications"
+      preview={<NotificationsPreview />}
+      code={templateCode}
+      fileStructure="app/(dashboard)/notifications/page.tsx"
+      features={[
+        'Real-time notification display',
+        'Read/unread state management',
+        'Type-based color coding (info, success, warning, error)',
+        'Mark as read functionality',
+        'Delete notifications',
+        'Unread count badge',
+        'DS-compliant (mode.font, mode.radius)',
+      ]}
+    />
   );
 }
