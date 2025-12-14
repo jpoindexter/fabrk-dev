@@ -37,11 +37,11 @@ export function PolarCheckoutButton({
       event: 'begin_checkout',
       ecommerce: {
         currency: 'USD',
-        value: 149,
+        value: 199,
         items: [
           {
             item_name: 'Fabrk Boilerplate',
-            price: 149,
+            price: 199,
             quantity: 1,
           },
         ],
