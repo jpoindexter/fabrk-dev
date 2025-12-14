@@ -499,6 +499,77 @@ function FileStructureLine({ path, label }: { path: string; label?: string }) {
   );
 }
 
+// Error type tabs data
+const errorTypes = ['error', '401', '403', '404', '429', '500', '502', '503', '504'] as const;
+type ErrorType = (typeof errorTypes)[number];
+
+const errorTitles: Record<ErrorType, string> = {
+  error: 'GENERIC_ERROR',
+  '401': '401_UNAUTHORIZED',
+  '403': '403_FORBIDDEN',
+  '404': '404_NOT_FOUND',
+  '429': '429_RATE_LIMIT',
+  '500': '500_SERVER_ERROR',
+  '502': '502_BAD_GATEWAY',
+  '503': '503_MAINTENANCE',
+  '504': '504_GATEWAY_TIMEOUT',
+};
+
+const errorLabels: Record<ErrorType, string> = {
+  error: 'Generic error page',
+  '401': '401 Unauthorized page',
+  '403': '403 Forbidden page',
+  '404': '404 Not Found page',
+  '429': '429 Rate Limit page',
+  '500': '500 Server Error page',
+  '502': '502 Bad Gateway page',
+  '503': '503 Maintenance page',
+  '504': '504 Gateway Timeout page',
+};
+
+// Reusable ErrorTabContent component
+function ErrorTabContent({
+  errorType,
+  templateCode,
+}: {
+  errorType: ErrorType;
+  templateCode: string;
+}) {
+  return (
+    <TabsContent value={errorType} className="mt-6 space-y-6">
+      <Tabs defaultValue="preview" className="w-full">
+        <Card>
+          <CardHeader code="0x01" title={errorTitles[errorType]} />
+          <div className="flex items-center justify-between">
+            <TabsList>
+              <TabsTrigger value="preview" aria-label={`Preview ${errorLabels[errorType]}`}>
+                [PREVIEW]
+              </TabsTrigger>
+              <TabsTrigger value="code" aria-label={`View ${errorLabels[errorType]} code`}>
+                [CODE]
+              </TabsTrigger>
+            </TabsList>
+          </div>
+        </Card>
+        <TabsContent value="preview" className="mt-6">
+          <Card className="overflow-hidden">
+            <CardHeader code="0x02" title="LIVE_PREVIEW" />
+            <ErrorPreview errorType={errorType} />
+          </Card>
+        </TabsContent>
+        <TabsContent value="code" className="mt-6">
+          <Card className="overflow-hidden">
+            <CardHeader code="0x02" title="SOURCE_CODE" />
+            <div className="w-full max-w-full overflow-x-auto p-4">
+              <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
+            </div>
+          </Card>
+        </TabsContent>
+      </Tabs>
+    </TabsContent>
+  );
+}
+
 export default function ErrorPagesTemplate() {
   const [activeError, setActiveError] = useState<string>('404');
 
@@ -604,304 +675,13 @@ export default function ErrorPagesTemplate() {
             </div>
           </Card>
 
-          {/* Error Preview Tab */}
-          <TabsContent value="error" className="mt-6 space-y-6">
-            <Tabs defaultValue="preview" className="w-full">
-              <Card>
-                <CardHeader code="0x01" title="GENERIC_ERROR" />
-                <div className="flex items-center justify-between">
-                  <TabsList>
-                    <TabsTrigger value="preview" aria-label="Preview error page">
-                      [PREVIEW]
-                    </TabsTrigger>
-                    <TabsTrigger value="code" aria-label="View error code">
-                      [CODE]
-                    </TabsTrigger>
-                  </TabsList>
-                </div>
-              </Card>
-              <TabsContent value="preview" className="mt-6">
-                <Card className="overflow-hidden">
-                  <CardHeader code="0x02" title="LIVE_PREVIEW" />
-                  <ErrorPreview errorType="error" />
-                </Card>
-              </TabsContent>
-              <TabsContent value="code" className="mt-6">
-                <Card className="overflow-hidden">
-                  <CardHeader code="0x02" title="SOURCE_CODE" />
-                  <div className="w-full max-w-full overflow-x-auto p-4">
-                    <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-                  </div>
-                </Card>
-              </TabsContent>
-            </Tabs>
-          </TabsContent>
-
-          {/* 401 Preview Tab */}
-          <TabsContent value="401" className="mt-6 space-y-6">
-            <Tabs defaultValue="preview" className="w-full">
-              <Card>
-                <CardHeader code="0x01" title="401_UNAUTHORIZED" />
-                <div className="flex items-center justify-between">
-                  <TabsList>
-                    <TabsTrigger value="preview" aria-label="Preview 401 page">
-                      [PREVIEW]
-                    </TabsTrigger>
-                    <TabsTrigger value="code" aria-label="View 401 code">
-                      [CODE]
-                    </TabsTrigger>
-                  </TabsList>
-                </div>
-              </Card>
-              <TabsContent value="preview" className="mt-6">
-                <Card className="overflow-hidden">
-                  <CardHeader code="0x02" title="LIVE_PREVIEW" />
-                  <ErrorPreview errorType="401" />
-                </Card>
-              </TabsContent>
-              <TabsContent value="code" className="mt-6">
-                <Card className="overflow-hidden">
-                  <CardHeader code="0x02" title="SOURCE_CODE" />
-                  <div className="w-full max-w-full overflow-x-auto p-4">
-                    <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-                  </div>
-                </Card>
-              </TabsContent>
-            </Tabs>
-          </TabsContent>
-
-          {/* 403 Preview Tab */}
-          <TabsContent value="403" className="mt-6 space-y-6">
-            <Tabs defaultValue="preview" className="w-full">
-              <Card>
-                <CardHeader code="0x01" title="403_FORBIDDEN" />
-                <div className="flex items-center justify-between">
-                  <TabsList>
-                    <TabsTrigger value="preview" aria-label="Preview 403 page">
-                      [PREVIEW]
-                    </TabsTrigger>
-                    <TabsTrigger value="code" aria-label="View 403 code">
-                      [CODE]
-                    </TabsTrigger>
-                  </TabsList>
-                </div>
-              </Card>
-              <TabsContent value="preview" className="mt-6">
-                <Card className="overflow-hidden">
-                  <CardHeader code="0x02" title="LIVE_PREVIEW" />
-                  <ErrorPreview errorType="403" />
-                </Card>
-              </TabsContent>
-              <TabsContent value="code" className="mt-6">
-                <Card className="overflow-hidden">
-                  <CardHeader code="0x02" title="SOURCE_CODE" />
-                  <div className="w-full max-w-full overflow-x-auto p-4">
-                    <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-                  </div>
-                </Card>
-              </TabsContent>
-            </Tabs>
-          </TabsContent>
-
-          {/* 404 Preview Tab */}
-          <TabsContent value="404" className="mt-6 space-y-6">
-            <Tabs defaultValue="preview" className="w-full">
-              <Card>
-                <CardHeader code="0x01" title="404_NOT_FOUND" />
-                <div className="flex items-center justify-between">
-                  <TabsList>
-                    <TabsTrigger value="preview" aria-label="Preview 404 page">
-                      [PREVIEW]
-                    </TabsTrigger>
-                    <TabsTrigger value="code" aria-label="View 404 code">
-                      [CODE]
-                    </TabsTrigger>
-                  </TabsList>
-                </div>
-              </Card>
-              <TabsContent value="preview" className="mt-6">
-                <Card className="overflow-hidden">
-                  <CardHeader code="0x02" title="LIVE_PREVIEW" />
-                  <ErrorPreview errorType="404" />
-                </Card>
-              </TabsContent>
-              <TabsContent value="code" className="mt-6">
-                <Card className="overflow-hidden">
-                  <CardHeader code="0x02" title="SOURCE_CODE" />
-                  <div className="w-full max-w-full overflow-x-auto p-4">
-                    <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-                  </div>
-                </Card>
-              </TabsContent>
-            </Tabs>
-          </TabsContent>
-
-          {/* 429 Preview Tab */}
-          <TabsContent value="429" className="mt-6 space-y-6">
-            <Tabs defaultValue="preview" className="w-full">
-              <Card>
-                <CardHeader code="0x01" title="429_RATE_LIMIT" />
-                <div className="flex items-center justify-between">
-                  <TabsList>
-                    <TabsTrigger value="preview" aria-label="Preview 429 page">
-                      [PREVIEW]
-                    </TabsTrigger>
-                    <TabsTrigger value="code" aria-label="View 429 code">
-                      [CODE]
-                    </TabsTrigger>
-                  </TabsList>
-                </div>
-              </Card>
-              <TabsContent value="preview" className="mt-6">
-                <Card className="overflow-hidden">
-                  <CardHeader code="0x02" title="LIVE_PREVIEW" />
-                  <ErrorPreview errorType="429" />
-                </Card>
-              </TabsContent>
-              <TabsContent value="code" className="mt-6">
-                <Card className="overflow-hidden">
-                  <CardHeader code="0x02" title="SOURCE_CODE" />
-                  <div className="w-full max-w-full overflow-x-auto p-4">
-                    <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-                  </div>
-                </Card>
-              </TabsContent>
-            </Tabs>
-          </TabsContent>
-
-          {/* 500 Preview Tab */}
-          <TabsContent value="500" className="mt-6 space-y-6">
-            <Tabs defaultValue="preview" className="w-full">
-              <Card>
-                <CardHeader code="0x01" title="500_SERVER_ERROR" />
-                <div className="flex items-center justify-between">
-                  <TabsList>
-                    <TabsTrigger value="preview" aria-label="Preview 500 page">
-                      [PREVIEW]
-                    </TabsTrigger>
-                    <TabsTrigger value="code" aria-label="View 500 code">
-                      [CODE]
-                    </TabsTrigger>
-                  </TabsList>
-                </div>
-              </Card>
-              <TabsContent value="preview" className="mt-6">
-                <Card className="overflow-hidden">
-                  <CardHeader code="0x02" title="LIVE_PREVIEW" />
-                  <ErrorPreview errorType="500" />
-                </Card>
-              </TabsContent>
-              <TabsContent value="code" className="mt-6">
-                <Card className="overflow-hidden">
-                  <CardHeader code="0x02" title="SOURCE_CODE" />
-                  <div className="w-full max-w-full overflow-x-auto p-4">
-                    <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-                  </div>
-                </Card>
-              </TabsContent>
-            </Tabs>
-          </TabsContent>
-
-          {/* 502 Preview Tab */}
-          <TabsContent value="502" className="mt-6 space-y-6">
-            <Tabs defaultValue="preview" className="w-full">
-              <Card>
-                <CardHeader code="0x01" title="502_BAD_GATEWAY" />
-                <div className="flex items-center justify-between">
-                  <TabsList>
-                    <TabsTrigger value="preview" aria-label="Preview 502 page">
-                      [PREVIEW]
-                    </TabsTrigger>
-                    <TabsTrigger value="code" aria-label="View 502 code">
-                      [CODE]
-                    </TabsTrigger>
-                  </TabsList>
-                </div>
-              </Card>
-              <TabsContent value="preview" className="mt-6">
-                <Card className="overflow-hidden">
-                  <CardHeader code="0x02" title="LIVE_PREVIEW" />
-                  <ErrorPreview errorType="502" />
-                </Card>
-              </TabsContent>
-              <TabsContent value="code" className="mt-6">
-                <Card className="overflow-hidden">
-                  <CardHeader code="0x02" title="SOURCE_CODE" />
-                  <div className="w-full max-w-full overflow-x-auto p-4">
-                    <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-                  </div>
-                </Card>
-              </TabsContent>
-            </Tabs>
-          </TabsContent>
-
-          {/* 503 Preview Tab */}
-          <TabsContent value="503" className="mt-6 space-y-6">
-            <Tabs defaultValue="preview" className="w-full">
-              <Card>
-                <CardHeader code="0x01" title="503_MAINTENANCE" />
-                <div className="flex items-center justify-between">
-                  <TabsList>
-                    <TabsTrigger value="preview" aria-label="Preview 503 page">
-                      [PREVIEW]
-                    </TabsTrigger>
-                    <TabsTrigger value="code" aria-label="View 503 code">
-                      [CODE]
-                    </TabsTrigger>
-                  </TabsList>
-                </div>
-              </Card>
-              <TabsContent value="preview" className="mt-6">
-                <Card className="overflow-hidden">
-                  <CardHeader code="0x02" title="LIVE_PREVIEW" />
-                  <ErrorPreview errorType="503" />
-                </Card>
-              </TabsContent>
-              <TabsContent value="code" className="mt-6">
-                <Card className="overflow-hidden">
-                  <CardHeader code="0x02" title="SOURCE_CODE" />
-                  <div className="w-full max-w-full overflow-x-auto p-4">
-                    <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-                  </div>
-                </Card>
-              </TabsContent>
-            </Tabs>
-          </TabsContent>
-
-          {/* 504 Preview Tab */}
-          <TabsContent value="504" className="mt-6 space-y-6">
-            <Tabs defaultValue="preview" className="w-full">
-              <Card>
-                <CardHeader code="0x01" title="504_GATEWAY_TIMEOUT" />
-                <div className="flex items-center justify-between">
-                  <TabsList>
-                    <TabsTrigger value="preview" aria-label="Preview 504 page">
-                      [PREVIEW]
-                    </TabsTrigger>
-                    <TabsTrigger value="code" aria-label="View 504 code">
-                      [CODE]
-                    </TabsTrigger>
-                  </TabsList>
-                </div>
-              </Card>
-              <TabsContent value="preview" className="mt-6">
-                <Card className="overflow-hidden">
-                  <CardHeader code="0x02" title="LIVE_PREVIEW" />
-                  <ErrorPreview errorType="504" />
-                </Card>
-              </TabsContent>
-              <TabsContent value="code" className="mt-6">
-                <Card className="overflow-hidden">
-                  <CardHeader code="0x02" title="SOURCE_CODE" />
-                  <div className="w-full max-w-full overflow-x-auto p-4">
-                    <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-                  </div>
-                </Card>
-              </TabsContent>
-            </Tabs>
-          </TabsContent>
+          {/* All Error Type Tabs - Data-driven (DRY) */}
+          {errorTypes.map((errorType) => (
+            <ErrorTabContent key={errorType} errorType={errorType} templateCode={templateCode} />
+          ))}
         </Tabs>
 
+        {/* File Structure */}
         {/* File Structure */}
         <Card>
           <CardHeader code="0x03" title="FILE_STRUCTURE" />
