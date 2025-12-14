@@ -330,7 +330,6 @@ export default function BillingDashboardTemplate() {
         'Plan comparison cards',
         'Full billing history table',
         'Responsive mobile-first design',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

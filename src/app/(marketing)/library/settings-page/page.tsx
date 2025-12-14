@@ -139,7 +139,6 @@ export default function SettingsPageTemplate() {
         'Language & region settings',
         'Account security (password, 2FA, sessions)',
         'Responsive mobile-first design',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

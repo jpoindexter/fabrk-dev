@@ -227,7 +227,6 @@ export default function OnboardingTemplate() {
         'Navigation controls (back/next)',
         'Multi-select use case options',
         'Completion summary',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

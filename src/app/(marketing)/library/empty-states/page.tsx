@@ -120,7 +120,6 @@ export default function EmptyStatesTemplate() {
         'Error state differentiation',
         'First-time user guidance',
         'Search result fallback',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

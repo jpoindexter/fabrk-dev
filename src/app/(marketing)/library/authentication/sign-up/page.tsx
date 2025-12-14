@@ -324,7 +324,6 @@ export default function SignUpTemplate() {
         'Social sign-up (GitHub, Google)',
         'Password requirements hint',
         'Link to sign in page',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

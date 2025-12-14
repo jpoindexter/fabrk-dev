@@ -237,7 +237,6 @@ export default function TeamDashboardTemplate() {
         'Organization stats (member count, plan, limits)',
         'Responsive layout with sidebar for activity',
         'Pending invitations management',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

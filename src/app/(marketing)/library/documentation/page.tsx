@@ -118,7 +118,6 @@ export default function DocumentationLayoutTemplate() {
         'Table of contents with auto-scroll',
         'Markdown-friendly content area',
         'Responsive collapsible sidebars',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

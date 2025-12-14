@@ -399,7 +399,6 @@ export default function AIFormGeneratorTemplate() {
         'Supports text, email, password, select, textarea, checkbox, radio',
         'Multi-provider AI support (OpenAI, Google, Ollama)',
         'Terminal-styled chat interface',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

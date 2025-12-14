@@ -172,7 +172,6 @@ export default function EmailTemplatesShowcase() {
         'Trigger event mapping',
         'Responsive email layouts',
         'Terminal-themed design',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

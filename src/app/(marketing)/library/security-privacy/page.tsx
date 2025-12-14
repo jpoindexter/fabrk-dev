@@ -277,7 +277,6 @@ export default function SecurityPrivacyTemplate() {
         'Privacy settings with toggles',
         'Audit log with filtering',
         'GDPR compliance tools (data export, deletion)',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

@@ -326,7 +326,6 @@ export default function ErrorPagesTemplate() {
         'Request ID for debugging',
         'Color-coded severity (error vs warning)',
         'Maintenance mode with ETA',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

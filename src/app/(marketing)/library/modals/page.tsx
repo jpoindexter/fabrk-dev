@@ -144,7 +144,6 @@ export default function ModalsTemplate() {
         'Popover for contextual menus',
         'Keyboard navigation (ESC to close)',
         'Focus trap and accessibility',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

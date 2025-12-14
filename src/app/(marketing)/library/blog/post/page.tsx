@@ -420,7 +420,6 @@ export default function BlogPostTemplate() {
         'Code blocks with copy functionality',
         'Tags and share actions',
         'Industry-standard Vercel/Next.js pattern',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

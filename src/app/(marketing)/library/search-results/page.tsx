@@ -207,7 +207,6 @@ export default function SearchResultsTemplate() {
         'Grid/list view toggle',
         'Pagination controls',
         'Responsive sidebar',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

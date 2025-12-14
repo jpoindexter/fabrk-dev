@@ -247,7 +247,6 @@ export default function PricingPageTemplate() {
         'FAQ accordion section',
         'Popular plan highlight badge',
         'Responsive card layout',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

@@ -9,6 +9,9 @@ export { AdvancedFilters, type FilterOptions } from './advanced-filters';
 export { TemplateCard, type TemplateCardProps } from './template-card';
 export {
   TemplateShowcasePage,
+  TemplatePreviewWrapper,
+  parseFilePath,
   type TemplateShowcasePageProps,
+  type TemplatePreviewWrapperProps,
   type FileStructureItem,
 } from './template-showcase-page';

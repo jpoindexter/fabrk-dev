@@ -289,7 +289,6 @@ export default function SignInTemplate() {
         'Forgot password link',
         'Sign up redirect',
         'Responsive mobile-first design',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

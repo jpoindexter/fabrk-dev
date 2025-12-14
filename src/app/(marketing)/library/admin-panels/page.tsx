@@ -224,10 +224,8 @@ export default function AdminPanelsPage() {
             <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
               <TabsList>
-                <TabsTrigger value="preview">Preview
-                </TabsTrigger>
-                <TabsTrigger value="code">Code
-                </TabsTrigger>
+                <TabsTrigger value="preview">Preview</TabsTrigger>
+                <TabsTrigger value="code">Code</TabsTrigger>
               </TabsList>
             </div>
           </Card>
@@ -295,9 +293,7 @@ export default function AdminPanelsPage() {
               <div>
                 <span className="text-success">&gt;</span> Webhook management and delivery history
               </div>
-              <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
-              </div>
+              <div></div>
             </div>
           </CardContent>
         </Card>

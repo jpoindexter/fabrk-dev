@@ -225,7 +225,6 @@ export default function UserManagementTemplate() {
         'User stats dashboard',
         'Role-based status badges',
         'Responsive table layout',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

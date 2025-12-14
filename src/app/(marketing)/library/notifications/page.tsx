@@ -316,7 +316,6 @@ export default function NotificationsTemplate() {
         'Mark as read functionality',
         'Delete notifications',
         'Unread count badge',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

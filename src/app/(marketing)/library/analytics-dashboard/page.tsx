@@ -149,7 +149,6 @@ export default function AnalyticsDashboardTemplate() {
         'Traffic sources breakdown with progress bars',
         'Device breakdown statistics',
         'Report generation templates',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

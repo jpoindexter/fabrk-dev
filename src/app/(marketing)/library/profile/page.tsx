@@ -230,7 +230,6 @@ export default function ProfilePageTemplate() {
         'Activity feed with timestamps',
         'Project cards with stats',
         'Responsive mobile-first design',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

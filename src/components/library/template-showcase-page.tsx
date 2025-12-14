@@ -4,12 +4,101 @@
  */
 'use client';
 
-import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
+import { Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  TemplatePageHeader,
+  FeatureList,
+  FeatureItem,
+} from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { RelatedTemplates } from './related-templates';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
+
+/** Skeleton loader for preview section */
+function PreviewSkeleton() {
+  return (
+    <div className="bg-background/50 flex min-h-[400px] items-center justify-center p-8">
+      <div className="space-y-4 text-center">
+        <div className="bg-muted mx-auto h-8 w-32 animate-pulse" />
+        <div className="bg-muted mx-auto h-4 w-48 animate-pulse" />
+        <div className={cn(mode.font, mode.typography.caption, mode.color.text.muted)}>
+          Loading preview...
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** Error fallback for preview section */
+function PreviewError({
+  error,
+  resetErrorBoundary,
+}: {
+  error: Error;
+  resetErrorBoundary: () => void;
+}) {
+  return (
+    <div className="bg-destructive/5 border-destructive/20 flex min-h-[200px] flex-col items-center justify-center gap-4 border p-8">
+      <div className={cn(mode.font, 'text-destructive text-sm font-semibold')}>
+        [ERROR]: Preview failed to load
+      </div>
+      <div className={cn(mode.font, mode.typography.caption, mode.color.text.muted)}>
+        {error.message}
+      </div>
+      <button
+        onClick={resetErrorBoundary}
+        className={cn(
+          'border px-4 py-2',
+          'border-border hover:bg-muted',
+          mode.radius,
+          mode.font,
+          mode.typography.caption
+        )}
+      >
+        &gt; RETRY
+      </button>
+    </div>
+  );
+}
+
+/** Parse a file path string into FileStructureItem format */
+export function parseFilePath(path: string, label?: string): FileStructureItem {
+  const segments = path.split('/').filter(Boolean);
+  return {
+    path: segments.map((seg, i) => (i < segments.length - 1 ? seg + '/' : seg)),
+    label,
+  };
+}
+
+/**
+ * TemplatePreviewWrapper - Standardized wrapper for all template previews
+ * Ensures consistent padding, background, and container styling
+ */
+export interface TemplatePreviewWrapperProps {
+  children: React.ReactNode;
+  /** Minimum height for the preview container. Default: '600px' */
+  minHeight?: string;
+  /** Additional className for custom styling */
+  className?: string;
+}
+
+export function TemplatePreviewWrapper({
+  children,
+  minHeight = '600px',
+  className,
+}: TemplatePreviewWrapperProps) {
+  return (
+    <div className={cn('bg-background/50 p-4 sm:p-8', className)} style={{ minHeight }}>
+      <div className="container mx-auto max-w-7xl">{children}</div>
+    </div>
+  );
+}
 
 export interface FileStructureItem {
   /** File path segments (e.g., ['app/', '(dashboard)/', 'profile/page.tsx']) */
@@ -73,32 +162,34 @@ export function TemplateShowcasePage({
               >
                 <TabsTrigger
                   value="preview"
+                  aria-label="Preview template"
                   className={cn(
-                    'flex items-center gap-2 border-r px-4 py-2 text-xs',
-                    mode.color.border.default,
-                    `data-[state=active]:${mode.color.bg.accent}`,
-                    `data-[state=active]:${mode.color.text.inverse}`,
-                    `data-[state=inactive]:${mode.color.text.muted}`,
-                    `data-[state=inactive]:hover:${mode.color.bg.muted}`,
-                    `data-[state=inactive]:hover:${mode.color.text.primary}`,
+                    'flex items-center gap-2 border-r px-4 py-2',
+                    'border-border',
+                    'data-[state=active]:bg-accent data-[state=active]:text-accent-foreground',
+                    'data-[state=inactive]:text-muted-foreground',
+                    'data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground',
+                    'focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-2',
                     mode.radius,
-                    mode.font
+                    mode.font,
+                    mode.typography.caption
                   )}
                 >
                   [PREVIEW]
                 </TabsTrigger>
                 <TabsTrigger
                   value="code"
+                  aria-label="View source code"
                   className={cn(
-                    'flex items-center gap-2 border-r px-4 py-2 text-xs',
-                    mode.color.border.default,
-                    `data-[state=active]:${mode.color.bg.accent}`,
-                    `data-[state=active]:${mode.color.text.inverse}`,
-                    `data-[state=inactive]:${mode.color.text.muted}`,
-                    `data-[state=inactive]:hover:${mode.color.bg.muted}`,
-                    `data-[state=inactive]:hover:${mode.color.text.primary}`,
+                    'flex items-center gap-2 border-r px-4 py-2',
+                    'border-border',
+                    'data-[state=active]:bg-accent data-[state=active]:text-accent-foreground',
+                    'data-[state=inactive]:text-muted-foreground',
+                    'data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground',
+                    'focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-2',
                     mode.radius,
-                    mode.font
+                    mode.font,
+                    mode.typography.caption
                   )}
                 >
                   [CODE]
@@ -108,15 +199,17 @@ export function TemplateShowcasePage({
           </Card>
 
           {/* Preview Tab Content */}
-          <TabsContent value="preview" className="mt-6 w-full max-w-full">
+          <TabsContent value="preview" className="mt-6 w-full max-w-full" role="tabpanel">
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="LIVE_PREVIEW" />
-              {preview}
+              <ErrorBoundary FallbackComponent={PreviewError}>
+                <Suspense fallback={<PreviewSkeleton />}>{preview}</Suspense>
+              </ErrorBoundary>
             </Card>
           </TabsContent>
 
           {/* Code Tab Content */}
-          <TabsContent value="code" className="mt-6 w-full max-w-full">
+          <TabsContent value="code" className="mt-6 w-full max-w-full" role="tabpanel">
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
@@ -149,13 +242,11 @@ export function TemplateShowcasePage({
         <Card>
           <CardHeader code="0x03" title="FEATURES" />
           <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-2 text-xs')}>
+            <FeatureList>
               {features.map((feature, idx) => (
-                <div key={idx}>
-                  <span className="text-success">&gt;</span> {feature}
-                </div>
+                <FeatureItem key={idx}>{feature}</FeatureItem>
               ))}
-            </div>
+            </FeatureList>
           </CardContent>
         </Card>
 

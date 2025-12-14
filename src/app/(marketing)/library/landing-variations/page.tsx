@@ -440,7 +440,6 @@ export default function LandingVariationsTemplate() {
         'Email capture form',
         'Feature highlights',
         'Responsive layouts',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

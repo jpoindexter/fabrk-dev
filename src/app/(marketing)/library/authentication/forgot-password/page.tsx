@@ -147,7 +147,6 @@ export default function ForgotPasswordTemplate() {
         'Clear user instructions',
         'Email validation pre-configured',
         'Back to login navigation',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

@@ -559,7 +559,6 @@ export default function BlogTemplate() {
         'Post cards with author, date, read time',
         'Pagination controls',
         'Terminal-styled card headers',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

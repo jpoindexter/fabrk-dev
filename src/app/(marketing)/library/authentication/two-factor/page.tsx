@@ -160,7 +160,6 @@ export default function TwoFactorTemplate() {
         'Auto-focus and keyboard navigation',
         'Resend code functionality',
         'Back to login navigation',
-        'DS-compliant (mode.font, mode.radius)',
       ]}
     />
   );

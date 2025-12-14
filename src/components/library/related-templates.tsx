@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
-import { Card, CardHeader } from '@/components/ui/card';
+import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card';
 import { templates } from '@/app/(marketing)/library/library-data';
 import { getRelatedTemplates } from '@/lib/search';
 
@@ -35,28 +35,36 @@ export function RelatedTemplates({ currentTemplateId, limit = 3 }: RelatedTempla
     <Card>
       <CardHeader code="0xFF" title="RELATED TEMPLATES" />
       <div className="p-4">
-        <p className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
+        <p className={cn(mode.font, mode.typography.caption, mode.color.text.muted, 'mb-4')}>
           [RECOMMENDED]: Templates similar to {currentTemplate.name}
         </p>
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {relatedTemplates.map((template) => (
-            <Link key={template.id} href={template.href} className="group">
-              <div className="border-border bg-card hover:border-primary/50 h-full border transition-all">
-                {/* Card Header */}
-                <div className="border-border flex items-center justify-between border-b px-4 py-2">
-                  <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                    [{template.id.toUpperCase()}]
-                  </span>
-                  <template.icon className="text-muted-foreground size-4" />
-                </div>
-
-                {/* Card Content */}
-                <div className="flex flex-col p-4">
+            <Link
+              key={template.id}
+              href={template.href}
+              className="group focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+            >
+              <Card interactive size="auto" className="h-full">
+                <CardHeader
+                  code={template.id.slice(0, 4).toUpperCase()}
+                  title={template.id.toUpperCase()}
+                  icon={<template.icon className={cn('size-4', mode.color.icon.muted)} />}
+                />
+                <CardContent padding="md" className="flex flex-1 flex-col">
                   {/* Badge */}
                   {template.badge && (
-                    <div className="border-primary/50 text-primary mb-2 w-fit border px-2 py-0.5">
-                      <span className={cn(mode.font, 'text-xs')}>
+                    <div
+                      className={cn(
+                        'mb-2 w-fit border px-2 py-0.5',
+                        'border-primary/50',
+                        mode.radius
+                      )}
+                    >
+                      <span
+                        className={cn(mode.font, mode.typography.caption, mode.color.text.accent)}
+                      >
                         {template.badge.toUpperCase()}
                       </span>
                     </div>
@@ -73,50 +81,72 @@ export function RelatedTemplates({ currentTemplateId, limit = 3 }: RelatedTempla
                   </h3>
 
                   {/* Description */}
-                  <p className={cn(mode.font, 'text-muted-foreground mb-4 line-clamp-2 text-xs')}>
+                  <p
+                    className={cn(
+                      mode.font,
+                      mode.typography.caption,
+                      mode.color.text.muted,
+                      'mb-4 line-clamp-2'
+                    )}
+                  >
                     {template.description}
                   </p>
 
                   {/* Features (max 2) */}
                   <div className="mt-auto">
-                    <div className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}>
+                    <div
+                      className={cn(
+                        mode.font,
+                        mode.typography.caption,
+                        mode.color.text.muted,
+                        'mb-1'
+                      )}
+                    >
                       [FEATURES]:
                     </div>
                     <div className="flex flex-wrap gap-1">
                       {template.features.slice(0, 2).map((feature) => (
                         <span
                           key={feature}
-                          className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}
+                          className={cn(
+                            mode.font,
+                            mode.typography.caption,
+                            'border px-2 py-0.5',
+                            mode.color.border.default,
+                            mode.radius
+                          )}
                         >
                           {feature}
                         </span>
                       ))}
                       {template.features.length > 2 && (
-                        <span className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}>
+                        <span
+                          className={cn(
+                            mode.font,
+                            mode.typography.caption,
+                            'border px-2 py-0.5',
+                            mode.color.border.default,
+                            mode.radius
+                          )}
+                        >
                           +{template.features.length - 2}
                         </span>
                       )}
                     </div>
                   </div>
-
-                  {/* Action */}
-                  <div className="border-border mt-4 flex items-center justify-between border-t pt-2">
-                    <span
-                      className={cn(
-                        mode.font,
-                        'text-primary group-hover:text-primary/80 text-xs transition-colors'
-                      )}
-                    >
-                      &gt; VIEW
-                    </span>
-                    <ArrowRight
-                      className={cn(
-                        'text-muted-foreground h-3 w-3 transition-transform group-hover:translate-x-1'
-                      )}
-                    />
-                  </div>
-                </div>
-              </div>
+                </CardContent>
+                <CardFooter className="justify-between">
+                  <span className={cn(mode.font, mode.typography.caption, mode.color.text.accent)}>
+                    &gt; VIEW
+                  </span>
+                  <ArrowRight
+                    className={cn(
+                      'h-3 w-3 transition-transform group-hover:translate-x-1',
+                      mode.color.icon.muted
+                    )}
+                  />
+                </CardFooter>
+              </Card>
             </Link>
           ))}
         </div>
