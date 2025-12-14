@@ -16,8 +16,6 @@ export interface TemplateCardProps {
   href: string;
   icon: React.ElementType;
   features: string[];
-  /** Category for grouping */
-  category?: string;
   /** File path hint for developers */
   filePath?: string;
   /** Dependencies required */
@@ -31,7 +29,6 @@ export function TemplateCard({
   href,
   icon: Icon,
   features,
-  category,
   filePath,
   dependencies,
 }: TemplateCardProps) {
@@ -41,6 +38,16 @@ export function TemplateCard({
         <CardHeader
           title={id.toUpperCase().replace(/-/g, '_')}
           icon={<Icon className="text-muted-foreground size-4" />}
+          meta={
+            <span
+              className={cn(
+                mode.font,
+                'text-primary group-hover:text-primary/80 text-xs transition-colors'
+              )}
+            >
+              &gt; VIEW
+            </span>
+          }
         />
         <CardContent padding="md" className="flex flex-col">
           {/* Title */}
@@ -109,21 +116,6 @@ export function TemplateCard({
                 </span>
               )}
             </div>
-          </div>
-
-          {/* Action Footer */}
-          <div className="border-border mt-4 flex items-center justify-between border-t pt-3">
-            <span
-              className={cn(
-                mode.font,
-                'text-primary group-hover:text-primary/80 text-xs transition-colors'
-              )}
-            >
-              &gt; VIEW
-            </span>
-            {category && (
-              <span className={cn(mode.font, 'text-muted-foreground text-xs')}>{category}</span>
-            )}
           </div>
         </CardContent>
       </Card>

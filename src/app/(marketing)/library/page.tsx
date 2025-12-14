@@ -28,7 +28,7 @@ import {
   PaginationPrevious,
   PaginationEllipsis,
 } from '@/components/ui/pagination';
-import { templates, categories, getCategoryInfo } from './library-data';
+import { templates, categories } from './library-data';
 import { filterTemplates } from '@/lib/search';
 import { AdvancedFilters, TemplateCard, type FilterOptions } from '@/components/library';
 
@@ -325,7 +325,6 @@ export default function LibraryIndexPage() {
                 href={template.href}
                 icon={template.icon}
                 features={template.features}
-                category={getCategoryInfo(template.category)?.name}
               />
             ))}
           </div>
