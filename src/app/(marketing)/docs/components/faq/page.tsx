@@ -39,7 +39,7 @@ function FAQDemo() {
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
               className="hover:bg-muted/50 flex w-full items-center justify-between p-4 text-left transition-colors"
             >
-              <span className="font-mono text-sm">
+              <span className="font-mono text-xs">
                 <span className="text-primary">├─</span>
                 <span className="text-muted-foreground ml-2">[QUERY]:</span>
                 <span className="ml-2">{faq.q}</span>
@@ -143,7 +143,7 @@ const categories = ["GENERAL", "TECHNICAL", "PAYMENT", "LICENSE"];
           preview: (
             <div className="border-border bg-card w-full max-w-lg border">
               <button className="flex w-full items-center justify-between p-4 text-left">
-                <span className="font-mono text-sm">
+                <span className="font-mono text-xs">
                   <span className="text-primary">├─</span>
                   <span className="text-muted-foreground ml-2">[QUERY]:</span>
                   <span className="ml-2">What payment methods do you accept?</span>

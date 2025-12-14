@@ -105,10 +105,10 @@ git push origin main`,
         <DocsCard title="COMMON ERRORS">
           <div className="space-y-4">
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: Port 3000 already in use
               </p>
-              <p className="mb-2 text-sm">
+              <p className="mb-2 text-xs">
                 <strong>Solution:</strong> Run on different port or kill existing process
               </p>
               <div className="border-border bg-card rounded-none border p-4">
@@ -126,10 +126,10 @@ npm run kill`}
             </div>
 
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: Cannot find module &apos;xyz&apos;
               </p>
-              <p className="mb-2 text-sm">
+              <p className="mb-2 text-xs">
                 <strong>Solution:</strong> Install dependencies
               </p>
               <div className="border-border bg-card rounded-none border p-4">
@@ -145,10 +145,10 @@ npm install`}
             </div>
 
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: Prisma Client is not configured
               </p>
-              <p className="mb-2 text-sm">
+              <p className="mb-2 text-xs">
                 <strong>Solution:</strong> Generate Prisma Client and push schema
               </p>
               <div className="border-border bg-card rounded-none border p-4">

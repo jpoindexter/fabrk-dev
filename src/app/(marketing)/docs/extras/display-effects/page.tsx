@@ -15,9 +15,24 @@ type MonitorEffect = 'none' | 'crt' | 'lcd' | 'vhs';
 
 const effects: { id: MonitorEffect; name: string; description: string; icon: typeof Monitor }[] = [
   { id: 'none', name: 'Clean', description: 'No effects - crisp modern display', icon: Monitor },
-  { id: 'crt', name: 'CRT Monitor', description: 'Scanlines, phosphor glow, rolling bar, flicker', icon: Tv },
-  { id: 'lcd', name: 'LCD Handheld', description: 'Pixel grid, recessed screen, no glow', icon: Gamepad2 },
-  { id: 'vhs', name: 'VHS Glitch', description: 'Chromatic aberration, tracking noise', icon: Film },
+  {
+    id: 'crt',
+    name: 'CRT Monitor',
+    description: 'Scanlines, phosphor glow, rolling bar, flicker',
+    icon: Tv,
+  },
+  {
+    id: 'lcd',
+    name: 'LCD Handheld',
+    description: 'Pixel grid, recessed screen, no glow',
+    icon: Gamepad2,
+  },
+  {
+    id: 'vhs',
+    name: 'VHS Glitch',
+    description: 'Chromatic aberration, tracking noise',
+    icon: Film,
+  },
 ];
 
 function EffectSwitcher() {
@@ -61,9 +76,7 @@ function EffectSwitcher() {
             type="button"
             className={cn(
               'border-border flex min-h-[80px] flex-col items-start justify-center gap-1 border p-4 text-left transition-colors',
-              isActive
-                ? 'bg-primary text-primary-foreground'
-                : 'bg-card hover:bg-muted',
+              isActive ? 'bg-primary text-primary-foreground' : 'bg-card hover:bg-muted',
               mode.radius,
               mode.font
             )}
@@ -180,7 +193,7 @@ localStorage.setItem('monitor-preset', 'crt');`,
       <DocsSection title="Try It Live">
         <DocsCard title="EFFECT SWITCHER">
           <div className="space-y-4">
-            <p className="text-sm">
+            <p className="text-xs">
               Click any effect below to instantly apply it. The effect persists across page
               navigation and is saved to localStorage.
             </p>
@@ -193,7 +206,7 @@ localStorage.setItem('monitor-preset', 'crt');`,
       <DocsSection title="Effect Details">
         <div className="grid gap-4 md:grid-cols-2">
           <DocsCard title="CRT MONITOR">
-            <div className="space-y-2 text-sm">
+            <div className="space-y-2 text-xs">
               <p>The authentic 80s/90s CRT experience:</p>
               <div className="space-y-1">
                 <div>├─ Horizontal scanlines (2px spacing)</div>
@@ -207,7 +220,7 @@ localStorage.setItem('monitor-preset', 'crt');`,
           </DocsCard>
 
           <DocsCard title="LCD HANDHELD">
-            <div className="space-y-2 text-sm">
+            <div className="space-y-2 text-xs">
               <p>Game Boy / handheld console look:</p>
               <div className="space-y-1">
                 <div>├─ 3px dot matrix pixel grid</div>
@@ -219,7 +232,7 @@ localStorage.setItem('monitor-preset', 'crt');`,
           </DocsCard>
 
           <DocsCard title="VHS GLITCH">
-            <div className="space-y-2 text-sm">
+            <div className="space-y-2 text-xs">
               <p>Damaged VHS tape aesthetic:</p>
               <div className="space-y-1">
                 <div>├─ Red/blue chromatic aberration</div>
@@ -231,7 +244,7 @@ localStorage.setItem('monitor-preset', 'crt');`,
           </DocsCard>
 
           <DocsCard title="PERFORMANCE">
-            <div className="space-y-2 text-sm">
+            <div className="space-y-2 text-xs">
               <p>All effects are optimized:</p>
               <div className="space-y-1">
                 <div>├─ GPU acceleration (transform: translateZ(0))</div>
@@ -247,7 +260,7 @@ localStorage.setItem('monitor-preset', 'crt');`,
       {/* Accessibility */}
       <DocsSection title="Accessibility">
         <DocsCard title="REDUCED MOTION SUPPORT">
-          <div className="space-y-2 text-sm">
+          <div className="space-y-2 text-xs">
             <p>
               All animations automatically disable when the user has{' '}
               <code className="bg-muted px-1 py-0.5">prefers-reduced-motion: reduce</code> set in
@@ -269,7 +282,7 @@ localStorage.setItem('monitor-preset', 'crt');`,
       {/* Theme Pairing */}
       <DocsSection title="Recommended Theme Pairings">
         <DocsCard title="SOFT LINKS">
-          <div className="space-y-2 text-sm">
+          <div className="space-y-2 text-xs">
             <p>
               When you select an effect from the dropdown, the theme automatically switches to a
               complementary color scheme:

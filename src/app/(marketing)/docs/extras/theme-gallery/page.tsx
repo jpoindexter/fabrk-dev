@@ -98,7 +98,7 @@ document.documentElement.setAttribute('data-theme', 'c64');
       <DocsSection title="Interactive Theme Gallery">
         <DocsCard title="THEME GALLERY">
           <div className="space-y-4">
-            <p className="text-sm">
+            <p className="text-xs">
               Click any theme below to instantly preview it across the entire site. Your selection
               is automatically saved to localStorage.
             </p>
@@ -116,7 +116,7 @@ document.documentElement.setAttribute('data-theme', 'c64');
       <DocsSection title="Theme Categories">
         <div className="grid gap-4 md:grid-cols-2">
           <DocsCard title="CRT PHOSPHOR (5 THEMES)">
-            <div className="space-y-1 text-sm">
+            <div className="space-y-1 text-xs">
               <div>├─ Green CRT: Classic green phosphor terminal</div>
               <div>├─ Red CRT: Warm red monochrome display</div>
               <div>├─ Blue CRT: Cool blue terminal aesthetic</div>
@@ -126,7 +126,7 @@ document.documentElement.setAttribute('data-theme', 'c64');
           </DocsCard>
 
           <DocsCard title="RETRO COMPUTER (6 THEMES)">
-            <div className="space-y-1 text-sm">
+            <div className="space-y-1 text-xs">
               <div>├─ Game Boy: DMG-01 iconic LCD green</div>
               <div>├─ Commodore 64: Classic C64 blue</div>
               <div>├─ Game Boy Pocket: Monochrome silver LCD</div>
@@ -137,7 +137,7 @@ document.documentElement.setAttribute('data-theme', 'c64');
           </DocsCard>
 
           <DocsCard title="MINIMAL (1 THEME)">
-            <div className="space-y-1 text-sm">
+            <div className="space-y-1 text-xs">
               <div>└─ Black & White: Pure grayscale aesthetic</div>
             </div>
           </DocsCard>
@@ -147,7 +147,7 @@ document.documentElement.setAttribute('data-theme', 'c64');
       {/* Technical Details */}
       <DocsSection title="Technical Details">
         <DocsCard title="OKLCH COLOR SYSTEM">
-          <div className="space-y-2 text-sm">
+          <div className="space-y-2 text-xs">
             <p>
               All themes use OKLCH (Oklab Lightness Chroma Hue) color space for perceptually uniform
               color mixing and gradients.
@@ -171,7 +171,7 @@ document.documentElement.setAttribute('data-theme', 'c64');
         </DocsCard>
 
         <DocsCard title="ACCESSIBILITY COMPLIANCE">
-          <div className="space-y-2 text-sm">
+          <div className="space-y-2 text-xs">
             <p>All 12 themes pass WCAG 2.2 AA accessibility requirements:</p>
             <div className="space-y-1">
               <div>✓ Text contrast ≥4.5:1 (normal text)</div>

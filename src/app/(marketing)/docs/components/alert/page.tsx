@@ -144,54 +144,54 @@ export default function AlertPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-4 text-sm font-semibold">✓ Use Alert when:</p>
+              <p className="text-success mb-4 text-xs font-semibold">✓ Use Alert when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Displaying persistent, important information (errors, warnings, tips)
                 </li>
-                <li className="text-sm">• User needs to be aware of system state changes</li>
-                <li className="text-sm">
+                <li className="text-xs">• User needs to be aware of system state changes</li>
+                <li className="text-xs">
                   • Information stays visible until user dismisses or takes action
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Context-specific messages within a page section (form validation summary)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Important announcements that don&apos;t require immediate action
                 </li>
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-xs font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">• Temporary feedback for actions (use Toast instead)</li>
-                <li className="text-sm">
+                <li className="text-xs">• Temporary feedback for actions (use Toast instead)</li>
+                <li className="text-xs">
                   • User must confirm before proceeding (use Alert Dialog)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Field-level validation errors (use Form Error component)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Full-page blocking messages (use Dialog or dedicated error page)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Time-sensitive information that auto-dismisses (use Toast)
                 </li>
               </ul>
             </div>
             <div className="border-border border-t pt-4">
-              <p className="mb-2 text-sm font-semibold">Variant Selection:</p>
+              <p className="mb-2 text-xs font-semibold">Variant Selection:</p>
               <ul className="space-y-1">
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>default</strong>: General information, tips, updates
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>destructive</strong>: Errors, critical warnings, failed operations
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>success</strong>: Successful operations, confirmations
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Always include an icon matching the variant for quick recognition
                 </li>
               </ul>

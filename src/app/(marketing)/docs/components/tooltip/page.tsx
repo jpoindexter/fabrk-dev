@@ -291,61 +291,61 @@ export default function TooltipPage() {
         <DocsCard title="USAGE GUIDANCE">
           <div className="space-y-6">
             <div>
-              <p className="text-success mb-4 text-sm font-semibold">✓ Use Tooltip when:</p>
+              <p className="text-success mb-4 text-xs font-semibold">✓ Use Tooltip when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Icon-only buttons need accessible labels (edit, delete, settings icons)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Abbreviations or truncated text need full context (hover to see full name)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Providing additional context on hover (why is this disabled?)
                 </li>
-                <li className="text-sm">• Showing keyboard shortcuts (Save: ⌘S)</li>
-                <li className="text-sm">• Short supplemental information (1-2 sentences max)</li>
+                <li className="text-xs">• Showing keyboard shortcuts (Save: ⌘S)</li>
+                <li className="text-xs">• Short supplemental information (1-2 sentences max)</li>
               </ul>
             </div>
             <div>
-              <p className="text-destructive mb-4 text-sm font-semibold">✗ Don&apos;t use when:</p>
+              <p className="text-destructive mb-4 text-xs font-semibold">✗ Don&apos;t use when:</p>
               <ul className="space-y-2">
-                <li className="text-sm">
+                <li className="text-xs">
                   • Information is critical to task completion (show it directly in UI)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Content needs to be interactive or clickable (use Popover instead)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Text is longer than 2-3 sentences (use Popover or Dialog)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Primary mobile experience (touch devices don&apos;t have hover)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • User needs to copy text from tooltip (use Popover for selectable text)
                 </li>
               </ul>
             </div>
             <div className="border-border border-t pt-4">
-              <p className="mb-2 text-sm font-semibold">Tooltip vs Popover:</p>
+              <p className="mb-2 text-xs font-semibold">Tooltip vs Popover:</p>
               <ul className="space-y-1">
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>Tooltip</strong>: Non-interactive, hover/focus, short text (1-2 lines)
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>Popover</strong>: Interactive, click to open, complex content with
                   links/buttons
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>Tooltip</strong>: Auto-dismisses on mouse leave, ESC key
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • <strong>Popover</strong>: Stays open until user closes it
                 </li>
-                <li className="text-sm">
+                <li className="text-xs">
                   • Always wrap multiple tooltips in single TooltipProvider for performance
                 </li>
-                <li className="text-sm">• Keep delay short (300-700ms) for responsive feel</li>
+                <li className="text-xs">• Keep delay short (300-700ms) for responsive feel</li>
               </ul>
             </div>
           </div>
