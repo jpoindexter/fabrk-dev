@@ -1,13 +1,11 @@
 /**
  * TemplateCard - Reusable card for template listings
  * Uses design system Card components properly
- * Supports both featured and regular variants
  */
 'use client';
 
 import Link from 'next/link';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -18,13 +16,12 @@ export interface TemplateCardProps {
   href: string;
   icon: React.ElementType;
   features: string[];
-  badge?: string;
+  /** Category for grouping */
+  category?: string;
   /** File path hint for developers */
   filePath?: string;
   /** Dependencies required */
   dependencies?: string[];
-  /** Whether this is a featured template */
-  featured?: boolean;
 }
 
 export function TemplateCard({
@@ -34,43 +31,27 @@ export function TemplateCard({
   href,
   icon: Icon,
   features,
-  badge,
+  category,
   filePath,
   dependencies,
-  featured = false,
 }: TemplateCardProps) {
   return (
     <Link href={href} className="group block h-full">
-      <Card
-        interactive
-        size="full"
-        tone={featured ? 'primary' : 'neutral'}
-        className="h-full transition-all"
-      >
+      <Card interactive size="full" className="h-full transition-all">
         <CardHeader
-          code={featured ? '0xFEAT' : undefined}
           title={id.toUpperCase().replace(/-/g, '_')}
-          icon={
-            <Icon className={cn('size-4', featured ? 'text-primary' : 'text-muted-foreground')} />
-          }
+          icon={<Icon className="text-muted-foreground size-4" />}
         />
         <CardContent padding="md" className="flex flex-col">
-          {/* Title + Badge Row */}
-          <div className="mb-2 flex items-start justify-between gap-2">
-            <h3
-              className={cn(
-                mode.font,
-                'group-hover:text-primary text-base font-semibold transition-colors'
-              )}
-            >
-              {name}
-            </h3>
-            {badge && (
-              <Badge variant="outline" className={cn(mode.font, 'shrink-0 text-xs')}>
-                {badge.toUpperCase()}
-              </Badge>
+          {/* Title */}
+          <h3
+            className={cn(
+              mode.font,
+              'group-hover:text-primary mb-2 text-base font-semibold transition-colors'
             )}
-          </div>
+          >
+            {name}
+          </h3>
 
           {/* Description */}
           <p className={cn(mode.font, 'text-muted-foreground mb-4 text-xs leading-relaxed')}>
@@ -140,14 +121,9 @@ export function TemplateCard({
             >
               &gt; VIEW
             </span>
-            <span
-              className={cn(
-                mode.font,
-                'text-muted-foreground text-xs transition-transform group-hover:translate-x-1'
-              )}
-            >
-              →
-            </span>
+            {category && (
+              <span className={cn(mode.font, 'text-muted-foreground text-xs')}>{category}</span>
+            )}
           </div>
         </CardContent>
       </Card>
