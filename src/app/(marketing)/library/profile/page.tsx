@@ -6,14 +6,10 @@
 'use client';
 
 import { Star, GitBranch, MessageSquare, Award, Zap, TrendingUp, Activity } from 'lucide-react';
-import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { CodeBlock } from '@/components/ui/code-block';
+import { TemplateShowcasePage } from '@/components/library';
 import { ProfileHeader } from './components/profile-header';
 import { BadgesSection } from './components/badges-section';
 import { ProfileTabs } from './components/profile-tabs';
-import { mode } from '@/design-system';
-import { cn } from '@/lib/utils';
 
 const templateCode = `"use client";
 
@@ -214,110 +210,28 @@ function ProfilePreview() {
 
 export default function ProfilePageTemplate() {
   return (
-    <div className="w-full overflow-x-hidden">
-      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Header */}
-        <TemplatePageHeader
-          badge="PROFILE PAGE"
-          title="Profile Page"
-          description="User profile with stats, activity feed, projects, and badges"
-        />
-
-        {/* Preview/Code Tabs */}
-        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
-          {/* Tab Navigation Card */}
-          <Card>
-            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
-            <div className="flex items-center justify-between">
-              <TabsList>
-                <TabsTrigger value="preview">Preview</TabsTrigger>
-                <TabsTrigger value="code">Code</TabsTrigger>
-              </TabsList>
-            </div>
-          </Card>
-
-          {/* Preview Tab Content */}
-          <TabsContent value="preview" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE PREVIEW" />
-              <ProfilePreview />
-            </Card>
-          </TabsContent>
-
-          {/* Code Tab Content */}
-          <TabsContent value="code" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE CODE" />
-              <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-              </div>
-            </Card>
-          </TabsContent>
-        </Tabs>
-
-        {/* File Structure */}
-        <Card>
-          <CardHeader code="0x02" title="FILE STRUCTURE" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-1 text-xs')}>
-              <div className="text-muted-foreground">[FILES]:</div>
-              <div className="space-y-1 pl-4">
-                <div>
-                  <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">(dashboard)/</span>
-                  <span className="text-foreground">profile/page.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Copy template here</span>
-                </div>
-                <div>
-                  <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">(dashboard)/profile/components/</span>
-                  <span className="text-foreground">profile-header.tsx</span>
-                </div>
-                <div>
-                  <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">(dashboard)/profile/components/</span>
-                  <span className="text-foreground">badges-section.tsx</span>
-                </div>
-                <div>
-                  <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">(dashboard)/profile/components/</span>
-                  <span className="text-foreground">profile-tabs.tsx</span>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Features */}
-        <Card>
-          <CardHeader code="0x03" title="FEATURES" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-2 text-xs')}>
-              <div>
-                <span className="text-success">&gt;</span> User profile header with avatar and stats
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Achievement badges display
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Tabbed navigation (Activity, Projects)
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Activity feed with timestamps
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Project cards with stats
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Responsive mobile-first design
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
+    <TemplateShowcasePage
+      badge="PROFILE PAGE"
+      title="Profile Page"
+      description="User profile with stats, activity feed, projects, and badges"
+      templateId="profile"
+      preview={<ProfilePreview />}
+      code={templateCode}
+      fileStructure={[
+        { path: ['app/', '(dashboard)/', 'profile/page.tsx'], label: '← Copy template here' },
+        { path: ['app/', '(dashboard)/profile/components/', 'profile-header.tsx'] },
+        { path: ['app/', '(dashboard)/profile/components/', 'badges-section.tsx'] },
+        { path: ['app/', '(dashboard)/profile/components/', 'profile-tabs.tsx'] },
+      ]}
+      features={[
+        'User profile header with avatar and stats',
+        'Achievement badges display',
+        'Tabbed navigation (Activity, Projects)',
+        'Activity feed with timestamps',
+        'Project cards with stats',
+        'Responsive mobile-first design',
+        'DS-compliant (mode.font, mode.radius)',
+      ]}
+    />
   );
 }

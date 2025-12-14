@@ -5,9 +5,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { CodeBlock } from '@/components/ui/code-block';
+import { TemplateShowcasePage } from '@/components/library';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -131,108 +129,23 @@ function ModalsPreview() {
 
 export default function ModalsTemplate() {
   return (
-    <div className="w-full overflow-x-hidden">
-      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Header */}
-        <TemplatePageHeader
-          badge="MODAL PATTERNS"
-          title="Modal Patterns"
-          description="Dialog, alert, sheet, and popover patterns for common interactions"
-        />
-
-        {/* Preview/Code Tabs */}
-        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
-          {/* Tab Navigation Card */}
-          <Card>
-            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
-            <div className="flex items-center justify-between">
-              <TabsList>
-                <TabsTrigger value="preview">Preview</TabsTrigger>
-                <TabsTrigger value="code">Code</TabsTrigger>
-              </TabsList>
-            </div>
-          </Card>
-
-          {/* Preview Tab Content */}
-          <TabsContent value="preview" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE PREVIEW" />
-              <ModalsPreview />
-            </Card>
-          </TabsContent>
-
-          {/* Code Tab Content */}
-          <TabsContent value="code" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE CODE" />
-              <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-              </div>
-            </Card>
-          </TabsContent>
-        </Tabs>
-
-        {/* Pattern Comparison */}
-        <Card>
-          <CardHeader code="0x02" title="MODAL TYPES" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-4 text-xs')}>
-              <div className="space-y-2">
-                <div className="font-semibold">[ALERT DIALOG]</div>
-                <div className="text-muted-foreground">
-                  Destructive confirmations (delete, logout, reset)
-                </div>
-              </div>
-              <div className="space-y-2">
-                <div className="font-semibold">[DIALOG]</div>
-                <div className="text-muted-foreground">
-                  Forms, multi-step wizards, content display
-                </div>
-              </div>
-              <div className="space-y-2">
-                <div className="font-semibold">[SHEET]</div>
-                <div className="text-muted-foreground">
-                  Side panels for filters, settings, navigation
-                </div>
-              </div>
-              <div className="space-y-2">
-                <div className="font-semibold">[POPOVER]</div>
-                <div className="text-muted-foreground">Contextual menus, dropdowns, tooltips</div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Features */}
-        <Card>
-          <CardHeader code="0x03" title="FEATURES" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-2 text-xs')}>
-              <div>
-                <span className="text-success">&gt;</span> AlertDialog for destructive actions
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Dialog for forms and content
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Sheet for side panels
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Popover for contextual menus
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Keyboard navigation (ESC to close)
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Focus trap and accessibility
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
+    <TemplateShowcasePage
+      badge="MODAL PATTERNS"
+      title="Modal Patterns"
+      description="Dialog, alert, sheet, and popover patterns for common interactions"
+      templateId="modals"
+      preview={<ModalsPreview />}
+      code={templateCode}
+      fileStructure="app/(platform)/modals/page.tsx"
+      features={[
+        'AlertDialog for destructive actions',
+        'Dialog for forms and content',
+        'Sheet for side panels',
+        'Popover for contextual menus',
+        'Keyboard navigation (ESC to close)',
+        'Focus trap and accessibility',
+        'DS-compliant (mode.font, mode.radius)',
+      ]}
+    />
   );
 }

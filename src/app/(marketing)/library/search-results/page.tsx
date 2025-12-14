@@ -7,16 +7,12 @@
 'use client';
 
 import { useState } from 'react';
-import { TemplatePageHeader, Card, CardHeader, CardContent } from '@/components/ui/card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { CodeBlock } from '@/components/ui/code-block';
+import { TemplateShowcasePage } from '@/components/library';
 import { SearchBar } from './components/search-bar';
 import { FiltersSidebar } from './components/filters-sidebar';
 import { ResultsHeader } from './components/results-header';
 import { ResultsGrid } from './components/results-grid';
 import { Pagination } from './components/pagination';
-import { mode } from '@/design-system';
-import { cn } from '@/lib/utils';
 
 const templateCode = `"use client";
 
@@ -196,95 +192,23 @@ function SearchResultsPreview() {
 
 export default function SearchResultsTemplate() {
   return (
-    <div className="w-full overflow-x-hidden">
-      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Header */}
-        <TemplatePageHeader
-          badge="SEARCH RESULTS"
-          title="Search Results"
-          description="Search interface with filters, sorting, and pagination"
-        />
-
-        {/* Preview/Code Tabs */}
-        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
-          {/* Tab Navigation Card */}
-          <Card>
-            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
-            <div className="flex items-center justify-between">
-              <TabsList>
-                <TabsTrigger value="preview">Preview</TabsTrigger>
-                <TabsTrigger value="code">Code</TabsTrigger>
-              </TabsList>
-            </div>
-          </Card>
-
-          {/* Preview Tab Content */}
-          <TabsContent value="preview" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE PREVIEW" />
-              <SearchResultsPreview />
-            </Card>
-          </TabsContent>
-
-          {/* Code Tab Content */}
-          <TabsContent value="code" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE CODE" />
-              <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-              </div>
-            </Card>
-          </TabsContent>
-        </Tabs>
-
-        {/* File Structure */}
-        <Card>
-          <CardHeader code="0x02" title="FILE STRUCTURE" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-1 text-xs')}>
-              <div className="text-muted-foreground">[FILES]:</div>
-              <div className="space-y-1 pl-4">
-                <div>
-                  <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">search/</span>
-                  <span className="text-foreground">page.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Copy template here</span>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Features */}
-        <Card>
-          <CardHeader code="0x03" title="FEATURES" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-2 text-xs')}>
-              <div>
-                <span className="text-success">&gt;</span> Search input with real-time filtering
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Category and tag filters
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Sorting options (relevance, date, rating)
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Grid/list view toggle
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Pagination controls
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Responsive sidebar
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
+    <TemplateShowcasePage
+      badge="SEARCH RESULTS"
+      title="Search Results"
+      description="Search interface with filters, sorting, and pagination"
+      templateId="search-results"
+      preview={<SearchResultsPreview />}
+      code={templateCode}
+      fileStructure="app/search/page.tsx"
+      features={[
+        'Search input with real-time filtering',
+        'Category and tag filters',
+        'Sorting options (relevance, date, rating)',
+        'Grid/list view toggle',
+        'Pagination controls',
+        'Responsive sidebar',
+        'DS-compliant (mode.font, mode.radius)',
+      ]}
+    />
   );
 }

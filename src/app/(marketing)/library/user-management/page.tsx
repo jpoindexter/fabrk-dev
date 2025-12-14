@@ -1,9 +1,6 @@
 /**
- * FABRK COMPONENT
- * User Management Template - Terminal console style
- * Production-ready
+ * User Management Template Page
  */
-
 'use client';
 
 import { useState, useCallback } from 'react';
@@ -20,10 +17,8 @@ import {
 import { UserPlus } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { CodeBlock } from '@/components/ui/code-block';
-import { RelatedTemplates } from '@/components/library';
+import { Card, CardHeader } from '@/components/ui/card';
+import { TemplateShowcasePage } from '@/components/library';
 import { columns } from './components/user-table-columns';
 import { mockUsers } from './components/types';
 import { StatsCards } from './components/stats-cards';
@@ -201,16 +196,10 @@ function UserManagementPreview() {
 
         {/* Main Table Card */}
         <Card>
-          <CardHeader code="0x00" title="USERS DATABASE" />
-
+          <CardHeader code="0x00" title="USERS_DATABASE" />
           <div className="p-4">
-            {/* Toolbar */}
             <TableToolbar table={table} onExportCSV={exportToCSV} />
-
-            {/* Terminal Table */}
             <DataTable table={table} />
-
-            {/* Pagination */}
             <PaginationControls table={table} />
           </div>
         </Card>
@@ -221,133 +210,23 @@ function UserManagementPreview() {
 
 export default function UserManagementTemplate() {
   return (
-    <div className="w-full overflow-x-hidden">
-      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Header */}
-        <TemplatePageHeader
-          badge="USER MANAGEMENT"
-          title="User Management"
-          description="Manage users, roles, and permissions with TanStack Table"
-        />
-
-        {/* Preview/Code Tabs */}
-        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
-          {/* Tab Navigation Card */}
-          <Card>
-            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
-            <div className="flex items-center justify-between">
-              <TabsList
-                className={cn(
-                  'h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0',
-                  mode.radius
-                )}
-              >
-                <TabsTrigger
-                  value="preview"
-                  className={cn(
-                    'flex items-center gap-2 border-r px-4 py-2 text-xs',
-                    mode.color.border.default,
-                    `data-[state=active]:${mode.color.bg.accent}`,
-                    `data-[state=active]:${mode.color.text.inverse}`,
-                    `data-[state=inactive]:${mode.color.text.muted}`,
-                    `data-[state=inactive]:hover:${mode.color.bg.muted}`,
-                    `data-[state=inactive]:hover:${mode.color.text.primary}`,
-                    mode.radius,
-                    mode.font
-                  )}
-                >
-                  [PREVIEW]
-                </TabsTrigger>
-                <TabsTrigger
-                  value="code"
-                  className={cn(
-                    'flex items-center gap-2 border-r px-4 py-2 text-xs',
-                    mode.color.border.default,
-                    `data-[state=active]:${mode.color.bg.accent}`,
-                    `data-[state=active]:${mode.color.text.inverse}`,
-                    `data-[state=inactive]:${mode.color.text.muted}`,
-                    `data-[state=inactive]:hover:${mode.color.bg.muted}`,
-                    `data-[state=inactive]:hover:${mode.color.text.primary}`,
-                    mode.radius,
-                    mode.font
-                  )}
-                >
-                  [CODE]
-                </TabsTrigger>
-              </TabsList>
-            </div>
-          </Card>
-
-          {/* Preview Tab Content */}
-          <TabsContent value="preview" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE PREVIEW" />
-              <UserManagementPreview />
-            </Card>
-          </TabsContent>
-
-          {/* Code Tab Content */}
-          <TabsContent value="code" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE CODE" />
-              <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-              </div>
-            </Card>
-          </TabsContent>
-        </Tabs>
-
-        {/* File Structure */}
-        <Card>
-          <CardHeader code="0x02" title="FILE STRUCTURE" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-1 text-xs')}>
-              <div className={mode.color.text.muted}>[FILES]:</div>
-              <div className="space-y-1 pl-4">
-                <div>
-                  <span className={mode.color.text.accent}>app/</span>
-                  <span className={mode.color.text.muted}>admin/users/</span>
-                  <span className={mode.color.text.primary}>page.tsx</span>
-                  <span className={cn('ml-4', mode.color.text.muted)}>← Copy template here</span>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Features */}
-        <Card>
-          <CardHeader code="0x03" title="FEATURES" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-2 text-xs')}>
-              <div>
-                <span className="text-success">&gt;</span> TanStack Table integration
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Sorting, filtering, pagination
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> CSV export functionality
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> User stats dashboard
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Role-based status badges
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Responsive table layout
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Related Templates */}
-        <RelatedTemplates currentTemplateId="user-management" limit={3} />
-      </div>
-    </div>
+    <TemplateShowcasePage
+      badge="USER MANAGEMENT"
+      title="User Management"
+      description="Manage users, roles, and permissions with TanStack Table"
+      templateId="user-management"
+      preview={<UserManagementPreview />}
+      code={templateCode}
+      fileStructure="app/admin/users/page.tsx"
+      features={[
+        'TanStack Table integration',
+        'Sorting, filtering, pagination',
+        'CSV export functionality',
+        'User stats dashboard',
+        'Role-based status badges',
+        'Responsive table layout',
+        'DS-compliant (mode.font, mode.radius)',
+      ]}
+    />
   );
 }

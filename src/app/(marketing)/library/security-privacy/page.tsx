@@ -10,9 +10,7 @@ import { useState } from 'react';
 import { toast } from 'sonner';
 import { Shield, Lock, Activity, FileText, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { TemplatePageHeader, Card, CardHeader, CardContent } from '@/components/ui/card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { CodeBlock } from '@/components/ui/code-block';
+import { TemplateShowcasePage } from '@/components/library';
 import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
 import { SecurityScore } from './components/security-score';
 import { SecurityTab } from './components/security-tab';
@@ -264,96 +262,23 @@ function SecurityPrivacyPreview() {
 
 export default function SecurityPrivacyTemplate() {
   return (
-    <div className="w-full overflow-x-hidden">
-      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Header */}
-        <TemplatePageHeader
-          badge="SECURITY PRIVACY"
-          title="Security & Privacy"
-          description="Manage your account security, privacy settings, and data controls"
-        />
-
-        {/* Preview/Code Tabs */}
-        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
-          {/* Tab Navigation Card */}
-          <Card>
-            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
-            <div className="flex items-center justify-between">
-              <TabsList>
-                <TabsTrigger value="preview">Preview</TabsTrigger>
-                <TabsTrigger value="code">Code</TabsTrigger>
-              </TabsList>
-            </div>
-          </Card>
-
-          {/* Preview Tab Content */}
-          <TabsContent value="preview" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE PREVIEW" />
-              <SecurityPrivacyPreview />
-            </Card>
-          </TabsContent>
-
-          {/* Code Tab Content */}
-          <TabsContent value="code" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE CODE" />
-              <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-              </div>
-            </Card>
-          </TabsContent>
-        </Tabs>
-
-        {/* File Structure */}
-        <Card>
-          <CardHeader code="0x02" title="FILE STRUCTURE" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-1 text-xs')}>
-              <div className="text-muted-foreground">[FILES]:</div>
-              <div className="space-y-1 pl-4">
-                <div>
-                  <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">settings/security/</span>
-                  <span className="text-foreground">page.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Copy template here</span>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Features */}
-        <Card>
-          <CardHeader code="0x03" title="FEATURES" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-2 text-xs')}>
-              <div>
-                <span className="text-success">&gt;</span> Security score dashboard
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Two-factor authentication setup
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Active session management
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Privacy settings with toggles
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Audit log with filtering
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> GDPR compliance tools (data export,
-                deletion)
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
+    <TemplateShowcasePage
+      badge="SECURITY PRIVACY"
+      title="Security & Privacy"
+      description="Manage your account security, privacy settings, and data controls"
+      templateId="security-privacy"
+      preview={<SecurityPrivacyPreview />}
+      code={templateCode}
+      fileStructure="app/settings/security/page.tsx"
+      features={[
+        'Security score dashboard',
+        'Two-factor authentication setup',
+        'Active session management',
+        'Privacy settings with toggles',
+        'Audit log with filtering',
+        'GDPR compliance tools (data export, deletion)',
+        'DS-compliant (mode.font, mode.radius)',
+      ]}
+    />
   );
 }

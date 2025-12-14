@@ -7,11 +7,9 @@
 import Link from 'next/link';
 import { ArrowLeft, ShieldQuestion } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { CodeBlock } from '@/components/ui/code-block';
+import { TemplateShowcasePage } from '@/components/library';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -136,89 +134,21 @@ function ForgotPasswordPreview() {
 
 export default function ForgotPasswordTemplate() {
   return (
-    <div className="w-full overflow-x-hidden">
-      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Header */}
-        <TemplatePageHeader
-          badge="FORGOT PASSWORD"
-          title="Forgot Password"
-          description="Password recovery flow with email verification"
-        />
-
-        {/* Preview/Code Tabs */}
-        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
-          {/* Tab Navigation Card */}
-          <Card>
-            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
-            <div className="flex items-center justify-between">
-              <TabsList>
-                <TabsTrigger value="preview">Preview</TabsTrigger>
-                <TabsTrigger value="code">Code</TabsTrigger>
-              </TabsList>
-            </div>
-          </Card>
-
-          {/* Preview Tab Content */}
-          <TabsContent value="preview" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE PREVIEW" />
-              <ForgotPasswordPreview />
-            </Card>
-          </TabsContent>
-
-          {/* Code Tab Content */}
-          <TabsContent value="code" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE CODE" />
-              <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-              </div>
-            </Card>
-          </TabsContent>
-        </Tabs>
-
-        {/* File Structure */}
-        <Card>
-          <CardHeader code="0x02" title="FILE STRUCTURE" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-1 text-xs')}>
-              <div className="text-muted-foreground">[FILES]:</div>
-              <div className="space-y-1 pl-4">
-                <div>
-                  <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">(auth)/</span>
-                  <span className="text-foreground">forgot-password/page.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Copy template here</span>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Features */}
-        <Card>
-          <CardHeader code="0x03" title="FEATURES" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-2 text-xs')}>
-              <div>
-                <span className="text-success">&gt;</span> Clean, focused recovery form
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Clear user instructions
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Email validation pre-configured
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Back to login navigation
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
+    <TemplateShowcasePage
+      badge="FORGOT PASSWORD"
+      title="Forgot Password"
+      description="Password recovery flow with email verification"
+      templateId="forgot-password"
+      preview={<ForgotPasswordPreview />}
+      code={templateCode}
+      fileStructure="app/(auth)/forgot-password/page.tsx"
+      features={[
+        'Clean, focused recovery form',
+        'Clear user instructions',
+        'Email validation pre-configured',
+        'Back to login navigation',
+        'DS-compliant (mode.font, mode.radius)',
+      ]}
+    />
   );
 }
