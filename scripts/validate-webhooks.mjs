@@ -32,9 +32,8 @@ function checkWebhookEndpoints() {
   log('\n[ CHECKING WEBHOOK ENDPOINTS ]', 'blue');
 
   const endpoints = [
-    'src/app/api/webhooks/stripe/route.ts',
-    'src/app/api/webhooks/polar/route.ts',
-    'src/app/api/webhooks/lemonsqueezy/route.ts',
+    'src/app/api/stripe/webhook/route.ts',
+    'src/app/api/lemonsqueezy/webhook/route.ts',
   ];
 
   let allExist = true;
@@ -89,9 +88,8 @@ function checkSignatureVerification() {
   log('\n[ CHECKING SIGNATURE VERIFICATION ]', 'blue');
 
   const endpoints = [
-    { path: 'src/app/api/webhooks/stripe/route.ts', keyword: 'constructEvent' },
-    { path: 'src/app/api/webhooks/polar/route.ts', keyword: 'webhooks.verify' },
-    { path: 'src/app/api/webhooks/lemonsqueezy/route.ts', keyword: 'crypto.createHmac' },
+    { path: 'src/app/api/stripe/webhook/route.ts', keyword: 'constructEvent' },
+    { path: 'src/app/api/lemonsqueezy/webhook/route.ts', keyword: 'verifyWebhookSignature' },
   ];
 
   let allVerified = true;
@@ -121,9 +119,8 @@ function checkWebhookRouteHandlers() {
   log('\n[ CHECKING ROUTE HANDLERS ]', 'blue');
 
   const endpoints = [
-    'src/app/api/webhooks/stripe/route.ts',
-    'src/app/api/webhooks/polar/route.ts',
-    'src/app/api/webhooks/lemonsqueezy/route.ts',
+    'src/app/api/stripe/webhook/route.ts',
+    'src/app/api/lemonsqueezy/webhook/route.ts',
   ];
 
   let allValid = true;
