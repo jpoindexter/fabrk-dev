@@ -21,6 +21,22 @@
 
 ---
 
+## 📑 Table of Contents
+
+- [Quick Start](#-quick-start)
+- [What's Inside](#-whats-inside)
+- [Configuration](#-configuration)
+- [Design System](#-design-system)
+- [Project Structure](#-project-structure)
+- [Testing](#-testing)
+- [Deployment](#-deployment)
+- [Documentation](#-documentation)
+- [Troubleshooting](#-troubleshooting)
+- [Support](#-support)
+- [License](#-license)
+
+---
+
 ## ⚡ Quick Start
 
 ```bash
@@ -31,7 +47,7 @@ npm install --legacy-peer-deps
 
 # Set up environment
 cp .env.example .env.local
-# Edit .env.local with your credentials
+# Edit .env.local with your credentials (see Configuration below)
 
 # Set up database
 npm run db:push
@@ -47,7 +63,7 @@ Visit **http://localhost:3000** 🎉
 
 ## 🚀 What's Inside
 
-### UI Components (77 Total)
+### UI Components (72 Total)
 
 - **Forms**: Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Calendar, Date Picker, File Upload
 - **Navigation**: Navbar, Sidebar, Tabs, Breadcrumbs, Pagination, Command Palette
@@ -55,6 +71,8 @@ Visit **http://localhost:3000** 🎉
 - **Data**: Table, Data Table, Card, Badge, Avatar, Chart (7 variants)
 - **Layout**: Container, Grid, Stack, Divider, Separator, Scroll Area
 - **Advanced**: Carousel, Combobox, Context Menu, Dropdown, Popover, Tooltip, Accordion, Collapsible
+
+**Explore all components:** After running `npm run dev`, visit **http://localhost:3000/docs/components**
 
 ### Design System
 
@@ -113,81 +131,126 @@ Git commits automatically run:
 
 ## 🛠️ Configuration
 
-### Environment Variables
+### Minimum Required Variables
 
-Required variables in `.env.local`:
+To run Fabrk locally, you need these variables in `.env.local`:
 
 ```bash
-# Database
-DATABASE_URL="postgresql://..." # Production
-# DATABASE_URL="file:./dev.db"  # Development (SQLite)
+# Database (SQLite for local development)
+DATABASE_URL="file:./dev.db"
 
-# Auth (NextAuth v5)
-NEXTAUTH_SECRET="your-secret-key"
+# Auth (Required for login)
+NEXTAUTH_SECRET="your-secret-key"  # Generate: openssl rand -base64 32
 NEXTAUTH_URL="http://localhost:3000"
 
-# Payments (choose one or multiple)
-STRIPE_SECRET_KEY="sk_test_..."
-POLAR_ACCESS_TOKEN="polar_..."
-LEMONSQUEEZY_API_KEY="ls_..."
-
-# Email
-RESEND_API_KEY="re_..."
+# Email (Required for magic link auth)
+RESEND_API_KEY="re_..."  # Get free key: https://resend.com/api-keys
+EMAIL_FROM="onboarding@resend.dev"  # Or your verified domain
 ```
 
-**Optional variables:**
+**That's it!** The app will run locally with these 5 variables.
+
+---
+
+### Production Variables
+
+For production deployment, update these in `.env.local`:
 
 ```bash
-# OAuth Providers
+# Database (PostgreSQL for production)
+DATABASE_URL="postgresql://user:password@host:5432/fabrk"
+
+# Auth (Production URL)
+NEXTAUTH_URL="https://yourdomain.com"
+
+# Payment Provider (Choose ONE to start)
+# STRIPE
+STRIPE_SECRET_KEY="sk_live_..."
+STRIPE_WEBHOOK_SECRET="whsec_..."  # From Stripe Dashboard → Webhooks
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_live_..."
+
+# POLAR.SH (Alternative)
+# POLAR_ACCESS_TOKEN="polar_..."
+# POLAR_WEBHOOK_SECRET="..."
+
+# LEMONSQUEEZY (Alternative)
+# LEMONSQUEEZY_API_KEY="ls_..."
+```
+
+**Full environment variables reference:** See `.env.example` (200+ variables for advanced features)
+
+---
+
+### Webhook Configuration
+
+Webhooks are **required** for payments to work. After a customer completes checkout, the payment provider sends a webhook to your app to create the order.
+
+#### Stripe Webhooks
+
+1. **Go to Stripe Dashboard** → Developers → Webhooks
+2. **Click "Add endpoint"**
+3. **Endpoint URL:**
+   - **Local testing:** Use Stripe CLI
+     ```bash
+     stripe listen --forward-to localhost:3000/api/webhooks/stripe
+     ```
+   - **Production:** `https://yourdomain.com/api/webhooks/stripe`
+
+4. **Select events to send:**
+   - `checkout.session.completed`
+   - `payment_intent.succeeded`
+   - `customer.subscription.created` (if using subscriptions)
+   - `customer.subscription.updated`
+   - `customer.subscription.deleted`
+
+5. **Copy webhook signing secret** and add to `.env.local`:
+   ```bash
+   STRIPE_WEBHOOK_SECRET="whsec_..."
+   ```
+
+#### Polar.sh Webhooks
+
+1. **Go to Polar Dashboard** → Settings → Webhooks
+2. **Add webhook endpoint:** `https://yourdomain.com/api/webhooks/polar`
+3. **Select events:** `order.created`, `subscription.*`
+4. **Copy webhook secret** to `.env.local`:
+   ```bash
+   POLAR_WEBHOOK_SECRET="..."
+   ```
+
+#### Lemonsqueezy Webhooks
+
+1. **Go to Lemonsqueezy Dashboard** → Settings → Webhooks
+2. **Create webhook:** `https://yourdomain.com/api/webhooks/lemonsqueezy`
+3. **Select events:** `order_created`, `subscription_created`
+4. **Copy signing secret** to `.env.local`:
+   ```bash
+   LEMONSQUEEZY_WEBHOOK_SECRET="..."
+   ```
+
+**Testing webhooks locally:**
+- Use Stripe CLI: `stripe listen --forward-to localhost:3000/api/webhooks/stripe`
+- Or use ngrok: `ngrok http 3000` → Use ngrok URL in webhook settings
+
+---
+
+### Optional OAuth Providers
+
+To enable Google/GitHub login buttons, add these to `.env.local`:
+
+```bash
+# Google OAuth
 GOOGLE_CLIENT_ID="..."
 GOOGLE_CLIENT_SECRET="..."
+
+# GitHub OAuth
 GITHUB_ID="..."
 GITHUB_SECRET="..."
-
-# AI Features (if using AI components)
-AI_PROVIDER="ollama" # or "openai" or "google"
-OPENAI_API_KEY="sk-..."
-GOOGLE_API_KEY="..."
-OLLAMA_MODEL="llama3.1:8b"
 ```
 
-Full environment schema: `src/lib/env.ts`
-
-### Database Setup
-
-```bash
-# Development (SQLite)
-npm run db:push
-
-# Production (PostgreSQL)
-# Set DATABASE_URL to PostgreSQL connection string
-npm run db:push
-
-# Seed test data
-npm run db:seed
-
-# Reset database
-npm run db:reset
-
-# Open Prisma Studio
-npm run db:studio
-```
-
-### Payment Provider Configuration
-
-Choose one or multiple payment providers in `src/config/stripe.ts`:
-
-```typescript
-export const stripeConfig = {
-  provider: "stripe", // or "polar" or "lemonsqueezy"
-  // ... provider-specific settings
-};
-```
-
-Each provider has its own webhook endpoint:
-- Stripe: `/api/webhooks/stripe`
-- Polar: `/api/webhooks/polar`
-- Lemonsqueezy: `/api/webhooks/lemonsqueezy`
+**How to get OAuth credentials:**
+- **Google:** https://console.cloud.google.com/apis/credentials
+- **GitHub:** https://github.com/settings/developers
 
 ---
 
@@ -236,22 +299,67 @@ bg-white, bg-gray-500, text-black, #hexvalues
 
 ### Theme Switching
 
-```tsx
-import { useTheme } from "next-themes";
+A theme switcher dropdown is included in the navigation bar (top right). Click the palette icon to choose from 12 terminal themes.
 
-function ThemeSwitcher() {
-  const { theme, setTheme } = useTheme();
+**To use the theme switcher in your own components:**
+
+```tsx
+import { ThemeDropdown } from '@/components/theme/theme-dropdown';
+
+export function MyNavbar() {
+  return (
+    <nav>
+      {/* Your nav items */}
+      <ThemeDropdown />
+    </nav>
+  );
+}
+```
+
+**Available theme IDs:**
+- CRT: `green`, `red`, `blue`, `amber`, `purple`
+- Retro: `c64`, `gameboy`, `vic20`, `atari`
+- Handheld: `gbpocket`, `spectrum`
+- Light: `bw`
+
+**To programmatically change theme:**
+
+```tsx
+'use client';
+
+import { useEffect } from 'react';
+
+export function CustomThemeSwitcher() {
+  const changeTheme = (themeId: string) => {
+    localStorage.setItem('theme', themeId);
+    document.documentElement.setAttribute('data-theme', themeId);
+  };
 
   return (
-    <select value={theme} onChange={(e) => setTheme(e.target.value)}>
-      <option value="crt-green">CRT Green</option>
-      <option value="crt-red">CRT Red</option>
-      <option value="gameboy">GameBoy</option>
-      {/* ... 12 total themes */}
+    <select onChange={(e) => changeTheme(e.target.value)}>
+      <option value="green">Green CRT</option>
+      <option value="amber">Amber CRT</option>
+      <option value="c64">C64 Blue</option>
+      {/* ... other themes */}
     </select>
   );
 }
 ```
+
+### Quick: Change Your Brand Color
+
+1. **Open `src/app/globals.css`**
+2. **Find your theme's CSS variables** (search for `[data-theme="green"]` or your theme)
+3. **Update the `--primary` color:**
+   ```css
+   [data-theme="green"] {
+     --primary: oklch(65% 0.25 145);  /* Green accent */
+     /* Change to your brand color in OKLCH format */
+   }
+   ```
+4. **Save and refresh** - Your brand color is now applied to all buttons, links, and accents
+
+**OKLCH color picker:** https://oklch.com/
 
 Full design system documentation: `docs/08-design/DESIGN_SYSTEM.md`
 
@@ -269,9 +377,10 @@ fabrk-official/
 │   │   ├── docs/            # Documentation site
 │   │   └── library/         # Template showcase
 │   ├── components/
-│   │   ├── ui/              # 77 UI components (Radix primitives)
+│   │   ├── ui/              # 72 UI components (Radix primitives)
 │   │   ├── docs/            # Documentation templates
 │   │   ├── dashboard/       # Dashboard components
+│   │   ├── theme/           # Theme switcher components
 │   │   └── shared/          # Shared components (Logo, Footer, etc.)
 │   ├── lib/
 │   │   ├── auth.ts          # NextAuth v5 configuration
@@ -338,10 +447,10 @@ npm run format
 ### Other Platforms
 
 Fabrk works on any platform that supports Next.js 16:
-- Netlify
-- Railway
-- Render
-- DigitalOcean App Platform
+- **Netlify:** Use Next.js runtime, set build command `npm run build`
+- **Railway:** Auto-detects Next.js, add PostgreSQL service
+- **Render:** Use Docker or native Node.js environment
+- **DigitalOcean App Platform:** Use Node.js buildpack
 
 **Build command:** `npm run build`
 **Output directory:** `.next`
@@ -353,7 +462,7 @@ Fabrk works on any platform that supports Next.js 16:
 
 ### Component Documentation
 
-All components documented at `/docs/components`:
+All 72 components documented at **http://localhost:3000/docs/components** (after running `npm run dev`):
 - Props and variants
 - Copy-paste examples
 - Accessibility notes
@@ -361,7 +470,7 @@ All components documented at `/docs/components`:
 
 ### Feature Guides
 
-Located at `/docs/features`:
+Located at **http://localhost:3000/docs/features**:
 - Authentication (NextAuth v5, magic link, OAuth)
 - Payments (Stripe, Polar, Lemonsqueezy)
 - Database (Prisma, migrations, seeding)
@@ -370,12 +479,252 @@ Located at `/docs/features`:
 
 ### Templates
 
-28+ copy-paste ready templates at `/library`:
+28+ copy-paste ready templates at **http://localhost:3000/library**:
 - Landing pages
 - Dashboard layouts
 - Auth flows
 - Pricing pages
 - Documentation sites
+
+---
+
+## 🔧 Troubleshooting
+
+### Port 3000 already in use
+
+```bash
+# Kill existing process
+lsof -ti:3000 | xargs kill -9
+npm run dev
+```
+
+Or use the built-in dev command (auto-kills port 3000):
+```bash
+npm run dev  # Automatically kills old processes
+```
+
+---
+
+### Database errors
+
+**Error: "Migration failed" or "Schema out of sync"**
+
+```bash
+# Reset database
+npm run db:reset
+```
+
+**Error: "Can't reach database server"**
+
+```bash
+# If using PostgreSQL, verify DATABASE_URL is correct
+# If using SQLite, delete dev.db and recreate:
+rm prisma/dev.db
+npm run db:push
+```
+
+**Prisma errors persist:**
+
+```bash
+# Clear Prisma cache and regenerate client
+rm -rf node_modules/.prisma
+npx prisma generate
+npm run db:push
+```
+
+---
+
+### Build fails with TypeScript errors
+
+```bash
+# Regenerate Prisma client
+npx prisma generate
+
+# Clear Next.js cache
+rm -rf .next
+npm run build
+```
+
+**Error: "Cannot find module '@prisma/client'"**
+
+```bash
+npm install @prisma/client
+npx prisma generate
+```
+
+---
+
+### Email not sending (magic link)
+
+**Symptoms:** Can't log in, "Email sent" message but no email received
+
+**Solutions:**
+
+1. **Verify RESEND_API_KEY is set:**
+   ```bash
+   grep RESEND_API_KEY .env.local
+   ```
+
+2. **Check Resend dashboard for errors:** https://resend.com/emails
+
+3. **Verify sender email:**
+   - Development: Use `onboarding@resend.dev` (no verification needed)
+   - Production: Use your verified domain email
+
+4. **Check spam folder** - Magic link emails sometimes land in spam
+
+5. **Resend API key format:**
+   ```bash
+   RESEND_API_KEY="re_..."  # Must start with "re_"
+   ```
+
+---
+
+### Payments not working
+
+**Symptom:** Customer completes checkout but order not created
+
+**Solutions:**
+
+1. **Verify webhook is configured** (see Webhook Configuration section above)
+
+2. **Check webhook secret is set:**
+   ```bash
+   grep WEBHOOK_SECRET .env.local
+   ```
+
+3. **Test webhook locally with Stripe CLI:**
+   ```bash
+   stripe listen --forward-to localhost:3000/api/webhooks/stripe
+   # Make a test purchase, check CLI output
+   ```
+
+4. **Check webhook logs:**
+   - Stripe: Dashboard → Developers → Webhooks → Your endpoint
+   - Polar: Dashboard → Settings → Webhooks
+   - Lemonsqueezy: Dashboard → Settings → Webhooks
+
+5. **Verify endpoint is receiving requests:**
+   - Check server logs: `npm run dev` output
+   - Look for `POST /api/webhooks/stripe` or similar
+
+**Common webhook errors:**
+- **401 Unauthorized:** Webhook secret doesn't match
+- **404 Not Found:** Webhook URL incorrect
+- **500 Internal Error:** Check server logs for stack trace
+
+---
+
+### Theme not changing
+
+**Symptom:** Click theme switcher but nothing happens
+
+**Solutions:**
+
+1. **Clear browser cache:**
+   - Chrome: Cmd+Shift+R (Mac) or Ctrl+Shift+R (Windows)
+   - Safari: Cmd+Option+E, then refresh
+
+2. **Check localStorage:**
+   - Open DevTools → Application → Local Storage
+   - Look for `theme` key
+   - Try manually setting: `localStorage.setItem('theme', 'amber')`
+
+3. **Verify theme name matches available themes:**
+   - Valid: `green`, `amber`, `c64`, `gameboy`, etc.
+   - Invalid: `crt-green`, `dark`, `light`
+
+4. **Hard refresh:**
+   ```bash
+   # Stop dev server
+   rm -rf .next
+   npm run dev
+   ```
+
+---
+
+### Build succeeds locally but fails on Vercel
+
+**Common causes:**
+
+1. **Missing environment variables:**
+   - Check Vercel dashboard → Settings → Environment Variables
+   - Ensure all required vars are set for Production
+
+2. **TypeScript strict mode:**
+   - Vercel runs `tsc --noEmit`
+   - Fix type errors locally: `npm run type-check`
+
+3. **Node version mismatch:**
+   - Fabrk uses Node 18+
+   - Set in `package.json`: `"engines": { "node": ">=18" }`
+
+4. **Prisma schema not synced:**
+   - Run `npx prisma generate` before build
+   - Vercel should auto-run this, but check build logs
+
+---
+
+### Components not rendering correctly
+
+**Symptom:** Components look broken, missing styles, or layout issues
+
+**Solutions:**
+
+1. **Verify Tailwind is compiling:**
+   ```bash
+   # Check for errors in console
+   npm run dev
+   # Look for Tailwind compilation messages
+   ```
+
+2. **Clear Tailwind cache:**
+   ```bash
+   rm -rf .next
+   npm run dev
+   ```
+
+3. **Verify globals.css is imported:**
+   - Check `src/app/layout.tsx` imports `./globals.css`
+
+4. **Check for conflicting CSS:**
+   - Remove any custom CSS files
+   - Use only Tailwind utilities + design tokens
+
+---
+
+### "Module not found" errors
+
+**Error: "Cannot find module '@/components/ui/button'"**
+
+```bash
+# Verify tsconfig paths are correct
+cat tsconfig.json | grep "@/*"
+# Should show: "@/*": ["./src/*"]
+
+# Restart TypeScript server (VS Code)
+# Cmd+Shift+P → TypeScript: Restart TS Server
+```
+
+**Error: "Cannot find module 'lucide-react'"**
+
+```bash
+npm install lucide-react
+```
+
+---
+
+### Still stuck?
+
+- **Email:** support@fabrek.dev
+- **GitHub Issues:** https://github.com/Theft-SUDO/fabrk-official/issues
+- **Discord:** Coming soon
+
+When reporting issues, include:
+1. Error message (full stack trace)
+2. Steps to reproduce
+3. Environment (OS, Node version, package manager)
+4. Relevant code/config files
 
 ---
 
@@ -406,7 +755,7 @@ Contributions welcome! Please:
 1. **Configure authentication** - Set up NextAuth providers in `.env.local`
 2. **Set up payments** - Configure Stripe, Polar, or Lemonsqueezy webhooks
 3. **Customize design** - Choose your terminal theme, adjust colors
-4. **Add features** - Build on top of 77 UI components
+4. **Add features** - Build on top of 72 UI components
 5. **Deploy** - Push to Vercel, set environment variables, go live
 
 **Read CLAUDE.md for AI assistant guidance** - Optimized for Claude Code and other AI tools.
@@ -415,7 +764,17 @@ Contributions welcome! Please:
 
 ## 📝 License
 
-MIT License - see LICENSE file for details.
+**MIT License** - Full text available in `LICENSE.md`
+
+**Commercial use allowed** — Use Fabrk for unlimited personal and commercial projects. You can:
+- ✅ Use for client projects
+- ✅ Use for SaaS products
+- ✅ Modify and customize freely
+- ✅ Create unlimited projects
+
+**Attribution appreciated but not required.**
+
+---
 
 **Built with ❤️ by indie hackers, for indie hackers.**
 
