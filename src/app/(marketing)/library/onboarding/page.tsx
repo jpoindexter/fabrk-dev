@@ -9,7 +9,7 @@
 import { useState } from 'react';
 import { User, Building2, Settings, CheckCircle2, Sparkles } from 'lucide-react';
 import { Card, CardHeader } from '@/components/ui/card';
-import { TemplateShowcasePage } from '@/components/library';
+import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
 import { ProgressSection } from './components/progress-section';
 import { StepWelcome } from './components/step-welcome';
 import { StepProfile } from './components/step-profile';
@@ -159,7 +159,7 @@ function OnboardingPreview() {
   };
 
   return (
-    <div className="bg-background/50 flex min-h-[600px] flex-col items-center justify-center p-4 sm:p-8">
+    <TemplatePreviewWrapper minHeight="600px">
       <Card className="w-full max-w-2xl">
         <CardHeader code="0x00" title="ONBOARDING" />
 
@@ -206,7 +206,7 @@ function OnboardingPreview() {
           <NavigationControls currentStep={currentStep} onBack={handleBack} onNext={handleNext} />
         )}
       </Card>
-    </div>
+    </TemplatePreviewWrapper>
   );
 }
 

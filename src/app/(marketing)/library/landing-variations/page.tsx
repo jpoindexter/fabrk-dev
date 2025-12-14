@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
-import { TemplateShowcasePage } from '@/components/library';
+import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
 import {
   ArrowRight,
   Play,
@@ -213,7 +213,7 @@ function LandingVariationsPreview() {
   }));
 
   return (
-    <div className="bg-background/50 min-h-[800px] p-4 sm:p-8">
+    <TemplatePreviewWrapper minHeight="800px">
       <div className="mx-auto max-w-6xl">
         {/* Variation Selector */}
         <StyledTabs
@@ -419,7 +419,7 @@ function LandingVariationsPreview() {
           </StyledTabsContent>
         </StyledTabs>
       </div>
-    </div>
+    </TemplatePreviewWrapper>
   );
 }
 

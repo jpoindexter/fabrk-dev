@@ -18,7 +18,7 @@ import { UserPlus } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader } from '@/components/ui/card';
-import { TemplateShowcasePage } from '@/components/library';
+import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
 import { columns } from './components/user-table-columns';
 import { mockUsers } from './components/types';
 import { StatsCards } from './components/stats-cards';
@@ -178,33 +178,31 @@ function UserManagementPreview() {
   }, []);
 
   return (
-    <div className={cn('min-h-[600px] p-4 sm:p-8', mode.color.bg.base + '/50')}>
-      <div className="space-y-6">
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <h1 className={cn(mode.font, 'text-2xl font-semibold', mode.color.text.primary)}>
-            User Management
-          </h1>
-          <Button className={cn(mode.radius, mode.font, 'text-xs')}>
-            <UserPlus className="mr-2 h-4 w-4" />
-            &gt; ADD USER
-          </Button>
-        </div>
-
-        {/* Stats Cards */}
-        <StatsCards users={mockUsers} />
-
-        {/* Main Table Card */}
-        <Card>
-          <CardHeader code="0x00" title="USERS_DATABASE" />
-          <div className="p-4">
-            <TableToolbar table={table} onExportCSV={exportToCSV} />
-            <DataTable table={table} />
-            <PaginationControls table={table} />
-          </div>
-        </Card>
+    <TemplatePreviewWrapper minHeight="600px">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <h1 className={cn(mode.font, 'text-2xl font-semibold', mode.color.text.primary)}>
+          User Management
+        </h1>
+        <Button className={cn(mode.radius, mode.font, 'text-xs')}>
+          <UserPlus className="mr-2 h-4 w-4" />
+          &gt; ADD USER
+        </Button>
       </div>
-    </div>
+
+      {/* Stats Cards */}
+      <StatsCards users={mockUsers} />
+
+      {/* Main Table Card */}
+      <Card>
+        <CardHeader code="0x00" title="USERS_DATABASE" />
+        <div className="p-4">
+          <TableToolbar table={table} onExportCSV={exportToCSV} />
+          <DataTable table={table} />
+          <PaginationControls table={table} />
+        </div>
+      </Card>
+    </TemplatePreviewWrapper>
   );
 }
 

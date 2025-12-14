@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
-import { TemplateShowcasePage } from '@/components/library';
+import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 import type { GeneratedForm } from '@/lib/ai/schemas';
@@ -196,8 +196,8 @@ export default function AIFormsPage() {
 
 function AIFormGeneratorPreview() {
   return (
-    <div className="bg-background/50 p-4 sm:p-8">
-      <div className="container mx-auto max-w-7xl space-y-6">
+    <TemplatePreviewWrapper>
+      <div className="space-y-6">
         {/* Header */}
         <div className="flex items-center gap-4">
           <div className={cn('bg-primary/10 p-2', mode.radius)}>
@@ -370,7 +370,7 @@ function AIFormGeneratorPreview() {
           </TabsContent>
         </Tabs>
       </div>
-    </div>
+    </TemplatePreviewWrapper>
   );
 }
 

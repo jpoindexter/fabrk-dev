@@ -13,7 +13,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Calendar, Clock, ChevronLeft, ChevronRight, ArrowRight, User } from 'lucide-react';
 import { InputSearch } from '@/components/ui/input-search';
 import Link from 'next/link';
-import { TemplateShowcasePage } from '@/components/library';
+import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -330,7 +330,7 @@ function BlogPreview() {
   const regularPosts = filteredPosts.filter((post) => !post.featured);
 
   return (
-    <div className="bg-background/50 min-h-[800px] p-4 sm:p-8">
+    <TemplatePreviewWrapper minHeight="800px">
       <div className="mx-auto max-w-6xl space-y-6">
         {/* Featured Post */}
         {featuredPost && (
@@ -537,7 +537,7 @@ function BlogPreview() {
           </div>
         </div>
       </div>
-    </div>
+    </TemplatePreviewWrapper>
   );
 }
 

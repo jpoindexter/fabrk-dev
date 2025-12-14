@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
+import { TemplatePreviewWrapper } from '@/components/library';
 import { getCategoryInfo, getTemplatesByCategory } from '../library-data';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
@@ -44,8 +45,8 @@ function AccountPagesPreview() {
   const categoryTemplates = getTemplatesByCategory('account');
 
   return (
-    <div className="bg-background/50 min-h-[600px] p-4 sm:p-8">
-      <div className="container mx-auto max-w-7xl">
+    <TemplatePreviewWrapper minHeight="600px">
+      <div>
         {/* Templates Grid */}
         <div className="grid gap-4 md:grid-cols-2">
           {categoryTemplates.map((template) => (
@@ -125,7 +126,7 @@ function AccountPagesPreview() {
           ))}
         </div>
       </div>
-    </div>
+    </TemplatePreviewWrapper>
   );
 }
 
@@ -159,10 +160,8 @@ export default function AccountPagesPage() {
             <CardHeader code="0x00" title="CATEGORY OVERVIEW" />
             <div className="flex items-center justify-between">
               <TabsList>
-                <TabsTrigger value="preview">Preview
-                </TabsTrigger>
-                <TabsTrigger value="code">Code
-                </TabsTrigger>
+                <TabsTrigger value="preview">Preview</TabsTrigger>
+                <TabsTrigger value="code">Code</TabsTrigger>
               </TabsList>
             </div>
           </Card>

@@ -9,7 +9,7 @@
 import { useState } from 'react';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
-import { TemplateShowcasePage } from '@/components/library';
+import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
 import { emailTemplates } from './components/email-template-data';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
@@ -69,7 +69,7 @@ function EmailTemplatesPreview() {
   const [activeTab, setActiveTab] = useState(emailTemplates[0].id);
 
   return (
-    <div className="bg-background/50 min-h-[600px] p-4 sm:p-8">
+    <TemplatePreviewWrapper minHeight="600px">
       <div className="space-y-6">
         {/* Email Tabs */}
         <StyledTabs
@@ -151,7 +151,7 @@ function EmailTemplatesPreview() {
           ))}
         </StyledTabs>
       </div>
-    </div>
+    </TemplatePreviewWrapper>
   );
 }
 

@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader } from '@/components/ui/card';
-import { TemplateShowcasePage } from '@/components/library';
+import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
 import { Bell, Check, AlertTriangle, Trash2 } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
@@ -196,7 +196,7 @@ function NotificationsPreview() {
   const unreadCount = notifications.filter((n) => !n.read).length;
 
   return (
-    <div className="bg-background/50 min-h-[600px] p-8">
+    <TemplatePreviewWrapper minHeight="600px">
       <div className="mx-auto max-w-3xl">
         <Card>
           <div className="border-border flex items-center justify-between border-b px-4 py-2">
@@ -295,7 +295,7 @@ function NotificationsPreview() {
           </div>
         </Card>
       </div>
-    </div>
+    </TemplatePreviewWrapper>
   );
 }
 

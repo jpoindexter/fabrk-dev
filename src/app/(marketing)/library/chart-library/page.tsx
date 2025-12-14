@@ -11,6 +11,7 @@ import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
+import { TemplatePreviewWrapper } from '@/components/library';
 import {
   LineChart,
   Line,
@@ -224,8 +225,8 @@ function ChartLibraryPreview() {
   ];
 
   return (
-    <div className="bg-background/50 p-4 sm:p-8">
-      <div className="container mx-auto max-w-7xl space-y-6">
+    <TemplatePreviewWrapper>
+      <div className="space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
@@ -511,7 +512,7 @@ function ChartLibraryPreview() {
           </StyledTabsContent>
         </StyledTabs>
       </div>
-    </div>
+    </TemplatePreviewWrapper>
   );
 }
 

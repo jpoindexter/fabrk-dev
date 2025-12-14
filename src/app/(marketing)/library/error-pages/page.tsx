@@ -6,7 +6,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
-import { TemplateShowcasePage } from '@/components/library';
+import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
 import { FileQuestion, Home, ArrowLeft } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
@@ -239,69 +239,71 @@ function ErrorPagesPreview() {
   const Icon = error.icon;
 
   return (
-    <div className="bg-background/50 flex min-h-[600px] items-center justify-center p-8">
-      <div className="mx-auto max-w-lg space-y-6 text-center">
-        {/* Icon */}
-        <div className="border-destructive bg-destructive/10 mx-auto flex h-20 w-20 items-center justify-center border">
-          <Icon className="text-destructive h-10 w-10" />
-        </div>
+    <TemplatePreviewWrapper minHeight="600px">
+      <div className="mx-auto flex min-h-[600px] max-w-lg items-center justify-center space-y-6 text-center">
+        <div className="space-y-6">
+          {/* Icon */}
+          <div className="border-destructive bg-destructive/10 mx-auto flex h-20 w-20 items-center justify-center border">
+            <Icon className="text-destructive h-10 w-10" />
+          </div>
 
-        {/* Error Code */}
-        <div className={cn(mode.font)}>
-          <span className="text-destructive text-6xl font-semibold">{error.code}</span>
-        </div>
+          {/* Error Code */}
+          <div className={cn(mode.font)}>
+            <span className="text-destructive text-6xl font-semibold">{error.code}</span>
+          </div>
 
-        {/* Title & Description */}
-        <div>
-          <h2 className={cn(mode.font, 'mb-2 text-2xl font-semibold tracking-tight')}>
-            {error.title}
-          </h2>
-          <p className={cn(mode.font, 'text-muted-foreground text-sm')}>{error.description}</p>
-        </div>
+          {/* Title & Description */}
+          <div>
+            <h2 className={cn(mode.font, 'mb-2 text-2xl font-semibold tracking-tight')}>
+              {error.title}
+            </h2>
+            <p className={cn(mode.font, 'text-muted-foreground text-sm')}>{error.description}</p>
+          </div>
 
-        {/* Terminal Output */}
-        <Card>
-          <CardHeader code="0x00" title="OUTPUT" />
-          <CardContent>
-            <div className="space-y-0.5 text-xs">
-              {error.terminal.map((line, idx) => (
-                <div
-                  key={idx}
-                  className={
-                    line.startsWith('ERROR')
-                      ? 'text-destructive'
-                      : line.startsWith('$')
-                        ? 'text-success'
-                        : line === ''
-                          ? 'h-2'
-                          : ''
-                  }
-                >
-                  {line}
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+          {/* Terminal Output */}
+          <Card>
+            <CardHeader code="0x00" title="OUTPUT" />
+            <CardContent>
+              <div className="space-y-0.5 text-xs">
+                {error.terminal.map((line, idx) => (
+                  <div
+                    key={idx}
+                    className={
+                      line.startsWith('ERROR')
+                        ? 'text-destructive'
+                        : line.startsWith('$')
+                          ? 'text-success'
+                          : line === ''
+                            ? 'h-2'
+                            : ''
+                    }
+                  >
+                    {line}
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
 
-        {/* Actions */}
-        <div className="flex items-center justify-center gap-4">
-          <Button className={cn(mode.radius, mode.font, 'text-xs')}>
-            <Home className="mr-1 h-3 w-3" />
-            &gt; GO HOME
-          </Button>
-          <Button variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
-            <ArrowLeft className="mr-1 h-3 w-3" />
-            &gt; GO BACK
-          </Button>
-        </div>
+          {/* Actions */}
+          <div className="flex items-center justify-center gap-4">
+            <Button className={cn(mode.radius, mode.font, 'text-xs')}>
+              <Home className="mr-1 h-3 w-3" />
+              &gt; GO HOME
+            </Button>
+            <Button variant="outline" className={cn(mode.radius, mode.font, 'text-xs')}>
+              <ArrowLeft className="mr-1 h-3 w-3" />
+              &gt; GO BACK
+            </Button>
+          </div>
 
-        {/* Request ID */}
-        <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-          [REQUEST ID]: req_abc123def456
+          {/* Request ID */}
+          <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
+            [REQUEST ID]: req_abc123def456
+          </div>
         </div>
       </div>
-    </div>
+    </TemplatePreviewWrapper>
   );
 }
 

@@ -5,7 +5,7 @@
 
 import { useState } from 'react';
 import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
-import { TemplateShowcasePage } from '@/components/library';
+import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
 import { CurrentPlanCard } from './components/current-plan-card';
 import { UsageMetricsCard } from './components/usage-metrics-card';
 import { PaymentMethodsCard } from './components/payment-methods-card';
@@ -255,55 +255,53 @@ function BillingPreview() {
   };
 
   return (
-    <div className="bg-background/50 min-h-[600px] p-4 sm:p-8">
-      <div className="container mx-auto max-w-7xl space-y-6">
-        {/* Terminal Tab Navigation */}
-        <StyledTabs
-          code="0x00"
-          title="BILLING NAVIGATION"
-          tabs={tabs}
-          value={activeTab}
-          onValueChange={setActiveTab}
-        >
-          {/* Overview Tab */}
-          <StyledTabsContent value="overview">
-            <div className="space-y-6">
-              {/* Two Column Layout */}
-              <div className="grid gap-6 md:grid-cols-2">
-                <UsageMetricsCard usage={usage} />
-                <div className="space-y-6">
-                  <CurrentPlanCard subscription={subscription} formatDate={formatDate} />
-                  <PaymentMethodsCard paymentMethods={paymentMethods} />
-                </div>
+    <TemplatePreviewWrapper minHeight="600px">
+      {/* Terminal Tab Navigation */}
+      <StyledTabs
+        code="0x00"
+        title="BILLING NAVIGATION"
+        tabs={tabs}
+        value={activeTab}
+        onValueChange={setActiveTab}
+      >
+        {/* Overview Tab */}
+        <StyledTabsContent value="overview">
+          <div className="space-y-6">
+            {/* Two Column Layout */}
+            <div className="grid gap-6 md:grid-cols-2">
+              <UsageMetricsCard usage={usage} />
+              <div className="space-y-6">
+                <CurrentPlanCard subscription={subscription} formatDate={formatDate} />
+                <PaymentMethodsCard paymentMethods={paymentMethods} />
               </div>
-
-              <RecentInvoicesCard
-                payments={payments}
-                formatDate={formatDate}
-                formatCurrency={formatCurrency}
-                getStatusText={getStatusText}
-                onViewAll={() => setActiveTab('history')}
-              />
             </div>
-          </StyledTabsContent>
 
-          {/* Plans Tab */}
-          <StyledTabsContent value="plans">
-            <PlanCards plans={plans} />
-          </StyledTabsContent>
-
-          {/* History Tab */}
-          <StyledTabsContent value="history">
-            <BillingHistoryTable
+            <RecentInvoicesCard
               payments={payments}
               formatDate={formatDate}
               formatCurrency={formatCurrency}
               getStatusText={getStatusText}
+              onViewAll={() => setActiveTab('history')}
             />
-          </StyledTabsContent>
-        </StyledTabs>
-      </div>
-    </div>
+          </div>
+        </StyledTabsContent>
+
+        {/* Plans Tab */}
+        <StyledTabsContent value="plans">
+          <PlanCards plans={plans} />
+        </StyledTabsContent>
+
+        {/* History Tab */}
+        <StyledTabsContent value="history">
+          <BillingHistoryTable
+            payments={payments}
+            formatDate={formatDate}
+            formatCurrency={formatCurrency}
+            getStatusText={getStatusText}
+          />
+        </StyledTabsContent>
+      </StyledTabs>
+    </TemplatePreviewWrapper>
   );
 }
 

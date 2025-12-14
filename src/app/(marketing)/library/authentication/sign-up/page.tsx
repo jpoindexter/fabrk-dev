@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
-import { TemplateShowcasePage } from '@/components/library';
+import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -153,7 +153,7 @@ export default function SignUpPage() {
 
 function SignUpPreview() {
   return (
-    <div className="bg-background/50 flex min-h-[700px] flex-col items-center justify-center p-4 sm:p-8">
+    <TemplatePreviewWrapper minHeight="700px">
       <div className="border-border bg-background w-full max-w-[380px] space-y-6 border p-6">
         {/* Header */}
         <div className="flex flex-col space-y-2 text-center">
@@ -304,7 +304,7 @@ function SignUpPreview() {
           </Link>
         </p>
       </div>
-    </div>
+    </TemplatePreviewWrapper>
   );
 }
 

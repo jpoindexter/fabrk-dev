@@ -8,7 +8,7 @@
 
 import { useState } from 'react';
 import { Card, CardHeader } from '@/components/ui/card';
-import { TemplateShowcasePage } from '@/components/library';
+import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
 import { DocsSidebar } from './components/docs-sidebar';
 import { DocsContent } from './components/docs-content';
 import { TableOfContents } from './components/table-of-contents';
@@ -86,7 +86,7 @@ function DocsLayoutPreview() {
   const currentDoc = docContent[activeDoc as keyof typeof docContent];
 
   return (
-    <div className="bg-background/50 min-h-[600px]">
+    <TemplatePreviewWrapper minHeight="600px">
       <div className="flex">
         {/* Sidebar */}
         <DocsSidebar activeDoc={activeDoc} onDocChange={setActiveDoc} />
@@ -97,7 +97,7 @@ function DocsLayoutPreview() {
         {/* Table of Contents (Right Sidebar) */}
         <TableOfContents />
       </div>
-    </div>
+    </TemplatePreviewWrapper>
   );
 }
 

@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { toast } from 'sonner';
 import { Shield, Lock, Activity, FileText, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { TemplateShowcasePage } from '@/components/library';
+import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
 import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
 import { SecurityScore } from './components/security-score';
 import { SecurityTab } from './components/security-tab';
@@ -205,7 +205,7 @@ function SecurityPrivacyPreview() {
   };
 
   return (
-    <div className="bg-background/50 min-h-[600px] p-4 sm:p-8">
+    <TemplatePreviewWrapper minHeight="600px">
       <div className="space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
@@ -256,7 +256,7 @@ function SecurityPrivacyPreview() {
           </StyledTabsContent>
         </StyledTabs>
       </div>
-    </div>
+    </TemplatePreviewWrapper>
   );
 }
 

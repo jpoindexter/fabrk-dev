@@ -6,7 +6,7 @@
 'use client';
 
 import { Star, GitBranch, MessageSquare, Award, Zap, TrendingUp, Activity } from 'lucide-react';
-import { TemplateShowcasePage } from '@/components/library';
+import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
 import { ProfileHeader } from './components/profile-header';
 import { BadgesSection } from './components/badges-section';
 import { ProfileTabs } from './components/profile-tabs';
@@ -193,18 +193,16 @@ const mockBadges = [
 
 function ProfilePreview() {
   return (
-    <div className="bg-background/50 min-h-[600px] p-4 sm:p-8">
-      <div className="container mx-auto max-w-7xl space-y-6">
-        {/* Profile Header */}
-        <ProfileHeader user={mockUser} />
+    <TemplatePreviewWrapper minHeight="600px">
+      {/* Profile Header */}
+      <ProfileHeader user={mockUser} />
 
-        {/* Badges Section */}
-        <BadgesSection badges={mockBadges} />
+      {/* Badges Section */}
+      <BadgesSection badges={mockBadges} />
 
-        {/* Profile Tabs */}
-        <ProfileTabs activity={mockActivity} projects={mockProjects} />
-      </div>
-    </div>
+      {/* Profile Tabs */}
+      <ProfileTabs activity={mockActivity} projects={mockProjects} />
+    </TemplatePreviewWrapper>
   );
 }
 

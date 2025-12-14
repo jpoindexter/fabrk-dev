@@ -3,7 +3,7 @@
  */
 'use client';
 
-import { TemplateShowcasePage } from '@/components/library';
+import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
 
 import { DashboardHeader } from './components/dashboard-header';
 import { StatsCards } from './components/stats-cards';
@@ -169,43 +169,41 @@ function TeamDashboardPreview() {
   const activeNowCount = teamData.members.filter((m) => m.lastActive === 'Just now').length;
 
   return (
-    <div className="bg-background/50 p-4 sm:p-8">
-      <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
-        {/* Header */}
-        <DashboardHeader />
+    <TemplatePreviewWrapper>
+      {/* Header */}
+      <DashboardHeader />
 
-        {/* Stats */}
-        <StatsCards
-          organization={teamData.organization}
-          membersCount={teamData.members.length}
-          pendingInvitationsCount={teamData.pendingInvitations.length}
-          activeNowCount={activeNowCount}
-        />
+      {/* Stats */}
+      <StatsCards
+        organization={teamData.organization}
+        membersCount={teamData.members.length}
+        pendingInvitationsCount={teamData.pendingInvitations.length}
+        activeNowCount={activeNowCount}
+      />
 
-        <div className="grid gap-6 lg:grid-cols-3">
-          {/* Main Content - Members */}
-          <div className="space-y-6 lg:col-span-2">
-            {/* Invite Section */}
-            <InviteSection />
+      <div className="grid gap-6 lg:grid-cols-3">
+        {/* Main Content - Members */}
+        <div className="space-y-6 lg:col-span-2">
+          {/* Invite Section */}
+          <InviteSection />
 
-            {/* Members Table */}
-            <MembersTable members={teamData.members} />
+          {/* Members Table */}
+          <MembersTable members={teamData.members} />
 
-            {/* Pending Invitations */}
-            <PendingInvitations invitations={teamData.pendingInvitations} />
-          </div>
+          {/* Pending Invitations */}
+          <PendingInvitations invitations={teamData.pendingInvitations} />
+        </div>
 
-          {/* Sidebar - Activity Feed */}
-          <div className="space-y-6">
-            {/* Activity Feed */}
-            <ActivityFeed activities={teamData.activityFeed} />
+        {/* Sidebar - Activity Feed */}
+        <div className="space-y-6">
+          {/* Activity Feed */}
+          <ActivityFeed activities={teamData.activityFeed} />
 
-            {/* Role Permissions */}
-            <RolePermissions />
-          </div>
+          {/* Role Permissions */}
+          <RolePermissions />
         </div>
       </div>
-    </div>
+    </TemplatePreviewWrapper>
   );
 }
 

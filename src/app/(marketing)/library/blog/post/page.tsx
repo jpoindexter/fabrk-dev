@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { CodeBlock } from '@/components/ui/code-block';
-import { TemplateShowcasePage } from '@/components/library';
+import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
 import { ArrowLeft, Calendar, Clock, Share2 } from 'lucide-react';
 import Link from 'next/link';
 import { mode } from '@/design-system';
@@ -280,7 +280,7 @@ export default function BlogPostPage() {
 
 function BlogPostPreview() {
   return (
-    <div className="bg-background/50 min-h-[800px] p-4 sm:p-8">
+    <TemplatePreviewWrapper minHeight="800px">
       <div className="bg-background mx-auto max-w-4xl space-y-6 p-6">
         {/* Back Link */}
         <Link
@@ -400,7 +400,7 @@ function BlogPostPreview() {
           </Link>
         </div>
       </div>
-    </div>
+    </TemplatePreviewWrapper>
   );
 }
 

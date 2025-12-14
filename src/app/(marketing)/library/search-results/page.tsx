@@ -7,7 +7,7 @@
 'use client';
 
 import { useState } from 'react';
-import { TemplateShowcasePage } from '@/components/library';
+import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
 import { SearchBar } from './components/search-bar';
 import { FiltersSidebar } from './components/filters-sidebar';
 import { ResultsHeader } from './components/results-header';
@@ -148,7 +148,7 @@ function SearchResultsPreview() {
   };
 
   return (
-    <div className="bg-background/50 min-h-[600px] p-4 sm:p-8">
+    <TemplatePreviewWrapper minHeight="600px">
       <div className="space-y-6">
         {/* Search Bar */}
         <SearchBar
@@ -186,7 +186,7 @@ function SearchResultsPreview() {
           </div>
         </div>
       </div>
-    </div>
+    </TemplatePreviewWrapper>
   );
 }
 

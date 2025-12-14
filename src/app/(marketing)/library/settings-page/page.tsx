@@ -6,7 +6,7 @@
 import { useState } from 'react';
 import { Settings, User, Lock, CreditCard } from 'lucide-react';
 import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
-import { TemplateShowcasePage } from '@/components/library';
+import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
 import { SettingsHeader } from './components/settings-header';
 import { GeneralTab } from './components/general-tab';
 import { AccountTab } from './components/account-tab';
@@ -79,38 +79,36 @@ function SettingsPreview() {
   const [activeTab, setActiveTab] = useState('general');
 
   return (
-    <div className="bg-background/50 min-h-[600px] p-4 sm:p-8">
-      <div className="container mx-auto max-w-7xl space-y-6">
-        {/* Header */}
-        <SettingsHeader />
+    <TemplatePreviewWrapper minHeight="600px">
+      {/* Header */}
+      <SettingsHeader />
 
-        {/* Tabs Container */}
-        <StyledTabs
-          code="0x00"
-          title="SETTINGS NAVIGATION"
-          tabs={tabs}
-          value={activeTab}
-          onValueChange={setActiveTab}
-        >
-          {/* Tab Content */}
-          <StyledTabsContent value="general">
-            <GeneralTab />
-          </StyledTabsContent>
+      {/* Tabs Container */}
+      <StyledTabs
+        code="0x00"
+        title="SETTINGS NAVIGATION"
+        tabs={tabs}
+        value={activeTab}
+        onValueChange={setActiveTab}
+      >
+        {/* Tab Content */}
+        <StyledTabsContent value="general">
+          <GeneralTab />
+        </StyledTabsContent>
 
-          <StyledTabsContent value="account">
-            <AccountTab />
-          </StyledTabsContent>
+        <StyledTabsContent value="account">
+          <AccountTab />
+        </StyledTabsContent>
 
-          <StyledTabsContent value="privacy">
-            <PrivacyTab />
-          </StyledTabsContent>
+        <StyledTabsContent value="privacy">
+          <PrivacyTab />
+        </StyledTabsContent>
 
-          <StyledTabsContent value="billing">
-            <BillingTab />
-          </StyledTabsContent>
-        </StyledTabs>
-      </div>
-    </div>
+        <StyledTabsContent value="billing">
+          <BillingTab />
+        </StyledTabsContent>
+      </StyledTabs>
+    </TemplatePreviewWrapper>
   );
 }
 

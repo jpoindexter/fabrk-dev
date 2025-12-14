@@ -12,7 +12,7 @@ import { PricingCards } from './components/pricing-cards';
 import { ComparisonTable } from './components/comparison-table';
 import { FAQSection } from './components/faq-section';
 import { plans, faqs, comparisonFeatures } from './components/pricing-data';
-import { TemplateShowcasePage } from '@/components/library';
+import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
 
 const templateCode = `"use client";
 
@@ -219,14 +219,12 @@ function PricingPagePreview() {
   const [isYearly, setIsYearly] = useState(false);
 
   return (
-    <div className="bg-background/50 min-h-[800px] p-4 sm:p-8">
-      <div className="mx-auto max-w-6xl space-y-8">
-        <PricingHeader isYearly={isYearly} onToggleBilling={setIsYearly} />
-        <PricingCards plans={plans} isYearly={isYearly} />
-        <ComparisonTable features={comparisonFeatures} />
-        <FAQSection faqs={faqs} />
-      </div>
-    </div>
+    <TemplatePreviewWrapper minHeight="800px">
+      <PricingHeader isYearly={isYearly} onToggleBilling={setIsYearly} />
+      <PricingCards plans={plans} isYearly={isYearly} />
+      <ComparisonTable features={comparisonFeatures} />
+      <FAQSection faqs={faqs} />
+    </TemplatePreviewWrapper>
   );
 }
 

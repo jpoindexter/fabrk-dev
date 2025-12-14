@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
+import { TemplatePreviewWrapper } from '@/components/library';
 import { getCategoryInfo, getTemplatesByCategory } from '../library-data';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
@@ -105,7 +106,7 @@ const categoryInfo = getCategoryInfo('admin');
 
 function AdminPanelsPreview() {
   return (
-    <div className="bg-background/50 min-h-[600px] p-4 sm:p-8">
+    <TemplatePreviewWrapper minHeight="600px">
       <div className="space-y-6">
         {/* Category Header */}
         <div className="space-y-4">
@@ -202,7 +203,7 @@ function AdminPanelsPreview() {
           ))}
         </div>
       </div>
-    </div>
+    </TemplatePreviewWrapper>
   );
 }
 
