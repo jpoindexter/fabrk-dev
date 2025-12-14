@@ -108,7 +108,7 @@ export function OrgCard({
                 <AvatarImage src={logo} alt={name} />
               ) : (
                 <AvatarFallback
-                  className={cn('text-lg font-bold', mode.color.bg.accent, mode.color.text.inverse)}
+                  className={cn('text-sm font-bold', mode.color.bg.accent, mode.color.text.inverse)}
                 >
                   {initials}
                 </AvatarFallback>

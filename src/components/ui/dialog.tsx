@@ -105,7 +105,7 @@ const DialogTitle = React.forwardRef<
     data-slot="dialog-title"
     ref={ref}
     className={cn(
-      'text-lg leading-none font-semibold tracking-tight',
+      'text-sm leading-none font-semibold tracking-tight',
       mode.color.text.primary,
       mode.font,
       className

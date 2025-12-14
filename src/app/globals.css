@@ -1442,10 +1442,10 @@
 
 /* Typography Utilities */
 .heading-section {
-  @apply text-primary font-mono text-lg font-semibold;
+  @apply text-primary font-mono text-sm font-semibold;
 }
 .heading-subsection {
-  @apply text-foreground font-mono text-base font-semibold;
+  @apply text-foreground font-mono text-sm font-semibold;
 }
 .body-text {
   @apply text-muted-foreground font-mono text-sm leading-relaxed;

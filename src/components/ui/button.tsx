@@ -110,7 +110,7 @@ const buttonVariants = cva(
         default: cn('min-h-[44px] sm:min-h-0 sm:h-8', mode.spacing.button.md),
         sm: cn('min-h-[44px] min-w-[44px] sm:min-h-0 sm:min-w-0 sm:h-8', mode.spacing.button.sm),
         lg: cn('min-h-[44px] sm:min-h-0 sm:h-10', mode.spacing.button.lg),
-        xl: cn('min-h-[44px] text-lg sm:min-h-0 sm:h-12', 'px-8'),
+        xl: cn('min-h-[44px] text-sm sm:min-h-0 sm:h-12', 'px-8'),
         icon: 'min-h-[44px] min-w-[44px] sm:min-h-0 sm:min-w-0 sm:h-10 sm:w-10',
       },
     },

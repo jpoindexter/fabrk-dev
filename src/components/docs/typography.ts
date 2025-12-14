@@ -14,7 +14,7 @@ export const docsTypography = {
   h3: 'font-mono text-xl font-semibold tracking-tight',
 
   // h4 - Card/item title
-  h4: 'font-mono text-lg font-semibold tracking-tight',
+  h4: 'font-mono text-sm font-semibold tracking-tight',
 
   // Body text (matches DocsCard content styling)
   body: 'font-mono text-xs text-muted-foreground leading-relaxed',

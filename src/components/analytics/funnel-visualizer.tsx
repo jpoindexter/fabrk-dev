@@ -101,7 +101,7 @@ export function FunnelVisualizer({
                     </Badge>
                   )}
                 </div>
-                <span className={cn('text-lg font-bold', mode.color.text.primary)}>
+                <span className={cn('text-sm font-bold', mode.color.text.primary)}>
                   {stage.value.toLocaleString()}
                 </span>
               </div>

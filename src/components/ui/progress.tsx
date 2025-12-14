@@ -78,7 +78,7 @@ function Progress({
   const sizeClasses = {
     sm: 'text-xs',
     md: 'text-sm',
-    lg: 'text-base',
+    lg: 'text-sm',
   };
 
   return (
@@ -98,13 +98,9 @@ function Progress({
       )}
       {...props}
     >
-      {label && (
-        <span className={cn('shrink-0', mode.color.text.muted)}>{label}</span>
-      )}
+      {label && <span className={cn('shrink-0', mode.color.text.muted)}>{label}</span>}
       {percentageBefore && (
-        <span className={cn('w-10 shrink-0 text-right', mode.color.text.muted)}>
-          {percentage}
-        </span>
+        <span className={cn('w-10 shrink-0 text-right', mode.color.text.muted)}>{percentage}</span>
       )}
       <span className="shrink-0">
         <span className={mode.color.text.muted}>[</span>
@@ -112,9 +108,7 @@ function Progress({
         <span className={mode.color.text.muted}>]</span>
       </span>
       {showPercentage && !percentageBefore && (
-        <span className={cn('w-10 shrink-0', mode.color.text.muted)}>
-          {percentage}
-        </span>
+        <span className={cn('w-10 shrink-0', mode.color.text.muted)}>{percentage}</span>
       )}
     </div>
   );
@@ -197,9 +191,7 @@ function ProgressWithInfo({
     <div className={cn('space-y-1', className)}>
       <Progress {...props} />
       {infoString && (
-        <div className={cn('text-xs', mode.font, mode.color.text.muted)}>
-          {infoString}
-        </div>
+        <div className={cn('text-xs', mode.font, mode.color.text.muted)}>{infoString}</div>
       )}
     </div>
   );
