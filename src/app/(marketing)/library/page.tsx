@@ -34,7 +34,7 @@ import { AdvancedFilters, TemplateCard, type FilterOptions } from '@/components/
 
 const ITEMS_PER_PAGE = 9;
 
-type SortOption = 'relevance' | 'name' | 'newest' | 'popular';
+type SortOption = 'relevance' | 'name' | 'newest' | 'featured';
 
 export default function LibraryIndexPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -73,7 +73,7 @@ export default function LibraryIndexPage() {
         if (a.lastUpdated) return -1;
         if (b.lastUpdated) return 1;
         return 0;
-      case 'popular':
+      case 'featured':
         const score = (t: typeof a) => {
           if (t.badge === 'Popular') return 3;
           if (t.badge === 'Essential') return 2;
@@ -226,8 +226,8 @@ export default function LibraryIndexPage() {
                   <SelectItem value="relevance" className="text-xs">
                     RELEVANCE
                   </SelectItem>
-                  <SelectItem value="popular" className="text-xs">
-                    POPULAR
+                  <SelectItem value="featured" className="text-xs">
+                    FEATURED
                   </SelectItem>
                   <SelectItem value="newest" className="text-xs">
                     NEWEST
