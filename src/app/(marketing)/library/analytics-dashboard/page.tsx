@@ -1,18 +1,14 @@
 /**
  * Analytics Dashboard Template - Terminal console style
- * Industry-standard Preview/Code tabbed interface
  */
 'use client';
 
 import { useState } from 'react';
 import { Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { CodeBlock } from '@/components/ui/code-block';
+import { TemplateShowcasePage } from '@/components/library';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
-import { RelatedTemplates } from '@/components/library';
 
 // Components
 import { MetricCards } from './components/metric-cards';
@@ -130,124 +126,31 @@ function AnalyticsDashboardPreview() {
 
 export default function AnalyticsDashboardTemplate() {
   return (
-    <div className="w-full overflow-x-hidden">
-      <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Header */}
-        <TemplatePageHeader
-          badge="ANALYTICS DASHBOARD"
-          title="Analytics Dashboard"
-          description="Track revenue, users, conversions, and growth metrics"
-        />
-
-        {/* Preview/Code Tabs */}
-        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
-          {/* Tab Navigation Card */}
-          <Card>
-            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
-            <div className="flex items-center justify-between">
-              <TabsList>
-                <TabsTrigger value="preview">Preview</TabsTrigger>
-                <TabsTrigger value="code">Code</TabsTrigger>
-              </TabsList>
-            </div>
-          </Card>
-
-          {/* Preview Tab Content */}
-          <TabsContent value="preview" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE PREVIEW" />
-              <AnalyticsDashboardPreview />
-            </Card>
-          </TabsContent>
-
-          {/* Code Tab Content */}
-          <TabsContent value="code" className="mt-6 w-full max-w-full">
-            <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE CODE" />
-              <div className="w-full max-w-full overflow-x-auto p-4">
-                <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
-              </div>
-            </Card>
-          </TabsContent>
-        </Tabs>
-
-        {/* File Structure */}
-        <Card>
-          <CardHeader code="0x02" title="FILE STRUCTURE" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-1 text-xs')}>
-              <div className="text-muted-foreground">[FILES]:</div>
-              <div className="space-y-1 pl-4">
-                <div>
-                  <span className="text-primary">app/</span>
-                  <span className="text-muted-foreground">(dashboard)/</span>
-                  <span className="text-foreground">analytics/page.tsx</span>
-                  <span className="text-muted-foreground ml-4">← Copy template here</span>
-                </div>
-                <div>
-                  <span className="text-primary">components/</span>
-                  <span className="text-foreground">metric-cards.tsx</span>
-                </div>
-                <div>
-                  <span className="text-primary">components/</span>
-                  <span className="text-foreground">revenue-chart.tsx</span>
-                </div>
-                <div>
-                  <span className="text-primary">components/</span>
-                  <span className="text-foreground">activity-feed.tsx</span>
-                </div>
-                <div>
-                  <span className="text-primary">components/</span>
-                  <span className="text-foreground">analytics-tabs.tsx</span>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Features */}
-        <Card>
-          <CardHeader code="0x03" title="FEATURES" />
-          <CardContent padding="md">
-            <div className={cn(mode.font, 'space-y-2 text-xs')}>
-              <div>
-                <span className="text-success">&gt;</span> 4 key metric cards (revenue, users,
-                conversions, growth)
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Revenue overview chart with 6-month data
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Recent activity feed with user avatars
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Tabbed analytics section (Overview,
-                Analytics, Reports)
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Top performing pages table with bounce
-                rates
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Traffic sources breakdown with progress
-                bars
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Device breakdown statistics
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Report generation templates
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> DS-compliant (mode.font, mode.radius)
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Related Templates */}
-        <RelatedTemplates currentTemplateId="analytics-dashboard" limit={3} />
-      </div>
-    </div>
+    <TemplateShowcasePage
+      badge="ANALYTICS DASHBOARD"
+      title="Analytics Dashboard"
+      description="Track revenue, users, conversions, and growth metrics"
+      templateId="analytics-dashboard"
+      preview={<AnalyticsDashboardPreview />}
+      code={templateCode}
+      fileStructure={[
+        { path: ['app/', '(dashboard)/', 'analytics/page.tsx'], label: '← Copy template here' },
+        { path: ['components/', 'metric-cards.tsx'] },
+        { path: ['components/', 'revenue-chart.tsx'] },
+        { path: ['components/', 'activity-feed.tsx'] },
+        { path: ['components/', 'analytics-tabs.tsx'] },
+      ]}
+      features={[
+        '4 key metric cards (revenue, users, conversions, growth)',
+        'Revenue overview chart with 6-month data',
+        'Recent activity feed with user avatars',
+        'Tabbed analytics section (Overview, Analytics, Reports)',
+        'Top performing pages table with bounce rates',
+        'Traffic sources breakdown with progress bars',
+        'Device breakdown statistics',
+        'Report generation templates',
+        'DS-compliant (mode.font, mode.radius)',
+      ]}
+    />
   );
 }
