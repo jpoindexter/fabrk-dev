@@ -15,23 +15,9 @@ export interface TemplateCardProps {
   description: string;
   href: string;
   icon: React.ElementType;
-  features: string[];
-  /** File path hint for developers */
-  filePath?: string;
-  /** Dependencies required */
-  dependencies?: string[];
 }
 
-export function TemplateCard({
-  id,
-  name,
-  description,
-  href,
-  icon: Icon,
-  features,
-  filePath,
-  dependencies,
-}: TemplateCardProps) {
+export function TemplateCard({ id, name, description, href, icon: Icon }: TemplateCardProps) {
   return (
     <Link href={href} className="group block h-full">
       <Card interactive size="full" className="h-full transition-all">
@@ -55,61 +41,8 @@ export function TemplateCard({
             {description}
           </p>
 
-          {/* File Path (dev-focused) */}
-          {filePath && (
-            <div className={cn(mode.font, 'text-muted-foreground mb-3 text-xs')}>
-              <span className="text-muted-foreground/60">PATH:</span>{' '}
-              <code className="text-primary/80">{filePath}</code>
-            </div>
-          )}
-
-          {/* Features + Dependencies */}
-          <div className="mt-auto space-y-2">
-            {/* Dependencies */}
-            {dependencies && dependencies.length > 0 && (
-              <div className="flex flex-wrap gap-1">
-                {dependencies.map((dep) => (
-                  <span
-                    key={dep}
-                    className={cn(
-                      mode.font,
-                      'border-warning/30 bg-warning/10 text-warning border px-1.5 py-0.5 text-xs'
-                    )}
-                  >
-                    {dep}
-                  </span>
-                ))}
-              </div>
-            )}
-
-            {/* Features */}
-            <div className="flex flex-wrap gap-1">
-              {features.slice(0, 3).map((feature) => (
-                <span
-                  key={feature}
-                  className={cn(
-                    mode.font,
-                    'border-border bg-muted/50 border px-1.5 py-0.5 text-xs'
-                  )}
-                >
-                  {feature}
-                </span>
-              ))}
-              {features.length > 3 && (
-                <span
-                  className={cn(
-                    mode.font,
-                    'border-border bg-muted/50 border px-1.5 py-0.5 text-xs'
-                  )}
-                >
-                  +{features.length - 3}
-                </span>
-              )}
-            </div>
-          </div>
-
           {/* Action Footer - right aligned */}
-          <div className="border-border mt-4 flex justify-end border-t pt-3">
+          <div className="border-border mt-auto flex justify-end border-t pt-3">
             <span
               className={cn(
                 mode.font,

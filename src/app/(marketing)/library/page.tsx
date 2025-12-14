@@ -324,7 +324,6 @@ export default function LibraryIndexPage() {
                 description={template.description}
                 href={template.href}
                 icon={template.icon}
-                features={template.features}
               />
             ))}
           </div>
