@@ -11,13 +11,10 @@ import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { CodeBlock } from '@/components/ui/code-block';
-import { LibraryNavigation } from '@/components/library';
 
 export default function PrismaIntegrationPage() {
   return (
     <div className="container mx-auto max-w-4xl space-y-8 px-6 py-8">
-      <LibraryNavigation templateName="Prisma Integration" />
-
       <section className="space-y-4">
         <div className="border-border inline-block border px-4 py-1">
           <span className={cn(mode.font, 'text-muted-foreground text-xs')}>

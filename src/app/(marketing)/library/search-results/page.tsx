@@ -10,7 +10,6 @@ import { useState } from 'react';
 import { TemplatePageHeader, Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
-import { LibraryNavigation } from '@/components/library';
 import { SearchBar } from './components/search-bar';
 import { FiltersSidebar } from './components/filters-sidebar';
 import { ResultsHeader } from './components/results-header';
@@ -199,9 +198,6 @@ export default function SearchResultsTemplate() {
   return (
     <div className="w-full overflow-x-hidden">
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Navigation */}
-        <LibraryNavigation templateName="Search Results" />
-
         {/* Header */}
         <TemplatePageHeader
           badge="SEARCH RESULTS"
@@ -216,10 +212,8 @@ export default function SearchResultsTemplate() {
             <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
               <TabsList>
-                <TabsTrigger value="preview">Preview
-                </TabsTrigger>
-                <TabsTrigger value="code">Code
-                </TabsTrigger>
+                <TabsTrigger value="preview">Preview</TabsTrigger>
+                <TabsTrigger value="code">Code</TabsTrigger>
               </TabsList>
             </div>
           </Card>

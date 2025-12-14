@@ -12,7 +12,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
-import { LibraryNavigation, RelatedTemplates } from '@/components/library';
+import { RelatedTemplates } from '@/components/library';
 
 // Components
 import { MetricCards } from './components/metric-cards';
@@ -132,13 +132,6 @@ export default function AnalyticsDashboardTemplate() {
   return (
     <div className="w-full overflow-x-hidden">
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Navigation */}
-        <LibraryNavigation
-          templateName="Analytics Dashboard"
-          category="Dashboards"
-          categoryHref="/library/dashboards"
-        />
-
         {/* Header */}
         <TemplatePageHeader
           badge="ANALYTICS DASHBOARD"
@@ -153,10 +146,8 @@ export default function AnalyticsDashboardTemplate() {
             <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
               <TabsList>
-                <TabsTrigger value="preview">Preview
-                </TabsTrigger>
-                <TabsTrigger value="code">Code
-                </TabsTrigger>
+                <TabsTrigger value="preview">Preview</TabsTrigger>
+                <TabsTrigger value="code">Code</TabsTrigger>
               </TabsList>
             </div>
           </Card>

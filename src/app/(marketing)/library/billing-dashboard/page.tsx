@@ -9,7 +9,6 @@ import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
-import { LibraryNavigation } from '@/components/library';
 import { CurrentPlanCard } from './components/current-plan-card';
 import { UsageMetricsCard } from './components/usage-metrics-card';
 import { PaymentMethodsCard } from './components/payment-methods-card';
@@ -317,13 +316,6 @@ export default function BillingDashboardTemplate() {
   return (
     <div className="w-full overflow-x-hidden">
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Navigation */}
-        <LibraryNavigation
-          templateName="Billing Dashboard"
-          category="Account Pages"
-          categoryHref="/library/account-pages"
-        />
-
         {/* Header */}
         <TemplatePageHeader
           badge="BILLING DASHBOARD"

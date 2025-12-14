@@ -23,7 +23,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
-import { LibraryNavigation, RelatedTemplates } from '@/components/library';
+import { RelatedTemplates } from '@/components/library';
 import { columns } from './components/user-table-columns';
 import { mockUsers } from './components/types';
 import { StatsCards } from './components/stats-cards';
@@ -223,13 +223,6 @@ export default function UserManagementTemplate() {
   return (
     <div className="w-full overflow-x-hidden">
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Navigation */}
-        <LibraryNavigation
-          templateName="User Management"
-          category="Admin Panels"
-          categoryHref="/library/admin-panels"
-        />
-
         {/* Header */}
         <TemplatePageHeader
           badge="USER MANAGEMENT"

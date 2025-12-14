@@ -8,7 +8,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
-import { LibraryNavigation } from '@/components/library';
 import { Inbox, Plus } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
@@ -109,9 +108,6 @@ export default function EmptyStatesTemplate() {
   return (
     <div className="w-full overflow-x-hidden">
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Navigation */}
-        <LibraryNavigation templateName="Empty States" />
-
         {/* Header */}
         <TemplatePageHeader
           badge="EMPTY STATES"
@@ -126,10 +122,8 @@ export default function EmptyStatesTemplate() {
             <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
               <TabsList>
-                <TabsTrigger value="preview">Preview
-                </TabsTrigger>
-                <TabsTrigger value="code">Code
-                </TabsTrigger>
+                <TabsTrigger value="preview">Preview</TabsTrigger>
+                <TabsTrigger value="code">Code</TabsTrigger>
               </TabsList>
             </div>
           </Card>

@@ -12,7 +12,6 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
-import { LibraryNavigation } from '@/components/library';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -139,13 +138,6 @@ export default function ForgotPasswordTemplate() {
   return (
     <div className="w-full overflow-x-hidden">
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Navigation */}
-        <LibraryNavigation
-          templateName="Forgot Password"
-          category="Authentication"
-          categoryHref="/library/authentication"
-        />
-
         {/* Header */}
         <TemplatePageHeader
           badge="FORGOT PASSWORD"

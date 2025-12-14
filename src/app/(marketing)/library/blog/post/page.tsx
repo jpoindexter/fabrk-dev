@@ -16,7 +16,6 @@ import { ArrowLeft, Calendar, Clock, Share2 } from 'lucide-react';
 import Link from 'next/link';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
-import { LibraryNavigation } from '@/components/library';
 
 // Mock article data
 const mockArticle = {
@@ -410,13 +409,6 @@ export default function BlogPostTemplate() {
   return (
     <div className="w-full overflow-x-hidden">
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Navigation */}
-        <LibraryNavigation
-          templateName="Blog Post"
-          category="Marketing"
-          categoryHref="/library/marketing"
-        />
-
         {/* Template Badge */}
         <div className="mb-8">
           <PageBadge>BLOG POST</PageBadge>

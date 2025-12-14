@@ -10,7 +10,6 @@ import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
-import { LibraryNavigation } from '@/components/library';
 import { SettingsHeader } from './components/settings-header';
 import { GeneralTab } from './components/general-tab';
 import { AccountTab } from './components/account-tab';
@@ -124,13 +123,6 @@ export default function SettingsPageTemplate() {
   return (
     <div className="w-full overflow-x-hidden">
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
-        {/* Navigation */}
-        <LibraryNavigation
-          templateName="Settings Page"
-          category="Account Pages"
-          categoryHref="/library/account-pages"
-        />
-
         {/* Header */}
         <TemplatePageHeader
           badge="SETTINGS PAGE"
@@ -145,10 +137,8 @@ export default function SettingsPageTemplate() {
             <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
             <div className="flex items-center justify-between">
               <TabsList>
-                <TabsTrigger value="preview">Preview
-                </TabsTrigger>
-                <TabsTrigger value="code">Code
-                </TabsTrigger>
+                <TabsTrigger value="preview">Preview</TabsTrigger>
+                <TabsTrigger value="code">Code</TabsTrigger>
               </TabsList>
             </div>
           </Card>
