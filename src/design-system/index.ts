@@ -312,7 +312,7 @@ export const mode: ModeConfig = {
     body: {
       xs: 'text-xs',
       sm: 'text-sm',
-      md: 'text-base',
+      md: 'text-sm', // Terminal design: all body text uses text-sm (no text-base)
     },
     heading: {
       h1: 'text-4xl font-bold',
