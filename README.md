@@ -9,51 +9,24 @@
 ░░░░░       ░░░░░   ░░░░░ ░░░░░░░░░░░  ░░░░░   ░░░░░ ░░░░░   ░░░░
 ```
 
-# Fabrk - Development Repository
+# Fabrk
 
 > Terminal-first SaaS boilerplate. Ship fast. Look sharp.
 
-**⚠️ This is the private development repository. The customer-facing boilerplate is at: https://github.com/Theft-SUDO/fabrk-official**
-
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
-[![CI](https://github.com/jpoindexter/fabrk_plate/actions/workflows/ci.yml/badge.svg)](https://github.com/jpoindexter/fabrk_plate/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+**Fabrk** is a production-ready Next.js SaaS boilerplate with a terminal-inspired design system. Built for indie hackers who want to ship fast without compromising on quality.
 
 ---
 
-## 📁 Dual Repository Architecture
-
-This project uses a **two-repo model** to separate the product (boilerplate) from the private development environment:
-
-| Repo | Purpose | URL |
-|------|---------|-----|
-| **fabrk_plate** (this repo) | Development + Marketing | Private |
-| **fabrk-official** | Customer-facing boilerplate | https://github.com/Theft-SUDO/fabrk-official |
-
-### What's Private (Stays Here)
-- ✗ Your marketing site (`src/app/(marketing)/*`)
-- ✗ Marketing components (`src/components/landing/`, `marketing/`, `home/`)
-- ✗ Internal scripts and tools (`.internal/`, `.claude/`, `.dev-plans/`)
-- ✗ Development plans and audit files
-- ✗ Private environment variables (`.env.local`)
-
-### What's Public (Syncs to Official)
-- ✓ Core boilerplate (`src/app/(platform)/`, `src/app/(auth)/`)
-- ✓ API routes (`src/app/api/*`)
-- ✓ UI components (`src/components/ui/`, `dashboard/`)
-- ✓ Documentation (`src/app/docs/*`, `src/app/library/*`)
-- ✓ Database schema (`prisma/`)
-- ✓ Templates and examples
-- ✓ Configuration files
-
----
-
-## 🚀 Quick Start (Development)
+## ⚡ Quick Start
 
 ```bash
 # Clone and install
-git clone https://github.com/jpoindexter/fabrk_plate.git
-cd fabrk_plate
+git clone https://github.com/Theft-SUDO/fabrk-official.git
+cd fabrk-official
 npm install --legacy-peer-deps
 
 # Set up environment
@@ -72,117 +45,156 @@ Visit **http://localhost:3000** 🎉
 
 ---
 
-## 🔄 Syncing to Official Repo
+## 🚀 What's Inside
 
-After making changes to the boilerplate:
+### UI Components (77 Total)
 
-```bash
-# Sync boilerplate to customer repo
-./scripts/sync-to-official.sh
+- **Forms**: Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Calendar, Date Picker, File Upload
+- **Navigation**: Navbar, Sidebar, Tabs, Breadcrumbs, Pagination, Command Palette
+- **Feedback**: Alert, Toast, Dialog, Drawer, Modal, Progress, Skeleton, Spinner
+- **Data**: Table, Data Table, Card, Badge, Avatar, Chart (7 variants)
+- **Layout**: Container, Grid, Stack, Divider, Separator, Scroll Area
+- **Advanced**: Carousel, Combobox, Context Menu, Dropdown, Popover, Tooltip, Accordion, Collapsible
 
-# Then push official repo
-cd ../fabrk-official
-git add -A && git commit -m "Sync updates from dev"
-git push
-```
+### Design System
 
-**What gets synced:**
-- Core app, auth, and API routes
-- UI components (excluding marketing)
-- Documentation and templates
-- Database schema and configs
-- **Test files excluded automatically**
+**Terminal aesthetic** with 12 complete themes:
+- 🟢 5 CRT phosphor themes (Green, Red, Blue, Amber, Purple)
+- 🎮 4 retro computer themes (C64, GameBoy, VIC-20, Atari)
+- 📱 2 handheld themes (GameBoy Pocket, ZX Spectrum)
+- ⚫ 1 high-contrast B&W theme
 
-See `scripts/sync-to-official.sh` for the complete whitelist.
+**Design principles:**
+- `rounded-none` - Sharp terminal edges
+- `font-mono` - Monospace everywhere (JetBrains Mono)
+- 100% OKLCH color tokens - Zero hardcoded colors
+- 8-point spacing grid
+- WCAG 2.2 AA accessible
+
+### Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| **Frontend** | Next.js 16 (App Router), React 19, TypeScript strict |
+| **Styling** | Tailwind CSS 4, Radix UI, Framer Motion |
+| **Backend** | Next.js API Routes, Prisma ORM |
+| **Database** | PostgreSQL (production), SQLite (development) |
+| **Auth** | NextAuth v5 (Email magic link, OAuth providers) |
+| **Payments** | Stripe, Polar.sh, Lemonsqueezy (multi-provider) |
+| **Email** | Resend with React Email templates |
+| **Validation** | Zod schemas (runtime type safety) |
+
+### Security Features (10/10 Audit Score)
+
+✅ **Secrets Management** - Environment validation with Zod, .env.local exclusion
+✅ **CSRF Protection** - Token-based with middleware injection
+✅ **CSP Headers** - Nonce-based scripts with `strict-dynamic`
+✅ **Session Security** - JWT with version invalidation, 30-day expiry
+✅ **API Protection** - Role-based access control, input validation
+✅ **Security Headers** - HSTS, X-Frame-Options, Permissions-Policy
+✅ **Dependency Scanning** - 0 vulnerabilities (npm audit)
+✅ **CI/CD Security** - CodeQL, accessibility, performance checks
+✅ **Admin Route Protection** - Role checks on all sensitive endpoints
+✅ **No Hardcoded Secrets** - Git history clean, sync script with scanning
+
+### Pre-Commit Quality Checks
+
+Git commits automatically run:
+- TypeScript compilation (`tsc --noEmit`)
+- ESLint + auto-fix
+- Prettier formatting
+- Hardcoded color detection
+- `console.log` removal
+- Design system compliance
+
+**Bypass (emergency only):** `git commit --no-verify`
 
 ---
 
-## 🔒 Security Setup (Official Repo)
+## 🛠️ Configuration
 
-The official repo has enterprise-grade security configured:
+### Environment Variables
 
-### Automated Security (Active)
-- ✅ **CodeQL Analysis** - Scans on every push/PR
-- ✅ **CI Pipeline** - TypeScript, linting, build checks
-- ✅ **Dependabot** - Auto-creates PRs for dependency updates
-- ✅ **Secret Scanning** - Blocks credential leaks
-- ✅ **Branch Protection** - Requires PR reviews to merge
-
-### Manual Setup Required
-**⚠️ IMPORTANT**: Complete these GitHub settings for full protection:
-
-1. **Enable Security Features** (Settings → Code security and analysis)
-   - Enable Dependabot alerts/updates
-   - Enable Secret scanning + push protection
-   - Enable Code scanning
-
-2. **Configure Branch Protection** (Settings → Branches)
-   - Require PR reviews (1 approval minimum)
-   - Require CodeQL + build checks to pass
-   - Block force pushes
-   - Restrict push access
-
-**Full checklist:** `.internal/GITHUB_SECURITY_CHECKLIST.md`
-
----
-
-## 🛠️ Commands
+Required variables in `.env.local`:
 
 ```bash
-# Development
-npm run dev              # Start dev server (auto-kills port 3000)
-npm run build            # Production build
-npm run type-check       # TypeScript validation
-
-# Code Quality
-npm run lint             # ESLint + hex color scan
-npm run scan:hex         # Detect hardcoded colors
-npm run format           # Prettier formatting
-
 # Database
-npm run db:push          # Push schema changes
-npm run db:studio        # Open Prisma Studio
-npm run db:seed          # Seed test data
-npm run db:reset         # Reset and reseed
+DATABASE_URL="postgresql://..." # Production
+# DATABASE_URL="file:./dev.db"  # Development (SQLite)
 
-# Testing
-npm test                 # Vitest unit tests
-npm run test:e2e         # Playwright E2E tests
+# Auth (NextAuth v5)
+NEXTAUTH_SECRET="your-secret-key"
+NEXTAUTH_URL="http://localhost:3000"
 
-# Sync
-./scripts/sync-to-official.sh  # Sync to customer repo
+# Payments (choose one or multiple)
+STRIPE_SECRET_KEY="sk_test_..."
+POLAR_ACCESS_TOKEN="polar_..."
+LEMONSQUEEZY_API_KEY="ls_..."
+
+# Email
+RESEND_API_KEY="re_..."
 ```
 
----
+**Optional variables:**
 
-## 📋 Pre-Commit Hooks
+```bash
+# OAuth Providers
+GOOGLE_CLIENT_ID="..."
+GOOGLE_CLIENT_SECRET="..."
+GITHUB_ID="..."
+GITHUB_SECRET="..."
 
-Git commits automatically run these checks via **Husky + lint-staged**:
+# AI Features (if using AI components)
+AI_PROVIDER="ollama" # or "openai" or "google"
+OPENAI_API_KEY="sk-..."
+GOOGLE_API_KEY="..."
+OLLAMA_MODEL="llama3.1:8b"
+```
 
-| Check | Blocks Commit? |
-|-------|----------------|
-| TypeScript (`tsc --noEmit`) | ✅ |
-| ESLint + auto-fix | ✅ |
-| Prettier formatting | ✅ |
-| Hardcoded colors (`bg-white`, etc.) | ✅ |
-| `console.log` statements | ✅ |
-| Direct `process.env` access | ✅ |
+Full environment schema: `src/lib/env.ts`
 
-**Bypass (emergency):** `git commit --no-verify`
+### Database Setup
+
+```bash
+# Development (SQLite)
+npm run db:push
+
+# Production (PostgreSQL)
+# Set DATABASE_URL to PostgreSQL connection string
+npm run db:push
+
+# Seed test data
+npm run db:seed
+
+# Reset database
+npm run db:reset
+
+# Open Prisma Studio
+npm run db:studio
+```
+
+### Payment Provider Configuration
+
+Choose one or multiple payment providers in `src/config/stripe.ts`:
+
+```typescript
+export const stripeConfig = {
+  provider: "stripe", // or "polar" or "lemonsqueezy"
+  // ... provider-specific settings
+};
+```
+
+Each provider has its own webhook endpoint:
+- Stripe: `/api/webhooks/stripe`
+- Polar: `/api/webhooks/polar`
+- Lemonsqueezy: `/api/webhooks/lemonsqueezy`
 
 ---
 
 ## 🎨 Design System
 
-Fabrk uses a **terminal-first design system** with strict rules:
+### Importing Design Tokens
 
-### Core Principles
-1. **Sharp edges** - `rounded-none` on all elements
-2. **Monospace** - `font-mono` for UI text
-3. **Design tokens only** - No hardcoded colors
-4. **8-point grid** - Consistent spacing
-
-### Design Tokens
 ```tsx
 import { mode } from "@/design-system";
 
@@ -190,40 +202,105 @@ import { mode } from "@/design-system";
 <Button className={cn(mode.radius, mode.font, "w-full text-xs")}>
   > SUBMIT
 </Button>
+
+<Input className={cn(mode.radius, mode.font, "text-xs")} />
 ```
 
 ### Allowed Colors
-```tsx
-// GOOD
-bg-background, bg-card, bg-primary, text-foreground, border-border
 
-// BAD (will fail pre-commit)
+```tsx
+// ✅ GOOD - Design tokens
+bg-background, bg-card, bg-muted, bg-primary
+text-foreground, text-muted-foreground, text-primary
+border-border, border-primary
+
+// ❌ BAD - Hardcoded colors (will fail pre-commit)
 bg-white, bg-gray-500, text-black, #hexvalues
 ```
 
-**Full guide:** `DESIGN_SYSTEM.md`
+### Typography Standards
+
+```tsx
+// UI Labels/Badges - UPPERCASE
+<Badge label="SYSTEM INIT" />
+
+// Buttons - UPPERCASE with > prefix
+<Button>> GET FABRK</Button>
+
+// Headlines (H1/H2) - UPPERCASE
+<h2>BUILDING YOUR SAAS</h2>
+
+// Body Text - Normal sentence case
+<p>Why spend valuable time tackling auth...</p>
+```
+
+### Theme Switching
+
+```tsx
+import { useTheme } from "next-themes";
+
+function ThemeSwitcher() {
+  const { theme, setTheme } = useTheme();
+
+  return (
+    <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+      <option value="crt-green">CRT Green</option>
+      <option value="crt-red">CRT Red</option>
+      <option value="gameboy">GameBoy</option>
+      {/* ... 12 total themes */}
+    </select>
+  );
+}
+```
+
+Full design system documentation: `docs/08-design/DESIGN_SYSTEM.md`
 
 ---
 
-## 📚 Documentation
+## 📁 Project Structure
 
-All docs are in `CLAUDE.md` for AI assistance. Key sections:
-
-- **Quick Reference** - Commands and common patterns
-- **Architecture** - Three-layer design (UI → API → Service)
-- **Design System** - Terminal aesthetic rules
-- **Dual Repo Workflow** - How to sync between repos
-- **Pre-Commit Hooks** - What's automatically checked
-- **Troubleshooting** - Common issues and fixes
-
-**For users:** Customer-facing docs are in `src/app/docs/*` and sync to official repo.
+```
+fabrk-official/
+├── src/
+│   ├── app/
+│   │   ├── (platform)/      # Dashboard and app pages
+│   │   ├── (auth)/          # Auth pages (login, register, etc.)
+│   │   ├── api/             # API routes (30+ endpoints)
+│   │   ├── docs/            # Documentation site
+│   │   └── library/         # Template showcase
+│   ├── components/
+│   │   ├── ui/              # 77 UI components (Radix primitives)
+│   │   ├── docs/            # Documentation templates
+│   │   ├── dashboard/       # Dashboard components
+│   │   └── shared/          # Shared components (Logo, Footer, etc.)
+│   ├── lib/
+│   │   ├── auth.ts          # NextAuth v5 configuration
+│   │   ├── db/              # Prisma client
+│   │   ├── env.ts           # Environment validation (Zod)
+│   │   ├── stripe.ts        # Stripe client
+│   │   ├── polar.ts         # Polar client
+│   │   └── lemonsqueezy/    # Lemonsqueezy client
+│   ├── config/
+│   │   ├── index.ts         # Config exports
+│   │   ├── app.ts           # App configuration
+│   │   ├── stripe.ts        # Payment provider config
+│   │   └── i18n.ts          # Internationalization
+│   └── design-system/
+│       └── themes/          # 12 terminal themes (OKLCH colors)
+├── prisma/
+│   ├── schema.prisma        # Database schema
+│   └── seed.ts              # Database seeding
+├── public/                  # Static assets
+├── CLAUDE.md                # AI assistant guidance
+└── docs/                    # Design system documentation
+```
 
 ---
 
 ## 🧪 Testing
 
 ```bash
-# Unit/integration tests
+# Unit/integration tests (Vitest)
 npm test
 
 # E2E tests (Playwright)
@@ -234,100 +311,111 @@ npm run type-check
 
 # Linting
 npm run lint
+
+# Format code
+npm run format
 ```
 
 ---
 
-## 📁 Project Structure
+## 🚀 Deployment
 
-```
-fabrk_plate/ (dev repo)
-├── .internal/               # Private scripts and tools
-│   ├── scripts/
-│   │   ├── sync-to-official.sh          # Sync script
-│   │   ├── customer-library-layout.tsx  # Boilerplate layouts
-│   │   └── utilities/                   # Dev utilities
-│   └── GITHUB_SECURITY_CHECKLIST.md     # Security setup
-├── scripts/                 # Public utility scripts
-│   └── sync-to-official.sh  # Main sync script
-├── src/
-│   ├── app/
-│   │   ├── (platform)/      # ✓ Syncs to official
-│   │   ├── (auth)/          # ✓ Syncs to official
-│   │   ├── (marketing)/     # ✗ Private (your landing)
-│   │   ├── api/             # ✓ Syncs to official
-│   │   ├── docs/            # ✓ Syncs to official
-│   │   ├── library/         # ✓ Syncs to official
-│   │   └── page.tsx         # ✗ Private (replaced with boilerplate)
-│   ├── components/
-│   │   ├── ui/              # ✓ Syncs to official
-│   │   ├── dashboard/       # ✓ Syncs to official
-│   │   ├── landing/         # ✗ Private (your marketing)
-│   │   ├── marketing/       # ✗ Private
-│   │   └── home/            # ✗ Private
-│   ├── lib/                 # ✓ Syncs to official
-│   └── config.js            # ✓ Syncs to official
-├── prisma/                  # ✓ Syncs to official
-├── public/                  # ✓ Syncs to official
-├── CLAUDE.md                # ✓ Syncs to official
-└── README.md                # ✗ Private (this file)
-```
+### Vercel (Recommended)
+
+1. Push to GitHub
+2. Import project in Vercel
+3. Add environment variables
+4. Deploy
+
+**Environment variables to set:**
+- `DATABASE_URL` (PostgreSQL connection string)
+- `NEXTAUTH_SECRET` (generate with: `openssl rand -base64 32`)
+- `NEXTAUTH_URL` (your production domain)
+- Payment provider keys (Stripe, Polar, or Lemonsqueezy)
+- `RESEND_API_KEY` (for email)
+- OAuth credentials (if using)
+
+### Other Platforms
+
+Fabrk works on any platform that supports Next.js 16:
+- Netlify
+- Railway
+- Render
+- DigitalOcean App Platform
+
+**Build command:** `npm run build`
+**Output directory:** `.next`
+**Install command:** `npm install --legacy-peer-deps`
 
 ---
 
-## 🔄 Adding New Features
+## 📚 Documentation
 
-### For Boilerplate (Will Sync)
-1. Make changes in boilerplate directories
-2. Commit to dev repo
-3. Run `./scripts/sync-to-official.sh`
-4. Push official repo
+### Component Documentation
 
-### For Marketing (Stays Private)
-1. Add files to `src/app/(marketing)/`, `src/components/landing/`, etc.
-2. Commit to dev repo
-3. No sync needed - stays private
+All components documented at `/docs/components`:
+- Props and variants
+- Copy-paste examples
+- Accessibility notes
+- Terminal styling patterns
 
-### Adding New Exclusions
-If you add new private files, update the sync script:
+### Feature Guides
 
-```bash
-# Edit scripts/sync-to-official.sh
-rsync -a --exclude='your-new-private-folder/' ...
-```
+Located at `/docs/features`:
+- Authentication (NextAuth v5, magic link, OAuth)
+- Payments (Stripe, Polar, Lemonsqueezy)
+- Database (Prisma, migrations, seeding)
+- Email (Resend, React Email templates)
+- Security (CSRF, CSP, session management)
+
+### Templates
+
+28+ copy-paste ready templates at `/library`:
+- Landing pages
+- Dashboard layouts
+- Auth flows
+- Pricing pages
+- Documentation sites
 
 ---
 
 ## 🛟 Support
 
-**Internal Issues:**
-- Check `.internal/GITHUB_SECURITY_CHECKLIST.md` for security setup
-- See `CLAUDE.md` for development guidance
-- Review `DESIGN_SYSTEM.md` for styling rules
+### Issues & Questions
 
-**Customer Support:**
-- Email: support@fabrek.dev
-- Issues: https://github.com/Theft-SUDO/fabrk-official/issues
+- **GitHub Issues**: https://github.com/Theft-SUDO/fabrk-official/issues
+- **Email**: support@fabrek.dev
+
+### Contributing
+
+Contributions welcome! Please:
+1. Fork the repository
+2. Create a feature branch
+3. Make changes (ensure pre-commit hooks pass)
+4. Submit a pull request
+
+### Community
+
+- **Discord**: Coming soon
+- **Twitter**: [@fabrk_dev](https://twitter.com/fabrk_dev)
+
+---
+
+## 🎯 Next Steps
+
+1. **Configure authentication** - Set up NextAuth providers in `.env.local`
+2. **Set up payments** - Configure Stripe, Polar, or Lemonsqueezy webhooks
+3. **Customize design** - Choose your terminal theme, adjust colors
+4. **Add features** - Build on top of 77 UI components
+5. **Deploy** - Push to Vercel, set environment variables, go live
+
+**Read CLAUDE.md for AI assistant guidance** - Optimized for Claude Code and other AI tools.
 
 ---
 
 ## 📝 License
 
-**Commercial License** - See `LICENSE.md` for full terms.
-
----
-
-## 🚢 Deployment
-
-The official repo deploys to production. This dev repo is for development only.
-
-**Official repo deployment:**
-```bash
-cd ../fabrk-official
-vercel
-```
-
----
+MIT License - see LICENSE file for details.
 
 **Built with ❤️ by indie hackers, for indie hackers.**
 
