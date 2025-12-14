@@ -68,27 +68,32 @@ export function TemplateCard({
             >
               {name}
             </h3>
-            {badge && (
-              <Badge
-                variant="outline"
-                className={cn(
-                  mode.font,
-                  'shrink-0 text-xs',
-                  onBadgeClick && 'hover:bg-primary hover:text-primary-foreground cursor-pointer'
-                )}
-                onClick={
-                  onBadgeClick
-                    ? (e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        onBadgeClick(badge);
-                      }
-                    : undefined
-                }
-              >
-                {badge.toUpperCase()}
-              </Badge>
-            )}
+            {badge &&
+              (onBadgeClick ? (
+                <Badge
+                  asChild
+                  variant="outline"
+                  className={cn(
+                    mode.font,
+                    'hover:bg-primary hover:text-primary-foreground shrink-0 cursor-pointer text-xs'
+                  )}
+                >
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      onBadgeClick(badge);
+                    }}
+                  >
+                    {badge.toUpperCase()}
+                  </button>
+                </Badge>
+              ) : (
+                <Badge variant="outline" className={cn(mode.font, 'shrink-0 text-xs')}>
+                  {badge.toUpperCase()}
+                </Badge>
+              ))}
           </div>
 
           {/* Description */}
