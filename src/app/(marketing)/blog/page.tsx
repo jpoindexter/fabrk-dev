@@ -108,7 +108,7 @@ export default async function BlogPage({
                       <span>•</span>
                       <span>{formatReadTime(post.readTime || 1)}</span>
                     </div>
-                    <h3 className="text-foreground group-hover:text-primary mb-2 font-mono text-lg font-semibold">
+                    <h3 className="text-foreground group-hover:text-primary mb-2 font-mono text-sm font-semibold">
                       {post.title}
                     </h3>
                     {post.excerpt && (

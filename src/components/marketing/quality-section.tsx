@@ -5,6 +5,8 @@ import { Card, CardContent, Badge } from '@/components/ui/card';
 import { siTypescript, siStorybook, siVitest, siGithubactions } from 'simple-icons';
 import { CheckCircle2, TestTube2 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 export function QualitySection() {
   const qualityMetrics = [
@@ -59,7 +61,12 @@ export function QualitySection() {
             viewport={{ once: true }}
           >
             <span className="text-muted-foreground text-xs">[0x00]</span>
-            <h2 className="mb-4 text-4xl leading-tight font-semibold tracking-tight lg:text-5xl">
+            <h2
+              className={cn(
+                'mb-4 text-4xl leading-tight font-semibold tracking-tight lg:text-5xl',
+                mode.font
+              )}
+            >
               BUILT TO LAST, TESTED TO SHIP
             </h2>
           </motion.div>
@@ -98,7 +105,9 @@ export function QualitySection() {
                     </div>
                     <div className="mb-4">
                       <div className="text-foreground text-5xl font-bold">{item.metric}</div>
-                      <h3 className="mt-1 text-sm font-semibold">{item.label.toUpperCase()}</h3>
+                      <h3 className={cn('mt-1 text-sm font-semibold', mode.font)}>
+                        {item.label.toUpperCase()}
+                      </h3>
                     </div>
                     <span className="text-muted-foreground block text-sm leading-relaxed">
                       {item.description}
@@ -124,7 +133,9 @@ export function QualitySection() {
                   <CheckCircle2 className="text-primary h-16 w-16" />
                 </div>
                 <div>
-                  <h3 className="mb-2 text-xl leading-snug font-semibold lg:text-2xl">
+                  <h3
+                    className={cn('mb-2 text-xl leading-snug font-semibold lg:text-2xl', mode.font)}
+                  >
                     QUALITY GUARANTEE
                   </h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">

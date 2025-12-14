@@ -203,7 +203,9 @@ export function PricingComparison({
 
       {/* Bottom CTA */}
       <div className={cn('border-border bg-card border p-6 text-center', mode.radius)}>
-        <h3 className="text-foreground mb-2 text-sm font-bold">Need help choosing?</h3>
+        <h3 className={cn('text-foreground mb-2 text-sm font-bold', mode.font)}>
+          NEED HELP CHOOSING?
+        </h3>
         <p className="text-muted-foreground mb-4 text-sm">
           Contact our team for personalized recommendations
         </p>

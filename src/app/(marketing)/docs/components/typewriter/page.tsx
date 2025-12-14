@@ -14,7 +14,7 @@ export default function TypewriterPage() {
       importCode={`import { TypeWriter } from "@/components/ui/typewriter"`}
       mainPreview={{
         preview: (
-          <div className="text-foreground space-y-4 font-mono text-lg">
+          <div className="text-foreground space-y-4 font-mono text-sm">
             <TypeWriter text="INITIALIZING SYSTEM..." showCursor />
           </div>
         ),

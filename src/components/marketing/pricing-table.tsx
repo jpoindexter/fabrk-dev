@@ -142,8 +142,10 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
         {/* Section Header */}
         <div className="mb-16 text-center">
           <span className="text-muted-foreground text-xs">[0x00]</span>
-          <h2 className="text-foreground mb-4 text-4xl font-semibold tracking-tight">
-            COMPARE_AND_CHOOSE
+          <h2
+            className={cn('text-foreground mb-4 text-4xl font-semibold tracking-tight', mode.font)}
+          >
+            COMPARE AND CHOOSE
           </h2>
           <p className="text-muted-foreground mx-auto max-w-2xl text-sm">
             &gt; See how Fabrk stacks up against the competition. Same features, 60-77% cheaper.

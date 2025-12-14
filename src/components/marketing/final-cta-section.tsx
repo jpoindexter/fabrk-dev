@@ -105,12 +105,12 @@ export function FinalCTASection() {
             >
               <Link href="/docs/getting-started/installation">
                 <Button variant="outline" size="sm" className={cn(mode.radius, mode.font)}>
-                  &gt; VIEW_DOCS
+                  &gt; VIEW DOCS
                 </Button>
               </Link>
               <Link href="/library">
                 <Button variant="outline" size="sm" className={cn(mode.radius, mode.font)}>
-                  &gt; EXPLORE_COMPONENTS
+                  &gt; EXPLORE COMPONENTS
                 </Button>
               </Link>
             </motion.div>

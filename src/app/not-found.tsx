@@ -42,7 +42,7 @@ export default function NotFound() {
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Button asChild className="h-12 px-8 tracking-wider uppercase">
             <Link href="/">
-              <span className="mr-2 text-lg">▸</span>
+              <span className="mr-2 text-sm">▸</span>
               RETURN HOME
             </Link>
           </Button>

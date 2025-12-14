@@ -47,7 +47,12 @@ export function TestimonialsSection() {
             viewport={{ once: true }}
           >
             <span className="text-muted-foreground text-xs">[0x00]</span>
-            <h2 className="mb-4 text-4xl leading-tight font-semibold tracking-tight lg:text-5xl">
+            <h2
+              className={cn(
+                'mb-4 text-4xl leading-tight font-semibold tracking-tight lg:text-5xl',
+                mode.font
+              )}
+            >
               LOVED BY DEVELOPERS
             </h2>
           </motion.div>

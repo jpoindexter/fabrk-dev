@@ -12,6 +12,8 @@ import {
   siStripe,
 } from 'simple-icons';
 import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 export function TechStack() {
   const technologies = [
@@ -35,7 +37,12 @@ export function TechStack() {
             viewport={{ once: true }}
           >
             <Badge code="0x20" label="TECH STACK" className="mb-4" />
-            <h2 className="text-4xl leading-tight font-semibold tracking-tight lg:text-5xl">
+            <h2
+              className={cn(
+                'text-4xl leading-tight font-semibold tracking-tight lg:text-5xl',
+                mode.font
+              )}
+            >
               A MODERN STACK YOU CAN TRUST
             </h2>
           </motion.div>

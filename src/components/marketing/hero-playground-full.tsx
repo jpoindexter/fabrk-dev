@@ -435,7 +435,7 @@ function ComponentsGrid() {
         {/* Dropdown Menu */}
         <Card>
           <div className="p-4">
-            <h3 className="mb-4 text-xs font-semibold">[DROPDOWN MENU]</h3>
+            <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>[DROPDOWN MENU]</h3>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" className="w-full text-xs">
@@ -467,7 +467,7 @@ function ComponentsGrid() {
 
         {/* Loading Skeletons - Tighter spacing */}
         <div className="border-border space-y-4 border p-4">
-          <h3 className="text-xs font-semibold">[LOADING...]</h3>
+          <h3 className={cn('text-xs font-semibold', mode.font)}>[LOADING...]</h3>
           <Skeleton className="h-4 w-full" />
           <Skeleton className="h-4 w-3/4" />
           <Skeleton className="h-10 w-full" />
@@ -476,7 +476,7 @@ function ComponentsGrid() {
         {/* Progress Bars */}
         <Card>
           <div className="p-4">
-            <h3 className="mb-4 text-xs font-semibold">[PROGRESS]</h3>
+            <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>[PROGRESS]</h3>
             <div className="space-y-4">
               <div>
                 <div className="mb-1 flex justify-between text-xs">
@@ -507,7 +507,7 @@ function ComponentsGrid() {
 
         {/* Badge Variations - Compact, no card */}
         <div className="border-border bg-muted/30 space-y-2 border p-4">
-          <h3 className="text-xs font-semibold">[BADGES]</h3>
+          <h3 className={cn('text-xs font-semibold', mode.font)}>[BADGES]</h3>
           <div className="flex flex-wrap gap-2">
             <Badge>DEFAULT</Badge>
             <Badge variant="secondary">SECONDARY</Badge>
@@ -519,7 +519,7 @@ function ComponentsGrid() {
         {/* Empty State - Minimal, no card */}
         <div className="border-border border border-dashed p-8 text-center">
           <FileText className="text-muted-foreground mx-auto mb-2 h-8 w-8" />
-          <h3 className="mb-1 text-xs font-semibold">[NO DATA]</h3>
+          <h3 className={cn('mb-1 text-xs font-semibold', mode.font)}>[NO DATA]</h3>
           <p className="text-muted-foreground text-xs">No items found</p>
         </div>
       </div>
@@ -528,7 +528,9 @@ function ComponentsGrid() {
       <div className="space-y-4">
         {/* Radio Group - Border only, no card */}
         <div className="border-primary/30 bg-primary/5 border-2 p-4">
-          <h3 className="text-primary mb-4 text-xs font-semibold">[RADIO GROUP]</h3>
+          <h3 className={cn('text-primary mb-4 text-xs font-semibold', mode.font)}>
+            [RADIO GROUP]
+          </h3>
           <RadioGroup defaultValue="option-1">
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="option-1" id="option-1" />
@@ -547,7 +549,7 @@ function ComponentsGrid() {
 
         {/* Switches - Terminal style with border */}
         <div className="border-border bg-card border p-4">
-          <h3 className="mb-4 text-xs font-semibold">[SWITCHES]</h3>
+          <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>[SWITCHES]</h3>
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <Label className="text-xs">Enable notifications</Label>
@@ -563,7 +565,7 @@ function ComponentsGrid() {
         {/* Mini Data Table - Dense with separators */}
         <div className="divide-border border-border bg-card divide-y border">
           <div className="bg-muted/50 p-4">
-            <h3 className="text-xs font-semibold">[DATA TABLE]</h3>
+            <h3 className={cn('text-xs font-semibold', mode.font)}>[DATA TABLE]</h3>
           </div>
           <div className="space-y-0">
             {[
@@ -586,7 +588,7 @@ function ComponentsGrid() {
 
         {/* Filter Chips - Terminal card style */}
         <div className="border-border bg-card border p-4">
-          <h3 className="mb-4 text-xs font-semibold">[ACTIVE FILTERS]</h3>
+          <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>[ACTIVE FILTERS]</h3>
           <div className="flex flex-wrap gap-2">
             {['Status: Active', 'Role: Admin'].map((filter, i) => (
               <Badge key={i} variant="secondary" className="gap-1">
@@ -599,7 +601,9 @@ function ComponentsGrid() {
 
         {/* Date & Time - Outline style */}
         <div className="border-muted-foreground/30 border-2 border-dashed p-4">
-          <h3 className="text-muted-foreground mb-4 text-xs font-semibold">[TIMESTAMPS]</h3>
+          <h3 className={cn('text-muted-foreground mb-4 text-xs font-semibold', mode.font)}>
+            [TIMESTAMPS]
+          </h3>
           <div className="space-y-2 text-xs">
             <div className="flex items-center gap-2">
               <Clock className="text-muted-foreground h-4 w-4" />
@@ -614,7 +618,7 @@ function ComponentsGrid() {
 
         {/* Statistics - Accent background with border */}
         <div className="border-success/50 bg-success/10 space-y-4 border-2 p-4">
-          <h3 className="text-success text-xs font-semibold">[REVENUE UP]</h3>
+          <h3 className={cn('text-success text-xs font-semibold', mode.font)}>[REVENUE UP]</h3>
           <div className="flex justify-between text-xs">
             <span>Total</span>
             <span className="text-2xl font-bold">$12,450</span>
@@ -632,7 +636,7 @@ function ComponentsGrid() {
         {/* Slider */}
         <Card>
           <div className="p-4">
-            <h3 className="mb-4 text-xs font-semibold">[SLIDER]</h3>
+            <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>[SLIDER]</h3>
             <p className={cn('mb-4 text-xs', mode.color.text.muted)}>Value: ${priceRange[0]}</p>
             <Slider
               value={priceRange}
@@ -647,7 +651,7 @@ function ComponentsGrid() {
         {/* Checkboxes */}
         <Card>
           <div className="p-4">
-            <h3 className="mb-4 text-xs font-semibold">[CHECKBOXES]</h3>
+            <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>[CHECKBOXES]</h3>
             <div className="space-y-2">
               <div className="flex items-center space-x-2">
                 <Checkbox id="check-1" defaultChecked />
@@ -668,7 +672,7 @@ function ComponentsGrid() {
         {/* Select Menu */}
         <Card>
           <div className="p-4">
-            <h3 className="mb-4 text-xs font-semibold">[SELECT MENU]</h3>
+            <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>[SELECT MENU]</h3>
             <Select defaultValue="option-1">
               <SelectTrigger className="text-xs">
                 <SelectValue />
@@ -685,7 +689,7 @@ function ComponentsGrid() {
         {/* Input Variants */}
         <Card>
           <div className="p-4">
-            <h3 className="mb-4 text-xs font-semibold">[INPUT TYPES]</h3>
+            <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>[INPUT TYPES]</h3>
             <div className="space-y-2">
               <Input type="email" placeholder="Email" className="text-xs" />
               <Input type="password" placeholder="Password" className="text-xs" />
@@ -697,7 +701,7 @@ function ComponentsGrid() {
         {/* Button Groups */}
         <Card>
           <div className="p-4">
-            <h3 className="mb-4 text-xs font-semibold">[BUTTON GROUP]</h3>
+            <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>[BUTTON GROUP]</h3>
             <div className="flex gap-2">
               <Button size="sm" variant="outline" className="flex-1 text-xs">
                 &gt; LEFT

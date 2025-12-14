@@ -157,7 +157,7 @@ export function ExitIntentPopup({
             discountId={EXIT_INTENT_DISCOUNT_ID}
             className={cn(mode.radius, mode.font, 'w-full text-xs')}
           >
-            &gt; GET FABRK_NOW
+            &gt; GET FABRK NOW
           </PolarCheckoutButton>
           <Button
             onClick={handleClose}
