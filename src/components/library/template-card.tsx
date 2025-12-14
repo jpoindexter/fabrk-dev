@@ -25,6 +25,8 @@ export interface TemplateCardProps {
   dependencies?: string[];
   /** Whether this is a featured template */
   featured?: boolean;
+  /** Callback when badge is clicked (for filtering) */
+  onBadgeClick?: (badge: string) => void;
 }
 
 export function TemplateCard({
@@ -38,6 +40,7 @@ export function TemplateCard({
   filePath,
   dependencies,
   featured = false,
+  onBadgeClick,
 }: TemplateCardProps) {
   return (
     <Link href={href} className="group block h-full">
@@ -66,7 +69,23 @@ export function TemplateCard({
               {name}
             </h3>
             {badge && (
-              <Badge variant="outline" className={cn(mode.font, 'shrink-0 text-xs')}>
+              <Badge
+                variant="outline"
+                className={cn(
+                  mode.font,
+                  'shrink-0 text-xs',
+                  onBadgeClick && 'hover:bg-primary hover:text-primary-foreground cursor-pointer'
+                )}
+                onClick={
+                  onBadgeClick
+                    ? (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        onBadgeClick(badge);
+                      }
+                    : undefined
+                }
+              >
                 {badge.toUpperCase()}
               </Badge>
             )}

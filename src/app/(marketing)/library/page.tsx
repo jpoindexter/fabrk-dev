@@ -39,10 +39,14 @@ type SortOption = 'relevance' | 'name' | 'newest' | 'featured';
 export default function LibraryIndexPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedBadge, setSelectedBadge] = useState<string | null>(null);
   const [showFilters, setShowFilters] = useState(false);
   const [advancedFilters, setAdvancedFilters] = useState<FilterOptions>({});
   const [sortBy, setSortBy] = useState<SortOption>('relevance');
   const [currentPage, setCurrentPage] = useState(1);
+
+  // Extract unique badges dynamically from templates
+  const availableBadges = [...new Set(templates.map((t) => t.badge).filter(Boolean))] as string[];
 
   // Filter templates with fuzzy search
   const filteredTemplates = filterTemplates(templates, {
@@ -52,7 +56,7 @@ export default function LibraryIndexPage() {
     hasFeature: advancedFilters.feature,
     setupTime: advancedFilters.setupTime,
     hasDependencies: advancedFilters.hasDependencies,
-  });
+  }).filter((t) => !selectedBadge || t.badge === selectedBadge);
 
   // Calculate active filter count
   const activeFilterCount =
@@ -94,6 +98,7 @@ export default function LibraryIndexPage() {
   const handleClearFilters = () => {
     setAdvancedFilters({});
     setSelectedCategory('all');
+    setSelectedBadge(null);
     setSearchQuery('');
     setCurrentPage(1);
   };
@@ -101,6 +106,11 @@ export default function LibraryIndexPage() {
   // Reset page when filters change
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category);
+    setCurrentPage(1);
+  };
+
+  const handleBadgeClick = (badge: string) => {
+    setSelectedBadge(badge);
     setCurrentPage(1);
   };
 
@@ -253,6 +263,24 @@ export default function LibraryIndexPage() {
             </div>
           </div>
 
+          {/* Active Badge Filter */}
+          {selectedBadge && (
+            <div className="mt-4 flex items-center gap-2">
+              <span className={cn(mode.font, 'text-muted-foreground text-xs')}>FILTERED BY:</span>
+              <button
+                onClick={() => setSelectedBadge(null)}
+                className={cn(
+                  mode.font,
+                  mode.radius,
+                  'bg-primary text-primary-foreground hover:bg-primary/80 flex items-center gap-1 px-2 py-1 text-xs transition-colors'
+                )}
+              >
+                {selectedBadge.toUpperCase()}
+                <span className="ml-1">×</span>
+              </button>
+            </div>
+          )}
+
           {/* Advanced Filters Panel */}
           {showFilters && (
             <div className="border-border mt-4 border-t pt-4">
@@ -327,6 +355,7 @@ export default function LibraryIndexPage() {
                 features={template.features}
                 badge={template.badge}
                 featured={template.badge === 'Popular' || template.badge === 'Essential'}
+                onBadgeClick={handleBadgeClick}
               />
             ))}
           </div>
