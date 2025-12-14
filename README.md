@@ -687,6 +687,124 @@ Fabrk documentation follows the [Diátaxis framework](https://diataxis.fr/) for 
 
 ---
 
+### 📂 Documentation File Structure
+
+Fabrk documentation is organized across multiple locations for different purposes:
+
+```
+fabrk-official/
+├── README.md                          # You are here! Quick start + overview
+├── CLAUDE.md                          # AI assistant development guide
+│
+├── docs/                              # Deep-dive documentation (Markdown)
+│   ├── 01-getting-started/           # Setup and installation
+│   ├── 02-configuration/             # Environment variables, config
+│   ├── 03-features/                  # Feature implementation guides
+│   ├── 04-deployment/                # Deployment guides
+│   ├── 06-security/                  # Security architecture
+│   ├── 08-design/                    # Design system specification
+│   │   └── DESIGN_SYSTEM.md          # Complete design system docs
+│   └── ENV-VALIDATION.md             # Environment variable guide
+│
+├── src/app/(marketing)/
+│   ├── docs/                         # Live documentation site (Next.js pages)
+│   │   ├── components/               # 77 UI component docs with live previews
+│   │   ├── features/                 # Feature guides (payments, auth, etc.)
+│   │   ├── security/                 # Security guides (CSRF, headers, etc.)
+│   │   ├── design/                   # Design system guides
+│   │   ├── deployment/               # Deployment guides (Vercel, Docker, etc.)
+│   │   ├── architecture/             # Architecture diagrams & patterns
+│   │   ├── launch/                   # Pre-launch checklists
+│   │   └── extras/                   # Tools (theme generator, etc.)
+│   │
+│   └── library/                      # Template showcase (copy-paste pages)
+│       ├── admin-panels/             # Admin panel templates
+│       ├── authentication/           # Auth flow templates
+│       ├── dashboards/               # Dashboard templates
+│       ├── marketing/                # Landing page templates
+│       ├── blog/                     # Blog templates
+│       └── ... (28 template categories)
+│
+└── .claude/                          # Claude Code assistant files
+    └── audit/                        # Code quality audit framework (58 files)
+```
+
+#### Where to Find What
+
+| What You Need | Where to Look |
+|---------------|---------------|
+| **Quick setup** | `README.md` (Quick Start section) |
+| **Environment variables** | `docs/ENV-VALIDATION.md` or `.env.example` |
+| **Component API reference** | Visit `/docs/components/*` after `npm run dev` |
+| **How to add payments** | Visit `/docs/features/payments` after `npm run dev` |
+| **Design system rules** | `docs/08-design/DESIGN_SYSTEM.md` |
+| **Security architecture** | Visit `/docs/security/*` after `npm run dev` |
+| **Copy-paste templates** | Visit `/library/*` after `npm run dev` |
+| **AI development guide** | `CLAUDE.md` (for Claude Code, Cursor, etc.) |
+| **Deployment guides** | Visit `/docs/deployment/*` after `npm run dev` |
+| **Code quality audits** | `.claude/audit/` (58 modular audit files) |
+
+#### Documentation Types Explained
+
+**1. Markdown Files (`docs/` directory)**
+- Static reference documentation
+- Deep technical specifications
+- Read with any text editor or GitHub
+- Perfect for version control diffs
+
+**2. Next.js Pages (`src/app/(marketing)/docs/`)**
+- Interactive documentation with live previews
+- Component demos you can interact with
+- Searchable via site search
+- Visit http://localhost:3000/docs after `npm run dev`
+
+**3. Library Templates (`src/app/(marketing)/library/`)**
+- Production-ready page templates
+- Copy entire pages to jumpstart development
+- Preview + Code tabs for easy copying
+- Visit http://localhost:3000/library after `npm run dev`
+
+**4. AI Assistant Guides**
+- `CLAUDE.md` - Comprehensive development guide for AI tools
+- `.claude/audit/` - Code quality framework (58 specialized audits)
+- Optimized for Claude Code, Cursor, GitHub Copilot
+
+#### Navigation Flow
+
+```
+1. Start here (README.md) → Quick setup
+    ↓
+2. Run `npm run dev` → Start local server
+    ↓
+3. Visit http://localhost:3000/docs → Interactive docs
+    ↓
+4. Browse:
+   • /docs/components → See all 77 UI components
+   • /docs/features → Learn to add payments, auth, etc.
+   • /library → Copy-paste ready templates
+    ↓
+5. Read `CLAUDE.md` → AI assistant development patterns
+    ↓
+6. Check `docs/08-design/DESIGN_SYSTEM.md` → Design rules
+```
+
+#### Documentation Best Practices
+
+When **building features**, follow this sequence:
+1. Read the **concept** docs (`/docs/security/*`, `/docs/design/*`)
+2. Follow the **how-to guide** (`/docs/features/*`)
+3. Reference the **component docs** (`/docs/components/*`)
+4. Copy from **library templates** (`/library/*`) if available
+5. Consult `CLAUDE.md` for AI-assisted development
+
+When **stuck or troubleshooting**:
+1. Check this README's Troubleshooting section (line 788+)
+2. Search `/docs/` for your topic
+3. Check GitHub Issues
+4. Email support@fabrek.dev
+
+---
+
 ## ❓ Frequently Asked Questions
 
 ### General

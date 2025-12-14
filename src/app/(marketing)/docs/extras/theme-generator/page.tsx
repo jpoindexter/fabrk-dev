@@ -1,5 +1,30 @@
 'use client';
 
+/**
+ * Theme Generator - Interactive Tool
+ *
+ * ⚠️ BOILERPLATE NOTICE:
+ * This is an intentionally large single-file component (896 lines) following boilerplate design patterns.
+ *
+ * WHY SINGLE-FILE:
+ * - Complete copy-paste ready tool for customers
+ * - Self-contained hex → OKLCH conversion logic
+ * - No external dependencies to maintain
+ * - Easier for customers to customize in one place
+ *
+ * This file includes:
+ * - Color conversion utilities (hex to OKLCH)
+ * - Interactive theme builder UI
+ * - Live preview components
+ * - Code generation and export
+ *
+ * For production use, customers can:
+ * 1. Copy this entire file to their project
+ * 2. Customize color palettes and conversion logic
+ * 3. Modify export formats as needed
+ * 4. Add custom theme presets
+ */
+
 import * as React from 'react';
 import { useState, useMemo, useEffect } from 'react';
 import { FeatureGuideTemplate, DocsCard } from '@/components/docs';
