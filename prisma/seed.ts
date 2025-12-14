@@ -1,3 +1,26 @@
+/**
+ * Database Seed Script
+ *
+ * ⚠️ BOILERPLATE NOTICE:
+ * This file contains EXAMPLE seed data for development/testing purposes.
+ *
+ * BEFORE DEPLOYING TO PRODUCTION:
+ * 1. Replace example users with your own admin accounts
+ * 2. Update test data to match your business needs
+ * 3. Remove or modify hardcoded passwords
+ * 4. Adjust customer IDs, payment amounts, etc.
+ *
+ * TO RUN: npm run db:seed
+ *
+ * This seed script demonstrates:
+ * - Creating users with different roles (admin, regular user)
+ * - Different user states (verified, unverified, with reset token)
+ * - Sample payment records for testing
+ * - Example checkout sessions
+ *
+ * Customize this file to match your application's data model.
+ */
+
 import { PrismaClient } from "../src/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { Pool } from "pg";
@@ -14,6 +37,8 @@ const prisma = new PrismaClient({ adapter });
 
 async function main() {
   console.log("🌱 Starting database seed...");
+  console.log("⚠️  WARNING: This creates EXAMPLE data for development/testing");
+  console.log("   Customize this seed file before using in production!");
 
   // Clear existing data (development only!)
   if (process.env.NODE_ENV === "development") {
@@ -27,8 +52,8 @@ async function main() {
     await prisma.user.deleteMany();
   }
 
-  // Create test users
-  console.log("👤 Creating test users...");
+  // Create EXAMPLE test users (replace with your own data!)
+  console.log("👤 Creating EXAMPLE test users...");
 
   const hashedPassword = await bcrypt.hash("password123", 12);
 
