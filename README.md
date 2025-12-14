@@ -48,6 +48,9 @@ npm install --legacy-peer-deps
 # Set up environment
 cp .env.example .env.local
 # Edit .env.local with your credentials (see Configuration below)
+#
+# ⚡ Quick win: Get free RESEND_API_KEY in 2 minutes
+# → https://resend.com/api-keys (required for email/magic link auth)
 
 # Set up database
 npm run db:push
@@ -63,7 +66,7 @@ Visit **http://localhost:3000** 🎉
 
 ## 🚀 What's Inside
 
-### UI Components (72 Total)
+### UI Components (77 Total)
 
 - **Forms**: Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Calendar, Date Picker, File Upload
 - **Navigation**: Navbar, Sidebar, Tabs, Breadcrumbs, Pagination, Command Palette
@@ -126,6 +129,55 @@ Git commits automatically run:
 - Design system compliance
 
 **Bypass (emergency only):** `git commit --no-verify`
+
+---
+
+## 🎨 Customizing Components
+
+All 77 UI components support customization through className props and CSS variables.
+
+### Quick Customization Examples
+
+**Change button variant:**
+```tsx
+import { Button } from "@/components/ui/button";
+
+<Button variant="outline">> CLICK_ME</Button>
+<Button variant="destructive">> DELETE</Button>
+```
+
+**Customize with Tailwind:**
+```tsx
+<Button className="w-full bg-primary/80 hover:bg-primary">> SUBMIT</Button>
+```
+
+**Override CSS variables** (in `globals.css` or component):
+```css
+:root {
+  --primary: oklch(65% 0.25 270);  /* Change primary color */
+  --radius: 0px;  /* Terminal sharp corners */
+}
+```
+
+**Create custom component variants:**
+```tsx
+// Extend existing components
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+export function TerminalButton({ children, ...props }: ButtonProps) {
+  return (
+    <Button
+      className={cn("font-mono text-xs uppercase", props.className)}
+      {...props}
+    >
+      &gt; {children}
+    </Button>
+  );
+}
+```
+
+**See full component documentation:** Visit http://localhost:3000/docs/components after running `npm run dev`
 
 ---
 
@@ -227,6 +279,21 @@ Webhooks are **required** for payments to work. After a customer completes check
    ```bash
    LEMONSQUEEZY_WEBHOOK_SECRET="..."
    ```
+
+#### Validate Webhook Configuration
+
+Run the validation script to verify your webhook setup:
+
+```bash
+npm run validate:webhooks
+```
+
+**This checks:**
+- ✓ All webhook endpoints exist (`/api/webhooks/stripe`, `/polar`, `/lemonsqueezy`)
+- ✓ Webhook secrets are documented in `.env.example`
+- ✓ Signature verification is implemented
+- ✓ POST route handlers with error handling
+- ✓ Payment creation logic in each webhook
 
 **Testing webhooks locally:**
 - Use Stripe CLI: `stripe listen --forward-to localhost:3000/api/webhooks/stripe`
@@ -365,6 +432,67 @@ Full design system documentation: `docs/08-design/DESIGN_SYSTEM.md`
 
 ---
 
+## 🏗️ Architecture Overview
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                         CLIENT (Browser)                         │
+│  Next.js 16 App Router • React 19 • Tailwind CSS 4 • OKLCH      │
+└──────────────────────┬──────────────────────────────────────────┘
+                       │
+                       │ HTTP/HTTPS
+                       ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                     NEXT.JS SERVER (Edge/Node)                   │
+│  ┌───────────────┐  ┌───────────────┐  ┌────────────────┐      │
+│  │  Page Routes  │  │  API Routes   │  │  Middleware    │      │
+│  │  (RSC/SSR)    │  │  (30+ endpoints)│  │  Auth/CSRF    │      │
+│  └───────┬───────┘  └───────┬───────┘  └────────┬───────┘      │
+│          │                  │                     │              │
+│          ▼                  ▼                     ▼              │
+│  ┌────────────────────────────────────────────────────────┐     │
+│  │            BUSINESS LOGIC LAYER (src/lib/)             │     │
+│  │  • NextAuth v5 (auth.ts)                               │     │
+│  │  • Prisma ORM (db/)                                    │     │
+│  │  • Payment clients (stripe.ts, polar.ts, lemonsqueezy/)│     │
+│  │  • Email service (resend.ts)                           │     │
+│  │  • Env validation (env.ts with Zod)                    │     │
+│  └────────────────────────────────────────────────────────┘     │
+└──────────────┬──────────────┬──────────────┬──────────────┬────┘
+               │              │              │              │
+               ▼              ▼              ▼              ▼
+┌──────────────────┐ ┌────────────────┐ ┌───────────┐ ┌──────────┐
+│   DATABASE       │ │   PAYMENTS     │ │   EMAIL   │ │   AUTH   │
+│                  │ │                │ │           │ │          │
+│  PostgreSQL      │ │  Stripe        │ │  Resend   │ │  OAuth   │
+│  (Prisma)        │ │  Polar.sh      │ │           │ │ Providers│
+│                  │ │  Lemonsqueezy  │ │           │ │ (Google, │
+│  • Users         │ │                │ │           │ │  GitHub) │
+│  • Payments      │ │  Webhooks ────►│ │           │ │          │
+│  • Sessions      │ │  /api/webhooks/│ │           │ │          │
+└──────────────────┘ └────────────────┘ └───────────┘ └──────────┘
+
+DATA FLOW EXAMPLES:
+
+1. USER SIGNUP:
+   Browser → /api/auth/signup → NextAuth → Resend (magic link) → Email → User clicks → Session created → Database
+
+2. PAYMENT:
+   Browser → /api/checkout → Stripe/Polar/LS → Hosted checkout → User pays → Webhook → /api/webhooks/* → Database (Payment record)
+
+3. PROTECTED PAGE:
+   Browser → /dashboard → Middleware (auth check) → NextAuth → Session valid? → Render RSC → Database (fetch user data)
+
+KEY ARCHITECTURAL PATTERNS:
+• Edge-first: Middleware runs on Vercel Edge for speed
+• RSC by default: Server Components reduce client JS
+• Type-safe: Zod validates env vars, Prisma generates types
+• Multi-provider: Swappable payment processors (config-driven)
+• Security layers: CSRF tokens, CSP headers, session versioning
+```
+
+---
+
 ## 📁 Project Structure
 
 ```
@@ -436,13 +564,40 @@ npm run format
 3. Add environment variables
 4. Deploy
 
-**Environment variables to set:**
-- `DATABASE_URL` (PostgreSQL connection string)
-- `NEXTAUTH_SECRET` (generate with: `openssl rand -base64 32`)
-- `NEXTAUTH_URL` (your production domain)
-- Payment provider keys (Stripe, Polar, or Lemonsqueezy)
-- `RESEND_API_KEY` (for email)
-- OAuth credentials (if using)
+### Pre-Deployment Checklist
+
+**Minimum Required (App won't work without these):**
+```bash
+□ DATABASE_URL="postgresql://..."  # Production PostgreSQL
+□ NEXTAUTH_SECRET="..."  # Generate: openssl rand -base64 32
+□ NEXTAUTH_URL="https://yourdomain.com"  # Your production domain
+□ RESEND_API_KEY="re_..."  # For email/magic link auth
+```
+
+**Payment Provider (Choose ONE to accept payments):**
+```bash
+# Stripe
+□ STRIPE_SECRET_KEY="sk_live_..."
+□ STRIPE_WEBHOOK_SECRET="whsec_..."
+□ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_live_..."
+
+# OR Polar.sh
+□ POLAR_ACCESS_TOKEN="polar_..."
+□ POLAR_WEBHOOK_SECRET="..."
+
+# OR Lemonsqueezy
+□ LEMONSQUEEZY_API_KEY="ls_..."
+```
+
+**OAuth Providers (Optional, if using social login):**
+```bash
+□ GOOGLE_CLIENT_ID="..."  # For Google OAuth
+□ GOOGLE_CLIENT_SECRET="..."
+□ GITHUB_ID="..."  # For GitHub OAuth
+□ GITHUB_SECRET="..."
+```
+
+**Full variable reference:** See `.env.example` for 200+ advanced options
 
 ### Other Platforms
 
@@ -460,31 +615,173 @@ Fabrk works on any platform that supports Next.js 16:
 
 ## 📚 Documentation
 
+Fabrk documentation follows the [Diátaxis framework](https://diataxis.fr/) for systematic learning:
+
+| Type | Purpose | Location |
+|------|---------|----------|
+| **📖 Tutorials** | Step-by-step learning | `/docs/getting-started/*` |
+| **🔧 How-To Guides** | Task-oriented recipes | `/docs/features/*`, `/library` |
+| **📋 Reference** | Technical specifications | `/docs/components/*` |
+| **💡 Concepts** | Understanding & theory | `/docs/design/*`, `/docs/security/*` |
+
+---
+
+### 📖 Tutorials (Learning-Oriented)
+
+**Getting started guides** at `/docs/getting-started`:
+- First-time setup (0 to running app in 10 minutes)
+- Building your first feature
+- Deploying to production
+- Adding authentication
+- Accepting your first payment
+
+### 🔧 How-To Guides (Task-Oriented)
+
+**Feature implementation guides** at `/docs/features`:
+- How to add OAuth providers
+- How to configure Stripe webhooks
+- How to customize email templates
+- How to add new database tables
+- How to implement RBAC
+
+**Copy-paste templates** at `/library`:
+- 28+ production-ready page templates
+- Landing pages, dashboards, auth flows
+- Just copy, paste, customize
+
+### 📋 Reference (Information-Oriented)
+
 ### Component Documentation
 
-All 72 components documented at **http://localhost:3000/docs/components** (after running `npm run dev`):
-- Props and variants
-- Copy-paste examples
-- Accessibility notes
+**Component API documentation** at `/docs/components`:
+- All 77 UI components with props, variants, examples
+- Accessibility compliance notes
 - Terminal styling patterns
+- Copy-paste ready code
 
-### Feature Guides
+**API endpoints** at `/docs/api`:
+- Route handlers reference
+- Request/response schemas
+- Authentication requirements
+- Error codes and handling
 
-Located at **http://localhost:3000/docs/features**:
-- Authentication (NextAuth v5, magic link, OAuth)
-- Payments (Stripe, Polar, Lemonsqueezy)
-- Database (Prisma, migrations, seeding)
-- Email (Resend, React Email templates)
-- Security (CSRF, CSP, session management)
+### 💡 Concepts (Understanding-Oriented)
 
-### Templates
+**Design system principles** at `/docs/design`:
+- Terminal aesthetic philosophy
+- OKLCH color system explained
+- 12 theme architecture
+- Typography and spacing theory
 
-28+ copy-paste ready templates at **http://localhost:3000/library**:
-- Landing pages
-- Dashboard layouts
-- Auth flows
-- Pricing pages
-- Documentation sites
+**Security architecture** at `/docs/security`:
+- CSRF protection explained
+- CSP headers and nonces
+- Session management strategy
+- OAuth flow diagrams
+
+**Best practices** throughout documentation:
+- When to use which payment provider
+- Database schema design patterns
+- Email template architecture
+- Performance optimization strategies
+
+---
+
+## ❓ Frequently Asked Questions
+
+### General
+
+**Q: What makes Fabrk different from other SaaS boilerplates?**
+
+A: Terminal-first design aesthetic (12 themes), multi-provider payments (Stripe/Polar/Lemonsqueezy), 77 production-ready components, and 100% OKLCH color system for perfect theme consistency.
+
+**Q: Can I use this for client projects?**
+
+A: Yes! The license allows unlimited client projects. Each developer needs their own seat (€299).
+
+**Q: Is this a template or a starter kit?**
+
+A: Both. Use it as a foundation to build on, or copy individual components/templates into existing projects.
+
+**Q: Do I need to credit Fabrk in my app?**
+
+A: No attribution required. Build your brand, not ours.
+
+### Technical
+
+**Q: Why Next.js 16? Can I use Next.js 15?**
+
+A: Fabrk uses Next.js 16 features (App Router, async params, React 19). Downgrading to v15 will break things. Stick with v16.
+
+**Q: Can I switch from Stripe to Polar or Lemonsqueezy later?**
+
+A: Yes, all three providers are fully implemented. Change the config in `src/config/stripe.ts` (or create separate config files). Webhooks work for all three.
+
+**Q: Does this work with PostgreSQL AND SQLite?**
+
+A: Yes. SQLite for local dev (fast, no Docker), PostgreSQL for production (Vercel Postgres, Railway, etc.). Prisma handles both.
+
+**Q: Why OKLCH colors instead of RGB/HSL?**
+
+A: OKLCH is perceptually uniform (consistent lightness across hues), perfect for theming. All 12 themes maintain WCAG 2.2 AA contrast ratios automatically.
+
+**Q: Can I change the terminal aesthetic to rounded corners?**
+
+A: Yes, but you'll fight the design system. Update `mode.radius` in `src/design-system/index.ts` from `rounded-none` to `rounded-lg`. Expect 500+ component changes.
+
+### Licensing
+
+**Q: What happens after v1.x? Do I pay again for v2.0?**
+
+A: Free updates for all v1.x releases (1.0 → 1.1 → 1.9). Major versions (v2.0+) may require upgrade fee. You own v1.x forever.
+
+**Q: Can I use this for SaaS products I sell?**
+
+A: Yes, that's the primary use case. Sell subscriptions, charge customers, keep 100% of revenue.
+
+**Q: Team of 5 developers = €1,495 total?**
+
+A: Correct. €299 × 5 seats. Contact support@fabrek.dev for volume pricing (10+ seats).
+
+**Q: What if I just want to try it first?**
+
+A: Clone the repo, run it locally, test everything. No time limits. Pay when you're ready to deploy.
+
+### Features
+
+**Q: Does this include a database schema for [X]?**
+
+A: Includes User, Payment, Session tables. You add your domain models (products, posts, etc.). Prisma makes schema changes easy.
+
+**Q: Are there admin features?**
+
+A: Yes. Role-based access control (RBAC), admin dashboard example, protected API routes.
+
+**Q: Does it handle subscriptions or just one-time payments?**
+
+A: Both. All three payment providers support subscriptions. Webhook handlers included.
+
+**Q: What email features are included?**
+
+A: Magic link auth, welcome emails, payment receipts. Built with React Email + Resend. Add your own transactional emails easily.
+
+**Q: Is there a public roadmap?**
+
+A: Feature requests via GitHub Issues. Major features announced in CHANGELOG.md.
+
+### Support
+
+**Q: Do you offer implementation support?**
+
+A: Community support via GitHub Discussions. Paid consulting available (email support@fabrek.dev).
+
+**Q: What if I find a bug?**
+
+A: Report it on GitHub Issues. Critical bugs fixed within 48 hours.
+
+**Q: Can I request features?**
+
+A: Absolutely. Open a GitHub Issue with `[Feature Request]` tag. Popular requests get prioritized.
 
 ---
 
@@ -764,15 +1061,31 @@ Contributions welcome! Please:
 
 ## 📝 License
 
-**MIT License** - Full text available in `LICENSE.md`
+**Proprietary Commercial License** — Full legal terms in `LICENSE.md`
 
-**Commercial use allowed** — Use Fabrk for unlimited personal and commercial projects. You can:
-- ✅ Use for client projects
-- ✅ Use for SaaS products
-- ✅ Modify and customize freely
-- ✅ Create unlimited projects
+**Pricing:** €299 per developer seat (one-time payment, perpetual license for v1.x)
 
-**Attribution appreciated but not required.**
+**What's Included:**
+- ✅ Unlimited projects for you or your clients
+- ✅ Modify and customize source code freely
+- ✅ Deploy to unlimited domains
+- ✅ Lifetime updates for v1.x (all minor/patch releases)
+- ✅ Commercial use (SaaS, client work, products)
+
+**License Restrictions:**
+- ❌ Cannot resell or redistribute the source code as a standalone product
+- ❌ One seat per developer (each team member needs their own license)
+- ❌ Cannot create competing boilerplate/template products
+- ❌ Cannot sublicense to others
+
+**Team Licensing:**
+- Need multiple seats? Contact support@fabrek.dev for volume pricing
+- Enterprise licenses available for organizations with 10+ developers
+
+**Updates & Upgrades:**
+- Free updates for all v1.x releases (1.0 → 1.1, 1.2, etc.)
+- Major version upgrades (v2.0+) may require additional fee
+- No subscription — pay once, use forever
 
 ---
 

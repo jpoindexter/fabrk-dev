@@ -19,7 +19,7 @@ Fabrk is a terminal-first SaaS boilerplate built with Next.js 16, featuring a un
 - Runtime theme switching with localStorage persistence
 
 ### Components & Templates
-- 75 UI components in `src/components/ui/`
+- 77 UI components in `src/components/ui/`
 - 40 copy-paste page templates in `/library`
 - 143 documentation pages in `/docs`
 
