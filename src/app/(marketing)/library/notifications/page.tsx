@@ -306,6 +306,7 @@ export default function NotificationsTemplate() {
       title="Notifications Center"
       description="Real-time notification system with read/unread states and actions"
       templateId="notifications"
+      category={{ name: 'User Experience', href: '/library/user-experience' }}
       preview={<NotificationsPreview />}
       code={templateCode}
       fileStructure="app/(dashboard)/notifications/page.tsx"

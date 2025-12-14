@@ -112,6 +112,7 @@ export default function EmptyStatesTemplate() {
       title="Empty States"
       description="Helpful empty state patterns for various scenarios"
       templateId="empty-states"
+      category={{ name: 'Patterns', href: '/library/patterns' }}
       preview={<EmptyStatesPreview />}
       code={templateCode}
       fileStructure="components/empty-state.tsx"

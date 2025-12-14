@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import { DocsCard, DocsSection } from '@/components/docs';
-import { DocsNavFooter } from '@/components/docs/blocks/docs-nav-footer';
+import { FeatureGuideTemplate, DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
+import { Eye, Keyboard, Volume2, Zap } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Accessibility Guide - Fabrk Docs',
@@ -9,70 +9,73 @@ export const metadata: Metadata = {
 
 export default function AccessibilityPage() {
   return (
-    <div className="container mx-auto max-w-4xl space-y-8 px-6 py-8">
-      <div className="space-y-4">
-        <div className="border-border bg-muted inline-block border px-4 py-1">
-          <span className="text-muted-foreground font-mono text-xs">[A11Y.00] ACCESSIBILITY</span>
-        </div>
-        <h1 className="font-mono text-3xl font-bold">Accessibility Guide</h1>
-        <p className="text-muted-foreground">
-          WCAG 2.2 AA compliance guidelines and accessibility patterns for Fabrk components.
-        </p>
-      </div>
-
-      <DocsSection title="OVERVIEW">
-        <DocsCard title="COMPLIANCE TARGET">
-          <p className="text-muted-foreground mb-4 text-sm">
-            Fabrk targets WCAG 2.2 Level AA compliance. All components are built with accessibility
-            as a core requirement, not an afterthought.
-          </p>
-          <ul className="text-muted-foreground space-y-2 text-sm">
-            <li>• WCAG 2.2 AA compliance target</li>
-            <li>• OKLCH color system with built-in contrast</li>
-            <li>• Keyboard navigation throughout</li>
-            <li>• Screen reader optimized components</li>
-            <li>• Reduced motion support</li>
-            <li>• Focus visible indicators</li>
-          </ul>
-        </DocsCard>
-      </DocsSection>
-
-      <DocsSection title="WCAG 2.2 PRINCIPLES">
+    <FeatureGuideTemplate
+      code="[A11Y.00]"
+      category="Design"
+      title="Accessibility"
+      description="WCAG 2.2 AA compliance guidelines and accessibility patterns for Fabrk components."
+      overview="Fabrk targets WCAG 2.2 Level AA compliance. All components are built with accessibility as a core requirement, not an afterthought."
+      features={[
+        {
+          icon: Eye,
+          title: 'Perceivable',
+          description: 'Text alternatives, color contrast, adaptable content',
+        },
+        {
+          icon: Keyboard,
+          title: 'Operable',
+          description: 'Keyboard navigation, focus management',
+        },
+        {
+          icon: Volume2,
+          title: 'Understandable',
+          description: 'Screen reader support, clear labels',
+        },
+        {
+          icon: Zap,
+          title: 'Robust',
+          description: 'Valid HTML, proper ARIA usage',
+        },
+      ]}
+      previous={{ title: 'Component Authoring', href: '/docs/design/component-authoring' }}
+      next={{ title: 'Theme Gallery', href: '/docs/extras/theme-gallery' }}
+    >
+      <DocsSection title="WCAG 2.2 Principles">
         <DocsCard title="PERCEIVABLE">
-          <ul className="text-muted-foreground space-y-1 text-sm">
-            <li>• Text alternatives for non-text content</li>
-            <li>• Captions and alternatives for multimedia</li>
-            <li>• Content adaptable without losing meaning</li>
-            <li>• Distinguishable foreground from background</li>
+          <ul className="space-y-1">
+            <li>Text alternatives for non-text content</li>
+            <li>Captions and alternatives for multimedia</li>
+            <li>Content adaptable without losing meaning</li>
+            <li>Distinguishable foreground from background</li>
           </ul>
         </DocsCard>
         <DocsCard title="OPERABLE">
-          <ul className="text-muted-foreground space-y-1 text-sm">
-            <li>• All functionality via keyboard</li>
-            <li>• Enough time to read and use content</li>
-            <li>• No content that causes seizures</li>
-            <li>• Navigable structure and wayfinding</li>
+          <ul className="space-y-1">
+            <li>All functionality via keyboard</li>
+            <li>Enough time to read and use content</li>
+            <li>No content that causes seizures</li>
+            <li>Navigable structure and wayfinding</li>
           </ul>
         </DocsCard>
         <DocsCard title="UNDERSTANDABLE">
-          <ul className="text-muted-foreground space-y-1 text-sm">
-            <li>• Readable and predictable text</li>
-            <li>• Predictable UI behavior</li>
-            <li>• Input assistance for errors</li>
+          <ul className="space-y-1">
+            <li>Readable and predictable text</li>
+            <li>Predictable UI behavior</li>
+            <li>Input assistance for errors</li>
           </ul>
         </DocsCard>
         <DocsCard title="ROBUST">
-          <ul className="text-muted-foreground space-y-1 text-sm">
-            <li>• Compatible with assistive technologies</li>
-            <li>• Valid semantic HTML</li>
-            <li>• Proper ARIA usage where needed</li>
+          <ul className="space-y-1">
+            <li>Compatible with assistive technologies</li>
+            <li>Valid semantic HTML</li>
+            <li>Proper ARIA usage where needed</li>
           </ul>
         </DocsCard>
       </DocsSection>
 
-      <DocsSection title="COLOR CONTRAST">
+      <DocsSection title="Color Contrast">
         <DocsCard title="OKLCH CONTRAST SYSTEM">
-          <p className="text-muted-foreground mb-4 text-sm">
+          <p className="mb-4">
             Fabrk uses OKLCH color format for perceptually uniform contrast. All theme tokens are
             pre-validated for WCAG 2.2 compliance.
           </p>
@@ -91,31 +94,27 @@ Focus indicators:  3:1 minimum against adjacent colors
           {/* eslint-enable design-system/no-hardcoded-colors */}
         </DocsCard>
         <DocsCard title="TESTING CONTRAST">
-          <p className="text-muted-foreground mb-4 text-sm">
-            Test your customizations with these tools:
-          </p>
-          <ul className="text-muted-foreground space-y-2 text-sm">
+          <p className="mb-4">Test your customizations with these tools:</p>
+          <ul className="space-y-2">
             <li>
-              • <span className="text-foreground">OKLCH.com</span> - Convert and check OKLCH values
+              <strong>OKLCH.com</strong> - Convert and check OKLCH values
             </li>
             <li>
-              • <span className="text-foreground">WebAIM Contrast Checker</span> - WCAG ratio
-              calculator
+              <strong>WebAIM Contrast Checker</strong> - WCAG ratio calculator
             </li>
             <li>
-              • <span className="text-foreground">axe DevTools</span> - Browser extension for
-              automated testing
+              <strong>axe DevTools</strong> - Browser extension for automated testing
             </li>
             <li>
-              • <span className="text-foreground">WAVE</span> - Web accessibility evaluation tool
+              <strong>WAVE</strong> - Web accessibility evaluation tool
             </li>
           </ul>
         </DocsCard>
       </DocsSection>
 
-      <DocsSection title="KEYBOARD NAVIGATION">
+      <DocsSection title="Keyboard Navigation">
         <DocsCard title="FOCUS MANAGEMENT">
-          <p className="text-muted-foreground mb-4 text-sm">
+          <p className="mb-4">
             All Fabrk components support full keyboard navigation. Focus rings are always visible
             for keyboard users.
           </p>
@@ -133,7 +132,7 @@ Focus indicators:  3:1 minimum against adjacent colors
           </pre>
         </DocsCard>
         <DocsCard title="COMMON PATTERNS">
-          <div className="space-y-4 text-sm">
+          <div className="space-y-4">
             <div>
               <p className="font-semibold">[TAB] Navigation</p>
               <p className="text-muted-foreground mt-1">
@@ -162,9 +161,9 @@ Focus indicators:  3:1 minimum against adjacent colors
         </DocsCard>
       </DocsSection>
 
-      <DocsSection title="SCREEN READERS">
+      <DocsSection title="Screen Readers">
         <DocsCard title="ARIA BEST PRACTICES">
-          <p className="text-muted-foreground mb-4 text-sm">
+          <p className="mb-4">
             Fabrk components use semantic HTML first, ARIA attributes only when necessary.
           </p>
           <pre className="bg-muted overflow-x-auto p-4 font-mono text-xs">
@@ -191,42 +190,42 @@ Focus indicators:  3:1 minimum against adjacent colors
           </pre>
         </DocsCard>
         <DocsCard title="COMPONENT ROLES">
-          <div className="space-y-2 text-sm">
+          <div className="space-y-2">
             <div className="flex justify-between">
-              <span className="text-foreground">Button</span>
+              <span>Button</span>
               <span className="text-muted-foreground">role=&quot;button&quot;</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-foreground">Dialog</span>
+              <span>Dialog</span>
               <span className="text-muted-foreground">role=&quot;dialog&quot;</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-foreground">Alert</span>
+              <span>Alert</span>
               <span className="text-muted-foreground">role=&quot;alert&quot;</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-foreground">Tabs</span>
+              <span>Tabs</span>
               <span className="text-muted-foreground">
                 role=&quot;tablist&quot;, role=&quot;tab&quot;, role=&quot;tabpanel&quot;
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-foreground">Menu</span>
+              <span>Menu</span>
               <span className="text-muted-foreground">
                 role=&quot;menu&quot;, role=&quot;menuitem&quot;
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-foreground">Switch</span>
+              <span>Switch</span>
               <span className="text-muted-foreground">role=&quot;switch&quot;</span>
             </div>
           </div>
         </DocsCard>
       </DocsSection>
 
-      <DocsSection title="MOTION & ANIMATION">
+      <DocsSection title="Motion & Animation">
         <DocsCard title="REDUCED MOTION">
-          <p className="text-muted-foreground mb-4 text-sm">
+          <p className="mb-4">
             Fabrk respects the prefers-reduced-motion media query. Users who prefer reduced motion
             see minimal or no animations.
           </p>
@@ -251,17 +250,17 @@ Focus indicators:  3:1 minimum against adjacent colors
           </pre>
         </DocsCard>
         <DocsCard title="ANIMATION GUIDELINES">
-          <ul className="text-muted-foreground space-y-2 text-sm">
-            <li>• Keep animations under 400ms for optimal perception</li>
-            <li>• Avoid flashing content (no more than 3 flashes per second)</li>
-            <li>• Use subtle movements (8-16px translation max)</li>
-            <li>• Provide pause/stop controls for auto-playing content</li>
-            <li>• Never use animation to convey critical information alone</li>
+          <ul className="space-y-2">
+            <li>Keep animations under 400ms for optimal perception</li>
+            <li>Avoid flashing content (no more than 3 flashes per second)</li>
+            <li>Use subtle movements (8-16px translation max)</li>
+            <li>Provide pause/stop controls for auto-playing content</li>
+            <li>Never use animation to convey critical information alone</li>
           </ul>
         </DocsCard>
       </DocsSection>
 
-      <DocsSection title="FORMS & INPUTS">
+      <DocsSection title="Forms & Inputs">
         <DocsCard title="FORM ACCESSIBILITY">
           <pre className="bg-muted overflow-x-auto p-4 font-mono text-xs">
             {`/* Every input needs an associated label */
@@ -294,51 +293,27 @@ Focus indicators:  3:1 minimum against adjacent colors
           </pre>
         </DocsCard>
         <DocsCard title="ERROR HANDLING">
-          <ul className="text-muted-foreground space-y-2 text-sm">
-            <li>• Use role=&quot;alert&quot; for error messages to announce immediately</li>
-            <li>• Associate errors with inputs via aria-describedby</li>
-            <li>• Don&apos;t rely on color alone to indicate errors</li>
-            <li>• Provide clear, actionable error messages</li>
-            <li>• Focus first invalid field on form submission</li>
+          <ul className="space-y-2">
+            <li>Use role=&quot;alert&quot; for error messages to announce immediately</li>
+            <li>Associate errors with inputs via aria-describedby</li>
+            <li>Don&apos;t rely on color alone to indicate errors</li>
+            <li>Provide clear, actionable error messages</li>
+            <li>Focus first invalid field on form submission</li>
           </ul>
         </DocsCard>
       </DocsSection>
 
-      <DocsSection title="TESTING CHECKLIST">
+      <DocsSection title="Testing Checklist">
         <DocsCard title="MANUAL TESTS">
-          <ul className="space-y-2 text-sm">
-            <li className="flex items-start gap-2">
-              <span className="text-muted-foreground">□</span>
-              <span>Navigate entire page with Tab key only</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-muted-foreground">□</span>
-              <span>Activate all buttons/links with Enter and Space</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-muted-foreground">□</span>
-              <span>Navigate menus and tabs with Arrow keys</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-muted-foreground">□</span>
-              <span>Close dialogs with Escape key</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-muted-foreground">□</span>
-              <span>Test with screen reader (VoiceOver, NVDA, or JAWS)</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-muted-foreground">□</span>
-              <span>View page at 200% zoom without horizontal scroll</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-muted-foreground">□</span>
-              <span>Verify focus rings visible on all interactive elements</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-muted-foreground">□</span>
-              <span>Check form error messages are announced</span>
-            </li>
+          <ul className="space-y-2">
+            <li>[ ] Navigate entire page with Tab key only</li>
+            <li>[ ] Activate all buttons/links with Enter and Space</li>
+            <li>[ ] Navigate menus and tabs with Arrow keys</li>
+            <li>[ ] Close dialogs with Escape key</li>
+            <li>[ ] Test with screen reader (VoiceOver, NVDA, or JAWS)</li>
+            <li>[ ] View page at 200% zoom without horizontal scroll</li>
+            <li>[ ] Verify focus rings visible on all interactive elements</li>
+            <li>[ ] Check form error messages are announced</li>
           </ul>
         </DocsCard>
         <DocsCard title="AUTOMATED TESTS">
@@ -366,17 +341,17 @@ test('page has no accessibility violations', async () => {
         </DocsCard>
       </DocsSection>
 
-      <DocsSection title="COMPONENT PATTERNS">
+      <DocsSection title="Component Patterns">
         <DocsCard title="ICON BUTTONS">
           <pre className="bg-muted overflow-x-auto p-4 font-mono text-xs">
             {`/* ALWAYS add aria-label to icon-only buttons */
 
-// ✓ CORRECT
+// CORRECT
 <Button aria-label="Delete item" variant="ghost" size="icon">
   <Trash className="h-4 w-4" />
 </Button>
 
-// ✗ WRONG - screen reader announces nothing useful
+// WRONG - screen reader announces nothing useful
 <Button variant="ghost" size="icon">
   <Trash className="h-4 w-4" />
 </Button>`}
@@ -422,10 +397,20 @@ test('page has no accessibility violations', async () => {
         </DocsCard>
       </DocsSection>
 
-      <DocsNavFooter
-        previous={{ title: 'Component Authoring', href: '/docs/design/component-authoring' }}
-        next={{ title: 'Theme Gallery', href: '/docs/extras/theme-gallery' }}
-      />
-    </div>
+      <DocsSection title="Next Steps">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <DocsLinkCard
+            href="/docs/design/component-authoring"
+            title="Component Authoring"
+            description="Build accessible custom components"
+          />
+          <DocsLinkCard
+            href="/docs/extras/theme-gallery"
+            title="Theme Gallery"
+            description="All 12 themes with contrast info"
+          />
+        </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }

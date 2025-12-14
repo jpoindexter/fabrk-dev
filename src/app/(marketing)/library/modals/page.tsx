@@ -136,6 +136,7 @@ export default function ModalsTemplate() {
       title="Modal Patterns"
       description="Dialog, alert, sheet, and popover patterns for common interactions"
       templateId="modals"
+      category={{ name: 'Patterns', href: '/library/patterns' }}
       preview={<ModalsPreview />}
       code={templateCode}
       fileStructure="app/(platform)/modals/page.tsx"

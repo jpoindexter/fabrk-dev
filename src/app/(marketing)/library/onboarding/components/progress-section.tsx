@@ -3,7 +3,6 @@
  * Progress Section - Progress bar with step indicators
  */
 
-import { Progress } from '@/components/ui/progress';
 import { LucideIcon } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
@@ -31,7 +30,13 @@ export function ProgressSection({ currentStep, steps, progress }: ProgressSectio
           {Math.round(progress)}%
         </span>
       </div>
-      <Progress value={progress} size="sm" barWidth={25} />
+      {/* Full-width visual progress bar */}
+      <div className="bg-muted relative h-2 w-full overflow-hidden">
+        <div
+          className="bg-primary absolute top-0 left-0 h-full transition-all duration-300"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
 
       {/* Step Indicators */}
       <div className="mt-4 flex items-center justify-between">

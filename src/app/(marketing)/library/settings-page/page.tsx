@@ -80,34 +80,36 @@ function SettingsPreview() {
 
   return (
     <TemplatePreviewWrapper minHeight="600px">
-      {/* Header */}
-      <SettingsHeader />
+      <div className="space-y-6">
+        {/* Header */}
+        <SettingsHeader />
 
-      {/* Tabs Container */}
-      <StyledTabs
-        code="0x00"
-        title="SETTINGS NAVIGATION"
-        tabs={tabs}
-        value={activeTab}
-        onValueChange={setActiveTab}
-      >
-        {/* Tab Content */}
-        <StyledTabsContent value="general">
-          <GeneralTab />
-        </StyledTabsContent>
+        {/* Tabs Container */}
+        <StyledTabs
+          code="0x00"
+          title="SETTINGS NAVIGATION"
+          tabs={tabs}
+          value={activeTab}
+          onValueChange={setActiveTab}
+        >
+          {/* Tab Content */}
+          <StyledTabsContent value="general">
+            <GeneralTab />
+          </StyledTabsContent>
 
-        <StyledTabsContent value="account">
-          <AccountTab />
-        </StyledTabsContent>
+          <StyledTabsContent value="account">
+            <AccountTab />
+          </StyledTabsContent>
 
-        <StyledTabsContent value="privacy">
-          <PrivacyTab />
-        </StyledTabsContent>
+          <StyledTabsContent value="privacy">
+            <PrivacyTab />
+          </StyledTabsContent>
 
-        <StyledTabsContent value="billing">
-          <BillingTab />
-        </StyledTabsContent>
-      </StyledTabs>
+          <StyledTabsContent value="billing">
+            <BillingTab />
+          </StyledTabsContent>
+        </StyledTabs>
+      </div>
     </TemplatePreviewWrapper>
   );
 }
@@ -119,6 +121,7 @@ export default function SettingsPageTemplate() {
       title="Settings Page"
       description="Multi-tab settings interface with general, account, privacy, and billing sections"
       templateId="settings-page"
+      category={{ name: 'Account Pages', href: '/library/account-pages' }}
       preview={<SettingsPreview />}
       code={templateCode}
       fileStructure={[

@@ -5,7 +5,7 @@
 
 import { Progress } from '@/components/ui/progress';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
-import { Users, HardDrive, Zap } from 'lucide-react';
+import { Users, HardDrive, Zap, FolderOpen } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -40,7 +40,7 @@ export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
           <div className="space-y-2">
             <div className={cn(mode.font, 'flex items-center justify-between text-xs')}>
               <span className="flex items-center gap-2">
-                <Users className="size-3" />
+                <Users className="size-4" />
                 [TEAM MEMBERS]:
               </span>
               <span>
@@ -53,7 +53,27 @@ export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
           <div className="space-y-2">
             <div className={cn(mode.font, 'flex items-center justify-between text-xs')}>
               <span className="flex items-center gap-2">
-                <HardDrive className="size-3" />
+                <FolderOpen className="size-4" />
+                [PROJECTS]:
+              </span>
+              <span>
+                {usage.projects.current}
+                {usage.projects.limit === -1 ? (
+                  <span className="text-success ml-1">∞ UNLIMITED</span>
+                ) : (
+                  ` / ${usage.projects.limit}`
+                )}
+              </span>
+            </div>
+            {usage.projects.limit !== -1 && (
+              <Progress value={usage.projects.percentage} size="sm" barWidth={18} />
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <div className={cn(mode.font, 'flex items-center justify-between text-xs')}>
+              <span className="flex items-center gap-2">
+                <HardDrive className="size-4" />
                 [STORAGE]:
               </span>
               <span>
@@ -68,7 +88,7 @@ export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
           <div className="space-y-2">
             <div className={cn(mode.font, 'flex items-center justify-between text-xs')}>
               <span className="flex items-center gap-2">
-                <Zap className="size-3" />
+                <Zap className="size-4" />
                 [API CALLS]:
               </span>
               <span>

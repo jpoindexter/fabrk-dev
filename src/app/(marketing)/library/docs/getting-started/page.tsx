@@ -11,10 +11,20 @@ import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { CodeBlock } from '@/components/ui/code-block';
+import { LibraryBreadcrumb } from '@/components/library';
 
 export default function GettingStartedPage() {
   return (
     <div className="container mx-auto max-w-4xl space-y-8 px-6 py-8">
+      {/* Breadcrumb Navigation */}
+      <LibraryBreadcrumb
+        items={[
+          { label: 'Library', href: '/library' },
+          { label: 'Docs', href: '/library/docs' },
+          { label: 'Getting Started' },
+        ]}
+      />
+
       {/* Header */}
       <section className="space-y-4">
         <div className="border-border inline-block border px-4 py-1">

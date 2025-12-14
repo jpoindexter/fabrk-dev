@@ -381,6 +381,7 @@ export default function AIFormGeneratorTemplate() {
       title="AI Form Generator"
       description="Generate React Hook Form + Zod code from natural language prompts"
       templateId="ai-forms"
+      category={{ name: 'Patterns', href: '/library/patterns' }}
       preview={<AIFormGeneratorPreview />}
       code={templateCode}
       fileStructure={[

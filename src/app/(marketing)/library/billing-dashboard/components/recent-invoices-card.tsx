@@ -76,19 +76,25 @@ export function RecentInvoicesCard({
                 <div className="flex items-center gap-4">
                   <span>{formatCurrency(payment.amount)}</span>
                   <span
-                    className={`border px-2 py-0.5 ${status.color} ${
-                      payment.status === 'succeeded'
-                        ? 'border-success/50'
-                        : payment.status === 'failed'
-                          ? 'border-destructive/50'
-                          : 'border-warning/50'
-                    }`}
+                    className={cn(
+                      mode.font,
+                      'border px-2 py-0.5 text-xs',
+                      status.color,
+                      payment.status === 'succeeded' && 'border-success/50',
+                      payment.status === 'failed' && 'border-destructive/50',
+                      payment.status === 'pending' && 'border-warning/50'
+                    )}
                   >
                     {status.text}
                   </span>
-                  <button className="hover:text-foreground text-muted-foreground">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    aria-label={`Download invoice for ${payment.description}`}
+                    className={cn(mode.radius, 'size-8')}
+                  >
                     <Download className="size-4" />
-                  </button>
+                  </Button>
                 </div>
               </div>
             );

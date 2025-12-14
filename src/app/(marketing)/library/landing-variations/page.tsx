@@ -430,6 +430,7 @@ export default function LandingVariationsTemplate() {
       title="Landing Page Variations"
       description="Three hero section variations for different use cases"
       templateId="landing-variations"
+      category={{ name: 'Marketing', href: '/library/marketing' }}
       preview={<LandingVariationsPreview />}
       code={templateCode}
       fileStructure="app/page.tsx"

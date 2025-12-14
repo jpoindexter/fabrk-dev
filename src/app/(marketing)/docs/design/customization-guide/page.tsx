@@ -1,7 +1,12 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
-import { DocsCard, DocsSection } from '@/components/docs';
-import { AlertTriangle } from 'lucide-react';
+import {
+  FeatureGuideTemplate,
+  DocsSection,
+  DocsCard,
+  DocsLinkCard,
+  DocsCallout,
+} from '@/components/docs';
+import { Palette, Paintbrush, Type, Settings } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Customization Guide - Fabrk Docs',
@@ -11,42 +16,48 @@ export const metadata: Metadata = {
 
 export default function CustomizationGuidePage() {
   return (
-    <div className="container mx-auto max-w-4xl space-y-8 px-6 py-8">
-      <div className="space-y-4">
-        <div className="inline-block border border-border bg-muted px-4 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[0xC1] CUSTOMIZATION</span>
-        </div>
-        <h1 className="font-mono text-3xl font-bold">Customization Guide</h1>
-        <p className="text-muted-foreground">
-          Complete guide to customizing Fabrk&apos;s design system: brand colors, themes,
-          typography, and more.
-        </p>
-      </div>
+    <FeatureGuideTemplate
+      code="[0xC1]"
+      category="Design"
+      title="Customization Guide"
+      description="Complete guide to customizing Fabrk's design system: brand colors, themes, typography, and more."
+      overview="Customize every aspect of Fabrk's design system. From quick brand color changes to creating entirely new themes, this guide covers it all."
+      features={[
+        {
+          icon: Palette,
+          title: 'Brand Colors',
+          description: 'Update primary and accent colors',
+        },
+        {
+          icon: Paintbrush,
+          title: '12 Themes',
+          description: 'Switch between retro terminal themes',
+        },
+        {
+          icon: Type,
+          title: 'Typography',
+          description: 'Customize fonts and text styles',
+        },
+        {
+          icon: Settings,
+          title: 'Design Tokens',
+          description: 'Full control over CSS variables',
+        },
+      ]}
+      previous={{ title: 'Customization Checklist', href: '/docs/customization-checklist' }}
+      next={{ title: 'Theme Guide', href: '/docs/design/theme-guide' }}
+    >
+      <DocsCallout variant="warning" title="Comprehensive Documentation Available">
+        The complete Customization Guide (600+ lines) is available in the repository at{' '}
+        <code className="bg-muted px-1 py-0.5">docs/08-design/CUSTOMIZATION-GUIDE.md</code>. This
+        page provides a quick reference.
+      </DocsCallout>
 
-      <div className="rounded-none border border-warning/50 bg-warning/10 p-6">
-        <div className="flex items-start gap-4">
-          <AlertTriangle className="h-5 w-5 text-warning" />
-          <div className="space-y-2">
-            <p className="font-mono text-sm font-semibold">COMPREHENSIVE DOCUMENTATION AVAILABLE</p>
-            <p className="text-sm text-muted-foreground">
-              The complete Customization Guide (600+ lines) is available in the repository at{' '}
-              <code className="rounded-none bg-muted px-1 py-0.5">
-                docs/08-design/CUSTOMIZATION-GUIDE.md
-              </code>
-            </p>
-            <p className="text-sm text-muted-foreground">
-              This page provides a quick reference. For detailed instructions, see the markdown
-              documentation.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <DocsSection title="⚡ QUICK START">
+      <DocsSection title="Quick Start">
         <DocsCard title="CHANGE BRAND COLORS (5 MIN)">
           <ol className="space-y-2">
             <li>
-              1. Convert your brand color to OKLCH →{' '}
+              1. Convert your brand color to OKLCH &rarr;{' '}
               <a
                 href="https://oklch.com"
                 target="_blank"
@@ -67,7 +78,7 @@ export default function CustomizationGuidePage() {
             <strong>Example:</strong>
           </p>
           {/* eslint-disable design-system/no-hardcoded-colors -- Documentation example showing CSS variable syntax */}
-          <pre className="mt-2 overflow-x-auto bg-muted p-4 font-mono text-xs">
+          <pre className="bg-muted mt-2 overflow-x-auto p-4 font-mono text-xs">
             {`:root {
   --primary: oklch(57% 0.21 276);           /* Your brand color */
   --primary-foreground: oklch(100% 0 0);    /* Text on brand color */
@@ -102,7 +113,7 @@ export default function CustomizationGuidePage() {
         </DocsCard>
       </DocsSection>
 
-      <DocsSection title="🎨 ADVANCED CUSTOMIZATION">
+      <DocsSection title="Advanced Customization">
         <DocsCard title="WHAT IS OKLCH?">
           <p>
             OKLCH is a perceptually uniform color space that makes it easier to create consistent,
@@ -119,7 +130,7 @@ export default function CustomizationGuidePage() {
               <strong>C</strong> = Chroma (0-0.4, intensity)
             </li>
             <li>
-              <strong>H</strong> = Hue (0-360°, color angle)
+              <strong>H</strong> = Hue (0-360 degrees, color angle)
             </li>
           </ul>
           <p className="mt-4">
@@ -185,7 +196,7 @@ export default function CustomizationGuidePage() {
         </DocsCard>
       </DocsSection>
 
-      <DocsSection title="🛠️ DESIGN TOKENS">
+      <DocsSection title="Design Tokens">
         <DocsCard title="SEMANTIC COLOR TOKENS">
           <p>
             <strong>Never hardcode colors.</strong> Always use semantic tokens:
@@ -226,7 +237,7 @@ export default function CustomizationGuidePage() {
           <p>
             Import <code>mode</code> from design-system for consistent styling:
           </p>
-          <pre className="mt-4 overflow-x-auto bg-muted p-4 font-mono text-xs">
+          <pre className="bg-muted mt-4 overflow-x-auto p-4 font-mono text-xs">
             {`import { mode } from "@/design-system";
 
 <Button className={cn(mode.radius, mode.font, "w-full")}>
@@ -248,58 +259,43 @@ export default function CustomizationGuidePage() {
         </DocsCard>
       </DocsSection>
 
-      <DocsSection title="✅ VERIFICATION">
+      <DocsSection title="Verification">
         <DocsCard title="TESTING CHECKLIST">
           <ul className="space-y-2">
-            <li>☐ Run npm run scan:hex (should find zero hardcoded colors)</li>
-            <li>☐ Test all 12 color themes (switch in theme dropdown)</li>
-            <li>☐ Check contrast ratios (4.5:1 for text)</li>
-            <li>☐ Verify mobile responsiveness</li>
-            <li>☐ Test dark mode toggle</li>
-            <li>☐ Run Lighthouse accessibility audit (90+ score)</li>
+            <li>[ ] Run npm run scan:hex (should find zero hardcoded colors)</li>
+            <li>[ ] Test all 12 color themes (switch in theme dropdown)</li>
+            <li>[ ] Check contrast ratios (4.5:1 for text)</li>
+            <li>[ ] Verify mobile responsiveness</li>
+            <li>[ ] Test dark mode toggle</li>
+            <li>[ ] Run Lighthouse accessibility audit (90+ score)</li>
           </ul>
         </DocsCard>
       </DocsSection>
 
-      <div className="mt-8 space-y-4">
-        <h2 className="font-mono text-xl font-bold">Related Documentation</h2>
+      <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link
+          <DocsLinkCard
             href="/docs/design/theme-guide"
-            className="block rounded-none border border-border bg-card p-4 transition-colors hover:bg-accent"
-          >
-            <h3 className="font-mono text-sm font-semibold">Theme Guide</h3>
-            <p className="mt-1 text-xs text-muted-foreground">
-              Explore all 12 terminal-inspired themes
-            </p>
-          </Link>
-          <Link
+            title="Theme Guide"
+            description="Explore all 12 terminal-inspired themes"
+          />
+          <DocsLinkCard
             href="/docs/design/component-authoring"
-            className="block rounded-none border border-border bg-card p-4 transition-colors hover:bg-accent"
-          >
-            <h3 className="font-mono text-sm font-semibold">Component Authoring</h3>
-            <p className="mt-1 text-xs text-muted-foreground">
-              Build custom components safely
-            </p>
-          </Link>
-          <Link
+            title="Component Authoring"
+            description="Build custom components safely"
+          />
+          <DocsLinkCard
             href="/docs/customization-checklist"
-            className="block rounded-none border border-border bg-card p-4 transition-colors hover:bg-accent"
-          >
-            <h3 className="font-mono text-sm font-semibold">Customization Checklist</h3>
-            <p className="mt-1 text-xs text-muted-foreground">
-              30-45 min pre-launch checklist
-            </p>
-          </Link>
-          <Link
+            title="Customization Checklist"
+            description="30-45 min pre-launch checklist"
+          />
+          <DocsLinkCard
             href="/docs/extras/theming"
-            className="block rounded-none border border-border bg-card p-4 transition-colors hover:bg-accent"
-          >
-            <h3 className="font-mono text-sm font-semibold">Theming System</h3>
-            <p className="mt-1 text-xs text-muted-foreground">How theming works internally</p>
-          </Link>
+            title="Theming System"
+            description="How theming works internally"
+          />
         </div>
-      </div>
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }

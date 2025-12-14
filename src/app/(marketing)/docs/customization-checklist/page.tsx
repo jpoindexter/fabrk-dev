@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { DocsCard, DocsSection } from '@/components/docs';
+import { FeatureGuideTemplate, DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
+import { Palette, FileText, Settings, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Customization Checklist - Fabrk Docs',
@@ -10,22 +11,39 @@ export const metadata: Metadata = {
 
 export default function CustomizationChecklistPage() {
   return (
-    <div className="container mx-auto max-w-4xl space-y-8 px-6 py-8">
-      <div className="space-y-4">
-        <div className="inline-block border border-border bg-muted px-4 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[0xC0] CUSTOMIZATION</span>
-        </div>
-        <h1 className="font-mono text-3xl font-bold">Customization Checklist</h1>
-        <p className="text-muted-foreground">
-          <strong>Before you ship, make Fabrk yours.</strong> This checklist ensures your product
-          looks professional and on-brand.
-        </p>
-        <p className="text-muted-foreground">
-          ⏱️ <strong>Time required:</strong> 30-45 minutes for basic customization
-        </p>
-      </div>
-
-      <DocsSection title="🎨 VISUAL IDENTITY (REQUIRED)">
+    <FeatureGuideTemplate
+      code="[0xC0]"
+      category="Docs"
+      title="Customization Checklist"
+      description="Before you ship, make Fabrk yours. This checklist ensures your product looks professional and on-brand."
+      overview="Complete this 30-45 minute checklist to customize Fabrk before launch. Covers visual identity, content, configuration, and quality assurance."
+      features={[
+        {
+          icon: Palette,
+          title: 'Visual Identity',
+          description: 'Theme, colors, logo, favicon',
+        },
+        {
+          icon: FileText,
+          title: 'Content & Copy',
+          description: 'Metadata, landing page copy',
+        },
+        {
+          icon: Settings,
+          title: 'Configuration',
+          description: 'Env vars, domain, payments',
+        },
+        {
+          icon: CheckCircle,
+          title: 'Quality Assurance',
+          description: 'Accessibility, mobile, performance',
+        },
+      ]}
+      previous={{ title: 'Getting Started', href: '/docs/getting-started' }}
+      next={{ title: 'Customization Guide', href: '/docs/design/customization-guide' }}
+    >
+      {/* Visual Identity Section */}
+      <DocsSection title="Visual Identity (Required)">
         <DocsCard title="1. CHOOSE YOUR COLOR THEME (5 MIN)">
           <p>
             <strong>Default:</strong> Green CRT terminal
@@ -38,19 +56,19 @@ export default function CustomizationChecklistPage() {
           </p>
           <ul className="mt-2 space-y-1">
             <li>
-              <strong>Professional SaaS</strong> → blue (cool, trustworthy)
+              <strong>Professional SaaS</strong> &rarr; blue (cool, trustworthy)
             </li>
             <li>
-              <strong>Developer tools</strong> → green (classic terminal)
+              <strong>Developer tools</strong> &rarr; green (classic terminal)
             </li>
             <li>
-              <strong>Creative apps</strong> → purple or gameboy (playful)
+              <strong>Creative apps</strong> &rarr; purple or gameboy (playful)
             </li>
             <li>
-              <strong>Warm/nostalgic</strong> → amber (cozy, vintage)
+              <strong>Warm/nostalgic</strong> &rarr; amber (cozy, vintage)
             </li>
             <li>
-              <strong>Minimalist</strong> → bw or gbpocket (clean, focused)
+              <strong>Minimalist</strong> &rarr; bw or gbpocket (clean, focused)
             </li>
           </ul>
           <p className="mt-4">
@@ -58,7 +76,7 @@ export default function CustomizationChecklistPage() {
           </p>
           <ol className="mt-2 space-y-1">
             <li>1. Edit src/design-system/providers/ThemeProvider.tsx:82</li>
-            <li>2. Change defaultColorTheme = 'green' to your choice</li>
+            <li>2. Change defaultColorTheme = &apos;green&apos; to your choice</li>
             <li>3. Restart dev server</li>
           </ol>
           <p className="mt-4">
@@ -74,14 +92,14 @@ export default function CustomizationChecklistPage() {
             <strong>Default:</strong> Green primary color
           </p>
           <p className="mt-2">
-            <strong>Action:</strong> Replace with your company's brand colors.
+            <strong>Action:</strong> Replace with your company&apos;s brand colors.
           </p>
           <p className="mt-4">
             <strong>Steps:</strong>
           </p>
           <ol className="mt-2 space-y-1">
             <li>
-              1. Convert your brand color to OKLCH →{' '}
+              1. Convert your brand color to OKLCH &rarr;{' '}
               <a
                 href="https://oklch.com"
                 target="_blank"
@@ -129,7 +147,8 @@ export default function CustomizationChecklistPage() {
         </DocsCard>
       </DocsSection>
 
-      <DocsSection title="📝 CONTENT & COPY (REQUIRED)">
+      {/* Content & Copy Section */}
+      <DocsSection title="Content & Copy (Required)">
         <DocsCard title="4. UPDATE SITE METADATA (5 MIN)">
           <p>
             <strong>Location:</strong> src/app/layout.tsx
@@ -153,24 +172,27 @@ export default function CustomizationChecklistPage() {
             <strong>Location:</strong> src/app/(marketing)/page.tsx
           </p>
           <p className="mt-2">
-            <strong>Action:</strong> Replace with your product's value proposition.
+            <strong>Action:</strong> Replace with your product&apos;s value proposition.
           </p>
           <p className="mt-4">
             <strong>Writing tips:</strong>
           </p>
           <ul className="mt-2 space-y-1">
             <li>Focus on benefits, not features</li>
-            <li>Use active voice ("Ship faster" not "Faster shipping is enabled")</li>
+            <li>
+              Use active voice (&quot;Ship faster&quot; not &quot;Faster shipping is enabled&quot;)
+            </li>
             <li>Keep hero headline under 10 words</li>
             <li>Include clear call-to-action</li>
           </ul>
         </DocsCard>
       </DocsSection>
 
-      <DocsSection title="⚙️ CONFIGURATION (REQUIRED)">
+      {/* Configuration Section */}
+      <DocsSection title="Configuration (Required)">
         <DocsCard title="6. SET ENVIRONMENT VARIABLES (10 MIN)">
           <p>
-            <strong>Location:</strong> Vercel Dashboard → Settings → Environment Variables
+            <strong>Location:</strong> Vercel Dashboard &rarr; Settings &rarr; Environment Variables
           </p>
           <p className="mt-4">
             <strong>Required variables:</strong>
@@ -189,7 +211,7 @@ export default function CustomizationChecklistPage() {
             <strong>Steps:</strong>
           </p>
           <ol className="mt-2 space-y-1">
-            <li>1. Go to Vercel Dashboard → Project → Settings → Domains</li>
+            <li>1. Go to Vercel Dashboard &rarr; Project &rarr; Settings &rarr; Domains</li>
             <li>2. Add your domain: yourproduct.com</li>
             <li>3. Update DNS records at your registrar</li>
             <li>4. Wait for DNS propagation (5-60 min)</li>
@@ -223,15 +245,16 @@ export default function CustomizationChecklistPage() {
         </DocsCard>
       </DocsSection>
 
-      <DocsSection title="✅ QUALITY ASSURANCE (RECOMMENDED)">
+      {/* Quality Assurance Section */}
+      <DocsSection title="Quality Assurance (Recommended)">
         <DocsCard title="9. RUN ACCESSIBILITY AUDIT (5 MIN)">
           <p>
             <strong>Steps:</strong>
           </p>
           <ol className="mt-2 space-y-1">
             <li>1. Open site in Chrome</li>
-            <li>2. Open DevTools (F12) → Lighthouse tab</li>
-            <li>3. Run "Accessibility" audit</li>
+            <li>2. Open DevTools (F12) &rarr; Lighthouse tab</li>
+            <li>3. Run &quot;Accessibility&quot; audit</li>
             <li>4. Target score: 90+</li>
           </ol>
           <p className="mt-4">
@@ -249,11 +272,11 @@ export default function CustomizationChecklistPage() {
             <strong>Test checklist:</strong>
           </p>
           <ul className="mt-2 space-y-1">
-            <li>☐ Navigation menu opens/closes correctly</li>
-            <li>☐ Forms are usable (inputs large enough to tap)</li>
-            <li>☐ Text is readable (minimum 14px font size)</li>
-            <li>☐ Buttons are tappable (minimum 44px touch targets)</li>
-            <li>☐ No horizontal scrolling</li>
+            <li>[ ] Navigation menu opens/closes correctly</li>
+            <li>[ ] Forms are usable (inputs large enough to tap)</li>
+            <li>[ ] Text is readable (minimum 14px font size)</li>
+            <li>[ ] Buttons are tappable (minimum 44px touch targets)</li>
+            <li>[ ] No horizontal scrolling</li>
           </ul>
         </DocsCard>
 
@@ -261,12 +284,12 @@ export default function CustomizationChecklistPage() {
           <p>
             <strong>Command:</strong>
           </p>
-          <pre className="mt-2 bg-muted p-2 font-mono text-xs">npm run scan:hex</pre>
+          <pre className="bg-muted mt-2 p-2 font-mono text-xs">npm run scan:hex</pre>
           <p className="mt-4">
             <strong>Expected output:</strong>
           </p>
-          <pre className="mt-2 bg-muted p-2 font-mono text-xs">
-            ✓ No hardcoded colors found{'\n'}✓ Design system compliance verified
+          <pre className="bg-muted mt-2 p-2 font-mono text-xs">
+            No hardcoded colors found{'\n'}Design system compliance verified
           </pre>
         </DocsCard>
 
@@ -291,42 +314,40 @@ export default function CustomizationChecklistPage() {
         </DocsCard>
       </DocsSection>
 
-      <DocsSection title="📋 FINAL CHECKLIST">
+      {/* Final Checklist Section */}
+      <DocsSection title="Final Checklist">
         <DocsCard title="BEFORE YOU SHIP">
           <ul className="space-y-1">
-            <li>☐ ✅ Color theme selected and brand colors updated</li>
-            <li>☐ ✅ Logo and favicon replaced</li>
-            <li>☐ ✅ Site metadata (title, description, OG image) updated</li>
-            <li>☐ ✅ Landing page copy reflects your product</li>
-            <li>☐ ✅ Environment variables configured in Vercel</li>
-            <li>☐ ✅ Custom domain connected and DNS configured</li>
-            <li>☐ ✅ Payment provider configured and tested</li>
-            <li>☐ ✅ Accessibility audit passed (90+ score)</li>
-            <li>☐ ✅ Mobile responsiveness tested</li>
-            <li>☐ ✅ Design system compliance verified</li>
-            <li>☐ ✅ Performance audit passed (90+ score)</li>
+            <li>[ ] Color theme selected and brand colors updated</li>
+            <li>[ ] Logo and favicon replaced</li>
+            <li>[ ] Site metadata (title, description, OG image) updated</li>
+            <li>[ ] Landing page copy reflects your product</li>
+            <li>[ ] Environment variables configured in Vercel</li>
+            <li>[ ] Custom domain connected and DNS configured</li>
+            <li>[ ] Payment provider configured and tested</li>
+            <li>[ ] Accessibility audit passed (90+ score)</li>
+            <li>[ ] Mobile responsiveness tested</li>
+            <li>[ ] Design system compliance verified</li>
+            <li>[ ] Performance audit passed (90+ score)</li>
           </ul>
         </DocsCard>
       </DocsSection>
 
-      <div className="mt-12 flex gap-4 border-t border-border pt-8">
-        <div className="flex-1">
-          <Link
-            href="/docs/getting-started"
-            className="text-sm text-muted-foreground hover:text-foreground"
-          >
-            ← Getting Started
-          </Link>
-        </div>
-        <div className="flex-1 text-right">
-          <Link
+      {/* Next Steps */}
+      <DocsSection title="Next Steps">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <DocsLinkCard
             href="/docs/design/customization-guide"
-            className="text-sm text-muted-foreground hover:text-foreground"
-          >
-            Customization Guide →
-          </Link>
+            title="Customization Guide"
+            description="Deep dive into design system customization"
+          />
+          <DocsLinkCard
+            href="/docs/design/theme-guide"
+            title="Theme Guide"
+            description="Explore all 12 terminal themes"
+          />
         </div>
-      </div>
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }

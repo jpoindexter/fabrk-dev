@@ -179,29 +179,31 @@ function UserManagementPreview() {
 
   return (
     <TemplatePreviewWrapper minHeight="600px">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <h1 className={cn(mode.font, 'text-2xl font-semibold', mode.color.text.primary)}>
-          User Management
-        </h1>
-        <Button className={cn(mode.radius, mode.font, 'text-xs')}>
-          <UserPlus className="mr-2 h-4 w-4" />
-          &gt; ADD USER
-        </Button>
-      </div>
-
-      {/* Stats Cards */}
-      <StatsCards users={mockUsers} />
-
-      {/* Main Table Card */}
-      <Card>
-        <CardHeader code="0x00" title="USERS_DATABASE" />
-        <div className="p-4">
-          <TableToolbar table={table} onExportCSV={exportToCSV} />
-          <DataTable table={table} />
-          <PaginationControls table={table} />
+      <div className="space-y-6">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <h1 className={cn(mode.font, 'text-2xl font-semibold', mode.color.text.primary)}>
+            User Management
+          </h1>
+          <Button className={cn(mode.radius, mode.font, 'text-xs')}>
+            <UserPlus className="mr-2 h-4 w-4" />
+            &gt; ADD USER
+          </Button>
         </div>
-      </Card>
+
+        {/* Stats Cards */}
+        <StatsCards users={mockUsers} />
+
+        {/* Main Table Card */}
+        <Card>
+          <CardHeader code="0x00" title="USERS_DATABASE" />
+          <div className="p-4">
+            <TableToolbar table={table} onExportCSV={exportToCSV} />
+            <DataTable table={table} />
+            <PaginationControls table={table} />
+          </div>
+        </Card>
+      </div>
     </TemplatePreviewWrapper>
   );
 }
@@ -213,6 +215,7 @@ export default function UserManagementTemplate() {
       title="User Management"
       description="Manage users, roles, and permissions with TanStack Table"
       templateId="user-management"
+      category={{ name: 'Admin Panels', href: '/library/admin-panels' }}
       preview={<UserManagementPreview />}
       code={templateCode}
       fileStructure="app/admin/users/page.tsx"

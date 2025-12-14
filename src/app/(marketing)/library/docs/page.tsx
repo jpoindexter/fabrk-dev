@@ -24,6 +24,7 @@ import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { LibraryBreadcrumb } from '@/components/library';
 
 interface DocGuide {
   title: string;
@@ -110,6 +111,11 @@ const stats = {
 export default function LibraryDocsPage() {
   return (
     <div className="container mx-auto max-w-7xl space-y-8 px-6 py-8">
+      {/* Breadcrumb Navigation */}
+      <LibraryBreadcrumb
+        items={[{ label: 'Library', href: '/library' }, { label: 'Documentation' }]}
+      />
+
       {/* Hero Section */}
       <section className="space-y-4">
         <div className="border-border inline-block border px-4 py-1">

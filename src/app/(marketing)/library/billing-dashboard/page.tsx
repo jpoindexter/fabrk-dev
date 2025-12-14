@@ -3,304 +3,404 @@
  */
 'use client';
 
-import { useState } from 'react';
-import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
+import { ArrowUpRight, Download, Plus, CheckCircle, XCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Progress } from '@/components/ui/progress';
+import { Badge } from '@/components/ui/badge';
 import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
-import { CurrentPlanCard } from './components/current-plan-card';
-import { UsageMetricsCard } from './components/usage-metrics-card';
-import { PaymentMethodsCard } from './components/payment-methods-card';
-import { RecentInvoicesCard } from './components/recent-invoices-card';
-import { PlanCards } from './components/plan-cards';
-import { BillingHistoryTable } from './components/billing-history-table';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 const templateCode = `"use client";
 
-import { useState } from "react";
-import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
-import { TemplatePageHeader } from "@/components/ui/card";
-import { CurrentPlanCard } from "./components/current-plan-card";
-import { UsageMetricsCard } from "./components/usage-metrics-card";
-import { PaymentMethodsCard } from "./components/payment-methods-card";
-import { RecentInvoicesCard } from "./components/recent-invoices-card";
-import { PlanCards } from "./components/plan-cards";
-import { BillingHistoryTable } from "./components/billing-history-table";
+import { ArrowUpRight, Filter, Download, Plus, CreditCard, CheckCircle, XCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
+// Mock data
 const subscription = {
-  plan: "Professional",
-  status: "active",
+  plan: "Pro Plan",
   price: 29,
-  billingCycle: "monthly",
-  nextBillingDate: "2024-12-15",
-  startDate: "2024-01-15",
-  features: [
-    "Unlimited projects",
-    "10 team members",
-    "Priority support",
-    "Advanced analytics",
-    "Custom integrations",
-  ],
+  billingCycle: "Month",
 };
 
 const usage = {
-  users: { current: 7, limit: 10, percentage: 70 },
-  projects: { current: 23, limit: -1, percentage: 0 },
-  storage: { current: 45, limit: 100, percentage: 45, unit: "GB" },
-  apiCalls: { current: 12500, limit: 50000, percentage: 25 },
+  apiRequests: { current: 8500, limit: 10000, percentage: 85 },
+  storage: { current: 2, limit: 5, percentage: 40, unit: "GB" },
 };
 
-const tabs = [
-  { id: "overview", label: "OVERVIEW" },
-  { id: "plans", label: "PLANS" },
-  { id: "history", label: "HISTORY" },
+const billingHistory = [
+  { id: 1, date: "Aug 03, 2025", description: "Pro Plan – Monthly", amount: 29, status: "paid" },
+  { id: 2, date: "Aug 01, 2025", description: "Pro Plan – Monthly", amount: 29, status: "failed" },
+  { id: 3, date: "Jul 01, 2025", description: "Pro Plan – Monthly", amount: 29, status: "paid" },
 ];
 
-export default function BillingDashboard() {
-  const [activeTab, setActiveTab] = useState("overview");
+const paymentMethod = {
+  brand: "VISA",
+  last4: "6888",
+  name: "John Smith",
+  expiry: "24/11",
+};
 
+export default function BillingPage() {
   return (
-    <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
+    <div className="space-y-8">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <TemplatePageHeader
-          badge="BILLING DASHBOARD"
-          title="Billing & Subscription"
-          description="Manage your subscription, payments, and billing information"
-        />
-        <Button className={cn(mode.radius, mode.font, "text-xs")}>
-          <ArrowUpRight className="mr-2 size-4" />
-          &gt; UPGRADE PLAN
-        </Button>
+      <div>
+        <h1 className={cn(mode.font, "text-2xl font-semibold")}>Billing</h1>
+        <p className={cn(mode.font, "text-muted-foreground text-sm mt-1")}>
+          Manage your subscription, view payment history, and update your billing details — all in one place.
+        </p>
       </div>
 
-      {/* Terminal Tab Navigation */}
-      <StyledTabs
-        code="0x00"
-        title="BILLING NAVIGATION"
-        tabs={tabs}
-        value={activeTab}
-        onValueChange={setActiveTab}
-      >
-        {/* Overview Tab */}
-        <StyledTabsContent value="overview">
-          <div className="space-y-6">
-            {/* Two Column Layout */}
-            <div className="grid gap-6 md:grid-cols-2">
-              <UsageMetricsCard usage={usage} />
-              <div className="space-y-6">
-                <CurrentPlanCard subscription={subscription} />
-                <PaymentMethodsCard />
+      {/* Subscription Overview */}
+      <div>
+        <h2 className={cn(mode.font, "text-lg font-semibold mb-4")}>Subscription Overview</h2>
+        <div className="grid gap-6 md:grid-cols-2">
+          {/* Current Plan */}
+          <Card>
+            <CardHeader code="0x00" title="CURRENT_PLAN" />
+            <CardContent padding="md">
+              <div className="flex items-center justify-between">
+                <div>
+                  <Badge className={cn(mode.radius, mode.font, "mb-2")}>{subscription.plan}</Badge>
+                  <div className={cn(mode.font, "text-3xl font-semibold")}>
+                    \${subscription.price}
+                    <span className="text-muted-foreground text-lg font-normal">
+                      / {subscription.billingCycle}
+                    </span>
+                  </div>
+                </div>
+                <Button className={cn(mode.radius, mode.font, "text-xs")}>
+                  <ArrowUpRight className="mr-2 size-4" />
+                  &gt; UPGRADE
+                </Button>
               </div>
-            </div>
-            <RecentInvoicesCard />
+            </CardContent>
+          </Card>
+
+          {/* Usage Summary */}
+          <Card>
+            <CardHeader code="0x01" title="USAGE_SUMMARY" />
+            <CardContent padding="md">
+              <div className="grid grid-cols-2 gap-6">
+                <div>
+                  <div className={cn(mode.font, "text-sm font-semibold mb-2")}>
+                    {usage.apiRequests.current.toLocaleString()} / {usage.apiRequests.limit.toLocaleString()}
+                  </div>
+                  <Progress value={usage.apiRequests.percentage} size="sm" />
+                  <div className={cn(mode.font, "text-muted-foreground text-xs mt-1")}>
+                    API Requests Used
+                  </div>
+                </div>
+                <div>
+                  <div className={cn(mode.font, "text-sm font-semibold mb-2")}>
+                    {usage.storage.current} {usage.storage.unit} / {usage.storage.limit} {usage.storage.unit}
+                  </div>
+                  <Progress value={usage.storage.percentage} size="sm" />
+                  <div className={cn(mode.font, "text-muted-foreground text-xs mt-1")}>
+                    Storage Used
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      {/* Billing History */}
+      <Card>
+        <CardHeader code="0x02" title="BILLING_HISTORY" />
+        <CardContent padding="none">
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className={cn(mode.font, "border-b border-border text-xs text-muted-foreground")}>
+                  <th className="px-4 py-3 text-left font-medium">Date</th>
+                  <th className="px-4 py-3 text-left font-medium">Description</th>
+                  <th className="px-4 py-3 text-left font-medium">Amount</th>
+                  <th className="px-4 py-3 text-left font-medium">Status</th>
+                  <th className="px-4 py-3 text-left font-medium">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {billingHistory.map((invoice) => (
+                  <tr key={invoice.id} className="border-b border-border">
+                    <td className={cn(mode.font, "px-4 py-3 text-sm")}>{invoice.date}</td>
+                    <td className={cn(mode.font, "px-4 py-3 text-sm")}>{invoice.description}</td>
+                    <td className={cn(mode.font, "px-4 py-3 text-sm")}>\${invoice.amount.toFixed(2)}</td>
+                    <td className="px-4 py-3">
+                      <span className={cn(
+                        mode.font,
+                        "flex items-center gap-1 text-xs",
+                        invoice.status === "paid" ? "text-success" : "text-destructive"
+                      )}>
+                        {invoice.status === "paid" ? (
+                          <CheckCircle className="size-3" />
+                        ) : (
+                          <XCircle className="size-3" />
+                        )}
+                        {invoice.status === "paid" ? "Paid" : "Failed"}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3">
+                      {invoice.status === "paid" ? (
+                        <Button variant="ghost" size="sm" className={cn(mode.font, "text-xs h-8")}>
+                          <Download className="mr-1 size-3" />
+                          Download Invoice
+                        </Button>
+                      ) : (
+                        <span className={cn(mode.font, "text-muted-foreground text-xs")}>
+                          No Action Available
+                        </span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        </StyledTabsContent>
+        </CardContent>
+      </Card>
 
-        {/* Plans Tab */}
-        <StyledTabsContent value="plans">
-          <PlanCards />
-        </StyledTabsContent>
+      {/* Payment Method */}
+      <div>
+        <h2 className={cn(mode.font, "text-lg font-semibold mb-4")}>Payment Method</h2>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {/* Credit Card */}
+          <Card className="relative h-48">
+            <CardHeader code="0x03" title={paymentMethod.brand} />
+            <CardContent padding="md" className="flex h-full flex-col justify-between pb-6">
+              <div className={cn(mode.font, "text-xl tracking-wider")}>
+                •••• •••• •••• {paymentMethod.last4}
+              </div>
+              <div className="flex justify-between">
+                <div>
+                  <div className={cn(mode.font, "text-muted-foreground text-xs")}>NAME</div>
+                  <div className={cn(mode.font, "text-sm")}>{paymentMethod.name}</div>
+                </div>
+                <div>
+                  <div className={cn(mode.font, "text-muted-foreground text-xs")}>VALID THRU</div>
+                  <div className={cn(mode.font, "text-sm")}>{paymentMethod.expiry}</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
 
-        {/* History Tab */}
-        <StyledTabsContent value="history">
-          <BillingHistoryTable />
-        </StyledTabsContent>
-      </StyledTabs>
+          {/* Add New Card */}
+          <button className="h-48 border border-dashed border-border flex flex-col items-center justify-center gap-2 hover:border-primary hover:bg-muted/50 transition-colors">
+            <Plus className="size-6 text-muted-foreground" />
+            <span className={cn(mode.font, "text-muted-foreground text-sm")}>Add New Card</span>
+          </button>
+        </div>
+      </div>
     </div>
   );
 }`;
 
 // Mock data
 const subscription = {
-  plan: 'Professional',
-  status: 'active',
+  plan: 'Pro Plan',
   price: 29,
-  billingCycle: 'monthly',
-  nextBillingDate: '2024-12-15',
-  startDate: '2024-01-15',
-  features: [
-    'Unlimited projects',
-    '10 team members',
-    'Priority support',
-    'Advanced analytics',
-    'Custom integrations',
-  ],
+  billingCycle: 'Month',
 };
 
 const usage = {
-  users: { current: 7, limit: 10, percentage: 70 },
-  projects: { current: 23, limit: -1, percentage: 0 },
-  storage: { current: 45, limit: 100, percentage: 45, unit: 'GB' },
-  apiCalls: { current: 12500, limit: 50000, percentage: 25 },
+  apiRequests: { current: 8500, limit: 10000, percentage: 85 },
+  storage: { current: 2, limit: 5, percentage: 40, unit: 'GB' },
 };
 
-const payments = [
-  {
-    id: 'inv_001',
-    date: '2024-11-01',
-    amount: 2900,
-    status: 'succeeded',
-    description: 'Professional Plan - November 2024',
-  },
-  {
-    id: 'inv_002',
-    date: '2024-10-01',
-    amount: 2900,
-    status: 'succeeded',
-    description: 'Professional Plan - October 2024',
-  },
-  {
-    id: 'inv_003',
-    date: '2024-09-01',
-    amount: 2900,
-    status: 'succeeded',
-    description: 'Professional Plan - September 2024',
-  },
-  {
-    id: 'inv_004',
-    date: '2024-08-01',
-    amount: 2900,
-    status: 'failed',
-    description: 'Professional Plan - August 2024',
-  },
-  {
-    id: 'inv_005',
-    date: '2024-07-01',
-    amount: 2900,
-    status: 'succeeded',
-    description: 'Professional Plan - July 2024',
-  },
+const billingHistory = [
+  { id: 1, date: 'Aug 03, 2025', description: 'Pro Plan – Monthly', amount: 29, status: 'paid' },
+  { id: 2, date: 'Aug 01, 2025', description: 'Pro Plan – Monthly', amount: 29, status: 'failed' },
+  { id: 3, date: 'Jul 01, 2025', description: 'Pro Plan – Monthly', amount: 29, status: 'paid' },
 ];
 
-const paymentMethods = [
-  {
-    id: 'pm_001',
-    brand: 'VISA',
-    last4: '4242',
-    expMonth: 12,
-    expYear: 2025,
-    isDefault: true,
-  },
-  {
-    id: 'pm_002',
-    brand: 'MASTERCARD',
-    last4: '5555',
-    expMonth: 6,
-    expYear: 2026,
-    isDefault: false,
-  },
-];
-
-const plans = [
-  {
-    name: 'FREE',
-    price: 0,
-    features: ['1 project', '3 team members', 'Basic support'],
-    current: false,
-  },
-  {
-    name: 'PROFESSIONAL',
-    price: 29,
-    features: ['Unlimited projects', '10 team members', 'Priority support', 'Advanced analytics'],
-    current: true,
-  },
-  {
-    name: 'ENTERPRISE',
-    price: 99,
-    features: [
-      'Unlimited everything',
-      'Unlimited team',
-      'Dedicated support',
-      'Custom integrations',
-      'SLA guarantee',
-    ],
-    current: false,
-  },
-];
-
-const tabs = [
-  { id: 'overview', label: 'OVERVIEW' },
-  { id: 'plans', label: 'PLANS' },
-  { id: 'history', label: 'HISTORY' },
-];
+const paymentMethod = {
+  brand: 'VISA',
+  last4: '6888',
+  name: 'John Smith',
+  expiry: '24/11',
+};
 
 function BillingPreview() {
-  const [activeTab, setActiveTab] = useState('overview');
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-    }).format(amount / 100);
-  };
-
-  const formatDate = (dateStr: string) => {
-    return new Intl.DateTimeFormat('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    }).format(new Date(dateStr));
-  };
-
-  const getStatusText = (status: string) => {
-    switch (status) {
-      case 'succeeded':
-        return { text: 'PAID', color: 'text-success' };
-      case 'failed':
-        return { text: 'FAILED', color: 'text-destructive' };
-      default:
-        return { text: 'PENDING', color: 'text-warning' };
-    }
-  };
-
   return (
-    <TemplatePreviewWrapper minHeight="600px">
-      {/* Terminal Tab Navigation */}
-      <StyledTabs
-        code="0x00"
-        title="BILLING NAVIGATION"
-        tabs={tabs}
-        value={activeTab}
-        onValueChange={setActiveTab}
-      >
-        {/* Overview Tab */}
-        <StyledTabsContent value="overview">
-          <div className="space-y-6">
-            {/* Two Column Layout */}
-            <div className="grid gap-6 md:grid-cols-2">
-              <UsageMetricsCard usage={usage} />
-              <div className="space-y-6">
-                <CurrentPlanCard subscription={subscription} formatDate={formatDate} />
-                <PaymentMethodsCard paymentMethods={paymentMethods} />
-              </div>
-            </div>
+    <TemplatePreviewWrapper minHeight="800px">
+      <div className="space-y-8">
+        {/* Header */}
+        <div>
+          <h1 className={cn(mode.font, 'text-2xl font-semibold')}>Billing</h1>
+          <p className={cn(mode.font, 'text-muted-foreground mt-1 text-sm')}>
+            Manage your subscription, view payment history, and update your billing details — all in
+            one place.
+          </p>
+        </div>
 
-            <RecentInvoicesCard
-              payments={payments}
-              formatDate={formatDate}
-              formatCurrency={formatCurrency}
-              getStatusText={getStatusText}
-              onViewAll={() => setActiveTab('history')}
-            />
+        {/* Subscription Overview */}
+        <div>
+          <h2 className={cn(mode.font, 'mb-4 text-lg font-semibold')}>Subscription Overview</h2>
+          <div className="grid gap-6 md:grid-cols-2">
+            {/* Current Plan */}
+            <Card>
+              <CardHeader code="0x00" title="CURRENT_PLAN" />
+              <CardContent padding="md">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <Badge className={cn(mode.radius, mode.font, 'mb-2')}>
+                      {subscription.plan}
+                    </Badge>
+                    <div className={cn(mode.font, 'text-3xl font-semibold')}>
+                      ${subscription.price}
+                      <span className="text-muted-foreground text-lg font-normal">
+                        {' '}
+                        / {subscription.billingCycle}
+                      </span>
+                    </div>
+                  </div>
+                  <Button className={cn(mode.radius, mode.font, 'text-xs')}>
+                    <ArrowUpRight className="mr-2 size-4" />
+                    &gt; UPGRADE
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Usage Summary */}
+            <Card>
+              <CardHeader code="0x01" title="USAGE_SUMMARY" />
+              <CardContent padding="md">
+                <div className="grid grid-cols-2 gap-6">
+                  <div>
+                    <div className={cn(mode.font, 'mb-2 text-sm font-semibold')}>
+                      {usage.apiRequests.current.toLocaleString()} /{' '}
+                      {usage.apiRequests.limit.toLocaleString()}
+                    </div>
+                    <Progress value={usage.apiRequests.percentage} size="sm" />
+                    <div className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
+                      API Requests Used
+                    </div>
+                  </div>
+                  <div>
+                    <div className={cn(mode.font, 'mb-2 text-sm font-semibold')}>
+                      {usage.storage.current} {usage.storage.unit} / {usage.storage.limit}{' '}
+                      {usage.storage.unit}
+                    </div>
+                    <Progress value={usage.storage.percentage} size="sm" />
+                    <div className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
+                      Storage Used
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
-        </StyledTabsContent>
+        </div>
 
-        {/* Plans Tab */}
-        <StyledTabsContent value="plans">
-          <PlanCards plans={plans} />
-        </StyledTabsContent>
+        {/* Billing History */}
+        <Card>
+          <CardHeader code="0x02" title="BILLING_HISTORY" />
+          <CardContent>
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr
+                    className={cn(
+                      mode.font,
+                      'border-border text-muted-foreground border-b text-xs'
+                    )}
+                  >
+                    <th className="px-4 py-3 text-left font-medium">Date</th>
+                    <th className="px-4 py-3 text-left font-medium">Description</th>
+                    <th className="px-4 py-3 text-left font-medium">Amount</th>
+                    <th className="px-4 py-3 text-left font-medium">Status</th>
+                    <th className="px-4 py-3 text-left font-medium">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {billingHistory.map((invoice) => (
+                    <tr key={invoice.id} className="border-border border-b">
+                      <td className={cn(mode.font, 'px-4 py-3 text-sm')}>{invoice.date}</td>
+                      <td className={cn(mode.font, 'px-4 py-3 text-sm')}>{invoice.description}</td>
+                      <td className={cn(mode.font, 'px-4 py-3 text-sm')}>
+                        ${invoice.amount.toFixed(2)}
+                      </td>
+                      <td className="px-4 py-3">
+                        <span
+                          className={cn(
+                            mode.font,
+                            'flex items-center gap-1 text-xs',
+                            invoice.status === 'paid' ? 'text-success' : 'text-destructive'
+                          )}
+                        >
+                          {invoice.status === 'paid' ? (
+                            <CheckCircle className="size-3" />
+                          ) : (
+                            <XCircle className="size-3" />
+                          )}
+                          {invoice.status === 'paid' ? 'Paid' : 'Failed'}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3">
+                        {invoice.status === 'paid' ? (
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className={cn(mode.font, 'h-8 text-xs')}
+                          >
+                            <Download className="mr-1 size-3" />
+                            Download Invoice
+                          </Button>
+                        ) : (
+                          <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
+                            No Action Available
+                          </span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </CardContent>
+        </Card>
 
-        {/* History Tab */}
-        <StyledTabsContent value="history">
-          <BillingHistoryTable
-            payments={payments}
-            formatDate={formatDate}
-            formatCurrency={formatCurrency}
-            getStatusText={getStatusText}
-          />
-        </StyledTabsContent>
-      </StyledTabs>
+        {/* Payment Method */}
+        <div>
+          <h2 className={cn(mode.font, 'mb-4 text-lg font-semibold')}>Payment Method</h2>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {/* Credit Card */}
+            <Card className="relative h-48">
+              <CardHeader code="0x03" title={paymentMethod.brand} />
+              <CardContent padding="md" className="flex h-full flex-col justify-between pb-6">
+                <div className={cn(mode.font, 'text-xl tracking-wider')}>
+                  •••• •••• •••• {paymentMethod.last4}
+                </div>
+                <div className="flex justify-between">
+                  <div>
+                    <div className={cn(mode.font, 'text-muted-foreground text-xs')}>NAME</div>
+                    <div className={cn(mode.font, 'text-sm')}>{paymentMethod.name}</div>
+                  </div>
+                  <div>
+                    <div className={cn(mode.font, 'text-muted-foreground text-xs')}>VALID THRU</div>
+                    <div className={cn(mode.font, 'text-sm')}>{paymentMethod.expiry}</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Add New Card */}
+            <button className="border-border hover:border-primary hover:bg-muted/50 flex h-48 flex-col items-center justify-center gap-2 border border-dashed transition-colors">
+              <Plus className="text-muted-foreground size-6" />
+              <span className={cn(mode.font, 'text-muted-foreground text-sm')}>Add New Card</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </TemplatePreviewWrapper>
   );
 }
@@ -312,21 +412,16 @@ export default function BillingDashboardTemplate() {
       title="Billing & Subscription"
       description="Manage your subscription, payments, and billing information"
       templateId="billing-dashboard"
+      category={{ name: 'Account Pages', href: '/library/account-pages' }}
       preview={<BillingPreview />}
       code={templateCode}
-      fileStructure={[
-        { path: ['app/', '(dashboard)/', 'billing/page.tsx'], label: '← Copy template here' },
-        { path: ['app/', '(dashboard)/billing/components/', 'current-plan-card.tsx'] },
-        { path: ['app/', '(dashboard)/billing/components/', 'usage-metrics-card.tsx'] },
-        { path: ['app/', '(dashboard)/billing/components/', 'payment-methods-card.tsx'] },
-      ]}
+      fileStructure="app/(dashboard)/billing/page.tsx"
       features={[
-        'Current plan overview with next billing date',
-        'Usage metrics (users, projects, storage, API calls)',
-        'Payment methods management',
-        'Recent invoices with status',
-        'Plan comparison cards',
-        'Full billing history table',
+        'Current plan overview with upgrade button',
+        'Usage metrics (API requests, storage) with progress bars',
+        'Billing history table with status indicators',
+        'Credit card display with gradient styling',
+        'Add new payment method button',
         'Responsive mobile-first design',
       ]}
     />

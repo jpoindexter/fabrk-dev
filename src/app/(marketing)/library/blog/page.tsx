@@ -548,6 +548,7 @@ export default function BlogTemplate() {
       title="Blog"
       description="Articles, tutorials, and updates from the team"
       templateId="blog"
+      category={{ name: 'Marketing', href: '/library/marketing' }}
       preview={<BlogPreview />}
       code={templateCode}
       fileStructure="app/blog/page.tsx"

@@ -7,7 +7,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
 import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
 import { emailTemplates } from './components/email-template-data';
@@ -162,6 +162,7 @@ export default function EmailTemplatesShowcase() {
       title="Email Templates"
       description="5 production-ready transactional email templates with HTML and text versions"
       templateId="email-templates"
+      category={{ name: 'Marketing', href: '/library/marketing' }}
       preview={<EmailTemplatesPreview />}
       code={templateCode}
       fileStructure="lib/emails/welcome.tsx"

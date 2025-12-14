@@ -5,7 +5,9 @@
 'use client';
 
 import { Suspense } from 'react';
+import Link from 'next/link';
 import { ErrorBoundary } from 'react-error-boundary';
+import { ChevronRight } from 'lucide-react';
 import {
   Card,
   CardHeader,
@@ -116,6 +118,11 @@ export interface TemplateShowcasePageProps {
   description: string;
   /** Template ID for related templates (must match library-data.ts) */
   templateId: string;
+  /** Category for breadcrumb navigation */
+  category?: {
+    name: string;
+    href: string;
+  };
   /** The preview component to render */
   preview: React.ReactNode;
   /** The template code to show in code tab */
@@ -135,6 +142,7 @@ export function TemplateShowcasePage({
   title,
   description,
   templateId,
+  category,
   preview,
   code,
   fileStructure,
@@ -145,6 +153,37 @@ export function TemplateShowcasePage({
   return (
     <div className="w-full overflow-x-hidden">
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
+        {/* Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumb" className="flex items-center gap-1 text-xs">
+          <Link
+            href="/library"
+            className={cn(
+              'transition-colors',
+              'text-muted-foreground hover:text-foreground',
+              mode.font
+            )}
+          >
+            Library
+          </Link>
+          <ChevronRight className="text-muted-foreground h-3 w-3" />
+          {category && (
+            <>
+              <Link
+                href={category.href}
+                className={cn(
+                  'transition-colors',
+                  'text-muted-foreground hover:text-foreground',
+                  mode.font
+                )}
+              >
+                {category.name}
+              </Link>
+              <ChevronRight className="text-muted-foreground h-3 w-3" />
+            </>
+          )}
+          <span className={cn('text-foreground', mode.font)}>{title}</span>
+        </nav>
+
         {/* Header */}
         <TemplatePageHeader badge={badge} title={title} description={description} />
 
@@ -154,44 +193,11 @@ export function TemplateShowcasePage({
           <Card>
             <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
             <div className="flex items-center justify-between">
-              <TabsList
-                className={cn(
-                  'h-auto w-auto justify-start gap-0 border-0 bg-transparent p-0',
-                  mode.radius
-                )}
-              >
-                <TabsTrigger
-                  value="preview"
-                  aria-label="Preview template"
-                  className={cn(
-                    'flex items-center gap-2 border-r px-4 py-2',
-                    'border-border',
-                    'data-[state=active]:bg-accent data-[state=active]:text-accent-foreground',
-                    'data-[state=inactive]:text-muted-foreground',
-                    'data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground',
-                    'focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-2',
-                    mode.radius,
-                    mode.font,
-                    mode.typography.caption
-                  )}
-                >
+              <TabsList>
+                <TabsTrigger value="preview" aria-label="Preview template">
                   [PREVIEW]
                 </TabsTrigger>
-                <TabsTrigger
-                  value="code"
-                  aria-label="View source code"
-                  className={cn(
-                    'flex items-center gap-2 border-r px-4 py-2',
-                    'border-border',
-                    'data-[state=active]:bg-accent data-[state=active]:text-accent-foreground',
-                    'data-[state=inactive]:text-muted-foreground',
-                    'data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground',
-                    'focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-2',
-                    mode.radius,
-                    mode.font,
-                    mode.typography.caption
-                  )}
-                >
+                <TabsTrigger value="code" aria-label="View source code">
                   [CODE]
                 </TabsTrigger>
               </TabsList>

@@ -295,186 +295,69 @@ function ChartLibraryPreview() {
         >
           {/* Line Chart */}
           <StyledTabsContent value="line">
-            <div className="border-border bg-card border border-t-0 p-4">
-              <div className="mb-4 flex items-center justify-between">
-                <div>
-                  <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                    [REVENUE OVERVIEW]:
-                  </div>
-                  <div className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
-                    Monthly revenue, expenses, and profit (2024)
-                  </div>
-                </div>
-                <span className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}>
-                  MULTI LINE
-                </span>
+            <Card>
+              <CardHeader code="0x01" title="REVENUE_OVERVIEW" />
+              <div className="p-4">
+                <ResponsiveContainer width="100%" height={400}>
+                  <LineChart data={revenueData}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="oklch(var(--border))" />
+                    <XAxis
+                      dataKey="month"
+                      tick={{ fontSize: 12 }}
+                      tickLine={{ stroke: 'oklch(var(--border))' }}
+                    />
+                    <YAxis
+                      tick={{ fontSize: 12 }}
+                      tickLine={{ stroke: 'oklch(var(--border))' }}
+                      tickFormatter={(value) => `$${(value / 1000).toFixed(1)}K`}
+                    />
+                    <Tooltip content={<CustomTooltip />} />
+                    <Legend wrapperStyle={{ fontSize: '12px' }} />
+                    <Line
+                      type="monotone"
+                      dataKey="revenue"
+                      stroke="oklch(var(--primary))"
+                      strokeWidth={2}
+                      dot={{ r: 4 }}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="expenses"
+                      stroke="oklch(var(--destructive))"
+                      strokeWidth={2}
+                      dot={{ r: 4 }}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="profit"
+                      stroke="oklch(var(--success))"
+                      strokeWidth={2}
+                      dot={{ r: 4 }}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
               </div>
-              <ResponsiveContainer width="100%" height={400}>
-                <LineChart data={revenueData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="oklch(var(--border))" />
-                  <XAxis
-                    dataKey="month"
-                    tick={{ fontSize: 12 }}
-                    tickLine={{ stroke: 'oklch(var(--border))' }}
-                  />
-                  <YAxis
-                    tick={{ fontSize: 12 }}
-                    tickLine={{ stroke: 'oklch(var(--border))' }}
-                    tickFormatter={(value) => `$${(value / 1000).toFixed(1)}K`}
-                  />
-                  <Tooltip content={<CustomTooltip />} />
-                  <Legend wrapperStyle={{ fontSize: '12px' }} />
-                  <Line
-                    type="monotone"
-                    dataKey="revenue"
-                    stroke="oklch(var(--primary))"
-                    strokeWidth={2}
-                    dot={{ r: 4 }}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="expenses"
-                    stroke="oklch(var(--destructive))"
-                    strokeWidth={2}
-                    dot={{ r: 4 }}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="profit"
-                    stroke="oklch(var(--success))"
-                    strokeWidth={2}
-                    dot={{ r: 4 }}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
+            </Card>
           </StyledTabsContent>
 
           {/* Area Chart */}
           <StyledTabsContent value="area">
-            <div className="border-border bg-card border border-t-0 p-4">
-              <div className="mb-4 flex items-center justify-between">
-                <div>
-                  <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                    [USER GROWTH]:
-                  </div>
-                  <div className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
-                    Total active users over time
-                  </div>
-                </div>
-                <span className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}>
-                  SOLID FILL
-                </span>
-              </div>
-              <ResponsiveContainer width="100%" height={400}>
-                <AreaChart data={userGrowthData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="oklch(var(--border))" />
-                  <XAxis
-                    dataKey="month"
-                    tick={{ fontSize: 12 }}
-                    tickLine={{ stroke: 'oklch(var(--border))' }}
-                  />
-                  <YAxis
-                    tick={{ fontSize: 12 }}
-                    tickLine={{ stroke: 'oklch(var(--border))' }}
-                    tickFormatter={(value) => `${(value / 1000).toFixed(1)}K`}
-                  />
-                  <Tooltip
-                    contentStyle={{
-                      background: 'oklch(var(--card))',
-                      border: '1px solid oklch(var(--border))',
-                      fontSize: '12px',
-                    }}
-                  />
-                  <Area
-                    type="monotone"
-                    dataKey="users"
-                    stroke="oklch(var(--primary))"
-                    strokeWidth={2}
-                    fillOpacity={0.3}
-                    fill="oklch(var(--primary))"
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
-            </div>
-          </StyledTabsContent>
-
-          {/* Bar Chart */}
-          <StyledTabsContent value="bar">
-            <div className="border-border bg-card border border-t-0 p-4">
-              <div className="mb-4 flex items-center justify-between">
-                <div>
-                  <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                    [CONVERSION FUNNEL]:
-                  </div>
-                  <div className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
-                    User journey from visitor to retained customer
-                  </div>
-                </div>
-                <span className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}>
-                  HORIZONTAL BARS
-                </span>
-              </div>
-              <ResponsiveContainer width="100%" height={400}>
-                <BarChart data={conversionFunnelData} layout="vertical">
-                  <CartesianGrid strokeDasharray="3 3" stroke="oklch(var(--border))" />
-                  <XAxis
-                    type="number"
-                    tick={{ fontSize: 12 }}
-                    tickLine={{ stroke: 'oklch(var(--border))' }}
-                    tickFormatter={(value) => `${(value / 1000).toFixed(1)}K`}
-                  />
-                  <YAxis
-                    type="category"
-                    dataKey="stage"
-                    tick={{ fontSize: 12 }}
-                    tickLine={{ stroke: 'oklch(var(--border))' }}
-                  />
-                  <Tooltip
-                    contentStyle={{
-                      background: 'oklch(var(--card))',
-                      border: '1px solid oklch(var(--border))',
-                      fontSize: '12px',
-                    }}
-                  />
-                  <Bar dataKey="count" fill="oklch(var(--primary))" radius={[0, 0, 0, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          </StyledTabsContent>
-
-          {/* Pie Chart */}
-          <StyledTabsContent value="pie">
-            <div className="border-border bg-card border border-t-0 p-4">
-              <div className="mb-4 flex items-center justify-between">
-                <div>
-                  <div className={cn(mode.font, 'text-muted-foreground text-xs')}>
-                    [TRAFFIC SOURCES]:
-                  </div>
-                  <div className={cn(mode.font, 'text-muted-foreground mt-1 text-xs')}>
-                    Distribution of website visitors by source
-                  </div>
-                </div>
-                <span className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}>
-                  DONUT CHART
-                </span>
-              </div>
-              <div className="flex items-center justify-center gap-12">
-                <ResponsiveContainer width={400} height={400}>
-                  <PieChart>
-                    <Pie
-                      data={trafficSourceData}
-                      cx="50%"
-                      cy="50%"
-                      innerRadius={80}
-                      outerRadius={140}
-                      paddingAngle={5}
-                      dataKey="value"
-                    >
-                      {trafficSourceData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
-                      ))}
-                    </Pie>
+            <Card>
+              <CardHeader code="0x01" title="USER_GROWTH" />
+              <div className="p-4">
+                <ResponsiveContainer width="100%" height={400}>
+                  <AreaChart data={userGrowthData}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="oklch(var(--border))" />
+                    <XAxis
+                      dataKey="month"
+                      tick={{ fontSize: 12 }}
+                      tickLine={{ stroke: 'oklch(var(--border))' }}
+                    />
+                    <YAxis
+                      tick={{ fontSize: 12 }}
+                      tickLine={{ stroke: 'oklch(var(--border))' }}
+                      tickFormatter={(value) => `${(value / 1000).toFixed(1)}K`}
+                    />
                     <Tooltip
                       contentStyle={{
                         background: 'oklch(var(--card))',
@@ -482,33 +365,110 @@ function ChartLibraryPreview() {
                         fontSize: '12px',
                       }}
                     />
-                  </PieChart>
+                    <Area
+                      type="monotone"
+                      dataKey="users"
+                      stroke="oklch(var(--primary))"
+                      strokeWidth={2}
+                      fillOpacity={0.3}
+                      fill="oklch(var(--primary))"
+                    />
+                  </AreaChart>
                 </ResponsiveContainer>
+              </div>
+            </Card>
+          </StyledTabsContent>
 
-                <div className="space-y-4">
-                  {trafficSourceData.map((source, idx) => (
-                    <div key={idx} className={cn(mode.font, 'flex items-center gap-4 text-sm')}>
-                      {}
-                      <div
-                        className="border-border h-4 w-4 border"
-                        style={{ backgroundColor: source.color }}
+          {/* Bar Chart */}
+          <StyledTabsContent value="bar">
+            <Card>
+              <CardHeader code="0x01" title="CONVERSION_FUNNEL" />
+              <div className="p-4">
+                <ResponsiveContainer width="100%" height={400}>
+                  <BarChart data={conversionFunnelData} layout="vertical">
+                    <CartesianGrid strokeDasharray="3 3" stroke="oklch(var(--border))" />
+                    <XAxis
+                      type="number"
+                      tick={{ fontSize: 12 }}
+                      tickLine={{ stroke: 'oklch(var(--border))' }}
+                      tickFormatter={(value) => `${(value / 1000).toFixed(1)}K`}
+                    />
+                    <YAxis
+                      type="category"
+                      dataKey="stage"
+                      tick={{ fontSize: 12 }}
+                      tickLine={{ stroke: 'oklch(var(--border))' }}
+                    />
+                    <Tooltip
+                      contentStyle={{
+                        background: 'oklch(var(--card))',
+                        border: '1px solid oklch(var(--border))',
+                        fontSize: '12px',
+                      }}
+                    />
+                    <Bar dataKey="count" fill="oklch(var(--primary))" radius={[0, 0, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </Card>
+          </StyledTabsContent>
+
+          {/* Pie Chart */}
+          <StyledTabsContent value="pie">
+            <Card>
+              <CardHeader code="0x01" title="TRAFFIC_SOURCES" />
+              <div className="p-4">
+                <div className="flex items-center justify-center gap-12">
+                  <ResponsiveContainer width={400} height={400}>
+                    <PieChart>
+                      <Pie
+                        data={trafficSourceData}
+                        cx="50%"
+                        cy="50%"
+                        innerRadius={80}
+                        outerRadius={140}
+                        paddingAngle={5}
+                        dataKey="value"
+                      >
+                        {trafficSourceData.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={entry.color} />
+                        ))}
+                      </Pie>
+                      <Tooltip
+                        contentStyle={{
+                          background: 'oklch(var(--card))',
+                          border: '1px solid oklch(var(--border))',
+                          fontSize: '12px',
+                        }}
                       />
-                      <span className="w-32">{source.name}</span>
-                      <div className="text-right">
-                        <div className="font-semibold">{source.value.toLocaleString()}</div>
-                        <div className="text-muted-foreground">
-                          {(
-                            (source.value / trafficSourceData.reduce((a, b) => a + b.value, 0)) *
-                            100
-                          ).toFixed(1)}
-                          %
+                    </PieChart>
+                  </ResponsiveContainer>
+
+                  <div className="space-y-4">
+                    {trafficSourceData.map((source, idx) => (
+                      <div key={idx} className={cn(mode.font, 'flex items-center gap-4 text-sm')}>
+                        {}
+                        <div
+                          className="border-border h-4 w-4 border"
+                          style={{ backgroundColor: source.color }}
+                        />
+                        <span className="w-32">{source.name}</span>
+                        <div className="text-right">
+                          <div className="font-semibold">{source.value.toLocaleString()}</div>
+                          <div className="text-muted-foreground">
+                            {(
+                              (source.value / trafficSourceData.reduce((a, b) => a + b.value, 0)) *
+                              100
+                            ).toFixed(1)}
+                            %
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
+            </Card>
           </StyledTabsContent>
         </StyledTabs>
       </div>

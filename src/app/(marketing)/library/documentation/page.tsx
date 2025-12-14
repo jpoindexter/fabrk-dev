@@ -7,7 +7,6 @@
 'use client';
 
 import { useState } from 'react';
-import { Card, CardHeader } from '@/components/ui/card';
 import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
 import { DocsSidebar } from './components/docs-sidebar';
 import { DocsContent } from './components/docs-content';
@@ -108,6 +107,7 @@ export default function DocumentationLayoutTemplate() {
       title="Documentation Layout"
       description="Three-column documentation layout with sidebar navigation and table of contents"
       templateId="documentation"
+      category={{ name: 'Marketing', href: '/library/marketing' }}
       preview={<DocsLayoutPreview />}
       code={templateCode}
       fileStructure="app/docs/layout.tsx"

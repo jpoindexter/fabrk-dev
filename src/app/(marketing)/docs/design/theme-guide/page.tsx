@@ -1,6 +1,12 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
-import { AlertTriangle } from 'lucide-react';
+import {
+  FeatureGuideTemplate,
+  DocsSection,
+  DocsCard,
+  DocsLinkCard,
+  DocsCallout,
+} from '@/components/docs';
+import { Palette, Monitor, Gamepad2, Sun } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Theme Guide - Fabrk Docs',
@@ -10,96 +16,262 @@ export const metadata: Metadata = {
 
 export default function ThemeGuidePage() {
   return (
-    <div className="container mx-auto max-w-4xl space-y-8 px-6 py-8">
-      <div className="space-y-4">
-        <div className="inline-block border border-border bg-muted px-4 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[0xD1] THEMES</span>
-        </div>
-        <h1 className="font-mono text-3xl font-bold">Theme Guide</h1>
-        <p className="text-muted-foreground">
-          Complete documentation for all 12 retro terminal-inspired color themes.
-        </p>
-      </div>
+    <FeatureGuideTemplate
+      code="[0xD1]"
+      category="Design"
+      title="Theme Guide"
+      description="Complete documentation for all 12 retro terminal-inspired color themes."
+      overview="Fabrk includes 12 carefully crafted retro-inspired themes. Each theme is WCAG 2.2 AA compliant with pre-validated contrast ratios."
+      features={[
+        {
+          icon: Monitor,
+          title: 'CRT Phosphor',
+          description: '5 themes: green, amber, blue, red, purple',
+        },
+        {
+          icon: Gamepad2,
+          title: 'Retro Computer',
+          description: '6 themes: gameboy, c64, gbpocket, vic20, atari, spectrum',
+        },
+        {
+          icon: Sun,
+          title: 'Light Theme',
+          description: '1 theme: bw (black & white)',
+        },
+        {
+          icon: Palette,
+          title: 'OKLCH Colors',
+          description: 'Perceptually uniform color system',
+        },
+      ]}
+      previous={{ title: 'Customization Guide', href: '/docs/design/customization-guide' }}
+      next={{ title: 'Component Authoring', href: '/docs/design/component-authoring' }}
+    >
+      <DocsCallout variant="warning" title="Comprehensive Documentation Available">
+        The complete Theme Guide (400+ lines) is available in the repository at{' '}
+        <code className="bg-muted px-1 py-0.5">docs/08-design/THEME-GUIDE.md</code>. This page
+        provides a quick reference.
+      </DocsCallout>
 
-      <div className="rounded-none border border-warning/50 bg-warning/10 p-6">
-        <div className="flex items-start gap-4">
-          <AlertTriangle className="h-5 w-5 text-warning" />
-          <div className="space-y-2">
-            <p className="font-mono text-sm font-semibold">COMPREHENSIVE DOCUMENTATION AVAILABLE</p>
-            <p className="text-sm text-muted-foreground">
-              The complete Theme Guide (400+ lines) is available in the repository at{' '}
-              <code className="rounded-none bg-muted px-1 py-0.5">
-                docs/08-design/THEME-GUIDE.md
-              </code>
-            </p>
-            <p className="text-sm text-muted-foreground">
-              Interactive page version coming soon. For now, please refer to the markdown
-              documentation.
-            </p>
-          </div>
-        </div>
-      </div>
+      <DocsSection title="CRT Phosphor Themes">
+        <DocsCard title="GREEN (DEFAULT)">
+          <p>Classic terminal green phosphor. Best for developer tools and technical products.</p>
+          <ul className="mt-4 space-y-1">
+            <li>
+              <strong>Aesthetic:</strong> Authentic CRT monitor feel
+            </li>
+            <li>
+              <strong>Best for:</strong> Developer tools, CLI apps, tech products
+            </li>
+            <li>
+              <strong>Mood:</strong> Technical, retro, focused
+            </li>
+          </ul>
+        </DocsCard>
 
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-bold">Quick Reference</h2>
-        <p>Fabrk includes 12 retro-inspired color themes:</p>
+        <DocsCard title="AMBER">
+          <p>Warm amber monochrome. Creates a cozy, vintage atmosphere.</p>
+          <ul className="mt-4 space-y-1">
+            <li>
+              <strong>Aesthetic:</strong> Early IBM PC, warm CRT glow
+            </li>
+            <li>
+              <strong>Best for:</strong> Productivity apps, note-taking, documentation
+            </li>
+            <li>
+              <strong>Mood:</strong> Warm, nostalgic, comfortable
+            </li>
+          </ul>
+        </DocsCard>
 
-        <div className="space-y-4">
-          <div>
-            <h3 className="font-mono text-sm font-semibold">CRT Phosphor Themes (5)</h3>
-            <ul className="mt-2 space-y-1 text-sm">
-              <li><code>green</code> - Classic terminal green phosphor</li>
-              <li><code>amber</code> - Warm amber monochrome</li>
-              <li><code>blue</code> - Cool phosphor blue</li>
-              <li><code>red</code> - Alert red CRT</li>
-              <li><code>purple</code> - Creative purple/magenta</li>
-            </ul>
-          </div>
+        <DocsCard title="BLUE">
+          <p>Cool phosphor blue. Professional and trustworthy feel.</p>
+          <ul className="mt-4 space-y-1">
+            <li>
+              <strong>Aesthetic:</strong> Early text terminals, professional
+            </li>
+            <li>
+              <strong>Best for:</strong> SaaS products, business tools, dashboards
+            </li>
+            <li>
+              <strong>Mood:</strong> Professional, calm, trustworthy
+            </li>
+          </ul>
+        </DocsCard>
 
-          <div>
-            <h3 className="font-mono text-sm font-semibold">Retro Computer Themes (6)</h3>
-            <ul className="mt-2 space-y-1 text-sm">
-              <li><code>gameboy</code> - Game Boy pea soup green LCD</li>
-              <li><code>c64</code> - Commodore 64 blue</li>
-              <li><code>gbpocket</code> - Game Boy Pocket grayscale</li>
-              <li><code>vic20</code> - VIC-20 cyan terminal</li>
-              <li><code>atari</code> - Atari 800 blue</li>
-              <li><code>spectrum</code> - ZX Spectrum black/white</li>
-            </ul>
-          </div>
+        <DocsCard title="RED">
+          <p>Alert red CRT. High-impact and attention-grabbing.</p>
+          <ul className="mt-4 space-y-1">
+            <li>
+              <strong>Aesthetic:</strong> Warning systems, high-alert terminals
+            </li>
+            <li>
+              <strong>Best for:</strong> Security tools, monitoring, alerts
+            </li>
+            <li>
+              <strong>Mood:</strong> Urgent, bold, intense
+            </li>
+          </ul>
+        </DocsCard>
 
-          <div>
-            <h3 className="font-mono text-sm font-semibold">Light Theme (1)</h3>
-            <ul className="mt-2 space-y-1 text-sm">
-              <li><code>bw</code> - Black & White paper-like</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+        <DocsCard title="PURPLE">
+          <p>Creative purple/magenta. Playful and modern.</p>
+          <ul className="mt-4 space-y-1">
+            <li>
+              <strong>Aesthetic:</strong> Cyberpunk, synthwave
+            </li>
+            <li>
+              <strong>Best for:</strong> Creative tools, design apps, games
+            </li>
+            <li>
+              <strong>Mood:</strong> Creative, modern, expressive
+            </li>
+          </ul>
+        </DocsCard>
+      </DocsSection>
 
-      <div className="mt-8 space-y-4">
-        <h2 className="font-mono text-xl font-bold">Related Documentation</h2>
+      <DocsSection title="Retro Computer Themes">
+        <DocsCard title="GAMEBOY">
+          <p>Classic Game Boy pea soup green LCD. Iconic nostalgic feel.</p>
+          <ul className="mt-4 space-y-1">
+            <li>
+              <strong>Era:</strong> 1989 Nintendo Game Boy
+            </li>
+            <li>
+              <strong>Best for:</strong> Games, playful apps, retro products
+            </li>
+            <li>
+              <strong>Mood:</strong> Playful, nostalgic, fun
+            </li>
+          </ul>
+        </DocsCard>
+
+        <DocsCard title="C64">
+          <p>Commodore 64 blue. The iconic home computer aesthetic.</p>
+          <ul className="mt-4 space-y-1">
+            <li>
+              <strong>Era:</strong> 1982 Commodore 64
+            </li>
+            <li>
+              <strong>Best for:</strong> Retro computing, education, demos
+            </li>
+            <li>
+              <strong>Mood:</strong> Nostalgic, educational, classic
+            </li>
+          </ul>
+        </DocsCard>
+
+        <DocsCard title="GBPOCKET">
+          <p>Game Boy Pocket grayscale. Clean and minimalist.</p>
+          <ul className="mt-4 space-y-1">
+            <li>
+              <strong>Era:</strong> 1996 Game Boy Pocket
+            </li>
+            <li>
+              <strong>Best for:</strong> Minimalist products, focused UIs
+            </li>
+            <li>
+              <strong>Mood:</strong> Clean, focused, subtle
+            </li>
+          </ul>
+        </DocsCard>
+
+        <DocsCard title="VIC20">
+          <p>VIC-20 cyan terminal. Early home computing vibes.</p>
+          <ul className="mt-4 space-y-1">
+            <li>
+              <strong>Era:</strong> 1980 Commodore VIC-20
+            </li>
+            <li>
+              <strong>Best for:</strong> Educational tools, tutorials
+            </li>
+            <li>
+              <strong>Mood:</strong> Friendly, accessible, retro
+            </li>
+          </ul>
+        </DocsCard>
+
+        <DocsCard title="ATARI">
+          <p>Atari 800 blue. Classic arcade aesthetic.</p>
+          <ul className="mt-4 space-y-1">
+            <li>
+              <strong>Era:</strong> 1979 Atari 8-bit family
+            </li>
+            <li>
+              <strong>Best for:</strong> Gaming, entertainment, interactive
+            </li>
+            <li>
+              <strong>Mood:</strong> Fun, energetic, playful
+            </li>
+          </ul>
+        </DocsCard>
+
+        <DocsCard title="SPECTRUM">
+          <p>ZX Spectrum black/white. British computing heritage.</p>
+          <ul className="mt-4 space-y-1">
+            <li>
+              <strong>Era:</strong> 1982 Sinclair ZX Spectrum
+            </li>
+            <li>
+              <strong>Best for:</strong> Text-heavy apps, documentation
+            </li>
+            <li>
+              <strong>Mood:</strong> Clean, high-contrast, readable
+            </li>
+          </ul>
+        </DocsCard>
+      </DocsSection>
+
+      <DocsSection title="Light Theme">
+        <DocsCard title="BW (BLACK & WHITE)">
+          <p>Paper-like black and white. Maximum readability and accessibility.</p>
+          <ul className="mt-4 space-y-1">
+            <li>
+              <strong>Aesthetic:</strong> E-ink, print, minimal
+            </li>
+            <li>
+              <strong>Best for:</strong> Documentation, reading, accessibility
+            </li>
+            <li>
+              <strong>Mood:</strong> Clean, professional, focused
+            </li>
+          </ul>
+        </DocsCard>
+      </DocsSection>
+
+      <DocsSection title="Switching Themes">
+        <DocsCard title="CHANGE DEFAULT THEME">
+          <ol className="space-y-2">
+            <li>1. Edit src/design-system/providers/ThemeProvider.tsx:82</li>
+            <li>
+              2. Change <code>defaultColorTheme = &apos;green&apos;</code> to your choice
+            </li>
+            <li>3. Restart dev server</li>
+          </ol>
+        </DocsCard>
+
+        <DocsCard title="USER THEME SWITCHING">
+          <p>
+            Users can switch themes via the theme dropdown in the navigation. Theme preference is
+            persisted in localStorage.
+          </p>
+        </DocsCard>
+      </DocsSection>
+
+      <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link
+          <DocsLinkCard
             href="/docs/design/customization-guide"
-            className="block rounded-none border border-border bg-card p-4 transition-colors hover:bg-accent"
-          >
-            <h3 className="font-mono text-sm font-semibold">Customization Guide</h3>
-            <p className="mt-1 text-xs text-muted-foreground">
-              Change brand colors and create custom themes
-            </p>
-          </Link>
-          <Link
+            title="Customization Guide"
+            description="Change brand colors and create custom themes"
+          />
+          <DocsLinkCard
             href="/docs/extras/theming"
-            className="block rounded-none border border-border bg-card p-4 transition-colors hover:bg-accent"
-          >
-            <h3 className="font-mono text-sm font-semibold">Theming System</h3>
-            <p className="mt-1 text-xs text-muted-foreground">
-              How the theming system works
-            </p>
-          </Link>
+            title="Theming System"
+            description="How the theming system works internally"
+          />
         </div>
-      </div>
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }

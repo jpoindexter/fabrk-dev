@@ -220,10 +220,12 @@ function PricingPagePreview() {
 
   return (
     <TemplatePreviewWrapper minHeight="800px">
-      <PricingHeader isYearly={isYearly} onToggleBilling={setIsYearly} />
-      <PricingCards plans={plans} isYearly={isYearly} />
-      <ComparisonTable features={comparisonFeatures} />
-      <FAQSection faqs={faqs} />
+      <div className="space-y-8">
+        <PricingHeader isYearly={isYearly} onToggleBilling={setIsYearly} />
+        <PricingCards plans={plans} isYearly={isYearly} />
+        <ComparisonTable features={comparisonFeatures} />
+        <FAQSection faqs={faqs} />
+      </div>
     </TemplatePreviewWrapper>
   );
 }
@@ -235,6 +237,7 @@ export default function PricingPageTemplate() {
       title="Pricing Page"
       description="Complete pricing page with plans, comparison table, and FAQs"
       templateId="pricing-page"
+      category={{ name: 'Marketing', href: '/library/marketing' }}
       preview={<PricingPagePreview />}
       code={templateCode}
       fileStructure="app/pricing/page.tsx"

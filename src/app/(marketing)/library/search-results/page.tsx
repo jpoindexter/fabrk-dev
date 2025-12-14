@@ -197,6 +197,7 @@ export default function SearchResultsTemplate() {
       title="Search Results"
       description="Search interface with filters, sorting, and pagination"
       templateId="search-results"
+      category={{ name: 'User Experience', href: '/library/user-experience' }}
       preview={<SearchResultsPreview />}
       code={templateCode}
       fileStructure="app/search/page.tsx"

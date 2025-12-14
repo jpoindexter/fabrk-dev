@@ -39,11 +39,11 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
             </span>
           </div>
           <div className="mb-2 flex items-center gap-4">
-            <span className="text-2xl font-semibold">{subscription.plan}</span>
+            <span className={cn(mode.font, 'text-2xl font-semibold')}>{subscription.plan}</span>
           </div>
-          <div className="mb-2 text-4xl font-semibold">
+          <div className={cn(mode.font, 'mb-2 text-4xl font-semibold')}>
             ${subscription.price}
-            <span className="text-muted-foreground text-lg font-normal">/mo</span>
+            <span className={cn(mode.font, 'text-muted-foreground text-lg font-normal')}>/mo</span>
           </div>
           <div className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}>
             [NEXT BILLING]: {formatDate(subscription.nextBillingDate)}

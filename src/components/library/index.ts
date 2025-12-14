@@ -15,3 +15,8 @@ export {
   type TemplatePreviewWrapperProps,
   type FileStructureItem,
 } from './template-showcase-page';
+export {
+  LibraryBreadcrumb,
+  type LibraryBreadcrumbProps,
+  type BreadcrumbItem,
+} from './library-breadcrumb';

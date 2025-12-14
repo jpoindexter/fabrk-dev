@@ -87,37 +87,39 @@ function AnalyticsDashboardPreview() {
 
   return (
     <TemplatePreviewWrapper>
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className={cn(mode.font, 'text-2xl font-semibold')}>Analytics Dashboard</h1>
-          <p className="text-muted-foreground text-sm">
-            Track revenue, users, conversions, and growth metrics
-          </p>
+      <div className="space-y-6">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className={cn(mode.font, 'text-2xl font-semibold')}>Analytics Dashboard</h1>
+            <p className="text-muted-foreground text-sm">
+              Track revenue, users, conversions, and growth metrics
+            </p>
+          </div>
+          <Button className={cn(mode.radius, mode.font, 'text-xs')}>
+            <Download className="mr-2 h-4 w-4" />
+            &gt; EXPORT DATA
+          </Button>
         </div>
-        <Button className={cn(mode.radius, mode.font, 'text-xs')}>
-          <Download className="mr-2 h-4 w-4" />
-          &gt; EXPORT DATA
-        </Button>
+
+        {/* Metric Cards */}
+        <MetricCards metrics={metrics} />
+
+        {/* Charts Section */}
+        <div className="grid gap-4 lg:grid-cols-7">
+          <RevenueChart data={revenueData} />
+          <ActivityFeed activities={activityData} />
+        </div>
+
+        {/* Tabs Section */}
+        <AnalyticsTabs
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+          pageData={pageData}
+          trafficSources={trafficSources}
+          deviceBreakdown={deviceBreakdown}
+        />
       </div>
-
-      {/* Metric Cards */}
-      <MetricCards metrics={metrics} />
-
-      {/* Charts Section */}
-      <div className="grid gap-4 lg:grid-cols-7">
-        <RevenueChart data={revenueData} />
-        <ActivityFeed activities={activityData} />
-      </div>
-
-      {/* Tabs Section */}
-      <AnalyticsTabs
-        activeTab={activeTab}
-        onTabChange={setActiveTab}
-        pageData={pageData}
-        trafficSources={trafficSources}
-        deviceBreakdown={deviceBreakdown}
-      />
     </TemplatePreviewWrapper>
   );
 }
@@ -129,6 +131,7 @@ export default function AnalyticsDashboardTemplate() {
       title="Analytics Dashboard"
       description="Track revenue, users, conversions, and growth metrics"
       templateId="analytics-dashboard"
+      category={{ name: 'Dashboards', href: '/library/dashboards' }}
       preview={<AnalyticsDashboardPreview />}
       code={templateCode}
       fileStructure={[

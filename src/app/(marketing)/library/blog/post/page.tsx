@@ -411,6 +411,7 @@ export default function BlogPostTemplate() {
       title="Blog Post"
       description="Individual blog post page with author, content, and share actions"
       templateId="blog-post"
+      category={{ name: 'Marketing', href: '/library/marketing' }}
       preview={<BlogPostPreview />}
       code={templateCode}
       fileStructure="app/blog/[slug]/page.tsx"

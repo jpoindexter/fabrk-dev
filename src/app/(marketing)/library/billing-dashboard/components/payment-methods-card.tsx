@@ -4,7 +4,7 @@
  */
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { CreditCard, Plus } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
@@ -25,6 +25,7 @@ interface PaymentMethodsCardProps {
 export function PaymentMethodsCard({ paymentMethods }: PaymentMethodsCardProps) {
   return (
     <Card tone="neutral">
+      <CardHeader code="0x02" title="PAYMENT METHODS" icon={<CreditCard className="size-4" />} />
       <CardContent padding="md">
         <div className="space-y-4">
           {paymentMethods.map((method) => (

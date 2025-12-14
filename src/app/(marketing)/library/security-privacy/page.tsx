@@ -267,6 +267,7 @@ export default function SecurityPrivacyTemplate() {
       title="Security & Privacy"
       description="Manage your account security, privacy settings, and data controls"
       templateId="security-privacy"
+      category={{ name: 'Account Pages', href: '/library/account-pages' }}
       preview={<SecurityPrivacyPreview />}
       code={templateCode}
       fileStructure="app/settings/security/page.tsx"

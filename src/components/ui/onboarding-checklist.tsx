@@ -35,7 +35,6 @@ import { mode } from '@/design-system';
 import { Card } from './card';
 import { Button } from './button';
 import { Checkbox } from './checkbox';
-import { Progress } from './progress';
 import { ChevronDown, ChevronUp, X, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -109,8 +108,11 @@ export function OnboardingChecklist({
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-24">
-            <Progress value={progress} className="h-2" />
+          <div className="bg-muted relative h-2 w-24 overflow-hidden">
+            <div
+              className="bg-primary absolute top-0 left-0 h-full transition-all duration-300"
+              style={{ width: `${progress}%` }}
+            />
           </div>
           {onDismiss && (
             <Button size="sm" variant="ghost" onClick={onDismiss} aria-label="Dismiss">
@@ -124,6 +126,14 @@ export function OnboardingChecklist({
 
   return (
     <Card className={cn('relative overflow-hidden', mode.radius, className)}>
+      {/* Progress Bar - Full width visual strip at top */}
+      <div className="bg-muted relative h-2 w-full">
+        <div
+          className="bg-primary absolute top-0 left-0 h-full transition-all duration-300"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+
       {/* Confetti Animation */}
       <AnimatePresence>
         {showConfetti && (
@@ -156,7 +166,7 @@ export function OnboardingChecklist({
             {isComplete && <span className="text-success text-xs">✓ COMPLETE</span>}
           </div>
           <p className={cn('text-muted-foreground mt-1 text-xs', mode.font)}>
-            {completedCount}/{totalCount} tasks completed
+            {completedCount}/{totalCount} tasks completed • {Math.round(progress)}%
           </p>
         </div>
 
@@ -175,14 +185,6 @@ export function OnboardingChecklist({
             </Button>
           )}
         </div>
-      </div>
-
-      {/* Progress Bar */}
-      <div className="border-border border-b p-4">
-        <Progress value={progress} className="h-2" />
-        <p className={cn('text-muted-foreground mt-2 text-right text-xs', mode.font)}>
-          {Math.round(progress)}% complete
-        </p>
       </div>
 
       {/* Tasks List */}

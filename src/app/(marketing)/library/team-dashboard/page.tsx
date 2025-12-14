@@ -170,37 +170,39 @@ function TeamDashboardPreview() {
 
   return (
     <TemplatePreviewWrapper>
-      {/* Header */}
-      <DashboardHeader />
+      <div className="space-y-6">
+        {/* Header */}
+        <DashboardHeader />
 
-      {/* Stats */}
-      <StatsCards
-        organization={teamData.organization}
-        membersCount={teamData.members.length}
-        pendingInvitationsCount={teamData.pendingInvitations.length}
-        activeNowCount={activeNowCount}
-      />
+        {/* Stats */}
+        <StatsCards
+          organization={teamData.organization}
+          membersCount={teamData.members.length}
+          pendingInvitationsCount={teamData.pendingInvitations.length}
+          activeNowCount={activeNowCount}
+        />
 
-      <div className="grid gap-6 lg:grid-cols-3">
-        {/* Main Content - Members */}
-        <div className="space-y-6 lg:col-span-2">
-          {/* Invite Section */}
-          <InviteSection />
+        <div className="grid gap-6 lg:grid-cols-3">
+          {/* Main Content - Members */}
+          <div className="space-y-6 lg:col-span-2">
+            {/* Invite Section */}
+            <InviteSection />
 
-          {/* Members Table */}
-          <MembersTable members={teamData.members} />
+            {/* Members Table */}
+            <MembersTable members={teamData.members} />
 
-          {/* Pending Invitations */}
-          <PendingInvitations invitations={teamData.pendingInvitations} />
-        </div>
+            {/* Pending Invitations */}
+            <PendingInvitations invitations={teamData.pendingInvitations} />
+          </div>
 
-        {/* Sidebar - Activity Feed */}
-        <div className="space-y-6">
-          {/* Activity Feed */}
-          <ActivityFeed activities={teamData.activityFeed} />
+          {/* Sidebar - Activity Feed */}
+          <div className="space-y-6">
+            {/* Activity Feed */}
+            <ActivityFeed activities={teamData.activityFeed} />
 
-          {/* Role Permissions */}
-          <RolePermissions />
+            {/* Role Permissions */}
+            <RolePermissions />
+          </div>
         </div>
       </div>
     </TemplatePreviewWrapper>
@@ -214,6 +216,7 @@ export default function TeamDashboardTemplate() {
       title="Team Dashboard"
       description="Manage team members, roles, invitations, and permissions"
       templateId="team-dashboard"
+      category={{ name: 'Dashboards', href: '/library/dashboards' }}
       preview={<TeamDashboardPreview />}
       code={templateCode}
       fileStructure={[

@@ -194,14 +194,16 @@ const mockBadges = [
 function ProfilePreview() {
   return (
     <TemplatePreviewWrapper minHeight="600px">
-      {/* Profile Header */}
-      <ProfileHeader user={mockUser} />
+      <div className="space-y-6">
+        {/* Profile Header */}
+        <ProfileHeader user={mockUser} />
 
-      {/* Badges Section */}
-      <BadgesSection badges={mockBadges} />
+        {/* Badges Section */}
+        <BadgesSection badges={mockBadges} />
 
-      {/* Profile Tabs */}
-      <ProfileTabs activity={mockActivity} projects={mockProjects} />
+        {/* Profile Tabs */}
+        <ProfileTabs activity={mockActivity} projects={mockProjects} />
+      </div>
     </TemplatePreviewWrapper>
   );
 }
@@ -213,6 +215,7 @@ export default function ProfilePageTemplate() {
       title="Profile Page"
       description="User profile with stats, activity feed, projects, and badges"
       templateId="profile"
+      category={{ name: 'User Experience', href: '/library/user-experience' }}
       preview={<ProfilePreview />}
       code={templateCode}
       fileStructure={[
