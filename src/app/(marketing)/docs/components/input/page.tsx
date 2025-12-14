@@ -153,7 +153,7 @@ export default function InputPage() {
               </ul>
             </div>
             <div className="border-border border-t pt-4">
-              <p className="mb-2 text-sm font-semibold">State Usage:</p>
+              <p className="mb-2 text-xs font-semibold">State Usage:</p>
               <ul className="space-y-1">
                 <li className="text-xs">
                   • <strong>error</strong>: Show validation errors immediately after blur or submit

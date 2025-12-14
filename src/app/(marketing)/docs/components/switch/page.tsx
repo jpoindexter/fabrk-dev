@@ -176,7 +176,7 @@ export default function SwitchPage() {
               </ul>
             </div>
             <div className="border-border border-t pt-4">
-              <p className="mb-2 text-sm font-semibold">Switch vs Checkbox:</p>
+              <p className="mb-2 text-xs font-semibold">Switch vs Checkbox:</p>
               <ul className="space-y-1">
                 <li className="text-xs">
                   • <strong>Switch</strong>: Instant action (toggle WiFi, enable notifications)

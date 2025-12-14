@@ -103,7 +103,7 @@ export default function RadioGroupPage() {
               <div className="flex items-start space-x-2">
                 <RadioGroupItem value="card" id="d1" className="mt-1" />
                 <div className="space-y-1">
-                  <Label htmlFor="d1" className="font-mono text-sm font-semibold">
+                  <Label htmlFor="d1" className="font-mono text-xs font-semibold">
                     {formatLabel('Card Payment')}
                   </Label>
                   <p className="text-muted-foreground font-mono text-xs">
@@ -114,7 +114,7 @@ export default function RadioGroupPage() {
               <div className="flex items-start space-x-2">
                 <RadioGroupItem value="bank" id="d2" className="mt-1" />
                 <div className="space-y-1">
-                  <Label htmlFor="d2" className="font-mono text-sm font-semibold">
+                  <Label htmlFor="d2" className="font-mono text-xs font-semibold">
                     {formatLabel('Bank Transfer')}
                   </Label>
                   <p className="text-muted-foreground font-mono text-xs">
@@ -125,7 +125,7 @@ export default function RadioGroupPage() {
               <div className="flex items-start space-x-2">
                 <RadioGroupItem value="crypto" id="d3" className="mt-1" />
                 <div className="space-y-1">
-                  <Label htmlFor="d3" className="font-mono text-sm font-semibold">
+                  <Label htmlFor="d3" className="font-mono text-xs font-semibold">
                     {formatLabel('Cryptocurrency')}
                   </Label>
                   <p className="text-muted-foreground font-mono text-xs">
@@ -321,7 +321,7 @@ export default function RadioGroupPage() {
               </ul>
             </div>
             <div className="border-border border-t pt-4">
-              <p className="mb-2 text-sm font-semibold">Best Practices:</p>
+              <p className="mb-2 text-xs font-semibold">Best Practices:</p>
               <ul className="space-y-1">
                 <li className="text-xs">• Always set a default value for better UX</li>
                 <li className="text-xs">• Keep option labels short and scannable (1-4 words)</li>

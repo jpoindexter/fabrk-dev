@@ -306,7 +306,7 @@ export default function CardPage() {
               </ul>
             </div>
             <div className="border-border border-t pt-4">
-              <p className="mb-2 text-sm font-semibold">Composition Guide:</p>
+              <p className="mb-2 text-xs font-semibold">Composition Guide:</p>
               <ul className="space-y-1">
                 <li className="text-xs">
                   • <strong>CardHeader</strong>: Always use with code + title for terminal aesthetic

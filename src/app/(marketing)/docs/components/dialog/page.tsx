@@ -349,7 +349,7 @@ export default function DialogPage() {
               </ul>
             </div>
             <div className="border-border border-t pt-4">
-              <p className="mb-2 text-sm font-semibold">Dialog vs Alert Dialog:</p>
+              <p className="mb-2 text-xs font-semibold">Dialog vs Alert Dialog:</p>
               <ul className="space-y-1">
                 <li className="text-xs">
                   • <strong>Dialog</strong>: Complex forms, multiple inputs, flexible content

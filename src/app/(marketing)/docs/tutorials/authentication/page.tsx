@@ -292,7 +292,7 @@ export default async function PrivatePage() {
         <DocsCard title="COMMON ERRORS">
           <div className="space-y-4">
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: NEXTAUTH_SECRET missing
               </p>
               <p className="mb-2 text-sm">
@@ -310,7 +310,7 @@ NEXTAUTH_SECRET="output-from-command-above"`}
             </div>
 
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: Callback URL mismatch
               </p>
               <p className="mb-2 text-sm">
@@ -328,7 +328,7 @@ NEXTAUTH_URL="https://yourdomain.com"`}
             </div>
 
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: Session not persisting
               </p>
               <p className="mb-2 text-sm">
@@ -346,7 +346,7 @@ npm run db:reset`}
             </div>
 
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: Google OAuth fails with redirect_uri_mismatch
               </p>
               <p className="mb-2 text-sm">

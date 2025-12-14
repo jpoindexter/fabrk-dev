@@ -72,7 +72,7 @@ function TestimonialCardDemo() {
           <AvatarFallback className="bg-primary/10 text-primary">CN</AvatarFallback>
         </Avatar>
         <div>
-          <span className="block text-sm font-semibold">CUSTOMER NAME</span>
+          <span className="block text-xs font-semibold">CUSTOMER NAME</span>
           <span className="text-muted-foreground block text-xs">Role @ Company</span>
         </div>
       </div>

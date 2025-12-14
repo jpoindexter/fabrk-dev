@@ -257,7 +257,7 @@ await sendOrganizationInvite("newmember@example.com", {
         <DocsCard title="COMMON ERRORS">
           <div className="space-y-4">
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: RESEND_API_KEY invalid
               </p>
               <p className="mb-2 text-sm">
@@ -275,7 +275,7 @@ RESEND_API_KEY="re_xxxxxxxxxxxx"
             </div>
 
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: Email not sending (403 Forbidden)
               </p>
               <p className="mb-2 text-sm">
@@ -296,7 +296,7 @@ RESEND_API_KEY="re_xxxxxxxxxxxx"
             </div>
 
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: Template not rendering (blank email)
               </p>
               <p className="mb-2 text-sm">
@@ -315,7 +315,7 @@ export function generateEmailHTML(): string {
             </div>
 
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: Emails queued but not sending
               </p>
               <p className="mb-2 text-sm">

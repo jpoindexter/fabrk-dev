@@ -164,7 +164,7 @@ curl -X POST http://localhost:3000/api/test-webhook \\
         <DocsCard title="COMMON ERRORS">
           <div className="space-y-4">
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: Signature verification failed (401 Unauthorized)
               </p>
               <p className="mb-2 text-sm">
@@ -184,7 +184,7 @@ WEBHOOK_SECRET="your-generated-secret"
             </div>
 
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: Webhook endpoint not receiving events
               </p>
               <p className="mb-2 text-sm">
@@ -205,7 +205,7 @@ curl https://abc123.ngrok.io/api/webhooks/your-endpoint`}
             </div>
 
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: Duplicate events being processed
               </p>
               <p className="mb-2 text-sm">
@@ -229,7 +229,7 @@ if (existing) {
             </div>
 
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: Webhook timing out (504 Gateway Timeout)
               </p>
               <p className="mb-2 text-sm">

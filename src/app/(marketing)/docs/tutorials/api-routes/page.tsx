@@ -213,7 +213,7 @@ export async function POST(request: Request) {
         <DocsCard title="COMMON ERRORS">
           <div className="space-y-4">
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: CORS error in browser console
               </p>
               <p className="mb-2 text-sm">
@@ -232,7 +232,7 @@ return NextResponse.json({ data }, { headers });`}
             </div>
 
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: 405 Method Not Allowed
               </p>
               <p className="mb-2 text-sm">
@@ -248,7 +248,7 @@ export async function get() { }  // Wrong - won't work`}
             </div>
 
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: Request timeout
               </p>
               <p className="mb-2 text-sm">
@@ -266,7 +266,7 @@ model User {
             </div>
 
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: Cannot read properties of undefined
               </p>
               <p className="mb-2 text-sm">

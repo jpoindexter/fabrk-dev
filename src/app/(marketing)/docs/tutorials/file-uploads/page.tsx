@@ -321,7 +321,7 @@ export function FileUploadForm() {
         <DocsCard title="COMMON ERRORS">
           <div className="space-y-4">
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: File too large (413 Payload Too Large)
               </p>
               <p className="mb-2 text-sm">
@@ -342,7 +342,7 @@ if (file.size > MAX_SIZE) {
             </div>
 
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: Invalid file type rejected
               </p>
               <p className="mb-2 text-sm">
@@ -362,7 +362,7 @@ if (!ALLOWED_TYPES.includes(file.type)) { /* reject */ }`}
             </div>
 
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: Upload fails silently (no error message)
               </p>
               <p className="mb-2 text-sm">
@@ -382,7 +382,7 @@ S3_BUCKET="your-bucket"
             </div>
 
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: CORS error when uploading to S3
               </p>
               <p className="mb-2 text-sm">

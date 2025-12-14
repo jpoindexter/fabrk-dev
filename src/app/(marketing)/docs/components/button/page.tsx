@@ -203,7 +203,7 @@ export default function ButtonPage() {
               </ul>
             </div>
             <div className="border-border border-t pt-4">
-              <p className="mb-2 text-sm font-semibold">Variant Selection Guide:</p>
+              <p className="mb-2 text-xs font-semibold">Variant Selection Guide:</p>
               <ul className="space-y-1">
                 <li className="text-xs">
                   • <strong>default</strong>: Primary actions (save, submit, confirm)

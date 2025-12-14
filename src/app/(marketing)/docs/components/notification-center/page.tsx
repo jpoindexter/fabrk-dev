@@ -187,7 +187,7 @@ const notification: Notification = {
             <div className="w-full max-w-md space-y-2">
               <div className="text-muted-foreground font-mono text-xs">[ACTION EXAMPLE]</div>
               <div className="space-y-2">
-                <div className="text-sm font-semibold">Storage almost full</div>
+                <div className="text-xs font-semibold">Storage almost full</div>
                 <p className="text-muted-foreground text-sm">
                   You've used 90% of your storage quota.
                 </p>

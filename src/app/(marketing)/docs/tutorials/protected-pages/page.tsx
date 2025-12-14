@@ -209,7 +209,7 @@ export function NavBar() {
         <DocsCard title="COMMON ERRORS">
           <div className="space-y-4">
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: Infinite redirect loop
               </p>
               <p className="mb-2 text-sm">
@@ -229,7 +229,7 @@ if (isOnAuth) {
             </div>
 
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: Page not redirecting to login
               </p>
               <p className="mb-2 text-sm">
@@ -251,7 +251,7 @@ export default async function Page() {
             </div>
 
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: Session is undefined in Server Component
               </p>
               <p className="mb-2 text-sm">
@@ -276,7 +276,7 @@ import { auth } from "@/lib/auth"; // Error!
             </div>
 
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: User can access admin page without admin role
               </p>
               <p className="mb-2 text-sm">

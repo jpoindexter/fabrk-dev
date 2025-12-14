@@ -326,7 +326,7 @@ async function handleSubmit() {
               </ul>
             </div>
             <div className="border-border border-t pt-4">
-              <p className="mb-2 text-sm font-semibold">Toast vs Alert:</p>
+              <p className="mb-2 text-xs font-semibold">Toast vs Alert:</p>
               <ul className="space-y-1">
                 <li className="text-xs">
                   • <strong>Toast</strong>: Temporary (auto-dismiss), action feedback, non-blocking

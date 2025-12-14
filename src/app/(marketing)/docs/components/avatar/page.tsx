@@ -261,7 +261,7 @@ export default function AvatarPage() {
               </ul>
             </div>
             <div className="border-border border-t pt-4">
-              <p className="mb-2 text-sm font-semibold">Best Practices:</p>
+              <p className="mb-2 text-xs font-semibold">Best Practices:</p>
               <ul className="space-y-1">
                 <li className="text-xs">
                   • Always provide AvatarFallback with 1-2 initials (JD, AC, not John Doe)

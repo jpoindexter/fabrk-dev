@@ -231,7 +231,7 @@ stripe: {
         <DocsCard title="COMMON ERRORS">
           <div className="space-y-4">
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: No such price or lookup key
               </p>
               <p className="mb-2 text-sm">
@@ -254,7 +254,7 @@ NEXT_PUBLIC_STRIPE_PRICE_FABRK="fabrk_purchase"`}
             </div>
 
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: Webhook signature verification failed
               </p>
               <p className="mb-2 text-sm">
@@ -273,7 +273,7 @@ STRIPE_WEBHOOK_SECRET="whsec_abc123..."`}
             </div>
 
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: Payment succeeded but webhook not triggered
               </p>
               <p className="mb-2 text-sm">
@@ -291,7 +291,7 @@ stripe listen --forward-to localhost:3000/api/webhooks/stripe
             </div>
 
             <div>
-              <p className="text-primary mb-1 font-mono text-sm font-semibold">
+              <p className="text-primary mb-1 font-mono text-xs font-semibold">
                 [ERROR]: Checkout redirects to 404
               </p>
               <p className="mb-2 text-sm">

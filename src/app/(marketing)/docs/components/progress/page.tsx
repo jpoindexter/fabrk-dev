@@ -301,7 +301,7 @@ export default function ProgressPage() {
               </ul>
             </div>
             <div className="border-border border-t pt-4">
-              <p className="mb-2 text-sm font-semibold">Best Practices:</p>
+              <p className="mb-2 text-xs font-semibold">Best Practices:</p>
               <ul className="space-y-1">
                 <li className="text-xs">
                   • Update value frequently for smooth animation (not just 0%, 50%, 100%)
@@ -329,27 +329,27 @@ export default function ProgressPage() {
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-sm font-semibold">block (default)</p>
+                <p className="text-xs font-semibold">block (default)</p>
                 <p className="text-muted-foreground text-xs">█ filled, ░ empty</p>
               </div>
               <div>
-                <p className="text-sm font-semibold">hash</p>
+                <p className="text-xs font-semibold">hash</p>
                 <p className="text-muted-foreground text-xs"># filled, . empty</p>
               </div>
               <div>
-                <p className="text-sm font-semibold">pipe</p>
+                <p className="text-xs font-semibold">pipe</p>
                 <p className="text-muted-foreground text-xs">| filled, space empty</p>
               </div>
               <div>
-                <p className="text-sm font-semibold">dots</p>
+                <p className="text-xs font-semibold">dots</p>
                 <p className="text-muted-foreground text-xs">● filled, ○ empty</p>
               </div>
               <div>
-                <p className="text-sm font-semibold">arrow</p>
+                <p className="text-xs font-semibold">arrow</p>
                 <p className="text-muted-foreground text-xs">= filled, &gt; head</p>
               </div>
               <div>
-                <p className="text-sm font-semibold">braille</p>
+                <p className="text-xs font-semibold">braille</p>
                 <p className="text-muted-foreground text-xs">⣿ filled, ⣀ empty</p>
               </div>
             </div>

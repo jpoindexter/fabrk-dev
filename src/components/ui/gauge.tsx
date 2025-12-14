@@ -182,7 +182,7 @@ export function Gauge({
         <div className="text-center">
           <p className="text-3xl leading-none font-semibold">
             {normalizedValue.toFixed(0)}
-            {unit && <span className="text-lg">{unit}</span>}
+            {unit && <span className="text-sm">{unit}</span>}
           </p>
           {label && <p className="text-muted-foreground mt-1 text-xs">{label}</p>}
         </div>

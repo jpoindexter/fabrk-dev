@@ -275,7 +275,7 @@ export default function SliderPage() {
               </ul>
             </div>
             <div className="border-border border-t pt-4">
-              <p className="mb-2 text-sm font-semibold">Best Practices:</p>
+              <p className="mb-2 text-xs font-semibold">Best Practices:</p>
               <ul className="space-y-1">
                 <li className="text-xs">
                   • Always show current value alongside slider (Label with value display)

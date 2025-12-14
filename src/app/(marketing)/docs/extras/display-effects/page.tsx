@@ -85,7 +85,7 @@ function EffectSwitcher() {
             <div className="flex w-full items-center justify-between">
               <div className="flex items-center gap-2">
                 <Icon className="h-4 w-4 shrink-0" />
-                <span className="text-sm font-semibold">{effect.name}</span>
+                <span className="text-xs font-semibold">{effect.name}</span>
               </div>
               {isActive && <span className="text-xs">[ACTIVE]</span>}
             </div>

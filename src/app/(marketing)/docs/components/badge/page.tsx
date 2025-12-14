@@ -240,7 +240,7 @@ export default function BadgePage() {
               </ul>
             </div>
             <div className="border-border border-t pt-4">
-              <p className="mb-2 text-sm font-semibold">Variant Selection:</p>
+              <p className="mb-2 text-xs font-semibold">Variant Selection:</p>
               <ul className="space-y-1">
                 <li className="text-xs">
                   • <strong>default</strong>: Primary status or emphasis

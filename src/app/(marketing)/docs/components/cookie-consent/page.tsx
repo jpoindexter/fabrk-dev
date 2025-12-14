@@ -114,25 +114,25 @@ export default function CookieConsentPage() {
         <DocsCard title="PREFERENCE TYPES">
           <div className="space-y-4">
             <div>
-              <p className="text-sm font-semibold">[NECESSARY]</p>
+              <p className="text-xs font-semibold">[NECESSARY]</p>
               <p className="text-muted-foreground text-xs">
                 Essential cookies required for the website to function. Always enabled.
               </p>
             </div>
             <div>
-              <p className="text-sm font-semibold">[ANALYTICS]</p>
+              <p className="text-xs font-semibold">[ANALYTICS]</p>
               <p className="text-muted-foreground text-xs">
                 Help understand how visitors interact with the website.
               </p>
             </div>
             <div>
-              <p className="text-sm font-semibold">[MARKETING]</p>
+              <p className="text-xs font-semibold">[MARKETING]</p>
               <p className="text-muted-foreground text-xs">
                 Track visitors across websites for relevant ads.
               </p>
             </div>
             <div>
-              <p className="text-sm font-semibold">[PREFERENCES]</p>
+              <p className="text-xs font-semibold">[PREFERENCES]</p>
               <p className="text-muted-foreground text-xs">
                 Remember settings like theme, language, and region.
               </p>

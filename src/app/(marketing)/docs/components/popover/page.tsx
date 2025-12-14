@@ -311,7 +311,7 @@ export default function PopoverPage() {
               </ul>
             </div>
             <div className="border-border border-t pt-4">
-              <p className="mb-2 text-sm font-semibold">Popover vs Tooltip vs Dialog:</p>
+              <p className="mb-2 text-xs font-semibold">Popover vs Tooltip vs Dialog:</p>
               <ul className="space-y-1">
                 <li className="text-xs">
                   • <strong>Popover</strong>: Interactive, click to open, rich content with

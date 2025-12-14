@@ -129,7 +129,7 @@ export default function TextareaPage() {
               </ul>
             </div>
             <div className="border-border border-t pt-4">
-              <p className="mb-2 text-sm font-semibold">Best Practices:</p>
+              <p className="mb-2 text-xs font-semibold">Best Practices:</p>
               <ul className="space-y-1">
                 <li className="text-xs">
                   • Set appropriate rows prop (4-6 for comments, 8-10 for longer content)

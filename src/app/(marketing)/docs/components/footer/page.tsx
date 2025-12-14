@@ -29,7 +29,7 @@ function FooterDemo() {
           </span>
           <Link href="#" className="mt-4 flex items-center gap-2 font-mono">
             <span className="text-primary">&gt;</span>
-            <span className="text-lg font-semibold">FABRK</span>
+            <span className="text-xs font-semibold">FABRK</span>
           </Link>
           <div className="mt-2 flex items-center gap-2 font-mono text-xs">
             <span className="text-muted-foreground">└─ [STATUS]:</span>

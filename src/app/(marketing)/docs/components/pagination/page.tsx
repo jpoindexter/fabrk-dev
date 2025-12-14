@@ -378,7 +378,7 @@ export default function PaginationPage() {
               </ul>
             </div>
             <div className="border-border border-t pt-4">
-              <p className="mb-2 text-sm font-semibold">Best Practices:</p>
+              <p className="mb-2 text-xs font-semibold">Best Practices:</p>
               <ul className="space-y-1">
                 <li className="text-xs">
                   • Show total item count (&quot;Showing 1-20 of 150 results&quot;)
