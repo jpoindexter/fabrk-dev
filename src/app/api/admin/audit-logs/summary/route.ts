@@ -14,10 +14,10 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    // Check admin role (you may want to add role checking here)
-    // if (session.user.role !== "ADMIN") {
-    //   return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-    // }
+    // Check admin role
+    if (session.user.role !== 'ADMIN') {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+    }
 
     const { searchParams } = new URL(request.url);
     const days = searchParams.get('days');
