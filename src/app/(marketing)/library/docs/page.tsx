@@ -128,7 +128,7 @@ export default function LibraryDocsPage() {
           <h1 className={cn(mode.font, 'text-4xl font-semibold tracking-tight')}>
             Library Documentation
           </h1>
-          <p className={cn(mode.font, 'text-muted-foreground max-w-3xl text-base')}>
+          <p className={cn(mode.font, 'text-muted-foreground max-w-3xl text-sm')}>
             Everything you need to use, customize, and integrate library templates into your Next.js
             project. From quick starts to deep integrations.
           </p>
@@ -174,7 +174,7 @@ export default function LibraryDocsPage() {
         <section key={category} className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className={cn(mode.font, 'text-xl font-semibold')}>{category}</h2>
+              <h2 className={cn(mode.font, 'text-sm font-semibold')}>{category}</h2>
               <p className={cn(mode.font, 'text-muted-foreground text-xs')}>
                 {categoryGuides.length} {categoryGuides.length === 1 ? 'guide' : 'guides'}
               </p>
@@ -207,7 +207,7 @@ export default function LibraryDocsPage() {
                       <h3
                         className={cn(
                           mode.font,
-                          'group-hover:text-primary text-base font-semibold transition-colors'
+                          'group-hover:text-primary text-sm font-semibold transition-colors'
                         )}
                       >
                         {guide.title}
@@ -244,7 +244,7 @@ export default function LibraryDocsPage() {
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <Wrench className="text-primary h-8 w-8" />
             <div className="space-y-2">
-              <h3 className={cn(mode.font, 'text-lg font-semibold')}>Need More Help?</h3>
+              <h3 className={cn(mode.font, 'text-sm font-semibold')}>Need More Help?</h3>
               <p className={cn(mode.font, 'text-muted-foreground max-w-md text-sm')}>
                 Can't find what you're looking for? Check the troubleshooting guide or visit the
                 components documentation for detailed API references.

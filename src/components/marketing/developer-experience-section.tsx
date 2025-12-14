@@ -81,7 +81,7 @@ export function DeveloperExperienceSection() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="mb-2 text-2xl font-semibold tracking-tight">
+          <h2 className={cn('mb-2 text-2xl font-semibold tracking-tight', mode.font)}>
             DEVELOPER EXPERIENCE MATTERS
           </h2>
         </motion.div>

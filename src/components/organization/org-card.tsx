@@ -117,7 +117,7 @@ export function OrgCard({
 
             <div className="min-w-0 flex-1 space-y-2">
               <div className="space-y-1">
-                <h3 className={cn('truncate text-lg font-semibold', mode.color.text.primary)}>
+                <h3 className={cn('truncate text-sm font-semibold', mode.color.text.primary)}>
                   {name}
                 </h3>
                 <div className="flex flex-wrap items-center gap-2">

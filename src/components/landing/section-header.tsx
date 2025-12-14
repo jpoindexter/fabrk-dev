@@ -42,9 +42,7 @@ export function SectionHeader({
         {title}
       </h2>
 
-      <p className={cn('text-base leading-relaxed lg:text-lg', mode.color.text.muted)}>
-        {description}
-      </p>
+      <p className={cn('text-sm leading-relaxed', mode.color.text.muted)}>{description}</p>
     </div>
   );
 }

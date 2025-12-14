@@ -41,7 +41,7 @@ export default function GettingStartedPage() {
             <h1 className={cn(mode.font, 'text-3xl font-semibold tracking-tight')}>
               Getting Started with Library Templates
             </h1>
-            <p className={cn(mode.font, 'text-muted-foreground text-base')}>
+            <p className={cn(mode.font, 'text-muted-foreground text-sm')}>
               Learn how to copy, customize, and integrate production-ready templates into your
               Next.js project in under 10 minutes.
             </p>

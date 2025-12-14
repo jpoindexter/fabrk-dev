@@ -43,7 +43,7 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
           </div>
           <div className={cn(mode.font, 'mb-2 text-4xl font-semibold')}>
             ${subscription.price}
-            <span className={cn(mode.font, 'text-muted-foreground text-lg font-normal')}>/mo</span>
+            <span className={cn(mode.font, 'text-muted-foreground text-sm font-normal')}>/mo</span>
           </div>
           <div className={cn(mode.font, 'text-muted-foreground mb-1 text-xs')}>
             [NEXT BILLING]: {formatDate(subscription.nextBillingDate)}

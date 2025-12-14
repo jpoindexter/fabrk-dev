@@ -57,7 +57,7 @@ export function TestimonialsSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <p className="text-muted-foreground text-base leading-relaxed">
+            <p className="text-muted-foreground text-sm leading-relaxed">
               &gt; Early access customer feedback
             </p>
           </motion.div>

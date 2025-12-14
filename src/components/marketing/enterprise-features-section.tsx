@@ -78,7 +78,7 @@ export function EnterpriseFeaturesSection() {
             viewport={{ once: true }}
           >
             <span className="text-muted-foreground text-xs">[0x00]</span>
-            <h2 className="mb-4 text-2xl font-semibold tracking-tight">
+            <h2 className={cn('mb-4 text-2xl font-semibold tracking-tight', mode.font)}>
               BUILT FOR SCALE, SECURITY, AND TEAMS
             </h2>
           </motion.div>
@@ -138,8 +138,7 @@ export function EnterpriseFeaturesSection() {
                     code={`0x${(index + 40).toString(16).toUpperCase()}`}
                     title={feature.title
                       .toUpperCase()
-                      
-                      
+
                       .replace(/\//g, '_')
                       .slice(0, 12)}
                     icon={

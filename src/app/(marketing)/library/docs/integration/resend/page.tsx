@@ -38,7 +38,7 @@ export default function ResendIntegrationPage() {
             <h1 className={cn(mode.font, 'text-3xl font-semibold tracking-tight')}>
               Resend Integration
             </h1>
-            <p className={cn(mode.font, 'text-muted-foreground text-base')}>
+            <p className={cn(mode.font, 'text-muted-foreground text-sm')}>
               Send transactional emails from templates using Resend API.
             </p>
           </div>

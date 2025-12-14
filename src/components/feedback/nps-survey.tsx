@@ -44,7 +44,7 @@ export function NPSSurvey({ onSubmit, onDismiss }: NPSSurveyProps) {
   if (step === 'thanks') {
     return (
       <div className={cn('border-success/30 bg-success/10 border p-6 text-center', mode.radius)}>
-        <h3 className="text-success-foreground mb-2 text-lg font-semibold">Thank you!</h3>
+        <h3 className="text-success-foreground mb-2 text-sm font-semibold">Thank you!</h3>
         <p className="text-success text-sm">Your feedback helps us improve our product.</p>
       </div>
     );
@@ -54,7 +54,7 @@ export function NPSSurvey({ onSubmit, onDismiss }: NPSSurveyProps) {
     return (
       <div className={cn('border-border bg-card border p-6', mode.radius)}>
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-foreground text-lg font-semibold">
+          <h3 className="text-foreground text-sm font-semibold">
             Thanks for your rating! Want to tell us more?
           </h3>
           {onDismiss && (
@@ -95,7 +95,7 @@ export function NPSSurvey({ onSubmit, onDismiss }: NPSSurveyProps) {
   return (
     <div className={cn('border-border bg-card border p-6', mode.radius)}>
       <div className="mb-4 flex items-center justify-between">
-        <h3 className="text-foreground text-lg font-semibold">
+        <h3 className="text-foreground text-sm font-semibold">
           How likely are you to recommend us to a friend?
         </h3>
         {onDismiss && (

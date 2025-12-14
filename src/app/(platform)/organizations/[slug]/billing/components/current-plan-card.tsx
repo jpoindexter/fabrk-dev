@@ -117,7 +117,7 @@ export function CurrentPlanCard({
         ) : (
           <div className="py-12 text-center">
             <DollarSign className="text-muted-foreground mx-auto h-12 w-12" />
-            <h3 className="mt-4 text-lg font-semibold">No Active Subscription</h3>
+            <h3 className="mt-4 text-sm font-semibold">No Active Subscription</h3>
             <p className="text-muted-foreground mt-2 text-sm">
               Upgrade to a paid plan to unlock premium features
             </p>

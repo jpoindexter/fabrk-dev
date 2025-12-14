@@ -69,7 +69,7 @@ export function QualitySection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <p className="text-muted-foreground mx-auto max-w-2xl text-base leading-relaxed">
+            <p className="text-muted-foreground mx-auto max-w-2xl text-sm leading-relaxed">
               &gt; Every component is battle-tested with comprehensive coverage. No cutting corners,
               no technical debt. Production-ready from day one.
             </p>
@@ -98,7 +98,7 @@ export function QualitySection() {
                     </div>
                     <div className="mb-4">
                       <div className="text-foreground text-5xl font-bold">{item.metric}</div>
-                      <h3 className="mt-1 text-lg font-semibold">{item.label.toUpperCase()}</h3>
+                      <h3 className="mt-1 text-sm font-semibold">{item.label.toUpperCase()}</h3>
                     </div>
                     <span className="text-muted-foreground block text-sm leading-relaxed">
                       {item.description}
@@ -127,7 +127,7 @@ export function QualitySection() {
                   <h3 className="mb-2 text-xl leading-snug font-semibold lg:text-2xl">
                     QUALITY GUARANTEE
                   </h3>
-                  <p className="text-muted-foreground text-base leading-relaxed">
+                  <p className="text-muted-foreground text-sm leading-relaxed">
                     Unlike other boilerplates that ship untested code, every Fabrk component is
                     rigorously tested, documented in Storybook, and validated by CI/CD pipelines.
                     You're not inheriting technical debt—you're getting production-grade

@@ -109,7 +109,7 @@ export function TemplateCategoryPage({
                     </div>
 
                     {/* Title */}
-                    <h3 className={cn('mb-2 text-lg font-semibold', mode.font)}>{template.name}</h3>
+                    <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>{template.name}</h3>
 
                     {/* Description */}
                     <div className={cn('mb-4 text-xs', mode.font)}>

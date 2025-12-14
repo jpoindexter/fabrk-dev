@@ -65,7 +65,7 @@ export function FinalCTASection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className={cn('mb-8 text-base', mode.font, mode.color.text.muted)}
+              className={cn('mb-8 text-sm', mode.font, mode.color.text.muted)}
             >
               Every day you spend building auth, billing, and UI from scratch is another day your
               competitors get ahead. Fabrk gives you everything you need to launch fast and iterate

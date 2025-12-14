@@ -44,7 +44,7 @@ export default function GlobalError({
             <h1 className="text-foreground mb-4 text-4xl font-semibold">
               Critical Application Error
             </h1>
-            <p className="text-muted-foreground mb-8 text-lg">
+            <p className="text-muted-foreground mb-8 text-sm">
               We apologize, but a critical error has occurred. Our team has been notified and is
               working to resolve the issue.
             </p>

@@ -178,7 +178,7 @@ export default async function BlogPage() {
                   {post.category.name}
                 </span>
               )}
-              <h2 className="font-mono text-lg font-semibold mt-2">
+              <h2 className="font-mono text-sm font-semibold mt-2">
                 {post.title}
               </h2>
               {post.excerpt && (

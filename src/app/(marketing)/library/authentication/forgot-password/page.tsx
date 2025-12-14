@@ -63,14 +63,14 @@ export default function ForgotPasswordPage() {
           </Button>
         </form>
 
-        {/* Back to sign in */}
+        {/* &gt; BACK TO SIGN IN */}
         <div className="text-center text-sm">
           <Link
             href="/sign-in"
             className="text-muted-foreground hover:text-primary inline-flex items-center"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to sign in
+            &gt; BACK TO SIGN IN
           </Link>
         </div>
       </div>
@@ -126,7 +126,7 @@ function ForgotPasswordPreview() {
                 className="text-muted-foreground hover:text-primary inline-flex items-center"
               >
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to sign in
+                &gt; BACK TO SIGN IN
               </Link>
             </div>
           </div>

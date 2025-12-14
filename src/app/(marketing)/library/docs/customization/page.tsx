@@ -44,7 +44,7 @@ export default function CustomizationPage() {
             <h1 className={cn(mode.font, 'text-3xl font-semibold tracking-tight')}>
               Customization Guide
             </h1>
-            <p className={cn(mode.font, 'text-muted-foreground text-base')}>
+            <p className={cn(mode.font, 'text-muted-foreground text-sm')}>
               Modify design system, change colors, update components, and add features to match your
               brand.
             </p>

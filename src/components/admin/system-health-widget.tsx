@@ -112,7 +112,7 @@ export function SystemHealthWidget({
               <span className="text-foreground text-sm font-medium">Uptime</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-foreground text-lg font-bold">{uptime}%</span>
+              <span className="text-foreground text-2xl font-bold">{uptime}%</span>
               {uptime >= 99.9 && <TrendingUp className="text-primary h-4 w-4" />}
             </div>
           </div>
@@ -135,7 +135,7 @@ export function SystemHealthWidget({
               <span className="text-foreground text-sm font-medium">Avg Response Time</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-foreground text-lg font-bold">{avgResponseTime}ms</span>
+              <span className="text-foreground text-2xl font-bold">{avgResponseTime}ms</span>
               <TrendingDown className="text-primary h-4 w-4" />
             </div>
           </div>
@@ -167,7 +167,7 @@ export function SystemHealthWidget({
               <span className="text-foreground text-sm font-medium">Error Rate</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-foreground text-lg font-bold">{errorRate}%</span>
+              <span className="text-foreground text-2xl font-bold">{errorRate}%</span>
               {errorRate <= 0.5 && <TrendingDown className="text-primary h-4 w-4" />}
             </div>
           </div>

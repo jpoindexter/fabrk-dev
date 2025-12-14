@@ -40,7 +40,7 @@ export default function PrismaIntegrationPage() {
             <h1 className={cn(mode.font, 'text-3xl font-semibold tracking-tight')}>
               Prisma Integration
             </h1>
-            <p className={cn(mode.font, 'text-muted-foreground text-base')}>
+            <p className={cn(mode.font, 'text-muted-foreground text-sm')}>
               Replace mock data with real database queries using Prisma ORM and PostgreSQL.
             </p>
           </div>

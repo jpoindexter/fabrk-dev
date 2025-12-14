@@ -76,7 +76,7 @@ export default async function InvoicesPage() {
           </Button>
         </Link>
         <h1 className="mb-2 text-4xl font-semibold tracking-tight">Invoices & Receipts</h1>
-        <p className="text-muted-foreground text-lg">View and download your payment history</p>
+        <p className="text-muted-foreground text-sm">View and download your payment history</p>
       </div>
 
       {/* Invoices Table */}

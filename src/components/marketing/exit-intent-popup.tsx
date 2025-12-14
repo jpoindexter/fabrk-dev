@@ -140,7 +140,7 @@ export function ExitIntentPopup({
                   <span className={cn(mode.font, 'text-foreground text-4xl font-semibold')}>
                     $175
                   </span>
-                  <span className={cn(mode.font, 'text-muted-foreground text-lg line-through')}>
+                  <span className={cn(mode.font, 'text-muted-foreground text-2xl line-through')}>
                     $299
                   </span>
                 </div>

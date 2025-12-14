@@ -150,7 +150,7 @@ export function Heatmap({
           <p className="text-xs font-medium">
             {hoveredCell.y} × {hoveredCell.x}
           </p>
-          <p className="text-lg font-semibold">{hoveredCell.value}</p>
+          <p className="text-2xl font-semibold">{hoveredCell.value}</p>
         </div>
       )}
     </div>

@@ -95,7 +95,7 @@ export function FunnelChart({
                   <div className="text-center">
                     <p className="text-sm font-medium">{stage.label}</p>
                     {showValues && (
-                      <p className="text-lg font-semibold">{stage.value.toLocaleString()}</p>
+                      <p className="text-2xl font-semibold">{stage.value.toLocaleString()}</p>
                     )}
                     {showPercentages && index > 0 && (
                       <p className="text-foreground/70 text-xs">
@@ -139,7 +139,7 @@ export function FunnelChart({
                   <div className="text-center">
                     <p className="text-sm font-medium">{stage.label}</p>
                     {showValues && (
-                      <p className="text-lg font-semibold">{stage.value.toLocaleString()}</p>
+                      <p className="text-2xl font-semibold">{stage.value.toLocaleString()}</p>
                     )}
                   </div>
                 </div>

@@ -290,7 +290,7 @@ const FullMemberCard = React.forwardRef<HTMLDivElement, FullMemberCardProps>(
           <div className="relative">
             <Avatar className="h-20 w-20">
               <AvatarImage src={member.avatar} alt={member.name} />
-              <AvatarFallback className="text-lg">{getInitials(member.name)}</AvatarFallback>
+              <AvatarFallback className="text-2xl">{getInitials(member.name)}</AvatarFallback>
             </Avatar>
             {member.status && (
               <div
@@ -305,7 +305,7 @@ const FullMemberCard = React.forwardRef<HTMLDivElement, FullMemberCardProps>(
 
           <div className="w-full space-y-1 text-center">
             <div className="flex items-center justify-center gap-2">
-              <h3 className="text-foreground text-lg font-semibold">{member.name}</h3>
+              <h3 className="text-foreground text-sm font-semibold">{member.name}</h3>
               {member.status === 'online' && (
                 <Badge variant="accent" className="px-2 py-0.5 text-xs">
                   Online

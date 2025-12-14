@@ -153,7 +153,7 @@ function AdminPanelsPreview() {
                   </div>
 
                   {/* Title */}
-                  <h3 className={cn(mode.font, 'mb-2 text-lg font-semibold')}>{template.name}</h3>
+                  <h3 className={cn(mode.font, 'mb-2 text-sm font-semibold')}>{template.name}</h3>
 
                   {/* Description */}
                   <div className={cn(mode.font, 'mb-4 text-xs')}>

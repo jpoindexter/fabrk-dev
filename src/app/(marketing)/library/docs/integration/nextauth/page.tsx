@@ -41,7 +41,7 @@ export default function NextAuthIntegrationPage() {
             <h1 className={cn(mode.font, 'text-3xl font-semibold tracking-tight')}>
               NextAuth v5 Integration
             </h1>
-            <p className={cn(mode.font, 'text-muted-foreground text-base')}>
+            <p className={cn(mode.font, 'text-muted-foreground text-sm')}>
               Add authentication to library templates with NextAuth v5, session management, and
               protected routes.
             </p>

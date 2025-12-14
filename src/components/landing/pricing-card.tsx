@@ -34,7 +34,7 @@ export function PricingCard({
         {/* Price Display */}
         <div className="mb-4">
           <div className="flex items-baseline gap-4">
-            <span className={cn('text-base line-through', mode.color.text.muted, mode.font)}>
+            <span className={cn('text-sm line-through', mode.color.text.muted, mode.font)}>
               {PRICING.display.regular}
             </span>
             <span className={cn('text-sm', mode.color.text.muted, mode.font)}>→</span>

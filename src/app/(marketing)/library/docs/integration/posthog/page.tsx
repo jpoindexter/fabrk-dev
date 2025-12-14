@@ -38,7 +38,7 @@ export default function PostHogIntegrationPage() {
             <h1 className={cn(mode.font, 'text-3xl font-semibold tracking-tight')}>
               PostHog Integration
             </h1>
-            <p className={cn(mode.font, 'text-muted-foreground text-base')}>
+            <p className={cn(mode.font, 'text-muted-foreground text-sm')}>
               Add analytics and feature flags to track user behavior in templates.
             </p>
           </div>

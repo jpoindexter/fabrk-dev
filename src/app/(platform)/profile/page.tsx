@@ -130,7 +130,7 @@ export default function ProfilePage() {
             </div>
 
             <div className="space-y-1">
-              <h3 className="text-lg font-semibold">{session?.user?.name}</h3>
+              <h3 className="text-sm font-semibold">{session?.user?.name}</h3>
               <p className="text-muted-foreground text-sm">{session?.user?.email}</p>
               <div className="flex gap-2">
                 <Badge variant="secondary">

@@ -445,7 +445,7 @@ export function PlanSelector({
 
             {/* Plan Info */}
             <div className="mb-4 pt-2">
-              <h3 className={cn('text-lg font-bold', mode.font)}>{plan.name}</h3>
+              <h3 className={cn('text-sm font-bold', mode.font)}>{plan.name}</h3>
               <div className="mt-2">
                 <span className="text-3xl font-bold">${plan.price}</span>
                 <span className={cn('text-muted-foreground text-xs', mode.font)}>

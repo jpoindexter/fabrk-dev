@@ -6,7 +6,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Search, SlidersHorizontal, BookOpen, Sparkles } from 'lucide-react';
+import { Search, SlidersHorizontal, Sparkles } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 import { InputSearch } from '@/components/ui/input-search';
@@ -264,7 +264,7 @@ export default function LibraryIndexPage() {
           <CardHeader title="NO_RESULTS" />
           <CardContent className="flex min-h-[300px] flex-col items-center justify-center text-center">
             <Search className="text-muted-foreground/30 mb-4 h-12 w-12" />
-            <h3 className={cn(mode.font, 'mb-2 text-lg font-semibold')}>No templates found</h3>
+            <h3 className={cn(mode.font, 'mb-2 text-sm font-semibold')}>No templates found</h3>
             <p className={cn(mode.font, 'text-muted-foreground mb-6 max-w-md text-sm')}>
               {searchQuery
                 ? `No templates match "${searchQuery}"`

@@ -57,7 +57,7 @@ export function EmailPreview({ template, primaryColor }: EmailPreviewProps) {
           <div className="mb-6 flex items-center justify-between">
             <div>
               <div className="mb-1 flex items-center gap-2">
-                <h2 className={cn(mode.font, 'text-lg font-semibold')}>{template.name}</h2>
+                <h2 className={cn(mode.font, 'text-sm font-semibold')}>{template.name}</h2>
                 <span
                   className={cn(
                     mode.font,

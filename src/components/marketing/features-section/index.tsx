@@ -73,9 +73,7 @@ export function FeaturesSection() {
           >
             BUILT FOR SERIOUS SAAS PRODUCTS
           </h2>
-          <p
-            className={cn(mode.font, mode.color.text.muted, 'max-w-2xl text-base leading-relaxed')}
-          >
+          <p className={cn(mode.font, mode.color.text.muted, 'max-w-2xl text-sm leading-relaxed')}>
             Includes many foundational and advanced components that cover a wide range of use-cases
             without sacrificing flexibility and design.
           </p>

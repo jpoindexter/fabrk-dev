@@ -40,7 +40,7 @@ export default function TroubleshootingPage() {
             <h1 className={cn(mode.font, 'text-3xl font-semibold tracking-tight')}>
               Troubleshooting
             </h1>
-            <p className={cn(mode.font, 'text-muted-foreground text-base')}>
+            <p className={cn(mode.font, 'text-muted-foreground text-sm')}>
               Common issues, error messages, debugging tips, and solutions for library templates.
             </p>
           </div>

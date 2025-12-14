@@ -89,7 +89,7 @@ export function CreditsPreview() {
             </motion.span>
           </div>
           <div className="text-right">
-            <span className={cn(mode.font, 'text-success block text-lg font-semibold')}>
+            <span className={cn(mode.font, 'text-success block text-2xl font-semibold')}>
               <CreditCounter value={847} delay={0.5} />
             </span>
             <span className={cn(mode.font, 'text-muted-foreground text-xs')}>credits</span>

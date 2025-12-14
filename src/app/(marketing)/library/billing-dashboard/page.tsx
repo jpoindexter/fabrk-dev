@@ -60,7 +60,7 @@ export default function BillingPage() {
 
       {/* Subscription Overview */}
       <div>
-        <h2 className={cn(mode.font, "text-lg font-semibold mb-4")}>Subscription Overview</h2>
+        <h2 className={cn(mode.font, "text-sm font-semibold mb-4")}>Subscription Overview</h2>
         <div className="grid gap-6 md:grid-cols-2">
           {/* Current Plan */}
           <Card>
@@ -71,7 +71,7 @@ export default function BillingPage() {
                   <Badge className={cn(mode.radius, mode.font, "mb-2")}>{subscription.plan}</Badge>
                   <div className={cn(mode.font, "text-3xl font-semibold")}>
                     \${subscription.price}
-                    <span className="text-muted-foreground text-lg font-normal">
+                    <span className="text-muted-foreground text-sm font-normal">
                       / {subscription.billingCycle}
                     </span>
                   </div>
@@ -170,7 +170,7 @@ export default function BillingPage() {
 
       {/* Payment Method */}
       <div>
-        <h2 className={cn(mode.font, "text-lg font-semibold mb-4")}>Payment Method</h2>
+        <h2 className={cn(mode.font, "text-sm font-semibold mb-4")}>Payment Method</h2>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {/* Credit Card */}
           <Card className="relative h-48">
@@ -243,7 +243,7 @@ function BillingPreview() {
 
         {/* Subscription Overview */}
         <div>
-          <h2 className={cn(mode.font, 'mb-4 text-lg font-semibold')}>Subscription Overview</h2>
+          <h2 className={cn(mode.font, 'mb-4 text-sm font-semibold')}>Subscription Overview</h2>
           <div className="grid gap-6 md:grid-cols-2">
             {/* Current Plan */}
             <Card>
@@ -256,7 +256,7 @@ function BillingPreview() {
                     </Badge>
                     <div className={cn(mode.font, 'text-3xl font-semibold')}>
                       ${subscription.price}
-                      <span className="text-muted-foreground text-lg font-normal">
+                      <span className="text-muted-foreground text-sm font-normal">
                         {' '}
                         / {subscription.billingCycle}
                       </span>
@@ -371,7 +371,7 @@ function BillingPreview() {
 
         {/* Payment Method */}
         <div>
-          <h2 className={cn(mode.font, 'mb-4 text-lg font-semibold')}>Payment Method</h2>
+          <h2 className={cn(mode.font, 'mb-4 text-sm font-semibold')}>Payment Method</h2>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {/* Credit Card */}
             <Card className="relative h-48">

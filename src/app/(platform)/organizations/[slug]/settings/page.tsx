@@ -177,7 +177,7 @@ export default function OrganizationSettingsPage() {
         <CardContent padding="lg">
           <div className="text-center">
             <AlertTriangle className="text-destructive mx-auto h-12 w-12" />
-            <h3 className="mt-4 text-lg font-semibold">Organization not found</h3>
+            <h3 className="mt-4 text-sm font-semibold">Organization not found</h3>
             <Button onClick={() => router.push('/dashboard')} className="mt-4">
               &gt; BACK TO DASHBOARD
             </Button>

@@ -52,7 +52,7 @@ export function FAQSection({ faqs, title, description, className }: FAQSectionPr
 
       <section className={cn('mx-auto max-w-3xl', className)}>
         {title && <h2 className="text-foreground mb-2 text-4xl font-semibold">{title}</h2>}
-        {description && <p className="text-muted-foreground mb-8 text-lg">{description}</p>}
+        {description && <p className="text-muted-foreground mb-8 text-sm">{description}</p>}
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
@@ -62,7 +62,7 @@ export function FAQSection({ faqs, title, description, className }: FAQSectionPr
                 className="flex w-full items-center justify-between p-6 text-left"
                 aria-expanded={openIndex === index}
               >
-                <h3 className="text-foreground pr-4 text-lg font-semibold">{faq.question}</h3>
+                <h3 className="text-foreground pr-4 text-sm font-semibold">{faq.question}</h3>
                 <ChevronDown
                   className={cn(
                     'text-muted-foreground h-5 w-5 flex-shrink-0 transition-transform',

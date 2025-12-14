@@ -20,15 +20,11 @@ export function FeatureItem({ icon: Icon, title, description }: FeatureItemProps
       </div>
       <div>
         <span
-          className={cn(
-            mode.font,
-            mode.color.text.primary,
-            'text-lg leading-snug font-semibold lg:text-xl'
-          )}
+          className={cn(mode.font, mode.color.text.primary, 'text-sm leading-snug font-semibold')}
         >
           ├─ {title}
         </span>
-        <span className={cn(mode.font, mode.color.text.muted, 'ml-2 text-base leading-relaxed')}>
+        <span className={cn(mode.font, mode.color.text.muted, 'ml-2 text-sm leading-relaxed')}>
           {description}
         </span>
       </div>

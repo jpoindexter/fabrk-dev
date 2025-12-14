@@ -617,12 +617,12 @@ function ComponentsGrid() {
           <h3 className="text-success text-xs font-semibold">[REVENUE UP]</h3>
           <div className="flex justify-between text-xs">
             <span>Total</span>
-            <span className="text-lg font-bold">$12,450</span>
+            <span className="text-2xl font-bold">$12,450</span>
           </div>
           <Separator />
           <div className="flex justify-between text-xs">
             <span>Change</span>
-            <span className="text-success text-lg font-bold">+15.3%</span>
+            <span className="text-success text-2xl font-bold">+15.3%</span>
           </div>
         </div>
       </div>

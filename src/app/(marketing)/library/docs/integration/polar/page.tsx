@@ -38,7 +38,7 @@ export default function PolarIntegrationPage() {
             <h1 className={cn(mode.font, 'text-3xl font-semibold tracking-tight')}>
               Polar.sh Integration
             </h1>
-            <p className={cn(mode.font, 'text-muted-foreground text-base')}>
+            <p className={cn(mode.font, 'text-muted-foreground text-sm')}>
               Add subscription management and payments to billing templates.
             </p>
           </div>

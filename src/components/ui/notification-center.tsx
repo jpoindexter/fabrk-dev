@@ -263,7 +263,7 @@ function NotificationCenterHeader({
 }: NotificationCenterHeaderProps) {
   return (
     <div className="flex items-center justify-between border-b p-4">
-      <h3 className="text-lg font-semibold">Notifications</h3>
+      <h3 className="text-sm font-semibold">Notifications</h3>
       <div className="flex items-center gap-2">
         {unreadCount > 0 && onMarkAllAsRead && (
           <Button variant="ghost" size="sm" className="h-8 text-xs" onClick={onMarkAllAsRead}>

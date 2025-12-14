@@ -77,7 +77,7 @@ export function CodeBlock({
       <button
         onClick={handleCopy}
         className={cn(
-          'absolute top-3 right-3 z-10 transition-colors',
+          'absolute top-2 right-2 z-10 transition-colors',
           mode.color.text.muted,
           'hover:opacity-100'
         )}

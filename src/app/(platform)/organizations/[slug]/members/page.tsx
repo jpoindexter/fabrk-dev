@@ -132,7 +132,7 @@ export default function OrganizationMembersPage() {
         <CardHeader code="0x00" title="ERROR" icon={<Loader2 className="h-4 w-4" />} />
         <CardContent padding="lg">
           <div className="text-center">
-            <h3 className="text-lg font-semibold">Organization not found</h3>
+            <h3 className="text-sm font-semibold">Organization not found</h3>
             <Button onClick={() => router.push('/dashboard')} className="mt-4">
               &gt; BACK TO DASHBOARD
             </Button>

@@ -262,7 +262,7 @@ export default function AdminMonitoringPage() {
           <CardContent className="flex h-48 items-center justify-center">
             <div className="text-center">
               <Activity className="text-muted-foreground mx-auto h-12 w-12" />
-              <h3 className="mt-4 text-lg font-semibold">No errors recorded</h3>
+              <h3 className="mt-4 text-sm font-semibold">No errors recorded</h3>
               <p className="text-muted-foreground text-sm">Your application is running smoothly</p>
             </div>
           </CardContent>

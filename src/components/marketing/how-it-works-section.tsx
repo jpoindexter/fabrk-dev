@@ -81,7 +81,7 @@ export function HowItWorksSection() {
                   <CardContent>
                     {/* Step Title */}
                     <h3
-                      className={cn('mb-2 text-lg font-bold', mode.font, mode.color.text.primary)}
+                      className={cn('mb-2 text-sm font-bold', mode.font, mode.color.text.primary)}
                     >
                       {step.title}
                     </h3>

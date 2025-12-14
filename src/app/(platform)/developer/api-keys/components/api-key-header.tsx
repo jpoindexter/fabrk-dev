@@ -26,7 +26,7 @@ export function ApiKeyHeader({ isDialogOpen, onDialogOpenChange, children }: Api
       <div className="flex items-center justify-between">
         <div>
           <h1 className="mb-2 text-4xl font-semibold tracking-tight">API Keys</h1>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-sm">
             Manage API keys for programmatic access to your account
           </p>
         </div>

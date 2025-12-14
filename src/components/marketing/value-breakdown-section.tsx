@@ -53,7 +53,7 @@ export function ValueBreakdownSection() {
                 {/* Subtotal */}
                 <div className={cn('bg-muted/30 flex items-center justify-between px-6 py-4')}>
                   <span className={cn('text-sm font-semibold', mode.font)}>TOTAL_VALUE</span>
-                  <span className={cn('text-lg font-bold', mode.font)}>{VALUE_TOTALS.total}</span>
+                  <span className={cn('text-2xl font-bold', mode.font)}>{VALUE_TOTALS.total}</span>
                 </div>
 
                 {/* Your Price */}
@@ -68,7 +68,7 @@ export function ValueBreakdownSection() {
 
                 {/* Savings */}
                 <div className="bg-accent/5 flex items-center justify-between px-6 py-6">
-                  <span className={cn('text-success text-lg font-bold', mode.font)}>
+                  <span className={cn('text-success text-2xl font-bold', mode.font)}>
                     TOTAL_SAVINGS
                   </span>
                   <div className="text-right">

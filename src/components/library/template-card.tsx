@@ -30,7 +30,7 @@ export function TemplateCard({ id, name, description, href, icon: Icon }: Templa
           <h3
             className={cn(
               mode.font,
-              'group-hover:text-primary mb-2 text-base font-semibold transition-colors'
+              'group-hover:text-primary mb-2 text-sm font-semibold transition-colors'
             )}
           >
             {name}

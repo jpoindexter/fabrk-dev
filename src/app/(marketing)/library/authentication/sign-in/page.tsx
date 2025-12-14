@@ -102,7 +102,7 @@ export default function SignInPage() {
           </div>
           <div className="relative flex justify-center text-xs uppercase">
             <span className="bg-background text-muted-foreground px-2">
-              Or continue with
+              [OR] CONTINUE WITH
             </span>
           </div>
         </div>
@@ -224,7 +224,7 @@ function SignInPreview() {
                 <span className="border-border w-full border-t" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-background text-muted-foreground px-2">Or continue with</span>
+                <span className="bg-background text-muted-foreground px-2">[OR] CONTINUE WITH</span>
               </div>
             </div>
 

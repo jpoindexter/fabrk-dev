@@ -31,7 +31,7 @@ export function QuickStatsRow({ subscription, formatDate }: QuickStatsRowProps) 
           <CreditCard className="text-primary size-4" />
           <span className={cn(mode.font, 'text-muted-foreground text-xs')}>[CURRENT PLAN]:</span>
         </div>
-        <div className={cn(mode.font, 'text-primary mt-1 text-lg font-semibold')}>
+        <div className={cn(mode.font, 'text-primary mt-1 text-2xl font-semibold')}>
           {subscription.plan}
         </div>
       </div>
@@ -42,7 +42,7 @@ export function QuickStatsRow({ subscription, formatDate }: QuickStatsRowProps) 
           <Calendar className="text-muted-foreground size-4" />
           <span className={cn(mode.font, 'text-muted-foreground text-xs')}>[NEXT BILLING]:</span>
         </div>
-        <div className={cn(mode.font, 'mt-1 text-lg font-semibold')}>
+        <div className={cn(mode.font, 'mt-1 text-2xl font-semibold')}>
           {formatDate(subscription.nextBillingDate)}
         </div>
       </div>
@@ -53,7 +53,7 @@ export function QuickStatsRow({ subscription, formatDate }: QuickStatsRowProps) 
           <DollarSign className="text-muted-foreground size-4" />
           <span className={cn(mode.font, 'text-muted-foreground text-xs')}>[MONTHLY COST]:</span>
         </div>
-        <div className={cn(mode.font, 'mt-1 text-lg font-semibold')}>
+        <div className={cn(mode.font, 'mt-1 text-2xl font-semibold')}>
           ${subscription.price}
           <span className={cn(mode.font, 'text-muted-foreground text-sm font-normal')}>/mo</span>
         </div>

@@ -56,7 +56,7 @@ export function PlanCards({ plans }: PlanCardsProps) {
 
               <div className="mb-4 text-4xl font-semibold">
                 ${plan.price}
-                <span className="text-muted-foreground text-lg font-normal">/mo</span>
+                <span className="text-muted-foreground text-sm font-normal">/mo</span>
               </div>
 
               <div className="border-border mb-4 flex-1 border-t pt-4">

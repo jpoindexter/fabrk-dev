@@ -179,7 +179,7 @@ export default function AIFormsPage() {
           <CardContent padding="lg">
             <div className="flex flex-col items-center justify-center py-12 text-center">
               <Sparkles className="text-muted-foreground/50 mb-4 size-12" />
-              <h3 className={cn("text-lg font-semibold", mode.font)}>
+              <h3 className={cn("text-sm font-semibold", mode.font)}>
                 No form generated yet
               </h3>
               <p className={cn("text-muted-foreground max-w-md text-sm", mode.font)}>
@@ -302,7 +302,7 @@ function AIFormGeneratorPreview() {
               <CardHeader code="0x02" title="FORM PREVIEW" />
               <div className="p-6">
                 <div className="mb-4">
-                  <h3 className={cn('text-lg font-semibold', mode.font)}>{demoForm.name}</h3>
+                  <h3 className={cn('text-sm font-semibold', mode.font)}>{demoForm.name}</h3>
                   <p className={cn('text-muted-foreground text-xs', mode.font)}>
                     {demoForm.description}
                   </p>

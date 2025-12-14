@@ -30,7 +30,7 @@ export default function EmptyStatePage() {
 
         {/* Title & Description */}
         <div className="mt-4">
-          <h3 className={cn(mode.font, "mb-1 text-lg font-semibold")}>
+          <h3 className={cn(mode.font, "mb-1 text-sm font-semibold")}>
             No Data Yet
           </h3>
           <p className={cn(mode.font, "text-muted-foreground text-xs")}>
@@ -74,7 +74,7 @@ function EmptyStatesPreview() {
 
           {/* Title & Description */}
           <div className="mt-4">
-            <h3 className={cn(mode.font, 'mb-1 text-lg font-semibold')}>No Data Yet</h3>
+            <h3 className={cn(mode.font, 'mb-1 text-sm font-semibold')}>No Data Yet</h3>
             <p className={cn(mode.font, 'text-muted-foreground text-xs')}>
               Start by adding your first item to see it appear here.
             </p>

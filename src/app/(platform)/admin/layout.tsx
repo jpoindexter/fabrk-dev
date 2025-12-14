@@ -30,7 +30,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     <div className="flex min-h-screen flex-col">
       <div className="bg-muted/40 border-b">
         <div className="container flex h-14 items-center">
-          <h1 className="text-lg font-semibold">Admin Panel</h1>
+          <h1 className="text-sm font-semibold">Admin Panel</h1>
         </div>
       </div>
 

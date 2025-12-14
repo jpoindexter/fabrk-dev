@@ -84,12 +84,7 @@ export function HeroSection() {
  █████     █████ █████ █████  ░░█████ ░░████████      █████    ██████████░░█████████
 ░░░░░     ░░░░░ ░░░░░ ░░░░░    ░░░░░   ░░░░░░░░      ░░░░░    ░░░░░░░░░░  ░░░░░░░░░`}
                   </pre>
-                  <p
-                    className={cn(
-                      'mb-0 text-sm leading-relaxed lg:text-base',
-                      mode.color.text.muted
-                    )}
-                  >
+                  <p className={cn('mb-0 text-sm leading-relaxed', mode.color.text.muted)}>
                     <TypeWriter
                       text="Ship your product this weekend not next quarter."
                       delay={0.5}
@@ -132,7 +127,7 @@ export function HeroSection() {
                     asChild
                     className={cn('text-xs', mode.radius, mode.font)}
                   >
-                    <Link href="/library">Explore Interactive Demos</Link>
+                    <Link href="/library">&gt; EXPLORE DEMOS</Link>
                   </Button>
                 </div>
               </CardContent>
@@ -154,12 +149,10 @@ export function HeroSection() {
                 <div className="flex items-start justify-between">
                   <div>
                     <div className="flex items-baseline gap-2">
-                      <span
-                        className={cn('text-4xl font-black', mode.font, mode.color.text.accent)}
-                      >
+                      <span className={cn('text-4xl font-bold', mode.font, mode.color.text.accent)}>
                         $199
                       </span>
-                      <span className={cn('text-lg line-through', mode.color.text.muted)}>
+                      <span className={cn('text-2xl line-through', mode.color.text.muted)}>
                         $299
                       </span>
                     </div>
@@ -169,7 +162,7 @@ export function HeroSection() {
                   </div>
                   <div
                     className={cn(
-                      'bg-accent text-accent-foreground border-accent animate-pulse border-2 px-4 py-1.5 text-sm font-black',
+                      'bg-accent text-accent-foreground border-accent animate-pulse border-2 px-4 py-1.5 text-sm font-bold',
                       mode.font
                     )}
                   >
@@ -192,7 +185,7 @@ export function HeroSection() {
                   <div className={cn('text-sm font-bold', mode.font, mode.color.text.muted)}>
                     FROM IDEA
                   </div>
-                  <div className={cn('text-lg font-black', mode.font, mode.color.text.accent)}>
+                  <div className={cn('text-lg font-bold', mode.font, mode.color.text.accent)}>
                     │
                   </div>
                   <div className={cn('text-sm font-bold', mode.font, mode.color.text.success)}>

@@ -194,7 +194,7 @@ export function FormPreview({ form, className }: FormPreviewProps) {
       {/* Form Content */}
       <div className="p-6">
         <div className="mb-4">
-          <h3 className={cn('text-lg font-semibold', mode.font)}>{form.name}</h3>
+          <h3 className={cn('text-sm font-semibold', mode.font)}>{form.name}</h3>
           <p className={cn('text-muted-foreground text-xs', mode.font)}>{form.description}</p>
         </div>
 
