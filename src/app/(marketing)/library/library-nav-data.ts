@@ -28,6 +28,7 @@ import {
   MessageSquare,
   Image,
   Volume2,
+  History,
 } from 'lucide-react';
 
 export interface TemplateNavItem {
@@ -212,6 +213,11 @@ export const templatesNavigation: TemplateNavSection[] = [
         icon: DollarSign,
       },
       { title: 'Blog', href: '/library/blog', icon: Newspaper },
+      {
+        title: 'Changelog',
+        href: '/library/changelog',
+        icon: History,
+      },
       {
         title: 'Landing Variations',
         href: '/library/landing-variations',

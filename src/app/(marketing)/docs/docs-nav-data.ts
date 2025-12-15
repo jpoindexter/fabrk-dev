@@ -51,6 +51,7 @@ import {
   Volume2,
   Mic,
   Cpu,
+  History,
 } from 'lucide-react';
 
 const rawNavigation: NavSection[] = [
@@ -402,6 +403,7 @@ const rawNavigation: NavSection[] = [
           { title: 'API KEY MANAGER', href: '/docs/components/api-key-manager', icon: Key },
           { title: 'AUDIT LOG', href: '/docs/components/audit-log', icon: ScrollText },
           { title: 'BALANCE DISPLAY', href: '/docs/components/balance-display', icon: Coins },
+          { title: 'CHANGELOG', href: '/docs/components/changelog', icon: History },
           {
             title: 'BILLING SUMMARY CARD',
             href: '/docs/components/billing-summary-card',
@@ -610,6 +612,20 @@ const rawNavigation: NavSection[] = [
         title: 'LAUNCH CHECKLIST',
         href: '/docs/launch/checklist',
         icon: Rocket,
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PHASE 12: RESOURCES
+  // ═══════════════════════════════════════════════════════════════════════════
+  {
+    title: 'RESOURCES',
+    items: [
+      {
+        title: 'CHANGELOG',
+        href: '/changelog',
+        icon: History,
       },
     ],
   },
