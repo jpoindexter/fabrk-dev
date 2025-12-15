@@ -3,19 +3,19 @@
 import { ComponentShowcaseTemplate } from '@/components/docs';
 import { ApiKeyManager } from '@/components/ui/api-key-manager';
 
-// Example keys use 'x' placeholders to avoid triggering secret scanners
+// Example keys with masked format to avoid triggering secret scanners
 const mockKeys = [
   {
     id: 'key_1',
     name: 'Production API Key',
-    key: 'sk_live_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+    key: 'sk_live_****************************DEMO',
     lastUsed: new Date('2025-12-08'),
     createdAt: new Date('2025-12-01'),
   },
   {
     id: 'key_2',
     name: 'Development Key',
-    key: 'sk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+    key: 'sk_test_****************************DEMO',
     lastUsed: null,
     createdAt: new Date('2025-12-05'),
   },
