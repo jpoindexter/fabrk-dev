@@ -7,6 +7,7 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
+import { CardHeader } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 import type { GeneratedForm, FormField } from '@/lib/ai/schemas';
@@ -233,11 +234,7 @@ export function CodeViewer({ form, className }: CodeViewerProps) {
     >
       <Tabs defaultValue="schema" className="flex h-full flex-col">
         {/* Terminal Header */}
-        <div className="border-border border-b px-4 py-2">
-          <span className={cn('text-muted-foreground text-xs', mode.font)}>
-            [ [0x02] GENERATED_CODE ]
-          </span>
-        </div>
+        <CardHeader code="0x02" title="GENERATED_CODE" />
 
         {/* Tab Navigation */}
         <TabsList>

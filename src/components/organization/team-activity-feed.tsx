@@ -167,6 +167,7 @@ export function TeamActivityFeed({
                         <Avatar className={cn('h-10 w-10 border', mode.color.border.default)}>
                           <AvatarFallback
                             className={cn(
+                              mode.font,
                               'text-xs font-semibold',
                               mode.color.bg.accent,
                               mode.color.text.inverse
@@ -191,7 +192,7 @@ export function TeamActivityFeed({
                       <div className="min-w-0 flex-1 space-y-1 pt-1">
                         <div className="flex items-start justify-between gap-2">
                           <div className="min-w-0 flex-1">
-                            <p className={cn('text-sm', mode.color.text.primary)}>
+                            <p className={cn(mode.font, 'text-sm', mode.color.text.primary)}>
                               <span className="font-semibold">{activity.user.name}</span>{' '}
                               <span className={mode.color.text.muted}>{activity.action}</span>
                               {activity.target && (

@@ -108,7 +108,12 @@ export function OrgCard({
                 <AvatarImage src={logo} alt={name} />
               ) : (
                 <AvatarFallback
-                  className={cn('text-sm font-bold', mode.color.bg.accent, mode.color.text.inverse)}
+                  className={cn(
+                    mode.font,
+                    'text-sm font-bold',
+                    mode.color.bg.accent,
+                    mode.color.text.inverse
+                  )}
                 >
                   {initials}
                 </AvatarFallback>
@@ -123,7 +128,7 @@ export function OrgCard({
                 <div className="flex flex-wrap items-center gap-2">
                   <Badge
                     variant="outline"
-                    className={cn('text-xs font-medium', getPlanColors(plan))}
+                    className={cn(mode.font, 'text-xs font-medium', getPlanColors(plan))}
                   >
                     {plan}
                   </Badge>
