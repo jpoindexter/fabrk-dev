@@ -44,7 +44,7 @@ export default function TermsPage() {
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           <h1 className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>FABRK LEGAL:</h1>
-          <h2 className={cn('mb-4 text-2xl font-semibold tracking-tight', mode.font)}>
+          <h2 className={cn('mb-4 text-sm font-bold tracking-tight', mode.font)}>
             TERMS OF SERVICE
           </h2>
         </motion.div>

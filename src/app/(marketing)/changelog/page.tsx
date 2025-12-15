@@ -25,7 +25,7 @@ export default function ChangelogPage() {
             <Badge code="0x00" label="CHANGELOG" meta="VERSION HISTORY" />
           </div>
           <p className={cn('text-muted-foreground mb-2 text-xs', mode.font)}>[FABRK RELEASES]:</p>
-          <h1 className={cn('mb-4 text-4xl font-semibold tracking-tight lg:text-5xl', mode.font)}>
+          <h1 className={cn('mb-4 text-sm font-bold tracking-tight', mode.font)}>
             VERSION HISTORY
           </h1>
           <p className={cn('text-muted-foreground mx-auto max-w-2xl text-sm', mode.font)}>
