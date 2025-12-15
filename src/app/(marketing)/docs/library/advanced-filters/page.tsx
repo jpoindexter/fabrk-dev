@@ -2,7 +2,7 @@
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
 import { AdvancedFilters, type FilterOptions } from '@/components/library';
-import { Card, CardHeader } from '@/components/ui/card';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { CodeBlock } from '@/components/ui/code-block';
 import { useState } from 'react';
 
@@ -117,10 +117,10 @@ export default function AdvancedFiltersPage() {
       next={{ title: 'Code Block', href: '/docs/components/code-block' }}
     >
       <Card>
-        <CardHeader code="0xA1" title="FILTER OPTIONS TYPE" />
-        <div className="p-4">
+        <CardHeader code="0xA1" title="FILTER_OPTIONS_TYPE" />
+        <CardContent>
           <CodeBlock code={filterOptionsCode} language="typescript" maxHeight="200px" />
-        </div>
+        </CardContent>
       </Card>
     </ComponentShowcaseTemplate>
   );

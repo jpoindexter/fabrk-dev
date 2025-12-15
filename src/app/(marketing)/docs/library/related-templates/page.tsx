@@ -1,6 +1,6 @@
 import { ComponentShowcaseTemplate } from '@/components/docs';
 import { RelatedTemplates } from '@/components/library';
-import { Card, CardHeader } from '@/components/ui/card';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { CodeBlock } from '@/components/ui/code-block';
 
 export const metadata = {
@@ -80,10 +80,10 @@ export default function RelatedTemplatesPage() {
       next={{ title: 'Advanced Filters', href: '/docs/components/advanced-filters' }}
     >
       <Card>
-        <CardHeader code="0xA1" title="SCORING ALGORITHM" />
-        <div className="p-4">
+        <CardHeader code="0xA1" title="SCORING_ALGORITHM" />
+        <CardContent>
           <CodeBlock code={algorithmCode} language="typescript" maxHeight="400px" />
-        </div>
+        </CardContent>
       </Card>
     </ComponentShowcaseTemplate>
   );
