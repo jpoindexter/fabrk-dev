@@ -14,13 +14,25 @@ import { execSync } from 'child_process';
 const OFFICIAL_REMOTE = 'official';
 const OFFICIAL_REPO = 'Theft-SUDO/fabrk-official';
 
-// Patterns to remove from commit messages
+// Patterns to remove from commit messages (AI signatures)
 const STRIP_PATTERNS = [
-  /🤖 Generated with \[Claude Code\]\(https:\/\/claude\.ai\/claude-code\)\n?/gi,
-  /🤖 Generated with \[Claude Code\]\(https:\/\/claude\.com\/claude-code\)\n?/gi,
-  /Co-Authored-By: Claude.*\n?/gi,
-  /Co-Authored-By: Anthropic.*\n?/gi,
-  /\n\n$/g, // Clean up trailing newlines
+  // Claude signatures
+  /🤖\s*Generated with \[Claude.*?\]\(.*?\)\n*/gi,
+  /Co-Authored-By:\s*Claude.*\n*/gi,
+  /Co-Authored-By:\s*Anthropic.*\n*/gi,
+  // GPT/OpenAI signatures
+  /Generated (with|by) (ChatGPT|GPT-?4|OpenAI).*\n*/gi,
+  /Co-Authored-By:\s*OpenAI.*\n*/gi,
+  // Copilot signatures
+  /Generated (with|by) (GitHub )?Copilot.*\n*/gi,
+  /Co-Authored-By:\s*(GitHub )?Copilot.*\n*/gi,
+  // Generic AI signatures
+  /🤖.*\n*/g,
+  /Generated (with|by) AI.*\n*/gi,
+  /AI-assisted.*\n*/gi,
+  // Clean up extra whitespace
+  /\n{3,}/g, // Multiple newlines to double
+  /\n+$/g, // Trailing newlines
 ];
 
 function exec(cmd, options = {}) {
