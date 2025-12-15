@@ -5,7 +5,7 @@
  * @example
  * ```tsx
  * <ApiKeyGenerator
- *   apiKey="sk_live_123456789"
+ *   apiKey="sk_live_****DEMO"
  *   onGenerate={() => {}}
  *   onRevoke={() => {}}
  * />
