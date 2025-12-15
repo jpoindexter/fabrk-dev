@@ -78,21 +78,9 @@ export function GridColumnTwo() {
       <Card>
         <div className="p-4">
           <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>[PROGRESS]</h3>
-          <div className="space-y-4">
-            <div>
-              <div className="mb-1 flex justify-between text-xs">
-                <span>Upload Progress</span>
-                <span className="text-muted-foreground">75%</span>
-              </div>
-              <Progress value={75} />
-            </div>
-            <div>
-              <div className="mb-1 flex justify-between text-xs">
-                <span>Storage Used</span>
-                <span className="text-muted-foreground">45%</span>
-              </div>
-              <Progress value={45} />
-            </div>
+          <div className="space-y-3">
+            <Progress value={75} label="Upload" showPercentage barWidth={24} size="sm" />
+            <Progress value={45} label="Storage" showPercentage barWidth={24} size="sm" />
           </div>
         </div>
       </Card>
