@@ -66,7 +66,7 @@ Visit **http://localhost:3000** 🎉
 
 ## 🚀 What's Inside
 
-### UI Components (77 Total)
+### UI Components ({{COMPONENT_COUNT_INT}} Total)
 
 - **Forms**: Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Calendar, Date Picker, File Upload
 - **Navigation**: Navbar, Sidebar, Tabs, Breadcrumbs, Pagination, Command Palette
@@ -79,7 +79,7 @@ Visit **http://localhost:3000** 🎉
 
 ### Design System
 
-**Terminal aesthetic** with 12 complete themes:
+**Terminal aesthetic** with {{THEME_COUNT_INT}} complete themes:
 - 🟢 5 CRT phosphor themes (Green, Red, Blue, Amber, Purple)
 - 🎮 4 retro computer themes (C64, GameBoy, VIC-20, Atari)
 - 📱 2 handheld themes (GameBoy Pocket, ZX Spectrum)
@@ -134,7 +134,7 @@ Git commits automatically run:
 
 ## 🎨 Customizing Components
 
-All 77 UI components support customization through className props and CSS variables.
+All {{COMPONENT_COUNT_INT}} UI components support customization through className props and CSS variables.
 
 ### Quick Customization Examples
 
@@ -366,7 +366,7 @@ bg-white, bg-gray-500, text-black, #hexvalues
 
 ### Theme Switching
 
-A theme switcher dropdown is included in the navigation bar (top right). Click the palette icon to choose from 12 terminal themes.
+A theme switcher dropdown is included in the navigation bar (top right). Click the palette icon to choose from {{THEME_COUNT_INT}} terminal themes.
 
 **To use the theme switcher in your own components:**
 
@@ -505,7 +505,7 @@ fabrk-official/
 │   │   ├── docs/            # Documentation site
 │   │   └── library/         # Template showcase
 │   ├── components/
-│   │   ├── ui/              # 72 UI components (Radix primitives)
+│   │   ├── ui/              # {{COMPONENT_COUNT_INT}} UI components (Radix primitives)
 │   │   ├── docs/            # Documentation templates
 │   │   ├── dashboard/       # Dashboard components
 │   │   ├── theme/           # Theme switcher components
@@ -523,7 +523,7 @@ fabrk-official/
 │   │   ├── stripe.ts        # Payment provider config
 │   │   └── i18n.ts          # Internationalization
 │   └── design-system/
-│       └── themes/          # 12 terminal themes (OKLCH colors)
+│       └── themes/          # {{THEME_COUNT_INT}} terminal themes (OKLCH colors)
 ├── prisma/
 │   ├── schema.prisma        # Database schema
 │   └── seed.ts              # Database seeding
@@ -645,7 +645,7 @@ Fabrk documentation follows the [Diátaxis framework](https://diataxis.fr/) for 
 - How to implement RBAC
 
 **Copy-paste templates** at `/library`:
-- 28+ production-ready page templates
+- {{TEMPLATE_COUNT_STRING}} production-ready page templates
 - Landing pages, dashboards, auth flows
 - Just copy, paste, customize
 
@@ -654,7 +654,7 @@ Fabrk documentation follows the [Diátaxis framework](https://diataxis.fr/) for 
 ### Component Documentation
 
 **Component API documentation** at `/docs/components`:
-- All 77 UI components with props, variants, examples
+- All {{COMPONENT_COUNT_INT}} UI components with props, variants, examples
 - Accessibility compliance notes
 - Terminal styling patterns
 - Copy-paste ready code
@@ -670,7 +670,7 @@ Fabrk documentation follows the [Diátaxis framework](https://diataxis.fr/) for 
 **Design system principles** at `/docs/design`:
 - Terminal aesthetic philosophy
 - OKLCH color system explained
-- 12 theme architecture
+- {{THEME_COUNT_INT}} theme architecture
 - Typography and spacing theory
 
 **Security architecture** at `/docs/security`:
@@ -779,7 +779,7 @@ fabrk-official/
 3. Visit http://localhost:3000/docs → Interactive docs
     ↓
 4. Browse:
-   • /docs/components → See all 77 UI components
+   • /docs/components → See all {{COMPONENT_COUNT_INT}} UI components
    • /docs/features → Learn to add payments, auth, etc.
    • /library → Copy-paste ready templates
     ↓
@@ -811,7 +811,7 @@ When **stuck or troubleshooting**:
 
 **Q: What makes Fabrk different from other SaaS boilerplates?**
 
-A: Terminal-first design aesthetic (12 themes), multi-provider payments (Stripe/Polar/Lemonsqueezy), 77 production-ready components, and 100% OKLCH color system for perfect theme consistency.
+A: Terminal-first design aesthetic ({{THEME_COUNT_INT}} themes), multi-provider payments (Stripe/Polar/Lemonsqueezy), {{COMPONENT_COUNT_INT}} production-ready components, and 100% OKLCH color system for perfect theme consistency.
 
 **Q: Can I use this for client projects?**
 
@@ -841,7 +841,7 @@ A: Yes. SQLite for local dev (fast, no Docker), PostgreSQL for production (Verce
 
 **Q: Why OKLCH colors instead of RGB/HSL?**
 
-A: OKLCH is perceptually uniform (consistent lightness across hues), perfect for theming. All 12 themes maintain WCAG 2.2 AA contrast ratios automatically.
+A: OKLCH is perceptually uniform (consistent lightness across hues), perfect for theming. All {{THEME_COUNT_INT}} themes maintain WCAG 2.2 AA contrast ratios automatically.
 
 **Q: Can I change the terminal aesthetic to rounded corners?**
 
@@ -1170,7 +1170,7 @@ Contributions welcome! Please:
 1. **Configure authentication** - Set up NextAuth providers in `.env.local`
 2. **Set up payments** - Configure Stripe, Polar, or Lemonsqueezy webhooks
 3. **Customize design** - Choose your terminal theme, adjust colors
-4. **Add features** - Build on top of 72 UI components
+4. **Add features** - Build on top of {{COMPONENT_COUNT_INT}} UI components
 5. **Deploy** - Push to Vercel, set environment variables, go live
 
 **Read CLAUDE.md for AI assistant guidance** - Optimized for Claude Code and other AI tools.

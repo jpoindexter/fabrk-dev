@@ -14,15 +14,21 @@ export const COMPONENT_COUNT_INT = componentCounts.uiComponentCount;
 export const COMPONENT_COUNT_STRING = `${COMPONENT_COUNT_INT}+`;
 
 export { TEMPLATE_COUNT_STRING };
+export const TEMPLATE_COUNT_INT = parseInt(TEMPLATE_COUNT_STRING); // Convert "28+" to 28
 
 // Dynamic Theme Count
 export const THEME_COUNT_INT = themes.length;
 export const THEME_COUNT_STRING = `${THEME_COUNT_INT}`;
 
-// Manual Constants (Centralized) - These would ideally also be dynamic
-export const ROUTE_COUNT_STRING = '250+';
-export const FILE_COUNT_STRING = '161'; // For "161 files you can understand"
-export const TEST_COVERAGE_STRING = '100%'; // Assuming 100% test coverage for now
+// Manual Constants (Centralized)
+// These would ideally also be dynamic (e.g., from build scripts or metadata)
+export const ROUTE_COUNT_STRING = '250+'; // Needs dynamic calculation
+export const FILE_COUNT_STRING = '161'; // Needs dynamic calculation
+export const TEST_COVERAGE_STRING = '100%'; // Used for "TypeScript" stat, but also for "coverage" text
+export const TEST_LINES_STRING = '17,822 Test Lines'; // For "17,822 Test Lines"
+export const TOTAL_DOC_SIZE_STRING = '~300KB';
+export const TOTAL_DOC_LINES_STRING = '~9,000 lines';
+export const PRICE_USD_STRING = '$299'; // Price string
 
 export const STATS = [
   {
@@ -46,7 +52,7 @@ export const STATS = [
   {
     id: 'typescript',
     label: 'TYPESCRIPT',
-    value: TEST_COVERAGE_STRING, // Assuming this is for TypeScript test coverage
+    value: TEST_COVERAGE_STRING, // Used as '100%'
     icon: Code,
   },
 ] as const;

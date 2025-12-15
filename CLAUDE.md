@@ -21,7 +21,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 |------|---------|
 | Design system rules | See `docs/08-design/DESIGN_SYSTEM.md` |
 | Pre-commit checks | Automatic via Husky (see below) |
-| Check components count | 77 UI components in `src/components/ui/` |
+| Check components count | {{COMPONENT_COUNT_INT}} UI components in `src/components/ui/` |
 | Payment providers | Stripe, Polar, Lemonsqueezy (3 options) |
 | Config files | `src/config/index.ts` (not .js) |
 
@@ -29,9 +29,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Fabrk** is a Next.js 16 SaaS boilerplate with 70+ UI components, terminal-inspired design, and full-stack features.
+**Fabrk** is a Next.js 16 SaaS boilerplate with {{COMPONENT_COUNT_STRING}} UI components, terminal-inspired design, and full-stack features.
 
-**Tech Stack:** Next.js 16 (App Router, React 19) • TypeScript strict • NextAuth v5 • Multi-provider payments (Stripe, Polar, Lemonsqueezy) • Prisma + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 • Terminal-only design system (12 themes: 5 CRT phosphor, 4 retro computer, 2 handheld, 1 B&W)
+**Tech Stack:** Next.js 16 (App Router, React 19) • TypeScript strict • NextAuth v5 • Multi-provider payments (Stripe, Polar, Lemonsqueezy) • Prisma + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 • Terminal-only design system ({{THEME_COUNT_INT}} themes: 5 CRT phosphor, 4 retro computer, 2 handheld, 1 B&W)
 
 ---
 
@@ -99,13 +99,10 @@ Follow these text casing rules for consistent terminal aesthetic:
 **Protected Components** (DO NOT MODIFY unless explicitly told to):
 
 ```
-src/components/ui/           # 77 UI components - ALL LOCKED
+src/components/ui/           # {{COMPONENT_COUNT_INT}} UI components - ALL LOCKED
 ├── button.tsx               # LOCKED
 ├── card.tsx                 # LOCKED
 ├── input.tsx                # LOCKED
-├── sheet.tsx                # LOCKED
-├── tabs.tsx                 # LOCKED
-├── ... (72 more files)      # LOCKED
 
 src/components/marketing/
 └── navigation.tsx           # LOCKED - Marketing navigation
@@ -181,7 +178,7 @@ src/
 │       ├── polar/         # Polar.sh integration
 │       └── lemonsqueezy/  # Lemonsqueezy integration
 ├── components/
-│   ├── ui/                # Radix primitives (LOCKED - 70+ components)
+│   ├── ui/                # Radix primitives (LOCKED - {{COMPONENT_COUNT_STRING}} components)
 │   ├── docs/              # Docs components & templates
 │   │   └── templates/     # Template components (NOT in app/templates/)
 │   ├── landing/           # Landing sections
@@ -202,7 +199,7 @@ src/
 │   ├── polar.ts           # Polar client
 │   └── lemonsqueezy/      # Lemonsqueezy client
 └── design-system/
-    └── themes/            # Terminal theme (5 CRT color variants)
+└── themes/            # {{THEME_COUNT_INT}} terminal themes (OKLCH colors)
 ```
 
 ### Critical Files
@@ -752,11 +749,11 @@ When adding features: "Does this help ship faster?" If no, delete it.
 ### Design System
 - `docs/08-design/DESIGN_SYSTEM.md` - Complete design system specification
 - `src/app/globals.css` - CSS variables and utilities (100% OKLCH tokens)
-- `src/design-system/themes/` - Terminal theme (12 complete themes)
+- `src/design-system/themes/` - Terminal theme ({{THEME_COUNT_INT}} complete themes)
 - `.archives/design-system/2025-12-12-final/` - Launch audit reports (100/100 score)
 - `scripts/hex-to-oklch-converter.mjs` - Color conversion tool
 - `scripts/check-aria-labels.mjs` - Accessibility audit tool
-- `/docs/components/overview` - Component documentation
+- `/docs/components/overview` - Component documentation ({{COMPONENT_COUNT_INT}} UI components)
 
 ### Card Documentation (5 Files)
 

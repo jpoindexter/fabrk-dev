@@ -5,9 +5,10 @@
   "description": "Production-ready Next.js SaaS boilerplate",
   "scripts": {
     "count-components": "node scripts/count-ui-components.mjs",
-    "predev": "npm run count-components",
-    "prebuild": "npm run count-components",
-    "postinstall": "npm run count-components",
+    "update-markdown-dynamic-data": "node scripts/update-markdown-dynamic-data.mjs",
+    "predev": "npm run count-components && npm run update-markdown-dynamic-data",
+    "prebuild": "npm run count-components && npm run update-markdown-dynamic-data",
+    "postinstall": "npm run count-components && npm run update-markdown-dynamic-data",
     "dev": "lsof -ti:3000 | xargs kill -9 2>/dev/null || true && next dev",
     "dev:restart": "npm run dev",
     "build": "prisma generate && next build",
