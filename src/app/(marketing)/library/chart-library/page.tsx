@@ -8,7 +8,6 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent, TemplatePageHeader } from '@/components/ui/card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
 import { TemplatePreviewWrapper } from '@/components/library';
@@ -477,6 +476,8 @@ function ChartLibraryPreview() {
 }
 
 export default function ChartLibraryTemplate() {
+  const [activeTab, setActiveTab] = useState('preview');
+
   return (
     <div className="w-full overflow-x-hidden">
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
@@ -488,36 +489,35 @@ export default function ChartLibraryTemplate() {
         />
 
         {/* Preview/Code Tabs */}
-        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
-          {/* Tab Navigation Card */}
-          <Card>
-            <CardHeader code="0x00" title="TEMPLATE PREVIEW" />
-            <div className="flex items-center justify-between">
-              <TabsList>
-                <TabsTrigger value="preview">Preview</TabsTrigger>
-                <TabsTrigger value="code">Code</TabsTrigger>
-              </TabsList>
-            </div>
-          </Card>
-
+        <StyledTabs
+          code="0x00"
+          title="TEMPLATE_PREVIEW"
+          tabs={[
+            { id: 'preview', label: '[PREVIEW]' },
+            { id: 'code', label: '[CODE]' },
+          ]}
+          value={activeTab}
+          onValueChange={setActiveTab}
+          className="w-full min-w-0 overflow-hidden"
+        >
           {/* Preview Tab Content */}
-          <TabsContent value="preview" className="mt-6 w-full max-w-full">
+          <StyledTabsContent value="preview" className="w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="LIVE PREVIEW" />
+              <CardHeader code="0x01" title="LIVE_PREVIEW" />
               <ChartLibraryPreview />
             </Card>
-          </TabsContent>
+          </StyledTabsContent>
 
           {/* Code Tab Content */}
-          <TabsContent value="code" className="mt-6 w-full max-w-full">
+          <StyledTabsContent value="code" className="w-full max-w-full">
             <Card className="overflow-hidden">
-              <CardHeader code="0x01" title="SOURCE CODE" />
+              <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
               </div>
             </Card>
-          </TabsContent>
-        </Tabs>
+          </StyledTabsContent>
+        </StyledTabs>
 
         {/* File Structure */}
         <Card>

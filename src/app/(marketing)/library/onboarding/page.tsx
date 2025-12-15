@@ -17,7 +17,7 @@ import {
   FeatureItem,
   TemplatePageHeader,
 } from '@/components/ui/card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { OnboardingChecklist } from '@/components/ui/onboarding-checklist';
 import { TemplatePreviewWrapper } from '@/components/library';
@@ -361,7 +361,8 @@ function FileStructureLine({ path, label }: { path: string; label?: string }) {
 }
 
 export default function OnboardingTemplate() {
-  const [activeVariant, setActiveVariant] = useState<'wizard' | 'checklist'>('wizard');
+  const [activeVariant, setActiveVariant] = useState<string>('wizard');
+  const [activePreviewTab, setActivePreviewTab] = useState<string>('preview');
 
   const wizardFeatures = [
     '5-step onboarding flow',
@@ -392,97 +393,81 @@ export default function OnboardingTemplate() {
         />
 
         {/* Variant Selector */}
-        <Tabs
-          defaultValue="wizard"
-          className="w-full"
-          onValueChange={(v) => setActiveVariant(v as 'wizard' | 'checklist')}
+        <StyledTabs
+          code="0x00"
+          title="TEMPLATE_PREVIEW"
+          tabs={[
+            { id: 'wizard', label: '[WIZARD]' },
+            { id: 'checklist', label: '[CHECKLIST]' },
+          ]}
+          value={activeVariant}
+          onValueChange={setActiveVariant}
+          className="w-full min-w-0 overflow-hidden"
         >
-          <Card>
-            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
-            <div className="flex items-center justify-between">
-              <TabsList>
-                <TabsTrigger value="wizard" aria-label="Wizard flow variant">
-                  [WIZARD]
-                </TabsTrigger>
-                <TabsTrigger value="checklist" aria-label="Checklist variant">
-                  [CHECKLIST]
-                </TabsTrigger>
-              </TabsList>
-            </div>
-          </Card>
-
           {/* Wizard Tab */}
-          <TabsContent value="wizard" className="mt-6 space-y-6">
+          <StyledTabsContent value="wizard" className="w-full max-w-full space-y-6">
             {/* Wizard Preview/Code Tabs */}
-            <Tabs defaultValue="preview" className="w-full">
-              <Card>
-                <CardHeader code="0x01" title="WIZARD_FLOW" />
-                <div className="flex items-center justify-between">
-                  <TabsList>
-                    <TabsTrigger value="preview" aria-label="Preview wizard">
-                      [PREVIEW]
-                    </TabsTrigger>
-                    <TabsTrigger value="code" aria-label="View wizard code">
-                      [CODE]
-                    </TabsTrigger>
-                  </TabsList>
-                </div>
-              </Card>
-
-              <TabsContent value="preview" className="mt-6">
+            <StyledTabs
+              code="0x01"
+              title="WIZARD_FLOW"
+              tabs={[
+                { id: 'preview', label: '[PREVIEW]' },
+                { id: 'code', label: '[CODE]' },
+              ]}
+              value={activePreviewTab}
+              onValueChange={setActivePreviewTab}
+              className="w-full min-w-0 overflow-hidden"
+            >
+              <StyledTabsContent value="preview" className="w-full max-w-full">
                 <Card className="overflow-hidden">
                   <CardHeader code="0x02" title="LIVE_PREVIEW" />
                   <OnboardingPreview />
                 </Card>
-              </TabsContent>
+              </StyledTabsContent>
 
-              <TabsContent value="code" className="mt-6">
+              <StyledTabsContent value="code" className="w-full max-w-full">
                 <Card className="overflow-hidden">
                   <CardHeader code="0x02" title="SOURCE_CODE" />
                   <div className="w-full max-w-full overflow-x-auto p-4">
                     <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
                   </div>
                 </Card>
-              </TabsContent>
-            </Tabs>
-          </TabsContent>
+              </StyledTabsContent>
+            </StyledTabs>
+          </StyledTabsContent>
 
           {/* Checklist Tab */}
-          <TabsContent value="checklist" className="mt-6 space-y-6">
+          <StyledTabsContent value="checklist" className="w-full max-w-full space-y-6">
             {/* Checklist Preview/Code Tabs */}
-            <Tabs defaultValue="preview" className="w-full">
-              <Card>
-                <CardHeader code="0x01" title="CHECKLIST_FLOW" />
-                <div className="flex items-center justify-between">
-                  <TabsList>
-                    <TabsTrigger value="preview" aria-label="Preview checklist">
-                      [PREVIEW]
-                    </TabsTrigger>
-                    <TabsTrigger value="code" aria-label="View checklist code">
-                      [CODE]
-                    </TabsTrigger>
-                  </TabsList>
-                </div>
-              </Card>
-
-              <TabsContent value="preview" className="mt-6">
+            <StyledTabs
+              code="0x01"
+              title="CHECKLIST_FLOW"
+              tabs={[
+                { id: 'preview', label: '[PREVIEW]' },
+                { id: 'code', label: '[CODE]' },
+              ]}
+              value={activePreviewTab}
+              onValueChange={setActivePreviewTab}
+              className="w-full min-w-0 overflow-hidden"
+            >
+              <StyledTabsContent value="preview" className="w-full max-w-full">
                 <Card className="overflow-hidden">
                   <CardHeader code="0x02" title="LIVE_PREVIEW" />
                   <ChecklistPreview />
                 </Card>
-              </TabsContent>
+              </StyledTabsContent>
 
-              <TabsContent value="code" className="mt-6">
+              <StyledTabsContent value="code" className="w-full max-w-full">
                 <Card className="overflow-hidden">
                   <CardHeader code="0x02" title="SOURCE_CODE" />
                   <div className="w-full max-w-full overflow-x-auto p-4">
                     <CodeBlock code={checklistCode} language="tsx" maxHeight="600px" />
                   </div>
                 </Card>
-              </TabsContent>
-            </Tabs>
-          </TabsContent>
-        </Tabs>
+              </StyledTabsContent>
+            </StyledTabs>
+          </StyledTabsContent>
+        </StyledTabs>
 
         {/* File Structure */}
         <Card>

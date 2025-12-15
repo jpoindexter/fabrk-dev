@@ -1,82 +1,49 @@
 /**
  * ✅ FABRK COMPONENT
  * PostHog Integration Guide
+ * Uses LibraryGuideTemplate for consistent structure
  */
-'use client';
-
-import Link from 'next/link';
 import { BarChart3 } from 'lucide-react';
-import { mode } from '@/design-system';
-import { cn } from '@/lib/utils';
-import { Card, CardHeader, CardContent } from '@/components/ui/card';
-import { CodeBlock } from '@/components/ui/code-block';
-import { LibraryBreadcrumb } from '@/components/library';
+import { LibraryGuideTemplate, LibraryCodeBlock } from '@/components/library';
 
 export default function PostHogIntegrationPage() {
   return (
-    <div className="container mx-auto max-w-4xl space-y-8 px-6 py-8">
-      {/* Breadcrumb Navigation */}
-      <LibraryBreadcrumb
-        items={[
-          { label: 'Library', href: '/library' },
-          { label: 'Docs', href: '/library/docs' },
-          { label: 'PostHog Integration' },
-        ]}
-      />
-
-      <section className="space-y-4">
-        <div className="border-border inline-block border px-4 py-1">
-          <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-            [INTEGRATION]: POSTHOG_ANALYTICS
-          </span>
-        </div>
-        <div className="flex items-start gap-4">
-          <div className={cn('bg-primary/10 p-4', mode.radius)}>
-            <BarChart3 className="text-primary h-6 w-6" />
-          </div>
-          <div className="space-y-2">
-            <h1 className={cn(mode.font, 'text-3xl font-semibold tracking-tight')}>
-              PostHog Integration
-            </h1>
-            <p className={cn(mode.font, 'text-muted-foreground text-sm')}>
-              Add analytics and feature flags to track user behavior in templates.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <Card>
-        <CardHeader code="0x00" title="OVERVIEW" />
-        <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-4 text-xs')}>
-            <p>
-              Fabrk includes PostHog for analytics. Track events, user properties, and feature flags
-              in your templates.
-            </p>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader code="0x01" title="SETUP" />
-        <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-4 text-xs')}>
-            <CodeBlock
+    <LibraryGuideTemplate
+      breadcrumbs={[{ label: 'Docs', href: '/library/docs' }, { label: 'PostHog Integration' }]}
+      icon={BarChart3}
+      badgePrefix="INTEGRATION"
+      badge="POSTHOG_ANALYTICS"
+      title="PostHog Integration"
+      description="Add analytics and feature flags to track user behavior in templates."
+      meta={{ time: '~10 minutes', level: 'Beginner' }}
+      overview={{
+        text: 'Fabrk includes PostHog for analytics. Track events, user properties, and feature flags in your templates.',
+        highlights: [
+          'Event tracking for user actions',
+          'User identification and properties',
+          'Feature flags for A/B testing',
+          'Session recordings (optional)',
+        ],
+      }}
+      steps={[
+        {
+          code: '0x01',
+          title: 'SETUP',
+          content: (
+            <LibraryCodeBlock
               code={`# .env.local
 NEXT_PUBLIC_POSTHOG_KEY="phc_your_key"
 NEXT_PUBLIC_POSTHOG_HOST="https://app.posthog.com"`}
               language="bash"
               maxHeight="80px"
             />
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader code="0x02" title="TRACK EVENTS" />
-        <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-4 text-xs')}>
-            <CodeBlock
+          ),
+        },
+        {
+          code: '0x02',
+          title: 'TRACK EVENTS',
+          content: (
+            <LibraryCodeBlock
               code={`"use client";
 
 import { usePostHog } from "posthog-js/react";
@@ -96,15 +63,13 @@ export default function DashboardButton() {
               language="tsx"
               maxHeight="300px"
             />
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader code="0x03" title="IDENTIFY USERS" />
-        <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-4 text-xs')}>
-            <CodeBlock
+          ),
+        },
+        {
+          code: '0x03',
+          title: 'IDENTIFY USERS',
+          content: (
+            <LibraryCodeBlock
               code={`useEffect(() => {
   if (session?.user) {
     posthog.identify(session.user.id, {
@@ -116,30 +81,40 @@ export default function DashboardButton() {
               language="typescript"
               maxHeight="180px"
             />
-          </div>
-        </CardContent>
-      </Card>
+          ),
+        },
+        {
+          code: '0x04',
+          title: 'FEATURE FLAGS',
+          content: (
+            <LibraryCodeBlock
+              code={`import { useFeatureFlagEnabled } from "posthog-js/react";
 
-      <Card>
-        <CardHeader code="0x04" title="NEXT STEPS" />
-        <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-4 text-xs')}>
-            <ul className="text-muted-foreground list-inside list-disc space-y-2 pl-2">
-              <li>
-                <Link href="/library/docs/customization" className="text-primary hover:underline">
-                  Customize templates
-                </Link>{' '}
-                to match your brand
-              </li>
-              <li>
-                <Link href="/library/analytics-dashboard" className="text-primary hover:underline">
-                  View Analytics Dashboard
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+export function NewFeature() {
+  const isEnabled = useFeatureFlagEnabled("new-dashboard");
+
+  if (!isEnabled) return null;
+
+  return <NewDashboardComponent />;
+}`}
+              language="tsx"
+              maxHeight="200px"
+            />
+          ),
+        },
+      ]}
+      relatedLinks={[
+        {
+          label: 'Customize templates',
+          href: '/library/docs/customization',
+          description: 'to match your brand',
+        },
+        {
+          label: 'View Analytics Dashboard',
+          href: '/library/analytics-dashboard',
+          description: 'template',
+        },
+      ]}
+    />
   );
 }

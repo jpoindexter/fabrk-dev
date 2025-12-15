@@ -1,10 +1,12 @@
 /**
  * TemplateShowcasePage - Reusable wrapper for all template showcase pages
  * Eliminates boilerplate across 33+ template pages
+ *
+ * Uses StyledTabs for consistent bordered tab styling across all templates.
  */
 'use client';
 
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import Link from 'next/link';
 import { ErrorBoundary } from 'react-error-boundary';
 import { ChevronRight } from 'lucide-react';
@@ -16,7 +18,7 @@ import {
   FeatureList,
   FeatureItem,
 } from '@/components/ui/card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { RelatedTemplates } from './related-templates';
 import { mode } from '@/design-system';
@@ -150,6 +152,8 @@ export function TemplateShowcasePage({
   showRelated = true,
   relatedLimit = 3,
 }: TemplateShowcasePageProps) {
+  const [activeTab, setActiveTab] = useState('preview');
+
   return (
     <div className="w-full overflow-x-hidden">
       <div className="container mx-auto max-w-7xl space-y-6 overflow-hidden px-6 py-8">
@@ -187,43 +191,38 @@ export function TemplateShowcasePage({
         {/* Header */}
         <TemplatePageHeader badge={badge} title={title} description={description} />
 
-        {/* Preview/Code Tabs */}
-        <Tabs defaultValue="preview" className="w-full min-w-0 overflow-hidden">
-          {/* Tab Navigation Card */}
-          <Card>
-            <CardHeader code="0x00" title="TEMPLATE_PREVIEW" />
-            <div className="flex items-center justify-between">
-              <TabsList>
-                <TabsTrigger value="preview" aria-label="Preview template">
-                  [PREVIEW]
-                </TabsTrigger>
-                <TabsTrigger value="code" aria-label="View source code">
-                  [CODE]
-                </TabsTrigger>
-              </TabsList>
-            </div>
-          </Card>
-
+        {/* Preview/Code Tabs - Using StyledTabs for bordered style */}
+        <StyledTabs
+          code="0x00"
+          title="TEMPLATE_PREVIEW"
+          tabs={[
+            { id: 'preview', label: '[PREVIEW]' },
+            { id: 'code', label: '[CODE]' },
+          ]}
+          value={activeTab}
+          onValueChange={setActiveTab}
+          className="w-full min-w-0 overflow-hidden"
+        >
           {/* Preview Tab Content */}
-          <TabsContent value="preview" className="mt-6 w-full max-w-full" role="tabpanel">
+          <StyledTabsContent value="preview" className="w-full max-w-full">
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="LIVE_PREVIEW" />
               <ErrorBoundary FallbackComponent={PreviewError}>
                 <Suspense fallback={<PreviewSkeleton />}>{preview}</Suspense>
               </ErrorBoundary>
             </Card>
-          </TabsContent>
+          </StyledTabsContent>
 
           {/* Code Tab Content */}
-          <TabsContent value="code" className="mt-6 w-full max-w-full" role="tabpanel">
+          <StyledTabsContent value="code" className="w-full max-w-full">
             <Card className="overflow-hidden">
               <CardHeader code="0x01" title="SOURCE_CODE" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock code={code} language="tsx" maxHeight="600px" />
               </div>
             </Card>
-          </TabsContent>
-        </Tabs>
+          </StyledTabsContent>
+        </StyledTabs>
 
         {/* File Structure */}
         <Card>

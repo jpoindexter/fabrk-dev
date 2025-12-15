@@ -4,12 +4,13 @@
  */
 'use client';
 
+import { useState } from 'react';
 import { Sparkles, Send } from 'lucide-react';
 import { generateZodCode, generateComponentCode } from '@/components/ai';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
 import { cn } from '@/lib/utils';
@@ -195,6 +196,8 @@ export default function AIFormsPage() {
 }`;
 
 function AIFormGeneratorPreview() {
+  const [activeOutputTab, setActiveOutputTab] = useState('preview');
+
   return (
     <TemplatePreviewWrapper>
       <div className="space-y-6">
@@ -283,23 +286,22 @@ function AIFormGeneratorPreview() {
         </Card>
 
         {/* Results Section - Tabbed interface */}
-        <Tabs defaultValue="preview" className="w-full">
-          {/* Tab Navigation Card */}
-          <Card>
-            <CardHeader code="0x01" title="GENERATED OUTPUT" />
-            <div className="flex items-center justify-between">
-              <TabsList>
-                <TabsTrigger value="preview">Preview</TabsTrigger>
-                <TabsTrigger value="schema">Schema</TabsTrigger>
-                <TabsTrigger value="component">Component</TabsTrigger>
-              </TabsList>
-            </div>
-          </Card>
-
+        <StyledTabs
+          code="0x01"
+          title="GENERATED_OUTPUT"
+          tabs={[
+            { id: 'preview', label: '[PREVIEW]' },
+            { id: 'schema', label: '[SCHEMA]' },
+            { id: 'component', label: '[COMPONENT]' },
+          ]}
+          value={activeOutputTab}
+          onValueChange={setActiveOutputTab}
+          className="w-full min-w-0 overflow-hidden"
+        >
           {/* Preview Tab Content */}
-          <TabsContent value="preview" className="mt-6">
+          <StyledTabsContent value="preview" className="w-full max-w-full">
             <Card>
-              <CardHeader code="0x02" title="FORM PREVIEW" />
+              <CardHeader code="0x02" title="FORM_PREVIEW" />
               <div className="p-6">
                 <div className="mb-4">
                   <h3 className={cn('text-sm font-semibold', mode.font)}>{demoForm.name}</h3>
@@ -339,12 +341,12 @@ function AIFormGeneratorPreview() {
                 </form>
               </div>
             </Card>
-          </TabsContent>
+          </StyledTabsContent>
 
           {/* Schema Tab Content */}
-          <TabsContent value="schema" className="mt-6">
+          <StyledTabsContent value="schema" className="w-full max-w-full">
             <Card>
-              <CardHeader code="0x02" title="ZOD SCHEMA" />
+              <CardHeader code="0x02" title="ZOD_SCHEMA" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock
                   code={generateZodCode(demoForm)}
@@ -353,12 +355,12 @@ function AIFormGeneratorPreview() {
                 />
               </div>
             </Card>
-          </TabsContent>
+          </StyledTabsContent>
 
           {/* Component Tab Content */}
-          <TabsContent value="component" className="mt-6">
+          <StyledTabsContent value="component" className="w-full max-w-full">
             <Card>
-              <CardHeader code="0x02" title="REACT COMPONENT" />
+              <CardHeader code="0x02" title="REACT_COMPONENT" />
               <div className="w-full max-w-full overflow-x-auto p-4">
                 <CodeBlock
                   code={generateComponentCode(demoForm)}
@@ -367,8 +369,8 @@ function AIFormGeneratorPreview() {
                 />
               </div>
             </Card>
-          </TabsContent>
-        </Tabs>
+          </StyledTabsContent>
+        </StyledTabs>
       </div>
     </TemplatePreviewWrapper>
   );

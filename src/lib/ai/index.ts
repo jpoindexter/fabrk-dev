@@ -447,3 +447,11 @@ export function estimateTokens(text: string): number {
   // Rough estimation: ~4 characters per token
   return Math.ceil(text.length / 4);
 }
+
+// Re-export Vercel AI SDK provider utilities
+export {
+  getModel,
+  isAIConfigured,
+  getCurrentProviderName,
+  getConfiguredProvider,
+} from './provider';

@@ -16,7 +16,15 @@ export {
   type FileStructureItem,
 } from './template-showcase-page';
 export {
+  CategoryShowcasePage,
+  type CategoryShowcasePageProps,
+  type CategoryTemplate,
+} from './category-showcase-page';
+export {
   LibraryBreadcrumb,
   type LibraryBreadcrumbProps,
   type BreadcrumbItem,
 } from './library-breadcrumb';
+export { LibraryGuideTemplate, CodeBlock as LibraryCodeBlock } from './library-guide-template';
+export { BrowserChrome } from './browser-chrome';
+export * from './ai-chat';

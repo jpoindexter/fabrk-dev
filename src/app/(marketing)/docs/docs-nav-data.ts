@@ -46,6 +46,11 @@ import {
   Monitor,
   GalleryVerticalEnd,
   Accessibility,
+  Sparkles,
+  Image,
+  Volume2,
+  Mic,
+  Cpu,
 } from 'lucide-react';
 
 export const docsNavigation: NavSection[] = [
@@ -219,6 +224,55 @@ export const docsNavigation: NavSection[] = [
         title: '[06.6] WEBHOOKS',
         href: '/docs/features/webhooks',
         icon: Webhook,
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PHASE 6.5: AI FEATURES - Build AI-powered applications
+  // ═══════════════════════════════════════════════════════════════════════════
+  {
+    title: '[06.AI] AI FEATURES',
+    items: [
+      {
+        title: '[AI.1] AI INTEGRATION',
+        href: '/docs/features/ai-integration',
+        icon: Sparkles,
+      },
+      {
+        title: '[AI.2] AI CHAT',
+        href: '/library/ai-chat',
+        icon: MessageSquare,
+      },
+      {
+        title: '[AI.3] TEXT TOOLS',
+        href: '/library/ai-text-tools',
+        icon: FileText,
+      },
+      {
+        title: '[AI.4] IMAGE GENERATION',
+        href: '/library/ai-image',
+        icon: Image,
+      },
+      {
+        title: '[AI.5] VOICE (STT/TTS)',
+        href: '/library/ai-voice',
+        icon: Volume2,
+      },
+      {
+        title: '[AI.6] AI FORMS',
+        href: '/library/ai-forms',
+        icon: FileCode,
+      },
+      {
+        title: '[AI.7] AI CREDITS',
+        href: '/docs/features/ai-credits',
+        icon: Coins,
+      },
+      {
+        title: '[AI.8] MCP SERVER',
+        href: '/docs/features/mcp-server',
+        icon: Bot,
       },
     ],
   },

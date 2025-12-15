@@ -5,7 +5,6 @@
  * Production-ready ✓
  */
 
-import { Badge } from '@/components/ui/badge';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -29,9 +28,19 @@ export function SectionHeader({
 
   return (
     <div className={cn('mb-16 max-w-3xl', containerClass, alignClass)}>
-      <Badge variant="outline" className="mb-6">
-        [{code}] {badge}
-      </Badge>
+      {/* Badge - matches CardHeader/Card Badge styling with solid background */}
+      <div
+        className={cn(
+          'mb-6 inline-block border px-4 py-1',
+          mode.color.border.default,
+          mode.color.bg.surface,
+          mode.radius
+        )}
+      >
+        <span className={cn(mode.color.text.muted, mode.typography.caption, mode.font)}>
+          [ [{code}] {badge} ]
+        </span>
+      </div>
 
       <h2
         className={cn(

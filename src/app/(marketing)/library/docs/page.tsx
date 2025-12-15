@@ -118,7 +118,14 @@ export default function LibraryDocsPage() {
 
       {/* Hero Section */}
       <section className="space-y-4">
-        <div className="border-border inline-block border px-4 py-1">
+        <div
+          className={cn(
+            'inline-block border px-4 py-1',
+            mode.color.bg.surface,
+            mode.color.border.default,
+            mode.radius
+          )}
+        >
           <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
             [DOCUMENTATION]: {stats.totalGuides} COMPREHENSIVE GUIDES
           </span>

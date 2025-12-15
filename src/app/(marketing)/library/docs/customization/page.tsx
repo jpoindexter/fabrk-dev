@@ -2,111 +2,43 @@
  * ✅ FABRK COMPONENT
  * Customization Guide
  * Complete guide for customizing templates and design system
+ * Uses LibraryGuideTemplate for consistent structure
  *
  * NOTE: This file intentionally contains non-terminal design patterns (rounded corners, etc.)
  * as teaching examples. These are pedagogical - showing users how to customize.
  * Design system audit should skip this file.
  */
-'use client';
-
 import Link from 'next/link';
 import { Palette, CheckCircle } from 'lucide-react';
-import { mode } from '@/design-system';
-import { cn } from '@/lib/utils';
-import { Card, CardHeader, CardContent } from '@/components/ui/card';
-import { CodeBlock } from '@/components/ui/code-block';
-import { LibraryBreadcrumb } from '@/components/library';
+import { LibraryGuideTemplate, LibraryCodeBlock } from '@/components/library';
 
 export default function CustomizationPage() {
   return (
-    <div className="container mx-auto max-w-4xl space-y-8 px-6 py-8">
-      {/* Breadcrumb Navigation */}
-      <LibraryBreadcrumb
-        items={[
-          { label: 'Library', href: '/library' },
-          { label: 'Docs', href: '/library/docs' },
-          { label: 'Customization' },
-        ]}
-      />
-
-      <section className="space-y-4">
-        <div className="border-border inline-block border px-4 py-1">
-          <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-            [GUIDE]: CUSTOMIZATION
-          </span>
-        </div>
-
-        <div className="flex items-start gap-4">
-          <div className={cn('bg-primary/10 p-4', mode.radius)}>
-            <Palette className="text-primary h-6 w-6" />
-          </div>
-          <div className="space-y-2">
-            <h1 className={cn(mode.font, 'text-3xl font-semibold tracking-tight')}>
-              Customization Guide
-            </h1>
-            <p className={cn(mode.font, 'text-muted-foreground text-sm')}>
-              Modify design system, change colors, update components, and add features to match your
-              brand.
-            </p>
-          </div>
-        </div>
-
-        <div className="border-border border-l-primary flex items-center gap-6 border-l-2 pl-4">
-          <div>
-            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>Time: </span>
-            <span className={cn(mode.font, 'text-primary text-xs font-medium')}>~20 minutes</span>
-          </div>
-          <div>
-            <span className={cn(mode.font, 'text-muted-foreground text-xs')}>Level: </span>
-            <span className={cn(mode.font, 'text-primary text-xs font-medium')}>Intermediate</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Design System Overview */}
-      <Card>
-        <CardHeader code="0x00" title="DESIGN SYSTEM OVERVIEW" />
-        <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-4 text-xs')}>
-            <p>
-              Fabrk uses a centralized design system in{' '}
-              <code className="bg-muted px-1">src/design-system.ts</code> and CSS variables in{' '}
-              <code className="bg-muted px-1">globals.css</code>. All templates use these tokens for
-              consistency.
-            </p>
-
-            <div className="bg-muted/30 border-border border p-4">
-              <p className="text-primary mb-2 font-medium">[DESIGN SYSTEM FILES]:</p>
-              <ul className="text-muted-foreground list-inside list-disc space-y-1 pl-2">
-                <li>
-                  <code className="bg-muted px-1">src/design-system.ts</code> - TypeScript design
-                  tokens
-                </li>
-                <li>
-                  <code className="bg-muted px-1">src/app/globals.css</code> - CSS variables for
-                  colors
-                </li>
-                <li>
-                  <code className="bg-muted px-1">tailwind.config.ts</code> - Tailwind configuration
-                </li>
-                <li>
-                  <code className="bg-muted px-1">DESIGN_SYSTEM.md</code> - Complete specification
-                </li>
-              </ul>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Change Colors */}
-      <Card>
-        <CardHeader code="0x01" title="CHANGE COLORS" />
-        <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-4 text-xs')}>
-            <p>Update color scheme by modifying CSS variables:</p>
-
-            <CodeBlock
-              code={`/* src/app/globals.css */
+    <LibraryGuideTemplate
+      breadcrumbs={[{ label: 'Docs', href: '/library/docs' }, { label: 'Customization' }]}
+      icon={Palette}
+      badge="CUSTOMIZATION"
+      title="Customization Guide"
+      description="Modify design system, change colors, update components, and add features to match your brand."
+      meta={{ time: '~20 minutes', level: 'Intermediate' }}
+      overview={{
+        text: 'Fabrk uses a centralized design system in src/design-system.ts and CSS variables in globals.css. All templates use these tokens for consistency.',
+        highlights: [
+          'src/design-system.ts - TypeScript design tokens',
+          'src/app/globals.css - CSS variables for colors',
+          'tailwind.config.ts - Tailwind configuration',
+          'DESIGN_SYSTEM.md - Complete specification',
+        ],
+      }}
+      steps={[
+        {
+          code: '0x01',
+          title: 'CHANGE COLORS',
+          content: (
+            <>
+              <p>Update color scheme by modifying CSS variables:</p>
+              <LibraryCodeBlock
+                code={`/* src/app/globals.css */
 @layer base {
   :root {
     --background: 0 0% 100%;     /* White background */
@@ -127,38 +59,35 @@ export default function CustomizationPage() {
     /* ... dark mode colors */
   }
 }`}
-              language="css"
-              maxHeight="350px"
-            />
-
-            <div className="border-border border p-4">
-              <p className="text-primary mb-2 font-medium">[COLOR TOOL]:</p>
-              <p className="text-muted-foreground">
-                Use{' '}
-                <a
-                  href="https://uicolors.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline"
-                >
-                  uicolors.app
-                </a>{' '}
-                to generate HSL color scales, then copy values to globals.css.
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Change Typography */}
-      <Card>
-        <CardHeader code="0x02" title="CHANGE TYPOGRAPHY" />
-        <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-4 text-xs')}>
-            <p>Replace terminal font with your brand font:</p>
-
-            <CodeBlock
-              code={`// src/app/layout.tsx
+                language="css"
+                maxHeight="350px"
+              />
+              <div className="border-border border p-4">
+                <p className="text-primary mb-2 font-medium">[COLOR TOOL]:</p>
+                <p className="text-muted-foreground">
+                  Use{' '}
+                  <a
+                    href="https://uicolors.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    uicolors.app
+                  </a>{' '}
+                  to generate HSL color scales, then copy values to globals.css.
+                </p>
+              </div>
+            </>
+          ),
+        },
+        {
+          code: '0x02',
+          title: 'CHANGE TYPOGRAPHY',
+          content: (
+            <>
+              <p>Replace terminal font with your brand font:</p>
+              <LibraryCodeBlock
+                code={`// src/app/layout.tsx
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -172,35 +101,31 @@ export default function RootLayout({ children }) {
     </html>
   );
 }`}
-              language="tsx"
-              maxHeight="250px"
-            />
-
-            <p>Update design system tokens:</p>
-
-            <CodeBlock
-              code={`// src/design-system.ts
+                language="tsx"
+                maxHeight="250px"
+              />
+              <p>Update design system tokens:</p>
+              <LibraryCodeBlock
+                code={`// src/design-system.ts
 export const mode = {
   font: "", // Remove font-mono
   radius: "rounded" + "-lg", // Example: Change from rounded-none to rounded corners
   // ... rest of design system
 };`}
-              language="typescript"
-              maxHeight="150px"
-            />
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Change Border Radius */}
-      <Card>
-        <CardHeader code="0x03" title="CHANGE BORDER RADIUS" />
-        <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-4 text-xs')}>
-            <p>Switch from sharp terminal aesthetic to rounded design:</p>
-
-            <CodeBlock
-              code={`// src/design-system.ts
+                language="typescript"
+                maxHeight="150px"
+              />
+            </>
+          ),
+        },
+        {
+          code: '0x03',
+          title: 'CHANGE BORDER RADIUS',
+          content: (
+            <>
+              <p>Switch from sharp terminal aesthetic to rounded design:</p>
+              <LibraryCodeBlock
+                code={`// src/design-system.ts
 export const mode = {
   font: "font-sans",
   radius: "rounded" + "-lg",  // Example: rounded corners (change from rounded-none)
@@ -213,42 +138,38 @@ export const mode = {
     --radius: 0.5rem;  /* 8px = rounded corners */
   }
 }`}
-              language="typescript"
-              maxHeight="200px"
-            />
-
-            <div className="bg-muted/30 border-border border p-4">
-              <p className="text-primary mb-2 font-medium">[RADIUS VALUES]:</p>
-              <ul className="text-muted-foreground list-inside list-disc space-y-1 pl-2">
-                <li>
-                  <code className="bg-muted px-1">rounded-none</code> → 0px (terminal default)
-                </li>
-                <li>
-                  <code className="bg-muted px-1">rounded{'‑'}sm</code> → 2px (subtle)
-                </li>
-                <li>
-                  <code className="bg-muted px-1">rounded{'‑'}md</code> → 6px (moderate)
-                </li>
-                <li>
-                  <code className="bg-muted px-1">rounded{'‑'}lg</code> → 8px (soft)
-                </li>
-              </ul>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Modify Components */}
-      <Card>
-        <CardHeader code="0x04" title="MODIFY COMPONENTS" />
-        <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-4 text-xs')}>
-            <p>Customize individual template components:</p>
-
-            <div className="space-y-4">
+                language="typescript"
+                maxHeight="200px"
+              />
+              <div className="bg-muted/30 border-border border p-4">
+                <p className="text-primary mb-2 font-medium">[RADIUS VALUES]:</p>
+                <ul className="text-muted-foreground list-inside list-disc space-y-1 pl-2">
+                  <li>
+                    <code className="bg-muted px-1">rounded-none</code> → 0px (terminal default)
+                  </li>
+                  <li>
+                    <code className="bg-muted px-1">rounded‑sm</code> → 2px (subtle)
+                  </li>
+                  <li>
+                    <code className="bg-muted px-1">rounded‑md</code> → 6px (moderate)
+                  </li>
+                  <li>
+                    <code className="bg-muted px-1">rounded‑lg</code> → 8px (soft)
+                  </li>
+                </ul>
+              </div>
+            </>
+          ),
+        },
+        {
+          code: '0x04',
+          title: 'MODIFY COMPONENTS',
+          content: (
+            <>
+              <p>Customize individual template components:</p>
               <div className="border-border border-l-primary border-l-2 pl-4">
                 <p className="font-medium">Change button style:</p>
-                <CodeBlock
+                <LibraryCodeBlock
                   code={`// Before: Terminal style
 <Button className={cn(mode.radius, mode.font, "text-xs")}>
   > SUBMIT
@@ -262,10 +183,9 @@ export const mode = {
                   maxHeight="180px"
                 />
               </div>
-
               <div className="border-border border-l-primary border-l-2 pl-4">
                 <p className="font-medium">Update card headers:</p>
-                <CodeBlock
+                <LibraryCodeBlock
                   code={`// Replace terminal headers
 - <CardHeader code="0x00" title="SECTION_NAME" />
 
@@ -277,22 +197,18 @@ export const mode = {
                   maxHeight="150px"
                 />
               </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Add Custom Features */}
-      <Card>
-        <CardHeader code="0x05" title="ADD CUSTOM FEATURES" />
-        <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-4 text-xs')}>
-            <p>Extend templates with new functionality:</p>
-
-            <div className="space-y-4">
+            </>
+          ),
+        },
+        {
+          code: '0x05',
+          title: 'ADD CUSTOM FEATURES',
+          content: (
+            <>
+              <p>Extend templates with new functionality:</p>
               <div className="border-border border p-4">
                 <p className="text-primary mb-2 font-medium">1. Add Search to Tables:</p>
-                <CodeBlock
+                <LibraryCodeBlock
                   code={`const [searchQuery, setSearchQuery] = useState("");
 
 const filteredData = data.filter(item =>
@@ -308,10 +224,9 @@ const filteredData = data.filter(item =>
                   maxHeight="200px"
                 />
               </div>
-
               <div className="border-border border p-4">
                 <p className="text-primary mb-2 font-medium">2. Add Export Functionality:</p>
-                <CodeBlock
+                <LibraryCodeBlock
                   code={`function exportToCSV(data) {
   const csv = data.map(row => Object.values(row).join(",")).join("\\n");
   const blob = new Blob([csv], { type: "text/csv" });
@@ -325,64 +240,58 @@ const filteredData = data.filter(item =>
                   maxHeight="220px"
                 />
               </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Testing Changes */}
-      <Card>
-        <CardHeader code="0x06" title="TESTING CHANGES" />
-        <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-4 text-xs')}>
-            <p>After making customizations, verify everything works:</p>
-
-            <div className="space-y-2">
-              <div className="flex items-start gap-2">
-                <CheckCircle className="text-success mt-0.5 h-4 w-4 flex-shrink-0" />
-                <div>
-                  <p className="font-medium">Run type check:</p>
-                  <CodeBlock code="npm run type-check" language="bash" maxHeight="60px" />
+            </>
+          ),
+        },
+        {
+          code: '0x06',
+          title: 'TESTING CHANGES',
+          content: (
+            <>
+              <p>After making customizations, verify everything works:</p>
+              <div className="space-y-2">
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="text-success mt-0.5 h-4 w-4 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium">Run type check:</p>
+                    <LibraryCodeBlock code="npm run type-check" language="bash" maxHeight="60px" />
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="text-success mt-0.5 h-4 w-4 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium">Test in multiple themes:</p>
+                    <p className="text-muted-foreground">
+                      Toggle light/dark mode to verify colors work
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="text-success mt-0.5 h-4 w-4 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium">Check responsive design:</p>
+                    <p className="text-muted-foreground">
+                      Test on mobile, tablet, and desktop sizes
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="text-success mt-0.5 h-4 w-4 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium">Verify accessibility:</p>
+                    <p className="text-muted-foreground">
+                      Use Lighthouse audit to check color contrast and keyboard navigation
+                    </p>
+                  </div>
                 </div>
               </div>
-
-              <div className="flex items-start gap-2">
-                <CheckCircle className="text-success mt-0.5 h-4 w-4 flex-shrink-0" />
-                <div>
-                  <p className="font-medium">Test in multiple themes:</p>
-                  <p className="text-muted-foreground">
-                    Toggle light/dark mode to verify colors work
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-2">
-                <CheckCircle className="text-success mt-0.5 h-4 w-4 flex-shrink-0" />
-                <div>
-                  <p className="font-medium">Check responsive design:</p>
-                  <p className="text-muted-foreground">Test on mobile, tablet, and desktop sizes</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-2">
-                <CheckCircle className="text-success mt-0.5 h-4 w-4 flex-shrink-0" />
-                <div>
-                  <p className="font-medium">Verify accessibility:</p>
-                  <p className="text-muted-foreground">
-                    Use Lighthouse audit to check color contrast and keyboard navigation
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Best Practices */}
-      <Card>
-        <CardHeader code="0x07" title="BEST PRACTICES" />
-        <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-4 text-xs')}>
+            </>
+          ),
+        },
+        {
+          code: '0x07',
+          title: 'BEST PRACTICES',
+          content: (
             <ul className="text-muted-foreground list-inside list-disc space-y-2 pl-2">
               <li>
                 <span className="font-medium">Use design tokens:</span> Always use CSS variables
@@ -405,40 +314,26 @@ const filteredData = data.filter(item =>
                 separately from feature work
               </li>
             </ul>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Next Steps */}
-      <Card>
-        <CardHeader code="0x08" title="NEXT STEPS" />
-        <CardContent padding="md">
-          <div className={cn(mode.font, 'space-y-4 text-xs')}>
-            <p>After customizing your templates:</p>
-
-            <ul className="text-muted-foreground list-inside list-disc space-y-2 pl-2">
-              <li>
-                <Link href="/library/docs/troubleshooting" className="text-primary hover:underline">
-                  Check troubleshooting
-                </Link>{' '}
-                if you encounter issues
-              </li>
-              <li>
-                <Link href="/library" className="text-primary hover:underline">
-                  Browse more templates
-                </Link>{' '}
-                to add to your project
-              </li>
-              <li>
-                <Link href="/docs" className="text-primary hover:underline">
-                  Read component docs
-                </Link>{' '}
-                for advanced customization
-              </li>
-            </ul>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+          ),
+        },
+      ]}
+      relatedLinks={[
+        {
+          label: 'Check troubleshooting',
+          href: '/library/docs/troubleshooting',
+          description: 'if you encounter issues',
+        },
+        {
+          label: 'Browse more templates',
+          href: '/library',
+          description: 'to add to your project',
+        },
+        {
+          label: 'Read component docs',
+          href: '/docs',
+          description: 'for advanced customization',
+        },
+      ]}
+    />
   );
 }

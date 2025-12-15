@@ -465,6 +465,7 @@ const PageBadge = React.forwardRef<HTMLDivElement, PageBadgeProps>(
       data-slot="page-badge"
       className={cn(
         'inline-block border px-4 py-1',
+        mode.color.bg.surface,
         mode.color.border.default,
         mode.radius,
         className

@@ -14,7 +14,7 @@ import {
   FeatureItem,
   TemplatePageHeader,
 } from '@/components/ui/card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { TemplatePreviewWrapper } from '@/components/library';
 import { RelatedTemplates } from '@/components/library/related-templates';
@@ -531,47 +531,49 @@ const errorLabels: Record<ErrorType, string> = {
 function ErrorTabContent({
   errorType,
   templateCode,
+  activePreviewTab,
+  onPreviewTabChange,
 }: {
   errorType: ErrorType;
   templateCode: string;
+  activePreviewTab: string;
+  onPreviewTabChange: (value: string) => void;
 }) {
   return (
-    <TabsContent value={errorType} className="mt-6 space-y-6">
-      <Tabs defaultValue="preview" className="w-full">
-        <Card>
-          <CardHeader code="0x01" title={errorTitles[errorType]} />
-          <div className="flex items-center justify-between">
-            <TabsList>
-              <TabsTrigger value="preview" aria-label={`Preview ${errorLabels[errorType]}`}>
-                [PREVIEW]
-              </TabsTrigger>
-              <TabsTrigger value="code" aria-label={`View ${errorLabels[errorType]} code`}>
-                [CODE]
-              </TabsTrigger>
-            </TabsList>
-          </div>
-        </Card>
-        <TabsContent value="preview" className="mt-6">
+    <StyledTabsContent value={errorType} className="w-full max-w-full space-y-6">
+      <StyledTabs
+        code="0x01"
+        title={errorTitles[errorType]}
+        tabs={[
+          { id: 'preview', label: '[PREVIEW]' },
+          { id: 'code', label: '[CODE]' },
+        ]}
+        value={activePreviewTab}
+        onValueChange={onPreviewTabChange}
+        className="w-full min-w-0 overflow-hidden"
+      >
+        <StyledTabsContent value="preview" className="w-full max-w-full">
           <Card className="overflow-hidden">
             <CardHeader code="0x02" title="LIVE_PREVIEW" />
             <ErrorPreview errorType={errorType} />
           </Card>
-        </TabsContent>
-        <TabsContent value="code" className="mt-6">
+        </StyledTabsContent>
+        <StyledTabsContent value="code" className="w-full max-w-full">
           <Card className="overflow-hidden">
             <CardHeader code="0x02" title="SOURCE_CODE" />
             <div className="w-full max-w-full overflow-x-auto p-4">
               <CodeBlock code={templateCode} language="tsx" maxHeight="600px" />
             </div>
           </Card>
-        </TabsContent>
-      </Tabs>
-    </TabsContent>
+        </StyledTabsContent>
+      </StyledTabs>
+    </StyledTabsContent>
   );
 }
 
 export default function ErrorPagesTemplate() {
   const [activeError, setActiveError] = useState<string>('404');
+  const [activePreviewTab, setActivePreviewTab] = useState<string>('preview');
 
   const features = [
     'Generic error page template',
@@ -639,47 +641,35 @@ export default function ErrorPagesTemplate() {
         />
 
         {/* Error Type Selector */}
-        <Tabs defaultValue="404" className="w-full" onValueChange={(v) => setActiveError(v)}>
-          <Card>
-            <CardHeader code="0x00" title="ERROR_TEMPLATES" />
-            <div className="overflow-x-auto">
-              <TabsList>
-                <TabsTrigger value="error" aria-label="Generic error page">
-                  [ERROR]
-                </TabsTrigger>
-                <TabsTrigger value="401" aria-label="401 Unauthorized page">
-                  [401]
-                </TabsTrigger>
-                <TabsTrigger value="403" aria-label="403 Forbidden page">
-                  [403]
-                </TabsTrigger>
-                <TabsTrigger value="404" aria-label="404 Not Found page">
-                  [404]
-                </TabsTrigger>
-                <TabsTrigger value="429" aria-label="429 Rate Limit page">
-                  [429]
-                </TabsTrigger>
-                <TabsTrigger value="500" aria-label="500 Server Error page">
-                  [500]
-                </TabsTrigger>
-                <TabsTrigger value="502" aria-label="502 Bad Gateway page">
-                  [502]
-                </TabsTrigger>
-                <TabsTrigger value="503" aria-label="503 Maintenance page">
-                  [503]
-                </TabsTrigger>
-                <TabsTrigger value="504" aria-label="504 Gateway Timeout page">
-                  [504]
-                </TabsTrigger>
-              </TabsList>
-            </div>
-          </Card>
-
+        <StyledTabs
+          code="0x00"
+          title="ERROR_TEMPLATES"
+          tabs={[
+            { id: 'error', label: '[ERROR]' },
+            { id: '401', label: '[401]' },
+            { id: '403', label: '[403]' },
+            { id: '404', label: '[404]' },
+            { id: '429', label: '[429]' },
+            { id: '500', label: '[500]' },
+            { id: '502', label: '[502]' },
+            { id: '503', label: '[503]' },
+            { id: '504', label: '[504]' },
+          ]}
+          value={activeError}
+          onValueChange={setActiveError}
+          className="w-full min-w-0 overflow-hidden"
+        >
           {/* All Error Type Tabs - Data-driven (DRY) */}
           {errorTypes.map((errorType) => (
-            <ErrorTabContent key={errorType} errorType={errorType} templateCode={templateCode} />
+            <ErrorTabContent
+              key={errorType}
+              errorType={errorType}
+              templateCode={templateCode}
+              activePreviewTab={activePreviewTab}
+              onPreviewTabChange={setActivePreviewTab}
+            />
           ))}
-        </Tabs>
+        </StyledTabs>
 
         {/* File Structure */}
         {/* File Structure */}
