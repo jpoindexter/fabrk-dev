@@ -183,7 +183,9 @@ export default function AccountPage() {
                       <Icon className="mt-0.5 size-5" />
                       <div className="space-y-0.5">
                         <p className="text-sm font-medium">{tab.label}</p>
-                        <p className={cn('text-xs', mode.color.text.muted)}>{tab.description}</p>
+                        <p className={cn(mode.font, 'text-xs', mode.color.text.muted)}>
+                          {tab.description}
+                        </p>
                       </div>
                     </Button>
                   );
@@ -195,22 +197,30 @@ export default function AccountPage() {
               <CardHeader code="0xF1" title="ACCOUNT STATUS" />
               <CardContent className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className={cn('text-sm', mode.color.text.muted)}>Plan</span>
-                  <span className={cn('text-sm font-medium', mode.color.text.primary)}>Pro</span>
+                  <span className={cn(mode.font, 'text-sm', mode.color.text.muted)}>Plan</span>
+                  <span className={cn(mode.font, 'text-sm font-medium', mode.color.text.primary)}>
+                    Pro
+                  </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className={cn('text-sm', mode.color.text.muted)}>Status</span>
-                  <span className={cn('text-sm font-medium', mode.color.text.accent)}>Active</span>
+                  <span className={cn(mode.font, 'text-sm', mode.color.text.muted)}>Status</span>
+                  <span className={cn(mode.font, 'text-sm font-medium', mode.color.text.accent)}>
+                    Active
+                  </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className={cn('text-sm', mode.color.text.muted)}>Member Since</span>
-                  <span className={cn('text-sm font-medium', mode.color.text.primary)}>
+                  <span className={cn(mode.font, 'text-sm', mode.color.text.muted)}>
+                    Member Since
+                  </span>
+                  <span className={cn(mode.font, 'text-sm font-medium', mode.color.text.primary)}>
                     Jan 2024
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className={cn('text-sm', mode.color.text.muted)}>Storage Used</span>
-                  <span className={cn('text-sm font-medium', mode.color.text.primary)}>
+                  <span className={cn(mode.font, 'text-sm', mode.color.text.muted)}>
+                    Storage Used
+                  </span>
+                  <span className={cn(mode.font, 'text-sm font-medium', mode.color.text.primary)}>
                     2.4 GB / 10 GB
                   </span>
                 </div>

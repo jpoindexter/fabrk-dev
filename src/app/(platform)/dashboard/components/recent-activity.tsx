@@ -54,7 +54,7 @@ export function RecentActivity({ activities }: RecentActivityProps) {
     <Card className="col-span-4">
       <CardHeader code="0x00" title="RECENT ACTIVITY" />
       <CardContent>
-        <p className="text-muted-foreground mb-4 font-mono text-xs">
+        <p className={cn(mode.font, 'text-muted-foreground', 'mb-4', 'text-xs')}>
           Your recent account activity and actions
         </p>
         <div className="space-y-4">
@@ -69,8 +69,17 @@ export function RecentActivity({ activities }: RecentActivityProps) {
                   <Icon className="h-4 w-4" />
                 </div>
                 <div className="flex-1">
-                  <p className="font-mono text-sm font-medium">{activity.description}</p>
-                  <p className="text-muted-foreground flex items-center gap-1 font-mono text-xs">
+                  <p className={cn(mode.font, 'text-sm', 'font-medium')}>{activity.description}</p>
+                  <p
+                    className={cn(
+                      mode.font,
+                      'text-muted-foreground',
+                      'flex',
+                      'items-center',
+                      'gap-1',
+                      'text-xs'
+                    )}
+                  >
                     <Clock className="h-3 w-3" />
                     {formatTimestamp(activity.timestamp)}
                   </p>

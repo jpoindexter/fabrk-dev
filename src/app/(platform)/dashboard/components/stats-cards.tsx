@@ -41,9 +41,18 @@ function StatCard({ title, icon: Icon, value, change, loading, customContent }: 
     <Card>
       <CardHeader code="0x00" title={terminalTitle} icon={<Icon className="h-4 w-4" />} />
       <CardContent>
-        <div className="font-mono text-2xl font-semibold">{loading ? '...' : value}</div>
+        <div className={cn(mode.font, 'text-2xl', 'font-semibold')}>{loading ? '...' : value}</div>
         {!loading && change !== undefined && (
-          <p className="text-muted-foreground flex items-center gap-1 font-mono text-xs">
+          <p
+            className={cn(
+              mode.font,
+              'text-muted-foreground',
+              'flex',
+              'items-center',
+              'gap-1',
+              'text-xs'
+            )}
+          >
             {change >= 0 ? (
               <>
                 <ArrowUpRight className="text-success h-3 w-3" />

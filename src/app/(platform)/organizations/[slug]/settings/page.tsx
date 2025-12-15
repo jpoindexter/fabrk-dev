@@ -6,6 +6,8 @@
 'use client';
 
 import * as React from 'react';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 import { useRouter, useParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -197,7 +199,7 @@ export default function OrganizationSettingsPage() {
           <SettingsIcon className="text-primary-foreground h-6 w-6" />
         </div>
         <div>
-          <h1 className="font-mono text-4xl font-semibold">ORGANIZATION SETTINGS</h1>
+          <h1 className={cn(mode.font, 'text-4xl', 'font-semibold')}>ORGANIZATION SETTINGS</h1>
           <p className="text-muted-foreground">
             Manage your organization's information and preferences
           </p>
@@ -324,7 +326,9 @@ export default function OrganizationSettingsPage() {
           <CardContent padding="lg">
             <div className="border-destructive bg-destructive/10 flex items-start justify-between rounded-none border p-4">
               <div className="flex-1">
-                <h4 className="font-mono text-xs font-semibold">[DELETE ORGANIZATION]:</h4>
+                <h4 className={cn(mode.font, 'text-xs', 'font-semibold')}>
+                  [DELETE ORGANIZATION]:
+                </h4>
                 <p className="text-muted-foreground mt-1 text-sm">
                   Permanently delete this organization and all associated data. This action cannot
                   be undone.

@@ -6,6 +6,8 @@
 'use client';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 interface DashboardHeaderProps {
   userName?: string | null;
@@ -19,10 +21,10 @@ export function DashboardHeader({ userName, userImage, userInitials }: Dashboard
   return (
     <div className="flex items-center justify-between">
       <div>
-        <h1 className="font-mono text-4xl font-semibold tracking-tight">
+        <h1 className={cn(mode.font, 'text-4xl', 'font-semibold', 'tracking-tight')}>
           Welcome back, {firstName}!
         </h1>
-        <p className="text-muted-foreground font-mono text-sm">
+        <p className={cn(mode.font, 'text-muted-foreground', 'text-sm')}>
           Here's what's happening with your account today.
         </p>
       </div>

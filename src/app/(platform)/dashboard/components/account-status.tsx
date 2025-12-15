@@ -21,14 +21,14 @@ export function AccountStatus({ mfaEnabled, userTier }: AccountStatusProps) {
     <Card>
       <CardHeader code="0x00" title="ACCOUNT STATUS" />
       <CardContent>
-        <p className="text-muted-foreground mb-4 font-mono text-xs">
+        <p className={cn(mode.font, 'text-muted-foreground', 'mb-4', 'text-xs')}>
           Current account information and status
         </p>
         <div className="grid gap-6 md:grid-cols-3">
           <div className={cn('flex items-center gap-4 border p-4', mode.radius)}>
             <Shield className="text-muted-foreground h-5 w-5" />
             <div>
-              <p className="font-mono text-sm font-medium">Security</p>
+              <p className={cn(mode.font, 'text-sm', 'font-medium')}>Security</p>
               <div className="mt-1 flex items-center gap-2">
                 <Badge variant={mfaEnabled ? 'default' : 'secondary'}>
                   2FA {mfaEnabled ? 'Enabled' : 'Disabled'}
@@ -40,7 +40,7 @@ export function AccountStatus({ mfaEnabled, userTier }: AccountStatusProps) {
           <div className={cn('flex items-center gap-4 border p-4', mode.radius)}>
             <Users className="text-muted-foreground h-5 w-5" />
             <div>
-              <p className="font-mono text-sm font-medium">Account Type</p>
+              <p className={cn(mode.font, 'text-sm', 'font-medium')}>Account Type</p>
               <Badge variant="outline" className="mt-1">
                 {userTier || 'FREE'}
               </Badge>
@@ -50,7 +50,7 @@ export function AccountStatus({ mfaEnabled, userTier }: AccountStatusProps) {
           <div className={cn('flex items-center gap-4 border p-4', mode.radius)}>
             <Activity className="text-muted-foreground h-5 w-5" />
             <div>
-              <p className="font-mono text-sm font-medium">Status</p>
+              <p className={cn(mode.font, 'text-sm', 'font-medium')}>Status</p>
               <Badge className="bg-success text-success-foreground mt-1">Active</Badge>
             </div>
           </div>

@@ -4,6 +4,8 @@
  */
 
 import * as React from 'react';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 import { UseFormReturn } from 'react-hook-form';
 import { Mail, ChevronLeft, Check, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -120,7 +122,9 @@ export function InviteMembersStep({
             />
 
             <div className="border-border bg-muted rounded-none border p-4">
-              <h4 className="mb-2 font-mono text-xs font-semibold">[ROLE PERMISSIONS]:</h4>
+              <h4 className={cn(mode.font, 'mb-2', 'text-xs', 'font-semibold')}>
+                [ROLE PERMISSIONS]:
+              </h4>
               <ul className="text-muted-foreground space-y-1 text-sm">
                 <li>
                   • <strong>OWNER</strong>: Full control (assigned to creator)

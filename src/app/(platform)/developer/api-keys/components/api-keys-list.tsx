@@ -114,11 +114,11 @@ export function ApiKeysList({
                       </Badge>
                     ))}
                   </div>
-                  <p className={cn('text-sm', mode.color.text.muted)}>
+                  <p className={cn(mode.font, 'text-sm', mode.color.text.muted)}>
                     Created {formatDate(apiKey.createdAt)} by{' '}
                     {apiKey.user.name || apiKey.user.email}
                   </p>
-                  <p className={cn('text-sm', mode.color.text.muted)}>
+                  <p className={cn(mode.font, 'text-sm', mode.color.text.muted)}>
                     Last used {formatDate(apiKey.lastUsedAt)}
                   </p>
                 </div>
