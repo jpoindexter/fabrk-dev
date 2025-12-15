@@ -98,7 +98,7 @@ function Progress({
       )}
       {...props}
     >
-      {label && <span className={cn('shrink-0', mode.color.text.muted)}>{label}</span>}
+      {label && <span className={cn('w-16 shrink-0', mode.color.text.muted)}>{label}</span>}
       {percentageBefore && (
         <span className={cn('w-10 shrink-0 text-right', mode.color.text.muted)}>{percentage}</span>
       )}
