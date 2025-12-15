@@ -758,6 +758,32 @@ When adding features: "Does this help ship faster?" If no, delete it.
 - `scripts/check-aria-labels.mjs` - Accessibility audit tool
 - `/docs/components/overview` - Component documentation
 
+### Card Documentation (5 Files)
+
+**User-Facing Documentation:**
+1. `/docs/design-system/spec/card-animations.md` - **Pattern 1 vs Pattern 2 guide** (NEW as of 2025-12-15)
+   - When to animate (marketing) vs when to keep static (docs/dashboards)
+   - Complete animation recipes with explanations
+   - Performance implications (+50KB for Pattern 1, 0KB for Pattern 2)
+   - Real-world examples from `benefit-card.tsx`, `whats-included-section.tsx`
+2. `/docs/design-system/spec/components-card.md` - Card API Reference
+   - CardHeader, CardContent, CardFooter props
+   - Tones, variants, size options
+   - Links to animation guide
+3. `/docs/08-design/DESIGN_SYSTEM.md` - General design system (includes card subsection)
+4. `/docs/08-design/COMPONENT-AUTHORING.md` - Component creation guide
+5. `/docs/02-components/COMPONENT-BEST-PRACTICES.md` - General best practices (links to card docs)
+
+**Archived Internal Documentation:**
+- `/.archives/card-migration-log.md` - Internal migration tracking (moved 2025-12-15)
+
+**Quick Decision Tree** (Pattern 1 vs Pattern 2):
+- Landing page? → Pattern 1 (Animated)
+- Marketing page? → Pattern 1 (Animated)
+- Documentation? → Pattern 2 (Static)
+- Dashboard? → Pattern 2 (Static)
+- Settings page? → Pattern 2 (Static)
+
 ### Audit Framework (58 files in `.claude/audit/`)
 
 | Category | Files | Coverage |

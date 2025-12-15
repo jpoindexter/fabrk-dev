@@ -1,7 +1,9 @@
 # Card Component Specification
 
-Version: 1.1.0
-Last Updated: 2025-12-06
+Version: 1.2.0
+Last Updated: 2025-12-15
+
+> **Animation Guide**: See [Card Animation Guide](./card-animations.md) for Pattern 1 (Animated Marketing) vs Pattern 2 (Static Content) decision making, animation recipes, and performance implications.
 
 ## Overview
 
@@ -9,6 +11,51 @@ The Card component system provides a unified API for all card-like UI patterns i
 
 - **Terminal Style** (default): Sharp edges, monospace font, hex code headers
 - **Modern Style**: Rounded corners, system font (via theme tokens)
+
+---
+
+## When to Animate
+
+Fabrk uses **two distinct card patterns** optimized for different contexts:
+
+### Pattern 1: Animated Marketing Cards
+Use for landing pages, feature showcases, benefits sections. Requires Framer Motion (+50KB bundle).
+
+```tsx
+import { motion } from 'framer-motion';
+
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, margin: '-100px' }}
+  transition={{ duration: 0.6, delay: index * 0.15 }}
+  className="h-full"
+>
+  <Card className="h-full">
+    <CardHeader code="0x01" title="FEATURES" icon={<Icon />} />
+    <CardContent>Content</CardContent>
+  </Card>
+</motion.div>
+```
+
+### Pattern 2: Static Content Cards
+Use for documentation, dashboards, settings pages. Server-renderable, 0KB additional bundle.
+
+```tsx
+<Card>
+  <CardHeader code="0x01" title="DOCS" />
+  <CardContent>Content</CardContent>
+</Card>
+```
+
+**Decision Tree**:
+- Landing page? → Pattern 1
+- Marketing page? → Pattern 1
+- Documentation? → Pattern 2
+- Dashboard? → Pattern 2
+- Settings page? → Pattern 2
+
+**Full guide**: [Card Animation Guide](./card-animations.md)
 
 ---
 

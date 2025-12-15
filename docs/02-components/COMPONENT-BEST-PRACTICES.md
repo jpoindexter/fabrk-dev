@@ -82,37 +82,19 @@ All Radix UI components include ARIA attributes out of the box.
 
 ### Pattern 1: Card Layouts
 
-**Basic Card:**
+For card-specific patterns, animation recipes, and Pattern 1 (Animated) vs Pattern 2 (Static) decision making, see:
+- **[Card Animation Guide](/docs/design-system/spec/card-animations.md)** - When to animate, performance implications, code recipes
+- **[Card API Reference](/docs/design-system/spec/components-card.md)** - Complete component API, props, variants
+
+General principle: Use composition over configuration.
 
 ```tsx
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-
+// ✅ Good: Composable card structure
 <Card>
-  <CardHeader>
-    <CardTitle>Professional Plan</CardTitle>
-    <CardDescription>For growing businesses</CardDescription>
+  <CardHeader code="0x01" title="SECTION">
+    <Icon className="size-4" />
   </CardHeader>
-  <CardContent>
-    <p className="text-3xl font-bold">$99</p>
-    <ul className="mt-4 space-y-2">
-      <li>✓ Feature 1</li>
-      <li>✓ Feature 2</li>
-    </ul>
-  </CardContent>
-</Card>
-```
-
-**Card with Footer:**
-
-```tsx
-import { CardFooter } from "@/components/ui/card";
-
-<Card>
-  <CardHeader>...</CardHeader>
-  <CardContent>...</CardContent>
-  <CardFooter>
-    <Button className="w-full">Get Started</Button>
-  </CardFooter>
+  <CardContent>Content here</CardContent>
 </Card>
 ```
 
