@@ -1,6 +1,6 @@
 /**
  * Changelog Page
- * Version history and release notes - Terminal style
+ * Version history and release notes - Terminal style with sidebar nav
  */
 
 import { Metadata } from 'next';
@@ -23,49 +23,42 @@ export const metadata: Metadata = {
 
 export default function ChangelogPage() {
   return (
-    <div className="min-h-screen px-6 py-24">
-      <div className="mx-auto max-w-4xl">
-        {/* Hero */}
-        <div className="mb-16 text-center">
-          <div className="mb-8">
-            <Badge code="0x00" label="CHANGELOG" meta="VERSION HISTORY" />
-          </div>
-          <p className={cn('text-muted-foreground mb-2 text-xs', mode.font)}>[FABRK RELEASES]:</p>
-          <h1 className={cn('mb-4 text-xs font-bold tracking-tight', mode.font)}>
-            VERSION HISTORY
-          </h1>
-          <p className={cn('text-muted-foreground mx-auto max-w-2xl text-xs', mode.font)}>
-            Track every update, improvement, and fix. All changes are documented here.
-          </p>
-          <a
-            href="/changelog/rss"
-            className={cn(
-              'text-muted-foreground hover:text-foreground mt-4 inline-flex items-center gap-2 text-xs transition-colors',
-              mode.font
-            )}
-            title="Subscribe to RSS feed"
-          >
-            <Rss className="h-3 w-3" />
-            [RSS FEED]
-          </a>
+    <>
+      {/* Hero */}
+      <div className="border-border mb-12 border-b pb-8">
+        <div className="mb-4">
+          <Badge code="0x00" label="CHANGELOG" meta="VERSION HISTORY" />
         </div>
-
-        {/* Changelog Entries */}
-        <div className="space-y-8">
-          {CHANGELOG.map((entry, index) => (
-            <ChangelogEntry key={entry.version} entry={entry} index={index} />
-          ))}
-        </div>
-
-        {/* Footer note */}
-        <div className="mt-16 text-center">
-          <p className={cn('text-muted-foreground text-xs', mode.font)}>
-            [EOF] - End of changelog. Run{' '}
-            <code className="bg-muted px-1 py-0.5">npm run sync:changelog</code> to fetch latest
-            releases.
-          </p>
-        </div>
+        <h1 className={cn('mb-2 text-lg font-bold', mode.font)}>VERSION HISTORY</h1>
+        <p className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
+          Track every update, improvement, and fix. All changes are documented here.
+        </p>
+        <a
+          href="/changelog/rss"
+          className={cn(
+            'text-muted-foreground hover:text-foreground inline-flex items-center gap-2 text-xs transition-colors',
+            mode.font
+          )}
+          title="Subscribe to RSS feed"
+        >
+          <Rss className="h-3 w-3" />
+          [RSS FEED]
+        </a>
       </div>
-    </div>
+
+      {/* Changelog Entries */}
+      <div className="space-y-12">
+        {CHANGELOG.map((entry, index) => (
+          <div key={entry.version} id={`v${entry.version}`} className="scroll-mt-20">
+            <ChangelogEntry entry={entry} index={index} />
+          </div>
+        ))}
+      </div>
+
+      {/* Footer note */}
+      <div className="border-border mt-16 border-t pt-8">
+        <p className={cn('text-muted-foreground text-xs', mode.font)}>[EOF] - End of changelog</p>
+      </div>
+    </>
   );
 }
