@@ -25,14 +25,14 @@ interface AiChatInputProps {
   className?: string;
 }
 
-export function AiChatInput({ 
-  onSend, 
-  onStop, 
-  isLoading, 
+export function AiChatInput({
+  onSend,
+  onStop,
+  isLoading,
   models = [],
   selectedModelId,
   onModelChange,
-  className 
+  className,
 }: AiChatInputProps) {
   const [input, setInput] = React.useState('');
   const [attachments, setAttachments] = React.useState<Attachment[]>([]);
@@ -59,18 +59,22 @@ export function AiChatInput({
     e.target.style.height = `${e.target.scrollHeight}px`;
   };
 
-  const currentModel = models.find(m => m.id === selectedModelId) || models[0];
+  const currentModel = models.find((m) => m.id === selectedModelId) || models[0];
 
   return (
     <div className={cn('relative flex w-full flex-col gap-2 p-4', className)}>
-      <div className={cn(
-        'relative flex w-full flex-col border transition-all',
-        mode.radius, mode.color.bg.base, mode.color.border.default,
-        'focus-within:border-primary/50'
-      )}>
-        <AiChatAttachmentPreview 
-          attachments={attachments} 
-          onRemove={(i) => setAttachments(prev => prev.filter((_, idx) => idx !== i))} 
+      <div
+        className={cn(
+          'relative flex w-full flex-col border transition-all',
+          mode.radius,
+          mode.color.bg.base,
+          mode.color.border.default,
+          'focus-within:border-primary/50'
+        )}
+      >
+        <AiChatAttachmentPreview
+          attachments={attachments}
+          onRemove={(i) => setAttachments((prev) => prev.filter((_, idx) => idx !== i))}
         />
 
         <Textarea
@@ -80,34 +84,43 @@ export function AiChatInput({
           onKeyDown={handleKeyDown}
           placeholder="ENTER INSTRUCTION..."
           className={cn(
-            'min-h-[44px] max-h-[200px] w-full resize-none border-0 bg-transparent px-3 py-3 shadow-none focus-visible:ring-0',
-            mode.font, 'placeholder:text-muted-foreground/50'
+            'max-h-[200px] min-h-[44px] w-full resize-none border-0 bg-transparent px-3 py-3 shadow-none focus-visible:ring-0',
+            mode.font,
+            'placeholder:text-muted-foreground/50'
           )}
           rows={1}
         />
 
-        <div className={cn('flex items-center justify-between p-2 border-t border-dashed border-border/50 bg-muted/5')}>
+        <div
+          className={cn(
+            'border-border/50 bg-muted/5 flex items-center justify-between border-t border-dashed p-2'
+          )}
+        >
           <div className="flex items-center gap-1">
             <Button
               variant="ghost"
               size="icon"
-              className="size-8 hover:bg-muted/50"
-              title="Attach File"
+              className="hover:bg-muted/50 size-8"
+              aria-label="Attach file"
             >
-              <Paperclip className="size-4" />
+              <Paperclip className="size-4" aria-hidden="true" />
             </Button>
 
             {models.length > 0 && (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="sm" className="h-8 gap-2 text-xs uppercase hover:bg-muted/50">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="hover:bg-muted/50 h-8 gap-2 text-xs uppercase"
+                  >
                     <span>{currentModel?.name || 'SELECT MODEL'}</span>
                     <ChevronDown className="size-3 opacity-50" />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="start" className="w-[200px]">
                   {models.map((model) => (
-                    <DropdownMenuItem 
+                    <DropdownMenuItem
                       key={model.id}
                       onClick={() => onModelChange?.(model.id)}
                       className="text-xs uppercase"
@@ -121,23 +134,30 @@ export function AiChatInput({
           </div>
 
           {isLoading ? (
-            <Button onClick={onStop} size="icon" variant="destructive" className="size-8">
-              <Square className="size-3 fill-current" />
+            <Button
+              onClick={onStop}
+              size="icon"
+              variant="destructive"
+              className="size-8"
+              aria-label="Stop generating"
+            >
+              <Square className="size-3 fill-current" aria-hidden="true" />
             </Button>
           ) : (
             <Button
               onClick={handleSend}
               disabled={!input.trim() && attachments.length === 0}
               size="icon"
-              variant="default" // Use default variant to ensure proper contrast (primary bg + inverse text)
+              variant="default"
               className="size-8"
+              aria-label="Send message"
             >
-              <ArrowUp className="size-4" />
+              <ArrowUp className="size-4" aria-hidden="true" />
             </Button>
           )}
         </div>
       </div>
-      
+
       <div className="flex justify-center">
         <span className={cn('text-[10px] uppercase opacity-40', mode.font)}>
           AI can make mistakes. Verify important information.

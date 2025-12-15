@@ -30,6 +30,9 @@ DEVELOPMENT.md export-ignore
 # Testing & Quality Assurance
 # -----------------------------------------------------------------------------
 tests export-ignore
+*.test.* export-ignore
+*.spec.* export-ignore
+__tests__ export-ignore
 coverage export-ignore
 test-results export-ignore
 playwright-report export-ignore
