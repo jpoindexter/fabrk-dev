@@ -62,7 +62,7 @@ export function WhyChooseSection() {
               viewport={{ once: true }}
             >
               <Badge code="0x05" label="WHY FABRK" className="mb-4" />
-              <h2 className={cn('mb-4 text-sm font-semibold tracking-tight', mode.font)}>
+              <h2 className={cn('mb-4 text-xs font-semibold tracking-tight', mode.font)}>
                 WHY CHOOSE FABRK
               </h2>
             </motion.div>
@@ -72,7 +72,7 @@ export function WhyChooseSection() {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <p className={cn('text-muted-foreground text-sm', mode.font)}>
+              <p className={cn('text-muted-foreground text-xs', mode.font)}>
                 We're not just selling code, we're selling time
               </p>
             </motion.div>

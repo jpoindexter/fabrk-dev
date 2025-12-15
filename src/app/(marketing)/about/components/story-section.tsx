@@ -30,7 +30,7 @@ export function StorySection() {
               viewport={{ once: true }}
             >
               <Badge code="0x04" label="ORIGIN STORY" className="mb-4" />
-              <h2 className={cn('mb-4 text-sm font-semibold tracking-tight', mode.font)}>
+              <h2 className={cn('mb-4 text-xs font-semibold tracking-tight', mode.font)}>
                 THE STORY BEHIND FABRK
               </h2>
             </motion.div>
@@ -40,7 +40,7 @@ export function StorySection() {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <p className={cn('text-muted-foreground text-sm', mode.font)}>
+              <p className={cn('text-muted-foreground text-xs', mode.font)}>
                 From frustration to solution
               </p>
             </motion.div>
@@ -58,13 +58,13 @@ export function StorySection() {
                   │ &gt; Initializing story sequence...
                 </div>
                 <div className="space-y-4">
-                  <p className={cn('text-muted-foreground text-sm', mode.font)}>
+                  <p className={cn('text-muted-foreground text-xs', mode.font)}>
                     Like many developers, we were tired of rebuilding the same infrastructure for
                     every new SaaS project. Authentication, payments, database setup, email
                     integration—it's the same story every time.
                   </p>
 
-                  <p className={cn('text-muted-foreground text-sm', mode.font)}>
+                  <p className={cn('text-muted-foreground text-xs', mode.font)}>
                     We looked at existing solutions, but they all had the same problems:
                   </p>
 
@@ -76,7 +76,7 @@ export function StorySection() {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                         viewport={{ once: true }}
-                        className={cn('flex items-start gap-4 text-sm', mode.font)}
+                        className={cn('flex items-start gap-4 text-xs', mode.font)}
                       >
                         <span className="text-destructive font-semibold">✗</span>
                         <span className="text-muted-foreground">{problem}</span>
@@ -84,13 +84,13 @@ export function StorySection() {
                     ))}
                   </div>
 
-                  <p className={cn('text-muted-foreground text-sm', mode.font)}>
+                  <p className={cn('text-muted-foreground text-xs', mode.font)}>
                     So we built Fabrk differently. We started with a 1000+ file codebase, then
                     ruthlessly cut it down to just the essentials. We removed every line of code
                     that didn't serve a clear purpose. We focused on clarity over cleverness.
                   </p>
 
-                  <p className={cn('text-muted-foreground text-sm', mode.font)}>
+                  <p className={cn('text-muted-foreground text-xs', mode.font)}>
                     The result? A boilerplate with ~160 files that includes everything you need and
                     nothing you don't. Clean TypeScript, modern Next.js, industry-standard tools,
                     and comprehensive documentation.

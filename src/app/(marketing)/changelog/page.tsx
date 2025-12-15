@@ -28,7 +28,7 @@ export default function ChangelogPage() {
           <h1 className={cn('mb-4 text-sm font-bold tracking-tight', mode.font)}>
             VERSION HISTORY
           </h1>
-          <p className={cn('text-muted-foreground mx-auto max-w-2xl text-sm', mode.font)}>
+          <p className={cn('text-muted-foreground mx-auto max-w-2xl text-xs', mode.font)}>
             Track every update, improvement, and fix. All changes are documented here.
           </p>
         </div>

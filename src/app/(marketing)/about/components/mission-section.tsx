@@ -22,7 +22,7 @@ export function MissionSection() {
             viewport={{ once: true }}
           >
             <Badge code="0x02" label="OUR MISSION" className="mb-4" />
-            <h2 className={cn('text-sm font-semibold tracking-tight', mode.font)}>OUR MISSION</h2>
+            <h2 className={cn('text-xs font-semibold tracking-tight', mode.font)}>OUR MISSION</h2>
           </motion.div>
 
           <motion.div
@@ -36,12 +36,12 @@ export function MissionSection() {
                 <div className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
                   │ &gt; Loading mission parameters...
                 </div>
-                <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
+                <p className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
                   Every developer has experienced the frustration of rebuilding the same
                   authentication system, payment integration, and UI components for the hundredth
                   time. We created Fabrk to solve this problem once and for all.
                 </p>
-                <p className={cn('text-muted-foreground text-sm', mode.font)}>
+                <p className={cn('text-muted-foreground text-xs', mode.font)}>
                   Our mission is simple:{' '}
                   <span className="text-primary font-semibold">
                     help you ship your SaaS product in days, not months

@@ -81,7 +81,7 @@ export function ValuesSection() {
             viewport={{ once: true }}
           >
             <Badge code="0x03" label="CORE VALUES" className="mb-4" />
-            <h2 className={cn('mb-4 text-sm font-semibold tracking-tight', mode.font)}>
+            <h2 className={cn('mb-4 text-xs font-semibold tracking-tight', mode.font)}>
               CORE VALUES
             </h2>
           </motion.div>
@@ -91,7 +91,7 @@ export function ValuesSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <p className={cn('text-muted-foreground text-sm', mode.font)}>
+            <p className={cn('text-muted-foreground text-xs', mode.font)}>
               The principles that guide everything we build
             </p>
           </motion.div>

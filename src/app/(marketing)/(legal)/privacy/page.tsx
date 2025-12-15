@@ -43,8 +43,8 @@ export default function PrivacyPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <h1 className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>FABRK LEGAL:</h1>
-          <h2 className={cn('mb-4 text-sm font-bold tracking-tight', mode.font)}>PRIVACY POLICY</h2>
+          <h1 className={cn('text-muted-foreground mb-2 text-xs', mode.font)}>FABRK LEGAL:</h1>
+          <h2 className={cn('mb-4 text-xs font-bold tracking-tight', mode.font)}>PRIVACY POLICY</h2>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -67,7 +67,7 @@ export default function PrivacyPage() {
         <Card size="auto">
           <CardHeader code="0x01" title="OVERVIEW" icon={<FileText className="size-4" />} />
           <CardContent padding="md">
-            <p className={cn('text-muted-foreground text-sm', mode.font)}>
+            <p className={cn('text-muted-foreground text-xs', mode.font)}>
               We value your privacy and are committed to protecting your personal data. This Privacy
               Policy explains how we collect, use, and safeguard your information.
             </p>
@@ -86,13 +86,13 @@ export default function PrivacyPage() {
           <CardContent padding="md">
             <div className="space-y-6">
               <div>
-                <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
+                <h3 className={cn('mb-2 text-xs font-semibold', mode.font)}>
                   [1.1] INFORMATION_YOU_PROVIDE
                 </h3>
-                <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
+                <p className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
                   When you use Fabrk, we collect information you provide directly:
                 </p>
-                <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
+                <ul className={cn('text-muted-foreground space-y-1 pl-4 text-xs', mode.font)}>
                   <li>
                     ├─ <span className="text-foreground">ACCOUNT INFO:</span> Name, email address,
                     password (hashed)
@@ -117,13 +117,13 @@ export default function PrivacyPage() {
               </div>
 
               <div>
-                <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
+                <h3 className={cn('mb-2 text-xs font-semibold', mode.font)}>
                   [1.2] AUTO_COLLECTED_INFO
                 </h3>
-                <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
+                <p className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
                   We automatically collect certain information when you use our Service:
                 </p>
-                <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
+                <ul className={cn('text-muted-foreground space-y-1 pl-4 text-xs', mode.font)}>
                   <li>
                     ├─ <span className="text-foreground">USAGE DATA:</span> Pages visited, features
                     used, time spent
@@ -144,13 +144,13 @@ export default function PrivacyPage() {
               </div>
 
               <div>
-                <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
+                <h3 className={cn('mb-2 text-xs font-semibold', mode.font)}>
                   [1.3] THIRD_PARTY_DATA
                 </h3>
-                <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
+                <p className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
                   If you authenticate via OAuth (Google, GitHub), we receive:
                 </p>
-                <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
+                <ul className={cn('text-muted-foreground space-y-1 pl-4 text-xs', mode.font)}>
                   <li>├─ Your name and email address</li>
                   <li>├─ Profile picture (if provided)</li>
                   <li>└─ Account ID (for linking purposes)</li>
@@ -168,10 +168,10 @@ export default function PrivacyPage() {
             icon={<Scale className="size-4" />}
           />
           <CardContent padding="md">
-            <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
+            <p className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
               We use collected information for:
             </p>
-            <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
+            <ul className={cn('text-muted-foreground space-y-1 pl-4 text-xs', mode.font)}>
               <li>
                 ├─ <span className="text-foreground">SERVICE PROVISION:</span> Account creation,
                 authentication, service delivery
@@ -204,10 +204,10 @@ export default function PrivacyPage() {
         <Card size="auto">
           <CardHeader code="0x30" title="LEGAL BASIS GDPR" icon={<Scale className="size-4" />} />
           <CardContent padding="md">
-            <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
+            <p className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
               Under GDPR, we process your data based on:
             </p>
-            <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
+            <ul className={cn('text-muted-foreground space-y-1 pl-4 text-xs', mode.font)}>
               <li>
                 ├─ <span className="text-foreground">CONTRACT:</span> Processing necessary to
                 provide the Service you purchased
@@ -238,13 +238,13 @@ export default function PrivacyPage() {
           <CardContent padding="md">
             <div className="space-y-6">
               <div>
-                <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
+                <h3 className={cn('mb-2 text-xs font-semibold', mode.font)}>
                   [4.1] SERVICE_PROVIDERS
                 </h3>
-                <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
+                <p className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
                   We share data with trusted third parties:
                 </p>
-                <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
+                <ul className={cn('text-muted-foreground space-y-1 pl-4 text-xs', mode.font)}>
                   <li>
                     ├─ <span className="text-foreground">STRIPE:</span> Payment processing (PCI-DSS
                     compliant)
@@ -267,13 +267,13 @@ export default function PrivacyPage() {
               </div>
 
               <div>
-                <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
+                <h3 className={cn('mb-2 text-xs font-semibold', mode.font)}>
                   [4.2] LEGAL_REQUIREMENTS
                 </h3>
-                <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
+                <p className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
                   We may disclose data if required by law:
                 </p>
-                <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
+                <ul className={cn('text-muted-foreground space-y-1 pl-4 text-xs', mode.font)}>
                   <li>├─ Valid legal process (subpoenas, court orders)</li>
                   <li>├─ Enforcement of our Terms of Service</li>
                   <li>└─ Protection of rights, property, or safety</li>
@@ -281,10 +281,10 @@ export default function PrivacyPage() {
               </div>
 
               <div>
-                <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
+                <h3 className={cn('mb-2 text-xs font-semibold', mode.font)}>
                   [4.3] BUSINESS_TRANSFERS
                 </h3>
-                <p className={cn('text-muted-foreground text-sm', mode.font)}>
+                <p className={cn('text-muted-foreground text-xs', mode.font)}>
                   If Fabrk is acquired or merged, your information may be transferred. We'll notify
                   you before any transfer.
                 </p>
@@ -297,10 +297,10 @@ export default function PrivacyPage() {
         <Card size="auto">
           <CardHeader code="0x50" title="DATA SECURITY" icon={<Lock className="size-4" />} />
           <CardContent padding="md">
-            <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
+            <p className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
               We implement industry-standard security measures:
             </p>
-            <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
+            <ul className={cn('text-muted-foreground space-y-1 pl-4 text-xs', mode.font)}>
               <li>
                 ├─ <span className="text-foreground">ENCRYPTION:</span> TLS 1.3 in transit, AES-256
                 at rest
@@ -333,10 +333,10 @@ export default function PrivacyPage() {
         <Card size="auto">
           <CardHeader code="0x60" title="DATA RETENTION" icon={<Clock className="size-4" />} />
           <CardContent padding="md">
-            <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
+            <p className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
               We retain your data for:
             </p>
-            <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
+            <ul className={cn('text-muted-foreground space-y-1 pl-4 text-xs', mode.font)}>
               <li>
                 ├─ <span className="text-foreground">ACTIVE_ACCOUNTS:</span> Duration + 30 days
                 after deletion
@@ -365,10 +365,10 @@ export default function PrivacyPage() {
           <CardContent padding="md">
             <div className="space-y-6">
               <div>
-                <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
+                <h3 className={cn('mb-2 text-xs font-semibold', mode.font)}>
                   [7.1] GDPR RIGHTS (EU_USERS)
                 </h3>
-                <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
+                <ul className={cn('text-muted-foreground space-y-1 pl-4 text-xs', mode.font)}>
                   <li>
                     ├─ <span className="text-foreground">ACCESS:</span> Request a copy of your
                     personal data
@@ -400,10 +400,10 @@ export default function PrivacyPage() {
               </div>
 
               <div>
-                <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
+                <h3 className={cn('mb-2 text-xs font-semibold', mode.font)}>
                   [7.2] CCPA_RIGHTS (CA_USERS)
                 </h3>
-                <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
+                <ul className={cn('text-muted-foreground space-y-1 pl-4 text-xs', mode.font)}>
                   <li>├─ Know what personal information we collect</li>
                   <li>├─ Know if we sell/disclose info (we don't sell)</li>
                   <li>├─ Access your personal information</li>
@@ -413,13 +413,13 @@ export default function PrivacyPage() {
               </div>
 
               <div>
-                <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
+                <h3 className={cn('mb-2 text-xs font-semibold', mode.font)}>
                   [7.3] EXERCISING_RIGHTS
                 </h3>
-                <p className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>
+                <p className={cn('text-muted-foreground mb-2 text-xs', mode.font)}>
                   Contact us at:
                 </p>
-                <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
+                <ul className={cn('text-muted-foreground space-y-1 pl-4 text-xs', mode.font)}>
                   <li>├─ EMAIL: support@fabrek.dev</li>
                   <li>
                     └─ PROFILE:{' '}
@@ -428,16 +428,16 @@ export default function PrivacyPage() {
                     </Link>
                   </li>
                 </ul>
-                <p className={cn('text-muted-foreground mt-2 text-sm', mode.font)}>
+                <p className={cn('text-muted-foreground mt-2 text-xs', mode.font)}>
                   Response time: 30 days
                 </p>
               </div>
 
               <div>
-                <h3 className={cn('mb-2 text-sm font-semibold', mode.font)}>
+                <h3 className={cn('mb-2 text-xs font-semibold', mode.font)}>
                   [7.4] GITHUB_ACCESS_REVOCATION
                 </h3>
-                <p className={cn('text-muted-foreground text-sm', mode.font)}>
+                <p className={cn('text-muted-foreground text-xs', mode.font)}>
                   If you request data deletion, we will revoke your access to the fabrk-boilerplate
                   repository on GitHub.
                 </p>
@@ -454,10 +454,10 @@ export default function PrivacyPage() {
             icon={<Cookie className="size-4" />}
           />
           <CardContent padding="md">
-            <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
+            <p className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
               We use cookies for:
             </p>
-            <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
+            <ul className={cn('text-muted-foreground space-y-1 pl-4 text-xs', mode.font)}>
               <li>
                 ├─ <span className="text-foreground">ESSENTIAL:</span> Authentication, session
                 management (required)
@@ -471,7 +471,7 @@ export default function PrivacyPage() {
                 (optional)
               </li>
             </ul>
-            <p className={cn('text-muted-foreground mt-4 text-sm', mode.font)}>
+            <p className={cn('text-muted-foreground mt-4 text-xs', mode.font)}>
               See our{' '}
               <Link href="/cookies" className="text-primary hover:underline">
                 COOKIE POLICY
@@ -485,7 +485,7 @@ export default function PrivacyPage() {
         <Card size="auto">
           <CardHeader code="0x90" title="CHILDRENS PRIVACY" icon={<Baby className="size-4" />} />
           <CardContent padding="md">
-            <p className={cn('text-muted-foreground text-sm', mode.font)}>
+            <p className={cn('text-muted-foreground text-xs', mode.font)}>
               Fabrk is not intended for users under 18. We do not knowingly collect data from
               children. If you believe we've collected data from a child, contact us immediately.
             </p>
@@ -500,11 +500,11 @@ export default function PrivacyPage() {
             icon={<Globe className="size-4" />}
           />
           <CardContent padding="md">
-            <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
+            <p className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
               Your data may be processed in countries outside your own. We ensure adequate
               protection through:
             </p>
-            <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
+            <ul className={cn('text-muted-foreground space-y-1 pl-4 text-xs', mode.font)}>
               <li>├─ Standard Contractual Clauses (EU-approved)</li>
               <li>├─ Data Processing Agreements with all vendors</li>
               <li>└─ Compliance with applicable data protection laws</li>
@@ -516,7 +516,7 @@ export default function PrivacyPage() {
         <Card size="auto">
           <CardHeader code="0xB0" title="POLICY CHANGES" icon={<RefreshCw className="size-4" />} />
           <CardContent padding="md">
-            <p className={cn('text-muted-foreground text-sm', mode.font)}>
+            <p className={cn('text-muted-foreground text-xs', mode.font)}>
               We may update this policy periodically. We'll notify you of significant changes via
               email or prominent notice. Continued use after changes constitutes acceptance.
             </p>
@@ -527,10 +527,10 @@ export default function PrivacyPage() {
         <Card size="auto">
           <CardHeader code="0xC0" title="CONTACT US" icon={<Mail className="size-4" />} />
           <CardContent padding="md">
-            <p className={cn('text-muted-foreground mb-4 text-sm', mode.font)}>
+            <p className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
               Privacy questions or concerns?
             </p>
-            <ul className={cn('text-muted-foreground space-y-1 pl-4 text-sm', mode.font)}>
+            <ul className={cn('text-muted-foreground space-y-1 pl-4 text-xs', mode.font)}>
               <li>
                 ├─ <span className="text-foreground">EMAIL:</span> support@fabrek.dev
               </li>

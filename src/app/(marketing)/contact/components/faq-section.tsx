@@ -33,7 +33,7 @@ export function FaqSection() {
         >
           [ [0x04] FAQ ]
         </span>
-        <h2 className={cn('mb-2 text-sm font-semibold tracking-tight', mode.font)}>
+        <h2 className={cn('mb-2 text-xs font-semibold tracking-tight', mode.font)}>
           FREQUENTLY ASKED QUESTIONS
         </h2>
         <p className={cn('text-muted-foreground text-xs', mode.font)}>
@@ -55,7 +55,7 @@ export function FaqSection() {
             >
               <AccordionTrigger
                 className={cn(
-                  'text-foreground px-6 text-left text-sm font-semibold hover:no-underline',
+                  'text-foreground px-6 text-left text-xs font-semibold hover:no-underline',
                   mode.font
                 )}
               >
@@ -84,7 +84,7 @@ export function FaqSection() {
             >
               <AccordionTrigger
                 className={cn(
-                  'text-foreground px-6 text-left text-sm font-semibold hover:no-underline',
+                  'text-foreground px-6 text-left text-xs font-semibold hover:no-underline',
                   mode.font
                 )}
               >
@@ -109,7 +109,7 @@ export function FaqSection() {
             >
               <AccordionTrigger
                 className={cn(
-                  'text-foreground px-6 text-left text-sm font-semibold hover:no-underline',
+                  'text-foreground px-6 text-left text-xs font-semibold hover:no-underline',
                   mode.font
                 )}
               >
@@ -134,7 +134,7 @@ export function FaqSection() {
             >
               <AccordionTrigger
                 className={cn(
-                  'text-foreground px-6 text-left text-sm font-semibold hover:no-underline',
+                  'text-foreground px-6 text-left text-xs font-semibold hover:no-underline',
                   mode.font
                 )}
               >

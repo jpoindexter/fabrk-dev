@@ -31,8 +31,8 @@ export default function CookiesPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <h1 className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>FABRK LEGAL:</h1>
-          <h2 className={cn('mb-4 text-sm font-bold tracking-tight', mode.font)}>COOKIE POLICY</h2>
+          <h1 className={cn('text-muted-foreground mb-2 text-xs', mode.font)}>FABRK LEGAL:</h1>
+          <h2 className={cn('mb-4 text-xs font-bold tracking-tight', mode.font)}>COOKIE POLICY</h2>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 12 }}

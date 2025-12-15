@@ -25,7 +25,7 @@ export function AboutCTA() {
           viewport={{ once: true }}
         >
           <Badge code="0xFF" label="EXECUTE" className="mb-4" />
-          <h2 className={cn('text-sm font-semibold tracking-tight', mode.font)}>
+          <h2 className={cn('text-xs font-semibold tracking-tight', mode.font)}>
             READY TO BUILD YOUR SAAS
           </h2>
         </motion.div>
@@ -39,7 +39,7 @@ export function AboutCTA() {
         >
           <Card size="auto">
             <CardContent padding="md">
-              <p className={cn('text-muted-foreground text-sm', mode.font)}>
+              <p className={cn('text-muted-foreground text-xs', mode.font)}>
                 Start shipping faster with 70+ production-ready components.
               </p>
             </CardContent>
