@@ -6,24 +6,27 @@
 
 import { DocsSidebar, NavSection } from '@/components/docs/docs-sidebar';
 import { templatesNavigation, toDisplayCase } from './library-nav-data';
+import { formatDocsSectionTitle, formatDocsItemTitle } from '@/lib/utils/sidebar-formatters';
 
 // Cast templates navigation to NavSection[] (compatible interface)
 const navigation = templatesNavigation as NavSection[];
 
-// Format section titles with [01] prefix and terminal case
-const formatSectionTitle = (title: string, index: number) =>
-  `[${String(index + 1).padStart(2, '0')}] ${toDisplayCase(title)}`;
+// The section titles in library-nav-data are already terminal-cased.
+// We only need to provide the formatItemTitle, and use toDisplayCase on the section title
+// passed to formatDocsSectionTitle.
 
-// Format item titles to terminal case
-const formatItemTitle = (title: string) => toDisplayCase(title);
+const libraryFormatSectionTitle = (title: string, index: number) => {
+  // Use toDisplayCase on the raw title before passing to the formatter
+  return formatDocsSectionTitle(toDisplayCase(title), index);
+};
 
 export function LibrarySidebar({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex flex-1">
       <DocsSidebar
         navigation={navigation}
-        formatSectionTitle={formatSectionTitle}
-        formatItemTitle={formatItemTitle}
+        formatSectionTitle={libraryFormatSectionTitle}
+        formatItemTitle={formatDocsItemTitle}
       />
 
       <div className="min-w-0 flex-1">{children}</div>

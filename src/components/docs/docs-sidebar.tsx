@@ -46,7 +46,7 @@ interface DocsSidebarProps {
   /** Optional function to format section titles. If not provided, uses title as-is */
   formatSectionTitle?: (title: string, index: number) => string;
   /** Optional function to format item titles. If not provided, uses title as-is */
-  formatItemTitle?: (title: string) => string;
+  formatItemTitle?: (title: string, itemIndex: number, sectionIndex: number, subSectionIndex?: number) => string;
 }
 
 // Helper to find which section contains the current path
@@ -162,24 +162,18 @@ export function DocsSidebar({
   }, [searchQuery, filteredNavigation, expandedSubSections]);
 
   // Update expanded sections when pathname changes
-  // Note: We intentionally read expandedSections/expandedSubSections to check if already expanded
-  // but don't want to re-run when they change (would cause infinite loop)
   useEffect(() => {
     const newActiveIndex = findActiveSectionIndex(pathname, navigation);
     if (newActiveIndex >= 0) {
-      // Expand parent section (use functional update to avoid dependency)
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- Auto-expand section on route change
       setExpandedSections((prev) => {
         if (prev.has(newActiveIndex)) return prev;
         return new Set([...prev, newActiveIndex]);
       });
-      // Expand sub-section containing active item
       const section = navigation[newActiveIndex];
       if (section.subSections) {
         const activeSubIndex = findActiveSubSectionIndex(pathname, section.subSections);
         if (activeSubIndex >= 0) {
           const subKey = `${newActiveIndex}-${activeSubIndex}`;
-
           setExpandedSubSections((prev) => {
             if (prev.has(subKey)) return prev;
             return new Set([...prev, subKey]);
@@ -223,7 +217,7 @@ export function DocsSidebar({
         className
       )}
     >
-      {/* Collapsed state - just show expand button */}
+      {/* Collapsed state */}
       {sidebarCollapsed && (
         <div className="p-2">
           <button
@@ -237,10 +231,10 @@ export function DocsSidebar({
         </div>
       )}
 
-      {/* Navigation - hidden when collapsed */}
+      {/* Navigation */}
       {!sidebarCollapsed && (
         <nav className="space-y-1 p-4">
-          {/* Collapse button on first row */}
+          {/* Collapse button */}
           <div className="mb-2 flex items-center justify-between">
             <span className="text-muted-foreground text-xs">[NAV]</span>
             <button
@@ -253,7 +247,7 @@ export function DocsSidebar({
             </button>
           </div>
 
-          {/* Search input */}
+          {/* Search */}
           <div className="relative mb-4">
             <Search className="text-muted-foreground absolute top-1/2 left-2 h-3 w-3 -translate-y-1/2" />
             <input
@@ -279,7 +273,6 @@ export function DocsSidebar({
             )}
           </div>
 
-          {/* No results message */}
           {searchQuery && filteredNavigation.length === 0 && (
             <div className="text-muted-foreground py-4 text-center font-mono text-xs">
               No results for &quot;{searchQuery}&quot;
@@ -299,7 +292,7 @@ export function DocsSidebar({
 
             return (
               <div key={sectionKey} className={cn(sectionIndex > 0 && 'mt-2')}>
-                {/* Collapsible Section Header */}
+                {/* Section Header */}
                 <button
                   onClick={() => toggleSection(sectionIndex)}
                   className={cn(
@@ -317,15 +310,14 @@ export function DocsSidebar({
                   {displayTitle}
                 </button>
 
-                {/* Collapsible Items with connector line */}
+                {/* Items */}
                 {isExpanded && (
                   <div className="before:bg-border relative ml-[7px] space-y-0.5 pl-4 before:absolute before:top-0 before:bottom-1 before:left-0 before:w-px">
-                    {/* Direct items */}
-                    {section.items.map((item) => {
+                    {section.items.map((item, itemIndex) => {
                       const Icon = item.icon;
                       const isActive = pathname === item.href;
                       const itemDisplayTitle = formatItemTitle
-                        ? formatItemTitle(item.title)
+                        ? formatItemTitle(item.title, itemIndex, sectionIndex)
                         : item.title;
 
                       if (item.external) {
@@ -365,17 +357,23 @@ export function DocsSidebar({
                       );
                     })}
 
-                    {/* Sub-sections (nested collapsible groups) */}
+                    {/* Sub-sections */}
                     {section.subSections?.map((subSection, subIndex) => {
                       const subKey = `${sectionIndex}-${subIndex}`;
                       const isSubExpanded = subSectionsToExpand.has(subKey);
                       const hasActiveSubItem = subSection.items.some(
                         (item) => pathname === item.href
                       );
+                      // Use a fake item index for subsection header formatting if needed, or create a new formatter
+                      // For now, let's assume subsections titles are static or we add a formatSubSectionTitle prop
+                      // But the prompt asked for "auto generate numbers".
+                      // If subsection is [07.1], it's section 7, subsection 1.
+                      const subSectionTitle = formatItemTitle 
+                        ? formatItemTitle(subSection.title, subIndex, sectionIndex) // Reuse item formatter? Or make new one?
+                        : subSection.title;
 
                       return (
                         <div key={subSection.title} className="mt-1">
-                          {/* Sub-section header */}
                           <button
                             onClick={() => toggleSubSection(sectionIndex, subIndex)}
                             className={cn(
@@ -392,17 +390,17 @@ export function DocsSidebar({
                                 isSubExpanded && 'rotate-90'
                               )}
                             />
-                            {subSection.title}
+                            {subSectionTitle}
                           </button>
 
-                          {/* Sub-section items */}
                           {isSubExpanded && (
                             <div className="before:bg-border/50 relative ml-[5px] space-y-0.5 pl-4 before:absolute before:top-0 before:bottom-1 before:left-0 before:w-px">
-                              {subSection.items.map((item) => {
+                              {subSection.items.map((item, subItemIndex) => {
                                 const Icon = item.icon;
                                 const isActive = pathname === item.href;
+                                // Pass subSectionIndex as the 4th arg
                                 const itemDisplayTitle = formatItemTitle
-                                  ? formatItemTitle(item.title)
+                                  ? formatItemTitle(item.title, subItemIndex, sectionIndex, subIndex)
                                   : item.title;
 
                                 return (

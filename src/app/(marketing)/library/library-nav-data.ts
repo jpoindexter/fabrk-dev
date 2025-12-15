@@ -25,6 +25,9 @@ import {
   Wrench,
   Database,
   Palette,
+  MessageSquare,
+  Image,
+  Volume2,
 } from 'lucide-react';
 
 export interface TemplateNavItem {
@@ -82,9 +85,29 @@ export const templatesNavigation: TemplateNavSection[] = [
     icon: Sparkles,
     items: [
       {
+        title: 'AI Chat',
+        href: '/library/ai-chat',
+        icon: MessageSquare,
+      },
+      {
         title: 'AI Form Generator',
         href: '/library/ai-forms',
         icon: FormInput,
+      },
+      {
+        title: 'AI Image Generation',
+        href: '/library/ai-image',
+        icon: Image,
+      },
+      {
+        title: 'AI Text Tools',
+        href: '/library/ai-text-tools',
+        icon: FileText,
+      },
+      {
+        title: 'AI Voice (STT/TTS)',
+        href: '/library/ai-voice',
+        icon: Volume2,
       },
     ],
   },

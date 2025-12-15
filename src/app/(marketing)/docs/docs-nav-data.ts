@@ -55,28 +55,28 @@ import {
 
 export const docsNavigation: NavSection[] = [
   // ═══════════════════════════════════════════════════════════════════════════
-  // PHASE 1: GETTING STARTED - First steps for new users
+  // PHASE 1: GETTING STARTED
   // ═══════════════════════════════════════════════════════════════════════════
   {
-    title: '[01] START',
+    title: 'START',
     items: [
       {
-        title: '[01.1] GETTING STARTED',
+        title: 'GETTING STARTED',
         href: '/docs/getting-started',
         icon: BookOpen,
       },
       {
-        title: '[01.2] QUICK START',
+        title: 'QUICK START',
         href: '/docs/tutorials/quick-start',
         icon: Rocket,
       },
       {
-        title: '[01.3] ARCHITECTURE',
+        title: 'ARCHITECTURE',
         href: '/docs/architecture',
         icon: Blocks,
       },
       {
-        title: '[01.4] CUSTOMIZATION CHECKLIST',
+        title: 'CUSTOMIZATION CHECKLIST',
         href: '/docs/customization-checklist',
         icon: CheckSquare,
       },
@@ -84,18 +84,18 @@ export const docsNavigation: NavSection[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // PHASE 2: ENVIRONMENT SETUP - Configure your development environment
+  // PHASE 2: ENVIRONMENT SETUP
   // ═══════════════════════════════════════════════════════════════════════════
   {
-    title: '[02] SETUP',
+    title: 'SETUP',
     items: [
       {
-        title: '[02.1] ENV VARIABLES',
+        title: 'ENV VARIABLES',
         href: '/docs/deployment/environment',
         icon: Settings,
       },
       {
-        title: '[02.2] DATABASE',
+        title: 'DATABASE',
         href: '/docs/features/database',
         icon: Database,
       },
@@ -103,28 +103,28 @@ export const docsNavigation: NavSection[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // PHASE 3: AUTHENTICATION - User auth is foundational
+  // PHASE 3: AUTHENTICATION
   // ═══════════════════════════════════════════════════════════════════════════
   {
-    title: '[03] AUTHENTICATION',
+    title: 'AUTHENTICATION',
     items: [
       {
-        title: '[03.1] AUTH OVERVIEW',
+        title: 'AUTH OVERVIEW',
         href: '/docs/tutorials/authentication',
         icon: Lock,
       },
       {
-        title: '[03.2] GOOGLE OAUTH',
+        title: 'GOOGLE OAUTH',
         href: '/docs/features/google-oauth',
         icon: Key,
       },
       {
-        title: '[03.3] MAGIC LINKS',
+        title: 'MAGIC LINKS',
         href: '/docs/features/magic-links',
         icon: Zap,
       },
       {
-        title: '[03.4] MULTI FACTOR AUTH',
+        title: 'MULTI FACTOR AUTH',
         href: '/docs/features/mfa',
         icon: ShieldCheck,
       },
@@ -132,33 +132,33 @@ export const docsNavigation: NavSection[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // PHASE 4: PAYMENTS - Monetize your app
+  // PHASE 4: PAYMENTS
   // ═══════════════════════════════════════════════════════════════════════════
   {
-    title: '[04] PAYMENTS',
+    title: 'PAYMENTS',
     items: [
       {
-        title: '[04.1] STRIPE SETUP',
+        title: 'STRIPE SETUP',
         href: '/docs/features/payments',
         icon: CreditCard,
       },
       {
-        title: '[04.2] STRIPE GUIDE',
+        title: 'STRIPE GUIDE',
         href: '/docs/tutorials/stripe-payments',
         icon: CreditCard,
       },
       {
-        title: '[04.3] POLAR.SH',
+        title: 'POLAR.SH',
         href: '/docs/features/polar',
         icon: CircleDollarSign,
       },
       {
-        title: '[04.4] LEMON SQUEEZY',
+        title: 'LEMON SQUEEZY',
         href: '/docs/features/lemonsqueezy',
         icon: CircleDollarSign,
       },
       {
-        title: '[04.5] FREE TRIALS',
+        title: 'FREE TRIALS',
         href: '/docs/features/trial',
         icon: Clock,
       },
@@ -166,23 +166,23 @@ export const docsNavigation: NavSection[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // PHASE 5: EMAILS - Communication with users
+  // PHASE 5: EMAILS
   // ═══════════════════════════════════════════════════════════════════════════
   {
-    title: '[05] EMAILS',
+    title: 'EMAILS',
     items: [
       {
-        title: '[05.1] RESEND SETUP',
+        title: 'RESEND SETUP',
         href: '/docs/features/emails',
         icon: Mail,
       },
       {
-        title: '[05.2] EMAIL TEMPLATES',
+        title: 'EMAIL TEMPLATES',
         href: '/docs/tutorials/email-templates',
         icon: Mail,
       },
       {
-        title: '[05.3] NOTIFICATIONS',
+        title: 'NOTIFICATIONS',
         href: '/docs/features/notifications',
         icon: Bell,
       },
@@ -190,38 +190,33 @@ export const docsNavigation: NavSection[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // PHASE 6: CORE FEATURES - Build out your app
+  // PHASE 6: CORE FEATURES
   // ═══════════════════════════════════════════════════════════════════════════
   {
-    title: '[06] CORE FEATURES',
+    title: 'CORE FEATURES',
     items: [
       {
-        title: '[06.1] API ROUTES',
+        title: 'API ROUTES',
         href: '/docs/tutorials/api-routes',
         icon: FileCode,
       },
       {
-        title: '[06.2] PROTECTED PAGES',
+        title: 'PROTECTED PAGES',
         href: '/docs/tutorials/protected-pages',
         icon: Shield,
       },
       {
-        title: '[06.3] AI CREDITS',
-        href: '/docs/features/ai-credits',
-        icon: Coins,
-      },
-      {
-        title: '[06.4] CLOUD STORAGE',
+        title: 'CLOUD STORAGE',
         href: '/docs/features/cloud-storage',
         icon: Cloud,
       },
       {
-        title: '[06.5] FILE UPLOADS',
+        title: 'FILE UPLOADS',
         href: '/docs/tutorials/file-uploads',
         icon: Upload,
       },
       {
-        title: '[06.6] WEBHOOKS',
+        title: 'WEBHOOKS',
         href: '/docs/features/webhooks',
         icon: Webhook,
       },
@@ -229,48 +224,48 @@ export const docsNavigation: NavSection[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // PHASE 6.5: AI FEATURES - Build AI-powered applications
+  // PHASE 6.5: AI FEATURES
   // ═══════════════════════════════════════════════════════════════════════════
   {
-    title: '[06.AI] AI FEATURES',
+    title: 'AI FEATURES',
     items: [
       {
-        title: '[AI.1] AI INTEGRATION',
+        title: 'AI INTEGRATION',
         href: '/docs/features/ai-integration',
         icon: Sparkles,
       },
       {
-        title: '[AI.2] AI CHAT',
+        title: 'AI CHAT',
         href: '/library/ai-chat',
         icon: MessageSquare,
       },
       {
-        title: '[AI.3] TEXT TOOLS',
+        title: 'TEXT TOOLS',
         href: '/library/ai-text-tools',
         icon: FileText,
       },
       {
-        title: '[AI.4] IMAGE GENERATION',
+        title: 'IMAGE GENERATION',
         href: '/library/ai-image',
         icon: Image,
       },
       {
-        title: '[AI.5] VOICE (STT/TTS)',
+        title: 'VOICE (STT/TTS)',
         href: '/library/ai-voice',
         icon: Volume2,
       },
       {
-        title: '[AI.6] AI FORMS',
+        title: 'AI FORMS',
         href: '/library/ai-forms',
         icon: FileCode,
       },
       {
-        title: '[AI.7] AI CREDITS',
+        title: 'AI CREDITS',
         href: '/docs/features/ai-credits',
         icon: Coins,
       },
       {
-        title: '[AI.8] MCP SERVER',
+        title: 'MCP SERVER',
         href: '/docs/features/mcp-server',
         icon: Bot,
       },
@@ -278,10 +273,10 @@ export const docsNavigation: NavSection[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // PHASE 7: COMPONENTS - UI building blocks (89 components)
+  // PHASE 7: COMPONENTS
   // ═══════════════════════════════════════════════════════════════════════════
   {
-    title: '[07] COMPONENTS',
+    title: 'COMPONENTS',
     items: [
       {
         title: 'UI LIBRARY 89',
@@ -291,7 +286,7 @@ export const docsNavigation: NavSection[] = [
     ],
     subSections: [
       {
-        title: '[07.1] FORM INPUTS',
+        title: 'FORM INPUTS',
         items: [
           { title: 'ACCORDION', href: '/docs/components/accordion', icon: FormInput },
           { title: 'CALENDAR', href: '/docs/components/calendar', icon: FormInput },
@@ -314,11 +309,11 @@ export const docsNavigation: NavSection[] = [
         ],
       },
       {
-        title: '[07.2] BUTTONS',
+        title: 'BUTTONS',
         items: [{ title: 'BUTTON', href: '/docs/components/button', icon: MousePointer }],
       },
       {
-        title: '[07.3] DATA DISPLAY',
+        title: 'DATA DISPLAY',
         items: [
           { title: 'AVATAR', href: '/docs/components/avatar', icon: Table },
           { title: 'BADGE', href: '/docs/components/badge', icon: Table },
@@ -336,7 +331,7 @@ export const docsNavigation: NavSection[] = [
         ],
       },
       {
-        title: '[07.4] CHARTS',
+        title: 'CHARTS',
         items: [
           { title: 'AREA CHART', href: '/docs/components/area-chart', icon: LineChart },
           { title: 'BAR CHART', href: '/docs/components/bar-chart', icon: LineChart },
@@ -352,7 +347,7 @@ export const docsNavigation: NavSection[] = [
         ],
       },
       {
-        title: '[07.5] OVERLAYS',
+        title: 'OVERLAYS',
         items: [
           { title: 'ALERT DIALOG', href: '/docs/components/alert-dialog', icon: MessageSquare },
           { title: 'DIALOG', href: '/docs/components/dialog', icon: MessageSquare },
@@ -362,7 +357,7 @@ export const docsNavigation: NavSection[] = [
         ],
       },
       {
-        title: '[07.6] NAVIGATION',
+        title: 'NAVIGATION',
         items: [
           { title: 'BREADCRUMB', href: '/docs/components/breadcrumb', icon: Layout },
           { title: 'COMMAND', href: '/docs/components/command', icon: Layout },
@@ -370,12 +365,13 @@ export const docsNavigation: NavSection[] = [
           { title: 'NAVIGATION', href: '/docs/components/navigation', icon: Layout },
           { title: 'PAGINATION', href: '/docs/components/pagination', icon: Layout },
           { title: 'SIDEBAR', href: '/docs/components/sidebar', icon: Layout },
+          { title: 'DOCS SIDEBAR', href: '/docs/components/docs-sidebar', icon: Layout },
           { title: 'STYLED TABS', href: '/docs/components/styled-tabs', icon: Layout },
           { title: 'TABS', href: '/docs/components/tabs', icon: Layout },
         ],
       },
       {
-        title: '[07.7] LAYOUT',
+        title: 'LAYOUT',
         items: [
           { title: 'CONTAINER', href: '/docs/components/container', icon: Blocks },
           { title: 'SCROLL AREA', href: '/docs/components/scroll-area', icon: Blocks },
@@ -383,7 +379,7 @@ export const docsNavigation: NavSection[] = [
         ],
       },
       {
-        title: '[07.8] FEEDBACK',
+        title: 'FEEDBACK',
         items: [
           { title: 'ALERT', href: '/docs/components/alert', icon: Bell },
           { title: 'COOKIE CONSENT', href: '/docs/components/cookie-consent', icon: Bell },
@@ -401,7 +397,7 @@ export const docsNavigation: NavSection[] = [
         ],
       },
       {
-        title: '[07.9] SAAS',
+        title: 'SAAS',
         items: [
           { title: 'API KEY MANAGER', href: '/docs/components/api-key-manager', icon: Key },
           { title: 'AUDIT LOG', href: '/docs/components/audit-log', icon: ScrollText },
@@ -429,7 +425,7 @@ export const docsNavigation: NavSection[] = [
         ],
       },
       {
-        title: '[07.L] LANDING',
+        title: 'LANDING',
         items: [
           { title: 'HERO', href: '/docs/components/hero', icon: Rocket },
           { title: 'FEATURES', href: '/docs/components/features', icon: Blocks },
@@ -443,43 +439,43 @@ export const docsNavigation: NavSection[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // PHASE 8: DESIGN SYSTEM - Customize your brand & look
+  // PHASE 8: DESIGN SYSTEM
   // ═══════════════════════════════════════════════════════════════════════════
   {
-    title: '[08] DESIGN SYSTEM',
+    title: 'DESIGN SYSTEM',
     items: [
       {
-        title: '[08.1] THEME GUIDE',
+        title: 'THEME GUIDE',
         href: '/docs/design/theme-guide',
         icon: Palette,
       },
       {
-        title: '[08.2] CUSTOMIZATION GUIDE',
+        title: 'CUSTOMIZATION GUIDE',
         href: '/docs/design/customization-guide',
         icon: Paintbrush,
       },
       {
-        title: '[08.3] COMPONENT AUTHORING',
+        title: 'COMPONENT AUTHORING',
         href: '/docs/design/component-authoring',
         icon: Wrench,
       },
       {
-        title: '[08.4] ACCESSIBILITY',
+        title: 'ACCESSIBILITY',
         href: '/docs/design/accessibility',
         icon: Accessibility,
       },
       {
-        title: '[08.5] THEME GALLERY',
+        title: 'THEME GALLERY',
         href: '/docs/extras/theme-gallery',
         icon: GalleryVerticalEnd,
       },
       {
-        title: '[08.6] THEME GENERATOR',
+        title: 'THEME GENERATOR',
         href: '/docs/extras/theme-generator',
         icon: Palette,
       },
       {
-        title: '[08.7] DISPLAY EFFECTS',
+        title: 'DISPLAY EFFECTS',
         href: '/docs/extras/display-effects',
         icon: Monitor,
       },
@@ -487,43 +483,43 @@ export const docsNavigation: NavSection[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // PHASE 9: SECURITY - Harden your application
+  // PHASE 9: SECURITY
   // ═══════════════════════════════════════════════════════════════════════════
   {
-    title: '[09] SECURITY',
+    title: 'SECURITY',
     items: [
       {
-        title: '[09.1] COOKIE CONSENT',
+        title: 'COOKIE CONSENT',
         href: '/docs/features/cookie-consent',
         icon: Cookie,
       },
       {
-        title: '[09.2] RATE LIMITING',
+        title: 'RATE LIMITING',
         href: '/docs/security/rate-limiting',
         icon: AlertTriangle,
       },
       {
-        title: '[09.3] CSRF PROTECTION',
+        title: 'CSRF PROTECTION',
         href: '/docs/security/csrf',
         icon: Shield,
       },
       {
-        title: '[09.4] SECURITY HEADERS',
+        title: 'SECURITY HEADERS',
         href: '/docs/security/headers',
         icon: ShieldCheck,
       },
       {
-        title: '[09.5] VALIDATION',
+        title: 'VALIDATION',
         href: '/docs/security/validation',
         icon: ScrollText,
       },
       {
-        title: '[09.6] BOT PROTECTION',
+        title: 'BOT PROTECTION',
         href: '/docs/security/bot-protection',
         icon: Bot,
       },
       {
-        title: '[09.7] AUDIT LOGGING',
+        title: 'AUDIT LOGGING',
         href: '/docs/security/audit-logging',
         icon: ScrollText,
       },
@@ -531,63 +527,63 @@ export const docsNavigation: NavSection[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // PHASE 10: ADVANCED - Power features for scaling
+  // PHASE 10: ADVANCED
   // ═══════════════════════════════════════════════════════════════════════════
   {
-    title: '[10] ADVANCED',
+    title: 'ADVANCED',
     items: [
       {
-        title: '[10.1] ORGANIZATIONS',
+        title: 'ORGANIZATIONS',
         href: '/docs/features/organizations',
         icon: Users,
       },
       {
-        title: '[10.2] REALTIME',
+        title: 'REALTIME',
         href: '/docs/features/realtime',
         icon: Bell,
       },
       {
-        title: '[10.3] BACKGROUND JOBS',
+        title: 'BACKGROUND JOBS',
         href: '/docs/features/background-jobs',
         icon: Clock,
       },
       {
-        title: '[10.4] ANALYTICS',
+        title: 'ANALYTICS',
         href: '/docs/features/analytics',
         icon: BarChart3,
       },
       {
-        title: '[10.5] SEO',
+        title: 'SEO',
         href: '/docs/features/seo',
         icon: Globe,
       },
       {
-        title: '[10.6] API KEYS',
+        title: 'API KEYS',
         href: '/docs/features/api-keys',
         icon: Key,
       },
       {
-        title: '[10.7] FEATURE FLAGS',
+        title: 'FEATURE FLAGS',
         href: '/docs/features/feature-flags',
         icon: Flag,
       },
       {
-        title: '[10.8] BLOG SYSTEM',
+        title: 'BLOG SYSTEM',
         href: '/docs/features/blog',
         icon: FileText,
       },
       {
-        title: '[10.9] I18N',
+        title: 'I18N',
         href: '/docs/features/i18n',
         icon: Languages,
       },
       {
-        title: '[10.10] USER IMPERSONATION',
+        title: 'USER IMPERSONATION',
         href: '/docs/features/impersonation',
         icon: UserCog,
       },
       {
-        title: '[10.11] MCP SERVER',
+        title: 'MCP SERVER',
         href: '/docs/features/mcp-server',
         icon: Bot,
       },
@@ -595,23 +591,23 @@ export const docsNavigation: NavSection[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // PHASE 11: DEPLOY - Ship to production
+  // PHASE 11: DEPLOY
   // ═══════════════════════════════════════════════════════════════════════════
   {
-    title: '[11] DEPLOY',
+    title: 'DEPLOY',
     items: [
       {
-        title: '[11.1] TESTING',
+        title: 'TESTING',
         href: '/docs/extras/testing',
         icon: TestTube,
       },
       {
-        title: '[11.2] VERCEL',
+        title: 'VERCEL',
         href: '/docs/deployment/vercel',
         icon: Cloud,
       },
       {
-        title: '[11.3] LAUNCH CHECKLIST',
+        title: 'LAUNCH CHECKLIST',
         href: '/docs/launch/checklist',
         icon: Rocket,
       },

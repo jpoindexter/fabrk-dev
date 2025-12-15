@@ -337,9 +337,9 @@ npm run db:push && npm run dev
             description="Upload files to cloud"
           />
           <DocsLinkCard
-            href="/docs/features/ai-credits"
-            title="AI Credits"
-            description="Token billing for AI features"
+            href="/docs/features/ai-integration"
+            title="AI Integration"
+            description="Chat, text tools, image gen, voice, & credits"
           />
         </div>
       </DocsSection>

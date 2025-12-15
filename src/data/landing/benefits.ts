@@ -27,7 +27,7 @@ export const CORE_BENEFITS = [
       'AI Credit Dashboard Built-In',
     ],
     ctaLabel: '> Explore AI Features',
-    ctaHref: '/docs/features/ai-credits',
+    ctaHref: '/docs/features/ai-integration',
   },
   {
     id: 'payment-flexibility',

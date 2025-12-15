@@ -28,3 +28,4 @@ export {
 export { LibraryGuideTemplate, CodeBlock as LibraryCodeBlock } from './library-guide-template';
 export { BrowserChrome } from './browser-chrome';
 export * from './ai-chat';
+export * from './ai-forms';

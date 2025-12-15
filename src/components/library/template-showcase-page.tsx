@@ -9,7 +9,7 @@
 import { Suspense, useState } from 'react';
 import Link from 'next/link';
 import { ErrorBoundary } from 'react-error-boundary';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, BookOpen } from 'lucide-react';
 import {
   Card,
   CardHeader,
@@ -21,6 +21,7 @@ import {
 import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
 import { CodeBlock } from '@/components/ui/code-block';
 import { RelatedTemplates } from './related-templates';
+import { Button } from '@/components/ui/button';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -137,6 +138,8 @@ export interface TemplateShowcasePageProps {
   showRelated?: boolean;
   /** Number of related templates to show (default: 3) */
   relatedLimit?: number;
+  /** Optional link to implementation documentation */
+  documentationHref?: string;
 }
 
 export function TemplateShowcasePage({
@@ -151,6 +154,7 @@ export function TemplateShowcasePage({
   features,
   showRelated = true,
   relatedLimit = 3,
+  documentationHref,
 }: TemplateShowcasePageProps) {
   const [activeTab, setActiveTab] = useState('preview');
 
@@ -189,7 +193,17 @@ export function TemplateShowcasePage({
         </nav>
 
         {/* Header */}
-        <TemplatePageHeader badge={badge} title={title} description={description} />
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <TemplatePageHeader badge={badge} title={title} description={description} />
+          {documentationHref && (
+            <Button asChild variant="outline" className={cn('gap-2', mode.radius, mode.font)}>
+              <Link href={documentationHref}>
+                <BookOpen className="size-4" />
+                View Docs
+              </Link>
+            </Button>
+          )}
+        </div>
 
         {/* Preview/Code Tabs - Using StyledTabs for bordered style */}
         <StyledTabs
