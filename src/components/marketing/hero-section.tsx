@@ -40,7 +40,7 @@ const techStack = [
 
 export function HeroSection() {
   return (
-    <section className="relative flex min-h-[85vh] items-center overflow-hidden pt-8 pb-16 lg:min-h-[90vh] lg:pt-12 lg:pb-20">
+    <section className="relative flex min-h-[85vh] items-center overflow-hidden px-4 pt-8 pb-16 sm:px-0 lg:min-h-[90vh] lg:pt-12 lg:pb-20">
       <Container size="2xl">
         <div className="relative">
           {/* Main Hero Window - Wider, behind */}
@@ -48,7 +48,7 @@ export function HeroSection() {
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="relative isolate z-0 ml-12 max-w-2xl lg:ml-16"
+            className="relative isolate z-0 max-w-2xl lg:ml-16"
           >
             <Card size="auto">
               <CardHeader code="0x00" title="SYSTEM INIT" meta="SAAS BOILERPLATE v2.0" />
@@ -58,9 +58,22 @@ export function HeroSection() {
                   <h1 className={cn('mb-2 text-xs', mode.color.text.muted, mode.font)}>
                     [FABRK INIT]
                   </h1>
+                  {/* Mobile: Simple text headline */}
+                  <h2
+                    className={cn(
+                      'mb-4 text-2xl leading-tight font-bold md:hidden',
+                      mode.color.text.accent,
+                      mode.font
+                    )}
+                  >
+                    BUILD IN
+                    <br />
+                    MINUTES
+                  </h2>
+                  {/* Desktop: ASCII art */}
                   <pre
                     className={cn(
-                      'mb-4 text-xs leading-none lg:text-xs',
+                      'mb-4 hidden text-xs leading-none md:block lg:text-xs',
                       mode.color.text.accent,
                       mode.font
                     )}
@@ -137,12 +150,12 @@ export function HeroSection() {
             </Card>
           </motion.div>
 
-          {/* Right Column - Visual Proof (Overlays on top) */}
+          {/* Right Column - Visual Proof (Hidden on mobile, overlays on desktop) */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="absolute top-8 -right-12 isolate z-10 flex w-full max-w-[280px] flex-col gap-8 lg:top-12 lg:-right-16"
+            className="mt-8 lg:absolute lg:top-12 lg:-right-16 lg:mt-0 lg:w-full lg:max-w-[280px]"
           >
             {/* Urgency Card - Top */}
             <Card size="auto" className="border-accent border-2 lg:-mr-8">
@@ -198,8 +211,8 @@ export function HeroSection() {
               </CardContent>
             </Card>
 
-            {/* Live Dashboard Preview - Show, don't tell */}
-            <div className="mt-4 -ml-16 lg:mt-8 lg:-ml-24">
+            {/* Live Dashboard Preview - Show, don't tell (hidden on mobile) */}
+            <div className="mt-8 hidden lg:-ml-24 lg:block">
               <HeroDashboardPreview />
             </div>
           </motion.div>

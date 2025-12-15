@@ -29,6 +29,89 @@ export function Navigation() {
   return (
     <nav className="border-border bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
       <div className="flex h-16 w-full items-center px-4 sm:px-6">
+        {/* Mobile Menu Trigger - Left side */}
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className={cn('mr-2 h-10 w-10 md:hidden', mode.radius)}
+              aria-label="Open menu"
+            >
+              <Menu className="h-5 w-5" />
+            </Button>
+          </SheetTrigger>
+
+          <SheetContent side="left" className={cn('w-[280px] p-0', mode.radius)}>
+            <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+
+            {/* Header */}
+            <div className="border-border border-b p-4">
+              <div className="flex items-center gap-2">
+                <Logo />
+              </div>
+            </div>
+
+            {/* Navigation Links */}
+            <nav className="flex flex-col p-4">
+              <span className={cn('text-muted-foreground mb-3 text-xs', mode.font)}>
+                [NAVIGATE]:
+              </span>
+              <div className="space-y-1">
+                {navLinks.map((link) => (
+                  <SheetClose key={link.href} asChild>
+                    <Link
+                      href={link.href}
+                      className={cn(
+                        'text-foreground hover:bg-muted hover:text-primary block px-3 py-2 text-sm transition-colors',
+                        mode.font,
+                        mode.radius
+                      )}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      &gt; {link.label}
+                    </Link>
+                  </SheetClose>
+                ))}
+              </div>
+
+              {/* Display Options */}
+              <div className="border-border mt-6 border-t pt-4">
+                <span className={cn('text-muted-foreground mb-3 block text-xs', mode.font)}>
+                  [DISPLAY]:
+                </span>
+                <div className="flex gap-2">
+                  <ThemeDropdown />
+                  <MonitorEffectsDropdown />
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="border-border mt-6 border-t pt-4">
+                <span className={cn('text-muted-foreground mb-3 block text-xs', mode.font)}>
+                  [ACTIONS]:
+                </span>
+                <div className="space-y-2">
+                  <SheetClose asChild>
+                    <Button
+                      variant="outline"
+                      className={cn('w-full text-xs', mode.radius, mode.font)}
+                      asChild
+                    >
+                      <Link href="/library">&gt; VIEW LIBRARY</Link>
+                    </Button>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <Button className={cn('w-full text-xs', mode.radius, mode.font)} asChild>
+                      <Link href="#pricing">&gt; GET STARTED</Link>
+                    </Button>
+                  </SheetClose>
+                </div>
+              </div>
+            </nav>
+          </SheetContent>
+        </Sheet>
+
         {/* Logo with Terminal Style */}
         <motion.div
           initial={{ opacity: 0, x: -12 }}
@@ -91,86 +174,12 @@ export function Navigation() {
           </div>
         </motion.div>
 
-        {/* Mobile Menu Trigger & CTA */}
-        <motion.div
-          initial={{ opacity: 0, x: 12 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex items-center gap-4 md:hidden"
-        >
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className={cn('h-10 w-10', mode.radius)}
-                aria-label="Open menu"
-              >
-                <Menu className="h-5 w-5" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className={cn('w-[300px] p-6', mode.radius)}>
-              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-              <div className="border-border mb-6 border-b pb-4">
-                <span className={cn('text-muted-foreground text-xs', mode.font)}>
-                  [SYSTEM MENU]
-                </span>
-              </div>
-              <nav className="flex flex-col space-y-4">
-                <span className={cn('text-muted-foreground text-xs', mode.font)}>[NAVIGATE]:</span>
-                {navLinks.map((link) => (
-                  <SheetClose key={link.href} asChild>
-                    <Link
-                      href={link.href}
-                      className={cn(
-                        'text-foreground hover:text-primary text-sm transition-colors',
-                        mode.font
-                      )}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      &gt; {link.label}
-                    </Link>
-                  </SheetClose>
-                ))}
-                <div className="border-border border-t pt-6">
-                  <span className={cn('text-muted-foreground mb-4 block text-xs', mode.font)}>
-                    [DISPLAY]:
-                  </span>
-                  <div className="mb-4 flex flex-col gap-2">
-                    <ThemeDropdown />
-                    <MonitorEffectsDropdown />
-                  </div>
-                </div>
-                <div className="border-border border-t pt-6">
-                  <span className={cn('text-muted-foreground mb-4 block text-xs', mode.font)}>
-                    [ACTIONS]:
-                  </span>
-                  <SheetClose asChild>
-                    <Button
-                      variant="outline"
-                      className={cn('w-full text-xs', mode.radius, mode.font)}
-                      asChild
-                    >
-                      <Link href="/demo">&gt; VIEW DEMO</Link>
-                    </Button>
-                  </SheetClose>
-                  <SheetClose asChild>
-                    <Button className={cn('mt-4 w-full text-xs', mode.radius, mode.font)} asChild>
-                      <Link href="#pricing">&gt; GET STARTED</Link>
-                    </Button>
-                  </SheetClose>
-                </div>
-              </nav>
-            </SheetContent>
-          </Sheet>
-
-          {/* Mobile CTA Button */}
-          <Button asChild className={cn('text-xs md:hidden', mode.radius, mode.font)}>
-            <Link href="#pricing" className="scroll-smooth">
-              &gt; START
-            </Link>
-          </Button>
-        </motion.div>
+        {/* Mobile CTA Button */}
+        <Button asChild className={cn('text-xs md:hidden', mode.radius, mode.font)}>
+          <Link href="#pricing" className="scroll-smooth">
+            &gt; START
+          </Link>
+        </Button>
       </div>
     </nav>
   );
