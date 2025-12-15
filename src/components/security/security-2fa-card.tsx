@@ -6,6 +6,8 @@
  */
 
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Shield, Smartphone, CheckCircle2, XCircle } from 'lucide-react';
@@ -32,7 +34,7 @@ export function Security2FACard({
       <CardHeader code="0x02" title="TWO FACTOR AUTH" icon={<Smartphone className="h-4 w-4" />} />
       <CardContent className="space-y-4">
         <div className="flex items-center justify-between">
-          <p className="text-muted-foreground font-mono text-xs">
+          <p className={cn(mode.font, 'text-muted-foreground', 'text-xs')}>
             Add an extra layer of security to your account
           </p>
           {twoFactorEnabled ? (
@@ -47,7 +49,7 @@ export function Security2FACard({
             </Badge>
           )}
         </div>
-        <p className="text-muted-foreground font-mono text-xs">
+        <p className={cn(mode.font, 'text-muted-foreground', 'text-xs')}>
           Two-factor authentication (2FA) adds an additional layer of security by requiring a second
           form of verification when you sign in.
         </p>
@@ -56,7 +58,9 @@ export function Security2FACard({
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="text-success h-4 w-4" />
-              <span className="font-mono text-xs">2FA is currently protecting your account</span>
+              <span className={cn(mode.font, 'text-xs')}>
+                2FA is currently protecting your account
+              </span>
             </div>
             <div className="flex gap-4">
               <Button variant="outline" onClick={onViewBackupCodes}>

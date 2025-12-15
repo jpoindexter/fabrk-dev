@@ -38,11 +38,11 @@ export function SecurityAccountsCard({
         meta={`${connectedAccounts.length} ${connectedAccounts.length === 1 ? 'account' : 'accounts'}`}
       />
       <CardContent className="space-y-4">
-        <p className="text-muted-foreground mb-4 font-mono text-xs">
+        <p className={cn(mode.font, 'text-muted-foreground', 'mb-4', 'text-xs')}>
           Manage third-party accounts linked to your Fabrk account
         </p>
         {connectedAccounts.length === 0 ? (
-          <p className="text-muted-foreground font-mono text-xs">
+          <p className={cn(mode.font, 'text-muted-foreground', 'text-xs')}>
             No connected accounts. You can link Google or GitHub for faster sign-in.
           </p>
         ) : (
@@ -56,10 +56,12 @@ export function SecurityAccountsCard({
                 )}
               >
                 <div className="flex items-center gap-4">
-                  <Badge variant="outline" className="font-mono capitalize">
+                  <Badge variant="outline" className={cn(mode.font, 'capitalize')}>
                     {account.provider}
                   </Badge>
-                  <span className="text-muted-foreground font-mono text-xs">Connected</span>
+                  <span className={cn(mode.font, 'text-muted-foreground', 'text-xs')}>
+                    Connected
+                  </span>
                 </div>
                 <Button
                   variant="ghost"
