@@ -1,8 +1,10 @@
 'use client';
 
+import { useRef } from 'react';
 import { DocsSidebar, NavSection } from '@/components/docs/docs-sidebar';
+import { DocsToc } from '@/components/docs/docs-toc';
 import { CHANGELOG } from '@/data/changelog';
-import { Tag, Calendar } from 'lucide-react';
+import { Tag } from 'lucide-react';
 
 // Group changelog entries by month/year
 function groupByMonth(entries: typeof CHANGELOG): Record<string, typeof CHANGELOG> {
@@ -37,6 +39,7 @@ function buildChangelogNavigation(): NavSection[] {
 }
 
 export default function ChangelogLayout({ children }: { children: React.ReactNode }) {
+  const mainRef = useRef<HTMLElement>(null);
   const navigation = buildChangelogNavigation();
 
   return (
@@ -47,9 +50,11 @@ export default function ChangelogLayout({ children }: { children: React.ReactNod
         formatItemTitle={(title) => title}
       />
 
-      <main className="min-w-0 flex-1">
+      <main ref={mainRef} className="min-w-0 flex-1">
         <div className="mx-auto max-w-3xl px-6 py-8 lg:px-8">{children}</div>
       </main>
+
+      <DocsToc mainRef={mainRef} />
     </div>
   );
 }

@@ -49,9 +49,13 @@ export default function ChangelogPage() {
       {/* Changelog Entries */}
       <div className="space-y-12">
         {CHANGELOG.map((entry, index) => (
-          <div key={entry.version} id={`v${entry.version}`} className="scroll-mt-20">
+          <section key={entry.version} className="scroll-mt-20">
+            {/* Hidden h2 for TOC - visually hidden but accessible */}
+            <h2 id={`v${entry.version}`} className={cn('mb-4 text-sm font-semibold', mode.font)}>
+              v{entry.version} - {entry.title}
+            </h2>
             <ChangelogEntry entry={entry} index={index} />
-          </div>
+          </section>
         ))}
       </div>
 
